@@ -2,14 +2,14 @@
 title: Oktatóanyag – az Azure Batch ügyféloldali kódtár használata a Node. js-hez
 description: Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a Node.js használatával.
 ms.assetid: ''
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/22/2017
-ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57b411e3c9c96aab31e85c4022a5954f7215cf02
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116859"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724207"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
@@ -60,7 +60,7 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 
 ### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Azure Batch-fiók létrehozása
 
-A [Azure Portal](batch-account-create-portal.md) vagy a parancssorból ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) hozható létre.
+A [Azure Portal](batch-account-create-portal.md) vagy a parancssorból ([PowerShell](batch-powershell-cmdlets-get-started.md)  / [Azure CLI](/cli/azure)) hozható létre.
 
 Az alábbi parancsokkal az Azure CLI-n keresztül hozhat létre egy fiókot.
 
@@ -344,7 +344,7 @@ A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](/javascript/api/overview/azure/batch).

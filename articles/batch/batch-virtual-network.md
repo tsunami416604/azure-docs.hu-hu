@@ -1,15 +1,15 @@
 ---
-title: Készlet kiépítése virtuális hálózatban – Azure Batch | Microsoft Docs
+title: Készlet kiépítése egy virtuális hálózatban
 description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban, hogy a számítási csomópontok biztonságosan kommunikálhassanak a hálózaton lévő más virtuális gépekkel, például a fájlkiszolgálón.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111895"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726281"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -53,7 +53,7 @@ Annak biztosítása érdekében, hogy a Azure Batch-készlet számítási csomó
 
 * A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonalat a Batch szolgáltatás által használt egyes IP-címekhez abban a régióban, ahol a Batch-fiók létezik. A Batch szolgáltatás IP-címeinek beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md). A Batch szolgáltatás IP-címei társítva lesznek a `BatchNodeManagement` szolgáltatás címkéjével (vagy a Batch-fiók régiójának megfelelő regionális változattal).
 
-* Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom (pontosabban az űrlap `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a és `<account>.blob.core.windows.net`az URL-címek) nincs letiltva a helyszíni hálózati berendezésen keresztül.
+* Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom (pontosabban az űrlap, a és az URL-címek `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ) nincs `<account>.blob.core.windows.net` Letiltva a helyszíni hálózati berendezésen keresztül.
 
 Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **Internet**értékre. Lásd a következő példát:
 
@@ -62,7 +62,7 @@ Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat 
 > [!WARNING]
 > A Batch szolgáltatás IP-címei idővel változhatnak. Ha egy IP-cím változása miatt leáll a leállás, javasoljuk, hogy hozzon létre egy rendszeres folyamatot a Batch szolgáltatás IP-címeinek automatikus frissítéséhez, és tartsa naprakészen az útválasztási táblázatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
 - A felhasználó által megadott útvonal létrehozásával kapcsolatos további információkért lásd: [felhasználó által definiált útvonal-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).

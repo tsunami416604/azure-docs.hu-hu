@@ -8,23 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: f9f750980d8a8b5d8190ba0b399fe068f1dd99c7
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680793"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725601"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 
-Amikor egy fürt bekerül az Azure-ba, a fürtön futó ügynököknek hitelesíteniük kell magukat Azure Resource Manager a regisztráció részeként. Az `connectedk8s` Azure CLI-bővítmény automatikusan létrehozza az egyszerű szolgáltatást. Előfordulhat azonban, hogy a CLI-automatizálás nem működik:
+A Kubernetes-fürtök Azure arc-ba való bevezetéséhez korlátozott jogosultságokkal rendelkező szerepkör-hozzárendelést használó egyszerű szolgáltatások is használhatók. Ez a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatokban, például az Azure-folyamatokban és a GitHub-műveletekben hasznos.
 
-* A szervezet általában korlátozza az egyszerű szolgáltatások létrehozását
-* A fürtöt bevezető felhasználó nem rendelkezik megfelelő engedélyekkel az egyszerű szolgáltatások létrehozásához
-
-Ehelyett hozzuk létre az egyszerű szolgáltatást sávon kívül, majd továbbítsa a rendszerbiztonsági tag számára az Azure CLI-bővítményt.
+Az alábbi lépések útmutatást nyújtanak a Kubernetes-fürtök Azure arc-ba való bevezetéséhez.
 
 ## <a name="create-a-new-service-principal"></a>Új egyszerű szolgáltatás létrehozása
 
@@ -57,13 +54,13 @@ Az engedélyek tovább korlátozhatók, `--scope` Ha a szerepkör hozzárendelé
 | Erőforrás  | `scope` argumentum| Hatás |
 | ------------- | ------------- | ------------- |
 | Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz a megadott előfizetésben |
-| Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
+| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz`myGroup` |
 
 ```console
 az role assignment create \
     --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 \      # this is the id for the built-in role
     --assignee 22cc2695-54b9-49c1-9a73-2269592103d8 \  # use the appId from the new SP
-    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the apropriate scope
+    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the appropriate scope
 ```
 
 **Kimeneti**
@@ -90,6 +87,6 @@ az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTe
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

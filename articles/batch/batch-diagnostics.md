@@ -1,15 +1,15 @@
 ---
 title: Metrikák, riasztások és diagnosztikai naplók
 description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azure Batch fiók erőforrásaihoz, például a készletekhez és a feladatokhoz.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a33f71cd185a327bfe6852b9acd7d7317b94c2c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117301"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726740"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
 
@@ -34,7 +34,7 @@ Megtekintheti a Batch-fiók metrikáit a Azure Portalban. A fiók **áttekintő*
 
 Az összes batch-fiók metrikájának megtekintése: 
 
-1. A portálon kattintson a **minden szolgáltatás** > **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
+1. A portálon kattintson a **minden szolgáltatás**  >  **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
 2. A **figyelés**területen kattintson a **metrikák**elemre.
 3. Válasszon ki egy vagy több mérőszámot. Ha szeretné, válassza a további erőforrás-metrikák lehetőséget az **előfizetések**, az **erőforráscsoport**, az **Erőforrás típusa**és az **erőforrás** legördülő lista használatával.
     * A Count-alapú metrikák esetében (például a "dedikált mag darabszáma" vagy az "alacsony prioritású csomópontok száma") az "átlag" összesítést használja. Eseményvezérelt metrikák esetén (például "a készlet átméretezése kész események") használja a "Count" összesítést.
@@ -62,8 +62,8 @@ Előfordulhat például, hogy egy metrikus riasztást szeretne beállítani, ha 
 
 Metrikai riasztás konfigurálása a portálon:
 
-1. Kattintson a **minden szolgáltatás** > **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
-2. A **figyelés**területen kattintson a **riasztási szabályok** > **metrikus riasztás hozzáadása**elemre.
+1. Kattintson a **minden szolgáltatás**  >  **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
+2. A **figyelés**területen kattintson a **riasztási szabályok**  >  **metrikus riasztás hozzáadása**elemre.
 3. Válassza ki a mérőszámot, a riasztási feltételt (például ha egy metrika meghaladja az adott értéket egy adott időszakban), és egy vagy több értesítést.
 
 A [REST API](https://docs.microsoft.com/rest/api/monitor/)használatával a közel valós idejű riasztást is konfigurálhatja. További információ: [riasztások áttekintése](../azure-monitor/platform/alerts-overview.md). A feladatok, a feladatok vagy a készletekre vonatkozó információk a riasztásokban való felvételéhez tekintse meg az [Azure monitor riasztásokkal rendelkező eseményekre adott válaszokban](../azure-monitor/learn/tutorial-response.md) szereplő keresési lekérdezéseket ismertető témakört.
@@ -94,8 +94,8 @@ További választható célhelyek a diagnosztikai naplókhoz:
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Batch diagnosztikai naplók gyűjtésének engedélyezése
 
-1. A portálon kattintson a **minden szolgáltatás** > **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
-2. A **figyelés**területen kattintson a **diagnosztikai naplók** > **bekapcsolása a diagnosztika**elemre.
+1. A portálon kattintson a **minden szolgáltatás**  >  **Batch-fiókok**elemre, majd kattintson a Batch-fiók nevére.
+2. A **figyelés**területen kattintson a **diagnosztikai naplók**  >  **bekapcsolása a diagnosztika**elemre.
 3. A **diagnosztikai beállítások**területen adja meg a beállítás nevét, és válassza ki a napló célhelyét (meglévő Storage-fiók, Event Hub vagy Azure monitor napló). Válassza a **ServiceLog** és a **AllMetrics**lehetőséget.
 
     Amikor kijelöl egy Storage-fiókot, opcionálisan beállíthat egy adatmegőrzési szabályt. Ha nem ad meg napokat a megőrzéshez, a rendszer a Storage-fiók élettartama alatt megőrzi az adatok mennyiségét.
@@ -125,9 +125,9 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Minden `PT1H.json` blob-fájl JSON-formázott eseményeket tartalmaz, amelyek a blob URL-címében megadott órán belül történtek `h=12`(például:). A jelen órában az eseményeket a rendszer hozzáfűzi a `PT1H.json` fájlhoz, ahogy azok bekövetkeznek. A perc értéke (`m=00`) mindig `00`, mivel a diagnosztikai napló eseményeinek az egyes blobokra való felosztása óránként történik. (Az összes alkalommal UTC-ben van.)
+Minden `PT1H.json` blob-fájl JSON-formázott eseményeket tartalmaz, amelyek a blob URL-címében megadott órán belül történtek (például: `h=12` ). A jelen órában az eseményeket a rendszer hozzáfűzi a `PT1H.json` fájlhoz, ahogy azok bekövetkeznek. A perc értéke ( `m=00` ) mindig `00` , mivel a diagnosztikai napló eseményeinek az egyes blobokra való felosztása óránként történik. (Az összes alkalommal UTC-ben van.)
 
-Az alábbi példa egy `PoolResizeCompleteEvent` `PT1H.json` naplófájlban lévő bejegyzésre mutat. A dedikált és alacsony prioritású csomópontok aktuális és megcélzott számával, valamint a művelet kezdési és befejezési időpontjával kapcsolatos információkat tartalmaz:
+Az alábbi példa egy `PoolResizeCompleteEvent` naplófájlban lévő bejegyzésre mutat `PT1H.json` . A dedikált és alacsony prioritású csomópontok aktuális és megcélzott számával, valamint a művelet kezdési és befejezési időpontjával kapcsolatos információkat tartalmaz:
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
@@ -175,7 +175,7 @@ A Batch szolgáltatás jelenleg a következő szolgáltatás-naplózási esemén
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * További információ a [Batch-megoldások figyeléséről](monitoring-overview.md).

@@ -1,14 +1,14 @@
 ---
 title: Azure-fájlmegosztás Azure Batch készletekhez
 description: Azure Files-megosztás csatlakoztatása a számítási csomópontokból egy Linux-vagy Windows-készletben a Azure Batchban.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115448"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723493"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata batch-készlettel
 
@@ -39,8 +39,8 @@ A Batch-ben minden alkalommal csatlakoztatni kell a megosztást, amikor egy fela
 
 Például adjon meg egy `net use` parancsot a fájlmegosztás csatlakoztatásához az egyes feladatok parancssorának részeként. A fájlmegosztás csatlakoztatásához a következő hitelesítő adatok szükségesek:
 
-* **Felhasználónév**: Azure\\\<-storageaccountname\>, például Azure\\*mystorageaccountname*
-* **Password**: \<StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Felhasználónév**: Azure \\ \< -storageaccountname \> , például Azure \\ *mystorageaccountname*
+* **Password**: \< StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
 A következő parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* az *S:* meghajtóként:
 
@@ -59,7 +59,7 @@ A csatlakoztatási művelet leegyszerűsítése érdekében opcionálisan megőr
 
    ```
 
-2. Csatlakoztassa a megosztást az egyes csomópontokon az egyes feladatok részeként a használatával `net use`. Például a következő feladat parancssora az *S:* meghajtóként csatlakoztatja a fájlmegosztást. Ezt egy olyan parancs vagy parancsfájl követheti, amely hivatkozik a megosztásra. A gyorsítótárazott hitelesítő adatok a hívásakor `net use`használatosak. Ez a lépés azt feltételezi, hogy ugyanazt a felhasználói identitást használja, mint a készlet indítási tevékenységében használt feladatok esetében, ami nem felel meg az összes forgatókönyvnek.
+2. Csatlakoztassa a megosztást az egyes csomópontokon az egyes feladatok részeként a használatával `net use` . Például a következő feladat parancssora az *S:* meghajtóként csatlakoztatja a fájlmegosztást. Ezt egy olyan parancs vagy parancsfájl követheti, amely hivatkozik a megosztásra. A gyorsítótárazott hitelesítő adatok a hívásakor használatosak `net use` . Ez a lépés azt feltételezi, hogy ugyanazt a felhasználói identitást használja, mint a készlet indítási tevékenységében használt feladatok esetében, ami nem felel meg az összes forgatókönyvnek.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
@@ -90,7 +90,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-A hitelesítő adatok tárolása után a feladat parancssorával csatlakoztassa a megosztást, és hivatkozzon a megosztásra az olvasási vagy írási műveletekben. Alapszintű példaként az alábbi kódrészletben szereplő feladat parancssora a `dir` parancsot használja a fájlmegosztás fájljainak listázásához. Győződjön meg arról, hogy az egyes feladatok feladatait ugyanazzal a [felhasználói identitással](batch-user-accounts.md) futtatja, amelyet az indítási feladat a készletben való futtatásához használt. 
+A hitelesítő adatok tárolása után a feladat parancssorával csatlakoztassa a megosztást, és hivatkozzon a megosztásra az olvasási vagy írási műveletekben. Alapszintű példaként az alábbi kódrészletben szereplő feladat parancssora a parancsot használja a `dir` fájlmegosztás fájljainak listázásához. Győződjön meg arról, hogy az egyes feladatok feladatait ugyanazzal a [felhasználói identitással](batch-user-accounts.md) futtatja, amelyet az indítási feladat a készletben való futtatásához használt. 
 
 ```csharp
 ...
@@ -108,7 +108,7 @@ tasks.Add(task);
 
 Az Azure-fájlmegosztás Linux-disztribúciókban a [CIFS kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható. Az alábbi példa bemutatja, hogyan csatlakoztathat fájlmegosztást az Ubuntu 16,04 LTS számítási csomópontok készletén. Ha más Linux-disztribúciót használ, az általános lépések hasonlóak, de az elosztáshoz megfelelő csomagkezelő használható. A részleteket és a további példákat lásd: [Azure Files használata Linux rendszeren](../storage/files/storage-how-to-use-files-linux.md).
 
-Először a rendszergazda felhasználói identitás alatt telepítse a `cifs-utils` csomagot, és hozza létre a csatlakoztatási pontot (például */mnt/MyAzureFileShare*) a helyi fájlrendszerben. A csatlakoztatási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez az `/mnt` általános egyezmény a mappában való létrehozásához. Ügyeljen arra, hogy ne hozzon létre csatlakoztatási `/mnt` pontot közvetlenül az (Ubuntu `/mnt/resource` rendszeren) vagy (más disztribúción).
+Először a rendszergazda felhasználói identitás alatt telepítse a `cifs-utils` csomagot, és hozza létre a csatlakoztatási pontot (például */mnt/MyAzureFileShare*) a helyi fájlrendszerben. A csatlakoztatási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez az általános egyezmény a mappában való létrehozásához `/mnt` . Ügyeljen arra, hogy ne hozzon létre csatlakoztatási pontot közvetlenül az `/mnt` (Ubuntu rendszeren) vagy `/mnt/resource` (más disztribúción).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
@@ -116,8 +116,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Ezután futtassa a `mount` parancsot a fájlmegosztás csatlakoztatásához, és adja meg a következő hitelesítő adatokat:
 
-* **Felhasználónév**: \<storageaccountname\>, például *mystorageaccountname*
-* **Password**: \<StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Felhasználónév**: \< storageaccountname \> , például *mystorageaccountname*
+* **Password**: \< StorageAccountKeyWhichEnds in = =>, például *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Az alábbi parancs egy fájlmegosztási *myfileshare* csatlakoztat a Storage-fiók *mystorageaccountname* a következő helyen: */mnt/MyAzureFileShare*: 
 
@@ -158,7 +158,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-A megosztás csatlakoztatása és a feladat definiálása után használja a megosztást a feladat parancssorában. A következő alapszintű parancs `ls` például a fájlmegosztás fájljainak listázására használható.
+A megosztás csatlakoztatása és a feladat definiálása után használja a megosztást a feladat parancssorában. A következő alapszintű parancs például a `ls` fájlmegosztás fájljainak listázására használható.
 
 ```python
 ...
@@ -170,7 +170,7 @@ batch_service_client.task.add(job_id, task)
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch-adatok olvasására és írására vonatkozó egyéb lehetőségekért lásd a [Batch funkcióinak áttekintése](batch-api-basics.md) és a feladatok [és tevékenységek kimenetének](batch-task-output.md)megőrzése című témakört.
 

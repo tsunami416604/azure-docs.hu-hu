@@ -1,15 +1,15 @@
 ---
-title: Linux futtatása virtuális gépek számítási csomópontjain – Azure Batch | Microsoft Docs
+title: Linux futtatása virtuális gépek számítási csomópontjain
 description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a Azure Batch Linux rendszerű virtuális gépek készletén.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31e7a9558590ee3c6943e7a50c67c93f713908c7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cd8a39556fb0aec0ddbf6c8e639281d7329228a4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993825"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726604"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -33,9 +33,9 @@ A Batch szolgáltatás [virtuálisgép-méretezési csoportokat](../virtual-mach
 
 A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adnia a virtuális gép rendszerképének tulajdonságait. A virtuálisgép-rendszerkép hivatkozásának létrehozásakor a következő tulajdonságokat kell megadnia:
 
-| **Képhivatkozás tulajdonságai** | **Például** |
+| **Képhivatkozás tulajdonságai** | **Példa** |
 | --- | --- |
-| Közzétevő |Canonical |
+| Publisher |Canonical |
 | Ajánlat |UbuntuServer |
 | SKU |18,04 – LTS |
 | Verzió |legújabb |
@@ -280,7 +280,7 @@ Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológi�
 
 Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [Python-kód][github_samples_py] olyan parancsfájlokat tartalmaz, amelyek bemutatják, hogyan hajtható végre az általános batch-műveletek, például a készlet, a feladat és a feladat létrehozása. A Python-mintákhoz tartozó [readme][github_py_readme] tartalmazza a szükséges csomagok telepítésének részleteit.
 

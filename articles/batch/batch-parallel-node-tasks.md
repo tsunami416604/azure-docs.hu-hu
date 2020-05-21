@@ -1,15 +1,15 @@
 ---
 title: Feladatok párhuzamos futtatása a számítási erőforrások optimalizálásához
 description: A hatékonyság és az alacsonyabb költségek növelése kevesebb számítási csomópont használatával és egyidejű feladatok futtatása egy Azure Batch készlet minden csomópontján
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 180294e7da95392e5c6c8055e53cea1ad3b4c7a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d38076396ea89eed9e1ef0c2e9ba14cddfd7cc6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116757"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724190"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Feladatok futtatása párhuzamosan a Batch számítási csomópontok használatának maximalizálása érdekében 
 
@@ -23,17 +23,17 @@ Habár egyes forgatókönyvek kihasználják az összes csomópont erőforrásá
 * Helyszíni **számítási fürt replikálása**, például amikor először helyez át egy számítási környezetet az Azure-ba. Ha a jelenlegi helyszíni megoldás több feladatot hajt végre egy számítási csomóponton, akkor a csomópontok maximális számát növelheti a konfiguráció alaposabb tükrözéséhez.
 
 ## <a name="example-scenario"></a>Példaforgatókönyv
-Példa a párhuzamos feladatok végrehajtásának előnyeinek szemléltetésére: tegyük fel, hogy a feladathoz szükséges CPU-és memória-követelmények olyanok, mint a [szabványos\_D1](../cloud-services/cloud-services-sizes-specs.md) -csomópontok. Azonban ahhoz, hogy a feladatot a szükséges időn belül be lehessen fejezni, a csomópontok 1 000-ra van szükség.
+Példa a párhuzamos feladatok végrehajtásának előnyeinek szemléltetésére: tegyük fel, hogy a feladathoz szükséges CPU-és memória-követelmények olyanok, mint a [szabványos \_ D1](../cloud-services/cloud-services-sizes-specs.md) -csomópontok. Azonban ahhoz, hogy a feladatot a szükséges időn belül be lehessen fejezni, a csomópontok 1 000-ra van szükség.
 
-A standard\_D1-es és 1 CPU-csomópontok használata helyett olyan [szabványos\_D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontokat használhat, amelyekben 16 mag van, és lehetővé teszi a párhuzamos feladatok végrehajtását. Ezért *16 alkalommal kevesebb csomópontot* lehet használni – a 1 000 csomópontok helyett csak 63 szükséges. Emellett, ha nagyméretű alkalmazásfájlok vagy hivatkozási adatok szükségesek az egyes csomópontokhoz, a feladatok időtartama és a hatékonyság ismét javul, mivel az adatok csak 63 csomópontokra másolódnak.
+A standard \_ D1-es és 1 CPU-csomópontok használata helyett olyan [szabványos \_ D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontokat használhat, amelyekben 16 mag van, és lehetővé teszi a párhuzamos feladatok végrehajtását. Ezért *16 alkalommal kevesebb csomópontot* lehet használni – a 1 000 csomópontok helyett csak 63 szükséges. Emellett, ha nagyméretű alkalmazásfájlok vagy hivatkozási adatok szükségesek az egyes csomópontokhoz, a feladatok időtartama és a hatékonyság ismét javul, mivel az adatok csak 63 csomópontokra másolódnak.
 
 ## <a name="enable-parallel-task-execution"></a>Párhuzamos feladatok végrehajtásának engedélyezése
 A számítási csomópontokat a készlet szintjén konfigurálhatja párhuzamos feladatok végrehajtásához. A Batch .NET-kódtár használatával készlet létrehozásakor állítsa be a [CloudPool. MaxTasksPerComputeNode][maxtasks_net] tulajdonságot. Ha a Batch-REST API használja, állítsa a [maxTasksPerNode][rest_addpool] elemet a kérelem törzsében a készlet létrehozása során.
 
-Azure Batch lehetővé teszi, hogy a csomópontok száma legfeljebb (4x) legyen a fő csomópontok számánál. Ha például a készlet a "Large" (négy mag) méretű csomópontokkal van konfigurálva, akkor `maxTasksPerNode` előfordulhat, hogy 16 értékre van állítva. Függetlenül attól, hogy a csomópont hány magot tartalmaz, a csomópontok száma legfeljebb 256 feladat lehet. A csomópontok méretével kapcsolatos további részletekért lásd: [Cloud Services méretei](../cloud-services/cloud-services-sizes-specs.md). A szolgáltatási korlátokkal kapcsolatos további információkért lásd: [kvóták és korlátozások a Azure batch szolgáltatáshoz](batch-quota-limit.md).
+Azure Batch lehetővé teszi, hogy a csomópontok száma legfeljebb (4x) legyen a fő csomópontok számánál. Ha például a készlet a "Large" (négy mag) méretű csomópontokkal van konfigurálva, akkor előfordulhat, `maxTasksPerNode` hogy 16 értékre van állítva. Függetlenül attól, hogy a csomópont hány magot tartalmaz, a csomópontok száma legfeljebb 256 feladat lehet. A csomópontok méretével kapcsolatos további részletekért lásd: [Cloud Services méretei](../cloud-services/cloud-services-sizes-specs.md). A szolgáltatási korlátokkal kapcsolatos további információkért lásd: [kvóták és korlátozások a Azure batch szolgáltatáshoz](batch-quota-limit.md).
 
 > [!TIP]
-> Ügyeljen arra, hogy a készlethez `maxTasksPerNode` tartozó [autoskálázási képlet][enable_autoscaling] létrehozásakor vegye figyelembe az értéket. Előfordulhat például, hogy egy olyan képletet `$RunningTasks` , amely kiértékeli, a csomópontok számának növekedése jelentősen befolyásolhatja. További információ: [számítási csomópontok automatikus méretezése egy Azure batch-készletben](batch-automatic-scaling.md) .
+> Ügyeljen arra, hogy a `maxTasksPerNode` készlethez tartozó [autoskálázási képlet][enable_autoscaling] létrehozásakor vegye figyelembe az értéket. Előfordulhat például, hogy egy olyan képletet, amely kiértékeli, a `$RunningTasks` csomópontok számának növekedése jelentősen befolyásolhatja. További információ: [számítási csomópontok automatikus méretezése egy Azure batch-készletben](batch-automatic-scaling.md) .
 >
 >
 
@@ -42,7 +42,7 @@ Ha a készletben lévő számítási csomópontok egyszerre hajtják végre a fe
 
 A [CloudPool. TaskSchedulingPolicy][task_schedule] tulajdonság használatával megadhatja, hogy a tevékenységek egyenletesen legyenek hozzárendelve a készlet összes csomópontján ("terjesztés"). Azt is megadhatja, hogy a lehető legtöbb feladat legyen hozzárendelve az egyes csomópontokhoz, mielőtt a feladatok hozzá vannak rendelve a készlet egy másik csomópontjára ("csomagolás").
 
-Példa erre a funkcióra, vegye figyelembe a [standard\_D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontok készletét (a fenti példában), amely [CloudPool. MaxTasksPerComputeNode][maxtasks_net] értékkel van konfigurálva. 16. Ha a [CloudPool. TaskSchedulingPolicy][task_schedule] konfigurálva van egy [ComputeNodeFillType][fill_type] , az maximalizálja az egyes csomópontok 16 maggal való *használatát, és*lehetővé teszi az automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok kivágását a készletből (a csomópontok nélkül hozzárendelt feladatokat). Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
+Példa erre a funkcióra, vegye figyelembe a [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontok készletét (a fenti példában), amely [CloudPool. MaxTasksPerComputeNode][maxtasks_net] értékkel van konfigurálva. 16. Ha a [CloudPool. TaskSchedulingPolicy][task_schedule] konfigurálva van egy [ComputeNodeFillType][fill_type] , az maximalizálja az egyes csomópontok 16 maggal való *használatát, és*lehetővé teszi az automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok kivágását a készletből (a csomópontok nélkül hozzárendelt feladatokat). Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
 
 ## <a name="batch-net-example"></a>Batch .NET-példa
 Ez a [Batch .net][api_net] API-kódrészlet egy olyan készlet létrehozására vonatkozó kérést mutat be, amely egy csomóponton legfeljebb négy feladattal rendelkező négy csomópontot tartalmaz. Meghatározza azt a feladatütemezés-házirendet, amely minden egyes csomópontot kitölti a feladatok a készlet egy másik csomópontjára való hozzárendelését megelőzően. A készleteknek a Batch .NET API használatával történő hozzáadásával kapcsolatos további információkért lásd: [BatchClient. PoolOperations. CreatePool][poolcreate_net].
@@ -79,7 +79,7 @@ Ez a [Batch Rest][api_rest] API-kódrészlet egy olyan készlet létrehozására
 ```
 
 > [!NOTE]
-> Az Element és a `maxTasksPerNode` [MaxTasksPerComputeNode][maxtasks_net] tulajdonság csak a készlet létrehozási idején állítható be. A készlet már létrejötte után nem módosítható.
+> Az `maxTasksPerNode` Element és a [MaxTasksPerComputeNode][maxtasks_net] tulajdonság csak a készlet létrehozási idején állítható be. A készlet már létrejötte után nem módosítható.
 >
 >
 
@@ -113,7 +113,7 @@ A minta második futtatása a feladatok időtartamának jelentős csökkenését
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 ### <a name="batch-explorer-heat-map"></a>Batch Explorer Heat Térkép
 A [Batch Explorer][batch_labs] egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Batch Explorer tartalmaz egy *hő-hozzárendelési* funkciót, amely vizualizációt biztosít a feladatok végrehajtásához. A [ParallelTasks][parallel_tasks_sample] -minta alkalmazás végrehajtásakor a Heat Map funkcióval egyszerűen megjelenítheti a párhuzamos feladatok végrehajtását az egyes csomópontokon.
 

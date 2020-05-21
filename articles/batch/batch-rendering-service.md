@@ -1,16 +1,16 @@
 ---
-title: Megjelenítés áttekintése – Azure Batch
+title: Renderelés áttekintése
 description: Az Azure használatának bemutatása és a Azure Batch renderelési képességeinek áttekintése
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 515fc92aa14c0a86746d0a97d2bc601fab553aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115703"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726434"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
@@ -98,6 +98,6 @@ Tekintse meg a következő bevezető oktatóanyagokat a Azure Batch megjelenít�
 * [A Batch Explorer használata Turmixgépi jelenet megjelenítéséhez](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
 * [Az Autodesk 3ds Max-jelenet megjelenítése a Batch CLI használatával](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Határozza meg az Azure Marketplace virtuálisgép-lemezképekben található renderelési alkalmazások és verziók listáját [ebben a cikkben](https://docs.microsoft.com/azure/batch/batch-rendering-applications).

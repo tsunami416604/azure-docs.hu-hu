@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/18/2020
+ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857864"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725465"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace metering service API-k
 
@@ -34,7 +34,10 @@ A használati esemény API lehetővé teszi használati események kibocsátás�
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-| `authorization`   | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozástól kapott jogkivonat előtagját. |
+| `authorization`   | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor a `Bearer` hivatkozott hivatkozástól kapott jogkivonat előtagját. |
+
+>[!Note]
+>Az Azure Application Managed apps-csomagok esetében a a `resourceId` `resourceUsageId` `billingDetails` felügyelt alkalmazás metaadatainak objektuma alatt található.  Az [Azure által felügyelt identitások jogkivonat használatával](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)a beolvasáshoz példaként használható parancsfájl található.  SaaS-ajánlatok esetén a a `resourceId` SaaS-előfizetés azonosítója.  Az SaaS-előfizetésekkel kapcsolatos további információkért lásd: [előfizetések listázása](./pc-saas-fulfillment-api-v2.md#list-subscriptions).
 
 *Kérelem*
 
@@ -95,7 +98,7 @@ Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyisé
 ```
 
 Kód: 409<br>
-Ütközés, ha a használati erőforrás-azonosító használati hívását, valamint a már létező érvényes használati adatokat fogadjuk. A válasz tartalmazni `additionalInfo` fog egy mezőt, amely az elfogadott üzenettel kapcsolatos információkat tartalmaz.
+Ütközés, ha a használati erőforrás-azonosító használati hívását, valamint a már létező érvényes használati adatokat fogadjuk. A válasz tartalmazni fog `additionalInfo` egy mezőt, amely az elfogadott üzenettel kapcsolatos információkat tartalmaz.
 
 ```json
 {
@@ -134,7 +137,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 | ------------------ | ------ |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-| `authorization`      | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozástól kapott jogkivonat előtagját.  |
+| `authorization`      | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor a `Bearer` hivatkozott hivatkozástól kapott jogkivonat előtagját.  |
 
 *Kérelem*
 ```json
@@ -192,7 +195,7 @@ OK
 }
 ```
 
-Az API- `BatchUsageEvent` válaszban hivatkozott állapotkód leírása:
+Az API-válaszban hivatkozott állapotkód leírása `BatchUsageEvent` :
 
 | Állapotkód  | Description |
 | ---------- | -------------------- |
@@ -233,6 +236,6 @@ A felhasználó jogosulatlanul teszi ezt a hívást
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Saas- [mért számlázás](./saas-metered-billing.md).

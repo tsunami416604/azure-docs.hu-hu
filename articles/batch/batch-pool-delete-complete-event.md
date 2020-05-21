@@ -1,15 +1,14 @@
 ---
 title: Azure Batch készlet törlése kész esemény
 description: A Batch-készlet törlésének befejezési eseménye. Ez az esemény akkor van kibocsátva, ha a készlet törlési művelete befejeződött.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e009b55869b7ba8c81190837086557743d53219
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115941"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724054"
 ---
 # <a name="pool-delete-complete-event"></a>Készlet törlése kész esemény
 

@@ -10,40 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 68947895891b4875ef4c57355f1236afdb8c2c7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204820"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715647"
 ---
 # <a name="learn-the-basics-of-spx"></a>Az SPX alapjai
 
 Ebben a cikkben megismerheti az SPX alapszintű használati mintáit, amelyekkel a beszédfelismerési szolgáltatás a kód írása nélkül használható. A beszédfelismerési szolgáltatás fő funkcióit gyorsan kipróbálhatja fejlesztési környezetek létrehozása vagy kód írása nélkül, így ellenőrizheti, hogy a használati esetek megfelelően teljesíthetők-e. Az SPX az éles üzemben való használatra kész, és az egyszerű munkafolyamatok automatizálására használható a Speech szolgáltatásban, a `.bat` vagy a rendszerhéj parancsfájljainak használatával.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Az egyetlen előfeltétel egy Azure Speech-előfizetés. Ha még nem rendelkezik ilyennel, tekintse meg az új előfizetés létrehozásával kapcsolatos [útmutatót](get-started.md#new-resource) .
-
-## <a name="download-and-install"></a>Letöltés és telepítés
-
-Az SPX a Windows és a Linux rendszeren érhető el. Először töltse le a [zip-archívumot](https://aka.ms/speech/spx-zips.zip), majd csomagolja ki. Az SPX a .NET Core vagy a .NET Framework futtatókörnyezetet igényli, és a platform a következő verziókat támogatja:
-
-* Windows: [.NET-keretrendszer 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471), [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* Linux: [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-
-A futtatókörnyezet telepítése után nyissa meg a `spx-zips` letöltésből kinyert gyökérkönyvtárat, és bontsa ki a szükséges alkönyvtárat ( `spx-net471` például). A parancssorban módosítsa a könyvtárat erre a helyre, majd futtassa `spx` az alkalmazást az alkalmazás elindításához.
-
-## <a name="create-subscription-config"></a>Előfizetés konfigurációjának létrehozása
-
-Az SPX használatának megkezdéséhez először meg kell adnia a beszédfelismerési előfizetési kulcs és a régió információit. A régió azonosítójának megkereséséhez tekintse meg a [régiók támogatása](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) lapot. Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
-
-```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
-```
-
-Az előfizetés-hitelesítés mostantól a jövőbeli SPX-kérelmekhez van tárolva. Ha el kell távolítania a tárolt értékek valamelyikét, futtassa a vagy a parancsot `spx config @region --clear` `spx config @key --clear` .
+[!INCLUDE [](includes/spx-setup.md)]
 
 ## <a name="basic-usage"></a>Alapvető használat
 
@@ -130,6 +108,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fejezze be a [beszédfelismerési](./quickstarts/speech-to-text-from-microphone.md) vagy [beszédfelismerési](./quickstarts/text-to-speech.md) útmutatókat az SDK használatával.

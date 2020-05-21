@@ -1,14 +1,14 @@
 ---
 title: Azure Batch feladat indítása esemény
 description: A Batch-feladat indítási eseményére vonatkozó információk. Ezt az eseményt akkor bocsátja ki a rendszer, ha az ütemező egy számítási csomóponton indítja el a feladatot.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116400"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725788"
 ---
 # <a name="task-start-event"></a>Tevékenység indítása esemény
 

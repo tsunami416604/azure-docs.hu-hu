@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7979d1288cd99f8e28a421663383a930e0346357
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8fe53b7a27c922462f9134bc78ff648aca3aca62
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199605"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715545"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -867,7 +867,7 @@ Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas 
 
 ### <a name="managed-identity-authentication"></a>Felügyelt identitás hitelesítése
 
-Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) lehetőség elérhető, a logikai alkalmazás a rendszer által hozzárendelt identitást vagy egy *manuálisan létrehozott* , felhasználó által hozzárendelt identitást is használhat a más Azure Active Directory (Azure ad) bérlők erőforrásaihoz való hozzáférés hitelesítéséhez bejelentkezés nélkül. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell megadnia vagy elforgatni a titkokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) lehetőség elérhető, a logikai alkalmazás a rendszer által hozzárendelt identitást vagy egy *manuálisan létrehozott* , felhasználó által hozzárendelt identitást használhat a Azure Active Directory (Azure ad) által védett más erőforrásokhoz való hozzáférés hitelesítése nélkül. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok védelmében, mivel nem kell megadnia vagy elforgatni a titkokat. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Mielőtt a logikai alkalmazás felügyelt identitást tud használni, kövesse az [Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md)című témakör lépéseit. Ezekkel a lépésekkel engedélyezheti a felügyelt identitást a logikai alkalmazáson, és beállíthatja az identitás hozzáférését a cél Azure-erőforráshoz.
 
@@ -900,7 +900,7 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Üzembe helyezés automatizálása Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
 * [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps-log-analytics.md)  

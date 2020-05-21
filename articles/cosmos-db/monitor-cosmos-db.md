@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: eef6ece115afc41fd30d77747eb3e368cf95719c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: fcdc80e73d11bbc6d94e921548d346ee436b69ac
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780181"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715681"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Ha még nem ismeri az Azure-szolgáltatások figyelését, kezdje az Azure- [er�
 
 Az alábbi részekben a cikk a Azure Cosmos DB gyűjtött adatok leírásával, valamint az adatok gyűjtésének konfigurálására és az Azure-eszközökkel történő elemzésére szolgáló példákat tartalmaz.
 
-## <a name="azure-monitor-for-cosmos-db-preview"></a>Cosmos DB Azure Monitor (előzetes verzió)
+## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor
 
 A Azure Cosmos DB Azure Monitor a [Azure monitor munkafüzetek szolgáltatásán](../azure-monitor/app/usage-workbooks.md) alapul, és ugyanazokat a figyelési adatokat használja, amelyeket az alábbi szakaszokban ismertetett Cosmos DBhoz gyűjtöttek be. A Azure Monitor segítségével megtekintheti az összes Azure Cosmos DB-erőforrás teljes teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív felhasználói élményben, és a Azure Monitor egyéb funkcióit kihasználhatja részletes elemzés és riasztás céljából. További információért lásd a [Azure Cosmos DB Azure monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md) című cikket.
 
@@ -90,9 +90,9 @@ A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítség
 ## <a name="analyzing-log-data"></a>Naplózási adatok elemzése
 Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek. A Azure Cosmos DB az alábbi táblázatokban tárolja az adattárakat.
 
-| Tábla | Leírás |
+| Táblázat | Leírás |
 |:---|:---|
-| AzureDiagnostics | Az erőforrás-naplók tárolására több szolgáltatás által használt közös táblázat. A Azure Cosmos DB található erőforrás-naplók azonosíthatók `MICROSOFT.DOCUMENTDB`a következővel:.   |
+| AzureDiagnostics | Az erőforrás-naplók tárolására több szolgáltatás által használt közös táblázat. A Azure Cosmos DB található erőforrás-naplók azonosíthatók a következővel: `MICROSOFT.DOCUMENTDB` .   |
 | AzureActivity    | A tevékenység naplójában lévő összes rekordot tároló általános tábla. 
 
 
@@ -148,7 +148,7 @@ Az egyes metrikák beolvasására irányuló lekérdezések a következő formá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Cosmos DB által létrehozott naplók és metrikák hivatkozását a [Azure Cosmos db monitorozási adatok referenciája](monitor-cosmos-db-reference.md) tartalmazza.
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .

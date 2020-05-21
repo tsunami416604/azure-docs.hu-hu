@@ -1,16 +1,16 @@
 ---
-title: Alkalmazások és adatok másolása készletcsomópontokba
+title: Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 description: Ismerje meg, hogyan másolhat alkalmazásokat és információkat a készlet csomópontjaira.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115584"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726825"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Alkalmazások és adatok másolása készletcsomópontokba
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Alkalmazások és az alkalmazások másolása a készlet csomópontjaira
 
 Azure Batch számos módszert támogat az adatok és alkalmazások számítási csomópontokra történő beolvasására, hogy az adatok és alkalmazások elérhetők legyenek a feladatok számára. Előfordulhat, hogy az adatok és alkalmazások futtatásához a teljes feladatot futtatni kell, ezért minden csomóponton telepítve kell lennie. Néhány esetben csak egy adott feladathoz lehet szükséges, vagy telepíteni kell a feladathoz, de nem kell minden csomóponton lennie. A Batch eszközöket tartalmaz az egyes forgatókönyvekhez.
 

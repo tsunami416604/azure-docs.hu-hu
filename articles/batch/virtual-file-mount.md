@@ -1,15 +1,14 @@
 ---
-title: Virtuális fájlrendszer csatlakoztatása egy készlethez – Azure Batch | Microsoft Docs
+title: Virtuális fájlrendszer csatlakoztatása egy készlethez
 description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert egy batch-készlethez.
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: labrenne
-ms.openlocfilehash: 703b65f0a1571659d7be479776dd8fdf02d86731
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9ea7d9ecd65ab55c2420015f82e863e45cbd5d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117029"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722660"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
@@ -32,17 +31,17 @@ Vegyünk például egy olyan forgatókönyvet, amelynek több feladata is van, a
 
 Ha a készletben egy virtuális fájlrendszert csatlakoztat, a fájlrendszer elérhetővé válik a készlet összes számítási csomópontja számára. A fájlrendszer akkor van konfigurálva, amikor egy számítási csomópont egy készlethez csatlakozik, vagy amikor a csomópont újra van indítva vagy rendszerképbe van állítva.
 
-Ha fájlrendszert szeretne csatlakoztatni egy készlethez, hozzon létre egy `MountConfiguration` objektumot. Válassza ki a virtuális fájlrendszerhez `AzureBlobFileSystemConfiguration`illő objektumot: `AzureFileShareConfiguration` `NfsMountConfiguration`,,, vagy. `CifsMountConfiguration`
+Ha fájlrendszert szeretne csatlakoztatni egy készlethez, hozzon létre egy `MountConfiguration` objektumot. Válassza ki a virtuális fájlrendszerhez illő objektumot:,,, `AzureBlobFileSystemConfiguration` `AzureFileShareConfiguration` `NfsMountConfiguration` vagy `CifsMountConfiguration` .
 
 Az összes csatlakoztatási konfigurációs objektumnak a következő alapparaméterekre van szüksége. Néhány csatlakoztatási konfigurációhoz a használt fájlrendszerhez tartozó paraméterek tartoznak, amelyeket a példákban talál részletesebben.
 
 - **Fiók neve vagy forrása**: virtuális fájlmegosztás csatlakoztatásához szüksége lesz a Storage-fiók vagy a forrásának nevére.
-- **Relatív csatlakoztatási útvonal vagy forrás**: a számítási csomóponthoz csatlakoztatott fájlrendszer helye, a csomóponton keresztül `fsmounts` `AZ_BATCH_NODE_MOUNTS_DIR`elérhető standard könyvtárhoz viszonyítva. A pontos hely a csomóponton használt operációs rendszertől függően változhat. Például egy Ubuntu-csomópont fizikai helye van leképezve `mnt\batch\tasks\fsmounts`, és egy CentOS csomóponton, amelyhez hozzá van rendelve. `mnt\resources\batch\tasks\fsmounts`
+- **Relatív csatlakoztatási útvonal vagy forrás**: a számítási csomóponthoz csatlakoztatott fájlrendszer helye, a `fsmounts` csomóponton keresztül elérhető standard könyvtárhoz viszonyítva `AZ_BATCH_NODE_MOUNTS_DIR` . A pontos hely a csomóponton használt operációs rendszertől függően változhat. Például egy Ubuntu-csomópont fizikai helye van leképezve `mnt\batch\tasks\fsmounts` , és egy CentOS csomóponton, amelyhez hozzá van rendelve `mnt\resources\batch\tasks\fsmounts` .
 - **Csatlakoztatási beállítások vagy blobfuse-beállítások**: ezek a beállítások a fájlrendszer csatlakoztatásának konkrét paramétereit írják le.
 
 Az `MountConfiguration` objektum létrehozása után rendelje hozzá az objektumot a `MountConfigurationList` tulajdonsághoz, amikor létrehozza a készletet. A fájlrendszer akkor van csatlakoztatva, amikor egy csomópont egy készlethez csatlakozik, vagy amikor a csomópont újra lett indítva vagy alaphelyzetbe áll.
 
-Ha a fájlrendszer csatlakoztatva van, a rendszer létrehoz egy `AZ_BATCH_NODE_MOUNTS_DIR` környezeti változót, amely a csatlakoztatott fájlrendszerek, valamint a naplófájlok helyére mutat, amelyek a hibaelhárításhoz és a hibakereséshez hasznosak. A naplófájlok részletes ismertetését a [csatlakoztatási hibák diagnosztizálása](#diagnose-mount-errors) című szakaszban találja.  
+Ha a fájlrendszer csatlakoztatva van, a rendszer létrehoz egy környezeti változót, amely a csatlakoztatott fájlrendszerek, valamint a `AZ_BATCH_NODE_MOUNTS_DIR` naplófájlok helyére mutat, amelyek a hibaelhárításhoz és a hibakereséshez hasznosak. A naplófájlok részletes ismertetését a [csatlakoztatási hibák diagnosztizálása](#diagnose-mount-errors) című szakaszban találja.  
 
 > [!IMPORTANT]
 > A készleten lévő csatlakoztatott fájlrendszerek maximális száma 10. A részleteket és egyéb korlátokat a [Batch szolgáltatás kvótái és korlátai](batch-quota-limit.md#other-limits) című részben tekintheti meg.
@@ -78,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure-Blob fájlrendszer
 
-Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob `AccountKey` -fájlrendszer csatlakoztatásához a vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md)vagy [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md). A blobfuse használatával kapcsolatos további információkért tekintse meg a blobfuse- [hibákkal kapcsolatos gyakori kérdések](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)című témakört. A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként**a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
+Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob-fájlrendszer csatlakoztatásához a `AccountKey` vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md)vagy [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md). A blobfuse használatával kapcsolatos további információkért tekintse meg a blobfuse- [hibákkal kapcsolatos gyakori kérdések](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)című témakört. A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként**a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
 
 A hibaelhárítási útmutatón kívül a blobfuse-tárház GitHub-problémái is hasznosak lehetnek az aktuális blobfuse problémák és megoldások kereséséhez. További információ: blobfuse- [problémák](https://github.com/Azure/azure-storage-fuse/issues).
 
@@ -156,11 +155,11 @@ new PoolAddParameter
 
 Ha a csatlakoztatási konfiguráció meghiúsul, a készlet számítási csomópontja sikertelen lesz, és a csomópont állapota használhatatlanná válik. A csatlakoztatási konfigurációs hibák diagnosztizálásához tekintse [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) meg a tulajdonságot a hibával kapcsolatos részletekért.
 
-A naplófájlok hibakereséshez való beszerzéséhez [OutputFiles](batch-task-output-files.md) használja a `*.log` OutputFiles a fájlok feltöltéséhez. A `*.log` fájlok a `AZ_BATCH_NODE_MOUNTS_DIR` helyhez tartozó fájlrendszer csatlakoztatásával kapcsolatos információkat tartalmaznak. A csatlakoztatási naplófájlok formátuma `<type>-<mountDirOrDrive>.log` a következő: minden egyes csatlakoztatáshoz. Például `cifs` egy nevű `test` csatlakoztatási könyvtárhoz a következő nevű csatlakozási naplófájl lesz:. `cifs-test.log`
+A naplófájlok hibakereséshez való beszerzéséhez használja a [OutputFiles](batch-task-output-files.md) a `*.log` fájlok feltöltéséhez. A `*.log` fájlok a helyhez tartozó fájlrendszer csatlakoztatásával kapcsolatos információkat tartalmaznak `AZ_BATCH_NODE_MOUNTS_DIR` . A csatlakoztatási naplófájlok formátuma a `<type>-<mountDirOrDrive>.log` következő: minden egyes csatlakoztatáshoz. Például egy nevű csatlakoztatási `cifs` könyvtárhoz a következő `test` nevű csatlakozási naplófájl lesz: `cifs-test.log` .
 
 ## <a name="supported-skus"></a>Támogatott SKU-i
 
-| Közzétevő | Ajánlat | SKU | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
+| Publisher | Ajánlat | SKU | Azure Files megosztás | Blobfuse | NFS-csatlakoztatás | CIFS-csatlakoztatás |
 |---|---|---|---|---|---|---|
 | kötegelt | renderelés – centos73 | renderelési | :heavy_check_mark: <br>Megjegyzés: kompatibilis a CentOS 7,7-mel</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -176,7 +175,7 @@ A naplófájlok hibakereséshez való beszerzéséhez [OutputFiles](batch-task-o
 | Oracle | Oracle – Linux | 7.6 | x | x | x | x |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | x | x | x |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Files-megosztás Windows vagy Linux [rendszeren](../storage/files/storage-how-to-use-files-windows.md) való [Linux](../storage/files/storage-how-to-use-files-linux.md)csatlakoztatásáról.
 - Tudnivalók a [blobfuse](https://github.com/Azure/azure-storage-fuse) virtuális fájlrendszerek használatáról és csatlakoztatásáról.

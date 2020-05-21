@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77145c691f5b2b6364de64e491aac3c84495d464
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69872488"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726128"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -31,7 +31,7 @@ Egy IoT Hub üzenet a következőkből áll:
 
 * Egy átlátszatlan bináris törzs.
 
-A tulajdonságnév és az értékek csak ASCII alfanumerikus karaktereket tartalmazhatnak, ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` és ha az eszközről a felhőbe irányuló üzeneteket a HTTPS protokoll használatával küldi el, vagy a felhőből az eszközre irányuló üzeneteket küld.
+A tulajdonságnév és az értékek csak ASCII alfanumerikus karaktereket tartalmazhatnak, és ``{'!', '#', '$', '%, '&', ''', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` Ha az eszközről a felhőbe irányuló üzeneteket a HTTPS protokoll használatával küldi el, vagy a felhőből az eszközre irányuló üzeneteket küld.
 
 Az eszközről a felhőbe irányuló üzenetküldés IoT Hub a következő jellemzőkkel rendelkezik:
 
@@ -51,9 +51,9 @@ További információ a különböző protokollok használatával elküldött ü
 
 | Tulajdonság | Leírás  |A felhasználó beállítható?|Kulcsszó a következőhöz: </br>útválasztási lekérdezés|
 | --- | --- | --- | --- |
-| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Igen | messageId |
+| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Igen | messageId |
 | iothub – enqueuedtime |Az [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) irányuló üzenet IoT hub általi fogadásának dátuma és időpontja. | Nem | enqueuedTime |
-| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a `{iot hub name}`következő lesz:. | Igen | userId |
+| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . | Igen | userId |
 | iothub--összekötő-eszköz-azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Tartalmazza az üzenetet küldő eszköz **deviceId** -számát. | Nem | connectionDeviceId |
 | iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
 | iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
@@ -63,13 +63,33 @@ További információ a különböző protokollok használatával elküldött ü
 
 | Tulajdonság | Leírás  |A felhasználó beállítható?|
 | --- | --- | --- |
-| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  |Igen|
+| üzenet-azonosító |A kérelem-válasz mintákhoz használt üzenet felhasználó által beállítható azonosítója. Format: kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karakterek + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Igen|
 | sorozatszám |Az egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (egyedi eszközönként). |Nem|
 | erre: |A [felhőből az eszközre irányuló](iot-hub-devguide-c2d-guidance.md) üzenetekben megadott célhely. |Nem|
 | abszolút – lejárat – idő |Az üzenetek lejáratának dátuma és időpontja. |Nem|   |
 | korrelációs azonosító |Egy válaszüzenet karakterlánc-tulajdonsága, amely általában tartalmazza a kérelem MessageId a kérelem-válasz mintákban. |Igen|
-| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a `{iot hub name}`következő lesz:. |Igen|
+| felhasználói azonosító |Az üzenetek eredetének meghatározására szolgáló azonosító. Ha IoT Hub hozza létre az üzeneteket, az értéke a következő lesz: `{iot hub name}` . |Igen|
 | iothub-ACK |Visszajelzési üzenet generátora. Ez a tulajdonság a felhőből az eszközre irányuló üzenetekben használatos, hogy az üzenetnek az eszköz általi felhasználásának eredményeképpen a visszajelzési üzenetek létrehozásához IoT Hub kérjenek. Lehetséges értékek: **nincs (alapértelmezett): nem** jön létre visszajelzési üzenet **, pozitív**: visszajelzési üzenet küldése, ha az üzenet elkészült, **negatív**: visszajelzési üzenet küldése, ha az üzenet lejárt (vagy elérte a maximális kézbesítési értéket) az eszköz befejezése nélkül, vagy **teljes**: pozitív és negatív. |Igen|
+
+### <a name="system-property-names"></a>Rendszertulajdonságok nevei
+
+A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek milyen végponton vannak átirányítva. Ezekről a nevekről az alábbi táblázatban talál további információt.
+
+
+|Rendszertulajdonság neve|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|Üzenet azonosítója|üzenet-azonosító|messageId|MessageId|üzenet-azonosító|
+|IOT hub várólistán lévő ideje|iothub – enqueuedtime|enqueuedTime|iothub – enqueuedtime|iothub – enqueuedtime|
+|A felhasználó azonosítója|felhasználói azonosító|userId|UserId (Felhasználóazonosító)|felhasználói azonosító|
+|Összekötő eszköz azonosítója|iothub--összekötő-eszköz-azonosító| connectionDeviceId|iothub--összekötő-eszköz-azonosító|iothub--összekötő-eszköz-azonosító|
+|Kapcsolatazonosító|iothub – összekapcsolási modul azonosítója|connectionModuleId|iothub – összekapcsolási modul azonosítója|iothub – összekapcsolási modul azonosítója|
+|A kapcsolatok hitelesítésének generálása azonosító|iothub – kapcsolatok – hitelesítés – generálási azonosító|connectionDeviceGenerationId| iothub – kapcsolatok – hitelesítés – generálási azonosító|iothub – kapcsolatok – hitelesítés – generálási azonosító|
+|Kapcsolatok hitelesítési módszere|iothub – kapcsolatok – hitelesítés – módszer|connectionAuthMethod|iothub – kapcsolatok – hitelesítés – módszer|iothub – kapcsolatok – hitelesítés – módszer|
+|contentType|Content-Type|contentType|ContentType|iothub – tartalomtípus|
+|contentEncoding|Content-Encoding|contentEncoding|ContentEncoding|iothub – tartalom kódolása|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime|     |iothub – enqueuedtime|
+|iothub – csatoló neve|iothub – csatoló neve|interfaceName|Iothub – csatoló neve|iothub – csatoló neve|
+|CorrelationId|korrelációs azonosító|correlationId|CorrelationId|korrelációs azonosító|
 
 ## <a name="message-size"></a>Üzenet mérete
 
@@ -101,7 +121,7 @@ A **iothub-kapcsolat-Auth-Method** tulajdonság JSON szerializált objektumot ta
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a IoT Hub üzenet méretének korlátairól: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
 

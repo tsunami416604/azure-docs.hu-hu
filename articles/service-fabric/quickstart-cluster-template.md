@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 60771d5a188df5dfeca3530a551a116c870e63f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149332"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722456"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Rövid útmutató: Service Fabric-fürt létrehozása Resource Manager-sablonnal
 
@@ -91,7 +91,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype)származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez lásd: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)származik. A cikk sablonja túl hosszú ahhoz, hogy megjelenjen itt. A sablon megtekintéséhez tekintse meg a [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) fájlt.
 
 Több Azure-erőforrás van definiálva a sablonban:
 
@@ -111,7 +111,7 @@ Nyissa meg a *azuredeploy. Parameters. JSON* fájlt, és szerkessze a paraméter
 * a **clusterName** megegyezik a *CertDNSName* megadott értékkel a fürt tanúsítványának létrehozásakor.
 * a **adminUserName** az alapértelmezett *Gen-Unique* tokentől eltérő érték.
 * a **adminPassword** értéke nem az alapértelmezett *Gen-Password* token
-* a **certificateThumbprint**, a **SourceVaultResourceId**és a **certificateUrlValue** minden üres karakterlánc`""`()
+* a **certificateThumbprint**, a **SourceVaultResourceId**és a **certificateUrlValue** minden üres karakterlánc ( `""` )
 
 Például:
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-Miután az üzembe helyezés befejeződött, keresse meg `managementEndpoint` a kimenetben található értéket, és nyissa meg a webböngészőben a következőt: a fürt [Service Fabric Explorerban](./service-fabric-visualizing-your-cluster.md)való megtekintéséhez.
+Miután az üzembe helyezés befejeződött, keresse meg a `managementEndpoint` kimenetben található értéket, és nyissa meg a webböngészőben a következőt: a fürt [Service Fabric Explorerban](./service-fabric-visualizing-your-cluster.md)való megtekintéséhez.
 
 ![Új fürtöt megjelenítő Service Fabric Explorer](./media/quickstart-cluster-template/service-fabric-explorer.png)
 
@@ -170,7 +170,7 @@ A Service Fabric Explorer végpontot a Service Explorer erőforrás paneljéről
 
 ![Service Fabric Explorer végpontot mutató Service Fabric erőforrás panel](./media/quickstart-cluster-template/service-fabric-explorer-endpoint-azure-portal.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -180,7 +180,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan hozhat létre egyéni Azure Service Fabric-fürtöt, tekintse meg a következőt:
 

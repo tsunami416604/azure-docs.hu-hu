@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428731"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715749"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Tranzakciók optimalizálása az SQL-készletben
 
@@ -44,7 +44,7 @@ A tranzakció biztonsági korlátai csak a teljesen naplózott műveletekre érv
 
 A következő műveletek képesek minimálisan naplózni:
 
-* CREATE TABLE a SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* CREATE TABLE A SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-ctas.MD? TOC =/Azure/Synapse-Analytics/TOC.JSON&BC =/Azure/Synapse-Analytics/breadcrumb/TOC.JSON)
 * Beszúrás.. Válassza
 * CREATE INDEX
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
@@ -420,6 +420,6 @@ A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása el
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg az [SQL-készletben található tranzakciókat](develop-transactions.md) .  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721464"
 ---
 ### <a name="container-repositories-and-images"></a>Tárolók és lemezképek
 
@@ -31,7 +31,7 @@ A Microsoft Container Registry (MCR) a Cognitive Services összes általánosan 
 
 További információt a [Luis-tárolók futtatása és telepítése](../../LUIS/luis-container-howto.md) című témakörben talál.
 
-#### <a name="text-analytics"></a>[Text Analytics](#tab/text-analytics)
+#### <a name="text-analytics"></a>[Szövegelemzés](#tab/text-analytics)
 
 | Text Analytics tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|
@@ -56,18 +56,18 @@ A következő előnézeti tárolók nyilvánosan elérhetők. A Microsoft Contai
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Anomália detektor](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomáliadetektor | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
+| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
+| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
+| [Anomália detektor](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános "lezárt" előzetes verzió (Container Registry: `containerpreview.azurecr.io` )
 
-A rendszer a tároló előnézetének beállításjegyzékében tárolja a következő lezárt előzetes tárolókat, és hozzáférést igényel az alkalmazáshoz. További információért lásd [Cognitive Services kapuzás folyamatát](../../cognitive-services-gating-process.md) .
+A rendszer a tároló előnézetének beállításjegyzékében tárolja a következő lezárt előzetes tárolókat, és hozzáférést igényel az alkalmazáshoz. További információért tekintse meg a következő Container-cikkeket.
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Face](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Számítógépes látástechnológia](../../Computer-vision/computer-vision-how-to-install-containers.md) | Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Arcfelismerés](../../face/face-how-to-install-containers.md) | Arcfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Űrlap-felismerő](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=stt) | Diktálás | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech – szöveg | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681717"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725295"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -58,8 +58,7 @@ Ez a gyorsjavítás olyan hibát javít, amelyben a nem kiválasztott tartomány
 
 
 >[!NOTE]
->Ez a verzió az új Azure AD Connect Sync v2 Endpoint API használatához szükséges.  További információ: [Azure ad Connect Sync v2 ENDPOINT API (nyilvános előzetes verzió)](how-to-connect-sync-endpoint-api-v2.md).
-
+>Ez a verzió tartalmazza az új Azure AD Connect Sync v2 Endpoint API-t.  Ez az új v2-végpont jelenleg nyilvános előzetes verzióban érhető el.  Az új v2 Endpoint API használatához ez a verzió vagy újabb verzió szükséges.  Ennek a verziónak a telepítése azonban nem engedélyezi a v2-végpontot. Ha engedélyezi a v2-végpontot, továbbra is a v1-végpontot használja.  Az engedélyezéshez és a nyilvános előzetes verzióra való feliratkozáshoz a [Azure ad Connect Sync v2 ENDPOINT API (nyilvános előzetes verzió)](how-to-connect-sync-endpoint-api-v2.md) szakaszban leírt lépéseket kell követnie.  
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -1431,5 +1430,5 @@ Kiadás dátuma: szeptember 2014
 
 **Azure AD-szinkronizáló kezdeti kiadása.**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

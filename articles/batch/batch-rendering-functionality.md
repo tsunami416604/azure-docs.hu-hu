@@ -4,13 +4,13 @@ description: A standard Azure Batch funkciói a renderelési munkaterhelések é
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115754"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726468"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
@@ -28,7 +28,7 @@ Van egy Windows 2016-rendszerkép és egy CentOS-rendszerkép.  Az [Azure Market
 
 Példa a készlet konfigurálására: az [Azure CLI renderelési oktatóanyaga](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  A Azure Portal és a Batch Explorer GUI-eszközöket biztosítanak egy renderelési virtuálisgép-rendszerkép kiválasztásához a készlet létrehozásakor.  Ha batch API-t használ, adja meg a következő tulajdonságértékeket a [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) a készlet létrehozásakor:
 
-| Közzétevő | Ajánlat | SKU | Verzió |
+| Publisher | Ajánlat | SKU | Verzió |
 |---------|---------|---------|--------|
 | kötegelt | renderelés – centos73 | renderelési | legújabb |
 | kötegelt | renderelés – windows2016 | renderelési | legújabb |
@@ -54,7 +54,7 @@ A használni kívánt alkalmazásokat és a licencelési díjat meg kell adni a 
 
 Az Azure Portal vagy Batch Explorer használatával kiválaszthatja az alkalmazásokat, és megjelenítheti az alkalmazások árát.
 
-Ha egy alkalmazás használatára történt kísérlet, de az alkalmazás nem lett megadva a készlet konfigurációjának `applicationLicenses` tulajdonságában, vagy nem éri el a licenckiszolgálót, akkor az alkalmazás végrehajtása licencelési hiba és nem nulla értékű kilépési kóddal meghiúsul.
+Ha egy alkalmazás használatára történt kísérlet, de az alkalmazás nem lett megadva a `applicationLicenses` készlet konfigurációjának tulajdonságában, vagy nem éri el a licenckiszolgálót, akkor az alkalmazás végrehajtása licencelési hiba és nem nulla értékű kilépési kóddal meghiúsul.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Az előre telepített alkalmazások környezeti változói
 
@@ -88,7 +88,7 @@ Az alacsony prioritású virtuális gépek jellemzőivel és a Batch használat�
 A feladatokhoz és a feladatokhoz nem szükségesek megjelenítésre vonatkozó támogatás.  A fő konfigurációs elem a feladat parancssora, amelynek a szükséges alkalmazásra kell hivatkoznia.
 Az Azure Marketplace virtuálisgép-rendszerképeinek használatakor az ajánlott eljárás az, hogy a környezeti változók használatával adja meg az elérési utat és az alkalmazás végrehajtható fájlját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Batch rendering példái között próbálja ki a két oktatóanyagot:
 

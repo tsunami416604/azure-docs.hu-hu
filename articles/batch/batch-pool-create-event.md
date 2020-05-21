@@ -1,21 +1,20 @@
 ---
 title: Azure Batch készlet létrehozási eseménye
 description: A Batch-készlet létrehozási eseményének hivatkozása, amely a készlet létrehozása után lett kibocsátva. A napló tartalma a készlet általános információit fogja közzétenni.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 755fbe548b4be729d20788597db05f4d9678ebea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116553"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724037"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 
  Ezt az eseményt a rendszer a készlet létrehozása után bocsátja ki. A napló tartalma a készlet általános információit fogja közzétenni. Vegye figyelembe, hogy ha a készlet célként megadott mérete meghaladja a 0 számítási csomópontot, akkor a készlet átméretezése az esemény után azonnal megkezdődik.
 
- Az alábbi példa egy készlet létrehozási eseményét mutatja be a `CloudServiceConfiguration` tulajdonság használatával létrehozott készlethez.
+ Az alábbi példa egy készlet létrehozási eseményét mutatja be a tulajdonság használatával létrehozott készlethez `CloudServiceConfiguration` .
 
 ```
 {
@@ -54,8 +53,8 @@ ms.locfileid: "82116553"
 |-------------|----------|-----------|
 |`id`|Sztring|A készlet azonosítója.|
 |`displayName`|Sztring|A készlet megjelenítendő neve.|
-|`vmSize`|Sztring|A készletben lévő virtuális gépek mérete. A készletben lévő összes virtuális gép mérete azonos. <br/><br/> További információ a Cloud Services készletekhez (cloudServiceConfiguration létrehozott készletek) elérhető virtuális gépek rendelkezésre álló méretéről: [Cloud Services méretei](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). A Batch az összes Cloud Services VM- `ExtraSmall`méretet támogatja, a kivételével.<br/><br/> További információ a Virtual Machines piactérről származó rendszerképeket használó készletek számára elérhető virtuálisgép-méretekről (virtualMachineConfiguration létrehozott készletek) a [Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) vagy a Virtual Machines (Windows) [méreteit](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) ismertető témakörben talál. A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
-|`imageType`|Sztring|A rendszerkép központi telepítési módszere. A támogatott értékek `virtualMachineConfiguration` a következők, vagy`cloudServiceConfiguration`|
+|`vmSize`|Sztring|A készletben lévő virtuális gépek mérete. A készletben lévő összes virtuális gép mérete azonos. <br/><br/> További információ a Cloud Services készletekhez (cloudServiceConfiguration létrehozott készletek) elérhető virtuális gépek rendelkezésre álló méretéről: [Cloud Services méretei](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). A Batch az összes Cloud Services VM-méretet támogatja, a kivételével `ExtraSmall` .<br/><br/> További információ a Virtual Machines piactérről származó rendszerképeket használó készletek számára elérhető virtuálisgép-méretekről (virtualMachineConfiguration létrehozott készletek) a [Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) vagy a Virtual Machines (Windows) [méreteit](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) ismertető témakörben talál. A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
+|`imageType`|Sztring|A rendszerkép központi telepítési módszere. A támogatott értékek a következők, `virtualMachineConfiguration` vagy`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Összetett típus|A készlet Cloud Service-konfigurációja.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Összetett típus|A készlet virtuálisgép-konfigurációja.|
 |[`networkConfiguration`](#bk_netconf)|Összetett típus|A készlet hálózati konfigurációja.|
@@ -73,7 +72,7 @@ ms.locfileid: "82116553"
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |`osFamily`|Sztring|A készletben lévő virtuális gépekre telepítendő Azure vendég operációsrendszer-család.<br /><br /> Lehetséges értékek:<br /><br /> **2** – operációsrendszer-család 2, a Windows Server 2008 R2 SP1-gyel egyenértékű.<br /><br /> **3** – operációsrendszer-család 3, a Windows Server 2012-rel egyenértékű.<br /><br /> **4** – operációsrendszer-család 4, a Windows Server 2012 R2-vel egyenértékű.<br /><br /> További információ: [Azure vendég operációs rendszer kiadásai](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|`targetOSVersion`|Sztring|A készletben lévő virtuális gépekre telepítendő Azure vendég operációs rendszer verziója.<br /><br /> Az alapértelmezett érték az **\*** , amely az operációs rendszer legújabb verzióját adja meg a megadott családhoz.<br /><br /> Más megengedett értékekért lásd: az [Azure vendég operációs rendszer kiadásai](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|`targetOSVersion`|Sztring|A készletben lévő virtuális gépekre telepítendő Azure vendég operációs rendszer verziója.<br /><br /> Az alapértelmezett érték az, **\*** amely az operációs rendszer legújabb verzióját adja meg a megadott családhoz.<br /><br /> Más megengedett értékekért lásd: az [Azure vendég operációs rendszer kiadásai](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a>virtualMachineConfiguration
 

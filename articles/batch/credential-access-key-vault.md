@@ -1,14 +1,14 @@
 ---
 title: A Key Vault biztonságos elérése a Batch használatával
 description: Megtudhatja, hogyan férhet hozzá programozott módon a hitelesítő adataihoz Key Vault a Azure Batch használatával.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117454"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725720"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
 
@@ -25,19 +25,19 @@ A Batch-csomópontok Azure Key Vault való hitelesítéséhez a következők sz�
 
 Ha még nem rendelkezik tanúsítvánnyal, az egyik legegyszerűbb módja, ha létrehoz egy önaláírt tanúsítványt a `makecert` parancssori eszköz használatával.
 
-Ebben az elérési `makecert` úton általában a következőt találja: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Nyisson meg egy parancssort rendszergazdaként, és navigáljon a következő példa `makecert` használatára.
+Ebben `makecert` az elérési úton általában a következőt találja: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>` . Nyisson meg egy parancssort rendszergazdaként, és navigáljon `makecert` a következő példa használatára.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Ezután az `makecert` eszköz használatával hozzon létre önaláírt tanúsítványfájl nevű `batchcertificate.cer` és. `batchcertificate.pvk` A használt köznapi név (CN) nem fontos ehhez az alkalmazáshoz, de hasznos lehet, ha azt szeretné, hogy a tanúsítvány mire szolgál.
+Ezután az eszköz használatával `makecert` hozzon létre önaláírt tanúsítványfájl nevű `batchcertificate.cer` és `batchcertificate.pvk` . A használt köznapi név (CN) nem fontos ehhez az alkalmazáshoz, de hasznos lehet, ha azt szeretné, hogy a tanúsítvány mire szolgál.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-A `.pfx` batch fájlra van szükség. A [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) eszközzel konvertálhatja a `.cer` `.pvk` és a által `makecert` létrehozott fájlokat egyetlen `.pfx` fájlba.
+A Batch `.pfx` fájlra van szükség. A [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) eszközzel konvertálhatja a `.cer` és a `.pvk` által létrehozott fájlokat `makecert` egyetlen `.pfx` fájlba.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -81,13 +81,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Hozzon létre egy batch-készletet, majd nyissa meg a készlet tanúsítvány lapját, és rendelje hozzá a létrehozott tanúsítványt. A tanúsítvány most már az összes batch-csomóponton található.
 
-Ezután a tanúsítványt a Batch-fiókhoz kell rendelni. A tanúsítványnak a fiókhoz való hozzárendelésével lehetővé válik, hogy hozzárendelje a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz**, és válassza a **Hozzáadás**lehetőséget. Töltse fel `.pfx` a [Tanúsítvány beszerzése](#obtain-a-certificate) és a jelszó megadásával létrehozott fájlt. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
+Ezután a tanúsítványt a Batch-fiókhoz kell rendelni. A tanúsítványnak a fiókhoz való hozzárendelésével lehetővé válik, hogy hozzárendelje a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz**, és válassza a **Hozzáadás**lehetőséget. Töltse fel a `.pfx` [Tanúsítvány beszerzése](#obtain-a-certificate) és a jelszó megadásával létrehozott fájlt. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
 
 Most, amikor létrehoz egy batch-készletet, megteheti a készletben lévő **tanúsítványokat** , és hozzárendelheti a készlethez létrehozott tanúsítványt. Ha így tesz, győződjön meg róla, hogy az áruház helyének **LocalMachine** választja. A tanúsítvány a készlet összes köteg csomópontjára betöltődik.
 
 ## <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
 
-Ha a csomópontokon PowerShell-parancsfájlok használatával tervezi a Key Vault elérését, akkor telepítenie kell a Azure PowerShell könyvtárat. Ezt többféleképpen is megteheti, ha a csomópontjain telepítve van a Windows Management Framework (WMF) 5, az install-Module paranccsal pedig letöltheti azt. Ha olyan csomópontokat használ, amelyek nem rendelkeznek a WMF 5-öt, akkor a telepítés legegyszerűbb módja, ha `.msi` a Azure PowerShell fájlt a Batch-fájlokkal együtt szeretné felépíteni, majd hívja meg a telepítőt a Batch indítási parancsfájl első részeként. A részletekért tekintse meg a következő példát:
+Ha a csomópontokon PowerShell-parancsfájlok használatával tervezi a Key Vault elérését, akkor telepítenie kell a Azure PowerShell könyvtárat. Ezt többféleképpen is megteheti, ha a csomópontjain telepítve van a Windows Management Framework (WMF) 5, az install-Module paranccsal pedig letöltheti azt. Ha olyan csomópontokat használ, amelyek nem rendelkeznek a WMF 5-öt, akkor a telepítés legegyszerűbb módja, ha a Azure PowerShell `.msi` fájlt a Batch-fájlokkal együtt szeretné felépíteni, majd hívja meg a telepítőt a Batch indítási parancsfájl első részeként. A részletekért tekintse meg a következő példát:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh

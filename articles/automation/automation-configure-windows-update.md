@@ -1,20 +1,20 @@
 ---
-title: Windows Update beállítások konfigurálása az Azure-Update Management való működéshez
-description: Ez a cikk azokat a Windows Update beállításokat ismerteti, amelyeket az Azure Update Management való együttműködéshez konfigurál.
+title: Azure Automation Update Management Windows Update beállításainak konfigurálása
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Windows Update beállításait Azure Automation Update Management való működéshez.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779450"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715781"
 ---
-# <a name="configure-windows-update-settings-for-update-management"></a>Update Management Windows Update beállításainak konfigurálása
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Automation Update Management Windows Update beállításainak konfigurálása
 
-Az Azure Update Management [Windows Update ügyfélre](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) támaszkodik a Windows-frissítések letöltéséhez és telepítéséhez. A Windows Update-ügyfél az Windows Server Update Services (WSUS) vagy a Windows Updatehoz való csatlakozáskor adott beállításokat használ. Ezen beállítások közül sokat a következővel kezelhet:
+Azure Automation Update Management a [Windows Update ügyfélen](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) támaszkodik a Windows-frissítések letöltésére és telepítésére. A Windows Update-ügyfél az Windows Server Update Services (WSUS) vagy a Windows Updatehoz való csatlakozáskor adott beállításokat használ. Ezen beállítások közül sokat a következővel kezelhet:
 
 - Helyicsoportházirend-szerkesztő
 - Csoportházirend
@@ -27,9 +27,9 @@ A WSUS Azure-előfizetésben való beállításával és a Windows rendszerű vi
 
 ## <a name="pre-download-updates"></a>Frissítések előzetes letöltése
 
-Ha a frissítések automatikus letöltését szeretné konfigurálni, de nem telepíti automatikusan őket, a Csoportházirend használatával állíthatja be az [Automatikus frissítések konfigurálása beállítást](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**értékre. Ez a beállítás engedélyezi a szükséges frissítések letöltését a háttérben, és értesíti arról, hogy a frissítések készen állnak a telepítésre. Így Update Management továbbra is az ütemtervek felügyelete alatt marad, de a frissítések a Update Management karbantartási időszakon kívül is letölthetők. Ez a viselkedés megakadályozza, hogy a **karbantartási időszak túllépte** a hibákat a Update Managementban.
+Ha a frissítések automatikus letöltését szeretné konfigurálni anélkül, hogy automatikusan telepítené őket, a Csoportházirend használatával [állíthatja be az automatikus frissítések beállítást](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) 3 értékre. Ez a beállítás engedélyezi a szükséges frissítések letöltését a háttérben, és értesíti arról, hogy a frissítések készen állnak a telepítésre. Így Update Management továbbra is az ütemtervek felügyelete alatt marad, de lehetővé teszi a frissítések Update Management karbantartási időszakon kívüli letöltését. Ez a viselkedés megakadályozza a `Maintenance window exceeded` Update Management hibáit.
 
-Ezt a beállítást a PowerShell használatával engedélyezheti a következő parancs futtatásával:
+Ezt a beállítást a PowerShellben engedélyezheti:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -43,9 +43,9 @@ Az automatikus frissítések konfigurálása az [újraindításhoz használt](/w
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Egyéb Microsoft-termékek frissítéseinek engedélyezése
 
-Alapértelmezés szerint a Windows Update-ügyfél úgy van konfigurálva, hogy csak Windows rendszerű frissítéseket biztosítson. Ha engedélyezi a **Windows-termékek frissítéseinek más Microsoft-termékekhez való frissítését** , akkor más termékek frissítései is megjelenhetnek, beleértve a Microsoft SQL Server és más Microsoft-szoftverek biztonsági javításait is. Ez a beállítás akkor konfigurálható, ha letöltötte és átmásolta a Windows 2016 és újabb verzióhoz elérhető legújabb [felügyeleti sablonfájlokat](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) .
+Alapértelmezés szerint a Windows Update ügyfél úgy van konfigurálva, hogy csak Windows rendszerű frissítéseket biztosítson. Ha engedélyezi a **Windows-termékek frissítéseinek más Microsoft-termékekhez való frissítését** , akkor más termékek frissítései is megjelenhetnek, beleértve a Microsoft SQL Server és más Microsoft-szoftverek biztonsági javításait is. Ezt a beállítást akkor állíthatja be, ha letöltötte és átmásolta a Windows 2016 és újabb rendszerekhez elérhető legújabb [felügyeleti sablonfájlokat](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) .
 
-Ha a Windows Server 2012 R2 rendszert futtatja, ez a beállítás nem konfigurálható Csoportházirend. Futtassa az alábbi PowerShell-parancsot ezeken a gépeken. Update Management megfelel ennek a beállításnak.
+Ha a Windows Server 2012 R2 rendszert futtató gépekkel rendelkezik, a beállítás nem konfigurálható Csoportházirend használatával. Futtassa a következő PowerShell-parancsot ezeken a gépeken:
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -54,16 +54,12 @@ $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
 
-## <a name="wsus-configuration-settings"></a>WSUS-konfigurációs beállítások
+## <a name="make-wsus-configuration-settings"></a>A WSUS konfigurációs beállításainak elkészítése
 
-Update Management támogatja a WSUS beállításait. Az Update Management használatához konfigurálható WSUS-beállítások az alábbi listában láthatók.
+Update Management támogatja a WSUS beállításait. A frissítések kereséséhez és letöltéséhez szükséges forrásokat az [intranetes Microsoft Update szolgáltatás helyének megadása](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)című témakör útmutatása alapján adhatja meg. Alapértelmezés szerint a Windows Update ügyfél úgy van konfigurálva, hogy letöltse a frissítéseket a Windows Updateról. Ha a WSUS-kiszolgálót a számítógépek forrásaként adja meg, ha a frissítések nem hagyták jóvá a WSUS-ben, a frissítés telepítése sikertelen lesz. 
 
-### <a name="intranet-microsoft-update-service-location"></a>Intranetes Microsoft frissítési szolgáltatás helye
+Ha a gépeket a belső frissítési szolgáltatásra szeretné korlátozni, állítsa a ne [kapcsolódjon egyetlen Windows Update internetes helyhez](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
 
-A frissítések kereséséhez és letöltéséhez az [intranetes Microsoft Update szolgáltatás helyének megadása](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)területen adhat meg forrásokat. Alapértelmezés szerint a Windows Update ügyfél úgy van konfigurálva, hogy letöltse a frissítéseket a Windows Updateról. Ha a WSUS-kiszolgálót a számítógépek forrásaként adja meg, ha a frissítések nem hagyták jóvá a WSUS-ben, a frissítés telepítése sikertelen lesz. 
+## <a name="next-steps"></a>Következő lépések
 
-Ha a gépeket csak a belső frissítési szolgáltatásra szeretné korlátozni, akkor a konfigurálás ne [kapcsolódjon semmilyen Windows Update internetes helyhez](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
-
-## <a name="next-steps"></a>További lépések
-
-Windows Update beállítások konfigurálása után az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakör útmutatását követve ütemezhet egy frissítés központi telepítését.
+[Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)

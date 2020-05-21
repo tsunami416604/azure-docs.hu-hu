@@ -1,16 +1,16 @@
 ---
-title: A Azure Automation hibrid Runbook-feldolgozójának áttekintése
-description: Ez a cikk áttekintést nyújt a hibrid Runbook-feldolgozóról, amely a Azure Automation egyik funkciója, amellyel runbookok futtathatók a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken.
+title: Azure Automation Hybrid Runbook Worker – áttekintés
+description: Ez a cikk áttekintést nyújt a hibrid Runbook-feldolgozóról, amellyel runbookok futtathatók a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994764"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715715"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -53,7 +53,7 @@ A hibrid Runbook-feldolgozónak a következő portokra és URL-címekre van szü
 * Port: csak TCP 443 szükséges a kimenő internet-hozzáféréshez
 * Globális URL-cím: *. azure-automation.net
 * Az US Gov Virginia globális URL-címe: *.azure-automation.us
-* Ügynök szolgáltatás: https://\<munkaterület azonosítója\>. agentsvc.Azure-Automation.net
+* Ügynök szolgáltatás: https:// \< munkaterület azonosítója \> . agentsvc.Azure-Automation.net
 
 Javasoljuk, hogy használja a [kivételek](automation-runbook-execution.md#exceptions)meghatározásakor felsorolt címeket. IP-címek esetén letöltheti az [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/en-us/download/details.aspx?id=56519). A fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és az IP-címtartományok közelgő változásait tartalmazza.
 
@@ -112,9 +112,9 @@ A hibrid Runbook-feldolgozó által igényelt szabványos címek és portok fele
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 
-## <a name="state-configuration-dsc-on-hybrid-runbook-worker"></a>State Configuration (DSC) a hibrid Runbook-feldolgozón
+## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Állapot-konfiguráció Azure Automation hibrid Runbook-feldolgozón
 
-Futtathatja az [állapot-konfiguráció (DSC)](automation-dsc-overview.md) szolgáltatást egy hibrid Runbook-feldolgozón. A hibrid Runbook-feldolgozót támogató kiszolgálók konfigurációjának kezeléséhez a kiszolgálókat DSC-csomópontként kell hozzáadnia. További információ a bevezetéssel kapcsolatban: előkészítési [gépek az állapot-konfiguráció (DSC) általi felügyelethez](automation-dsc-onboarding.md).
+[Azure Automation állapot konfigurációját](automation-dsc-overview.md) futtathatja hibrid Runbook-feldolgozón is. A hibrid Runbook-feldolgozót támogató kiszolgálók konfigurációjának kezeléséhez a kiszolgálókat DSC-csomópontként kell hozzáadnia. Lásd: [a gépek Azure Automation állapot-konfiguráció általi felügyeletének engedélyezése](automation-dsc-onboarding.md).
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbookok hibrid Runbook-feldolgozón
 
@@ -130,7 +130,7 @@ Ha a hibrid Runbook Worker gazdagépe újraindul, a futó Runbook-feladatok a ke
 
 Mivel a nem Azure-beli erőforrásokhoz férnek hozzá, a hibrid Runbook-feldolgozón futó runbookok nem használhatja az Azure-erőforrásokhoz való runbookok-hitelesítést használó hitelesítési mechanizmust jellemzően. A runbook lehetővé teszi a saját hitelesítését a helyi erőforrásokhoz, vagy a hitelesítést [Az Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)segítségével konfigurálja. Megadhat egy futtató fiókot is, amely felhasználói környezetet biztosít az összes runbookok számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
-* A hibrid Runbook-feldolgozók hibaelhárításával kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozók hibaelhárítása](troubleshoot/hybrid-runbook-worker.md#general).
+* A hibrid Runbook-feldolgozók hibakeresésével kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozók hibáinak megoldása](troubleshoot/hybrid-runbook-worker.md#general).

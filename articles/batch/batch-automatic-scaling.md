@@ -1,16 +1,15 @@
 ---
 title: Számítási csomópontok automatikus méretezése egy Azure Batch-készletben
 description: A készletben lévő számítási csomópontok számának dinamikus beállításához engedélyezze a Felhőbeli készlet automatikus méretezését.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786bd594b3344ce144893161ade9d53d1bddf358
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113561"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726808"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -39,7 +38,7 @@ A képletek automatikus méretezése kötegelt automatikus méretezési "nyelv" 
 $myNewVariable = function($ServiceDefinedVariable, $myCustomVariable);
 ```
 
-A képletek általában több olyan utasítást tartalmaznak, amelyek műveleteket hajtanak végre a korábbi utasításokban beszerzett értékeken. Például először kapjuk meg a értéket `variable1`, majd továbbítjuk egy függvénynek a feltöltéshez: `variable2`
+A képletek általában több olyan utasítást tartalmaznak, amelyek műveleteket hajtanak végre a korábbi utasításokban beszerzett értékeken. Például először kapjuk meg a értéket `variable1` , majd továbbítjuk egy függvénynek a feltöltéshez `variable2` :
 
 ```
 $variable1 = function1($ServiceDefinedVariable);
@@ -52,7 +51,7 @@ A csomópontok célként megadott száma lehet magasabb, alacsonyabb vagy ugyana
 
 ### <a name="sample-autoscale-formulas"></a>Minta autoscale-képletek
 
-Az alábbiakban két, a legtöbb forgatókönyv esetén a működéshez igazítható képleteket találhat. A változók `startingNumberOfVMs` és `maxNumberofVMs` a példában szereplő képletek igényei szerint módosíthatók.
+Az alábbiakban két, a legtöbb forgatókönyv esetén a működéshez igazítható képleteket találhat. A változók `startingNumberOfVMs` és a `maxNumberofVMs` példában szereplő képletek igényei szerint módosíthatók.
 
 #### <a name="pending-tasks"></a>Függőben lévő feladatok
 
@@ -65,7 +64,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 $NodeDeallocationOption = taskcompletion;
 ```
 
-Ezzel az autoskálázási képlettel a készletet kezdetben egyetlen virtuális géppel hozza létre a rendszer. A `$PendingTasks` metrika meghatározza a futtatott vagy a várólistára helyezett feladatok számát. A képlet megkeresi a függőben lévő feladatok átlagos számát az utolsó 180 másodpercben `$TargetDedicatedNodes` , és ennek megfelelően állítja be a változót. A képlet biztosítja, hogy a dedikált csomópontok megcélzott száma soha ne haladja meg a 25 virtuális gépet. Az új feladatok elküldésekor a készlet automatikusan növekszik. A feladatok elvégzése után a virtuális gépek egyenként válnak szabaddá, és az automatikus skálázási képlet csökkenti a készletet.
+Ezzel az autoskálázási képlettel a készletet kezdetben egyetlen virtuális géppel hozza létre a rendszer. A `$PendingTasks` metrika meghatározza a futtatott vagy a várólistára helyezett feladatok számát. A képlet megkeresi a függőben lévő feladatok átlagos számát az utolsó 180 másodpercben, és ennek megfelelően állítja be a `$TargetDedicatedNodes` változót. A képlet biztosítja, hogy a dedikált csomópontok megcélzott száma soha ne haladja meg a 25 virtuális gépet. Az új feladatok elküldésekor a készlet automatikusan növekszik. A feladatok elvégzése után a virtuális gépek egyenként válnak szabaddá, és az automatikus skálázási képlet csökkenti a készletet.
 
 Ez a képlet a dedikált csomópontokat méretezi, de úgy módosítható, hogy az alacsony prioritású csomópontok méretezésére is érvényes legyen.
 
@@ -78,11 +77,11 @@ $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicated
 $NodeDeallocationOption = taskcompletion;
 ```
 
-Ez a példa egy olyan készletet hoz létre, amely 25 alacsony prioritású csomóponttal kezdődik. Minden alkalommal, amikor egy alacsony prioritású csomópont előzik, a rendszer egy dedikált csomóponttal cseréli le. Ahogy az első példában is látható, `maxNumberofVMs` a változó megakadályozza, hogy a készlet meghaladja a 25 virtuális gépet. Ez a példa hasznos lehet az alacsony prioritású virtuális gépek kihasználása mellett, ugyanakkor gondoskodni kell arról, hogy a készlet élettartama csak rögzített számú preemptions legyen.
+Ez a példa egy olyan készletet hoz létre, amely 25 alacsony prioritású csomóponttal kezdődik. Minden alkalommal, amikor egy alacsony prioritású csomópont előzik, a rendszer egy dedikált csomóponttal cseréli le. Ahogy az első példában is látható, a `maxNumberofVMs` változó megakadályozza, hogy a készlet meghaladja a 25 virtuális gépet. Ez a példa hasznos lehet az alacsony prioritású virtuális gépek kihasználása mellett, ugyanakkor gondoskodni kell arról, hogy a készlet élettartama csak rögzített számú preemptions legyen.
 
 ## <a name="variables"></a>Változók
 
-A **szolgáltatás által definiált** és a **felhasználó által definiált** változókat is használhatja az autoscale-képletekben. A szolgáltatás által definiált változók a Batch szolgáltatásba vannak beépítve. Néhány szolgáltatás által definiált változó írható és olvasható, néhány pedig csak olvasható. A felhasználó által definiált változók a definiált változók. Az előző szakaszban bemutatott példa képletben `$TargetDedicatedNodes` és `$PendingTasks` a szolgáltatás által definiált változók. Változók `startingNumberOfVMs` és `maxNumberofVMs` felhasználó által definiált változók.
+A **szolgáltatás által definiált** és a **felhasználó által definiált** változókat is használhatja az autoscale-képletekben. A szolgáltatás által definiált változók a Batch szolgáltatásba vannak beépítve. Néhány szolgáltatás által definiált változó írható és olvasható, néhány pedig csak olvasható. A felhasználó által definiált változók a definiált változók. Az előző szakaszban bemutatott példa képletben `$TargetDedicatedNodes` és a `$PendingTasks` szolgáltatás által definiált változók. Változók `startingNumberOfVMs` és `maxNumberofVMs` felhasználó által definiált változók.
 
 > [!NOTE]
 > A szolgáltatás által definiált változókat mindig a dollár ($) jel előzi meg. Felhasználó által definiált változók esetén a dollár aláírása nem kötelező.
@@ -100,7 +99,7 @@ A szolgáltatás által definiált változók értékeit lekérheti és beállí
 | $NodeDeallocationOption |Az a művelet, amely akkor fordul elő, amikor a számítási csomópontok el lesznek távolítva a készletből. Lehetséges értékek:<ul><li>**újravárólista**– az alapértelmezett érték. Azonnal leállítja a feladatokat, és visszahelyezi őket a feladat-várólistába, hogy azok újra legyenek ütemezve. Ez a művelet biztosítja, hogy a csomópontok megcélzott száma a lehető leggyorsabban elérhető legyen, de kevésbé hatékony, mivel a futó feladatok megszakadnak, és újra kell indítani a már elvégzett munkát. <li>**megszakítás**– leállítja a feladatokat azonnal, és eltávolítja azokat a feladat-várólistából.<li>**taskcompletion**– megvárja, amíg a jelenleg futó feladatok befejeződik, majd eltávolítja a csomópontot a készletből. Ezzel a beállítással elkerülhető a feladatok megszakítása és újravárólistába helyezése, ami a feladat által végzett munka pazarlását okozhatja. <li>**retaineddata**– megvárja a csomóponton a helyi feladat által megőrzött összes adat törlését, mielőtt eltávolítja a csomópontot a készletből.</ul> |
 
 > [!NOTE]
-> A `$TargetDedicatedNodes` változó az alias `$TargetDedicated`használatával is megadható. Hasonlóképpen, a `$TargetLowPriorityNodes` változót az alias `$TargetLowPriority`használatával is megadhatja. Ha a képlet a teljes névvel ellátott változót és annak aliasát is beállítja, akkor a teljes névvel ellátott változóhoz rendelt érték elsőbbséget élvez.
+> A `$TargetDedicatedNodes` változó az alias használatával is megadható `$TargetDedicated` . Hasonlóképpen, a `$TargetLowPriorityNodes` változót az alias használatával is megadhatja `$TargetLowPriority` . Ha a képlet a teljes névvel ellátott változót és annak aliasát is beállítja, akkor a teljes névvel ellátott változóhoz rendelt érték elsőbbséget élvez.
 >
 >
 
@@ -186,7 +185,7 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 | TimeInterval *operátor* TimeInterval |<, <=, = =, >=, >,! = |double |
 | dupla *operátor* dupla |&&,  &#124;&#124; |double |
 
-Ternáris operátorral (`double ? statement1 : statement2`) való dupla tesztelés esetén a nem nulla érték **igaz**, és a nulla **hamis**.
+Ternáris operátorral () való dupla tesztelés esetén a nem `double ? statement1 : statement2` nulla érték **igaz**, és a nulla **hamis**.
 
 ## <a name="functions"></a>Functions
 Ezek az előre definiált **függvények** használhatók az automatikus skálázási képlet definiálásához.
@@ -217,7 +216,7 @@ Az előző táblázatban leírt függvények némelyike argumentumként is elfog
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-A *doubleVecList* érték a kiértékelés előtt egyetlen *doubleVec* lesz konvertálva. Például, ha `v = [1,2,3]`a, a hívás `avg(v)` megegyezik a hívással `avg(1,2,3)`. A `avg(v, 7)` hívás megegyezik a hívással `avg(1,2,3,7)`.
+A *doubleVecList* érték a kiértékelés előtt egyetlen *doubleVec* lesz konvertálva. Például, ha a `v = [1,2,3]` , a hívás megegyezik `avg(v)` a hívással `avg(1,2,3)` . A hívás megegyezik `avg(v, 7)` a hívással `avg(1,2,3,7)` .
 
 ## <a name="obtain-sample-data"></a><a name="getsampledata"></a>Mintaadatok beszerzése
 
@@ -227,24 +226,24 @@ Az autoskálázási képletek a Batch szolgáltatás által biztosított mérős
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
-| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>`GetSample(1)`az utolsó elérhető mintát adja vissza. A hasonló `$CPUPercent`mérőszámok esetében azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`a művelet sikertelen, mert a minták 90%-a elérhető.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. Ezt a késleltetést a `GetSample` metódus használatakor érdemes figyelembe venni. Lásd `GetSamplePercent` alább. |
+| GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`<br/>Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból.<br/><br/>`GetSample(1)`az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban ez nem használható, mert nem lehet tudni, hogy *Mikor* gyűjtötték be a mintát. Előfordulhat, hogy a legutóbbi vagy a rendszerproblémák miatt sokkal régebbi. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`20 mintát ad vissza, ha az utolsó 10 perc összes mintája megtalálható a CPUPercent előzményeiben. Ha a korábbi előzmények nem voltak elérhetők, de csak 18 mintát ad vissza. Ebben az esetben:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`a művelet sikertelen, mert a minták 90%-a elérhető.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Megadja az adatgyűjtés időkeretét, a kezdési és befejezési időpontot is beleértve.<br/><br/>A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtését és a képletek számára elérhetővé tételét késlelteti. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
 | Darabszám () |A metrikus előzményekben szereplő minták teljes számát adja vissza. |
 | HistoryBeginTime() |A metrika legrégebbi rendelkezésre állási mintájának időbélyegét adja vissza. |
-| GetSamplePercent() |Egy adott időintervallumhoz elérhető minták százalékos arányát adja vissza. Például:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Mivel a `GetSample` metódus meghiúsul, ha a visszaadott minták aránya kisebb, mint `samplePercent` a megadott érték, a `GetSamplePercent` metódussal megtekintheti az elsőt. Ezt követően másik műveletet is végrehajthat, ha nincs elegendő minta, az automatikus skálázás kiértékelésének megállítása nélkül. |
+| GetSamplePercent() |Egy adott időintervallumhoz elérhető minták százalékos arányát adja vissza. Például:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Mivel a `GetSample` metódus meghiúsul, ha a visszaadott minták aránya kisebb, mint a `samplePercent` megadott érték, a `GetSamplePercent` metódussal megtekintheti az elsőt. Ezt követően másik műveletet is végrehajthat, ha nincs elegendő minta, az automatikus skálázás kiértékelésének megállítása nélkül. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Minták, minta százalék és a *GetSample ()* metódus
 Az automatikusan méretezhető képletek alapvető működése a feladat-és erőforrás-metrikai adatok beszerzése, majd a készlet méretének módosítása az adatok alapján. Ezért fontos, hogy tisztában legyen azzal, hogy az autoskálázási képletek hogyan hatnak a metrikák adataira (minták).
 
-**Példák**
+**Minták**
 
 A Batch szolgáltatás rendszeres időközönként mintákat vesz fel a feladat-és erőforrás-mérőszámokból, és elérhetővé teszi azokat az autoscale-képletek számára. Ezeket a mintákat a Batch szolgáltatás 30 másodpercenként rögzíti. A minták rögzítése és a (és az) az autoscale-képletek esetében azonban általában egy késleltetéssel jár. Emellett a különböző tényezők, például a hálózati vagy más infrastrukturális problémák miatt előfordulhat, hogy a mintákat nem rögzíti egy adott intervallum.
 
 **Minta százaléka**
 
-Ha `samplePercent` a rendszer átadja `GetSample()` a metódust `GetSamplePercent()` vagy a metódust, a _százalék_ a Batch szolgáltatás által rögzített összes lehetséges számú minta és az autoskálázási képlet számára elérhető minták számának összehasonlítására utal.
+Ha `samplePercent` a rendszer átadja a `GetSample()` metódust vagy a `GetSamplePercent()` metódust, a _százalék_ a Batch szolgáltatás által rögzített összes lehetséges számú minta és az autoskálázási képlet számára elérhető minták számának összehasonlítására utal.
 
 Tekintsük át például egy 10 perces TimeSpan. Mivel a mintákat 30 másodpercenként rögzítik egy 10 perces TimeSpan belül, a Batch által rögzített minták maximális száma 20 minta (2 percenként). A jelentéskészítési mechanizmus és az Azure-beli egyéb problémák miatt azonban csak 15 olyan minta lehet, amely az autoskálázási képlet számára elérhető az olvasáshoz. Tehát például az adott 10 perces időszakra vonatkozóan a képletnek csak a rögzített minták teljes számának 75%-a lehet elérhető.
 
@@ -252,7 +251,7 @@ Tekintsük át például egy 10 perces TimeSpan. Mivel a mintákat 30 másodperc
 
 Az autoscale-képletek egyre növekednek és csökkennek a készletek &mdash; csomópontok hozzáadásával vagy a csomópontok eltávolításával. Mivel a csomópontok pénzbe kerülnek, gondoskodni szeretne arról, hogy a képletek olyan intelligens elemzési módszert használjanak, amely elegendő adatmennyiségen alapul. Ezért javasoljuk, hogy a képletekben egy trend típusú elemzést használjon. Ez a típus egyre növekszik, és az összegyűjtött minták alapján csökkenti a készleteket.
 
-Ehhez használja `GetSample(interval look-back start, interval look-back end)` a következő mintákat:
+Ehhez használja a következő `GetSample(interval look-back start, interval look-back end)` mintákat:
 
 ```
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
@@ -264,18 +263,18 @@ Ha a fenti sort kiértékeli a Batch, a több mintát ad vissza az értékek vek
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
 ```
 
-Miután összegyűjtötte a minták vektorát, használhatja a (z `min()` `max()`), a, a és `avg()` a függvényt a begyűjtött tartományból származó értelmes értékek kinyeréséhez.
+Miután összegyűjtötte a minták vektorát, használhatja a (z), a, a és a függvényt `min()` `max()` `avg()` a begyűjtött tartományból származó értelmes értékek kinyeréséhez.
 
-A további biztonság érdekében kényszerítheti a képletek kiértékelését, ha az adott időszakra vonatkozóan kevesebb mint egy bizonyos minta százalékaránya érhető el. Ha a képlet kiértékelését kényszeríti, a Batch a képlet további kiértékelését utasítja, ha a minták megadott százaléka nem érhető el. Ebben az esetben a készlet méretének módosítása nem történik meg. Ha meg szeretné adni, hogy a kiértékelés sikeres legyen-e a minták százalékában, akkor azt `GetSample()`a harmadik paraméterként kell megadni. Itt meg kell adni a minták 75 százalékának követelményét:
+A további biztonság érdekében kényszerítheti a képletek kiértékelését, ha az adott időszakra vonatkozóan kevesebb mint egy bizonyos minta százalékaránya érhető el. Ha a képlet kiértékelését kényszeríti, a Batch a képlet további kiértékelését utasítja, ha a minták megadott százaléka nem érhető el. Ebben az esetben a készlet méretének módosítása nem történik meg. Ha meg szeretné adni, hogy a kiértékelés sikeres legyen-e a minták százalékában, akkor azt a harmadik paraméterként kell megadni `GetSample()` . Itt meg kell adni a minták 75 százalékának követelményét:
 
 ```
 $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);
 ```
 
-Mivel előfordulhat, hogy a minta rendelkezésre állása késésben van, fontos, hogy mindig olyan időtartományt határozzon meg, amely egy percnél régebbi kezdési időpontot használ. Körülbelül egy percet vesz igénybe, hogy a minták propagálják a rendszert, így előfordulhat, hogy `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` a tartományokban lévő minták nem lesznek elérhetők. Újra használhatja a százalék paramétert `GetSample()` is egy adott minta százalékos követelmény kényszerítéséhez.
+Mivel előfordulhat, hogy a minta rendelkezésre állása késésben van, fontos, hogy mindig olyan időtartományt határozzon meg, amely egy percnél régebbi kezdési időpontot használ. Körülbelül egy percet vesz igénybe, hogy a minták propagálják a rendszert, így előfordulhat, hogy a tartományokban lévő minták `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` nem lesznek elérhetők. Újra használhatja a százalék paramétert is `GetSample()` egy adott minta százalékos követelmény kényszerítéséhez.
 
 > [!IMPORTANT]
-> **Nyomatékosan javasoljuk** , hogy **ne *csak* az autoscale `GetSample(1)` -képletekben ne kelljen támaszkodni**. Ennek az az `GetSample(1)` oka, hogy lényegében a Batch szolgáltatásra vonatkozik, "a legutóbbi mintát adja meg, függetlenül attól, hogy milyen régen lekérte." Mivel ez csak egyetlen minta, és lehet egy régebbi minta is, nem lehet reprezentatív a legutóbbi feladat vagy erőforrás állapotának nagyobb képére. Ha használja, győződjön `GetSample(1)`meg arról, hogy az egy nagyobb utasítás része, és nem az egyetlen adatpont, amelyet a képlet használ.
+> **Nyomatékosan javasoljuk** , hogy **ne *csak* az `GetSample(1)` autoscale-képletekben ne kelljen támaszkodni**. Ennek az az oka, `GetSample(1)` hogy lényegében a Batch szolgáltatásra vonatkozik, "a legutóbbi mintát adja meg, függetlenül attól, hogy milyen régen lekérte." Mivel ez csak egyetlen minta, és lehet egy régebbi minta is, nem lehet reprezentatív a legutóbbi feladat vagy erőforrás állapotának nagyobb képére. Ha használja, győződjön `GetSample(1)` meg arról, hogy az egy nagyobb utasítás része, és nem az egyetlen adatpont, amelyet a képlet használ.
 >
 >
 
@@ -285,7 +284,7 @@ Képletek definiálásakor az erőforrás és a tevékenység mérőszámait is 
 
 <table>
   <tr>
-    <th>Metrika</th>
+    <th>Metric</th>
     <th>Leírás</th>
   </tr>
   <tr>
@@ -337,7 +336,7 @@ Először is adjuk meg az új, az új autoskálázási képletre vonatkozó köv
 1. Mindig korlátozza a dedikált csomópontok maximális számát 400-re.
 1. A csomópontok számának csökkentésekor ne távolítsa el a feladatokat futtató csomópontokat. Ha szükséges, várjon, amíg a tevékenységek el nem végezték a csomópontok eltávolítását.
 
-A magas CPU-használat során a csomópontok számának növeléséhez határozza meg azt az utasítást, amely a felhasználó által`$totalDedicatedNodes`definiált változót () egy olyan értékkel tölti fel, amely a dedikált csomópontok aktuális megcélzott számának 110 százalékát adja meg, de csak abban az esetben, ha az utolsó 10 percben az átlagos CPU-használat a 70 százalék felett volt Ellenkező esetben használja a dedikált csomópontok aktuális számának értékét.
+A magas CPU-használat során a csomópontok számának növeléséhez határozza meg azt az utasítást, amely a felhasználó által definiált változót ( `$totalDedicatedNodes` ) egy olyan értékkel tölti fel, amely a dedikált csomópontok aktuális megcélzott számának 110 százalékát adja meg, de csak abban az esetben, ha az utolsó 10 percben az átlagos CPU-használat a 70 százalék felett volt Ellenkező esetben használja a dedikált csomópontok aktuális számának értékét.
 
 ```
 $totalDedicatedNodes =
@@ -345,7 +344,7 @@ $totalDedicatedNodes =
     ($CurrentDedicatedNodes * 1.1) : $CurrentDedicatedNodes;
 ```
 
-Ha *csökkenteni* szeretné a dedikált csomópontok számát az alacsony CPU-használat során, a képlet következő utasítása ugyanezt `$totalDedicatedNodes` a változót állítja be a dedikált csomópontok aktuális számának 90 százalékára, ha az elmúlt 60 percben az átlagos CPU-használat 20 százalék alatt volt. Ellenkező esetben használja a fenti nyilatkozatban `$totalDedicatedNodes` kitöltött aktuális értéket.
+Ha *csökkenteni* szeretné a dedikált csomópontok számát az alacsony CPU-használat során, a képlet következő utasítása ugyanezt a változót állítja be a `$totalDedicatedNodes` dedikált csomópontok aktuális számának 90 százalékára, ha az elmúlt 60 percben az átlagos CPU-használat 20 százalék alatt volt. Ellenkező esetben használja a `$totalDedicatedNodes` fenti nyilatkozatban kitöltött aktuális értéket.
 
 ```
 $totalDedicatedNodes =
@@ -380,12 +379,12 @@ A készlet automatikus skálázása a Batch [SDK](batch-apis-tools.md#azure-acco
 A .NET-ben engedélyezett automatikus skálázással rendelkező készlet létrehozásához kövesse az alábbi lépéseket:
 
 1. Hozza létre a készletet a [BatchClient. PoolOperations. CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-1. Állítsa a [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot `true`a következőre:.
+1. Állítsa a [CloudPool. AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) tulajdonságot a következőre: `true` .
 1. Állítsa be az [CloudPool. AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) tulajdonságot az autoscale képlettel.
 1. Választható A [CloudPool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) tulajdonság beállítása (az alapértelmezett érték 15 perc).
 1. Véglegesítse a készletet a [CloudPool. commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) vagy a [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync).
 
-Az alábbi kódrészlet egy automatikusan méretezhető, .NET-alapú készletet hoz létre. A készlet autoskálázási képlete a dedikált csomópontok megcélzott számát 5 – hétfő értékre állítja, a hét minden más napján pedig 1 értéket. Az [automatikus skálázási időköz](#automatic-scaling-interval) 30 percre van beállítva. Ebben és a cikkben `myBatchClient` szereplő többi C#-kódrészlet a [BatchClient][net_batchclient] osztály megfelelően inicializált példánya.
+Az alábbi kódrészlet egy automatikusan méretezhető, .NET-alapú készletet hoz létre. A készlet autoskálázási képlete a dedikált csomópontok megcélzott számát 5 – hétfő értékre állítja, a hét minden más napján pedig 1 értéket. Az [automatikus skálázási időköz](#automatic-scaling-interval) 30 percre van beállítva. Ebben és a cikkben szereplő többi C#-kódrészlet a `myBatchClient` [BatchClient][net_batchclient] osztály megfelelően inicializált példánya.
 
 ```csharp
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
@@ -496,7 +495,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 ### <a name="update-an-autoscale-formula"></a>Az autoscale-képlet frissítése
 
-Ha egy meglévő automatikus méretezést használó készleten szeretné frissíteni a képletet, hívja meg a műveletet, és engedélyezze újra az automatikus skálázást az új képlettel. Ha például a következő .NET-kód végrehajtásakor már engedélyezve `myexistingpool` van az automatikus skálázás, az automatikus méretezési képlete helyére a tartalma kerül `myNewFormula`.
+Ha egy meglévő automatikus méretezést használó készleten szeretné frissíteni a képletet, hívja meg a műveletet, és engedélyezze újra az automatikus skálázást az új képlettel. Ha például `myexistingpool` a következő .net-kód végrehajtásakor már engedélyezve van az automatikus skálázás, az automatikus méretezési képlete helyére a tartalma kerül `myNewFormula` .
 
 ```csharp
 await myBatchClient.PoolOperations.EnableAutoScaleAsync(
@@ -659,7 +658,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
-`$curTime`a helyi időzónának megfelelően módosítható úgy, hogy `time()` hozzáadja a termékhez `TimeZoneInterval_Hour` és az UTC-eltoláshoz. Például a hegyvidéki `$curTime = time() + (-6 * TimeInterval_Hour);` nyári idő (MDT) használatával. Ne feledje, hogy az eltolást a nyári időszámítási idő elején és végén kell módosítani (ha van ilyen).
+`$curTime`a helyi időzónának megfelelően módosítható úgy, hogy hozzáadja `time()` a termékhez `TimeZoneInterval_Hour` és az UTC-eltoláshoz. Például `$curTime = time() + (-6 * TimeInterval_Hour);` a hegyvidéki nyári idő (MDT) használatával. Ne feledje, hogy az eltolást a nyári időszámítási idő elején és végén kell módosítani (ha van ilyen).
 
 ### <a name="example-2-task-based-adjustment"></a>2. példa: feladat-alapú beállítás
 
@@ -728,7 +727,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.

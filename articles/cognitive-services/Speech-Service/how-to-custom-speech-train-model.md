@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137774"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722626"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Modell betanítása a Custom Speech szolgáltatáshoz
 
@@ -42,7 +42,7 @@ A modellek betanításának első lépése a betanítási adatok feltöltése. A
 2. Navigáljon a **beszéd-szöveg > Custom Speech > képzésre**.
 3. Kattintson a **tanítási modell**elemre.
 4. Ezután adja meg a betanítás **nevét** és **leírását**.
-5. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. Ha nem rendelkezik a beállításokkal, a legújabbat használhatja.
+5. A **forgatókönyv és az alapterv modell** legördülő menüben válassza ki a tartományhoz legjobban illő forgatókönyvet. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános**lehetőséget. Az alapmodell a betanítás kiindulási pontja. A legújabb modell általában a legjobb választás.
 6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több hang + emberi címkével ellátott átírási adatkészletet, amelyeket képzésre szeretne használni.
 7. A képzés befejezését követően dönthet úgy, hogy pontossági tesztelést végez az újonnan betanított modellen. Ez a lépés nem kötelező.
 8. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
@@ -58,11 +58,11 @@ Az adatok megvizsgálása és a modell pontosságának kiértékelése a követk
 
 Ha a pontosság tesztelését választotta, fontos, hogy olyan akusztikai adatkészletet válasszon ki, amely eltér a modell teljesítményének reális értelmezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 - [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

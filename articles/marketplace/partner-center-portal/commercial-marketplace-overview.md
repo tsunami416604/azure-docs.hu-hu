@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270400"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724819"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>A kereskedelmi piactér portál áttekintése a partner Centerben
 
@@ -26,31 +26,15 @@ A különböző méretű vállalatok, kormányok és szervezetek az [Azure Marke
 
 A partner Center egy Microsoft-partneri élmény központja. Azoknak a szervezeteknek, akik piacra kerülnek a Microsofttal, és kihasználhatják a kereskedelmi piactér előnyeit, a partner Center az ajánlatok létrehozásához és kezeléséhez használt portál, a tesztvezetés bemutatóinak biztosítása, valamint az ajánlatok teljesítményére vonatkozó elemzések megtekintése.
 
-## <a name="migration-from-cloud-partner-portal"></a>Áttelepítés Cloud Partner Portalról
+## <a name="migration-from-the-cloud-partner-portal"></a>Áttelepítés a Cloud Partner Portalról
 
-A partner Center egyre jobban integrálható a szoftveres közzétevők kapcsolatának minden aspektusával. Ennek az evolúciónak a részeként áttelepíti [Cloud Partner Portal](https://cloudpartner.azure.com/) a partneri központba.
+A partner Center egyre jobban integrálható a szoftveres közzétevők kapcsolatának minden aspektusával. Ennek az evolúciónak a részeként áttelepítettük az összes kereskedelmi Marketplace-ajánlat kezelését a [Cloud Partner Portalról](https://cloudpartner.azure.com/) a partneri központba.
 
-A meglévő kereskedelmi piactér-közzétevők ismerős, de továbbfejlesztett felhasználói élményt nyújtanak az intuitív kezelőfelülettel. A Portálon és az e-mail-értesítésekben szereplő értesítések tájékoztatják az áttelepítésről a közzétevőket. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. A partneri élmény frissítése nem érinti az ügyfeleket.
-
->[!NOTE]
->A partneri központ jelenleg bizonyos ajánlati típusok létrehozását és felügyeletét támogatja az alábbi táblázatban leírtak szerint. A további ajánlati típusok hamarosan támogatottak lesznek, amint az összes ajánlatot a partner Centerbe migráljuk.
-
-|Ajánlat típusa  |Ajánlat-kezelés áttelepítve Cloud Partner Portalról a partneri központba  |
-|---------|---------|
-|Szolgáltatott szoftver (SaaS)     | Már elérhető       |
-|Dynamics 365 a Customer engagement & PowerApps     | Már elérhető         |
-|A Dynamics 365 for Operations     | Már elérhető        |
-|Dynamics 365 for Business Central     | Már elérhető        |
-|Azure-alkalmazás     | Már elérhető        |
-|Azure-beli virtuális gép     | Általános elérhetőség április – május 2020        |
-|Azure-tároló     | Általános elérhetőség április – május 2020        |
-|Tanácsadási szolgáltatás     | Általános elérhetőség április – május 2020        |
-|IoT Edge modul     | Általános elérhetőség április – május 2020        |
-|Power BI alkalmazás    | Általános elérhetőség április – május 2020        |
+Azok a meglévő közzétevők, akik korábban a Cloud Partner Portal használták, jól ismert, de továbbfejlesztett és intuitív felhasználói élményt találnak a partner centerrel. A felhasználók zökkenőmentesen a megfelelő helyre lesznek irányítva. A partneri élmény frissítése nem érinti az ügyfeleket.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>A közzétételi és az ajánlat-kezelési felhasználói élmény fejlesztése
 
-A partneri központba való áttéréssel új funkciók érhetők el a kiadók számára, a felhasználói élmény fejlesztése mellett.  Részletekért lásd: a [Cloud Partner Portalról a partneri központba való Migrálás gyakori kérdései](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
+A partneri központba való áttéréssel új funkciók érhetők el a kiadók számára, a felhasználói élmény fejlesztése mellett.  Részletekért lásd: a [Cloud Partner Portalról a partneri központba való Migrálás gyakori kérdései](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
 
 ### <a name="account-and-user-management-updates"></a>Fiók-és felhasználói felügyeleti frissítések
 
@@ -68,7 +52,7 @@ A partner Center Analytics áttekintést nyújt az ajánlatok teljesítményér�
 
 További információ a legújabb és jövőbeli kiadásokról: a [Microsoft kereskedelmi Marketplace-útitervének](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)meglátogatása, vagy a [Microsoft partner Közösségen](https://www.microsoftpartnercommunity.com/)belüli beszélgetés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az új Microsoft-partnereknek, akik érdeklődnek az ajánlat közzétételére a piactéren, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)című témakört.
 - Azon meglévő partnerek esetében, akik korábban közzétett ajánlatokat Cloud Partner Portalban, [a kereskedelmi Marketplace-fiókot a partner Centerben kezelheti](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).

@@ -6,13 +6,13 @@ ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 497f3b3b42d98c08b06744eaa976ae188443b90d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: dcb9d43b228428379414ca5d7688cff709a9959e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115669"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726417"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Tárolási és adatáthelyezési lehetőségek az eszköz és a kimeneti fájlok megjelenítéséhez
 
@@ -128,7 +128,7 @@ A Azure Files az Azure Storage-támogatással rendelkező főbb API-k és eszkö
 
 [Azure file Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) elérhető a fájlok automatikus szinkronizálása egy helyszíni fájlrendszer és egy Azure-fájlmegosztás között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tárolási lehetőségekről további információt a részletes dokumentációban talál:
 

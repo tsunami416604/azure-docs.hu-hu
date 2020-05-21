@@ -1,14 +1,14 @@
 ---
 title: Batch figyelése az Azure Application Insights
 description: Ismerje meg, hogyan hozhat Azure Batch .NET-alkalmazást az Azure Application Insights Library használatával.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115465"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723612"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Azure Batch .NET-alkalmazás figyelése és hibakeresése Application Insights
 
@@ -39,7 +39,7 @@ A [githubon](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Art
 
 ## <a name="add-application-insights-to-your-project"></a>Application Insights hozzáadása a projekthez
 
-A projekthez a **Microsoft. ApplicationInsights. windowsserver** NuGet-csomag és annak függőségei szükségesek. Adja hozzá vagy állítsa vissza az alkalmazás projektjét. A csomag telepítéséhez használja a parancsot vagy `Install-Package` a NuGet csomagkezelő eszközt.
+A projekthez a **Microsoft. ApplicationInsights. windowsserver** NuGet-csomag és annak függőségei szükségesek. Adja hozzá vagy állítsa vissza az alkalmazás projektjét. A csomag telepítéséhez használja a `Install-Package` parancsot vagy a NuGet csomagkezelő eszközt.
 
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
@@ -280,13 +280,13 @@ A következő képernyőképek azt mutatják be, hogyan Application Insights nap
 Az egyéni metrikák szintén értékes eszköznek bizonyulnak a portálon. Megjelenítheti például az egyes számítási csomópontok átlagos időpontját, hogy letöltse a feldolgozás alatt lévő szükséges szövegfájlt.
 
 Minta diagram létrehozása:
-1. A Application Insights erőforrásban kattintson a **Metrikaböngésző** > **diagram hozzáadása**lehetőségre.
+1. A Application Insights erőforrásban kattintson a **Metrikaböngésző**  >  **diagram hozzáadása**lehetőségre.
 2. Kattintson a **Szerkesztés** elemre a hozzáadott diagramon.
 2. A diagram részleteit a következőképpen frissítheti:
    * **Diagram típusának** beállítása **rácsra**
    * Állítsa az **összesítést** **átlag**értékre.
    * Állítsa be a **Group By** **NodeId**.
-   * A **metrikák**területen válassza az **Egyéni** > **blob Letöltés másodpercben**lehetőséget.
+   * A **metrikák**területen válassza **Custom**  >  **az egyéni blob Letöltés másodpercben**lehetőséget.
    * A megjelenítési **színpaletta** beállítása tetszés szerinti értékre 
 
 ![BLOB letöltési ideje/csomópont](./media/monitor-application-insights/blobdownloadtime.png)
@@ -333,7 +333,7 @@ pool.StartTask = new StartTask()
 Az éles környezetben futó Azure Batch alkalmazások nagy léptékű jellege miatt érdemes korlátozni a Application Insights által összegyűjtött adatok mennyiségét a költségek kezelésére. Ennek eléréséhez tekintse meg a [mintavétel Application Insightsban](../azure-monitor/app/sampling.md) című témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Application Insightsról](../azure-monitor/app/app-insights-overview.md).
 
 * Más nyelveken való Application Insights támogatáshoz tekintse meg a [nyelveket, platformokat és integrációs dokumentációt](../azure-monitor/app/platforms.md).

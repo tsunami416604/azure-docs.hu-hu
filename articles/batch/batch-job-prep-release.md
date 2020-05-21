@@ -1,15 +1,15 @@
 ---
 title: Feladatok létrehozása a számítási csomópontokon & teljes feladatok előkészítéséhez
 description: Az adatátvitelt az Azure Batch számítási csomópontokra, valamint a feladat befejezésekor a csomópont-karbantartási feladatok kiadására szolgáló feladat-előkészítési feladatokkal csökkentheti.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: c9c88994a65d4d2cb8c8373d2bbb4aa2877fe465
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a73baa03500dfbcdd7193035bf70b0f3e03be283
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116060"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726672"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
 
@@ -73,7 +73,7 @@ A feladatok kiadási feladatai legfeljebb 15 percig futhatnak, mielőtt a Batch 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Feladat-előkészítési és-kiadási feladatok a Batch .NET-tel
 Feladat-előkészítési feladat használatához rendeljen egy [JobPreparationTask][net_job_prep] -objektumot a feladat [CloudJob. JobPreparationTask][net_job_prep_cloudjob] tulajdonságához. Hasonlóképpen inicializáljon egy [jobreleasetask tevékenységtípust][net_job_release] , és rendelje hozzá a feladat [CloudJob. jobreleasetask tevékenységtípust][net_job_prep_cloudjob] tulajdonságához a feladat kiadási feladatának beállításához.
 
-Ebben a kódrészletben a [BatchClient][net_batch_client]egy példánya, `myPool` amely egy meglévő készlet a Batch-fiókon belül. `myBatchClient`
+Ebben a kódrészletben a `myBatchClient` [BatchClient][net_batch_client]egy példánya, amely `myPool` egy meglévő készlet a Batch-fiókon belül.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -178,7 +178,7 @@ Az alábbi képernyőképen az **előkészítési feladatok** panel látható a 
 
 ![A Azure Portal feladatok előkészítésének tulajdonságai][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 ### <a name="application-packages"></a>Alkalmazáscsomagok
 A feladat-előkészítési feladaton kívül a Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásával is előkészítheti a számítási csomópontokat a feladatok végrehajtásához. Ez a funkció különösen hasznos olyan alkalmazások telepítéséhez, amelyek nem igénylik a telepítő futtatását, a sok (100 +) fájlt tartalmazó alkalmazásokat, illetve a szigorú verziókövetés használatát igénylő alkalmazásokat.
 

@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731129"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726145"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure virtuális gép (VM) rendszerképek minősítése
-
-> [!NOTE]
-> Az Azure-beli virtuálisgép-ajánlatok felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Amíg az ajánlatokat át nem telepíti, folytassa a [tanúsítványok létrehozása a Cloud Partner Portal Azure Key Vaulthoz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) című témakör utasításait az ajánlatok kezeléséhez.
 
 Ez a cikk azt ismerteti, hogyan lehet tesztelni és elküldeni a virtuális gép (VM) lemezképét a kereskedelmi piactéren, hogy az megfeleljen az Azure Marketplace legújabb közzétételi követelményeinek.
 
@@ -89,7 +86,7 @@ Szerkessze és futtassa a következő Azure PowerShell parancsfájlt a tanúsít
 
 #### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Az Azure Key Vault létrehozása a tanúsítvány tárolásához
 
-Másolja az alábbi sablon tartalmát a helyi számítógép egyik fájljába. Az alábbi példában szereplő parancsfájlban ez az erőforrás `C:\certLocation\keyvault.json`).
+Másolja az alábbi sablon tartalmát a helyi számítógép egyik fájljába. Az alábbi példában szereplő parancsfájlban ez az erőforrás `C:\certLocation\keyvault.json` ).
 
 ```json
 {
@@ -571,7 +568,7 @@ Szerkessze ezt a fájlt a paraméterek értékeinek megadásához:
 | vmName | A virtuális gép neve. |
 | vaultName | A Key Vault neve. |
 | vaultResourceGroup | A Key Vault erőforráscsoport. |
-| certificateUrl | A tanúsítvány webcíme (URL-címe), beleértve a Key vaultban tárolt verziót, például: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
+| certificateUrl | A tanúsítvány webcíme (URL-címe), beleértve a Key vaultban tárolt verziót, például: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` . |
 | vhdUrl | A virtuális merevlemez webcíme. |
 | vmSize | A virtuálisgép-példány mérete. |
 | publicIPAddressName | A nyilvános IP-cím neve. |
@@ -583,7 +580,7 @@ Szerkessze ezt a fájlt a paraméterek értékeinek megadásához:
 
 ### <a name="deploy-an-azure-vm"></a>Azure-beli virtuális gép üzembe helyezése
 
-Másolja és szerkessze a következő parancsfájlt a és `$storageaccount` `$vhdUrl` a változók értékeinek megadásához. Futtassa azt egy Azure-beli virtuálisgép-erőforrás létrehozásához a meglévő általánosított VHD-ről.
+Másolja és szerkessze a következő parancsfájlt a és a változók értékeinek megadásához `$storageaccount` `$vhdUrl` . Futtassa azt egy Azure-beli virtuálisgép-erőforrás létrehozásához a meglévő általánosított VHD-ről.
 
 ```PowerShell
 

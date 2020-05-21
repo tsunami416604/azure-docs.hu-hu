@@ -1,15 +1,15 @@
 ---
-title: Feladatok futtatása a felhasználói fiókok alatt – Azure Batch
+title: Feladatok futtatása a felhasználói fiókokban
 description: Hasznos lehet konfigurálni azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980286"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726264"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
@@ -81,7 +81,7 @@ Ha emelt szintű hozzáféréssel rendelkező feladatot szeretne futtatni, konfi
 >
 >
 
-Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint `Admin` -emelési szintet és a hatókört `Task`határozzák meg. A feladat hatóköre az alapértelmezett beállítás, de a példa kedvéért itt is szerepel.
+Az alábbi kódrészletek bemutatják, hogyan konfigurálhatja az automatikus felhasználó specifikációját. A példák a jogosultságszint-emelési szintet `Admin` és a hatókört határozzák meg `Task` . A feladat hatóköre az alapértelmezett beállítás, de a példa kedvéért itt is szerepel.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -146,7 +146,7 @@ Az elnevezett felhasználói fiókok akkor hasznosak, ha egy adott feladat össz
 
 Elnevezett felhasználói fiókot is használhat egy olyan feladat futtatásához, amely a külső erőforrásokra, például a fájlmegosztás engedélyeit állítja be. Egy névvel ellátott felhasználói fiókkal szabályozhatja a felhasználói identitást, és az adott felhasználói identitást használhatja az engedélyek beállításához.  
 
-A nevesített felhasználói fiókok lehetővé teszik a jelszó nélküli SSH-t a Linux-csomópontok között. A többpéldányos feladatokat futtató Linux-csomópontokkal ellátott felhasználói fiókokat is használhat. A készlet minden csomópontja a teljes készletben definiált felhasználói fiókkal futtathat feladatokat. A többpéldányos feladatokkal kapcsolatos további információkért lásd: [\-többpéldányos feladatok használata MPI-alkalmazások futtatásához](batch-mpi.md).
+A nevesített felhasználói fiókok lehetővé teszik a jelszó nélküli SSH-t a Linux-csomópontok között. A többpéldányos feladatokat futtató Linux-csomópontokkal ellátott felhasználói fiókokat is használhat. A készlet minden csomópontja a teljes készletben definiált felhasználói fiókkal futtathat feladatokat. A többpéldányos feladatokkal kapcsolatos további információkért lásd: [ \- többpéldányos feladatok használata MPI-alkalmazások futtatásához](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Elnevezett felhasználói fiókok létrehozása
 
@@ -282,7 +282,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Feladat futtatása elnevezett felhasználói fiókkal emelt szintű hozzáféréssel
 
-Ha emelt szintű felhasználóként szeretne futtatni egy feladatot, állítsa a feladat **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amelyet a **ElevationLevel** tulajdonsággal `Admin`hoztak létre.
+Ha emelt szintű felhasználóként szeretne futtatni egy feladatot, állítsa a feladat **UserIdentity** tulajdonságát egy elnevezett felhasználói fiókra, amelyet a **ElevationLevel** tulajdonsággal hoztak létre `Admin` .
 
 Ez a kódrészlet azt adja meg, hogy a feladatnak egy elnevezett felhasználói fiók alatt kell futnia. Ez az elnevezett felhasználói fiók definiálva lett a készletben a készlet létrehozásakor. Ebben az esetben az elnevezett felhasználói fiók rendszergazdai engedélyekkel lett létrehozva:
 
@@ -320,6 +320,6 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 | `run_elevated`nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).

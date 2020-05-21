@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682135"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726077"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -24,7 +24,11 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: mondatok. A kiejtés testreszabása a kapcsolódó szöveg feltöltésével érhető el: kiejtés. További információ a testreszabásról [itt](how-to-custom-speech.md).
+A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). 
+
+A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok**. A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](how-to-custom-speech.md)témakört.
+
+A kiejtés javításával kapcsolatos további információkért lásd: [modell javítása Custom Speechhoz](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:
@@ -75,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ta-IN` | Tamil (India)                     | Igen       | Nyelvi modell                                    |
 | `te-IN` | Telugu (India)                    | Igen       | Nem                                                |
 | `th-TH` | Thai (Thaiföld)                   | Igen       | Nem                                                |
-| `tr-TR` | Török (Törökország)                  | Igen       | Nem                                                |
+| `tr-TR` | Török (Törökország)                  | Igen       | Nyelvi modell                                    |
 | `zh-CN` | Kínai (mandarin, egyszerűsített)    | Igen       | Akusztikai modell<br>Nyelvi modell                  |
 | `zh-HK` | Kínai (kantoni, hagyományos)  | Igen       | Nyelvi modell                                    |
 | `zh-TW` | Kínai (tajvani mandarin)      | Igen       | Nyelvi modell                                    |
@@ -95,29 +99,29 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 
 További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
-|Területi beállítás  | Nyelv            | Nem | Hang neve  | Bi-nyelvi támogatás | Stílus támogatása |
-|--|--|--|--|--|--|
-| `de-DE` | Német (Németország)    | Nő | "de-DE-KatjaNeural" | Igen. Angol (US) | Általános kérdések |
-| `en-AU` | Angol (Ausztrália) | Nő |  "en-AU-NatashaNeural" | Nem | Általános kérdések |
-| `en-CA` | Angol (Kanada)    | Nő |  "en-CA-ClaraNeural"| Nem | Általános kérdések |
-| `en-GB` | Angol (Egyesült Királyság)        | Nő |  "en-GB-LibbyNeural"| Nem | Általános kérdések |
-|  |      | Nő |  "en-GB-MiaNeural" | Nem | Általános kérdések |
-| `en-US` | Angol (US)        | Nő |  "en-US-AriaNeural"| Nem | Általános, több hangstílus érhető el |
-|  |      | Férfi   | "en-US-GuyNeural" | Nem | Általános kérdések |
-| `es-ES` | Spanyol (Spanyolország)     | Nő |  "es-ES-ElviraNeural"| Igen. Angol (US) | Általános kérdések |
-| `es-MX` | Spanyol (Mexikó)    | Nő |  "es-MX-DaliaNeural" | Igen. Angol (US) | Általános kérdések |
-| `fr-CA` | Francia (Kanada)     | Nő |  "fr-CA-SylvieNeural" | Igen. Angol (US) | Általános kérdések |
-| `fr-FR` | Francia (Franciaország)     | Nő | "fr-FR-DeniseNeural"  | Igen. Angol (US) | Általános kérdések |
-| `it-IT` | Olasz (Olaszország)     | Nő |  "IT-IT-ElsaNeural"  | Igen. Angol (US) | Általános kérdések |
-| `ja-JP` | Japán            | Nő |  "ja-JP-NanamiNeural" | Igen. Angol (US) | Általános kérdések |
-| `ko-KR` | Koreai              | Nő |  "ko-KR-SunHiNeural" | Igen. Angol (US) | Általános kérdések |
-| `nb-NO` | Norvég           | Nő | "NB-NO-IselinNeural" | Nem | Általános kérdések |
-| `pt-BR` | Portugál (Brazília) | Nő |  "PT-BR-FranciscaNeural" | Nem | Általános kérdések |
-| `tr-TR` | Török             | Nő | "TR-TR-EmelNeural" | Nem | Általános kérdések |
-| `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő |  "zh-CN-XiaoxiaoNeural"  | Igen. Angol (US) | Általános, több hangstílus érhető el |
-|  |  | Nő |  "zh-CN-XiaoyouNeural"  | Igen. Angol (US) | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
-|  |  | Férfi |  "zh-CN-YunyangNeural"  | Igen. Angol (US) | A hírek olvasására optimalizált, több hangstílus érhető el |
-|  |  | Férfi |  "zh-CN-YunyeNeural"  | Nem | A történet elbeszéléséhez optimalizált |
+|Területi beállítás  | Nyelv            | Nem | Hang neve | Stílus támogatása |
+|--|--|--|--|--|
+| `de-DE` | Német (Németország)                | Nő | "de-DE-KatjaNeural"      | Általános kérdések |
+| `en-AU` | Angol (Ausztrália)             | Nő | "en-AU-NatashaNeural"    | Általános kérdések |
+| `en-CA` | Angol (Kanada)                | Nő | "en-CA-ClaraNeural"      | Általános kérdések |
+| `en-GB` | Angol (Egyesült Királyság)                    | Nő | "en-GB-LibbyNeural"      | Általános kérdések |
+|         |                                 | Nő | "en-GB-MiaNeural"        | Általános kérdések |
+| `en-US` | Angol (US)                    | Nő | "en-US-AriaNeural"       | Általános, több hangstílus érhető el |
+|         |                                 | Férfi   | "en-US-GuyNeural"        | Általános kérdések |
+| `es-ES` | Spanyol (Spanyolország)                 | Nő | "es-ES-ElviraNeural"     | Általános kérdések |
+| `es-MX` | Spanyol (Mexikó)                | Nő | "es-MX-DaliaNeural"      | Általános kérdések |
+| `fr-CA` | Francia (Kanada)                 | Nő | "fr-CA-SylvieNeural"     | Általános kérdések |
+| `fr-FR` | Francia (Franciaország)                 | Nő | "fr-FR-DeniseNeural"     | Általános kérdések |
+| `it-IT` | Olasz (Olaszország)                 | Nő | "IT-IT-ElsaNeural"       | Általános kérdések |
+| `ja-JP` | Japán                        | Nő | "ja-JP-NanamiNeural"     | Általános kérdések |
+| `ko-KR` | Koreai                          | Nő | "ko-KR-SunHiNeural"      | Általános kérdések |
+| `nb-NO` | Norvég                       | Nő | "NB-NO-IselinNeural"     | Általános kérdések |
+| `pt-BR` | Portugál (Brazília)             | Nő | "PT-BR-FranciscaNeural"  | Általános kérdések |
+| `tr-TR` | Török                         | Nő | "TR-TR-EmelNeural"       | Általános kérdések |
+| `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő | "zh-CN-XiaoxiaoNeural"   | Általános, több hangstílus érhető el |
+|         |                                 | Nő | "zh-CN-XiaoyouNeural"    | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
+|         |                                 | Férfi   | "zh-CN-YunyangNeural"    | A hírek olvasására optimalizált, több hangstílus érhető el |
+|         |                                 | Férfi   | "zh-CN-YunyeNeural"      | A történet elbeszéléséhez optimalizált |
 
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
@@ -309,7 +313,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

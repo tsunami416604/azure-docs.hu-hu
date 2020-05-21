@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402070"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725533"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
 
@@ -37,9 +37,11 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 
 4. [Pontosság kiértékelése](how-to-custom-speech-evaluate-data.md) – a beszédfelismerési modell pontosságának kiértékelése. A [Custom Speech-portál](https://speech.microsoft.com/customspeech) egy *szó szerinti hibát jelez*, amellyel meghatározható, hogy szükség van-e további képzésre. Ha elégedett a pontossággal, a Speech Service API-jait közvetlenül is használhatja. Ha a pontosságot 5%-20%-os relatív átlagban szeretné növelni, a portálon a **betanítás** lapon további betanítási adatok (például emberi feliratú átiratok és kapcsolódó szövegek) tölthetők fel.
 
-5. [A modell betanítása](how-to-custom-speech-train-model.md) – a beszédfelismerési modell pontosságának javítása írásos átiratokkal (10 – 1000 óra) és a kapcsolódó szöveggel (<200 MB) együtt a hangteszt adataival. Ez az érték segít a beszéd – szöveg modell betanításában. Ha betanítást, újratesztelést végez, és ha elégedett az eredménnyel, üzembe helyezheti a modellt.
+5. [Javítsa a pontosságot](how-to-custom-speech-improve-accuracy.md) – válassza a további betanítási adatok stratégiailag lehetőséget a forgatókönyv alapján a beszédfelismerési modell minőségének javításához.
 
-6. [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md) – hozzon létre egy egyéni végpontot a beszéd – szöveg modellhez, és használja azt az alkalmazásokban, eszközökben vagy termékekben.
+6. [A modell betanítása](how-to-custom-speech-train-model.md) – a beszédfelismerési modell pontosságának javítása írásos átiratokkal (10 – 1000 óra) és a kapcsolódó szöveggel (<200 MB) együtt a hangteszt adataival. Ez az érték segít a beszéd – szöveg modell betanításában. Ha betanítást, újratesztelést végez, és ha elégedett az eredménnyel, üzembe helyezheti a modellt.
+
+7. [A modell üzembe helyezése](how-to-custom-speech-deploy-model.md) – hozzon létre egy egyéni végpontot a beszéd – szöveg modellhez, és használja azt az alkalmazásokban, eszközökben vagy termékekben.
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
@@ -64,7 +66,7 @@ Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd
 > [!IMPORTANT]
 > A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

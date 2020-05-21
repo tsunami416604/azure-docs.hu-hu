@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 52258a8bc287df36158ec143e4aad74c34455ea4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e015999d8c1f60340fb30609c6563f770c5c824f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80236077"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726213"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -78,7 +78,7 @@ A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-ve
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, használhatja azt is. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet.
 
-A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. Cserélje `{hub_name}` le az nevet az IoT hub egyedi nevére.
+A következő kód egy ingyenes **F1** központot hoz létre az **IoTEdgeResources** erőforráscsoportban. Cserélje le `{hub_name}` az nevet az IoT hub egyedi nevére.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -102,7 +102,7 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szo
    az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
-   Ha hibajelzést kap az iothubowner szabályzatkulcsokról, győződjön meg róla, hogy a cloud shell az azure-cli-iot-ext bővítmény legújabb verzióját futtatja.
+   Ha hibaüzenetet kap a iothubowner, győződjön meg arról, hogy a Cloud shell az Azure-IOT bővítmény legújabb verzióját futtatja.
 
 2. Kérje le az eszköze kapcsolati sztringjét, amely összeköti a fizikai eszközt az IoT Hubban tárolt identitással.
 
@@ -126,7 +126,7 @@ A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>A IoT Edge eszközön a kapcsolatok karakterláncának beállítása
 
-Ha az előfeltételekben leírtak szerint az Ubuntu virtuális gépen a Azure IoT Edge használja, akkor az eszközön már telepítve van a IoT Edge futtatókörnyezet. Az eszközt csak az előző szakaszban lekért eszköz-kapcsolódási karakterlánccal kell konfigurálnia. Ezt távolról is megteheti anélkül, hogy kapcsolódnia kellene a virtuális géphez. Futtassa a következő parancsot, és `{device_connection_string}` cserélje le a kifejezést a saját sztringre.
+Ha az előfeltételekben leírtak szerint az Ubuntu virtuális gépen a Azure IoT Edge használja, akkor az eszközön már telepítve van a IoT Edge futtatókörnyezet. Az eszközt csak az előző szakaszban lekért eszköz-kapcsolódási karakterlánccal kell konfigurálnia. Ezt távolról is megteheti anélkül, hogy kapcsolódnia kellene a virtuális géphez. Futtassa a következő parancsot, és cserélje le a kifejezést a `{device_connection_string}` saját sztringre.
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
@@ -136,7 +136,7 @@ Ha IoT Edget futtat a helyi gépen vagy egy ARM32 vagy ARM64-eszközön, telepí
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Az IoT Edge-futtatókörnyezet állapotának megtekintése
 
-Az ebben a rövid útmutatóban szereplő további parancsok a IoT Edge eszközön történnek, így megtekintheti, hogy mi történik az eszközön. Ha virtuális gépet használ, most a létrehozási parancs kimenetében lévő nyilvános IP-címet használva kapcsolódjon ehhez a géphez. A nyilvános IP-címet a virtuális gép áttekintő lapján is megtalálhatja a Azure Portal. Használja a következő parancsot a virtuális géphez való csatlakozásra. Cserélje `{azureuser}` le, ha az előfeltételekben javasolttól eltérő felhasználónevet használt. Cserélje `{publicIpAddress}` le a helyére a gép címe értékét.
+Az ebben a rövid útmutatóban szereplő további parancsok a IoT Edge eszközön történnek, így megtekintheti, hogy mi történik az eszközön. Ha virtuális gépet használ, most a létrehozási parancs kimenetében lévő nyilvános IP-címet használva kapcsolódjon ehhez a géphez. A nyilvános IP-címet a virtuális gép áttekintő lapján is megtalálhatja a Azure Portal. Használja a következő parancsot a virtuális géphez való csatlakozásra. Cserélje le `{azureuser}` , ha az előfeltételekben javasolttól eltérő felhasználónevet használt. Cserélje le a helyére a `{publicIpAddress}` gép címe értékét.
 
    ```console
    ssh azureuser@{publicIpAddress}
@@ -205,7 +205,7 @@ Tekintse meg a hőmérséklet-érzékelő modulból küldött üzeneteket:
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben törölheti a létrehozott Azure-erőforrásokat a díjak elkerülése érdekében.
 
@@ -217,7 +217,7 @@ Távolítsa el az **IoTEdgeResources** csoportot.
 az group delete --name IoTEdgeResources
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

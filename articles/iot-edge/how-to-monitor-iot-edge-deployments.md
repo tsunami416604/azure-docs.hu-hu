@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc7c1fd1dff85908c96e2fd7b2276df3d833e37f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134311"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726043"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Üzemelő IoT Edge-példányok monitorozása
 
@@ -44,7 +44,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 
     | Oszlop | Leírás |
     | --- | --- |
-    | ID (Azonosító) | A központi telepítés neve. |
+    | ID | A központi telepítés neve. |
     | Típus | A központi telepítés típusa, vagy a **telepítés** vagy a **rétegzett telepítés**. |
     | Cél feltétel | A célként megadott eszközök definiálásához használt címke. |
     | Prioritás | A központi telepítéshez rendelt prioritási szám. |
@@ -67,7 +67,7 @@ Az üzembe helyezés módosításához lásd: [központi telepítés módosítá
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Üzemelő példány figyelése az Azure CLI-vel
 
-Egy központi telepítés részleteinek megjelenítéséhez használja az az [IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) parancsot:
+Egy központi telepítés részleteinek megjelenítéséhez használja az az [IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) parancsot:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -85,7 +85,7 @@ Vizsgálja meg a központi telepítést a parancsablakban.A **metrikák** tulajd
 * **reportedSuccessfulCount** – az eszköz metrikája, amely meghatározza, hogy hány IoT Edge eszköz szerepel a központi telepítési jelentéskészítés sikerességében a IoT Edge ügyfél futtatókörnyezetében.
 * **reportedFailedCount** – az eszköz metrikája, amely meghatározza, hogy hány IoT Edge eszköz szerepel a központi telepítés jelentéskészítési hibájában a IoT Edge ügyfél futtatókörnyezetből.
 
-Az az [IoT Edge Deployment show-metrikus](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) paranccsal megjelenítheti az egyes mérőszámokhoz tartozó eszközök azonosítóit vagy objektumait.
+Az az [IoT Edge Deployment show-metrikus](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) paranccsal megjelenítheti az egyes mérőszámokhoz tartozó eszközök azonosítóit vagy objektumait.
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
@@ -94,11 +94,11 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 Az üzembe helyezés megjelenítése-metrika parancs a következő paramétereket veszi figyelembe:
 
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve.
-* **--metrikus azonosító** – annak a metrikának a neve, amelyre vonatkozóan meg szeretné jeleníteni az eszközök azonosítóinak listáját, például `reportedFailedCount`:.
-* **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`.
+* **--metrikus azonosító** – annak a metrikának a neve, amelyre vonatkozóan meg szeretné jeleníteni az eszközök azonosítóinak listáját, például: `reportedFailedCount` .
+* **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]` .
 
 Az üzembe helyezés módosításához lásd: [központi telepítés módosítása](how-to-deploy-cli-at-scale.md#modify-a-deployment).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kommunikálhat a EdgeAgent a beépített közvetlen metódusok használatával](how-to-edgeagent-direct-method.md).

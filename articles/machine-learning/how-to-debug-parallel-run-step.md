@@ -10,12 +10,12 @@ ms.reviewer: trbye, jmartens, larryfr, vaidyas
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
-ms.openlocfilehash: b5431ae574f40c29368848808004a53abe43c3a8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4e2777f59bab8d7d874019004bff2e30395ab1d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680971"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723476"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep hibakeresése és hibaelhárítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ A ParallelRunStep-feladatok elosztott jellegéből adódóan számos különböz
 
 A EntryScript Helper és Print utasítások használatával generált naplók a következő fájlokban találhatók:
 
-- `~/logs/user/<node_name>.log.txt`: Entry_script a EntryScript Helper használatával írt naplók. A entry_script a Print utasítást (StdOut) is tartalmazza.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Entry_script a EntryScript Helper használatával írt naplók. A entry_script a Print utasítást (StdOut) is tartalmazza.
 
 A parancsfájlban található hibák tömör megismeréséhez a következőt kell tennie:
 
@@ -111,7 +111,7 @@ args, _ = parser.parse_known_args()
 labels_path = args.labels_dir
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg az SDK-referenciát, amely segítséget nyújt a [azureml-felépítések](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) és a ParallelRunStep osztály [dokumentációjában](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) .
 

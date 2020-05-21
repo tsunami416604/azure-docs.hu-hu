@@ -1,14 +1,14 @@
 ---
 title: Költségek elemzése és költségvetés
 description: Ismerje meg, hogyan hozhatja létre a költségek elemzését, és hogyan állíthat be költségvetést a Batch számítási feladatainak futtatásához használt számítási erőforrások és szoftverlicenc számára.
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: c3c3203882d003d7fbb5f9d5092a1c93886f313a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117488"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725771"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Cost Analysis és költségvetések Azure Batch
 
@@ -43,7 +43,7 @@ A Azure Portal segítségével költségvetéseket hozhat létre, és elkölthet
 1. A Azure Portal válassza a **Cost Management + számlázás** lehetőséget a bal oldali navigációs sávon.
 1. Előfizetés kiválasztása a **saját előfizetések** szakaszból
 1. A bal oldali navigációs sáv **Cost Management** szakaszában kattintson a **Cost Analysis** elemre, amely a következőképpen jelenik meg:
-1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben **válassza ki az erőforrás** ![elemet, majd válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
+1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő **menüben válassza ki** ![ az erőforrás elemet, majd válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
 1. A második legördülő menüben válassza ki a Batch-készletet. A készlet kiválasztása után a Cost Analysis a következő elemzéshez hasonlóan fog kinézni.
     ![Készlet költséghatékonyságának elemzése](./media/batch-budget/pool-cost-analysis.png)
 
@@ -68,7 +68,7 @@ Ismerje meg, hogyan állíthat be alacsony prioritású virtuális gépeket a sz
 
 ### <a name="virtual-machine-os-disk-type"></a>Virtuális gép operációsrendszer-lemezének típusa
 
-Több [virtuális gép operációsrendszer-lemeze](../virtual-machines/windows/disks-types.md)van. A legtöbb virtuálisgép-sorozat a prémium és a standard szintű tárolást egyaránt támogató méretekkel rendelkezik. Ha egy készlethez a virtuális gép mérete van kiválasztva, a Batch a prémium szintű SSD operációsrendszer-lemezeket konfigurálja. Ha a "nem s" virtuálisgép-méret van kiválasztva, akkor a rendszer az olcsóbb, standard szintű HDD-lemez típusát használja. A prémium szintű SSD operációsrendszer `Standard_D2s_v3` -lemezeket például a és a standard HDD operációsrendszer-lemezek használják `Standard_D2_v3`.
+Több [virtuális gép operációsrendszer-lemeze](../virtual-machines/windows/disks-types.md)van. A legtöbb virtuálisgép-sorozat a prémium és a standard szintű tárolást egyaránt támogató méretekkel rendelkezik. Ha egy készlethez a virtuális gép mérete van kiválasztva, a Batch a prémium szintű SSD operációsrendszer-lemezeket konfigurálja. Ha a "nem s" virtuálisgép-méret van kiválasztva, akkor a rendszer az olcsóbb, standard szintű HDD-lemez típusát használja. A prémium szintű SSD operációsrendszer-lemezeket például a `Standard_D2s_v3` és a standard HDD operációsrendszer-lemezek használják `Standard_D2_v3` .
 
 Prémium SSD operációsrendszer-lemezek drágábbak, de a nagyobb teljesítmény és a prémium szintű lemezekkel rendelkező virtuális gépek valamivel gyorsabban elkezdődhetnek, mint a standard HDD operációsrendszer-lemezekkel rendelkező virtuális gépek. A Batch használata esetén az operációsrendszer-lemez gyakran nincs használatban, mivel az alkalmazások és a feladatok fájljai a virtuális gépek ideiglenes SSD-lemezén találhatók. Ezért számos esetben nem kell fizetnie a prémium SSD számára, amelyet a virtuális gép méretének megadásakor kell kiépíteni.
 
@@ -82,7 +82,7 @@ Az [automatikus skálázás](batch-automatic-scaling.md) dinamikusan méretezi a
 
 További információ az automatikus skálázásról: [számítási csomópontok automatikus méretezése egy Azure batch készletben](batch-automatic-scaling.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Batch-megoldások létrehozásához és figyeléséhez elérhető [Batch API-król és eszközökről](batch-apis-tools.md) .  
 

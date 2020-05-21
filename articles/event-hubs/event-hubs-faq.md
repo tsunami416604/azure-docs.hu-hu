@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086368"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726247"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -71,7 +71,7 @@ Az üzenetek küldéséhez és fogadásához a következő protokollokat haszná
 
 Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
-| Protocol (Protokoll) | Portok | Részletek | 
+| Protokoll | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsola
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel `Non-authoritative answer`a VISSZAADOTT IP-címet. Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
 
 Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
@@ -150,9 +150,11 @@ Előfordulhat, hogy alacsony átviteli egységekkel (TUs) szeretne kezdeni, pél
 Ehhez a szolgáltatáshoz **nem tartozik díj** . 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Hogyan kényszeríti az átviteli korlátokat?
-Ha a névtérben lévő összes esemény-hubhoz kiterjedő teljes beáramlási sebesség vagy a teljes belépési arány meghaladja az összesített átviteli egységre vonatkozó kedvezményeket, a küldők szabályozva lesznek, és a bejövő forgalomra vonatkozó kvóta túllépése miatti hibákat jeleznek.
+Ha a névtérben lévő összes esemény-hubhoz kiterjedő teljes beáramlási sebesség vagy **a teljes** belépési arány meghaladja az összesített átviteli egységre vonatkozó kedvezményeket, a küldők szabályozva lesznek, és a bejövő forgalomra vonatkozó kvóta túllépése miatti hibákat jeleznek.
 
-Ha a teljes kimenő átviteli sebesség vagy az esemény teljes bevezetési aránya a névtérben lévő összes esemény-csomóponton meghaladja az összesített átviteli egységre vonatkozó kedvezményeket, a rendszer szabályozza a fogadókat, és a kimenő forgalomra vonatkozó kvóta túllépését jelző hibaüzeneteket küld. A bejövő és a kimenő forgalomra vonatkozó kvóták külön vannak kikényszerítve, így egyetlen feladó sem csökkentheti az események felhasználását, és nem akadályozhatja meg, hogy a fogadó eseményt küldjön az Event hub-ba.
+Ha a teljes **kimenő** forgalom vagy az esemény teljes kilépési aránya a névtérben lévő összes esemény hubok esetében meghaladja az összesített átviteli egységre vonatkozó kedvezményeket, a rendszer szabályozza a fogadókat, de nem generál szabályozási hibát. 
+
+A bejövő és a kimenő forgalomra vonatkozó kvóták külön vannak kikényszerítve, így egyetlen feladó sem csökkentheti az események felhasználását, és nem akadályozhatja meg, hogy a fogadó eseményt küldjön az Event hub-ba.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Korlátozva van a foglalható/kiválasztható átviteli egységek (TUs) száma?
 Több-bérlős ajánlat esetében az átviteli egységek akár 40-ig is növekednek (a portálon akár 20 darabot is kiválaszthat, és egy támogatási jegyet is megadhat, hogy 40 TUs-re ugyanazon a névtéren). Az 40-as túllépés Event Hubs a **dedikált Event Hubs-fürtök**nevű erőforrás/kapacitás alapú modellt kínálja. A dedikált fürtöket kapacitási egységekben (ke) értékesítjük.
@@ -236,7 +238,7 @@ Az összes Event Hubs kvóta listáját itt tekintheti meg: [kvóták](event-hub
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 
-Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists`. 
+Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Melyek a Event Hubs által generált kivételek és a javasolt műveletek?
 
@@ -252,7 +254,7 @@ A Event Hubs technikai támogatása a [közösségi fórumokon](https://social.m
 
 Ha többet szeretne megtudni az SLA-ról, tekintse meg a [szolgáltatói szerződéseket](https://azure.microsoft.com/support/legal/sla/) ismertető oldalt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

@@ -1,15 +1,15 @@
 ---
 title: Szolgáltatási kvóták és korlátok
 description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: a901d54ea584ec67bfa679e9cdc716ab27d45eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115822"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726570"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -80,14 +80,14 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
 ### <a name="increase-cores-quota-in-batch"></a>Magok kvótájának bővítése a Batchben 
 
 1. Válassza a **Súgó + támogatás** csempét a portál irányítópultján, vagy a portál jobb felső sarkában látható kérdőjelet (**?**).
-1. Válassza az **új támogatási kérelem** > **alapjai**lehetőséget.
+1. Válassza az **új támogatási kérelem**  >  **alapjai**lehetőséget.
 1. Az **alapjaiban**:
    
-    a. **Probléma típusa** > **szolgáltatás és előfizetés korlátai (kvóták)**
+    a. **Probléma típusa**  >  **Szolgáltatás-és előfizetési korlátok (kvóták)**
    
     b. Válassza ki előfizetését.
    
-    c. **Kvóta típusa** > **Batch**
+    c. **Kvóta típusa**  >  **Köteg**
       
     Kattintson a **Tovább** gombra.
     

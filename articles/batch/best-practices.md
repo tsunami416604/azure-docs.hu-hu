@@ -2,13 +2,13 @@
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 04/03/2020
-ms.topic: article
-ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117505"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725805"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -89,7 +89,7 @@ A feladatok olyan egyedi Munkaegységek, amelyek feladatból állnak. A feladato
 ### <a name="task-lifetime"></a>Feladat élettartama
 
 - **Feladatok törlése, ha elkészült.**
-    Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha be `retentionTime` van állítva, a Batch automatikusan törli a feladat által a `retentionTime` lejáratkor használt lemezterületet.
+    Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha `retentionTime` be van állítva, a Batch automatikusan törli a feladat által a lejáratkor használt lemezterületet `retentionTime` .
 
     A tevékenységek törlése két dolgot hajt végre. Gondoskodik arról, hogy a feladatban ne legyenek felépítve feladatok, így a lekérdezés/a feladat megkeresése nehezebben megkereshető (mivel a Befejezett feladatok alapján kell szűrnie). Emellett megtisztítja a kapcsolódó tevékenységadatok a csomóponton (a megadott `retentionTime` érték még nem lett kijelölve). Ez biztosítja, hogy a csomópontok ne töltsenek fel a feladattal kapcsolatos adatokkal, és elfogyjon a szabad lemezterület.
 
@@ -100,11 +100,11 @@ A feladatok olyan egyedi Munkaegységek, amelyek feladatból állnak. A feladato
 
 ### <a name="task-execution"></a>Feladat végrehajtása
 
-- **A feladatok maximális száma a csomóponton** A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra ( `maxTasksPerNode = 8`egy készletben a-ben).
+- **A feladatok maximális száma a csomóponton** A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra (egy készletben a-ben `maxTasksPerNode = 8` ).
 
 ### <a name="designing-for-retries-and-re-execution"></a>Újrapróbálkozások és újbóli végrehajtás tervezése
 
-A Batch automatikusan újrapróbálkozik a feladatokat. Az újrapróbálkozások két típusa létezik: a felhasználó által vezérelt és a belső. A felhasználó által vezérelt újrapróbálkozásokat a tevékenység [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)adja meg. Ha a feladatban megadott program nem nulla kilépési kóddal kilép, a feladat újra próbálkozik a értékével `maxTaskRetryCount`.
+A Batch automatikusan újrapróbálkozik a feladatokat. Az újrapróbálkozások két típusa létezik: a felhasználó által vezérelt és a belső. A felhasználó által vezérelt újrapróbálkozásokat a tevékenység [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)adja meg. Ha a feladatban megadott program nem nulla kilépési kóddal kilép, a feladat újra próbálkozik a értékével `maxTaskRetryCount` .
 
 Bár ritka, a feladat a számítási csomópont meghibásodása miatt újra próbálkozhat, például nem lehet frissíteni a belső állapotot vagy a csomópont meghibásodását a feladat futása közben. A feladat újra próbálkozik ugyanazon a számítási csomóponton, ha lehetséges, akár egy belső korláttal, mielőtt felveszi a feladatot, és elhalasztja, hogy a Batch által átütemezett feladatot, esetleg egy másik számítási csomóponton.
 
@@ -121,7 +121,7 @@ Bár ritka, a feladat a számítási csomópont meghibásodása miatt újra pró
 - **Az indítási tevékenységeknek idempotens kell lenniük** A többi feladathoz hasonlóan a csomópont indítási tevékenységének is idempotens kell lennie, mivel a csomópont minden indításakor újra futni fog. Egy idempotens feladat egyszerűen egy, amely konzisztens eredményt állít elő többszöri futtatásakor.
 
 - **A hosszú ideig futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül.**
-    Előfordulhat, hogy egy másik ügynököt kell futtatnia a csomópontban található batch-ügynök mellett, például az adatoknak a csomópontból való összegyűjtéséhez és jelentéséhez. Javasoljuk, hogy ezeket az ügynököket operációs rendszerként, például Windows-szolgáltatásként vagy Linux `systemd` -szolgáltatásként telepítse.
+    Előfordulhat, hogy egy másik ügynököt kell futtatnia a csomópontban található batch-ügynök mellett, például az adatoknak a csomópontból való összegyűjtéséhez és jelentéséhez. Javasoljuk, hogy ezeket az ügynököket operációs rendszerként, például Windows-szolgáltatásként vagy Linux-szolgáltatásként telepítse `systemd` .
 
     Ezeknek a szolgáltatásoknak a futtatásakor a rendszer nem tudja zárolni a fájl zárolásait a csomóponton található batch által felügyelt könyvtárakban, mert máskülönben a Batch nem fogja tudni törölni ezeket a címtárakat a fájlok zárolása miatt. Ha például Windows-szolgáltatást telepít egy indítási feladatba, ahelyett, hogy közvetlenül az indítási tevékenység munkakönyvtárból indítja el a szolgáltatást, másolja máshová a fájlokat (ha a fájlok már csak kihagyják a másolatot). Telepítse a szolgáltatást az adott helyről. Ha a Batch újrakezdi a kezdési feladatot, az törli a feladat indítása munkakönyvtárat, és újra létrehozza azt. Ez azért működik, mert a szolgáltatás fájl-zárolások vannak a másik címtárban, nem pedig az indítási tevékenység munkakönyvtára.
 

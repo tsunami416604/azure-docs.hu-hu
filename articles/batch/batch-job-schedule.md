@@ -1,16 +1,15 @@
 ---
 title: Feladatok beosztása
 description: Feladatok kezelése feladatütemezés használatával.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 49b2064d38f9f646c6189d859479d2414569ff60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75f635a937dcddd2c1c02cc717f96f1441efe81
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116876"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726638"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Feladatok ütemezése a hatékony végrehajtás érdekében
 
@@ -70,7 +69,7 @@ Ha a **Mentés**gombra kattint, ha a bal oldali navigációs sávon a **feladato
 
 Ha az Azure CLI használatával szeretné kezelni a feladatokat, tekintse meg az [az batch Job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feladat függőségeinek létrehozása olyan feladatok futtatásához, amelyek más feladatoktól függenek](batch-task-dependencies.md).
 

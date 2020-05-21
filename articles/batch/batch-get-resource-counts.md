@@ -2,14 +2,14 @@
 title: A feladatokhoz és a csomópontokhoz tartozó állapotok száma
 description: Azure Batch feladatok és számítási csomópontok állapotának megszámlálása a Batch-megoldások kezeléséhez és figyeléséhez.
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116094"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726689"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-megoldások figyelése a feladatok és a csomópontok állapot szerinti számlálásával
 
@@ -29,11 +29,11 @@ Ha a szolgáltatás olyan verzióját használja, amely nem támogatja a feladat
 
 A lekérési feladatok számlálása művelet a következő állapotok szerint számítja ki a feladatokat:
 
-- **Aktív** – a várólistára helyezett és futtatandó feladat, de jelenleg nincs hozzárendelve számítási csomóponthoz. A feladat akkor is `active` fennáll, ha [egy olyan fölérendelt feladattól függ](batch-task-dependencies.md) , amely még nem fejeződött be. 
-- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. A feladatok akkor számítanak bele `running` , ha az állapota `preparing` vagy `running`a, ahogy azt a feladat műveletével kapcsolatos [információk lekérése][rest_get_task] jelzi.
+- **Aktív** – a várólistára helyezett és futtatandó feladat, de jelenleg nincs hozzárendelve számítási csomóponthoz. A feladat akkor is fennáll, `active` Ha [egy olyan fölérendelt feladattól függ](batch-task-dependencies.md) , amely még nem fejeződött be. 
+- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. A feladatok akkor számítanak bele, `running` Ha `preparing` az állapota vagy `running` a, ahogy azt a feladat műveletével kapcsolatos [információk lekérése][rest_get_task] jelzi.
 - **Befejezve** – olyan feladat, amely már nem jogosult a futtatásra, mert az sikeresen befejeződött, vagy a művelet sikertelenül fejeződött be, és kimerítette az újrapróbálkozási korlátot is. 
-- **Sikeres** – A feladat végrehajtásának eredményét eredményező feladat `success`. A Batch meghatározza, hogy a feladat sikeres volt-e, vagy `TaskExecutionResult` sikertelen volt-e a [executionInfo][rest_get_exec_info] tulajdonság tulajdonságának ellenőrzésével.
-- **Sikertelen művelet** Egy feladat, amelynek eredményeként a feladat végrehajtása `failure`történik.
+- **Sikeres** – A feladat végrehajtásának eredményét eredményező feladat `success` . A Batch meghatározza, hogy a feladat sikeres volt-e, vagy sikertelen volt-e a `TaskExecutionResult` [executionInfo][rest_get_exec_info] tulajdonság tulajdonságának ellenőrzésével.
+- **Sikertelen művelet** Egy feladat, amelynek eredményeként a feladat végrehajtása történik `failure` .
 
 A következő .NET-kód minta bemutatja, hogyan lehet lekérdezni a tevékenységek számát állapot szerint: 
 
@@ -66,7 +66,7 @@ A címkészlet-csomópontok számlálása művelet a következő állapotok alap
 - **Reimaging** – a csomópont, amelyen az operációs rendszer újratelepítése zajlik.
 - **Futtatás** – egy vagy több feladatot futtató csomópont (az indítási tevékenységen kívül).
 - **Indítás** – a Batch szolgáltatást indító csomópont. 
-- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat][rest_start_task] meghiúsult, és az összes újrapróbálkozást kimerítette, és amelyen `waitForSuccess` az indítási tevékenység van beállítva. A csomópont nem használható a feladatok futtatásához.
+- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat][rest_start_task] meghiúsult, és az összes újrapróbálkozást kimerítette, és amelyen az `waitForSuccess` indítási tevékenység van beállítva. A csomópont nem használható a feladatok futtatásához.
 - **Ismeretlen** – egy olyan csomópont, amely elvesztette a kapcsolatot a Batch szolgáltatással, és amelynek állapota nem ismert.
 - **Használhatatlan** – olyan csomópont, amely hibák miatt nem használható a feladatok végrehajtásához.
 - **WaitingForStartTask** – olyan csomópont, amelyen az indítási tevékenység fut, de `waitForSuccess` be van állítva, és az indítási tevékenység nem fejeződött be.
@@ -113,7 +113,7 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
 ```
 A REST és más támogatott nyelvek esetében hasonló mintát használhat a készletek csomópontjainak megszerzéséhez.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges batch-erőforrásokat, például a készleteket, a számítási csomópontokat, a feladatokat és a feladatokat ismerteti, és áttekintést nyújt a szolgáltatás szolgáltatásairól.
 

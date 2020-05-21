@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730718"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722711"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure-beli virtuális gépek technikai eszközeinek létrehozása
-
-> [!IMPORTANT]
-> Az Azure-beli virtuálisgép-ajánlatok felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Amíg az ajánlatokat át nem telepíti, kövesse a [technikai eszközök létrehozása virtuális gépekhez](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) című témakör utasításait, amelyekkel a Cloud Partner Portal kezelheti ajánlatait.
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat technikai eszközöket az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlathoz. A virtuális gépek két összetevőt tartalmaznak: az operációs rendszer virtuális merevlemezét (VHD) és opcionálisan kapcsolódó adatlemezek VHD-ket:
 
@@ -270,7 +267,7 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
 1. **Az Azure Linux-ügynök eltávolítása**
 
     1. Csatlakozhat a linuxos virtuális géphez egy SSH-ügyfél használatával.
-    2. Az SSH ablakban adja meg a következő parancsot: `sudo waagent -deprovision+user`.
+    2. Az SSH ablakban adja meg a következő parancsot: `sudo waagent -deprovision+user` .
     3. A folytatáshoz írja be az **Y betűt** (a **-Force** paramétert hozzáadhatja az előző parancshoz, így elkerülhető a megerősítő lépés).
     d. A parancs befejezése után a **Kilépés** gombra kattintva zárja be az SSH-ügyfelet.
 
@@ -279,7 +276,7 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
     1. A Azure Portal válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
     2. A VHD-fájl már általánosítva van, és létrehozhat egy új virtuális gépet a virtuális merevlemez használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)című témakört.
 

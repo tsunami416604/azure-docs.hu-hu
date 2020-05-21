@@ -13,17 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 05/20/2020
 ms.author: shvija
-ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265011"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726094"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Események rögzítése Azure-Event Hubs az Azure-ban Blob Storage vagy Azure Data Lake Storage
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítsen egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban található Event Hubs adatfolyam-adatait, vagy [Azure Data Lake Storage 1. vagy 2. generációs](https://azure.microsoft.com/services/data-lake-store/) fiókot, és a rugalmasságot az idő vagy a méret megadásával. A rögzítés beállítása gyorsan elvégezhető, ezért a futtatásához nincs szükség felügyeleti költségekre, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). A Event Hubs Capture a legegyszerűbb módszer az adatfolyamok Azure-ba való betöltésére, és lehetővé teszi az adatfeldolgozásra koncentrálva az adatrögzítés helyett.
+
+> [!NOTE]
+> Ha úgy konfigurálja a Event Hubs rögzítést, hogy az Azure Data Lake Storage **Gen 2** legyen használatban, ugyanúgy, mint egy Azure-Blob Storage használatára. Részletekért lásd: [Event Hubs rögzítésének konfigurálása](event-hubs-capture-enable-through-portal.md). 
 
 A Event Hubs Capture lehetővé teszi a valós idejű és a Batch-alapú folyamatok feldolgozását ugyanazon az adatfolyamon. Ez azt jelenti, hogy olyan megoldásokat hozhat létre, amelyek az igényeknek megfelelően növekednek. Akár még ma is felhasználja a Batch-alapú rendszereket a jövőbeli valós idejű feldolgozás irányába, vagy ha egy meglévő valós idejű megoldáshoz hatékony, hideg elérési utat szeretne hozzáadni, Event Hubs a rögzítés megkönnyíti a folyamatos átviteli adatátvitelt.
 
@@ -44,7 +47,7 @@ A Event Hubs Capture lehetővé teszi egy ablak beállítását a rögzítés ve
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
 ```
 
-Vegye figyelembe, hogy a DÁTUMÉRTÉK nulla értékkel van feltöltve. a fájlnév például a következőket teheti:
+A DÁTUMÉRTÉK nulla értékkel van feltöltve. a fájlnév például a következőket teheti:
 
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
@@ -60,7 +63,7 @@ A konfigurálást követően Event Hubs rögzítés automatikusan elindul, amiko
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs rögzítésének beállítása
 
-A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információkért tekintse át a következő cikkeket:
+A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információért tekintse át a következő cikkeket:
 
 - [Az Event Hubs Capture engedélyezése az Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
 - [Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -129,7 +132,7 @@ Ez a parancs visszaadja
 
 A Avro-eszközök használatával a fájlt JSON formátumba alakíthatja át, és más feldolgozást is végezhet.
 
-A fejlettebb feldolgozáshoz töltse le és telepítse a Avro az Ön által választott platformra. Az írás időpontjában a következő implementációk érhetők el: C, C++, C\#, Java, NodeJS, Perl, php, Python és Ruby.
+A fejlettebb feldolgozáshoz töltse le és telepítse a Avro az Ön által választott platformra. Az írás időpontjában a következő implementációk érhetők el: C, C++, C \# , Java, NodeJS, Perl, php, Python és Ruby.
 
 Az Apache Avro teljes körű Első lépések útmutatók a [Javához][Java] és a [Pythonhoz][Python]. Olvassa el az [első lépések a Event Hubs Capture](event-hubs-capture-python.md) című cikket is.
 
@@ -137,13 +140,13 @@ Az Apache Avro teljes körű Első lépések útmutatók a [Javához][Java] és 
 
 A Event Hubs rögzítését az átviteli egységekhez hasonlóan kell mérni: óránkénti díj ellenében. A díj közvetlenül a névtérhez megvásárolt átviteli egységek számával arányos. Ahogy az átviteli egységek növekednek és csökkennek, Event Hubs rögzítési mérőszámok növelik és csökkennek a megfelelő teljesítmény biztosítása érdekében. A mérőórák párhuzamosan történnek. A díjszabással kapcsolatos részletekért tekintse meg a [Event Hubs díjszabását](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
-Vegye figyelembe, hogy a rögzítés nem használja fel a kimenő forgalomra vonatkozó kvótát, mivel azt külön számlázzák. 
+A rögzítés nem használja fel a kimenő forgalomra vonatkozó kvótát, mivel azt külön számlázzák. 
 
 ## <a name="integration-with-event-grid"></a>Integráció a Event Grid 
 
 Létrehozhat egy Azure Event Grid-előfizetést egy Event Hubs névtér forrásaként. A következő oktatóanyag azt mutatja be, hogyan hozhat létre egy Event Grid-előfizetést egy Event hub forrásként és egy Azure Functions alkalmazásként fogadóként: a [rögzített Event Hubs-adatforrások feldolgozásához és áttelepítéséhez SQL Data Warehouse Event Grid és Azure functions használatával](store-captured-data-data-warehouse.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Hubs Capture az Azure-ba való adatgyűjtésének legegyszerűbb módja. A Azure Data Lake, a Azure Data Factory és az Azure HDInsight használatával kötegelt feldolgozást és egyéb elemzéseket végezhet a választott eszközök és platformok használatával, bármilyen méretezéssel.
 
 Ismerje meg, hogyan engedélyezheti ezt a funkciót a Azure Portal és a Azure Resource Manager sablonnal:

@@ -1,6 +1,6 @@
 ---
-title: F5-adatkapcsolatok az Azure Sentinel-be | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók az F5-es adatkapcsolatok az Azure Sentinelhez.
+title: Az F5 ASM-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók az F5 ASM-beli adatközpontok az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -10,38 +10,38 @@ ms.assetid: 0001cad6-699c-4ca9-b66c-80c194e439a5
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 6f33cecca1c67f91d0f2be64ab156f45ee500521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee8ec9b6532042659d54d590a29d49e7ce07c92
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588263"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715834"
 ---
-# <a name="connect-f5-to-azure-sentinel"></a>Az F5 és az Azure Sentinel összekötése
+# <a name="connect-f5-asm-to-azure-sentinel"></a>Az F5 ASM és az Azure Sentinel összekötése
 
-Ez a cikk azt ismerteti, hogyan csatlakoztatható az F5-es készülék az Azure Sentinelhez. Az F5 adatösszekötővel könnyedén csatlakoztathatja az F5-naplókat az Azure Sentinel segítségével, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. Az F5 használata az Azure Sentinelben részletesebb információkat biztosít a szervezet internetes használatáról, és fokozza a biztonsági üzemeltetési képességeit. 
+Ez a cikk azt ismerteti, hogyan használható az F5 ASM adatösszekötő az F5 ASM-naplók az Azure Sentinelbe való egyszerű lekéréséhez. Ez lehetővé teszi, hogy megtekintse az F5-es ASM-adatlapokat a munkafüzetekben, hogy egyéni riasztásokat hozzon létre, és beépítse azt a vizsgálat javítására. Ha az F5 ASM-adatok az Azure Sentinelben jelennek meg, a szervezet webalkalmazás-biztonságával kapcsolatos további betekintést nyújt, és fokozza a biztonsági műveletek képességeit. 
 
-## <a name="configure-your-f5-to-send-cef-messages"></a>Az F5 beállítása CEF üzenetek küldéséhez
+## <a name="configure-your-f5-asm-to-send-cef-messages"></a>Az F5 ASM beállítása CEF üzenetek küldéséhez
 
-1. Lépjen az [alkalmazás-biztonsági események naplózása beállításnál az F5 billentyűre](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html), és kövesse az utasításokat a távoli naplózás beállításához az alábbi irányelvek alapján:
+1. A távoli naplózás beállításához kövesse az [alkalmazás-biztonsági események naplózása az F5](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html) -ben című témakör utasításait az alábbi irányelvek alapján:
    - Állítsa a **távoli tárterület típusát** **CEF**értékre.
    - Állítsa a **protokollt** a **TCP**értékre.
    - Állítsa be az **IP-címet** a syslog-kiszolgáló IP-címére.
    - Állítsa a **portszámot** **514**-re, vagy azt a portot, amelyet az ügynöknek használnia kell.
    - Beállíthatja a **lekérdezési karakterlánc maximális méretét** az ügynökben beállított méretre.
 
-1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt `CommonSecurityLog`:.
+1. A CEF-események Log Analytics vonatkozó sémájának használatához keresse meg a következőt: `CommonSecurityLog` .
 
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
-## <a name="next-steps"></a>További lépések
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az F5 az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+## <a name="next-steps"></a>Következő lépések
+Ebből a dokumentumból megtanulta, hogyan csatlakoztatható az F5 ASM az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.

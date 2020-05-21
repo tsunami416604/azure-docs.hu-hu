@@ -4,13 +4,13 @@ description: Renderelési alkalmazások használata Azure Batch használatával.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115805"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726502"
 ---
 # <a name="rendering-applications"></a>Alkalmazások renderelése
 
@@ -29,7 +29,7 @@ A 3ds Max-ban beépített renderelő elemek mellett a következő megjelenítők
 
 ### <a name="task-command-line"></a>Feladat parancssora
 
-Hívja meg `3dsmaxcmdio.exe` az alkalmazást a parancssori renderelés végrehajtásához egy készlet-csomóponton.  Ez az alkalmazás a feladat futtatásakor megadott elérési úton található. Az `3dsmaxcmdio.exe` alkalmazás ugyanazokkal az elérhető paraméterekkel rendelkezik `3dsmaxcmd.exe` , mint az alkalmazás, amelyet a [3ds Max Súgó dokumentációjában talál](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderelés | Parancssori renderelés szakasza).
+Hívja `3dsmaxcmdio.exe` meg az alkalmazást a parancssori renderelés végrehajtásához egy készlet-csomóponton.  Ez az alkalmazás a feladat futtatásakor megadott elérési úton található. Az `3dsmaxcmdio.exe` alkalmazás ugyanazokkal az elérhető paraméterekkel rendelkezik `3dsmaxcmd.exe` , mint az alkalmazás, amelyet a [3ds Max Súgó dokumentációjában talál](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderelés | Parancssori renderelés szakasza).
 
 Például:
 
@@ -81,6 +81,6 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 A készlet **és a feladatok sablonjai a Batch Explorer** katalógusában érhetők el.  A sablon forrásfájljait a [GitHub batch Explorer adattárában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)érheti el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Használja a készletet és a feladatsort a [GitHub adattárházában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) batch Explorer használatával.  Ha szükséges, hozzon létre új sablonokat, vagy módosítsa a megadott sablonok egyikét.

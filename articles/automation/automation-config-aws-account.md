@@ -1,36 +1,42 @@
 ---
 title: Azure Automation-forgatókönyvek hitelesítése az Amazon Web Services segítségével
-description: Ez a cikk ismerteti, hogyan lehet létrehozni és megerősíteni egy AWS hitelesítést az Azure Automation forgatókönyveihez, amelyek az AWS-erőforrásokat kezelik.
+description: Ez a cikk azt ismerteti, hogyan hitelesítheti a runbookok a Amazon Web Services használatával.
 keywords: aws-hitelesítés, aws konfigurálása
 services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92919d2e0cc7ca685d2b60a8e7a8cf20433bbefc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 0c724b1782381c0499991124c359d3e1339109d3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994716"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715800"
 ---
-# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>Azure Automation-forgatókönyvek hitelesítése az Amazon Web Services segítségével
+# <a name="authenticate-runbooks-with-amazon-web-services"></a>Runbookok hitelesítése az Amazon Web Services segítségével
 
-Az általános feladatoknak az Amazon webszolgáltatások (AWS) erőforrásaival történő automatizálása az Automation forgatókönyvekkel lehetséges az Azure szolgáltatásban. Sok feladatot automatizálhat az AWS-ben az Automation forgatókönyvek használatával, ugyanúgy, mint az Azure erőforrásaival. Mindössze két dologra van szükség:
+Az általános feladatoknak az Amazon webszolgáltatások (AWS) erőforrásaival történő automatizálása az Automation forgatókönyvekkel lehetséges az Azure szolgáltatásban. Sok feladatot automatizálhat az AWS-ben az Automation forgatókönyvek használatával, ugyanúgy, mint az Azure erőforrásaival. A hitelesítéshez rendelkeznie kell egy Azure-előfizetéssel.
 
-* Egy AWS-előfizetésre és a hitelesítő adatokra. Konkréten az AWS-hozzáférési kulcsára és a titkos kulcsára. További információkért tekintse át az [AWS hitelesítő adatok használatával](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) foglalkozó cikket.
-* Egy Azure-előfizetésre és egy Automation-fiókra.
+## <a name="obtain-aws-subscription-and-credentials"></a>AWS-előfizetés és hitelesítő adatok beszerzése
 
-Az AWS használatával történő hitelesítéshez meg kell határozni az AWS hitelesítő adatokat az Azure Automation által futtatott forgatókönyvek hitelesítéséhez. Ha már létrehozott egy Automation-fiókot, és annak használatával szeretne AWS felé hitelesíteni, kövesse a következő szakaszban leírt lépéseket. Ha az AWS-erőforrásokra vonatkozó runbookok fiókot szeretne hozzárendelni, először hozzon létre egy új [Automation-fiókot](automation-create-standalone-account.md) , és hagyja ki a lépést a futtató fiók létrehozásához. A fiók létrehozása után kövesse az alábbi lépéseket a konfiguráció befejezéséhez.
+Az AWS-sel való hitelesítéshez be kell szereznie egy AWS-előfizetést, és meg kell adnia az AWS hitelesítő adatok készletét, hogy hitelesítse a runbookok futó Azure Automation. A megadott hitelesítő adatok az AWS hozzáférési kulcs és a titkos kulcs. Lásd: [AWS hitelesítő adatok használata](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).
 
 ## <a name="configure-automation-account"></a>Automation-fiók konfigurálása
 
-Ahhoz, hogy az Azure Automation és az AWS kommunikáljon egymással, először le kell kérnie AWS hitelesítő adatait, és objektumként kell tárolnia őket az Azure Automationben. Végezze el az [AWS-fiók elérési kulcsának kezelése](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) című dokumentumban leírt lépéseket egy elérési kulcs létrehozásához, és másolja át az **Elérési kulcs azonosítóját** és a **Titkos elérési kulcsot** (vagy le is töltheti kulcsfájlját, hogy egy másik, biztonságos helyen tárolja azt).
+Egy meglévő Automation-fiókot használhat az AWS-sel való hitelesítéshez. Azt is megteheti, hogy hozzárendel egy fiókot az AWS-erőforrásokra irányuló runbookok. Ebben az esetben hozzon létre egy új [Automation-fiókot](automation-create-standalone-account.md).  
 
-Miután létrehozta és átmásolta AWS biztonsági kulcsait, létre kell hoznia egy hitelesítőadat-objektumot egy Azure Automation-fiókhoz, hogy biztonságosan tudja tárolni őket, és hivatkozni tudjon rájuk a runbookokkal. Kövesse a következő szakaszban ismertetett lépéseket: **új hitelesítő adatok létrehozása** a [hitelesítő adatokban Azure Automation](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) cikkben, és adja meg az alábbi adatokat:
+## <a name="store-aws-credentials"></a>Az AWS hitelesítő adatainak tárolása
 
-1. A **Név** mezőbe írja be az **AWScred** nevet, vagy egy megfelelő értéket, amely követi az elnevezési szabványait.
-2. A **Felhasználónév** mezőbe írja be a **hozzáférési azonosítót** és a **titkos elérési kulcsot** a **jelszó** és **Jelszó megerősítése** mezőbe.
+Az AWS hitelesítő adatait a Azure Automation eszközeiként kell tárolnia. A hozzáférési kulcs és a titkos kulcs létrehozásával kapcsolatos útmutatásért lásd: az [AWS-fiók hozzáférési kulcsainak kezelése](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) . Ha a kulcsok elérhetők, másolja a hozzáférési kulcs AZONOSÍTÓját és a titkos kulcs AZONOSÍTÓját egy biztonságos helyre. Letöltheti a kulcsfájl biztonságos tárolásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="create-credential-asset"></a>Hitelesítőadat-eszköz létrehozása
 
-* Tekintse át a [virtuális gép üzembe helyezésének automatizálását Amazon Web Servicesban](automation-scenario-aws-deployment.md) , hogy megtudja, hogyan hozhat létre RUNBOOKOK az AWS-feladatok automatizálásához.
+Miután létrehozta és átmásolta az AWS biztonsági kulcsait, létre kell hoznia egy hitelesítőadat-eszközt az Automation-fiókkal. Az eszköz lehetővé teszi az AWS-kulcsok biztonságos tárolását, és azok hivatkozását a runbookok. Lásd: [új hitelesítőadat-eszköz létrehozása a Azure Portal](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Adja meg a következő AWS-adatokat a megadott mezőkben:
+    
+* **Név**  -  **AWScred**vagy az elnevezési szabványokat követő megfelelő érték
+* **Felhasználónév** – a hozzáférési azonosító
+* **Jelszó** – a titkos kulcs neve 
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Virtuális gép üzembe helyezésének automatizálása Amazon Web Services](automation-scenario-aws-deployment.md)

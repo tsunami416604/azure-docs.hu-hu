@@ -1,15 +1,15 @@
 ---
 title: Feladatok végpontok közötti futtatása sablonok használatával
 description: Csak a CLI-parancsokkal hozhat létre készleteket, tölthet fel bemeneti adatokat, feladatokat és kapcsolódó tevékenységeket hozhat létre, és letöltheti az eredményül kapott kimeneti adatokat.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117352"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726774"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
@@ -61,7 +61,7 @@ Azure Batch sablonok hasonlók a Azure Resource Manager-sablonokhoz, a funkciona
 
 -   **Paraméterek**
 
-    -   Tulajdonságok értékének engedélyezése a törzs szakaszban, csak a sablon használatakor szükséges paraméterek értékeit kell megadni. Egy készlet teljes definíciója például elhelyezhető a törzsben, és csak egy paraméter van definiálva a következőhöz: `poolId`; a készlet létrehozásához csak a készlet azonosító sztringjét kell megadni.
+    -   Tulajdonságok értékének engedélyezése a törzs szakaszban, csak a sablon használatakor szükséges paraméterek értékeit kell megadni. Egy készlet teljes definíciója például elhelyezhető a törzsben, és csak egy paraméter van definiálva; a készlet `poolId` létrehozásához csak egy készlet-azonosító karakterláncot kell megadni.
         
     -   A sablon törzsét valaki a Batch ismeretével és a Batch által futtatandó alkalmazások létrehozásával tudja megtervezni. a sablon használatakor csak a szerző által definiált paraméterek értékeit kell megadni. A nem részletes batch és/vagy Application Knowledge nélküli felhasználók ezért használhatják a sablonokat.
 
@@ -253,7 +253,7 @@ Batch-készlet vagy-feladatok létrehozásához feltölthet egy batch CLI-sablon
 
 Sablon feltöltése:
 
-1. A Batch Explorer **területen válassza a** > katalógus**helyi sablonok**lehetőséget.
+1. A Batch Explorer **területen válassza a**katalógus  >  **helyi sablonok**lehetőséget.
 
 2. Válasszon ki vagy húzzon át egy helyi készletet vagy sablont.
 
@@ -283,7 +283,7 @@ A sablon-és fájlátviteli támogatás jelenleg csak az Azure CLI-hez lett hozz
 
 Próbálja ki az Azure CLI batch-bővítményét, és küldjön visszajelzést vagy javaslatokat a jelen cikkhez vagy a [Batch közösségi](https://github.com/Azure/Batch)tárházhoz tartozó megjegyzésekben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes telepítési és használati dokumentáció, példák és forráskódok az [Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházban érhetők el.
 

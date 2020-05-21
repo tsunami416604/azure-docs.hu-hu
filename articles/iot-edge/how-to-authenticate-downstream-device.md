@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3edd29703f74c7671537fbcf08159dd830e5453c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411498"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726226"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -59,7 +59,7 @@ Ugyanezt a műveletet az [Azure CLI-hez készült IoT-bővítmény](https://gith
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+Az eszközök létrehozásával és a szülő-gyermek felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
 
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
@@ -109,7 +109,7 @@ Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-io
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
+Az eszközök létrehozásával, a tanúsítványok létrehozásával, valamint a szülő-és alárendelt felügyelettel kapcsolatos Azure CLI-parancsokkal kapcsolatos további információkért tekintse meg az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok hivatkozási tartalmát.
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
 
@@ -123,7 +123,7 @@ Ha nem rendelkezik hitelesítésszolgáltatóval X. 509 tanúsítványok létreh
 
 1. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre:
 
-   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a bemutató tanúsítványait használja, a legfelső szintű hitelesítésszolgáltató ** \<elérési útja>/certs/Azure-IOT-test-only.root.ca.CERT.PEM**.
+   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a bemutató tanúsítványait használja, a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ ** \< elérési útja>/certs/Azure-IOT-test-only.root.ca.CERT.PEM**.
 
    2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa.
 
@@ -152,7 +152,7 @@ Az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-io
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-További információ: Azure CLI-hivatkozási tartalom az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) parancsok.
+További információ: Azure CLI-hivatkozási tartalom az az [IOT hub Device-Identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) parancsok.
 
 Ezután [kérje le és módosítsa a kapcsolati karakterláncot](#retrieve-and-modify-connection-string) , hogy az eszköz képes legyen csatlakozni az átjárón keresztül.
 
@@ -183,6 +183,6 @@ Ekkor egy IoT Edge eszköz regisztrálva van, és átjáróként kell konfigurá
 
 Folytassa az átjáró sorozat következő cikkével, [csatlakoztasson egy alsóbb rétegbeli eszközt egy Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a cikknek a végrehajtásával rendelkeznie kell egy IoT Edge eszközzel, amely transzparens átjáróként és egy IoT hub-ban regisztrált alsóbb rétegbeli eszközként működik. Ezután be kell állítania az alsóbb rétegbeli eszközöket, hogy megbízzon az átjáró-eszközön, és biztonságosan kapcsolódjon hozzá. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).

@@ -1,32 +1,24 @@
 ---
-title: Microsoft kereskedelmi piactér – ütemterv
-description: Ez az ütemterv a kereskedelmi piactér új és közelgő funkcióit és egyéb kiadásait emeli ki
+title: A Microsoft kereskedelmi piactér kiadásának erőforrásai
+description: Ismerje meg a kereskedelmi piactér új és közelgő funkcióit, kiadásait és egyéb frissítéseit
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/02/2019
-ms.openlocfilehash: 847d4f95d7e8bacb721c450f7e831c0c2d98334c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/19/2020
+ms.openlocfilehash: d8f836af35c433bd078b721b6829097e6ee8482b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657842"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725890"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft kereskedelmi piactér – ütemterv
+# <a name="microsoft-commercial-marketplace-resources"></a>A Microsoft kereskedelmi piactér erőforrásai
 
-Ez a cikk a legújabb kiadásait és a Microsoft kereskedelmi piactérének következő lépéseit ismerteti a kiadók, az eladók és az ügyfelek számára. A szolgáltatás rögzíti a felvállalt funkciók némelyikét, és egy durva időkeretet biztosít, amikor várhatóan látni fogja őket. Nem az összes új szolgáltatás átfogó listája, hanem a legfontosabb beruházásokkal való láthatóságot célozza meg. Ezek a szolgáltatáskészlet-készletek és a kézbesítési időkeretek naprakészek, és változhatnak.
+A Microsoft kereskedelmi piactéren elérhető legújabb kiadásokról és egyéb frissítésekről a következő forrásokban talál információt.
 
-Szívesen fogadjuk javaslatait! Csatlakozzon a [Microsoft partner közösségének](https://www.microsoftpartnercommunity.com/) beszélgetéséhez, és ismerkedjen meg az új funkciókkal, programokkal és eseményekkel kapcsolatos legújabb frissítésekkel.
-
-## <a name="roadmap"></a>Ütemterv
-![Marketplace-útiterv november 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
-
-## <a name="recent-releases"></a>Legutóbbi kiadások
-
-Ha egy képesség élő, el lesz távolítva az ütemtervből. A piactérhez hozzáadott funkciók a következő dokumentációban találhatók.
-
+* [Microsoft AppSource és Azure Marketplace – partner Community fórum](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
 * [A piactér és a felhőalapú megoldás-szolgáltató (CSP) frissítési blogja](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
 * [Ajánlatok közzététele a CSP-csatornán (ISV)](./cloud-solution-providers.md)
 * [Marketplace-ajánlatok viszonteladása (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
@@ -41,6 +33,4 @@ Ha egy képesség élő, el lesz távolítva az ütemtervből. A piactérhez hoz
 )  /  [frissítése meglévő ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)-  /  [elemzési ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics) létrehozása
 * [A piactér támogatásának beszerzése a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>További lépések
-
-Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) oldalára.
+Szívesen fogadjuk javaslatait! Csatlakozzon a [Microsoft partner közösségének](https://www.microsoftpartnercommunity.com/) beszélgetéséhez, és ismerkedjen meg az új funkciókkal, programokkal és eseményekkel kapcsolatos legújabb frissítésekkel.

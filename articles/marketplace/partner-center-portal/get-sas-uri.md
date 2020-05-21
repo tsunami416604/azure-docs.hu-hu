@@ -7,17 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857927"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725873"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
-
-> [!IMPORTANT]
-> Az Azure-beli virtuálisgép-ajánlatok felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok áttelepítésének [megkezdése előtt kövesse a megosztott hozzáférési aláírás URI-azonosítójának beolvasása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri) a virtuálisgép-rendszerképhez című témakör utasításait, amelyekkel a Cloud Partner Portal kezelheti az ajánlatokat.
 
 Ez a cikk azt ismerteti, hogyan hozhatja ki a közös hozzáférésű aláírás (SAS) egységes erőforrás-azonosítóját (URI) az egyes virtuális merevlemezekhez (VHD).
 
@@ -62,7 +59,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
 9. Szúrja be a VHD-nevet a SAS URI-ban lévő VHD-karakterlánc után (adja meg a perjelet). A végső SAS URI-nak így kell kinéznie:
 
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Ha például a VDH neve `TestRGVM2.vhd`, akkor az eredményül kapott sas URI a következő lesz:
+    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Ha például a VDH neve `TestRGVM2.vhd` , akkor az eredményül kapott sas URI a következő lesz:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -77,7 +74,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
     az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
-3. Szerkessze a fájlt a következő paraméterérték használatára. Adja meg a dátumokat UTC dátum és idő `2020-04-01T00:00:00Z`formátumban, például:.
+3. Szerkessze a fájlt a következő paraméterérték használatára. Adja meg a dátumokat UTC dátum és idő formátumban, például: `2020-04-01T00:00:00Z` .
 
     * `<account-name>`– Az Azure Storage-fiók neve
     * `<account-key>`– Az Azure Storage-fiók kulcsa
@@ -109,7 +106,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
     `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`
 
-    Ha például a VHD neve `TestRGVM2.vhd`, az SAS URI a következő lesz:
+    Ha például a VHD neve `TestRGVM2.vhd` , az SAS URI a következő lesz:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -121,7 +118,7 @@ Tekintse át az összes létrehozott SAS URI-t az alábbi ellenőrzőlista haszn
 
 * Az URI a következőképpen néz ki:`<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 * Az URI tartalmazza a VHD-rendszerkép fájlnevét, beleértve a ". vhd" fájlnevet.
-* `sp=rl`az URI közepe közelében jelenik meg. Ez a karakterlánc azt `Read` mutatja `List` , hogy a és a hozzáférés meg van adva.
+* `sp=rl`az URI közepe közelében jelenik meg. Ez a karakterlánc azt mutatja, hogy a `Read` és a `List` hozzáférés meg van adva.
 * Ha `sr=c` megjelenik, az azt jelenti, hogy a tároló szintű hozzáférés meg van adva.
 * Másolja és illessze be az URI-t egy böngészőbe a blob letöltéséhez (a letöltés befejezése előtt megszakíthatja a műveletet).
 

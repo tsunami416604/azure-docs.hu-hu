@@ -3,12 +3,12 @@ title: Együttműködés másokkal – QnA Maker
 description: ''
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ef0823fc60424dc861ab70f4112e4689c1b97fb0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 080e6549579675e27486e6173d5907d92bbaad70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665981"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724921"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -33,14 +33,14 @@ A következő ábrán látható a folyamat, a szerző szemszögéből, a QnA Mak
 > [!div class="mx-imgBorder"]
 > ![A következő ábrán látható a folyamat, a szerző szemszögéből, a QnA Maker portálra való bejelentkezéshez és a szerzői API-k használatával.](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|Lépések|Description|
+|Lépések|Leírás|
 |--|--|
 |1|A portál QnA Maker erőforráshoz tartozó jogkivonatot vásárol.|
 |2|A portál meghívja a megfelelő QnA Maker authoring API-t (APIM), amely a tokent a kulcsok helyett átadja.|
 |3|QnA Maker API érvényesíti a jogkivonatot.|
 |4 |QnA Maker API meghívja a QnAMaker szolgáltatást.|
 
-Ha meg szeretné hívni a szerzői API-kat] (.. /How-To/collaborate-knowledge-base.md) További információ a hitelesítés beállításáról.
+Ha meg szeretné hívni a [szerzői API-kat](../How-To/collaborate-knowledge-base.md), ismerkedjen meg a hitelesítés beállításával.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Hitelesítés QnA Maker portálon
 

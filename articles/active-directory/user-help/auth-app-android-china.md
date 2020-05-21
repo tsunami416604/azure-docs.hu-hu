@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Authenticator elérhetősége és korlátai az Android Kínában | Microsoft Docs
+title: Az Android-eszközök rendelkezésre állásának és korlátozásának Microsoft Authenticator Kínában | Microsoft Docs
 description: Ismerje meg, hogyan kérheti le a Microsoft Authenticator alkalmazás elérhetőségét Kínában
 services: active-directory
 author: curtand
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 05/06/2020
+ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 3ba1b41859a543ab5e0393c5715dc49d452ea73c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: e42c4e5aced9fd567c67b520a98318c965045e07
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891836"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715528"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator Androidhoz a nyilvános felhőben Kínában
 
@@ -50,14 +50,14 @@ A többtényezős hitelesítéshez használt leküldéses értesítések haszná
 
 Microsoft Authenticator funkció | Rendelkezésre állás Kínában
 ------------------------------- | ---------------------
-MFA-regisztráció leküldéses értesítések használatával | No
-Előzetesen létező MFA-fiók, amely leküldéses értesítésekkel ellenőrzi az identitást | No
+MFA-regisztráció leküldéses értesítések használatával | Nem
+Előzetesen létező MFA-fiók, amely leküldéses értesítésekkel ellenőrzi az identitást | Nem
 Előzetesen létező MFA-fiók az értesítések manuális vizsgálatával | Igen
 MFA-regisztráció/hitelesítés csak TOTP/ellenőrző kódok használatával | Igen
-Telefonos bejelentkezési regisztráció | No
-Meglévő telefonos bejelentkezés leküldéses értesítések használatával | No
+Telefonos bejelentkezési regisztráció | Nem
+Meglévő telefonos bejelentkezés leküldéses értesítések használatával | Nem
 Meglévő telefonos bejelentkezési ellenőrzés a hitelesítési kérelmek kézi ellenőrzésének elvégzésével | Igen
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Töltse le és telepítse a Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md)

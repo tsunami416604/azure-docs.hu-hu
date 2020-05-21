@@ -2,20 +2,18 @@
 title: Az Azure Kubernetes szolgáltatással kapcsolatos gyakori problémák elhárítása
 description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata során felmerülő gyakori problémák elhárításához és megoldásához
 services: container-service
-author: sauryadas
 ms.topic: troubleshooting
-ms.date: 12/13/2019
-ms.author: saudas
-ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/16/2020
+ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778957"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724994"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
-Az Azure Kubernetes szolgáltatásbeli (ak-beli) fürtök létrehozásakor és kezelésekor időnként problémákba ütközhet. Ez a cikk néhány gyakori problémát és hibaelhárítási lépést részletez.
+Az Azure Kubernetes szolgáltatásbeli (ak-beli) fürtök létrehozásakor és kezelésekor esetenként problémák merülhetnek fel. Ez a cikk néhány gyakori problémát és hibaelhárítási lépést részletez.
 
 ## <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-problems"></a>Általánosságban Hol találhatok információt a Kubernetes kapcsolatos hibák elhárításáról?
 
@@ -24,16 +22,16 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>"A kvóta túllépve" hibaüzenetet kapok a létrehozás vagy a frissítés során. Mit tegyek? 
 
-[Magot kell kérnie](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [További magok igénylése](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
 A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
-Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `–-max-pods` `az aks create` parancsban megjelenő jelző használatával módosítható.
+Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez a beállítás a `–-max-pods` parancsban található jelzővel módosítható `az aks create` .
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
-Ha az Azure CNI (speciális Hálózatkezelés) van használatban, az AK IP-címeket foglal le a konfigurált csomópontok maximális száma alapján. A konfigurált maximális hüvelyek/csomópontok alapján az alhálózat méretének nagyobbnak kell lennie a csomópontok számának és a maximális Pod/csomópont-beállítás szorzatának. A következő egyenlet körvonalazza ezt:
+Ha az Azure CNI hálózati beépülő modult használja, a (z) "--Max-hüvely" érték alapján osztja ki az IP-címeket a Node paraméter alapján. Az alhálózat méretének nagyobbnak kell lennie, mint a csomópontok maximális száma csomópont-beállításnál. A következő egyenlet felvázolja:
 
 Az alhálózat mérete > a fürt csomópontjainak száma (figyelembe véve a jövőbeli skálázási követelményeket) * a csomópontok maximális száma.
 
@@ -43,32 +41,32 @@ További információt [a fürt IP-címzésének megtervezése](configure-azure-
 
 Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekintheti meg:
 
-* Maga a pod, a használatával `kubectl describe pod <pod-name>`.
-* A naplók a használatával `kubectl logs <pod-name>`.
+* Maga a pod, a használatával `kubectl describe pod <pod-name>` .
+* A naplók a használatával `kubectl logs <pod-name>` .
 
 A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Megpróbálom engedélyezni a RBAC egy meglévő fürtön. Hogyan tehetem meg?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>A szerepköralapú Access Control (RBAC) szolgáltatást próbálom engedélyezni egy meglévő fürtön. Hogyan tehetem meg?
 
-Sajnos a szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön történő engedélyezése jelenleg nem támogatott. Explicit módon létre kell hoznia egy új fürtöt. Ha a CLI-t használja, a RBAC alapértelmezés szerint engedélyezve van. Ha az AK-portált használja, a RBAC engedélyezésére szolgáló váltógomb a létrehozási munkafolyamatban érhető el.
+A szerepköralapú hozzáférés-vezérlés (RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felület, a portál vagy egy API-verziónál újabb verziót használ `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehozott egy RBAC engedélyező fürtöt az alapértelmezett vagy a Azure Portal Azure CLI használatával, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
+## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy olyan fürtöt, amelyen engedélyezve van a RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
 
-A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedélyezve van a RBAC, és a hozzáférése alapértelmezés szerint le van tiltva. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
+A figyelmeztetések oka, hogy a fürtön engedélyezve van a RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem lehet csatlakozni az irányítópulthoz. Mit tegyek?
 
-A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja `kubectl proxy`a Futtatás, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`.
+A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja a Futtatás, amelyet a rendszer a `kubectl proxy` localhost 8001-as portra küldött a KUBERNETES API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
 
-Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy `kube-proxy` a pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
+Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy a `kube-proxy` Pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
-Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nincs módosítva, és hogy a 22-es és a 9000-as port is nyitva van az API-kiszolgálóhoz való csatlakozáshoz. A `kubectl get pods --namespace kube-system` parancs használatával `tunnelfront` győződjön meg arról, hogy a pod a *Kube-System* névtérben fut-e. Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
+Győződjön meg arról, hogy a 22-es, 9000 és 1194 portok nyitva vannak az API-kiszolgálóhoz való csatlakozáshoz. A parancs használatával győződjön meg arról, hogy a `tunnelfront` vagy a `aks-link` Pod a *Kube-System* névtérben fut-e `kubectl get pods --namespace kube-system` . Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Megpróbálok frissíteni vagy méretezni, és kapok "üzenetet: a imageReference tulajdonság módosítása nem engedélyezett" hibaüzenet. Hogyan kijavítani ezt a problémát?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Megpróbálok frissíteni vagy méretezni, és `"Changing property 'imageReference' is not allowed"` hibaüzenetet kapok. Hogyan kijavítani ezt a problémát?
 
-Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürtön belüli ügynök-csomópontokban módosította. A címkék és a MC_ * erőforráscsoport erőforrásainak más tulajdonságainak módosítása és törlése váratlan eredményekhez vezethet. Az AK-fürt MC_ * csoportjában található erőforrások módosítása megszakítja a szolgáltatási szint célkitűzését (SLO).
+Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürtön belüli ügynök-csomópontokban módosította. A címkék és az erőforrások egyéb tulajdonságai módosíthatók vagy törölhetők a MC_ * erőforráscsoport váratlan eredményekhez vezethet. Az AK-fürt MC_ * csoportjában található erőforrások módosítása megszakítja a szolgáltatási szint célkitűzését (SLO).
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Hibaüzeneteket kapok, hogy a fürtem hibás állapotban van, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás.
 
@@ -76,25 +74,25 @@ Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürt�
 
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
-1. Amíg a fürt `failed` állapota nem áll fenn, `upgrade` a `scale` műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
+1. Amíg a fürt állapota nem áll fenn `failed` , `upgrade` a `scale` műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
     * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-portal/supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
     * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/templates/error-resource-quota.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
 2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
 
-## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Hibákba ütközik, amikor megpróbálja frissíteni vagy méretezni az adott állapotot, mert jelenleg folyamatban van a fürt frissítése vagy frissítése
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Hibákba ütközik, amikor megpróbálja frissíteni vagy méretezni az adott állapotot a fürt frissítése vagy frissítése sikertelen volt.
 
 *Ez a hibaelhárítási segítség a következő címről származik:https://aka.ms/aks-pending-upgrade*
 
-Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
+ Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus csak akkor fejeződik be a célként megadott erőforráson, ha a következő kérelem ugyanarra az erőforrásra van leképezve. Ennek eredményeképpen a műveletek korlátozottak, amikor az aktív verziófrissítési vagy méretezési műveletek történnek vagy megkíséreltek. 
 
-A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnosztizálásához a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+A probléma diagnosztizálásához a `az aks show -g myResourceGroup -n myAKSCluster -o table` fürt részletes állapotának lekéréséhez. Az eredmény alapján:
 
-* Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
+* Ha a fürt aktívan frissít, várjon, amíg a művelet befejeződik. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
 * Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhetem a fürtöt egy másik előfizetésbe vagy az előfizetésem a fürttel egy új bérlőre?
 
-Ha már áthelyezte az AK-fürtöt egy másik előfizetésbe vagy a fürt tulajdonosának előfizetését egy új bérlőre, akkor a fürt a szerepkör-hozzárendelések és az egyszerű szolgáltatásokra vonatkozó jogosultságok elvesztése miatt elveszíti a funkcionalitást. Az **AK nem támogatja a fürtök áthelyezését az előfizetések vagy a bérlők között** a jelen megkötés miatt.
+Ha az AK-fürtöt egy másik előfizetésbe helyezte át, vagy a fürt előfizetése egy új bérlőre került át, a fürt nem fog működni a fürt identitásának hiánya miatt. Az **AK nem támogatja a fürtök áthelyezését az előfizetések vagy a bérlők között** a korlátozás miatt.
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési csoportokat igénylő szolgáltatások használatára vonatkozó hibák jelentkeznek
 
@@ -102,9 +100,9 @@ Ha már áthelyezte az AK-fürtöt egy másik előfizetésbe vagy a fürt tulajd
 
 Olyan hibák jelenhetnek meg, amelyek jelzik, hogy az AK-fürt nem egy virtuálisgép-méretezési csoporton van, például a következő példában:
 
-**A "AgentPool" AgentPool engedélyezte az automatikus skálázást, de nem Virtual Machine Scale Sets**
+**`<agentpoolname>`A AgentPool engedélyezte az automatikus skálázást, de nem Virtual Machine Scale sets**
 
-Ha olyan szolgáltatásokat szeretne használni, mint például a fürt autoskálázása vagy több csomópontos készlet, a virtuálisgép-méretezési csoportokat használó AK-fürtöket kell létrehoznia. A rendszer hibaüzeneteket küld, ha olyan szolgáltatásokat próbál használni, amelyek a virtuálisgép-méretezési csoportokon alapulnak, és egy normál, nem virtuálisgép-méretezési csoportba tartozó AK-fürtöt céloz meg.
+Az olyan funkciók, mint például a fürt autoskálázása vagy több csomópontos készlet esetén a virtuálisgép-méretezési csoportok szükségesek `vm-set-type` .
 
 A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt megfelelő létrehozásához szükséges lépéseket:
 
@@ -118,8 +116,9 @@ A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt m
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
 * A fürt nevének 1-63 karakterből kell állnia. Az egyetlen megengedett karakter betű, szám, kötőjel és aláhúzás. Az első és az utolsó karakternek betűnek vagy számnak kell lennie.
-* Az AK *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
+* Az AK-csomópont/*MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát. [A csomópont-erőforráscsoport nevét is testreszabhatja](cluster-configuration.md#custom-resource-group-name)
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie, és 1-54 karakter közöttinek kell lennie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
+* Az AK-csomópontok készletének neve csak kisbetűket tartalmazhat, és 1-11 karakter hosszúnak kell lennie a Linux-csomópontok és a 1-6 karakter Windows-csomópontok számára A névnek betűvel kell kezdődnie, és csak betűket és számokat tartalmazhat.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
@@ -129,22 +128,26 @@ A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van
 
 A fürt állapotának kimenete alapján:
 
-* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) leáll. Ha az előző művelet befejeződött, próbálja meg újra a fürt legújabb műveletét.
+* Ha a fürt bármilyen kiépítési állapotban van, amely nem *sikeres* vagy *sikertelen volt*, várjon, amíg a művelet (*frissítés/frissítés/létrehozás/méretezés/törlés/áttelepítés*) be nem fejeződik. Az előző művelet befejeződése után próbálja megismételni a fürt legújabb műveletét.
 
 * Ha a fürtön sikertelen volt a frissítés, kövesse az itt leírt lépéseket, [amelyek a fürt hibás állapotba kerülnek, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
-## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Hibaüzenetet kapok, hogy a szolgáltatásnév nem található, amikor új fürtöt próbálok létrehozni anélkül, hogy egy meglévőt kellene átadni.
+## <a name="received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster"></a>Hiba történt, amely azt jelzi, hogy az egyszerű szolgáltatásnév nem található, vagy érvénytelen, ha új fürtöt próbálok létrehozni.
 
-AK-fürt létrehozásakor a szolgáltatáshoz egy egyszerű szolgáltatásnév szükséges, amely az Ön nevében hoz létre erőforrásokat. Az AK lehetővé teszi, hogy egy újat hozzon létre a fürt létrehozási időpontjában, de ehhez Azure Active Directory szükséges, hogy az új egyszerű szolgáltatást ésszerű időn belül teljes mértékben propagálja ahhoz, hogy a fürt sikeres legyen a létrehozásban. Ha ez a propagálás túl hosszú időt vesz igénybe, a fürt nem fogja tudni létrehozni az érvényesítést, mert nem talál elérhető egyszerű szolgáltatásnevet. 
+AK-fürt létrehozásakor egy egyszerű szolgáltatásnév vagy felügyelt identitás szükséges ahhoz, hogy erőforrásokat hozzon létre az Ön nevében. Az e-mailek automatikusan létrehozhatnak egy új egyszerű szolgáltatásnevet a fürt létrehozási ideje alatt, vagy megkaphatnak egy meglévőt. Ha automatikusan létrehoz egy-t, Azure Active Directory kell azt minden régióba terjeszteni, hogy a létrehozás sikeres legyen. Ha a propagálás túl hosszú időt vesz igénybe, a fürt sikertelen lesz a létrehozáshoz, mivel nem talál elérhető egyszerű szolgáltatásnevet. 
 
-Ehhez használja a következő megkerülő megoldásokat:
-1. Olyan meglévő szolgáltatásnevet használjon, amely már propagálva van a régiók között, és létezik, hogy a fürt létrehozási ideje alatt adja át az ak-nak.
-2. Ha Automation-parancsfájlokat használ, adja hozzá az egyszerű szolgáltatás létrehozása és az AK-fürt létrehozása közötti késleltetést.
-3. Ha Azure Portal használ, térjen vissza a fürt beállításaihoz a létrehozás során, és néhány perc múlva próbálja megismételni az érvényesítési oldalt.
+A probléma a következő megkerülő megoldásokkal használható:
+* Egy meglévő egyszerű szolgáltatásnevet használ, amely már propagálva van a régiók között, és létezik, hogy a fürt létrehozási ideje alatt az AK-ba kerül át.
+* Ha Automation-parancsfájlokat használ, adja hozzá az egyszerű szolgáltatás létrehozása és az AK-fürt létrehozása közötti késleltetést.
+* Ha Azure Portal használ, térjen vissza a fürt beállításaihoz a létrehozás során, és néhány perc múlva próbálja megismételni az érvényesítési oldalt.
 
-## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Hibák jelentkeznek a kimenő forgalom korlátozása után
 
-Ha a kimenő forgalmat egy AK-fürtből korlátozza, akkor szükség van a [szükséges és választható](limit-egress-traffic.md) kimeneti portokra/hálózati szabályokra, valamint a teljes tartománynevek/alkalmazási szabályokra az AK-ra vonatkozóan. Ha a beállítások ütköznek ezekkel a szabályokkal, előfordulhat, hogy nem fog tudni bizonyos `kubectl` parancsokat futtatni. Egy AK-fürt létrehozásakor hibák is megjelenhetnek.
+
+
+
+## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Hibák jelentkeznek a kimenő forgalom korlátozása után
+
+Ha a kimenő forgalmat egy AK-fürtből korlátozza, akkor szükség van a [szükséges és választható](limit-egress-traffic.md) kimeneti portokra/hálózati szabályokra, valamint a teljes tartománynevek/alkalmazási szabályokra az AK-ra vonatkozóan. Ha a beállítások ütköznek ezekkel a szabályokkal, bizonyos `kubectl` parancsok nem fognak megfelelően működni. Egy AK-fürt létrehozásakor hibák is megjelenhetnek.
 
 Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy választható választható kimenő portok/hálózati szabályok, valamint a teljes tartománynév/alkalmazás szabályaival.
 
@@ -153,24 +156,15 @@ Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Mik az Azure Disk Kubernetes ajánlott stabil verziói? 
 
 | Kubernetes verziója | Ajánlott verzió |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
 
 
-### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>A Kubernetes mely verziói támogatják az Azure Disk supportot a szuverén felhőben?
-
-| Kubernetes verziója | Ajánlott verzió |
-| -- | :--: |
-| 1.12 | 1.12.0 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
-| 1,14 | 1.14.0 vagy újabb |
-
-
 ### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>A WaitForAttach nem sikerült az Azure Disk esetében: "/dev/disk/Azure/scsi1/lun1" elemzése: érvénytelen szintaxis
 
-A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach sikertelen lehet az Azure-lemez újracsatlakoztatásával.
+A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach egy Azure-lemez újracsatlakoztatásával meghiúsulhat.
 
 Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Például:
 
@@ -189,10 +183,11 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
+|--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
 | 1,12 és újabb verziók | N/A |
+
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
 
@@ -207,7 +202,7 @@ mount: wrong fs type, bad option, bad superblock on /dev/sde,
        missing codepage or helper program, or other error
 ```
 
-A probléma megoldásához hajtsa végre a következő műveleteket:
+A probléma megoldásához hajtsa végre a következőket:
 
 * [Állítsa be a pod biztonsági környezetét](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) úgy, hogy az UID értéket konfigurálja a runAsUser és a GID-ben a fsGroup-ben. A következő beállítás például beállítja a pod futtató gyökérként való futtatását, így bármely fájl számára elérhetővé válik:
 
@@ -223,9 +218,9 @@ spec:
 ```
 
   >[!NOTE]
-  > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a `chown` Kubernetes az adott lemezen lévő összes könyvtárat és fájlt módosítani fogja. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
+  > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a Kubernetes az `chown` adott lemezen lévő összes könyvtárat és fájlt módosítani fogja. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
 
-* A `chown` initContainers használata a GID és az UID beállításához. Például:
+* `chown`A initContainers használata a GID és az UID beállításához. Például:
 
 ```yaml
 initContainers:
@@ -237,100 +232,24 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Hiba történt az Azure-lemezek Pod-beli PersistentVolumeClaim való törlésekor
-
-Ha olyan Azure-beli PersistentVolumeClaim próbál törölni, amelyet egy Pod használ, előfordulhat, hogy hibaüzenet jelenik meg. Például:
-
-```console
-$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
-...
-Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
-```
-
-A Kubernetes 1,10-es és újabb verzióiban a PersistentVolumeClaim védelmi funkció alapértelmezés szerint engedélyezve van a hiba megelőzése érdekében. Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a PersistentVolumeClaim törlése előtt a PersistentVolumeClaim törlésével csökkentheti a problémát.
-
-
-### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>Hiba: a lemez csomóponthoz csatolásakor nem található a lemez LUN
-
-Amikor egy lemezt csatlakoztat egy csomóponthoz, a következő hibaüzenet jelenhet meg:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
-```
-
-Ezt a problémát a Kubernetes következő verzióiban rögzítették:
-
-| Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
-| 1.10 | 1.10.10 vagy újabb |
-| 1,11 | 1.11.5 vagy újabb |
-| 1.12 | 1.12.3 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | N/A |
-
-Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához várjon néhány percet, és próbálkozzon újra.
-
-### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Az Azure lemez csatlakoztatási/leválasztási hibája, csatlakoztatási problémái vagy I/O-hibák több csatlakoztatási/leválasztási művelet során
-
-A Kubernetes verziójának 1.9.2 kezdődően több csatlakoztatási/leválasztási művelet párhuzamos futtatásakor a következő lemezekkel kapcsolatos problémák jelenhetnek meg egy inkonzisztens VM-gyorsítótár miatt:
-
-* Lemez csatlakoztatási/leválasztási hibái
-* Lemez I/O-hibák
-* Váratlan lemez leválasztása a virtuális gépről
-* Nem létező lemez csatolása miatt sikertelen állapotú virtuális gép
-
-Ezt a problémát a Kubernetes következő verzióiban rögzítették:
-
-| Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
-| 1.10 | 1.10.12 vagy újabb |
-| 1,11 | 1.11.6 vagy újabb |
-| 1.12 | 1.12.4 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | N/A |
-
-Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához próbálkozzon az alábbiakkal:
-
-* Ha egy lemez hosszú időn keresztül leválasztásra vár, próbálja meg manuálisan leválasztani a lemezt
-
-### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Az Azure-lemez határozatlan idejű leválasztásra vár
-
-Bizonyos esetekben, ha az első kísérlet során az Azure Disk leválasztási művelete meghiúsul, nem próbálkozik újra a leválasztási művelettel, és továbbra is az eredeti csomópont virtuális géphez lesz csatolva. Ez a hiba akkor fordulhat elő, ha a lemezt egyik csomópontról a másikra helyezi át. Például:
-
-```console
-[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
-```
-
-Ezt a problémát a Kubernetes következő verzióiban rögzítették:
-
-| Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
-| 1,11 | 1.11.9 vagy újabb |
-| 1.12 | 1.12.7 vagy újabb |
-| 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
-
-Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a lemez manuális leválasztásával enyhítheti a problémát.
-
 ### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Az Azure Disk leválasztása nem sikerült, mert lehetséges a versenyhelyzet problémája, és érvénytelenek az adatlemezek listája
 
-Ha egy Azure-lemez leválasztása sikertelen, akkor a lemez leválasztása akár hatszor is megtörténik. Emellett az adatlemezek listáján 3 percen belül egy csomópont-szintű zárolást is fog tartani. Ha a lemezek listája az adott időszakban manuálisan, például manuális csatolású vagy leválasztásos művelettel frissül, akkor a csomópont-szint zárolása elavult, és instabillá válik a csomópont virtuális gépén.
+Ha egy Azure-lemez leválasztása sikertelen, akkor a lemez leválasztása akár hatszor is megtörténik. Emellett az adatlemezek listáján 3 percen belül egy csomópont-szintű zárolást is fog tartani. Ha ez idő alatt manuálisan frissíti a lemezeket, akkor a csomópont-szintű zárolás által tárolt lemezek elavultak lesznek, ami instabilitást okoz a csomóponton.
 
 Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
 | 1,15 és újabb verziók | N/A |
 
-Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe elavult lemezzel rendelkezik, a probléma megoldásához leválaszthatja a virtuális gépről származó összes nem létező lemezt egyetlen, tömeges műveletként. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
-
+Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>A nagy számú Azure-lemez lassú csatolást/leválasztást okoz
 
-Ha a csomópont virtuális géphez csatolt Azure-lemezek száma nagyobb, mint 10, a csatolási és leválasztási műveletek lassúak lehetnek. Ez a probléma egy ismert probléma, és jelenleg nem kerül megkerülő megoldás.
+Ha az egyetlen csomópontos virtuális GÉPRE irányuló Azure Disk Attach/leválasztási műveletek száma nagyobb, mint 10, vagy nagyobb, mint 3, ha egy virtuálisgép-méretezési csoport készletét célozza, akkor a vártnál lassabban haladnak. Ez a probléma egy ismert korlátozás, és jelenleg nincsenek megkerülő megoldások. [A felhasználói hangtétel támogatja a párhuzamos csatolást/leválasztást a számon túl](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for).
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Az Azure Disk leválasztása nem sikerült, mert lehetséges, hogy a csomópont virtuális gépe sikertelen állapotban van
 
@@ -339,13 +258,13 @@ Egyes esetekben előfordulhat, hogy egy Azure-lemez leválasztása részlegesen 
 Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
 | 1,15 és újabb verziók | N/A |
 
-Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe hibás állapotban van, a probléma megoldásához manuálisan frissítse a virtuális gép állapotát az alábbi lépések egyikével:
+Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
 * Rendelkezésre állási csoport alapú fürt esetén:
     ```azurecli
@@ -362,17 +281,9 @@ Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javít�
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Melyek az Azure Files Kubernetes ajánlott stabil verziói?
  
 | Kubernetes verziója | Ajánlott verzió |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 | 1.14.0 vagy újabb |
-
-### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>A Kubernetes mely verziói támogatják Azure Files támogatást a szuverén felhőben?
-
-| Kubernetes verziója | Ajánlott verzió |
-| -- | :--: |
-| 1.12 | 1.12.0 vagy újabb |
-| 1.13 | 1.13.0 vagy újabb |
 | 1,14 | 1.14.0 vagy újabb |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Mi az alapértelmezett mountOptions a Azure Files használatakor?
@@ -380,11 +291,11 @@ Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javít�
 Ajánlott beállítások:
 
 | Kubernetes verziója | fileMode és dirMode érték|
-| -- | :--: |
+|--|:--:|
 | 1.12.0 – 1.12.1 | 0755 |
 | 1.12.2 és újabb verziók | 0777 |
 
-Ha olyan fürtöt használ, amelynek Kubernetes-verziója 1.8.5 vagy nagyobb, és dinamikusan hozza létre az állandó kötetet egy tárolási osztállyal, a csatlakoztatási beállítások megadhatók a tárolási osztály objektumban. A következő példa a *0777*-es készletet állítja be:
+A csatlakoztatási beállítások a tárolási osztály objektumban adhatók meg. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -434,7 +345,7 @@ Bizonyos esetekben, például sok kis fájl kezelésekor nagy késés tapasztalh
 
 ### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>Hiba történt a "hozzáférés engedélyezése a kiválasztott hálózatról" beállítás engedélyezésekor a Storage-fiókban
 
-Ha engedélyezi a *hozzáférést a kiválasztott hálózatról* egy olyan Storage-fiókra, amelyet az AK-ban dinamikus kiosztáshoz használ, hibaüzenet jelenik meg, amikor az AK létrehoz egy fájlmegosztást:
+Ha engedélyezi a *hozzáférést a kiválasztott hálózatról* egy olyan Storage-fiókra, amelyet az AK-ban dinamikus kiosztáshoz használ, hibaüzenet jelenik meg, ha az AK létrehoz egy fájlmegosztást:
 
 ```console
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
@@ -446,7 +357,7 @@ A probléma megoldásához a Azure Files használatával történő [statikus ki
 
 ### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Azure Files sikertelen újracsatlakoztatás a Windows Pod-ban
 
-Ha egy Azure Files csatlakoztatással rendelkező Windows-Pod törölve lett, majd az ütemezés szerint újra létrejön ugyanazon a csomóponton, a csatlakoztatás sikertelen lesz. Ennek a hibának a végrehajtása `New-SmbGlobalMapping` a parancs végrehajtása miatt sikertelen, mert a Azure Files csatlakoztatás már csatlakoztatva van a csomóponthoz.
+Ha egy Azure Files csatlakoztatással rendelkező Windows-Pod törölve lett, majd az ütemezés szerint újra létrejön ugyanazon a csomóponton, a csatlakoztatás sikertelen lesz. Ennek a hibának a végrehajtása a parancs végrehajtása miatt sikertelen, mert `New-SmbGlobalMapping` a Azure Files csatlakoztatás már csatlakoztatva van a csomóponthoz.
 
 Például a következőhöz hasonló hibaüzenet jelenhet meg:
 
@@ -457,24 +368,24 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 
 | Kubernetes verziója | Rögzített verzió |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
 | 1,14 és újabb verziók | N/A |
 
-### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>A Azure Files csatlakoztatása a Storage-fiók kulcsának módosítása miatt meghiúsult
+### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 
 Ha a Storage-fiók kulcsa módosult, Azure Files csatlakoztatási hibák merülhetnek fel.
 
-A probléma megoldásához végezze el manuálisan a *azurestorageaccountkey* -mező manuális frissítését az Azure file Secret-ben a Base64-kódolású Storage-fiók kulcsával.
+A mezőt manuálisan is frissítheti `azurestorageaccountkey` egy Azure-fájl titkos kódjában, a Base64-kódolású Storage-fiók kulcsa alapján.
 
-A Storage-fiók kulcsának Base64-ben történő kódolásához használhatja `base64`a következőt:. Például:
+A Storage-fiók kulcsának Base64-ben történő kódolásához használhatja a következőt: `base64` . Például:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Az Azure-beli titkos fájl frissítéséhez `kubectl edit secret`használja a következőt:. Például:
+Az Azure-beli titkos fájl frissítéséhez használja a következőt: `kubectl edit secret` . Például:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -482,19 +393,20 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 Néhány perc elteltével az ügynök csomópontja újra fogja próbálni az Azure-fájl csatlakoztatását a frissített tárterület-kulccsal.
 
+
 ### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>A fürt automatikus méretezése nem tud méretezni, mert a hiba nem tudta kijavítani a csomópont-csoportok méretét
 
-Ha a fürt automatikus méretezése nem áll le/le, és a [fürt automatikus méretezési naplóiban][view-master-logs]az alábbihoz hasonló hibaüzenet jelenik meg.
+Ha a fürt automatikus méretezése nem vertikális fel/le, és az alábbihoz hasonló hibaüzenet jelenik meg a [fürt automatikus méretezési naplóiban][view-master-logs].
 
 ```console
 E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
 ```
 
-Ennek a hibának az az oka, hogy egy felsőbb rétegbeli fürthöz tartozó autoskálázási versenyhelyzet olyan feltételt eredményez, amelyben a fürthöz tartozó automéretező eltérő értékkel végződik, mint ami valójában a fürtben van. Az állapotból való kilépéshez egyszerűen tiltsa le, majd engedélyezze újra a [fürt automéretezőjét][cluster-autoscaler].
+Ennek a hibának az az oka, hogy egy felsőbb rétegbeli fürthöz tartozó autoskálázási versenyhelyzet van. Ebben az esetben a fürt autoskálázása egy másik értékkel végződik, mint a fürtben ténylegesen. Az állapotból való kilépéshez tiltsa le és engedélyezze újra a [fürt automéretezőjét][cluster-autoscaler].
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Lassú lemez-melléklet, a GetAzureDiskLun 10 – 15 percet vesz igénybe, és hibaüzenetet kap
 
-A 1.15.0- **nál régebbi** Kubernetes-verzióknál hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN**elemét.  Ennek megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
+A 1.15.0- **nál régebbi**Kubernetes-verziók esetén hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN**elemét.  A probléma megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

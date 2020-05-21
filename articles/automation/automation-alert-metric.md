@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan figyelheti a runbookok a mérőszá
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c5f51ec34ea0b31f4c8fc349246b439425112104
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685406"
+ms.locfileid: "83715851"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbookok monitorozása metrikariasztásokkal
 
@@ -75,9 +75,6 @@ Ha a riasztási feltételek teljesülnek, a műveleti csoport futtatja a megadot
 
 Ha a metrika már nem a meghatározott küszöbértéken kívül esik, a rendszer inaktiválja a riasztást, és a műveleti csoport futtatja a definiált műveletet. Ha egy e-mail-Művelettípus van kiválasztva, a rendszer elküld egy feloldási e-mailt, amely megoldódott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az alábbi cikkből megtudhatja, hogyan integrálhatja a riasztásokat az Automation-fiókjába.
-
-> [!div class="nextstepaction"]
-> [Azure Automation runbook elindítására szolgáló riasztás használata](automation-create-alert-triggered-runbook.md)
+* [Azure Automation runbook elindítására szolgáló riasztás használata](automation-create-alert-triggered-runbook.md)

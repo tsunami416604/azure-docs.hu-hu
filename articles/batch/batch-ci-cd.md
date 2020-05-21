@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan helyezhet üzembe Build/kiadási folyamatot egy
 author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
-ms.topic: conceptual
-ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117386"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726842"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -490,7 +490,7 @@ az batch application list -g <resourcegroup> -n <batchaccountname>
 az batch pool list
 ```
 
-Jegyezze fel `currentDedicatedNodes` a parancs kimenetének értékét. Ezt az értéket a következő tesztben kell beállítani.
+Jegyezze fel a `currentDedicatedNodes` parancs kimenetének értékét. Ezt az értéket a következő tesztben kell beállítani.
 
 #### <a name="resize-the-pool"></a>A készlet átméretezése
 
@@ -500,7 +500,7 @@ Méretezze át a készletet úgy, hogy elérhetők legyenek a feladatok és a te
 az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelen cikk mellett két olyan oktatóanyag is létezik, amely az FFmpeg-t használja a .NET és a Python használatával. A Batch-fiók egyszerű alkalmazáson keresztül történő kezelésével kapcsolatos további információkért tekintse meg ezeket az oktatóanyagokat.
 

@@ -7,21 +7,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701075"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726179"
 ---
-# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
-
-> [!IMPORTANT]
-> Az Azure-beli virtuálisgép-ajánlatok felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok migrálása előtt folytassa a [virtuális gépi ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) a Cloud Partner Portalban című témakör utasításait az ajánlatok kezeléséhez.
+# <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Windows-és Linux-alapú virtuális gépekre is vonatkozik, amelyek operációs rendszert, virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 ### <a name="publishing-benefits"></a>Közzétételi előnyök
 
@@ -42,7 +39,7 @@ Ha még nem tette meg, tekintse át a [virtuálisgép-ajánlat közzétételi ú
 - Oktatóanyagok
   - [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- Példák
+- Minták
   - [Azure CLI-minták Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
   - [Azure PowerShell Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
   - [Azure CLI-minták Windows rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
@@ -195,7 +192,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Adja meg az ajánlat további leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

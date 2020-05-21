@@ -7,15 +7,17 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: f96aa4d75f85aea046981641f84fd2b2c3078bd1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 17416131566edf8710737862f0cbea2e31477960
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691214"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722524"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partneri témakörök
-![A Auth0 logo ](./media/auth0-overview/auth0-logo.png) Auth0, az alkalmazás-építők számára készült Identity platform a fejlesztőket és a vállalatokat az alkalmazásai védelméhez szükséges építőelemeket biztosítja.
+![Auth0 embléma](./media/auth0-overview/auth0-logo.png)
+
+A Auth0, az alkalmazás-építők számára készült Identity platform a fejlesztőknek és a vállalatoknak az alkalmazásai védelméhez szükséges építőelemeket biztosítja.
 
 A Auth0-partneri témakör lehetővé teszi, hogy a Auth0's rendszer által kibocsátott eseményeket több feladat elvégzéséhez használja. A hitelesítés vagy a biztonsági és infrastrukturális feladatok automatizálása után a felhasználóknak értelmes módon kell foglalkoznia a felhasználókkal.
 
@@ -40,7 +42,7 @@ A felhasználói műveletek megőrzése és naplózása létfontosságú a bizto
 ### <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Az elosztott rendszerek védelme fontos a biztonsági monitorozás és az incidensek reagálási eljárásainak kombinálásával. Ezért fontos, hogy az összes adathalmazt egy helyen tárolja, és figyelje a teljes veremet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)

@@ -1,14 +1,14 @@
 ---
 title: Azure Batch feladat meghiúsulása esemény
 description: A Batch feladat sikertelen eseményének hivatkozása. Ez az esemény a feladat teljes eseményén kívül lesz kibocsátva, és felhasználható arra, hogy észlelje, ha egy feladat meghiúsult.
-ms.topic: article
+ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: 0e973a7e0a2ab67300a0f6762c837336e12bae3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54a6965fbefeaf502372c611c2b3152dc43b0efe
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116451"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726349"
 ---
 # <a name="task-fail-event"></a>Tevékenység meghiúsult esemény
 
@@ -50,7 +50,7 @@ ms.locfileid: "82116451"
 |`taskType`|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat. Ez az esemény nem lett kibocsátva a feladat-előkészítési feladatokhoz, a feladat-felszabadítási feladatokhoz és a tevékenységek indításához|
 |`systemTaskVersion`|Int32|Ez a feladat belső újrapróbálkozási számlálója. A Batch szolgáltatás belsőleg újra tud próbálkozni az átmeneti problémák miatti feladatokkal. Ezek a problémák belső ütemezési hibákat tartalmazhatnak, vagy helytelen állapotú számítási csomópontokból történő helyreállításra tett kísérleteket okozhatnak.|
 |[`nodeInfo`](#nodeInfo)|Összetett típus|A feladat futtatására szolgáló számítási csomóponttal kapcsolatos információkat tartalmazza.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Összetett típus|Megadja, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  Részletekért lásd: [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Összetett típus|Megadja, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)Részletekért lásd:.|
 |[`constraints`](#constraints)|Összetett típus|A feladatra érvényes végrehajtási megkötések.|
 |[`executionInfo`](#executionInfo)|Összetett típus|A feladat végrehajtásával kapcsolatos információkat tartalmaz.|
 

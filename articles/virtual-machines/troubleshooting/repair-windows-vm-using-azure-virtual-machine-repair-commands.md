@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c4461fd2abd39e75838f67ab5d34bd52a79459
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060678"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715613"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
@@ -54,7 +54,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
    Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Az előtelepített és a fiókkal való használatra konfigurált általános Azure-eszközöket tartalmaz.
 
-   A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. Emellett megnyithatja a Cloud Shellt egy külön böngészőablakban [https://shell.azure.com](https://shell.azure.com).
+   A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. Emellett megnyithatja a Cloud Shellt egy külön böngészőablakban [https://shell.azure.com](https://shell.azure.com) .
 
    Válassza a **Másolás** elemet a kód blokkjának másolásához, majd illessze be a kódot a Cloud Shellba, majd a futtatásához válassza az **ENTER billentyűt** .
 
@@ -72,16 +72,16 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
    az extension update -n vm-repair
    ```
 
-3. Futtassa az `az vm repair create` parancsot. Ez a parancs létrehozza az operációsrendszer-lemez másolatát a nem működőképes virtuális géphez, létrehoz egy javítási virtuális gépet, és csatlakoztatja a lemezt.
+3. Futtassa az `az vm repair create` parancsot. Ezzel a paranccsal létrejön a nem működőképes virtuális géphez tartozó operációsrendszer-lemez másolata, létrehozhat egy új erőforráscsoport-javító virtuális gépet, és csatolhatja az operációsrendszer-lemez másolatát.  A javítási virtuális gép mérete és régiója megegyezik a megadott nem funkcionális virtuális géppel.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Futtassa az `az vm repair run` parancsot. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül.
+4. Futtassa az `az vm repair run` parancsot. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül.  Ha a hibaelhárítási útmutató megadott Run-ID-t használ, használja ezt itt, ellenkező esetben az `az vm repair list-scripts` elérhető javítási parancsfájlok megjelenítéséhez használható.
 
    ```azurecli-interactive
-   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
+   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
    ```
 
 5. Futtassa az `az vm repair restore` parancsot. Ez a parancs felcseréli a javított operációsrendszer-lemezt a virtuális gép eredeti operációsrendszer-lemezére.
@@ -92,7 +92,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Rendszerindítási diagnosztika ellenőrzése és engedélyezése
 
-A következő példa engedélyezi a diagnosztikai bővítményt a nevű ``myVMDeployed`` ``myResourceGroup``erőforráscsoport-beli virtuális gépen:
+A következő példa engedélyezi a diagnosztikai bővítményt a ``myVMDeployed`` nevű erőforráscsoport-beli virtuális gépen ``myResourceGroup`` :
 
 Azure CLI
 
@@ -100,7 +100,7 @@ Azure CLI
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)című témakört.
 * A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).

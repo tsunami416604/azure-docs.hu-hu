@@ -1,15 +1,14 @@
 ---
 title: Nagy számítási igényű Azure-beli virtuális gépek használata a Batch használatával
 description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch készletekben. Ismerje meg az operációs rendszer függőségeit, és tekintse meg a példákat.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: labrenne
-ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115958"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724088"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
 
@@ -162,7 +161,7 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 | **Csomópontok közötti kommunikáció engedélyezve** | True (Igaz) |
 | **Feladatok maximális száma/csomópont** | 1 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az MPI-feladatok Azure Batch készleten való futtatásához tekintse meg a Windows vagy [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) [rendszerű](batch-mpi.md) példákat.
 

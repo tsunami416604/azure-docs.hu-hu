@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793616"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725669"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
 
@@ -23,7 +23,7 @@ A kiadási folyamat során a Helm a megfelelő konfigurációval egyesíti a dia
 
 A *Values. YAML* tárolt értékek felülbírálása érdekében további YAML konfigurációs fájlok is megadhatók a parancssorban a Helm futtatásakor. Az Azure app Configuration támogatja a konfigurációs értékek exportálását a YAML-fájlokba. Az exportálási funkció integrálása az üzembe helyezésbe lehetővé teszi, hogy a Kubernetes-alkalmazások kihasználják az alkalmazás konfigurációjában tárolt konfigurációs értékeket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Alkalmazások konfigurációjának használata az alkalmazás Kubernetes való telepítésekor a Helm használatával.
 > * Hozzon létre egy Kubernetes titkot egy Key Vault hivatkozás alapján az alkalmazás konfigurációjában.
@@ -41,7 +41,7 @@ Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyel
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer** > **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+6. Válassza a **Configuration Explorer**  >  **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
@@ -56,7 +56,7 @@ Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyel
 
 3. Válassza a **Configuration Explorer**lehetőséget.
 
-4. Válassza a **+** > **Key Vault-hivatkozás**létrehozása lehetőséget, majd adja meg a következő értékeket:
+4. Válassza a **+**  >  **Key Vault-hivatkozás**létrehozása lehetőséget, majd adja meg a következő értékeket:
     - **Kulcs**: válassza a **Secrets. password**elemet.
     - **Címke**: hagyja üresen ezt az értéket.
     - **Előfizetés**, **erőforráscsoport**és **Key Vault**: adja meg az előző lépésben létrehozott kulcstartóban szereplőknek megfelelő értékeket.
@@ -169,7 +169,7 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
 Végül frissítse a *Values. YAML* fájlt a következő tartalommal, hogy opcionálisan adja meg az *üzembe helyezés. YAML* és *Secrets. YAML* fájlokban hivatkozott konfigurációs beállítások és titkos kódok alapértelmezett értékeit. Az alkalmazás konfigurációjától származó konfiguráció felülírja a tényleges értékeket.
@@ -233,11 +233,11 @@ Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jel
 
 ![Gyorsindítás alkalmazás elindítása helyi](./media/kubernetes-dashboard-secrets.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
