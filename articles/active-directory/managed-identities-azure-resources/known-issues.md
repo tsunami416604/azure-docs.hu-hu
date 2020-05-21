@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 84b68e5aecca11fb72f8cacc7e16701eebd0ae1a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197328"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714049"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -51,27 +51,7 @@ Az identitás biztonsági határa az az erőforrás, amelyhez hozzá van rendelv
 - Ha a rendszerhez rendelt felügyelt identitás nincs engedélyezve, és csak egy felhasználóhoz rendelt felügyelt identitás létezik, a IMDS alapértelmezés szerint az adott felhasználóhoz rendelt felügyelt identitást fogja használni. 
 - Ha a rendszerhez rendelt felügyelt identitás nincs engedélyezve, és több felhasználó által hozzárendelt felügyelt identitás létezik, akkor a kérésben a felügyelt identitás megadása szükséges.
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>Az Azure Resources IMDS-végpont vagy a virtuálisgép-bővítmény végpontjának felügyelt identitásait kell használnia?
 
-Ha virtuális gépekkel felügyelt identitásokat használ az Azure-erőforrásokhoz, javasoljuk, hogy használja a IMDS-végpontot. Az Azure Instance Metadata Service egy REST-végpont, amely a Azure Resource Manager használatával létrehozott összes IaaS virtuális gép számára elérhető. 
-
-Az Azure-erőforrások felügyelt identitások használatának néhány előnye az IMDS-on keresztül:
-- Az Azure IaaS által támogatott operációs rendszerek felügyelt identitásokat használhatnak az Azure-erőforrásokhoz a IMDS-en keresztül.
-- Már nem kell telepítenie egy bővítményt a virtuális gépre az Azure-erőforrások felügyelt identitásának engedélyezéséhez. 
-- Az Azure-erőforrásokhoz tartozó felügyelt identitások által használt tanúsítványok már nem jelennek meg a virtuális gépen.
-- Az IMDS-végpont egy jól ismert, nem irányítható IP-cím, csak a virtuális gépen belülről érhető el.
-- 1000 felhasználó által hozzárendelt felügyelt identitások hozzárendelhetők egyetlen virtuális géphez. 
-
-Az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásai továbbra is elérhetők; azonban már nem fejlesztünk új funkciókat. Javasoljuk, hogy váltson át az IMDS-végpont használatára. 
-
-A virtuálisgép-bővítmény végpontjának használatának egyes korlátai a következők:
-- Korlátozott támogatás a Linux-disztribúciók számára: CoreOS stabil, CentOS 7,1, Red Hat 7,2, Ubuntu 15,04, Ubuntu 16,04
-- Csak 32 felhasználó által hozzárendelt felügyelt identitás rendelhető hozzá a virtuális géphez.
-
-
-Megjegyzés: az Azure-erőforrások virtuálisgép-bővítményének felügyelt identitásai a 2019 januárjában lesznek támogatottak. 
-
-Az Azure Instance Metadata Service-ról további információt a [IMDS dokumentációjában](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) talál.
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>A felügyelt identitások automatikusan újra létrejönnek, ha egy előfizetést másik könyvtárba helyezek át?
 
@@ -88,16 +68,7 @@ Nem. A felügyelt identitások jelenleg nem támogatják a könyvtárak között
 - Rendszer által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. Ez a művelet az erőforrás-specifikus beépített szerepkörök, például a [virtuális gépek közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)része.
 - Felhasználó által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. A felügyelt identitás- [kezelő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendelésen felül a felügyelt identitáson kívül is.
 
-### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Hogyan indítja újra az Azure-erőforrások bővítmény felügyelt identitásait?
-Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a következő parancsmag használható a manuális újraindításhoz:
 
-```powershell
-Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
-```
-
-Az elemek magyarázata: 
-- A Windows-bővítmény neve és típusa: ManagedIdentityExtensionForWindows
-- Kiterjesztés neve és típusa Linux esetén: ManagedIdentityExtensionForLinux
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -133,12 +104,7 @@ A virtuális gép elindítása után a címkét a következő parancs használat
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-### <a name="vm-extension-provisioning-fails"></a>A virtuálisgép-bővítmény kiépítés sikertelen
 
-A virtuálisgép-bővítmény üzembe helyezése sikertelen lehet a DNS-keresési hibák miatt. Indítsa újra a virtuális gépet, és próbálkozzon újra.
- 
-> [!NOTE]
-> A virtuálisgép-bővítményt a rendszer a 2019 januári elavulás céljából tervezi. Javasoljuk, hogy térjen át a IMDS-végpont használatára.
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Előfizetés továbbítása az Azure AD-címtárak között
 
@@ -151,4 +117,4 @@ Megkerülő megoldás a felügyelt identitások számára egy másik könyvtárb
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Felhasználó által hozzárendelt felügyelt identitás áthelyezése egy másik erőforráscsoporthoz vagy előfizetésbe
 
-Ha egy felhasználóhoz rendelt felügyelt identitást másik erőforráscsoporthoz helyez át, a rendszer az identitást megtöri. Ennek eredményeképpen az adott identitást használó erőforrások (például virtuális gépek) nem igényelhetnek jogkivonatokat. 
+A felhasználóhoz rendelt felügyelt identitás más erőforráscsoporthoz való áthelyezése nem támogatott.

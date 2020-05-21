@@ -1,27 +1,24 @@
 ---
 title: Azure Automation GYIK | Microsoft Docs
-description: Válaszok a Azure Automationekkel kapcsolatos gyakori kérdésekre.
+description: Ez a cikk válaszokat ad a Azure Automationekkel kapcsolatos gyakori kérdésekre.
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46786ff5bd158804ea5d93377fbbcc39a9c8af26
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405964"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712876"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Automationkal kapcsolatos gyakori kérdések listája. Ha további kérdései vannak a képességeivel kapcsolatban, látogasson el a vitafórumra, és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
-
-## <a name="update-management-solution"></a>Az Update Management megoldás
+## <a name="update-management"></a>Frissítéskezelés
 
 ### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Megakadályozható a váratlan operációsrendszer-szintű frissítések?
 
@@ -29,7 +26,7 @@ Bizonyos Linux-változatoknál, például a Red Hat Enterprise Linux, az operác
 
 Ha el szeretné kerülni az operációs rendszer verziójának Update Management központi telepítéseken keresztüli frissítését, használja a **kizárás** funkciót.
 
-Red Hat Enterprise Linux a kizárni kívánt csomag neve `redhat-release-server.x86_64`.
+Red Hat Enterprise Linux a kizárni kívánt csomag neve `redhat-release-server.x86_64` .
 
 ### <a name="why-arent-criticalsecurity-updates-applied"></a>Miért nem alkalmaz kritikus/biztonsági frissítéseket?
 
@@ -53,7 +50,7 @@ $sched = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountN
 New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait az alábbi forrásokban tekintheti meg.
 

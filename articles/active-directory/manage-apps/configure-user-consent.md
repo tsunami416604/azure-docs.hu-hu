@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 2064ac929063fcdcf15c1e7495769c7d84aeef33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698028"
+ms.locfileid: "83714005"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Annak konfigurálása, hogy a végfelhasználók hogyan hozzájárulásukat az alkalmazásokhoz
 
@@ -49,7 +49,7 @@ A felhasználói beleegyező beállítások konfigurálása a Azure Portal haszn
 1. **Az alkalmazások felhasználói beleegyezike**területen válassza ki, hogy az összes felhasználóra vonatkozóan melyik beleegyező beállítást szeretné konfigurálni.
 1. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
-![Felhasználói beleegyező beállítások](./media/configure-user-consent/configure-consent-setting-for-all-users.png)
+![Felhasználói beleegyező beállítások](./media/configure-user-consent/setting-for-all-users.png)
 
 > [!TIP]
 > Érdemes lehet [engedélyezni a rendszergazdai hozzájárulási munkafolyamatot](configure-admin-consent-workflow.md) , amely lehetővé teszi, hogy a felhasználók kérjenek egy olyan alkalmazás rendszergazdájának felülvizsgálatát és jóváhagyását, amelyet a felhasználó nem jogosult beleegyezésre – például ha a felhasználó beleegyezését letiltották, vagy ha egy alkalmazás olyan engedélyeket kér, amelyet a felhasználó nem engedélyez.
@@ -102,7 +102,7 @@ Az engedélyek besorolása lehetővé teszi annak a meghatározását, hogy a k�
 
 Ebben a példában az egyszeri bejelentkezéshez minimálisan szükséges engedélyt soroltuk be:
 
-![Engedélyek besorolása](./media/configure-user-consent/configure-permission-classifications.png)
+![Engedélyek besorolása](./media/configure-user-consent/permission-classifications.png)
 
 > [!TIP]
 > A Microsoft Graph API esetében az alapszintű egyszeri bejelentkezéshez szükséges minimális engedélyek a következők:, `openid` `profile` `User.Read` és `offline_access` . Ezekkel az engedélyekkel az alkalmazás beolvashatja a bejelentkezett felhasználó profiljának részleteit, és akkor is karbantarthatja ezt a hozzáférést, ha a felhasználó már nem használja az alkalmazást.
@@ -192,7 +192,7 @@ Beállíthatja, hogy mely felhasználók férjenek hozzá az alkalmazásokhoz a 
 
 Ebben a példában minden csoport tulajdonosa jogosult a csoportok adatokhoz hozzáférő alkalmazásokhoz való hozzáférésre:
 
-![Engedélyek besorolása](./media/configure-user-consent/configure-group-owner-consent.png)
+![Engedélyek besorolása](./media/configure-user-consent/group-owner-consent.png)
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Csoport tulajdonosi engedélyének konfigurálása a PowerShell használatával
 
@@ -228,7 +228,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
 
 1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
@@ -286,7 +286,7 @@ Ezt a fentiekben látható lépések végrehajtásával is megteheti a [csoport 
 
 1. A kockázati alapú lépésekre vonatkozó beleegyezés értékeinek ismertetése:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 
@@ -308,7 +308,7 @@ Ezt a fentiekben látható lépések végrehajtásával is megteheti a [csoport 
     $riskBasedConsentEnabledValue.Value = "True"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 

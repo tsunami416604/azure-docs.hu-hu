@@ -11,25 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 84857315e4b6b4375ed5b78520b4c6ff0d66751a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733107"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684983"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
-Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a művelethez. Ezek az összetevők az előfizetésben Azure Portal, Azure CLI, Azure PowerShell vagy sablonok használatával konfigurálhatók.
+A Azure Load Balancer néhány kulcsfontosságú összetevőből áll. Ezek az előfizetésben Azure Portal, Azure CLI, Azure PowerShell vagy sablonok használatával konfigurálhatók.
 
-## <a name="frontend-ip-configurations"></a>Előtér-IP-konfigurációk
+## <a name="frontend-ip-configuration"></a>Előtér-IP-konfiguráció<a name = "frontend-ip-configurations"></a>
 
-A terheléselosztó IP-címe. Ez a kapcsolódási pont az ügyfelek számára. Ezek a címek a következők lehetnek:
+A Azure Load Balancer IP-címe. Ez a kapcsolódási pont az ügyfelek számára. Ezek az IP-címek a következők lehetnek:
 
 - **Nyilvános IP-cím**
 - **Magánhálózati IP-cím**
 
-Az IP-cím kiválasztása meghatározza a létrehozott terheléselosztó **típusát** . A magánhálózati IP-címek kiválasztása létrehoz egy belső terheléselosztó. A nyilvános IP-cím kiválasztása nyilvános Load balancert hoz létre.
+Az IP-cím természete határozza meg, hogy milyen **típusú** terheléselosztó lett létrehozva. A magánhálózati IP-címek kiválasztása létrehoz egy belső terheléselosztó. A nyilvános IP-cím kiválasztása nyilvános Load balancert hoz létre.
 
 |  | Nyilvános terheléselosztó  | Belső terheléselosztó |
 | ---------- | ---------- | ---------- |
@@ -41,46 +41,45 @@ Az IP-cím kiválasztása meghatározza a létrehozott terheléselosztó **típu
 
 ## <a name="backend-pool"></a>A háttérkészlet
 
-Egy virtuálisgép-méretezési csoportban lévő virtuális gépek vagy példányok csoportja, amely a beérkező kérést szolgálja. Ahhoz, hogy a költséghatékonyan megfeleljen a nagy mennyiségű bejövő forgalomnak, a számítástechnikai irányelvek általában azt ajánlják, hogy további példányokat vegyen fel a háttér-készletbe. 
+Egy virtuálisgép-méretezési csoportban lévő virtuális gépek vagy példányok csoportja, amely a beérkező kérést szolgálja. Ahhoz, hogy a költséghatékonyan megfeleljen a nagy mennyiségű bejövő forgalomnak, a számítástechnikai irányelvek általában azt ajánlják, hogy további példányokat vegyen fel a háttér-készletbe.
 
-A Load Balancer azonnal újrakonfigurálja magát az automatikus újrakonfigurálással, ha feljebb vagy lejjebb méretezi a példányokat. Ha virtuális gépeket ad hozzá vagy távolít el a háttér-készletből, a terheléselosztó további műveletek nélkül újrakonfigurálja a terheléselosztó-t. A háttér-készlet hatóköre a virtuális hálózatban található bármely virtuális gép. 
+A Load Balancer azonnal újrakonfigurálja magát az automatikus újrakonfigurálással, ha feljebb vagy lejjebb méretezi a példányokat. Ha virtuális gépeket ad hozzá vagy távolít el a háttér-készletből, a terheléselosztó további műveletek nélkül újrakonfigurálja a terheléselosztó-t. A háttér-készlet hatóköre a virtuális hálózatban található bármely virtuális gép.
 
 A háttérbeli készlet kialakításának megtervezése során tervezze meg a minimális számú egyéni háttér-készlet erőforrást a felügyeleti műveletek hosszának optimalizálása érdekében. Nincs különbség az adatsíkok teljesítményében vagy méretezésében.
 
 ## <a name="health-probes"></a>Állapotminták
 
-A backend-készletben lévő példányok állapotának meghatározásához a rendszer állapot-mintavételt használ. Megadhatja az állapot-mintavételek nem megfelelő állapotát. Ha egy mintavétel nem válaszol, a terheléselosztó leállítja az új kapcsolatok küldését a nem kifogástalan állapotú példányokra. A mintavételi hiba nem érinti A meglévő kapcsolatokat. A kapcsolatok addig folytatódnak, amíg az alkalmazás:
+Az állapot-mintavétel a háttér-készletben lévő példányok állapotának meghatározására szolgál. Load Balancer létrehozásakor be kell állítania egy állapot-mintavételt, amelyet a Load Balancer használhat annak megállapítására, hogy a példány állapota Kifogástalan-e, és irányítsa-e a forgalmat.
+
+Megadhatja az állapot-mintavételek nem megfelelő állapotát. Ha egy mintavétel nem válaszol, Load Balancer leállítja az új kapcsolatok küldését a nem kifogástalan állapotú példányokra. A mintavételi hiba nem érinti A meglévő kapcsolatokat. A kapcsolatok addig folytatódnak, amíg az alkalmazás:
 
 - A folyamat vége
 - Tétlen időtúllépés történik
 - A virtuális gép leáll
 
-Load Balancer különböző állapot-mintavételi típusokat biztosít a végpontokhoz:
+A Load Balancer különböző állapot-mintavételi típusokat biztosít a végpontokhoz: TCP, HTTP és HTTPS.
 
-- TCP
-- HTTP
-- HTTPS
-
-Az alapszintű Load Balancer nem támogatja a HTTPS-próbákat. Az alapszintű Load Balancer minden TCP-kapcsolatot bezár (beleértve a létesített kapcsolatokat is).
+Az alapszintű Load Balancer nem támogatja a HTTPS-próbákat. Az alapszintű Load Balancer lezárja az összes TCP-kapcsolatot (beleértve a létesített kapcsolatokat is).
 
 ## <a name="load-balancing-rules"></a>Terheléselosztási szabályok
 
-A terheléselosztási szabályok közlik a terheléselosztó-vel, hogy mi a teendő. A terheléselosztási szabály egy adott előtérbeli IP-konfigurációt és portot képez le több háttérbeli IP-cím és port számára.
+Load Balancer szabály segítségével határozható meg, hogy a rendszer hogyan ossza el a bejövő forgalmat a háttér-készleten belüli **összes** példányra. A terheléselosztási szabály egy adott előtérbeli IP-konfigurációt és portot képez le több háttérbeli IP-cím és port számára.
+
+Ha például azt szeretné, hogy az 80-as porton (vagy egy másik porton) lévő forgalom az összes háttér-példány 80-es portjához legyen átirányítva, akkor ezt a terheléselosztási szabályt kell használnia.
 
 ## <a name="inbound-nat-rules"></a>Bejövő NAT-szabályok
 
-A bejövő NAT-szabályok továbbítják a forgalmat az előtér-IP-címről a virtuális hálózaton belüli háttérbeli példányra. A portok továbbítása a terheléselosztással megegyező kivonatoló alapú eloszlással történik. 
+A bejövő NAT-szabály továbbítja a bejövő forgalmat a kiválasztott előtéri IP-cím és port kombinációra egy **adott** virtuális gépre vagy példányra a háttér-készletben. A portok továbbítása a terheléselosztással megegyező kivonatoló alapú eloszlással történik.
 
-Példa: RDP protokoll (RDP) vagy Secure Shell (SSH) munkamenetek a virtuális hálózaton belüli virtuálisgép-példányok elkülönítésére. Több belső végpont is rendelhető ugyanahhoz az előtér-IP-címhez tartozó portokhoz. Az előtérbeli IP-címek használatával távolról felügyelheti a virtuális gépeket egy további Jump Box nélkül.
+Ha például az RDP protokoll (RDP) vagy a Secure Shell (SSH) munkameneteket szeretné elkülöníteni a háttérbeli készletben lévő virtuálisgép-példányokat. Több belső végpont is rendelhető ugyanahhoz a előtér-IP-címhez tartozó portokhoz. Az előtérbeli IP-címek használatával távolról felügyelheti a virtuális gépeket egy további Jump Box nélkül.
 
 ## <a name="outbound-rules"></a>Kimenő szabályok
 
-Egy kimenő szabály konfigurálja a kimenő hálózati címfordítást (NAT) a háttér-készlet által azonosított összes virtuális géphez vagy példányhoz.
+Egy kimenő szabály konfigurálja a kimenő hálózati címfordítást (NAT) a háttér-készlet által azonosított összes virtuális géphez vagy példányhoz. Ez lehetővé teszi, hogy a háttérbeli példányok kommunikáljanak (kimenő) az interneten vagy más végpontokon.
 
 Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
-![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozását](quickstart-load-balancer-standard-public-portal.md) ismertető témakört.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
@@ -90,7 +89,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 - Ismerje meg a [standard Load Balancer diagnosztikát](load-balancer-standard-diagnostics.md).
 - További információ [a TCP alaphelyzetbe állításáról üresjáratban](load-balancer-tcp-reset.md).
 - További tudnivalók a HA-portok terheléselosztási [szabályaival standard Load Balancer](load-balancer-ha-ports-overview.md).
-- Ismerje meg, hogyan használhatja [a Load Balancert több előtér-felülettel](load-balancer-multivip-overview.md).
+- Ismerje meg, hogyan használhatja [a Load Balancert több előtér-IP-konfigurációval](load-balancer-multivip-overview.md).
 - További információ a [hálózati biztonsági csoportokról](../virtual-network/security-overview.md).
 - További tudnivalók a mintavételi [típusokról](load-balancer-custom-probe-overview.md#types).
 - További információ a [Load Balancer korlátairól](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer).

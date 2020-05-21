@@ -1,6 +1,6 @@
 ---
-title: Konfigurációk konvertálása összetett erőforrásokra az állapot konfigurálásához – Azure Automation
-description: Megtudhatja, hogyan alakíthatja át a konfigurációkat összetett erőforrásokra az Azure Automation állapotának konfigurálásához.
+title: Konfigurációk konvertálása összetett erőforrásokra Azure Automation állapot-konfigurációhoz
+description: Ez a cikk azt ismerteti, hogyan alakíthatja át a konfigurációkat összetett erőforrásokra Azure Automation állapot-konfigurációra.
 keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fd7b2d0581b3eda97ec6fadeb43b55a3ad2bf0
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585509"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711329"
 ---
-# <a name="convert-configurations-to-composite-resources"></a>Konfigurációk átalakítása összetett erőforrásokká
+# <a name="convert-configurations-to-composite-resources-for-azure-automation-state-configuration"></a>Konfigurációk konvertálása összetett erőforrásokra Azure Automation állapot-konfigurációhoz
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -55,7 +55,7 @@ A projekt legújabb frissítése [runbookok](https://www.powershellgallery.com/p
 
 A DSC-hez készült összetett erőforrások létrehozásának automatizálásához látogasson el a [PowerShell-galériare](https://www.powershellgallery.com/packages/compositeresource/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/compositeresource)megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)

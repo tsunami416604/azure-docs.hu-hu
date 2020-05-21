@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f10825d8f22a7ddd9858e86dc2083ae47da9a69
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654915"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712757"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -114,7 +114,7 @@ A következő műveleteket hajthatja végre:
 
 * Új számítási példány létrehozása. Adja meg a nevet, az Azure-beli virtuális gép típusát, beleértve a GPU-ket (vegye figyelembe, hogy a virtuális gép típusa a létrehozás után nem módosítható), az SSH-hozzáférés engedélyezése/letiltása és a virtuális hálózati beállítások konfigurálása. A példányokat közvetlenül is létrehozhatja az integrált jegyzetfüzetek, Azure Portal, Resource Manager-sablonok vagy Azure Machine Learning SDK használatával. A számítási példányok létrehozásához szükséges dedikált magok régiónként a rendszer egységesíti és megosztotta Azure Machine Learning számítási fürt kvótáját.
 * A számítási példányok lap frissítése
-* Számítási példány elindítása, leállítása és újraindítása
+* Számítási példány elindítása, leállítása és újraindítása. Állítsa le a virtuális gépet, ha nem használja azt a Cost csökkentése érdekében. Ezután indítsa el újra, amikor szüksége van rá.
 * Számítási példány törlése
 
 A munkaterületen minden számítási példány esetében a következőket teheti:
@@ -146,6 +146,6 @@ A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok
 Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

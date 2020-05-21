@@ -1,23 +1,20 @@
 ---
 title: Azure Automation-adatok kezelése
-description: Ez a cikk több témakört tartalmaz egy Azure Automation környezet kezeléséhez.  Jelenleg az adatok megőrzését és a Azure Automation Azure Automation vész-helyreállítás biztonsági mentését foglalja magában.
+description: Ez a cikk a Azure Automation adatkezelésének fogalmait tartalmazza, beleértve az adatmegőrzést és a biztonsági mentést.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984657"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715426"
 ---
-# <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
+# <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
-Ez a cikk több témakört tartalmaz az Azure Automation-környezetekben tárolt adatkezeléshez.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
+Ez a cikk számos témakört tartalmaz az adatAzure Automation-környezetekben történő kezeléséhez.
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
@@ -77,7 +74,7 @@ Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a kü
 
 4. Importálja a runbookok az Automation-fiókjába a másodlagos régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg [a biztonságos eszközök titkosítása a Azure Automationban](automation-secure-asset-encryption.md)című témakört.
 

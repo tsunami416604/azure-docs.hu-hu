@@ -1,15 +1,15 @@
 ---
 title: Oktatóanyag – helyi Azure Resource Manager sablon üzembe helyezése
 description: Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont a helyi számítógépről
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188824"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714066"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Oktatóanyag: helyi Azure Resource Manager sablon üzembe helyezése
 
@@ -69,7 +69,7 @@ Ha több Azure-előfizetéssel rendelkezik, válassza ki a használni kívánt e
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -151,7 +151,7 @@ Ha többet szeretne megtudni a sablon Azure CLI használatával történő telep
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az erőforráscsoport törlésével törölje az üzembe helyezett erőforrásokat.
 
@@ -160,7 +160,7 @@ Az erőforráscsoport törlésével törölje az üzembe helyezett erőforrások
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan helyezhet üzembe egy helyi sablont. A következő oktatóanyagban elkülöníti a sablont egy fő sablonba és egy csatolt sablonba, és megtudhatja, hogyan tárolhatja és biztonságossá teheti a csatolt sablont.
 

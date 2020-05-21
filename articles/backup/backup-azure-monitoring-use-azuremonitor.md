@@ -4,12 +4,12 @@ description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714831"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -45,6 +45,9 @@ A riasztások meghatározó jellemzője az aktiválási feltétel. Válassza ki 
 
 Ha szükséges, szerkesztheti a Kusto-lekérdezést. Válassza ki a küszöbértéket, az időszakot és a gyakoriságot. A küszöbérték határozza meg, hogy a riasztás Mikor kerül kiemelésre. Az időszak az az időablak, amelyben a lekérdezés fut. Ha például a küszöbérték nagyobb nullánál, az időszak 5 perc, a gyakoriság pedig 5 perc, a szabály 5 percenként futtatja a lekérdezést, és az előző 5 percet tekinti át. Ha az eredmények száma nagyobb, mint 0, a rendszer értesítést küld a kiválasztott műveleti csoporton.
 
+> [!NOTE]
+> Ha naponta egyszer szeretné futtatni a riasztási szabályt az összes, az adott napon létrehozott esemény/napló között, módosítsa a "period" és a "Frequency" értékét 1440-ra, azaz 24 órára.
+
 #### <a name="alert-action-groups"></a>Riasztási műveleti csoportok
 
 Az értesítési csatorna megadásához használjon műveleti csoportot. Az elérhető értesítési mechanizmusok megjelenítéséhez a **műveleti csoportok**területen válassza az **új létrehozása**lehetőséget.
@@ -64,6 +67,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -72,6 +76,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -80,6 +85,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -96,6 +102,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -112,6 +119,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -161,8 +169,8 @@ A tárolóból származó diagnosztikai adatok bekerülnek a Log Analytics munka
 A tevékenység-naplók segítségével értesítéseket kaphat az eseményekről, például a biztonsági mentés sikerességéről. A kezdéshez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Portalra.
-1. Nyissa meg a megfelelő Recovery Services-tárolót.
-1. A tároló tulajdonságai között nyissa meg a **tevékenység napló** szakaszt.
+2. Nyissa meg a megfelelő Recovery Services-tárolót.
+3. A tároló tulajdonságai között nyissa meg a **tevékenység napló** szakaszt.
 
 A megfelelő napló azonosítása és riasztás létrehozása:
 
@@ -170,9 +178,9 @@ A megfelelő napló azonosítása és riasztás létrehozása:
 
    ![Az Azure-beli virtuális gépek biztonsági másolatainak keresésére szolgáló szűrési műveletek](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. A megfelelő részletek megtekintéséhez válassza ki a művelet nevét.
-1. Válassza az **új riasztási szabály** lehetőséget a **szabály létrehozása** lap megnyitásához.
-1. Hozzon létre egy riasztást a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)című témakör lépéseit követve.
+2. A megfelelő részletek megtekintéséhez válassza ki a művelet nevét.
+3. Válassza az **új riasztási szabály** lehetőséget a **szabály létrehozása** lap megnyitásához.
+4. Hozzon létre egy riasztást a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)című témakör lépéseit követve.
 
    ![Új riasztási szabály](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -190,6 +198,6 @@ Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, h
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni lekérdezések létrehozásához tekintse meg az [log Analytics adatmodellt](backup-azure-reports-data-model.md).

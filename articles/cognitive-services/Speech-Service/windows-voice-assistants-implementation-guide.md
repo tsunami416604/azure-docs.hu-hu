@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 7a142060a29561526c378ce04b23aa2b286cd6c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997402"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714729"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Hangsegédek implementálása Windows rendszeren
 
@@ -43,7 +43,7 @@ A hangsegéd funkció zárolásának feloldásához használja a Microsoft álta
 
 Az alkalmazásnak regisztrálnia kell magát, a kulcsszavas modelljét és nyelvét a Windowsban.
 
-Első lépésként beolvassa a kulcsszó-érzékelőt. Ebben a mintakódban beolvasjuk az első detektort, de kiválaszthatja azt a kiválasztásával `configurableDetectors`.
+Első lépésként beolvassa a kulcsszó-érzékelőt. Ebben a mintakódban beolvasjuk az első detektort, de kiválaszthatja azt a kiválasztásával `configurableDetectors` .
 
 ```csharp
 private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsync()
@@ -65,19 +65,19 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 }
 ```
 
-A ActivationSignalDetector objektum lekérése után hívja meg `ActivationSignalDetector.CreateConfigurationAsync` a metódust a jel azonosítójával, a modell azonosítójával és a megjelenítendő névvel a kulcsszó regisztrálásához és az alkalmazás `ActivationSignalDetectionConfiguration`beolvasásához. A jelet és a modell azonosítóit a fejlesztőnek kell megadnia, és konzisztensnek kell lennie ugyanahhoz a kulcsszóhoz.
+A ActivationSignalDetector objektum lekérése után hívja `ActivationSignalDetector.CreateConfigurationAsync` meg a metódust a jel azonosítójával, a modell azonosítójával és a megjelenítendő névvel a kulcsszó regisztrálásához és az alkalmazás beolvasásához `ActivationSignalDetectionConfiguration` . A jelet és a modell azonosítóit a fejlesztőnek kell megadnia, és konzisztensnek kell lennie ugyanahhoz a kulcsszóhoz.
 
 ### <a name="verify-that-the-voice-activation-setting-is-enabled"></a>Annak ellenőrzése, hogy engedélyezve van-e a hangaktiválási beállítás
 
-A Hangaktiválás használatához a felhasználónak engedélyeznie kell a hangaktiválást a rendszer számára, és engedélyeznie kell a hangaktiválást az alkalmazáshoz. A beállítás a Windows-beállítások hang aktiválása adatvédelmi beállítások részében található. Az alkalmazásban a hangaktiválási beállítás állapotának megtekintéséhez használja `ActivationSignalDetectionConfiguration` a kulcsszó regisztrációját. A [AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128) mezőjében `ActivationSignalDetectionConfiguration` szerepel egy Enum érték, amely leírja a hangaktiválási beállítás állapotát.
+A Hangaktiválás használatához a felhasználónak engedélyeznie kell a hangaktiválást a rendszer számára, és engedélyeznie kell a hangaktiválást az alkalmazáshoz. A beállítás a Windows-beállítások hang aktiválása adatvédelmi beállítások részében található. Az alkalmazásban a hangaktiválási beállítás állapotának megtekintéséhez használja a `ActivationSignalDetectionConfiguration` kulcsszó regisztrációját. A [AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128) mezőjében `ActivationSignalDetectionConfiguration` szerepel egy Enum érték, amely leírja a hangaktiválási beállítás állapotát.
 
 ### <a name="retrieve-a-conversationalagentsession-to-register-the-app-with-the-mva-system"></a>ConversationalAgentSession beolvasása az alkalmazás MVA rendszerbe való regisztrálásához
 
-A `ConversationalAgentSession` Windows SDK osztálya, amely lehetővé teszi, hogy az alkalmazás frissítse a Windowst az alkalmazás állapotával (tétlen, észlelés, figyelés, működés, beszéd), és fogadja az eseményeket, például az aktiválás észlelését és a rendszerállapot-módosításokat, például a képernyő zárolását. A AgentSession egy példányának beolvasása azt is szolgálja, hogy a hang alapján aktiválja az alkalmazást a Windowsban. Az ajánlott eljárás az, hogy fenntartsa az `ConversationalAgentSession`egyik referenciáját. A munkamenet lekéréséhez használja az `ConversationalAgentSession.GetCurrentSessionAsync` API-t.
+A `ConversationalAgentSession` Windows SDK osztálya, amely lehetővé teszi, hogy az alkalmazás frissítse a Windowst az alkalmazás állapotával (tétlen, észlelés, figyelés, működés, beszéd), és fogadja az eseményeket, például az aktiválás észlelését és a rendszerállapot-módosításokat, például a képernyő zárolását. A AgentSession egy példányának beolvasása azt is szolgálja, hogy a hang alapján aktiválja az alkalmazást a Windowsban. Az ajánlott eljárás az, hogy fenntartsa az egyik referenciáját `ConversationalAgentSession` . A munkamenet lekéréséhez használja az `ConversationalAgentSession.GetCurrentSessionAsync` API-t.
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>Hallgassa meg a két aktiváló jelet: a OnBackgroundActivated és a OnSignalDetected
 
-A Windows akkor fogja jelezni az alkalmazást, ha a kulcsszót kétféleképpen észleli. Ha az alkalmazás nem aktív (azaz nincs hivatkozása egy nem eldobott példányra `ConversationalAgentSession`), akkor elindítja az alkalmazást, és meghívja az OnBackgroundActivated metódust az alkalmazás app.XAML.cs-fájljában. Ha az Event argumentumok `BackgroundActivatedEventArgs.TaskInstance.Task.Name` mező megfelel a "AgentBackgroundTrigger" karakterláncnak, az alkalmazás indítását a Hangaktiválás aktiválja. Az alkalmazásnak felül kell bírálnia ezt a metódust, és le kell kérnie a ConversationalAgentSession egy példányát, hogy jelezze a most aktív Windows rendszernek. Ha az alkalmazás aktív, a Windows az `ConversationalAgentSession.OnSignalDetected` eseményt használva jelzi a Hangaktiválás előfordulását. A `ConversationalAgentSession`lekérése után vegyen fel egy eseménykezelőt erre az eseményre.
+A Windows akkor fogja jelezni az alkalmazást, ha a kulcsszót kétféleképpen észleli. Ha az alkalmazás nem aktív (azaz nincs hivatkozása egy nem eldobott példányra `ConversationalAgentSession` ), akkor elindítja az alkalmazást, és meghívja az OnBackgroundActivated metódust az alkalmazás app.XAML.cs-fájljában. Ha az Event argumentumok `BackgroundActivatedEventArgs.TaskInstance.Task.Name` mező megfelel a "AgentBackgroundTrigger" karakterláncnak, az alkalmazás indítását a Hangaktiválás aktiválja. Az alkalmazásnak felül kell bírálnia ezt a metódust, és le kell kérnie a ConversationalAgentSession egy példányát, hogy jelezze a most aktív Windows rendszernek. Ha az alkalmazás aktív, a Windows az eseményt használva jelzi a Hangaktiválás előfordulását `ConversationalAgentSession.OnSignalDetected` . A lekérése után vegyen fel egy eseménykezelőt erre az eseményre `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Kulcsszó ellenőrzése
 
@@ -85,7 +85,7 @@ Ha a hangügynök alkalmazást a hang aktiválja, a következő lépés annak el
 
 ### <a name="retrieve-activation-audio"></a>Aktiválási hang beolvasása
 
-Hozzon létre egy [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) , és adja `CreateAudioDeviceInputNodeAsync` át a `ConversationalAgentSession`következőnek:. Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
+Hozzon létre egy [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) , és adja át a következőnek: `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -98,13 +98,13 @@ Megjegyzés: az audio pufferben található vezető hang a kulcsszó-ellenőrzé
 
 ### <a name="launch-in-the-foreground"></a>Indítás az előtérben
 
-Ha a kulcsszó ellenőrzése sikeres, az alkalmazásnak az előtérben kell áttérnie a felhasználói felület megjelenítéséhez. Hívja meg `ConversationalAgentSession.RequestForegroundActivationAsync` az API-t az alkalmazás előtérben való áthelyezéséhez.
+Ha a kulcsszó ellenőrzése sikeres, az alkalmazásnak az előtérben kell áttérnie a felhasználói felület megjelenítéséhez. Hívja `ConversationalAgentSession.RequestForegroundActivationAsync` meg az API-t az alkalmazás előtérben való áthelyezéséhez.
 
 ### <a name="transition-from-compact-view-to-full-view"></a>Váltás a tömör nézetből a teljes nézetbe
 
 Ha az alkalmazást a hang első aktiválása után aktiválja, a rendszer egy kompakt nézetben indítja el. A hangvezérelt [aktiválás előzetes kialakításával](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) kapcsolatos útmutatásért olvassa el a Windows rendszerű hangasszisztensek közötti különböző nézeteket és átmeneteket.
 
-Az ApplicationView API `TryEnterViewModeAsync`-val a kompakt nézetből teljes alkalmazás nézetre való áttérést végezheti el:
+Az ApplicationView API-val a kompakt nézetből teljes alkalmazás nézetre való áttérést végezheti el `TryEnterViewModeAsync` :
 
 ```csharp
 var appView = ApplicationView.GetForCurrentView();
@@ -113,19 +113,28 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 ## <a name="implementing-above-lock-activation"></a>A fenti zárolás aktiválásának megvalósítása
 
-Az alábbi lépések azokat a követelményeket ismertetik, amelyek lehetővé teszik, hogy a Windows hangasszisztense a fenti zárolást futtassa, beleértve az alkalmazások életciklusának kezeléséhez szükséges példákra mutató hivatkozásokat is. A zárolási tapasztalatok megtervezésével kapcsolatos útmutatásért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](windows-voice-assistants-best-practices.md).
+Az alábbi lépések azokat a követelményeket ismertetik, amelyek lehetővé teszik, hogy a Windows hangasszisztense a fenti zárolást futtassa, beleértve az alkalmazások életciklusának kezeléséhez szükséges példákra mutató hivatkozásokat is.
+
+A zárolási tapasztalatok megtervezésével kapcsolatos útmutatásért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](windows-voice-assistants-best-practices.md).
+
+Ha egy alkalmazás a zárolás fölött egy nézetet jelenít meg, akkor azt "kioszk módban" tekinti. A kioszk üzemmódot használó alkalmazások megvalósításával kapcsolatos további információkért tekintse meg a [kioszk mód dokumentációját](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
+
+### <a name="transitioning-above-lock"></a>Áttérés a fenti zárolás felett
+
+A zárolás fenti aktiválása hasonló a zárolás alatti aktiváláshoz. Ha az alkalmazás nem rendelkezik aktív példányokkal, a háttérben egy új példány lesz elindítva, és a `OnBackgroundActivated` rendszer a app.XAML.cs fogja hívni. Ha az alkalmazás egy példánya van, akkor ez a példány értesítést kap az `ConversationalAgentSession.SignalDetected` eseményen.
+
+Ha az alkalmazás már nem jelenik meg a zárolás felett, meg kell hívnia a következőt: `ConversationalAgentSession.RequestForegroundActivationAsync` . Ez elindítja a `OnLaunched` metódust a app.XAML.cs-ben, amely a zárolást megelőzően megjelenítendő nézetre fog navigálni.
 
 ### <a name="detecting-lock-screen-transitions"></a>Zárolási képernyő-átmenetek észlelése
 
-A Windows SDK ConversationalAgent könyvtára olyan API-t biztosít, amely lehetővé teszi a zárolási képernyő állapotának és a zárolási képernyő állapotának módosítását könnyen elérhetővé. A zárolási képernyő aktuális állapotának észleléséhez ellenőrizze `ConversationalAgentSession.IsUserAuthenticated` a mezőt. A zárolási állapot változásainak észleléséhez adjon hozzá egy eseménykezelőt `ConversationalAgentSession` az objektum `SystemStateChanged` eseményéhez. Akkor következik be, amikor a képernyő zárolása zárolva értékre változik, vagy fordítva. Ha az esemény argumentum értéke `ConversationalAgentSystemStateChangeType.UserAuthentication`, akkor a zárolási képernyő állapota módosult, és az alkalmazás bezárul.
+A Windows SDK ConversationalAgent könyvtára olyan API-t biztosít, amely lehetővé teszi a zárolási képernyő állapotának és a zárolási képernyő állapotának módosítását könnyen elérhetővé. A zárolási képernyő aktuális állapotának észleléséhez ellenőrizze a `ConversationalAgentSession.IsUserAuthenticated` mezőt. A zárolási állapot változásainak észleléséhez adjon hozzá egy eseménykezelőt az `ConversationalAgentSession` objektum `SystemStateChanged` eseményéhez. Akkor következik be, amikor a képernyő zárolása zárolva értékre változik, vagy fordítva. Ha az esemény argumentumok értéke `ConversationalAgentSystemStateChangeType.UserAuthentication` , akkor a zárolási képernyő állapota megváltozott.
 
 ```csharp
-// When the app changes lock state, close the application to prevent duplicates running at once
 conversationalAgentSession.SystemStateChanged += (s, e) =>
 {
     if (e.SystemStateChangeType == ConversationalAgentSystemStateChangeType.UserAuthentication)
     {
-        WindowService.CloseWindow();
+        // Handle lock state change
     }
 };
 ```
@@ -136,9 +145,12 @@ A Hangaktiválás adatvédelmi beállításai oldalon található alkalmazás be
 
 ## <a name="closing-the-application"></a>Az alkalmazás bezárása
 
-Ha programozott módon szeretné bezárni az alkalmazást a zárolás felett vagy alatt, használja az `WindowService.CloseWindow()` API-t. Ez elindítja az összes UWP életciklus-módszert, beleértve a OnSuspend is, amelyek lehetővé teszik az `ConversationalAgentSession` alkalmazás számára, hogy a lezárás előtt ártalmatlanítsa a példányát.
+Ha programozott módon szeretné bezárni az alkalmazást a zárolás felett vagy alatt, használja az `WindowService.CloseWindow()` API-t. Ez elindítja az összes UWP életciklus-módszert, beleértve a OnSuspend is, amelyek lehetővé teszik az alkalmazás számára, hogy a lezárás előtt ártalmatlanítsa a `ConversationalAgentSession` példányát.
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> Az alkalmazás bezárható az [alábbi zárolási példány](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)bezárása nélkül. Ebben az esetben a fenti zárolási nézetet a "tisztítás" értékre kell állítani, így biztosítva, hogy a képernyő zárolása után ne kelljen a fenti zárolási nézetet módosítani.
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tekintse meg a példákat és a kódot bemutató UWP hangsegéd minta alkalmazást](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)

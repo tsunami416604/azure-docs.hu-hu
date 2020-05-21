@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0325b43b6726f04d5994b60404f218ac58122d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597533"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712196"
 ---
 # <a name="self-service-sign-up-preview"></a>Önkiszolgáló regisztráció (előzetes verzió)
 |     |
@@ -24,17 +24,20 @@ ms.locfileid: "83597533"
 | Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Az alkalmazások külső felhasználókkal való megosztásakor előfordulhat, hogy nem mindig tudja előre, hogy kinek van szüksége az alkalmazáshoz való hozzáférésre. Az önkiszolgáló regisztráció engedélyezésével lehetővé teheti a külső felhasználók számára, hogy a meghívókat közvetlenül az egyéni felhasználóknak is regisztrálják. Személyre szabott regisztrációs élményt hozhat létre az önkiszolgáló bejelentkezési felhasználói folyamat testreszabásával. Megadhatja például az Azure AD-vagy a közösségi identitás-szolgáltatók beállításait, és információkat gyűjthet a felhasználóról.
+Ha külső felhasználókkal oszt meg egy alkalmazást, előfordulhat, hogy nem mindig tudja előre, hogy kinek van szüksége az alkalmazáshoz való hozzáférésre. Az önkiszolgáló regisztráció engedélyezésével lehetővé teheti a külső felhasználók számára, hogy a meghívókat közvetlenül az egyéni felhasználóknak is regisztrálják. Személyre szabott regisztrációs élményt hozhat létre az önkiszolgáló bejelentkezési felhasználói folyamat testreszabásával. Például megadhatja az Azure AD-vel vagy a közösségi identitással való regisztrációhoz szükséges lehetőségeket, és adatokat gyűjthet a felhasználóról a regisztrációs folyamat során.
+
+> [!NOTE]
+> A felhasználói folyamatokat a szervezet által készített alkalmazásokkal társíthatja. A felhasználói folyamatok nem használhatók Microsoft-alkalmazásokhoz, például a SharePointhoz vagy a Teams szolgáltatáshoz.
 
 ## <a name="user-flow-for-self-service-sign-up"></a>Felhasználói folyamat önkiszolgáló regisztrációhoz
 
-Az önkiszolgáló regisztrációs felhasználói folyamat létrehoz egy regisztrációs élményt a külső felhasználóknak a megosztani kívánt alkalmazáson keresztül. A felhasználói folyamat egy vagy több alkalmazáshoz is társítható. Először is engedélyeznie kell az önkiszolgáló regisztrációt a bérlőre, és összevonása minden olyan identitás-szolgáltatóval, amely számára engedélyezni kívánja a külső felhasználók számára a bejelentkezést. Ezután létrehozhatja és testreszabhatja a regisztrációs felhasználói folyamatot, és hozzárendelheti az alkalmazásait.
+Az önkiszolgáló regisztrációs felhasználói folyamat létrehoz egy regisztrációs élményt a külső felhasználóknak a megosztani kívánt alkalmazáson keresztül. A felhasználói folyamat egy vagy több alkalmazáshoz is társítható. Először is engedélyeznie kell az önkiszolgáló regisztrációt a bérlő számára, és összevonása azokat az identitás-szolgáltatókat, amelyeknek engedélyezni szeretné a külső felhasználók számára a bejelentkezést. Ezután létrehozhatja és testreszabhatja a regisztrációs felhasználói folyamatot, és hozzárendelheti az alkalmazásait.
 A felhasználói folyamat beállításait beállíthatja annak szabályozására, hogy a felhasználó hogyan regisztrálja az alkalmazást:
 
 - A bejelentkezéshez használt fióktípus, például a Facebook vagy az Azure AD-fiókok
 - A felhasználó által regisztrálható attribútumok, például Utónév, postai kód vagy tartózkodási ország
 
-Ha egy felhasználó be szeretne jelentkezni az alkalmazásba, legyen szó webes, mobil-, asztali vagy egyoldalas alkalmazásról (SPA), akkor az alkalmazás egy engedélyezési kérelmet kezdeményez a felhasználó által megadott végpont számára. A felhasználói folyamat meghatározza és szabályozza a felhasználó élményét. Amikor elvégeznek egy regisztrációs felhasználói folyamatot, az Azure AD létrehoz egy jogkivonatot, majd visszairányítja a felhasználót az alkalmazáshoz. Több alkalmazás is használhatja ugyanazt a felhasználói folyamatot.
+Ha egy felhasználó be szeretne jelentkezni az alkalmazásba, legyen szó webes, mobil-, asztali vagy egyoldalas alkalmazásról (SPA), akkor az alkalmazás egy engedélyezési kérelmet kezdeményez a felhasználó által megadott végpont számára. A felhasználói folyamat meghatározza és szabályozza a felhasználó élményét. Amikor a felhasználó befejezi a regisztrációs felhasználói folyamatot, az Azure AD létrehoz egy jogkivonatot, és visszairányítja a felhasználót az alkalmazáshoz. A regisztráció befejezésekor a rendszer kiépít egy vendég fiókot a címtárban a felhasználó számára. Több alkalmazás is használhatja ugyanazt a felhasználói folyamatot.
 
 ## <a name="example-of-self-service-sign-up"></a>Önkiszolgáló regisztráció – példa
 
@@ -47,7 +50,7 @@ Az általuk választott e-mailt használják a regisztrációhoz.
 
 ![Példa a Facebook kiválasztására a bejelentkezéshez](media/self-service-sign-up-overview/example-sign-in-with-facebook.png)
 
-Az Azure AD kapcsolatot létesít a Woodgrove a partner Facebook-fiókjának használatával, és létrehoz egy új fiókot.
+Az Azure AD kapcsolatot létesít a Woodgrove a partner Facebook-fiókjának használatával, és a regisztráció után létrehoz egy új vendég fiókot a felhasználó számára.
 
 A Woodgrove többet szeretne megtudni a felhasználóról, például a név, az üzleti név, az üzleti regisztrációs kód, a telefonszám.
 
@@ -57,6 +60,6 @@ A felhasználó belép az adatokba, folytatja a regisztrációs folyamatot, és 
 
 ![Példa a bejelentkezett felhasználóra](media/self-service-sign-up-overview/example-signed-in.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Részletekért lásd: önkiszolgáló [regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md).

@@ -1,6 +1,6 @@
 ---
-title: Konfigurációs adatmennyiség – Azure Automation
-description: Megtudhatja, hogyan konfigurálhatja az adatmennyiséget a Azure Automation állapotának konfigurálásához.
+title: Az Azure Automation állapot konfigurációjának konfigurálása a skálán
+description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az adatmennyiséget Azure Automation állapot konfigurációjában.
 keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f6773d9f2210fd1b0342c9586d89155082bf8ff
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585575"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711448"
 ---
-# <a name="configuration-data-at-scale"></a>Konfigurációs adatok nagy mennyiségben
+# <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Az Azure Automation állapot konfigurációjának konfigurálása a skálán
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -49,7 +49,7 @@ Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/
 
 Az Datum kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/datum/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/gaelcolas/Datum#2-getting-started--concepts)megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)

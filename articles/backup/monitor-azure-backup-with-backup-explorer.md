@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható a Backup Explorer a t
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87780124d531212a141520df65ff7408cc120e55
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160989"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715205"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Biztonsági másolatok figyelése a Backup Explorerrel
 
@@ -30,8 +30,9 @@ Ezeket a képességeket az Azure Resource Graph és a Azure Monitor munkafüzete
 > * A Backup Explorer jelenleg nem támogatott az országos felhőkben.
 > * Jelenleg a Backup Explorer sablonjának testreszabása nem támogatott.
 > * Az Azure Resource Graph-adatszolgáltatásokban nem ajánlott egyéni automatizálást írni.
+> * Jelenleg a Backup Explorer lehetővé teszi, hogy a biztonsági mentéseket legfeljebb 1000 előfizetéssel figyelje (a bérlők között).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 A Backup Explorer eléréséhez nyissa meg a Recovery Services-tárolót, és válassza a **Backup Explorer** hivatkozást az **Áttekintés** ablaktáblán.
 
@@ -95,6 +96,6 @@ Az egyes táblázatok vagy diagramok tetején található "PIN" ikon kiválaszt�
 
 Ha egy Azure Lighthouse-felhasználó delegált hozzáféréssel rendelkezik több bérlői környezetben lévő előfizetésekhez, használhatja az alapértelmezett előfizetési szűrőt. Megjeleníti azokat az előfizetéseket, amelyek adatait meg szeretné jeleníteni, ha a Azure Portal jobb felső sarkában található "szűrő" ikonra kattint. Ha ezt a funkciót használja, a Backup Explorer összesíti a kiválasztott előfizetések összes tárolójának adatait. További információ: [Mi az az Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megtudhatja, hogyan használhatja a Azure Monitort a biztonsági mentési adataival kapcsolatos elemzések lekéréséhez](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)

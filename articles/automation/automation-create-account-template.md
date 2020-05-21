@@ -1,20 +1,20 @@
 ---
-title: Automation-fiók létrehozása Azure Resource Manager-sablonok használatával | Microsoft Docs
-description: Egy Azure Automation-fiók létrehozásához használhat Azure Resource Manager sablont.
+title: Automation-fiók létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Automation-fiókot Azure Resource Manager sablon használatával.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996104"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712672"
 ---
-# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
+# <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
 [Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával létrehozhat egy Azure Automation fiókot az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely a következőket tartalmazza:
 
@@ -38,7 +38,7 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 
 ## <a name="before-you-use-the-template"></a>A sablon használata előtt
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Connect-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást. A PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást. A PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez a 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket. Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
 
@@ -308,10 +308,8 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
     ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy rendelkezik egy Automation-fiókkal, létrehozhat runbookok, és automatizálhatja a manuális folyamatokat.
-
-* A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-first-runbook-textual-powershell.md)című témakört.
-* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-first-runbook-textual.md)című témakört.
-* A Python 2 runbookok megkezdéséhez tekintse meg [a Python-Runbook létrehozása](automation-first-runbook-textual-python2.md)című témakört.
+* [PowerShell-runbook létrehozása](automation-first-runbook-textual-powershell.md)
+* [PowerShell-munkafolyamat runbook létrehozása](automation-first-runbook-textual.md)
+* [Python-runbook létrehozása](automation-first-runbook-textual-python2.md)

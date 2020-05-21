@@ -9,16 +9,16 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649534"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714219"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 
-Ha hibaelhárítást végez a Azure Portalával kapcsolatban, és fel kell vennie a kapcsolatot a Microsoft ügyfélszolgálatával, javasoljuk, hogy először rögzítsen egy böngésző-nyomkövetést és néhány további információt. Az összegyűjtött információk a probléma bekövetkezésekor fontos adatokat adhatnak meg a portálról. Kövesse az ebben a cikkben található lépéseket a böngészőben használt fejlesztői eszközökhöz: Google Chrome vagy Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML) vagy Apple Safari.
+Ha hibaelhárítást végez a Azure Portalával kapcsolatban, és fel kell vennie a kapcsolatot a Microsoft ügyfélszolgálatával, javasoljuk, hogy először rögzítsen egy böngésző-nyomkövetést és néhány további információt. Az összegyűjtött információk a probléma bekövetkezésekor fontos adatokat adhatnak meg a portálról. Kövesse az ebben a cikkben található lépéseket a böngészőben használt fejlesztői eszközökhöz: Google Chrome vagy Microsoft Edge (Chromium), Microsoft Edge (EdgeHTML), Apple Safari vagy Firefox.
 
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome és Microsoft Edge (Chromium)
 
@@ -208,6 +208,6 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)

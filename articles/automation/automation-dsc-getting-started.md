@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés a Azure Automation állapot-konfigurációval
-description: Magyarázat és példák a Azure Automation állapot konfigurációjának leggyakoribb feladataira
+description: Ez a cikk azt ismerteti, hogyan végezheti el a leggyakoribb feladatokat Azure Automation állapot-konfigurációban.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 45d56daee20d95230f77db249028883165acb951
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 76d078d564125db7b6b8ae10909340a52b220407
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995776"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713216"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés a Azure Automation állapot-konfigurációval
 
@@ -123,7 +123,7 @@ A fordítás elindítása után megtekintheti azt a **konfigurációs** lap **fo
 
 ## <a name="view-node-configurations"></a>Csomópont-konfigurációk megtekintése
 
-A fordítási feladatok sikeres befejezése egy vagy több új csomópont-konfigurációt hoz létre. A csomópont-konfiguráció egy MOF-dokumentum, amely a lekérési kiszolgálóra van telepítve, és készen áll arra, hogy egy vagy több csomópont lekérje és alkalmazza őket. Az Automation-fiókban megtekintheti a csomópont-konfigurációkat az állapot-konfiguráció (DSC) lapon. A csomópont-konfigurációnak van egy neve az `ConfigurationName.NodeName`űrlappal.
+A fordítási feladatok sikeres befejezése egy vagy több új csomópont-konfigurációt hoz létre. A csomópont-konfiguráció egy MOF-dokumentum, amely a lekérési kiszolgálóra van telepítve, és készen áll arra, hogy egy vagy több csomópont lekérje és alkalmazza őket. Az Automation-fiókban megtekintheti a csomópont-konfigurációkat az állapot-konfiguráció (DSC) lapon. A csomópont-konfigurációnak van egy neve az űrlappal `ConfigurationName.NodeName` .
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
@@ -188,7 +188,7 @@ Az egyes jelentésekhez tartozó panelen a következő állapotinformációkat t
 - A jelentés állapota Lehetséges értékek:
     * Megfelelő – a csomópont megfelel az ellenőrzési követelményeknek.
    * Sikertelen – a konfiguráció nem tudta végrehajtani az ellenőrzését.
-   * Nem megfelelő – a csomópont `ApplyandMonitor` állapotban van, és a gép nem a kívánt állapotban van.
+   * Nem megfelelő – a csomópont állapotban van, `ApplyandMonitor` és a gép nem a kívánt állapotban van.
 - A konzisztencia-ellenőrzés kezdési időpontja.
 - A konzisztencia-ellenőrzés teljes futtatókörnyezete.
 - A konzisztencia-ellenőrzés típusa

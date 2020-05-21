@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597463"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712349"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83597463"
 | Az önkiszolgáló regisztráció a Azure Active Directory nyilvános előzetes funkciója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Ha a felhasználói folyamatot egy alkalmazással társítja, lehetővé teszi, hogy engedélyezze a regisztrálást az alkalmazáson. Több alkalmazást is kiválaszthat a felhasználói folyamathoz való társításhoz. Miután hozzárendelte a felhasználói folyamatot egy vagy több alkalmazáshoz, a felhasználók, akik meglátogatják az alkalmazást, regisztrálhatnak a felhasználói folyamaton konfigurált beállítások használatával.
+Felhasználói folyamatokat hozhat létre a szervezete által készített alkalmazásokhoz. Ha a felhasználói folyamatot egy alkalmazással társítja, lehetővé teszi, hogy engedélyezze a regisztrálást az alkalmazáson. Több alkalmazást is kiválaszthat a felhasználói folyamathoz való társításhoz. Miután hozzárendelte a felhasználói folyamatot egy vagy több alkalmazáshoz, a felhasználók, akik meglátogatják az alkalmazást, regisztrálhatnak, és elérhetik a vendég fiókot a felhasználói folyamaton konfigurált beállítások használatával.
+
+> [!NOTE]
+> A felhasználói folyamatokat a szervezet által készített alkalmazásokkal társíthatja. A felhasználói folyamatok nem használhatók Microsoft-alkalmazásokhoz, például a SharePointhoz vagy a Teams szolgáltatáshoz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -33,9 +36,12 @@ Ha a felhasználói folyamatot egy alkalmazással társítja, lehetővé teszi, 
 
 Az Azure AD az önkiszolgáló regisztráció alapértelmezett identitás-szolgáltatója. Ez azt jelenti, hogy a felhasználók alapértelmezés szerint egy Azure AD-fiókkal regisztrálhatnak. A közösségi identitással rendelkező szolgáltatók a Google-és Facebook-fiókok támogatásához is felvehetők a regisztrációs folyamatokban.
 
-- [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)
- 
+- [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
+
+> [!NOTE]
+> Az aktuális előzetes verzióban, ha az önkiszolgáló regisztrációs felhasználói folyamat egy alkalmazáshoz van társítva, és a felhasználónak egy meghívót küld az alkalmazásnak, a felhasználó nem fog tudni Gmail-fiókot használni a meghívó beváltásához. Megkerülő megoldásként a felhasználó átléphet az önkiszolgáló bejelentkezési folyamaton. Vagy a meghívást beválthatják egy másik alkalmazáshoz való hozzáféréssel vagy a saját alkalmazások portálján a következő címen: https://myapps.microsoft.com .
+
 ### <a name="define-custom-attributes-optional"></a>Egyéni attribútumok definiálása (nem kötelező)
 
 A felhasználói attribútumok a felhasználó által az önkiszolgáló regisztráció során gyűjtött értékek. Az Azure AD számos attribútumot tartalmaz, de létrehozhat egyéni attribútumokat is a felhasználói folyamatokban való használathoz. Ezeket az attribútumokat a Microsoft Graph API használatával is elolvashatja és elvégezheti. Lásd: [Egyéni attribútumok definiálása felhasználói folyamatokhoz](user-flow-add-custom-attributes.md).
@@ -99,7 +105,7 @@ Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
 9. Kattintson a **Kiválasztás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)

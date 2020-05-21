@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre gyorsan egy Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75442840"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697482"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -30,7 +30,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-1. Kattintson **az + erőforrás** > **létrehozása elemzési** > **Analysis Services**lehetőségre.
+1. Kattintson **az + erőforrás létrehozása**  >  **elemzési**  >  **Analysis Services**lehetőségre.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -45,16 +45,16 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
    * **Biztonsági tárhely beállítása**: Nem kötelező. Ha már rendelkezik [tárfiókkal](../storage/common/storage-introduction.md), megadhatja azt a modelladatbázisok biztonsági másolatainak alapértelmezett tárolójaként. Később is megadhatja a [biztonsági mentés és visszaállítás](analysis-services-backup.md) beállításait.
    * **Tárkulcs lejárata**: Nem kötelező. Adjon meg egy tárkulcslejárati időszakot.
 
-A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Vagy navigáljon az **összes szolgáltatás** > **Analysis Services** , és ellenőrizze, hogy a kiszolgáló készen áll-e. A kiszolgálók a 1200-es és magasabb kompatibilitási szinteken található táblázatos modelleket támogatják. A modell kompatibilitási szintje a Visual Studióban vagy a SSMS van megadva.
+A kiszolgáló létrehozása általában nem egészen egy percet vesz igénybe. Ha a **Hozzáadás a Portalhoz** lehetőséget választotta, a portáljára lépve megtekintheti az új kiszolgálót. Vagy navigáljon az **összes szolgáltatás**  >  **Analysis Services** , és ellenőrizze, hogy a kiszolgáló készen áll-e. A kiszolgálók a 1200-es és magasabb kompatibilitási szinteken található táblázatos modelleket támogatják. A modell kompatibilitási szintje a Visual Studióban vagy a SSMS van megadva.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje a kiszolgálót. Nyissa meg a kiszolgáló **Áttekintés** lapját, majd kattintson a **Törlés** elemre. 
 
  ![Felesleges tartalmak törlése](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót az Azure-előfizetésében. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

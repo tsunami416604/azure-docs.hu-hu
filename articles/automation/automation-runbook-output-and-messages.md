@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83813b30f30bf5aba62f2f94a8ec3cefd2e7090f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535536"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715137"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook kimenete és üzenetei Azure Automation
 
@@ -24,7 +24,7 @@ Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedé
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
 | Kimenet |Másik runbookok számára készült objektum. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 | Előrehaladás |A runbook összes tevékenysége előtt és után automatikusan létrejövő rekordok. A runbook nem próbálja meg saját folyamatokat létrehozni, mivel azok interaktív felhasználók számára készültek. |Csak akkor íródik a feladatok előzményeibe, ha a runbook be van kapcsolva. |Nem jelenik meg a test output (kimenet) ablaktáblán |
-| Részletes |Általános vagy hibakeresési adatokat tartalmazó üzenetek. |Csak akkor íródott a feladatok előzményeire, ha a részletes naplózás be van kapcsolva a runbook |Csak akkor jelenik meg a test output `VerbosePreference` (tesztelés) ablaktáblán, ha a változó a folytatás runbook értékre van állítva. |
+| Részletes |Általános vagy hibakeresési adatokat tartalmazó üzenetek. |Csak akkor íródott a feladatok előzményeire, ha a részletes naplózás be van kapcsolva a runbook |Csak akkor jelenik meg a test output (tesztelés) ablaktáblán, ha a `VerbosePreference` változó a folytatás runbook értékre van állítva. |
 | Figyelmeztetés |A felhasználónak szóló figyelmeztető üzenet. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 
 >[!NOTE]
@@ -32,7 +32,7 @@ Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedé
 
 ## <a name="output-stream"></a>Kimeneti adatfolyam
 
-A kimeneti adatfolyam a parancsfájlok vagy a munkafolyamat megfelelő futtatásakor létrehozott objektumok kimenetéhez használatos. Azure Automation elsődlegesen ezt az adatfolyamot használja azon objektumok számára, amelyeket az [aktuális runbook](automation-child-runbooks.md)meghívó fölérendelt runbookok használ. Amikor egy szülő [meghívja a runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution), a gyermek visszaadja az adatokat a kimeneti adatfolyamból a szülőnek. 
+A kimeneti adatfolyam a parancsfájlok vagy a munkafolyamat megfelelő futtatásakor létrehozott objektumok kimenetéhez használatos. Azure Automation elsődlegesen ezt az adatfolyamot használja azon objektumok számára, amelyeket az [aktuális runbook](automation-child-runbooks.md)meghívó fölérendelt runbookok használ. Amikor egy szülő [meghívja a runbook](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), a gyermek visszaadja az adatokat a kimeneti adatfolyamból a szülőnek. 
 
 A runbook a kimeneti adatfolyam használatával közli az általános információkat az ügyféllel, ha azt más runbook nem hívja meg. Az ajánlott eljárás szerint azonban a [részletes streamet](#verbose-stream) általában a runbookok kell használnia az általános információk a felhasználóhoz való továbbításához.
 
@@ -114,11 +114,11 @@ Ha egy grafikus vagy grafikus PowerShell-munkafolyamat runbook szeretné deklar�
 
 Az alábbi példa két grafikus runbookok mutat be a bemeneti és kimeneti funkció bemutatására. A moduláris runbook kialakítási modell alkalmazása esetén egy runbook kell lennie, mint az Azure-ban a futtató fiókkal történő hitelesítést kezelő Runbook-sablon hitelesítése. A második runbook, amely általában alapvető logikát végez egy adott forgatókönyv automatizálásához, ebben az esetben a hitelesítő Runbook sablont hajtja végre. Megjeleníti az eredményeket a test output (kimenet) ablaktáblán. Normális körülmények között ez a runbook a gyermek runbook kimenetét kihasználó erőforráson végezhető el.
 
-Itt látható a AuthenticateTo alapszintű logikája **– Az Azure** runbook.<br> ![Példa](media/automation-runbook-output-and-messages/runbook-authentication-template.png)a Runbook-sablon hitelesítésére.
+Itt látható a AuthenticateTo alapszintű logikája **– Az Azure** runbook.<br> ![Példa a Runbook-sablon hitelesítésére ](media/automation-runbook-output-and-messages/runbook-authentication-template.png) .
 
-A runbook tartalmazza a kimeneti típust `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`, amely a hitelesítési profil tulajdonságait adja vissza.<br> ![Példa a Runbook kimeneti típusára](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
+A runbook tartalmazza a kimeneti típust `Microsoft.Azure.Commands.Profile.Models.PSAzureContext` , amely a hitelesítési profil tulajdonságait adja vissza.<br> ![Példa a Runbook kimeneti típusára](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
 
-Habár ez a runbook egyszerű, itt egy konfigurációs elem is meghívja Önt. Az utolsó tevékenység végrehajtja a `Write-Output` parancsmagot, hogy a `Inputobject` paraméterhez egy PowerShell-kifejezés használatával írjon be egy változót a profil adataihoz. Ezt a paramétert kötelező `Write-Output`megadni a következőhöz:.
+Habár ez a runbook egyszerű, itt egy konfigurációs elem is meghívja Önt. Az utolsó tevékenység végrehajtja a `Write-Output` parancsmagot, hogy a paraméterhez egy PowerShell-kifejezés használatával írjon be egy változót a profil adataihoz `Inputobject` . Ezt a paramétert kötelező megadni a következőhöz: `Write-Output` .
 
 A példában a **test-ChildOutputType**nevű második runbook egyszerűen két tevékenységet határoz meg.<br> ![Példa gyermek kimeneti típus Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
@@ -201,7 +201,7 @@ Egy runbook-feladat részleteit a Azure Portal **feladatok** lapján tekintheti 
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Runbook-kimenet és-üzenetek lekérése a Windows PowerShellben
 
-A Windows PowerShellben a runbook kimenetét és üzeneteit a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával kérheti le. Ehhez a parancsmaghoz szükség van a feladatokhoz tartozó AZONOSÍTÓra `Stream` , és egy paramétert kell megadnia, amelyben meg kell adnia a beolvasandó adatfolyamot. A paraméter értékének megadásával lekérheti a feladatokhoz tartozó összes adatfolyamot.
+A Windows PowerShellben a runbook kimenetét és üzeneteit a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával kérheti le. Ehhez a parancsmaghoz szükség van a feladatokhoz tartozó AZONOSÍTÓra, és egy paramétert kell `Stream` megadnia, amelyben meg kell adnia a beolvasandó adatfolyamot. A paraméter értékének megadásával lekérheti a feladatokhoz tartozó összes adatfolyamot.
 
 A következő példában elindul a runbook, majd a rendszer megvárja, amíg annak végrehajtása befejeződik. Miután a runbook befejezte a végrehajtást, a parancsfájl gyűjti a runbook kimeneti adatfolyamot a feladatokból.
 
@@ -260,7 +260,7 @@ A Azure Automation a runbook feladatok állapotát és a feladatok streamjét a 
 
 További információ a Azure Monitor naplókkal való integráció konfigurálásáról a feladatok adatainak gyűjtéséhez, összekapcsolásához és működéséhez: a feladatok [állapotának és a feladatok adatfolyamának továbbítása az automatizálásból a Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook-feladatok nyomon követése](automation-runbook-execution.md)című témakört.
 * A gyermek-runbookok kialakításával és használatával kapcsolatos tudnivalókat lásd: [gyermek runbookok Azure Automation](automation-child-runbooks.md).

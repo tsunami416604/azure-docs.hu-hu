@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600002"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714236"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
 
@@ -81,7 +81,7 @@ Először konfigurálja az új alkalmazást, és csatolja azt egy GitHub-tárhá
 - Azure- _előfizetés_ kiválasztása
 - Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
 - Nevezze el az alkalmazás **az első-statikus-Web-App**nevet.
-  - Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `_` .
+  - Érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9` és `-` .
 - Válasszon egy Önhöz legközelebb eső _régiót_
 - Válassza ki az **ingyenes** _SKU_ -t
 - Kattintson a **Bejelentkezés a GitHub** használatával gombra, és hitelesítés a GitHub használatával
@@ -131,6 +131,8 @@ Kattintson az **Áttekintés + létrehozás** gombra.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
+Ha módosítani szeretné ezeket az értékeket az alkalmazás létrehozása után, akkor szerkesztheti a [munkafolyamat-fájlt](github-actions-workflow.md).
+
 ### <a name="review--create"></a>Felülvizsgálat + létrehozás
 
 A kérés érvényesítése után továbbra is létrehozhatja az alkalmazást.
@@ -167,7 +169,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Kattintson a **Törlés** gombra
 1. A törlési művelet megerősítéséhez kattintson az **Igen** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

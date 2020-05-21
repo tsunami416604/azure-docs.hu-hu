@@ -1,6 +1,6 @@
 ---
-title: A csatolt Log Analytics munkaterület támogatási régiói
-description: Ez a cikk azt ismerteti, hogyan lehet támogatni az Automation-fiók és a Log Analytics munkaterület közötti régió-hozzárendeléseket.
+title: A társított Log Analytics-munkaterület esetében támogatott régiók
+description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 229fab5550d7b03fcbba80b5f4d9433d3b31e5b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680440"
+ms.locfileid: "83714508"
 ---
-# <a name="support-regions-for-linked-log-analytics-workspace"></a>A csatolt Log Analytics munkaterület támogatási régiói
+# <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
 Azure Automationban engedélyezheti a virtuális gépek Update Management, Change Tracking és leltározását, valamint Start/Stop VMs during off-hours szolgáltatásait. Azonban csak bizonyos régiók támogatottak egy Log Analytics munkaterület és egy Automation-fiók összekapcsolásához az előfizetésben. A régió-hozzárendelések csak az Automation-fiókra és a Log Analytics munkaterületre vonatkoznak. A Log Analytics munkaterület és az Automation-fióknak ugyanahhoz az előfizetéshez kell tartoznia, de az adott régióban üzembe helyezett különböző erőforráscsoportok is lehetnek. További információ: [log Analytics munkaterület és Automation-fiók](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
@@ -49,9 +49,9 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 
 ## <a name="unlink-a-workspace"></a>Munkaterület leválasztása
 
-Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját. A továbblépés előtt először [le kell tiltania](move-account.md#disable-features) Update Management, Change Tracking és leltárt, és Start/Stop VMS During off-hours, ha használja őket. Ha nem tiltja le a szolgáltatásokat, a leválasztási művelet nem hajtható végre. 
+Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját. A továbblépés előtt először [el kell távolítania](move-account.md#remove-features) Update Management, Change Tracking és leltárt, és Start/Stop VMS During off-hours, ha használja őket. Ha nem távolítja el őket, nem fejezheti be a leválasztási műveletet. 
 
-Ha a funkciók le vannak tiltva, az Automation-fiók összekapcsolásához kövesse az alábbi lépéseket.
+A funkciók eltávolítva az Automation-fiók összekapcsolásának megszüntetéséhez kövesse az alábbi lépéseket.
 
 > [!NOTE]
 > Előfordulhat, hogy egyes funkciók, például az Azure SQL monitoring megoldás korábbi verzióiban olyan Automation-eszközöket hoztak létre, amelyeket el kell távolítani a munkaterület leválasztása előtt.
@@ -78,8 +78,8 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. 
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg Update Management [Update Management áttekintésében](../automation-update-management.md).
-* Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking.md).
-* Ismerkedjen meg Start/Stop VMs during off-hours [Start/Stop VMS During off-hours áttekintésében](../automation-solution-vm-management.md).
+* [A frissítéskezelés áttekintése](../automation-update-management.md)
+* [A Change Tracking és a leltár áttekintése](../change-tracking.md)
+* [Start/Stop VMs during off-hours áttekintése](../automation-solution-vm-management.md)

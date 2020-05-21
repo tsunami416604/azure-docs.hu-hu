@@ -1,6 +1,6 @@
 ---
 title: Azure Automation állapot konfigurációjának áttekintése
-description: A Azure Automation állapot konfigurációjának, annak feltételeinek és ismert problémáinak áttekintése
+description: Ez a cikk áttekintést nyújt a Azure Automation állapotának konfigurálásáról.
 keywords: PowerShell DSC, a kívánt állapot konfigurálása, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: be0da641a67d532851b8d295065213016c795f01
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993852"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713182"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -88,18 +88,18 @@ Ha a csomópontok egy magánhálózaton találhatók, a következő portok és U
 * Port: csak TCP 443 szükséges a kimenő internet-hozzáféréshez
 * Globális URL-cím: ***. Azure-Automation.net**
 * US Gov Virginia globális URL-címe: ***. Azure-Automation.us**
-* Ügynök szolgáltatás: **https://\<munkaterület azonosítója\>. agentsvc.Azure-Automation.net**
+* Ügynök szolgáltatás: **https:// \< munkaterület azonosítója \> . agentsvc.Azure-Automation.net**
 
 Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunikálnak, például a [waitfor * erőforrásai](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)között, akkor is engedélyeznie kell a csomópontok közötti forgalmat. A hálózati követelmények megismeréséhez tekintse meg az egyes DSC-erőforrások dokumentációját.
 
 #### <a name="proxy-support"></a>Proxy-támogatás
 
-A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhető el. Ezt a beállítást a csomópontok regisztrálásához használt `ProxyURL` metaconfiguration `ProxyCredential` - [szkript](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) értékeinek beállításával engedélyezheti.
+A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhető el. Ez a beállítás a `ProxyURL` `ProxyCredential` csomópontok regisztrálásához használt [metaconfiguration-szkript](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) értékeinek és tulajdonságainak beállításával engedélyezhető. 
 
 >[!NOTE]
 >Azure Automation állapot-konfiguráció nem biztosít DSC-proxy támogatást a Windows korábbi verzióihoz.
 
-Linux-csomópontok esetén a DSC-ügynök támogatja a proxyt, és a `http_proxy` változó használatával határozza meg az URL-címet.
+Linux-csomópontok esetén a DSC-ügynök támogatja a proxyt, és a `http_proxy` változó használatával határozza meg az URL-címet. További információ a proxyk támogatásáról: a [DSC-metaconfigurations előállítása](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation állapot-konfiguráció hálózati tartományai és névtere
 
@@ -132,7 +132,7 @@ A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatkö
 
 Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A DSC Azure Automation állapot konfigurációban való használatának megkezdéséhez tekintse meg [a Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
 - A csomópontok engedélyezésével kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának engedélyezése a gépek számára a felügyelethez](automation-dsc-onboarding.md).

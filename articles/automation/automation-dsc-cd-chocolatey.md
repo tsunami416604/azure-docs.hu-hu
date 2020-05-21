@@ -1,18 +1,18 @@
 ---
-title: Azure Automation állapot-konfiguráció folyamatos üzembe helyezése csokoládéval
-description: A DevOps folyamatos üzembe helyezését ismerteti Azure Automation állapot-konfigurációval a chocolatey csomagkezelő használatával. A tartalmaz egy példát a teljes JSON Resource Manager-sablonnal és a PowerShell-forrással.
+title: Azure Automation folyamatos üzembe helyezésének beállítása a chocolatey-vel
+description: Ebből a cikkből megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezést az állapot-konfigurációval és a csokis csomagkezelő segítségével.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996124"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714185"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>A virtuális gépek folyamatos üzembe helyezésének biztosítása az Automation State Configuration és a chocolatey használatával
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a chocolatey-vel
 
 A DevOps világában számos eszköz segíti a folyamatos integrációs folyamat különböző pontjainak támogatását. Azure Automation az [állapot-konfiguráció](automation-dsc-overview.md) a DevOps csapatok által alkalmazható lehetőségek örvendetes új kiegészítése. 
 
@@ -69,7 +69,7 @@ A használati példa teljes forrása ebben a [Visual Studio-projektben](https://
 
 ## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>1. lépés: a lekérési kiszolgáló és az Automation-fiók beállítása
 
-Hitelesített (`Connect-AzAccount`) PowerShell parancssorban: (eltarthat néhány percig, amíg a lekérési kiszolgáló be van állítva)
+Hitelesített ( `Connect-AzAccount` ) PowerShell parancssorban: (eltarthat néhány percig, amíg a lekérési kiszolgáló be van állítva)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -189,7 +189,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Ezek a lépések egy új, **ISVBoxConfig. isvbox** nevű csomópont-konfigurációt eredményeznek a lekérési kiszolgálón. A csomópont-konfiguráció neve a következőképpen `configurationName.nodeName`van felépítve:.
+Ezek a lépések egy új, **ISVBoxConfig. isvbox** nevű csomópont-konfigurációt eredményeznek a lekérési kiszolgálón. A csomópont-konfiguráció neve a következőképpen van felépítve: `configurationName.nodeName` .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>5. lépés: csomag metaadatainak létrehozása és karbantartása
 
@@ -207,7 +207,7 @@ Ettől kezdve a konfigurációtól függ, hogy a virtuális gépek a frissítés
 * [Azure Automation DSC – áttekintés](automation-dsc-overview.md)
 * [Bevezetési gépek a Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Azure Automation állapot konfigurálása](automation-dsc-overview.md).
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.

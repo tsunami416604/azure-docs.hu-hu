@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680457"
+ms.locfileid: "83714542"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
 
@@ -28,16 +28,16 @@ Az Automation-fiók az egyik áthelyezhető erőforrás. Ebből a cikkből megtu
 4. Törölje, majd hozza létre újra a futtató fiókokat.
 5. Engedélyezze újra a szolgáltatásokat.
 
-## <a name="disable-features"></a>Szolgáltatások letiltása
+## <a name="remove-features"></a>Szolgáltatások eltávolítása
 
-A munkaterület Automation-fiókból való leválasztásához le kell tiltania a funkció erőforrásait a munkaterületen:
+A munkaterület Automation-fiókból való leválasztásához el kell távolítania a funkció erőforrásait a munkaterületen:
 
 - Change Tracking és Inventory
 - Frissítéskezelés
 - Virtuális gépek indítása és leállítása munkaidőn kívül
 
 1. Keresse meg az erőforráscsoportot az Azure Portalon.
-2. Keresse meg az egyes szolgáltatások elemet, majd válassza a **Törlés** lehetőséget az erőforrások törlése lapon.
+2. Keresse meg az egyes szolgáltatások elemet, majd válassza a **Törlés** lehetőséget az **erőforrások törlése** lapon.
 
     ![Képernyőfelvétel a szolgáltatás erőforrásainak törléséről a Azure Portal](../media/move-account/delete-solutions.png)
 
@@ -127,7 +127,7 @@ A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való
 
 ## <a name="enable-features"></a>Szolgáltatások engedélyezése
 
-Miután újra létrehozta a futtató fiókokat, újra engedélyeznie kell az áthelyezés előtt letiltott szolgáltatásokat: 
+A futtató fiókok újbóli létrehozása után újra engedélyeznie kell azokat a szolgáltatásokat, amelyeket az áthelyezés előtt eltávolítottak:
 
 1. A Change Tracking és a leltár bekapcsolásához válassza a **change Tracking és a leltár** elemet az Automation-fiókban. Válassza ki az áthelyezett Log Analytics munkaterületet, majd válassza az **Engedélyezés**lehetőséget.
 
@@ -155,6 +155,6 @@ Az áthelyezés befejeződése után ellenőrizze, hogy az alábbi képességek 
 |Frissítéskezelés|Ellenőrizze, hogy látja-e a gépeket, és hogy kifogástalanok-e.</br>Futtasson egy teszt szoftverfrissítés központi telepítését.|[Az Update Management hibáinak megoldása](../troubleshoot/update-management.md)|
 |Megosztott erőforrások|Győződjön meg arról, hogy az összes megosztott erőforrás, például a [hitelesítő adatok](../shared-resources/credentials.md) és a [változók](../shared-resources/variables.md)láthatók.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az erőforrások Azure-ban való áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md).
+[Erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md)

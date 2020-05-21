@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685151"
+ms.locfileid: "83712808"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
 
@@ -42,7 +42,7 @@ Az SQL Edge két különböző kiadással vagy szoftver csomaggal érhető el. E
 
 ## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
-Az Azure SQL Edge jelenleg előzetes verzióban érhető el. További információ a díjszabásról és a rendelkezésre állásról: [Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/).
+Az Azure SQL Edge jelenleg előzetes verzióban érhető el. További információ a díjszabásról és a rendelkezésre állásról: [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Az Azure SQL Edge és a SQL Server közötti különbségek megismeréséhez, valamint az Azure SQL Edge különböző lehetőségei közötti különbségekről az [Azure SQL Edge támogatott szolgáltatásai](features.md)című témakörben olvashat.
@@ -70,7 +70,7 @@ Az Azure SQL Edge egyszerűbbé és hatékonyabbá teszi az alkalmazások fejles
 - [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [Az SQL Edge Machine Learning és mesterséges intelligencia](onnx-overview.md)

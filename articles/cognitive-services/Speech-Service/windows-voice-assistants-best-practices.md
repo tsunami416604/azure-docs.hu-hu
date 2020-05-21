@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997490"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714780"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Tervezési asszisztensi tapasztalatok a Windows 10 rendszerhez
 
@@ -63,25 +63,22 @@ A segédeknek olyan figyelési élményt kell kialakítaniuk, amely kritikus vis
 - A Segéd feldolgozza és felkészíti a választ
 - A Segéd válaszol
 
-Még ha az állapotok is gyorsan változnak, érdemes megfontolni az UX megadását az államok számára, mivel az időtartamok a Windows ökoszisztémán belül változóak. A megoldás része lehet a vizuális visszajelzés, valamint a rövid hangsávok vagy a &quot;csiripelés, más néven earcons&quot;. Hasonlóképpen, a vizuális kártyák és a hangleírások is jó választ biztosítanak.
+Még ha az állapotok is gyorsan változnak, érdemes megfontolni az UX megadását az államok számára, mivel az időtartamok a Windows ökoszisztémán belül változóak. &quot; &quot; A megoldás része lehet a vizuális visszajelzés, valamint a rövid hangsávok vagy a csiripelés, más néven earcons. Hasonlóképpen, a vizuális kártyák és a hangleírások is jó választ biztosítanak.
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>Tervezési útmutató az alkalmazáson belüli hang aktiválásához
 
 Ha a Segéd-alkalmazás fókuszban van, az ügyfél szándéka egyértelműen együttműködik az alkalmazással, így az összes hangaktiválási élményt a fő alkalmazás nézetnek kell kezelnie. Ezt a nézetet az ügyfél átméretezi. A Segéd-rendszerhéj interakciójának magyarázata érdekében a dokumentum többi része a contoso nevű pénzügyi szolgáltatási asszisztens konkrét példáját használja. Ebben és az azt követő diagramokban az ügyfél azt mondja majd, hogy a bal oldali rajzfilm-buborékokban a jobb oldalon megjelenik a képregény-buborékok.
 
-**Alkalmazáson belüli nézet. Kezdeti állapot a Hangaktiválás megkezdésekor:**
-![képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Alkalmazáson belüli nézet. Kezdeti állapot a Hangaktiválás megkezdésekor:** 
+ ![ képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**Alkalmazáson belüli nézet. A sikeres hangaktiválást követően a zenehallgatási folyamat megkezdődik:**![képernyőkép a hangsegédről a Windowsban, miközben a hangsegéd figyeli a funkciót](media/voice-assistants/windows_voice_assistant/listening.png)
+**Alkalmazáson belüli nézet. A sikeres hangaktiválást követően a zenehallgatási folyamat megkezdődik:** ![ képernyőkép a hangsegédről a Windowsban, miközben a hangsegéd figyeli a funkciót](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**Alkalmazáson belüli nézet. Az összes válasz az alkalmazás felhasználói felületén marad.** ![Képernyőkép a Windows hangsegédről](media/voice-assistants/windows_voice_assistant/response.png)
+**Alkalmazáson belüli nézet. Az összes válasz az alkalmazás felhasználói felületén marad.** ![ Képernyőkép a Windows hangsegédről](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>Tervezési útmutató a hangalapú aktiváláshoz a zárolás felett
 
 A 19H2-mel elérhető, a Windows hangaktiválási platformra épülő asszisztensek a fenti zárolások megválaszolásához érhetők el.
-
-> [!NOTE]
-> Az aktív probléma miatt a zárolási felhasználói felületet kirajzoló asszisztenseknek az összes elbocsátáshoz meg kell valósítaniuk a WindowService. CloseWindow (). Ez az alkalmazás leállását eredményezi, de elhárít egy technikai problémát, és tiszta állapotban tartja a Segédet. Emellett a tiszta állapot fenntartása érdekében, ha egy alkalmazás engedélyezve van a hangrögzítés felett, a zárolási állapot módosításait és a WindowService. CloseWindow () figyelőt kell figyelnie az eszköz zárolásakor.
 
 ### <a name="customer-opt-in"></a>Ügyfél-opt
 
@@ -108,7 +105,7 @@ A Segédnek meg kell valósítania az elbocsátási útmutatót ebben a szakaszb
 - A **fenti zárolást jelző összes segéd-vászonnak tartalmaznia kell egy X betűt** a jobb felső sarokban, amely elutasítja a Segédet.
 - **Bármely kulcs lenyomásakor el kell hagynia a Segéd alkalmazást is**. A billentyűzet bemenet egy hagyományos zárolási alkalmazási jel, amelyet az ügyfél szeretne bejelentkezni. Ezért a billentyűzet/szöveges bemenetek nem irányíthatók át az alkalmazásba. Ehelyett az alkalmazásnak el kell hagynia a billentyűzet bemenetének észlelését, így az ügyfél egyszerűen bejelentkezhet az eszközére.
 - **Ha a képernyő leáll, az alkalmazásnak önmagát el kell kezdenie.** Ez biztosítja, hogy a felhasználó legközelebb a SZÁMÍTÓGÉPét használja, a bejelentkezési képernyő készen áll, és vár rájuk.
-- Ha az alkalmazás használatban &quot;&quot;van, akkor továbbra is bezárhatja a zárolást. &quot;a használatban&quot; bármilyen bemenet vagy kimenet szerepel. Ha például zenét vagy videót tart fenn, az alkalmazás továbbra is zárolhatja a zárolást. &quot;A következő&quot; lépésekkel és más többkapcsoló párbeszédpanelekkel megtarthatja az alkalmazás zárolását.
+- Ha az alkalmazás &quot; használatban van &quot; , akkor továbbra is bezárhatja a zárolást. &quot;a használatban &quot; bármilyen bemenet vagy kimenet szerepel. Ha például zenét vagy videót tart fenn, az alkalmazás továbbra is zárolhatja a zárolást. &quot;A következő &quot; lépésekkel és más többkapcsoló párbeszédpanelekkel megtarthatja az alkalmazás zárolását.
 - **Az alkalmazás elutasításának megvalósítási részletei** a [fenti zárolás megvalósítási útmutatójában](windows-voice-assistants-implementation-guide.md#closing-the-application)találhatók.
 
 ![Képernyőkép a Windows hangsegédről az aktiválás előtt](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
@@ -117,7 +114,7 @@ A Segédnek meg kell valósítania az elbocsátási útmutatót ebben a szakaszb
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>Adatvédelem &amp; biztonsági megfontolások a zárolás felett
 
-Számos számítógép hordozható, de nem mindig az ügyfél-elérhetőségen belül van. Előfordulhat, hogy a szállodai szobákban, a repülőgép-munkahelyeken vagy a munkaterületeken is rövid ideig tartanak, ahol más személyek fizikai hozzáféréssel rendelkeznek. Ha a zárolást engedélyező asszisztensek nem állnak készen, akkor az ún &quot;. [Evil Maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; -támadások osztálya alá tartoznak.
+Számos számítógép hordozható, de nem mindig az ügyfél-elérhetőségen belül van. Előfordulhat, hogy a szállodai szobákban, a repülőgép-munkahelyeken vagy a munkaterületeken is rövid ideig tartanak, ahol más személyek fizikai hozzáféréssel rendelkeznek. Ha a zárolást engedélyező asszisztensek nem állnak készen, akkor az ún &quot; . [Evil Maid](https://en.wikipedia.org/wiki/Evil_maid_attack) -támadások osztálya alá tartoznak &quot; .
 
 Ezért az asszisztenseknek az ebben a részben ismertetett útmutatást kell követniük a felhasználói élmény fenntartásához. A zárolás fölötti interakció akkor fordul elő, ha a Windows-felhasználó nem hitelesített. Ez azt jelenti, hogy **a Segédnek való bevitelt általában nem hitelesítettként kell kezelni**.
 
@@ -127,9 +124,9 @@ Ezért az asszisztenseknek az ebben a részben ismertetett útmutatást kell kö
 
 | **Műveleti osztály** | **Leírás** | **Példák (nem teljes lista)** |
 | --- | --- | --- |
-| Biztonságos hitelesítés nélkül | Általános célú információk vagy alapszintű app Command és Control | &quot;mennyi az idő? &quot;, &quot;A következő műsorszám lejátszása&quot; |
-| Biztonságos a hangsugárzó azonosítójával | Megszemélyesítési kockázat, személyes adatok feltárása. | &quot;Mi&#39;s a következő kinevezésem? &quot;, &quot;Tekintse át a&quot;vásárlások listáját, és &quot;válaszoljon a hívásra&quot; |
-| Csak a Windows-hitelesítés után biztonságos | Magas kockázatú műveletek, amelyeket a támadók az ügyfelek sérülésére használhatnak | &quot;&quot;Vásároljon több élelmiszerboltot &quot;, törölje a (fontos)&quot;időpontot, &quot;küldjön egy (mean&quot;) &quot;szöveges üzenetet, indítson el egy (aljas) weblapot&quot; |
+| Biztonságos hitelesítés nélkül | Általános célú információk vagy alapszintű app Command és Control | &quot;Mennyi idő van? &quot; , &quot; a következő műsorszám lejátszása&quot; |
+| Biztonságos a hangsugárzó azonosítójával | Megszemélyesítési kockázat, személyes adatok feltárása. | &quot;Mi&#39;s a következő kinevezésem? &quot; , &quot; a vásárlások listájának megtekintése &quot; , &quot; a hívás megválaszolása&quot; |
+| Csak a Windows-hitelesítés után biztonságos | Magas kockázatú műveletek, amelyeket a támadók az ügyfelek sérülésére használhatnak | &quot;Vásároljon több élelmiszerboltot, &quot; &quot; törölje a (fontos) időpontot &quot; , &quot; küldjön egy (mean) szöveges üzenetet &quot; , &quot; indítson el egy (aljas) weblapot&quot; |
 
 A contoso esetében a nyilvános Stock-információk körére vonatkozó általános információk hitelesítés nélkül biztonságosak. Az ügyfél-specifikus információk, például a tulajdonában lévő megosztások száma valószínűleg biztonságos a beszélő azonosítójával. A készletek vásárlása és értékesítése azonban soha nem engedélyezett Windows-hitelesítés nélkül.
 
@@ -164,7 +161,7 @@ A **gyors válaszok** a Hangaktiválás előzetes verziójában is megjelennek. 
 
 ![A hangsegéd képernyőképei a Windowsban a kompakt nézet bővítése előtt és után](media/voice-assistants/windows_voice_assistant/compact_transition.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hangsegéd fejlesztésével](how-to-windows-voice-assistants-get-started.md)

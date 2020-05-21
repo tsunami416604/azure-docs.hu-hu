@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424852"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700311"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -47,10 +47,10 @@ A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jel
 - Ne adja meg az `master` adatbázist `dbo` felhasználóként, és korlátozott engedélyekkel rendelkezzen a főkiszolgálón.
 - **Nem** tagjai a standard SQL Server `sysadmin` rögzített kiszolgálói szerepkörnek, amely nem érhető el az SQL Database-ben.  
 - Adatbázisok, bejelentkezések, főkiszolgálók és kiszolgálói szintű IP-tűzfalszabályok létrehozására, módosítására és eldobására is képes.
-- Tagokat adhat hozzá és távolíthat `dbmanager` el `loginmanager` a és a szerepkörökhöz.
-- Megtekintheti `sys.sql_logins` a rendszertáblát.
+- Tagokat adhat hozzá és távolíthat el a `dbmanager` és a `loginmanager` szerepkörökhöz.
+- Megtekintheti a `sys.sql_logins` rendszertáblát.
 
-## <a name="sql-on-demand-preview"></a>Igény szerinti SQL-verzió (előzetes verzió)
+## <a name="sql-on-demand-preview"></a>[Igény szerinti SQL-verzió (előzetes verzió)](#tab/serverless)
 
 Az SQL igény szerinti elérésére jogosult felhasználók kezeléséhez az alábbi utasításokat használhatja.
 
@@ -72,7 +72,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 A bejelentkezés és a felhasználó létrehozása után a szokásos SQL Server szintaxissal adhat meg jogosultságokat.
 
-## <a name="sql-pool"></a>SQL-készlet
+## <a name="sql-pool"></a>[SQL-készlet](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>Rendszergazdai hozzáférés elérési útja
 
@@ -88,7 +88,7 @@ Amikor nyitott portot használ a kiszolgálószintű tűzfalon, a rendszergazdá
 
 Ezen rendszergazdai szerepkörök egyike a **dbmanager** szerepkör. Ezen szerepkör tagjai létrehozhatnak új adatbázisokat. A szerepkör használatához hozzon létre egy felhasználót az `master` adatbázisban, majd adja hozzá a felhasználót a **dbmanager** adatbázis-szerepkörhöz. 
 
-Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felhasználó alapján egy SQL Server-bejelentkezésen alapuló felhasználónak kell `master` lennie az adatbázisban, vagy tartalmaznia kell az adatbázis felhasználóját.
+Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felhasználó alapján egy SQL Server-bejelentkezésen alapuló felhasználónak kell lennie az adatbázisban, vagy tartalmaznia kell az `master` adatbázis felhasználóját.
 
 1. Rendszergazdai fiók használatával kapcsolódjon az `master` adatbázishoz.
 2. Hozzon létre egy SQL Server hitelesítési bejelentkezési azonosítót a [create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával. Mintautasítás:
@@ -110,7 +110,7 @@ Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felha
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Adja hozzá az új felhasználót a **DBManager** adatbázis- `master` szerepkörhöz az [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával. Mintautasítások:
+4. Adja hozzá az új felhasználót a **DBManager** adatbázis-szerepkörhöz az `master` [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás használatával. Mintautasítások:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary;
@@ -127,6 +127,8 @@ Most a felhasználó tud csatlakozni az `master` adatbázishoz, és létrehozhat
 ### <a name="login-managers"></a>Bejelentkezéskezelők
 
 A másik rendszergazdai szerepkör a bejelentkezéskezelői szerepkör. Ezen szerepkör tagjai létrehozhatnak új bejelentkezéseket a master adatbázisban. Ha szeretné, elvégezheti ugyanezen lépéseket (bejelentkezést és felhasználót hozhat létre, és a felhasználót a **loginmanager** szerepkörhöz adhatja) annak érdekében, hogy egy felhasználó új bejelentkezéseket hozhasson létre a master adatbázisban. Bejelentkezésre általában nincs szükség, mivel a Microsoft tartalmazottadatbázis-felhasználók használatát javasolja, amelyek az adatbázis szintjén hitelesíthetők a bejelentkezéseken alapuló felhasználók használata helyett. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikkben talál.
+
+---
 
 ## <a name="non-administrator-users"></a>Nem rendszergazdai felhasználók
 
@@ -202,7 +204,7 @@ Kezdje az [Engedélyek (Adatbázismotor)](https://docs.microsoft.com/sql/relatio
 
 A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figyelembe a következő szempontokat:
 
-- Az `CREATE/ALTER/DROP DATABASE` utasítások végrehajtásakor csatlakoznia kell a **Master** adatbázishoz.
+- Az utasítások végrehajtásakor csatlakoznia kell a **Master** adatbázishoz `CREATE/ALTER/DROP DATABASE` .
 - A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó felhasználó nem módosítható és nem vethető el.
 - A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
 - Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
@@ -231,7 +233,7 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - A `CREATE/ALTER/DROP` utasítás használatához a felhasználónak `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban.
 - Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál.
  

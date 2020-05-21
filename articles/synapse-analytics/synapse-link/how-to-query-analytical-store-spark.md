@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB analitikus áruház lekérdezése az Azure szinapszis Analytics Apache Sparkával
+title: Azure Cosmos DB analitikus áruház (előzetes verzió) lekérdezése az Azure szinapszis Analytics Apache Sparkával
 description: Azure Cosmos DB analitikus lekérdezése az Azure szinapszis Analytics Apache Spark használatával
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02d4b6a636bff5ef11686abba6efb52f45f04779
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600068"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700200"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-with-apache-spark-for-azure-synapse-analytics"></a>Azure Cosmos DB analitikus áruház lekérdezése az Azure szinapszis Analytics Apache Sparkával
+# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure Cosmos DB analitikus áruház (előzetes verzió) lekérdezése az Azure szinapszis Analytics Apache Sparkával
 
 Ebből a cikkből megtudhatja, hogyan használhatja az analitikai tárolót a szinapszis-kézmozdulatokkal. A kézmozdulatok akkor láthatók, ha a jobb gombbal egy tárolóra kattint. A kézmozdulatokkal gyorsan létrehozhat programkódot, és testreszabhatja az igényeinek megfelelően. A kézmozdulatok is tökéletesek az adatelemzéshez egyetlen kattintással.
 
@@ -163,7 +163,7 @@ val query = dfStream.
 
 query.awaitTermination()
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
 * [Csatlakozás a szinapszis hivatkozásához Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)

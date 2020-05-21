@@ -9,34 +9,36 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0405644af24eb277aa47db64348c9a217cf72239
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195960"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701438"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
 A külső tábla a Hadoop, az Azure Storage blob vagy a Azure Data Lake Storageban található adatforrásra mutat. A külső táblákból adatok olvashatók be a fájlokból, vagy adatok írhatók az Azure Storage-ban lévő fájlokba. A szinapszis SQL használatával külső táblákat használhat az SQL-készletbe vagy az SQL on-demand (előzetes verzió) szolgáltatásba való adatolvasásra és-írásra.
 
-## <a name="external-tables-in-synapse-sql"></a>Külső táblák a szinapszis SQL-ben
+## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Külső táblák a szinapszis SQL-készletben és igény szerint
 
-### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool)
+### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool) 
 
 Az SQL-készletben külső táblákat is használhat a következőhöz:
 
 - Azure Blob Storage és Azure Data Lake Gen2 Transact-SQL-utasításokkal való lekérdezése.
 - Adatok importálása és tárolása az Azure Blob Storage és Azure Data Lake Storage az SQL-készletbe.
 
-Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításban](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a külső táblák az adatok betöltéséhez is hasznosak. A betöltési oktatóanyagért lásd: az [Azure Blob Storageból történő adatok betöltésének alapja](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kívül a külső táblák is hasznosak az adatok betöltéséhez. 
 
-### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
+A betöltési oktatóanyagért lásd: az [Azure Blob Storageból történő adatok betöltésének alapja](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+
+### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-on-demand)
 
 Az SQL igény szerinti használatához egy külső táblát kell használnia a következőhöz:
 
 - Adatlekérdezés az Azure Blob Storage vagy Azure Data Lake Storage Transact-SQL-utasításokkal
-- Az SQL igény szerinti lekérdezési eredményeket az Azure Blob Storage vagy Azure Data Lake Storage [CETAS](develop-tables-cetas.md)használatával tárolhatja.
+- Az SQL igény szerinti lekérdezési eredményeinek tárolása az Azure Blob Storage vagy Azure Data Lake Storage [CETAS](develop-tables-cetas.md) használatával
 
 A következő lépések végrehajtásával hozhat létre külső táblákat az SQL igény szerinti használatával:
 
@@ -51,7 +53,7 @@ A következő lépések végrehajtásával hozhat létre külső táblákat az S
 A felhasználónak engedéllyel kell rendelkeznie `SELECT` a külső táblán az adatolvasáshoz.
 Külső tábla, amely az Azure Storage mögöttes hozzáférését az adatforrásban definiált adatbázis-hatókörű hitelesítő adatok használatával az alábbi szabályok alapján éri el:
 - A hitelesítő adatok nélküli adatforrás lehetővé teszi, hogy a külső táblák hozzáférhessenek az Azure Storage-ban nyilvánosan elérhető fájlokhoz.
-- Az adatforrás rendelkezhet olyan hitelesítő adatokkal, amelyek lehetővé teszik, hogy a külső táblák csak az Azure Storage- [ban található fájlokat](develop-storage-files-storage-access-control.md#examples)férhessenek hozzá az SAS-jogkivonat vagy a munkaterület által felügyelt identitás használatával
+- Az adatforrás rendelkezhet olyan hitelesítő adatokkal, amelyek lehetővé teszik, hogy a külső táblák csak az Azure Storage-ban található fájlokat férhessenek hozzá az SAS-jogkivonat vagy a munkaterület által felügyelt identitás használatával – példák [a Storage Files Storage hozzáférés-vezérlésének fejlesztése](develop-storage-files-storage-access-control.md#examples) című cikkben
 
 > [!IMPORTANT]
 > Az SQL-készletben a creadential nélküli adatforrás lehetővé teszi, hogy az Azure AD-felhasználó hozzáférjen a tárolási fájlokhoz az Azure AD-identitással. Az SQL on-demand szolgáltatásban létre kell hoznia egy adatforrást adatbázis-hatókörű hitelesítő adatokkal, amelyek `IDENTITY='User Identity'` tulajdonsággal rendelkeznek – [példák itt](develop-storage-files-storage-access-control.md#examples)láthatók.
@@ -74,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -84,11 +86,14 @@ WITH
 )
 [;]
 ```
+
 ---
 
 ### <a name="arguments-for-create-external-data-source"></a>A külső ADATFORRÁS LÉTREHOZÁSához szükséges argumentumok
 
-data_source_name – megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
+data_source_name
+
+Megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
 
 #### <a name="location"></a>Hely
 LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy tárolót a formájában `'<prefix>://<path>/container'` , valamint egy mappát is `'<prefix>://<path>/container/folder'` .
@@ -100,7 +105,9 @@ LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a küls
 | 2. generációs Azure Data Lake Store | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
 #### <a name="credential"></a>Hitelesítő adat
-HITELESÍTŐADAT = `<database scoped credential>` opcionális hitelesítő adat, amely az Azure Storage-ban való hitelesítéshez használatos. A hitelesítő adatok nélküli külső adatforrás hozzáférhet a nyilvános Storage-fiókhoz. A hitelesítő adatok nélküli külső adatforrások az SQL-készletben is használhatják a hívókat az Azure AD-identitással a tárolóban lévő fájlok eléréséhez. A hitelesítő adatokkal rendelkező külső adatforrás a hitelesítő adatok használatával fér hozzá a fájlokhoz.
+HITELESÍTŐADAT = `<database scoped credential>` opcionális hitelesítő adat, amely az Azure Storage-ban való hitelesítéshez használatos. A hitelesítő adatok nélküli külső adatforrás hozzáférhet a nyilvános Storage-fiókhoz. 
+
+A hitelesítő adatok nélküli külső adatforrások az SQL-készletben is használhatják a hívókat az Azure AD-identitással a tárolóban lévő fájlok eléréséhez. A hitelesítő adatokkal rendelkező külső adatforrás a hitelesítő adatok használatával fér hozzá a fájlokhoz.
 - Az SQL-készletben az adatbázis-hatókörű hitelesítő adatok egyéni alkalmazás-identitást, munkaterület által felügyelt identitást vagy SAK kulcsot adhatnak meg. 
 - Az SQL on-demand szolgáltatásban az adatbázishoz kötődő hitelesítő adatok megadhatják a hívó Azure AD-identitását, a munkaterület felügyelt identitását vagy az SAS-kulcsot. 
 
@@ -123,7 +130,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-on-demand)
 
 Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2, amely SAS-hitelesítő adatokkal érhető el:
 
@@ -366,4 +373,4 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 
 ## <a name="next-steps"></a>Következő lépések
 
-A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.
+A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

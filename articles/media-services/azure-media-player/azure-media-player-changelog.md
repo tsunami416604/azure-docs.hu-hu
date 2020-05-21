@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726549"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698306"
 ---
 # <a name="changelog"></a>Változásnapló #
 
@@ -577,8 +577,8 @@ ms.locfileid: "81726549"
 - [Hibajavítás] [AzureHtml5JS] Az MPD-frissítések élő lejátszásának lefagyasztása, ha kis pontatlanságok vannak az időbélyegen belül
 - [Hibajavítás] [AzureHtml5JS] Több élő lejátszási probléma elhárítása
 - [Hibajavítás] [AzureHtml5JS] Pufferek ürítése, ha az ablak mérete heurisztikus, és magasabb felbontású képernyőre mutat
-- [Hibajavítás] [AzureHtml5JS] A Chrome mostantól megfelelően mutatja a befejezett eseményt. A Chrome korábbi ismert hibája miatt a *AzureHtml5JS használatakor nem&euro;fogja&euro;megfelelően elküldeni a "œendedâ" eseményt. Probléma van az alapul szolgáló böngészőben.*
-- [Hibajavítás] [AzureHtml5JS] A tech számára letiltott Safari az *OSX Yosemite és a AzureHtml5JS Tech közötti lejátszási probléma megoldása érdekében. Az MSE megvalósítási problémái vannak. Ideiglenes megoldás: Force&euro;â&euro;œflashSSâ, â&euro;œsilverlightSSâ&euro;as Tech order for this user agents*
+- [Hibajavítás] [AzureHtml5JS] A Chrome mostantól megfelelően mutatja a befejezett eseményt. A Chrome korábbi ismert hibája miatt a *AzureHtml5JS használatakor nem fog megfelelően elküldeni a befejezett eseményt. Probléma van az alapul szolgáló böngészőben.*
+- [Hibajavítás] [AzureHtml5JS] A tech számára letiltott Safari az *OSX Yosemite és a AzureHtml5JS Tech közötti lejátszási probléma megoldása érdekében. Az MSE megvalósítási problémái vannak. Ideiglenes megoldás: kényszeríti a villogást, a Silverlight-et technikai sorrendként ezekhez a felhasználói ügynökökhöz*
 - [Hibajavítás] [Flashs] a loadstart hiba történt.
 
 ## <a name="020-beta"></a>0.2.0 (bétaverzió) ##
@@ -589,7 +589,7 @@ ms.locfileid: "81726549"
 - Vonás Megszakítások kezelésére
 - Vonás 2 ^ 53-nál nagyobb időbélyegek támogatása
 - Vonás Az URL-lekérdezési paraméter megmarad a jegyzékfájl iránti kérelemben
-- Vonás Kipróbálatlan A és `QuickStart` `HighQuality` a heurisztikus profilok támogatása
+- Vonás Kipróbálatlan A `QuickStart` és a `HighQuality` heurisztikus profilok támogatása
 - Vonás Kipróbálatlan Videó stream-információk kimutatása a AzureHtml5JS és a Villogáshoz szükséges bitráta, szélesség és magasság alapján
 - Vonás Kipróbálatlan Válassza ki a AzureHtml5JS és a Flashs bitrátát (lásd: API-dokumentáció)
 
@@ -615,6 +615,6 @@ ms.locfileid: "81726549"
 
 Kezdeti előzetes kiadás
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

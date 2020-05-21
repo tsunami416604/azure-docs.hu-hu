@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183687"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83707989"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -33,7 +33,7 @@ Ez a táblázat a riasztással kapcsolatos mezők részleteit tartalmazza.
 | AlertUniqueId_s |Szöveg |A generált riasztás egyedi azonosítója |
 | AlertType_s |Szöveg |A riasztás típusa, például biztonsági mentés |
 | AlertStatus_s |Szöveg |A riasztás állapota, például aktív |
-| AlertOccurrenceDateTime_s |Dátum és idő |A riasztás létrehozásának dátuma és időpontja |
+| AlertOccurrenceDateTime_s |Dátum/idő |A riasztás létrehozásának dátuma és időpontja |
 | AlertSeverity_s |Szöveg |A riasztás súlyossága, például kritikus |
 |AlertTimeToResolveInMinutes_s    | Szám        |A riasztás feloldásához szükséges idő. Üres az aktív riasztásokhoz.         |
 |AlertConsolidationStatus_s   |Szöveg         |Annak megállapítása, hogy a riasztás konszolidált riasztás-e, vagy sem         |
@@ -152,7 +152,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 | JobOperation_s |Szöveg |A művelet, amelynek a feladata fut, például biztonsági mentés, visszaállítás, biztonsági mentés konfigurálása |
 | JobStatus_s |Szöveg |A Befejezett feladatok állapota, például befejezett, sikertelen |
 | JobFailureCode_s |Szöveg |Hiba történt a hibakód karakterlánca miatt, mert a művelet sikertelen volt |
-| JobStartDateTime_s |Dátum és idő |A feladatok futtatásának dátuma és időpontja |
+| JobStartDateTime_s |Dátum/idő |A feladatok futtatásának dátuma és időpontja |
 | BackupStorageDestination_s |Szöveg |A biztonsági mentési tár célja, például felhő, lemez  |
 | AdHocOrScheduledJob_s |Szöveg | Mező, amely megadja, hogy a feladattípus ad hoc vagy ütemezett |
 | JobDurationInSecs_s | Szám |Feladatok teljes időtartama másodpercben |
@@ -463,8 +463,10 @@ Az alábbi példák segítséget nyújtanak a Azure Diagnostics táblában talá
 ## <a name="v1-schema-vs-v2-schema"></a>V1 Schema vs v2 séma
 Korábban a Azure Backup-ügynök és az Azure-beli virtuális gép biztonsági mentésének diagnosztikai adatait a rendszer a ***v1 sémának***nevezett sémában Azure Diagnostics táblába küldték. Ezt követően új oszlopok lettek hozzáadva a más forgatókönyvek és munkaterhelések támogatásához, és a diagnosztikai adatok egy, a ***v2-séma***néven ismert új sémában lettek leküldve. 
 
-A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure virtuális gép biztonsági mentésének diagnosztikai adatait jelenleg a v1-es és v2-es sémában is elküldi Azure Diagnostics táblázatba (a v1 séma mostantól egy elavult útvonalon érhető el). A naplózási lekérdezésekben a SchemaVersion_s = = "v1" rekordok szűrésével azonosíthatja, hogy mely rekordok Log Analytics v1 sémában.
+A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure virtuális gép biztonsági mentésének diagnosztikai adatait jelenleg a v1-es és v2-es sémában is elküldi Azure Diagnostics táblázatba (a v1 séma mostantól egy elavult útvonalon érhető el). A naplózási lekérdezésekben a SchemaVersion_s = = "v1" rekordok szűrésével azonosíthatja, hogy mely rekordok Log Analytics v1 sémában. 
 
-## <a name="next-steps"></a>További lépések
+A fent ismertetett [adatmodellben](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) tekintse meg a harmadik oszlop "Description" utasítását, és azonosítsa, hogy mely oszlopok csak a v1 sémához tartoznak.
+
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

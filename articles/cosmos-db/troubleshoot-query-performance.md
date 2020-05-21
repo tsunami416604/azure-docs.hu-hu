@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097234"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714559"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Lekérdezési problémák elhárítása Azure Cosmos DB használatakor
 
@@ -35,19 +35,19 @@ Az útmutató elolvasása előtt érdemes megfontolni az olyan általános SDK-p
 - A legjobb teljesítmény érdekében kövesse ezeket a [teljesítménnyel kapcsolatos tippeket](performance-tips.md).
     > [!NOTE]
     > A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop. dll fájlt a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop. dll csak a Windows x64 platformon támogatott. A Linux és egyéb nem támogatott platformok esetében, ahol a ServiceInterop. dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez.
-- Az SDK lehetővé teszi a `MaxItemCount` beállítását a lekérdezésekhez, de nem adhat meg minimális számú tételt.
-    - A kódnak minden oldalméret, nulláról a `MaxItemCount`értékre kell kezelnie.
-    - Egy oldal elemeinek száma mindig kisebb vagy egyenlő lesz a megadott `MaxItemCount`értékkel. `MaxItemCount` A azonban szigorúan maximális, és ennél az értéknél kevesebb eredmény lehet.
+- Az SDK lehetővé teszi a beállítását a `MaxItemCount` lekérdezésekhez, de nem adhat meg minimális számú tételt.
+    - A kódnak minden oldalméret, nulláról a értékre kell kezelnie `MaxItemCount` .
+    - Egy oldal elemeinek száma mindig kisebb vagy egyenlő lesz a megadott értékkel `MaxItemCount` . A azonban `MaxItemCount` szigorúan maximális, és ennél az értéknél kevesebb eredmény lehet.
 - Időnként előfordulhat, hogy a lekérdezések üres lapokkal is rendelkezhetnek, még akkor is, ha egy jövőbeli oldal eredményei vannak. Ennek oka a következő lehet:
     - Az SDK-t több hálózati hívás is végezheti.
     - Előfordulhat, hogy a lekérdezés hosszú időt vesz fel a dokumentumok beolvasására.
-- Minden lekérdezés folytatási jogkivonattal rendelkezik, amely lehetővé teszi a lekérdezés folytatását. Ügyeljen arra, hogy a lekérdezés teljes mértékben le legyen ürítve. Tekintse meg az SDK-mintákat, és `while` használjon hurkot `FeedIterator.HasMoreResults` a teljes lekérdezés kiürítéséhez.
+- Minden lekérdezés folytatási jogkivonattal rendelkezik, amely lehetővé teszi a lekérdezés folytatását. Ügyeljen arra, hogy a lekérdezés teljes mértékben le legyen ürítve. Tekintse meg az SDK-mintákat, és használjon `while` hurkot a `FeedIterator.HasMoreResults` teljes lekérdezés kiürítéséhez.
 
 ## <a name="get-query-metrics"></a>Lekérdezési metrikák beolvasása
 
 Ha Azure Cosmos DB-lekérdezését optimalizálja, az első lépés mindig a lekérdezési [metrikák beolvasása](profile-sql-api-query.md) . Ezek a metrikák a Azure Portalon keresztül is elérhetők. Miután futtatta a lekérdezést a Adatkezelőban, a lekérdezési metrikák az **eredmények** lap mellett láthatók:
 
-[![Lekérdezési mérőszámok](./media/troubleshoot-query-performance/obtain-query-metrics.png) beolvasása](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![Lekérdezési mérőszámok ](./media/troubleshoot-query-performance/obtain-query-metrics.png) beolvasása](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
 A lekérdezési metrikák lekérése után hasonlítsa össze a **lekért dokumentumok darabszámát** a lekérdezés **kimeneti dokumentumainak számával** . Ezt az összehasonlítást használva azonosíthatja a cikkben áttekinthető releváns részeket.
 
@@ -135,12 +135,12 @@ A **beolvasott dokumentumok száma** (60 951) jelentősen meghaladja a **kimenet
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>A szükséges elérési utak belefoglalása az indexelési házirendbe
 
-Az indexelési szabályzatnak tartalmaznia kell a `WHERE` záradékok, `ORDER BY` a záradékok `JOIN`és a legtöbb rendszerfunkció összes tulajdonságát. Az indexelési házirendben megadott kívánt elérési utaknak meg kell egyezniük a JSON-dokumentumok tulajdonságaival.
+Az indexelési szabályzatnak tartalmaznia kell a `WHERE` záradékok, a `ORDER BY` záradékok `JOIN` és a legtöbb rendszerfunkció összes tulajdonságát. Az indexelési házirendben megadott kívánt elérési utaknak meg kell egyezniük a JSON-dokumentumok tulajdonságaival.
 
 > [!NOTE]
 > Azure Cosmos DB indexelési házirend tulajdonságai megkülönböztetik a kis-és nagybetűket
 
-Ha a következő egyszerű lekérdezést futtatja a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten, akkor a `WHERE` záradékban található tulajdonság indexelése sokkal alacsonyabb költséget vesz igénybe:
+Ha a következő egyszerű lekérdezést futtatja a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten, akkor a záradékban található tulajdonság indexelése sokkal alacsonyabb költséget vesz igénybe `WHERE` :
 
 #### <a name="original"></a>Eredeti
 
@@ -200,7 +200,8 @@ Ha egy kifejezés több karakterlánc-értékre is fordítható, használhatja a
 
 Az alábbi lista néhány olyan gyakori karakterlánc-függvényt mutat be, amelyek az indexet használhatják:
 
-- STARTSWITH(str_expr, str_expr)
+- STARTSWITH (str_expr1, str_expr2, bool_expr)  
+- TARTALMAZZA (str_expr, str_expr, bool_expr)
 - LEFT(str_expr, num_expr) = str_expr
 - Alsztring (str_expr, num_expr, num_expr) = str_expr, de csak akkor, ha az első num_expr 0
 
@@ -208,8 +209,7 @@ Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely n
 
 | **System függvény**                     | **Optimalizálási ötletek**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | Azure Search használata a teljes szöveges kereséshez.                        |
-| FELSŐ/ALSÓ                             | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` például ```SELECT * FROM c WHERE c.name = 'BOB'```A válik. |
+| FELSŐ/ALSÓ                             | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, például A ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` válik ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematikai függvények (nem összesítések) | Ha egy értéket gyakran kell kiszámítani a lekérdezésben, érdemes az értéket a JSON-dokumentum tulajdonságának megfelelően tárolni. |
 
 ------
@@ -220,7 +220,7 @@ A lekérdezés többi része továbbra is használhatja az indexet annak ellené
 
 A legtöbb esetben a Azure Cosmos DB összesített rendszerfunkciói az indexet fogják használni. Az összesítő lekérdezésekben lévő szűrőktől vagy további feltételektől függően azonban előfordulhat, hogy a lekérdezési motor nagy számú dokumentum betöltésére van szükség. A lekérdezési motor általában az egyenlőség és a tartomány szűrőit fogja alkalmazni először. A szűrők alkalmazása után a lekérdezési motor kiértékelheti a további szűrőket, és igény szerint betöltheti a fennmaradó dokumentumokat az Összesítés kiszámításához.
 
-Ha például ez a két minta lekérdezés, az egyenlőség és a rendszerfüggvény szűrővel `CONTAINS` rendelkező lekérdezés általában hatékonyabb, mint egy rendszerfunkció-szűrővel rendelkező `CONTAINS` lekérdezés. Ennek az az oka, hogy a rendszer először alkalmazza az egyenlőség szűrőt, és az indexet használja, mielőtt a drágább `CONTAINS` szűrőhöz a dokumentumokat be kell tölteni.
+Ha például ez a két minta lekérdezés, az egyenlőség és a `CONTAINS` rendszerfüggvény szűrővel rendelkező lekérdezés általában hatékonyabb, mint egy `CONTAINS` rendszerfunkció-szűrővel rendelkező lekérdezés. Ennek az az oka, hogy a rendszer először alkalmazza az egyenlőség szűrőt, és az indexet használja, mielőtt a drágább szűrőhöz a dokumentumokat be kell tölteni `CONTAINS` .
 
 Lekérdezés csak `CONTAINS` szűrővel – magasabb ru-díj:
 
@@ -230,7 +230,7 @@ FROM c
 WHERE CONTAINS(c.description, "spinach")
 ```
 
-Lekérdezés az esélyegyenlőségi szűrővel `CONTAINS` és a szűrővel – alacsonyabb ru díj:
+Lekérdezés az esélyegyenlőségi szűrővel és a `CONTAINS` szűrővel – alacsonyabb ru díj:
 
 ```sql
 SELECT AVG(c._ts)
@@ -260,9 +260,9 @@ WHERE udf.MyUDF("Sausages and Luncheon Meats")
 
 #### <a name="queries-with-group-by"></a>Lekérdezések a GROUP BY alapján
 
-A lekérdezésekhez tartozó, `GROUP BY` a `GROUP BY` záradékban található tulajdonságok feltételének mértéke növekszik. Az alábbi lekérdezésben például a lekérdezés RU-díja növekedni fog, ahogy az egyedi leírások száma növekszik.
+A lekérdezésekhez tartozó, a `GROUP BY` záradékban található tulajdonságok feltételének mértéke növekszik `GROUP BY` . Az alábbi lekérdezésben például a lekérdezés RU-díja növekedni fog, ahogy az egyedi leírások száma növekszik.
 
-Egy `GROUP BY` záradékkal rendelkező összesítő függvény VT-díja magasabb lesz, mint az összesítő függvények ru-díja. Ebben a példában a lekérdezési motornak be kell töltenie minden olyan `c.foodGroup = "Sausages and Luncheon Meats"` dokumentumot, amely megfelel a szűrőnek, így az ru-díj várhatóan magas lesz.
+Egy záradékkal rendelkező összesítő függvény VT-díja `GROUP BY` magasabb lesz, mint az összesítő függvények ru-díja. Ebben a példában a lekérdezési motornak be kell töltenie minden olyan dokumentumot, amely megfelel a `c.foodGroup = "Sausages and Luncheon Meats"` szűrőnek, így az ru-díj várhatóan magas lesz.
 
 ```sql
 SELECT COUNT(1)
@@ -275,7 +275,7 @@ Ha azt tervezi, hogy gyakran ugyanazokat az összesítő lekérdezéseket futtat
 
 ### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Szűrővel és ORDER BY záradékkal rendelkező lekérdezések optimalizálása
 
-Habár a szűrővel és `ORDER BY` záradékkal rendelkező lekérdezések általában egy tartomány-indexet használnak, hatékonyabbak lesznek, ha összetett indexből is kiszolgálják őket. Az indexelési házirend módosításán kívül az összes tulajdonságot fel kell vennie az összetett indexbe `ORDER BY` a záradékba. A lekérdezésnek ez a változása biztosítja, hogy az összetett indexet használja.  A hatás megfigyeléséhez futtasson egy lekérdezést a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten:
+Habár a szűrővel és `ORDER BY` záradékkal rendelkező lekérdezések általában egy tartomány-indexet használnak, hatékonyabbak lesznek, ha összetett indexből is kiszolgálják őket. Az indexelési házirend módosításán kívül az összes tulajdonságot fel kell vennie az összetett indexbe a `ORDER BY` záradékba. A lekérdezésnek ez a változása biztosítja, hogy az összetett indexet használja.  A hatás megfigyeléséhez futtasson egy lekérdezést a [táplálkozási](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) adatkészleten:
 
 #### <a name="original"></a>Eredeti
 
@@ -308,7 +308,7 @@ Indexelési házirend:
 
 #### <a name="optimized"></a>Optimalizált
 
-Frissített lekérdezés (a `ORDER BY` záradékban mindkét tulajdonságot tartalmazza):
+Frissített lekérdezés (a záradékban mindkét tulajdonságot tartalmazza `ORDER BY` ):
 
 ```sql
 SELECT *
@@ -349,7 +349,7 @@ Frissített indexelési házirend:
 
 ### <a name="optimize-join-expressions-by-using-a-subquery"></a>ILLESZTÉSi kifejezések optimalizálása segédlekérdezés használatával
 
-A többértékű allekérdezések `JOIN` úgy optimalizálják a kifejezéseket, hogy az egyes Select-sok kifejezés után lenyomják a `WHERE` predikátumokat, nem pedig a záradékban szereplő összes kereszthivatkozást.
+A többértékű allekérdezések úgy optimalizálják `JOIN` a kifejezéseket, hogy az egyes Select-sok kifejezés után lenyomják a predikátumokat, nem pedig a záradékban szereplő összes kereszthivatkozást `WHERE` .
 
 Tekintse át ezt a lekérdezést:
 
@@ -365,7 +365,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 **Ru díj:** 167,62 RUs
 
-Ebben a lekérdezésben az index minden olyan dokumentumnak megfelel, amelynek a neve `infant formula`, `nutritionValue` nullánál nagyobb, és `amount` 1-nél nagyobb. Az `JOIN` itt megjelenő kifejezés a címkék, a tápanyagok és az összes egyező dokumentum tömbjét a szűrők alkalmazása előtt is végrehajtja. Ezután `WHERE` a záradék alkalmazza a szűrő predikátumot az egyes `<c, t, n, s>` rekordokra.
+Ebben a lekérdezésben az index minden olyan dokumentumnak megfelel, amelynek a neve `infant formula` , nullánál `nutritionValue` nagyobb, és 1-nél `amount` nagyobb. Az `JOIN` itt megjelenő kifejezés a címkék, a tápanyagok és az összes egyező dokumentum tömbjét a szűrők alkalmazása előtt is végrehajtja. `WHERE`Ezután a záradék alkalmazza a szűrő predikátumot az egyes `<c, t, n, s>` rekordokra.
 
 Ha például egy egyező dokumentum 10 elemet tartalmaz mindhárom tömbben, akkor 1 x 10 x 10 x 10 (azaz 1 000) rekordok lesz kibontva. Az allekérdezések használata a következő kifejezéssel való csatlakozás előtt segíthet kiszűrni a csatlakoztatott tömböket.
 
@@ -385,7 +385,7 @@ Tegyük fel, hogy a címkék tömbben csak egy elem egyezik a szűrővel, és ho
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Lekérdezések, amelyekben a lekérdezett dokumentumok száma megegyezik a kimeneti dokumentumok számával
 
-Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával**, a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a `TOP` kulcsszót használó alkalmazásokhoz, a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
+Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával**, a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a kulcsszót használó alkalmazásokhoz `TOP` , a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
 
 ### <a name="minimize-cross-partition-queries"></a>Több partíciós lekérdezés csökkentése
 
@@ -401,7 +401,7 @@ FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-A partíciós kulccsal `IN` szűrővel rendelkező lekérdezések csak a megfelelő fizikai partíció (ka) t fogják megtekinteni, és nem "ventilátor":
+`IN`A partíciós kulccsal szűrővel rendelkező lekérdezések csak a megfelelő fizikai partíció (ka) t fogják megtekinteni, és nem "ventilátor":
 
 ```sql
 SELECT *
@@ -488,7 +488,7 @@ A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével műk
 
 A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javítására nyújt segítséget. A MaxBufferedItemCount beállítása korlátozza az előre beolvasott eredmények számát. Ha ezt az értéket a visszaadott várt számú eredmény (vagy egy magasabb szám) értékre állítja, a lekérdezés a lehető legtöbb előnyt érheti el az előzetes beolvasáskor. Ha a-1 értéket adja meg, a rendszer automatikusan meghatározza a pufferbe kerülő elemek számát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)

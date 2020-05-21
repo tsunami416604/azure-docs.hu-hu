@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886993"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714746"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -84,50 +84,16 @@ A fürt élettartama után számítunk fel díjat. Ha csak bizonyos esetekben va
 
 > [!NOTE]  
 > Fürt törlésekor az alapértelmezett Hive-metaadattár is törlődik. Ha meg szeretné őrizni a metaadattár a fürt következő újbóli létrehozásához, használjon külső metaadat-tárolót, például az Azure Database vagy az [Apache Oozie](https://oozie.apache.org/).
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>A fürt feladataival kapcsolatos hibák elkülönítése
 
-Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, valamint a több csomópontot tartalmazó fürt összetevőinek csökkentése miatt. A probléma elszigetelése érdekében próbálkozzon az elosztott teszteléssel. Egyidejű több feladat futtatása egyetlen feldolgozó csomópont-fürtön. Ezután bontsa ki ezt a megközelítést úgy, hogy egyszerre több feladatot futtasson egy több csomópontot tartalmazó fürtökön. Ha az Azure-ban egy egycsomópontos HDInsight-fürtöt *`Custom(size, settings, apps)`* szeretne létrehozni, használja a beállítást, és használja az 1 értéket a **fürt mérete** szakaszban lévő *munkavégző csomópontok* számára, ha új fürtöt szeretne kiépíteni a portálon.
+Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, valamint a több csomópontot tartalmazó fürt összetevőinek csökkentése miatt. A probléma elszigetelése érdekében próbálkozzon az elosztott teszteléssel. Egyidejű több feladat futtatása egyetlen feldolgozó csomópont-fürtön. Ezután bontsa ki ezt a megközelítést úgy, hogy egyszerre több feladatot futtasson egy több csomópontot tartalmazó fürtökön. Ha az Azure-ban egy egycsomópontos HDInsight-fürtöt szeretne létrehozni, használja a *`Custom(size, settings, apps)`* beállítást, és használja az 1 értéket a **fürt mérete** szakaszban lévő *munkavégző csomópontok* számára, ha új fürtöt szeretne kiépíteni a portálon.
 
 ## <a name="quotas"></a>Kvóták
 
-A célként megadott fürt virtuálisgép-méretének, méretezésének és típusának meghatározása után keresse meg az előfizetés aktuális kvóta-kapacitási korlátait. A kvóta elérésekor nem telepíthet új fürtöket. Vagy bővítse a meglévő fürtöket további munkavégző csomópontok hozzáadásával. Az egyetlen kvóta a CPU magok kvótája, amely az egyes előfizetések régiójának szintjén található. Az előfizetés például 30 Magos korláttal rendelkezhet az USA keleti régiójában.
+Az előfizetési kvóták kezelésével kapcsolatos további információkért lásd: [kvóta növelésének kérése](quota-increase-request.md).
 
-Az elérhető magok vizsgálatához hajtsa végre a következő lépéseket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Navigáljon a HDInsight-fürt **áttekintő** oldalára.
-3. A bal oldali menüben válassza a **kvóta korlátai**lehetőséget.
-
-   A lap megjeleníti a használatban lévő magok számát, a rendelkezésre álló magok számát és az összes magot.
-
-Ha kvótát kell megadnia, hajtsa végre a következő lépéseket:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A lap bal alsó részén kattintson a **Súgó és támogatás** elemre.
-1. Válassza az **új támogatási kérelem**lehetőséget.
-1. Az **új támogatási kérelem** oldal **alapismeretek** lapján válassza a következő beállításokat:
-
-   - **Probléma típusa**: **szolgáltatás-és előfizetési korlátok (kvóták)**
-   - **Előfizetés**: a módosítani kívánt előfizetés
-   - **Kvóta típusa**: **HDInsight**
-
-     ![Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. Válassza a **tovább lehetőséget: megoldások >>**.
-1. A **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, az előnyben részesített kapcsolattartási módszert és az egyéb kötelező mezőket.
-1. Válassza a **Tovább: Áttekintés + >>létrehozása **elemet.
-1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
-
-> [!NOTE]  
-> Ha a HDInsight alapszintű kvótát egy privát régióban szeretné megemelni, [küldjön el egy engedélyezési kérelmet](https://aka.ms/canaryintwhitelist).
-
-[Az ügyfélszolgálattól kérheti a kvóta növelését](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
-
-Vannak rögzített kvóták. Például egyetlen Azure-előfizetés legfeljebb 10 000 magot tartalmazhat. A korlátokkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök beállítása a Apache Hadoop-, Spark-, Kafka-és egyéb szolgáltatásokkal](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan állíthatja be és konfigurálhatja a fürtöket a HDInsight-ben.
 * A [fürt teljesítményének figyelése](hdinsight-key-scenarios-to-monitor.md): megismerheti a HDInsight-fürt azon főbb forgatókönyveit, amelyek hatással lehetnek a fürt kapacitására.

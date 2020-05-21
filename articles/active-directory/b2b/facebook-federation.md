@@ -12,16 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff291592efc73415cce74ff666117851bb53e8a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681018"
+ms.locfileid: "83712270"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook hozzáadása identitás-szolgáltatóként külső identitásokhoz
 
 Hozzáadhat Facebook-t önkiszolgáló bejelentkezési felhasználói folyamatokhoz (előzetes verzió), így a felhasználók saját Facebook-fiókjaikat is bejelentkezhetnek az alkalmazásaiba. Ahhoz, hogy a felhasználók bejelentkezzenek a Facebook használatával, először engedélyeznie kell az [önkiszolgáló regisztrációt](self-service-sign-up-user-flow.md) a bérlő számára. Miután hozzáadta a Facebookot identitás-szolgáltatóként, állítson be egy felhasználói folyamatot az alkalmazáshoz, és válassza a Facebook lehetőséget a bejelentkezési lehetőségek közül.
+
 > [!NOTE]
 > A felhasználók csak a Facebook-fiókjaikat használhatják az önkiszolgáló bejelentkezési és felhasználói folyamatokat használó alkalmazásokban való regisztrációhoz. A felhasználók nem hívhatják meg és nem válthatják be a meghívót Facebook-fiók használatával.
 
@@ -100,6 +101,6 @@ A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói
    > [!NOTE]
    > További információ: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Önkiszolgáló regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md)

@@ -14,23 +14,21 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75638663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714134"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
 
-Az összes Privileged Identity Management feladatot a Azure Active Directory [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) -k használatával hajthatja végre. Ez a cikk a Privileged Identity Management Microsoft Graph API-k használatára vonatkozó fontos fogalmakat ismerteti.
+A Azure Active Directory [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) -k használatával Privileged Identity Management feladatokat hajthat végre. Ez a cikk a Privileged Identity Management Microsoft Graph API-k használatára vonatkozó fontos fogalmakat ismerteti.
 
 A Microsoft Graph API-kkal kapcsolatos részletekért tekintse meg a [Azure ad PRIVILEGED Identity Management API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > A Microsoft Graph/Beta verziója alatti API-k előzetes verzióban érhetők el, és változhatnak. Az API-k üzemi alkalmazásokban való használata nem támogatott.
->
-> Bár az összes PIM-művelet támogatott a Graph API parancsain keresztül, az aktiválási kérések jóváhagyásához egy másik rendszer használható. A jóváhagyásra Graph API jelenleg fejlesztés alatt áll, és a következő néhány hónapban lesz közzétéve.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -61,6 +59,6 @@ Ha a Graph Explorer segítségével teszteli a hívásokat, megadhatja az enged�
 
 1. Kattintson az **engedélyek módosítása** elemre az engedély módosításának alkalmazásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD Privileged Identity Management API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

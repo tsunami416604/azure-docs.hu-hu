@@ -1,27 +1,22 @@
 ---
-title: Grafikus szerzői műveletek Azure Automation
-description: A grafikus szerzői műveletek lehetővé teszik, hogy runbookok hozzon létre Azure Automation a kód használata nélkül. Ez a cikk bemutatja a grafikus szerzői műveletek és a grafikus runbook létrehozásának megkezdéséhez szükséges összes részlet bevezetését.
+title: Grafikus runbookok készítése Azure Automation
+description: Ez a cikk azt ismerteti, hogyan hozhat létre grafikus runbook a kód használata nélkül.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35d3146c0ca5571e6e16793c97378de1e2db362e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406054"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711720"
 ---
-# <a name="graphical-authoring-in-azure-automation"></a>Grafikus szerzői műveletek Azure Automation
-
-A grafikus készítés lehetővé teszi, hogy az alapul szolgáló Windows PowerShell-vagy PowerShell munkafolyamat-kód bonyolultsága nélkül hozza létre a Azure Automation runbookok. Hozzáadhat tevékenységeket a vászonhoz a parancsmagok és runbookok könyvtára alapján, összekapcsolhatja őket, és konfigurálhatja őket munkafolyamatok létrehozásához. Ha valaha is dolgozott a System Center Orchestrator vagy Service Management Automation (SMA), a grafikus szerzőknek ismerősnek kell lenniük. Ez a cikk bemutatja a grafikus runbook létrehozásának megkezdéséhez szükséges fogalmakat.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
-
-## <a name="graphical-runbooks"></a>Grafikus runbookok
+# <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
 
 A Azure Automation összes runbookok Windows PowerShell-munkafolyamatok. A grafikus runbookok és a grafikus PowerShell-munkafolyamat runbookok olyan PowerShell-kódot állít elő, amelyet az Automation-feldolgozó futtat, de nem tudja megtekinteni vagy módosítani. Grafikus runbook grafikus PowerShell-munkafolyamat runbook alakíthat át, és fordítva is. Ezeket a runbookok azonban nem konvertálhatja szöveges runbook. Emellett az Automation grafikus szerkesztőjének nem lehet szöveges runbook importálnia.
+
+A grafikus készítés lehetővé teszi, hogy az alapul szolgáló Windows PowerShell-vagy PowerShell munkafolyamat-kód bonyolultsága nélkül hozza létre a Azure Automation runbookok. Hozzáadhat tevékenységeket a vászonhoz a parancsmagok és runbookok könyvtára alapján, összekapcsolhatja őket, és konfigurálhatja őket munkafolyamatok létrehozásához. Ha valaha is dolgozott a System Center Orchestrator vagy Service Management Automation (SMA), a grafikus szerzőknek ismerősnek kell lenniük. Ez a cikk bemutatja a grafikus runbook létrehozásának megkezdéséhez szükséges fogalmakat.
 
 ## <a name="overview-of-graphical-editor"></a>A grafikus szerkesztő áttekintése
 
@@ -37,7 +32,7 @@ A vászon vezérlőelem lehetővé teszi a runbook megtervezését. Hozzáadhat 
 
 ### <a name="library-control"></a>Könyvtár-vezérlőelem
 
-A könyvtár vezérlőelem lehetővé teszi, hogy kiválassza a runbook hozzáadni kívánt [tevékenységeket](#activities) . Hozzáadja őket a vászonhoz, ahol más tevékenységekhez is csatlakozhat. A könyvtár vezérlőelem a következő táblázatban definiált szakaszt tartalmazza.
+A könyvtár vezérlőelem lehetővé teszi, hogy kiválassza a runbook hozzáadni kívánt [tevékenységeket](#use-activities) . Hozzáadja őket a vászonhoz, ahol más tevékenységekhez is csatlakozhat. A könyvtár vezérlőelem a következő táblázatban definiált szakaszt tartalmazza.
 
 | Section | Leírás |
 |:--- |:--- |
@@ -54,7 +49,7 @@ A konfiguráció vezérlőelem lehetővé teszi a vásznon kiválasztott objektu
 
 A tesztelési vezérlő nem jelenik meg a grafikus szerkesztő első elindításakor. Akkor nyílik meg, amikor interaktívan tesztel egy grafikus runbook.
 
-## <a name="activities"></a>Tevékenységek
+## <a name="use-activities"></a>Tevékenységek használata
 
 A tevékenységek a runbook építőelemei. Egy tevékenység lehet PowerShell-parancsmag, gyermek runbook vagy munkafolyamat. Hozzáadhat egy tevékenységet a runbook. ehhez kattintson a jobb gombbal a könyvtár vezérlőelemre, és válassza a **Hozzáadás a vászonhoz**lehetőséget. Ezután rákattinthat a tevékenységre, és húzással bárhová elhelyezheti azt a vászonon, amelyet szeretne. A tevékenység helye a vásznon nem befolyásolja a runbook működését. A runbook úgy is megállapíthatja, hogy a legmegfelelőbb módon jelenítse meg a műveletét.
 
@@ -83,12 +78,12 @@ Egy paraméter értékének megadásakor ki kell választania egy adatforrást, 
 | Hitelesítőadat-eszköz |Válassza ki az Automation hitelesítő adatait bemenetként. |
 | Tanúsítvány-eszköz |Válassza ki az Automation-tanúsítványt bemenetként. |
 | A kapcsolatfelvételi eszköz |Válassza ki az Automation-kapcsolatokat bemenetként. |
-| PowerShell-kifejezés |Adja meg az egyszerű [PowerShell-kifejezést](#powershell-expressions). A kifejezés kiértékelése a tevékenység előtt történik, és a rendszer a paraméter értékének eredményét használja. A változók használatával hivatkozhat egy tevékenység kimenetére vagy egy runbook bemeneti paraméterre. |
+| PowerShell-kifejezés |Adja meg az egyszerű [PowerShell-kifejezést](#work-with-powershell-expressions). A kifejezés kiértékelése a tevékenység előtt történik, és a rendszer a paraméter értékének eredményét használja. A változók használatával hivatkozhat egy tevékenység kimenetére vagy egy runbook bemeneti paraméterre. |
 | Nincs konfigurálva |Törölje a korábban konfigurált értékeket. |
 
 #### <a name="optional-additional-parameters"></a>További választható paraméterek
 
-Minden parancsmagnál lehetőség van további paraméterek megadására. Ezek a PowerShell-Common paraméterek vagy más egyéni paraméterek. A grafikus szerkesztő egy szövegmezőt jelenít meg, amelyen a PowerShell-szintaxis használatával adhat meg paramétereket. A Common paraméter használatához például `Verbose` a következőt kell megadnia `-Verbose:$True`:.
+Minden parancsmagnál lehetőség van további paraméterek megadására. Ezek a PowerShell-Common paraméterek vagy más egyéni paraméterek. A grafikus szerkesztő egy szövegmezőt jelenít meg, amelyen a PowerShell-szintaxis használatával adhat meg paramétereket. A Common paraméter használatához például a következőt `Verbose` kell megadnia: `-Verbose:$True` .
 
 ### <a name="retry-activity"></a>Újrapróbálkozási tevékenység
 
@@ -102,7 +97,7 @@ Az újrapróbálkozási feltétel egy PowerShell-kifejezés, amelyet a rendszer 
 
 ![Tevékenység újrapróbálkozási késleltetése](media/automation-graphical-authoring-intro/retry-condition.png)
 
-Az újrapróbálkozási feltétel olyan nevű `RetryData` változót használhat, amely hozzáférést biztosít a tevékenység újrapróbálkozásával kapcsolatos információkhoz. Ez a változó a következő táblázatban található tulajdonságokkal rendelkezik:
+Az újrapróbálkozási feltétel olyan nevű változót használhat `RetryData` , amely hozzáférést biztosít a tevékenység újrapróbálkozásával kapcsolatos információkhoz. Ez a változó a következő táblázatban található tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
@@ -136,7 +131,7 @@ Egy tevékenység újrapróbálkozási feltételének konfigurálása után a te
 
 A munkafolyamat-parancsfájlok vezérlőelem egy speciális tevékenység, amely a létrehozott grafikus runbook függően a PowerShell vagy a PowerShell munkafolyamat-parancsfájlt fogadja. Ez a vezérlő olyan funkciókat biztosít, amelyek más módon nem érhetők el. A paraméterek nem fogadhatók el, de változókat is használhatnak a tevékenységek kimenetére és a runbook bemeneti paramétereinek használatára. A tevékenység bármilyen kimenete megjelenik a adatbuszba. Kivételt képez a kimenő hivatkozás nélküli kimenet, amely esetben a kimenet hozzá lesz adva a runbook kimenetéhez.
 
-A következő kód például egy nevű `NumberOfDays`runbook bemeneti változó használatával végez dátum-számításokat. Ezután a számított DateTime értéket küldi el kimenetként, amelyet a következő tevékenységek fognak használni a runbook.
+A következő kód például egy nevű runbook bemeneti változó használatával végez dátum-számításokat `NumberOfDays` . Ezután a számított DateTime értéket küldi el kimenetként, amelyet a következő tevékenységek fognak használni a runbook.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -144,11 +139,11 @@ $DateTimeStart = ($DateTimeNow).AddDays(-$NumberOfDays)}
 $DateTimeStart
 ```
 
-## <a name="links-and-workflow"></a>Hivatkozások és munkafolyamat
+## <a name="use-links-for-workflow"></a>Hivatkozások használata a munkafolyamathoz
 
 A grafikus runbook található hivatkozások két tevékenységet kapcsolnak össze. A vászonon a forrás tevékenységtől a cél tevékenységig mutató nyíl jelenik meg. A tevékenységek a nyíl irányában futnak a célként megadott tevékenységgel a forrás tevékenység befejeződése után.
 
-### <a name="link-creation"></a>Hivatkozás létrehozása
+### <a name="create-a-link"></a>Hivatkozás létrehozása
 
 A két tevékenység között úgy hozhat létre kapcsolatot, hogy kiválasztja a forrás tevékenységet, majd az alakzat alján található körre kattint. Húzza a nyilat a cél tevékenységre, és adja meg a kiadást.
 
@@ -161,15 +156,15 @@ Válassza ki a hivatkozást a tulajdonságainak konfigurálásához a konfigurá
 | Folyamat |A célként megadott tevékenység a forrás tevékenység minden objektumának kimenetén egyszer fut. A célként megadott tevékenység nem fut, ha a forrásoldali tevékenység nem eredményez kimenetet. A forrás tevékenység kimenete objektumként érhető el. |
 | Sequence |A célként megadott tevékenység csak egyszer fut le, amikor megkapja a kimenetet a forrás tevékenységtől. A forrás tevékenység kimenete objektumok tömbje érhető el. |
 
-### <a name="start-of-activity"></a>Tevékenység kezdete
+### <a name="start-runbook-activity"></a>Runbook-tevékenység elindítása
 
 A grafikus runbook minden olyan tevékenységgel elindul, amely nem rendelkezik bejövő hivatkozással. Gyakran csak egy tevékenység működik, amely a runbook kezdő tevékenysége. Ha több tevékenységnek nincs bejövő kapcsolata, a runbook párhuzamosan futtatva indul el. Az alábbi hivatkozásokat követve más tevékenységek futtatását hajtja végre.
 
-### <a name="link-conditions"></a>Hivatkozás feltételei
+### <a name="specify-link-conditions"></a>Hivatkozás feltételeinek meghatározása
 
 Ha egy hivatkozásnál megad egy feltételt, a célként megadott tevékenység csak akkor fut le, ha a feltétel igaz értékre van feloldva. Általában egy `ActivityOutput` változót használ a forrás tevékenység kimenetének lekéréséhez.
 
-Egy folyamat hivatkozásához meg kell adnia egy feltételt egyetlen objektumhoz. A runbook kiértékeli a forrás tevékenység minden objektum kimenetének feltételeit. Ezután futtatja a cél tevékenységet minden olyan objektumnál, amely megfelel a feltételnek. A (z) forrásával `Get-AzVM`például a következő szintaxist használhatja egy feltételes folyamat hivatkozásához, hogy csak a Group1 nevű erőforráscsoport virtuális gépei legyenek lekérdezve.
+Egy folyamat hivatkozásához meg kell adnia egy feltételt egyetlen objektumhoz. A runbook kiértékeli a forrás tevékenység minden objektum kimenetének feltételeit. Ezután futtatja a cél tevékenységet minden olyan objektumnál, amely megfelel a feltételnek. A (z) forrásával például a `Get-AzVM` következő szintaxist használhatja egy feltételes folyamat hivatkozásához, hogy csak a Group1 nevű erőforráscsoport virtuális gépei legyenek lekérdezve.
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
@@ -181,7 +176,7 @@ Tegyük fel például, hogy a következő tevékenységek jelennek meg a **Start
 
 ![Feltételes hivatkozás szakaszokkal](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-A runbook három különböző sorozatot használ, amelyek ellenőrzik a bemeneti paraméterek `VMName` értékeit, `ResourceGroupName` és meghatározzák a megfelelő műveletet. A lehetséges műveletek egyetlen virtuális gépet indítanak el, elindítják az erőforráscsoport összes virtuális gépét, vagy elindítják az előfizetésben lévő összes virtuális gépet. A és `Connect to Azure` `Get single VM`a közötti sorozatot a következő feltétel logikája:
+A runbook három különböző sorozatot használ, amelyek ellenőrzik a bemeneti paraméterek értékeit, `VMName` és `ResourceGroupName` meghatározzák a megfelelő műveletet. A lehetséges műveletek egyetlen virtuális gépet indítanak el, elindítják az erőforráscsoport összes virtuális gépét, vagy elindítják az előfizetésben lévő összes virtuális gépet. A és a közötti sorozatot a következő `Connect to Azure` `Get single VM` feltétel logikája:
 
 ```powershell-interactive
 <#
@@ -196,13 +191,13 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 Ha feltételes hivatkozást használ, a forrás tevékenységtől az adott ág más tevékenységeire elérhető adatok a feltétel szerint vannak szűrve. Ha egy tevékenység több hivatkozás forrása, az egyes ágakban található tevékenységek számára elérhető adatok az adott ágra mutató hivatkozás állapotától függenek.
 
-Az alábbi runbook szereplő `Start-AzVM` tevékenység például elindítja az összes virtuális gépet. Két feltételes hivatkozással rendelkezik. Az első feltételes hivatkozás a kifejezés `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` használatával szűri, hogy `Start-AzVM` a tevékenység sikeresen befejeződött-e. A második feltételes hivatkozás a kifejezés `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` használatával szűri, hogy `Start-AzVm` a tevékenység nem tudja elindítani a virtuális gépet.
+Az `Start-AzVM` alábbi runbook szereplő tevékenység például elindítja az összes virtuális gépet. Két feltételes hivatkozással rendelkezik. Az első feltételes hivatkozás a kifejezés `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` használatával szűri, hogy a `Start-AzVM` tevékenység sikeresen befejeződött-e. A második feltételes hivatkozás a kifejezés `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` használatával szűri, hogy a `Start-AzVm` tevékenység nem tudja elindítani a virtuális gépet.
 
 ![Feltételes hivatkozás – példa](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-Minden olyan tevékenység, amely az első hivatkozást követi, és a tevékenység `Get-AzureVM` kimenetét használja, csak a futtatáskor elindított `Get-AzureVM` virtuális gépeket kérdezi le. A második hivatkozást követő tevékenységek csak a futtatáskor leállított virtuális gépeket kérik le `Get-AzureVM` . A harmadik hivatkozás utáni bármely tevékenység lekéri az összes virtuális gépet a futó állapottól függetlenül.
+Minden olyan tevékenység, amely az első hivatkozást követi, és a tevékenység kimenetét használja, `Get-AzureVM` csak a futtatáskor elindított virtuális gépeket kérdezi le `Get-AzureVM` . A második hivatkozást követő tevékenységek csak a futtatáskor leállított virtuális gépeket kérik le `Get-AzureVM` . A harmadik hivatkozás utáni bármely tevékenység lekéri az összes virtuális gépet a futó állapottól függetlenül.
 
-### <a name="junctions"></a>Csomópontok
+### <a name="use-junctions"></a>Csomópontok használata
 
 A Junction egy különleges tevékenység, amely addig vár, amíg az összes bejövő ág be nem fejeződik. Ez lehetővé teszi, hogy a runbook párhuzamosan futtasson több tevékenységet, és győződjön meg arról, hogy az összes befejeződött, mielőtt továbblép.
 
@@ -212,13 +207,13 @@ Az alábbi példa egy olyan runbook részét képezi, amely virtuális gépeket 
 
 ![Szinkronizációs pont](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### <a name="cycles"></a>Ciklusok
+### <a name="work-with-cycles"></a>Ciklusok használata
 
 Egy ciklus akkor jön létre, amikor egy cél tevékenység a forrás tevékenységre hivatkozik, vagy egy másik tevékenységre, amely végül a forráshoz kapcsolódik. A grafikus szerzői műveletek jelenleg nem támogatják a ciklusokat. Ha a runbook ciklust tartalmaz, a rendszer megfelelően menti, de hibaüzenetet kap a futtatásakor.
 
 ![Ciklikus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
-### <a name="data-sharing-between-activities"></a>Tevékenységek közötti adatmegosztás
+### <a name="share-data-between-activities"></a>Az adatmegosztás tevékenységek között
 
 A kimenő kapcsolattal rendelkező tevékenységek által a runbook adatbuszba megjelenő adatokat a rendszer a megadott értékre írja. A runbook bármely tevékenysége a adatbuszba lévő adatok használatával feltöltheti a paramétereket, vagy belefoglalhatja a szkript kódjába. Egy tevékenység elérheti a munkafolyamatban lévő korábbi tevékenységek kimenetét.
 
@@ -232,24 +227,22 @@ Az első mechanizmus egy tevékenység-kimeneti adatforrást használ egy másik
 
 ![tevékenység kimenete](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-A második adatelérési mechanizmus egy művelet kimenetét kérdezi le egy PowerShell-kifejezés adatforrásában vagy egy munkafolyamat-parancsfájl `ActivityOutput` tevékenységben egy változóval, az alább látható szintaxis használatával. Ha a kimenet egy objektum, a runbook egyetlen tulajdonságot is megadhat.
+A második adatelérési mechanizmus egy művelet kimenetét kérdezi le egy PowerShell-kifejezés adatforrásában vagy egy munkafolyamat-parancsfájl tevékenységben egy `ActivityOutput` változóval, az alább látható szintaxis használatával. Ha a kimenet egy objektum, a runbook egyetlen tulajdonságot is megadhat.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
 $ActivityOutput['Activity Label'].PropertyName
 ```
 
-### <a name="checkpoints"></a>Ellenőrzőpontok
+### <a name="use-checkpoints"></a>Ellenőrzőpontok használata
 
-Az [ellenőrzőpontokat](automation-powershell-workflow.md#checkpoints) grafikus PowerShell-munkafolyamatok runbook is beállíthatja, ha az **ellenőrzőpont runbook** lehetőséget választja bármely tevékenységen. Ez azt eredményezi, hogy a tevékenység futtatása után ellenőrzőpontot kell beállítani.
+Az [ellenőrzőpontokat](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) grafikus PowerShell-munkafolyamatok runbook is beállíthatja, ha az **ellenőrzőpont runbook** lehetőséget választja bármely tevékenységen. Ez azt eredményezi, hogy a tevékenység futtatása után ellenőrzőpontot kell beállítani.
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-Az ellenőrzőpontok csak grafikus PowerShell-munkafolyamatok runbookok engedélyezettek, és grafikus runbookok nem érhetők el. Ha a runbook Azure-parancsmagokat használ, akkor a `Connect-AzAccount` tevékenységgel rendelkező minden ellenőrzőponttal ellátott tevékenységet követnie kell. A csatlakozási művelet abban az esetben használatos, ha a runbook fel van függesztve, és egy másik feldolgozón újra kell indítani az ellenőrzőpontból.
+Az ellenőrzőpontok csak grafikus PowerShell-munkafolyamatok runbookok engedélyezettek, és grafikus runbookok nem érhetők el. Ha a runbook Azure-parancsmagokat használ, akkor a tevékenységgel rendelkező minden ellenőrzőponttal ellátott tevékenységet követnie kell `Connect-AzAccount` . A csatlakozási művelet abban az esetben használatos, ha a runbook fel van függesztve, és egy másik feldolgozón újra kell indítani az ellenőrzőpontból.
 
-## <a name="runbook-input-and-output"></a>Runbook-bemenet és-kimenet
-
-### <a name="runbook-input"></a>Runbook bemenete<a name="runbook-input"></a>
+## <a name="handle-runbook-input"></a>Runbook-bemenet kezelése
 
 A runbook a runbook a Azure Portal vagy egy másik runbook keresztül indító felhasználótól kell megadnia, ha az aktuális alkalmazást gyermekként használják. Például egy virtuális gépet létrehozó runbook esetében előfordulhat, hogy a felhasználónak meg kell adnia a virtuális gép nevét, valamint a runbook minden egyes indításakor a többi tulajdonságot.
 
@@ -263,23 +256,23 @@ Az egyes bemeneti paramétereket az alábbi táblázat tulajdonságai határozz�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name (Név) | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
+| Name | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
 | Leírás |Választható. A bemeneti paraméter céljának leírása. |
 | Típus | Választható. A paraméter értékének várt adattípus. A Azure Portal minden paraméter esetében megfelelő vezérlést biztosít az adattípushoz, amikor rákérdez a bemenetre. A támogatott paraméterek a következők: string, Int32, Int64, decimális, Boolean, DateTime és Object. Ha nincs kiválasztva adattípus, a rendszer az alapértelmezett karakterláncot adja meg.|
-| Kötelező | Választható. Ez a beállítás határozza meg, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy dönt `yes`, a runbook indításakor meg kell adni egy értéket. Ha úgy dönt `no`, nincs szükség értékre a runbook indításakor, és az alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
-| Alapértelmezett érték | Választható. Egy paraméterhez használt érték, ha az egyiket nem adja át a rendszer a runbook indításakor. Alapértelmezett érték beállításához válassza a elemet `Custom`. Válassza `None` ki, hogy nem szeretne-e alapértelmezett értéket megadni. |
+| Kötelező | Választható. Ez a beállítás határozza meg, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy dönt `yes` , a runbook indításakor meg kell adni egy értéket. Ha úgy dönt `no` , nincs szükség értékre a runbook indításakor, és az alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
+| Alapértelmezett érték | Választható. Egy paraméterhez használt érték, ha az egyiket nem adja át a rendszer a runbook indításakor. Alapértelmezett érték beállításához válassza a elemet `Custom` . Válassza ki, `None` hogy nem szeretne-e alapértelmezett értéket megadni. |
 
-### <a name="runbook-output"></a>Runbook kimenete
+## <a name="handle-runbook-output"></a>Runbook-kimenet kezelése
 
 A grafikus szerzői műveletek olyan tevékenységek által létrehozott adatokat mentenek, amelyek nem rendelkeznek kimenő hivatkozással a [runbook kimenetéhez](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). A rendszer menti a kimenetet a runbook-feladatokkal, és a szülő runbook számára elérhető, amikor a runbook gyermekként használják.
 
-## <a name="powershell-expressions"></a>PowerShell-kifejezések
+## <a name="work-with-powershell-expressions"></a>PowerShell-kifejezések használata
 
-A grafikus szerzői műveletek egyik előnye, hogy lehetővé teszi, hogy runbook hozzon létre a PowerShell minimális ismeretével. Jelenleg azonban ismernie kell egy kicsit a PowerShellt bizonyos [Paraméterek értékének](#activities) és a [kapcsolati feltételek](#links-and-workflow)beállításának a megadásához. Ez a szakasz a PowerShell-kifejezések gyors bevezetését ismerteti. A PowerShell részletes adatai a [Windows PowerShell-lel való parancsfájlkezelésben](https://technet.microsoft.com/library/bb978526.aspx)érhetők el.
+A grafikus szerzői műveletek egyik előnye, hogy lehetővé teszi, hogy runbook hozzon létre a PowerShell minimális ismeretével. Jelenleg azonban ismernie kell egy kicsit a PowerShellt bizonyos [Paraméterek értékének](#use-activities) és a [kapcsolati feltételek](#use-links-for-workflow)beállításának a megadásához. Ez a szakasz a PowerShell-kifejezések gyors bevezetését ismerteti. A PowerShell részletes adatai a [Windows PowerShell-lel való parancsfájlkezelésben](https://technet.microsoft.com/library/bb978526.aspx)érhetők el.
 
-### <a name="powershell-expression-data-source"></a>PowerShell-kifejezés adatforrása
+### <a name="use-a-powershell-expression-as-a-data-source"></a>PowerShell-kifejezés használata adatforrásként
 
-A PowerShell-kifejezéseket adatforrásként használva feltöltheti egy [tevékenység-paraméter](#activities) értékét a PowerShell-kód eredményeivel. A kifejezés lehet egyetlen sornyi kód, amely egy egyszerű függvényt vagy több olyan sort végez, amely valamilyen összetett logikát hajt végre. Egy olyan parancs kimenete, amely nincs változóhoz rendelve, kimenetet ad a paraméter értékének.
+A PowerShell-kifejezéseket adatforrásként használva feltöltheti egy [tevékenység-paraméter](#use-activities) értékét a PowerShell-kód eredményeivel. A kifejezés lehet egyetlen sornyi kód, amely egy egyszerű függvényt vagy több olyan sort végez, amely valamilyen összetett logikát hajt végre. Egy olyan parancs kimenete, amely nincs változóhoz rendelve, kimenetet ad a paraméter értékének.
 
 A következő parancs például az aktuális dátumot adja eredményül.
 
@@ -302,7 +295,7 @@ if (($date.DayOfWeek = "Saturday") -or ($date.DayOfWeek = "Sunday")) { "Weekend"
 else { "Weekday" }
 ```
 
-### <a name="activity-output"></a>Tevékenység kimenete
+### <a name="use-activity-output"></a>Tevékenység kimenetének használata
 
 Ha a runbook egy korábbi tevékenység kimenetét szeretné használni, használja a `ActivityOutput` változót az alábbi szintaxissal.
 
@@ -328,11 +321,11 @@ A runbook egy tevékenység kimenetét egy összetettebb kifejezésben, példáu
 "The computer name is " + $ActivityOutput['Get-AzureVM'].Name
 ```
 
-### <a name="conditions"></a>Feltételek
+### <a name="compare-values"></a>Értékek összehasonlítása
 
 Az [összehasonlító operátorok](https://technet.microsoft.com/library/hh847759.aspx) segítségével hasonlíthatja össze az értékeket, vagy meghatározhatja, hogy egy érték megfelel-e a megadott mintának. Az összehasonlítás igaz vagy hamis értéket ad vissza.
 
-A következő feltétel például meghatározza, hogy a virtuális gép jelenleg le van-e `Get-AzureVM` állítva egy nevű tevékenységből.
+A következő feltétel például meghatározza, hogy a virtuális gép jelenleg le van-e állítva egy nevű tevékenységből `Get-AzureVM` .
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
@@ -344,13 +337,13 @@ A következő feltétel határozza meg, hogy ugyanaz a virtuális gép a leáll�
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-A runbook több feltételt is csatlakoztathat egy [logikai operátor](https://technet.microsoft.com/library/hh847789.aspx)használatával, például `-and` vagy `-or`. A következő feltétel például ellenőrzi, hogy az előző példában szereplő virtuális gép leállított vagy leállítási állapotban van-e.
+A runbook több feltételt is csatlakoztathat egy [logikai operátor](https://technet.microsoft.com/library/hh847789.aspx)használatával, például `-and` vagy `-or` . A következő feltétel például ellenőrzi, hogy az előző példában szereplő virtuális gép leállított vagy leállítási állapotban van-e.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
 ```
 
-### <a name="hashtables"></a>Szórótáblában
+### <a name="use-hashtables"></a>Szórótáblában használata
 
 A [szórótáblában](https://technet.microsoft.com/library/hh847780.aspx) olyan név-érték párok, amelyek értékek halmazának visszaadására használhatók. Előfordulhat, hogy a szórótábla egy szótár néven is látható. Bizonyos tevékenységek tulajdonságai egy egyszerű érték helyett egy szórótábla várnak.
 
@@ -369,7 +362,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-Az alábbi példa egy nevű `Get Twitter Connection` tevékenység kimenetét használja egy szórótábla feltöltéséhez.
+Az alábbi példa egy nevű tevékenység kimenetét használja `Get Twitter Connection` egy szórótábla feltöltéséhez.
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -378,44 +371,46 @@ Az alábbi példa egy nevű `Get Twitter Connection` tevékenység kimenetét ha
     'AccessTokenSecret'=$ActivityOutput['Get Twitter Connection'].AccessTokenSecret}
 ```
 
-## <a name="authenticating-to-azure-resources"></a>Hitelesítés az Azure-erőforrásokkal
+## <a name="authenticate-to-azure-resources"></a>Hitelesítés az Azure-erőforrásokkal
 
-Az Azure-erőforrásokat kezelő Azure Automation runbookok az Azure-ba történő hitelesítést igénylik. A [futtató fiók](automation-create-runas-account.md)(más néven egyszerű szolgáltatásnév) az az alapértelmezett mechanizmus, amelyet az Automation runbook az előfizetéshez tartozó Azure Resource Manager erőforrások elérésére használ. Ezt a funkciót grafikus runbook is hozzáadhatja úgy, hogy hozzáadja `AzureRunAsConnection` a PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) parancsmagot használó kapcsolódási eszközt a vászonhoz. A [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot is hozzáadhatja. Ezt a forgatókönyvet a következő példa szemlélteti.
+Az Azure-erőforrásokat kezelő Azure Automation runbookok az Azure-ba történő hitelesítést igénylik. A [futtató fiók](automation-create-runas-account.md)(más néven egyszerű szolgáltatásnév) az az alapértelmezett mechanizmus, amelyet az Automation runbook az előfizetéshez tartozó Azure Resource Manager erőforrások elérésére használ. Ezt a funkciót grafikus runbook is hozzáadhatja úgy, hogy hozzáadja a `AzureRunAsConnection` PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) parancsmagot használó kapcsolódási eszközt a vászonhoz. A [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot is hozzáadhatja. Ezt a forgatókönyvet a következő példa szemlélteti.
 
 ![Futtató hitelesítési tevékenységek](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-A `Get Run As Connection` tevékenység (vagy `Get-AutomationConnection` `AzureRunAsConnection`) állandó értékű adatforrással van konfigurálva.
+A `Get Run As Connection` tevékenység (vagy `Get-AutomationConnection` ) állandó értékű adatforrással van konfigurálva `AzureRunAsConnection` .
 
 ![Futtató kapcsolatok konfigurációja](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-A következő tevékenység, `Connect-AzAccount`és hozzáadja a hitelesített futtató fiókot a runbook való használathoz.
+A következő tevékenység, `Connect-AzAccount` és hozzáadja a hitelesített futtató fiókot a runbook való használathoz.
 
 ![A AzAccount paraméter beállítása](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->A PowerShell-runbookok `Add-AzAccount` esetében `Add-AzureRMAccount` a és a álneve `Connect-AzAccount`a következőhöz:. Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbook csak saját maguk `Connect-AzAccount` használhatják.
+>A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbook csak `Connect-AzAccount` saját maguk használhatják.
 
 A **APPLICATIONID**, a **CERTIFICATETHUMBPRINT**és a **TENANTID**paraméternél adja meg a mező elérési útjához tartozó tulajdonság nevét, mivel a tevékenység több tulajdonsággal rendelkező objektumot ad eredményül. Ellenkező esetben a runbook végrehajtása sikertelen lesz a hitelesítés megkísérlése során. Legalább a futtató fiókkal kell hitelesítenie a runbook.
 
 Egyes előfizetők egy [Azure ad-felhasználói fiókkal](automation-create-aduser-account.md) hoznak létre Automation-fiókot az Azure klasszikus üzembe helyezésének vagy Azure Resource Manager erőforrásainak kezeléséhez. Ezen előfizetők visszamenőleges kompatibilitásának fenntartása érdekében a runbook használandó hitelesítési mechanizmus a `Add-AzureAccount` [hitelesítő adatokkal](automation-credentials.md)rendelkező parancsmag. Az eszköz az Azure-fiókhoz hozzáféréssel rendelkező Active Directory felhasználót jelöl.
 
-Ezt a funkciót grafikus runbook is engedélyezheti, ha egy hitelesítőadat-objektumot ad hozzá a vászonhoz, majd `Add-AzureAccount` egy olyan tevékenységet követ, amely a bemeneti adatokhoz a hitelesítő eszközt használja. Tekintse meg a következő példát.
+Ezt a funkciót grafikus runbook is engedélyezheti, ha egy hitelesítőadat-objektumot ad hozzá a vászonhoz, majd egy olyan tevékenységet követ, `Add-AzureAccount` amely a bemeneti adatokhoz a hitelesítő eszközt használja. Tekintse meg a következő példát.
 
 ![Hitelesítési tevékenységek](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-A runbook az egyes ellenőrzőpontok elején és után kell hitelesítenie. Ezért tevékenység után `Add-AzureAccount` `Checkpoint-Workflow` tevékenységet kell használnia. Nem kell további hitelesítő adatokat használnia.
+A runbook az egyes ellenőrzőpontok elején és után kell hitelesítenie. Ezért tevékenység után tevékenységet kell használnia `Add-AzureAccount` `Checkpoint-Workflow` . Nem kell további hitelesítő adatokat használnia.
 
 ![Tevékenység kimenete](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
-## <a name="exporting-and-importing-a-graphical-runbook"></a>Grafikus runbook exportálása és importálása
+## <a name="export-a-graphical-runbook"></a>Grafikus runbook exportálása
 
 Csak grafikus runbook közzétett verzióját exportálhatja. Ha a runbook még nem tették közzé, az **Exportálás** gomb le lesz tiltva. Amikor az **Exportálás** gombra kattint, a runbook letölti a helyi számítógépre. A fájl neve megegyezik a runbook nevével **. graphrunbook** kiterjesztéssel.
+
+## <a name="import-a-graphical-runbook"></a>Grafikus runbook importálása
 
 Egy grafikus vagy grafikus PowerShell munkafolyamat runbook-fájl importálásához válassza az **Importálás** lehetőséget a runbook hozzáadásakor. Ha kijelöli az importálandó fájlt, megtarthatja ugyanazt a nevet, vagy megadhat egy újat. A **Runbook típusa** mező megjeleníti a Runbook típusát, miután kivizsgálta a kijelölt fájlt. Ha olyan eltérő típust próbál kijelölni, amely nem megfelelő, a grafikus szerkesztő egy üzenetet jelez, hogy lehetséges ütközések vannak, és szintaktikai hibák fordultak elő az átalakítás során.
 
 ![Runbook importálása](media/automation-graphical-authoring-intro/runbook-import.png)
 
-## <a name="testing-a-graphical-runbook"></a>Grafikus runbook tesztelése
+## <a name="test-a-graphical-runbook"></a>Grafikus runbook tesztelése
 
 A Azure Automation minden grafikus runbook rendelkezik egy Piszkozat verziószámmal és egy közzétett verzióval. Csak a közzétett verziót futtathatja, miközben csak a Piszkozat verziójának szerkesztését végezheti el. A Közzétett verzióra nincsenek hatással a Piszkozat verzióban végrehajtott módosítások. Ha a Piszkozat verziója készen áll a használatra, a rendszer közzéteszi, amely felülírja a jelenlegi közzétett verziót a Piszkozat verziójával.
 
@@ -423,7 +418,7 @@ A Azure Portal runbook tesztelésével a közzétett verzió változatlanul hagy
 
 Nyissa meg a grafikus runbook tartozó tesztelési vezérlőt úgy, hogy megnyitja a runbook a szerkesztéshez, majd rákattint a **teszt panelre**. A teszt vezérlő kéri a bemeneti paramétereket, és a **Start**gombra kattintva elindíthatja a runbook.
 
-## <a name="publishing-a-graphical-runbook"></a>Grafikus runbook közzététele
+## <a name="publish-a-graphical-runbook"></a>Grafikus runbook közzététele
 
 Tegye közzé a grafikus runbook úgy, hogy megnyitja a runbook a szerkesztéshez, majd a **Közzététel**lehetőségre kattint. A runbook lehetséges állapota a következő:
 

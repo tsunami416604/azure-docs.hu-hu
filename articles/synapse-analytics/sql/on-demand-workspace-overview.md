@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424908"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702058"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
@@ -28,7 +28,7 @@ Az SQL on-demand egy elosztott adatfeldolgozó rendszer, amely nagy mennyiségű
 
 Az SQL on-demand kiszolgáló nélküli, ezért nincs szükség a telepítéshez vagy a fürtök karbantartásához szükséges infrastruktúra kiépítésére. A szolgáltatás alapértelmezett végpontja minden Azure szinapszis-munkaterületen elérhető, így a munkaterület létrehozása után azonnal elindíthatja az adatlekérdezést. A fenntartott erőforrások díjmentesek, ezért csak a futtatott lekérdezések által beolvasott adatmennyiségért kell fizetnie, így ez a modell egy valódi, használaton kívüli modell.  
 
-Ha az adatfolyamatban a Sparkot használja az adatok előkészítéséhez, tisztításához vagy bővítéséhez, akkor a folyamat során létrehozott [összes Spark-táblázatot lekérdezheti](develop-storage-files-spark-tables.md) közvetlenül az SQL igény szerint. Használja a [privát hivatkozást](../security/how-to-connect-to-workspace-with-private-links.md) , hogy az SQL igény szerinti végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md)hozza.  
+Ha az adatfolyamatban az Azure Szinapszishoz Apache Sparkt használ, az adatok előkészítése, tisztítása vagy dúsítása érdekében [lekérdezheti](develop-storage-files-spark-tables.md) a folyamat során létrehozott külső Spark-táblákat közvetlenül az SQL igény szerint. Használja a [privát hivatkozást](../security/how-to-connect-to-workspace-with-private-links.md) , hogy az SQL igény szerinti végpontját a [felügyelt munkaterület VNet](../security/synapse-workspace-managed-vnet.md)hozza.  
 
 ## <a name="who-is-sql-on-demand-for"></a>Igény szerinti SQL-szolgáltatás
 
@@ -42,7 +42,7 @@ A különböző szakmai szerepkörök az SQL igény szerint részesülhetnek:
 
 - Az adatmérnökök megtekinthetik a tavat, átalakítják és előkészíthetik az adatfeldolgozást, és egyszerűbbé teszik az Adatátalakítási folyamatokat. További információért olvassa el ezt az [oktatóanyagot](tutorial-data-analyst.md).
 - Az adatszakértők gyorsan megtudhatják, hogy a tó adatainak tartalma és szerkezete milyen funkciókkal, például a OPENROWSET és az automatikus séma-következtetésekkel kapcsolatos.
-- Az adatelemzők megtekinthetik az adatszakértők vagy adatmérnökök által létrehozott, ismerős T-SQL nyelvvel vagy azok kedvenc eszközeivel létrehozott, az SQL igény szerinti elérésére képes, az adatelemzési [és a Spark-táblákat](develop-storage-files-spark-tables.md) .
+- Az adatelemzők megtekinthetik az adatszakértők vagy adatmérnökök által létrehozott, ismerős T-SQL nyelvet vagy a kedvenc eszközeiket használó, az igénybe vehető SQL-eszközökhöz kapcsolódó [külső táblákat](develop-storage-files-spark-tables.md) .
 - A BI-szakemberek gyorsan [hozhatnak létre Power bi jelentéseket a Lake és a](tutorial-connect-power-bi-desktop.md) Spark tábláiban.
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>Mit kell tennem a használat megkezdéséhez?
@@ -79,7 +79,7 @@ Támogatott T-SQL:
 Az SQL on-demand nem rendelkezik helyi tárterülettel, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
 
 - Táblák
-- Eseményindítók
+- Triggerek
 - Lényeges nézetek
 - A nézetekhez és a biztonsághoz kapcsolódó DDL-utasítások
 - DML-utasítások
@@ -110,7 +110,7 @@ Az SQL on-demand az adataihoz való hozzáférés biztosítására szolgáló me
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
-Az SQL on-demand segítségével központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
+Az SQL on-demand segítségével központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
 
 #### <a name="authentication"></a>Hitelesítés
 
@@ -140,7 +140,7 @@ Az SQL igény szerinti szolgáltatásba bejelentkezett felhasználónak jogosult
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol az SQL-on igénybe vett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus az SQL on-demand szolgáltatásba bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználók típusai nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Gépek Azure Automation állapot-konfiguráció általi felügyeletének engedélyezése
-description: Gépek beállítása a Azure Automation állapot-konfigurációval való felügyelethez
+title: Azure Automation állapot konfigurációjának engedélyezése
+description: Ez a cikk azt ismerteti, hogyan állíthat be gépeket Azure Automation állapot-konfigurációval való felügyelethez.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 52cd72d1144fa2acad993e927d49545d645d596f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993736"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713148"
 ---
-# <a name="enable-machines-for-management-by-azure-automation-state-configuration"></a>Gépek Azure Automation állapot-konfiguráció általi felügyeletének engedélyezése
+# <a name="enable-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának engedélyezése
 
 Ez a témakör azt ismerteti, hogyan állíthatja be a gépeket Azure Automation állapot-konfigurációval való felügyeletre. A szolgáltatás részleteiért lásd: [Azure Automation állapot-konfiguráció áttekintése](automation-dsc-overview.md).
 
@@ -26,7 +26,7 @@ Azure Automation állapot-konfigurációval egyszerűen engedélyezheti az Azure
 
 > [!NOTE]
 >A DSC Linux-csomópontra történő telepítése a **/tmp** mappát használja. Azokat a modulokat, `nxautomation` amelyek a megfelelő helyekre való telepítése előtt ideiglenesen letöltődnek az ellenőrzéshez. A modulok megfelelő telepítésének biztosításához a linuxos Log Analytics-ügynöknek írási/olvasási jogosultságra van szüksége a **/tmp** mappához.<br><br>
->A Linux rendszerhez készült Log Analytics-ügynök `omsagent` felhasználóként fut. Ha >írási engedélyt szeretne adni a `omsagent` felhasználónak, futtassa a parancsot `setfacl -m u:omsagent:rwx /tmp`.
+>A Linux rendszerhez készült Log Analytics-ügynök `omsagent` felhasználóként fut. Ha >írási engedélyt szeretne adni a `omsagent` felhasználónak, futtassa a parancsot `setfacl -m u:omsagent:rwx /tmp` .
 
 ### <a name="enable-a-vm-using-azure-portal"></a>Virtuális gép engedélyezése Azure Portal használatával
 
@@ -83,7 +83,7 @@ Engedélyezheti a helyszíni vagy más felhőalapú környezetekben futó Linux-
 1. Győződjön meg arról, hogy a Linux rendszerhez készült [PowerShell kívánt állapot-konfiguráció](https://github.com/Microsoft/PowerShell-DSC-for-Linux) legújabb verziója telepítve van a gépeken az állapot-konfiguráció engedélyezéséhez.
 2. Ha a [POWERSHELL DSC helyi Configuration Manager alapértelmezett](/powershell/scripting/dsc/managing-nodes/metaConfig4) beállításai megfelelnek a használati esetnek, és engedélyezni szeretné a gépeket, hogy mind lekérik és jelentsenek az állapot-konfigurációra:
 
-   - Az engedélyezéshez `Register.py` minden Linux-gépen engedélyezze a számítógépet a PowerShell DSC helyi Configuration Manager alapértelmezett értékeivel.
+   - Az engedélyezéshez minden Linux-gépen `Register.py` engedélyezze a számítógépet a POWERSHELL DSC helyi Configuration Manager alapértelmezett értékeivel.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -110,7 +110,7 @@ Engedélyezheti a helyszíni vagy más felhőalapú környezetekben futó Linux-
 
 7. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a távoli gépeknek megfelelő metaconfigurations a 4. lépés a Linux rendszerű gépekhez című témakörben leírt mappából.
 
-8. Adja hozzá a kódot `Set-DscLocalConfigurationManager.py` a helyi híváshoz az egyes Linux-gépeken az állapot-konfiguráció engedélyezéséhez.
+8. Adja hozzá a kódot a helyi híváshoz az `Set-DscLocalConfigurationManager.py` egyes Linux-gépeken az állapot-konfiguráció engedélyezéséhez.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
@@ -123,7 +123,7 @@ A gépek állapot-konfigurálásának engedélyezéséhez létrehozhat egy DSC- 
 > [!NOTE]
 > A DSC-metaconfigurations azokat a titkokat tartalmazzák, amelyek szükségesek a gép automatizálási fiókban való engedélyezéséhez a felügyelethez. Ügyeljen arra, hogy megfelelően megvédje a létrehozott DSC-metaconfigurations, vagy törölje azokat a használat után.
 
-A metaconfigurations proxy-támogatását az LCD ChipOnGlas vezérli, amely a Windows PowerShell DSC motor. Az LCD ChipOnGlas az összes cél csomóponton fut, és felelős a DSC metaconfiguration-szkriptben található konfigurációs erőforrások meghívásához. A proxy támogatását a metaconfiguration is elvégezheti, ha a proxy URL-címét és a proxy hitelesítő adatait `ConfigurationRepositoryWeb`a `ResourceRepositoryWeb`, a `ReportServerWeb` , és a blokkokban szükség szerint tartalmazza. Lásd: [a helyi Configuration Manager konfigurálása](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+A metaconfigurations proxy-támogatását a [helyi Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)vezérli, amely a Windows PowerShell DSC-motor. Az LCD ChipOnGlas az összes cél csomóponton fut, és felelős a DSC metaconfiguration-szkriptben található konfigurációs erőforrások meghívásához. A metaconfiguration a-ben, a-ben, a- `ProxyURL` `ProxyCredential` ben `ConfigurationRepositoryWeb` és a `ResourceRepositoryWeb` blokkokban igény szerint, a és a tulajdonságokat is beleértve `ReportServerWeb` . Példa az URL-beállításra `ProxyURL = "http://172.16.3.6:3128";` . A `ProxyCredential` tulajdonság egy `PSCredential` objektumra van beállítva, a [hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)című témakörben leírtak szerint. 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-metaconfigurations létrehozása DSC-konfiguráció használatával
 
@@ -247,7 +247,7 @@ A metaconfigurations proxy-támogatását az LCD ChipOnGlas vezérli, amely a Wi
 
 1. Ha azt szeretné, hogy a gépek jelentést készítsenek a DSC-állapotadatok Azure Automation állapot konfigurációjában, de ne legyenek lekéréses konfiguráció vagy PowerShell-modulok, állítsa igaz értékre a `ReportOnly` paramétert.
 
-1. Ha `ReportOnly` nincs beállítva, a gépek a DSC-állapotinformációkat Azure Automation állapot-konfigurációra és lekéréses konfigurációra vagy PowerShell-modulokra jelentik. Adja meg a paramétereket ennek `ConfigurationRepositoryWeb`megfelelően `ResourceRepositoryWeb`a, `ReportServerWeb` és blokkokban.
+1. Ha `ReportOnly` nincs beállítva, a gépek a DSC-állapotinformációkat Azure Automation állapot-konfigurációra és lekéréses konfigurációra vagy PowerShell-modulokra jelentik. Adja meg a paramétereket ennek megfelelően a `ConfigurationRepositoryWeb` , `ResourceRepositoryWeb` és `ReportServerWeb` blokkokban.
 
 1. Futtassa a szkriptet. Most már rendelkeznie kell egy **DscMetaConfigs**nevű munkakönyvtár-mappával, amely tartalmazza a PowerShell DSC-metaconfigurations, amely lehetővé teszi a gépek engedélyezését (rendszergazdaként).
 
@@ -299,11 +299,11 @@ A nagyobb biztonság érdekében a kulcsok oldalon bármikor újragenerálhatja 
 
 Miután Azure Automation állapot konfigurációjában egy gépet DSC-csomópontként regisztrált, több oka lehet annak, hogy a későbbiekben újra regisztrálnia kell a csomópontot.
 
-- **Tanúsítvány megújítása.** A Windows Server 2019 előtti verziói esetében minden egyes csomópont automatikusan egyeztet egy egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Ha egy tanúsítvány megújítása nélkül lejár, a csomópont nem tud kommunikálni Azure Automation és meg van `Unresponsive`jelölve. Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor közelednek a lejárathoz, és egy év múlva újra regisztrálnia kell a csomópontokat. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton WMF 5 RTM fut. 
+- **Tanúsítvány megújítása.** A Windows Server 2019 előtti verziói esetében minden egyes csomópont automatikusan egyeztet egy egyedi tanúsítványt a hitelesítéshez, amely egy év után lejár. Ha egy tanúsítvány megújítása nélkül lejár, a csomópont nem tud kommunikálni Azure Automation és meg van jelölve `Unresponsive` . Jelenleg a PowerShell DSC regisztrációs protokoll nem tudja automatikusan megújítani a tanúsítványokat, amikor közelednek a lejárathoz, és egy év múlva újra regisztrálnia kell a csomópontokat. Az újbóli regisztrálás előtt győződjön meg arról, hogy minden csomóponton WMF 5 RTM fut. 
 
     Az újbóli regisztráció a tanúsítvány lejárati idejének 90 vagy kevesebb nap múlva, vagy a tanúsítvány lejárati idejének lejárta után bármikor új tanúsítványt hoz létre és használ. A probléma megoldása a Windows Server 2019-es és újabb verzióiban is megtalálható.
 
-- **A DSC LCD-értékek változásai.** Előfordulhat, hogy módosítania kell a [POWERSHELL DSC LCD-értékeket](/powershell/scripting/dsc/managing-nodes/metaConfig4) a csomópont kezdeti regisztrálása során, például `ConfigurationMode`:. Jelenleg csak a DSC-ügynök értékeit módosíthatja újbóli regisztráció útján. Az egyetlen kivétel a csomóponthoz rendelt csomópont-konfigurációs érték. Ezt közvetlenül Azure Automation DSC-ben is megváltoztathatja.
+- **A DSC LCD-értékek változásai.** Előfordulhat, hogy módosítania kell a [POWERSHELL DSC LCD-értékeket](/powershell/scripting/dsc/managing-nodes/metaConfig4) a csomópont kezdeti regisztrálása során, például: `ConfigurationMode` . Jelenleg csak a DSC-ügynök értékeit módosíthatja újbóli regisztráció útján. Az egyetlen kivétel a csomóponthoz rendelt csomópont-konfigurációs érték. Ezt közvetlenül Azure Automation DSC-ben is megváltoztathatja.
 
 A csomópontot úgy is újra regisztrálhatja, ahogy először regisztrálta a csomópontot, a jelen dokumentumban ismertetett módszerek bármelyikének használatával. Az újbóli regisztrálás előtt nem kell megszüntetnie a csomópont regisztrációját Azure Automation állapot-konfigurációból.
 
@@ -323,7 +323,7 @@ Az Azure-beli virtuális gép kívánt állapotához tartozó konfiguráció-bő
 
 A hibaelhárítással kapcsolatos további információkért lásd: [Azure Automation állapot konfigurációjának hibaelhárítása](./troubleshoot/desired-state-configuration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.

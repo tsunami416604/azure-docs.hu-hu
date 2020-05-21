@@ -2,13 +2,13 @@
 title: Alkalmazás tesztelése a LUIS Portalon
 description: A Language Understanding (LUIS) használatával folyamatosan dolgozhat az alkalmazáson, és javíthatja annak nyelvi megismerését.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653873"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714404"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 
@@ -42,7 +42,8 @@ A teszt kimondása nem egyezhet meg pontosan az alkalmazás egyik hosszúságú 
 
 1. A Kimondás, a felső szándék és a pontszám a szövegmezőben a hosszúságú kimondott szöveg listájára kerül.
 
-    ![Az interaktív tesztelés a helytelen szándékot azonosítja](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Az interaktív tesztelés a helytelen szándékot azonosítja](./media/luis-how-to-interactive-test/test-weather-1.png)
 
 ## <a name="inspect-the-prediction"></a>Az előrejelzés vizsgálata
 
@@ -50,9 +51,13 @@ A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg.
 
 1. Nyissa meg a test slide (tesztelés) **Inspect** panelt, és válassza a **vizsgálat** lehetőséget az összehasonlítani kívánt kifejezés kiválasztásához.
 
-    ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
 
 1. Megjelenik a **vizsgálat** panel. A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés előrejelzését jeleníti meg.
+
+    > [!div class="mx-imgBorder"]
+    > ![A tesztelési vizsgálat panel részleges képernyőképe](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="add-to-example-utterances"></a>Hozzáadás példa hosszúságú kimondott szöveg
 
@@ -76,12 +81,14 @@ Ha [mintázatokat](luis-concept-patterns.md) használ, és a kihagyás egy mint�
 
 Tesztelheti az alkalmazás aktív verzióját a közzétett [végpont](luis-glossary.md#endpoint) verziószámával. Az **ellenőrzés** panelen válassza a **összehasonlítás a közzétetttel**lehetőséget. A közzétett modellel kapcsolatos bármilyen vizsgálatot levonják az Azure-előfizetési kvóta egyenlegéről.
 
-![Összehasonlítás közzétételsel](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![Összehasonlítás közzétételsel](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>Végpont JSON megtekintése a teszt panelen
 Az összehasonlításhoz a **JSON-nézet megjelenítése**lehetőség kiválasztásával megtekintheti a végpont által VISSZAadott JSON-t.
 
-![Közzétett JSON-válasz](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![Közzétett JSON-válasz](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>További beállítások a teszt panelen
 
@@ -96,7 +103,7 @@ Ha több LUIS-végponttal rendelkezik, a teszt közzétett paneljén a **Tovább
 ## <a name="batch-testing"></a>Kötegelt tesztelés
 Tekintse meg a Batch-tesztelési [fogalmakat](luis-concept-batch-test.md) , és Ismerje meg, [Hogyan](luis-how-to-batch-test.md) tesztelheti a Batch of hosszúságú kimondott szöveg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás pontosságát.
 

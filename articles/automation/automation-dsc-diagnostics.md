@@ -1,6 +1,6 @@
 ---
-title: Azure Automation állapot-konfiguráció jelentési adatAzure Monitor naplókba való továbbítása
-description: Ez a cikk bemutatja, hogyan küldheti el a kívánt állapot-konfiguráció (DSC) jelentéskészítési adatait Azure Automation állapot-konfigurációból Azure Monitor naplókba, hogy további betekintést és felügyeletet nyújtson.
+title: Integrálás Azure Monitor naplókkal
+description: Ez a cikk azt ismerteti, hogyan kell elküldeni a kívánt állapot-konfiguráció jelentési adatait Azure Automation állapotból a naplók Azure Monitor.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cc68b53137175042f586ee83bc045f0fbbca38f7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996052"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713284"
 ---
-# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Állapotkonfiguráció jelentési adatainak továbbítása az Azure Monitor-naplói felé
+# <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
 Azure Automation állapot-konfiguráció 30 napig őrzi meg a csomópontok állapotát. Ha inkább hosszabb ideig szeretné megőrizni ezeket az adatait, elküldheti a csomóponti állapot adatait a Log Analytics munkaterületre. A megfelelőségi állapot látható a Azure Portal vagy a PowerShell-lel, a csomópontok és a csomópont-konfigurációk egyes DSC-erőforrásai esetében. 
 
@@ -29,7 +29,6 @@ Azure Monitor naplók nagyobb működési láthatóságot biztosítanak az Autom
 - Egyéni nézeteket és keresési lekérdezéseket használhat a runbook eredményeinek, a runbook-feladatok állapotának, valamint az egyéb kapcsolódó kulcsfontosságú mutatók vagy mérőszámok megjelenítéséhez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +59,7 @@ Az adatok Azure Automation állapotból Azure Monitor naplókba való importál�
    Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
-1. Futtassa a következő PowerShell-parancsmagot `<AutomationResourceId>` , `<WorkspaceResourceId>` és cserélje `ResourceId` le az egyes előző lépések értékeit.
+1. Futtassa a következő PowerShell-parancsmagot, `<AutomationResourceId>` és cserélje `<WorkspaceResourceId>` le az `ResourceId` egyes előző lépések értékeit.
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
@@ -89,8 +88,8 @@ Megnyílik a napló keresése ablaktábla az Automation-fiók erőforrására vo
 Szűrés részletei:
 
 * Szűréssel `DscNodeStatusData` adja vissza az egyes állapot-konfigurációs csomópontok visszatérési műveleteit.
-* `DscResourceStatusData` Az adott erőforrásra alkalmazott csomópont-konfigurációban meghívott összes DSC-erőforrás visszaküldési műveleteinek szűréséhez. 
-* A szűrő `DscResourceStatusData` bekapcsolásával visszatérhet a hibás DSC-erőforrásokra vonatkozó információk.
+* `DscResourceStatusData`Az adott erőforrásra alkalmazott csomópont-konfigurációban meghívott összes DSC-erőforrás visszaküldési műveleteinek szűréséhez. 
+* A szűrő bekapcsolásával `DscResourceStatusData` visszatérhet a hibás DSC-erőforrásokra vonatkozó információk.
 
 Ha többet szeretne megtudni a naplófájlok adatainak megkereséséről, tekintse meg a [Azure monitorban található naplók áttekintését](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
@@ -103,7 +102,7 @@ Riasztási szabály létrehozásához először létre kell hoznia egy naplót a
 1. A Log Analytics munkaterület áttekintés lapján kattintson a **naplók**elemre.
 1. Hozzon létre egy naplóbeli keresési lekérdezést a riasztáshoz úgy, hogy beírja a következő keresést a lekérdezés mezőbe:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Ha több Automation-fiókból vagy-előfizetésből állított be naplókat a munkaterületre, a riasztásokat az előfizetés és az Automation-fiók alapján csoportosíthatja. Származtatja az Automation-fiók nevét `Resource` a `DscNodeStatusData` rekordok keresés mezőjéből.
+   Ha több Automation-fiókból vagy-előfizetésből állított be naplókat a munkaterületre, a riasztásokat az előfizetés és az Automation-fiók alapján csoportosíthatja. Származtatja az Automation-fiók nevét a `Resource` rekordok keresés mezőjéből `DscNodeStatusData` .
 1. A **szabály létrehozása** képernyő megnyitásához kattintson az oldal tetején található **új riasztási szabály** elemre. 
 
 A riasztás konfigurálásának lehetőségeiről további információt a [riasztási szabály létrehozása](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)című témakörben talál.
@@ -127,8 +126,8 @@ A lekérdezés megjeleníti a csomópont állapotának diagramját az idő múl�
 
 Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor naplókban:
 
-* Node status-adat`DscNodeStatusData`()
-* Erőforrás-állapotadatok (`DscResourceStatusData`)
+* Node status-adat ( `DscNodeStatusData` )
+* Erőforrás-állapotadatok ( `DscResourceStatusData` )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -152,7 +151,7 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 | ReportStartTime_t | A jelentés elindításának dátuma és időpontja. |
 | ReportEndTime_t | A jelentés befejezésének dátuma és időpontja. |
 | NumberOfResources_d | A csomópontra alkalmazott konfigurációban meghívott DSC-erőforrások száma. |
-| SourceSystem | A forrásrendszer azonosítja, hogy Azure Monitor naplók hogyan gyűjtötték össze az adatokat. Mindig `Azure` az Azure Diagnostics szolgáltatáshoz. |
+| SourceSystem | A forrásrendszer azonosítja, hogy Azure Monitor naplók hogyan gyűjtötték össze az adatokat. Mindig `Azure` Az Azure Diagnostics szolgáltatáshoz. |
 | ResourceId |A Azure Automation fiók erőforrás-azonosítója. |
 | ResultDescription | A művelethez tartozó erőforrás leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
@@ -183,7 +182,7 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 | ErrorCode_s | A hibakód, ha az erőforrás sikertelen volt. |
 | ErrorMessage_s |A hibaüzenet, ha az erőforrás sikertelen volt. |
 | DscResourceDuration_d |Az az idő (másodpercben), ameddig a DSC-erőforrás futott. |
-| SourceSystem | Hogyan gyűjtöttük össze az adatokat Azure Monitor naplókat. Mindig `Azure` az Azure Diagnostics szolgáltatáshoz. |
+| SourceSystem | Hogyan gyűjtöttük össze az adatokat Azure Monitor naplókat. Mindig `Azure` Az Azure Diagnostics szolgáltatáshoz. |
 | ResourceId |A Azure Automation fiók azonosítója. |
 | ResultDescription | A művelet leírása. |
 | SubscriptionId | Az Automation-fiókhoz tartozó Azure-előfizetés azonosítója (GUID). |
@@ -193,7 +192,7 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 | CorrelationId |A megfelelőségi jelentés korrelációs AZONOSÍTÓjának GUID azonosítója. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Azure Automation állapot konfigurálása](automation-dsc-overview.md).
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.

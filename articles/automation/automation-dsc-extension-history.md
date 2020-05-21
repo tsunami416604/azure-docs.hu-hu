@@ -1,22 +1,22 @@
 ---
-description: Ismerje meg az Azure-beli kívánt State Configuration (DSC) bővítmény korábbi verzióit.
+title: Az Azure desired State Configuration bővítmény korábbi verzióinak használata
+description: Ez a cikk azt ismerteti, hogyan használható az Azure-ban a kívánt State Configuration (DSC) bővítmény korábbi verziói.
 ms.date: 06/21/2018
 keywords: DSC, PowerShell, Azure, bővítmény
-title: Az Azure DSC-bővítmény verzióelőzményei
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120703"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713199"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Az Azure desired State Configuration bővítmény korábbi verziói
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Az Azure desired State Configuration bővítmény korábbi verzióinak használata
 
 Az Azure desired State Configuration (DSC) virtuálisgép-bővítmény az Azure, a Windows Server, valamint a Windows PowerShellt tartalmazó Windows Management Framework (WMF) által nyújtott fejlesztések és új képességek támogatásához szükséges.
 
@@ -27,7 +27,7 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
 ### <a name="version-276"></a>2,76-es verzió
 
 - **Kiadás dátuma:**
-  - Május 9., 2018 (Azure) | Június 21., 2018 (Azure China, Azure Government)
+  - Május 9., 2018 (Azure) | Június 21., 2018 (Azure China Vianet 21, Azure Government)
 - **Operációs rendszer támogatása:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -42,7 +42,7 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
   - WMF 4.0
 - **Környezet**
   - Azure
-  - Azure China
+  - Azure China Vianet 21
   - Azure Government
 - **Megjegyzések:** Ez a verzió a DSC-t használja a Windows Server 2016; más Windows operációs rendszer esetén telepíti a [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) -es verzióját (a WMF telepítése újraindítást igényel). A nano Server esetében a DSC-szerepkör telepítve van a virtuális gépen.
 - **Új funkciók:**
@@ -89,7 +89,7 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
     }
     ```
 
-  - Az új bővítmény verziójában a TLS 1,2 már érvényben van. Ha a bővítmény üzembe helyezése során már megtörtént a AutoUpgradeMinorVersion = True érték a Resource Manager-sablonban, akkor a bővítmény 2,75-ra automatikusan frissül. Manuális frissítésekhez adja meg `TypeHandlerVersion = 2.75` a Resource Manager-sablonját.
+  - Az új bővítmény verziójában a TLS 1,2 már érvényben van. Ha a bővítmény üzembe helyezése során már megtörtént a AutoUpgradeMinorVersion = True érték a Resource Manager-sablonban, akkor a bővítmény 2,75-ra automatikusan frissül. Manuális frissítésekhez adja meg a `TypeHandlerVersion = 2.75` Resource Manager-sablonját.
 
 ### <a name="version-270---272"></a>Verzió: 2,70 – 2,72
 
@@ -181,10 +181,10 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
 - **Kiadás dátuma:** 2016. június 3.
 - **Operációs rendszer támogatása:** Windows Server 2016 Technical Preview, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 - **WMF-támogatás:** WMF 5,0 RTM, WMF 4,0 frissítés, WMF 4,0
-- **Környezet:** Azure, Azure China, Azure Government
+- **Környezet:** Azure, Azure China Vianet 21, Azure Government
 - **Megjegyzések:** Ez a verzió a DSC-t használja a Windows Server 2016 Technical Preview részeként; más Windows operációs rendszer esetén a [Windows Management Framework 5,0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) telepítését telepíti (a WMF telepítése újraindítást igényel).
 - **Új funkciók:**
-  - A DSC-bővítmény már be van építve az Azure China-ba. Ez a verzió elsősorban a bővítmény Azure China-on való futtatásához szükséges javításokat tartalmazza.
+  - A DSC-bővítmény most már az Azure China Vianet 21 előtagja. Ez a verzió elsősorban a bővítmény Azure China Vianet 21 rendszeren való futtatásához szükséges javításokat tartalmazza.
 
 ### <a name="version-218"></a>2,18-es verzió
 
@@ -247,9 +247,9 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
   - Egy Resource Manager-sablonban frissített beállítási formátumot biztosít a bővítményhez. További információkért tekintse meg [a blogot](https://devblogs.microsoft.com/powershell/arm-dsc-extension-settings/).
   - Hibajavítások és egyéb fejlesztések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A PowerShell DSC-vel kapcsolatos további információkért nyissa meg a [PowerShell Dokumentációs központját](/powershell/scripting/dsc/overview/overview).
+- A PowerShell DSC-vel kapcsolatos további információkért lásd: [PowerShell dokumentációs központ](/powershell/scripting/dsc/overview/overview).
 - Vizsgálja [meg a DSC-bővítmény Resource Manager-sablonját](/azure/virtual-machines/extensions/dsc-template).
 - Ha további funkciókat szeretne kezelni a PowerShell DSC használatával, és további DSC-erőforrásokhoz, keresse fel a [PowerShell-galériát](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - A bizalmas paraméterek konfigurációkba való átadásával kapcsolatos részletekért lásd: [a hitelesítő adatok biztonságos kezelése a DSC-bővítmény kezelőjével](/azure/virtual-machines/extensions/dsc-credentials).

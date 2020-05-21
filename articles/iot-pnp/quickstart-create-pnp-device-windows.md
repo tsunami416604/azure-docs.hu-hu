@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75867493"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700879"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play előnézeti eszköz (Windows) létrehozásához
 
@@ -85,18 +85,18 @@ Ebben a rövid útmutatóban a [Vcpkg](https://github.com/microsoft/vcpkg) Libra
 
 Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és társított csatolókat használ.
 
-1. Hozzon `pnp_app` létre egy mappát a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
+1. Hozzon létre egy `pnp_app` mappát a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
-1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és a [felületét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a `pnp_app` mappába.
+1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json) és a [felületét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a `pnp_app` mappába.
 
     > [!TIP]
     > Egy fájl GitHubról való letöltéséhez navigáljon a fájlhoz, kattintson a jobb gombbal a **RAW**elemre, majd válassza a **hivatkozás mentése másként**lehetőséget.
 
-1. Mappa `pnp_app` megnyitása a vs Code-ban. A fájlokat az IntelliSense használatával tekintheti meg:
+1. `pnp_app`Mappa megnyitása a vs Code-ban. A fájlokat az IntelliSense használatával tekintheti meg:
 
     ![Eszköz képességeinek modellje](media/quickstart-create-pnp-device/dcm.png)
 
-1. A letöltött fájlokban cserélje le `<YOUR_COMPANY_NAME_HERE>` a `@id` és `schema` a mezőket egy egyedi értékre. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja. További információ: [digitális kettős azonosító formátuma](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. A letöltött fájlokban cserélje le a `<YOUR_COMPANY_NAME_HERE>` és a `@id` `schema` mezőket egy egyedi értékre. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja. További információ: [digitális kettős azonosító formátuma](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>A C kód kiváltása
 
@@ -126,7 +126,7 @@ Most, hogy már rendelkezik DCM-rel és a hozzá tartozó csatolókkal, létreho
 
 A létrehozott Vcpkg-csomag használatával létrehozza a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
-1. Hozzon `cmake` létre egy alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
+1. Hozzon létre egy `cmake` alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
 
     ```cmd
     mkdir cmake
@@ -171,7 +171,7 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 1. Ha a `pnp_app` mappa meg van nyitva a vs Code-ban, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a parancsot, majd válassza a **IoT plug & Play: fájlok elküldése a modell adattárba**lehetőséget
 
-1. Válassza `SampleDevice.capabilitymodel.json` ki `EnvironmentalSensor.interface.json` a és a fájlokat.
+1. Válassza ki `SampleDevice.capabilitymodel.json` a és a `EnvironmentalSensor.interface.json` fájlokat.
 
 1. Adja meg a vállalati modell adattárához tartozó kapcsolatok sztringjét.
 
@@ -197,7 +197,7 @@ Az eszköz kódjának az **Azure IoT Explorerrel**való ellenőrzéséhez közz�
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre IoT Plug and Play-eszközt DCM használatával.
 
