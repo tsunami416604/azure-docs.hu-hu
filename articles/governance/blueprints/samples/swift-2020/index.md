@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020-tervminta – Áttekintés
 description: A SWIFT CSP-CSCF v2020-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik a SWIFT CSP-CSCF adott vezérlőit.
-ms.date: 09/24/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: ee8670522bc4549dbb687a9ebe35bb20d53b0f17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 04afbe2b0ef3b632d81b832e6a94bce2618fc851
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74546458"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657042"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020-tervminta áttekintése
 
@@ -18,7 +18,7 @@ A SWIFT CSP-CSCF v2020-tervminta az [Azure Policy](../../../policy/overview.md) 
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a legújabb SWIFT CSP-CSCF vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Áttekintette a SWIFT CSP-CSCF v2020-tervmintát. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

@@ -81,6 +81,11 @@
       href: tutorial-firmware-update.md
     - name: Eszközkapcsolatok tesztelése
       href: tutorial-connectivity.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: TLS-támogatás

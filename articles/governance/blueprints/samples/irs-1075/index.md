@@ -1,14 +1,14 @@
 ---
 title: IRS 1075-ös tervminta – Áttekintés
 description: Az IRS 1075-ös tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az IRS 1075 adott vezérlőit.
-ms.date: 11/19/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1edd4b843c6cc8c486961cd2337f7b44e3b190e7
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 877621f4164b64c31d553d007da31a62892c3e3e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74546790"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655029"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075-ös tervminta áttekintése
 
@@ -18,7 +18,7 @@ Az IRS 1075 tervminta az [Azure Policy](../../../policy/overview.md) használat�
 
 A vezérlőelem-leképezésről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik az IRS 1075 különböző vezérlőit. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte az IRS 1075-ös tervminta áttekintését. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 
