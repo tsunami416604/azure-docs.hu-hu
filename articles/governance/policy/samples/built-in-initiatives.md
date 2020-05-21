@@ -1,21 +1,21 @@
 ---
 title: Beépített házirend-kezdeményezések listája
 description: A Azure Policy beépített házirend-kezdeményezéseit sorolja fel. A kategóriák közé tartoznak a jogszabályi megfelelőség, a vendég konfigurációja és még sok más.
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 29301e958d0354fb86cce2156f9050420eebc6da
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 969b1849628616bf42951e1ff7fdf2f507cf0abe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837734"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639374"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 
 Ez az oldal Azure Policy beépített kezdeményezési definíciók indexe.
 
-Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárház kezdeményezési definíciós forrására mutat. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd>-<kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+Az egyes beépített hivatkozások neve a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárház kezdeményezési definíciós forrására mutat. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
 
 ## <a name="guest-configuration"></a>Vendégkonfiguráció
 

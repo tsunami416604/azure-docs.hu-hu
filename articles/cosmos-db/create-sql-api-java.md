@@ -1,20 +1,20 @@
 ---
 title: Gyors útmutató – dokumentum-adatbázis létrehozása Azure Cosmos DB használatával a Java használatával
 description: Ez a rövid útmutató bemutatja a Azure Cosmos DB SQL API-hoz való kapcsolódáshoz és a lekérdezéshez használható Java-mintakód
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858140"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647708"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
 
@@ -22,19 +22,23 @@ ms.locfileid: "82858140"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és felügyel a Azure Portalból, és a GitHubról klónozott Java-alkalmazás használatával. Először hozzon létre egy Azure Cosmos DB SQL API-fiókot a Azure Portal használatával, majd hozzon létre egy Java-alkalmazást az SQL Java SDK használatával, majd adja hozzá az erőforrásokat a Cosmos DB-fiókhoz a Java-alkalmazás használatával. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
 
+> [!IMPORTANT]  
+> Ez a rövid útmutató csak Azure Cosmos DB Java SDK v4 esetében érhető el. További információkért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), az Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos TIPPEKET](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatóját](troubleshoot-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
+>
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`URI-ja használatával.
-- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson `JAVA_HOME` a környezeti változóra arra a mappára, ahol a JDK telepítve van.
-- A [Maven bináris archívuma](https://maven.apache.org/download.cgi). Ubuntu rendszeren futtassa a `apt-get install maven` következő parancsot a Maven telepítéséhez:.
-- [Git](https://www.git-scm.com/downloads). Ubuntu rendszeren futtassa a `sudo apt-get install git` parancsot a git telepítéséhez.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a `https://localhost:8081` és a kulcs URI-ja használatával `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
+- [Java fejlesztői készlet (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Mutasson a `JAVA_HOME` környezeti változóra arra a mappára, ahol a JDK telepítve van.
+- A [Maven bináris archívuma](https://maven.apache.org/download.cgi). Ubuntu rendszeren futtassa a következő parancsot a `apt-get install maven` Maven telepítéséhez:.
+- [Git](https://www.git-scm.com/downloads). Ubuntu rendszeren futtassa a parancsot a `sudo apt-get install git` git telepítéséhez.
 
 ## <a name="introductory-notes"></a>Bevezető megjegyzések
 
@@ -102,11 +106,11 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* A pontok olvasása metódus `readItem` használatával történik.
+* A pontok olvasása metódus használatával történik `readItem` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-* A JSON-alapú SQL-lekérdezések végrehajtása `queryItems` a metódus használatával történik.
+* A JSON-alapú SQL-lekérdezések végrehajtása a metódus használatával történik `queryItems` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
@@ -128,15 +132,15 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* A szinkronizálási API-hoz hasonlóan az elem létrehozása a `createItem` metódus használatával történik. Ez a példa azt mutatja be, hogyan lehet `createItem` hatékonyan kiadni számos aszinkron kérelmet egy olyan reaktív adatfolyamra való feliratkozással, amely a kérelmeket és a kinyomtatási értesítéseket adja ki Mivel ez az egyszerű példa a befejezésre és a befejezésre fut, a példányok használatával biztosítható, `CountDownLatch` hogy a program nem záruljon le az elemek létrehozásakor. **A megfelelő aszinkron programozási gyakorlat nem blokkolja az aszinkron hívásokat – a reális használati esetekben a fő () ciklusból származó kérelmeket, amelyek határozatlan ideig hajtják végre a zárolást, így nincs szükség az aszinkron hívásokra.**
+* A szinkronizálási API-hoz hasonlóan az elem létrehozása a metódus használatával történik `createItem` . Ez a példa azt mutatja be, hogyan lehet hatékonyan kiadni számos aszinkron `createItem` kérelmet egy olyan reaktív adatfolyamra való feliratkozással, amely a kérelmeket és a kinyomtatási értesítéseket adja ki Mivel ez az egyszerű példa a befejezésre és a befejezésre fut, a `CountDownLatch` példányok használatával biztosítható, hogy a program nem záruljon le az elemek létrehozásakor. **A megfelelő aszinkron programozási gyakorlat nem blokkolja az aszinkron hívásokat – a reális használati esetekben a fő () ciklusból származó kérelmeket, amelyek határozatlan ideig hajtják végre a zárolást, így nincs szükség az aszinkron hívásokra.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* A szinkronizálási API-hoz hasonlóan a pont olvasása `readItem` a metódus használatával történik.
+* A szinkronizálási API-hoz hasonlóan a pont olvasása a metódus használatával történik `readItem` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
-* A szinkronizálási API-hoz hasonlóan a JSON-alapú SQL-lekérdezések `queryItems` is a metódus használatával lesznek elvégezve.
+* A szinkronizálási API-hoz hasonlóan a JSON-alapú SQL-lekérdezések is a metódus használatával lesznek elvégezve `queryItems` .
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
@@ -178,11 +182,11 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB SQL API-fiókot, hogyan hozhat létre egy dokumentum-adatbázist és-tárolót a Adatkezelő használatával, és hogyan futtathat egy Java-alkalmazást a programozott módon történő futtatásához. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

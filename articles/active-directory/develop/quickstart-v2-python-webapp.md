@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 549df101e2bab81766b7b40e659b31457c9994d3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b137f47ac2cfb8074320677419a6a34b7d8bba84
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592791"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680341"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -29,7 +29,7 @@ Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-
 A minta futtatásához a következőkre lesz szüksége:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) vagy [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Lombik](http://flask.pocoo.org/), [lombik-munkamenet](https://pythonhosted.org/Flask-Session/), [kérelmek](https://requests.kennethreitz.org/en/master/)
+- [Lombik](http://flask.pocoo.org/), [lombik-munkamenet](https://pypi.org/project/Flask-Session/), [kérelmek](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
@@ -82,7 +82,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
 >
-> 1. Adja meg a válasz URL `http://localhost:5000/getAToken`-címét.
+> 1. Adja meg a válasz URL-címét `http://localhost:5000/getAToken` .
 > 1. Hozzon létre egy ügyfél titkot.
 > 1. Adja hozzá Microsoft Graph API user. ReadBasic. All delegált engedélyét.
 >
@@ -162,7 +162,7 @@ A MSAL Pythonra mutató hivatkozást úgy adhatja hozzá, hogy hozzáadja a köv
 import msal
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a felhasználókat bejelentkező webalkalmazásokról, majd a webes API-k meghívásáról:
 

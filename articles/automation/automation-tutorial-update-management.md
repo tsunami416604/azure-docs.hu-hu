@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604679"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683827"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -19,7 +19,7 @@ A virtuális gépek frissítéseit és javításait az Update Management megold�
 
 A díjszabással kapcsolatos információkért lásd: [Update Management automatizálási díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Frissítésfelmérés megtekintése
@@ -67,7 +67,7 @@ Kattintson a **feltétel hozzáadása** elemre a frissítés telepítéséhez me
 |`Total Update Deployment Runs`|-Központi telepítési név frissítése<br>– Állapot|Ez a riasztás a frissítés központi telepítésének általános állapotára mutat.|
 |`Total Update Deployment Machine Runs`|-Központi telepítési név frissítése</br>– Állapot</br>– Célszámítógép</br>-A központi telepítés futtatási AZONOSÍTÓjának frissítése|Ez a riasztás egy adott gépekre irányuló frissítés központi telepítésének állapotát jelzi.|
 
-Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, kattintson a dimenzió **\+** melletti jelre, és írja be az egyéni nevet. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \* ** gombra. Ha nem választja ki egy dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
+Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, kattintson a **\+** dimenzió melletti jelre, és írja be az egyéni nevet. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \* ** gombra. Ha nem választja ki egy dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
 
 ![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -123,10 +123,10 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
    A besorolási típusok leírását lásd: [frissítési besorolások](automation-view-update-assessments.md#update-classifications).
 
-* **Belefoglalási** /kizárási frissítések – megnyitja a Belefoglalás/kizárás lapot. A felvenni vagy kizárni kívánt frissítések külön lapokon találhatók a TUDÁSBÁZISCIKK AZONOSÍTÓinak számának megadásával. Egy vagy több azonosító számának megadásakor el kell távolítania vagy törölnie kell az összes besorolást a frissítés központi telepítésével. Ezzel biztosíthatja, hogy a frissítési csomagok a frissítési azonosítók megadásakor ne tartalmazzanak más frissítéseket.
+* **Frissítések belefoglalása/kizárása** – megnyitja a Belefoglalás/kizárás lapot. A felvenni vagy kizárni kívánt frissítések külön lapokon találhatók a TUDÁSBÁZISCIKK AZONOSÍTÓinak számának megadásával. Egy vagy több azonosító számának megadásakor el kell távolítania vagy törölnie kell az összes besorolást a frissítés központi telepítésével. Ezzel biztosíthatja, hogy a frissítési csomagok a frissítési azonosítók megadásakor ne tartalmazzanak más frissítéseket.
 
 > [!NOTE]
-> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*`, Update Management nem telepít javításokat vagy csomagokat, ahogy az összes ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
+> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management nem telepít javításokat vagy csomagokat, ahogy az összes ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
 
 > [!NOTE]
 > Nem adhat meg olyan frissítéseket, amelyeket a rendszer a frissítés központi telepítésére való felvételre váltott ki.

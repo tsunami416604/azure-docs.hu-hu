@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e3ee175e521fe37c99fcb3650ce7480f3f503a08
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658390"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673271"
 ---
 Visual Studio-projekt C++ asztali fejlesztéshez való létrehozásához be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, és telepítenie kell a Speech SDK-t.
 
@@ -23,7 +23,7 @@ A kezdéshez győződjön meg arról, hogy megfelelően van-e beállítva a Visu
 
 1. Válassza a **Folytatás kód nélkül** lehetőséget a Visual Studio ide elemre.
 
-1. A Visual Studio menüsávjában válassza az **eszközök** > eszközök**és szolgáltatások beolvasása** lehetőséget a Visual Studio telepítőjének megnyitásához, és tekintse meg a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávjában válassza az **eszközök**eszközök  >  **és szolgáltatások beolvasása** lehetőséget a Visual Studio telepítőjének megnyitásához, és tekintse meg a **módosítás** párbeszédpanelt.
 
    ![Munkaterhelések lap, módosítás párbeszédpanel, Visual Studio-telepítő](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
@@ -39,7 +39,7 @@ A kezdéshez győződjön meg arról, hogy megfelelően van-e beállítva a Visu
 
 Ezután hozza létre a projektet:
 
-1. A Visual Studio menüsávjában válassza a **fájl** > **új** > **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
+1. A Visual Studio menüsávjában válassza a **fájl**  >  **új**  >  **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
 
    ![Új projekt létrehozása, C++ – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
@@ -49,11 +49,11 @@ Ezután hozza létre a projektet:
 
    ![Az új projekt konfigurálása, C++ – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
 
-1. A **Project Name (projekt neve**) mezőben adja meg a értéket `helloworld`.
+1. A **Project Name (projekt neve**) mezőben adja meg a értéket `helloworld` .
 
 1. A **hely**területen navigáljon, és válassza ki vagy hozza létre azt a mappát, amelybe menteni szeretné a projektet.
 
-Most válassza ki a cél platform architektúráját. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza az**eszköztárak** > **standard** **megtekintése** > lehetőséget a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** lehetőséget. a 64 bites Windows rendszer 32 bites alkalmazásokat is futtathat, így ha szeretné, válassza az **x86** lehetőséget.
+Most válassza ki a cél platform architektúráját. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza a **nézet**  >  lehetőséget. **Eszköztárak**  >  **Standard** a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** lehetőséget. a 64 bites Windows rendszer 32 bites alkalmazásokat is futtathat, így ha szeretné, válassza az **x86** lehetőséget.
 
 ### <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
@@ -67,7 +67,7 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **csomag forrása**területen válassza a **nuget.org**lehetőséget.
 
-1. A **keresőmezőbe** írja be `Microsoft.CognitiveServices.Speech`a kifejezést, majd válassza ki a csomagot, miután az megjelenik a keresési eredmények között.
+1. A **keresőmezőbe** írja be a kifejezést `Microsoft.CognitiveServices.Speech` , majd válassza ki a csomagot, miután az megjelenik a keresési eredmények között.
 
    ![Microsoft. CognitiveServices. Speech C++ csomag telepítése – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
@@ -77,4 +77,4 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`meg:.
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .

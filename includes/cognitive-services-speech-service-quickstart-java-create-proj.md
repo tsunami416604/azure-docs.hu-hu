@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658302"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673186"
 ---
 1. Indítsa el az Eclipse-et.
 
@@ -19,7 +19,7 @@ ms.locfileid: "80658302"
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha van ilyen, zárjuk be az **üdvözlőképernyőn** .
 
-1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl** > **új** > **projekt**lehetőség kiválasztásával.
+1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával.
 
 1. Megjelenik a **New project** (Új projekt) párbeszédpanel. Válassza a **Java Project** (Java-projekt) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
 
@@ -31,11 +31,11 @@ ms.locfileid: "80658302"
 
 1. Ha az **Open Associated Perspective?** (Megnyitja a társított perspektívát?) ablak megjelenik, válassza az **Open Perspective** (Perspektíva megnyitása) lehetőséget.
 
-1. A **Package Explorerben** kattintson a jobb gombbal a **v** nevű projektre. Válassza a helyi menü**Konvertálás a Maven-re projektre** **parancsát.** > 
+1. A **Package Explorerben** kattintson a jobb gombbal a **v** nevű projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát.
 
    ![A Package Explorer képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Megjelenik a **Create new POM** (Új POM létrehozása) ablak. A **csoport azonosítója** mezőben adja meg a *com. microsoft. cognitiveservices. Speech. Samples*értéket, és az összetevő- **azonosító** mezőben adja meg a gyors *útmutatót.* Ezután kattintson a **Befejezés** gombra.
+1. Megjelenik a **Create new POM** (Új POM létrehozása) ablak. A **csoport azonosítója** mezőben adja meg a *com. microsoft. cognitiveservices. Speech. Samples*értéket, és az összetevő- **azonosító** mezőben adja meg a gyors *útmutatót.* Ezután válassza a **Befejezés**lehetőséget.
 
    ![A Create new POM ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "80658302"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Adjon hozzá egy `dependencies` elemet is, amely a Speech SDK verziójának 1.11.0 függ:
+   * Adjon hozzá egy `dependencies` elemet is, amely a SPEECH SDK verziójának 1.12.0 függ:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

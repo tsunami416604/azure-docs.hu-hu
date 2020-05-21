@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 53e5bf4f770ce986af2f3572bd6c1ef4cd9e3c2b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605247"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680559"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Rövid útmutató: Azure Firewall és IP-csoportok létrehozása – Resource Manager-sablon
 
-Ebben a rövid útmutatóban egy Resource Manager-sablont használ egy olyan Azure Firewall üzembe helyezéséhez, amely egy hálózati szabályban és alkalmazási szabályban használt minta IP-csoportokkal rendelkezik.
-
-Az IP-csoport egy legfelső szintű erőforrás, amely lehetővé teszi, hogy az IP-címeket, tartományokat és alhálózatokat egyetlen objektumba definiálja és csoportosítsa. Ez hasznos az IP-címek Azure Firewall szabályokban való kezeléséhez. Manuálisan is megadhatja az IP-címeket, vagy importálhatja őket egy fájlból.
+Ebben a rövid útmutatóban egy Resource Manager-sablont használ egy olyan Azure Firewall üzembe helyezéséhez, amely egy hálózati szabályban és alkalmazási szabályban használt minta IP-csoportokkal rendelkezik. Az IP-csoport egy legfelső szintű erőforrás, amely lehetővé teszi, hogy az IP-címeket, tartományokat és alhálózatokat egyetlen objektumba definiálja és csoportosítsa. Ez hasznos az IP-címek Azure Firewall szabályokban való kezeléséhez. Manuálisan is megadhatja az IP-címeket, vagy importálhatja őket egy fájlból.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,22 +31,21 @@ Ez a sablon létrehoz egy Azure Firewall és IP-csoportokat, valamint a szüksé
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)származik.
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
 - [**Microsoft. Network/ipGroups**](/azure/templates/microsoft.network/ipGroups)
-- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -80,17 +78,17 @@ A Azure Portal tekintse át az üzembe helyezett erőforrásokat, különösen a
 
 A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól további információt a [Microsoft. Network azureFirewalls-sablon referenciája](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)című témakörben talál.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a tűzfallal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a tűzfalat és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` következő parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)

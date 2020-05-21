@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448614"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650204"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API a Python használatával
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű Python-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
 
-Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Bár az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz, a piachoz és a keresési lekérdezésekhez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálásokat. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz, a piachoz és a keresési lekérdezéshez. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```python
     import http.client, urllib.parse
@@ -52,21 +52,24 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
 
 ## <a name="send-a-request-and-get-a-response"></a>Kérelem küldése és Válasz kérése
 
-1. Hozzon létre egy `get_suggestions()`nevű függvényt. Ezután hajtsa végre a következő lépéseket.
-   1. Adja hozzá az előfizetési kulcsot egy szótárhoz `Ocp-Apim-Subscription-Key` kulcsként.
-   2. HTTPS `http.client.HTTPSConnection()` -ügyfél objektum létrehozásához használja a következőt:. Küldjön el `GET` egy kérést az elérési úttal és paraméterekkel, valamint a fejléc információinak használatával `request()` .
-   3. Tárolja a választ `getresponse()`, és térjen vissza `response.read()`.
+1. Hozzon létre egy nevű függvényt `get_suggestions()` . 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. Ebben a függvényben kulcsként adja hozzá az előfizetési kulcsot egy szótárhoz `Ocp-Apim-Subscription-Key` .
 
-2. Hívja `get_suggestions()`meg és nyomtassa ki a JSON-választ.
+3. `http.client.HTTPSConnection()`Https-ügyfél objektum létrehozásához használja a következőt:. Küldjön el egy `GET` kérést az `request()` elérési úttal és paraméterekkel, valamint a fejléc információinak használatával.
+
+4. Tárolja a választ `getresponse()` , és térjen vissza `response.read()` .
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. Hívja meg `get_suggestions()` és nyomtassa ki a JSON-választ.
 
     ```python
     result = get_suggestions ()
@@ -138,10 +141,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi a Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Mi a Bing Entity Search API?](../search-the-web.md)
+* [Bing Entity Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

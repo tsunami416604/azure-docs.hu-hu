@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652716"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -37,7 +37,7 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 ---
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Azure Storage-fiók létrehozása
@@ -192,15 +192,15 @@ A függvény projektkódját a rendszer közvetlenül a nyilvános mintaadattár
 
 Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja elküldeni egy adott végpontnak. Ebben az esetben a függvény közzéteszi a végpontot. Az alábbi lépésekkel hozzon létre egy esemény-előfizetést, amely értesítéseket küld a függvényének az Azure Portalon:
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd válassza a **Function apps**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a lap tetején keresse meg, majd válassza ki `Function App` az imént létrehozott Function alkalmazást. Válassza a **függvények** lehetőséget, és válassza a **miniatűr** függvényt.
 
-    ![Navigáljon a Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="A miniatűr függvény kiválasztása a portálon":::
 
-2. Bontsa ki a Function alkalmazást, válassza a **miniatűr** függvényt, majd válassza az **Event Grid-előfizetés hozzáadása**lehetőséget.
+1.  Válassza az **integráció** kiválasztása lehetőséget, majd válassza ki a **Event Grid triggert** , és válassza a **Event Grid előfizetés létrehozása**lehetőséget.
 
-    ![Navigáljon Event Grid előfizetés hozzáadása a Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigáljon Event Grid előfizetés hozzáadása a Azure Portal" :::
 
-3. Használja a táblázatban megadott esemény-előfizetési beállításokat.
+1. Használja a táblázatban megadott esemény-előfizetési beállításokat.
     
     ![Esemény-előfizetés létrehozása a függvényből az Azure Portalon](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -215,13 +215,13 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
     | **Végpont típusa** | automatikusan létrehozott | Előre definiált **Azure-függvényként**. |
     | **Végpont** | automatikusan létrehozott | A függvény neve. Ebben az esetben ez a **miniatűr**. |
 
-4. Váltson a **szűrők** lapra, és végezze el a következő műveleteket:
+1. Váltson a **szűrők** lapra, és végezze el a következő műveleteket:
     1. Válassza a **tulajdonosi szűrés engedélyezése** lehetőséget.
     2. A **Tárgy megkezdéséhez**adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/**.
 
         ![Az esemény-előfizetés szűrőjének megadása](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Válassza a **Létrehozás** lehetőséget az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést `Thumbnail` , amely elindítja a függvényt, amikor `images` egy blobot adnak hozzá a tárolóhoz. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tárolóhoz.
+1. Válassza a **Létrehozás** lehetőséget az esemény-előfizetés hozzáadásához. Ez létrehoz egy esemény-előfizetést, amely elindítja a `Thumbnail` függvényt, amikor egy blobot adnak hozzá a `images` tárolóhoz. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tárolóhoz.
 
 Most, hogy konfigurálta a háttérszolgáltatásokat, tesztelni fogja a képátméretezési funkciót a minta-webalkalmazásban.
 

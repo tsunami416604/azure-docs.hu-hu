@@ -9,28 +9,30 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f562c195e90f2356568530b9b618ae9e6610fa56
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2c8215a68d2f80471be87b0ca07aa1438a25ac4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201461"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660058"
 ---
 # <a name="introduction"></a>Introduction (Bevezetés)
 
-A Spark SQL Analytics-összekötő úgy lett kialakítva, hogy hatékonyan vigyen át adatátvitelt a Spark Pool (előzetes verzió) és az SQL-készletek között az Azure szinapszis A Spark SQL Analytics-összekötő csak az SQL-készleteken működik, az SQL-on igény szerint nem működik.
+Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
-## <a name="design"></a>Kialakítás
+## <a name="design"></a>Tervezés
 
 A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 
-Az SQL Analytics-összekötőhöz készült Spark-készletek a Apache Spark adatforrások általi implementációja. A Azure Data Lake Storage Gen 2, az SQL-készletekben pedig a Base-t használja az adatok hatékony átviteléhez a Spark-fürt és az SQL Analytics-példány között.
+Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark adatforrások implementációja. Az SQL-készletekben a Azure Data Lake Storage Gen2t és a bázist használja az adatok hatékony átviteléhez a Spark-fürt és a szinapszis SQL-példány között.
 
 ![Összekötő-architektúra](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analyticsben
 
-A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez. Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
+A rendszerek közötti hitelesítés zökkenőmentesen elérhető az Azure szinapszis Analytics szolgáltatásban. Létezik egy jogkivonat-szolgáltatás, amely összekapcsolja a Azure Active Directory-mel a Storage-fiók vagy az adatraktár-kiszolgáló eléréséhez szükséges biztonsági jogkivonatok beszerzéséhez. 
+
+Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az összekötő API-ban, ha a HRE-Auth konfigurálva van a Storage-fiókban és az adatraktár-kiszolgálón. Ha nem, akkor megadható az SQL-hitelesítés. További részleteket a [használati](#usage) szakaszban talál.
 
 ## <a name="constraints"></a>Korlátozások
 
@@ -120,7 +122,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 #### <a name="read-api"></a>API olvasása
 
-Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a munkaterületen kívüli SQL-készletre. SQL-hitelesítést kell használnia.
+Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a munkaterületen kívüli SQL-készletre. Az SQL-hitelesítést kell használnia.
 
 ```Scala
 val df = spark.read.
@@ -147,13 +149,13 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 Tegyük fel, hogy rendelkezik egy "pyspark_df" dataframe, amelyet szeretne írni a DW-be.
 
-Ideiglenes tábla létrehozása a PySpark dataframe használatával
+Hozzon létre egy ideiglenes táblát a PySpark dataframe használatával:
 
 ```Python
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Scala-cella futtatása a PySpark notebookon a Magics használatával
+A PySpark notebookon a Magics használatával futtasson egy Scala-cellát:
 
 ```Scala
 %%spark
@@ -166,7 +168,7 @@ Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala 
 
 ## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>A DW-összekötő használatának engedélyezése más felhasználók számára a munkaterületen
 
-Mások számára a hiányzó engedélyek módosításához a ADLS Gen2 Storage-fiókban a munkaterülethez csatlakoztatott Storage blob-adattulajdonost kell megadni. Ellenőrizze, hogy a felhasználó rendelkezik-e hozzáféréssel a munkaterülethez és a jegyzetfüzetek futtatásához szükséges engedélyekhez.
+A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a blob-adattulajdonost, hogy mások ne tudják módosítani a hiányzó engedélyeket. Ellenőrizze, hogy a felhasználó rendelkezik-e hozzáféréssel a munkaterülethez és a jegyzetfüzetek futtatásához szükséges engedélyekhez.
 
 ### <a name="option-1"></a>1. lehetőség
 
@@ -178,8 +180,8 @@ Mások számára a hiányzó engedélyek módosításához a ADLS Gen2 Storage-f
 
 | Mappa | / | szinapszis | munkaterületek  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
-| Hozzáférési engedélyek |--X |--X |--X |--X |--X |--X |– WX |
-| Alapértelmezett engedélyek |---|---|---|---|---|---|---|
+| Hozzáférési engedélyek | --X | --X | --X | --X | --X | --X | – WX |
+| Alapértelmezett engedélyek | ---| ---| ---| ---| ---| ---| ---|
 
 - Az összes mappát le kell tudnia adni a "szinapszis" mappából, és a Azure Portal lefelé haladva. A root "/" mappa ACL-jéhez kövesse az alábbi utasításokat.
 
@@ -188,9 +190,10 @@ Mások számára a hiányzó engedélyek módosításához a ADLS Gen2 Storage-f
 - Ha megjelenik a felsorolt Storage-fiók, kattintson a jobb gombbal a Listázás munkaterületre, és válassza a "hozzáférés kezelése" lehetőséget.
 - Adja hozzá a felhasználót a/mappához a "végrehajtás" hozzáférési engedéllyel. Válassza az OK lehetőséget
 
-**Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja**
+> [!IMPORTANT]
+> Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [SQL-készlet létrehozása](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

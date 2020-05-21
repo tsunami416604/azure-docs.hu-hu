@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679785"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682570"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
@@ -41,7 +41,7 @@ A következő szoftvereket kell telepíteni:
 
 ## <a name="clone-the-sample-app"></a>A mintaalkalmazás klónozása
 
-Nyisson meg egy parancssort ( `cmd` írja be a Windows Start menüjét), és váltson arra a könyvtárba, ahol az ARR-minta projektet tárolni szeretné.
+Nyisson meg egy parancssort (írja be `cmd` a Windows Start menüjét), és váltson arra a könyvtárba, ahol az ARR-minta projektet tárolni szeretné.
 
 Futtassa az alábbi parancsot:
 
@@ -66,13 +66,13 @@ A megjelenített alapértelmezett modell egy [beépített minta modell](../sampl
 
 1. Az Unity-eszköz böngészőben navigáljon a *jelenetek* mappára, és nyissa meg a gyors üzembe helyezési **jelenetet.**
 1. A *hierarchiában*válassza ki a **RemoteRendering** játék objektumot.
-1. Az *ellenőrben*adja meg a [fiókja hitelesítő adatait](../how-tos/create-an-account.md).
+1. Az *ellenőrben*adja meg a [fiókja hitelesítő adatait](../how-tos/create-an-account.md). Ha még nem rendelkezik fiókkal, [hozzon létre egyet](../how-tos/create-an-account.md).
 
 ![ARR-fiók adatai](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
 > Az Azure Portalon a fiók tartománya csak *mixedreality.Azure.com*-ként jelenik meg. Ez nem elegendő a sikeres csatlakozáshoz.
-> Állítsa **AccountDomain** be a `<region>.mixedreality.azure.com`AccountDomain a `<region>` értékre, ahol az az [elérhető régiók egyike](../reference/regions.md).
+> Állítsa be a **AccountDomain** a értékre `<region>.mixedreality.azure.com` , ahol az `<region>` az [elérhető régiók egyike](../reference/regions.md).
 
 Később telepíteni szeretnénk ezt a projektet egy HoloLens, és az adott eszközről csatlakozunk a távoli renderelési szolgáltatáshoz. Mivel a hitelesítő adatok nem írhatók be az eszközön, a gyors üzembe helyezési minta a **hitelesítő adatokat az egység jelenetében fogja menteni**.
 
@@ -103,7 +103,7 @@ A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objekt
 
 Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 

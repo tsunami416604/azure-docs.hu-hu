@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27471cad2dfcd7accdb6b43414f216f85552fab3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376358"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652489"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure térbeli Horgonyokkal, C++/WinRT és DirectX-ben
 
@@ -50,9 +50,11 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 Nyissa meg a következő fájlt: `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
+
+Keresse meg `case DemoStep::ConfigSession:` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `configuration.AccountKey("MyAccountDomain");` .
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Az alkalmazás üzembe helyezése a HoloLens
 
@@ -64,7 +66,7 @@ Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként**haszn
 
 Kapcsolja be a HoloLens eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez egy USB-kábellel.
 
- > Válassza **a hibakeresés****indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.
+Válassza a **hibakeresés**  >  **indítása** az alkalmazás üzembe helyezéséhez és a hibakeresés megkezdéséhez lehetőséget.
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4c6a151bdd3b437c6a01a949096604b3963489bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 508c12d89d5b0476e4cd4cbd8dc43b8bda8fbd90
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647476"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Nézetek létrehozása és használata igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
 
@@ -26,7 +26,7 @@ Első lépésként létre kell hoznia egy adatbázist, amelyben létrejön a né
 
 ## <a name="create-a-view"></a>Nézet létrehozása
 
-A nézetek ugyanúgy hozhatók létre, mint a rendszeres SQL Server nézetek létrehozásakor. Az alábbi lekérdezés olyan nézetet hoz létre, amely beolvassa a *populációs. csv* fájlt.
+A nézetek ugyanúgy hozhatók létre, mint a rendszeres SQL Server nézetek létrehozásakor. A következő lekérdezés olyan nézetet hoz létre, amely beolvassa a *populációs. csv* fájlt.
 
 > [!NOTE]
 > Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja.

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298819"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681327"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
 
@@ -78,7 +78,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
  
  4. A **hatókör-szűrő** lapon adja meg azt a szervezeti egységet vagy biztonsági csoportot, amelyet a próbaüzem alapján ki szeretne kapcsolni.  A szervezeti egység szűréséhez adja hozzá a megkülönböztető név OU részét. Ez a szabály az adott szervezeti egységben lévő összes felhasználóra vonatkozik.  Tehát ha a DN "OU = processzorok, DC = contoso, DC = com" végződéssel végződik, akkor ezt a szűrőt fogja felvenni.  Kattintson a **Tovább** gombra. 
 
-    |Szabály|Attribútum|Művelet|Érték|
+    |Szabály|Attribútum|Operátor|Érték|
     |-----|----|----|-----|
     |Hatóköri szervezeti egység|DN|ENDSWITH|A szervezeti egység megkülönböztető neve.|
     |Hatókör-csoport||ISMEMBEROF|A biztonsági csoport megkülönböztető neve.|
@@ -148,7 +148,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azu
 3.  Az **Azure ad-kiépítés (előzetes verzió)** képernyőn kattintson az **összes ügynök áttekintése**elemre.
 ![Azure AD-kiépítés](media/how-to-install/install7.png)</br>
  
-4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök van-e **Letiltva**, és le van-e jelölve.  Az ügynök alapértelmezés ![szerint le van tiltva a kiépítési ügynököknél](media/how-to-install/verify1.png)</br>
+4. A helyszíni **kiépítési ügynökök képernyőjén** látni fogja a telepített ügynököket.  Ellenőrizze, hogy a szóban forgó ügynök van-e **Letiltva**, és le van-e jelölve.  Az ügynök alapértelmezés szerint le van tiltva a ![ kiépítési ügynököknél](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>A helyi kiszolgálón
 Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket:
@@ -199,7 +199,9 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
 3.  Futtassa az `Start-ADSyncSyncCycle` parancsot.  Nyomja meg az ENTER billentyűt.  
 
 >[!NOTE] 
->Ha a HRE-kapcsolat szinkronizálásához saját egyéni ütemező alkalmazást futtat, engedélyezze az ütemező szolgáltatást. 
+>Ha Azure AD Connect szinkronizáláshoz saját egyéni ütemező alkalmazást futtat, engedélyezze az ütemező szolgáltatást. 
+
+Ha az ütemező engedélyezve lett, Azure AD Connect leállítja az objektumon végzett módosítások exportálását a `cloudNoFlow=true` metaverse-ban, kivéve, ha a hivatkozási attribútum (például a kezelő) frissítése folyamatban van. Ha az objektumon van egy hivatkozási attribútum frissítése, Azure AD Connect figyelmen kívül hagyja a `cloudNoFlow` jelet, és exportálja az összes frissítést az objektumra.
 
 ## <a name="something-went-wrong"></a>Valami hiba történt
 Ha a próbaüzem nem a várt módon működik, térjen vissza a Azure AD Connect Sync telepítőhöz az alábbi lépésekkel:
@@ -221,7 +223,7 @@ Miután meggyőződött róla, hogy a kísérleti szervezeti egység felhasznál
  10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
  11. A befejezést követően kattintson a **Kilépés**gombra. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78204735"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677554"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
 Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache Kafka-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales` és `marketingspend` témakörökhöz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
@@ -48,7 +48,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**.
 
-2. Válassza ki ** \<a ClusterName>_kafka** a **Kafka**alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
+2. Válassza ki a ** \< ClusterName>_kafka** a **Kafka**alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
 
 3. Válassza az **új szabályzat hozzáadása** lehetőséget, és adja meg a következő értékeket:
 
@@ -85,7 +85,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Témakörök létrehozása egy Kafka-fürtön az ESP-vel
 
-Két témakör `salesevents` létrehozásához `marketingspend`:
+Két témakör létrehozásához `salesevents` `marketingspend` :
 
 1. A következő paranccsal nyisson meg egy SSH-kapcsolatot a fürttel:
 
@@ -93,7 +93,7 @@ Két témakör `salesevents` létrehozásához `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Cserélje `DOMAINADMIN` le a helyére a fürt [létrehozásakor](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)konfigurált rendszergazdai felhasználót, és cserélje le `CLUSTERNAME` a nevet a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai felhasználói fiók jelszavát. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
+   Cserélje le a helyére `DOMAINADMIN` a fürt [létrehozásakor](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)konfigurált rendszergazdai felhasználót, és cserélje le a `CLUSTERNAME` nevet a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai felhasználói fiók jelszavát. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
 
 2. Használja az alábbi parancsokat a fürtnév változóként való mentéséhez és egy JSON-elemző segédprogram, a `jq` telepítéséhez. Ha a rendszer kéri, adja meg a Kafka-fürt nevét.
 
@@ -123,7 +123,7 @@ Két témakör `salesevents` létrehozásához `marketingspend`:
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni/felhasználni `salesevents` a témakört `marketingspend`, de nem. Ezzel szemben a **marketing_user** képes létrehozni/felhasználni `marketingspend` a témakört `salesevents`, de nem.
+A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni/felhasználni a témakört, `salesevents` de nem `marketingspend` . Ezzel szemben a **marketing_user** képes létrehozni/felhasználni a témakört, `marketingspend` de nem `salesevents` .
 
 1. Nyisson meg egy új SSH-kapcsolatot a fürthöz. Az alábbi paranccsal jelentkezzen be mint **sales_user1**:
 
@@ -147,15 +147,16 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
 4. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user**is elérhető legyen.
 
-**Megjegyzés: ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem a termelői fogyasztó projekt alatt, amely a nem tartományhoz csatlakoztatott forgatókönyvekhez tartozik).**
+> [!NOTE]  
+> Ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem az a gyártó – fogyasztói projekt, amely a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
 
-5. A következő **sales_user1** parancs végrehajtásával ellenőrizze, `salesevents` hogy a sales_user1 tud-e előállítani a témakörbe:
+5. **sales_user1** `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Futtassa az alábbi parancsot a következő témakörben `salesevents`való használathoz:
+6. Futtassa az alábbi parancsot a következő témakörben való használathoz `salesevents` :
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -163,7 +164,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Ellenőrizze, hogy el tudja-e olvasni az üzeneteket.
 
-7. Győződjön meg arról, hogy a **sales_user1** nem `marketingspend` tud a témakörbe bemutatni, ha ugyanazon az SSH-ablakban hajtja végre a következőket:
+7. Győződjön meg arról, hogy a **sales_user1** nem tud a témakörbe bemutatni, ha `marketingspend` ugyanazon az SSH-ablakban hajtja végre a következőket:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -171,11 +172,11 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Engedélyezési hiba történik, amely figyelmen kívül hagyható.
 
-8. Figyelje meg, hogy **marketing_user1** nem használható `salesevents`a témakörből.
+8. Figyelje meg, hogy **marketing_user1** nem használható a témakörből `salesevents` .
 
    Ismételje meg a 1-4. lépést, de ezúttal **marketing_user1**.
 
-   Futtassa az alábbi parancsot a következő témakörben `salesevents`való használathoz:
+   Futtassa az alábbi parancsot a következő témakörben való használathoz `salesevents` :
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -187,7 +188,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    ![A Ranger felhasználói felületi házirendjének naplózási hozzáférési eseményei ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-fürtöt a következő lépésekkel:
 
@@ -200,7 +201,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem pedig a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](../disk-encryption.md)

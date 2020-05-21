@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b6af42f09351df60beb2aa449f8fcd2ff6a554e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116655"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644674"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Apache Spark
 
@@ -32,10 +32,10 @@ A Apache Spark primitíveket biztosít a memóriabeli fürtök számítástechni
 
 Az Azure Szinapszisban a Spark-készletek teljes körűen felügyelt Spark szolgáltatást biztosítanak. Itt találja a a szinapszis Analyticsben a Spark-készlet létrehozásának előnyeit.
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | --- | --- |
 | Gyorsaság és hatékonyság |A Spark-példányok körülbelül 2 percen belül kezdődnek, kevesebb mint 60 csomópontot, és körülbelül 5 percet vesznek igénybe több mint 60 csomópont. A példány alapértelmezés szerint 5 perccel az utolsó feladatot követően leáll, kivéve, ha egy jegyzetfüzet-kapcsolatban nem tartja életben. |
-| Könnyű létrehozás |Az Azure Szinapszisban létrehozhat egy új Spark-készletet percek alatt a Azure Portal, Azure PowerShell vagy a szinapszis Analytics .NET SDK használatával. Lásd: Ismerkedés [a Spark-készletekkel a szinapszis Analyticsben](../quickstart-create-apache-spark-pool.md). |
+| Könnyű létrehozás |Az Azure Szinapszisban létrehozhat egy új Spark-készletet percek alatt a Azure Portal, Azure PowerShell vagy a szinapszis Analytics .NET SDK használatával. Lásd: Ismerkedés [a Spark-készletekkel a szinapszis Analyticsben](../quickstart-create-apache-spark-pool-studio.md). |
 | Könnyű használat |A szinapszis Analytics a [Nteract](https://nteract.io/)származtatott egyéni jegyzetfüzetet tartalmaz. Ezeket a notebookokat interaktív adatfeldolgozásra és -vizualizációra használhatja.|
 | REST API-k |A a szinapszis Analyticsben az [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), egy REST API-alapú Spark-feladat, amely a feladatok távoli elküldésére és figyelésére szolgál. |
 | A 2. generációs Azure Data Lake Storage támogatása| Az Azure Szinapszisban található Spark-készletek a 2. generációs és a BLOB Storage-t is Azure Data Lake Storage használhatják. További információ a Data Lake Storageről: [Azure Data Lake Storage áttekintése](../../data-lake-store/data-lake-store-overview.md). |
@@ -78,7 +78,7 @@ A Apache Spark a [MLlib](https://spark.apache.org/mllib/), a Spark-ra épülő g
 
 A következő cikkekben további tudnivalókat talál a szinapszis Analytics Apache Sparkáról:
 
-- [Rövid útmutató: Spark-készlet létrehozása az Azure Szinapszisban](../quickstart-create-apache-spark-pool.md)
+- [Rövid útmutató: Spark-készlet létrehozása az Azure Szinapszisban](../quickstart-create-apache-spark-pool-portal.md)
 - [Rövid útmutató: Apache Spark jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md)
 - [Oktatóanyag: gépi tanulás Apache Spark használatával](./apache-spark-machine-learning-mllib-notebook.md)
 - [Apache Spark hivatalos dokumentáció](https://spark.apache.org/docs/latest/)
@@ -86,8 +86,8 @@ A következő cikkekben további tudnivalókat talál a szinapszis Analytics Apa
 > [!NOTE]
 > A hivatalos Apache Spark dokumentációja a Spark-konzollal való használatra támaszkodik, ez az Azure szinapszis Sparkon nem érhető el, hanem a notebook-vagy IntelliJ-élmények használatával
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben bemutatjuk az Azure szinapszis Analytics Apache Sparkának alapvető ismereteit. A következő cikkből megtudhatja, hogyan hozhat létre egy Spark-készletet az Azure szinapszis Analyticsben:
 
-- [Spark-készlet létrehozása az Azure Szinapszisban](../quickstart-create-apache-spark-pool.md)
+- [Spark-készlet létrehozása az Azure Szinapszisban](../quickstart-create-apache-spark-pool-portal.md)

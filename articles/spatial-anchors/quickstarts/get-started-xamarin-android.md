@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1de2d647a6292467a5ac4cc333ccacdedfc3c9ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465182"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638998"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -59,9 +59,11 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 Nyissa meg a következő fájlt: `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
+
+Keresse meg `AzureSpatialAnchorsManager(Session arCoreSession)` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `this.spatialAnchorsSession.Configuration.AccountId = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Az alkalmazás üzembe helyezése Android-eszközön
 
@@ -73,21 +75,21 @@ Kapcsolja be az androidos eszközt, jelentkezzen be, és csatlakoztassa a szám�
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Az alkalmazás üzembe helyezéséhez és elindításához **válassza a hibakeresés****megkezdése** lehetőséget. > 
+**Debug**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés**megkezdése** lehetőséget.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Az alkalmazás üzembe helyezéséhez és elindításához válassza a **Futtatás** > **indításkor hibakeresés nélkül** lehetőséget.
+**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás**indításkor hibakeresés nélkül** lehetőséget.
 
 ---
 
 Az alkalmazásban válassza az **alapszintű** lehetőséget a bemutató futtatásához, és kövesse az utasításokat a horgony elhelyezéséhez és felidézéséhez.
 
-> ![Képernyőfelvétel 1](./media/get-started-xamarin-android/screenshot-1.jpg)
-> ![képernyőkép 2](./media/get-started-xamarin-android/screenshot-2.jpg)
-> ![képernyőkép 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![Képernyőfelvétel 1 ](./media/get-started-xamarin-android/screenshot-1.jpg)
+>  ![ képernyőkép 2 ](./media/get-started-xamarin-android/screenshot-2.jpg)
+>  ![ képernyőkép 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

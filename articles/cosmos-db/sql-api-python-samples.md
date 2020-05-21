@@ -8,20 +8,19 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1e7c3e06c8aa49f9a23d3cc600ee6f60218c2fbd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89c1b6b63c0c423400a5197c460a44f68f13d9d2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72170136"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683809"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
 
 > [!div class="op_single_selector"]
 > * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
 > * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
-> * [Java-példák](sql-api-java-samples.md)
-> * [Aszinkron Java-példák](sql-api-async-java-samples.md)
+> * [Java v4 SDK-példák](sql-api-java-sdk-samples.md)
 > * [Node. js-példák](sql-api-nodejs-samples.md)
 > * [Python-példák](sql-api-python-samples.md)
 > * [Azure Kódminta-katalógus](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

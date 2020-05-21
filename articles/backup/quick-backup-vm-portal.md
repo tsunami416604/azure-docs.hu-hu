@@ -1,17 +1,16 @@
 ---
 title: Rövid útmutató – virtuális gép biztonsági mentése a Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan engedélyezheti a védelmet egy Azure-beli virtuális gépen, és hogyan készíthet biztonsági másolatot a virtuális gépről a Azure Portal.
-ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240449"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656943"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 
@@ -66,11 +65,11 @@ A virtuális gép **Biztonsági mentés** ablakában a biztonsági mentés álla
 
 Ha többé már nincs szükség rá, a virtuális gép védelmét bármikor leállíthatja, eltávolíthatja a helyreállítási pontokat és a Recovery Services-tárolót, majd törölheti az erőforráscsoportot és a társított virtuális gép erőforrásait.
 
-Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a virtuális gép adatainak visszaállítását ismerteti, ugorja át az ebben a szakaszban lévő lépéseket, és ugorjon a [Következő lépések](#next-steps) részre.
+Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet visszaállítani a virtuális gép adatait, ugorja át a szakasz lépéseit, és folytassa a [következő lépésekkel](#next-steps).
 
 1. Válassza ki a virtuális gép **Biztonsági mentés** beállítását.
 
-2. Válassza a **...továbbiak** lehetőséget a további beállítások megjelenítéséhez, majd válassza a **Biztonsági mentés leállítása** lehetőséget.
+2. Válassza a **biztonsági mentés leállítása**lehetőséget.
 
     ![Virtuális gép biztonsági mentésének leállítása az Azure Portalon](./media/quick-backup-vm-portal/stop-backup.png)
 
@@ -86,7 +85,7 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

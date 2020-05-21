@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af0390ab7ef8f84860d1d62fa86b8ec87a42210
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890809"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -40,7 +40,7 @@ Több példányhoz is konfigurálhat több azonosítót. Például:
 
 * `https://signin.aws.amazon.com/saml#2`
 
-Ezekkel az értékekkel az Azure AD eltávolítja a **#** értékét, és elküldi a megfelelő `https://signin.aws.amazon.com/saml` értéket a célközönség URL-címének az SAML-jogkivonatban.
+Ezekkel az értékekkel az Azure AD eltávolítja a értékét **#** , és elküldi a megfelelő értéket a `https://signin.aws.amazon.com/saml` célközönség URL-címének az SAML-jogkivonatban.
 
 Ezt a megközelítést a következő okok miatt javasoljuk:
 
@@ -76,7 +76,7 @@ Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásáho
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi fiók, iskolai fiók vagy személyes Microsoft-fiók használatával.
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Amazon Web Services (AWS)** kifejezést a keresőmezőbe.
 1. Válassza az **Amazon Web Services (AWS)** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
@@ -119,9 +119,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     
     | Name  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | User. userPrincipalName | https://aws.amazon.com/SAML/Attributes |
-    | Szerepkör            | User. assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
+    | Szerepkör            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  `https://aws.amazon.com/SAML/Attributes` |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -136,11 +136,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **felhasználók** > **minden felhasználó**lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **felhasználók**  >  **minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -149,7 +149,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát, ha hozzáférést biztosít a Amazon Web Services (AWS) szolgáltatáshoz.
 
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+1. A Azure Active Directory áttekintése menüben válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Az alkalmazás listában válassza a **Amazon Web Services (AWS)** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -175,7 +175,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Képernyőfelvétel az AWS-szolgáltatások oldalról, a IAM kiemelve][12]
 
-4. Válassza az **identitás-szolgáltatók** > **Létrehozás szolgáltató**elemet.
+4. Válassza az **identitás-szolgáltatók**  >  **Létrehozás szolgáltató**elemet.
 
     ![A IAM oldal, a személyazonosság-szolgáltatók és a Kiemelt szolgáltató létrehozása Képernyőkép][13]
 
@@ -195,7 +195,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Képernyőkép a szolgáltatói információk ellenőrzéséről, a létrehozás kiemelve][15]
 
-7. Válassza a **szerepkörök** > **szerepkör létrehozása**lehetőséget.
+7. Válassza a **szerepkörök**  >  **szerepkör létrehozása**lehetőséget.
 
     ![A szerepkörök lap képernyőképe][16]
 
@@ -368,11 +368,11 @@ Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, autom
 
  * A **kiépítési** szakaszban a **leképezések** alszakasz a "betöltés..." szakaszt jeleníti meg. üzenet, és soha nem jeleníti meg az attribútumok leképezéseit. Az egyetlen jelenleg támogatott kiépítési munkafolyamat az AWS-ből az Azure AD-be való, a felhasználó vagy a csoport hozzárendelése során történő kiválasztáshoz. Az attribútumhoz tartozó hozzárendelések előre meg vannak határozva, és nem konfigurálhatók.
 
- * A **kiépítési** szakasz egyszerre csak egy AWS-bérlőhöz tartozó hitelesítő adatok megadását támogatja. Az összes importált szerepkör az AWS- `appRoles` bérlőhöz tartozó Azure ad [ `servicePrincipal` -objektum](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) tulajdonságára íródik.
+ * A **kiépítési** szakasz egyszerre csak egy AWS-bérlőhöz tartozó hitelesítő adatok megadását támogatja. Az összes importált szerepkör az AWS- `appRoles` bérlőhöz tartozó Azure ad- [ `servicePrincipal` objektum](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) tulajdonságára íródik.
 
-   A katalógusból több AWS-bérlőt `servicePrincipals`is hozzáadhat az Azure ad-hoz az üzembe helyezéshez. Van azonban egy ismert probléma, amely nem képes automatikusan írni az összes importált szerepkört a több AWS `servicePrincipals` -ből, amelyet az egyszeri `servicePrincipal` bejelentkezéshez használtak.
+   A katalógusból több AWS-bérlőt `servicePrincipals` is hozzáadhat az Azure ad-hoz az üzembe helyezéshez. Van azonban egy ismert probléma, amely nem képes automatikusan írni az összes importált szerepkört a több AWS-ből, amelyet `servicePrincipals` az egyszeri `servicePrincipal` bejelentkezéshez használtak.
 
-   Megkerülő megoldásként a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) -val kinyerheti az `appRoles` összes importált AWS `servicePrincipal` -t, ahol a kiépítés konfigurálva van. Ezeket a szerepkör-karakterláncokat később is hozzáadhatja `servicePrincipal` az AWS-hez, ahol az SSO konfigurálva van.
+   Megkerülő megoldásként a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) -val kinyerheti az összes `appRoles` importált AWS-t, `servicePrincipal` ahol a kiépítés konfigurálva van. Ezeket a szerepkör-karakterláncokat később is hozzáadhatja az AWS-hez, `servicePrincipal` ahol az SSO konfigurálva van.
 
 * A szerepköröknek a következő követelményeknek kell megfelelniük, hogy az AWS-ből az Azure AD-be való importálásra jogosult legyen:
 
@@ -380,7 +380,7 @@ Ha a hozzáférési panelen a Amazon Web Services (AWS) csempére kattint, autom
 
   * Az ARN szerepkör és az általa importált szerepkör SAML-szolgáltatói ARN együttes hosszának 119 vagy kevesebb karakterből kell állnia
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

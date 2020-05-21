@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 02/05/2020
+ms.date: 05/14/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80743108"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657010"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
-Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót biztosít, így egyetlen operatív felületet biztosíthat. Ezen funkciók közé tartoznak az ág-kapcsolat (a virtuális WAN-partneri eszközöktől, például az SD-WAN vagy a VPN CPE-től származó kapcsolat automatizálásán keresztül), helyek közötti VPN-kapcsolat, a távoli felhasználói VPN (pont – hely) kapcsolat, a magánhálózati (ExpressRoute) kapcsolat, a felhőn belüli kapcsolat (virtuális hálózatok tranzitív kapcsolata), a VPN-ExpressRoute közötti kapcsolat, az Útválasztás, az Azure tűzfal, a privát kapcsolatok titkosítása stb. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Egyszerűen csak egy használati esettel kezdheti meg a hálózatot, és úgy állíthatja be, ahogy az fejlődik. A virtuális WAN-architektúra egy olyan hub és küllős architektúra, amely az ágak (VPN/SD-WAN-eszközök), a felhasználók (az Azure VPN/OpenVPN/IKEv2 ügyfelek), a ExpressRoute-áramkörök és a virtuális hálózatok számára beépített méretezési és teljesítményű. Lehetővé teszi a [globális átviteli hálózati architektúrát](virtual-wan-global-transit-network-architecture.md) , ahol a felhőben üzemeltetett hálózat "hub" lehetővé teszi az olyan végpontok közötti tranzitív kapcsolódást, amelyek különböző típusú "küllők" között terjeszthetők.
+Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót biztosít, így egyetlen operatív felületet biztosíthat. Ezen funkciók közé tartoznak az ág-kapcsolat (a virtuális WAN-partneri eszközöktől, például az SD-WAN vagy a VPN CPE-től származó kapcsolat automatizálásán keresztül), helyek közötti VPN-kapcsolat, távoli felhasználói VPN (pont – hely) kapcsolat, magánhálózati (ExpressRoute) kapcsolat, felhőn belüli kapcsolat (virtuális hálózatok tranzitív kapcsolata), VPN-ExpressRoute közötti kapcsolat, útválasztás, Azure Firewall és titkosítás a magánhálózati kapcsolathoz. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Egyszerűen csak egy használati esettel kezdheti meg a használatát, majd a kialakulásának megfelelően módosíthatja a hálózatot.
 
-Az Azure-régiók olyan hubokként szolgálnak, amelyekhez csatlakozhat. Az összes hub egy szabványos virtuális WAN-kapcsolaton keresztül csatlakozik a teljes hálóhoz, így a felhasználó könnyedén használhatja a Microsoft-gerincet bármilyen (küllős) kapcsolathoz. Az SD-WAN/VPN-eszközökkel való küllős kapcsolat esetén a felhasználók manuálisan is be tudják állítani az Azure Virtual WAN-ban, vagy a virtuális WAN CPE (SD-WAN/VPN) partneri megoldás használatával állíthatják be az Azure-ral való kapcsolódást. A kapcsolat automatizálását támogató partnereink listáját (az eszköz adatainak az Azure-ba való exportálásának, az Azure-konfiguráció letöltésének és a kapcsolat létesítésének lehetőségét) az Azure Virtual WAN használatával találhatja meg. További információkért lásd a [Virtual WAN-partnerek és-helyszínek](virtual-wan-locations-partners.md) című cikket. 
+A virtuális WAN-architektúra az ágak (VPN/SD-WAN-eszközök), a felhasználók (Azure VPN/OpenVPN/IKEv2-ügyfelek), a ExpressRoute-áramkörök és a virtuális hálózatok számára beépített méretezési és teljesítményű sugaras architektúra. Lehetővé teszi a [globális átviteli hálózati architektúra](virtual-wan-global-transit-network-architecture.md)használatát, ahol a felhőben üzemeltetett hálózat "hub" lehetővé teszi az olyan végpontok közötti tranzitív kapcsolódást, amelyek különböző típusú "küllők" között terjeszthetők.
+
+Az Azure-régiók olyan hubokként szolgálnak, amelyekhez csatlakozhat. Az összes hub egy szabványos virtuális WAN-kapcsolaton keresztül csatlakozik a teljes hálóhoz, így a felhasználó könnyedén használhatja a Microsoft-gerincet bármilyen (küllős) kapcsolathoz. Az SD-WAN/VPN-eszközökkel való küllős kapcsolódás esetén a felhasználók manuálisan is be tudják állítani az Azure Virtual WAN-ban, vagy a virtuális WAN CPE (SD-WAN/VPN) partneri megoldás használatával állíthatnak be kapcsolatot az Azure-ral. A kapcsolat automatizálását támogató partnereink listáját (az eszköz adatainak az Azure-ba való exportálásának, az Azure-konfiguráció letöltésének és a kapcsolat létesítésének lehetőségét) az Azure Virtual WAN használatával találhatja meg. További információkért lásd a [Virtual WAN-partnerek és-helyszínek](virtual-wan-locations-partners.md) című cikket.
 
 ![Virtuális WAN ábrája](./media/virtual-wan-about/virtualwan1.png)
 
@@ -101,6 +103,6 @@ A tartózkodási helyről a [virtuális WAN-partnerek és-helyek](virtual-wan-lo
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

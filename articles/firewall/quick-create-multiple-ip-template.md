@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605203"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680542"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Gyors útmutató: Azure Firewall létrehozása több nyilvános IP-címmel – Resource Manager-sablon
 
-Ebben a rövid útmutatóban egy Resource Manager-sablonnal telepít egy Azure Firewall több nyilvános IP-címmel.
-
-Az üzembe helyezett tűzfal NAT-szabályok gyűjtési szabályaival rendelkezik, amelyek engedélyezik az RDP-kapcsolatokat két Windows Server 2019 rendszerű virtuális géphez.
+Ebben a rövid útmutatóban egy Resource Manager-sablonnal telepít egy Azure Firewall több nyilvános IP-címmel. Az üzembe helyezett tűzfal NAT-szabályok gyűjtési szabályaival rendelkezik, amelyek engedélyezik az RDP-kapcsolatokat két Windows Server 2019 rendszerű virtuális géphez.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,21 +33,20 @@ Ez a sablon két nyilvános IP-címmel rendelkező Azure Firewall hoz létre, va
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/fw-docs-qs)származik.
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
 Több Azure-erőforrás van definiálva a sablonban:
 
-- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -73,17 +71,17 @@ A Azure Portal tekintse át az üzembe helyezett erőforrásokat. Jegyezze fel a
 
 Távoli asztali kapcsolat használata a tűzfal nyilvános IP-címeihez való kapcsolódáshoz. A sikeres kapcsolatok olyan tűzfal NAT-szabályokat mutatnak be, amelyek engedélyezik a kapcsolódást a háttér-kiszolgálókhoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a tűzfallal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a tűzfalat és az összes kapcsolódó erőforrást.
 
-Az erőforráscsoport törléséhez hívja meg a `Remove-AzResourceGroup` következő parancsmagot:
+Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceGroup` parancsmagot:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)
