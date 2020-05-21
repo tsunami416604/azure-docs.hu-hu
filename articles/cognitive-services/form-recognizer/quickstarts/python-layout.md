@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482276"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714610"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API és a Python segítségével Kinyeri a szöveg elrendezési információit és a táblák adatait az űrlap dokumentumaiból.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,9 +36,9 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t. A szkript futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje `<path to your form>` le a helyére a helyi űrlaphoz tartozó dokumentum elérési útját.
-1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
+1. Cserélje le a helyére `<path to your form>` a helyi űrlaphoz tartozó dokumentum elérési útját.
+1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -55,7 +55,7 @@ Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -77,7 +77,7 @@ Az elrendezés elemzésének megkezdéséhez az alábbi Python-szkripttel hívja
 1. Nyisson meg egy parancsablakot.
 1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python form-recognizer-layout.py`.
 
-Egy `202 (Success)` olyan választ fog kapni, amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring `operations/` a művelet azonosítója.
+Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** fejlécet tartalmaz, amelyet a szkript a konzolra fog nyomtatni. Ez a fejléc egy műveleti azonosítót tartalmaz, amely segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában szereplő sztring a `operations/` művelet azonosítója.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -273,7 +273,7 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a számla szöveg elrendezésének kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

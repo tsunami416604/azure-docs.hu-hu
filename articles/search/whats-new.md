@@ -7,29 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 0aea6a42269712e5c1e505c270f9d88635de83e5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195285"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682463"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>Új szolgáltatásnév
-
-A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükrözze a kognitív képességek kibővített (de opcionális) használatát a fő műveletekben. Az API-verziók, a NuGet-csomagok, a névterek és a végpontok változatlanok. Az új és a meglévő keresési megoldásokat nem érinti a szolgáltatás nevének változása.
-
 ## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
 
-### <a name="may-2020"></a>2020. május
+### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 
-+ A hibakeresési munkamenetek szolgáltatás mostantól előzetes verzióban érhető el. [Regisztráljon a hozzáférés kéréséhez](https://aka.ms/DebugSessions).
++ A [hibakeresési munkamenetek](cognitive-search-debug-session.md) szolgáltatás mostantól előzetes verzióban érhető el. [Regisztráljon a hozzáférés kéréséhez](https://aka.ms/DebugSessions). A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md).
+
++ A biztonsági fejlesztések közé tartozik a nyilvános interneten nem elérhető [privát keresési végpont (előzetes verzió) beállítása](service-create-private-endpoint.md) . [Az IP-szabályokat is konfigurálhatja a kötött tűzfalak támogatásához (előzetes verzió)](service-configure-firewall.md).
+
++ A [rendszer által felügyelt identitás (előzetes verzió)](search-howto-managed-identities-data-sources.md) használatával állítson be egy Azure-adatforráshoz való kapcsolódást az indexeléshez. Az olyan [Indexelő](search-indexer-overview.md) anyagokra vonatkozik, amelyek az Azure-adatforrásokból (például Azure SQL Database, Azure Cosmos db és Azure Storage) származó tartalmakat töltenek be.
+
++ A keresési pontszámok kiszámításának és a [scoringStatistics = globális lekérdezési paraméternek](index-similarity-and-scoring.md#scoring-statistics)a használatával megváltoztathatók a találatok kiszámításának alapja.
 
 ### <a name="march-2020"></a>2020. március
 
@@ -77,6 +77,12 @@ A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükr
 ### <a name="july-2019"></a>2019. július
 
 + Általánosan elérhető [Azure Government felhőben](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>Új szolgáltatásnév
+
+A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükrözze a kognitív képességek kibővített (de opcionális) használatát a fő műveletekben. Az API-verziók, a NuGet-csomagok, a névterek és a végpontok változatlanok. Az új és a meglévő keresési megoldásokat nem érinti a szolgáltatás nevének változása.
 
 ## <a name="service-updates"></a>Szolgáltatási hírek
 

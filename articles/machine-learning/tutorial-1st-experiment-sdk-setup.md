@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779005"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655445"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 Ez az oktatóanyag a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](how-to-configure-environment.md#local) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
 
- Az alábbi részletes lépéseket követve klónozott és futtathatja az oktatóanyagot a munkaterületről. 
+ Kövesse ezt a videót, vagy használja az alábbi részletes lépéseket az oktatóanyag a munkaterületről történő klónozásához és futtatásához. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
 ### <a name="clone-a-notebook-folder"></a>Jegyzetfüzet-mappa klónozása
 
@@ -103,14 +105,14 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 Ha egyéni widgetekkel rendelkezik, vagy inkább a Jupyter/JupyterLab-t használja, válassza a jobb szélen a **Jupyter** legördülő listát, majd válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 * Létrehozott egy Azure Machine Learning munkaterületet.
 * Létrehozott és konfigurált egy felhőalapú notebook-kiszolgálót a munkaterületen.
 
-Az oktatóanyag **második részében** futtatja a kódot a Machine `tutorial-1st-experiment-sdk-train.ipynb` learning-modellek betanításához. 
+Az oktatóanyag **második részében** futtatja a kódot a `tutorial-1st-experiment-sdk-train.ipynb` Machine learning-modellek betanításához. 
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: az első modell betanítása](tutorial-1st-experiment-sdk-train.md)

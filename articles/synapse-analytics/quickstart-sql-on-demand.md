@@ -1,5 +1,5 @@
 ---
-title: Igény szerinti SQL-használat (előzetes verzió)
+title: Igény szerinti SQL használata (előzetes verzió)
 description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerű a különböző típusú fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával.
 services: synapse-analytics
 author: azaricstefan
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201036"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658587"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Gyors útmutató: SQL igény szerinti használata
+# <a name="quickstart-use-sql-on-demand"></a>Gyors útmutató: igény szerinti SQL használata
 
 A szinapszis SQL on-demand (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat az SQL igény szerinti használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
 
@@ -30,7 +30,7 @@ Válasszon ki egy SQL-ügyfelet a lekérdezések kibocsátásához:
 - A [Azure Data Studio](sql/get-started-azure-data-studio.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket és jegyzetfüzeteket futtasson az igény szerinti adatbázison.
 - A [SQL Server Management Studio](sql/get-started-ssms.md) egy ügyfél-eszköz, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az igény szerinti adatbázison.
 
-A gyors üzembe helyezési paraméterek:
+A rövid útmutató paraméterei:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -89,7 +89,7 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="querying-csv-files"></a>CSV-fájlok lekérdezése
+## <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
 A következő kép a lekérdezni kívánt fájl előnézete:
 
@@ -118,7 +118,7 @@ WHERE
 A sémát megadhatja a lekérdezés fordítási idején.
 További példákat a [CSV-fájl lekérdezése](sql/query-single-csv-file.md)című témakörben talál.
 
-## <a name="querying-parquet-files"></a>Parquet-fájlok lekérdezése
+## <a name="query-parquet-files"></a>Parquet-fájlok lekérdezése
 
 Az alábbi példa a Parquet-fájlok lekérdezésének automatikus séma-következtetéseit mutatja be. A 2017 szeptemberében visszaadja a sorok számát a séma meghatározása nélkül.
 
@@ -136,7 +136,7 @@ FROM OPENROWSET
 
 További információ a [Parquet-fájlok lekérdezéséről](sql/query-parquet-files.md).
 
-## <a name="querying-json-files"></a>JSON-fájlok lekérdezése
+## <a name="query-json-files"></a>JSON-fájlok lekérdezése
 
 ### <a name="json-sample-file"></a>JSON-minta fájl
 
@@ -158,7 +158,7 @@ A fájlok *JSON* -tárolóban, *címjegyzékekben*tárolódnak, és az alábbi s
 }
 ```
 
-### <a name="querying-json-files"></a>JSON-fájlok lekérdezése
+### <a name="query-json-files"></a>JSON-fájlok lekérdezése
 
 Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a skaláris értékek (title, kiadó) egy könyvből való lekéréséhez a *Cryptology-ben a valószínűséggel és statisztikai metódusokkal, a kiválasztott cikkek bevezetésével*:
 

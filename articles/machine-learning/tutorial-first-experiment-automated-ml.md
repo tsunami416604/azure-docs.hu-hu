@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366517"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656519"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -23,6 +23,8 @@ ms.locfileid: "80366517"
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy alapszintű besorolási modellt anélkül, hogy egyetlen sor kódot kellene írnia a Azure Machine Learning automatikus gépi tanulási felületén keresztül. Ez a besorolási modell azt jelzi, hogy az ügyfél előfizet-e a pénzügyi intézménnyel kötött, rögzített időre szóló befizetésre.
 
 Az automatizált gépi tanulás segítségével automatizálhatja az időigényes feladatokat. Az automatizált gépi tanulás gyorsan megismétli az algoritmusok és hiperparaméterek beállítása számos kombinációját, így könnyebben megtalálhatja a legjobb modellt a választott sikerességi mérőszám alapján.
+
+Az idősorozat-előrejelzési példa [: oktatóanyag: kereslet-előrejelzési & AutoML](tutorial-automated-ml-forecast.md).
 
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
@@ -51,7 +53,7 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 ## <a name="create-and-run-the-experiment"></a>A kísérlet létrehozása és futtatása
 
-A következő kísérletet az Azure Machine learning szolgáltatásban https://ml.azure.com, egy összevont webes felületen végezheti el, amely a gépi tanulási eszközöket is tartalmazza az adatelemzési forgatókönyvek minden képzettségi szinten való elvégzéséhez. Ez az interfész nem támogatott az Internet Explorer böngészőben.
+A következő kísérletet az Azure Machine learning szolgáltatásban https://ml.azure.com , egy összevont webes felületen végezheti el, amely a gépi tanulási eszközöket is tartalmazza az adatelemzési forgatókönyvek minden képzettségi szinten való elvégzéséhez. Ez az interfész nem támogatott az Internet Explorer böngészőben.
 
 1. Jelentkezzen be [Azure Machine Learningba](https://ml.azure.com).
 
@@ -90,10 +92,10 @@ A következő kísérletet az Azure Machine learning szolgáltatásban https://m
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
         Fájlformátum|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
-        Elválasztó|Egy vagy több karakter, amely egy egyszerű szövegben vagy&nbsp; más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
+        Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ehhez a példához válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
 
@@ -115,7 +117,7 @@ A következő kísérletet az Azure Machine learning szolgáltatásban https://m
         Mező | Leírás | Az oktatóanyag értéke
         ----|---|---
         Számítási név |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
-        Virtuális&nbsp;gép&nbsp;mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
+        Virtuális &nbsp; gép &nbsp; mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
         Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
   
         1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
@@ -133,14 +135,14 @@ A következő kísérletet az Azure Machine learning szolgáltatásban https://m
         >[!NOTE]
         > Ebben az oktatóanyagban nem fog mérőszám-pontszámot vagy maximális magot megadni iterációs küszöbértékként. És nem fogja letiltani az algoritmusok tesztelését.
    
-        További&nbsp;konfigurációk|Leírás|Az&nbsp;&nbsp;oktatóanyag értéke
+        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
-        Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási&nbsp;feladatok&nbsp;ideje (óra): 1 <br> Metrika&nbsp;pontszámának&nbsp;küszöbértéke: nincs
-        Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres&nbsp;keresztek ellenőrzése <br> <br> Érvényességek száma: 2
-        Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| Egyidejű&nbsp;&nbsp;ismétlések maximális száma: 5
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
+        Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; ideje (óra): 1 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
+        Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 2
+        Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;Egyidejű &nbsp; Ismétlések maximális száma: 5
         
         Kattintson a **Mentés** gombra.
 
@@ -195,13 +197,13 @@ Most már rendelkezik egy operatív webszolgáltatással előrejelzések létreh
 
 Folytassa a [**következő lépésekkel**](#next-steps) , ha többet szeretne megtudni az új webszolgáltatás használatáról, és tesztelje a jóslatokat a Power BI beépített Azure Machine learning-támogatásával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a kísérlet során használt fájlok. Csak a központi telepítési fájlokat törölje, hogy csökkentse a költségeket a fiókjához, vagy ha meg szeretné őrizni a munkaterületet és a kísérletet. Ellenkező esetben törölje a teljes erőforráscsoportot, ha nem tervezi az egyik fájl használatát.  
 
 ### <a name="delete-the-deployment-instance"></a>A központi telepítési példány törlése
 
-Csak a központi telepítési példányt törölje a Azure Machine Learning a https\/:/ml.Azure.com/, ha meg szeretné tartani az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából. 
+Csak a központi telepítési példányt törölje a Azure Machine Learning a https: \/ /ml.Azure.com/, ha meg szeretné tartani az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltárás céljából. 
 
 1. Lépjen [Azure Machine learning](https://ml.azure.com/). Navigáljon a munkaterülethez, és a bal oldalon az **eszközök** ablaktáblán válassza a **végpontok**lehetőséget. 
 
@@ -213,7 +215,7 @@ Csak a központi telepítési példányt törölje a Azure Machine Learning a ht
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell létrehozásához és üzembe helyezéséhez Azure Machine Learning automatikus ML-interfészét használta. További információkat és további lépéseket a következő cikkekben talál:
 
@@ -221,7 +223,8 @@ Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell lét
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
-+ A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket. További információ a [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
++ További információ a [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
 + További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
 
 

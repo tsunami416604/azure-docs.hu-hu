@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 19f72dbb62fc2084bf0c9609fb3782e083c911af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368393"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655480"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Language Understanding – erőforrás 32 és a végpont URL-címének létrehozása. Hozzon létre a [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)használatával.
-* Importálja a [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) alkalmazást a kognitív-Services-Language-Understanding GitHub adattárba.
-* Az importált TravelAgent alkalmazás LUIS-alkalmazásazonosítója. Az alkalmazásazonosító az alkalmazás irányítópultján látható.
-* A kimondott szövegeket fogadó alkalmazáson belüli verzióazonosító. Az alapértelmezett azonosító a „0.1”.
+* Importálja a [pizza](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json) alkalmazást a `Azure-Samples/cognitive-services-sample-data-files` GitHub-adattárból.
+* Az importált pizza-alkalmazás LUIS-alkalmazásának azonosítója. Az alkalmazásazonosító az alkalmazás irányítópultján látható.
+* A kimondott szövegeket fogadó alkalmazáson belüli verzióazonosító.
 * [Node.js](https://nodejs.org/) programozási nyelv
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,53 +28,138 @@ ms.locfileid: "77368393"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-the-nodejs-project"></a>A Node. js-projekt létrehozása
+
+1. Hozzon létre egy új mappát a Node. js-projekt tárolásához, például: `node-model-with-rest` .
+
+1. Nyisson meg egy új parancssort, navigáljon a létrehozott mappához, és hajtsa végre a következő parancsot:
+
+    ```console
+    npm init
+    ```
+
+    Az alapértelmezett beállítások elfogadásához nyomja le az ENTER billentyűt az egyes kérések között.
+
+1. Telepítse a kérelem-ígéret modult a következő parancs beírásával:
+
+    ```console
+    npm install --save request-promise
+    ```
 
 ## <a name="change-model-programmatically"></a>Modell programozott módosítása
 
 1. Hozzon létre egy új fájlt `model.js` néven. Adja hozzá a következő kódot:
 
     ```javascript
-    var request = require('request');
-    var requestpromise = require('request-promise');
+    var request = require('request-promise');
 
-    // 32 character key value
-    const LUIS_authoringKey = "YOUR-KEY";
+    //////////
+    // Values to modify.
 
-    // endpoint example: your-resource-name.api.cognitive.microsoft.com
-    const LUIS_endpoint = "YOUR-ENDPOINT";
+    // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
     const LUIS_appId = "YOUR-APP-ID";
+
+    // YOUR-AUTHORING-KEY: Your LUIS authoring key, 32 character value.
+    const LUIS_authoringKey = "YOUR-AUTHORING-KEY";
+
+    // YOUR-AUTHORING-ENDPOINT: Replace this with your authoring key endpoint.
+    // For example, "https://your-resource-name.api.cognitive.microsoft.com/"
+    const LUIS_endpoint = "YOUR-AUTHORING-ENDPOINT";
+
+    // NOTE: Replace this your version number. The Pizza app uses a version number of "0.1".
     const LUIS_versionId = "0.1";
-    const addUtterancesURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
-    const addTrainURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
+    //////////
+
+    const addUtterancesURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
+    const addTrainURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
 
     const utterances = [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
+        {
+            'text': 'order a pizza',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
                 {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
+                    'entityName': 'Order',
+                    'startCharIndex': 6,
+                    'endCharIndex': 12
                 }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ];
+            ]
+        },
+        {
+            'text': 'order a large pepperoni pizza',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
+                {
+                    'entityName': 'Order',
+                    'startCharIndex': 6,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'FullPizzaWithModifiers',
+                    'startCharIndex': 6,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'PizzaType',
+                    'startCharIndex': 14,
+                    'endCharIndex': 28
+                },
+                {
+                    'entityName': 'Size',
+                    'startCharIndex': 8,
+                    'endCharIndex': 12
+                }
+            ]
+        },
+        {
+            'text': 'I want two large pepperoni pizzas on thin crust',
+            'intentName': 'ModifyOrder',
+            'entityLabels': [
+                {
+                    'entityName': 'Order',
+                    'startCharIndex': 7,
+                    'endCharIndex': 46
+                },
+                {
+                    'entityName': 'FullPizzaWithModifiers',
+                    'startCharIndex': 7,
+                    'endCharIndex': 46
+                },
+                {
+                    'entityName': 'PizzaType',
+                    'startCharIndex': 17,
+                    'endCharIndex': 32
+                },
+                {
+                    'entityName': 'Size',
+                    'startCharIndex': 11,
+                    'endCharIndex': 15
+                },
+                {
+                    'entityName': 'Quantity',
+                    'startCharIndex': 7,
+                    'endCharIndex': 9
+                },
+                {
+                    'entityName': 'Crust',
+                    'startCharIndex': 37,
+                    'endCharIndex': 46
+                }
+            ]
+        }
+    ];
 
+    // Main function.
     const main = async() =>{
 
-
-        await addUtterance();
+        await addUtterances(utterances);
         await train("POST");
-        await trainStatus("GET");
+        await train("GET");
 
     }
-    const addUtterance = async () => {
+
+    // Adds the utterances to the model.
+    const addUtterances = async (utterances) => {
 
         const options = {
             uri: addUtterancesURI,
@@ -86,9 +171,12 @@ ms.locfileid: "77368393"
             body: utterances
         };
 
-        const response = await requestpromise(options)
-        console.log(response.body);
+        const response = await request(options)
+        console.log("addUtterance:\n" + JSON.stringify(response, null, 2));
     }
+
+    // With verb === "POST", sends a training request.
+    // With verb === "GET", obtains the training status.
     const train = async (verb) => {
 
         const options = {
@@ -101,35 +189,35 @@ ms.locfileid: "77368393"
             body: null // The body can be empty for a training request
         };
 
-        const response = await requestpromise(options)
-        console.log(response.body);
+        const response = await request(options)
+        console.log("train " + verb + ":\n" + JSON.stringify(response, null, 2));
     }
 
     // MAIN
-    main().then(() => console.log("done")).catch((err)=> console.log(err returned));
+    main().then(() => console.log("done")).catch((err)=> console.log(err));
     ```
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
     |Információ|Cél|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres szerzői kulcs.|
-    |`YOUR-ENDPOINT`| Az authoring URL-végpontja. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
+    |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
+    |`YOUR-AUTHORING-ENDPOINT`| Az authoring URL-végpontja. Például: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
 
     A hozzárendelt kulcsok és erőforrások a LUIS portálon láthatók a kezelés szakasz Azure- **erőforrások** lapján. Az alkalmazás-azonosító az **Alkalmazásbeállítások** lapon, ugyanazon kezelés szakaszban érhető el.
 
-1. Ha a parancssor ugyanabban a címtárban található, ahol a fájlt létrehozta, a következő parancs futtatásával futtassa a fájlt:
+1. A parancssorba írja be a következő parancsot a projekt futtatásához:
 
     ```console
     node model.js
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből.
+Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

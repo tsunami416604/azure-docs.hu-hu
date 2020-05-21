@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 707838690fcb3c7c08cc49a1ed720083ebfe3f0c
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 198fbfc42ee4002b1b86b95f7a0b864f9a658025
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838078"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651513"
 ---
-|Name |Description |Hatás (ok) |Verzió |GitHub |
+|Name |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Key Vault diagnosztikai beállításainak üzembe helyezése az Event hub-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Központilag telepíti a Key Vault diagnosztikai beállításait egy regionális Event hubhoz, ha bármely olyan Key Vault, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |deployIfNotExists |2.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json) |
 |[A Key Vault lévő diagnosztikai naplókat engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Diagnosztikai naplók engedélyezésének naplózása. Ez lehetővé teszi, hogy újra létrehozza a vizsgálat céljára szolgáló tevékenység-nyomvonalat, amikor biztonsági incidens következik be, vagy ha a hálózat biztonsága sérül |AuditIfNotExists, letiltva |2.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |

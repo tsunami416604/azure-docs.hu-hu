@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c9e594af96fd43bc03f67caa06f585ab57b4b6e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591777"
+ms.locfileid: "83643470"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -70,6 +70,9 @@ Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban.
     1. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Linux-sablonos virtuális gép esetén válassza ki, hogy SSH vagy RDP használatával szeretne-e csatlakozni (ha az RDP engedélyezve van).
     3. Telepítse és konfigurálja az osztályhoz szükséges szoftvereket a sablon virtuális gépén. 
     4. **Állítsa le** a sablon virtuális gépet.  
+
+    > [!NOTE]
+    > A sablon virtuális gépei a futtatáskor **költségekkel** járnak, ezért győződjön meg arról, hogy a sablon virtuális gépe leáll, ha nincs szükség a futtatására. 
 
 ## <a name="publish-the-template-vm"></a>A virtuálisgép-sablon közzététele
 Ebben a lépésben közzéteszi a sablon virtuális gépet. Amikor közzéteszi a sablon virtuális gépet, Azure Lab Services létrehozza a virtuális gépeket a laborban a sablon használatával. A virtuális gépek konfigurációja megegyezik a sablonéval.
@@ -155,7 +158,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy labort az osztályhoz az Azure-ban. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

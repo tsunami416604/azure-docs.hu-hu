@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589278"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696919"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -99,7 +99,7 @@ Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket k
 
 ### <a name="anonymous-access"></a>[Névtelen hozzáférés](#tab/public-access)
 
-A [névtelen hozzáférést engedélyező](/azure/storage/blobs/storage-manage-access-to-resources.md)Azure Storage-fiókokban elhelyezett, nyilvánosan elérhető fájlokat is elérheti.
+A [névtelen hozzáférést engedélyező](/azure/storage/blobs/storage-manage-access-to-resources)Azure Storage-fiókokban elhelyezett, nyilvánosan elérhető fájlokat is elérheti.
 
 ---
 
@@ -339,7 +339,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d66d226554c4b6f84e3040cdd7c3edea0a5f054
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982173"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683356"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -29,7 +29,7 @@ ms.locfileid: "82982173"
 Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő *átalakításával* kapcsolatban lásd: az adatfolyam és a huzavona-adatfolyam [(előzetes verzió)](wrangling-data-flow-overview.md) [leképezése](concepts-data-flow-overview.md) .
 
 > [!NOTE]
-> Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md). 
+> Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](introduction.md). 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -49,7 +49,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
  
-   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például ** &lt;sajátneve&gt;ADFTutorialDataFactory**), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Az Azure-beli adatgyár nevének *globálisan egyedinek*kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például ** &lt; sajátneve &gt; ADFTutorialDataFactory**), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/doc-common-process/name-not-available-error.png)
 1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
@@ -125,7 +125,7 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki az **EMP. txt** fájlt, majd kattintson az **OK gombra**.
     
-    e. Kattintson az **OK** gombra.   
+    e. Válassza az **OK** lehetőséget.   
 
     ![InputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket:  
@@ -140,7 +140,7 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     e. A **fájl elérési útja**területen adja meg az **adftutorial/output**értéket. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység futásidőben hozza létre.
 
-    f. Kattintson az **OK** gombra.   
+    f. Válassza az **OK** lehetőséget.   
 
     ![OutputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása 
@@ -220,5 +220,5 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

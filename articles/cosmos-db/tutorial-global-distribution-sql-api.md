@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz'
-description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be Azure Cosmos DB globális terjesztést az SQL API-val a .net, a Java, a Python és számos más SDK használatával'
+description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be Azure Cosmos DB globális terjesztést az SQL API-val a .NET, a Java, a Python és számos más SDK használatával'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9fbd42b6f4ef1afd0dfb4c47b6807105ff3810ca
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80295528"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677628"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
@@ -28,7 +28,7 @@ Ez a cikk a következő feladatokat mutatja be:
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Csatlakozás egy kívánt régióhoz az SQL API használatával
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a>Csatlakozás egy előnyben részesített régióhoz az SQL API használatával
 
 A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Ezt a kapcsolódási szabályzat beállításával lehet megtenni. Az SQL SDK az Azure Cosmos DB-fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján fogja kiválasztani az optimális végpontot az írási és olvasási műveletek végrehajtásához.
 
@@ -175,7 +175,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után változik,
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653261"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
 
@@ -118,6 +118,9 @@ A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtath
 
 Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlakoztathatja a helyreállítási pontot, és visszaállíthatja a fájlokat.
 
+>[!NOTE]
+> [Itt](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) tekintheti meg, hogy a folytatás előtt futtathatja-e a parancsfájlt a virtuális gépen.
+
 1. Csatlakozzon a virtuális géphez SSH-val. Cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére az alább látható módon:
 
     ```bash
@@ -189,7 +192,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy helyreállítási pontot csatlakoztatott egy virtuális géphez, és visszaállította egy webkiszolgáló fájljait. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376460"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652498"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -34,7 +34,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 - Windows vagy macOS rendszerű számítógép, <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
   - Ha Windows rendszeren fut, <a href="https://git-scm.com/download/win" target="_blank">a git for Windows</a> és a <a href="https://git-lfs.github.com/">git LFS</a>is szüksége lesz.
-  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa a `brew install git` és `brew install git-lfs`a parancsot.
+  - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ezután futtassa `brew install git` a és a parancsot `brew install git-lfs` .
   - A NDK minta létrehozásához telepítenie kell a NDK és a CMak 3,6-es vagy újabb SDK-eszközöket is a Android Studio-ben.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
   - Előfordulhat, hogy a számítógépe számára további eszközillesztők szükségesek az Android-eszközkel való kommunikációhoz. További információért és útmutatásért lásd [itt](https://developer.android.com/studio/run/device.html) .
@@ -52,7 +52,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Töltse `arcore_c_api.h` le [innen, és helyezze](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) el `Android\NDK\libraries\include`a következő helyen:.
+Töltse `arcore_c_api.h` le [innen](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) , és helyezze el a következő helyen: `Android\NDK\libraries\include` .
 
 Az újonnan klónozott tárházból inicializálja az almodulokat a következő parancs futtatásával:
 
@@ -66,11 +66,11 @@ Nyissa meg az Android Studiót.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/Java/`projektet a következő helyen:.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a projektet a következő helyen: `Android/Java/` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a `Android/NDK/`projektet a következő helyen:.
+Válassza a **meglévő Android Studio projekt megnyitása** lehetőséget, és válassza ki a projektet a következő helyen: `Android/NDK/` .
 
 ---
 
@@ -82,17 +82,21 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 Nyissa meg a következő fájlt: `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
+
+Keresse meg `public AzureSpatialAnchorsManager(Session arCoreSession)` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Nyissa meg a következő fájlt: `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
+
+Keresse meg `AzureSpatialAnchorsApplication::StartCloudSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
 
 ---
 

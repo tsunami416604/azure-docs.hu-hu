@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3bf7ff668584a78fea6e2d787e96f36a20f12e37
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197628"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696829"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
@@ -89,7 +89,9 @@ A CETAS működéséhez rendelkeznie kell a mappa tartalmának listázásához �
 
 Ezek a példák a CETAS használatával mentik el az év és a population_ds adatforrásban található aggregated_data mappában lévő összes összesített sokaságot.
 
-Ez a minta a korábban létrehozott hitelesítő adatokra, adatforrásra és külső fájlformátumra támaszkodik. Tekintse meg a [külső táblákat](develop-tables-external-tables.md) tartalmazó dokumentumot. Ha ugyanazon az adatforráson belül más mappába szeretné menteni a lekérdezési eredményeket, módosítsa a LOCATION argumentumot. Ha másik Storage-fiókba kívánja menteni az eredményeket, hozzon létre és használjon egy másik adatforrást DATA_SOURCE argumentumhoz.
+Ez a minta a korábban létrehozott hitelesítő adatokra, adatforrásra és külső fájlformátumra támaszkodik. Tekintse meg a [külső táblákat](develop-tables-external-tables.md) tartalmazó dokumentumot. Ha ugyanazon az adatforráson belül más mappába szeretné menteni a lekérdezési eredményeket, módosítsa a LOCATION argumentumot. 
+
+Ha másik Storage-fiókba kívánja menteni az eredményeket, hozzon létre és használjon egy másik adatforrást DATA_SOURCE argumentumhoz.
 
 > [!NOTE]
 > A következő minták a nyilvános Azure Open Storage-fiókot használják. Csak olvasható. A lekérdezések végrehajtásához meg kell adnia azt az adatforrást, amelyhez írási engedéllyel rendelkezik.
@@ -114,7 +116,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Az alábbi minta egy külső táblázatot használ a CETAS forrásaként. A korábban létrehozott hitelesítő adatokra, adatforrásra, külső fájlformátumra és külső táblára támaszkodik. Tekintse meg a [külső táblákat](develop-tables-external-tables.md) tartalmazó dokumentumot.
+Az alábbi minta egy külső táblát használ a CETAS forrásaként. A korábban létrehozott hitelesítő adatokra, adatforrásra, külső fájlformátumra és külső táblára támaszkodik. Tekintse meg a [külső táblákat](develop-tables-external-tables.md) tartalmazó dokumentumot.
 
 ```sql
 -- use CETAS with select from external table
@@ -142,7 +144,7 @@ A CETAS a következő SQL-adattípusokkal rendelkező eredményhalmaz tárolás�
 - varbinary
 - char
 - varchar
-- dátum
+- date
 - time
 - datetime2
 - tizedes tört
@@ -155,7 +157,8 @@ A CETAS a következő SQL-adattípusokkal rendelkező eredményhalmaz tárolás�
 - tinyint
 - bit
 
-A LOBs nem használható a CETAS.
+> [!NOTE]
+> A LOBs nem használható a CETAS.
 
 A következő adattípusok nem használhatók a CETAS kiválasztása részben:
 
@@ -170,4 +173,4 @@ A következő adattípusok nem használhatók a CETAS kiválasztása részben:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Kipróbálhatja a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.
+Kipróbálhatja Apache Spark lekérdezését [Az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

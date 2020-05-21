@@ -8,16 +8,16 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce1168f8f95e01b6ac05e673636e02356043cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691074"
+ms.locfileid: "83713811"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -31,6 +31,9 @@ A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számár
 
 ## <a name="pre-requisites"></a>Előfeltételek  
 Az új v2-végpont használatához [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) vagy újabb verziót kell használnia, és az alábbi üzembe helyezési lépések végrehajtásával engedélyezheti a v2-végpontot a Azure ad Connect-kiszolgálóhoz.   
+
+>[!NOTE]
+>Ez a nyilvános előzetes verzió jelenleg csak az Azure globális felhőben érhető el, és nem érhető el az [országos felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)számára.
 
 ### <a name="public-preview-limitations"></a>A nyilvános előzetes verzió korlátozásai  
 Habár ez a kiadás kiterjedt tesztelésen esett át, még problémák merülhetnek fel. A nyilvános előzetes kiadás egyik célja, hogy megkeresse és javítsa ki az ilyen problémákat.  
@@ -193,7 +196,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 **K: a következő mérföldkőre való idő?**  
 </br>A nyilvános előzetes verzió funkcióit a további mérföldkövek elérése előtt lehet visszavonni és valószínűleg újratervezni.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

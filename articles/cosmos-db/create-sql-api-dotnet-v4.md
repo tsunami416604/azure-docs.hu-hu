@@ -1,26 +1,26 @@
 ---
-title: Azure Cosmos DB SQL API-erőforrások kezelése a .net v4 SDK-val
-description: Útmutató a konzolos alkalmazások .net v4 SDK használatával történő létrehozásához Azure Cosmos DB SQL API-fiók erőforrásainak kezeléséhez.
-author: ealsur
-ms.author: maquaran
+title: Azure Cosmos DB SQL API-erőforrások kezelése a .NET v4 SDK-val
+description: Útmutató a konzolos alkalmazások .NET v4 SDK használatával történő létrehozásához Azure Cosmos DB SQL API-fiók erőforrásainak kezeléséhez.
+author: anfeldma-ms
+ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/10/2020
-ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: eabcc53c03b156088179d5ab7216d8a3409a7b3e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77585934"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659130"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Gyors útmutató: konzol-alkalmazás létrehozása a .net v4 SDK használatával Azure Cosmos DB SQL API-fiók erőforrásainak kezeléséhez.
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Gyors útmutató: konzol-alkalmazás létrehozása a .NET v4 SDK használatával Azure Cosmos DB SQL API-fiók erőforrásainak kezeléséhez.
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -34,26 +34,26 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 * Adatok lekérdezése 
 * Az adatbázis törlése
 
-[Könyvtár forráskód](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) | [-csomagja (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
+[Könyvtár forráskódja](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/) , vagy ingyenes Azure-előfizetés nélkül is [kipróbálhat Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) 
-* [Net Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). A futtatásával `dotnet --version`ellenőrizheti, hogy melyik verzió érhető el a környezetben.
+* [Net Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). A futtatásával ellenőrizheti, hogy melyik verzió érhető el a környezetben `dotnet --version` .
 
 ## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti egy Azure Cosmos-fiók létrehozásán és egy olyan projekt beállításán, amely Azure Cosmos DB SQL API-ügyfél-függvénytárat használ a .NET-hez az erőforrások kezeléséhez. A cikkben ismertetett mintakód létrehoz egy adatbázist és `FamilyDatabase` egy családtagot (az egyes családtagok egy elem) az adott adatbázison belül. Minden családtag olyan tulajdonságokkal rendelkezik, mint `Id, FamilyName, FirstName, LastName, Parents, Children, Address,`például a. A `LastName` tulajdonságot a tároló partíciós kulcsaként használja a rendszer. 
+Ez a szakasz végigvezeti egy Azure Cosmos-fiók létrehozásán és egy olyan projekt beállításán, amely Azure Cosmos DB SQL API-ügyfél-függvénytárat használ a .NET-hez az erőforrások kezeléséhez. A cikkben ismertetett mintakód létrehoz egy `FamilyDatabase` adatbázist és egy családtagot (az egyes családtagok egy elem) az adott adatbázison belül. Minden családtag olyan tulajdonságokkal rendelkezik, mint például a `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` . A `LastName` tulajdonságot a tároló partíciós kulcsaként használja a rendszer. 
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Azure Cosmos-fiók létrehozása
 
 Ha az [ingyenes kipróbálás Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) lehetőséget használja az Azure Cosmos-fiók létrehozásához, létre kell hoznia egy **SQL API**típusú Azure Cosmos db fiókot. Már létrehoztak egy Azure Cosmos DB tesztelési fiókot. Nem kell explicit módon létrehoznia a fiókot, így kihagyhatja ezt a szakaszt, és átléphet a következő szakaszra.
 
-Ha rendelkezik saját Azure-előfizetéssel, vagy ingyenes előfizetést hozott létre, explicit módon hozzon létre egy Azure Cosmos-fiókot. A következő kód egy Azure Cosmos-fiókot hoz létre a munkamenet konzisztenciájával. A fiók a és `South Central US` `North Central US`a-ben replikálódik.  
+Ha rendelkezik saját Azure-előfizetéssel, vagy ingyenes előfizetést hozott létre, explicit módon hozzon létre egy Azure Cosmos-fiókot. A következő kód egy Azure Cosmos-fiókot hoz létre a munkamenet konzisztenciájával. A fiók a és a-ben replikálódik `South Central US` `North Central US` .  
 
 Az Azure Cosmos-fiók létrehozásához Azure Cloud Shell használható. Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár a Bash, akár a PowerShell) kiválasztásának lehetőségével. Ebben a rövid útmutatóban válassza a **bash** mód lehetőséget. Azure Cloud Shell is szükség van egy Storage-fiókra, ha a rendszer kéri, létrehozhat egyet.
 
-Válassza az alábbi kód melletti **kipróbálás** gombot, válassza a **bash** mód lehetőséget, válassza a **Storage-fiók létrehozása** és a Cloud Shellra való bejelentkezés lehetőséget. Ezután másolja és illessze be a következő kódot az Azure Cloud shellbe, és futtassa. Az Azure Cosmos-fiók nevének globálisan egyedinek kell lennie, hogy `mysqlapicosmosdb` a parancs futtatása előtt frissítse az értéket.
+Válassza az alábbi kód melletti **kipróbálás** gombot, válassza a **bash** mód lehetőséget, válassza a **Storage-fiók létrehozása** és a Cloud Shellra való bejelentkezés lehetőséget. Ezután másolja és illessze be a következő kódot a Azure Cloud Shell és futtatásához. Az Azure Cosmos-fiók nevének globálisan egyedinek kell lennie, hogy a `mysqlapicosmosdb` parancs futtatása előtt frissítse az értéket.
 
 ```azurecli-interactive
 
@@ -84,7 +84,7 @@ Az Azure Cosmos-fiók létrehozása eltarthat egy ideig, amint a művelet sikere
 
 ### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>Új .NET-alkalmazás létrehozása
 
-Hozzon létre egy új .NET-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni.  A következő DotNet új parancs futtatásával hozzon létre egy új alkalmazást a `todo`névvel. A--langVersion paraméter beállítja a LangVersion tulajdonságot a létrehozott projektfájl számára.
+Hozzon létre egy új .NET-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. Nyissa meg a Windows-parancssort vagy egy terminál-ablakot a helyi számítógépről. A következő szakaszban lévő összes parancsot a parancssorból vagy a terminálból fogja futtatni.  A következő DotNet új parancs futtatásával hozzon létre egy új alkalmazást a névvel `todo` . A--langVersion paraméter beállítja a LangVersion tulajdonságot a létrehozott projektfájl számára.
 
    ```bash
    dotnet new console –langVersion:8 -n todo
@@ -149,18 +149,18 @@ A különböző entitások hierarchiájának megismeréséhez tekintse meg az [a
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Kódpéldák
 
-A cikkben ismertetett mintakód egy családi adatbázist hoz létre Azure Cosmos DBban. A család adatbázisa olyan családi adatokat tartalmaz, mint például a név, a lakcím, a hely, a társított szülők, a gyermekek és a háziállatok. Mielőtt feltölti az adatokat az Azure Cosmos-fiókjába, definiálja egy családi elem tulajdonságait. Hozzon létre egy új `Family.cs` , nevű osztályt a minta-alkalmazás legfelső szintjén, és adja hozzá a következő kódot:
+A cikkben ismertetett mintakód egy családi adatbázist hoz létre Azure Cosmos DBban. A család adatbázisa olyan családi adatokat tartalmaz, mint például a név, a lakcím, a hely, a társított szülők, a gyermekek és a háziállatok. Mielőtt feltölti az adatokat az Azure Cosmos-fiókjába, definiálja egy családi elem tulajdonságait. Hozzon létre egy új, nevű osztályt `Family.cs` a minta-alkalmazás legfelső szintjén, és adja hozzá a következő kódot:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Family.cs)]
 
 ### <a name="add-the-using-directives--define-the-client-object"></a>Adja hozzá a using direktíva & a Client objektum megadása
 
-A projekt könyvtárában nyissa meg `Program.cs` a fájlt a szerkesztőben, és adja hozzá a következő használati irányelveket az alkalmazás tetején:
+A projekt könyvtárában nyissa meg a `Program.cs` fájlt a szerkesztőben, és adja hozzá a következő használati irányelveket az alkalmazás tetején:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Usings)]
 
 
-Adja hozzá a következő globális változókat `Program` az osztályban. Ezek közé tartozik a végpont és az engedélyezési kulcsok, az adatbázis neve és a létrehozandó tároló. Ügyeljen rá, hogy a végpont és az engedélyezési kulcsok értékét a környezetnek megfelelően cserélje le. 
+Adja hozzá a következő globális változókat az `Program` osztályban. Ezek közé tartozik a végpont és az engedélyezési kulcsok, az adatbázis neve és a létrehozandó tároló. Ügyeljen rá, hogy a végpont és az engedélyezési kulcsok értékét a környezetnek megfelelően cserélje le. 
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Constants)]
 
@@ -170,31 +170,31 @@ Végül cserélje le a `Main` metódust:
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása 
 
-Adja meg `CreateDatabaseAsync` a metódust `program.cs` a osztályon belül. Ez a metódus hozza `FamilyDatabase` létre a ha még nem létezik.
+Adja meg a `CreateDatabaseAsync` metódust a `program.cs` osztályon belül. Ez a metódus hozza létre a `FamilyDatabase` Ha még nem létezik.
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateDatabaseAsync)]
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
-Adja meg `CreateContainerAsync` a metódust `Program` a osztályon belül. Ez a metódus hozza `FamilyContainer` létre a ha még nem létezik. 
+Adja meg a `CreateContainerAsync` metódust a `Program` osztályon belül. Ez a metódus hozza létre a `FamilyContainer` Ha még nem létezik. 
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateContainerAsync)]
 
 ### <a name="create-an-item"></a>Elemek létrehozása
 
-Hozzon létre egy családi tételt a `AddItemsToContainerAsync` metódus hozzáadásával a következő kóddal. Egy tétel létrehozásához `CreateItemAsync` használhatja `UpsertItemAsync` a vagy metódust:
+Hozzon létre egy családi tételt a metódus hozzáadásával a `AddItemsToContainerAsync` következő kóddal. `CreateItemAsync` `UpsertItemAsync` Egy tétel létrehozásához használhatja a vagy metódust:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=AddItemsToContainerAsync)]
 
 ### <a name="query-the-items"></a>Elemek lekérdezése
 
-Egy elem beszúrása után futtathat egy lekérdezést, amely az "Andersen" család részleteit kéri le. A következő kód bemutatja, hogyan hajthatja végre a lekérdezést közvetlenül az SQL-lekérdezés használatával. Az "Anderson" család részleteit lekérdező SQL-lekérdezés `SELECT * FROM c WHERE c.LastName = 'Andersen'`a következő:. Adja meg `QueryItemsAsync` a metódust `Program` a osztályon belül, és adja hozzá a következő kódot:
+Egy elem beszúrása után futtathat egy lekérdezést, amely az "Andersen" család részleteit kéri le. A következő kód bemutatja, hogyan hajthatja végre a lekérdezést közvetlenül az SQL-lekérdezés használatával. Az "Anderson" család részleteit lekérdező SQL-lekérdezés a következő: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Adja meg a `QueryItemsAsync` metódust a `Program` osztályon belül, és adja hozzá a következő kódot:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=QueryItemsAsync)]
 
 ### <a name="replace-an-item"></a>Elem cseréje 
 
-Olvassa el a termékcsaládot, majd frissítse a `ReplaceFamilyItemAsync` metódus hozzáadásával a következő kóddal.
+Olvassa el a termékcsaládot, majd frissítse a metódus hozzáadásával a `ReplaceFamilyItemAsync` következő kóddal.
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=ReplaceFamilyItemAsync)]
 
@@ -206,11 +206,11 @@ A `DeleteFamilyItemAsync` metódusnak a következő kóddal való hozzáadásáv
 
 ### <a name="delete-the-database"></a>Az adatbázis törlése 
 
-Végül törölheti az adatbázist a `DeleteDatabaseAndCleanupAsync` metódus hozzáadásával a következő kóddal:
+Végül törölheti az adatbázist a metódus hozzáadásával `DeleteDatabaseAndCleanupAsync` a következő kóddal:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
-Miután hozzáadta az összes szükséges metódust, mentse `Program` a fájlt. 
+Miután hozzáadta az összes szükséges metódust, mentse a `Program` fájlt. 
 
 ## <a name="run-the-code"></a>A kód futtatása
 
@@ -245,7 +245,7 @@ Az alkalmazás futtatásakor a következő kimenet jön létre. A Azure Portalba
 
 Az adatok létrejöttének ellenőrzéséhez jelentkezzen be a Azure Portalba, és tekintse meg az Azure Cosmos-fiókban szükséges elemeket. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell az Azure Cosmos-fiók és a hozzá tartozó erőforráscsoport eltávolításához. Az alábbi parancs bemutatja, hogyan törölheti az erőforráscsoportot az Azure CLI használatával:
 
@@ -253,7 +253,7 @@ Ha már nincs rá szükség, használhatja az Azure CLI-t vagy Azure PowerShell 
 az group delete -g "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre egy adatbázist és egy tárolót egy .NET Core-alkalmazás használatával. Mostantól a következő cikk utasításait követve importálhat további információkat az Azure Cosmos-fiókjába. 
 

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 0b934e327a4c1ed18c682f909b2d82e85d61125f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3502fda1b924aa5351e7edab8e8b712fd0e6bf2c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008420"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701226"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI használatával
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést a CPU terhelésének változása alapján.
@@ -43,7 +43,5 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings) | Automatikus méretezési szabályokat hoz létre, és alkalmazza azokat egy virtuálisgép-méretezési csoporton. |
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
-
-A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.

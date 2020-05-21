@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 848be71764bb503879c34ed6667a43909ef19c13
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685334"
+ms.locfileid: "83713437"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
 
@@ -30,7 +30,7 @@ Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy 
 
 Az alábbi táblázatban található parancsmagok automatizálási ütemterveket hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik. 
 
-| Parancsmagok | Description |
+| Parancsmagok | Leírás |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Lekéri az ütemtervet. |
 | [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Ütemezett runbookok beolvasása. |
@@ -196,7 +196,7 @@ Remove-AzAutomationSchedule -AutomationAccountName $automationAccountName `
 -Name $scheduleName -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni az ütemtervek eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
-* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).
+* [Modulok kezelése az Azure Automationben](modules.md)
+* [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: f36a76187538d93b57d2d3f5973408f141271f67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dfac9a56e3bc299fbb0651ae1cd5644eba83267
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424110"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645818"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure szinapszis Analytics IP-tűzfalszabályok (előzetes verzió)
 
@@ -42,9 +42,9 @@ Győződjön meg arról, hogy a hálózat és a helyi számítógép tűzfala le
 
 Emellett engedélyeznie kell a kimenő kommunikációt a 53-es UDP-porton a szinapszis studióhoz. Ha a SSMS és a Power BI eszközzel szeretne csatlakozni, engedélyeznie kell a kimenő kommunikációt az 1433-as TCP-porton.
 
-Ha az alapértelmezett átirányítási házirend-beállítást használja, lehetséges, hogy engedélyeznie kell a kimenő kommunikációt a további portokon. A kapcsolatok házirendjeiről itt olvashat bővebben.
+Ha az alapértelmezett átirányítási házirend-beállítást használja, lehetséges, hogy engedélyeznie kell a kimenő kommunikációt a további portokon. A kapcsolatok házirendjeiről [itt](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

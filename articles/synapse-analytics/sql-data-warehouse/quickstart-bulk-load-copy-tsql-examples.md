@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7d6a0d289953376c6535f2401c9c77edb3205df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7f2d77f3b174d8a00df9f7a93b6fef80b9cd29e8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994865"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647601"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -28,7 +28,7 @@ A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok tá
 |  Azure Blob Storage  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |              SAS/KULCS              |              SAS/KULCS              |
 | Azure Data Lake Gen2 | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |
 
-## <a name="a-storage-account-key-with-lf-as-the-row-terminator"></a>A. Storage-fiók kulcsa a LF-rel, a sor lezáró sorként
+## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Storage-fiók kulcsa a LF-rel a lezáró sor (Unix stílusú új sor)
 
 
 ```sql
@@ -47,7 +47,7 @@ WITH (
 >
 > - Használja a hexadecimális értéket (0x0A) a soremelés/sortörési karakter megadásához. Megjegyzés: a COPY utasítás a "\n" karakterláncot "\r\n"-ként értelmezi (a kocsivissza karakter).
 
-## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator"></a>B. Közös hozzáférésű aláírások (SAS) a CRLF, mint a sorok lezárója
+## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. Közös hozzáférésű aláírások (SAS) a CRLF (Windows Style New line)
 ```sql
 COPY INTO target_table
 FROM 'https://adlsgen2account.dfs.core.windows.net/myblobcontainer/folder1/'
@@ -154,7 +154,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Az OAuth 2,0 token végpont **v1** -es verziójának használata
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

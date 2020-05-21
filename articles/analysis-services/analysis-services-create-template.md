@@ -8,12 +8,12 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: d292500c5e26d3c07ff2402964166b3928cc7e44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81384256"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697440"
 ---
 # <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Gyors útmutató: kiszolgáló Azure Resource Manager sablon létrehozása
 
@@ -32,7 +32,7 @@ Ez a rövid útmutató azt ismerteti, hogyan lehet létrehozni egy Analysis Serv
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)származik.
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
 A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers) erőforrás egy tűzfalszabály használatával. 
 
@@ -40,7 +40,7 @@ A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](https://do
 
 1. A következő üzembe helyezés az Azure-ban hivatkozásra kattintva jelentkezzen be az Azure-ba, és nyisson meg egy sablont. A sablon Analysis Services kiszolgáló-erőforrás létrehozására, valamint a szükséges és választható tulajdonságok megadására szolgál.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json"><img src="./media/analysis-services-create-template/deploy-azure.png" alt="deploy to azure"/></a>
+   [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
@@ -66,7 +66,7 @@ A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](https://do
 
 Az Azure Portal vagy a Azure PowerShell segítségével ellenőrizze, hogy az erőforráscsoport és a kiszolgáló erőforrás létrejött-e.
 
-#### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -76,7 +76,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, használja az Azure Portalt, az Azure CLI-t vagy Azure PowerShell az erőforráscsoport és a kiszolgálói erőforrás törléséhez.
 
@@ -97,7 +97,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>További lépések
+---
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Azure Resource Manager sablont használt egy új erőforráscsoport és egy Azure Analysis Services Server-erőforrás létrehozásához. Miután létrehozta a kiszolgálói erőforrást a sablon használatával, vegye figyelembe a következőket:
 - [Gyors útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)

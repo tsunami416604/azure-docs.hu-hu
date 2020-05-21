@@ -1,5 +1,5 @@
 ---
-title: Előrejelzési kerékpár-megosztási igény automatizált ML-kísérlettel
+title: 'Oktatóanyag: kereslet-előrejelzési & AutoML'
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan hozhatja be és helyezheti üzembe a kereslet-előrejelzési modellt a Azure Machine Learning Studio automatizált gépi tanulás szolgáltatásával.
 services: machine-learning
@@ -9,24 +9,27 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77088241"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656565"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Oktatóanyag: az előrejelzési kerékpár-megosztási igény automatikus gépi tanulással
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Ebben az oktatóanyagban az automatikus gépi tanulást vagy az automatikus ML-t használja a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához a bike Sharing szolgáltatáshoz való bérleti igény előrejelzéséhez.
+
+Példa besorolási modellre [: oktatóanyag: besorolási modell létrehozása AUTOMATIZÁLT ml-vel Azure Machine Learningban](tutorial-first-experiment-automated-ml.md).
 
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
 > * Adatkészlet létrehozása és betöltése.
 > * Automatikus ML-kísérlet konfigurálása és futtatása.
+> * Előrejelzési beállítások megadása.
 > * A kísérlet eredményeinek megismerése.
 > * A legjobb modell üzembe helyezése.
 
@@ -75,10 +78,10 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
         Fájlformátum|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
-        Elválasztó|Egy vagy több karakter, amely egy egyszerű szövegben vagy&nbsp; más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
+        Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Fejlécek használata az első fájlból
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
 
     1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. 
     
@@ -110,7 +113,7 @@ Miután betöltötte és konfigurálta az adatait, állítsa be a távoli szám�
         Mező | Leírás | Az oktatóanyag értéke
         ----|---|---
         Számítási név |A számítási környezet azonosítására szolgáló egyedi név.|Bike – számítás
-        Virtuális&nbsp;gép&nbsp;mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
+        Virtuális &nbsp; gép &nbsp; mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
         Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
   
         1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
@@ -129,19 +132,19 @@ A Machine learning-feladattípus és a konfigurációs beállítások megadásá
 
 1. Válassza ki a **Date (dátum** ) **oszlopot az idő oszlopban** , és hagyja üresen a **Group By oszlop (ok)** értékét. 
 
-    1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
+    1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezekkel a beállításokkal hatékonyabban vezérelheti a betanítási feladatot, és megadhatja az előrejelzés beállításait. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
   
-        További&nbsp;konfigurációk|Leírás|Az&nbsp;&nbsp;oktatóanyag értéke
+        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|Normalizált legfelső szintű, négyzetes hiba
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
-        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Bekapcsolás
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Extrém véletlenszerű fák
-        További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési horizont**_: a jövőben várhatóan mennyi idő elteltével érdemes <br> _**Előrejelzési cél késései:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_: megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum*érték lesz létrehozva. |Előrejelzési horizont: 14 <br> &nbsp;Előrejelzési&nbsp;cél késései: nincs <br> Cél&nbsp;&nbsp;gördülési&nbsp;ablakának mérete: nincs
-        Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási&nbsp;feladatok&nbsp;időpontja (óra): 3 <br> Metrika&nbsp;pontszámának&nbsp;küszöbértéke: nincs
-        Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres&nbsp;keresztek ellenőrzése <br> <br> Érvényességek száma: 5
-        Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| Egyidejű&nbsp;&nbsp;ismétlések maximális száma: 6
+        További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési horizont**_: a jövőben várhatóan mennyi idő elteltével érdemes <br> _**Előrejelzési cél késései:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_: megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum*érték lesz létrehozva. |Előrejelzési horizont: 14 <br> Előrejelzési &nbsp; cél &nbsp; késései: nincs <br> Cél &nbsp; gördülési &nbsp; ablakának &nbsp; mérete: nincs
+        Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; időpontja (óra): 3 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
+        Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 5
+        Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;Egyidejű &nbsp; Ismétlések maximális száma: 6
         
         Kattintson a **Mentés** gombra.
 
@@ -197,7 +200,7 @@ Miután az üzembe helyezés sikeres volt, rendelkezik egy operatív webszolgál
 
 Folytassa a [**következő lépésekkel**](#next-steps) , ha többet szeretne megtudni az új webszolgáltatás használatáról, és tesztelje a jóslatokat a Power BI beépített Azure Machine learning-támogatásával.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a kísérlet során használt fájlok. Csak a központi telepítési fájlokat törölje, hogy csökkentse a költségeket a fiókjához, vagy ha meg szeretné őrizni a munkaterületet és a kísérletet. Ellenkező esetben törölje a teljes erőforráscsoportot, ha nem tervezi az egyik fájl használatát.  
 
@@ -215,7 +218,7 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az automatikus ML-t használta a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához és üzembe helyezéséhez, amely előre jelezi a bike Share bérleti igényét. 
 
@@ -224,6 +227,10 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Power BI támogatott sémát
 > [!div class="nextstepaction"]
 > [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
++ A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
++ További információ a [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]
 > Ez a kerékpáros megosztási adatkészlet módosult ehhez az oktatóanyaghoz. Ezt az adatkészletet egy [Kaggle-verseny](https://www.kaggle.com/c/bike-sharing-demand/data) részeként tették elérhetővé, és eredetileg a [Capital Bikeshare](https://www.capitalbikeshare.com/system-data)keresztül adták ki. Az [UCI Machine learning adatbázisban](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)is megtalálható.<br><br>

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400122"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673118"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Windows beszédfelismerési eszközökhöz készült SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. A beszélgetések átírásához csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédekhez a mikrofonos tömb geometriáját biztosító lineáris MIC-tömbök támogatottak.
 
@@ -48,19 +48,19 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha megnyílt, zárja be az üdvözlőképernyőt.
 
-1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl** > **új** > **Java-projekt**lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt**lehetőséget.
+1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **Java-projekt**lehetőség kiválasztásával. Ha nem érhető el, válassza a **projekt** , majd a **Java-projekt**lehetőséget.
 
 1. Elindul az **új Java-projekt** varázsló. **Tallózással keresse** meg a minta projekt helyét. Válassza a **Finish** (Befejezés) elemet.
 
    ![A New Java Project varázsló képernyőképe](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza a helyi menü**Konvertálás a Maven-re projektre** **parancsát.** >  Válassza a **Finish** (Befejezés) elemet.
+1. A **Package Explorerben**kattintson a jobb gombbal a projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát. Válassza a **Finish** (Befejezés) elemet.
 
    ![A Package Explorer képernyőképe](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
 1. Nyissa meg és szerkessze a pom.xml fájlt.
 
-    A fájl végén, `</project>`a záró címke, a létrehozás `repositories` és `dependencies` az elemek előtt az itt látható módon, és ellenőrizze, hogy `version` az megfelel-e az aktuális verziónak:
+    A fájl végén, a záró címke `</project>` , a létrehozás `repositories` és `dependencies` az elemek előtt az itt látható módon, és ellenőrizze, hogy az megfelel-e az `version` aktuális verziónak:
     ```xml
     <repositories>
          <repository>
@@ -74,7 +74,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.0</version>
         </dependency>
     </dependencies>
    ```
@@ -87,7 +87,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
 
-   A Speech and LUIS esetében az adatai a következőre mutatnak `FunctionsList.java`:
+   A Speech and LUIS esetében az adatai a következőre mutatnak `FunctionsList.java` :
 
    ```java
     // Subscription
@@ -98,19 +98,19 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   Ha a társalgási átiratot használja, a beszédfelismerési kulcsra és a régióra `Cts.java`vonatkozó információkra is szükség van a következőkben:
+   Ha a társalgási átiratot használja, a beszédfelismerési kulcsra és a régióra vonatkozó információkra is szükség van a következőkben `Cts.java` :
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
    ```
 
-1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. Például a " `C:\SDSDK\JRE-Sample-Release\keyword\Computer` számítógép" kulcsszóhoz használt fájlokat tartalmazza.
+1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. Például `C:\SDSDK\JRE-Sample-Release\keyword\Computer` a "számítógép" kulcsszóhoz használt fájlokat tartalmazza.
 
     > [!TIP]
     > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
 
-    Új kulcsszó használatához frissítse a következő sort a-ben `FunctionsList.java`, és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomagból `machine.zip`:
+    Új kulcsszó használatához frissítse a következő sort a-ben `FunctionsList.java` , és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomagból `machine.zip` :
 
    * Másolja a `kws.table` fájlt a zip-csomagból a Project Folder **cél/osztályok**mappájába.
    * Frissítse a `FunctionsList.java` kulcsszó nevét a következővel:
@@ -121,7 +121,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 ## <a name="run-the-sample-application-from-eclipse"></a>A minta alkalmazás futtatása az Eclipse-ből
 
-1. Az Eclipse menüsávban **futtassa** > a**Run as** > **Java-alkalmazást**. Ezután válassza a **FunctionsList** és **az OK gombot**.
+1. Az Eclipse menüsávban futtassa a **Run**  >  **Run as**  >  **Java-alkalmazást**. Ezután válassza a **FunctionsList** és **az OK gombot**.
 
    ![A Java-alkalmazás kiválasztása – képernyőfelvétel](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet** > **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor a projekt mappájában a `participants.properties` **cél/osztályok**fájlba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában a **cél/osztályok**fájlba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
 
    ![Bemutató beszélgetés átirata alkalmazás](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -145,7 +145,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Képernyőfelvétel a futtatható JAR-fájl exportálásáról](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. A fent `kws.table`kiválasztott `participants.properties`célmappában `pma.dll` helyezze `Microsoft.CognitiveServices.Speech.extension.pma.dll` el a,, `unimic_runtime.dll`, és a fájlt, mivel az alkalmazásnak szüksége van rájuk.
+1. A `kws.table` `participants.properties` `unimic_runtime.dll` `pma.dll` fent kiválasztott célmappában helyezze el a,,, és `Microsoft.CognitiveServices.Speech.extension.pma.dll` a fájlt, mivel az alkalmazásnak szüksége van rájuk.
 
 1. Az önálló alkalmazás futtatása
 

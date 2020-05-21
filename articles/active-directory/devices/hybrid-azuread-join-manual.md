@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 596b47ecc0cf42e8cf1e7001c1462f55d34ff9c3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201023"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680288"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure Active Directory (Azure AD) eszközkezelés révén biztosíthatja, hog
 > [!TIP]
 > Ha a Azure AD Connect használata lehetőséggel rendelkezik, tekintse meg a kapcsolódó oktatóanyagokat a [felügyelt](hybrid-azuread-join-managed-domains.md) vagy [összevont](hybrid-azuread-join-federated-domains.md) tartományokhoz. A Azure AD Connect használatával jelentősen egyszerűsítheti a hibrid Azure AD-csatlakozás konfigurációját.
 
-Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hibrid Azure AD-csatlakozás manuális konfigurálása
@@ -112,7 +112,7 @@ A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum lét
    $scp.Keywords;
    ```
 
-A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Például:
+A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Íme egy példa:
 
    ```
    azureADName:microsoft.com
@@ -141,7 +141,7 @@ Az `Initialize-ADSyncDomainJoinedComputerSync` parancsmag:
 
 * A Active Directory PowerShell-modult és Azure Active Directory Domain Services (Azure AD DS) eszközöket használja. Ezek az eszközök a tartományvezérlőn futó Active Directory webszolgáltatásokra támaszkodnak. Az Active Directory webszolgáltatások Windows Server 2008 R2 vagy újabb rendszerű tartományvezérlőkön támogatott.
 * Kizárólag az MSOnline PowerShell modul 1.1.166.0-s verziója támogatja. A modul letöltéséhez használja [ezt a hivatkozást](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
-* Ha a AD DS-eszközök nincsenek telepítve, `Initialize-ADSyncDomainJoinedComputerSync` a művelet sikertelen lesz. A AD DS eszközök a Kiszolgálókezelő segítségével telepíthetők a **szolgáltatások** > **Távoli kiszolgálófelügyelet eszközei** > **szerepkör-felügyeleti eszközök**lehetőségre.
+* Ha a AD DS-eszközök nincsenek telepítve, a `Initialize-ADSyncDomainJoinedComputerSync` művelet sikertelen lesz. A AD DS eszközök a Kiszolgálókezelő segítségével telepíthetők a **szolgáltatások**  >  **Távoli kiszolgálófelügyelet eszközei**  >  **szerepkör-felügyeleti eszközök**lehetőségre.
 
 A Windows Server 2008-es vagy korábbi verzióit futtató tartományvezérlők esetén használja a következő parancsfájlt a szolgáltatás kapcsolódási pontjának létrehozásához. Többerdős konfiguráció esetén a következő parancsfájl használatával hozza létre a szolgáltatási kapcsolódási pontot minden olyan erdőben, ahol a számítógépek léteznek.
 
@@ -185,7 +185,7 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási** > **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
 
 > [!NOTE]
 >Ha nincs AD FS a helyszíni összevonási szolgáltatásként, kövesse a gyártó utasításait, és győződjön meg róla, hogy támogatják a WS-Trust 1,3 vagy 2005 végpontokat, és hogy ezeket a metaadatok Exchange-fájlján (MEX) keresztül teszik közzé.
@@ -200,7 +200,7 @@ Ha több ellenőrzött tartománynévvel rendelkezik, a következő jogcímeket 
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Ha már kiadott egy ImmutableID-jogcímet (például Másodlagos bejelentkezési azonosítót), meg kell adnia egy megfelelő jogcímet a számítógépeknek:
+Ha már kiadott egy ImmutableID-jogcímet (például a `mS-DS-ConsistencyGuid` vagy más attribútumot használja a ImmutableID), meg kell adnia egy megfelelő jogcímet a számítógépeknek:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -321,7 +321,7 @@ A `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` jogcímnek 
    );
    ```
 
-Az előző jogcímben `<verified-domain-name>` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Használja `Value = "http://contoso.com/adfs/services/trust/"`például a következőt:.
+Az előző jogcímben `<verified-domain-name>` helyőrző. Cserélje le az egyik ellenőrzött tartománynevet az Azure AD-ben. Használja például a következőt: `Value = "http://contoso.com/adfs/services/trust/"` .
 
 További információ az ellenőrzött tartománynevek használatáról: [Egyéni tartománynév hozzáadása Azure Active Directoryhoz](../active-directory-domains-add-azure-portal.md).  
 
@@ -329,7 +329,7 @@ Az ellenőrzött vállalati tartományok listáját a [Get-MsolDomain](/powershe
 
 ![Vállalati tartományok listája](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>Probléma ImmutableID a számítógépen, ha az egyik a felhasználók számára létezik (például egy másik bejelentkezési azonosító van beállítva)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Probléma ImmutableID a számítógépen, ha az egyik a felhasználók számára létezik (például mS-DS-ConsistencyGuid használata a ImmutableID forrásaként)
 
 A `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` jogcímnek érvényes értéket kell tartalmaznia a számítógépek számára. Az AD FS-ben a következő módon hozhat létre kiállítási átalakítószabályt:
 
@@ -501,7 +501,7 @@ Ha a tartományhoz csatlakoztatott eszközök között korábbi verziójú Windo
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Házirend beállítása az Azure AD-ben, amely lehetővé teszi a felhasználók számára az eszközök regisztrálását
 
-A Windows Down-szintű eszközök regisztrálásához engedélyezze a felhasználók számára az eszközök regisztrálását az Azure AD-ben beállítás engedélyezését. A Azure Portal a beállítás **Azure Active Directory** > **felhasználók és csoportok** > **eszköz beállításai**területen található.
+A Windows Down-szintű eszközök regisztrálásához engedélyezze a felhasználók számára az eszközök regisztrálását az Azure AD-ben beállítás engedélyezését. A Azure Portal a beállítás **Azure Active Directory**  >  **felhasználók és csoportok**  >  **eszköz beállításai**területen található.
 
 Az alábbi szabályzatot **minden**értékre kell állítani: a **felhasználók regisztrálhatják eszközeiket az Azure ad**-ben.
 
@@ -523,7 +523,7 @@ Ha ilyen kérés érkezik, a helyszíni összevonási szolgáltatásnak integrá
 
 AD FSban hozzá kell adnia egy kiállítási átalakítási szabályt, amely áthalad a hitelesítési módszeren. A szabály hozzáadásához:
 
-1. A AD FS felügyeleti konzolon lépjen a **AD FS** > **megbízhatósági kapcsolatok** > **függő entitások megbízhatóságai**elemre.
+1. A AD FS felügyeleti konzolon lépjen a **AD FS**  >  **megbízhatósági kapcsolatok**  >  **függő entitások megbízhatóságai**elemre.
 1. Kattintson a jobb gombbal a Microsoft Office 365 Identity Platform megbízható függő entitás elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 1. A **Kiállítási átalakítószabályok** lapon válassza a **Szabály hozzáadása** lehetőséget.
 1. A **Jogcímszabály** sablonlistában válassza a **Jogcímek küldése egyéni szabállyal** lehetőséget.
@@ -533,7 +533,7 @@ AD FSban hozzá kell adnia egy kiállítási átalakítási szabályt, amely át
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Az összevonási kiszolgálón adja meg a következő PowerShell-parancsot. Cserélje ** \<le\> az RPObjectName** -t az Azure ad függő entitás megbízhatósági objektumának függő entitás nevű objektumára. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
+1. Az összevonási kiszolgálón adja meg a következő PowerShell-parancsot. Cserélje le az ** \< RPObjectName \> ** -t az Azure ad függő entitás megbízhatósági objektumának függő entitás nevű objektumára. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -560,7 +560,7 @@ Ha problémákat tapasztal a hibrid Azure AD-csatlakozásnak a tartományhoz csa
 * [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 * [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

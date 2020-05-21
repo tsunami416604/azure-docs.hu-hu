@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68844882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652161"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
 
@@ -87,9 +87,9 @@ Ebben az esetben a [Microsoft Message Analyzer](https://technet.microsoft.com/li
 
 ### <a name="download-microsoft-message-analyzer"></a>A Microsoft Message Analyzer letöltése
 
-Töltse le és telepítse a [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) alkalmazást.
+Töltse le és telepítse a [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) alkalmazást.
 
-Indítsa el az alkalmazást, és válassza a **fájl** > **megnyitása** > **más forrásokból**lehetőséget.
+Indítsa el az alkalmazást, és válassza a **fájl**  >  **megnyitása**  >  **más forrásokból**lehetőséget.
 
 A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot**, majd kattintson az **OK** gombra.
 
@@ -107,7 +107,7 @@ Miután a naplót megnyitotta, megtekintheti a Storage-eseményeket. Ahogy az al
 
 A [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) szintén egy olyan eszköz, amelyet a tárfiókkal való kommunikációhoz használhat, beleértve a **$logs** tárolót és az abban található naplókat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat negyedik, utolsó részében megismerkedett a tárfiókok monitorozásával és hibaelhárításával, például a következőkkel:
 

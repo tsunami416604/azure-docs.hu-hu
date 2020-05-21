@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592950"
+ms.locfileid: "83656191"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Szinapszis Analytics-munkaterület](quickstart-create-workspace.md)
-- [Apache Spark készlet](quickstart-create-apache-spark-pool.md)
+- [Apache Spark készlet](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -133,11 +133,13 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Biztonságosan engedélyezheti a Spark-példányok leállítását, ha az nincs használatban. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. A készlet díjai többször is meghaladják a tárterület díját. Ezért a gazdasági értelemben a Spark-példányok leállítására van szükség, amikor nincsenek használatban.
+Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Ha nincs használatban, nyugodtan engedélyezheti a Spark-példányok leállítását. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. 
+
+Mivel a készlet díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzék lehetővé teszi, hogy a Spark-példányok leálljanak, amikor nincsenek használatban.
 
 A Spark-példány leállításának biztosításához fejezze be a csatlakoztatott munkameneteket (jegyzetfüzeteket). A készlet leáll, amikor eléri a Apache Spark készletben megadott **üresjárati időt** . A **befejezési munkamenetet** a jegyzetfüzet alján található állapotsorból is kiválaszthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure szinapszis Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
 

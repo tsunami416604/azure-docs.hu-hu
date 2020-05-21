@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983380"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656539"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +38,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat** > **valós idejű következtetési folyamat**lehetőséget.
+1. A folyamat fölötti vászonnál válassza a **következtetés létrehozása folyamat**  >  **valós idejű következtetési folyamat**lehetőséget.
 
     ![Képernyőfelvétel a folyamat létrehozása gombról](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
@@ -68,7 +69,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
 
 1. A **számítási** lapon megjelenő párbeszédpanelen kattintson a **számítás** elemre.
 
-1. A navigációs menüszalagon válassza a **következtetési fürtök** > **+ új**lehetőséget.
+1. A navigációs menüszalagon válassza a **következtetési fürtök**  >  **+ új**lehetőséget.
 
     ![Az új következtetési fürt ablaktábla beszerzését bemutató képernyőkép](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
@@ -116,11 +117,11 @@ Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti 
 
     ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

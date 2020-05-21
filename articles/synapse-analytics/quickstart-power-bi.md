@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83e9e802d2150ee7f43f01e9f6d6827ef3acfcdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204753"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656028"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>Rövid útmutató: Power BI munkaterület összekapcsolása egy szinapszis Analytics-munkaterülettel (előzetes verzió)
 
@@ -70,4 +70,4 @@ A munkaterületek összekapcsolása után böngészhet a Power BI adatkészletek
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ezután [létrehozhat Power bi jelentést az Azure Storage-ban tárolt fájlokról](sql/tutorial-connect-power-bi-desktop.md)
+További információ az [Azure Storage-ban tárolt fájlokról Power bi jelentés létrehozásáról](sql/tutorial-connect-power-bi-desktop.md).

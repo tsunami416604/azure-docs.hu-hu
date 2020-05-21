@@ -1,24 +1,20 @@
 ---
-title: Az Azure Automation áttekintése
-description: Útmutató az Azure Automation az infrastruktúra és az alkalmazások életciklusának automatizálásához történő használatához.
+title: Az Azure Automation bemutatása
+description: Ez a cikk azt ismerteti, hogy milyen Azure Automation és hogyan használható az infrastruktúra és az alkalmazások életciklusának automatizálására.
 services: automation
 ms.subservice: process-automation
 keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Management, Change Tracking, DSC, leltár, runbookok, Python, grafikus
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010239"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712774"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
-
-Ez a cikk röviden áttekinti az Azure Automationt, valamint választ ad néhány gyakran felmerülő kérdésre. A különböző képességekkel kapcsolatos további információért kattintson a jelen áttekintésben található hivatkozásokra.
-
-## <a name="about-azure-automation"></a>Tudnivalók Azure Automation
 
 A Azure Automation felhőalapú automatizálási és konfigurációs szolgáltatást biztosít, amely támogatja az Azure-beli és nem Azure-beli környezetek egységes felügyeletét. Ez magában foglalja a folyamatok automatizálását, a konfiguráció felügyeletét, az Update managementet, a megosztott képességeket és a heterogén funkciókat. Az Automation szolgáltatás teljes körű irányítást biztosít a számítási feladatok és erőforrások üzembe helyezése, üzemeltetése és leszerelése során.
 
@@ -32,13 +28,22 @@ A folyamatok automatizálása támogatja az Azure-szolgáltatások és más, a v
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-Azure Automation [állapot-konfiguráció](automation-dsc-overview.md) egy felhőalapú megoldás a PowerShell kívánt állapotának konfigurálásához (DSC), amely vállalati környezetekhez biztosít szolgáltatásokat. Ezzel a szolgáltatással felügyelheti a DSC-erőforrásait a Azure Automationban, és konfigurálhatja a virtuális vagy fizikai gépek konfigurációit az Azure-felhőben lévő DSC lekérési kiszolgálóról. A felhőben vagy a helyszínen is figyelheti és automatikusan frissítheti a fizikai és virtuális gépeken futó számítógép-konfigurációkat. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.
- 
-A Azure Automation állapot-konfigurációs szolgáltatás gazdag jelentéskészítési és keresési funkciókat biztosít. Ezekkel a szolgáltatásokkal részletes információkat találhat arról, hogy mi van konfigurálva az operációs rendszeren belül. A szolgáltatás támogatja a változások nyomon követését a környezetben lévő szolgáltatásokon, démonokon, szoftvereken, beállításjegyzékeken és fájlokon, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A fontos kapcsolódó funkciók jelentik a főbb események jelentését, például azokat az eseményeket, amikor a csomópontok eltérnek a hozzárendelt konfigurációtól. 
+A Azure Automation konfigurációjának kezelése lehetővé teszi két szolgáltatás elérését:
+
+* Change Tracking és Inventory
+* Azure Automation State Configuration
+
+### <a name="change-tracking-and-inventory"></a>Change Tracking és Inventory
+
+A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetben lévő szolgáltatásokon, démonokon, szoftvereken, beállításjegyzékeken és fájlokon, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében. A szolgáltatás részleteiért lásd: [change Tracking és leltár](change-tracking.md).
+
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+
+[Azure Automation állapot-konfiguráció](automation-dsc-overview.md) egy felhőalapú szolgáltatás a PowerShell kívánt állapotának konfigurálásához (DSC), amely vállalati környezetekhez biztosít szolgáltatásokat. Ezzel a szolgáltatással felügyelheti a DSC-erőforrásait a Azure Automationban, és konfigurálhatja a virtuális vagy fizikai gépek konfigurációit az Azure-felhőben lévő DSC lekérési kiszolgálóról. 
 
 ## <a name="update-management"></a>Frissítéskezelés
 
-A Azure Automation a Windows-és Linux-rendszerek [frissítési kezelési](automation-update-management.md) megoldását is magában foglalja a hibrid környezetek között. Ezzel a megoldással megtekintheti a frissítési megfelelőséget az Azure-ban és más felhőkben, valamint a helyszínen. Az Update Management segítségével olyan ütemezett központi telepítéseket hozhat létre, amelyek egy meghatározott karbantartási időszakon belül hangolják össze a frissítések telepítését. Ha egy frissítést nem kell telepíteni a gépre, az Update Management szolgáltatással kizárhatja azt egy központi telepítésből.
+A Azure Automation a Windows-és Linux-rendszerek [Update Management](automation-update-management.md) funkcióját is tartalmazza hibrid környezetek között. A Update Management az Azure-ban és más felhőkben, illetve a helyszínen is elérhetővé teszi a frissítési megfelelőséget. A szolgáltatással olyan ütemezett központi telepítéseket hozhat létre, amelyek egy meghatározott karbantartási időszakon belül hangolják össze a frissítések telepítését. Ha egy frissítést nem kell telepíteni a gépre, Update Management funkcióval kizárhatja azt egy központi telepítésből.
 
 ## <a name="shared-capabilities"></a>Közös képességek
 
@@ -63,7 +68,7 @@ A Azure Automation támogatja a szerepköralapú hozzáférés-vezérlést (RBAC
 
 ### <a name="source-control-integration"></a>Verziókövetés integrálása
 
-Azure Automation lehetővé teszi a [verziókövetés integrálását](source-control-integration.md). Ez a funkció elősegíti a konfigurációt olyan kódban, amelyben a runbookok vagy a konfigurációk ellenőrizhetők egy verziókövetés rendszerbe.
+Azure Automation támogatja a [verziókövetés integrálását](source-control-integration.md). Ez a funkció elősegíti a konfigurációt olyan kódban, amelyben a runbookok vagy a konfigurációk ellenőrizhetők egy verziókövetés rendszerbe.
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>Heterogén támogatás (Windows és Linux)
 
@@ -85,11 +90,11 @@ Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazá
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Az Automation szolgáltatás díjszabása
+## <a name="pricing-for-azure-automation"></a>A Azure Automation díjszabása
 
 A [díjszabási](https://azure.microsoft.com/pricing/details/automation/) oldalon a Azure Automationhöz kapcsolódó árakat tekintheti át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Automation-fiók létrehozása](automation-quickstart-create-account.md)

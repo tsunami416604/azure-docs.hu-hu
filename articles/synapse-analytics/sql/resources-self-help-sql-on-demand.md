@@ -2,19 +2,19 @@
 title: SQL igény szerinti előzetes verzió) önkiszolgáló Súgó
 description: Ez a szakasz olyan információkat tartalmaz, amelyek segítséget nyújtanak az SQL on-demand (előzetes verzió) problémáinak elhárításában.
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b2a9b6c5324240d71a80cde904057757d6ef421
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424831"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658872"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Önkiszolgáló Súgó az SQL igény szerinti használatra (előzetes verzió)
 
@@ -29,19 +29,49 @@ Ha a szinapszis Studio nem tud kapcsolatot létesíteni az SQL-on igény szerint
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
 
-Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy egy másik folyamat használja", és biztos benne, hogy mindkét fájl létezik, és egy másik folyamat nem használja azt, azt jelenti, hogy az SQL igény szerint nem fér hozzá a fájlhoz. Ez a probléma általában azért fordul elő, mert a Azure Active Directory identitása nem rendelkezik jogosultsággal a fájl eléréséhez. Alapértelmezés szerint az SQL on-demand a Azure Active Directory identitás használatával próbál hozzáférni a fájlhoz. A probléma megoldásához megfelelő jogosultságokkal kell rendelkeznie a fájl eléréséhez. A legegyszerűbb módszer, ha a lekérdezni kívánt Storage-fiókban megadják a Storage blob adatközreműködői szerepkört. [További információkért tekintse meg a Azure Active Directory hozzáférés-vezérlésének teljes útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Ha a lekérdezés sikertelen a "fájl nem nyitható meg, mert nem létezik, vagy egy másik folyamat használja", és biztos benne, hogy mindkét fájl létezik, és egy másik folyamat nem használja azt, azt jelenti, hogy az SQL igény szerint nem fér hozzá a fájlhoz. Ez a probléma általában azért fordul elő, mert a Azure Active Directory identitása nem rendelkezik jogosultsággal a fájl eléréséhez. Alapértelmezés szerint az SQL on-demand a Azure Active Directory identitás használatával próbál hozzáférni a fájlhoz. A probléma megoldásához megfelelő jogosultságokkal kell rendelkeznie a fájl eléréséhez. Ennek legegyszerűbb módja, ha „Storage-blobadatok közreműködője” szerepkört ad saját magának ahhoz a tárterülethez, amelyet lekérdezni próbál. [További információért tekintse meg az Azure Active Directory teljes körű tárterülethozzáférés-vezérlési útmutatóját](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>A lekérdezés sikertelen, mert a jelenlegi erőforrás-megkötések miatt nem hajtható végre. 
 
-Ha a lekérdezés meghiúsul a következő hibaüzenettel: "Ez a lekérdezés nem hajtható végre az aktuális erőforrás-korlátozások miatt", az azt jelenti, hogy az SQL OD nem tudja végrehajtani az adott pillanatban az erőforrás-korlátozások miatt: 
+Ha a lekérdezés meghiúsul a következő hibaüzenettel: "Ez a lekérdezés az aktuális erőforrás-korlátozások miatt nem hajtható végre", az azt jelenti, hogy az SQL igény szerinti futtatása az erőforrás-korlátozások miatt jelenleg nem hajtható végre. 
 
-- Győződjön meg arról, hogy megfelelő méretű adattípusok vannak használatban. Emellett a karakterlánc-oszlopokhoz tartozó Parquet-fájlok sémáját is megadhatja, mivel alapértelmezés szerint VARCHAR (8000) lesz. 
+- Győződjön meg arról, hogy megfelelő méretű adattípusokat használ. Ezenkívül adja meg a sztringoszlopok Parquet-fájljainak sémáját, amelynek alapértelmezés szerinti beállítása VARCHAR(8000). 
 
 - Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
 
 - A lekérdezés optimalizálásához tekintse meg [az SQL igény szerinti teljesítményére vonatkozó ajánlott eljárásokat](best-practices-sql-on-demand.md) .  
 
-## <a name="next-steps"></a>További lépések
+## <a name="create-statement-is-not-supported-in-master-database"></a>A CREATE "utasítás" nem támogatott a Master adatbázisban
+
+Ha a lekérdezés nem sikerül, a következő hibaüzenet jelenik meg:
+
+> ' A lekérdezés végrehajtása sikertelen. Hiba: külső tábla/ADATFORRÁS/adatbázis-HATÓKÖRű HITELESÍTő adat/FÁJLFORMÁTUM létrehozása nem támogatott a Master adatbázisban. " 
+
+Ez azt jelenti, hogy az SQL igény szerinti Master adatbázisa nem támogatja a következő létrehozását:
+  - Külső táblák
+  - Külső adatforrások
+  - Adatbázis-hatókörrel rendelkező hitelesítő adatok
+  - Külső fájlformátumok
+
+Megoldás:
+
+  1. Hozzon létre egy felhasználói adatbázist:
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. A Create utasítás végrehajtása <DATABASE_NAME-> környezetében, amely korábban a Master adatbázis esetében meghiúsult. 
+  
+  Példa külső fájlformátum létrehozására:
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL igény szerinti használatáról az alábbi cikkekben olvashat bővebben:
 

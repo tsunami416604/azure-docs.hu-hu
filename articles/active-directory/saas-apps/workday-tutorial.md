@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046603"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció munkanapokkal
 
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     > [!NOTE]
     > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. A válasz URL-címének rendelkeznie kell egy altartománnyal, például: www, WD2, wd3, wd3-Impl, wd5, wd5-Impl).
-    > Hasonló `http://www.myworkday.com` , de `http://myworkday.com` nem használható. Az értékek lekéréséhez forduljon a [munkanapokhoz tartozó ügyfél-támogatási csapathoz](https://www.workday.com/en-us/partners-services/services/support.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Hasonló, `http://www.myworkday.com` de nem használható `http://myworkday.com` . Az értékek lekéréséhez forduljon a [munkanapokhoz tartozó ügyfél-támogatási csapathoz](https://www.workday.com/en-us/partners-services/services/support.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. A munkanap alkalmazása egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A munkanap-alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**, **UPN**stb. használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútum-hozzárendelést.
 
@@ -126,7 +126,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -170,7 +170,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
    > [!NOTE]
    > A környezeti attribútum értéke a bérlői URL-cím értékéhez van kötve:  
-   > – Ha a munkanap bérlői URL-címének tartományneve a Impl együtt kezdődik, például: * https://www.myworkday.com/"bérlő"/login-saml2.htmld*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
+   > – Ha a munkanap bérlői URL-címének tartományneve a Impl együtt kezdődik, például: * https://www.myworkday.com/ "bérlő"/login-saml2.htmld*), a **környezeti** attribútumot a megvalósítás értékre kell beállítani.  
    > – Ha a tartománynév egy másikkal kezdődik, kapcsolatba kell lépnie a [munkanap ügyfél-támogatási csapatával](https://www.workday.com/en-us/partners-services/services/support.html) , hogy a megfelelő **környezeti** értéket kapja.
 
 4. Az **SAML beállítása** szakaszban hajtsa végre a következő lépéseket:
@@ -209,7 +209,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![X509 nyilvános kulcsának megtekintése](./media/workday-tutorial/IC782930.png "X509 nyilvános kulcsának megtekintése")
 
-    a. A **név** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE\_SP*).
+    a. A **név** szövegmezőbe írja be a tanúsítvány nevét (például: *PPE \_ SP*).
 
     b. Az **érvényes feladó** szövegmezőbe írja be a tanúsítvány érvényes értékének értékét.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![SSO-konfiguráció](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO-konfiguráció")
 
-    a.  A **szolgáltató azonosítója** szövegmezőbe írja be a **http://www.workday.com**következőt:.
+    a.  A **szolgáltató azonosítója** szövegmezőbe írja be a következőt: **http://www.workday.com** .
 
     b. Válassza a ne állítsa le az **SP által kezdeményezett hitelesítési kérelmet**.
 
@@ -247,13 +247,13 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-workday-test-user"></a>Munkanapokat vizsgáló felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre munkanapokon. A munkanapokat támogató ügyfélszolgálati [csapattal](https://www.workday.com/partners-services/services/support.html) együtt veheti fel a felhasználókat a munkanap platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre munkanapokon. A munkanapokat támogató ügyfélszolgálati [csapattal](https://www.workday.com/en-us/partners-services/services/support.html) együtt veheti fel a felhasználókat a munkanap platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Amikor kiválasztja a munkanap csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a munkanapon, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

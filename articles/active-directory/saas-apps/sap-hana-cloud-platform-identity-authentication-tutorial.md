@@ -152,7 +152,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -176,7 +176,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>SAP Cloud platform Identity Authentication – SSO konfigurálása
 
-1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beszerzéséhez nyissa meg az SAP Cloud platform Identity Authentication felügyeleti konzolt. Az URL-cím a következő mintával rendelkezik: `https://<tenant-id>.accounts.ondemand.com/admin`. Ezután olvassa el az SAP Cloud platform Identity Authentication dokumentációját a [Microsoft Azure ad integrációjában](https://developers.sap.com/tutorials/cp-ias-azure-ad.html).
+1. Az alkalmazáshoz tartozó egyszeri bejelentkezés beszerzéséhez nyissa meg az SAP Cloud platform Identity Authentication felügyeleti konzolt. Az URL-cím a következő mintával rendelkezik: `https://<tenant-id>.accounts.ondemand.com/admin` . Ezután olvassa el az SAP Cloud platform Identity Authentication dokumentációját a [Microsoft Azure ad integrációjában](https://developers.sap.com/tutorials/cp-ias-azure-ad.html).
 
 2. A Azure Portal válassza a **Mentés** gombot.
 

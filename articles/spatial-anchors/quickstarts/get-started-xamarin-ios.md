@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c5e36fd062a2579ece4aaa1501243295af72e1b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465148"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649813"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -51,9 +51,11 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 Nyissa meg a következő fájlt: `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
+
+Keresse meg `StartSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `this.cloudSession.Configuration.AccountKey = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás üzembe helyezése iOS-eszközön
 
@@ -63,13 +65,13 @@ Kapcsolja be az iOS-eszközt, jelentkezzen be, és csatlakoztassa a számítóg�
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Az alkalmazás üzembe helyezéséhez és elindításához válassza a **Futtatás** > **indításkor hibakeresés nélkül** lehetőséget.
+**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás**indításkor hibakeresés nélkül** lehetőséget.
 
 Az alkalmazásban válassza az **alapszintű** lehetőséget a bemutató futtatásához, és kövesse az utasításokat a horgony elhelyezéséhez és felidézéséhez.
 
-> ![Képernyőfelvétel 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
-> ![képernyőkép 2](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> ![képernyőkép 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> ![Képernyőfelvétel 1 ](./media/get-started-xamarin-ios/screenshot-1.jpg)
+>  ![ képernyőkép 2 ](./media/get-started-xamarin-ios/screenshot-2.jpg)
+>  ![ képernyőkép 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402633"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652216"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -107,9 +107,6 @@ A kimenetben a objectId a következőképpen jelenik meg `Id` :
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
-
-> [!WARNING]
-> A felügyelt identitásokkal rendelkező Azure AD-csoportok a token frissítéséhez és a 8hr szükségesek.
 
 #### <a name="users"></a>Felhasználók
 
@@ -225,6 +222,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 Végül adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancs vagy a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) parancsmag használatával. Példaként tekintse meg az [alkalmazás, az Azure ad-csoport vagy a felhasználó hozzáférése a Key vaulthoz](#give-the-principal-access-to-your-key-vault) című szakaszt.
 
 Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt identitás-és hozzáférés-kezelési (IAM) szerepkörre is. Ellenkező esetben nem fog tudni bejelentkezni, és nem lesz megfelelő jogosultsága az előfizetéshez való hozzáféréshez.
+
+> [!WARNING]
+> A felügyelt identitásokkal rendelkező Azure AD-csoportok a token frissítéséhez és a 8hr szükségesek lehetnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

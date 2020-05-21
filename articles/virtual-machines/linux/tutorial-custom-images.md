@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792173"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652995"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI használatával
 
@@ -53,7 +53,7 @@ Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglé
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
 
@@ -118,7 +118,7 @@ A képverzió megengedett karaktereinek száma számok és időszakok. A számok
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és két replikát fogunk létrehozni az *USA nyugati középső* régiójában, 1 replika az *USA déli középső* régiójában és 1 replika az *USA 2. keleti* régiójában, a zóna redundáns tárolásával. A replikációs régióknak tartalmaznia kell azt a régiót, amelyben a forrás virtuális gép található.
 
-Cserélje le a példában `--managed-image` szereplő értéket a virtuális gép azonosítójával az előző lépésből.
+Cserélje le a `--managed-image` példában szereplő értéket a virtuális gép azonosítójával az előző lépésből.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -134,7 +134,7 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` Ha létrehozza a rendszerkép verzióját.
 >
 
  
@@ -142,7 +142,7 @@ az sig image-version create \
 
 Hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal a--Specialized paraméterrel, amely jelzi, hogy a rendszerkép egy speciális rendszerkép. 
 
-A rendszerkép-definíció AZONOSÍTÓjának `--image` használatával hozza létre a virtuális gépet a rendelkezésre álló rendszerkép legújabb verziójából. A virtuális gépet egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának `--image`azonosítóját. 
+A rendszerkép-definíció AZONOSÍTÓjának használatával `--image` hozza létre a virtuális gépet a rendelkezésre álló rendszerkép legújabb verziójából. A virtuális gépet egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának AZONOSÍTÓját `--image` . 
 
 Ebben a példában egy virtuális gépet hozunk létre a *myImageDefinition* -lemezkép legújabb verziójából.
 
@@ -167,7 +167,7 @@ az sig show \
    --query id
 ```
 
-Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje `<email-address>` le `<gallery iD>` a és a értékét a saját adataira.
+Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje le `<email-address>` a és a értékét `<gallery iD>` a saját adataira.
 
 ```azurecli-interactive
 az role assignment create \
@@ -182,7 +182,7 @@ Az erőforrások RBAC használatával történő megosztásával kapcsolatos tov
 
 Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
@@ -196,5 +196,5 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre magasan elérhető virtuális gépeket](tutorial-availability-sets.md).
+> [Magas rendelkezésre állású virtuális gépek létrehozása](tutorial-availability-sets.md)
 

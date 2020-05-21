@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
-ms.openlocfilehash: d730eb64f5025daa740e4fad0fce0a95300363e1
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983397"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656578"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +70,7 @@ Egy folyamat egy számítási célra fut, amely a munkaterülethez csatolt szám
 
 Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , ami azt jelzi, hogy az összes modul ugyanazt a számítási célt használja alapértelmezettként. A számítási célokat azonban modul alapján is megadhatja.
 
-1. A folyamat neve mellett kattintson a **fogaskerék** ![ikonra a vászon tetején található fogaskerék](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) ikonra, és nyissa meg a **Beállítások** panelt.
+1. A folyamat neve mellett kattintson a **fogaskerék** ikonra a ![ vászon tetején található fogaskerék ikonra, ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) és nyissa meg a **Beállítások** panelt.
 
 1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
 
@@ -139,7 +140,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Bontsa ki az **oszlopnevek** legördülő listát a **Belefoglalás**elem mellett, majd válassza az **összes oszlop**lehetőséget.
 
-1. Jelölje be **+** az új szabály hozzáadásához.
+1. Jelölje be az **+** új szabály hozzáadásához.
 
 1. A legördülő menüben válassza a **kizárás** és **oszlopnevek**lehetőséget.
     
@@ -217,7 +218,7 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
     
     Ez a beállítás számos, a tanulási algoritmusok inicializálására használható modul-kategóriát jelenít meg.
 
-1. Válassza a **regressziós** > **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
+1. Válassza a **regressziós**  >  **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
 
 1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
 
@@ -292,7 +293,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
 1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![megjelenítés ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![ Megjelenítés ikont az ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) eredmények megtekintéséhez.
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
@@ -304,7 +305,7 @@ A **kiértékelési modell** használatával megtekintheti, hogy a betanított m
 
 1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![megjelenítés ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
+1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók** > gráf ikon ![ Megjelenítés ikont az ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) eredmények megtekintéséhez.
 
 A modellhez a következő statisztikák láthatók:
 
@@ -316,13 +317,13 @@ A modellhez a következő statisztikák láthatók:
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, és [telepítse a modelleket](tutorial-designer-automobile-price-deploy.md).
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

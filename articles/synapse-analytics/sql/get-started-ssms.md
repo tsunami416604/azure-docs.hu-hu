@@ -9,15 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a25049aee620a1cf14eeb51adfb75f6577defc2a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197069"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658228"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
-
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -41,7 +40,7 @@ A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* SQL-készlet esetén egy meglévő adattárházra van szükség. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](../quickstart-create-sql-pool.md)című témakört. Az SQL igény szerint az egyiket a rendszer a létrehozáskor már üzembe helyezi a munkaterületen. 
+* SQL-készlet esetén egy meglévő adattárházra van szükség. A létrehozáshoz tekintse meg [az SQL-készlet létrehozása](../quickstart-create-sql-pool-portal.md)című témakört. Az SQL igény szerint az egyiket a rendszer a létrehozáskor már üzembe helyezi a munkaterületen. 
 * A teljesen minősített SQL Server neve. Ennek megkereséséhez lásd: [Kapcsolódás a SZINAPSZIS SQL](connect-overview.md)-hez.
 
 ## <a name="connect"></a>Kapcsolódás

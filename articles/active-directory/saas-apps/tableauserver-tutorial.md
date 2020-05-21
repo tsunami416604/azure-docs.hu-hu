@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986733"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648459"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló-kiszolgálóval
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -145,7 +145,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Jelölje be az **SAML-hitelesítés engedélyezése a kiszolgálón**jelölőnégyzetet.
 
-    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL <http://tableau_server>-cím, például:. A `http://localhost` használata nem ajánlott. A záró perjelet (például `http://tableau_server/`) használó URL-cím használata nem támogatott. A **tabló-kiszolgáló visszatérési URL-címének** másolása és beillesztése az **URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal
+    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL-cím, például: <http://tableau_server> . A használata `http://localhost` nem ajánlott. A záró perjelet (például) használó URL-cím használata `http://tableau_server/` nem támogatott. A **tabló-kiszolgáló visszatérési URL-címének** másolása és beillesztése az **URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal
 
     d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja a tabló-kiszolgáló telepítését a identitásszolgáltató. Itt megadhatja a tabló-kiszolgáló URL-címét, ha szeretné, de nem kell a tabló-kiszolgáló URL-címének lennie. Az **SAML-entitás azonosítójának** másolása és beillesztése az **azonosító** szövegmezőbe az **alapszintű saml-konfiguráció** szakaszának Azure Portal
 
@@ -158,7 +158,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     h. Kattintson a **Mentés** gombra
 
     > [!NOTE]
-    > Az ügyfélnek fel kell töltenie minden tanúsítványt a tabló-kiszolgáló SAML SSO-konfigurációjában, és a rendszer figyelmen kívül hagyja az SSO-folyamat során. Ha segítségre van szüksége az SAML a tabló-kiszolgálón való konfigurálásához, tekintse meg ezt a cikket az [SAML konfigurálása](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)című cikkben.
+    > Az ügyfélnek fel kell töltenie egy. CRT kiterjesztésű és egy olyan RSA-vagy DSA titkos kulcsfájl-fájlt, amely a. Key kiterjesztéssel rendelkezik, mint a tanúsítvány-kulcsfájl. A tanúsítványfájl és a tanúsítvány kulcsfájl részletes ismertetését [ebben](https://help.tableau.com/current/server/en-us/saml_requ.htm) a dokumentumban találja. Ha segítségre van szüksége az SAML a tabló-kiszolgálón való konfigurálásához, tekintse meg ezt a cikket a [Server Wide SAML konfigurálása](https://help.tableau.com/current/server/en-us/config_saml.htm)című cikkben.
 
 ### <a name="create-tableau-server-test-user"></a>Tabló-kiszolgáló tesztelési felhasználójának létrehozása
 
@@ -175,7 +175,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a tabló-kiszolgáló csempére kattint, automatikusan be kell jelentkeznie a tabló-kiszolgálóra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

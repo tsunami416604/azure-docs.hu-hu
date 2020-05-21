@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203963"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673475"
 ---
 Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -37,7 +37,7 @@ Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes 
 
 1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
 
-    |Name (Név)|Beállítás|Cél és érték|
+    |Name|Beállítás|Cél és érték|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|
@@ -51,7 +51,7 @@ Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes 
 
 Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáadva két különböző kérdés megkülönböztetése érdekében. Adja hozzá a metaadatokat a lekérdezéshez, hogy csak a megfelelő QnA-párokra korlátozza a szűrőt.
 
-1. A Poster-ben módosítsa a lekérdezés JSON-t úgy `strictFilters` , hogy hozzáadja a tulajdonságot a név `service:qna_maker`/érték párral. A JSON-törzsnek a következőket kell tennie:
+1. A Poster-ben módosítsa a lekérdezés JSON-t úgy, hogy hozzáadja a `strictFilters` tulajdonságot a név/érték párral `service:qna_maker` . A JSON-törzsnek a következőket kell tennie:
 
     ```json
     {
@@ -64,7 +64,7 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáa
     }
     ```
 
-    A kérdés csak egyetlen szó, `size`amely a két kérdés-és válaszfájl bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
+    A kérdés csak egyetlen szó, `size` amely a két kérdés-és válaszfájl bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
 
 1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek.
 
@@ -103,13 +103,16 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáa
     }
     ```
 
-    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános `No good match found in KB.` választ adja vissza.
+    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános választ `No good match found in KB.` adja vissza.
 
 ## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
 
-A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá `debug` a következő tulajdonságot:
+> [!NOTE]
+>Nem ajánlott hibakeresési poreperty használni bármilyen függőséghez. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban. 
 
-1. A Poster-ben módosítsa a törzs JSON-t úgy `debug` , hogy hozzáadja a tulajdonságot. A JSON a következőket kell tennie:
+A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá a következő `debug` tulajdonságot:
+
+1. A Poster-ben módosítsa a törzs JSON-t úgy, hogy hozzáadja a `debug` tulajdonságot. A JSON a következőket kell tennie:
 
     ```json
     {
@@ -215,7 +218,7 @@ A hibakeresési információk segítenek megérteni a visszaadott válasz meghat
 
 Ha a teszt Tudásbázisból szeretne választ kapni, használja a `isTest` Body (törzs) tulajdonságot.
 
-A Poster-ben módosítsa a törzs JSON-t úgy `isTest` , hogy hozzáadja a tulajdonságot. A JSON a következőket kell tennie:
+A Poster-ben módosítsa a törzs JSON-t úgy, hogy hozzáadja a `isTest` tulajdonságot. A JSON a következőket kell tennie:
 
 ```json
 {
@@ -357,7 +360,7 @@ A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték n
     }
     ```
 
-    QnA Maker egy pontszámot adott vissza `0`, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
+    QnA Maker egy pontszámot adott vissza `0` , ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
 
 1. Módosítsa a küszöbértéket 60%-ra, és kérje újra a lekérdezést:
 

@@ -1,14 +1,14 @@
 ---
 title: Figyelő Azure Batch
 description: Ismerje meg az Azure monitoring Services, a metrikák, a diagnosztikai naplók és a Azure Batch további figyelési funkcióit.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: c8b11d0b7187d6c4b5b3ccff1e19eb533ff3f0da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113890"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723527"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-megoldások monitorozása
 
@@ -22,7 +22,7 @@ Az előfizetési szinten, amely tartalmazza a Batch-fiókokat, az [Azure-tevéke
 
 A Batch-fiókok esetében a műveletnapló a fiókok létrehozásával és törlésével, valamint a kulcskezelő szolgáltatással kapcsolatos eseményeket gyűjti.
 
-Az események a tevékenység naplóból való beolvasásának egyik módja a Azure Portal használata. Kattintson **a minden szolgáltatás** > **tevékenység napló**elemre. Vagy az Azure CLI-vel, a PowerShell-parancsmagokkal vagy a Azure Monitor REST APIával kapcsolatos eseményeket kérdezheti le. Exportálhatja a tevékenység naplóját is, vagy konfigurálhatja a [tevékenység naplójának riasztásait](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Az események a tevékenység naplóból való beolvasásának egyik módja a Azure Portal használata. Kattintson **a minden szolgáltatás**  >  **tevékenység napló**elemre. Vagy az Azure CLI-vel, a PowerShell-parancsmagokkal vagy a Azure Monitor REST APIával kapcsolatos eseményeket kérdezheti le. Exportálhatja a tevékenység naplóját is, vagy konfigurálhatja a [tevékenység naplójának riasztásait](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
 ## <a name="batch-account-level-monitoring"></a>Batch-fiók szintű figyelés
 
@@ -58,7 +58,7 @@ A Batch-alkalmazásokban a Batch API-k segítségével figyelheti vagy lekérdez
 * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. Opcionálisan konfigurálhatja a Batch-megoldást úgy, hogy az Application Insights adatait, például a virtuális gépek teljesítményszámlálói a Batch Explorerben [jelenjenek meg](https://github.com/Azure/batch-insights) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 * További információ a Batch szolgáltatással történő [diagnosztikai naplózásról](batch-diagnostics.md) .

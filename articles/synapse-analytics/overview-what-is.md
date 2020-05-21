@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587875"
+ms.locfileid: "83656206"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -63,7 +63,7 @@ Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQ
 
 Az Azure szinapszis a Azure Data Factoryával azonos adatintegrációs motorral és tapasztalatokkal rendelkezik, így gazdag adatfolyamatokat hozhat létre külön hangvezérelt motor használata nélkül.
 
-* Adatáthelyezés a szinapszis és a 85 + helyszíni adatforrások között
+* Az Azure szinapszis és a 90 + helyszíni adatforrások közötti adatáthelyezés
 * Jegyzetfüzetek, folyamatok, Spark-feladatok, SQL-parancsfájlok és tárolt eljárások összehangolása
 * Kód – ingyenes ETL adatáramlási tevékenységekkel
 
@@ -83,10 +83,10 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 * Piacvezető termelékenység az adatmérnökök számára az SQL vagy a Spark kód írásához: szerzői műveletek, hibakeresés és teljesítmény optimalizálása
 * Integrálás vállalati CI/CD-folyamatokkal
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
 * [A szinapszis Studio használata](quickstart-synapse-studio.md)
-* [SQL-készlet létrehozása](quickstart-create-sql-pool.md)
+* [SQL-készlet létrehozása](quickstart-create-sql-pool-portal.md)
 * [Az igény szerinti SQL használata](quickstart-sql-on-demand.md)
-* [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool.md)
+* [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc6cf908c5550f81ca6002de031d8d54dcff1eec
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685324"
+ms.locfileid: "83713301"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
 
@@ -58,7 +58,7 @@ Tömb vagy szórótábla létrehozásával és a változóba való mentésével 
 
 Az alábbi táblázatban található parancsmagok automatizálási változókat hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik.
 
-| Parancsmag | Description |
+| Parancsmag | Leírás |
 |:---|:---|
 |[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Egy létező változó értékét kérdezi le. Ha az érték egy egyszerű típus, akkor a rendszer ugyanazt a típust kéri le. Összetett típus esetén a `PSCustomObject` rendszer beolvassa a típust. <br>**Megjegyzés:**  Nem használhatja ezt a parancsmagot egy titkosított változó értékének lekéréséhez. Ennek egyetlen módja, ha a belső `Get-AutomationVariable` parancsmagot használja egy runbook vagy DSC-konfigurációban. [A változók eléréséhez tekintse meg a belső parancsmagokat](#internal-cmdlets-to-access-variables). |
 |[Új – AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Létrehoz egy új változót, és beállítja annak értékét.|
@@ -69,7 +69,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 A következő táblázatban található belső parancsmagok a runbookok és a DSC-konfigurációk változóinak elérésére szolgálnak. Ezek a parancsmagok a globális modulhoz tartoznak `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Description |
+| Belső parancsmag | Leírás |
 |:---|:---|
 |`Get-AutomationVariable`|Egy létező változó értékét kérdezi le.|
 |`Set-AutomationVariable`|Beállítja egy létező változó értékét.|
@@ -88,7 +88,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 A következő táblázatban szereplő függvények a Python 2 runbook változóinak elérésére szolgálnak.
 
-|Python 2 függvények|Description|
+|Python 2 függvények|Leírás|
 |:---|:---|
 |`automationassets.get_automation_variable`|Egy létező változó értékét kérdezi le. |
 |`automationassets.set_automation_variable`|Beállítja egy létező változó értékét. |
@@ -188,12 +188,12 @@ Grafikus runbook felvehet tevékenységeket a belső parancsmagokhoz `Get-Automa
 
 ![Változó hozzáadása a vászonhoz](../media/variables/runbook-variable-add-canvas.png)
 
-Az alábbi képen egy egyszerű értékkel rendelkező változó egy grafikus runbook való frissítését bemutató tevékenységek láthatók. Ebben a példában a tevékenység `Get-AzVM` egy egyetlen Azure-beli virtuális gép lekérésére és a számítógép nevének egy meglévő Automation string változóba való mentésére irányul. Nem számít, hogy a [hivatkozás egy folyamat vagy egy folyamat](../automation-graphical-authoring-intro.md#links-and-workflow) , mert a kód csak egyetlen objektumot vár a kimenetben.
+Az alábbi képen egy egyszerű értékkel rendelkező változó egy grafikus runbook való frissítését bemutató tevékenységek láthatók. Ebben a példában a tevékenység `Get-AzVM` egy egyetlen Azure-beli virtuális gép lekérésére és a számítógép nevének egy meglévő Automation string változóba való mentésére irányul. Nem számít, hogy a [hivatkozás egy folyamat vagy egy folyamat](../automation-graphical-authoring-intro.md#use-links-for-workflow) , mert a kód csak egyetlen objektumot vár a kimenetben.
 
 ![Egyszerű változó beállítása](../media/variables/runbook-set-simple-variable.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a változók eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
-* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).
-* A DSC-konfigurációk részletes ismertetését lásd: az [állapot-konfiguráció áttekintése](../automation-dsc-overview.md).
+* [Modulok kezelése az Azure Automationben](modules.md)
+* [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
+* [Azure Automation állapot konfigurációjának áttekintése](../automation-dsc-overview.md) 

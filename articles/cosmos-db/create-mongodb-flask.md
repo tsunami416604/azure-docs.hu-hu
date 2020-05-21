@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 53d1010f501e59b99c3ba6bac675124cdc5f77a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061743"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659215"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Python-alkalmazás létrehozása a MongoDB-hez készült Azure Cosmos DB API-val
 
@@ -23,7 +23,7 @@ ms.locfileid: "77061743"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Ebben a rövid útmutatóban egy Azure Cosmos DBt használ a Mongo DB API-fiókhoz vagy a Azure Cosmos DB emulátorhoz, amellyel a GitHubról klónozott Python-lombikot futtathat webalkalmazásként. A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel.
@@ -96,9 +96,9 @@ A következő kódrészletek mind a *app.py* fájlból származnak, és a helyi 
 
 2. Nyisson meg egy terminálablakot és a `cd` paranccsal lépjen arra a könyvtárra, amelyben az alkalmazás mentve van.
 
-3. Ezután állítsa be a környezeti változót a `set FLASK_APP=app.py`, `$env:FLASK_APP = app.py` PowerShell-szerkesztőkhöz, vagy `export FLASK_APP=app.py` Mac-et használó lombik alkalmazáshoz. 
+3. Ezután állítsa be a környezeti változót a `set FLASK_APP=app.py` , PowerShell- `$env:FLASK_APP = app.py` szerkesztőkhöz, vagy Mac-et használó lombik alkalmazáshoz `export FLASK_APP=app.py` . 
 
-4. Futtassa az alkalmazást a `flask run` következővel, és keresse meg a *http:\//127.0.0.1:5000/*.
+4. Futtassa az alkalmazást a következővel, `flask run` és keresse meg a *http: \/ /127.0.0.1:5000/*.
 
 5. Adjon hozzá és távolítson el feladatokat, és figyelje meg, ahogyan változnak a gyűjteményben.
 
@@ -151,11 +151,11 @@ Ha nem szeretne elágazást létrehozni ebből a tárházból, válassza az alá
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB a Mongo DB API-fiókhoz, és hogyan futtathat egy Python-lombikot Azure Cosmos DB a GitHubról klónozott webalkalmazáshoz. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 

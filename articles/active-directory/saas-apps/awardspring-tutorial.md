@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e199b0d6cf2be7dc956267843f4dabe521d87428
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78897809"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647623"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AwardSpring
 
@@ -99,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a AwardSpring alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    |  Name (Név) | Forrás attribútum |
+    |  Name | Forrás attribútum |
     | ---------------| --------------- |
     | Utónév | User. givenName |
     | Vezetéknév | felhasználó. vezetéknév |
@@ -126,7 +126,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -157,7 +157,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **AwardSpring** oldalon
 Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a AwardSpring-ben. A AwardSpring támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a AwardSpring-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
 > [!Note]
-> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [AwardSpring támogatási csapatával](maito:support@awardspring.com).
+> Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [AwardSpring támogatási csapatával](mailto:support@awardspring.com).
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -165,7 +165,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a AwardSpring csempére kattint, automatikusan be kell jelentkeznie arra a AwardSpring, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

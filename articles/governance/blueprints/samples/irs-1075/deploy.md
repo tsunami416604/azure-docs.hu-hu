@@ -1,14 +1,14 @@
 ---
 title: Az IRS 1075 Blueprint minta üzembe helyezése
 description: Üzembe helyezheti az IRS 1075 (Rev. 11-2016) terv lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 11/20/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7faf1042f695ac43b2fa22d2685149426cb1ed80
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546806"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653100"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Az IRS 1075 Blueprint minta üzembe helyezése
 
@@ -19,7 +19,7 @@ Az Azure-tervezetek IRS 1075 (Rev. 11-2016) tervezetének üzembe helyezéséhez
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
@@ -111,13 +111,13 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja|Ezt az előtagot a hálózati biztonsági csoport helyével együtt kell összekapcsolni a létrehozott Storage-fiók nevének létrehozásához.|
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése|Szabályzat-hozzárendelés|A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell)|Az az erőforráscsoport, amelyben a Storage-fiók létre lesz hozva. Ez az erőforráscsoport már léteznie kell.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az IRS 1075 (Rev. 11-2016) tervrajzi minta üzembe helyezésének lépéseit, tekintse meg a következő cikkeket a terv és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [IRS 1075 terv – áttekintés](./index.md)
-> [IRS 1075 Blueprint – vezérlés leképezése](./control-mapping.md)
+> [IRS 1075 terv – áttekintés](./index.md) 
+>  [IRS 1075 terv – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és a használatukról:
 

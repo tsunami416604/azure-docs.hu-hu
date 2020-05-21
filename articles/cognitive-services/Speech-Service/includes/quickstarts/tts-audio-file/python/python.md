@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4429a03709d0f565d5fcf98f6999c812c0d43561
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673084"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
-# <a name="rhel--centos-8"></a>[RHEL/CentOS 8](#tab/rhel-centos)
+# <a name="rhelcentos"></a>[RHEL/CentOS](#tab/rhel-centos)
 
 ```Bash
 sudo yum update
@@ -43,7 +43,8 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> A RHEL/CentOS 7/8-es számítógépen kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
+> - A RHEL/CentOS 7 rendszeren kövesse a [RHEL/CentOS 7 for SPEECH SDK konfigurálására](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)vonatkozó utasításokat.
+> - A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 ---
 
@@ -62,8 +63,8 @@ pip install azure-cognitiveservices-speech
 ## <a name="support-and-updates"></a>Támogatás és frissítések
 
 A Speech SDK Python-csomag frissítései a PyPI-on keresztül oszlanak meg, és a [kibocsátási megjegyzésekben](~/articles/cognitive-services/Speech-Service/releasenotes.md)jelent meg.
-Ha új verzió érhető el, a paranccsal `pip install --upgrade azure-cognitiveservices-speech`frissítheti azt.
-A `azure.cognitiveservices.speech.__version__` változó ellenőrzésével ellenőrizze, hogy jelenleg melyik verziót telepítette.
+Ha új verzió érhető el, a paranccsal frissítheti azt `pip install --upgrade azure-cognitiveservices-speech` .
+A változó ellenőrzésével ellenőrizze, hogy jelenleg melyik verziót telepítette `azure.cognitiveservices.speech.__version__` .
 
 Ha problémája van, vagy hiányzik egy szolgáltatás, tekintse meg a [támogatási és súgó beállításait](~/articles/cognitive-services/Speech-Service/support.md).
 
@@ -117,7 +118,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 1. Töltse le és telepítse a [Python](https://www.python.org/downloads/), 3,5 és 3,8 64-bites verzióját a számítógépre.
 1. Töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/Download)-ot.
-1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza a menüből a **file** > **Preferences** > **bővítmények** lehetőséget. Keressen rá a **Python**kifejezésre.
+1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza **File**  >  **Preferences**  >  a menüből a file Preferences**bővítmények** lehetőséget. Keressen rá a **Python**kifejezésre.
 
    ![A Python-bővítmény telepítése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -126,7 +127,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
    ![Mappa megnyitása](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Hozzon létre egy új Python- `speechsdk.py`forrásfájlt az új fájl ikon kiválasztásával.
+1. Hozzon létre egy új Python-forrásfájlt `speechsdk.py` az új fájl ikon kiválasztásával.
 
    ![Fájl létrehozása](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
@@ -136,7 +137,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    Ellenkező esetben hozza létre az elérhető Python-tolmácsok listáját. Nyissa meg a parancssort (<kbd>CTRL + SHIFT + P</kbd>), és írja be a **Python: Select tolmács elemet**. Válasszon ki egy megfelelőt.
 1. A Speech SDK Python-csomagot a Visual Studio Code-ból is telepítheti. Tegye meg, hogy ha még nincs telepítve a kiválasztott Python-tolmácshoz.
    A Speech SDK csomag telepítéséhez nyisson meg egy terminált. Hozza létre újra a parancs-palettát (<kbd>CTRL + SHIFT + P</kbd>), és írja be a következőt **: új integrált terminál létrehozása**.
-   A megnyíló terminálon írja be a `python -m pip install azure-cognitiveservices-speech` parancsot vagy a megfelelő parancsot a rendszer számára.
+   A megnyíló terminálon írja be a parancsot `python -m pip install azure-cognitiveservices-speech` vagy a megfelelő parancsot a rendszer számára.
 1. A mintakód futtatásához kattintson a jobb gombbal a szerkesztőben lévő valahova. Válassza **a Python-fájl futtatása a terminálon**lehetőséget.
    A szöveget a rendszer beszédre konvertálja, és a megadott hangadatokba menti.
 
@@ -146,7 +147,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 Ha az utasítások követésével kapcsolatos problémái vannak, tekintse meg a kiterjedt [Visual Studio Code Python oktatóanyagot](https://code.visualstudio.com/docs/python/python-tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 

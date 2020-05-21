@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/11/2020
+ms.date: 05/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 928e0cec1cad5d6fe8b70b728cd86a41577ce797
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b54e8efc4f5f22a89526bb5d529805b33371529f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195344"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655119"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -124,10 +124,11 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az aktív FTP nem támogatott|Az aktív FTP szolgáltatás le van tiltva Azure Firewall az FTP-PORT parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében.|Ehelyett használhatja a passzív FTP-t. A tűzfalon továbbra is explicit módon meg kell nyitnia a 20. és a 21. TCP-portot.
 |Az SNAT-portok kihasználtsága metrika 0%-ot mutat|A Azure Firewall SNAT-kihasználtsági mérőszáma 0%-os használatot is megjeleníthet, még akkor is, ha SNAT-portok vannak használatban. Ebben az esetben a metrika a tűzfal állapota metrika részeként való használata helytelen eredményt ad.|Ezt a problémát megjavítottuk, és az éles környezetbe való bevezetésük a 2020-es májusira irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Közbenső megkerülő megoldásként csak a tűzfal állapota alapján keresse meg a *status = lecsökkentett állapotot*, nem a *status = sérült*állapotot. A port kimerülése *csökkentett teljesítményű*fog megjelenni. A *nem kifogástalan* állapot a jövőbeli használatra van fenntartva, ha a további mérőszámok hatással vannak a tűzfal állapotára.
 |A DNAT nem támogatott a kényszerített bújtatás használata esetén|A kényszerített bújtatással telepített tűzfalak esetében az aszimmetrikus útválasztás miatt nem támogatott a bejövő hozzáférés az internetről.|Ezt az aszimmetrikus útválasztás miatt tervezték meg. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon megy keresztül, amely még nem látta el a kapcsolatot.
-|A kimenő passzív FTP nem működik több nyilvános IP-címmel rendelkező tűzfalak esetében.|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Az FTP meghiúsul, ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak.|A rendszer explicit SNAT-konfigurációt tervez. Addig is érdemes egyetlen IP-címet használni ebben a helyzetben.|
+|A kimenő passzív FTP nem működik több nyilvános IP-címmel rendelkező tűzfalak esetében|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Az FTP meghiúsul, ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak.|A rendszer explicit SNAT-konfigurációt tervez. Addig is érdemes egyetlen IP-címet használni ebben a helyzetben.|
 |A NetworkRuleHit metrika nem tartalmaz protokoll-dimenziót|A ApplicationRuleHit metrika lehetővé teszi a szűrési alapú protokoll használatát, de ez a képesség hiányzik a megfelelő NetworkRuleHit-metrikában.|A rendszer kivizsgálja a javítást.|
 |A 64000 és 65535 közötti portokkal rendelkező NAT-szabályok nem támogatottak|A Azure Firewall engedélyezi az 1-65535 tartomány bármely portját a hálózati és az alkalmazási szabályokban, azonban a NAT-szabályok csak a 1-63999 tartományba tartozó portokat támogatják.|Ez egy aktuális korlátozás.
-|A konfigurációs frissítések átlaga öt percet is igénybe vehet.|Egy Azure Firewall konfigurációs frissítés átlagosan három-öt percet vehet igénybe, és a párhuzamos frissítések nem támogatottak.|A rendszer kivizsgálja a javítást.
+|A konfigurációs frissítések átlagosan öt percet vehetnek igénybe|Egy Azure Firewall konfigurációs frissítés átlagosan három-öt percet vehet igénybe, és a párhuzamos frissítések nem támogatottak.|A rendszer kivizsgálja a javítást.|
+|Azure Firewall SNI TLS-fejléceket használ a HTTPS-és MSSQL-forgalom szűréséhez|Ha a böngésző vagy a kiszolgáló szoftver nem támogatja a kiszolgálónév-jelző (SNI) bővítményt, nem fog tudni csatlakozni a Azure Firewallon keresztül.|Ha a böngésző vagy a kiszolgáló szoftvere nem támogatja a SNI-t, akkor az alkalmazás szabálya helyett hálózati szabály használatával is vezérelheti a kapcsolódást. Tekintse meg a SNI-t támogató szoftverek [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) .
 
 ## <a name="next-steps"></a>Következő lépések
 

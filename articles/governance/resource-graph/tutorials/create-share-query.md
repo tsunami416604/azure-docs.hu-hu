@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74303950"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637751"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
@@ -56,7 +56,7 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
    > [!NOTE] 
    > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Ha új mentett lekérdezést szeretne létrehozni ebből a nyílt lekérdezésből, válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
 
-1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre**van-e beállítva. A mentett `Count VMs by OS` lekérdezés sorában kattintson a **Törlés** (Lomtár ikon) elemre. A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
+1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre**van-e beállítva. A mentett lekérdezés sorában `Count VMs by OS` kattintson a **Törlés** (Lomtár ikon) elemre. A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
    Ezután zárjuk be a **lekérdezés megnyitása** ablaktáblát.
 
 ## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
@@ -129,7 +129,7 @@ Ha kijelöli az Erőforrásgrafikon-lekérdezést, megnyílik a lekérdezés lap
 
 ### <a name="query-resource-graph"></a>Erőforrás-diagram lekérdezése
 
-Az erőforrás-gráf lekérdezéseit egy lekérdezésen keresztül keresheti meg az erőforrás-diagramon. A következő erőforrás-gráf lekérdezési határértékek típus `Microsoft.ResourceGraph/queries`szerint, `project` majd a használatával csak a név, a módosítás időpontja és a lekérdezés szerepel:
+Az erőforrás-gráf lekérdezéseit egy lekérdezésen keresztül keresheti meg az erőforrás-diagramon. A következő erőforrás-gráf lekérdezési határértékek típus szerint `Microsoft.ResourceGraph/queries` , majd a használatával `project` csak a név, a módosítás időpontja és a lekérdezés szerepel:
 
 ```kusto
 Resources
@@ -147,11 +147,11 @@ A megosztott lekérdezéseket az alábbi felületeken törölheti:
 - A **lekérdezés megnyitása** lap a Resource Graph Explorerben
 - Erőforráscsoportok lap
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban privát és megosztott lekérdezéseket hozott létre. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

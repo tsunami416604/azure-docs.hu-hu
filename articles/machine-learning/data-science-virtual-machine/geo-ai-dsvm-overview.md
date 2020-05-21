@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 333b1fd94372a79e501de6be261a4cde5c6ab074
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80282273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658368"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Mi a Geo mesterséges intelligencia Data Science Virtual Machine?
 
@@ -40,7 +40,7 @@ A Microsoft [Data Science Virtual Machine (DSVM)](overview.md) egy népszerű k�
 A Geo AI Data Science VM a DSVM prediktív képességeit ötvözi az Azure-felhő méretezhetőségével és az [ESRI](https://www.esri.com)által biztosított térinformatikai elemzési szoftverekkel. Ez az úttörő integráció olyan produktív platformot biztosít az adatszakértők és a térinformatikai elemzők számára, amelyből új intelligenciát szerezhet be az adatokból, és azonosíthatja az új lehetőségeket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy geo AI-Data Science VM, és ismerkedjen meg a következő erőforrások útmutatásával:
 

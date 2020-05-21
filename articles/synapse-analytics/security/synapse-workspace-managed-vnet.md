@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423634"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645236"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure szinapszis Analytics által felügyelt Virtual Network (előzetes verzió)
 
@@ -40,6 +40,8 @@ Az SQL-készlet és az igény szerinti SQL-példány több-bérlős képesség, 
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Azure-beli szinapszis-munkaterület létrehozása felügyelt munkaterület-VNet
 
+Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából.
+
 Ha olyan Azure-beli szinapszis-munkaterületet szeretne létrehozni, amelynek van társítva felügyelt munkaterület-VNet, válassza a **Biztonság + hálózatkezelés** fület Azure Portal, és jelölje be a **felügyelt virtuális hálózat engedélyezése** jelölőnégyzetet.
 
 Ha a jelölőnégyzet nincs bejelölve, a munkaterülethez nem tartozik VNet társítva.
@@ -50,13 +52,13 @@ Ha a jelölőnégyzet nincs bejelölve, a munkaterülethez nem tartozik VNet tá
 ![Felügyelt munkaterület VNet engedélyezése](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->A későbbiekben a felügyelt munkaterület VNet érkező összes kimenő forgalom le lesz tiltva. Javasoljuk, hogy minden adatforráshoz a felügyelt magánhálózati végpontok használatával kapcsolódjon.
+>A felügyelt munkaterület VNet származó összes kimenő forgalmat a jövőben a felügyelt privát végpontok kivételével letiltja a rendszer. Javasoljuk, hogy felügyelt magánhálózati végpontokat hozzon létre, amelyek a munkaterületen kívüli összes Azure-adatforráshoz csatlakoznak. 
 
 Megtekintheti, hogy az Azure szinapszis-munkaterület felügyelt munkaterület VNet van-e társítva, ha a Azure Portal **Áttekintés** elemét választja.
 
 ![A munkaterület áttekintése Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

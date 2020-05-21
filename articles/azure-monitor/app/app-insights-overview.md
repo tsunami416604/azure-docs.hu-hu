@@ -4,12 +4,12 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 96ac0d81e477f4ac45208971282b3be982bf4fa5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891745"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698230"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 A Application Insights a [Azure monitor](../overview.md)egy funkciója, amely egy bővíthető Application Performance Management-(APM-) szolgáltatás fejlesztők és DevOps szakemberek számára. Használhatja az élő alkalmazások figyelésére. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az alkalmazások számos platformon használhatók, többek között a .NET, a Node. js, a Java és a Python helyszíni, hibrid vagy bármely nyilvános felhőben. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
@@ -49,7 +49,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 
 |  |  |
 | --- | --- |
-| [**Intelligens észlelés és manuális riasztások**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Állítson be automatikus riasztásokat, amelyek alkalmazkodnak az alkalmazás normál telemetria, és akkor aktiválódik, ha a szokásos mintázaton kívül van valami. [Riasztásokat is beállíthat](../../azure-monitor/app/alerts.md) egyéni vagy standard mérőszámok bizonyos szintjeire. |![Példa a riasztásokra](./media/app-insights-overview/alerts-tn.png) |
+| [**Intelligens észlelés és manuális riasztások**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Állítson be automatikus riasztásokat, amelyek alkalmazkodnak az alkalmazás normál telemetria, és akkor aktiválódik, ha a szokásos mintázaton kívül van valami. [Riasztásokat is beállíthat](../../azure-monitor/platform/alerts-log.md) egyéni vagy standard mérőszámok bizonyos szintjeire. |![Példa a riasztásokra](./media/app-insights-overview/alerts-tn.png) |
 | [**Alkalmazás-hozzárendelés**](../../azure-monitor/app/app-map.md)<br/>Ismerkedjen meg az alkalmazás összetevőivel, és tekintse meg a legfontosabb mérőszámokat és riasztásokat. |![Alkalmazástérkép](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profilkészítő**](../../azure-monitor/app/profiler.md)<br/>A mintavételezett kérelmek végrehajtási profiljainak vizsgálata. |![Profilkészítő](./media/app-insights-overview/profiler.png) |
 | [**Használat elemzése**](../../azure-monitor/app/usage-overview.md)<br/>Felhasználószegmentálás és -megtartás elemzése.|![Megtartási eszköz](./media/app-insights-overview/retention.png) |
@@ -87,7 +87,7 @@ Az újonnan üzembe helyezett szolgáltatások [hatékonyságának mérése](../
 * Egyéni telemetriai adatokat vehet fel a kódba.
 * A következési fejlesztési ciklust a telemetriai adatokból származó konkrét tényekre alapozhatja.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike, és a telemetriai adatok ide érkeznek be elemzésre és megjelenítésre. A használat megkezdéséhez egy [Microsoft Azure-előfizetésre](https://azure.com) van szükség. A regisztráció ingyenes, és ha az Application Insights alapszintű [díjcsomagját](https://azure.microsoft.com/pricing/details/application-insights/) választja, a használat mindaddig díjmentes, amíg az alkalmazás el nem ér egy jelentős használati értéket. Ha a munkahelye már rendelkezik előfizetéssel, lehetőség van felvenni az Ön Microsoft-fiókját az adott előfizetésbe.
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.
@@ -108,7 +108,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **[Elemezheti a mobilalkalmazások használatát](../../azure-monitor/learn/mobile-center-quickstart.md)** a Visual Studio App Center integrálásával.
 * **[Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Első lépések futtatáskor:
 
 * [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport – IIS által üzemeltetett alkalmazások](../../azure-monitor/app/azure-vm-vmss-apps.md)

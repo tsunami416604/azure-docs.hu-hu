@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 2cad73f85ce81c650e1f1ff702a099b2d6df8e16
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650347"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: go-alkalmazás összekötése Azure Cosmos DB API-MongoDB
 
@@ -23,15 +23,15 @@ ms.locfileid: "82984879"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 A Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely lehetővé teszi a dokumentumok, tábla, kulcs-érték és gráf adatbázisok gyors létrehozását és lekérdezését globális terjesztési és horizontális méretezési képességekkel. Ebben a rövid útmutatóban egy Azure Cosmos DB fiókot hoz létre és kezel a Azure Cloud Shell használatával, klónozott egy meglévő minta alkalmazást a GitHubról, és úgy konfigurálja, hogy működjön a Azure Cosmos DBsal. 
 
-A minta alkalmazás a Go-ban írt parancssori `todo` felügyeleti eszköz. A MongoDB Azure Cosmos DB API-je [kompatibilis a MongoDB Wire protokollal](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), így bármely MongoDB-ügyfél illesztőprogramja csatlakozhat hozzá. Ez az alkalmazás a [Go-illesztőprogramot a MongoDB](https://github.com/mongodb/mongo-go-driver) olyan módon használja, amely átlátható az alkalmazás számára, amelyet az adott Azure Cosmos db-adatbázisban tárolnak.
+A minta alkalmazás a `todo` Go-ban írt parancssori felügyeleti eszköz. A MongoDB Azure Cosmos DB API-je [kompatibilis a MongoDB Wire protokollal](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), így bármely MongoDB-ügyfél illesztőprogramja csatlakozhat hozzá. Ez az alkalmazás a [Go-illesztőprogramot a MongoDB](https://github.com/mongodb/mongo-go-driver) olyan módon használja, amely átlátható az alkalmazás számára, amelyet az adott Azure Cosmos db-adatbázisban tárolnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a kapcsolatok karakterláncával `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free). Vagy [próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/) ingyen Azure-előfizetés nélkül. Használhatja a [Azure Cosmos db emulátort](https://aka.ms/cosmosdb-emulator) is a kapcsolatok karakterláncával `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - [Lépjen](https://golang.org/) a számítógépre, és folytassa a munkát.
 - [Git](https://git-scm.com/downloads).
 - Ha nem kívánja használni a Azure Cloud Shellt, az [Azure CLI 2.0 + verzióját](/cli/azure/install-azure-cli).
@@ -42,7 +42,7 @@ A minta alkalmazás a Go-ban írt parancssori `todo` felügyeleti eszköz. A Mon
 
 Az alábbi parancsok futtatásával klónozza a mintatárházat.
 
-1. Nyisson meg egy parancssort, hozzon létre egy `git-samples`nevű új mappát, majd kattintson a parancssor bezárására.
+1. Nyisson meg egy parancssort, hozzon létre egy nevű új mappát `git-samples` , majd kattintson a parancssor bezárására.
 
     ```bash
     mkdir "C:\git-samples"
@@ -75,7 +75,7 @@ Az alábbi kódrészletek mind a `todo.go` fájlból származnak.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Az alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)a Azure Cosmos DBhoz tartozó kapcsolati karakterláncot ágyazza be, amelyet a rendszer a környezeti változó használatával ad át (részletek a közelgő szakaszban). A kapcsolat inicializálva van [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) , amely a `clientOptions` példányt adja át. a rendszer meghívja a függvényt, hogy erősítse meg a sikeres kapcsolódást (ez egy nem gyors stratégia) [ `Ping` ](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping)
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)a Azure Cosmos DBhoz tartozó kapcsolati karakterláncot ágyazza be, amelyet a rendszer a környezeti változó használatával ad át (részletek a közelgő szakaszban). A kapcsolat inicializálva van [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) , amely a `clientOptions` példányt adja át. a rendszer meghívja a [ `Ping` függvényt](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) , hogy erősítse meg a sikeres kapcsolódást (ez egy nem gyors stratégia)
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -99,9 +99,9 @@ Az alábbi kódrészletek mind a `todo.go` fájlból származnak.
 > A [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) konfiguráció használata fontos, anélkül, hogy a következő kapcsolódási hibaüzenetet kapja:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
 >
 
-### <a name="create-a-todo-item"></a>`todo` Elemek létrehozása
+### <a name="create-a-todo-item"></a>Elemek létrehozása `todo`
 
-A létrehozásához `todo`egy leírót kapunk, [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) és meghívja a [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) függvényt. 
+A létrehozásához `todo` egy leírót kapunk, [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) és meghívja a [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) függvényt. 
 
 ```go
 func create(desc string) {
@@ -116,7 +116,7 @@ func create(desc string) {
     }
 ```
 
-Egy olyan `Todo` struct-t adunk át, amely tartalmazza a leírást és az állapotot (amely `pending`eredetileg a következőre van beállítva)
+Egy olyan struct-t adunk át `Todo` , amely tartalmazza a leírást és az állapotot (amely eredetileg a `pending` következőre van beállítva)
 
 ```go
 type Todo struct {
@@ -125,9 +125,9 @@ type Todo struct {
     Status      string             `bson:"status"`
 }
 ```
-### <a name="list-todo-items"></a>Listaelemek `todo`
+### <a name="list-todo-items"></a>`todo`Listaelemek
 
-A TEENDŐket a feltételek alapján is listázhatja. [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) A létrehozva a szűrési feltételek beágyazásához
+A TEENDŐket a feltételek alapján is listázhatja. A [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) létrehozva a szűrési feltételek beágyazásához
 
 ```go
 func list(status string) {
@@ -181,7 +181,7 @@ Végül az adatok táblázatos formátumban jelennek meg
 
 ### <a name="update-a-todo-item"></a>Egy `todo` tétel frissítése
 
-`todo` A frissítése a alapján lehetséges `_id`. A [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) rendszer létrehoz egy szűrőt a `_id` és egy másik alapján a frissített információhoz, amely ebben az esetben új állapot (`completed` vagy `pending`). Végezetül meghívja [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) a függvényt a szűrővel és a frissített dokumentummal.
+A `todo` frissítése a alapján lehetséges `_id` . A rendszer létrehoz egy [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) szűrőt a `_id` és egy másik alapján a frissített információhoz, amely ebben az esetben új állapot ( `completed` vagy `pending` ). Végezetül [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) meghívja a függvényt a szűrővel és a frissített dokumentummal.
 
 ```go
 func update(todoid, newStatus string) {
@@ -201,7 +201,7 @@ func update(todoid, newStatus string) {
 
 ### <a name="delete-a-todo"></a>A törlése`todo`
 
-`todo` A törlődik a alapján, `_id` és egy [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) példány formájában van beágyazva. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)a rendszer meghívja a dokumentumot a dokumentum törlésére.
+A `todo` törlődik a alapján, `_id` és egy példány formájában van beágyazva [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) . [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)a rendszer meghívja a dokumentumot a dokumentum törlésére.
 
 ```go
 func delete(todoid string) {
@@ -221,7 +221,7 @@ func delete(todoid string) {
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
 
-Váltson arra a könyvtárra, ahol klónozott az alkalmazást, és hozza létre ( `go build`a használatával).
+Váltson arra a könyvtárra, ahol klónozott az alkalmazást, és hozza létre (a használatával `go build` ).
 
 ```bash
 cd monogdb-go-quickstart
@@ -252,7 +252,7 @@ Telepített Azure-os parancssori felület használata esetén az `az` parancs fu
 
 Ha a `cosmosdb` nincs az alapparancsok listáján, telepítse újra az [Azure CLI-t](/cli/azure/install-azure-cli).
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/management/overview.md) az az [Group Create](/cli/azure/group#az-group-create)paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webappokat, adatbázisokat és tárfiókokat). 
 
@@ -268,7 +268,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 Hozzon létre egy Cosmos-fiókot az az [cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) paranccsal.
 
-A következő parancsban cserélje ki a saját egyedi Cosmos-fiókjának nevét, ahol megjelenik `<cosmosdb-name>` a helyőrző. Ezt az egyedi nevet fogja használni a Cosmos DB Endpoint (`https://<cosmosdb-name>.documents.azure.com/`) részeként, így a névnek egyedinek kell lennie az Azure-beli Cosmos-fiókok között. 
+A következő parancsban cserélje ki a saját egyedi Cosmos-fiókjának nevét, ahol megjelenik a `<cosmosdb-name>` helyőrző. Ezt az egyedi nevet fogja használni a Cosmos DB Endpoint () részeként `https://<cosmosdb-name>.documents.azure.com/` , így a névnek egyedinek kell lennie az Azure-beli Cosmos-fiókok között. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -340,7 +340,7 @@ export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PA
 > A `ssl=true` beállítás Cosmos db követelmények miatt fontos. További információ: a [kapcsolatok karakterláncával kapcsolatos követelmények](connect-mongodb-account.md#connection-string-requirements).
 >
 
-A `MONGODB_CONNECTION_STRING` környezeti változó esetében cserélje le a `<COSMOSDB_ACCOUNT_NAME>` és a helyőrzőit`<COSMOSDB_PASSWORD>`
+A `MONGODB_CONNECTION_STRING` környezeti változó esetében cserélje le a és a helyőrzőit `<COSMOSDB_ACCOUNT_NAME>``<COSMOSDB_PASSWORD>`
 
 1. `<COSMOSDB_ACCOUNT_NAME>`: A létrehozott Azure Cosmos DB fiók neve
 2. `<COSMOSDB_PASSWORD>`: Az előző lépésben kinyert adatbázis-kulcs
@@ -350,9 +350,9 @@ export MONGODB_DATABASE=todo-db
 export MONGODB_COLLECTION=todos
 ```
 
-Kiválaszthatja a kívánt értékeit `MONGODB_DATABASE` , `MONGODB_COLLECTION` vagy megadhatja őket.
+Kiválaszthatja a kívánt értékeit, vagy megadhatja `MONGODB_DATABASE` `MONGODB_COLLECTION` őket.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Hozzon létre egy`todo`
 
@@ -360,7 +360,7 @@ Hozzon létre egy`todo`
 ./todo --create "Create an Azure Cosmos DB database account"
 ```
 
-Ha a művelet sikeres, az újonnan létrehozott dokumentum MongoDB `_id` származó kimenetnek kell megjelennie:
+Ha a művelet sikeres, az újonnan létrehozott dokumentum MongoDB származó kimenetnek kell megjelennie `_id` :
 
 ```bash
 added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
@@ -372,7 +372,7 @@ Hozzon létre egy másikat`todo`
 ./todo --create "Get the MongoDB connection string using the Azure CLI"
 ```
 
-Az `todo`összes s listázása
+Az összes s listázása `todo`
 
 ```bash
 ./todo --list all
@@ -391,13 +391,13 @@ Látnia kell, hogy az imént hozzáadott táblázatos formátumban legyen szó
 +----------------------------+--------------------------------+-----------+
 ```
 
-A `todo` (például az `completed` állapotra való váltás) állapotának frissítéséhez használja az `todo` azonosítót.
+A `todo` (például az állapotra való váltás) állapotának frissítéséhez `completed` használja az azonosítót. `todo`
 
 ```bash
 ./todo --update 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Csak a befejezett `todo`k listázása
+Csak a befejezett k listázása `todo`
 
 ```bash
 ./todo --list completed
@@ -431,7 +431,7 @@ A `todo` felhasználó azonosítójának törlése
 ./todo --delete 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Az `todo`s jóváhagyása
+Az `todo` s jóváhagyása
 
 ```bash
 ./todo --list all
@@ -448,13 +448,13 @@ Az `todo` imént törölt érték nem lehet jelen
 +----------------------------+--------------------------------+-----------+
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB MongoDB API-fiókot a Azure Cloud Shell használatával, és hogyan hozhat létre és futtathat egy go `todo`parancssori alkalmazást az s-k kezeléséhez. Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB MongoDB API-fiókot a Azure Cloud Shell használatával, és hogyan hozhat létre és futtathat egy go parancssori alkalmazást az s-k kezeléséhez `todo` . Így már további adatokat importálhat az Azure Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
 > [MongoDB adatok importálása az Azure Cosmos DB-be](mongodb-migrate.md)

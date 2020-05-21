@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 04/27/2020
-ms.openlocfilehash: 7313d12509859514e41b30c4021f74f25a0e50b9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/19/2020
+ms.openlocfilehash: 4fef9db91369c23d27090cc2433b5e0ed09bbc7d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629951"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684731"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>Rövid útmutató: Azure Database for MySQL-kiszolgáló létrehozása az ARM-sablon használatával
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása ARM-sablonnal
 
-A Azure Database for MySQL felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MySQL-adatbázisokat. Ez a rövid útmutató bemutatja, hogyan lehet előre definiált Azure Resource Manager (ARM) sablonnal létrehozni egy Azure Database for MySQL-kiszolgálót virtuális hálózati integrációval. A kiszolgálót a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával hozhatja létre.
+A Azure Database for MySQL felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MySQL-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre egy Azure Database for MySQL-kiszolgálót virtuális hálózati integrációval. A kiszolgálót a Azure Portalban, az Azure CLI-ben vagy a Azure PowerShellban hozhatja létre.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -180,7 +180,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -213,7 +213,7 @@ echo "Press [ENTER] to continue ..."
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

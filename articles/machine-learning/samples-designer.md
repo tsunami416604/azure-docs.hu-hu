@@ -9,12 +9,13 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
-ms.openlocfilehash: 60f8f2593ef9c05fa905e9d3d6f6ba0901a14243
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983346"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654557"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára
 
@@ -54,7 +55,7 @@ A következő módon használhat tervezői mintát:
 
    1. Válasszon ki egy modult a vásznon.
 
-   1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. Az egyes modulok eredményeinek megtekintéséhez válassza a Graph ikon ![megjelenítés ikonját](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) . 
+   1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. Az ![ ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) egyes modulok eredményeinek megtekintéséhez válassza a Graph ikon megjelenítés ikonját. 
 
    A minták kiindulási pontként használhatók a leggyakoribb gépi tanulási forgatókönyvekhez.
 
@@ -102,12 +103,12 @@ További információ a Machine learning segédprogramokat és szolgáltatásoka
 
 Amikor új folyamatot hoz létre Azure Machine Learning Designerben, a rendszer alapértelmezés szerint számos minta adatkészletet tartalmaz. Ezeket a minta adatkészleteket a tervező kezdőlapján található mintavételi folyamatok használják. 
 
-A minta adatkészletek az **adatkészletek**-**mintáinak** kategóriájában érhetők el. Ez a modul paletta bal oldalán található a tervezőben. Ezeket az adatkészleteket a saját folyamatában is használhatja, ha a vászonra húzza azt.
+A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában érhetők el. Ez a modul paletta bal oldalán található a tervezőben. Ezeket az adatkészleteket a saját folyamatában is használhatja, ha a vászonra húzza azt.
 
-| Adatkészlet&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;| Adatkészlet leírása |
+| Adatkészlet &nbsp; neve&nbsp;&nbsp;&nbsp;&nbsp;| Adatkészlet leírása |
 |-------------|:--------------------|
 | Felnőtt népszámlálás jövedelme bináris besorolási adatkészlet | Az 1994-es népszámlálási adatbázis egy részhalmaza, amely a 16. korban dolgozó felnőtteket használja > 100 korrigált bevételi indexszel.<br/>**Használat**: a demográfiai adatokat használó személyek besorolása annak előrejelzéséhez, hogy egy személy évente több mint 50 000-et keres.<br/> **Kapcsolódó kutatás**: Kohavi, R., Becker, B., (1996). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
-|Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**:</b> a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**:</b> Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
+|Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**: </b> a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**: </b> Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
 | Megosztott CRM szolgáltatóváltást-Címkék |A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)) címkéi.|
 |Megosztott CRM-adatforgalom-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)) címkéi.|
 |Megosztott CRM-adatkészlet | Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról ([orange_small_train. adat. zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) származnak. <br/>Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák. |
@@ -117,14 +118,14 @@ A minta adatkészletek az **adatkészletek**-**mintáinak** kategóriájában é
 |IMDB-mozgóképek címei|Az adatkészlet a Twitter tweetekben értékelt filmek információit tartalmazza: IMDB-film azonosítója, film neve, műfaj és termelési év. 17K-filmek vannak az adatkészletben. Az adatkészlet az "S" dokumentumban lett bevezetve. Dooms, T. de Pessemier és L. Martens. MovieTweetings: a Twitteren gyűjtött film minősítési adatkészlet. Workshop a közösségi-on és az emberi számításban az ajánló rendszerekhez, CrowdRec a RecSys 2013-kor. "|
 |Film minősítése|Az adatkészlet a Movie tweetek adatkészlet kiterjesztett verziója. Az adatkészlet 170K-minősítésekkel rendelkezik, amelyek a Twitteren jól strukturált tweetekkel lettek kinyerve. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító, IMDB-film azonosítója, minősítés, időbélyeg, kedvencek száma ehhez a tweethez és a tweetek száma. Az adatkészlet elérhetővé tétele a. Said, S. dooms, B. Loni és D. tikk for ajánló Systems Challenge 2014.|
 |Időjárási adatkészlet|A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések ([201304 és 201310 közötti egyesített adatok](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> – A meteorológiai állomások azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve    <br/> – A 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént    <br/> -A Date oszlop külön évre, hónapra és napi oszlopokra van bontva    <br/> – A következő oszlopok lettek kiválasztva: AirportID, év, hónap, nap, idő, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, rekordtípus, HourlyPrecip, magasságmérő|
-|Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (https://www.wikipedia.org/) az egyes S&P 500-es vállalatok cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
+|Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (az https://www.wikipedia.org/) egyes S&P 500-es vállalatok cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
 

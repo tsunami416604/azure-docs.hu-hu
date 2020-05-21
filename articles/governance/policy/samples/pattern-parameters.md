@@ -1,14 +1,14 @@
 ---
 title: 'Minta: a házirend-definícióban szereplő paraméterek'
 description: Ez a Azure Policy minta azt szemlélteti, hogyan használhatók paraméterek egy házirend-definícióban.
-ms.date: 01/31/2020
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172806"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696724"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy minta: paraméterek
 
@@ -16,7 +16,10 @@ A házirend-definíciót dinamikus értékre lehet állítani, hogy csökkentse 
 
 ## <a name="sample-1-string-parameters"></a>1. példa: karakterlánc-paraméterek
 
-Ez a házirend-definíció két paramétert használ: **TagName** és **tagValue** , amelyekkel beállíthatja, hogy a szabályzat-hozzárendelés milyen erőforrásokon keres. Ez a formátum lehetővé teszi, hogy a szabályzat tetszőleges számú címkét és címke értékű kombinációt adjon meg, de csak egyetlen házirend-definíciót tart fenn.
+Ez a házirend-definíció két paramétert használ: **TagName** és **tagValue** , amelyekkel beállíthatja, hogy a szabályzat-hozzárendelés milyen erőforrásokon keres. Ez a formátum lehetővé teszi, hogy a házirend-definíció tetszőleges számú címkét és címke értékű kombinációt adjon meg, de csak egyetlen házirend-definíciót tart fenn.
+
+> [!NOTE]
+> A **Mode** _all_ (mód) és egy erőforráscsoport használatával használható kódelemek esetében lásd a [minta: címkék – minta #1](./pattern-tags.md#sample-1-parameterize-tags).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -42,13 +45,29 @@ Ez a házirend-definíció egyetlen paramétert használ a **listOfBandwidthinMb
 
 A házirend-definíció ezen részében a **listOfBandwidthinMbps** paraméter _tömbként_ van definiálva, és a használathoz Leírás van megadva. _Tömbként_több értéket kell megegyeznie.
 
-Ezután a paramétert a ' Policyrule osztály fogja használni **. Ha** a blokkot használja. _Tömb_ paraméterként **a** _tömb_
-[feltételeit](../concepts/definition-structure.md#conditions)vagy **notIn** kell használni.
+Ezután a paramétert a ' Policyrule osztály fogja használni **. Ha** a blokkot használja. _Tömb_ paraméterként a _tömb_ 
+ [feltételeit](../concepts/definition-structure.md#conditions)vagy **in** **notIn** kell használni.
 Itt a rendszer a **szolgáltató. bandwidthInMbps** aliast használja a definiált értékek egyikére.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="sample-3-parameterized-effect"></a>3. minta: paraméteres hatás
+
+A házirend-definíciók újrahasználhatóságának általános módja, ha maga a hatás parametrizálja. Ez a példa egyetlen paramétert használ, ami **hatással**van. A Parameterizing lehetővé teszi, hogy ugyanazokat a definíciókat a különböző hatókörű hatókörökhöz rendelje.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>3. minta: magyarázat
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+A házirend-definíció ezen részében a **Effect** paraméter _karakterláncként_van definiálva. A házirend-definíció beállítja egy hozzárendelés alapértelmezett értékét a _naplózáshoz_ , és korlátozza a _letiltott_ és a _megtagadási_egyéb beállításokat.
+
+Ezután a paramétert a ' Policyrule osztály használja a rendszer, **majd** letiltja a _hatást_.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
+
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

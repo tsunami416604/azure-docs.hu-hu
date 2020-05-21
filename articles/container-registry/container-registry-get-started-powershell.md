@@ -4,12 +4,12 @@ description: Gyorsan megtudhatja, hogyan hozhat létre egy privát Docker-beáll
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 792146abeaad137a29bfea25a59a957c5f69c5ac
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456371"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682772"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rövid útmutató: privát tároló-beállításjegyzék létrehozása Azure PowerShell használatával
 
@@ -51,7 +51,7 @@ A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
+Ebben a rövid útmutatóban egy *alapszintű* beállításjegyzéket hozunk létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: a [Container Registry szolgáltatási szintjei][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Bejelentkezés a beállításjegyzékbe
 
@@ -73,7 +73,7 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött.
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, a [Remove-AzResourceGroup][Remove-AzResourceGroup] paranccsal távolítsa el az erőforráscsoportot, a tároló-beállításjegyzéket és az ott tárolt tároló-lemezképeket:
 
@@ -81,7 +81,7 @@ Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, a 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt Azure PowerShell, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

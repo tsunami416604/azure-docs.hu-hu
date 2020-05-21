@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 588926a90d9a40c00bca4914dc1d5ed08301ff75
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780793"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725244"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -68,7 +68,7 @@ A következő szakaszokban példákat talál arra, hogyan deklarálhatja a szül
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>2. lehetőség: a `az` parancssori eszköz használata
 
-Az [Azure parancssori felület](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és a IoT- [bővítmény](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 vagy újabb) használatával az [eszköz-identitás](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alparancsokkal kezelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy lekérdezést használ a központban lévő összes nem IoT Edge eszköz hozzárendeléséhez IoT Edge eszköz alárendelt eszközeinek.
+Az [Azure parancssori felület](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) és a IoT- [bővítmény](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 vagy újabb) használatával az [eszköz-identitás](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) alparancsokkal kezelheti a szülő-gyermek kapcsolatokat. Az alábbi példa egy lekérdezést használ a központban lévő összes nem IoT Edge eszköz hozzárendeléséhez IoT Edge eszköz alárendelt eszközeinek.
 
 ```azurecli
 # Set IoT Edge parent device
@@ -138,7 +138,7 @@ Ez a beállítás a IoT Edge hub kívánt tulajdonsága, amelyet a különálló
 
 Az üzenetek és a modul állapotára vonatkozó információk alapértelmezés szerint az IoT Edge hub helyi tárolójában tárolódnak. A jobb megbízhatóság érdekében, különösen a kapcsolat nélküli üzemmódban, a gazdagép IoT Edge eszközön is kioszthatja a tárolót. További információkért lásd: [modulok hozzáférésének biztosítása az eszköz helyi tárolójához](how-to-access-host-storage-from-module.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a szülő/gyermek eszköz kapcsolatainak transzparens átjáró beállításáról:
 

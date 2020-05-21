@@ -4,24 +4,24 @@ description: Az Azure PowerShell használatával kezelheti Azure Cosmos-fiókjai
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/29/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d4473bbfe10fa2d0fc87eed7889a3e06af650b5b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0ae3ff54e1060255913d8155b297c5d412ce345f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592145"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656291"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
 Az alábbi útmutatóban megismerheti, hogyan szkriptelheti és automatizálhatja az Azure Cosmos DB-erőforrások (például a fiókok, az adatbázisok, a tárolók és az átviteli sebesség) felügyeletét a PowerShell használatával.
 
 > [!NOTE]
-> A cikkben szereplő minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ezek a parancsmagok még előzetes verzióban érhetők el, és az általánosan elérhetők előtt változhatnak. A parancsok frissítéseiért tekintse meg az az [. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
+> A cikkben szereplő minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
 
-A `Az` Azure Cosmos db platformfüggetlen felügyeletéhez használhatja a és `Az.CosmosDB` a parancsmagot a [platformfüggetlen PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
+A Azure Cosmos DB platformfüggetlen felügyeletéhez használhatja a `Az` és a `Az.CosmosDB` parancsmagot a [platformfüggetlen PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,7 +73,7 @@ New-AzCosmosDBAccount `
 * `$locations`Az adatbázis-fiók régiói, az írási régiótól kezdve és a feladatátvételi prioritás szerint rendezve.
 * `$accountName`Az Azure Cosmos-fiók neve. Egyedinek, kisbetűsnek kell lennie, csak alfanumerikus és "-" karaktereket tartalmazhat, és 3 – 31 karakter hosszú lehet.
 * `$apiKind`A létrehozandó Cosmos-fiók típusa. További információ: [Cosmos db API-](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis)k.
-* `$consistencyPolicy`, `$maxStalenessInterval`és `$maxStalenessPrefix` az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje és beállításai. További információ: [Azure Cosmos db egységességi szintjei](consistency-levels.md).
+* `$consistencyPolicy`, `$maxStalenessInterval` és `$maxStalenessPrefix` Az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje és beállításai. További információ: [Azure Cosmos db egységességi szintjei](consistency-levels.md).
 
 Az Azure Cosmos-fiókok IP-tűzfallal, Virtual Network szolgáltatási végpontokkal és privát végpontokkal konfigurálhatók. További információ a Azure Cosmos DB IP-tűzfalának konfigurálásáról: az [IP-tűzfal konfigurálása](how-to-configure-firewall.md). További információ a Azure Cosmos DB szolgáltatási végpontjának engedélyezéséről: [virtuális hálózatok elérésének konfigurálása](how-to-configure-vnet-service-endpoint.md). További információ a Azure Cosmos DB magánhálózati végpontjának engedélyezéséről: [hozzáférés konfigurálása privát végpontokról](how-to-configure-private-endpoints.md).
 
@@ -109,7 +109,7 @@ Ezzel a paranccsal frissítheti Azure Cosmos DB adatbázis-fiókjának tulajdons
 * Több főkiszolgáló engedélyezése
 
 > [!NOTE]
-> Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat (`locations`), és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani a fiók bármely egyéb változása alapján.
+> Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat ( `locations` ), és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani a fiók bármely egyéb változása alapján.
 > [!NOTE]
 > Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását, illetve manuális feladatátvételt is indíthat. Lásd: a [feladatátvételi prioritás módosítása](#modify-failover-priority) és a [manuális feladatátvétel elindítása](#trigger-manual-failover).
 
@@ -204,7 +204,7 @@ Remove-AzCosmosDBAccount `
 
 ### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a>Azure Cosmos-fiók címkék frissítése
 
-Ezzel a paranccsal az Azure Cosmos-fiókhoz tartozó [Azure-erőforrás-címkék][azure-resource-tags] állíthatók be. A címkék a fiók létrehozásakor `New-AzCosmosDBAccount` és a használatával is megadhatók. `Update-AzCosmosDBAccount`
+Ezzel a paranccsal az Azure Cosmos-fiókhoz tartozó [Azure-erőforrás-címkék][azure-resource-tags] állíthatók be. A címkék a fiók létrehozásakor és a használatával is megadhatók `New-AzCosmosDBAccount` `Update-AzCosmosDBAccount` .
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -291,10 +291,10 @@ Update-AzCosmosDBAccount `
 
 Az automatikus Feladatátvételsel konfigurált fiókok esetében megváltoztathatja azt a sorrendet, amelyben a Cosmos a másodlagos replikákat az elsődlegesnek fogja előléptetni, és az elsődleges elérhetetlenné válik.
 
-Az alábbi példában feltételezzük, hogy az aktuális feladatátvételi prioritás `West US 2 = 0` `East US 2 = 1`a következő `South Central US = 2`:,. A parancs ezt a következőre `West US 2 = 0`fogja `South Central US = 1`módosítani `East US 2 = 2`:,.
+Az alábbi példában feltételezzük, hogy az aktuális feladatátvételi prioritás a következő:, `West US 2 = 0` `East US 2 = 1` `South Central US = 2` . A parancs ezt a következőre fogja módosítani: `West US 2 = 0` `South Central US = 1` , `East US 2 = 2` .
 
 > [!CAUTION]
-> A helyének `failoverPriority=0` módosítása elindítja a manuális feladatátvételt egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
+> A helyének módosítása elindítja `failoverPriority=0` a manuális feladatátvételt egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -309,12 +309,12 @@ Update-AzCosmosDBAccountFailoverPriority `
 
 ### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a>Manuális feladatátvétel indítása
 
-A manuális Feladatátvételsel konfigurált fiókok esetében a módosításával átadhatja a másodlagos replikát az elsődlegesnek `failoverPriority=0`. Ezzel a művelettel vészhelyzeti helyreállítási gyakorlatot indíthat a vész-helyreállítási tervezés teszteléséhez.
+A manuális Feladatátvételsel konfigurált fiókok esetében a módosításával átadhatja a másodlagos replikát az elsődlegesnek `failoverPriority=0` . Ezzel a művelettel vészhelyzeti helyreállítási gyakorlatot indíthat a vész-helyreállítási tervezés teszteléséhez.
 
-Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritásával `West US 2 = 0` rendelkezik, `East US 2 = 1` és megfordítja a régiókat.
+Az alábbi példában feltételezzük, hogy a fiók aktuális feladatátvételi prioritásával rendelkezik `West US 2 = 0` , `East US 2 = 1` és megfordítja a régiókat.
 
 > [!CAUTION]
-> A `locationName` szolgáltatásra való `failoverPriority=0` váltáskor a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
+> A `locationName` szolgáltatásra való váltáskor `failoverPriority=0` a rendszer manuális feladatátvételt indít el egy Azure Cosmos-fiókhoz. A többi prioritási változás nem indít el feladatátvételt.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -345,7 +345,7 @@ $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 
-Set-AzCosmosDBSqlDatabase `
+New-AzCosmosDBSqlDatabase `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
@@ -359,7 +359,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $databaseRUs = 400
 
-Set-AzCosmosDBSqlDatabase `
+New-AzCosmosDBSqlDatabase `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName `
@@ -441,7 +441,7 @@ $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -460,7 +460,7 @@ $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -506,7 +506,7 @@ $indexingPolicy = New-AzCosmosDBSqlIndexingPolicy `
     -IndexingMode Consistent `
     -Automatic $true
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -529,7 +529,7 @@ $partitionKeyPath = "/myPartitionKey"
 $indexingPolicy = New-AzCosmosDBSqlIndexingPolicy `
     -IndexingMode None
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -557,7 +557,7 @@ $uniqueKey = New-AzCosmosDBSqlUniqueKey `
 $uniqueKeyPolicy = New-AzCosmosDBSqlUniqueKeyPolicy `
     -UniqueKey $uniqueKey
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -570,7 +570,7 @@ Set-AzCosmosDBSqlContainer `
 
 ### <a name="create-an-azure-cosmos-db-container-with-conflict-resolution"></a><a id="create-container-lww"></a>Ütközéses feloldású Azure Cosmos DB-tároló létrehozása
 
-Ha az összes ütközést a ConflictsFeed szeretné írni, és külön `-Type "Custom" -Path ""`kezeli a leírót, adja meg a következőt:
+Ha az összes ütközést a ConflictsFeed szeretné írni, és külön kezeli a leírót, adja meg a következőt: `-Type "Custom" -Path ""`
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy
@@ -585,7 +585,7 @@ $conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
     -Type LastWriterWins `
     -Path $conflictResolutionPath
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -595,7 +595,7 @@ Set-AzCosmosDBSqlContainer `
     -ConflictResolutionPolicy $conflictResolutionPolicy
 ```
 
-Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne `New-AzCosmosDBSqlConflictResolutionPolicy` létrehozni, hívja `-Type` meg `-ConflictResolutionProcedure`és adja át a paramétereket és a paramétert.
+Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne létrehozni, hívja meg `New-AzCosmosDBSqlConflictResolutionPolicy` és adja át a paramétereket és a paramétert `-Type` `-ConflictResolutionProcedure` .
 
 ```azurepowershell-interactive
 # Create container with custom conflict resolution policy using a stored procedure
@@ -612,7 +612,7 @@ $conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
     -Type Custom `
     -ConflictResolutionProcedure $conflictResolutionSproc
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -669,7 +669,7 @@ Remove-AzCosmosDBSqlContainer `
     -Name $containerName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Minden PowerShell-minta](powershell-samples.md)
 * [Azure Cosmos-fiók kezelése](how-to-manage-database-account.md)

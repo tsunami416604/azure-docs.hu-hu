@@ -4,23 +4,24 @@ description: Ismerje meg, hogy az Azure Cosmos DB SQL System függvénye hogyan 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0de34e6e0e238887b8f75ae2397e9e650eaac340
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302593"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711703"
 ---
 # <a name="contains-azure-cosmos-db"></a>TARTALMAZZA (Azure Cosmos DB)
+
  Egy logikai értéket ad vissza, amely azt jelzi, hogy az első karakterlánc-kifejezés tartalmazza-e a másodpercet.  
   
 ## <a name="syntax"></a>Szintaxis
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
 ## <a name="arguments"></a>Argumentumok
@@ -30,6 +31,8 @@ CONTAINS(<str_expr1>, <str_expr2>)
   
 *str_expr2*  
    A keresendő karakterlánc-kifejezés.  
+
+*bool_expr* Nem kötelező érték az eset figyelmen kívül hagyásával. Ha True értékre van állítva, akkor a tartalmaz egy kis-és nagybetűket megkülönböztető keresést. Ha nincs megadva, ez az érték hamis.
   
 ## <a name="return-types"></a>Visszatérési típusok
   
@@ -40,7 +43,7 @@ CONTAINS(<str_expr1>, <str_expr2>)
   A következő példa ellenőrzi, hogy az "ABC" tartalmazza-e az "AB" kifejezést, és ha az "ABC" a "d" kifejezést tartalmazza.  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 ```  
   
  Itt látható az eredményhalmaz.  
@@ -51,9 +54,9 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

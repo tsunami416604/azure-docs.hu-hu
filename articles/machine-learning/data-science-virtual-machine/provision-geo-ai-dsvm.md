@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d401a543032b1a206a4477f04d7e8e209c0f2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77525889"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646607"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Gyors útmutató: Geo mesterséges intelligencia virtuális gép beállítása az Azure-ban 
 
@@ -84,7 +84,7 @@ A standard ArcGIS-fiókra vagy ingyenes próbaverzióra való regisztráció ut�
 
 Miután bejelentkezett a ArcGIS Pro Desktopba a ArcGIS-fiókkal, készen áll arra, hogy a térinformatikai elemzési és gépi tanulási projektek számára a virtuális gépen telepített és konfigurált adatelemzési eszközöket használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Geo AI Data Science VM használatának megkezdése a következő erőforrás útmutatásával:
 

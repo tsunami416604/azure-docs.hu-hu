@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cfba44f739043116bca798a698be7c155e081b2d
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5794a14fceccc8c7c9f3f35c479956e76dd953a1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838162"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651777"
 ---
-|Name |Description |Hatás (ok) |Verzió |GitHub |
+|Name |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Egyéni IPsec/IKE-szabályzatot kell alkalmazni az összes Azure Virtual Network Gateway-kapcsolatra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ez a szabályzat biztosítja, hogy az összes Azure Virtual Network Gateway-kapcsolat egyéni Internet Protocol biztonsági (IPSec)/internetkapcsolat (IKE) házirendet használjon. Támogatott algoritmusok és fő erősségek –[https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[Az összes internetes forgalmat az üzembe helyezett Azure Firewall keresztül kell átirányítani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center azonosította, hogy egyes alhálózatok nem védik a következő generációs tűzfallal. Az alhálózatok elleni védelem a lehetséges fenyegetésekkel szemben, ha korlátozza a hozzáférést Azure Firewall vagy egy támogatott következő generációs tűzfallal |AuditIfNotExists, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |

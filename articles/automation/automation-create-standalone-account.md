@@ -1,16 +1,16 @@
 ---
 title: Önálló Azure Automation-fiók létrehozása
-description: Ez a cikk bemutatja, hogyan hozhat létre, tesztelheti és használhat egy példa rendszerbiztonsági tag hitelesítését Azure Automationban.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre önálló Azure Automation fiókot és klasszikus futtató fiókot.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5f291bdea2df67e07b1aca2dcc6326c3c9864ad2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ffe7edd5faf5ae4f88f9f3e0c40256bee32395d7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995800"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714865"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -30,14 +30,12 @@ A fiók létrehozásával gyorsan megkezdheti a runbookok létrehozását és ü
 
 Automation-fiók létrehozásához vagy frissítéséhez, valamint a cikkben ismertetett feladatok végrehajtásához a következő jogosultságokkal és engedélyekkel kell rendelkeznie:
 
-* Az Automation-fiók létrehozásához hozzá kell adni az Azure AD-felhasználói fiókot egy olyan szerepkörhöz, amely az `Microsoft.Automation` erőforrások tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik. További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
-* A Azure Portal **Azure Active Directory** > **MANAGE** > **felhasználói beállítások**kezelése területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak globális rendszergazdának kell lennie az Azure ad-ben.
+* Az Automation-fiók létrehozásához hozzá kell adni az Azure AD-felhasználói fiókot egy olyan szerepkörhöz, amely az erőforrások tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik `Microsoft.Automation` . További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
+* A Azure Portal **Azure Active Directory**  >  **MANAGE**  >  **felhasználói beállítások**kezelése területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak globális rendszergazdának kell lennie az Azure ad-ben.
 
 Ha nem tagja az előfizetés Active Directory példányának, mielőtt felveszi az előfizetéshez tartozó globális rendszergazdai vagy társ-felügyeleti szerepkörbe, a rendszer vendégként adja hozzá a Active Directory. Ebben az esetben a következő üzenet jelenik meg az Automation-fiók hozzáadása panelen:`You do not have permissions to create.`
 
-Ha először ad hozzá egy felhasználót a globális rendszergazda vagy a rendszergazda szerepkörhöz, akkor eltávolíthatja a felhasználót az előfizetés Active Directory példányáról. A felhasználó a Active Directoryban található felhasználói szerepkörhöz is elolvasható.
-
-Felhasználói szerepkörök ellenőrzése:
+Ha először ad hozzá egy felhasználót a globális rendszergazda vagy a rendszergazda szerepkörhöz, akkor eltávolíthatja a felhasználót az előfizetés Active Directory példányáról. A felhasználó a Active Directoryban található felhasználói szerepkörhöz is elolvasható. Felhasználói szerepkörök ellenőrzése:
 
 1. A Azure Portal nyissa meg a Azure Active Directory ablaktáblát.
 1. Válassza a **Felhasználók és csoportok** elemet.
@@ -83,8 +81,6 @@ Ha Azure Automation fiókot szeretne létrehozni a Azure Portalban, hajtsa végr
 
 1. Az Automation-fiók létrehozási folyamatának nyomon követéséhez válassza a menü **értesítések** elemét.
 
-### <a name="resources-included"></a>Érintett erőforrások
-
 Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. A létrehozás után ezeket a runbookok biztonságosan törölheti, ha nem szeretné megtartani őket. A futtató fiókok segítségével hitelesítheti a fiókját egy runbook, és csak akkor hagyhatja el, ha létrehoz egy másikat, vagy ha nem igényel ilyet. Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
 | Erőforrás | Leírás |
@@ -103,11 +99,10 @@ A klasszikus futtató fiókok már nem jönnek létre alapértelmezés szerint A
 2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
 3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a grafikus létrehozásról: [grafikus létrehozás Azure Automationban](automation-graphical-authoring-intro.md).
-* A PowerShell-forgatókönyvek használatának megismeréséhez tekintse meg a következőt: [Az első PowerShell-runbookom](automation-first-runbook-textual-powershell.md).
-* A PowerShell-alapú munkafolyamat-runbookok első lépéseit [Az első PowerShell-alapú munkafolyamat-runbookom](automation-first-runbook-textual.md) című témakör ismerteti.
-* A Python 2 runbookok megkezdéséhez tekintse meg [az első Python2-runbook](automation-first-runbook-textual-python2.md).
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Grafikus szerzői műveletek Azure Automation](automation-graphical-authoring-intro.md)
+* [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md)
+* [Az első PowerShell-munkafolyamat runbook](automation-first-runbook-textual.md)
+* [Az első Python2-runbook](automation-first-runbook-textual-python2.md)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: ea5e3dffaafb691a667bad3ef0014389e1604e27
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682787"
+ms.locfileid: "83711567"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -95,7 +95,7 @@ Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák köz�
 * Amikor leküldi vagy lekéri a képeket egy földrajzilag replikált beállításjegyzékből, az Azure Traffic Manager a háttérben elküldi a kérést az Ön számára legközelebb eső régióban található beállításjegyzékbe a hálózati késés szempontjából.
 * Miután leküldte a rendszerképet vagy a címkét a legközelebbi régióra, időbe telik, amíg a Azure Container Registry replikálja a jegyzékeket és a rétegeket a többi, Ön által választott régióba. A nagyobb méretű képek replikálásához hosszabb időt is igénybe kell venni, mint a kisebbek. A rendszer a képeket és címkéket szinkronizálja a replikációs régiók között egy végleges konzisztencia-modellel.
 * A földrajzilag replikált beállításjegyzék leküldéses frissítéseitől függő munkafolyamatok kezeléséhez javasoljuk, hogy a [webhookokat](container-registry-webhook.md) úgy konfigurálja, hogy válaszoljanak a leküldéses eseményekre. A regionális webhookok a földrajzilag replikált beállításjegyzékben állíthatók be, hogy nyomon kövessék a leküldéses eseményeket a földrajzilag replikált régiókban.
-* A tartalmi rétegeket jelképező Blobok kiszolgálásához az Azure-tárolók adatvégpontokat használnak. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints-preview) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
+* A tartalmi rétegeket jelképező Blobok kiszolgálásához az Azure-tárolók adatvégpontokat használnak. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
 * Ha [privát](container-registry-private-link.md) végpontokat használ a beállításjegyzékhez egy virtuális hálózaton, a földrajzilag replikált régiók dedikált adatvégpontja alapértelmezés szerint engedélyezve van. 
 
 ## <a name="delete-a-replica"></a>Replika törlése
@@ -127,7 +127,7 @@ Ha ez a probléma merül fel, az egyik megoldás egy ügyféloldali DNS-gyorsít
 
 Ha a DNS-feloldást a legközelebbi replikára szeretné optimalizálni, amikor képeket küld, állítson be egy földrajzilag replikált beállításjegyzéket ugyanabban az Azure-régióban, mint a leküldéses műveletek forrása, vagy a legközelebbi régió, amikor az Azure-on kívül dolgozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a három részből álló oktatóanyag-sorozatot, a [geo-replikációt Azure Container Registryban](container-registry-tutorial-prepare-registry.md). Végigvezeti a földrajzilag replikált beállításjegyzék létrehozásán, a tároló kialakításán, majd egyetlen `docker push` paranccsal, több regionális Web Apps a tárolók példányain való üzembe helyezésével.
 

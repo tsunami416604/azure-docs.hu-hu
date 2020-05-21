@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650182"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rövid útmutató a Bing Entity Search API és a Ruby használatához
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API Ruby használatával
 
 Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Entity Search API, és megtekintheti a JSON-választ. Ez az egyszerű Ruby-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
-Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Bár ez az alkalmazás a Rubyban van megírva, az API egy REST-alapú webszolgáltatás, amely a legtöbb programozási nyelvvel kompatibilis.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. A kedvenc IDE-vagy Kódszerkesztő-szerkesztőben hozzon létre egy Hírek Ruby-fájlt, és importálja a következő csomagokat.
+1. A kedvenc IDE-vagy Kódszerkesztő-szerkesztőben hozzon létre egy Hírek Ruby-fájlt, és importálja a következő csomagokat:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
     require 'json'
     ```
 
-2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és egy keresési lekérdezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési lekérdezéshez. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -58,14 +58,14 @@ Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolg�
     uri = URI (host + path + params)
     ```
 
-2. A kérelem létrehozásához használja az utolsó lépés változóit. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+2. A kérelem létrehozásához használja az utolsó lépés változóit. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. Küldje el a kérést, és nyomtassa ki a választ
+3. Küldje el a kérést, és nyomtassa ki a választ.
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -140,10 +140,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Mi a Bing Entity Search API](../search-the-web.md)
-* [Bing Entity Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Mi a Bing Entity Search API?](../search-the-web.md)
+* [Bing Entity Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

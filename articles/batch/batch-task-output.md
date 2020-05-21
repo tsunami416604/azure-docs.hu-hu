@@ -1,15 +1,15 @@
 ---
-title: Feladat és feladat kimenetének megőrzése adattárba – Azure Batch
+title: Feladat és feladat kimenetének megőrzése egy adattárba
 description: Ismerje meg a Batch-feladatok és-feladatok kimeneti adatainak megőrzésének különböző lehetőségeit. Az Azure Storage-ba vagy egy másik adattárba is megtarthatja az adatmegőrzést.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0c8f7517e88bf4e5476c7bad98d167ce760a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116417"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726298"
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
 
@@ -75,7 +75,7 @@ A Batch-megoldás tervezésekor vegye figyelembe a feladatok és a tevékenység
 
 - **Kimenet megtekintése**: ha a Azure Portal egy batch-feladatra navigál, és kiválasztja a **fájlok a csomóponton**lehetőséget, akkor a feladathoz tartozó összes fájl, nem csak a kívánt kimeneti fájlok jelennek meg. A számítási csomópontokon lévő fájlok csak akkor érhetők el, ha a csomópont létezik, és csak a feladathoz beállított megőrzési időn belül van. Az Azure Storage-ban megőrzött tevékenység-kimenet megtekintéséhez használhatja a Azure Portal vagy egy Azure Storage-ügyfélalkalmazás, például a [Azure Storage Explorer][storage_explorer]. Ha meg szeretné tekinteni a kimeneti adatokat az Azure Storage-ban a portálon vagy egy másik eszközön, ismernie kell a fájl helyét, és közvetlenül hozzá kell navigálnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a Batch szolgáltatás API új funkcióival, hogy a Batch szolgáltatás API-val megőrzött tevékenységadatok maradjanak a [feladat adataiban az Azure Storage](batch-task-output-files.md)-ban.
 - Ismerje meg, hogyan használható a Batch file Conventions Library for .NET a [feladat-és tevékenységadatok megőrzése az Azure Storage-ban a .net-hez készült batch file Conventions Library](batch-task-output-file-conventions.md)használatával.

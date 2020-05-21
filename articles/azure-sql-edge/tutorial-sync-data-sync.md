@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599654"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680508"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből a Azure SQL Databasere SQL-adatszinkronizálás használatával
 
@@ -32,7 +32,7 @@ Az oktatóanyaghoz az [Azure SQL-adatszinkronizálás adatszinkronizálási ügy
 
 * Hozza létre a táblákat és az egyéb szükséges objektumokat a Azure SQL Database üzemelő példányában.
 
-* Hozza létre a szükséges táblákat és objektumokat az Azure SQL Edge üzemelő példányában. További információ: [SQL Database DAC-csomagok használata az SQL Edge használatával](stream-analytics.md).
+* Hozza létre a szükséges táblákat és objektumokat az Azure SQL Edge üzemelő példányában. További információ: [SQL Database DAC-csomagok használata az SQL Edge használatával](deploy-dacpac.md).
 
 * Regisztrálja az Azure SQL Edge-példányt az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökével. További információ: [helyszíni SQL Server-adatbázis hozzáadása](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
 
@@ -58,6 +58,6 @@ A SQL-adatszinkronizálásról további információt a következő cikkekben ta
 
 * [A szinkronizálási séma frissítése a Transact-SQL vagy a](../sql-database/sql-database-update-sync-schema.md) [PowerShell használatával](../sql-database/scripts/sql-database-sync-update-schema.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure SQL Database és az Azure SQL Edge közötti szinkronizáláshoz használja a PowerShellt](../sql-database/scripts/sql-database-sync-data-between-azure-onprem.md). Ebben az oktatóanyagban cserélje le az `OnPremiseServer` adatbázis adatait az Azure SQL Edge részleteire.

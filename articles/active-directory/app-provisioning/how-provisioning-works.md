@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593726"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712230"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -25,14 +25,14 @@ Az automatikus kiépítés olyan felhasználói identitások és szerepkörök l
 Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az alkalmazás gyártójától származó tartományok közötti IDENTITÁSKEZELÉS (SCIM) 2,0 felhasználói felügyeleti API-végponthoz való csatlakozással. Ez a SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozza létre, frissítse és távolítsa el a felhasználókat. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti üzembe helyezéshez használt csatorna HTTPS TLS 1,2 titkosítással van titkosítva.
 
 
-![Azure ad-kiépítési szolgáltatás](./media/how-provisioning-works/provisioning0.PNG)
-*1. ábrája: az Azure ad kiépítési szolgáltatása*
+![Azure AD-kiépítési szolgáltatás ](./media/how-provisioning-works/provisioning0.PNG)
+ *1. ábrája: az Azure ad kiépítési szolgáltatása*
 
-![Kimenő felhasználó kiépítési munkafolyamata](./media/how-provisioning-works/provisioning1.PNG)
-*2. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből a népszerű SaaS-alkalmazásokba*
+![Kimenő felhasználó kiépítési munkafolyamata ](./media/how-provisioning-works/provisioning1.PNG)
+ *2. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből a népszerű SaaS-alkalmazásokba*
 
-![Bejövő felhasználó kiépítési munkafolyamata](./media/how-provisioning-works/provisioning2.PNG)
-*3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból Azure Active Directory és a Windows Server* rendszerre Active Directory
+![Bejövő felhasználó kiépítési munkafolyamata ](./media/how-provisioning-works/provisioning2.PNG)
+ *3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból Azure Active Directory és a Windows Server* rendszerre Active Directory
 
 ## <a name="provisioning-using-scim-20"></a>Kiépítés a SCIM 2,0 használatával
 
@@ -63,7 +63,7 @@ Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attr
 
 Az Azure AD-ből egy SaaS-alkalmazásba való kimenő kiépítés esetén a felhasználók [vagy csoportok hozzárendeléseire](../manage-apps/assign-user-or-group-access-portal.md) támaszkodva a leggyakoribb módszer annak meghatározására, hogy mely felhasználók tartoznak a kiépítés hatálya alá. Mivel a felhasználói hozzárendelések az egyszeri bejelentkezés engedélyezéséhez is használatosak, ugyanezt a módszert használhatja a hozzáférés és a kiépítés kezelésére is. A hozzárendelés-alapú hatókör nem vonatkozik a bejövő kiépítési forgatókönyvekre, például a munkanapokra és a SuccessFactors.
 
-* **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására**van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "false" (hamis) értékre van állítva.
+* **Csoportok.** A prémium szintű Azure AD-licenccel a csoportok használatával rendelhet hozzá hozzáférést egy SaaS-alkalmazáshoz. Ezt követően, ha a kiépítési hatókör **csak a hozzárendelt felhasználók és csoportok szinkronizálására**van beállítva, az Azure ad-kiépítési szolgáltatás a felhasználókat attól függően fogja kiépíteni vagy kiépíteni, hogy az alkalmazáshoz rendelt csoport tagjai-e. Maga a csoport objektum sincs kiépítve, kivéve, ha az alkalmazás támogatja a csoportok objektumait. Győződjön meg arról, hogy az alkalmazáshoz rendelt csoportok "SecurityEnabled" tulajdonsága "true" (igaz) értékre van állítva.
 
 * **Dinamikus csoportok.** Az Azure AD-beli felhasználó-kiépítési szolgáltatás a [dinamikus csoportokba](../users-groups-roles/groups-create-rule.md)tartozó felhasználókat tudja olvasni és kiépíteni. Tartsa szem előtt ezeket a figyelmeztetéseket és javaslatokat:
 
@@ -83,7 +83,7 @@ A hatókör-szűrők használatával olyan attribútum-alapú szabályokat hatá
 
 Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../b2b/configure-saas-apps.md).
 
-Vegye figyelembe, hogy a vendég felhasználóhoz tartozó userPrincipalName gyakran "alias # EXT #@domain.com"-ként tárolja a rendszer. Ha a userPrincipalName az attribútum-hozzárendelések forrása attribútumként szerepel, a #EXT # el lesz távolítva a userPrincipalName. Ha a #EXT # elemre van szüksége, cserélje le a userPrincipalName és a originalUserPrincipalName tulajdonságot a forrás attribútumként. 
+Vegye figyelembe, hogy a vendég felhasználóhoz tartozó userPrincipalName gyakran "alias # EXT #"-ként tárolja a rendszer @domain.com . Ha a userPrincipalName az attribútum-hozzárendelések forrása attribútumként szerepel, a #EXT # el lesz távolítva a userPrincipalName. Ha a #EXT # elemre van szüksége, cserélje le a userPrincipalName és a originalUserPrincipalName tulajdonságot a forrás attribútumként. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 

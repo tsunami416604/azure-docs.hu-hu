@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81256484"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684753"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Oktatóanyag: gépi tanulási modell létrehozása az R használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,11 +30,11 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Adatgyűjtés és felkészülés a képzésre
 > * Adatok feltöltése adattárba, hogy elérhető legyen a távoli képzéshez
 > * Számítási erőforrás létrehozása a modell távoli betanításához
-> * `caret` Modell betanítása a halálozás valószínűségének előrejelzésére
+> * Modell betanítása `caret` a halálozás valószínűségének előrejelzésére
 > * Előrejelzési végpont üzembe helyezése
 > * A modell tesztelése az R-ből
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -121,10 +121,10 @@ Most folytassa a **azuremlsdk** -csomag importálásával.
 library(azuremlsdk)
 ```
 
-A betanítási és pontozási`accidents.R` szkriptek (és `accident_predict.R`) további függőségekkel rendelkeznek. Ha a parancsfájlok helyi futtatását tervezi, győződjön meg arról, hogy rendelkezik a szükséges csomagokkal is.
+A betanítási és pontozási szkriptek ( `accidents.R` és `accident_predict.R` ) további függőségekkel rendelkeznek. Ha a parancsfájlok helyi futtatását tervezi, győződjön meg arról, hogy rendelkezik a szükséges csomagokkal is.
 
 ### <a name="load-your-workspace"></a>Munkaterület betöltése
-Munkaterület-objektum példányának létrehozása a meglévő munkaterületről. A következő kód betölti a munkaterület részleteit a **config. JSON** fájlból. A munkaterületet a használatával [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html)is lekérheti.
+Munkaterület-objektum példányának létrehozása a meglévő munkaterületről. A következő kód betölti a munkaterület részleteit a **config. JSON** fájlból. A munkaterületet a használatával is lekérheti [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()
@@ -159,7 +159,7 @@ wait_for_provisioning_completion(compute_target)
 
 ## <a name="prepare-data-for-training"></a>Az adatképzés előkészítése
 Ez az oktatóanyag az USA [nemzeti országúti közlekedésbiztonsági adminisztrációjának](https://cdan.nhtsa.gov/tsftables/tsfar.htm) adatait használja (a [Mary C. Meyer és a Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)köszönhetően).
-Ez az adatkészlet több mint 25 000 autóbalesetben tartalmaz adatokat az Egyesült Államokban, és a változókat a végzetes valószínűségének előrejelzésére használhatja. Először importálja az adatfájlokat az R-be, és alakítsa át `accidents` egy új dataframe az elemzéshez, majd `Rdata` exportálja egy fájlba.
+Ez az adatkészlet több mint 25 000 autóbalesetben tartalmaz adatokat az Egyesült Államokban, és a változókat a végzetes valószínűségének előrejelzésére használhatja. Először importálja az adatfájlokat az R-be, és alakítsa át egy új dataframe `accidents` az elemzéshez, majd exportálja egy `Rdata` fájlba.
 
 ```R
 nassCDS <- read.csv("nassCDS.csv", 
@@ -200,11 +200,11 @@ Ebben az oktatóanyagban egy logisztikai regressziós modellt kell kitölteni a 
 * Feladat küldése
 
 ### <a name="prepare-the-training-script"></a>A betanítási szkript előkészítése
-Ehhez az oktatóanyaghoz `accidents.R` egy olyan nevű képzési szkriptet is megadtak, amely a jelen oktatóanyagban található. Figyelje meg a **betanítási parancsfájlban** szereplő alábbi adatokat, amelyeket a Azure Machine learning képzésének kihasználása érdekében tettünk:
+Ehhez az oktatóanyaghoz egy olyan nevű képzési szkriptet is megadtak, amely `accidents.R` a jelen oktatóanyagban található. Figyelje meg a **betanítási parancsfájlban** szereplő alábbi adatokat, amelyeket a Azure Machine learning képzésének kihasználása érdekében tettünk:
 
-* A betanítási parancsfájl egy `-d` argumentummal keresi meg a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
-* A betanítási szkript az Azure ML-ben a következő használatával `log_metric_to_run()`naplózza a végső pontosságot metrikaként a futtatási rekordhoz. Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek `log_*()`teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) .
-* A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ml-ben. A betanítás során a rendszer `./outputs` automatikusan feltölti a fájlokra írt fájlokat az Azure ml-ben, és összetevőkként megőrzi a futtatási rekordokat. Ha menti a betanított `./outputs`modellt, a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
+* A betanítási parancsfájl egy argumentummal `-d` keresi meg a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
+* A betanítási szkript az Azure ML-ben a következő használatával naplózza a végső pontosságot metrikaként a futtatási rekordhoz `log_metric_to_run()` . Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()` .
+* A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ml-ben. A betanítás során a rendszer automatikusan feltölti a fájlokra írt fájlokat `./outputs` Az Azure ml-ben, és összetevőkként megőrzi a futtatási rekordokat. Ha menti a betanított modellt `./outputs` , a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása
 
@@ -212,11 +212,11 @@ Az Azure ML-kalkulátor egy képzési parancsfájlnak a számítási célra val�
 
 A kalkulátor létrehozásához adja meg a következőt:
 
-* A betanításhoz (`source_directory`) szükséges parancsfájlokat tartalmazó könyvtár. A rendszer az ebben a könyvtárban lévő összes fájlt feltölti a fürt csomópontjaira. A címtárban szerepelnie kell a betanítási parancsfájlnak és a szükséges további parancsfájloknak.
-* A végrehajtandó betanítási szkript (`entry_script`).
-* A számítási cél (`compute_target`), ebben az esetben a korábban létrehozott AmlCompute-fürt.
-* A betanítási parancsfájlhoz (`script_params`) szükséges paraméterek. Az Azure ML parancssori parancsfájllal futtatja a betanítási parancsfájlt `Rscript`. Ebben az oktatóanyagban egy argumentumot kell megadnia a parancsfájlhoz, az adatkönyvtár-csatlakoztatási ponthoz, amelyet a-hez érhet el `ds$path(target_path)`.
-* A betanításhoz szükséges környezeti függőségek. A képzéshez készült alapértelmezett Docker-rendszerkép már tartalmazza a betanítási `e1071`parancsfájlban `optparse`szükséges három csomagot (`caret`, és).  Így nem kell további adatokat megadnia. Ha olyan R-csomagokat használ, amelyek nem szerepelnek alapértelmezés szerint, használja a kalkulátor `cran_packages` paraméterét további Cran-csomagok hozzáadásához. Tekintse [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) meg a konfigurálható beállítások teljes készletére vonatkozó referenciát.
+* A betanításhoz () szükséges parancsfájlokat tartalmazó könyvtár `source_directory` . A rendszer az ebben a könyvtárban lévő összes fájlt feltölti a fürt csomópontjaira. A címtárban szerepelnie kell a betanítási parancsfájlnak és a szükséges további parancsfájloknak.
+* A végrehajtandó betanítási szkript ( `entry_script` ).
+* A számítási cél ( `compute_target` ), ebben az esetben a korábban létrehozott AmlCompute-fürt.
+* A betanítási parancsfájlhoz () szükséges paraméterek `script_params` . Az Azure ML parancssori parancsfájllal futtatja a betanítási parancsfájlt `Rscript` . Ebben az oktatóanyagban egy argumentumot kell megadnia a parancsfájlhoz, az adatkönyvtár-csatlakoztatási ponthoz, amelyet a-hez érhet el `ds$path(target_path)` .
+* A betanításhoz szükséges környezeti függőségek. A képzéshez készült alapértelmezett Docker-rendszerkép már tartalmazza a `caret` `e1071` `optparse` betanítási parancsfájlban szükséges három csomagot (, és).  Így nem kell további adatokat megadnia. Ha olyan R-csomagokat használ, amelyek nem szerepelnek alapértelmezés szerint, használja a kalkulátor `cran_packages` paraméterét további Cran-csomagok hozzáadásához. Tekintse [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) meg a konfigurálható beállítások teljes készletére vonatkozó referenciát.
 
 ```R
 est <- estimator(source_directory = ".",
@@ -252,7 +252,7 @@ wait_for_run_completion(run, show_output = TRUE)
 Miután a modell befejezte a képzést, elérheti a feladathoz tartozó, a futtatási rekordban megőrzött összetevőket, beleértve a naplózott metrikákat és a végső betanított modellt is.
 
 ### <a name="get-the-logged-metrics"></a>Naplózott mérőszámok beolvasása
-A betanítási `accidents.R`szkriptben egy mérőszámot adott meg a modellből: a betanítási adatokban szereplő előrejelzések pontossága. A mérőszámokat megtekintheti a [Studióban](https://ml.azure.com), vagy kicsomagolhatja őket a helyi munkamenetbe R-listaként a következőképpen:
+A betanítási szkriptben `accidents.R` egy mérőszámot adott meg a modellből: a betanítási adatokban szereplő előrejelzések pontossága. A mérőszámokat megtekintheti a [Studióban](https://ml.azure.com), vagy kicsomagolhatja őket a helyi munkamenetbe R-listaként a következőképpen:
 
 ```R
 metrics <- get_run_metrics(run)
@@ -309,7 +309,7 @@ A modell segítségével előre megjósolhatja, hogy az ütközésből származ�
 
 ### <a name="register-the-model"></a>Regisztrálja a modellt
 
-Először regisztrálja a munkaterületre letöltött modellt [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html). A regisztrált modell lehet fájlok gyűjteménye, de ebben az esetben az R Model objektum elegendő. Az Azure ML a regisztrált modellt fogja használni az üzembe helyezéshez.
+Először regisztrálja a munkaterületre letöltött modellt [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html) . A regisztrált modell lehet fájlok gyűjteménye, de ebben az esetben az R Model objektum elegendő. Az Azure ML a regisztrált modellt fogja használni az üzembe helyezéshez.
 
 ```R
 model <- register_model(ws, 
@@ -319,7 +319,7 @@ model <- register_model(ws,
 ```
 
 ### <a name="define-the-inference-dependencies"></a>A következtetési függőségek meghatározása
-Ahhoz, hogy webszolgáltatást hozzon létre a modellhez, először létre kell hoznia`entry_script`egy pontozási szkriptet (), egy R-szkriptet, amely bemeneti változó értékként (JSON formátumban) fog megjelenni, és a modellből előrejelzést küld. Ebben az oktatóanyagban használja a megadott pontozási fájlt `accident_predict.R`. A pontozási parancsfájlnak olyan `init()` metódust kell tartalmaznia, amely betölti a modellt, és egy olyan függvényt ad vissza, amely a modell használatával előrejelzést készít a bemeneti adatok alapján. További részletekért tekintse meg a [dokumentációt](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) .
+Ahhoz, hogy webszolgáltatást hozzon létre a modellhez, először létre kell hoznia egy pontozási szkriptet ( `entry_script` ), egy R-szkriptet, amely bemeneti változó értékként (JSON formátumban) fog megjelenni, és a modellből előrejelzést küld. Ebben az oktatóanyagban használja a megadott pontozási fájlt `accident_predict.R` . A pontozási parancsfájlnak olyan `init()` metódust kell tartalmaznia, amely betölti a modellt, és egy olyan függvényt ad vissza, amely a modell használatával előrejelzést készít a bemeneti adatok alapján. További részletekért tekintse meg a [dokumentációt](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) .
 
 Ezután adjon meg egy Azure ML- **környezetet** a parancsfájlhoz tartozó csomagok függőségeihez. A környezettel a szkript futtatásához szükséges R-csomagokat (a CRAN-ból vagy máshonnan) kell megadnia. Megadhatja azon környezeti változók értékeit is, amelyekkel a parancsfájl hivatkozhat a működésének módosítására. Az Azure ML alapértelmezésben ugyanazt az alapértelmezett Docker-rendszerképet hozza létre, amelyet a kalkulátor a képzéshez használ. Mivel az oktatóanyag nem rendelkezik speciális követelményekkel, hozzon létre egy olyan környezetet, amely nem tartalmaz speciális attribútumokat.
 
@@ -327,7 +327,7 @@ Ezután adjon meg egy Azure ML- **környezetet** a parancsfájlhoz tartozó csom
 r_env <- r_environment(name = "basic_env")
 ```
 
-Ha ehelyett saját Docker-rendszerképet szeretne használni a központi telepítéshez, adja `custom_docker_image` meg a paramétert. [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) Tekintse meg a környezet definiálására szolgáló konfigurálható beállítások részletes ismertetését.
+Ha ehelyett saját Docker-rendszerképet szeretne használni a központi telepítéshez, adja meg a `custom_docker_image` paramétert. Tekintse meg a [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) környezet definiálására szolgáló konfigurálható beállítások részletes ismertetését.
 
 Most már mindent megtalál, amire szüksége lehet egy **következtetési konfiguráció** létrehozásához a pontozási parancsfájl és a környezeti függőségek beágyazásához.
 
@@ -338,7 +338,7 @@ inference_config <- inference_config(
 ```
 
 ### <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
-Ebben az oktatóanyagban üzembe helyezi a szolgáltatást az ACI-ban. Ez a kód egyetlen tárolót helyez üzembe a bejövő kérelmekre való reagáláshoz, amely tesztelési és könnyű betöltésre alkalmas. További [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html) konfigurálható beállításokért lásd:. (Éles környezetben történő üzembe helyezéshez az [Azure Kubernetes szolgáltatásban is üzembe](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks/deploy-to-aks.html)helyezhető.)
+Ebben az oktatóanyagban üzembe helyezi a szolgáltatást az ACI-ban. Ez a kód egyetlen tárolót helyez üzembe a bejövő kérelmekre való reagáláshoz, amely tesztelési és könnyű betöltésre alkalmas. [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html)További konfigurálható beállításokért lásd:. (Éles környezetben történő üzembe helyezéshez az [Azure Kubernetes szolgáltatásban is üzembe](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html)helyezhető.)
 
 ``` R
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
@@ -358,7 +358,7 @@ wait_for_deployment(aci_service, show_output = TRUE)
 
 ## <a name="test-the-deployed-service"></a>A telepített szolgáltatás tesztelése
 
-Most, hogy a modellt szolgáltatásként telepítette, tesztelheti a szolgáltatást az R használatával [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html).  Adjon meg egy új adatkészletet az előrejelzéshez, alakítsa át a JSON formátumba, és küldje el a szolgáltatásnak.
+Most, hogy a modellt szolgáltatásként telepítette, tesztelheti a szolgáltatást az R használatával [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html) .  Adjon meg egy új adatkészletet az előrejelzéshez, alakítsa át a JSON formátumba, és küldje el a szolgáltatásnak.
 
 ```R
 library(jsonlite)
@@ -384,7 +384,7 @@ A webszolgáltatás HTTP-végpontját is beolvashatja, amely fogadja a REST-ügy
 aci_service$scoring_uri
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, törölje az erőforrásokat. Ne töröljön olyan erőforrást, amelyet még használni szeretne. 
 
@@ -409,7 +409,7 @@ delete_compute(compute)
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy elvégezte az első Azure Machine Learning-kísérletet az R-ben, ismerkedjen meg az [r Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)-val.
 

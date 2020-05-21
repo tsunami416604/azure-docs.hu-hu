@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 379f74ce673dcae6f300b4eb23d1f2d9b46f2591
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656063"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677678"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a JavaScript használatával
 
 Ebben a rövid útmutatóban egy miniatűrt fog létrehozni egy képből a Computer Vision REST API használatával. Megadhatja a magasságot és a szélességet, ami eltérő lehet a bemeneti kép oldalaránya alapján. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálás
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Hozzon létre egy _Get-thumbnail. html_nevű fájlt, nyissa meg egy szövegszerkesztőben, és másolja a következő kódot.
-1. Szükség esetén cserélje le a `value` `inputImage` vezérlő attribútumának értékét egy másik, elemezni kívánt rendszerkép URL-címére.
+1. Szükség esetén cserélje le a `value` vezérlő attribútumának értékét `inputImage` egy másik, elemezni kívánt rendszerkép URL-címére.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
 1. Ha a weblap megjelenik a böngészőben, illessze be az előfizetési kulcsot és a végponti URL-címet a megfelelő beviteli mezőkbe.
@@ -56,7 +56,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
         
-        var uriBase = endpoint + "vision/v2.1/generateThumbnail";
+        var uriBase = endpoint + "vision/v3.0/generateThumbnail";
 
         // Request parameters.
         var params = "?width=100&height=150&smartCropping=true";
@@ -160,7 +160,7 @@ Image for thumbnail:
 
 A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris adatok a miniatűr képadatainak felelnek meg. Sikeres kérés esetén a miniatűr a válaszban levő bináris adatokból lesz összeállítva, és a böngészőablakban jelenik meg. Ha a kérés meghiúsul, a válasz a konzolablakban jelenik meg. A meghiúsult kérés válasza tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

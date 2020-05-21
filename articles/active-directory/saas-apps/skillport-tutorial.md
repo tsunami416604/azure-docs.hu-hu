@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090577"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directory integráció a Skillport
 
@@ -139,7 +139,7 @@ Az Azure AD egyszeri bejelentkezés Skillport való konfigurálásához hajtsa v
 
 ### <a name="configure-skillport-single-sign-on"></a>Skillport egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Skillport** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Skillport támogatási csapatának](https://www.skillsoft.com/contact.asp). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Skillport** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Skillport támogatási csapatának](https://www.skillsoft.com/about/contact-us). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -194,7 +194,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-skillport-test-user"></a>Skillport-tesztelési felhasználó létrehozása
 
-Skillport-tesztelési felhasználó létrehozásához kapcsolatba kell lépnie a [Skillport támogatási csapatával](https://www.skillsoft.com/contact.asp) , mivel a végfelhasználók követelményeinek megfelelően több üzleti helyzetük van. Ezeket a felhasználókkal folytatott megbeszélések után fogják konfigurálni.
+Skillport-tesztelési felhasználó létrehozásához kapcsolatba kell lépnie a [Skillport támogatási csapatával](https://www.skillsoft.com/about/contact-us) , mivel a végfelhasználók követelményeinek megfelelően több üzleti helyzetük van. Ezeket a felhasználókkal folytatott megbeszélések után fogják konfigurálni.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

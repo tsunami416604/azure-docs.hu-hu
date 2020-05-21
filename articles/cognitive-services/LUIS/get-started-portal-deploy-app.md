@@ -3,12 +3,12 @@ title: 'Gyors útmutató: alkalmazás üzembe helyezése a LUIS-portálon'
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alkalmazást az előrejelzési végpontok erőforrásának létrehozásával, az erőforrás hozzárendelésével, a képzéssel és az alkalmazás közzétételével.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585074"
+ms.locfileid: "83653234"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -40,7 +40,8 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 
 1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
 
-   ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
@@ -51,11 +52,11 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+Ha módosította az alkalmazást, mert az utolsó [tanítása](get-started-portal-build-app.md) után betanítja az alkalmazást.
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>Az alkalmazás közzététele az előrejelzési végponton
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Előrejelzési végpont kérése
 
@@ -115,7 +116,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)

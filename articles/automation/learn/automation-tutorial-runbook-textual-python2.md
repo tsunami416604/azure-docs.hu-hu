@@ -1,17 +1,17 @@
 ---
 title: Python-runbook létrehozása a Azure Automationban
-description: Oktatóanyag, amely bemutatja, hogyan hozhat létre, tesztelheti és tehet közzé egy egyszerű Python-runbook.
+description: Ez a cikk egy egyszerű Python-runbook létrehozását, tesztelését és közzétételét ismerteti.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608694"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714474"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
 
@@ -54,7 +54,7 @@ Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *"Helló
 
 ## <a name="add-code-to-the-runbook"></a>Kód hozzáadása a runbook
 
-Most adjon hozzá egy egyszerű parancsot a szöveg `Hello World`kinyomtatásához.
+Most adjon hozzá egy egyszerű parancsot a szöveg kinyomtatásához `Hello World` .
 
 ```python
 print("Hello World!")
@@ -73,19 +73,17 @@ Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tes
 3. Létrejön egy [forgatókönyv-feladat](../automation-runbook-execution.md), és megjelenik annak állapota.
    A feladatok állapota várólistára változik, ami azt jelzi, hogy a felhőben lévő runbook-feldolgozó elérhetővé válására vár. A művelet akkor indul el, amikor egy feldolgozó kiállítja a feladatot, majd fut, amikor a runbook ténylegesen elindul.
 
-4. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben a következőnek kell `Hello World`megjelennie:.
+4. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben a következőnek kell megjelennie: `Hello World` .
 
 5. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
 ## <a name="publish-and-start-the-runbook"></a>A runbook közzététele és elindítása
 
-A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben való futtatás előtt közzé kell tennie.
-Amikor közzétesz egy runbook, felülírja a meglévő közzétett verziót a Piszkozat verziójával.
-Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létrehozta a runbook.
+A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben való futtatás előtt közzé kell tennie. Amikor közzétesz egy runbook, felülírja a meglévő közzétett verziót a Piszkozat verziójával. Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létrehozta a runbook.
 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
 
-2. Ha balra görgetve megtekinti a runbook a **runbookok** lapon, a **közzétett** **szerzői állapot** jelenik meg.
+2. Ha balra görgetve megtekinti a runbook a Runbookok lapon, a **közzétett** **szerzői állapot** jelenik meg.
 
 3. Görgessen vissza jobbra a **MyFirstRunbook-Python**ablaktáblájának megtekintéséhez.
 
@@ -97,11 +95,11 @@ Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létreho
 
 6. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 
-7. Miután a runbook állapota megjelenik, kattintson a **kimenet**elemre. Megnyílik a kimeneti ablaktábla, ahol megtekintheti a `Hello World`következőt:.
+7. Miután a runbook állapota megjelenik, kattintson a **kimenet**elemre. Megnyílik a kimeneti ablaktábla, ahol megtekintheti a következőt: `Hello World` .
 
 8. Zárja be a Kimenet panelt.
 
-9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak a kimeneti adatfolyamban látható `Hello World` . Ez a panel azonban megjeleníthet más streameket egy runbook-feladatokhoz, például a részletes és a hibaüzenetet, ha a runbook ezeket írja.
+9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak `Hello World` a kimeneti adatfolyamban látható. Ez a panel azonban megjeleníthet más streameket egy runbook-feladatokhoz, például a részletes és a hibaüzenetet, ha a runbook ezeket írja.
 
 10. A MyFirstRunbook-Python panelre való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
 
@@ -181,7 +179,7 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Ahol `MyResourceGroup` a a virtuális gépet tartalmazó erőforráscsoport neve, a `TestVM` pedig annak a virtuális gépnek a neve, amelyet el szeretne indítani.
+Ahol a a `MyResourceGroup` virtuális gépet tartalmazó erőforráscsoport neve, a pedig annak a virtuális gépnek a neve, `TestVM` amelyet el szeretne indítani.
 
 Tesztelje és futtassa újra a runbook, és ellenőrizze, hogy elindul-e a virtuális gép.
 
@@ -189,7 +187,7 @@ Tesztelje és futtassa újra a runbook, és ellenőrizze, hogy elindul-e a virtu
 
 A runbook jelenleg rögzített értékeket használ az erőforráscsoport és a virtuális gép neveihez. Most vegyünk fel egy kódot, amely beolvassa ezeket az értékeket a bemeneti paraméterekből.
 
-A paraméter értékeinek lekéréséhez használja a `sys.argv` változót. Adja hozzá a következő kódot a runbook közvetlenül a többi `import` utasítás után:
+A `sys.argv` paraméter értékeinek lekéréséhez használja a változót. Adja hozzá a következő kódot a runbook közvetlenül a többi `import` utasítás után:
 
 ```python
 import sys
@@ -198,7 +196,7 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Ezzel importálja `sys` a modult, és két változót hoz létre az erőforráscsoport és a virtuális gépek neveinek tárolására. Figyelje meg, hogy az argumentumok listája `sys.argv[0]`, a a parancsfájl neve, és a felhasználó nem adja meg a bemenetet.
+Ezzel importálja a `sys` modult, és két változót hoz létre az erőforráscsoport és a virtuális gépek neveinek tárolására. Figyelje meg, hogy az argumentumok listája, a a `sys.argv[0]` parancsfájl neve, és a felhasználó nem adja meg a bemenetet.
 
 Most módosíthatja a runbook utolsó két sorát úgy, hogy a bemeneti paraméterek értékeit a rögzített értékek használata helyett használja:
 
@@ -212,7 +210,7 @@ Amikor elindít egy Python-runbook (akár a teszt ablaktáblán, akár közzéte
 
 Miután megkezdte egy érték beírását az első mezőbe, egy másodperc jelenik meg, és így tovább, így tetszőleges számú paraméter-értéket adhat meg.
 
-Az értékek a `sys.argv` tömbben lévő szkriptek számára elérhetők, ahogy az imént hozzáadott kódban.
+Az értékek a tömbben lévő szkriptek számára elérhetők `sys.argv` , ahogy az imént hozzáadott kódban.
 
 Adja meg az erőforráscsoport nevét az első paraméter értékeként, valamint a második paraméter értékeként elindítani kívánt virtuális gép nevét.
 
@@ -232,7 +230,7 @@ print("DEBUG: - Hello world debug")
 print("VERBOSE: - Hello world verbose")
 ```
 
-A következő példa egy `try...except` blokkban használt egyezményt mutatja be.
+A következő példa egy blokkban használt egyezményt mutatja be `try...except` .
 
 ```python
 try:
@@ -242,13 +240,13 @@ except Exception as detail:
 ```
 
 > [!NOTE]
-> A Azure Automation nem támogatja `sys.stderr`.
+> A Azure Automation nem támogatja `sys.stderr` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.
-- A grafikus runbookok megkezdéséhez tekintse meg [a grafikus Runbook létrehozását](automation-tutorial-runbook-graphical.md)ismertető témakört.
-- A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-tutorial-runbook-textual.md)című témakört.
-- Ha többet szeretne megtudni a runbook típusairól, azok előnyeiről és korlátairól, tekintse meg [Azure Automation runbook típusait](../automation-runbook-types.md).
-- Az Azure Pythonban való fejlesztéséről az [Azure Python-fejlesztők](/azure/python/)számára című témakörben olvashat bővebben.
-- A Python 2 runbookok megtekintéséhez tekintse meg a [Azure Automation githubat](https://github.com/azureautomation/runbooks/tree/master/Utility/Python).
+- [PowerShell-runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)
+- [Grafikus runbook létrehozása](automation-tutorial-runbook-graphical.md)
+- [PowerShell-alapú munkafolyamati runbook létrehozása](automation-tutorial-runbook-textual.md)
+- [Azure Automation runbook-típusok](../automation-runbook-types.md)
+- [Azure Python-fejlesztőknek](/azure/python/)
+- [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)

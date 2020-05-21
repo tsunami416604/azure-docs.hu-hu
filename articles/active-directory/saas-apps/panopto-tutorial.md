@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 027876e3d8d669d2ab41d37e24f4171c2349adaa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a1d4836586bac359c3208147ec7bf59061cf0928
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095014"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Oktatóanyag: Azure Active Directory integráció a Panopto
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés Panopto való konfigurálásához hajtsa vé
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<tenant-name>.panopto.com`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Panopto ügyfélszolgálati [csapatához](mailto:support@panopto.com%E2%80%8E) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Panopto ügyfélszolgálati [csapatához](mailto:support@panopto.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 

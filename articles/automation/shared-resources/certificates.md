@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7e6d0ed8d6e318e6a78d25bcc7764f6302ef22
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9542fe6cb574b36b03151a50a0352c9175a22b55
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685371"
+ms.locfileid: "83711465"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automationban
 
@@ -27,7 +27,7 @@ Azure Automation a tanúsítványokat biztonságos módon tárolja a runbookok �
 
 Az alábbi táblázatban található parancsmagok automatizálási tanúsítványokat hoznak létre és kezelhetnek a PowerShell-lel. Az az [modulok](modules.md#az-modules)részét képezik.
 
-|Parancsmag |Description|
+|Parancsmag |Leírás|
 | --- | ---|
 |[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Egy runbook vagy DSC-konfigurációban használandó tanúsítvány információinak beolvasása. A tanúsítványt csak a belső parancsmag használatával kérheti le `Get-AutomationCertificate` .|
 |[Új – AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Új tanúsítvány létrehozása az Automationben.|
@@ -40,7 +40,7 @@ Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurece
 
 A következő táblázatban található belső parancsmag a runbookok lévő tanúsítványok elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Description |
+| Belső parancsmag | Leírás |
 |:---|:---|
 |`Get-AutomationCertificate`|Lekéri egy runbook vagy DSC-konfigurációban használandó tanúsítványt. Egy [System. Security. kriptográfiai. X509Certificates. x509certificate2)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektumot ad vissza.|
 
@@ -163,8 +163,8 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
-* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).
-* A DSC-konfigurációk részletes ismertetését lásd: az [állapot-konfiguráció áttekintése](../automation-dsc-overview.md). 
+* [Modulok kezelése az Azure Automationben](modules.md)
+* [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
+* [Azure Automation állapot konfigurációjának áttekintése](../automation-dsc-overview.md) 

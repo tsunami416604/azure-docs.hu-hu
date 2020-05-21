@@ -1,6 +1,6 @@
 ---
-title: A Azure Automation Start/Stop VMs during off-hours üzembe helyezési problémáinak elhárítása
-description: Ez a cikk a Start/Stop VMs during off-hours funkció üzembe helyezése során felmerülő problémák elhárítását és megoldását mutatja be.
+title: Azure Automation Start/Stop VMs during off-hours problémák elhárítása
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Start/Stop VMs during off-hours funkció használata során felmerülő problémákat.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bd537fd943e9a13a59c2fa630235130ce9ccfe2d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680853"
+ms.locfileid: "83715630"
 ---
-# <a name="troubleshoot-startstop-vms-during-off-hours-deployment-issues"></a>Start/Stop VMs during off-hours üzembe helyezési problémák elhárítása
+# <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours problémák elhárítása
 
 Ez a cikk a Azure Automation Start/Stop VMs during off-hours szolgáltatás virtuális gépeken való üzembe helyezése során felmerülő problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. 
 
@@ -228,7 +228,7 @@ A szolgáltatás régi és elavult verziója sokszor hibákat okozhat.
 
 Sok hiba elhárításához távolítsa el és [frissítse Start/Stop VMS During off-hours](../automation-solution-vm-management.md#update-the-feature). A [feladatok adatfolyamait](../automation-runbook-execution.md#job-statuses) is megtekintheti, ha hibákat keres. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

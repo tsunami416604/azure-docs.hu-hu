@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79497677"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647354"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az az Azure Active Directory Identity Protection?
 
@@ -86,6 +86,8 @@ Az Identity Protection használatához a felhasználóknak biztonsági olvasóna
 | Biztonsági operátor | Az összes Identity Protection-jelentés és áttekintés panel megtekintése <br><br> Felhasználói kockázat elvetése, biztonságos bejelentkezés megerősítése, biztonság megerősítése | Szabályzatok konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása |
 | Biztonsági olvasó | Az összes Identity Protection-jelentés és áttekintés panel megtekintése | Szabályzatok konfigurálása vagy módosítása <br><br> Felhasználó jelszavának alaphelyzetbe állítása <br><br> Riasztások konfigurálása <br><br> Visszajelzés küldése az észlelésekről |
 
+Jelenleg a biztonsági operátori szerepkör nem fér hozzá a kockázatos bejelentkezések jelentéséhez.
+
 A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozhatnak, amelyek feltétele a bejelentkezési kockázat tényezője. további információt a [feltételes hozzáférés: feltételek](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)című cikkben talál.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
@@ -104,7 +106,7 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Értesítések | Heti kivonat | Igen | Nem | Nem |
 | | MFA regisztrációs szabályzat | Igen | Nem | Nem |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)
 

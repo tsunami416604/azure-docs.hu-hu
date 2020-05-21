@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 3933edff3730b9c16ea3c129890c1a7d66cf5215
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa1ce8516223b725c1efcb7e27d4726bbadfe62e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117849"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655052"
 ---
-# <a name="enhance-data-factory-security-and-configure-customer-managed-keys-with-azure-key-vault"></a>A Data Factory biztonság növelése és az ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault
+# <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -25,7 +25,7 @@ A Azure Data Factory inaktív adatok titkosítása, beleértve az entitások def
 Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vault szükséges. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Key vaultnak és a Data Factorynak ugyanabban a Azure Active Directory (Azure AD) bérlőben és ugyanabban a régióban kell lennie, de lehetnek különböző előfizetésekben. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
 > [!NOTE]
-> Egyelőre az ügyfél által felügyelt kulcs csak üres Data Factory konfigurálható: nincs társított szolgáltatás, nincs folyamat, nincs adatkészlet, semmi. A gyári létrehozás után érdemes megfontolni az ügyfél által felügyelt kulcs engedélyezését.
+> Az ügyfél által felügyelt kulcs csak üres adatelőállítón konfigurálható. Az adatelőállító nem tartalmazhat olyan erőforrásokat, mint a társított szolgáltatások, a folyamatok és az adatforgalom. Javasoljuk, hogy közvetlenül a gyári létrehozás után engedélyezze az ügyfél által felügyelt kulcs létrehozását.
 
 ## <a name="about-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsok
 
@@ -54,13 +54,13 @@ Ha Azure Portal használatával hoz létre új Azure Key Vault, a következő m�
 
   ![Képernyőfelvétel a Key Vault létrehozásakor a Soft delete és a depurge Protection engedélyezése](media/quickstart-enable-customer-managed-key/01-enable-purge-protection.png)
 
-### <a name="grant-data-factory-access-to-key-vault"></a>Data Factory hozzáférés engedélyezése Key Vault
+### <a name="grant-data-factory-access-to-azure-key-vault"></a>Data Factory hozzáférés engedélyezése Azure Key Vault
 
 Győződjön meg arról, hogy a Azure Key Vault és a Azure Data Factory ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz és _ugyanahhoz a régióhoz_tartoznak. A Azure Key Vault hozzáférés-vezérlés területen adja meg az adat-előállító Managed Service Identity (MSI) a következő engedélyeket: _Get_, _dewrap Key_és _wrap Key_. Ezek az engedélyek szükségesek az ügyfél által felügyelt kulcsok Data Factory való engedélyezéséhez.
 
   ![Képernyőfelvétel Data Factory hozzáférésének engedélyezése Key Vault](media/quickstart-enable-customer-managed-key/02-access-policy-factory-msi.png)
 
-### <a name="generate-or-upload-customer-managed-key-to-key-vault"></a>Ügyfél által felügyelt kulcs előállítása vagy feltöltése Key Vault
+### <a name="generate-or-upload-customer-managed-key-to-azure-key-vault"></a>Ügyfél által felügyelt kulcs előállítása vagy feltöltése Azure Key Vault
 
 Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. Data Factory titkosítás csak a 2048 bites RSA-kulcsokat támogatja. További információ: [a kulcsok, titkos kódok és tanúsítványok](../key-vault/general/about-keys-secrets-certificates.md).
 
@@ -68,7 +68,7 @@ Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy h
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 
-1. Győződjön meg arról, hogy a Data Factory üres: nincs társított szolgáltatás, nincs folyamat, és nincs adatkészlet, semmi sem. Egyelőre az ügyfél által felügyelt kulcs nem üres gyárba való telepítése hibát eredményez.
+1. Győződjön meg arról, hogy a Data Factory üres. Az adatelőállító nem tartalmazhat olyan erőforrásokat, mint a társított szolgáltatások, a folyamatok és az adatforgalom. Egyelőre az ügyfél által felügyelt kulcs nem üres gyárba való telepítése hibát eredményez.
 
 1. Ha meg szeretné keresni a kulcs URI-JÁT a Azure Portalban, keresse meg a Azure Key Vault, és válassza a kulcsok beállítást. Válassza ki a kívánt kulcsot, majd kattintson a kulcsra a verziók megtekintéséhez. Válassza ki a megfelelő verziót a beállítások megtekintéséhez.
 
@@ -112,7 +112,7 @@ Data Factory titkosításhoz használt kulcs módosításához manuálisan kell 
 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 
-A tervezés szerint, ha az ügyfél által felügyelt kulcs funkció engedélyezve van, nem távolíthatja el az extra biztonsági lépést. A gyár és az adatok titkosítása mindig egy ügyfél által megadott kulccsal történik.
+A tervezés után az ügyfél által felügyelt kulcs funkció engedélyezése után nem távolíthatja el az extra biztonsági lépést. A gyár és az adatok titkosítása mindig egy ügyfél által megadott kulccsal történik.
 
 ## <a name="next-steps"></a>Következő lépések
 

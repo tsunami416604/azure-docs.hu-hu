@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605897"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714576"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions hívása Azure Logic Apps
 
@@ -40,7 +40,7 @@ Ha az Azure functions létrehozása nélkül szeretne kódrészleteket futtatni,
 
   * A függvény a **http-trigger** sablont használja.
 
-    A HTTP-trigger sablonja elfogadhat olyan `application/json` tartalmakat, amelyek típusa a logikai alkalmazásból származik. Ha hozzáad egy Azure-függvényt a logikai alkalmazáshoz, a Logic app Designer megjeleníti a sablonból az Azure-előfizetésében létrehozott egyéni függvényeket.
+    A HTTP-trigger sablonja elfogadhat olyan tartalmakat, amelyek `application/json` típusa a logikai alkalmazásból származik. Ha hozzáad egy Azure-függvényt a logikai alkalmazáshoz, a Logic app Designer megjeleníti a sablonból az Azure-előfizetésében létrehozott egyéni függvényeket.
 
   * A függvény nem használ egyéni útvonalakat, hacsak nem adott meg [OpenAPI-definíciót](../azure-functions/functions-openapi-definition.md) (korábbi nevén egy [hencegő fájlt](https://swagger.io/)).
 
@@ -60,11 +60,11 @@ Ha a Logic Apps Designerben a Function paraméterekkel dolgozik, érdemes megism
 
 1. A Function alkalmazásban a következő lépések végrehajtásával állítson be [több eredetű erőforrás-megosztást (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) , hogy minden eredet engedélyezve legyen:
 
-   1. A **Function apps** listából válassza ki a Function alkalmazást. A jobb oldali ablaktáblán válassza a **platform szolgáltatások** > **CORS**elemet.
+   1. A **Function apps** listából válassza ki a Function alkalmazást. A jobb oldali ablaktáblán válassza a **platform szolgáltatások**  >  **CORS**elemet.
 
       ![Válassza ki a Function alkalmazást > "platform-funkciók" > "CORS" elemet.](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. A **CORS**területen adja hozzá a csillag**`*`**() helyettesítő karaktert, de távolítsa el a listában szereplő összes többi eredetet, majd kattintson a **Mentés**gombra.
+   1. A **CORS**területen adja hozzá a csillag ( **`*`** ) helyettesítő karaktert, de távolítsa el a listában szereplő összes többi eredetet, majd kattintson a **Mentés**gombra.
 
       ![A "*" helyettesítő karakter CORS beállítása](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -83,13 +83,13 @@ function convertToDateString(request, response){
 
 A következő lépések történnek a függvényen belül:
 
-1. A függvény létrehoz egy `data` változót, és hozzárendeli az `body` objektumot `request` az objektumon belül erre a változóra. A függvény a pont (.) operátor használatával hivatkozik az `body` objektumra az `request` objektumon belül:
+1. A függvény létrehoz egy `data` változót, és hozzárendeli az objektumot `body` az `request` objektumon belül erre a változóra. A függvény a pont (.) operátor használatával hivatkozik az objektumra `body` az `request` objektumon belül:
 
    ```javascript
    var data = request.body;
    ```
 
-1. A függvény most már elérheti `date` a tulajdonságot `data` a változón keresztül, és az adott tulajdonság értékét a DateTime típusról DateString típusra konvertálhatja a `ToDateString()` függvény meghívásával. A függvény az eredményt a függvény válaszában `body` szereplő tulajdonságon keresztül is visszaadja:
+1. A függvény most már elérheti a `date` tulajdonságot a `data` változón keresztül, és az adott tulajdonság értékét a DateTime típusról DateString típusra konvertálhatja a függvény meghívásával `ToDateString()` . A függvény az eredményt a `body` függvény válaszában szereplő tulajdonságon keresztül is visszaadja:
 
    ```javascript
    body: data.date.ToDateString();
@@ -135,18 +135,18 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
    `context.body.<property-name>`
 
-   Ha például az `context` objektumon belüli `content` tulajdonságra szeretne hivatkozni, használja a következő szintaxist:
+   Ha például az `content` objektumon belüli tulajdonságra szeretne hivatkozni `context` , használja a következő szintaxist:
 
    `context.body.content`
 
-   A sablon kódja tartalmaz egy `input` változót is, amely a `data` paraméter értékét tárolja, így a függvény végrehajthat műveleteket ezen az értéken. JavaScript-függvényeken belül `data` a változó a következőhöz is `context.body`:.
+   A sablon kódja tartalmaz egy `input` változót is, amely a paraméter értékét tárolja, `data` így a függvény végrehajthat műveleteket ezen az értéken. JavaScript-függvényeken belül a `data` változó a következőhöz is: `context.body` .
 
    > [!NOTE]
    > Az `body` itt látható tulajdonság az `context` objektumra vonatkozik, és nem ugyanaz, mint a művelet kimenetében található **törzs** token, amelyet a függvénynek is át lehet adni.
 
 1. A **kérelem törzse** mezőben adja meg a függvény bemenetét, amelyet JavaScript Object Notation (JSON) objektumként kell formázni.
 
-   Ez a bemenet a logikai alkalmazás által a függvénynek küldött *környezeti objektum* vagy üzenet. Ha a **kérelem törzse** mezőre kattint, megjelenik a dinamikus tartalom lista, így kiválaszthatja az előző lépésekből származó kimenetekhez tartozó jogkivonatokat. Ez a példa azt adja meg, hogy a környezeti adattartalom tartalmaz egy nevű `content` tulajdonságot, amely az e-mail-triggerből származó jogkivonat-értékkel rendelkezik. **From**
+   Ez a bemenet a logikai alkalmazás által a függvénynek küldött *környezeti objektum* vagy üzenet. Ha a **kérelem törzse** mezőre kattint, megjelenik a dinamikus tartalom lista, így kiválaszthatja az előző lépésekből származó kimenetekhez tartozó jogkivonatokat. Ez a példa azt adja meg, hogy a környezeti adattartalom tartalmaz egy nevű tulajdonságot `content` , amely **az** e-mail-triggerből származó jogkivonat-értékkel rendelkezik.
 
    !["Kérelem törzse" – példa – környezeti objektum hasznos adatai](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -180,7 +180,7 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
 1. A **kérelem törzse** mezőben adja meg a függvény bemenetét, amelyet JavaScript Object Notation (JSON) objektumként kell formázni.
 
-   Ez a bemenet a logikai alkalmazás által a függvénynek küldött *környezeti objektum* vagy üzenet. Ha a **kérelem törzse** mezőre kattint, megjelenik a dinamikus tartalom lista, ahol kiválaszthatja az előző lépésekből származó kimenetekhez tartozó jogkivonatokat. Ez a példa azt adja meg, hogy a környezeti adattartalom tartalmaz egy nevű `content` tulajdonságot, amely az e-mail-triggerből származó jogkivonat-értékkel rendelkezik. **From**
+   Ez a bemenet a logikai alkalmazás által a függvénynek küldött *környezeti objektum* vagy üzenet. Ha a **kérelem törzse** mezőre kattint, megjelenik a dinamikus tartalom lista, ahol kiválaszthatja az előző lépésekből származó kimenetekhez tartozó jogkivonatokat. Ez a példa azt adja meg, hogy a környezeti adattartalom tartalmaz egy nevű tulajdonságot `content` , amely **az** e-mail-triggerből származó jogkivonat-értékkel rendelkezik.
 
    !["Kérelem törzse" – példa – környezeti objektum hasznos adatai](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -200,7 +200,7 @@ Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, 
 
 ## <a name="enable-authentication-for-azure-functions"></a>Az Azure functions hitelesítésének engedélyezése
 
-Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz való hozzáférést a bejelentkezés és a hitelesítő adatok vagy titkos kódok megadása nélkül szeretné hitelesíteni, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Ha egyszerűen hitelesíteni szeretné a Azure Active Directory (Azure AD) által védett más erőforrásokhoz való hozzáférést anélkül, hogy be kellene jelentkeznie, és meg kell adnia a hitelesítő adatokat vagy a titkos kulcsokat, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt identitást vagy manuálisan létrehozott, felhasználó által hozzárendelt identitást használja, akkor a logikai alkalmazásban található Azure-függvények ugyanezt az identitást is használhatják a hitelesítéshez. További információ a Logic apps Azure functions szolgáltatásának hitelesítés-támogatásáról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -229,15 +229,15 @@ Ha a logikai alkalmazás felügyelt identitását szeretné használni az Azure-
 
    ![A hibakeresési konzol menüjében válassza a "CMD" lehetőséget.](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. A következő oldal megjelenése után a mappalistában válassza a **site** > **wwwroot** > *a-Function*elemet. Ezek a lépések az "FabrikamAzureFunction" függvényt használják példaként.
+1. A következő oldal megjelenése után a mappalistában válassza a **site**  >  **wwwroot**  >  *a-Function*elemet. Ezek a lépések az "FabrikamAzureFunction" függvényt használják példaként.
 
    ![Válassza ki a "site" > "wwwroot" > a függvényt](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
-1. Nyissa `function.json` meg a fájlt szerkesztésre.
+1. Nyissa meg a `function.json` fájlt szerkesztésre.
 
    ![Kattintson a Szerkesztés elemre a "Function. JSON" fájlhoz](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
-1. Az `bindings` objektumban győződjön meg arról, `authLevel` hogy a tulajdonság létezik. Ha a tulajdonság létezik, állítsa a tulajdonság értékét értékre `anonymous`. Ellenkező esetben adja hozzá ezt a tulajdonságot, és állítsa be az értéket.
+1. Az `bindings` objektumban győződjön meg arról, hogy a `authLevel` tulajdonság létezik. Ha a tulajdonság létezik, állítsa a tulajdonság értékét értékre `anonymous` . Ellenkező esetben adja hozzá ezt a tulajdonságot, és állítsa be az értéket.
 
    ![Adja hozzá a "authLevel" tulajdonságot, és állítsa a "névtelen" értékre.](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
 
@@ -253,7 +253,7 @@ A feladat elindítása előtt keresse meg és helyezze el ezeket az értékeket 
 
   * Az objektumazonosító létrehozásához [engedélyezze a logikai alkalmazás rendszer által hozzárendelt identitását](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * Ellenkező esetben az objektumazonosító megkereséséhez nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjének **Beállítások**területén válassza az **Identity** > **System Assigned**elemet.
+  * Ellenkező esetben az objektumazonosító megkereséséhez nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjének **Beállítások**területén válassza az **Identity**  >  **System Assigned**elemet.
 
 * Azure Active Directory (Azure AD) bérlői címtárának azonosítója
 
@@ -296,7 +296,7 @@ Most már készen áll az Azure AD-hitelesítés beállítására a Function alk
 
    1. Az **ügyfél-azonosító** tulajdonságban adja meg a logikai alkalmazás rendszer által hozzárendelt identitásához tartozó objektumazonosítót.
 
-   1. A **kiállító URL-címe** tulajdonságban adja meg `https://sts.windows.net/` az URL-címet, és FŰZZE hozzá az Azure ad-bérlő címtár-azonosítóját.
+   1. A **kiállító URL-címe** tulajdonságban adja meg az `https://sts.windows.net/` URL-címet, és fűzze hozzá az Azure ad-bérlő címtár-azonosítóját.
 
       `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
 
@@ -312,6 +312,6 @@ Most már készen áll az Azure AD-hitelesítés beállítására a Function alk
 
 1. Térjen vissza a Logic app Designer szolgáltatáshoz, és kövesse a [lépéseket a felügyelt identitással való hozzáférés hitelesítéséhez](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

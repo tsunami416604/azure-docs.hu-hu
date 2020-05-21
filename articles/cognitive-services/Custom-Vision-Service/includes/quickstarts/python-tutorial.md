@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: a28f1a63a4096c536f4c1f7f6c50d538821f236d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6f5dcfff621afa7e8ab11e611664393e3e73f731
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134151"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696510"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el a Custom Vision SDK és a Python használatát a képbesorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](../../getting-started-build-a-classifier.md).
 
@@ -43,6 +43,7 @@ A projekt létrehozásakor további beállítások megadásához tekintse meg a 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
+from msrest.authentication import ApiKeyCredentials
 
 ENDPOINT = "<your API endpoint>"
 
@@ -53,7 +54,8 @@ prediction_resource_id = "<your prediction resource id>"
 
 publish_iteration_name = "classifyModel"
 
-trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
+credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
+trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
 
 # Create a new project
 print ("Creating project...")
@@ -127,9 +129,11 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
+from msrest.authentication import ApiKeyCredentials
 
 # Now there is a trained endpoint that can be used to make a prediction
-predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
+prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
+predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
 
 with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
     results = predictor.classify_image(
@@ -141,7 +145,7 @@ with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents
               ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa a *sample.py* fájlt.
 
@@ -166,7 +170,7 @@ Ezt követően ellenőrizheti, hogy a **<base_image_url>images/test/**) címkéj
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
 

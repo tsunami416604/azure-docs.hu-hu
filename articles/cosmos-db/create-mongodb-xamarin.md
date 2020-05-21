@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79481687"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659159"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Xamarin. Forms-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB API-val a MongoDB-hoz
 
@@ -23,7 +23,7 @@ ms.locfileid: "79481687"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
@@ -173,7 +173,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 4. Eltávolítás `&replicaSet=globaldb` a kapcsolatok sztringből. Futásidejű hibaüzenetet kap, ha nem távolítja el ezt az értéket a lekérdezési karakterláncból.
 
 > [!IMPORTANT]
-> A futásidejű hiba elkerülése `&replicaSet=globaldb` érdekében el kell távolítania a kulcs/érték párokat a kapcsolódási karakterlánc lekérdezési karakterláncában.
+> A futásidejű hiba elkerülése érdekében el kell távolítania a `&replicaSet=globaldb` kulcs/érték párokat a kapcsolódási karakterlánc lekérdezési karakterláncában.
 
 Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
@@ -198,11 +198,11 @@ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Az
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, és Xamarin.Forms-alkalmazást futtatni a MongoDB API-jával. Most további adatokat importálhat a Cosmos DB-fiókba.
 

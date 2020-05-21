@@ -1,5 +1,5 @@
 ---
-title: Az Azure szinapszis hivatkozása Azure Cosmos DB támogatott funkciókhoz
+title: Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 description: Az Azure szinapszis-hivatkozás által támogatott műveletek aktuális listájának megismerése Azure Cosmos DB
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1b94d7677026f3695d07be4d83a5059373078c2e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599948"
+ms.locfileid: "83658840"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Az Azure szinapszis hivatkozása Azure Cosmos DB támogatott funkciókhoz
+# <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
 Ez a cikk azokat a funkciókat ismerteti, amelyeket jelenleg a Azure Cosmos DB Azure szinapszis-hivatkozása támogat. 
 
@@ -58,7 +58,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 | **Válassza ki a Top 100** |Első 100-elem előnézete egy tárolóból|X| ✓ |
 | **Nézet létrehozása** |Hozzon létre egy nézetet, amely közvetlenül rendelkezik BI-hozzáféréssel egy tárolóban a szinapszis SQL használatával|X| ✓ |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Lásd: [Csatlakozás a szinapszishoz hivatkozás Azure Cosmos db](../quickstart-connect-synapse-link-cosmos-db.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](how-to-query-analytical-store-spark.md)

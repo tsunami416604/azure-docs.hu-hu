@@ -3,12 +3,12 @@ title: 'Oktatóanyag: a Batch tesztelése a hibák kereséséhez – LUIS'
 description: Ez az oktatóanyag azt mutatja be, hogyan használható a Batch Testing a Language Understanding (LUIS) alkalmazás minőségének ellenőrzéséhez.
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592593"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681632"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: batch test adatkészletek
 
@@ -49,13 +49,13 @@ Importáljon egy olyan alkalmazást, amely pizzás sorrendet (például) vesz ig
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>A batch-fájl hosszúságú kimondott szöveg belefoglalása
 
-A Batch-fájlnak tartalmaznia kell a legfelső szintű gépi megtanult entitások hosszúságú kimondott szöveg, beleértve a kezdő és a befejező pozíciót is. A hosszúságú kimondott szöveg nem lehet az alkalmazásban már szereplő példák része. Érdemes hosszúságú kimondott szöveg, ha pozitívan szeretné megjósolni a szándékot és az entitásokat.
+A Batch-fájlnak tartalmaznia kell a legfelső szintű gépi tanulási entitások hosszúságú kimondott szöveg, beleértve a kezdő és a záró pozíciót is. A hosszúságú kimondott szöveg nem lehet az alkalmazásban már szereplő példák része. Érdemes hosszúságú kimondott szöveg, ha pozitívan szeretné megjósolni a szándékot és az entitásokat.
 
 Elkülönítheti a teszteket szándék és/vagy entitás alapján, vagy az összes tesztet (akár 1000 hosszúságú kimondott szöveg) ugyanabban a fájlban.
 
 ## <a name="batch-file"></a>Batch-fájl
 
-A JSON-példa tartalmaz egy címkével ellátott entitást, amely bemutatja, hogyan néz ki egy adott teszt fájl. A saját tesztek során számos hosszúságú kimondott szöveg kell lennie, amely a megfelelő szándékkal és a gépi megtanult entitással van megjelölve.
+A JSON-példa tartalmaz egy címkével ellátott entitást, amely bemutatja, hogyan néz ki egy adott teszt fájl. A saját tesztek során sok hosszúságú kimondott szöveg kell rendelkeznie, és a megfelelő szándékú és gépi tanulási entitást kell megcímkézni.
 
 1. Hozzon létre `pizza-with-machine-learned-entity-test.json` egy szövegszerkesztőben, vagy [töltse le](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
 

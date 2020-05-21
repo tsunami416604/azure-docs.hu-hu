@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201754"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641109"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: a Microsoft Identity platform-végpontot használó több-bérlős démon létrehozása
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
-Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs`. A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs`egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
+Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` . A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs`egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
 
 >[!NOTE]
 > Ha most ismerkedik a Microsoft Identity platformmal, javasoljuk, hogy kezdje a [.net Core Daemon](quickstart-v2-netcore-daemon.md)gyors üzembe helyezésével.
@@ -114,8 +114,8 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet. Ezután:
-   - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a **https://localhost:44316/Account/EndSession**következőre:.
-   - A **Speciális beállítások** > **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek**elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
+   - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44316/Account/EndSession** .
+   - A **Speciális beállítások**  >  **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek**elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
 1. Kattintson a **Mentés** gombra.
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet. Ezután:
 
@@ -199,7 +199,7 @@ A példához tartozó kód a következő fájlokban található:
 1. Adjon hozzá egy új **MVC 5 vezérlőt –** a **UserController**nevű üres példányt. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
 1. Új **webes API 2 vezérlő hozzáadása – üres** példány, **SyncController**néven. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
 1. A felhasználói felületen a **Views\Account** mappában adjon hozzá három **üres (modell nélküli) nézetet** a **GrantPermissions**, az **index**és a **UserMismatch**nevű példányhoz. Vegyen fel és egy nevesített **indexet** a **Views\User** mappában. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
-1. Frissítse **a\_megosztott elrendezést. cshtml** és **Home\Index.cshtml** , hogy megfelelően összekapcsolja a különböző nézeteket.
+1. Frissítse a **megosztott \_ elrendezést. cshtml** és **Home\Index.cshtml** , hogy megfelelően összekapcsolja a különböző nézeteket.
 
 ## <a name="deploy-the-sample-to-azure"></a>A minta üzembe helyezése az Azure-ban
 
@@ -213,7 +213,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget a bal felső sarokban.
-1. Válassza a**webalkalmazás**lehetőséget, majd adja meg **a webhely nevét.** >  Adja meg például a **DotNet-web-Daemon-v2-contoso.azurewebsites.net**nevet.
+1. Válassza **a**  >  **webalkalmazás**lehetőséget, majd adja meg a webhely nevét. Adja meg például a **DotNet-web-Daemon-v2-contoso.azurewebsites.net**nevet.
 1. Válassza ki az **előfizetés**, az **erőforráscsoport**és az **app Service-csomag és a hely**adatait. Az **operációs rendszer** **Windows**, és a **Közzététel** **kód**.
 1. Válassza a **Létrehozás** lehetőséget, és várja meg az App Service létrehozását.
 1. Az **üzembe helyezés sikeres** értesítésének beszerzése után válassza az **erőforrás** megnyitása lehetőséget az újonnan létrehozott app Service-hez való ugráshoz.
@@ -224,7 +224,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
    1. Kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a **Közzététel**lehetőséget.
    1. Válassza a **profil importálása** lehetőséget az alsó sávban, és importálja a korábban letöltött közzétételi profilt.
 1. Válassza a **Konfigurálás** lehetőséget.
-1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`például a következőt:. Kattintson a **Tovább** gombra.
+1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.
 1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
 
@@ -235,15 +235,15 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 1. Lépjen vissza az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Válassza ki a **DotNet-web-Daemon-v2** alkalmazást.
-1. Az alkalmazás **hitelesítés** lapján frissítse a **kijelentkezési URL-** mezőket a szolgáltatás címével. Használja [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)például a következőt:.
-1. A **branding (védjegyezés** ) menüben frissítse a **Kezdőlap URL-** címét a szolgáltatás címére. Használja [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net)például a következőt:.
+1. Az alkalmazás **hitelesítés** lapján frissítse a **kijelentkezési URL-** mezőket a szolgáltatás címével. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. A **branding (védjegyezés** ) menüben frissítse a **Kezdőlap URL-** címét a szolgáltatás címére. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Mentse a konfigurációt.
-1. Adja hozzá ugyanazt az URL-címet a **hitelesítési** > **átirányítási URI** -k menü értékeinek listájához. Ha több átirányítási URL-címmel rendelkezik, győződjön meg arról, hogy van egy új bejegyzés, amely az App Service URI azonosítóját használja az egyes átirányítási URL-címekhez.
+1. Adja hozzá ugyanazt az URL-címet a **hitelesítési**  >  **átirányítási URI** -k menü értékeinek listájához. Ha több átirányítási URL-címmel rendelkezik, győződjön meg arról, hogy van egy új bejegyzés, amely az App Service URI azonosítóját használja az egyes átirányítási URL-címekhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#register-your-application) lépésben létrehozott alkalmazás-objektumot.  Az alkalmazás eltávolításához kövesse az [Ön vagy a szervezete által létrehozott alkalmazás eltávolítása](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)című témakör utasításait.
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
 A [stack overflow](http://stackoverflow.com/questions/tagged/msal) segítségével kaphat támogatást a Közösségtől.
 Először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést.
@@ -255,7 +255,7 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Microsoft Identity platform által támogatott különböző [hitelesítési folyamatokról és alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md) .
 
 További információkért tekintse meg a következő fogalmi dokumentációt:

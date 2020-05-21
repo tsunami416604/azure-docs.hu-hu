@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692423"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658568"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
+# <a name="quickstart-use-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
 
 Ebből a rövid útmutatóból megtudhatja, hogyan lehet fájlokat lekérdezni a szinapszis Studio használatával.
 
@@ -49,10 +49,10 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 ## <a name="query-files-on-storage-account"></a>Fájlok lekérdezése a Storage-fiókban
 
 > [!IMPORTANT]
-> Ahhoz, hogy le tudja kérdezni a `Storage Blob Reader` fájlokat, a mögöttes tárolóban lévő szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá **Storage blob-adatolvasót** vagy **Storage blob-adatközreműködői** RBAC engedélyeket az Azure Storage-](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ban.
+> Ahhoz, hogy le `Storage Blob Reader` tudja kérdezni a fájlokat, a mögöttes tárolóban lévő szerepkör tagjának kell lennie. Megtudhatja, hogyan [rendelhet hozzá **Storage blob-adatolvasót** vagy **Storage blob-adatközreműködői** RBAC engedélyeket az Azure Storage-](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)ban.
 
-1. Töltsön fel `PARQUET` néhány fájlt.
-2. Válasszon ki egy vagy több fájlt, majd hozzon létre egy új SQL-szkriptet vagy egy Spark-jegyzetfüzetet a fájlok tartalmának megtekintéséhez. Ha jegyzetfüzetet szeretne létrehozni, létre kell hoznia [Apache Spark készletet a munkaterületen](quickstart-create-apache-spark-pool.md).
+1. Töltsön fel néhány `PARQUET` fájlt.
+2. Válasszon ki egy vagy több fájlt, majd hozzon létre egy új SQL-szkriptet vagy egy Spark-jegyzetfüzetet a fájlok tartalmának megtekintéséhez. Ha létre szeretne hozni egy jegyzetfüzetet, létre kell hoznia egy [Apache Spark készletet a szinapszis-munkaterületeken](quickstart-create-apache-spark-pool-studio.md).
 
    ![Fájlok lekérdezése a tárhelyen](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -62,9 +62,9 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 
 4. A lekérdezés módosításával szűrheti és rendezheti az eredményeket. Megtalálhatja az SQL igény szerint elérhető nyelvi funkcióit az [SQL-funkciók áttekintésében](sql/overview-features.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését a [ **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage szolgáltatásban](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) szolgáltatásban
 - [Fájlok lekérdezése az Azure Storage-ban az SQL igény szerinti használatával](sql/on-demand-workspace-overview.md)
-- [Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool.md)
+- [Apache Spark-készlet létrehozása az Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md)
 - [Power BI jelentés létrehozása az Azure Storage-ban tárolt fájlokról](sql/tutorial-connect-power-bi-desktop.md)

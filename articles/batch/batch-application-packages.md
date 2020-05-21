@@ -1,15 +1,15 @@
 ---
-title: Alkalmazáscsomag telepítése számítási csomópontokon
+title: Alkalmazáscsomag üzembe helyezése számítási csomópontokon
 description: A Azure Batch alkalmazáscsomag funkciójának használatával egyszerűen kezelhet több alkalmazást és verziót a Batch számítási csomópontokon történő telepítéshez.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115618"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726876"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -123,13 +123,13 @@ Az alkalmazás részleteiben a következő beállításokat állíthatja be az a
 ### <a name="add-a-new-application"></a>Új alkalmazás hozzáadása
 Új alkalmazás létrehozásához adjon hozzá egy alkalmazáscsomag-csomagot, és adjon meg egy új, egyedi alkalmazás-azonosítót. Az új alkalmazás-AZONOSÍTÓval hozzáadott első alkalmazáscsomag szintén létrehozza az új alkalmazást.
 
-Kattintson az **alkalmazások** > **Hozzáadás**gombra.
+Kattintson az **alkalmazások**  >  **Hozzáadás**gombra.
 
 ![Új alkalmazás panel a Azure Portal][5]
 
 Az **új alkalmazás** ablak a következő mezőket biztosítja az új alkalmazás-és alkalmazáscsomag beállításainak megadásához.
 
-**Alkalmazás azonosítója**
+**Alkalmazásazonosító**
 
 Ez a mező adja meg az új alkalmazás AZONOSÍTÓját, amelyre a szabványos Azure Batch azonosító érvényesítési szabályok vonatkoznak. Az alkalmazás-AZONOSÍTÓk nyújtásának szabályai a következők:
 
@@ -159,7 +159,7 @@ Miután kiválasztott egy fájlt, kattintson **az OK** gombra az Azure Storage-b
 > 
 
 ### <a name="add-a-new-application-package"></a>Új alkalmazáscsomag hozzáadása
-Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** ablakában, majd kattintson a **csomagok** > **Hozzáadás**elemre.
+Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** ablakában, majd kattintson a **csomagok**  >  **Hozzáadás**elemre.
 
 ![Alkalmazáscsomag hozzáadása panel Azure Portal][8]
 
@@ -170,7 +170,7 @@ Meglévő alkalmazáscsomag frissítéséhez vagy törléséhez nyissa meg az al
 
 ![Csomag frissítése vagy törlése Azure Portal][7]
 
-**Frissítés**
+**Frissítése**
 
 Ha a **frissítés**gombra kattint, megjelenik a **frissítési csomag** ablak. Ez az ablak hasonló az **új alkalmazáscsomag** ablakhoz, azonban csak a csomag kiválasztása mező van engedélyezve, így megadhat egy új zip-fájlt a feltöltéshez.
 
@@ -239,7 +239,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>A telepített alkalmazások végrehajtása
-A készlethez vagy feladathoz megadott csomagokat a rendszer letölti és kicsomagolja a csomóponton belüli `AZ_BATCH_ROOT_DIR` megnevezett könyvtárba. A Batch egy környezeti változót is létrehoz, amely a nevesített könyvtár elérési útját tartalmazza. A feladat parancssori sorai ezt a környezeti változót használják a csomóponton lévő alkalmazásra való hivatkozáskor. 
+A készlethez vagy feladathoz megadott csomagokat a rendszer letölti és kicsomagolja a csomóponton belüli megnevezett könyvtárba `AZ_BATCH_ROOT_DIR` . A Batch egy környezeti változót is létrehoz, amely a nevesített könyvtár elérési útját tartalmazza. A feladat parancssori sorai ezt a környezeti változót használják a csomóponton lévő alkalmazásra való hivatkozáskor. 
 
 Windows-csomópontokon a változó formátuma a következő:
 
@@ -332,7 +332,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Becsomagolás
 Az alkalmazáscsomag segítségével az ügyfelek számára kiválaszthatja a feladataikat, és megadhatja a pontos verziót, amelyet a feladatok a Batch-kompatibilis szolgáltatással végzett feldolgozásakor kell használni. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [Batch REST API][api_rest] Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Például tekintse meg a [készlet hozzáadása egy fiókhoz][rest_add_pool] című témakör [applicationPackageReferences][rest_add_pool_with_packages] elemét, amely arról nyújt tájékoztatást, hogyan kell megadnia a telepítendő csomagokat a REST API használatával. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
 * Ismerje meg, hogyan [felügyelheti Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
 

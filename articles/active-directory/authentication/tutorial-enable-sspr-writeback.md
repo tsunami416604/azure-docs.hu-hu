@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143753"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640189"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
@@ -23,7 +23,7 @@ A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SS
 
 A jelszó-visszaírási az Azure AD-ben a helyi AD DS-környezetbe való visszatéréshez is szinkronizálhatja a jelszó módosításait. A Azure AD Connect biztonságos mechanizmust biztosít a jelszavak visszaküldéséhez egy meglévő helyszíni címtárba az Azure AD-ből.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A jelszó visszaírási szükséges engedélyek konfigurálása
@@ -59,11 +59,15 @@ Ahhoz, hogy megfelelően működjön a SSPR visszaírási, a Azure AD Connectban
 
 Ha nem rendeli hozzá ezeket az engedélyeket, úgy tűnik, hogy a visszaírási megfelelően van konfigurálva, de a felhasználók a felhőből származó helyszíni jelszavaik kezelésekor hibákba ütköznek. Meg kell adni az engedélyeket erre az objektumra, és a "lejárat jelszava" kifejezés **összes leszármazott objektumát** meg kell jeleníteni.  
 
+> [!TIP]
+>
+> Ha egyes felhasználói fiókok jelszavai nem kerülnek vissza a helyszíni címtárba, győződjön meg arról, hogy az öröklés nincs letiltva a fiókhoz a helyszíni AD DS környezetben. A szolgáltatás megfelelő működéséhez a jelszavakra vonatkozó írási engedélyeket kell alkalmazni a leszármazott objektumokra.
+
 A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajtsa végre a következő lépéseket:
 
 1. A helyszíni AD DS környezetében nyissa meg **Active Directory felhasználókat és számítógépeket** egy olyan fiókkal, amely rendelkezik a megfelelő *tartományi rendszergazdai* engedélyekkel.
 1. Ellenőrizze, hogy a **nézet** menüben be van-e kapcsolva a **Speciális funkciók** .
-1. A bal oldali panelen kattintson a jobb gombbal a tartomány gyökerét jelképező objektumra, majd válassza a **Tulajdonságok** > **biztonsági** > **speciális**lehetőséget.
+1. A bal oldali panelen kattintson a jobb gombbal a tartomány gyökerét jelképező objektumra, majd válassza a **Tulajdonságok**  >  **biztonsági**  >  **speciális**lehetőséget.
 1. Az **engedélyek** lapon válassza a **Hozzáadás**lehetőséget.
 1. A **rendszerbiztonsági tag**mezőben válassza ki azt a fiókot, amelyre az engedélyeket alkalmazni kell (a Azure ad Connect által használt fiókhoz).
 1. Az **érintettek** legördülő listában válassza a **leszármazott felhasználói objektumok**elemet.
@@ -79,7 +83,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
 
 Az engedélyek frissítésekor akár egy órát is igénybe vehet, hogy ezek az engedélyek replikálódnak a címtárban lévő összes objektumra.
 
-A helyi AD DS környezetében lévő jelszóházirendek megakadályozhatják, hogy a jelszó-visszaállítások megfelelően legyenek feldolgozva. Ahhoz, hogy a jelszó visszaírási a leghatékonyabban működjön, a *jelszó minimális élettartamának* csoportházirendjét 0-ra kell állítani. Ez a beállítás a **Számítógép konfigurációja > házirendek területen található, > a Windows beállításai > biztonsági beállítások > fiókházirend** belül `gpedit.msc`.
+A helyi AD DS környezetében lévő jelszóházirendek megakadályozhatják, hogy a jelszó-visszaállítások megfelelően legyenek feldolgozva. Ahhoz, hogy a jelszó visszaírási a leghatékonyabban működjön, a *jelszó minimális élettartamának* csoportházirendjét 0-ra kell állítani. Ez a beállítás a **Számítógép konfigurációja > házirendek területen található, > a Windows beállításai > biztonsági beállítások > fiókházirend** belül `gpedit.msc` .
 
 Ha frissíti a csoportházirendet, várja meg a frissített házirend replikálását, vagy használja a `gpupdate /force` parancsot.
 
@@ -119,7 +123,7 @@ A jelszó visszaírási a SSPR-ben való engedélyezéséhez hajtsa végre a kö
 
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR visszaírási funkciót, hajtsa végre a következő lépéseket:
 
@@ -139,7 +143,7 @@ Ha már nem szeretne jelszó-funkciót használni, hajtsa végre a következő l
 1. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 1. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD-SSPR visszaírási egy helyszíni AD DS-környezetben. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 4a2d9f382045db2aeab80d9ecf5a05b031bcbc9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400132"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673135"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként használja azt.
 
@@ -47,7 +47,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
 
 1. Az eszköznek az **eszköz kiválasztása**területen kell szerepelnie. Válassza a **nézet** gombot az eszköz mellett.
 
-1. A vezeték nélküli hálózathoz való kapcsolódáshoz válassza a mappa ikont, majd a **Beállítások** > **WLAN**elemet.
+1. A vezeték nélküli hálózathoz való kapcsolódáshoz válassza a mappa ikont, majd a **Beállítások**  >  **WLAN**elemet.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
    >
    > ![Vysor fájl mappája](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Válassza a **Beállítások**lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek** > **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
+   > Válassza a **Beállítások**lehetőséget. Keressen rá a "MAC-címek" kifejezésre, majd válassza a **MAC-címek**  >  **speciális WLAN**lehetőséget. Jegyezze fel a párbeszédpanel alján megjelenő MAC-címeket.
    >
    > ![Vysor MAC-címe](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
     A **Build. gradle (modul: alkalmazás)** frissítéséhez adja hozzá ezt a sort a függőségek szakaszhoz. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
     ```
     
 1. Adja hozzá a beszédfelismerési előfizetéshez tartozó kulcsot a forráskódhoz. Ha szeretné kipróbálni a szándék felismerését, adja hozzá a [Language Understanding szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) előfizetési kulcsát és az alkalmazás azonosítóját is.
@@ -124,7 +124,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
    > [!TIP]
    > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
 
-   Új kulcsszó használatához frissítse a következő két sort a alkalmazásban `MainActivity.java`, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag KWS-Machine. zip fájljában:
+   Új kulcsszó használatához frissítse a következő két sort a `MainActivity.java` alkalmazásban, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag KWS-Machine. zip fájljában:
 
    - Másolja a kulcsszó-csomagot a "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" mappába.
    - Frissítse a `MainActivity.java` kulcsszót és a csomag nevét:
@@ -162,7 +162,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
    ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](../media/speech-devices-sdk/qsg-8.png)
 
-1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hang-aláírása is van, akkor az eszközön található fájlba `/video/participants.properties` helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hang-aláírása is van, akkor az eszközön található fájlba helyezhetők `/video/participants.properties` . A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
 
    ![Bemutató beszélgetés átirata alkalmazás](../media/speech-devices-sdk/qsg-15.png)
 
@@ -177,6 +177,6 @@ Ha nem tud csatlakozni a beszédfelismerési eszközhöz. Írja be a következő
 ```
 
 > [!NOTE]
-> Ez a parancs az androidos hibakeresési `adb.exe`hidat használja, amely a Android Studio telepítésének része. Ez az eszköz a C:\Users\[Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb`. Ellenkező esetben meg kell adnia az ADB. exe telepítésének teljes elérési útját minden meghívott parancsban `adb`.
+> Ez a parancs az androidos hibakeresési hidat használja, `adb.exe` amely a Android Studio telepítésének része. Ez az eszköz a C:\Users \[ Felhasználónév] \AppData\Local\Android\Sdk\platform-Tools. található. Ezt a könyvtárat hozzáadhatja az elérési úthoz, hogy kényelmesebb legyen a meghívása `adb` . Ellenkező esetben meg kell adnia az ADB. exe telepítésének teljes elérési útját minden meghívott parancsban `adb` .
 >
-> Ha hibaüzenet `no devices/emulators found` jelenik meg, ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és hogy a rendszer kiváló minőségű kábelt használ-e.
+> Ha hibaüzenet jelenik meg, `no devices/emulators found` ellenőrizze, hogy az USB-kábel csatlakoztatva van-e, és hogy a rendszer kiváló minőségű kábelt használ-e.

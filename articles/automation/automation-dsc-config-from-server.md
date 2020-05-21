@@ -1,6 +1,6 @@
 ---
-title: Konfigurációk létrehozása meglévő kiszolgálókból – Azure Automation
-description: Megtudhatja, hogyan hozhat létre konfigurációkat meglévő kiszolgálókról Azure Automation számára.
+title: Konfigurációk létrehozása meglévő kiszolgálókból Azure Automation állapot-konfigurációhoz
+description: Ez a cikk azt ismerteti, hogyan hozhatók létre konfigurációk meglévő kiszolgálókról Azure Automation állapot-konfigurációhoz.
 keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d783ce7193faed4110d07988d3f3f05951c80a45
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585547"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711397"
 ---
-# <a name="create-configurations-from-existing-servers"></a>Konfigurációk létrehozása meglévő kiszolgálókból
+# <a name="create-configurations-from-existing-servers-for-azure-automation-state-configuration"></a>Konfigurációk létrehozása meglévő kiszolgálókból Azure Automation állapot-konfigurációhoz
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -43,7 +43,7 @@ Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/
 
 A ReverseDSC kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com/packages/ReverseDSC/) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/Microsoft/sharepointDSC.reverse)megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)

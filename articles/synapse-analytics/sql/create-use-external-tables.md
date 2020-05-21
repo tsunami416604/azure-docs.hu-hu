@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f90021e35b4089547b236d01b10820f6c06bd0cc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195171"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647483"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Külső táblák létrehozása és használata az igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat külső táblákat az igény szerinti SQL-ben (előzetes verzió). A külső táblák akkor hasznosak, ha szabályozni szeretné az SQL igény szerinti külső adatelérését, és ha olyan eszközöket szeretne használni, mint például a Power BI, az SQL igény szerinti használatával. A külső táblák két típusú tárterületet érhetnek el:
+Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat [külső táblákat](develop-tables-external-tables.md) az igény szerinti SQL-ben (előzetes verzió). A külső táblák akkor hasznosak, ha szabályozni szeretné az SQL igény szerinti külső adatelérését, és ha olyan eszközöket szeretne használni, mint például a Power BI, az SQL igény szerinti használatával. A külső táblák két típusú tárterületet érhetnek el:
 - Nyilvános tárterület, ahol a felhasználók hozzáférhetnek a nyilvános tárolási fájlokhoz.
 - Védett tároló, amelyben a felhasználók az SAS hitelesítő adatokkal, az Azure AD-identitással vagy a szinapszis munkaterület felügyelt identitásával férnek hozzá a tárolóhelyekhez.
 
@@ -61,7 +61,11 @@ A cikkben szereplő lekérdezések a mintául szolgáló adatbázison lesznek v�
 
 ## <a name="create-an-external-table-on-protected-data"></a>Külső tábla létrehozása a védett adatelemeken
 
-Olyan külső táblákat hozhat létre, amelyek egy Azure Storage-fiókban lévő adatokhoz férnek hozzá, amelyek lehetővé teszik a felhasználók számára az Azure AD-identitással vagy SAS-kulccsal való hozzáférést. Külső táblákat ugyanúgy hozhat létre, mint a normál SQL Server külső táblákat. Az alábbi lekérdezés egy külső táblázatot hoz létre, amely *beolvassa* a SynapseSQL demo Azure Storage-fiókból származó, az `sqlondemanddemo` adatforrással hivatkozott és az adatbázis-hatókörrel rendelkező hitelesítő adatokkal védett adatokat. `sqlondemand` Az adatforrás és az adatbázis hatókörű hitelesítő adatai a [telepítési parancsfájlban](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)jönnek létre.
+Olyan külső táblákat hozhat létre, amelyek egy Azure Storage-fiókban lévő adatokhoz férnek hozzá, amelyek lehetővé teszik a felhasználók számára az Azure AD-identitással vagy SAS-kulccsal való hozzáférést. Külső táblákat ugyanúgy hozhat létre, mint a normál SQL Server külső táblákat. 
+
+A következő lekérdezés létrehoz egy külső táblázatot, amely *population.csv* beolvassa a SynapseSQL demo Azure Storage-fiókból származó, az `sqlondemanddemo` adatforrással hivatkozott és az adatbázis-hatókörrel rendelkező hitelesítő adatokkal védett. csv `sqlondemand` fájlt. 
+
+Az adatforrás és az adatbázis hatókörű hitelesítő adatai a [telepítési parancsfájlban](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)jönnek létre.
 
 > [!NOTE]
 > Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja. 
@@ -81,7 +85,6 @@ WITH (
     DATA_SOURCE = sqlondemanddemo,
     FILE_FORMAT = QuotedCSVWithHeaderFormat
 );
-GO
 ```
 
 ## <a name="create-an-external-table-on-public-data"></a>Külső tábla létrehozása nyilvános adatelemeken
@@ -105,9 +108,9 @@ CREATE EXTERNAL TABLE Taxi (
          FILE_FORMAT = ParquetFormat
 );
 ```
-## <a name="use-a-external-table"></a>Külső tábla használata
+## <a name="use-an-external-table"></a>Külső tábla használata
 
-A lekérdezésekben a külső táblákat ugyanúgy használhatja, mint SQL Server lekérdezésekben.
+A lekérdezésekben a [külső táblákat](develop-tables-external-tables.md) ugyanúgy használhatja, mint SQL Server lekérdezésekben.
 
 A következő lekérdezés azt mutatja be, hogy az előző szakaszban létrehozott, a *populáció* külső tábláját használja. 2019 csökkenő sorrendben adja vissza az ország nevét.
 

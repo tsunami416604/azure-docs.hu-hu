@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450351"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715698"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>A hírcsatorna kialakítási mintáinak módosítása Azure Cosmos DB
 
@@ -29,7 +29,7 @@ A Azure Cosmos DB változási csatornája lehetővé teszi, hogy hatékony és m
 
 ## <a name="event-computing-and-notifications"></a>Esemény-számítástechnika és értesítések
 
-A Azure Cosmos DB változási hírcsatorna leegyszerűsítheti az olyan forgatókönyveket, amelyeknek egy adott esemény alapján be kell indítaniuk egy értesítést vagy egy API-hívást. Az [adatcsatorna módosítása](change-feed-processor.md) lehetőséggel automatikusan lekérdezheti a tárolót a változásokhoz, és minden alkalommal meghívhat egy külső API-t, amikor van írási vagy frissítési művelet.
+A Azure Cosmos DB változási hírcsatorna leegyszerűsítheti az olyan forgatókönyveket, amelyeknek egy adott esemény alapján be kell indítaniuk egy értesítést, vagy hívást kell küldeniük egy API-nak. Az [adatcsatorna módosítása](change-feed-processor.md) lehetőséggel automatikusan lekérdezheti a tárolót a változásokhoz, és minden alkalommal meghívhat egy külső API-t, amikor van írási vagy frissítési művelet.
 
 Az értesítéseket szelektíven is elindíthatja, vagy megadhatja az API-nak adott feltételek alapján történő hívását. Ha például a változási csatornát a [Azure functions](change-feed-functions.md)használatával olvassa, a függvénybe úgy helyezheti el a logikát, hogy csak akkor küldjön értesítést, ha teljesül egy adott feltétel. Míg az Azure-függvény kódja az egyes írások és frissítések során végrehajtódik, az értesítést csak akkor küldi el a rendszer, ha a megadott feltételek teljesültek.
 
@@ -112,7 +112,7 @@ Minden ügyfél esetében az aktuális bevásárlókocsi tartalmának egy lénye
 - [IoT-használati eset a változási csatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 - [Kiskereskedelmi használati eset a változási hírcsatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Változáscsatorna áttekintése](change-feed.md)
 * [Beállítások a változási csatorna olvasásához](read-change-feed.md)

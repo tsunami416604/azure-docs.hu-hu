@@ -4,21 +4,21 @@ description: Azure PowerShell minták beszerzése különböző gyakori feladato
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: f09088fc001fd8c77a330938d261426528b214cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 860d3c5e9fda8bc2a5eb5b07939875ed46b6e7e1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365742"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649755"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB-Cassandra API Azure PowerShell minták
 
 A következő táblázat hivatkozásokat tartalmaz a Cassandra API Azure Cosmos DBhoz tartozó Azure PowerShell parancsfájlokra.
 
 > [!NOTE]
-> A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Vegye figyelembe, hogy `Az.CosmosDB` a parancsmagok még előzetes verzióban vannak, és a kiadás előtt változhatnak. Ellenőrizze, hogy rendszeresen frissülnek-e `Az.CosmosDB` a frissítések.
+> A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ellenőrizze, hogy rendszeresen frissülnek-e a frissítések `Az.CosmosDB` .
 
 | | |
 |---|---|

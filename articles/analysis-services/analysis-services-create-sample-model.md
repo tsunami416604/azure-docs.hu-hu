@@ -4,15 +4,15 @@ description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ism
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74326581"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697503"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 
@@ -43,7 +43,7 @@ Jelentkezzen be a [portálra](https://portal.azure.com/).
 
     ![Mintamodell létrehozása](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. Az **új modellben** > **válasszon ki egy adatforrást**, ellenőrizze a **mintaadatok** beállítást, majd kattintson a **Hozzáadás**gombra.
+2. Az **új modellben**  >  **válasszon ki egy adatforrást**, ellenőrizze a **mintaadatok** beállítást, majd kattintson a **Hozzáadás**gombra.
 
     ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -52,7 +52,7 @@ Jelentkezzen be a [portálra](https://portal.azure.com/).
     ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A mintamodell gyorsítótár-memória erőforrásokat használ. Ha a mintamodellt nem használja teszteléshez, akkor ajánlott eltávolítani a kiszolgálóról.
 
@@ -68,7 +68,7 @@ Egy modell a következő lépések alapján törölhető egy kiszolgálóról az
 
     ![Mintaadatbázis törlése](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban azt tanulhatta meg, hogyan adhat hozzá egyszerű mintamodellt kiszolgálójához. Most, hogy már rendelkezik modelladatbázissal, csatlakozhat hozzá az SQL Server Management Studióból, és hozzáadhat felhasználói szerepköröket. További tudnivalókat talál a következő oktatóanyagban.
 

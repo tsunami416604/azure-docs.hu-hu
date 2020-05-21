@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b1bf3c0d7c902a048881b5fb75783744214b073e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80151075"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655516"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Language Understanding – erőforrás 32 és a végpont URL-címének létrehozása. Hozzon létre a [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)használatával.
-* Importálja a [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) alkalmazást a kognitív-Services-Language-Understanding GitHub adattárba.
-* Az importált TravelAgent alkalmazás LUIS-alkalmazásazonosítója. Az alkalmazásazonosító az alkalmazás irányítópultján látható.
-* A kimondott szövegeket fogadó alkalmazáson belüli verzióazonosító. Az alapértelmezett azonosító a „0.1”.
+* Importálja a [pizza](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json) alkalmazást a `Azure-Samples/cognitive-services-sample-data-files` GitHub-adattárból.
+* Az importált pizza-alkalmazás LUIS-alkalmazásának azonosítója. Az alkalmazásazonosító az alkalmazás irányítópultján látható.
+* A kimondott szövegeket fogadó alkalmazáson belüli verzióazonosító.
 * [.NET Core 3,1](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -30,18 +30,20 @@ ms.locfileid: "80151075"
 
 ## <a name="change-model-programmatically"></a>Modell programozott módosítása
 
-1. Hozzon létre egy új, a C# nyelvét célzó Console-alkalmazást a projekt és `model-with-rest`a mappa nevével.
+1. Hozzon létre egy új, a C# nyelvét célzó Console-alkalmazást a projekt és a mappa nevével `csharp-model-with-rest` .
 
     ```console
-    dotnet new console -lang C# -n model-with-rest
+    dotnet new console -lang C# -n csharp-model-with-rest
     ```
 
-1. Telepítse a szükséges függőségeket a következő DotNet CLI-parancsokkal.
+1. Váltson a `csharp-model-with-rest` létrehozott könyvtárra, és telepítse a szükséges függőségeket a következő parancsokkal:
 
     ```console
+    cd csharp-model-with-rest
     dotnet add package System.Net.Http
     dotnet add package JsonFormatterPlus
     ```
+
 1. Írja felül a Program.cs fájlt a következő kóddal:
 
     ```csharp
@@ -60,20 +62,20 @@ ms.locfileid: "80151075"
     {
         class Program
         {
-            // NOTE: use your LUIS authoring key - 32 character value
-            static string authoringKey = "YOUR-KEY";
-
-            // NOTE: Replace this endpoint with your authoring key endpoint
-            // for example, your-resource-name.api.cognitive.microsoft.com
-            static string endpoint = "YOUR-ENDPOINT";
-
-            // NOTE: Replace this with the ID of your LUIS application
+            // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
             static string appID = "YOUR-APP-ID";
 
-            // NOTE: Replace this your version number
+            // YOUR-AUTHORING-KEY: Your LUIS authoring key, 32 character value.
+            static string authoringKey = "YOUR-AUTHORING-KEY";
+
+            // YOUR-AUTHORING-ENDPOINT: Replace this endpoint with your authoring key endpoint.
+            // For example, "https://your-resource-name.api.cognitive.microsoft.com/"
+            static string endpoint = "YOUR-AUTHORING-ENDPOINT";
+
+            // NOTE: Replace this your version number.
             static string appVersion = "0.1";
 
-            static string host = String.Format("https://{0}/luis/authoring/v3.0-preview/apps/{1}/versions/{2}/", endpoint, appID, appVersion);
+            static string host = String.Format("{0}luis/authoring/v3.0-preview/apps/{1}/versions/{2}/", endpoint, appID, appVersion);
 
             // GET request with authentication
             async static Task<HttpResponseMessage> SendGet(string uri)
@@ -87,6 +89,7 @@ ms.locfileid: "80151075"
                     return await client.SendAsync(request);
                 }
             }
+
             // POST request with authentication
             async static Task<HttpResponseMessage> SendPost(string uri, string requestBody)
             {
@@ -105,6 +108,7 @@ ms.locfileid: "80151075"
                     return await client.SendAsync(request);
                 }
             }
+
             // Add utterances as string with POST request
             async static Task AddUtterances(string utterances)
             {
@@ -115,6 +119,7 @@ ms.locfileid: "80151075"
                 Console.WriteLine("Added utterances.");
                 Console.WriteLine(JsonFormatter.Format(result));
             }
+
             // Train app after adding utterances
             async static Task Train()
             {
@@ -125,6 +130,7 @@ ms.locfileid: "80151075"
                 Console.WriteLine("Sent training request.");
                 Console.WriteLine(JsonFormatter.Format(result));
             }
+
             // Check status of training
             async static Task Status()
             {
@@ -133,29 +139,88 @@ ms.locfileid: "80151075"
                 Console.WriteLine("Requested training status.");
                 Console.WriteLine(JsonFormatter.Format(result));
             }
+
             // Add utterances, train, check status
             static void Main(string[] args)
             {
                 string utterances = @"
                 [
                     {
-                    'text': 'go to Seattle today',
-                    'intentName': 'BookFlight',
-                    'entityLabels': [
-                        {
-                        'entityName': 'Location::LocationTo',
-                        'startCharIndex': 6,
-                        'endCharIndex': 12
-                        }
-                    ]
+                        'text': 'order a pizza',
+                        'intentName': 'ModifyOrder',
+                        'entityLabels': [
+                            {
+                                'entityName': 'Order',
+                                'startCharIndex': 6,
+                                'endCharIndex': 12
+                            }
+                        ]
                     },
                     {
-                        'text': 'a barking dog is annoying',
-                        'intentName': 'None',
-                        'entityLabels': []
+                        'text': 'order a large pepperoni pizza',
+                        'intentName': 'ModifyOrder',
+                        'entityLabels': [
+                            {
+                                'entityName': 'Order',
+                                'startCharIndex': 6,
+                                'endCharIndex': 28
+                            },
+                            {
+                                'entityName': 'FullPizzaWithModifiers',
+                                'startCharIndex': 6,
+                                'endCharIndex': 28
+                            },
+                            {
+                                'entityName': 'PizzaType',
+                                'startCharIndex': 14,
+                                'endCharIndex': 28
+                            },
+                            {
+                                'entityName': 'Size',
+                                'startCharIndex': 8,
+                                'endCharIndex': 12
+                            }
+                        ]
+                    },
+                    {
+                        'text': 'I want two large pepperoni pizzas on thin crust',
+                        'intentName': 'ModifyOrder',
+                        'entityLabels': [
+                            {
+                                'entityName': 'Order',
+                                'startCharIndex': 7,
+                                'endCharIndex': 46
+                            },
+                            {
+                                'entityName': 'FullPizzaWithModifiers',
+                                'startCharIndex': 7,
+                                'endCharIndex': 46
+                            },
+                            {
+                                'entityName': 'PizzaType',
+                                'startCharIndex': 17,
+                                'endCharIndex': 32
+                            },
+                            {
+                                'entityName': 'Size',
+                                'startCharIndex': 11,
+                                'endCharIndex': 15
+                            },
+                            {
+                                'entityName': 'Quantity',
+                                'startCharIndex': 7,
+                                'endCharIndex': 9
+                            },
+                            {
+                                'entityName': 'Crust',
+                                'startCharIndex': 37,
+                                'endCharIndex': 46
+                            }
+                        ]
                     }
                 ]
                 ";
+
                 AddUtterances(utterances).Wait();
                 Train().Wait();
                 Status().Wait();
@@ -168,9 +233,9 @@ ms.locfileid: "80151075"
 
     |Információ|Cél|
     |--|--|
-    |`YOUR-KEY`|Az 32 karakteres szerzői kulcs.|
-    |`YOUR-ENDPOINT`| Az authoring URL-végpontja. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
+    |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
+    |`YOUR-AUTHORING-ENDPOINT`| Az authoring URL-végpontja. Például: `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
 
     A hozzárendelt kulcsok és erőforrások a LUIS portálon láthatók a kezelés szakasz Azure- **erőforrások** lapján. Az alkalmazás-azonosító az **Alkalmazásbeállítások** lapon, ugyanazon kezelés szakaszban érhető el.
 
@@ -186,11 +251,11 @@ ms.locfileid: "80151075"
     dotnet run
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből.
+Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

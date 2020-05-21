@@ -1,18 +1,18 @@
 ---
 title: Az Azure Cognitive Search beépített szabályzat-definíciói
 description: Az Azure Cognitive Search beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b11b4a5653d41335a3fb356f53710a2641402f84
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fe8ed12f85dcd0dedbec5369ed9ad6dcf4e4628a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838611"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658959"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-search"></a>Azure Policy beépített szabályzat-definíciók az Azure Cognitive Search
 

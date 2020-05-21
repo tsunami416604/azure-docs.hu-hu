@@ -4,24 +4,24 @@ description: A Azure PowerShell minták beszerzése különböző gyakori felada
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 810161268df405d84f6c190d4d7f3b67f2a1def8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8e0a7a60a3512d19a1dfdfdb07b20e523ce7b92
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80366208"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649713"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell minták a Azure Cosmos DB MongoDB API-hoz
 
 A következő táblázat a MongoDB API-hoz Azure Cosmos DB Azure PowerShell parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 > [!NOTE]
-> A PowerShell, a CLI és a Resource Manager-sablonok használatával jelenleg csak a 3,2-es `*.documents.azure.com`verziót hozhatja létre (azaz a a végpontot használó fiókokat Azure Cosmos db) a MongoDB-fiókokhoz. A fiókok 3,6-es verziójának létrehozásához használja a Azure Portal helyet.
+> A PowerShell, a CLI és a Resource Manager-sablonok használatával jelenleg csak a 3,2-es verziót hozhatja létre (azaz a a végpontot használó fiókokat `*.documents.azure.com` Azure Cosmos db) a MongoDB-fiókokhoz. A fiókok 3,6-es verziójának létrehozásához használja a Azure Portal helyet.
 
 > [!NOTE]
-> A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Vegye figyelembe, hogy `Az.CosmosDB` a parancsmagok még előzetes verzióban vannak, és a kiadás előtt változhatnak. Ellenőrizze, hogy rendszeresen frissülnek-e `Az.CosmosDB` a frissítések.
+> A minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ellenőrizze, hogy rendszeresen frissülnek-e a frissítések `Az.CosmosDB` .
 
 | | |
 |---|---|

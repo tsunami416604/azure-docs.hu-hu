@@ -3,12 +3,12 @@ title: Mi a Language Understanding (LUIS)?
 description: A Language Understanding (LUIS) egy olyan felhőalapú API-szolgáltatás, amely egyéni gépi tanulási intelligenciát használ a felhasználó párbeszédszerű, természetes nyelvi szövege általános jelentésének megállapítására, valamint a releváns, részletes információk kinyerésére.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592814"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675993"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -46,7 +46,7 @@ A LUIS-alkalmazás egy tartományszintű természetes nyelvi modellt tartalmaz. 
 
 * **Előre összeállított modell** A LUIS számos előre összeállított, szándékokat, kimondott szövegeket és előre létrehozott entitásokat tartalmazó tartománymodellel rendelkezik. Az előre létrehozott entitásokat a szándékok és kimondott szövegek használata nélkül is alkalmazhatja. Az [Előre összeállított tartománymodellek](luis-how-to-use-prebuilt-domains.md) tartalmazzák a teljes dizájnt, így nagyszerű módot kínálnak arra, hogy a LUIS használatát gyorsan elkezdhesse.
 
-* **Egyéni modell** LUIS számos lehetőséget kínál a saját egyéni modelljeinek, például a szándékok és az entitások azonosítására. Az entitások többek között gépi megtanult entitások, konkrét vagy literális entitások, valamint gépi megtanult és literálos kombinációk.
+* **Egyéni modell** LUIS számos lehetőséget kínál a saját egyéni modelljeinek, például a szándékok és az entitások azonosítására. Az entitások például a gépi tanulási entitások, a konkrét vagy literális entitások, valamint a gépi tanulás és a literál kombinációja.
 
 ## <a name="build-the-luis-model"></a>A LUIS-modell létrehozása
 Hozza létre a modellt a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kkal vagy a [Luis-portálon](https://www.luis.ai).
@@ -120,7 +120,7 @@ Minták LUIS használatával:
 * [Társalgási AI](https://github.com/Microsoft/AI) GitHub-tárház.
 * [Bot Framework – bot-minták](https://github.com/microsoft/BotBuilder-Samples)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Újdonságok](whats-new.md)
 * Hozzon létre új LUIS alkalmazást [előre összeállított](luis-get-started-create-app.md) vagy [egyéni](luis-quickstart-intents-only.md) tartománnyal.

@@ -1,6 +1,6 @@
 ---
-title: A STIG-alapú konfiguráció az állapot-konfigurációban való használatra – Azure Automation
-description: Tudnivalók a Azure Automation-beli állapot-konfigurációhoz tartozó STIG-konfigurációkról.
+title: Az adatkészletek konfigurálása a STIG Azure Automation állapotának konfigurálásához
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja az adattípust a STIG Azure Automation állapot-konfiguráció alapján.
 keywords: DSC, PowerShell, konfigurálás, beállítás
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585534"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711380"
 ---
-# <a name="configuration-based-on-stig"></a>STIG-alapú konfiguráció
+# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Az adatkészletek konfigurálása a STIG Azure Automation állapotának konfigurálásához
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -41,7 +41,7 @@ Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/
 
 A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
