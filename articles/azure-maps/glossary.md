@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657044"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742219"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -31,7 +31,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="altitude"></a>**Magasság**: egy pont magassága vagy függőleges megemelése egy hivatkozási felület fölé. A magassági mérések egy adott hivatkozási adaton alapulnak, például az átlagos tengeri szinten. Lásd még: Jogosultságszint-emelés.
 
-<a name="ambiguous"></a>Nem **egyértelmű**: az adatbesorolásban olyan bizonytalansági állapot áll fenn, amely akkor fordulhat elő, ha egy adott attribútumhoz legalább két érték van hozzárendelve. Ha például a "CA" helymeghatározáshoz, a rendszer két kétértelmű eredményt ad vissza: "Kanada" és "Kalifornia". A "CA" egy ország és egy állapotkód a "Kanada" és "Kalifornia" esetében. 
+<a name="ambiguous"></a>Nem **egyértelmű**: az adatbesorolásban olyan bizonytalansági állapot áll fenn, amely akkor fordulhat elő, ha egy adott attribútumhoz legalább két érték van hozzárendelve. Ha például a "CA" helymeghatározáshoz, a rendszer két kétértelmű eredményt ad vissza: "Kanada" és "Kalifornia". A "CA" egy ország/régió és egy állapotkód a "Kanada" és "Kalifornia" esetében. 
 
 <a name="annotation"></a>**Jegyzet**: a térképen megjelenített szöveg vagy grafika, amely információkat biztosít a felhasználónak. A jegyzet azonosíthatja vagy leírhatja egy adott Térkép entitást, általános információkat adhat meg a Térkép egy területéről, vagy magáról a térképről szolgáltathat információkat.
 
@@ -93,7 +93,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="coordinate-system"></a>**Koordináta-rendszer**: egy hivatkozási keretrendszer, amely két vagy három dimenzióban határozza meg a pontok helyét.
 
-<a name="country-code"></a>**Országkód**: egy ország/régió egyedi azonosítója az ISO-szabvány alapján. A ISO2 egy ország (például USA) kétkarakteres kódja, amely ISO3 a három karakterből álló kódot jelöli (például az USA-ban).
+<a name="country-code"></a>**Országkód**: egy ország/régió egyedi azonosítója az ISO-szabvány alapján. A ISO2 egy ország/régió (például USA) kétkarakteres kódja, amely ISO3 a három karakterből álló kódot jelöli (például az USA-t).
 
 <a name="country-subdivision"></a>**Ország alcsoportja**: egy ország/régió, más néven állam vagy megye első szintű alosztálya.
 
@@ -408,5 +408,5 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="zip-code"></a>**Zip-kód**: lásd az [irányítószámot](#postal-code).
 
-<a name="Zoom level"></a>**Nagyítási szint**: meghatározza a részletes részletességi szintet, valamint azt, hogy a Térkép mekkora legyen látható. Ha a 0. szintre nagyítva van, a teljes globális Térkép gyakran láthatóvá válik. A Térkép azonban a korlátozott részleteket jeleníti meg, például az ország/régió nevét, a szegélyeket és az óceán nevét. A 17. szinthez közelebbi nagyítás esetén a Térkép néhány város területét jeleníti meg, részletes információkkal. Az Azure Maps-ben a legmagasabb nagyítási szint 22. További információkért lásd a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációját.
+<a name="Zoom level"></a>**Nagyítási szint**: meghatározza a részletes részletességi szintet, valamint azt, hogy a Térkép mekkora legyen látható. Ha a 0. szintre nagyítva van, a teljes globális Térkép gyakran láthatóvá válik. A Térkép azonban a korlátozott részleteket jeleníti meg, például az ország/régió nevét, a szegélyeket és az óceán nevét. A 17. szinthez közelebbi nagyítás esetén a Térkép néhány város területét jeleníti meg, részletes információkkal. Azure Maps a legmagasabb nagyítási szint 22. További információkért lásd a [nagyítási szintek és a csempe rácsa](zoom-levels-and-tile-grid.md) dokumentációját.
 

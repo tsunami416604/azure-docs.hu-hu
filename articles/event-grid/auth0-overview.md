@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 17416131566edf8710737862f0cbea2e31477960
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e193b272460fe97f599adff414fcac6e80648104
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722524"
+ms.locfileid: "83738370"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partneri témakörök
 ![Auth0 embléma](./media/auth0-overview/auth0-logo.png)
@@ -42,10 +42,10 @@ A felhasználói műveletek megőrzése és naplózása létfontosságú a bizto
 ### <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Az elosztott rendszerek védelme fontos a biztonsági monitorozás és az incidensek reagálási eljárásainak kombinálásával. Ezért fontos, hogy az összes adathalmazt egy helyen tárolja, és figyelje a teljes veremet. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)
-- [A Auth0 dokumentációja](https://auth0.com/docs/logs/streams/azure-eventgrid)
+- [A Auth0 dokumentációja](https://auth0.com/docs/azure-tutorial)
 - [Legyen Event Grid partner](partner-onboarding-overview.md)
 

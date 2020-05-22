@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73175799"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737639"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Feltételes hozzáférés hibaelhárítása a What If eszköz használatával
 
 A feltételes hozzáférés [What if eszköze](what-if-tool.md) nagy teljesítményű, amikor megpróbálják megérteni, hogy egy adott házirend miért lett vagy nem lett alkalmazva a felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
-A What if eszköz a **Azure Portal** > **Azure Active Directory** > **feltételes hozzáférési** > **What Ifban**található.
+A What if eszköz a **Azure Portal**  >  **Azure Active Directory**  >  **feltételes hozzáférési**  >  **What Ifban**található.
 
 ![Feltételes hozzáférés What If eszköz alapértelmezett állapotban](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -37,7 +37,7 @@ A következő további információk nem kötelezőek, de bizonyos esetekben a h
 
 * Felhőalkalmazások vagy műveletek
 * IP-cím 
-* Ország
+* Ország/régió
 * Eszközplatform
 * Ügyfélalkalmazások (előzetes verzió)
 * Eszköz állapota (előzetes verzió) 
@@ -75,7 +75,7 @@ Ez a teszt kiterjeszthető úgy, hogy más adatpontokat is egyesítse a hatókö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az a feltételes hozzáférés?](overview.md)
+* [Mit jelent a feltételes hozzáférés?](overview.md)
 * [Mi az az Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Mi az az eszközidentitás?](../devices/overview.md)
 * [Az Azure Multi-Factor Authentication működése](../authentication/concept-mfa-howitworks.md)

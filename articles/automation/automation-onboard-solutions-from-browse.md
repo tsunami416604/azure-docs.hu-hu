@@ -1,166 +1,71 @@
 ---
-title: Ismerje meg, hogyan készíthet Update Management, Change Tracking és leltározási megoldásokat több virtuális géphez a Azure Automation
-description: Ismerje meg, hogyan készíthet Azure-beli virtuális gépeket a Azure Automation részét képező Update Management-, Change Tracking-és leltározási megoldásokkal.
+title: Azure Automation Update Management engedélyezése a Azure Portal
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management a Azure Portal.
 services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: cb3bbf1a7c2e55d152d26c475369f9ccb6fb7d1e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731917"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743968"
 ---
-# <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management-, Change Tracking-és leltározási megoldások engedélyezése több virtuális gépen
+# <a name="enable-update-management-from-azure-portal"></a>Update Management engedélyezése Azure Portal
 
-Azure Automation megoldásokat kínál az operációs rendszer biztonsági frissítéseinek kezelésére, a változások nyomon követésére és a számítógépekre telepített termékek leltározására. A gépek több módon is üzembe helyezhetők, így a megoldás [egy virtuális gépről](automation-onboard-solutions-from-vm.md), az [Automation-fiókból](automation-onboard-solutions-from-automation-account.md), a virtuális gépek böngészése vagy a [runbook](automation-onboard-solutions.md). Ez a cikk ismerteti ezeket a megoldásokat az Azure-beli virtuális gépek böngészése során.
+Ez a cikk azt ismerteti, hogyan engedélyezheti a virtuális gépek [Update Management](automation-update-management.md) funkcióját a Azure Portal tallózásával. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet. 
+
+A virtuális gépek kezeléséhez használható erőforráscsoportok számát a Resource Manager-alapú üzemelő [példányok](../azure-resource-manager/templates/cross-resource-group-deployment.md)korlátozzák. A Resource Manager-alapú üzemelő példányok, amelyek nem tévesztendő össze a frissítési környezetekkel, üzembe helyezésük legfeljebb öt erőforráscsoport lehet. Ezen erőforráscsoportok közül kettő a Log Analytics munkaterület, az Automation-fiók és a kapcsolódó erőforrások konfigurálására van fenntartva. Ez három erőforráscsoportot hagy el, amelyekkel kiválaszthatja a Update Management általi felügyeletet. Ez a korlát csak egyidejű telepítésre vonatkozik, nem az Automation szolgáltatással felügyelhető erőforráscsoportok számára.
+
+> [!NOTE]
+> A Update Management engedélyezésekor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy [Automation-fiók](automation-offering-get-started.md) a gépek kezeléséhez.
+* Egy [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
+Jelentkezzen be az Azure-ba https://portal.azure.com .
 
-## <a name="enable-solutions"></a>Megoldások engedélyezése
+## <a name="enable-update-management"></a>Az Update Management engedélyezése
 
-A Azure Portal navigáljon a **virtuális gépekhez**.
+1. A Azure Portal navigáljon a **virtuális gépekhez**.
 
-A jelölőnégyzetek használatával válassza ki azokat a virtuális gépeket, amelyeknek a bevezetéséhez Change Tracking és leltárt vagy Update Management szeretne készíteni. A bevezetése egyszerre legfeljebb három különböző erőforráscsoport számára érhető el. Az Azure-beli virtuális gépek bármely régióban létezhetnek, függetlenül az Automation-fiókja helyétől.
+2. A jelölőnégyzetek használatával válassza ki a Update Management hozzáadni kívánt virtuális gépeket. Egyszerre legfeljebb három különböző erőforráscsoport számára adhat hozzá gépeket. Az Azure-beli virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül.
 
-![Virtuális gépek listája](media/automation-onboard-solutions-from-browse/vmlist.png)
-> [!TIP]
-> A szűrő vezérlők használatával módosíthatja a virtuális gépek listáját, majd a felső jelölőnégyzetre kattintva kiválaszthatja a listában szereplő összes virtuális gépet.
+    ![Virtuális gépek listája](media/automation-onboard-solutions-from-browse/vmlist.png)
 
-A parancssorban kattintson a **szolgáltatások** elemre, és válassza a **change Tracking**, a **Inventory**vagy a **Update Management**lehetőséget.
+    > [!TIP]
+    > A szűrési vezérlők használatával különböző előfizetések, helyszínek és erőforráscsoportok közül választhat ki virtuális gépeket. A felső jelölőnégyzetre kattintva kiválaszthatja a listában szereplő összes virtuális gépet.
 
-> [!NOTE]
-> A Change Tracking és a leltár ugyanazt a megoldást használja. Ha az egyik engedélyezve van, a másik is engedélyezve van.
+    ![Az Update Management engedélyezése](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-A következő rendszerkép a Update Management. A Change Tracking és a leltár azonos elrendezéssel és viselkedéssel rendelkezik.
+3. Kattintson a **szolgáltatások** lehetőségre, és válassza a **Update Management** lehetőséget a Update Management funkcióhoz. 
 
-A virtuális gépek listája úgy van szűrve, hogy csak az azonos előfizetésben és helyen lévő virtuális gépeket jelenítse meg. Ha a virtuális gépek több mint három erőforráscsoporthoz vannak, akkor az első három erőforráscsoport van kiválasztva.
+4. A virtuális gépek listája úgy van szűrve, hogy csak az azonos előfizetésben és helyen lévő virtuális gépeket jelenítse meg. Ha a virtuális gépek több mint három erőforráscsoporthoz vannak, akkor az első három erőforráscsoport van kiválasztva.
 
-### <a name="onboarding-limitations"></a><a name="resource-group-limit"></a>Bevezetési korlátozások
+5. Alapértelmezés szerint egy meglévő Log Analytics munkaterület és Automation-fiók van kiválasztva. Ha más Log Analytics munkaterületet és Automation-fiókot szeretne használni, kattintson az **Egyéni** elemre az egyéni konfiguráció lapon való kiválasztásához. Ha Log Analytics munkaterületet választ, ellenőrizze, hogy van-e egy Automation-fiókkal társítva. Ha a rendszer csatolt Automation-fiókot talál, a következő képernyő jelenik meg. Ha elkészült, kattintson **az OK**gombra.
 
-Az előkészítéshez használható erőforráscsoportok számát a Resource Manager-alapú üzemelő [példányok](../azure-resource-manager/templates/cross-resource-group-deployment.md)korlátozzák. A Resource Manager-alapú üzemelő példányok, amelyek nem tévesztendő össze a frissítési környezetekkel, üzembe helyezésük legfeljebb 5 erőforráscsoport lehet. A bevezetésének integritásának biztosítása érdekében az erőforráscsoportok közül 2 az Log Analytics munkaterület, az Automation-fiók és a kapcsolódó erőforrások konfigurálására van fenntartva. Így 3 erőforráscsoport közül választhat az üzembe helyezéshez. Ez a korlát csak az egyidejű bevezetésre vonatkozik, nem az Automation-megoldással felügyelhető erőforráscsoportok számára.
+    ![Munkaterület és fiók kiválasztása](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
-Emellett runbook is használhat a bevezetéshez, további információért lásd: az [Update és a Change Tracking megoldások](automation-onboard-solutions.md)bevezetésének Azure Automation.
+6. Ha a kiválasztott munkaterület nincs Automation-fiókhoz kapcsolva, a következő képernyő jelenik meg. Válasszon ki egy Automation-fiókot, és ha elkészült, kattintson **az OK** gombra.
 
-A szűrési vezérlőkkel különböző előfizetések, helyszínek és erőforráscsoportok alapján választhatja ki a virtuális gépeket.
+    ![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-![Az Update Management megoldás előkészítése](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
+7. Törölje a jelölőnégyzet jelölését azon virtuális gépek mellett, amelyeket nem szeretne engedélyezni. A nem engedélyezhető virtuális gépek már ki vannak választva.
 
-Tekintse át a Log Analytics munkaterület és az Automation-fiók választási lehetőségeit. Alapértelmezés szerint egy meglévő munkaterület és Automation-fiók van kiválasztva. Ha más Log Analytics munkaterületet és Automation-fiókot szeretne használni, kattintson az **Egyéni** elemre az **Egyéni konfiguráció** lapon való kiválasztásához. Ha Log Analytics munkaterületet választ, ellenőrizze, hogy van-e egy Automation-fiókkal társítva. Ha a rendszer csatolt Automation-fiókot talál, a következő képernyő jelenik meg. Ha elkészült, kattintson **az OK**gombra.
-
-![Munkaterület és fiók kiválasztása](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
-
-Ha a kiválasztott munkaterület nincs Automation-fiókhoz kapcsolva, a következő képernyő jelenik meg. Válasszon ki egy Automation-fiókot, majd kattintson **az OK gombra** a befejezéshez.
-
-![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
-
-> [!NOTE]
-> A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
->
-> A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
-
-Törölje a jelölőnégyzet jelölését azon virtuális gépek mellett, amelyeket nem szeretne engedélyezni. A nem engedélyezhető virtuális gépek már ki vannak választva.
-
-A megoldás engedélyezéséhez kattintson az **Engedélyezés** gombra. A megoldás engedélyezése akár 15 percet is igénybe vehet.
-
-## <a name="unlink-workspace"></a>Munkaterület leválasztása
-
-A következő megoldások Log Analytics munkaterülettől függenek:
-
-* [Frissítéskezelés](automation-update-management.md)
-* [Változások követése](automation-change-tracking.md)
-* [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
-
-Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját. Mielőtt továbblépne, először el kell távolítania a korábban említett megoldásokat, ellenkező esetben a folyamat nem fog folytatódni. Tekintse át az importált konkrét megoldásról szóló cikket az eltávolításához szükséges lépések megismeréséhez.
-
-A megoldások eltávolítása után a következő lépések végrehajtásával leválaszthatja az Automation-fiókját.
-
-> [!NOTE]
-> Előfordulhat, hogy néhány megoldás, például az Azure SQL-figyelési megoldás korábbi verziói automatizálási eszközöket hoztak létre, és a munkaterület leválasztása előtt is el kell távolítani őket.
-
-1. A Azure Portal nyissa meg az Automation-fiókját, és az Automation-fiók lapon válassza a **csatolt munkaterület** lehetőséget a bal oldalon található **kapcsolódó erőforrások** szakaszban.
-
-2. A munkaterület leválasztása lapon kattintson a **munkaterület leválasztása**elemre.
-
-   ![Munkaterület leválasztása lap](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
-
-   A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
-
-3. Míg Azure Automation megkísérli leválasztani a fiókot a Log Analytics munkaterületen, nyomon követheti a menü **értesítések** részén látható előrehaladást.
-
-Ha a Update Management megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
-
-* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési központi telepítésnek.
-
-* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
-
-Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
-
-* VM runbook-ütemtervek elindítása és leállítása
-* VM-runbookok elindítása és leállítása
-* Változók
-
-Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-Több gép bevezetéséhez előfordulhat, hogy a gépek is megjelennek `Cannot enable`. Különböző okok miatt előfordulhat, hogy egyes gépek nem engedélyezettek. A következő részekben láthatók a virtuális `Cannot enable` gépek állapotának lehetséges okai a beléptetési kísérlet során.
-
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>A virtuális gép jelentései egy másik munkaterületre mutatnak: "\<workspaceName\>".  Konfiguráció módosítása az engedélyezéshez
-
-**OK**: Ez a hiba azt mutatja, hogy a virtuális gép, amelyhez jelentést szeretne készíteni egy másik munkaterületre.
-
-**Megoldás**: a cél Automation-fiók és a log Analytics munkaterület módosításához kattintson a **használati konfiguráció** lehetőségre.
-
-### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuálisgép-jelentések olyan munkaterületre, amely nem érhető el ebben az előfizetésben
-
-**OK**: a virtuális gép által a következőként jelentett munkaterület:
-
-* Egy másik előfizetésben található, vagy
-* Már nem létezik, vagy
-* Olyan erőforráscsoporthoz van, amelyhez nincs hozzáférési engedélye
-
-**Megoldás**: keresse meg a munkaterülethez társított Automation-fiókot, amelyet a virtuális gép a hatókör konfigurációjának módosításával jelent a virtuális gép számára.
-
-### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>A virtuális gép operációs rendszerének verziója vagy eloszlása nem támogatott
-
-**OK:** A megoldás a Linux-disztribúciók vagy a Windows összes verziója esetében nem támogatott.
-
-**Megoldás:** Tekintse meg a [támogatott ügyfelek listáját](automation-update-management.md#supported-client-types).
-
-### <a name="classic-vms-cannot-be-enabled"></a>A klasszikus virtuális gépek nem engedélyezhetők
-
-**OK**: a klasszikus üzemi modellt használó virtuális gépek nem támogatottak.
-
-**Megoldás**: telepítse át a virtuális gépet a Resource Manager-alapú üzemi modellbe. Ennek módjáról a [klasszikus üzembehelyezési modell erőforrásainak áttelepítése](../virtual-machines/windows/migration-classic-resource-manager-overview.md)című témakörben olvashat bővebben.
-
-### <a name="vm-is-stopped-deallocated"></a>A virtuális gép le van állítva. deallocated
-
-**OK**: a virtuális gép nem **futó** állapotban van.
-
-**Megoldás**: ahhoz, hogy egy virtuális gépet egy megoldásba lehessen bevezetni, a virtuális gépnek futnia kell. A virtuális **gép elindítása** hivatkozásra kattintva megkezdheti a virtuális gép elindítását anélkül, hogy el kellene navigálnia az oldalról.
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Virtuális gép eltávolítása Update Managementról:
-
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
-* Távolítsa el a [Windows log Analytics Agent ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a Linux rendszerhez készült [log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+8. Az **Engedélyezés** elemre kattintva engedélyezheti a kiválasztott funkciót. A telepítés elvégzése akár 15 percet is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a megoldás engedélyezve van a virtuális gépek számára, látogasson el a Update Management áttekintő cikkbe, amelyből megtudhatja, hogyan hozhat létre **frissítési központi telepítést** a gépekhez.
-
-> [!div class="nextstepaction"]
-> [Update Management – az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](./automation-tutorial-update-management.md)
-
-További oktatóanyagok a megoldásokról és azok használatáról:
-
-* [Oktatóanyag – a virtuális gép frissítéseinek kezelése](automation-tutorial-update-management.md)
-
-* [Oktatóanyag – szoftverek azonosítása virtuális gépen](automation-tutorial-installed-software.md)
-
-* [Oktatóanyag – virtuális gépek változásainak megoldása](automation-tutorial-troubleshoot-changes.md)
+* Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
+* A hatókör-konfigurációk esetében lásd: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
+* Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
+* A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
+* Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
+* A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

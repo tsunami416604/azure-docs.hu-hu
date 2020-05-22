@@ -1,44 +1,34 @@
 ---
 title: E-mail küldése egy Azure Automation runbook
-description: Ismerje meg, hogyan küldhet e-mailt a SendGrid egy runbook belülről.
+description: Ez a cikk azt ismerteti, hogyan küldhet e-mailt egy runbook belülről.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
-ms.topic: tutorial
-ms.openlocfilehash: 4d825dee469497cbb56a91c913ff3ac51963058b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.topic: conceptual
+ms.openlocfilehash: 5f14bf383037bf937629d4307e7a1fb04825d2a7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855686"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743773"
 ---
-# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Oktatóanyag: e-mail küldése egy Azure Automation runbook
+# <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
 
-E-mailt küldhet egy runbook a [SendGrid](https://sendgrid.com/solutions) a PowerShell használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-
-> [!div class="checklist"]
->
-> * Hozzon létre egy Azure Key Vault.
-> * Tárolja az `SendGrid` API-kulcsot a Key vaultban.
-> * Hozzon létre egy újrafelhasználható runbook, amely lekéri az API-kulcsot, és küldjön egy e-mailt egy [Azure Key Vault](/azure/key-vault/)tárolt API-kulcs használatával.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
+E-mailt küldhet egy runbook a [SendGrid](https://sendgrid.com/solutions) a PowerShell használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzésének a következők a feltételei:
-
-* Azure-előfizetés: Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Hozzon létre egy SendGrid-fiókot](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
-* [Automation](automation-offering-get-started.md) -fiók **az az** modules és a [futtató kapcsolódási](automation-create-runas-account.md)szolgáltatással a runbook tárolásához és végrehajtásához.
+* Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/ember-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Egy SendGrid-fiók](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
+* [Automation-fiók](automation-offering-get-started.md) az **az** moduljaival.
+* [Futtató fiók](automation-create-runas-account.md) a runbook tárolásához és végrehajtásához.
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
 
-Azure Key Vault a következő PowerShell-parancsfájl használatával hozhat létre. Cserélje le a változó értékeket a környezetre jellemző értékekre. Használja a beágyazott Azure Cloud Shell a kód jobb felső sarkában található **TRY IT (kipróbálás** ) gomb segítségével. Emellett helyileg is másolhatja és futtathatja a kódot, ha a [Azure PowerShell modul](/powershell/azure/install-az-ps) telepítve van a helyi gépen.
+Azure Key Vault a következő PowerShell-parancsfájl használatával hozhat létre. Cserélje le a változó értékeket a környezetre jellemző értékekre. Használja a beágyazott Azure Cloud Shell a kód jobb felső sarkában található **TRY IT (kipróbálás** ) gomb segítségével. Emellett helyileg is másolhatja és futtathatja a kódot, ha az az [modulok](/powershell/azure/install-az-ps) telepítve vannak a helyi gépen.
 
 > [!NOTE]
-> Az API-kulcs lekéréséhez kövesse a [SENDGRID API-kulcs megkeresése](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)című cikkben található lépéseket.
+> Az API-kulcs lekéréséhez kövesse a [SENDGRID API-kulcs megkeresése](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)című témakör lépéseit.
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -73,33 +63,27 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 A Azure Key Vault létrehozásának és a titkos kulcs tárolásának egyéb módjaiért lásd: [Key Vault](/azure/key-vault/)gyors útmutató.
 
-## <a name="import-required-modules-to-your-automation-account"></a>Szükséges modulok importálása az Automation-fiókba
+## <a name="import-required-modules-into-your-automation-account"></a>Szükséges modulok importálása az Automation-fiókba
 
-Ahhoz, hogy az Automation-fiók a runbook-en belül Azure Key Vault használhassa, a következő modulokra van szüksége:
+Ha Azure Key Vaultt szeretne használni a runbook belül, a következő modulokat kell importálnia az Automation-fiókjába:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
-* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+    * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+    * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
-Kattintson a telepítés gombra a Azure Automation lapon a **telepítési beállítások**alatt **Azure Automation** . Ez a művelet megnyitja a Azure Portal. Az importálás lapon válassza ki az Automation-fiókját, és kattintson az **OK**gombra.
-
-A szükséges modulok hozzáadásával kapcsolatos további módszerekről lásd: [modulok importálása](/azure/automation/shared-resources/modules#importing-modules).
+Útmutatásért lásd: [Importálás az modulok](shared-resources/modules.md#import-az-modules).
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Runbook létrehozása e-mailek küldéséhez
 
-Miután létrehozott egy kulcstartót, és tárolta az `SendGrid` API-kulcsot, itt az ideje, hogy létrehozza a runbook, amely lekéri az API-kulcsot, és elküld egy e-mailt.
-
-Ez a runbook `AzureRunAsConnection` [futtató fiókként](automation-create-runas-account.md) használja az Azure-ban való hitelesítéshez a titkos kulcs lekéréséhez Azure Key Vault.
-
-Ez a példa egy **Send-GridMailMessage**nevű runbook létrehozására használható. Módosíthatja a PowerShell-parancsfájlt, és újra felhasználhatja azt különböző forgatókönyvek esetén.
+Miután létrehozott egy Key Vault és tárolta az `SendGrid` API-kulcsot, ideje létrehozni azt a runbook, amely lekéri az API-kulcsot, és elküld egy e-mailt. Egy olyan runbook használjon, amely `AzureRunAsConnection` [futtató fiókként](automation-create-runas-account.md) hitelesíti az Azure-t a titkos kulcs lekéréséhez Azure Key Vault. Meghívjuk a **Send-GridMailMessage**runbook. Módosíthatja a példaként használt PowerShell-szkriptet, és felhasználhatja azt különböző forgatókönyvek esetén.
 
 1. Nyissa meg Azure Automation-fiókját.
 2. A **folyamat automatizálása**területen válassza a **runbookok**lehetőséget.
 3. A runbookok listájának tetején válassza a **+ Runbook létrehozása**lehetőséget.
-4. A **Runbook hozzáadása** lapon adja meg a **Send-GridMailMessage** nevet a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután kattintson a **Létrehozás** elemre.
+4. A Runbook hozzáadása lapon adja meg a **Send-GridMailMessage** nevet a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután kattintson a **Létrehozás** elemre.
    ![Runbook létrehozása](./media/automation-send-email/automation-send-email-runbook.png)
-5. Létrejön a runbook, és megnyílik a **PowerShell-runbook szerkesztése** oldal.
+5. Létrejön a runbook, és megnyílik a PowerShell-runbook szerkesztése oldal.
    ![A Runbook szerkesztése](./media/automation-send-email/automation-send-email-edit.png)
-6. Másolja a következő PowerShell-példát a **Szerkesztés** lapra. Győződjön meg arról `$VaultName` , hogy a a Key Vault létrehozásakor megadott név.
+6. Másolja a következő PowerShell-példát a Szerkesztés lapra. Győződjön meg arról, hogy a `VaultName` Key Vault kiválasztott nevet adja meg.
 
     ```powershell-interactive
     Param(
@@ -150,14 +134,15 @@ Ez a példa egy **Send-GridMailMessage**nevű runbook létrehozására használh
 
 7. Válassza a **Közzététel** lehetőséget a runbook mentéséhez és közzétételéhez.
 
-Annak ellenőrzéséhez, hogy a runbook sikeresen végrehajtja-e a lépéseket, kövesse az [Runbook tesztelése](manage-runbooks.md#test-a-runbook) vagy a [runbook elindítása](start-runbooks.md)című szakasz lépéseit.
-Ha nem látja először a teszt e-mail-címét, ellenőrizze a **Levélszemét** és a **Levélszemét** mappáját.
+Annak ellenőrzéséhez, hogy a runbook sikeresen végrehajtja-e a műveleteket, követheti a [Runbook tesztelése](manage-runbooks.md#test-a-runbook) vagy a [runbook elindítása](start-runbooks.md)című szakasz lépéseit.
 
-## <a name="clean-up"></a>Takarítás
+Ha kezdetben nem látja a teszt e-mail-címét, ellenőrizze a **Levélszemét** és a **Levélszemét** mappáját.
 
-Ha már nincs rá szükség, törölje a runbookot. Ehhez válassza ki a runbook listából a runbookot, és kattintson a **Törlés** elemre.
+## <a name="clean-up-after-the-email-operation"></a>Az e-mail művelet után tisztítás
 
-Törölje a Key vaultot a [Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) parancsmag használatával.
+1. Ha a runbook már nincs rá szükség, válassza ki a runbook listában, és kattintson a **Törlés**gombra.
+
+2. Törölje a Key Vault a [Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) parancsmag használatával.
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
@@ -167,7 +152,7 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>További lépések
 
-* A runbook létrehozásával vagy indításával kapcsolatos problémákért lásd: [hibák elhárítása a runbookok](./troubleshoot/runbooks.md).
-* Az Automation-fiókban található modulok frissítését lásd: [Azure PowerShell modulok frissítése Azure Automation](automation-update-azure-modules.md)].
-* A runbook végrehajtásának figyeléséhez tekintse [meg a feladatok állapotának és a feladatoknak az automatizálásból Azure monitor a naplókba való továbbítását](automation-manage-send-joblogs-log-analytics.md)ismertető
-* Ha riasztást használó runbook szeretne elindítani, tekintse meg a [riasztások használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md)című témakört.
+* [Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
+* [Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé](automation-manage-send-joblogs-log-analytics.md)
+* [Azure Automation runbook elindítására szolgáló riasztás használata](automation-create-alert-triggered-runbook.md)
+* [Runbook kapcsolatos problémák elhárítása](./troubleshoot/runbooks.md)

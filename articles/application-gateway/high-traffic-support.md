@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617202"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740399"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Nagy mennyiségű forgalom támogatása az Application Gatewayben
 
@@ -51,7 +51,7 @@ Ebből Azure Portal a példából megtudhatja, hogyan állíthatja be a riasztá
 > Beállíthatja, hogy a riasztás alacsonyabb vagy magasabb CU-kihasználtsági arányban történjen, attól függően, hogy mennyire érzékeny a potenciális forgalom.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>A WAF beállítása a geofiltering és a bot Protection szolgáltatással a támadások leállításához
-Ha további biztonsági réteget szeretne használni az alkalmazás előtt, használja a Application Gateway WAF_v2 SKU-t a WAF képességekhez. A v2 SKU-t úgy állíthatja be, hogy csak az adott országban vagy országokban engedélyezze az alkalmazásokhoz való hozzáférést. A WAF egyéni szabály beállításával explicit módon engedélyezheti vagy letilthatja a forgalmat a földrajzi hely alapján. További információ: [geofiltering egyéni szabályok](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) és [egyéni szabályok konfigurálása Application Gateway WAF_v2 SKU-n keresztül a PowerShell használatával](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Ha további biztonsági réteget szeretne használni az alkalmazás előtt, használja a Application Gateway WAF_v2 SKU-t a WAF képességekhez. A v2 SKU-t úgy állíthatja be, hogy csak adott ország/régió vagy országok/régiók számára engedélyezze az alkalmazásokhoz való hozzáférést. A WAF egyéni szabály beállításával explicit módon engedélyezheti vagy letilthatja a forgalmat a földrajzi hely alapján. További információ: [geofiltering egyéni szabályok](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) és [egyéni szabályok konfigurálása Application Gateway WAF_v2 SKU-n keresztül a PowerShell használatával](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
 Engedélyezze a bot Protectiont az ismert helytelen robotok blokkolásához. Ez csökkenti az alkalmazás felé irányuló forgalom mennyiségét. További információ: [a bot Protection beállítása a set up utasítással](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 

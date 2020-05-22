@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481381"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736483"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
-Amikor Azure Active Directory Application Proxyon keresztül tesz közzé alkalmazást, létrehoz egy külső URL-címet a felhasználók számára. Ez az URL-cím az alapértelmezett tartományi *yourtenant.msappproxy.net*kapja meg. Ha például közzétesz egy, a *contoso*nevű bérlőn a *költségek* nevű alkalmazást, a külső URL-cím *https:\//expenses-contoso.msappproxy.net*. Ha a *msappproxy.net*helyett saját tartománynevet szeretne használni, beállíthatja az alkalmazás egyéni tartományát. 
+Amikor Azure Active Directory Application Proxyon keresztül tesz közzé alkalmazást, létrehoz egy külső URL-címet a felhasználók számára. Ez az URL-cím az alapértelmezett tartományi *yourtenant.msappproxy.net*kapja meg. Ha például közzétesz egy, a *contoso*nevű bérlőn a *költségek* nevű alkalmazást, a külső URL-cím *https: \/ /expenses-contoso.msappproxy.net*. Ha a *msappproxy.net*helyett saját tartománynevet szeretne használni, beállíthatja az alkalmazás egyéni tartományát. 
 
 ## <a name="benefits-of-custom-domains"></a>Az egyéni tartományok előnyei
 
@@ -128,7 +128,7 @@ PFX-tanúsítványt kell használnia annak biztosításához, hogy az összes sz
 
 A tanúsítvány-aláírási módszerek nem korlátozzák a korlátozást. Az elliptikus görbe titkosítása (ECC), a tulajdonos alternatív neve (SAN) és más gyakori tanúsítványok támogatottak. 
 
-Helyettesítő tanúsítványokat használhat, ha a helyettesítő karakter megfelel a külső URL-címnek. Helyettesítő tanúsítványokat kell használnia [helyettesítő alkalmazásokhoz](application-proxy-wildcard.md). Ha azt szeretné, hogy a tanúsítvány az altartományokhoz is hozzáférhessen, akkor az altartomány helyettesítő karaktereit a tulajdonos alternatív neveiként kell hozzáadnia ugyanabban a tanúsítványban. Például a. * \*Adventure-Works.com* tanúsítványa nem fog működni a * \*. apps.Adventure-Works.com* esetében, ha a * \*. apps.Adventure-Works.com* nevet adja a tulajdonos alternatív neveként. 
+Helyettesítő tanúsítványokat használhat, ha a helyettesítő karakter megfelel a külső URL-címnek. Helyettesítő tanúsítványokat kell használnia [helyettesítő alkalmazásokhoz](application-proxy-wildcard.md). Ha azt szeretné, hogy a tanúsítvány az altartományokhoz is hozzáférhessen, akkor az altartomány helyettesítő karaktereit a tulajdonos alternatív neveiként kell hozzáadnia ugyanabban a tanúsítványban. Például a. * \* Adventure-Works.com* tanúsítványa nem fog működni a * \* . apps.Adventure-Works.com* esetében, ha a * \* . apps.Adventure-Works.com* nevet adja a tulajdonos alternatív neveként. 
 
 A saját nyilvános kulcsokra épülő infrastruktúrája (PKI) által kiadott tanúsítványokat használhatja, ha a tanúsítványlánc telepítve van az ügyféleszközök számára. Az Intune ezeket a tanúsítványokat a felügyelt eszközökön is üzembe helyezheti. A nem felügyelt eszközökön manuálisan kell telepítenie ezeket a tanúsítványokat. 
 
@@ -143,6 +143,6 @@ Ugyanazt a tanúsítványt több alkalmazáshoz is használhatja. Ha egy feltöl
 Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy másik tanúsítvány feltöltését kéri. Ha a tanúsítványt visszavonják, a felhasználók biztonsági figyelmeztetést kaphatnak az alkalmazáshoz való hozzáféréskor. Egy alkalmazás tanúsítványának frissítéséhez navigáljon az **alkalmazás alkalmazásproxy** lapjára, válassza a **tanúsítvány**lehetőséget, és töltsön fel egy új tanúsítványt. Ha a régi tanúsítványt más alkalmazások nem használják, azt a rendszer automatikusan törli. 
 
 ## <a name="next-steps"></a>További lépések
-* [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
-* [Feltételes hozzáférés engedélyezése](../conditional-access/overview.md) a közzétett alkalmazásokhoz.
 
+* [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
+* [Feltételes hozzáférés](../conditional-access/concept-conditional-access-cloud-apps.md) a közzétett felhőalapú alkalmazásokhoz.

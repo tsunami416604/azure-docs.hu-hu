@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712196"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737758"
 ---
 # <a name="self-service-sign-up-preview"></a>Önkiszolgáló regisztráció (előzetes verzió)
 |     |
@@ -35,7 +35,7 @@ Az önkiszolgáló regisztrációs felhasználói folyamat létrehoz egy regiszt
 A felhasználói folyamat beállításait beállíthatja annak szabályozására, hogy a felhasználó hogyan regisztrálja az alkalmazást:
 
 - A bejelentkezéshez használt fióktípus, például a Facebook vagy az Azure AD-fiókok
-- A felhasználó által regisztrálható attribútumok, például Utónév, postai kód vagy tartózkodási ország
+- A felhasználó által regisztrálható attribútumok, például Utónév, postai kód vagy lakhely szerinti ország/régió
 
 Ha egy felhasználó be szeretne jelentkezni az alkalmazásba, legyen szó webes, mobil-, asztali vagy egyoldalas alkalmazásról (SPA), akkor az alkalmazás egy engedélyezési kérelmet kezdeményez a felhasználó által megadott végpont számára. A felhasználói folyamat meghatározza és szabályozza a felhasználó élményét. Amikor a felhasználó befejezi a regisztrációs felhasználói folyamatot, az Azure AD létrehoz egy jogkivonatot, és visszairányítja a felhasználót az alkalmazáshoz. A regisztráció befejezésekor a rendszer kiépít egy vendég fiókot a címtárban a felhasználó számára. Több alkalmazás is használhatja ugyanazt a felhasználói folyamatot.
 
@@ -60,6 +60,6 @@ A felhasználó belép az adatokba, folytatja a regisztrációs folyamatot, és 
 
 ![Példa a bejelentkezett felhasználóra](media/self-service-sign-up-overview/example-signed-in.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  Részletekért lásd: önkiszolgáló [regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md).

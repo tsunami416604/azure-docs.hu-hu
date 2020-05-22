@@ -13,16 +13,16 @@ ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926816"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737486"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
-A Microsoft Identity platform végpontja az iparági szabványnak megfelelő protokollokkal, az OpenID Connecttel (OIDC) és a OAuth 2,0-as szolgáltatással. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja le, és nem használja a [nyílt forráskódú kódtárakat](reference-v2-libraries.md).
+Az identitás-szolgáltatás Microsoft Identity platform végpontja olyan hitelesítést és engedélyezést valósít meg, amely az iparági szabványoknak az OpenID Connect (OIDC) és a OAuth 2,0. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja le, és nem használja a [nyílt forráskódú kódtárakat](reference-v2-libraries.md).
 
 ## <a name="the-basics"></a>Az alapok
 
@@ -54,7 +54,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Ahol a `{tenant}` a négy különböző érték egyikét hajthatja végre:
+Ahol a a `{tenant}` négy különböző érték egyikét hajthatja végre:
 
 | Érték | Leírás |
 | --- | --- |

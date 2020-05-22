@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672680"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737027"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
@@ -24,7 +24,7 @@ Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalap�
 
 |   | Azure AD-csatlakozás |
 | --- | --- |
-| **Meghatározás** | Csak az Azure AD-hez csatlakozik, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
+| **Definíció** | Csak az Azure AD-hez csatlakozik, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a csak felhőalapú és a hibrid szervezetekhez. |
 |   | Egy szervezet összes felhasználójára érvényes |
 | **Az eszközök tulajdonjoga** | Szervezet |
@@ -43,7 +43,7 @@ Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalap�
 |   | Önkiszolgáló jelszó-visszaállítás és a Windows Hello PIN-kód alaphelyzetbe állítása a zárolási képernyőn |
 |   | Enterprise State Roaming eszközök között |
 
-Az Azure AD-hez csatlakoztatott eszközök bejelentkeznek egy szervezeti Azure AD-fiók használatával. A szervezet erőforrásaihoz való hozzáférés az Azure AD-fiók és az eszköz identitására alkalmazott [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) alapján tovább korlátozható.
+Az Azure AD-hez csatlakoztatott eszközök bejelentkeznek egy szervezeti Azure AD-fiók használatával. A szervezet erőforrásaihoz való hozzáférés az Azure AD-fiók és az eszköz identitására alkalmazott [feltételes hozzáférési szabályzatok](../conditional-access/howto-conditional-access-policy-compliant-device.md) alapján tovább korlátozható.
 
 A rendszergazdák az Azure AD-hez csatlakoztatott eszközöket a mobileszköz-felügyeleti (MDM) eszközök, például a Microsoft Intune vagy a Microsoft Endpoint Configuration Manager használatával történő közös felügyeleti forgatókönyvek használatával védhetik és vezérelhetik. Ezek az eszközök lehetővé teszik a szervezet által szükséges konfigurációk betartatását, például a tárolás titkosítását, a jelszó bonyolultságát, a szoftverek telepítését és a szoftverfrissítések használatát. A rendszergazdák a vállalati alkalmazások számára elérhetővé tehetik az Azure AD-hez csatlakoztatott eszközöket a Configuration Manager használatával [az üzleti és oktatási Microsoft Store alkalmazások felügyeletéhez](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 

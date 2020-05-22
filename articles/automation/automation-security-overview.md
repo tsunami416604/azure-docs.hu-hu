@@ -1,36 +1,52 @@
 ---
 title: Azure Automation fiók hitelesítésének áttekintése
-description: Ez a cikk az Automation-fiókok Azure Automation biztonsági és hitelesítési módszereinek áttekintését tartalmazza.
+description: Ez a cikk áttekintést nyújt Azure Automation fiók hitelesítéséről.
 keywords: automation-biztonság, automation biztonságossá tétele; automation-hitelesítés
 services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e3c2b15b45eb15b40782a5d0ecfe1e736fc013
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f78161590c897e6337e8694acb9f8a6b34258246
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683518"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743801"
 ---
-# <a name="azure-automation-account-authentication-overview"></a>Azure Automation fiók hitelesítésének áttekintése
+# <a name="automation-account-authentication-overview"></a>Az Automation-fiókok hitelesítésének áttekintése
 
-Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS). Ahhoz, hogy egy runbook végrehajtsa a szükséges műveleteket, rendelkeznie kell engedéllyel az erőforrásokhoz való biztonságos hozzáféréshez az előfizetésen belül szükséges minimális jogosultságokkal.
+Az Azure Automation lehetővé teszi a feladatok automatizálását az Azure erőforrásain, továbbá olyan felhőszolgáltatókkal, mint az Amazon webszolgáltatások (AWS). A runbookok segítségével automatizálhatja a feladatokat, vagy egy hibrid Runbook-feldolgozót, ha nem Azure-beli feladatokat szeretne kezelni. A környezetnek engedélyre van szüksége az erőforrásokhoz való biztonságos hozzáféréshez az Azure-előfizetéshez szükséges minimális jogosultságokkal.
 
-Amikor először indítja el az Azure Automationt, legalább egy Automation-fiókot létre kell hoznia. Az Automation-fiókok lehetővé teszik, hogy elkülönítse az Automation erőforrásait (forgatókönyvek, adategységek, konfigurációk) a más Automation-fiókokban tárolt erőforrásoktól. Az Automation-fiókok segítségével külön logikai környezetekre választhatja szét az erőforrásokat. Használhat például egy fiókot fejlesztéshez, egy másikat az üzemi használatra, egy harmadikat pedig a helyszíni környezethez. Az Azure Automation-fiók különbözik a Microsoft-fiókjától vagy az Azure-előfizetésében létrehozott fiókoktól.
+Ez a cikk a Azure Automation által támogatott hitelesítési forgatókönyveket ismerteti, és elmagyarázza, hogyan kezdheti el az első lépéseket a felügyelni kívánt környezet vagy környezetek alapján.
 
-Az Azure-fiókokhoz tartozó Automation-erőforrások egy Azure-régióhoz tartoznak, de az Automation-fiókok képesek az előfizetés összes erőforrását kezelni. A különböző régiókban levő Automation-fiókok létrehozásának fő oka az lehet, ha a házirendeknek adatokra és erőforrásokra van szükségük ahhoz, hogy külön régióra különülhessenek el.
+## <a name="automation-account"></a>Automation-fiók 
 
-Az erőforrásokon Azure Resource Manager és az Azure Automation Azure-parancsmagok használatával végrehajtott összes feladatnak az Azure-ban Azure Active Directory (Azure AD) szervezeti hitelesítő adatokon alapuló hitelesítéssel kell hitelesítenie az Azure-ban. A Azure Automation futtató fiókok az Azure-parancsmagok használatával biztosítanak hitelesítést az Azure-erőforrások kezeléséhez. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatást az Azure AD-ben, és hozzárendeli a közreműködő szerepkört a felhasználóhoz az előfizetés szintjén. Az Azure Virtual Machines szolgáltatásban hibrid Runbook-feldolgozókat használó runbookok esetében az Azure-erőforrások hitelesítéséhez a futtató fiókok helyett [felügyelt identitásokkal rendelkező Runbook-hitelesítést](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) használhat.
+Amikor először indítja el az Azure Automationt, legalább egy Automation-fiókot létre kell hoznia. Az Automation-fiókok lehetővé teszik, hogy elkülönítse az Automation-erőforrásokat, a runbookok, az eszközöket, a konfigurációkat más fiókok erőforrásaiból. Az Automation-fiókok segítségével külön logikai környezetekre választhatja szét az erőforrásokat. Használhat például egy fiókot fejlesztéshez, egy másikat az üzemi használatra, egy harmadikat pedig a helyszíni környezethez. Az Azure Automation-fiók különbözik a Microsoft-fiókjától vagy az Azure-előfizetésében létrehozott fiókoktól. Az Automation-fiók létrehozásának bevezetését az [Automation-fiók létrehozása](automation-quickstart-create-account.md)című témakörben tekintheti meg.
+
+## <a name="automation-resources"></a>Automation-erőforrások
+
+Az egyes Automation-fiókok automatizálási erőforrásai egyetlen Azure-régióhoz vannak társítva, de a fiók az Azure-előfizetésében lévő összes erőforrást képes kezelni. Az Automation-fiókok különböző régiókban való létrehozásának fő oka az, ha olyan házirendekkel rendelkezik, amelyek megkövetelik, hogy az egyes régiókban az adatforrások és az erőforrások el legyenek különítve.
+
+A Azure Resource Manager és a Azure Automation PowerShell-parancsmagjai segítségével létrehozott összes feladatnak az Azure-ban Azure Active Directory (Azure AD) szervezeti identitású hitelesítő adatokon alapuló hitelesítéssel kell hitelesítenie az Azure-ban. 
+
+## <a name="run-as-account"></a>Futtató fiók
+
+A Azure Automation futtató fiókok az Azure-erőforrások PowerShell-parancsmagokkal történő kezeléséhez biztosítanak hitelesítést. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatást az Azure AD-ben, és hozzárendeli a közreműködő szerepkört a felhasználóhoz az előfizetés szintjén. Az Azure-beli virtuális gépeken hibrid Runbook-feldolgozókat használó runbookok esetében az Azure-erőforrások hitelesítéséhez a futtató fiókok helyett [felügyelt identitásokkal rendelkező Runbook-hitelesítést](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) használhat.
+
+## <a name="service-principal-for-run-as-account"></a>Egyszerű szolgáltatásnév a futtató fiókhoz
 
 A futtató fiókhoz tartozó egyszerű szolgáltatásnév nem rendelkezik az Azure AD alapértelmezett olvasási engedélyeivel. Ha engedélyeket szeretne adni az Azure AD olvasásához vagy kezeléséhez, meg kell adnia az engedélyeket az egyszerű szolgáltatáshoz az **API-engedélyek**alatt. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
-A szerepköralapú hozzáférés-vezérlés az Azure Resource Managerben érhető el, hogy hozzáférést adjon az engedélyezett műveleteknek egy Azure AD-felhasználói fiókhoz és futtatófiókhoz, és hitelesítse az egyszerű szolgáltatást. Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.  
+## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Az adatközpontban vagy más felhőalapú környezetekben, például az AWS-ben működő hibrid Runbook-feldolgozón futó runbookok nem használhatja ugyanazt a metódust, amelyet általában az Azure-erőforrásokhoz való runbookok-hitelesítéshez használ. Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra van szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez. A runbook-feldolgozókkal végzett runbook-hitelesítéssel kapcsolatos további információkért lásd: [Runbookok hitelesítése hibrid runbook-feldolgozók számára](automation-hrw-run-runbooks.md). 
+A szerepköralapú hozzáférés-vezérlés Azure Resource Manager segítségével engedélyezheti az Azure AD felhasználói fiókjának és futtató fiókjának engedélyezett műveleteit, valamint hitelesítheti az egyszerű szolgáltatást. Az Automation-engedélyek kezelésére használt modell fejlesztésére vonatkozó további információkért olvassa el [Az Azure Automation szerepköralapú hozzáférés-vezérlése](automation-role-based-access-control.md) című cikket.  
+
+## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook-hitelesítés hibrid Runbook-feldolgozóval 
+
+Az adatközpontban vagy más felhőalapú környezetekben, például az AWS-ben működő hibrid Runbook-feldolgozón futó runbookok nem használhatja ugyanazt a módszert, amelyet általában az Azure-erőforrásokhoz történő runbookok-hitelesítéshez használ. Ennek oka az, hogy azok az erőforrások az Azure-on kívül futnak, és emiatt az Automation szolgáltatásban meghatározott saját biztonsági hitelesítő adataikra van szükség a helyileg elérhető erőforrásokhoz történő hitelesítéshez. A runbook-feldolgozókkal való runbook-hitelesítéssel kapcsolatos további információkért lásd: [Runbookok futtatása hibrid runbook-feldolgozón](automation-hrw-run-runbooks.md). 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hozzon létre egy Automation-fiókot a Azure Portal](automation-create-standalone-account.md).
-* [Hozzon létre egy Automation-fiókot Azure Resource Manager sablon használatával](automation-create-account-template.md).
-* [Hitelesítés Amazon Web Services (AWS)](automation-config-aws-account.md)használatával.
+* [Egy Automation-fiók létrehozása az Azure Portalról](automation-create-standalone-account.md)
+* [Automation-fiók létrehozása Azure Resource Manager sablon használatával](automation-create-account-template.md)
+* [Hitelesítés Amazon Web Servicessal (AWS)](automation-config-aws-account.md)

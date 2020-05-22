@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad681f4996f713b8bb0c85b07a3f38f0dcb6708a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184519"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738234"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
@@ -66,15 +66,15 @@ A testreszabott felhasználói folyamatok összegyűjthetik a DOB és az ország
 
 A következő lépések azt mutatják be, hogy milyen logikát kell kiszámítani a **beszerzésimennyiség** a felhasználó születési dátumának kiszámításához:
 
-1. Próbálja megkeresni az országot az országkód alapján a listában. Ha az ország nem található, térjen vissza az **alapértelmezett értékre**.
+1. Próbálja megkeresni az országot/régiót az ország/régió kódja alapján a listában. Ha az ország/régió nem található, térjen vissza az **alapértelmezett értékre**.
 
-2. Ha a **MinorConsent** csomópontja szerepel az ország elemében:
+2. Ha a **MinorConsent** csomópont megtalálható az ország/régió elemben:
 
     a. Annak a dátumnak a kiszámítása, amely szerint a felhasználónak felnőttnek kell lennie. Ha például az aktuális dátum március 14, 2015, a **MinorConsent** pedig 18, a születési dátum nem lehet későbbi, mint a 2000. március 14.
 
     b. A születési dátum és a tényleges születési dátum összevetése. Ha a minimális születési dátum a felhasználó születési dátuma, akkor a számítás a **korcsoport szerinti számításnak minősülő** alhálózatot adja vissza.
 
-3. Ha a **MinorNoConsentRequired** csomópont szerepel az ország elemben, ismételje meg a 2a és a 2B lépést a **MinorNoConsentRequired**értékének használatával. A 2B kimenete **MinorNoConsentRequired** ad vissza, ha a minimális születési dátum a felhasználó születési dátuma.
+3. Ha a **MinorNoConsentRequired** csomópont megtalálható az ország/régió elemben, ismételje meg a 2a és a 2B lépést a **MinorNoConsentRequired**értékének használatával. A 2B kimenete **MinorNoConsentRequired** ad vissza, ha a minimális születési dátum a felhasználó születési dátuma.
 
 4. Ha egyik számítás sem igaz értéket ad vissza, a számítás **felnőtt**értéket ad vissza.
 

@@ -1,24 +1,27 @@
 ---
-title: Virtuális gép üzembe helyezésének automatizálása Amazon Web Services
-description: Ez a cikk bemutatja, hogyan használható a Azure Automation az Amazon Web Service-alapú virtuális gépek létrehozásának automatizálására
+title: Amazon Web Services virtuális gép üzembe helyezése Azure Automation runbook
+description: Ez a cikk azt ismerteti, hogyan lehet automatizálni egy Amazon Web Services virtuális gép létrehozását.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52a887d2d934aa2f7e13f0c2fdb4332066aee0e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d66a96baa182672ecbfc9d617f82728812f0f27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604833"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743853"
 ---
-# <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation forgatókönyv – AWS virtuális gép kiépítése
+# <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Amazon Web Services virtuális gép üzembe helyezése runbook
+
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Automationt egy virtuális gép kiépítéséhez az Amazon Web Service-(AWS-) előfizetésben, és adjon egy adott nevet a virtuális gépnek, amely az AWS a virtuális gép "címkézési" kifejezésére utal.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Rendelkeznie kell egy Azure Automation fiókkal és egy Amazon Web Services (AWS) előfizetéssel. Azure Automation-fiók beállításával és az AWS-előfizetés hitelesítő adataival való konfigurálásával kapcsolatos további információkért tekintse át a következő témakört: a [hitelesítés konfigurálása a Amazon Web Services](automation-config-aws-account.md)használatával. Ennek a fióknak a továbblépés előtt létre kell hoznia vagy frissítenie kell az AWS-előfizetés hitelesítő adataival, ahogy az alábbi részekben hivatkozik erre a fiókra.
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Amazon Web Services PowerShell-modul üzembe helyezése
+
 A virtuális gép üzembe helyezési runbook az AWS PowerShell-modult használja a munkához. A következő lépésekkel adhatja hozzá a modult az AWS-előfizetés hitelesítő adataival konfigurált Automation-fiókhoz.  
 
 1. Nyissa meg a webböngészőt, és navigáljon a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AWSPowerShell/) , és kattintson a **telepítés a Azure Automation gombra**.<br><br> ![AWS PS-modul importálása](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
@@ -34,6 +37,7 @@ A virtuális gép üzembe helyezési runbook az AWS PowerShell-modult használja
 3. A modulok oldalon láthatja a **AWSPowerShell** modult a listában.
 
 ## <a name="create-aws-deploy-vm-runbook"></a>AWS üzembe helyezése VM-runbook létrehozása
+
 Miután telepítette az AWS PowerShell-modult, létrehozhat egy runbook, amely egy PowerShell-parancsfájl használatával automatizálja a virtuális gépeket az AWS-ben. Az alábbi lépések bemutatják, hogyan használható a natív PowerShell-parancsfájl a Azure Automationban.  
 
 > [!NOTE]
@@ -50,17 +54,15 @@ Miután telepítette az AWS PowerShell-modult, létrehozhat egy runbook, amely e
 4. A runbook hozzáadása panelen válassza a **gyors létrehozás** lehetőséget egy új runbook létrehozásához.
 5. A Runbook tulajdonságok ablaktábláján írja be a Runbook nevét.
 6. A **Runbook típusa** legördülő listából válassza ki a **PowerShell**elemet, majd kattintson a **Létrehozás**gombra.<br><br> ![Runbook létrehozása panel](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
-6. Amikor megjelenik a PowerShell-Runbook szerkesztése lap, másolja és illessze be a PowerShell-szkriptet a Runbook authoring vászonba.<br><br> ![Runbook PowerShell-parancsfájl](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
+7. Amikor megjelenik a PowerShell-Runbook szerkesztése lap, másolja és illessze be a PowerShell-szkriptet a Runbook authoring vászonba.<br><br> ![Runbook PowerShell-parancsfájl](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
-    > [!NOTE]
-    > A példaként szolgáló PowerShell-parancsfájl használatakor vegye figyelembe a következőket:
-    > 
-    > * A runbook számos alapértelmezett paraméter értéket tartalmaz. Szükség esetén értékelje ki az összes alapértelmezett értéket és frissítést.
-    > * Ha az AWS hitelesítő adatait egy másként megadott hitelesítőadat- `AWScred`eszközként tárolta, frissítenie kell a parancsfájlt az 57-es sorban, hogy az megfeleljen ennek megfelelően.  
-    > * Ha az AWS CLI-parancsokkal dolgozik a PowerShellben, különösen ebben a példában runbook, meg kell adnia az AWS régiót. Ellenkező esetben a parancsmagok meghiúsulnak. Az AWS megtekintése témakörben az AWS- [régiót](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) az AWS-eszközök PowerShell-dokumentumában találhatja meg további részletekért.  
-    >
+    A példaként szolgáló PowerShell-parancsfájl használatakor vegye figyelembe a következőket:
 
-7. Az AWS-előfizetésből származó rendszerkép-nevek listájának lekéréséhez indítsa el a PowerShell ISE-t, és importálja az AWS PowerShell-modult. A hitelesítése az AWS- `Get-AutomationPSCredential` ben az ISE-környezetben `AWScred = Get-Credential`való kiváltásával történik. Ez az utasítás kéri a hitelesítő adatait, és megadhatja a felhasználónévhez és a jelszóhoz tartozó titkos hozzáférési kulcshoz tartozó hozzáférési kulcs AZONOSÍTÓját. 
+    * A runbook számos alapértelmezett paraméter értéket tartalmaz. Szükség esetén értékelje ki az összes alapértelmezett értéket és frissítést.
+    * Ha az AWS hitelesítő adatait egy másként megadott hitelesítőadat-eszközként tárolta `AWScred` , frissítenie kell a parancsfájlt az 57-es sorban, hogy az megfeleljen ennek megfelelően.  
+    * Ha az AWS CLI-parancsokkal dolgozik a PowerShellben, különösen ebben a példában runbook, meg kell adnia az AWS régiót. Ellenkező esetben a parancsmagok meghiúsulnak. Az AWS megtekintése témakörben az AWS- [régiót](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) az AWS-eszközök PowerShell-dokumentumában találhatja meg további részletekért.  
+
+8. Az AWS-előfizetésből származó rendszerkép-nevek listájának lekéréséhez indítsa el a PowerShell ISE-t, és importálja az AWS PowerShell-modult. A hitelesítése az AWS `Get-AutomationPSCredential` -ben az ISE-környezetben való kiváltásával történik `AWScred = Get-Credential` . Ez az utasítás kéri a hitelesítő adatait, és megadhatja a felhasználónévhez és a jelszóhoz tartozó titkos hozzáférési kulcshoz tartozó hozzáférési kulcs AZONOSÍTÓját. 
 
         ```powershell
         #Sample to get the AWS VM available images
@@ -80,25 +82,23 @@ Miután telepítette az AWS PowerShell-modult, létrehozhat egy runbook, amely e
         
     A rendszer a következő kimenetet adja vissza:<br><br>
    ![AWS-lemezképek beolvasása](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
-8. Másolja és illessze be az egyik rendszerkép nevét egy Automation-változóba úgy, ahogy az a runbook `$InstanceType`hivatkozik. Mivel ebben a példában az ingyenes AWS rétegű előfizetést használja, a **T2. microt** használja a runbook példához.  
-9. Mentse a runbook, majd kattintson a **Közzététel** gombra a runbook közzétételéhez, majd az **Igen** gombra, amikor a rendszer kéri.
+9. Másolja és illessze be az egyik rendszerkép nevét egy Automation-változóba úgy, ahogy az a runbook hivatkozik `$InstanceType` . Mivel ebben a példában az ingyenes AWS rétegű előfizetést használja, a **T2. microt** használja a runbook példához.  
+10. Mentse a runbook, majd kattintson a **Közzététel** gombra a runbook közzétételéhez, majd az **Igen** gombra, amikor a rendszer kéri.
 
-### <a name="testing-the-aws-vm-runbook"></a>Az AWS virtuális gép runbook tesztelése
-Mielőtt folytatná a runbook tesztelését, néhány dolgot ellenőriznie kell:
+### <a name="test-the-aws-vm-runbook"></a>Az AWS virtuális gép runbook tesztelése
 
-* A rendszer létrehozta az AWS-vel való hitelesítésre hívott `AWScred` adategységet, vagy a parancsfájl frissült, hogy hivatkozzon a hitelesítőadat-eszköz nevére.    
-* Az AWS PowerShell-modul Azure Automation lett importálva.  
-* Új runbook lett létrehozva, és szükség esetén a paraméterek értékeinek ellenőrzése és frissítése megtörtént.  
-* **Naplózza a részletes rekordokat** , és ha szükséges, az Runbook művelet **naplózása** elem alatt **naplózza a folyamatokat** , a nyomkövetés pedig be értékre van **állítva.**<br><br> ![Runbook naplózás és nyomkövetés](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png).  
-
-1. Kattintson a **Start** gombra a runbook elindításához, majd kattintson az **OK** gombra a Start runbook panel megnyitásakor.
-2. A Runbook indítása panelen adja meg a virtuális gép nevét. Fogadja el a parancsfájlban előre konfigurált egyéb paraméterek alapértelmezett értékeit. A runbook-feladatok elindításához kattintson **az OK** gombra.<br><br> ![A New-AwsVM runbook elindítása](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
-3. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. A panel bezárásához.
-4. Megtekintheti a feladatok előrehaladását, és megtekintheti a kimeneti streameket a runbook-feladatok ablaktábla **összes naplójának** kiválasztásával.<br><br> ![Stream kimenete](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
-5. Ha ellenőrizni szeretné, hogy a virtuális gép üzembe helyezése folyamatban van-e, jelentkezzen be az AWS felügyeleti konzolba, ha jelenleg nincs bejelentkezve.<br><br> ![AWS-konzol üzembe helyezett virtuális gép](./media/automation-scenario-aws-deployment/aws-instances-status.png)
+1. Győződjön meg arról, hogy a runbook létrehoz egy nevű adategységet `AWScred` az AWS-ben való hitelesítéshez, vagy frissítse a parancsfájlt a hitelesítő eszköz nevének megadásához.    
+2. Ellenőrizze az új runbook, és győződjön meg arról, hogy az összes paraméter értékének frissítése szükséges.
+Győződjön meg arról, hogy az AWS PowerShell-modul a Azure Automationba lett importálva.  
+3. A Azure Automation-ben állítsa be a részletes **naplózási** **rekordokat** , és ha szükséges, a runbook művelet **naplózása és** **a**nyomkövetés a következőre lehetőséget.<br><br> ![Runbook naplózás és nyomkövetés ](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png) .  
+4. Kattintson a **Start** gombra a runbook elindításához, majd kattintson az **OK** gombra a Start runbook panel megnyitásakor.
+5. A Runbook indítása panelen adja meg a virtuális gép nevét. Fogadja el a parancsfájlban előre konfigurált egyéb paraméterek alapértelmezett értékeit. A runbook-feladatok elindításához kattintson **az OK** gombra.<br><br> ![A New-AwsVM runbook elindítása](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+6. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. A panel bezárásához.
+7. Megtekintheti a feladatok előrehaladását, és megtekintheti a kimeneti streameket a runbook-feladatok ablaktábla **összes naplójának** kiválasztásával.<br><br> ![Stream kimenete](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
+8. Ha ellenőrizni szeretné, hogy a virtuális gép üzembe helyezése folyamatban van-e, jelentkezzen be az AWS felügyeleti konzolba, ha jelenleg nincs bejelentkezve.<br><br> ![AWS-konzol üzembe helyezett virtuális gép](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
 ## <a name="next-steps"></a>További lépések
-* A grafikus runbookok megkezdéséhez tekintse meg [az első grafikus runbook](automation-first-runbook-graphical.md).
-* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [az első PowerShell-munkafolyamat runbook](automation-first-runbook-textual.md).
-* Ha többet szeretne megtudni a runbook típusairól és azok előnyeiről és korlátairól, tekintse meg a [Azure Automation runbook-típusok](automation-runbook-types.md)című témakört.
-* A PowerShell-parancsfájlok támogatásával kapcsolatos további információkért lásd: [natív PowerShell-parancsfájl-támogatás a Azure Automationban](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+ 
+* [Azure Automation runbook-típusok](automation-runbook-types.md)
+* [Runbookok kezelése Azure Automation](manage-runbooks.md)
+* [Natív PowerShell-parancsfájl támogatása Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

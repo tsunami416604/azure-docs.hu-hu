@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262400"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738319"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Összefoglaló irányítópult a kereskedelmi piactér elemzésében
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Az Összegzés irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center összegző irányítópultján tartalmaz információkat. Ez az irányítópult az ajánlatok számára elérhető Piactéri tevékenységet összefoglaló összesített adatok grafikonokat, trendeket és értékeket jeleníti meg.
 
@@ -70,7 +70,7 @@ Az **ügyfelek földrajzi** hő megjelenítik az ügyfelek darabszámát a glob�
 - A térképet áthelyezve megtekintheti a pontos helyet.
 - Egy adott helyre nagyíthat.
 - A hő egy kiegészítő rácstal rendelkezik, amely az adott helyen megtekintheti az ügyfelek számát, a rendelések számát, a normalizált használati időt.
-- Megkeresheti és kiválaszthatja a rács egyik országát, hogy a térképen lévő helyre nagyítson. A **Kezdőlap** gomb megnyomásával visszatérhet az eredeti nézethez.
+- A rácson megkeresheti és kiválaszthatja az országot/régiót a térképen való nagyításhoz. A **Kezdőlap** gomb megnyomásával visszatérhet az eredeti nézethez.
 - Egy **új** ügyfél első alkalommal vásárolta meg az ajánlatait a kiválasztott időtartományon belüli hónapban.
 
 ### <a name="growth-trend-charts"></a>Növekedési trendek diagramjai

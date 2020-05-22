@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636674"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744160"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -53,14 +53,6 @@ A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-
     > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
     Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
-
-* **Összeomlási memóriakép elemzése** <a name="windows-dump"></a> -A szoftverek összeomlása esetén az összeomlási memóriakép az összeomlás időpontjában rögzíti a memória egy részét.
-
-    Előfordulhat, hogy az összeomlást kártevő okozta, vagy kártevőt tartalmaz. A biztonsági termékek észlelésének elkerülése érdekében a kártevő szoftverek különböző formái egy fájl nélküli támadást használnak, amely elkerüli a lemezre írást, vagy titkosítja a lemezre írt összetevőket. Az ilyen típusú támadásokat nehéz felderíteni a hagyományos lemezes megközelítések használatával.
-
-    A memória-elemzés használatával azonban az ilyen típusú támadásokat is kiderítheti. Az összeomlási memóriakép memóriájának elemzésével a Security Center képes azonosítani a támadás által használt technikákat. Előfordulhat például, hogy a támadás megkísérli a szoftver biztonsági réseit kihasználni, hozzáférni a bizalmas adatokhoz, és titokban megmarad egy feltört gépen belül. Security Center ez a művelet a gazdagépek minimális teljesítményére gyakorolt hatásával működik.
-
-    Az összeomlási memóriakép elemzési riasztásával kapcsolatos részletekért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
 
 * **Fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – A végpontokat célzó, fájlokra kiterjedő támadások gyakoriak. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
 

@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681279"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739379"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>A szolgáltatás központi telepítésével kapcsolatos problémák elhárítása
 
@@ -71,7 +71,7 @@ Ezt a hibát a virtuális gép vagy munkaterület, illetve a felhasználó szám
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy a [szolgáltatás központi telepítési engedélyei](../automation-role-based-access-control.md#onboarding-permissions)megfelelőek, majd próbálja meg újra telepíteni a szolgáltatást. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , ellenőrizze, hogy rendelkezik-e engedéllyel ahhoz, hogy `Microsoft.OperationalInsights/workspaces/read` a virtuális gép engedélyezve legyen-e a munkaterületen.
+Győződjön meg arról, hogy a [szolgáltatás központi telepítési engedélyei](../automation-role-based-access-control.md#feature-setup-permissions)megfelelőek, majd próbálja meg újra telepíteni a szolgáltatást. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , ellenőrizze, hogy rendelkezik-e engedéllyel ahhoz, hogy `Microsoft.OperationalInsights/workspaces/read` a virtuális gép engedélyezve legyen-e a munkaterületen.
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Forgatókönyv: a szolgáltatások központi telepítése nem sikerül, a "nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz" üzenet jelenik meg.
 

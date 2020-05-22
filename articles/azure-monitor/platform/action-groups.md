@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801008"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738818"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -88,8 +88,8 @@ A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg ar
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
-### <a name="email-azure-resource-manager-role"></a>E-mail-Azure Resource Manager szerepkör
-E-mail küldése az előfizetés szerepkörének tagjainak. A rendszer csak az **Azure ad-felhasználók** számára küld e-mailt a szerepkörhöz. A rendszer nem küldi el az e-mailt az Azure AD-csoportoknak vagy egyszerű szolgáltatásoknak.
+### <a name="email-azure-resource-manager-role"></a>E-mail – Azure Resource Manager-szerepkör
+E-mail küldése az előfizetés szerepkörének tagjainak. A rendszer csak az **Azure ad-felhasználók** számára küld e-mailt a szerepkörhöz. Az Azure AD-csoportok és -szolgáltatásnevek nem kapják meg az e-mailt.
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
@@ -201,9 +201,9 @@ További fontos információk: az információk és az [SMS-riasztások viselked
 A műveleti csoportban korlátozott számú SMS-művelet lehet.
 
 > [!NOTE]
-> Ha az Azure Portal Művelettípus felhasználói felülete nem teszi lehetővé az országkód kiválasztását, akkor az SMS nem támogatott az Ön országában.  Ha az országkód nem érhető el, szavazzon arra, hogy az országot felveszi a [felhasználói hangon](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy harmadik féltől származó SMS-szolgáltatóra, amely támogatja az országot.  
+> Ha az Azure Portal műveleti csoport felhasználói felülete nem teszi lehetővé az ország/régió kódjának kiválasztását, akkor az országa/régiója nem támogatja az SMS-t.  Ha az ország/régió kódja nem érhető el, szavazással kiválaszthatja, hogy az országa/régiója a [felhasználó beszédében](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)van-e hozzáadva. Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy harmadik féltől származó SMS-szolgáltatóra, amely támogatja az országot/régiót.  
 
-A támogatott országok díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
+A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
   
 
 ### <a name="voice"></a>Hang
@@ -212,9 +212,9 @@ További fontos viselkedésért tekintse meg a [díjszabási információkat](./
 A műveleti csoportban korlátozott számú hangművelet lehet.
 
 > [!NOTE]
-> Ha az Azure Portal műveleti csoport felhasználói felülete nem teszi lehetővé az országkód kiválasztását, akkor a hanghívások nem támogatottak az országában. Ha az országkód nem érhető el, szavazzon arra, hogy az országot felveszi a [felhasználói hangon](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy külső gyártótól származó hanghívási szolgáltatóra, amely támogatja az országot.  
+> Ha az Azure Portal műveleti csoport felhasználói felülete nem teszi lehetővé az ország/régió kódjának kiválasztását, akkor a hanghívások nem támogatottak az országa/régiója számára. Ha az ország/régió kódja nem érhető el, szavazással kiválaszthatja, hogy az országa/régiója a [felhasználó beszédében](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)van-e hozzáadva.  Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy külső gyártótól származó hanghívási szolgáltatóra, amely támogatja az országot/régiót.  
 
-A támogatott országok díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
+A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
 
 ### <a name="webhook"></a>Webhook
 A webhookok a következő szabályok alapján lesznek újrapróbálkozva. A webhook hívása legfeljebb 2 alkalommal próbálkozik a következő HTTP-állapotkódok visszaadásakor: 408, 429, 503, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozás 100 másodperc után történik. Két hiba után a műveleti csoport 30 percig nem fogja hívni a végpontot. 

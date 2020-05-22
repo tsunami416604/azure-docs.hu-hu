@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 62b2738324f4c728cd4b5959c04c93649c156afb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f0c99899b647c677025dbb38480b4d7f64c24fa
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114448"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739988"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -85,7 +85,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 | resolvedDateTime | Az a dátum és idő, amikor a riasztási példány figyelési feltétele az UTC szerint **megoldva** értékre van állítva. Jelenleg csak metrikus riasztásokra alkalmazható.|
 | leírás | A riasztási szabályban meghatározott leírás. |
 |essentialsVersion| Az Essentials szakasz verziószáma.|
-|alertContextVersion | A `alertContext` szakasz verziószáma. |
+|alertContextVersion | A szakasz verziószáma `alertContext` . |
 
 **Mintavételezési értékek**
 ```json
@@ -149,7 +149,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ### <a name="log-alerts"></a>Naplóriasztások
 
 > [!NOTE]
-> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt a jelző `IncludeSearchResults`ellenőrzésével állapíthatja meg. Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
+> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt a jelző ellenőrzésével állapíthatja meg `IncludeSearchResults` . Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get)-val együtt. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

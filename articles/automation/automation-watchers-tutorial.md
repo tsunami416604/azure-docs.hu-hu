@@ -1,20 +1,26 @@
 ---
-title: Figyelő feladat létrehozása a Azure Automation fiókban
-description: Megtudhatja, hogyan hozhat létre figyelő feladatot a Azure Automation-fiókban egy mappában létrehozott új fájlok megtekintéséhez.
+title: Frissített fájlok nyomon követése Azure Automation figyelőkkel feladat
+description: Ez a cikk azt ismerteti, hogyan hozhat létre megfigyelő feladatot a Azure Automation fiókban egy mappában létrehozott új fájlok megtekintéséhez.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c41437773cf45e51e90dc55ad37e198c77f4373
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617348"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744147"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Azure Automation figyelőkkel kapcsolatos feladatok létrehozása a fájlok változásainak követéséhez egy helyi gépen
+# <a name="track-updated-files-with-a-watcher-task"></a>Frissített fájlok követése figyelő feladattal
 
 A Azure Automation egy megfigyelői feladattal keres eseményeket, és elindítja a műveleteket a PowerShell-runbookok használatával. A figyelő feladat két részből áll: a figyelőkből és a műveletből. A figyelők runbook a figyelő feladatban meghatározott időközönként futnak, és adatokat küld egy műveleti runbook. 
+
+> [!NOTE]
+> Az Azure China Vianet 21 nem támogatja a figyelők feladatait.
+
+> [!IMPORTANT]
+> Az 2020-as verziótól kezdődően a Azure Logic Apps használatával felügyelheti az eseményeket, ütemezhet ismétlődő feladatokat és aktiválhat műveleteket. Lásd: [ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezett és futtatásának Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
 Ez az oktatóanyag végigvezeti egy figyelő feladat létrehozásán, amely figyeli, hogy új fájlt adnak-e hozzá egy címtárhoz. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -34,9 +40,6 @@ Az oktatóanyag elvégzésének a következők a feltételei:
 * [Automation-fiók](automation-offering-get-started.md) a megfigyelő és a műveleti runbookok és a figyelő feladat tárolására.
 * Egy [hibrid runbook](automation-hybrid-runbook-worker.md) -feldolgozó, amelyben a figyelő tevékenység fut.
 * PowerShell-runbookok. A figyelők feladatai nem támogatják a PowerShell-munkafolyamatok runbookok.
-
-> [!NOTE]
-> Az Azure China nem támogatja a figyelők feladatait.
 
 ## <a name="import-a-watcher-runbook"></a>Figyelők runbook importálása
 
@@ -166,5 +169,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Kövesse ezt a hivatkozást, ha többet szeretne megtudni a saját runbook létrehozásáról.
 
 > [!div class="nextstepaction"]
-> [Az első PowerShell-runbook](automation-first-runbook-textual-powershell.md).
+> [PowerShell-runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)
 

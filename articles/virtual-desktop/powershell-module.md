@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195133"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743376"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>A PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -63,7 +63,12 @@ Ez közvetlenül a rendszergazdai hitelesítő adataihoz tartozó előfizetésbe
 Ha módosítani szeretné az alapértelmezett előfizetést a bejelentkezés után, futtassa a következő parancsmagot:
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+A listából a out-GridView parancsmag használatával is kiválaszthatja a következőt:
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 Amikor kiválasztja a használni kívánt új előfizetést, nem kell megadnia az előfizetés AZONOSÍTÓját a későbbiekben futtatott parancsmagokban. A következő parancsmag például az előfizetés-azonosító nélkül kérdez le egy adott munkamenet-gazdagépet:

@@ -16,12 +16,12 @@ ms.date: 04/24/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab2974cf95726f44641b4ac220c7ee871890ca56
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144501"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736841"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
 
@@ -32,7 +32,7 @@ Az ideális világban minden felhasználó a hozzáférési szabályzatokat köv
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Miért zárja ki a felhasználókat a szabályzatokból?
 
-Tegyük fel, hogy rendszergazdaként úgy dönt, hogy az [Azure ad feltételes hozzáférését](../conditional-access/overview.md) használja a többtényezős hitelesítés (MFA) megköveteléséhez, és korlátozza a hitelesítési kérelmeket bizonyos hálózatokra vagy eszközökre. Az üzembe helyezés megtervezése során kiderül, hogy nem minden felhasználó tud megfelelni ezekkel a követelményeknek. Előfordulhat például, hogy a távoli irodákból dolgozó felhasználók nem a belső hálózat részét képezik. Előfordulhat, hogy a nem támogatott eszközök használatával csatlakozó felhasználókat is el kell fogadnia, miközben az eszközök cseréjére várnak. Röviden, az üzleti igényeknek megfelelően a felhasználóknak be kell jelentkezniük, és el kell végezniük a munkájukat, hogy a feltételes hozzáférési szabályzatokból kizárják őket.
+Tegyük fel, hogy rendszergazdaként úgy dönt, hogy az [Azure ad feltételes hozzáférését](../conditional-access/concept-conditional-access-policy-common.md) használja a többtényezős hitelesítés (MFA) megköveteléséhez, és korlátozza a hitelesítési kérelmeket bizonyos hálózatokra vagy eszközökre. Az üzembe helyezés megtervezése során kiderül, hogy nem minden felhasználó tud megfelelni ezekkel a követelményeknek. Előfordulhat például, hogy a távoli irodákból dolgozó felhasználók nem a belső hálózat részét képezik. Előfordulhat, hogy a nem támogatott eszközök használatával csatlakozó felhasználókat is el kell fogadnia, miközben az eszközök cseréjére várnak. Röviden, az üzleti igényeknek megfelelően a felhasználóknak be kell jelentkezniük, és el kell végezniük a munkájukat, hogy a feltételes hozzáférési szabályzatokból kizárják őket.
 
 Egy másik példa, hogy a feltételes hozzáférés [nevesített helyeinek](../conditional-access/location-condition.md) használatával megadhatja azokat az országokat és régiókat, amelyekről nem kívánja engedélyezni a felhasználók számára a bérlőhöz való hozzáférést.
 

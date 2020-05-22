@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062659"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739664"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
@@ -103,7 +103,7 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
      Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
 
-A jelszó alaphelyzetbe állítása után egy visszaigazoló e-mailt kap, amely egy olyan fiókból származik, mint \<a "Microsoft az *your_organization*> nevében." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
+A jelszó alaphelyzetbe állítása után egy visszaigazoló e-mailt kap, amely egy olyan fiókból származik, mint a "Microsoft az \< *your_organization*> nevében." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
 
 ## <a name="how-to-change-your-password"></a>Jelszó módosítása
 
@@ -117,7 +117,7 @@ Akkor használja ezt a módszert, ha általában az Office-portálon keresztül 
 
 2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **fiók megtekintése**lehetőséget.
 
-3. Válassza a **biztonsági & adatvédelem** > **jelszava**lehetőséget.
+3. Válassza a **biztonsági & adatvédelem**  >  **jelszava**lehetőséget.
 
 4. Írja be a régi jelszót, hozza létre és erősítse meg az új jelszót, majd kattintson a **Submit (elküldés**) gombra.
 

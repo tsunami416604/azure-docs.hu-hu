@@ -4,12 +4,12 @@ description: A Azure Automation Azure Policy beépített szabályzat-definíció
 ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 707c84872244f74da6c791acdef2d348a595b7a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 31d27eb81ec78a3eb0f638f724022b93c917e140
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648391"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740756"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-automation"></a>Azure Policy beépített szabályzat-definíciók a Azure Automation
 

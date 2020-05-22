@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063951"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741567"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
@@ -44,7 +44,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd
 
 ### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-1. A számítógépén nyissa meg https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomea következőt:, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
+1. A számítógépén nyissa meg a következőt: https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
 
 2. A személyes Google-fiókra vonatkozó kétlépéses ellenőrzés bekapcsolásához kövesse az oldalon található lépéseket.
 
@@ -80,7 +80,7 @@ Adja hozzá a Facebook-fiókját a kéttényezős ellenőrzés bekapcsolásával
 
 ### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-1. A számítógépén nyissa meg a Facebookot, válassza a jobb felső sarokban lévő legördülő menüt, majd lépjen a **Beállítások** > **Biztonság és bejelentkezés**elemre.
+1. A számítógépén nyissa meg a Facebookot, válassza a jobb felső sarokban lévő legördülő menüt, majd lépjen a **Beállítások**  >  **Biztonság és bejelentkezés**elemre.
 
     Megjelenik a **Biztonság és bejelentkezés** lap.
 

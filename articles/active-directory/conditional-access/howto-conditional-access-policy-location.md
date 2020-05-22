@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b0f86447436b8bf08874daf472b1223bff7d0a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295191"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737656"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
-A feltételes hozzáférés helyének feltételével a felhasználó hálózati helye alapján vezérelheti a felhőalapú alkalmazásokhoz való hozzáférést. A hely feltételét általában arra használják, hogy blokkolja azokat az országokat, ahol a szervezet tudja, hogy a forgalom nem származik.
+A feltételes hozzáférés helyének feltételével a felhasználó hálózati helye alapján vezérelheti a felhőalapú alkalmazásokhoz való hozzáférést. A hely feltételét általában arra használják, hogy letiltsa a hozzáférést olyan országokból/régiókból, ahol a szervezet tudja, hogy a forgalom nem származik.
 
 ## <a name="define-locations"></a>Telephelyek definiálása
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés** > **elnevezett helyeinek nevét**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **elnevezett helyeinek nevét**.
 1. Válassza az **új hely**lehetőséget.
 1. Adjon nevet a helynek.
 1. Válassza az **IP-címtartományok** lehetőséget, ha ismeri az adott helyet vagy **országokat vagy régiókat**alkotó, külsőleg elérhető IPv4-címtartományt.
@@ -38,20 +38,20 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek** > **válassza a** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
-1. A **feltételek** > **helye**alatt.
+1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
+1. A **feltételek**  >  **helye**alatt.
    1. **Konfigurálás** beállítása **Igen** értékre
    1. **Include** **Kiválasztott helyszínek** kijelölése
    1. Válassza ki a szervezet számára létrehozott tiltott helyet.
-   1. Kattintson a **kiválasztás** > **Done** > **Done**kész lehetőségre.
-1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
-1. A **hozzáférés-vezérlések** > **blokk**alatt, és válassza a **kiválasztás**lehetőséget.
+   1. Kattintson a **kiválasztás**kész lehetőségre  >  **Done**  >  **Done**.
+1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa **Configure** az **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlések**  >  **blokk**alatt, és válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

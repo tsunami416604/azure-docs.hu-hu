@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792887"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738285"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Kifizetési számla és űrlapok beállítása
 
@@ -36,13 +36,13 @@ Miután beállította a fiókját, két dolgot kell tennie, mielőtt az ajánlat
 
 Először létre kell hoznia egy adózási profilt, és hozzá kell rendelnie azokat a programokhoz, amelyekben részt vesz a programban. A kereskedelmi piactéren a következő lépések végrehajtásával hozhatja létre az *adózási profilt* :
 
-- Adja meg a tartózkodási országát és az állampolgárságot.
+- Adja meg az ország/régió lakóhelyét és állampolgárságát.
 - Töltse ki a megfelelő adózási űrlapokat.
 
 A partner Centerben elektronikus formában is elvégezheti és elküldheti az adó-formanyomtatványokat; a legtöbb esetben nem kell űrlapokat kinyomtatnia és e-maileket felvennie.
 
 > [!IMPORTANT]
-> A különböző országok és régiók esetében eltérő az adózási követelmények. Az adó összegének pontos összege attól függ, hogy milyen országokban és régiókban vásárolja meg az ajánlatát. Tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560) , amely alapján megállapíthatja, hogy mely országok esetében a Microsoft az Ön nevében kiadja az értékesítési és használati adót. Más országokban, attól függően, hogy hol van regisztrálva, előfordulhat, hogy közvetlenül a helyi adózási hatóságnak kell elvégeznie az értékesítést és a használati adót. Emellett az alkalmazás értékesítésének bevétele a kapott bevételként is adóköteles lehet. Javasoljuk, hogy lépjen kapcsolatba az országa vagy régiója illetékes hatóságával, amely a legjobban segít meghatározni a kereskedelmi Marketplace-tevékenységek megfelelő adózási adatait.
+> A különböző országok és régiók esetében eltérő az adózási követelmények. Az adó összegének pontos összege attól függ, hogy milyen országokban és régiókban vásárolja meg az ajánlatát. Tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560) , amely alapján megállapíthatja, hogy mely országokra/régiókra vonatkozik a Microsoft értékesítési és használati adó az Ön nevében. Más országokban/régiókban, attól függően, hogy hol van regisztrálva, előfordulhat, hogy az értékesítési és használati adót közvetlenül a helyi adózási szolgáltatónak kell elvégeznie. Emellett az alkalmazás értékesítésének bevétele a kapott bevételként is adóköteles lehet. Javasoljuk, hogy lépjen kapcsolatba az országa vagy régiója illetékes hatóságával, amely a legjobban segít meghatározni a kereskedelmi Marketplace-tevékenységek megfelelő adózási adatait.
 
 1. A [partner Centerben](https://partner.microsoft.com/dashboard)válassza a **Fiókbeállítások** ikont a jobb felső sarokban, majd válassza a **fejlesztői beállítások**elemet.
 
@@ -54,20 +54,20 @@ A partner Centerben elektronikus formában is elvégezheti és elküldheti az ad
 
 5. Az adózási adatok szerkesztéséhez kattintson a **Szerkesztés** gombra.
 
-6. Válassza ki a megfelelő választógombot, és ha a rendszer kéri, válassza ki az országot. Ez a lépés határozza meg a Microsoft üzleti entitást, amelyet a rendszer a fiókon kifizetéshez használ.
+6. Válassza ki a megfelelő választógombot, és ha a rendszer kéri, válassza ki az országot/régiót. Ez a lépés határozza meg a Microsoft üzleti entitást, amelyet a rendszer a fiókon kifizetéshez használ.
 
-7. A 6. lépésben kiválasztott beállításoktól függően a rendszer kérni fogja, hogy adja meg az országa számára szükséges adózási adatokat.
+7. A 6. lépésben kiválasztott beállításoktól függően a rendszer kérni fogja, hogy adja meg az országa/régiója számára szükséges adózási adatokat.
 
    > [!NOTE]
-   > A tartózkodási helytől vagy az állampolgárságtól függetlenül, ki kell töltenie Egyesült Államok a kereskedelmi piactéren elérhető ajánlatokat vagy kiegészítőket. Azok a közzétevők, akik megfelelnek bizonyos Egyesült Államok tartózkodási követelményeknek, ki kell tölteniük egy IRS-t (9). A Egyesült Államokon kívüli többi közzétevőnek ki kell töltenie egy IRS-8 űrlapot. Ezeket az űrlapokat online is kitöltheti az adózási profil befejezése után.
+   > A tartózkodási hely vagy az állampolgárság országa/régiója tekintetében ki kell töltenie Egyesült Államoki adózási űrlapokat, hogy bármely ajánlatot vagy bővítményt a kereskedelmi piactéren értékesítsen. Azok a közzétevők, akik megfelelnek bizonyos Egyesült Államok tartózkodási követelményeknek, ki kell tölteniük egy IRS-t (9). A Egyesült Államokon kívüli többi közzétevőnek ki kell töltenie egy IRS-8 űrlapot. Ezeket az űrlapokat online is kitöltheti az adózási profil befejezése után.
 
 ### <a name="withholding-rates"></a>Visszatartási díjak
 
-Az adózási űrlapokon beküldött adatok meghatározzák a megfelelő adó-visszatartási arányt. A visszatartási arány csak az Egyesült Államokba helyezett értékesítésekre vonatkozik; a nem USA-beli helyszínekre irányuló értékesítések nem tartoznak a forrásadó alá. A visszatartási arányok eltérőek, de a legtöbb közzétevőnél a Egyesült Államokon kívül regisztrálva az alapértelmezett érték 30%. Ha az Ön országa egy jövedelemadó-szerződéssel egyetért a Egyesült Államokával, csökkentheti ezt a mértéket.
+Az adózási űrlapokon beküldött adatok meghatározzák a megfelelő adó-visszatartási arányt. A visszatartási arány csak az Egyesült Államokba helyezett értékesítésekre vonatkozik; a nem USA-beli helyszínekre irányuló értékesítések nem tartoznak a forrásadó alá. A visszatartási arányok eltérőek, de a legtöbb közzétevőnél a Egyesült Államokon kívül regisztrálva az alapértelmezett érték 30%. Ha az országa/régiója egyetért a jövedelemadó-szerződéssel, akkor csökkentheti ezt a mértéket, ha a Egyesült Államok.
 
 ### <a name="tax-treaty-benefits"></a>Adózási szerződés előnyei
 
-Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződés előnyeinek kihasználására. Ezek az előnyök országonként változnak, és lehetővé tehetik, hogy csökkentse a kereskedelmi piactér által visszaadott adók mennyiségét. Az adózási szerződés előnyeit a 8BEN űrlap II. részének befejezésével veheti igénybe. Javasoljuk, hogy az Ön országában vagy régiójában lévő megfelelő erőforrásokkal kommunikáljon annak megállapításához, hogy ezek az előnyök Önre vonatkoznak-e.
+Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződés előnyeinek kihasználására. Ezek az előnyök országonként vagy régiónként eltérőek, és lehetővé tehetik, hogy csökkentse a kereskedelmi piactér által visszaadott adók mennyiségét. Az adózási szerződés előnyeit a 8BEN űrlap II. részének befejezésével veheti igénybe. Javasoljuk, hogy az Ön országában vagy régiójában lévő megfelelő erőforrásokkal kommunikáljon annak megállapításához, hogy ezek az előnyök Önre vonatkoznak-e.
 
 > [!NOTE]
 > Egy Egyesült Államok egyedi adófizető-azonosító szám (vagy ITIN) nem szükséges a Microsofttól érkező fizetések fogadására, vagy az adó-szerződésből származó előnyök igénylésére.

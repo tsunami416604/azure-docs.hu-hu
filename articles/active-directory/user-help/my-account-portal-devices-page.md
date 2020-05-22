@@ -8,15 +8,15 @@ ms.reviewer: jpettere
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625833"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735956"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
 
@@ -31,7 +31,7 @@ A **saját fiók** portál **eszközök** lapján kezelheti a munkahelyi vagy is
 
 ## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** (https://myaccount.microsoft.com/) oldal) lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** ( https://myaccount.microsoft.com/) oldal) lapot.
 
 2. Válassza az **eszközök** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza az eszközök **blokk eszközök** **kezelése** hivatkozását.
 

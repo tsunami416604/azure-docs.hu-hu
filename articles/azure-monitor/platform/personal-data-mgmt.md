@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248748"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740450"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és Application Insights tárolt személyes adatszolgáltatásokhoz
 
@@ -101,7 +101,7 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 
 #### <a name="log-data"></a>Naplóadatok
 
-* Törlés [után](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza. 
+* Törlés [után](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza. 
 * Kiürítési állapot beolvasása – a törlés utáni hívás egy "x-MS-status-Location" fejlécet ad vissza, amely tartalmaz egy URL-címet, amelyet meghívhat a kiürítő API állapotának meghatározásához. Például:
 
     ```

@@ -7,14 +7,14 @@ author: axisc
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 05/20/2020
 ms.author: aschhab
-ms.openlocfilehash: 227dfaff211eb60c5c2b25b5c76ecc82b6ce3edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2f3c8113fb89a41b1a22567b4e5ca0085353689
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240783"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736041"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
@@ -99,6 +99,8 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Aktív kapcsolatai|A névtérben található aktív kapcsolatok száma, valamint az entitások.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Lezárt kapcsolatok |A lezárt kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
 
@@ -162,7 +164,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     8. Az **e-mail/SMS/leküldés/hang** oldalon hajtsa végre a következő műveleteket:
         1. Válassza az **e-mail**lehetőséget. 
         2. Adja meg az **e-mail-címet**. 
-        3. Kattintson az **OK** gombra.
+        3. Válassza az **OK** lehetőséget.
 
             ![Riasztás részletei](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. A **műveleti csoport hozzáadása** lapon kattintson **az OK gombra**. 

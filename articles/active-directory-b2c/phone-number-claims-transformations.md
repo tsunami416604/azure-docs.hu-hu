@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183931"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738761"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Telefonszám-jogcímek átalakításának meghatározása Azure AD B2C
 
@@ -28,14 +28,14 @@ Ez a cikk a Azure Active Directory B2C (Azure AD B2C) identitás-keretrendszer s
 
 ## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-`phoneNumber` Az adattípust `string` adattípusba alakítja.
+Az `phoneNumber` adattípust `string` adattípusba alakítja.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Telefonszám | Telefonszám |  A ClaimType karakterlánccá alakítja át. |
 | OutputClaim | phoneNumberString | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
 
-Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következő értékkel rendelkező mobil jogcímre `phoneNumber` lesz konvertálva:. `string`
+Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következő `phoneNumber` értékkel rendelkező mobil jogcímre lesz konvertálva: `string` .
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -60,10 +60,10 @@ Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következ�
 
 Ez a jogcím-átalakítás érvényesíti a telefonszám formátumát. Ha érvényes formátumú, módosítsa az Azure AD B2C által használt szabványos formátumra. Ha a megadott telefonszám formátuma érvénytelen, hibaüzenetet kap.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumberString | sztring |  A telefonszámhoz tartozó karakterlánc-jogcím. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie a kezdő "+" és az országkód értékének. Ha a bemeneti `country` jogcímet adja meg, a telefonszám helyi formátumban van megadva (az országkód nélkül). |
-| InputClaim | ország | sztring | Választható A ISO3166 (kétbetűs ISO-3166 országkód) a telefonszám országkód szerinti jogcíme. |
+| InputClaim | phoneNumberString | sztring |  A telefonszámhoz tartozó karakterlánc-jogcím. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. Ha a bemeneti jogcímet adja `country` meg, a telefonszám helyi formátumban van megadva (az ország/régió kódja nélkül). |
+| InputClaim | ország | sztring | Választható A ISO3166 formátumú (kétbetűs ISO-3166 ország/régió kódja) típusú telefonszám ország/régió kódjához tartozó jogcíme. |
 | OutputClaim | outputClaim | Telefonszám | A jogcímek átalakításának eredménye. |
 
 A **ConvertStringToPhoneNumberClaim** jogcímek átalakítását a rendszer mindig egy [önérvényesített technikai profil](self-asserted-technical-profile.md) vagy [megjelenítési vezérlő](display-controls.md)által hívott [érvényesítési műszaki profilból](validation-technical-profile.md) hajtja végre. A **UserMessageIfClaimsTransformationInvalidPhoneNumber** önérvényesített technikai profil metaadatai a felhasználónak megjelenített hibaüzenetet vezérlik.
@@ -113,24 +113,24 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-Ezzel kinyeri az országkód és a nemzeti számot a bemeneti jogcímen, és opcionálisan kivételt jelez, ha a megadott telefonszám érvénytelen.
+Ezzel kibontja az ország/régió kódját és a nemzeti számot a bemeneti jogcímen, és opcionálisan kivételt jelez, ha a megadott telefonszám érvénytelen.
 
-| Elem | TransformationClaimType | Adattípus | Megjegyzések |
+| Item | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Telefonszám | sztring | A telefonszám karakterlánc-jogcíme. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie a kezdő "+" és az országkód értékének. |
+| InputClaim | Telefonszám | sztring | A telefonszám karakterlánc-jogcíme. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. |
 | InputParameter | throwExceptionOnFailure | logikai | Választható Egy paraméter, amely azt jelzi, hogy a rendszer kivételt jelez-e, ha a telefonszám érvénytelen. Az alapértelmezett érték false (hamis). |
-| InputParameter | countryCodeType | sztring | Választható Egy paraméter, amely az országkód típusát jelzi a kimeneti jogcímben. Az elérhető értékek a **CallingCode** (az ország nemzetközi hívási kódja, például + 1) vagy a **ISO3166** (a kétbetűs ISO-3166 országkód). |
+| InputParameter | countryCodeType | sztring | Választható Egy paraméter, amely az ország/régió kódjának típusát jelzi a kimeneti jogcímek között. Az elérhető értékek a következők: **CallingCode** (egy ország/régió nemzetközi hívási kódja, például + 1) vagy **ISO3166** (kétbetűs ISO-3166 ország/régió kódja). |
 | OutputClaim | nationalNumber | sztring | A telefonszám országos számára vonatkozó jogcímek száma. |
-| OutputClaim | Országhívószám | sztring | A telefonszám országkódot megadó karakterlánc-jogcím. |
+| OutputClaim | Országhívószám | sztring | A telefonszám ország-/régiókódjának karakterlánc-jogcíme. |
 
 
 Ha a **GetNationalNumberAndCountryCodeFromPhoneNumberString** jogcím-átalakítás olyan [érvényesítési műszaki profilból](validation-technical-profile.md) lett végrehajtva, amelyet egy [önérvényesített technikai profil](self-asserted-technical-profile.md) vagy egy [megjelenítési vezérlő művelet hív meg](display-controls.md#display-control-actions), akkor a **UserMessageIfPhoneNumberParseFailure** önérvényesített technikai profil metaadatai a felhasználónak megjelenített hibaüzenetet vezérlik.
 
 ![A hibaüzenet végrehajtási útvonalának ábrája](./media/phone-authentication/assert-execution.png)
 
-A jogcímek átalakításával teljes telefonszámot oszthat meg az országkód és a nemzeti szám szerint. Ha a megadott telefonszám érvénytelen, dönthet úgy, hogy eldönti, hogy van-e hibaüzenet.
+A jogcímek átalakításával teljes telefonszámot oszthat meg az ország/régió kódja és a nemzeti szám szerint. Ha a megadott telefonszám érvénytelen, dönthet úgy, hogy eldönti, hogy van-e hibaüzenet.
 
-A következő példában a telefonszámot a nemzeti szám és az országkód alapján kell megosztani. Ha a telefonszám érvényes, a telefonszámot a rendszer felülbírálja a nemzeti szám alapján. Ha a telefonszám érvénytelen, a rendszer nem dobja el a kivételt, és a telefonszám továbbra is az eredeti értékkel rendelkezik.
+A következő példában a telefonszámot a nemzeti szám és az ország/régió kódja között próbálja meg megosztani. Ha a telefonszám érvényes, a telefonszámot a rendszer felülbírálja a nemzeti szám alapján. Ha a telefonszám érvénytelen, a rendszer nem dobja el a kivételt, és a telefonszám továbbra is az eredeti értékkel rendelkezik.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">

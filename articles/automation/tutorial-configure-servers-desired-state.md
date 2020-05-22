@@ -1,18 +1,18 @@
 ---
-title: Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az Azure Automation használatával
-description: Oktatóanyag – kiszolgálói konfigurációk kezelése Azure Automation állapot-konfigurációval
+title: Gépek konfigurálása a kívánt állapotba Azure Automation
+description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a gépeket a kívánt állapotba Azure Automation állapot konfigurációjának használatával.
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: a02c664ddf0802ad5ac306f98de14b7c0d5d7271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678712"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735909"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Kiszolgálók konfigurálása a kívánt állapotra és a drift kezelése
+# <a name="configure-machines-to-a-desired-state"></a>Gépek célállapotba történő konfigurálása
 
 Azure Automation állapot-konfiguráció lehetővé teszi a kiszolgálók konfigurációjának megadását, és biztosítja, hogy ezek a kiszolgálók a megadott állapotban legyenek az idő múlásával.
 
@@ -24,9 +24,6 @@ Azure Automation állapot-konfiguráció lehetővé teszi a kiszolgálók konfig
 > - Felügyelt csomópont megfelelőségi állapotának ellenőrzése
 
 Ebben az oktatóanyagban egy egyszerű DSC- [konfigurációt](/powershell/scripting/dsc/configurations/configurations) használunk, amely biztosítja, hogy az IIS telepítve legyen a virtuális gépen.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,7 +68,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> A fejlettebb forgatókönyvek esetében, ahol több, a DSC-erőforrásokat biztosító modult kell importálnia, győződjön meg arról, `Import-DscResource` hogy minden modul rendelkezik egyedi vonallal a konfigurációban.
+> A fejlettebb forgatókönyvek esetében, ahol több, a DSC-erőforrásokat biztosító modult kell importálnia, győződjön meg arról, hogy minden modul rendelkezik egyedi `Import-DscResource` vonallal a konfigurációban.
 
 Hívja meg az [import-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) parancsmagot, hogy feltöltse a konfigurációt az Automation-fiókjába.
 
@@ -83,7 +80,7 @@ Hívja meg az [import-AzAutomationDscConfiguration](https://docs.microsoft.com/p
 
 A DSC-konfigurációt egy csomópont-konfigurációba kell lefordítani, mielőtt hozzá lehetne rendelni egy csomóponthoz. Lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations).
 
-Hívja meg a [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) parancsmagot, hogy `TestConfig` a konfigurációt egy Automation- `TestConfig.WebServer` fiókban elnevezett csomópont-konfigurációba fordítsa.
+Hívja meg a [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) parancsmagot, hogy a `TestConfig` konfigurációt egy Automation- `TestConfig.WebServer` fiókban elnevezett csomópont-konfigurációba fordítsa.
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -101,13 +98,13 @@ Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 ### <a name="specify-configuration-mode-settings"></a>Konfigurációs mód beállításainak megadása
 
-A [Register-AzAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) parancsmag használatával regisztrálja a virtuális gépet felügyelt csomópontként, és határozza meg a konfigurációs tulajdonságokat. Megadhatja például, hogy a gép állapota csak egyszer legyen alkalmazva a `ApplyOnly` `ConfigurationMode` tulajdonság értékének megadásával. Az állapot-konfiguráció nem próbálja alkalmazni a konfigurációt a kezdeti vizsgálat után.
+A [Register-AzAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) parancsmag használatával regisztrálja a virtuális gépet felügyelt csomópontként, és határozza meg a konfigurációs tulajdonságokat. Megadhatja például, hogy a gép állapota csak egyszer legyen alkalmazva a tulajdonság értékének megadásával `ApplyOnly` `ConfigurationMode` . Az állapot-konfiguráció nem próbálja alkalmazni a konfigurációt a kezdeti vizsgálat után.
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
 ```
 
-Azt is megadhatja, hogy a DSC milyen gyakran ellenőrizze a konfigurációs `ConfigurationModeFrequencyMins` állapotot a tulajdonság használatával. A DSC konfigurációs beállításaival kapcsolatos további információkért lásd: [a helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Azt is megadhatja, hogy a DSC milyen gyakran ellenőrizze a konfigurációs állapotot a `ConfigurationModeFrequencyMins` tulajdonság használatával. A DSC konfigurációs beállításaival kapcsolatos további információkért lásd: [a helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ```powershell
 # Run a DSC check every 60 minutes
@@ -126,7 +123,7 @@ $node = Get-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Automation
 Set-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-Ez hozzárendeli a nevű `TestConfig.WebServer` csomópont-konfigurációt a regisztrált DSC `DscVm`-csomóponthoz. Alapértelmezés szerint a DSC-csomópont 30 percenként be van jelölve a csomópont-konfigurációnak való megfeleléshez. További információ a megfelelőségi ellenőrzési időköz módosításáról: [a helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaConfig).
+Ez hozzárendeli a nevű csomópont-konfigurációt `TestConfig.WebServer` a regisztrált DSC-csomóponthoz `DscVm` . Alapértelmezés szerint a DSC-csomópont 30 percenként be van jelölve a csomópont-konfigurációnak való megfeleléshez. További információ a megfelelőségi ellenőrzési időköz módosításáról: [a helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Felügyelt csomópont megfelelőségi állapotának ellenőrzése
 
@@ -166,9 +163,9 @@ Ha meg szeretné szüntetni a csomópont regisztrációját Azure Automation ál
 
 ## <a name="next-steps"></a>További lépések
 
-- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
-- A csomópontok bevezetésének megismeréséhez tekintse meg a [Azure Automation állapot-konfigurációval történő felügyelethez szükséges bevezetési gépeket](automation-dsc-onboarding.md).
-- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation).
-- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfiguráció és a csokoládés használatával](automation-dsc-cd-chocolatey.md) .
+* [Ismerkedés a Azure Automation állapot-konfigurációval](automation-dsc-getting-started.md)
+* [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md)
+* [Konfigurációk fordítása Azure Automation állapot-konfigurációban](automation-dsc-compile.md)
+* [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
+* [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
+- [Folyamatos üzembe helyezés beállítása a chocolatey-vel](automation-dsc-cd-chocolatey.md)

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 6b0977628f7c3d971804d8597f42425608028081
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3350ff4bc810666f7b772607c2983d86902f5ffc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448454"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744044"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a Pythonban
 
@@ -46,13 +46,13 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-the-parameters-for-the-request"></a>A kérelem paramétereinek létrehozása
 
-1. Hozzon létre egy új `text` szótárt a kulcs és a szöveg értékként.
+1. Hozzon létre egy új szótárt `text` a kulcs és a szöveg értékként.
 
     ```python
     data = {'text': example_text}
     ```
 
-2. Adja hozzá a kérelem paramétereit. Adja hozzá a piac kódját `mkt=`a következő után:. A piaci kód az az ország, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő `&mode=`után:. A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
+2. Adja hozzá a kérelem paramétereit. Adja hozzá a piac kódját a következő után: `mkt=` . A piaci kód az az ország/régió, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő után: `&mode=` . A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
 
     ```python
     params = {
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
         }
     ```
 
-3. Adjon hozzá `Content-Type` egy fejlécet és egy előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+3. Adjon hozzá egy `Content-Type` fejlécet és egy előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```python
     headers = {
@@ -86,7 +86,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     ```
 
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Ha a parancssort használja, futtassa az alábbi parancsot az alkalmazás futtatásához.
 

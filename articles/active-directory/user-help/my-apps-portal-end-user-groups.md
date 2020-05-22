@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022296"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741980"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>A csoportok adatainak frissítése a saját alkalmazások portálon
 
@@ -40,7 +40,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-2. Nyissa meg a webböngészőjét https://myapps.microsoft.com, és lépjen a webhelyre, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com.
+2. Nyissa meg a webböngészőjét, és lépjen a webhelyre https://myapps.microsoft.com , vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -98,7 +98,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
 A csoport létrehozása után szerkesztheti annak részleteit, beleértve a meglévő információk frissítését is.
 
-1. Jelölje ki a **csoportok** lapon a szerkeszteni kívánt csoportot, majd válassza a **részletek szerkesztése** lehetőséget a * &lt;group_name&gt; * oldalon.
+1. Jelölje ki a **csoportok** lapon a szerkeszteni kívánt csoportot, majd válassza a **részletek szerkesztése** lehetőséget a * &lt; &gt; group_name* oldalon.
 
     Megjelenik a **részletek szerkesztése** mező, és frissítheti a csoport első létrehozásakor hozzáadott adatokat.
 
@@ -108,7 +108,7 @@ A csoport létrehozása után szerkesztheti annak részleteit, beleértve a megl
 
 Hozzáadhat vagy eltávolíthat tagokat bármelyik saját csoport számára.
 
-1. Válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat, majd válassza ki **+** a * &lt;group_name&gt; * oldalon.
+1. Válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagokat, majd válassza ki a **+** * &lt; group_name &gt; * oldalon.
 
     ![Csoporttag hozzáadása, a + jel kiemelve](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -118,7 +118,7 @@ Hozzáadhat vagy eltávolíthat tagokat bármelyik saját csoport számára.
 
     A rendszer meghívót küld az új tagnak a szervezet alkalmazásai elérésének megkezdéséhez.
 
-3. Ha tévedésből adta hozzá a tagot, vagy ha egy tag elhagyta a szervezetet, akkor a tag **eltávolításához** válassza a tag neve melletti tag eltávolítása lehetőséget a * &lt;group_name&gt; * oldalon.
+3. Ha tévedésből adta hozzá a tagot, vagy ha egy tag elhagyta a szervezetet, akkor a tag **eltávolításához** válassza a tag neve melletti tag eltávolítása lehetőséget a * &lt; group_name &gt; * oldalon.
 
     ![Tag eltávolítása az eltávolítási hivatkozás kiemelésével](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -138,7 +138,7 @@ Ha a szervezete engedélyezi, megújíthat egy Office 365-csoportot, kiterjeszth
 
 Bármikor törölheti a saját csoportjait. Ha azonban véletlenül töröl egy csoportot, létre kell hoznia, majd újra hozzá kell adnia a tagokat.
 
-1. Válassza ki a véglegesen törölni kívánt csoportot, majd válassza a **csoport törlése** elemet a * &lt;group_name&gt; * oldalon.
+1. Válassza ki a véglegesen törölni kívánt csoportot, majd válassza a **csoport törlése** elemet a * &lt; group_name &gt; * oldalon.
 
     ![<Group_name> oldalon a csoport törlése hivatkozás kiemelve](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 

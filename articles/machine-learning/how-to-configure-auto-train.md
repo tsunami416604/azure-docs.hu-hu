@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c183c179200738566d0794ba23582f16068013b6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722847"
+ms.locfileid: "83736126"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -253,9 +253,12 @@ Az Ensemble-modellek alapértelmezés szerint engedélyezve vannak, és az autom
 
 Több alapértelmezett argumentum is megadható, mint `kwargs` egy `AutoMLConfig` objektumban az alapértelmezett Ensemble-viselkedés megváltoztatásához.
 
-* `ensemble_download_models_timeout_sec`: A VotingEnsemble és a StackEnsemble modell létrehozásakor a rendszer letölti az előző gyermekekről származó, több felszerelt modelleket. Ha ezt a hibát tapasztalja: `AutoMLEnsembleException: Could not find any models for running ensembling` , akkor előfordulhat, hogy több időt kell megadnia a modellek letöltéséhez. Az alapértelmezett érték 300 másodperc, ha párhuzamosan tölti le ezeket a modelleket, és nincs maximális időkorlát. A paramétert a 300 másodpercnél nagyobb értékre kell beállítani, ha több idő szükséges. **Megjegyzés**: ha elérte az időtúllépést, és a rendszer letölti a modelleket, akkor a ensembling annyi, a letöltött modellel rendelkező modellt használ (nem szükséges, hogy az adott időkorláton belül az összes modellt le kell tölteni.)
+* `ensemble_download_models_timeout_sec`: A **VotingEnsemble** és a **StackEnsemble** modell létrehozásakor a rendszer letölti az előző gyermekekről származó, több felszerelt modelleket. Ha ezt a hibát tapasztalja: `AutoMLEnsembleException: Could not find any models for running ensembling` , akkor előfordulhat, hogy több időt kell megadnia a modellek letöltéséhez. Az alapértelmezett érték 300 másodperc, ha párhuzamosan tölti le ezeket a modelleket, és nincs maximális időkorlát. A paramétert a 300 másodpercnél nagyobb értékre kell beállítani, ha több idő szükséges. 
 
-A következő paraméterek csak a StackEnsemble-modellekre vonatkoznak: 
+  > [!NOTE]
+  >  Ha elérte az időtúllépést, és a rendszer letölti a modelleket, akkor a ensembling a letöltött számú modellel együtt folytatja. Nem szükséges, hogy az összes modellt le kell tölteni az adott időtúllépésen belüli befejezéshez.
+
+A következő paraméterek csak a **StackEnsemble** -modellekre vonatkoznak: 
 
 * `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes heterogén modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók a `LogisticRegression` besorolási feladatokhoz (vagy ha a többszörös `LogisticRegressionCV` ellenőrzés engedélyezve van), valamint `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` Ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet:,,,,, `LogisticRegression` `LogisticRegressionCV` `LightGBMClassifier` `ElasticNet` `ElasticNetCV` `LightGBMRegressor` vagy `LinearRegression` .
 
@@ -534,7 +537,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 
 Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

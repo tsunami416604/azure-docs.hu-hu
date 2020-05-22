@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871220"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737503"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -284,7 +284,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: érvényes azonosító értékek/forrás
 
-| Forrás | ID (Azonosító) | Leírás |
+| Forrás | ID | Leírás |
 |-----|-----|-----|
 | Felhasználó | surname | Család neve |
 | Felhasználó | givenname | utónév; |
@@ -319,7 +319,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | extensionattribute14 | Kiterjesztési attribútum 14 |
 | Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
 | Felhasználó | othermail | Egyéb E-mail |
-| Felhasználó | ország | Ország |
+| Felhasználó | ország | Ország/régió |
 | Felhasználó | city | Város |
 | Felhasználó | state | Állapot |
 | Felhasználó | beosztás | Beosztás |
@@ -327,8 +327,8 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | kifogásolta | ObjectID |
-| alkalmazás, erőforrás, célközönség | címkét | Egyszerű szolgáltatásnév címkéje |
-| Vállalat | tenantcountry | Bérlő országa |
+| alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
+| Vállalat | tenantcountry | Bérlő országa/régiója |
 
 **TransformationID:** A TransformationID elemet csak akkor kell megadni, ha a forrásoldali elem "átalakítás" értékre van állítva.
 
@@ -360,8 +360,8 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 |TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
-|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "homokozó", elválasztó: "." eredmény a következő outputClaim:foo@bar.com.sandbox""|
-|ExtractMailPrefix|Levelezés|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: "foo@bar.com" eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
+|Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: " foo@bar.com ", karakterlánc2: "homokozó", elválasztó: "." eredmény a következő outputClaim: " foo@bar.com.sandbox "|
+|ExtractMailPrefix|Levelezés|outputClaim|Egy e-mail-cím helyi részének kibontása. Például: mail: " foo@bar.com " eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -384,7 +384,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: az SAML-NameID adatforrásként engedélyezett attribútumai
 
-|Forrás|ID (Azonosító)|Leírás|
+|Forrás|ID|Leírás|
 |-----|-----|-----|
 | Felhasználó | Levelezés|E-mail-cím|
 | Felhasználó | userPrincipalName|Felhasználó egyszerű neve|
@@ -417,7 +417,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 A jogcím-hozzárendelési szabályzat érvénybe léptetéséhez egyéni aláíró kulcsot kell rendelni az egyszerű szolgáltatásnév objektumhoz. Ez biztosítja, hogy a jogkivonatokat a jogcím-hozzárendelési házirend létrehozója módosította, és megvédi az alkalmazásokat a kártékony szereplőkkel létrehozott jogcímek leképezési házirendjeitől. Egyéni aláíró kulcs hozzáadásához a Azure PowerShell parancsmaggal `new-azureadapplicationkeycredential` hozhat létre szimmetrikus kulcsú hitelesítő adatokat az alkalmazás objektumához. További információ erről a Azure PowerShell parancsmagról: [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
-Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, `appid={client_id}` a jogkivonat-aláíró kulcsokat az [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
+Azok az alkalmazások, amelyeken engedélyezve van a jogcímek leképezése, a jogkivonat-aláíró kulcsokat az `appid={client_id}` [OpenID Connect metaadat-kéréseinek](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)hozzáfűzésével kell ellenőrizni. Alább látható az OpenID Connect metaadat-dokumentum formátuma, amelyet használni kell: 
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -478,7 +478,7 @@ Ebben a példában egy olyan házirendet hoz létre, amely eltávolítja az alap
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Példa: hozzon létre és rendeljen hozzá egy szabályzatot, amely tartalmazza az Alkalmazottkód és a TenantCountry az egyszerű szolgáltatás számára kiállított jogkivonatokban lévő jogcímeket.
 
-Ebben a példában egy olyan házirendet hoz létre, amely hozzáadja az Alkalmazottkód és a TenantCountry elemet a társított egyszerű szolgáltatások számára kiállított jogkivonatokhoz. Az Alkalmazottkód az SAML-jogkivonatokban és a JWTs a név jogcím típusaként van kibocsátva. Az TenantCountry az SAML-jogkivonatokban és az JWTs-ban is az ország jogcímei típusként van kibocsátva. Ebben a példában továbbra is a jogkivonatokban beállított alapszintű jogcímeket fogjuk használni.
+Ebben a példában egy olyan házirendet hoz létre, amely hozzáadja az Alkalmazottkód és a TenantCountry elemet a társított egyszerű szolgáltatások számára kiállított jogkivonatokhoz. Az Alkalmazottkód az SAML-jogkivonatokban és a JWTs a név jogcím típusaként van kibocsátva. A TenantCountry az SAML-jogkivonatokban és az JWTs-ben az ország/régió jogcímek típusaként van kibocsátva. Ebben a példában továbbra is a jogkivonatokban beállított alapszintű jogcímeket fogjuk használni.
 
 1. Hozzon létre egy jogcím-hozzárendelési szabályzatot. Ez a szabályzat meghatározott egyszerű szolgáltatásokhoz kapcsolódik, és hozzáadja az Alkalmazottkód és a TenantCountry jogcímeket a jogkivonatokhoz.
    1. A szabályzat létrehozásához futtassa a következő parancsot:  
@@ -524,6 +524,6 @@ Ebben a példában egy olyan házirendet hoz létre, amely egy "JoinedData" egy�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 Ha szeretné megtudni, hogyan szabhatja testre az SAML-jogkivonatban kiállított jogcímeket a Azure Portalon keresztül, tekintse meg a következő témakört [: útmutató: az SAML-jogkivonatban kiállított](active-directory-saml-claims-customization.md)

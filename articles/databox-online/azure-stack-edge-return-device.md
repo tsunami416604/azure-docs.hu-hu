@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569354"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743640"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Azure Stack Edge-eszköz visszaküldése vagy cseréje
 
@@ -47,7 +47,7 @@ Ha az eszközt a helyi webes felületen szeretné visszaállítani, hajtsa végr
 
 Az Alaphelyzetbe állítás törli az adat-adatlemezekről. Az eszközön tárolt adatmennyiségtől függően ez a folyamat körülbelül 30-40 percet vesz igénybe.
 
-Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és `Reset-HcsAppliance` használja a parancsmagot az adatok adatlemezekről való törléséhez. További információ: [az eszköz alaphelyzetbe állítása](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+Másik lehetőségként kapcsolódjon az eszköz PowerShell-felületéhez, és használja a `Reset-HcsAppliance` parancsmagot az adatok adatlemezekről való törléséhez. További információ: [az eszköz alaphelyzetbe állítása](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
 > - Ha új eszközre cserél vagy frissít, javasoljuk, hogy csak az új eszköz megérkezése után állítsa alaphelyzetbe az eszközt.
@@ -74,7 +74,7 @@ A visszatérési folyamat elindításához hajtsa végre az alábbi lépéseket.
 5. Helyezze az Azure-ból kapott szállítási címkét a csomagba.
 6. Egyeztessen egy csomagfelvételi időpontot helyi szolgáltatójával. Ha visszaadja az eszközt az USA-ban, akkor a fuvarozó a UPS vagy a FedEx lehet. Felvétel beosztása a UPS-sel:
 
-    1. Hívja meg a helyi UPS-t (országspecifikus díjmentes szám).
+    1. Hívja fel a helyi UPS-t (országtól/régiótól függően ingyenes szám).
     2. A hívásban adja meg a fordított szállítólevél nyomon követésének számát a nyomtatott címkén látható módon.
     3. Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
 

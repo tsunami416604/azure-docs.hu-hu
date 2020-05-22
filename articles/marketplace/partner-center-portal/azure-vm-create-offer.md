@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7ecd68023c5c48a82c07d98615807a895cdd0cae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726179"
+ms.locfileid: "83743106"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -39,7 +39,7 @@ Ha még nem tette meg, tekintse át a [virtuálisgép-ajánlat közzétételi ú
 - Oktatóanyagok
   - [Linux rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- Minták
+- Példák
   - [Azure CLI-minták Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
   - [Azure PowerShell Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
   - [Azure CLI-minták Windows rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
@@ -370,7 +370,7 @@ Ezen a lapon a következőket konfigurálhatja:
 
 #### <a name="markets"></a>Piacok
 
-Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be az összes olyan piaci hely jelölőnégyzetét, ahol ez a csomag megvásárolható (ezen piacok felhasználói továbbra is üzembe helyezhetik az ajánlatot a **[csomag telepítése](#plan-setup)** során kiválasztott összes Azure-régióban). Az **átutalt adó** gomb azokat az országokat jeleníti meg, amelyekben a Microsoft az Ön nevében kifizeti az értékesítési és használati adót. A Kínában való közzététel csak olyan csomagokra korlátozódik, amelyek **ingyenesek** , vagy **saját licencet** (BYOL) is használhatnak.
+Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be az összes olyan piaci hely jelölőnégyzetét, ahol ez a csomag megvásárolható (ezen piacok felhasználói továbbra is üzembe helyezhetik az ajánlatot a **[csomag telepítése](#plan-setup)** során kiválasztott összes Azure-régióban). Az **átutalt adó** gomb azokat az országokat/régiókat jeleníti meg, amelyekben a Microsoft az Ön nevében kifizeti az értékesítési és használati adót. A Kínában való közzététel csak olyan csomagokra korlátozódik, amelyek **ingyenesek** , vagy **saját licencet** (BYOL) is használhatnak.
 
 Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és egy másik piaci helyet ad hozzá, az új piac díját az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt mindig tekintse át az egyes piacok árát. A változtatások mentése után tekintse át az árakat az **exportálási díjak (xlsx)** hivatkozás használatával.
 

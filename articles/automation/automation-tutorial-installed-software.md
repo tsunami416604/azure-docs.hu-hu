@@ -1,29 +1,29 @@
 ---
-title: A gépekre telepített szoftverek felderítése az Azure Automation használatával | Microsoft Docs
-description: Az Inventory használatával felderítheti, milyen szoftverek vannak telepítve a környezetében működő gépeken.
+title: Ismerje meg, hogy milyen szoftverek vannak telepítve a virtuális gépeken a Azure Automation | Microsoft Docs
+description: Ez a cikk a virtuális gépekre telepített szoftvereket ismerteti a környezetében.
 services: automation
-keywords: leltár, automatizálás, változás, követés
+keywords: leltár, automatizálás, változások követése
 ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: b93035fc7e315f8117516771236186f9d942a0aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4acecbc6d1a1d7f617b0da95da1b97dc5a3dd75
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604668"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743666"
 ---
-# <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
+# <a name="discover-what-software-is-installed-on-your-vms"></a>A virtuális gépeken telepített szoftverek felderítése
 
-Ez az oktatóanyag bemutatja, hogyan derítheti fel a környezetében telepített szoftvereket. Összegyűjtheti a számítógépeken található szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok listáját, és leltárt készíthet belőlük. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Automation Change Tracking és leltár szolgáltatást annak megállapítására, hogy milyen szoftverek vannak telepítve a környezetben. A számítógépeken összegyűjtheti és megtekintheti a szoftverek, a fájlok, a Linux-démonok, a Windows-szolgáltatások és a Windows-beállításkulcsok leltárát. A gépek konfigurációjának nyomon követésével megtalálhatja a környezetben felmerülő működési problémákat, és alaposabban megismerheti a gépek állapotát.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * A megoldás engedélyezése
-> * Azure-beli virtuális gép előkészítése
-> * Nem Azure-beli virtuális gép előkészítése
+> * A Change Tracking és az Inventory engedélyezése
+> * Azure-beli virtuális gép engedélyezése
+> * Nem Azure-beli virtuális gép engedélyezése
 > * Telepített szoftverek megtekintése
 > * Telepített szoftverek keresése az Inventory-naplókban
 
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy [Automation-fiók](automation-offering-get-started.md) , amely a megfigyelő és a műveleti runbookok, valamint a figyelő feladatot fogja tárolni.
-* A szolgáltatásba felvenni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
+* A szolgáltatás számára engedélyezni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -41,68 +41,79 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
-Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az Inventory megoldást. Ha korábban engedélyezte a **Change Tracking** megoldást, erre a lépésre nincs szükség.
+Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az Inventory megoldást. Ha korábban engedélyezte a szolgáltatást, ez a lépés nem szükséges.
 
-Navigáljon az Automation-fiókjához, és válassza a **leltár** lehetőséget a **konfiguráció kezelése**területen.
+>[!NOTE]
+>Ha a mezők szürkén jelennek meg, egy másik automatizálási funkció is engedélyezve van a virtuális gépen, és ugyanazt a munkaterületet és Automation-fiókot kell használnia.
 
-Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+1. Navigáljon az Automation-fiókjához, és válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
 
-![Az Inventory felvételének konfigurációs szalagcíme](./media/automation-tutorial-installed-software/enableinventory.png)
-
-A megoldás engedélyezéséhez konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és az Automation-fiókot, majd kattintson az **Engedélyezés** gombra. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
-
-A [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület az Inventory, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál.
-A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
+2. Válassza ki a [log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) munkaterületet. Ez a munkaterület az olyan szolgáltatások által generált adatokat gyűjti, mint például a Change Tracking és a leltár. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
-A megoldás engedélyezését követően a virtuális gépen található telepített szoftverekre és változásokra vonatkozó információk Azure Monitor naplókra áramlanak.
-Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
+3. Válassza ki a használni kívánt Automation-fiókot.
 
-## <a name="onboard-a-vm"></a>Virtuális gép előkészítése
+4. Konfigurálja a központi telepítés helyét.
 
-Az Automation-fiókban navigáljon a **leltár** menüpontra a **konfiguráció kezelése**területen.
+5. Kattintson az **Engedélyezés** gombra a szolgáltatás telepítéséhez a virtuális géphez. 
 
-Az **+ Azure-beli virtuális gép hozzáadása** elemre kattintva megnyílik a Virtuális gépek lap, amelyen kiválaszthat egy meglévő virtuális gépet a listából. Válassza ki az előkészíteni kívánt virtuális gépet. A megnyíló lapon kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez a virtuális gépen. A rendszer telepíti a Microsoft Management Agentet a virtuális gépre, és konfigurálja az ügynököt, hogy az a megoldás engedélyezésekor konfigurált Log Analytics-munkaterülettel beszélgessen. Az előkészítés végrehajtása eltarthat pár percig. Ezen a ponton kiválaszthat egy új virtuális gépet a listából, és előkészítheti azt.
+    ![Leltár-konfiguráció szalagcíme](./media/automation-tutorial-installed-software/enableinventory.png)
 
-## <a name="onboard-a-non-azure-machine"></a>Nem Azure-beli gép előkészítése
+A telepítés során a virtuális gép a Windows Log Analytics ügynökével és egy [hibrid Runbook-feldolgozóval](automation-hybrid-runbook-worker.md)van kiépítve. A Change Tracking és a leltár engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
 
-A nem Azure-beli gépek hozzáadásához telepítse a Windows rendszerhez készült [log Analytics-ügynököt](../azure-monitor/platform/agent-windows.md) vagy [log Analytics-ügynököt](automation-linux-hrw-install.md)az operációs rendszertől függően. Miután telepítette az ügynököt, navigáljon az Automation-fiókjához, és nyissa meg a **leltárt** a **konfiguráció kezelése**területen. A **Gépek kezelése** gombra kattintva megjelenik a Log Analytics-munkaterületre jelentő gépek listája, amelyeken a megoldás nincs engedélyezve. Válassza a környezetnek megfelelő beállítást.
+Ha a szolgáltatás engedélyezve van, a telepített szoftverekre vonatkozó információk és a virtuális gép változásai Azure Monitor naplókra áramlanak. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
-* **Engedélyezés az összes elérhető gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen engedélyezi.
-* **Engedélyezés az összes elérhető és jövőbeli gépen** – Ez a beállítás a megoldást az adott pillanatban a Log Analytics-munkaterületre jelentő összes gépen, majd később a munkaterülethez hozzáadott összes további gépen engedélyezi.
-* **Engedélyezés a kijelölt gépeken** – Ez a beállítás a megoldást csak a kijelölt gépeken engedélyezi.
+## <a name="add-an-azure-vm-to-change-tracking-and-inventory"></a>Azure-beli virtuális gép hozzáadása a Change Trackinghoz és a leltárhoz
 
-![Gépek kezelése](./media/automation-tutorial-installed-software/manage-machines.png)
+1. Az Automation-fiókjában navigáljon a **leltár** vagy a **change Tracking** elemre a **konfiguráció**felügyelete alatt.
+
+2. Válassza az **+ Azure-beli virtuális gép hozzáadása**lehetőséget.
+
+3. Válassza ki a virtuális gépet a virtuális gépek listájából. 
+
+4. Kattintson az **Engedélyezés** gombra a Change Tracking és a leltár engedélyezéséhez a virtuális gépen. A Windows Log Analytics ügynöke telepítve van a virtuális gépen, és úgy konfigurálja a virtuális gépet, hogy az Log Analytics munkaterülettel beszéljen. A telepítési művelet eltarthat néhány percig. 
+
+5. Ezen a ponton, ha szükséges, kiválaszthat egy új virtuális gépet a listából, hogy engedélyezze a szolgáltatást.
+
+## <a name="add-a-non-azure-machine-to-change-tracking-and-inventory"></a>Nem Azure-beli gép hozzáadása a Change Trackinghoz és a leltárhoz
+
+A nem Azure-beli gépek engedélyezése a következő szolgáltatáshoz:
+
+1. Az operációs rendszertől függően telepítse az [log Analytics-ügynököt a Linux rendszerhez](../azure-monitor/platform/agent-windows.md) vagy log Analytics- [ügynökhöz](automation-linux-hrw-install.md). 
+
+2. Keresse meg az Automation-fiókját, és lépjen a **leltár** vagy a **change Tracking** elemre a **konfiguráció**felügyelete alatt. 
+
+3. Kattintson a **gépek kezelése**lehetőségre. Ekkor megjelenik a Log Analytics munkaterülethez jelentést küldő gépek listája, amelyeken nincs engedélyezve a Change Tracking és a leltár. Válassza ki a megfelelő beállítást a környezetéhez:
+
+    * **Engedélyezés az összes rendelkezésre álló gépen** – ez a beállítás lehetővé teszi, hogy a szolgáltatás jelenleg a log Analytics munkaterületre jelentett összes gépen elérhető legyen.
+    * **Engedélyezés az összes elérhető gépen és későbbi gépen** – ez a beállítás lehetővé teszi, hogy a szolgáltatás a log Analytics munkaterületre és a munkaterülethez hozzáadott összes jövőbeli gépre vonatkozóan az összes gépen jelentést küldje.
+    * **Engedélyezés a kiválasztott gépeken** – ez a beállítás csak a kiválasztott gépeken engedélyezi a funkciót.
+
+    ![Gépek kezelése](./media/automation-tutorial-installed-software/manage-machines.png)
 
 ## <a name="view-installed-software"></a>Telepített szoftverek megtekintése
 
-Miután engedélyezte a Change Tracking és a leltározási megoldást, megtekintheti az eredményeket a leltár lapon.
+Ha a Change Tracking és a leltár funkció engedélyezve van, megtekintheti az eredményeket a leltár lapon.
 
-Az Automation-fiókban válassza a **leltár** lehetőséget a **konfiguráció kezelése**területen.
+1. Az Automation-fiókban válassza a **leltár** lehetőséget a **konfiguráció kezelése**területen.
 
-Az Inventory lapon kattintson a **Szoftver** lapra.
+2. Az Inventory lapon kattintson a **Szoftver** lapra.
 
-A **Szoftver** lapon egy táblázat listázza a felderített szoftvereket. A szoftverek név és verzió szerint vannak csoportosítva.
+3. Jegyezze fel a talált szoftvereket tartalmazó táblázatot. A szoftverek név és verzió szerint vannak csoportosítva. Az egyes szoftverrekordok részletes információi megtekinthetők a táblázatban. Ilyen részletek például a szoftver neve, verziója, közzétevője, a legutóbbi frissítés időpontja (a legutóbbi frissítési idő a csoport egyik gépének jelentése alapján), valamint azon gépek száma, amelyekre a szoftver telepítve van.
 
-Az egyes szoftverrekordok részletes információi megtekinthetők a táblázatban. Ilyen részletek például a szoftver neve, verziója, közzétevője, a legutóbbi frissítés időpontja (a legutóbbi frissítési idő a csoport egyik gépének jelentése alapján), valamint azon gépek száma, amelyekre a szoftver telepítve van.
+    ![Szoftverleltár](./media/automation-tutorial-installed-software/inventory-software.png)
 
-![Szoftverleltár](./media/automation-tutorial-installed-software/inventory-software.png)
+4. Kattintson egy sorra a szoftverrekord tulajdonságainak, valamint azon gépek neveinek megtekintéséhez, amelyen a szoftver telepítve van.
 
-Kattintson egy sorra a szoftverrekord tulajdonságainak, valamint azon gépek neveinek megtekintéséhez, amelyen a szoftver telepítve van.
-
-Ha egy adott szoftverre vagy szoftvercsoportra kíváncsi, közvetlenül a szoftverlista fölött található szövegmezőben is kereshet.
-A szűrő segítségével a szoftver neve, verziója vagy közzétevője alapján is kereshet.
-
-A **contoso** keresése például az összes olyan szoftvert adja vissza, amelynek a neve, közzétevője vagy verziója a **contoso**nevet tartalmazza.
+5. Ha egy adott szoftverre vagy szoftvercsoportra kíváncsi, közvetlenül a szoftverlista fölött található szövegmezőben is kereshet.
+A szűrő segítségével a szoftver neve, verziója vagy közzétevője alapján is kereshet. A **contoso** keresése például az összes olyan szoftvert adja vissza, amelynek a neve, közzétevője vagy verziója a **contoso**nevet tartalmazza.
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Telepített szoftverek keresése az Inventory-naplókban
 
-A leltár az Azure Monitor naplókba küldendő naplófájlokat hozza létre. Ha lekérdezések futtatásával szeretne keresni a naplókban, válassza a **log Analytics** elemet a leltár oldal tetején.
+A Change Tracking és a leltár az Azure Monitor naplókba küldendő naplófájlokat hozza létre. Ha lekérdezések futtatásával szeretne keresni a naplókban, válassza a **log Analytics** elemet a leltár oldal tetején. A leltári adat a típus alatt tárolódik `ConfigurationData` .
 
-A leltári adat a típus `ConfigurationData`alatt tárolódik.
-A következő minta Log Analytics lekérdezés azokat a leltározási eredményeket adja vissza, amelyekben a közzétevő megegyezik a **Microsoft Corporation**szolgáltatással.
+A következő példa Log Analytics lekérdezés a közzétevő Microsoft Corporation leltározási eredményeit adja vissza.
 
 ```loganalytics
 ConfigurationData
@@ -113,10 +124,9 @@ ConfigurationData
 
 A naplófájlok Azure Monitor-naplókban való futtatásával és keresésével kapcsolatos további tudnivalókért tekintse meg [Azure monitor naplókat](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="single-machine-inventory"></a>Leltár egyetlen gépről
+## <a name="see-the-software-inventory-for-a-single-machine"></a>Egyetlen gép szoftveres leltározása
 
-Ha egyetlen gépen szeretné megtekinteni a szoftver leltárát, hozzáférhet az Azure-beli virtuális gép erőforrás-oldaláról, vagy Azure Monitor naplók használatával szűrheti le a megfelelő gépre.
-A következő példa Log Analytics lekérdezés a **ContosoVM**nevű gép szoftverének listáját adja vissza.
+Ha egyetlen gépen szeretné megtekinteni a szoftver leltárát, hozzáférhet az Azure-beli virtuális gép erőforrás-oldaláról, vagy Azure Monitor naplók használatával szűrheti le a megfelelő gépre. A következő példa Log Analytics lekérdezés a **ContosoVM**nevű gép szoftverének listáját adja vissza.
 
 ```loganalytics
 ConfigurationData
@@ -129,16 +139,16 @@ ConfigurationData
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan tekintheti meg a szoftverleltárt, és ennek keretében hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg a szoftverek leltározását:
 
 > [!div class="checklist"]
-> * A megoldás engedélyezése
-> * Azure-beli virtuális gép előkészítése
-> * Nem Azure-beli virtuális gép előkészítése
+> * A Change Tracking és az Inventory engedélyezése
+> * Azure-beli virtuális gép engedélyezése
+> * Nem Azure-beli virtuális gép engedélyezése
 > * Telepített szoftverek megtekintése
 > * Telepített szoftverek keresése az Inventory-naplókban
 
-Ha többet szeretne megtudni a Change Tracking és az Inventory megoldásról, folytassa az áttekintéssel.
+További információ a Change Tracking és a leltár funkció áttekintésében olvasható.
 
 > [!div class="nextstepaction"]
-> [Változáskezelés és az Inventory megoldás](automation-change-tracking.md)
+> [A Change Tracking és a leltár áttekintése](change-tracking.md)

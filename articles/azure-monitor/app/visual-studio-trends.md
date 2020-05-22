@@ -7,12 +7,12 @@ ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670865"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744133"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
 Az Application Insights Trends eszköze megjeleníti webalkalmazásai fontos telemetria-eseményeinek időbeli változásait, ezzel segítve a problémák és hibák gyors azonosítását. A Trends részletesebb diagnosztikai adatokhoz nyújt hozzáférést, amelyek révén javíthat alkalmazásai teljesítményén, megkeresheti a kivételek forrását, és mélyebb betekintést nyerhet az egyéni eseményekbe is.
@@ -48,7 +48,7 @@ Első lépésként válasszon az öt gyakran használt trendelemzési típus kö
 Ezek az előre kialakított elemzések később, a Trends ablakának bal felső sarkában található **View common types of telemetry analysis** (A telemetriai elemzés gyakran használt típusainak megtekintése) gombra kattintva is elérhetőek.
 
 ## <a name="visualize-trends-in-your-application"></a>Trendek megjelenítése az alkalmazásban
-Az Application Insights Trends szolgáltatása idősoron jeleníti meg az alkalmazás telemetriai adatait. Minden idősorozatos megjelenítés egy, a telemetria egyik tulajdonsága alapján csoportosított, adott időtartományba eső telemetriatípust jelenít meg. Előfordulhat például, hogy az elmúlt 24 órában érkező kiszolgálókérelmeket szeretné megtekinteni, mindezt az azokat küldő fél országa szerint csoportosítva. Ebben a példában a képi megjelenítés buborékai az egyes országokhoz/régiókhoz tartozó kiszolgálókérelmek egy órára vonatkoztatott számát jelképezik.
+Az Application Insights Trends szolgáltatása idősoron jeleníti meg az alkalmazás telemetriai adatait. Minden idősorozatos megjelenítés egy, a telemetria egyik tulajdonsága alapján csoportosított, adott időtartományba eső telemetriatípust jelenít meg. Előfordulhat például, hogy meg szeretné tekinteni a kiszolgálói kérelmeket, az elmúlt 24 órában az ország/régió szerint csoportosítva. Ebben a példában a képi megjelenítés buborékai az egyes országokhoz/régiókhoz tartozó kiszolgálókérelmek egy órára vonatkoztatott számát jelképezik.
 
 Az ablak felső részén található vezérlőeszközök segítségével beállíthatja, hogy a telemetriai adatok mely típusait szeretné megtekinteni. Először válassza ki azokat a telemetriai adatok azon típusait, amelyeknek az adataira kíváncsi:
 

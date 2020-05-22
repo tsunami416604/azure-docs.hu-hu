@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac3f24e06553fd037ef5deaf374690fb92b0fa8c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715817"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742830"
 ---
 # <a name="create-modular-runbooks"></a>Moduláris runbookok létrehozása
 
@@ -35,7 +35,7 @@ A beágyazottan indított runbook ugyanazt a feladatot futtatja, mint a szülőr
 
 Runbook közzétételekor az általa megjelenő összes gyermek runbookok már közzé kell tenni. Ennek az az oka, hogy Azure Automation összeállítja az összes gyermek runbookok való társítást, amikor lefordít egy runbook. Ha a gyermek runbookok még nem tették közzé, úgy tűnik, hogy a fölérendelt runbook megfelelően közzé van téve, de kivételt hoz létre a indításakor. Ha ez történik, újra közzéteheti a szülő runbook, hogy megfelelően hivatkozzon a gyermek runbookok. A fölérendelt runbook nem kell újból közzétennie, ha a gyermek runbook módosul, mert a társítás már létrejött.
 
-A inline nevű alárendelt runbook paramétereinek bármilyen adattípusa lehet, beleértve az összetett objektumokat is. Nincs JSON- [szerializálás](start-runbooks.md#runbook-parameters), mert a Azure Portal vagy a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal indítja el a runbook.
+A inline nevű alárendelt runbook paramétereinek bármilyen adattípusa lehet, beleértve az összetett objektumokat is. Nincs JSON- [szerializálás](start-runbooks.md#work-with-runbook-parameters), mert a Azure Portal vagy a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal indítja el a runbook.
 
 ### <a name="runbook-types"></a>Runbook-típusok
 
@@ -80,7 +80,7 @@ A gyermek runbook kimenete az időzítés miatt nem megbízhatóan tér vissza a
 
 Ha nem szeretné, hogy a szülő runbook le legyen tiltva a várakozás közben, a runbook a paraméter nélkül is elindíthatja `Start-AzAutomationRunbook` `Wait` . Ebben az esetben a runbook a [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) használatával kell várnia a feladatok befejezését. A [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) és a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) használatával is le kell kérni az eredményeket.
 
-Egy parancsmaggal elindított alárendelt runbook paramétereinek megadása szórótábla, a [runbook paraméterben](start-runbooks.md#runbook-parameters)leírtak szerint. Csak az egyszerű adattípusokat lehet használni. Ha a runbook rendelkezik összetett adattípusú paraméterrel, beágyazottan kell meghívni.
+Egy parancsmaggal elindított alárendelt runbook paramétereinek megadása szórótábla, a [runbook paraméterben](start-runbooks.md#work-with-runbook-parameters)leírtak szerint. Csak az egyszerű adattípusokat lehet használni. Ha a runbook rendelkezik összetett adattípusú paraméterrel, beágyazottan kell meghívni.
 
 Előfordulhat, hogy az előfizetési környezet elvész, amikor elindítják a gyermek runbookok különálló feladatként. Ahhoz, hogy a gyermek runbook az az Module-parancsmagok egy adott Azure-előfizetéssel való végrehajtásához, a gyermeknek a szülő runbook függetlenül hitelesítenie kell ezt az előfizetést.
 
@@ -115,7 +115,7 @@ Start-AzAutomationRunbook `
     –Parameters $params –Wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Runbook indítása Azure Automation](start-runbooks.md)
+* [Runbook indítása az Azure Automationben](start-runbooks.md)
 * [Runbook kimenete és üzenetei Azure Automation](automation-runbook-output-and-messages.md)

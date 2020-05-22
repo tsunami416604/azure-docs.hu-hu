@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678443"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739141"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -27,13 +27,13 @@ A függőségi befecskendezés használata előtt telepítenie kell a következ�
 
 - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- A [Microsoft. net. SDK. functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 vagy újabb verziója
+- A [Microsoft. net. SDK. functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) csomag 1.0.28 vagy újabb verziója
 
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
-A szolgáltatások regisztrálásához hozzon létre egy metódust a `IFunctionsHostBuilder` példányok konfigurálásához és az összetevők hozzáadásához.  A Azure Functions gazdagép létrehoz egy példányt, `IFunctionsHostBuilder` és közvetlenül a metódusba továbbítja azokat.
+A szolgáltatások regisztrálásához hozzon létre egy metódust a példányok konfigurálásához és az összetevők hozzáadásához `IFunctionsHostBuilder` .  A Azure Functions gazdagép létrehoz egy példányt, `IFunctionsHostBuilder` és közvetlenül a metódusba továbbítja azokat.
 
-A metódus regisztrálásához adja hozzá azt `FunctionsStartup` a Assembly attribútumot, amely megadja az indításkor használt típus nevét.
+A metódus regisztrálásához adja hozzá azt a `FunctionsStartup` Assembly attribútumot, amely megadja az indításkor használt típus nevét.
 
 ```csharp
 using System;
@@ -68,13 +68,13 @@ A Futtatás előtt és után futtatott regisztrációs lépések sorozata az ind
 
 - *Az indítási osztály csak a beállítás és a regisztráció céljára szolgál.* Ne használja az indításkor regisztrált szolgáltatásokat az indítási folyamat során. Például ne próbáljon naplózni egy olyan üzenetet, amely az indítás során regisztrálva van. A regisztrációs folyamat ezen pontja túl korai ahhoz, hogy a szolgáltatások elérhetők legyenek. A `Configure` metódus futtatása után a functions Runtime továbbra is regisztrálja a további függőségeket, ami befolyásolhatja a szolgáltatások működését.
 
-- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat*tartalmaz. A `Configure` metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva. Ennek eredményeképpen a functions-specifikus típusok, `BindingContext` például `ExecutionContext` nem érhetők el a telepítés során, vagy injektálható típusokként.
+- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat*tartalmaz. A metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva `Configure` . Ennek eredményeképpen a functions-specifikus típusok, `BindingContext` például `ExecutionContext` nem érhetők el a telepítés során, vagy injektálható típusokként.
 
 ## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
 
 A konstruktor-injektálás a függőségek elérhetővé tételéhez használható a függvényben. A konstruktor befecskendezésének használata megköveteli, hogy ne használjon statikus osztályokat.
 
-Az alábbi minta azt mutatja be, `IMyService` hogyan `HttpClient` történik a és a függőségek beadása egy http-triggerrel elindított függvénybe. Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja az indításhoz való regisztráláshoz `HttpClient` .
+Az alábbi minta azt mutatja `IMyService` be, hogyan történik a és a függőségek beadása `HttpClient` egy http-triggerrel elindított függvénybe. Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csomagot használja az indításhoz való regisztráláshoz `HttpClient` .
 
 ```csharp
 using System;
@@ -131,11 +131,11 @@ Ha saját naplózási szolgáltatóra van szüksége, regisztráljon egy egyéni
 
 > [!WARNING]
 > - Ne adja hozzá `AddApplicationInsightsTelemetry()` a szolgáltatások gyűjteményhez, mert regisztrálja azokat a szolgáltatásokat, amelyek ütköznek a környezet által nyújtott szolgáltatásokkal.
-> - Ne regisztrálja saját `TelemetryConfiguration` magát, `TelemetryClient` vagy ha a beépített Application Insights funkciót használja. Ha konfigurálnia kell a saját `TelemetryClient` példányát, hozzon létre egyet a `TelemetryConfiguration` befecskendezés használatával, ahogyan az [Azure functions figyelése](./functions-monitoring.md#version-2x-and-later-2)című részen látható.
+> - Ne regisztrálja saját magát, `TelemetryConfiguration` vagy `TelemetryClient` Ha a beépített Application Insights funkciót használja. Ha konfigurálnia kell a saját `TelemetryClient` példányát, hozzon létre egyet a befecskendezés használatával, `TelemetryConfiguration` ahogyan az [Azure functions figyelése](./functions-monitoring.md#version-2x-and-later-2)című részen látható.
 
-### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> és ILoggerFactory
+### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> és ILoggerFactory
 
-A gazdagép a ( `ILogger<T>` z `ILoggerFactory` ) és a szolgáltatásokat a konstruktorokban fogja beadni.  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A `host.json` fájl módosításával további szűrőket és kategóriákat is be kell állítani.  Az alábbi példa bemutatja, hogyan adhat `ILogger<HttpTrigger>` hozzá egy olyan naplókat, amelyeket a gazdagép tesz elérhetővé.
+A gazdagép a (z `ILogger<T>` ) és a szolgáltatásokat a konstruktorokban fogja beadni `ILoggerFactory` .  Alapértelmezés szerint azonban ezeket az új naplózási szűrőket a rendszer kiszűri a függvények naplóiból.  A fájl módosításával `host.json` további szűrőket és kategóriákat is be kell állítani.  Az alábbi példa bemutatja, hogyan adhat hozzá egy olyan `ILogger<HttpTrigger>` naplókat, amelyeket a gazdagép tesz elérhetővé.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +160,7 @@ namespace MyNamespace
 }
 ```
 
-És egy `host.json` olyan fájl, amely hozzáadja a napló szűrőt.
+És egy olyan `host.json` fájl, amely hozzáadja a napló szűrőt.
 
 ```json
 {
@@ -198,7 +198,7 @@ A gazdagép által nyújtott szolgáltatások felülbírálása jelenleg nem tá
 
 Az [Alkalmazásbeállítások](./functions-how-to-use-azure-function-app-settings.md#settings) által meghatározott értékek egy `IConfiguration` példányban érhetők el, amely lehetővé teszi az alkalmazás-beállítási értékek olvasását az indítási osztályban.
 
-A `IConfiguration` példány értékeit egyéni típusba is kinyerheti. Ha az Alkalmazásbeállítások értékeit egyéni típusra másolja, a szolgáltatás egyszerűen tesztelhető, így ezek az értékek injektálható. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs/érték pároknak kell lenniük.
+A példány értékeit egyéni típusba is kinyerheti `IConfiguration` . Ha az Alkalmazásbeállítások értékeit egyéni típusra másolja, a szolgáltatás egyszerűen tesztelhető, így ezek az értékek injektálható. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs/érték pároknak kell lenniük.
 
 Vegye figyelembe a következő osztályt, amely egy konzisztens nevű tulajdonságot tartalmaz egy alkalmazás-beállítással:
 
@@ -209,7 +209,7 @@ public class MyOptions
 }
 ```
 
-Valamint egy `local.settings.json` olyan fájl, amely az egyéni beállítást a következőképpen strukturálhatja:
+Valamint egy olyan `local.settings.json` fájl, amely az egyéni beállítást a következőképpen strukturálhatja:
 ```json
 {
   "IsEncrypted": false,
@@ -219,7 +219,7 @@ Valamint egy `local.settings.json` olyan fájl, amely az egyéni beállítást a
 }
 ```
 
-A `Startup.Configure` metódusból kinyerheti a `IConfiguration` példány értékeit az egyéni típusba a következő kód használatával:
+A `Startup.Configure` metódusból kinyerheti a példány értékeit az `IConfiguration` Egyéni típusba a következő kód használatával:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -231,7 +231,7 @@ builder.Services.AddOptions<MyOptions>()
 
 Meghívja `Bind` azokat az értékeket, amelyek a konfigurációból az egyéni példányba egyező tulajdonságokat tartalmaznak. A beállítások példány mostantól elérhető a NOB-tárolóban egy függvénybe való behelyezéshez.
 
-A beállítások objektumot az általános `IOptions` felület egy példánya fecskendezi a függvénybe. A `Value` tulajdonság használatával érheti el a konfigurációban található értékeket.
+A beállítások objektumot az általános felület egy példánya fecskendezi a függvénybe `IOptions` . A `Value` tulajdonság használatával érheti el a konfigurációban található értékeket.
 
 ```csharp
 using System;

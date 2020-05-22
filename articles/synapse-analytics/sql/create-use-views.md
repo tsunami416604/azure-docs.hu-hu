@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 508c12d89d5b0476e4cd4cbd8dc43b8bda8fbd90
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647476"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736007"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Nézetek létrehozása és használata igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
 
@@ -41,8 +41,9 @@ GO
 CREATE VIEW populationView AS
 SELECT * 
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV', 
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', 
         FIELDTERMINATOR =',', 
         ROWTERMINATOR = '\n'
     )
@@ -62,7 +63,7 @@ AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM
     OPENROWSET(
         BULK 'parquet/taxi/year=*/month=*/*.parquet',
-        DATA_SOURCE = 'sqlondemandstorage',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc
 ```
@@ -71,7 +72,7 @@ FROM
 
 A lekérdezésekben a nézeteket ugyanúgy használhatja, mint SQL Server lekérdezésekben.
 
-A következő lekérdezés azt mutatja be, hogyan használja a [nézet létrehozása nézetben](#create-a-view)létrehozott *population_csv* nézetet. 2019 csökkenő sorrendben adja vissza az ország nevét.
+A következő lekérdezés azt mutatja be, hogyan használja a [nézet létrehozása nézetben](#create-a-view)létrehozott *population_csv* nézetet. Az ország/régió nevét adja vissza a 2019-es populációban csökkenő sorrendben.
 
 > [!NOTE]
 > Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja.
@@ -89,6 +90,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

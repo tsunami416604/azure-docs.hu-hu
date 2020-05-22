@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450881"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737333"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory alkalmazás jegyzékfájlja
 
@@ -63,11 +63,11 @@ Példa:
 
 Megadja az erőforrás által várt hozzáférési jogkivonat verzióját. Ezzel a paraméterrel megváltoztatható a végpont vagy az ügyfél által a hozzáférési jogkivonat igényléséhez használt JWT-verzió és-formátum.
 
-A használt végpontot (v 1.0 vagy v 2.0) az ügyfél választja ki, és csak a id_tokens verzióját érinti. Az erőforrásoknak explicit módon be `accesstokenAcceptedVersion` kell állítaniuk a hozzáférést a támogatott hozzáférési jogkivonat formátumának jelzéséhez.
+A használt végpontot (v 1.0 vagy v 2.0) az ügyfél választja ki, és csak a id_tokens verzióját érinti. Az erőforrásoknak explicit módon be kell állítaniuk `accesstokenAcceptedVersion` a hozzáférést a támogatott hozzáférési jogkivonat formátumának jelzéséhez.
 
-A lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy NULL. Ha az érték null, a paraméter alapértelmezett értéke 1, amely a v 1.0 végpontnak felel meg.
+A lehetséges értékei: `accesstokenAcceptedVersion` 1, 2 vagy NULL. Ha az érték null, a paraméter alapértelmezett értéke 1, amely a v 1.0 végpontnak felel meg.
 
-Ha `signInAudience` a `AzureADandPersonalMicrosoftAccount`értéke, akkor az értéknek kell lennie `2`.
+Ha a értéke `signInAudience` `AzureADandPersonalMicrosoftAccount` , akkor az értéknek kell lennie `2` .
 
 Példa:
 
@@ -123,7 +123,7 @@ Példa:
 Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
 > [!NOTE]
-> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `signInAudience` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `signInAudience` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="appid-attribute"></a>appId attribútum
 
@@ -173,7 +173,7 @@ Példa:
 Az alkalmazás megjelenítendő neve.
 
 > [!NOTE]
-> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `name` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `name` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="errorurl-attribute"></a>errorUrl attribútum
 
@@ -210,7 +210,7 @@ Példa:
 Az alkalmazás kezdőlapjának URL-címe.
 
 > [!NOTE]
-> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `signInUrl` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+> Ez az attribútum csak a **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `signInUrl` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="objectid-attribute"></a>objectId attribútum
 
@@ -220,7 +220,7 @@ Az alkalmazás kezdőlapjának URL-címe.
 
 Az alkalmazás egyedi azonosítója a címtárban.
 
-Ez csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `id` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+Ez csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `id` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 Példa:
 
@@ -349,7 +349,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| név | Sztring |
+| name | Sztring |
 
 Az alkalmazás megjelenítendő neve.
 
@@ -365,7 +365,7 @@ Példa:
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Logikai |
 
-Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be a `OAuth 2.0 implicit grant flow` tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
+Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be `OAuth 2.0 implicit grant flow` a tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
 Példa:
 
@@ -432,8 +432,8 @@ Példa:
 | :--- | :--- |
 | parentalControlSettings | Sztring |
 
-- `countriesBlockedForMinors`meghatározza azokat az országokat, amelyekben az alkalmazás le van tiltva a kiskorúak számára.
-- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható `Allow`a `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids`következőre:,,, `BlockMinors`vagy.  
+- `countriesBlockedForMinors`azokat az országokat/régiókat határozza meg, amelyekben az alkalmazás a kiskorúak számára le van tiltva.
+- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható a következőre:,,, `Allow` `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids` vagy `BlockMinors` .  
 
 Példa:
 
@@ -450,7 +450,7 @@ Példa:
 | :--- | :--- |
 | passwordCredentials | Gyűjtemény |
 
-Tekintse meg a `keyCredentials` tulajdonság leírását.
+Tekintse meg a tulajdonság leírását `keyCredentials` .
 
 Példa:
 
@@ -495,7 +495,7 @@ Példa:
 
 Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás). 
 
-Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `allowPublicClient` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `allowPublicClient` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain attribútum
 
@@ -519,7 +519,7 @@ Példa:
 
 Ez a többértékű tulajdonság azon regisztrált redirect_uri értékek listáját tartalmazza, amelyeket az Azure AD a célhelyként fogad el a tokenek visszaküldésekor.
 
-Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. `replyUrlsWithType` Lecserélte a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
+Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `replyUrlsWithType` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType attribútum
 
@@ -551,10 +551,10 @@ Példa:
 | :--- | :--- |
 | requiredResourceAccess | Gyűjtemény |
 
-A dinamikus beleegyezőség révén a rendszergazda beleegyezik a rendszergazdai jogosultságokkal, `requiredResourceAccess` és a felhasználók beleegyeznek a statikus beleegyezett. Ez a paraméter azonban nem teszi elérhetővé a felhasználói beleegyező élményt az általános esethez.
+A dinamikus beleegyezőség révén a rendszergazda beleegyezik a `requiredResourceAccess` rendszergazdai jogosultságokkal, és a felhasználók beleegyeznek a statikus beleegyezett. Ez a paraméter azonban nem teszi elérhetővé a felhasználói beleegyező élményt az általános esethez.
 
 - `resourceAppId`annak az erőforrásnak az egyedi azonosítója, amelyhez az alkalmazásnak hozzá kell férnie. Ennek az értéknek meg kell egyeznie a célként megadott erőforrás-alkalmazásban deklarált appId.
-- `resourceAccess`a egy olyan tömb, amely felsorolja az alkalmazás által a megadott erőforrás által igényelt OAuth 2.0 engedély-hatóköröket és alkalmazás-szerepköröket. A megadott `id` erőforrások `type` és értékek értékét tartalmazza.
+- `resourceAccess`a egy olyan tömb, amely felsorolja az alkalmazás által a megadott erőforrás által igényelt OAuth 2.0 engedély-hatóköröket és alkalmazás-szerepköröket. A `id` `type` megadott erőforrások és értékek értékét tartalmazza.
 
 Példa:
 
@@ -622,7 +622,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| címkét | Karakterlánc-tömb  |
+| tags | Karakterlánc-tömb  |
 
 Egyéni karakterláncok, amelyek használatával kategorizálhatja és azonosíthatja az alkalmazást.
 

@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7336974a0f982f2dd2394f16d7f6d520ecb8571d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664416"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744063"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -58,7 +58,7 @@ A rendszerkulcsok hatókörét a bővítmény határozza meg, de általában a t
 
 A következő táblázat a különböző típusú hozzáférési kulcsok használatát hasonlítja össze:
 
-| Művelet                                        | Hatókör                    | Érvényes kulcsok         |
+| Műveletek                                        | Hatókör                    | Érvényes kulcsok         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Függvény végrehajtása                            | Adott függvény        | Függvény           |
 | Függvény végrehajtása                            | Bármely függvény             | Függvény vagy gazdagép   |
@@ -181,7 +181,7 @@ Egy külön SCM-végponttal szabályozhatja az üzemelő példányokat és az eg
 
 ### <a name="continuous-security-validation"></a>Folyamatos biztonsági ellenőrzés
 
-Mivel a biztonsági lépéseket a fejlesztési folyamat minden lépésének figyelembe kell vennie, érdemes lehet a biztonsági érvényesítést is megvalósítani a folyamatos üzembe helyezési környezetben. Ezt néha DevSecOps nevezik. Az Azure DevOps használata az üzembe helyezési folyamathoz lehetővé teszi az ellenőrzés integrálását az üzembe helyezési folyamatba. További információ: a [folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/devops/migrate/security-validation-cicd-pipeline).  
+Mivel a biztonsági lépéseket a fejlesztési folyamat minden lépésének figyelembe kell vennie, érdemes lehet a biztonsági érvényesítést is megvalósítani a folyamatos üzembe helyezési környezetben. Ezt néha DevSecOps nevezik. Az Azure DevOps használata az üzembe helyezési folyamathoz lehetővé teszi az ellenőrzés integrálását az üzembe helyezési folyamatba. További információ: a [folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline).  
 
 ## <a name="network-security"></a>Hálózati biztonság
 

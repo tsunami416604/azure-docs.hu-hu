@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: bf2c4ff1afbf3558d6c49cf7bec90cd37e17929b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658014"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740773"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -22,7 +22,7 @@ Ez a cikk a kereskedelmi Piactéri ajánlatok létrehozásának és folytatásá
 
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
+| Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
 | Ajánlat leírása | Adja meg az ajánlat egyértelmű leírását:<br> <ul> <li> A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét. </li> <li> Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg. </li> <li> Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania. </li> <li> A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.</li> <li> Emellett a tanácsadási szolgáltatások listáinak egyértelműen meg kell adniuk az Ön által megadott professzionális szolgáltatást. </li></ul> Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk:<ul><li>A termék leírása.</li><li>A termékből származó előnyöket biztosító felhasználó típusa.</li><li>Az ügyfélnek szüksége van a termék címére vagy a fájdalomra.</li></ul> |
 
 Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehozására és folytatására vonatkozó javaslatokat tartalmaznak. A marketing-anyagok írásához és konfigurálásához lépjen a [partner Center webhelyre](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
@@ -49,7 +49,7 @@ Akár két kategóriát és két alkategóriát is kijelölhet egy ajánlathoz. 
 | Disztribúció    | * Nagykereskedelmi <br> * Parcella & csomag szállítása |
 | Education     | * Felsőoktatás <br> * Elsődleges & középfokú oktatás/K-12 <br> * Könyvtárak & múzeumok |
 | Pénzügyi szolgáltatások     | * Banki & tőkepiacok <br> * Biztosítás |
-| Államigazgatás    | * Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> * Közbiztonság & igazságszolgáltatás <br> * Polgári kormányzat |
+| Government    | * Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> * Közbiztonság & igazságszolgáltatás <br> * Polgári kormányzat |
 | Egészségügyi ellátás (ún. állapot)   | * Állapot költségviselő <br> * Állapot szolgáltatója <br> * Gyógyszeripar |
 | Gyártási & erőforrások (a gyártás meghívásához használatos)   | * Kémiai & Agrokémiai <br> * Diszkrét gyártás <br> * Energia |
 | Lakossági & fogyasztási cikkek (a kereskedelmi elnevezéshez használatos)  | * Fogyasztási cikkek <br> * Kiskereskedők |

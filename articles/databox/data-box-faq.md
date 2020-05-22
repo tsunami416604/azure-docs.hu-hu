@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438616"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742999"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -166,7 +166,7 @@ A.  To speed up the copy process:
 
 - Create a local VHDx on fast storage or create an empty VHD on the HDD/SSD (slower).
 - Mount it to a VM.
-- Copy files to the VM’s disk.-->
+- Copy files to the VM's disk.-->
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>K. Használhatok több tárfiókot is a Data Boxhoz?
@@ -194,8 +194,8 @@ Az Adatmásolás befejezése után végezze el az alábbi lépéseket az eszköz
 3. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
 4. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg a korábban mentett kódot. A felhasználók az eszköz kidobásának helyét és időpontját adják meg.
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>K. Az Data Box-eszközök az országbeli határokon átívelő határok lesznek a szállítás során?
-A. Az összes Data Box eszköz a rendeltetési országon belülről szállítható, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az eszközök bármelyik EU-országba elhelyezhetők. Ez a Data Box és a Data Box Heavy eszközre is vonatkozik.
+### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>K. Az Data Box-eszközök országa/régiója a szállítás során is határokon átnyúlik?
+A. Az összes Data Box eszköz a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az eszközök bármelyik EU-országba/régióba oda tudnak szállítani. Ez a Data Box és a Data Box Heavy eszközre is vonatkozik.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>K. Megrendeltem egy Data Box az USA keleti régiójában, de kaptam egy olyan eszközt, amelyet az USA nyugati régiójában szállítottak el. Hová kell visszaadni az eszközt?
 A. A lehető leggyorsabban igyekszünk Data Box eszközt beolvasni. Rangsoroljuk a szállítást egy, a Storage-fiók helyéhez legközelebb lévő adatközpontból, de az eszköz minden olyan Azure-adatközpontból elérhető, amely rendelkezik rendelkezésre álló leltárral. A Data Box vissza kell adni ugyanarra a helyre, ahol a szállítási címkén látható módon szállították.
@@ -221,7 +221,7 @@ A. Ha az eszköz nem indul el, lépjen a sorrendbe a Azure Portal. Töltsön le 
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés
 
-### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>K. A Data Box visszaküldését követően mennyi időn belül férhetek hozzá az adataimhoz az Azure-ban? 
+### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>K. Milyen gyorsan férhetnek hozzá az Azure-beli adataim a Data Box visszaszállítása után? 
 A.  Ha az **Adatmásolási** sorrend állapota **befejezettként**jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
@@ -258,7 +258,7 @@ A.  A következő típusú jelentések érhetők el a felügyeleti láncokhoz:
 - A Data Box (az NIST 800 88R1 szabvány szerinti) megtisztítása az adatok Azure-tárfiókba való átmásolását követően.
 
 ### <a name="are-the-carrier-tracking-logs-from-ups-available"></a>Elérhetők-e a szállítói nyomkövetési naplók (UPS)? 
-A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei tartalmazzák. Ez a jelentés azt követően érhető el, miután az eszköz visszatért az Azure-adatközpontba, és a lemezeken lévő adatok törölve lettek. Ha azonnali információra van szüksége, közvetlenül a futárcég webhelyén, a megrendelés nyomkövetési számát használva lekérheti a nyomkövetési információkat.
+A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei tartalmazzák. Ez a jelentés azt követően érhető el, miután az eszköz visszatért az Azure-adatközpontba, és a lemezeken lévő adatok törölve lettek. Azonnali igény esetén közvetlenül a szolgáltató webhelyére is megtekintheti a megrendelés követési számát, és lekérheti a nyomkövetési adatokat.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Elszállíthatom magam a Data Boxot az Azure-adatközpontba? 
 A.  Nem. Az Azure-adatközpont jelenleg nem fogadja el a Data Box az ügyfelektől vagy a UPS-től eltérő szállítóktól.

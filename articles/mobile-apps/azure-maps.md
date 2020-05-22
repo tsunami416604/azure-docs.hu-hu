@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6eec99594ca748fa0610c60c83fd58e388f7923
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241015"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742896"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Térinformatikai API-k a Maps, a térbeli Analitika és a mobilitási megoldások hozzáadásához Azure Maps
 
@@ -25,7 +25,7 @@ ms.locfileid: "80241015"
 - **Útválasztás**: a legrövidebb vagy leggyorsabb útvonalakat mutatja be több célhely számára egy adott időpontban. Az Útválasztás emellett speciális útvonalakat és tényeket is biztosít a túrázók, a kerékpárosok és a kereskedelmi járművek számára.
 - **Időzónák**: könnyedén megtekintheti, hogy a világ mely időpontjában van.
 - **Térbeli műveletek**: a helymeghatározási intelligencia fejlesztése.
-- **Térinformatikai**: megkeresi az adott IP-cím országát.
+- **Térinformatikai**: megkeresi az adott IP-cím országát/régióját.
 - **Adatszolgáltatás**: a térbeli adatok és a képek összeállításával használható térinformatikai adatok feltöltése és tárolása.
 - **Mobilitás**: valós idejű helyszíni intelligenciát biztosít a közeli nyilvános árutovábbítási szolgáltatásokhoz. A leállások, az útvonalak és az utazási idő becslései szerepelnek benne.
 

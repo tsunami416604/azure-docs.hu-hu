@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869728"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741965"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -78,9 +78,9 @@ A **címsor** jobb oldalán megjelenik egy ikon, amely lehetővé teszi a bejele
 
 Kiválaszthatja, hogy hány alkalmazást szeretne megtekinteni a **legutóbb használt** szakaszban, és döntse el, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását.
 
-1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját ![](media/my-apps-portal/my-apps-portal-extension-icon.png) a **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez**.
+1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját a ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez**.
 
-2. Kattintson a jobb gombbal **Settings** a beállítások ![ikonra beállítások](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)ikonra, majd válassza a **Beállítások**lehetőséget.
+2. Kattintson a jobb gombbal a **Beállítások** ikonra ![ Beállítások ikonra ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) , majd válassza a **Beállítások**lehetőséget.
 
 3. A **Beállítások** mezőben adja meg a portálon megjeleníteni kívánt legutóbbi alkalmazások számát, valamint azt, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását, hogy távolról is használhassa őket.
 
@@ -98,7 +98,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak elérésé
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a számítógépén.
 
-2. Nyisson meg egy támogatott webböngészőt, és https://myapps.microsoft.comnyissa meg a webhelyet, vagy használja a szervezet által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, `https://myapps.microsoft.com/contoso.com`például:.
+2. Nyisson meg egy támogatott webböngészőt, és nyissa meg a webhelyet, https://myapps.microsoft.com vagy használja a szervezet által biztosított hivatkozást, ha egy testreszabott oldalra irányítja, például: `https://myapps.microsoft.com/contoso.com` .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
@@ -112,7 +112,7 @@ Az iOS-és Android-eszközökön Intune Managed Browser megtekintheti és haszn�
 
 1. A mobileszközön töltse le és telepítse a Intune Managed Browser alkalmazást az Apple App Store áruházból és a Google Play Áruházból.
 
-2. Nyissa meg a Intune Managed Browser alkalmazást, https://myapps.microsoft.comlépjen a oldalra, vagy használja a szervezete által biztosított hivatkozást, ha egy testreszabott lapra irányítja őket https://myapps.microsoft.com/contoso.com, például:.
+2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.com oldalra, vagy használja a szervezete által biztosított hivatkozást, ha egy testreszabott lapra irányítja őket, például: https://myapps.microsoft.com/contoso.com .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -126,7 +126,7 @@ Az iOS 7-es vagy újabb verzióját futtató iPhone-vagy iPad-eszközön megteki
 
 1. A mobileszközön indítson el egy webböngészőt, például a Safari alkalmazást.
 
-2. Nyissa https://myapps.microsoft.commeg a t, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott oldalra irányítja, https://myapps.microsoft.com/contoso.compéldául:.
+2. Nyissa meg a t https://myapps.microsoft.com , vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott oldalra irányítja, például: https://myapps.microsoft.com/contoso.com .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, amely elérhető a használatra.
 
@@ -140,7 +140,7 @@ A **My apps** portál megtekintése és használata Android-eszközön.
 
 1. A mobileszközön indítsa el a webböngésző alkalmazást, például a Google Chrome-ot.
 
-2. Nyissa https://myapps.microsoft.commeg a t, vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott oldalra irányítja, https://myapps.microsoft.com/contoso.compéldául:.
+2. Nyissa meg a t https://myapps.microsoft.com , vagy használja a szervezete által megadott hivatkozást, ha egy testreszabott oldalra irányítja, például: https://myapps.microsoft.com/contoso.com .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 

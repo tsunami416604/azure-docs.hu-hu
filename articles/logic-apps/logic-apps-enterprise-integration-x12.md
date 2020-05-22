@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613096"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739532"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -319,8 +319,8 @@ Ez a táblázat felsorolja az érintett üzenetek típusait, a különböző vá
 | Üzenet típusa vagy Variant |  Leírás | Dokumentum verziószáma (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Egészségügyi információk állapotáról szóló értesítés | 005010X212 |
-| 837_I | Health Care jogcím – fogorvos | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | Health Care-jogcím – intézményi | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | Health Care-jogcím – intézményi | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Health Care jogcím – fogorvos | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | Health Care jogcím Professional | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 
@@ -330,7 +330,7 @@ A dokumentumok verziószámának és az üzenetek típusának megadásához köv
 
 1. A HIPAA sémában cserélje le az aktuális üzenet típusát a használni kívánt dokumentum verziószámának Variant típusú üzenet típusára.
 
-   Tegyük fel például, hogy az üzenet típusával szeretné `005010X222A1` használni a `837` dokumentum verziószámát. A sémában cserélje le az `"X12_00501_837"` egyes értékeket az `"X12_00501_837_P"` értékre.
+   Tegyük fel például, hogy `005010X222A1` az üzenet típusával szeretné használni a dokumentum verziószámát `837` . A sémában cserélje le `"X12_00501_837"` az egyes értékeket az `"X12_00501_837_P"` értékre.
 
    A séma frissítéséhez kövesse az alábbi lépéseket:
 
@@ -340,7 +340,7 @@ A dokumentumok verziószámának és az üzenetek típusának megadásához köv
 
 1. A szerződés `schemaReferences` objektumában adjon hozzá egy másik bejegyzést, amely meghatározza a dokumentum verziószámával egyező Variant típusú üzenetet.
 
-   Tegyük fel például, hogy az üzenet típusához szeretné `005010X222A1` használni a `837` dokumentum verziószámát. A szerződés tartalmazza a `schemaReferences` következő tulajdonságokkal és értékekkel rendelkező szakaszt:
+   Tegyük fel például, hogy `005010X222A1` az üzenet típusához szeretné használni a dokumentum verziószámát `837` . A szerződés tartalmazza a `schemaReferences` következő tulajdonságokkal és értékekkel rendelkező szakaszt:
 
    ```json
    "schemaReferences": [
@@ -358,7 +358,7 @@ A dokumentumok verziószámának és az üzenetek típusának megadásához köv
    * `"schemaVersion": "00501"`
    * `"schemaName": "X12_00501_837_P"`
 
-   Ha elkészült, a `schemaReferences` szakasz így néz ki:
+   Ha elkészült, a szakasz így `schemaReferences` néz ki:
 
    ```json
    "schemaReferences": [

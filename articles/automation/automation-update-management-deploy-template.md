@@ -1,37 +1,34 @@
 ---
-title: Azure Resource Manager-sablonok használata a bevezetéshez Update Management | Microsoft Docs
-description: A Azure Automation Update Management megoldás bevezetéséhez használhat Azure Resource Manager sablont.
+title: Update Management engedélyezése Azure Resource Manager sablon használatával | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használható Azure Resource Manager-sablon a Update Management engedélyezéséhez.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872201"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743465"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Update Management megoldás előkészítése Azure Resource Manager sablon használatával
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Update Management engedélyezése Azure Resource Manager sablon használatával
 
-[Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával engedélyezheti az Azure Automation Update Management megoldást az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
+Az erőforráscsoport Azure Automation Update Management funkciójának engedélyezéséhez használhat egy [Azure Resource Manager sablont](../azure-resource-manager/templates/template-syntax.md) . Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
 
 * Azure Monitor Log Analytics munkaterület létrehozása.
 * Azure Automation-fiók létrehozása.
 * Az Automation-fiók összekapcsolása a Log Analytics munkaterülettel, ha még nincs csatolva.
-* A Azure Automation Update Management megoldás bevezetése.
+* Update Management engedélyezése.
 
-A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép bevezetését.
+A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép engedélyezését.
 
-Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A munkaterületen még nincs telepítve a Update Management megoldás. A sablon használatával sikeresen létrehozta a hivatkozást, és üzembe helyezi a Update Management megoldást. 
-
->[!NOTE]
->A Linux Update Management részeként bekészített **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
+Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A munkaterület még nincs Update Management engedélyezve. A sablon használata sikeresen létrehozza a hivatkozást, és üzembe helyezi Update Management a virtuális gépek számára. 
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
+>A Linux Update Management részeként engedélyezett **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
 
 ## <a name="api-versions"></a>API-verziók
 
@@ -244,10 +241,10 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy telepítette a Update Management megoldást, engedélyezheti a virtuális gépek felügyeletét, ellenőrizheti a frissítések értékeléseit, és telepítheti a frissítéseket, hogy azok megfeleljenek.
+Most, hogy engedélyezte a Update Managementt, engedélyezheti a virtuális gépek felügyeletét, ellenőrizheti a frissítések értékeléseit, és telepítheti a frissítéseket, hogy azok megfeleljenek.
 
-- Azure Automation- [fiókjából](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gép számára, és manuálisan a nem Azure-beli gépekhez.
+- Azure Automation- [fiókjából](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gép számára, és manuálisan a nem Azure-beli gépekhez
 
-- Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetében érhető el.
+- Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetén érhető el
 
 - [Több Azure](manage-update-multi.md) -beli virtuális gép esetén válassza ki őket a Azure Portal **Virtual Machines** lapján. 

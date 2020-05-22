@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 41f68ead6f985d6cc2c8120091c36783d074b066
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659150"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743579"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásról.
 
-* **Query1:** Futtasson egy csoportosítási lekérdezést a DataFrame, hogy lekérje az egyes országok teljes értékesítési bevételének összegét, és 5 elemet jelenítsen meg az eredményekből. Az új jegyzetfüzet-cellában futtassa a következő kódot:
+* **Query1:** Futtasson egy csoportosítási lekérdezést a DataFrame, hogy lekérje az egyes országok/régiók teljes értékesítési bevételének összegét, és 5 elemet jelenítsen meg az eredményekből. Az új jegyzetfüzet-cellában futtassa a következő kódot:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -170,16 +170,16 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Következő felkészülés az adatábrázolásra a térképen. Csatlakoztassa Azure Cosmos DB adatokat az Azure Blob Storage-ban található ország-információkkal, és alakítsa át az eredményt GeoJSON formátumra. Másolja az alábbi kódot egy új jegyzetfüzet-cellába, és futtassa.
+1. Következő felkészülés az adatábrázolásra a térképen. Csatlakoztassa Azure Cosmos DB adatokat az Azure Blob Storage-ban található ország/régió adataival, és alakítsa át az eredményt GeoJSON formátumra. Másolja az alábbi kódot egy új jegyzetfüzet-cellába, és futtassa.
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    json_data = json.dumps(merged_json)
    ```
 
-1. A következő kód egy új jegyzetfüzet-cellában történő futtatásával jelenítheti meg a különböző országok értékesítési bevételeit egy globális térképen:
+1. A következő kód egy új jegyzetfüzet-cellában történő futtatásával jelenítheti meg a különböző országok/régiók értékesítési bevételeit egy globális térképen:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat jelölik.
+   A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat és régiókat jelölik.
 
-   ![Országok bevételi térképének vizualizációja](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Országok/régiók bevételi Térkép vizualizációja](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 
@@ -288,6 +288,6 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    ![Vásárlási konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a Python notebook-parancsokról, olvassa el a következő témakört: [a beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-python-notebook-features-and-commands.md) cikkben.

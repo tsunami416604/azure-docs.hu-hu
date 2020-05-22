@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791981"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744018"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcsszókeresés kognitív képesség
 
@@ -31,7 +31,7 @@ Ez a funkció akkor hasznos, ha gyorsan meg kell határoznia a rekordban lévő 
 Microsoft. Skills. Text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
+A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené a kivonó kifejezést, érdemes lehet a [szöveg felosztása képességet](cognitive-search-skill-textsplit.md)használni.
 
 ## <a name="skill-parameters"></a>Szakértelem paraméterei
 
@@ -44,10 +44,17 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemenetek     | Leírás |
+| Input (Bemenet)  | Leírás |
 |--------------------|-------------|
 | szöveg | Az elemezni kívánt szöveg.|
 | languageCode  |  A rekordok nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer az alapértelmezett nyelvkódot fogja használni a rekordok elemzéséhez. <br/>[A támogatott nyelvek teljes listája](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+
+## <a name="skill-outputs"></a>Szaktudás kimenetei
+
+| Output (Kimenet)  | Leírás |
+|--------------------|-------------|
+| keyPhrases | A bemeneti szövegből kinyert fő kifejezések listája. A legfontosabb kifejezések fontossági sorrendben lesznek visszaadva. |
+
 
 ##  <a name="sample-definition"></a>Minta definíciója
 
@@ -120,7 +127,7 @@ Ha nem támogatott nyelvi kódot ad meg, a rendszer hibát generál, és a rends
 Ha a szöveg üres, a rendszer figyelmeztetést készít.
 Ha a szöveg 50 000 karakternél nagyobb, akkor csak az első 50 000 karakter lesz elemezve, és a rendszer figyelmeztetést ad ki.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

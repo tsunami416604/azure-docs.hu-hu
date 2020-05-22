@@ -1,125 +1,58 @@
 ---
-title: Azure-beli virtuális gépről származó Update Management-, Change Tracking-és leltározási megoldások
-description: Ismerje meg, hogyan készíthet Azure-beli virtuális gépeket a Azure Automation részét képező Update Management-, Change Tracking-és leltározási megoldásokkal.
+title: Azure Automation Update Management engedélyezése Azure-beli virtuális gépről
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management egy Azure-beli virtuális gépről.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: f33f829b6cb86cb01c848e5fc48e1618a3e00a2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537032"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743963"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Update Management-, Change Tracking-és leltári megoldások előkészítése Azure-beli virtuális gépekről
+# <a name="enable-update-management-from-an-azure-vm"></a>Update Management engedélyezése Azure-beli virtuális gépről
 
-Azure Automation megoldásokat kínál az operációs rendszer biztonsági frissítéseinek kezeléséhez, a változások nyomon követéséhez és a számítógépeken telepített termékek leltározásához. A gépek több módon is bekészíthetők. A megoldást egy virtuális gépről, [az Automation-fiókból](automation-onboard-solutions-from-automation-account.md), több gépről való [böngészésből](automation-onboard-solutions-from-browse.md)vagy [runbook](automation-onboard-solutions.md)használatával is elvégezheti. Ez a cikk a megoldások Azure-beli virtuális gépekről történő előkészítését ismerteti.
+Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [Update Management](automation-update-management.md) funkció más gépeken való engedélyezéséhez. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet. 
+
+> [!NOTE]
+> A Update Management engedélyezésekor csak bizonyos régiók támogatottak Log Analytics munkaterület és egy Automation-fiók összekapcsolásához. A támogatott leképezési párok listáját lásd: [az Automation-fiók és a log Analytics munkaterület-hozzárendelési területe](how-to/region-mappings.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy [Automation-fiók](automation-offering-get-started.md) a gépek kezeléséhez.
+* Egy [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
-## <a name="enable-the-solutions"></a>A megoldások engedélyezése
-
-Először engedélyezzen egy vagy mindhárom megoldást a virtuális gépen:
+## <a name="enable-update-management"></a>Az Update Management engedélyezése
 
 1. A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek** lehetőséget, vagy keresse meg és válassza ki a **virtuális gépek** lehetőséget a kezdőlapon.
-2. Válassza ki azt a virtuális gépet, amelyhez engedélyezni kívánja a megoldást.
-3. A virtuális gép lap **műveletek**területén válassza a **kezelés**, **leltár**vagy **változások követése**lehetőséget. A virtuális gép bármely régióban létezhet, függetlenül az Automation-fiókjának helyétől. Amikor egy virtuális gépről telepít egy megoldást, rendelkeznie kell az `Microsoft.OperationalInsights/workspaces/read` engedéllyel annak megállapításához, hogy a virtuális gép be van-e telepítve egy munkaterületre. A szükséges további engedélyekkel kapcsolatos további információkért lásd: [a gépek](automation-role-based-access-control.md#onboarding-permissions)bevezetéséhez szükséges engedélyek. Ha többet szeretne megtudni arról, hogyan lehet egyszerre több gépet bevezetni, tekintse meg a következő témakört: [Update Management, Change Tracking és leltározási megoldások](automation-onboard-solutions-from-automation-account.md).
 
-4. Válassza ki az Azure Log Analytics-munkaterület és az Automation-fiókot, majd kattintson az **Engedélyezés** gombra a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+2. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Update Management. A virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül. Ön
 
-![A Update Management-megoldás előkészítése](media/automation-tutorial-update-management/manageupdates-update-enable.png)
+3. A virtuális gép lap **műveletek**területén válassza a **Update Management**lehetőséget.
 
-5. Lépjen a többi megoldáshoz, majd válassza az **Engedélyezés**lehetőséget. A Log Analytics munkaterület és az Automation-fiók legördülő listája le van tiltva, mert ezek a megoldások ugyanazt a munkaterületet és Automation-fiókot használják, mint a korábban engedélyezett megoldás.
+4. Rendelkeznie kell `Microsoft.OperationalInsights/workspaces/read` engedéllyel annak megállapításához, hogy a virtuális gép engedélyezve van-e a munkaterületen. További információ a szükséges engedélyekről: a [gépek engedélyezéséhez szükséges engedélyek](automation-role-based-access-control.md#feature-setup-permissions). Ha többet szeretne megtudni arról, hogyan engedélyezheti egyszerre több gépet, tekintse meg az [Automation-fiók Update Managementának engedélyezése](automation-onboard-solutions-from-automation-account.md)című témakört.
 
-> [!NOTE]
-> A Change Tracking and Inventory ugyanazt a megoldást használja. Ha az egyik megoldás engedélyezve van, a másik is engedélyezve lesz.
+5. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** elemre Update Management engedélyezéséhez. A telepítés elvégzése akár 15 percet is igénybe vehet. 
 
-## <a name="scope-configuration"></a>Hatókör-konfiguráció
+    ![Az Update Management engedélyezése](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-Mindegyik megoldás egy hatókör-konfigurációt használ a munkaterületen a megoldást futtató számítógépek célzásához. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a megoldás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk elérése:
+## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>A hatókör-konfiguráció keresése
 
-1. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. 
-2. A munkaterületen, a **munkaterület-adatforrások**területen válassza a **hatókör-konfigurációk**elemet.
-3. Ha a kiválasztott munkaterület még nem rendelkezik Update Management vagy Change Tracking megoldással, a rendszer a következő hatókör-konfigurációkat hozza létre:
-
-    * `MicrosoftDefaultScopeConfig-ChangeTracking`
-    * `MicrosoftDefaultScopeConfig-Updates`
-
-    Ha a kiválasztott munkaterület már rendelkezik a megoldással, a rendszer nem telepíti újra a megoldást, és a hatókör-konfiguráció nincs hozzáadva.
-
-4. Jelölje ki az ellipsziseket (**..**.) bármelyik konfiguráción, majd kattintson a **Szerkesztés**gombra. 
-5. A **hatókör-konfiguráció szerkesztése** panelen válassza a **számítógépcsoportok kiválasztása**lehetőséget. A **számítógépcsoportok** ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések.
-
-## <a name="saved-searches"></a>Mentett keresések
-
-Ha egy számítógépet hozzáadnak a Update Managementhoz, Change Trackinghoz vagy leltározási megoldáshoz, a rendszer hozzáadja a számítógépet a munkaterület két mentett keresésének egyikéhez. A mentett keresések olyan lekérdezések, amelyek tartalmazzák azokat a számítógépeket, amelyek ezekre a megoldásokra vannak rendelve.
-
-Lépjen a munkaterülethez. Az **általános**területen válassza a **mentett keresések**lehetőséget. A megoldások által használt két mentett keresés a következő táblázatban látható:
-
-|Name (Név)     |Kategória  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
-
-Válassza ki a mentett keresések valamelyikét, és tekintse meg a csoport feltöltéséhez használt lekérdezést. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
-
-![Mentett keresések](media/automation-onboard-solutions-from-vm/logsearch.png)
-
-## <a name="unlink-workspace"></a>Munkaterület leválasztása
-
-A következő megoldások Log Analytics munkaterülettől függenek:
-
-* [Frissítéskezelés](automation-update-management.md)
-* [Változások követése](automation-change-tracking.md)
-* [Virtuális gépek indítása és leállítása munkaidőn kívül](automation-solution-vm-management.md)
-
-Ha úgy dönt, hogy már nem szeretné integrálni az Automation-fiókot egy Log Analytics munkaterülettel, közvetlenül a Azure Portalból is leválaszthatja a fiókját.  Mielőtt továbblépne, először el kell távolítania a korábban említett megoldásokat, ellenkező esetben a folyamat nem fog folytatódni. Tekintse át az importált konkrét megoldásról szóló cikket az eltávolításához szükséges lépések megismeréséhez.
-
-A megoldások eltávolítása után a következő lépések végrehajtásával leválaszthatja az Automation-fiókját.
-
-> [!NOTE]
-> Előfordulhat, hogy néhány megoldás, például az Azure SQL-figyelési megoldás korábbi verziói automatizálási eszközöket hoztak létre, és a munkaterület leválasztása előtt is el kell távolítani őket.
-
-1. A Azure Portalban nyissa meg az Automation-fiókját, és válassza a **csatolt munkaterület** elemet a bal oldalon található **kapcsolódó erőforrások** szakaszban.
-
-2. A munkaterület leválasztása lapon kattintson a **munkaterület leválasztása**elemre.
-
-   ![Munkaterület leválasztása lap](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
-
-   A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
-
-3. Míg Azure Automation megkísérli leválasztani a fiókot a Log Analytics munkaterületen, nyomon követheti a menü **értesítések** részén látható előrehaladást.
-
-Ha a Update Management megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
-
-* Frissítési ütemtervek – minden olyan névvel rendelkezik, amely megfelel a létrehozott frissítési példányoknak.
-
-* A megoldáshoz létrehozott hibrid feldolgozói csoportok – mindegyik neve hasonló lesz a machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
-
-Ha a Start/Stop VMs during off-hours megoldást használta, érdemes lehet eltávolítani a következő elemeket, amelyekre már nincs szükség a megoldás eltávolítása után.
-
-* VM runbook-ütemtervek elindítása és leállítása
-* VM-runbookok elindítása és leállítása
-* Változók
-
-Azt is megteheti, hogy kikapcsolja a munkaterületet az Automation-fiókjából a Log Analytics munkaterületről. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Virtuális gép eltávolítása Update Managementról:
-
-* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates`mentett keresésével. A mentett keresések a munkaterület **általános** területén találhatók.
-* Távolítsa el a [Windows log Analytics Agent ügynököt](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a Linux rendszerhez készült [log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+Update Management a munkaterületen belül a hatókör-konfigurációt használja a szolgáltatás engedélyezéséhez szükséges számítógépek célzására. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a szolgáltatás hatókörének meghatározott számítógépekre való korlátozására szolgál. További információ: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a megoldásokkal kapcsolatos oktatóanyagokkal, hogy megtudja, hogyan használhatja őket:
-
-* [Oktatóanyag – a virtuális gép frissítéseinek kezelése](automation-tutorial-update-management.md)
-
-* [Oktatóanyag – szoftverek azonosítása virtuális gépen](automation-tutorial-installed-software.md)
-
-* [Oktatóanyag – virtuális gépek változásainak megoldása](automation-tutorial-troubleshoot-changes.md)
+* Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
+* A hatókör-konfigurációk esetében lásd: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
+* Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
+* A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
+* Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
+* A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

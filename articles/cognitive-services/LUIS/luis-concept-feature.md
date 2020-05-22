@@ -3,12 +3,12 @@ title: Funkciók – LUIS
 description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682160"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742718"
 ---
 # <a name="machine-learning-ml-features"></a>Gépi tanulás (ML) funkciói
 
@@ -85,7 +85,7 @@ Ha például az n szállítási címek entitása egy utcai címet tartalmazó al
     * Utca címe (alentitás)
     * Város (alentitás)
     * Állam vagy megye (alentitás)
-    * Ország (alentitás)
+    * Ország/régió (alentitás)
     * Irányítószám (alentitás)
 
 ## <a name="nested-subentities-with-features"></a>Beágyazott alentitások funkciókkal
@@ -118,14 +118,14 @@ Folytassa a szállítási címek példáját:
     * Utca neve (alentitás)
     * Város (alentitás)
     * Állam vagy megye (alentitás)
-    * Ország (alentitás)
+    * Ország/régió (alentitás)
     * Irányítószám (alentitás)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Kötelező funkció előre elkészített entitások használatával
 
-A város, az állam és az ország általában egy lezárt listát jelenít meg, ami azt jelenti, hogy az idő múlásával nem változnak. Ezek az entitások rendelkezhetnek a megfelelő ajánlott funkciókkal, és ezek a funkciók kötelezőként jelölhetők meg. Ez azt jelenti, hogy a teljes szállítási címet nem adja vissza a rendszer nem találja a szükséges szolgáltatásokat tartalmazó entitásokat.
+A város, az állam és az ország/régió általában a listának egy zárt halmaza, ami azt jelenti, hogy az idő múlásával nem változnak. Ezek az entitások rendelkezhetnek a megfelelő ajánlott funkciókkal, és ezek a funkciók kötelezőként jelölhetők meg. Ez azt jelenti, hogy a teljes szállítási címet nem adja vissza a rendszer nem találja a szükséges szolgáltatásokat tartalmazó entitásokat.
 
-Mi a helyzet abban az esetben, ha a város, az állam vagy az ország teljes mértékben szerepel, de olyan helyen vagy szlengben, amelyet LUIS nem vár? Ha szeretne valamilyen utólagos feldolgozást végezni, hogy segítsen megoldani az entitást, mivel a LUIS alacsony megbízhatósági pontszáma miatt nem kell megjelölnie a szolgáltatást.
+Mi a helyzet abban az esetben, ha a város, az állam vagy az ország/régió a teljes verzióban van, de olyan helyen vagy szlengben, amelyet a LUIS nem vár? Ha szeretne valamilyen utólagos feldolgozást végezni, hogy segítsen megoldani az entitást, mivel a LUIS alacsony megbízhatósági pontszáma miatt nem kell megjelölnie a szolgáltatást.
 
 Egy másik példa a szállítási címnek egy szükséges szolgáltatására, hogy az utca egy szükséges [előre elkészített](luis-reference-prebuilt-entities.md) szám legyen. Ez lehetővé teszi, hogy a felhasználó "1 Microsoft Way" vagy "egy Microsoft Way" értéket adjon meg. Mindkettő az utcai szám alentitáshoz tartozó "1" értékre lesz feloldva.
 
@@ -133,19 +133,19 @@ Egy másik példa a szállítási címnek egy szükséges szolgáltatására, ho
 
 A [lista entitások](reference-entity-list.md) a kanonikus nevek listáját használják a szinonimákkal együtt. Szükség esetén, ha a kihagyás nem tartalmazza a kanonikus nevet vagy a szinonimát, az entitás nem kerül vissza az előrejelzési végpont részeként.
 
-Ha továbbra is a szállítási címet szeretné megállapítani, tegyük fel, hogy a vállalat csak korlátozott számú országba szállít. Létrehozhat egy list entitást, amely többféle módon hivatkozhat az országra. Ha a LUIS nem talál pontos egyezést a kiírás szövegében, akkor az adott entitás (amely a lista entitás szükséges funkciójával rendelkezik) nem jelenik meg az előrejelzésben.
+Ha továbbra is a szállítási címet szeretné megállapítani, tegyük fel, hogy a vállalat csak korlátozott számú országhoz/régióhoz tartozó hajót szállít. Létrehozhat egy list entitást, amely többféle módon hivatkozhat az országra. Ha a LUIS nem talál pontos egyezést a kiírás szövegében, akkor az adott entitás (amely a lista entitás szükséges funkciójával rendelkezik) nem jelenik meg az előrejelzésben.
 
 |Kanonikus név|Szinonimák|
 |--|--|
 |Egyesült Államok|Egyesült Államok<br>U. S. A<br>USA<br>USA<br>0|
 
-Az ügyfélalkalmazás, például a csevegési robot felteheti a kérdést, így az ügyfél megérti, hogy az ország kiválasztása korlátozott és _kötelező_.
+Az ügyfélalkalmazás, például a csevegési bot felteheti a kérdést, így az ügyfél megérti, hogy az ország/régió kiválasztása korlátozott és _kötelező_.
 
 ### <a name="required-feature-using-regular-expression-entities"></a>Reguláris kifejezési entitásokat használó kötelező funkció
 
 A kötelező szolgáltatásként használt [reguláris kifejezési entitások](reference-entity-regular-expression.md) gazdag szöveg-egyeztetési képességeket biztosítanak.
 
-Ha folytatja a szállítási címet, létrehozhat egy reguláris kifejezést, amely rögzíti az országbeli postai kódok szintaxisának szabályait.
+Ha folytatja a szállítási címet, létrehozhat egy reguláris kifejezést, amely rögzíti az ország/régió postai irányítószámok szintaxisának szabályait.
 
 ## <a name="global-features"></a>Globális funkciók
 

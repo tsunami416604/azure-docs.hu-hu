@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: d6cf00fab14f91b151327b435068d689edab32b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778464"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737724"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -117,6 +117,10 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 - [A gyűjteményből hozzáadott alkalmazások](../manage-apps/add-application-portal.md)
 - [A katalógusban nem szereplő egyéni alkalmazások](../manage-apps/add-non-gallery-app.md)
 - [Az App Delivery Controllers és Networks szolgáltatáson keresztül közzétett örökölt alkalmazások](../manage-apps/secure-hybrid-access.md)
+
+> [!NOTE]
+> Mivel a feltételes hozzáférési házirend olyan szolgáltatáshoz való hozzáférés követelményeit állítja be, amely nem alkalmazható az ügyfél (nyilvános/natív) alkalmazásra. Más szóval a házirend nincs beállítva közvetlenül egy ügyfélen (nyilvános/natív) alkalmazáson, de a rendszer akkor alkalmazza, amikor egy ügyfél meghívja a szolgáltatást. A SharePoint szolgáltatásban beállított házirendek például a SharePoint szolgáltatást hívó ügyfelekre érvényesek. Az Exchange-ben beállított házirend az e-mailek Outlook-ügyfél használatával való elérésére tett kísérletre vonatkozik. Ezért nem érhetők el az ügyfél (nyilvános/natív) alkalmazások a Cloud apps választóban való kiválasztáshoz, és a feltételes hozzáférés beállítás nem érhető el a bérlőben regisztrált ügyfél (nyilvános/natív) alkalmazás Alkalmazásbeállítások esetében. 
+
 
 ## <a name="user-actions"></a>Felhasználói műveletek
 

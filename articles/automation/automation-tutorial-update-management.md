@@ -1,38 +1,28 @@
 ---
-title: Azure-beli virtuális gépek frissítéseinek és javításának kezelése
-description: Ez a cikk áttekintést nyújt a Azure Automation Update Management használatáról az Azure-beli és nem Azure-beli virtuális gépek frissítéseinek és javításának kezeléséhez.
+title: Azure-beli virtuális gépek frissítéseinek és javításának kezelése Azure Automation
+description: Ez a cikk azt ismerteti, hogyan használható a Update Management az Azure-beli virtuális gépek frissítéseinek és javításának kezeléséhez.
 services: automation
 ms.subservice: update-management
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b47fa873df88bf85c4c56c9f2ac94fce16c63be
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683827"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743653"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
-A virtuális gépek frissítéseit és javításait az Update Management megoldás segítségével kezelheti. Ez az oktatóanyag azt ismerteti, hogyan mérheti fel legkönnyebben az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, tekintheti át a telepítési eredményeket, és állíthat be riasztásokat, hogy ellenőrizze, sikeres volt-e a frissítések telepítése.
+Ez a cikk bemutatja, hogyan kezelheti az Azure-beli virtuális gépek frissítéseit és javításait a Azure Automation [Update Management](automation-update-management.md) szolgáltatással. 
 
 A díjszabással kapcsolatos információkért lásd: [Update Management automatizálási díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
-Az oktatóanyag a következőket ismerteti:
-
-> [!div class="checklist"]
-> * Frissítésfelmérés megtekintése
-> * Riasztások konfigurálása
-> * Frissítéstelepítés ütemezése
-> * Telepítés eredményeinek megtekintése
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
-
-* A [Update Management](automation-update-management.md) -megoldás engedélyezve van egy vagy több virtuális gépen.
-* A szolgáltatásba felvenni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
+* A [Update Management](automation-update-management.md) funkció engedélyezve van egy vagy több virtuális gépen. 
+* Update Management számára engedélyezett [virtuális gép](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -95,7 +85,7 @@ A riasztási e-mail tárgyának testreszabásához a **szabály létrehozása**t
 
 ## <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
-Következő lépésként ütemezzen egy olyan telepítést a frissítésekhez, amely megfelel a kiadási ütemtervnek és a szolgáltatási időkeretnek. Kiválaszthatja, hogy milyen frissítési típusok szerepeljenek a központi telepítésben. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
+A frissítések telepítéséhez ütemezzen egy központi telepítést, amely a kiadási ütemterv és a szolgáltatás ablakát követi. Kiválaszthatja, hogy milyen frissítési típusok szerepeljenek a központi telepítésben. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
 
 >[!NOTE]
 >A frissítési központi telepítés ütemezése egy olyan [ütemezési](shared-resources/schedules.md) erőforrást hoz létre, amely a **MicrosoftOMSComputers** runbook van társítva, amely kezeli a frissítés központi telepítését a célszámítógépen. Ha törli az ütemezési erőforrást a Azure Portal vagy a PowerShellt a telepítés létrehozása után, a törlés megszakítja az ütemezett frissítés központi telepítését, és hibaüzenetet jelenít meg, amikor megkísérli újrakonfigurálni az ütemezési erőforrást a portálról. Az ütemezett erőforrást csak a megfelelő központi telepítési ütemterv törlésével törölheti.  
@@ -112,18 +102,9 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Frissítendő gépek**: válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ha a **gépek**lehetőséget választja, az egyes gépek készültségi állapota az **Update Agent Readiness (frissítési ügynök készültsége** ) oszlopban látható. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md).
 
-* **Frissítés besorolása**: minden termék esetében törölje az összes támogatott frissítési besorolást, de azokat is, amelyeket bele szeretne foglalni a frissítés telepítésére. Ebben az oktatóanyagban az összes kiválasztott típust hagyja minden terméknél.
+* **Frissítés besorolása**: minden termék esetében törölje az összes támogatott frissítési besorolást, de azokat is, amelyeket bele szeretne foglalni a frissítés telepítésére. A besorolási típusok leírását lásd: [frissítési besorolások](automation-view-update-assessments.md#work-with-update-classifications).
 
-  A választható besorolási típusok a következők:
-
-   |Operációs rendszer  |Típus  |
-   |---------|---------|
-   |Windows     | Kritikus frissítések</br>Biztonsági frissítések</br>Kumulatív frissítések</br>Funkciócsomagok</br>Szervizcsomagok</br>Definíciófrissítések</br>Eszközök</br>Frissítések<br>Illesztőprogram        |
-   |Linux     | Kritikus vagy biztonsági frissítések</br>Egyéb frissítések       |
-
-   A besorolási típusok leírását lásd: [frissítési besorolások](automation-view-update-assessments.md#update-classifications).
-
-* **Frissítések belefoglalása/kizárása** – megnyitja a Belefoglalás/kizárás lapot. A felvenni vagy kizárni kívánt frissítések külön lapokon találhatók a TUDÁSBÁZISCIKK AZONOSÍTÓinak számának megadásával. Egy vagy több azonosító számának megadásakor el kell távolítania vagy törölnie kell az összes besorolást a frissítés központi telepítésével. Ezzel biztosíthatja, hogy a frissítési csomagok a frissítési azonosítók megadásakor ne tartalmazzanak más frissítéseket.
+* **Belefoglalási** /kizárási frissítések – megnyitja a Belefoglalás/kizárás lapot. A felvenni vagy kizárni kívánt frissítések külön lapokon találhatók a TUDÁSBÁZISCIKK AZONOSÍTÓinak számának megadásával. Egy vagy több azonosító számának megadásakor el kell távolítania vagy törölnie kell az összes besorolást a frissítés központi telepítésével. Ezzel biztosíthatja, hogy a frissítési csomagok a frissítési azonosítók megadásakor ne tartalmazzanak más frissítéseket.
 
 > [!NOTE]
 > Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management nem telepít javításokat vagy csomagokat, ahogy az összes ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
@@ -131,7 +112,6 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 > [!NOTE]
 > Nem adhat meg olyan frissítéseket, amelyeket a rendszer a frissítés központi telepítésére való felvételre váltott ki.
 >
-
 * **Ütemezési beállítások**: Megnyitja az Ütemezési beállítások ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Hagyja meg az alapértelmezett értéket 1 nap alatt, majd kattintson **az OK**gombra. Ezek a bejegyzések ismétlődő ütemtervet állítanak be.
@@ -196,16 +176,4 @@ A frissítés sikeres üzembe helyezése után egy, az alábbihoz hasonló e-mai
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Virtuális gép felvétele az Update Managementbe
-> * Frissítésfelmérés megtekintése
-> * Riasztások konfigurálása
-> * Frissítéstelepítés ütemezése
-> * Telepítés eredményeinek megtekintése
-
-Folytassa az Update Management megoldás áttekintésével.
-
-> [!div class="nextstepaction"]
-> [Az Update Management megoldás](automation-update-management.md)
+* [A frissítéskezelés áttekintése](automation-update-management.md)

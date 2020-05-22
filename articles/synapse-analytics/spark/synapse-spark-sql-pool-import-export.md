@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: d2c8215a68d2f80471be87b0ca07aa1438a25ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660058"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739277"
 ---
 # <a name="introduction"></a>Introduction (Bevezetés)
 
@@ -44,14 +44,14 @@ Emiatt nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az öss
 
 Felhasználók létrehozásához kapcsolódjon az adatbázishoz, és kövesse az alábbi példákat:
 
-```Sql
+```sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Szerepkör társítása:
 
-```Sql
+```sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
 ```
 
@@ -64,14 +64,14 @@ Az importálási utasítások nem szükségesek, ezeket a rendszer előre import
 > [!NOTE]
 > **A notebook-élményben nem szükséges importálás**
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API olvasása
 
-```Scala
+```scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
@@ -79,13 +79,13 @@ A fenti API a belső (felügyelt) és az SQL-készletben található külső tá
 
 #### <a name="write-api"></a>API írása
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
 ahol a TableType konstans lehet. belső vagy állandó. külső
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
@@ -97,14 +97,14 @@ A Storage és a SQL Server hitelesítése befejeződött
 > [!NOTE]
 > A notebook-élményben nem szükséges importálás
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API olvasása
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
@@ -112,7 +112,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>API írása
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
@@ -124,7 +124,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 Az összekötő jelenleg nem támogatja a jogkivonat-alapú hitelesítést a munkaterületen kívüli SQL-készletre. Az SQL-hitelesítést kell használnia.
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -134,7 +134,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>API írása
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -151,13 +151,13 @@ Tegyük fel, hogy rendelkezik egy "pyspark_df" dataframe, amelyet szeretne írni
 
 Hozzon létre egy ideiglenes táblát a PySpark dataframe használatával:
 
-```Python
+```py
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
 A PySpark notebookon a Magics használatával futtasson egy Scala-cellát:
 
-```Scala
+```scala
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
@@ -193,7 +193,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

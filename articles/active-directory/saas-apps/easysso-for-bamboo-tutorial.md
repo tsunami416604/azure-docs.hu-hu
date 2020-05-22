@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/06/2020
+ms.date: 05/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227f4a804c466af81707eca79e9d8cf6c00e52be
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c37850d2188f560b8eb8d0b16f5a1b2880a8b32e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984362"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740591"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Bamboo EasySSO
 
@@ -99,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ![image](common/default-attributes.png)
 
 1. A fentieken kívül az EasySSO for Bamboo alkalmazása néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
-    
+
     | Name | Forrás attribútum |
     | ---------------|  --------- |
     | urn: OID: 2.16.840.1.113730.3.1.241 | felhasználó. DisplayName |
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -144,13 +144,50 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>EasySSO konfigurálása a Bamboo SSO-hoz
 
-Ha az **EasySSO for Bamboo** oldalon egyszeri bejelentkezést szeretne beállítani, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [EasySSO for Bamboo támogatási csapatának](mailto:support@techtime.co.nz). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Jelentkezzen be a EasySSO a Bamboo-példányhoz rendszergazdai jogosultságokkal, és navigáljon az **Alkalmazások kezelése** szakaszhoz.
+
+    ![EasySSO a bambusz-konfigurációhoz](./media/easysso-for-bamboo-tutorial/jira-admin-1.png)
+
+1. Kattintson a **EasySSO**elemre.
+
+    ![EasySSO a bambusz-konfigurációhoz](./media/easysso-for-bamboo-tutorial/jira-admin-2.png)
+
+1. Válassza az **SAML** lehetőséget. Ekkor megjelenik az SAML konfigurációs szakasza.
+
+    ![EasySSO a bambusz-konfigurációhoz](./media/easysso-for-bamboo-tutorial/jira-admin-3.png)
+
+1. Válassza a legfelül a **tanúsítványok** fület, és megjelenik a következő képernyő, és keresse meg a **tanúsítvány (Base64)** vagy a **metaadat-fájlt** , amelyet az **Azure ad SSO** konfiguráció korábbi lépéseiben mentett. A folytatáshoz a következő lehetőségek állnak rendelkezésre:
+
+    ![EasySSO a bambusz-konfigurációhoz](./media/easysso-for-bamboo-tutorial/jira-admin-4.png)
+
+    a. Használja a számítógép helyi fájljába letöltött alkalmazás-összevonási **metaadat-fájlt** . Válassza a Radio **feltöltése** gombot, és kövesse a fájl feltöltése párbeszédpanelt, amely az operációs rendszerre jellemző.
+
+    **VAGY**
+
+    b. Nyissa meg az alkalmazás-összevonási **metaadatokat tartalmazó fájlt** , és tekintse meg a fájl tartalmát (bármilyen egyszerű szövegszerkesztőben), és másolja a vágólapra. Válassza a **beviteli** beállítás lehetőséget, majd illessze be a vágólap tartalmát a szövegmezőbe.
+
+    **VAGY**
+
+    c. Teljesen manuális konfiguráció. Az alkalmazás-összevonási **tanúsítvány (Base64)** megnyitásával tekintse meg a fájl tartalmát (bármilyen egyszerű szövegszerkesztőben), és másolja a vágólapra. Illessze be a **identitásszolgáltató jogkivonat-aláíró tanúsítványok** szövegmezőbe. Ezután navigáljon az **általános** lapra, és töltse ki a **kötési URL-címet** és az entitás- **azonosító** mezőket a **bejelentkezési URL-cím** és a korábban mentett **Azure ad-azonosító** megfelelő értékeivel.
+
+1. Kattintson a lap alján található **Save (Mentés** ) gombra. Ekkor megjelenik a metaadatok vagy a tanúsítványfájl tartalmának elemzése a konfigurációs mezőkbe. A bambusz-konfiguráció EasySSO befejeződött.
+
+1. A legjobb tesztelési élmény érdekében keresse meg **& a Feel (nézet** ) fület, és ellenőrizze az **SAML bejelentkezési gombját** . Ez lehetővé teszi, hogy az Azure AD SAML-integráció teljes körű teszteléséhez külön gomb legyen a bambusz-bejelentkezési képernyő EasySSO. Ezt a gombot bekapcsolhatja, és beállíthatja az elhelyezését, színét és fordítását is az éles üzemmódra.
+
+    ![EasySSO a bambusz-konfigurációhoz](./media/easysso-for-bamboo-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > Ha bármilyen problémája van, forduljon a [EasySSO támogatási csapatához](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-bamboo-test-user"></a>EasySSO létrehozása a Bamboo test userhez
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a EasySSO for Bamboo-ban. A Bamboo EasySSO támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Bamboo EasySSO, a hitelesítés után létrejön egy újat.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a EasySSO for Bamboo-ban. A Bamboo EasySSO támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint **le van tiltva** . A felhasználók üzembe helyezésének engedélyezéséhez explicit módon ellenőriznie kell, hogy a EasySSO beépülő modul konfigurációjának általános szakaszában be van-e **kapcsolva a felhasználó létrehozása a sikeres bejelentkezés** lehetőségnél. Ha egy felhasználó még nem létezik a Bamboo EasySSO, a hitelesítés után létrejön egy újat.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+Ha azonban nem kívánja engedélyezni az automatikus felhasználó-kiépítés használatát a felhasználó első bejelentkezésekor, a felhasználóknak léteznie kell a háttérbeli felhasználói könyvtárakban a Bamboo-példány EasySSO, például az LDAP vagy a Atlassian Crowd.
+
+![Felhasználók átadása](./media/easysso-for-bamboo-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 

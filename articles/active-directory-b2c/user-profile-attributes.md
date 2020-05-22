@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057287"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738557"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
 
@@ -33,9 +33,9 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 - Attribútum leírása
 - Ha az attribútum elérhető a Azure Portal
 - Ha az attribútum felhasználói folyamatokban is használható
-- Ha az attribútum az [Azure ad egy adott technikai profiljában](active-directory-technical-profile.md) &lt;és a (szabályzattípushoz&gt;, &lt;OutputClaims&gt;vagy &lt;PersistedClaims&gt;) szakaszban is használható.
+- Ha az attribútum az [Azure ad egy adott technikai profiljában](active-directory-technical-profile.md) és a ( &lt; szabályzattípushoz &gt; , &lt; OutputClaims &gt; vagy &lt; PersistedClaims &gt; ) szakaszban is használható.
 
-|Name (Név)     |Típus     |Leírás|Azure Portal|Felhasználói folyamatok|Egyéni szabályzat|
+|Name     |Típus     |Leírás|Azure Portal|Felhasználói folyamatok|Egyéni szabályzat|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Logikai|Azt jelzi, hogy a felhasználói fiók engedélyezve van vagy le van tiltva: **igaz** , ha a fiók engedélyezve van, ellenkező esetben **hamis**.|Igen|Nem|Megőrzött, kimenet|
 |korcsoport        |Sztring|A felhasználó korcsoport. Lehetséges értékek: NULL, nem definiált, kisebb, felnőtt, NotAdult.|Igen|Nem|Megőrzött, kimenet|
@@ -54,13 +54,13 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 |Beosztás        |Sztring|A felhasználó beosztása. Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |immutableId     |Sztring|A helyszíni Active Directoryból áttelepített felhasználók számára általában használt azonosító.|Nem|Nem|Megőrzött, kimenet|
 |legalAgeGroupClassification|Sztring|Jogi korcsoport besorolása. Írásvédett, és a Beszerzésimennyiség és a consentProvidedForMinor tulajdonságok alapján számítható ki. Megengedett értékek: NULL, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult és Adult.|Igen|Nem|Megőrzött, kimenet|
-|<sup>1</sup> . legalCountry  |Sztring|Ország jogi célokra.|Nem|Nem|Megőrzött, kimenet|
-|Levelezés            |Sztring|A felhasználó SMTP-címe, például: "bob@contoso.com". Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
+|<sup>1</sup> . legalCountry  |Sztring|Ország/régió jogi célokra.|Nem|Nem|Megőrzött, kimenet|
+|Levelezés            |Sztring|A felhasználó SMTP-címe, például: " bob@contoso.com ". Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
 |mailNickName    |Sztring|A felhasználó levelezési aliasa. Maximális hosszúság 64.|Nem|Nem|Megőrzött, kimenet|
 |mobil (mobiltelefon) |Sztring|A felhasználó elsődleges mobil telefonszáma. Maximális hosszúság 64.|Igen|Nem|Megőrzött, kimenet|
 |a netI           |Sztring|NET-azonosító.|Nem|Nem|Megőrzött, kimenet|
 |objectId        |Sztring|Globálisan egyedi azonosító (GUID), amely a felhasználó egyedi azonosítója. Példa: 12345678-9ABC-def0-1234-56789abcde. Csak olvasható, nem módosítható.|Csak olvasható|Igen|Bemenet, megőrzött, kimenet|
-|otherMails      |Karakterlánc-gyűjtemény|A felhasználóhoz tartozó további e-mail-címek listája. Példa: ["bob@contoso.com", "Robert@fabrikam.com"].|Igen (másodlagos e-mail)|Nem|Megőrzött, kimenet|
+|otherMails      |Karakterlánc-gyűjtemény|A felhasználóhoz tartozó további e-mail-címek listája. Példa: [" bob@contoso.com ", " Robert@fabrikam.com "].|Igen (másodlagos e-mail)|Nem|Megőrzött, kimenet|
 |jelszó        |Sztring|A helyi fiók jelszava a felhasználó létrehozásakor.|Nem|Nem|Kitartott|
 |passwordPolicies     |Sztring|A jelszó szabályzata. Ez egy olyan karakterlánc, amely különböző nevű nevet tartalmaz vesszővel elválasztva. azaz "DisablePasswordExpiration, DisableStrongPassword".|Nem|Nem|Megőrzött, kimenet|
 |physicalDeliveryOfficeName (officeLocation)|Sztring|Az iroda helye a felhasználó üzleti helyén. Maximális hosszúság 128.|Igen|Nem|Megőrzött, kimenet|
@@ -74,12 +74,12 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 |state           |Sztring|A felhasználó címe szerinti állam vagy tartomány. Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |streetAddress   |Sztring|A felhasználó üzletviteli helyének címe. Maximális hosszúság 1024.|Igen|Igen|Megőrzött, kimenet|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Sztring|A felhasználó másodlagos telefonszáma, amely a többtényezős hitelesítéshez használatos.|Igen|Nem|Megőrzött, kimenet|
-|<sup>1</sup> . strongAuthenticationEmailAddress|Sztring|A felhasználó SMTP-címe. Példa: "bob@contoso.com" Ez az attribútum a Felhasználónév-szabályzattal való bejelentkezéshez használatos a felhasználói e-mail-cím tárolásához. Az e-mail-cím, amelyet a rendszer a jelszó-visszaállítási folyamat során használ.|Igen|Nem|Megőrzött, kimenet|
+|<sup>1</sup> . strongAuthenticationEmailAddress|Sztring|A felhasználó SMTP-címe. Példa: " bob@contoso.com " Ez az attribútum a Felhasználónév-szabályzattal való bejelentkezéshez használatos a felhasználói e-mail-cím tárolásához. Az e-mail-cím, amelyet a rendszer a jelszó-visszaállítási folyamat során használ.|Igen|Nem|Megőrzött, kimenet|
 |<sup>1</sup> . strongAuthenticationPhoneNumber|Sztring|A felhasználó elsődleges telefonszáma, amely a többtényezős hitelesítéshez használatos.|Igen|Nem|Megőrzött, kimenet|
 |surname         |Sztring|A felhasználó vezetékneve (családi név vagy vezetéknév). Maximális hosszúság 64.|Igen|Igen|Megőrzött, kimenet|
 |telephoneNumber (businessPhones első bejegyzése)|Sztring|A felhasználó üzleti helyének elsődleges telefonszáma.|Igen|Nem|Megőrzött, kimenet|
 |userPrincipalName    |Sztring|A felhasználó egyszerű felhasználóneve (UPN). Az UPN a felhasználó Internet-stílusú bejelentkezési neve, amely az Internet standard RFC 822. A tartománynak jelen kell lennie a bérlő ellenőrzött tartományok gyűjteményében. Ez a tulajdonság a fiók létrehozásakor szükséges. Nem módosítható.|Nem|Nem|Bemenet, megőrzött, kimenet|
-|usageLocation   |Sztring|Olyan felhasználók számára szükséges, akik licenceket kapnak, mert az országok szolgáltatásainak rendelkezésre állásának ellenőrzését jogi követelmény okozta. Nem üres. Két betűs országkód (ISO standard 3166). Példák: "US", "JP" és "GB".|Igen|Nem|Megőrzött, kimenet|
+|usageLocation   |Sztring|Olyan felhasználók számára szükséges, akik licenceket kapnak, mert az országok/régiók szolgáltatásainak rendelkezésre állását jogi követelménynek tekintik. Nem üres. Két betűs ország/régió kódja (ISO standard 3166). Példák: "US", "JP" és "GB".|Igen|Nem|Megőrzött, kimenet|
 |userType        |Sztring|Karakterlánc-érték, amely a címtárban lévő felhasználói típusok besorolására használható. Az értéknek tagnak kell lennie. Csak olvasható.|Csak olvasható|Nem|Megőrzött, kimenet|
 |userState (externalUserState)<sup>2</sup>|Sztring|Csak az Azure AD B2B-fiók esetében jelzi, hogy a meghívás PendingAcceptance vagy elfogadva van-e.|Nem|Nem|Megőrzött, kimenet|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Megjeleníti a UserState tulajdonság legutóbbi módosításának időbélyegét.|Nem|Nem|Megőrzött, kimenet|

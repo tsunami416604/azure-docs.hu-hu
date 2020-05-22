@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f54c296575b256339f4c22708c06e3579720e00
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647797"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742935"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
 > [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
+> A MSIX-alkalmazás csatolása jelenleg privát előzetes verzióban érhető el.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások csatlakoztatását egy Windows rendszerű virtuális asztali környezetben.

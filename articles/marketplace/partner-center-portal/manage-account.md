@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f5e4515cfbacb656f60492613b5379c0bde60244
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208397"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736024"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -64,7 +64,7 @@ A kapcsolattartási adatok szakaszban megtekintheti a **közzétevő megjelenít
 
 #### <a name="payout-account"></a>Kifizetési fiók
 
-A kifizetési fiók az a bankszámla, amelynek a bevételeit az értékesítések küldik. Ennek a bankszámlának ugyanabban az országban kell lennie, ahol a partner Center-fiókot regisztrálta.
+A kifizetési fiók az a bankszámla, amelynek a bevételeit az értékesítések küldik. Ennek a bankszámlának ugyanabban az országban/régióban kell lennie, ahol regisztrálta a partner Center-fiókját.
 
 A kifizetési fiók beállítása:
 
@@ -80,21 +80,21 @@ A kifizetési fiók beállítása:
 
 Tekintse át az aktuális adózási profil állapotát, és ellenőrizze, hogy a megfelelő **entitás típusa** és az **adóhatóság információi** láthatók-e. Válassza a **Szerkesztés** lehetőséget a szükséges űrlapok frissítéséhez vagy befejezéséhez.
 
-Az adó állapotának megállapításához meg kell adnia a tartózkodási országát és az állampolgárságot, és el kell végeznie az országához/régiójához tartozó megfelelő adózási formákat.
+Az adó állapotának megállapításához meg kell adnia a lakóhely és az állampolgárság országát/régióját, és el kell végeznie az országához/régiójához tartozó megfelelő adózási formákat.
 
-A tartózkodási helytől vagy az állampolgárságtól függetlenül a Microsofton keresztül bármely ajánlat értékesítéséhez ki kell töltenie a Egyesült Államokt. Azoknak a partnereknek, akik bizonyos Egyesült Államok tartózkodási követelményeknek eleget tesznek, ki kell tölteniük egy IRS 9-es űrlapot. A Egyesült Államokon kívüli többi partnernek ki kell töltenie egy IRS-8 űrlapot. Ezeket az űrlapokat online is kitöltheti az adózási profil befejezése után.
+A tartózkodási hely vagy az állampolgárság országa vagy régiója, illetve a Microsoft által kínált ajánlatok eladása előtt ki kell töltenie Egyesült Államok. Azoknak a partnereknek, akik bizonyos Egyesült Államok tartózkodási követelményeknek eleget tesznek, ki kell tölteniük egy IRS 9-es űrlapot. A Egyesült Államokon kívüli többi partnernek ki kell töltenie egy IRS-8 űrlapot. Ezeket az űrlapokat online is kitöltheti az adózási profil befejezése után.
 
 Egy Egyesült Államok egyedi adófizető-azonosító szám (vagy ITIN) nem szükséges a Microsofttól érkező fizetések fogadására, vagy az adó-szerződésből származó előnyök igénylésére.
 
 A partner Centerben elektronikus formában is elvégezheti és elküldheti az adó-formanyomtatványokat; a legtöbb esetben nem kell űrlapokat kinyomtatnia és e-maileket felvennie.
 
-A különböző országok és régiók esetében eltérő az adózási követelmények. Az adó összegének pontos összege attól függ, hogy milyen országokban és régiókban vásárolja meg az ajánlatait. A Microsoft egyes országokban az Ön nevében elvégezte az értékesítést és a használati adót. Ezeket az országokat az ajánlat listázásának folyamatában fogjuk azonosítani. Más országokban, attól függően, hogy hol van regisztrálva, előfordulhat, hogy az értékesítési és használati adót közvetlenül a helyi adózási hatóságnak kell elvégeznie. Emellett a kapott eladások bevétele jövedelemként is adóköteles lehet. Javasoljuk, hogy lépjen kapcsolatba az országa vagy régiója megfelelő hatóságánál, amely a legjobban segít meghatározni a Microsoft értékesítési tranzakcióinak megfelelő adózási adatokat.
+A különböző országok és régiók esetében eltérő az adózási követelmények. Az adó összegének pontos összege attól függ, hogy milyen országokban és régiókban vásárolja meg az ajánlatait. A Microsoft bizonyos országokban/régiókban az Ön nevében elvégezte az értékesítést és a használati adót. Ezek az országok/régiók az ajánlat listázásának folyamatában lesznek azonosítva. Más országokban/régiókban, attól függően, hogy hol van regisztrálva, előfordulhat, hogy az értékesítési és használati adót közvetlenül a helyi adózási szolgáltatónak kell elvégeznie. Emellett a kapott eladások bevétele jövedelemként is adóköteles lehet. Javasoljuk, hogy lépjen kapcsolatba az országa vagy régiója megfelelő hatóságánál, amely a legjobban segít meghatározni a Microsoft értékesítési tranzakcióinak megfelelő adózási adatokat.
 
 ##### <a name="withholding-rates"></a>Visszatartási díjak
-Az adózási űrlapokon beküldött adatok meghatározzák a megfelelő adó-visszatartási arányt. A visszatartási arány csak az Egyesült Államokba helyezett értékesítésekre vonatkozik; a nem USA-beli helyszínekre irányuló értékesítések nem tartoznak a forrásadó alá. A visszatartási arányok eltérőek, de a legtöbb fejlesztő számára a Egyesült Államokon kívüli regisztráció esetén az alapértelmezett érték 30%. Ha az Ön országa egy jövedelemadó-szerződéssel egyetért a Egyesült Államokával, csökkentheti ezt a mértéket.
+Az adózási űrlapokon beküldött adatok meghatározzák a megfelelő adó-visszatartási arányt. A visszatartási arány csak az Egyesült Államokba helyezett értékesítésekre vonatkozik; a nem USA-beli helyszínekre irányuló értékesítések nem tartoznak a forrásadó alá. A visszatartási arányok eltérőek, de a legtöbb fejlesztő számára a Egyesült Államokon kívüli regisztráció esetén az alapértelmezett érték 30%. Ha az országa/régiója egyetért a jövedelemadó-szerződéssel, akkor csökkentheti ezt a mértéket, ha a Egyesült Államok.
 
 ##### <a name="tax-treaty-benefits"></a>Adózási szerződés előnyei
-Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződés előnyeinek kihasználására. Ezek az előnyök országonként változnak, és lehetővé tehetik, hogy csökkentse a Microsoft által visszatartásra kerülő adók mennyiségét. Az adózási szerződés előnyeit a 8BEN űrlap II. részének befejezésével veheti igénybe. Javasoljuk, hogy az Ön országában vagy régiójában lévő megfelelő erőforrásokkal kommunikáljon annak megállapításához, hogy ezek az előnyök Önre vonatkoznak-e.
+Ha a Egyesült Államokon kívül esik, lehetősége lesz az adózási szerződés előnyeinek kihasználására. Ezek az előnyök országonként vagy régiónként eltérőek, és lehetővé tehetik a Microsoft által visszatartott adók mennyiségének csökkentését. Az adózási szerződés előnyeit a 8BEN űrlap II. részének befejezésével veheti igénybe. Javasoljuk, hogy az Ön országában vagy régiójában lévő megfelelő erőforrásokkal kommunikáljon annak megállapításához, hogy ezek az előnyök Önre vonatkoznak-e.
 
 [További információ a Windows app/Game Developers és az Azure Marketplace-közzétevők adózási adatairól](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
@@ -111,7 +111,7 @@ Miután beállította a kifizetési állapotot **a be**értékre, a rendszer min
 
 ### <a name="devices"></a>Eszközök
 
-Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [További információ](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [További információk](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
 ### <a name="tracking-guids"></a>Követési GUID-azonosítók
 
@@ -134,7 +134,7 @@ További információ: az Azure- [ügyfelek használatának nyomon követése a 
 
 Ha a & Power apps vagy a [dynamics 365 for Operations](./create-new-operations-offer.md) ajánlatra [vonatkozó Dynamics 365](./create-new-customer-engagement-offer.md) -et tesz közzé, akkor el kell végeznie a **Számlázási profilt**.
 
-A számlázási cím előre ki van töltve a jogi személyből, és később is frissíthető. Az ÁFA és az ÁFA-azonosító mezők megadása nem kötelező.  Az ország neve és a vállalat neve nem szerkeszthető.
+A számlázási cím előre ki van töltve a jogi személyből, és később is frissíthető. Az ÁFA és az ÁFA-azonosító mezők megadása nem kötelező.  Az ország/régió neve és a vállalat neve nem szerkeszthető.
 
 ## <a name="multi-user-account-management"></a>Többfelhasználós fiókok felügyelete
 

@@ -3,12 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900285"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740518"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -24,9 +24,9 @@ Ez a cikk azt ismerteti, hogyan zárhatók ki lemezek a replikáció során a he
 
 A táblázatból összefoglalt lemezek kizárhatók a replikációból.
 
-**Azure – Azure** | **VMware – Azure** | **Hyper-V – Azure** 
---- | --- | ---
-Igen | Igen | Igen 
+**Azure – Azure** | **VMware – Azure** | **Hyper-V – Azure** | **Fizikai kiszolgálóról az Azure-ba**
+--- | --- | --- | ---
+Igen | Igen | Igen | Igen
 
 ## <a name="exclude-limitations"></a>Korlátozások kizárása
 
@@ -179,7 +179,7 @@ A tervezett feladatátvétel (feladat-visszavétel) az Azure-ból a helyszíni H
 DB-Disk0-OS | Disk0 |   C:\ | Operációs rendszer lemeze.
 DB-Disk1 | Disk1 | D:\ | Az SQL rendszeradatbázis és a felhasználói Adatbázis1.
 DB-Disk2 (kizárt lemez) | Disk2 | E:\ | Ideiglenes fájlok.
-DB-Disk3 (kizárt lemez) | Disk3 | F:\ | SQL tempdb-adatbázis<br/><br/> Mappa elérési útja\)(F:\MSSQL\Data.
+DB-Disk3 (kizárt lemez) | Disk3 | F:\ | SQL tempdb-adatbázis<br/><br/> Mappa elérési útja (F:\MSSQL\Data \) .
 DB-Disk4 | Disk4 | G:\ | 2. felhasználói adatbázis
 
 

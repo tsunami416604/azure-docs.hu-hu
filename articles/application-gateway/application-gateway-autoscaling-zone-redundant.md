@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125230"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739481"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
-A Application Gateway és a webalkalmazási tűzfal (WAF) Standard_v2 és WAF_v2 SKU alatt is elérhető. A v2 SKU teljesítmény-fejlesztéseket biztosít, és támogatja a kritikus fontosságú új funkciókat, például az automatikus skálázást, a zónák redundanciát és a statikus VIP-címek támogatását. A standard és a WAF SKU meglévő szolgáltatásai továbbra is támogatottak lesznek az új v2 SKU-ban, és néhány kivétel szerepel az [összehasonlítás](#differences-with-v1-sku) szakaszban.
+A Application Gateway és a webalkalmazási tűzfal (WAF) Standard_v2 és WAF_v2 SKU alatt is elérhető. A v2 SKU teljesítmény-fejlesztéseket biztosít, és támogatja a kritikus fontosságú új funkciókat, például az automatikus skálázást, a zónák redundanciát és a statikus VIP-címek támogatását. A standard és a WAF SKU meglévő szolgáltatásai továbbra is támogatottak lesznek az új v2 SKU-ban, és néhány kivétel szerepel az [összehasonlítás](#differences-from-v1-sku) szakaszban.
 
 Az új v2 SKU a következő fejlesztéseket tartalmazza:
 
@@ -172,7 +172,9 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 > [!NOTE]
 > Az automatikus skálázási v2 SKU mostantól támogatja az [alapértelmezett állapot](application-gateway-probe-overview.md#default-health-probe) -ellenőrzéseket, hogy automatikusan figyelje a háttér-készlet összes erőforrásának állapotát, és kiemelje azokat a háttérbeli tagokat, amelyek nem megfelelőnek minősülnek. Az alapértelmezett állapot-mintavétel automatikusan konfigurálva van olyan backendekhez, amelyek nem rendelkeznek egyéni mintavételi konfigurációval. További információért lásd: [az Application Gateway Health-szondái](application-gateway-probe-overview.md).
 
-## <a name="differences-with-v1-sku"></a>Különbségek a v1 SKU-val
+## <a name="differences-from-v1-sku"></a>A v1 SKU-tól származó különbségek
+
+Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait ismerteti.
 
 |Különbség|Részletek|
 |--|--|

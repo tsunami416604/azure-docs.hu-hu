@@ -9,15 +9,15 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 397e1fd7695fd7e74e1f22959d0f9f24af7d1ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062642"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739606"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>A saját jelszavának alaphelyzetbe állításához regisztrálja az ellenőrzési módszer adatait
 
@@ -26,7 +26,7 @@ Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a
 A rendszergazdának be kell kapcsolnia ezt a funkciót, hogy regisztrálni tudja az adatait, és visszaállítson egy saját jelszót. Ha nem látja az **elfelejtettem a jelszavam** beállítást, az azt jelenti, hogy a rendszergazda nem kapcsolta be a szolgáltatást a szervezet számára. Ha úgy véli, hogy ez helytelen, segítségért forduljon az ügyfélszolgálathoz.
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak készült, akik a regisztrációt szeretnék használni az önkiszolgáló jelszó-visszaállításra. Ez azt jelenti, hogy a rendszergazda segítségének megkövetelése nélkül állíthatja alaphelyzetbe a saját alain@contoso.communkahelyi vagy iskolai jelszavát (például:). Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
+>Ez a cikk azoknak a felhasználóknak készült, akik a regisztrációt szeretnék használni az önkiszolgáló jelszó-visszaállításra. Ez azt jelenti, hogy a alain@contoso.com rendszergazda segítségének megkövetelése nélkül állíthatja alaphelyzetbe a saját munkahelyi vagy iskolai jelszavát (például:). Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
 
 ## <a name="set-up-your-password-reset-verification-method"></a>A jelszó-visszaállítás ellenőrzési módszerének beállítása
 

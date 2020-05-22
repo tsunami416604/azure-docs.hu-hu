@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed1f06e4747492c43d19a00c1091b2b4d7f7050f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253155"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741883"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>A My apps portál problémáinak elhárítása
 
@@ -47,7 +47,7 @@ Ha problémákat tapasztal a saját alkalmazások biztonságos bejelentkezési b
 
 Ha nem sikerül bejelentkeznie a **My apps** portálra, a következőket teheti meg:
 
-- Győződjön meg arról, hogy a megfelelő URL-címet használja. A szervezetnek https://myapps.microsoft.com vagy egy testreszabott lapnak kell lennie, például: https://myapps.microsoft.com/contoso.com.
+- Győződjön meg arról, hogy a megfelelő URL-címet használja. https://myapps.microsoft.comA szervezetnek vagy egy testreszabott lapnak kell lennie, például: https://myapps.microsoft.com/contoso.com .
 
 - Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md).
 

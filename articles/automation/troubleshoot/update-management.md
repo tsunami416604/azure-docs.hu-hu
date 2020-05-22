@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 64df2e0f17322f8e650ede9d4453d90c36252135
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680024"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735888"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management problémák elhárítása
 
@@ -50,7 +50,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A [hálózati konfiguráció](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
 
-* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Távolítsa el a munkavégző konfigurációt a [hibrid Runbook-feldolgozó eltávolítása helyszíni Windows-számítógépről](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy a [hibrid Runbook-](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)feldolgozó eltávolítása egy helyszíni Linux-számítógépről című témakör lépéseit követve. 
 
@@ -119,9 +119,9 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
 
 4. Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. 
+5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../automation-scope-configurations-update-management.md) határozza meg, hogy mely gépek vannak konfigurálva a Update Managementhoz. 
 
-6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek módjáról a következő témakörben talál további információt: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek módjáról a következő témakörben talál további információt: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 7. A munkaterületen futtassa ezt a lekérdezést.
 
