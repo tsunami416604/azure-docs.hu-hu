@@ -1,7 +1,7 @@
 - name: A kereskedelmi piactér dokumentációja
   href: index.yml
   items:
-    - name: A kereskedelmi piactér fejlesztési terve
+    - name: Kereskedelmi piactér – frissítések
       href: ./marketplace-roadmap.md
     - name: A kereskedelmi piactér szabályzatai és feltételei
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: Felhőpartnerportál
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: Migrálás a Cloud Partner Portalról a Partnerközpontba
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: Migrálás – gyakori kérdések
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: A portál bemutatása
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: Első lépések
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Újdonságok
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webes elemzés
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: Meghatározások
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuálisgép-ajánlat
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: Előfeltételek
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: Virtuálisgép-ajánlat létrehozása
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: Ajánlatbeállítási lap
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: Termékváltozatok lap
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: Tesztverzió lap
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Marketplace lap
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: Támogatási lap
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: Virtuális gép technikai eszközeinek létrehozása
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: VHD létrehozása
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: Gyakori VHD-létrehozási problémák
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: Kapcsolódás egy virtuális géphez
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: Virtuális gép konfigurálása
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Rendszerfelügyeleti webszolgáltatások
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: A rendszerfelügyeleti webszolgáltatások konfigurálása a virtuális gép létrehozása után
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: A virtuális gép üzembe helyezése
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: Felhasználói virtuális gép rendszerképének létrehozása
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: Key Vault-tanúsítvány létrehozása
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Key Vault üzembehelyezési sablonja
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: Virtuális gépek üzembe helyezése felhasználói VHD-ból
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD üzembehelyezési sablonja
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: Virtuális gépek üzembe helyezése a Marketplace-ről
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: Virtuálisgép-rendszerkép tanúsítása
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM öntesztelő ügyfél
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: SAS URI beszerzése
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: A SAS URL-címmel kapcsolatos gyakori problémák
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: Virtuálisgép-ajánlat közzététele
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: Létező ajánlat frissítése
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API-hivatkozás
       items:
         - name: Áttekintés
@@ -361,6 +294,8 @@
   items:
     - name: A kereskedelmi piactér áttekintése
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Migrálás – gyakori kérdések
+      href: ./cloud-partner-portal-migration-faq.md
     - name: Fiókkezelés
       items:
         - name: Új Partnerközpontfiók létrehozása

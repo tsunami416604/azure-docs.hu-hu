@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: Szinkronizálási szabály létrehozása és testre szabása
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect Sync v2 végpont API
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Az Azure AD Connect szinkronizálási szolgáltatáskezelő
           items:
             - name: A szolgáltatáskezelő műveletek lapjának kezelése

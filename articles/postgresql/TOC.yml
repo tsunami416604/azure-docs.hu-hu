@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: Az Azure AD-integráció konfigurálása
               href: howto-configure-sign-in-aad-authentication.md
+            - name: Csatlakozás felügyelt identitással
+              href: howto-connect-with-managed-identity.md
         - name: Optimalizálás
           items:
             - name: Tömeges beszúrások

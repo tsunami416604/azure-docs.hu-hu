@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Adat-előállító létrehozása – Resource Manager-sablon
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Biztonság – Felhasználó által kezelt kulcstitkosítás engedélyezése
-      href: quickstart-enable-customer-managed-key.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
 - name: Oktatóanyagok
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: Szerepkörök és engedélyek
       href: concepts-roles-permissions.md
-    - name: A díjszabás ismertetése
-      href: pricing-concepts.md
     - name: Elnevezési szabályok
       href: naming-rules.md
 - name: Útmutatók
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: SharePoint Online-lista
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: Hibatűrés
           href: copy-activity-fault-tolerance.md
+        - name: Adatkonzisztencia-ellenőrzés
+          href: copy-activity-data-consistency.md
         - name: Formátum- és tömörítéstámogatás (örökölt)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Adatok átalakítása
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Felügyelt identitás Data Factoryhoz
           href: data-factory-service-identity.md
+        - name: Ügyfél által felügyelt kulcstitkosítás
+          href: quickstart-enable-customer-managed-key.md
     - name: Monitorozás és kezelés
       items:
+        - name: Vizuális megfigyelés
+          href: monitor-visually.md
         - name: Monitorozás az Azure Monitorral
           href: monitor-using-azure-monitor.md
         - name: Monitorozás SDK-kkal
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: Megosztott saját üzemeltetésű integrációs modul
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: Saját üzemeltetésű integrációs modul automatizálási szkriptjei
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
         - name: SSIS-csomagok futtatása az Azure-ban az SSDT-ből
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Csatlakozás adatokhoz Windows-hitelesítéssel
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: Fájlok mentése és fájlmegosztásokhoz való kapcsolódás
-          href: ssis-azure-files-file-shares.md
         - name: Az Azure SSIS IR Enterprise Edition kiadásának üzembe helyezése
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Beépített és előre telepített összetevők az Azure-SSIS IR-en
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Az Azure SSIS IR telepítésének testreszabása
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Az Azure SSIS IR licencelt összetevőinek telepítése
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: SSISDB-naplók törlése rugalmas adatbázis-feladatokkal
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Felügyelt Azure SQL-példány használata az Azure-SSIS IR-rel
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSIS-feladatok migrálása az SSMS-sel
           href: how-to-migrate-ssis-job-ssms.md
     - name: Eseményindítók létrehozása
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: Átalakítás az Azure Databricks szolgáltatással
           href: solution-template-databricks-notebook.md
+    - name: A díjszabás ismertetése
+      items:
+        - name: Költségtervezés és a költségek kezelése
+          href: plan-manage-costs.md
+        - name: Díjszabási példák
+          href: pricing-concepts.md
     - name: Hibaelhárítási útmutatók
       items:
         - name: Tevékenységek

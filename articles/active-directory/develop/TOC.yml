@@ -28,7 +28,9 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript – Auth-kódfolyamat
+          href: quickstart-v2-javascript-auth-code.md
+        - name: JavaScript – Implicit folyamat
           href: quickstart-v2-javascript.md
     - name: Webalkalmazások
       items:
@@ -73,7 +75,9 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript – Auth-kódfolyamat
+          href: tutorial-v2-javascript-auth-code.md
+        - name: JavaScript – Implicit folyamat
           href: tutorial-v2-javascript-spa.md
     - name: Webalkalmazások
       items:
@@ -479,6 +483,10 @@
           href: active-directory-optional-claims.md
         - name: A jogkivonatok élettartamának beállítása
           href: active-directory-configurable-token-lifetimes.md
+        - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+        - name: Az ITP kezelése a Safariban
+          href: reference-third-party-cookies-spas.md
     - name: Alkalmazáskonfiguráció
       displayName: App configuration
       items:

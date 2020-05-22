@@ -12,6 +12,8 @@
       items:
         - name: Az Azure parancssori felületének használata
           href: kubernetes-walkthrough.md
+        - name: Azure PowerShell használatával
+          href: kubernetes-walkthrough-powershell.md
         - name: Az Azure Portal használata
           href: kubernetes-walkthrough-portal.md
         - name: ARM-sablon használata
@@ -225,7 +227,7 @@
         - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása
           href: api-server-authorized-ip-ranges.md
         - name: Központi telepítések ellenőrzése az Azure Policy használatával (előzetes verzió)
-          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
+          href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Fürt hitelesítő adatainak frissítése
           href: update-credentials.md
         - name: Fürt kimenő forgalmának korlátozása és szabályozása
@@ -263,6 +265,8 @@
       items:
         - name: AKS-fürt létrehozása
           href: windows-container-cli.md
+        - name: AKS-fürt létrehozása a PowerShell-lel
+          href: windows-container-powershell.md
         - name: Távoli csatlakozás
           href: rdp.md
         - name: Ismert korlátozások

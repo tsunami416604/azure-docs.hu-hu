@@ -240,10 +240,7 @@
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
             - name: Azure Kubernetes Service
-              items:
-                - name: Kubernetes (elavult)
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
+              href: app/kubernetes-codeless.md
             - name: Különálló – bármely környezet
               items:
                 - name: Java (előzetes verzió)
@@ -1000,8 +997,6 @@
           items:
             - name: Rendelkezésre állás
               href: app/monitor-web-app-availability.md
-            - name: Metrikákhoz kapcsolódó riasztások
-              href: app/alerts.md
         - name: Metrika riasztási szabályai
           items:
             - name: Metrikariasztások kezelése
@@ -1268,6 +1263,8 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights Connector
           href: platform/app-insights-connector.md
+        - name: AKS-hez készült Application Insights – kód nélküli
+          href: app/kubernetes.md
         - name: Docker-alkalmazások monitorozása
           href: app/docker.md
         - name: OMS-portál elavulása

@@ -42,8 +42,6 @@
         - name: 2. Felhasználói adatok kinyerése
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. Hangulat lekérése a felhasználó által kimondott szövegekből
-          href: tutorial-publish-settings.md
     - name: Az alkalmazás továbbfejlesztése
       items:
         - name: Bizonytalan előrejelzések javítása
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Egyéni entitáshivatkozás
       items:
-        - name: Gépi tanulással létrejött entitás
+        - name: Gépi tanulási entitás
           href: reference-entity-machine-learned-entity.md
         - name: Összetett entitás
           href: reference-entity-composite.md

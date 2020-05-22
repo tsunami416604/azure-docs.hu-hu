@@ -91,7 +91,7 @@
           items:
             - name: Hozzáférés korlátozása privát végpont használatával
               href: container-registry-private-link.md
-            - name: Szolgáltatás tűzfalszabályainak konfigurálása
+            - name: Nyilvános beállításjegyzék-hozzáférés konfigurálása
               href: container-registry-access-selected-networks.md
             - name: Hozzáférés korlátozása szolgáltatásvégpont használatával (előzetes verzió)
               href: container-registry-vnet.md

@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: A fürtök kapacitástervezése
           href: ./hdinsight-capacity-planning.md
+        - name: A processzormagkvóta növelésének kérése
+          href: ./quota-increase-request.md
         - name: Ajánlott fürtkezelési eljárások
           href: ./cluster-management-best-practices.md
         - name: Rendelkezésre állás és megbízhatóság
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Az Apache Oozie hibaelhárítása
               href: ./troubleshoot-oozie.md
+            - name: WebHCat-hibák megértése és megoldása
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Referencia
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: WebHCat-hibák megértése és megoldása
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: Segítség kérése a fórumokon
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: Díjkalkulátor
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Az Apache Spark-feladatok optimalizálása
           href: ./spark/apache-spark-perf.md
+        - name: Migrálás a Spark 2.3-as vagy 2.4-es verziójába
+          href: ./spark/migrate-versions.md
     - name: Útmutató
       items:
         - name: Eszközök használata
@@ -736,6 +740,8 @@
       items:
         - name: Ajánlott eljárások az átjárók használatához
           href: ./interactive-query/gateway-best-practices.md
+        - name: Méretezési irányelvek
+          href: ./interactive-query/sizing-guidelines.md
     - name: Útmutató
       items:
         - name: Fejlesztés
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Az Apache Tez alkalmazás lefagy
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP méretezési irányelvek
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Apache Hive LLAP-lekérdezések teljesítménye
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Lassú csökkentő

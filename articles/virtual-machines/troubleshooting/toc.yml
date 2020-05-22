@@ -77,6 +77,10 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Egy kulcsfontosságú szolgáltatás meghiúsult
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Rendszerindítási hiba elhárítása – Az állapot nem található
+          href: boot-error-status-not-found.md
+        - name: A Windows Update telepítési kapacitásának hibaelhárítása
+          href: windows-update-installation-capacity.md
         - name: A virtuális gép nem válaszol a helyi felhasználói és csoportszabályzat alkalmazásakor
           href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Nem rendszerindító lemez

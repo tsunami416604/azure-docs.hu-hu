@@ -4,15 +4,12 @@
   items:
     - name: Mi az az Azure Arc for Servers?
       href: ./servers/overview.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
 - name: Útmutatók
   items:
     - name: Csatlakozás az Azure Archoz
       items:
+        - name: A csatlakoztatott gépi ügynök áttekintése
+          href: ./servers/agent-overview.md
         - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
           href: ./servers/onboard-portal.md
         - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
@@ -23,3 +20,8 @@
       items:
         - name: Ügynök kezelése
           href: ./servers/manage-agent.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md

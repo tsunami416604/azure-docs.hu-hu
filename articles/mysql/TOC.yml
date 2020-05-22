@@ -276,6 +276,8 @@
       items:
         - name: Az Azure AD-integráció konfigurálása
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: Csatlakozás felügyelt identitással
+          href: howto-connect-with-managed-identity.md
     - name: Nyilvános hálózati hozzáférés megtagadása
       items:
         - name: Azure Portal

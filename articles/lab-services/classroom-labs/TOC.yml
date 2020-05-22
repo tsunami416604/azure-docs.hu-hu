@@ -118,10 +118,12 @@
       items:
         - name: Osztályterem-tesztkörnyezetek elérése
           href: how-to-use-classroom-lab.md
-        - name: Távoli asztali kapcsolat használata Linux rendszerű virtuális gépeken
+        - name: Kapcsolódás Linux rendszerű virtuális gépekhez
           href: how-to-use-remote-desktop-linux-student.md
         - name: 'Kapcsolódás virtuális géphez Mac gépekről, RDP használatával'
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: 'Kapcsolódás virtuális géphez Chromebookról, RDP használatával'
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Támogatási információk megtekintése (diák)

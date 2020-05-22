@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: A nagyvállalati szerződéses Azure Portal adminisztrációja
           href: ea-portal-administration.md
+        - name: Azure EA portál adminisztrációja a partnerek számára
+          href: ea-partner-portal-administration.md
+        - name: Azure Enterprise-átvitelek
+          href: ea-transfers.md
         - name: A Microsoft ügyfélszerződés EA-feladatai
           href: mca-enterprise-operations.md
         - name: Azure nagyvállalati szerződések és a módosításaik
           href: ea-portal-agreements.md
         - name: Nagyvállalati regisztrációs számlák
           href: ea-portal-enrollment-invoices.md
+        - name: Az Azure EA díjszabása
+          href: ea-pricing-overview.md
         - name: Azure Enterprise REST API-k
           href: ea-portal-rest-apis.md
         - name: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
           href: ea-portal-vm-reservations.md
         - name: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
           href: ea-portal-troubleshoot.md
+        - name: Azure Piactér
+          href: ea-azure-marketplace.md
 - name: Hibaelhárítás
   items:
     - name: Nem található előfizetés

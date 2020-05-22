@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure-előfizetések
               href: event-schema-subscriptions.md
+    - name: Partnertémakörök
+      items:
+        - name: A partnertémakörök áttekintése
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: Event Grid-partnerré válás
+          href: partner-onboarding-overview.md
     - name: Event Domains
       href: event-domains.md
     - name: Esemény sémaformátumai
@@ -186,6 +194,8 @@
   items:
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
+    - name: Feliratkozás Auth0-eseményekre
+      href: auth0-how-to.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
     - name: Kézbesíthetetlen üzenet és újrapróbálkozás
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: Biztonságos webhook AAD-vel
           href: secure-webhook-delivery.md
+        - name: Esemény kézbesítése felügyelt identitással
+          href: managed-service-identity.md
     - name: Hibaelhárítás
       items:
         - name: Diagnosztikai naplók engedélyezése

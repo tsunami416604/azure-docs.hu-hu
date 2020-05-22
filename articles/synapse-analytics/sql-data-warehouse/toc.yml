@@ -366,7 +366,7 @@
         - name: Irányítópultok és jelentések létrehozása
           items:
             - name: Vizualizáció a Power BI használatával
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: Hibaelhárítás
       items:
         - name: Kapcsolatok
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Adatkezelés
           href: sql-data-warehouse-partner-data-management.md
+        - name: A nyilvános előzetes verzió partnerei
+          href: sql-data-warehouse-partner-launch.md

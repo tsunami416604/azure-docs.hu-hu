@@ -7,7 +7,7 @@
       items:
         - name: Mi a Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
         - name: 1 – Előkészítés
           href: data-box-gateway-deploy-prep.md
@@ -29,7 +29,7 @@
           href: data-box-gateway-security.md
         - name: Használati esetek megtekintése
           href: data-box-gateway-use-cases.md
-    - name: 'Útmutató:'
+    - name: Útmutató
       items:
         - name: Kezelés
           items:
@@ -43,7 +43,7 @@
               href: data-box-gateway-manage-access-power-connectivity-mode.md
             - name: A PowerShell-lel
               href: data-box-gateway-connect-powershell-interface.md
-        - name: Monitoring
+        - name: Figyelés
           href: data-box-gateway-monitor.md
         - name: Hibaelhárítás
           href: data-box-gateway-troubleshoot.md
@@ -65,7 +65,7 @@
       items:
         - name: Mi az Azure Stack Edge?
           href: azure-stack-edge-overview.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
         - name: 1 – Előkészítés
           href: azure-stack-edge-deploy-prep.md
@@ -88,8 +88,12 @@
         - name: Biztonsági áttekintés
           href: azure-stack-edge-security.md
         - name: Specifikációk áttekintése
-          href: azure-stack-edge-technical-specifications-compliance.md
-    - name: 'Útmutató:'
+          items:
+            - name: Eszközspecifikációk
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: Tápkábel-specifikációk
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+    - name: Útmutató
       items:
         - name: 'C#-modul fejlesztése'
           href: azure-stack-edge-create-iot-edge-module.md
@@ -113,7 +117,7 @@
           href: azure-stack-edge-troubleshoot.md
         - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
           href: azure-stack-edge-contact-microsoft-support.md
-        - name: Monitoring
+        - name: Figyelés
           href: azure-stack-edge-monitor.md
         - name: Eszköz visszaküldése vagy cseréje
           href: azure-stack-edge-return-device.md
@@ -127,7 +131,7 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Általános rendelkezésre állás (GA)
           href: data-box-gateway-release-notes.md
-- name: Erőforrások
+- name: További források
   items:
     - name: 'Azure Stack Edge C#-mintamodulok (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'

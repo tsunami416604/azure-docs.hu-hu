@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Időjárás-szolgáltatás
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Maps Creator szolgáltatás
+          items:
+            - name: Alias szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: Átalakítási szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: Adathalmaz-szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: Funkcióállapot szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: Csempekészlet-szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS szolgáltatás
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Maps-fiókkezelés
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

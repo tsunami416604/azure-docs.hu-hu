@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: Szabálymotor beállítása
       href: front-door-tutorial-rules-engine.md
+    - name: Webalkalmazási tűzfal a Front Dooron
+      href: front-door-waf.md
 - name: Példák
   items:
     - name: Resource Manager-sablonok

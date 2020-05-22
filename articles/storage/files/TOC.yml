@@ -190,6 +190,14 @@
           href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
           href: ../common/storage-security-tls.md
+    - name: Átvitel
+      items:
+        - name: Első lépések – AzCopy
+          href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Használat a Files szolgáltatással
+          href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 'Konfigurálás, optimalizálás, hibaelhárítás – AzCopy'
+          href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Hibaelhárítás
       items:
         - name: Azure-fájlok hibaelhárítása Windows rendszeren

@@ -17,13 +17,13 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Üzembe helyezés IP-csoportokkal
+    - name: Üzembe helyezés IP-csoportokkal – ARM-sablon
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: Üzembe helyezés több címmel
+    - name: Üzembe helyezés több címmel – ARM-sablon
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Üzembe helyezés rendelkezésre állási zónákkal
+    - name: Üzembe helyezés az Availability Zones használatával – ARM-sablon
       displayName: Resource Manager
       href: deploy-template.md
 - name: Példák

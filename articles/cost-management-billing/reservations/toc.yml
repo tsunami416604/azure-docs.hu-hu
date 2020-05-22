@@ -6,7 +6,6 @@
     - name: Mi az az Azure Reservations?
       href: save-compute-costs-reservations.md
 - name: Útmutatók
-  expanded: true
   items:
     - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Cserére és visszatérítésre vonatkozó foglalások
           href: exchange-and-refund-azure-reservations.md
+    - name: Jelentési költségek
+      items:
+        - name: Foglalási tranzakciók megtekintése
+          href: view-purchase-refunds.md
+        - name: Foglalási költségek visszatérítése
+          href: charge-back-usage.md
     - name: Foglalások megújítása
       items:
         - name: Foglalás megújítása
           href: reservation-renew.md
 - name: Alapelvek
-  expanded: true
   items:
     - name: Foglalási javaslatok létrehozása
       href: reserved-instance-purchase-recommendations.md

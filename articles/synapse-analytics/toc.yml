@@ -25,9 +25,13 @@
         - name: Apache Spark-notebook létrehozása webes eszközök használatával
           href: quickstart-apache-spark-notebook.md
         - name: Apache Spark-készlet létrehozása az Azure Portal használatával
-          href: quickstart-create-apache-spark-pool.md
-        - name: SQL-készlet létrehozása
-          href: quickstart-create-sql-pool.md
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Apache Spark-készlet létrehozása a Synapse Studio használatával
+          href: quickstart-create-apache-spark-pool-studio.md
+        - name: SQL-készlet létrehozása az Azure Portal használatával
+          href: quickstart-create-sql-pool-portal.md
+        - name: SQL-készlet létrehozása a Synapse Studio használatával
+          href: quickstart-create-sql-pool-studio.md
     - name: Adatok betöltése SQL-készletek használatával
       items:
         - name: COPY utasítás
@@ -308,7 +312,7 @@
                   href: sql/develop-storage-files-overview.md
                 - name: Tárterület hozzáférés-vezérlése
                   href: sql/develop-storage-files-storage-access-control.md
-                - name: Spark-táblák
+                - name: Apache Spark az Azure Synapse külső táblákhoz
                   href: sql/develop-storage-files-spark-tables.md
         - name: Számítási feladatok kezelése
           items:
@@ -328,8 +332,16 @@
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse Link
       items:
+        - name: Synapse Link az Azure Cosmos DB-hez
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Elemzési tár – áttekintés
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: A Synapse Link támogatott funkciói
           href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Synapse Link – GYIK
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: A Synapse Link használati esetei
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Eszközök integrációja (AI, ETL, BI)'
       items:
         - name: Az Azure Synapse Analytics Studio hibaelhárítása
@@ -414,6 +426,8 @@
       items:
         - name: Synapse Link
           items:
+            - name: A Synapse Link konfigurálása
+              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Csatlakozás a Cosmos DB-hez készült Azure Synapse Linkhez
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Cosmos DB elemzési tár lekérdezése az Azure Synapse Analyticshez készült Apache Sparkkal
@@ -860,14 +874,16 @@
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Funkciókérések
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: Fórum
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Funkciókérések
-      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: Kérdések és válaszok
+      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

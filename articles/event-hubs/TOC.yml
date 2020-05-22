@@ -133,6 +133,8 @@
   items:
     - name: Áthelyezés régiók között
       href: move-across-regions.md
+    - name: Partíciók dinamikus hozzáadása
+      href: dynamically-add-partitions.md
     - name: A Blob Storage használata ellenőrzőpont-tárolóként az Azure Stack Hubon
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: Virtuális hálózati szolgáltatásvégpontok konfigurálása
           href: event-hubs-service-endpoints.md
-        - name: Privát végpontok konfigurálása (előzetes verzió)
+        - name: Privát végpontok konfigurálása
           href: private-link-service.md
         - name: Ügyfél által felügyelt kulcsok konfigurálása
           href: configure-customer-managed-key.md

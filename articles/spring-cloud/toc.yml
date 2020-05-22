@@ -32,6 +32,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: Alkalmazás kötése az Azure MySQL-hez
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: A Circuit Breaker irányítópultja az Azure Spring Clouddal
+      href: spring-cloud-tutorial-circuit-breaker.md
     - name: Egyéni DNS-név leképezése az Azure Spring Cloudba
       href: spring-cloud-tutorial-custom-domain.md
     - name: IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
@@ -69,7 +71,6 @@
       href: spring-cloud-howto-log-streaming.md
     - name: Állandó tárolók használata az Azure Spring Cloudban
       href: spring-cloud-howto-persistent-storage.md
-    - name: DevOps-telepítés az Azure Spring Cloudba
     - name: Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
       href: spring-cloud-howto-integrate-azure-load-balancers.md
 - name: DevOps-telepítés az Azure Spring Cloudba

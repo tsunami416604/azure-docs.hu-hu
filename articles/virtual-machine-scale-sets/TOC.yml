@@ -60,9 +60,39 @@
 - name: Példák
   items:
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Virtuálisgép-méretezési csoport létrehozása
+          href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Méretezési csoport létrehozása egyéni virtuálisgép-rendszerképből
+          href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
+        - name: Alkalmazások telepítése méretezési csoportokban
+          href: ./scripts/cli-sample-install-apps.md
+        - name: Lemezek létrehozása és méretezési csoporthoz való csatolása
+          href: ./scripts/cli-sample-attach-disks.md
+        - name: Gazdagépalapú automatikus skálázás engedélyezése
+          href: ./scripts/cli-sample-enable-autoscale.md
+        - name: Egyzónás méretezési csoport létrehozása
+          href: ./scripts/cli-sample-single-availability-zone-scale-set.md
+        - name: Zónaredundáns méretezési csoport létrehozása
+          href: ./scripts/cli-sample-zone-redundant-scale-set.md
     - name: PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Egyszerű virtuálisgép-méretezési csoport létrehozása
+          href: ./scripts/powershell-sample-create-simple-scale-set.md
+        - name: Teljes virtuálisgép-méretezési csoport létrehozása
+          href: ./scripts/powershell-sample-create-complete-scale-set.md
+        - name: Méretezési csoport létrehozása egyéni virtuálisgép-rendszerképből
+          href: ./scripts/powershell-sample-create-scale-set-from-custom-image.md
+        - name: Alkalmazások telepítése méretezési csoportokban
+          href: ./scripts/powershell-sample-install-apps.md
+        - name: Lemezek létrehozása és méretezési csoporthoz való csatolása
+          href: ./scripts/powershell-sample-attach-disks.md
+        - name: Gazdagépalapú automatikus skálázás engedélyezése
+          href: ./scripts/powershell-sample-enable-autoscale.md
+        - name: Egyzónás méretezési csoport létrehozása
+          href: ./scripts/powershell-single-av-zone-scale-set.md
+        - name: Zónaredundáns méretezési csoport létrehozása
+          href: ./scripts/powershell-sample-zone-redundant-scale-set.md
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md

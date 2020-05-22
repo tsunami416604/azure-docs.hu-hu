@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blobtárolóban tárolt beszéd felismerése
           href: quickstarts/from-blob.md
+        - name: Kiejtés értékelése referenciabemenettel
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Útmutatók
       items:
         - name: Beszédfelismerési mód kiválasztása
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: A Custom Speech pontosságának értékelése
           href: how-to-custom-speech-evaluate-data.md
+        - name: A Custom Speech pontosságának javítása
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Modell betanítása a Custom Speech szolgáltatáshoz
           href: how-to-custom-speech-train-model.md
         - name: Egyéni modell üzembe helyezése

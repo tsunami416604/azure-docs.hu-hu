@@ -30,6 +30,8 @@
   items:
     - name: Azure-erőforrások
       href: Concepts/azure-resources.md
+    - name: Együttműködés másokkal
+      href: Concepts/role-based-access-control.md
     - name: Tudásbázis tervezése
       items:
         - name: Nyelvekhez
@@ -107,10 +109,6 @@
     - name: Tudásbázis lekérdezése
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: Használat ügyfélalkalmazással
-      items:
-        - name: LUIS és QnA Maker
-          href: Tutorials/integrate-qnamaker-luis.md
     - name: Elemzés és telemetria
       href: How-To/get-analytics-knowledge-base.md
     - name: A REST API-k használata
@@ -155,6 +153,8 @@
       href: Overview/language-support.md
     - name: Korlátok
       href: limits.md
+    - name: Szerepköralapú hozzáférés-vezérlés (RBAC)
+      href: reference-role-based-access-control.md
     - name: Hibaelhárítás
       href: troubleshooting.md
     - name: Szolgáltatáskonfiguráció

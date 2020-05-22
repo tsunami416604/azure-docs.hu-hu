@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83587476"
+  ms.locfileid: "83641879"
 landingContent:
 - title: Az External Identities ismertetése
   linkLists:
@@ -27,6 +27,18 @@ landingContent:
       url: compare-with-b2c.md
     - text: Mi a B2B vendégfelhasználói hozzáférés?
       url: what-is-b2b.md
+- title: Önkiszolgáló regisztráció (előzetes verzió)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az önkiszolgáló regisztráció?
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Önkiszolgáló regisztráció felhasználói folyamatának hozzáadása
+      url: self-service-sign-up-user-flow.md
+    - text: Egyéni attribútumok meghatározása felhasználói folyamatokhoz
+      url: user-flow-add-custom-attributes.md
 - title: B2B-vendégfelhasználók meghívása
   linkLists:
   - linkListType: concept

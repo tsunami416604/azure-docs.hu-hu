@@ -4,8 +4,13 @@
   items:
     - name: Mi az az Azure Firewall Manager?
       href: overview.md
-- name: oktatóanyagokat
+- name: Rövid útmutatók
   expanded: true
+  items:
+    - name: Virtuális központ védelme
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: Oktatóanyagok
   items:
     - name: A virtuális WAN biztonságossá tétele – portál
       href: secure-cloud-network.md
