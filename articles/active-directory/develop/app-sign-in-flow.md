@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584349"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772199"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Alkalmazás-bejelentkezési folyamat a Microsoft Identity platformmal
 
@@ -29,7 +29,7 @@ Ez a témakör a Microsoft Identity platformot használó webes, asztali és mob
 Amikor egy felhasználó egy webalkalmazáshoz navigál a böngészőben, a következők történnek:
 
 * A webalkalmazás meghatározza, hogy a felhasználó hitelesítése megtörtént-e.
-* Ha a felhasználó nincs hitelesítve, a webalkalmazás delegálja az Azure AD-t a felhasználónak való bejelentkezéshez. A bejelentkezés megfelel a szervezet házirendjének, ami azt jelenti, hogy a felhasználónak meg kell adnia a hitelesítő adatait a többtényezős hitelesítés használatával, vagy egyáltalán nem kell jelszót használnia (például a Windows Hello használatával).
+* Ha a felhasználó nincs hitelesítve, a webalkalmazás delegálja az Azure AD-t a felhasználónak való bejelentkezéshez. A bejelentkezés megfelel a szervezet házirendjének, ami azt jelenti, hogy a felhasználónak meg kell adnia a hitelesítő adatait a [többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md) (más néven kétfaktoros hitelesítés vagy 2FA) használatával, vagy nem használ jelszót (például a Windows Hello használatával).
 * A felhasználónak meg kell adnia a hozzáférést az ügyfélalkalmazás által igényelt hozzáféréshez. Ezért kell regisztrálni az ügyfélalkalmazások Azure AD-ben való regisztrálását, hogy a Microsoft Identity platform olyan jogkivonatokat nyújtson, amelyeknek a felhasználó beleegyezett a hozzáférésbe.
 
 A felhasználó sikeres hitelesítése után:
@@ -46,7 +46,7 @@ A következő adatsor összefoglalja ezt az interakciót:
 
 A webalkalmazás-fejlesztők jelezhetik, hogy az összes vagy csak bizonyos lapok hitelesítést igényelnek-e. Az ASP.NET/ASP.NET Core-ban például az `[Authorize]` attribútum a vezérlő műveleteihez való hozzáadásával valósítható meg.
 
-Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását tartalmazó munkamenet-cookie jelenlétét vizsgálja. Ha a cookie nincs jelen, a ASP.NET átirányítja a hitelesítést a megadott identitás-szolgáltatóhoz. Ha az identitás szolgáltatója Azure AD, a webalkalmazás átirányítja a hitelesítést `https://login.microsoftonline.com`a szolgáltatásba, amely megjeleníti a bejelentkezési párbeszédpanelt.
+Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását tartalmazó munkamenet-cookie jelenlétét vizsgálja. Ha a cookie nincs jelen, a ASP.NET átirányítja a hitelesítést a megadott identitás-szolgáltatóhoz. Ha az identitás szolgáltatója Azure AD, a webalkalmazás átirányítja a hitelesítést a szolgáltatásba `https://login.microsoftonline.com` , amely megjeleníti a bejelentkezési párbeszédpanelt.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>A webalkalmazások bejelentkeznek a Microsoft Identity platformba, és jogkivonatot szereznek be
 

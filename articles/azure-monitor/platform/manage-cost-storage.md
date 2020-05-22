@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6e6be4cd0f8053d356183a75c5a012dee0bd8c68
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196597"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771315"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -92,14 +92,20 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt árképzési szintek
 
-Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a Azure Security Center által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
+Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek, 2018. április 2. előtt, vagy egy, a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **különálló (GB-onként)** és **/node (OMS)**.  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a [Azure Security Center](https://docs.microsoft.com/azure/security-center/)által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek esetében a felhasználó által konfigurálható megőrzési idő 30 – 730 nap.
 
 A/csomópontok díjszabási szintjei a figyelt virtuális gépeken (csomópontokon) óránkénti részletességgel jelennek meg. Minden figyelt csomópont esetében a munkaterület 500 MB adatmennyiséget foglal le naponta, amely nem számlázható. Ez a foglalás a munkaterület szintjén összesítve történik. Az összesített napi adatmennyiség fölött betöltött adatokat GB-onként számítjuk fel adatmennyiségként. Vegye figyelembe, hogy a számlán a szolgáltatás Log Analytics használat **Insight and Analytics** lesz, ha a munkaterület a csomópontok közötti díjszabási szinten van. 
 
 > [!TIP]
 > Ha a munkaterület a **csomópontok** díjszabási szintjéhez fér hozzá, de azt szeretné tudni, hogy az utólagos elszámolású szinten olcsóbb-e, akkor [az alábbi lekérdezéssel](#evaluating-the-legacy-per-node-pricing-tier) egyszerűen kérhet javaslatot. 
 
-A 2016. április előtt létrehozott munkaterületek az eredeti **standard** és **prémium** szintű díjszabáshoz is hozzáférnek, amely a 30 és 365 nap rögzített adatmegőrzéssel rendelkezik. Nem hozhatók létre új munkaterületek a **standard** vagy a **prémium** szintű díjszabásban, és ha a munkaterületet kihelyezték ezekből a rétegekből, nem helyezhető vissza. 
+A 2016. április előtt létrehozott munkaterületek az eredeti **standard** és **prémium** szintű díjszabáshoz is hozzáférnek, amely a 30 és 365 nap rögzített adatmegőrzéssel rendelkezik. Nem hozhatók létre új munkaterületek a **standard** vagy a **prémium** szintű díjszabásban, és ha a munkaterületet kihelyezték ezekből a rétegekből, nem helyezhető vissza.
+
+Vannak olyan viselkedések is, amelyek az örökölt Log Analytics rétegek használata és a használat számlázása [Azure Security Center](https://docs.microsoft.com/azure/security-center/). 
+
+1. Ha a munkaterület az örökölt standard vagy prémium szinten található, Azure Security Center számlázása csak Log Analytics adatfeldolgozás esetén történik, nem pedig csomópont.
+2. Ha a munkaterület a csomópontok közötti örökölt, akkor a Azure Security Center az aktuális [Azure Security Center node-alapú díjszabási modell](https://azure.microsoft.com/pricing/details/security-center/)alapján számítjuk fel. 
+3. Más díjszabási csomagokban (beleértve a kapacitás-foglalásokat is), ha a Azure Security Center 2017. június 19. előtt engedélyezték, Azure Security Center számlázása csak Log Analytics adatfeldolgozás esetén történik. Ellenkező esetben a Azure Security Center a jelenlegi Azure Security Center node-alapú díjszabási modell alapján számítjuk fel.
 
 Az árképzési szintek korlátozásait [itt](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#log-analytics-workspaces)találja.
 
@@ -125,7 +131,7 @@ A megőrzési idő csökkentése után a legrégebbi adatok eltávolítása elő
 A megőrzés a paraméter használatával is [beállítható Azure Resource Manageron keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `retentionInDays` . Emellett, ha az adatmegőrzést 30 napra állítja be, a paraméter használatával azonnal törölheti a régebbi adatok törlését, `immediatePurgeDataOn30Days` ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a funkció csak Azure Resource Manageron keresztül érhető el. 
 
 
-Alapértelmezés szerint a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn a 90 napra, és ez a 90 nap megtartása esetén nem számítunk fel díjat. Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
+Alapértelmezés szerint 90 a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn, és ez a 90 nap megtartása esetén nem számít fel díjat. Ha a munkaterület megtartása 90 nap fölé emelkedik, az adattípusok megőrzése is megnövekszik.  Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
 
 A munkaterületen alapuló Application Insights-erőforrások (,,,,,,,, és) adattípusai `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` alapértelmezés szerint `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` `AppTraces` 90 napra is megmaradnak, és ez a 90 nap megtartása esetén nem számítunk fel díjat. A megőrzésük adattípusú funkció használatával állítható be. 
 

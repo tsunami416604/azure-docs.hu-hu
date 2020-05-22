@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3ed3db184174d0a383c5c1fbd85e69d9fef0da44
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726910"
+ms.locfileid: "83757586"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -413,11 +413,11 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 ```python
     batch_client = BatchServiceClient(
     credentials,
-    base_url=BATCH_ACCOUNT_URL
+    batch_url=BATCH_ACCOUNT_URL
 )
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 

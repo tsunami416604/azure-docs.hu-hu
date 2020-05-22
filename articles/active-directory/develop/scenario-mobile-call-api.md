@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882692"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771740"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
 
@@ -35,7 +35,7 @@ A MSAL a következő értékeket biztosítja:
 - `TenantId`annak a bérlőnek az azonosítója, amelybe a felhasználó bejelentkezett. Azure Active Directory (Azure AD) B2B-ben lévő vendég felhasználók esetében ez az érték azonosítja azt a bérlőt, ahol a felhasználó bejelentkezett. Az érték nem azonosítja a felhasználó otthoni bérlőjét.  
 - `Scopes`a tokenhez megadott hatóköröket jelzi. A megadott hatókörök lehetnek a kért hatókörök részhalmazai.
 
-A MSAL egy `Account` érték absztrakcióját is biztosítja. Az `Account` érték az aktuális felhasználó bejelentkezett fiókját jelöli:
+A MSAL egy érték absztrakcióját is biztosítja `Account` . Az `Account` érték az aktuális felhasználó bejelentkezett fiókját jelöli:
 
 - `HomeAccountIdentifier`a felhasználó otthoni bérlőjét azonosítja.
 - `UserName`a felhasználó elsődleges felhasználóneve. Ez az érték Azure AD B2C felhasználók számára üres lehet.
@@ -87,7 +87,7 @@ A hozzáférési jogkivonat meghívása után meghívhat egy webes API-t. Az alk
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL iOS és macOS rendszerekre
 
-A jogkivonatok beszerzésének módszerei `MSALResult` egy objektumot adnak vissza. `MSALResult`egy `accessToken` tulajdonság közzététele. A használatával `accessToken` webes API-t hívhat meg. A védett webes API elérésének meghívása előtt adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez.
+A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult`egy tulajdonság közzététele `accessToken` . A használatával `accessToken` webes API-t hívhat meg. A védett webes API elérésének meghívása előtt adja hozzá ezt a tulajdonságot a HTTP-engedélyezési fejléchez.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -125,7 +125,7 @@ Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell me
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Több API meghívása növekményes beleegyezettés és feltételes hozzáférés használatával
 
-Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor a felhasználóhoz tartozó jogkivonat beszerzése után a felhasználó hitelesítő adatainak ismételt megadásával `AcquireTokenSilent` megkeresheti a felhasználót a jogkivonat lekéréséhez:
+Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor a felhasználóhoz tartozó jogkivonat beszerzése után a felhasználó hitelesítő adatainak ismételt megadásával megkeresheti a felhasználót a `AcquireTokenSilent` jogkivonat lekéréséhez:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 A beavatkozásra akkor van szükség, ha:
 
 - A felhasználó jóváhagyta az első API-t, de most hozzá kell járulnia további hatókörökhöz. Ebben az esetben növekményes beleegyezett.
-- Az első API-nak nincs szüksége többtényezős hitelesítésre, de a következő API-t használja.
+- Az első API-nak nincs szüksége a [többtényezős hitelesítésre](../authentication/concept-mfa-howitworks.md), de a következő API-t használja.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

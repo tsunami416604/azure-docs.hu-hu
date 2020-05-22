@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203488"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772836"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 
@@ -28,11 +28,11 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service va
 1. Lépjen [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portal. Ha szükséges, jelentkezzen be a Microsoft-fiók.
 1. Válassza az **új regisztráció**lehetőséget, majd adja meg az alkalmazás nevét.
 1. A **támogatott fióktípus**területen válassza a **fiókok bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő) és a személyes Microsoft-fiókok (például Skype, Xbox) lehetőséget.**
-1. Az **átirányítási URI**-k területen válassza a web `https://<app-domain-name>/.auth/login/aad/callback`lehetőséget, majd írja be a **következőt**:. Cserélje le * \<az App-domain-name>nevet* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
+1. Az **átirányítási URI**-k területen válassza a Web lehetőséget, majd írja be a **következőt**: `https://<app-domain-name>/.auth/login/aad/callback` . Cserélje le az * \< app-domain-name>nevet* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
 
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Erre később még szüksége lesz.
-1. A bal oldali panelen válassza a **tanúsítványok & titkos kulcsok** > **új ügyfél titka**lehetőséget. Adja meg a leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
+1. A bal oldali panelen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka**lehetőséget. Adja meg a leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
 1. Másolja a **tanúsítványok & titkok** lapon megjelenő értéket. Miután elhagyta a lapot, nem jelenik meg újra.
 
     > [!IMPORTANT]
@@ -41,9 +41,9 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service va
 ## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Microsoft-fiókadatok hozzáadása a app Service-alkalmazáshoz
 
 1. Nyissa meg az alkalmazást a [Azure Portalban].
-1. Válassza a **Beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
-1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. Válassza **Advanced** a speciális **felügyeleti mód**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. A **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** **kiállítói URL-cím** mezőhöz használható.
-1. Kattintson az **OK** gombra.
+1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. Válassza **Advanced** a speciális **felügyeleti mód**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** A **kiállítói URL-cím** mezőhöz használható.
+1. Válassza az **OK** lehetőséget.
 
    App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
 

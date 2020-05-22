@@ -1,14 +1,14 @@
 ---
 title: Támogatott Resource Manager-erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
-ms.date: 05/16/2020
+ms.date: 05/21/2020
 ms.topic: reference
-ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655872"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770584"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -217,11 +217,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. hardwaresecuritymodules/dedicatedhsms
 - Microsoft. hdinsight/fürtök
 - Microsoft. healthcareapis/szolgáltatások
+- Microsoft. healthcareapis/szolgáltatások/privateendpointconnections
 - Microsoft. hybridcompute/gépek
 - Microsoft. hybridcompute/gépek/bővítmények
 - Microsoft. hybriddata/datamanagers
-- Microsoft. Hydra/összetevők
-- Microsoft. Hydra/networkscopes
 - Microsoft. importexport/feladatok
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. bepillantások/actiongroups
@@ -361,9 +360,6 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. portalsdk/rootresources
 - Microsoft. powerbi/workspacecollections
 - Microsoft. powerbidedicated/kapacitások
-- Microsoft. projectarcadia/munkaterületek
-- Microsoft. projectarcadia/munkaterületek/sparkcomputes
-- Microsoft. projectarcadia/munkaterületek/sqlcomputes
 - Microsoft. projectbabylon/fiókok
 - Microsoft. Quantum/munkaterületek
 - Microsoft. recoveryservices szolgáltatónál/tárolók
@@ -440,8 +436,6 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. vmwarecloudsimple/virtualmachines
 - Microsoft. vmwareonazure/privateclouds
 - Microsoft. vmwarevirtustream/privateclouds
-- Microsoft. vnfmanager/eszközök
-- Microsoft. vnfmanager/vnfs
 - Microsoft. VSOnline/fiókok
 - Microsoft. VSOnline/csomagok
 - Microsoft. Web/apimanagementaccounts/API-k

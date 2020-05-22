@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09fa22d33377dfcbafd84f0caeb5f33a575b1bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681661"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759132"
 ---
 # <a name="textures"></a>Textúrák
 
@@ -34,16 +34,16 @@ Ha egy textúrát kétszer tölt be ugyanazzal az URI-val, akkor ugyanazt a text
 
 A modellek betöltéséhez hasonlóan két változatban kell foglalkoznia a forrás blob Storage-ban található textúra-objektummal:
 
-* A textúrát az SAS URI-ja tudja kezelni. A megfelelő betöltési `LoadTextureFromSASAsync` függvény `LoadTextureFromSASParams`paraméterrel van ellátva. A [beépített textúrák](../overview/features/sky.md#built-in-environment-maps)betöltésekor ezt a változatot is használhatja.
-* A textúrát közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben `LoadTextureAsync` a megfelelő betöltési függvény `LoadTextureParams`a paraméter.
+* A textúrát az SAS URI-ja tudja kezelni. A megfelelő betöltési függvény `LoadTextureFromSASAsync` paraméterrel van ellátva `LoadTextureFromSASParams` . A [beépített textúrák](../overview/features/sky.md#built-in-environment-maps)betöltésekor ezt a változatot is használhatja.
+* A textúrát közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben a megfelelő betöltési függvény a `LoadTextureAsync` paraméter `LoadTextureParams` .
 
 Az alábbi mintakód bemutatja, hogyan tölthető be egy textúra az SAS URI-n keresztül (vagy beépített textúra) – vegye figyelembe, hogy csak a loading Function/paraméter különbözik a másik esettől:
 
-``` cs
+```cs
 LoadTextureAsync _textureLoad = null;
 void LoadMyTexture(AzureSession session, string textureUri)
 {
-    _textureLoad = session.Actions.LoadTextureAsync(new LoadTextureParams(textureUri, TextureType.Texture2D));
+    _textureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams(textureUri, TextureType.Texture2D));
     _textureLoad.Completed +=
         (LoadTextureAsync res) =>
         {
@@ -59,6 +59,28 @@ void LoadMyTexture(AzureSession session, string textureUri)
         };
 }
 ```
+
+```cpp
+void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
+{
+    LoadTextureFromSASParams params;
+    params.TextureType = TextureType::Texture2D;
+    params.TextureUrl = std::move(textureUri);
+    ApiHandle<LoadTextureAsync> textureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
+    textureLoad->Completed([](ApiHandle<LoadTextureAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            //use res->Result()
+        }
+        else
+        {
+            printf("Texture loading failed!");
+        }
+    });
+}
+```
+
 
 Attól függően, hogy mit kell használni a textúrában, a textúra típusa és tartalma korlátozásokat is tartalmazhat. Például a [pbr-anyagokhoz](../overview/features/pbr-materials.md) tartozó érdesség térképének szürkeárnyalatos kell lennie.
 

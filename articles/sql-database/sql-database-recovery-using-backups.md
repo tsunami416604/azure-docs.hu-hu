@@ -3,7 +3,7 @@ title: Adatbázis visszaállítása biztonsági másolatból
 description: Ismerje meg az időponthoz való visszaállítást, amely lehetővé teszi, hogy akár 35 napig is visszaállítson egy Azure SQL Database-adatbázist.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da841c2f1280bc0dc126e43a9f618e170d0d2553
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268742"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770686"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Azure SQL Database helyreállítása automatikus adatbázis-biztonsági mentéssel
 
@@ -70,7 +70,7 @@ A Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.s
 
   Ha azt szeretné, hogy a visszaállított adatbázis helyettesítse az eredeti adatbázist, akkor meg kell adnia az eredeti adatbázis számítási méretét és a szolgáltatási szintet. Ezután átnevezheti az eredeti adatbázist, és visszaállíthatja az eredeti nevet a visszaállított adatbázisnak az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-database) parancs használatával a T-SQL-ben.
 
-- **Adathelyreállítás**
+- **Adat-helyreállítás**
 
   Ha a visszaállított adatbázisból szeretne adatokat lekérni egy felhasználói vagy alkalmazáshiba általi helyreállításhoz, írnia kell és végre kell hajtania egy olyan adathelyreállítási parancsfájlt, amely kinyeri az adatokat a visszaállított adatbázisból, és az eredeti adatbázisra vonatkozik. Bár a visszaállítási művelet végrehajtása hosszú időt is igénybe vehet, a visszaállítási folyamat során az adatbázis-lista látható. Ha a visszaállítás során törli az adatbázist, a visszaállítási művelet meg lesz szakítva, és nem kell fizetnie az adatbázisnak, amely nem végezte el a visszaállítást.
   
@@ -147,7 +147,7 @@ A Azure Portal létrehozhat egy új, egy vagy felügyelt példány-adatbázist, 
 
 Ha egyetlen SQL-adatbázist szeretne geo-helyre visszaállítani a régió és a kiszolgáló Azure Portal közül, kövesse az alábbi lépéseket:
 
-1. Az **irányítópulton**válassza a **Hozzáadás** > **Létrehozás SQL Database**elemet. Az **alapvető beállítások** lapon adja meg a szükséges adatokat.
+1. Az **irányítópulton**válassza a **Hozzáadás**  >  **Létrehozás SQL Database**elemet. Az **alapvető beállítások** lapon adja meg a szükséges adatokat.
 2. Válassza a **További beállítások**lehetőséget.
 3. A **meglévő adatfelhasználáshoz**válassza a **biztonsági mentés**lehetőséget.
 4. A **biztonsági mentéshez**válassza ki a biztonsági mentést az elérhető geo-visszaállítási biztonsági mentések listájából.

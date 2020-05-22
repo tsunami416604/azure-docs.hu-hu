@@ -3,7 +3,7 @@ title: Felügyelt példányok – T-SQL eltérések
 description: Ez a cikk a Azure SQL Database és SQL Server felügyelt példányai közötti T-SQL-különbségeket ismerteti.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -11,18 +11,18 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e121d94b27710eb952f98bf97c3b4e5602866f4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bc5aed6c00afc5ffc9d44f43a9163b2ae2de1e17
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724632"
+ms.locfileid: "83772301"
 ---
 # <a name="managed-instance-t-sql-differences-and-limitations"></a>Felügyelt példányok – T-SQL különbségek és korlátozások
 
 Ez a cikk összefoglalja és ismerteti a Azure SQL Database felügyelt példány és a helyszíni SQL Server adatbázismotor közötti szintaxissal és viselkedéssel kapcsolatos különbségeket. A felügyelt példány központi telepítésének lehetősége magas kompatibilitást biztosít a helyszíni SQL Server adatbázis-motorral. A SQL Server adatbázis-működtető funkcióinak többsége felügyelt példányok esetén támogatott.
 
-![Áttelepítés](./media/sql-database-managed-instance/migration.png)
+![Migrálás](./media/sql-database-managed-instance/migration.png)
 
 Néhány, a felügyelt példányban bevezetett és néhány viselkedési változás a SQL Serverhoz képest. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
 
@@ -531,7 +531,7 @@ A felügyelt példány következő MSDB-sémáinak a megfelelő előre definiál
 
 A felügyelt példányok részletes információkat helyeznek el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: [Azure SQL Database szolgáltatások összehasonlítása](sql-database-features.md).

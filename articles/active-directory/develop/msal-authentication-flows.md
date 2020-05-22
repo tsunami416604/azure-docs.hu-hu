@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883243"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772131"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -49,7 +49,7 @@ Az ügyfél felépítésének módjától függően a Microsoft Identity platfor
 |[Eszköz kódjának folyamata](v2-oauth2-device-code.md) | | x| x| x| |
 |[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
  
-Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol `response_mode` a `query` vagy `fragment`a) a böngészőbe kerül vissza.  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
+Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol a vagy a) a böngészőbe kerül vissza `response_mode` `query` `fragment` .  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
 
 ## <a name="interactive"></a>Interaktív
 
@@ -78,7 +78,7 @@ Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amely
 
 A MSAL támogatja a [OAuth 2 engedélyezési kód engedélyezését](v2-oauth2-auth-code-flow.md). Ez a támogatás olyan alkalmazásokban használható, amelyek a védett erőforrásokhoz, például a webes API-khoz való hozzáféréshez vannak telepítve az eszközön. Ez lehetővé teszi a bejelentkezést és API-hozzáférést a mobil-és asztali alkalmazásokhoz. 
 
-Amikor a felhasználók bejelentkeznek a webalkalmazásba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód a webes API-k hívására szolgáló token beszerzéséhez lett beváltva. A ASP.NET és a ASP.NET Core webalkalmazások esetében az egyetlen `AcquireTokenByAuthorizationCode` célja, hogy egy tokent adjon hozzá a jogkivonat-gyorsítótárhoz. Ezt követően az alkalmazás használhatja a jogkivonatot (általában a vezérlőkben, amely csak az API-k tokenjét kapja meg `AcquireTokenSilent`a használatával).
+Amikor a felhasználók bejelentkeznek a webalkalmazásba (webhelyekre), a webalkalmazás megkapja az engedélyezési kódot.  Az engedélyezési kód a webes API-k hívására szolgáló token beszerzéséhez lett beváltva. A ASP.NET és a ASP.NET Core webalkalmazások esetében az egyetlen célja, `AcquireTokenByAuthorizationCode` hogy egy tokent adjon hozzá a jogkivonat-gyorsítótárhoz. Ezt követően az alkalmazás használhatja a jogkivonatot (általában a vezérlőkben, amely csak az API-k tokenjét kapja meg a használatával `AcquireTokenSilent` ).
 
 ![Az engedélyezési kód folyamatának ábrája](media/msal-authentication-flows/authorization-code.png)
 
@@ -91,7 +91,7 @@ Az előző ábrán az alkalmazás:
 
 - A jogkivonat beváltásához csak egyszer használhatja az engedélyezési kódot. Ne próbálja meg többször bekérni a jogkivonatot ugyanazzal az engedélyezési kóddal (a protokoll szabványos specifikációja explicit módon tiltja). Ha a kódot többször is beváltja, vagy ha nem tudja, hogy egy keretrendszer is elvégzi az Ön számára, a következő hibaüzenet jelenik meg:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Ha ASP.NET vagy ASP.NET Core alkalmazást ír, akkor ez akkor fordulhat elő, ha nem adja meg azt a keretrendszert, amelyet már beváltotta az engedélyezési kódot. Ehhez meg kell hívnia az `context.HandleCodeRedemption()` `AuthorizationCodeReceived` eseménykezelő metódusát.
+- Ha ASP.NET vagy ASP.NET Core alkalmazást ír, akkor ez akkor fordulhat elő, ha nem adja meg azt a keretrendszert, amelyet már beváltotta az engedélyezési kódot. Ehhez meg kell hívnia az `context.HandleCodeRedemption()` eseménykezelő metódusát `AuthorizationCodeReceived` .
 
 - Ne ossza meg a hozzáférési tokent a ASP.NET-mel, ami megakadályozhatja a növekményes hozzáférés megfelelő működését. További információ: [#693 kiadása](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
@@ -151,7 +151,7 @@ Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamato
 
 A fenti diagram elemei:
 
-1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont) az URL-címhez való `https://microsoft.com/devicelogin`ugráshoz (például). A rendszer ezután megkéri a felhasználót a kód megadására, és a normál hitelesítési felülettel folytatja, beleértve a hozzájárulási kéréseket és a többtényezős hitelesítést, ha szükséges.
+1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont) az URL-címhez való ugráshoz (például `https://microsoft.com/devicelogin` ). A rendszer ezután megkéri a felhasználót a kód megadására, és a normál hitelesítési felülettel folytatja, beleértve a hozzájárulási kéréseket és a [többtényezős hitelesítést](../authentication/concept-mfa-howitworks.md) , ha szükséges.
 
 2. A sikeres hitelesítés után a parancssori alkalmazás egy visszaadott csatornán keresztül fogadja a szükséges jogkivonatokat, és ezeket használja a szükséges webes API-hívások végrehajtásához.
 
@@ -159,9 +159,9 @@ A fenti diagram elemei:
 
 - Az eszköz kódjának folyamata csak a nyilvános ügyfélalkalmazások esetében érhető el.
 - A nyilvános ügyfélalkalmazás összeállításakor átadott hatóságnak a következők egyikének kell lennie:
-  - Bérlő (az űrlapon `https://login.microsoftonline.com/{tenant}/` `{tenant}` a bérlői azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
-  - Bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`).
-- Az Azure AD v 2.0-végpontja még nem támogatja a Microsoft személyes fiókjait (nem `/common` használhatja `/consumers` a vagy a bérlőt).
+  - Bérlő (az űrlapon a bérlői `https://login.microsoftonline.com/{tenant}/` `{tenant}` azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
+  - Bármilyen munkahelyi és iskolai fiókhoz ( `https://login.microsoftonline.com/organizations/` ).
+- Az Azure AD v 2.0-végpontja még nem támogatja a Microsoft személyes fiókjait (nem használhatja a `/common` vagy a `/consumers` bérlőt).
 
 ## <a name="integrated-windows-authentication"></a>Beépített Windows-hitelesítés
 
@@ -182,11 +182,11 @@ A IWA a .NET-keretrendszer, a .NET Core és a Univerzális Windows-platform plat
 
 A IWA nem kerüli el a többtényezős hitelesítést. Ha a többtényezős hitelesítés konfigurálva van, a IWA sikertelen lehet, ha egy multi-Factor Authentication-kihívásra van szükség. A többtényezős hitelesítéshez felhasználói beavatkozás szükséges.
 
-Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér kétfaktoros hitelesítést. A bérlői rendszergazda nem. A kétfaktoros hitelesítés általában akkor szükséges, ha egy másik országból jelentkezik be, ha nem VPN-kapcsolaton keresztül kapcsolódik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Az Azure AD a mesterséges intelligencia használatával folyamatosan megtanulja, hogy kétfaktoros hitelesítésre van-e szükség. Ha a IWA sikertelen, akkor vissza kell térnie egy [interaktív felhasználói üzenetre] (#interactive).
+Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér kétfaktoros hitelesítést. A bérlői rendszergazda nem. A kétfaktoros hitelesítés általában akkor szükséges, ha egy másik országból vagy régióból jelentkezik be, ha nem VPN-kapcsolaton keresztül csatlakozik a vállalati hálózathoz, és néha még akkor is, ha VPN-kapcsolaton keresztül csatlakozik. Az Azure AD a mesterséges intelligencia használatával folyamatosan megtanulja, hogy kétfaktoros hitelesítésre van-e szükség. Ha a IWA sikertelen, akkor vissza kell térnie egy [interaktív felhasználói üzenetre] (#interactive).
 
 A nyilvános ügyfélalkalmazás összeállításakor átadott hatóságnak a következők egyikének kell lennie:
-- Bérlő (az űrlapon `https://login.microsoftonline.com/{tenant}/` `tenant` a bérlői azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
-- Bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`). A Microsoft személyes fiókjai nem támogatottak (nem `/common` használhatók `/consumers` vagy bérlők).
+- Bérlő (az űrlapon a bérlői `https://login.microsoftonline.com/{tenant}/` `tenant` azonosítót vagy a bérlőhöz társított tartományt jelképező GUID).
+- Bármilyen munkahelyi és iskolai fiókhoz ( `https://login.microsoftonline.com/organizations/` ). A Microsoft személyes fiókjai nem támogatottak (nem használhatók `/common` vagy `/consumers` bérlők).
 
 Mivel a IWA egy csendes folyamat, a következők egyikének igaznak kell lennie:
 - Az alkalmazás felhasználójának előzőleg el kell juttatnia az alkalmazás használatát. 

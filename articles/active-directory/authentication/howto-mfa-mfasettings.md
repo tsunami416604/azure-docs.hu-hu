@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3ef98f243abd02f0156190638cda8ab7c33f935d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116288"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770907"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -36,7 +36,7 @@ Ezen beállítások némelyike az MFA-kiszolgálóra, az Azure MFA-ra vagy mindk
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Arra szolgál, hogy bizonyos felhasználók képesek legyenek Multi-Factor Authentication kérelmek fogadására. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a letiltás időpontjától kezdve 90 napig letiltva maradnak. |
 | [Csalási riasztás](#fraud-alert) | A felhasználókhoz kapcsolódó beállítások konfigurálása a csalárd ellenőrzési kérelmek jelentéséhez |
 | [Értesítések](#notifications) | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
-| [ESKÜ tokenek](concept-authentication-methods.md#oath-hardware-tokens) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
+| [ESKÜ tokenek](concept-authentication-methods.md#oath-tokens) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
 | [Telefonhívás beállításai](#phone-call-settings) | A Felhőbeli és a helyszíni környezetekhez kapcsolódó telefonhívások és üdvözlések beállításainak konfigurálása. |
 | Szolgáltatók | Ez megjeleníti a fiókjához esetlegesen hozzárendelt meglévő hitelesítési szolgáltatókat is. Az új hitelesítési szolgáltatók nem hozhatók létre szeptember 1-től 2018-ig |
 
@@ -368,7 +368,7 @@ A felhasználók számára elérhető ellenőrzési módszereket is kiválasztha
 
 Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Authenticationhoz, az Ön által engedélyezett beállítások alapján választják ki az előnyben részesített ellenőrzési módszert. A felhasználói beléptetési folyamatra vonatkozó útmutatást a [saját fiók beállítása a kétlépéses ellenőrzéshez című témakörben talál](../user-help/multi-factor-authentication-end-user-first-time.md).
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |:--- |:--- |
 | Telefonos hívás |Automatikus hanghívást helyez el. A felhasználó fogadja a hívást, majd a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.  A telefonszám nincs szinkronizálva a helyszíni Active Directory. |
 | SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A rendszergazdáknak engedélyezniük kell egy másik módszert azon felhasználók számára, akik korábban a kétirányú SMS-t használták.|

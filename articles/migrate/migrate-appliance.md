@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656430"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758945"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -105,7 +105,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Azure Active Directory-(AD-) alkalmazásokat a berendezés számára a Azure Migratesal való kommunikációhoz.
 management.azure.com | Azure AD-alkalmazások létrehozása a berendezés számára a Azure Migrate szolgáltatással való kommunikációhoz.
 *.services.visualstudio.com | A belső figyeléshez használt alkalmazás-naplók feltöltése.
-*.vault.azure.net | A Azure Key Vault titkainak kezelése.
+*.vault.azure.net | A Azure Key Vault titkainak kezelése. Megjegyzés: Győződjön meg róla, hogy a replikálni kívánt gépek rendelkeznek hozzáféréssel.
 aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz. Azure Migrate berendezés frissítéseihez használatos.
 download.microsoft.com/download | Letöltés engedélyezése a Microsoft letöltéséről.
 *.servicebus.windows.net | A készülék és a Azure Migrate szolgáltatás közötti kommunikáció.
@@ -440,12 +440,12 @@ A Vezérlőpulton való ellenőrzéshez:
 Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolítania a szolgáltatást, és manuálisan kell frissítenie a legújabb verzióra.
 
 1. A készülék legújabb verziójának kereséséhez [töltse le](https://aka.ms/latestapplianceservices) a LatestComponents. JSON fájlt.
-2.  A letöltés után nyissa meg a LatestComponents. JSON fájlt a Jegyzettömbben.
+2.    A letöltés után nyissa meg a LatestComponents. JSON fájlt a Jegyzettömbben.
 3. Keresse meg a legújabb szolgáltatási verziót a fájlban, és a letöltési hivatkozást. Például:
 
     "Név": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Töltse le egy elavult szolgáltatás legújabb verzióját a fájl letöltési hivatkozásával.
+4.    Töltse le egy elavult szolgáltatás legújabb verzióját a fájl letöltési hivatkozásával.
 5. A letöltés után futtassa a következő parancsot egy rendszergazdai parancsablakban a letöltött MSI integritásának ellenőrzéséhez.
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Például: C: \> Certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5

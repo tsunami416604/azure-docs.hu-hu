@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abf5d0d4aeeb18a11f50220e982448d41a9ac1b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138943"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773202"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókjába a Microsoft Authenticator alkalmazás használatával
 
@@ -53,7 +53,7 @@ Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy isk
 
 Android-eszközön:
 
-- **Ha megjelenik a beállított ikon ![ikonja](media/user-help-auth-app-sign-in/icon.png).** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+- **Ha megjelenik a beállított ikon ![ ikonja ](media/user-help-auth-app-sign-in/icon.png) .** Ha ez az ikon a munkahelyi vagy iskolai fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
 - **Ha már használja az alkalmazást a kétfaktoros ellenőrzéshez.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
 - **Ha nem találja a munkahelyi vagy iskolai fiókját.** Ha nem találja a munkahelyi vagy iskolai fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md) című cikkben leírt lépések végrehajtásával.
 
@@ -62,6 +62,9 @@ IOS-eszközön:
 - **Ha a fiók csempére koppint**, megnyílik a fiók teljes képernyős nézete. Ha úgy látja, hogy a **telefonos bejelentkezés engedélyezve** van, az azt jelenti, hogy teljes körűen be kell jelentkeznie a jelszó nélkül. Ha a **telefonos bejelentkezés engedélyezése**lehetőséget látja, koppintson rá a telefonos bejelentkezés bekapcsolásához.
 - **Ha már használta az alkalmazást a kétfaktoros ellenőrzéshez**, koppintson a fiók csempére, amely ezután a fiók teljes képernyős nézetére bővül. Ezután koppintson a **telefonos bejelentkezés engedélyezése** lehetőségre a telefonos bejelentkezés bekapcsolásához.
 - **Ha nem találja a munkahelyi vagy iskolai fiókját** az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá munkahelyi vagy iskolai fiókját a munkahelyi vagy iskolai fiók hozzáadása című cikkben leírt lépések végrehajtásával.
+
+> [!NOTE]
+> Nem támogatjuk az eszközök regisztrálási és tanúsítványalapú hitelesítésének kombinációját az iOS-ben. A felhasználónak egy megkerülő megoldást kell használnia, ha a bejelentkezés előtt manuálisan regisztrálja az eszközt a hitelesítő beállításain keresztül.
 
 A telefonos bejelentkezés bekapcsolását követően egyszerűen bejelentkezhet a Microsoft Authenticator alkalmazás használatával.
 
@@ -92,7 +95,7 @@ Nyissa meg a Microsoft Authenticator alkalmazást, lépjen a munkahelyi vagy isk
 
 Android-eszközön:
 
-- **Ha megjelenik a beállított ikon ![ikonja](media/user-help-auth-app-sign-in/icon.png).** Ha ez az ikon a személyes Microsoft-fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
+- **Ha megjelenik a beállított ikon ![ ikonja ](media/user-help-auth-app-sign-in/icon.png) .** Ha ez az ikon a személyes Microsoft-fiók neve mellett jelenik meg, az azt jelenti, hogy már beállította a telefonos bejelentkezést a fiókhoz. Előfordulhat, hogy a rendszer leküldéses értesítések hozzáadását kéri a fiókjához, így értesítést kaphat az alkalmazáson kívüli hitelesítési kérelmekről.
 - **Ha az alkalmazást kétfaktoros ellenőrzésre használta.** Ha már használta az alkalmazást és a kétfaktoros ellenőrzést, akkor válassza a fiók neve melletti nyilat, majd válassza a **telefonos bejelentkezés engedélyezése**lehetőséget.
 - **Ha nem találja a munkahelyi vagy iskolai fiókját.** Ha nem találja a fiókját az alkalmazás **fiókok** képernyőjén, az azt jelenti, hogy még nem adta hozzá az alkalmazáshoz. Adja hozzá a fiókját a [személyes Microsoft-fiókok hozzáadása](user-help-auth-app-add-personal-ms-account.md) cikk lépéseit követve.
 

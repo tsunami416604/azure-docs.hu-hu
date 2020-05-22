@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252512"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758571"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Adatok összekötése az Office 365-naplókból
 
@@ -36,6 +36,9 @@ Egyetlen kattintással továbbíthatja az [Office 365](https://docs.microsoft.co
 - A bérlőnek engedélyezve kell lennie az egyesített naplózásnak. Az Office 365 E3 vagy E5 licenccel rendelkező bérlők alapértelmezés szerint engedélyezve vannak az egyesített naplózással. <br>Ha a bérlő nem rendelkezik ezekkel a licencekkel, engedélyeznie kell az egyesített naplózást a bérlőn a következő módszerek egyikének használatával:
     - [Használja a set-AdminAuditLogConfig parancsmagot](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) , és engedélyezze a "UnifiedAuditLogIngestionEnabled" paramétert.
     - [A biztonsági & megfelelőségi központ felhasználói felületének használata](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+   
+   > [!NOTE]
+   > Jelenleg a O365-adatösszekötő csak az adattípusok szakasz összekötő lapján szereplő, automatikusan rögzíti az Exchange-és a SharePoint-tevékenységtípus. Javasoljuk, hogy ellenőrizze [ezt a cikket arra az esetre, ha a Teams és a Sentinel használatával szeretné megkövetelni a csapatok naplózását](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) 
 
 ## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
 

@@ -3,7 +3,7 @@ title: Meglévő virtuális hálózat konfigurálása felügyelt példányhoz
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni egy meglévő virtuális hálózatot és alhálózatot, ahol Azure SQL Database felügyelt példányt telepíthet.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,16 +11,16 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e678edad2c59205e76598991b36d296404a3163
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476949"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773623"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Meglévő virtuális hálózat konfigurálása felügyelt Azure SQL Database-példányhoz
 
-Azure SQL Database felügyelt példányt egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) belül kell telepíteni, és csak a felügyelt példányok számára dedikált alhálózatot kell üzembe helyezni. A meglévő virtuális hálózatot és alhálózatot akkor használhatja, ha a [felügyelt példány virtuális hálózati követelményeinek](sql-database-managed-instance-connectivity-architecture.md#network-requirements)megfelelően van konfigurálva.
+A felügyelt Azure SQL Database-példányt egy Azure-beli [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) kell üzembe helyezni a kizárólag felügyelt példányok számára kijelölt alhálózaton. A meglévő virtuális hálózatot és alhálózatot akkor használhatja, ha a [felügyelt példány virtuális hálózati követelményeinek](sql-database-managed-instance-connectivity-architecture.md#network-requirements) megfelelően van konfigurálva.
 
 Ha a következő esetek valamelyike vonatkozik Önre, a jelen cikkben ismertetett parancsfájllal ellenőrizheti és módosíthatja a hálózatot:
 
@@ -33,9 +33,9 @@ Ha a következő esetek valamelyike vonatkozik Önre, a jelen cikkben ismertetet
 >
 > Felügyelt példány létrehozása után a felügyelt példány vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
 
-## <a name="validate-and-modify-an-existing-virtual-network"></a>Meglévő virtuális hálózat érvényesítése és módosítása
+## <a name="validate-and-modify-an-existing-virtual-network"></a>Meglévő virtuális hálózat ellenőrzése és módosítása
 
-Ha felügyelt példányt szeretne létrehozni egy meglévő alhálózaton belül, a következő PowerShell-parancsfájlt javasoljuk az alhálózat előkészítéséhez:
+Ha egy már meglévő alhálózaton szeretne létrehozni egy felügyelt példányt, az alhálózat előkészítéséhez az alábbi PowerShell-szkriptet javasoljuk:
 
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
@@ -50,7 +50,7 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-A parancsfájl három lépésben készíti elő az alhálózatot:
+A szkript három lépésben készíti elő az alhálózatot:
 
 1. Ellenőrzés: ellenőrzi a kiválasztott virtuális hálózatot és alhálózatot a felügyelt példányok hálózati követelményeihez.
 2. Confirm (megerősítés): megjeleníti a felhasználó által a felügyelt példányok központi telepítésének előkészítéséhez szükséges módosítások készletét. Emellett beleegyezik.

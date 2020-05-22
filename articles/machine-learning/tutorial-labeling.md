@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: a8136f8fe6431187884a180925234d6aab36983f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725516"
+ms.locfileid: "83759183"
 ---
-# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
+# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt (előzetes verzió) létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogyan kezelheti a gépi tanulási modellek készítéséhez használt, a címkézési (más néven címkézési) lemezképeket. Az adatfelirat Azure Machine Learning nyilvános előzetes verzióban érhető el.
@@ -201,7 +201,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

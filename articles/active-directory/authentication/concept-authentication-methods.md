@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116394"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770959"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el Azure Active Directoryban?
 
@@ -31,14 +31,15 @@ Az Azure AD-beli felhasználók a következő hitelesítési módszerek egyikén
 
 Az Azure AD-ben számos fiók engedélyezhető az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure Multi-Factor Authentication számára. Ezek a funkciók további ellenőrzési módszereket is tartalmaznak, például telefonhívást vagy biztonsági kérdéseket. Javasoljuk, hogy a felhasználóknak több ellenőrzési módszert kell regisztrálniuk. Ha az egyik metódus nem érhető el egy felhasználó számára, dönthetnek úgy, hogy más módszerrel hitelesítik magukat.
 
-Az alábbi táblázat ismerteti, hogy milyen hitelesítési vagy ellenőrzési módszerek érhetők el a különböző forgatókönyvekhez:
+Az alábbi táblázat ismerteti, hogy milyen metódusok érhetők el az elsődleges vagy másodlagos hitelesítéshez:
 
-| Módszer | Használat bejelentkezéskor | Használat az ellenőrzés során |
+| Metódus | Elsődleges hitelesítés | Másodlagos hitelesítés |
 | --- | --- | --- |
-| [Jelszó](#password) | Igen | MFA és SSPR |
+| [Jelszó](#password) | Igen | |
 | [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
 | [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
-| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens) | Igen | SSPR és MFA |
+| [Az eskü szoftver jogkivonatai](#oath-software-tokens) | Nem | MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens-preview) | Igen | MFA |
 | [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
 | [Hanghívás](#phone-options) | Nem | MFA és SSPR |
 | [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |
@@ -73,7 +74,7 @@ A hitelesítő alkalmazás segít megakadályozni a fiókok jogosulatlan eléré
 ![A bejelentkezési folyamat elvégzésére szolgáló, a hitelesítő alkalmazás értesítésére szolgáló webböngészőt kérő példa képernyőképe](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App metóduson keresztül küldött értesítés* nem működik ebben az országban. Az alternatív hitelesítési módszereket elérhetővé kell tenni az adott felhasználók számára.
+> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App metóduson keresztül küldött értesítés* nem működik ebben az országban vagy régióban. Az alternatív hitelesítési módszereket elérhetővé kell tenni az adott felhasználók számára.
 
 ### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
 
@@ -96,15 +97,29 @@ A felhasználók regisztrálhatnak és kijelölhetnek egy FIDO2 biztonsági kulc
 
 Az Azure AD FIDO2 biztonsági kulcsai jelenleg előzetes verzióban érhetők el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="oath-hardware-tokens"></a>OATH hardveres jogkivonatok
+## <a name="oath-tokens"></a>ESKÜ tokenek
 
-Az eskü egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az Azure AD támogatja az eskü-TOTP SHA-1 tokenek használatát a 30 másodperces vagy a 60-Second fajta esetében. Az ügyfelek megvásárolhatják ezeket a jogkivonatokat a választott gyártótól.
+Az eskü TOTP (időalapú egyszeri jelszó) egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az eskü TOTP a kódok létrehozásához szoftver vagy hardver használatával valósítható meg. Az Azure AD nem támogatja az eskü HOTP, amely egy másik kód generálási szabvány.
 
-A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *1-7*karakterből állhat, és a *Base32*-ben kell kódolni.
+### <a name="oath-software-tokens"></a>Az eskü szoftver jogkivonatai
 
-Az Azure AD-beli hardver-tokenek jelenleg előzetes verzióban érhetők el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A szoftveres eskü-tokenek jellemzően olyan alkalmazások, mint a Microsoft Authenticator alkalmazás és más hitelesítő alkalmazások. Az Azure AD létrehozza a titkos kulcsot, vagy a magot, amely az alkalmazásba belép, és az egyes OTP-k létrehozásához használatos.
 
-![ESKÜ-tokenek feltöltése az MFA-eskü jogkivonatok ablakba](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+A hitelesítő alkalmazás automatikusan generál kódokat, ha úgy állítja be a leküldéses értesítéseket, hogy egy felhasználó biztonsági másolattal rendelkezzen, még akkor is, ha az eszköz nem rendelkezik kapcsolattal. A más gyártóktól származó, ESKÜt használó alkalmazások is használhatók TOTP létrehozásához.
+
+Néhány ESKÜt TOTP, ami azt jelenti, hogy a hardver-jogkivonatok programozhatók, ezért nem tartoznak hozzá előre programozott titkos kulcs vagy mag. Ezek a programozható hardveres tokenek a szoftver-jogkivonat telepítési folyamata által beszerzett titkos kulccsal vagy mag használatával állíthatók be. Az ügyfelek vásárolhatják meg ezeket a jogkivonatokat a választott gyártótól, és a titkos kulcsot vagy magot használják a gyártó telepítési folyamatában.
+
+### <a name="oath-hardware-tokens-preview"></a>A hardver-tokenek ESKÜje (előzetes verzió)
+
+Az Azure AD az eskü-TOTP SHA-1 tokenek használatát támogatja, amelyek 30 vagy 60 másodpercenként frissítik a kódokat. Az ügyfelek megvásárolhatják ezeket a jogkivonatokat a választott gyártótól.
+
+Az eskü TOTP-tokenek általában titkos kulccsal, vagy a tokenben előre programozott magokkal rendelkeznek. Ezeket a kulcsokat az alábbi lépésekben leírtaknak megfelelően be kell állítani az Azure AD-be. A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *1-7*karakterből állhat, és a *Base32*-ben kell kódolni.
+
+A feldolgozható, programozható eskü TOTP a szoftveres jogkivonat telepítési folyamatában is beállítható az Azure AD-ben.
+
+A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
+![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 A jogkivonatok beszerzése után a következő példában látható módon fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumot, beleértve az UPN-t, a sorozatszámot, a titkos kulcsot, az időintervallumot, a gyártót és a modellt.
 
@@ -116,7 +131,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Ügyeljen rá, hogy a fejlécsor szerepeljen a CSV-fájlban.
 
-Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **eskü tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
+Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory > biztonsági > MFA > eskü-tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
 
 A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha bármilyen hiba van a fájlban, letöltheti azt a CSV-fájlt, amely felsorolja a feloldható hibákat. A letöltött CSV-fájl mezőinek neve eltér a feltöltött verziótól.
 
@@ -133,7 +148,7 @@ A felhasználók az Azure Multi-Factor Authentication vagy az önkiszolgáló je
 A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: *+ 1 4251234567*.
 
 > [!NOTE]
-> Az országkód és a telefonszám között szóköz szükséges.
+> Az ország/régió kódja és a telefonszám között szóköz szükséges.
 >
 > A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a *+ 1 4251234567X12345* formátumban.
 
@@ -167,7 +182,7 @@ Ha problémák merülnek fel az Azure AD-beli telefonos hitelesítéssel kapcsol
 
 * Blokkolt hívóazonosító egyetlen eszközön.
    * Tekintse át az eszközön konfigurált blokkolt számokat.
-* Helytelen a telefonszám vagy helytelen országkód, vagy a személyes telefonszám és a munkahelyi telefonszám közötti zűrzavar.
+* Helytelen a telefonszám vagy az ország/régió kódja, vagy a személyes telefonszám és a munkahelyi telefonszám közötti zűrzavar.
    * A felhasználói objektum és a konfigurált hitelesítési módszerek hibáinak megoldása. Győződjön meg arról, hogy a megfelelő telefonszámok regisztrálva vannak.
 * Helytelen PIN-kód van megadva.
    * Erősítse meg, hogy a felhasználó a megfelelő PIN-kódot használta a fiókjához való regisztrációhoz.

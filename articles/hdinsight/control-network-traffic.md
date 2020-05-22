@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 031dbb0e8c9b9fb8dc37b264f9ba8e1186efc832
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783590"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773406"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Hálózati forgalom szabályozása az Azure HDInsight
 
@@ -36,7 +36,7 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
-    * __Hálózati biztonsági csoportok__: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
+    * __Hálózati biztonsági csoportok__: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt. A __KAFKA Rest proxyt__ használó fürtök esetében engedélyezze a __bejövő__ adatforgalmat is a __9400__ -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
 
 A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md)című témakört.
 

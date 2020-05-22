@@ -3,12 +3,12 @@ title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányí
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381534"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773151"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -143,7 +143,7 @@ Használja a felügyeleti csoport AZONOSÍTÓját, és ne a felügyeleti csoport
 
 ### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>A szerepkör-definíció és a hozzárendelési hierarchia elérési útjának megszakításával kapcsolatos problémák
 
-A szerepkör-definíciók a felügyeleti csoport hierarchiáján belül bárhol hozzárendelhetők. A fölérendelt felügyeleti csoportban definiálható egy szerepkör-definíció, miközben a tényleges szerepkör-hozzárendelés létezik a gyermek előfizetésen. Mivel a két elem között fennáll a kapcsolat, hibaüzenet jelenik meg, amikor a hozzárendelést a definíciója alapján választja el.
+A szerepkör-definíciók a felügyeleti csoport hierarchiáján belül bárhol hozzárendelhetők. A fölérendelt felügyeleti csoportban definiálható egy szerepkör-definíció, miközben a tényleges szerepkör-hozzárendelés létezik a gyermek előfizetésen. Mivel a két elem között van kapcsolat, hibaüzenet jelenik meg, amikor a hozzárendelést a definíciója alapján választja el.
 
 Vegyük például a vizualizációk hierarchiájának egy kis szakaszát.
 
@@ -154,7 +154,7 @@ Tegyük fel, hogy egy egyéni szerepkör van definiálva a marketing felügyelet
 Ha az egyik előfizetést úgy próbálja áthelyezni, hogy az éles felügyeleti csoport gyermeke legyen, akkor ez az áthelyezés az előfizetés szerepkör-hozzárendelésének elérési útját megtöri a marketing-felügyeleti csoport szerepkör-definíciójában. Ebben az esetben hibaüzenetet kap, amely azt jelzi, hogy az áthelyezés nem engedélyezett, mert megszakítja ezt a kapcsolatot.  
 
 A forgatókönyv kijavításához néhány különböző lehetőség áll rendelkezésre:
-- Távolítsa el a szerepkör-hozzárendelést az előfizetésből, mielőtt áthelyezi az előfizetést egy új szülőre MG-ra.
+- Távolítsa el a szerepkör-hozzárendelést az előfizetésből, mielőtt áthelyezi az előfizetést egy új szülő MG-ra.
 - Adja hozzá az előfizetést a szerepkör-definícióhoz hozzárendelhető hatókörhöz.
 - Módosítsa a hozzárendelhető hatókört a szerepkör-definíción belül. A fenti példában frissítheti a hozzárendelhető hatóköröket a marketingből a gyökérszintű felügyeleti csoportba, hogy a definíciót a hierarchia mindkét ága elérheti.  
 - Hozzon létre egy további egyéni szerepkört, amely a másik ágban lesz meghatározva. Ehhez az új szerepkörhöz szükség lesz a szerepkör-hozzárendelés módosítására az előfizetésben is.  
@@ -163,13 +163,14 @@ A forgatókönyv kijavításához néhány különböző lehetőség áll rendel
 
 A felügyeleti csoportok egyéni szerepköreinek használatakor korlátozások vannak érvényben. 
 
- - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez akkor fordulhat elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetést vagy felügyeleti csoportot egy másik, szerepkör-definícióval nem rendelkező szülőbe helyez át a rendszer.  
- - A RBAC adatsíkok műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma van az adatközpont-erőforrás-szolgáltatókat frissítő RBAC-műveletekkel. Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
+ - Egy új szerepkör hozzárendelhető hatókörében csak egy felügyeleti csoportot lehet definiálni. Ez a korlátozás azért van érvényben, hogy csökkentse a helyzetek számát, amikor a szerepkör-definíciók és a szerepkör-hozzárendelések le vannak választva. Ez a helyzet akkor fordul elő, ha egy szerepkör-hozzárendeléssel rendelkező előfizetést vagy felügyeleti csoportot egy másik, szerepkör-definícióval nem rendelkező szülőbe helyez át a rendszer.  
+ - A RBAC adatsík műveletei nem definiálhatók a felügyeleti csoport egyéni szerepköreiben. Ez a korlátozás azért van érvényben, mert késési probléma van az adatközpont-erőforrás-szolgáltatókat frissítő RBAC műveletekkel.
+   Ez a késési probléma jelenleg használatban van, és ezek a műveletek le lesznek tiltva a szerepkör-definícióból a kockázatok csökkentése érdekében.
  - A Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében. Ha a rendszer elküld egy elírást vagy helytelen felügyeleti csoport AZONOSÍTÓját, akkor a szerepkör-definíció továbbra is létrejön.  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Felügyeleti csoportok és előfizetések áthelyezése 
 
-Egy felügyeleti csoportba vagy előfizetésbe egy másik felügyeleti csoport gyermekének kell lennie. a három szabályt igaz értékre kell kiértékelni.
+Ha egy felügyeleti csoportot vagy előfizetést másik felügyeleti csoport gyermekének kíván áthelyezni, a három szabályt igaz értékre kell kiértékelni.
 
 Ha az áthelyezés műveletet végzi, a következőkre lesz szüksége: 
 

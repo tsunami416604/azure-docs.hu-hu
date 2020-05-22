@@ -5,12 +5,12 @@ author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77cb6a693c5a73d0498b0acf9bc4ad8cc9f8f32f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77594209"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774010"
 ---
 # <a name="consul"></a>Konzul
 
@@ -38,7 +38,7 @@ A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vez
 Fontos megérteni és figyelembe venni a következő területeket a konzul kiértékelése során a számítási feladatokhoz:
 
 - [Konzuli alapelvek](#consul-principles)
-- [Funkciók](#capabilities)
+- [Képességek](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
@@ -53,7 +53,7 @@ A következő alapelvek a konzuli projektet [ismertetik][consul-principles] :
 - **Kiterjesztheti és integrálhatja a** biztonságos csatlakoztatási feladatokat az infrastruktúrán keresztül.
 
 
-### <a name="capabilities"></a>Funkciók
+### <a name="capabilities"></a>Képességek
 
 A konzul a következő funkciókat biztosítja:
 
@@ -93,6 +93,7 @@ Az alábbi dokumentáció ismerteti, hogyan telepítheti a konzult az Azure Kube
 
 A konzul funkcióit és architektúráját továbbra is megismerheti:
 
+- [Konzuli Első lépések oktatóanyagok][consul-getting-started]
 - [Konzuli funkciók][consul-features]
 - [Konzuli architektúra][consul-architecture]
 - [Konzul – a kapcsolat működése][consul-how-connect-works]
@@ -104,6 +105,7 @@ A konzul funkcióit és architektúráját továbbra is megismerheti:
 [consul-sidecar]: https://www.consul.io/docs/connect/proxies.html
 [consul-how-connect-works]: https://www.consul.io/docs/connect/connect-internals.html
 [consul-principles]: https://www.consul.io/
+[consul-getting-started]:https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 
 [envoy-proxy]: https://www.envoyproxy.io/
 [grafana]: https://grafana.com/

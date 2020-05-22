@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 84000016af4b16bd0716c15e7c27b4ab56614532
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d1df46a5a8de4396011cc18ea062fe2d6b52ca8d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773970"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
 
@@ -26,12 +26,12 @@ A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan besz�
 > [!IMPORTANT]
 > Az összes beszédfelismerési tároló jelenleg egy [nyilvános "GateD" előzetes](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)verzió részeként érhető el. Bejelentést kell készíteni, amikor a beszédfelismerési tárolók az általánosan elérhetővé vált (GA).
 
-| Függvény | Funkciók | Legújabb |
+| Függvény | Szolgáltatások | Legújabb |
 |--|--|--|
 | Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.2.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.2.0 |
-| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.3.0 |
-| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.3.0 |
+| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.4.0 |
+| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.4.0 |
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -310,7 +310,7 @@ Szerezze be a parancs paraméteréhez argumentumként használandó **modell azo
 
 A következő táblázat a különböző `docker run` paramétereket és a hozzájuk tartozó leírásokat tartalmazza:
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |---------|---------|
 | `{VOLUME_MOUNT}` | A gazdaszámítógép [kötetének csatlakoztatása](https://docs.docker.com/storage/volumes/), amelyet a Docker az egyéni modell megtartására használ. Például a *C:\CustomSpeech* , ahol a *C meghajtó* található a gazdagépen. |
 | `{MODEL_ID}` | A Custom Speech **modell azonosítója** az egyéni beszédfelismerési portál **képzés** lapján. |
@@ -372,7 +372,7 @@ Szerezze be a Docker Run parancs paraméterének argumentumként használandó *
 
 A következő táblázat a különböző `docker run` paramétereket és a hozzájuk tartozó leírásokat tartalmazza:
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |---------|---------|
 | `{VOLUME_MOUNT}` | A gazdaszámítógép [kötetének csatlakoztatása](https://docs.docker.com/storage/volumes/), amelyet a Docker az egyéni modell megtartására használ. Például a *C:\CustomSpeech* , ahol a *C meghajtó* található a gazdagépen. |
 | `{MODEL_ID}` | A Custom Speech **modell azonosítója** az egyéni hangportál **képzés** lapján. |

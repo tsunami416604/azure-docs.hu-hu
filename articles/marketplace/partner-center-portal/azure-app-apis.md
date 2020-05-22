@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744894"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770057"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>A partner Center beküldési API-ját az Azure Apps szolgáltatásba a partner Centerben
 
@@ -49,7 +49,7 @@ A Microsoft Store beküldési API használatához hozzá kell rendelnie egy Azur
 
 Mielőtt bármelyik módszert meghívja a partner Center beküldési API-ban, először be kell szereznie egy Azure AD hozzáférési jogkivonatot, amelyet az API egyes módszereinek **engedélyezési** fejlécébe kell átadnia. A hozzáférési token beszerzése után 60 percet is igénybe vehet, mielőtt lejár. A jogkivonat lejárta után frissítheti a jogkivonatot, így továbbra is használhatja azt az API-hoz való jövőbeli hívásokban.
 
-A hozzáférési jogkivonat beszerzéséhez kövesse az [ügyfél hitelesítő adataival](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) megjelenő, a szolgáltatás által a `HTTP POST` `https://login.microsoftonline.com/<tenant_id>/oauth2/token` végpontnak küldendő utasításokat. Példa erre a kérelemre:
+A hozzáférési jogkivonat beszerzéséhez kövesse az [ügyfél hitelesítő adataival](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/) megjelenő, a szolgáltatás által `HTTP POST` a `https://login.microsoftonline.com/<tenant_id>/oauth2/token` végpontnak küldendő utasításokat. Példa erre a kérelemre:
 
 JSONCopy
 ```Json
@@ -63,7 +63,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-A `POST URI` és a *client_id* és a *client_secret* paraméterek *tenant_id* értékének megadásához adja meg a bérlői azonosítót, az ügyfél-azonosítót és az alkalmazás azon kulcsát, amelyet a partner Centerből az előző szakaszban beolvasott. Az *erőforrás* -paraméterhez meg kell adnia `https://api.partner.microsoft.com`a következőt:.
+A *tenant_id* `POST URI` és a *client_id* és a *client_secret* paraméterek tenant_id értékének megadásához adja meg a bérlői azonosítót, az ügyfél-azonosítót és az alkalmazás azon kulcsát, amelyet a partner Centerből az előző szakaszban beolvasott. Az *erőforrás* -paraméterhez meg kell adnia a következőt: `https://api.partner.microsoft.com` .
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>3. lépés: a Microsoft Store beküldési API használata
 
@@ -74,4 +74,4 @@ https://apidocs.microsoft.com/services/partneringestion/
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan hozhat létre egy Azure-beli [virtuális gép technikai eszközét](create-azure-container-technical-assets.md)
-* A kapa megismerése [Azure Container-ajánlat](create-azure-container-offer.md) létrehozásához
+* Ismerje meg, hogyan hozhat létre [Azure Container-ajánlatot](create-azure-container-offer.md)

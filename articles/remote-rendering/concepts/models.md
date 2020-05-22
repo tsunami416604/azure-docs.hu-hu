@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617947"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758690"
 ---
 # <a name="models"></a>Modellek
 
@@ -36,8 +36,8 @@ A modell konvertálása után az Azure Blob Storage-ból tölthető be a futtat�
 
 Két különböző betöltési függvény van, amelyek eltérnek az eszköz blob Storage-ban való címzésének módjától:
 
-* A modellt a SAS URI-ja tudja kezelni. A megfelelő betöltési `LoadModelFromSASAsync` függvény `LoadModelFromSASParams`paraméterrel van ellátva. A [beépített modellek](../samples/sample-model.md)betöltésekor ezt a változatot is használhatja.
-* A modellt közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben `LoadModelAsync` a megfelelő betöltési függvény `LoadModelParams`a paraméter.
+* A modellt a SAS URI-ja tudja kezelni. A megfelelő betöltési függvény `LoadModelFromSASAsync` paraméterrel van ellátva `LoadModelFromSASParams` . A [beépített modellek](../samples/sample-model.md)betöltésekor ezt a változatot is használhatja.
+* A modellt közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben a megfelelő betöltési függvény a `LoadModelAsync` paraméter `LoadModelParams` .
 
 A következő kódrészletek bemutatják, hogyan tölthetők be modellek bármelyik függvénnyel. Egy modell SAS URI-val való betöltéséhez használja az alábbihoz hasonló kódot:
 
@@ -58,6 +58,28 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSASParams modelParams;
+    modelParams.ModelUrl = modelUri;
+    modelParams.Parent = modelParent;
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
+
+    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
+    {
+        printf("Loading: finished.");
+    });
+    loadOp->ProgressUpdated([](float progress)
+    {
+        printf("Loading: %.1f%%", progress*100.f);
+    });
+
+    return loadOp;
+}
+```
+
 Ha közvetlenül a blob Storage-paraméterek használatával szeretne betölteni egy modellt, az alábbi kódrészlethez hasonló kódot használjon:
 
 ```csharp
@@ -73,6 +95,20 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 
     var loadOp = session.Actions.LoadModelAsync(modelParams);
 
+    // ... (identical to the SAS URI snippet above)
+}
+```
+
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+{
+    LoadModelParams modelParams;
+    modelParams.Parent = modelParent;
+    modelParams.Blob.StorageAccountName = std::move(storageAccount);
+    modelParams.Blob.BlobContainerName = std::move(containerName);
+    modelParams.Blob.AssetPath = std::move(assetFilePath);
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
     // ... (identical to the SAS URI snippet above)
 }
 ```

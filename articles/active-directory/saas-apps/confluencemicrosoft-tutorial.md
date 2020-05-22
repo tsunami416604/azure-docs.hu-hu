@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c020bb70dc26945b013321b2d75cc2e231c39a4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120589"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772913"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
 
@@ -65,7 +65,7 @@ Mostantól a torkolatánál következő verziói támogatottak:
 
 - Összefolyásánál: 5,0 – 5,10
 - Torkolatánál: 6.0.1 – 6.15.9
-- Torkolatánál: 7.0.1 – 7.1.0
+- Torkolatánál: 7.0.1 – 7.4.0
 
 > [!NOTE]
 > Vegye figyelembe, hogy az összefolyásánál beépülő modul az Ubuntu 16,04-es verzióján is működik
@@ -133,7 +133,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -245,7 +245,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például: B. Simon.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló B.Simon@contoso.come-mail címet.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet B.Simon@contoso.com .
 
     d. A **jelszó** szövegmezőbe írja be a következőt: B. Simon.
 
@@ -259,7 +259,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Microsoft csempén lévő összefolyásánál SAML egyszeri bejelentkezésre kattint, a Microsoft automatikusan bejelentkezik a összefolyásánál SAML SSO-ba, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f20636bfaf8b1b1f7714a9cede63886deaf53e36
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 82439f8380b0dca676b781e36fff738b5d5bee93
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641196"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758180"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -31,7 +31,7 @@ A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web
 
 A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
 
-| MSAL-könyvtár | Description |
+| MSAL-könyvtár | Leírás |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a Microsoft. Identity. Web nevű magasabb szintű könyvtárban van beágyazva.|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
@@ -272,14 +272,14 @@ A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldönt
 
 ```csharp
 // Use a distributed token cache by adding:
-    services.AddSignIn(Configuration, "AzureAd");
+    services.AddSignIn(Configuration, "AzureAd")
             .AddWebAppCallsProtectedWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddDistributedTokenCaches();
 
 // Then, choose your implementation.
 // For instance, the distributed in-memory cache (not cleared when you stop the app):
-services.AddDistributedMemoryCache()
+services.AddDistributedMemoryCache();
 
 // Or a Redis cache:
 services.AddStackExchangeRedisCache(options =>

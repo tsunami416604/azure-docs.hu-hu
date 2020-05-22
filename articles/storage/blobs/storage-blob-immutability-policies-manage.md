@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539154135c35e034c889294d911fb53b3d45daa4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970102"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771009"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése
 
@@ -61,7 +61,7 @@ Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blob Storage-ban lé
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A szolgáltatás a következő parancssori csoportokba tartozik: `az storage container immutability-policy` és. `az storage container legal-hold` Futtassa `-h` őket a parancsok megtekintéséhez.
+A szolgáltatás a következő parancssori csoportokba tartozik: `az storage container immutability-policy` és `az storage container legal-hold` . Futtassa `-h` őket a parancsok megtekintéséhez.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,9 +69,9 @@ A szolgáltatás a következő parancssori csoportokba tartozik: `az storage con
 
 Az az. Storage modul támogatja a nem módosítható tárolókat.  A szolgáltatás engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a telepített PowerShellGet legújabb verziója van `Install-Module PowerShellGet –Repository PSGallery –Force`telepítve:.
+1. Győződjön meg arról, hogy a telepített PowerShellGet legújabb verziója van telepítve: `Install-Module PowerShellGet –Repository PSGallery –Force` .
 2. Távolítsa el a Azure PowerShell korábbi telepítését.
-3. Azure PowerShell telepítése: `Install-Module Az –Repository PSGallery –AllowClobber`.
+3. Azure PowerShell telepítése: `Install-Module Az –Repository PSGallery –AllowClobber` .
 
 A következő PowerShell-parancsfájl a hivatkozás. Ez a szkript létrehoz egy új Storage-fiókot és-tárolót. Ezután bemutatjuk, hogyan lehet beállítani és törölni az időalapú adatmegőrzési szabályzatokat (más néven módosíthatatlansági-szabályzatokat), és ki kell zárnia a megőrzési időt.
 
@@ -91,7 +91,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # Create your Azure storage account
-$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
     $storageAccount -SkuName Standard_ZRS -Location $location -Kind StorageV2
 
 # Create a new container using the context
@@ -119,7 +119,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
 Időalapú módosíthatatlansági házirendek létrehozása vagy frissítése:
 
 ```powershell
-# Create a time-based immutablity policy
+# Create a time-based immutability policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -132,7 +132,7 @@ Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container
 ```
 
-Módosíthatatlansági-házirendek zárolása `-Force` (Hozzáadás a kérés elvetéséhez):
+Módosíthatatlansági-házirendek zárolása (Hozzáadás `-Force` a kérés elvetéséhez):
 
 ```powershell
 # Lock immutability policies
@@ -174,12 +174,12 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A szolgáltatás a következő parancssori csoportokba tartozik: `az storage container immutability-policy` és. `az storage container legal-hold` Futtassa `-h` őket a parancsok megtekintéséhez.
+A szolgáltatás a következő parancssori csoportokba tartozik: `az storage container immutability-policy` és `az storage container legal-hold` . Futtassa `-h` őket a parancsok megtekintéséhez.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
-# Create an immutablity policy with appends allowed
+# Create an immutability policy with appends allowed
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
 ```

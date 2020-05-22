@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 29967c5f8d452fbf66d9a121357415176139b39d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570670"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774065"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge-sel
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet számítási szerepkört konfigur
 
 Ez az eljárás körülbelül 10 – 15 percet is igénybe vehet.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -53,7 +53,7 @@ A számítás Azure Stack Edge-ben való konfigurálásához létre kell hoznia 
     |Mező  |Érték  |
     |---------|---------|
     |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint a rendszer egy standard szintű (S1) szintet használ IoT-erőforrás létrehozásához. Az ingyenes szintű IoT erőforrás használatához hozzon létre egyet, majd válassza ki a meglévő erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Name (Név)     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Name     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -136,11 +136,11 @@ Annak ellenőrzéséhez, hogy a modul fut-e, tegye a következőket:
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  
-1.    A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
+1. A Fájlkezelőben a korábban létrehozott Edge helyi és peremhálózati megosztásokhoz is csatlakozhat.
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
-1.    Adja hozzá az adatokat a helyi megosztáshoz.
+1. Adja hozzá az adatokat a helyi megosztáshoz.
 
     ![Adatok átalakításának ellenőrzése](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  

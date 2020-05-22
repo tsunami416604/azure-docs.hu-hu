@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2682a85f88a537630fbca86dd55541a152d8f37e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025275"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758639"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -30,8 +30,8 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Új egyéni szerepkör létrehozása az alkalmazások regisztrálásához való hozzáférés biztosításához
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza ki **Azure Active Directory** > **szerepkörök és rendszergazdák** > **új egyéni szerepkört**.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com)a   Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Válassza ki **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **új egyéni szerepkört**.
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,11 +40,11 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
    ![adja meg az egyéni szerepkör nevét és leírását az alapok lapon](./media/roles-create-custom/basics-tab.png)
 
 1. Az **engedélyek** lapon válassza ki az alkalmazás-regisztrációk alapszintű tulajdonságainak és hitelesítő adatainak kezeléséhez szükséges engedélyeket. Az egyes engedélyek részletes ismertetését lásd: [alkalmazás-regisztrációs altípusok és engedélyek a Azure Active Directory](./roles-custom-available-permissions.md).
-   1. Először írja be a "hitelesítő adatok" kifejezést a keresősáv mezőbe, `microsoft.directory/applications/credentials/update` és válassza ki az engedélyt.
+   1. Először írja be a "hitelesítő adatok" kifejezést a keresősáv mezőbe, és válassza ki az `microsoft.directory/applications/credentials/update` engedélyt.
 
       ![Egyéni szerepkör engedélyeinek kiválasztása az engedélyek lapon](./media/roles-create-custom/permissions-tab.png)
 
-   1. Ezután írja be az "alapszintű" kifejezést a keresősávba `microsoft.directory/applications/basic/update` , válassza ki az engedélyt, majd kattintson a **tovább**gombra.
+   1. Ezután írja be az "alapszintű" kifejezést a keresősávba, válassza ki az `microsoft.directory/applications/basic/update` engedélyt, majd kattintson a **tovább**gombra.
 1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
 
 Az egyéni szerepkör megjelenik a Hozzárendelendő elérhető szerepkörök listájában.
@@ -141,6 +141,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
+  > [!Note]
+  > A "templateId": "GUID" egy opcionális paraméter, amelyet a rendszer a követelménytől függően elküldött a törzsben. Ha a közös paraméterekkel több különböző egyéni szerepkört kell létrehoznia, a legjobb megoldás egy sablon létrehozása és egy templateId meghatározása. A PowerShell-parancsmag (New-GUID) használatával előre létrehozhat egy templateId. GUID. 
+
 1. Hozza létre a szerepkör-hozzárendelést.
 
     HTTP-kérelem egyéni szerepkör-definíció létrehozásához.
@@ -160,6 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Erőforráshoz tartozó egyéni szerepkör társítása
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124720"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772862"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -305,7 +305,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 ```
 Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
 
-#### <a name="pipelines"></a>Folyamatok
+#### <a name="pipelines"></a>Pipelines
     
 * Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
 * Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
@@ -314,7 +314,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 
 * Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
-#### <a name="triggers"></a>Eseményindítók
+#### <a name="triggers"></a>Triggerek
 
 * A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
 * A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `number` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
@@ -795,25 +795,44 @@ $resources = $templateJson.resources
 
 #Triggers 
 Write-Host "Getting triggers"
-$triggersADF = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-$triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
-$triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
-$triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
+$triggersInTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
+$triggerNamesInTemplate = $triggersInTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+
+$triggersDeployed = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+
+$triggersToStop = $triggersDeployed | Where-Object { $triggerNamesInTemplate -contains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToDelete = $triggersDeployed | Where-Object { $triggerNamesInTemplate -notcontains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToStart = $triggersInTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.name.Substring(37, $_.name.Length-40)
+        TriggerType = $_.Properties.type
+    }
+}
 
 if ($predeployment -eq $true) {
     #Stop all triggers
-    Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { 
-        Write-host "Disabling trigger " $_
-        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Disabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    Write-Host "Stopping deployed triggers`n"
+    $triggersToStop | ForEach-Object {
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Unsubscribing" $_.Name "from events"
+            $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Disabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Stopping trigger" $_.Name
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 else {
@@ -850,10 +869,18 @@ else {
 
     #Delete resources
     Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { 
+    $triggersToDelete | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
+            if ($_.TriggerType -eq "BlobEventsTrigger") {
+                Write-Host "Unsubscribing trigger" $_.Name "from events"
+                $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                while ($status.Status -ne "Disabled"){
+                    Start-Sleep -s 15
+                    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                }
+            }
             Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
         }
         Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
@@ -904,15 +931,17 @@ else {
 
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { 
-        Write-host "Enabling trigger " $_
-        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Enabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    $triggersToStart | ForEach-Object { 
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Subscribing" $_.Name "to events"
+            $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Enabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Starting trigger" $_.Name
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
     }
 }
 ```

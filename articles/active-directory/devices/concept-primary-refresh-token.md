@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672634"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771196"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Mi az elsődleges frissítési jogkivonat?
 
@@ -39,7 +39,7 @@ A következő Windows-összetevők kulcsszerepet játszanak a PRT igénylésébe
 
 A PRT az Azure AD frissítési jogkivonatában általánosan tartalmazott jogcímeket tartalmaz. Emellett a PRT-ben bizonyos, az eszközre vonatkozó jogcímek is szerepelnek. Ezek a következők:
 
-* **Eszköz azonosítója**: egy adott eszköz felhasználója számára kap egy PRT-t. Az eszköz-azonosító `deviceID` jogcím meghatározza azt az eszközt, amelyet a PRT a felhasználó számára adott ki. Ezt a jogcímet később a PRT-n keresztül beszerzett jogkivonatoknak adják ki. Az eszköz-azonosító jogcím az eszköz állapotára vagy megfelelőségére vonatkozó feltételes hozzáférés engedélyezésének meghatározására szolgál.
+* **Eszköz azonosítója**: egy adott eszköz felhasználója számára kap egy PRT-t. Az eszköz-azonosító jogcím `deviceID` meghatározza azt az eszközt, amelyet a PRT a felhasználó számára adott ki. Ezt a jogcímet később a PRT-n keresztül beszerzett jogkivonatoknak adják ki. Az eszköz-azonosító jogcím az eszköz állapotára vagy megfelelőségére vonatkozó feltételes hozzáférés engedélyezésének meghatározására szolgál.
 * **Munkamenetkulcs**: a munkamenetkulcs egy titkosított szimmetrikus kulcs, amelyet az Azure ad hitelesítési szolgáltatás generál, amelyet a PRT részeként állítottak ki. A munkamenet-kulcs igazolja a tulajdonjogot, ha egy PRT-t használ a más alkalmazásokhoz tartozó jogkivonatok beszerzéséhez.
 
 ### <a name="can-i-see-whats-in-a-prt"></a>Megtekinthetem a PRT-ket?
@@ -60,7 +60,7 @@ A PRT-t a Windows 10-es eszköz felhasználói hitelesítése során két forgat
 * **Azure ad-hez csatlakoztatott** vagy **hibrid Azure ad-csatlakozás**: a rendszer a Windows-bejelentkezés során kiállítja a PRT-t, amikor egy felhasználó bejelentkezik a szervezeti hitelesítő adataival. A PRT-ket minden Windows 10 támogatott hitelesítő adat (például a jelszó és a vállalati Windows Hello) adja ki. Ebben az esetben az Azure AD CloudAP beépülő modul a PRT elsődleges szolgáltatója.
 * **Azure ad-beli regisztrált eszköz**: a rendszer akkor bocsát ki egy PRT-t, amikor egy felhasználó másodlagos munkahelyi fiókot ad hozzá a Windows 10-es eszközhöz. A felhasználók kétféleképpen adhatnak hozzá Windows 10-es fiókokat –  
    * Fiók hozzáadása a **fiók használata mindenhol ezen az eszközön** az alkalmazásba való bejelentkezés után (például Outlook)
-   * Fiók hozzáadása a **Beállítások** > **fiókjainak** > **hozzáférés munkahelyi vagy iskolai** > **kapcsolathoz**
+   * Fiók hozzáadása a **Beállítások**  >  **fiókjainak**  >  **hozzáférés munkahelyi vagy iskolai**  >  **kapcsolathoz**
 
 Az Azure AD-ban regisztrált eszközök esetében az Azure AD WAM beépülő modul a PRT elsődleges szolgáltatója, mivel a Windows bejelentkezés nem történik meg ezzel az Azure AD-fiókkal.
 
@@ -76,7 +76,7 @@ A kiadást követően a PRT 14 napig érvényes, és folyamatosan megújul, amí
 A PRT-ket a Windows két fő összetevője használja:
 
 * **Azure ad-CloudAP beépülő modul**: a Windows-bejelentkezés során az Azure ad CloudAP beépülő modulja a felhasználó által megadott hitelesítő adatok használatával kér egy PRT-t az Azure ad-ből. Emellett gyorsítótárazza a PRT-t, hogy engedélyezze a gyorsítótárazott bejelentkezést, ha a felhasználó nem fér hozzá internetkapcsolathoz.
-* **Azure ad WAM beépülő modul**: amikor a felhasználók megpróbálnak hozzáférni az alkalmazásokhoz, az Azure ad WAM beépülő modul a PRT használatával engedélyezi az SSO-t a Windows 10 rendszeren. Az Azure AD WAM beépülő modulja a PRT-vel kéri az olyan alkalmazásokhoz való frissítési és hozzáférési jogkivonatokat, amelyek a WAM-t használják a jogkivonat-kérelmekre. Emellett lehetővé teszi az egyszeri bejelentkezést a böngészőkben a PRT-nek a böngészőalapú kérelmekbe való beadásával. A Windows 10-es böngészőbeli egyszeri bejelentkezés támogatott a Microsoft Edge (natív módon) és a Chrome (a Windows 10 fiókok vagy az Office Online bővítmény használatával).
+* **Azure ad WAM beépülő modul**: amikor a felhasználók megpróbálnak hozzáférni az alkalmazásokhoz, az Azure ad WAM beépülő modul a PRT használatával engedélyezi az SSO-t a Windows 10 rendszeren. Az Azure AD WAM beépülő modulja a PRT-vel kéri az olyan alkalmazásokhoz való frissítési és hozzáférési jogkivonatokat, amelyek a WAM-t használják a jogkivonat-kérelmekre. Emellett lehetővé teszi az egyszeri bejelentkezést a böngészőkben a PRT-nek a böngészőalapú kérelmekbe való beadásával. A Windows 10-es böngésző egyszeri bejelentkezését a Microsoft Edge (natív módon) és a Chrome (a [Windows 10 fiókjain](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) vagy az [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) -bővítményeken keresztül) támogatja.
 
 ## <a name="how-is-a-prt-renewed"></a>Hogyan újítják meg a PRT-ket?
 

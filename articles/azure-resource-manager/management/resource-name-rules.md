@@ -2,13 +2,13 @@
 title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653704"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758894"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -696,6 +696,9 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | kiszolgálófarmok | erőforráscsoport | 1-40 | Alfanumerikus karakterek és kötőjelek. |
 > | helyek | globális | 2-60 | Alfanumerikus karaktereket és kötőjeleket tartalmaz.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
 > | helyek/bővítőhelyek | hely | 2-59 | Alfanumerikus karakterek és kötőjelek. |
+
+> [!NOTE]
+> A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
 ## <a name="next-steps"></a>További lépések
 

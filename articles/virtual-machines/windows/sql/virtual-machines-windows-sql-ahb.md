@@ -14,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6f05b96eb856e7d2f2b79141e8da1203408f892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201822"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771434"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban
+# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Servert futtató virtuális gépek licencmodelljének módosítása
 Ez a cikk azt ismerteti, hogyan változtatható meg egy SQL Server virtuális gép (VM) licencelési modellje az Azure-ban az új SQL VM erőforrás-szolgáltató, a **Microsoft. SqlVirtualMachine**használatával.
 
 Három licenccel rendelkezik a SQL Server üzemeltető virtuális géphez: utólagos elszámolású, Azure Hybrid Benefit és vész-helyreállítási (DR). A SQL Server VM licencelési modelljét a Azure Portal, az Azure CLI vagy a PowerShell használatával módosíthatja. 
@@ -40,7 +40,7 @@ Ha az Azure-beli virtuális gépen SQL Server Azure Hybrid Benefit használatát
 - Hozzon létre egy virtuális gépet az Azure Marketplace-en az utólagos elszámolású SQL Server rendszerképpel, és aktiválja a Azure Hybrid Benefit.
 - Önálló telepítés SQL Server egy Azure-beli virtuális gépen, manuálisan [regisztrálja az SQL VM erőforrás-szolgáltatót](virtual-machines-windows-sql-register-with-resource-provider.md), és aktiválja a Azure Hybrid Benefit.
 
-A SQL Server licencének típusa a virtuális gép üzembe helyezésekor van beállítva. Később bármikor megváltoztathatja. A licencelési modellek közötti váltás nem eredményez leállást, nem indítja újra a virtuális gépet vagy a SQL Server szolgáltatást, nem vesz fel további költségeket, és azonnal érvénybe lép. Valójában a Azure Hybrid Benefit aktiválása *csökkenti* a költségeket.
+A SQL Server licencelése a virtuális gép kiépített állapotában, vagy később bármikor konfigurálható. A licencelési modellek közötti váltás nem eredményez leállást, nem indítja újra a virtuális gépet vagy a SQL Server szolgáltatást, nem vesz fel további költségeket, és azonnal érvénybe lép. Valójában a Azure Hybrid Benefit aktiválása *csökkenti* a költségeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -117,7 +117,7 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
-**Vész-helyreállítás** 
+**Vészhelyreállítás** 
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -154,7 +154,7 @@ A licencelési modell módosítása:
 
 ## <a name="known-errors"></a>Ismert hibák
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nem található a (z) "Microsoft.\<SqlVirtualMachine/SqlVirtualMachines/Resource-Group>"\<erőforrás a (z) "erőforrás-csoport>" erőforráscsoport alatt.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>Nem található a (z) "Microsoft. SqlVirtualMachine/SqlVirtualMachines/ \< Resource-group>" erőforrás a (z) " \< Erőforrás-csoport>" erőforráscsoport alatt.
 
 Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítani a licencet, amely még nincs regisztrálva az SQL VM erőforrás-szolgáltatónál:
 
@@ -163,14 +163,14 @@ Ez a hiba akkor fordul elő, ha olyan SQL Server VMon próbálja meg módosítan
 Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [regisztrálnia kell a SQL Server VM az erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>A (z)\<"\>vmname" virtuális gépnek több hálózati adaptere van társítva
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>A (z) " \< vmname" virtuális gépnek \> több hálózati adaptere van társítva
 
 Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért tekintse át a következő cikkeket: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)

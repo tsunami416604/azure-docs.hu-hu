@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 4fef9db91369c23d27090cc2433b5e0ed09bbc7d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 6a007b14ad96efbef7fae0d606bf38b22383b0d4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684731"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773338"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása ARM-sablonnal
+# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása Resource Manager-sablonnal
 
 A Azure Database for MySQL felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MySQL-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre egy Azure Database for MySQL-kiszolgálót virtuális hálózati integrációval. A kiszolgálót a Azure Portalban, az Azure CLI-ben vagy a Azure PowerShellban hozhatja létre.
 
@@ -213,7 +213,7 @@ echo "Press [ENTER] to continue ..."
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

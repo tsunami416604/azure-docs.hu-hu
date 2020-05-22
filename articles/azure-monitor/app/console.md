@@ -2,14 +2,14 @@
 title: Azure-Application Insights a konzol alkalmazásaihoz | Microsoft Docs
 description: Webes alkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655429"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774044"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights a .NET-konzol alkalmazásaihoz
 
@@ -18,7 +18,7 @@ ms.locfileid: "77655429"
 [Microsoft Azure](https://azure.com)-előfizetésre van szüksége. Jelentkezzen be egy Microsoft-fiókval, amely lehet Windows, Xbox Live vagy más Microsoft Cloud Services. Előfordulhat, hogy a csapata szervezeti előfizetéssel rendelkezik az Azure-hoz: kérje meg a tulajdonost, hogy vegye fel Önt a Microsoft-fiók használatával.
 
 > [!NOTE]
-> Létezik egy Application Insights új, [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) nevű SDK, amely lehetővé teszi a Application Insights használatát bármely konzolos alkalmazáshoz. Ezt a csomagot és a hozzá tartozó utasításokat ajánlott [használni.](../../azure-monitor/app/worker-service.md) Ez a csomag [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)célja, és így a .net Core 2,0-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
+> Létezik egy Application Insights új, [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) nevű SDK, amely lehetővé teszi a Application Insights használatát bármely konzolos alkalmazáshoz. Ezt a csomagot és a hozzá tartozó utasításokat ajánlott [használni.](../../azure-monitor/app/worker-service.md) Ez a csomag célja [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , és így a .net Core 2,0-as vagy újabb verzióban, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziókban használható.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -36,19 +36,19 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> A telemetria nincs azonnal elküldve. A telemetria elemek kötegelt és a ApplicationInsights SDK által küldött kötegek. `Track()` A konzolos alkalmazásokban, amelyek közvetlenül a metódusok meghívása után lépnek fel `Flush()` , `Sleep` a telemetria nem küldhetők el, kivéve, ha az alkalmazás kilép, [amint az a jelen cikk későbbi](#full-example) részében látható.
+> A telemetria nincs azonnal elküldve. A telemetria elemek kötegelt és a ApplicationInsights SDK által küldött kötegek. A konzolos alkalmazásokban, amelyek közvetlenül a metódusok meghívása után lépnek fel `Track()` , a telemetria nem küldhetők el, kivéve, ha `Flush()` `Sleep` / `Delay` az alkalmazás kilép, amint az a jelen cikk későbbi [részében](#full-example) látható. `Sleep`a használata esetén nem szükséges `InMemoryChannel` . Aktív probléma merült fel, amely a következő `Sleep` nyomon követéséhez szükséges: [ApplicationInsights-DotNet/Issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * A [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) Package legújabb verziójának telepítése – automatikusan nyomon követi a http, az SQL vagy más külső függőségi hívásokat.
 
-A kód vagy a fájl használatával `ApplicationInsights.config` Application Insights inicializálható és konfigurálható. Győződjön meg arról, hogy az inicializálás a lehető leghamarabb megtörténik. 
+A kód vagy a fájl használatával Application Insights inicializálható és konfigurálható `ApplicationInsights.config` . Győződjön meg arról, hogy az inicializálás a lehető leghamarabb megtörténik. 
 
 > [!NOTE]
 > A **ApplicationInsights. config fájlra** hivatkozó utasítások csak a .NET-keretrendszert célzó alkalmazásokra vonatkoznak, és a .net Core-alkalmazásokra nem érvényesek.
 
 ### <a name="using-config-file"></a>Konfigurációs fájl használata
 
-Alapértelmezés szerint a Application Insights SDK a munkakönyvtárban `ApplicationInsights.config` `TelemetryConfiguration` keresi a fájlt a létrehozáskor
+Alapértelmezés szerint a Application Insights SDK `ApplicationInsights.config` a munkakönyvtárban keresi a fájlt a `TelemetryConfiguration` létrehozáskor
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -98,7 +98,7 @@ A konfigurációs fájlhoz a [Microsoft. ApplicationInsights. windowsserver](htt
 > [!NOTE]
 > A konfigurációs fájl olvasása nem támogatott a .NET Core-ban. Érdemes lehet Application Insights SDK-t használni [a ASP.net Core](../../azure-monitor/app/asp-net-core.md)
 
-* Az alkalmazás indítási létrehozása és konfigurálása `DependencyTrackingTelemetryModule` során a példánynak egyedinek kell lennie, és meg kell őrizni az alkalmazás élettartamát.
+* Az alkalmazás indítási létrehozása és konfigurálása során `DependencyTrackingTelemetryModule` a példánynak egyedinek kell lennie, és meg kell őrizni az alkalmazás élettartamát.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -125,7 +125,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Ha egyszerű `TelemetryConfiguration()` konstruktorral hozta létre a konfigurációt, engedélyeznie kell a korrelációs támogatást is. **Nem szükséges** , ha a konfigurációt beolvassa a fájlból, a használt `TelemetryConfiguration.CreateDefault()` vagy `TelemetryConfiguration.Active`a elemet.
+Ha egyszerű konstruktorral hozta létre a konfigurációt `TelemetryConfiguration()` , engedélyeznie kell a korrelációs támogatást is. **Nem szükséges** , ha a konfigurációt beolvassa a fájlból, a használt vagy a elemet `TelemetryConfiguration.CreateDefault()` `TelemetryConfiguration.Active` .
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

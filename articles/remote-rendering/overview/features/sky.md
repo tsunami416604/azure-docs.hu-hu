@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680608"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759115"
 ---
 # <a name="sky-reflections"></a>Égbolt tükröződése
 
@@ -37,9 +37,9 @@ A világítástechnikai modellel kapcsolatos további információkért tekintse
 
 ## <a name="changing-the-sky-texture"></a>Az égbolt textúrájának módosítása
 
-A környezeti Térkép módosításához mindössze annyit kell tennie, hogy [betölti a textúrát](../../concepts/textures.md) , és megváltoztatja a `SkyReflectionSettings`munkamenetet:
+A környezeti Térkép módosításához mindössze annyit kell tennie, hogy [betölti a textúrát](../../concepts/textures.md) , és megváltoztatja a munkamenetet `SkyReflectionSettings` :
 
-``` cs
+```cs
 LoadTextureAsync _skyTextureLoad = null;
 void ChangeEnvironmentMap(AzureSession session)
 {
@@ -66,7 +66,31 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Vegye figyelembe, `LoadTextureFromSASAsync` hogy a rendszer a fenti változatot használja, mert a beépített textúra be van töltve. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, `LoadTextureAsync` használja a Variant elemet.
+```cpp
+void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+{
+    LoadTextureFromSASParams params;
+    params.TextureType = TextureType::CubeMap;
+    params.TextureUrl = "builtin://VeniceSunset";
+    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
+
+    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    {
+        if (res->IsRanToCompletion())
+        {
+            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
+            settings->SkyReflectionTexture(*res->Result());
+        }
+        else
+        {
+            printf("Texture loading failed!");
+        }
+    });
+}
+
+```
+
+Vegye figyelembe, hogy a `LoadTextureFromSASAsync` rendszer a fenti változatot használja, mert a beépített textúra be van töltve. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, használja a `LoadTextureAsync` Variant elemet.
 
 ## <a name="sky-texture-types"></a>Égbolt típusú textúrák
 
@@ -80,7 +104,7 @@ Hivatkozásként itt látható egy csomagolatlan cubemap:
 
 ![Csomagolatlan cubemap](media/Cubemap-example.png)
 
-A `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` with `TextureType.CubeMap` paranccsal betöltheti a cubemap-textúrákat.
+`AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` A with paranccsal `TextureType.CubeMap` betöltheti a cubemap-textúrákat.
 
 ### <a name="sphere-environment-maps"></a>Gömb-környezeti térképek
 
@@ -88,7 +112,7 @@ A 2D-mintázatok környezeti térképként való használatakor a képnek [gömb
 
 ![Egy Sky-rendszerkép a gömb koordinátáiban](media/spheremap-example.png)
 
-A `AzureSession.Actions.LoadTextureAsync` with `TextureType.Texture2D` paranccsal betöltheti a gömb-környezeti térképeket.
+`AzureSession.Actions.LoadTextureAsync`A with paranccsal `TextureType.Texture2D` betöltheti a gömb-környezeti térképeket.
 
 ## <a name="built-in-environment-maps"></a>Beépített környezeti térképek
 

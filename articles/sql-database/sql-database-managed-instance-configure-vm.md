@@ -3,7 +3,7 @@ title: Ügyfél virtuális gép által felügyelt példányának összekötése
 description: Kapcsolódjon Azure SQL Database felügyelt példányhoz egy Azure-beli virtuális gép SQL Server Management Studio használatával.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2787756da048de0a4354d88feb8445c03fb3ef74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528415"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773672"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: az Azure virtuális gép konfigurálása Azure SQL Database felügyelt példányhoz való kapcsolódásra
 
@@ -48,10 +48,10 @@ A következő lépések új alhálózatot hoznak létre a felügyelt példány V
    | ---------------- | ----------------- | ----------- |
    | **Név** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvényes tartomány | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Hálózati biztonsági csoport** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Útválasztási táblázat** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Hálózati biztonsági csoport** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Útválasztási táblázat** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
    | **Szolgáltatásvégpontok** | 0 kijelölve | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
-   | **Alhálózat delegálása** | None | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
+   | **Alhálózat delegálása** | Nincs | Az alapértelmezett érték jó ehhez a rövid útmutatóhoz.|
 
    ![Új felügyelt példány alhálózata az ügyfél virtuális géphez](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
@@ -76,7 +76,7 @@ Az ügyfél virtuális gépnek az összes szükséges eszközzel való létrehoz
    | Beállítás| Ajánlott érték | Leírás |
    | ---------------- | ----------------- | ----------- |
    | **Előfizetés** | Érvényes előfizetés | Olyan előfizetésnek kell lennie, amelyben jogosult új erőforrások létrehozására. |
-   | **Erőforráscsoport** |A [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában megadott erőforráscsoport.|Ez az erőforráscsoport a VNet létezésének egyike.|
+   | **Resource Group** |A [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában megadott erőforráscsoport.|Ez az erőforráscsoport a VNet létezésének egyike.|
    | **Hely** | Az erőforráscsoport helye | Ez az érték a kiválasztott erőforráscsoport alapján van feltöltve. |
    | **Virtuális gép neve**  | Bármely érvényes név | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket.|
    |**Rendszergazdai Felhasználónév**|Bármilyen érvényes Felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.<br>Ezt a felhasználónevet akkor használja, amikor [csatlakozik a virtuális géphez](#connect-to-virtual-machine).|

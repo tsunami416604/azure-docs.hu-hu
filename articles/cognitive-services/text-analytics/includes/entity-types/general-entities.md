@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77211408"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778174"
 ---
 ## <a name="general-entity-types"></a>Általános entitások típusai:
 
@@ -22,11 +22,11 @@ ms.locfileid: "77211408"
 Nevek felismerése szövegben.
 
 Nyelvek:
-* Nyilvános előnézet: `Arabic`, `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Swedish` ,, `Spanish`,,,,,,,,,,,,,,,, és `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian``Turkish`
+* Nyilvános előnézet:,,,,,,,,,,,,,,,,,,, `Arabic` `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` és`Turkish`
 
 | Altípus neve | Leírás                                                      | A modell verziójától kezdődően érhető el |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| N/A          | Felismert személyek neve, például `Bill Gates`:`Marie Curie` | `2019-10-01`                          | 
+| N/A          | Felismert személyek neve `Bill Gates` , például:`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>PersonType
 Egy személy által birtokolt feladat típusa vagy szerepköre.
@@ -36,7 +36,7 @@ Nyelvek:
 
 | Altípus neve | Leírás                                                                                | A modell verziójától kezdődően érhető el |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Feladattípusok például `civil engineer` `salesperson` `chef`:,, `librarian`,`nursing aide` | `2020-02-01`                           |
+| N/A          | Feladattípusok például:,, `civil engineer` `salesperson` `chef` `librarian` ,`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Hely
 
@@ -44,12 +44,12 @@ Természetes és emberi által készített tereptárgyak, struktúrák, földraj
 
 Nyelvek:
 
-* Nyilvános előnézet: `Arabic`, `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Swedish` ,, `Spanish`,,,,,,,,,,,,,,,, és `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian``Turkish`
+* Nyilvános előnézet:,,,,,,,,,,,,,,,,,,, `Arabic` `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` és`Turkish`
 
 | Altípus neve              | Leírás                                                                              | A modell verziójától kezdődően érhető el |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A                       | helyszínek, például `Atlantic Ocean` `library`:, `Eiffel Tower`,`Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitikai entitás (GPE) – csak angol nyelven| Városok, országok, Államok, például `Seattle` `Pennsylvania` `South Africa`:,,`Tokyo` | `2020-02-01`                           |
+| N/A                       | helyszínek, például: `Atlantic Ocean` , `library` `Eiffel Tower` ,`Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitikai entitás (GPE) – csak angol nyelven| Városok, országok/régiók `Seattle` , például:,, `Pennsylvania` `South Africa``Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
@@ -57,11 +57,11 @@ Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például:
 
 Nyelvek: 
 
-* Nyilvános előnézet: `Arabic`, `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Swedish` ,, `Spanish`,,,,,,,,,,,,,,,, és `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian``Turkish`
+* Nyilvános előnézet:,,,,,,,,,,,,,,,,,,, `Arabic` `Czech` `Chinese-Simplified` `Danish` `Dutch` `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` és`Turkish`
 
 | Altípus neve | Leírás                                                                                             | A modell verziójától kezdődően érhető el |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | szervezetek, például `Microsoft` `NASA` `National Oceanic and Atmospheric Administration`:,,`VOA` | `2019-10-01`                           |
+| N/A          | szervezetek `Microsoft` , például:, `NASA` , `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>Esemény  
 
@@ -73,9 +73,9 @@ Nyelvek:
 
 | Altípus neve | Leírás                                                            | A modell verziójától kezdődően érhető el |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Események `wedding`, például, `hurricane` `car accident`,, `solar eclipse`,`American Revolution` | `2020-02-01`                           |
+| N/A          | Események, például `wedding` ,,, `hurricane` `car accident` `solar eclipse` ,`American Revolution` | `2020-02-01`                           |
 
-### <a name="product"></a>Product  
+### <a name="product"></a>Termék  
 
 Különböző kategóriák fizikai objektumai.  
 
@@ -85,7 +85,7 @@ Nyelvek:
 
 | Altípus neve | Leírás                                                                        | A modell verziójától kezdődően érhető el |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| N/A          | Például `Microsoft Surface laptop` `sunglasses`:,, `motorcycle`,, `bag``Xbox` | `2020-02-01`                           |
+| N/A          | Például:, `Microsoft Surface laptop` , `sunglasses` `motorcycle` , `bag` ,`Xbox` | `2020-02-01`                           |
 | Számítás    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>Ügyességi  
@@ -156,7 +156,7 @@ Dátum és idő entitások.
 
 Nyelvek:
 
-* Nyilvános előzetes verzió `Chinese-Simplified`: `English` `French`,, `German` , és`Spanish`
+* Nyilvános előzetes verzió:,,, `Chinese-Simplified` `English` `French` `German` és`Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Számok és numerikus mennyiségek.
 
 Nyelvek:
 
-* Nyilvános előzetes verzió `Chinese-Simplified`: `English` `French`,, `German` , és`Spanish`
+* Nyilvános előzetes verzió:,,, `Chinese-Simplified` `English` `French` `German` és`Spanish`
 
 | Altípus neve    | Példák                     |
 |-------------|------------------------------|
@@ -184,6 +184,6 @@ Nyelvek:
 | Százalék  | `50%`, `fifty percent`       |
 | Sorszámok     | `2nd`, `second`              |
 | Kor         | `90 day old`, `30 years old` |
-| Currency (Pénznem)    | `$10.99`, `€30.00`           |
+| Currency (Pénznem)    | `$10.99`, `&euro;30.00`           |
 | Dimenzió   | `10 miles`, `40 cm`          |
 | Hőmérséklet | `32 degrees`, `10°C`         |

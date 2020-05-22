@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969356"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774181"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -70,7 +70,7 @@ Az új lemez particionálásához, formázásához és csatlakoztatásához, íg
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a `dmesg` használatával (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
+A virtuális géphez való csatlakozás után készen áll a lemez csatlakoztatására. Először keresse meg a lemezt a használatával `dmesg` (az új lemez felderítéséhez használt módszer változhat). Az alábbi példa a dmesg-et használja az *SCSI* -lemezek szűrésére:
 
 ```bash
 dmesg | grep SCSI
@@ -94,13 +94,13 @@ Ha olyan meglévő lemezt használ, amely tartalmaz egy adatkészletet, ugorjon 
 > [!NOTE]
 > Azt javasoljuk, hogy használja az fdisk legújabb verzióit, illetve azokat, amelyek elérhetők a disztribúcióhoz.
 
-Particionálja a lemezt az `fdisk` használatával. Ha a lemez mérete 2 tebibájt (TiB) vagy nagyobb, `parted` akkor GPT particionálást kell használnia. Ha a lemez mérete 2TiB alatt van, akkor MBR-vagy GPT-particionálást is használhat. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
+Particionálja a lemezt az `fdisk` használatával. Ha a lemez mérete 2 tebibájt (TiB) vagy nagyobb, akkor GPT particionálást kell használnia `parted` . Ha a lemez mérete 2TiB alatt van, akkor MBR-vagy GPT-particionálást is használhat. Legyen az 1. partíció elsődleges lemeze, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatot a */dev/SDC*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíciót is `p` választjuk, és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
+Az `n` paranccsal adhat hozzá egy új partíciót. Ebben a példában az elsődleges partíciót is választjuk, `p` és elfogadjuk a többi alapértelmezett értéket. A kimenet az alábbi példához hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -122,7 +122,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-A partíciós tábla kinyomtatásához írja `p` be `w` a parancsot, majd írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
+A partíciós tábla kinyomtatásához írja be a parancsot, `p` majd `w` írja be a táblát a lemezre, és lépjen ki. A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
 ```bash
 Command (m for help): p
@@ -179,18 +179,19 @@ Writing superblocks and filesystem accounting information: done
 Az fdisk segédprogramnak interaktív bemenetre van szüksége, ezért nem ideális az Automation-parancsfájlokban való használathoz. Az elválasztott [segédprogram azonban](https://www.gnu.org/software/parted/) parancsfájlokkal is rendelkezhet, így az automatizálási forgatókönyvek esetében jobban kihasználható. Az elválasztott segédprogram egy adatlemez particionálására és formázására használható. Az alábbi forgatókönyvhöz egy új adatlemez-/dev/SDC használunk, és formázza a [XFS](https://xfs.wiki.kernel.org/) fájlrendszer használatával.
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 A fentiekben leírtak szerint a [partprobe](https://linux.die.net/man/8/partprobe) segédprogram használatával gondoskodhat arról, hogy a kernel azonnal tisztában legyen az új partícióval és a fájlrendszerrel. A partprobe használatának sikertelensége esetén a blkid vagy a lslbk parancsok azonnal nem adhatják vissza az új fájlrendszer UUID azonosítóját.
 
 ### <a name="mount-the-disk"></a>A lemez csatlakoztatása
-Hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához `mkdir`a használatával. A következő példa egy könyvtárat hoz létre a */datadrive*:
+Hozzon létre egy könyvtárat a fájlrendszer csatlakoztatásához a használatával `mkdir` . A következő példa egy könyvtárat hoz létre a */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Ezzel `mount` a paranccsal csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
+Ezzel a paranccsal `mount` csatlakoztathatja a fájlrendszert. Az alábbi példa a */dev/sdc1* partíciót csatlakoztatja a */datadrive* csatlakoztatási ponthoz:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -240,7 +241,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, `fstrim` hogy manuálisan futtatja a parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
+* Bizonyos esetekben a `discard` beállítás teljesítménybeli következményekkel járhat. Azt is megteheti, hogy manuálisan futtatja a `fstrim` parancsot a parancssorból, vagy hozzáadja azt a crontabhoz, hogy rendszeresen fusson:
   
     **Ubuntu**
   

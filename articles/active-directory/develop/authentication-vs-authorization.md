@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: fca794d51e06c72f157dc063445d1cab09d92d28
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115863"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772063"
 ---
 # <a name="authentication-vs-authorization"></a>Hitelesítés és engedélyezés
 
@@ -36,9 +36,9 @@ Az **Engedélyezés** a hitelesített fél engedélyének megadására irányul�
 
 Ahelyett, hogy olyan alkalmazásokat hozna létre, amelyek mindegyike megtartja a saját felhasználónevét és jelszavát, ami magas adminisztrációs terhet jelent, ha több alkalmazásban kell felhasználókat felvennie vagy eltávolítania, az alkalmazások delegálni tudják a felelősséget egy központi identitás-szolgáltatónak.
 
-Azure Active Directory (Azure AD) egy központi identitás-szolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása olyan forgatókönyveket tesz lehetővé, mint például a feltételes hozzáférési szabályzatok, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a többtényezős hitelesítés használata, valamint a felhasználó egyszeri bejelentkezésének engedélyezése, majd automatikusan bejelentkezzen az összes olyan webalkalmazásba, amely ugyanazzal a központi címtárral rendelkezik. Ez a funkció **egyszeri bejelentkezésre (SSO)** hivatkozik.
+Azure Active Directory (Azure AD) egy központi identitás-szolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása olyan forgatókönyveket tesz lehetővé, mint például a feltételes hozzáférési szabályzatok, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a [többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md) használata (más néven kétfaktoros hitelesítés vagy 2FA), valamint a felhasználó egyszeri bejelentkezésének engedélyezése, majd automatikusan bejelentkezve az összes olyan webalkalmazásba, amely azonos központi címtárral rendelkezik. Ez a funkció **egyszeri bejelentkezésre (SSO)** hivatkozik.
 
-A Microsoft Identity platform leegyszerűsíti az alkalmazások fejlesztőinek hitelesítését és engedélyezését azáltal, hogy szolgáltatásként szolgáltatja a szolgáltatást, és támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID Connect használatát, valamint a különböző platformokhoz készült nyílt forráskódú kódtárakat, amelyek segítségével gyorsan elkezdheti a kódolást. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, a [Microsoft Graph](https://developer.microsoft.com/graph/), más Microsoft API-k vagy a fejlesztők által készített API-k meghívására. További információ: [a Microsoft Identity platform fejlődése](about-microsoft-identity-platform.md).
+A Microsoft Identity platform leegyszerűsíti az alkalmazások fejlesztői számára az engedélyezést és a hitelesítést azáltal, hogy szolgáltatásként szolgáltatja a szolgáltatást, és támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID Connectet, valamint a különböző platformokhoz készült nyílt forráskódú kódtárakat, amelyek segítségével gyorsan elkezdheti a kódolást Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, a [Microsoft Graph](https://developer.microsoft.com/graph/), más Microsoft API-k vagy a fejlesztők által készített API-k meghívására. További információ: [a Microsoft Identity platform fejlődése](about-microsoft-identity-platform.md).
 
 A következő a Microsoft Identity platform által használt különböző protokollok rövid összevetése:
 
@@ -50,11 +50,10 @@ A következő a Microsoft Identity platform által használt különböző proto
 
 A hitelesítési és engedélyezési alapismeretekkel kapcsolatos egyéb témakörökhöz:
 
-* Tekintse meg a [biztonsági jogkivonatokat](security-tokens.md) , hogy megtudja, hogyan használhatók a hozzáférési tokenek, a frissítési tokenek és az azonosító tokenek a hitelesítés és az engedélyezés során.
+* A [biztonsági jogkivonatok](security-tokens.md) segítségével megtudhatja, hogyan használják a hozzáférési tokeneket, a frissítési jogkivonatokat és az azonosító jogkivonatokat az engedélyezés és a hitelesítés során.
 * Tekintse meg az alkalmazás [modelljét](application-model.md) , amelyből megismerheti az alkalmazás regisztrálásának folyamatát, hogy integrálható legyen a Microsoft Identity platformmal.
 * Az [alkalmazás bejelentkezési folyamata](app-sign-in-flow.md) című témakörben megismerheti a webes, asztali és mobil alkalmazások bejelentkezési folyamatát a Microsoft Identity platformon.
 
-További információ a Microsoft Identity platform által megvalósított protokollokról:
-
-* Az OpenID Connect és a OAuth 2,0 szabványokkal kapcsolatos további információkért lásd: [OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon](active-directory-v2-protocols.md) .
+* Ha többet szeretne megtudni a Microsoft Identity platform által megvalósított protokollokról, tekintse [meg a OAuth 2,0 és az OpenID Connect protokollok című témakört a Microsoft Identity platformon](active-directory-v2-protocols.md).
 * További információ arról, hogyan támogatja a Microsoft Identity platform az egyszeri bejelentkezést az [egyszeri bejelentkezéses SAML protokollon](single-sign-on-saml-protocol.md) .
+* Az egyszeri bejelentkezés az alkalmazásban való megvalósításának különböző módjaival kapcsolatos további információkért lásd: [egyszeri bejelentkezés a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md) .

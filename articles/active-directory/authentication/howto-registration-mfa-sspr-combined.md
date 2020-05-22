@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639676"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771332"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>A kombinált biztonsági információk regisztrációjának engedélyezése a Azure Active Directoryban
 
@@ -31,13 +31,13 @@ Az új felhasználói felület engedélyezése előtt tekintse át a [biztonság
 A következő lépések végrehajtásával engedélyezheti a kombinált regisztrációt:
 
 1. Jelentkezzen be a Azure Portal felhasználói rendszergazdaként vagy globális rendszergazdaként.
-2. Nyissa meg **Azure Active Directory** > **felhasználói beállítások** > **kezelése felhasználói szolgáltatás előzetes**verziójának beállításait.
-3. A **felhasználók a biztonsági adatok regisztrálásához és kezeléséhez**használhatják az előzetes verziójú funkciókat, így a **kiválasztott** felhasználók vagy az **összes** felhasználó számára engedélyezhető.
+2. Nyissa meg **Azure Active Directory**  >  **felhasználói beállítások**  >  **kezelése felhasználói szolgáltatás előzetes**verziójának beállításait.
+3. **A felhasználók a biztonsági információk összevont felhasználói felületét használhatják**, így a **kiválasztott** felhasználók vagy az **összes** felhasználó számára engedélyezhető.
 
    ![A kombinált biztonsági információk előzetes verziójának használatának engedélyezése az összes felhasználó számára](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!NOTE]
-> A kombinált regisztráció engedélyezése után azok a felhasználók, akik az új felhasználói felületen regisztrálják vagy megerősítik a telefonszámot vagy a mobil alkalmazást, használhatják Multi-Factor Authentication és SSPR, ha ezek a módszerek engedélyezve vannak a Multi-Factor Authentication és a SSPR házirendben. Ha ezt követően letiltja ezt a felhasználói élményt, a többtényezős hitelesítés elvégzéséhez `https://aka.ms/ssprsetup` a (z) oldalon az előző SSPR regisztrációs oldalra kell lépnie, mielőtt hozzá tudnak férni a laphoz.
+> A kombinált regisztráció engedélyezése után azok a felhasználók, akik az új felhasználói felületen regisztrálják vagy megerősítik a telefonszámot vagy a mobil alkalmazást, használhatják Multi-Factor Authentication és SSPR, ha ezek a módszerek engedélyezve vannak a Multi-Factor Authentication és a SSPR házirendben. Ha ezt követően letiltja ezt a felhasználói élményt, a többtényezős hitelesítés elvégzéséhez a (z) oldalon az előző SSPR regisztrációs oldalra kell lépnie, `https://aka.ms/ssprsetup` mielőtt hozzá tudnak férni a laphoz.
 
 Ha az Internet Explorerben konfigurálta a hely-hozzárendelési listát, a következő helyeknek ugyanabban a zónában kell lenniük:
 
@@ -55,7 +55,7 @@ A megbízható helyek feltételes hozzáférésben való létrehozásával kapcs
 
 A következő házirend az összes olyan kijelölt felhasználóra vonatkozik, amely az egyesített regisztrációs élmény használatával próbálkozik, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakozik.
 
-1. A **Azure Portal**keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés** lehetőséget.
+1. A **Azure Portal**keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés** lehetőséget.
 1. Válassza az **+ új szabályzat** lehetőséget
 1. Adja meg a szabályzat nevét, például: *kombinált biztonsági adatok regisztrálása megbízható hálózatokon*.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget. Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot, majd válassza a **kész**lehetőséget.
@@ -67,12 +67,12 @@ A következő házirend az összes olyan kijelölt felhasználóra vonatkozik, a
 
     ![Feltételes hozzáférési szabályzat létrehozása a biztonsági adatok regisztrálásának vezérléséhez](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. A **feltételek** > **helye**területen adja meg a következő beállításokat:
+1. A **feltételek**  >  **helye**területen adja meg a következő beállításokat:
    1. Az **Igen** beállítása
    1. **Bármely hely** belefoglalása
    1. **Az összes megbízható helyszín** kizárása
 1. Válassza a **kész** lehetőséget a *helyszínek* ablakban, majd a *feltételek* ablakban válassza a **kész** lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés letiltása**lehetőséget, majd **válassza** a
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget, majd **válassza** a
 1. **Házirend engedélyezése** **bekapcsolva** értékre
 1. A szabályzat véglegesítéséhez válassza a **Létrehozás** lehetőséget.
 

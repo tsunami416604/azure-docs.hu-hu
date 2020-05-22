@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409192"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772420"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Felhasználó vagy csoport társítása vállalati alkalmazáshoz Azure Active Directory
 
@@ -38,7 +38,7 @@ A következő típusú alkalmazások esetében lehetősége van megkövetelni, h
 - Azure Active Directory előhitelesítést használó alkalmazásproxy-alkalmazások
 - Az Azure AD Application platformra épülő, OAuth 2,0/OpenID Connect hitelesítést használó alkalmazások, miután egy felhasználó vagy rendszergazda beleegyezett az adott alkalmazásba.
 
-Ha felhasználói hozzárendelésre van szükség, csak azokat a felhasználókat fogja tudni bejelentkezni, akiket kifejezetten az alkalmazáshoz rendelt hozzá. Hozzáférhetnek az alkalmazáshoz a saját alkalmazások oldalon vagy egy közvetlen hivatkozás használatával. 
+Ha felhasználói hozzárendelésre van szükség, csak azokat a felhasználókat lehet bejelentkezni, akiket kifejezetten az alkalmazáshoz rendeltek (közvetlen felhasználói hozzárendelés vagy csoporttagság alapján). Hozzáférhetnek az alkalmazáshoz a saját alkalmazások oldalon vagy egy közvetlen hivatkozás használatával. 
 
 Ha nincs *szükség*hozzárendelésre, mert ezt a beállítást a **nem** értékre állította be, vagy mert az alkalmazás más egyszeri bejelentkezéses módot használ, akkor bármely felhasználó hozzáférhet az alkalmazáshoz, ha az alkalmazás **Tulajdonságok** lapján közvetlen hivatkozással rendelkezik az alkalmazásra vagy a **felhasználói hozzáférési URL-címre** . 
 
@@ -90,9 +90,9 @@ Felhasználói hozzárendelés megkövetelése egy alkalmazáshoz:
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
 
    > [!NOTE]
-   > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD`). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
+   > Telepítenie kell a AzureAD modult (használja a parancsot `Install-Module -Name AzureAD` ). Ha a rendszer kéri, hogy telepítsen egy NuGet modult vagy az új Azure Active Directory v2 PowerShell-modult, írja be az Y értéket, és nyomja le az ENTER
 
-1. Futtassa `Connect-AzureAD` a parancsot, és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+1. Futtassa a parancsot, `Connect-AzureAD` és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
 1. A következő parancsfájl használatával rendelhet hozzá felhasználót és szerepkört egy alkalmazáshoz:
 
     ```powershell
@@ -110,9 +110,11 @@ Felhasználói hozzárendelés megkövetelése egy alkalmazáshoz:
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-A felhasználók alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért látogasson el a [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) dokumentációjában
+A felhasználók alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)dokumentációját.
 
-Egy csoport vállalati alkalmazáshoz való hozzárendeléséhez a `Get-AzureADUser` `Get-AzureADGroup`következőt kell lecserélnie:.
+Ha vállalati alkalmazáshoz szeretne hozzárendelni egy csoportot, a és a helyére a következőt kell cserélnie: `Get-AzureADUser` `Get-AzureADGroup` `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
+
+A csoportok alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)dokumentációját.
 
 ### <a name="example"></a>Példa
 
@@ -134,11 +136,11 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Futtassa a parancsot `$sp.AppRoles` a munkahelyi elemzési alkalmazáshoz elérhető szerepkörök megjelenítéséhez. Ebben a példában a Britta Simon (korlátozott hozzáférés) szerepkört szeretnénk hozzárendelni.
+1. Futtassa a parancsot a `$sp.AppRoles` munkahelyi elemzési alkalmazáshoz elérhető szerepkörök megjelenítéséhez. Ebben a példában a Britta Simon (korlátozott hozzáférés) szerepkört szeretnénk hozzárendelni.
 
    ![A munkahelyi elemzési szerepkört használó felhasználó számára elérhető szerepkörök megjelenítése](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Rendelje hozzá a szerepkör nevét `$app_role_name` a változóhoz.
+1. Rendelje hozzá a szerepkör nevét a `$app_role_name` változóhoz.
 
     ```powershell
     # Assign the values to the variables

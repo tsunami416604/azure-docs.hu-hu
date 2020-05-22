@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68726729"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774051"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-létesítmények,-telephelyek és fizikai biztonság
 Ez a cikk azt ismerteti, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez.
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogy mit tesz a Microsoft az Azure-infrastruktúra bizt
 ## <a name="datacenter-infrastructure"></a>Adatközpont-infrastruktúra
 Az Azure egy [globálisan elosztott adatközpont-infrastruktúrából](https://azure.microsoft.com/global-infrastructure/)áll, amely több ezer online szolgáltatások támogat, és világszerte több mint 100 igen biztonságos szolgáltatást biztosít.
 
-Az infrastruktúra úgy lett kialakítva, hogy az alkalmazások a világ minden pontján közelebb kerüljenek a felhasználókhoz, megőrizve az adattárolást, és átfogó megfelelőségi és rugalmassági lehetőségeket biztosítanak az ügyfeleknek. Az Azure világszerte 52 régióval rendelkezik, és 140 országban/régióban érhető el.
+Az infrastruktúra úgy lett kialakítva, hogy az alkalmazások a világ minden pontján közelebb kerüljenek a felhasználókhoz, megőrizve az adattárolást, és átfogó megfelelőségi és rugalmassági lehetőségeket biztosítanak az ügyfeleknek. Az Azure világszerte 58 régióval rendelkezik, és 140 országban/régióban érhető el.
 
 A régiók olyan adatközpontok összessége, amelyek nagy és rugalmas hálózaton keresztül kapcsolódnak egymáshoz. A hálózat alapértelmezés szerint tartalmazza a tartalom terjesztését, a terheléselosztást, a redundanciát és a titkosítást. Az Azure több globális régióval rendelkezik, mint bármely más felhőalapú szolgáltató, így rugalmasságot biztosít az alkalmazások üzembe helyezéséhez, ahol szüksége van rájuk.
 

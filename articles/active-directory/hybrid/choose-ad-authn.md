@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206731"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758129"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 
@@ -92,7 +92,7 @@ A döntéssel kapcsolatos kérdések részletei:
 
 * **Speciális forgatókönyvek**. Ha a szervezetek úgy döntenek, hogy az prémium szintű Azure AD P2-vel rendelkező Azure AD Identity Protection-jelentésekkel identitásokkal kapcsolatos bepillantásokat használhat. Ilyen például a kiszivárgott hitelesítő adatok jelentés. A Windows Hello for Business [speciális követelményeket támaszt a jelszó-kivonatolási szinkronizálás használatakor](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure ad Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) jelszó-kivonatolási szinkronizálást igényel a felhasználók vállalati hitelesítő adatokkal való kiépítéséhez a felügyelt tartományban.
 
-    Azoknak a szervezeteknek, amelyeken többtényezős hitelesítés szükséges a jelszó-kivonat szinkronizálásához, az Azure AD többtényezős hitelesítést vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszereket, amelyek az összevonásra támaszkodnak.
+    Azoknak a szervezeteknek, amelyeken többtényezős hitelesítés szükséges a jelszó-kivonatolási szinkronizáláshoz, az Azure Multi-Factor Authentication vagy a [feltételes hozzáférés egyéni vezérlőit](../../active-directory/conditional-access/controls.md#custom-controls-preview)kell használniuk. Ezek a szervezetek nem használhatnak olyan harmadik féltől származó vagy helyszíni többtényezős hitelesítési módszereket, amelyek az összevonásra támaszkodnak.
 
 > [!NOTE]
 > Az Azure AD feltételes hozzáféréséhez [prémium szintű Azure ad P1](https://azure.microsoft.com/pricing/details/active-directory/) licenc szükséges.
@@ -139,7 +139,7 @@ Tekintse át az [átmenő hitelesítés implementálása](../../active-directory
   * Intelligens kártyák vagy tanúsítványok használatát igénylő hitelesítés.
   * A helyszíni MFA-kiszolgálók vagy az összevont identitás-szolgáltatót igénylő külső többtényezős szolgáltatók.
   * Hitelesítés harmadik féltől származó hitelesítési megoldások használatával. Tekintse meg az [Azure ad-összevonás kompatibilitási listáját](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Jelentkezzen be, amelyhez sAMAccountName szükséges, például: tartomány \ Felhasználónév, egyszerű felhasználónév (UPN) helyett például: user@domain.com.
+  * Jelentkezzen be, amelyhez sAMAccountName szükséges, például: tartomány \ Felhasználónév, egyszerű felhasználónév (UPN) helyett például: user@domain.com .
 
 * Az **üzletmenet folytonossága**. Az összevont rendszerek általában a kiszolgálók terheléses, farmként ismert tömbjét igénylik. Ez a farm belső hálózati és peremhálózati topológiában van konfigurálva a hitelesítési kérések magas rendelkezésre állásának biztosítása érdekében.
 
@@ -175,8 +175,8 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 |Megfontolandó|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
 |Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincs|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincs|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van TLS/SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
 |Van állapot-figyelési megoldás?|Nem kötelező|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|

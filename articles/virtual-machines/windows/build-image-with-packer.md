@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: f813551ed665628898bb219a611947c3026ac67c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084481"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773321"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows rendszerű virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 A csomagoló az Azure-ban egy egyszerű szolgáltatásnév használatával hitelesíti magát. Az Azure egyszerű szolgáltatás olyan biztonsági identitás, amely az alkalmazásokkal, szolgáltatásokkal és automatizálási eszközökkel, például a csomagoló eszközzel használható. Ön szabályozhatja és meghatározhatja az engedélyeket az Azure-ban az egyszerű szolgáltatás által elvégezhető műveletekhez.
 
-Hozzon létre egy egyszerű szolgáltatást [új AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) , és rendeljen engedélyeket az egyszerű szolgáltatásnév számára, hogy erőforrásokat hozzon létre és kezeljen a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)használatával. Az értéknek `-DisplayName` egyedinek kell lennie; igény szerint cserélje le a értéket a saját értékére.  
+Hozzon létre egy egyszerű szolgáltatást [új AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) , és rendeljen engedélyeket az egyszerű szolgáltatásnév számára, hogy erőforrásokat hozzon létre és kezeljen a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)használatával. Az értéknek `-DisplayName` egyedinek kell lennie; szükség esetén cserélje le a értéket a saját értékére.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -105,7 +105,7 @@ Hozzon létre egy *Windows. JSON* nevű fájlt, és illessze be az alábbi tarta
     },
 
     "location": "East US",
-    "vm_size": "Standard_DS2_v2"
+    "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{
     "type": "powershell",

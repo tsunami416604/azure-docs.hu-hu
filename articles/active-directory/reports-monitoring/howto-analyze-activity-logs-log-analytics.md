@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa952e0a237ca30a3bd109f51ee45c2f4dafa533
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008275"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758265"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal
 
@@ -60,8 +60,8 @@ A naplók a munkaterület **AuditLogs** és **SigninLogs** tábláiba vannak lek
 
 1. Az előző szakasz alapértelmezett lekérdezés nézetében válassza ki a **séma** elemet, és bontsa ki a munkaterületet. 
 
-2. Bontsa ki a **naplók kezelése** szakaszt, majd a **AuditLogs** vagy a **SignInLogs** kibontásával tekintse meg a naplózási sémát.
-    ![](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![Naplók bejelentkezési naplói](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+2. Bontsa ki a **naplók kezelése** szakaszt, majd a **AuditLogs** vagy a **SigninLogs** kibontásával tekintse meg a naplózási sémát.
+    ![Naplók ](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![ bejelentkezési naplói](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Az Azure AD-tevékenységek naplóinak lekérdezése
 

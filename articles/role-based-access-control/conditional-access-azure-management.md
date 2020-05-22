@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a52635dbaa7a76034f3a535b099320a901e8c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137412"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758775"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Az Azure-felügyelethez való hozzáférés kezelése feltételes hozzáféréssel
 
@@ -47,5 +47,4 @@ A létrehozott szabályzat az összes Azure felügyeleti végpontra vonatkozik, 
 
 Vegye figyelembe, hogy a házirend Azure PowerShellra vonatkozik, amely meghívja a Azure Resource Manager API-t. Ez nem vonatkozik az [Azure ad powershellre](/powershell/azure/active-directory/install-adv2), amely meghívja a Microsoft Graph.
 
-
-További információ a feltételes hozzáférés beállításáról és használatáról: [Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).
+A Microsoft Azure-kezelés feltételes hozzáférésének engedélyezésére szolgáló minta házirend beállításával kapcsolatos további információkért tekintse meg a [feltételes hozzáférés: többtényezős hitelesítés megkövetelése az Azure Managementhez](../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md)című cikket.

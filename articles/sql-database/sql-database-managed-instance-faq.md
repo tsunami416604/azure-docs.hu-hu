@@ -3,7 +3,7 @@ title: Felügyelt példány – gyakori kérdések
 description: SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 3ffa4bc905a08c1757865db7bab828193ff3c7ea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598487"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770142"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -129,7 +129,7 @@ Nem, a biztonsági mentési tár nem vonható le a felügyelt példány tároló
 
 Ezt a [Azure Cost Management megoldás](/azure/cost-management/)használatával teheti meg. Navigáljon a [Azure Portal](https://portal.azure.com) **előfizetésekhez** , és válassza a **Cost Analysis**lehetőséget. 
 
-Használja a **halmozott költségek** lehetőséget, majd az **erőforrástípus** szerint `microsoft.sql/managedinstances`szűrje az értéket. 
+Használja a **halmozott költségek** lehetőséget, majd az erőforrástípus szerint szűrje az **értéket** `microsoft.sql/managedinstances` . 
   
 ## <a name="inbound-nsg-rules"></a>Bejövő NSG szabályok
 

@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435848"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772947"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
-Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fel (például konfigurációs információkat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és még sok mást), hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és elhárításában. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
+A fenyegetések megelőzése, észlelése és elhárítása érdekében a Azure Security Center gyűjti és dolgozza fel a biztonsággal kapcsolatos adatokat, beleértve a konfigurációs információkat, a metaadatokat, az eseménynaplókat és egyebeket. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
 
 Ez a cikk bemutatja, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik a védelmükről.
 
@@ -31,19 +31,19 @@ Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével bi
 - Azure Services: az adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat használja.
 - Hálózati forgalom: a hálózati forgalom metaadataiból vett mintát használja a Microsoft infrastruktúrájából, például a forrás és a cél IP-címét és portját, a csomagméretet és a hálózati protokollt.
 - Partnermegoldások: Az integrált partnermegoldásoktól, például tűzfalaktól és kártevőirtó megoldásoktól érkező biztonsági riasztásokat használja.
-- Saját virtuális gépek és kiszolgálók: Konfigurációs és biztonsági eseményekkel kapcsolatos információkat használ (például Windows-esemény- és auditnaplókat, IIS-naplókat, rendszernapló-üzeneteket és a virtuális gépekről származó összeomlási memóriaképeket). Ezenkívül a riasztások létrejöttekor az Azure Security Center pillanatfelvételt készíthet az érintett virtuálisgép-lemezről, és kinyerheti belőle a riasztással kapcsolatos gépösszetevőket (például a beállításjegyzék-fájlt vizsgálati célokra).
+- A Virtual Machines és a kiszolgálók: konfigurációs adatokat és információkat használ a biztonsági eseményekről, például a Windows-események és-naplók, az IIS-naplók és a virtuális gépek syslog-üzeneteiről. Ezenkívül a riasztások létrejöttekor az Azure Security Center pillanatfelvételt készíthet az érintett virtuálisgép-lemezről, és kinyerheti belőle a riasztással kapcsolatos gépösszetevőket (például a beállításjegyzék-fájlt vizsgálati célokra).
 
 
 ## <a name="data-protection"></a>Adatvédelem
 **Az adatok elkülönítése**: az adatok logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
 
-**Adathozzáférés**: Annak érdekében, hogy biztonsági javaslatokat biztosítsanak és megvizsgálják a lehetséges biztonsági fenyegetéseket, a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által gyűjtött vagy elemzett adatokhoz (például összeomlási memóriaképekhez, folyamat-létrehozási eseményekhez, a virtuálisgép-lemez pillanatképeihez és összetevőihez, amelyek véletlenül tartalmazhatnak virtuális gépekről származó ügyfél- és személyes adatokat). Betartjuk a [Microsoft Online Services és az adatvédelmi nyilatkozat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) feltételeit, amelyek szerint a Microsoft nem használja fel az ügyféladatokat, és nem veszi igénybe azokat hirdetési vagy hasonló kereskedelmi célokra. Az ügyféladatokat szükség esetén csak arra használjuk, hogy biztosítsuk Önnek az Azure-szolgáltatásokat, beleértve a szolgáltatások nyújtásának megfelelő célokat is. Minden, az ügyféladatokhoz fűződő jog az Ön tulajdonában marad.
+**Adatokhoz való hozzáférés**: a biztonsági javaslatok biztosításához és az esetleges biztonsági fenyegetések kivizsgálásához a Microsoft munkatársai hozzáférhetnek az Azure-szolgáltatások által összegyűjtött vagy elemzett információkhoz, beleértve a folyamat-létrehozási eseményeket, a VM-lemezek pillanatképeit és összetevőit, amelyek véletlenül magukban foglalhatják a virtuális gépekről származó ügyféladatokat vagy személyes adatokat. Betartjuk a [Microsoft Online Services és az adatvédelmi nyilatkozat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) feltételeit, amelyek szerint a Microsoft nem használja fel az ügyféladatokat, és nem veszi igénybe azokat hirdetési vagy hasonló kereskedelmi célokra. Az ügyféladatokat szükség esetén csak arra használjuk, hogy biztosítsuk Önnek az Azure-szolgáltatásokat, beleértve a szolgáltatások nyújtásának megfelelő célokat is. Minden, az ügyféladatokhoz fűződő jog az Ön tulajdonában marad.
 
 **Az adatok felhasználása**: a Microsoft a különböző bérlőknél észlelt mintákat és fenyegetésre vonatkozó intelligenciát használ a megelőzési és észlelési funkcióihoz, és ezt az [adatvédelmi nyilatkozatában](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx) ismertetett adatvédelmi kötelezettségeinek megfelelően teszi.
 
 ## <a name="data-location"></a>Az adatok helye
 
-**Saját munkaterület(ek)**: Az alábbi geók esetében van meghatározott munkaterület. Az Azure-beli virtuális gépekből összegyűjtött adatokat, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat, a legközelebbi munkaterület tárolja.
+**A munkaterület (ok)**: a következő térségek egy munkaterület van megadva, az Azure-beli virtuális gépekről összegyűjtött adatokat, köztük a riasztási adatok bizonyos típusait is, a legközelebbi munkaterületen tároljuk.
 
 | Virtuális gép geo                              | Munkaterület geo |
 |-------------------------------------|---------------|
@@ -63,16 +63,12 @@ A virtuálisgép-lemez pillanatképeit ugyanaz a tárfiók tárolja, mint a virt
 
 A más környezetben futó (pl. helyszíni) virtuális gépek és kiszolgálók esetében megadhatja a munkaterületet és régiót, ahol tárolni kívánja az összegyűjtött adatokat.
 
-**Az Azure Security Center tárhelye**: A biztonsági riasztásokkal (többek között a partnerriasztásokkal) kapcsolatos információk tárolása a kapcsolódó Azure-erőforrás helyétől függően történik, míg a biztonsági állapottal és javaslatokkal kapcsolatos információk tárolása központilag, az ügyfél földrajzi helyétől függően az Egyesült Államokban vagy Európában történik.
-Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóriaképek fájljairól, és elemzi ezeket a biztonsági réseket kihasználó támadások és a sikeres feltörések nyomai után kutatva. Az Azure Security Center az elemzéseket ugyanazon a földrajzi helyen végzi el, ahol a munkaterület található, és az elemzés után törli az ideiglenes másolatokat.
-
-A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
-
+**Az Azure Security Center tárhelye**: A biztonsági riasztásokkal (többek között a partnerriasztásokkal) kapcsolatos információk tárolása a kapcsolódó Azure-erőforrás helyétől függően történik, míg a biztonsági állapottal és javaslatokkal kapcsolatos információk tárolása központilag, az ügyfél földrajzi helyétől függően az Egyesült Államokban vagy Európában történik. A gépösszetevők tárolása központilag történik, ugyanabban a régióban, ahol a virtuális gép is található.
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Az adatgyűjtés kezelése a virtuális gépeken
 
 Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Amikor az adatgyűjtés be van kapcsolva, Azure Security Center kiépíti az Log Analytics ügynököt az összes meglévő támogatott Azure-beli virtuális gépen és a létrehozott újakon.
-A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. Az Log Analytics ügynök az összeomlási memóriaképeket is átmásolja a munkaterületére, lehetővé teszi a folyamat-létrehozási események és a parancssori naplózás engedélyezését.
+A Log Analytics ügynök különböző biztonsággal kapcsolatos konfigurációkat vizsgál, és azokat az eseményeket [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics ügynök beolvassa az Eseménynapló-bejegyzéseket és a ETW-nyomkövetéseket, és átmásolja őket a munkaterületre (ok) elemzésre. A Log Analytics ügynök a folyamat-létrehozási eseményeket és a parancssori naplózást is lehetővé teszi.
 
 Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a virtuális gépekről történő adatgyűjtést a biztonsági szabályzatban. A Standard szintű előfizetésekhez az adatgyűjtés kötelező. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
 
@@ -87,7 +83,7 @@ Az ügyfelek különböző adatstreamekből származó Security Center-adatokat 
 > [!NOTE]
 > A biztonsági javaslatok REST API-n keresztül is feldolgozhatók. További információk: [A biztonsági erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 Ebből a dokumentumból megtudta, hogyan kezeli az Azure Security Center az adatokat, és hogyan gondoskodik azok védelméről. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Azure Security Center tervezési és üzemeltetési útmutató](security-center-planning-and-operations-guide.md) – megtudhatja, hogyan tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat.

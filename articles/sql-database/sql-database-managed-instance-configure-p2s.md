@@ -3,7 +3,7 @@ title: P2S által felügyelt példány konfigurálása
 description: Kapcsolódjon Azure SQL Database felügyelt példányhoz a SQL Server Management Studio használatával pont – hely kapcsolattal egy helyszíni ügyfélszámítógépről.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 434b3d46d19138b494c9e29add3affb2eecc9c45
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268885"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773749"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből
 
@@ -54,7 +54,7 @@ Ez a rövid útmutató:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Illessze be a szkriptet a PowerShell-ablakba, és adja meg a szükséges paramétereket. A `<subscriptionId>`, `<resourceGroup>`a és `<virtualNetworkName>` a értékének meg kell egyeznie a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában használt értékekkel. A értéke `<certificateNamePrefix>` lehet tetszőleges sztring.
+3. Illessze be a szkriptet a PowerShell-ablakba, és adja meg a szükséges paramétereket. A, a és a értékének `<subscriptionId>` `<resourceGroup>` `<virtualNetworkName>` meg kell egyeznie a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában használt értékekkel. A értéke lehet `<certificateNamePrefix>` tetszőleges sztring.
 
 4. Futtassa a PowerShell-szkriptet.
 

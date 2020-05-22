@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.date: 04/03/2020
-ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5e46e50da67559f69302357804f6f98fee70d4ad
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647762"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773304"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -41,6 +41,9 @@ A REST proxy-végponti kérelmek esetében az ügyfélalkalmazások OAuth jogkiv
 
 > [!NOTE]
 > További információ a HRE biztonsági csoportokról: [alkalmazás-és erőforrás-hozzáférés kezelése Azure Active Directory csoportok használatával](../../active-directory/fundamentals/active-directory-manage-groups.md). A OAuth-tokenek működésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése Azure Active Directory webalkalmazásokhoz a OAuth 2,0 Code Grant flow használatával](../../active-directory/develop/v1-protocols-oauth-code.md).
+
+## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST-proxy hálózati biztonsági csoportokkal
+Ha saját VNet használ, és hálózati biztonsági csoportokkal vezérli a hálózati forgalmat, a 443-es porton kívül engedélyezze a **bejövő** forgalmat a **9400** -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,7 +83,7 @@ A következő Python-kóddal használhatja a Kafka-fürt REST-proxyját. A kód 
 1. Telepítse a szükséges Python-függőségeket a végrehajtásával `pip3 install msal` .
 1. Módosítsa a kód szakasz **ezeket a tulajdonságokat konfigurálja** , és frissítse a környezet következő tulajdonságait:
 
-    |Tulajdonság |Description |
+    |Tulajdonság |Leírás |
     |---|---|
     |Bérlőazonosító|Az Azure-bérlő, ahol az előfizetése van.|
     |Ügyfél-azonosító|A biztonsági csoportban regisztrált alkalmazás azonosítója.|

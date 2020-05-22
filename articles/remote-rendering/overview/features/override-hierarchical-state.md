@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680790"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758979"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
 Sok esetben szükség van a [modell](../../concepts/models.md)részeinek megjelenésének dinamikus módosítására, például az algráfok elrejtésére vagy a részek átváltására transzparens megjelenítésre. Az egyes részekben található anyagok módosítása nem praktikus, mivel a teljes jelenet gráfon való iterációra, valamint az egyes csomópontokon az anyagok klónozásának és hozzárendelésének kezelésére van szükség.
 
-Ha a lehető legkevesebb terheléssel szeretné elérni a használati esetet `HierarchicalStateOverrideComponent`, használja a következőt:. Ez az összetevő hierarchikus állapotú frissítéseket valósít meg a jelenet gráf tetszőleges ágain. Ez azt jelenti, hogy az állapot bármilyen szinten meghatározható a Scene Graphban, és a hierarchiában leszivárog, egészen addig, amíg egy új állapot felülbírálja, vagy egy levél objektumra van alkalmazva.
+Ha a lehető legkevesebb terheléssel szeretné elérni a használati esetet, használja a következőt: `HierarchicalStateOverrideComponent` . Ez az összetevő hierarchikus állapotú frissítéseket valósít meg a jelenet gráf tetszőleges ágain. Ez azt jelenti, hogy az állapot bármilyen szinten meghatározható a Scene Graphban, és a hierarchiában leszivárog, egészen addig, amíg egy új állapot felülbírálja, vagy egy levél objektumra van alkalmazva.
 
 Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső motor részének kivételével át kívánja váltani az egész autót. Ez a használati eset az összetevő két példányát foglalja magában:
 
@@ -47,7 +47,7 @@ A felülbírálható állapotok rögzített halmaza:
 
 ## <a name="hierarchical-overrides"></a>Hierarchikus felülbírálások
 
-A `HierarchicalStateOverrideComponent` csatolható egy objektum-hierarchia több szintjén is. Mivel az entitásokban csak egyetlen összetevő lehet, a rendszer a rejtett, a `HierarchicalStateOverrideComponent` megjelenő, a kijelölt, a színárnyalatok és az ütközések állapotait kezeli.
+A `HierarchicalStateOverrideComponent` csatolható egy objektum-hierarchia több szintjén is. Mivel az entitásokban csak egyetlen összetevő lehet, a rendszer a `HierarchicalStateOverrideComponent` rejtett, a megjelenő, a kijelölt, a színárnyalatok és az ütközések állapotait kezeli.
 
 Ezért az egyes állapotok az alábbiak egyikére állíthatók be:
 
@@ -55,7 +55,7 @@ Ezért az egyes állapotok az alábbiak egyikére állíthatók be:
 * `ForceOff`– az állapot le van tiltva az összes rácsvonalon ezen a csomóponton.
 * `InheritFromParent`– Ez a felülbírálási összetevő nem érinti az állapotot
 
-Az állapotokat közvetlenül vagy a `SetState` függvény használatával módosíthatja:
+Az állapotokat közvetlenül vagy a függvény használatával módosíthatja `SetState` :
 
 ```cs
 HierarchicalStateOverrideComponent component = ...;
@@ -70,13 +70,28 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
 ```
 
+```cpp
+ApiHandle<HierarchicalStateOverrideComponent> component = ...;
+
+// set one state directly
+component->HiddenState(HierarchicalEnableState::ForceOn);
+
+// set a state with the SetState function
+component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
+
+// set multiple states at once with the SetState function
+component->SetState(
+    (HierarchicalStates)((int32_t)HierarchicalStates::Hidden | (int32_t)HierarchicalStates::DisableCollision), HierarchicalEnableState::ForceOff);
+
+```
+
 ### <a name="tint-color"></a>Színárnyalat színe
 
 Az árnyalatok színe felülbírálása kis mértékben különleges, ha a be-és kikapcsolás/öröklési állapot és az árnyalat színe tulajdonság is szerepel. Az árnyalat színének alfa része határozza meg az árnyalatos hatás súlyozását: Ha a 0,0 értékre van állítva, a színárnyalat nem látható, és ha a értéke 1,0, az objektum tiszta tónusú színnel jelenik meg. Az értékek között a végső szín az árnyalat színével lesz keverve. A színárnyalatok színének megváltoztatásához a színárnyalat a képkockák alapján módosítható.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
-`HierarchicalStateOverrideComponent` Maga egy példánya nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
+Maga egy példánya `HierarchicalStateOverrideComponent` nem ad hozzá sok futásidejű terhelést. Azonban mindig érdemes megtartani az aktív összetevők számát. Ha például olyan kiválasztási rendszer megvalósítását tervezi, amely kiemeli a kiválasztott objektumot, akkor azt javasoljuk, hogy törölje az összetevőt a kiemelés eltávolításakor. Az összetevők és a semleges funkciók megtartása gyorsan felvehető.
 
 Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszolgáló GPU-nál a normál megjelenítésnél. Ha a Scene gráf nagy része átváltott, és a geometria számos rétege *látható, akkor*a teljesítmény szűk keresztmetszetet eredményezhet. Ugyanez érvényes a [kijelölési körvonalakkal](../../overview/features/outlines.md#performance)rendelkező objektumok esetében is.
 

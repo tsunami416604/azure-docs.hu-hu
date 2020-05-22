@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699521"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773270"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -180,7 +180,7 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -354,7 +354,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 Válassza **ezt a csomagot** , hogy a terv magánjellegű legyen, és csak az Ön által választott korlátozott közönség számára legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatóvá kell maradnia. nem konfigurálható újra privát csomagként.
 
-Ha a növényt magánjellegűvé teszi, adjon meg egy **Azure-előfizetési azonosítót** és annak leírását. Minden olyan célközönség, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. Egy CSV-fájl importálásával akár 10 ügyfél-előfizetési azonosítót is hozzáadhat egyenként vagy 20 000. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisbetűsnek kell lenniük.
+Ha a csomag magánjellegű, adjon meg egy **Azure-előfizetési azonosítót** és annak leírását. Minden olyan célközönség, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. Egy CSV-fájl importálásával akár 10 ügyfél-előfizetési azonosítót is hozzáadhat egyenként vagy 20 000. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisbetűsnek kell lenniük.
 
 >[!Note]
 >A privát vagy a korlátozott célközönség nem azonos az **Előnézet lapon megadott** előnézeti célközönséggel. Az előnézeti közönség hozzáférhet az ajánlathoz a piactéren közzétett élő állapot _előtt_ . Míg a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.
@@ -373,7 +373,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 #### <a name="markets"></a>Piacok
 
-Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be annak a piaci helynek a jelölőnégyzetét, amely számára elérhetővé szeretné tenni ezt a csomagot. Egy keresőmező és egy gomb a "Tax átutalt" országok kiválasztásához, amelyben a Microsoft az Ön nevében értékesítési és használati adót alkalmaz, és a segítségére is felhasználható.
+Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Jelölje be annak a piaci helynek a jelölőnégyzetét, amely számára elérhetővé szeretné tenni ezt a csomagot. Egy keresőmező és egy gomb a "Tax átutalt" országok/régiók kiválasztásához, amelyekben a Microsoft az Ön nevében az értékesítést és a használati adót használja fel, a segítségét is tartalmazza.
 
 Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és egy másik piaci helyet ad hozzá, az új piac díját az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt mindig tekintse át az egyes piacok árát. A díjszabást a módosítások mentése után a "export prics (xlsx)" hivatkozással tekintheti át.
 
@@ -399,7 +399,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 Válassza **ezt a csomagot** , hogy a terv magánjellegű legyen, és csak az Ön által választott korlátozott közönség számára legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatóvá kell maradnia. nem konfigurálható újra privát csomagként.
 
-Ha a növényt magánjellegűvé teszi, adjon meg egy **Azure-előfizetési azonosítót** és annak leírását. Minden olyan célközönség, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. Egy CSV-fájl importálásával akár 10 ügyfél-előfizetési azonosítót is hozzáadhat egyenként vagy 20 000. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisbetűsnek kell lenniük.
+Ha a csomag magánjellegű, adjon meg egy **Azure-előfizetési azonosítót** és annak leírását. Minden olyan célközönség, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés az Azure-előfizetési azonosítók használatával van hozzárendelve, hogy tartalmazza az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk leírását. Egy CSV-fájl importálásával akár 10 ügyfél-előfizetési azonosítót is hozzáadhat egyenként vagy 20 000. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és a betűknek kisbetűsnek kell lenniük.
 
 >[!Note]
 >A privát vagy a korlátozott célközönség nem azonos az **Előnézet lapon megadott** előnézeti célközönséggel. Az előnézeti közönség hozzáférhet az ajánlathoz a piactéren közzétett élő állapot _előtt_ . Míg a privát célközönség választása csak egy adott csomagra vonatkozik, az előzetes verzió célközönsége az összes csomagot (magán vagy nem) megtekintheti érvényesítési célból.

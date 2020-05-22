@@ -1,5 +1,6 @@
 ---
 title: Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
+titleSuffix: Microsoft identity platform
 description: Fejlesztői útmutató és forgatókönyvek az Azure AD feltételes hozzáféréshez és a Microsoft Identity platformhoz.
 services: active-directory
 keywords: ''
@@ -7,28 +8,28 @@ author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
-ms.date: 03/16/2020
+ms.date: 05/18/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 4aaeb2ab6e22107d8c9edfbce45c4ae212e8649f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640420"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771077"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
 
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
-* Többtényezős hitelesítés
+* [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * Csak az Intune-ban regisztrált eszközök hozzáférésének engedélyezése adott szolgáltatásokhoz
 * Felhasználói helyszínek és IP-címtartományok korlátozása
 
-További információ a feltételes hozzáférés teljes képességeiről: [Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+A feltételes hozzáférés teljes képességeivel kapcsolatos további információkért tekintse meg a [feltételes hozzáférésről](../conditional-access/overview.md)szóló cikket.
 
 Az Azure AD-alkalmazások fejlesztésére szolgáló fejlesztők számára ez a cikk bemutatja, hogyan használhatja a feltételes hozzáférést, és megtudhatja, hogy milyen hatással van az olyan erőforrásokhoz való hozzáférésre, amelyeken nem szabályozható a feltételes hozzáférési szabályzatok alkalmazása. A cikk azt is vizsgálja, hogy milyen hatással van a feltételes hozzáférés a folyamat, a webalkalmazások, a Microsoft Graph elérése és az API-k hívása során.
 
@@ -130,13 +131,13 @@ A forgatókönyv kipróbálásához tekintse meg a [.net-kód mintáját](https:
 
 ## <a name="scenario-app-accessing-multiple-services"></a>Forgatókönyv: az alkalmazás több szolgáltatáshoz fér hozzá
 
-Ebben az esetben a webalkalmazás két szolgáltatáshoz fér hozzá, amelyek közül az egyikhez tartozik egy feltételes hozzáférési szabályzat. Az alkalmazás logikája alapján előfordulhat, hogy az alkalmazás elérési útja nem igényli mindkét webszolgáltatáshoz való hozzáférést. Ebben az esetben a token igénylésének sorrendje fontos szerepet játszik a végfelhasználói élményben.
+Ebben az esetben a webalkalmazás két szolgáltatáshoz fér hozzá, amelyek közül az egyikhez tartozik egy feltételes hozzáférési szabályzat. Az alkalmazás logikája alapján előfordulhat, hogy az alkalmazás elérési útja nem igényli mindkét webszolgáltatáshoz való hozzáférést. Ebben az esetben a jogkivonatok igénylésének sorrendje fontos szerepet játszik a végfelhasználói élményben.
 
 Tegyük fel, hogy az A és B webszolgáltatás és A B webszolgáltatás a feltételes hozzáférési szabályzattal van alkalmazva. Noha a kezdeti interaktív hitelesítési kérelem mindkét szolgáltatáshoz beleegyezik, a feltételes hozzáférési szabályzat minden esetben nem szükséges. Ha az alkalmazás jogkivonatot kér a B webszolgáltatáshoz, akkor a rendszer meghívja a szabályzatot, és A webszolgáltatásra vonatkozó további kérések is az alábbiak szerint lesznek sikeresek.
 
 ![Az alkalmazás több szolgáltatáshoz fér hozzá.](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Ha az alkalmazás kezdetben jogkivonatot kér a webszolgáltatáshoz, a végfelhasználó nem hívja meg a feltételes hozzáférési házirendet. Ez lehetővé teszi, hogy az alkalmazás fejlesztője vezérelje a végfelhasználói élményt, és ne kényszerítse a feltételes hozzáférési szabályzat meghívását minden esetben. A trükkös eset az, ha az alkalmazás ezt követően jogkivonatot kér a B webszolgáltatás számára. Ezen a ponton a felhasználónak meg kell felelnie a feltételes hozzáférési szabályzatnak. Amikor az alkalmazás megpróbálja a `acquireToken` -t, a következő hibaüzenetet hozhatja elő (az alábbi ábrán látható):
+Ha az alkalmazás kezdetben jogkivonatot kér a webszolgáltatáshoz, a végfelhasználó nem hívja meg a feltételes hozzáférési házirendet. Ez lehetővé teszi az alkalmazás fejlesztője számára a végfelhasználói élmény szabályozását, és nem kényszeríti a feltételes hozzáférési szabályzat meghívását minden esetben. A trükkös eset az, ha az alkalmazás ezt követően jogkivonatot kér a B webszolgáltatás számára. Ezen a ponton a felhasználónak meg kell felelnie a feltételes hozzáférési szabályzatnak. Amikor az alkalmazás megpróbálja a `acquireToken` -t, a következő hibaüzenetet hozhatja elő (az alábbi ábrán látható):
 
 ```
 HTTP 400; Bad Request
@@ -175,9 +176,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Az alkalmazásnak meg kell fognia a következőt: `error=interaction_required` . Az alkalmazás ezt követően `acquireTokenPopup()` vagy `acquireTokenRedirect()` ugyanazon az erőforráson is használható. A felhasználónak egy többtényezős hitelesítést kell végeznie. Miután a felhasználó befejezte a többtényezős hitelesítést, az alkalmazás egy friss hozzáférési jogkivonatot bocsát ki a kért erőforráshoz.
 
-Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként kiválaszthatja az általános [szögletes. js-kód mintáját](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) , amely útmutatást nyújt egy szögletes fürdőhöz
+Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként kiválaszthatja az általános [szögletes. js-kód mintáját](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) , amely útmutatást nyújt egy szögletes fürdőhöz
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](/azure/active-directory/conditional-access/overview)című témakört.
 * További Azure AD-programkódok: [minták](sample-v2-code.md).

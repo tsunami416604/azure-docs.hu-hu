@@ -1,5 +1,6 @@
 ---
 title: Microsoft Identity platform és OAuth 2.0-alapú meghatalmazott folyamat | Azure
+titleSuffix: Microsoft identity platform
 description: Ez a cikk azt ismerteti, hogyan használhatók a HTTP-üzenetek a szolgáltatás és a szolgáltatás hitelesítésének megvalósításához a OAuth 2.0-s verziójának használatával.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e1711bbb859d855d2490e49c21db5c654eca7f5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643373"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771520"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -60,7 +61,7 @@ Két eset attól függően, hogy az ügyfélalkalmazás egy megosztott titok vag
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Description |
+| Paraméter |  | Leírás |
 | --- | --- | --- |
 | `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek a következőnek kell lennie: `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
@@ -92,7 +93,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Description |
+| Paraméter |  | Leírás |
 | --- | --- | --- |
 | `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek a következőnek kell lennie: `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
@@ -128,7 +129,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel.
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 | --- | --- |
 | `token_type` | Megadja a jogkivonat típusának értékét. Az egyetlen típus, amelyet a Microsoft Identity platform támogat `Bearer` . A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg a [OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | A jogkivonatban megadott hozzáférési hatókör. |
@@ -156,7 +157,7 @@ Az alábbi példa egy, a webes API hozzáférési jogkivonatára vonatkozó kér
 
 ### <a name="error-response-example"></a>Hiba-válasz példa
 
-A jogkivonat-végpont egy hibaüzenetet ad vissza, amikor hozzáférési tokent próbál beszerezni az alsóbb rétegbeli API számára, ha az alsóbb rétegbeli API feltételes hozzáférési szabályzattal (például többtényezős hitelesítéssel) van beállítva. A középső rétegbeli szolgáltatásnak ezt a hibát fel kell vennie az ügyfélalkalmazás számára, hogy az ügyfélalkalmazás meg tudja adni a felhasználói beavatkozást a feltételes hozzáférési szabályzat teljesítése érdekében.
+A jogkivonat-végpont egy hibaüzenetet ad vissza, amikor hozzáférési tokent próbál beszerezni az alsóbb rétegbeli API számára, ha az alsóbb rétegbeli API feltételes hozzáférési szabályzattal (például [többtényezős hitelesítéssel](../authentication/concept-mfa-howitworks.md)) van beállítva. A középső rétegbeli szolgáltatásnak ezt a hibát fel kell vennie az ügyfélalkalmazás számára, hogy az ügyfélalkalmazás meg tudja adni a felhasználói beavatkozást a feltételes hozzáférési szabályzat teljesítése érdekében.
 
 ```json
 {

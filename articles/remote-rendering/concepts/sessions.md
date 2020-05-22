@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681687"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758860"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
@@ -24,9 +24,9 @@ Ez azt jelenti, hogy az Azure Remote rendering használatakor a szükséges hard
 
 ## <a name="managing-sessions"></a>Munkamenetek kezelése
 
-A munkamenetek kezelésének és kezelésének több módja is van. A munkamenetek [felügyeleti Rest APIon](../how-tos/session-rest-api.md)keresztüli létrehozása, frissítése és leállítása egymástól független módon történik. A C# és a C++ nyelvben ezek a műveletek az osztályok `AzureFrontend` és `AzureSession`a használatával érhetők el. Az Unity-alkalmazások esetében az `ARRServiceUnity` összetevő további segédprogram-funkciókat is biztosít.
+A munkamenetek kezelésének és kezelésének több módja is van. A munkamenetek [felügyeleti Rest APIon](../how-tos/session-rest-api.md)keresztüli létrehozása, frissítése és leállítása egymástól független módon történik. A C# és a C++ nyelvben ezek a műveletek az osztályok és a használatával érhetők el `AzureFrontend` `AzureSession` . Az Unity-alkalmazások esetében az összetevő további segédprogram-funkciókat is biztosít `ARRServiceUnity` .
 
-Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az `AzureSession` osztályon keresztül teszi elérhetővé a műveleteket, például a [modellek betöltését](models.md) és a jelenettel való interakciót.
+Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az osztályon keresztül teszi elérhetővé a műveleteket, például a [modellek betöltését](models.md) és a jelenettel való interakciót `AzureSession` .
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Egyszerre több munkamenet kezelése
 
@@ -82,7 +82,7 @@ Kiterjesztheti egy aktív munkamenet [címbérleti idejét](../how-tos/session-r
 
 Az alábbi kód a munkamenet indításának egyszerű megvalósítását, a *készenléti* állapotra, a csatlakozásra, majd a leválasztásra és a Leállítás visszakapcsolására való várakozást mutatja be.
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Több `AzureFrontend` és `AzureSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat `AzureSession` egyszerre.
+Több `AzureFrontend` és `AzureSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat egyszerre `AzureSession` .
 
 A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `AzureSession` példányhoz kötve. `AzureSession.StopAsync`a munkamenet leállítására kell hívni.
 
-Az állandó munkamenet-azonosító lekérdezhető helyileg `AzureSession.SessionUUID()` a-n keresztül és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
+Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `AzureSession.SessionUUID()` és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
 
-Ha `AzureSession.IsConnected` a értéke true `AzureSession.Actions` (igaz), `RemoteManager`a egy példányát adja vissza, amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
+Ha a `AzureSession.IsConnected` értéke TRUE (igaz), a `AzureSession.Actions` egy példányát adja vissza `RemoteManager` , amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 

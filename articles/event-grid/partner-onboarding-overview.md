@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725937"
+ms.locfileid: "83758826"
 ---
-# <a name="become-and-event-grid-partner"></a>Partnerré válás és Event Grid
+# <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
 
 Ez a cikk azt ismerteti, hogyan használható a Event Grid partner erőforrásainak magánjellegű használata, és hogyan válhat nyilvánosan elérhető partneri témakör típusa.
 
@@ -38,7 +38,7 @@ A partneri témakörök lehetővé teszik az események közzétételét Azure E
 
     ![Partneri témakör létrehozása](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Hozzon létre egyet vagy többet `partnerNamespaces` minden olyan régióban, amelyen közzé kívánja tenni az eseményeket. Ennek részeként Event Grid szolgáltatás kiépít egy közzétételi végpontot (például a és a https://contoso.westus-1.eventgrid.azure.net/api/events) hozzáférési kulcsokat is).
+1. Hozzon létre egyet vagy többet `partnerNamespaces` minden olyan régióban, amelyen közzé kívánja tenni az eseményeket. Ennek részeként Event Grid szolgáltatás kiépít egy közzétételi végpontot (például `https://contoso.westus-1.eventgrid.azure.net/api/events` ) és a hozzáférési kulcsokat.
 
     ![Partneri névtér létrehozása](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -105,7 +105,7 @@ Események közzététele Azure Event Grid a CloudEvents 1,0 séma használatáv
 
 ### <a name="example-flow"></a>Példa folyamatra
 
-1.  A közzétételi szolgáltatás HTTP-BEJEGYZÉST végez a következőhöz: https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01 .
+1.  A közzétételi szolgáltatás HTTP-BEJEGYZÉST végez a következőhöz: `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 2.  A kérelemben adjon meg egy AEG-sas-Key nevű fejlécet, amely a hitelesítés kulcsát tartalmazza. Ez a kulcs a partnerNamespace létrehozása során lett kiépítve. Egy érvényes fejléc-érték például az AEG-sas-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 3.  Állítsa be a Content-type fejlécet az "Application/cloudevents-batch + JSON;" értékre. charset = UTF-8 ".
 4.  Hajtson végre egy HTTP-BEJEGYZÉST a fenti közzétételi URL-címen az adott régiónak megfelelő események kötegével. Például:
@@ -153,12 +153,12 @@ A partnerNamespace-végpontra történő közzététel után választ kap. A vá
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>Referencia
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-sablon sémája](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API-k](https://docs.microsoft.com/rest/api/eventgrid/partnernamespaces)
+  * [REST API-k](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI-bővítmény](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK-k

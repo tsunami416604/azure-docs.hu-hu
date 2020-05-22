@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192263"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773279"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
 
@@ -42,13 +42,13 @@ A Microsoft Azure segítségével csökkentheti a támadási felületet, így er
 
 ## <a name="introduction-to-confidential-computing"></a>A bizalmas számítástechnika bemutatása<a id="intro to acc"></a>
 
-A bizalmas számítástechnika a bizalmas számítástechnikai [konzorcium](https://confidentialcomputing.io/) (CCC) által meghatározott iparági kifejezés, amely a bizalmas számítástechnika bevezetésének meghatározására és felgyorsítására dedikált alap. A bizalmas számítástechnika a számítások végrehajtásakor használt adatok védelme. A számítások egy hardveres megbízható végrehajtási környezetben (TEE) történnek.
+A bizalmas számítástechnika a bizalmas számítástechnikai [konzorcium](https://confidentialcomputing.io/) (CCC) által meghatározott iparági kifejezés, amely a bizalmas számítástechnika bevezetésének meghatározására és felgyorsítására dedikált alap. A CCC a használatban lévő adatok védelme érdekében a számítási feladatokat a hardveres megbízható végrehajtási környezetben (TEE) végzi.
 
 A TEE olyan környezet, amely csak a jóváhagyott kód végrehajtását kényszeríti ki. A TEE-ben lévő összes adattal nem lehet beolvasni vagy módosítani az adott környezeten kívüli kódokat.
 
-### <a name="enclaves-and-trusted-execution-environments"></a>Enklávék és megbízható végrehajtási környezetek
+### <a name="enclaves"></a>Enklávék
 
-A bizalmas számítástechnikai környezetekben a pólókat gyakran *enklávéknak* vagy *biztonságos enklávéknak*nevezzük. Az enklávék a hardver processzorának és memóriájának biztonságos részei. Az enklávéban még egy hibakeresővel sem lehet megtekinteni az adatelemeket vagy a kódokat. Ha a nem megbízható kód megkísérli módosítani a tartalmat az enklávé memóriájában, a környezet le lesz tiltva, és a rendszer megtagadja a műveleteket.
+Az enklávék a hardver processzorának és memóriájának biztonságos részei. Az enklávéban még egy hibakeresővel sem lehet megtekinteni az adatelemeket vagy a kódokat. Ha a nem megbízható kód megkísérli módosítani a tartalmat az enklávé memóriájában, a környezet le lesz tiltva, és a rendszer megtagadja a műveleteket.
 
 Az alkalmazások fejlesztése során a [szoftvereszközök](#oe-sdk) segítségével a kód és az adatközpontban tárolt adatvédelmek részeinek védelmét is elvégezheti. Ezek az eszközök biztosítják, hogy a kód és az adatai nem tekinthetők meg és nem módosíthatók a megbízható környezeten kívüli személyek számára. 
 
@@ -96,11 +96,11 @@ Az enklávékkal létrehozott alkalmazások kétféleképpen vannak particionál
 1. "Nem megbízható" összetevő (a gazdagép)
 1. "Megbízható" összetevő (az enklávé)
 
-**A gazdagép** nem megbízható környezetben futó enklávé-alkalmazás. A gazdagépen található kód nem fér hozzá az enklávéba betöltött kódhoz. 
+**A gazdagép** az a hely, ahol az enklávé alkalmazása fut, és nem megbízható környezet. A gazdagépen központilag telepített enklávé-kódot nem lehet elérni. 
 
-**Az enklávé** , ahol a kód és az adatsorozat a póló implementációjában fut. A biztonságos számítások az enklávéban történnek, hogy biztosítható legyen a titkok és a bizalmas adatok védelme. 
+**Az enklávé** , ahol az alkalmazás kódja és a gyorsítótárazott adatmennyisége/memóriája fut. Az enklávékban biztonságos számításokat kell megtenni a titkok és bizalmas adatok védelme érdekében. 
 
-Az enklávé-alkalmazások fejlesztésének megkezdése előtt meg kell határoznia, hogy milyen programkódra és adatvédelemre van szükség. A megbízható összetevőbe helyezett kód el van különítve az alkalmazás többi részétől. Miután az enklávé inicializálása megtörtént, és a kód betöltődik a memóriába, a kód nem olvasható be és nem módosítható külső védett környezetből.
+Az alkalmazás kialakítása során fontos azonosítani és meghatározni, hogy az alkalmazás mely részeit kell futtatni az enklávékban. A megbízható összetevőbe helyezett kód el van különítve az alkalmazás többi részétől. Miután az enklávé inicializálása megtörtént, és a kód betöltődik a memóriába, a kód nem olvasható vagy nem módosítható a nem megbízható összetevőkből. 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open enklávé szoftverfejlesztői készlet (OE SDK)<a id="oe-sdk"></a>
 

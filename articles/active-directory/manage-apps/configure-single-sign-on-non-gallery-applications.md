@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad27ad5e34d9f44fe7d7be80e05e33dd6fb5e7b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244211"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758367"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>SAML-alapú egyszeri bejelentkezés konfigurálása a nem katalógusbeli alkalmazásokhoz
 
@@ -26,7 +26,7 @@ Ha [egy Gallery-alkalmazást](add-gallery-app.md) vagy egy [nem Gallery-webalkal
 > [!NOTE]
 > Katalógusalkalmazást szeretne hozzáadni? A [SaaS app oktatóanyagok listájában](../saas-apps/tutorial-list.md) részletes beállítási utasításokat talál
 
-Ha az SAML egyszeri bejelentkezést egy nem katalógusbeli alkalmazáshoz szeretné beállítani kód írása nélkül, rendelkeznie kell egy előfizetéssel, valamint egy prémium szintű Azure AD licenccel, és az alkalmazásnak támogatnia kell az SAML 2,0-et. Az Azure AD-verziókkal kapcsolatos további információkért látogasson el az [Azure ad díjszabására](https://azure.microsoft.com/pricing/details/active-directory/).
+Ha az SAML egyszeri bejelentkezést egy nem katalógusbeli alkalmazáshoz szeretné beállítani kód írása nélkül, rendelkeznie kell Azure AD-előfizetéssel, és az alkalmazásnak támogatnia kell az SAML 2,0-et. Az Azure AD-verziókkal kapcsolatos további információkért látogasson el az [Azure ad díjszabására](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -36,7 +36,7 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a n
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) Felhőbeli alkalmazás-rendszergazdaként vagy az Azure ad-bérlőhöz tartozó alkalmazás-rendszergazdaként.
 
-2. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** elemre, és válassza ki az alkalmazást a listából. 
+2. Navigáljon **Azure Active Directory**  >  **vállalati alkalmazások** elemre, és válassza ki az alkalmazást a listából. 
    
    - Az alkalmazás kereséséhez az **alkalmazás típusa** menüben válassza a **minden alkalmazás**lehetőséget, majd kattintson az **alkalmaz**gombra. Adja meg az alkalmazás nevét a keresőmezőbe, majd válassza ki az alkalmazást az eredmények közül.
 
@@ -52,11 +52,11 @@ Ha az alkalmazás nem lett hozzáadva az Azure AD-bérlőhöz, tekintse meg [a n
 
     | Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
     |:--|:--|:--|:--|
-    | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát<subdomain>használja: "https://. contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
+    | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát használja: "https:// <subdomain> . contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
     | **Válasz URL-címe** | Kötelező | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |
     | **Bejelentkezési URL-cím** | Kötelező | Nincs megadva | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítja el az alkalmazást az Office 365 vagy az Azure AD hozzáférési paneljén. Ha üres, az Azure AD identitásszolgáltató-alapú bejelentkezést hajt végre, amikor egy felhasználó elindítja az alkalmazást az Office 365, az Azure AD hozzáférési paneljén vagy az Azure AD SSO URL-címén.|
-    | **Továbbítási állapot** | Optional | Optional | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címe. Néhány alkalmazás azonban eltérő módon használja ezt a mezőt. További információt az alkalmazás forgalmazójától kérhet.
-    | **Kijelentkezési URL-cím** | Optional | Optional | Az SAML-kijelentkezési válaszok visszaküldésére szolgál az alkalmazásnak.
+    | **Továbbítási állapot** | Választható | Választható | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címe. Néhány alkalmazás azonban eltérő módon használja ezt a mezőt. További információt az alkalmazás forgalmazójától kérhet.
+    | **Kijelentkezési URL-cím** | Választható | Választható | Az SAML-kijelentkezési válaszok visszaküldésére szolgál az alkalmazásnak.
 
 További információ: [egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md).
 
@@ -102,7 +102,7 @@ Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthet�
    - *A helyes aláírási beállítás és algoritmus.*
    - *A helyes értesítő e-mail-cím (ek).* Ha az aktív tanúsítvány közel van a lejárati dátumhoz, az Azure AD értesítést küld az ebben a mezőben konfigurált e-mail-címre.
 
-2. A tanúsítvány letöltéséhez válassza ki a Base64 formátum, a nyers formátum vagy az összevonási metaadatok XML-fájljának egyik lehetőségét. Az Azure AD az alkalmazás- **összevonási metaadatok URL-címét** is tartalmazza, ahol az alkalmazáshoz tartozó metaadatokat a `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`következő formátumban érheti el:.
+2. A tanúsítvány letöltéséhez válassza ki a Base64 formátum, a nyers formátum vagy az összevonási metaadatok XML-fájljának egyik lehetőségét. Az Azure AD az alkalmazás- **összevonási metaadatok URL-címét** is tartalmazza, ahol az alkalmazáshoz tartozó metaadatokat a következő formátumban érheti el: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 3. A tanúsítványok kezeléséhez, létrehozásához vagy importálásához válassza az **SAML aláíró tanúsítvány** szakasz jobb felső sarkában található **Szerkesztés** ikont (ceruza).
 
@@ -122,9 +122,9 @@ Az Azure AD-ből az aktív tanúsítvány Base64 vagy RAW formátumban tölthet�
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>4. lépés Az alkalmazás beállítása az Azure AD használatára
 
-Az ** \<applicationName>beállítása** szakasz azokat az értékeket sorolja fel, amelyeket az alkalmazásban kell konfigurálni, hogy az Azure ad-t SAML-identitás-szolgáltatóként fogja használni. A szükséges értékek az alkalmazástól függően változnak. Részletekért tekintse meg az alkalmazás SAML-dokumentációját. A dokumentáció megkereséséhez nyissa meg az ** \<alkalmazásnév beállítása>** fejlécet, és válassza a **részletes utasítások megtekintése**lehetőséget. A dokumentáció a bejelentkezési oldal **konfigurálása** lapon jelenik meg. Ezen a lapon megtekintheti a **bejelentkezési URL-cím**, az **Azure ad-azonosító**és a **kijelentkezési URL-** értékek kitöltését az ** \<alkalmazás nevének beállítása>** fejlécben.
+Az ** \< ApplicationName>beállítása** szakasz azokat az értékeket sorolja fel, amelyeket az alkalmazásban kell konfigurálni, hogy az Azure ad-t SAML-identitás-szolgáltatóként fogja használni. A szükséges értékek az alkalmazástól függően változnak. Részletekért tekintse meg az alkalmazás SAML-dokumentációját. A dokumentáció megkereséséhez nyissa meg az ** \< alkalmazásnév beállítása>** fejlécet, és válassza a **részletes utasítások megtekintése**lehetőséget. A dokumentáció a bejelentkezési oldal **konfigurálása** lapon jelenik meg. Ezen a lapon megtekintheti a **bejelentkezési URL-cím**, az **Azure ad-azonosító**és a **kijelentkezési URL-** értékek kitöltését az ** \< alkalmazás nevének beállítása>** fejlécben.
 
-1. Görgessen le az ** \<applicationName>beállítása** szakaszhoz. 
+1. Görgessen le az ** \< ApplicationName>beállítása** szakaszhoz. 
    
    ![4. lépés az alkalmazás beállítása](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

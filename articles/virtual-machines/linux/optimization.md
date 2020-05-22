@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf674170ff49f55fc7997a87d07f9069306fc0cd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757085"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774152"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -29,9 +29,9 @@ A virtuális gép mérete alapján akár 16 további lemezt is csatlakoztathat e
 
 Annak érdekében, hogy Premium Storage lemezek legmagasabb IOps legyenek elérhetők, ahol a gyorsítótár beállításai **readonly** vagy **none**értékre lettek állítva, le kell tiltania a **korlátokat** , miközben a fájlrendszert a Linux rendszerhez csatlakoztatja. Nincs szükség korlátokra, mert a lemezre Premium Storage lemezek írása a gyorsítótár-beállítások számára tartós.
 
-* Ha a **reiserFS**-t használja, tiltsa le a korlátozásokat a csatlakoztatási lehetőség `barrier=none` használatával `barrier=flush`(az akadályok engedélyezéséhez)
-* Ha **ext3/ext4**-t használ, tiltsa le a korlátozásokat `barrier=0` a csatlakoztatási lehetőség használatával ( `barrier=1`az akadályok engedélyezéséhez)
-* Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez `barrier`használja a kapcsolót).
+* Ha a **reiserFS**-t használja, tiltsa le a korlátozásokat a csatlakoztatási lehetőség használatával `barrier=none` (az akadályok engedélyezéséhez `barrier=flush` )
+* Ha **ext3/ext4**-t használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőség használatával `barrier=0` (az akadályok engedélyezéséhez `barrier=1` )
+* Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a kapcsolót `barrier` ).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Nem felügyelt Storage-fiókok szempontjai
 Ha az Azure CLI-vel hoz létre virtuális gépet, az alapértelmezett művelet az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nem igényel előkészítést vagy helyet a tároláshoz.  A nem felügyelt lemezekhez szükség van egy Storage-fiókra, és további teljesítménnyel kapcsolatos szempontokat kell figyelembe vennie.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md).  A következő szakasz csak akkor ismerteti a teljesítménnyel kapcsolatos szempontokat, ha nem felügyelt lemezeket használ.  Az alapértelmezett és az ajánlott tárolási megoldás a felügyelt lemezek használata.
@@ -51,7 +51,7 @@ Ubuntu Cloud images esetén a Cloud-init használatával kell konfigurálnia a s
 
 A Cloud-init támogatás nélküli rendszerképeknél az Azure piactéren üzembe helyezett virtuálisgép-lemezképek rendelkeznek egy, az operációs rendszerhez integrált virtuálisgép-Linux-ügynökkel. Ez az ügynök lehetővé teszi a virtuális gép számára a különböző Azure-szolgáltatásokkal való interakciót. Feltételezve, hogy az Azure Marketplace-ről standard rendszerképet helyezett üzembe, a következő lépéseket kell elvégeznie a Linux-swap fájl beállításainak megfelelő konfigurálásához:
 
-Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez szükséges paraméterek a következők `ResourceDisk.EnableSwap` .`ResourceDisk.SwapSizeMB` 
+Két bejegyzés megkeresése és módosítása a **/etc/waagent.conf** fájlban. Egy dedikált swap-fájl létezését és a lapozófájl méretét vezérlik. Az ellenőrzéshez `ResourceDisk.EnableSwap` szükséges paraméterek a következők.`ResourceDisk.SwapSizeMB` 
 
 A megfelelően engedélyezett lemez és a csatlakoztatott lapozófájl engedélyezéséhez győződjön meg arról, hogy a paraméterek a következő beállításokkal rendelkeznek:
 
@@ -115,6 +115,8 @@ A Red Hat Distribution Family esetében csak a következő parancsra van szüks�
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Az Ubuntu 18,04 és az Azure által hangolt kernel több várólistás I/O-ütemező használatával működik. Ebben az esetben `none` a megfelelő kijelölés a helyett `noop` . További információ: [Ubuntu I/O-ütemező](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers).
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>A szoftveres RAID használata nagyobb I/Ops eléréséhez
 Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen lemez tud biztosítani, több lemez szoftveres RAID-konfigurációját kell használnia. Mivel az Azure már elvégezte a lemezes rugalmasságot a helyi háló rétegben, a legmagasabb szintű teljesítményt érheti el egy RAID-0 csíkozási konfigurációból.  Lemezeket építhet ki és hozhat létre az Azure-környezetben, és csatlakoztathatja őket a linuxos virtuális géphez a meghajtók particionálása, formázása és csatlakoztatása előtt.  A szoftveres RAID-beállítás Azure-beli Linux rendszerű virtuális gépen való konfigurálásáról további részleteket a **[szoftveres RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** -dokumentumban talál.

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81115182"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770822"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 
@@ -66,7 +66,11 @@ Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmaz
 
    A teljesítménnyel kapcsolatos további információkért lásd: [számítások kezelése Azure SQL Data Warehouseban](sql-data-warehouse-manage-compute-overview.md).
 
-5. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. Az üzembe helyezés eltarthat néhány percig.
+5. Válassza a **További beállítások**lehetőséget, majd a **meglévő adat használata**területen válassza a **minta** lehetőséget, hogy a rendszer létrehozza a AdventureWorksDW.
+
+    ![meglévő adathasználat kiválasztása](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+
+6. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. Az üzembe helyezés eltarthat néhány percig.
 
    ![Válassza a felülvizsgálat + létrehozás lehetőséget](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -149,6 +153,8 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="run-some-queries"></a>Néhány lekérdezés futtatása
 
+Nem ajánlott nagyméretű lekérdezéseket futtatni a kiszolgálói rendszergazdaként való naplózás során, mivel ez egy [korlátozott erőforrás-osztályt](resource-classes-for-workload-management.md)használ. Ehelyett konfigurálja a [munkaterhelés elkülönítését](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) [az oktatóanyagokban bemutatott](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)módon.
+
 Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lekérdezésablakok megnyitásához és a T-SQL-lekérdezések futtatásához végezze el az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a **mySampleDataWarehouse** elemre, és válassza az **Új lekérdezés**elemet. Megnyílik egy új lekérdezési ablak.
@@ -172,7 +178,7 @@ Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lek
 
    ![A dbo.dimCustomer lekérdezés](./media/create-data-warehouse-portal/query-customer.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
@@ -184,7 +190,7 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az SQL-készletet.
 
-   ![Az erőforrások eltávolítása](./media/create-data-warehouse-portal/clean-up-resources.png)
+   ![Erőforrások felszabadítása](./media/create-data-warehouse-portal/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás**lehetőséget.
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 86e1bc088c3e4327fbd0b9ad4a05e7c42c3fb776
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858830"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773491"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -24,10 +24,20 @@ Ebben az oktatóanyagban, amely három részből áll, előkészíti a környeze
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.75 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
+### <a name="verify-your-permissions"></a>Engedélyek ellenőrzése
+
+Azure Red Hat OpenShift-fürt létrehozásához ellenőrizze az alábbi engedélyeket az Azure-fiók és-felhasználó számára:
+
+[!div class="mx-tdBreakAll"]
+|Engedélyek|Az VNet tartalmazó erőforráscsoport|Felhasználó által futtatott`az aro create`|Az egyszerű szolgáltatás a következőképpen lett átadva`–client-id`|
+|----|:----:|:----:|:----:|
+|**Felhasználói hozzáférés adminisztrátora**|X|X| |
+|**Közreműködő**|X|X|X|
+
 ### <a name="install-the-az-aro-extension"></a>A `az aro` bővítmény telepítése
 A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az Azure CLI használatával hozza létre, elérje és törölje az Azure Red Hat OpenShift-fürtöket.
 
-A `az aro` bővítmény telepítéséhez futtassa a következő parancsot.
+A bővítmény telepítéséhez futtassa a következő parancsot `az aro` .
 
 ```azurecli-interactive
 az extension add -n aro --index https://az.aroapp.io/stable
@@ -72,9 +82,9 @@ A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Con
 
 2. **Kattintson a lekérési titok letöltése elemre.**
 
-Tartsa meg a `pull-secret.txt` mentett fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
+Tartsa meg a mentett `pull-secret.txt` fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
 
-A `az aro create` parancs futtatásakor a (z) `--pull-secret @pull-secret.txt` paraméter használatával hivatkozhat a lekéréses titkos kulcsra. Futtassa `az aro create` azt a könyvtárat, ahová a `pull-secret.txt` fájlt mentette. Ellenkező esetben cserélje `@pull-secret.txt` le `@<path-to-my-pull-secret-file>`a-t a kifejezésre.
+A parancs futtatásakor a (z `az aro create` ) paraméter használatával hivatkozhat a lekéréses titkos kulcsra `--pull-secret @pull-secret.txt` . Futtassa `az aro create` azt a könyvtárat, ahová a fájlt mentette `pull-secret.txt` . Ellenkező esetben cserélje le `@pull-secret.txt` a-t a kifejezésre `@<path-to-my-pull-secret-file>` .
 
 Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
 
@@ -196,12 +206,12 @@ az aro create \
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
-A parancs végrehajtása után `az aro create` az általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
+A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`helyett egy URL-címen lesz elérhető.
+> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io`.  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
+> Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
 >
 
 ## <a name="next-steps"></a>További lépések

@@ -3,7 +3,7 @@ title: CLI-példa – felügyelt példány létrehozása Azure SQL Database
 description: Azure CLI-példa parancsfájl egy felügyelt példány létrehozásához Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 998bd8e39863dd9520d1a05e7fff52095c3be6c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f52a460be33b23da3da0cb32075ab5f75bb8d129
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067445"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772624"
 ---
 # <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány létrehozása a parancssori felület használatával
 

@@ -3,7 +3,7 @@ title: Példány-készletek (előzetes verzió)
 description: Ez a cikk Azure SQL Database példányok készleteit (előzetes verzió) ismerteti.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a418972b78750dbed90f0148aac45dbcc2617f8e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878153"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773083"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok a SQL Database példány-készletek (előzetes verzió)?
 
@@ -31,7 +31,7 @@ A példányok emellett támogatják a natív VNet-integrációt is, így több p
 
 A példány-készletek a következő előnyöket nyújtják:
 
-1. 2 virtuális mag-példány üzemeltetésének képessége. *Csak a példányok példányai esetében. \**
+1. 2 virtuális mag-példány üzemeltetésének képessége. * \* Csak a példányok példányai esetében*.
 2. Kiszámítható és gyors példány üzembe helyezési ideje (legfeljebb 5 perc).
 3. Minimális IP-cím kiosztása.
 
@@ -59,7 +59,7 @@ Az alábbi lista azokat a fő felhasználási eseteket tartalmazza, amelyekben a
 
 ## <a name="architecture-of-instance-pools"></a>Példány-készletek architektúrája
 
-A példány-készletek hasonló architektúrával rendelkeznek a normál felügyelt példányokhoz (*egyetlen példány*). Az  [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md)támogatásához, valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példány-készletek a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)is támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
+A példány-készletek hasonló architektúrával rendelkeznek a normál felügyelt példányokhoz (*egyetlen példány*). Az [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md)támogatásához   , valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példány-készletek a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)is támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
 
 A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az egyes példányok mindig önállóak a virtuálisgép-csomópontokon.
 

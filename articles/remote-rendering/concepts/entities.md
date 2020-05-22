@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681947"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758724"
 ---
 # <a name="entities"></a>Entitások
 
@@ -22,7 +22,7 @@ Az entitások a pozíció, a rotáció és a skála alapján definiált átalak�
 
 Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarchikus transzformáció. Ha például több entitás gyermekként van csatolva egy megosztott szülő entitáshoz, akkor az összes ilyen entitás áthelyezhető, elforgatható, és méretezhető úgy, hogy megváltoztatja a szülő entitás átalakítását.
 
-Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a-t `Entity.Destroy()`, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja `Destroy` a modellt, amelyet a `AzureSession.Actions.LoadModelAsync()` vagy az SAS-variánsa `AzureSession.Actions.LoadModelFromSASAsync()`ad vissza.
+Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a `Entity.Destroy()` -t, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja a `Destroy` modellt, amelyet a vagy az SAS- `AzureSession.Actions.LoadModelAsync()` variánsa ad vissza `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Az entitások akkor jönnek létre, amikor a kiszolgáló tartalmat tölt be, vagy amikor a felhasználó hozzá szeretne adni egy objektumot a jelenethez. Ha például egy felhasználó egy kivágási síkot szeretne felvenni egy rácsvonal belsejének megjelenítéséhez, akkor a felhasználó létrehozhat egy entitást, ahol a sík léteznie kell, majd hozzá kell adnia a kivágási sík összetevőt.
 
@@ -32,13 +32,20 @@ Az entitásokon két típusú lekérdezési funkció létezik: szinkron és aszi
 
 ### <a name="querying-components"></a>Összetevők lekérdezése
 
-Egy adott típusú összetevő megkereséséhez használja `FindComponentOfType`a következőt:
+Egy adott típusú összetevő megkereséséhez használja a következőt `FindComponentOfType` :
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
 
 // or alternatively:
 CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
+```
+
+```cpp
+ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType(ObjectType::CutPlaneComponent)->as<CutPlaneComponent>();
+
+// or alternatively:
+ApiHandle<CutPlaneComponent> cutplane = *entity->FindComponentOfType<CutPlaneComponent>();
 ```
 
 ### <a name="querying-transforms"></a>Átalakítások lekérdezése
@@ -53,6 +60,13 @@ Az átalakítási lekérdezések szinkron hívásokat mutatnak az objektumon. Fo
 Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
+
+```cpp
+// local space transform of the entity
+Double3 translation = *entity->Position();
+Quaternion rotation = *entity->Rotation();
+```
+
 
 ### <a name="querying-spatial-bounds"></a>Térbeli korlátok lekérdezése
 
@@ -77,6 +91,21 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
         // ...
     }
 };
+```
+
+```cpp
+ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
+metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
+    {
+        if (query->IsRanToCompletion())
+        {
+            ApiHandle<ObjectMetaData> metaData = *query->Result();
+            ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
+            int64_t intValue = *entry->AsInt64();
+
+            // ...
+        }
+    });
 ```
 
 A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.

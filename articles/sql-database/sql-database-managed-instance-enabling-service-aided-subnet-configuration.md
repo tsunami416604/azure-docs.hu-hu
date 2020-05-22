@@ -3,19 +3,19 @@ title: A szolgáltatással segített alhálózat konfigurációjának engedélye
 description: A szolgáltatással segített alhálózat konfigurációjának engedélyezése Azure SQL Database felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: efc2b8578651f68d052f227694f85348853e191f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f22c713af700225ffe6954460c36217abdea5eea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79533266"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770159"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-database-managed-instance"></a>A szolgáltatással segített alhálózat konfigurációjának engedélyezése Azure SQL Database felügyelt példányhoz
 A szolgáltatással segített alhálózat-konfiguráció automatizált hálózati konfiguráció-felügyeletet biztosít a felügyelt példányokat üzemeltető alhálózatok számára. A szolgáltatással segített alhálózat-konfigurációval rendelkező felhasználó teljes mértékben felügyeli az adatokhoz való hozzáférést (TDS-adatforgalom), míg a felügyelt példányok feladata, hogy a felügyeleti forgalom zavartalan áramlását biztosítsa, hogy az SLA-t teljesítse.
@@ -31,13 +31,13 @@ A szolgáltatással segített konfiguráció automatikusan engedélyezve van, ha
 > Mivel a szolgáltatással segített alhálózati konfiguráció elengedhetetlen az SLA fenntartásához, a 2020. május 1-től kezdődően a felügyelt példányokat nem lehet olyan alhálózatokban telepíteni, amelyek nem a felügyelt példány erőforrás-szolgáltatóhoz vannak delegálva. Július 1-jén 2020 a felügyelt példányokat tartalmazó összes alhálózat automatikusan delegálásra kerül a felügyelt példány erőforrás-szolgáltatója számára. 
 
 ## <a name="enabling-subnet-delegation-for-new-deployments"></a>Alhálózat delegálásának engedélyezése új központi telepítések esetén
-Ha felügyelt példányt kíván üzembe helyezni az üres alhálózaton, a következő `Microsoft.Sql/managedInstances` [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint delegálnia kell az erőforrás-szolgáltatónak. _Vegye figyelembe, hogy a hivatkozott `Microsoft.DBforPostgreSQL/serversv2` cikk erőforrás-szolgáltatót használ például. Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
+Ha felügyelt példányt kíván üzembe helyezni az üres alhálózaton, a `Microsoft.Sql/managedInstances` következő [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint delegálnia kell az erőforrás-szolgáltatónak. _Vegye figyelembe, hogy a hivatkozott cikk `Microsoft.DBforPostgreSQL/serversv2` erőforrás-szolgáltatót használ például. `Microsoft.Sql/managedInstances`Ehelyett erőforrás-szolgáltatót kell használnia._
 
 ## <a name="enabling-subnet-delegation-for-existing-deployments"></a>Alhálózati delegálás engedélyezése meglévő központi telepítésekhez
 
 Az alhálózati delegálás engedélyezéséhez a felügyelt példányok meglévő központi telepítéséhez meg kell találnia azt a virtuális hálózati alhálózatot, ahol elhelyezve van. 
 
-Ennek `Virtual network/subnet` megismeréséhez tekintse meg a `Overview` felügyelt példány portáljának paneljét.
+Ennek megismeréséhez tekintse meg `Virtual network/subnet` a `Overview` felügyelt példány portáljának paneljét.
 
 Másik lehetőségként a következő PowerShell-parancsok futtatásával is elsajátíthatja ezt. Cserélje le az **előfizetés-azonosítót** az előfizetés-azonosítójával. Továbbá cserélje le a **RG nevet** a felügyelt példányhoz tartozó erőforráscsoporthoz, és cserélje le a **mi-Name nevet** a felügyelt példány nevére.
 
@@ -60,7 +60,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi.SubnetId
 ```
 
-Miután megtalálta a felügyelt példány alhálózatát, delegálnia kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónak az alábbi [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint. _Vegye figyelembe, hogy a hivatkozott `Microsoft.DBforPostgreSQL/serversv2` cikk erőforrás-szolgáltatót használ például. Ehelyett erőforrás-szolgáltatót `Microsoft.Sql/managedInstances` kell használnia._
+Miután megtalálta a felügyelt példány alhálózatát, delegálnia kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónak az alábbi [cikkben](../virtual-network/manage-subnet-delegation.md)leírtak szerint. _Vegye figyelembe, hogy a hivatkozott cikk `Microsoft.DBforPostgreSQL/serversv2` erőforrás-szolgáltatót használ például. `Microsoft.Sql/managedInstances`Ehelyett erőforrás-szolgáltatót kell használnia._
 
 
 > [!IMPORTANT]

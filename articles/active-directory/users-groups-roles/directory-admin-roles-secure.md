@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837192"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759030"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -82,7 +82,7 @@ A Azure AD Privileged Identity Management bekapcsolását követően:
 
 4. Nyissa meg Privileged Identity Management a **minden szolgáltatás** listából, és rögzítse az irányítópulton.
 
-Az első személy, aki a PIM-t használja a szervezetben, a **biztonsági rendszergazda** és a **Kiemelt szerepkörű rendszergazdai** szerepkörökhöz van rendelve. Csak a Kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD-címtárbeli szerepkör-hozzárendeléseit. A PIM biztonsági varázsló végigvezeti a kezdeti felderítési és hozzárendelési élményen. A varázslóból a további módosítások végrehajtása nélkül is kiléphet.
+Győződjön meg arról, hogy az első személy, aki a PIM-t használja a szervezetben, hozzá van rendelve a **biztonsági rendszergazda** és a **Kiemelt szerepkörű rendszergazda** szerepkörhöz. Csak a Kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD-címtárbeli szerepkör-hozzárendeléseit. A PIM biztonsági varázsló végigvezeti a kezdeti felderítési és hozzárendelési élményen. A varázslóból a további módosítások végrehajtása nélkül is kiléphet.
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Magas jogosultsági szintű szerepkörökben lévő fiókok azonosítása és kategorizálása
 
@@ -110,11 +110,11 @@ Lehetséges, hogy a felhasználó véletlenül kizárja a szerepkörét. Ha pél
 
 A sürgősségi hozzáférési fiókok segítenek a rendszerjogosultságú hozzáférés korlátozásában egy Azure AD-szervezeten belül. Ezek a fiókok magas jogosultsággal rendelkeznek, és nincs hozzárendelve bizonyos személyekhez. A vészhelyzeti hozzáférési fiókok a "break Glass" forgatókönyvekre korlátozódnak, ahol a normál rendszergazdai fiókok nem használhatók. Győződjön meg arról, hogy a vészhelyzeti fiók használatának szabályozása és csökkentése csak erre az időre van szükség.
 
-Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem lát csak felhőalapú fiókokat a \*. onmicrosoft.com tartománnyal (a "break Glass" vészhelyzeti hozzáféréshez), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](directory-emergency-access.md).
+Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem lát csak felhőalapú fiókokat a \* . onmicrosoft.com tartománnyal (a "break Glass" vészhelyzeti hozzáféréshez), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](directory-emergency-access.md).
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultsági szintű, egyetlen felhasználótól eltérő, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy [https://aka.ms/mfasetup](https://aka.ms/mfasetup)minden felhasználó regisztrálva legyen a következő helyen:. További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
+Az Azure Multi-Factor Authentication (MFA) megkövetelése bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Az útmutató segítségével engedélyezheti a [többtényezős hitelesítés (MFA) használatát a rendszergazdai fiókokhoz](../authentication/howto-mfa-userstates.md) , és gondoskodhat arról, hogy minden felhasználó regisztrálva legyen a következő helyen: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>2. fázis: a gyakran használt támadások enyhítése
 
@@ -177,7 +177,7 @@ A Azure AD Identity Protection egy algoritmus-alapú figyelési és jelentéské
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)
 
-A biztonságos pontszám a használatban lévő Office 365-szolgáltatások beállításait és tevékenységeit vizsgálja, és összehasonlítja azokat a Microsoft által létrehozott alaptervvel. Az Ön által összehangolt biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot a következő címen: [https://securescore.office.com](https://securescore.office.com/).
+A biztonságos pontszám a használatban lévő Office 365-szolgáltatások beállításait és tevékenységeit vizsgálja, és összehasonlítja azokat a Microsoft által létrehozott alaptervvel. Az Ön által összehangolt biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot a következő címen: [https://securescore.office.com](https://securescore.office.com/) .
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)
 
@@ -207,7 +207,7 @@ Az Enterprise Portal és a Azure Portal segítségével azonosíthatja a szervez
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft-fiókok eltávolítása rendszergazdai szerepkörökből
 
-A más programokból (például Xbox, Live és Outlook) származó Microsoft-fiókok nem használhatók rendszergazdai fiókként a szervezet előfizetéséhez. Távolítsa el a rendszergazdai állapotot az összes Microsoft-fiókból, és cserélje le chris@contoso.comaz Azure ad-t (például:) a munkahelyi vagy iskolai fiókokra. Rendszergazdai célokra az Azure AD-ben hitelesített és nem más szolgáltatásokban lévő fiókoktól függ.
+A más programokból (például Xbox, Live és Outlook) származó Microsoft-fiókok nem használhatók rendszergazdai fiókként a szervezet előfizetéséhez. Távolítsa el a rendszergazdai állapotot az összes Microsoft-fiókból, és cserélje le az Azure AD-t (például: chris@contoso.com ) a munkahelyi vagy iskolai fiókokra. Rendszergazdai célokra az Azure AD-ben hitelesített és nem más szolgáltatásokban lévő fiókoktól függ.
 
 #### <a name="monitor-azure-activity"></a>Azure-tevékenység figyelése
 

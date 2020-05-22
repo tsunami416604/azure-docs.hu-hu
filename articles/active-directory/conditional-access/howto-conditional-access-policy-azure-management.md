@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b92d833e6f32821ad907ff966771bbba8bbb77ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54ec1392dab19491ba8c041d0342f0fe82e671fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758197"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Feltételes hozzáférés: MFA megkövetelése az Azure felügyeletéhez
 
@@ -39,19 +39,19 @@ A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasolj
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályzatot, amely a többtényezős hitelesítés végrehajtásához a hozzárendelt rendszergazdai szerepköröket igényli.
+A következő lépések segítenek létrehozni egy feltételes hozzáférési szabályzatot, amely a többtényezős hitelesítés végrehajtásához hozzáférést igényel a [Microsoft Azure felügyeleti](concept-conditional-access-cloud-apps.md#microsoft-azure-management) alkalmazáshoz.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy műveletek** > területen válassza az **alkalmazások kiválasztása****lehetőséget, válassza**a **Microsoft Azure felügyelet**lehetőséget, majd válassza a **kiválasztás** , majd a **kész**lehetőséget.
-1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **Cloud apps vagy műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget, válassza a **Microsoft Azure felügyelet**lehetőséget, majd válassza a **kiválasztás** , majd a **kész**lehetőséget.
+1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa **Configure** az **Igen**értékre, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 

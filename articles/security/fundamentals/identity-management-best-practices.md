@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548457"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758622"
 ---
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
 Ebben a cikkben az Azure Identity Management és a hozzáférés-vezérléssel kapcsolatos ajánlott biztonsági eljárások gyűjteményét tárgyaljuk. Ezek az ajánlott eljárások az [Azure ad](../../active-directory/fundamentals/active-directory-whatis.md) -vel és az ügyfelek, például saját felhasználói élményekkel kapcsolatos tapasztalataiból származnak.
 
@@ -126,10 +126,10 @@ A felhasználók különböző eszközök és alkalmazások segítségével bár
 A biztonság és a termelékenység egyensúlya érdekében meg kell gondolnia, hogyan érhető el egy erőforrás, mielőtt döntést hozna a hozzáférés-vezérlésről. Az Azure AD feltételes hozzáférésével ezt a követelményt kezelheti. A feltételes hozzáférés révén automatizált hozzáférés-vezérlési döntéseket hozhat a felhőalapú alkalmazások elérésére vonatkozó feltételek alapján.
 
 **Ajánlott eljárás**: a vállalati erőforrásokhoz való hozzáférés kezelése és szabályozása.  
-**Részletek**: az Azure ad [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal) konfigurálása az SaaS-alkalmazások és az Azure ad-hez csatlakoztatott alkalmazások csoport-, hely-és alkalmazás-érzékenysége alapján.
+**Részletek**: a közös Azure ad [feltételes hozzáférési szabályzatok](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) konfigurálása az SaaS-alkalmazások és az Azure ad-hez csatlakoztatott alkalmazások csoport, hely és alkalmazás érzékenysége alapján.
 
 **Ajánlott eljárás**: az örökölt hitelesítési protokollok letiltása.
-**Részletek**: a támadók minden nap kihasználják a régebbi protokollok gyengeségeit, különösen a jelszó-szórásos támadásokhoz. Feltételes hozzáférés konfigurálása az örökölt protokollok blokkolásához. További információkért tekintse meg a videó [Azure ad: do és kerülendő példák](https://www.youtube.com/watch?v=wGk0J4z90GI) című témakört.
+**Részletek**: a támadók minden nap kihasználják a régebbi protokollok gyengeségeit, különösen a jelszó-szórásos támadásokhoz. Feltételes hozzáférés konfigurálása az [örökölt protokollok blokkolásához](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
 
 ## <a name="plan-for-routine-security-improvements"></a>A rutin biztonsági tökéletesítésének megtervezése
 
@@ -175,11 +175,11 @@ Ez a módszer minden licencelési szinten elérhető, de nem keverhető a meglé
 Annak megállapításához, hogy hol kell engedélyezni a Multi-Factor Authenticationt, tekintse meg a [szervezetem számára legmegfelelőbb Azure MFA-verziót](/azure/active-directory/authentication/concept-mfa-whichversion).
 
 **3. lehetőség**: [a multi-Factor Authentication engedélyezése feltételes hozzáférési házirenddel](/azure/active-directory/authentication/howto-mfa-getstarted).
-**Előnyök**: Ez a beállítás lehetővé teszi, hogy a [feltételes hozzáférés](/azure/active-directory/active-directory-conditional-access-azure-portal)használatával megkérdezze a kétlépéses ellenőrzést az adott körülmények között. A konkrét feltételek különböző helyekről, nem megbízható eszközökről vagy kockázatos alkalmazásokból is lehetnek felhasználói bejelentkezésre. Meghatározott feltételek meghatározása, amelyekben kétlépéses ellenőrzésre van szükség, így elkerülhető a felhasználók folyamatos rákérdezése, ami kellemetlen felhasználói élmény lehet.
+**Előnyök**: Ez a beállítás lehetővé teszi, hogy a [feltételes hozzáférés](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)használatával megkérdezze a kétlépéses ellenőrzést az adott körülmények között. A konkrét feltételek különböző helyekről, nem megbízható eszközökről vagy kockázatos alkalmazásokból is lehetnek felhasználói bejelentkezésre. Meghatározott feltételek meghatározása, amelyekben kétlépéses ellenőrzésre van szükség, így elkerülhető a felhasználók folyamatos rákérdezése, ami kellemetlen felhasználói élmény lehet.
 
 Ez a legrugalmasabb módszer a felhasználók kétlépéses ellenőrzésének engedélyezésére. A feltételes hozzáférési szabályzat engedélyezése csak a felhőben működő Azure-Multi-Factor Authentication működik, és az Azure AD prémium funkciója. Erről a módszerről a [felhőalapú Azure-multi-Factor Authentication üzembe helyezése című](/azure/active-directory/authentication/howto-mfa-getstarted)témakörben talál további információt.
 
-**4. lehetőség**: a multi-Factor Authentication feltételes hozzáférési házirendekkel való engedélyezése a [Azure ad Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)felhasználói és bejelentkezési kockázatainak kiértékelésével.   
+**4. lehetőség**: engedélyezze a multi-Factor Authentication feltételes hozzáférési házirendekkel a [kockázatalapú feltételes hozzáférési szabályzatok](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md)kiértékelésével.   
 **Előnyök**: Ez a beállítás a következőket teszi lehetővé:
 
 * A szervezet identitásait érintő lehetséges sebezhetőségek észlelése.

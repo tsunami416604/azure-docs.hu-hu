@@ -3,7 +3,7 @@ title: Felügyelt példányok összekapcsolására szolgáló alkalmazás
 description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az alkalmazás Azure SQL Database felügyelt példányhoz.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc945dec20a15b02287e50bcbef4be0d860c892f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538086"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773665"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL Database-példányhoz
 
@@ -101,7 +101,7 @@ A kapcsolódási problémák elhárításához tekintse át a következőket:
 
    ![bejövő/kimenő számok](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózatok. Az útvonalak a-ben `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`tárolódnak.
+- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózatok. Az útvonalak a-ben tárolódnak `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 

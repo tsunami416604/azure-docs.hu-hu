@@ -3,7 +3,7 @@ title: Felügyelt példány kapcsolati architektúrája
 description: Ismerkedjen meg Azure SQL Database felügyelt példányok kommunikációs és kapcsolati architektúrával, valamint arról, hogy az összetevők hogyan irányítsák át a felügyelt példányra.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f341c3c2c299ca358b2a42210f04c6399fe2892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773618"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány kapcsolati architektúrája Azure SQL Database
 
@@ -66,7 +66,7 @@ Ismerkedjen meg a felügyelt példányok kapcsolati architektúrájának mélyeb
 
 ![A virtuális fürt kapcsolati architektúrája](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Az ügyfelek az űrlapot `<mi_name>.<dns_zone>.database.windows.net`tartalmazó állomásnév használatával csatlakoznak egy felügyelt példányhoz. Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+Az ügyfelek az űrlapot tartalmazó állomásnév használatával csatlakoznak egy felügyelt példányhoz `<mi_name>.<dns_zone>.database.windows.net` . Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Ez a magánhálózati IP-cím a felügyelt példány belső terheléselosztó része. A terheléselosztó átirányítja a forgalmat a felügyelt példány átjárójának. Mivel több felügyelt példány futhat ugyanazon a fürtön belül, az átjáró a felügyelt példány állomásneve használatával irányítja át a forgalmat a megfelelő SQL Engine szolgáltatásba.
 
@@ -83,28 +83,28 @@ Ha a kapcsolatok a felügyelt példányon belül kezdődnek (mint a biztonsági 
 
 ## <a name="service-aided-subnet-configuration"></a>Szolgáltatással segített alhálózat-konfiguráció
 
-Az ügyfél biztonsági és kezelhetőségi követelményeinek kezelése érdekében a felügyelt példányok a manuálisról a szolgáltatással támogatott alhálózat-konfigurációra váltanak.
+Az ügyfelek biztonságra és kezelhetőségre vonatkozó követelményeinek való megfelelés érdekében a felügyelt példány manuálisról szolgáltatással segített alhálózat-konfigurációra áll át.
 
-A szolgáltatással segített alhálózat-konfigurációs felhasználó teljes körű hozzáférés-vezérlési (TDS) forgalomban van, míg a felügyelt példányok feladata a felügyeleti forgalom zavartalan áramlásának biztosítása az SLA teljesítése érdekében.
+A szolgáltatással segített alhálózat-konfigurációval a felhasználó a teljes adatforgalmat (TDS) szabályozhatja, a felügyelt példány pedig biztosítja a zavartalan felügyeleti forgalmat az SLA teljesítésének érdekében.
 
-A szolgáltatással segített alhálózat konfigurációja a virtuális hálózati [alhálózat delegálási](../virtual-network/subnet-delegation-overview.md) szolgáltatásán alapul, és lehetővé teszi az automatikus hálózati konfiguráció felügyeletét és a szolgáltatási végpontok engedélyezését. A szolgáltatás-végpontok a virtuális hálózati tűzfalszabályok konfigurálására használhatók a biztonsági mentéseket és naplókat megőrző Storage-fiókok esetében.
+A szolgáltatással segített alhálózat-konfiguráció a virtuális hálózat [alhálózati delegálás](../virtual-network/subnet-delegation-overview.md) funkciójának segítségével biztosítja az automatikus hálózati konfiguráció felügyeletét és a szolgáltatásvégpontok engedélyezését. A szolgáltatásvégpontok használhatók a biztonsági mentéseket/auditnaplókat tároló tárfiókok virtuális hálózati tűzfalszabályainak konfigurálására.
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények 
 
-Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
+Helyezzen üzembe egy felügyelt példányt egy virtuális hálózaton belüli dedikált alhálózaton. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
 
-- **Dedikált alhálózat:** A felügyelt példány alhálózata nem tartalmazhat olyan más felhőalapú szolgáltatást, amely hozzá van rendelve, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrást, hanem a felügyelt példányt, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
+- **Dedikált alhálózat:** A felügyelt példány alhálózata nem tartalmazhat más, hozzá kapcsolódó felhőszolgáltatást, illetve nem lehet átjáró alhálózata. Az alhálózat nem tartalmazhat más erőforrást a felügyelt példányon kívül, és később sem adhatók hozzá más típusú erőforrások az alhálózathoz.
 - **Alhálózat delegálása:** A felügyelt példány alhálózatát delegálni kell az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatóhoz.
-- **Hálózati biztonsági csoport (NSG):** Egy NSG kell társítani a felügyelt példány alhálózatához. Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz. A szolgáltatás automatikusan kiépíti és megtartja a felügyeleti forgalom zavartalan áramlását lehetővé tevő aktuális [szabályokat](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) .
-- **Felhasználó által megadott útvonal (UDR) tábla:** UDR táblát kell társítani a felügyelt példány alhálózatához. Hozzáadhat bejegyzéseket az útválasztási táblázathoz, hogy a virtuális hálózati átjáró vagy a virtuális hálózati berendezés (NVA) használatával átirányítsa a helyszíni magánhálózati IP-tartományokkal rendelkező forgalmat. A szolgáltatás automatikusan kiépít és megtartja a felügyeleti forgalom zavartalan áramlását lehetővé tevő aktuális [bejegyzéseket](#user-defined-routes-with-service-aided-subnet-configuration) .
-- **Elegendő IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. Az ajánlott minimális érték 32 IP-cím. További információ: a [felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat [a meglévő hálózatban](sql-database-managed-instance-configure-vnet-subnet.md) is telepítheti, miután konfigurálta a [felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítéséhez. Ellenkező esetben hozzon létre egy [új hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
+- **Hálózati biztonsági csoport (NSG):** A felügyelt példány alhálózatához egy NSG-t kell társítani. Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-as és a 11000-11999-es portokon lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz. A szolgáltatás automatikusan kiépíti és megtartja a jelenlegi, a felügyeleti forgalom zavartalan áramlását lehetővé tevő [szabályokat](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration).
+- **Felhasználó által megadott útvonaltábla (UDR):** A felügyelt példány alhálózatához egy UDR-táblát kell társítani. Hozzáadhat bejegyzéseket az útválasztási táblához, hogy a virtuális hálózati átjárón vagy a virtuális hálózati berendezésen (NVA) keresztül átirányítsa a helyszíni magánhálózati IP-tartományokkal rendelkező forgalmat. A szolgáltatás automatikusan kiépíti és megtartja a jelenlegi, a felügyeleti forgalom zavartalan áramlását lehetővé tevő [bejegyzéseket](#user-defined-routes-with-service-aided-subnet-configuration).
+- **Elegendő mennyiségű IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információért lásd [a felügyelt példány alhálózati méretének meghatározását](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat üzembe helyezheti a [már meglévő hálózaton](sql-database-managed-instance-configure-vnet-subnet.md), miután [a felügyelt példányok hálózati követelményeinek](#network-requirements) megfelelően konfigurálta azt. Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
 > Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -114,14 +114,14 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával 
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Name|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -310,20 +310,20 @@ A következő virtuális hálózati funkciók jelenleg nem támogatottak a felü
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Elavult A hálózati követelmények Service-alapú alhálózat-konfiguráció nélkül
 
-Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
+Helyezzen üzembe egy felügyelt példányt egy virtuális hálózaton belüli dedikált alhálózaton. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
 
-- **Dedikált alhálózat:** A felügyelt példány alhálózata nem tartalmazhat olyan más felhőalapú szolgáltatást, amely hozzá van rendelve, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrást, hanem a felügyelt példányt, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
-- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG minden más szabály előtt meg kell határoznia a [bejövő biztonsági szabályokat](#mandatory-inbound-security-rules) és a [kimenő biztonsági szabályokat](#mandatory-outbound-security-rules) . Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz.
+- **Dedikált alhálózat:** A felügyelt példány alhálózata nem tartalmazhat más, hozzá kapcsolódó felhőszolgáltatást, illetve nem lehet átjáró alhálózata. Az alhálózat nem tartalmazhat más erőforrást a felügyelt példányon kívül, és később sem adhatók hozzá más típusú erőforrások az alhálózathoz.
+- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG minden más szabály előtt meg kell határoznia a [bejövő biztonsági szabályokat](#mandatory-inbound-security-rules) és a [kimenő biztonsági szabályokat](#mandatory-outbound-security-rules) . Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-as és a 11000-11999-es portokon lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz.
 - **Felhasználó által megadott útvonal (UDR) tábla:** A virtuális hálózathoz társított UDR-táblának konkrét [bejegyzéseket](#user-defined-routes)kell tartalmaznia.
 - **Nincsenek szolgáltatási végpontok:** Nincs hozzárendelve szolgáltatási végpont a felügyelt példány alhálózatához. Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
-- **Elegendő IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. Az ajánlott minimális érték 32 IP-cím. További információ: a [felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat [a meglévő hálózatban](sql-database-managed-instance-configure-vnet-subnet.md) is telepítheti, miután konfigurálta a [felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítéséhez. Ellenkező esetben hozzon létre egy [új hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
+- **Elegendő mennyiségű IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. A javasolt minimális mennyiség 32 IP-cím. További információért lásd [a felügyelt példány alhálózati méretének meghatározását](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat üzembe helyezheti a [már meglévő hálózaton](sql-database-managed-instance-configure-vnet-subnet.md), miután [a felügyelt példányok hálózati követelményeinek](#network-requirements) megfelelően konfigurálta azt. Egyéb esetben hozzon létre egy [új virtuális hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
 > Nem telepíthet új felügyelt példányt, ha a célként megadott alhálózat nem rendelkezik ezekkel a jellemzőkkel. Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -331,7 +331,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -349,7 +349,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Name|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

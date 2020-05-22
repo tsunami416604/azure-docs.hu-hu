@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 34ee5d4978c6476da407cde33598a5713177078e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e0456e274adee7d678e373cfd92b5003f3d801
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682012"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759098"
 ---
 # <a name="single-sided-rendering"></a>Egyoldalas renderelés
 
@@ -25,13 +25,13 @@ Az *egyoldalas renderelési* beállítással testreszabhatja ezt a viselkedést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az egyoldalas renderelési beállítás csak olyan rácsvonalak esetében lép érvénybe, amelyeket a `opaqueMaterialDefaultSidedness` következő beállítással [alakítottak át](../../how-tos/conversion/configure-model-conversion.md) :. `SingleSided` Alapértelmezés szerint ez a beállítás a `DoubleSided`következőre van beállítva:.
+Az egyoldalas renderelési beállítás csak olyan rácsvonalak esetében lép érvénybe, amelyeket a következő beállítással [alakítottak át](../../how-tos/conversion/configure-model-conversion.md) : `opaqueMaterialDefaultSidedness` `SingleSided` . Alapértelmezés szerint ez a beállítás a következőre van beállítva: `DoubleSided` .
 
 ## <a name="single-sided-rendering-setting"></a>Egyoldalas renderelési beállítás
 
 Három különböző mód van:
 
-**Normál:** Ebben a módban a rácsvonalak mindig a konvertáláskor lesznek megjelenítve. Ez azt jelenti, hogy a `opaqueMaterialDefaultSidedness` készlettel `SingleSided` konvertált rácsvonalak mindig engedélyezve lesznek a háttérbeli selejtezéssel, még akkor is, ha egy kivágási síkon metszik őket.
+**Normál:** Ebben a módban a rácsvonalak mindig a konvertáláskor lesznek megjelenítve. Ez azt jelenti, hogy a készlettel konvertált rácsvonalak `opaqueMaterialDefaultSidedness` `SingleSided` mindig engedélyezve lesznek a háttérbeli selejtezéssel, még akkor is, ha egy kivágási síkon metszik őket.
 
 **DynamicDoubleSiding:** Ebben a módban, amikor egy kivágási sík metszi a hálót, automatikusan a kétoldalas megjelenítésre vált. Ez az alapértelmezett mód.
 
@@ -39,7 +39,7 @@ Három különböző mód van:
 
 Az egyoldalas renderelési beállítások módosítása a következőképpen végezhető el:
 
-``` cs
+```cs
 void ChangeSingleSidedRendering(AzureSession session)
 {
     SingleSidedSettings settings = session.Actions.SingleSidedSettings;
@@ -49,6 +49,19 @@ void ChangeSingleSidedRendering(AzureSession session)
 
     // Single-sided geometry is always rendered double-sided
     settings.Mode = SingleSidedMode.AlwaysDoubleSided;
+}
+```
+
+```cpp
+void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
+{
+    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+
+    // Single-sided geometry is rendered as is
+    settings->Mode(SingleSidedMode::Normal);
+
+    // Single-sided geometry is always rendered double-sided
+    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

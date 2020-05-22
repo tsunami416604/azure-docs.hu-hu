@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496909"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773019"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
 
@@ -87,24 +87,22 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     
        | | |
        |-|-|
-       | `https://www.amazon.com`|
-       | `https://www.amazon.co.jp`|
-       | `https://www.amazon.de`|
+       | `https://www.amazon.com`| Észak-Amerika |
+       | `https://www.amazon.co.jp`| Kelet-Ázsia |
+       | `https://www.amazon.de`| Európa |
 
     1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
     
        | | |
        |-|-|
-       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Észak-Amerika |
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kelet-Ázsia |
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Európa |
 
        > [!NOTE]
-       > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Megjelenik az Amazon Business `<idpid>` SSO konfigurációs szakaszának értéke, amelyet az oktatóanyag későbbi részében talál. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+       > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Megjelenik az `<idpid>` Amazon Business SSO konfigurációs szakaszának értéke, amelyet az oktatóanyag későbbi részében talál. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://www.amazon.com/`
+1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, akkor a **további URL-címek beállítása** szakaszban fel kell vennie az Amazon üzleti konfigurációjában megadott teljes URL-címet a **bejelentkezési URL** -címre.
 
 1. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Az attribútumok szerkesztéséhez kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok & jogcímek** szakaszban.
 
@@ -153,6 +151,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezés beállítása** varázslóban válassza ki a szolgáltatót a szervezeti követelményeknek megfelelően, és kattintson a **tovább**gombra.
 
     ![Alapértelmezett csoport](media/amazon-business-tutorial/default-group1.png)
+    
+    > [!NOTE]
+    > Bár a Microsoft ADFS egy felsorolt lehetőség, nem fog működni az Azure AD SSO-val.
 
 1. Az **új felhasználói fiók alapértelmezései** varázslóban válassza ki az **alapértelmezett csoportot** , majd válassza ki az **alapértelmezett felvásárlási szerepkört** a szervezet felhasználói szerepköre szerint, és kattintson a **tovább**gombra.
 
@@ -197,7 +198,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Végül az **SSO-kapcsolat részletei** szakaszban az **állapot** **aktívként**jelenik meg.
 
     ![Kapcsolat](media/amazon-business-tutorial/sso-connection5.png)
-
+    
+    > [!NOTE]
+    > Ha az alkalmazást **SP** -kezdeményezésű módban szeretné konfigurálni, hajtsa végre a következő lépést, illessze be a bejelentkezési URL-címet a fenti képernyőképen a **további URL-címek beállítása** szakasz **bejelentkezési URL-címe** szövegmezőbe a Azure Portal. Használja az alábbi formátumot:
+    >
+    > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
+    
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
@@ -209,7 +215,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 

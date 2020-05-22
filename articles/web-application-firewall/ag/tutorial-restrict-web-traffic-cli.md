@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan korlátozhatja a webes forgalmat egy Applicatio
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 05/21/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a429d1a0f426002595f347794bc1cb97a649d6f6
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240082"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770244"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Webalkalmazási tűzfal engedélyezése az Azure CLI használatával
 
@@ -30,13 +30,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy *myResourceGroupAG* nevű Azure-erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal.
 
@@ -151,12 +151,12 @@ az storage account create \
   --resource-group myResourceGroupAG \
   --location eastus \
   --sku Standard_LRS \
-  --encryption blob
+  --encryption-services blob
 ```
 
 ### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
 
-Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje `<subscriptionId>` le az értékét az előfizetés-azonosítóra, majd konfigurálja a diagnosztikát az [az monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)paranccsal.
+Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje le `<subscriptionId>` az értékét az előfizetés-azonosítóra, majd konfigurálja a diagnosztikát az [az monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)paranccsal.
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
@@ -182,7 +182,7 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](../media/tutorial-restrict-web-traffic-cli/application-gateway-nginxtest.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmazásátjárót és az összes kapcsolódó erőforrást.
 

@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a5026fa055307a3a37031dbf64128e4622fc2b8
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713930"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770924"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Mik azok az Azure-erőforrások felügyelt identitásai?
 
@@ -54,9 +54,6 @@ Belsőleg a felügyelt identitások olyan speciális típusú szolgáltatások, 
 Emellett, ha a felhasználó által hozzárendelt vagy rendszerhez rendelt identitás létrejött, a felügyelt identitás erőforrás-szolgáltatója (MSRP) belső tanúsítványt bocsát ki az identitásnak. 
 
 A kód a felügyelt identitások használatával hozzáférési jogkivonatokat igényelhet az Azure AD-hitelesítést támogató szolgáltatásokhoz. Az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok biztosításáról. 
-
-## <a name="credential-rotation"></a>Hitelesítő adatok elforgatása
-A hitelesítő adatok rotációját az Azure-erőforrást üzemeltető erőforrás-szolgáltató vezérli. A hitelesítő adatok alapértelmezett rotációja 46 naponta történik. Az erőforrás-szolgáltatónak új hitelesítő adatokat kell meghívnia, így az erőforrás-szolgáltató 46 napnál hosszabb ideig is várhat.
 
 Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuális gépekkel (VM) való működése látható:
 
@@ -108,6 +105,9 @@ Az alábbi ábrán a felügyelszolgáltatás-identitások az Azure-beli virtuál
 6. A rendszer egy hívást intéz az Azure AD-re, és egy hozzáférési jogkivonatot igényel (az 5. lépésben leírtak szerint) a 3. lépésben konfigurált ügyfél-azonosító és tanúsítvány használatával. Az Azure AD egy JSON Web Token (JWT) formátumú hozzáférési jogkivonatot ad vissza.
 7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
 
+## <a name="credential-rotation"></a>Hitelesítő adatok elforgatása
+A hitelesítő adatok rotációját az Azure-erőforrást üzemeltető erőforrás-szolgáltató vezérli. A hitelesítő adatok alapértelmezett rotációja 46 naponta történik. Az erőforrás-szolgáltatónak új hitelesítő adatokat kell meghívnia, így az erőforrás-szolgáltató 46 napnál hosszabb ideig is várhat.
+
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Hogyan használhatom az Azure-erőforrások felügyelt identitásait?
 
 A különféle Azure-erőforrások felügyelt identitással való elérésének megismeréséért tekintse át az alábbi oktatóanyagokat.
@@ -151,7 +151,7 @@ A különféle Azure-erőforrások felügyelt identitással való elérésének 
 
 Az Azure-erőforrások felügyelt identitásai használatával hitelesítést végezhet az Azure AD-hitelesítést támogató szolgáltatásokban. Az Azure-erőforrások felügyelt identitásai szolgáltatást támogató Azure-szolgáltatások listájáért lásd [az Azure-erőforrások felügyelt identitásait támogató szolgáltatásokkal](services-support-msi.md) foglalkozó részt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az Azure-erőforrások felügyelt identitásai szolgáltatással a következő rövid útmutatók segítségével:
 

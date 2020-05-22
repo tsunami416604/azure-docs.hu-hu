@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 49f675a56247433ce92763a69045fb214c7c37dc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723068"
+ms.locfileid: "83773185"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -34,6 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 * Telepített [Python](https://www.python.org/downloads/) -eloszlás helyi teszteléshez.
 * Az [Azure](https://pypi.org/project/azure/) - `pip` csomag.
+* Az [Iris. csv adatkészlet](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A Batch-fiókok Storage-fiókokhoz való létrehozásával és összekapcsolásával kapcsolatos további információkért tekintse meg [a Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakört.
 * Egy Azure Data Factory-fiók. A adat-előállító létrehozásával kapcsolatos további információkért tekintse meg Azure Portal az adat-előállító [létrehozása](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) című témakört.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -66,7 +67,7 @@ Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait
 1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
 1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című témakör lépéseit követve.
     * Ebben a példában a bemeneti tárolót `input` és a kimeneti tárolót hívjuk `output` .
-1. Töltse `main.py` fel `iris.csv` a és a beviteli tárolót a `input` Storage Explorer használatával a [Blobok blob-tárolóban történő kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
+1. Töltse `main.py` fel [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) a és a beviteli tárolót a `input` Storage Explorer használatával a [Blobok blob-tárolóban történő kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
 
 
 ## <a name="develop-a-script-in-python"></a>Parancsfájl fejlesztése a Pythonban
@@ -146,7 +147,7 @@ Ha a parancsfájl végrehajtásával figyelmeztetéseket vagy hibákat állít e
 1. Kattintson arra a feladatra, amelynél hiba történt a kilépési kóddal.
 1. Megtekintheti `stdout.txt` és `stderr.txt` diagnosztizálhatja a problémát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
 

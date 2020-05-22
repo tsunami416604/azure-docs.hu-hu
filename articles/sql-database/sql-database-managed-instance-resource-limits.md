@@ -3,7 +3,7 @@ title: Erőforrás-korlátok – felügyelt példány
 description: Ez a cikk áttekintést nyújt a felügyelt példányok Azure SQL Database erőforrásának korlátairól.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 49a9355d0e5653ac453493a1808ab95136410d19
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d46746b03935ff5d7893d149b9eb744bb65293ed
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680474"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774225"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -63,7 +63,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 > [!Important]
 > A üzletileg kritikus Service-réteg további beépített példányt (másodlagos replikát) tartalmaz, amelyek csak olvasható számítási feladatokhoz használhatók. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikus/jelentéskészítési lekérdezéseket, akkor a rendszer kétszer virtuális mag és memóriát is biztosít ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodpercen belül elmarad az elsődleges példány mögött, ezért olyan jelentéskészítési/elemzési számítási feladatok kiszervezésére lett kialakítva, amelyek nem igényelnek pontos aktuális állapotot. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Funkció** | **általános célú** | **üzletileg kritikus** |
+| **Szolgáltatás** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |

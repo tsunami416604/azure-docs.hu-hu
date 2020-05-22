@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: cc040fe2c9e0686844c8609b9682d757595b9dbf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981068"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774023"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -29,12 +29,12 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **funkció-kezelő** > **+ Hozzáadás** elemet a szolgáltatáshoz `Beta`tartozó jelző hozzáadásához.
+6. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
-    Most `label` hagyja meg a nem definiált lehetőséget.
+    `label`Most hagyja meg a nem definiált lehetőséget.
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
@@ -46,7 +46,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
    * Hozzon létre egy **Maven** projektet **Javával**.
    * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
-   * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk `com.example` a `demo`és a használatát ismerteti.
+   * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk a és a használatát ismerteti `com.example` `demo` .
    * Adja hozzá a **rugó webes** függőségét.
 
 1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
@@ -55,7 +55,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. xml fájlt* az alkalmazás gyökérkönyvtárában.
 
-1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt `<dependencies>`a listájához:
+1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a listájához `<dependencies>` :
 
     **Spring Cloud 1.1. x**
 
@@ -100,7 +100,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Navigáljon az `resources` alkalmazás könyvtárába, és nyissa `bootstrap.properties`meg a következőt:.  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
+1. Navigáljon az `resources` alkalmazás könyvtárába, és nyissa meg a következőt: `bootstrap.properties` .  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
@@ -108,9 +108,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon válassza `Access keys` a lehetőséget az oldalsávon. Válassza a csak olvasható kulcsok lapot. másolja az elsődleges kapcsolatok karakterláncának értékét.
 
-1. Adja hozzá az elsődleges kapcsolatok karakterláncát környezeti változóként a változó neve `APP_CONFIGURATION_CONNECTION_STRING`alapján.
+1. Adja hozzá az elsődleges kapcsolatok karakterláncát környezeti változóként a változó neve alapján `APP_CONFIGURATION_CONNECTION_STRING` .
 
-1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá `@EnableConfigurationProperties` a szolgáltatást a funkció engedélyezéséhez.
+1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` szolgáltatást a funkció engedélyezéséhez.
 
     ```java
     package com.example.demo;
@@ -178,7 +178,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta").block());
+            model.addAttribute("Beta", featureManager.isEnabledAsync("featureManagement.Beta").block());
             return "welcome";
         }
     }
@@ -241,7 +241,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     ```
 
-1. Hozzon létre egy új, CSS `static` nevű mappát a és annak belsejében egy *Main. css*nevű CSS-fájl.
+1. Hozzon létre egy új, CSS nevű mappát `static` a és annak belsejében egy *Main. CSS*nevű CSS-fájl.
 
     ```css
     html {
@@ -283,7 +283,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     mvn spring-boot:run
     ```
 
-1. Nyisson meg egy böngészőablakot, és lépjen a következő URL `http://localhost:8080/welcome`-címre:.
+1. Nyisson meg egy böngészőablakot, és lépjen a következő URL-címre: `http://localhost:8080/welcome` .
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
@@ -291,13 +291,13 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     | Kulcs | Állapot |
     |---|---|
-    | Beta | Bekapcsolva |
+    | Beta | Be |
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

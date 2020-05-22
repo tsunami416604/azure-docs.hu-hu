@@ -8,20 +8,20 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187885"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773134"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Megoldások az Azure Virtual Machines szolgáltatásban
 
 Ez a cikk az Intel [Software Guard Extension](https://software.intel.com/sgx) (Intel SGX enklávéhoz) által támogatott Intel-processzorokat futtató Azure bizalmas számítástechnikai virtuális gépek (VM-EK) üzembe helyezésével kapcsolatos információkat ismerteti. 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Azure bizalmas számítástechnikai VM-méretek
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure Confidential Computing virtuális gépek mérete
 
-Az Azure bizalmas számítástechnikai virtuális gépek úgy vannak kialakítva, hogy az adatok és a kódok bizalmas kezelését és integritását a felhőben feldolgozzák 
+Az Azure bizalmas számítástechnikai virtuális gépek úgy vannak kialakítva, hogy védve legyenek az adatok és a kódok titkossága és integritása a felhőben történő feldolgozás során 
 
 [DCsv2 sorozat](../virtual-machines/dcv2-series.md) A virtuális gépek a legújabb és legutóbb bizalmas számítástechnikai termékcsaládok. Ezek a virtuális gépek több üzembe helyezési képességet is támogatnak, és a DC sorozatú virtuális gépekhez képest nagyobb méretekben vannak, mint az enklávé-oldal gyorsítótára (EPC) és a méretek szélesebb választéka. A [DC sorozatú](../virtual-machines/sizes-previous-gen.md#preview-dc-series) virtuális gépek jelenleg előzetes verzióban érhetők el, és az általánosan elérhetővé válik, és nem tartalmazzák az általános elérhetőséget.
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-Április 2020-ától a következő régiókban és rendelkezésre állási zónákban érhetők el az SKU-ban:
+Az alábbi régiókban és rendelkezésre állási zónákban a 2020-es verziótól kezdve ezek a SKU-ket vehetik igénybe:
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ Egy rövid útmutató a DCsv2-sorozatú virtuális gépek kevesebb mint 10 perc 
   
 - **Átméretezés** – a speciális hardverek miatt csak a bizalmas számítástechnikai példányokat lehet átméretezni ugyanazon a méretű családon belül. Például csak egy DCsv2-sorozatú virtuális gépet lehet átméretezni egy DCsv2-sorozatból egy másikra. A nem bizalmas számítástechnikai méretről a bizalmas számítástechnikai méretre való átméretezés nem támogatott.  
 
-- **Lemezkép** – az Intel Software Guard Extension (Intel SGX enklávéhoz) támogatásának biztosítása bizalmas számítási példányok esetén a 2. generációs lemezképeken minden központi telepítést futtatni kell. Az Azure bizalmas számítástechnikai szolgáltatás az Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2 és Windows Server 2016 Gen 2 rendszeren futó munkaterheléseket támogatja. További információ a [2. generációs virtuális gépek támogatásáról az Azure](../virtual-machines/linux/generation-2.md) -ban a támogatott és nem támogatott forgatókönyvek megismeréséhez. 
+- **Lemezkép** – az Intel Software Guard Extension (Intel SGX enklávéhoz) támogatásának biztosítása bizalmas számítási példányok esetén a 2. generációs lemezképeken minden központi telepítést futtatni kell. Az Azure bizalmas számítástechnikai szolgáltatás az Ubuntu 18,04 Gen 2, az Ubuntu 16,04 Gen 2, a Windows Server 2019 Gen2 és a Windows Server 2016 Gen 2 operációs rendszereken futó munkaterheléseket támogatja. További információ a [2. generációs virtuális gépek támogatásáról az Azure](../virtual-machines/linux/generation-2.md) -ban a támogatott és nem támogatott forgatókönyvek megismeréséhez. 
 
 - **Storage** – az Azure bizalmas számítástechnikai virtuálisgép-adatlemezei és az elmúló operációsrendszer-lemezek a NVMe-lemezeken találhatók. A példányok csak prémium SSD és standard SSD lemezeket támogatják, nem ultra SSD vagy standard HDD. A virtuális gép mérete **DC8_v2** nem támogatja a Premium Storage-t. 
 
@@ -100,15 +100,15 @@ Az Azure bizalmas számítástechnika jelenleg nem támogatja a Zone-redundanci�
 
 ## <a name="deploying-via-an-azure-resource-manager-template"></a>Üzembe helyezés Azure Resource Manager sablon használatával 
 
-Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket használhatja az erőforrások biztonságossá tételéhez és rendszerezéséhez az üzembe helyezés után.
+Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Használhatja a felügyeleti szolgáltatásokat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket, hogy az üzembe helyezés után biztonságossá és rendszerezje az erőforrásokat.
 
 Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../azure-resource-manager/templates/overview.md)című témakört.
 
-Ha egy DCsv2-sorozatú virtuális gépet szeretne üzembe helyezni egy ARM-sablonban, a [virtuális gép erőforrását](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
+A DCsv2-sorozatú virtuális gépek Azure Resource Manager-sablonban való üzembe helyezéséhez a [virtuális gép erőforrását](../virtual-machines/windows/template-description.md)fogja használni. Győződjön meg arról, hogy a megfelelő tulajdonságokat adja meg a **vmSize** és a **imageReference**.
 
 ### <a name="vm-size"></a>Virtuális gép mérete
 
-Adja meg a következő méretek egyikét a ARM-sablonban a virtuális gép erőforrásában. Ez a karakterlánc a tulajdonságok **vmSize** kerül **properties**.
+A virtuális gép erőforrásának Azure Resource Manager sablonjában adja meg a következő méretek egyikét. Ez a karakterlánc a tulajdonságok **vmSize** kerül **properties**.
 
 ```json
   [
@@ -124,6 +124,12 @@ Adja meg a következő méretek egyikét a ARM-sablonban a virtuális gép erőf
 A **Tulajdonságok**területen a **storageProfile**alatt lévő képre is hivatkoznia kell. Csak az alábbi rendszerképek *egyikét* használja a **imageReference**.
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ A **Tulajdonságok**területen a **storageProfile**alatt lévő képre is hivatk
 
 ## <a name="next-steps"></a>Következő lépések 
 
-Ebben a cikkben a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges képesítésekről és konfigurációkról olvashat. Most már az Azure Marketplace-en is üzembe helyezhet egy DCsv2-sorozatú virtuális gépet.
+Ebben a cikkben megtanulta a bizalmas számítástechnikai virtuális gépek létrehozásakor szükséges minősítéseket és konfigurációkat. Most már a Microsoft Azure Marketplace egy DCsv2-sorozatú virtuális gép üzembe helyezéséhez.
 
 > [!div class="nextstepaction"]
 > [DCsv2-sorozatú virtuális gép üzembe helyezése az Azure Marketplace-en](quick-create-marketplace.md)

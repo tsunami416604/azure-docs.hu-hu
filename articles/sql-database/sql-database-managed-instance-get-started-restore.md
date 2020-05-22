@@ -3,7 +3,7 @@ title: Biztonsági másolat visszaállítása felügyelt példányra
 description: Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon az SSMS használatával.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b7d635a45929ead1ef67e10fef75e502c5005f7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80874704"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770091"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rövid útmutató: adatbázis visszaállítása felügyelt példányra
 
@@ -90,7 +90,7 @@ A SSMS-ben kövesse az alábbi lépéseket a Wide World importing-adatbázis a f
 
 > [!NOTE]
 > Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer bizonyos hibákat SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy bizonyos időtúllépés lejár. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
-> A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg `RESTORE` az utasítások viselkedésével [kapcsolatos eltéréseket](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement).
+> A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [here](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)eltéréseket.
 
 ## <a name="next-steps"></a>További lépések
 

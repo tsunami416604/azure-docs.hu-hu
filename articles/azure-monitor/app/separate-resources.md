@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125689"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773700"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -138,7 +138,7 @@ Ha megkapja a verzióinformációkat, az Application Insights webmodul automatik
 Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorja hozza létre, nem pedig a Visual studióból származó fejlesztői Build.
 
 ### <a name="release-annotations"></a>Kiadási jegyzetek
-Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. Az alábbi képen látható, hogy jelenik meg a jelölő.
+Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
 
 ## <a name="next-steps"></a>További lépések
 

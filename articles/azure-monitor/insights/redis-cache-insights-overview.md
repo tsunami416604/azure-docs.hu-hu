@@ -4,13 +4,13 @@ description: Ez a cikk a Azure Redis Cache funkció Azure Monitor ismerteti, ame
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/07/2020
-ms.openlocfilehash: a6a8499a13e5c14869f9c9063528cea4ee82f419
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650433"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773896"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaiho
 
 Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
@@ -123,6 +123,38 @@ Ha a lap tetején a **hibák** lehetőséget választja, megnyílik a munkafüze
 ### <a name="metric-definitions"></a>Metrika-definíciók
 
 A munkafüzeteket alkotó metrika-definíciók teljes listáját az [elérhető metrikák és jelentéskészítési időközök című cikkben](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)tekintheti meg.
+
+## <a name="view-from-an-azure-cache-for-redis-resource"></a>Megtekintés Azure-gyorsítótárból Redis-erőforráshoz
+
+Az Azure cache Azure Monitor az Redis közvetlenül egy adott erőforrásból való elérése:
+
+1. A Azure Portal válassza az Azure cache lehetőséget a Redis számára.
+
+2. A listáról válassza ki a Redis-erőforráshoz tartozó egyedi Azure cache-t. A figyelés szakaszban válassza az áttekintések (előzetes verzió) lehetőséget.
+
+    ![A menüpontok képernyőképe a piros mezőben Kiemelt "bepillantások (előzetes verzió)" szavakkal](./media/redis-cache-insights-overview/insights.png)
+
+Ezek a nézetek a Azure Monitor szintű munkafüzetből származó Redis-erőforráshoz tartozó Azure cache-erőforrás nevének kiválasztásával is elérhetők.
+
+### <a name="resource-level-overview"></a>Erőforrás szintű áttekintés
+
+A Azure Redis Cache **áttekintő** munkafüzetben számos olyan teljesítménymutató látható, amely hozzáférést biztosít a következőhöz:
+
+- Interaktív teljesítménymutatók, amelyek az Azure cache Redis-teljesítményével kapcsolatos legfontosabb adatokat mutatják be.
+
+- Metrikák és állapotjelző csempék kiemelve a szegmensek teljesítményét, a csatlakoztatott ügyfelek teljes számát és a teljes késést.
+
+![Képernyőkép az áttekintő irányítópultról a CPU teljesítményével, a felhasznált memóriával, a csatlakoztatott ügyfelekkel, a hibákkal, a lejárt kulcsokkal és a kizárt kulcsokkal kapcsolatban](./media/redis-cache-insights-overview/resource-overview.png)
+
+A **teljesítmény** vagy a **műveletek** egyéb lapjainak kiválasztásával megnyílik a megfelelő munkafüzetek.
+
+### <a name="resource-level-performance"></a>Erőforrás-szintű teljesítmény
+
+![Az erőforrás-teljesítményi diagramok képernyőképe](./media/redis-cache-insights-overview/resource-performance.png)
+
+### <a name="resource-level-operations"></a>Erőforrás-szintű műveletek
+
+![A Resource Operations-diagramok képernyőképe](./media/redis-cache-insights-overview/resource-operations.png)
 
 ## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
 

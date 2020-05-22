@@ -7,14 +7,14 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 1a928726665a743cb874a2f8a51ee63fcf64d9ad
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 22b77b79ea3f8c6744c2eba064c52e6d9e29c2b9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007524"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758911"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben
+# <a name="tag-images-in-a-labeling-project-preview"></a>Képek címkézése egy címkézési projektben (előzetes verzió)
 
 Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
@@ -105,7 +105,7 @@ Az Azure csak akkor engedélyezi a **Küldés** gombot, ha legalább egy címké
 Ha a projekt típusa "Object Identification (határolókeret)", akkor meg kell adnia egy vagy több határolókerett a képen, és minden egyes dobozra alkalmaznia kell egy címkét. A képekhez több határolókeret is tartozhat, amelyek mindegyike egyetlen címkével rendelkezik. A **részletes utasítások megtekintésével** megállapíthatja, hogy a projektben több határolókeret van-e használatban.
 
 1. Jelöljön ki egy címkét a létrehozni kívánt határoló mezőhöz.
-1. Jelölje be **a négyzet alakú téglalap** ![alakú eszközt](./media/how-to-label-images/rectangular-box-tool.png) , vagy válassza az "R" lehetőséget.
+1. Jelölje be **a négyzet alakú téglalap** ![ alakú eszközt ](./media/how-to-label-images/rectangular-box-tool.png) , vagy válassza az "R" lehetőséget.
 3. Kattintson és húzza átlósan a célhelyen egy durva határolókeret létrehozásához. A határolókeret módosításához húzza az éleket vagy a sarkokat.
 
 ![A képernyőfelvétel alapszintű határolókeret létrehozását mutatja be.](./media/how-to-label-images/bounding-box-sequence.png)
@@ -114,13 +114,13 @@ A határolókeret törléséhez kattintson a létrehozás után a határolókere
 
 Meglévő határolókeret címkéje nem módosítható. Ha címke-hozzárendelési hibát hajt végre, törölnie kell a határoló mezőt, és létre kell hoznia egy újat a megfelelő címkével.
 
-Alapértelmezés szerint szerkesztheti a meglévő határoló mezőket. A **zárolás/zárolás feloldása** eszköz ![zárolási/feloldási régiói eszköz](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, akkor csak egy új határolókeret alakzatát vagy helyét módosíthatja.
+Alapértelmezés szerint szerkesztheti a meglévő határoló mezőket. A **zárolás/zárolás feloldása** eszköz ![ zárolási/feloldási régiói eszköz ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, akkor csak egy új határolókeret alakzatát vagy helyét módosíthatja.
 
-A meglévő határolókeret módosításához használja a **régiók manipulációs** eszköz ![régiók manipuláció eszközét](./media/how-to-label-images/regions-tool.png) vagy az "M" lehetőséget. Húzza az éleket vagy a sarkokat az alakzat módosításához. A teljes határolókeret húzásához kattintson a belsejére. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
+A meglévő határolókeret módosításához használja a **régiók manipulációs** eszköz ![ régiók manipuláció eszközét ](./media/how-to-label-images/regions-tool.png) vagy az "M" lehetőséget. Húzza az éleket vagy a sarkokat az alakzat módosításához. A teljes határolókeret húzásához kattintson a belsejére. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
 
-A **sablon alapú Box** Tool ![template Box eszköz](./media/how-to-label-images/template-box-tool.png) vagy a "T" használatával több, azonos méretű határolókeret hozható létre. Ha a rendszerkép nem rendelkezik határoló mezőkkel, és aktiválja a sablon alapú mezőket, az eszköz 50-by-50-pixeles mezőket hoz létre. Ha létrehoz egy határoló mezőt, és aktiválja a sablon alapú mezőket, minden új határoló mező a létrehozott utolsó mező mérete lesz. A sablon alapú mezők az elhelyezés után átméretezhetők. A sablon alapú mezők átméretezése csak az adott mezőt méretezi át.
+A **sablon alapú Box** Tool template Box ![ eszköz ](./media/how-to-label-images/template-box-tool.png) vagy a "T" használatával több, azonos méretű határolókeret hozható létre. Ha a rendszerkép nem rendelkezik határoló mezőkkel, és aktiválja a sablon alapú mezőket, az eszköz 50-by-50-pixeles mezőket hoz létre. Ha létrehoz egy határoló mezőt, és aktiválja a sablon alapú mezőket, minden új határoló mező a létrehozott utolsó mező mérete lesz. A sablon alapú mezők az elhelyezés után átméretezhetők. A sablon alapú mezők átméretezése csak az adott mezőt méretezi át.
 
-Az aktuális rendszerkép *összes* határoló mezőjének törléséhez válassza a **minden régió törlése** eszköz ![régiók törlése eszközét.](./media/how-to-label-images/delete-regions-tool.png)
+Az aktuális rendszerkép *összes* határoló mezőjének törléséhez válassza a **minden régió törlése** eszköz régiók törlése ![ eszközét ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Miután létrehozta a képekhez tartozó határoló mezőket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
 

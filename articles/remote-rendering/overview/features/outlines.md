@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 8b52dbe8cd12e51c42677ce37acbd57ad551ec50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f3889a0ba121cb9a3167c1f6ac95f0bed280539
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680829"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759013"
 ---
 # <a name="outline-rendering"></a>Vázlat renderelése
 
@@ -20,27 +20,39 @@ A körvonal tulajdonságai globális beállítások. A tagolást használó öss
 
 ## <a name="parameters-for-outlinesettings"></a>Paraméterek a következőhöz:`OutlineSettings`
 
-Az `OutlineSettings` osztály a globális vázlat tulajdonságaival kapcsolatos beállításokat tartalmazza. A következő tagokat teszi elérhetővé:
+`OutlineSettings`Az osztály a globális vázlat tulajdonságaival kapcsolatos beállításokat tartalmazza. A következő tagokat teszi elérhetővé:
 
 | Paraméter      | Típus    | Leírás                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | A körvonal rajzolásához használt szín Az alfa-rész figyelmen kívül lesz hagyva.         |
 | `PulseRateHz`    | lebegőpontos   | A szerkezeti rezgések másodpercenkénti száma|
-| `PulseIntensity` | lebegőpontos   | A tagolási impulzus hatásának intenzitása A teljes lüktetés esetén 0,0 és 1,0 közötti értéknek kell lennie. Az intenzitás implicit módon beállítja a vázlat minimális opacitását `MinOpacity = 1.0 - PulseIntensity`. |
+| `PulseIntensity` | lebegőpontos   | A tagolási impulzus hatásának intenzitása A teljes lüktetés esetén 0,0 és 1,0 közötti értéknek kell lennie. Az intenzitás implicit módon beállítja a vázlat minimális opacitását `MinOpacity = 1.0 - PulseIntensity` . |
 
-![A (z](./media/outlines.png) ) sárga (balra) `color` és a magenta (Közép) és `pulseIntensity` a 0 – 0,8 (jobb) közötti érték módosításának hatását ismerteti.
+![A (z ](./media/outlines.png) `color` ) sárga (balra) és a magenta (Közép) és a `pulseIntensity` 0 – 0,8 (jobb) közötti érték módosításának hatását ismerteti.
 
 ## <a name="example"></a>Példa
 
 Az alábbi kód egy példát mutat be a szerkezeti paraméterek beállítására az API-n keresztül:
 
-``` cs
+```cs
 void SetOutlineParameters(AzureSession session)
 {
     OutlineSettings outlineSettings = session.Actions.OutlineSettings;
     outlineSettings.Color = new Color4Ub(255, 255, 0, 255);
     outlineSettings.PulseRateHz = 2.0f;
     outlineSettings.PulseIntensity = 0.5f;
+}
+```
+
+```cpp
+void SetOutlineParameters(ApiHandle<AzureSession> session)
+{
+    ApiHandle<OutlineSettings> outlineSettings = *session->Actions()->OutlineSettings();
+    Color4Ub outlineColor;
+    outlineColor.channels = { 255, 255, 0, 255 };
+    outlineSettings->Color(outlineColor);
+    outlineSettings->PulseRateHz(2.0f);
+    outlineSettings->PulseIntensity(0.5f);
 }
 ```
 

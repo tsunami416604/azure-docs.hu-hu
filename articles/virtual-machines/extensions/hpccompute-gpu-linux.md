@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: e7f6653043d46925d6a4c35eedaf81224ea6c36d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415790"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773117"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
 
@@ -72,18 +72,18 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
+| apiVersion | 2015-06-15 | date |
 | közzétevő | Microsoft. HpcCompute | sztring |
-| type | NvidiaGpuDriverLinux | sztring |
+| típus | NvidiaGpuDriverLinux | sztring |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
 
 Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedés nem frissíti a rendszermagot, ha az illesztőprogram telepítéséhez nem szükséges, telepítse a legújabb támogatott illesztőprogramot és a CUDA-eszközkészletet (a megfelelő módon).
 
-| Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
+| Name | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | hamis | igaz, hamis | logikai |
 | driverVersion | NV: GRID-illesztőprogram verziója<br> NC/ND: CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
@@ -99,7 +99,7 @@ Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üz
 
 A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-Az alábbi példa azt feltételezi, hogy a bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép `"resources": []` objektumára kerül.
+Az alábbi példa azt feltételezi, hogy a bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a `"resources": []` virtuális gép objektumára kerül.
 
 ```json
 {
@@ -149,7 +149,7 @@ az vm extension set \
   --version 1.2 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85", \
+    "driverVersion": "9.1.85" \
   }'
 ```
 
