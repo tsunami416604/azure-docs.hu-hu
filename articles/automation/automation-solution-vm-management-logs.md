@@ -1,18 +1,18 @@
 ---
-title: Naplók lekérdezése Start/Stop VMs during off-hours
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a Start/Stop VMs during off-hours-megoldás által generált naplófájlokat Azure Monitorból.
+title: Naplók lekérdezése Azure Automation Start/Stop VMs during off-hours
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor a Start/Stop VMs during off-hours által generált naplófájlok lekérdezéséhez.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864232"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743723"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Naplók lekérdezése Start/Stop VMs during off-hours
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Naplók lekérdezése Start/Stop VMs during off-hours
 
 Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ez a cikk a Azure Monitor [lekérdezéséhez](../azure-monitor/log-query/log-query-overview.md) rendelkezésre álló adatelemzéseket tekinti át.
 
@@ -60,7 +60,7 @@ Ha olyan naplóbeli keresést hajt végre, amely a **JobLogs** vagy a **JobStrea
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
-A következő táblázat a megoldás által összegyűjtött feladatrekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
+A következő táblázat a Start/Stop VMs during off-hours által összegyűjtött feladatokhoz tartozó rekordokat tartalmazza.
 
 |Lekérdezés | Leírás|
 |----------|----------|
@@ -71,4 +71,6 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 ## <a name="next-steps"></a>További lépések
 
-A **Start/Stop VMS During off-hours** megoldás nem tartalmaz előre meghatározott riasztásokat. Tekintse át a [naplók létrehozása](../azure-monitor/platform/alerts-log.md) a Azure monitor használatával című témakört, amelyből megtudhatja, hogyan hozhat létre sikertelen riasztásokat a DevOps vagy működési folyamatainak és eljárásainak támogatásához.
+* [Naplóbeli riasztások létrehozása a Azure Monitor](../azure-monitor/platform/alerts-log.md)
+* [Virtuális gépek leállítása/elindítása munkaidőn kívül](automation-solution-vm-management-config.md)
+* [Start/Stop VMs during off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)

@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069217"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745464"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Az Azure Internet Analyzer hibaelhárítása
 
@@ -25,7 +25,7 @@ Ez a cikk az Internet Analyzer gyakori problémáinak hibaelhárítási lépése
 ## <a name="azure-portal"></a>Azure Portal
 **"A scorecardok szakaszban nem jött létre a kiválasztott szűrő kombinációhoz tartozó scorecard**
 - A scorecardok napi rendszerességgel jönnek létre (minden nap végén, UTC idő szerint).
-- A scorecardok csak akkor jönnek létre, ha a kiválasztott szűrési kombináció (teszt, időtartam, ország stb.) esetében több mint 100 mérés lett összegyűjtve.
+- A scorecardok csak akkor jönnek létre, ha a kiválasztott szűrési kombináció (teszt, időtartam, ország/régió stb.) esetében több mint 100 mérés lett összegyűjtve.
 
 **A "teljes mérési szám" nulla a teszt egyik vagy mindkét végpontja esetében**
 - Az idősorozatok és a mérések száma óránként egyszer történik, ezért meg kell várnia legalább az új mérési adatok megjelenítésének időtartamát.

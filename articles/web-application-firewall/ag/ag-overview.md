@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314360"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747765"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
 
@@ -72,7 +72,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 - Konfigurálható kérelmek méretének korlátja alsó és felső korlátokkal.
 - A kizárási listák lehetővé teszik bizonyos WAF kiértékelését. Gyakori példa Active Directory beszúrt tokenek használata a hitelesítéshez vagy a jelszó mezőkhöz.
 - Egyéni szabályokat hozhat létre az alkalmazások konkrét igényeinek megfelelően.
-- Geo-szűrési forgalom, amely engedélyezi vagy letiltja bizonyos országok számára, hogy hozzáférjenek az alkalmazásaihoz. (előzetes verzió)
+- Geo-szűrési forgalom, amely engedélyezi vagy letiltja bizonyos országok/régiók hozzáférését az alkalmazásaihoz. (előzetes verzió)
 - Az alkalmazásait a robotoktól a bot-elhárítási szabályokkal védekezhet. (előzetes verzió)
 
 ## <a name="waf-policy"></a>WAF szabályzat

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253696"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747653"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
 A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beolvasására szolgáló eszközöket. Ez a metaadatok ezután a kérések és válaszok dinamikus módosítására használhatók. A HTTP-változók használata a következő szabályok motor-funkcióihoz korlátozódik:
@@ -34,13 +34,13 @@ A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beo
 A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 
-| Name (Név) | Változó | Leírás | Mintaérték |
+| Name | Változó | Leírás | Mintaérték |
 | ---- | -------- | ----------- | ------------ |
 | ASN (kérelmező) | % {geo_asnum} | Megadja a kérelmező AS-számát. <br /><br />**Elavult:** % {virt_dst_asnum}. <br />Ez a változó a (z)% {geo_asnum} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | AS15133 |
 | Város (kérelmező) | % {geo_city} | A kérelmező városát jelzi. | Los Angeles |
 | Kontinens (kérelmező) | % {geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Az érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />OC: Ausztrália és Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ez a változó a (z)% {geo_continent} helyett elavult. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| N/A |
 | Cookie értéke | % {cookie_Cookie} | A cookie-kifejezés által azonosított cookie-kulcsnak megfelelő értéket adja vissza. | Minta használata: <br />% {cookie__utma}<br /><br />Minta értéke:<br />111662281.2.10.1222100123 |
-| Ország (kérelmező) | % {geo_country} | Azt jelzi, hogy a kérelmező országa az ország kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ez a változó a (z)% {geo_country} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
+| Ország/régió (kérelmező) | % {geo_country} | Azt jelzi, hogy a kérelmező országa/régiója az ország/régió kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ez a változó a (z)% {geo_country} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
 | Kijelölt piaci térség (kérelmező) | % {geo_dma_code} |A kérelmező adathordozó-piacát jelzi a régió kódja alapján. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.| 745 |
 | HTTP-kérelem módszere | % {request_method} | A HTTP-kérés módszerét jelzi. | GET |
 | HTTP-állapotkód | % {Status} | Megadja a válasz HTTP-állapotkódot. | 200 |
@@ -52,7 +52,7 @@ A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer �
 | Irányítószám (kérelmező) | % {geo_postal_code} | A kérelmező postai irányítószámát jelzi. | 90210 |
 | Lekérdezési karakterlánc található | % {is_args} | A változó értéke attól függően változik, hogy a kérelem tartalmaz-e lekérdezési karakterláncot.<br /><br />-Lekérdezési karakterlánc található:?<br />-Nincs lekérdezési karakterlánc: NULL | ? |
 | A lekérdezési karakterlánc paraméterét találta | % {is_amp} | A változó értéke attól függően változik, hogy a kérelem legalább egy lekérdezési karakterlánc paramétert tartalmaz-e.<br /><br />-Paraméter található: &<br />-Nincsenek paraméterek: NULL | & |
-| Lekérdezési karakterlánc paraméterének értéke | % {arg_&lt;paraméter&gt;} | A &lt;paraméter&gt; kifejezésével azonosított lekérdezési karakterlánc paraméterének megfelelő értéket adja vissza. | Minta használata: <br />% {arg_language}<br /><br />Példa lekérdezési karakterlánc paraméterre: <br />? Language = en<br /><br />Minta értéke: en |
+| Lekérdezési karakterlánc paraméterének értéke | % {arg_ &lt; paraméter &gt; } | A &lt; paraméter kifejezésével azonosított lekérdezési karakterlánc paraméterének megfelelő értéket adja vissza &gt; . | Minta használata: <br />% {arg_language}<br /><br />Példa lekérdezési karakterlánc paraméterre: <br />? Language = en<br /><br />Minta értéke: en |
 | Lekérdezési karakterlánc értéke | % {query_string} | A kérelem URL-címében definiált teljes lekérdezési karakterlánc értéket jelzi. |key1 = val1&key2 = val2&key3 = val3 |
 | Hivatkozó tartomány | % {referring_domain} | A hivatkozói kérelem fejlécében definiált tartományt jelzi. | <www.google.com> |
 | Régió (kérelmező) | % {geo_region} | Megadja a kérelmező régióját (például az államot vagy a tartományt) az alfanumerikus rövidítése alapján. | CA |
@@ -62,8 +62,8 @@ A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer �
 | Kérési séma | % {séma} | A kérelem sémáját jelzi. |http |
 | Kérelem URI-ja (relatív) | % {request_uri} | Megadja a relatív elérési utat, beleértve a lekérdezési karakterláncot is, amely a kérelem URI-ja alapján van meghatározva. | /marketing/foo.js? loggedin = True |
 | Kérelem URI-ja (relatív lekérdezési karakterlánc nélkül) | % {URI} | A kért tartalom relatív elérési útját jelzi. <br /><br/>Legfontosabb információk:<br />– Ez a relatív elérési út kizárja a lekérdezési karakterláncot.<br />– Ez a relatív elérési út az URL-címek újraírását tükrözi. Az URL-cím a következő feltételekkel lesz újraírva:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-URL-Újraírási funkció: Ez a szolgáltatás átírja a kérelem URI-jében definiált relatív elérési utat.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME URL-cím: az ilyen típusú kérést a rendszer a megfelelő CDN URL-címre írja át. |/800001/corigin/rewrittendir/foo.js |
-| Kérés URI-ja | % {kérelem} | Leírja a kérelmet. <br />Szintaxis: &lt;http-&gt; &lt;metódus relatív&gt; &lt;elérési útja http protokoll&gt; | /Marketing/foo.js beolvasása? loggedin = True HTTP/1.1 |
-| Válasz fejlécének értéke | % {resp_&lt;ResponseHeader&gt;} | A &lt;ResponseHeader&gt; kifejezés által azonosított válasz fejlécének megfelelő értéket adja vissza. <br /><br />Ha a válasz fejlécének neve kötőjelet tartalmaz (például felhasználói ügynök), cserélje le aláhúzásra (például User_Agent). | Minta használata:% {resp_Content_Length}<br /><br />Minta értéke: 100 |
+| Kérés URI-ja | % {kérelem} | Leírja a kérelmet. <br />Szintaxis: &lt; http-metódus &gt; &lt; relatív elérési útja &gt; &lt; http protokoll&gt; | /Marketing/foo.js beolvasása? loggedin = True HTTP/1.1 |
+| Válasz fejlécének értéke | % {resp_ &lt; ResponseHeader &gt; } | A ResponseHeader kifejezés által azonosított válasz fejlécének megfelelő értéket adja vissza &lt; &gt; . <br /><br />Ha a válasz fejlécének neve kötőjelet tartalmaz (például felhasználói ügynök), cserélje le aláhúzásra (például User_Agent). | Minta használata:% {resp_Content_Length}<br /><br />Minta értéke: 100 |
 
 ## <a name="usage"></a>Használat
 Az alábbi táblázat a HTTP-változó megadásának megfelelő szintaxisát ismerteti.
@@ -71,9 +71,9 @@ Az alábbi táblázat a HTTP-változó megadásának megfelelő szintaxisát ism
 
 | Szintaxis | Példa | Leírás |
 | ------ | -------- | ---------- |
-| % {&lt;HTTPVariable&gt;} | % {gazdagép} | Használja ezt a szintaxist a megadott &lt;HTTPVariable&gt;megfelelő teljes érték beolvasásához. |
-| % {&lt;HTTPVariableDelimiter&gt;} | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott &lt;HTTPVariableDelimiter&gt;megfelelő teljes értékhez tartozó esetet. |
-| % {&lt;HTTPVariableDelimiterExpression&gt;} | % {Host/= ^ www\.([^\.] +)\.([^\.:] +)/CDN. $2. $3:80} | Használjon reguláris kifejezést a HTTP &lt;-&gt; változó értékének lecserélése, törlése és módosítása HTTPVariableDelimiterExpression. |
+| % { &lt; HTTPVariable &gt; } | % {gazdagép} | Használja ezt a szintaxist a megadott HTTPVariable megfelelő teljes érték beolvasásához &lt; &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {gazdagép,} | Ezzel a szintaxissal állíthatja be a megadott HTTPVariableDelimiter megfelelő teljes értékhez tartozó esetet &lt; &gt; . |
+| % { &lt; HTTPVariableDelimiterExpression &gt; } | % {Host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Használjon reguláris kifejezést a &lt; &gt; http-változó értékének lecserélése, törlése és módosítása HTTPVariableDelimiterExpression. |
 
 A HTTP-változók nevei csak betűket és aláhúzást támogatnak. A nem támogatott karakterek konvertálása aláhúzásra.
 
@@ -160,15 +160,15 @@ Legfontosabb információk:
 
 A következő példa a minta kérelem URL-címére támaszkodik:
 
-https:\//CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
+https: \/ /CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
 
 A következő sztring különböző módszereket mutat be a változók módosításához:
 
-https:\//www%{HTTP_HOST: 3}/Mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
+https: \/ /www%{HTTP_HOST: 3}/mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
 
 A mintául szolgáló kérelem URL-címe alapján a fenti változó manipuláció a következő értéket fogja eredményezni:
 
-https:\//www.mydomain.com/Mobile/marketing/Proposal.htm
+https: \/ /www.mydomain.com/Mobile/marketing/Proposal.htm
 
 
 ### <a name="pattern-removal"></a>Minta eltávolítása

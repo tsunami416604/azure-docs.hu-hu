@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681661"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745934"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -215,7 +215,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. A GeoJSON formátumban fog szerepelni a válasz törzse, és az adatkészlet összes gyűjteményét fogja tartalmazni. Az egyszerűség kedvéért a példa csak a gyűjteményt jeleníti meg `unit` . Ha meg szeretné tekinteni az összes gyűjteményt tartalmazó példát, tekintse meg a [Collections API WFS leírását](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview). Ha többet szeretne megtudni a gyűjteményekről, kattintson a elemen belüli URL-címek bármelyikére `link` .
+3. A GeoJSON formátumban fog szerepelni a válasz törzse, és az adatkészlet összes gyűjteményét fogja tartalmazni. Az egyszerűség kedvéért a példa csak a gyűjteményt jeleníti meg `unit` . Ha meg szeretné tekinteni az összes gyűjteményt tartalmazó példát, tekintse meg a [Collections API WFS leírását](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Ha többet szeretne megtudni a gyűjteményekről, kattintson a elemen belüli URL-címek bármelyikére `link` .
 
     ```json
     {
@@ -285,7 +285,7 @@ A tileset a térképen megjelenített vektoros csempék halmaza. A tilesets a me
 
 1. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
 
-2. Hozzon létre **post** -kérelmet a [create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview)-hoz. Használja a `datasetId` módosítani kívánt állapotot tartalmazó adatkészletet. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
+2. Hozzon létre **post** -kérelmet a [create Stateset API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview)-hoz. Használja a `datasetId` módosítani kívánt állapotot tartalmazó adatkészletet. A kérelemnek a következő URL-címhez hasonlóan kell kinéznie:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

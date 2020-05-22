@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 7ae8a21d4ea9216bea13d47ad5ae41f3bc1c2089
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 80efee18ff7cc927ea9029c11aadcf13ad75781a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82630173"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747603"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-esemény kézbesítése
 A webhookok egyike a Azure Event Grid események fogadásának számos módja. Ha egy új esemény elkészült, Event Grid a szolgáltatás HTTP-kérelmet küld a konfigurált végpontnak a kérelem törzsében lévő eseménnyel.
@@ -31,22 +31,22 @@ Ha bármilyen más típusú végpontot használ, például egy HTTP-triggeren al
 
 2. **Aszinkron kézfogás**: bizonyos esetekben nem lehet szinkron módon visszaadni a ValidationCode. Ha például harmadik féltől származó szolgáltatást (például [`Zapier`](https://zapier.com) vagy [IFTTT](https://ifttt.com/)) használ, az érvényesítési kóddal nem lehet programozott módon válaszolni.
 
-   Az 2018-05-01-es verziótól kezdődően a Event Grid támogatja a manuális ellenőrzési kézfogást. Ha olyan SDK-val vagy eszközzel hoz létre egy esemény-előfizetést, amely az 2018-05-01-es vagy újabb API- `validationUrl` verziót használja, akkor Event Grid egy tulajdonságot küld az előfizetés-ellenőrzési esemény adatrészében. A kézfogás elvégzéséhez keresse meg az adott URL-címet az eseményekhez, és tegye meg a GET-kérést. Használhatja a REST-ügyfelet vagy a webböngészőt is.
+   Az 2018-05-01-es verziótól kezdődően a Event Grid támogatja a manuális ellenőrzési kézfogást. Ha olyan SDK-val vagy eszközzel hoz létre egy esemény-előfizetést, amely az 2018-05-01-es vagy újabb API-verziót használja, akkor Event Grid egy `validationUrl` tulajdonságot küld az előfizetés-ellenőrzési esemény adatrészében. A kézfogás elvégzéséhez keresse meg az adott URL-címet az eseményekhez, és tegye meg a GET-kérést. Használhatja a REST-ügyfelet vagy a webböngészőt is.
 
-   A megadott URL-cím **5 percig**érvényes. Ebben az időszakban az esemény-előfizetés kiépítési állapota a következő: `AwaitingManualAction`. Ha nem hajtja végre a manuális ellenőrzést 5 percen belül, a kiépítési állapot értéke: `Failed`. A manuális ellenőrzés megkezdése előtt újra létre kell hoznia az esemény-előfizetést.
+   A megadott URL-cím **5 percig**érvényes. Ebben az időszakban az esemény-előfizetés kiépítési állapota a következő: `AwaitingManualAction` . Ha nem hajtja végre a manuális ellenőrzést 5 percen belül, a kiépítési állapot értéke: `Failed` . A manuális ellenőrzés megkezdése előtt újra létre kell hoznia az esemény-előfizetést.
 
    Ehhez a hitelesítési mechanizmushoz a webhook-végpontnak egy 200-es HTTP-állapotkódot kell visszaadnia, hogy az tudja, hogy az érvényesítési eseményre vonatkozó bejegyzés el lett fogadva, mielőtt a manuális érvényesítés módba kerül. Más szóval, ha a végpont 200-as értéket ad vissza, de nem ad vissza egy érvényesítési válasz szinkron módon történő visszaadását, a mód a manuális ellenőrzési módba kerül. Ha 5 percen belül lekéri az érvényesítési URL-címet, az ellenőrzési kézfogás sikeresnek tekintendő.
 
 > [!NOTE]
-> Önaláírt tanúsítványok használata nem támogatott az érvényesítéshez. A hitelesítésszolgáltató (CA) által aláírt tanúsítványt használjon helyette.
+> Önaláírt tanúsítványok használata nem támogatott az érvényesítéshez. Ehelyett használjon egy aláírt tanúsítványt egy kereskedelmi hitelesítésszolgáltatótól (CA).
 
 ### <a name="validation-details"></a>Érvényesítés részletei
 
 - Az esemény-előfizetés létrehozása/frissítése során Event Grid egy előfizetés-ellenőrzési eseményt könyvel a célként megadott végpontra.
 - Az esemény egy "AEG-Event-Type: SubscriptionValidation" fejléc-értéket tartalmaz.
 - Az esemény törzsének ugyanaz a sémája, mint a többi Event Grid eseménynek.
-- Az esemény eventType tulajdonsága `Microsoft.EventGrid.SubscriptionValidationEvent`.
-- Az esemény adattulajdonsága egy véletlenszerűen generált `validationCode` karakterlánccal rendelkező tulajdonságot tartalmaz. Például: "validationCode: acb13...".
+- Az esemény eventType tulajdonsága `Microsoft.EventGrid.SubscriptionValidationEvent` .
+- Az esemény adattulajdonsága egy `validationCode` véletlenszerűen generált karakterlánccal rendelkező tulajdonságot tartalmaz. Például: "validationCode: acb13...".
 - Az eseményhez tartozik egy `validationUrl` tulajdonság is, amely egy URL-címet tartalmaz az előfizetés manuális érvényesítéséhez.
 - A tömb csak az érvényesítési eseményt tartalmazza. A többi eseményt külön kérelemben küldi el a rendszer az érvényesítési kód visszhangjának visszalépése után.
 - A EventGrid Adatsík SDK-k az előfizetés-ellenőrzési esemény és az előfizetés-ellenőrzési válasznak megfelelő osztályokkal rendelkeznek.

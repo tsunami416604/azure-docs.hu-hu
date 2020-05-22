@@ -1,22 +1,22 @@
 ---
 title: Azure Automation Update Management áttekintése
-description: A Windows és Linux rendszerű gépek frissítéseit kezelő Update Management funkció áttekintése.
+description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 05/20/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714763"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745295"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
 Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-gépek operációsrendszer-frissítéseinek kezeléséhez Update Managementt használhat Azure Automation. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
 
-A virtuális gépek (VM-EK) Update Management a következő módszerekkel engedélyezhető:
+A virtuális gépek Update Management a következő módokon engedélyezhető:
 
 * Egy vagy több Azure-gép [Azure Automation-fiókjából](automation-onboard-solutions-from-automation-account.md) .
 * Manuálisan nem Azure-beli gépek esetén.
@@ -31,7 +31,7 @@ A virtuális gépek (VM-EK) Update Management a következő módszerekkel enged�
 > [!NOTE]
 > A Update Management konfigurált gépek nem használhatók a Azure Automation egyéni parancsfájljainak futtatásához. Ez a számítógép csak a Microsoft által aláírt frissítési parancsfájlt futtathatja. 
 
-## <a name="update-management-overview"></a>A frissítéskezelés áttekintése
+## <a name="about-update-management"></a>Tudnivalók Update Management
 
 A Update Management által felügyelt gépek a következő konfigurációkat használják az értékelés végrehajtásához és a központi telepítések frissítéséhez:
 
@@ -44,7 +44,7 @@ Az alábbi ábra azt szemlélteti, hogy a Update Management hogyan vizsgálja é
 
 ![Update Management munkafolyamat](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Az Update Management ahhoz is használható, hogy ugyanabban a bérlőben több előfizetésben készítse elő natív módon a gépeket.
+A Update Management használatával natív módon telepíthet gépeket több előfizetésben ugyanahhoz a bérlőhöz.
 
 A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás megjelenjen a Linux rendszerű gépek értékeléséhez. A Windows rendszerű gépek esetében 12 – 15 órát vesz igénybe, hogy a javítás megjelenjen az értékelés után.
 
@@ -74,7 +74,7 @@ Ha a Update Management több Log Analytics munkaterületen (más néven többhel
 
 ### <a name="supported-client-types"></a>Támogatott ügyfelek típusai
 
-A következő táblázat felsorolja a frissítési felmérések támogatott operációs rendszereit. A javításhoz hibrid Runbook-feldolgozóra van szükség. A hibrid Runbook-feldolgozói követelményekkel kapcsolatos információkért lásd: [Windows Hybrid Runbook Worker üzembe helyezése](automation-windows-hrw-install.md) és [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md).
+A következő táblázat felsorolja a frissítési felmérések támogatott operációs rendszereit. A javításhoz hibrid Runbook-feldolgozóra van szükség. A hibrid Runbook-feldolgozói követelményekkel kapcsolatos információkért lásd: [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) üzembe helyezése és [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md).
 
 > [!NOTE]
 > A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott, az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblázatban](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)láthatóak szerint. 
@@ -89,8 +89,7 @@ A következő táblázat felsorolja a frissítési felmérések támogatott oper
 |Ubuntu 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)      |A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.         |
 
 > [!NOTE]
-> Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképre. A frissítéseket növekményes módon kell ütemeznie, hogy a virtuálisgép-példányok ne legyenek egyszerre frissítve.
-> A virtuálisgép-méretezési csoportok csomópontjait a [nem Azure-beli számítógép](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)bevezetésének lépéseit követve veheti fel.
+> Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképre. A frissítéseket növekményes módon kell ütemeznie, hogy a virtuálisgép-példányok ne legyenek egyszerre frissítve. A virtuálisgép-méretezési csoportok csomópontjait a [nem Azure-beli gép hozzáadása a Change Tracking és a leltárhoz](automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)című szakaszban ismertetett lépéseket követve veheti fel.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfelek típusai
 
@@ -98,11 +97,9 @@ A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows-ügyfél     | Az ügyféloldali operációs rendszerek (például a Windows 7 és a Windows 10) nem támogatottak.<br> Az Azure Windows Virtual Desktop (WVD) esetében ajánlott módszer<br> a frissítések kezeléséhez [Windows Update a vállalati](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) Windows 10-es ügyfélszámítógépek javításának felügyeletére. |
+|Windows-ügyfél     | Az ügyféloldali operációs rendszerek (például a Windows 7 és a Windows 10) nem támogatottak.        |
 |Windows Server 2016 Nano Server     | Nem támogatott.       |
 |Azure Kubernetes szolgáltatási csomópontok | Nem támogatott. Használja a [biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)](../aks/node-updates-kured.md) című témakörben ismertetett javítási folyamatot|
-
-
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 
@@ -112,7 +109,7 @@ Az alábbi információk az operációs rendszerre jellemző ügyfelekre vonatko
 
 A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzáférést igényelnek a Microsoft Updatehoz. További információ a Windows rendszerű Log Analytics ügynök telepítéséről: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../log-analytics/log-analytics-windows-agent.md).
 
-A Update Management a Microsoft Endpoint Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Configuration Manager integrálása Update Management](updatemgmt-mecmintegration.md#configuration)használatával. A Windows rendszerhez készült [log Analytics ügynök](../azure-monitor/platform/agent-windows.md) szükséges a Configuration Manager-környezetben található helyek által felügyelt Windows-kiszolgálókhoz. 
+A Update Management a Microsoft Endpoint Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Update Management integrálása a Windows Endpoint Configuration Manager](updatemgmt-mecmintegration.md)használatával. A Windows rendszerhez készült [log Analytics ügynök](../azure-monitor/platform/agent-windows.md) szükséges a Configuration Manager-környezetben található helyek által felügyelt Windows-kiszolgálókhoz. 
 
 Alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett Windows-alapú virtuális gépek a Windows Update szolgáltatásból származó automatikus frissítések fogadására vannak beállítva. Ez a viselkedés nem változik, ha Windows rendszerű virtuális gépeket ad hozzá a munkaterülethez. Ha nem kezeli aktívan a frissítéseket Update Management használatával, a rendszer az alapértelmezett viselkedést alkalmazza (a frissítések automatikus érvénybe lépéséhez).
 
@@ -239,7 +236,7 @@ A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepí
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Update Management integrálása Configuration Manager
 
-A Microsoft Endpoint Configuration Managerban a számítógépek, kiszolgálók és mobileszközök kezeléséhez befektetett ügyfelek is a Configuration Manager erősségét és érettségét használják a szoftverfrissítések kezeléséhez. Ha szeretné megtudni, hogyan integrálhatja a Update Managementt a Configuration Managerrel, tekintse meg a [Configuration Manager integrálása a Update Managementsal](updatemgmt-mecmintegration.md)
+A Microsoft Endpoint Configuration Managerban a számítógépek, kiszolgálók és mobileszközök kezeléséhez befektetett ügyfelek is a Configuration Manager erősségét és érettségét használják a szoftverfrissítések kezeléséhez. A Update Management és a Configuration Manager integrálásával kapcsolatban lásd: [a Update Management integrálása a Windows-végponttal Configuration Manager](updatemgmt-mecmintegration.md).
 
 ## <a name="third-party-updates-on-windows"></a>Harmadik féltől származó frissítések Windows rendszeren
 
@@ -251,10 +248,10 @@ Az Azure [Resource Manager-sablonok](automation-update-management-deploy-templat
 
 Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a felügyelni kívánt gépeket:
 
-* [Egy virtuális gépről](automation-onboard-solutions-from-vm.md).
-* [Több gép tallózása](automation-onboard-solutions-from-browse.md).
-* [Egy Azure Automation-fiókból](automation-onboard-solutions.md).
+* [Virtuális gépről](automation-onboard-solutions-from-vm.md)
+* [Több gép tallózása](automation-onboard-solutions-from-browse.md)
+* [Azure Automation-fiókból](automation-onboard-solutions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a Azure Automation [GYIK](automation-faq.md) -t a Update Managementekkel kapcsolatos gyakori kérdések áttekintéséhez.
+[Azure Automation gyakori kérdések](automation-faq.md)

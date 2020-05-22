@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333844"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746042"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Az oktatóanyag a következőket ismerteti:
     
 > [!div class="checklist"]
 > * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
@@ -37,7 +37,7 @@ Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.a
 
 Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
-## <a name="design"></a>Kialakítás
+## <a name="design"></a>Tervezés
 
 A kód beugrása előtt érdemes megkezdeni a kialakítást. Az áruház lokátora lehet olyan egyszerű vagy összetett, amennyire csak szeretné. Ebben az oktatóanyagban egy egyszerű tároló-lokátort hozunk létre. Néhány tippet is tartalmaz, amely segítséget nyújt bizonyos funkciók kibővítéséhez, ha úgy dönt, hogy a lehetőséget választja. A contoso Coffee nevű kitalált vállalathoz hozzunk létre egy áruházbeli lokátort. Az alábbi ábrán az oktatóanyagban felépített áruházi lokátor általános elrendezését láthatja:
 
@@ -58,7 +58,7 @@ A drótváz egy meglehetősen egyszerű alkalmazást mutat be. Az alkalmazás ta
 * A lapelrendezés az eszköz képernyőjének szélessége alapján állítható be.  
 * A fejlécben az áruház emblémája látható.  
 * A felhasználó keresési és keresési gomb használatával kereshet meg egy helyet, például egy cím, egy irányítószám vagy egy város. 
-* Ha `keypress` a felhasználó megnyomja az ENTER billentyűt, a keresőmezőbe felvett esemény elindítja a keresést. Ez a funkció gyakran megtekinthető, de jobb felhasználói élményt nyújt.
+* `keypress`Ha a felhasználó megnyomja az ENTER billentyűt, a keresőmezőbe felvett esemény elindítja a keresést. Ez a funkció gyakran megtekinthető, de jobb felhasználói élményt nyújt.
 * A Térkép mozgatásakor a rendszer kiszámítja az egyes helyek távolságát a Térkép közepétől. A rendszer frissíti az eredmények listáját a Térkép tetején található legközelebbi hely megjelenítéséhez.  
 * Ha kijelöl egy eredményt az eredmények listájában, a Térkép középpontba kerül a kijelölt helyen, és a helyhez tartozó információk egy előugró ablakban jelennek meg.  
 * Egy adott hely kiválasztása a térképen is elindítja az előugró ablakot.
@@ -115,7 +115,7 @@ A projekt létrehozásához használhatja a [Visual studiót](https://visualstud
 
 A felhasználói felület létrehozásához vegyen fel egy kódot az *index. html fájlba*:
 
-1. Adja hozzá a `meta` következő címkéket az `head` *index. html*fájlhoz. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó `meta` címke pedig egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
+1. Adja hozzá a következő `meta` címkéket az `head` *index. html*fájlhoz. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
 
     ```HTML
     <meta charset="utf-8">
@@ -152,7 +152,7 @@ A felhasználói felület létrehozásához vegyen fel egy kódot az *index. htm
     </header>
     ```
 
-1. Adjon hozzá `main` egy címkét, és hozzon létre egy szövegmezőt és egy keresési gombot tartalmazó keresési panelt. Továbbá adjon hozzá `div` hivatkozásokat a térképhez, a lista panelhez és a saját hely GPS gombhoz.
+1. Adjon hozzá egy `main` címkét, és hozzon létre egy szövegmezőt és egy keresési gombot tartalmazó keresési panelt. Továbbá adjon hozzá `div` hivatkozásokat a térképhez, a lista panelhez és a saját hely GPS gombhoz.
 
     ```HTML
     <main>
@@ -397,12 +397,12 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
 
 1. Adja hozzá a kódot az *index. js*fájlhoz. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
 
-   Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország ISO 2 értékének egy tömbjét `countrySet` a keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
+   Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország/régió ISO 2 értékének egy tömbjét a `countrySet` keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
    A keresés befejezése után végezze el az első eredményt, és állítsa be a Térkép kamerát ezen a területen. Amikor a felhasználó kiválasztja a saját hely gombot, kérje le a felhasználó helyét a HTML5 Térinformatikai API használatával. Ez az API a böngészőben van beépítve. Ezt követően a térképet középpontba kell lépnie a helyükön.  
 
    > [!Tip]
-   > Amikor felugró ablakokat használ, érdemes egyetlen `Popup` példányt létrehoznia, és újra felhasználni a példányt a tartalom és a pozíció frissítésével. A kódhoz `Popup`hozzáadott minden példányhoz több Dom-elemet adnak hozzá a laphoz. Minél több DOM-elem van egy oldalon, annál több dolog szükséges a böngésző nyomon követésében. Ha túl sok elem van, előfordulhat, hogy a böngésző lassú lesz.
+   > Amikor felugró ablakokat használ, érdemes egyetlen példányt létrehoznia, `Popup` és újra felhasználni a példányt a tartalom és a pozíció frissítésével. A `Popup` kódhoz hozzáadott minden példányhoz több Dom-elemet adnak hozzá a laphoz. Minél több DOM-elem van egy oldalon, annál több dolog szükséges a böngésző nyomon követésében. Ha túl sok elem van, előfordulhat, hogy a böngésző lassú lesz.
 
     ```JavaScript
     function initialize() {
@@ -453,7 +453,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
         });
     }
 
-    //Create an array of country ISO 2 values to limit searches to. 
+    //Create an array of country/region ISO 2 values to limit searches to. 
     var countrySet = ['US', 'CA', 'GB', 'FR','DE','IT','ES','NL','DK'];
 
     function performSearch() {
@@ -461,7 +461,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
 
         //Perform a fuzzy search on the users query.
         searchURL.searchFuzzy(atlas.service.Aborter.timeout(3000), query, {
-            //Pass in the array of country ISO2 for which we want to limit the search to.
+            //Pass in the array of country/region ISO2 for which we want to limit the search to.
             countrySet: countrySet
         }).then(results => {
             //Parse the response into GeoJSON so that the map can understand.
@@ -510,7 +510,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     window.onload = initialize;
     ```
 
-1. A Térkép `ready` esemény-figyelőben adjon hozzá egy nagyítás vezérlőelemet és egy HTML-jelölőt a keresési terület középpontjának megjelenítéséhez.
+1. A Térkép esemény- `ready` figyelőben adjon hozzá egy nagyítás vezérlőelemet és egy HTML-jelölőt a keresési terület középpontjának megjelenítéséhez.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -527,7 +527,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     map.markers.add(centerMarker);
     ```
 
-1. A Térkép `ready` esemény-figyelőben adjon hozzá egy adatforrást. Ezután hívja meg az adatkészlet betöltését és elemzését. Fürtözés engedélyezése az adatforráson. Az adatforrás-csoportok fürtözése a fürtben egymással átfedésben lévő pontokra mutat. A fürtök különálló pontokra vannak osztva, ahogy a felhasználó nagyítja. Ez a viselkedés jobb felhasználói élményt nyújt, és javítja a teljesítményt.
+1. A Térkép esemény- `ready` figyelőben adjon hozzá egy adatforrást. Ezután hívja meg az adatkészlet betöltését és elemzését. Fürtözés engedélyezése az adatforráson. Az adatforrás-csoportok fürtözése a fürtben egymással átfedésben lévő pontokra mutat. A fürtök különálló pontokra vannak osztva, ahogy a felhasználó nagyítja. Ez a viselkedés jobb felhasználói élményt nyújt, és javítja a teljesítményt.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -542,9 +542,9 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     loadStoreData();
     ```
 
-1. Miután betöltötte az adatkészletet a `ready` Térkép esemény-figyelőben, Definiáljon egy réteget az adat megjelenítéséhez. A fürtözött adatpontok megjelenítéséhez buborék réteget kell használni. A szimbólum réteg az egyes fürtökben lévő pontok számát jeleníti meg a buborék réteg felett. A második szimbólum réteg egyéni ikont jelenít meg a térképen lévő egyes helyszínekhez.
+1. Miután betöltötte az adatkészletet a Térkép `ready` esemény-figyelőben, Definiáljon egy réteget az adat megjelenítéséhez. A fürtözött adatpontok megjelenítéséhez buborék réteget kell használni. A szimbólum réteg az egyes fürtökben lévő pontok számát jeleníti meg a buborék réteg felett. A második szimbólum réteg egyéni ikont jelenít meg a térképen lévő egyes helyszínekhez.
 
-   A `mouseover` buborék `mouseout` -és ikon-rétegek hozzáadásával és eseményeivel megváltoztathatja az egérmutatót, amikor a felhasználó egy fürt vagy ikon fölé viszi a térképet. Adjon hozzá `click` egy eseményt a fürt buborék rétegéhez. Ez `click` az esemény két szinten nagyítja a térképet, és egy fürtön keresztül középre igazítja a leképezést, amikor a felhasználó kiválaszt egy fürtöt. Adjon hozzá `click` egy eseményt az ikon réteghez. Ez `click` az esemény egy olyan előugró ablakot jelenít meg, amely a kávézó részleteit mutatja be, amikor a felhasználó egy adott hely ikonját választja ki. Adjon hozzá egy eseményt a térképhez, és figyelje, hogy mikor fejeződik be a Térkép. Ha ez az esemény következik be, frissítse a lista panel elemeit.  
+   A `mouseover` `mouseout` buborék-és ikon-rétegek hozzáadásával és eseményeivel megváltoztathatja az egérmutatót, amikor a felhasználó egy fürt vagy ikon fölé viszi a térképet. Adjon hozzá egy `click` eseményt a fürt buborék rétegéhez. Ez az `click` esemény két szinten nagyítja a térképet, és egy fürtön keresztül középre igazítja a leképezést, amikor a felhasználó kiválaszt egy fürtöt. Adjon hozzá egy `click` eseményt az ikon réteghez. Ez az `click` esemény egy olyan előugró ablakot jelenít meg, amely a kávézó részleteit mutatja be, amikor a felhasználó egy adott hely ikonját választja ki. Adjon hozzá egy eseményt a térképhez, és figyelje, hogy mikor fejeződik be a Térkép. Ha ez az esemény következik be, frissítse a lista panel elemeit.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.

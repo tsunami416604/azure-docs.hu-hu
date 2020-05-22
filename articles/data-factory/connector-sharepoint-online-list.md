@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 02b88ae0fa0473ad3d11346f0443582d80e75f5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691130"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745218"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,8 +55,8 @@ A SharePoint-lista online összekötője egyszerű szolgáltatásnév használat
     1. Nyissa meg a SharePoint Online-webhely hivatkozást, például: `https://[your_site_url]/_layouts/15/appinv.aspx` (a bérlő és a hely neve helyett).
     2. Keresse meg a regisztrált alkalmazás AZONOSÍTÓját, töltse ki az üres mezőket, majd kattintson a "létrehozás" gombra.
 
-        - Alkalmazás tartománya: localhost.com
-        - Átirányítási URL-cím:https://www.localhost.com
+        - Alkalmazás tartománya:`localhost.com`
+        - Átirányítási URL-cím:`https://www.localhost.com`
         - Engedély kérésének XML-fájlja:
 
         ```xml
@@ -112,7 +112,7 @@ A SharePoint Online-listák társított szolgáltatásai a következő tulajdons
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md). A következő szakasz az SAP-táblázat adatkészletében támogatott tulajdonságok listáját tartalmazza.
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource**értékre kell állítani. | Igen |
 | listName | A SharePoint Online-lista neve. | Igen |
@@ -145,7 +145,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok SharePoint Online-listáról történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource**értékre kell állítani. | Igen |
 | lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |

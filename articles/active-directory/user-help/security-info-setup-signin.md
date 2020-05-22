@@ -8,15 +8,15 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454440"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747275"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Biztonsági adatok beállítása bejelentkezési kérésből
 
@@ -30,7 +30,7 @@ Ez a kérdés csak akkor jelenik meg, ha nem állította be a szervezete által 
 
 A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
 
-| Módszer | Alkalmazási cél |
+| Metódus | Alkalmazási cél |
 | ------ | -------- |
 | Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
 | SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
@@ -136,7 +136,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
 1. Miután befejezte a varázsló előző szakaszait, kattintson a **Tovább gombra** , és fejezze be az **alkalmazás jelszavának** szakaszát.
 
-2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010`, majd kattintson a **tovább**gombra.
+2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010` , majd kattintson a **tovább**gombra.
 
     ![Adja hozzá az alkalmazás jelszava nevet a varázslóban.](media/security-info/app-password-app-password.png)
 

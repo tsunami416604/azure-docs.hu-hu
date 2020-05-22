@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165b84ee6b124d3f6a04c8db177ef17e32784ff9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648002"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757415"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication szolgáltatásai és licencei
 
@@ -32,9 +32,9 @@ Az Azure Multi-Factor Authentication a szervezet igényeitől függően különb
 | Ha a felhasználó a | Képességek és használati esetek |
 | --- | --- |
 | EMS vagy Microsoft 365 E3 és E5 | Az EMS E3 vagy Microsoft 365 E3 (amely magában foglalja az EMS és az Office 365) prémium szintű Azure AD P1-et is tartalmaz. Az EMS E5 vagy Microsoft 365 E5 prémium szintű Azure AD P2-t tartalmazza. A következő szakaszokban ismertetett feltételes hozzáférési funkciók használatával többtényezős hitelesítést biztosíthat a felhasználóknak. |
-| Prémium szintű Azure AD P1 | Az [Azure ad feltételes hozzáférés](../conditional-access/overview.md) használatával a felhasználók a többtényezős hitelesítésre való rákérdezéshez bizonyos esetekben vagy eseményeknél, az üzleti igényeknek megfelelően. |
+| Prémium szintű Azure AD P1 | Az [Azure ad feltételes hozzáférés](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) használatával a felhasználók a többtényezős hitelesítésre való rákérdezéshez bizonyos esetekben vagy eseményeknél, az üzleti igényeknek megfelelően. |
 | Prémium szintű Azure AD P2 | Biztosítja a legerősebb biztonsági helyzetet és a jobb felhasználói élményt. [Kockázatalapú feltételes hozzáférést biztosít](../conditional-access/howto-conditional-access-policy-risk.md) a prémium szintű Azure ad P1-funkciókhoz, amelyek alkalmazkodnak a felhasználói mintákhoz, és lekicsinyítik a többtényezős hitelesítési kéréseket. |
-| Office 365 Business Premium, E3 vagy E5 | Az Azure Multi-Factor Authentication az összes felhasználó számára engedélyezve van vagy le van tiltva az összes bejelentkezési esemény esetében. Nincs lehetőség a többtényezős hitelesítés engedélyezésére a felhasználók egy részhalmaza számára, vagy csak bizonyos esetekben. A felügyelet az Office 365-portálon keresztül történik. A jobb felhasználói élmény érdekében frissítsen prémium szintű Azure AD P1-re vagy P2-re, és használja a feltételes hozzáférést. További információ: [az Office 365-erőforrások védelme többtényezős hitelesítéssel](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
+| Office 365 Business Premium, E3 vagy E5 | Az Azure Multi-Factor Authentication [felhasználónkénti alapon engedélyezhető](howto-mfa-userstates.md), vagy az összes felhasználó számára engedélyezhető vagy letiltható az összes bejelentkezési esemény esetén, a biztonsági alapértékek használatával. Az Azure Multi-Factor Authentication kezelése az Office 365 portálon keresztül történik. A jobb felhasználói élmény érdekében frissítsen prémium szintű Azure AD P1-re vagy P2-re, és használja a feltételes hozzáférést. További információ: [az Office 365-erőforrások védelme többtényezős hitelesítéssel](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
 | Ingyenes Azure AD | A [biztonsági alapértelmezett beállításokkal](../fundamentals/concept-fundamentals-security-defaults.md) engedélyezheti a többtényezős hitelesítést az összes felhasználó számára, valahányszor hitelesítési kérés történik. Nem rendelkezik az engedélyezett felhasználók vagy forgatókönyvek részletes szabályozásával, de ez további biztonsági lépést is biztosít.<br /> Még akkor is, ha a biztonsági alapértékek nem használják a többtényezős hitelesítést mindenki számára, az *Azure ad globális rendszergazdai* szerepkörrel rendelkező felhasználók úgy konfigurálhatók, hogy a többtényezős hitelesítést használják. Az ingyenes szint ezen funkciója biztosítja, hogy a kritikus rendszergazdai fiókok védelmét a multi-Factor Authentication védi. |
 
 ## <a name="feature-comparison-of-versions"></a>A verziók összehasonlítása
@@ -86,4 +86,6 @@ Ha nem szeretné engedélyezni az Azure-Multi-Factor Authentication az összes f
 
 ## <a name="next-steps"></a>További lépések
 
-A költségekkel kapcsolatos további információkért lásd: az [Azure multi-Factor Authentication díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* A költségekkel kapcsolatos további információkért lásd: az [Azure multi-Factor Authentication díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* [Mi a feltételes hozzáférés?](../conditional-access/overview.md)
+

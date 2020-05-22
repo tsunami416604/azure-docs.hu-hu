@@ -3,12 +3,12 @@ title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonság
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652110"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757976"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -142,14 +142,23 @@ Az összes logikai kötet, név és elérési út listázása egy kötet csoport
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+A ```lvdisplay``` parancs azt is megjeleníti, hogy a kötet csoportok aktívak-e. Ha a kötet csoport inaktívként van megjelölve, a csatlakoztatáshoz újra kell aktiválni. Ha a mennyiségi csoport inaktívként jelenik meg, a következő parancs használatával aktiválja.
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+Ha a kötet csoport neve aktív, futtassa a ```lvdisplay``` parancsot még egyszer az összes releváns attribútum megjelenítéséhez.
 
 A logikai kötetek csatlakoztatása a választott útvonalhoz:
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID-tömbök esetén

@@ -4,12 +4,12 @@ description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azur
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132393"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744267"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -37,7 +37,7 @@ A Azure Portal a műveletnapló riasztási szabályainak létrehozására és m�
 
 Használja az alábbi eljárást.
 
-1. A Azure Portal válassza a**riasztások** **figyelése** > lehetőséget.
+1. A Azure Portal válassza a **Monitor**  >  **riasztások**figyelése lehetőséget.
 2. A **riasztások** ablak bal felső sarkában válassza az **új riasztási szabály** lehetőséget.
 
      ![Új riasztási szabály](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -48,7 +48,7 @@ Használja az alábbi eljárást.
 
 3. A **riasztási feltétel meghatározása**területen adja meg a következő információkat, majd válassza a **kész**lehetőséget:
 
-   - **Riasztási cél:** Az új riasztás céljának megtekintéséhez és kiválasztásához használja az **előfizetés** / szerinti szűrés az**erőforrástípus alapján értéket**. Válassza ki az erőforrást vagy erőforráscsoportot a megjelenő listából.
+   - **Riasztási cél:** Az új riasztás céljának megtekintéséhez és kiválasztásához használja az **előfizetés szerinti**szűrés az  /  **erőforrástípus alapján értéket**. Válassza ki az erőforrást vagy erőforráscsoportot a megjelenő listából.
 
      > [!NOTE]
      > 
@@ -67,6 +67,11 @@ Használja az alábbi eljárást.
      **Feltételek hozzáadása képernyő**
 
      ![Feltételek hozzáadása](media/alerts-activity-log/add-criteria.png)
+     
+     > [!NOTE]
+     > 
+     >  Ahhoz, hogy magas színvonalú és hatékony szabályok legyenek, legalább egy feltételt fel kell vennie az "összes rendszergazda" jellel való szabályokra. 
+     > A riasztás definíciójának részeként ki kell töltenie a legördülő lista egyikét: "Event level", "status" vagy "kezdeményező", valamint azzal, hogy a szabály konkrétabb lesz.
 
      - **Előzmények időpontja**: a kiválasztott művelethez rendelkezésre álló események az elmúlt 6, 12 vagy 24 órában, vagy az elmúlt héten láthatók.
 
@@ -103,7 +108,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Megtekintés és kezelés a Azure Portal
 
-1. A Azure Portal válassza a**riasztások** **figyelése** > lehetőséget. Az ablak bal felső sarkában válassza a **riasztási szabályok kezelése** lehetőséget.
+1. A Azure Portal válassza a **Monitor**  >  **riasztások**figyelése lehetőséget. Az ablak bal felső sarkában válassza a **riasztási szabályok kezelése** lehetőséget.
 
     ![Riasztási szabályok kezelése](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -127,7 +132,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-A műveletnapló riasztási szabályának Azure Resource Manager sablon használatával történő létrehozásához létre kell hoznia egy típusú `microsoft.insights/activityLogAlerts`erőforrást. Ezután töltse ki az összes kapcsolódó tulajdonságot. Az alábbi sablon egy műveletnapló riasztási szabályt hoz létre:
+A műveletnapló riasztási szabályának Azure Resource Manager sablon használatával történő létrehozásához létre kell hoznia egy típusú erőforrást `microsoft.insights/activityLogAlerts` . Ezután töltse ki az összes kapcsolódó tulajdonságot. Az alábbi sablon egy műveletnapló riasztási szabályt hoz létre:
 
 ```json
 {

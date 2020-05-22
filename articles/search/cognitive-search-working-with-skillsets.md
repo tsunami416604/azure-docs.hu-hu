@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652746"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744789"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Készségkészlet-fogalmak és-összeállítás az Azure Cognitive Search
 
@@ -26,9 +26,9 @@ A készségkészlet az Azure Cognitive Search újrafelhasználható erőforrása
 
 A készségkészlet három tulajdonsága van:
 
-+   ```skills```, a képességek rendezetlen gyűjteménye, amelyhez a platform meghatározza a végrehajtás sorrendjét az egyes képességekhez szükséges bemenetek alapján
-+   ```cognitiveServices```, a kognitív szolgáltatásoknak a meghívott kognitív képességek számlázásához szükséges kulcsa
-+   ```knowledgeStore```, azt a Storage-fiókot, ahol a dúsított dokumentumokat kitervezik
++    ```skills```, a képességek rendezetlen gyűjteménye, amelyhez a platform meghatározza a végrehajtás sorrendjét az egyes képességekhez szükséges bemenetek alapján
++    ```cognitiveServices```, a kognitív szolgáltatásoknak a meghívott kognitív képességek számlázásához szükséges kulcsa
++    ```knowledgeStore```, azt a Storage-fiókot, ahol a dúsított dokumentumokat kitervezik
 
 
 
@@ -54,14 +54,14 @@ A dokumentum további részében feltételezzük, hogy a [Hotel Reviews példáv
 
 ### <a name="context"></a>Környezet
 Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A következőket:
-+   A képzettség végrehajtásának száma a kiválasztott csomópontok alapján. A gyűjtemény típusú környezeti értékek esetében a végén a Hozzáadás ```/*``` után a rendszer egyszer meghívja a képességet a gyűjtemény minden példánya számára. 
-+   Ahol a dúsítási fában a rendszer felveszi a képzettségi kimeneteket. A rendszer mindig hozzáadja a kimeneteket a fában a környezeti csomópont gyermekeiként. 
-+   A bemenetek alakja. Többszintű gyűjtemények esetén a szülő-gyűjtemény kontextusának beállítása hatással lesz a szakértelem bemenetének alakzatára. Ha például van egy alkoholtartalom-növelési fája az országok listájával, a rendszer minden olyan állapotot tartalmaz, amely tartalmazza a ZipCodes tartalmazó listát.
++    A képzettség végrehajtásának száma a kiválasztott csomópontok alapján. A gyűjtemény típusú környezeti értékek esetében a végén a Hozzáadás ```/*``` után a rendszer egyszer meghívja a képességet a gyűjtemény minden példánya számára. 
++    Ahol a dúsítási fában a rendszer felveszi a képzettségi kimeneteket. A rendszer mindig hozzáadja a kimeneteket a fában a környezeti csomópont gyermekeiként. 
++    A bemenetek alakja. Többszintű gyűjtemények esetén a szülő-gyűjtemény kontextusának beállítása hatással lesz a szakértelem bemenetének alakzatára. Ha például az országok/régiók listáját tartalmazó dúsítási fában van egy lista, a ZipCodes-listát tartalmazó állapotok listája.
 
-|Környezet|Bevitel|Bemenet alakja|Szaktudás meghívása|
+|Környezet|Input (Bemenet)|Bemenet alakja|Szaktudás meghívása|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az ország összes ZipCodes listája |Országonként egyszer |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az állapotban lévő ZipCodes listája | Az ország és az állapot kombinációja után|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az ország/régió összes ZipCodes listája |Országonként/régiónként |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az állapotban lévő ZipCodes listája | Az ország/régió és az állapot kombinációja után|
 
 ### <a name="sourcecontext"></a>SourceContext
 

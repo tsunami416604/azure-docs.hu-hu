@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76961087"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744304"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Egyéni Geomatch-szabályok (előzetes verzió)
 
 Az egyéni szabályok lehetővé teszik a testreszabott szabályok létrehozását az alkalmazások és a biztonsági szabályzatok pontos igényeinek megfelelően. Mostantól az ország/régió alapján korlátozhatja a webalkalmazásokhoz való hozzáférést. Az összes egyéni szabályhoz hasonlóan ez a logika más szabályokkal is felhasználható az alkalmazás igényeinek megfelelően.
 
-A Geo-szűrés egyéni szabály létrehozásához egyszerűen válassza a *földrajzi hely* elemet a egyezés típusaként, majd válassza ki az alkalmazásból engedélyezni vagy letiltani kívánt országot vagy országokat. További információkért lásd: [Egyéni szabályok létrehozása a PowerShell-ben](configure-waf-custom-rules.md) és az egyéni szabályokra vonatkozó példák (create-Custom-waf-rules.MD).
+Egyéni geo-szabály létrehozásához egyszerűen válassza a *földrajzi hely* elemet a egyezés típusaként, majd válassza ki az alkalmazásból engedélyezni vagy letiltani kívánt országot/régiót vagy országokat/régiókat. További információkért lásd: [Egyéni szabályok létrehozása a PowerShell-ben](configure-waf-custom-rules.md) és az egyéni szabályokra vonatkozó példák (create-Custom-waf-rules.MD).
 
 > [!IMPORTANT]
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Országkódok
+## <a name="countryregion-codes"></a>Ország/régió kódja
 
-Ha a Geomatch operátort használja, a választókat a következő kétszámjegyű országkódok bármelyike lehet. 
+Ha a Geomatch operátort használja, a választókat a következő kétjegyű ország-/régiókódok bármelyike lehet. 
 
-|Országhívószám | Ország neve |
+|Ország/régió kódja | Ország/régió neve |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Egyesült Arab Emírségek|
@@ -100,7 +100,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétszámjegy
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| ID | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|

@@ -3,12 +3,12 @@ title: Feladat-futtatókörnyezet környezeti változói
 description: A feladat futásidejű környezeti változóinak útmutatója és referenciája Azure Batch elemzésekhez.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2027716283ca4910f45ae3e32111896ef0045ce8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726757"
+ms.locfileid: "83745330"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
 
@@ -48,7 +48,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_JOB_ID                 | Annak a fióknak az azonosítója, amelyhez a feladat tartozik. | Minden feladat, kivéve a kezdési feladatot. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | A csomóponton a feladat-előkészítési [feladat könyvtárának][files_dirs] teljes elérési útja. | Minden feladat, a kezdési feladat és a feladat-előkészítési feladat kivételével. Csak akkor érhető el, ha a feladat feladat-előkészítési feladattal van konfigurálva. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | A csomóponton a feladat-előkészítési [feladat munkakönyvtárának][files_dirs] teljes elérési útja. | Minden feladat, a kezdési feladat és a feladat-előkészítési feladat kivételével. Csak akkor érhető el, ha a feladat feladat-előkészítési feladattal van konfigurálva. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | Annak a számítási csomópontnak az IP-címe és portja, amelyen egy [többpéldányos feladat][multi_instance] elsődleges feladata fut. | Több példányos elsődleges és alfeladatok. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | Annak a számítási csomópontnak az IP-címe és portja, amelyen egy [többpéldányos feladat][multi_instance] elsődleges feladata fut. Ne használja az itt megadott portot MPI-vagy NCCL-kommunikációhoz – a Azure Batch szolgáltatás számára van fenntartva. Használja inkább a MASTER_PORT változót, vagy állítsa be úgy, hogy a parancssori argumentumon keresztül átadott értékkel (a 6105-es port jó alapértelmezett választás) vagy a pénzmosás-készletek értékének használatával adja meg a következőt:. | Több példányos elsődleges és alfeladatok. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | Annak a csomópontnak az azonosítója, amelyhez a feladat hozzá van rendelve. | Minden feladat. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Ha `true` az aktuális csomópont egy dedikált csomópont. Ha `false` Ez egy [alacsony prioritású csomópont](batch-low-pri-vms.md). | Minden feladat. | `true` |
 | AZ_BATCH_NODE_LIST              | A [többpéldányos feladat][multi_instance] számára a formátumban lefoglalt csomópontok listája `nodeIP;nodeIP` . | Több példányos elsődleges és alfeladatok. | `10.0.0.4;10.0.0.5` |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914084"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747568"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
 
@@ -22,9 +22,9 @@ A Google Maps-et használó webalkalmazások többsége a Google Maps v3 JavaScr
 
 Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlő függvénytárat használ-e. Példák a nyílt forráskódú Térkép vezérlőelem-függvénytárra: cézium, betegtájékoztató és OpenLayers. Az alkalmazást továbbra is áttelepítheti, még akkor is, ha nyílt forráskódú Térkép vezérlőelem-függvénytárat használ, és nem kívánja használni a Azure Maps web SDK-t. Ilyen esetben az alkalmazást a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [műholdas csempéi](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)) kapcsolja össze. A következő pontok részletesen ismertetik, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
-- Cézium – a webes 3D Térkép vezérlőelem. \| [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) [dokumentációja](https://cesiumjs.org/)
-- Szórólap – kis méretű 2D Térkép vezérlőelem a weben. \| [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) [dokumentációja](https://leafletjs.com/)
-- OpenLayers – a kivetítéseket támogató webes 2D Térkép vezérlőelem. \| [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) [dokumentációja](https://openlayers.org/)
+- Cézium – a webes 3D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentáció](https://cesiumjs.org/)
+- Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentáció](https://leafletjs.com/)
+- OpenLayers – a kivetítéseket támogató webes 2D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentáció](https://openlayers.org/)
 
 ## <a name="key-features-support"></a>A főbb funkciók támogatása
 
@@ -51,11 +51,11 @@ A táblázat a Google Maps v3 JavaScript SDK legfontosabb API-funkcióit és a A
 A következőkben a Google Maps és a Azure Maps web SDK-k közötti főbb különbségek vannak:
 
 - A Azure Maps web SDK elérésére szolgáló üzemeltetett végpontok biztosításán kívül egy NPM-csomag is elérhető. Beágyazza a webes SDK-csomagot az alkalmazásokba. További információkért tekintse meg ezt a [dokumentációt](how-to-use-map-control.md). Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
-- Először létre kell hoznia a Map osztály egy példányát Azure Mapsban. Várja meg, amíg `ready` a `load` térképek vagy az események bekerülnek a térképbe programozott interakció előtt. Ez a sorrend biztosítja, hogy a Térkép összes erőforrása be legyen töltve, és készen álljon a hozzáférésre.
+- Először létre kell hoznia a Map osztály egy példányát Azure Mapsban. Várja meg, amíg a térképek `ready` vagy az `load` események bekerülnek a térképbe programozott interakció előtt. Ez a sorrend biztosítja, hogy a Térkép összes erőforrása be legyen töltve, és készen álljon a hozzáférésre.
 - Mindkét platform egy hasonló csempe-rendszer használatát használja az alaptérképekhez. A Google Maps csempéi 256 képpont méretűek; a Azure Maps csempéi azonban 512 képpont méretűek. Ha ugyanazt a térképes nézetet szeretné megjeleníteni Azure Maps a Google Maps-ben, akkor a Google Maps nagyítási szintjét a Azure Maps számával kivonja.
-- A Google Maps-koordinátákat a "szélesség, hosszúság" értékre nevezik, míg Azure Maps a "hosszúság, szélesség" kifejezést használja. A Azure Maps formátum a standardhoz `[x, y]`van igazítva, amelyet a legtöbb GIS-platform követ.
+- A Google Maps-koordinátákat a "szélesség, hosszúság" értékre nevezik, míg Azure Maps a "hosszúság, szélesség" kifejezést használja. A Azure Maps formátum a standardhoz van igazítva `[x, y]` , amelyet a legtöbb GIS-platform követ.
 - A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [ *Atlas.* adatnévtéren](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)keresztül érhetők el. Van még az [*Atlas is. Alakzat*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) osztálya Ezt az osztályt a GeoJSON objektumok becsomagolásához használhatja, így egyszerűen frissítheti és kezelheti az adatkötési módot.
-- A Azure Mapsban lévő koordináták a pozíció objektumokként vannak meghatározva. A koordináta egy szám tömbként van megadva a formátumban `[longitude,latitude]`. Vagy az új Atlas. reposition (hosszúság, szélesség) értékkel van megadva.
+- A Azure Mapsban lévő koordináták a pozíció objektumokként vannak meghatározva. A koordináta egy szám tömbként van megadva a formátumban `[longitude,latitude]` . Vagy az új Atlas. reposition (hosszúság, szélesség) értékkel van megadva.
     > [!TIP]
     > A position osztály statikus segítő módszert biztosít a "szélesség, hosszúság" formátumú koordináták importálásához. Az [Atlas. Reposition. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) metódus gyakran helyettesíthető a `new google.maps.LatLng` Google Maps Code metódusával.
 - Ahelyett, hogy a térképhez hozzáadott összes alakzaton adja meg a stílusra vonatkozó információkat, Azure Maps elkülöníti az adatok stílusait. Az adatforrásokban tárolt adatforrások és a renderelési rétegekhez vannak csatlakoztatva. Azure Maps a kód adatforrásokat használ az információk megjelenítéséhez. Ez a megközelítés nagyobb teljesítménybeli előnyt biztosít. Emellett számos réteg támogatja az olyan adatvezérelt stílust, ahol az üzleti logika hozzáadhatók a Rétegstílus beállításaihoz. Ez a támogatás azt módosítja, hogy az egyes alakzatok hogyan jelennek meg egy rétegen belül az alakzatban definiált tulajdonságok alapján.
@@ -69,7 +69,7 @@ Ez a gyűjtemény az egyes platformokhoz tartalmaz kód-mintákat, és mindegyik
 A Térkép betöltéséhez mindkét SDK-nak ugyanaz a lépései vannak:
 
 - Adjon hozzá egy hivatkozást a Map SDK-hoz.
-- Adjon hozzá `div` egy címkét az oldal törzséhez, amely helyőrzőként fog működni a térképen.
+- Adjon hozzá egy `div` címkét az oldal törzséhez, amely helyőrzőként fog működni a térképen.
 - Hozzon létre egy JavaScript-függvényt, amely akkor lesz meghívva, amikor a lap betöltődött.
 - Hozza létre a megfelelő Térkép osztály egy példányát.
 
@@ -77,11 +77,11 @@ A Térkép betöltéséhez mindkét SDK-nak ugyanaz a lépései vannak:
 
 - A Google Maps szolgáltatáshoz meg kell adni egy fiókot, amely az API parancsfájl-hivatkozásában meg van adva. A Azure Maps hitelesítési hitelesítő adatai a Map osztály beállításaiként vannak megadva. Ez a hitelesítő adat lehet előfizetési kulcs vagy Azure Active Directory információ.
 - A Google Maps fogad egy visszahívási függvényt az API parancsfájl-hivatkozásában, amely egy inicializálási függvény hívására szolgál a Térkép betöltéséhez. A Azure Maps a lap onload eseményét kell használni.
-- Ha arra az `div` elemre hivatkozik, amelyben a leképezést fogja megjeleníteni, a `Map` Azure Maps osztálynak csak azt az `id` értéket kell megadnia, `HTMLElement` amíg a Google Maps objektumra van szüksége.
-- A Azure Maps koordinátái a következőképpen vannak meghatározva: position objektum, amely egyszerű szám tömbként adható meg a formátumban `[longitude, latitude]`.
+- Ha `div` arra az elemre hivatkozik, amelyben a leképezést fogja megjeleníteni, a Azure Maps osztálynak csak azt az értéket kell megadnia, `Map` amíg a `id` Google Maps `HTMLElement` objektumra van szüksége.
+- A Azure Maps koordinátái a következőképpen vannak meghatározva: position objektum, amely egyszerű szám tömbként adható meg a formátumban `[longitude, latitude]` .
 - A Azure Maps nagyítási szintje a Google Maps-ben a nagyítási szintnél alacsonyabb szinten van. Ez az eltérés azért van, mert a két platform mozaikszerű elrendezési rendszerének különbsége.
 - Azure Maps nem ad hozzá navigációs vezérlőket a Térkép vászonhoz. Így alapértelmezés szerint a Térkép nem rendelkezik nagyítási gombokkal és a Térkép stílusa gombokkal. Azonban lehetőség van a Térkép stílusú választó, a nagyítási gombok, az iránytű vagy a rotációs vezérlők hozzáadására, valamint egy pitch vezérlőelemre.
-- A rendszer egy eseménykezelőt ad a Azure Maps a Térkép `ready` példánya eseményének figyeléséhez. Ez az esemény akkor indul el, ha a Térkép befejezte a WebGL-környezet és az összes szükséges erőforrás betöltését. Adja hozzá a Térkép befejezése után futtatni kívánt kódokat az eseménykezelőhöz.
+- A rendszer egy eseménykezelőt ad a Azure Maps a `ready` Térkép példánya eseményének figyeléséhez. Ez az esemény akkor indul el, ha a Térkép befejezte a WebGL-környezet és az összes szükséges erőforrás betöltését. Adja hozzá a Térkép befejezése után futtatni kívánt kódokat az eseménykezelőhöz.
 
 Az alábbi alapszintű példák a Google Maps szolgáltatást használják, hogy a koordinátákon keresztül középre igazított térképet töltsön be. A hosszúság:-73,985, szélesség: 40,747, és a Térkép a nagyítási szint 12.
 
@@ -194,7 +194,7 @@ Részletes dokumentációt talál arról, hogyan állíthatja be és használhat
 
 ### <a name="localizing-the-map"></a>A Térkép honosítása
 
-Ha a célközönség több ország között oszlik meg, vagy különböző nyelveket beszél, a honosítás fontos.
+Ha a célközönség több országra vagy régióra terjed ki, vagy különböző nyelveket beszél, a honosítás fontos.
 
 **Előtte: Google Maps**
 
@@ -253,7 +253,7 @@ Az Azure-ban és a Google Maps-ben elérhető dinamikus leképezések programozo
 
 **Előtte: Google Maps**
 
-Helyezze át a Google Maps Térkép vezérlőelemet `setOptions` a metódus használatával. Ez a módszer lehetővé teszi a Térkép középpontjának és a nagyítási szint megadását.
+Helyezze át a Google Maps Térkép vezérlőelemet a `setOptions` metódus használatával. Ez a módszer lehetővé teszi a Térkép középpontjának és a nagyítási szint megadását.
 
 ```javascript
 map.setOptions({
@@ -269,7 +269,7 @@ map.setOptions({
 
 **Utána: Azure Maps**
 
-A Azure Maps a metódus használatával `setCamera` módosítsa a Térkép pozícióját, és módosítsa a Térkép stílusát `setStyle` a metódussal. A (z) Azure Maps koordinátái "hosszúságú, szélesség" formátumúak, és a nagyítási szint értékének kivonása eggyel történik.
+A Azure Maps a metódus használatával módosítsa a Térkép pozícióját, `setCamera` és módosítsa a Térkép stílusát a `setStyle` metódussal. A (z) Azure Maps koordinátái "hosszúságú, szélesség" formátumúak, és a nagyítási szint értékének kivonása eggyel történik.
 
 ```javascript
 map.setCamera({
@@ -289,7 +289,7 @@ map.setStyle({
 **További források:**
 
 - [Térképstílus kiválasztása](choose-map-style.md)
-- [Támogatott Térkép stílusa](supported-map-styles.md)
+- [Támogatott térképstílusok](supported-map-styles.md)
 
 ### <a name="adding-a-marker"></a>Jelölő hozzáadása
 
@@ -299,13 +299,13 @@ Azure Maps több módon is lehet megjeleníteni az adatpontot a térképen:
 - **Szimbólum réteg** – az WebGL-környezetben található ikonokkal vagy szöveggel jeleníti meg a pontokat.
 - **Buborék réteg** – a pontokat körökként jeleníti meg a térképen. A körök sugarait az Adattulajdonságok alapján lehet méretezni.
 
-A szimbólum rétegeinek és buborékdiagram-rétegeinek megjelenítése a WebGL környezetben. Mindkét réteg képes nagy mennyiségű pontot megjeleníteni a térképen. Ezeknek a rétegeknek az adatforrásokban való tárolásához szükségesek az adatforrások. Az `ready` esemény elkezdése után az adatforrásokat és a renderelési rétegeket fel kell venni a térképbe. A HTML-jelölők DOM-elemekként jelennek meg az oldalon belül, és nem használnak adatforrást. Minél több DOM-elem van a lapon, annál lassabb lesz az oldal. Ha a térképen több száz pont is van, akkor azt javasoljuk, hogy használja helyette a renderelési rétegek egyikét.
+A szimbólum rétegeinek és buborékdiagram-rétegeinek megjelenítése a WebGL környezetben. Mindkét réteg képes nagy mennyiségű pontot megjeleníteni a térképen. Ezeknek a rétegeknek az adatforrásokban való tárolásához szükségesek az adatforrások. Az esemény elkezdése után az adatforrásokat és a renderelési rétegeket fel kell venni a térképbe `ready` . A HTML-jelölők DOM-elemekként jelennek meg az oldalon belül, és nem használnak adatforrást. Minél több DOM-elem van a lapon, annál lassabb lesz az oldal. Ha a térképen több száz pont is van, akkor azt javasoljuk, hogy használja helyette a renderelési rétegek egyikét.
 
 Vegyünk fel egy jelölőt a térképhez a 10. számú címkével. Használja a hosszúság:-0,2 és a szélesség: 51,5.
 
 **Előtte: Google Maps**
 
-A Google Maps használatával adja hozzá a jelölőket a térképhez `google.maps.Marker` a osztály segítségével, és adja meg a térképet az egyik lehetőség közül.
+A Google Maps használatával adja hozzá a jelölőket a térképhez a osztály segítségével, `google.maps.Marker` és adja meg a térképet az egyik lehetőség közül.
 
 ```javascript
 //Create a marker and add it to the map.
@@ -322,7 +322,7 @@ var marker = new google.maps.Marker({
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
-A Azure Mapsban HTML-jelölők használatával jeleníthető meg egy pont a térképen. Olyan alkalmazásokhoz ajánlott HTML-jelölőket használni, amelyeknek csak kis számú pontot kell megjeleníteniük a térképen. HTML-jelölők használatához hozzon létre egy példányt a `atlas.HtmlMarker` osztályból. Állítsa be a szöveg és a pozíció beállításait, és adja hozzá a jelölőt a `map.markers.add` térképhez a metódus használatával.
+A Azure Mapsban HTML-jelölők használatával jeleníthető meg egy pont a térképen. Olyan alkalmazásokhoz ajánlott HTML-jelölőket használni, amelyeknek csak kis számú pontot kell megjeleníteniük a térképen. HTML-jelölők használatához hozzon létre egy példányt a `atlas.HtmlMarker` osztályból. Állítsa be a szöveg és a pozíció beállításait, és adja hozzá a jelölőt a térképhez a `map.markers.add` metódus használatával.
 
 ```javascript
 //Create a HTML marker and add it to the map.
@@ -338,7 +338,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
-Szimbólum réteg esetén adja hozzá az adatforráshoz az adatforrást. Csatolja az adatforrást a réteghez. Emellett az `ready` esemény elindítását követően az adatforrást és a réteget is fel kell venni a térképbe. Egy szimbólum feletti egyedi szöveges érték megjelenítéséhez a szöveges adatokat az adatpont tulajdonságának kell tárolnia. A tulajdonságot a réteg `textField` beállításában kell hivatkozni. Ez a módszer valamivel több munkát jelent, mint a HTML-jelölők használata, de jobb teljesítményt nyújt.
+Szimbólum réteg esetén adja hozzá az adatforráshoz az adatforrást. Csatolja az adatforrást a réteghez. Emellett az esemény elindítását követően az adatforrást és a réteget is fel kell venni a térképbe `ready` . Egy szimbólum feletti egyedi szöveges érték megjelenítéséhez a szöveges adatokat az adatpont tulajdonságának kell tárolnia. A tulajdonságot a `textField` réteg beállításában kell hivatkozni. Ez a módszer valamivel több munkát jelent, mint a HTML-jelölők használata, de jobb teljesítményt nyújt.
 
 ```html
 <!DOCTYPE html>
@@ -422,11 +422,11 @@ Az egyéni rendszerképeket a térképen ábrázoló pontok ábrázolására is 
 <center>
 
 ![sárga gombostű-rendszerkép](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW\_gombostű. png</center>
+YLW \_ gombostű. png</center>
 
 **Előtte: Google Maps**
 
-Hozzon létre egy egyéni jelölőt egy `Icon` olyan objektum megadásával, amely tartalmazza a `url` képet. Egy `anchor` pontot kell megadnia, amely a gombostű-kép pontját a Térkép koordinátáival igazítja. A Google Maps-ben a horgony értéke a rendszerkép bal felső sarkához képest relatív.
+Hozzon létre egy egyéni jelölőt egy olyan objektum megadásával `Icon` , amely tartalmazza a `url` képet. Egy pontot kell megadnia `anchor` , amely a gombostű-kép pontját a Térkép koordinátáival igazítja. A Google Maps-ben a horgony értéke a rendszerkép bal felső sarkához képest relatív.
 
 ```javascript
 var marker = new google.maps.Marker({
@@ -445,7 +445,7 @@ var marker = new google.maps.Marker({
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
-HTML-jelölők testreszabásához adjon át egy `string` HTML `HTMLElement` -kódot `htmlContent` vagy a jelölőt. Ezzel a `anchor` beállítással adhatja meg a jelölő relatív pozícióját, a pozíció koordinátáihoz képest. Rendelje hozzá a kilenc megadott hivatkozási pont egyikét a `anchor` lehetőséghez. Ezek a meghatározott pontok a következők: "Center", "Top", "bottom", "Left", "Right", "top-left", "top-right", "bal alsó", "bottom-Right". Alapértelmezés szerint a tartalom a HTML-tartalom alsó középpontjához van rögzítve. Ahhoz, hogy könnyebb legyen áttelepíteni a kódot a Google Maps szolgáltatásból, állítsa a `anchor` "bal felső" értéket, majd `pixelOffset` használja a Google Maps-ben használt eltolással megegyező eltolású kapcsolót. A Azure Maps eltolásai a Google Maps-ben lévő eltolások ellentétes irányába mozdulnak el. Tehát az eltolásokat szorozzuk meg mínusz eggyel.
+HTML-jelölők testreszabásához adjon át egy HTML `string` -kódot vagy a `HTMLElement` `htmlContent` jelölőt. Ezzel a `anchor` beállítással adhatja meg a jelölő relatív pozícióját, a pozíció koordinátáihoz képest. Rendelje hozzá a kilenc megadott hivatkozási pont egyikét a `anchor` lehetőséghez. Ezek a meghatározott pontok a következők: "Center", "Top", "bottom", "Left", "Right", "top-left", "top-right", "bal alsó", "bottom-Right". Alapértelmezés szerint a tartalom a HTML-tartalom alsó középpontjához van rögzítve. Ahhoz, hogy könnyebb legyen áttelepíteni a kódot a Google Maps szolgáltatásból, állítsa a `anchor` "bal felső" értéket, majd használja a `pixelOffset` Google Maps-ben használt eltolással megegyező eltolású kapcsolót. A Azure Maps eltolásai a Google Maps-ben lévő eltolások ellentétes irányába mozdulnak el. Tehát az eltolásokat szorozzuk meg mínusz eggyel.
 
 > [!TIP]
 > A `pointer-events:none` HTML-tartalom stílusként való hozzáadásával letilthatja az alapértelmezett húzási viselkedést a Microsoft Edge-ben, amely nem kívánt ikont jelenít meg.
@@ -465,7 +465,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
-A Azure Maps az egyéni rendszerképeket is támogatja. Először töltse be a képet a Térkép erőforrásaiba, és rendelje hozzá egy egyedi AZONOSÍTÓhoz. Hivatkozzon a képre a szimbólum rétegben. `offset` A képet a térképen a megfelelő pontra igazíthatja. A szimbólum `anchor` relatív pozíciójának megadásához a pozíció koordinátáihoz viszonyítva válassza a lehetőséget. A kilenc megadott hivatkozási pont egyikét használja. Ezek a pontok a következők: "Center", "Top", "bottom", "Left", "Right", "top-left", "top-right", "bal alsó", "bottom-Right". Alapértelmezés szerint a tartalom a HTML-tartalom alsó középpontjához van rögzítve. Ahhoz, hogy könnyebb legyen áttelepíteni a kódot a Google Maps szolgáltatásból, állítsa a `anchor` "bal felső" értéket, majd `offset` használja a Google Maps-ben használt eltolással megegyező eltolású kapcsolót. A Azure Maps eltolásai a Google Maps-ben lévő eltolások ellentétes irányába mozdulnak el. Tehát az eltolásokat szorozzuk meg mínusz eggyel.
+A Azure Maps az egyéni rendszerképeket is támogatja. Először töltse be a képet a Térkép erőforrásaiba, és rendelje hozzá egy egyedi AZONOSÍTÓhoz. Hivatkozzon a képre a szimbólum rétegben. A `offset` képet a térképen a megfelelő pontra igazíthatja. A `anchor` szimbólum relatív pozíciójának megadásához a pozíció koordinátáihoz viszonyítva válassza a lehetőséget. A kilenc megadott hivatkozási pont egyikét használja. Ezek a pontok a következők: "Center", "Top", "bottom", "Left", "Right", "top-left", "top-right", "bal alsó", "bottom-Right". Alapértelmezés szerint a tartalom a HTML-tartalom alsó középpontjához van rögzítve. Ahhoz, hogy könnyebb legyen áttelepíteni a kódot a Google Maps szolgáltatásból, állítsa a `anchor` "bal felső" értéket, majd használja a `offset` Google Maps-ben használt eltolással megegyező eltolású kapcsolót. A Azure Maps eltolásai a Google Maps-ben lévő eltolások ellentétes irányába mozdulnak el. Tehát az eltolásokat szorozzuk meg mínusz eggyel.
 
 ```html
 <!DOCTYPE html>
@@ -590,7 +590,7 @@ line.setMap(map);
 
 **Utána: Azure Maps**
 
-A vonalláncok neve `LineString` vagy `MultiLineString` objektumai. Ezek az objektumok hozzáadhatók egy adatforráshoz, és egy sor réteg használatával is megjeleníthető. Adjon `LineString` hozzá egy adatforráshoz, majd adja hozzá az adatforrást a elemhez, `LineLayer` hogy megjelenítse.
+A vonalláncok neve `LineString` vagy `MultiLineString` objektumai. Ezek az objektumok hozzáadhatók egy adatforráshoz, és egy sor réteg használatával is megjeleníthető. Adjon hozzá `LineString` egy adatforráshoz, majd adja hozzá az adatforrást a elemhez, `LineLayer` hogy megjelenítse.
 
 ```javascript
 //Get the center of the map.
@@ -660,7 +660,7 @@ polygon.setMap(map);
 
 **Utána: Azure Maps**
 
-Adjon hozzá `Polygon` egy vagy `MultiPolygon` egy objektumot egy adatforráshoz. Az objektum leképezése rétegek használatával. Sokszög területének megjelenítése sokszög réteg használatával És a sokszög körvonalait egy vonal réteggel jeleníti meg.
+Adjon hozzá egy `Polygon` vagy egy `MultiPolygon` objektumot egy adatforráshoz. Az objektum leképezése rétegek használatával. Sokszög területének megjelenítése sokszög réteg használatával És a sokszög körvonalait egy vonal réteggel jeleníti meg.
 
 ```javascript
 //Get the center of the map.
@@ -704,11 +704,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="display-an-info-window"></a>Információs ablak megjelenítése
 
-Az entitásokra vonatkozó további információk a térképen a Google Maps- `google.maps.InfoWindow` osztályként is megjeleníthetők. Azure Maps ez a funkció a `atlas.Popup` osztály használatával érhető el. A következő példákban egy jelölőt adunk hozzá a térképhez. Ha a jelölőre kattint, megjelenik egy információs ablak vagy egy előugró ablak.
+Az entitásokra vonatkozó további információk a térképen a `google.maps.InfoWindow` Google Maps-osztályként is megjeleníthetők. Azure Maps ez a funkció a osztály használatával érhető el `atlas.Popup` . A következő példákban egy jelölőt adunk hozzá a térképhez. Ha a jelölőre kattint, megjelenik egy információs ablak vagy egy előugró ablak.
 
 **Előtte: Google Maps**
 
-Egy információs ablak létrehozása a `google.maps.InfoWindow` konstruktor használatával.
+Egy információs ablak létrehozása a konstruktor használatával `google.maps.InfoWindow` .
 
 ```javascript
 //Add a marker in which to display an infowindow for.
@@ -734,7 +734,7 @@ marker.addListener('click', function () {
 
 **Utána: Azure Maps**
 
-A felugró ablak használatával további információkat jeleníthet meg a helyről. Adjon át egy `string` HTML `HTMLElement` -t vagy `content` egy objektumot az előugró ablak beállítására. Ha szeretné, az előugró ablakok bármilyen alakzattól függetlenül is megjeleníthetők. Így a felugró ablakoknak `position` meg kell adni egy értéket. Itt adhatja `position` meg az értéket. Az előugró ablak megjelenítéséhez hívja `open` meg a metódust `map` , és adja meg, hogy az előugró ablakban megjelenjen a.
+A felugró ablak használatával további információkat jeleníthet meg a helyről. Adjon át egy HTML `string` -t vagy egy `HTMLElement` objektumot az `content` előugró ablak beállítására. Ha szeretné, az előugró ablakok bármilyen alakzattól függetlenül is megjeleníthetők. Így a felugró ablakoknak `position` meg kell adni egy értéket. Itt adhatja meg az `position` értéket. Az előugró ablak megjelenítéséhez hívja `open` meg a metódust, és adja meg, hogy az `map` előugró ablakban megjelenjen a.
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -777,13 +777,13 @@ map.events.add('click', marker, function () {
 
 ### <a name="import-a-geojson-file"></a>GeoJSON-fájl importálása
 
-A Google Maps támogatja a GeoJSON-adatgyűjtést és `google.maps.Data` a dinamikus formázást a osztályon keresztül. Ennek az osztálynak a funkciója sokkal többet igazít a Azure Maps adatvezérelt stílusához. Van azonban egy fontos különbség. A Google Maps szolgáltatásban megadhat egy visszahívási függvényt. Az üzleti logika a KEZELŐFELÜLETi szálban egyenként feldolgozott funkciók formázásához Azure Maps azonban a rétegek támogatják az adatvezérelt kifejezések formázási lehetőségként való megadását. Ezeket a kifejezéseket a rendszer a renderelési időben dolgozza fel külön szálon. A Azure Maps megközelítés javítja a renderelési teljesítményt. Ez az előny akkor jelenik meg, ha a nagyobb adatkészleteket gyorsan kell megjeleníteni.
+A Google Maps támogatja a GeoJSON-adatgyűjtést és a dinamikus formázást a `google.maps.Data` osztályon keresztül. Ennek az osztálynak a funkciója sokkal többet igazít a Azure Maps adatvezérelt stílusához. Van azonban egy fontos különbség. A Google Maps szolgáltatásban megadhat egy visszahívási függvényt. Az üzleti logika a KEZELŐFELÜLETi szálban egyenként feldolgozott funkciók formázásához Azure Maps azonban a rétegek támogatják az adatvezérelt kifejezések formázási lehetőségként való megadását. Ezeket a kifejezéseket a rendszer a renderelési időben dolgozza fel külön szálon. A Azure Maps megközelítés javítja a renderelési teljesítményt. Ez az előny akkor jelenik meg, ha a nagyobb adatkészleteket gyorsan kell megjeleníteni.
 
-Az alábbi példák betöltenek minden földrengés GeoJSON-csatornáját az USGS-ből az elmúlt hét napban. A földrengések adathalmaza méretezhető körökként jelenik meg a térképen. Az egyes körök színe és méretezése az egyes földrengések nagyságán alapul, amely az adathalmaz egyes funkcióinak `"mag"` tulajdonságában van tárolva. Ha a magnitúdó nagyobb vagy egyenlő, mint öt, akkor a kör piros lesz. Ha a háromnál nagyobb vagy egyenlő, de kevesebb, mint öt, a kör narancssárga lesz. Ha kevesebb, mint három, a kör zöld színnel jelenik meg. Az egyes körök sugara a magnitúdó exponenciálisan megszorozva a 0,1-as értékkel.
+Az alábbi példák betöltenek minden földrengés GeoJSON-csatornáját az USGS-ből az elmúlt hét napban. A földrengések adathalmaza méretezhető körökként jelenik meg a térképen. Az egyes körök színe és méretezése az egyes földrengések nagyságán alapul, amely az `"mag"` adathalmaz egyes funkcióinak tulajdonságában van tárolva. Ha a magnitúdó nagyobb vagy egyenlő, mint öt, akkor a kör piros lesz. Ha a háromnál nagyobb vagy egyenlő, de kevesebb, mint öt, a kör narancssárga lesz. Ha kevesebb, mint három, a kör zöld színnel jelenik meg. Az egyes körök sugara a magnitúdó exponenciálisan megszorozva a 0,1-as értékkel.
 
 **Előtte: Google Maps**
 
-Egyetlen visszahívási függvényt kell `map.data.setStyle` megadni a metódusban. A visszahívási függvényen belül alkalmazza az üzleti logikát az egyes szolgáltatásokra. Töltse be a GeoJSON-hírcsatornát a `map.data.loadGeoJson` metódussal.
+Egyetlen visszahívási függvényt kell megadni a `map.data.setStyle` metódusban. A visszahívási függvényen belül alkalmazza az üzleti logikát az egyes szolgáltatásokra. Töltse be a GeoJSON-hírcsatornát a `map.data.loadGeoJson` metódussal.
 
 ```html
 <!DOCTYPE html>
@@ -1026,21 +1026,21 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 | Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
 | `cluster`                 | logikai | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
-| `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom`, `getClusterChildren`és `getClusterLeaves` metódusokkal. |
+| `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |
 | `point_count`             | szám  | A fürt által tartalmazott pontok száma.  |
-| `point_count_abbreviated` | sztring  | Egy karakterlánc, amely hosszabb ideig `point_count` rövidíti az értéket. (például 4 000-es lesz 4K)  |
+| `point_count_abbreviated` | sztring  | Egy karakterlánc, amely hosszabb ideig rövidíti az `point_count` értéket. (például 4 000-es lesz 4K)  |
 
-Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez `cluster_id`a használatával.
+Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Módszer | Visszatérési típus | Leírás |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
-| `getClusterChildren(clusterId: number)` | A&lt;tömb&lt;funkcióinak&lt;geometriája&gt; \| , bármilyen alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
-| `getClusterExpansionZoom(clusterId: number)` | Ígéret&lt;száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
-| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | A&lt;tömb&lt;funkcióinak&lt;geometriája&gt; \| , bármilyen alakzat&gt;&gt; | Egy fürt összes pontjának lekérése. Állítsa be `limit` a értéket a pontok részhalmazának visszaadásához, majd `offset` a pontokon keresztül használja a to (pontok) lapot. |
+| `getClusterChildren(clusterId: number)` | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
+| `getClusterExpansionZoom(clusterId: number)` | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
+| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | Egy fürt összes pontjának lekérése. Állítsa be a értéket a `limit` pontok részhalmazának visszaadásához, majd a `offset` pontokon keresztül használja a to (pontok) lapot. |
 
 Amikor fürtözött adatmegjelenítést alkalmaz a térképen, általában két vagy több réteget érdemes használni. Az alábbi példa három réteget használ. A fürtök mérete alapján méretezett színes körök rajzolására szolgáló buborék réteg. Egy szimbólum réteget, amely a fürt méretét szövegként jeleníti meg. És egy második szimbólum réteget használ a nem fürtözött pontok megjelenítéséhez. A fürtözött adatmennyiség számos más módon is megjeleníthető. További információ: a [fürt pont adatai](clustering-point-data-web-sdk.md) dokumentációja.
 
-A GeoJSON-adat közvetlenül importálható az `importDataFromUrl` `DataSource` osztályban található függvénnyel Azure Maps térképen belül.
+A GeoJSON-adat közvetlenül importálható az `importDataFromUrl` osztályban található függvénnyel `DataSource` Azure Maps térképen belül.
 
 ```html
 <!DOCTYPE html>
@@ -1155,7 +1155,7 @@ Az alábbi példák betöltenek egy GeoJSON-hírcsatornát az elmúlt hónapban 
 
 **Előtte: Google Maps**
 
-Heat Map létrehozásához töltse be a "vizualizáció" könyvtárat az API- `&libraries=visualization` szkript URL-címéhez való hozzáadásával. A Google Maps Heat Map rétege nem támogatja közvetlenül a GeoJSON-adatgyűjtést. Először töltse le az adatmennyiséget, és alakítsa át a súlyozott adatpontok tömbbe:
+Heat Map létrehozásához töltse be a "vizualizáció" könyvtárat az `&libraries=visualization` API-szkript URL-címéhez való hozzáadásával. A Google Maps Heat Map rétege nem támogatja közvetlenül a GeoJSON-adatgyűjtést. Először töltse le az adatmennyiséget, és alakítsa át a súlyozott adatpontok tömbbe:
 
 ```html
 <!DOCTYPE html>
@@ -1224,7 +1224,7 @@ Heat Map létrehozásához töltse be a "vizualizáció" könyvtárat az API- `&
 
 **Utána: Azure Maps**
 
-Töltse be a GeoJSON az adatforrásba, és kapcsolja össze az adatforrást egy Heat Map-réteggel. A súlyozáshoz használt tulajdonságot kifejezés használatával lehet átadni a `weight` paraméternek. Az `importDataFromUrl` `DataSource` osztályban található függvénnyel közvetlenül importálhatja a Azure Maps GeoJSON-adataiba.
+Töltse be a GeoJSON az adatforrásba, és kapcsolja össze az adatforrást egy Heat Map-réteggel. A súlyozáshoz használt tulajdonságot kifejezés használatával lehet átadni a `weight` paraméternek. Az osztályban található függvénnyel közvetlenül importálhatja a Azure Maps GeoJSON-adataiba `importDataFromUrl` `DataSource` .
 
 ```html
 <!DOCTYPE html>
@@ -1303,7 +1303,7 @@ Az alábbi példák egy időjárási radar csempe réteget fedik fel az Iowa Sta
 
 **Előtte: Google Maps**
 
-A Google Maps-ben a csempe rétegeit a `google.maps.ImageMapType` osztály használatával lehet létrehozni.
+A Google Maps-ben a csempe rétegeit a osztály használatával lehet létrehozni `google.maps.ImageMapType` .
 
 ```javascript
 map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
@@ -1321,7 +1321,7 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 **Utána: Azure Maps**
 
-Vegyen fel egy csempe réteget a térképhez hasonlóan, mint bármely más réteget. Használjon olyan formázott URL-címet, amely x, y és nagyítási helyőrzőket tartalmaz. `{x}`, `{y}`, `{z}` hogy tájékoztassa a réteget a csempék eléréséről. Azure Maps csempe rétegek is támogatják `{quadkey}` `{bbox-epsg-3857}`a, és `{subdomain}` a helyőrzőket.
+Vegyen fel egy csempe réteget a térképhez hasonlóan, mint bármely más réteget. Használjon olyan formázott URL-címet, amely x, y és nagyítási helyőrzőket tartalmaz. `{x}`, `{y}` , `{z}` hogy tájékoztassa a réteget a csempék eléréséről. Azure Maps csempe rétegek is támogatják a, `{quadkey}` `{bbox-epsg-3857}` és a `{subdomain}` helyőrzőket.
 
 > [!TIP]
 > Azure Maps rétegekben könnyen megjeleníthető más rétegek alatt, beleértve az alapszintű leképezési rétegeket is. Gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempe rétegeit, hogy azok könnyen olvashatók legyenek. A `map.layers.add` metódus egy második paramétert vesz igénybe, amely annak a rétegnek az azonosítója, amelyben az alábbi új réteget be kell szúrni. A térképi feliratok alá tartozó csempe réteg beszúrásához használja ezt a kódot:`map.layers.add(myTileLayer, "labels");`
@@ -1340,7 +1340,7 @@ map.layers.add(new atlas.layer.TileLayer({
 ![Azure Maps csempe réteg](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
 
 > [!TIP]
-> A csempe-kéréseket a Térkép `transformRequest` lehetőségével lehet rögzíteni. Ez lehetővé teszi, hogy szükség esetén módosítsa vagy adja hozzá a fejléceket a kéréshez.
+> A csempe-kéréseket a `transformRequest` Térkép lehetőségével lehet rögzíteni. Ez lehetővé teszi, hogy szükség esetén módosítsa vagy adja hozzá a fejléceket a kéréshez.
 
 **További források:**
 
@@ -1369,7 +1369,7 @@ trafficLayer.setMap(map);
 
 Azure Maps számos különböző lehetőséget biztosít a forgalom megjelenítéséhez. Az adatforgalmi incidensek, például a közúti bezárások és a balesetek ikonjainak megjelenítése a térképen. Átfedésben lévő forgalom és színkódolt utak a térképen. A színek a feladott sebesség korlátja alapján módosíthatók, a normál várható késéshez képest, vagy abszolút késleltetéssel. Az incidensek Azure Maps percenként frissülnek, és két percenként frissülnek az adatforgalom.
 
-Rendelje hozzá a kívánt `setTraffic` értékeket a beállításokhoz.
+Rendelje hozzá a kívánt értékeket a `setTraffic` beállításokhoz.
 
 ```javascript
 map.setTraffic({
@@ -1565,7 +1565,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 
 **Utána: Azure Maps**
 
-Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk olvasásához egyszerűen csak egy URL-címet, vagy a nyers adat karakterláncként vagy blobként kell `atlas.io.read` átadni a függvénynek. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia. 
+Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbeli adatformátumok könnyen integrálhatók a [térbeli IO modul](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)használatával. Ez a modul a térbeli adatok olvasását és írását is magában foglalja, valamint egy egyszerű adatréteget is tartalmaz, amely könnyen megjelenítheti ezeket a térbeli adatformátumokból származó adatok bármelyikét. A térbeli adatfájlokban lévő információk olvasásához egyszerűen csak egy URL-címet, vagy a nyers adat karakterláncként vagy blobként kell átadni a `atlas.io.read` függvénynek. Ezzel visszaadja a fájl összes elemzett adatait, amelyet aztán hozzáadhat a térképhez. A KML egy kicsit összetettebb, mint a legtöbb térbeli adatformátum, mivel sokkal több stílussal kapcsolatos információt tartalmaz. Az `SpatialDataLayer` osztály támogatja a stílusok renderelési többségét, azonban a szolgáltatásba való betöltés előtt az ikonokat be kell tölteni a térképbe, és a rendszernek külön fel kell vennie a terepeket a térképbe. Ha egy URL-címen keresztül tölt be egy adatkészletet, azt egy CORs-kompatibilis végponton kell üzemeltetni, vagy a proxy szolgáltatást az olvasási függvénynek kell átadnia. 
 
 ```javascript
 <!DOCTYPE html>

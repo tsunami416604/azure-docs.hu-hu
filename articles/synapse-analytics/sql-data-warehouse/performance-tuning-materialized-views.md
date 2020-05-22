@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e5973ed505a43ca56a0f11e3603e05eeed0952fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657752"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747550"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -159,7 +159,7 @@ A jelentős nézetek lehetővé teszik az alaptáblákban lévő adatváltozáso
 
 ## <a name="example"></a>Példa
 
-Ez a példa egy TPCDS-szerű lekérdezést használ, amely megkeresi azokat az ügyfeleket, akik több pénzt költenek a katalóguson keresztül, mint a boltokban, azonosítják az előnyben részesített ügyfeleket és a   A lekérdezés magában foglalja a legfontosabb 100-rekordok kiválasztását a következő három alkijelölési utasítás közül: SUM () és GROUP BY.
+Ez a példa egy TPCDS-szerű lekérdezést használ, amely megkeresi azokat az ügyfeleket, akik több pénzt költenek a katalóguson keresztül, mint a boltokban, azonosítják az előnyben részesített ügyfeleket és a származási országot   A lekérdezés magában foglalja a legfontosabb 100-rekordok kiválasztását a következő három alkijelölési utasítás közül: SUM () és GROUP BY.
 
 ```sql
 WITH year_total AS (

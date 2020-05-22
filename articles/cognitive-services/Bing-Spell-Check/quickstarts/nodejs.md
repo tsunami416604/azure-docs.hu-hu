@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72afc4f6e03b24e545ad18948119d418970cddf3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382854"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747575"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node. js-sel
 
@@ -30,7 +30,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a szigorúság és a `https`szükséges értékeit. Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a szigorúság és a szükséges értékeit `https` . Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Hozzon létre változókat a keresési paraméterekhez és az áttekinteni kívánt szöveghez. Adja hozzá a piac kódját `mkt=`a következő után:. A piaci kód az az ország, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő `&mode=`után:. A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
+2. Hozzon létre változókat a keresési paraméterekhez és az áttekinteni kívánt szöveghez. Adja hozzá a piac kódját a következő után: `mkt=` . A piaci kód az az ország/régió, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő után: `&mode=` . A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +52,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-the-request-parameters"></a>A kérés paramétereinek létrehozása
 
-A kérés paramétereinek létrehozásához hozzon létre egy új objektumot `POST` egy metódussal. Adja meg az elérési utat a végpont elérési útjának hozzáfűzésével és a lekérdezési karakterlánccal. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+A kérés paramétereinek létrehozásához hozzon létre egy új objektumot egy `POST` metódussal. Adja meg az elérési utat a végpont elérési útjának hozzáfűzésével és a lekérdezési karakterlánccal. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
 
-Hozzon létre egy `response_handler` nevű függvényt, amely a JSON-választ az API-ból veszi át, és nyomtassa ki. Hozzon létre egy változót a válasz törzse számára. A válasz hozzáfűzése a `data` jelző fogadásakor, a használatával `response.on()`. Ha a `end` rendszer jelzőt fogad, nyomtassa ki a JSON-törzset a konzolon.
+Hozzon létre egy nevű függvényt, `response_handler` amely a JSON-választ az API-ból veszi át, és nyomtassa ki. Hozzon létre egy változót a válasz törzse számára. A válasz hozzáfűzése a `data` jelző fogadásakor, a használatával `response.on()` . Ha a `end` rendszer jelzőt fogad, nyomtassa ki a JSON-törzset a konzolon.
 
 ```javascript
 let response_handler = function (response) {
@@ -98,7 +98,7 @@ req.end ();
 ```
 
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Hozza létre és futtassa a projektet.
 

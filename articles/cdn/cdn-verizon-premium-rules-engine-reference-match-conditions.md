@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bc439e3244be63bff1c54d3230eda17dfb9d88d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253441"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745596"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN a Verizon Premium szabályainak motorjának egyeztetési feltételeiről
 
@@ -30,7 +30,7 @@ Az egyeztetési feltételt például a következőre használhatja:
 
 Az Always Match feltétel a szolgáltatások alapértelmezett készletét alkalmazza az összes kérelemre.
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [Mindig](#always) | A szolgáltatások alapértelmezett készletét alkalmazza az összes kérelemre.
 
@@ -38,7 +38,7 @@ Name (Név) | Cél
 
 Az eszköz egyeztetése feltétel azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket.  
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [Eszköz](#device) | Azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket.
 
@@ -46,7 +46,7 @@ Name (Név) | Cél
 
 A hely egyeztetési feltételei a kérelmező helye alapján azonosítják a kérelmeket.
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [AS szám](#as-number) | Az adott hálózatból származó kérelmeket azonosítja.
 [Ország](#country) | A megadott országokból/régiókból származó kérelmeket azonosítja.
@@ -55,7 +55,7 @@ Name (Név) | Cél
 
 A forrás egyeztetési feltételek azokat a kérelmeket azonosítják, amelyek Content Delivery Network tárolóra vagy ügyfél-forrásra mutatnak.
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [CDN-forrás](#cdn-origin) | A Content Delivery Network tárolóban tárolt tartalomra vonatkozó kérelmeket azonosítja.
 [Ügyfél forrása](#customer-origin) | Az adott ügyfél-kiszolgálón tárolt tartalomra vonatkozó kérelmeket azonosítja.
@@ -64,7 +64,7 @@ Name (Név) | Cél
 
 A kérés egyeztetési feltételek alapján azonosítja a kérelmeket a tulajdonságaik alapján.
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [Ügyfél IP-címe](#client-ip-address) | Az adott IP-címről származó kérelmeket azonosítja.
 [Cookie paraméter](#cookie-parameter) | A megadott értékre vonatkozó kérelmekhez társított cookie-k ellenőrzése.
@@ -81,7 +81,7 @@ Name (Név) | Cél
 
 Az URL-cím egyezési feltételei a kérelmeket az URL-címek alapján azonosítják.
 
-Name (Név) | Cél
+Name | Cél
 -----|--------
 [URL elérési útja könyvtár](#url-path-directory) | A kéréseket a relatív elérési úttal azonosítja.
 [URL-elérési út kiterjesztése](#url-path-extension) | A kérelmeket a fájlnévkiterjesztés alapján azonosítja.
@@ -112,7 +112,7 @@ Az Always Match feltétel a szolgáltatások alapértelmezett készletét alkalm
 
 A AS Number hálózatot az autonóm rendszer száma (ASN) határozza meg. 
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy teljesülnek-e az as-szám egyeztetési feltételének feltételei:
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy teljesülnek-e az as-szám egyeztetési feltételének feltételei:
 
 - **Egyezések**: ehhez az szükséges, hogy az ügyfél-hálózat ASN-je megfeleljen a megadott ASN egyikének. 
 - Nem **egyezik**: ehhez az szükséges, hogy az ügyfél-hálózat ASN-je ne egyezzen meg a megadott ASN.
@@ -157,7 +157,7 @@ Legfontosabb információk:
 
 ### <a name="client-ip-address"></a>Ügyfél IP-címe
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy az ügyfél IP-címének egyeztetési feltétele teljesült-e:
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy az ügyfél IP-címének egyeztetési feltétele teljesült-e:
 
 - **Egyezések**: az ügyfél IP-címének egyeznie kell a megadott IP-címek egyikével. 
 - Nem **egyezik**: megköveteli, hogy az ügyfél IP-címe ne egyezzen meg a megadott IP-címek egyikével sem. 
@@ -186,7 +186,7 @@ Legfontosabb információk:
 
 ### <a name="cookie-parameter"></a>Cookie paraméter
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a cookie-paraméter megfelel-e a feltételnek.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a cookie-paraméter megfelel-e a feltételnek.
 
 - **Egyezések**: a megadott cookie-nak egy olyan értékkel kell rendelkeznie, amely megfelel az ebben az egyeztetési feltételben definiált értékek legalább egyikének.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -220,7 +220,7 @@ Legfontosabb információk:
 
 A cookie-paraméter regex-egyeztetési feltétel határozza meg a cookie nevét és értékét. A kívánt cookie-érték megadásához [reguláris kifejezéseket](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) használhat.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén tartalmazza a cookie-paramétert a regexnek.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén tartalmazza a cookie-paramétert a regexnek.
 
 - **Egyezések**: a megadott cookie-t egy olyan értékkel kell megadnia, amely megfelel a megadott reguláris kifejezésnek.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -253,7 +253,7 @@ Legfontosabb információk:
 
 Országot az országkód alapján is megadhat. 
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az ország egyeztetési feltételét:
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az ország egyeztetési feltételét:
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazza a megadott országkód-értékeket. 
 - Nem **egyezik**: megköveteli, hogy a kérelem nem tartalmazza a megadott országkód-értékeket.
@@ -279,9 +279,9 @@ Ez az egyeztetési feltétel lehetővé teszi számos testreszabási művelet v�
 - URL-cím helyettesítő karakterének egyezése: állítsa be az [URL-cím elérési útja helyettesítő feltételt](#url-path-wildcard) a biztonságos könyvtárba. 
     Illesszen be egy csillagot a relatív elérési út végére, hogy a szabály korlátozza az összes gyermek hozzáférését.
 
-- Ország egyeztetése: az ország megfelelő állapotának beállítása a kívánt országok számára.
-  - Engedélyezés: az ország egyeztetési feltételének beállítása úgy, hogy az **ne egyezzen** meg azzal, hogy csak a megadott országok férhetnek hozzá az URL-cím elérési útjának helyettesítő feltételben megadott helyen tárolt tartalomhoz.
-  - Letiltás: az ország egyeztetési feltételének beállításával megtilthatja **, hogy a** megadott országok hozzáférjenek az URL elérési út helyettesítő karakteres egyeztetési feltételben megadott helyen tárolt tartalomhoz.
+- Ország egyeztetése: az ország/régiók kívánt készletéhez állítsa be az ország egyeztetése feltételt.
+  - Engedélyezés: az ország egyeztetési feltételének beállítása úgy, hogy az **ne egyezzen** meg azzal, hogy csak a megadott országok/régiók férhetnek hozzá az URL-cím elérési útjának helyettesítő karakterrel megadott helyen tárolt tartalomhoz.
+  - Letiltás: az ország egyeztetési feltételének megadásával megtilthatja **, hogy a** megadott országok/régiók hozzáférjenek az URL elérési útjának helyettesítő karakterrel megadott helyen tárolt tartalomhoz.
 
 - Hozzáférés megtagadása (403) szolgáltatás: engedélyezze a [hozzáférés megtagadása (403) funkciót](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) a Country Filtering szolgáltatás engedélyezés vagy Letiltás részének replikálásához.
 
@@ -311,7 +311,7 @@ Legfontosabb információk:
 
 Az eszköz egyeztetése feltétel azonosítja a mobileszköz által a tulajdonságok alapján küldött kérelmeket. A mobileszköz-észlelés a [WURFLon](http://wurfl.sourceforge.net/)keresztül érhető el. 
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az eszköz egyeztetési feltételét:
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az eszköz egyeztetési feltételét:
 
 - **Egyezések**: a kérelmező eszközének meg kell egyeznie a megadott értékkel. 
 - Nem **egyezik**: megköveteli, hogy a kérelmező eszköze ne egyezzen meg a megadott értékkel.
@@ -398,7 +398,7 @@ Legfontosabb információk:
 
 Annak a hivatkozó állomásnévnek a neve, amelyen keresztül a kért tartalom szerepel, meghatározza, hogy teljesül-e a hivatkozó tartomány feltétele.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy teljesülnek-e a hivatkozó tartomány egyeztetési feltétele:
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy teljesülnek-e a hivatkozó tartomány egyeztetési feltétele:
 
 - **Egyezések**: a hivatkozó állomásnévnek meg kell egyeznie a megadott értékekkel. 
 - Nem **egyezik**: megköveteli, hogy a hivatkozó állomásnév ne egyezzen meg a megadott értékkel.
@@ -424,7 +424,7 @@ Legfontosabb információk:
 
 ### <a name="request-header-literal"></a>Kérelem fejléce – literál
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben a kérelem fejlécének konstans egyeztetési feltétele teljesül.
+A **egyezések** / **nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben a kérelem fejlécének konstans egyeztetési feltétele teljesül.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazza a megadott fejlécet. Az értéknek meg kell egyeznie az ebben az egyeztetési feltételben definiált értékkel.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -449,7 +449,7 @@ Legfontosabb információk:
 
 ### <a name="request-header-regex"></a>Kérelem fejlécének Regexje
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti a kérelem fejlécének regex-egyeztetési feltételét.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti a kérelem fejlécének regex-egyeztetési feltételét.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazza a megadott fejlécet. Az értéknek meg kell egyeznie a megadott [reguláris kifejezésben](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)definiált mintával.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -480,7 +480,7 @@ Legfontosabb információk:
 
 ### <a name="request-header-wildcard"></a>Kérelem fejlécének helyettesítő karaktere
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a kérelem fejléce milyen feltételek teljesülése esetén teljesül.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a kérelem fejléce milyen feltételek teljesülése esetén teljesül.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazza a megadott fejlécet. Az értéknek meg kell egyeznie a jelen egyeztetési feltételben definiált értékek közül legalább az egyikkel.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -565,7 +565,7 @@ Legfontosabb információk:
 
 A kérést a relatív elérési úttal azonosítja, amely kizárja a kért eszköz fájlnevét.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útját.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útját.
 
 - **Egyezések**: a kérésnek tartalmaznia kell egy relatív URL elérési utat, kivéve a fájlnevet, amely megfelel a megadott URL-mintának.
 - Nem **egyezik**: a kérésnek tartalmaznia kell egy relatív URL elérési utat, kivéve a fájlnevet, amely nem felel meg a megadott URL-mintának.
@@ -577,23 +577,23 @@ Legfontosabb információk:
    A következő értékek érhetők el a **relatív** beállításhoz:
   - **Root**: azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik. 
 
-  Például: http:\//WPC.0001. &lt;&gt;tartomány/**800001/myorigin/MyFolder**/index.htm
+  Például: http: \/ /WPC.0001. &lt; tartomány &gt; / **800001/myorigin/MyFolder**/index.htm
 
-  - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
+  - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \* . AZUREEDGE.net CNAME azonosító alapértelmezés szerint a VERIZON CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-  Például: https:\//&lt;Endpoint&gt;. azureedge.net/**MyFolder**/index.htm 
+  Például: https: \/ / &lt; Endpoint &gt; . azureedge.net/**MyFolder**/index.htm 
 
-  Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/: http:/WPC.0001. &lt;tartomány&gt;/800001/myorigin/**MyFolder**/index.htm
+  Ez az URL-cím a következő Verizon CDN állomásnévre mutat: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/myorigin/**MyFolder**/index.htm
 
 - A peremhálózati CNAME URL-címet az URL-cím összehasonlítását megelőzően a CDN URL-re írja a rendszer.
 
     Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja.
-  - CDN URL-cím:\/http:/WPC.0001. &lt;tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
+  - CDN URL-cím: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/CustomerOrigin/Path/Asset.htm
     
-  - Peremhálózati CNAME URL-cím:\//&lt;http&gt;: Endpoint. azureedge.net/Path/Asset.htm
+  - Peremhálózati CNAME URL-cím: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
     
     További információ:
-  - Egyéni tartomány: https:\//My.domain.com/Path/Asset.htm
+  - Egyéni tartomány: https: \/ /My.domain.com/Path/Asset.htm
     
     - URL elérési útja (a gyökérhez képest):/800001/CustomerOrigin/path/
     
@@ -623,7 +623,7 @@ Legfontosabb információk:
 
 A kért eszköz fájlkiterjesztés alapján azonosítja a kérelmeket.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útjának egyeztetési állapota teljesül.
+A **egyezések** / **nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útjának egyeztetési állapota teljesül.
 
 - **Egyezések**: megköveteli, hogy a kérelem URL-címe tartalmazzon egy olyan fájlkiterjesztést, amely pontosan megfelel a megadott mintának.
 
@@ -666,7 +666,7 @@ Ez a megfelelési feltétel akkor teljesül, ha a következő kiterjesztésű UR
 
 A kért objektum fájlneve alapján azonosítja a kérelmeket. Ennek a megfelelési feltételnek az alkalmazásában a fájl neve a kért objektum neve, egy pont és a fájlkiterjesztés (például index. html).
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának megfeleltetési állapotát.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának megfeleltetési állapotát.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazzon egy fájlnevet az URL-címében, amely megfelel a megadott mintának.
 - Nem **egyezik**: a kérésnek tartalmaznia kell egy fájlnevet az URL-címében, amely nem felel meg a megadott mintának.
@@ -697,7 +697,7 @@ Legfontosabb információk:
 
 Összehasonlítja a kérelem URL-címét, beleértve a fájlnevet a megadott értékre.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL elérési útjának konstans egyezési feltételét.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL elérési útjának konstans egyezési feltételét.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazzon egy URL-útvonalat, amely megfelel a megadott mintának.
 - Nem **egyezik**: a kérelem olyan URL-útvonalat tartalmaz, amely nem felel meg a megadott mintának.
@@ -709,20 +709,20 @@ Legfontosabb információk:
     A következő értékek érhetők el a **relatív** beállításhoz:
   - **Root**: azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-    Például: http:\//WPC.0001. &lt;&gt;tartományi/**800001/myorigin/MyFolder/index.htm**
+    Például: http: \/ /WPC.0001. &lt; tartományi &gt; / **800001/myorigin/MyFolder/index.htm**
 
-  - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
+  - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \* . AZUREEDGE.net CNAME azonosító alapértelmezés szerint a VERIZON CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-    Például: https:\//&lt;Endpoint&gt;. azureedge.net/**MyFolder/index.htm**
+    Például: https: \/ / &lt; Endpoint &gt; . azureedge.net/**MyFolder/index.htm**
 
-  Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/: http:/WPC.0001. &lt;tartomány&gt;/800001/myorigin/**MyFolder/index.htm**
+  Ez az URL-cím a következő Verizon CDN állomásnévre mutat: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/myorigin/**MyFolder/index.htm**
 
 - A peremhálózati CNAME URL-cím egy URL-cím összehasonlítását megelőzően a CDN URL-re íródik.
 
 Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja:
 
-- CDN URL-cím:\/http:/WPC.0001. &lt;tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
-- Peremhálózati CNAME URL-cím:\//&lt;http&gt;: Endpoint. azureedge.net/Path/Asset.htm
+- CDN URL-cím: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/CustomerOrigin/Path/Asset.htm
+- Peremhálózati CNAME URL-cím: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
 
     További információ:
     
@@ -746,7 +746,7 @@ Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ez�
 
 Összehasonlítja a kérelem URL-elérési útját a megadott [reguláris kifejezéssel](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útja megfelel a feltételnek.
+A **egyezések** / **nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-cím elérési útja megfelel a feltételnek.
 
 - **Egyezések**: megköveteli, hogy a kérelem olyan URL-útvonalat tartalmazzon, amely megfelel a megadott reguláris kifejezésnek.
 - Nem **egyezik**: a kérelem olyan URL-útvonalat tartalmaz, amely nem felel meg a megadott reguláris kifejezésnek.
@@ -757,9 +757,9 @@ Legfontosabb információk:
 
     Például mindkét URL-cím ugyanarra az objektumra mutat, ezért azonos az URL-cím elérési útja.
 
-     - CDN URL-cím:\/http:/WPC.0001. &lt;tartomány&gt;/800001/CustomerOrigin/Path/Asset.htm
+     - CDN URL-cím: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/CustomerOrigin/Path/Asset.htm
 
-     - Peremhálózati CNAME URL-cím:\/http:/My.domain.com/Path/Asset.htm
+     - Peremhálózati CNAME URL-cím: http: \/ /My.domain.com/Path/Asset.htm
 
     További információ:
     
@@ -781,7 +781,7 @@ Legfontosabb információk:
 
 Összehasonlítja a kérelem relatív URL-elérési útját a megadott helyettesítő típussal.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának egyezését.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-cím elérési útjának egyezését.
 
 - **Egyezések**: a kérésnek tartalmaznia kell egy URL-útvonalat, amely megfelel a megadott helyettesítő mintának.
 - Nem **egyezik**: a kérelem olyan URL-útvonalat tartalmaz, amely nem felel meg a megadott helyettesítő mintának.
@@ -793,19 +793,19 @@ Legfontosabb információk:
    Ez a beállítás a következő értékeket veheti fel:
      - **Root**: azt jelzi, hogy az URL-összehasonlító pont közvetlenül a CDN-állomásnév után kezdődik.
 
-       Például: http:\//WPC.0001. &lt;&gt;tartományi/**800001/myorigin/MyFolder/index.htm**
+       Például: http: \/ /WPC.0001. &lt; tartományi &gt; / **800001/myorigin/MyFolder/index.htm**
 
-     - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \*. azureedge.net CNAME azonosító alapértelmezés szerint a Verizon CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
+     - **Forrás**: azt jelzi, hogy az URL-összehasonlító pont a tartalom-hozzáférési pont után kezdődik (például/000001 vagy/800001/myorigin). Mivel a \* . AZUREEDGE.net CNAME azonosító alapértelmezés szerint a VERIZON CDN-gazdagépen lévő forrás könyvtárhoz képest jön létre, Azure CDN felhasználóknak a **forrás** értéket kell használniuk. 
 
-       Például: https:\//&lt;Endpoint&gt;. azureedge.net/**MyFolder/index.htm**
+       Például: https: \/ / &lt; Endpoint &gt; . azureedge.net/**MyFolder/index.htm**
 
-     Ez az URL-cím a következő Verizon CDN állomásnévre mutat\/: http:/WPC.0001. &lt;tartomány&gt;/800001/myorigin/**MyFolder/index.htm**
+     Ez az URL-cím a következő Verizon CDN állomásnévre mutat: http: \/ /WPC.0001. &lt; tartomány &gt; /800001/myorigin/**MyFolder/index.htm**
 
 - A peremhálózati CNAME URL-cím az URL-cím összehasonlítását megelőzően a CDN URL-re íródik.
 
     Például a következő URL-címek mindegyike ugyanarra az objektumra mutat, ezért ugyanaz az URL-cím elérési útja:
-     - CDN URL- http://wpc.0001.&ltcíme:&gt;;d omain/800001/CustomerOrigin/Path/Asset.htm
-     - Peremhálózati CNAME URL-cím:\//&lt;http&gt;: Endpoint. azureedge.net/Path/Asset.htm
+     - CDN URL-címe: http://wpc.0001.&lt ;d omain &gt; /800001/CustomerOrigin/Path/Asset.htm
+     - Peremhálózati CNAME URL-cím: http: \/ / &lt; Endpoint &gt; . azureedge.net/Path/Asset.htm
     
     További információ:
     
@@ -835,7 +835,7 @@ A következő táblázatban szereplő példák azt feltételezik, hogy ez a megf
 /80ABCD/origin/text/*   | Gyökér           | Ez a minta akkor egyezik, ha a kért eszköz megfelel a következő feltételeknek: <br />– A "forrás" nevű ügyfél-forrásnak kell lennie. <br />– A relatív elérési útnak a "text" nevű mappával kell kezdődnie. Ez azt eredményezi, hogy a kért eszköz a "text" mappában vagy egy rekurzív almappájában található.
 */CSS/* */js/*          | Gyökér vagy forrás | Ezt a mintát minden olyan CDN vagy Edge CNAME URL-cím megegyeznek, amely egy CSS vagy js mappát tartalmaz.
 *. jpg *. gif *. png       | Gyökér vagy forrás | Ezt a mintát a. jpg,. gif vagy. png végződésű összes CDN vagy Edge CNAME URL-cím egyezteti. A minta megadásának másik módja az [URL-cím elérési útjának egyeztetési feltétele](#url-path-extension).
-/images/* /media/*      | Forrás         | Ezt a mintát a CDN vagy az Edge CNAME URL-címei egyeznek meg, amelyek relatív elérési útja "images" vagy "Media" (lemezképek) vagy "média" mappa. <br />– CDN URL-cím:\/http:/WPC.0001. &lt;tartományi&gt;/800001/myorigin/images/Sales/event1.png<br />– Minta Edge CNAME URL-cím:\/http:/CDN.mydomain.com/images/Sales/event1.png
+/images/* /media/*      | Forrás         | Ezt a mintát a CDN vagy az Edge CNAME URL-címei egyeznek meg, amelyek relatív elérési útja "images" vagy "Media" (lemezképek) vagy "média" mappa. <br />– CDN URL-cím: http: \/ /WPC.0001. &lt; tartományi &gt; /800001/myorigin/images/Sales/event1.png<br />– Minta Edge CNAME URL-cím: http: \/ /CDN.mydomain.com/images/Sales/event1.png
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -847,7 +847,7 @@ A következő táblázatban szereplő példák azt feltételezik, hogy ez a megf
 
 Összehasonlítja a kérelem lekérdezési karakterláncát a megadott értékkel.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezési konstans egyeztetési feltételt.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezési konstans egyeztetési feltételt.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazzon egy URL-lekérdezési karakterláncot, amely megfelel a megadott lekérdezési karakterláncnak.
 - Nem **egyezik**: megköveteli, hogy a kérelem olyan URL-lekérdezési karakterláncot tartalmazzon, amely nem felel meg a megadott lekérdezési karakterláncnak.
@@ -884,7 +884,7 @@ Legfontosabb információk:
 
 Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott lekérdezési karakterlánc paramétert. Ez a paraméter olyan értékre van beállítva, amely megfelel egy megadott mintának. A kérelem URL-címében szereplő lekérdezési karakterlánc paraméterei (például paraméter = érték) határozzák meg, hogy ez a feltétel teljesül-e. Ez a megfeleltetési feltétel a lekérdezési karakterlánc paraméterét azonosítja a nevével, és egy vagy több értéket fogad el a paraméter értékeként. 
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy az URL-lekérdezési paraméter megfelel-e a feltételnek.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy az URL-lekérdezési paraméter megfelel-e a feltételnek.
 
 - **Egyezések**: a megadott paramétert olyan értékkel kell tartalmaznia, amely megfelel a jelen egyeztetési feltételben definiált értékek közül legalább az egyiknek.
 - **Nem egyezik**: megköveteli, hogy a kérelem megfeleljen a következő feltételek egyikének:
@@ -953,7 +953,7 @@ Legfontosabb információk:
 
 Az alábbi példa bemutatja, hogyan működik ez a beállítás bizonyos helyzetekben:
 
-Name (Név)  | Érték |  Eredmény
+Name  | Érték |  Eredmény
 ------|-------|--------
 Felhasználó  | Joe   | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca "? user = Joe".
 Felhasználó  | *     | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca felhasználói paramétert tartalmaz.
@@ -969,7 +969,7 @@ E-mail | Joe\* | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési kar
 
 Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott lekérdezési karakterlánc paramétert. Ez a paraméter olyan értékre van beállítva, amely megfelel egy megadott [reguláris kifejezésnek](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-lekérdezés regex-egyeztetési feltétele teljesül.
+A **egyezések** / **nem egyeznek** beállítás határozza meg azokat a feltételeket, amelyekben az URL-lekérdezés regex-egyeztetési feltétele teljesül.
 
 - **Egyezések**: megköveteli, hogy a kérelem tartalmazzon egy URL-lekérdezési karakterláncot, amely megfelel a megadott reguláris kifejezésnek.
 - Nem **egyezik**: megköveteli, hogy a kérelem olyan URL-lekérdezési karakterláncot tartalmazzon, amely nem felel meg a megadott reguláris kifejezésnek.
@@ -991,7 +991,7 @@ Legfontosabb információk:
 
    Vegye figyelembe, hogy a százalékos szimbólumokat el kell menekülni.
 
-- Dupla Escape speciális reguláris kifejezésű karakterek (például \^$. +), ha egy fordított perjelet szeretne felvenni a reguláris kifejezésbe.
+- Dupla Escape speciális reguláris kifejezésű karakterek (például \^ $. +), ha egy fordított perjelet szeretne felvenni a reguláris kifejezésbe.
 
    Például:
 
@@ -1017,7 +1017,7 @@ Legfontosabb információk:
 
 A megadott érték (eke) t hasonlítja össze a kérelem lekérdezési karakterláncával.
 
-A **egyezések**/**nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezés helyettesítő karakterét.
+A **egyezések** / **nem egyeznek** beállítás határozza meg, hogy a rendszer milyen feltételek teljesülése esetén teljesíti az URL-lekérdezés helyettesítő karakterét.
 
 - **Egyezések**: a kérésnek tartalmaznia kell egy URL-lekérdezési karakterláncot, amely megfelel a megadott helyettesítő értéknek.
 - Nem **egyezik**: megköveteli, hogy a kérelem olyan URL-lekérdezési karakterláncot tartalmazzon, amely nem felel meg a megadott helyettesítő értéknek.
@@ -1053,10 +1053,10 @@ Legfontosabb információk:
 
 Az alábbi példa bemutatja, hogyan működik ez a beállítás bizonyos helyzetekben:
 
- Name (Név)                 | Leírás
+ Name                 | Leírás
  ---------------------|------------
 felhasználó = Joe              | Ez a minta akkor egyezik, ha a kért URL-cím lekérdezési karakterlánca "? user = Joe".
-\*felhasználó =\* \*optout =\* | Ez a minta akkor egyezik, ha a CDN URL-lekérdezés vagy a felhasználó vagy a optout paramétert tartalmazza.
+\*felhasználó = \* \* optout =\* | Ez a minta akkor egyezik, ha a CDN URL-lekérdezés vagy a felhasználó vagy a optout paramétert tartalmazza.
 
 [Vissza a tetejére](#reference-for-rules-engine-match-conditions)
 
@@ -1066,6 +1066,6 @@ felhasználó = Joe              | Ez a minta akkor egyezik, ha a kért URL-cím
 
 - [Az Azure Content Delivery Network áttekintése](cdn-overview.md)
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
-- [Szabályok motor feltételes kifejezések](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [A szabályok motorjának funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
+- [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)

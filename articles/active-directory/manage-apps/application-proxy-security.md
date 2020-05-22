@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481228"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739968"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -47,7 +47,7 @@ Ha a továbbítót az előhitelesítési módszerként választja, akkor nem kap
 
 A hálózatra irányuló kapcsolatok létrehozása előtt alkalmazzon gazdagabb házirend-vezérlőket.
 
-A [feltételes hozzáféréssel](../conditional-access/overview.md)korlátozásokat határozhat meg, hogy milyen forgalomhoz férhet hozzá a háttérbeli alkalmazásokhoz. Olyan házirendeket hozhat létre, amelyek a hely, a hitelesítés erőssége és a felhasználói kockázati profil alapján korlátozzák a bejelentkezéseket.
+A [feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md)korlátozásokat határozhat meg, hogy a felhasználók hogyan férhetnek hozzá az alkalmazásokhoz. Olyan házirendeket hozhat létre, amelyek a hely, a hitelesítés erőssége és a felhasználói kockázati profil alapján korlátozzák a bejelentkezéseket.
 
 A feltételes hozzáférés használatával Multi-Factor Authentication házirendeket is konfigurálhat, és további biztonsági réteget adhat hozzá a felhasználói hitelesítésekhez. Emellett az alkalmazások az Azure AD feltételes hozzáférés használatával Microsoft Cloud App Security is továbbíthatók, így valós idejű monitorozást és vezérlést biztosítanak a [hozzáférési](https://docs.microsoft.com/cloud-app-security/access-policy-aad) és [munkamenet](https://docs.microsoft.com/cloud-app-security/session-policy-aad) -szabályzatok segítségével.
 
@@ -79,7 +79,7 @@ Nem kell aggódnia a helyszíni kiszolgálók karbantartásával és javításá
 
 A nem javított szoftverek nagy számú támadás esetén is fiókok. Az Azure AD Application Proxy egy Internet-méretezési szolgáltatás, amelyet a Microsoft birtokol, így mindig a legújabb biztonsági javításokat és frissítéseket kapja meg.
 
-Az Azure AD Application Proxy által közzétett alkalmazások biztonságának javítása érdekében letiltjuk a webbejáró-robotok számára az alkalmazások indexelését és archiválását. Minden alkalommal, amikor egy webrobot-robot megpróbál beolvasni egy közzétett alkalmazás robotjának beállításait, az alkalmazásproxy a következőt tartalmazó robots. txt `User-agent: * Disallow: /`fájllal válaszol.
+Az Azure AD Application Proxy által közzétett alkalmazások biztonságának javítása érdekében letiltjuk a webbejáró-robotok számára az alkalmazások indexelését és archiválását. Minden alkalommal, amikor egy webrobot-robot megpróbál beolvasni egy közzétett alkalmazás robotjának beállításait, az alkalmazásproxy a következőt tartalmazó robots. txt fájllal válaszol `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection szolgáltatás
 

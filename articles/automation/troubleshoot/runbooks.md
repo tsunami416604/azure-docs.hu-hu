@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680907"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744313"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook kapcsolatos problémák elhárítása
 
@@ -45,7 +45,7 @@ Ha a Azure Automation runbook végrehajtása során hibákat kap, a következő 
     * Ha a futtató fiók lejárt, [újítsa meg a tanúsítványt](../manage-runas-account.md#cert-renewal) .
     * [Újítsa meg a webhookot](../automation-webhooks.md#renew-a-webhook) , ha a runbook elindításához egy lejárt webhookot próbál használni.
     * [Ellenőrizze a feladatok állapotát](../automation-runbook-execution.md#job-statuses) az aktuális runbook állapotának meghatározásához és a probléma lehetséges okainak megállapításához.
-    * [További kimenet hozzáadása](../automation-runbook-output-and-messages.md#message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
+    * [További kimenet hozzáadása](../automation-runbook-output-and-messages.md#monitor-message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
     * [Kezelje](../automation-runbook-execution.md#exceptions) a feladatokban felmerülő kivételeket.
 
 1. Ezt a lépést akkor hajtsa végre, ha a hibrid Runbook-feldolgozó runbook-feladata vagy-környezete nem válaszol.
@@ -465,7 +465,7 @@ A meghívni próbált webhook le van tiltva vagy lejárt.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha a webhook le van tiltva, akkor a Azure Portalon keresztül újraengedélyezheti. Ha a webhook lejárt, törölnie kell, majd újra létre kell hoznia. Csak akkor [újíthat meg egy webhookot](../automation-webhooks.md#renew-a-webhook) , ha még nem járt le. 
+Ha a webhook le van tiltva, akkor újra engedélyezheti a Azure Portalon keresztül. Ha a webhook lejárt, törölnie kell, majd újra létre kell hoznia. Csak akkor [újíthat meg egy webhookot](../automation-webhooks.md#renew-a-webhook) , ha még nem járt le. 
 
 ## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>Forgatókönyv: 429: a kérelmek aránya jelenleg túl nagy
 
@@ -479,7 +479,7 @@ A parancsmag futtatásakor a következő hibaüzenet jelenik meg `Get-AzAutomati
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha a feladatok kimenetét olyan runbook kérdezi le, amely sok [részletes adatfolyammal](../automation-runbook-output-and-messages.md#verbose-stream)rendelkezik.
+Ez a hiba akkor fordulhat elő, ha a feladatok kimenetét olyan runbook kérdezi le, amely sok [részletes adatfolyammal](../automation-runbook-output-and-messages.md#monitor-verbose-stream)rendelkezik.
 
 ### <a name="resolution"></a>Megoldás:
 

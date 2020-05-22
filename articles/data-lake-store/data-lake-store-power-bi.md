@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691661"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744780"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
 Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt információkat a Power BI Desktop használatával.
@@ -81,15 +81,15 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
         ![Tortadiagram](./media/data-lake-store-power-bi/pie-chart.png "Vizualizációk létrehozása")
 16. Ha kijelöl egy adott országot vagy régiót az oldal szintjének szűrők közül, akkor a kiválasztott ország/régió minden városában megjelenik az illesztőprogramok száma. Például a **vizualizációk** lap **oldal szintű szűrők**területén válassza a **Brazília**elemet.
     
-    ![Ország kiválasztása](./media/data-lake-store-power-bi/select-country.png "Ország/régió kiválasztása")
+    ![Ország/régió kiválasztása](./media/data-lake-store-power-bi/select-country.png "Ország/régió kiválasztása")
 17. A tortadiagramot a rendszer automatikusan frissíti a brazil városokban lévő illesztőprogramok megjelenítéséhez.
     
-    ![Az országokban található illesztőprogramok](./media/data-lake-store-power-bi/driver-per-country.png "Illesztőprogramok országonként/régiónként")
+    ![Az országok/régiók illesztőprogramjai](./media/data-lake-store-power-bi/driver-per-country.png "Illesztőprogramok országonként/régiónként")
 18. A **fájl** menüben kattintson a **Mentés** gombra a vizualizáció Power bi Desktop fájlként való mentéséhez.
 
 ## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele Power BI szolgáltatás
 Miután létrehozta a vizualizációkat a Power BI Desktopban, megoszthatja másokkal, ha közzéteszi azt a Power BI szolgáltatás. Ennek módjával kapcsolatos útmutatásért lásd: [közzététel Power bi Desktopról](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Data Lake Storage Gen1 adatai elemzése a Data Lake Analytics használatával](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77063322"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739753"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Alkalmazásfelügyelet az Azure Active Directoryval
 
@@ -43,7 +43,7 @@ A **nagyvállalati alkalmazásokhoz** és az Azure ad-vel való felügyelethez n
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Kockázatkezelés feltételes hozzáférési szabályzatokkal
 
-A [feltételes hozzáféréssel](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) rendelkező Azure ad egyszeri bejelentkezés (SSO) összekapcsolása magas szintű biztonságot nyújt az alkalmazások eléréséhez. A biztonsági képességek közé tartozik a felhőalapú Identitáskezelés, a kockázatalapú hozzáférés-vezérlés, a natív többtényezős hitelesítés és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
+A [feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md) rendelkező Azure ad egyszeri bejelentkezés (SSO) összekapcsolása magas szintű biztonságot nyújt az alkalmazások eléréséhez. A biztonsági képességek közé tartozik a felhőalapú Identitáskezelés, a kockázatalapú hozzáférés-vezérlés, a natív többtényezős hitelesítés és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Termelékenység növelése egyszeri bejelentkezéssel
 

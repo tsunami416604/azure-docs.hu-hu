@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7de57c9a69e60e8c342e067ff1e95a0f2cfadec8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f975abcd05b92dd57eb736f076b63c88b4bf6769
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699315"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747255"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
 
@@ -147,7 +147,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -258,9 +258,14 @@ Adja meg a konfigurációs weblap URL-címét, amely lehetővé teszi az ügyfé
 
 ### <a name="crm-package"></a>CRM-csomag
 
-A **csomag helyének URL-** címe mezőben adja meg egy Azure Storage-fiók URL-címét, amely tartalmazza a feltöltött CRM Package. zip fájlt. Ennek az URL-címnek tartalmaznia kell egy írásvédett SAS-kulcsot, amely lehetővé teszi, hogy a Microsoft felvegye a csomagot ellenőrzés céljából.
+A **csomag helyének URL-** címe mezőben adja meg egy Azure Blob Storage-fiók URL-címét, amely tartalmazza a feltöltött CRM Package. zip fájlt. Egy írásvédett SAS-kulcsot is tartalmaz az URL-címben, így a Microsoft a csomagot az ellenőrzéshez is felveheti.
 
-Jelölje be a **saját csomag fájljában található több CRM-csomag**(ha van ilyen) jelölőnégyzetet. Ha igen, ügyeljen arra, hogy a. zip fájlban lévő összes csomagot tartalmazza.
+> [!IMPORTANT]
+> A közzétételi blokk elkerüléséhez győződjön meg arról, hogy a blob Storage URL-címében szereplő lejárati dátum nem járt le. A dátum a Szabályzathoz való hozzáféréssel módosítható. Azt javasoljuk, hogy a **lejárati idő** legyen legalább egy hónappal később.
+
+Jelölje be a csomagban található **több CRM-csomag**elemet, ha van ilyen. Ha igen, ügyeljen arra, hogy a. zip fájlban lévő összes csomagot tartalmazza.
+
+A csomag létrehozásával és szerkezetének frissítésével kapcsolatos részletes információkért lásd a [3. lépés: AppSource-csomag létrehozása az alkalmazáshoz](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource)című témakört.
 
 ### <a name="crm-package-availability"></a>CRM-csomag elérhetősége
 

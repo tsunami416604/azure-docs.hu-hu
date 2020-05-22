@@ -6,19 +6,19 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692411"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745402"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: SQL on-demand (előzetes verzió) használata Power BI Desktop & jelentés létrehozása
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -51,10 +51,7 @@ A következő Transact-SQL (T-SQL) parancsfájl futtatásával hozza létre a be
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
-BEGIN
-    DROP DATABASE Demo
-END;
+DROP DATABASE IF EXISTS Demo
 GO
 
 -- Create new database
@@ -62,30 +59,23 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 – hitelesítő adat létrehozása
+## <a name="2---create-data-source"></a>2 – adatforrás létrehozása
 
-Hitelesítő adatok szükségesek ahhoz, hogy az SQL igény szerinti szolgáltatás hozzáférjen a fájlokhoz a tárolóban. Hozzon létre egy olyan Storage-fiók hitelesítő adatait, amely ugyanabban a régióban található, mint a végpont. Bár az SQL igény szerint hozzáférhet a különböző régiókban található Storage-fiókokhoz, és az azonos régióban található tároló és végpont jobb teljesítményt biztosít.
+Egy adatforrás szükséges ahhoz, hogy az SQL igény szerinti szolgáltatás hozzáférjen a fájlokhoz a tárolóban. Hozzon létre egy olyan Storage-fiók adatforrását, amely ugyanabban a régióban található, mint a végpont. Bár az SQL igény szerint hozzáférhet a különböző régiókban található Storage-fiókokhoz, és az azonos régióban található tároló és végpont jobb teljesítményt biztosít.
 
-Hozza létre a hitelesítő adatokat a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
+Hozza létre az adatforrást a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
-GO
-
--- Create credentials for Census Data container which resides in a azure open data storage account
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = '';
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a secret.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="3---prepare-view"></a>3 – nézet előkészítése
 
 A következő Transact-SQL-(T-SQL-) parancsfájl futtatásával hozza létre a nézetet a Power BI külső bemutatójának alapján:
 
-Hozza létre a `usPopulationView` nézetet az adatbázison `Demo` belül a következő lekérdezéssel:
+Hozza létre a nézetet az `usPopulationView` adatbázison belül `Demo` a következő lekérdezéssel:
 
 ```sql
 DROP VIEW IF EXISTS usPopulationView;
@@ -96,7 +86,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS uspv;
 ```
@@ -118,11 +109,11 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
    ![Nyissa meg Power BI asztali alkalmazást, és válassza az adatlekérdezés lehetőséget.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. Válassza az **Azure** > **Azure SQL Database**lehetőséget. 
+2. Válassza az **Azure**  >  **Azure SQL Database**lehetőséget. 
 
    ![Válassza ki az adatforrást.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Írja be annak a kiszolgálónak a nevét, ahol az adatbázis található a **kiszolgáló** mezőben, majd írja be `Demo` az adatbázis nevét. Válassza az **Importálás** lehetőséget, majd kattintson **az OK gombra**. 
+3. Írja be annak a kiszolgálónak a nevét, ahol az adatbázis található a **kiszolgáló** mezőben, majd írja be az `Demo` adatbázis nevét. Válassza az **Importálás** lehetőséget, majd kattintson **az OK gombra**. 
 
    ![Válassza ki az adatbázist a végponton.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -137,11 +128,11 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
         ![SQL-bejelentkezés használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Válassza ki a `usPopulationView`nézetet, majd válassza a **Betöltés**lehetőséget. 
+5. Válassza ki a nézetet `usPopulationView` , majd válassza a **Betöltés**lehetőséget. 
 
    ![Válasszon ki egy nézetet a kiválasztott adatbázison.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. Várjon, amíg a művelet befejeződik, majd megjelenik egy előugró üzenet `There are pending changes in your queries that haven't been applied`. Válassza a **módosítások alkalmazása**lehetőséget. 
+6. Várjon, amíg a művelet befejeződik, majd megjelenik egy előugró üzenet `There are pending changes in your queries that haven't been applied` . Válassza a **módosítások alkalmazása**lehetőséget. 
 
    ![Kattintson a módosítások alkalmazása lehetőségre.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
@@ -156,14 +147,14 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
    ![Válassza ki a kívánt oszlopokat a térképes jelentés létrehozásához.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépésekkel:
 
 1. A Storage-fiók hitelesítő adatainak törlése
 
    ```sql
-   DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+   DROP EXTENAL DATA SOURCE AzureOpenData
    ```
 
 2. A nézet törlése

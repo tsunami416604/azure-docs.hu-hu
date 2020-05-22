@@ -8,15 +8,15 @@ ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625408"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744514"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezések (előzetes verzió) lapról
 
@@ -56,7 +56,7 @@ Ha nem sikerül bejelentkeznie, és a munkamenet-tevékenység alatt megjegyzés
 
 A legutóbbi bejelentkezési tevékenységeit bármely elérhető információ alapján keresheti meg. Megkeresheti például a legutóbbi bejelentkezési tevékenységeit operációs rendszer, hely, alkalmazás stb. alapján.
 
-1. A **Legutóbbi tevékenység áttekintése** lapon adja **meg a keresési sávon keresendő** adatokat. Írja be `My Account` például a következőt: a fiókom alkalmazás által összegyűjtött összes tevékenység keresése.
+1. A **Legutóbbi tevékenység áttekintése** lapon adja **meg a keresési sávon keresendő** adatokat. Írja be például a következőt: a fiókom `My Account` alkalmazás által összegyűjtött összes tevékenység keresése.
 
 2. Kattintson a **Keresés** gombra a keresés megkezdéséhez.
 

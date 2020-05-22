@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168648"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747005"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -25,6 +25,15 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 |**Bevezetés**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2110"></a>2.11.0
+
+- Ez a kiadás a kiosztott átviteli sebesség támogatását mutatja be. Ezek az új funkciók lehetővé teszik az egyéni maximális kiosztott átviteli sebesség beállítását a kérelmek egységében (RU/s), az autoskálázást a meglévő adatbázisokon és tárolókban, valamint a programozási támogatást Azure Cosmos DB SDK-k segítségével.
+- Probléma elhárítása a nagy mennyiségű (1 GB-nál több) dokumentum lekérdezése során az emulátor sikertelen lesz a belső hiba 500-as állapotkód esetén.
+
+### <a name="292"></a>2.9.2
+
+- Ez a kiadás kijavít egy hibát, miközben engedélyezi az MongoDb Endpoint 3,2-es verziójának támogatását. Emellett támogatást nyújt az ETL-Nyomkövetések létrehozásához a hibaelhárítási célból a LOGMAN helyett a WPR használatával.
 
 ### <a name="291"></a>2.9.1
 

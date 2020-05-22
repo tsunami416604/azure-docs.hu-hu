@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857920"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745652"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace-beli ismeretek irányítópultja a partner Centerben
 
@@ -89,7 +89,7 @@ Az alábbi hő a **látogatások**számát, a **művelet meghívását**és az *
 A hő a következő képességeket tartalmazza:
 
 - A hő egy kiegészítő rácstal rendelkezik, ahol megtekintheti a **látogatások**részleteit, a **műveleti hívásokat** és az **egyedi látogatókat** egy adott helyen. Ha kívánja, nagyíthat egy adott helyet.  
-- Az **országok spreadje** az összes olyan ország számát jelenti, amelyből az ügyfelek a kiválasztott Dátumtartomány alapján jelentettek oldal-látogatásokat.
+- Az **országok/régiók spread** az összes olyan ország/régió száma, amelyből az ügyfelek a kiválasztott Dátumtartomány alapján jelentettek oldal-látogatásokat.
 - Megkeresheti és kiválaszthatja a rács egyik országát, hogy nagyítani lehessen a térképen található helyet. A Térkép **kezdőlapjának** kiválasztásával visszaállíthatja az eredeti nézetet.
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Oldal-látogatások és egyedi látogatói trend

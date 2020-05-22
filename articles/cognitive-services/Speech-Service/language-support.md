@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726077"
+ms.locfileid: "83746508"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -140,7 +140,7 @@ Több mint 75 standard hang érhető el több mint 45 nyelven és területi beá
 | <sup>1</sup>`ar-EG` | Arab (Egyiptom) | Nő | "AR-EG-a (z)" |
 | `ar-SA` | Arab (Szaúd-Arábia) | Férfi | "AR-SA-Naayf" |
 | `bg-BG` | Bolgár | Férfi |  "BG-BG-Ivan" |
-| `ca-ES` | Katalán (Spanyolország) | Nő |  "CA-ES-HerenaRUS" |
+| `ca-ES` | Katalán | Nő |  "CA-ES-HerenaRUS" |
 | `cs-CZ` | Cseh | Férfi | "CS-CZ-Jakub" |
 | `da-DK` | Dán | Nő |  "da-DK-HelleRUS" |
 | `de-AT` | Német (Ausztria) | Férfi | "de-AT-Michael" |
@@ -313,7 +313,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás próbaverziós előfizetésének beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

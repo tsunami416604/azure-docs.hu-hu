@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699061"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747798"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -58,7 +58,7 @@ Az összes rendelés melletti százalékos érték a kijelölt dátumtartomány 
 
 ### <a name="orders-by-geography"></a>Megrendelések földrajz szerint
 
-A **Orders by földrajz** hő megjeleníti a megrendelések számát egy globális térképen, és az ügyfél országa alapján leképezett ülőhelyeket jelenít meg. Ez a hő ugyanúgy működik, mint az **[ügyfél földrajzi hő](./customer-dashboard.md#customer-by-geography)**.
+A **Orders by földrajz** hő a megrendelések számát jeleníti meg a globális térképen, és megjeleníti az ügyfél országa/régiója alapján leképezett helyeket. Ez a hő ugyanúgy működik, mint az **[ügyfél földrajzi hő](./customer-dashboard.md#customer-by-geography)**.
 
 ![A partner Center elemzi a rendeléseket földrajz szerint](./media/orders-by-geography.png)
 
@@ -103,7 +103,7 @@ Az Order Details (megrendelés részletei) tábla a 1000 Top orders (beszerzési
 - A rács minden oszlopa rendezhető.
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A szűrők az **Order Details (megrendelés részletei) táblára** alkalmazhatók, hogy csak az Önt érdeklő adatokat jelenítsék meg. Az adatszűrést ország, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján lehet szűrni.
+- A szűrők az **Order Details (megrendelés részletei) táblára** alkalmazhatók, hogy csak az Önt érdeklő adatokat jelenítsék meg. Az Adatszűrés ország/régió, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján végezhető el.
 - Mivel az Azure Marketplace-en vagy AppSource-n keresztül vásárolt SaaS-ajánlatok nem igényelnek Azure-előfizetést, a piactér-előfizetés azonosítója 00000000-0000-0000-0000-000000000000-ként fog megjelenni a **részletes megrendelések** adatszakaszban.
 
 #### <a name="orders-page-filters"></a>Megrendelések oldal szűrőinek

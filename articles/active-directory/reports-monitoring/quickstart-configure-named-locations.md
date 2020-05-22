@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74014360"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739719"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rövid útmutató: Nevesített helyek konfigurálása Azure Active Directory használatával
 
@@ -63,6 +63,5 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 További információkért lásd:
 
-- [Azure ad feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md).
-- [Tartózkodási feltételek az Azure AD feltételes hozzáférésben](../conditional-access/location-condition.md)
+- A [feltételes hozzáférésben feltételként megadott hely](../conditional-access/concept-conditional-access-conditions.md#locations).
 - [Kockázatos bejelentkezések jelentés](concept-risky-sign-ins.md).  

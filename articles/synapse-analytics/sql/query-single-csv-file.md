@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0e4208f4f9a01bc42d4c6134ec3ec4fb1cb19fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431591"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744286"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
@@ -176,7 +176,7 @@ WHERE
 ```
 
 > [!NOTE]
-> Ez a lekérdezés meghiúsul, ha a ESCAPECHAR nincs megadva, mert a "Slov, enia" vessző nem az ország neve, hanem mező elválasztója lenne. A "Slov, enia" két oszlopként lesz kezelve. Ezért az adott sornak több oszlopa is lehet, mint a többi sor, és egy oszlop a WITH záradékban megadott értékkel.
+> Ez a lekérdezés meghiúsul, ha a ESCAPECHAR nincs megadva, mert a "Slov, enia" vessző nem az ország/régió neve részeként lesz kezelve. A "Slov, enia" két oszlopként lesz kezelve. Ezért az adott sornak több oszlopa is lehet, mint a többi sor, és egy oszlop a WITH záradékban megadott értékkel.
 
 ## <a name="tab-delimited-files"></a>Tabulátorral tagolt fájlok
 
@@ -210,7 +210,7 @@ WHERE
 
 Eddig a CSV-fájl sémáját a és az összes oszlop listázásával adtuk meg. A lekérdezésben ténylegesen szükséges oszlopokat csak sorszám alapján adhatja meg a szükséges oszlopokhoz. Emellett az oszlopok nem érdeklik.
 
-A következő lekérdezés visszaadja a fájlban szereplő különböző országok neveinek számát, csak a szükséges oszlopokat adja meg:
+A következő lekérdezés egy fájl különböző ország-/régióinak nevét adja vissza, csak a szükséges oszlopokat adja meg:
 
 > [!NOTE]
 > Tekintse meg a WITH záradékot az alábbi lekérdezésben, és vegye figyelembe, hogy a sor végén található "2" (idézőjelek nélkül) a (z) *[country_name]* oszlopot határozza meg. Ez azt jelenti, hogy a *[country_name]* oszlop a fájl második oszlopa. A lekérdezés figyelmen kívül hagyja a fájl összes oszlopát, kivéve a másodikat.

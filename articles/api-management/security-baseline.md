@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649170"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736075"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -1096,7 +1096,7 @@ A felügyelt identitások használatával Azure Key Vault tanúsítványok szere
 
 **Útmutató**: biztonsági mentések ellenőrzése a szolgáltatás és a tanúsítványok biztonsági másolatokból történő visszaállításával.
 
-* [A API Management visszaállítási műveletének meghívása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [A API Management visszaállítási műveletének meghívása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 * [Azure Key Vault tanúsítványok visszaállítása](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 

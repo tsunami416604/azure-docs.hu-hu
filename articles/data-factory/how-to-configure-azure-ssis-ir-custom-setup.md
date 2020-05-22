@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606205"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747506"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime beállításainak testreszabása
 
@@ -42,7 +42,7 @@ A következő korlátozások érvényesek kizárólag a szabványos egyéni tele
 
 - Ha a *Gacutil. exe* fájllal szeretné telepíteni a szerelvényeket a globális szerelvény-gyorsítótárban (GAC), akkor az egyéni telepítés részeként meg kell adnia a *Gacutil. exe fájlt* . Vagy használhatja a *nyilvános előzetes* tárolóban megadott másolatot, amelyet később az "utasítások" szakaszban ismertetünk.
 
-- Ha a parancsfájl egyik almappájára szeretne hivatkozni, az *msiexec. exe* nem támogatja `.\` a legfelső szintű mappára mutató jelölést. Használjon olyan parancsot, `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` mint a helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
+- Ha a parancsfájl egyik almappájára szeretne hivatkozni, az *msiexec. exe* nem támogatja a `.\` legfelső szintű mappára mutató jelölést. Használjon olyan parancsot, mint a `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
 - A Windows által automatikusan létrehozott rendszergazdai megosztások vagy rejtett hálózati megosztások jelenleg nem támogatottak a Azure-SSIS IR.
 
@@ -68,7 +68,7 @@ A Azure-SSIS IR testreszabásához a következő elemek szükségesek:
 
    * Rendelkeznie kell egy *Main. cmd*nevű parancsfájl-fájllal, amely az egyéni telepítés belépési pontja.  
    * Annak érdekében, hogy a parancsfájlt csendesen lehessen végrehajtani, javasoljuk, hogy először tesztelje a helyi gépen.  
-   * Ha más eszközök (például *msiexec. exe*) által generált további naplókat szeretne feltölteni a tárolóba, adja meg az előre definiált környezeti változót `CUSTOM_SETUP_SCRIPT_LOG_DIR`, mint a parancsfájlok log mappáját (például *msiexec/i xxx. msi/quiet/lv% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
+   * Ha más eszközök (például *msiexec. exe*) által generált további naplókat szeretne feltölteni a tárolóba, adja meg az előre definiált környezeti változót, `CUSTOM_SETUP_SCRIPT_LOG_DIR` mint a parancsfájlok log mappáját (például *msiexec/i xxx. msi/quiet/lv% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ install. log*).
 
 1. [Azure Storage Explorer](https://storageexplorer.com/)letöltése, telepítése és megnyitása. Ehhez tegye a következőket:
 
@@ -123,7 +123,7 @@ A Azure-SSIS IR testreszabásához a következő elemek szükségesek:
 
      * Ha a **OH22'S HEDDA választja. I/o** -összetevő, telepítheti a [HEDDA. ](https://hedda.io/ssis-component/)A szolgáltatás megvásárlása után IO-adatminőség/-tisztító összetevő a Azure-SSIS IR oh22. Az aktuálisan integrált verzió a **1.0.13**.
 
-     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.43**.
+     * Ha kijelöli a **oh22's SQLPhonetics.net** összetevőt, a [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) adatminőség/megfelelő összetevőjét az oh22-ből telepítheti a Azure-SSIS IR a **licenckulcs** mezőben megvásárolt licenckulcs megadásával. Az aktuálisan integrált verzió a **1.0.43**.
 
      * Ha a **KINGSWAYSOFT SSIS Integration Toolkit** összetevőjét választja, a [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) -csomagot telepítheti a CRM/ERP/marketing/csoportmunka-alkalmazások, például a Microsoft Dynamics/SharePoint/Project Server, az Oracle/Salesforce marketing-felhő stb Azure-SSIS IR. számára, és a **licenc kulcs** mezőjébe írja be a számukra megvásárolt termékkulcsot. Az aktuálisan integrált verzió a **2019,2**.
 
@@ -135,7 +135,7 @@ A Azure-SSIS IR testreszabásához a következő elemek szükségesek:
 
    ![Speciális beállítások egyéni telepítésekkel](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
 
-1. Amikor beállítja vagy újrakonfigurálja a Azure-SSIS IR a PowerShell-lel, az Azure-SSIS IR elindítása előtt a `Set-AzDataFactoryV2IntegrationRuntime` parancsmag futtatásával hozzáadhatja vagy eltávolíthatja az egyéni beállításokat.
+1. Amikor beállítja vagy újrakonfigurálja a Azure-SSIS IR a PowerShell-lel, az Azure-SSIS IR elindítása előtt a parancsmag futtatásával hozzáadhatja vagy eltávolíthatja az egyéni beállításokat `Set-AzDataFactoryV2IntegrationRuntime` .
    
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
@@ -299,7 +299,7 @@ A Azure-SSIS IR testreszabásához a következő elemek szükségesek:
    
       Ha a Data Factory felhasználói felülettel állítja be vagy konfigurálja újra a Azure-SSIS IRt, jelölje be a **Azure-SSIS Integration Runtime testreszabása további rendszerkonfigurációk/összetevő-telepítések** esetén jelölőnégyzetet a **Speciális beállítások** szakaszban, majd adja meg a tároló sas URI-ját az **egyéni telepítési tároló sas URI-ja** mezőben.
    
-      Amikor beállítja vagy újrakonfigurálja a Azure-SSIS IR a PowerShell-lel, futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsmagot a tároló sas URI-jaként a `SetupScriptContainerSasUri` paraméter értékeként.
+      Amikor beállítja vagy újrakonfigurálja a Azure-SSIS IR a PowerShell-lel, futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsmagot a tároló sas URI-jaként a paraméter értékeként `SetupScriptContainerSasUri` .
 
 ## <a name="next-steps"></a>További lépések
 

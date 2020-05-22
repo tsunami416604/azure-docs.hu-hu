@@ -3,12 +3,12 @@ title: Azure Backup Server telepítése az Azure Stacken
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a munkaterhelések védeleméhez vagy biztonsági mentéséhez Azure Stackban.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77583435"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747437"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -57,7 +57,7 @@ Ha más virtuális gépekkel közösen van megosztva, a Storage-fiók mérete é
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup ideiglenes lemezes tárolásának konfigurálása
 
-Minden Azure Stack virtuális gép ideiglenes lemezes tárterülettel rendelkezik, amely kötetként `D:\`érhető el a felhasználó számára. A Azure Backup által igényelt helyi átmeneti területen konfigurálható a (z `D:\` `C:\`), és a gyorsítótár helye is elhelyezhető. Így nem kell a tárterületet a Azure Backup Server virtuális géphez csatolt adatlemezekről kifaragni.
+Minden Azure Stack virtuális gép ideiglenes lemezes tárterülettel rendelkezik, amely kötetként érhető el a felhasználó számára `D:\` . A Azure Backup által igényelt helyi átmeneti területen konfigurálható a (z `D:\` ), és a gyorsítótár helye is elhelyezhető `C:\` . Így nem kell a tárterületet a Azure Backup Server virtuális géphez csatolt adatlemezekről kifaragni.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>A biztonsági mentési adattárolók tárolása a helyi lemezen és az Azure-ban
 
@@ -91,7 +91,7 @@ A Azure Backup Server virtuális gépnek csatlakoznia kell egy tartományhoz. A 
 
 Azure Backup Server kiszolgáló kiválasztásakor Kezdje a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter Gallery rendszerképével. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalben](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt a javasolt virtuális gép használatába. A kiszolgáló virtuális gépnek ajánlott minimális követelményei a következőek: a2 standard két maggal és 3,5 GB RAM-mal.
 
-A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A cikk a [DPM Azure-beli virtuális gépként való telepítésével](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
+A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A [MABS védelmi mátrixa](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
 
 > [!NOTE]
 > Azure Backup Server úgy lett kialakítva, hogy egy dedikált, egyetlen célra készült virtuális gépen fusson. A Azure Backup Server nem telepíthető a következőre:
@@ -112,7 +112,7 @@ A Recovery Services tároló tárolási replikációs lehetőséggel választhat
 A tárreplikációs beállítás szerkesztése:
 
 1. Válassza ki a tárolót a tároló irányítópultjának és a beállítások menü megnyitásához. Ha a **Beállítások** menü nem nyílik meg, kattintson az **összes beállítás** elemre a tároló irányítópultján.
-2. A **Beállítások** menüben kattintson a biztonsági mentési **infrastruktúra** > **biztonsági mentése konfiguráció** elemre a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
+2. A **Beállítások** menüben kattintson a biztonsági mentési **infrastruktúra**  >  **biztonsági mentése konfiguráció** elemre a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -243,7 +243,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Az Azure-ba való biztonsági mentéshez a semmiből van szükség. Győződjön meg arról, hogy a megjelenő hely mérete megegyezik az Azure-ba történő biztonsági mentésre tervezett adatmennyiség legalább 5%-ában. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: a [tárolási készletek és a lemezes tárolás konfigurálása](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+    Az Azure-ba való biztonsági mentéshez a semmiből van szükség. Győződjön meg arról, hogy a megjelenő hely mérete megegyezik az Azure-ba történő biztonsági mentésre tervezett adatmennyiség legalább 5%-ában. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. A Storage-készletekkel kapcsolatos további információkért lásd: [az adattároló előkészítése](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. A **biztonsági beállítások** képernyőn adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **tovább**gombra.
 
@@ -318,7 +318,7 @@ Az első biztonsági másolat a Azure Backup Server géphez csatolt tárterület
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
-Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure- ```Get-DPMCloudConnection``` kapcsolattal, használja a parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
+Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure-kapcsolattal, használja a ```Get-DPMCloudConnection``` parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
 
 Ugyanakkor az Azure-előfizetésnek kifogástalan állapotban kell lennie. Az előfizetés állapotának megállapításához és a kezeléséhez jelentkezzen be az [előfizetési portálra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

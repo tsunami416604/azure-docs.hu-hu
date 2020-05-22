@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277110"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747709"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a Windows PowerShell StorSimple-bővítményével
 
@@ -105,7 +105,7 @@ A következő beállítások közül választhat:
      > [!NOTE]
      > Ez az előnyben részesített lehetőség, ha elfelejtette az eszköz rendszergazdai jelszavát, és nem tud kapcsolatot létesíteni az 1. vagy a 2. lehetőséggel.
 
-4. **Nyelv váltása** Ez a beállítás lehetővé teszi a megjelenítési nyelv módosítását a Windows PowerShell felületén. A támogatott nyelvek: angol, Japán, Orosz, francia, Dél-koreai, spanyol, olasz, német, kínai és brazíliai portugál.
+4. **Nyelv váltása** Ez a beállítás lehetővé teszi a megjelenítési nyelv módosítását a Windows PowerShell felületén. A támogatott nyelvek: angol, Japán, Orosz, francia, Dél-koreai, spanyol, olasz, német, kínai és portugál.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Távoli kapcsolódás a StorSimple-hez Windows PowerShell StorSimple-bővítménye használatával
 
@@ -158,7 +158,7 @@ A következő rövid leírást nyújt a Windows PowerShell-felület súgójának
 ### <a name="to-get-help-for-a-cmdlet"></a>A parancsmag súgójának beszerzése
 
 * Ha bármilyen parancsmaghoz vagy függvényhez szeretne segítséget kérni, használja a következő parancsot:`Get-Help <cmdlet-name>`
-* Bármely parancsmag online súgójának beszerzéséhez használja az előző parancsmagot a `-Online` következő paraméterrel:`Get-Help <cmdlet-name> -Online`
+* Bármely parancsmag online súgójának beszerzéséhez használja az előző parancsmagot a következő `-Online` paraméterrel:`Get-Help <cmdlet-name> -Online`
 * A teljes súgóhoz használhatja a `–Full` paramétert, és példákat is használhat a `–Examples` paraméterrel.
 
 ### <a name="to-update-help"></a>A Súgó frissítése
@@ -169,7 +169,7 @@ A súgót egyszerűen frissítheti a Windows PowerShell felületén. A következ
 1. Indítsa el a Windows PowerShellt a **Futtatás rendszergazdaként** beállítással.
 2. A parancssorba írja be a következőt:`Update-Help`
 3. A frissített súgófájlok lesznek telepítve.
-4. A súgófájlok telepítését követően írja be a következőt `Get-Help Get-Command`:. Megjeleníti azoknak a parancsmagoknak a listáját, amelyekhez a Súgó elérhető.
+4. A súgófájlok telepítését követően írja be a következőt: `Get-Help Get-Command` . Megjeleníti azoknak a parancsmagoknak a listáját, amelyekhez a Súgó elérhető.
 
 > [!NOTE]
 > A RunSpace elérhető parancsmagok listájának lekéréséhez jelentkezzen be a megfelelő menüpontba, és futtassa a `Get-Command` parancsmagot.

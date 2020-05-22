@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332536"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739099"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -63,7 +63,7 @@ A felhasználói fiókkal rendelkező felhasználók több identitással is beje
 
 ![Fogyasztói fiókok identitásai](media/technical-overview/identities.png)<br/>*Ábra: egyetlen fogyasztói fiók több identitással a Azure AD B2C*
 
-Azure AD B2C lehetővé teszi a fogyasztói fiókok profiljainak, például a megjelenítendő név, a vezetéknév, az utónév, a város és mások közös jellemzőinek kezelését. Az Azure AD-sémát kiterjesztve további információkat is tárolhat a felhasználókról. Például az országuk vagy lakhelyük, az előnyben részesített nyelv és a beállítások, például a hírlevélre vagy a többtényezős hitelesítés engedélyezésére.
+Azure AD B2C lehetővé teszi a fogyasztói fiókok profiljainak, például a megjelenítendő név, a vezetéknév, az utónév, a város és mások közös jellemzőinek kezelését. Az Azure AD-sémát kiterjesztve további információkat is tárolhat a felhasználókról. Például országa/régiója vagy tartózkodási helye, előnyben részesített nyelve és beállításai, például hogy szeretne-e előfizetni egy hírlevélre, vagy engedélyezze a többtényezős hitelesítést.
 
 További információ a felhasználói fiókok típusairól Azure AD B2C a [Azure Active Directory B2C felhasználói fiókjainak áttekintésében](user-overview.md).
 
@@ -100,7 +100,7 @@ A leggyakoribb identitás-feladatok gyors beállításához a Azure Portal szám
 A felhasználói folyamatok beállításait, például az alábbi beállításokkal konfigurálhatja az identitások viselkedését az alkalmazásokban:
 
 * A bejelentkezéshez használt fióktípus, például olyan közösségi fiókok, mint például a Facebook vagy a bejelentkezéshez e-mail-címet és jelszót használó helyi fiókok
-* A fogyasztótól begyűjtött attribútumok, például Utónév, postai kód vagy rezidens ország
+* A fogyasztótól begyűjtött attribútumok, például Utónév, postai kód vagy lakhely szerinti ország/régió
 * Azure Multi-Factor Authentication (MFA)
 * A felhasználói felület testreszabása
 * Jogcímek készlete egy jogkivonatban, amelyet az alkalmazás akkor kap, miután a felhasználó befejezte a felhasználói folyamatot
@@ -136,7 +136,7 @@ További információ az egyéni házirendekről [Azure Active Directory B2Cban]
 
 Azure AD B2C támogatja az [OpenID Connect és a OAuth 2,0 protokollt](protocols-overview.md) a felhasználói útvonalakhoz. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat.
 
-Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](tokens-overview.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek olyan Azure AD B2C-végpontokból érkeznek, `/token` mint `/authorize` a vagy a végpont. Ezekkel a jogkivonatokkal olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
+Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](tokens-overview.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek olyan Azure AD B2C-végpontokból érkeznek, mint a `/token` vagy a `/authorize` végpont. Ezekkel a jogkivonatokkal olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
 
 Külső identitások esetében a Azure AD B2C támogatja a OAuth 1,0, OAuth 2,0, OpenID Connect, SAML és WS-fed identitás-szolgáltatóval való összevonást.
 

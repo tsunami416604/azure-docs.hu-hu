@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7725a9ddd1d9559166360b27bd8a5371d8c0557e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638242"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757619"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -37,8 +37,8 @@ A következő jogkivonatok használatosak a Azure AD B2Csal folytatott kommunik�
 
 A [regisztrált alkalmazások](tutorial-register-applications.md) jogkivonatokat fogadnak és kommunikálnak a Azure ad B2C a következő végpontoknak küldött kérések küldésével:
 
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
 Az alkalmazástól a Azure AD B2Ctól kapott biztonsági jogkivonatok származhatnak a `/authorize` vagy `/token` végpontokból. Ha azonosító tokeneket szereznek be a `/authorize` végpontból, az [implicit folyamat](implicit-flow-single-page-application.md)használatával történik, amelyet gyakran használnak a JavaScript-alapú webalkalmazásokhoz való bejelentkezéshez. Ha azonosító tokeneket szereznek be a `/token` végpontból, az [engedélyezési kód folyamatával](openid-connect.md#get-a-token)történik, amely megtartja a tokent a böngészőből.
 
@@ -50,7 +50,7 @@ Az azonosító jogkivonatokban lévő jogcímeket nem adja vissza a rendszer ado
 
 A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosító jogkivonatok és a Azure AD B2C által kiállított hozzáférési jogkivonatok várhatnak.
 
-| Name | Jogcím | Példaérték | Description |
+| Name | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Azonosítja a jogkivonat kívánt címzettjét. Azure AD B2C esetében a célközönség az alkalmazás azonosítója. Az alkalmazásnak érvényesíteni kell ezt az értéket, és el kell utasítania a tokent, ha az nem egyezik. A célközönség szinonimája az erőforrásnak. |
 | Kiállító | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Emellett azt a könyvtárat is azonosítja, amelyben a felhasználó hitelesítése megtörtént. Az alkalmazásnak ellenőriznie kell a kiállítói jogcímet, hogy ellenőrizze, a jogkivonat a megfelelő végpontból származik-e. |

@@ -1,16 +1,16 @@
 ---
 title: Dinamikus csoportok használata Azure Automation Update Management
-description: Ez a cikk azt ismerteti, hogyan működnek a dinamikus csoportok a Azure Automation Update Managementokkal.
+description: Ez a cikk azt ismerteti, hogyan használhatók a dinamikus csoportok Azure Automation Update Managementokkal.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 792f69c900853d76dc260ad1de2e635e47bb2b4a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690776"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744389"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dinamikus csoportok használata az Update Managementtel
 
@@ -37,7 +37,7 @@ Az Azure-gépek dinamikus csoportos lekérdezésének meghatározásakor a köve
 
 ![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
 
-A dinamikus csoportos lekérdezés eredményének megtekintéséhez kattintson az **előnézet**gombra. Az előnézet megjeleníti a csoporttagság aktuális időpontját. A példában olyan gépeket keresünk, amelyek címkével `Role` rendelkeznek a csoport **BackendServer**. Ha további gépek szerepelnek a címkén, akkor azokat a rendszer az adott csoportra vonatkozó jövőbeli központi telepítésekhez adja hozzá.
+A dinamikus csoportos lekérdezés eredményének megtekintéséhez kattintson az **előnézet**gombra. Az előnézet megjeleníti a csoporttagság aktuális időpontját. A példában olyan gépeket keresünk, amelyek címkével rendelkeznek a `Role` csoport **BackendServer**. Ha további gépek szerepelnek a címkén, akkor azokat a rendszer az adott csoportra vonatkozó jövőbeli központi telepítésekhez adja hozzá.
 
 ![előzetes verziójú csoportok](./media/automation-update-management/preview-groups.png)
 
@@ -49,4 +49,4 @@ A nem Azure-alapú gépek dinamikus csoportja mentett kereséseket, más néven 
 
 ## <a name="next-steps"></a>További lépések
 
-A dinamikus csoport létrehozása után [létrehozhat egy frissítés központi telepítését](automation-tutorial-update-management.md).
+[Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)

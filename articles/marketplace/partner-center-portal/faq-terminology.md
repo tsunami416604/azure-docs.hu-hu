@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791476"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744567"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Kereskedelmi piactér analitikai terminológiája és gyakori kérdések
 
@@ -38,7 +38,7 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 
 ## <a name="dictionary-of-data-terms"></a>Az adatszótár kifejezése
 
-| Attribútum neve | Jelentések | Meghatározás|
+| Attribútum neve | Jelentések | Definíció|
 |---|---|---|
 | Azure-licenc típusa | Ügyfél, megrendelés | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna |
 | Azure-licenc típusa: felhőalapú megoldás szolgáltatója | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactért a felhőalapú megoldás szolgáltatóján keresztül szerzik be, aki viszonteladóként működik.|
@@ -51,7 +51,7 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 | Customer City| Ügyfél| Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól.||
 | Ügyfél-kommunikációs nyelv  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
 | Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa.|  |
-| Ügyfél országa | Ügyfél, megrendelés | Az ügyfél által megadott ország neve. Az ország eltérő lehet az ügyfél Azure-előfizetésében lévő országtól.|  |
+| Ügyfél országa/régiója | Ügyfél, megrendelés | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval.|  |
 | Ügyfél e-mail-címe| Ügyfél| A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím.||
 | Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
 | Ügyfél azonosítója | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |

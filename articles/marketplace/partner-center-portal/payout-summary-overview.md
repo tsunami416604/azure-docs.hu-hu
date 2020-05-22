@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783512"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746204"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
 
@@ -70,7 +70,7 @@ Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi so
 | participantId | A program keretében keresett partner elsődleges identitása |
 | participantIdType | Program azonosítója az ösztönző programokhoz és az értékesítőhöz, ha a program az áruházi programokhoz és az Azure Marketplace-hez |
 | participantName | A jövedelemszerzési partner neve |
-| partnerCountryCode | A kereső partner helye/országa |
+| partnerCountryCode | A jövedelemszerzési partner helye/országa/régiója |
 | Programnév | Ösztönző/tároló program neve |
 | Tranzakcióazonosító | A tranzakció egyedi azonosítója |
 | transactionCurrency | A pénznem, amelyben az eredeti ügyfél-tranzakció történt (nem a partner helyének pénzneme) |
@@ -89,7 +89,7 @@ Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi so
 | calculationDate | A keresett adat kiszámításának dátuma a rendszeren |
 | earningExchangeRate | A megfelelő USD összeg megjelenítéséhez használt árfolyam |
 | exchangeRateDate | Az EarningAmount USD kiszámításához használt Exchange-árfolyam dátuma |
-| paymentAmountWOTax | Jövedelemszerzési összeg (ÁFA nélkül) a csak &quot;elküldéses&quot; fizetések pénznemében |
+| paymentAmountWOTax | Jövedelemszerzési összeg (ÁFA nélkül) a &quot; csak elküldéses &quot; fizetések pénznemében |
 | paymentCurrency | Fizessen a partner által a fizetési profilban kiválasztott pénznemre. Csak az eljuttatott kifizetések esetében látható |
 | paymentExchangeRate | A paymentAmountWOTax a fizetési pénznemben való kiszámításához használt Exchange-árfolyam a ExchangeRateDate használatával |
 | paymentId | A fizetés egyedi azonosítója. Ez a szám látható a banki utasításban |
@@ -113,15 +113,15 @@ Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi so
 | storeFee | A Microsoft által a kereskedelmi piactéren elérhetővé tett alkalmazások vagy bővítmények díját megőrzött összeg. |
 | transactionPaymentMethod | A tranzakcióhoz használt ügyfél-fizetési eszköz (például kártya, mobil Carrier számlázás és PayPal) |
 | tpan | Harmadik féltől származó ad-hálózat |
-| customerCountry | Ügyfél országa |
+| customerCountry | Ügyfél országa/régiója |
 | customerCity | Customer City |
 | customerState | Ügyfél állapota |
 | customerZip | Ügyfél irányítószáma/irányítószám |
 | TenantID | A bérlő azonosítója |
 | externalReferenceId | A program egyedi azonosítója |
 | externalReferenceIdLabel | Egyedi azonosító felirata |
-| transactionCountryCode | Az országkód, amelyben a tranzakció történt |
-| taxCountry | Ügyfél országa |
+| transactionCountryCode | Az ország/régió kódja, amelyben a tranzakció történt |
+| taxCountry | Ügyfél országa/régiója |
 | taxState | Ügyfél állapota |
 | taxCity | Ügyfél városa |
 | taxZipCode | Az ügyfél irányítószáma |
@@ -132,7 +132,7 @@ Ez a beállítás a tranzakció előzményei lapon megjelenő egyes letételi so
 | AssetId | A Piactéri szolgáltatáshoz tartozó ügyfelek rendeléseinek egyedi azonosítója. Ez a beszerzési sor elemeit jelöli. Több eszköz is lehet. |
 | OrderId | Az ügyfél számlára vonatkozik |
 | LineItemId | Egyéni sor az ügyfél számláján |
-| Ügyfél országa | Az ügyfél által megadott ország neve. Ez az ügyfél Azure-előfizetésében szereplő országtól eltérő lehet. |
+| Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Ez eltérő lehet az ügyfél Azure-előfizetésében lévő ország/régió esetében. |
 | Ügyfél EmailAddress | Az ügyfél által megadott e-mail-cím. Ez eltérő lehet az ügyfél Azure-előfizetésében szereplő e-mail-címről. |
 | SkuId | A közzététel során definiált SKU-azonosító. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható. |
 

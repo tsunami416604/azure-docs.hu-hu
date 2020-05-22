@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70387794"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745577"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Példa: nyelv felismerése Text Analytics
 
@@ -25,7 +25,7 @@ Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos
 
 A Nyelvfelismerés funkció számos nyelvet, változatot, dialektust és néhány regionális vagy kulturális nyelvet képes felderíteni. A szolgáltatáshoz tartozó nyelvek pontos listája nincs közzétéve.
 
-Ha a tartalom ritkábban használt nyelven van kifejezve, kipróbálhatja a Nyelvfelismerés funkciót, és megtekintheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown`.
+Ha a tartalom ritkábban használt nyelven van kifejezve, kipróbálhatja a Nyelvfelismerés funkciót, és megtekintheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown` .
 
 > [!TIP]
 > A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a nyelvfelismerés számára, így a Text Analytics tárolót az adatokhoz közelebb is [telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
@@ -69,7 +69,7 @@ A kérelem meghatározásával kapcsolatos további információkért lásd [a T
 
 + Hozzon létre egy POST kérést. A kérelem API-dokumentációjának áttekintéséhez tekintse meg a [NYELVFELISMERÉS API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)-t.
 
-+ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Használjon Text Analytics erőforrást az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md). Meg kell `/text/analytics/v2.1/languages` adnia az URL-címet. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Használjon Text Analytics erőforrást az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md). Meg kell adnia `/text/analytics/v2.1/languages` az URL-címet. Példa: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
@@ -155,9 +155,9 @@ Az 1.0 pozitív pontszám a lehetséges legnagyobb megbízhatósági szintet jel
 
 ### <a name="ambiguous-content"></a>Nem egyértelmű tartalom
 
-Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter használatával kétbetűs országkód adható meg. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre `countryHint = ""` állítja.
+Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter segítségével megadhatja a kétbetűs ország/régió kódját. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre állítja `countryHint = ""` .
 
-Előfordulhat például, hogy a "Impossible" kifejezés az angol és a francia nyelvre is vonatkozik, és ha korlátozott kontextusban van megadva, akkor a válasz az "USA" országra utal. Ha ismert, hogy a szöveg eredete Franciaország, ez megadható tippként.
+Előfordulhat például, hogy a "Impossible" kifejezés az angol és a francia nyelvre is vonatkozik, és ha korlátozott kontextusban van megadva, a válasz az "USA" ország-/régió-emlékeztetőn fog alapulni. Ha ismert, hogy a szöveg eredete Franciaország, ez megadható tippként.
 
 **Input (Bemenet)**
 
@@ -209,7 +209,7 @@ A szolgáltatás most már rendelkezik további kontextussal a jobb döntés ér
     }
 ```
 
-Ha az analizátor nem tudja elemezni a bemenetet `(Unknown)`, a függvény visszaadja. Ilyen például, ha olyan szöveges blokkot küld be, amely kizárólag Arab számokból áll.
+Ha az analizátor nem tudja elemezni a bemenetet, a függvény visszaadja `(Unknown)` . Ilyen például, ha olyan szöveges blokkot küld be, amely kizárólag Arab számokból áll.
 
 ```json
     {
@@ -272,7 +272,7 @@ Ebben a cikkben az Azure-Cognitive Services Text Analytics használatával megta
 + A POST kérelem a `/languages` végponthoz egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
 + A válasz kimenete az egyes dokumentumok AZONOSÍTÓinak nyelvi azonosítóit tartalmazza. A kimenet továbbítható bármely olyan alkalmazás számára, amely elfogadja a JSON-t. Az alkalmazások közé tartoznak például az Excel és a Power BI, hogy csak néhányat említsünk.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)

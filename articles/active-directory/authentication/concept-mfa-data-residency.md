@@ -1,6 +1,6 @@
 ---
 title: Azure Multi-Factor Authentication-beli adattárolás
-description: Ismerje meg, hogy milyen személyes és szervezeti adatai vannak az Azure Multi-Factor Authentication az Ön és a felhasználók adatait, valamint azt, hogy mely információk a származási országon belül maradnak.
+description: Megtudhatja, hogy milyen személyes és szervezeti adatai vannak az Azure Multi-Factor Authentication az Ön és a felhasználók adatait, valamint azt, hogy mely információk maradnak a származási országban vagy régióban.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ce7631c0ce8ab83edc7b9cd31dfe0db3be5d7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a75e9d5c8501274553edef36b475b2bd21b7875
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309802"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738801"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure Multi-Factor Authentication
 

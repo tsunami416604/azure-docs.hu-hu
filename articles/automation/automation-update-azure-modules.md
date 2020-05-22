@@ -1,53 +1,54 @@
 ---
 title: A Azure Automation Azure PowerShell moduljainak frissítése
-description: Ez a cikk azt ismerteti, hogyan frissítheti a Azure Automation alapértelmezés szerint elérhető általános Azure PowerShell modulokat.
+description: Ez a cikk azt ismerteti, hogyan lehet a Azure Automationban alapértelmezés szerint megadott általános Azure PowerShell-modulokat frissíteni.
 services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3f2ceda6e87ce16e910f3d215c1fabe81d522f32
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b3832662d2d03c7218da20d414a43a99a9bac8e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855561"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744196"
 ---
-# <a name="update-azure-powershell-modules-in-azure-automation"></a>A Azure Automation Azure PowerShell moduljainak frissítése
+# <a name="update-azure-powershell-modules"></a>Azure PowerShell-modulok frissítése
 
-Az Automation-fiókban lévő Azure-modulok frissítéséhez az Azure- [modulok frissítése runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)kell használnia, amely nyílt forráskódúként érhető el. Ha szeretné megkezdeni az Azure-modulok frissítését az **Update-AutomationAzureModulesForAccount** runbook, töltse le az Azure-modulok frissítése a githubon a [runbook-adattárból](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) . Ezután importálhatja az Automation-fiókjába, vagy parancsfájlként futtathatja azt. A runbook az Automation-fiókban való importálásával kapcsolatos további információkért lásd: [Runbook importálása](manage-runbooks.md#import-a-runbook).
+A leggyakoribb PowerShell-modulok alapértelmezés szerint az egyes Automation-fiókokban vannak megadva. Lásd: [alapértelmezett modulok](shared-resources/modules.md#default-modules). Mivel az Azure-csapat rendszeresen frissíti az Azure-modulokat, a befoglalt parancsmagokkal végzett módosítások is előfordulhatnak. Ezek a változások, például a paraméterek átnevezése vagy a parancsmagok teljesen elavulttá váltása negatív hatással lehet a runbookok. 
 
-A leggyakoribb PowerShell-modulok alapértelmezés szerint az egyes Automation-fiókokban vannak megadva. Az Azure csapata rendszeresen frissíti az Azure-modulokat. Ezért ahhoz, hogy a modulok naprakészen maradjanak az Automation-fiókokban, az [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) runbook kell használnia.
+> [!NOTE]
+> Nem törölheti a globális modulokat, amelyek az Automation által biztosított modulok.
 
-Mivel a modulokat a termékcsoport rendszeresen frissíti, a befoglalt parancsmagokkal végzett módosítások is előfordulhatnak. Ezek a változások, például a paraméterek átnevezése vagy a parancsmagok teljesen elavulttá váltása negatív hatással lehet a runbookok.
+## <a name="set-up-an-automation-account"></a>Automation-fiók beállítása
 
-Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatok hatását, tesztelje és érvényesítse a továbblépés előtt. Ha nem rendelkezik erre a célra szánt dedikált Automation-fiókkal, érdemes lehet létrehozni egy másikat, hogy tesztelje a runbookok fejlesztésének számos különböző forgatókönyvét. Ennek a tesztelésnek tartalmaznia kell az ismétlődő módosításokat, például a PowerShell-modulok frissítését.
+Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatok hatását, győződjön meg róla, hogy tesztelni és érvényesíteni szeretné a frissítéseket. Ha nem rendelkezik erre a célra szánt dedikált Automation-fiókkal, érdemes lehet létrehozni egy másikat, hogy tesztelje a runbookok fejlesztésének számos különböző forgatókönyvét. Ennek a tesztelésnek tartalmaznia kell az ismétlődő módosításokat, például a PowerShell-modulok frissítését.
 
-Ha helyileg fejleszti a parancsfájlokat, akkor azt javasoljuk, hogy az Automation-fiókjában lévő, azonos verziójú modulokat a tesztelés során is ugyanazzal az eredménnyel kapja meg. Az eredmények ellenőrzése és a szükséges módosítások alkalmazása után áthelyezheti a módosításokat az éles környezetbe.
+Győződjön meg arról, hogy az Automation-fiókja rendelkezik az Azure-beli [futtató fiók hitelesítő adatainak](manage-runas-account.md) létrehozásával.
+
+Ha helyileg fejleszti a parancsfájlokat, akkor azt javasoljuk, hogy az Automation-fiókban lévő, a tesztelés során azonos verziójú modulokat is ugyanazzal az eredménnyel kapja meg. Az eredmények ellenőrzése és a szükséges módosítások alkalmazása után áthelyezheti a módosításokat az éles környezetbe.
 
 > [!NOTE]
 > Előfordulhat, hogy egy új Automation-fiók nem tartalmazza a legújabb modulokat.
 
-> [!NOTE]
-> Nem fogja tudni törölni a globális modulokat, amelyek az Automation által biztosított modulok.
+## <a name="obtain-a-runbook-to-use-for-updates"></a>A frissítésekhez használandó runbook beszerzése
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). 
+Az Automation-fiókban lévő Azure-modulok frissítéséhez az [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) runbook kell használnia, amely nyílt forráskódúként érhető el. A runbook az Azure-modulok frissítéséhez való használatának megkezdéséhez töltse le a GitHub-tárházból. Ezután importálhatja az Automation-fiókjába, vagy parancsfájlként futtathatja azt. A runbook az Automation-fiókban való importálásával kapcsolatos további információkért lásd: [Runbook importálása](manage-runbooks.md#import-a-runbook).
 
-## <a name="considerations"></a>Megfontolandó szempontok
+Az **Update-AutomationAzureModulesForAccount** runbook alapértelmezés szerint támogatja az Azure, a AzureRM és az az modulok frissítését. Tekintse át az [Azure-modulok frissítése runbook](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) további információt az az. Automation-modulok ezzel a runbook való frissítéséről. Az az Automation-fiókjában található modulok használatakor figyelembe kell vennie további fontos tényezőket. További információért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
 
-Az alábbiakban néhány megfontolandó szempontot figyelembe kell vennie, ha a jelen cikk használatával frissíti az Azure-modulokat:
+## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Frissítési runbook-kód használata normál PowerShell-parancsfájlként
 
-* A jelen cikkben ismertetett runbook alapértelmezés szerint támogatja az Azure, a AzureRM és az az modulok frissítését. Tekintse át az [Azure-modulok frissítése runbook](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) további információt az az. Automation-modulok ezzel a runbook való frissítéséről. Az az Automation-fiókjában található modulok használatakor figyelembe kell vennie további fontos tényezőket. További információért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
+A runbook kódot normál PowerShell-parancsfájlként is használhatja runbook helyett. Ehhez először jelentkezzen be az Azure-ba a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) parancsmaggal, majd továbbítsa `-Login $false` a parancsfájlnak.
 
-* A runbook megkezdése előtt győződjön meg arról, hogy az Automation-fiókja rendelkezik egy Azure-beli [futtató fiók hitelesítő adatainak](manage-runas-account.md) létrehozásával.
+## <a name="use-the-update-runbook-on-sovereign-clouds"></a>A szuverén felhők frissítési runbook használata
 
-* Ezt a kódot normál PowerShell-parancsfájlként használhatja runbook helyett: csak jelentkezzen be az Azure-ba a AzAccount [parancsmag használatával](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) , majd továbbítsa `-Login $false` a szkriptnek.
+Ha a runbook a szuverén felhőkön szeretné használni, a `AzEnvironment` paraméter használatával adja át a megfelelő környezetet a runbook. Elfogadható értékek: AzureCloud (Azure Public Cloud), AzureChinaCloud, AzureGermanCloud és AzureUSGovernment. Ezek az értékek a használatával kérhetők le `Get-AzEnvironment | select Name` . Ha nem adott meg értéket ehhez a parancsmaghoz, a runbook alapértelmezés szerint a AzureCloud értéket adja meg.
 
-* Ha ezt a runbook a szuverén felhőkön szeretné használni, `AzEnvironment` használja a paramétert a megfelelő környezet átadásához a runbook.  Elfogadható értékek: AzureCloud (Azure Public Cloud), AzureChinaCloud, AzureGermanCloud és AzureUSGovernment. Ezek az értékek a használatával `Get-AzEnvironment | select Name`kérhetők le. Ha nem adott meg értéket ehhez a parancsmaghoz, a runbook alapértelmezés szerint a AzureCloud értéket adja meg.
+## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Egy adott modul verziójának frissítéséhez használja a runbook frissítését
 
-* Ha a PowerShell-galéria elérhető legújabb modul helyett egy adott Azure PowerShell modul verzióját szeretné használni, adja át ezeket a verziókat az **Update-AutomationAzureModulesForAccount** runbook `ModuleVersionOverrides` választható paraméterének. Példákat a [Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
-) runbook talál. Azure PowerShell a `ModuleVersionOverrides` paraméterben nem említett modulok a PowerShell-Galéria legújabb moduljaival frissülnek. Ha nem adja meg a `ModuleVersionOverrides` paramétert, a rendszer az összes modult frissíti a PowerShell-Galéria legújabb moduljaival. Ez a viselkedés ugyanaz, mint az **Azure-modulok frissítése** gomb.
+Ha a PowerShell-galéria elérhető legújabb modul helyett egy adott Azure PowerShell modul verzióját szeretné használni, adja át ezeket a verziókat az `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook választható paraméterének. Példákat a [Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook talál. Azure PowerShell a paraméterben nem említett modulok a `ModuleVersionOverrides` PowerShell-Galéria legújabb moduljaival frissülnek. Ha nem adja meg a `ModuleVersionOverrides` paramétert, a rendszer az összes modult frissíti a PowerShell-Galéria legújabb moduljaival. Ez a viselkedés ugyanaz, mint az **Azure-modulok frissítése** gomb a Azure Portalban.
 
 ## <a name="next-steps"></a>További lépések
 
-A nyílt forráskódú [Azure-modulok frissítésével](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) kapcsolatos további információkért tekintse meg a runbook.
+* [Modulok kezelése az Azure Automationben](shared-resources/modules.md)
+* [Azure-modulok runbook frissítése](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)

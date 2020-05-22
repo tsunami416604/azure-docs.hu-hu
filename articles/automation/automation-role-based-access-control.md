@@ -1,24 +1,21 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés az Azure Automationben
-description: A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. Ez a cikk ismerteti az RBAC beállítását az Azure Automationben.
+title: A szerepkör engedélyeinek és biztonságának kezelése Azure Automation
+description: Ez a cikk azt ismerteti, hogyan használható a szerepköralapú hozzáférés-vezérlés (RBAC), amely lehetővé teszi az Azure-erőforrások hozzáférés-kezelését.
 keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cdde8d1142ec47f835e4a06e7fe2e843d796a3a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535570"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743931"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
+# <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
 A Szerepköralapú hozzáférés-vezérlés (RBAC) hozzáférés-vezérlést biztosít az Azure-erőforrásokhoz. A [RBAC](../role-based-access-control/overview.md)segítségével elkülönítheti a feladatait a csapaton belül, és csak a felhasználókhoz, csoportokhoz és alkalmazásokhoz férhet hozzá, amelyekre szükségük van a feladatok elvégzéséhez. Szerepköralapú hozzáférést biztosíthat a felhasználóknak a Azure Portal, az Azure parancssori eszközei vagy az Azure felügyeleti API-k használatával.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="roles-in-automation-accounts"></a>Az Automation-fiókok szerepkörei
 
@@ -32,7 +29,7 @@ Az Azure Automationben a hozzáférés biztosításához a megfelelő RBAC-szere
 | Automation-operátor |Az Automation-operátori szerepkör lehetővé teszi a runbook nevének és tulajdonságainak megtekintését, valamint feladatok létrehozását és kezelését egy Automation-fiókban lévő összes runbookok. Ez a szerepkör akkor hasznos, ha az Automation-fiók erőforrásait, például a hitelesítő adatokat és a runbookok szeretné megtekinteni vagy módosítani, de továbbra is lehetővé teszi, hogy a szervezet tagjai végrehajtsák ezeket a runbookok. |
 |Automation-feladatok operátora|Az Automation-feladat operátori szerepkör lehetővé teszi feladatok létrehozását és kezelését egy Automation-fiókban lévő összes runbookok.|
 |Automation Runbook operátor|Az Automation Runbook-kezelő szerepkör lehetővé teszi a Runbook nevének és tulajdonságainak megtekintését.|
-| Log Analytics közreműködő | A Log Analytics közreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását, a Storage-fiók kulcsainak beolvasását, amelyekkel konfigurálhatja az Azure Storage-ból származó naplók gyűjtését, automatizálhatja és konfigurálhatja az Automation-fiókokat, valamint megoldásokat adhat hozzá, és|
+| Log Analytics közreműködő | A Log Analytics közreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások szerkesztését. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását, a Storage-fiók kulcsainak beolvasását, amelyekkel konfigurálhatja az Azure Storage-ból származó naplók gyűjtését, automatizálhatja és konfigurálhatja az Automation-fiókokat, Azure Automation szolgáltatásokat adhat hozzá, és az Azure|
 | Log Analytics olvasó | A Log Analytics olvasó szerepkör lehetővé teszi az összes figyelési adat megtekintését és keresését, valamint a figyelési beállítások megtekintését. Ez magában foglalja az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. |
 | Közreműködő figyelése | A figyelési közreműködő szerepkör lehetővé teszi az összes figyelési adat olvasását és a figyelési beállítások frissítését.|
 | Figyelő olvasó | A figyelési olvasó szerepkör lehetővé teszi az összes figyelési adat olvasását. |
@@ -130,7 +127,7 @@ A Runbook-hatókörben az Automation Runbook operátori szerepkört kell megadni
 
 ### <a name="log-analytics-contributor"></a>Log Analytics közreműködő
 
-Egy Log Analytics közreműködő az összes figyelési és a figyelési beállítások szerkesztésével képes olvasni. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
+Egy Log Analytics közreműködő az összes figyelési és a figyelési beállítások szerkesztésével képes olvasni. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; szolgáltatások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
@@ -142,7 +139,7 @@ Egy Log Analytics közreműködő az összes figyelési és a figyelési beáll�
 |Microsoft. bepillantások/alertRules/*|Riasztási szabályok olvasása/írása/törlése.|
 |Microsoft. bepillantások/diagnosticSettings/*|Diagnosztikai beállítások olvasása/írása/törlése.|
 |Microsoft. OperationalInsights/*|Azure Monitor naplók kezelése.|
-|Microsoft. OperationsManagement/*|Megoldások kezelése a munkaterületeken.|
+|Microsoft. OperationsManagement/*|A munkaterületek Azure Automation funkcióinak kezelése.|
 |Microsoft. Resources/üzemelő példány/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
 |Microsoft. Resources/Subscriptions/resourcegroups/Deployments/*|Erőforráscsoport-telepítések létrehozása és kezelése.|
 |Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet|A Storage-fiók kulcsainak listázása.|
@@ -207,11 +204,11 @@ A felhasználói hozzáférés rendszergazdája az Azure-erőforrásokhoz való 
 |Microsoft. Authorization/*|Engedélyezés kezelése|
 |Microsoft. support/*|Támogatási jegyek létrehozása és kezelése|
 
-## <a name="onboarding-permissions"></a>Bevezetési engedélyek
+## <a name="feature-setup-permissions"></a>Szolgáltatás telepítési engedélyei
 
-A következő szakaszok azokat a minimálisan szükséges engedélyeket írják le, amelyek szükségesek a virtuális gépek a Change Tracking vagy az Update Management megoldásokhoz való bevezetéséhez.
+A következő szakaszok ismertetik a Update Management és a Change Tracking és a leltár funkcióinak engedélyezéséhez szükséges minimális engedélyeket.
 
-### <a name="permissions-for-onboarding-from-a-vm"></a>VIRTUÁLIS gépről való bevezetéshez szükséges engedélyek
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-a-vm"></a>Engedélyek a virtuális gépek Update Management és Change Tracking és leltárának engedélyezéséhez
 
 |**Művelet**  |**Engedély**  |**Minimális hatókör**  |
 |---------|---------|---------|
@@ -231,9 +228,9 @@ A következő szakaszok azokat a minimálisan szükséges engedélyeket írják 
 | Az<sup>1</sup> . virtuális gép előkészítési munkaterületének keresése       | Microsoft. OperationalInsights/munkaterületek/olvasás         | Előfizetés         |
 | A Log Analytics-szolgáltató regisztrálása |Microsoft. elemzések/regisztráció/művelet | Előfizetés|
 
-<sup>1</sup> ez az engedély szükséges a virtuálisgép-portál felületén.
+<sup>1</sup> ez az engedély szükséges a szolgáltatások virtuálisgép-portálon keresztüli engedélyezéséhez.
 
-### <a name="permissions-for-onboarding-from-automation-account"></a>Az Automation-fiókból való bevezetéshez szükséges engedélyek
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-an-automation-account"></a>Engedélyek a Update Management és a Change Tracking és a leltár automatizálási fiókból való engedélyezéséhez
 
 |**Művelet**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
@@ -248,7 +245,7 @@ A következő szakaszok azokat a minimálisan szükséges engedélyeket írják 
 |Mentett keresés létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás        | Munkaterület        |
 |Hatókör-konfiguráció létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás        | Munkaterület        |
 | A Log Analytics-szolgáltató regisztrálása |Microsoft. elemzések/regisztráció/művelet | Előfizetés|
-|**2. lépés – több virtuális gép előkészítése**     |         |         |
+|**2. lépés – több virtuális gép engedélyezése**     |         |         |
 |VMOnboarding panel – MMA-bővítmény létrehozása     | Microsoft. számítás/virtualMachines/írás           | Virtuális gép        |
 |Mentett keresés létrehozása/szerkesztése     | Microsoft. OperationalInsights/munkaterületek/írás           | Munkaterület        |
 |Hatókör-konfiguráció létrehozása/szerkesztése  | Microsoft. OperationalInsights/munkaterületek/írás   | Munkaterület|
@@ -385,7 +382,7 @@ A [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Reso
 Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-`sign-in ID of a user you wish to remove`Az előző példában cserélje le `SubscriptionID` `Resource Group Name`a, a, és `Automation account name` a fiók adatait. Ha a rendszer kéri, válassza az **Igen** lehetőséget, mielőtt továbblépne a felhasználói szerepkör-hozzárendelések eltávolítására.
+Az előző példában cserélje le a, a, `sign-in ID of a user you wish to remove` `SubscriptionID` `Resource Group Name` és `Automation account name` a fiók adatait. Ha a rendszer kéri, válassza az **Igen** lehetőséget, mielőtt továbblépne a felhasználói szerepkör-hozzárendelések eltávolítására.
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Az Automation-kezelő szerepkör-Automation-fiók felhasználói felülete
 
@@ -428,6 +425,6 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ## <a name="next-steps"></a>További lépések
 
-* A Azure Automation RBAC konfigurálásának módjával kapcsolatos további információkért tekintse meg a [RBAC és a Azure PowerShell kezelését](../role-based-access-control/role-assignments-powershell.md)ismertető témakört.
-* A runbook elindításának módjával kapcsolatos részletekért lásd: [Runbook elindítása](automation-starting-a-runbook.md).
-* A runbook-típusokkal kapcsolatos információkért tekintse meg [Azure Automation runbook típusait](automation-runbook-types.md).
+* [RBAC kezelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Runbook indítása az Azure Automationben](start-runbooks.md)
+* [Azure Automation runbook-típusok](automation-runbook-types.md)

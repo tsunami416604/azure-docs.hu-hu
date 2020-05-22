@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f4919bb6856703c5bb5f1c798a8bcf5b2a108cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647483"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747666"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Külső táblák létrehozása és használata az igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
 
@@ -112,7 +112,7 @@ CREATE EXTERNAL TABLE Taxi (
 
 A lekérdezésekben a [külső táblákat](develop-tables-external-tables.md) ugyanúgy használhatja, mint SQL Server lekérdezésekben.
 
-A következő lekérdezés azt mutatja be, hogy az előző szakaszban létrehozott, a *populáció* külső tábláját használja. 2019 csökkenő sorrendben adja vissza az ország nevét.
+A következő lekérdezés azt mutatja be, hogy az előző szakaszban létrehozott, a *populáció* külső tábláját használja. Az ország/régió nevét adja vissza a 2019-es populációban csökkenő sorrendben.
 
 > [!NOTE]
 > Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja.
@@ -130,6 +130,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lekérdezés eredményeinek a tárolóra való tárolásával kapcsolatos információkért tekintse meg az [áruház lekérdezési eredményeit a tárolóra](../sql/create-external-table-as-select.md).

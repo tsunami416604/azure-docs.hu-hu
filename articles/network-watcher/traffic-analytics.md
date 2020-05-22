@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981545"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747529"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -168,7 +168,7 @@ Regisztrálja az Azure-beli bepillantást nyújtó szolgáltatót, ha még nincs
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-Ha még nem rendelkezik Azure Storage-fiókkal a NSG-flow-naplók tárolásához a alkalmazásban, létre kell hoznia egy Storage-fiókot. Hozzon létre egy Storage-fiókot az alábbi parancs használatával. A parancs futtatása előtt cserélje le `<replace-with-your-unique-storage-account-name>` a karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ. Szükség esetén módosíthatja az erőforráscsoport nevét is.
+Ha még nem rendelkezik Azure Storage-fiókkal a NSG-flow-naplók tárolásához a alkalmazásban, létre kell hoznia egy Storage-fiókot. Hozzon létre egy Storage-fiókot az alábbi parancs használatával. A parancs futtatása előtt cserélje le a `<replace-with-your-unique-storage-account-name>` karaktert az összes Azure-helyen található egyedi névre, amely 3-24 karakter hosszúságú, és csak számokat és kisbetűket használ. Szükség esetén módosíthatja az erőforráscsoport nevét is.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -196,7 +196,7 @@ Válassza ki a következő beállításokat a képen látható módon:
 
     ![A Storage-fiók kiválasztása, a Log Analytics munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Ismételje meg az előző lépéseket minden olyan NSG, amelyhez engedélyezni szeretné a Traffic Analytics szolgáltatást. A rendszer elküldi a munkaterületnek a flow-naplókból származó adatok adatait, ezért gondoskodjon arról, hogy a helyi törvények és rendeletek engedélyezze az adattárolást abban a régióban, ahol a munkaterület létezik. Ha eltérő feldolgozási intervallumokat állított be különböző NSG, az adatok gyűjtése különböző időközönként történik. Például: engedélyezheti a 10 perces feldolgozási időközt a kritikus virtuális hálózatok esetében, és 1 órát a nem kritikus virtuális hálózatok.
+Ismételje meg az előző lépéseket minden olyan NSG, amelyhez engedélyezni szeretné a Traffic Analytics szolgáltatást. A rendszer a munkaterületre küldi a folyamatokból származó adatok adatait, ezért ügyeljen arra, hogy az országában/régiójában lévő helyi törvények és rendeletek engedélyezzék az adattárolást abban a régióban, ahol a munkaterület létezik. Ha eltérő feldolgozási intervallumokat állított be különböző NSG, az adatok gyűjtése különböző időközönként történik. Például: engedélyezheti a 10 perces feldolgozási időközt a kritikus virtuális hálózatok esetében, és 1 órát a nem kritikus virtuális hálózatok.
 
 A Traffic Analytics szolgáltatást a Azure PowerShell [set-AzNetworkWatcherConfigFlowLog PowerShell-](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) parancsmagjának használatával is konfigurálhatja. Futtassa `Get-Module -ListAvailable Az` a parancsot a telepített verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 

@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9731b869b20c7d8cfc3b1e234711c818a2b7422
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431695"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744253"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése az SQL on-demand (előzetes verzió) használatával az Azure szinapszis Analyticsben
 
@@ -22,34 +22,11 @@ Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL on-demand 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk további részének beolvasása előtt tekintse át a következő cikkeket:
-
-- [Első beállítás](query-data-storage.md#first-time-setup)
-- [Előfeltételek](query-data-storage.md#prerequisites)
+Első lépésként létre kell **hoznia egy adatbázist** egy olyan adatforrással, amely a [New York Yellow taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) Storage-fiókra hivatkozik. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
 ## <a name="dataset"></a>Adatkészlet
 
-A parketta-fájlok lekérdezése ugyanúgy végezhető el, mint a CSV-fájlok olvasása. Az egyetlen különbség, hogy a FILEFORMAT paramétert a parketta értékre kell beállítani. A jelen cikkben szereplő példák a Parquet-fájlok olvasásának sajátosságait mutatják be.
-
-> [!NOTE]
-> A Parquet-fájlok olvasásakor nem szükséges oszlopokat megadni a OPENROWSET WITH záradékban. Az SQL on-demand a parketta-fájlban található metaadatokat fogja használni, és az oszlopokat név alapján köti össze.
-
-A minta lekérdezésekhez a *Parquet/taxi* mappát fogja használni. A New York-i, a sárga taxis utazás a 2016. júliustól nyilvántartott adatokat tartalmaz. – Június 2018.
-
-Az adat az év és a hónap szerint van particionálva, és a mappa szerkezete a következő:
-
-- év = 2016
-  - hónap = 6
-  - ...
-  - hónap = 12
-- év = 2017
-  - hónap = 1
-  - ...
-  - hónap = 12
-- év = 2018
-  - hónap = 1
-  - ...
-  - hónap = 6
+Ebben a példában a [New York Yellow taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) -adatkészletet használjuk. A parketta-fájlok lekérdezése ugyanúgy végezhető el, mint a [CSV-fájlok olvasása](query-parquet-files.md). Az egyetlen különbség, hogy a `FILEFORMAT` paramétert a értékre kell beállítani `PARQUET` . A jelen cikkben szereplő példák a Parquet-fájlok olvasásának sajátosságait mutatják be.
 
 ## <a name="query-set-of-parquet-files"></a>A Parquet-fájlok lekérdezési készlete
 
@@ -57,23 +34,24 @@ A Parquet-fájlok lekérdezése során csak a fontos oszlopokat adhatja meg.
 
 ```sql
 SELECT
-        YEAR(pickup_datetime),
-        passenger_count,
+        YEAR(tpepPickupDateTime),
+        passengerCount,
         COUNT(*) AS cnt
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
     ) WITH (
-        pickup_datetime DATETIME2,
-        passenger_count INT
+        tpepPickupDateTime DATETIME2,
+        passengerCount INT
     ) AS nyc
 GROUP BY
-    passenger_count,
-    YEAR(pickup_datetime)
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    YEAR(pickup_datetime),
-    passenger_count;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="automatic-schema-inference"></a>Automatikus séma-következtetés
@@ -86,13 +64,13 @@ Az alábbi minta a Parquet-fájlok automatikus sémájának következtetéseit m
 > A Parquet-fájlok olvasásakor nem szükséges oszlopokat megadni a OPENROWSET WITH záradékban. Ebben az esetben az SQL igény szerinti lekérdezési szolgáltatása metaadatokat használ a Parquet fájlban, és az oszlopokat név alapján köti össze.
 
 ```sql
-SELECT
-    COUNT_BIG(*)
-FROM
+SELECT TOP 10 *
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'puYear=2018/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc;
+    ) AS nyc
 ```
 
 ### <a name="query-partitioned-data"></a>Particionált adatlekérdezés
@@ -104,27 +82,25 @@ Az ebben a mintában megadott adathalmaz külön almappákba van osztva (partici
 
 ```sql
 SELECT
-    nyc.filepath(1) AS [year],
-    nyc.filepath(2) AS [month],
-    payment_type,
-    SUM(fare_amount) AS fare_total
-FROM
+        YEAR(tpepPickupDateTime),
+        passengerCount,
+        COUNT(*) AS cnt
+FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=*/month=*/*.parquet',
+        BULK 'puYear=*/puMonth=*/*.snappy.parquet',
+        DATA_SOURCE = 'YellowTaxi',
         FORMAT='PARQUET'
-    ) AS nyc
+    ) nyc
 WHERE
     nyc.filepath(1) = 2017
     AND nyc.filepath(2) IN (1, 2, 3)
-    AND pickup_datetime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
+    AND tpepPickupDateTime BETWEEN CAST('1/1/2017' AS datetime) AND CAST('3/31/2017' AS datetime)
 GROUP BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type
+    passengerCount,
+    YEAR(tpepPickupDateTime)
 ORDER BY
-    nyc.filepath(1),
-    nyc.filepath(2),
-    payment_type;
+    YEAR(tpepPickupDateTime),
+    passengerCount;
 ```
 
 ## <a name="type-mapping"></a>Típus leképezése
@@ -141,12 +117,12 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | INT64 | | bigint |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |binary |
-| BINÁRIS |UTF8 |varchar \*(UTF8-rendezés) |
-| BINÁRIS |KARAKTERLÁNC |varchar \*(UTF8-rendezés) |
-| BINÁRIS |ENUM|varchar \*(UTF8-rendezés) |
+| BINÁRIS |UTF8 |varchar \* (UTF8-rendezés) |
+| BINÁRIS |KARAKTERLÁNC |varchar \* (UTF8-rendezés) |
+| BINÁRIS |ENUM|varchar \* (UTF8-rendezés) |
 | BINÁRIS |UUID |uniqueidentifier |
 | BINÁRIS |DECIMÁLIS |tizedes tört |
-| BINÁRIS |JSON |varchar (max) \*(UTF8-rendezés) |
+| BINÁRIS |JSON |varchar (max) \* (UTF8-rendezés) |
 | BINÁRIS |BSON |varbinary (max.) |
 | FIXED_LEN_BYTE_ARRAY |DECIMÁLIS |tizedes tört |
 | BYTE_ARRAY |IDŐKÖZ |varchar (max), szabványosított formátumba szerializálva |
@@ -156,7 +132,7 @@ A Parquet-fájlok minden oszlop típusának leírását tartalmazzák. A követk
 | INT32 |INT (8, hamis) |tinyint |
 | INT32 |INT (16, hamis) |int |
 | INT32 |INT (32, hamis) |bigint |
-| INT32 |DATE |dátum |
+| INT32 |DATE |date |
 | INT32 |DECIMÁLIS |tizedes tört |
 | INT32 |IDŐ (MILLIS)|time |
 | INT64 |INT (64, true) |bigint |

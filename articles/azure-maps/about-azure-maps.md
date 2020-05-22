@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 113e745e078bd5d345845318af1b10ed98f2aecb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80335735"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746916"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -155,7 +155,7 @@ További információt a [Traffic API dokumentációjában](https://docs.microso
 
 ### <a name="ip-to-location-service"></a>IP – hely szolgáltatás
 
-Az IP-cím használatával megtekintheti az IP-címek beolvasott kétbetűs országkódot. Ez a szolgáltatás segít a felhasználói élmény fokozásában azáltal, hogy a földrajzi hely alapján testreszabott alkalmazási tartalmakat biztosít.
+Az IP-cím használatával megtekintheti az IP-címek beolvasott kétbetűs ország/régió kódját. Ez a szolgáltatás segít a felhasználói élmény fokozásában azáltal, hogy a földrajzi hely alapján testreszabott alkalmazási tartalmakat biztosít.
 
 Ha további részleteket szeretne megtudni a REST API IP-címéről, olvassa el az [Azure Maps Térinformatikai API dokumentációját](https://docs.microsoft.com/rest/api/maps/geolocation).
 
@@ -180,7 +180,7 @@ A Azure Maps API-k jelenleg minden országban és régióban elérhetők, kivév
 * Kína
 * Dél-Korea
 
-Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban van-e.
+Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban/régióban található-e.
 
 ## <a name="next-steps"></a>További lépések
 

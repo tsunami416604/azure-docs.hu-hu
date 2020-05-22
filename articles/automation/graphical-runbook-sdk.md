@@ -1,28 +1,28 @@
 ---
-title: A Azure Automation grafikus runbook SDK használata
-description: Ez a cikk a Azure Automation grafikus runbook SDK használatát ismerteti.
+title: A Azure Automation grafikus runbook SDK használata (előzetes verzió)
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Automation grafikus runbook SDK (előzetes verzió).
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690740"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744335"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>A Azure Automation grafikus runbook SDK használata
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>A Azure Automation grafikus runbook SDK használata (előzetes verzió)
 
 A [grafikus runbookok](automation-graphical-authoring-intro.md) segítségével kezelheti a mögöttes Windows PowerShell-vagy PowerShell munkafolyamat-kód bonyolultságát. A Microsoft Azure Automation grafikus authoring SDK lehetővé teszi, hogy a fejlesztők grafikus runbookok hozzanak létre és szerkesszenek a Azure Automation használatával. Ez a cikk a grafikus runbook kód alapján történő létrehozásának alapvető lépéseit ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Importálja `Orchestrator.GraphRunbook.Model.dll` a csomagot a projektbe.
+Importálja a `Orchestrator.GraphRunbook.Model.dll` csomagot úgy, hogy letölti az [SDK](https://www.microsoft.com/download/details.aspx?id=50734)-t.
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook objektum példányának létrehozása
 
-Hivatkozzon a `Orchestrator.GraphRunbook.Model` szerelvényre, és hozza létre a `Orchestrator.GraphRunbook.Model.GraphRunbook` osztály egy példányát:
+Hivatkozzon a `Orchestrator.GraphRunbook.Model` szerelvényre, és hozza létre a osztály egy példányát `Orchestrator.GraphRunbook.Model.GraphRunbook` :
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -33,7 +33,7 @@ var runbook = new GraphRunbook();
 
 ## <a name="add-runbook-parameters"></a>Runbook paraméterek hozzáadása
 
-`Orchestrator.GraphRunbook.Model.Parameter` Objektumok példányainak példánya és hozzáadása a runbook:
+Objektumok példányainak példánya `Orchestrator.GraphRunbook.Model.Parameter` és hozzáadása a runbook:
 
 ```csharp
 runbook.AddParameter(
@@ -104,7 +104,7 @@ A tevékenységeket a következő osztályok használják a `Orchestrator.GraphR
 Meg kell adnia `CommandActivity` és `InvokeRunbookActivity` paramétereket kell megadni az érték-leíróként, nem közvetlen értékekként. Az értékek leírók határozzák meg, hogyan kell létrehozni a tényleges paramétereket. Jelenleg a következő érték-leírókat kell megadnia:
 
 
-|Leíró  |Meghatározás  |
+|Leíró  |Definíció  |
 |---------|---------|
 |ConstantValueDescriptor     | Egy rögzített konstans értékre hivatkozik.        |
 |RunbookParameterValueDescriptor     | Név alapján egy runbook paraméterre hivatkozik.        |
@@ -130,15 +130,15 @@ runbook.AddLink(
 
 ## <a name="save-the-runbook-to-a-file"></a>A runbook mentése fájlba
 
-`Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer` Runbook szerializálása karakterlánccá:
+`Orchestrator.GraphRunbook.Model.Serialization.RunbookSerializer`Runbook szerializálása karakterlánccá:
 
 ```csharp
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
 Ezt a karakterláncot a **. graphrunbook** kiterjesztésű fájlba mentheti. A megfelelő runbook importálhatók a Azure Automationba.
-A szerializált formátum változhat a későbbi verzióiban `Orchestrator.GraphRunbook.Model.dll`. Megígérjük a visszamenőleges kompatibilitást: bármely újabb verzióban deszerializálható bármely, egy régebbi verziójával `Orchestrator.GraphRunbook.Model.dll` szerializált runbook. A továbbítási kompatibilitás nem garantált: egy újabb verzióval szerializált runbook nem lehet a régebbi verziókban deszerializálható.
+A szerializált formátum változhat a későbbi verzióiban `Orchestrator.GraphRunbook.Model.dll` . Megígérjük a visszamenőleges kompatibilitást: bármely `Orchestrator.GraphRunbook.Model.dll` újabb verzióban deszerializálható bármely, egy régebbi verziójával szerializált runbook. A továbbítási kompatibilitás nem garantált: egy újabb verzióval szerializált runbook nem lehet a régebbi verziókban deszerializálható.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni a Azure Automation grafikus runbookok, tekintse meg a [grafikus szerzői műveletek bevezetését](automation-graphical-authoring-intro.md)ismertető témakört.
+[Grafikus runbookok készítése Azure Automation](automation-graphical-authoring-intro.md)

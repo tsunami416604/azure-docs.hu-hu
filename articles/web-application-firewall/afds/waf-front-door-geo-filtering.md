@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472605"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747786"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mit jelent az Azure Front Door egyik tartományán végzett geoszűrés?
 
 Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban előfordulhat, hogy az ország/régió alapján korlátozni szeretné a webalkalmazásokhoz való hozzáférést. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont megadott elérési útjához, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
 
-A WAF szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
+A WAF szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  Földrajzi szűrési szabály esetén a Match változó értéke REMOTE_ADDR, az operátor GeoMatch, az érték a két betűs ország/régió. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
 A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) vagy a rövid útmutató [sablonjának](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával.
 
-## <a name="country-code-reference"></a>Országkód-hivatkozás
+## <a name="countryregion-code-reference"></a>Ország/régió kódjának referenciája
 
-|Országhívószám | Ország neve |
+|Ország/régió kódja | Ország? Régió neve |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Egyesült Arab Emírségek|
@@ -98,7 +98,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID (Azonosító) | Indonézia|
+| ID | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|

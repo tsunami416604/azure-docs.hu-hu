@@ -1,51 +1,51 @@
 ---
-title: Azure-beli virtuális gépek kezelése leltár használatával | Microsoft Docs
-description: Virtuális gép kezelése leltár használatával
+title: Azure Automation leltározási gyűjtemény kezelése virtuális gépekről | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan kezelhetők a leltár-gyűjtemények a virtuális gépekről.
 services: automation
 ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617364"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745267"
 ---
-# <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
+# <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
 
-A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőforráslapján engedélyezhető. A következő leltározási információkat gyűjtheti és tekintheti meg a számítógépeken:
+Az Azure-beli virtuális gépek leltárának nyomon követését a gép erőforrás oldaláról engedélyezheti. A következő leltározási információkat gyűjtheti és tekintheti meg a számítógépeken:
 
-- Windows-szoftverek (Windows-alkalmazások és Windows-frissítések),-szolgáltatások,-fájlok és-beállításkulcsok
-- Linux-szoftverek (csomagok) démonok és fájlok
+- Windows-frissítések, Windows-alkalmazások,-szolgáltatások,-fájlok és-beállításkulcsok
+- Linuxos szoftvercsomagok, démonok és fájlok
 
-Ez a módszer egy böngészőalapú felhasználói felületet biztosít a leltározás beállításához és konfigurálásához.
+A Azure Automation Change Tracking és a leltár egy böngészőalapú felhasználói felületet biztosít a leltári gyűjtemény beállításához és konfigurálásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
-Ez a cikk feltételezi, hogy rendelkezik egy virtuális géppel a megoldás konfigurálásához. Ha nem rendelkezik Azure-virtuális géppel, [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
+Ez a cikk azt feltételezi, hogy rendelkezik egy virtuális géppel, amely lehetővé teszi a Change Tracking és a leltárt. Ha nem rendelkezik Azure-beli virtuális géppel, [létrehozhat egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Leltározás engedélyezése a virtuális gép erőforrásainak lapjáról
+## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Leltár-gyűjtemény engedélyezése a virtuális gép erőforrásának oldaláról
 
 1. Az Azure Portal bal oldali panelén válassza a **Virtuális gépek** elemet.
-2. Válasszon ki egy virtuális gépet a listáról.
+2. A virtuális gépek listájában válasszon ki egy gépet.
 3. Az **erőforrás** menüben, a **műveletek**területen válassza a **leltár**elemet.
 4. Válasszon ki egy Log Analytics munkaterületet az adatnaplók tárolásához.
     Ha az adott régióban nincsenek az Ön számára elérhető munkaterületek, a rendszer megkéri, hogy hozzon létre egy alapértelmezett munkaterületet és egy Automation-fiókot.
-5. A számítógép előkészítéséhez válassza az **Engedélyezés** lehetőséget.
+5. A számítógép engedélyezésének megkezdéséhez válassza az **Engedélyezés**lehetőséget.
 
    ![Előkészítési lehetőségek megtekintése](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Az értesítősáv tájékoztatja, hogy a megoldás engedélyezése folyamatban van. Az engedélyezés akár 15 percet is igénybe vehet. Ebben az időszakban lezárhatja az ablakot, vagy megnyithatja, és értesítést kaphat, ha a megoldás engedélyezve van. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
+    Az állapotsor értesíti arról, hogy a Change Tracking és a leltár funkció engedélyezve van. Az engedélyezés akár 15 percet is igénybe vehet. Ebben az időszakban lezárhatja az ablakot, vagy megnyithatja, és értesítést kaphat, ha a funkció engedélyezve van. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
 
-   ![A leltármegoldás megjelenítése közvetlenül az előkészítés után](./media/automation-vm-inventory/inventory-onboarded.png)
+   ![Leltár megjelenítése](./media/automation-vm-inventory/inventory-onboarded.png)
 
 Miután az üzembe helyezés befejeződött, az állapotsáv eltűnik. A rendszer még gyűjti a leltáradatokat, ezért az adatok esetleg még nem láthatók. A teljes adatgyűjtés akár 24 órát is igénybe vehet.
 
@@ -57,7 +57,7 @@ Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-d�
 2. Új gyűjteményi beállítás hozzáadásához lépjen a hozzáadni kívánt kategóriára a **Windows beállításjegyzék**, a **Windows-fájlok**vagy a **Linux-fájlok** lap kiválasztásával.
 3. Válassza ki a megfelelő kategóriát, majd kattintson a **Hozzáadás** gombra az oldal tetején.
 
-A következő táblázatok a különböző kategóriákhoz konfigurálható egyes tulajdonságokra vonatkozó információkat tartalmazzák.
+A következő szakaszokban információt talál a különböző kategóriákhoz konfigurálható egyes tulajdonságokról.
 
 ### <a name="windows-registry"></a>Windows-beállításjegyzék
 
@@ -110,14 +110,14 @@ Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számító
 
 ![Új számítógépcsoport létrehozása](./media/automation-vm-inventory/create-new-group.png)
 
-## <a name="disconnect-your-virtual-machine-from-management"></a>A virtuális gép kezelésének megszüntetése
+## <a name="disconnect-your-vm-from-management"></a>A virtuális gép leválasztása a felügyelet alól
 
-A virtuális gép eltávolítása a leltárkezelésből:
+A virtuális gép eltávolítása a leltár-kezelésből:
 
-1. Az Azure Portal bal oldali paneljén kattintson a **Log Analytics** elemre, majd válassza ki a virtuális gép előkészítése során használt munkaterületet.
+1. A Azure Portal bal oldali ablaktábláján válassza a **log Analytics**lehetőséget, majd válassza ki azt a munkaterületet, amelyet a virtuális gép Change Trackinghoz és leltárhoz való engedélyezésekor használt.
 2. A Log Analytics lapon nyissa meg az **erőforrás** menüt.
 3. Válassza a **Virtual Machines** lehetőséget a **munkaterület-adatforrások**területen.
-4. A listában válassza ki a leválasztani kívánt virtuális gépeket. A virtuális gép mellett egy zöld pipa és az **Ez a munkaterület** felirat jelenik meg az **OMS-kapcsolat** oszlopban.
+4. A listából válassza ki a leválasztani kívánt virtuális gépet. A gép a **OMS-kapcsolatok** oszlopban a **munkaterület** mellett zöld pipa jelöl.
 
    >[!NOTE]
    >Az Operations Management Suite (OMS) mostantól Azure Monitor naplók néven is ismert.
@@ -127,5 +127,6 @@ A virtuális gép eltávolítása a leltárkezelésből:
 
 ## <a name="next-steps"></a>További lépések
 
-* A virtuális gépek fájl- és beállításjegyzék-beállításainak módosításával kapcsolatos információkért lásd: [A szoftvermódosítások nyomon követése saját környezetében a Change Tracking megoldás használatával](../log-analytics/log-analytics-change-tracking.md).
-* A Windows és a csomagok frissítéseinek virtuális gépeken történő kezeléséről [a Update Management megoldás az Azure-ban](../operations-management-suite/oms-solution-update-management.md)című témakörben olvashat bővebben.
+* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
+* [A környezetében a Change Trackingával követheti a szoftverek módosításait](../log-analytics/log-analytics-change-tracking.md).
+* [Update Management az Azure-ban](../operations-management-suite/oms-solution-update-management.md).

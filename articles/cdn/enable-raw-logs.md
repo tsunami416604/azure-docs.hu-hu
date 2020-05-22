@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371631"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747305"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>HTTP nyers naplók Azure CDN
 A nyers naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A nyers naplók eltérnek a tevékenység naplóitól. A Tevékenységnaplók biztosítják az Azure-erőforrásokon végzett műveletek láthatóságát. A nyers naplók az erőforrás műveleteinek rekordját adják meg.
@@ -23,17 +23,17 @@ A nyers naplók részletes információkat biztosítanak a naplózáshoz és a h
 > [!IMPORTANT]
 > A HTTP nyers naplók szolgáltatás a Microsoft Azure CDN számára érhető el.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Nyers naplók konfigurálása a Azure CDNhoz a Microsoft profilból: 
 
-1. A Azure Portal menüben válassza a **minden erőforrás** >> **\<a-CDN-profil>** lehetőséget.
+1. A Azure Portal menüben válassza a **minden erőforrás**  >>  ** \< a-CDN-profil>** lehetőséget.
 
 2. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
 
@@ -84,7 +84,7 @@ A Microsoft-szolgáltatásból Azure CDN jelenleg nyers naplókat biztosít. A n
 | Pop                   | A felhasználói kérésre válaszoló Edge-pop. A pop-rövidítések a megfelelő metrók repülőtéri kódjai.                                                                                   |
 | Gyorsítótár állapota          | Azt jelzi, hogy az objektumot a gyorsítótárból adták-e vissza, vagy a forrásból származik-e.                                                                                                             |
 > [!IMPORTANT]
-> A HTTP nyers naplók funkció automatikusan elérhető minden, a **2020. február 25**. után létrehozott vagy frissített profilhoz. A korábban létrehozott CDN-profilok esetében az egyiknek frissítenie kell a CDN-végpontot a naplózás beállítása után. Például megnyithatja a Geo-szűrést a CDN-végpontok területen, és letilthatja a számítási feladathoz nem kapcsolódó országokat, és megtekintheti a mentést. 
+> A HTTP nyers naplók funkció automatikusan elérhető minden, a **2020. február 25**. után létrehozott vagy frissített profilhoz. A korábban létrehozott CDN-profilok esetében az egyiknek frissítenie kell a CDN-végpontot a naplózás beállítása után. Például megnyithatja a Geo-szűrést a CDN-végpontok területen, és blokkolhatja az országokat és régiókat, amelyek nem relevánsak a számítási feladatokhoz és a mentéshez. 
 
 > [!NOTE]
 > A naplók a Log Analytics profil alatt tekinthetők meg egy lekérdezés futtatásával. A minta lekérdezés A következőhöz hasonlóan fog kinézni: AzureDiagnostics | where kategória = = "AzureCdnAccessLog"

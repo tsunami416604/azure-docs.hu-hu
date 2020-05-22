@@ -8,16 +8,16 @@ ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266311"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745724"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
 Csatlakoztassa a munkahelyi Windows 10-es eszközét a szervezet hálózatához, hogy hozzáférhessen a potenciálisan korlátozott erőforrásokhoz.
@@ -61,7 +61,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \<your_organization>* Azure ad**-hez csatlakozik.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \< your_organization>* Azure ad**-hez csatlakozik.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -79,7 +79,7 @@ Ha már beállította az eszközét, és már be van állítva, akkor az alábbi
 
     ![Munkahelyi vagy iskolai fiók képernyőjének beállítása](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. A **bejelentkezett** képernyőn írja be az e-mail-címét (például: alain@contoso.com), majd kattintson a **tovább**gombra.
+4. A **bejelentkezett** képernyőn írja be az e-mail-címét (például: alain@contoso.com ), majd kattintson a **tovább**gombra.
 
     ![A bejelentkezett képernyő beolvasása](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
@@ -106,7 +106,7 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \<your_organization>* Azure ad**-hez csatlakozik.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy a hasonló szöveg jelenik meg, amely **a * \< your_organization>* Azure ad**-hez csatlakozik.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

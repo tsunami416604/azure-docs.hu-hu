@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598639"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744676"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure szinapszis-hivatkozás Azure Cosmos DBhoz: közel valós idejű elemzési használati esetek
 
@@ -106,7 +106,7 @@ Az Azure szinapszis-hivatkozás lehetővé teszi, hogy a Azure Cosmos DB ne csak
 
 Az alábbi képen a számítási feladatok mintái a Azure Cosmos DB használatával: az ![ Azure szinapszis hivatkozása Azure Cosmos db munkaterhelés-mintákhoz](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 országon belüli globális műveletekkel, hogy bemutassa a Azure Cosmos DB kiválasztásának előnyeit, mint az egyetlen valós idejű adatbázis, amely a készletkezelési platform tranzakciós és analitikai követelményeit is kikapcsolja.
+Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/régió globális műveleteivel, hogy bemutassa a Azure Cosmos DB kiválasztásának előnyeit, mint egyetlen valós idejű adatbázis, amely a készletkezelési platform tranzakciós és analitikai követelményeit is kikapcsolja.
 
 * A CompanyXYZ alapszintű üzleti adatai a készletkezelési rendszertől függenek – így a rendelkezésre állási & megbízhatósága a fő pillérre vonatkozó követelmények. A Azure Cosmos DB használatának előnyei:
 

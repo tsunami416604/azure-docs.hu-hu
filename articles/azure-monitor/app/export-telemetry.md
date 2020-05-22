@@ -2,16 +2,20 @@
 title: Telemetria folyamatos exportálása a Application Insightsból | Microsoft Docs
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298285"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744865"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
+
+> [!NOTE]
+> A folyamatos Exportálás csak a klasszikus Application Insights-erőforrások esetében támogatott. A [munkaterület-alapú Application Insights erőforrásoknak](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) [diagnosztikai beállításokat](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)kell használniuk.
+>
 
 A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdemes figyelembe venni:
 
@@ -55,13 +59,13 @@ A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 
 Az első exportálás befejezése után a következőhöz hasonló struktúra található az Azure Blob Storage-tárolóban: (ez a gyűjtött adatoktól függően változhat.)
 
-|Name (Név) | Leírás |
+|Name | Leírás |
 |:----|:------|
 | [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Esemény](export-data-model.md#events) | A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események. 
 | [Kivételek](export-data-model.md#exceptions) |A kiszolgáló és a böngésző [kivételeit](../../azure-monitor/app/asp-net-exceptions.md) jelenti.
 | [Üzenetek](export-data-model.md#trace-messages) | A [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)és a [naplózási adapterek](../../azure-monitor/app/asp-net-trace-logs.md)küldik.
-| [Mérőszámok](export-data-model.md#metrics) | Metrikai API-hívások generálása.
+| [Metrikák](export-data-model.md#metrics) | Metrikai API-hívások generálása.
 | [PerformanceCounters](export-data-model.md) | A Application Insights által gyűjtött teljesítményszámlálók.
 | [Kérelmek](export-data-model.md#requests)| A [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)küldte. A standard modulok ezt a kiszolgálót használják a kiszolgálón mért válaszidő megjelentéséhez.| 
 

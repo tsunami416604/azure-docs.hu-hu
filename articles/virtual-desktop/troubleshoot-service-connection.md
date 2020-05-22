@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612639"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747697"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
 
@@ -42,36 +42,6 @@ Get-AzRoleAssignment -SignInName <userupn>
 Győződjön meg arról, hogy a felhasználó a megfelelő hitelesítő adatokkal jelentkezik be.
 
 Ha a webes ügyfél használatban van, ellenőrizze, hogy nincsenek-e gyorsítótárazott hitelesítő adatok.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>A Windows 10 Enterprise több munkamenetet támogató virtuális gépei nem válaszolnak
-
-Ha a virtuális gép nem válaszol, és az RDP-n keresztül nem fér hozzá, akkor a gazdagép állapotának ellenőrzésével kell a diagnosztikai szolgáltatással elhárítani.
-
-A gazdagép állapotának megtekintéséhez futtassa a következő parancsmagot:
-
-```powershell
-Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
-```
-
-Ha a gazdagép állapota `NoHeartBeat`, az azt jelenti, hogy a virtuális gép nem válaszol, és az ügynök nem tud kommunikálni a Windows virtuális asztali szolgáltatással.
-
-```powershell
-Name            : 0301HP/win10pd-0.contoso.com 
-LastHeartBeat   : 4/8/2020 1:48:35 AM 
-AllowNewSession : True 
-Status          : Available 
-
-Name            : 0301HP/win10pd-1.contoso.com 
-LastHeartBeat   : 4/8/2020 1:45:44 AM 
-AllowNewSession : True 
-Status          : NoHeartBeat
-```
-
-Van néhány dolog, amit megtehet a szívverési állapot kijavítása érdekében.
-
-### <a name="update-fslogix"></a>FSLogix frissítése
-
-Ha a FSLogix nem naprakész, különösen akkor, ha az frxdrvvt. sys verziója 2.9.7205.27375, a holtpontot okozhat. Győződjön meg arról, hogy [a legújabb verzióra frissíti a FSLogix](https://go.microsoft.com/fwlink/?linkid=2084562).
 
 ## <a name="next-steps"></a>További lépések
 

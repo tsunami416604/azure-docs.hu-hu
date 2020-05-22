@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548299"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757823"
 ---
 # <a name="azure-best-practices-for-network-security"></a>A hálózati biztonságra vonatkozó Azure ajánlott eljárások
 Ez a cikk az Azure ajánlott eljárásainak gyűjteményét ismerteti a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure hálózatkezelési tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -74,7 +74,7 @@ A hálózatoknak a hagyományos védelemből kell fejlődnek, mivel a hálózato
 Az ajánlott eljárások a következők:
 
 **Ajánlott eljárás**: az erőforrásokhoz való feltételes hozzáférés biztosítása az eszközök, az identitás, a megbízhatóság, a hálózati hely és egyebek alapján.  
-**Részletek**: az [Azure ad feltételes hozzáférése](/azure/active-directory/conditional-access/overview) lehetővé teszi a megfelelő hozzáférés-vezérlés alkalmazását a szükséges feltételek alapján automatizált hozzáférés-vezérlési döntések bevezetésével. További információ: az [Azure Management hozzáférésének kezelése feltételes hozzáféréssel](../../role-based-access-control/conditional-access-azure-management.md).
+**Részletek**: az [Azure ad feltételes hozzáférése](../../active-directory/conditional-access/overview.md) lehetővé teszi a megfelelő hozzáférés-vezérlés alkalmazását a szükséges feltételek alapján automatizált hozzáférés-vezérlési döntések bevezetésével. További információ: az [Azure Management hozzáférésének kezelése feltételes hozzáféréssel](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **Ajánlott eljárás**: a portok hozzáférésének engedélyezése csak a munkafolyamat jóváhagyása után.  
 **Részletek**: az Azure-beli virtuális gépekhez való, igény szerinti [Azure Security Center](../../security-center/security-center-just-in-time.md) a bejövő forgalom zárolásának leállításához, valamint a támadásoknak való kitettség csökkentéséhez, valamint a virtuális gépekhez való csatlakozáshoz szükséges egyszerű hozzáférést biztosít.
@@ -104,7 +104,7 @@ Az Azure hálózati biztonsági berendezések jobb biztonságot biztosíthatnak,
 
 * Tűzfalas
 * Behatolás-észlelés/behatolás-megelőzés
-* Sebezhetőségek kezelése
+* Biztonságirés-kezelés
 * Alkalmazás-vezérlőelem
 * Hálózat alapú anomáliák észlelése
 * Webszűrés

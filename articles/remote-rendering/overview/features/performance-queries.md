@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682025"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757466"
 ---
 # <a name="server-side-performance-queries"></a>Kiszolgálóoldali teljesítménylekérdezések
 
@@ -35,9 +35,9 @@ Az ábrán az alábbiak láthatók:
 
 ## <a name="frame-statistics-queries"></a>Keret statisztikai lekérdezései
 
-A keret statisztikái magas szintű információkat biztosítanak az utolsó kerethez, például a késést. A `FrameStatistics` struktúrában megadott adat az ügyfél oldalán mérhető, így az API egy szinkron hívás:
+A keret statisztikái magas szintű információkat biztosítanak az utolsó kerethez, például a késést. A struktúrában megadott adat az `FrameStatistics` ügyfél oldalán mérhető, így az API egy szinkron hívás:
 
-````c#
+```cs
 void QueryFrameData(AzureSession session)
 {
     FrameStatistics frameStatistics;
@@ -46,7 +46,18 @@ void QueryFrameData(AzureSession session)
         // do something with the result
     }
 }
-````
+```
+
+```cpp
+void QueryFrameData(ApiHandle<AzureSession> session)
+{
+    FrameStatistics frameStatistics;
+    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        // do something with the result
+    }
+}
+```
 
 A beolvasott `FrameStatistics` objektum a következő tagokat tartalmazza:
 
@@ -65,17 +76,17 @@ A beolvasott `FrameStatistics` objektum a következő tagokat tartalmazza:
 
 Az összes késési érték összege általában jóval nagyobb, mint a rendelkezésre álló keret 60 Hz-nél. Ez azért van így, mert több keret van folyamatban párhuzamosan, és az új keretekre vonatkozó kérések a kívánt keretre kerülnek, ahogy az ábrán is látható. Ha azonban a késés túl nagy, az hatással van a [késői fázis újravetítésének](../../overview/features/late-stage-reprojection.md)minőségére, és veszélyeztetheti a teljes élményt.
 
-`videoFramesReceived``videoFrameReusedCount`a, a `videoFramesDiscarded` és a használatával mérhető a hálózat és a kiszolgáló teljesítménye. Ha `videoFramesReceived` alacsony és `videoFrameReusedCount` magas, akkor ez a hálózati torlódást vagy a kiszolgáló gyenge teljesítményét jelezheti. A magas `videoFramesDiscarded` érték A hálózati torlódást is jelzi.
+`videoFramesReceived`a, a `videoFrameReusedCount` és a használatával mérhető `videoFramesDiscarded` a hálózat és a kiszolgáló teljesítménye. Ha `videoFramesReceived` alacsony és `videoFrameReusedCount` magas, akkor ez a hálózati torlódást vagy a kiszolgáló gyenge teljesítményét jelezheti. A magas `videoFramesDiscarded` érték A hálózati torlódást is jelzi.
 
-Végül,, és `videoFrameMaxDelta` a beérkező képkockák és a helyi meghívások eltérésének ötlete.`timeSinceLastPresent` `videoFrameMinDelta` A nagy variancia nem stabil képarányt jelent.
+Végül,, `timeSinceLastPresent` `videoFrameMinDelta` és `videoFrameMaxDelta` a beérkező képkockák és a helyi meghívások eltérésének ötlete. A nagy variancia nem stabil képarányt jelent.
 
-A fenti értékek egyike sem teszi egyértelművé a tiszta hálózati késést (az ábrán látható piros nyilat), mert a kiszolgáló elfoglalt állapotának pontos időpontját ki kell vonni a oda-értékből `latencyPoseToReceive`. Az általános késés kiszolgálóoldali része olyan információ, amely nem érhető el az ügyfél számára. A következő bekezdés azonban elmagyarázza, hogy ez az érték hogyan közelíthető meg a kiszolgáló további bemenetei és az `networkLatency` érték alapján.
+A fenti értékek egyike sem teszi egyértelművé a tiszta hálózati késést (az ábrán látható piros nyilat), mert a kiszolgáló elfoglalt állapotának pontos időpontját ki kell vonni a oda-értékből `latencyPoseToReceive` . Az általános késés kiszolgálóoldali része olyan információ, amely nem érhető el az ügyfél számára. A következő bekezdés azonban elmagyarázza, hogy ez az érték hogyan közelíthető meg a kiszolgáló további bemenetei és az `networkLatency` érték alapján.
 
 ## <a name="performance-assessment-queries"></a>Teljesítmény-értékelési lekérdezések
 
 A *teljesítmény-értékelési lekérdezések* részletesebb információkat biztosítanak a kiszolgáló processzor-és GPU-munkaterheléséről. Mivel az adatok kérése a kiszolgálóról történik, a teljesítmény-pillanatfelvétel lekérdezése a szokásos aszinkron mintát követi:
 
-``` cs
+```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
 
 void QueryPerformanceAssessment(AzureSession session)
@@ -92,7 +103,21 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-`FrameStatistics` Az objektummal ellentétben az `PerformanceAssessment` objektum kiszolgálóoldali adatokat tartalmaz:
+```cpp
+void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+{
+    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
+    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
+    {
+        // do something with the result:
+        PerformanceAssessment result = *res->Result();
+        // ...
+
+    });
+}
+```
+
+Az objektummal ellentétben `FrameStatistics` az `PerformanceAssessment` objektum kiszolgálóoldali adatokat tartalmaz:
 
 | Tag | Magyarázat |
 |:-|:-|
@@ -102,7 +127,7 @@ void QueryPerformanceAssessment(AzureSession session)
 | utilizationGPU | Kiszolgáló GPU-kihasználtsága összesen (százalék) |
 | memoryCPU | Kiszolgáló összes fő memóriájának kihasználtsága százalékban |
 | memoryGPU | Dedikált videomemória teljes kihasználtsága a kiszolgálói GPU százalékában |
-| networkLatency | Az átlagos kétirányú hálózati késés ezredmásodpercben megadva. A fenti ábrán ez a piros nyilak összegének felel meg. Az értéket a rendszer a tényleges kiszolgáló renderelési idejének `latencyPoseToReceive` kivonásával számítja ki `FrameStatistics`. Habár ez a közelítés nem pontos, a hálózati késést is jelzi, amely az ügyfélen számított késési értékektől elkülönített. |
+| networkLatency | Az átlagos kétirányú hálózati késés ezredmásodpercben megadva. A fenti ábrán ez a piros nyilak összegének felel meg. Az értéket a rendszer a tényleges kiszolgáló renderelési idejének kivonásával számítja ki `latencyPoseToReceive` `FrameStatistics` . Habár ez a közelítés nem pontos, a hálózati késést is jelzi, amely az ügyfélen számított késési értékektől elkülönített. |
 | polygonsRendered | Az egyik keretben megjelenített háromszögek száma Ez a szám a renderelés során később kiselejtezett háromszögeket is tartalmazza. Ez azt jelenti, hogy ez a szám nem változik a különböző kamera-pozíciók között, de a teljesítmény jelentősen változhat, a háromszög-kiselejtezési aránytól függően.|
 
 Az értékek felmérése érdekében minden részhez tartozik egy minőségi besorolás, például **nagyszerű**, **jó**, **közepes**vagy **rossz**.
@@ -110,9 +135,9 @@ Ez az értékelési metrika a kiszolgáló állapotának durva jelzését biztos
 
 ## <a name="statistics-debug-output"></a>Statisztikák hibakeresési kimenete
 
-Az osztály `ARRServiceStats` a keret statisztikái és a teljesítmény-értékelési lekérdezéseket is tartalmazza, és kényelmes funkciókat biztosít a statisztikák összesített értékként való visszaküldéséhez, vagy egy előre elkészített sztringként. A következő kód a kiszolgálóoldali statisztika megjelenítésének legegyszerűbb módja az ügyfélalkalmazás számára.
+Az osztály `ARRServiceStats` egy C#-osztály, amely a keret statisztikáit és a teljesítmény-értékelési lekérdezéseket is tartalmazza, és kényelmes funkciókat biztosít a statisztikák összesített értékként való visszaküldéséhez, vagy egy előre elkészített sztringként. A következő kód a kiszolgálóoldali statisztika megjelenítésének legegyszerűbb módja az ügyfélalkalmazás számára.
 
-``` cs
+```cs
 ARRServiceStats _stats = null;
 
 void OnConnect()
@@ -144,7 +169,7 @@ A fenti kód feltölti a szöveg címkéjét a következő szöveggel:
 
 Az `GetStatsString` API az összes érték sztringjét formázza, de minden egyes érték programozott módon is lekérdezhető a `ARRServiceStats` példányból.
 
-A tagoknak vannak olyan változatai is, amelyek az értékeket az idő múlásával összesítik. Tekintse meg a `*Avg`tagokat utótaggal, `*Max`vagy `*Total`. A tag `FramesUsedForAverage` azt jelzi, hogy az összesítéshez hány képkockát használtak.
+A tagoknak vannak olyan változatai is, amelyek az értékeket az idő múlásával összesítik. Tekintse meg a tagokat utótaggal `*Avg` , `*Max` vagy `*Total` . A tag `FramesUsedForAverage` azt jelzi, hogy az összesítéshez hány képkockát használtak.
 
 ## <a name="next-steps"></a>További lépések
 

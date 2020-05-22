@@ -1,18 +1,18 @@
 ---
-title: A Azure Automation Change Tracking és leltárának áttekintése
-description: A Change Tracking és a leltár segítséget nyújt a környezetében előforduló szoftverek és Microsoft-szolgáltatások változásainak azonosításához.
+title: A Azure Automation Change Tracking és a leltár áttekintése
+description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segítséget nyújt a környezetében előforduló szoftverek és Microsoft-szolgáltatások változásainak azonosításához.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787175"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744366"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>A Change Tracking és a leltár áttekintése
+# <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
 Ez a cikk a Azure Automation Change Tracking és leltározását ismerteti. Ez a szolgáltatás nyomon követi a virtuális gépek és a kiszolgálói infrastruktúra változásait, így segít a terjesztési csomag kezelőjével kezelt szoftverekkel kapcsolatos működési és környezeti problémák azonosításában. A Change Tracking és a leltár által követett elemek a következők: 
 
@@ -50,7 +50,7 @@ Egyéb korlátozások:
 A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
 * A gyorsjavítások frissítései nem lesznek összegyűjtve a Windows Server 2016 Core RS3-gépeken.
-* Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a Azure Monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban `SvcRunLevels` található adatrögzítési mód miatt fordul elő.
+* Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a `SvcRunLevels` Azure monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban található adatrögzítési mód miatt fordul elő.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -136,7 +136,7 @@ A Change Tracking és a leltár a [Azure Security Center file Integrity monitori
 A Change Tracking és a leltár támogatja a rekurziót, ami lehetővé teszi helyettesítő karakterek megadását a címtárak közötti nyomkövetés egyszerűsítése érdekében. A rekurzió olyan környezeti változókat is biztosít, amelyek lehetővé teszik a fájlok különböző környezetekben történő nyomon követését több vagy dinamikus meghajtó nevével. A következő lista a rekurzió konfigurálásakor szükséges általános tudnivalókat tartalmazza:
 
 * Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
-* A helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például **\\c:\mappa fájl*** vagy **/etc/*. conf**.
+* A helyettesítő karakterek csak az elérési út utolsó szegmensében használhatók, például **c:\mappa \\ fájl*** vagy **/etc/*. conf**.
 * Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
 * Az elérési út beállításakor Kerülje az általános elérési utak nevét, mivel az ilyen típusú beállítás túl sok mappa átjárását okozhatja.
 
@@ -184,17 +184,18 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a\\"\\c\\:\\Windows system32 drivers" kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
-|Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a\\FileSystemPath\\=\\=\\"\\c: Windows system32 illesztőprogramok, illetve a gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a "c: \\ Windows \\ System32 \\ Drivers \\ " kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
+|Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a FileSystemPath = = "c: \\ Windows system32 illesztőprogramok, illetve a \\ \\ \\ \\ gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "Microsoft Services" és a SvcName a következőt tartalmazza: "W3SVC" és SvcState = = "leállítva"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "DAEMONS" és a SvcName tartalmazza az "SSH" és a SvcState! = "Running"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "szoftver" és a ChangeCategory = = "hozzáadva"|Olyan környezetekhez hasznos, amelyeknek szükségük van a zárolt szoftveres konfigurációkra.|
 |ConfigurationData <br>&#124;, ahol a SoftwareName tartalmazza a "figyelési ügynököt" és a CurrentVersion! = "8.0.11081.0"|Hasznos, ha azt látja, hogy mely gépeken van telepítve elavult vagy nem megfelelő szoftververzió. Ez a lekérdezés a legutóbbi jelentett konfigurációs állapotot jelenti, de nem jelenti a módosításokat.|
-|Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @\\"\\HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows CurrentVersion QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
-|Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza\\:\\@\\"\\HKEY_LOCAL_MACHINE\\System\\CurrentControlSet Services SharedAccess Parameters FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
+|Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
+|Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ Parameters \\ FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
 
 ## <a name="next-steps"></a>További lépések
 
-* A runbookok Change Tracking és Leltározásával kapcsolatban lásd: a [change Tracking és a leltár kezelése](change-tracking-file-contents.md).
-* Change Tracking és leltárral kapcsolatos hibák elhárításához tekintse meg a [change Tracking és a leltár hibaelhárítása](automation-tutorial-troubleshoot-changes.md)című témakört.
-* A [naplóbeli keresések használata Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md) a részletes változások követésére szolgáló információk megtekintéséhez.
+* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
+* [Naplóbeli keresések Azure Monitor naplókban](../log-analytics/log-analytics-log-searches.md)
+* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
+* [Azure-beli virtuális gépek változásainak hibáinak megoldása](automation-tutorial-troubleshoot-changes.md)

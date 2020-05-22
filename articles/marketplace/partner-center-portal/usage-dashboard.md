@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793006"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746659"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
 
@@ -54,7 +54,7 @@ A használat összegzése tábla az összes megvásárolt ajánlat ügyfél-hasz
 
 ### <a name="usage-by-geography"></a>Használat földrajz szerint
 
-A **földrajzi hő normalizált használata** az ügyfél országa szerint leképezett használati időt jeleníti meg. Az ország színvariációja normalizált használati koncentrációt képvisel. A térképen a **Kezdőlap** gombra kattintva visszatérhet az eredeti nézethez.
+A **földrajzi hő normalizált használata** az ügyfél országa/régiója szerint leképezett használati időt jeleníti meg. Az ország/régió színvariációja normalizált használati koncentrációt jelöl. A térképen a **Kezdőlap** gombra kattintva visszatérhet az eredeti nézethez.
 
 ### <a name="usage-by-offers"></a>Használat ajánlatok szerint
 
@@ -92,7 +92,7 @@ A **használat részletei tábla** a legnépszerűbb 1000-használati rekordok s
 - A rács minden oszlopa rendezhető.
 - Az adatokat CSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a rekordok száma meghaladja a 1000-et, az adatok exportálása aszinkron módon történik egy letöltési oldalon, amely a következő 30 napra elérhető lesz.
-- A szűrők a **részletes használati adatokra** alkalmazhatók, hogy csak azokat az adatokat jelenítsék meg, amelyek érdeklik. Az adatok az ország, az értékesítési csatorna, a Piactéri licenc típusa, a használati típus, az ajánlat neve, az ajánlat típusa, az ingyenes próbaverziók, a piactér-előfizetés azonosítója, az ügyfél azonosítója és a vállalat neve szerint szűrhetők.
+- A szűrők a **részletes használati adatokra** alkalmazhatók, hogy csak azokat az adatokat jelenítsék meg, amelyek érdeklik. Az adatok az ország/régió, az értékesítési csatorna, a Piactéri licenc típusa, a használati típus, az ajánlat neve, az ajánlat típusa, az ingyenes próbaverziók, a piactér-előfizetés azonosítója, az ügyfél azonosítója és a vállalat neve alapján szűrhetők.
 
 > [!NOTE]
 > Válassza ki a **használati típust** az oldal szűrőben a diagramok megjelenítéséhez a lapon a "normalizált nézet" vagy a "nyers nézet" nézetben. A diagramok alapértelmezett nézete a "normalizált nézet".

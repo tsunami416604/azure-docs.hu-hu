@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527367"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747361"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Megfelelőség az Azure Cosmos DB-ben 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB az összes Azure-régióban elérhető. A Microsoft öt különb
 
 * **Azure nyilvános** felhő, amely globálisan elérhető.
 
-* Az **Azure China 21Vianet** a Microsoft és a 21Vianet közötti egyedi partneri kapcsolaton keresztül érhető el, amely az ország egyik legnagyobb internetszolgáltatója.
+* Az **Azure China 21Vianet** a Microsoft és a 21Vianet közötti egyedi partneri kapcsolaton keresztül érhető el, amely az ország/régió legnagyobb internetes szolgáltatója.
 
 * Az **Azure Germany** egy adatkezelői modell keretében nyújt szolgáltatásokat, amely biztosítja, hogy a vásárlói adat Németországban maradjon a T-Systems International GmbH, a Deutsche Telecom leányvállalata, a német adatkezelő nevében.
 
@@ -34,11 +34,11 @@ Annak érdekében, hogy az ügyfelek megfeleljenek a saját megfelelőségi köt
 
 Az Azure Cosmos DB által lefedett tanúsítványok köre folyamatosan bővül. A Azure Cosmos DB jelenleg a következő tanúsítvánnyal rendelkezik:
 
-| **Globálisan alkalmazható** | **USA-beli államigazgatás** | **Iparág-specifikus** | **Régió vagy ország – specifikus** |
+| **Globálisan alkalmazható** | **USA kormánya** | **Iparág-specifikus** | **Régió vagy ország – specifikus** |
 | --- | --- | --- | --- |
 | CSA-csillag minősítése | DoD SRG 2. szint | HIPAA BAA | Ausztráliai IRAP |
 | CSA-csillag igazolása | FedRAMP Moderate | HITRUST | Németországi C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR rész 11) | PCI DSS | Szingapúri MTCS szint 3 |
+| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | Szingapúri MTCS szint 3 |
 | ISO 22301:2012 | | | Spanyol ENS magas|
 | ISO 27001:2013| | | |
 | ISO 27017:2015 | | | |
@@ -51,7 +51,7 @@ Ha többet szeretne megtudni ezekről a megfelelőségi ajánlatokról és azok 
 
 A következő táblázat felsorolja a Azure Government Azure Cosmos DB által támogatott tanúsítványokat:
 
-| **Globálisan alkalmazható** | **USA-beli államigazgatás** | **Iparág-specifikus** | 
+| **Globálisan alkalmazható** | **USA kormánya** | **Iparág-specifikus** | 
 | --- | --- | --- | --- |
 | CSA-csillag minősítése | CJIS| HIPAA BAA | 
 | CSA-csillag igazolása| DoD SRG 2. szint| HITRUST  | 

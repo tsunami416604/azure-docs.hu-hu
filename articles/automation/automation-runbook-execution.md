@@ -1,16 +1,16 @@
 ---
 title: Runbook végrehajtása az Azure Automationben
-description: Ismerteti, hogy a rendszer hogyan dolgozza fel a runbook a Azure Automationban.
+description: Ez a cikk a runbookok feldolgozásának áttekintését mutatja be Azure Automationban.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994742"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743916"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -29,9 +29,6 @@ Az alábbi ábrán a [PowerShell-runbookok](automation-runbook-types.md#powershe
 ![Feladatok állapota – PowerShell-munkafolyamat](./media/automation-runbook-execution/job-statuses.png)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="runbook-execution-environment"></a>Runbook végrehajtási környezet
 
@@ -103,7 +100,7 @@ A Log Analytics-ügynökhöz és a **nxautomation** -fiókhoz elérhető naplók
 * /var/opt/Microsoft/omsagent/Run/automationworker/Worker.log – Automation Worker-napló
 
 >[!NOTE]
->A Update Management részeként bekészített **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
+>A Update Management részeként engedélyezett **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
 
 ## <a name="runbook-permissions"></a>Runbook-engedélyek
 
@@ -132,9 +129,9 @@ Az ugyanabban a homokozóban futó feladatok hatással lehetnek egymásra. Az eg
 
 A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megtekintheti az összes runbook-feladat állapotának összegzését, vagy részletezheti a Azure Portal adott runbook-feladatának részleteit. Az Log Analytics-munkaterülettel való integrációt úgy is konfigurálhatja, hogy továbbítsa a runbook feladatok állapotát és a feladatok folyamait. A Azure Monitor-naplók integrálásával kapcsolatos további információkért lásd: a [feladatok állapotának és a feladatok adatfolyamának továbbítása az automatizálásból a Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md). Lásd még: a [feladatok állapotának beszerzése](manage-runbooks.md#obtain-job-statuses) a runbook lévő állapotok kezeléséhez.
 
-| status | Leírás |
+| Állapot | Leírás |
 |:--- |:--- |
-| Befejezve |A feladat sikeresen befejeződött. |
+| Befejeződött |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |
 | Várólistán |A művelet arra vár, hogy az automatizálási feldolgozón lévő erőforrások elérhetővé váljanak, hogy el lehessen indítani. |
@@ -157,9 +154,9 @@ Ez a szakasz néhány módszert ismertet a runbookok kivételek vagy időszakos 
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
-A [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) változó határozza meg, hogy a PowerShell hogyan válaszol a megszakítást nem okozó hibára. A hibák megszakítása mindig megszűnik, és a nem `ErrorActionPreference`érinti.
+A [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) változó határozza meg, hogy a PowerShell hogyan válaszol a megszakítást nem okozó hibára. A hibák megszakítása mindig megszűnik, és a nem érinti `ErrorActionPreference` .
 
-A runbook használatakor `ErrorActionPreference`a szokásos módon megszakítást okozó hiba (például `PathNotFound` a [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) parancsmagból) leállítja a runbook befejezését. A következő példa a használatát mutatja be `ErrorActionPreference`. A végső [írási-kimeneti](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) parancs soha nem hajtható végre, mert a szkript leáll.
+A runbook használatakor a `ErrorActionPreference` szokásos módon megszakítást okozó hiba (például `PathNotFound` a [Get-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) parancsmagból) leállítja a runbook befejezését. A következő példa a használatát mutatja be `ErrorActionPreference` . A végső [írási-kimeneti](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) parancs soha nem hajtható végre, mert a szkript leáll.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -169,7 +166,7 @@ Write-Output "This message will not show"
 
 ### <a name="try-catch-finally"></a>Próbálja ki a fogást
 
-[Próbálja meg a Catch végül](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) a PowerShell-szkriptekben használni a leállítási hibák kezelésére. A szkript ezzel a mechanizmussal meghatározott kivételeket vagy általános kivételeket tud kifogni. Az `catch` utasítást a hibák nyomon követésére vagy kipróbálására kell használni. A következő példa egy nem létező fájl letöltését kísérli meg. A `System.Net.WebException` kivételt kigyűjti, és a többi kivétel utolsó értékét adja vissza.
+[Próbálja meg a Catch végül](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) a PowerShell-szkriptekben használni a leállítási hibák kezelésére. A szkript ezzel a mechanizmussal meghatározott kivételeket vagy általános kivételeket tud kifogni. Az `catch` utasítást a hibák nyomon követésére vagy kipróbálására kell használni. A következő példa egy nem létező fájl letöltését kísérli meg. A kivételt kigyűjti `System.Net.WebException` , és a többi kivétel utolsó értékét adja vissza.
 
 ```powershell-interactive
 try
@@ -189,7 +186,7 @@ catch
 
 ### <a name="throw"></a>Throw
 
-A [dob](/powershell/module/microsoft.powershell.core/about/about_throw) használatával leállítási hiba hozható fel. Ez a mechanizmus akkor lehet hasznos, ha saját logikát definiál egy runbook. Ha a parancsfájl megfelel egy olyan feltételnek, amelynek meg kell szüntetnie `throw` , akkor az utasítással leállíthatja. A következő példa ezt az utasítást használja egy kötelező Function paraméter megjelenítéséhez.
+A [dob](/powershell/module/microsoft.powershell.core/about/about_throw) használatával leállítási hiba hozható fel. Ez a mechanizmus akkor lehet hasznos, ha saját logikát definiál egy runbook. Ha a parancsfájl megfelel egy olyan feltételnek, amelynek meg kell szüntetnie, akkor az `throw` utasítással leállíthatja. A következő példa ezt az utasítást használja egy kötelező Function paraméter megjelenítéséhez.
 
 ```powershell-interactive
 function Get-ContosoFiles
@@ -205,7 +202,7 @@ A runbookok hibákat kell kezelnie. Azure Automation támogatja a PowerShell-hib
 
 Ha leállítja a hibákat, a runbook végrehajtása leáll. A runbook nem sikerült, mert a feladatok állapota sikertelen.
 
-A nem megszakítást okozó hibák lehetővé teszik a parancsfájlok folytatását még azután is, hogy azok bekövetkeztek. A megszakítást nem okozó hiba egy példa, amely akkor fordul elő, ha egy runbook `Get-ChildItem` a parancsmagot olyan elérési úttal használja, amely nem létezik. A PowerShell látja, hogy az elérési út nem létezik, hibát jelez, és folytatja a következő mappába. A hiba ebben az esetben nem állítja be a runbook-feladatok állapotát Sikertelenre, és előfordulhat, hogy a feladatot még végre kell hajtani. Ha kényszeríteni szeretné, hogy egy runbook megszakítása leálljon egy megszakítást nem okozó hiba esetén, a parancsmagot használhatja `ErrorAction Stop` .
+A nem megszakítást okozó hibák lehetővé teszik a parancsfájlok folytatását még azután is, hogy azok bekövetkeztek. A megszakítást nem okozó hiba egy példa, amely akkor fordul elő, ha egy runbook a `Get-ChildItem` parancsmagot olyan elérési úttal használja, amely nem létezik. A PowerShell látja, hogy az elérési út nem létezik, hibát jelez, és folytatja a következő mappába. A hiba ebben az esetben nem állítja be a runbook-feladatok állapotát Sikertelenre, és előfordulhat, hogy a feladatot még végre kell hajtani. Ha kényszeríteni szeretné, hogy egy runbook megszakítása leálljon egy megszakítást nem okozó hiba esetén, a `ErrorAction Stop` parancsmagot használhatja.
 
 ## <a name="calling-processes"></a>Folyamatok hívása
 
@@ -217,7 +214,7 @@ Az Azure-beli Runbook-feladatok nem férnek hozzá semmilyen eszközhöz vagy al
 
 ## <a name="webhooks"></a>Webhookok
 
-A külső szolgáltatások, például az Azure DevOps Services és a GitHub, Azure Automationban indíthatnak el runbook. Ilyen típusú indítás esetén a szolgáltatás egy [webhookot](automation-webhooks.md) használ egyetlen HTTP-kérelem használatával. A webhookok használata lehetővé teszi, hogy a runbookok teljes Azure Automation megoldás megvalósítása nélkül induljon el. 
+A külső szolgáltatások, például az Azure DevOps Services és a GitHub, Azure Automationban indíthatnak el runbook. Ilyen típusú indítás esetén a szolgáltatás egy [webhookot](automation-webhooks.md) használ egyetlen HTTP-kérelem használatával. A webhookok használata lehetővé teszi, hogy a runbookok teljes Azure Automation funkció megvalósítása nélkül induljon el. 
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>Megosztott erőforrások
 
@@ -231,7 +228,6 @@ A gyermek runbookok használata csökkenti a szülő runbook befejezésének tel
 
 ## <a name="next-steps"></a>További lépések
 
-* A runbook használatának megkezdéséhez lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
-* A PowerShell-lel kapcsolatos további információk, beleértve a nyelvi referenciákat és a tanulási modulokat, lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Runbookok kezelése Azure Automation](manage-runbooks.md)
+* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

@@ -3,12 +3,12 @@ title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "81381677"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747475"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -29,7 +29,7 @@ A felügyeleti csoport nevét a portál, a PowerShell vagy az Azure CLI használ
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki az átnevezni kívánt felügyeleti csoportot.
 
@@ -76,7 +76,7 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki a törölni kívánt felügyeleti csoportot.
 
@@ -119,7 +119,7 @@ Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy ö
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. A felügyeleti csoport hierarchia lapja betöltődik. Ezen a lapon megtekintheti az összes olyan felügyeleti csoportot és előfizetést, amelyhez hozzáfér. Ha kiválasztja a csoport nevét, a hierarchia egy szintjének kiválasztására kerül sor. A navigáció ugyanúgy működik, mint a fájlkezelő.
 
@@ -223,7 +223,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelynek a szülőjét tervezi.
 
@@ -239,7 +239,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelyet a jelenlegi szülőként szeretne megtervezni.  
 
@@ -289,7 +289,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelynek a szülőjét tervezi.
 
@@ -344,7 +344,7 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 Ugyanazt a hatókörbeli elérési utat használja a rendszer a házirend-definíciók egy felügyeleti csoportba való beolvasásakor.
 
 ```http
-GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
 ## <a name="next-steps"></a>További lépések

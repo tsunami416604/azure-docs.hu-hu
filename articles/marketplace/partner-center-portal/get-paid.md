@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780497"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744555"
 ---
 # <a name="getting-paid-in-commercial-marketplace"></a>Fizetés a kereskedelmi piactéren
 
@@ -30,7 +30,7 @@ Az áruházi díjat a kereskedelmi piactér által gyűjtött összes ajánlati 
 
 ## <a name="price-tiers"></a>Árképzési szintek
 
-A kiválasztott árképzési szintek minden olyan országban beállítja az értékesítési árat, amelyben az ajánlat terjesztését választja. További díjszabási funkciókat is használhat, például különböző árakat választhat a különböző piacokon.
+A kiválasztott árképzési szintek az eladási árat minden olyan országban/régióban beállítja, ahol az ajánlat terjesztését választja. További díjszabási funkciókat is használhat, például különböző árakat választhat a különböző piacokon.
 
 Az alkalmazást ingyenesen kínálhatja, vagy kiválaszthat egy árat, amelyet az ügyfeleknek fizetniük kell az ajánlat megvásárlásához. Az árak szintjei a következővel kezdődnek:. 99 USD, további növekményekkel (1,09 USD, 1,19 USD stb.). Az árak szintjei közötti növekmények növekednek, ahogy az ár magasabb lesz.
 

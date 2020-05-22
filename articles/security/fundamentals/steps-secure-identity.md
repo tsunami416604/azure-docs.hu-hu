@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cda0d79166f355fd7346865f2d42d066a3e3690
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565536"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757891"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -107,7 +107,7 @@ A saját örökölt módszereiket használó alkalmazások az Azure AD-vel való
 
 1. [Az örökölt hitelesítés letiltása, ha AD FS használ](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. [A SharePoint Online és az Exchange Online beállítása modern hitelesítés használatára](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Ha prémium szintű Azure AD rendelkezik, használja a [feltételes hozzáférési szabályzatokat](../../active-directory/conditional-access/overview.md) az örökölt hitelesítés blokkolására, ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
+3. Ha prémium szintű Azure AD rendelkezik, használja a feltételes hozzáférési szabályzatokat az [örökölt hitelesítés blokkolására](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md), ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Érvénytelen hitelesítési belépési pontok blokkolása
 
@@ -117,7 +117,7 @@ A szabálysértések megsértésének feltételezésével csökkentheti a feltö
 
 Fontos megérteni a különböző [Azure ad-alkalmazásokhoz való beleegyezési tapasztalatokat](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), az [engedélyek és a beleegyezés típusát](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent), valamint a szervezet biztonsági helyzetére gyakorolt hatásukat. Alapértelmezés szerint az Azure AD minden felhasználója biztosíthat olyan alkalmazásokat, amelyek kihasználják a Microsoft Identity platformot a szervezet adatainak eléréséhez. A felhasználók saját maguk is engedélyezhetik, hogy a felhasználók egyszerűen beszerezzék a Microsoft 365-, Azure-és egyéb szolgáltatásokkal integrálható hasznos alkalmazásokat, és ez kockázatot jelenthet, ha nem használatos és nem figyeli őket körültekintően.
 
-A Microsoft javasolja a [jövőbeli felhasználói engedélyezési műveletek letiltását](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) a felület csökkentése és a kockázat enyhítése érdekében. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja a korábbi hozzájárulási engedélyeket, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A rendszergazdáknak az integrált [rendszergazdai engedélyezési kérelem munkafolyamatán](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) vagy a saját támogatási folyamatain keresztül kérhetik a rendszergazdai jogosultságokat. A végfelhasználói Belefoglalás letiltása előtt [javaslataink](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) alapján tervezze meg ezt a változást a szervezetében. Azon alkalmazások esetében, amelyek számára engedélyezni szeretné az összes felhasználó hozzáférését, fontolóra kell vennie az [összes felhasználó nevében való hozzájárulást](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), így biztosítva, hogy a korábban még nem beleegyezett felhasználók hozzáférhessenek az alkalmazáshoz. Ha nem szeretné, hogy ezek az alkalmazások minden esetben elérhetők legyenek az összes felhasználó számára, használja az [alkalmazás-hozzárendelést](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) és a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) az alkalmazások felhasználói hozzáférésének korlátozásához.
+A Microsoft javasolja a [jövőbeli felhasználói engedélyezési műveletek letiltását](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) a felület csökkentése és a kockázat enyhítése érdekében. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja a korábbi hozzájárulási engedélyeket, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A rendszergazdáknak az integrált [rendszergazdai engedélyezési kérelem munkafolyamatán](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) vagy a saját támogatási folyamatain keresztül kérhetik a rendszergazdai jogosultságokat. A végfelhasználói Belefoglalás letiltása előtt [javaslataink](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) alapján tervezze meg ezt a változást a szervezetében. Azon alkalmazások esetében, amelyek számára engedélyezni szeretné az összes felhasználó hozzáférését, fontolóra kell vennie az [összes felhasználó nevében való hozzájárulást](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), így biztosítva, hogy a korábban még nem beleegyezett felhasználók hozzáférhessenek az alkalmazáshoz. Ha nem szeretné, hogy ezek az alkalmazások minden esetben elérhetők legyenek az összes felhasználó számára, az [alkalmazás-hozzárendelés](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) és a feltételes hozzáférés használatával korlátozza a felhasználók hozzáférését az [adott alkalmazásokhoz](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md).
 
 Győződjön meg arról, hogy a felhasználók az új alkalmazások számára rendszergazdai jóváhagyást kérhetnek a felhasználói súrlódás csökkentése érdekében, minimálisra csökkentik a kötetek támogatását, és megakadályozhatják, hogy a felhasználók nem Azure AD-beli hitelesítő adatokkal regisztráljanak. A hozzájárulási műveletek szabályozása után a rendszergazdáknak rendszeresen be kell jelentkezniük az alkalmazásra és a beleegyezési engedélyekre.
 

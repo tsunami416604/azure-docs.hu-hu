@@ -1,23 +1,20 @@
 ---
 title: Az Azure-ban Update Management üzembe helyezés előtti parancsfájlok és parancsfájl-közzétételi parancsfájlok kezelése
-description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlok közzétételét a frissítések központi telepítéséhez.
+description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlokat a frissítések telepítéséhez.
 services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855336"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745114"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Parancsfájlok előtti és utáni parancsfájlok kezelése
 
 A szkriptek előtti és utáni parancsfájlokat a rendszer a frissítés központi telepítésének megkezdése előtt (a feladat előtt) és után (feladat után) runbookok az Azure Automation-fiókban. A parancsfájl előtti és a parancsfájl utáni Futtatás az Azure-környezetben nem helyileg történik. Az előzetes parancsfájlok a frissítés központi telepítésének elején futnak. A parancsfájlok futtatása a telepítés végén, illetve a konfigurált újraindítások után történik.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="pre-script-and-post-script-requirements"></a>Parancsfájl előtti és parancsfájl utáni követelmények
 
@@ -51,7 +48,7 @@ A standard runbook paraméterek mellett a `SoftwareUpdateConfigurationRunContext
 |SoftwareUpdateConfigurationRunId     | A Futtatás egyedi azonosítója.        |
 |SoftwareUpdateConfigurationSettings     | A szoftverfrissítés konfigurációjával kapcsolatos tulajdonságok gyűjteménye.         |
 |SoftwareUpdateConfigurationSettings. operatingSystem     | A frissítés központi telepítésére irányuló operációs rendszerek.         |
-|SoftwareUpdateConfigurationSettings. időtartam     | A frissítés központi telepítésének `PT[n]H[n]M[n]S` maximális időtartama ISO8601; más néven a karbantartási időszak.          |
+|SoftwareUpdateConfigurationSettings. időtartam     | A frissítés központi telepítésének maximális időtartama ( `PT[n]H[n]M[n]S` ISO8601), más néven a karbantartási időszak.          |
 |SoftwareUpdateConfigurationSettings. Windows     | Windows rendszerű számítógépekhez kapcsolódó tulajdonságok gyűjteménye.         |
 |SoftwareUpdateConfigurationSettings. Windows. excludedKbNumbers     | A frissítés központi telepítésből kizárt Tudásbázis listája.        |
 |SoftwareUpdateConfigurationSettings. Windows. includedUpdateClassifications     | A frissítés telepítéséhez kiválasztott besorolások.        |
@@ -92,9 +89,9 @@ Az alábbi példa egy, a **SoftwareUpdateConfigurationRunContext** paraméternek
 Az összes tulajdonsággal rendelkező teljes példa a következő helyen található: a [szoftverfrissítés konfigurációjának beolvasása név alapján](/rest/api/automation/softwareupdateconfigurations/getbyname#examples).
 
 > [!NOTE]
-> Az `SoftwareUpdateConfigurationRunContext` objektum tartalmazhat duplikált bejegyzéseket a gépekhez. Ennek hatására előfordulhat, hogy az előparancsfájlok és a szkriptek többször is futhatnak ugyanazon a gépen. Ennek a viselkedésnek a megkerülő megoldásához a használatával `Sort-Object -Unique` válassza ki a csak egyedi virtuális gépek nevét.
+> Az `SoftwareUpdateConfigurationRunContext` objektum tartalmazhat duplikált bejegyzéseket a gépekhez. Ennek hatására előfordulhat, hogy az előparancsfájlok és a szkriptek többször is futhatnak ugyanazon a gépen. Ennek a viselkedésnek a megkerülő megoldásához `Sort-Object -Unique` a használatával válassza ki a csak egyedi virtuális gépek nevét.
 
-## <a name="using-a-pre-script-or-post-script-in-a-deployment"></a>A telepítés előtti vagy utáni parancsfájl használata
+## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Egy üzembe helyezés előtti vagy utáni parancsfájl használata
 
 Ha egy frissítés előtti vagy utáni parancsfájlt szeretne használni egy frissítési telepítésben, először hozzon létre egy frissítés központi telepítését. Válassza a **Pre-Scripts + post-Scripts**elemet. Ez a művelet megnyitja a **Select pre-Scripts + post-Scripts** oldalt.
 
@@ -120,7 +117,7 @@ A frissítés központi telepítésének kiválasztásával további részleteke
 
 es a szkriptben.
 
-## <a name="stopping-a-deployment"></a>Központi telepítés leállítása
+## <a name="stop-a-deployment"></a>Központi telepítés leállítása
 
 Ha egy előzetes parancsfájl alapján szeretné leállítani a központi telepítést, kivételt kell [eldobnia](automation-runbook-execution.md#throw) . Ha nem, a telepítés és a parancsfájl utáni Futtatás továbbra is futni fog. A következő kódrészlet bemutatja, hogyan lehet kivételt kidobni.
 
@@ -137,9 +134,7 @@ foreach($summary in $finalStatus)
 }
 ```
 
-
-
-## <a name="interacting-with-machines"></a>Interakció a gépekkel
+## <a name="interact-with-machines"></a>Számítógépekkel való kommunikáció
 
 A parancsfájlok előtti és utáni feladatok az Automation-fiókban runbookok futnak, és nem közvetlenül a telepítésben lévő gépekre. A feladatok előtti és utáni feladatok is az Azure-környezetben futnak, és nem férnek hozzá a nem Azure-beli gépekhez. A következő részben bemutatjuk, hogyan használhatja közvetlenül a gépeket, akár Azure-beli, akár nem Azure-beli virtuális gépekről van szó.
 
@@ -163,7 +158,7 @@ A feladatok előtti és utáni feladatok az Azure-környezetben futnak, és nem 
 
 A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management – parancsfájl helyi futtatása](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
-## <a name="aborting-patch-deployment"></a>A javítás telepítésének megszakítása
+## <a name="abort-patch-deployment"></a>Javítás telepítésének megszakítása
 
 Ha az előkészítő parancsfájl hibát ad vissza, érdemes lehet megszakítani az üzemelő példányt. Ehhez [meg kell adnia](/powershell/module/microsoft.powershell.core/about/about_throw) egy hibát a parancsfájlban bármely olyan logikánál, amely hibát jelentene.
 
@@ -192,7 +187,7 @@ A parancsfájl neve alapján is megkeresheti őket, ahogy az a következő list�
 > [!IMPORTANT]
 > A runbookok importálása után közzé kell tenni azokat a használatuk előtt. Ehhez keresse meg a runbook az Automation-fiókban, válassza a **Szerkesztés**lehetőséget, majd válassza a **Közzététel**lehetőséget.
 
-A mintákat a következő példában definiált alapszintű sablon alapján kell megadni. Ez a sablon a saját runbook létrehozására használható a parancsfájlok előtti és a parancsfájlok utáni használatra. Az Azure-ban való hitelesítéshez és a `SoftwareUpdateConfigurationRunContext` paraméter kezelésére szolgáló szükséges logika beletartozik.
+A mintákat a következő példában definiált alapszintű sablon alapján kell megadni. Ez a sablon a saját runbook létrehozására használható a parancsfájlok előtti és a parancsfájlok utáni használatra. Az Azure-ban való hitelesítéshez és a paraméter kezelésére szolgáló szükséges logika `SoftwareUpdateConfigurationRunContext` beletartozik.
 
 ```powershell
 <#
@@ -246,11 +241,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint `Add-AzureRMAccount` a [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan kezelheti a Windows rendszerű virtuális gépek frissítéseit:
-
-> [!div class="nextstepaction"]
-> [Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
+* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)

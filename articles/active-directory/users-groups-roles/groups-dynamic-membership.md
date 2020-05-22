@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582899"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744691"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -54,7 +54,7 @@ További részletes útmutatásért lásd: [dinamikus csoport létrehozása vagy
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
 
-Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz `Property Operator Value`ki:, ahol a tulajdonság szintaxisa a Object. Property neve.
+Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz ki: `Property Operator Value` , ahol a tulajdonság szintaxisa a Object. Property neve.
 
 A következő példa egy megfelelően felépített tagsági szabályt mutat be egyetlen kifejezéssel:
 
@@ -69,7 +69,7 @@ A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabál
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
 - Tulajdonság
-- Művelet
+- Operátor
 - Érték
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
@@ -118,16 +118,16 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
 | surname |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
-| usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
-| userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
+| usageLocation |Két betűs ország/régió kódja |(User. usageLocation – EQ "US") |
+| userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ " alias@domain ") |
 | userType |tag vendég *Null* |(User. userType-EQ "tag") |
 
 ### <a name="properties-of-type-string-collection"></a>String típusú gyűjtemény tulajdonságai
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőtalias@domaintartalmazza: "") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" érték szerepel) |
+| otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: " alias@domain ") |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses – az "SMTP: alias@domain " érték szerepel) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
@@ -135,7 +135,7 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Művelet | Szintaxis |
+| Operátor | Szintaxis |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
@@ -145,7 +145,7 @@ A következő táblázat felsorolja az összes támogatott operátort és azok s
 | Contains |– tartalmazza |
 | Nem egyezik |-notMatch |
 | Match |– egyezés |
-| A | – a |
+| In | – a |
 | Nem a | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>A-in és a-notIn operátorok használata
@@ -185,8 +185,8 @@ Ha egy kifejezésen belül értéket ad meg, fontos, hogy a hibák elkerülése 
 
 * Idézőjelek megadása nem kötelező, kivéve, ha az érték karakterlánc.
 * A karakterlánc és a regex művelet nem megkülönbözteti a kis-és nagybetűket.
-* Ha egy sztring dupla idézőjelet tartalmaz, mindkét idézőjelet el kell kerülni a \` karakterrel, például a felhasználóval. részleg-EQ \`"Sales\`" a megfelelő szintaxis, ha az "értékesítés" az érték.
-* NULL értékű ellenőrzéseket is végrehajthat, ha például null értéket használ `user.department -eq null`.
+* Ha egy sztring dupla idézőjelet tartalmaz, mindkét idézőjelet el kell kerülni a \` karakterrel, például a felhasználóval. részleg-EQ \` "Sales" \` a megfelelő szintaxis, ha az "értékesítés" az érték.
+* NULL értékű ellenőrzéseket is végrehajthat, ha például null értéket használ `user.department -eq null` .
 
 ### <a name="use-of-null-values"></a>Null értékek használata
 
@@ -252,7 +252,7 @@ A többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Felha
 | Tulajdonságok | Értékek | Használat |
 | --- | --- | --- |
 | assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |User. assignedPlans – any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-és assignedPlan. capabilityStatus-EQ "engedélyezve") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -tartalmazza a "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -tartalmazza a "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>A-any és az-All operátorok használata
 
@@ -279,11 +279,11 @@ A következő kifejezés kiválasztja azokat a felhasználókat, akik az Intune 
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>Az aláhúzásjel (\_) szintaxis használata
+### <a name="using-the-underscore-_-syntax"></a>Az aláhúzásjel ( \_ ) szintaxis használata
 
-Az aláhúzás (\_) szintaxis a többértékű karakterláncok gyűjteményének egyik tulajdonságában lévő adott érték előfordulásait hasonlítja a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
+Az aláhúzás ( \_ ) szintaxis a többértékű karakterláncok gyűjteményének egyik tulajdonságában lévő adott érték előfordulásait hasonlítja a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
 
-Íme egy példa arra, hogy az aláhúzásjel (\_) egy szabály használatával adja hozzá a tagokat a User. proxyAddress alapján (ez a felhasználó. otherMails esetében is működik). Ez a szabály bármely olyan felhasználót felvenni a csoportba, amely a "contoso" kifejezést tartalmazó proxy-címekkel rendelkezik.
+Íme egy példa arra, hogy az aláhúzásjel ( \_ ) egy szabály használatával adja hozzá a tagokat a User. proxyAddress alapján (ez a felhasználó. otherMails esetében is működik). Ez a szabály bármely olyan felhasználót felvenni a csoportba, amely a "contoso" kifejezést tartalmazó proxy-címekkel rendelkezik.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -347,7 +347,7 @@ A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinami
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Az [Egyéni bővítmények tulajdonságai](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) szinkronizálva vannak a helyszíni Windows Server ad-ből vagy egy csatlakoztatott SaaS-alkalmazásból `user.extension_[GUID]_[Attribute]`, és a következő formátumban vannak:
+Az [Egyéni bővítmények tulajdonságai](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) szinkronizálva vannak a helyszíni Windows Server ad-ből vagy egy csatlakoztatott SaaS-alkalmazásból, és a következő formátumban vannak `user.extension_[GUID]_[Attribute]` :
 
 * A [GUID] az Azure AD-ben egyedi azonosító azon alkalmazás számára, amely létrehozta a tulajdonságot az Azure AD-ben
 * A (z) [Attribute] a létrehozott tulajdonság neve.

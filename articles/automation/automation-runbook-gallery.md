@@ -1,18 +1,18 @@
 ---
-title: Runbook- és modulkatalógusok az Azure Automationhöz
-description: A Microsoft és a Közösség runbookok és moduljai a Azure Automation-környezetben telepíthetők és használhatók.  Ez a cikk bemutatja, hogyan érheti el ezeket az erőforrásokat, és Hogyan járulhat hozzá a runbookok a katalógushoz.
+title: A PowerShell-galéria Azure Automation runbookok és moduljainak használata
+description: Ez a cikk azt ismerteti, hogyan használhatók a Microsoft és a Közösség runbookok és moduljai a PowerShell-galéria.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b475e275598363314c8f131911fe12650cd3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1d60c19b05de218ab985b2087071733602c7f2c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535553"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743890"
 ---
-# <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook- és modulkatalógusok az Azure Automationhöz
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériaban
 
 Ahelyett, hogy az Azure Automation saját runbookok és moduljait hozza létre, a Microsoft és a Közösség által már létrehozott forgatókönyvekhez is hozzáférhet. A PowerShell-runbookok és- [modulokat](#modules-in-powershell-gallery) a PowerShell-Galéria és a [Python runbookok](#use-python-runbooks) szerezheti be a Script Center-galériából. A közösséghez a [fejlesztés alatt álló forgatókönyvek](#add-a-powershell-runbook-to-the-gallery)megosztásával is hozzájárulhat. 
 
@@ -32,9 +32,9 @@ A Azure Portal használatával csak közvetlenül a PowerShell-galéria importá
 
 A PowerShell-modulok olyan parancsmagokat tartalmaznak, amelyeket használhat a runbookok, és a Azure Automation telepíthető meglévő modulok a [PowerShell-Galéria](https://www.powershellgallery.com)érhetők el. Ezt a katalógust a Azure Portal is elindíthatja, és közvetlenül a Azure Automation telepítheti őket. Letöltheti őket, és manuálisan is telepítheti őket.
 
-## <a name="common-solutions-available-in-powershell-gallery"></a>PowerShell-galéria elérhető gyakori megoldások
+## <a name="common-scenarios-available-in-powershell-gallery"></a>A PowerShell-galériaben elérhető gyakori forgatókönyvek
 
-Az alábbi lista néhány olyan runbookok tartalmaz, amely a gyakori forgatókönyvekhez nyújt megoldásokat. Az Azure Automation csapat által létrehozott runbookok teljes listáját lásd: [AzureAutomationTeam-profil](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
+Az alábbi lista néhány olyan runbookok tartalmaz, amelyek támogatják a gyakori forgatókönyveket. Az Azure Automation csapat által létrehozott runbookok teljes listáját lásd: [AzureAutomationTeam-profil](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
 
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) – egy Automation-fiókban lévő összes modul legújabb verziójának importálása PowerShell-galériaból.
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) – Azure Diagnostics és log Analytics konfigurálása a feladatok állapotát és a feladatok folyamait tartalmazó Azure Automation naplók fogadásához.
@@ -94,7 +94,7 @@ A Microsoft azt javasolja, hogy runbookok adjon hozzá a PowerShell-galériahoz,
 
 ## <a name="use-python-runbooks"></a>Python-runbookok használata
 
-A Python-Runbookok a [Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)-katalógusban érhetők el. A Python runbookok a szkriptek **feltöltése**lehetőségre kattintva járulhat hozzá a Script Center Galleryhez. Ha ezt teszi, ügyeljen arra, hogy hozzáadja a `Python` címkét a hozzájárulás feltöltésekor.
+A Python-Runbookok a [Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)-katalógusban érhetők el. A Python runbookok a szkriptek **feltöltése**lehetőségre kattintva járulhat hozzá a Script Center Galleryhez. Ha ezt teszi, ügyeljen arra, hogy hozzáadja a címkét a `Python` hozzájárulás feltöltésekor.
 
 > [!NOTE]
 > A tartalmak parancsfájl- [központba](https://gallery.technet.microsoft.com/scriptcenter)való feltöltéséhez legalább 100 pontot kell használnia.
@@ -105,6 +105,6 @@ A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automat
 
 ## <a name="next-steps"></a>További lépések
 
-* A runbookok megkezdéséhez lásd: [Runbook kezelése Azure Automationban](manage-runbooks.md).
-* A PowerShell és a PowerShell-munkafolyamatok közötti különbségek megismeréséhez a runbookok használatával lásd: a [PowerShell-munkafolyamatok megismerése](automation-powershell-workflow.md).
-* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).
+* [Runbookok kezelése Azure Automation](manage-runbooks.md)
+* [A Azure Automation PowerShell-munkafolyamatának megismerése](automation-powershell-workflow.md)
+* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)

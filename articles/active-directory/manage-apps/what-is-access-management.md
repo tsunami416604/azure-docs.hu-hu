@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409066"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739825"
 ---
 # <a name="managing-access-to-apps"></a>Az alkalmazásokhoz való hozzáférés kezelése
 
@@ -78,7 +78,7 @@ Az Azure AD-ben az olyan alkalmazások, mint a Salesforce, előre konfigurálhat
 
 Ebben az esetben az összes hozzárendelt felhasználó automatikusan a Salesforce lesz kiépítve, mivel azokat a különböző csoportokhoz adja hozzá a szerepkör-hozzárendelésük a Salesforce-ben való frissítésekor. A felhasználók a Microsoft alkalmazás-hozzáférési paneljén, az Office-webügyfeleken, vagy akár a szervezeti Salesforce bejelentkezési oldalán is megkereshetik és érhetik el a Salesforce. A rendszergazdák könnyedén megtekinthetik a használati és hozzárendelési állapotot az Azure AD jelentéskészítési funkciójával.
 
-A rendszergazdák az [Azure ad feltételes hozzáférést](../active-directory-conditional-access-azure-portal.md) alkalmazhatják a hozzáférési szabályzatok meghatározott szerepkörökhöz való beállításához. Ezek a szabályzatok magukban foglalhatják, hogy a hozzáférés engedélyezett-e a vállalati környezeten kívül, és még Multi-Factor Authentication vagy az eszközre vonatkozó követelmények a hozzáférés különböző esetekben való eléréséhez
+A rendszergazdák az [Azure ad feltételes hozzáférést](../conditional-access/concept-conditional-access-users-groups.md) alkalmazhatják a hozzáférési szabályzatok meghatározott szerepkörökhöz való beállításához. Ezek a szabályzatok magukban foglalhatják, hogy a hozzáférés engedélyezett-e a vállalati környezeten kívül, és még Multi-Factor Authentication vagy az eszközre vonatkozó követelmények a hozzáférés különböző esetekben való eléréséhez
 
 ## <a name="access-to-microsoft-applications"></a>Hozzáférés a Microsoft-alkalmazásokhoz
 
@@ -97,5 +97,5 @@ A felhasználók Office 365-portálon keresztül érhetik el az Office 365-alkal
 A vállalati alkalmazásokhoz hasonlóan a felhasználók bizonyos Microsoft-alkalmazásokhoz is [hozzárendelhetők](assign-user-or-group-access-portal.md) a Azure Portalon keresztül, vagy ha a portál lehetőség nem érhető el, a PowerShell használatával.
 
 ## <a name="next-steps"></a>További lépések
-* [Alkalmazások védelme feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md)
+* [Alkalmazások védelme feltételes hozzáféréssel](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Önkiszolgáló csoport kezelése/SSAA](../users-groups-roles/groups-self-service-management.md)

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657889"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744846"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -40,7 +40,7 @@ A kereskedelmi piactér a piacra jutási együttműködés kiindulási pontja, a
 
 A kereskedelmi piactér 141 régiókban érhető el, a tervek alapján. 
 
-Számos országban kezeljük a befizetést, és hozzáférést biztosítunk a globális csatorna viszonteladói hálózatához. Az ügyfél Microsoft-szerződése vagy Nagyvállalati Szerződés segítségével új vásárlási kapcsolat létrehozása nélkül is értékesítheti a szervezeteket.
+Számos országban/régióban kezeljük a fizetési adót, és hozzáférést biztosítunk a globális csatorna-hálózatokhoz. Az ügyfél Microsoft-szerződése vagy Nagyvállalati Szerződés segítségével új vásárlási kapcsolat létrehozása nélkül is értékesítheti a szervezeteket.
 
 További információért tekintse meg a videót a [piactéren való értékesítésről](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
 
@@ -225,7 +225,7 @@ Nem, előre fizetett vagy szponzorált Azure-kiadás nem használható partneri 
 
 A felhasználói fióknak *tulajdonosi* vagy *közreműködői* engedélyekkel kell rendelkeznie az Azure-előfizetéshez.
 
-### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>Milyen országokban vásárolhatják meg az ügyfelek a Microsoft AppSource és az Azure Marketplace szolgáltatástól?
+### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>Milyen országokban/régiókban vásárolhatnak az ügyfelek a Microsoft AppSource és az Azure piactéren?
 
 Az ügyfelek az 141-es helyszíneken szerezhetik be a kereskedelmi piactér megoldásait világszerte.
 
@@ -262,7 +262,7 @@ Ha a tervet egy meglévő előfizetés esetében módosítják, a kifejezés vá
 
 ### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>Mi blokkolhatja az ügyfelek számára a vásárlást?
 
-Microsoft AppSource esetén az ügyfélnek rendelkeznie kell egy, az Azure AD-példánnyal azonos országban lévő számlázási névvel rendelkező bankkártyával, és az ügyfél Azure AD-rendszergazdájának biztosítania kell, hogy a rendszer ne tiltsa le a hitelesítést a Microsoft AppSource.
+Microsoft AppSource esetén az ügyfélnek rendelkeznie kell egy, az Azure AD-példánnyal azonos országban vagy régióban található számlázási címen lévő bankkártyával, és az ügyfél Azure AD-rendszergazdájának meg kell győződnie arról, hogy a rendszer nem akadályozza meg a hitelesítést a Microsoft AppSource.
 
 Az Azure Marketplace-en az ügyfélnek aktív Azure-előfizetéssel és felhasználói fiókkal kell rendelkeznie az adott előfizetéshez tartozó *tulajdonosi* vagy *közreműködői* engedéllyel. Az ügyfél Azure-rendszergazdájának biztosítania kell, hogy a Azure Policy ne ütközzön a használatban lévő ajánlattal, és hogy az Azure Marketplace letiltásához nem állítható be a Cost Management.
 

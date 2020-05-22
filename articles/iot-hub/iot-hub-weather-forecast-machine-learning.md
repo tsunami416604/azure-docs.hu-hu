@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5551655843b8d3ed5b6d70f5d6ed3a0eb4d0e92f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122160"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746973"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning
 
@@ -102,7 +102,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Futtassa a kísérletet a lépések ellenőrzéséhez](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. Kattintson a **webszolgáltatás** > **prediktív webszolgáltatás**beállítása elemre. Megnyílik a prediktív kísérlet diagramja.
+1. Kattintson a **webszolgáltatás**  >  **prediktív webszolgáltatás**beállítása elemre. Megnyílik a prediktív kísérlet diagramja.
 
    ![Az időjárási előrejelzési modell üzembe helyezése Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -181,10 +181,10 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Függvény hozzáadása a Stream Analytics feladathoz a telepített webszolgáltatás meghívásához
 
-1. A **feladatok topológiája**alatt kattintson a **függvények** > **Hozzáadás**elemre.
+1. A **feladatok topológiája**alatt kattintson a **függvények**  >  **Hozzáadás**elemre.
 1. Adja meg a következő információkat:
 
-   **Függvény aliasa**: `machinelearning`Enter.
+   **Függvény aliasa**: ENTER `machinelearning` .
 
    **Függvény típusa**: válassza az **Azure ml**lehetőséget.
 
@@ -207,7 +207,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[Scored Probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```
@@ -220,7 +220,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-A stream Analytics feladatokban kattintson az **Indítás** > **most** > **Indítás**gombra. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
+A stream Analytics feladatokban kattintson az **Indítás**  >  **most**  >  **Indítás**gombra. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
 ![Stream Analytics-feladat futtatása](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 

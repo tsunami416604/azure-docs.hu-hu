@@ -1,25 +1,22 @@
 ---
-title: Verziókövetés integrálása az Azure Automation szolgáltatásban
-description: Ez a cikk ismerteti a verziókövetés integrációját a GitHubon Azure Automationban.
+title: A verziókövetés integrációjának használata Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet szinkronizálni Azure Automation a verziókövetés más adattárakkal.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132930"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744928"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
+# <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
 
  A verziókövetés integrációja Azure Automation támogatja az egyirányú szinkronizálást a verziókövetés adattárból. A verziókövetés lehetővé teszi, hogy a runbookok az Automation-fiókban naprakészek maradjanak a GitHub vagy az Azure Repos Source Control adattárában található parancsfájlok használatával. Ez a szolgáltatás megkönnyíti a fejlesztési környezetben tesztelt kód előállítását az üzemi Automation-fiókba.
  
  A verziókövetés integrációja lehetővé teszi, hogy könnyedén együttműködjön a csapatával, nyomon követheti a változásokat, és visszaállíthatja a runbookok korábbi verzióit. A verziókövetés lehetővé teszi például a verziókövetés különböző ágainak szinkronizálását a fejlesztési, tesztelési és üzemi Automation-fiókokkal. 
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="source-control-types"></a>Verziókövetés típusai
 
@@ -33,12 +30,12 @@ A Azure Automation háromféle verziókövetés használatát támogatja:
 
 * Egy forrásoldali vezérlő adattár (GitHub vagy Azure Repos)
 * [Futtató fiók](manage-runas-account.md)
-* A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, `Az.Accounts` beleértve a modult (az `AzureRM.Profile`a modul megfelelője)
+* A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, beleértve a `Az.Accounts` modult (az a modul megfelelője `AzureRM.Profile` )
 
 > [!NOTE]
 > A verziókövetés szinkronizációs feladatai a felhasználó Automation-fiókjában futnak, és a többi Automation-feladattal megegyező sebességgel lesznek számlázva.
 
-## <a name="configuring-source-control"></a>A verziókövetés konfigurálása
+## <a name="configure-source-control"></a>Verziókövetés konfigurálása
 
 Ez a szakasz azt ismerteti, hogyan konfigurálható a verziókövetés az Automation-fiókhoz. Használhatja a Azure Portal vagy a PowerShellt is.
 
@@ -90,7 +87,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Adatforrás-vezérlési kapcsolatok létrehozása az Azure Repos (git) szolgáltatáshoz
 
 > [!NOTE]
-> Az Azure Repos (git) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hez fér hozzá. A régebbi URL- `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` formátum elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
+> Az Azure Repos (git) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hez fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
 
 
 ```powershell-interactive
@@ -100,7 +97,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Adatforrás-vezérlési kapcsolatok létrehozása az Azure Repos (TFVC) számára
 
 > [!NOTE]
-> Az Azure Repos (TFVC) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hoz fér hozzá. A régebbi URL- `https://<accountname>.visualstudio.com/<projectname>/_versionControl` formátum elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
+> Az Azure Repos (TFVC) olyan URL-címet használ, amely a korábbi formátumokban használt **VisualStudio.com**helyett a **dev.Azure.com** -hoz fér hozzá. A régebbi URL-formátum `https://<accountname>.visualstudio.com/<projectname>/_versionControl` elavult, de továbbra is támogatott. Az új formátum előnyben részesített.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -139,7 +136,7 @@ Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-enged
 
 <sup>1</sup> az `Service connections` engedély csak akkor szükséges, ha engedélyezve van az AutoSync.
 
-## <a name="synchronizing"></a>Szinkronizálása
+## <a name="synchronize-with-source-control"></a>Szinkronizálás a forrás vezérlőelemmel
 
 Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához. 
 
@@ -161,7 +158,7 @@ Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához.
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
-    Setting AzureRmEnvironment.
+    Setting AzEnvironment.
 
     Getting AzureRunAsConnection.
 
@@ -187,7 +184,7 @@ Kövesse az alábbi lépéseket a verziókövetés szinkronizálásához.
 
 6. A további naplózást a verziókövetés szinkronizálása feladatok összegzése lapon található **összes napló** lehetőség kiválasztásával érheti el. Ezek a további naplóbejegyzések segíthetnek a verziókövetés használata során felmerülő problémák megoldásában.
 
-## <a name="disconnecting-source-control"></a>Verziókövetés leválasztása
+## <a name="disconnect-source-control"></a>Verziókövetés leválasztása
 
 A forrás-felügyeleti adattárból való leválasztáshoz:
 
@@ -197,11 +194,11 @@ A forrás-felügyeleti adattárból való leválasztáshoz:
 
 3. A verziókövetés összegzése lapon kattintson a **Törlés**elemre.
 
-## <a name="handling-encoding-issues"></a>Kódolási problémák kezeléséhez
+## <a name="handle-encoding-issues"></a>Kódolási problémák kezelése
 
 Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>A PAT frissítése
+## <a name="update-the-pat"></a>A PAT frissítése
 
 Jelenleg nem használhatja a Azure Portal a PAT in Source vezérlőben való frissítésére. Ha a PAT lejárt vagy visszavont, a verziókövetés egy új hozzáférési jogkivonattal is frissíthető az alábbi módokon:
 
@@ -210,4 +207,5 @@ Jelenleg nem használhatja a Azure Portal a PAT in Source vezérlőben való fri
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a runbook típusairól és azok előnyeiről és korlátairól: [Azure Automation runbook-típusok](automation-runbook-types.md).
+* [Azure Automation: verziókövetés integrációja Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: a Runbook-verziókövetés integrálása az Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701499"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744592"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -52,9 +52,9 @@ Három ügyfél- **típus**létezik: új, meglévő és átvesző.
 
 ### <a name="customer-by-geography"></a>Ügyfél földrajz szerint
 
-Az **ügyfél földrajz szerint** diagramon látható, hogy az ügyfél és az ügyfelek száma a kiválasztott Dátumtartomány alapján történt, és az ügyfél országa alapján van leképezve. A Térkép világos és sötét színe az ügyfelek számának alacsony és magas értékét jelöli. Egy adott országban való nagyításhoz kattintson egy rekordra a táblában.
+Az **ügyfél földrajz szerint** diagramon látható, hogy az ügyfél és az ügyfelek száma a kiválasztott dátumtartomány szerint van leképezve, és az ügyfél országa/régiója alapján képezhető le. A Térkép világos és sötét színe az ügyfelek számának alacsony és magas értékét jelöli. Kattintson egy rekordra a táblában az ország/régió nagyításához.
 
-A hő megjeleníti az ügyfelek darabszámát és a (z)% by Customer országot. A térképet áthelyezve megtekintheti a pontos helyet, és megnyithatja a nagyítást egy adott helyre. Ez a Térkép egy kiegészítő rácstal rendelkezik, amely lehetővé teszi az ügyfelek hely szerinti, illetve a helyhez újonnan hozzáadott ügyfelek megtekintését.
+A hő megjeleníti az ügyfelek darabszámát és a (z)% by Customer országot/régiót. A térképet áthelyezve megtekintheti a pontos helyet, és megnyithatja a nagyítást egy adott helyre. Ez a Térkép egy kiegészítő rácstal rendelkezik, amely lehetővé teszi az ügyfelek hely szerinti, illetve a helyhez újonnan hozzáadott ügyfelek megtekintését.
 
 ### <a name="customer-trends"></a>Ügyfelek trendjei
 
@@ -97,7 +97,7 @@ A **Customer Details (ügyfél részletei** ) tábla a legnépszerűbb 1000-ügy
 - A rács minden oszlopa rendezhető.
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, az elveszett dátum, az ügyfél e-mail-címe, az ügyfél országa/állam/város/zip, az ügyfél nyelve stb.
+- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, a dátum elveszett, az ügyfél e-mail-címe, az ügyfél országa/régiója/állam/város/zip, az ügyfél nyelve stb.
 - Ha egy védett ügyfél vásárolja meg az ajánlatot, a rendszer maszkba veszi az **ügyfelek részletes adatait** (* * * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Ügyfél-oldal szűrők

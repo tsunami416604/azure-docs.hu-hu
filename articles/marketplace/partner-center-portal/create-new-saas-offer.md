@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: eb7f527885d1d49fe09407c3cbce109a098056f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701169"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744657"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -227,7 +227,7 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Leírás
 
 A mező kitöltése kötelező.
 
@@ -340,7 +340,7 @@ Ezen a lapon konfigurálhatja azokat a piacokat, amelyekre a csomag elérhető l
 
 #### <a name="markets-optional"></a>Piacok (nem kötelező)
 
-Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Válassza a **piacok szerkesztése** lehetőséget, és jelölje be bármely olyan piaci helyhez tartozó jelölőnégyzetet, ahol elérhetővé szeretné tenni ezt a csomagot. Ez az oldal egy keresőmezőt és egy lehetőséget tartalmaz a "Tax átutalt" országok kiválasztásához, amelyben a Microsoft az Ön nevében kifizeti az értékesítési és használati adót.
+Minden csomagnak legalább egy piacon elérhetőnek kell lennie. Válassza a **piacok szerkesztése** lehetőséget, és jelölje be bármely olyan piaci helyhez tartozó jelölőnégyzetet, ahol elérhetővé szeretné tenni ezt a csomagot. Ez az oldal egy keresőmezőt és egy olyan lehetőséget tartalmaz, amellyel kiválaszthatja a "beérkező adók" országokat/régiókat, amelyekben a Microsoft az Ön nevében kifizeti az értékesítési és használati adót.
 
 Ha már beállította a csomag árát Egyesült Államok dollárban (USD), és egy másik piaci helyet ad hozzá, az új piac díját az aktuális árfolyamok alapján számítjuk ki. A közzététel előtt tekintse át az egyes piacok árát. Tekintse meg a díjszabást a módosítások mentése után a "export Prices (xlsx)" hivatkozás használatával.
 

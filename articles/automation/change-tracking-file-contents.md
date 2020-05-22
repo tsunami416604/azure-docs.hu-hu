@@ -1,41 +1,41 @@
 ---
 title: A Change Tracking és a leltár kezelése Azure Automation
-description: Ez a cikk azt ismerteti, hogyan használható a Change Tracking és a leltár a szoftverek és a Microsoft-szolgáltatások a környezetben előforduló változásainak nyomon követésére.
+description: Ez a cikk azt ismerteti, hogyan használható a Change Tracking és a leltár a szoftverek és a Microsoft-szolgáltatások változásainak nyomon követésére a környezetben.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779297"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744409"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
-Új fájl vagy beállításkulcs a követéshez való hozzáadásakor Azure Automation engedélyezi a [change Tracking és a leltár](change-tracking.md) funkció használatát. Ez a cikk a funkció használatának eljárásait tartalmazza.
+A Azure Automation engedélyezi a környezetében lévő gépek [change Tracking és leltározási](change-tracking.md) funkcióját. A szolgáltatás nyomon követi és elérhetővé teszi a beállításkulcsok, fájlok, tartalmak és hasonlók változásait. Ez a cikk a funkció használatának eljárásait tartalmazza.
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>A teljes Change Tracking és a leltár funkció engedélyezése
 
-Ha engedélyezte a [Azure Security Center fájl integritásának figyelését (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), a teljes Change Tracking és a leltár szolgáltatást használhatja az alább leírtak szerint. Ez a folyamat nem távolítja el a beállításokat.
+Ha engedélyezte a [Azure Security Center a fájl integritásának figyelését (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), a gépek teljes Change Tracking és leltár szolgáltatását használhatja az alább leírtak szerint. Ez a folyamat nem távolítja el a beállításokat.
 
 > [!NOTE]
 > A teljes Change Tracking és a leltár funkció engedélyezése további díjakat eredményezhet. Lásd: az [Automation díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
 1. A figyelési megoldás eltávolításához lépjen a munkaterületre, és keresse meg a [telepített figyelési megoldások listájában](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**lehetőségre a [figyelési megoldás eltávolítása](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)című rész útmutatása szerint.
-3. A Change Tracking és a leltár újbóli engedélyezéséhez lépjen az Automation-fiókra, és válassza a **change Tracking** elemet a **konfiguráció kezelése**elemnél.
+3. A Change Tracking és a leltár újbóli engedélyezéséhez lépjen az Automation-fiókra, és válassza a **change Tracking** vagy a **Inventory** elemet a **konfiguráció kezelése**területen.
 4. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, erősítse meg a munkaterület beállításait, és kattintson az **Engedélyezés**gombra.
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Bevezetési gépek Change Tracking és leltárba
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Gépek engedélyezése Change Tracking és leltárhoz
 
-A változások követésének megkezdéséhez engedélyeznie kell a Change Tracking és a leltárt a Azure Automationban. A következő ajánlott és támogatott módszereket ajánljuk a gépeknek a szolgáltatásba való bevezetéséhez: 
+A változások követésének megkezdéséhez engedélyeznie kell a Change Tracking és a leltárt a Azure Automationban. Az alábbi, ajánlott és támogatott módszerek a funkció engedélyezéséhez a gépeken: 
 
-* [Beléptetés egy virtuális gépről](automation-onboard-solutions-from-vm.md)
-* [Több gép tallózása a fedélzeten](automation-onboard-solutions-from-browse.md)
-* [Előkészítés az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-* [Azure Automation runbook](automation-onboard-solutions.md)
+* [Engedélyezés virtuális gépről](automation-onboard-solutions-from-vm.md)
+* [Több gép böngészésének engedélyezése](automation-onboard-solutions-from-browse.md)
+* [Engedélyezés az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
+* [Engedélyezés Azure Automation runbook](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>Fájlok nyomon követése
 
@@ -53,7 +53,7 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
     |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
-    |Elérési út megadása     | A fájl keresésének elérési útja, például **\\\*c:\Temp. txt**. Használhat környezeti változókat is, például: `%winDir%\System32\\\*.*`.       |
+    |Elérési út megadása     | A fájl keresésének elérési útja, például **c:\Temp \\ \* . txt**. Használhat környezeti változókat is, például: `%winDir%\System32\\\*.*` .       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek a fájl és a könyvtár.        |    
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |    
     |Fájl tartalmának feltöltése | True (igaz) – a fájl tartalmának feltöltése a nyomon követett változásokon, ellenkező esetben hamis.|
@@ -164,7 +164,7 @@ A következő példa azt mutatja, hogy a fájl **C:\Windows\System32\drivers\etc
 Ezt a példát követve megtudhatja, hogyan hozhat létre riasztásokat a változásokon.
 
 1. Az Automation-fiókban válassza a **változások követése** a **konfiguráció**felügyelete alatt lehetőséget, majd válassza a **log Analytics**lehetőséget. 
-2. A naplók keresése területen keresse meg a tartalom módosításait a **hosts** fájlban a lekérdezéssel `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Ez a lekérdezés a "hosts" szót tartalmazó teljesen minősített elérési úttal rendelkező fájlok tartalmának módosítását keresi. Egy adott fájlt is megadhat, ha az elérési út részét a teljes űrlapra módosítja, például a használatával `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`.
+2. A naplók keresése területen keresse meg a tartalom módosításait a **hosts** fájlban a lekérdezéssel `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Ez a lekérdezés a "hosts" szót tartalmazó teljesen minősített elérési úttal rendelkező fájlok tartalmának módosítását keresi. Egy adott fájlt is megadhat, ha az elérési út részét a teljes űrlapra módosítja, például a használatával `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
 
 3. Miután a lekérdezés visszaadja a kívánt eredményeket, a naplóbeli keresés **új riasztási szabálya** elemre kattintva nyissa meg a riasztás-létrehozási lapot. Ezen a lapon a Azure Portal **Azure monitor** is megnyithatja. 
 
@@ -178,6 +178,6 @@ Ezt a példát követve megtudhatja, hogyan hozhat létre riasztásokat a válto
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Change Tracking és a leltár alapjaival kapcsolatban lásd: [az Change Tracking és a leltár áttekintése](change-tracking.md).
-* Az Azure-beli virtuális gépek változásainak hibaelhárításával kapcsolatban lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).
-* A [naplóbeli keresések használata Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md) a részletes változások követésére szolgáló információk megtekintéséhez.
+* [A Change Tracking és a leltár áttekintése](change-tracking.md)
+* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
+* [Naplóbeli keresések Azure Monitor naplókban](../log-analytics/log-analytics-log-searches.md)

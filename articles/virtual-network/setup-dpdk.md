@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384228"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744880"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK beállítása Linux rendszerű virtuális gépen
 
@@ -50,7 +50,7 @@ Az Azure Marketplace-ről a következő disztribúciók támogatottak:
 
 **Egyéni kernel-támogatás**
 
-A nem felsorolt Linux kernel-verziók esetében lásd: az [Azure-ban hangolt Linux-kernel létrehozásához szükséges javítások](https://github.com/microsoft/azure-linux-kernel). További információért vegye fel a kapcsolatot [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)a következővel:. 
+A nem felsorolt Linux kernel-verziók esetében lásd: az [Azure-ban hangolt Linux-kernel létrehozásához szükséges javítások](https://github.com/microsoft/azure-linux-kernel). További információért vegye fel a kapcsolatot a következővel: [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Régiós támogatás
 
@@ -109,10 +109,10 @@ zypper \
 ## <a name="set-up-the-virtual-machine-environment-once"></a>A virtuális gép környezetének beállítása (egyszer)
 
 1. [Töltse le a legújabb DPDK](https://core.dpdk.org/download). Az Azure-hoz a 18,11 LTS vagy az 19,11 LTS verzió szükséges.
-2. Hozza létre az alapértelmezett konfigurációt a paranccsal `make config T=x86_64-native-linuxapp-gcc`.
-3. Engedélyezze a Mellanox PMDs a generált konfigurációban `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`a paranccsal.
-4. Fordítás a- `make`val.
-5. Telepítés a `make install DESTDIR=<output folder>`-val.
+2. Hozza létre az alapértelmezett konfigurációt a paranccsal `make config T=x86_64-native-linuxapp-gcc` .
+3. Engedélyezze a Mellanox PMDs a generált konfigurációban a paranccsal `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` .
+4. Fordítás a-val `make` .
+5. Telepítés a-val `make install DESTDIR=<output folder>` .
 
 ## <a name="configure-the-runtime-environment"></a>A futásidejű környezet konfigurálása
 
@@ -126,20 +126,20 @@ Az újraindítás után futtassa a következő parancsokat egyszer:
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * Hozzon létre egy könyvtárat a `mkdir /mnt/huge`csatlakoztatáshoz.
-   * Hugepages csatlakoztatása `mount -t hugetlbfs nodev /mnt/huge`a rel.
-   * Győződjön meg arról, hogy a `grep Huge /proc/meminfo`hugepages vannak fenntartva.
+   * Hozzon létre egy könyvtárat a csatlakoztatáshoz `mkdir /mnt/huge` .
+   * Hugepages csatlakoztatása a rel `mount -t hugetlbfs nodev /mnt/huge` .
+   * Győződjön meg arról, hogy a hugepages vannak fenntartva `grep Huge /proc/meminfo` .
 
      > Megjegyzés A grub-fájl úgy módosítható, hogy a hugepages a DPDK [vonatkozó utasítások](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) követésével legyenek lefoglalva a rendszerindításhoz. Az utasítások az oldal alján találhatók. Ha Azure Linux rendszerű virtuális gépet használ, módosítsa a fájlokat a **/etc/config/grub.d** területen az újraindítások közötti hugepages foglalásához.
 
-2. MAC & IP-címek: `ifconfig –a` a használatával megtekintheti a hálózati adapterek Mac és IP-címét. A *VF* hálózati adapter és a *NETVSC* hálózati adapter ugyanazzal a Mac-címmel rendelkezik, de csak az *NETVSC* hálózati adapter IP-címmel rendelkezik. A *VF* felületek a *NETVSC* felületek alárendelt felületeinek formájában futnak.
+2. MAC & IP-címek: a használatával `ifconfig –a` megtekintheti a hálózati adapterek Mac és IP-címét. A *VF* hálózati adapter és a *NETVSC* hálózati adapter ugyanazzal a Mac-címmel rendelkezik, de csak az *NETVSC* hálózati adapter IP-címmel rendelkezik. A *VF* felületek a *NETVSC* felületek alárendelt felületeinek formájában futnak.
 
 3. PCI-címek
 
-   * A `ethtool -i <vf interface name>` használatával megtudhatja, melyik PCI-címeket kell használni a *VF*-hez.
+   * `ethtool -i <vf interface name>`A használatával megtudhatja, melyik PCI-címeket kell használni a *VF*-hez.
    * Ha a *ETH0* gyorsított hálózatkezelést engedélyez, győződjön meg arról, hogy a testpmd nem veszi át véletlenül a *VF* PCI-eszközt a *ETH0*-hez. Ha a DPDK alkalmazás véletlenül átveszi a felügyeleti hálózati adaptert, és elveszíti az SSH-kapcsolatot, a soros konzollal állíthatja le a DPDK alkalmazást. A virtuális gép leállításához vagy elindításához a soros konzolt is használhatja.
 
-4. Töltse be a *ibuverbs* minden újraindításkor `modprobe -a ib_uverbs`. A SLES csak 15 esetében is betölti a `modprobe -a mlx4_ib` *mlx4_ibt* a következővel:.
+4. Töltse be a *ibuverbs* minden újraindításkor `modprobe -a ib_uverbs` . A SLES csak 15 esetében is betölti a *mlx4_ibt* a következővel: `modprobe -a mlx4_ib` .
 
 ## <a name="failsafe-pmd"></a>Failsafe PMD
 
@@ -172,10 +172,10 @@ A testpmd gyökérszintű módban való futtatásához használja `sudo` a *test
    -- -i
    ```
 
-   Ha a testpmd-t több mint két hálózati adapterrel futtatja, az argumentum `--vdev` a `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`következő mintát követi:.
+   Ha a testpmd-t több mint két hálózati adapterrel futtatja, az `--vdev` argumentum a következő mintát követi: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` .
 
 3.  Az indítás után futtassa a parancsot `show port info all` a port adatainak vizsgálatához. Egy vagy két DPDK-portot kell látnia net_failsafe (nem *net_mlx4*).
-4.  A `start <port> /stop <port>` forgalom elindítására használható.
+4.  `start <port> /stop <port>`A forgalom elindítására használható.
 
 Az előző parancsok interaktív módban kezdenek *testpmd* , ami a testpmd parancsok kipróbálásához ajánlott.
 

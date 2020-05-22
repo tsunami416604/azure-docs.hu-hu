@@ -1,24 +1,21 @@
 ---
 title: Az Azure AD használata Azure Automationben az Azure-beli hitelesítéshez
-description: Megtudhatja, hogyan használhatja az Azure AD-t a Azure Automationon az Azure-beli hitelesítésre szolgáló szolgáltatóként.
+description: Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azure-beli hitelesítéshez Azure Automationon belül.
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90338a1ffa79e6c2347832cb2e74633db02ec72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548345"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745256"
 ---
-# <a name="use-azure-ad-in-azure-automation-to-authenticate-to-azure"></a>Az Azure AD használata Azure Automationben az Azure-beli hitelesítéshez
+# <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
 
 A [Azure Active Directory (ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) szolgáltatás számos felügyeleti feladatot, például a felhasználók felügyeletét, a tartományi felügyeletet és az egyszeri bejelentkezési konfigurációt teszi lehetővé. Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azure-ban való hitelesítéshez Azure Automationon belül. 
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
-
-## <a name="installing-azure-ad-modules"></a>Azure AD-modulok telepítése
+## <a name="install-azure-ad-modules"></a>Azure AD-modulok telepítése
 
 Az Azure AD-t a következő PowerShell-modulok használatával engedélyezheti:
 
@@ -65,13 +62,13 @@ Mielőtt telepítené az Azure AD-modulokat a számítógépre:
 
 ### <a name="install-support-for-pscredential"></a>A PSCredential támogatásának telepítése
 
-A Azure Automation a [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) osztályt használja a hitelesítő adatok megjelenítéséhez. A parancsfájlok lekérik `PSCredential` az `Get-AutomationPSCredential` objektumokat a parancsmag használatával. További információ: [Azure Automationban található hitelesítőadat-eszközök](shared-resources/credentials.md).
+A Azure Automation a [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) osztályt használja a hitelesítő adatok megjelenítéséhez. A parancsfájlok lekérik `PSCredential` az objektumokat a `Get-AutomationPSCredential` parancsmag használatával. További információ: [Azure Automationban található hitelesítőadat-eszközök](shared-resources/credentials.md).
 
-## <a name="assigning-a-subscription-administrator"></a>Előfizetés-rendszergazda kiosztása
+## <a name="assign-a-subscription-administrator"></a>Előfizetés-adminisztrátor hozzárendelése
 
 Hozzá kell rendelnie egy rendszergazdát az Azure-előfizetéshez. Ez a személy az előfizetés hatókörének tulajdonosi szerepköre. Lásd: [szerepköralapú hozzáférés-vezérlés Azure Automationban](automation-role-based-access-control.md). 
 
-## <a name="changing-the-azure-ad-users-password"></a>Az Azure AD-felhasználó jelszavának módosítása
+## <a name="change-the-azure-ad-users-password"></a>Az Azure AD-felhasználó jelszavának módosítása
 
 Az Azure AD-felhasználó jelszavának módosítása:
 
@@ -81,11 +78,11 @@ Az Azure AD-felhasználó jelszavának módosítása:
 
 3. Kérje meg a rendszergazdát, hogy változtassa meg a jelszót, amikor a rendszer kéri.
 
-## <a name="configuring-azure-automation-to-use-the-azure-ad-user-to-manage-the-azure-subscription"></a>A Azure Automation konfigurálása az Azure AD-felhasználó használatára az Azure-előfizetés kezeléséhez
+## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>Azure Automation konfigurálása az Azure-előfizetés kezeléséhez
 
 Azure Automation az Azure AD-vel való kommunikációhoz az Azure AD-vel való Azure-kapcsolódáshoz társított hitelesítő adatokat le kell kérni. Ilyen hitelesítő adatok például a bérlő azonosítója, az előfizetés azonosítója és hasonlók. További információ az Azure és az Azure AD közötti kapcsolatról: [a szervezet csatlakoztatása Azure Active Directoryhoz](https://docs.microsoft.com/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops).
 
-## <a name="creating-a-credential-asset"></a>Hitelesítőadat-eszköz létrehozása
+## <a name="create-a-credential-asset"></a>Hitelesítőadat-eszköz létrehozása
 
 Az Azure AD számára elérhető Azure-beli hitelesítő adatokkal elkészítheti az Azure AD-beli hitelesítő adatok biztonságos tárolásához szükséges Azure Automation hitelesítőadat-eszköz létrehozását, hogy a runbookok és a Desire State Configuration (DSC) parancsfájlok hozzáférhessenek. Ezt a Azure Portal vagy a PowerShell-parancsmagok használatával teheti meg.
 
@@ -97,9 +94,9 @@ A hitelesítő adatok létrehozásához használhatja a Azure Portal. Ezt a műv
 
 Új hitelesítőadat-eszköz előkészítéséhez a Windows PowerShellben a szkript először létrehoz egy `PSCredential` objektumot a hozzárendelt Felhasználónév és jelszó használatával. A szkript ezután ezt az objektumot használja az eszköz létrehozásához a [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) parancsmag hívásával. Azt is megteheti, hogy a parancsfájl meghívja a [Get-hitelesítőadat](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) parancsmagot, hogy megkérje a felhasználó számára a név és a jelszó megadását. Lásd: [hitelesítő adatok Azure Automationban](shared-resources/credentials.md). 
 
-## <a name="managing-azure-resources-from-an-azure-automation-runbook"></a>Azure-erőforrások kezelése Azure Automation runbook
+## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure-erőforrások kezelése Azure Automation runbook
 
-Az Azure-erőforrásokat Azure Automation runbookok kezelheti a hitelesítőadat-eszköz használatával. Az alábbi példa egy PowerShell-runbook, amely az Azure-előfizetésben lévő virtuális gépek leállításához és elindításához használt hitelesítő adatokat gyűjti. Ez a runbook először `Get-AutomationPSCredential` az Azure-ban való hitelesítéshez használt hitelesítő adatokat kéri le. Ezután meghívja a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) parancsmagot az Azure-hoz való kapcsolódáshoz a hitelesítő adatok használatával. A szkript a [Select-azuresubscription parancsot](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) parancsmagot használja, hogy kiválassza az előfizetést, amellyel dolgozni szeretne. 
+Az Azure-erőforrásokat Azure Automation runbookok kezelheti a hitelesítőadat-eszköz használatával. Az alábbi példa egy PowerShell-runbook, amely az Azure-előfizetésben lévő virtuális gépek leállításához és elindításához használt hitelesítő adatokat gyűjti. Ez a runbook először `Get-AutomationPSCredential` Az Azure-ban való hitelesítéshez használt hitelesítő adatokat kéri le. Ezután meghívja a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) parancsmagot az Azure-hoz való kapcsolódáshoz a hitelesítő adatok használatával. A szkript a [Select-azuresubscription parancsot](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) parancsmagot használja, hogy kiválassza az előfizetést, amellyel dolgozni szeretne. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 
@@ -162,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Automation hitelesítőadat-eszközeivel kapcsolatban a [Azure Automationban](shared-resources/credentials.md)talál információt.
-* Az Automation-modulok használatáról további információt a [Azure Automation moduljainak kezelése](shared-resources/modules.md) című témakörben talál.
-* Ha többet szeretne megtudni a Azure Automation runbook indításához használható módszerekről, tekintse meg a [runbook Azure Automation-ben](automation-starting-a-runbook.md)való elindításával foglalkozó témakört.
-* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat is, tekintse meg a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).
+* [Hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)
+* [Modulok kezelése az Azure Automationben](shared-resources/modules.md)
+* [Runbook indítása az Azure Automationben](start-runbooks.md)
+* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)

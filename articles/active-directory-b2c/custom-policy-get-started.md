@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 856bd6c2a3546a438293e89a0b576e1392d9c6a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407296"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738251"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -40,8 +40,8 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 ### <a name="create-the-signing-key"></a>Az aláíró kulcs létrehozása
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza `Generate`a lehetőséget.
-1. A **név**mezőben adja `TokenSigningKeyContainer`meg a nevet. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
+1. A **Beállítások**területen válassza a lehetőséget `Generate` .
+1. A **név**mezőben adja meg a nevet `TokenSigningKeyContainer` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
@@ -49,8 +49,8 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 ### <a name="create-the-encryption-key"></a>A titkosítási kulcs létrehozása
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza `Generate`a lehetőséget.
-1. A **név**mezőben adja `TokenEncryptionKeyContainer`meg a nevet. Lehetséges, `B2C_1A`hogy az _ előtag automatikusan hozzá van adva.
+1. A **Beállítások**területen válassza a lehetőséget `Generate` .
+1. A **név**mezőben adja meg a nevet `TokenEncryptionKeyContainer` . Lehetséges, hogy az `B2C_1A` _ előtag automatikusan hozzá van adva.
 1. A **kulcs típusa**beállításnál válassza az **RSA**elemet.
 1. A **kulcshasználat**beállításnál válassza a **titkosítás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
@@ -60,8 +60,8 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 Adja hozzá a Facebook-alkalmazás [titkos](identity-provider-facebook.md) kulcsát a szabályzat kulcsaként. Használhatja a cikk előfeltételeinek részeként létrehozott alkalmazás titkos kulcsát.
 
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza `Manual`a lehetőséget.
-1. A **név**mezőbe írja `FacebookSecret`be a következőt:. Lehet, `B2C_1A_` hogy az előtag automatikusan hozzá lesz adva.
+1. A **Beállítások**területen válassza a lehetőséget `Manual` .
+1. A **név**mezőbe írja be a következőt: `FacebookSecret` . Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **Secret (titkos**kód) mezőben adja meg a Facebook-alkalmazás *titkos* kódját a Developers.Facebook.com. Ez az érték a titok, nem az alkalmazás azonosítója.
 1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
@@ -82,17 +82,17 @@ Egy alkalmazásnak a Azure AD B2C-bérlőben való regisztrálásához használh
 1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
 1. Az **Azure Active Directory** áttekintés menüjének **kezelés**területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
 1. Válassza az **Új alkalmazás regisztrálása** elemet.
-1. A **név**mezőbe írja `IdentityExperienceFramework`be a következőt:.
+1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
 1. Az **alkalmazás típusa mezőben**válassza a **Web App/API**lehetőséget.
-1. A **bejelentkezési URL-cím**mezőbe írja `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`be a `your-tenant-name` (z) nevet, ahol a a Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
+1. A **bejelentkezési URL-cím**mezőbe írja be a (z `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ) nevet, ahol a a `your-tenant-name` Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
 1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. A **név**mezőbe írja `IdentityExperienceFramework`be a következőt:.
+1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
-1. Az **átirányítási URI**területen válassza a **web**lehetőséget, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`majd írja `your-tenant-name` be a nevet, ahol a a Azure ad B2C bérlői tartományneve.
+1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` `your-tenant-name` a nevet, ahol a a Azure ad B2C bérlői tartományneve.
 1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
@@ -114,9 +114,9 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
 1. **Alkalmazásregisztrációk (örökölt)** területen válassza az **új alkalmazás regisztrálása**lehetőséget.
-1. A **név**mezőbe írja `ProxyIdentityExperienceFramework`be a következőt:.
+1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
 1. Az **alkalmazás típusa mezőben**válassza a **natív**lehetőséget.
-1. Az **átirányítási URI**mezőbe `myapp://auth`írja be a következőt:.
+1. Az **átirányítási URI**mezőbe írja be a következőt: `myapp://auth` .
 1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
 1. Válassza a **Beállítások**, majd a **szükséges engedélyek**elemet, majd kattintson a **Hozzáadás**gombra.
 1. Válassza **az API kiválasztása**lehetőséget, keresse meg és válassza ki a **IdentityExperienceFramework**, majd kattintson a **kiválasztás**gombra.
@@ -126,10 +126,10 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. A **név**mezőbe írja `ProxyIdentityExperienceFramework`be a következőt:.
+1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**alatt válassza a legördülő menüből a **nyilvános ügyfél/natív (mobil & Desktop)** lehetőséget.
-1. Az **átirányítási URI**mezőbe `myapp://auth`írja be a következőt:.
+1. Az **átirányítási URI**mezőbe írja be a következőt: `myapp://auth` .
 1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
@@ -138,7 +138,7 @@ Ezután határozza meg, hogy az alkalmazást nyilvános ügyfélként kell kezel
 
 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
 1. Válassza **az új élmény kipróbálása** (ha látható) lehetőséget.
-1. A **Speciális beállítások**területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen**lehetőséget).
+1. A **Speciális beállítások**területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen**lehetőséget). Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
 1. Kattintson a **Mentés** gombra.
 
 Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban közzétett API-hatókörre vonatkozó engedélyeket:
@@ -182,17 +182,17 @@ Szerezze be az egyéni házirend-előindítási csomagokat a GitHubról, majd fr
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-1. A **SocialAndLocalAccounts** könyvtár összes fájljában cserélje le a karakterláncot `yourtenant` a Azure ad B2C bérlő nevére.
+1. A **SocialAndLocalAccounts** könyvtár összes fájljában cserélje le a karakterláncot a `yourtenant` Azure ad B2C bérlő nevére.
 
-    Ha például a B2C-bérlő neve *contosotenant*, az összes példánya `yourtenant.onmicrosoft.com` lesz. `contosotenant.onmicrosoft.com`
+    Ha például a B2C-bérlő neve *contosotenant*, az összes példánya `yourtenant.onmicrosoft.com` lesz `contosotenant.onmicrosoft.com` .
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Alkalmazás-azonosítók hozzáadása az egyéni szabályzathoz
 
 Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiterjesztésű fájlhoz.
 
-1. Nyissa meg és keresse meg `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** az elemet `<TechnicalProfile Id="login-NonInteractive">`.
-1. Cserélje le mindkét példányát `IdentityExperienceFrameworkAppId` a korábban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
-1. Cserélje le mindkét példányát `ProxyIdentityExperienceFrameworkAppId` a korábban létrehozott ProxyIdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
+1. Nyissa meg `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** és keresse meg az elemet `<TechnicalProfile Id="login-NonInteractive">` .
+1. Cserélje le mindkét példányát a `IdentityExperienceFrameworkAppId` korábban létrehozott IdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
+1. Cserélje le mindkét példányát a `ProxyIdentityExperienceFrameworkAppId` korábban létrehozott ProxyIdentityExperienceFramework alkalmazás alkalmazás-azonosítójával.
 1. Mentse a fájlt.
 
 ## <a name="upload-the-policies"></a>A szabályzatok feltöltése
@@ -209,13 +209,13 @@ Adja hozzá az alkalmazás-azonosítókat a *TrustFrameworkExtensions. XML*kiter
 A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhez.
 
 > [!TIP]
-> Ha az XML-szerkesztő támogatja az érvényesítést, ellenőrizze a `TrustFrameworkPolicy_0.3.0.0.xsd` fájlokat az alapszintű csomag gyökérkönyvtárában található XML-séma alapján. Az XML-séma ellenőrzése a feltöltés előtt hibákat azonosít.
+> Ha az XML-szerkesztő támogatja az érvényesítést, ellenőrizze a fájlokat az `TrustFrameworkPolicy_0.3.0.0.xsd` alapszintű csomag gyökérkönyvtárában található XML-séma alapján. Az XML-séma ellenőrzése a feltöltés előtt hibákat azonosít.
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
 1. Az **Egyéni házirendek**területen válassza a **B2C_1A_signup_signin**lehetőséget.
 1. Az egyéni házirend áttekintés lapján jelölje ki az **alkalmazás kiválasztása** lehetőséget, majd válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást.
-1. Győződjön meg arról, hogy a **Válasz URL-címe** : `https://jwt.ms`.
+1. Győződjön meg arról, hogy a **Válasz URL-címe** : `https://jwt.ms` .
 1. Válassza a **Futtatás most**lehetőséget.
 1. Regisztráljon e-mail-cím használatával.
 1. Válassza a **Futtatás most** újra lehetőséget.
@@ -225,7 +225,7 @@ A fájlok feltöltésekor az Azure hozzáadja az előtagot `B2C_1A_` mindegyikhe
 
 Az [Előfeltételek](#prerequisites)értelmében a Facebook *nem* szükséges egyéni szabályzatok használatához, de itt azt mutatjuk be, hogyan engedélyezheti az összevont közösségi bejelentkezést egy egyéni házirendben.
 
-1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** A fájlban cserélje le a Facebook-alkalmazás `client_id` azonosítóját a (z) értékre:
+1. A `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** fájlban cserélje le a `client_id` Facebook-alkalmazás azonosítóját a (z) értékre:
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">

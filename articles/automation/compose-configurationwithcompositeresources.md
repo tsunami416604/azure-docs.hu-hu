@@ -1,25 +1,25 @@
 ---
-title: DSC-konfigurációk összeállítása Azure Automation állapot-konfigurációban összetett erőforrások használatával
-description: Megtudhatja, hogyan hozhat létre konfigurációkat összetett erőforrásokkal Azure Automation állapot konfigurációjában.
+title: DSC-konfigurációk összeállítása
+description: Ez a cikk azt ismerteti, hogyan hozhat létre konfigurációkat összetett erőforrásokkal Azure Automation állapot-konfigurációban.
 keywords: PowerShell DSC, a kívánt állapot konfigurációja, PowerShell DSC Azure, összetett erőforrások
 services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 04e32a88dcfb9f069e51b2f18207155b95da37d6
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993780"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744352"
 ---
-# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>DSC-konfigurációk összeállítása Azure Automation állapot-konfigurációban összetett erőforrások használatával
+# <a name="compose-dsc-configurations"></a>DSC-konfigurációk összeállítása
 
 Ha több mint egy kívánt állapot-konfigurációval (DSC) kell kezelnie az erőforrást, a legjobb elérési út az [összetett erőforrások](/powershell/scripting/dsc/resources/authoringresourcecomposite)használata. Az összetett erőforrás egy beágyazott és paraméteres konfiguráció, amely DSC-erőforrásként van használatban egy másik konfiguráción belül. Az összetett erőforrások használata lehetővé teszi, hogy összetett konfigurációkat hozzon létre, miközben lehetővé teszi az alapul szolgáló összetett erőforrások egyedi felügyeletét és létrehozását.
 
 Azure Automation lehetővé teszi az [összetett erőforrások importálását és összeállítását](automation-dsc-compile.md). Miután importálta az összetett erőforrásokat az Automation-fiókjába, használhatja Azure Automation állapot konfigurációját az Azure Portal **DSC** szolgáltatásával.
 
-## <a name="composing-a-configuration-from-composite-resources"></a>Konfiguráció összeállítása összetett erőforrásokból
+## <a name="compose-a-configuration"></a>Konfiguráció összeállítása
 
 A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárendeléséhez létre kell hoznia a konfigurációt. A kompozíció az állapot konfigurálása (DSC) lapon a **konfigurációk** vagy a **lefordított konfigurációk** lapon található összeállítási **konfigurációt** használja.
 
@@ -34,15 +34,16 @@ A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárend
 1. A **Parameters (paraméterek** ) lépésben minden összetett erőforrás paramétere elérhetővé vált, így az értékek megadhatók. Ha egy paraméternek van leírása, akkor a paraméter mező mellett jelenik meg. Ha egy paraméter `PSCredential` típusú, a legördülő lista az aktuális Automation-fiókban található **hitelesítőadat** -objektumok listáját tartalmazza. A **+ a hitelesítő adatok hozzáadása** lehetőség is elérhető. Ha minden szükséges paramétert megadtak, kattintson a **Mentés és fordítás**elemre.
    ![Képernyőkép az összeállítási konfigurációs oldal paraméterek lépéséről](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Az új konfiguráció mentése után a rendszer elküldi a fordítást. A fordítási feladatok állapota megtekinthető úgy, mint bármely importált konfiguráció. További információ: [fordítási feladatok megtekintése](automation-dsc-getting-started.md#view-a-compilation-job).
+## <a name="submit-the-configuration-for-compilation"></a>A konfiguráció elküldése a fordításhoz
+
+Az új konfiguráció mentése után a rendszer elküldi a fordítást. A fordítási feladatok állapotát úgy tekintheti meg, ahogy az importált konfigurációval is rendelkezik. További információ: [fordítási feladatok megtekintése](automation-dsc-getting-started.md#view-a-compilation-job).
 
 A fordítás sikeresen befejeződött, az új konfiguráció megjelenik a **lefordított konfigurációk** lapon. Ezt követően a konfigurációt hozzárendelheti egy felügyelt csomóponthoz, a [csomópont ismételt hozzárendelésének lépéseivel egy másik csomópont-konfigurációhoz](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration).
 
 ## <a name="next-steps"></a>További lépések
 
-- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
-- A csomópontok bevezetésének megismeréséhez tekintse meg a [Azure Automation állapot-konfigurációval történő felügyelethez szükséges bevezetési gépeket](automation-dsc-onboarding.md).
-- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation).
-- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfigurációval és a csokoládéval](automation-dsc-cd-chocolatey.md).
+- [Ismerkedés a Azure Automation állapot-konfigurációval](automation-dsc-getting-started.md)
+- [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md)
+- [DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban](automation-dsc-compile.md)
+- [Folyamatos üzembe helyezés beállítása a chocolatey-vel](automation-dsc-cd-chocolatey.md)
+- [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)

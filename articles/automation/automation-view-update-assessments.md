@@ -1,18 +1,18 @@
 ---
-title: Azure Automation Update Management frissítési felmérések megtekintése
-description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni a frissítési központi telepítések frissítési értékeléseit.
+title: Azure Automation frissítési felmérések megtekintése
+description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni Update Management központi telepítések frissítési értékeléseit.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c66f54b8b01b5131defce6e709af52f9b2732d1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617396"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745231"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Automation Update Management frissítési felmérések megtekintése
+# <a name="view-update-assessments"></a>Frissítésfelmérések megtekintése
 
 A Azure Automation fiókjában válassza a **Update Management** lehetőséget a gépek állapotának megtekintéséhez.
 
@@ -28,7 +28,7 @@ Válassza a **hiányzó frissítések** lehetőséget a gépekből hiányzó fri
 
 ![Hiányzó frissítések](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Frissítési besorolások
+## <a name="work-with-update-classifications"></a>A frissítési besorolások használata
 
 Az alábbi táblázat a Update Management támogatott frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
 
@@ -64,4 +64,4 @@ A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepí
 
 ## <a name="next-steps"></a>További lépések
 
-A frissítési felmérések megtekintése után az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)lépéseit követve ütemezhet egy frissítés központi telepítését.
+[Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)

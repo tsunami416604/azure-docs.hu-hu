@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334070"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746019"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
 
@@ -25,7 +25,7 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID         | Name                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -142,7 +142,7 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 >    * Azure Maps web SDK
 >    * Azure Maps Android SDK
 
-Alapértelmezés szerint a View paraméter **egyesített**értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  A Azure Mapsban szereplő **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat is, amelyeken a Maps, a images és más, a Azure Maps használatával való hozzáférésre jogosult, harmadik féltől származó tartalom elérhetővé válik.
+Alapértelmezés szerint a View paraméter **egyesített**értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  Azure Mapsban a **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat/régiókat, amelyekben a Maps, a images és más adatokat, valamint a harmadik féltől származó, a Azure Maps-on keresztül való hozzáférésre jogosult külső tartalmat is elérhetővé teszi.
 
 
 A következő táblázat a támogatott nézeteket tartalmazza.

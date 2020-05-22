@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858632"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746084"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
 
@@ -23,6 +23,7 @@ Az Azure Data Box Disk egy hibrid felhőalapú megoldás, amellyel gyorsan, kön
 Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box Disk szolgáltatást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * A Data Box Disk megrendelése
 > * A megrendelés nyomon követése
 > * A rendelés lemondása
@@ -38,21 +39,22 @@ A központi telepítése előtt végezze el a következő konfigurálási előfe
 ### <a name="for-device"></a>Az eszköz esetén
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
-- Rendelkezik egy ügyfélszámítógéppel, amelyről lemásolhatja az adatokat. Az ügyfélszámítógépen:
-    - Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Windows-ügyfél esetén további [szükséges szoftvereknek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve kell lennie.  
+
+* Rendelkezik egy ügyfélszámítógéppel, amelyről lemásolhatja az adatokat. Az ügyfélszámítógépen:
+  * Futtasson egy [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+  * Windows-ügyfél esetén további [szükséges szoftvereknek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve kell lennie.  
 
 ## <a name="order-data-box-disk"></a>A Data Box Disk megrendelése
 
 Jelentkezzen be ide:
 
-- A Azure Portal ezen az URL- https://portal.azure.com címen: rendelés Data Box Disk.
-- Vagy a Azure Government portál ezen az URL-címen https://portal.azure.us:. További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+* A Azure Portal ezen az URL-címen: https://portal.azure.com rendelés Data Box Disk.
+* Vagy a Azure Government portál ezen az URL-címen: https://portal.azure.us . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
 1. Az Azure Portal bal felső sarkában kattintson a **+ Erőforrás létrehozása** elemre, és keresse meg az *Azure Data Box* lehetőséget. Kattintson az **Azure Data Box** lehetőségre.
-    
+
    ![Keresse meg az Azure Data Box lehetőséget 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
 2. Kattintson a **Létrehozás**gombra.
@@ -65,15 +67,14 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
     |---|---|
     |Előfizetés|Válassza ki azt az előfizetést, amely számára engedélyezve van a Data Box szolgáltatás.<br> Az előfizetés az Ön számlázási fiókjához lesz társítva. |
     |Átvitel típusa| Importálás az Azure-ba|
-    |Forrásország | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.|
+    |Forrás ország/régió | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.|
     |Azure-beli célrégió|Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.|
-
   
-5.  Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
+4. Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
 
      ![Data Box Disk lehetőség kiválasztása](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
-6.  A **Megrendelés** területen adja meg a **Megrendelés részleteit**. Adja meg vagy válassza ki a következő információkat.
+5. A **Megrendelés** területen adja meg a **Megrendelés részleteit**. Adja meg vagy válassza ki a következő információkat.
 
     |Beállítás|Érték|
     |---|---|
@@ -98,33 +99,34 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás feltölti a virtuális merevlemezeket az átmeneti tárolási fiókba, majd átalakítja azokat a felügyelt lemezekre, és áthelyezi azokat az erőforráscsoportokba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-13. Kattintson a **Tovább** gombra.
+6. Kattintson a **Tovább** gombra.
 
     ![A megrendelés részletei](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. A **Szállítási cím** lapon adja meg az utónevét és a vezetéknevét, a cége nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. A Japánban, Szingapúrban, Koreában és Nyugat-Európában szolgáltatást használó ügyfeleink választhatják az önfelügyelt szállítást a megrendelés elhelyezésekor. A megrendelés sikeres elhelyezése után egy e-mailt fog kapni, amely útmutatást ad az eszköznek a kijelölt Azure-adatközpontból való felvételéhez.
+7. A **Szállítási cím** lapon adja meg az utónevét és a vezetéknevét, a cége nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
+
+   A megrendelés feldolgozása után e-mailben értesítést fog kapni. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-disk-portal-customer-managed-shipping.md).
 
     ![Szállítási cím megadása](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
-15. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre. 
+8. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 
     Javasoljuk a csoportos e-mail-cím használatát, hogy az értesítéseket a rendszergazda távollétében is kézhez kaphassa.
 
-16. Tekintse át a megrendeléshez kapcsolódó **Összefoglalót** a kapcsolattartási adatokról, az értesítésekről és az adatvédelmi feltételekről. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
+9. Tekintse át a megrendeléshez kapcsolódó **Összefoglalót** a kapcsolattartási adatokról, az értesítésekről és az adatvédelmi feltételekről. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
 
-17. Kattintson a **Megrendelés** elemre. A megrendelés létrehozása néhány percet vesz igénybe.
+10. Kattintson a **Megrendelés** elemre. A megrendelés létrehozása néhány percet vesz igénybe.
 
- 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
 Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Keresse meg a megrendelést, és nyissa meg az **Áttekintés** területet az állapot megtekintéséhez. A portál a **Megrendelve** állapotot mutatja.
 
-![Data Box Disk állapot megrendelve](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
+![Data Box Disk állapot megrendelve](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png)
 
 Ha a lemezek nem érhetők el, értesítést kap. Ha a lemezek elérhetők, a Microsoft azonosítja a lemezeket a szállításhoz, és előkészíti a csomagot. A lemezek előkészítése a következőket foglalja magába:
 
-- A lemezek titkosítása a AES-128 BitLocker használatával.  
-- A lemezek zárolása az illetéktelen hozzáférés megakadályozására.
-- A folyamat során létrejön a lemezek zárolását feloldó hozzáférési kulcs.
+* A lemezek titkosítása a AES-128 BitLocker használatával.  
+* A lemezek zárolása az illetéktelen hozzáférés megakadályozására.
+* A folyamat során létrejön a lemezek zárolását feloldó hozzáférési kulcs.
 
 A lemezek előkészítésének lezárultával a portál a **Feldolgozott** állapotot mutatja.
 
@@ -134,18 +136,18 @@ A Microsoft ezután előkészíti, majd lebonyolítja a szállítást egy region
 
 A rendelés lemondásához az Azure Portalon lépjen az **Áttekintés** területre, és kattintson a **Megszakítás** gombra a parancssávon.
 
-Csak akkor mondhatja le a rendelést, ha a lemezek megrendelése után a szállításra való előkészítés még folyamatban van. Ha a megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést.
+Csak a lemezek megrendelése után lehet megszakítani, és a rendelés feldolgozása folyamatban van a szállításhoz. Ha a megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést.
 
 ![Rendelés lemondása](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
 A lemondott rendelés törléséhez nyissa meg az **Áttekintés** területet, és kattintson a parancssávon a **Törlés** elemre.
-
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
 > [!div class="checklist"]
+>
 > * A Data Box Disk megrendelése
 > * A megrendelés nyomon követése
 > * A rendelés lemondása

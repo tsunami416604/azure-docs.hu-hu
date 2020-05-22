@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117393"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745710"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -114,7 +114,7 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
 
 Most, hogy rendelkezik egy Azure Automation fiókkal, létre kell hoznia egy Azure Automation futtató fiókot is az Azure-erőforrások eléréséhez.
 
-Egy [Azure Automation futtató fiók](../../automation/manage-runas-account.md) hitelesítést biztosít az Azure-ban található erőforrások kezeléséhez az Azure-parancsmagokkal. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatásnevet a Azure Active Directory, és hozzárendeli a közreműködői szerepkört az egyszerű szolgáltatásnév felhasználóhoz az előfizetési szinten, az Azure-beli futtató fiók kiváló módszer a tanúsítványokkal és egyszerű szolgáltatásokkal való biztonságos hitelesítésre, anélkül, hogy a Felhasználónév és a Jelszó tárolása a hitelesítőadat-objektumban megtörténjen. További információ a futtató hitelesítésről: a [futtató fiók engedélyeinek korlátozása](../../automation/manage-runas-account.md#limiting-run-as-account-permissions).
+Egy [Azure Automation futtató fiók](../../automation/manage-runas-account.md) hitelesítést biztosít az Azure-ban található erőforrások kezeléséhez az Azure-parancsmagokkal. Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatásnevet a Azure Active Directory, és hozzárendeli a közreműködői szerepkört az egyszerű szolgáltatásnév felhasználóhoz az előfizetési szinten, az Azure-beli futtató fiók kiváló módszer a tanúsítványokkal és egyszerű szolgáltatásokkal való biztonságos hitelesítésre, anélkül, hogy a Felhasználónév és a Jelszó tárolása a hitelesítőadat-objektumban megtörténjen. További információ a futtató hitelesítésről: a [futtató fiók engedélyeinek korlátozása](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
 Minden olyan felhasználó, aki tagja az előfizetés-adminisztrátorok szerepkörnek, és az előfizetés rendszergazdája, a következő szakasz utasításait követve hozhat létre futtató fiókot.
 

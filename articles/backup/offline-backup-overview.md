@@ -3,12 +3,12 @@ title: Az offline biztonsági mentés áttekintése
 description: További információ az offline biztonsági mentés összetevőiről. Az Azure import/export szolgáltatás alapján Azure Data Box és offline biztonsági mentésen alapuló offline biztonsági mentést is tartalmaznak.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160921"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744637"
 ---
 # <a name="overview-of-offline-backup"></a>Az offline biztonsági mentés áttekintése
 
@@ -73,11 +73,11 @@ A következő táblázat összehasonlítja a két elérhető lehetőséget, így
 | Biztonság (adategységek, eszközök és szolgáltatások)                           | Adataes 256 [bites titkosítású](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) <br> [Eszköz](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) – robusztus eset, tulajdonosi, hitelesítő adatokra épülő felület az adatok másolásához <br> Az Azure biztonsági szolgáltatásai által [védett szolgáltatások](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) | Adatátvitel – BitLocker – titkosított                                 |
 | Ideiglenes előkészítési hely kiépítés                     | Nem kötelező                                                | A biztonsági másolatok becsült méretének nagyobb vagy egyenlőnek kell lennie        |
 | Támogatott régiók                                           | [Azure Data Box lemezterület](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box régiók](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure import/export szolgáltatás régiói](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Országok közötti szállítás                                     | Nem támogatott  <br>    A forrás-és a cél Azure-adatközpontnak ugyanabban az országban kell lennie * | Támogatott                                                    |
+| Országok közötti szállítás                                     | Nem támogatott  <br>    A forrás-és a cél Azure-adatközpontnak ugyanabban az országban/régióban kell lennie * | Támogatott                                                    |
 | Adatátviteli logisztika (szállítás, szállítás, pickup)           | Teljes mértékben Microsoft által felügyelt                                     | Ügyfél által felügyelt                                            |
 | Díjszabás                                                      | [Díjszabás Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box lemez díjszabása](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure import/export szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-* Ha országa nem rendelkezik Azure-adatközpontgal, a lemezeket egy másik országban lévő Azure-adatközpontba kell szállítani.
+* Ha az országa vagy régiója nem rendelkezik Azure-adatközpontgal, a lemezeket egy másik országban/régióban lévő Azure-adatközpontba kell szállítani.
 
 ## <a name="next-steps"></a>További lépések
 

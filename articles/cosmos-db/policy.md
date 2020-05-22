@@ -1,17 +1,17 @@
 ---
 title: A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
-description: Megtudhatja, hogyan használhatja a Azure Policyt Cosmos DB erőforrások irányításának és szabályozásának megvalósítására.
+description: Megtudhatja, hogyan használhatja a Azure Policyt Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósítására.
 author: plzm
 ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 6b8823b586ae0d0d9f6a2c50286aa754a9ab8025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665158"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747382"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
 
@@ -32,7 +32,7 @@ A házirend-definíció kiválasztásához írja be a `Cosmos DB` kifejezést a 
 > [!TIP]
 > A házirend-hozzárendelések létrehozásához használhatja a **rendelkezésre álló definíciók** ablaktáblán látható beépített szabályzat-definíciók nevét is Azure PowerShell, Azure CLI vagy ARM-sablonokkal.
 
-:::image type="content" source="./media/policy/available-definitions.png" alt-text="Cosmos DB beépített szabályzat-definíciók keresése":::
+:::image type="content" source="./media/policy/available-definitions.png" alt-text="Azure Cosmos DB beépített szabályzat-definíciók keresése":::
 
 ## <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
@@ -115,7 +115,7 @@ A képernyőképen a következő megfelelőségi kiértékelési eredmények lá
 - A megadott hatókörben lévő Azure Cosmos DB fiókok közül nulla nem felel meg a szabályzat-hozzárendelésnek, hogy a rendszer az erőforrásokat az engedélyezett régiókra telepítse.
 - A megadott hatókörben lévő két Azure Cosmos DB adatbázis vagy gyűjtemény erőforrásai megfelelnek a megadott maximális korlátot meghaladó kiépített átviteli sebesség ellenőrzéséhez szükséges szabályzat-hozzárendelésnek.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Cosmos DB beépített szabályzat-definíciók keresése":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB beépített szabályzat-definíciók keresése":::
 
 A nem megfelelő erőforrások javításához tekintse meg a [szervizelt Azure Policytel](../governance/policy/how-to/remediate-resources.md) című cikket.
 

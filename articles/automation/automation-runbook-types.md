@@ -1,16 +1,16 @@
 ---
 title: Azure Automation runbook-típusok
-description: Ismerteti azokat a különböző runbookok, amelyeket Azure Automation használhat, és figyelembe kell venni, hogy melyik típust kell használni.
+description: Ez a cikk ismerteti azokat a runbookok, amelyeket a Azure Automation használhat, és figyelembe kell venni a használandó típus meghatározásának szempontjait.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 390f14e8369f206b2f5ffce74f0775b33e313021
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714984"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743828"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
@@ -28,9 +28,6 @@ Vegye figyelembe az alábbi szempontokat, amikor meghatározza, hogy melyik típ
 
 * A runbookok nem konvertálható grafikus formátumból szöveg típusúra, vagy fordítva.
 * A különböző típusú runbookok a gyermek runbookok való használata korlátozásokkal jár. További információ: [gyermek runbookok Azure Automation](automation-child-runbooks.md).
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="graphical-runbooks"></a>Grafikus runbookok
 
@@ -116,9 +113,9 @@ Python-runbookok fordítása a Python 2 alatt. Közvetlenül szerkesztheti a run
 * Jelenleg csak a Python 2 támogatott. Minden Python 3-specifikus függvény meghiúsul.
 * A külső gyártótól származó kódtárak használatához [importálnia kell a csomagokat](python-packages.md) az Automation-fiókba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a grafikus runbook létrehozásáról: [grafikus szerzői műveletek Azure Automationban](automation-graphical-authoring-intro.md).
-* A runbookok PowerShell-és PowerShell-munkafolyamatai közötti különbségek megismeréséhez tekintse meg a [Windows PowerShell-munkafolyamatok megismerése](automation-powershell-workflow.md)című témakört.
-* A runbook létrehozásával és importálásával kapcsolatos további információkért lásd: [Runbookok kezelése Azure Automationban](manage-runbooks.md).
-* Ha többet szeretne megtudni a PowerShellről, beleértve a nyelvi referenciát és a tanulási modulokat, tekintse meg a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).
+* [Runbookok kezelése Azure Automation](manage-runbooks.md)
+* [A Azure Automation PowerShell-munkafolyamatának megismerése](automation-powershell-workflow.md)
+* [Grafikus runbookok készítése Azure Automation](automation-graphical-authoring-intro.md)
+* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)

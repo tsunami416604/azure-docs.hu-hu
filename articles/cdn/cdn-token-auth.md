@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929128"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745463"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-eszközök védelme jogkivonat-hitelesítéssel
 
@@ -33,7 +33,7 @@ A jogkivonat-hitelesítés lehetővé teszi, hogy megakadályozza az Azure Conte
 
 A jogkivonat-hitelesítés azt ellenőrzi, hogy a kérelmeket egy megbízható hely hozza-e létre, mert a kérelmeknek tartalmaznia kell egy olyan jogkivonat-értéket, amely a kérelmezőnek kódolt adatokat tárol. A rendszer csak akkor kézbesíti a tartalmat a kérelmezőnek, ha a kódolt információk megfelelnek a követelményeknek. Ellenkező esetben a rendszer megtagadja a kérelmeket. A követelményeket a következő paraméterek közül egy vagy több használatával állíthatja be:
 
-- Ország: az [országkód](/previous-versions/azure/mt761717(v=azure.100))alapján megadott országokból/régiókból származó kérelmek engedélyezése vagy megtagadása.
+- Ország/régió: az [ország/régió kódja](/previous-versions/azure/mt761717(v=azure.100))által meghatározott országokból/régiókból származó kérelmek engedélyezése vagy megtagadása.
 - URL: csak a megadott objektumnak vagy elérési útnak megfelelő kérelmek engedélyezése.
 - Gazdagép: engedélyezheti vagy megtagadhatja a megadott gazdagépeket használó kérelmeket a kérelem fejlécében.
 - Hivatkozó: a megadott hivatkozótól érkező kérés engedélyezése vagy elutasítása.
@@ -100,31 +100,31 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Lejárati időt rendel egy jogkivonathoz, amely után a jogkivonat lejár. A lejárati idő lejárta után küldött kérések megtagadva. Ez a paraméter egy UNIX-időbélyeget használ, amely a normál UNIX-kor óta eltelt másodpercek számától függ `1/1/1970 00:00:00 GMT`. (A standard idő és a Unix-idő közötti váltáshoz online eszközöket használhat.)> 
-      >    Ha például azt szeretné, hogy a token lejárjon `12/31/2016 12:00:00 GMT`, adja meg a Unix timestamp értékét. `1483185600` 
+      >    <td>Lejárati időt rendel egy jogkivonathoz, amely után a jogkivonat lejár. A lejárati idő lejárta után küldött kérések megtagadva. Ez a paraméter egy UNIX-időbélyeget használ, amely a normál UNIX-kor óta eltelt másodpercek számától függ `1/1/1970 00:00:00 GMT` . (A standard idő és a Unix-idő közötti váltáshoz online eszközöket használhat.)> 
+      >    Ha például azt szeretné, hogy a token lejárjon `12/31/2016 12:00:00 GMT` , adja meg a Unix timestamp értékét `1483185600` . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
       >    <td>Lehetővé teszi a tokenek egy adott objektumra vagy elérési útra való személyre szabását. Korlátozza a hozzáférést azokhoz a kérelmekhez, amelyek URL-címe egy adott relatív elérési úttal kezdődik. Az URL-címek kis-és nagybetűket érintenek. Több elérési utat is megadhat, ha az egyes elérési utakat vesszővel választja el. ne adjon hozzá szóközt. A követelményektől függően különböző értékeket állíthat be a különböző szintű hozzáférés biztosításához.> 
-      >    Az URL-cím `http://www.mydomain.com/pictures/city/strasbourg.png`esetében például a következő bemeneti értékekhez engedélyezett a kérelmek: 
+      >    Az URL-cím esetében például a `http://www.mydomain.com/pictures/city/strasbourg.png` következő bemeneti értékekhez engedélyezett a kérelmek: 
       >    <ul>
-      >       <li>Bemeneti érték `/`: minden kérelem engedélyezett.</li>
-      >       <li>Bemeneti érték `/pictures`, a következő kérelmek engedélyezettek: <ul>
+      >       <li>Bemeneti érték `/` : minden kérelem engedélyezett.</li>
+      >       <li>Bemeneti érték `/pictures` , a következő kérelmek engedélyezettek: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Bemeneti érték `/pictures/`: csak az `/pictures/` elérési utat tartalmazó kérelmek engedélyezettek. Például: `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Bemeneti érték `/pictures/city/strasbourg.png`: csak az adott elérési útra és objektumra vonatkozó kérelmek engedélyezettek.</li>
+      >       <li>Bemeneti érték `/pictures/` : csak az `/pictures/` elérési utat tartalmazó kérelmek engedélyezettek. Például: `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Bemeneti érték `/pictures/city/strasbourg.png` : csak az adott elérési útra és objektumra vonatkozó kérelmek engedélyezettek.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Csak egy vagy több megadott országból/régióból származó kérelmeket engedélyez. Az összes többi országból/régióból származó kérelmek megtagadva. Mindegyik országhoz használjon kétbetűs [ISO 3166 országkódot](/previous-versions/azure/mt761717(v=azure.100)) , és mindegyiket vesszővel válassza el egymástól. ne adjon hozzá szóközt. Ha például csak a Egyesült Államok és Franciaországból szeretné engedélyezni a hozzáférést, írja be `US,FR`a következőt:.</td>
+      >    <td>Csak egy vagy több megadott országból/régióból származó kérelmeket engedélyez. Az összes többi országból/régióból származó kérelmek megtagadva. Mindegyik országhoz/régióhoz használjon kétbetűs [ISO 3166 országot vagy régiót](/previous-versions/azure/mt761717(v=azure.100)) , és mindegyiket vesszővel válassza el egymástól. ne adjon hozzá szóközt. Ha például csak a Egyesült Államok és Franciaországból szeretné engedélyezni a hozzáférést, írja be a következőt: `US,FR` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Megtagadja a kérelmeket, amelyek egy vagy több megadott országból/régióból származnak. Az összes többi országból/régióból származó kérelmek engedélyezettek. A megvalósítás megegyezik a <b>ec_country_allow</b> paraméterrel. Ha az országkód szerepel a <b>ec_country_allow</b> és a <b>ec_country_deny</b> paraméterekben is, a <b>ec_country_allow</b> paraméter elsőbbséget élvez.</td>
+      >    <td>Megtagadja a kérelmeket, amelyek egy vagy több megadott országból/régióból származnak. Az összes többi országból/régióból származó kérelmek engedélyezettek. A megvalósítás megegyezik a <b>ec_country_allow</b> paraméterrel. Ha egy ország/régió kódja szerepel a <b>ec_country_allow</b> és a <b>ec_country_deny</b> paraméterekben is, a <b>ec_country_allow</b> paraméter elsőbbséget élvez.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -134,9 +134,9 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
       >       <li>Egy állomásnév vagy egy állomásnév és egy elérési út.</li>
       >       <li>Több hivatkozó. Több hivatkozó hozzáadásához vesszővel válassza el az egyes hivatkozókat; ne adjon hozzá szóközt. Ha egy hivatkozó értéket ad meg, de a rendszer nem küldi el a hivatkozói adatokat a kérésben a böngésző konfigurációja miatt, a rendszer alapértelmezés szerint elutasítja a kérést.</li> 
       >       <li>Hiányzó vagy üres hivatkozói adatokat tartalmazó kérelmek. Alapértelmezés szerint a <b>ec_ref_allow</b> paraméter blokkolja az ilyen típusú kérelmeket. A kérések engedélyezéséhez írja be a "hiányzó" szöveget, vagy adjon meg egy üres értéket (záró vessző használatával).</li> 
-      >       <li>Altartományt. Az altartományok engedélyezéséhez írjon be egy csillag\*() karaktert. Ha például az összes altartományát engedélyezni szeretné `contoso.com`, adja meg `*.contoso.com`a következőt:.</li>
+      >       <li>Altartományt. Az altartományok engedélyezéséhez írjon be egy csillag ( \* ) karaktert. Ha például az összes altartományát engedélyezni szeretné, adja meg a következőt: `contoso.com` `*.contoso.com` .</li>
       >    </ul> 
-      >    Ha például engedélyezni kívánja a `www.contoso.com`, a és az összes altartományát `contoso2.com`, valamint az üres vagy hiányzó hivatkozó kérelmeket, adja meg `www.contoso.com,*.contoso.com,missing`a következőt:.</td>
+      >    Ha például engedélyezni kívánja a `www.contoso.com` , a és az összes altartományát, `contoso2.com` valamint az üres vagy hiányzó hivatkozó kérelmeket, adja meg a következőt: `www.contoso.com,*.contoso.com,missing` .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
@@ -144,7 +144,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>A csak a megadott protokolltól érkező kéréseket engedélyezi. Az érvényes értékek `http`: `https`,, `http,https`vagy.</td>
+      >    <td>A csak a megadott protokolltól érkező kéréseket engedélyezi. Az érvényes értékek: `http` , `https` , vagy `http,https` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
@@ -152,7 +152,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
       > </tr>
       > <tr>
       >    <td><b>ec_clientip</b></td>
-      >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címéhez. Az IPV4 és az IPV6 is támogatott. Egy adott alhálózathoz tartozó egyetlen kérelem IP-címét vagy IP-címét is megadhatja. Például lehetővé teszi `11.22.33.0/22` , hogy az IP-címekről érkező kérések 11.22.32.1 11.22.35.254.</td>
+      >    <td>Korlátozza a hozzáférést a megadott kérelmező IP-címéhez. Az IPV4 és az IPV6 is támogatott. Egy adott alhálózathoz tartozó egyetlen kérelem IP-címét vagy IP-címét is megadhatja. Például `11.22.33.0/22` lehetővé teszi, hogy az IP-címekről érkező kérések 11.22.32.1 11.22.35.254.</td>
       > </tr>
       > </table>
 
@@ -195,7 +195,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>A Azure CDN szolgáltatásai és szolgáltatói díjszabása
 

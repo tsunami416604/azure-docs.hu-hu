@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77e75caf836c4f7d142b0b5c23327d73afa6a77
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415850"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744619"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -55,7 +55,7 @@ A Security Center olyan fejlett biztonsági elemzéseket alkalmaz, amelyek messz
 
 * **Integrált veszélyforrások felderítése**: a Microsoft óriási mennyiségű globális fenyegetési intelligenciával rendelkezik. A telemetria több forrásból, például az Azure-ból, az Office 365-ból, a Microsoft CRM Online-ból, a Microsoft Dynamics AX-ből, a outlook.com, a MSN.com, a Microsoft Digital Crimes Unit (DCU) és a Microsoft Security Response Center (MSRC) szolgáltatásból zajlik. A kutatók emellett a jelentős felhőalapú szolgáltatók és más harmadik féltől származó adatcsatornák között megosztott veszélyforrások felderítésére vonatkozó információkat is kapnak. Az Azure Security Center mindezeket az adatokat fel tudja használni arra, hogy értesítse Önt az ismert kártékony elemektől eredő fenyegetésekről.
 
-* **Viselkedési elemzés**: a viselkedési elemzés olyan módszer, amely az adatelemzést és az azokhoz való összevetését ismert minták gyűjteményéhez hasonlítja össze. Ezek a minták azonban nem csak egyszerű aláírások. Meghatározásuk hatalmas adatkészletekre alkalmazott összetett gépi tanulási algoritmusokkal történt. Ezenkívül szakértő elemzők mélyrehatóan elemezték a kártékony működést a meghatározásukhoz. A Azure Security Center a viselkedési elemzések segítségével azonosíthatja a feltört erőforrásokat a virtuális gépek naplói, a virtuális hálózati eszközök naplói, a háló naplói, az összeomlási memóriaképek és más források elemzése alapján.
+* **Viselkedési elemzés**: a viselkedési elemzés olyan módszer, amely az adatelemzést és az azokhoz való összevetését ismert minták gyűjteményéhez hasonlítja össze. Ezek a minták azonban nem csak egyszerű aláírások. Meghatározásuk hatalmas adatkészletekre alkalmazott összetett gépi tanulási algoritmusokkal történt. Ezenkívül szakértő elemzők mélyrehatóan elemezték a kártékony működést a meghatározásukhoz. A Azure Security Center a működés elemzésével azonosíthatja a feltört erőforrásokat a virtuális gépek naplói, a virtuális hálózati eszközök naplói, a háló naplói és más források elemzése alapján.
 
 * **Anomáliák észlelése**: a Azure Security Center rendellenességek észlelését is használja a fenyegetések azonosítására. A viselkedési elemzésekkel szemben (amely a nagyméretű adatkészletből származtatott ismert mintáktól függ), a rendellenességek észlelése több "személyre szabott", és a központi telepítésekre jellemző alaptervekre összpontosít. Ez a módszer gépi tanulás alkalmazásával felméri az üzemelő példányok normál tevékenységeit, majd szabályokat hoz létre az olyan rendkívüli körülmények meghatározásához, amelyek a biztonságot érintő eseményre utalhatnak.
 

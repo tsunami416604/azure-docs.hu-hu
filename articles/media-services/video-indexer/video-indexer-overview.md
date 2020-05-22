@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788853"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744604"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
@@ -70,8 +70,8 @@ A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a v
 
 ### <a name="audio-insights"></a>Audio-elemzések
 
-* **Hang átirata**: átalakítja a beszédet 12 nyelven, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, Arab, Orosz, brazíliai portugál, hindi és koreai.
-* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, orosz és brazíliai portugál. Ha a nyelv nem azonosítható bizalommal, Video Indexer feltételezi, hogy a beszélt nyelv angol. További információ: [Language Identification Model](language-identification-model.md).
+* **Hang átirata**: átalakítja a beszédet 12 nyelven, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, Arab, Orosz, portugál, hindi és koreai.
+* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, mandarin kínai, Japán, orosz és portugál. Ha a nyelv nem azonosítható bizalommal, Video Indexer feltételezi, hogy a beszélt nyelv angol. További információ: [Language Identification Model](language-identification-model.md).
 * **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból. Elküldi a médiafájl egyes szegmenseit, majd az átírást egy egységes átírással ötvözi. További információt a [többnyelvű tartalom automatikus azonosítása és](multi-language-identification-transcription.md)átírása című témakörben talál.
 * **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
 * **Kétcsatornás feldolgozás**: automatikusan észleli a különálló átiratokat, és egyesíti az adott idővonalat.
@@ -114,7 +114,7 @@ Ha a webhelyet használja, az adatok metaadatokként lesznek hozzáadva, és meg
 
 ## <a name="next-steps"></a>További lépések
 
-Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
+Készen áll a Video Indexer használatának megkezdésére. További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a video Indexer webhellyel](video-indexer-get-started.md).
 - [Tartalom feldolgozása Video Indexer Rest APIsal](video-indexer-use-apis.md).
