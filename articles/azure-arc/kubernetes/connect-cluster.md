@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 690955f0e7d18f9a784b4c9a2fa1733442cb70dc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725618"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780024"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -25,7 +25,7 @@ Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 
 * Kubernetes-fürt, amely működik és fut
 * Szüksége lesz a kubeconfig és a fürt rendszergazdai hozzáférésére. 
-* A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára.
+* A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. Az "Azure-Kubernetes bevezetéséhez" szerepkör, amelynek az engedélyei használhatók az Azure CLI-vel való bevezetéshez használt felhasználó vagy szolgáltatásnév szerepkör-hozzárendeléseihez.
 * A *connectedk8s* -és *k8sconfiguration* -bővítmények legújabb verziója
 
 ## <a name="supported-regions"></a>Támogatott régiók
@@ -216,7 +216,7 @@ A Azure Portal törli az `Microsoft.Kubernetes/connectedcluster` erőforrást az
 
 Ha el szeretné távolítani a fürtben lévő ügynököket, a vagy a-t kell futtatnia `az connectedk8s delete` `helm uninstall azurearcfork8s` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [GitOps használata csatlakoztatott fürtben](./use-gitops-connected-cluster.md)
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

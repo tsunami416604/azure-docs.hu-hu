@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6cd883289513091ff1a57a130b12e25e012c1160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72afa8ebea4cb9bf07cb3ce56583cbdf1849be9e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334733"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778212"
 ---
-Az alábbi táblázat az Azure általános célú v1, v2, blob Storage, a blob Storage és a Data Lake Storage Gen2 engedélyezett Storage-fiókok alapértelmezett határértékeit ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldendő összes adattal vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott összes adattal vonatkozik.
+Az alábbi táblázat az Azure általános célú v1, v2, blob Storage és a blob Storage-fiókokra vonatkozó alapértelmezett korlátokat ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldendő összes adattal vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott összes adattal vonatkozik.
 
 | Erőforrás | Korlát |
 | --- | --- |
-| A Storage-fiókok régiónként/előfizetések száma, beleértve a standard, prémium és Data Lake Storage Gen2 engedélyezett Storage-fiókokat. <sup>3</sup> | 250 |
+| A Storage-fiókok régiónként/előfizetések száma, beleértve a standard és a Premium Storage-fiókokat.| 250 |
 | Storage-fiók maximális kapacitása | 5 PiB <sup>1</sup>|
 | BLOB-tárolók, blobok, fájlmegosztás, táblák, várólisták, entitások vagy üzenetek maximális száma Storage-fiókban | Korlátlan |
 | Kérelmek maximális száma<sup>1</sup> – Storage-fiók | 20 000 kérelem másodpercenként |
@@ -37,7 +37,7 @@ Az alábbi táblázat az Azure általános célú v1, v2, blob Storage, a blob S
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) az Azure Blob Storage-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége. Az Azure Storage és a blob Storage korlátozásai a Data Lake Storage Gen2ra vonatkoznak.
+<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) az Azure Blob Storage-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége.
 
 > [!NOTE]
 > A Microsoft azt javasolja, hogy a legtöbb forgatókönyv esetén általános célú v2 Storage-fiókot használjon. Az általános célú v1-et vagy az Azure Blob Storage-fiókot egy általános célú v2-fiókra is frissítheti állásidő nélkül, és anélkül, hogy adatmásolásra lenne szükség. További információ: [frissítés általános célú v2 Storage-fiókra](../articles/storage/common/storage-account-upgrade.md).

@@ -3,20 +3,20 @@ title: Gyors útmutató – felügyelt SQL-példány
 description: Megtudhatja, hogyan kezdheti meg gyorsan a Azure SQL Database felügyelt példányát
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, carlr
+author: davidtrigano
+ms.author: datrigan
+ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b873588393ed765fa21b30dfb3a71486d055373b
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73821722"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780469"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Ismerkedés az Azure SQL Database-példányokkal
 
@@ -24,7 +24,7 @@ A [felügyelt példány](sql-database-managed-instance-index.yml) központi tele
 
 ## <a name="quickstart-overview"></a>Gyors üzembe helyezés áttekintése
 
-A következő rövid útmutatók segítségével gyorsan létrehozhat egy felügyelt példányt, konfigurálhat egy virtuális gépet, vagy megadhatja az ügyfélalkalmazás VPN-kapcsolatát, és egy `.bak` fájl használatával visszaállíthat egy adatbázist az új felügyelt példányra.
+A következő rövid útmutatók segítségével gyorsan létrehozhat egy felügyelt példányt, konfigurálhat egy virtuális gépet, vagy megadhatja az ügyfélalkalmazás VPN-kapcsolatát, és egy fájl használatával visszaállíthat egy adatbázist az új felügyelt példányra `.bak` .
 
 ### <a name="configure-environment"></a>A környezet konfigurálása
 
@@ -37,7 +37,8 @@ Első lépésként létre kell hoznia az első felügyelt példányt a hálózat
   - Hozzon létre [pont – hely VPN-kapcsolatot a felügyelt példányhoz](sql-database-managed-instance-configure-p2s.md) az ügyfélszámítógépen, amelyen SQL Server Management Studio és más ügyfélkapcsolati alkalmazásokat. Ez a két lehetőség a felügyelt példányhoz és a saját VNet való kapcsolódáshoz.
 
   > [!NOTE]
-  > A helyi hálózatról Express Route vagy helyek közötti kapcsolat is használható, de ezek a módszerek nem tartoznak a rövid útmutatók körébe.
+  > - A helyi hálózatról Express Route vagy helyek közötti kapcsolat is használható, de ezek a módszerek nem tartoznak a rövid útmutatók körébe.
+  > - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
 A felügyelt példány manuális létrehozása helyett használhatja a [PowerShellt](scripts/sql-database-create-configure-managed-instance-powershell.md), [a PowerShellt Resource Manager-sablonnal](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) -vel a folyamat parancsfájlokhoz és automatizálásához.
 
@@ -45,7 +46,7 @@ A felügyelt példány manuális létrehozása helyett használhatja a [PowerShe
 
 A felügyelt példány létrehozása és a hozzáférés konfigurálása után megkezdheti az adatbázisok áttelepítését SQL Server helyszíni vagy Azure-beli virtuális gépekről. Az áttelepítés meghiúsul, ha az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerüléséhez és a kompatibilitás ellenőrzéséhez telepítheti [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) szolgáltatást, amely elemzi az adatbázisokat SQL Server és megkeresi a felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak a felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) egy másik hasznos eszköz, amely rögzíti a számítási feladatokat SQL Server és visszajátszhatja azt egy felügyelt példányon, így megállapítható, hogy a felügyelt példányra való Migrálás során problémákba ütközik-e.
 
-Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt példányra, a natív SQL Server visszaállítási képességekkel állíthatja vissza az adatbázist egy felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy Azure-beli virtuális gépen telepített SQL Server-adatbázismotor használatával. A gyors útmutatóért lásd: [biztonsági másolat visszaállítása felügyelt példányra](sql-database-managed-instance-get-started-restore.md). Ebben a rövid útmutatóban egy `.bak` , az Azure Blob Storage-ban tárolt fájlból `RESTORE` kell VISSZAÁLLÍTANI a Transact-SQL parancs használatával.
+Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt példányra, a natív SQL Server visszaállítási képességekkel állíthatja vissza az adatbázist egy felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy Azure-beli virtuális gépen telepített SQL Server-adatbázismotor használatával. A gyors útmutatóért lásd: [biztonsági másolat visszaállítása felügyelt példányra](sql-database-managed-instance-get-started-restore.md). Ebben a rövid útmutatóban egy, `.bak` Az Azure Blob Storage-ban tárolt fájlból kell visszaállítani a `RESTORE` Transact-SQL parancs használatával.
 
 > [!TIP]
 > Ha a `BACKUP` Transact-SQL parancs használatával szeretne biztonsági másolatot készíteni az adatbázisról az Azure Blob Storage-ban, tekintse [meg SQL Server biztonsági mentés URL-címére](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
@@ -62,11 +63,11 @@ Ha már rendelkezik egy VNet és alhálózattal, ahol telepíteni szeretné a fe
 
 ## <a name="migrate-to-a-managed-instance"></a>Migrálás felügyelt példányra
 
-A rövid útmutatókban található cikkek segítségével gyorsan beállíthatja a felügyelt példányokat, és a natív `RESTORE` képességgel helyezheti át az adatbázisait. Ez jó kiindulási pont, ha gyors ellenőrzéseket szeretne végezni, és ellenőrizze, hogy a megoldás tud-e dolgozni a felügyelt példányon. 
+A rövid útmutatókban található cikkek segítségével gyorsan beállíthatja a felügyelt példányokat, és a natív képességgel helyezheti át az adatbázisait `RESTORE` . Ez jó kiindulási pont, ha gyors ellenőrzéseket szeretne végezni, és ellenőrizze, hogy a megoldás tud-e dolgozni a felügyelt példányon. 
 
 Ahhoz azonban, hogy a termelési adatbázist vagy akár fejlesztési, illetve tesztelési adatbázisokat is át szeretne telepíteni az egyes teljesítménytesztekhez, érdemes megfontolnia néhány további módszer használatát, például a következőket:
 - Teljesítményteszt – mérje fel az alapkonfigurációt a forrás SQL Server példányán, és hasonlítsa össze azokat a célként kezelt példány teljesítményével, ahol áttelepítette az adatbázist. További információ a [teljesítmény-összehasonlítással kapcsolatos ajánlott eljárásokról](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online áttelepítés – a jelen cikkben `RESTORE` ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a felügyelt példány-adatbázisba. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
+- Online áttelepítés – a `RESTORE` jelen cikkben ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a felügyelt példány-adatbázisba. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
 
 További információ az [ajánlott áttelepítési folyamatról](sql-database-managed-instance-migrate.md).
 

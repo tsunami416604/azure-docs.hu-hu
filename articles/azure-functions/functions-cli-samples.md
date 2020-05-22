@@ -1,17 +1,16 @@
 ---
 title: Azure CLI-minták – Azure Functions
 description: Azure CLI-minták – Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61ac1b95055b8ec9e65c3009d76f79581721f594
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239643"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779544"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-minták
 
@@ -21,9 +20,9 @@ A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkri
 
 | Alkalmazás létrehozása | Leírás |
 |---|---|
-| [Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](scripts/functions-cli-create-serverless.md) | Létrehoz egy függvényalkalmazást egy használatalapú csomagban.  |
-| [Kiszolgáló nélküli Python-Function-alkalmazás létrehozása](scripts/functions-cli-create-serverless-python.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
-| [Function-alkalmazás létrehozása skálázható prémium csomaggal](scripts/functions-cli-create-premium-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
+| [Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](scripts/functions-cli-create-serverless.md) | Function-alkalmazás létrehozása használati tervben.  |
+| [Kiszolgáló nélküli Python-Function-alkalmazás létrehozása](scripts/functions-cli-create-serverless-python.md) | Python-függvény alkalmazás létrehozása használati tervben. |
+| [Function-alkalmazás létrehozása skálázható prémium csomaggal](scripts/functions-cli-create-premium-plan.md) | Hozzon létre egy Function alkalmazást a prémium csomagban. |
 | [Function-alkalmazás létrehozása dedikált (App Service) tervben](scripts/functions-cli-create-app-service-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
 
 | Integrálás | Leírás|

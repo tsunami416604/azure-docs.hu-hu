@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189181"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779166"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -58,7 +58,7 @@ A támogatott adattípusok a következők:
 
 | Adattípus | Leírás |
 |---|---|
-| **logikai** | Olyan adattípus, amely két állapot egyikét adja `true` meg `false`: vagy. |
+| **logikai** | Olyan adattípus, amely két állapot egyikét adja meg: `true` vagy `false` . |
 | **dateTime** | Egy azonnali időpontot jelöl, amely általában dátum és napszak szerint van megadva. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. |
 | **double** | Kétszeres pontosságú 64 bites [IEEE 754](https://ieeexplore.ieee.org/document/8766229) lebegőpontos pont. |
 | **sztring** | Szöveges értékek, amelyek Unicode-karakterből állnak.          |
@@ -78,6 +78,17 @@ Javasoljuk, hogy a következő ajánlott eljárásokat alkalmazza:
 * [Tervezze meg a méretezési igényeket](time-series-insights-update-plan.md) a várható betöltési arány kiszámításával és annak ellenőrzésével, hogy az az alább felsorolt támogatott díjszabás alá esik-e.
 
 * Megtudhatja, hogyan optimalizálhatja és formázhatja a JSON-adatait, valamint az előzetes verzió jelenlegi korlátozásait, ha beolvassa, [Hogyan formázhatja a JSON-t a bejövő és a lekérdezési](./time-series-insights-update-how-to-shape-events.md)művelethez.
+
+* A streaming betöltést csak a közel valós idejű és a legutóbbi adatmennyiségek esetében használja, a folyamatos adatátvitelek nem támogatottak.
+
+#### <a name="historical-data-ingestion"></a>Korábbi adatfeldolgozás
+
+Azure Time Series Insights előzetes verzióban jelenleg nem támogatott a folyamatos átviteli folyamat használata a korábbi adatimportáláshoz. Ha a korábbi adatait importálnia kell a környezetbe, kövesse az alábbi irányelveket:
+
+* Ne továbbítsa párhuzamosan az élő és a korábbi adatforrásokat. A lekéréses adatmennyiség miatt a lekérdezés teljesítménye csökken.
+* A legjobb teljesítmény érdekében időben berendezheti a múltbeli adatmennyiséget.
+* Maradjon az alábbi betöltési átviteli sebességre vonatkozó korlátok között.
+* Ha az adatok régebbiek, mint a meleg tárolási megőrzési időszak, tiltsa le a meleg tárolást.
 
 ### <a name="ingress-scale-and-preview-limitations"></a>Beáramló méretezési és előzetes korlátozások
 
@@ -101,7 +112,7 @@ Alapértelmezés szerint a Time Series Insights-előnézet a bejövő adatmennyi
  
 * **1. példa:**
 
-    A contoso szállítása 100 000 olyan eszközzel rendelkezik, amely percenként három alkalommal bocsát ki eseményt. Az események mérete 200 bájt. Egy IOT hub-t használnak négy partícióval Time Series Insights eseményforrásként.
+    A contoso szállítása 100 000 olyan eszközzel rendelkezik, amely percenként három alkalommal bocsát ki eseményt. Az események mérete 200 bájt. A IoT Hub négy partíciót használnak a Time Series Insights-esemény forrásaként.
 
     * A Time Series Insights-környezet betöltési sebessége a következő: **100 000 eszköz * 200 bájt/esemény * (3/60 esemény/másodperc) = 1 MB/s**.
     * A másodpercenkénti betöltési arány 0,25 MBps.
@@ -223,20 +234,20 @@ Time Series Insights az alábbi módon tárolja az adatai másolatait:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-Mindkét esetben a Parquet fájl Time tulajdonsága a blob létrehozási idejére vonatkozik. A `PT=Time` mappában lévő adatértékek a fájlba való írás után nem módosulnak. A `PT=TsId` mappában lévő adatok a lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus.
+Mindkét esetben a Parquet fájl Time tulajdonsága a blob létrehozási idejére vonatkozik. A mappában lévő adatértékek a `PT=Time` fájlba való írás után nem módosulnak. A mappában lévő adatok a `PT=TsId` lekérdezéshez az idő múlásával lesznek optimalizálva, és nem statikus.
 
 > [!NOTE]
 >
 > * `<YYYY>`leképezi a négy számjegyű év ábrázolását.
 > * `<MM>`leképezi a kétjegyű hónapok ábrázolását.
-> * `<YYYYMMDDHHMMSSfff>`leképezi a kétjegyű`YYYY`(), kétjegyű hónap`MM``DD``HH``MM`(), kétjegyű (), kétjegyű (), kétjegyű (), kétszámjegyű második (`SS`) és három számjegyű ezredmásodperc (`fff`) közötti időbélyegzőt ábrázoló ábrázolást.
+> * `<YYYYMMDDHHMMSSfff>`leképezi a kétjegyű (), kétjegyű hónap (), kétjegyű (), kétjegyű (), kétjegyű (), `YYYY` `MM` `DD` `HH` `MM` kétszámjegyű második ( `SS` ) és három számjegyű ezredmásodperc ( `fff` ) közötti időbélyegzőt ábrázoló ábrázolást.
 
 Time Series Insights előnézeti események a következő módon vannak leképezve a parketta-fájl tartalmára:
 
 * Minden esemény egyetlen sorra van leképezve.
 * Minden sor tartalmazza az **időbélyegző** oszlopot egy esemény időbélyegzővel. Az időbélyegző tulajdonság soha nem null értékű. Alapértelmezés szerint az **Event várólistán lévő idő** , ha nincs megadva az időbélyeg tulajdonság az eseményforrás számára. A tárolt időbélyegző mindig UTC szerint van.
-* Minden sor tartalmazza a Time Series Insights-környezet létrehozásakor definiált idősoros azonosító (TSID) oszlop (oka) t. A TSID-tulajdonság neve tartalmazza `_string` az utótagot.
-* A telemetria-adatként elküldett egyéb tulajdonságok a tulajdonság típusától függően (string `_string` ), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) oszlopokra vannak leképezve.
+* Minden sor tartalmazza a Time Series Insights-környezet létrehozásakor definiált idősoros azonosító (TSID) oszlop (oka) t. A TSID-tulajdonság neve tartalmazza az `_string` utótagot.
+* A telemetria-adatként elküldett egyéb tulajdonságok `_string` `_bool` a tulajdonság típusától függően (string), (Boolean), `_datetime` (datetime) vagy `_double` (Double) oszlopokra vannak leképezve.
 * Ez a leképezési séma a **(z) V = 1** néven hivatkozott fájlformátum első verziójára vonatkozik, és az azonos nevű alapmappában tárolódik. A szolgáltatás fejlődése során ez a leképezési séma változhat, és a hivatkozási név megnő.
 
 ## <a name="next-steps"></a>További lépések

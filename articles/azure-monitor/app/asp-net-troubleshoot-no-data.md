@@ -2,13 +2,13 @@
 title: Adathiány hibaelhárítása – Application Insights .NET-hez
 description: Nem látja az Azure Application Insightsban tárolt adatmegjelenítést? Próbálja ki itt.
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 2770888c6cfacedcf186ed1612718133cc1ba363
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802586"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778679"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -26,7 +26,7 @@ ms.locfileid: "80802586"
 
 *Adatvesztést tapasztalok a konzol alkalmazásban vagy a webalkalmazásban, ha az alkalmazás hamarosan leáll.*
 
-* Az SDK-csatorna tárolja a telemetria a pufferben, és azokat kötegekben küldi el. Ha az alkalmazás leáll, előfordulhat, hogy explicit módon meg kell hívnia a [Flush ()](api-custom-events-metrics.md#flushing-data)-t. A viselkedés `Flush()` az aktuálisan használt [csatornától](telemetry-channels.md#built-in-telemetry-channels) függ.
+* Az SDK-csatorna tárolja a telemetria a pufferben, és azokat kötegekben küldi el. Ha az alkalmazás leáll, előfordulhat, hogy explicit módon meg kell hívnia a [Flush ()](api-custom-events-metrics.md#flushing-data)-t. A viselkedés az `Flush()` aktuálisan használt [csatornától](telemetry-channels.md#built-in-telemetry-channels) függ.
 
 ## <a name="no-data-from-my-server"></a>Nincsenek adatok a saját kiszolgálóról
 *Telepítettem az alkalmazást a webkiszolgálón, és most nem látok semmilyen telemetria. A fejlesztői gépen rendben működött.*
@@ -127,13 +127,13 @@ Javítsa ki
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * A Application Insights portálon nyissa meg a [diagnosztikai keresést](../../azure-monitor/app/diagnostic-search.md). Az adatgyűjtés általában itt jelenik meg.
 * Kattintson a frissítés gombra. A panel rendszeresen frissíti magát, de manuálisan is elvégezheti. A frissítési időköz hosszabb a nagyobb időtartományok esetében.
-* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg a ApplicationInsights. config fájlt `<instrumentationkey>`, és keresse meg a. Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
+* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg a ApplicationInsights. config fájlt, és keresse meg a `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
   * A portálon kattintson a Application Insights elemre, és keresse meg az alkalmazás-erőforrást a megfelelő kulccsal; vagy
   * A Visual Studio Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights, majd a Konfigurálás lehetőséget. Állítsa vissza az alkalmazást, hogy telemetria küldjön a megfelelő erőforrásnak.
   * Ha nem találja a megfelelő kulcsokat, ellenőrizze, hogy a Visual Studióban ugyanazokat a bejelentkezési hitelesítő adatokat használja-e, mint a portálon.
 * A [Microsoft Azure Kezdőlap irányítópulton](https://portal.azure.com)tekintse meg a Service Health térképet. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
 * Tekintse meg [az állapot blogját](https://blogs.msdn.microsoft.com/servicemap-status/)is.
-* Írt olyan kódot a [KISZOLGÁLÓOLDALI SDK-](../../azure-monitor/app/api-custom-events-metrics.md) hoz, amely megváltoztathatja a kialakítási kulcsot a `TelemetryClient` példányokban vagy a `TelemetryContext`-ben? Vagy olyan [szűrőt vagy mintavételezési konfigurációt](../../azure-monitor/app/api-filtering-sampling.md) írt, amely túl sok szűrést eredményezhet?
+* Írt olyan kódot a [KISZOLGÁLÓOLDALI SDK-](../../azure-monitor/app/api-custom-events-metrics.md) hoz, amely megváltoztathatja a kialakítási kulcsot a `TelemetryClient` példányokban vagy a-ben `TelemetryContext` ? Vagy olyan [szűrőt vagy mintavételezési konfigurációt](../../azure-monitor/app/api-filtering-sampling.md) írt, amely túl sok szűrést eredményezhet?
 * Ha szerkesztette a ApplicationInsights. config fájlt, gondosan ellenőrizze a [TelemetryInitializers és a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)konfigurációját. Egy helytelenül elnevezett típus vagy paraméter hatására az SDK nem tud adatküldést küldeni.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Nincsenek adatok a lap nézeteiben, böngészőkben, használatban
@@ -143,7 +143,7 @@ Az adatok a weblapok parancsfájljaiból származnak.
 
 * Ha egy meglévő webes projekthez Application Insights adott hozzá, [akkor kézzel kell felvennie a szkripteket](../../azure-monitor/app/javascript.md).
 * Győződjön meg arról, hogy az Internet Explorer nem jeleníti meg a webhelyet kompatibilitási módban.
-* A böngésző hibakeresési funkciója (F12 bizonyos böngészőknél, majd a hálózat kiválasztása) segítségével ellenőrizheti, hogy az adatküldés `dc.services.visualstudio.com`folyamatban van-e.
+* A böngésző hibakeresési funkciója (F12 bizonyos böngészőknél, majd a hálózat kiválasztása) segítségével ellenőrizheti, hogy az adatküldés folyamatban van-e `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Nincs függőségi vagy kivételi érték
 Lásd: [függőségi telemetria](../../azure-monitor/app/asp-net-dependencies.md) és [kivételek telemetria](asp-net-exceptions.md).
@@ -211,7 +211,7 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 
 A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.8.2, és a Microsoft. ApplicationInsights 2.11.2 verziójára hivatkozik. Ezért a Microsoft. AspNet. ApplicationInsights. HostingStartup telepítendő verziójának 2.11.2 kell lennie
 
-2. Módosítsa `ConfigureServices` a `Startup.cs` metódust az osztályban.:
+2. Módosítsa `ConfigureServices` a metódust az `Startup.cs` osztályban.:
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
@@ -247,6 +247,14 @@ Ezeket a paramétereket igény szerint módosíthatja:
 További információk:
 - [Teljesítmény-nyomkövetés rögzítése a perfview eszköz](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights eseményforrás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="collect-logs-with-dotnet-trace"></a>Naplók összegyűjtése a DotNet-tracevel
+
+Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
 
 ## <a name="how-to-remove-application-insights"></a>Application Insights eltávolítása
 

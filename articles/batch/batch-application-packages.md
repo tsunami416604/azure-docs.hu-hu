@@ -4,12 +4,12 @@ description: A Azure Batch alkalmazáscsomag funkciójának használatával egys
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726876"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780312"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -68,7 +68,7 @@ Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megad
 A Batch-fiókban lévő alkalmazáscsomag kezeléséhez használhatja a [Azure Portal][portal] vagy a Batch Management API-kat. A következő néhány szakaszban először bemutatjuk, hogyan lehet egy Storage-fiókot összekapcsolni, majd megbeszélni az alkalmazások és csomagok hozzáadását és a portálon való felügyeletét.
 
 ### <a name="link-a-storage-account"></a>Storage-fiók csatolása
-Az alkalmazáscsomag használatához először egy [Azure Storage-fiókot](batch-api-basics.md#azure-storage-account) kell összekapcsolnia a Batch-fiókkal. Ha még nem konfigurálta a Storage-fiókot, a Azure Portal figyelmeztetést jelenít meg, amikor először rákattint az **alkalmazások** elemre a Batch-fiókban.
+Az alkalmazáscsomag használatához először egy [Azure Storage-fiókot](accounts.md#azure-storage-accounts) kell összekapcsolnia a Batch-fiókkal. Ha még nem konfigurálta a Storage-fiókot, a Azure Portal figyelmeztetést jelenít meg, amikor először rákattint az **alkalmazások** elemre a Batch-fiókban.
 
 
 
@@ -170,7 +170,7 @@ Meglévő alkalmazáscsomag frissítéséhez vagy törléséhez nyissa meg az al
 
 ![Csomag frissítése vagy törlése Azure Portal][7]
 
-**Frissítése**
+**Frissítés**
 
 Ha a **frissítés**gombra kattint, megjelenik a **frissítési csomag** ablak. Ez az ablak hasonló az **új alkalmazáscsomag** ablakhoz, azonban csak a csomag kiválasztása mező van engedélyezve, így megadhat egy új zip-fájlt a feltöltéshez.
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> A számítási csomópontok környezeti beállításaival kapcsolatos további információkért lásd: [környezeti beállítások](batch-api-basics.md#environment-settings-for-tasks) a [Batch funkcióinak áttekintésében](batch-api-basics.md) .
-> 
-> 
+> A számítási csomópont környezeti beállításaival kapcsolatos további információkért lásd: [környezeti beállítások a feladatokhoz](jobs-and-tasks.md#environment-settings-for-tasks). 
 
 ## <a name="update-a-pools-application-packages"></a>Készlet alkalmazáscsomagjainak frissítése
 Ha egy meglévő készlet már konfigurálva van egy alkalmazáscsomag használatával, megadhat egy új csomagot a készlethez. Ha egy készlethez új csomag-referenciát ad meg, a következők érvényesek:
@@ -332,7 +330,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Becsomagolás
 Az alkalmazáscsomag segítségével az ügyfelek számára kiválaszthatja a feladataikat, és megadhatja a pontos verziót, amelyet a feladatok a Batch-kompatibilis szolgáltatással végzett feldolgozásakor kell használni. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A [Batch REST API][api_rest] Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Például tekintse meg a [készlet hozzáadása egy fiókhoz][rest_add_pool] című témakör [applicationPackageReferences][rest_add_pool_with_packages] elemét, amely arról nyújt tájékoztatást, hogyan kell megadnia a telepítendő csomagokat a REST API használatával. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
 * Ismerje meg, hogyan [felügyelheti Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
 

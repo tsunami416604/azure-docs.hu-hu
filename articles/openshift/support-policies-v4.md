@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711414"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774392"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift-támogatási szabályzat
 
@@ -29,6 +29,8 @@ Az Azure Red Hat OpenShift 4 fürtök bizonyos konfigurációi befolyásolhatjá
 * Ne távolítsa el vagy módosítsa az Azure Red Hat OpenShift szolgáltatás naplózását (MDSD hüvely).
 * Ne távolítsa el vagy módosítsa a "arosvc.azurecr.io" fürt lekérési titkát.
 * Minden fürt virtuális gépnek közvetlen kimenő internet-hozzáféréssel kell rendelkeznie, legalább a Azure Resource Manager (ARM) és a Service Logging (Genf) végpontokhoz.  A HTTPS-proxyk egyetlen formája sem támogatott.
+* Ne módosítsa a fürt virtuális hálózatának DNS-konfigurációját. Az alapértelmezett Azure DNS feloldót kell használni.
+* Semmilyen módon ne bírálja felül a fürt MachineConfig-objektumait (például a kubelet konfigurációját).
 * Az Azure Red Hat OpenShift szolgáltatás privát kapcsolati szolgáltatáson keresztül fér hozzá a fürthöz.  Ne távolítsa el vagy módosítsa a szolgáltatás elérését.
 * A nem RHCOS számítási csomópontok nem támogatottak. Nem használhat például RHEL számítási csomópontot.
 
@@ -66,3 +68,11 @@ Az Azure Red Hat OpenShift 4 a következő virtuálisgép-méreteken támogatja 
 |Fsv2|Standard_F8s_v2|8|16|
 |Fsv2|Standard_F16s_v2|16|32|
 |Fsv2|Standard_F32s_v2|32|64|
+
+### <a name="master-nodes"></a>Főcsomópontok
+
+|Adatsorozat|Méret|vCPU|Memória: GiB|
+|-|-|-|-|
+|Dsv3|Standard_D8s_v3|8|32|
+|Dsv3|Standard_D16s_v3|16|64|
+|Dsv3|Standard_D32s_v3|32|128|

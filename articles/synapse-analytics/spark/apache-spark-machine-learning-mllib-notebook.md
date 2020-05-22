@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096299"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774442"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -54,7 +54,7 @@ A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy 
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -159,9 +159,9 @@ plt.suptitle('')
 plt.show()
 ```
 
-![Hisztogram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![Box whisky-mintaterület](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![– pontdiagram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![Hisztogram ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+ ![ Box whisky-mintaterület – ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+ ![ pontdiagram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>Az adatok előkészítése
 
@@ -208,7 +208,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Logisztikai regressziós modell létrehozása
 
-A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár*készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. Az `trafficTimeBins` és `weekdayString` az oszlopokat egész szám típusú ábrázolásra kell átalakítani. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
+A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár*készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. Az `trafficTimeBins` és az `weekdayString` oszlopokat egész szám típusú ábrázolásra kell átalakítani. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -238,6 +238,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 ```
 
 Most, hogy két DataFrames van, a következő feladat a modell képletének létrehozása és futtatása a betanítási DataFrame, majd a tesztelési DataFrame érvényesítve. A különböző kombinációk hatásának megtekintéséhez a modell képletének különböző verzióival kell kísérletezni.
+
+> [!Note]
+> A modell mentéséhez szüksége lesz a Azure Storage Blob adatközreműködői RBAC szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a szerepkör-hozzárendelés hozzáadása elemet. Rendeljen hozzá Storage blob-adatközreműködői RBAC szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model
@@ -290,7 +293,7 @@ plt.show()
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 

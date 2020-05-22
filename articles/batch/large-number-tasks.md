@@ -3,12 +3,12 @@ title: Nagy számú feladat elküldése
 description: Nagyon nagy számú feladat hatékony beküldése egyetlen Azure Batch feladatban
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 42b7d0586139b3d03569374615945047b42a2520
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725686"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778959"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladat elküldése egy batch-feladatba
 
@@ -41,7 +41,7 @@ Az egyetlen hívásban felvehető feladat-gyűjtemény maximális mérete a hasz
 
 Több időbe telik, amíg a feladatok nagy részét felvesszük egy feladathoz, például akár 1 percet is igénybe vehet, hogy a .NET API-n keresztül 20 000-feladatokat vegyen fel. A Batch API-tól és a számítási feladattól függően javíthatja a feladatok átviteli sebességét, ha módosítja a következők valamelyikét:
 
-* **Feladat mérete** – a nagyméretű feladatok hozzáadása hosszabb időt vesz igénybe, mint a kisebbek hozzáadása. A gyűjtemények egyes feladatainak méretének csökkentéséhez egyszerűsítheti a feladat parancssorát, csökkentheti a környezeti változók számát, vagy hatékonyabban kezelheti a feladatok végrehajtásának követelményeit. Ha például nagy mennyiségű erőforrást kíván használni, telepítse a feladat függőségeit a készlet [indítási feladatával](batch-api-basics.md#start-task) , vagy használjon [alkalmazáscsomag](batch-application-packages.md) vagy [Docker-tárolót](batch-docker-container-workloads.md).
+* **Feladat mérete** – a nagyméretű feladatok hozzáadása hosszabb időt vesz igénybe, mint a kisebbek hozzáadása. A gyűjtemények egyes feladatainak méretének csökkentéséhez egyszerűsítheti a feladat parancssorát, csökkentheti a környezeti változók számát, vagy hatékonyabban kezelheti a feladatok végrehajtásának követelményeit. Ha például nagy mennyiségű erőforrást kíván használni, telepítse a feladat függőségeit a készlet [indítási feladatával](jobs-and-tasks.md#start-task) , vagy használjon [alkalmazáscsomag](batch-application-packages.md) vagy [Docker-tárolót](batch-docker-container-workloads.md).
 
 * **Párhuzamos műveletek száma** – a Batch API-tól függően növelje az átviteli sebességet úgy, hogy növeli az egyidejű műveletek maximális számát a Batch-ügyfél számára. Konfigurálja ezt a beállítást a .NET API [BatchClientParallelOptions. maxanalyticsunits](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) tulajdonságával, vagy az `threads` olyan metódusok paraméterével, mint például a [TaskOperations. ADD_COLLECTION](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) a Batch Python SDK-bővítményben. (Ez a tulajdonság nem érhető el a natív batch Python SDK-ban.) Alapértelmezés szerint ez a tulajdonság 1 értékre van állítva, de magasabbra van állítva a műveletek átviteli sebességének növelése érdekében. A hálózati sávszélesség és a CPU-teljesítmény növelésével kihasználhatja a megnövekedett adatátvitelt. A feladat átviteli sebessége a vagy a 100-szor értékével nő `MaxDegreeOfParallelism` `threads` . A gyakorlatban a 100 alatti párhuzamos műveletek számát kell beállítania. 
  
@@ -198,7 +198,7 @@ except Exception as e:
     raise e
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az Azure Batch CLI-bővítmény [Batch CLI-sablonokkal](batch-cli-templates.md)történő használatáról.
 * További információ a [Batch PYTHON SDK bővítményről](https://pypi.org/project/azure-batch-extensions/).

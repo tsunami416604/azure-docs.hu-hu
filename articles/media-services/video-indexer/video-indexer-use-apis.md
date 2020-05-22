@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 82bdb177cf4d9c400d1b13ba7178658089950557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c66f8b787d27b72216eb08b87352d8dbf272fb
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314338"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774367"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -34,7 +34,7 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
    > [!Important]
    > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
    > * A személyes Google-és Microsoft-(Outlook-/élő) fiókokat csak próbaverziós fiókokhoz lehet használni. Az Azure-hoz kapcsolódó fiókokhoz Azure AD-ra van szükség.
-   > * E-mailben csak egy aktív fiók lehet. Ha a felhasználó a Google-hoz tartozó user@gmail.com LinkedIn-hez vagy újabbhoz user@gmail.com próbál bejelentkezni, akkor az utóbbi egy hibaüzenetet jelenít meg, amely azt jelzi, hogy a felhasználó már létezik.
+   > * E-mailben csak egy aktív fiók lehet. Ha a felhasználó a Google-hoz tartozó user@gmail.com LinkedIn-hez vagy újabbhoz próbál bejelentkezni user@gmail.com , akkor az utóbbi egy hibaüzenetet jelenít meg, amely azt jelzi, hogy a felhasználó már létezik.
 
 2. Iratkozzon fel.
 
@@ -116,7 +116,7 @@ Az alábbi C#-kódrészlet a Video Indexer API-k együttes használatát mutatja
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
 var accountId = "..."; 
-var location = "westus2";
+var location = "westus2"; // replace with the account's location, or with “trial” if this is a trial account
 var apiKey = "..."; 
 
 System.Net.ServicePointManager.SecurityProtocol = System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -207,7 +207,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

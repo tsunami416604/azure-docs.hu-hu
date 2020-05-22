@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/08/2020
-ms.openlocfilehash: 9ce6df8491bf4ce7cbb0e12a08816e198f665beb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/20/2020
+ms.openlocfilehash: 5f3b1fcb573358160707c0b29ad9e1806ea8e24c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124652"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774292"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -43,7 +43,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4, 2.3.1 *   | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
 | Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd a megjegyzést.)   |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |

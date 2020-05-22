@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4d41ece86240a20afea06bff3469b5c02c6e46ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121197"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778564"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
@@ -21,7 +21,7 @@ A Profilert futtathatja a ASP.NET-on, és ASP.NET Core a Azure App Service-on fu
 A Profiler engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, akkor a Profiler más támogatott platformokon való engedélyezésével kapcsolatban itt talál útmutatást:
 * [Felhőszolgáltatások](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Alkalmazások Service Fabric](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Virtuális gépek](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler az App Services futtatókörnyezet részeként előre telepítve van. Az alábbi lépések bemutatják, hogyan engedélyezheti a App Service számára. Kövesse az alábbi lépéseket még akkor is, ha felépítésekor az alkalmazás betekintő SDK-t is feltöltötte az alkalmazásba.
 
@@ -63,9 +63,9 @@ Ha engedélyezni szeretné a Profilert más felhők esetében, használhatja az 
 
 ## <a name="disable-profiler"></a>Profiler letiltása
 
-Egy adott alkalmazás példányának leállításához vagy újraindításához a **webes feladatok**területen nyissa meg az alkalmazás erőforrását. A Profiler törléséhez nyissa meg a **bővítmények csomópontot**.
+Egy adott alkalmazás példányának leállításához vagy újraindításához a **webjobs** alatt állítsa le a ApplicationInsightsProfiler3 nevű webjobs. Még ha a Profiler is le van tiltva a Application Insights lapon a kapcsoló használatával, a Profiler-folyamat továbbra is futni fog. A Profiler megtekinti, hogy engedélyezve van-e. Ha a szolgáltatás le van tiltva, az alvó állapotba kerül egy ideig, az újbóli ellenőrzés előtt. Nem végez profilkészítést, ha le van tiltva. Ha letiltja ezt a webjobs, a Profiler-folyamat egyáltalán nem fog futni, még annak ellenőrzéséhez, hogy engedélyezve van-e.
 
-![A Profiler letiltása webes feladatokhoz][disable-profiler-webjob]
+  ![A Profiler letiltása webes feladatokhoz][disable-profiler-webjob]
 
 Azt javasoljuk, hogy az összes alkalmazáson engedélyezve legyen a Profiler, hogy a lehető leghamarabb észlelje a teljesítménnyel kapcsolatos problémákat.
 

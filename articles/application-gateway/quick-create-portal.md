@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/09/2020
+ms.date: 05/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 17adc800bd5a2ae53e27350c7e0d588eaeee4a8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6415657d68e10b63e357f3c1353bb66fc9c8262
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241401"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779424"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
 
@@ -209,7 +209,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
 Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a rövid útmutatóban telepítette annak ellenőrzéséhez, hogy az Azure sikeresen létrehozta-e az Application Gatewayt. Az IIS használata az Application Gateway teszteléséhez:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![Az Application Gateway nyilvános IP-](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) címének rögzítése vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
+1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
 3. Keresse meg a választ. Egy érvényes válasz ellenőrzi, hogy az Application Gateway sikeresen létrejött-e, és sikeresen tud-e kapcsolatot létesíteni a háttérrel.
 
@@ -217,7 +217,7 @@ Bár az IIS nem szükséges az Application Gateway létrehozásához, ezt a röv
 
    Többször is frissítse a böngészőt, és látnia kell a myVM és a myVM2 kapcsolatait.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Az erőforráscsoport törlésekor az Application Gateway és az összes kapcsolódó erőforrás is törlődik.
 
@@ -231,4 +231,4 @@ Az erőforráscsoport törlése:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)
+> [Oktatóanyag: Application Gateway konfigurálása TLS-megszakítással a Azure Portal használatával](create-ssl-portal.md)

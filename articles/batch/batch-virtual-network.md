@@ -4,12 +4,12 @@ description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726281"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779586"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -62,7 +62,7 @@ Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat 
 > [!WARNING]
 > A Batch szolgáltatás IP-címei idővel változhatnak. Ha egy IP-cím változása miatt leáll a leállás, javasoljuk, hogy hozzon létre egy rendszeres folyamatot a Batch szolgáltatás IP-címeinek automatikus frissítéséhez, és tartsa naprakészen az útválasztási táblázatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
-- A felhasználó által megadott útvonal létrehozásával kapcsolatos további információkért lásd: [felhasználó által definiált útvonal-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).
+- Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+- A felhasználó által definiált útvonal létrehozásával kapcsolatos információkért lásd: [felhasználó által megadott Route-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).

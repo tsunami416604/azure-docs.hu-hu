@@ -1,15 +1,15 @@
 ---
 title: Feladatok futtatása a felhasználói fiókokban
-description: Hasznos lehet konfigurálni azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
+description: Ismerje meg a felhasználói fiókok típusait és azok konfigurálásának módját.
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726264"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779492"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
@@ -40,7 +40,7 @@ Az automatikus felhasználói fiók és a nevesített felhasználói fiók egyar
 
 Ha egy feladat ugyanabban a fiókban fut, amelyet az indítási tevékenység futtatásához használt, a feladat írási és olvasási hozzáféréssel rendelkezik a Start Task könyvtárhoz. Hasonlóképpen, ha egy feladat ugyanabban a fiókban fut, amelyet a feladat-előkészítési feladat futtatásához használt, a feladat írási és olvasási hozzáféréssel rendelkezik a feladat-előkészítési tevékenység könyvtárához. Ha egy feladat egy másik fiók alatt fut, mint a Start tevékenység vagy a feladat-előkészítési feladat, akkor a feladat csak olvasási hozzáféréssel rendelkezik a megfelelő címtárhoz.
 
-A fájlok és könyvtárak egy feladatból való elérésével kapcsolatos további információkért lásd: [nagyméretű párhuzamos számítási megoldások kiépítése a Batch szolgáltatással](batch-api-basics.md#files-and-directories).
+A fájlok és könyvtárak egy feladatból való elérésével kapcsolatos további információkért tekintse meg a [fájlok és könyvtárak](files-and-directories.md)című témakört.
 
 ## <a name="elevated-access-for-tasks"></a>Emelt szintű hozzáférés a feladatokhoz 
 
@@ -320,6 +320,7 @@ A Batch Service 2017 -01-01.4.0 bevezet egy megszakítási változást, és lecs
 | `run_elevated`nincs megadva | Nincs szükség frissítésre                                                                                                                                  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
+* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+* Tudnivalók a Azure Batch található [fájlokról és könyvtárakról](files-and-directories.md) .

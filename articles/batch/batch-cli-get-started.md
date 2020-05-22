@@ -4,12 +4,12 @@ description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásai
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726791"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780224"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -160,11 +160,11 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 * A **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként `--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezt követően másolhatja és módosíthatja ezt a kimenetet, hogy felhasználhassa egy `--json-file` kapcsolóval (lásd aJSON-fájlok szakaszt a jelen cikk korábbi részében).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információt az Azure CLI-vel kapcsolatban az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure) talál.
-* További információt a Batch-erőforrásokkal kapcsolatban a [Az Azure Batch áttekintése fejlesztők számára](batch-api-basics.md) című cikkben talál.
-* További információkat a készletek, feladatok és tevékenységek Batch-sablonokkal, kódírás nélkül történő létrehozásáról [az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának használatával kapcsolatos](batch-cli-templates.md) cikkben talál.
+* Tekintse meg az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+* A cikkből megtudhatja, hogyan hozhat létre készleteket, feladatokat és tevékenységeket a Batch-sablonok használatával [Azure batch CLI-sablonok és fájlátvitel használata](batch-cli-templates.md)nélkül.
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

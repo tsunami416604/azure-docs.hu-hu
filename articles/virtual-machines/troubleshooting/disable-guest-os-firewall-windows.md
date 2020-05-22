@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422370"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774338"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
@@ -49,7 +49,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   A házirend újbóli alkalmazása után azonban a távoli munkamenetből kell kiindulnia. A probléma állandó kijavítása a számítógépen alkalmazott szabályzat módosítása.
@@ -90,7 +90,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 
 A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)használatához kövesse az alábbi lépéseket.
 
-1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **file** > **Kapcsolódás hálózati beállításjegyzéket**.
+1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **file**  >  **Kapcsolódás hálózati beállításjegyzéket**.
 
 2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, és határozza meg a következő értékeket:
 

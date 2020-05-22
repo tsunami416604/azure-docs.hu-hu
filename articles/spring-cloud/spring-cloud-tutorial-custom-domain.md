@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: 19ccdf85e1753bea202c5c157919ab4e8ff96d06
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660259"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780405"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 Az elosztott név szolgáltatás (DNS) a hálózati csomópontok nevének hálózaton belüli tárolására szolgáló módszer. Ez az oktatóanyag egy tartományt, például a www.contoso.com-t egy CNAME-rekord használatával képezi le. Az egyéni tartományt egy tanúsítvánnyal védi, és bemutatja, hogyan lehet kényszeríteni a Transport Layer Security (TLS), más néven SSL (SSL) használatát. 
@@ -37,6 +37,30 @@ A tanúsítvány feltöltése a Key vaultba:
 1. Kattintson a **Létrehozás**gombra.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
+
+Azure Spring Cloud-hozzáférés biztosítása a Key vaulthoz a tanúsítvány importálása előtt:
+1. Nyissa meg a Key Vault-példányt.
+1. A bal oldali navigációs panelen kattintson a **hozzáférési rendőr**elemre.
+1. A felső menüben kattintson a **hozzáférési szabályzat hozzáadása**elemre.
+1. Töltse ki az adatokat, és kattintson a **Hozzáadás** gombra, majd **mentse** a hozzáférési rendőrséget.
+
+| Titkos engedély | Tanúsítvány engedélye | Rendszerbiztonsági tag kiválasztása |
+|--|--|--|
+| Beolvasás, Listázás | Beolvasás, Listázás | Azure Spring Cloud domain – felügyelet |
+
+![2. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-b.png)
+
+Használhatja az Azure CLI-t is a Key vaulthoz való Azure Spring Cloud-hozzáférés biztosításához.
+
+Az objektumazonosító beszerzése a következő parancs használatával.
+```
+az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+```
+
+Adja meg az Azure Spring Cloud olvasási hozzáférését a Key vaulthoz, és cserélje le az objektumazonosító értékét a következő parancsra.
+```
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+``` 
 
 Tanúsítvány importálása az Azure Spring Cloud-ba:
 1. Lépjen a szolgáltatási példányra. 
@@ -145,7 +169,7 @@ az spring-cloud app update -name <app-name> --https-only <true|false> -g <resour
 
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Tanúsítvány importálása](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
 * [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)

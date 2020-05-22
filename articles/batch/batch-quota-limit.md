@@ -4,12 +4,12 @@ description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozá
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726570"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780009"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -132,10 +132,10 @@ Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigur�
 Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás**lehetőség kiválasztásával növelje a Azure Portal növekedését.
 
 
-## <a name="related-topics"></a>Kapcsolódó témakörök
-* [Azure Batch-fiókok létrehozása az Azure Portalon](batch-account-create-portal.md)
-* [A Azure Batch funkcióinak áttekintése](batch-api-basics.md)
-* [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md)
+## <a name="next-steps"></a>További lépések
+* [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
+* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+* Ismerje meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

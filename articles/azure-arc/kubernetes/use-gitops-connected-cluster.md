@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az Azure arc-kompatibilis fürtkonfiguráció GitOps használata (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: e945a1d39edb6dad43e66ac492eb1e5c36ff58e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684198"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779713"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps használata Azure-beli arc-kompatibilis konfigurációhoz (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez az első lépéseket ismertető útmutató végigvezeti a konfigurációk fü
 
 ## <a name="create-a-configuration"></a>Konfiguráció létrehozása
 
-- Példa adattárra:<https://github.com/slack/cluster-config>
+- Példa adattárra:<https://github.com/Azure/arc-k8s-demo>
 
 A példában szereplő adattár egy olyan fürt munkatársai köré épül fel, akik néhány névtér kiépítését szeretnék kiépíteni, közös számítási feladatok üzembe helyezését, és a csoportra jellemző konfigurálást is biztosítják. Az adattár használata a következő erőforrásokat hozza létre a fürtön:
 
@@ -40,7 +40,7 @@ A példában szereplő adattár egy olyan fürt munkatársai köré épül fel, 
  **ConfigMap:**`team-a/endpoints`
 
 Az `config-agent` Azure új vagy frissített lekérdezése `sourceControlConfiguration` 30 másodpercenként.  Ez a maximális idő, ameddig az `config-agent` új vagy frissített konfiguráció felvételére kerül.
-Ha privát tárházat társít, gondoskodjon arról, hogy a [konfiguráció alkalmazása privát git-tárházból](https://github.com/Azure/azure-arc-kubernetes-preview/blob/master/docs/use-gitops-in-connected-cluster.md#apply-configuration-from-a-private-git-repository) című témakör lépéseit is végrehajtsa.
+Ha privát tárházat társít, gondoskodjon arról, hogy a [konfiguráció alkalmazása privát git-tárházból](#apply-configuration-from-a-private-git-repository) című témakör lépéseit is végrehajtsa.
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Itt láthatók a--adattár-URL paraméter értékeként támogatott forgatókönyvek.
 
-| Forgatókönyv | Formátum | Description |
+| Forgatókönyv | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-tárház – SSH | git@github.com:username/repo | A Flux által generált SSH-kulcspár.  A felhasználónak hozzá kell adnia a nyilvános kulcsot a GitHub-fiókhoz üzembe helyezési kulcsként. |
 | Nyilvános GitHub-tárház | `http://github.com/username/repo`vagy git://github.com/username/repo   | Nyilvános git-tárház  |
 
 Ezeket a forgatókönyveket a Flux támogatja, de még nem sourceControlConfiguration. 
 
-| Forgatókönyv | Formátum | Description |
+| Forgatókönyv | Formátum | Leírás |
 | ------------- | ------------- | ------------- |
 | Privát GitHub-adattár – HTTPS | `https://github.com/username/repo` | A Flux nem állít elő SSH-kulcspárt.  [Utasítások](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privát git-gazdagép | user@githost:path/to/repo | [Utasítások](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -129,7 +129,7 @@ A konfiguráció létrehozásához a következő néhány további paramétert k
 
 A-operátor-params támogatott beállításai
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | ------------- | ------------- |
 | --git-ág  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". |
 | – git – elérési út  | Relatív elérési út a git-tárházon belül a Flux számára a Kubernetes-jegyzékek megkereséséhez. |
@@ -145,9 +145,9 @@ A-operátor-params támogatott beállításai
 
 * Ha a enableHelmOperator értéke igaz, akkor a operatorInstanceName + operatorNamespace karakterláncok nem haladhatják meg a 47 karaktert.  Ha nem sikerül betartania ezt a korlátot, a következő hibaüzenetet kapja:
 
-```console
-{"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-```
+   ```console
+   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
+   ```
 
 További információ: [Flux-dokumentáció](https://aka.ms/FluxcdReadme).
 

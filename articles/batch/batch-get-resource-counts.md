@@ -4,12 +4,12 @@ description: Azure Batch feladatok és számítási csomópontok állapotának m
 ms.date: 09/07/2018
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726689"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780156"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-megoldások figyelése a feladatok és a csomópontok állapot szerinti számlálásával
 
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 A REST és más támogatott nyelvek esetében hasonló mintát használhat a készletek csomópontjainak megszerzéséhez.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges batch-erőforrásokat, például a készleteket, a számítási csomópontokat, a feladatokat és a feladatokat ismerteti, és áttekintést nyújt a szolgáltatás szolgáltatásairól.
-
+* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * A szűrők a Batch-erőforrásokat listázó lekérdezésekre való alkalmazásával kapcsolatos információkért lásd: [Lekérdezések létrehozása a Batch-erőforrások hatékony listázásához](batch-efficient-list-queries.md).
 
 

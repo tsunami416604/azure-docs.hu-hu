@@ -3,12 +3,12 @@ title: Nagy számítási igényű Azure-beli virtuális gépek használata a Bat
 description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch készletekben. Ismerje meg az operációs rendszer függőségeit, és tekintse meg a példákat.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724088"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779748"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
 
@@ -79,7 +79,7 @@ A Batch-készlet speciális virtuálisgép-méretének konfigurálásához több
 
 * Hozzon létre egy [Egyéni Windows vagy Linux rendszerű virtuálisgép-rendszerképet](batch-sig-images.md) , amelyen telepítette az illesztőprogramokat, a szoftvereket vagy a virtuális gép méretéhez szükséges egyéb beállításokat. 
 
-* Hozzon létre egy batch- [alkalmazáscsomag](batch-application-packages.md) egy tömörített illesztőprogramból vagy egy alkalmazás-telepítőből, és konfigurálja a Batch-t a csomag a készlet csomópontjaira történő telepítéséhez és az egyes csomópontok létrehozásakor történő telepítéséhez. Ha például az alkalmazáscsomag egy telepítő, hozzon létre egy [indítási tevékenység](batch-api-basics.md#start-task) parancssort az alkalmazás csendes telepítéséhez az összes készlet-csomóponton. Ha a munkaterhelés egy adott illesztőprogram-verziótól függ, érdemes lehet egy alkalmazáscsomag és egy készlet indítási feladatát használni.
+* Hozzon létre egy batch- [alkalmazáscsomag](batch-application-packages.md) egy tömörített illesztőprogramból vagy egy alkalmazás-telepítőből, és konfigurálja a Batch-t a csomag a készlet csomópontjaira történő telepítéséhez és az egyes csomópontok létrehozásakor történő telepítéséhez. Ha például az alkalmazáscsomag egy telepítő, hozzon létre egy [indítási tevékenység](jobs-and-tasks.md#start-task) parancssort az alkalmazás csendes telepítéséhez az összes készlet-csomóponton. Ha a munkaterhelés egy adott illesztőprogram-verziótól függ, érdemes lehet egy alkalmazáscsomag és egy készlet indítási feladatát használni.
 
   > [!NOTE] 
   > Az indítási tevékenységnek emelt szintű (rendszergazdai) engedélyekkel kell futnia, és meg kell várnia a sikerességet. A hosszú ideig futó feladatok növelik a Batch-készlet kiépítésének idejét.
@@ -161,7 +161,7 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 | **Csomópontok közötti kommunikáció engedélyezve** | True (Igaz) |
 | **Feladatok maximális száma/csomópont** | 1 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az MPI-feladatok Azure Batch készleten való futtatásához tekintse meg a Windows vagy [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) [rendszerű](batch-mpi.md) példákat.
 

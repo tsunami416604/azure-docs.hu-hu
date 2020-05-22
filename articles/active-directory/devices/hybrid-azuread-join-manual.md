@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596b47ecc0cf42e8cf1e7001c1462f55d34ff9c3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680288"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778726"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -549,18 +549,73 @@ A korábbi verziójú Windows-eszközök regisztrálásához a Letöltőközpont
 
 ## <a name="verify-joined-devices"></a>Csatlakoztatott eszközök ellenőrzése
 
-A [Azure Active Directory PowerShell-modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) parancsmagjának használatával megkeresheti a sikeresen csatlakoztatott eszközöket a szervezetben.
+Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3 módszer használható:
 
-Ezen parancsmag kimenete megjeleníti az Azure AD-be regisztrált és az ahhoz csatlakoztatott eszközöket. Az összes eszköz beszerzéséhez használja az **-all** paramétert, majd a **deviceTrustType** tulajdonság használatával szűrje azokat. A tartományhoz csatlakoztatott eszközökhöz **tartományhoz csatlakozó**érték tartozik.
+### <a name="locally-on-the-device"></a>Helyileg az eszközön
+
+1. Nyissa meg a Windows PowerShellt.
+2. Írja be a `dsregcmd /status` (igen) kifejezést.
+3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
+4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
+
+### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+
+1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
+2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)című témakörben talál információt.
+3. Ha a **regisztrált** oszlop **függőben**van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
+4. Ha a **regisztrált** oszlop egy **dátumot és időpontot**tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
+
+### <a name="using-powershell"></a>A PowerShell használata
+
+A **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)található.
+
+Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
+
+- Léteznie kell egy olyan objektumnak **, amely megfelel a Windows** -ügyfél azonosítójának.
+- A **DeviceTrustType** értéke **tartományhoz van csatlakoztatva**. Ez a beállítás megegyezik a **hibrid Azure ad-hez csatlakoztatott** állapottal az Azure ad-portál **eszközök** lapján.
+- A feltételes hozzáférésben használt eszközök esetében az **enabled** érték **true (igaz** ), a **DeviceTrustLevel** pedig **felügyelt**.
+
+1. Nyissa meg a Windows PowerShellt rendszergazdaként.
+2. Az `Connect-MsolService` Azure-bérlőhöz való kapcsolódáshoz adja meg a következőt:.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz száma (a **függő** állapot kizárása nélkül)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz száma
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz listázása
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz listázása
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Egyetlen eszköz részleteinek listázása:
+
+1. ENTER `get-msoldevice -deviceId <deviceId>` (ez az eszközön helyileg beszerzett **DeviceID** ).
+2. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
 
 ## <a name="troubleshoot-your-implementation"></a>A megvalósítás hibaelhárítása
 
-Ha problémákat tapasztal a hibrid Azure AD-csatlakozásnak a tartományhoz csatlakoztatott Windows-eszközökhöz való kitöltésével kapcsolatban, tekintse meg a következőt:
+Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
-* [Jelenlegi Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
-* [Korábbi verziójú Windows-eszközök hibrid Azure AD-csatlakozásának hibaelhárítása](troubleshoot-hybrid-join-windows-legacy.md)
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Active Directory eszközkezelésének alapjai](overview.md)
 

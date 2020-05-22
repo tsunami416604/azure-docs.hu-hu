@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272491"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779216"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
@@ -29,7 +29,7 @@ Egyes ügyfelek olyan problémákkal találkozhatnak, ahol a törölt alkalmazá
 
 ## <a name="list-deleted-apps"></a>Törölt alkalmazások listázása
 
-A törölt alkalmazások gyűjteményének lekéréséhez használhatja `Get-AzDeletedWebApp`a következőt:.
+A törölt alkalmazások gyűjteményének lekéréséhez használhatja a következőt: `Get-AzDeletedWebApp` .
 
 A következő használható egy adott törölt alkalmazás részletei:
 
@@ -48,8 +48,10 @@ A részletes információk a következők:
 - **Törlés időpontja**: Mikor lett törölve az alkalmazás  
 
 ## <a name="restore-deleted-app"></a>Törölt alkalmazás visszaállítása
+>[!NOTE]
+> `Restore-AzDeletedWebApp`function apps esetében nem támogatott.
 
-Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthatja azt a használatával `Restore-AzDeletedWebApp`.
+Miután azonosította a visszaállítani kívánt alkalmazást, visszaállíthatja azt a használatával `Restore-AzDeletedWebApp` .
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -64,7 +66,7 @@ A következő parancs bemenetei:
 - **Név**: az alkalmazás nevének globálisan egyedinek kell lennie.
 - **TargetAppServicePlanName**: app Service az alkalmazáshoz társított csomag
 
-Alapértelmezés `Restore-AzDeletedWebApp` szerint az alkalmazás konfigurációját és tartalmát is visszaállítja a rendszer. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
+Alapértelmezés szerint az `Restore-AzDeletedWebApp` alkalmazás konfigurációját és tartalmát is visszaállítja a rendszer. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
 
 > [!NOTE]
 > Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment továbbra is létezik.

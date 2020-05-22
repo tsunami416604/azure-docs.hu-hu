@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e18c2b0f03f9ac2155c441580d62d6085581de12
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74706166"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779602"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Oktatóanyag: Azure Databricks implementálása Cosmos DB-végponttal
 
@@ -58,12 +58,12 @@ Mielőtt elkezdené, tegye a következőket:
    |Beállítás|Érték|
    |-------|-----|
    |Előfizetés|*az előfizetése*|
-   |Erőforráscsoport|*az erőforráscsoport*|
-   |Fiók neve|db-vnet-Service-Endpoint|
+   |Resource Group|*az erőforráscsoport*|
+   |Account Name|db-vnet-Service-Endpoint|
    |API|Core (SQL)|
    |Hely|USA nyugati régiója|
    |Georedundancia|Letiltás|
-   |Többrégiós írók|Bekapcsolás|
+   |Többrégiós írók|Engedélyezés|
 
    ![Cosmos DB szolgáltatási végpont hozzáadása](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
@@ -98,7 +98,7 @@ Mielőtt elkezdené, tegye a következőket:
 
     ![Cosmos DB adatáttelepítési eszköz forrására vonatkozó információk](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. A **cél információi** lapon adja meg a kapcsolatok karakterláncát. A kapcsolatok karakterláncának formátuma: `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. A AccountEndpoint és a AccountKey az előző szakaszban mentett elsődleges kapcsolatok karakterláncában szerepel. Fűzze `Database=<your database name>` hozzá a kapcsolódási karakterlánc végéhez, majd kattintson az **ellenőrzés**gombra. Ezután adja hozzá a gyűjtemény nevét és a partíciós kulcsot.
+3. A **cél információi** lapon adja meg a kapcsolatok karakterláncát. A kapcsolatok karakterláncának formátuma: `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>` . A AccountEndpoint és a AccountKey az előző szakaszban mentett elsődleges kapcsolatok karakterláncában szerepel. Fűzze hozzá a `Database=<your database name>` kapcsolódási karakterlánc végéhez, majd kattintson az **ellenőrzés**gombra. Ezután adja hozzá a gyűjtemény nevét és a partíciós kulcsot.
 
     ![A Cosmos DB adatáttelepítési eszköz céljának adatai](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
@@ -107,8 +107,6 @@ Mielőtt elkezdené, tegye a következőket:
 ## <a name="create-a-cluster-and-add-library"></a>Fürt létrehozása és könyvtár hozzáadása
 
 1. Navigáljon a Azure Databricks szolgáltatáshoz a [Azure Portal](https://portal.azure.com) , és válassza a **munkaterület elindítása**lehetőséget.
-
-   ![Databricks-munkaterület elindítása](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
 2. Hozzon létre egy új fürtöt. Válassza ki a fürt nevét, és fogadja el a többi alapértelmezett beállítást.
 
@@ -159,7 +157,7 @@ Mielőtt elkezdené, tegye a következőket:
 
     Sikeresen csatlakoztatta a VNet-injektált Databricks-munkaterületet egy szolgáltatás-végponttal rendelkező Cosmos DB erőforráshoz. Ha többet szeretne megtudni a Cosmos DBhoz való csatlakozásról, tekintse meg [a Apache Spark Azure Cosmos db-összekötőt](https://github.com/Azure/azure-cosmosdb-spark).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a Azure Databricks munkaterületet és az összes kapcsolódó erőforrást. A feladatok törlése elkerüli a szükségtelen számlázást. Ha a jövőben a Azure Databricks munkaterület használatát tervezi, akkor leállíthatja a fürtöt, és később újraindíthatja. Ha nem kívánja tovább használni ezt a Azure Databricks munkaterületet, az oktatóanyagban létrehozott összes erőforrást az alábbi lépések segítségével törölheti:
 

@@ -9,16 +9,16 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5f552dfc320459d23e538e65e5f34c085f5b5ad9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 909c787c8ddc9443dca46dd80c0757cf099449c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136006"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778285"
 ---
 <a name="HOLTop"></a>
 
-[A dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)  |  [Példák](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,11 +34,11 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs `COMPUTER_VISION_ENDPOINT`és a végpont URL-címéhez, amelynek neve és.
+Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT` .
  
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új&mdash;Python-parancsfájl*Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
+Hozzon létre egy új Python-parancsfájl &mdash; *Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
 
@@ -61,7 +61,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 A következő osztályok és felületek a Computer Vision Python SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Name|Leírás|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Ez az osztály közvetlenül kezeli az összes képműveletet, például a képek elemzését, a szöveg észlelését és a miniatűr létrehozását.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Ez az osztály minden Computer Vision funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. Ez megvalósítja a **ComputerVisionClientOperationsMixin**.|
@@ -78,7 +78,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a ( `COMPUTER_VISION_SUBSCRIPTION_KEY`z) nevű Computer Vision kulcshoz.
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a (z) nevű Computer Vision kulcshoz `COMPUTER_VISION_SUBSCRIPTION_KEY` .
 
 Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) objektum létrehozásához.
 
@@ -152,7 +152,7 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a képtípussal kapcsolatos információkat jeleníti meg,&mdash;legyen szó ClipArt vagy vonalas rajzolásról.
+A következő kód a képtípussal kapcsolatos információkat jeleníti &mdash; meg, legyen szó ClipArt vagy vonalas rajzolásról.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
@@ -162,25 +162,25 @@ A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a
 
 ### <a name="call-the-read-api"></a>Az olvasási API meghívása
 
-Először a következő kóddal hívja meg a **batch_read_file** metódust az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
+Először a következő kód használatával hívja meg az **olvasási** metódust az adott képhez. Ez egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 ### <a name="get-read-results"></a>Olvasási eredmények beolvasása
 
-Ezután kérje le a **batch_read_file** hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezési eredményeinek lekéréséhez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
+Ezután kérje le az **olvasási** hívás által visszaadott művelet azonosítóját, és használja a szolgáltatás lekérdezésére a művelet eredményeinek lekérdezéséhez. A következő kód ellenőrzi a műveletet egy másodperces időközönként, amíg az eredmények vissza nem állnak. Ezután kinyomtatja a kinyert szöveges adatát a konzolon.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Futtassa az alkalmazást a gyors `python` üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
 ```console
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

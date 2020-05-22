@@ -6,18 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: f9f789d2f2c6c21e38f241b445c72b330c689a8d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930420"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779874"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban Resource Manager-sablon használatával
 
-A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
-
-Ebben a rövid útmutatóban egy Azure Resource Manager sablont használ egy elkülönített Docker-tároló üzembe helyezéséhez és a webalkalmazás nyilvános IP-címmel való elérhetővé tételéhez. 
+A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra. Ebben a rövid útmutatóban egy Azure Resource Manager sablont használ egy elkülönített Docker-tároló üzembe helyezéséhez és a webalkalmazás nyilvános IP-címmel való elérhetővé tételéhez.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,9 +29,9 @@ Nincsenek.
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/)származik.
 
-[!code-json[<Azure Resource Manager template create geo-replicated registry>](~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
 A következő erőforrás van definiálva a sablonban:
 
@@ -85,11 +83,11 @@ A tároló példány tulajdonságainak áttekintéséhez használja a Azure Port
 
 A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy az azon futtatott alkalmazással kapcsolatos hibák elhárítása során.
 
-A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza a **tárolók** > **naplók**lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
+A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza a **tárolók**  >  **naplók**lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
 
 ![Tárolónaplók az Azure Portalon](media/container-instances-quickstart-template/aci-logs.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
 

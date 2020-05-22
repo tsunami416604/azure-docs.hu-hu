@@ -4,12 +4,12 @@ description: A készletben lévő számítási csomópontok számának dinamikus
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 786bd594b3344ce144893161ade9d53d1bddf358
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726808"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780251"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -22,7 +22,7 @@ A készlet létrehozásakor vagy egy meglévő készleten is engedélyezheti az 
 Ez a cikk az autoskálázási képleteket alkotó különböző entitásokat ismerteti, beleértve a változókat, a kezelőket, a műveleteket és a függvényeket. Megbeszéljük, hogyan szerezhet be különböző számítási erőforrások és tevékenységek mérőszámait a Batch szolgáltatáson belül. Ezekkel a metrikákkal az erőforrás-használat és a feladat állapota alapján állíthatja be a készlet csomópontjának darabszámát. Ezután leírjuk, hogyan hozhat létre egy képletet, és hogyan engedélyezheti az automatikus skálázást a készleteken a Batch REST és a .NET API-k használatával. Végül pedig néhány példa képlettel zárult.
 
 > [!IMPORTANT]
-> Batch-fiók létrehozásakor megadhatja a [fiók konfigurációját](batch-api-basics.md#account), amely meghatározza, hogy a készleteket a Batch szolgáltatás előfizetésében (az alapértelmezett) vagy a felhasználói előfizetésben kell-e lefoglalni. Ha létrehozta a Batch-fiókot az alapértelmezett batch szolgáltatás konfigurációjában, akkor a fiókja legfeljebb a feldolgozásra felhasználható magok maximális számára korlátozódik. A Batch szolgáltatás csak az adott alapkorlátig méretezi a számítási csomópontokat. Ezért előfordulhat, hogy a Batch szolgáltatás nem éri el az autoscale Formula által meghatározott számítási csomópontok céljának számát. A fiók kvótáinak megtekintésével és növelésével kapcsolatos információkért tekintse meg [a Azure batch szolgáltatás kvótáit és korlátait](batch-quota-limit.md) .
+> Batch-fiók létrehozásakor megadhatja a [fiók konfigurációját](accounts.md), amely meghatározza, hogy a készleteket a Batch szolgáltatás előfizetésében (az alapértelmezett) vagy a felhasználói előfizetésben kell-e lefoglalni. Ha létrehozta a Batch-fiókot az alapértelmezett batch szolgáltatás konfigurációjában, akkor a fiókja legfeljebb a feldolgozásra felhasználható magok maximális számára korlátozódik. A Batch szolgáltatás csak az adott alapkorlátig méretezi a számítási csomópontokat. Ezért előfordulhat, hogy a Batch szolgáltatás nem éri el az autoscale Formula által meghatározott számítási csomópontok céljának számát. A fiók kvótáinak megtekintésével és növelésével kapcsolatos információkért tekintse meg [a Azure batch szolgáltatás kvótáit és korlátait](batch-quota-limit.md) .
 >
 >Ha a felhasználói előfizetés konfigurációjával hozta létre a fiókját, a fiók az előfizetés fő kvótájában osztozik. További információkért lásd [az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozásokat, kvótákat és megkötéseket](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető témakör [a virtuális gépek korlátaira](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) vonatkozó részét.
 >
@@ -237,7 +237,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Minták, minta százalék és a *GetSample ()* metódus
 Az automatikusan méretezhető képletek alapvető működése a feladat-és erőforrás-metrikai adatok beszerzése, majd a készlet méretének módosítása az adatok alapján. Ezért fontos, hogy tisztában legyen azzal, hogy az autoskálázási képletek hogyan hatnak a metrikák adataira (minták).
 
-**Minták**
+**Példák**
 
 A Batch szolgáltatás rendszeres időközönként mintákat vesz fel a feladat-és erőforrás-mérőszámokból, és elérhetővé teszi azokat az autoscale-képletek számára. Ezeket a mintákat a Batch szolgáltatás 30 másodpercenként rögzíti. A minták rögzítése és a (és az) az autoscale-képletek esetében azonban általában egy késleltetéssel jár. Emellett a különböző tényezők, például a hálózati vagy más infrastrukturális problémák miatt előfordulhat, hogy a mintákat nem rögzíti egy adott intervallum.
 
@@ -727,7 +727,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Azure batch számítási erőforrások használatának maximalizálása egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md) : részletes információ arról, hogy miként hajtható végre egyszerre több feladat a készlet számítási csomópontjain. Az automatikus skálázás mellett ez a funkció bizonyos munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 * Egy másik hatékonysági emlékeztető esetén győződjön meg arról, hogy a Batch-alkalmazás a legoptimálisabb módon kérdezi le a Batch szolgáltatást. Lásd: [a Azure batch szolgáltatás hatékony lekérdezése](batch-efficient-list-queries.md) , amelyből megtudhatja, hogy miként lehet korlátozni a drótot keresztező adatok mennyiségét, ha egy akár több ezer számítási csomópont vagy feladat állapotát kérdezi le.

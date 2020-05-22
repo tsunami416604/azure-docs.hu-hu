@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ac7966538102273b91d6b7f15b90e18ceedd421
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67179570"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779938"
 ---
 A mérőszámokat megtekintheti az eszköz teljesítményének figyeléséhez, illetve egyes példányokban az eszközök problémáinak elhárításához.
 
@@ -27,25 +27,7 @@ Hozzon létre egy diagramot a kiválasztott eszköz metrikáinak létrehozásáh
 
     ![Válasszon másik erőforrást](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. A legördülő listából válassza ki az eszköz figyelésére szolgáló mérőszámot. A metrikák lehetnek **Kapacitási mérőszámok** vagy **tranzakciós metrikák**. A kapacitás metrikái az eszköz kapacitásával kapcsolatosak. A tranzakció metrikái az olvasási és írási műveletekhez kapcsolódnak az Azure Storage-hoz.
-
-    |Kapacitásmetrikák                     |Leírás  |
-    |-------------------------------------|-------------|
-    |**Rendelkezésre álló kapacitás**               | Az eszközre írható adatméretet jelöli. Ez azt jelenti, hogy ez az a kapacitás, amelyet elérhetővé tehet az eszközön. <br></br>Az eszköz kapacitását az eszközön és a felhőben található másolattal rendelkező fájlok helyi másolatának törlésével szabadíthatja fel.        |
-    |**Teljes kapacitás**                   | Az eszközön az adat írására szolgáló összes bájtra hivatkozik. Ezt a helyi gyorsítótár teljes méretének is nevezzük. <br></br> Most már megnövelheti egy meglévő virtuális eszköz kapacitását egy adatlemez hozzáadásával. Adjon hozzá egy adatlemezt a virtuális gép hypervisor-felügyeletén keresztül, majd indítsa újra a virtuális gépet. Az átjáró eszköz helyi tárolóhelye ki lesz bővítve az újonnan hozzáadott adatlemezre. <br></br>További információkért keresse [fel a Hyper-V virtuális gép merevlemezének hozzáadása](https://www.youtube.com/watch?v=EWdqUw9tTe4)című témakört. |
-    
-    |Tranzakciómetrikák              | Leírás         |
-    |-------------------------------------|---------|
-    |**Feltöltött Felhőbeli bájtok (eszköz)**    | Az eszközön található összes megosztáson feltöltött bájtok összege        |
-    |**Felhőbeli feltöltött bájtok (megosztás)**     | Egy megosztáson feltöltött bájtok száma. Ez lehet: <br></br> AVG, amely (a megosztás/megosztások száma alapján feltöltött bájtok összege),  <br></br>Max, amely a megosztásból feltöltött bájtok maximális számát adja meg. <br></br>Minimum, amely a megosztásból feltöltött bájtok minimális száma      |
-    |**Felhőbeli letöltési teljesítmény (megosztás)**| Egy megosztáson letöltött bájtok száma. Ez lehet: <br></br> Az AVG, amely (az összes olvasott vagy letöltött bájt összege egy megosztásba/megosztások száma) <br></br> Max, amely a megosztásból letöltött bájtok maximális számát adja meg.<br></br> és a min, amely a megosztásból letöltött bájtok minimális száma  |
-    |**Felhőbeli olvasási sebesség**            | A felhőből beolvasott összes bájt összege az eszközön lévő összes megosztáson keresztül     |
-    |**Felhőbeli feltöltési sebesség**          | A felhőbe írt összes bájt összege az eszközön található összes megosztáson keresztül     |
-    |**Felhőbeli feltöltési sebesség (megosztás)**  | Egy megosztásból/megosztásból a felhőbe írt összes bájt összege átlagos, maximális és minimális      |
-    |**Olvasási sebesség (hálózat)**           | Magában foglalja a felhőből beolvasott bájtok rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.      |
-    |**Írási átviteli sebesség (hálózat)**       | Magában foglalja a felhőbe írt összes bájt rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.          |
-    |**Edge-számítás – memóriahasználat**      | Ez a metrika Data Box Gateway esetén nem alkalmazható, ezért nincs feltöltve.          |
-    |**Edge-számítás – százalékos CPU**    | Ez a metrika Data Box Gateway esetén nem alkalmazható, ezért nincs feltöltve.         |
+3. A legördülő listából válassza ki az eszköz figyelésére szolgáló mérőszámot. A metrikák teljes listáját itt tekintheti meg: [mérőszámok az eszközön](#metrics-on-your-device).
 
 4. Ha ki van választva egy metrika a legördülő listából, az Összesítés is meghatározható. Az Összesítés a megadott időtartamon keresztül összesített tényleges értékre hivatkozik. Az összesített értékek lehet átlagos, minimum vagy a maximális érték. Válassza ki az összesítést az AVG, a Max vagy a min értékből.
 

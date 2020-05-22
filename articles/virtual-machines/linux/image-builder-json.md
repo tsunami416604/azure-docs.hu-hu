@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: c13ace67f18b619d5ad86106ecb648db722be9fa
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792445"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779346"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -54,7 +54,7 @@ Ez az alapszintű sablon formátuma:
 
 ## <a name="type-and-api-version"></a>Típus és API-verzió
 
-Az `type` az erőforrástípus, amelynek a következőnek kell `"Microsoft.VirtualMachineImages/imageTemplates"`lennie:. Az `apiVersion` az idő múlásával változik, ahogy az API megváltozik, de `"2019-05-01-preview"` az előzetes verziónak kell lennie.
+Az az `type` erőforrástípus, amelynek a következőnek kell lennie: `"Microsoft.VirtualMachineImages/imageTemplates"` . Az az `apiVersion` idő múlásával változik, ahogy az API megváltozik, de az előzetes verziónak kell lennie `"2019-05-01-preview"` .
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -189,7 +189,7 @@ A forrás rendszerképét egy általánosított virtuális merevlemez vagy virtu
         }
 ```
 
-Az `imageId` értéknek a felügyelt rendszerkép ResourceId kell lennie. Az `az image list` elérhető lemezképek listázásához használható.
+Az `imageId` értéknek a felügyelt rendszerkép ResourceId kell lennie. `az image list`Az elérhető lemezképek listázásához használható.
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion forrása
@@ -222,8 +222,8 @@ Ha úgy találja, hogy a testreszabások befejezéséhez több időre van szüks
 
 A rendszerkép-szerkesztő több "testreszabó" használatát is támogatja. A testreszabók olyan függvények, amelyek a rendszerkép testreszabására szolgálnak, például parancsfájlok futtatására vagy kiszolgálók újraindítására. 
 
-A használatakor `customize`: 
-- Több testreszabó is használható, de egyedieknek `name`kell lenniük.
+A használatakor `customize` : 
+- Több testreszabó is használható, de egyedieknek kell lenniük `name` .
 - A testreszabók a sablonban megadott sorrendben hajthatók végre.
 - Ha egy testreszabó nem sikerül, a teljes testreszabási összetevő sikertelen lesz, és hibát jelez.
 - Nyomatékosan javasoljuk, hogy alaposan tesztelje a parancsfájlt, mielőtt használni lehetne a sablonban. A parancsfájl hibakeresése a saját virtuális gépen egyszerűbb lesz.
@@ -287,7 +287,7 @@ Tulajdonságok testreszabása:
     * A sha256Checksum létrehozása Mac/Linux rendszeren futó terminál használatával:`sha256sum <fileName>`
 
 
-A felügyelői jogosultságokkal futtatandó parancsokhoz előtaggal kell rendelkeznie `sudo`.
+A felügyelői jogosultságokkal futtatandó parancsokhoz előtaggal kell rendelkeznie `sudo` .
 
 > [!NOTE]
 > Ha a rendszerhéj-testreszabó a RHEL ISO-forrással futtatja, gondoskodnia kell arról, hogy az első testreszabási rendszerhéj a Red Hat jogosultsági kiszolgálóval való regisztrálást a testreszabások előtt is kezelje. A Testreszabás befejeződése után a parancsfájlnak meg kell szüntetnie a jogosultsági kiszolgáló regisztrációját.
@@ -385,7 +385,7 @@ Ezt a Windows-címtárak és a Linux-elérési utak támogatják, de vannak kül
 Ha hiba történt a fájl letöltése vagy egy megadott címtárba való behelyezése során, a testreszabási lépés sikertelen lesz, és ez a customization. log fájlban lesz.
 
 > [!NOTE]
-> A fájl-testreszabó csak kisméretű fájlok letöltésére alkalmas, < 20 MB-ot. A nagyobb fájlok letöltéséhez parancsfájl vagy beágyazott parancs használatos, a fájlok letöltésére szolgáló kód (például:, Linux `wget` vagy `curl`Windows `Invoke-WebRequest`).
+> A fájl-testreszabó csak kisméretű fájlok letöltésére alkalmas, < 20 MB-ot. A nagyobb fájlok letöltéséhez parancsfájl vagy beágyazott parancs használatos, a fájlok letöltésére szolgáló kód (például:, Linux `wget` vagy `curl` Windows `Invoke-WebRequest` ).
 
 A fájl-testreszabó fájljai az [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)használatával tölthetők le az Azure Storage-ból.
 
@@ -425,13 +425,24 @@ Ha az Azure rendszerkép-készítő sikeresen létrehoz egy egyéni Windows-rend
 
 #### <a name="default-sysprep-command"></a>Alapértelmezett Sysprep-parancs
 ```powershell
-echo '>>> Waiting for GA to start ...'
+Write-Output '>>> Waiting for GA Service (RdAgent) to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start ...'
+while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-echo '>>> Sysprepping VM ...'
-if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
-while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
+Write-Output '>>> Sysprepping VM ...'
+if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
+  Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force
+}
+& $Env:SystemRoot\System32\Sysprep\Sysprep.exe /oobe /generalize /quiet /quit
+while($true) {
+  $imageState = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State).ImageState
+  Write-Output $imageState
+  if ($imageState -eq 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { break }
+  Start-Sleep -s 5
+}
+Write-Output '>>> Sysprep complete ...'
 ```
 #### <a name="default-linux-deprovision-command"></a>Alapértelmezett Linux-kiépítés parancs
 
@@ -457,7 +468,7 @@ Az Azure rendszerkép-szerkesztő három terjesztési célt támogat:
 
 A rendszerképeket az azonos konfigurációban található cél típusokra is terjesztheti, [példákat](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)talál.
 
-Mivel több célhely is kiterjeszthető a szolgáltatásba, a rendszerkép-szerkesztő minden olyan terjesztési cél állapotát fenntartja, amely elérhető a `runOutputName`lekérdezéssel.  Az `runOutputName` egy olyan objektum, amelyről lekérdezheti a terjesztés utáni adatokat. Lekérdezheti például a virtuális merevlemez helyét, illetve azokat a régiókat, amelyeken a rendszerkép verziója replikálva lett, vagy a SIG-rendszerkép verziója létrejött. Ez az összes terjesztési cél tulajdonsága. A `runOutputName` -nek egyedinek kell lennie az egyes terjesztési célkitűzéseknél. Íme egy példa, amely egy megosztott képgyűjtemény-eloszlás lekérdezését szemlélteti:
+Mivel több célhely is kiterjeszthető a szolgáltatásba, a rendszerkép-szerkesztő minden olyan terjesztési cél állapotát fenntartja, amely elérhető a lekérdezéssel `runOutputName` .  Az egy olyan `runOutputName` objektum, amelyről lekérdezheti a terjesztés utáni adatokat. Lekérdezheti például a virtuális merevlemez helyét, illetve azokat a régiókat, amelyeken a rendszerkép verziója replikálva lett, vagy a SIG-rendszerkép verziója létrejött. Ez az összes terjesztési cél tulajdonsága. A `runOutputName` -nek egyedinek kell lennie az egyes terjesztési célkitűzéseknél. Íme egy példa, amely egy megosztott képgyűjtemény-eloszlás lekérdezését szemlélteti:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -510,7 +521,7 @@ A rendszerkép kimenete felügyelt rendszerkép-erőforrás lesz.
  
 Elosztás tulajdonságai:
 - **típus** – managedImage 
-- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum\<:/Subscriptions/subscriptionId\<>/resourcegroups/destinationResourceGroupName\<>/Providers/Microsoft.Compute/images/imageName>
+- **imageId** – a célként megadott rendszerkép erőforrás-azonosítója, a várt formátum:/subscriptions/ \< subscriptionId>/Resourcegroups/ \< destinationResourceGroupName>/Providers/Microsoft.Compute/images/ \< imageName>
 - **hely** – a felügyelt rendszerkép helye.  
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
@@ -550,7 +561,7 @@ A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjte
 Megosztott képtárak tulajdonságainak terjesztése:
 
 - **típus** – sharedImage  
-- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A\<formátum:/subscriptions/subscriptionId>/resourcegroups/\<resourceGroupName>/Providers/Microsoft.Compute/Galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>.
+- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \< subscriptionId>/Resourcegroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
 - **replicationRegions** – a replikálási régiók tömbje. Az egyik régió az a régió, amelyben a katalógus üzembe van helyezve.
@@ -580,7 +591,7 @@ VHD-paraméterek terjesztése:
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **címkék** – nem kötelező felhasználó által megadott kulcs-érték párok címkéi.
  
-Az Azure rendszerkép-készítő nem teszi lehetővé a felhasználó számára a tárolási fiók helyének megadását, de lekérdezheti az állapotát `runOutputs` a hely lekéréséhez.  
+Az Azure rendszerkép-készítő nem teszi lehetővé a felhasználó számára a tárolási fiók helyének megadását, de lekérdezheti az állapotát a hely lekéréséhez `runOutputs` .  
 
 ```azurecli-interactive
 az resource show \

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086899"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778230"
 ---
 ## <a name="personal-information-entity-types"></a>Személyes információ típusú entitások típusai:
 
@@ -25,7 +25,7 @@ Nyelvek:
 
 | Altípus neve | Leírás                                               | A modell verziójától kezdődően érhető el |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| N/A          | Felismert nevek, például `Bill Gates`:`Marie Curie` | `2020-02-01`                           |
+| N/A          | Felismert nevek `Bill Gates` , például:`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Szervezet  
 
@@ -37,7 +37,7 @@ Nyelvek:
 
 | Altípus neve | Leírás                                                                                       | A modell verziójától kezdődően érhető el|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| N/A          | szervezetek, például `Microsoft`: `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| N/A          | szervezetek, például: `Microsoft` `NASA` ,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefonszám
 
@@ -127,7 +127,7 @@ Nyelvek:
 
 Azonosítható Azure-információk, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait. 
 
-* A modell verziójától `2019-10-01`kezdődően érhető el.
+* A modell verziójától kezdődően érhető el `2019-10-01` .
 
 Nyelvek:
 
@@ -149,7 +149,7 @@ Nyelvek:
 
 ### <a name="identification"></a>Azonosítás
 
-* A modell verziójától `2019-10-01`kezdődően érhető el.
+* A modell verziójától kezdődően érhető el `2019-10-01` .
 
 Nyelvek:
 
@@ -164,9 +164,9 @@ Nyelvek:
 | Hitelkártya                | Hitelkártya-számok.                                                       |
 | IBAN-kód                  | IBAN-kódok a fizetési utasítással kapcsolatos információkhoz.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Kormányzati és országspecifikus azonosítás
+#### <a name="government-and-countryregion-specific-identification"></a>Kormányzati és ország/régió-specifikus azonosítás
 
-Az alábbi entitások ország szerint vannak csoportosítva és listázva:
+Az alábbi entitások ország/régió szerint vannak csoportosítva és listázva:
 
 Argentína
 * Nemzeti identitás (DNI) száma

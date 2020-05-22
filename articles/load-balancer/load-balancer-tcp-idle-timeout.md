@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456828"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780601"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>A TCP Üresjárati időkorlát beállításainak konfigurálása Azure Load Balancer
 
@@ -26,7 +26,7 @@ ms.locfileid: "79456828"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Connect-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást.
+Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
 ## <a name="tcp-idle-timeout"></a>TCP Üresjárati időkorlát
 Azure Load Balancer üresjárati időkorlátja 4 perc és 30 perc között van. Alapértelmezés szerint 4 percre van beállítva. Ha egy inaktivitási időtartam hosszabb az időtúllépési értéknél, nem garantálható, hogy a TCP-vagy HTTP-munkamenet az ügyfél és a felhőalapú szolgáltatás között marad.
@@ -42,6 +42,10 @@ A TCP Keep-Alive olyan forgatókönyvek esetén működik, ahol az akkumulátoro
 ![TCP-időtúllépés](./media/load-balancer-tcp-idle-timeout/image1.png)
 
 A következő szakaszok azt ismertetik, hogyan változtathatók meg a nyilvános IP-címek és a terheléselosztó erőforrásainak üresjárati időtúllépési beállításai.
+
+>[!NOTE]
+> A TCP Üresjárati időkorlát nem befolyásolja az UDP protokoll terheléselosztási szabályait.
+
 
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>A példány-szintű nyilvános IP-cím TCP-időtúllépésének beállítása 15 percre
 

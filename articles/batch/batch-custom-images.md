@@ -3,12 +3,12 @@ title: Egyéni készlet kiépítése felügyelt rendszerképből
 description: Hozzon létre egy batch-készletet egy felügyelt rendszerkép-erőforrásból, hogy kiépítse a számítási csomópontokat az alkalmazás szoftverével és adataival.
 ms.topic: article
 ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117318"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780208"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Felügyelt rendszerkép használata virtuális gépek készletének létrehozásához
 
@@ -21,7 +21,7 @@ A Batch-készlet virtuális gépei (VM-EK) egyéni rendszerképének létrehozá
 
 - **Felügyelt rendszerkép erőforrása**. Ha egyéni rendszerkép használatával kívánja létrehozni a virtuális gépek készletét, akkor a Batch-fiókkal azonos Azure-előfizetésben és régióban kell létrehoznia egy felügyelt rendszerkép-erőforrást, vagy létre kell hoznia azt. A lemezképet létre kell hozni a virtuális gép operációsrendszer-lemezének pillanatképei és opcionálisan csatlakoztatott adatlemezei között. A felügyelt rendszerképek előkészítésével kapcsolatos további információkért és lépésekhez tekintse meg a következő szakaszt.
   - Használjon egyedi egyéni rendszerképet a létrehozott készletekhez.
-  - Ha a Batch API-k használatával szeretne készletet létrehozni a képpel, akkor az űrlaphoz `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`tartozó rendszerkép erőforrás- **azonosítóját** kell megadnia. A portál használatához használja a rendszerkép **nevét** .  
+  - Ha a Batch API-k használatával szeretne készletet létrehozni a képpel, akkor az űrlaphoz tartozó rendszerkép **erőforrás-azonosítóját** kell megadnia `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . A portál használatához használja a rendszerkép **nevét** .  
   - A felügyelt rendszerkép-erőforrásnak léteznie kell a készlet élettartamához a felskálázás engedélyezéséhez, és a készlet törlése után eltávolítható.
 
 - **Azure Active Directory (HRE) hitelesítés**. A Batch-ügyfél API-HRE hitelesítést kell használnia. Azure Batch a HRE támogatása a [Batch szolgáltatással kapcsolatos megoldások Active Directory használatával történő hitelesítésében](batch-aad-auth.md)van dokumentálva.
@@ -107,10 +107,10 @@ Felügyelt rendszerkép-erőforrás közvetlenül a Csomagolóval való létreho
 
 Győződjön meg arról, hogy a felügyelt rendszerkép létrehozásához használt erőforrás létezik az egyéni rendszerképre hivatkozó bármely készlet élettartama tekintetében. Ennek elmulasztása esetén a készlet lefoglalási hibáit és/vagy az átméretezési hibákat okozhatják.
 
-Ha a rendszerkép vagy a mögöttes erőforrás el lett távolítva, a következőhöz hasonló hibaüzenetet kaphat: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a mögöttes erőforrás nem lett eltávolítva.
+Ha a rendszerkép vagy a mögöttes erőforrás el lett távolítva, a következőhöz hasonló hibaüzenetet kaphat: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed` . Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a mögöttes erőforrás nem lett eltávolítva.
 
 További információ a virtuális gép létrehozásáról a csomagoló használatával: Linux- [rendszerkép létrehozása a csomagolóval](../virtual-machines/linux/build-image-with-packer.md) vagy Windows- [rendszerkép készítése a csomagolóval](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>További lépések
 
-A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
+- A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46bb3517af31e328efae89afef8f3e83ccbc8bfa
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79239097"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778750"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -26,7 +26,7 @@ A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellá
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Ha az eszközöket az Azure AD-be szeretné állítani, az egyszeri bejelentkezés (SSO) révén maximalizálja a felhasználók hatékonyságát a felhőben és a helyszíni erőforrásokban. A [feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést.
+Ha az eszközöket az Azure AD-be szeretné állítani, az egyszeri bejelentkezés (SSO) révén maximalizálja a felhasználók hatékonyságát a felhőben és a helyszíni erőforrásokban. A [feltételes hozzáféréssel](../conditional-access/howto-conditional-access-policy-compliant-device.md) a felhőben és a helyszíni erőforrásokhoz is biztonságossá teheti a hozzáférést.
 
 Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja. Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, az alábbi követelmények már támogatottak.
 
@@ -40,7 +40,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási** > **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a hibrid Azure AD Joint Active Directory tartományhoz csatlakoztatott számítógépek eszközeihez egy összevont környezetben AD FS használatával.
 
@@ -178,25 +178,69 @@ A telepítő létrehoz egy ütemezett feladatot a felhasználói környezetben f
 
 ## <a name="verify-the-registration"></a>A regisztráció ellenőrzése
 
-Az eszköznek az Azure-bérlőbeli regisztrációs állapotát a **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** parancsmaggal lehet ellenőrizni az [Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3 módszer használható:
+
+### <a name="locally-on-the-device"></a>Helyileg az eszközön
+
+1. Nyissa meg a Windows PowerShellt.
+2. Írja be a `dsregcmd /status` (igen) kifejezést.
+3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
+4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
+
+### <a name="using-the-azure-portal"></a>Az Azure Portal használata
+
+1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
+2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)című témakörben talál információt.
+3. Ha a **regisztrált** oszlop **függőben**van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
+4. Ha a **regisztrált** oszlop egy **dátumot és időpontot**tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
+
+### <a name="using-powershell"></a>A PowerShell használata
+
+A **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)található.
 
 Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
 
 - Léteznie kell egy olyan objektumnak **, amely megfelel a Windows** -ügyfél azonosítójának.
-- A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez a beállítás megegyezik a **hibrid Azure ad-hez csatlakoztatott** állapottal az Azure ad-portál **eszközök** területén.
-- A feltételes hozzáférésben használt eszközök esetében az **engedélyezett** értéknek **igaznak** kell lennie, és a **DeviceTrustLevel** kell **kezelnie**.
-
-**A szolgáltatás részleteinek ellenõrzése**:
+- A **DeviceTrustType** értéke **tartományhoz van csatlakoztatva**. Ez a beállítás megegyezik a **hibrid Azure ad-hez csatlakoztatott** állapottal az Azure ad-portál **eszközök** lapján.
+- A feltételes hozzáférésben használt eszközök esetében az **enabled** érték **true (igaz** ), a **DeviceTrustLevel** pedig **felügyelt**.
 
 1. Nyissa meg a Windows PowerShellt rendszergazdaként.
-1. Az `Connect-MsolService` Azure-bérlőhöz való kapcsolódáshoz adja meg a következőt:.  
-1. Írja be a `get-msoldevice -deviceId <deviceId>` (igen) kifejezést.
-1. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
+2. Az `Connect-MsolService` Azure-bérlőhöz való kapcsolódáshoz adja meg a következőt:.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz száma (a **függő** állapot kizárása nélkül)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz száma
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Az összes hibrid Azure AD-hez csatlakoztatott eszköz listázása
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Az összes **függő** állapotú, hibrid Azure ad-hez csatlakoztatott eszköz listázása
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Egyetlen eszköz részleteinek listázása:
+
+1. ENTER `get-msoldevice -deviceId <deviceId>` (ez az eszközön helyileg beszerzett **DeviceID** ).
+2. Ellenőrizze, hogy az **Engedélyezve** beállításhoz az **Igaz** érték van-e megadva.
 
 ## <a name="troubleshoot-your-implementation"></a>A megvalósítás hibaelhárítása
 
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának befejezésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
+- [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [Hibrid Azure AD-csatlakozás a Windows aktuális eszközeihez – problémamegoldás](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure AD JOIN használata a Windows régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 

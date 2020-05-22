@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3c9cc96af42c6cfb83b43e3a0c56f16bdb917025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649078"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779973"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -39,6 +39,11 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
 
     ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+
+
+> [!NOTE] 
+> Ha szeretné megkeresni a web vagy a slot alkalmazás felügyelt identitását a Azure Portalban, ugorjon a felhasználói beállítások szakaszra a vállalati alkalmazások területen.
+
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 
@@ -256,7 +261,7 @@ A felügyelt identitású alkalmazások esetében két környezeti változó van
 
 A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat igényelhet. Egy erőforráshoz tartozó jogkivonat lekéréséhez hajtson végre egy HTTP GET kérelmet erre a végpontra, beleértve a következő paramétereket:
 
-> | Paraméter neve    | In     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Paraméter neve    | In     | Leírás                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | erőforrás          | Lekérdezés  | Annak az erőforrásnak az Azure AD erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.    |
 > | api-verzió       | Lekérdezés  | A használni kívánt jogkivonat-API verziója. Használja az "2019-08-01" vagy az újabb verziót.                                                                                                                                                                                                                                                                 |
@@ -270,7 +275,7 @@ A **IDENTITY_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonato
 
 A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajdonságokkal rendelkezik:
 
-> | Tulajdonság neve | Description                                                                                                                                                                                                                                        |
+> | Tulajdonság neve | Leírás                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.                                                                                                                               |
 > | client_id     | A használt identitás ügyfél-azonosítója.                                                                                                                                                                                                       |

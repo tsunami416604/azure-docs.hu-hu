@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-naplózás
+title: Azure SQL-naplózás a Azure SQL Database és az Azure szinapszis Analytics szolgáltatáshoz
 description: Az Azure SQL Database naplózási szolgáltatásával követheti nyomon az adatbázis-eseményeket egy naplóban.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff888cb1a2f2486fec7b387d9f9f02029b03aab
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096656"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779072"
 ---
-# <a name="azure-sql-auditing"></a>Azure SQL-naplózás
+# <a name="azure-sql-auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL-naplózás a Azure SQL Database és az Azure szinapszis Analytics szolgáltatáshoz
 
 Az Azure [SQL Database](sql-database-technical-overview.md) és az [Azure szinapszis Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) naplózása nyomon követi az adatbázis eseményeit, és egy Azure Storage-fiókban, log Analytics munkaterületen vagy Event Hubsban lévő naplóba írja azokat. 
 
@@ -174,7 +174,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 - Használja a System Function **sys. fn_get_audit_file** (T-SQL) függvényt a naplózott adat táblázatos formátumban való visszaküldéséhez. További információ a függvény használatáról: [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - A **naplófájlok egyesítése** SQL Server Management Studio (a SSMS 17-től kezdődően):
-    1. A SSMS menüben válassza a **fájl** > **nyitott** > **fájlok egyesítése naplózása**elemet.
+    1. A SSMS menüben válassza a **fájl**  >  **nyitott**  >  **fájlok egyesítése naplózása**elemet.
 
         ![Navigációs ablaktábla](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. Megnyílik a naplófájlok **hozzáadása** párbeszédpanel. Válassza ki a **hozzáadási** lehetőségek egyikét, és válassza ki, hogy szeretné-e egyesíteni a naplófájlokat egy helyi lemezről, vagy importálni őket az Azure Storage-ból. Meg kell adnia az Azure Storage adatait és a fiók kulcsát.

@@ -3,12 +3,12 @@ title: Csomópont-végpontok konfigurálása Azure Batch készletben
 description: Az SSH-vagy RDP-portok elérésének konfigurálása vagy letiltása egy Azure Batch készlet számítási csomópontjain.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 4b990e4223f37f71d453cd91b9b3a20bd70d0bbb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723510"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780289"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>A Azure Batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása
 
@@ -118,9 +118,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+- Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md).
-
-- A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
-

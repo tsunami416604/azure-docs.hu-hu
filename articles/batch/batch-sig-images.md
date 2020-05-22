@@ -3,12 +3,12 @@ title: Egyéni készlet létrehozása a megosztott rendszerkép-katalógus haszn
 description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743573"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780501"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -83,7 +83,7 @@ Miután sikeresen létrehozta a felügyelt rendszerképet, létre kell hoznia eg
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Készlet létrehozása megosztott rendszerképből az Azure CLI használatával
 
-Ha az Azure CLI használatával szeretne létrehozni egy készletet a megosztott rendszerképből, `az batch pool create` használja az parancsot. Határozza meg a megosztott rendszerkép AZONOSÍTÓját `--image` a mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és az SKU megfelel a következő által megadott verzióknak:`--node-agent-sku-id`
+Ha az Azure CLI használatával szeretne létrehozni egy készletet a megosztott rendszerképből, használja az `az batch pool create` parancsot. Határozza meg a megosztott rendszerkép AZONOSÍTÓját a `--image` mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és az SKU megfelel a következő által megadott verzióknak:`--node-agent-sku-id`
 
 > [!NOTE]
 > Az Azure AD használatával kell hitelesítenie magát. Ha megosztott kulcsos hitelesítést használ, akkor hitelesítési hibaüzenetet kap.  
@@ -204,7 +204,7 @@ A következő lépésekkel hozhat létre készletet egy megosztott rendszerképb
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
 1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.
 1. Hajtsa végre a többi szakaszt a felügyelt lemezképpel kapcsolatos információkkal.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ![Hozzon létre egy készletet egy megosztott rendszerképből a portálon.](media/batch-sig-images/create-custom-pool.png)
 
@@ -214,8 +214,8 @@ Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtu
 
 * **A megosztott képgyűjtemény replikáinak száma.**  A legfeljebb 600 példánnyal rendelkező készletek esetében javasoljuk, hogy tartsa meg legalább egy replikát. Ha például egy 3000 virtuális géppel rendelkező készletet hoz létre, akkor legalább 5 replikát kell tartania a rendszerképből. Javasoljuk, hogy a jobb teljesítmény érdekében mindig több replikát őrizzen meg, mint a minimális követelmények.
 
-* **Átméretezési időtúllépés.** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), `resizeTimeout` növelje a készlet tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
+* **Átméretezési időtúllépés.** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), növelje a `resizeTimeout` készlet tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
 
 ## <a name="next-steps"></a>További lépések
 
-* A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
+* A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).

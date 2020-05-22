@@ -4,12 +4,12 @@ description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható 
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726553"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779607"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -114,7 +114,7 @@ Sok parancsmag használatakor egy BatchContext objektum átadása mellett részl
 
 ### <a name="create-a-batch-pool"></a>Batch-készlet létrehozása
 
-Batch-készlet létrehozásakor vagy frissítésekor kiválaszthatja a felhőszolgáltatás- vagy a virtuálisgép-konfigurációt az operációs rendszerhez a számítási csomópontokon (lásd a [Batch-funkciók áttekintésével](batch-api-basics.md#pool) kapcsolatos témakört). Ha a felhőszolgáltatás-konfigurációt adja meg, a számítási csomópontokról az egyik [Azure-beli vendég operációs rendszer kiadásával](../cloud-services/cloud-services-guestos-update-matrix.md#releases) készül rendszerkép. Ha a virtuálisgép-konfigurációt választja, megadhatja az [Azure Virtual Machines Marketplace-en][vm_marketplace] felsorolt támogatott Linux vagy Windows virtuálisgép-rendszerképek egyikét, vagy megadhat egy Ön által előkészített egyéni rendszerképet.
+Batch-készlet létrehozásakor vagy frissítésekor kiválasztja a Cloud Services-konfigurációt vagy a virtuálisgép-konfigurációt a számítási csomópontok operációs rendszeréhez (lásd: [csomópontok és készletek](nodes-and-pools.md#configurations)). Ha a felhőszolgáltatás-konfigurációt adja meg, a számítási csomópontokról az egyik [Azure-beli vendég operációs rendszer kiadásával](../cloud-services/cloud-services-guestos-update-matrix.md#releases) készül rendszerkép. Ha a virtuálisgép-konfigurációt választja, megadhatja az [Azure Virtual Machines Marketplace-en][vm_marketplace] felsorolt támogatott Linux vagy Windows virtuálisgép-rendszerképek egyikét, vagy megadhat egy Ön által előkészített egyéni rendszerképet.
 
 A **New-AzBatchPool**futtatásakor adja meg az operációs rendszer beállításait egy PSCloudServiceConfiguration vagy PSVirtualMachineConfiguration objektumban. Az alábbi kódrészlet például létrehoz egy Standard_A1 számítási csomópontokat tartalmazó batch-készletet a virtuálisgép-konfigurációban, amely az Ubuntu Server 18,04-LTS formátummal van ellátva. Itt a **VirtualMachineConfiguration** paraméter a *$configuration* változót a PSVirtualMachineConfiguration objektumként határozza meg. A **BatchContext** paraméter egy korábban meghatározott *$context* változót ad meg a BatchAccountContext objektumként.
 
@@ -293,7 +293,7 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 > [!TIP]
 > A készlet számítási csomópontjain több alkalmazáscsomagot is üzembe helyezhet. Ha a jelenleg telepített csomagok cseréje helyett inkább *hozzáadna* egy alkalmazáscsomagot, hagyja ki a felső `$pool.ApplicationPackageReferences.Clear()` sort.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A parancsmag részletes szintaxisáért és példákért lásd: [Azure Batch-parancsmagok referenciája](/powershell/module/az.batch).
 * A Batchben elérhető alkalmazásokkal és alkalmazáscsomagokkal kapcsolatban további információkat a [Batch-alkalmazáscsomagokkal számítási csomópontokra végzett alkalmazástelepítést](batch-application-packages.md) ismertető cikkben talál.

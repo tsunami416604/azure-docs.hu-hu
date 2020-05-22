@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427795"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780435"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL-készletekhez az Azure szinapszis Analyticsben
 
@@ -44,7 +44,7 @@ A statisztikával kapcsolatos további információk a [tábla statisztikáinak 
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT utasítások csoportosítása kötegekbe
 
-Egyszeri betöltés egy kisméretű táblába egy INSERT utasítással, például `INSERT INTO MyLookup VALUES (1, 'Type 1')`az igényeitől függően a legjobb megközelítés lehet. Ha azonban több ezer vagy több millió sort kell betölteni a nap folyamán, valószínű, hogy az egyszeres lapkák nem optimálisak.
+Egyszeri betöltés egy kisméretű táblába egy INSERT utasítással, például `INSERT INTO MyLookup VALUES (1, 'Type 1')` az igényeitől függően a legjobb megközelítés lehet. Ha azonban több ezer vagy több millió sort kell betölteni a nap folyamán, valószínű, hogy az egyszeres lapkák nem optimálisak.
 
 A probléma megoldásának egyik módja egy olyan folyamat fejlesztése, amely egy fájlba ír, majd egy másik folyamat a fájl rendszeres betöltéséhez. További információért tekintse meg a [beszúrási](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikket.
 
@@ -59,7 +59,7 @@ A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók. A CT
 
 A gzip szövegfájlok használatakor az átviteli sebesség maximalizálása érdekében bontsa a fájlokat 60 vagy több fájlba, hogy maximalizálja a terhelés párhuzamosságát. A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat. Az ehhez a szakaszhoz kapcsolódó témakörökkel kapcsolatos további információkat a következő cikkek tartalmaznak:
 
-- [Betöltési adatgyűjtés](data-loading-overview.md)
+- [Adatok betöltése](data-loading-overview.md)
 - [Útmutató a PolyBase használatához](data-loading-best-practices.md)
 - [Az Azure SQL Pool betöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Az adatterhelés Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -169,7 +169,7 @@ Az erőforrás-osztályokkal kapcsolatos további információkért tekintse meg
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Kisebb erőforrás-osztály használata a párhuzamosság növeléséhez
 
-Ha hosszú késleltetést tapasztal a felhasználói lekérdezésekben, előfordulhat, hogy a felhasználók nagyobb erőforrás-osztályokban futnak. Ez a forgatókönyv az egyidejűségi tárolóhelyek felhasználását segíti elő, ami más lekérdezések várólistára helyezését is okozhatja.  Annak megállapításához, hogy a felhasználók lekérdezései várólistára kerültek-e, futtassa a parancsot `SELECT * FROM sys.dm_pdw_waits` , hogy megjelenjenek-e a sorok.
+Ha hosszú késleltetést tapasztal a felhasználói lekérdezésekben, előfordulhat, hogy a felhasználók nagyobb erőforrás-osztályokban futnak. Ez a forgatókönyv az egyidejűségi tárolóhelyek felhasználását segíti elő, ami más lekérdezések várólistára helyezését is okozhatja.  Annak megállapításához, hogy a felhasználók lekérdezései várólistára kerültek-e, futtassa a parancsot, `SELECT * FROM sys.dm_pdw_waits` hogy megjelenjenek-e a sorok.
 
 A számítási [feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md) és a [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikkekhez tartozó erőforrás-osztályok további információkat biztosítanak.
 
@@ -179,7 +179,7 @@ Az SQL-készletek több DMV is használhatók a lekérdezések végrehajtásána
 
 - [Monitor your workload using DMVs](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-- [LABEL](develop-label.md)
+- [CÍMKE](develop-label.md)
 - [BEÁLLÍTÁS](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -193,7 +193,7 @@ Az SQL-készletek több DMV is használhatók a lekérdezések végrehajtásána
 
 Tekintse meg a gyakori problémákkal és megoldásokkal kapcsolatos [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket is.
 
-Ha a jelen cikkben nem szereplő információkra van szüksége, használja a lap bal oldalán található "dokumentumok keresése" kifejezést az SQL-készlet összes dokumentumának kereséséhez.  Az [SQL-készlet fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyen fel más felhasználók és az SQL Pool termékcsoport számára.  
+Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **szűrés cím** alapján az összes SQL-készlet dokumentumának kereséséhez.  Az [SQL-készlet fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyen fel más felhasználók és az SQL Pool termékcsoport számára.  
 
 Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha szeretne kérdéseket feltenni a Stack Overflowra, egy [Azure SQL-készlettel](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezünk stack overflow fórumban.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992aa8a4cb0ff31f7f1657be45fa1a64fdb27e7c
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128874"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780542"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -47,7 +47,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 ### <a name="basic-tier"></a>Alapszintű csomag
 
-Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. A lekérdezési replika méretezése *nem érhető el* ehhez a réteghez. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
+Ez a csomag kisebb táblázatos modellekkel, korlátozott felhasználói párhuzamosságtal és egyszerű adatfrissítési követelményekkel rendelkező éles megoldások esetében ajánlott. A lekérdezési replika méretezése *nem érhető el* ehhez a réteghez. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
 |Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
@@ -77,7 +77,7 @@ Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokho
 
 Az Azure Analysis Services a világ összes régiójában támogatott. A támogatott csomagok és lekérdezésreplikák a választott régiótól függően változnak. A csomagok és lekérdezésreplikák elérhetősége az egyes régiókban jellemző igények és az elérhető erőforrások függvényében változhat. 
 
-### <a name="americas"></a>Amerika
+### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
@@ -136,7 +136,7 @@ A teljes költség számos tényezőtől (például a választott régiótól, s
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
 
-Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A partíciók, a perspektívák, a sor szintű biztonság, a kétirányú kapcsolatok és a fordítások mind\*támogatottak. A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
+Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A partíciók, a perspektívák, a sor szintű biztonság, a kétirányú kapcsolatok és a fordítások mind támogatottak \* . A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
 
 A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
 

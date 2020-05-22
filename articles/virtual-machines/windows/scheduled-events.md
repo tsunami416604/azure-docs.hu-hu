@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675872"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779783"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -109,7 +109,7 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
 A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az események tartalma módosult-e az utolsó lekérdezés óta.
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
-|Tulajdonság  |  Description |
+|Tulajdonság  |  Leírás |
 | - | - |
 | Napszállta | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény okozza a hatását. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép néhány másodpercig szünetelteti az ütemezést. Előfordulhat, hogy a processzor és a hálózati kapcsolat fel van függesztve, de nincs hatással a memóriára vagy a megnyitott fájlokra. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (nem állandó memória elvész). <li>`Redeploy`: A virtuális gép egy másik csomópontra való áthelyezésre van ütemezve (az ideiglenes lemezek elvesznek). <li>`Preempt`: A helyszíni virtuális gép törlődik (az ideiglenes lemezek elvesznek). <li> `Terminate`: A virtuális gép törlésre van ütemezve. |
@@ -134,10 +134,10 @@ Az egyes események ütemezése a jövőben az esemény típusa alapján várhat
 
 ### <a name="event-scope"></a>Esemény hatóköre     
 Az ütemezett események a következőre érkeznek:
- - Önálló Virtual Machines
- - A felhőalapú szolgáltatás összes Virtual Machines      
- - A rendelkezésre állási csoport összes Virtual Machines      
- - Egy méretezési csoport elhelyezési csoportjában lévő összes Virtual Machines (a köteget is beleértve)        
+ - Önálló Virtual Machines.
+ - Minden Virtual Machines egy felhőalapú szolgáltatásban.     
+ - Egy rendelkezésre állási csoport összes Virtual Machines.     
+ - Az összes Virtual Machines egy méretezési csoport elhelyezési csoportjában (beleértve a Batch-t).       
 
 Ennek eredményeképpen be kell jelölnie az `Resources` esemény mezőjét annak meghatározására, hogy mely virtuális gépek lesznek hatással a rendszerre. 
 

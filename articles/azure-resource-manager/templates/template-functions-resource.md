@@ -2,13 +2,13 @@
 title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/21/2020
+ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715919"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780565"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -129,7 +129,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Erőforrás típusa | Függvény neve |
 | ------------- | ------------- |
 | Microsoft. AnalysisServices/kiszolgálók | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
+| Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/configurationStores | Listkeys műveletének beolvasása |
 | Microsoft. Automation/automationAccounts | [Listkeys műveletének beolvasása](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft. batch/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -202,7 +202,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft. NotificationHubs/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft. OperationalInsights/munkaterületek | [Listkeys műveletének beolvasása](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft. OperationalInsights/munkaterületek | [lista](/rest/api/loganalytics/workspaces/list) |
 | Microsoft. PolicyInsights/szervizelések | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. Relay/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/névterek/disasterRecoveryConfigs/engedélyezési szabályok | listkeys műveletének beolvasása |
@@ -350,6 +350,8 @@ Az SAS-jogkivonat lekéréséhez továbbítson egy objektumot a lejárati időpo
     }
 }
 ```
+
+Egy listKeyValue példa: gyors útmutató [: automatikus VM-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
 
 ## <a name="providers"></a>szolgáltatók
 
@@ -1045,7 +1047,7 @@ Az azonosító a következő formátumban lesz visszaadva:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.

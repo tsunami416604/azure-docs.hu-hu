@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205102"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780514"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
@@ -141,10 +141,9 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * **InvalidLookupReference:** Bizonyos attribútumok, például a részleg és a ServiceNow-ben való kiépítés során az értékeknek már léteznie kell a ServiceNow található egyik táblázatban. Előfordulhat például, hogy két helyet (Seattle, Los Angeles) és három részleget (Sales, Finance, marketing) tartalmaz **a ServiceNow** . Ha olyan felhasználót próbál kiépíteni, amelyben a részlege "Sales", és a tartózkodási hely "Seattle", akkor a rendszer sikeresen kiépíti. Ha olyan felhasználót próbál kiépíteni, amely a "Sales" osztályt és a "LA" helyet kísérli meg, a felhasználó nem lesz kiépítve. A (z) LA helyet fel kell venni a ServiceNow hivatkozási táblájába, vagy az Azure AD felhasználói attribútumát frissíteni kell, hogy az megfeleljen a ServiceNow formátumának. 
 * **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
 * Tekintse át a [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) -t, hogy megértse az összes követelményt és korlátozást (például a felhasználó országkód megadásának formátuma)
-* Egyes ServiceNow-telepítések lehetővé teszik az IP-címtartományok engedélyezését az Azure AD kiépítési szolgáltatás számára. Az Azure AD kiépítési szolgáltatás számára fenntartott IP-címtartományok [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók: "AzureActiveDirectoryDomainServices".
 * A rendszer alapértelmezés szerint a kiépítési kérelmeket a https://{saját példányának neve}. Service-Now. com/{Table-Name} értékre továbbítja. Ha egyéni bérlői URL-címet igényel, a teljes URL-címet megadhatja a példány neve mezőben.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

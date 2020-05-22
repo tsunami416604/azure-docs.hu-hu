@@ -4,18 +4,18 @@ description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Port
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01c62270fc0195c430150a534df2a141808ffa6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726927"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778595"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
 Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_portal], és miként választhatja ki a számítási forgatókönyvének legmegfelelőbb fióktulajdonságokat. Megtudhatja, hol találja a fontos fióktulajdonságokat, például a hozzáférési kulcsokat és a fiókok URL-címeit.
 
-További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók áttekintésében](batch-api-basics.md) találhat.
+A Batch-fiókokkal és-forgatókönyvekkel kapcsolatos háttérért lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).
 
 ## <a name="create-a-batch-account"></a>Batch-fiók létrehozása
 
@@ -39,7 +39,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
     d. **Hely**: Az az Azure-régió, amelyben a Batch-fiókot létrehozza. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
 
-    e. **Storage-fiók**: egy opcionális Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legjobb teljesítmény érdekében ajánlott az általános célú v2 Storage-fiók használata. A Batch összes Storage-fiókjának beállításairól a [Batch funkcióinak áttekintése](batch-api-basics.md#azure-storage-account)című témakörben talál további információt. A portálon válasszon ki egy meglévő Storage-fiókot, vagy hozzon létre egy újat.
+    e. **Storage-fiók**: egy opcionális Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legjobb teljesítmény érdekében ajánlott az általános célú v2 Storage-fiók használata. A Batch összes Storage-fiókjának beállításairól a [Batch funkcióinak áttekintése](accounts.md#azure-storage-accounts)című témakörben talál további információt. A portálon válasszon ki egy meglévő Storage-fiókot, vagy hozzon létre egy újat.
 
       ![Tárfiók létrehozása][storage_account]
 
@@ -134,9 +134,9 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges Batch-erőforrásokat tárgyalja, például a készleteket, a számítási csomópontokat, a feladatokat, a tevékenységeket, és áttekintést nyújt a szolgáltatás nagyméretű számítási feladatokkal kapcsolatos funkcióiról.
+* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 
 [azure_portal]: https://portal.azure.com

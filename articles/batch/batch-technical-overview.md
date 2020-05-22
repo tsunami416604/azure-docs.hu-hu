@@ -1,14 +1,14 @@
 ---
 title: A Azure Batch nagyméretű párhuzamos feladatokat futtat a felhőben
 description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116349"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779571"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -74,7 +74,7 @@ Az alábbi diagram egy általános Batch-munkafolyamat lépéseit mutatja be, ah
 
 Vegye figyelembe, hogy ez a Batch használatának csak egyik módja, és ez a forgatókönyv a szolgáltatás mindössze néhány funkcióját ismerteti. Futtathat például [párhuzamosan több tevékenységet](batch-parallel-node-tasks.md) mindegyik számítási csomóponton, a [feladat-előkészítési és befejezési tevékenységekkel](batch-job-prep-release.md) pedig előkészítheti a csomópontokat a feladatokhoz, majd tisztítást végezhet. 
 
-A [Batch szolgáltatásait ismertető, fejlesztőknek szóló áttekintés](batch-api-basics.md) a készletek, csomópontok, feladatok, tevékenységek és a Batch-alkalmazások kiépítésekor használható rengeteg API-funkció részletesebb információit tartalmazza. Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
+Lásd: a [Batch szolgáltatás munkafolyamata és elsődleges erőforrásai](batch-service-workflow-features.md) a készletek, csomópontok, feladatok és feladatok áttekintéséhez. Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="next-steps"></a>További lépések
 

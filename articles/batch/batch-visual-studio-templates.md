@@ -4,21 +4,19 @@ description: Ismerje meg, hogy a Visual Studio Project sablonjai hogyan segíthe
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725822"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779513"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>A Visual Studio Project templates használata a Batch-megoldások beindítására
 
 A Batch **Manager** és a **Task processzor Visual Studio-sablonjai** olyan kódot biztosítanak, amely a lehető legkevesebb erőfeszítéssel segíti a nagy számítási igényű munkaterhelések megvalósítását és futtatását a batchben. Ez a dokumentum ismerteti ezeket a sablonokat, és útmutatást nyújt a használatáról.
 
 > [!IMPORTANT]
-> Ez a cikk csak a két sablonra vonatkozó információkat tárgyalja, és feltételezi, hogy ismeri a Batch szolgáltatást és a hozzá kapcsolódó főbb fogalmakat: készletek, számítási csomópontok, feladatok és feladatok, Feladatkezelő feladatai, környezeti változók és egyéb releváns információk. További információkat a [Azure batch](batch-technical-overview.md) és a [Batch-funkciók áttekintésében találhat a fejlesztők számára](batch-api-basics.md).
-> 
-> 
+> Ez a cikk csak a két sablonra vonatkozó információkat tárgyalja, és feltételezi, hogy ismeri a Batch szolgáltatást és a hozzá kapcsolódó főbb fogalmakat: készletek, számítási csomópontok, feladatok és feladatok, Feladatkezelő feladatai, környezeti változók és egyéb releváns információk. További információ a Azure Batch és a [Batch szolgáltatás munkafolyamatának és erőforrásainak](batch-service-workflow-features.md) [alapjaiban](batch-technical-overview.md) található. 
 
 ## <a name="high-level-overview"></a>Magas szintű áttekintés
 A Feladatkezelő és a feldolgozói sablonok használatával két hasznos összetevő hozható létre:
@@ -69,7 +67,7 @@ A Feladatkezelő sablon segítséget nyújt egy Feladatkezelő-feladat megvalós
 * Küldje el ezeket a feladatokat a kötegen való futtatáshoz.
 
 > [!NOTE]
-> A Feladatkezelő feladataival kapcsolatos további információkért lásd: [a Batch funkcióinak áttekintése fejlesztők](batch-api-basics.md#job-manager-task)számára.
+> További információ a Feladatkezelő feladatairól: [feladatok és feladatok](jobs-and-tasks.md#job-manager-task).
 > 
 > 
 
@@ -188,7 +186,7 @@ A Feladatkezelő sablonnal megvalósított Feladatkezelő-feladatok három lehet
 
 A Feladatkezelő feladatának meghibásodása esetén előfordulhat, hogy egyes feladatok még a hiba bekövetkezése előtt hozzá lettek adva a szolgáltatáshoz. Ezek a feladatok a szokásos módon fognak futni. A kód elérési útjának tárgyalásához tekintse meg a fenti "feladatok felosztása sikertelen" című témakört.
 
-A kivételek által visszaadott összes információ az StdOut. txt és a stderr. txt fájlba íródik. [További információ: hibakezelés](batch-api-basics.md#error-handling).
+A kivételek által visszaadott összes információ az StdOut. txt és a stderr. txt fájlba íródik. [További információ: hibakezelés](error-handling.md).
 
 ### <a name="client-considerations"></a>Ügyfelekkel kapcsolatos megfontolások
 Ez a szakasz néhány ügyfél-megvalósítási követelményt ismertet, amikor a sablon alapján meghívja a Feladatkezelőt. A paraméterek és környezeti beállítások átadásának részleteiért lásd: [paraméterek és környezeti változók továbbítása az ügyfél kódjából](#pass-environment-settings) .
@@ -424,7 +422,7 @@ Parameters. JSON, és ha megtalálta, betölti a paramétereket tartalmazó szó
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Feladat és feladat kimenetének megőrzése az Azure Storage-ban
 A Batch-megoldások fejlesztésének egy másik hasznos eszköze [Azure batch fájl konvenciói][nuget_package]. Használja ezt a .NET-osztályt (jelenleg előzetes verzióban) a Batch .NET-alkalmazásaiban, így egyszerűen tárolhatja és lekérheti a tevékenységek kimeneteit az Azure Storage-ba és az-ból. A [Azure batch feladat és a feladat kimenetének](batch-task-output.md) megőrzése a könyvtár és a használat teljes körű megvitatását tartalmazza.
 

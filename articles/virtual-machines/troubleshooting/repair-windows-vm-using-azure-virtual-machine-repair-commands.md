@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 97c4461fd2abd39e75838f67ab5d34bd52a79459
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6520d508a025aeeecf0c1890224a0691eae09f74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715613"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774429"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
@@ -81,6 +81,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 4. Futtassa az `az vm repair run` parancsot. Ez a parancs a megadott javítási parancsfájlt futtatja a csatlakoztatott lemezen a javítási virtuális gépen keresztül.  Ha a hibaelhárítási útmutató megadott Run-ID-t használ, használja ezt itt, ellenkező esetben az `az vm repair list-scripts` elérhető javítási parancsfájlok megjelenítéséhez használható.
 
    ```azurecli-interactive
+
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
    ```
 
@@ -100,7 +101,7 @@ Azure CLI
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha problémába ütközik a virtuális géphez való csatlakozással kapcsolatban, tekintse meg [az RDP-kapcsolatok hibaelhárítása Azure-beli virtuális géppel](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)című témakört.
 * A virtuális GÉPEN futó alkalmazások elérésével kapcsolatos problémák: az [alkalmazások kapcsolódási problémáinak elhárítása az Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection).
