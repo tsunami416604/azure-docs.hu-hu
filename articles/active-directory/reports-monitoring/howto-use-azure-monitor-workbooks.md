@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690614"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799365"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 
@@ -42,13 +42,13 @@ Kívánja:
 
 - Mélyebb betekintést nyerhet a bejelentkezési naplókba, a munkafüzet azt jelenti, hogy hány felhasználó adta meg vagy tagadta meg a hozzáférést, valamint hogy hány felhasználó megkerülte a feltételes hozzáférési szabályzatokat az erőforrások elérésekor.
 
-- A kérdések megválaszolásához Azure Active Directory a munkafüzeteket biztosít a figyeléshez. A [Azure monitor munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) gazdag interaktív jelentésekben egyesítik a szöveges, elemzési és mérőszámokat, valamint a paramétereket.
+- A kérdések megválaszolásához Azure Active Directory a munkafüzeteket biztosít a figyeléshez. A [Azure monitor munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) gazdag interaktív jelentésekben egyesítik a szöveges, elemzési és mérőszámokat, valamint a paramétereket.
 
 
 
 A cikk tartalma:
 
-- Feltételezi, hogy tisztában van azzal, hogyan [hozhat létre interaktív jelentéseket a figyelő munkafüzetek használatával](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Feltételezi, hogy tisztában van azzal, hogyan [hozhat létre interaktív jelentéseket a figyelő munkafüzetek használatával](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
 
 - A cikk azt ismerteti, hogyan használhatók a figyelő munkafüzetek a feltételes hozzáférési szabályzatok hatásának megértéséhez, a bejelentkezési hibák elhárításához és a régi hitelesítések azonosításához.
  
@@ -83,7 +83,7 @@ A munkafüzetek eléréséhez:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Navigáljon **Azure Active Directory** > **figyelési** > **munkafüzetekbe**. 
+1. Navigáljon **Azure Active Directory**  >  **figyelési**  >  **munkafüzetekbe**. 
 
 1. Válasszon ki egy jelentést vagy sablont, vagy kattintson a **Megnyitás**gombra az eszköztáron. 
 
@@ -300,6 +300,6 @@ Ha segítségre van szüksége a bejelentkezések hibakereséséhez, Azure Monit
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Interaktív jelentéseket hozhat létre a munkafüzetek figyelése használatával](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Interaktív jelentéseket hozhat létre a munkafüzetek figyelése használatával](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).

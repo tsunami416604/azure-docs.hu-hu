@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 9b767caa1041f865d8e15cd57796b186f7a4a6bb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f62f2b5bc01518af29bd1deb17a38e9fe105a4ed
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598541"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800558"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Tárolási várólista Azure Event Grid eseményekhez tartozó eseménykezelőként
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és az **azure Queue Storage** az egyik. 
@@ -26,5 +26,120 @@ Tekintse meg a következő oktatóanyagot, amely példát mutat be a várólista
 |---------|---------|
 | [Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid](custom-event-to-queue-storage.md) | Útmutató egyéni események üzenetsor-tárolóba való küldéséhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="rest-examples-for-put"></a>REST-példák (PUT)
+
+### <a name="storage-queue-as-the-event-handler"></a>A Storage-üzenetsor eseménykezelőként
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                "queueName": "<QUEUE NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-the-event-handler---delivery-with-managed-identity"></a>Storage-üzenetsor az eseménykezelőben – felügyelt identitással történő kézbesítés
+
+```json
+{
+    "properties": 
+    {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "StorageQueue",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                    "queueName": "<QUEUE NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination"></a>Tárolási várólista kézbesítetlen levelek célhelyként
+
+```json
+{
+    "name": "",
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterDestination": 
+        {
+            "endpointType": "StorageBlob",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                "blobContainerName": "test"
+            }
+        }
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>Tárolási várólista kézbesítetlen levelek cél által felügyelt identitásként
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "deadLetterDestination": 
+            {
+                "endpointType": "StorageBlob",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                    "blobContainerName": "test"
+                }
+            }
+        }
+    }
+}
+```
+
+## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671035"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797908"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Impact Analysis Application Insights
 
@@ -78,12 +78,12 @@ A munkamenetek két különböző típusú _almunkamenetre_ bonthatók, a követ
 
 A hatás végső kiszámításának módja attól függően változik, hogy metrika vagy dimenzió alapján elemezzük-e a rendszer. A metrikák esetében az összes _egy_almunkamenetben átlaga. Míg a dimenziók esetében az egyes értékek értéke _1/N_ értékkel _járul hozzá a_ _B_ -hez rendelt értékhez, ahol _N_ az almunkamenetben _lévők_száma.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)
-    - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
+    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)

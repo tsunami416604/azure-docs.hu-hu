@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/20/2020
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c3082fbd7c02cbb075fd118f8e6021ac951e8e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: contperfq4
+ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737673"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798245"
 ---
 # <a name="what-is-conditional-access"></a>Mit jelent a feltételes hozzáférés?
 
@@ -71,7 +72,7 @@ Azok a gyakori jelek, amelyekben a feltételes hozzáférés a szabályzat megho
 
 ## <a name="commonly-applied-policies"></a>Általánosan alkalmazott házirendek
 
-Számos szervezet rendelkezik olyan általános hozzáféréssel, amelyekkel a feltételes hozzáférési szabályzatok segíthetnek, például:
+Számos szervezet rendelkezik olyan [általános hozzáféréssel, amelyekkel a feltételes hozzáférési szabályzatok segíthetnek](concept-conditional-access-policy-common.md) , például:
 
 - Többtényezős hitelesítés megkövetelése rendszergazdai szerepkörökkel rendelkező felhasználók számára
 - Többtényezős hitelesítés megkövetelése az Azure felügyeleti feladatokhoz
@@ -94,14 +95,10 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
-
-Ha meg szeretné tudni, hogyan valósítható meg a feltételes hozzáférés a környezetben, tekintse meg [a feltételes hozzáférés Megtervezése Azure Active Directoryban](plan-conditional-access.md)című témakört.
-
-[Tudnivalók az Identity Protectionről](../identity-protection/overview-v2.md)
-
-[Tudnivalók a Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
-
-[Tudnivalók a Microsoft Intune](/intune/index)
+- [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
+- [A feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md)
+- [Tudnivalók az Identity Protectionről](../identity-protection/overview-v2.md)
+- [Tudnivalók a Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- [Tudnivalók a Microsoft Intune](/intune/index)

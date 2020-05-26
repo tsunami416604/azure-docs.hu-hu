@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743828"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836566"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
@@ -115,7 +115,7 @@ Python-runbookok fordítása a Python 2 alatt. Közvetlenül szerkesztheti a run
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbookok kezelése Azure Automation](manage-runbooks.md)
-* [A Azure Automation PowerShell-munkafolyamatának megismerése](automation-powershell-workflow.md)
-* [Grafikus runbookok készítése Azure Automation](automation-graphical-authoring-intro.md)
-* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* A PowerShell-runbookok kapcsolatos további tudnivalókért lásd [: oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md).
+* A PowerShell-munkafolyamatok runbookok kapcsolatos tudnivalókat a következő témakörben talál [: oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md).
+* A grafikus runbookok kapcsolatos további tudnivalókért lásd az [oktatóanyag: grafikus Runbook létrehozása](learn/automation-tutorial-runbook-graphical.md)című témakört.
+* A Python runbookok kapcsolatos további tudnivalókért lásd [: oktatóanyag: Python-Runbook létrehozása](learn/automation-tutorial-runbook-textual-python2.md).

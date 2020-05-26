@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744770"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836158"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,7 +56,7 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 - **OK**:`Bad authoring.`
 
-- **Javaslat**: adjon meg abszolút elérési utat a munkaterület-címzési `dbfs:/folder/subfolder/foo.py` sémák vagy a DATABRICKS fájlrendszerben (DFS) tárolt fájlokhoz.
+- **Javaslat**: adjon meg abszolút elérési utat a munkaterület-címzési sémák vagy `dbfs:/folder/subfolder/foo.py` a Databricks fájlrendszerben (DFS) tárolt fájlokhoz.
 
 <br/> 
 
@@ -102,7 +102,7 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 
 <br/> 
 
-- **Üzenet**: `User: `SimpleUserContext {userId =..., név =user@company.com, orgId =...}` is not authorized to access cluster.`
+- **Üzenet**: `User: ` SimpleUserContext {userId =..., név = user@company.com , orgId =...}` is not authorized to access cluster.`
 
 - **OK**: a hozzáférési tokent létrehozó felhasználó nem férhet hozzá a társított szolgáltatásban megadott Databricks-fürthöz.
 
@@ -226,7 +226,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
-- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű `functionKey`tulajdonságot.
+- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű tulajdonságot `functionKey` .
 
 ### <a name="error-code-3607"></a>Hibakód: 3607
 
@@ -234,7 +234,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
-- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű `functionName`tulajdonságot.
+- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű tulajdonságot `functionName` .
 
 ### <a name="error-code-3608"></a>Hibakód: 3608
 
@@ -250,7 +250,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
-- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű `functionAppUrl`tulajdonságot.
+- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű tulajdonságot `functionAppUrl` .
 
 ### <a name="error-code-3610"></a>Hibakód: 3610
 
@@ -258,7 +258,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: lehet, hogy a függvény URL-címe helytelen.
 
-- **Javaslat**: Ellenőrizze, hogy a tevékenység `functionAppUrl` JSON-fájljának értéke helyes-e, majd próbálkozzon újra.
+- **Javaslat**: Ellenőrizze, hogy a `functionAppUrl` tevékenység JSON-fájljának értéke helyes-e, majd próbálkozzon újra.
 
 ### <a name="error-code-3611"></a>Hibakód: 3611
 
@@ -266,7 +266,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: az Azure Function tevékenység definíciója nem fejeződött be.
 
-- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű `method`tulajdonságot.
+- **Javaslat**: Győződjön meg arról, hogy a bemeneti Azure Function tevékenység JSON-definíciója tartalmaz egy nevű tulajdonságot `method` .
 
 ### <a name="error-code-3612"></a>Hibakód: 3612
 
@@ -282,9 +282,9 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Üzenet**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **OK**: a tulajdonság `%propertyName;`helytelen formátumú vagy hiányzó definíciója.
+- **OK**: a tulajdonság helytelen formátumú vagy hiányzó definíciója `%propertyName;` .
 
-- **Javaslat**: Ellenőrizze, hogy a `%activityName;` tevékenység rendelkezik- `%propertyName;` e a megfelelő adatokkal megadott tulajdonsággal.
+- **Javaslat**: Ellenőrizze, hogy a tevékenység rendelkezik-e `%activityName;` a `%propertyName;` megfelelő adatokkal megadott tulajdonsággal.
 
 ### <a name="error-code-4110"></a>Hibakód: 4110
 
@@ -308,7 +308,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **OK**: helytelen formátumú vagy hiányzó definíció a (z)% propertyName; tulajdonsághoz.
 
-- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatás rendelkezik- `%propertyName;` e a megfelelő adatokkal megadott tulajdonsággal.
+- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatás rendelkezik-e a `%propertyName;` megfelelő adatokkal megadott tulajdonsággal.
 
 ### <a name="error-code-4121"></a>Hibakód: 4121
 
@@ -464,7 +464,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**:`Operation returned an invalid status code 'BadRequest'.`
 
-- **OK**: túl sok fájl szerepel `folderPath` az egyéni tevékenységben. A teljes méret `resourceFiles` nem lehet hosszabb 32 768 karakternél.
+- **OK**: túl sok fájl szerepel az `folderPath` Egyéni tevékenységben. A teljes méret `resourceFiles` nem lehet hosszabb 32 768 karakternél.
 
 - **Javaslat**: távolítsa el a szükségtelen fájlokat, vagy zip-fájlt, és adjon hozzá egy unzip parancsot a kinyeréséhez.
    
@@ -592,7 +592,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **OK**: a hibaüzenet a következőhöz hasonló üzenetet tartalmaz `The remote name could not be resolved.`:. Lehetséges, hogy a megadott fürt URI azonosítója érvénytelen.
+- **OK**: a hibaüzenet a következőhöz hasonló üzenetet tartalmaz: `The remote name could not be resolved.` . Lehetséges, hogy a megadott fürt URI azonosítója érvénytelen.
 
 - **Javaslat**: Ellenőrizze, hogy a fürtöt nem törölték-e, és hogy helyes-e a megadott URI-azonosító. Amikor megnyitja az URI-t egy böngészőben, megjelenik a Ambari felhasználói felülete. Ha a fürt virtuális hálózatban található, az URI-nak a privát URI-nak kell lennie. A megnyitásához használjon egy virtuális gépet (VM), amely ugyanannak a virtuális hálózatnak a részét képezi.
 
@@ -600,7 +600,7 @@ A következő táblázat a Azure Batchra vonatkozik.
  
  </br>
 
-- **OK**: Ha a hibaüzenet a következőhöz hasonló üzenetet tartalmaz `A task was canceled.`, a feladatok beküldésének időkorlátja lejárt.
+- **OK**: Ha a hibaüzenet a következőhöz hasonló üzenetet tartalmaz `A task was canceled.` , a feladatok beküldésének időkorlátja lejárt.
 
 - **Javaslat**: a probléma lehet általános HDInsight-kapcsolat vagy hálózati kapcsolat. Először ellenőrizze, hogy a HDInsight Ambari felhasználói felülete elérhető-e bármely böngészőből. Ezután győződjön meg arról, hogy a hitelesítő adatai még érvényesek.
    
@@ -610,7 +610,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
  </br>
 
-- **OK**: Ha a hibaüzenet a vagy `User admin is locked out in Ambari` `Unauthorized: Ambari user name or password is incorrect`a-hoz hasonló üzenetet tartalmaz, a HDInsight tartozó hitelesítő adatok helytelenek vagy lejártak.
+- **OK**: Ha a hibaüzenet a vagy a-hoz hasonló üzenetet tartalmaz `User admin is locked out in Ambari` `Unauthorized: Ambari user name or password is incorrect` , a HDInsight tartozó hitelesítő adatok helytelenek vagy lejártak.
 
 - **Javaslat**: javítsa ki a hitelesítő adatokat, és telepítse újra a társított szolgáltatást. Először ellenőrizze, hogy a hitelesítő adatok a HDInsight működnek-e. Ehhez nyissa meg a fürt URI-JÁT bármely böngészőben, és próbáljon meg bejelentkezni. Ha a hitelesítő adatok nem működnek, alaphelyzetbe állíthatja azokat a Azure Portal.
 
@@ -618,12 +618,12 @@ A következő táblázat a Azure Batchra vonatkozik.
 
  </br>
 
-- **OK**: Ha a hibaüzenet a következőhöz hasonló üzenetet tartalmaz `502 - Web server received an invalid response while acting as a gateway or proxy server`, ezt a hibát a HDInsight szolgáltatás adja vissza.
+- **OK**: Ha a hibaüzenet a következőhöz hasonló üzenetet tartalmaz `502 - Web server received an invalid response while acting as a gateway or proxy server` , ezt a hibát a HDInsight szolgáltatás adja vissza.
 
 - **Javaslat**: a 502-es hiba gyakran fordul elő, amikor a Ambari-kiszolgáló folyamata leállt. A Ambari-szolgáltatásokat a fő csomópont újraindításával indíthatja újra.
 
     1. Kapcsolódjon a HDInsight egyik csomópontjához az SSH használatával.
-    1. A futtatásával `ping headnodehost`azonosítsa az aktív fő csomópont-gazdagépet.
+    1. A futtatásával azonosítsa az aktív fő csomópont-gazdagépet `ping headnodehost` .
     1. Csatlakozzon az aktív főcsomóponthoz, mert a Ambari-kiszolgáló az SSH használatával az aktív főcsomóponton található. 
     1. Indítsa újra az aktív fő csomópontot.
 
@@ -635,11 +635,11 @@ A következő táblázat a Azure Batchra vonatkozik.
 
  </br>
 
-- **OK**: Ha a hibaüzenet a vagy `Unable to service the submit job request as templeton service is busy with too many submit job requests` `Queue root.joblauncher already has 500 applications, cannot accept submission of application`a-hoz hasonló üzenetet tartalmaz, túl sok feladatot küld a HDInsight egy időben.
+- **OK**: Ha a hibaüzenet a vagy a-hoz hasonló üzenetet tartalmaz `Unable to service the submit job request as templeton service is busy with too many submit job requests` `Queue root.joblauncher already has 500 applications, cannot accept submission of application` , túl sok feladatot küld a HDInsight egy időben.
 
 - **Javaslat**: korlátozza a HDInsight küldött egyidejű feladatok számát. Ha ugyanaz a tevékenység küldi el a feladatokat, tekintse meg Data Factory tevékenység egyidejűségét. Módosítsa az eseményindítókat úgy, hogy az egyidejű folyamat-futtatások egyszerre legyenek kiosztva.
 
-   A hiba feltételeit a `templeton.parallellism.job.submit` [HDInsight dokumentációjában](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) találja.
+   A hiba feltételeit a [HDInsight dokumentációjában](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) találja `templeton.parallellism.job.submit` .
 
 ### <a name="error-code-2301"></a>Hibakód: 2301
 
@@ -649,7 +649,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Javaslat**: Ez a hiba akkor fordul elő, ha az ADF nem kap választ a HDInsight-fürttől a futó feladatokhoz tartozó állapot igénylésére tett kísérlet során. Előfordulhat, hogy a probléma maga a fürtön található, vagy a HDInsight szolgáltatás leállás miatt leáll.
 
-   További segítségért tekintse meg https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guidea HDInsight hibaelhárítási dokumentációját, vagy forduljon a támogatási szolgálathoz.
+   További segítségért tekintse meg a HDInsight hibaelhárítási dokumentációját https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide , vagy forduljon a támogatási szolgálathoz.
 
 ### <a name="error-code-2302"></a>Hibakód: 2302
 
@@ -667,10 +667,10 @@ A következő táblázat a Azure Batchra vonatkozik.
  1. Egy minta tesztelési feladatot futtasson.
     1. Ha ugyanezt a feladatot a HDInsight-háttérön futtatja, ellenőrizze, hogy az sikeres volt-e. Példák a minták [futtatására: az HDInsight-ben található MapReduce-példák futtatása](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) . 
  1. Ha a feladatnak a HDInsight továbbra is sikertelen, ellenőrizze az alkalmazás naplóit és információit, amelyek a támogatás biztosításához szükségesek:
-    1. Győződjön meg arról, hogy a feladatot elküldték-e a FONALba. Ha a feladatot nem küldi el a fonalnak, használja `--master yarn`a következőt:.
+    1. Győződjön meg arról, hogy a feladatot elküldték-e a FONALba. Ha a feladatot nem küldi el a fonalnak, használja a következőt: `--master yarn` .
     1. Ha az alkalmazás befejezte a végrehajtást, gyűjtsön a fonal-alkalmazás kezdési és befejezési időpontját. Ha az alkalmazás nem fejezte be a végrehajtást, gyűjtse be a kezdési időt/indítást.
-    1. Keresse meg és Gyűjtse össze az `yarn logs -applicationId <Insert_Your_Application_ID>`alkalmazás naplóját.
-    1. Keresse meg és Gyűjtse össze a fonál Resource Manager- `/var/log/hadoop-yarn/yarn` naplókat a címtárban.
+    1. Keresse meg és Gyűjtse össze az alkalmazás naplóját `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Keresse meg és Gyűjtse össze a fonál Resource Manager-naplókat a `/var/log/hadoop-yarn/yarn` címtárban.
     1. Ha ezek a lépések nem elegendőek a probléma megoldásához, lépjen kapcsolatba az Azure HDInsight csapatával, és adja meg a fenti naplókat és időbélyegeket.
 
 ### <a name="error-code-2303"></a>Hibakód: 2303
@@ -689,10 +689,10 @@ A következő táblázat a Azure Batchra vonatkozik.
  1. Egy minta tesztelési feladatot futtasson.
     1. Ha ugyanezt a feladatot a HDInsight-háttérön futtatja, ellenőrizze, hogy az sikeres volt-e. Példák a minták [futtatására: az HDInsight-ben található MapReduce-példák futtatása](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) . 
  1. Ha a feladatnak a HDInsight továbbra is sikertelen, ellenőrizze az alkalmazás naplóit és információit, amelyek a támogatás biztosításához szükségesek:
-    1. Győződjön meg arról, hogy a feladatot elküldték-e a FONALba. Ha a feladatot nem küldi el a fonalnak, használja `--master yarn`a következőt:.
+    1. Győződjön meg arról, hogy a feladatot elküldték-e a FONALba. Ha a feladatot nem küldi el a fonalnak, használja a következőt: `--master yarn` .
     1. Ha az alkalmazás befejezte a végrehajtást, gyűjtsön a fonal-alkalmazás kezdési és befejezési időpontját. Ha az alkalmazás nem fejezte be a végrehajtást, gyűjtse be a kezdési időt/indítást.
-    1. Keresse meg és Gyűjtse össze az `yarn logs -applicationId <Insert_Your_Application_ID>`alkalmazás naplóját.
-    1. Keresse meg és Gyűjtse össze a fonál Resource Manager- `/var/log/hadoop-yarn/yarn` naplókat a címtárban.
+    1. Keresse meg és Gyűjtse össze az alkalmazás naplóját `yarn logs -applicationId <Insert_Your_Application_ID>` .
+    1. Keresse meg és Gyűjtse össze a fonál Resource Manager-naplókat a `/var/log/hadoop-yarn/yarn` címtárban.
     1. Ha ezek a lépések nem elegendőek a probléma megoldásához, lépjen kapcsolatba az Azure HDInsight csapatával, és adja meg a fenti naplókat és időbélyegeket.
 
 ### <a name="error-code-2304"></a>Hibakód: 2304
@@ -801,7 +801,7 @@ A következő táblázat a Azure Batchra vonatkozik.
     1. Ellenőrizze, hogy a hitelesítő adatok helyesek-e. Ehhez nyissa meg a HDInsight-fürt Ambari felhasználói felületét egy böngészőben.
     1. Ha a fürt Virtual Networkban (VNet) van használatban, és egy saját üzemeltetésű IR-t használ, a HDI URL-címnek a virtuális hálózatok lévő privát URL-címnek kell lennie, és a fürt neve után "-int" értékűnek kell lennie.
     
-       Például váltson `https://mycluster.azurehdinsight.net/` a `https://mycluster-int.azurehdinsight.net/`következőre:. Jegyezze fel `-int` a `mycluster`következőt, de előtte`.azurehdinsight.net`
+       Például váltson a következőre: `https://mycluster.azurehdinsight.net/` `https://mycluster-int.azurehdinsight.net/` . Jegyezze fel a következőt `-int` `mycluster` , de előtte`.azurehdinsight.net`
     1. Ha a fürt VNet van, a rendszer a saját üzemeltetésű integrációs modult használja, és a magánhálózati URL-címet használta, és még a kapcsolat továbbra is meghiúsult, akkor az a virtuális gép, amelyen az IR telepítve volt, problémák léptek fel a HDI-hez való csatlakozás során. 
     
        Kapcsolódjon ahhoz a virtuális géphez, amelyen az IR telepítve van, és nyissa meg a Ambari felhasználói felületét egy böngészőben. Használja a fürt magánhálózati URL-címét. A hálózatnak a böngészőben kell működnie. Ha nem, további segítségért lépjen kapcsolatba a HDInsight támogatási csapatával.
@@ -957,7 +957,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**:`The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
 
-- **OK**: a kötelező tulajdonsághoz `TimeToLive` megadott érték formátuma érvénytelen. 
+- **OK**: a kötelező tulajdonsághoz megadott érték `TimeToLive` formátuma érvénytelen. 
 
 - **Javaslat**: frissítse az értéket a javasolt tartományra, és próbálkozzon újra.
 
@@ -965,7 +965,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**:`The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
 
-- **OK**: a tulajdonsághoz `roles` megadott érték érvénytelen.
+- **OK**: a tulajdonsághoz megadott érték `roles` érvénytelen.
 
 - **Javaslat**: frissítse az értéket úgy, hogy az egyik javaslat legyen, és próbálkozzon újra.
 
@@ -1016,7 +1016,7 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 1. A [Hegedűs](https://www.telerik.com/download/fiddler)letöltése, telepítése és megnyitása.
 
-1. Ha a webalkalmazás HTTPS protokollt használ, lépjen az **eszközök** > **Hegedűs beállítások** > **https**elemre.
+1. Ha a webalkalmazás HTTPS protokollt használ, lépjen az **eszközök**  >  **Hegedűs beállítások**  >  **https**elemre.
 
    1. A HTTPS lapon válassza a **rögzítés HTTPS** -kapcsolat és a **https-forgalom visszafejtése**lehetőséget.
 
@@ -1024,9 +1024,9 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 1. Ha az alkalmazás TLS/SSL-tanúsítványokat használ, adja hozzá a Hegedűs tanúsítványát az eszközhöz.
 
-   Ugrás: az **eszközök** > a**Hegedűs beállításai** > **https** > -**műveletekkel** > **exportálják a főtanúsítványt az asztalra**.
+   Ugrás: az **eszközök**  >  a**Hegedűs beállításai**  >  **https**  >  -**műveletekkel**  >  **exportálják a főtanúsítványt az asztalra**.
 
-1. Kapcsolja ki a rögzítést a **fájl** > **rögzítési forgalmának**kikapcsolásával. Vagy nyomja le az **F12**billentyűt.
+1. Kapcsolja ki a rögzítést a **fájl**  >  **rögzítési forgalmának**kikapcsolásával. Vagy nyomja le az **F12**billentyűt.
 
 1. Törölje a böngésző gyorsítótárát úgy, hogy minden gyorsítótárazott elem el legyen távolítva, és újra le kell tölteni.
 
@@ -1042,7 +1042,7 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 1. Kapcsolja be újra a forgalom rögzítését, és fejezze be a problémás tranzakciót az oldalon.
 
-1. Ugrás: **fájl** > –**minden munkamenet****mentése** > .
+1. Ugrás: **fájl**–  >  **Save**  >  **minden munkamenet**mentése.
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
 
@@ -1055,4 +1055,4 @@ További hibaelhárítási segítségért próbálja ki ezeket az erőforrásoka
 * [Data Factory Stack Overflow fóruma](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-videók](https://azure.microsoft.com/resources/videos/index/)
-* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home)
+* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

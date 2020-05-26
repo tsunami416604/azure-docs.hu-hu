@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837328"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800934"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
 
@@ -48,9 +48,9 @@ Az alábbi helyeken jönnek létre az érdeklődők:
 
 ## <a name="understand-lead-data"></a>Az érdeklődők megismerése
 
-Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Az első kikeresni kívánt mező az a `LeadSource` mező, amely a következő formátumot követi: **forrás-művelet** | **ajánlat**.
+Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Az első kikeresni kívánt mező az a `LeadSource` mező, amely a következő formátumot követi: **forrás-művelet**  |  **ajánlat**.
 
-**Források**: a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A `"AzureMarketplace"` `"AzurePortal"`lehetséges értékek:, és `"AppSource (SPZA)"`.
+**Források**: a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A lehetséges értékek:, `"AzureMarketplace"` `"AzurePortal"` és `"AppSource (SPZA)"` .
 
 **Műveletek**: a mező értéke az ügyfél által az érdeklődőt létrehozó piactéren végrehajtott művelet alapján van feltöltve.
 
@@ -64,7 +64,7 @@ Lehetséges értékek:
 
 **Ajánlatok**: több ajánlat is lehet a kereskedelmi piactéren. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
 
-Az alábbi példák a várt formátumú `publisherid.offerid`értékeket mutatják: 
+Az alábbi példák a várt formátumú értékeket mutatják `publisherid.offerid` : 
 
 - `checkpoint.check-point-r77-10sg-byol`
 - `bitnami.openedxcypress`
@@ -76,7 +76,7 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 
 - FirstName: John
 - LastName: Smith
-- E-mail: jsmith\@Microsoft.com
+- E-mail: jsmith \@ Microsoft.com
 - Telefon: 1234567890
 - Ország: Egyesült Államok
 - Vállalat: Microsoft
@@ -96,7 +96,7 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődői cél beállításakor?
 
-Kövesse a [Kapcsolódás a CRM rendszerhez](#connect-to-your-crm-system)című szakasz lépéseit, vagy nyújtson be támogatási jegyet a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** > lehetőséget**az ajánlati** > **érdeklődők felügyeletének beállításához**.
+Kövesse a [Kapcsolódás a CRM rendszerhez](#connect-to-your-crm-system)című szakasz lépéseit, vagy nyújtson be támogatási jegyet a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása**lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Meg kell-e adni egy vezető célhelyet, hogy közzé lehessen tenni egy ajánlatot a kereskedelmi piactéren?
 
@@ -104,7 +104,7 @@ A válasz a közzétett ajánlat típusától függ. A szolgáltatott szoftverk�
 
 ### <a name="how-can-i-find-the-test-lead"></a>Hogyan találhatom meg a tesztelési érdeklődőt?
 
-`"MSFT_TEST"` Keresse meg a kifejezést az érdeklődő célhelyén. Íme egy példa a Microsoft tesztelési folyamatára:
+Keresse meg a kifejezést az `"MSFT_TEST"` érdeklődő célhelyén. Íme egy példa a Microsoft tesztelési folyamatára:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -133,7 +133,7 @@ Az Azure Blob Storage már nem támogatott vezető célhelyként, így az ajánl
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a kereskedelmi piactéren, de miért nem találom a vezetőt a CRM-ben?
 
-Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes adatokat az. edu tartományból. Támogatási jegy beküldése a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül.
+Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes adatokat az. edu tartományból. Támogatási jegy beküldése a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Hogyan tekinthetem meg az érdeklődőket?
 
@@ -155,12 +155,12 @@ Személyes információs szabályzatok miatt a nem biztonságos e-mailen kereszt
 
 Az ólom létrehozási adatkészlete alacsony. Majdnem minden közzétevőnél kevesebb, mint 1 GB. A díj a kapott érdeklődők számától függ. Ha például az 1 000-es érdeklődők egy hónapban érkeznek, a díjak körülbelül 50 centet kapnak. További információ a Storage díjszabásáról: az [Azure Storage áttekintésének díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** > lehetőséget**az ajánlati** > **érdeklődők felügyeletének beállításához**.
+Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása**lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
 
 ### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Értesítő e-mailt kapok az új ügyfelek fogadásakor. Hogyan állíthatom be valaki másnak az e-mailek fogadását?
 
-Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet** > **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
+Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet**  >  **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A technikai beállítás bevezetését követően az aktuális értékesítési és marketing stratégia és működési folyamatok részeként építse be ezeket az érdeklődőket. Fontos, hogy jobban megértse a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.

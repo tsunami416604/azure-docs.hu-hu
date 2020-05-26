@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475892"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837212"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
  
@@ -188,7 +188,7 @@ Az Edge-adatokkal rendelkező feladatok létrehozása:
 
 3. Az eszközön készen áll egy hivatkozási adatfájl. Windows-tároló esetén helyezze a hivatkozási adatfájlt a helyi meghajtón, és ossza meg a helyi meghajtót a Docker-tárolóval. Linux-tároló esetén hozzon létre egy Docker-kötetet, és töltse fel az adatfájlt a kötetre.
 
-4. Adja meg a fájl elérési útját. A Windows-gazdagép operációs rendszer és a Windows-tároló esetében használja `E:\<PathToFile>\v1.csv`az abszolút elérési utat:. Windows-gazdagép operációs rendszer-és Linux-tárolóhoz, illetve Linux operációs rendszerhez és Linux-tárolóhoz használja `<VolumeName>/file1.txt`a következő kötet elérési útját:.
+4. Adja meg a fájl elérési útját. A Windows-gazdagép operációs rendszer és a Windows-tároló esetében használja az abszolút elérési utat: `E:\<PathToFile>\v1.csv` . Windows-gazdagép operációs rendszer-és Linux-tárolóhoz, illetve Linux operációs rendszerhez és Linux-tárolóhoz használja a következő kötet elérési útját: `<VolumeName>/file1.txt` .
 
 ![Új, Azure Stream Analytics feladatra vonatkozó adatbevitel IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
@@ -225,8 +225,8 @@ A verzióra vonatkozó információk utolsó frissítése 2019-06-27:
       - operációs rendszer: Windows
       
       
-## <a name="get-help"></a>Segítségkérés
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítség kérése
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 

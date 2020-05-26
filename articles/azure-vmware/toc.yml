@@ -30,6 +30,8 @@
       href: concepts-upgrades.md
 - name: Útmutatók
   items:
+    - name: HCX beállítása
+      href: hybrid-cloud-extension-installation.md
     - name: DHCP kezelése
       href: manage-dhcp.md
     - name: Vészhelyreállítás

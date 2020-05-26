@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: a0bf8a89fa34f8a7d22979f4b42faaf94db60281
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 8a58079f44fb4d78c2d3f652a5f3b61dae9c8991
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83200627"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800816"
 landingContent:
 - title: A szöveg és a beszéd közötti kommunikáció
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
       url: text-to-speech.md
     - text: A beszédszintézis alapjai
       url: text-to-speech-basics.md
-    - text: SPX használata szöveg-beszéd kódoláshoz kód nélkül
+    - text: A beszédfelismerési parancssori felület használata a szöveg és a beszéd között, kód nélkül
       url: spx-overview.md
   - linkListType: quickstart
     links:
@@ -54,7 +54,7 @@ landingContent:
       url: how-to-custom-voice-create-voice.md
     - text: Custom Voice korlátozása
       url: concepts-gating-overview.md
-- title: Hivatkozás
+- title: Referencia
   linkLists:
   - linkListType: reference
     links:

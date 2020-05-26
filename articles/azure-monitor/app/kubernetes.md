@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 95c7205116808650c09f8b6fdd24844d9c0a6dbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647880"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797886"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz Istio-elavult
 
@@ -18,7 +18,7 @@ ms.locfileid: "83647880"
 > Ez a funkció jelenleg elavult, és a továbbiakban nem lesz támogatott a 2020. augusztus 1-től.
 > Jelenleg a kód nélküli figyelés csak a [Java önálló ügynökön keresztül](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)engedélyezhető. Más nyelvek esetében az SDK-k segítségével figyelheti az alkalmazásokat az AK-ban: [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)és [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
-A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal (például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) ) a függőségek modellezéséhez [élő metrikastream](../../azure-monitor/app/live-stream.md) a valós idejű figyeléshez, az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [munkafüzetekhez](../../azure-monitor/app/usage-workbooks.md)tartozó hatékony vizualizációkkal. Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
+A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal (például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) ) a függőségek modellezéséhez [élő metrikastream](../../azure-monitor/app/live-stream.md) a valós idejű figyeléshez, az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [munkafüzetekhez](../../azure-monitor/platform/workbooks-overview.md)tartozó hatékony vizualizációkkal. Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
 
 > [!NOTE]
 > Ez a Kubernetes-alkalmazások figyelésének számos módja.A Kubernetes-ben üzemeltetett összes alkalmazást a [Application INSIGHTS SDK](../../azure-monitor/azure-monitor-app-hub.yml) -val is kialakíthatja, anélkül, hogy a szolgáltatás hálóját kellene használnia. A Kubernetes monitorozásához anélkül, hogy az alkalmazást egy SDK-val tenné, használhatja az alábbi módszert.
@@ -139,6 +139,6 @@ kubectl delete -f <filename.yaml>
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Monitor és a tárolók együttműködéséről, látogasson el [a Azure monitor for containers – áttekintés](../../azure-monitor/insights/container-insights-overview.md)

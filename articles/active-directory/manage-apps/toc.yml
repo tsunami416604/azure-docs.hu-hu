@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: Kezdőtartomány felderítése
               href: configure-authentication-for-federated-users-portal.md
+        - name: SAML-alapú egyszeri bejelentkezés konfigurálása MS Graph API-kkal
+          href: application-saml-sso-configure-api.md
         - name: Alkalmazások migrálása az Azure AD-be
           items:
             - name: Migrálási erőforrások

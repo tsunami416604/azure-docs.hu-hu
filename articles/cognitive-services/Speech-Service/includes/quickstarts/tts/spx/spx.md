@@ -5,21 +5,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 65d314634648582bfcd7bd4c787c7b9e3184093a
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 8a3fd674e1b8b9ba93a9bfb026daaa714aac5780
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715237"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806405"
 ---
-## <a name="run-the-spx-tool"></a>Az SPX eszköz futtatása
+## <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
-Most már készen áll az SPX eszköz futtatására a beszéd szövegből való szintetizálása érdekében.
+Most már készen áll a Speech CLI futtatására a beszéd szövegből való szintéziséhez.
 
-A parancssorban váltson arra a könyvtárra, amely az SPX-eszköz bináris fájlját tartalmazza, és írja be a következőt:
+A parancssorban váltson arra a könyvtárra, amely a parancssori felület bináris fájlját tartalmazza, és írja be a következőt:
 
 ```bash
 spx synthesize --text "The speech synthesizer greets you!"
 ```
 
-Az SPX-eszköz természetes nyelvet hoz létre angol nyelven a számítógép hangszóróján keresztül.
+A beszédfelismerési CLI a számítógép hangszóróján belül természetes nyelvet hoz létre angol nyelven.

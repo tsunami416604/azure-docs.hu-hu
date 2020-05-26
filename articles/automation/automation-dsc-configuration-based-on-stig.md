@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d1b05f9e77d3530f3e883aa3f9d98de09c8f54c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711380"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836991"
 ---
-# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Az adatkészletek konfigurálása a STIG Azure Automation állapotának konfigurálásához
+# <a name="configure-data-based-on-stig"></a>Az adatkészletek konfigurálása a STIG alapján
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -41,8 +41,8 @@ Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/
 
 A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériara](https://www.powershellgallery.com) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
-- [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)
-- [A helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- A PowerShell DSC megismeréséhez tekintse meg a [Windows PowerShell a kívánt állapot konfigurációjának áttekintése](/powershell/scripting/dsc/overview/overview)című témakört.
+- Ismerje meg a PowerShell DSC-erőforrásait a [DSC-erőforrásokban](/powershell/scripting/dsc/resources/resources).
+- A helyi Configuration Manager konfiguráció részleteit lásd: [a helyi Configuration Manager konfigurálása](/powershell/scripting/dsc/managing-nodes/metaconfig).

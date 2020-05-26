@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2bd4a59ee1b82b8f6eb3bf172b11239af1a9f4c5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714270"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837127"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
@@ -190,8 +190,8 @@ runas_connection = automationassets.get_automation_connection(
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Modulok kezelése az Azure Automationben](shared-resources/modules.md)
-* [Runbook végrehajtása az Azure Automationben](automation-runbook-execution.md)
-* [Állapotkonfiguráció áttekintése](automation-dsc-overview.md)
+* Ha többet szeretne megtudni a kapcsolatok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](shared-resources/modules.md)című témakört.
+* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](automation-runbook-execution.md).
+* A DSC-konfigurációk részletes ismertetését lásd: az [állapot-konfiguráció áttekintése](automation-dsc-overview.md).

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067685"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798669"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: az Azure Sentinel használatának első lépései
 
@@ -53,7 +53,7 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
 ## <a name="use-built-in-workbooks"></a>Beépített munkafüzetek használata<a name="dashboards"></a>
 
-A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített munkafüzetek közé tartoznak az Azure AD, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményekről, az első féltől származó riasztásokból, bármely harmadik féltől, például a tűzfal forgalmi naplóitól, az Office 365-től és a Windows-események alapján nem biztonságos protokollokból származnak. A munkafüzetek Azure Monitor munkafüzeteken alapulnak, így jobb testreszabhatóság és rugalmasság biztosítható a saját munkafüzetek tervezésekor. További információ: [munkafüzetek](../azure-monitor/app/usage-workbooks.md).
+A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott adatforrásokból, így részletesen megismerheti az ezekben a szolgáltatásokban létrehozott eseményeket. A beépített munkafüzetek közé tartoznak az Azure AD, az Azure-tevékenység eseményei és a helyszíni adatok, amelyek a kiszolgálókról származó Windows-eseményekről, az első féltől származó riasztásokból, bármely harmadik féltől, például a tűzfal forgalmi naplóitól, az Office 365-től és a Windows-események alapján nem biztonságos protokollokból származnak. A munkafüzetek Azure Monitor munkafüzeteken alapulnak, így jobb testreszabhatóság és rugalmasság biztosítható a saját munkafüzetek tervezésekor. További információ: [munkafüzetek](../azure-monitor/platform/workbooks-overview.md).
 
 1. A **Beállítások**területen válassza a **munkafüzetek**elemet. A **telepítés**alatt látható az összes telepített munkafüzet. Az **összes**lehetőségnél megtekintheti a telepítéshez elérhető beépített munkafüzetek teljes katalógusát. 
 2. Egy adott munkafüzet keresésével megtekintheti az egyes ajánlatok teljes listáját és leírását. 
@@ -67,7 +67,7 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
       ![Pal Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja a fő lekérdezési ![gomb](./media/qs-get-visibility/edit-query-button.png)szerkesztésével. ![A gombra](./media/qs-get-visibility/go-to-la-button.png) kattintva megnyithatja [a log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), majd kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a Főidő szűrő szerkesztését, vagy a munkafüzetből való eltávolítását.
+A munkafüzeteket testreszabhatja a fő lekérdezési gomb szerkesztésével ![ ](./media/qs-get-visibility/edit-query-button.png) . A gombra kattintva megnyithatja ![ ](./media/qs-get-visibility/go-to-la-button.png) [a log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), majd kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a Főidő szűrő szerkesztését, vagy a munkafüzetből való eltávolítását.
 
 További információ a lekérdezések használatáról [: oktatóanyag: vizualizációs adatok log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -123,7 +123,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

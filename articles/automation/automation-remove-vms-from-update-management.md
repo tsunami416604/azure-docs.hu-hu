@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 29d6edd5463de78bba039e4ed6219575d924ac10
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749143"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836651"
 ---
-# <a name="remove-vms-from-update-management"></a>Virtuális gépek eltávolítása a Update Managementból
+# <a name="remove-vms-from-update-management"></a>Virtuális gépek eltávolítása az Update Managementből
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -40,12 +40,7 @@ Amikor befejezte a frissítések telepítését a környezetben lévő virtuáli
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)
-* [Munkaterület leválasztása az Automation-fiókból Update Management](automation-unlink-workspace-update-management.md)
-* [Update Management engedélyezése Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-* [Update Management engedélyezése a Azure Portal](automation-onboard-solutions-from-browse.md)
-* [Update Management engedélyezése runbook](automation-onboard-solutions.md)
-* [Update Management engedélyezése Azure-beli virtuális gépről](automation-onboard-solutions-from-vm.md)
-* [Update Management problémák elhárítása](troubleshoot/update-management.md)
-* [A Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)
-* [A Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)
+* A Update Management használatának folytatásához tekintse [meg az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakört.
+* Az általános szolgáltatással kapcsolatos problémák megoldásához tekintse meg a [Update Management problémák elhárítása](troubleshoot/update-management.md)című témakört.
+* A Windows Update agenttel kapcsolatos problémákkal kapcsolatban lásd: a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md).
+* A Linux frissítési ügynökkel kapcsolatos problémákkal kapcsolatban lásd: a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md).

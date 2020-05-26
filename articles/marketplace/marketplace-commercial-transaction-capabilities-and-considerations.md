@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657906"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800053"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -165,7 +165,7 @@ Az ügyfelek általában a Nagyvállalati Szerződés vagy egy hitelkártya-alap
 
 További információ és jogi szabályzatok: [közzétevői szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (a partner Centerben érhető el).
 
-A számlázási kérdésekkel kapcsolatos segítségért forduljon a [kereskedelmi piactér közzétevője támogatási szolgálatához](https://partner.microsoft.com/support/v2/?stage=1).
+A számlázási kérdésekkel kapcsolatos segítségért forduljon a [kereskedelmi piactér közzétevője támogatási szolgálatához](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="transact-requirements"></a>Transact-követelmények
 
@@ -185,7 +185,7 @@ A Transact Publishing beállítás csak a következő Piactéri ajánlatok eset�
 - **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, valamint az ajánlat szintjén meghatározott SKU-t. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
 - **Azure-alkalmazások: megoldási sablon vagy felügyelt alkalmazás** – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 - Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

@@ -3,17 +3,17 @@ title: Exchange-társ létrehozása vagy módosítása a Azure Portal használat
 titleSuffix: Azure
 description: Exchange-társ létrehozása vagy módosítása a Azure Portal használatával
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: e4f2ee72cbe17c094567aab5c7cc4720b02cde68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/21/2020
+ms.author: derekol
+ms.openlocfilehash: 62aec65498f75e51ecb1df15b525294aef026745
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680951"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800530"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Exchange-társ létrehozása vagy módosítása a Azure Portal használatával
 
@@ -32,10 +32,31 @@ Ha szeretné, az útmutatót a [PowerShell](howto-exchange-powershell.md)haszná
 
 ### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange-társ létrehozása
 
-Hozzon létre egy **új társ-** létrehozási kérést a társítási erőforrás használatával.
 
-#### <a name="launch-the-resource-and-configure-basic-settings"></a>Az erőforrás elindítása és az alapvető beállítások konfigurálása
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+Internetes Exchange-szolgáltatóként létrehozhat egy közvetlen társ-összevonási kérést a társítás [létrehozásával]( https://go.microsoft.com/fwlink/?linkid=2129593).
+
+1. A társítás **létrehozása** oldalon az **alapok** lapon adja meg az itt látható mezőket:
+
+>    [!div class="mx-imgBorder"]
+>   ![A Peering Service regisztrálása](./media/setup-basics-tab.png)
+
+* Válassza ki az Azure-előfizetését.
+
+* Az erőforráscsoport esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az új létrehozása lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
+
+* A név megegyezik az erőforrás nevével, és bármi lehet, amit választ.
+
+* A régió automatikusan ki van választva, ha a meglévő erőforráscsoportot választotta. Ha úgy döntött, hogy új erőforráscsoportot hoz létre, ki kell választania azt az Azure-régiót, ahol az erőforrást tárolni szeretné.
+
+>[!NOTE]
+    Az a régió, ahol az erőforráscsoport található, független attól a helytől, ahol a Microsofttal kívánja létrehozni a kapcsolatot. Az ajánlott eljárás azonban az, hogy a legközelebb eső Azure-régiókban található erőforráscsoportok között szervezzen egyenrangú erőforrásokat. Például a Ashburn-ben való társítások esetén létrehozhat egy erőforráscsoportot az USA keleti régiójában vagy a Kelet-RÉGIÓJA.
+
+* Válassza ki az ASN-t a **PeerASN** mezőben.
+
+>[!IMPORTANT] 
+A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatja, mielőtt elküld egy kérést. Ha most elküldte a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítást jóvá szeretné hagyni. Ha a kiválasztott ASN-hitelesítés függőben van, hibaüzenet jelenik meg. Ha nem látja a kiválasztható ASN-t, ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. Ha igen, ellenőrizze, hogy már létrehozott-e PeerAsn az **[Azure-előfizetéshez való társítási peer ASN](https://go.microsoft.com/fwlink/?linkid=2129592)** használatával.
+
+* Válassza a **Next (tovább): konfigurálás** a folytatáshoz lehetőséget.
 
 #### <a name="configure-connections-and-submit"></a>Kapcsolatok konfigurálása és küldés
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration.md)]
@@ -49,11 +70,11 @@ Hozzon létre egy **új társ-** létrehozási kérést a társítási erőforr�
 ## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange-társ kiépítése
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közvetlen társ létrehozása vagy módosítása a portál használatával](howto-direct-portal.md)
 * [Örökölt közvetlen társak konvertálása Azure-erőforrásra a portál használatával](howto-legacy-direct-portal.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 További információ: [internetes peering GYIK](faqs.md).

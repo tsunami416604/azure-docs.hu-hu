@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606479"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800088"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Feltételes felosztású átalakítás a leképezési adatfolyamban
 
@@ -21,7 +21,9 @@ ms.locfileid: "81606479"
 
 A feltételes felosztott átalakítás az adatsorokat különböző streamekre irányítja a megfelelő feltételek alapján. A feltételes felosztott átalakítás a programozási nyelv eset döntési struktúrájához hasonlít. Az átalakítás kiértékeli a kifejezéseket, és az eredmények alapján a megadott adatfolyamra irányítja az adatsort.
 
-## <a name="configuration"></a>Configuration
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4wKCX]
+
+## <a name="configuration"></a>Konfiguráció
 
 A **felosztás bekapcsolva** beállítás határozza meg, hogy az adatsorok az első egyező adatfolyamra vagy minden adatfolyamra vonatkoznak-e.
 
@@ -45,7 +47,7 @@ Az adatfolyam-Kifejezésszerkesztő használatával adjon meg egy kifejezést a 
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű `SplitByYear` feltételes felosztású átalakítás, amely a bejövő adatfolyamot `CleanData`veszi át. Ez a transzformáció két felosztott `year < 1960` feltételt és `year > 1980`. `disjoint`hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor a `moviesBefore1960`kimeneti adatfolyamba kerül. A második feltételnek megfelelő összes fennmaradó sor a kimeneti `moviesAFter1980`adatfolyamra mutat. Az összes többi sor az alapértelmezett adatfolyamon `AllOtherMovies`keresztül folyik.
+Az alábbi példa egy nevű feltételes felosztású átalakítás, `SplitByYear` amely a bejövő adatfolyamot veszi át `CleanData` . Ez a transzformáció két felosztott feltételt `year < 1960` és `year > 1980` . `disjoint`hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor a kimeneti adatfolyamba kerül `moviesBefore1960` . A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyamra mutat `moviesAFter1980` . Az összes többi sor az alapértelmezett adatfolyamon keresztül folyik `AllOtherMovies` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -62,6 +64,6 @@ CleanData
     ) ~> SplitByYear@(moviesBefore1960, moviesAfter1980, AllOtherMovies)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feltételes felosztással használt közös adatfolyam-átalakítások az [összekapcsolási transzformáció](data-flow-join.md), a [keresési átalakítás](data-flow-lookup.md)és az [átalakítás kiválasztása](data-flow-select.md)

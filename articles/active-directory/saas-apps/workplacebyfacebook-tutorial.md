@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136380"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799255"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás**gombra.
 
@@ -150,7 +150,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     > [!NOTE]
     > Az SAML hitelesítési folyamat részeként a munkahely akár 2,5 kilobájtos lekérdezési karakterláncot is használhat a paraméterek Azure AD-ba való továbbításához.
 
-1. A bal oldali navigációs panelen navigáljon a **biztonsági** > **hitelesítés** lapra.
+1. A bal oldali navigációs panelen navigáljon a **biztonsági**  >  **hitelesítés** lapra.
 
     ![Felügyeleti panel](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
@@ -206,7 +206,7 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a munkahelyen a 
 Ebben a szakaszban nincs művelet. Ha a Facebookban nem szerepel egy felhasználó a munkahelyen, a rendszer létrehoz egy újat, amikor megpróbál hozzáférni a munkahelyi Facebook-hoz.
 
 >[!Note]
->Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a munkahelyi kapcsolattal a Facebook ügyfélszolgálati [csapatával](https://workplace.fb.com/faq/)
+>Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a munkahelyi kapcsolattal a Facebook ügyfélszolgálati [csapatával](https://www.workplace.com/help/work/)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -228,7 +228,7 @@ Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automat
 
     ![Egyszer](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. Kattintson az **Engedélyezés** lehetőségre.
+4. Kattintson az **Engedélyezés**gombra.
 
     ![Az engedélyezés](./media/workplacebyfacebook-tutorial/test03.png)
 
@@ -236,7 +236,7 @@ Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automat
 
     ![A Kezdőlap](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

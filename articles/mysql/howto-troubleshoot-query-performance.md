@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067842"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836124"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>A profil lekérdezési teljesítményének ismertetése a Azure Database for MySQL
 A **magyarázat** egy praktikus eszköz a lekérdezések optimalizálásához. A magyarázó utasítás használatával információkat kaphat az SQL-utasítások végrehajtásáról. A következő kimenet egy példát mutat be a magyarázó utasítások végrehajtásához.
@@ -167,4 +167,4 @@ A magyarázat és a különböző típusú indexek használata jelentősen növe
 
 
 ## <a name="next-steps"></a>További lépések
-- Ha a leginkább érintett kérdésekre ad választ, vagy új kérdést/választ tesz közzé, látogasson el az [MSDN fórumára](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) vagy a [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Ha szeretné megkeresni a leginkább érintett kérdésekre adott társi válaszokat, vagy új kérdést/választ szeretne küldeni, látogasson el [a Microsoft Q&egy kérdés oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

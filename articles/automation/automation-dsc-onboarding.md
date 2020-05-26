@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713148"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836906"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának engedélyezése
 
@@ -22,7 +22,7 @@ Ez a témakör azt ismerteti, hogyan állíthatja be a gépeket Azure Automation
 
 ## <a name="enable-azure-vms"></a>Azure-beli virtuális gépek engedélyezése
 
-Azure Automation állapot-konfigurációval egyszerűen engedélyezheti az Azure-beli virtuális gépeket a konfiguráció felügyeletéhez a Azure Portal, a Azure Resource Manager sablonok vagy a PowerShell használatával. A motorháztető alatt, és anélkül, hogy a rendszergazdának távoli GÉPEN kellene lennie, az Azure-beli virtuális gép kívánt állapota konfigurációs bővítmény regisztrálja Azure Automation állapot konfigurációjában a virtuális gépet. Mivel az Azure-bővítmény aszinkron módon fut, az előrehaladásának és hibaelhárításának lépései a [virtuális gép beállítása az állapot konfigurálásához](#troubleshoot-vm-setup-for-state-configuration)című cikkben találhatók.
+Azure Automation állapot-konfigurációval egyszerűen engedélyezheti az Azure-beli virtuális gépeket a konfiguráció felügyeletéhez a Azure Portal, a Azure Resource Manager sablonok vagy a PowerShell használatával. A motorháztető alatt, és anélkül, hogy a rendszergazdának távoli GÉPEN kellene lennie, az Azure-beli virtuális gép kívánt állapota konfigurációs bővítmény regisztrálja Azure Automation állapot konfigurációjában a virtuális gépet. Mivel az Azure-bővítmény aszinkron módon fut, az előrehaladásának nyomon követéséhez szükséges lépések a [virtuális gép beállításának állapotának ellenőrzéséhez](#check-status-of-vm-setup)nyújtanak útmutatást.
 
 > [!NOTE]
 >A DSC Linux-csomópontra történő telepítése a **/tmp** mappát használja. Azokat a modulokat, `nxautomation` amelyek a megfelelő helyekre való telepítése előtt ideiglenesen letöltődnek az ellenőrzéshez. A modulok megfelelő telepítésének biztosításához a linuxos Log Analytics-ügynöknek írási/olvasási jogosultságra van szüksége a **/tmp** mappához.<br><br>
@@ -307,27 +307,26 @@ Miután Azure Automation állapot konfigurációjában egy gépet DSC-csomópont
 
 A csomópontot úgy is újra regisztrálhatja, ahogy először regisztrálta a csomópontot, a jelen dokumentumban ismertetett módszerek bármelyikének használatával. Az újbóli regisztrálás előtt nem kell megszüntetnie a csomópont regisztrációját Azure Automation állapot-konfigurációból.
 
-## <a name="troubleshoot-vm-setup-for-state-configuration"></a>Az állapot-konfiguráció virtuálisgép-beállításával kapcsolatos hibák megoldása
+## <a name="check-status-of-vm-setup"></a>A virtuális gép beállítás állapotának ellenõrzése
 
 Az állapot-konfigurációval egyszerűen engedélyezheti az Azure Windows rendszerű virtuális gépeket a konfigurálási felügyelethez. A motorháztető alatt az Azure VM desired State Configuration bővítmény a virtuális gép Azure Automation állapot-konfigurációval való regisztrálására szolgál. Mivel az Azure-beli virtuális gép kívánt állapotának konfigurációs bővítménye aszinkron módon fut, fontos lehet az előrehaladás nyomon követése és a végrehajtásuk hibaelhárítása.
 
 > [!NOTE]
 > Az Azure-beli virtuális gépeknek az Azure-beli, a kívánt állapot-konfiguráció bővítményt használó állapot-konfigurációhoz való engedélyezésének bármely módja akár egy órát is igénybe vehet, hogy Azure Automation a virtuális gépek regisztrálva jelenjenek meg. Ezt a késleltetést a virtuális gépekre vonatkozó, az Azure-beli kívánt állapot konfigurációs bővítményének a WMF 5-ös verziójának telepítése okozza, amely a virtuális gépek állapotának konfigurálásához szükséges.
 
-Az Azure-beli virtuális gép kívánt állapotához tartozó konfiguráció-bővítmény hibáinak megoldása vagy megtekintése:
+Az Azure-beli virtuális gép kívánt állapotára vonatkozó konfigurációs bővítmény állapotának megtekintése:
 
 1. A Azure Portal navigáljon az engedélyezett virtuális géphez.
 2. Kattintson a **bővítmények** elemre a **Beállítások**területen. 
 3. Most válassza a **DSC** vagy a **DSCForLinux**lehetőséget az operációs rendszertől függően. 
 4. További részletekért kattintson a **részletes állapot megtekintése**lehetőségre.
 
-A hibaelhárítással kapcsolatos további információkért lásd: [Azure Automation állapot konfigurációjának hibaelhárítása](./troubleshoot/desired-state-configuration.md).
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-
-- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
-- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- A folyamatos üzembe helyezési folyamat során Azure Automation állapot konfigurációjának használatára példát a következő témakörben talál [: a virtuális gépek folyamatos üzembe helyezése Azure Automation állapot-konfigurációval és a csokoládés használatával](automation-dsc-cd-chocolatey.md).
+- A folyamatos üzembe helyezési folyamat során Azure Automation állapot konfigurációjának használatával kapcsolatban lásd: a [folyamatos üzembe helyezés beállítása a csokoládéval](automation-dsc-cd-chocolatey.md).
+- Hibaelhárítási információk: [Azure Automation állapot-konfiguráció hibaelhárítása](./troubleshoot/desired-state-configuration.md).

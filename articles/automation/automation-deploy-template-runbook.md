@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Automation
-ms.openlocfilehash: dcb1f5919db71bb233f59cc5b5ba92648b8476d9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714287"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837076"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése egy PowerShell-runbook
 
@@ -227,10 +227,10 @@ A következő parancs futtatásával láthatja, hogy az új Storage-fiók létre
 Get-AzStorageAccount
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md)
-* [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)
-* [Runbook- és modulkatalógusok az Azure Automationhöz](automation-runbook-gallery.md)
-* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* További információ a Resource Manager-sablonokról: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md)).
+* Az Azure Storage használatának megkezdéséhez tekintse [meg az Azure Storage bemutatása](../storage/common/storage-introduction.md)című témakört.
+* További hasznos Azure Automation runbookok a következő témakörben talál: [a Azure Automation runbookok és moduljainak használata](automation-runbook-gallery.md).
+* További hasznos Resource Manager-sablonokat a következő témakörben talál: [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/).
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -7,16 +7,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663538"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798126"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
-A modern alkalmazások gyakran bonyolultak, és számos különálló részből állnak, amelyek egy szolgáltatás nyújtására szolgálnak. Az összetettség felismerése Azure Monitor az erőforráscsoportok figyelését teszi lehetővé. Így egyszerűen osztályozhatja és diagnosztizálhatja az egyes erőforrásaival kapcsolatos problémákat, miközben az erőforráscsoport&mdash;állapotának és teljesítményének, valamint az alkalmazás&mdash;egészének a kontextusát kínálja.
+A modern alkalmazások gyakran bonyolultak, és számos különálló részből állnak, amelyek egy szolgáltatás nyújtására szolgálnak. Az összetettség felismerése Azure Monitor az erőforráscsoportok figyelését teszi lehetővé. Így egyszerűen osztályozhatja és diagnosztizálhatja az egyes erőforrásaival kapcsolatos problémákat, miközben az erőforráscsoport állapotának és teljesítményének, valamint az &mdash; alkalmazás egészének a kontextusát kínálja &mdash; .
 
 ## <a name="access-insights-for-resource-groups"></a>Erőforrás-csoportok elérésének elérése
 
@@ -115,8 +115,8 @@ Az erőforráscsoportok Azure Monitor a riasztási állapot lekéréséhez Azure
 * Az erőforrás-csoportokhoz tartozó Azure Monitor megnyitása az előfizetés egyik erőforráscsoport számára.
 * Vagy nyissa meg az előfizetést, kattintson az **erőforrás-szolgáltatók**, majd a **regisztráció a riasztásokhoz**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Munkafüzetek Azure Monitor](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Munkafüzetek Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Riasztások Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

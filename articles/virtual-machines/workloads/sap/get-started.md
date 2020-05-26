@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5991c6e073001e565a965a8db3cf32ca76d843f4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b95112146c0003f3fc5ea563e5561dc26ea064e8
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684419"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800731"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -111,6 +111,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 05/21/2020: változás a [pacemaker beállítása a SLES az Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) -ban és [a pacemaker beállítása az Azure-ban a RHEL-ben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) az Azure [standard ILB SAP if-forgatókönyvek használatával történő nyilvános végponti kapcsolathoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) való hozzáadásához  
 - 05/19/2020: fontos üzenet hozzáadása, hogy ne használja a gyökérszintű csoportot, ha az LVM-t használ a HANA-hez kapcsolódó kötetekhez [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 05/19/2020: új támogatott operációs rendszer hozzáadása a HANA nagyméretű példány Type II-hez [kompatibilis operációs rendszerek a HANA Large instances szolgáltatáshoz] (https://docs.microsoft.com/
 - Azure/Virtual-Machines/munkaterhelés/SAP/os-Compatibility-Matrix-Hana-Large-instance)

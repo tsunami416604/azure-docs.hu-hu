@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771332"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798281"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>A kombinált biztonsági információk regisztrációjának engedélyezése a Azure Active Directoryban
 
-A kombinált regisztráció előtt a felhasználók az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
+A kombinált regisztráció előtt a felhasználók az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerekkel használták az Azure Multi-Factor Authentication és a SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A közös regisztráció révén a felhasználók egyszer regisztrálhatnak, és igénybe vehetik az Azure Multi-Factor Authentication és a SSPR előnyeit.
 
 Az új felhasználói felület engedélyezése előtt tekintse át a [biztonsági információkkal kapcsolatos részletes regisztrációt](concept-registration-mfa-sspr-combined.md) , hogy megértse a funkció funkcióit és hatásait.
 
@@ -34,10 +34,10 @@ A következő lépések végrehajtásával engedélyezheti a kombinált regisztr
 2. Nyissa meg **Azure Active Directory**  >  **felhasználói beállítások**  >  **kezelése felhasználói szolgáltatás előzetes**verziójának beállításait.
 3. **A felhasználók a biztonsági információk összevont felhasználói felületét használhatják**, így a **kiválasztott** felhasználók vagy az **összes** felhasználó számára engedélyezhető.
 
-   ![A kombinált biztonsági információk előzetes verziójának használatának engedélyezése az összes felhasználó számára](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
+   ![Az összevont biztonsági adatok felhasználói felületének engedélyezése](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> A kombinált regisztráció engedélyezése után azok a felhasználók, akik az új felhasználói felületen regisztrálják vagy megerősítik a telefonszámot vagy a mobil alkalmazást, használhatják Multi-Factor Authentication és SSPR, ha ezek a módszerek engedélyezve vannak a Multi-Factor Authentication és a SSPR házirendben. Ha ezt követően letiltja ezt a felhasználói élményt, a többtényezős hitelesítés elvégzéséhez a (z) oldalon az előző SSPR regisztrációs oldalra kell lépnie, `https://aka.ms/ssprsetup` mielőtt hozzá tudnak férni a laphoz.
+> A kombinált regisztráció engedélyezése után azok a felhasználók, akik az új felhasználói felületen regisztrálják vagy megerősítik a telefonszámot vagy a mobil alkalmazást, használhatják ezeket az Azure Multi-Factor Authentication-és SSPR, ha ezek a módszerek engedélyezve vannak az Azure-Multi-Factor Authentication és a SSPR-házirendekben. Ha ezt követően letiltja ezt a felhasználói élményt, a többtényezős hitelesítés elvégzéséhez a (z) oldalon az előző SSPR regisztrációs oldalra kell lépnie, `https://aka.ms/ssprsetup` mielőtt hozzá tudnak férni a laphoz.
 
 Ha az Internet Explorerben konfigurálta a hely-hozzárendelési listát, a következő helyeknek ugyanabban a zónában kell lenniük:
 
@@ -55,8 +55,8 @@ A megbízható helyek feltételes hozzáférésben való létrehozásával kapcs
 
 A következő házirend az összes olyan kijelölt felhasználóra vonatkozik, amely az egyesített regisztrációs élmény használatával próbálkozik, és blokkolja a hozzáférést, kivéve, ha egy megbízható hálózatként megjelölt helyről csatlakozik.
 
-1. A **Azure Portal**keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés** lehetőséget.
-1. Válassza az **+ új szabályzat** lehetőséget
+1. A **Azure Portal**keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**lehetőséget.
+1. Válassza az **+ új házirend**elemet.
 1. Adja meg a szabályzat nevét, például: *kombinált biztonsági adatok regisztrálása megbízható hálózatokon*.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget. Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a szabályzatot, majd válassza a **kész**lehetőséget.
 
@@ -68,20 +68,20 @@ A következő házirend az összes olyan kijelölt felhasználóra vonatkozik, a
     ![Feltételes hozzáférési szabályzat létrehozása a biztonsági adatok regisztrálásának vezérléséhez](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
 1. A **feltételek**  >  **helye**területen adja meg a következő beállításokat:
-   1. Az **Igen** beállítása
-   1. **Bármely hely** belefoglalása
-   1. **Az összes megbízható helyszín** kizárása
+   1. Konfigurálja az **Igen értéket**.
+   1. Adjon meg **bármilyen helyet**.
+   1. **Az összes megbízható helyszín**kizárása.
 1. Válassza a **kész** lehetőséget a *helyszínek* ablakban, majd a *feltételek* ablakban válassza a **kész** lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**lehetőséget, majd **válassza** a
-1. **Házirend engedélyezése** **bekapcsolva** értékre
-1. A szabályzat véglegesítéséhez válassza a **Létrehozás** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**, majd a **lehetőséget**.
+1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
+1. A szabályzat véglegesítéséhez válassza a **Létrehozás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha segítségre van szüksége, olvassa el a következő témakört: a [kombinált biztonsági adatok regisztrációjának hibaelhárítása](howto-registration-mfa-sspr-combined-troubleshoot.md) vagy [a Azure Active Directory feltételes hozzáférésre vonatkozó hely feltételének](../conditional-access/location-condition.md) megismerése
 
 Az Azure AD-bérlő szolgáltatásainak engedélyezéséhez tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 
-Megtudhatja, hogyan [engedélyezheti a kombinált regisztrációt a bérlőben](howto-registration-mfa-sspr-combined.md) , vagy [kényszerítheti a felhasználókat a hitelesítési módszerek ismételt regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
+Megtudhatja, hogyan [kényszerítheti a felhasználókat a hitelesítési módszerek ismételt regisztrálására](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
 Áttekintheti az [Azure multi-Factor Authentication és a SSPR elérhető metódusait](concept-authentication-methods.md)is.

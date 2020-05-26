@@ -5,14 +5,14 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4eccdef6bd3f2bfcd0eced8281f7b998536f22a9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5379f2c46bbeaba4ee8509603b7b739b75d08f04
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749185"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836787"
 ---
-# <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Change Tracking és leltár engedélyezése Azure-beli virtuális gépről
+# <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>A Change Tracking és az Inventory engedélyezése Azure-beli virtuális gépről
 
 Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [change Tracking és a leltár](change-tracking.md) funkció más gépeken való engedélyezéséhez. Az Azure-beli virtuális gépek méretének engedélyezéséhez Change Tracking és leltár használatával engedélyeznie kell egy meglévő virtuális gépet. 
 
@@ -47,10 +47,9 @@ A Change Tracking és a leltár a munkaterület hatókör-konfigurációját has
 
 ## <a name="next-steps"></a>További lépések
 
-* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
-* [A Change Tracking és a leltár hatókör-konfigurációinak használata](automation-scope-configurations-change-tracking.md)
-* [Virtuális gépek szoftvereinek azonosítása](automation-tutorial-installed-software.md)
-* [Munkaterület leválasztása az Automation-fiókból a Change Tracking és a leltárhoz](automation-unlink-workspace-change-tracking.md)
-* [Virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md)
-* [Azure-beli virtuális gépek változásainak hibáinak megoldása](automation-tutorial-troubleshoot-changes.md)
-* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
+* A szolgáltatással kapcsolatos további részletekért tekintse meg a [change Tracking és a leltár kezelésével](change-tracking-file-contents.md)foglalkozó témakört.
+* A hatókör-konfigurációkról további információt a [hatókör-konfigurációk használata Change Tracking és leltárhoz](automation-scope-configurations-change-tracking.md)című témakörben talál.
+* Ha szeretné megtudni, hogyan használhatja a szolgáltatást a környezetében telepített szoftverek azonosítására, tekintse meg a [virtuális gépeken telepített szoftverek felderítését](automation-tutorial-installed-software.md)ismertető témakört.
+* Ha nem szeretné integrálni az Automation-fiókját egy Log Analytics munkaterülettel a szolgáltatás engedélyezésekor, olvassa el a [munkaterület összekapcsolása az Automation-fiókból](automation-unlink-workspace-change-tracking.md)című témakört.
+* Amikor befejezte a virtuális gépek változásainak telepítését, eltávolíthatja őket a [virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md)című témakörben leírtak szerint.
+* A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

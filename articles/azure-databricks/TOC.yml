@@ -1623,20 +1623,6 @@
                     - name: Az Azure AD-jogkivonatok hitelesítésének áttekintése
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: Azure AD-jogkivonat beszerzése az Azure AD Authentication Library használatával
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: Azure AD-jogkivonat beszerzése szolgáltatásnév használatával
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: Az Azure AD hozzáférési jogkivonatainak hibaelhárítása
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Az Azure Active Directory hozzáférési jogkivonatai
-                  items:
-                    - name: Az Azure AD-jogkivonatok hitelesítésének áttekintése
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: Azure AD-jogkivonat beszerzése az AAD Authentication Library használatával
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
@@ -1996,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: Kérdés feltevése – MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: Kérdés feltevése – Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: Kérdés feltevése – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: Régiónkénti elérhetőség

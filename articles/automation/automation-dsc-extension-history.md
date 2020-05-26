@@ -9,12 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713199"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836923"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Az Azure desired State Configuration bővítmény korábbi verzióinak használata
 
@@ -247,9 +247,9 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
   - Egy Resource Manager-sablonban frissített beállítási formátumot biztosít a bővítményhez. További információkért tekintse meg [a blogot](https://devblogs.microsoft.com/powershell/arm-dsc-extension-settings/).
   - Hibajavítások és egyéb fejlesztések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A PowerShell DSC-vel kapcsolatos további információkért lásd: [PowerShell dokumentációs központ](/powershell/scripting/dsc/overview/overview).
 - Vizsgálja [meg a DSC-bővítmény Resource Manager-sablonját](/azure/virtual-machines/extensions/dsc-template).
-- Ha további funkciókat szeretne kezelni a PowerShell DSC használatával, és további DSC-erőforrásokhoz, keresse fel a [PowerShell-galériát](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- A PowerShell DSC-vel felügyelhető további funkciók és erőforrások megtekintéséhez tallózzon a [PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - A bizalmas paraméterek konfigurációkba való átadásával kapcsolatos részletekért lásd: [a hitelesítő adatok biztonságos kezelése a DSC-bővítmény kezelőjével](/azure/virtual-machines/extensions/dsc-credentials).

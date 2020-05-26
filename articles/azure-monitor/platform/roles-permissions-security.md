@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658982"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836379"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -28,7 +28,7 @@ A figyelési olvasó szerepkörrel rendelkező személyek megtekinthetik az elő
 
 * Megtekintheti a portálon a figyelési irányítópultokat, és saját privát figyelési irányítópultokat hozhat létre.
 * Az [Azure-riasztásokban](alerts-overview.md) definiált riasztási szabályok megtekintése
-* A metrikák lekérdezése a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), a [PowerShell-parancsmagok](powershell-quickstart-samples.md)vagy a [platformfüggetlen CLI](cli-samples.md)használatával.
+* A metrikák lekérdezése a [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), a [PowerShell-parancsmagok](powershell-quickstart-samples.md)vagy a [platformfüggetlen CLI](../samples/cli-samples.md)használatával.
 * A műveletnapló lekérdezése a portál, a Azure Monitor REST API, a PowerShell-parancsmagok vagy a platformfüggetlen CLI használatával.
 * Egy erőforrás [diagnosztikai beállításainak](diagnostic-settings.md) megtekintése.
 * Az előfizetéshez tartozó [napló profiljának](activity-log-export.md) megtekintése.
@@ -181,7 +181,7 @@ Azure Monitor hozzáférést kell biztosítania az Azure-erőforrásokhoz az Ön
 ### <a name="secured-storage-accounts"></a>Biztonságos Storage-fiókok 
 
 A figyelési adatgyűjtést gyakran egy Storage-fiókba kell írni. Előfordulhat, hogy meg kell győződnie arról, hogy a Storage-fiókba másolt adatfájlok jogosulatlan felhasználók számára nem érhetők el. A további biztonság érdekében zárolhatja a hálózati hozzáférést, hogy csak a jogosult erőforrások és a megbízható Microsoft-szolgáltatások férhessenek hozzá egy Storage-fiókhoz, ha a Storage-fiókot a "kiválasztott hálózatok" használatára korlátozza.
-![Az Azure Storage-](./media/roles-permissions-security/secured-storage-example.png) beállítások párbeszédpanel Azure monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz; Az Azure Monitor erőforrás-naplók, a műveletnapló és a metrikák írásának engedélyezése a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
+![Az Azure Storage-beállítások párbeszédpanel ](./media/roles-permissions-security/secured-storage-example.png) Azure monitor a "megbízható Microsoft-szolgáltatások" közé tartozik, ha engedélyezi a megbízható Microsoft-szolgáltatások számára a biztonságos tároló elérését, az Azure monitor hozzáférhet a biztonságos Storage-fiókhoz, amely lehetővé teszi a Azure monitor erőforrás-naplók, a műveletnapló és a metrikák írását a Storage-fiókba a következő védett feltételek szerint. Ez azt is lehetővé teszi, hogy a Log Analytics beolvassák a biztonságos tárolóból származó naplókat.   
 
 
 További információ: [hálózati biztonság és Azure Storage](../../storage/common/storage-network-security.md)

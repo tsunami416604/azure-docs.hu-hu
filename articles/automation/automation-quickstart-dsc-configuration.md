@@ -7,12 +7,12 @@ keywords: dsc, konfigurálás, automatizálás
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: ab9210042439e2199d633577c77429573b71d1be
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711856"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836719"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapot-konfigurációval
 
@@ -126,12 +126,9 @@ Az Automation-fiókban megtekintheti az állapot konfigurációjának összes fe
 
 ![DSC-csomópont állapota](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban engedélyezte a Linux rendszerű virtuális gépet az állapot konfigurálásához, létrehozta a LAMP-verem konfigurációját, és telepítette a konfigurációt a virtuális gépre. Ha szeretné megtudni, hogyan használhatja Azure Automation állapot konfigurációját a folyamatos üzembe helyezés engedélyezéséhez, folytassa a cikket:
 
 > [!div class="nextstepaction"]
-> [Folyamatos üzembe helyezés virtuális gépre a DSC és a Chocolatey használatával](./automation-dsc-cd-chocolatey.md)
-
-* A PowerShell DSC-vel kapcsolatos további tudnivalókért tekintse meg a [PowerShell a kívánt állapot konfigurációjának áttekintése](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)című témakört.
-* Ha meg szeretné tudni, hogyan továbbíthatja a DSC-jelentéseket a jelentések és riasztások Azure Monitor naplófájljaiba, tekintse meg a [DSC-jelentéskészítés továbbítása Azure monitor naplókhoz](automation-dsc-diagnostics.md)című témakört
+> [Folyamatos üzembe helyezés beállítása a Chocolatey segítségével](./automation-dsc-cd-chocolatey.md)

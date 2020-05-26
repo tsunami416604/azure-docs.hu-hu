@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ffe7edd5faf5ae4f88f9f3e0c40256bee32395d7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714865"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837093"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -99,10 +99,11 @@ A klasszikus futtató fiókok már nem jönnek létre alapértelmezés szerint A
 2. Válassza a **klasszikus Azure-beli futtató fiók**lehetőséget.
 3. A klasszikus futtató fiók létrehozásának folytatásához kattintson a **Létrehozás** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Grafikus szerzői műveletek Azure Automation](automation-graphical-authoring-intro.md)
-* [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md)
-* [Az első PowerShell-munkafolyamat runbook](automation-first-runbook-textual.md)
-* [Az első Python2-runbook](automation-first-runbook-textual-python2.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* További információ a grafikus létrehozásról: [grafikus runbookok készítése Azure Automationban](automation-graphical-authoring-intro.md).
+* A PowerShell-runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.
+* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md)című témakört.
+* A Python 2 runbookok megismeréséhez tekintse meg az [oktatóanyag: Python 2 Runbook létrehozása](learn/automation-tutorial-runbook-textual-python2.md)című témakört.
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

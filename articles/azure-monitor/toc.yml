@@ -98,6 +98,10 @@
           href: platform/data-security.md
         - name: Felhasználó által kezelt kulcsok
           href: platform/customer-managed-keys.md
+        - name: Private Link-hálózatkezelés
+          href: platform/private-link-security.md
+        - name: Privát tároló
+          href: platform/private-storage.md
         - name: Személyes naplóadatok kezelése
           href: platform/personal-data-mgmt.md
         - name: 'Alkalmazásadatok gyűjtése, megőrzése és tárolása'
@@ -238,7 +242,7 @@
               href: app/cloudservices.md
             - name: Azure Functions
               displayname: 'functions, monitor functions, automation'
-              href: ../azure-functions/functions-monitoring.md
+              href: app/monitor-functions.md
             - name: Azure Kubernetes Service
               href: app/kubernetes-codeless.md
             - name: Különálló – bármely környezet

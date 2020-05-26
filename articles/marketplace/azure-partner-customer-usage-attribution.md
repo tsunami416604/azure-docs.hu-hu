@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4dd42c6eabf02bc7a4eb956b9cd5ab2aec28176b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186203"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800788"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -37,10 +37,10 @@ A Customer használati jóváírás három üzembe helyezési lehetőséget tám
 
 ## <a name="create-guids"></a>GUID-azonosítók létrehozása
 
-A GUID azonosító egy egyedi hivatkozási azonosító, amelynek 32 hexadecimális számjegye van. A nyomkövetési GUID azonosítók létrehozásához GUID-generátort kell használnia. Az Azure Storage csapata létrehozta a [GUID generátort](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) , amely a megfelelő formátumú GUID-t e-mailben küldi el, és újra felhasználható a különböző nyomkövető rendszerek között.
+A GUID azonosító egy egyedi hivatkozási azonosító, amelynek 32 hexadecimális számjegye van. A nyomkövetési GUID azonosítók létrehozásához GUID-generátort kell használnia. Az Azure Storage csapata létrehozta a [GUID generátort](https://aka.ms/StoragePartners) , amely a megfelelő formátumú GUID-t e-mailben küldi el, és újra felhasználható a különböző nyomkövető rendszerek között.
 
 > [!NOTE]
-> Erősen ajánlott az [Azure Storage GUID Generator űrlapját](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) használni a GUID létrehozásához. További információ: [Gyakori kérdések](#faq).
+> Erősen ajánlott az [Azure Storage GUID Generator űrlapját](https://aka.ms/StoragePartners) használni a GUID létrehozásához. További információ: [Gyakori kérdések](#faq).
 
 Javasoljuk, hogy hozzon létre egyedi GUID azonosítót minden ajánlathoz és terjesztési csatornához az egyes termékekhez. Dönthet úgy, hogy egyetlen GUID azonosítót használ a termék több terjesztési csatornához, ha nem szeretné, hogy a jelentés szét legyen osztva.
 
@@ -61,7 +61,7 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 
-1. Regisztráljon [kereskedelmi Piactéri közzétevőként](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv).
+1. Regisztráljon [kereskedelmi Piactéri közzétevőként](https://aka.ms/JoinMarketplace).
 
    * A partnereknek [profilra van](https://docs.microsoft.com/azure/marketplace/become-publisher)szükségük a partner Centerben. Javasoljuk, hogy az ajánlatot az Azure Marketplace-en vagy a AppSource sorolja fel.
    * A partnerek több GUID-azonosítót is regisztrálhatnak.
@@ -143,7 +143,7 @@ Ha engedélyezni szeretné az ügyfelek használati feltételeit, az API-hívás
 
 #### <a name="example-the-python-sdk"></a>Példa: a Python SDK
 
-A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Például:
+A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Íme egy példa:
 
 ![Attribútum hozzáadása felhasználói ügynökhöz](media/marketplace-publishers-guide/python-for-lu.PNG)
 
@@ -169,7 +169,7 @@ További információ: [Go nyelvhez készült Azure SDK](https://docs.microsoft.
 
 ## <a name="use-terraform"></a>Terraform használata
 
-A Terraform támogatása az Azure-szolgáltató 1.21.0-kiadásán keresztül érhető [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019)el:.  Ez a támogatás minden olyan partnerre vonatkozik, amely a Terraform-n keresztül telepíti a megoldását, valamint az Azure-szolgáltató által üzembe helyezett és mért összes erőforrást (1.21.0 vagy újabb verzió).
+A Terraform támogatása az Azure-szolgáltató 1.21.0-kiadásán keresztül érhető el: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019) .  Ez a támogatás minden olyan partnerre vonatkozik, amely a Terraform-n keresztül telepíti a megoldását, valamint az Azure-szolgáltató által üzembe helyezett és mért összes erőforrást (1.21.0 vagy újabb verzió).
 
 A Terraform-hez készült Azure-szolgáltató hozzáadta a [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) nevű új opcionális mezőt, amely a megoldáshoz használt nyomkövetési GUID azonosítóját adja meg. A mező értéke a *ARM_PARTNER_ID* környezeti változóból is származhat.
 
@@ -230,7 +230,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Jelentés
 
-A partner Center irányítópultján[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)megtalálhatja az ügyfél-használati jóváírással kapcsolatos jelentést. A jelentés megtekintéséhez a partner Center hitelesítő adatait kell használnia a bejelentkezéshez. Ha a jelentéssel vagy a bejelentkezéssel kapcsolatos problémák merülnek fel, hozzon létre egy támogatási kérést a támogatás lekérése részben.
+A partner Center irányítópultján megtalálhatja az ügyfél-használati jóváírással kapcsolatos jelentést [https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure) . A jelentés megtekintéséhez a partner Center hitelesítő adatait kell használnia a bejelentkezéshez. Ha a jelentéssel vagy a bejelentkezéssel kapcsolatos problémák merülnek fel, hozzon létre egy támogatási kérést a támogatás lekérése részben.
 
 A jelentés megtekintéséhez a partneri társítás típusa legördülő listában válassza a követett sablon lehetőséget.
 
@@ -238,15 +238,15 @@ A jelentés megtekintéséhez a partneri társítás típusa legördülő listá
 
 ## <a name="notify-your-customers"></a>Ügyfelek értesítése
 
-A partnereknek tájékoztatniuk kell az ügyfelet az ügyfél-használati jóváírást használó üzembe helyezésekről. A Microsoft azokat az Azure-használati adatokat jelenti, amelyek a partnerhez való központi telepítésekhez vannak társítva. Az alábbi példák olyan tartalmakat tartalmaznak, amelyekkel értesítheti ügyfeleit ezekről az üzemelő példányokról. A példákban cserélje le \<a partner>t a vállalat nevére. A partnereknek meg kell győződniük arról, hogy az értesítés igazodik az adatvédelemhez és a gyűjtési szabályzatokhoz, beleértve azokat a lehetőségeket, amelyekkel kizárható a nyomon követésből.
+A partnereknek tájékoztatniuk kell az ügyfelet az ügyfél-használati jóváírást használó üzembe helyezésekről. A Microsoft azokat az Azure-használati adatokat jelenti, amelyek a partnerhez való központi telepítésekhez vannak társítva. Az alábbi példák olyan tartalmakat tartalmaznak, amelyekkel értesítheti ügyfeleit ezekről az üzemelő példányokról. A példákban cserélje le a \< PARTNER>t a vállalat nevére. A partnereknek meg kell győződniük arról, hogy az értesítés igazodik az adatvédelemhez és a gyűjtési szabályzatokhoz, beleértve azokat a lehetőségeket, amelyekkel kizárható a nyomon követésből.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Értesítés Resource Manager-sablonok üzembe helyezéséhez
 
-A sablon központi telepítésekor a Microsoft azonosítani tudja a \<partner> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók https://www.microsoft.com/trustcenter:.
+A sablon központi telepítésekor a Microsoft azonosítani tudja a \< PARTNER> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Értesítés SDK-vagy API-telepítésekhez
 
-A partner> \<szoftver központi telepítésekor a Microsoft azonosítani tudja a \<partner> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók https://www.microsoft.com/trustcenter:.
+A \< partner> szoftver központi telepítésekor a Microsoft azonosítani tudja a \< partner> szoftver telepítését az üzembe helyezett Azure-erőforrásokkal. A Microsoft képes a szoftver támogatásához használt Azure-erőforrások összekapcsolására. A Microsoft ezeket az adatokat gyűjti, hogy a lehető legjobb élményt nyújtsa termékeivel, és üzleti tevékenységét. Az adatokat a Microsoft adatvédelmi szabályzatai gyűjtik és szabályozzák, amelyek a következő címen találhatók: https://www.microsoft.com/trustcenter .
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -286,7 +286,7 @@ A technikai előfizetések, a üzembe helyezési és az alkalmazás-fejlesztési
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Technikai tanácsadási kérelem beküldése
 
-1. Látogasson el a [partner Technical Services](https://partner.microsoft.com/training/partner-technical-services)webhelyre.
+1. Látogasson el a [partner Technical Services](https://aka.ms/TechnicalJourney)webhelyre.
 1. Válassza a felhőalapú infrastruktúra és felügyelet lehetőséget, és egy új oldal nyílik meg a technikai utazás megtekintéséhez.
 1. A központi telepítési szolgáltatások területen kattintson a kérelem elküldése gombra.
 1. Jelentkezzen be a MSA (MPN-fiók) vagy a HRE (partner irányítópult-fiókkal). a bejelentkezési hitelesítő adatai alapján megnyílik egy online kérelem űrlap:
@@ -295,7 +295,7 @@ A technikai előfizetések, a üzembe helyezési és az alkalmazás-fejlesztési
     * Adja meg a címet és a probléma leírását (a lehető legrészletesebben adja meg a problémát).
 1. Kattintson a Submit (Küldés) gombra
 
-Részletes útmutatást találhat a képernyőképek [használatáról a Technical Sales and Deployment Services használatával](https://support.microsoft.com/help/3121537/using-technical-presales-and-deployment-services#request%20a%20technical%20consultation).
+Részletes útmutatást találhat a képernyőképek [használatáról a Technical Sales and Deployment Services használatával](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>A következő lépések
 
@@ -329,7 +329,7 @@ Az Azure Storage GUID Generator űrlapja garantált a szükséges formátumú GU
 
 **Használhatok privát, egyéni VHD-t az Azure piactéren elérhető megoldási sablonhoz?**
 
-Nem. A virtuális gép rendszerképének az Azure Marketplace-ről kell származnia [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines), lásd:.
+Nem. A virtuális gép rendszerképének az Azure Marketplace-ről kell származnia, lásd: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
 
 Létrehozhat egy virtuálisgép-ajánlatot a piactéren az egyéni VHD használatával, és megjelölheti magánjellegűként, így senki sem láthatja. Ezután hivatkozzon erre a virtuális gépre a megoldás sablonjában.
 

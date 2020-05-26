@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773896"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800007"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaiho
 
 Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
@@ -81,7 +81,7 @@ Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja
 - **Gyorsítótár-tévesztések**
 - **Hibák (max.)**
 
-### <a name="operations"></a>Műveletek
+### <a name="operations"></a>Üzemeltetés
 
 Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 
@@ -182,8 +182,8 @@ Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust.
 
 ![Egy, a katalógust kiemelő parancssáv](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 
-* Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../app/usage-workbooks.md)használatával történő áttekintésével.
+* Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../platform/workbooks-overview.md)használatával történő áttekintésével.

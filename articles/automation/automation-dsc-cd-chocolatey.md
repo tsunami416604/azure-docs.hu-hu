@@ -5,14 +5,14 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec954c2da317e2e4b332b959b9627cf96792da84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714185"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837059"
 ---
-# <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a chocolatey-vel
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a Chocolatey segítségével
 
 A DevOps világában számos eszköz segíti a folyamatos integrációs folyamat különböző pontjainak támogatását. Azure Automation az [állapot-konfiguráció](automation-dsc-overview.md) a DevOps csapatok által alkalmazható lehetőségek örvendetes új kiegészítése. 
 
@@ -207,12 +207,11 @@ Ettől kezdve a konfigurációtól függ, hogy a virtuális gépek a frissítés
 * [Azure Automation DSC – áttekintés](automation-dsc-overview.md)
 * [Bevezetési gépek a Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az áttekintést lásd: [Azure Automation állapot konfigurálása](automation-dsc-overview.md).
-- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
-- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
+- A szolgáltatás használatának megkezdéséhez tekintse meg az [Azure Automation állapot konfigurációjának első lépéseivel foglalkozó](automation-dsc-getting-started.md)témakört.
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfigurációval és a csokoládéval](automation-dsc-cd-chocolatey.md).

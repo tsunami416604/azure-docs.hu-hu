@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188763"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798113"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -41,7 +41,7 @@ A leképezési adatfolyamatok tervezésekor az egyes átalakításokat egységes
 
 A több magot tartalmazó Integration Runtime növeli a Spark számítási környezetekben lévő csomópontok számát, és nagyobb feldolgozási teljesítményt biztosít az adatok olvasásához, írásához és átalakításához. Az ADF-adatfolyamatok a Sparkot használják a számítási motorhoz. A Spark-környezet nagyon jól működik a memóriára optimalizált erőforrásokon.
 * Ha azt szeretné, hogy a feldolgozási sebesség nagyobb legyen, mint a bemeneti sebesség, próbálkozzon egy **számítási optimalizált** fürttel.
-* Ha a memóriában további adatok gyorsítótárazására van szükség, próbálkozzon a **memóriával optimalizált** fürttel. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet eredményez.
+* Ha a memóriában további adatok gyorsítótárazására van szükség, próbálkozzon a **memóriával optimalizált** fürttel. Az optimalizált memória magasabb árat mutat, mint a számítási optimalizált érték, de valószínűleg gyorsabb átalakítási sebességet eredményez. Ha az adatfolyamatok végrehajtása során a memóriával kapcsolatos hibákat tapasztal, váltson a memóriára optimalizált Azure IR konfigurációra.
 
 ![Új IR](media/data-flow/ir-new.png "Új IR")
 
@@ -141,6 +141,10 @@ Ha például az 2019-es számú adatfájlok listáját szeretné feldolgozni a B
 
 A helyettesítő karakterek használatával a folyamat csak egy adatfolyam-tevékenységet fog tartalmazni. Ez jobb teljesítményt nyújt, mint a blob-tárolón végzett keresés, amely az összes egyező fájlon megismétli a ForEach-t egy folyamaton belüli végrehajtási adatáramlási tevékenységgel.
 
+Az egyes párhuzamos üzemmódokhoz tartozó folyamat több fürtöt fog elkészíteni a minden végrehajtott adatfolyam-tevékenységhez. Ez nagy számú párhuzamos végrehajtást eredményezhet az Azure-szolgáltatás szabályozásához. Azonban a folyamaton belüli végrehajtási adatfolyamatok használata az egyes szekvenciális készletekhez a folyamatban a szabályozás és az erőforrás-kimerülés elkerülését eredményezi. Ez Data Factory kényszeríti az egyes fájlok egymást követő adatfolyamként történő végrehajtását.
+
+Azt javasoljuk, hogy ha mindegyiket egy adatfolyamattal együtt használja egymás után, akkor a Azure Integration Runtime élettartam beállítását kell használnia. Ennek az az oka, hogy minden fájl a teljes 5 perces fürt indítási idejét veszi fel az iteráción belül.
+
 ### <a name="optimizing-for-cosmosdb"></a>Optimalizálás a CosmosDB
 
 Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-tárolók esetében csak az adott adatfolyamnak egy folyamat adatfolyam-tevékenységből való végrehajtásakor lép érvénybe. Az eredeti gyűjtemény beállításait a CosmosDB az adatfolyam-végrehajtás után fogja tiszteletben venni.
@@ -161,7 +165,7 @@ A sok illesztési művelettel rendelkező adatforgalomhoz ajánlott konfiguráci
 
 Egy másik illesztési optimalizálás az összekapcsolások összekapcsolása oly módon, hogy elkerülje a Spark tendenciáját a több illesztés megvalósításában. Ha például belefoglalja az illesztési feltételekben szereplő literál értékeket, a Spark azt láthatja, hogy először egy teljes Descartes-szorzatot kell végrehajtania, majd ki kell szűrnie az illesztett értékeket. Ha azonban gondoskodni szeretne arról, hogy az összekapcsolási feltétel mindkét oldalán legyen oszlopos érték, elkerülheti a Spark által okozott Descartes-szorzatot, és javíthatja az illesztések és az adatfolyamatok teljesítményét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

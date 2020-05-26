@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: Üzenetküldési entitások felfüggesztése és újraaktiválása
           href: entity-suspend.md
+        - name: A Service Bus Explorer használata adatműveletek a Service Buson való végrehajtásához
+          href: explorer.md
         - name: ARM-sablonok használata
           href: service-bus-resource-manager-overview.md
           items:

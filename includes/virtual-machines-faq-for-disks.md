@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343303"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837860"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="managed-disks"></a>Felügyelt lemezek
+## <a name="managed-disks"></a>Managed Disks
 
 **Mi az Azure Managed Disks?**
 
@@ -158,7 +158,7 @@ Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. 
 **Mi történik, ha az Azure-lemezek foglalása lejár?**    
 Az e-mail-értesítéseket a lejárat előtt 30 nappal, a lejárati dátum után pedig újra megkapja. Ha a foglalás lejár, a telepített lemezek továbbra is futni fognak, és az utólagos elszámolású [díjszabással](https://azure.microsoft.com/pricing/details/managed-disks/)számolunk fel díjat.
 
-### <a name="azure-shared-disks"></a>Azure-beli megosztott lemezek
+### <a name="azure-shared-disks"></a>Azure megosztott lemezek
 
 **Támogatottak-e a megosztott lemezek szolgáltatás nem felügyelt lemezek vagy Blobok esetén?**
 
@@ -455,6 +455,6 @@ Támogatjuk a gazdagépek írásvédett és olvasási/írási gyorsítótárazá
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 
-Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak részvételéhez használja az MSDN [Azure Storage fórumot](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ. A megjegyzésekben a cikk végén teheti közzé a kérdést. Az Azure Storage csapata és a jelen cikk más közösségi tagjainak bevonásához használja az MSDN [Microsoft Q&az Azure Storage-hoz készült kérdés oldalát](https://docs.microsoft.com/answers/products/azure?product=storage).
 
 A szolgáltatások igényléséhez küldje el kérelmeit és ötleteit az [Azure Storage visszajelzési fórumára](https://feedback.azure.com/forums/217298-storage).

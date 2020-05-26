@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: ce3313f2e96dacff95ed1587e2e979c4628ec022
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674315"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836226"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
 
@@ -293,7 +293,7 @@ Azure Cosmos DB egy SLA-alapú rendszer, amely késést, teljesítményt, rendel
 A következő módokon megoszthatja a visszajelzéseit:
 
 * [Felhasználói vélemény](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN-fórum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ## <a name="next-steps"></a>További lépések
