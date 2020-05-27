@@ -1,10 +1,12 @@
 - name: Azure Red Hat OpenShift
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: AZ Azure Red Hat OpenShift bemutatása
       href: intro-openshift.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: 1 – Azure Red Hat OpenShift 4-fürt létrehozása
       href: tutorial-create-cluster.md
@@ -13,7 +15,6 @@
     - name: 3 – Azure Red Hat OpenShift 4-fürt törlése
       href: tutorial-delete-cluster.md
 - name: Útmutatók
-  expanded: true
   items:
     - name: Privát Azure Red Hat OpenShift 4-fürt létrehozása
       href: howto-create-private-cluster-4x.md
@@ -37,7 +38,6 @@
       items:
         - name: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása az Azure Red Hat OpenShift 3.11-hez
           href: howto-setup-environment.md
-          expanded: true
           items:
             - name: Azure AD-bérlő létrehozása
               href: howto-create-tenant.md
@@ -85,7 +85,9 @@
       href: support-policies-v4.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: A Red Hat OpenShift dokumentációja
-      href: 'https://docs.openshift.com/aro/welcome/index.html'
+    - name: Az Azure Red Hat OpenShift 4.3 dokumentációja
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
+    - name: Az Azure Red Hat OpenShift 3.11 dokumentációja
+      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
