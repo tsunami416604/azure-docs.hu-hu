@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eaa6ceded9893b278b28d517cbddb303f8469e10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350902"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835461"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>A kérelmek kvótájának növekedése és az Azure szinapszis Analytics támogatásának beszerzése
 
@@ -95,9 +95,9 @@ Ha az előfizetés egy adott régióban fér hozzá, akkor a hozzáférés kér�
 
 ![Egyéb kvóta részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
-## <a name="submit-your-request"></a>Kérelem elküldése
+## <a name="submit-your-request"></a>A kérés elküldése
 
-Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Áttekintés +>>létrehozása **elemet, majd a kérelem részleteinek áttekintése után kattintson a **Létrehozás** gombra a kérelem elküldéséhez.
+Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Felülvizsgálat + létrehozás>>** lehetőséget, és a kérés részleteinek áttekintése után kattintson a **Létrehozás** elemre a kérés létrehozásához.
 
 ## <a name="monitor-a-support-ticket"></a>Támogatási jegy nyomon követése
 
@@ -107,5 +107,5 @@ A támogatási kérelem elküldését követően az Azure-támogatási csapat ka
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-Az Azure szinapszis Analytics-Közösséggel [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Azure SQL Data Warehouse MSDN-fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/)keresztül is csatlakozhat.
+Az Azure szinapszis Analytics-Közösséggel is csatlakozhat a [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Microsoft Q&a Azure SQL Data Warehouse kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

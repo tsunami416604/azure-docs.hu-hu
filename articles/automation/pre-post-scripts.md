@@ -5,14 +5,14 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745114"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835172"
 ---
-# <a name="manage-pre-scripts-and-post-scripts"></a>Parancsfájlok előtti és utáni parancsfájlok kezelése
+# <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
 A szkriptek előtti és utáni parancsfájlokat a rendszer a frissítés központi telepítésének megkezdése előtt (a feladat előtt) és után (feladat után) runbookok az Azure Automation-fiókban. A parancsfájl előtti és a parancsfájl utáni Futtatás az Azure-környezetben nem helyileg történik. Az előzetes parancsfájlok a frissítés központi telepítésének elején futnak. A parancsfájlok futtatása a telepítés végén, illetve a konfigurált újraindítások után történik.
 
@@ -245,4 +245,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)
+* Az Update Management részleteiért lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).

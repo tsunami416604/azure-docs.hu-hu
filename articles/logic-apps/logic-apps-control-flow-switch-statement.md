@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793235"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834526"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Munkafolyamat-műveleteket futtató kapcsolói utasítások létrehozása a Azure Logic Apps adott értékei alapján
 
@@ -42,7 +42,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
 1. Ebben a példában adjon hozzá egy switch utasítást a minta munkafolyamatának végén. Az utolsó lépés után válassza az **új lépés**lehetőséget.
 
-   Ha a lépések között egy switch utasítást szeretne hozzáadni, vigye a mutatót arra a nyílra, ahová a Switch utasítást hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Ha a lépések között egy switch utasítást szeretne hozzáadni, vigye a mutatót arra a nyílra, ahová a Switch utasítást hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "Switch" kifejezést. Válassza ki ezt a műveletet: **switch-Control**
 
@@ -57,7 +57,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
    ![Válassza a "SelectedOption" lehetőséget](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Az esetek, amikor a jóváhagyó `Approve` kiválasztja vagy `Reject`, adjon hozzá egy másik esetet az **eset** és az **alapértelmezett érték**között. 
+1. Az esetek, amikor a jóváhagyó kiválasztja `Approve` vagy `Reject` , adjon hozzá egy másik esetet az **eset** és az **alapértelmezett érték**között. 
 
    ![Újabb eset hozzáadása](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -67,7 +67,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
    |--------|--------------------|--------|
    | 1. eset | **Jóváhagyás** | Adja hozzá az Outlook **E-mail küldése** műveletet, amely csak akkor küldi el az RSS-elem részleteit, ha a jóváhagyó a **jóváhagyást**választotta. |
    | 2. eset | **Elutasítás** | Adja hozzá az Outlook **E-mail küldése** műveletet az RSS-elem elutasításához szükséges más jóváhagyók értesítéséhez. |
-   | Alapértelmezett | None | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
+   | Alapértelmezett | Nincs | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
    |||
 
    ![Befejezett switch utasítás](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -115,13 +115,13 @@ Most, hogy egy switch utasítás használatával létrehozott egy logikai alkalm
 | `"Switch"`         | A Switch utasítás neve, amelyet átnevezni lehet az olvashatóság érdekében |
 | `"type": "Switch"` | Megadja, hogy a művelet egy switch utasítás |
 | `"expression"`     | Ebben a példában a jóváhagyó kiválasztott beállítását adja meg, amelyet a rendszer a definícióban később deklarált minden esetben kiértékel. |
-| `"cases"` | Tetszőleges számú esetet határoz meg. `"Case_*"` Ebben az esetben az alapértelmezett név, amelyet átnevezheti az olvashatóság érdekében |
+| `"cases"` | Tetszőleges számú esetet határoz meg. `"Case_*"`Ebben az esetben az alapértelmezett név, amelyet átnevezheti az olvashatóság érdekében |
 | `"case"` | Meghatározza az eset értékét, amelynek állandó és egyedi értéknek kell lennie, amelyet a Switch utasítás az összehasonlításhoz használ. Ha egyetlen eset sem felel meg a kapcsoló kifejezés eredményének, a `"default"` szakasz műveletei futnak. | 
 | | | 
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókra vagy javaslatokra való beküldéshez vagy szavazáshoz látogasson el a [Azure Logic apps felhasználói visszajelzési webhelyre](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések

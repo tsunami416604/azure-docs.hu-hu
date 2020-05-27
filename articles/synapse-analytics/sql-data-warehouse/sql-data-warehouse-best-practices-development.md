@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e149c45c720a5da6b051b7ce9581d74c64fa35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745368"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834475"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-készlethez
 
@@ -120,7 +120,7 @@ Lásd még: [Table indexek](sql-data-warehouse-tables-index.md), [oszlopcentriku
 
 Ha nem találja, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  
 
-Az [Azure szinapszis fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoport számára.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
+A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
 Ha inkább a Stack Overflow-ra vonatkozó kérdéseket szeretne feltenni, van egy [Azure SQL Data Warehouse Stack Overflow fórumunk](https://stackoverflow.com/questions/tagged/azure-sqldw) is.
 

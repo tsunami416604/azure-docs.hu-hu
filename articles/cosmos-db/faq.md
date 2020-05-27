@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701387"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834906"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -70,7 +70,7 @@ Az [Azure Cosmos db Emulator](local-emulator.md) használatával az alkalmazást
 
 Ha technikai kérdést szeretne feltenni, tegye közzé a következő két kérdés-válasz fórum egyikét:
 
-* [MSDN-fórum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 Új szolgáltatások igényléséhez hozzon létre egy új kérelmet a [felhasználói hangon](https://feedback.azure.com/forums/263030-azure-cosmos-db).

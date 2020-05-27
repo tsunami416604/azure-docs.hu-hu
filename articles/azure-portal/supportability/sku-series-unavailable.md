@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843632"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835988"
 ---
 # <a name="region-or-sku-unavailable"></a>Nem elérhető régió vagy termékváltozat
 
@@ -68,7 +68,7 @@ Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-k
 
 1. A **probléma típusa**beállításnál válassza a **probléma típusának kiválasztása**lehetőséget.
 
-1. A **probléma típusának kiválasztásához**válasszon egy beállítást, például nem **tud hozzáférni az előfizetéshez vagy az erőforráshoz** > ,**a probléma nem szerepel a fenti listában**. Kattintson a **Mentés** gombra.
+1. A **probléma típusának kiválasztásához**válasszon egy beállítást, például nem **tud hozzáférni az előfizetéshez vagy az erőforráshoz**,  >  **a probléma nem szerepel a fenti listában**. Kattintson a **Mentés** gombra.
 
    ![Probléma megadása a kérelemhez](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -80,7 +80,7 @@ Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-k
 
 ## <a name="send-us-your-suggestions"></a>Küldje el nekünk javaslatait
 
-Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy az [MSDN-fórumokon](https://social.msdn.microsoft.com/Forums/azure)is elvégezheti velünk a kapcsolatot.
+Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy a [Microsoft Q&egy kérdés oldalon](https://docs.microsoft.com/answers/products/azure)is felveheti velünk a kapcsolatot.
 
 ## <a name="learn-more"></a>Részletek
 

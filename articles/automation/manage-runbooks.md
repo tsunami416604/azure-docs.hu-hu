@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 28ddd2a2d75ab8a57dfc3176eefd703f6c43d0b6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745071"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834696"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -338,6 +338,8 @@ foreach($item in $output)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbook végrehajtása az Azure Automationben](automation-runbook-execution.md)
-* [Szöveges runbookok szerkesztése Azure Automation](automation-edit-textual-runbook.md)
-* [Grafikus runbookok készítése Azure Automation](automation-graphical-authoring-intro.md)
+* A runbook-kezelés részleteiért lásd: [runbook-végrehajtás a Azure Automation-ben](automation-runbook-execution.md).
+* PowerShell-runbook előkészítéséhez tekintse [meg a szöveges Runbookok szerkesztése Azure Automationban](automation-edit-textual-runbook.md)című témakört.
+* A PowerShell-munkafolyamatok runbook írásával kapcsolatban lásd: [Azure Automation PowerShell-munkafolyamatának megismerése](automation-powershell-workflow.md).
+* A grafikus runbookok írásával kapcsolatos részleteket lásd: [grafikus runbookok készítése a Azure Automation-ben](automation-graphical-authoring-intro.md).
+* A runbook-végrehajtással kapcsolatos problémák elhárításához tekintse meg a [runbook kapcsolatos problémák elhárítása](troubleshoot/runbooks.md)című témakört.

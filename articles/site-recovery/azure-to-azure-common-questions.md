@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983278"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834577"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -163,7 +163,7 @@ Nem, Site Recovery fogja megőrizni az összes korábbi helyreállítási pontot
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Ha a replikáció engedélyezve van egy virtuális gépen, hogyan változtathatom meg a replikációs házirendet?
 
-Nyissa meg **site Recovery** > tároló**site Recovery infrastruktúra** > -**replikációs házirendek**lehetőséget. Válassza ki a szerkeszteni kívánt szabályzatot, és mentse a módosításokat. A módosítások az összes meglévő replikációra érvényesek lesznek.
+Nyissa meg **site Recovery**tároló  >  **site Recovery infrastruktúra**-  >  **replikációs házirendek**lehetőséget. Válassza ki a szerkeszteni kívánt szabályzatot, és mentse a módosításokat. A módosítások az összes meglévő replikációra érvényesek lesznek.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Az összes helyreállítási pont a virtuális gép teljes másolatát vagy a különbözetet?
 
@@ -315,4 +315,4 @@ Igen, az Azure-ban az átvitelben és a [titkosításban](https://docs.microsoft
 
 - [Tekintse át az Azure-ról Azure-ra vonatkozó támogatási követelményeket](azure-to-azure-support-matrix.md).
 - [Azure – Azure replikálás beállítása](azure-to-azure-tutorial-enable-replication.md).
-- Ha kérdése van a cikk elolvasása után, tegye közzé őket az [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+- Ha a cikk elolvasása után kérdése merülne fel, tegye fel őket a [Microsoft Q&az Azure Recovery Services kérdéseit tartalmazó oldalra](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).

@@ -12,9 +12,9 @@
       href: cloud-services-dotnet-get-started.md
     - name: Minta Python for Visual Studio-felhőszolgáltatás
       href: cloud-services-python-ptvs.md
-- name: 'Útmutató:'
+- name: Útmutató
   items:
-    - name: Csomag
+    - name: Felkészülés
       items:
         - name: Virtuálisgép-méretek
           href: cloud-services-sizes-specs.md
@@ -102,7 +102,7 @@
           href: cloud-services-certs-create.md
         - name: Az SSL konfigurálása
           href: cloud-services-configure-ssl-certificate-portal.md
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: Felhőszolgáltatás monitorozása
           href: cloud-services-how-to-monitor.md
@@ -191,8 +191,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Képzési terv
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Díjkalkulátor

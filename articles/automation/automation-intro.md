@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Man
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712774"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835274"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -94,8 +94,7 @@ Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazá
 
 A [díjszabási](https://azure.microsoft.com/pricing/details/automation/) oldalon a Azure Automationhöz kapcsolódó árakat tekintheti át.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Automation-fiók létrehozása](automation-quickstart-create-account.md)
-

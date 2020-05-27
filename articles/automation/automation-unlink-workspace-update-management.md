@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4261b3c3fa7aab830f5f57e86ee25f8ba5894849
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749066"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835784"
 ---
 # <a name="unlink-workspace-from-automation-account-for-update-management"></a>Munkaterület leválasztása az Automation-fiókból Update Management
 
@@ -40,6 +40,7 @@ Azt is megteheti, hogy leválasztja az Log Analytics munkaterületet az Automati
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)
-* [Virtuális gépek eltávolítása a Update Managementból](automation-remove-vms-from-update-management.md)
-* [Update Management problémák elhárítása](troubleshoot/update-management.md)
+* A szolgáltatással való együttműködéshez tekintse meg az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakört.
+* A szolgáltatással kapcsolatos hibák elhárításához tekintse meg [Update Management problémák elhárítása](troubleshoot/update-management.md)című témakört.
+* A Windows Update Agent hibáinak elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux frissítési ügynök hibáinak elhárításához tekintse meg a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

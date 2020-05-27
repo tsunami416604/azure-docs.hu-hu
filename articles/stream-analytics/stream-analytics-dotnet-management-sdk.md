@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426261"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835495"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
 Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
@@ -285,7 +285,7 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
    ```
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További információt a következő cikkekben talál:

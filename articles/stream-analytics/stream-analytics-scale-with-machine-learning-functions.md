@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929043"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835580"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -140,7 +140,7 @@ Stream Analytics feladatok Machine Learning függvényekkel való méretezéséh
 2. A futó Stream Analytics feladatokhoz (és így a Machine Learning webszolgáltatási kérelmek batch-méretéhez) tartozó tolerált késés.
 3. A kiépített Stream Analytics SUs és a Machine Learning webszolgáltatási kérelmek száma (a további függvényekkel kapcsolatos költségek).
 
-Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Azure stream Analytics fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) egy nagyszerű erőforrás, amellyel további segítséget kaphat a stream Analytics csapattól.
+Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Microsoft Q&a Azure stream Analytics egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) , amellyel további segítséget kaphat a stream Analytics csapattól.
 
 ## <a name="next-steps"></a>További lépések
 A Stream Analyticsról további információt a következő témakörben talál:

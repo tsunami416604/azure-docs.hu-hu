@@ -1,16 +1,16 @@
 ---
-title: Batch szolgáltatás munkafolyamata és erőforrásai
+title: A Batch szolgáltatás munkafolyamata és erőforrásai
 description: Ismerje meg a Batch szolgáltatás funkcióit és a fejlesztési szempontból magas szintű munkafolyamatát.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 8112f6059a14bb18bf1fbf4011ceb074d71b5837
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791133"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835920"
 ---
-# <a name="batch-service-workflow-and-resources"></a>Batch szolgáltatás munkafolyamata és erőforrásai
+# <a name="batch-service-workflow-and-resources"></a>A Batch szolgáltatás munkafolyamata és erőforrásai
 
 A Azure Batch szolgáltatás alapvető összetevőinek áttekintésében megbeszéljük azt a magas szintű munkafolyamatot, amelyet a Batch-fejlesztők nagy léptékű párhuzamos számítási megoldások létrehozásához használhatnak, valamint a használt elsődleges szolgáltatási erőforrásokat is.
 
@@ -39,7 +39,7 @@ Az alábbi témakörök ismertetik az elosztott számítási forgatókönyveket 
 
 - [Batch-fiókok és Storage-fiókok](accounts.md)
 - [Csomópontok és készletek](nodes-and-pools.md)
-- [Feladatok és feladatok](jobs-and-tasks.md)
+- [Feladatok és tevékenységek](jobs-and-tasks.md)
 - [Fájlok és könyvtárak](files-and-directories.md)
 
 ## <a name="next-steps"></a>További lépések
@@ -47,4 +47,4 @@ Az alábbi témakörök ismertetik az elosztott számítási forgatókönyveket 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.
 - Töltse le és telepítse a [Batch Explorer](https://azure.github.io/BatchExplorer/) alkalmazást, amelyet bármikor használhat, ha a Batch-megoldások fejlesztése során segítségre van szüksége. A Batch Explorer alkalmazással Azure Batch-alkalmazásokat hozhat létre és monitorozhat, valamint a felmerülő hibáikat is elháríthatja.
-- Lásd: közösségi erőforrások, többek között a [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), a [Batch közösségi](https://github.com/Azure/Batch)tárház és a [Azure batch fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch).
+- Lásd: közösségi erőforrások, többek között a [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), a [Batch közösségi](https://github.com/Azure/Batch)tárház és a [Azure batch fórum](https://docs.microsoft.com/answers/topics/azure-batch.html).

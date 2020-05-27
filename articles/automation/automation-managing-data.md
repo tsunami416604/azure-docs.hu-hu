@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715426"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835206"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
@@ -74,8 +74,7 @@ Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a kü
 
 4. Importálja a runbookok az Automation-fiókjába a másodlagos régióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg [a biztonságos eszközök titkosítása a Azure Automationban](automation-secure-asset-encryption.md)című témakört.
-
+* Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg a biztonságos adategységek [titkosítása Azure Automation-ben](automation-secure-asset-encryption.md)című témakört.
 * További információ a Geo-replikációról: [Active geo-replikáció létrehozása és használata](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

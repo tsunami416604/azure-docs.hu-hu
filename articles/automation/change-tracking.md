@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744366"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835104"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -79,7 +79,7 @@ A módosításra vagy eseményre kattintva megtekintheti annak részleteit. Az e
 
 * Események
 * Démonok
-* Fájlok
+* Files
 * Registry
 * Szoftverek
 * Microsoft-szolgáltatások
@@ -195,7 +195,10 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
-* [Naplóbeli keresések Azure Monitor naplókban](../log-analytics/log-analytics-log-searches.md)
-* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
-* [Azure-beli virtuális gépek változásainak hibáinak megoldása](automation-tutorial-troubleshoot-changes.md)
+* A Change Tracking és a leltár használatáról további részleteket a [change Tracking és a leltár kezelése](change-tracking-file-contents.md)című témakörben talál.
+* Ha engedélyezni szeretné a szolgáltatást egy runbook, tekintse meg a következőt: [change Tracking és leltár engedélyezése runbook](automation-enable-changes-from-runbook.md).
+* A szolgáltatás Automation-fiókból való engedélyezéséhez lásd: [change Tracking és leltár engedélyezése Automation-fiókból](automation-enable-changes-from-auto-acct.md).
+* Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-onboard-solutions-from-browse.md)című témakört.
+* Ha engedélyezni szeretné a szolgáltatást egy Azure-beli virtuális gépről, tekintse meg az Azure-beli [virtuális gép Change Tracking és leltározásának engedélyezése](automation-enable-changes-from-vm.md)című témakört.
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
+* A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

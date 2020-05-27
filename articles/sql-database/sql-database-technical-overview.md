@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cace4bdc1b8558fb7186f6300189c22753cc8bf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133237"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834849"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -254,7 +254,7 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 
 - [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): kérdezze meg az adatbázis adminisztrációs kérdéseit.
 - [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): forduljon a fejlesztési kérdésekhez.
-- [MSDN-fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): technikai kérdéseket tehet fel.
+- [A Microsoft Q&egy kérdést tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibajelentések és kérések funkció.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 

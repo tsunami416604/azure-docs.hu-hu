@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696919"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835835"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
@@ -26,11 +26,7 @@ Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt,
 
 ## <a name="supported-storage-authorization-types"></a>Támogatott tárolási engedélyezési típusok
 
-Egy SQL igény szerinti erőforrásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére, ha a fájlok nem nyilvánosan elérhetők. Három engedélyezési típus támogatott:
-
-- [Közös hozzáférésű jogosultságkód](?tabs=shared-access-signature)
-- [Felhasználói identitás](?tabs=user-identity)
-- [Felügyelt identitás](?tabs=managed-identity)
+Egy SQL igény szerinti erőforrásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére, ha a fájlok nem nyilvánosan elérhetők. Három engedélyezési típust használhat a nem nyilvános tár – [felhasználói identitás](?tabs=user-identity), [közös hozzáférésű aláírás](?tabs=shared-access-signature)és [felügyelt identitás](?tabs=managed-identity)eléréséhez.
 
 > [!NOTE]
 > A munkaterületek létrehozásakor az [Azure ad pass-through](#force-azure-ad-pass-through) az alapértelmezett viselkedés. Ha ezt használja, nem szükséges hitelesítő adatokat létrehoznia minden olyan Storage-fiókhoz, amely az Azure AD-bejelentkezések használatával érhető el. [Ezt a viselkedést letilthatja](#disable-forcing-azure-ad-pass-through).
@@ -339,7 +335,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

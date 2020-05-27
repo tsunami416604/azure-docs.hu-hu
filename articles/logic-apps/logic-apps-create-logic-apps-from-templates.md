@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76905116"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834458"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazás munkafolyamatok létrehozása előre összeállított sablonokból
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
 
 1. Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com "Azure Portal").
 
-2. Az Azure fő menüjében válassza az **erőforrás** > létrehozása**Vállalati integráció** > **logikai alkalmazás**lehetőséget.
+2. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **Vállalati integráció**  >  **logikai alkalmazás**lehetőséget.
 
    ![Azure Portal, Új, Vállalati integráció, Logikai alkalmazás](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -146,7 +146,7 @@ A tervező eszköztárán válassza a **Mentés** parancsot.
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések

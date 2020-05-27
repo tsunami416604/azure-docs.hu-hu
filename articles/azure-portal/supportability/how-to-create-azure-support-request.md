@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478984"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835546"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure-támogatáskérések létrehozása
 
@@ -53,7 +53,7 @@ Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
    ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Válassza az **új támogatási kérelem**lehetőséget. Az utasításokat követve adja meg nekünk a problémával kapcsolatos információkat. Javaslatot teszünk néhány lehetséges megoldásra, a probléma részleteinek begyűjtésére és a támogatási kérelem elküldésére és nyomon követésére.
+2. Válassza az **Új támogatási kérelem** lehetőséget. Az utasításokat követve adja meg nekünk a problémával kapcsolatos információkat. Javaslatot teszünk néhány lehetséges megoldásra, a probléma részleteinek begyűjtésére és a támogatási kérelem elküldésére és nyomon követésére.
 
    ![Új támogatási kérelem](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -106,7 +106,7 @@ A támogatási ügynök felveszi Önnel a kapcsolatot a megadott módszer haszn�
 
 ## <a name="all-support-requests"></a>Minden támogatási kérelem
 
-A támogatási kérések részleteit és állapotát a **Súgó + támogatás** >  **minden támogatási kérelem**támogatásával tekintheti meg.
+A támogatási kérések részleteit és állapotát a **Súgó + támogatás**  >   **minden támogatási kérelem**támogatásával tekintheti meg.
 
 ![Minden támogatási kérelem](./media/how-to-create-azure-support-request/allrequestslower.png)
 
@@ -128,5 +128,5 @@ Ha többet szeretne megtudni az Azure önsegítő támogatási lehetőségeiről
 
 * [Küldje el nekünk visszajelzését és javaslatait](https://feedback.azure.com/forums/266794-support-feedback)
 * Részvétel a [Twitteren](https://twitter.com/azuresupport)
-* Segítség kérése a társaitól az [MSDN-fórumokon](https://social.msdn.microsoft.com/Forums/azure)
+* Segítség kérése a társaitól a [Microsoft Q&a kérdéses oldalon](https://docs.microsoft.com/answers/products/azure)
 * További információ az [Azure-támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq)

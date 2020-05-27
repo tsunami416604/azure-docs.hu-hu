@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 35d3146c0ca5571e6e16793c97378de1e2db362e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711720"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835393"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
 
@@ -430,11 +430,9 @@ Tegye közzé a grafikus runbook úgy, hogy megnyitja a runbook a szerkesztéshe
 
 Lehetősége van arra, hogy visszaállítson egy runbook közzétett verzióját. A művelet eldönti, hogy milyen módosításokat hajtottak végre a runbook legutóbbi közzététele óta. Lecseréli a runbook Piszkozat verzióját a közzétett verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [az első PowerShell-munkafolyamat runbook](automation-first-runbook-textual.md).
-* A grafikus runbookok megkezdéséhez tekintse meg [az első grafikus runbook](automation-first-runbook-graphical.md).
+* A grafikus runbookok megkezdéséhez tekintse meg az [oktatóanyag: grafikus Runbook létrehozása](learn/automation-tutorial-runbook-graphical.md)című témakört.
 * Ha többet szeretne megtudni a runbook típusairól és azok előnyeiről és korlátairól, tekintse meg a [Azure Automation runbook-típusok](automation-runbook-types.md)című témakört.
-* Az Automation futtató fiók használatával végzett hitelesítés megismeréséhez lásd: az Azure-beli [futtató fiók konfigurálása](automation-sec-configure-azure-runas-account.md).
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Az Automation futtató fiók használatával végzett hitelesítés megismeréséhez lásd: [futtató fiók](automation-security-overview.md#run-as-account).
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

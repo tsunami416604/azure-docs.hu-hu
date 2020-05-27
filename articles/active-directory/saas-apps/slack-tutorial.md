@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a125637bd155ac11a544afeee1d371d080bb72eb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799087"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Slacktel
 
@@ -104,6 +104,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | | |
+
+> [!NOTE]
+    > A szolgáltatói (SP) konfiguráció beállításához kattintson a **Kibontás** lehetőségre a SAML-konfiguráció lapon a **Speciális beállítások** elem mellett. A **szolgáltatói kiállító** mezőben adja meg a munkaterület URL-címét. Az alapértelmezett érték a slack.com. 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 

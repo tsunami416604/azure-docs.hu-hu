@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240304"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834764"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
 
@@ -56,7 +56,7 @@ Ebben a szakaszban létrehoz egy Event hub-névteret, és hozzáad egy Event hub
  
 4. Ha a névtér befejezte a telepítést, navigáljon az erőforráscsoporthoz, és keresse meg az Event hub-névteret az Azure-erőforrások listájában. 
 
-5. Az új névtérben válassza az ** + &nbsp;Event hub**elemet. 
+5. Az új névtérben válassza az ** + &nbsp; Event hub**elemet. 
 
 6. Nevezze el az új Event hub *socialtwitter-eh*nevet. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
  
@@ -89,7 +89,7 @@ Ahhoz, hogy egy folyamat adatküldést küldjön egy Event hubhoz, az Event hub-
    Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
    ```
 
-   Figyelje meg, hogy a kapcsolatok karakterlánca több kulcs-érték párokat tartalmaz, pontosvesszővel `Endpoint`elválasztva:, `SharedAccessKeyName` `SharedAccessKey`, és `EntityPath`.  
+   Figyelje meg, hogy a kapcsolatok karakterlánca több kulcs-érték párokat tartalmaz, pontosvesszővel elválasztva: `Endpoint` ,, `SharedAccessKeyName` `SharedAccessKey` és `EntityPath` .  
 
    > [!NOTE]
    > A biztonság érdekében a példában szereplő, a kapcsolatok karakterláncának egyes részei el lettek távolítva.
@@ -127,16 +127,16 @@ Az alkalmazás futtatása előtt szükség van bizonyos információkra, példá
 
 1. Győződjön meg arról, hogy letöltötte a [TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) alkalmazást az előfeltételek részben leírtak szerint.
 
-2. Szövegszerkesztő használatával nyissa meg az *app. config* fájlt. Hajtsa végre a következő módosításokat `<appSettings>` a elemen:
+2. Szövegszerkesztő használatával nyissa meg az *app. config* fájlt. Hajtsa végre a következő módosításokat a `<appSettings>` elemen:
 
-   * Állítsa `oauth_consumer_key` be a Twitter fogyasztói kulcsát (API-kulcs). 
-   * Állítsa `oauth_consumer_secret` be a Twitter fogyasztói titkát (API titkos kulcs).
-   * Állítsa `oauth_token` be a Twitter hozzáférési tokent.
-   * Állítsa `oauth_token_secret` be a Twitter hozzáférési token titkát.
-   * Állítsa `EventHubNameConnectionString` be a kapcsolódási karakterláncot.
+   * Állítsa be `oauth_consumer_key` a Twitter fogyasztói kulcsát (API-kulcs). 
+   * Állítsa be `oauth_consumer_secret` a Twitter fogyasztói titkát (API titkos kulcs).
+   * Állítsa be `oauth_token` a Twitter hozzáférési tokent.
+   * Állítsa be `oauth_token_secret` a Twitter hozzáférési token titkát.
+   * Állítsa be `EventHubNameConnectionString` a kapcsolódási karakterláncot.
    * Állítsa `EventHubName` az Event hub nevére (ez az entitás elérési útjának értéke).
 
-3. Nyissa meg a parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a TwitterClientCore-alkalmazás található. A parancs `dotnet build` használatával hozza létre a projektet. Ezután használja az parancsot `dotnet run` az alkalmazás futtatásához. Az alkalmazás Tweeteket küld az Event hub-nak.
+3. Nyissa meg a parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a TwitterClientCore-alkalmazás található. A parancs használatával hozza `dotnet build` létre a projektet. Ezután használja az parancsot az `dotnet run` alkalmazás futtatásához. Az alkalmazás Tweeteket küld az Event hub-nak.
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
@@ -144,7 +144,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
 1. A Azure Portal navigáljon az erőforráscsoporthoz, és válassza a **+ Hozzáadás**lehetőséget. Ezután keresse meg **stream Analytics feladatot** , és válassza a **Létrehozás**lehetőséget.
 
-2. Nevezze el a `socialtwitter-sa-job` feladatot, és adjon meg egy előfizetést, egy erőforráscsoportot és egy helyet.
+2. Nevezze el a feladatot, `socialtwitter-sa-job` és adjon meg egy előfizetést, egy erőforráscsoportot és egy helyet.
 
     Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
@@ -154,7 +154,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
 1. A Stream Analyticsi feladatban válassza a bal oldali menü **bemenetek** elemét a **feladatok topológiája**alatt.
 
-2. Válassza az ** + &nbsp;adatfolyam hozzáadása bemeneti** > **esemény hub**elemet. Töltse ki az **új beviteli** űrlapot a következő információkkal:
+2. Válassza az ** + &nbsp; adatfolyam hozzáadása bemeneti**  >  **esemény hub**elemet. Töltse ki az **új beviteli** űrlapot a következő információkkal:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
@@ -205,12 +205,12 @@ Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Az
 
 1. A bal oldali navigációs menü **feladatok topológiája** szakaszában válassza a **kimenetek**lehetőséget. 
 
-2. A **kimenetek** lapon kattintson a ** + &nbsp;Hozzáadás** és a **blob Storage/Data Lake Storage Gen2**elemre:
+2. A **kimenetek** lapon kattintson a ** + &nbsp; Hozzáadás** és a **blob Storage/Data Lake Storage Gen2**elemre:
 
-   * **Kimeneti alias**: használja a nevet `TwitterStream-Output`. 
+   * **Kimeneti alias**: használja a nevet `TwitterStream-Output` . 
    * **Importálási beállítások**: válassza **a tároló kiválasztása az előfizetések**közül lehetőséget.
    * **Storage-fiók**. Válassza ki a tárfiókot.
-   * **Tároló**. Válassza az **új létrehozása** elemet `socialtwitter`, és adja meg az értéket.
+   * **Tároló**. Válassza az **új létrehozása** elemet, és adja meg az értéket `socialtwitter` .
    
 4. Kattintson a **Mentés** gombra.   
 
@@ -225,7 +225,7 @@ Meg van adva a feladatok bemenete, lekérdezése és kimenete. Készen áll arra
 3. A **kezdési feladatok** lapon a **feladatok kimenetének kezdési idejéhez**válassza a **most** lehetőséget, majd kattintson a **Start**gombra.
 
 ## <a name="get-support"></a>Támogatás kérése
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

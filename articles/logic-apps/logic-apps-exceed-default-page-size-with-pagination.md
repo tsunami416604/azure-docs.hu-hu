@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 75d9660eb35b5d7ddc644d177c11ae489e2853dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f114dd0428e13b3e1a205fea353b38b1f8a6f97
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792111"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835359"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>További adatok, elemek vagy rekordok beolvasása a Azure Logic Apps tördelésének használatával
 
@@ -27,7 +27,7 @@ A tördelési beállítás bekapcsolásával az eredmények lapjait az összekö
 
 Az alábbi lista néhány olyan összekötőt mutat be, amelyeken túllépheti az adott műveletek alapértelmezett méretét:
 
-* [Azure-Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
+* [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
 * [Excel](https://docs.microsoft.com/connectors/excel/)
 * [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
@@ -62,7 +62,7 @@ Annak megállapításához, hogy egy művelet támogatja-e a tördelést a Logic
 
 ## <a name="workflow-definition---pagination"></a>Munkafolyamat-definíció – tördelés
 
-Ha bekapcsolja a funkciót támogató művelet tördelését, a logikai alkalmazás munkafolyamat-definíciója tartalmazza a `"paginationPolicy"` tulajdonságot a művelet `"minimumItemCount"` `"runtimeConfiguration"` tulajdonságában szereplő tulajdonsággal együtt, például:
+Ha bekapcsolja a funkciót támogató művelet tördelését, a logikai alkalmazás munkafolyamat-definíciója tartalmazza a `"paginationPolicy"` tulajdonságot a `"minimumItemCount"` művelet tulajdonságában szereplő tulajdonsággal együtt `"runtimeConfiguration"` , például:
 
 ```json
 "actions": {
@@ -84,4 +84,4 @@ Ha bekapcsolja a funkciót támogató művelet tördelését, a logikai alkalmaz
 
 ## <a name="get-support"></a>Támogatás kérése
 
-A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).

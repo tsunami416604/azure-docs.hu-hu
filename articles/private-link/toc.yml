@@ -74,8 +74,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Hálózatkezelési blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Hálózatkezelési fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A kérdések oldala a hálózatkezeléshez
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Hálózatkezelés – visszajelzés
       href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
     - name: Díjszabás

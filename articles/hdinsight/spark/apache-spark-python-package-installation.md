@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583950"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835971"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -41,7 +41,7 @@ A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhet�
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között több közösségi webhely is használható, például a [következőhöz: msdn Forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) `https://stackoverflow.com`. Emellett az `https://apache.org`Apache-projektek is rendelkeznek projekt-webhelyekkel.
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között számos közösségi webhely használható, például: [Microsoft Q&a HDInsight-hez tartozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) `https://stackoverflow.com` . Emellett az Apache-projektek is rendelkeznek projekt-webhelyekkel `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>A Python alapértelmezett telepítésének ismertetése
 
@@ -49,7 +49,7 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 
 | |Python 2,7|Python 3,5|
 |----|----|----|
-|Útvonal|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark|Alapértelmezett érték 2,7|N/A|
 |Livy|Alapértelmezett érték 2,7|N/A|
 |Jupyter|PySpark kernel|PySpark3 kernel|
@@ -105,7 +105,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fő csomópontjára, és az összes `/usr/bin/anaconda/bin/conda info -e` virtuális környezet megjelenítéséhez futtathatja azt.
+    Ha nem ismeri a virtuális környezet nevét, az SSH-t használhatja a fürt fő csomópontjára, és az `/usr/bin/anaconda/bin/conda info -e` összes virtuális környezet megjelenítéséhez futtathatja azt.
 
 3. Módosítsa a Spark és a Livy konfigurációját, és mutasson a létrehozott virtuális környezetre.
 
@@ -146,9 +146,9 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
 ## <a name="known-issue"></a>Ismert probléma
 
-Létezik egy ismert hiba a anaconda-verzió `4.7.11`, `4.7.12`a és `4.8.0`a esetében. Ha a parancsfájl műveletei a következő helyen találhatók `"Collecting package metadata (repodata.json): ...working..."` : és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"`. [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
+Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12` `4.8.0` . Ha a parancsfájl műveletei a következő helyen találhatók: `"Collecting package metadata (repodata.json): ...working..."` és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"` . [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
 
-A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, `/usr/bin/anaconda/bin/conda --v`és futtathatja a parancsot.
+A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
 ## <a name="next-steps"></a>További lépések
 

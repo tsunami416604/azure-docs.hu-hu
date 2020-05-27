@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a6cf348142d694a03da24f32793fc72325701931
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712451"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835223"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -128,7 +128,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 A Linux rendszerű számítógépek hibrid Runbook Worker csoportjának eltávolításához ugyanazokat a lépéseket kell használnia, mint a Windows Hybrid Worker-csoport esetében. Lásd: [hibrid feldolgozói csoport eltávolítása](automation-windows-hrw-install.md#remove-a-hybrid-worker-group).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
-* A hibrid Runbook-feldolgozók hibakeresésével kapcsolatos további információkért lásd: [Linux Hybrid Runbook-feldolgozók hibáinak megoldása](troubleshoot/hybrid-runbook-worker.md#linux).
+* A hibrid Runbook-feldolgozók hibaelhárításával kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozói problémák elhárítása – Linux](troubleshoot/hybrid-runbook-worker.md#linux).

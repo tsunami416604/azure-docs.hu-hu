@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780435"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834985"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL-készletekhez az Azure szinapszis Analyticsben
 
@@ -193,7 +193,7 @@ Az SQL-készletek több DMV is használhatók a lekérdezések végrehajtásána
 
 Tekintse meg a gyakori problémákkal és megoldásokkal kapcsolatos [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket is.
 
-Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **szűrés cím** alapján az összes SQL-készlet dokumentumának kereséséhez.  Az [SQL-készlet fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyen fel más felhasználók és az SQL Pool termékcsoport számára.  
+Ha a jelen cikkben nem szereplő információkra van szüksége, keresse fel a [Microsoft Q&az Azure szinapszis kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , hogy kérdéseket tegyen fel más felhasználók és az SQL Pool termékcsoport számára.  
 
 Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  Ha szeretne kérdéseket feltenni a Stack Overflowra, egy [Azure SQL-készlettel](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezünk stack overflow fórumban.
 

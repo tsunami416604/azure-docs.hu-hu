@@ -4,12 +4,12 @@ description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérd
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592848"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835002"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -333,4 +333,4 @@ Videók:
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN Language Understanding intelligens szolgáltatások (LUIS) Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [Microsoft Q&az MSDN Language Understanding intelligens szolgáltatások (LUIS) kérdésének oldalát](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

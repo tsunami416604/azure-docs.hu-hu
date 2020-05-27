@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585326"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836005"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -132,7 +132,7 @@ Ha problémákat tapasztal a Security Center irányítópultjának betöltése s
 
 ## <a name="contacting-microsoft-support"></a>Kapcsolatfelvétel a Microsoft támogatási szolgálatával
 
-Bizonyos problémák a jelen cikk irányelveinek használatával azonosíthatók, a továbbiak leírása pedig a Security Center nyilvános [fórumában](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) található meg. Ha azonban további hibaelhárításra van szüksége, az alábbi ábrán látható módon nyithat meg egy új támogatási kérést **Azure Portal** használatával:
+Bizonyos problémák a jelen cikkben ismertetett irányelvek alapján azonosíthatók, másokat a Security Center nyilvános [Microsoft Q&egy kérdés oldalon](https://docs.microsoft.com/answers/topics/azure-security-center.html)találhat. Ha azonban további hibaelhárításra van szüksége, az alábbi ábrán látható módon nyithat meg egy új támogatási kérést **Azure Portal** használatával:
 
 ![Microsoft támogatási szolgálat](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

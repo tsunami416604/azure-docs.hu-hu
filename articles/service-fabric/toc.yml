@@ -892,8 +892,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Gyakori kérdések
       href: service-fabric-common-questions.md
-    - name: MSDN fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Az Azure Resource Manager üzembehelyezési védőkorlátai
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Díjszabás

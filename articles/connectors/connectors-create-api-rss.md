@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e95b7bfce3d57dfe579a5622c3c13fac2b6af68
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789341"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834815"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-hírcsatornák kezelése Azure Logic Apps használatával
 
@@ -43,7 +43,7 @@ Olyan RSS-triggert használhat, amely az RSS-hírcsatornából választ kap, és
 
    * Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként az "RSS" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
-     – vagy –
+     -vagy-
 
    * A meglévő Logic apps esetében azon a lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be szűrőként az „rss” kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
@@ -55,7 +55,7 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések

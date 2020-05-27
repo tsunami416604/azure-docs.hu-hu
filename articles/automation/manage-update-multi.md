@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741027"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834628"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Frissítések kezelése több virtuális gép esetén
 
@@ -182,4 +182,4 @@ A telepítés közben felmerülő hibák részletes információinak megtekinté
 
 ## <a name="next-steps"></a>További lépések
 
-[Update Management-naplók lekérdezése](automation-update-management-query-logs.md)
+* Ha frissítési naplókra van szüksége, tekintse meg a [Update Management-naplók lekérdezését](automation-update-management-query-logs.md)ismertető témakört.

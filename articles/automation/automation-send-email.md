@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc7babdb7b64b12ecc9ef4590a91c7a3683a6558
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799786"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834560"
 ---
 # <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
 
@@ -138,7 +138,7 @@ Annak ellenőrzéséhez, hogy a runbook sikeresen végrehajtja-e a műveleteket,
 
 Ha kezdetben nem látja a teszt e-mail-címét, ellenőrizze a **Levélszemét** és a **Levélszemét** mappáját.
 
-## <a name="clean-up-after-the-email-operation"></a>Az e-mail művelet után tisztítás
+## <a name="clean-up-resources-after-the-email-operation"></a>Erőforrások tisztítása az e-mail művelet után
 
 1. Ha a runbook már nincs rá szükség, válassza ki a runbook listában, és kattintson a **Törlés**gombra.
 
@@ -150,9 +150,8 @@ $ResourceGroupName = "<your ResourceGroup name>"
 Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
-* [Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé](automation-manage-send-joblogs-log-analytics.md)
-* [Azure Automation runbook elindítására szolgáló riasztás használata](automation-create-alert-triggered-runbook.md)
-* [Runbook kapcsolatos problémák elhárítása](./troubleshoot/runbooks.md)
+* Ha runbook szeretne küldeni a Log Analytics munkaterületre, tekintse meg a [Azure Automation-feladatok továbbítása Azure monitor naplókhoz](automation-manage-send-joblogs-log-analytics.md)című témakört.
+* Az alapszintű mérőszámok és naplók figyeléséhez lásd: [riasztás használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md).
+* A runbook műveletek során felmerülő problémák megoldásához tekintse meg a [runbook kapcsolatos problémák elhárítása](./troubleshoot/runbooks.md)című témakört.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2bd1f59d5cf33ae7f1f2e33e6c3f1312b5a13e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8219fba44be608a9fd31139a89c8dac2cc3e3082
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127589"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835410"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
 
@@ -64,11 +64,11 @@ A következő riasztások ajánlottak a Stream Analyticsi feladatok teljesítmé
 |Vízjel késleltetése|Nagyobb, mint|Maximum|Ha a metrika átlagos értéke az elmúlt 15 percben meghaladja a késői érkezési toleranciát (másodpercben). Ha nem módosította a késői érkezési toleranciát, az alapértelmezett érték 5 másodperc.|Próbálja meg növelni a lekérdezés SUs-vagy tetszés számát. További információ az SUs szolgáltatásról: a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). A lekérdezés tetszés kapcsolatos további információkért lásd: [a lekérdezési párhuzamos kihasználása a Azure stream Analyticsban](stream-analytics-parallelization.md).|
 |Bemeneti deszerializálási hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység vagy az erőforrás naplóit, és végezze el a megfelelő módosításokat a bemeneten. Az erőforrás-naplókkal kapcsolatos további információkért lásd: [Azure stream Analytics erőforrás-naplók használatával kapcsolatos hibák megoldása](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
 A Azure Portal riasztások konfigurálásával kapcsolatos további részletekért lásd: [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md).  
 
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257068"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835053"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
@@ -37,7 +37,7 @@ Számos olyan helyzet áll fenn, amely gyakran befolyásolja a Process Server te
 
 Ezen problémák mindegyike hatással lehet a virtuális gépek helyreállítási pontokra vonatkozó célkitűzésére (RPO). 
 
-**Hogy miért?** Mivel a virtuális gép helyreállítási pontjának generálása megköveteli, hogy a virtuális gép összes lemeze rendelkezzen közös ponttal. Ha az egyik lemez magas adatváltozási arányban van, a replikálás lassú, vagy a folyamat kiszolgálója nem optimális, akkor a helyreállítási pontok létrehozásának hatékonyságát is befolyásolja.
+**Miért?** Mivel a virtuális gép helyreállítási pontjának generálása megköveteli, hogy a virtuális gép összes lemeze rendelkezzen közös ponttal. Ha az egyik lemez magas adatváltozási arányban van, a replikálás lassú, vagy a folyamat kiszolgálója nem optimális, akkor a helyreállítási pontok létrehozásának hatékonyságát is befolyásolja.
 
 ## <a name="monitor-proactively"></a>Proaktív monitorozás
 
@@ -96,7 +96,7 @@ A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyama
 ## <a name="next-steps"></a>További lépések
 
 - Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
-- Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+- Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

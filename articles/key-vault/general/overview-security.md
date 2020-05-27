@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: dbe13b2d1291f212af7da9d1176bc3d90997978b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428965"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834378"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -42,11 +42,11 @@ A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus mod
 
 - A szervezetek központilag vezérelhetik a hozzáférést a szervezet összes kulcstartója számára.
 - Ha a felhasználó elhagyja, azonnal elveszíti a hozzáférést a szervezet összes kulcstartójának.
-- A szervezetek az Azure AD lehetőségeit használva szabhatják testre a hitelesítést, például a többtényezős hitelesítés engedélyezésével a további biztonság érdekében.
+- A szervezetek az Azure AD lehetőségeit használva szabhatják testre a hitelesítést, például lehetővé teszik a többtényezős hitelesítés használatát a további biztonság érdekében.
 
 ### <a name="managing-administrative-access-to-key-vault"></a>A Key Vault rendszergazdai hozzáférésének kezelése
 
-Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD használatával kezelheti a hozzáférést. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A megfelelő RBAC-szerepkörök hozzárendelésével megadhatja a hozzáférést egy adott hatóköri szinten. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre `key vault Contributor` meghatározott szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
+Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD használatával kezelheti a hozzáférést. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A megfelelő RBAC-szerepkörök hozzárendelésével megadhatja a hozzáférést egy adott hatóköri szinten. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
 
 - **Előfizetés**: az előfizetés szintjén hozzárendelt RBAC-szerepkör az adott előfizetésen belüli összes erőforráscsoport és erőforrás esetében érvényes.
 - **Erőforráscsoport**: az erőforráscsoport szintjén HOZZÁRENDELt RBAC-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
@@ -55,7 +55,7 @@ Amikor létrehoz egy kulcstartót egy erőforráscsoporthoz, az Azure AD haszná
 Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt a [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)című témakörben talál.
 
 > [!IMPORTANT]
-> Ha a felhasználó rendelkezik `Contributor` engedéllyel egy kulcstartó felügyeleti síkon, a felhasználó hozzáférést biztosíthat az adatsíkon az Key Vault hozzáférési szabályzat beállításával. Szigorúan szabályozhatja, hogy kik rendelkeznek `Contributor` szerepkör-hozzáféréssel a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
+> Ha a felhasználó rendelkezik `Contributor` engedéllyel egy kulcstartó felügyeleti síkon, a felhasználó hozzáférést biztosíthat az adatsíkon az Key Vault hozzáférési szabályzat beállításával. Szigorúan szabályozhatja, `Contributor` hogy kik rendelkeznek szerepkör-hozzáféréssel a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Key Vault-adatelérés szabályozása
@@ -97,6 +97,6 @@ A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse m
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Virtuális hálózati szolgáltatási végpontok Azure Key Vault](overview-vnet-service-endpoints.md))
+- [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
-- [virtuális hálózati szolgáltatási végpontok Azure Key Vault](overview-vnet-service-endpoints.md))
+- [virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)

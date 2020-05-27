@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04e32a88dcfb9f069e51b2f18207155b95da37d6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744352"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835070"
 ---
 # <a name="compose-dsc-configurations"></a>DSC-konfigurációk összeállítása
 
@@ -42,8 +42,9 @@ A fordítás sikeresen befejeződött, az új konfiguráció megjelenik a **lefo
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerkedés a Azure Automation állapot-konfigurációval](automation-dsc-getting-started.md)
-- [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md)
-- [DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban](automation-dsc-compile.md)
-- [Folyamatos üzembe helyezés beállítása a chocolatey-vel](automation-dsc-cd-chocolatey.md)
-- [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
+- A csomópontok engedélyezésével kapcsolatos további információkért lásd: [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md).
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
+- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

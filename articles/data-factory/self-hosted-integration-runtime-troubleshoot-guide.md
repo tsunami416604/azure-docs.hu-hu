@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94e214c55a0109beb85cd08ce87303e5bd0f8016
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414889"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835427"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -45,7 +45,7 @@ A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory
     ```
         
    > [!NOTE]     
-   > A szolgáltatás URL-címe eltérő lehet a Data Factory helyétől függően. A szolgáltatás URL-címét az **ADF UI** > **Connections** > **Integration Runtimes** > **saját** > üzemeltetésű IR-**csomópontok** > **megtekintése szolgáltatás URL-** címének szerkesztése szakaszban találja.
+   > A szolgáltatás URL-címe eltérő lehet a Data Factory helyétől függően. A szolgáltatás URL-címét az **ADF UI**  >  **Connections**  >  **Integration Runtimes**saját üzemeltetésű  >  **IR**  >  -**csomópontok**  >  **megtekintése szolgáltatás URL-** címének szerkesztése szakaszban találja.
             
     A várt válasz a következő:
             
@@ -54,8 +54,8 @@ A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory
 1. Ha nem kapja meg a várt választ, használja a következő módszerek egyikét az adott helyzetnek megfelelően:
             
     * Ha "a távoli név nem oldható fel" üzenet jelenik meg, a tartománynévrendszer (DNS) problémája van. A probléma megoldásához forduljon a hálózati csapathoz.
-    * Ha "SSL/TLS-tanúsítvány nem megbízható" üzenetet kap, ellenőrizze, hogy a tanúsítvány https://wu2.frontend.clouddatahub.net/ megbízható-e a gépen, majd telepítse a nyilvános tanúsítványt a Tanúsítványkezelő használatával. A műveletnek csökkentenie kell a problémát.
-    * Nyissa meg a **Windows** > **Eseménynapló (naplók)** > **alkalmazásait és szolgáltatásait tartalmazó naplókat** > **Integration Runtime** , és keresse meg a DNS, a tűzfalszabály vagy a vállalati hálózati beállítások által okozott hibát. (Ha ilyen hibát talál, kényszerítse a kapcsolatok bezárását.) Mivel minden vállalat testreszabott hálózati beállításokat tartalmaz, a problémák elhárításához forduljon a hálózati csapatához.
+    * Ha "SSL/TLS-tanúsítvány nem megbízható" üzenetet kap, ellenőrizze, hogy a tanúsítvány megbízható-e https://wu2.frontend.clouddatahub.net/ a gépen, majd telepítse a nyilvános tanúsítványt a Tanúsítványkezelő használatával. A műveletnek csökkentenie kell a problémát.
+    * Nyissa meg a **Windows**  >  **Eseménynapló (naplók)**  >  **alkalmazásait és szolgáltatásait tartalmazó naplókat**  >  **Integration Runtime** , és keresse meg a DNS, a tűzfalszabály vagy a vállalati hálózati beállítások által okozott hibát. (Ha ilyen hibát talál, kényszerítse a kapcsolatok bezárását.) Mivel minden vállalat testreszabott hálózati beállításokat tartalmaz, a problémák elhárításához forduljon a hálózati csapatához.
 
 1. Ha a "proxy" konfigurálva van a saját üzemeltetésű integrációs modulban, ellenőrizze, hogy a proxykiszolgáló hozzáférhet-e a szolgáltatási végponthoz. A minta parancsokért lásd: [PowerShell, webes kérelmek és proxyk](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
@@ -98,7 +98,7 @@ Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni e
 
 #### <a name="resolution"></a>Megoldás:
 
-1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóiban** > **Integration Runtime**, nyissa meg Eseménynapló, és szűrje az összes hibát.
+1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóiban**  >  **Integration Runtime**, nyissa meg Eseménynapló, és szűrje az összes hibát.
 
 1. Győződjön meg arról, hogy a hibanapló a következő hibát tartalmazza-e: 
     
@@ -135,7 +135,7 @@ For more help with troubleshooting, try the following resources:
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Microsoft Q&A question page](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Mapping data flows performance guide](concepts-data-flow-performance.md)

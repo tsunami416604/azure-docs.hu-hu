@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e90fa3e3f57c1575a7ab09f9ce6941c13adcd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789324"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834866"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>A Project online-projektek,-feladatok és-erőforrások kezelése Azure Logic Apps használatával
 
@@ -46,7 +46,7 @@ A Project online lehetővé teszi, hogy a projektek és a projekt-portfólió be
    * Üres logikai alkalmazások esetén a keresőmezőbe írja be a "Project online" kifejezést a szűrőként. 
    Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
-     – vagy –
+     -vagy-
 
    * A meglévő Logic apps esetében azon a lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be a "Project online" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
@@ -62,7 +62,7 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések

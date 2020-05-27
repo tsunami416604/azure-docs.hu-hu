@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005250"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834492"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -96,23 +96,23 @@ Tehát a lekérdezési mintát vissza kell képeznie. A pékség az egyéni API-
 
 Az alábbi lépésekben ismertetjük az API által követendő lépéseket az API szemszögéből:
 
-1. Ha az API HTTP-kérést kap a munka megkezdéséhez, azonnal `202 ACCEPTED` küldjön vissza egy `location` http-választ a lépés későbbi részében ismertetett fejléccel. Ez a válasz lehetővé teszi, hogy a Logic Apps motor tudja, hogy az API megkapta a kérést, elfogadta a kérelem hasznos adatait (adatbevitel), és most dolgozza fel a feldolgozást. 
+1. Ha az API HTTP-kérést kap a munka megkezdéséhez, azonnal küldjön vissza egy HTTP `202 ACCEPTED` -választ a `location` lépés későbbi részében ismertetett fejléccel. Ez a válasz lehetővé teszi, hogy a Logic Apps motor tudja, hogy az API megkapta a kérést, elfogadta a kérelem hasznos adatait (adatbevitel), és most dolgozza fel a feldolgozást. 
    
    A `202 ACCEPTED` válasznak tartalmaznia kell a következő fejléceket:
    
    * *Kötelező*: egy `location` fejléc, amely megadja az URL-cím abszolút elérési útját, ahol a Logic apps motor megtekintheti az API-feladatok állapotát
 
-   * Nem *kötelező*: `retry-after` az a fejléc, amely meghatározza, hogy a motor hány másodpercig várjon a feladatok `location` állapotának URL-címének ellenőrzése előtt. 
+   * Nem *kötelező*: `retry-after` az a fejléc, amely meghatározza, hogy a motor hány másodpercig várjon a `location` feladatok állapotának URL-címének ellenőrzése előtt. 
 
      Alapértelmezés szerint a motor 20 másodpercenként ellenőrzi. Eltérő intervallum megadásához adja meg a `retry-after` fejlécet és a másodpercek számát a következő lekérdezésig.
 
 2. A megadott idő elteltével a Logic Apps motor lekérdezi az `location` URL-címet a feladatok állapotának vizsgálatához. Az API-nak ezeket az ellenőrzéseket kell végrehajtania, és vissza kell juttatnia a válaszokat:
    
-   * Ha a feladatot elvégezte, adja vissza `200 OK` a http-választ, valamint a válasz adattartalmát (a következő lépés bemenete).
+   * Ha a feladatot elvégezte, adja vissza a HTTP `200 OK` -választ, valamint a válasz adattartalmát (a következő lépés bemenete).
 
-   * Ha a feladatok feldolgozása még folyamatban van, egy másik `202 ACCEPTED` http-választ ad vissza, de az eredeti választal megegyező fejlécekkel.
+   * Ha a feladatok feldolgozása még folyamatban van, egy másik HTTP `202 ACCEPTED` -választ ad vissza, de az eredeti választal megegyező fejlécekkel.
 
-Ha az API ezt a mintát követi, semmit nem kell tennie a logikai alkalmazás munkafolyamatának definíciójában a feladatok állapotának ellenőrzésének folytatásához. Ha a motor HTTP `202 ACCEPTED` -választ kap, és érvényes `location` fejlécet kap, a motor tiszteletben tartja az aszinkron mintát `location` , és addig ellenőrzi a fejlécet, amíg az API nem 202-es választ ad vissza.
+Ha az API ezt a mintát követi, semmit nem kell tennie a logikai alkalmazás munkafolyamatának definíciójában a feladatok állapotának ellenőrzésének folytatásához. Ha a motor HTTP- `202 ACCEPTED` választ kap, és érvényes `location` fejlécet kap, a motor tiszteletben tartja az aszinkron mintát, és addig ellenőrzi a `location` fejlécet, amíg az API nem 202-es választ ad vissza.
 
 > [!TIP]
 > Példa aszinkron minta esetén tekintse át ezt az [aszinkron vezérlő-választ a githubon](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
@@ -128,11 +128,11 @@ Alternatív megoldásként használhatja a webhook mintát a hosszan futó felad
 Ha ezt a webhook-mintázatot visszaképezi, a pékség az egyéni API-t jelöli, a Cake-ügyfél pedig a Logic Apps motort jelképezi. A motor meghívja az API-t egy kéréssel, és tartalmazza a "visszahívás" URL-címet.
 A feladatok elvégzése után az API az URL-cím használatával értesíti a motort, és visszaadja az adatait a logikai alkalmazásnak, amely ezután folytatja a munkafolyamatot. 
 
-Ehhez a mintához állítson be két végpontot a vezérlőn `subscribe` : és`unsubscribe`
+Ehhez a mintához állítson be két végpontot a vezérlőn: `subscribe` és`unsubscribe`
 
-*  `subscribe`végpont: Ha a végrehajtás eléri az API műveletét a munkafolyamatban, a Logic Apps motor `subscribe` meghívja a végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol, majd megvárja, amíg az API visszahívást végez a munka befejezésekor. Az API ezután visszahívja a HTTP-BEJEGYZÉST az URL-címre, és továbbítja a visszaadott tartalmat és fejléceket a logikai alkalmazás bemenetének.
+*  `subscribe`végpont: Ha a végrehajtás eléri az API műveletét a munkafolyamatban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol, majd megvárja, amíg az API visszahívást végez a munka befejezésekor. Az API ezután visszahívja a HTTP-BEJEGYZÉST az URL-címre, és továbbítja a visszaadott tartalmat és fejléceket a logikai alkalmazás bemenetének.
 
-* `unsubscribe`végpont: Ha a logikai alkalmazás futása meg lett szakítva, a Logic Apps motor `unsubscribe` meghívja a végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
+* `unsubscribe`végpont: Ha a logikai alkalmazás futása meg lett szakítva, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
 ![Webhook műveleti minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -140,7 +140,7 @@ A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a
 
 Íme néhány további tipp és Megjegyzés:
 
-* A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
+* A visszahívási URL-cím átadásához `@listCallbackUrl()` szükség szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
 
 * Ha a logikai alkalmazás és az előfizetett szolgáltatás tulajdonosa is van, nem kell meghívnia a `unsubscribe` végpontot a visszahívási URL-cím meghívása után. Ellenkező esetben a Logic Apps futtatókörnyezetnek meg kell hívnia a `unsubscribe` végpontot arra, hogy jelezze, ne kelljen több hívást várnia, és hogy az erőforrást a kiszolgáló oldalán is meg lehessen tisztítani.
 
@@ -166,22 +166,22 @@ Az alábbi, az API perspektívájában ismertetett lekérdezési triggerek konkr
 | Új adathalmazt vagy eseményt talált?  | API-válasz | 
 | ------------------------- | ------------ |
 | Találat | HTTP `200 OK` -állapot visszaadása a válasz hasznos adatával (a következő lépés bemenete). <br/>Ez a válasz létrehoz egy Logic app-példányt, és elindítja a munkafolyamatot. | 
-| Nem található | Egy `202 ACCEPTED` `location` fejlécet és egy `retry-after` fejlécet tartalmazó http-állapotot ad vissza. <br/>Eseményindítók esetén a `location` fejlécnek tartalmaznia kell egy `triggerState` lekérdezési paramétert is, amely általában egy "Timestamp". Az API ezzel az azonosítóval nyomon követheti a logikai alkalmazás aktiválásának utolsó időpontját. | 
+| Nem található | Egy `202 ACCEPTED` `location` fejlécet és egy fejlécet tartalmazó http-állapotot ad vissza `retry-after` . <br/>Eseményindítók esetén a `location` fejlécnek tartalmaznia kell egy `triggerState` lekérdezési paramétert is, amely általában egy "Timestamp". Az API ezzel az azonosítóval nyomon követheti a logikai alkalmazás aktiválásának utolsó időpontját. | 
 ||| 
 
 Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlokhoz, létrehozhat egy lekérdezési triggert, amely a következő viselkedésekkel rendelkezik:
 
-| A kérelem `triggerState`tartalmazza? | API-válasz | 
+| A kérelem tartalmazza `triggerState` ? | API-válasz | 
 | -------------------------------- | -------------| 
-| Nem | Egy HTTP `202 ACCEPTED` -állapotot, `location` valamint egy `triggerState` fejlécet ad vissza, amely az `retry-after` aktuális időpontra, az intervallum pedig 15 másodpercre van állítva. | 
-| Igen | Győződjön meg arról, hogy a szolgáltatásban `DateTime` a `triggerState`for () után hozzáadott fájlok szerepelnek. | 
+| Nem | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
+| Igen | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
 ||| 
 
 | Talált fájlok száma | API-válasz | 
 | --------------------- | -------------| 
-| Egyetlen fájl | Adja vissza a `200 OK` http-állapotot és a tartalom `triggerState` hasznos adatait `DateTime` , frissítse a értéket a visszaadott `retry-after` fájlhoz, és állítsa be az intervallumot 15 másodpercre. | 
-| Több fájl | Egyszerre csak egy fájlt ad vissza, egy HTTP `200 OK` -állapotot `triggerState`, a frissítést, `retry-after` és az intervallumot 0 másodpercre állítja be. </br>Ezek a lépések lehetővé teszik, hogy a motor tudja, hogy további adatok állnak rendelkezésre, és hogy a motornak azonnal el kell kérnie az adatok kérését a `location` fejléc URL-címéről. | 
-| Nincsenek fájlok | HTTP `202 ACCEPTED` -állapotot ad vissza, `triggerState`ne módosítsa, és `retry-after` állítsa be az intervallumot 15 másodpercre. | 
+| Egyetlen fájl | Adja vissza a HTTP- `200 OK` állapotot és a tartalom hasznos adatait, frissítse a értéket a `triggerState` `DateTime` visszaadott fájlhoz, és állítsa be az `retry-after` intervallumot 15 másodpercre. | 
+| Több fájl | Egyszerre csak egy fájlt ad vissza, egy HTTP- `200 OK` állapotot, `triggerState` a frissítést, és az `retry-after` intervallumot 0 másodpercre állítja be. </br>Ezek a lépések lehetővé teszik, hogy a motor tudja, hogy további adatok állnak rendelkezésre, és hogy a motornak azonnal el kell kérnie az adatok kérését a fejléc URL-címéről `location` . | 
+| Nincsenek fájlok | HTTP- `202 ACCEPTED` állapotot ad vissza, ne módosítsa `triggerState` , és állítsa be az `retry-after` intervallumot 15 másodpercre. | 
 ||| 
 
 > [!TIP]
@@ -192,11 +192,11 @@ Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlo
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>Várjon, és figyelje az új adattípusokat és eseményeket a webhook trigger-mintázatával
 
 A webhook-trigger egy *leküldéses trigger* , amely a szolgáltatás végpontján megvárja és figyeli az új adatait vagy eseményeit. Ha az új adatok vagy az események megfelelnek a megadott feltételnek, az eseményindító elindít egy Logic app-példányt, majd bemenetként dolgozza fel az adatokat.
-A webhook-eseményindítók ugyanúgy működnek, mint az ebben a témakörben korábban ismertetett [webhook](#webhook-actions) - `subscribe` műveletek `unsubscribe` , és a és a végpontokkal vannak beállítva. 
+A webhook-eseményindítók ugyanúgy működnek, mint az ebben a témakörben korábban ismertetett [webhook-műveletek](#webhook-actions) , és a `subscribe` és a `unsubscribe` végpontokkal vannak beállítva. 
 
 * `subscribe`végpont: amikor webhook-triggert ad hozzá és ment a logikai alkalmazásban, a Logic Apps motor meghívja a `subscribe` végpontot. Ez a lépés azt eredményezi, hogy a logikai alkalmazás létrehoz egy visszahívási URL-címet, amelyet az API tárol. Új vagy a megadott feltételnek megfelelő esemény esetén az API a HTTP-POSTával hívja vissza az URL-címet. A tartalom és a fejléc a logikai alkalmazás bemenetként adja át a tartalmat.
 
-* `unsubscribe`végpont: Ha a webhook-trigger vagy a teljes logikai alkalmazás törölve lett, a Logic Apps `unsubscribe` motor meghívja a végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
+* `unsubscribe`végpont: Ha a webhook-trigger vagy a teljes logikai alkalmazás törölve lett, a Logic Apps motor meghívja a `unsubscribe` végpontot. Az API ezután törölheti a visszahívási URL-címet, és szükség szerint leállíthatja a folyamatokat.
 
 ![Webhook-trigger mintája](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
@@ -204,7 +204,7 @@ A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a
 
 Íme néhány további tipp és Megjegyzés:
 
-* A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
+* A visszahívási URL-cím átadásához `@listCallbackUrl()` szükség szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
 
 * Ha nem szeretné, hogy ugyanazokat az adatfeldolgozást többször is feldolgozza, az triggernek törölnie kell a logikai alkalmazásba már olvasott és továbbított adatait.
 
@@ -226,9 +226,9 @@ Ahhoz, hogy az egyéni API-kat elérhetővé tegye a Logic Apps, a Power automat
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* Az egyéni API-kkal kapcsolatos speciális segítségért forduljon [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)a következőhöz:.
+* Az egyéni API-kkal kapcsolatos speciális segítségért forduljon a következőhöz: [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 
 * Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish). 
 

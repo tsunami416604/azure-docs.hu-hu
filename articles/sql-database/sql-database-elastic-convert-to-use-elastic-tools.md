@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c47eebc965319575020eace87825af9d9ad5a18
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74421222"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835019"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Meglévő adatbázisok migrálása a vertikális felskálázáshoz
 
@@ -161,13 +161,13 @@ Az eszközök a GitHubon is elérhetők: [Azure/rugalmas adatbázis-eszközök](
 
 A Split-Merge eszköz használatával több-bérlős modellbe helyezheti át az adatait egyetlen bérlős modellbe. Lásd: [felosztás egyesítése eszköz](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Kérdések és szolgáltatások kérései
 
-Ha kérdése van, használja a [SQL Database fórumot](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatásra vonatkozó kérelmeket, vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, használja a [Microsoft Q&a SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) és a szolgáltatásokra vonatkozó kérelmeket, vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

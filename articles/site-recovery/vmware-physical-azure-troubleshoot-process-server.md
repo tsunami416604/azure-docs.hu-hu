@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256860"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835801"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -34,7 +34,7 @@ A folyamat-kiszolgálók optimális teljesítményéhez számos általános ajá
 
 **Ajánlott eljárás** | **Részletek**
 --- |---
-**Használati** | Győződjön meg arról, hogy a konfigurációs kiszolgáló/önálló folyamat kiszolgálója csak a kívánt célra szolgál. Ne futtasson semmi mást a gépen.
+**Használat** | Győződjön meg arról, hogy a konfigurációs kiszolgáló/önálló folyamat kiszolgálója csak a kívánt célra szolgál. Ne futtasson semmi mást a gépen.
 **IP-cím** | Győződjön meg arról, hogy a Process Server statikus IPv4-címe van, és nincs konfigurálva a NAT.
 **Memória/CPU-használat szabályozása** |A processzor és a memória kihasználtsága 70% alatt marad.
 **Szabad terület biztosítása** | A szabad terület a folyamat kiszolgálójának gyorsítótár-lemezterületére utal. Az Azure-ba való feltöltés előtt a replikálási szolgáltatás a gyorsítótárban tárolódik.<br/><br/> Tartsa meg a szabad területet 25% felett. Ha a művelet 20% alá esik, a rendszer a folyamat-kiszolgálóhoz társított replikált gépek esetében a replikálást szabályozza.
@@ -51,7 +51,7 @@ A Process Server számos rendszerállapot-riasztást generál. Ezeket a riasztá
 
 **Riasztástípus** | **Hiba** | **Hibaelhárítás**
 --- | --- | --- 
-![Kifogástalan][green] | None  | A Process Server csatlakoztatva van és kifogástalan állapotú.
+![Kifogástalan][green] | Nincs  | A Process Server csatlakoztatva van és kifogástalan állapotú.
 ![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Győződjön meg arról, hogy a szolgáltatások futnak.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Figyelmeztetés][yellow]  | A CPU-kihasználtság > 80%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) a VMware/fizikai kiszolgáló replikálásához.
@@ -235,7 +235,7 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 
     a) keressen **Microsoft Azure Backup**.
 
-    b) nyissa meg **Microsoft Azure Backup**, és válassza a **művelet** > **módosítása tulajdonságok**lehetőséget.
+    b) nyissa meg **Microsoft Azure Backup**, és válassza a **művelet**  >  **módosítása tulajdonságok**lehetőséget.
 
     c) a proxy **konfigurálása** lapon a proxy címnek meg kell egyeznie a beállításjegyzék-beállításokban megjelenő proxy-címtől. Ha nem, módosítsa azt ugyanarra a címekre.
 
@@ -246,7 +246,7 @@ Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, �
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

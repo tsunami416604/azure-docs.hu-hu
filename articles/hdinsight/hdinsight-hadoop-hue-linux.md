@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887095"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835478"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata a HDInsight Hadoop-fürtökön
 
@@ -33,7 +33,7 @@ A Hue egy Apache Hadoop-fürttel való interakcióhoz használt webalkalmazások
 > [!WARNING]  
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak, és Microsoft ügyfélszolgálata az ezen összetevőkkel kapcsolatos problémák elkülönítésében és megoldásában is segítséget nyújt.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között több közösségi webhely is használható, például a [következőhöz: msdn Forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache [https://apache.org](https://apache.org)-projektek is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például: [Microsoft Q&a HDInsight-hez tartozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Emellett az Apache-projektek is rendelkeznek projekt-webhelyekkel [https://apache.org](https://apache.org) , például: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="install-hue-using-script-actions"></a>A Hue telepítése parancsfájl-műveletek használatával
 
@@ -45,7 +45,7 @@ Használja az alábbi táblázatban szereplő információkat a parancsfájl-mű
 |Tulajdonság |Érték |
 |---|---|
 |Parancsfájl típusa:|– Egyéni|
-|Name (Név)|A Hue telepítése|
+|Name|A Hue telepítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Csomópont típusa (i):|Head|
 
@@ -76,7 +76,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 
     Ez az az elsődleges átjárócsomóponthoz állomásneve, ahol a Hue webhely található.
 
-1. A böngészőben nyissa meg a Hue portált `http://HOSTNAME:8888`a következő címen:. Cserélje le az ÁLLOMÁSNÉV nevet az előző lépésben beszerzett névre.
+1. A böngészőben nyissa meg a Hue portált a következő címen: `http://HOSTNAME:8888` . Cserélje le az ÁLLOMÁSNÉV nevet az előző lépésben beszerzett névre.
 
    > [!NOTE]  
    > Amikor első alkalommal jelentkezik be, a rendszer felszólítja, hogy hozzon létre egy fiókot a Hue Portalra való bejelentkezéshez. Az itt megadott hitelesítő adatokat a rendszer a portálra korlátozza, és nem kapcsolódik a fürt kiépítésekor megadott rendszergazdai vagy SSH-felhasználói hitelesítő adatokhoz.
@@ -105,7 +105,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 3. Kattintson a jobb gombbal egy fájlra vagy mappára az elérhető műveletek megtekintéséhez. A jobb oldali sarokban található **feltöltés** gomb használatával fájlokat tölthet fel az aktuális könyvtárba. Új fájlok vagy könyvtárak létrehozásához használja az **új** gombot.
 
 > [!NOTE]  
-> A Hue file Browser csak a HDInsight-fürthöz társított alapértelmezett tároló tartalmát jeleníti meg. A fürthöz esetlegesen hozzárendelt további Storage-fiókok vagy tárolók nem lesznek elérhetők a fájlkezelő használatával. A fürthöz társított további tárolók azonban mindig elérhetővé válnak a kaptár-feladatok számára. Ha például megadja a parancsot `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` a kaptár-szerkesztőben, a további tárolók tartalmát is megtekintheti. Ebben a parancsban a **newcontainer** nem a fürthöz társított alapértelmezett tároló.
+> A Hue file Browser csak a HDInsight-fürthöz társított alapértelmezett tároló tartalmát jeleníti meg. A fürthöz esetlegesen hozzárendelt további Storage-fiókok vagy tárolók nem lesznek elérhetők a fájlkezelő használatával. A fürthöz társított további tárolók azonban mindig elérhetővé válnak a kaptár-feladatok számára. Ha például megadja a parancsot a kaptár- `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` szerkesztőben, a további tárolók tartalmát is megtekintheti. Ebben a parancsban a **newcontainer** nem a fürthöz társított alapértelmezett tároló.
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
@@ -123,7 +123,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 
    Ezt egy ismert probléma okozza. Áthidaló megoldásként módosítsa a Ambari, hogy az Active Resource Manager is az elsődleges átjárócsomóponthoz fusson.
 
-1. A Hue megérti a WebHDFS, miközben a HDInsight- `wasbs://`fürtök az Azure Storage-t használják a használatával. Így a parancsfájl-művelettel használt egyéni szkript telepíti a WebWasb-t, amely egy WebHDFS-kompatibilis szolgáltatás, amely a WASB-re mutat. Tehát bár a Hue Portal a HDFS (például ha az egérmutatót a **fájlkezelőben**helyezi át), akkor a WASB kell értelmezni.
+1. A Hue megérti a WebHDFS, miközben a HDInsight-fürtök az Azure Storage-t használják a használatával `wasbs://` . Így a parancsfájl-művelettel használt egyéni szkript telepíti a WebWasb-t, amely egy WebHDFS-kompatibilis szolgáltatás, amely a WASB-re mutat. Tehát bár a Hue Portal a HDFS (például ha az egérmutatót a **fájlkezelőben**helyezi át), akkor a WASB kell értelmezni.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438996"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834543"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Oktatóanyag: Az első Azure data factory létrehozása az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -25,8 +25,6 @@ ms.locfileid: "75438996"
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sablon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
@@ -117,7 +115,7 @@ Ebben a lépésben társítani fogja Azure Storage-fiókját az adat-előállít
         }
     }
     ```
-    Az **account name** kifejezést cserélje az Azure Storage-fiókja nevére, az **account key** kifejezést pedig az Azure Storage-fiók kulcsára. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
+    Cserélje le a **fióknevet** az Azure Storage-fiókja nevére, és adja meg az Azure Storage-fiók elérési **kulcsát** . A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 2. Az Azure PowerShellben váltson az ADFGetStarted mappára.
 3. Használhatja a **New-AzDataFactoryLinkedService** parancsmagot, amely létrehoz egy társított szolgáltatást. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a *ResourceGroupName* és a *DataFactoryName* paraméterek számára. Azt is megteheti, hogy a **Get-AzDataFactory** használatával beolvas egy **DataFactory** objektumot, és a *ResourceGroupName* és a *DataFactoryName* megadása nélkül adja át az objektumot a parancsmagok minden egyes futtatásakor. Futtassa a következő parancsot a **Get-AzDataFactory** parancsmag kimenetének **$DF** változóhoz való hozzárendeléséhez.
 
@@ -170,7 +168,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
    * Igény szerinti HDInsight-fürt használata helyett **saját HDInsight-fürtöt** is használhat. További információ: [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) (HDInsight társított szolgáltatás).
    * A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). A fürt automatikusan törlődik a feldolgozás megtörténtekor.
 
-       Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF**yourdatafactoryname**-**linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
+       Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg az Azure Blob Storage-fiókban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: "ADF**yourdatafactoryname** - **linkedservicename**-datetimestamp". Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 
      További információkért lásd: [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) (Igény szerinti HDInsight társított szolgáltatás).
 2. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot, amely létrehozza a HDInsightOnDemandLinkedService nevű társított szolgáltatást.
@@ -214,10 +212,10 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
    | Tulajdonság | Leírás |
    |:--- |:--- |
-   | type |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
+   | típus |A tulajdonság beállítása AzureBlob, mert az adatok az Azure Blob Storage-tárban találhatók. |
    | linkedServiceName |A korábban létrehozott StorageLinkedService szolgáltatásra hivatkozik. |
    | fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva. |
-   | type |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
+   | típus |A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
    | columnDelimiter |A naplófájlokban vesszővel (,) vannak elválasztva az oszlopok. |
    | frequency/interval |A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el. |
    | external |Ez a tulajdonság true (igaz) értékre van állítva, ha a bemeneti adatokat nem a Data Factory szolgáltatás hozta létre. |
@@ -315,7 +313,7 @@ Ebben a lépésben létrehozza a **HDInsightHive** tevékenységgel rendelkező 
     ```
     A JSON-kódrészletben létrehoz egy folyamatot, amely egyetlen tevékenységből áll, és a tevékenység a Hive használatával dolgozza fel az adatokat egy HDInsight-fürtön.
 
-    A **partitionweblogs.hql** Hive-parancsfájl tárolása az Azure Storage-fiókban (az **StorageLinkedService** nevű scriptLinkedService szolgáltatás által megadva), és az **adfgetstarted** tároló **script** mappájában történik.
+    A rendszer a **partitionweblogs. HQL**nevű kaptár-parancsfájlt az Azure Storage-fiókban tárolja (a scriptlinkedservice szolgáltatás, az úgynevezett **StorageLinkedService**), valamint a tároló **adfgetstarted**található **script** mappában.
 
     A **defines** (meghatározza) szakasz meghatározza a futásidő beállításait, amelyek Hive konfigurációs értékekként (például ${hiveconf:inputtable}, ${hiveconf:partitionedtable}) lesznek átadva a Hive-parancsfájlnak.
 
@@ -416,7 +414,7 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 | Témakör | Leírás |
 |:--- |:--- |
 | [A Data Factory parancsmagjainak leírása](/powershell/module/az.datafactory) |A Data Factory-parancsmagokkal kapcsolatos átfogó dokumentáció. |
-| [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adathalmazok](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |
 | [Folyamatok figyelése és felügyelete a Monitoring App használatával](data-factory-monitor-manage-app.md) |Ez a cikk ismerteti, hogyan figyelheti és felügyelheti a folyamatokat, illetve hogyan kereshet bennük hibákat a Monitoring & Management App használatával. |

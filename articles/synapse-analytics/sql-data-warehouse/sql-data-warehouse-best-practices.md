@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1121a4a006e4208c76193a38262d4309e67584
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745350"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834441"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Ajánlott eljárások a szinapszis SQL-készlethez az Azure szinapszis Analyticsben (korábban SQL DW)
 
@@ -54,7 +54,7 @@ Lásd még: [a munkaterhelés figyelése a DMV](sql-data-warehouse-manage-monito
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT utasítások csoportosítása kötegekbe
 
-Egy kis tábla INSERT utasítással való egyszeri betöltése, vagy akár egy keresés rendszeres újratöltése is jól teljesítheti az igényeinek megfelelő utasítást, például `INSERT INTO MyLookup VALUES (1, 'Type 1')`:.  
+Egy kis tábla INSERT utasítással való egyszeri betöltése, vagy akár egy keresés rendszeres újratöltése is jól teljesítheti az igényeinek megfelelő utasítást, például: `INSERT INTO MyLookup VALUES (1, 'Type 1')` .  
 
 Ha azonban egy nap során több ezer vagy több millió sort kell betöltenie, észreveheti, hogy az egyszeres INSERT utasítások nem feltétlenül bizonyulnak elegendőnek.  Ehelyett érdemes olyan folyamatokat kifejleszteni, amelyek egy fájlba írnak, amelyet egy időről időre aktiválódó másik folyamat rendszeresen betölt.
 
@@ -180,7 +180,7 @@ Lásd még: [erőforrás-osztályok a számítási feladatok kezeléséhez](reso
 
 Lásd még az általános problémákat és megoldásokat tartalmazó, [hibaelhárítással](sql-data-warehouse-troubleshoot.md) foglalkozó témakört.
 
-Ha nem találta meg, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  Az [Azure szinapszis fórumának](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoport számára. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
+Ha nem találta meg, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
 Ha szeretne kérdéseket feltenni a Stack Overflowre, akkor egy [Azure szinapszis stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594097"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835444"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -24,7 +24,7 @@ Az Azure HDInsight-fürtök az Azure-felhőben futó, ismerős Linux-környezete
 A jelen dokumentumban ismertetett lépések többsége a következő segédprogramokat használja, amelyeket esetleg telepíteni kell a rendszerre.
 
 * [curl](https://curl.haxx.se/) – a web-alapú szolgáltatásokkal való kommunikációra szolgál.
-* **jQ**, parancssori JSON-processzor.  Lásd [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/):.
+* **jQ**, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – az Azure-szolgáltatások távoli felügyeletére szolgál.
 * **Egy SSH-ügyfél**. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -42,13 +42,13 @@ Belsőleg a fürt minden csomópontja rendelkezik egy, a fürt konfigurálása s
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-Cserélje le a `CLUSTERNAME` elemet a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai fiók jelszavát. Ez a parancs egy JSON-dokumentumot ad vissza, amely tartalmazza a fürtben lévő gazdagépek listáját. [jq](https://stedolan.github.io/jq/) a `host_name` jQ az egyes gazdagépek elem értékének kinyerésére szolgál.
+Cserélje le a `CLUSTERNAME` elemet a fürt nevére. Ha a rendszer kéri, adja meg a rendszergazdai fiók jelszavát. Ez a parancs egy JSON-dokumentumot ad vissza, amely tartalmazza a fürtben lévő gazdagépek listáját. a [jQ](https://stedolan.github.io/jq/) az `host_name` egyes gazdagépek elem értékének kinyerésére szolgál.
 
 Ha meg kell találnia egy adott szolgáltatáshoz tartozó csomópont nevét, lekérdezheti az adott összetevőhöz tartozó Ambari. Ha például a HDFS neve csomópont gazdagépeit szeretné megkeresni, használja a következő parancsot:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja [jq](https://stedolan.github.io/jq/) a szolgáltatást, majd a jQ `host_name` csak a gazdagépek értékét kéri le.
+Ez a parancs egy JSON-dokumentumot ad vissza, amely leírja a szolgáltatást, majd a [jQ](https://stedolan.github.io/jq/) csak a `host_name` gazdagépek értékét kéri le.
 
 ## <a name="remote-access-to-services"></a>Távoli hozzáférés a szolgáltatásokhoz
 
@@ -86,12 +86,12 @@ További információ: [Apache Hadoop Services által használt portok a HDInsig
 
 ## <a name="file-locations"></a>Fájlhelyek
 
-A Hadoop kapcsolatos fájlok a fürtcsomópontokon találhatók `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmazza:
+A Hadoop kapcsolatos fájlok a fürtcsomópontokon találhatók `/usr/hdp` . Ez a könyvtár a következő alkönyvtárakat tartalmazza:
 
 * **2.6.5.3009-43**: a könyvtár neve a HDInsight által használt Hadoop platform verziója. A fürtön lévő szám különbözhet az itt felsoroltak számától.
 * **jelenlegi**: Ez a könyvtár a **2.6.5.3009-43** könyvtár alkönyvtáraira mutató hivatkozásokat tartalmaz. Ez a könyvtár létezik, így nem kell megjegyeznünk a verziószámot.
 
-Például az adatfájlok és a JAR-fájlok a Hadoop `/example` elosztott fájlrendszer `/HdiSamples`címen és címen találhatók.
+Például az adatfájlok és a JAR-fájlok a Hadoop elosztott fájlrendszer címen és címen találhatók `/example` `/HdiSamples` .
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage és Data Lake Storage
 
@@ -136,9 +136,9 @@ Az [**Azure Storage**](./hdinsight-hadoop-use-blob-storage.md)használatakor has
 * `adl://<storage-name>.azuredatalakestore.net/`: Nem alapértelmezett Data Lake Storagesal való kommunikációhoz használatos. A HDInsight-fürt gyökérkönyvtárán kívüli adatelérésre is használható.
 
 > [!IMPORTANT]  
-> Ha a HDInsight alapértelmezett tárolóként Data Lake Storage használ, meg kell adnia egy elérési utat a tárolón belül, amelyet a HDInsight-tároló gyökeréhez kell használni. Az alapértelmezett elérési `/clusters/<cluster-name>/`út:.
+> Ha a HDInsight alapértelmezett tárolóként Data Lake Storage használ, meg kell adnia egy elérési utat a tárolón belül, amelyet a HDInsight-tároló gyökeréhez kell használni. Az alapértelmezett elérési út: `/clusters/<cluster-name>/` .
 >
-> Az adateléréshez `/` vagy `adl:///` az-hoz való hozzáféréshez csak a fürt gyökerében (például `/clusters/<cluster-name>/`) tárolt adataihoz férhet hozzá. Ha a tárolóban bárhol szeretné elérni az adatelérést, használja a `adl://<storage-name>.azuredatalakestore.net/` következő formátumot:.
+> Az `/` `adl:///` adateléréshez vagy az-hoz való hozzáféréshez csak a fürt gyökerében (például) tárolt adataihoz férhet hozzá `/clusters/<cluster-name>/` . Ha a tárolóban bárhol szeretné elérni az adatelérést, használja a következő `adl://<storage-name>.azuredatalakestore.net/` formátumot:.
 
 ### <a name="what-storage-is-the-cluster-using"></a>Milyen tárterületet használ a fürt
 
@@ -149,7 +149,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 ```
 
 > [!NOTE]  
-> Ez a parancs visszaadja a kiszolgáló (`service_config_version=1`) által alkalmazott első konfigurációt, amely tartalmazza ezt az információt. Előfordulhat, hogy az összes konfigurációs verziót fel kell sorolnia, hogy megtalálja a legújabbat.
+> Ez a parancs visszaadja a kiszolgáló () által alkalmazott első konfigurációt `service_config_version=1` , amely tartalmazza ezt az információt. Előfordulhat, hogy az összes konfigurációs verziót fel kell sorolnia, hogy megtalálja a legújabbat.
 
 Ez a parancs a következő URI azonosítóhoz hasonló értéket ad vissza:
 
@@ -163,7 +163,7 @@ Ez a parancs a következő URI azonosítóhoz hasonló értéket ad vissza:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
-    Ez a parancs a következő állomásnevet adja vissza `<data-lake-store-account-name>.azuredatalakestore.net`:.
+    Ez a parancs a következő állomásnevet adja vissza: `<data-lake-store-account-name>.azuredatalakestore.net` .
 
     A következő REST-hívással kérheti le az áruházban lévő könyvtárat, amely a HDInsight gyökerét használja:
 
@@ -171,7 +171,7 @@ Ez a parancs a következő URI azonosítóhoz hasonló értéket ad vissza:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
-    Ez a parancs a következő elérési úthoz hasonló elérési `/clusters/<hdinsight-cluster-name>/`utat ad vissza:.
+    Ez a parancs a következő elérési úthoz hasonló elérési utat ad vissza: `/clusters/<hdinsight-cluster-name>/` .
 
 A tárolási adatokat a Azure Portal használatával is megkeresheti a következő lépésekkel:
 
@@ -185,7 +185,7 @@ A HDInsight-fürtön kívül különböző módokon férhet hozzá az adatokhoz.
 
 Ha az __Azure Storage__-t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): parancssori felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy `az storage blob` a blob-specifikus parancsok használatához.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): parancssori felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
 * [blobxfer.py](https://github.com/Azure/blobxfer): a Blobok Azure Storage-ban való használatához használható Python-szkript.
 * Különböző SDK-k:
 
@@ -239,7 +239,7 @@ Ha egy összetevő más verzióját szeretné használni, töltse fel a szüksé
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak, és Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között több közösségi webhely is használható, például a [következőhöz: msdn Forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache-projektek is rendelkeznek [https://apache.org](https://apache.org)projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például: [Microsoft Q&a HDInsight-hez tartozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Emellett az Apache-projektek is rendelkeznek projekt-webhelyekkel [https://apache.org](https://apache.org) , például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>További lépések
 

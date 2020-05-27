@@ -5,12 +5,12 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282093"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834594"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
@@ -51,7 +51,7 @@ Azure Service Fabric-problémák jelentése a [Service-Fabric-problémák git-](
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow és MSDN-fórumok
 
-A [StackOverflow Service Fabric címkéje][stackoverflow] és az [MSDN-Service Fabric fórum][msdn-forum] a legjobb megoldás a platform működésével és bizonyos feladatok végrehajtásával kapcsolatos kérdések feltevésére.
+A [StackOverflow Service Fabric címkéje][stackoverflow] és a [Service FABRIC fórum MSDN-ben] [MSDN-Forum] a legjobb megoldás a platform működésével és bizonyos feladatok végrehajtásával kapcsolatos kérdések feltevésére.
 
 ### <a name="azure-feedback-forum"></a>Azure visszajelzési fórum
 
@@ -67,7 +67,7 @@ Ezekhez az előzetes verzióhoz nem biztosítunk fizetős támogatási lehetős�
 [Támogatott Service Fabric verziók](service-fabric-versions.md)
 
 <!--references-->
-[msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
+[Microsoft Q&A question page]: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs

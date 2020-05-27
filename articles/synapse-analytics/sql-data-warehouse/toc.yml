@@ -393,8 +393,8 @@
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: Díjkalkulátor

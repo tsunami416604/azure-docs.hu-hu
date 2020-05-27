@@ -1,14 +1,14 @@
 ---
 title: Az Azure BluePrints funkciói
 description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hozzárendelések tervrajzi összetevőihez használhatók.
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280676"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834781"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
@@ -38,7 +38,7 @@ Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetéve
 |:--- |:--- |:--- |:--- |
 | artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A kimeneti tulajdonságok egy objektuma. A **kimenetek** tulajdonságai függnek a hivatkozott tervi összetevő típusától. Az összes típus formátuma a következő:
 
@@ -128,7 +128,7 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 | karakterlánc1 |Igen |sztring |Az Összefűzés első értéke. |
 | További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Összefűzött értékek karakterlánca.
 
@@ -152,7 +152,7 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 |:--- |:--- |:--- |:--- |
 | parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott terv vagy tervrajz-összetevő paraméterének értéke.
 
@@ -184,7 +184,7 @@ Adja meg a _principalIds_ paramétert a terv definíciójában:
 }
 ```
 
-Ezután használja a _principalIds_ argumentumként egy `parameters()` tervrajz-összetevőben:
+Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-összetevőben:
 
 ```json
 {
@@ -205,7 +205,7 @@ Ezután használja a _principalIds_ argumentumként egy `parameters()` tervrajz-
 
 Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A visszaadott objektum formátuma a következő:
 
@@ -220,7 +220,7 @@ A visszaadott objektum formátuma a következő:
 
 A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől. A `resourceGroup()` függvény nem használható előfizetési szintű összetevőben vagy a terv definíciójában. Csak olyan tervrajz-összetevőkben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
 
-A `resourceGroup()` függvény gyakori funkciója, hogy az erőforrásokat az erőforráscsoport-összetevővel megegyező helyen hozza létre.
+A függvény gyakori funkciója, `resourceGroup()` hogy az erőforrásokat az erőforráscsoport-összetevővel megegyező helyen hozza létre.
 
 ### <a name="example"></a>Példa
 
@@ -265,7 +265,7 @@ Ezután használja a `resourceGroup()` függvényt egy olyan tervrajz-összetev�
 
 `resourceGroups(placeholderName)`
 
-Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt jelképezi. A `resourceGroup()`(z) rendszertől eltérően, amely az összetevő környezetét igényli, ez a függvény egy adott erőforráscsoport-helyőrző tulajdonságainak beolvasására szolgál, ha az adott erőforráscsoport kontextusában nem.
+Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt jelképezi. A (z `resourceGroup()` ) rendszertől eltérően, amely az összetevő környezetét igényli, ez a függvény egy adott erőforráscsoport-helyőrző tulajdonságainak beolvasására szolgál, ha az adott erőforráscsoport kontextusában nem.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -273,7 +273,7 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 |:--- |:--- |:--- |:--- |
 | placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A visszaadott objektum formátuma a következő:
 
@@ -329,7 +329,7 @@ Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetev
 
 Az aktuális terv-hozzárendelésre vonatkozó előfizetés részleteit adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A visszaadott objektum formátuma a következő:
 
