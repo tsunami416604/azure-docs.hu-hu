@@ -5,12 +5,12 @@ ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673458"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821497"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -55,7 +55,7 @@ A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatn
 - Windows 2016
 - Windows 2019
 
-A RHEL ISOs támogatása már nem támogatott.
+A RHEL ISOs-támogatás már nem támogatott.
 ## <a name="how-it-works"></a>Működés
 
 
@@ -72,7 +72,7 @@ Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgált
 1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub-tárházban](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)több példa is van.
 1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_ \< DestinationResourceGroup>_ \< TemplateName>. 
 1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (alapértelmezett méret: Standard_D1_v2), a hálózat, a nyilvános IP-cím, a NSG és a tárterületet a IT_ \< DestinationResourceGroup>_ \< TemplateName> erőforráscsoporthoz.
-1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a \< \< folyamathoz létrehozott IT_ DestinationResourceGroup>_ TemplateName> erőforráscsoporthoz.
+1. A rendszerkép létrehozásának részeként a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a \< folyamathoz létrehozott IT_ DestinationResourceGroup>_ \< TemplateName> erőforráscsoporthoz.
 
 
 ## <a name="permissions"></a>Engedélyek
@@ -80,7 +80,7 @@ A (z) (AIB) regisztrálásakor a AIB szolgáltatás engedélyt ad az átmeneti e
 
 Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, létre kell hoznia egy Azure-beli felhasználó által hozzárendelt identitást, amely jogosult a képek olvasására és írására. Ha az Azure Storage-hoz fér hozzá, akkor a privát tárolók olvasásához engedélyre van szüksége.
 
-Kezdetben létre kell [hoznia az Azure-felhasználóhoz rendelt felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) dokumentációját az identitás létrehozásához.
+Először meg kell felelnie az [Azure-felhasználóhoz rendelt felügyelt identitás létrehozásához](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) szükséges dokumentációnak az identitás létrehozásával kapcsolatban.
 
 Ha rendelkezik az Ön számára szükséges engedélyekkel, ezt megteheti, használhat egy egyéni Azure-szerepkör-definíciót, majd hozzárendelheti a felhasználó által hozzárendelt felügyelt identitást az egyéni szerepkör-definíció használatához.
 

@@ -263,8 +263,8 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics eszköz
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-iot-edge.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: Díjkalkulátor

@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407163"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826468"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Jelszavas kezelés – gyakori kérdések
 
 A következő gyakori kérdések (GYIK) a jelszó-visszaállítással kapcsolatos összes dologra vonatkoznak.
 
-Ha az Azure Active Directory (Azure AD) és az önkiszolgáló jelszó-visszaállítási (SSPR) szolgáltatással kapcsolatos általános kérdéssel rendelkezik, akkor a Közösség segítséget kérhet az [Azure ad-fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). A Közösség tagjai közé tartoznak a mérnökök, a termékmenedzsment, a MVP és az informatikai szakemberek.
+Ha az Azure Active Directory (Azure AD) és az önkiszolgáló jelszó-visszaállítási (SSPR) szolgáltatással kapcsolatos általános kérdéssel rendelkezik, akkor a Közösségtől kérhet segítséget a [Microsoft Q&a Azure Active Directory kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-active-directory.html). A Közösség tagjai közé tartoznak a mérnökök, a termékmenedzsment, a MVP és az informatikai szakemberek.
 
 Ez a GYIK a következő szakaszokra oszlik:
 
@@ -36,7 +36,7 @@ Ez a GYIK a következő szakaszokra oszlik:
 
 * **K: a felhasználók regisztrálhatják a saját jelszó-visszaállítási adataikat?**
 
-  > **V:** Igen. https://aka.ms/ssprsetup) Ha a jelszó alaphelyzetbe állítása engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek be a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen is regisztrálhatnak (https://myapps.microsoft.com). Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
+  > **V:** Igen. Ha a jelszó alaphelyzetbe állítása engedélyezve van, és licenccel rendelkezik, a felhasználók a jelszó-visszaállítási regisztrációs portálra léphetnek https://aka.ms/ssprsetup) be a hitelesítési adataik regisztrálásához. A felhasználók a hozzáférési panelen is regisztrálhatnak ( https://myapps.microsoft.com) . Ha regisztrálni szeretne a hozzáférési panelen, ki kell választania a profil képét, válassza a **profil**lehetőséget, majd válassza a **jelszó-visszaállítási regisztráció** lehetőséget.
   >
   >
 * **K: ha engedélyezem a jelszó-visszaállítást egy csoport számára, és úgy dönt, hogy mindenki számára engedélyezi azt, akkor a felhasználóknak újra regisztrálniuk kell?**
@@ -101,7 +101,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   > Ha nem kapja meg az értesítést ebben az időkeretben:
   > * Keresse meg a Levélszemét mappát.
   > * Győződjön meg arról, hogy a megjelenő szám vagy e-mail szerepel a vártnál.
-  > * Győződjön meg arról, hogy a címtárban található hitelesítési adat megfelelően van formázva, például: + 1 4255551234 vagy *felhasználói\@contoso.com*. 
+  > * Győződjön meg arról, hogy a címtárban található hitelesítési adat megfelelően van formázva, például: + 1 4255551234 vagy *felhasználói \@ contoso.com*. 
 * **K: Milyen nyelveket támogat a jelszó-visszaállítás?**
 
   > **A:** A jelszó-visszaállítás felhasználói felület, az SMS-üzenetek és a hanghívások az Office 365 által támogatott nyelveken vannak honosítva.

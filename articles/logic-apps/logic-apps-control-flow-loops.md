@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270575"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831619"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
 
@@ -50,7 +50,7 @@ Ez a példa a logikai alkalmazás egy webhely RSS-hírcsatornájának napi össz
 2. Az RSS-trigger és az e-mail küldése művelet között adjon hozzá egy "foreach" ciklust. 
 
    1. Ha a lépések között hurkot szeretne hozzáadni, vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő **pluszjelet** (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
       ![Válassza a "művelet hozzáadása" lehetőséget.](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -130,7 +130,7 @@ Alapértelmezés szerint a "foreach" hurokban lévő ciklusok párhuzamosan futn
 
    ![Egyidejűség-vezérlés bekapcsolása](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-Ha a logikai alkalmazás JSON-definícióját használja, a (z) `Sequential` `operationOptions` paraméter hozzáadásával is használhatja a lehetőséget, például:
+Ha a logikai alkalmazás JSON-definícióját használja, a `Sequential` (z) paraméter hozzáadásával is használhatja a lehetőséget `operationOptions` , például:
 
 ``` json
 "actions": {
@@ -176,7 +176,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
    | Tulajdonság | Érték |
    | -------- | ----- |
    | **Időköz** | 1 | 
-   | **Gyakoriság** | Day |
+   | **Gyakoriság** | Nap |
    | **Ezekben az órákban** | 8 |
    ||| 
 
@@ -232,7 +232,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Címzett** | *\<e-mail\@-cím tartomány>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Hogy** | *\<e-mail-cím \@ tartomány>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
       | **Törzs** | <*e-mail – tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 
@@ -297,11 +297,11 @@ Ha a logikai alkalmazáshoz kód nézetben dolgozik, megadhat egy `Until` hurkot
 }
 ```
 
-Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létrehoz egy erőforrást. A hurok leáll, `Completed` amikor a http-válasz törzse állapottal tér vissza. A végtelen hurkok megelőzése érdekében a hurok akkor is leáll, ha a következő feltételek bármelyike megtörténik:
+Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létrehoz egy erőforrást. A hurok leáll, amikor a HTTP-válasz törzse `Completed` állapottal tér vissza. A végtelen hurkok megelőzése érdekében a hurok akkor is leáll, ha a következő feltételek bármelyike megtörténik:
 
-* A hurok 10 alkalommal futott le az `count` attribútum által megadott módon. Az alapértelmezett érték 60 alkalommal. 
+* A hurok 10 alkalommal futott le az attribútum által megadott módon `count` . Az alapértelmezett érték 60 alkalommal. 
 
-* A hurok az `timeout` attribútum által az ISO 8601 formátumban megadott két órán keresztül futott. Az alapértelmezett érték egy óra.
+* A hurok az attribútum által az ISO 8601 formátumban megadott két órán keresztül futott `timeout` . Az alapértelmezett érték egy óra.
   
 ``` json
 "actions": {
@@ -335,7 +335,7 @@ Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létr
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról [Azure Logic apps felhasználói visszajelzési webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

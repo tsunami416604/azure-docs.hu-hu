@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db133f52a99bd716c2228add0573e8d44255c9e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cf05532f81d70d4d7b09de2ccbf9807273a85330
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736517"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799593"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>A szervezethez tartozó Azure-Multi-Factor Authentication áttekintése
 
@@ -32,7 +32,7 @@ Tehát hogyan kapcsolja be a szervezete az MFA-t még ingyenesen a statisztika l
 
 Az Azure AD ingyenes előnyeit kihasználó ügyfelek [biztonsági alapértékekkel](../fundamentals/concept-fundamentals-security-defaults.md) engedélyezhetik a többtényezős hitelesítést a környezetében.
 
-## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 vagy E5
+## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Vállalati verzió, E3 vagy E5
 
 Az Office 365-ügyfeleknél két lehetőség közül választhat:
 
@@ -60,7 +60,7 @@ Biztosítja a legerősebb biztonsági helyzetet és a jobb felhasználói élmé
 | SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépésekhez tekintse meg az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure multi-Factor Authentication](../authentication/tutorial-enable-azure-mfa.md)használatával.
 

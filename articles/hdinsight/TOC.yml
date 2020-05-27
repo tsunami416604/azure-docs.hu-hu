@@ -330,8 +330,18 @@
           href: ./spark/spark-best-practices.md
         - name: Az Apache Spark beállításainak konfigurálása
           href: ./spark/apache-spark-settings.md
-        - name: Az Apache Spark-feladatok optimalizálása
-          href: ./spark/apache-spark-perf.md
+        - name: Optimalizálás
+          items:
+            - name: Az Apache Spark-feladatok optimalizálása
+              href: ./spark/apache-spark-perf.md
+            - name: Adatfeldolgozás optimalizálása
+              href: ./spark/optimize-data-processing.md
+            - name: Adattárolás optimalizálása
+              href: ./spark/optimize-data-storage.md
+            - name: Memóriahasználat optimalizálása
+              href: ./spark/optimize-memory-usage.md
+            - name: Fürtkonfiguráció optimalizálása
+              href: ./spark/optimize-cluster-configuration.md
         - name: Migrálás a Spark 2.3-as vagy 2.4-es verziójába
           href: ./spark/migrate-versions.md
     - name: Útmutató

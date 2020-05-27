@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261163"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827295"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -48,7 +48,7 @@ Az alul található gombok a kiválasztott szinkronizálási szabályon való m�
 A leggyakoribb változások az attribútum folyamatai. Előfordulhat, hogy a forrás könyvtára nem azonos az Azure AD-beli adataival. A jelen szakasz példájában ellenőrizze, hogy a felhasználó megadott neve mindig *megfelelő*-e.
 
 ### <a name="disable-the-scheduler"></a>Ütemező letiltása
-Alapértelmezés szerint az [ütemező](how-to-connect-sync-feature-scheduler.md) 30 percenként fut. Győződjön meg róla, hogy nem indul el, amíg a módosításokat végez, és elhárítja az új szabályokat. Az ütemező ideiglenes letiltásához indítsa el a `Set-ADSyncScheduler -SyncCycleEnabled $false`PowerShellt, és futtassa a parancsot.
+Alapértelmezés szerint az [ütemező](how-to-connect-sync-feature-scheduler.md) 30 percenként fut. Győződjön meg róla, hogy nem indul el, amíg a módosításokat végez, és elhárítja az új szabályokat. Az ütemező ideiglenes letiltásához indítsa el a PowerShellt, és futtassa a parancsot `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Ütemező letiltása](./media/how-to-connect-sync-change-the-configuration/schedulerdisable.png)  
 
@@ -107,7 +107,7 @@ Nyissa meg a **szinkronizálási szolgáltatást** a **Start** menüből. Az ebb
 ![Keresés a metaverzumban](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>A Scheduler engedélyezése
-Ha minden a vártnak megfelelően, engedélyezheti az ütemező újbóli engedélyezését. A PowerShellből futtassa `Set-ADSyncScheduler -SyncCycleEnabled $true`a parancsot.
+Ha minden a vártnak megfelelően, engedélyezheti az ütemező újbóli engedélyezését. A PowerShellből futtassa a parancsot `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="other-common-attribute-flow-changes"></a>Más általános attribútum-flow-változások
 Az előző szakasz azt ismerteti, hogyan lehet módosítani az attribútumok folyamatát. Ebben a szakaszban további példákat is ismertetünk. A szinkronizálási szabály létrehozásának lépései rövidítve jelennek meg, de az előző szakaszban megtalálhatja a teljes lépéseket.
@@ -200,7 +200,7 @@ Alapértelmezés szerint a UserType attribútum nincs engedélyezve a szinkroniz
 
 - Az Azure AD csak két értéket fogad el a UserType attribútumhoz: **tag** és **vendég**.
 - Ha a UserType attribútum nincs engedélyezve a Azure AD Connect való szinkronizáláshoz, a címtár-szinkronizálás révén létrehozott Azure AD-felhasználók rendelkezhetnek a **tag**értékre a UserType attribútummal.
-- Az Azure AD nem engedélyezi a meglévő Azure AD-felhasználók UserType attribútumának módosítását Azure AD Connect. Csak az Azure AD-felhasználók létrehozásakor és a PowerShell-lel [módosítva](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)állítható be.
+- A 1.5.30.0 verzió előtt az Azure AD nem engedélyezte a meglévő Azure AD-felhasználók UserType attribútumának módosítását Azure AD Connect. A régebbi verziók esetében csak az Azure AD-felhasználók létrehozásakor és a [PowerShell használatával módosult](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 A UserType attribútum szinkronizálásának engedélyezése előtt először el kell döntenie, hogyan származtatja az attribútumot a helyszíni Active Directoryból. A leggyakoribb módszerek a következők:
 
@@ -208,9 +208,9 @@ A UserType attribútum szinkronizálásának engedélyezése előtt először el
 
     Ha ezt a módszert választja, meg kell győződnie arról, hogy a kijelölt attribútum megfelelő értékkel van feltöltve a helyszíni Active Directoryban lévő összes meglévő felhasználói objektumhoz, amelyeket az Azure AD-vel szinkronizált a UserType attribútum szinkronizálásának engedélyezése előtt.
 
-- Azt is megteheti, hogy származtatja a UserType attribútum értékét más tulajdonságok alapján. Például ha a helyszíni AD userPrincipalName attribútuma a tartomány részével <em>@partners.fabrikam123.org</em> **végződik,** szinkronizálni szeretné az összes felhasználót. 
+- Azt is megteheti, hogy származtatja a UserType attribútum értékét más tulajdonságok alapján. Például ha a helyszíni AD userPrincipalName attribútuma a tartomány részével **végződik,** szinkronizálni szeretné az összes felhasználót <em>@partners.fabrikam123.org</em> . 
 
-    Ahogy korábban említettük, Azure AD Connect nem engedélyezi a meglévő Azure AD-felhasználók UserType attribútumának módosítását Azure AD Connect. Ezért biztosítania kell, hogy az Ön által választott logika konzisztens legyen azzal, hogy a UserType attribútum hogyan van konfigurálva a bérlő összes meglévő Azure AD-felhasználója számára.
+    Ahogy korábban említettük, a Azure AD Connect régebbi verziói nem teszik lehetővé a meglévő Azure AD-felhasználók UserType attribútumának Azure AD Connect általi módosítását. Ezért biztosítania kell, hogy az Ön által választott logika konzisztens legyen azzal, hogy a UserType attribútum hogyan van konfigurálva a bérlő összes meglévő Azure AD-felhasználója számára.
 
 A UserType attribútum szinkronizálásának engedélyezéséhez szükséges lépések a következőképpen foglalhatók össze:
 
@@ -229,8 +229,8 @@ A UserType attribútum szinkronizálásának engedélyezéséhez szükséges lé
 Ha nem szeretné, hogy az Azure AD nem kívánt módosításait ne exportálja, győződjön meg arról, hogy a szinkronizálási szabályok frissítése közben nem történik szinkronizálás. A beépített szinkronizálási ütemező letiltása:
 
  1. Indítsa el a PowerShell-munkamenetet a Azure AD Connect-kiszolgálón.
- 2. A parancsmag `Set-ADSyncScheduler -SyncCycleEnabled $false`futtatásával tiltsa le az ütemezett szinkronizálást.
- 3. A**szinkronizálási szolgáltatás** **elindításához** > nyissa meg a synchronization Service Manager.
+ 2. A parancsmag futtatásával tiltsa le az ütemezett szinkronizálást `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+ 3. A **Start**  >  **szinkronizálási szolgáltatás**elindításához nyissa meg a synchronization Service Manager.
  4. Lépjen az **Operations (műveletek** ) lapra, és ellenőrizze, hogy nincs *-e folyamatban*állapotú művelet.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. lépés: a forrás attribútum hozzáadása a helyszíni AD Connector sémához
@@ -257,14 +257,14 @@ Alapértelmezés szerint a rendszer nem importálja a UserType attribútumot a A
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>4. lépés: hozzon létre egy bejövő szinkronizálási szabályt, amely az attribútumérték helyi Active Directory való áramlását hajtja végre.
 A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumérték a helyszíni Active Directoryról a metaverse-re váltson a forrás attribútumból:
 
-1. A **szinkronizálási** > szabályok szerkesztőjének megnyitásához nyissa meg a**szinkronizálási szabályok szerkesztőjét**.
+1. A **szinkronizálási**szabályok szerkesztőjének megnyitásához nyissa meg a  >  **szinkronizálási szabályok szerkesztőjét**.
 2. Állítsa be a keresési szűrő **irányát** **bejövő**értékre.
 3. Új bejövő szabály létrehozásához kattintson az **új szabály hozzáadása** gombra.
 4. A **Leírás** lapon adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például az *ad – User UserType* |
+    | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
     | Leírás | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
@@ -274,9 +274,9 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
 5. Lépjen a **hatóköri szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** a következő záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Felhasználói\_ |
+    | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
     A hatóköri szűrő határozza meg, hogy mely helyszíni AD-objektumokra vonatkozik ez a bejövő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk, amelyet a *in ad – User Common* out-of-box szinkronizációs szabály használ, amely megakadályozza, hogy a szinkronizálási szabály az Azure ad felhasználói visszaírási szolgáltatáson keresztül létrehozott felhasználói objektumokra legyen alkalmazva. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
@@ -286,11 +286,11 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
     | --- | --- | --- | --- | --- |
     | Direct | UserType (Felhasználótípus) | extensionAttribute1 | Nincs bejelölve | Frissítés |
 
-    Egy másik példában szeretné származtatni a UserType attribútum értékét más tulajdonságok alapján. Például ha a helyszíni AD userPrincipalName attribútuma a tartomány részével <em>@partners.fabrikam123.org</em>végződik, szinkronizálni szeretné az összes felhasználót. A következőhöz hasonló kifejezés valósítható meg:
+    Egy másik példában szeretné származtatni a UserType attribútum értékét más tulajdonságok alapján. Például ha a helyszíni AD userPrincipalName attribútuma a tartomány részével végződik, szinkronizálni szeretné az összes felhasználót <em>@partners.fabrikam123.org</em> . A következőhöz hasonló kifejezés valósítható meg:
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
-    | Kifejezés | UserType (Felhasználótípus) | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "tag", "vendég"), hiba ("a userPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
+    | Kifejezés | UserType (Felhasználótípus) | IIF (IsPresent ([userPrincipalName]), IIF (CBool (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "tag", "vendég"), hiba ("a userPrincipalName nem áll rendelkezésre a UserType meghatározásához")) | Nincs bejelölve | Frissítés |
 
 7. A Bejövő szabály létrehozásához kattintson a **Hozzáadás** gombra.
 
@@ -306,7 +306,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
+    | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
     | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
@@ -316,7 +316,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Lépjen a **hatókör-szűrő** lapra, és vegyen fel **egyetlen hatókörű szűrőt** két záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Operátor | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -389,7 +389,7 @@ A következő lépésekkel ellenőrizheti a módosításokat a teljes szinkroniz
 Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 
 1. Indítsa el a PowerShell-munkamenetet.
-2. Engedélyezze újra az ütemezett szinkronizálást a parancsmag `Set-ADSyncScheduler -SyncCycleEnabled $true`futtatásával.
+2. Engedélyezze újra az ütemezett szinkronizálást a parancsmag futtatásával `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 ## <a name="next-steps"></a>További lépések

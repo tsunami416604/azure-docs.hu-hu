@@ -5,14 +5,14 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: df2de44c2c8831fa4319b80484a119052434f8fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749108"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828253"
 ---
-# <a name="unlink-workspace-from-automation-account-for-change-tracking-and-inventory"></a>Munkaterület leválasztása az Automation-fiókból a Change Tracking és a leltárhoz
+# <a name="unlink-workspace-from-automation-account"></a>Munkaterület leválasztása Automation-fiókról
 
 Dönthet úgy, hogy nem integrálja az Automation-fiókját egy Log Analytics munkaterülettel [change Tracking és leltározási](change-tracking.md) műveletek engedélyezésekor. Ebből a cikkből megtudhatja, hogy leválasztja a munkaterületet a fiókjából.
 
@@ -37,7 +37,5 @@ Azt is megteheti, hogy leválasztja az Log Analytics munkaterületet az Automati
 
 ## <a name="next-steps"></a>További lépések
 
-* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
-* [Virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md)
-* [Azure-beli virtuális gépek változásainak hibáinak megoldása](automation-tutorial-troubleshoot-changes.md)
-* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
+* A Change Tracking és a leltár kezelésével kapcsolatban lásd: a [change Tracking és a leltár kezelése](change-tracking-file-contents.md).
+* Az általános szolgáltatással kapcsolatos problémák elhárításához lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

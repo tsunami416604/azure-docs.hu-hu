@@ -53,12 +53,26 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-    - name: Fejlesztői funkciók
-      href: batch-api-basics.md
+    - name: A Batch szolgáltatás munkafolyamata és erőforrásai
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch-fiókok
+          displayName: storage account
+          href: accounts.md
+        - name: Csomópontok és készletek
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: Feladatok és tevékenységek
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: Fájlok és könyvtárak
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API-k és eszközök
       href: batch-apis-tools.md
-    - name: A Batch szolgáltatás hibáinak észlelése és kezelése
-      href: batch-retry-after-errors.md
+    - name: Hibakezelés és -észlelés
+      href: error-handling.md
     - name: Ajánlott eljárások
       href: best-practices.md
     - name: Kvóták és korlátok
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: A Key Vault biztonságos elérése a Batch használatával
           href: credential-access-key-vault.md
+        - name: Tanúsítványok használata a Batch szolgáltatással
+          href: batch-certificates.md
+    - name: Alkalmazáscsomagok használata
+      href: batch-application-packages.md
     - name: Fájlok és alkalmazások másolása készletcsomópontokba
       items:
         - name: Alkalmazások és adatok másolása készletcsomópontokba

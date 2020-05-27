@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647243"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827047"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -204,4 +204,4 @@ Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a p
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
-* Ha problémája van az összekötő kapcsolódási problémáinak megoldásával, kérdezze meg kérdéseit a [Azure Active Directory fórumon](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) , vagy hozzon létre egy jegyet a támogatási csapatával.
+* Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

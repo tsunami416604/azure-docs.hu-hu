@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5f14bf383037bf937629d4307e7a1fb04825d2a7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cc7babdb7b64b12ecc9ef4590a91c7a3683a6558
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743773"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799786"
 ---
 # <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
 
@@ -18,7 +18,7 @@ E-mailt küldhet egy runbook a [SendGrid](https://sendgrid.com/solutions) a Powe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/ember-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Egy SendGrid-fiók](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account).
 * [Automation-fiók](automation-offering-get-started.md) az **az** moduljaival.
 * [Futtató fiók](automation-create-runas-account.md) a runbook tárolásához és végrehajtásához.
@@ -150,7 +150,7 @@ $ResourceGroupName = "<your ResourceGroup name>"
 Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
 * [Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé](automation-manage-send-joblogs-log-analytics.md)
