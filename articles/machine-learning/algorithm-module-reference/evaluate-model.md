@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983363"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847412"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -49,7 +49,7 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 ## <a name="results"></a>Results (Eredmények)
 
-A **kiértékelési modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a **kiértékelési eredmények megjelenítése** lehetőséget az eredmények megtekintéséhez.
+A **kiértékelési modell**futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható.   A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
 
 Ha adatkészleteket hoz létre a **kiértékelési modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
 A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  

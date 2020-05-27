@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113153"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845746"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -228,9 +228,9 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
 2. A Kiszolgálókezelőben válassza az **eszközök**, majd az **Útválasztás és távelérés**lehetőséget.
 
-3. Az **Útválasztás és távelérés** ablakban kattintson a jobb gombbal a ** \<kiszolgáló neve> (helyi)** elemre, majd válassza a **Tulajdonságok parancsot**.
+3. Az **Útválasztás és távelérés** ablakban kattintson a jobb gombbal a ** \< kiszolgáló neve> (helyi)** elemre, majd válassza a **Tulajdonságok parancsot**.
 
-4. A ** \<kiszolgáló neve> (helyi) tulajdonságok** ablakban válassza a **Biztonság** fület.
+4. A ** \< kiszolgáló neve> (helyi) tulajdonságok** ablakban válassza a **Biztonság** fület.
 
 5. A **Biztonság** lap **hitelesítés szolgáltató**területén válassza a **RADIUS-hitelesítés**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
 
@@ -245,11 +245,11 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
     b. A **közös titok**esetében válassza a **módosítás**lehetőséget, majd adja meg a korábban létrehozott és rögzített közös titkos jelszót.
 
     c. Az **időtúllépés (másodperc)** mezőben adja meg a **30**értéket.  
-    Az időtúllépési érték szükséges ahhoz, hogy elegendő idő legyen a második hitelesítési tényező befejezésére.
+    Az időtúllépési érték szükséges ahhoz, hogy elegendő idő legyen a második hitelesítési tényező befejezésére. Egyes VPN-ek vagy régiók esetében a 30 másodpercnél nagyobb időtúllépési beállítások szükségesek, hogy a felhasználók ne fogadjanak több telefonhívást. Ha a felhasználók ezt a problémát tapasztalják, növelje az **időtúllépés (másodperc)** értékét a 30 másodperces növekményekben, amíg a probléma nem következik be.
 
-    ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ### <a name="test-vpn-connectivity"></a>VPN-kapcsolat tesztelése
 
@@ -376,7 +376,7 @@ A parancsfájl használatához adja meg a bővítményt a Azure Active Directory
 
     ![A AzureMfsNpsExtnConfigSetup. ps1 konfigurációs parancsfájl futtatása](./media/howto-mfa-nps-extension-vpn/image38.png)
 
-    Ha a TLS miatt biztonsági hibaüzenetet kap, engedélyezze a TLS 1,2-et `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` a parancs használatával a PowerShell-parancssorból.
+    Ha a TLS miatt biztonsági hibaüzenetet kap, engedélyezze a TLS 1,2-et a parancs használatával a `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` PowerShell-parancssorból.
     
     Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, megjeleníti a Azure Active Directory PowerShell-modul bejelentkezési ablakát.
 

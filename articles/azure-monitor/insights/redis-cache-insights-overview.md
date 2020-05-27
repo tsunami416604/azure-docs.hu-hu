@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800007"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847361"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaiho
 
 Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
@@ -34,8 +34,6 @@ A következőket biztosítja:
 - Egy adott Azure cache részletes **elemzése** a Redis-erőforráshoz. Diagnosztizálhatja a problémákat, és megtekintheti a kihasználtság, a hibák, a kapacitás és a műveletek részletes elemzését. Ezen kategóriák bármelyikét kiválasztva részletesen megtekintheti a kapcsolódó információkat.  
 
 - Ennek a élménynek a **testre szabása** Azure monitor munkafüzet-sablonokból épül fel. Az élmény lehetővé teszi a mérőszámok megjelenítését és módosítását, illetve a határértékekhez igazított küszöbértékek beállítását. Mentheti a módosításokat egy egyéni munkafüzetben, majd rögzítheti a munkafüzet-diagramokat az Azure-irányítópultokon.
-
-- Ennek a élménynek a **testre szabása** Azure monitor munkafüzet-sablonokból épül fel. Az élmény lehetővé teszi, hogy megváltoztassa a megjelenített mérőszámokat, illetve hogy módosítsa vagy állítsa be a határértékekhez igazított küszöbértékeket. Mentheti a módosításokat egy egyéni munkafüzetben, majd rögzítheti a munkafüzet-diagramokat az Azure-irányítópultokon.
 
 Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan. A rendszer alapértelmezés szerint gyűjti össze az Azure cache-t a Redis-adatokhoz.
 
@@ -182,7 +180,7 @@ Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust.
 
 ![Egy, a katalógust kiemelő parancssáv](./media/cosmosdb-insights-overview/gallery.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 

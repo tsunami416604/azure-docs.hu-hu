@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f3b1fcb573358160707c0b29ad9e1806ea8e24c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774292"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846222"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -43,15 +43,15 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2,4, 2.3.1 *   | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4           | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd a megjegyzést.)   |
+| Apache Kafka           | 2.1           | 1.1                        |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> A Kafka 0,10-es verziójának támogatása a rendszer teljesítményével kapcsolatos megfontolások miatt 2019 márciusában lejár.
+> HDInsight 4,0: a Spark 2,4 és a Kafka 2,1 teljes mértékben támogatott. A Spark 2,3 és a Kafka 1,1 azonban nincsenek kiszolgálva. HDInsight 3,6: a Spark 2,3 és a Kafka 1,1 teljes mértékben támogatott.  
 
 ## <a name="check-for-current-apache-component-version-information"></a>Az Apache összetevő aktuális verziójával kapcsolatos információk keresése
 

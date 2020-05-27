@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 3d8806e34afe45e6cced3de4554b7dd365f4ddf9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701772"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847719"
 ---
 # <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
@@ -49,7 +49,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
+### <a name="customer-leads"></a>Ügyfél-érdeklődők
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
@@ -92,7 +92,7 @@ Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amelyet a pia
 
 Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a hosszú összefoglalás a piactér keresési eredményei között is felhasználható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

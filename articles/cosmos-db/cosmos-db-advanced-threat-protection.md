@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77614835"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845984"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
 
@@ -36,11 +36,15 @@ A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes te
 
 - **Szokatlan adatok kinyerése**: Ez a riasztás akkor aktiválódik, ha az ügyfél szokatlan adatmennyiséget nyer ki egy Azure Cosmos db fiókból. Ez lehet annak a tünete, hogy egyes adatok kiszűrése a fiókban tárolt adatok külső adattárba történő átviteléhez.
 
-## <a name="set-up-advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem beállítása
 
-### <a name="set-up-atp-using-the-portal"></a>ATP beállítása a portál használatával
 
-1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com/)a következő helyen:.
+## <a name="configure-advanced-threat-protection"></a>Az Azure Komplex veszélyforrások elleni védelem konfigurálása
+
+A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
+
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. Indítsa el a Azure Portal a következő helyen: [https://portal.azure.com](https://portal.azure.com/) .
 
 2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
 
@@ -51,14 +55,14 @@ A Azure Cosmos DB komplex veszélyforrások elleni védelme olyan rendellenes te
     * Kattintson a komplex **veszélyforrások elleni védelem** lehetőségre a **beállításához.**
     * Az új vagy frissített Advanced Threat Protection-szabályzat mentéséhez kattintson a **Mentés** lehetőségre.   
 
-### <a name="set-up-atp-using-rest-api"></a>ATP beállítása REST API használatával
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 A REST API-parancsokkal létrehozhat, frissíthet vagy beszerezhet egy adott Azure Cosmos DB fiók komplex veszélyforrások elleni védelmének beállítását.
 
 * [Komplex veszélyforrások elleni védelem – létrehozás](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Komplex veszélyforrások elleni védelem – Get](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>ATP beállítása Azure PowerShell használatával
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a következő PowerShell-parancsmagokat:
 
@@ -66,12 +70,12 @@ Használja a következő PowerShell-parancsmagokat:
 * [Komplex veszélyforrások elleni védelem](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [A komplex veszélyforrások elleni védelem letiltása](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
+### <a name="arm-template"></a>[ARM-sablon](#tab/arm-template)
 
-Azure Resource Manager-sablonnal beállíthatja, hogy a rendszer engedélyezve legyen a komplex veszélyforrások elleni védelem Cosmos DB.
+Azure Resource Manager-(ARM-) sablonnal beállíthatja, hogy az Advanced Threat Protection szolgáltatás engedélyezve legyen Cosmos DB.
 További információ: CosmosDB- [fiók létrehozása komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
-### <a name="using-azure-policy"></a>Azure Policy használata
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez használjon Azure Policy.
 
@@ -90,6 +94,9 @@ A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez hasz
 
 
 1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>ATP biztonsági riasztások kezelése
 

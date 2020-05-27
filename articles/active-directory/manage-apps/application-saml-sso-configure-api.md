@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: luleon
-ms.openlocfilehash: 4720da1c4bf49ba08a4bb207a85fc10402e1a3b0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fd59dcdd566110d1df02333f5701c0c206442d5d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801701"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846460"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>SAML-alapú SSO-alkalmazások konfigurációjának automatizálása Microsoft Graph API-val
 
@@ -334,11 +334,11 @@ Az alapszintű jogcímek mellett konfigurálja a következő jogcímeket az Azur
 
 | Jogcím neve | Forrás  |
 |---------|---------|
-| https://aws.amazon.com/SAML/Attributes/Role | assignedroles| 
-| https://aws.amazon.com/SAML/Attributes/RoleSessionName | userPrincipalName |
-| https://aws.amazon.com/SAML/Attributes/SessionDuration | "900" |
+| `https://aws.amazon.com/SAML/Attributes/Role` | assignedroles| 
+| `https://aws.amazon.com/SAML/Attributes/RoleSessionName` | userPrincipalName |
+| `https://aws.amazon.com/SAML/Attributes/SessionDuration` | "900" |
 | roles | assignedroles |
-| http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | userPrincipalName |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | userPrincipalName |
 
 #### <a name="request"></a>Kérés
 
@@ -652,6 +652,6 @@ A következő URL-cím használatával lekérheti az Azure AD SAML-metaadatokat 
 
 https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id}
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A felhasználók üzembe helyezésének konfigurálása Microsoft Graph API-k használatával](../app-provisioning/application-provisioning-configure-api.md)
 - [Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával](migrate-adfs-application-activity.md)

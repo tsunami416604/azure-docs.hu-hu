@@ -1,5 +1,5 @@
 ---
-title: STARTSWITH Azure Cosmos DB lekérdezési nyelven
+title: StartsWith Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg az SQL System Function STARTSWITH Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e915ea4be058f805e938ec8526ca0ee40d556271
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715273"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847114"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
 
@@ -40,23 +40,29 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="examples"></a>Példák
   
-  A következő példa ellenőrzi, hogy az "ABC" karakterlánc "b" és "a" karakterrel kezdődik-e.  
+A következő példa ellenőrzi, hogy az "ABC" karakterlánc "b" és "A" karakterrel kezdődik-e.  
   
 ```sql
-SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
+SELECT STARTSWITH("abc", "b", false) AS s1, STARTSWITH("abc", "A", false) AS s2, STARTSWITH("abc", "A", true) AS s3
 ```  
   
  Itt látható az eredményhalmaz.  
   
 ```json
-[{"s1": false, "s2": true}]  
+[
+    {
+        "s1": false,
+        "s2": false,
+        "s3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Megjegyzések
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

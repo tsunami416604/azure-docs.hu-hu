@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582968"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845950"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -49,6 +49,10 @@ Legfeljebb 900 felügyelt tartománynevet adhat hozzá. Ha az összes tartomány
 
 Ha egy harmadik szintű tartománynevet (például "europe.contoso.com") szeretne hozzáadni a címtárhoz, először fel kell vennie és ellenőriznie kell a második szintű tartományt, például contoso.com. Az altartományt az Azure AD automatikusan ellenőrzi. Ha szeretné látni, hogy a hozzáadott altartomány ellenőrzése megtörtént, frissítse a tartomány listáját a böngészőben.
 
+Megjegyzés
+
+Ha már hozzáadott egy contoso.com-tartományt egy Azure AD-bérlőhöz, hozzáadhat egy második Azure AD-bérlőhöz a europe.contoso.com altartományt is. Az altartomány hozzáadásakor a rendszer felszólítja, hogy adjon hozzá egy TXT-rekordot a DNS-szolgáltatóhoz.
+
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha megváltoztatja a DNS-regisztrálót az egyéni tartománynévhez
 
 Ha megváltoztatja a DNS-regisztrálókat, az Azure AD-ben nincsenek további konfigurációs feladatok. A tartománynevet továbbra is használhatja megszakítás nélkül az Azure AD-vel. Ha az egyéni tartománynevet az Office 365, az Intune vagy más, egyéni tartományneveket használó szolgáltatásokkal használja az Azure AD-ben, tekintse meg a szolgáltatások dokumentációját.
@@ -67,7 +71,7 @@ Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az
 
 ### <a name="forcedelete-option"></a>ForceDelete beállítás
 
-A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciátuser@contoso.com(például "") a kezdeti alapértelmezett tartománynévreuser@contoso.onmicrosoft.com(például "") frissítik. 
+A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciát (például " user@contoso.com ") a kezdeti alapértelmezett tartománynévre (például "") frissítik user@contoso.onmicrosoft.com . 
 
 A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ez magában foglalja az Exchange-levelezésre képes biztonsági csoportokat és az elosztott listát; További információ: [levelezésre képes biztonsági csoportok eltávolítása](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
@@ -90,10 +94,10 @@ A rendszer a következő hibaüzenetet adja vissza:
 **K: Miért nem sikerül a tartomány törlése olyan hibával, amely azt jelzi, hogy az Exchange-főkiszolgáló ezen a tartománynévn van?** <br>
 **A:** Napjainkban bizonyos csoportok, például a levelezésre képes biztonsági csoportok és az elosztott listák az Exchange-ben vannak kiépítve, és manuálisan kell tisztítani az [Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Előfordulhat, hogy a ProxyAddresses az egyéni tartománynévre támaszkodik, és manuálisan kell frissítenie egy másik tartománynévre. 
 
-**K: rendszergazdai\@contoso.com vagyok bejelentkezve, de nem tudom törölni a "contoso.com" nevű tartománynevet?**<br>
-**A:** A törölni kívánt egyéni tartománynév nem hivatkozhat a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiók a kezdeti alapértelmezett tartománynevet (. onmicrosoft.com) használja admin@contoso.onmicrosoft.com, például:. Jelentkezzen be egy másik globális rendszergazdai fiókkal, például admin@contoso.onmicrosoft.com a "fabrikam.com" névvel, ahol a fiók található admin@fabrikam.com.
+**K: rendszergazdai contoso.com vagyok bejelentkezve, \@ de nem tudom törölni a "contoso.com" nevű tartománynevet?**<br>
+**A:** A törölni kívánt egyéni tartománynév nem hivatkozhat a felhasználói fiók nevében. Győződjön meg arról, hogy a globális rendszergazdai fiók a kezdeti alapértelmezett tartománynevet (. onmicrosoft.com) használja, például: admin@contoso.onmicrosoft.com . Jelentkezzen be egy másik globális rendszergazdai fiókkal, például admin@contoso.onmicrosoft.com a "fabrikam.com" névvel, ahol a fiók található admin@fabrikam.com .
 
-**K: rákattintok a tartomány törlése gombra, `In Progress` és megtekintjük a törlési művelet állapotát. Mennyi ideig tart? Mi történik, ha nem sikerül?**<br>
+**K: rákattintok a tartomány törlése gombra, és megtekintjük `In Progress` a törlési művelet állapotát. Mennyi ideig tart? Mi történik, ha nem sikerül?**<br>
 **A:** A tartomány törlése művelet egy aszinkron háttérbeli feladat, amely átnevezi az összes hivatkozást a tartománynévre. Egy-két percen belül elvégezhető. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nincs:
 
 * A tartománynévre konfigurált alkalmazások a appIdentifierURI

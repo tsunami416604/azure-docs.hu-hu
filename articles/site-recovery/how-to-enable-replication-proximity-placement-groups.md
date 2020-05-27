@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ac5b7db6986afd260c5267bda83489b0ce8b606c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837429"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847633"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségben lévő elhelyezési csoportokban futó Azure-beli virtuális gépek replikálása egy másik régióba
 
@@ -187,5 +187,11 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     ```
 8. Futtasson [feladatátvételi](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)tesztet.
 
+
+## <a name="next-steps"></a>További lépések
+
+A VMware-ből az Azure-ba történő ismételt védelem és feladat-visszavétel végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)ismertetett lépéseket.
+
+A Hyper-V-ről az Azure-ba történő feladatátvétel végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) ismertetett lépéseket, és hajtsa végre a feladat-visszavételt, kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)ismertetett lépéseket.
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).

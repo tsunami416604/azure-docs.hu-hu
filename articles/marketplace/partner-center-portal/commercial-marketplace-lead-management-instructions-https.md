@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790983"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847813"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -183,7 +183,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
 
 A konfigurációt a [Poster](https://app.getpostman.com/app/download/win64)segítségével tesztelheti. A Poster online letöltése elérhető a Windowsban. 
 
-1. Indítsa el a Poster alkalmazást, és válassza az **új** > **kérelem** lehetőséget a tesztelési eszköz beállításához. 
+1. Indítsa el a Poster alkalmazást, és válassza az **új**  >  **kérelem** lehetőséget a tesztelési eszköz beállításához. 
 
    ![A tesztelési eszköz beállításához szükséges kérelem](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -229,15 +229,16 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
 
-1. A **vezető felügyelet** szakaszban válassza a **kapcsolat**lehetőséget. 
-    ![Vezető felügyeletének összekapcsolása gomb](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
 1. A **kapcsolat részletei** előugró ablakban válassza a https- **végpont** lehetőséget az **érdeklődő célhelyéhez**. Illessze be a HTTP POST URL-címet a létrehozott folyamatból, a korábbi lépéseket követve a **https-végpont URL-címe** mezőbe.
     ![Kapcsolat részletei – kapcsolattartási e-mail cím](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

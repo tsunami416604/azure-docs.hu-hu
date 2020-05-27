@@ -3,19 +3,19 @@ title: fájl belefoglalása
 titleSuffix: Azure
 description: fájl belefoglalása
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: include
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 00c24212706555667ad4680c086ece24f15ca59a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678581"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846148"
 ---
-1. Válassza az **erőforrás** > létrehozása az**összes**megjelenítése lehetőséget.
+1. Válassza az **erőforrás létrehozása**az  >  **összes**megjelenítése lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Keresés a társításban](../media/setup-seeall.png)

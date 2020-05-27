@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec59aa830fe314332d17091f17ef81d4a1d65470
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833387"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847191"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Maxient magatartás-kezelő szoftverrel
 
@@ -69,7 +69,7 @@ Az Azure AD SSO konfigurálása és tesztelése a Maxient-kezelő szoftverrel. A
 Az Azure AD SSO Maxient-kezelő szoftverrel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára, hogy a Maxient-kezelő szoftverrel való használatra hitelesítést végezzenek.
-    1. **[Rendelje hozzá az összes felhasználót a Maxient használatához](#assign-all-users-to-be-able-to-authenticate-for-the-Maxient-Conduct-Manager-Software)** – hogy mindenki számára lehetővé váljon az intézmény hitelesítése.
+    1. **[Rendelje hozzá az összes felhasználót a Maxient használatához](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** – hogy mindenki számára lehetővé váljon az intézmény hitelesítése.
 1. Az **[Azure ad telepítőjének tesztelése a Maxient-vel](#test-with-maxient)** – annak ellenőrzése, hogy a konfiguráció működik-e, és hogy a megfelelő attribútumok jelennek-e meg
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása

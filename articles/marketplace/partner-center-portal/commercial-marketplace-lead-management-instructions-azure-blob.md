@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792717"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845789"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792717"
 Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket:
 
 1. Navigáljon az ajánlat **telepítési** lapjára.
-2. Válassza a **kapcsolat** lehetőséget az érdeklődő felügyelete szakaszban.
+2. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
 
-    ![Csatlakozási ajánlat](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
 3. A kapcsolat részletei előugró ablakban válassza az **Azure Blob** lehetőséget az érdeklődő célhelyéhez.
 
@@ -85,7 +85,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk
 4. Adja meg a **tároló nevét** és a Storage-fiókhoz tartozó, a következő utasításokat követve kapott **hálózati karakterláncot** .
 
     * Példa a tároló nevére:`marketplaceleadcontainer`
-    * A Storage-fiók kapcsolatainak `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![karakterlánc-példája: a kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * A Storage-fiók kapcsolatainak karakterlánc-példája: a `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Kattintson a **Mentés** gombra.
 

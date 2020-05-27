@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275474"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846732"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem lehet hozzáférni a vállalati alkalmazáshoz" hibaüzenet alkalmazásproxy-alkalmazás használatakor
 
@@ -50,7 +50,7 @@ Az átjáró időtúllépése akkor történik meg, amikor a szolgáltatás megp
 A hibás átjáró hibája azt jelzi, hogy az összekötő nem tudja elérni a háttérbeli alkalmazást. Győződjön meg arról, hogy a megfelelő alkalmazást tette közzé. A hibát okozó gyakori hibák a következők:
 
 - A belső URL-cím elírása vagy hibája
-- Nem teszi közzé az alkalmazás gyökerét. Például közzététel <http://expenses/reimbursement> , de a hozzáférés kipróbálása<http://expenses>
+- Nem teszi közzé az alkalmazás gyökerét. Például közzététel, <http://expenses/reimbursement> de a hozzáférés kipróbálása<http://expenses>
 - Problémák a Kerberos által korlátozott delegálás (KCD) konfigurációjával
 - Problémák a háttérbeli alkalmazással
 
@@ -71,7 +71,7 @@ Első lépésként nyissa meg a belső URL-címet úgy, hogy megnyitja az alkalm
 Annak ellenőrzése, hogy az alkalmazás hozzá van-e rendelve egy működő összekötő-csoporthoz:
 
 1. Nyissa meg az alkalmazást a portálon a **Azure Active Directory**, majd a **vállalati alkalmazások**, majd az **összes alkalmazás** lehetőségre kattintva. Nyissa meg az alkalmazást, majd válassza az **alkalmazásproxy** elemet a bal oldali menüben.
-1. Tekintse meg az összekötő csoport mezőt. Ha nincsenek aktív összekötők a csoportban, a rendszer figyelmeztetést jelenít meg. Ha nem jelennek meg figyelmeztetések, a bekapcsolásával ellenőrizze, hogy az összes szükséges port engedélyezve van-e.
+1. Tekintse meg az összekötő csoport mezőt. Ha nincsenek aktív összekötők a csoportban, a rendszer figyelmeztetést jelenít meg. Ha nem jelennek meg figyelmeztetések, a bekapcsolásával ellenőrizze, hogy az összes [szükséges port](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) engedélyezve van-e.
 1. Ha nem megfelelő összekötő-csoport jelenik meg, a legördülő menüben válassza ki a megfelelő csoportot, és erősítse meg, hogy többé nem jelenik meg figyelmeztetés. Ha a kívánt összekötő csoport látható, kattintson a figyelmeztető üzenetre az oldal összekötő-kezeléssel való megnyitásához.
 1. Íme néhány módszer a további részletezéshez:
 
@@ -83,7 +83,7 @@ A lépések végrehajtása után ellenőrizze, hogy az alkalmazás hozzá van-e 
 
 ## <a name="check-all-required-ports-are-open"></a>Győződjön meg arról, hogy az összes szükséges port meg van nyitva
 
-Annak ellenőrzéséhez, hogy az összes szükséges port meg van-e nyitva, tekintse meg a portok megnyitására vonatkozó dokumentációt. Ha az összes szükséges port meg van nyitva, lépjen a következő szakaszra.
+Annak ellenőrzéséhez, hogy az összes szükséges port meg van-e nyitva, tekintse [meg a portok megnyitására vonatkozó dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to). Ha az összes szükséges port meg van nyitva, lépjen a következő szakaszra.
 
 ## <a name="check-for-other-connector-errors"></a>Más összekötők hibáinak keresése
 
