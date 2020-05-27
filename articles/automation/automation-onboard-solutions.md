@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 8a3f2c231544d07d614e6175bf703f20e4a9d9b0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 39ebdb6937b03d72365e9d3785af9571ebb66186
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743946"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836056"
 ---
-# <a name="enable-update-management-from-a-runbook"></a>Update Management engedélyezése runbook
+# <a name="enable-update-management-from-a-runbook"></a>Az Update Management engedélyezése runbookból
 
 Ez a cikk azt ismerteti, hogyan használható a runbook a virtuális gépek [Update Management](automation-update-management.md) funkciójának engedélyezésére a környezetben. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet. 
 
@@ -101,8 +101,9 @@ A runbook elindításához engedélyezve kell lennie Update Management egy Azure
 
 ## <a name="next-steps"></a>További lépések
 
+* A runbook a következő témakörben tekintheti meg: [az ütemtervek kezelése Azure Automationban](shared-resources/schedules.md).
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
-* A hatókör-konfigurációk esetében lásd: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
+* A hatókör-konfigurációk esetében lásd: [a hatókör-konfigurációk használata](automation-scope-configurations-update-management.md).
 * Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
 * A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).

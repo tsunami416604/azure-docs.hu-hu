@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5357397817b9c6712bdb2e35490e2cdd403d13c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426198"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836464"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klasszikus) integráció Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvényeket, amelyek Azure Machine Learning Studio (klasszikus) végpontokat hívnak meg. A szolgáltatás REST API támogatását a [Stream Analytics REST API könyvtárban](https://msdn.microsoft.com/library/azure/dn835031.aspx)részletesen ismertetjük. Ez a cikk a funkció sikeres megvalósításához szükséges kiegészítő információkat nyújt Stream Analyticsban. Egy oktatóanyag is közzé lett téve, és [itt](stream-analytics-machine-learning-integration-tutorial.md)érhető el.
@@ -187,8 +187,8 @@ Most kérdezze le az UDF-t (itt scoreTweet) minden bemeneti eseménynél, és í
 ```
 
 
-## <a name="get-help"></a>Segítségkérés
-További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+## <a name="get-help"></a>Segítség kérése
+További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

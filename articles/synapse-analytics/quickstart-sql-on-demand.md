@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658587"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836804"
 ---
 # <a name="quickstart-use-sql-on-demand"></a>Gyors útmutató: igény szerinti SQL használata
 
@@ -60,33 +60,21 @@ Használja a következő lekérdezést, amely a `mydbname` választott névre v�
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
+### <a name="create-data-source"></a>Adatforrás létrehozása
 
-Ha SQL igény szerint szeretné futtatni a lekérdezéseket, hozzon létre hitelesítő adatokat az SQL igény szerinti használatához a tárolóban lévő fájlok eléréséhez.
-
-> [!NOTE]
-> Az ebben a szakaszban található minták sikeres futtatásához SAS-tokent kell használnia.
->
-> Az SAS-tokenek használatának megkezdéséhez el kell dobnia a UserIdentity, amelyet az alábbi [cikkben](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)ismertetünk.
->
-> Alapértelmezés szerint az SQL igény szerinti használata mindig a HRE-továbbítást használja.
-
-A Storage hozzáférés-vezérlés kezelésével kapcsolatos további információkért tekintse[meg a Storage-fiók hozzáférése az SQL on-demandhoz](sql/develop-storage-files-storage-access-control.md) című cikket.
-
-Hajtsa végre a következő kódrészletet az ebben a szakaszban található mintákban használt hitelesítő adatok létrehozásához:
+Ha SQL igény szerint szeretné futtatni a lekérdezéseket, hozzon létre olyan adatforrást, amelyet az SQL igény szerint használhat a tárolóban lévő fájlok eléréséhez.
+A következő kódrészlet végrehajtásával hozza létre az ebben a szakaszban található mintákban használt adatforrást:
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
 ## <a name="query-csv-files"></a>CSV-fájlok lekérdezése
@@ -101,8 +89,9 @@ A következő lekérdezés azt mutatja be, hogyan lehet beolvasni egy olyan CSV-
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -129,8 +118,9 @@ Az alábbi példa a Parquet-fájlok lekérdezésének automatikus séma-követke
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'
@@ -184,7 +175,7 @@ WHERE
 > [!IMPORTANT]
 > A teljes JSON-fájlt egysoros/oszlopként olvasjuk. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre van állítva, mert nem várjuk, hogy megkeresjük a fájlban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

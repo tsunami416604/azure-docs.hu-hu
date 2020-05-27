@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: a784ddbc2ab1298bec3e2dc21469785163d7a228
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711992"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836736"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
 
@@ -93,9 +93,9 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
 Ha már nincs rá szükség, törölje a runbookot. Ehhez válassza ki a runbook listából a runbookot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott, szerkesztett, tesztelt és közzétett egy runbookot, és elindított egy runbookfeladatot. Az Automation-runbookokkal kapcsolatos további információkért folytassa az Automationben létrehozható és használható különböző runbooktípusokkal foglalkozó cikkel.
 
 > [!div class="nextstepaction"]
-> [Automation útmutató – Runbooktípusok](./automation-runbook-types.md)
+> [Azure Automation runbook-típusok](./automation-runbook-types.md)

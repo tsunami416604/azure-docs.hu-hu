@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc68b53137175042f586ee83bc045f0fbbca38f7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f7e24e1b4546c76348e61e3c2736fcfe4b66410d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713284"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836940"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
@@ -191,15 +191,14 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |A megfelelőségi jelentés korrelációs AZONOSÍTÓjának GUID azonosítója. |
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-
-- Az áttekintést lásd: [Azure Automation állapot konfigurálása](automation-dsc-overview.md).
-- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md)című témakört.
-- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse meg a [folyamatos üzembe helyezést a Azure Automation állapot-konfigurációval és a csokoládéval](automation-dsc-cd-chocolatey.md).
+- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
 - Ha többet szeretne megtudni a különböző keresési lekérdezések létrehozásáról és az Automation-állapot konfigurációs naplófájljainak Azure Monitor-naplókkal való áttekintéséről, tekintse meg a naplók [keresése a Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md)című témakört.
 - Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/collect-azure-metrics-logs.md)ismertető cikket.

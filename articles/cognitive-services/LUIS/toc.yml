@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: Migrate (Áttelepítés)
       items:
+        - name: Áttekintés
+          href: migration.md
         - name: Migrálás összetett entitásból
           href: migrate-from-composite-entity.md
         - name: Migrálás tartalomkészítési erőforrásra

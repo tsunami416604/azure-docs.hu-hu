@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474845"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836396"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -27,7 +27,7 @@ Ezek a kibocsátási megjegyzések Azure Media Services a korábbi kiadásokból
 > [!NOTE]
 > A Media Services v2 nem fog újabb funkciókkal bővülni. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák megoldására összpontosítsanak. Ha problémát szeretne bejelenteni vagy kérdéseket feltenni, küldjön egy bejegyzést a [Azure Media Services MSDN fórumában]. 
+Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák megoldására összpontosítsanak. Ha problémát szeretne bejelenteni vagy kérdéseket feltenni, küldjön egy bejegyzést a [Azure Media Services MSDN-fórumon]. 
 
 ## <a name="known-issues"></a><a id="issues"/>Ismert problémák
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Általános problémák Media Services
@@ -35,7 +35,7 @@ Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák me
 | Probléma | Leírás |
 | --- | --- |
 | A REST APIban több gyakori HTTP-fejléc sincs megadva. |Ha a REST API használatával fejleszt Media Services alkalmazásokat, úgy találja, hogy a HTTP-fejléc néhány gyakori mezője (beleértve az ügyfél-kérelem-azonosító, a kérelem-azonosító és a RETURN-CLIENT-Request-ID) nem támogatott. A fejlécek egy jövőbeli frissítésben lesznek hozzáadva. |
-| Százalék – a kódolás nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például: `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett a fájlnévkiterjesztés csak egy "." lehet. |
+| Százalék – a kódolás nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja a streaming tartalom URL-címeinek létrehozásakor (például: `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Emiatt a százalékos kódolás nem engedélyezett. A Name (név) tulajdonság értéke nem lehet a következő [százalék-kódolásra fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)egyike:! * ' ();: @ &= + $,/?% # [] ". Emellett a fájlnévkiterjesztés csak egy "." lehet. |
 | Az Azure Storage SDK 3. x verziójának részét képező ListBlobs metódus sikertelen. |A Media Services a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) -es verzió alapján hoz létre sas URL-címeket. Ha a Storage SDK-val szeretné kilistázni a blobokat egy blob-tárolóban, használja a [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) metódust, amely a Storage SDK 2. x verziójának részét képezi. |
 | A Media Services szabályozási mechanizmus korlátozza az erőforrás-használatot olyan alkalmazások esetében, amelyek túlzott kérelmeket tesznek elérhetővé a szolgáltatás számára. Előfordulhat, hogy a szolgáltatás visszaküldi a "szolgáltatás nem érhető el" 503 HTTP-állapotkódot. |További információ: a 503-es HTTP-állapotkód leírása [Media Services hibakódokban](media-services-encoding-error-codes.md). |
 | Az entitások lekérdezése esetén a 1 000-es számú entitást egyszerre adja vissza a rendszer, mert a nyilvános REST 2-es verziója korlátozza a lekérdezés eredményét 1 000 eredményre. |Használja a skip és a Take (.NET)/Top (REST) a [jelen .net-példában](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) leírtak szerint, és [Ez a REST API példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -573,7 +573,7 @@ Az SDK novemberi kiadásában a következő funkciók voltak Újdonságok:
 <!-- Images. -->
 
 <!--- URLs. --->
-[MSDN-fórum Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Microsoft Q&A question page for Azure Media Services]: https://docs.microsoft.com/answers/topics/azure-media-services.html
 [Azure Media Services REST API-hivatkozás]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Bemeneti metaadatok]: https://msdn.microsoft.com/library/azure/dn783120.aspx

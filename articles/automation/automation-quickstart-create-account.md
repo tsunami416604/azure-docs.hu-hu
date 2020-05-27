@@ -6,12 +6,12 @@ ms.date: 04/04/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 8d4cdb87302e12c024e15f8e0a7e3854d6f707a7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715460"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836702"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
@@ -65,10 +65,10 @@ Futtassa az oktatóanyag egyik runbookját.
 
 1. A feladatok állapotának `Running` elvégzése után kattintson a **kimenet** vagy **az összes napló** lehetőségre a runbook-feladatok kimenetének megtekintéséhez. A jelen oktatóanyag runbookjának kimenete az Azure-erőforrások listája.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Automation-fiókot, elindított egy runbook feladatot, és megtekintette a feladat részleteit. Ha bővebb információra van szüksége az Azure Automationnel kapcsolatban, folytassa az első runbook létrehozásával foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Automation rövid útmutató – Runbook létrehozása](./automation-quickstart-create-runbook.md)
+> [Automation rövid útmutató – Azure Automation runbook létrehozása](./automation-quickstart-create-runbook.md)
 

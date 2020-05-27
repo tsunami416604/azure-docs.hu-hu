@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: 6120e78edb31970f84244bdc25a64b3573cd5c3c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134088"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837871"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Node. js-hez készült Custom Vision SDK-val egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához.
 
@@ -45,6 +45,7 @@ const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
+const msRest = require("@azure/ms-rest-js");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -57,7 +58,8 @@ const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "detectModel";
 
-const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
+const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
+const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
 
 /* Helper function to let us use await inside a forEach loop.
  * This lets us insert delays between image uploads to accommodate the rate limit.
@@ -197,7 +199,9 @@ await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIt
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
 ```javascript
-    const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
+    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
+    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
+
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_od_image.jpg`);
 
     const results = await predictor.detectImage(sampleProject.id, publishIterationName, testFile)
@@ -210,7 +214,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 })()
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa a *sample. js fájlt*.
 

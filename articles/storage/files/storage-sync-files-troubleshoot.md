@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 062fa867115ea90dd129cac9c71ac6d9df6f3de2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725856"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836515"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
 
 Ez a cikk a Azure File Sync-telepítéssel kapcsolatban felmerülő problémák hibaelhárításához és megoldásához nyújt segítséget. Azt is leírjuk, hogyan gyűjthetjük be a fontos naplókat a rendszerből, ha a probléma mélyebb vizsgálata szükséges. Ha nem látja a választ a kérdésére, felveheti velünk a kapcsolatot a következő csatornákon keresztül (növekvő sorrendben):
 
-1. [Azure Storage-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+1. [A Microsoft Q&az Azure Storage-ra vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/products/azure?product=storage).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
 

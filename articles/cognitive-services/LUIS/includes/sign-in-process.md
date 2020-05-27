@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778274"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837891"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
 A LUIS új felhasználójának a következő eljárást kell követnie:
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), válassza ki az országot vagy régiót, és fogadja el a használati feltételeket. Ha ehelyett a **saját alkalmazások** jelennek meg, a Luis-erőforrás már létezik, és az alkalmazás létrehozásához ugorjon előre.
+1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), válassza ki az országot vagy régiót, és fogadja el a használati feltételeket. Ha ehelyett a **saját alkalmazások** jelennek meg, a Luis-erőforrás már létezik, és az alkalmazás létrehozásához ugorjon előre. A támogatott régiók esetében keresse fel [a létrehozási és közzétételi régiókat és a társított kulcsokat](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
 
 1. Válassza az **Azure-erőforrás létrehozása** lehetőséget, majd válassza az **authoring-erőforrás létrehozása lehetőséget az alkalmazások migrálása érdekében.**
 

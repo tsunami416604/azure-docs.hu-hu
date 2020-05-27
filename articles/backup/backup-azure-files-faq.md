@@ -3,16 +3,16 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: aaa0d47b540a1c3eacd9efebda84f22b83529a28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680989"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836107"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
-Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. A Azure Backup szolgáltatással kapcsolatos kérdéseket is felteheti a [Microsoft Q&a Azure Backup](https://docs.microsoft.com/answers/topics/azure-backup.html).
+Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. A Microsoft Q&a Azure Backup szolgáltatással kapcsolatos kérdéseket is felteheti a [kérdéses oldalon](https://docs.microsoft.com/answers/topics/azure-backup.html).
 
 A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terület hivatkozásait a jobb oldalon.
 

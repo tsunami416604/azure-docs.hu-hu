@@ -6,15 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657248"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836039"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Az információk áttekintése Azure Monitor
 Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A [Azure monitor adatplatformban](../platform/data-platform.md) tárolják az adatokat, és más Azure monitor funkciókat is kihasználhatnak az elemzéshez és a riasztásokhoz, azonban további adatokat gyűjthetnek, és egyedi felhasználói élményt biztosíthatnak a Azure Portal. A Azure Portal Azure Monitor menüjének bepillantást **nyerhet a bepillantást az** adatokból.
+
 
 A következő szakaszokban a Azure Monitor aktuálisan elérhető információinak rövid leírását találhatja meg. További részletekért tekintse meg a részletes dokumentációt.
 

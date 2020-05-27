@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd32d176b3e8821236f39dd1677d6dbe78b40adb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195162"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836073"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftverek támogatása az Azure HDInsight
 
@@ -40,7 +40,7 @@ A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhe
 > [!WARNING]  
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a HDInsight és a [stack overflow](https://stackoverflow.com) [MSDN-fóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) .
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldása érdekében. Előfordulhat, hogy a Microsoft ügyfélszolgálata fel tudja oldani a problémát. Vagy kérheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat is igénybe vehet, amelyekben az adott technológia mélyreható szaktudása található. Számos közösségi webhely használható. Ilyenek például a [Microsoft Q&a HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html) és a [stack overflow](https://stackoverflow.com)kérdéseit.
 >
 > Az Apache-projektek az [Apache webhelyén](https://apache.org)is rendelkeznek Project-webhelyekkel. Ilyen például a [Hadoop](https://hadoop.apache.org/).
 

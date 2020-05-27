@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/22/2020
+ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712672"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837144"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -26,6 +26,8 @@ A sablon nem automatizálja az Azure-beli vagy nem Azure-beli virtuális gépek 
 
 >[!NOTE]
 >Azure Resource Manager-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiókok kezelése](manage-runas-account.md)című témakört.
+
+A lépések elvégzése után be kell állítania az Automation-fiókhoz tartozó [diagnosztikai beállításokat](automation-manage-send-joblogs-log-analytics.md) , hogy a runbook-feladatok állapotát és a feladatok adatfolyamait a csatolt log Analytics munkaterületre küldje. 
 
 ## <a name="api-versions"></a>API-verziók
 
@@ -308,8 +310,6 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
     ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [PowerShell-runbook létrehozása](automation-first-runbook-textual-powershell.md)
-* [PowerShell-munkafolyamat runbook létrehozása](automation-first-runbook-textual.md)
-* [Python-runbook létrehozása](automation-first-runbook-textual-python2.md)
+A runbook-feladatok állapotának és a feladatok adatfolyamoknak a csatolt Log Analytics munkaterületre való továbbításához tekintse át a [Azure Automation-feladatok továbbítása Azure monitor naplókba](automation-manage-send-joblogs-log-analytics.md). Ezzel konfigurálja az Automation-fiók diagnosztikai beállításait Azure PowerShell parancsok használatával, hogy elvégezze a naplók a munkaterületre való küldésének integrálását elemzés céljából. 

@@ -5,43 +5,49 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2019
-ms.openlocfilehash: 2584cedceab1386cbab9c72bb4b510eebe2122bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0b2f67424589958d5d81e01c2efee525311ee33c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054697"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836368"
 ---
-# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics munkaterület kezelése a Azure Monitor a PowerShell használatával
+# <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics munkaterület létrehozása és konfigurálása Azure Monitorban a PowerShell használatával
+Ez a cikk két olyan mintakód-mintát tartalmaz, amelyek bemutatják, hogyan hozhat létre és konfigurálhat egy Log Analytics munkaterületet Azure Monitor.  
 
-A [log Analytics PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/module/az.operationalinsights/) különböző függvényeket hajthat végre a Azure Monitor egy log Analytics munkaterületen, a parancssorból vagy egy parancsfájl részeként.  A PowerShell-lel végrehajtható feladatok például a következők:
-
-* Munkaterület létrehozása
-* Megoldás hozzáadása vagy eltávolítása
-* Mentett keresések importálása és exportálása
-* Számítógépcsoport létrehozása
-* IIS-naplók gyűjteményének engedélyezése a telepített Windows-ügynökkel rendelkező számítógépekről
-* Teljesítményszámlálók összegyűjtése Linux és Windows rendszerű számítógépekről
-* Események gyűjtése a syslog-ből Linux rendszerű számítógépeken
-* Események gyűjtése a Windows-eseménynaplóból
-* Egyéni eseménynaplók gyűjtése
-* A log Analytics-ügynök hozzáadása egy Azure-beli virtuális géphez
-* A log Analytics konfigurálása az Azure Diagnostics használatával gyűjtött adatok indexeléséhez
-
-Ez a cikk két olyan kódrészletet tartalmaz, amelyek a PowerShellből végrehajtható függvények némelyikét szemléltetik.  További függvényekért tekintse meg a [log Analytics PowerShell-parancsmag referenciáját](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 
 > [!NOTE]
 > Log Analytics korábban Operational Insights néven hívták, ezért a parancsmagokban használt név.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ezek a példák az az. OperationalInsights modulhoz tartozó 1.0.0 vagy újabb verzióval működnek.
 
+## <a name="create-workspace"></a>Munkaterület létrehozása
+Az alábbi példa egy olyan munkaterületet hoz létre, amely nem rendelkezik adatforrás-konfigurációval. 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása és konfigurálása
-A következő parancsfájl a következőket szemlélteti:
+```powershell
+$ResourceGroup = "my-resource-group"
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
+```
+
+## <a name="create-workspace-and-configure-data-sources"></a>Munkaterület létrehozása és az adatforrások konfigurálása
+
+Az alábbi minta parancsfájl egy munkaterületet hoz létre, és több adatforrást konfigurál. Ezek az adatforrások csak akkor szükségesek, ha a [log Analytics ügynök](log-analytics-agent.md)használatával figyeli a virtuális gépeket.
+
+Ez a szkript a következő függvényeket hajtja végre:
 
 1. Munkaterület létrehozása
 2. Az elérhető megoldások listázása
@@ -57,10 +63,19 @@ A következő parancsfájl a következőket szemlélteti:
 12. Egyéni napló gyűjtése
 
 ```powershell
-
-$ResourceGroup = "oms-example"
+$ResourceGroup = "my-resource-group"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
 $Location = "westeurope"
+
+# Create the resource group if needed
+try {
+    Get-AzResourceGroup -Name $ResourceGroup -ErrorAction Stop
+} catch {
+    New-AzResourceGroup -Name $ResourceGroup -Location $Location
+}
+
+# Create the workspace
+New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku Standard -ResourceGroupName $ResourceGroup
 
 # List of solutions to enable
 $Solutions = "Security", "Updates", "SQLAssessment"
@@ -180,9 +195,9 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 > [!NOTE]
 > Az egyéni naplók konfigurációját definiáló **CustomLogRawJson** paraméter formátuma összetett lehet. Egy meglévő egyéni napló konfigurációjának beolvasása a [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) használatával. A **Properties (Tulajdonságok** ) tulajdonság a **CustomLogRawJson** paraméterhez szükséges konfiguráció.
 
-A fenti példában a regexDelimiter "\\n"-ként lett definiálva a sortöréshez. A naplózási határolójel is lehet időbélyeg.  A támogatott formátumok a következők:
+A fenti példában a regexDelimiter "n"-ként lett definiálva \\ a sortöréshez. A naplózási határolójel is lehet időbélyeg.  A támogatott formátumok a következők:
 
-| Formátum | A JSON-RegEx formátuma kettőt \\ használ a standard regexben, így ha egy regex alkalmazásban \\ a teszt csökkenti a \ | | |
+| Formátum | A JSON-RegEx formátuma kettőt használ a \\ standard regexben, így ha egy regex alkalmazásban a teszt csökkenti \\ a \ | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |
@@ -196,81 +211,6 @@ A fenti példában a regexDelimiter "\\n"-ként lett definiálva a sortöréshez
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> ahol a + + vagy a- <br> zzzz idő eltolása | `(([0-2][1-9]|[3][0-1])\\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\/((19|20)[0-9][0-9]):([0][0-9]|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\s[\\+|\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> A T egy literál betű, a t | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Log Analytics konfigurálása az Azure Diagnostics elküldéséhez
-Az Azure-erőforrások ügynök nélküli figyeléséhez az erőforrásoknak engedélyezni kell az Azure Diagnostics szolgáltatást, és úgy kell konfigurálni, hogy Log Analytics munkaterületre írna. Ez a módszer közvetlenül a munkaterületre küld adatokat, és nem igényli, hogy az adatokat egy Storage-fiókba írja. A támogatott erőforrások a következők:
-
-| Erőforrás típusa | Naplók | Mérőszámok |
-| --- | --- | --- |
-| Application Gateway-átjárók    | Igen | Igen |
-| Automation-fiókok     | Igen | |
-| Batch-fiókok          | Igen | Igen |
-| Data Lake Analitika     | Igen | |
-| Data Lake áruház         | Igen | |
-| Rugalmas SQL-készlet        |     | Igen |
-| Event Hubs-névtér     |     | Igen |
-| IoT Hubs                |     | Igen |
-| Key Vault               | Igen | |
-| Terheléselosztók          | Igen | |
-| Logic Apps              | Igen | Igen |
-| Network Security Groups (Hálózati biztonsági csoportok) | Igen | |
-| Azure Cache for Redis             |     | Igen |
-| Keresési szolgáltatások         | Igen | Igen |
-| Service Bus névtér   |     | Igen |
-| SQL (V12)               |     | Igen |
-| Webhelyek               |     | Igen |
-| Webkiszolgáló-farmok        |     | Igen |
-
-Az elérhető metrikák részleteiért tekintse meg a [támogatott mérőszámokat Azure monitor](../../azure-monitor/platform/metrics-supported.md)használatával.
-
-Az elérhető naplók részleteiért tekintse meg az [erőforrás-naplók támogatott szolgáltatásai és sémája](../../azure-monitor/platform/diagnostic-logs-schema.md)című témakört.
-
-```powershell
-$workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
-
-$resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
-
-Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
-```
-
-Az előző parancsmagot is használhatja a különböző előfizetésekben található erőforrásokból származó naplók összegyűjtésére. A parancsmag az előfizetések között tud működni, mivel az erőforrás-létrehozási naplókat és a naplókat küldő munkaterületet is megadja.
-
-
-## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Log Analytics munkaterület konfigurálása az Azure Diagnostics tárolóból való összegyűjtéséhez
-Ha a naplózási adatokat egy klasszikus felhőalapú szolgáltatás vagy egy Service Fabric-fürt futó példányán belül szeretné összegyűjteni, először az Azure Storage-ba kell írnia az adatokat. Ezután egy Log Analytics munkaterület lesz konfigurálva a naplók a Storage-fiókból való összegyűjtéséhez. A támogatott erőforrások a következők:
-
-* Klasszikus Cloud Services (webes és feldolgozói szerepkörök)
-* Service Fabric-fürtök
-
-Az alábbi példa bemutatja, hogyan:
-
-1. Felsorolja a meglévő Storage-fiókokat és-helyeket, amelyeket a munkaterület az adatok indexeléséhez fog indexelni
-2. Storage-fiókból beolvasott konfiguráció létrehozása
-3. Az újonnan létrehozott konfiguráció frissítése további helyekről származó adatok indexeléséhez
-4. Az újonnan létrehozott konfiguráció törlése
-
-```powershell
-# validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
-$workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
-
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
-$storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
-$key = "abcd=="
-
-# List existing insights
-Get-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name
-
-# Create a new insight
-New-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -StorageAccountResourceId $storageId -StorageAccountKey $key -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles")
-
-# Update existing insight
-Set-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight" -Tables @("WADWindowsEventLogsTable", "WADETWEventTable") -Containers @("wad-iis-logfiles")
-
-# Remove the insight
-Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -Name "newinsight"
-
-```
-
-Az előző szkripttel is gyűjthet naplókat a különböző előfizetésekben lévő Storage-fiókokból. A szkript az előfizetések között tud működni, mivel a Storage-fiók erőforrás-AZONOSÍTÓját és egy hozzá tartozó hozzáférési kulcsot biztosít. A hozzáférési kulcs módosításakor frissítenie kell a tárolási betekintést, hogy az új kulcs legyen.
 
 
 ## <a name="next-steps"></a>További lépések

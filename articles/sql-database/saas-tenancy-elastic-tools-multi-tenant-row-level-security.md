@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 0d41e1cb1d022ffd9eff2320d462304c6f1a8a9d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890942"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836634"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Több-bérlős alkalmazások rugalmas adatbázis-eszközökkel és sor szintű biztonsággal
 
@@ -53,18 +53,18 @@ Hozza létre és futtassa az alkalmazást. Ez a Futtatás beindítja a rugalmas 
 
 Figyelje meg, hogy mivel az RLS még nincs engedélyezve a szegmens adatbázisaiban, ezek a tesztek egy problémát észlelnek: a bérlők megtekinthetik a hozzájuk tartozó blogokat, és az alkalmazás nem akadályozza meg, hogy nem szúr be blogot a helytelen bérlőhöz. A cikk további része azt ismerteti, Hogyan oldhatók meg ezek a problémák a bérlői elkülönítés RLS-vel való kikényszerítésével. Két lépésből áll:
 
-1. **Alkalmazási**szinten: módosítsa az alkalmazás kódját, hogy a kapcsolat megnyitása után mindig az\_aktuális TENANTID állítsa be a munkamenet környezetében. A minta projekt már ezt a módszert állítja be a TenantId.
-2. **Adatcsomag**: hozzon létre egy RLS biztonsági szabályzatot minden egyes szegmens adatbázisban a sorok szűréséhez a munkamenet\_-környezetben tárolt TenantId alapján. Hozzon létre egy szabályzatot az egyes szegmens adatbázisok számára, máskülönben a több-bérlős szegmensekben lévő sorok nem lesznek szűrve.
+1. **Alkalmazási**szinten: módosítsa az alkalmazás kódját, hogy a kapcsolat megnyitása után mindig az aktuális TenantId állítsa be a munkamenet \_ környezetében. A minta projekt már ezt a módszert állítja be a TenantId.
+2. **Adatcsomag**: hozzon létre egy RLS biztonsági szabályzatot minden egyes szegmens adatbázisban a sorok szűréséhez a munkamenet-környezetben tárolt TenantId alapján \_ . Hozzon létre egy szabályzatot az egyes szegmens adatbázisok számára, máskülönben a több-bérlős szegmensekben lévő sorok nem lesznek szűrve.
 
-## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. alkalmazási szintű: TenantId beállítása a munkamenet\_kontextusában
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. alkalmazási szintű: TenantId beállítása a munkamenet \_ kontextusában
 
-Először egy szegmens adatbázishoz kell csatlakoznia a rugalmas adatbázis ügyféloldali függvénytárának Adatfüggő útválasztási API-jai használatával. Az alkalmazásnak továbbra is meg kell adnia azt az adatbázist, amelyet a TenantId használ. A TenantId azt jelzi, hogy az RLS biztonsági házirendje alapján a többi bérlőhöz tartozó sorokat ki kell szűrni. Az aktuális TenantId a kapcsolat [munkameneti\_környezetében](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) tárolja.
+Először egy szegmens adatbázishoz kell csatlakoznia a rugalmas adatbázis ügyféloldali függvénytárának Adatfüggő útválasztási API-jai használatával. Az alkalmazásnak továbbra is meg kell adnia azt az adatbázist, amelyet a TenantId használ. A TenantId azt jelzi, hogy az RLS biztonsági házirendje alapján a többi bérlőhöz tartozó sorokat ki kell szűrni. Az aktuális TenantId a kapcsolat [munkameneti \_ környezetében](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) tárolja.
 
-A munkamenet\_-környezet alternatívája a [környezeti\_adatok](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql)használata. A munkamenet\_-környezet azonban jobb megoldás. A\_munkamenet-környezet könnyebben használható, ALAPÉRTELMEZÉS szerint null értéket ad vissza, és támogatja a kulcs-érték párokat.
+A munkamenet-környezet alternatívája a \_ [környezeti \_ adatok](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql)használata. A munkamenet- \_ környezet azonban jobb megoldás. A munkamenet- \_ környezet könnyebben használható, alapértelmezés szerint null értéket ad vissza, és támogatja a kulcs-érték párokat.
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Entity Framework használó alkalmazások esetén a legegyszerűbb módszer a munkamenet\_-környezet beállítása a ElasticScaleContext felülbírálásban az [EF DbContext használatával](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Hozzon létre és hajtson végre egy olyan SqlCommand,\_amely TenantId állít be a munkamenet-környezetben a kapcsolathoz megadott shardingKey. Ezután adja vissza az Adatfüggő útválasztással felügyelt kapcsolatokat. Így csak egyszer kell kódot írnia a munkamenet\_-környezet beállításához.
+Entity Framework használó alkalmazások esetén a legegyszerűbb módszer a munkamenet-környezet beállítása a \_ ElasticScaleContext felülbírálásban az [EF DbContext használatával](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Hozzon létre és hajtson végre egy olyan SqlCommand, amely TenantId állít be a munkamenet- \_ környezetben a kapcsolathoz megadott shardingKey. Ezután adja vissza az Adatfüggő útválasztással felügyelt kapcsolatokat. Így csak egyszer kell kódot írnia a munkamenet-környezet beállításához \_ .
 
 ```csharp
 // ElasticScaleContext.cs
@@ -122,7 +122,7 @@ public static SqlConnection OpenDDRConnection(
 // ...
 ```
 
-A munkamenet\_-környezet most automatikusan a megadott TenantId van beállítva, amikor a ElasticScaleContext meghívja:
+A munkamenet- \_ környezet most automatikusan a megadott TenantId van beállítva, amikor a ElasticScaleContext meghívja:
 
 ```csharp
 // Program.cs
@@ -146,7 +146,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 ### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
 
-A ADO.NET SqlClient használó alkalmazások esetében hozzon létre egy burkoló függvényt a következő metódusban: ShardMap. OpenConnectionForKey. A burkoló automatikusan beállítja a TenantId a munkamenet\_-kontextusban az aktuális TenantId, mielőtt visszaadná a kapcsolatot. Annak érdekében, hogy\_a munkamenet-környezet mindig be legyen állítva, csak a jelen burkoló függvénnyel nyissa meg a kapcsolatokat.
+A ADO.NET SqlClient használó alkalmazások esetében hozzon létre egy burkoló függvényt a következő metódusban: ShardMap. OpenConnectionForKey. A burkoló automatikusan beállítja a TenantId a munkamenet- \_ kontextusban az aktuális TenantId, mielőtt visszaadná a kapcsolatot. Annak érdekében, hogy a munkamenet \_ -környezet mindig be legyen állítva, csak a jelen burkoló függvénnyel nyissa meg a kapcsolatokat.
 
 ```csharp
 // Program.cs
@@ -216,16 +216,16 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Biztonsági szabályzat létrehozása az egyes bérlők által elérhető sorok szűréséhez
 
-Most, hogy az alkalmazás az aktuális\_TenantId munkamenet-környezetet állít be a lekérdezés előtt, egy RLS biztonsági házirend szűrheti a lekérdezéseket, és kizárja a különböző TenantId rendelkező sorokat.
+Most, hogy az alkalmazás az \_ aktuális TENANTID munkamenet-környezetet állít be a lekérdezés előtt, egy RLS biztonsági házirend szűrheti a lekérdezéseket, és kizárja a különböző TenantId rendelkező sorokat.
 
 Az RLS implementálva van a Transact-SQL-ben. A felhasználó által definiált függvény határozza meg a hozzáférési logikát, és a biztonsági szabályzat a függvényt tetszőleges számú táblához köti. Ehhez a projekthez:
 
-1. A függvény ellenőrzi, hogy az alkalmazás csatlakoztatva van-e az adatbázishoz, és hogy a munkamenet\_-környezetben tárolt TenantId megegyezik-e az adott sor TenantId.
+1. A függvény ellenőrzi, hogy az alkalmazás csatlakoztatva van-e az adatbázishoz, és hogy a munkamenet-környezetben tárolt TenantId megegyezik-e \_ az adott sor TenantId.
     - Az alkalmazás csatlakoztatva van, és nem egy másik SQL-felhasználó.
 
 2. Egy SZŰRÉSi predikátum lehetővé teszi, hogy a TenantId-szűrőnek megfelelő sorok a SELECT, a UPDATE és a DELETE lekérdezésre legyenek továbbítva.
     - A blokk predikátum megakadályozza a szűrő behelyezését vagy frissítését sikertelenül.
-    - Ha a\_munkamenet-környezet nem lett beállítva, a függvény Null értéket ad vissza, és nem láthatók és nem szúrhatók be sorok.
+    - Ha \_ a munkamenet-környezet nem lett beállítva, a függvény Null értéket ad vissza, és nem láthatók és nem szúrhatók be sorok.
 
 Az RLS minden szegmensen való engedélyezéséhez hajtsa végre a következő T-SQL-T a Visual Studio (SSDT), a SSMS vagy a projektben található PowerShell-parancsfájl használatával. Ha [Elastic Database feladatokat](elastic-jobs-overview.md)használ, automatizálhatja a T-SQL összes szegmensen való végrehajtását.
 
@@ -268,7 +268,7 @@ GO
 
 ### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Alapértelmezett megkötések hozzáadása a lapkák TenantId automatikus feltöltéséhez
 
-Az egyes táblákon alapértelmezett korlátozásokat állíthat be, hogy automatikusan feltöltse a TenantId a munkamenet\_-környezetben jelenleg tárolt értékkel a sorok beszúrásakor. Egy példa következik.
+Az egyes táblákon alapértelmezett korlátozásokat állíthat be, hogy automatikusan feltöltse a TenantId a munkamenet-környezetben jelenleg tárolt értékkel a \_ sorok beszúrásakor. Egy példa következik.
 
 ```sql
 -- Create default constraints to auto-populate TenantId with the
@@ -301,14 +301,14 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Ha az alapértelmezett korlátozásokat használja egy Entity Framework projekthez, azt javasoljuk, hogy a TenantId oszlopot *ne* foglalja bele az EF-adatmodellbe. Ennek az az oka, hogy Entity Framework lekérdezések automatikusan megadják az alapértelmezett értékeket, amelyek felülbírálják a munkamenet\_-környezetet használó T-SQL-ben létrehozott alapértelmezett korlátozásokat.
+> Ha az alapértelmezett korlátozásokat használja egy Entity Framework projekthez, azt javasoljuk, hogy a TenantId oszlopot *ne* foglalja bele az EF-adatmodellbe. Ennek az az oka, hogy Entity Framework lekérdezések automatikusan megadják az alapértelmezett értékeket, amelyek felülbírálják a munkamenet-környezetet használó T-SQL-ben létrehozott alapértelmezett korlátozásokat \_ .
 > Ha például a minta projektben szeretné használni az alapértelmezett korlátozásokat, távolítsa el a TenantId a DataClasses.cs-ből (és futtassa az Add-Migration parancsot a csomagkezelő konzolon), és a T-SQL használatával győződjön meg arról, hogy a mező csak az adatbázis tábláiban van. Így az EF automatikusan helytelenül adja meg az alapértelmezett értékeket az adatok beszúrásakor.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Választható Az összes sor elérésének engedélyezése a *rendszergazda* számára
 
 Egyes alkalmazások létrehozhatnak egy olyan *rendszeradminisztrátort* , aki hozzáférhet az összes sorhoz. A rendszergazda engedélyezheti a jelentéskészítést az összes bérlőn az összes szegmensen. Vagy a rendszergazda olyan felosztási műveleteket végezhet a szegmenseken, amelyek a bérlői sorok adatbázisok közötti áthelyezését foglalják magukban.
 
-A rendszergazda engedélyezéséhez hozzon létre egy új SQL-`superuser` felhasználót (ebben a példában) az egyes szegmensek adatbázisaiban. Ezután módosítsa a biztonsági házirendet egy új predikátum-függvénnyel, amely lehetővé teszi a felhasználó számára az összes sor elérését. A következő függvényt adja meg.
+A rendszergazda engedélyezéséhez hozzon létre egy új SQL-felhasználót ( `superuser` ebben a példában) az egyes szegmensek adatbázisaiban. Ezután módosítsa a biztonsági házirendet egy új predikátum-függvénnyel, amely lehetővé teszi a felhasználó számára az összes sor elérését. A következő függvényt adja meg.
 
 ```sql
 -- New predicate function that adds superuser logic.
@@ -347,7 +347,7 @@ GO
 
 A rugalmas adatbázis-eszközök és a sor szintű biztonság együtt használható az alkalmazás adatrétegének horizontális felskálázásához a több-bérlős és az egybérlős szegmensek támogatásával is. Több-bérlős szegmensek használatával hatékonyabban tárolhatók az adathalmazok. Ezt a hatékonyságot akkor kell kimutatni, ha a nagy számú bérlő csak néhány sornyi adattal rendelkezik. Az egybérlős szegmensek olyan prémium bérlőket támogatnak, amelyek szigorúbb teljesítménybeli és elkülönítési követelményekkel rendelkeznek. További információ: [sor szintű biztonsági referenciák][rls].
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Mi az az Azure rugalmas készlet?](sql-database-elastic-pool.md)
 - [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](sql-database-elastic-scale-introduction.md)
@@ -357,7 +357,7 @@ A rugalmas adatbázis-eszközök és a sor szintű biztonság együtt használha
 
 ## <a name="questions-and-feature-requests"></a>Kérdések és szolgáltatások kérései
 
-Ha kérdése van, lépjen kapcsolatba velünk a [SQL Database fórumban](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). És vegyen fel semmilyen funkciót a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, vegye fel velünk a kapcsolatot a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html). És vegyen fel semmilyen funkciót a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png
