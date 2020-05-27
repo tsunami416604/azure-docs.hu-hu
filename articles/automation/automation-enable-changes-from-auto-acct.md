@@ -5,14 +5,14 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 7aacf88315c19dc6e1016bf518343165492f9188
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 28c61e637a37c158dcd80c0f02b748b4813945fb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749094"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826842"
 ---
-# <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Change Tracking és leltár engedélyezése Automation-fiókból
+# <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>A Change Tracking és az Inventory engedélyezése Automation-fiókból
 
 Ez a cikk azt ismerteti, hogyan használható az Automation-fiókja a virtuális gépek [change Tracking és leltározási](change-tracking.md) funkciójának engedélyezésére a környezetben. Az Azure-beli virtuális gépek méretének engedélyezéséhez Change Tracking és leltár használatával engedélyeznie kell egy meglévő virtuális gépet. 
 
@@ -69,20 +69,19 @@ A manuálisan telepített gépeket vagy számítógépeket, amelyeket a munkater
 
     ![Mentett keresések](media/automation-enable-changes-from-auto-acct/managemachines.png)
 
-4. Az összes rendelkezésre álló gép Change Tracking és leltárának engedélyezéséhez válassza az Engedélyezés lehetőséget az összes **elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
+3. Az összes rendelkezésre álló gép Change Tracking és leltárának engedélyezéséhez válassza az Engedélyezés lehetőséget az összes **elérhető gépen** a gépek kezelése lapon. Ez a művelet letiltja a vezérlőt a számítógépek egyenkénti hozzáadásához. Ez a feladat hozzáadja a munkaterületnek jelentett számítógépek összes nevét a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** gombot.
 
-5. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** gombot, mivel nem maradt hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett kereséseket és a hatókör-konfigurációkat a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** gombot, mivel nem maradt hatókör-konfiguráció.
 
-6. Szükség esetén ismét hozzáadhatja a hatókör-konfigurációkat a kezdeti mentett keresések újbóli hozzáadásával. További információ: a [change Tracking és a leltár hatókör-konfigurációinak használata](automation-scope-configurations-change-tracking.md).
+5. Szükség esetén ismét hozzáadhatja a hatókör-konfigurációkat a kezdeti mentett keresések újbóli hozzáadásával. További információ: a [change Tracking és a leltár hatókör-konfigurációinak használata](automation-scope-configurations-change-tracking.md).
 
-7. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek mellett kattintson a **Hozzáadás** elemre a funkció engedélyezéséhez. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
+6. Egy vagy több gép funkciójának engedélyezéséhez válassza az **Engedélyezés a kiválasztott gépeken** lehetőséget, majd az egyes gépek mellett kattintson a **Hozzáadás** elemre a funkció engedélyezéséhez. Ez a feladat hozzáadja a kiválasztott számítógépneveket a szolgáltatáshoz tartozó számítógépcsoport mentett keresési lekérdezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
-* [A Change Tracking és a leltár hatókör-konfigurációinak használata](automation-scope-configurations-change-tracking.md)
-* [Virtuális gépek szoftvereinek azonosítása](automation-tutorial-installed-software.md)
-* [Munkaterület leválasztása az Automation-fiókból a Change Tracking és a leltárhoz](automation-unlink-workspace-change-tracking.md)
-* [Virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md)
-* [Azure-beli virtuális gépek változásainak hibáinak megoldása](automation-tutorial-troubleshoot-changes.md)
-* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
+* A szolgáltatás részleteiért lásd: a [change Tracking és a leltár kezelése](change-tracking-file-contents.md).
+* A hatókör-konfigurációkról további információt a [hatókör-konfigurációk használata Change Tracking és leltárhoz](automation-scope-configurations-change-tracking.md)című témakörben talál.
+* Ha szeretné megtudni, hogyan használhatja a szolgáltatást a környezetében telepített szoftverek azonosítására, tekintse meg a [virtuális gépeken telepített szoftverek felderítését](automation-tutorial-installed-software.md)ismertető témakört.
+* Ha nem szeretné integrálni az Automation-fiókját egy Log Analytics munkaterülettel a szolgáltatás engedélyezésekor, olvassa el a [munkaterület összekapcsolása az Automation-fiókból](automation-unlink-workspace-change-tracking.md)című témakört.
+* Amikor befejezte a virtuális gépek változásainak telepítését, eltávolíthatja őket a [virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md)című témakörben leírtak szerint.
+* A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

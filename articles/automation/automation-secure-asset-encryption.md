@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: b26498357db6b1bc006c27285546fd0f3ebe6c4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743795"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830123"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Biztonságos eszközök titkosítása az Azure Automationben
 
@@ -189,8 +189,8 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához h
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi az Azure Key Vault?](../key-vault/general/overview.md)
-- [Tanúsítványok kezelése a Azure Automationban](shared-resources/certificates.md)
-- [Hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)
-- [Változók kezelése a Azure Automationban](shared-resources/variables.md)
-- [Kapcsolatok kezelése Azure Automationban](automation-connections.md)
+- A Azure Key Vault megismeréséhez tekintse meg a [Mi az Azure Key Vault?](../key-vault/general/overview.md)című témakört.
+- A tanúsítványok kezeléséhez lásd: [tanúsítványok kezelése Azure Automationban](shared-resources/certificates.md).
+- A hitelesítő adatok kezeléséhez lásd: [a hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md).
+- Az Automation-változók használatához [Azure Automation változók kezelése](shared-resources/variables.md).
+- A kapcsolatok kezelésével kapcsolatos segítségért lásd: [kapcsolatok kezelése Azure Automationban](automation-connections.md).

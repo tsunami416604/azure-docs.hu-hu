@@ -6,7 +6,7 @@
       href: overview.md
     - name: Mi az az Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   expanded: false
   items:
     - name: A hibrid Azure AD-csatlakozás konfigurálása felügyelt tartományokhoz
@@ -81,8 +81,8 @@
   items:
     - name: Azure visszajelzési fórum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Szolgáltatási hírek

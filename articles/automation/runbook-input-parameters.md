@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: cda803c886a3db9099a8c47bb70a582b6a1f6d52
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745042"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830038"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook bemeneti paramétereinek konfigurálása
 
@@ -357,5 +357,5 @@ Most meghívhatja a runbook a helyi gépről Azure PowerShell használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Szöveges runbookok szerkesztése Azure Automation](automation-edit-textual-runbook.md)
-* [Grafikus runbookok készítése Azure Automation](automation-graphical-authoring-intro.md)
+* A szöveges runbook előkészítéséhez lásd: [szöveges Runbookok szerkesztése Azure Automationban](automation-edit-textual-runbook.md).
+* Grafikus runbook előkészítéséhez lásd: [grafikus runbookok készítése Azure Automationban](automation-graphical-authoring-intro.md).

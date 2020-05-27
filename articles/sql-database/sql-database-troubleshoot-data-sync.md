@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79d7bd57ff4ba5533caba1927703ea545e077f2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382896"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830429"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Synckel kapcsolatos hibák elhárítása
 
@@ -39,7 +39,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 - [Jelentős romlást látok a teljesítményben](#sync-perf)
 
-- [A következő üzenet jelenik meg: "a NULL értéket nem lehet beszúrni \<az oszlop oszlopba>. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom?](#sync-nulls)
+- [A következő üzenet jelenik meg: "a NULL értéket nem lehet beszúrni az oszlop \< oszlopba>. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom?](#sync-nulls)
 
 - [Hogyan kezeli az adatszinkronizálás a körkörös hivatkozásokat? Ez azt jelenti, hogy ha ugyanazokat az adatfájlokat szinkronizálja több szinkronizálási csoportban, és ennek eredményeként változik?](#sync-circ)
 
@@ -78,7 +78,7 @@ A következő feltételek bármelyike előfordulhat, hogy a szinkronizálási cs
     1. Ha a szolgáltatás állapota **leállt**, kattintson a jobb gombbal a szolgáltatás nevére, majd válassza az **Indítás**lehetőséget.
 
 > [!NOTE]
-> Ha az előző információ nem helyezi át a szinkronizálási csoportot a feldolgozási állapotból, Microsoft ügyfélszolgálata állíthatja vissza a szinkronizálási csoport állapotát. A szinkronizálási csoport állapotának alaphelyzetbe állításához a [Azure SQL Database fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)hozzon létre egy bejegyzést. A bejegyzésben adja meg az előfizetés-AZONOSÍTÓját és a szinkronizálási csoport AZONOSÍTÓját az alaphelyzetbe állítani kívánt csoport számára. Egy Microsoft ügyfélszolgálata mérnök válaszol a bejegyzésre, és tudatja Önnel, ha az állapot alaphelyzetbe áll.
+> Ha az előző információ nem helyezi át a szinkronizálási csoportot a feldolgozási állapotból, Microsoft ügyfélszolgálata állíthatja vissza a szinkronizálási csoport állapotát. A szinkronizálási csoport állapotának alaphelyzetbe állításához a [Microsoft Q&a Azure SQL Database kérdés lapján](https://docs.microsoft.com/answers/topics/azure-sql-database.html)hozzon létre egy bejegyzést. A bejegyzésben adja meg az előfizetés-AZONOSÍTÓját és a szinkronizálási csoport AZONOSÍTÓját az alaphelyzetbe állítani kívánt csoport számára. Egy Microsoft ügyfélszolgálata mérnök válaszol a bejegyzésre, és tudatja Önnel, ha az állapot alaphelyzetbe áll.
 
 ### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>A táblázatokban hibás információk jelennek meg
 
@@ -104,7 +104,7 @@ A teljesítmény jelentősen csökken, valószínűleg arra a pontra, ahol még 
 
 - **Megoldás**. A legjobb megoldás a megelőzés. Győződjön meg arról, hogy nincs körkörös hivatkozás a szinkronizálási csoportokban. Az egyik szinkronizálási csoporttal szinkronizált sorokat nem lehet szinkronizálni egy másik szinkronizálási csoport.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>A következő üzenet jelenik meg: "a NULL értéket nem lehet beszúrni \<az oszlop oszlopba>. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>A következő üzenet jelenik meg: "a NULL értéket nem lehet beszúrni az oszlop \< oszlopba>. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
 Ez a hibaüzenet azt jelzi, hogy a következő két probléma egyike történt:
 -  Egy táblához nem tartozik elsődleges kulcs. A probléma megoldásához vegyen fel egy elsődleges kulcsot az összes szinkronizálni kívánt táblába.
 -  Létezik egy WHERE záradék a CREATE INDEX utasításban. Az adatszinkronizálás nem kezeli ezt az állapotot. A probléma megoldásához távolítsa el a WHERE záradékot, vagy manuálisan végezze el a módosításokat az összes adatbázison. 
@@ -138,7 +138,7 @@ Az ügyfél ügynökével kapcsolatos problémák elhárításához lásd: [az a
 
 - **OK**. Előfordulhat, hogy a "lemez elfogyva" üzenet jelenik meg, ha a maradék fájlokat törölni kell. Ennek oka az lehet, hogy a víruskereső szoftver, vagy ha a törlési műveletek során a fájlok meg vannak nyitva.
 
-- **Megoldás**. Törölje kézzel a (z)% Temp% mappában (`del \*sync\* /s`) lévő szinkronizálási fájlokat. Ezután törölje a (z)% Temp% mappában található alkönyvtárakat.
+- **Megoldás**. Törölje kézzel a (z)% Temp% mappában () lévő szinkronizálási fájlokat `del \*sync\* /s` . Ezután törölje a (z)% Temp% mappában található alkönyvtárakat.
 
 > [!IMPORTANT]
 > Ne töröljön fájlokat, amíg a szinkronizálás folyamatban van.
@@ -193,7 +193,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
 - **Megoldás**. A szolgáltatáshoz tartozó bejelentkezési hitelesítő adatok megadása a felhasználói fióknak:
 
-  1. Ugrás a **Start** > **Vezérlőpult** > **felügyeleti eszközök** > **helyi biztonsági házirend** > **helyi házirend** > **felhasználói Rights Management**.
+  1. Ugrás a **Start**  >  **Vezérlőpult**  >  **felügyeleti eszközök**  >  **helyi biztonsági házirend**  >  **helyi házirend**  >  **felhasználói Rights Management**.
   1. Válassza a **Bejelentkezés szolgáltatásként**lehetőséget.
   1. A **Tulajdonságok** párbeszédpanelen adja hozzá a felhasználói fiókot.
   1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.

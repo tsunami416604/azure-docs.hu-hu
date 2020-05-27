@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7568a8a80550677e1608e1a8a52ebeacce765c81
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68568286"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826417"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 
@@ -143,9 +143,9 @@ A dinamikus felügyeleti nézetek (DMV) használata az SQL DB-ben a folyamatos r
 
 Ezek a DMV különösen hasznosak:
 
-* **sys.DM\_Tran\_aktív\_tranzakciók**: felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms174302.aspx) talál.
-* **sys.DM\_Tran\_adatbázis\_-tranzakciói**: további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms186957.aspx) talál.
-* **sys.DM\_Tran\_zárolásai**: a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms190345.aspx) talál.
+* **sys.DM \_ Tran \_ aktív \_ tranzakciók**: felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms174302.aspx) talál.
+* **sys.DM \_ Tran \_ adatbázis- \_ tranzakciói**: további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms186957.aspx) talál.
+* **sys.DM \_ Tran \_ zárolásai**: a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](https://msdn.microsoft.com/library/ms190345.aspx) talál.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -157,7 +157,7 @@ Az SQL DB-ben jelenleg az alábbi korlátozások vonatkoznak a rugalmas adatbáz
 
 ## <a name="next-steps"></a>További lépések
 
-Ha kérdése van, kérjük, lépjen kapcsolatba velünk a [SQL Database fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatásokra vonatkozó kérésekhez, és vegye fel őket a [SQL Database visszajelzési fórumba](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, kérjük, lépjen kapcsolatba velünk a Microsoft Q&a SQL Database és a szolgáltatások iránti kérések [kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-sql-database.html) , adja hozzá őket a [SQL Database visszajelzési fórumhoz](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

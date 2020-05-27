@@ -267,8 +267,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: Blog
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: A Microsoft Developer Network fórumai
-      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Díjkalkulátor

@@ -266,7 +266,7 @@
     - name: Az Azure File Sync kibocsátási megjegyzései
       href: storage-files-release-notes.md
     - name: Azure Storage-fórum
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
     - name: Az Azure Storage a Stack Overflow-n
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Az Azure Storage díjszabása

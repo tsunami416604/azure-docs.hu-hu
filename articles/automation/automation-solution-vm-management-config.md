@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743746"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827675"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -177,6 +177,5 @@ A szolgáltatás konfigurálása a virtuális gépek leállítására egy adott 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Start/Stop VMs during off-hours engedélyezése](automation-solution-vm-management.md)
-* [Naplók lekérdezése Start/Stop VMs during off-hours](automation-solution-vm-management-logs.md)
-* [Start/Stop VMs during off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)
+* A szolgáltatás működés közbeni figyeléséhez tekintse meg a [Start/Stop VMS During off-hours lekérdezési naplóit](automation-solution-vm-management-logs.md).
+* A virtuális gépek kezelése során felmerülő problémák kezeléséhez tekintse meg [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

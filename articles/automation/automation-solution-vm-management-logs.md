@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743723"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827556"
 ---
-# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Naplók lekérdezése Start/Stop VMs during off-hours
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
 
 Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ez a cikk a Azure Monitor [lekérdezéséhez](../azure-monitor/log-query/log-query-overview.md) rendelkezésre álló adatelemzéseket tekinti át.
 
@@ -71,6 +71,6 @@ A következő táblázat a Start/Stop VMs during off-hours által összegyűjtö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Naplóbeli riasztások létrehozása a Azure Monitor](../azure-monitor/platform/alerts-log.md)
-* [Virtuális gépek leállítása/elindítása munkaidőn kívül](automation-solution-vm-management-config.md)
-* [Start/Stop VMs during off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)
+* A szolgáltatás beállításához tekintse meg a [virtuális gépek leállítása/elindítása munkaidőn kívüli konfigurálását](automation-solution-vm-management-config.md)ismertető témakört.
+* A szolgáltatás központi telepítésével kapcsolatos riasztásokról további információt a következő témakörben talál: [log riasztások létrehozása a Azure monitor](../azure-monitor/platform/alerts-log.md).
+* A szolgáltatási hibák megoldásához tekintse meg a [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

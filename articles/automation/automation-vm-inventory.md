@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745267"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830616"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
 
@@ -112,7 +112,7 @@ Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számító
 
 ## <a name="disconnect-your-vm-from-management"></a>A virtuális gép leválasztása a felügyelet alól
 
-A virtuális gép eltávolítása a leltár-kezelésből:
+A virtuális gép eltávolítása a Change Tracking és a leltár-kezelésből:
 
 1. A Azure Portal bal oldali ablaktábláján válassza a **log Analytics**lehetőséget, majd válassza ki azt a munkaterületet, amelyet a virtuális gép Change Trackinghoz és leltárhoz való engedélyezésekor használt.
 2. A Log Analytics lapon nyissa meg az **erőforrás** menüt.
@@ -127,6 +127,6 @@ A virtuális gép eltávolítása a leltár-kezelésből:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Change Tracking és leltár kezelése](change-tracking-file-contents.md)
-* [A környezetében a Change Trackingával követheti a szoftverek módosításait](../log-analytics/log-analytics-change-tracking.md).
-* [Update Management az Azure-ban](../operations-management-suite/oms-solution-update-management.md).
+* A szolgáltatással kapcsolatos további részletekért tekintse meg a [change Tracking és a leltár kezelésével](change-tracking-file-contents.md)foglalkozó témakört.
+* A szoftverfrissítések nyomon követésével kapcsolatos további információkért lásd: [a szoftverek változásainak követése a környezetben a Change Tracking](../log-analytics/log-analytics-change-tracking.md)használatával.
+* A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

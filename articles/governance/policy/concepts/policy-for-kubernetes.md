@@ -3,12 +3,12 @@ title: Előzetes verzió – a Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800362"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828627"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
@@ -403,7 +403,7 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
 1. **Paraméterek értékének** beállítása 
 
-   - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása**paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki: _Kube-System_ 
+   - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása**paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_, _forgalomirányító-System_és _Azure-arc_.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
@@ -530,7 +530,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

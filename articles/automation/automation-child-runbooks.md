@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742830"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828644"
 ---
 # <a name="create-modular-runbooks"></a>Moduláris runbookok létrehozása
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbook indítása az Azure Automationben](start-runbooks.md)
-* [Runbook kimenete és üzenetei Azure Automation](automation-runbook-output-and-messages.md)
+* A runbook futtatásához tekintse meg [a Runbook elindítása a Azure Automationben](start-runbooks.md)című témakört.
+* A runbook művelet figyeléséhez tekintse meg a következő témakört: [runbook output and messages in Azure Automation](automation-runbook-output-and-messages.md).

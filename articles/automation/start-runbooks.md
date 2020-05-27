@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20f2e0e4dec7602b69a24ed1eccd0c4ec946038b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5fc374cdb60d20896ef01c34f57897c902bbe532
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744908"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828865"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Runbook indítása az Azure Automationben
 
@@ -179,7 +179,6 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbookok kezelése Azure Automation](manage-runbooks.md)
-* [Hibrid runbook-feldolgozó áttekintése](automation-hybrid-runbook-worker.md)
-* [Moduláris runbookok létrehozása](automation-child-runbooks.md)
-* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* A runbook-kezelés részleteiért lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* A runbook-végrehajtással kapcsolatos problémák elhárításához tekintse meg a [runbook kapcsolatos problémák elhárítása](troubleshoot/runbooks.md)című témakört.

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010222"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828270"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -20,7 +20,7 @@ Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre,
 Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ.
 
 * A GYIK végén felteheti a kérdéseit, és az Azure cache csapatával és a jelen cikk más tagjaival is foglalkozhat.
-* Ha szélesebb közönséget szeretne elérni, felteheti a kérdést az [Azure cache MSDN fórumán](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) , és az Azure cache csapatával és a Közösség más tagjaival is folytathatja.
+* Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Microsoft Q&az Azure cache-re vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) , és folytassa az Azure cache csapatával és a Közösség más tagjaival.
 * Ha a szolgáltatásra vonatkozó kérést szeretne végezni, küldje el kérelmeit és ötleteit az Azure cache-be a [Redis-felhasználói hanghoz](https://feedback.azure.com/forums/169382-cache).
 * Küldhet e-mailt az [Azure cache külső visszajelzései](mailto:azurecache@microsoft.com)között is.
 
@@ -82,7 +82,7 @@ Az Azure cache Redis többféleképpen is elsajátíthatja.
 
 * A [.net](cache-dotnet-how-to-use-azure-redis-cache.md), a [ASP.net](cache-web-app-howto.md), a [Java](cache-java-get-started.md), a [Node. js](cache-nodejs-get-started.md)és a [Python](cache-python-get-started.md)szolgáltatáshoz elérhető oktatóanyagok közül választhat.
 * Megtekintheti [, hogyan hozhat létre nagy teljesítményű alkalmazásokat a Redis Microsoft Azure cache használatával](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Megtekintheti az ügyfél dokumentációját a projekt fejlesztői nyelvének megfelelő ügyfelek számára, hogy megtudja, hogyan használhatja a Redis. Számos Redis-ügyfél használható az Azure cache használatával a Redis. A Redis-ügyfelek listáját a következő témakörben tekintheti meg: [https://redis.io/clients](https://redis.io/clients).
+* Megtekintheti az ügyfél dokumentációját a projekt fejlesztői nyelvének megfelelő ügyfelek számára, hogy megtudja, hogyan használhatja a Redis. Számos Redis-ügyfél használható az Azure cache használatával a Redis. A Redis-ügyfelek listáját a következő témakörben tekintheti meg: [https://redis.io/clients](https://redis.io/clients) .
 
 Ha még nem rendelkezik Azure-fiókkal, a következőket teheti:
 
@@ -112,7 +112,7 @@ A gyorsítótár-ajánlat kiválasztásának szempontjai a következők:
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure cache a Redis teljesítményéhez
-Az alábbi táblázat a standard és prémium gyorsítótárak különböző méretekben történő tesztelésekor megfigyelt maximális sávszélességet mutatja a IaaS virtuális gépről a Redis-végponthoz tartozó Azure cache használatával `redis-benchmark.exe` . TLS átviteli sebesség esetén a Redis-benchmark a stunnel használatával csatlakozik az Azure cache-hez a Redis-végponthoz.
+Az alábbi táblázat a standard és prémium gyorsítótárak különböző méretekben történő tesztelésekor megfigyelt maximális sávszélességet mutatja a `redis-benchmark.exe` IAAS virtuális gépről a Redis-végponthoz tartozó Azure cache használatával. TLS átviteli sebesség esetén a Redis-benchmark a stunnel használatával csatlakozik az Azure cache-hez a Redis-végponthoz.
 
 >[!NOTE] 
 >Ezek az értékek nem garantáltak, és ezekhez a számokhoz nem biztosítunk SLA-t, de jellemzőnek kell lennie. Az alkalmazás megfelelő gyorsítótár-méretének meghatározásához be kell töltenie a saját alkalmazásának tesztelését.
@@ -129,7 +129,7 @@ Ebből a táblázatból a következő következtetéseket tudjuk felhívni:
 | --- | --- | --- | --- | --- | --- |
 | **Standard gyorsítótár mérete** | | |**Megabit/mp (MB/s)/megabájt/mp (MB/s)** |**Másodpercenkénti kérelmek (RPS) nem SSL** |**Másodpercenkénti kérelmek (RPS) SSL** |
 | C0 | 250 MB | Megosztott | 100/12,5  |  15 000 |   7500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
+| C1 |   1 GB | 1      | 500/62,5  |  38 000 |  20 720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41 000 |  37 000 |
 | C3 csomag |   6 GB | 4      | 1000/125  | 100 000 |  90,000 |
 | C4 |  13 GB | 2      | 500/62,5  |  60.000 |  55 000 |
@@ -142,7 +142,7 @@ Ebből a táblázatból a következő következtetéseket tudjuk felhívni:
 | P4 |  53 GB |  8 | 6 000/750   | 400,000 | 373 000 |
 | P5 | 120 GB | 20 | 6 000/750   | 400,000 | 373 000 |
 
-A stunnel beállításával vagy a Redis `redis-benchmark.exe`-eszközök (például) letöltésével kapcsolatos utasításokért lásd a [Hogyan futtathatom a Redis-parancsokat?](#cache-commands) című szakaszt.
+A stunnel beállításával vagy a Redis-eszközök (például) letöltésével kapcsolatos utasításokért `redis-benchmark.exe` lásd a [Hogyan futtathatom a Redis-parancsokat?](#cache-commands) című szakaszt.
 
 <a name="cache-region"></a>
 
@@ -200,8 +200,8 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
       * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
       * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
       * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
-      * Állítsa be `ClientName` az egyes multiplexerek tulajdonságát a diagnosztika segítésére.
-      * Ez az útmutató az egyszerűbb késést eredményezhet `ConnectionMultiplexer`.
+      * Állítsa be az `ClientName` egyes multiplexerek tulajdonságát a diagnosztika segítésére.
+      * Ez az útmutató az egyszerűbb késést eredményezhet `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Milyen Azure cache-t használhatok a Redis-ügyfelek számára?
 A Redis egyik nagyszerű dologa, hogy sok ügyfél támogatja számos különböző fejlesztési nyelvet. Az ügyfelek aktuális listájáért lásd: [Redis-ügyfelek](https://redis.io/clients). A különböző nyelveket és ügyfeleket bemutató oktatóanyagokat lásd: az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvér cikkeihez a tartalomjegyzékben.
@@ -240,7 +240,7 @@ A [Redis parancsokban](https://redis.io/commands#) felsorolt parancsok bármelyi
 * Ha standard vagy prémium szintű gyorsítótárral rendelkezik, Redis-parancsokat futtathat a Redis- [konzol](cache-configure.md#redis-console)használatával. A Redis-konzol biztonságos módot biztosít a Redis parancsok futtatására a Azure Portal.
 * Használhatja a Redis parancssori eszközöket is. A használatához hajtsa végre a következő lépéseket:
 * Töltse le a [Redis parancssori eszközöket](https://github.com/MSOpenTech/redis/releases/).
-* Kapcsolódjon a gyorsítótárhoz `redis-cli.exe`a használatával. Továbbítsa a gyorsítótár-végpontot a-h kapcsolóval és a-a kulcs használatával a következő példában látható módon:
+* Kapcsolódjon a gyorsítótárhoz a használatával `redis-cli.exe` . Továbbítsa a gyorsítótár-végpontot a-h kapcsolóval és a-a kulcs használatával a következő példában látható módon:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
@@ -256,7 +256,7 @@ A Redis Microsoft Azure gyorsítótára a Redis népszerű, nyílt forráskódú
 Mivel minden ügyfél eltérő, az MSDN-ben nem találhatók központi osztályok, és mindegyik ügyfél saját dokumentációt tart fenn. A dokumentáción kívül számos oktatóanyag mutatja be, hogyan kezdheti el az Azure cache használatát a Redis különböző nyelveken és gyorsítótár-ügyfeleken. Az oktatóanyagok eléréséhez tekintse meg az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvéri cikkek a tartalomjegyzékben című cikket.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Használhatom az Azure cache-t a Redis PHP-munkamenet-gyorsítótárként?
-Igen, ha a Redis-hez készült Azure cache-t PHP-munkamenet-gyorsítótárként szeretné használni, adja meg a kapcsolati `session.save_path`karakterláncot a Redis-példányhoz tartozó Azure cache-hez.
+Igen, ha a Redis-hez készült Azure cache-t PHP-munkamenet-gyorsítótárként szeretné használni, adja meg a kapcsolati karakterláncot a Redis-példányhoz tartozó Azure cache-hez `session.save_path` .
 
 > [!IMPORTANT]
 > Ha az Azure cache-t PHP-Redis használja, akkor a gyorsítótárhoz való csatlakozáshoz használt biztonsági kulcsot URL-címként kell kódolnia, ahogy az az alábbi példában is látható:
@@ -289,7 +289,7 @@ A Redis-kiszolgáló nem támogatja natív módon a TLS-t, de az Azure cache for
 >
 >
 
-A Redis-eszközök `redis-cli` , például a TLS-port használata nem működnek, de használhatnak olyan segédprogramot `stunnel` is, amely az eszközök TLS-porthoz való biztonságos csatlakoztatását a [bejelentési ASP.NET munkamenet-szolgáltatója a Redis előzetes kiadásához](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) című blogbejegyzésben.
+A Redis-eszközök `redis-cli` , például a TLS-port használata nem működnek, de használhatnak olyan segédprogramot is, `stunnel` amely az eszközök TLS-porthoz való biztonságos csatlakoztatását a [bejelentési ASP.NET munkamenet-szolgáltatója a Redis előzetes kiadásához](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) című blogbejegyzésben.
 
 A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [Hogyan futtathatom a Redis parancsokat?](#cache-commands) című szakaszt.
 
@@ -312,7 +312,7 @@ A Redis-eszközök letöltésével kapcsolatos utasításokért tekintse meg a [
 * Fejlessze a rendszerét úgy, hogy a [javítás és a feladatátvétel miatt](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)képes legyen kezelni a kapcsolódási naplókat.
 
 #### <a name="performance-testing"></a>Teljesítménytesztelés
-* Kezdje a használatával `redis-benchmark.exe` , hogy a saját Perf-tesztek megírása előtt a lehető legnagyobb átviteli sebességre legyen szükség. Mivel `redis-benchmark` a nem támogatja a TLS-t, a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a Azure Portalon](cache-configure.md#access-ports) . Példák: [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Kezdje a használatával `redis-benchmark.exe` , hogy a saját Perf-tesztek megírása előtt a lehető legnagyobb átviteli sebességre legyen szükség. Mivel a nem `redis-benchmark` támogatja a TLS-t, a teszt futtatása előtt [engedélyeznie kell a nem TLS portot a Azure Portalon](cache-configure.md#access-ports) . Példák: [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * A teszteléshez használt ügyfél virtuális gépnek ugyanabban a régióban kell lennie, mint a Redis-példányhoz tartozó Azure cache-nek.
 * Azt javasoljuk, hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez használja, mivel azok jobb hardvert használnak, és a legjobb eredményt kell biztosítani.
 * Győződjön meg arról, hogy a kiválasztott ügyfél virtuális gépe legalább annyi számítási és sávszélességi képességgel rendelkezik, mint a tesztelt gyorsítótár.
@@ -352,7 +352,7 @@ A következő parancsok példát mutatnak a Redis-benchmark. exe használatára.
 ### <a name="important-details-about-threadpool-growth"></a>Fontos információk a szálkészlet munkaszála belépett növekedéséről
 A CLR-beli szálkészlet munkaszála belépett két típusú szálat tartalmaz: "Worker" és "I/O-befejezési port" (olvasóhoz) szálak.
 
-* A munkaszálakat olyan dolgokhoz használják, `Task.Run(…)`mint például `ThreadPool.QueueUserWorkItem(…)` a, vagy a metódusok feldolgozása. Ezeket a szálakat a CLR különböző összetevői is használják, ha a munkafolyamatnak egy háttérben futó szálon kell történnie.
+* A munkaszálakat olyan dolgokhoz használják, mint például a `Task.Run(…)` , vagy a `ThreadPool.QueueUserWorkItem(…)` metódusok feldolgozása. Ezeket a szálakat a CLR különböző összetevői is használják, ha a munkafolyamatnak egy háttérben futó szálon kell történnie.
 * A olvasóhoz szálakat akkor használja a rendszer, amikor aszinkron IO történik, például a hálózatról való olvasáskor.
 
 A szál készlete új munkavégző szálakat vagy I/O-befejezési szálakat biztosít igény szerint (szabályozás nélkül), amíg el nem éri a "minimális" beállítást az egyes típusú szálak esetében. Alapértelmezés szerint a szálak minimális száma a rendszeren lévő processzorok számára van beállítva.
@@ -381,7 +381,7 @@ Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ü
 
 A beállítás konfigurálása:
 
-* Azt javasoljuk, `global.asax.cs`hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban. Például:
+* Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Például:
 
 ```cs
 private readonly int minThreads = 200;
@@ -398,10 +398,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > A metódus által megadott érték globális beállítás, amely hatással van a teljes alkalmazástartomány. Ha például egy 4 magos géppel rendelkezik, és a *minWorkerThreads* és a *minIoThreads* processzort 50-ra szeretné beállítani, akkor a **szálkészlet munkaszála belépett. SetMinThreads (200, 200)** értéket kell használnia.
 
-* A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) `<processModel>` is megadható a alkalmazásban `Machine.config`, általában a következő helyen:. `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
+* A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) is megadható a alkalmazásban `<processModel>` `Machine.config` , általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
 
   > [!NOTE]
-  > A konfigurációs elemben megadott érték egy *alapszintű* beállítás. Ha például egy 4 magos géppel rendelkezik, és szeretné, hogy a *minIoThreads* -beállítás értéke 200, akkor a következőt fogja használni `<processModel minIoThreads="50"/>`:.
+  > A konfigurációs elemben megadott érték egy *alapszintű* beállítás. Ha például egy 4 magos géppel rendelkezik, és szeretné, hogy a *minIoThreads* -beállítás értéke 200, akkor a következőt fogja használni: `<processModel minIoThreads="50"/>` .
   >
 
 <a name="server-gc"></a>

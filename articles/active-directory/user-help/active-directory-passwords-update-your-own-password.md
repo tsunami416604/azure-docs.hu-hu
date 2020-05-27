@@ -11,16 +11,16 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: b27b046d53a45c91d0a55a468758386437a7a6a5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739664"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828406"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
-Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és alaphelyzetbe állíthatja a saját jelszavát.
+Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és [alaphelyzetbe állíthatja a saját jelszavát](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
 
 Ha ismeri a jelszavát, de módosítani szeretné, tekintse meg a jelen cikk [jelszó módosítása lépéseit](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) ismertető fejezetét.
 

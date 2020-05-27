@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743465"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830991"
 ---
-# <a name="enable-update-management-using-azure-resource-manager-template"></a>Update Management engedélyezése Azure Resource Manager sablon használatával
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Az Update Management engedélyezése Azure Resource Manager-sablonnal
 
 Az erőforráscsoport Azure Automation Update Management funkciójának engedélyezéséhez használhat egy [Azure Resource Manager sablont](../azure-resource-manager/templates/template-syntax.md) . Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
 
@@ -241,10 +241,9 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy engedélyezte a Update Managementt, engedélyezheti a virtuális gépek felügyeletét, ellenőrizheti a frissítések értékeléseit, és telepítheti a frissítéseket, hogy azok megfeleljenek.
-
-- Azure Automation- [fiókjából](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gép számára, és manuálisan a nem Azure-beli gépekhez
-
-- Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetén érhető el
-
-- [Több Azure](manage-update-multi.md) -beli virtuális gép esetén válassza ki őket a Azure Portal **Virtual Machines** lapján. 
+* Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
+* Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
+* A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
+* Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
+* A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

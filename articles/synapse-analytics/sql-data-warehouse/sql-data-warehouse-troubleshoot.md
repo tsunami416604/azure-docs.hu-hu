@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650462"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829987"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -80,6 +80,6 @@ Ha további segítségre van szüksége a probléma megoldásához, néhány tov
 * [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 * [Stack Overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

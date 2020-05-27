@@ -1,14 +1,14 @@
 ---
 title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75980904"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828147"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Az Azure-beli felügyeleti szolgáltatások áttekintése
 
@@ -18,7 +18,7 @@ Felügyelet alatt azokat a feladatokat és folyamatokat értjük, amelyekre szü
 
 A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van szükség az alkalmazások és erőforrások kezeléséhez. Ezek a különböző területek életciklusként is megtekinthetők. Minden területnek folyamatos egymásutánban kell lennie egy erőforrás élettartama alatt. Ez az erőforrás-életciklus a kezdeti üzembe helyezéssel, a folyamatos művelettel, végül pedig a kivonással kezdődik.
 
-![Az Azure-beli felügyeleti szabályok](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Az Azure-beli felügyeleti szabályok" border="false":::
 
 Egyetlen Azure-szolgáltatás sem tölti ki teljesen az adott felügyeleti terület követelményeit. Ehelyett több szolgáltatás is működik együtt. Egyes szolgáltatások, például a Application Insights, a webalkalmazások számára biztosítanak célként szolgáló figyelési funkciókat. Mások, például Azure Monitor naplók, más szolgáltatásokhoz tartozó felügyeleti adattárakat tárolnak. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzését.
 
@@ -36,7 +36,9 @@ Ezeknek a feladatoknak az automatizálásával elkerülhető a redundancia, ami 
 ## <a name="govern"></a>Irányítás
 
 Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség. Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.
-Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. [Azure Policy](./policy/overview.md) lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését az erőforrások szabályainak érvényesítéséhez. Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat. A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait.
+Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el. [Azure Policy](./policy/overview.md) lehetővé teszi a szabályzat-definíciók létrehozását, hozzárendelését és kezelését az erőforrások szabályainak érvényesítéséhez.
+Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat.
+A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait.
 
 ## <a name="secure"></a>Biztonságos
 

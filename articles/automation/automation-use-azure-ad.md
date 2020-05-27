@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745256"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830565"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
 
@@ -159,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)
-* [Modulok kezelése az Azure Automationben](shared-resources/modules.md)
-* [Runbook indítása az Azure Automationben](start-runbooks.md)
-* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* A hitelesítő adatok használatának részleteit lásd: [a hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md).
+* A modulokkal kapcsolatos további információkért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
+* Ha runbook kell elindítania, tekintse meg [a Runbook elindítása a Azure Automationban](start-runbooks.md)című témakört.
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).

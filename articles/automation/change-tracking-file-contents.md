@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744409"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830480"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -178,6 +178,5 @@ Ezt a példát követve megtudhatja, hogyan hozhat létre riasztásokat a válto
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Change Tracking és a leltár áttekintése](change-tracking.md)
-* [A Change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)
-* [Naplóbeli keresések Azure Monitor naplókban](../log-analytics/log-analytics-log-searches.md)
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
+* A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

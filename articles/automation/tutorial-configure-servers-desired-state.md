@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735909"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827896"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Gépek célállapotba történő konfigurálása
 
@@ -26,8 +26,6 @@ Azure Automation állapot-konfiguráció lehetővé teszi a kiszolgálók konfig
 Ebben az oktatóanyagban egy egyszerű DSC- [konfigurációt](/powershell/scripting/dsc/configurations/configurations) használunk, amely biztosítja, hogy az IIS telepítve legyen a virtuális gépen.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
 - Egy Azure Resource Manager Windows Server 2008 R2 vagy újabb rendszert futtató virtuális gép (klasszikus). A virtuális gépek létrehozásával kapcsolatos utasításokért lásd: az [első Windows rendszerű virtuális gép létrehozása a Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
@@ -163,9 +161,10 @@ Ha meg szeretné szüntetni a csomópont regisztrációját Azure Automation ál
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés a Azure Automation állapot-konfigurációval](automation-dsc-getting-started.md)
-* [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md)
-* [Konfigurációk fordítása Azure Automation állapot-konfigurációban](automation-dsc-compile.md)
-* [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
-* [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
-- [Folyamatos üzembe helyezés beállítása a chocolatey-vel](automation-dsc-cd-chocolatey.md)
+- Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
+- A csomópontok engedélyezésével kapcsolatos további információkért lásd: [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md).
+- Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
+- Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
+- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

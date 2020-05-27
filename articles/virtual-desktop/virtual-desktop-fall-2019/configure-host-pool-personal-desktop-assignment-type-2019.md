@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614966"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827471"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
 
@@ -75,6 +75,18 @@ Ha egy felhasználót egy adott munkamenet-gazdagéphez szeretne rendelni, futta
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>Felhasználói hozzárendelés eltávolítása
+
+Érdemes lehet eltávolítani egy felhasználói hozzárendelést, mivel a felhasználónak már nincs szüksége a személyes asztalra, a felhasználó elhagyta a vállalatot, vagy ha valaki másnak szeretné használni az asztalt.
+
+Jelenleg csak a személyes asztal felhasználói hozzárendelésének eltávolítására van lehetőség, hogy teljes mértékben eltávolítsa a munkamenet-gazdagépet. A munkamenet-gazdagép eltávolításához futtassa a következő parancsmagot:
+
+```powershell
+Remove-RdsSessionHost
+```
+
+Ha újra hozzá kell adnia a munkamenet-gazdagépet a személyes asztali gazdagéphez, távolítsa el a Windows rendszerű virtuális asztalt a gépen, majd kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell-2019.md) -lel a munkamenet-gazdagép újbóli regisztrálásához című témakör lépéseit.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954381"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829783"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linux fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -27,7 +27,7 @@ Ha a védett virtuális gép egy Windows rendszerű virtuális gép, akkor szük
 ## <a name="overview"></a>Áttekintés
 Ez a cikk útmutatást nyújt a Linux fő célhelyének telepítéséhez.
 
-A cikk végén vagy az [Azure Recovery Services fórumán](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)megjegyzéseket vagy kérdéseket tehet közzé.
+A jelen cikk végén vagy a [Microsoft Q&az Azure Recovery Services-ra vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)megjegyzéseket vagy kérdéseket tehet közzé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -160,7 +160,7 @@ Az egyes SCSI-merevlemezek AZONOSÍTÓjának lekéréséhez egy Linux rendszerű
 
 3. Válassza a **Beállítások** lapot.
 
-4. A bal oldali ablaktáblán válassza a **speciális** > **általános**lehetőséget, majd a képernyő jobb alsó részén kattintson a **konfigurációs paraméterek** gombra.
+4. A bal oldali ablaktáblán válassza a **speciális**  >  **általános**lehetőséget, majd a képernyő jobb alsó részén kattintson a **konfigurációs paraméterek** gombra.
 
     ![Konfigurációs paraméter megnyitása](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -244,7 +244,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4\</dev/Mapper/adatmegőrzési lemez többutas azonosító>**.
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4/dev/Mapper/ \< adatmegőrzési lemez többutas azonosító>**.
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
     
     A fájl szerkesztésének megkezdéséhez kattintson a **Beszúrás** gombra. Hozzon létre egy új sort, majd szúrja be a következő szöveget. Szerkessze a lemez többutas AZONOSÍTÓját az előző parancs kijelölt többutas AZONOSÍTÓjának alapján.
 
-    **/dev/Mapper/\<adatmegőrzési lemezek többutas azonosítója>/mnt/Retention ext4 RW 0 0**
+    **/dev/Mapper/ \< adatmegőrzési lemezek többutas azonosítója>/mnt/Retention ext4 rw 0 0**
 
     Válassza az **ESC**lehetőséget, majd írja be a következőt **: wq** (írás és Kilépés) a szerkesztő ablak bezárásához.
 

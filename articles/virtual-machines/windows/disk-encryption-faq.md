@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: a6748ef520b3d03727aca045660f7563f75b200d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901278"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828338"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Azure Disk Encryption a Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdések
 
@@ -136,7 +136,7 @@ Azure Backup lehetővé teszi a titkosított virtuális gépek biztonsági ment�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Hol tehetek fel kérdéseket vagy visszajelzést?
 
-Kérdéseket tehet fel, és visszajelzést is küldhet a [Azure Disk Encryption fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
+Felteheti kérdéseit, vagy visszajelzést küldhet a [Microsoft Q&a Azure Disk Encryption kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html).
 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryptionekkel kapcsolatos leggyakoribb kérdésekről. A szolgáltatással kapcsolatos további információkért tekintse meg a következő cikkeket:

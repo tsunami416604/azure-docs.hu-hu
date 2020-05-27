@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422892"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828083"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
 
@@ -61,4 +61,4 @@ Ha az MSI-t használja, frissítenie kell az MSI-identitást is, mivel a régi i
 
 ## <a name="next-steps"></a>További lépések
 
-Amennyiben az Azure Key Vaulttal kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Ha kérdése van a Azure Key Vaultval kapcsolatban, látogasson el a [Microsoft Q&a Azure Key Vault kérdéseit tartalmazó oldalra](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

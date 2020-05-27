@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743344"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826604"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: a jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
@@ -30,7 +30,7 @@ A Windows 7, 8, 8,1 és 10 rendszerű gépek esetében engedélyezheti a felhasz
 - Néhány külső hitelesítő adat szolgáltatója ismert, hogy problémákat okoz a szolgáltatással kapcsolatban.
 - Ha a [EnableLUA beállításkulcs](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) módosításával tiltja le az UAC-t, a probléma problémákat okozhat.
 - Ez a funkció a 802.1 x hálózati hitelesítéssel rendelkező hálózatok esetében nem működik, és a "azonnali végrehajtás a felhasználó bejelentkezése előtt" beállítást. A 802.1 x hálózati hitelesítéssel telepített hálózatok esetében ajánlott a számítógép-hitelesítés használata a funkció engedélyezéséhez.
-- A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz.
+- A hibrid Azure AD-hez csatlakoztatott számítógépeknek az új jelszó használatához és a gyorsítótárazott hitelesítő adatok frissítéséhez hálózati kapcsolattal kell rendelkezniük a tartományvezérlőhöz. Ez azt jelenti, hogy az eszközöknek a szervezet belső hálózatán vagy egy helyszíni tartományvezérlőhöz való hálózati hozzáféréssel rendelkező VPN-en kell lenniük. 
 - Ha rendszerképet használ, a Sysprep futtatása előtt győződjön meg arról, hogy a webes gyorsítótár törlődik a beépített rendszergazda számára a profilmásolási lépés végrehajtása előtt. A lépéssel kapcsolatos további információkért tekintse meg az [Egyéni alapértelmezett felhasználói profil használata esetén](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)a terméktámogatási cikkben.
 - A következő beállítások ismertek a Windows 10-es eszközökön található jelszavak használatának és alaphelyzetbe állításának megakadályozása érdekében
     - Ha a v1809 előtt a Windows 10-es verziójában a Ctrl + Alt + Del billentyűkombináció szükséges, a **jelszó alaphelyzetbe állítása** nem fog működni.
@@ -66,7 +66,7 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Eszközkonfigurációs szabályzat létrehozása az Intune-ban
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) és kattintson az **Intune** elemre.
-1. Hozzon létre egy új eszköz konfigurációs profilt az **eszköz konfigurációs** > **profiljainak** > **profil létrehozása**
+1. Hozzon létre egy új eszköz konfigurációs profilt az **eszköz konfigurációs**  >  **profiljainak**  >  **profil létrehozása**
    - Adjon kifejező nevet a profilnak
    - Ha kívánja, megadhat egy kifejező leírást is a profilhoz
    - Platform: **Windows 10 és újabb**
@@ -97,7 +97,7 @@ Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyf�
 
 ![Windows 7 jelszó alaphelyzetbe állítása az Azure AD naplójában](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről állítja vissza a jelszavát, a `defaultuser1` rendszer egy alacsony jogosultságú ideiglenes fiókot hoz létre. Ezzel a fiókkal a jelszó-visszaállítási folyamat biztonságos marad. Maga a fiók véletlenszerűen generált jelszót tartalmaz, nem jelenik meg az eszköz bejelentkezéséhez, és automatikusan el lesz távolítva, miután a felhasználó alaphelyzetbe állítja a jelszavát. Több `defaultuser` profil is létezik, de nyugodtan figyelmen kívül hagyható.
+Ha a felhasználó egy Windows 10-es eszköz bejelentkezési képernyőjéről állítja vissza a jelszavát, a rendszer egy alacsony jogosultságú ideiglenes fiókot `defaultuser1` hoz létre. Ezzel a fiókkal a jelszó-visszaállítási folyamat biztonságos marad. Maga a fiók véletlenszerűen generált jelszót tartalmaz, nem jelenik meg az eszköz bejelentkezéséhez, és automatikusan el lesz távolítva, miután a felhasználó alaphelyzetbe állítja a jelszavát. Több `defaultuser` profil is létezik, de nyugodtan figyelmen kívül hagyható.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 és 8,1 jelszó alaphelyzetbe állítása
 
@@ -141,7 +141,7 @@ Ha további naplózásra van szükség, a számítógépen található beállít
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- A részletes naplózás engedélyezéséhez hozzon létre `REG_DWORD: "EnableLogging"`egy értéket, és állítsa 1 értékre.
+- A részletes naplózás engedélyezéséhez hozzon létre egy `REG_DWORD: "EnableLogging"` értéket, és állítsa 1 értékre.
 - A részletes naplózás letiltásához módosítsa a `REG_DWORD: "EnableLogging"` értéket 0-ra.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?

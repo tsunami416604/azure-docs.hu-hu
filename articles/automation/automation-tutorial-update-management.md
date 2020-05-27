@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 4b47fa873df88bf85c4c56c9f2ac94fce16c63be
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743653"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829154"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -176,4 +176,4 @@ A frissítés sikeres üzembe helyezése után egy, az alábbihoz hasonló e-mai
 
 ## <a name="next-steps"></a>További lépések
 
-* [A frissítéskezelés áttekintése](automation-update-management.md)
+* A Update Management részleteiért lásd: [Update Management áttekintése](automation-update-management.md).

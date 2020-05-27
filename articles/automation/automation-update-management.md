@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745295"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830701"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -254,4 +254,14 @@ Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a fel�
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Automation gyakori kérdések](automation-faq.md)
+* A Update Management használatáról az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakörben olvashat bővebben.
+* Ha dinamikus virtuálisgép-csoportot kell megcéloznia a frissítésekhez, tekintse meg a [dinamikus csoportok használata a](automation-update-management-groups.md)következővel: Update Management.
+* Ha Azure Resource Manager sablonnal szeretné engedélyezni a szolgáltatást, tekintse meg a [Update Management engedélyezése Azure Resource Manager sablonnal](automation-update-management-deploy-template.md)című témakört.
+* Ha engedélyezni szeretné a szolgáltatást egy runbook, olvassa el a [Update Management engedélyezése a runbook](automation-onboard-solutions.md)című témakört.
+* A szolgáltatás Automation-fiókból történő engedélyezéséről lásd: [Update Management automatizálási fiókból](automation-onboard-solutions-from-automation-account.md)való engedélyezése.
+* Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [Update Management engedélyezése a Azure Portalról](automation-onboard-solutions-from-browse.md)című témakört.
+* Ha engedélyezni szeretné a szolgáltatást egy Azure-beli virtuális gépről, tekintse meg a [Update Management engedélyezése Azure](automation-onboard-solutions-from-vm.md)-beli virtuális gépről című témakört.
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a [Update Management-naplók lekérdezése](automation-update-management-query-logs.md)című témakört.
+* A szolgáltatással kapcsolatos hibák elhárításához tekintse meg [Update Management problémák elhárítása](troubleshoot/update-management.md)című témakört.
+* A Windows Update Agent hibáinak elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux frissítési ügynök hibáinak elhárításához tekintse meg a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

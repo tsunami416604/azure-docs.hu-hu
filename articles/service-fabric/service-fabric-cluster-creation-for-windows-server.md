@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189096"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827964"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).
@@ -25,7 +25,7 @@ Ez a cikk végigvezeti a Service Fabric önálló fürt létrehozásának lépé
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>A Windows Server-csomag Service Fabric támogatásának beolvasása
-* Kérdezze meg a Közösséget a Windows Server Service Fabric önálló csomagjáról az [Azure Service Fabric fórumban](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
+* Kérdezze meg a Közösséget a Windows Serverhez készült Service Fabric önálló csomagjáról a [Microsoft Q&az Azure Service Fabric kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
 * Nyisson meg egy jegyet a [Service Fabric szakmai támogatásához](https://support.microsoft.com/oas/default.aspx?prid=16146).  További információ [a Microsoft szakmai](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)támogatásáról.
 * A csomag támogatását a [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier)részeként is elérheti.
 * További részletekért tekintse meg az [Azure Service Fabric támogatási lehetőségeit](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3. lépés: a fürt megjelenítése a Service Fabric Explorer használatával
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a alkalmazáshoz `http://localhost:19080/Explorer`.
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a alkalmazáshoz `http://localhost:19080/Explorer` .
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
 
@@ -172,9 +172,9 @@ Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzá
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Telemetria gyűjtött adatok és az onnan való leiratkozás
-Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. Az ajánlott eljárásokat elemző eszköz, amely a telepítés részeként fut, ellenőrzi a kapcsolódást [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
+Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. Az ajánlott eljárásokat elemző eszköz, amely a telepítés részeként fut, ellenőrzi a kapcsolódást [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) . Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
 
-1. A telemetria folyamat naponta [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) egyszer megpróbálja feltölteni az alábbi adatokkal. Ez a legjobb feltöltés, és nincs hatással a fürt működésére. A telemetria csak a Feladatátvevőfürt-kezelőt futtató csomópontról lesz elküldve. Más csomópontok nem küldenek telemetria.
+1. A telemetria folyamat naponta egyszer megpróbálja feltölteni az alábbi adatokkal [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) . Ez a legjobb feltöltés, és nincs hatással a fürt működésére. A telemetria csak a Feladatátvevőfürt-kezelőt futtató csomópontról lesz elküldve. Más csomópontok nem küldenek telemetria.
 2. A telemetria a következőkből áll:
 
 * Szolgáltatások száma
@@ -203,7 +203,7 @@ A telemetria letiltásához adja hozzá a következő *tulajdonságokat* a fürt
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>A csomagban található előzetes verziójú szolgáltatások
-Nincs.
+Nincsenek.
 
 
 > [!NOTE]
