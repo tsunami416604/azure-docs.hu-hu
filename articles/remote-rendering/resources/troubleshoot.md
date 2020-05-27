@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674290"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844564"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
 Ezen a lapon az Azure távoli renderelést akadályozó gyakori problémák és a megoldási módszerek találhatók.
+
+## <a name="cant-link-storage-account-to-arr-account"></a>A Storage-fiók nem csatolható ARR-fiókhoz
+
+Néha a [Storage-fiók összekapcsolása](../how-tos/create-an-account.md#link-storage-accounts) során a távoli renderelési fiók nem szerepel a listáján. A probléma megoldásához nyissa meg a Azure Portal ARR-fiókját, és válassza az **identitás** elemet a bal oldali **Beállítások** csoportban. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
+![Unity frame Debugger](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Az ügyfél nem tud csatlakozni a kiszolgálóhoz
 

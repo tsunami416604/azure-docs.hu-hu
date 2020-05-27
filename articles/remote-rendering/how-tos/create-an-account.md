@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681297"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844505"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
 
@@ -46,9 +46,9 @@ A mintáknak és az oktatóanyagoknak meg kell adniuk a fiók AZONOSÍTÓját é
 
 A *régió* lehetőség kitöltéséhez tekintse meg az [elérhető régiók listáját](../reference/regions.md) .
 
-A (z **`arrAccountId`** ) **`arrAccountKey`** és a (z) értékeit a portálon találja, az alábbi lépések szerint:
+A (z) és a (z) értékeit a **`arrAccountId`** **`arrAccountKey`** portálon találja, az alábbi lépések szerint:
 
-* Nyissa meg az [Azure Portalt](https://www.portal.azure.com)
+* Ugrás a [Azure Portal](https://www.portal.azure.com)
 * A **"távoli renderelési fiók"** kifejezés megkeresése – a **"legutóbbi erőforrások"** listában kell szerepelnie. A felső menüsorban is megkeresheti a keresést. Ebben az esetben ellenőrizze, hogy a használni kívánt előfizetés ki van-e választva az alapértelmezett előfizetés-szűrőben (a keresősáv melletti szűrő ikon):
 
 ![Előfizetés-szűrő](./media/azure-subscription-filter.png)
@@ -61,7 +61,7 @@ A kulcshoz kattintson a bal oldali panelen a **hozzáférési kulcsok** elemre. 
 
 ![Azure-hozzáférési kulcsok](./media/azure-account-primary-key.png)
 
-A értéke **`arrAccountKey`** lehet elsődleges vagy másodlagos kulcs.
+A értéke lehet **`arrAccountKey`** elsődleges vagy másodlagos kulcs.
 
 ## <a name="link-storage-accounts"></a>Storage-fiókok csatolása
 
@@ -81,9 +81,12 @@ Most feltételezzük, hogy van egy Storage-fiókja. Keresse meg a Storage-fióko
 
 ![A Storage-fiók IAM](./media/azure-add-role-assignment.png)
 
-* A hozzárendelni kívánt első szerepkör **tulajdonosa** a fenti képernyőképen látható. 
-* Válassza a **távoli renderelési fiók** lehetőséget a * hozzáférés legördülő listához**való hozzárendeléséhez** .
+* A hozzárendelni kívánt első szerepkör **tulajdonosa** a fenti képernyőképen látható.
+* Válassza a **távoli renderelési fiók** lehetőséget a **hozzáférés kiosztása** legördülő listához.
 * Válassza ki az előfizetését és a távoli renderelési fiókot az utolsó legördülő listában.
+
+> [!WARNING]
+> Ha a távoli megjelenítési fiók nem szerepel a listáján, tekintse meg ezt a [hibakeresési szakaszt](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Ismételje meg az új szerepkörök hozzáadását még egyszer a **szerepkör** legördülő menüjéből származó megfelelő beállításokhoz:
 * **Tárfiók-közreműködő**
