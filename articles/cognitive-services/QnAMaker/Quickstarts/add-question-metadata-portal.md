@@ -1,20 +1,14 @@
 ---
 title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
 description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756683"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873685"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
@@ -82,11 +76,11 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
 
 1. Válassza a **megtekintési beállítások**, majd a **metaadatok megjelenítése**lehetőséget.
 
-1. Az imént hozzáadott QnA pár esetében válassza a **metaadatok hozzáadása**elemet, majd adja hozzá a nevét `service` és a értékét. `search` Így néz ki: `service:search`.
+1. Az imént hozzáadott QnA pár esetében válassza a **metaadatok hozzáadása**elemet, majd adja hozzá a nevét `service` és a értékét `search` . Így néz ki: `service:search` .
 
-1. Adjon hozzá egy másik metaadat `link_in_answer` -címkét, amelynek `false`a neve és értéke. Így néz ki: `link_in_answer:false`.
+1. Adjon hozzá egy másik metaadat-címkét, amelynek a neve `link_in_answer` és értéke `false` . Így néz ki: `link_in_answer:false` .
 
-1. Keresse meg az első választ a táblában `How large a knowledge base can I create?`.
+1. Keresse meg az első választ a táblában `How large a knowledge base can I create?` .
 
 1. Metaadat-párok hozzáadása ugyanahhoz a két metaadat-címkéhez:
 
@@ -105,7 +99,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
 
 A tudásbázist úgy szerkesztette, hogy több kérdést támogasson, és a név/érték párokat is támogassa a keresés során a legjobb válasz vagy utófeldolgozó keresésekor a válasz vagy válaszok visszaadása után.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 

@@ -1,21 +1,14 @@
 ---
 title: Mi az QnA Maker szolgáltatás?
-titleSuffix: Azure Cognitive Services
 description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen létrehoz egy természetes társalgási réteget az adataiban. A felhasználó az egyéni Tudásbázis (KB) adatai alapján megkeresheti a legmegfelelőbb választ az adott természetes nyelvi bevitelhez.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/21/2020
-ms.author: diberry
-ms.openlocfilehash: 2863a086343b0a5d3bc69ae319dbe93d557bcb4a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052929"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873729"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Mi a QnA Maker szolgáltatás?
 

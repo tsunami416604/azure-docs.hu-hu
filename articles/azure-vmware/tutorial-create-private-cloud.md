@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe vSphere-fürtöt az Azure-ban az Azure VMWare-megoldás (AVS) használatával
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a192454367f2e6ca071e9cfe0a9f1a94868cbdb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: fc753f43563650357cf43c102e94f0057b62a406
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977699"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873736"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Oktatóanyag: AVS Private Cloud üzembe helyezése az Azure-ban
 
@@ -16,7 +16,7 @@ Az Azure VMware-megoldás (AVS) lehetővé teszi, hogy vSphere-fürtöt helyezze
 
 Mivel az AVS nem teszi lehetővé a privát felhő kezelését a helyszíni vCenter az indításkor, további konfigurációt kell végrehajtania, és kapcsolódnia kell egy helyi vCenter-példányhoz, a virtuális hálózathoz és más rendszerekhez. A jelen oktatóanyag-sorozat az eljárásokat és a kapcsolódó előfeltételeket tárgyalja.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * AVS-magánfelhő létrehozása
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 
-Az Azure VMWare-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót. A következő példa regisztrálja az erőforrás-szolgáltatót az előfizetésében.
+Az Azure VMware-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót. A következő példa regisztrálja az erőforrás-szolgáltatót az előfizetésében.
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -48,7 +48,7 @@ A [Azure Portal](#azure-portal) vagy az [Azure CLI](#azure-cli)használatával l
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal válassza az **+ új erőforrás létrehozása**lehetőséget. A **Keresés a piactér** szövegmezőbe mezőbe írja `Azure VMware Solution`be az **Azure VMware megoldás** elemet a listából. Az **Azure VMware megoldás** ablakban válassza a **Létrehozás** lehetőséget.
+A Azure Portal válassza az **+ új erőforrás létrehozása**lehetőséget. A **Keresés a piactér** szövegmezőbe mezőbe írja be `Azure VMware Solution` az **Azure VMware megoldás** elemet a listából. Az **Azure VMware megoldás** ablakban válassza a **Létrehozás** lehetőséget.
 
 Az **alapvető beállítások** lapon adja meg a mezők értékeit. A következő táblázat a tulajdonságok részletes listáját tartalmazza.
 
@@ -81,7 +81,7 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a https://shell.azure.com/bash cím megnyitásával. Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
-#### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+#### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 

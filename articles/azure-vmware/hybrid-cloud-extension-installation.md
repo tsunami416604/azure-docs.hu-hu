@@ -1,18 +1,18 @@
 ---
 title: Hibrid felhőalapú bővítmény (HCX) telepítése
-description: A VMWare Hybrid Cloud Extension (HCX) megoldás beállítása az Azure VMWare-megoldás (AVS) privát felhőhöz
+description: A VMware Hybrid Cloud Extension (HCX) megoldás beállítása az Azure VMware-megoldás (AVS) privát felhőhöz
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 74bc0dece2fc565aebc6e5301ef7a36187d6a250
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776474"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873652"
 ---
-# <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMWare-megoldás HCX telepítése
+# <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a VMWare Hybrid Cloud Extension (HCX) megoldást az Azure VMWare-megoldás (AVS) privát felhőbe. A HCX Advanced (alapértelmezett telepítés) legfeljebb három külső helyet támogat, ahol minden külső helyhez telepíteni és aktiválni kell a HCX Enterprise Managert vagy összekötőt.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a VMware Hybrid Cloud Extension (HCX) megoldást az Azure VMware-megoldás (AVS) privát felhőbe. A HCX Advanced (alapértelmezett telepítés) legfeljebb három külső helyet támogat, ahol minden külső helyhez telepíteni és aktiválni kell a HCX Enterprise Managert vagy összekötőt.
 A HCX lehetővé teszi a VMware-alapú számítási feladatok áttelepítését a felhőbe vagy más csatlakoztatott webhelyekre a különböző beépített HCX támogatott áttelepítési típusokon keresztül. Ha több mint három hely szükséges, az ügyfeleknek lehetővé kell tenniük a HCX Enterprise bővítmény támogatását. A HCX Enterprise további díjakat biztosít az ügyfelek számára az általánosan elérhető verzió (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
 
 Először alaposan [áttekintheti](#before-you-begin)a [szoftver verziójának követelményeit](#software-version-requirements)és [előfeltételeit](#prerequisites) . 

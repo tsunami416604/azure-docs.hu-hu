@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan engedélyezheti az Azure dev Spaces szolgáltatást egy AK-fürtön, és hogyan telepítheti az ügyféloldali eszközöket.
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898948"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873518"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Az Azure dev-helyek engedélyezése egy AK-fürtön és az ügyféloldali eszközök telepítése
 
@@ -47,9 +47,9 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti.
+A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti.
 
-Ha el szeretné távolítani az Azure dev-helyeket az AK- `azds remove` fürtből, használja az parancsot. Például:
+Ha el szeretné távolítani az Azure dev-helyeket az AK-fürtből, használja az `azds remove` parancsot. Például:
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -84,7 +84,6 @@ Az Azure dev Spaces ügyféloldali eszközeivel a helyi gépről a fejlesztői t
 
 * A [Visual Studio Code][vscode]-ban telepítse az [Azure dev Spaces bővítményt][vscode-extension].
 * A [Visual Studio 2019][visual-studio]-es verziójában telepítse az Azure-fejlesztési számítási feladatot.
-* A Visual Studio 2017-es verziójában telepítse a webes fejlesztés számítási feladatait és a [Visual Studio-eszközöket a Kubernetes][visual-studio-k8s-tools].
 * Töltse le és telepítse a [Windows][cli-win], [Mac][cli-mac]vagy [Linux][cli-linux] parancssori felületet.
 
 ## <a name="next-steps"></a>További lépések

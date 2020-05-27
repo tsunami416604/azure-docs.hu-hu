@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873543"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
 
@@ -18,7 +18,7 @@ Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétl
 
 ## <a name="prepare-your-aks-cluster"></a>Az AK-fürt előkészítése
 
-Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást a fürtön a Azure Portal, navigáljon a fürthöz, kattintson a *dev Spaces (fejlesztői*szóközök *használata* ) elemre *, és*kattintson a *Mentés*gombra. Az Azure dev Spaces az Azure CLI-vel is engedélyezhető `az aks use-dev-spaces`a futtatásával.
+Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást a fürtön a Azure Portal, navigáljon a fürthöz, kattintson a *dev Spaces (fejlesztői*szóközök *használata* ) elemre *, és*kattintson a *Mentés*gombra. Az Azure dev Spaces az Azure CLI-vel is engedélyezhető a futtatásával `az aks use-dev-spaces` .
 
 Ha például egy AK-fürtöt kíván beállítani a fejlesztői tárhelyekhez, tekintse meg a [Team Development][quickstart-team]rövid útmutatót.
 
@@ -78,15 +78,15 @@ Az ügyféloldali eszközök lehetővé teszik a felhasználó számára a köve
 
 Az alkalmazás futása közben az ügyféloldali eszköz is:
 * Az stdout és a stderr fogadása és megjelenítése az alkalmazásban, az AK-ban fut.
-* A [Port-Forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) használatával engedélyezi az alkalmazás webes elérését http:\//localhost.
+* A [Port-Forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) használatával engedélyezi az alkalmazás webes elérését http: \/ /localhost.
 * Egy hibakeresőt csatlakoztat a futó alkalmazáshoz az AK-ban.
 * Szinkronizálja a forráskódot a fejlesztői területére, amikor változást észlel a növekményes buildek esetében, ami lehetővé teszi a gyors iterációt.
 * Lehetővé teszi a fejlesztői gép közvetlen összekapcsolását az AK-fürthöz.
 
-A parancs részeként `azds` használhatja az ügyféloldali eszközt a parancssorból. Az ügyféloldali eszközt az alábbiakkal is használhatja:
+A parancs részeként használhatja az ügyféloldali eszközt a parancssorból `azds` . Az ügyféloldali eszközt az alábbiakkal is használhatja:
 
 * Visual Studio Code az [Azure dev Spaces bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)használatával.
-* Visual Studio [Kubernetes-hez készült Visual Studio-eszközökkel](https://aka.ms/get-vsk8stools).
+* A Visual Studio és az Azure-fejlesztési számítási feladatok.
 
 ## <a name="next-steps"></a>További lépések
 

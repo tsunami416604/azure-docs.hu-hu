@@ -3,13 +3,13 @@ title: Windows Server-tároló létrehozása Azure Kubernetes Service (ak) fürt
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást egy Windows Server-tárolóban az Azure Kubernetes szolgáltatásban (ak) a PowerShell használatával.
 services: container-service
 ms.topic: article
-ms.date: 05/12/2020
-ms.openlocfilehash: d488935a9f45d775578179cb58423d882a1cee27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/26/2020
+ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725023"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873567"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -24,9 +24,6 @@ Ez a cikk azt feltételezi, hogy alapvető ismereteket Kubernetes a fogalmakról
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell][install-azure-powershell].
-
-> [!IMPORTANT]
-> Ez a cikk az az. AK PowerShell-modul előzetes verzióját használja. Ezt külön kell telepítenie az az PowerShell-modulból a következő parancs használatával: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Az az. AK PowerShell-modul előzetes verziójának általánosan elérhetővé válása után a rendszer a PowerShell-modul kiadásait és natív módon elérhetővé válik a Azure Cloud Shellon belül.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -237,7 +234,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és üzembe helyezett egy `ASP.NET` minta alkalmazást egy Windows Server-tárolóban. Nyissa meg a létrehozott fürt [Kubernetes webes irányítópultját][kubernetes-dashboard] .
 

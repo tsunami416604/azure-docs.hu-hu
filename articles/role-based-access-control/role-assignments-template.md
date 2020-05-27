@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735623"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874040"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "82735623"
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
 
-Szerepkör hozzárendeléséhez meg kell adnia annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`. Az azonosítót a Azure Portal, Azure PowerShell vagy az Azure CLI használatával szerezheti be.
+Szerepkör hozzárendeléséhez meg kell adnia annak a felhasználónak, csoportnak vagy alkalmazásnak az AZONOSÍTÓját, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111` . Az azonosítót a Azure Portal, Azure PowerShell vagy az Azure CLI használatával szerezheti be.
 
 ### <a name="user"></a>Felhasználó
 
@@ -77,7 +77,7 @@ A következő sablon alapszintű módszert mutat a szerepkör-hozzárendelés ho
 A sablon használatához a következőket kell tennie:
 
 - Új JSON-fájl létrehozása és a sablon másolása
-- A `<your-principal-id>` helyére írja be annak a felhasználónak, csoportnak vagy alkalmazásnak az azonosítóját, amelyhez a szerepkört hozzá szeretné rendelni
+- A helyére írja be annak a `<your-principal-id>` felhasználónak, csoportnak vagy alkalmazásnak az azonosítóját, amelyhez a szerepkört hozzá szeretné rendelni
 
 ```json
 {
@@ -173,7 +173,7 @@ A sablon használatához a következő bemeneteket kell megadnia:
 ```
 
 > [!NOTE]
-> Ez a sablon nem idempotens, kivéve, `roleNameGuid` ha ugyanazt az értéket paraméterként megadja a sablon minden egyes telepítéséhez. Ha nincs `roleNameGuid` megadva, a rendszer alapértelmezés szerint új GUID azonosítót hoz létre minden központi telepítésnél, és a további központi telepítések `Conflict: RoleAssignmentExists` hibát jeleznek.
+> Ez a sablon nem idempotens, kivéve, ha ugyanazt az `roleNameGuid` értéket paraméterként megadja a sablon minden egyes telepítéséhez. Ha nincs `roleNameGuid` megadva, a rendszer alapértelmezés szerint új GUID azonosítót hoz létre minden központi telepítésnél, és a további központi telepítések `Conflict: RoleAssignmentExists` hibát jeleznek.
 
 A szerepkör-hozzárendelés hatóköre a központi telepítés szintjétől függ. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
 
@@ -358,6 +358,15 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be egy új felügyelt identitási szolgáltatásnév számára a sablon telepítése után.
 
 ![Szerepkör-hozzárendelés egy új felügyelt identitás egyszerű szolgáltatásnév számára](./media/role-assignments-template/role-assignment-template-msi.png)
+
+## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
+
+Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához távolítsa el a szerepkör-hozzárendelést. Nem lehet eltávolítani egy szerepkör-hozzárendelést sablon használatával. A szerepkör-hozzárendelés eltávolításához más eszközöket kell használnia, például:
+
+- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>További lépések
 

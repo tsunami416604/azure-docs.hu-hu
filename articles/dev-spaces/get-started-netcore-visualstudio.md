@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio a .NET Core-alkalmazások hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770713"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873616"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio és a .NET Core az Azure dev Spaces használatával
 
@@ -50,7 +50,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="get-the-visual-studio-tools"></a>A Visual Studio eszközeinek beszerzése
-Telepítse a [Visual Studio](https://www.visualstudio.com/vs/)legújabb verzióját. A Windowshoz készült Visual Studio 2019-es számítógépeken telepítenie kell az Azure-fejlesztési munkafolyamatot. A Windowshoz készült Visual Studio 2017-es számítógépen telepítenie kell a ASP.NET és a webes fejlesztési számítási feladatot, valamint a [Kubernetes készült Visual Studio-eszközöket](https://aka.ms/get-azds-visualstudio).
+Telepítse a [Visual Studio 2019](https://www.visualstudio.com/vs/) legújabb verzióját a Windowson az Azure-fejlesztési számítási feladattal.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Egy tárolóban futó webalkalmazás létrehozása
 
@@ -89,7 +89,7 @@ Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva
 Kattintson az **OK** gombra.
 
 > [!IMPORTANT]
-> Ha létezik, az Azure dev Spaces konfigurációs `azds` folyamata eltávolítja a névteret a fürtben.
+> Ha létezik, az Azure dev Spaces konfigurációs folyamata eltávolítja a `azds` névteret a fürtben.
 
  Egy háttérművelet fogja végrehajtani a konfigurálást. Ez eltarthat néhány percig. Ha meg szeretné nézni, hogy tart-e még a folyamat, vigye az egérmutatót az állapotsor bal alsó sarkában lévő **Háttérfolyamatok** ikon fölé, az alábbi ábrán látható módon.
 

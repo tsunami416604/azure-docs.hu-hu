@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481973"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874086"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
 A gépi tanulási modelleket felhasználó által definiált függvényként (UDF) implementálhatja a Azure Stream Analytics-feladatokban, így valós idejű pontozást és előrejelzéseket végezhet a folyamatos átviteli bemeneti adatokon. A [Azure Machine learning](../machine-learning/overview-what-is-azure-ml.md) lehetővé teszi, hogy bármilyen népszerű, nyílt forráskódú eszközt, például Tensorflow, Scikit vagy PyTorch használjon a modellek előkészítéséhez, betanításához és üzembe helyezéséhez.
-
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el. Ezt a funkciót csak a [stream Analytics portál előzetes](https://aka.ms/asaportalpreview)verziójának használatával érheti el a Azure Portal. Ez a funkció a [Visual studióhoz készült stream Analytics Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)legújabb verziójában is elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +28,7 @@ A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása el
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 
-4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek jelenleg nem támogatottak, de az elkövetkező hónapokban elérhetővé válnak.
+4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek csak a Azure Portal használata esetén támogatottak.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladatokhoz
 
@@ -110,7 +107,7 @@ A következő JSON egy példa erre a kérelemre:
 
 ### <a name="create-a-pandas-or-pyspark-dataframe"></a>Panda-vagy PySpark-DataFrame létrehozása
 
-A `WITH` záradék használatával LÉTREHOZHAT egy JSON szerializált DataFrame, amely a Azure Machine learning UDF bemenetként adható át az alábbi ábrán látható módon.
+A `WITH` záradék használatával létrehozhat egy JSON szerializált DataFrame, amely a Azure Machine learning UDF bemenetként adható át az alábbi ábrán látható módon.
 
 A következő lekérdezés létrehoz egy DataFrame a szükséges mezők kiválasztásával, és a DataFrame használja a Azure Machine Learning UDF bemenetként.
 

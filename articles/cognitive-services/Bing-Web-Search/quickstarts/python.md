@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 998558192891e1e7cbd24acd229f963925d3715f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74976366"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873771"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Python segítségével  
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Python-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Python-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-Ez a példa Jupyter-notebookként van futtatva a [MyBinderben](https://mybinder.org). Válassza ki az indítási kötés jelvényét:
+Ez a példa Jupyter-notebookként van futtatva a [MyBinderben](https://mybinder.org). A futtatásához válassza az indítási kötés jelvényét:
 
 [![Iratgyűjtő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
@@ -34,28 +34,30 @@ Ez a példa Jupyter-notebookként van futtatva a [MyBinderben](https://mybinder.
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Cserélje le a `subscription_key` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából.
+1. Cserélje le a `subscription_key` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából.
 
-```python
-subscription_key = "YOUR_ACCESS_KEY"
-assert subscription_key
-```
+   ```python
+   subscription_key = "YOUR_ACCESS_KEY"
+   assert subscription_key
+   ```
 
-Deklarálja a Bing Web Search API végpontját. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Deklarálja a Bing Web Search API végpontját. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
-```python
-search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
-```
+   ```python
+   search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
+   ```
 
-Nyugodtan testreszabhatja a keresési lekérdezést a `search_term` értékének lecserélésével.
+3. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `search_term` .
 
-```python
-search_term = "Azure Cognitive Services"
-```
+   ```python
+   search_term = "Azure Cognitive Services"
+   ```
 
 ## <a name="make-a-request"></a>Kérés indítása
 
-Ez a blokk a `requests` kódtárat használja a Bing Web Search API meghívásához, és JSON-objektumként adja vissza az eredményeket. Az API-kulcs a `headers` szótárban lesz átadva, a keresési kifejezést és a lekérdezés paramétereit pedig a `params` szótárban. A beállítások és paraméterek teljes listáját a [Bing Web Search API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) dokumentációjában találja meg.
+Ez a kód a `requests` könyvtárat használja a Bing Web Search API meghívására és az eredmények JSON-objektumként való visszaküldésére. Az API-kulcs a `headers` szótárban lesz átadva, a keresési kifejezést és a lekérdezés paramétereit pedig a `params` szótárban. 
+
+A beállítások és paraméterek teljes listáját itt tekintheti meg: [Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).
 
 ```python
 import requests
@@ -69,7 +71,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>A válasz formázása és megjelenítése
 
-Az `search_results` objektum tartalmazza a keresési eredményeket és a metaadatokat, például a kapcsolódó lekérdezéseket és lapokat. Ez a kód az `IPython.display` kódtár segítségével formázza és jeleníti meg a választ a böngészőjében.
+Az `search_results` objektum tartalmazza a keresési eredményeket, és az ilyen metaadatokat kapcsolódó lekérdezések és lapok. Ez a kód az `IPython.display` kódtár segítségével formázza és jeleníti meg a választ a böngészőjében.
 
 ```python
 from IPython.display import HTML
@@ -84,11 +86,11 @@ HTML("<table>{0}</table>".format(rows))
 
 ## <a name="sample-code-on-github"></a>Mintakód a GitHubon
 
-Ha szeretné ezt a kódot helyben futtatni, a teljes [mintát megtalálja a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py).
+A kód helyi futtatásához tekintse meg a teljes mintát, amely [elérhető a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

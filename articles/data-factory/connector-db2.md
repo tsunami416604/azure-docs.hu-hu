@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: b33f9a11cee08ea8c4accb683d70960d7f98e776
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659566"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873637"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -36,7 +36,7 @@ Ez a DB2-adatbázis-összekötő a következő tevékenységek esetében támoga
 
 Az adatok a DB2-adatbázisból bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verziókat támogatja az elosztott kapcsolati adatbázis-architektúra (DRDA) SQL Access Manager (SQLAM) 9-es, 10-es és 11-es verziójával:
+Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verziókat támogatja az elosztott kapcsolati adatbázis-architektúra (DRDA) SQL Access Manager (SQLAM) 9-es, 10-es és 11-es verziójával.  A DDM/DRDA protokollt használja.
 
 * IBM DB2 for z/OS 12,1
 * IBM DB2 for z/OS 11,1
@@ -67,7 +67,7 @@ A következő szakaszokban részletesen ismertetjük a DB2-összekötőhöz tart
 
 A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **DB2** | Igen |
 | connectionString | Itt adhatja meg a DB2-példányhoz való kapcsolódáshoz szükséges adatokat.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
@@ -75,14 +75,14 @@ A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 
 A kapcsolatok karakterláncán belüli jellemző tulajdonságok:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például: `server:port` . |Igen |
+| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például: `server:port` .<br>A DB2-összekötő használja az DDM/DRDA protokollt, és alapértelmezés szerint a 50000-as portot használja, ha nincs megadva. Előfordulhat, hogy az adott DB2-adatbázis által használt port eltér a verziótól és a beállításaitól, például az alapértelmezett port 50000, az alapértelmezett port a, az alapértelmezett AS400 446 vagy 448, ha a TLS engedélyezve van. A port konfigurálásának módjáról a következő DB2-dokumentumokat tekintse meg: [DB2 z/os](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)és [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Igen |
 | adatbázis |A DB2-adatbázis neve. |Igen |
 | authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű**. |Igen |
 | felhasználónév |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. | Nem |
+| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. Ha nincs beállítva, Data Factory a {username} értéket használja alapértelmezett értékként. | Nem |
 | certificateCommonName | Ha SSL (SSL) vagy Transport Layer Security (TLS) titkosítást használ, meg kell adnia egy értéket a tanúsítvány köznapi neveként. | Nem |
 
 > [!TIP]
@@ -164,14 +164,14 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok DB2-ből való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Db2Table** | Igen |
 | séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Példa**
+**Például**
 
 ```json
 {
@@ -199,7 +199,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok DB2-ből történő másolásához a másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Db2Source** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -264,7 +264,7 @@ Az adatok DB2-ből való másolása során a rendszer a következő leképezése
 | Numerikus |Decimal |
 | Valós |Egyirányú |
 | SmallInt |Int16 |
-| Time |időtartam |
+| Idő |időtartam |
 | Időbélyeg |DateTime |
 | VarBinary |Bájt [] |
 | VarChar |Sztring |

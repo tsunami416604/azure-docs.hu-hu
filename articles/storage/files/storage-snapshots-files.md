@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176141"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873579"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Az Azure Files megosztási pillanatképeinek áttekintése 
 Azure Files lehetővé teszi a fájlmegosztás pillanatképének megosztását. A megosztási Pillanatképek a megosztás állapotát az adott időpontban rögzítik. Ebben a cikkben bemutatjuk, hogy milyen képességeket oszthat meg a pillanatképek, és hogyan használhatja fel őket az egyéni használati esetekben.
@@ -28,7 +28,7 @@ Képzelje el, hogy egy fájlmegosztás szövegfájljában dolgozik. A szövegfá
 ### <a name="general-backup-purposes"></a>Általános biztonsági mentési célok
 Miután létrehozott egy fájlmegosztást, rendszeres időközönként létrehozhat egy megosztási pillanatképet a fájlmegosztás számára az adatok biztonsági mentésére való használatra. A megosztási pillanatkép, amely rendszeres időközönként elvégezte az adatok korábbi verzióinak fenntartását, amelyek a jövőbeli auditálási követelményekhez vagy a vész-helyreállításhoz használhatók.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 A megosztási pillanatkép az adatok egy időponthoz tartozó, írásvédett másolata. A pillanatképeket a REST API használatával hozhatja létre, törölheti és kezelheti. Ugyanezek a képességek az ügyféloldali függvénytárban, az Azure CLI-ben és a Azure Portal is elérhetők. 
 
 A megosztások pillanatképeit a REST API és az SMB használatával is megtekintheti. Lekérheti a címtár vagy a fájl verzióinak listáját, és közvetlenül meghajtóként is csatlakoztathat egy adott verziót (csak Windows – lásd: [korlátozások](#limits)). 
@@ -37,7 +37,7 @@ A megosztási pillanatkép létrehozása után a fájl olvasható, másolható v
 
 A megosztott Pillanatképek funkció a fájlmegosztás szintjén van megadva. A lekérést az egyes fájlok szintjén kell megadnia, hogy lehetővé váljon az egyes fájlok visszaállítása. A teljes fájlmegosztást az SMB, a REST API, a portál, az ügyféloldali kódtár vagy a PowerShell/CLI-eszközök használatával állíthatja vissza.
 
-A fájlmegosztás megosztási pillanatképe megegyezik az alapfájl-megosztással. Az egyetlen különbség, hogy egy **datetime** érték van hozzáfűzve a megosztási URI-hoz, hogy jelezze a megosztási pillanatkép készítésének időpontját. Ha például a fájlmegosztás URI-ja http:\//storagesample.Core.file.Windows.net/MyShare, a megosztási pillanatkép URI-ja a következőhöz hasonló:
+A fájlmegosztás megosztási pillanatképe megegyezik az alapfájl-megosztással. Az egyetlen különbség, hogy egy **datetime** érték van hozzáfűzve a megosztási URI-hoz, hogy jelezze a megosztási pillanatkép készítésének időpontját. Ha például a fájlmegosztás URI-ja http: \/ /storagesample.Core.file.Windows.net/MyShare, a megosztási pillanatkép URI-ja a következőhöz hasonló:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -80,7 +80,7 @@ Amikor infrastruktúrát futtat az Azure-ban, automatizálja az Adathelyreállí
 
 A megosztási pillanatkép-ütemező üzembe helyezése előtt körültekintően vegye figyelembe a megosztás pillanatképének gyakoriságát és a megőrzési beállításokat, hogy elkerülje a szükségtelen költségek felmerülését.
 
-A megosztási Pillanatképek csak a fájl szintű védelmet biztosítják. A megosztási Pillanatképek nem akadályozzák meg a FAT-Finger törlését egy fájlmegosztás vagy egy Storage-fiók esetében. A Storage-fiók véletlen törlések elleni védelmének biztosításához zárolhatja a Storage-fiókot vagy az erőforráscsoportot.
+A megosztási Pillanatképek csak a fájl szintű védelmet biztosítják. A megosztási Pillanatképek nem akadályozzák meg a FAT-Finger törlését egy fájlmegosztás vagy egy Storage-fiók esetében. A Storage-fiókok véletlen törlések elleni védelméhez engedélyezheti a helyreállítható [törlést](storage-files-prevent-file-share-deletion.md), vagy zárolhatja a Storage-fiókot és/vagy az erőforráscsoportot.
 
 ## <a name="next-steps"></a>További lépések
 - A megosztási Pillanatképek használata a ben:

@@ -3,12 +3,12 @@ title: Oktatóanyag – a privát felhő elérésének megismerése
 description: Ismerje meg, hogyan érheti el az Azure VMware-megoldás (AVS) privát felhőjét
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: fcee332818c89d9c8b00795dca9e74f68260eefd
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740191"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873604"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Oktatóanyag: az Azure VMware-megoldás (AVS) privát felhő elérésének megismerése
 
@@ -16,7 +16,7 @@ Az előzetes verzióban az AVS nem teszi lehetővé, hogy a helyszíni vCenter k
 
 Ebben az oktatóanyagban egy Windows rendszerű virtuális gépet hoz létre egy Jump Box számára az előző oktatóanyagban létrehozott erőforráscsoporthoz [: konfigurálja a hálózatkezelést a VMware Private Cloud-ban az Azure-ban](tutorial-configure-networking.md) , és jelentkezzen be a vCenter. Ez egy virtuális gép, amely az Ön által létrehozott virtuális hálózaton található, és hozzáférést biztosít a vCenter és a NSX Managerhez. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A vCenter való kapcsolódáshoz használandó Windows rendszerű virtuális gép létrehozása

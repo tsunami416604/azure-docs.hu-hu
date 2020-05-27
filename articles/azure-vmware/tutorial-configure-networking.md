@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – a VMWare Private Cloud hálózatkezelésének konfigurálása az Azure-ban
+title: Oktatóanyag – a VMware Private Cloud hálózatkezelésének konfigurálása az Azure-ban
 description: Megtudhatja, hogyan hozhatja létre és konfigurálhatja a privát felhő üzembe helyezéséhez szükséges hálózatkezelést az Azure-ban
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837617"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873854"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Oktatóanyag: az Azure-beli VMWare Private-felhő hálózatkezelésének konfigurálása
 
 Egy Azure VMware-megoldás (AVS) privát felhőhöz virtuális hálózat szükséges. Mivel az AVS nem támogatja a helyszíni vCenter az előzetes verzióban, szükség van a helyszíni környezettel való integráció további lépéseire. A ExpressRoute-áramkör és a Virtual Network átjáró beállítása is szükséges, és ebben az oktatóanyagban fog foglalkozni.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Virtuális hálózat létrehozása
@@ -103,7 +103,7 @@ A **kapcsolatok hozzáadása** lapon adja meg a mezők értékeit. A mezők leí
 | **Engedélyezési kulcs**  | Másolja és illessze be az engedélyezési kulcsot az erőforráscsoport ExpressRoute lapjáról. |
 | **Társ áramkör URI-ja**  | Másolja és illessze be a ExpressRoute-azonosítót az erőforráscsoport ExpressRoute lapjáról.  |
 
-Kattintson az **OK** gombra. Ez létrehozza a kapcsolatot a ExpressRoute-áramkör és a virtuális hálózat között.
+Válassza az **OK** lehetőséget. Ez létrehozza a kapcsolatot a ExpressRoute-áramkör és a virtuális hálózat között.
 
 :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="kapcsolatok hozzáadása" border="true":::
 
@@ -128,4 +128,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre a környezethez való kapcsolódáshoz használt Jump Box-t, hogy helyileg kezelhesse a saját felhőjét.
 
 > [!div class="nextstepaction"]
-> [Hozzáférés a privát felhőhöz](tutorial-access-private-cloud.md)
+> [Hozzáférés a magánfelhőhöz](tutorial-access-private-cloud.md)

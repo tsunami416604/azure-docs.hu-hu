@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7b33a857953b7f96180e306195dd0e8b21450556
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446591"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874013"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a Python használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Python-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search API. Ez a Python-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,13 +29,13 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és `import` adja hozzá a következő utasítást:
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő `import` utasítást:
 
     ```python
     import requests, json
     ```
 
-2. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a feltöltött rendszerkép elérési útjához. `BASE_URI`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
+2. Hozzon létre változókat az előfizetési kulcshoz, a végponthoz és a feltöltött rendszerkép elérési útjához. A értékeként használhatja `BASE_URI` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```python
 
@@ -44,7 +44,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     imagePath = 'your-image-path'
     ```
     
-    Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítania, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
+3. Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. Állítsa a `name` paramétert a "rendszerkép" értékre, és állítsa a `filename` paramétert a rendszerkép fájlnevére. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     --boundary_1234-abcd--
     ```
 
-3. Hozzon létre egy szótár objektumot a kérelem fejlécére vonatkozó információk tárolásához. Kösse az előfizetési kulcsot a karakterlánchoz `Ocp-Apim-Subscription-Key`az alább látható módon:
+4. Hozzon létre egy szótár objektumot a kérelem fejlécére vonatkozó információk tárolásához. Kösse az előfizetési kulcsot a karakterlánchoz `Ocp-Apim-Subscription-Key` .
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Hozzon létre egy másik szótárt, amely tartalmazza a képet, amelyet a rendszer a kérelem elküldésekor megnyit és feltölt:
+5. Hozzon létre egy másik szótárt, amely tartalmazza a képet, amelyet a rendszer a kérelem elküldésekor nyit meg és tölt fel.
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +69,27 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
 
 ## <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-1. Hozzon létre egy `print_json()` nevű metódust az API-válaszban, és nyomtassa ki a JSON-t:
+Hozzon létre egy nevű metódust `print_json()` az API-válasz elfogadásához, és nyomtassa ki a JSON-t.
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
-1. `requests.post()` Kérelem küldése a Bing Visual Search APInak. Adja meg a végpont, a fejléc és a fájl adatait tartalmazó karakterláncot. Nyomtatás `response.json()` `print_json()`:
+`requests.post()`Kérelem küldése a Bing Visual Search APInak. Adja meg a végpont, a fejléc és a fájl adatait tartalmazó karakterláncot. Nyomtatás `response.json()` ezzel: `print_json()` .
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>További lépések
 

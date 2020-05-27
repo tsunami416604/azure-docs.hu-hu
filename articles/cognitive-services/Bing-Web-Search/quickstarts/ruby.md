@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169541"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873798"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Ruby segítségével  
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Ruby-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Ruby-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás a Rubyban van megírva, az API egy REST-alapú webszolgáltatás, amely a legtöbb programozási nyelvvel kompatibilis.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 
-Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután a `net/https` a kérésekhez, az `uri` az URI-kezeléshez és a `json` a válasz elemzéséhez történő igénylésére van szükség.
+Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután a `net/https` kérelmeket, az `uri` URI-kezelést és `json` a válasz elemzését kéri.
 
 ```ruby
 require 'net/https'
@@ -43,7 +43,13 @@ require 'json'
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Mielőtt folytatnánk, meg kell adni néhány változót. `uri`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Ellenőrizze, hogy a `uri` és a `path` értéke érvényes-e, és cserélje le a `accessKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `term` értékének lecserélésével.
+A folytatáshoz néhány változót be kell állítani:
+
+1. Az érték esetében használhatja `uri` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
+
+2. Győződjön meg arról, hogy a `uri` és az `path` értékek érvényesek, és cserélje le az `accessKey` értéket egy előfizetési kulccsal az Azure-fiókból. 
+
+3. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `term` .
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -60,7 +66,7 @@ end
 
 ## <a name="make-a-request"></a>Kérés indítása
 
-Ezzel a kóddal indíthat kérést és kezelheti a választ.
+Használja ezt a kódot egy kérelem elvégzéséhez és a válasz kezeléséhez:
 
 ```ruby
 # Construct the endpoint uri.
@@ -135,7 +141,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="sample-response"></a>Mintaválasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -264,6 +270,6 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166732"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873929"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rövid útmutató: a Java használatával megkeresheti a webet a Bing Web Search REST API egy Azure kognitív szolgáltatással
 
-Ebben a rövid útmutatóban egy Java-alkalmazást fog használni a Bing Web Search API első meghívásához és a JSON-válasz fogadásához. Ez a Java-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ebben a rövid útmutatóban egy Java-alkalmazást fog használni, amellyel elvégezheti az első hívását a Bing Web Search API. Ez a Java-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>A Gson deklarálása a Maven POM-fájlban
 
-Ha Mavent használ, deklarálja a Gsont a `POM.xml` fájlban. Ha helyben telepítette a Gsont, ezt a lépést hagyja ki.
+Ha Mavent használ, állapítsa meg a Gson a POM. xml fájlban. Ha helyben telepítette a Gsont, ezt a lépést hagyja ki.
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Ha Mavent használ, deklarálja a Gsont a `POM.xml` fájlban. Ha helyben telepí
 
 ## <a name="declare-the-bingwebsearch-class"></a>A BingWebSearch osztály deklarálása
 
-Deklarálja a `BingWebSearch` osztályt. Ebben szerepelni fog a rövid útmutatóban áttekintett kód legnagyobb része, beleértve a `main` metódust.  
+Deklarálja a `BingWebSearch` osztályt. Ebbe beletartozik az ebben a rövid útmutatóban áttekintett kód nagy része, beleértve a `main()` metódust is.  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. `host`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Ne felejtse el hozzáadni ezt a `BingWebSearch` kódot a osztályhoz a fentiekben leírtak szerint.
+A következő kód beállítja a,, `subscriptionKey` `host` `path` és `searchTerm` . Adja hozzá ezt a kódot az `BingWebSearch` előző szakaszban ismertetett osztályhoz:
+
+1. Az érték esetében használhatja `host` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
+
+2. Cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. 
+
+3. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `searchTerm` . 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>Kérés létrehozása
 
-Ez a `BingWebSearch` osztályban található metódus létrehozza az `url`-t, fogadja és elemzi a választ, majd kinyeri a Binggel kapcsolatos HTTP-fejléceket.  
+Az `SearchWeb()` osztályban található metódus `BingWebSearch` létrehozza a `url` választ, fogadja és elemzi a válaszokat, és Kinyeri a bingtel kapcsolatos HTTP-fejléceket.  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>A fő metódus deklarálása
 
-Ez a metódus kötelező, és ezt hívja meg elsőként a program indításakor. Ebben az alkalmazásban ez tartalmazza a `subscriptionKey` változót érvényesítő, a kérést indító és a JSON-választ megjelenítő kódot.
+A `main()` metódus megadása kötelező, és a program indításakor meghívott első metódus. Ebben az alkalmazásban olyan kódot tartalmaz, amely érvényesíti a alkalmazást, `subscriptionKey` végrehajt egy kérést, majd kinyomtatja a JSON-választ.
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>Tárolóosztály létrehozása a keresési eredményekhez
 
-A `SearchResults` tárolóosztály a `BingWebSearch` osztályon kívül helyezkedik el. Ez tartalmazza a válaszhoz kapcsolódó fejléceket és JSON-adatokat.
+A `SearchResults` Container osztály a osztályon kívül van definiálva `BingWebSearch` . Ez tartalmazza a válaszhoz kapcsolódó fejléceket és JSON-adatokat.
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a kód fordítása és futtatása. Íme a parancsok:
+Az utolsó lépés a kód fordítása és futtatása. Az alábbi parancsokat használja:
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 Ha szeretné összevetni a saját kódját a miénkkel, [a mintakódot megtekintheti a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).
 
-## <a name="sample-response"></a>Mintaválasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -320,6 +326,6 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

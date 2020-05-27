@@ -1,21 +1,14 @@
 ---
 title: 'Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel'
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tudásbázisait a várt válaszok, a megbízhatósági pontszámok és a több bekapcsolási kérések esetében.
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756696"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873676"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
 
@@ -48,7 +41,7 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Bejelölve|
     |**Alapértelmezett válasz szövege**| `Batch test - default answer not found.`|
-    |**+ Fájl hozzáadása**|Válassza ki a `.docx` letöltött fájl listáját az előfeltételek között.|
+    |**+ Fájl hozzáadása**|Válassza ki a letöltött `.docx` fájl listáját az előfeltételek között.|
     |**Chit-csevegés**|**Professional** kiválasztása|
 
 1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
@@ -63,16 +56,16 @@ A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tu
     |Szükséges adatértékek| Példa|
     |--|--|
     |Közzétett gazdagép|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakterből álló karakterlánc `Endpoint` látható)|
-    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló `POST`karakterlánc) |
+    |Közzétett kulcs|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 karakterből álló karakterlánc látható `Endpoint` )|
+    |Alkalmazásazonosító|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló karakterlánc `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Batch-tesztkörnyezet létrehozása a kérdés-azonosítókkal
 
-A Batch test eszköz használatához hozzon létre egy nevű `batch-test-data-1.tsv` fájlt egy szövegszerkesztővel. A fájlnak a következő oszlopokat kell elválasztania egy lapon.
+A Batch test eszköz használatához hozzon létre egy nevű fájlt `batch-test-data-1.tsv` egy szövegszerkesztővel. A fájlnak a következő oszlopokat kell elválasztania egy lapon.
 
 |TSV bemeneti fájl mezői|Megjegyzések|Példa|
 |--|--|--|
-|Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló `POST`karakterlánc) |
+|Tudásbázis-azonosító|A Tudásbázis-azonosító a közzétételi oldalon található. Egy adott szolgáltatásban egyszerre több tudásbázist is kipróbálhat egyetlen fájlban, ha különböző Tudásbázis-azonosítókat használ egyetlen fájlban.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 karakterből álló karakterlánc `POST` ) |
 |Kérdés|A felhasználó által megadott kérdés szövege. 1 000 karakter max.|`How do I sign out?`|
 |Metaadatcímkék|választható|`topic:power`a _kulcsot használja: Value_ Format|
 |Felső paraméter|választható|`25`|
@@ -99,7 +92,7 @@ Ezután vegyen fel néhány kérdést, amely hasonló a kérdésekhez, de nem po
 > [!CAUTION]
 > Győződjön meg arról, hogy az egyes oszlopok csak tabulátorral vannak elválasztva. A kezdő vagy záró szóközök bekerülnek az oszlopba, és a program kivételeket okoz, ha a típus vagy a méret helytelen.
 
-A Batch-tesztüzenet az Excelben való megnyitásakor az alábbi képhez hasonlóan néz ki. A Tudásbázis-azonosítót a biztonsági `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` rendszer váltotta fel. Saját batch-teszt esetén győződjön meg arról, hogy az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
+A Batch-tesztüzenet az Excelben való megnyitásakor az alábbi képhez hasonlóan néz ki. A Tudásbázis-azonosítót a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` biztonsági rendszer váltotta fel. Saját batch-teszt esetén győződjön meg arról, hogy az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
 
 > [!div class="mx-imgBorder"]
 > ![A. TSV fájl első verziójának beírása a Batch-tesztből](../media/batch-test/batch-test-1-input.png)
@@ -118,7 +111,7 @@ A teszt befejeződött, és létrehozza a `out.tsv` fájlt:
 > [!div class="mx-imgBorder"]
 > ![A. TSV fájl első verziójának kimenete a Batch testből](../media/batch-test/batch-test-1-output.png)
 
-A Tudásbázis-azonosítót a biztonsági `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` rendszer váltotta fel. A saját batch-teszt esetében az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
+A Tudásbázis-azonosítót a `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` biztonsági rendszer váltotta fel. A saját batch-teszt esetében az oszlop megjeleníti a Tudásbázis AZONOSÍTÓját.
 
 A megbízhatósági pontszám teszt kimenete, a 4. oszlopban látható, hogy az első 3 kérdés a várt 100 pontszámot adta vissza, mivel minden kérdés pontosan ugyanaz, mint a Tudásbázisban. Az utolsó 3 kérdés, amelynek új szövege a kérdés, a 100 nem ad vissza megbízhatósági pontszámként. Ahhoz, hogy a teszthez és a felhasználókhoz is növelje a pontszámot, további alternatív kérdéseket kell felvennie a tudásbázisba.
 
@@ -137,7 +130,7 @@ A következő diagram segítségével megismerheti, hogyan keresheti meg a vála
 |Oszlop száma|Nem kötelező oszlop|Az adatok helye|
 |--|--|--|
 |3|metaadatok|Meglévő Tudásbázis exportálása a meglévő _kulcshoz: érték_ párok.|
-|4|felül|Az alapértelmezett érték `25` a javasolt.|
+|4|felül|Az alapértelmezett érték a `25` javasolt.|
 |5|Kérdés-és Levelesláda-készlet azonosítója|A meglévő Tudásbázis exportálása az azonosító értékekhez. Azt is figyelje meg, hogy az azonosítók a kimeneti fájlban lettek visszaadva.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Metaadatok hozzáadása a tudásbázishoz
@@ -169,9 +162,9 @@ A Batch tesztelésének két fő forgatókönyve van:
 
 A következő eljárás azt feltételezi, hogy az a forgatókönyv a csevegési naplók feldolgozására
 
-1. Hozzon létre egy új batch-tesztelési fájlt, `batch-test-data-2.tsv`amely tartalmazza a választható adatértékeket. Adja hozzá a 6 sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a felső és a QnA pár azonosítót az egyes sorokhoz.
+1. Hozzon létre egy új batch-tesztelési fájlt, amely tartalmazza a választható adatértékeket `batch-test-data-2.tsv` . Adja hozzá a 6 sort az eredeti batch test bemeneti fájljához, majd adja hozzá a metaadatokat, a felső és a QnA pár azonosítót az egyes sorokhoz.
 
-    Ha szimulálni szeretné az új szövegnek a tudásbázisból való ellenőrzésének automatikus folyamatát, állítsa az egyes oszlopok metaadatait ugyanarra az értékre: `topic:power`.
+    Ha szimulálni szeretné az új szövegnek a tudásbázisból való ellenőrzésének automatikus folyamatát, állítsa az egyes oszlopok metaadatait ugyanarra az értékre: `topic:power` .
 
     > [!div class="mx-imgBorder"]
     > ![A. TSV fájl bemeneti második verziója a Batch testből](../media/batch-test/batch-test-2-input.png)
@@ -197,7 +190,7 @@ Ezekkel az eredményekkel láthatja, hogy csevegési naplót szeretne készíten
 
 A teszteléshez jó ötlet volt a meta-adattal való szűrés? Igen és nem. A tesztelési rendszernek létre kell hoznia minden egyes meta-adatpárokhoz tartozó tesztelési fájlt, valamint egy olyan tesztet, amely nem tartalmaz meta-adatpárokat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja a Tudásbázis tesztelését, törölje a Batch file eszközt és a tesztelési fájlokat.
 
