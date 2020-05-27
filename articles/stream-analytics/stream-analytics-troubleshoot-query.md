@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd2440ecf04bb4481b5497317e0acd2641710ccf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133312"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836872"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
@@ -77,11 +77,11 @@ Ezután a következőhöz hasonló módon írhatja át a lekérdezést:
 
 Most indítsa újra a feladatot, és néhány percen belül futtassa. Ezután lekérdezheti a temp1 és a temp2 a Visual Studio Cloud Explorerben a következő táblázatok létrehozásához:
 
-**temp1 tábla**
-![– a temp1 tábla kiválasztása stream Analytics lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**temp1 táblázat** 
+ ![ SELECT INTO temp1 Table Stream Analytics Query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**temp2 tábla**
-![– a temp2 tábla kiválasztása stream Analytics lekérdezés](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**temp2 táblázat** 
+ ![ SELECT INTO temp2 Table Stream Analytics Query](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Amint láthatja, a temp1 és a temp2 egyaránt tartalmaz adatokat, és a Name (név) oszlop helyesen van feltöltve a temp2. Mivel azonban még mindig nincsenek adatokat a kimenetben, valami nem stimmel:
 
@@ -101,9 +101,9 @@ Ezúttal a kimenetben lévő adatok formázása és feltöltése a várt módon 
 
 ![Utolsó táblázat Stream Analytics lekérdezés kiválasztása](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 

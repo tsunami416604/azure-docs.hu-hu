@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 5b4f016b53c6c42831d5f5ae08a30ec8ac176e6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773372"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836277"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
 
@@ -122,7 +122,7 @@ Megtekintheti a hencegés során definiált összes eseményindítót és művel
 
 ## <a name="get-some-help"></a>Segítség kérése
 
-A [Azure Logic apps fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) remek megoldást tesz a kérdésekre, a kérdésekre válaszol, és megtekintheti a többi Logic apps-felhasználót. 
+A [Microsoft Q&egy kérdés oldal a Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) számára, hogy kérdéseket tegyen fel, válaszoljon a kérdésekre, és megtekintheti a többi Logic apps-felhasználót. 
 
 Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek elküldésével [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 

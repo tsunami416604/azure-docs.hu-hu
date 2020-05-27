@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0728aa84447573bd8d335daf84c01138c627ecb5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382650"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848661"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a Java használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű Java-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) további hibakezelés, funkciók és kódok megjegyzésekkel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Video Search API. Ez az egyszerű Java-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. 
+
+A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) további hibakezelés, funkciók és kódok megjegyzésekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +34,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.net.*;
@@ -45,7 +47,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre egy nevű `SearchResults` új osztályt a fejlécek és a JSON-válasz az API-ból való tárolásához.
+2. Hozzon létre egy nevű új osztályt a `SearchResults` fejlécek és a JSON-válasz az API-ból való tárolásához.
 
     ```java
     // Container class for search results encapsulates relevant headers and JSON data
@@ -59,7 +61,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
     }
     ```
 
-3. Hozzon létre egy nevű `SearchVideos()` új metódust az API-végponti gazdagép és elérési út, az előfizetési kulcs és egy keresési kifejezés változók használatával. Egy `SearchResults` objektumot ad vissza. `host`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
+3. Hozzon létre egy nevű új metódust az `SearchVideos()` API-végpont gazdagépéhez és elérési útjához, az előfizetési kulcshoz és a keresési kifejezéshez változókkal. Ez a metódus egy `SearchResults` objektumot ad vissza. Az érték esetében használhatja `host` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -72,66 +74,66 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Searc
 
 ## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-1. A `SearchVideos()`alkalmazásban hajtsa végre a következő lépéseket:
+A `SearchVideos()` metódusban hajtsa végre a következő lépéseket:
 
-    1. hozza létre a kérelem URL-címét az API-állomás, az elérési út és a keresési lekérdezés kódolásának kombinálásával. Ezután a `openConnection()` használatával hozzon létre egy kapcsolódást, és adja hozzá az `Ocp-Apim-Subscription-Key` előfizetési kulcsot a fejléchez.
+1. Hozza létre a kérelem URL-címét az API-gazdagép, az elérési út és a kódolt keresési lekérdezés kombinálásával. A használatával `openConnection()` hozzon létre egy kapcsolatokat, majd adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
-        ```java
-        URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        ```
+     ```java
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+     connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+     ```
 
-    2. Szerezze be a választ az API-ból, és tárolja a JSON-karakterláncot.
+2. Szerezze be a választ az API-ból, és tárolja a JSON-karakterláncot.
 
-        ```java
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-        ```
+     ```java
+     InputStream stream = connection.getInputStream();
+     String response = new Scanner(stream).useDelimiter("\\A").next();
+     ```
 
-    3. A `getHeaderFields();` paranccsal kinyerheti a HTTP-fejléceket a válaszból, és tárolhatja a Bing `results` -hez kapcsolódó objektumokat az objektumban. Ezután zárd be a streamet, és adja vissza az eredményt.
+ 3. A paranccsal `getHeaderFields()` kinyerheti a HTTP-fejléceket a válaszból, és tárolhatja a Bing-hez kapcsolódó `results` objektumokat az objektumban. Ezután zárd be a streamet, és adja vissza az eredményt.
 
-        ```java
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-        stream.close();
-        return results;
-        ```
+     ```java
+     // extract Bing-related HTTP headers
+     Map<String, List<String>> headers = connection.getHeaderFields();
+     for (String header : headers.keySet()) {
+         if (header == null) continue;      // may have null key
+         if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+             results.relevantHeaders.put(header, headers.get(header).get(0));
+         }
+     }
+     stream.close();
+     return results;
+     ```
 
 ## <a name="format-the-response"></a>A válasz formázása
 
-1. Hozzon létre egy `prettify()` nevű metódust a BING video API által visszaadott válasz formázásához. A Gson könyvtárának `JsonParser` használatával egy JSON-karakterláncban végezheti el a konvertálást, és átalakíthatja őket egy objektumba. Ezután a `GsonBuilder()` és `toJson()` a használatával hozza létre a formázott karakterláncot. 
+Hozzon létre egy nevű metódust a `prettify()` Bing video API által visszaadott válasz formázásához. A Gson könyvtárának használatával `JsonParser` JSON-karakterláncot alakíthat át egy objektumba. Ezután `GsonBuilder()` a és a használatával `toJson()` hozza létre a formázott karakterláncot.
 
-    ```java
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-    ```
+```java
+// pretty-printer for JSON; uses GSON parser to parse and re-serialize
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
 ## <a name="send-the-request-and-print-the-response"></a>Küldje el a kérést, és nyomtassa ki a választ
 
-1. Az alkalmazás fő metódusában hívja `SearchVideos` meg a keresési kifejezést. Ezután kinyomtathatja a válaszban tárolt HTTP-fejléceket, valamint az API által visszaadott JSON-karakterláncot is.
+Az alkalmazás fő metódusában hívja `SearchVideos` meg a keresési kifejezést. Ezután nyomtassa ki a válaszban tárolt HTTP-fejléceket és az API által visszaadott JSON-karakterláncot.
 
-    ```java
-    public static void main (String[] args) {
+ ```java
+ public static void main (String[] args) {
 
-        SearchResults result = SearchVideos(searchTerm);
-        //print the Relevant HTTP Headers
-        for (String header : result.relevantHeaders.keySet())
-            System.out.println(header + ": " + result.relevantHeaders.get(header));
-        System.out.println(prettify(result.jsonResponse));
-    }
-    ```
+     SearchResults result = SearchVideos(searchTerm);
+     //print the Relevant HTTP Headers
+     for (String header : result.relevantHeaders.keySet())
+         System.out.println(header + ": " + result.relevantHeaders.get(header));
+     System.out.println(prettify(result.jsonResponse));
+ }
+ ```
 
 ## <a name="json-response"></a>JSON-válasz
 

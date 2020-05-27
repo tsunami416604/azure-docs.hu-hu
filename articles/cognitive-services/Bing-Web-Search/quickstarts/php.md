@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169727"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873823"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a PHP segítségével  
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Node. js-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node. js-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="enable-secure-http-support"></a>Biztonságos HTTP támogatásának engedélyezése
 
-Kezdés előtt keresse meg a `php.ini` fájlt, és távolítsa el a megjegyzés jelölését a következő sornál:
+Az első lépések megtételéhez keresse meg a php. ini fájlt, és tegye meg a megjegyzését:
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ Kezdés előtt keresse meg a `php.ini` fájlt, és távolítsa el a megjegyzés 
 
 ## <a name="create-a-project-and-define-variables"></a>Projekt létrehozása és a változók definiálása
 
-Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ne felejtse el beírni a nyitó és záró `<?php` és `?>` címkét.
+1. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Nyitó és záró Címkék hozzáadása: `<?php` és `?>` .
 
-Mielőtt folytatnánk, meg kell adni néhány változót. `$endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Győződjön meg arról, hogy helyes az `$endpoint`, és cserélje le az `$accesskey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `$term` értékének lecserélésével.
+2. Az érték esetében használhatja `$endpoint` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
+
+3. Győződjön meg arról, hogy az `$endpoint` érték helyes, és cserélje le az `$accesskey` értéket egy érvényes előfizetési kulccsal az Azure-fiókból. 
+
+4. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `$term` .
 
 ```php
 $accessKey = 'enter key here';
@@ -53,7 +57,7 @@ $term = 'Microsoft Cognitive Services';
 
 ## <a name="construct-a-request"></a>Kérés létrehozása
 
-Ez a kód egy, a Bing Web Search API-ra irányuló kérések létrehozására használt, `BingWebSearch` nevű függvényt deklarál. A következő három argumentumot fogadja: `$url`, `$key` és `$query`.
+Ez a kód deklarál egy nevű függvényt, `BingWebSearch` amely a kérelmeknek a Bing Web Search API való létrehozásához használatos. A következő három argumentumot fogadja: `$url`, `$key` és `$query`.
 
 ```php
 function BingWebSearch ($url, $key, $query) {
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>Mintaválasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.  
 
@@ -284,6 +288,6 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

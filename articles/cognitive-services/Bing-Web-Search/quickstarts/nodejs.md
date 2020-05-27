@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76168805"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873957"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a Node. js használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Node. js-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Node. js-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,8 +33,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 
-Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
-Ezután másolja az alábbi kódrészletet egy `search.js` nevű fájlba a projektjében.
+Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet a projektbe egy Search. js nevű fájlban:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
 
-Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. Az előfizetési kulcs megkereséséhez nyissa meg az API-k [lapot](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) .
+Ez a kódrészlet a `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetési kulcs tárolására, ami jó megoldás a kulcsok véletlen expozíciójának megelőzésére a kód telepítésekor. Az előfizetési kulcs megkereséséhez tekintse meg [az API-kat](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
 
-Amennyiben nem ismeri a környezeti változók használatát, vagy minél előbb futtatni szeretné az alkalmazást, sztringként is lecserélheti a `process.env['AZURE_SUBSCRIPTION_KEY']` értékét az előfizetői azonosítóra.
+Ha nem ismeri a környezeti változók használatát, vagy az alkalmazást a lehető leggyorsabban szeretné futtatni, cserélje le az `process.env['AZURE_SUBSCRIPTION_KEY']` értéket karakterláncként beállított előfizetési kulcsra.
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Függvény létrehozása a kérés végrehajtásához
 
-A függvény egy biztonságos GET kérést hajt végre, és a keresési lekérdezést lekérdezési paraméterként menti az elérési úthoz. `hostname`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.  Az `encodeURIComponent` az érvénytelen karakterek feloldására szolgál, az előfizetői azonosító átadása pedig a fejlécben történik. A visszahívásra adott [válasz](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) feliratkozik a `data` eseményre a JSON-törzs összesítéséhez, az `error` eseményre az esetleges hibák naplózásához, és az `end` eseményre az üzenet befejezési időpontjának lekéréséhez. Amikor végzett, az alkalmazás kinyomtatja az érdekesebb fejléceket és az üzenet törzsét. Kedve szerint kísérletezhet a színekkel, és beállíthatja a részletességet. `1` részletességgel remek összegzést készíthet a válaszról.
+Ez a függvény biztonságos GET-kérést végez, és a keresési lekérdezést lekérdezési paraméterként menti az elérési útban. 
+
+1. Az érték esetében használhatja `hostname` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.  
+
+2. `encodeURIComponent`A használatával Escape-karakterek érvénytelenek. Az előfizetési kulcsot a rendszer egy fejlécben adja át. 
+
+3. A visszahívásra adott [válasz](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) feliratkozik a `data` eseményre a JSON-törzs összesítéséhez, az `error` eseményre az esetleges hibák naplózásához, és az `end` eseményre az üzenet befejezési időpontjának lekéréséhez. 
+
+4. Az alkalmazás befejezését követően kinyomtatja a megfelelő fejléceket és az üzenettörzs szövegét. Beállíthatja a színeket, és beállíthatja a mélységet úgy, hogy az megfeleljen a kívánt beállításoknak. A mélysége `1` szép összefoglalást biztosít a válaszról.
 
 ```javascript
 function bingWebSearch(query) {
@@ -95,7 +102,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>Kérés indítása és a válasz megjelenítése
 
-Most, hogy minden beállítást megadtunk, hívjuk meg a függvényt!
+Most, hogy minden meg van határozva, hívjuk a függvényt.
 
 ```javascript
 bingWebSearch(query)
@@ -103,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a saját kód futtatása: `node search.js "<your query>"`.
+Az utolsó lépés a kód futtatása a következő paranccsal: `node search.js "<your query>"` .
 
 Ha szeretné összevetni a saját kódját a miénkkel, íme az egész program:
 
@@ -140,7 +147,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>Mintaválasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
@@ -269,6 +276,6 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

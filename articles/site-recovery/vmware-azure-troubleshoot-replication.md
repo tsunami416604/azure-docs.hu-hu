@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259493"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836413"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
 
@@ -132,7 +132,7 @@ A probléma megoldásához kövesse az alábbi lépéseket a szolgáltatás áll
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>78144-es AZONOSÍTÓJÚ hiba – nem érhető el alkalmazás-konzisztens helyreállítási pont a virtuális géphez az utolsó "XXX" percben
 
-Fejlesztéseket hajtottak végre a mobilitási ügynök [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9,27](site-recovery-whats-new.md#update-rollup-39) verziójában a VSS telepítési hibák viselkedésének kezeléséhez. Győződjön meg arról, hogy a legújabb verziók a VSS-hibák elhárításával kapcsolatos legjobb útmutatást biztosítják.
+Fejlesztéseket hajtottak végre a mobilitási ügynök [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher)  &  [9,27](site-recovery-whats-new.md#update-rollup-39) verziójában a VSS telepítési hibák viselkedésének kezeléséhez. Győződjön meg arról, hogy a legújabb verziók a VSS-hibák elhárításával kapcsolatos legjobb útmutatást biztosítják.
 
 A leggyakoribb problémák némelyike alább látható
 
@@ -193,4 +193,4 @@ Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **autom
 
 ## <a name="next-steps"></a>További lépések
 
-Ha további segítségre van szüksége, tegye fel kérdéseit a [Azure site Recovery fórumba](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Aktív közösségünk van, és az egyik mérnökeink segítenek Önnek.
+Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). Aktív közösségünk van, és az egyik mérnökeink segítenek Önnek.

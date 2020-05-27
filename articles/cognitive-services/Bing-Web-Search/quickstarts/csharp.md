@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167674"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873894"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és C használatával #
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a C#-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a választ. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a C#-alkalmazás keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás C# nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+
+Ez a rövid útmutatóban szereplő program csak a .NET Core osztályokat használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,13 +32,11 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Egy előfizetői azonosító
 
-A példaprogram csak a .NET Core osztályait használja.
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Projekt létrehozása és a függőségek deklarálása
 
-Hozzon létre egy új projektet a Visual Studióban vagy a Monóban. Ezután importálja a szükséges névtereket és típusokat a kód segítségével.
+Hozzon létre egy új projektet a Visual Studióban vagy a Monóban. A következő kód használatával importálhatja a szükséges névtereket és típusokat:
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Mielőtt folytatnánk, meg kell adni néhány változót.  `uriBase`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Győződjön meg arról, hogy érvényes az `uriBase`, és cserélje le az `accessKey` értéket egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Ne felejtse el hozzáadni ezt a `Program` kódot a osztályhoz a fentiekben leírtak szerint.
+Mielőtt folytatnánk, meg kell adni néhány változót. Adja hozzá ezt a kódot az `Program` előző szakaszban létrehozott osztályhoz: 
+
+1. Az érték esetében használhatja `uriBase` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
+
+2. Erősítse meg, hogy `uriBase` érvényes, és cserélje le az `accessKey` értéket egy előfizetési kulccsal az Azure-fiókból. 
+
+3. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `searchTerm` . 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>A fő metódus deklarálása
 
-A `Main()` metódust kötelező megadni, és ez a program indításakor meghívott első metódus. Ebben az alkalmazásban a fő metódus érvényesíti az `accessKey` értékét, indítja a kérést, majd megjeleníti a JSON-választ.
+A `Main()` metódus megadása kötelező, és a program indításakor meghívott első metódus. Ebben az alkalmazásban a fő metódus érvényesíti az `accessKey` értékét, indítja a kérést, majd megjeleníti a JSON-választ.
 
-Tartsa észben, hogy a `main()` a következő néhány szakaszban létrehozott metódusoktól függ.
+A `main()` metódus a következő szakaszban létrehozott módszertől függ.
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Struktúra létrehozása a keresési eredményekhez
 
-Ez a struktúra keresési eredményeket ad vissza a vonatkozó fejlécekkel. A rendszer akkor hívja meg, amikor egy kérést küld a Bing Web Search API egy eredmény-objektum létrehozásához.
+Hozzon létre egy olyan struct-t, amely a megfelelő fejlécekkel rendelkező keresési eredményeket adja vissza. Ezt akkor kell meghívnia, amikor kérelmet küld a Bing Web Search API egy eredmény objektum létrehozásához.
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>A válasz formázása
 
-Ez a metódus formázza a JSON-választ, elsősorban behúzásokat és sortöréseket alkalmaz.
+Ez a módszer a JSON-választ formázza, elsősorban a sortörések behúzásával és hozzáadásával.
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a kód futtatása. Ha szeretné összevetni a saját kódját a miénkkel, [a mintakódot megtekintheti a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs).
+Az utolsó lépés a kód futtatása. Ha a kódot a miénkkel szeretné összehasonlítani, tekintse meg a mintakód [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)című témakört.
 
-## <a name="sample-response"></a>Mintaválasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.  
 
@@ -366,6 +372,6 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30ef3e0ccef859ec183d8aad18c0b9910a5d3c9f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712502"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837110"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
@@ -189,10 +189,10 @@ A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás álta
 
 1. A **riasztás részletei**területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása**elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Runbook indítása webhookból](automation-webhooks.md)
-* [Runbook indítása](automation-starting-a-runbook.md)
-* [Műveletnapló-riasztások létrehozása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Riasztási szabály létrehozása a Azure Portalban](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* A runbook webhook használatával történő indításához tekintse meg [a Runbook indítása webhookból](automation-webhooks.md)című témakört.
+* A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](automation-starting-a-runbook.md).
+* A műveletnapló riasztásának létrehozásával kapcsolatban lásd: [műveletnapló riasztásai](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

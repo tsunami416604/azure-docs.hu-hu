@@ -11,15 +11,15 @@
   items:
     - name: Felhasználó hozzáférésének megtekintése
       href: check-access.md
+    - name: ARM-sablon
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: Oktatóanyagok
   items:
     - name: Hozzáférés biztosítása felhasználó számára – Portal
       href: quickstart-assign-role-user-portal.md
     - name: Hozzáférés biztosítása felhasználó számára – PowerShell
       href: tutorial-role-assignments-user-powershell.md
-    - name: Hozzáférés biztosítása felhasználó számára – Resource Manager-sablon
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: Hozzáférés biztosítása csoport számára – PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Egyéni szerepkör létrehozása – PowerShell
@@ -67,7 +67,8 @@
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
-        - name: Sablon
+        - name: ARM-sablon
+          displayName: Resource Manager
           href: role-assignments-template.md
     - name: Megtagadás-hozzárendelések felsorolása
       items:
@@ -113,8 +114,8 @@
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST API
       href: /rest/api/authorization/
-    - name: Resource Manager-sablonok
-      displayName: ARM
+    - name: ARM-sablonok
+      displayName: Resource Manager
       items:
         - name: Szerepkör-hozzárendelések
           href: /azure/templates/microsoft.authorization/roleassignments

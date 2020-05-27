@@ -1,18 +1,18 @@
 ---
-title: Migrálás a Orchestrator-ből a Azure Automationba (bétaverzió)
+title: Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
 description: Ez a cikk azt ismerteti, hogyan lehet áttelepíteni a runbookok és az integrációs csomagokat a Orchestrator-ből a Azure Automationba.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e8bb448e88d7aaa3d59ec9392a3b3ac69373c4d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715494"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836753"
 ---
-# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás a Orchestrator-ből a Azure Automationba (bétaverzió)
+# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
 
 A [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) runbookok az integrációs csomagok azon tevékenységein alapulnak, amelyek kifejezetten a Orchestrator vannak írva, míg a Azure Automation a Windows powershellen alapulnak. A Azure Automation [grafikus runbookok](automation-runbook-types.md#graphical-runbooks) hasonló megjelenéssel rendelkeznek a Orchestrator-runbookok, és azok tevékenységei a PowerShell-parancsmagokat, a gyermek runbookok és az eszközöket jelképezik. A runbookok konvertálásán kívül az integrációs csomagokat olyan tevékenységekkel kell konvertálnia, amelyeket a runbookok a Windows PowerShell-parancsmagokkal rendelkező integrációs modulokhoz használ. 
 
@@ -130,8 +130,8 @@ A Orchestrator az adatbázis-kiszolgálón tárolja a runbookok, és a runbook-k
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-* [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
-* [Szolgáltatáskezelési automatizálás](https://technet.microsoft.com/library/dn469260.aspx)
-* [hibrid runbook-feldolgozó](automation-hybrid-runbook-worker.md)
-* [Orchestrator standard tevékenységek](https://technet.microsoft.com/library/hh403832.aspx)
-* [A System Center Orchestrator áttelepítési eszközkészlet letöltése](https://www.microsoft.com/download/details.aspx?id=47323)
+* A Orchestrator részleteiért lásd: [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
+* További információ a [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)szolgáltatásainak kezelésének automatizálásáról.
+* A Orchestrator tevékenységek részletei a [Orchestrator standard tevékenységekben](https://technet.microsoft.com/library/hh403832.aspx)találhatók.
+* A Orchestrator áttelepítési eszközkészletének beszerzéséhez lásd: a [System Center Orchestrator áttelepítési eszközkészlet letöltése](https://www.microsoft.com/download/details.aspx?id=47323).
+* A Azure Automation Hybrid Runbook Worker áttekintését lásd: a [hibrid Runbook Worker áttekintése](automation-hybrid-runbook-worker.md).

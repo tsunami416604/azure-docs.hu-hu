@@ -5,7 +5,7 @@
   items:
     - name: Tudnivalók az Azure Blockchain Workbenchről
       href: overview.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   expanded: true
   items:
     - name: Blokkláncalkalmazások létrehozása
@@ -59,8 +59,8 @@
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: MSDN támogatási fórum
-      href: 'https://aka.ms/workbenchforum'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
     - name: Közösségi támogatás
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow-támogatás

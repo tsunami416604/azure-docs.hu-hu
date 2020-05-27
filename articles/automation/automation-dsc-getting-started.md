@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76d078d564125db7b6b8ae10909340a52b220407
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b39fbdf19703d8b4b2f8683577701dcb23900616
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713216"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836957"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés a Azure Automation állapot-konfigurációval
 
@@ -231,10 +231,10 @@ Ha már nem szeretné, hogy egy csomópontot állapot-konfigurációval lehessen
 
     ![Képernyőkép a csomópont részletei oldalról a regisztráció törlése gomb kiemelésével](./media/automation-dsc-getting-started/UnregisterNode.png)
 
-## <a name="related-articles"></a>Kapcsolódó cikkek
+## <a name="next-steps"></a>További lépések
 
-- [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md)
-- [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](automation-dsc-onboarding.md)
-- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
-- [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)
-- [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+- Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
+- A környezetben lévő virtuális gépek funkciójának engedélyezéséhez tekintse meg [Azure Automation állapot konfigurációjának engedélyezése](automation-dsc-onboarding.md)című témakört.
+- A PowerShell DSC megismeréséhez tekintse meg a [Windows PowerShell a kívánt állapot konfigurációjának áttekintése](/powershell/scripting/dsc/overview/overview)című témakört.
+- A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

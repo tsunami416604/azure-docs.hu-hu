@@ -8,42 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383132"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872048"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Node. js és a Bing News Search használatával REST API
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing News Search API. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ.
 
-Bár ez az alkalmazás JavaScript nyelven lett íródott és Node.js-szel fut, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Bár ez az alkalmazás JavaScriptben van megírva, és a Node. js-ben fut, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
-
-* A [JavaScript lekérési kódtára](https://github.com/request/request)
+* A [JavaScript-kérelem könyvtára](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE-környezetében vagy szerkesztőjében, és állítsa be a szigorúságot, a https-követelményeket.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben, és állítsa be a szigorú és a HTTPS-követelményeket.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot. 
+2. Hozzon létre változókat az API-végponthoz, a News API keresési elérési útjához, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -54,38 +53,42 @@ A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/c
 
 ## <a name="handle-and-parse-the-response"></a>A válasz kezelése és elemzése
 
-1. definiáljon egy `response_handler` nevű függvényt, amely paraméterként a `response` HTTP-hívást használja. a függvényen belül végezze el az alábbi lépéseket:
+1. Definiáljon egy nevű függvényt, `response_handler` amely egy http-hívást ( `response` paraméterként) használ. 
 
-    1. Definiáljon egy változót, amely a JSON-válasz törzsét tartalmazza majd.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+   A következő lépésekben vegyen fel kódot ehhez a függvényhez.
 
-    2. Tárolja a válasz törzsét, ha az **adat** jelölő megjelenik
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+2. Definiáljon egy változót, amely a JSON-válasz törzsét tartalmazza majd.  
 
-    3. Ha a **végpont** jelzője be van jelezve, a JSON és a fejlécek is megtekinthetők.
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-        ```javascript
-        response.on('end', function () {
-            console.log('\nRelevant Headers:\n');
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            console.log('\nJSON Response:\n');
-            console.log(body);
-         });
-        ```
+3. A válasz törzsét tárolja a `data` jelző meghívásakor.
 
-## <a name="json-response"></a>JSON-válasz
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+3. `end`Jelző jelzése esetén a JSON és a fejlécek megtekinthetők.
+
+    ```javascript
+    response.on('end', function () {
+        console.log('\nRelevant Headers:\n');
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log('\nJSON Response:\n');
+        console.log(body);
+     });
+    ```
+
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 

@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d0bd9dfa8dc115ae10831d997dccc8000a1ae25
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978798"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873910"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: a webes keresés a Bing Web Search REST API és a go használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Web Search API, és megkaphatja a JSON-választ. Ez a Go-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a választ. Amíg az alkalmazás be van írva, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Web Search API. Ez a Go-alkalmazás egy keresési kérelmet küld az API-nak, és megjeleníti a JSON-választ. Bár ez az alkalmazás a Go-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+
+ Az ebben a rövid útmutatóban szereplő példákban csak az alapvető kódtárak szükségesek; nincsenek külső függőségek.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
@@ -29,13 +31,11 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * [A Go bináris fájljai](https://golang.org/dl/)
 * Egy előfizetői azonosító
 
-Ehhez a rövid útmutatóhoz csak az **alapvető** kódtárakra van szükség, nincsenek külső függőségek.  
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>Projekt létrehozása és alapvető kódtárak importálása
 
-Hozzon létre egy új Go-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután importálja a következőket: `net/http` – a kérésekhez, `ioutil` – a válasz beolvasásához, `time` és `encoding/json` – a JSON kezeléséhez, illetve `fmt` – a kimenet megjelenítéséhez.
+Hozzon létre egy új Go-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután importálja a `net/http` kérelmeket, `ioutil` olvassa el a választ, `time` és `encoding/json` kezelje a JSON-t, és `fmt` nyomtassa ki a kimenetet.
 
 ```go
 package main
@@ -111,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>A fő függvény deklarálása és a változók megadása  
 
-Ez a kód deklarálja a fő függvényt, és megadja a szükséges változókat. `endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
+Ez a kód deklarálja a fő függvényt, és beállítja a szükséges változókat: 
+
+1. Az érték esetében használhatja `endpoint` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot. 
+
+2. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. 
+ 
+3. Ha szeretné, testreszabhatja a keresési lekérdezést úgy, hogy lecseréli a értéket `searchTerm` .
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -170,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-Emlékszik a korábban létrehozott struktúrára? A válasz formázásához és a keresési eredmények megjelenítéséhez fogjuk használni.
+Használja a korábban létrehozott struct-t a válasz formázásához és a keresési eredmények kinyomtatásához.
 
 ```go
 // Create a new answer.  
@@ -305,9 +311,9 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>Mintaválasz  
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
-A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a példa a `BingAnswer` struct használatával lett formázva, és megjeleníti `result.Name` a `result.URL`és a.
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ezt a mintát a struct használatával formázták `BingAnswer` , és megjeleníti a `result.Name` és a `result.URL` .
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -324,6 +330,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyoldalas alkalmazás-oktatóanyag a Bing Web Search használatához](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web Search API egyoldalas alkalmazás oktatóanyaga](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]
