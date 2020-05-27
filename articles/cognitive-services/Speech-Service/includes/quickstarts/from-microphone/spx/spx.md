@@ -4,28 +4,28 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9f1da13efc9f75d14fdf2d158e8b7547d4a9fa94
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a9beaea70dd3c8ce852344b11a50c5f20e5f8ca2
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715305"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806486"
 ---
 ## <a name="enable-microphone"></a>Mikrofon engedélyezése
 
 Csatlakoztassa a számítógépet, és kapcsolja be a PC-mikrofont, és kapcsolja ki a mikrofont is használó alkalmazásokat. Egyes számítógépek beépített mikrofonnal rendelkeznek, míg mások a Bluetooth-eszközök konfigurációját igénylik.
 
-## <a name="run-the-spx-tool"></a>Az SPX eszköz futtatása
+## <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
-Most már készen áll az SPX eszköz futtatására, hogy felismerje a beszédet a mikrofonból.
+Most már készen áll a Speech CLI futtatására, hogy felismerje a beszédet a mikrofonból.
 
-1. **Indítsa el az alkalmazást** – a parancssorból váltson arra a könyvtárra, amely az SPX-eszköz bináris fájlját tartalmazza, majd írja be a következőt:
+1. **Indítsa el az alkalmazást** – a parancssorból váltson arra a könyvtárra, amely tartalmazza a Speech CLI bináris fájlt, és írja be a következőt:
     ```bash
     spx recognize --microphone
     ```
 
     > [!NOTE]
-    > Az SPX-eszköz alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
+    > A Speech CLI alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
     > Adja meg például a következőt: `--source de-DE` a német beszéd felismerése.
 
-2. **Felismerés elindítása** – beszéljen a mikrofonba. A szavak átírása valós időben szövegként jelenik meg. Az SPX-eszköz egy adott időtartam után leáll, vagy a CTRL-C billentyűkombináció lenyomása után.
+2. **Felismerés elindítása** – beszéljen a mikrofonba. A szavak átírása valós időben szövegként jelenik meg. A Speech CLI egy adott időszak után leáll, vagy a CTRL-C billentyűkombináció lenyomása után.

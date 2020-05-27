@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a02b3df02d455db8a7dfd21f63d659f75a66e446
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457314"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799967"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
@@ -32,7 +32,7 @@ A következő táblázat felsorolja azokat a különböző módszereket, amelyek
 |  |  |
 |:---|:---|
 | Elemzés | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
-| Vizualizáció | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../app/usage-workbooks.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
+| Vizualizáció | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
 | Riasztás | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
 | Automatizálás |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
 | Exportálás | [Átirányítja a metrikákat a naplókba](resource-logs-collect-storage.md) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
@@ -114,7 +114,7 @@ Az Azure-ban a legtöbb erőforrás esetében a metrikák 93 napig tárolódnak.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor adatplatformról](data-platform.md).
 - Tudnivalók a [Azure monitor naplózási adatainak](data-platform-logs.md)használatáról.

@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Oktatóanyagok
   items:
+    - name: Bevezetés
+      href: get-started.md
     - name: Apache Spark-alkalmazások futtatása Spark-készletekhez
       href: ./spark/intellij-tool-synapse.md
     - name: Spark-feladatdefiníciók

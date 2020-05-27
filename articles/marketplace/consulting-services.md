@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658082"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799859"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -74,7 +74,7 @@ A AppSource a következő táblázatban láthatók a jogosult kompetenciák:
 
 További források és támogatás:
 
-* [Microsoft Cloud](https://partner.microsoft.com/campaigns/ced-nomination-form/)-engedélyezési Desk: fejezze be a felhőalapú ügyfélszolgálattal való együttműködéshez szükséges partner-jelölési űrlapot, és kapcsolódjon a Cloud program specialistához, aki megfogalmazhatja Microsoft Partner Network előnyeit, és útmutatásként szolgálhat a kompetenciák megvalósításához.  
+* [Microsoft Cloud](https://aka.ms/CEDnominate)-engedélyezési Desk: fejezze be a felhőalapú ügyfélszolgálattal való együttműködéshez szükséges partner-jelölési űrlapot, és kapcsolódjon a Cloud program specialistához, aki megfogalmazhatja Microsoft Partner Network előnyeit, és útmutatásként szolgálhat a kompetenciák megvalósításához.  
 * [Legyen Power bi partner](https://powerbi.microsoft.com/become-a-partner/): küldje el a beszerzésre vonatkozó kérelmet Power bi Showcase-ben.
 
 A kompetenciákkal kapcsolatos további információkért nyissa meg a [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies) lapot.
@@ -179,7 +179,7 @@ A partner Centerben a [Markdown](/contribute/markdown-reference)használatával 
 * Minden címsor után adjon hozzá sortörést.
 * **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

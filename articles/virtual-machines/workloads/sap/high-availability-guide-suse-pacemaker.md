@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811571"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800190"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
@@ -538,7 +538,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
 1. Kattintson Alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
-2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például http: \/ /localhost), és kattintson a Hozzáadás gombra.  
    A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
@@ -599,6 +599,9 @@ sudo crm configure property stonith-timeout=900
 sudo crm configure property stonith-enabled=true
 </code></pre>
 
+> [!TIP]
+>Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
 ## <a name="default-pacemaker-configuration-for-sbd"></a>Alapértelmezett pacemaker-konfiguráció a SBD
 
 1. **[1]** STONITH-eszköz használatának engedélyezése és a kerítés késleltetésének beállítása
@@ -645,7 +648,7 @@ sudo crm configure property maintenance-mode=false
      Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
    > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789171"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826026"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>A Slack figyelése és kezelése Azure Logic Apps
 
@@ -45,14 +45,14 @@ Használhat olyan eseményindítókat, amelyek választ kapnak a Slack-fiókjáb
 
 1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "Slack" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
-   – vagy –
+   -vagy-
 
    Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
    A keresőmezőbe írja be a "Slack" kifejezést a szűrőként. 
    A műveletek listában válassza ki a kívánt műveletet.
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Ha a rendszer kéri, hogy jelentkezzen be a Slack-ba, jelentkezzen be a Slack-munkaterületére. 
 
@@ -70,7 +70,7 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések

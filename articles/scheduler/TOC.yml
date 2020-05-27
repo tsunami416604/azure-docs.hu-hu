@@ -48,8 +48,8 @@
       href: 'https://azure.microsoft.com/updates/?product=scheduler'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/updates/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-scheduler.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
     - name: Díjszabás

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef321e82f1737df4b13d259824acd943a7eea440
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649353"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798801"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -99,14 +99,6 @@ Az összes Enterprise Azure DevOps-szabályzatot a felhasználók kezelhetik a s
 ### <a name="azure-information-protection-administrator"></a>[Azure Information Protection rendszergazda](#azure-information-protection-administrator-permissions)
 
 Az ehhez a szerepkörhöz tartozó felhasználók minden engedéllyel rendelkeznek a Azure Information Protection szolgáltatásban. Ez a szerepkör lehetővé teszi a címkék konfigurálását a Azure Information Protection házirend számára, a védelmi sablonok kezelését és a védelem aktiválását. Ez a szerepkör nem ad meg engedélyeket az Identity Protection Centerben, Privileged Identity Management, az Office 365 Service Health figyelése, vagy az Office 365 biztonsági & megfelelőségi központ.
-
-### <a name="b2c-user-flow-administrator"></a>[B2C felhasználói folyamat rendszergazdája](#b2c-user-flow-administrator-permissions)
-
-Az ezzel a szerepkörrel rendelkező felhasználók B2C-Felhasználókövetés (más néven "beépített" szabályzatokat) hozhatnak létre és kezelhetnek a Azure Portalban.A felhasználói folyamatok létrehozásával vagy szerkesztésével ezek a felhasználók módosíthatják a felhasználói élmény HTML/CSS/JavaScript-tartalmát, módosíthatják a felhasználói folyamatok MFA-követelményeit, módosíthatják a jogkivonatokban lévő jogcímeket, és módosíthatják a munkamenet-beállításokat az Azure AD-szervezet összes házirendjéhez. Másfelől azonban ez a szerepkör nem teszi lehetővé a felhasználói adat áttekintését, illetve a szervezeti sémában található attribútumok módosítását.Az Identity Experience Framework (más néven egyéni) házirendek változásai a szerepkör hatókörén kívül esnek.
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[B2C felhasználói folyamat attribútumának rendszergazdája](#b2c-user-flow-attribute-administrator-permissions)
-
-Az ezzel a szerepkörrel rendelkező felhasználók hozzáadhatnak vagy törölhetnek egyéni attribútumokat az Azure AD-szervezet összes felhasználói folyamata számára.Így az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják vagy hozzáadhatják az új elemeket a végfelhasználói sémához, és befolyásolhatják az összes felhasználói folyamat viselkedését, és közvetetten a végfelhasználók számára megkérhetik az adatokat, és végső soron az alkalmazások számára is elküldhetik azt.Ez a szerepkör nem szerkesztheti a felhasználói folyamatokat.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF kulcskészlet rendszergazdája](#b2c-ief-keyset-administrator-permissions)
 
@@ -214,6 +206,15 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 > [!NOTE]
 > A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör "Exchange szolgáltatás-rendszergazdaként" azonosítható. A [Azure Portal](https://portal.azure.com)az "Exchange Administrator". Az [Exchange felügyeleti központban](https://go.microsoft.com/fwlink/p/?LinkID=529144)az "Exchange Online Administrator".
 
+
+### <a name="external-id-user-flow-administrator"></a>[Külső azonosító – felhasználói folyamat rendszergazdája](#external-id-user-flow-administrator-permissions)
+
+Az ezzel a szerepkörrel rendelkező felhasználók B2C-Felhasználókövetés (más néven "beépített" szabályzatokat) hozhatnak létre és kezelhetnek a Azure Portalban.A felhasználói folyamatok létrehozásával vagy szerkesztésével ezek a felhasználók módosíthatják a felhasználói élmény HTML/CSS/JavaScript-tartalmát, módosíthatják a felhasználói folyamatok MFA-követelményeit, módosíthatják a jogkivonatokban lévő jogcímeket, és módosíthatják a munkamenet-beállításokat az Azure AD-szervezet összes házirendjéhez. Másfelől azonban ez a szerepkör nem teszi lehetővé a felhasználói adat áttekintését, illetve a szervezeti sémában található attribútumok módosítását.Az Identity Experience Framework (más néven egyéni) házirendek változásai a szerepkör hatókörén kívül esnek.
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[Külső azonosító felhasználói flow-attribútumának rendszergazdája](#external-id-user-flow-attribute-administrator-permissions)
+
+Az ezzel a szerepkörrel rendelkező felhasználók hozzáadhatnak vagy törölhetnek egyéni attribútumokat az Azure AD-szervezet összes felhasználói folyamata számára.Így az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják vagy hozzáadhatják az új elemeket a végfelhasználói sémához, és befolyásolhatják az összes felhasználói folyamat viselkedését, és közvetetten a végfelhasználók számára megkérhetik az adatokat, és végső soron az alkalmazások számára is elküldhetik azt.Ez a szerepkör nem szerkesztheti a felhasználói folyamatokat.
+
 ### <a name="external-identity-provider-administrator"></a>[Külső identitás-szolgáltató rendszergazdája](#external-identity-provider-administrator-permissions)
 
 Ez a rendszergazda kezeli az Azure AD-szervezetek és a külső identitás-szolgáltatók közötti összevonást.Ezzel a szerepkörrel a felhasználók új identitás-szolgáltatókat adhatnak hozzá, és konfigurálhatják az összes rendelkezésre álló beállítást (például a hitelesítési útvonalat, a szolgáltatás AZONOSÍTÓját, a hozzárendelt kulcstárolókat).Ez a felhasználó engedélyezheti az Azure AD-szervezet számára, hogy megbízzon a külső identitás-szolgáltatóktól érkező hitelesítésekben.A végfelhasználói élményekre gyakorolt hatás a szervezet típusától függ:
@@ -237,8 +238,6 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 > [!NOTE]
 > A globális olvasói szerepkörnek jelenleg néhány korlátozása van –
 >
->- [OneDrive felügyeleti központ](https://admin.onedrive.com/) – a OneDrive felügyeleti központ nem támogatja a globális olvasó szerepkört.
->- [Azure ad-portál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – a globális olvasó nem tudja olvasni a vállalati alkalmazások kiépítési módját.
 >- [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – a globális olvasó nem tudja beolvasni az ügyfél kulcstároló-kérelmeit. A M365 felügyeleti központ bal oldali ablaktáblájában nem találja a **Customer kulcstároló-kérelmek** fület a **támogatás** területen.
 >- [Office biztonsági & megfelelőségi központ](https://sip.protection.office.com/homepage) – a globális olvasó nem tudja olvasni az SCC-naplókat, a tartalom keresését vagy a biztonságos pontszám megtekintését.
 >- [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát**, az **elemzési & jelentéseket**, az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
@@ -599,22 +598,6 @@ A Azure Information Protection szolgáltatás összes aspektusát képes kezelni
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Az Office 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>B2C felhasználói folyamat rendszergazdai engedélyei
-
-A felhasználói folyamatok összes aspektusának létrehozása és kezelése.
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| Microsoft. HRE. B2C/userFlows/allTasks | Felhasználói folyamatok olvasása és konfigurálása Azure Active Directory B2Cban. |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>B2C felhasználói folyamat attribútumának rendszergazdai engedélyei
-
-Az összes felhasználói folyamat számára elérhető attribútum-séma létrehozása és kezelése.
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| Microsoft. HRE. B2C/userAttributes/allTasks | A Azure Active Directory B2C felhasználói attribútumainak olvasása és konfigurálása. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF kulcskészlet rendszergazdai engedélyei
 
@@ -1030,6 +1013,22 @@ Az Exchange termék összes aspektusát képes kezelni.
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
 | Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+
+### <a name="external-id-user-flow-administrator-permissions"></a>Külső azonosító felhasználói folyamat rendszergazdai engedélyei
+
+A felhasználói folyamatok összes aspektusának létrehozása és kezelése.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft. HRE. B2C/userFlows/allTasks | Felhasználói folyamatok olvasása és konfigurálása Azure Active Directory B2Cban. |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>A külső azonosító felhasználói flow-attribútumának rendszergazdai engedélyei
+
+Az összes felhasználói folyamat számára elérhető attribútum-séma létrehozása és kezelése.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft. HRE. B2C/userAttributes/allTasks | A Azure Active Directory B2C felhasználói attribútumainak olvasása és konfigurálása. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Külső identitás-szolgáltató rendszergazdai engedélyei
 
@@ -1809,8 +1808,6 @@ Alkalmazásfejlesztő | Alkalmazás-fejlesztő | CF1C38E5-3621-4004-A7CB-879624D
 Hitelesítés rendszergazdája | Hitelesítés rendszergazdája | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps-rendszergazda | Azure DevOps-rendszergazda | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection rendszergazda | Azure Information Protection rendszergazda | 7495fdc4-34c4-4d15-a289-98788ce399fd
-B2C felhasználói folyamat rendszergazdája | B2C felhasználói folyamat rendszergazdája | 6e591065-9bad-43ed-90f3-e9424366d2f0
-B2C felhasználói folyamat attribútumának rendszergazdája | B2C felhasználói folyamat attribútumának rendszergazdája | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF kulcskészlet rendszergazdája | B2C IEF kulcskészlet rendszergazdája | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF házirend rendszergazdája | B2C IEF házirend rendszergazdája | 3edaf663-341e-4475-9f94-5c398ef6c070
 Számlázási rendszergazda | Számlázási rendszergazda | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1831,6 +1828,8 @@ Directory-olvasók | Directory-olvasók | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | d29b2b05-8046-44ba-8758-1e26182fcf32
 Címtár-írók | Nem látható, mert nem használható | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange szolgáltatás rendszergazdája | Exchange-rendszergazda | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Külső azonosító – felhasználói folyamat rendszergazdája | Külső azonosító – felhasználói folyamat rendszergazdája | 6e591065-9bad-43ed-90f3-e9424366d2f0
+Külső azonosító felhasználói flow-attribútumának rendszergazdája | Külső azonosító felhasználói flow-attribútumának rendszergazdája | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Külső identitás-szolgáltató rendszergazdája | Külső identitás-szolgáltató rendszergazdája | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globális olvasó | Globális olvasó | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Csoportok rendszergazdája | Csoportok rendszergazdája | fdd7a751-b60b-444a-984c-02652fe8fa1c 
@@ -1903,7 +1902,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, tekintse meg az [Azure-szerepkörök (Azure RBAC) használatával történő hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

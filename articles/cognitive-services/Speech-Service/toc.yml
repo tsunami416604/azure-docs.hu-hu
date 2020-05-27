@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blobtárolóban tárolt beszéd felismerése
           href: quickstarts/from-blob.md
-        - name: Kiejtés értékelése referenciabemenettel
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Útmutatók
       items:
         - name: Beszédfelismerési mód kiválasztása
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: Eszközök
   items:
-    - name: SPX
+    - name: Speech parancssori felület
+      displayName: SPX
       items:
-        - name: Mi az az SPX?
+        - name: Mi az a Speech parancssori felület?
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: Az SPX alapjai
+        - name: A Speech parancssori felület alapjai
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:
