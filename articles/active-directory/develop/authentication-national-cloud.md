@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262996"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845185"
 ---
-# <a name="national-clouds"></a>Nemzeti felhők
+# <a name="national-clouds"></a>Országos felhők
 
 Az országos felhők fizikailag elkülönített Azure-példányok. Az Azure ezen régiói úgy vannak kialakítva, hogy meggyőződjenek arról, hogy az adattárolási, a szuverenitási és a megfelelőségi követelmények a földrajzi határokon belül teljesülnek.
 
@@ -60,8 +60,8 @@ A következő táblázat felsorolja az egyes nemzeti felhők jogkivonatának bes
 
 Az Azure AD-engedélyezési vagy jogkivonat-végpontokra irányuló kéréseket a megfelelő régióspecifikus alap URL-cím használatával lehet megalkotni. Az Azure Germany esetében például:
 
-  - Az engedélyezési Common `https://login.microsoftonline.de/common/oauth2/authorize`Endpoint értéke.
-  - A token Common `https://login.microsoftonline.de/common/oauth2/token`Endpoint értéke.
+  - Az engedélyezési Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+  - A token Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 Egybérlős alkalmazások esetében az előző URL-címek "Common" értékét cserélje le a bérlői AZONOSÍTÓra vagy a névre. Például: `https://login.microsoftonline.de/contoso.com`.
 

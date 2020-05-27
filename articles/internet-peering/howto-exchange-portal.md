@@ -6,14 +6,14 @@ services: internet-peering
 author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 5/21/2020
+ms.date: 5/2/2020
 ms.author: derekol
-ms.openlocfilehash: 62aec65498f75e51ecb1df15b525294aef026745
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 259ced3032eb43a946de7f1cf4dad9abb99d4a11
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800530"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845244"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Exchange-társ létrehozása vagy módosítása a Azure Portal használatával
 
@@ -33,14 +33,14 @@ Ha szeretné, az útmutatót a [PowerShell](howto-exchange-powershell.md)haszná
 ### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange-társ létrehozása
 
 
-Internetes Exchange-szolgáltatóként létrehozhat egy közvetlen társ-összevonási kérést a társítás [létrehozásával]( https://go.microsoft.com/fwlink/?linkid=2129593).
+Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kérést [egy társ létrehozásával]( https://go.microsoft.com/fwlink/?linkid=2129593).
 
 1. A társítás **létrehozása** oldalon az **alapok** lapon adja meg az itt látható mezőket:
 
->    [!div class="mx-imgBorder"]
->   ![A Peering Service regisztrálása](./media/setup-basics-tab.png)
+    > [!div class="mx-imgBorder"] 
+    > ![A Peering Service regisztrálása](./media/setup-basics-tab.png)
 
-* Válassza ki az Azure-előfizetését.
+*    Válassza ki az Azure-előfizetését.
 
 * Az erőforráscsoport esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az új létrehozása lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
 
@@ -49,12 +49,12 @@ Internetes Exchange-szolgáltatóként létrehozhat egy közvetlen társ-összev
 * A régió automatikusan ki van választva, ha a meglévő erőforráscsoportot választotta. Ha úgy döntött, hogy új erőforráscsoportot hoz létre, ki kell választania azt az Azure-régiót, ahol az erőforrást tárolni szeretné.
 
 >[!NOTE]
-    Az a régió, ahol az erőforráscsoport található, független attól a helytől, ahol a Microsofttal kívánja létrehozni a kapcsolatot. Az ajánlott eljárás azonban az, hogy a legközelebb eső Azure-régiókban található erőforráscsoportok között szervezzen egyenrangú erőforrásokat. Például a Ashburn-ben való társítások esetén létrehozhat egy erőforráscsoportot az USA keleti régiójában vagy a Kelet-RÉGIÓJA.
+>Az a régió, ahol az erőforráscsoport található, független attól a helytől, ahol a Microsofttal kívánja létrehozni a kapcsolatot. Az ajánlott eljárás azonban az, hogy a legközelebb eső Azure-régiókban található erőforráscsoportok között szervezzen egyenrangú erőforrásokat. Például a Ashburn-ben való társítások esetén létrehozhat egy erőforráscsoportot az USA keleti régiójában vagy a Kelet-RÉGIÓJA.
 
 * Válassza ki az ASN-t a **PeerASN** mezőben.
 
 >[!IMPORTANT] 
-A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatja, mielőtt elküld egy kérést. Ha most elküldte a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítást jóvá szeretné hagyni. Ha a kiválasztott ASN-hitelesítés függőben van, hibaüzenet jelenik meg. Ha nem látja a kiválasztható ASN-t, ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. Ha igen, ellenőrizze, hogy már létrehozott-e PeerAsn az **[Azure-előfizetéshez való társítási peer ASN](https://go.microsoft.com/fwlink/?linkid=2129592)** használatával.
+>A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatja, mielőtt elküld egy kérést. Ha most elküldte a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítást jóvá szeretné hagyni. Ha a kiválasztott ASN-hitelesítés függőben van, hibaüzenet jelenik meg. Ha nem látja a kiválasztható ASN-t, ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. Ha igen, ellenőrizze, hogy már létrehozott-e PeerAsn az **[Azure-előfizetéshez való társítási peer ASN](https://go.microsoft.com/fwlink/?linkid=2129592)** használatával.
 
 * Válassza a **Next (tovább): konfigurálás** a folytatáshoz lehetőséget.
 
@@ -70,7 +70,7 @@ A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatj
 ## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange-társ kiépítése
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Közvetlen társ létrehozása vagy módosítása a portál használatával](howto-direct-portal.md)
 * [Örökölt közvetlen társak konvertálása Azure-erőforrásra a portál használatával](howto-legacy-direct-portal.md)

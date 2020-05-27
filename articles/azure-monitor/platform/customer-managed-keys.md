@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800031"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845098"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -35,8 +35,10 @@ A [log Analytics-fürtök díjszabási modellje](https://docs.microsoft.com/azu
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hogyan működik a CMK Azure Monitor
 
-Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja a Azure Key Vault elérésének biztosításához.A rendszerhez rendelt felügyelt identitás csak egyetlen Azure-erőforráshoz társítható, miközben a fürt szintjén a Log Analytics-fürt identitása is támogatott.Ez azt diktálja, hogy a CMK képesség egy dedikált Log Analytics-fürtön van továbbítva.Ha több munkaterületen is támogatni szeretné a CMK, egy új Log Analytics *fürterőforrás*   közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között.A Log Analytics fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \'  *Cluster*   Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez. 
-A CMK konfigurálása után a *fürt*erőforrásaihoz tartozó munkaterületekre   betöltött összes adatot titkosítja Key Vault a kulcsával. Bármikor leválaszthatja a munkaterületeket a *fürt*   erőforrásaiból.Az új adatai bekerülnek a Log Analytics tárterületre, és titkosítva vannak a Microsoft-kulccsal, míg az új és a régi adatait zökkenőmentesen le lehet kérdezni.
+Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja a Azure Key Vault elérésének biztosításához. A rendszer által hozzárendelt felügyelt identitás csak egyetlen Azure-erőforráshoz társítható, miközben a Log Analytics-fürt identitása a fürt szintjén támogatott – ez azt diktálja, hogy a CMK képesség egy dedikált Log Analytics-fürtön van továbbítva. Ha több munkaterületen is támogatni szeretné a CMK, egy új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. A Log Analytics fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \' Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez. *Cluster* 
+
+A CMK konfigurálása után a *fürt* erőforrásaihoz tartozó munkaterületekre betöltött összes adatot titkosítja Key Vault a kulcsával. Bármikor leválaszthatja a munkaterületeket a *fürt* erőforrásaiból. Az új adatai bekerülnek a Log Analytics tárterületre, és titkosítva vannak a Microsoft-kulccsal, míg az új és a régi adatait zökkenőmentesen le lehet kérdezni.
+
 
 ![A CMK áttekintése](media/customer-managed-keys/cmk-overview-8bit.png)
 
@@ -118,6 +120,29 @@ A művelet folyamatban van
     "name": "operation-id", 
     "status" : "InProgress", 
     "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
+
+A kulcs-azonosító frissítési művelete folyamatban van
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Updating", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+A *fürterőforrás* -törlés folyamatban van – ha töröl egy olyan *fürterőforrás* -erőforrást, amely munkaterületekhez társított munkaterületeket tartalmaz, akkor az aszinkron műveletekben eltarthat egy kapcsolat bontási műveletet.
+Ez nem vonatkozik arra az esetre, ha egy társított munkaterülettel nem rendelkező *fürtöt* töröl – ebben az esetben a rendszer azonnal törli a *fürterőforrás* -készletet.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Deleting", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
 }
 ```
 

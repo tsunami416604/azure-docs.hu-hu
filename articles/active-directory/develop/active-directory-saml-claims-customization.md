@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd99934ca74736c1f80bd47d701120398437e27a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885684"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845321"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -26,7 +26,7 @@ Napjainkban a Azure Active Directory (Azure AD) támogatja az egyszeri bejelentk
 
 A *jogcím* olyan információ, amelyet az identitás-szolgáltató az adott felhasználóhoz tartozó jogkivonatban lévő felhasználóval kapcsolatos. Az [SAML-tokenben](https://en.wikipedia.org/wiki/SAML_2.0)ezeket az adatok JELLEMZŐEN az SAML-attribútum utasításában találhatók. A felhasználó egyedi AZONOSÍTÓját általában az SAML-tulajdonos jelöli, más néven a name Identifier.
 
-Alapértelmezés szerint az Azure AD olyan SAML-jogkivonatot állít ki az alkalmazásnak, amely a felhasználó felhasználónevét (más néven az egyszerű felhasználónevet) tartalmazza `NameIdentifier` az Azure ad-ben, amely egyedileg azonosíthatja a felhasználót. Az SAML-jogkivonat a felhasználó e-mail-címét, utónevét és vezetéknevét tartalmazó további jogcímeket is tartalmaz.
+Alapértelmezés szerint az Azure AD olyan SAML-jogkivonatot állít ki az alkalmazásnak, amely a `NameIdentifier` felhasználó felhasználónevét (más néven az egyszerű felhasználónevet) tartalmazza az Azure ad-ben, amely egyedileg azonosíthatja a felhasználót. Az SAML-jogkivonat a felhasználó e-mail-címét, utónevét és vezetéknevét tartalmazó további jogcímeket is tartalmaz.
 
 Az SAML-jogkivonatban kiadott jogcímek megtekintéséhez vagy módosításához nyissa meg az alkalmazást Azure Portalban. Ezután nyissa meg a **felhasználói attribútumok & jogcímek** szakaszt.
 
@@ -66,9 +66,9 @@ Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, 
 
 ### <a name="attributes"></a>Attribútumok
 
-Válassza ki a kívánt forrást `NameIdentifier` a (vagy NameID) jogcím számára. A következő lehetőségek közül választhat.
+Válassza ki a kívánt forrást a `NameIdentifier` (vagy NameID) jogcím számára. A következő lehetőségek közül választhat.
 
-| Name (Név) | Leírás |
+| Name | Leírás |
 |------|-------------|
 | E-mail | A felhasználó e-mail címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
@@ -100,8 +100,8 @@ Használhatja a jogcím-átalakítási funkciókat is.
 
 | Függvény | Leírás |
 |----------|-------------|
-| **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith" joe_smith@contoso.com) adja ki a (z) helyett. |
-| **Csatlakozás ()** | Egy attribútumot ellenőrzött tartománnyal társít. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet (joe_smith@contoso.com) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja joe_smith@contoso.onmicrosoft.com, akkor ez a következőt eredményezi:. |
+| **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja ki a (z joe_smith@contoso.com ) helyett. |
+| **Csatlakozás ()** | Egy attribútumot ellenőrzött tartománnyal társít. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |
 | **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
 
@@ -119,7 +119,7 @@ Alkalmazás-specifikus jogcímek hozzáadása:
 
 1. A **jogcím kezelése**lapon válassza az *átalakítás* lehetőséget jogcím forrásaként az **átalakítás kezelése** lap megnyitásához.
 2. Válassza ki a függvényt az átalakítás legördülő listából. A kiválasztott függvénytől függően paramétereket és állandó értéket kell megadnia, hogy kiértékelje az átalakítást. Az elérhető funkciókkal kapcsolatos további információkért tekintse meg az alábbi táblázatot.
-3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása**lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az e-mail-előtagot `user.mail`. Ezután végezze el a karakterláncot a nagybetűvel.
+3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása**lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az e-mail-előtagot `user.mail` . Ezután végezze el a karakterláncot a nagybetűvel.
 
    ![A NameID (Name Identifier) értékének szerkesztése](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
@@ -127,11 +127,11 @@ A jogcímek átalakításához a következő függvények használhatók.
 
 | Függvény | Leírás |
 |----------|-------------|
-| **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith" joe_smith@contoso.com) adja ki a (z) helyett. |
-| **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. A NameID-jogcím átalakításához az illesztés egy ellenőrzött tartományra korlátozódik. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet (joe_smith@contoso.com) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja joe_smith@contoso.onmicrosoft.com, akkor ez a következőt eredményezi:. |
+| **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja ki a (z joe_smith@contoso.com ) helyett. |
+| **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. A NameID-jogcím átalakításához az illesztés egy ellenőrzött tartományra korlátozódik. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |
 | **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
-| **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a (z@contoso.com) "" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. e-mail<br/>*Érték*: "@contoso.com"<br/>2. paraméter (kimenet): user. e-mail<br/>3. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
+| **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a (z @contoso.com ) "" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. e-mail<br/>*Érték*: " @contoso.com "<br/>2. paraméter (kimenet): user. e-mail<br/>3. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
 | **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az alkalmazott azonosítója "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. Alkalmazottkód<br/>*Érték*: "000"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: felhasználó. ország<br/>*Érték*: "US"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **Kinyerés () – a megfeleltetés után** | Azt az alsztringet adja vissza, amely a megadott értéknek felel meg.<br/>Ha például a bemeneti érték "Finance_BSimon", a megfelelő érték "Finance_", akkor a jogcím kimenete "BSimon". |
@@ -169,9 +169,9 @@ Jogcím feltételének hozzáadása:
 
 Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. 
 
-Például a Brita Simon egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációja alapján a Brita a fabrikam-be próbál bejelentkezni, és az Azure AD az alábbi feltételek szerint értékeli ki a feltételeket.
+A Britta Simon például egy vendég felhasználó a contoso-bérlőben. Egy másik szervezethez tartozik, amely az Azure AD-t is használja. A fabrikam alkalmazás alábbi konfigurációjának megfelelően, amikor a Britta megpróbál bejelentkezni a fabrikam szolgáltatásba, az Azure AD az alábbi feltételeket fogja kiértékelni.
 
-Első lépésként az Azure AD ellenőrzi, hogy a Brita felhasználói `All guests`típusa a-e. Mivel ez igaz, az Azure AD hozzárendeli a jogcím forrását a következőhöz `user.extensionattribute1`:. Másodszor, az Azure AD ellenőrzi `AAD guests`, hogy `user.mail`a Brita felhasználói típusa, mivel ez is igaz, az Azure ad a jogcím forrását rendeli hozzá. Végezetül a rendszer kibocsátja a jogcímet a Brita értékkel `user.email` .
+Először is az Azure AD ellenőrzi, hogy a Britta felhasználói típusa a-e `All guests` . Mivel ez igaz, az Azure AD hozzárendeli a jogcím forrását a következőhöz: `user.extensionattribute1` . Másodszor, az Azure AD ellenőrzi, hogy a Britta felhasználói típusa van `AAD guests` -e, mivel ez is igaz, az Azure ad hozzárendeli a jogcímek forrását `user.mail` . Végezetül a jogcím a Britta értékével van kibocsátva `user.mail` .
 
 ![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

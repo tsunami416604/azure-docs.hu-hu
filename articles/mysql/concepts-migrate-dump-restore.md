@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78163777"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845546"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
@@ -23,6 +23,8 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 - [Azure Database for MySQL kiszolgáló létrehozása – Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) parancssori segédprogram telepítve van a gépen.
 - MySQL Workbench [MySQL Workbench Letöltés](https://dev.mysql.com/downloads/workbench/) vagy más, harmadik féltől származó MySQL-eszköz a dump és a Restore parancsok végrehajtásához.
+
+Ha 1 TBs-nál több adatbázis-mérettel rendelkező nagyméretű adatbázisokat szeretne áttelepíteni, érdemes lehet olyan közösségi eszközöket használni, mint például a mydumper/myloader, amely támogatja a párhuzamos exportálást és importálást. A párhuzamos memóriakép és a visszaállítás jelentősen csökkentheti a nagyméretű adatbázisok áttelepítésének idejét. Az ajánlott eljárásokat a [techcommunity blogon](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699) tekintheti át a nagyméretű adatbázisok Azure Database for MySQL szolgáltatásba való áttelepítéséhez a mydumper/myloader eszközök használatával.
 
 ## <a name="use-common-tools"></a>Gyakori eszközök használata
 Használjon olyan gyakori segédprogramokat és eszközöket, mint például a MySQL Workbench vagy a mysqldump az adatAzure Database for MySQLba való távoli kapcsolódáshoz és az adathelyreállításhoz. Az ügyfélgépen lévő eszközök használatával internetkapcsolattal csatlakozhat a Azure Database for MySQLhoz. Használjon SSL-titkosítású titkosított kapcsolatot az ajánlott biztonsági eljárásokhoz: [az SSL-kapcsolat konfigurálása a Azure Database for MySQLban](concepts-ssl-connection-security.md). Az Azure Database for MySQLba való Migrálás során nem kell áthelyeznie a memóriakép fájljait a Felhőbeli helyre. 
@@ -37,19 +39,19 @@ A MySQL-segédprogramok, például a mysqldump és a mysqlpump használatával s
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- A kompatibilitási problémák elkerülése érdekében az adatbázisok biztonsági mentésekor győződjön meg arról, hogy a forrás- és a célrendszerek ugyanazt a MySQL-verziót használják. Ha például a meglévő MySQL-kiszolgáló a 5,7-es verzió, akkor át kell térnie az 5,7-es verzió futtatására konfigurált Azure Database for MySQLra. A `mysql_upgrade` parancs nem működik Azure Database for MySQL-kiszolgálón, és nem támogatott. Ha frissítenie kell a MySQL-verziókat, először az alacsonyabb verziójú adatbázist a MySQL egy magasabb verziójára exportálhatja a saját környezetében. Ezután futtassa `mysql_upgrade`a parancsot, mielőtt áttelepíti az áttelepítést egy Azure Database for MySQLba.
+- A kompatibilitási problémák elkerülése érdekében az adatbázisok biztonsági mentésekor győződjön meg arról, hogy a forrás- és a célrendszerek ugyanazt a MySQL-verziót használják. Ha például a meglévő MySQL-kiszolgáló a 5,7-es verzió, akkor át kell térnie az 5,7-es verzió futtatására konfigurált Azure Database for MySQLra. A `mysql_upgrade` parancs nem működik Azure Database for MySQL-kiszolgálón, és nem támogatott. Ha frissítenie kell a MySQL-verziókat, először az alacsonyabb verziójú adatbázist a MySQL egy magasabb verziójára exportálhatja a saját környezetében. Ezután futtassa a parancsot `mysql_upgrade` , mielőtt áttelepíti az áttelepítést egy Azure Database for MySQLba.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 A teljesítmény optimalizálása érdekében vegye figyelembe a következő szempontokat a nagyméretű adatbázisok kiírásakor:
--   Az adatbázisok `exclude-triggers` kiírásakor használja a mysqldump kapcsolót. Kihagyhatja a memóriaképből származó eseményindítókat, hogy elkerülje az eseményindító parancsainak égetését az adatok visszaállítása során. 
--   A `single-transaction` beállítással beállíthatja a tranzakció-elkülönítési módot ismétlődő olvasásra, és elküldheti a Start Transaction SQL-utasítást a kiszolgálónak az adatok kiírása előtt. Egy tranzakción belül számos tábla kiírásakor a rendszer néhány további tárterületet használ a visszaállítás során. A `single-transaction` beállítás és a `lock-tables` beállítás kölcsönösen kizárható, mert a zárolási táblázatok implicit módon elvégeznek minden függőben lévő tranzakciót. A nagyméretű táblák kiírásához kombinálja a `single-transaction` kapcsolót a `quick` kapcsolóval. 
+-   Az `exclude-triggers` adatbázisok kiírásakor használja a mysqldump kapcsolót. Kihagyhatja a memóriaképből származó eseményindítókat, hogy elkerülje az eseményindító parancsainak égetését az adatok visszaállítása során. 
+-   A `single-transaction` beállítással beállíthatja a tranzakció-elkülönítési módot ismétlődő olvasásra, és elküldheti a Start Transaction SQL-utasítást a kiszolgálónak az adatok kiírása előtt. Egy tranzakción belül számos tábla kiírásakor a rendszer néhány további tárterületet használ a visszaállítás során. A `single-transaction` beállítás és a `lock-tables` beállítás kölcsönösen kizárható, mert a zárolási táblázatok implicit módon elvégeznek minden függőben lévő tranzakciót. A nagyméretű táblák kiírásához kombinálja a kapcsolót a `single-transaction` `quick` kapcsolóval. 
 -   Használja a `extended-insert` több sorból álló szintaxist, amely több értéklista használatát is magában foglalja. Ez kisebb memóriaképet eredményez, és felgyorsítja a beszúrást a fájl újratöltése után.
--  A mysqldump `order-by-primary` használatakor használja az adatbázisokat, hogy az elsődleges kulcs sorrendjében legyenek megírtak.
--   A mysqldump `disable-keys` használatakor használja az adatmemóriaképet, hogy letiltsa a külső kulcsokra vonatkozó korlátozásokat a betöltés előtt. A külső kulcsok ellenőrzésének letiltása teljesítménybeli nyereséget biztosít. Engedélyezze a korlátozásokat, és ellenőrizze az adatok betöltését a hivatkozási integritás biztosítása érdekében.
+-  A mysqldump használatakor használja az `order-by-primary` adatbázisokat, hogy az elsődleges kulcs sorrendjében legyenek megírtak.
+-   A mysqldump használatakor használja az `disable-keys` adatmemóriaképet, hogy letiltsa a külső kulcsokra vonatkozó korlátozásokat a betöltés előtt. A külső kulcsok ellenőrzésének letiltása teljesítménybeli nyereséget biztosít. Engedélyezze a korlátozásokat, és ellenőrizze az adatok betöltését a hivatkozási integritás biztosítása érdekében.
 -   Szükség esetén particionált táblákat használjon.
 -   Párhuzamosan tölthetők be az adathalmazok. Kerülje a túl sok párhuzamosságot, amelynek hatására elérheti az erőforrás-korlátot, és figyelheti az erőforrásokat a Azure Portal elérhető metrikák használatával. 
--   A mysqlpump `defer-table-indexes` használatakor használja az adatbázisokat, így az index létrehozása a táblázatok adatainak betöltése után történik.
--   A mysqlpump `skip-definer` lehetőséggel kihagyhatja a definomabb és az SQL biztonsági záradékokat a Create utasításban a nézetek és a tárolt eljárások számára.  A memóriakép újratöltése után az az alapértelmezett és az SQL biztonsági értékeket használó objektumokat hoz létre.
+-   A mysqlpump használatakor használja az `defer-table-indexes` adatbázisokat, így az index létrehozása a táblázatok adatainak betöltése után történik.
+-   A `skip-definer` mysqlpump lehetőséggel kihagyhatja a definomabb és az SQL biztonsági záradékokat a Create utasításban a nézetek és a tárolt eljárások számára.  A memóriakép újratöltése után az az alapértelmezett és az SQL biztonsági értékeket használó objektumokat hoz létre.
 -   Másolja a biztonságimásolat-fájlokat egy Azure-blobba/-tárolóba, és végezze el a visszaállítást onnan, ami sokkal gyorsabb lehet, mint az interneten keresztüli visszaállítás végrehajtása.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Biztonságimásolat-fájl létrehozása a parancssorból a mysqldump használatával
@@ -65,7 +67,7 @@ A megadható paraméterek a következők:
 - [biztonságimentésfájlja. SQL] az adatbázis biztonsági másolatának fájlneve 
 - [--opt] A mysqldump beállítás 
 
-Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű `testdb_backup.sql`fájlba, amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
+Ha például egy "testdb" nevű adatbázist szeretne biztonsági másolatot készíteni a MySQL-kiszolgálón a (z) "tesztfelhasználó" felhasználónévvel, és nincs jelszó testdb_backup. SQL fájlhoz, használja a következő parancsot. A parancs biztonsági másolatot készít az `testdb` adatbázisról egy nevű fájlba `testdb_backup.sql` , amely tartalmazza az adatbázis újbóli létrehozásához szükséges összes SQL-utasítást. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -90,6 +92,16 @@ Adja hozzá a kapcsolatok adatait a MySQL Workbench-hez.
 
 ![MySQL Workbench-beli kapcsolatok karakterlánca](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
+## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>A cél Azure Database for MySQL-kiszolgáló előkészítése a gyors adatterhelések eléréséhez
+A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való előkészítéséhez a következő kiszolgálói paramétereket és konfigurációkat módosítani kell.
+- max_allowed_packet – állítsa 1073741824-ra (azaz 1GB-ra), hogy megakadályozza a hosszú sorok miatti túlcsordulási problémákat.
+- slow_query_log – az OFF érték kikapcsolásával kikapcsolhatja a lassú lekérdezési naplót. Ezzel a művelettel elkerülhető, hogy az adatterhelések során a lassú lekérdezési naplózás okozza a terhelést.
+- query_store_capture_mode – állítsa mindkettőt a NONE értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
+- innodb_buffer_pool_size – a-kiszolgáló vertikális felskálázása 32 virtuális mag memória optimalizált SKU-ra a portál díjszabási szintjéről az áttelepítés során a innodb_buffer_pool_size növeléséhez. Innodb_buffer_pool_size csak Azure Database for MySQL kiszolgáló számítási felskálázásával növelhető.
+- a Migrálás sebességének növelése érdekében innodb_write_io_threads & innodb_write_io_threads – a Azure Portal kiszolgálói paramétereinek 16-ra változnak.
+- A tárolási rétegek vertikális felskálázása – a Azure Database for MySQL kiszolgáló IOPs fokozatosan növekszik a tárolási rétegek növekedésével. A gyorsabb terhelés érdekében érdemes lehet megnövelni a tárolási szintet, hogy növelje a IOPs kiépített mennyiségét. Ne feledje, hogy a tárterület csak vertikális felskálázásra használható, nem.
+
+Az áttelepítés befejezése után visszaállíthatja a kiszolgálói paramétereket és a számítási rétegek konfigurációját a korábbi értékekre. 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>MySQL-adatbázis visszaállítása a parancssori vagy a MySQL Workbench használatával
 Miután létrehozta a céladatbázis-adatbázist, a MySQL-paranccsal vagy a MySQL Workbench használatával visszaállíthatja az adatait az adott újonnan létrehozott adatbázisba a memóriakép fájlból.
@@ -100,7 +112,6 @@ Ebben a példában a cél Azure Database for MySQL-kiszolgálón az újonnan lé
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-
 ## <a name="export-using-phpmyadmin"></a>Exportálás a PHPMyAdmin használatával
 Az exportáláshoz használhatja az általános eszközt (phpMyAdmin), amelyet esetleg már helyileg telepített a környezetében. MySQL-adatbázis exportálása a PHPMyAdmin használatával:
 1. A phpMyAdmin megnyitása.
@@ -118,6 +129,9 @@ Az adatbázis importálása hasonló az exportáláshoz. Hajtsa végre a követk
 4. Az SQL **-hivatkozásra kattintva** megjelenítheti az SQL-parancsokat beírható oldalt, vagy feltöltheti az SQL-fájlt. 
 5. Az adatbázisfájl megkereséséhez használja a **Tallózás** gombot. 
 6. Kattintson a **Go (ugrás** ) gombra a biztonsági mentés exportálásához, hajtsa végre az SQL-parancsokat, majd hozza létre újra az adatbázist.
+
+## <a name="known-issues"></a>Ismert problémák
+Az ismert problémákkal, tippekkel és trükkökkel kapcsolatban javasoljuk, hogy tekintse meg a [techcommunity blogot](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912).
 
 ## <a name="next-steps"></a>További lépések
 - [Alkalmazások Összekötése Azure Database for MySQLhoz](./howto-connection-string.md).

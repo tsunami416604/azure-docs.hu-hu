@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 018e7f9bc389e3d148ff6860dae9fef88991e5c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ee2679da5065ab9e9b02d4ddb313fab75e78f7
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537168"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845135"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Védett webes API: hatókörök és alkalmazás-szerepkörök ellenőrzése
 
@@ -78,7 +78,7 @@ public class TodoListController : Controller
 
 A `VerifyUserHasAnyAcceptedScope` metódus a következő lépésekhez hasonló:
 
-- Ellenőrizze, hogy van-e `http://schemas.microsoft.com/identity/claims/scope` a `scp`vagy a nevű jogcím.
+- Ellenőrizze, hogy van-e a vagy a nevű jogcím `http://schemas.microsoft.com/identity/claims/scope` `scp` .
 - Ellenőrizze, hogy a jogcím tartalmaz-e olyan értéket, amely tartalmazza az API által várt hatókört.
 
 ```csharp
@@ -109,13 +109,13 @@ A `VerifyUserHasAnyAcceptedScope` metódus a következő lépésekhez hasonló:
     }
 ```
 
-A fenti [mintakód](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) a ASP.net Core. A ASP.NET esetében csak cserélje `HttpContext.User` le `ClaimsPrincipal.Current`a-t, és cserélje `"http://schemas.microsoft.com/identity/claims/scope"` le `"scp"`a jogcím típusát a következőre:. A kódrészletet a cikk későbbi részében is láthatja.
+A fenti [mintakód](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) a ASP.net Core. A ASP.NET esetében csak cserélje le a `HttpContext.User` `ClaimsPrincipal.Current` -t, és cserélje le a jogcím típusát a következőre: `"http://schemas.microsoft.com/identity/claims/scope"` `"scp"` . A kódrészletet a cikk későbbi részében is láthatja.
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>Az alkalmazás szerepköreinek ellenőrzése Daemon-alkalmazások által hívott API-kon
 
 Ha a webes API-t egy [Daemon-alkalmazás](scenario-daemon-overview.md)hívja meg, akkor az alkalmazásnak a webes API-hoz szükséges alkalmazási engedéllyel kell rendelkeznie. Ahogy az az [alkalmazás engedélyeinek](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)kifejtése című ábrán látható, az API elérhetővé teszi az ilyen engedélyeket. Az egyik példa az `access_as_application` alkalmazás szerepkör.
 
-Most az API-nak ellenőriznie kell, hogy a kapott jogkivonat tartalmazza-e `roles` a jogcímet, és hogy a jogcím a várt értékkel rendelkezik-e. Az ellenőrző kód hasonló a delegált engedélyeket ellenőrző kódhoz, kivéve, hogy a vezérlő műveleti teszteket végez a hatókörök helyett a szerepkörökhöz:
+Most az API-nak ellenőriznie kell, hogy a kapott jogkivonat tartalmazza-e a `roles` jogcímet, és hogy a jogcím a várt értékkel rendelkezik-e. Az ellenőrző kód hasonló a delegált engedélyeket ellenőrző kódhoz, kivéve, hogy a vezérlő műveleti teszteket végez a hatókörök helyett a szerepkörökhöz:
 
 ```csharp
 [Authorize]
@@ -149,7 +149,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-Ezúttal a kódrészlet a ASP.NET. ASP.NET Core esetében egyszerűen cserélje le `ClaimsPrincipal.Current` a `HttpContext.User`-t, és `"roles"` cserélje le a `"http://schemas.microsoft.com/identity/claims/roles"`jogcím nevét a következőre:. Lásd még a cikk korábbi részében szereplő kódrészletet is.
+Ezúttal a kódrészlet a ASP.NET. ASP.NET Core esetében egyszerűen cserélje le `ClaimsPrincipal.Current` a `HttpContext.User` -t, és cserélje le a `"roles"` jogcím nevét a következőre: `"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"` . Lásd még a cikk korábbi részében szereplő kódrészletet is.
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Csak alkalmazásbeli tokenek fogadása, ha a webes API-t csak Daemon-alkalmazások hívhatják meg
 
