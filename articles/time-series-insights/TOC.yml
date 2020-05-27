@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-update-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
@@ -15,7 +15,7 @@
       items:
         - name: Ismerkedés a Time Series Insights előzetes verziójával
           href: time-series-insights-update-quickstart.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
       items:
@@ -140,7 +140,7 @@
   items:
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
-    - name: Fejlesztői forrásanyagok
+    - name: Fejlesztői erőforrások
       items:
         - name: Azure Time Series Insights-kódminták
           href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
@@ -166,12 +166,12 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A kérdések oldala
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: Visszajelzés és fórumok
       items:
-        - name: MSDN-fórum
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A kérdések oldala
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: Termékkérések és javaslatok
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure-videók

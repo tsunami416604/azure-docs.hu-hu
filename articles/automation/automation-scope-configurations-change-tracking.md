@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c30bd8a3bb4fa1085e56dd93c66c016c3612e352
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749136"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832163"
 ---
 # <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>A Change Tracking és a leltár hatókör-konfigurációinak használata
 
@@ -52,11 +52,5 @@ Ha a számítógép bekerül a Change Tracking és a leltárba, azt a rendszer a
 
 ## <a name="next-steps"></a>További lépések
 
-* A szolgáltatással kapcsolatos általános információkért lásd: [change Tracking és leltár – áttekintés](change-tracking.md).
-* A szolgáltatással való együttműködéshez tekintse meg a [change Tracking és a leltár kezelése](change-tracking-file-contents.md)című témakört.
-* Ha Automation-fiókot szeretne használni a szolgáltatás engedélyezéséhez, tekintse meg az [Automation-fiók Change Tracking és leltározásának engedélyezése](automation-enable-changes-from-auto-acct.md)című témakört.
-* A funkció engedélyezéséhez a Azure Portal a [change Tracking és a leltár engedélyezése a Azure Portalról](automation-enable-changes-from-browse.md)című témakörben talál további információt.
-* Ha runbook szeretne használni a szolgáltatás engedélyezéséhez, tekintse meg a [change Tracking és a leltár engedélyezése egy runbook](automation-enable-changes-from-runbook.md)című témakört.
-* Ha Azure-beli virtuális gépet kíván használni a szolgáltatás engedélyezéséhez, olvassa el a [change Tracking és leltározás engedélyezése Azure](automation-enable-changes-from-vm.md)-beli virtuális gépekről című témakört.
-* A virtuális gépek változásainak nyomon követésével és leltározásával kapcsolatos problémák elhárításához tekintse meg [Az Azure-beli virtuális gép módosításainak hibaelhárítását](automation-tutorial-troubleshoot-changes.md)ismertető témakört
-* A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).
+* A Change Tracking és a leltár kezelésével kapcsolatban lásd: a [change Tracking és a leltár kezelése](change-tracking-file-contents.md).
+* Az általános szolgáltatással kapcsolatos problémák elhárításához lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

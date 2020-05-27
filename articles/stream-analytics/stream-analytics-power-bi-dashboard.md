@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851148"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833132"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -35,17 +35,17 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 ## <a name="add-power-bi-output"></a>Power BI kimenet hozzáadása
 A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet az Azure Blob Storage-ba küldi a rendszer. Ebben a szakaszban olyan kimenetet ad hozzá, amely adatokat küld a Power BInak.
 
-1. A Azure Portal nyissa meg a korábban létrehozott streaming Analytics-feladatot. Ha a javasolt nevet használta, a rendszer elnevezi `sa_frauddetection_job_demo`a feladatot.
+1. A Azure Portal nyissa meg a korábban létrehozott streaming Analytics-feladatot. Ha a javasolt nevet használta, a rendszer elnevezi a feladatot `sa_frauddetection_job_demo` .
 
 2. A bal oldali menüben válassza a **kimenetek** lehetőséget a **feladatok topológiája**alatt. Ezután válassza a **+ Hozzáadás** lehetőséget, majd a legördülő menüből válassza a **Power bi** lehetőséget.
 
-3. Válassza a **+** > **Power bi**hozzáadása elemet. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
+3. Válassza a **+**  >  **Power bi**hozzáadása elemet. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Kimeneti alias  |  CallStream – PowerBI  |
    |Adatkészlet neve  |   SA-adatkészlet  |
-   |Tábla neve |  csalárd – hívások  |
+   |Table name (Táblázat neve) |  csalárd – hívások  |
 
    ![Stream Analytics kimenet konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
@@ -74,10 +74,10 @@ Power BI adatkészletekkel kapcsolatos további információkért tekintse meg a
 
 2. Kattintson a **lekérdezés** mezőre. 
 
-3. Adja meg a következő lekérdezést. Ez a lekérdezés hasonló a csalások észlelését ismertető oktatóanyagban létrehozott saját illesztési lekérdezéshez. A különbség az, hogy ez a lekérdezés eredményeket küld a létrehozott új kimenetnek`CallStream-PowerBI`(). 
+3. Adja meg a következő lekérdezést. Ez a lekérdezés hasonló a csalások észlelését ismertető oktatóanyagban létrehozott saját illesztési lekérdezéshez. A különbség az, hogy ez a lekérdezés eredményeket küld a létrehozott új kimenetnek ( `CallStream-PowerBI` ). 
 
     >[!NOTE]
-    >Ha nem adta meg a bevitelt `CallStream` a csalások észlelése oktatóanyagban, akkor a lekérdezésben `CallStream` szereplő **from** és **JOIN** záradékban helyettesítse be a nevét.
+    >Ha nem adta meg a bevitelt `CallStream` a csalások észlelése oktatóanyagban, akkor a `CallStream` lekérdezésben szereplő **from** és **JOIN** záradékban helyettesítse be a nevét.
 
    ```SQL
    /* Our criteria for fraud:
@@ -114,7 +114,7 @@ Ez a szakasz nem kötelező, de ajánlott.
 
        `telcodatagen.exe 1000 .2 2`
 
-2. A Stream Analytics-feladathoz tartozó **lekérdezés** lapon kattintson a `CallStream` bemenet melletti pontokra, majd válassza a **mintaadatok bemenetből**lehetőséget.
+2. A Stream Analytics-feladathoz tartozó **lekérdezés** lapon kattintson a bemenet melletti pontokra, `CallStream` majd válassza a **mintaadatok bemenetből**lehetőséget.
 
 3. Itt adhatja meg, hogy három perces értékű adatot kíván használni, majd kattintson **az OK**gombra. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
 
@@ -137,11 +137,11 @@ A streaming Analytics-feladatok a bejövő adatfolyamban megjelenő csalárd hí
 
     ![Folyamatos átviteli adatkészlet helye Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. A munkaterületen kattintson a ** + &nbsp;létrehozás**gombra.
+2. A munkaterületen kattintson a ** + &nbsp; Létrehozás**gombra.
 
     ![A létrehozás gomb Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Hozzon létre egy új irányítópultot `Fraudulent Calls`, és nevezze el.
+3. Hozzon létre egy új irányítópultot, és nevezze el `Fraudulent Calls` .
 
     ![Irányítópult létrehozása és név megadása Power BI munkaterületen](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
@@ -228,14 +228,14 @@ Ebben a konfigurációban az eredeti lekérdezést a következőre módosíthatj
 ```
 
 ### <a name="renew-authorization"></a>Engedélyezés megújítása
-Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya `Authenticate user error` vagy a műveleti naplók.
+Ha a jelszó megváltozott a feladatok létrehozása vagy utolsó hitelesítése óta, újra kell hitelesítenie Power BI-fiókját. Ha az Azure Multi-Factor Authentication konfigurálva van a Azure Active Directory (Azure AD) bérlőn, akkor két hetente meg kell újítania Power BI engedélyezését. Ha nem újítja meg, olyan tüneteket láthat, mint például a feladatok kimenetének hiánya vagy `Authenticate user error` a műveleti naplók.
 
 Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba történik, és a művelet meghiúsul. A probléma megoldásához állítsa le a futó feladatot, és nyissa meg a Power BI kimenetét. Az adatvesztés elkerülése érdekében válassza az **Engedélyezés megújítása** hivatkozást, majd indítsa újra a feladatot az **utolsó leállítási időpontból**.
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="get-help"></a>Segítségkérés
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Segítség kérése
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036372"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830004"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Adatlemez leválasztása Linux rendszerű virtuális gépről
 
@@ -82,7 +82,7 @@ Ebben a példában a következő sort törölni kell az */etc/fstab* fájlból:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-A `umount` lemez leválasztásához használja a következőt:. Az alábbi példa leválasztja a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
+`umount`A lemez leválasztásához használja a következőt:. Az alábbi példa leválasztja a */dev/sdc1* partíciót a */datadrive* csatlakoztatási pontról:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -106,12 +106,10 @@ A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 ## <a name="detach-a-data-disk-using-the-portal"></a>Adatlemez leválasztása a portállal
 
 1. A bal oldali menüben válassza a **Virtual Machines**lehetőséget.
-2. Válassza ki azt a virtuális gépet, amelyen a leválasztani kívánt adatlemez található, és kattintson a **Leállítás** gombra a virtuális gép felszabadításához.
-3. A virtuális gép ablaktáblán válassza a **lemezek**elemet.
-4. A **lemezek** ablaktábla tetején válassza a **Szerkesztés**lehetőséget.
-5. A **lemezek** ablaktáblán a leválasztani kívánt adatlemez jobb szélén kattintson a ![Leválasztás gombra, majd a lemezkép](./media/detach-disk/detach.png) leválasztása gombra.
-5. A lemez eltávolítása után kattintson a panel tetején található Mentés gombra.
-6. A virtuális gép ablaktáblán kattintson az **Áttekintés** elemre, majd kattintson a panel tetején található **Start** gombra a virtuális gép újraindításához.
+1. A virtuális gép panelen válassza a **lemezek**lehetőséget.
+1. A **lemezek** panel tetején válassza a **Szerkesztés**lehetőséget.
+1. A **lemezek** panelen a leválasztani kívánt adatlemez jobb szélén kattintson a ![ leválasztási gombra a lemezkép leválasztása ](./media/detach-disk/detach.png) gombra.
+1. A lemez eltávolítása után kattintson a panel tetején található **Mentés** gombra.
 
 A lemez a tárolóban marad, de már nincs csatlakoztatva a virtuális géphez.
 

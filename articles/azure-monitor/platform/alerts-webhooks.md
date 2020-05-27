@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248982"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826910"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 
@@ -26,7 +26,7 @@ A webhook URI-azonosítójának hozzáadásához vagy frissítéséhez lépjen a
 
 ![Riasztási szabály hozzáadása panel](./media/alerts-webhooks/Alertwebhook.png)
 
-Az [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../../azure-monitor/platform/cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
+Az [Azure PowerShell-parancsmagok](../samples/powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../samples/cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
 A webhook a jogkivonat-alapú hitelesítés használatával tud hitelesítést végezni. A webhook URI-ja a jogkivonat-AZONOSÍTÓval lett mentve. Például:`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -74,7 +74,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | összefüggésben |I | |A riasztás kontextusa. |
 | időbélyeg |I | |A riasztás aktiválásának időpontja. |
 | id |I | |Minden riasztási szabály egyedi AZONOSÍTÓval rendelkezik. |
-| név |I | |A riasztás neve. |
+| name |I | |A riasztás neve. |
 | leírás |I | |A riasztás leírása. |
 | conditionType |I |Metrika, esemény |Két típusú riasztás támogatott: metrika és esemény. A metrikai riasztások metrikai feltételen alapulnak. Az események riasztásai a tevékenység naplójában lévő eseményen alapulnak. Ezzel az értékkel ellenőrizhető, hogy a riasztás metrikán vagy eseményen alapul-e. |
 | feltétel |I | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
@@ -92,7 +92,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 | resourceId |I | |Az érintett erőforrás erőforrás-azonosítója. |
 | resourceRegion |I | |Az érintett erőforrás régiója vagy helye. |
 | portalLink |I | |Közvetlen hivatkozás a portál erőforrás-összefoglalás lapjára. |
-| properties |N |Optional |Az esemény részleteit tartalmazó kulcs/érték párok halmaza. Például: `Dictionary<String, String>`. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban a felhasználók megadhatják azokat a kulcs/érték párokat, amelyek átadhatók a hasznos adatokon keresztül. Az egyéni tulajdonságok a webhookba való visszaállításának másik módja a webhook URI-ja (lekérdezési paraméterek). |
+| properties |N |Választható |Az esemény részleteit tartalmazó kulcs/érték párok halmaza. Például: `Dictionary<String, String>`. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban a felhasználók megadhatják azokat a kulcs/érték párokat, amelyek átadhatók a hasznos adatokon keresztül. Az egyéni tulajdonságok a webhookba való visszaállításának másik módja a webhook URI-ja (lekérdezési paraméterek). |
 
 > [!NOTE]
 > A **Properties (Tulajdonságok** ) mezőt csak [Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával állíthatja be.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965673"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833931"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -68,7 +68,7 @@ A DS * virtuális gépek esetében konfigurálnia kell a virtuális gépeket üz
 
 ![RegionalVNET][1]
 
-A Microsoft támogatási jegyét a regionális VNET való Migrálás céljából teheti fel. A Microsoft ezután megváltoztatja a változást. A regionális virtuális hálózatok való áttelepítés befejezéséhez módosítsa a AffinityGroup tulajdonságot a hálózati konfigurációban. Először exportálja a hálózati konfigurációt a PowerShellben, majd cserélje le a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elemre egy **Location** tulajdonsággal. Itt `Location = XXXX` adhatja `XXXX` meg, hogy hol található az Azure-régió. Ezután importálja az új konfigurációt.
+A Microsoft támogatási jegyét a regionális VNET való Migrálás céljából teheti fel. A Microsoft ezután megváltoztatja a változást. A regionális virtuális hálózatok való áttelepítés befejezéséhez módosítsa a AffinityGroup tulajdonságot a hálózati konfigurációban. Először exportálja a hálózati konfigurációt a PowerShellben, majd cserélje le a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elemre egy **Location** tulajdonsággal. Itt adhatja meg `Location = XXXX` , hogy hol `XXXX` található az Azure-régió. Ezután importálja az új konfigurációt.
 
 Például a következő VNET-konfigurációt figyelembe véve:
 
@@ -142,7 +142,7 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. Jegyezze fel a DiskName és a LUN-ot.
 
     ![DisknameAndLUN][2]
-1. Távoli asztal a virtuális géphez. Ezután nyissa meg a **Számítógép-kezelés** | **Eszközkezelő** | **lemezmeghajtók**lehetőséget. Tekintse meg a "Microsoft virtuális lemezek" tulajdonságait
+1. Távoli asztal a virtuális géphez. Ezután nyissa meg a **Számítógép-kezelés**  |  **Eszközkezelő**  |  **lemezmeghajtók**lehetőséget. Tekintse meg a "Microsoft virtuális lemezek" tulajdonságait
 
     ![VirtualDiskProperties][3]
 1. A LUN száma itt a virtuális merevlemez virtuális géphez való csatolásakor megadott LUN-számra mutató hivatkozás.
@@ -271,7 +271,7 @@ $pass = "mycomplexpwd4*"
 $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
 #Add Data and Log Disks to VM Config
-#Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
+#Note the size specified '-DiskSizeInGB 1023', this attaches 2 x P30 Premium Storage Disk Type
 #Utilising the Premium Storage enabled Storage account
 
 $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: a megengedett hibák javítása az \<erőforrásokon – opcionális>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: a megengedett hibák javítása az erőforrásokon – \< opcionális>
 
 Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon korlátok vannak attól függően, hogy hány hiba fordulhat elő egy adott időszakban, ahol a fürtszolgáltatás megkísérli újraindítani az erőforráscsoportot. Javasoljuk, hogy ezt az eljárást csak akkor növelje, ha a folyamat leállításával nem végez manuálisan feladatátvételt, és nem indítja el a feladatátvételt. ehhez a korláthoz közelebb kerülhet.
 
@@ -691,7 +691,7 @@ Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon ko
 
 Módosítsa a maximális hibákat 6-ra.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: a fürthöz tartozó IP- \<cím erőforrás hozzáadása opcionális>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: a fürthöz tartozó IP-cím erőforrás hozzáadása \< opcionális>
 
 Ha a fürthöz csak egy IP-cím tartozik, és ez a Felhőbeli alhálózathoz van igazítva, ügyeljen arra, hogy ha véletlenül offline állapotba helyezi az összes fürtcsomópontot a felhőben ezen a hálózaton, akkor a fürt IP-erőforrása és a fürt hálózati neve nem fog tudni online állapotba helyezni. Ebben az esetben megakadályozza a más fürterőforrás-erőforrások frissítését.
 
@@ -1246,10 +1246,10 @@ Az IP-cím hozzáadásához tekintse meg a következő függeléket: 14. lépés
 
     ![Appendix15][25]
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure-Premium Storage](../disks-types.md)
-* [Virtuális gépek](https://azure.microsoft.com/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server az Azure-ban Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->

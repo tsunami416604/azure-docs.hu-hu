@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: SMS-alapú hitelesítés (előzetes verzió)
       href: howto-authentication-sms-signin.md
+    - name: E-mail-címmel történő bejelentkezés használata (előzetes verzió)
+      href: howto-authentication-use-email-signin.md
     - name: Azure AD intelligens zárolás
       href: howto-password-smart-lockout.md
     - name: Tanúsítványalapú hitelesítés
@@ -223,8 +225,8 @@
   items:
     - name: Azure visszajelzési fórum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Szolgáltatási hírek

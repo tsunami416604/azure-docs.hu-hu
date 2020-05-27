@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76545925"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828499"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3 Közösség  
 
@@ -40,7 +40,7 @@ Az alábbi fórumok az aktuális termékekkel és szolgáltatásokkal kapcsolato
 
 Az MSDN jelenleg Media Services csapat elsődleges közösségi fóruma.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 A csapat az Azure-Media-Services szolgáltatással Stack Overflow címkézett kérdéseket is figyeli.
 

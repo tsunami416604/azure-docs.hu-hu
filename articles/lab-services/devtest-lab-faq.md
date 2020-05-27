@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: c5e5437db480646275a8bbe34e1a64c005a32a16
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996897"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827726"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -47,7 +47,7 @@ A Twitter-leírónk:[@azlabservices](https://twitter.com/azlabservices)
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
 - Tegye fel kérdéseit a GYIK végén.
-- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Azure DEVTEST Labs MSDN-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
+- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Microsoft Q&a Azure DevTest Labs vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
 - A szolgáltatások kéréseinek elküldéséhez küldje el kérelmeit és ötleteit [Azure DevTest Labs felhasználói hangra](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Mi az a Microsoft-fiók?
@@ -307,7 +307,7 @@ Alapértelmezés szerint az Azure Marketplace-t kell használni, hacsak nem rend
 - Megfelelőségi vagy szabályozási feltételek (például biztonsági szabályzatok), amelyeknek az összes gépen meg kell felelnie.
 - Az egyéni lemezképek használata nem tekinthető könnyelműnek. További bonyolultságot jelentenek, mivel most a VHD-fájlokat a mögöttes alaplemezképekhez kell kezelnie. Ezeket az alapképeket is rendszeresen kell frissítenie a szoftverfrissítések használatával. Ezek a frissítések tartalmazzák az új operációs rendszer (OS) frissítéseit, valamint a szoftvercsomag szükséges frissítéseit és konfigurációs módosításait.
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Mik azok az összetevők?
 Az összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb biteket, vagy üzembe helyezheti a fejlesztői eszközöket egy virtuális gépen. A virtuális gép létrehozásakor az összetevők csatlakoztatása a virtuális géphez. A virtuális gép kiépítése után az összetevők üzembe helyezik és konfigurálja a virtuális gépet. A [nyilvános GitHub-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)számos már meglévő összetevő elérhető. [Saját](devtest-lab-artifact-author.md)összetevőket is létrehozhat.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2e9a97dac4d69ea4e470a932cb446d83b425dde
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745290"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830769"
 ---
 # <a name="query-update-management-logs"></a>Update Management-naplók lekérdezése
 
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Monitor-naplók](../log-analytics/log-analytics-log-searches.md)
-* [Riasztások konfigurálása](automation-tutorial-update-management.md#configure-alerts)
+* Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../log-analytics/log-analytics-log-searches.md).
+* A riasztásokkal kapcsolatos segítségért lásd: [riasztások konfigurálása](automation-tutorial-update-management.md#configure-alerts).

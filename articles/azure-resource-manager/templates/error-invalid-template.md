@@ -2,13 +2,13 @@
 title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154057"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832521"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablonnal kapcsolatos hibák elhárítása
 
@@ -115,7 +115,7 @@ A szegmensek beolvasása jobb lehet az erőforrás-szolgáltatókon keresztül a
 
 ## <a name="solution-3---parameter-is-not-valid"></a>3. megoldás – a paraméter érvénytelen.
 
-Ha olyan paramétert ad meg, amely nem az engedélyezett értékek egyike, a következőhöz hasonló hibaüzenet jelenik meg:
+Ha olyan paramétert ad meg, amely nem a megengedett értékek egyike, a következőhöz hasonló hibaüzenet jelenik meg:
 
 ```
 Code=InvalidTemplate;
@@ -130,7 +130,7 @@ Ellenőrizze az engedélyezett értékeket a sablonban, és adjon meg egyet az �
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>4. megoldás – túl sok cél erőforráscsoport
 
-Ha ötnél több célként megadott erőforráscsoport van megadva egyetlen központi telepítésben, akkor ezt a hibaüzenetet kapja. Vegye fontolóra a telepítésben lévő erőforráscsoportok számának összevonását, vagy a sablonok némelyikét különálló központi telepítésként kell üzembe helyezni. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-resource-group-deployment.md).
+Előfordulhat, hogy ez a hiba a korábbi központi telepítések során fordul elő, mert egyetlen központi telepítésben legfeljebb öt cél erőforráscsoport van korlátozva. 2020 májusában a korlátot 800-erőforráscsoportok értékre emelték. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-resource-group-deployment.md).
 
 <a id="circular-dependency" />
 
@@ -143,7 +143,7 @@ Körkörös függőség megoldása:
 1. A sablonban keresse meg a körkörös függőségben azonosított erőforrást.
 2. Az adott erőforrás esetében ellenőrizze a **dependsOn** tulajdonságot és a **Reference** függvény bármely használatát, hogy megtekintse, mely erőforrások függenek.
 3. Ellenőrizze ezeket az erőforrásokat, és tekintse meg, hogy mely erőforrások függenek. Kövesse a függőségeket, amíg olyan erőforrást észlel, amely az eredeti erőforrástól függ.
-5. A körkörös függőségben érintett erőforrások esetében alaposan vizsgálja meg a **dependsOn** tulajdonság összes használatát a szükségtelen függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha nem biztos benne, hogy szükség van-e függőségre, próbálja meg eltávolítani.
+5. A körkörös függőségben érintett erőforrások esetében alaposan vizsgálja meg a **dependsOn** tulajdonság összes használatát a nem szükséges függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha nem biztos benne, hogy függőségre van szüksége, próbálja meg eltávolítani.
 6. Telepítse újra a sablont.
 
 Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telepítésekor hibákat okozhat. Ha hibaüzenetet kap, adja hozzá a függőséget a sablonhoz.

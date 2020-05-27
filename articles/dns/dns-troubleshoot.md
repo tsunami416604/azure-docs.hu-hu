@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27d192a50a13437b755e7cc0db8a7dbcc4fee2f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76939034"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833398"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS hibaelhárítási útmutató
 
 Ez a cikk a gyakori Azure DNS kérdésekre vonatkozó hibaelhárítási információkat tartalmaz.
 
-Ha ezek a lépések nem oldják meg a problémát, megkeresheti vagy közzéteheti a problémát a [közösségi támogatási fórumon az MSDN webhelyen](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Vagy egy Azure-támogatási kérést is megnyithat.
+Ha ezek a lépések nem oldják meg a problémát, megkeresheti vagy közzéteheti a problémát a [Microsoft Q&a közösségi támogatással kapcsolatos kérdéseit](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)is. Vagy egy Azure-támogatási kérést is megnyithat.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>Nem tudok DNS-zónát létrehozni

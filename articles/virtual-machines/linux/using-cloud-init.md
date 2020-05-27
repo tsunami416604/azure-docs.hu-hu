@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701599"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827318"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
@@ -53,11 +53,12 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 | Közzétevő/verzió | Ajánlat | SKU | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 7,7-lemezkép támogatja a Cloud-init-et, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – LVM | n.a.| nem – a rendszerkép befejezésének befejezése május vége| igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 |RHEL |7.7 | n.a.| nem – a rendszerkép befejezésének befejezése május vége | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051912 | nem-képfrissítések a repülésben, a május végéig  | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
-|RedHat 7,7 (Gen2) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051913 |nem-képfrissítések a repülésben, a május végéig  | igen – a csomag verziójának támogatása: *18,5 -3. el7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 7,7-lemezkép támogatja a Cloud-init-et, akkor ez a 2020. szeptember 1-től lesz eltávolítva) | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | nem-képfrissítések a repülésben, a május végéig | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
+|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | nem-képfrissítések a repülésben, a május végéig  | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június|
 |RedHat 8,1 (Gen2) |RHEL |81 – CI-Gen2 |8.1.2020042524 | Igen (vegye figyelembe, hogy ez egy előnézeti kép, és ha az összes RHEL 8,1-lemezkép támogatja a Cloud-init-et, akkor ez a 2020 augusztus 1-től lesz eltávolítva) | Nem, ETA a teljes támogatásért 2020. június |
 

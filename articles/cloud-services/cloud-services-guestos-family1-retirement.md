@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359587"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835631"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>1. vendég operációsrendszer-család használatból való kivonásáról szóló értesítés
 Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jelent meg.
@@ -23,7 +23,7 @@ Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jel
 
 **November 3., 2014** A vendég operációs rendszer 1. családjának kiterjesztett támogatása befejeződött, és teljes mértékben megszűnik. A rendszer minden, az 1. családban található szolgáltatást érint. Ezeket a szolgáltatásokat bármikor leállíthatja. Nem garantálható, hogy a szolgáltatások továbbra is futnak, hacsak manuálisan nem frissíti őket.
 
-Ha további kérdései vannak, látogasson el a [Cloud Services fórumokra](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) , vagy [forduljon az Azure ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
+Ha további kérdése van, látogasson el a [Microsoft Q&a Cloud Servicesra](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) , vagy [forduljon az Azure ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Érintett?
 A Cloud Services érintik, ha a következők valamelyike érvényes:
