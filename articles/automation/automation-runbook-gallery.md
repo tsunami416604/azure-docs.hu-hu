@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1d60c19b05de218ab985b2087071733602c7f2c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf2a60e1387ccdfb24ff5c5e166780c00506bac8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743890"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832299"
 ---
-# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériaban
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériában
 
 Ahelyett, hogy az Azure Automation saját runbookok és moduljait hozza létre, a Microsoft és a Közösség által már létrehozott forgatókönyvekhez is hozzáférhet. A PowerShell-runbookok és- [modulokat](#modules-in-powershell-gallery) a PowerShell-Galéria és a [Python runbookok](#use-python-runbooks) szerezheti be a Script Center-galériából. A közösséghez a [fejlesztés alatt álló forgatókönyvek](#add-a-powershell-runbook-to-the-gallery)megosztásával is hozzájárulhat. 
 
@@ -101,10 +101,12 @@ A Python-Runbookok a [Script Center](https://gallery.technet.microsoft.com/scrip
 
 ## <a name="request-a-runbook-or-module"></a>Runbook vagy modul igénylése
 
-A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automation/)vonatkozó kéréseket küldhet.  Ha segítségre van szüksége egy runbook írásához vagy a PowerShell-lel kapcsolatos kérdésben, tegye fel kérdéseit a [fórumba](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automation/)vonatkozó kéréseket küldhet.  Ha segítségre van szüksége a runbook írásához vagy a PowerShell-lel kapcsolatos kérdésben, tegye fel kérdéseit a [Microsoft Q&egy kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbookok kezelése Azure Automation](manage-runbooks.md)
-* [A Azure Automation PowerShell-munkafolyamatának megismerése](automation-powershell-workflow.md)
-* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* A PowerShell-runbook megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.
+* A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* * A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

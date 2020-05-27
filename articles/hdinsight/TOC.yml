@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Halomürítések engedélyezése az Apache Hadoop-szolgáltatásokhoz
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Segítség kérése a fórumokon
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: Segítség kérése a Microsoft Q&A kérdések oldalán
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: Díjkalkulátor
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: A HDInsight Windows-eszközei

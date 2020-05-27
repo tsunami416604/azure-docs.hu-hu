@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 95563e816fa4f0931e547b6bd163dce23c338a44
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749122"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832027"
 ---
 # <a name="work-with-scope-configurations-for-update-management"></a>A Update Management hatókör-konfigurációinak használata
 
@@ -52,12 +52,7 @@ Amikor hozzáad egy számítógépet a Update Managementhoz, azt a rendszer a mu
 
 ## <a name="next-steps"></a>További lépések
 
-* A szolgáltatással kapcsolatos általános információkért lásd: [Update Management áttekintése](automation-update-management.md).
 * A szolgáltatással való együttműködéshez tekintse meg az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakört.
-* Ha Automation-fiókot szeretne használni a szolgáltatás engedélyezéséhez, olvassa el a [Update Management automatizálási fiókból való engedélyezését](automation-onboard-solutions-from-automation-account.md)ismertető témakört.
-* A funkció engedélyezéséhez Azure Portal tallózással tekintse meg a [Azure Portal Update Management engedélyezése](automation-onboard-solutions-from-browse.md)című témakört.
-* Ha runbook szeretne használni a szolgáltatás engedélyezéséhez, olvassa el a [Update Management engedélyezése a runbook](automation-onboard-solutions.md)című témakört.
-* Ha Azure-beli virtuális gépet kíván használni a szolgáltatás engedélyezéséhez, tekintse meg a [Update Management engedélyezése Azure-beli virtuális](automation-onboard-solutions-from-vm.md)gépről című témakört.
 * A szolgáltatással kapcsolatos hibák elhárításához tekintse meg [Update Management problémák elhárítása](troubleshoot/update-management.md)című témakört.
 * A Windows Update Agent hibáinak elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
 * A Linux frissítési ügynök hibáinak elhárításához tekintse meg a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

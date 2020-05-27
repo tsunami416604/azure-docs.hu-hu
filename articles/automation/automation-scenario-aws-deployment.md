@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d66a96baa182672ecbfc9d617f82728812f0f27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4dcc095648111348a6935225a6aa10798109f76e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743853"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832232"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Amazon Web Services virtuális gép üzembe helyezése runbook
 
@@ -99,6 +99,9 @@ Győződjön meg arról, hogy az AWS PowerShell-modul a Azure Automationba lett 
 
 ## <a name="next-steps"></a>További lépések
  
-* [Azure Automation runbook-típusok](automation-runbook-types.md)
-* [Runbookok kezelése Azure Automation](manage-runbooks.md)
-* [Natív PowerShell-parancsfájl támogatása Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* Ha szeretné megtudni, hogy milyen runbookok támogatottak, tekintse meg a[Azure Automation runbook-típusok](automation-runbook-types.md)című témakört.
+* A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* A parancsfájl-támogatással kapcsolatban lásd: [natív PowerShell-parancsfájl-támogatás a Azure Automationban](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

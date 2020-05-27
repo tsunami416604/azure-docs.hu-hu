@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418320"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833506"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -84,7 +84,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 
 - A felhasználó csak a társított szolgáltatásban lévő kapcsolat tesztelését teszi lehetővé
 
-    Hozzon létre egy egyéni szerepkör-szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
+    Hozzon létre egy egyéni szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
 
 - Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
 

@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417980"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832785"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,15 +27,15 @@ A változó beállítása tevékenységgel egy Data Factory-folyamatban definiá
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-név | A tevékenység neve a folyamatban | igen
+name | A tevékenység neve a folyamatban | igen
 leírás | A tevékenység működését leíró szöveg | nem
-type | **SetVariable** értékre kell állítani | igen
-érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá lesz rendelve | igen
+típus | **SetVariable** értékre kell állítani | igen
+érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | igen
 variableName | A tevékenység által beállított változó neve | igen
 
 ## <a name="incrementing-a-variable"></a>Változó növelése
 
-Az Azure Data Factory változóit érintő gyakori forgatókönyvek egy-egy változót használnak egy-egy vagy foreach-tevékenységen belül. A set változó tevékenységben nem hivatkozhat a `value` mezőben beállított változóra. A korlátozás megkerülő megoldásához állítson be egy ideiglenes változót, majd hozzon létre egy második set változó tevékenységet. A második set változó tevékenység beállítja az iteráció értékét az ideiglenes változóra. 
+Az Azure Data Factory változóit érintő gyakori forgatókönyvek egy-egy változót használnak egy-egy vagy foreach-tevékenységen belül. A set változó tevékenységben nem hivatkozhat a mezőben beállított változóra `value` . A korlátozás megkerülő megoldásához állítson be egy ideiglenes változót, majd hozzon létre egy második set változó tevékenységet. A második set változó tevékenység beállítja az iteráció értékét az ideiglenes változóra. 
 
 Az alábbiakban egy példa látható erre a mintára:
 

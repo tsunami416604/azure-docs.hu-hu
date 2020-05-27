@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: f9e8dbe2021c5700fe0223ff7ce246ac54f2abbd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650297"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831874"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -394,5 +394,5 @@ Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi
 - [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Az Azure Storage csapat blogja](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
-Ha kérdése van a könyvtárral kapcsolatban, küldje el az [MSDN Azure-fórumát](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Ha kérdése van a könyvtárral kapcsolatban, tegye fel a [kérdést a Microsoft Q&egy kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatásra vonatkozó javaslatokkal rendelkezik, tegye közzé az [Azure Storage visszajelzéseit](https://feedback.azure.com/forums/217298-storage/).

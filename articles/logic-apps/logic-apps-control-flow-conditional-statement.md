@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793251"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831500"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>A Azure Logic Apps munkafolyamat-műveleteinek vezérlésére szolgáló feltételes utasítások létrehozása
 
@@ -36,7 +36,7 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
 1. Adjon hozzá egy feltételt a kívánt helyen. 
 
-   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** (**+**), majd válassza a **művelet hozzáadása**lehetőséget. Például:
+   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget. Például:
 
    ![Művelet hozzáadása a lépések között](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -65,8 +65,8 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
    ![Teljes feltétel](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Ha további sort szeretne felvenni a feltétellel **, válassza a Hozzáadás** > **sor**hozzáadása elemet. 
-   Alfeltételekkel rendelkező csoport hozzáadásához válassza a Hozzáadás**csoport** **hozzáadása lehetőséget** > . 
+   Ha további sort szeretne felvenni a feltétellel **, válassza a Hozzáadás**  >  **sor**hozzáadása elemet. 
+   Alfeltételekkel rendelkező csoport hozzáadásához **válassza a**Hozzáadás  >  **csoport**hozzáadása lehetőséget. 
    A meglévő sorok csoportosításához jelölje be a sorok jelölőnégyzetét, és válassza a három pontra (...), majd a **csoport készítése**lehetőséget.
 
 1. **Ha az értéke TRUE (igaz** ), és **Ha hamis**, adja hozzá a végrehajtandó lépéseket az alapján, hogy teljesül-e a feltétel. Például:
@@ -110,7 +110,7 @@ Itt látható a feltételes utasítás mögötti magas szintű kód definíciój
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

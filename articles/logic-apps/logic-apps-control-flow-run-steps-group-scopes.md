@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74791488"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831585"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
@@ -77,12 +77,12 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | ------- | ----- | ----------- |
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
-      | **Elkerülés** | None | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Elkerülés** | Nincs | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
-      | **Tranzit dátuma és időpontja** | None | Csak az átviteli módra vonatkozik. | 
-      | **Tranzit dátum-típus típusa** | None | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | Nincs | Csak az átviteli módra vonatkozik. | 
+      | **Tranzit dátum-típus típusa** | Nincs | Csak az átviteli módra vonatkozik. | 
       ||||  
 
 1. [Adjon hozzá egy feltételt](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy az aktuális utazási idő meghaladja-e a megadott időt. 
@@ -130,7 +130,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
 
       ![Válassza a "forgalom időtartama forgalom" lehetőséget.](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Miután a mező a JSON formátumra lett feloldva, adjon hozzá egy```,``` **vesszőt** (), ```60``` majd a számot, hogy a **forgalom időtartama** másodpercről percre legyen konvertálva. 
+   1. Miután a mező a JSON formátumra lett feloldva, adjon hozzá egy **vesszőt** ( ```,``` ), majd a számot, ```60``` hogy a **forgalom időtartama** másodpercről percre legyen konvertálva. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -161,7 +161,7 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
 1. Adjon hozzá egy hatókört a kívánt munkafolyamat-helyhez. Ha például egy hatókört szeretne hozzáadni a logikai alkalmazás munkafolyamatának meglévő lépései között, kövesse az alábbi lépéseket: 
 
    1. Vigye az egérmutatót arra a nyílra, amelyhez hozzá szeretné adni a hatókört. 
-   Válassza a **pluszjelet** (**+**) > a **művelet hozzáadása**lehetőséget.
+   Válassza a **pluszjelet** ( **+** ) > a **művelet hozzáadása**lehetőséget.
 
       ![Hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -196,8 +196,8 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
 
    1. Mindkét sorban válassza a **egyenlő** , mint az operátor elemet. 
    
-   1. Az összehasonlítási értékek esetében az első sorban adja meg `Failed`a következőt:. 
-   A második sorban adja meg a `Aborted`értéket. 
+   1. Az összehasonlítási értékek esetében az első sorban adja meg a következőt: `Failed` . 
+   A második sorban adja meg a értéket `Aborted` . 
 
       Ha elkészült, a feltétel a következő példához hasonlít:
 
@@ -388,7 +388,7 @@ Ha kód nézetben dolgozik, a logikai alkalmazás JSON-definíciójában megadha
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

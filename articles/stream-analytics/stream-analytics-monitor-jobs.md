@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 465ca1d012c6d2057e33fe1460e794e4d5966be6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431669"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831211"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics-feladatokhoz tartozó figyelő programozott létrehozása
 
@@ -144,7 +144,7 @@ A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok
 > 
 > Az ugyanabban a régióban található összes Stream Analytics feladat (és az összes többi Azure-erőforrás) megosztja ezt a Storage-fiókot a figyelési adatok tárolásához. Ha más Storage-fiókot ad meg, az nem szándékolt mellékhatást eredményezhet más Stream Analytics feladatok vagy más Azure-erőforrások figyelése során.
 > 
-> A következő kódban használt Storage `<YOUR STORAGE ACCOUNT NAME>` -fióknév olyan Storage-fióknak kell lennie, amely ugyanabban az előfizetésben található, mint a figyelést engedélyező stream Analytics feladatokkal.
+> A `<YOUR STORAGE ACCOUNT NAME>` következő kódban használt Storage-fióknév olyan Storage-fióknak kell lennie, amely ugyanabban az előfizetésben található, mint a figyelést engedélyező stream Analytics feladatokkal.
 > 
 > 
 >    ```csharp
@@ -169,7 +169,7 @@ A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok
 
 ## <a name="get-support"></a>Támogatás kérése
 
-További segítségért próbálja ki a [Azure stream Analytics fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Automation az
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbd01f3868f44d975e0822a7812262d9e15ca299
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745356"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831167"
 ---
 # <a name="manage-office-365-services"></a>Office 365-szolgáltatások kezelése
 
@@ -111,7 +111,7 @@ A runbook közzétételéhez és a runbookok való bevezetéséhez tekintse meg 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbookok kezelése Azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks)
-* [Modulok kezelése az Azure Automationben](shared-resources/modules.md)
-* [Hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)
-* [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview)
+* A hitelesítő adatok használatának részleteit lásd: [a hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md).
+* A modulokkal kapcsolatos további információkért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
+* Ha runbook kell elindítania, tekintse meg [a Runbook elindítása a Azure Automationban](start-runbooks.md)című témakört.
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b83dbdb928b7b5810864a9202134dee30f9582df
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73823638"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834245"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Rugalmas adatbázis-eszközök – gyakori kérdések (GYIK)
 
@@ -34,7 +34,7 @@ A rugalmas adatbázis-ügyfél függvénytárának használata nem jár semmilye
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Miért nem működnek a hitelesítő adataim, amikor egy másik kiszolgálóról veszek fel egy szegmenst
 
-Ne használja a hitelesítő adatokat "felhasználó azonosítója =username@servername" formában, hanem egyszerűen használja a "felhasználói azonosító = username" értéket.  Győződjön meg arról is, hogy a "username" bejelentkezési engedélyekkel rendelkezik a szegmensen.
+Ne használja a hitelesítő adatokat "felhasználó azonosítója = username@servername " formában, hanem egyszerűen használja a "felhasználói azonosító = username" értéket.  Győződjön meg arról is, hogy a "username" bejelentkezési engedélyekkel rendelkezik a szegmensen.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Létre kell hozni egy szegmenses Térkép-kezelőt, és fel kell tölteni a szegmenseket minden alkalommal, amikor elkezdem az alkalmazásaim
 
@@ -42,7 +42,7 @@ Nem – a [ShardMapManagerFactory. CreateSqlShardMapManager](https://docs.micros
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Kérdésem van a rugalmas adatbázis-eszközök használatával kapcsolatban, hogyan kaphatok választ
 
-Kérjük, lépjen kapcsolatba velünk a [SQL Database fórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Kérjük, lépjen kapcsolatba velünk a [Microsoft Q&a SQL Database vonatkozó kérdés oldalán](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Ha horizontális Felskálázási kulccsal szerezem be az adatbázis-csatlakozást, továbbra is lekérheti az ugyanazon a szegmensen lévő többi horizontális Felskálázási kulcsra vonatkozó adatlekérdezést.  Ez a kialakítás
 

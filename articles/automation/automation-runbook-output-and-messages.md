@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 57728c3dcbb0dd88ae954ec711ffa4827e14579d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743843"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832282"
 ---
 # <a name="monitor-runbook-output"></a>Runbook kimenetének monitorozása
 
@@ -259,6 +259,7 @@ További információ a Azure Monitor naplókkal való integráció konfigurál�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Runbook végrehajtása az Azure Automationben](automation-runbook-execution.md)
-* [Moduláris runbookok létrehozása](automation-child-runbooks.md)
-* [PowerShell-dokumentumok](/powershell/scripting/overview)
+* A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* * A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

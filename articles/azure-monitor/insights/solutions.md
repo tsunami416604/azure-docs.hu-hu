@@ -5,26 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/23/2020
-ms.openlocfilehash: 44094497c98c306b0995f3a74da68809ef66a0ac
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/12/2020
+ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682833"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832044"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
 A monitorozási megoldások kihasználják az Azure szolgáltatásait, hogy további információkat szolgáltassanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről.
 
-> [!NOTE]
-> A figyelési megoldásokat korábban felügyeleti megoldásoknak nevezzük.
-
-A figyelési megoldások jellemzően gyűjtik a naplózási adatokat, és lekérdezéseket és nézeteket biztosítanak az összegyűjtött adatok elemzéséhez. Más szolgáltatásokat is használhatnak, például az Azure Automation az alkalmazással vagy szolgáltatással kapcsolatos műveletek elvégzéséhez.
-
 A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek. A Microsoft által biztosított megoldások mellett a partnerek és az ügyfelek is [létrehozhatnak olyan felügyeleti megoldásokat](solutions-creating.md) , amelyeket a saját környezetükben használhatnak, vagy amelyeket a Közösségen belül elérhetővé tehetnek az ügyfeleknek.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
 

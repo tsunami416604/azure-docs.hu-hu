@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9cdde8d1142ec47f835e4a06e7fe2e843d796a3a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d60885f7dbcd090e4f2172015787bc34d4ee7bcf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743931"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832503"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -425,6 +425,6 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ## <a name="next-steps"></a>További lépések
 
-* [RBAC kezelése Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-* [Runbook indítása az Azure Automationben](start-runbooks.md)
-* [Azure Automation runbook-típusok](automation-runbook-types.md)
+* További PowerShell-RBAC a következő témakörben talál: [RBAC kezelése a Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával.
+* A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).
+* A runbook elindításához tekintse [meg a Runbook elindítása a Azure Automationban](start-runbooks.md)című témakört.

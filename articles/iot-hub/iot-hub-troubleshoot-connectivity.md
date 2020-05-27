@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abce9387d4c23cd6cb5ecf73e3d5c8428d83d459
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759613"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833659"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -83,7 +83,7 @@ Ha bekapcsolja a diagnosztikai naplókat és riasztásokat a csatlakoztatott esz
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Ha vannak találatok, keresse `OperationName`meg a `ResultType` (hibakód) és `ResultDescription` a (hibaüzenet), hogy további részleteket kapjon a hibáról.
+1. Ha vannak találatok, keresse meg `OperationName` a `ResultType` (hibakód) és a `ResultDescription` (hibaüzenet), hogy további részleteket kapjon a hibáról.
 
    ![Hibanapló – példa](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
@@ -105,7 +105,7 @@ Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekk
 
 * Ha az eszköz MQTT protokollt használ, ellenőrizze, hogy a 8883-es port nyitva van-e. További információ: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-* Segítség kérése az [azure IoT hub fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy [Azure támogatásáról](https://azure.microsoft.com/support/options/).
+* Segítség kérése a Microsoft Q&az Azure IoT Hub, a [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)vagy az [Azure-támogatás](https://azure.microsoft.com/support/options/) [kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-iot-hub.html).
 
 Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
 

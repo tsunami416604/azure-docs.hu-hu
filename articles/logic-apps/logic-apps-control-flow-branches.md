@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f857449d4511b6ae0a5a25bf7aca9e1abc1ae7c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453438"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833693"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Párhuzamos ágak létrehozása vagy csatlakoztatása a munkafolyamat-műveletekhez Azure Logic Apps
 
@@ -34,14 +34,14 @@ A független lépések egyidejű futtatásához hozzáadhat párhuzamos ágakat 
 
 ![A lépések párhuzamos futtatása](media/logic-apps-control-flow-branches/parallel.png)
 
-A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az összes ág be nem fejeződik. A párhuzamos ágak csak akkor futnak `runAfter` , ha a tulajdonságok értéke megegyezik a befejezett fölérendelt lépés állapotával. Például mindkettő `branchAction1` és `branchAction2` csak akkor van beállítva, ha a `parentAction` Befejezés `Succeeded` állapota állapotú.
+A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az összes ág be nem fejeződik. A párhuzamos ágak csak akkor futnak, ha a `runAfter` Tulajdonságok értéke megegyezik a befejezett fölérendelt lépés állapotával. Például mindkettő `branchAction1` és `branchAction2` csak akkor van beállítva, ha a `parentAction` Befejezés `Succeeded` állapota állapotú.
 
 > [!NOTE]
 > A művelet elkezdése előtt a logikai alkalmazásnak már rendelkeznie kell egy lépéssel, ahol párhuzamos ágakat adhat hozzá.
 
 1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Vigye az egérmutatót a lépés fölötti nyíl fölé, ahol párhuzamos ágakat kíván hozzáadni. Válassza ki a megjelenő **pluszjelet** (**+**), majd válassza a **párhuzamos ág hozzáadása**lehetőséget. 
+1. Vigye az egérmutatót a lépés fölötti nyíl fölé, ahol párhuzamos ágakat kíván hozzáadni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **párhuzamos ág hozzáadása**lehetőséget. 
 
    ![Párhuzamos ág hozzáadása](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -53,7 +53,7 @@ A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az ös
 
    ![Keresse meg és válassza ki a kívánt műveletet](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Most minden párhuzamos ág esetében adja hozzá a kívánt lépéseket. Egy másik művelet egy ágra való hozzáadásához vigye a mutatót azon művelet alá, amelyhez egy szekvenciális műveletet szeretne hozzáadni. Válassza a megjelenő **pluszjelet** (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+1. Most minden párhuzamos ág esetében adja hozzá a kívánt lépéseket. Egy másik művelet egy ágra való hozzáadásához vigye a mutatót azon művelet alá, amelyhez egy szekvenciális műveletet szeretne hozzáadni. Válassza a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
    ![Szekvenciális művelet hozzáadása párhuzamos ág](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -183,7 +183,7 @@ Ha kód nézetben dolgozik, megadhatja az illesztési struktúrát a logikai alk
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e26c344284541116a5b98bc330804b71a64e28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944828"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833775"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
@@ -74,13 +74,13 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza **az erőforrás** > **Management** > létrehozása**biztonsági mentés** és **site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás** > **Recovery Services** > tár**hozzáadása**lehetőséget is. 
+2. Válassza **az erőforrás létrehozása**  >  **Management**  >  **biztonsági mentés** és **site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás**  >  **Recovery Services**tár  >  **hozzáadása**lehetőséget is. 
 3. Itt adhatja meg azt a régiót, amelyet a virtuális gépek replikálnak a rendszerbe. Ugyanabban a régióban a Migrálás céljából válassza ki azt a régiót, ahol a forrásként használt virtuális gépek és a forrás Storage-fiókok találhatók. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2. lépés: a védelmi célok kiválasztása 
 
 1. Nyissa meg a [Azure Portalt](https://portal.azure.com)azon a virtuális gépen, amelyre telepíteni kívánja a konfigurációs kiszolgálót.
-2. Nyissa **meg Recovery Services** > -tárolók**beállításait** > **site Recovery** > **1. lépés: az infrastruktúra** > előkészítése**védelmi cél**.
+2. Nyissa meg **Recovery Services**-tárolók  >  **beállításait**  >  **site Recovery**  >  **1. lépés: az infrastruktúra előkészítése**  >  **védelmi cél**.
 
    ![Böngészés a védelmi cél ablaktáblán][2]
 
@@ -90,7 +90,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>3. lépés: a forrásoldali környezet (konfigurációs kiszolgáló) beállítása
 
-1. Töltse le **Azure site Recovery egyesített telepítőt** és a tároló regisztrációs kulcsát az **infrastruktúra** > előkészítése**előkészítési forrás** > **hozzáadására szolgáló kiszolgáló hozzáadása** panelen. 
+1. Töltse le **Azure site Recovery egyesített telepítőt** és a tároló regisztrációs kulcsát az **infrastruktúra**előkészítése  >  **előkészítési forrás**  >  **hozzáadására szolgáló kiszolgáló hozzáadása** panelen. 
  
    Az egyesített telepítő futtatásához szüksége lesz a tároló regisztrációs kulcsára. A kulcs a generálásától számított öt napig érvényes.
 
@@ -123,7 +123,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 ### <a name="step-4-set-up-the-target-environment"></a>4. lépés: a célként megadott környezet beállítása
 
-Válassza az **infrastruktúra** > előkészítése**cél**lehetőséget, majd adja meg azt a telepítési modellt, amelyet a virtuális gépekhez szeretne használni a feladatátvételt követően. A forgatókönyvtől függően a **klasszikus** vagy a **Resource Managert**is választhatja.
+Válassza az **infrastruktúra előkészítése**  >  **cél**lehetőséget, majd adja meg azt a telepítési modellt, amelyet a virtuális gépekhez szeretne használni a feladatátvételt követően. A forgatókönyvtől függően a **klasszikus** vagy a **Resource Managert**is választhatja.
 
 ![Cél ablaktábla][10]
 
@@ -152,13 +152,13 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
    A feladatátvételen átesett virtuális gépnek két ideiglenes lemeze lesz: egyet az elsődleges virtuális gépről, a másikat pedig a virtuális gép üzembe helyezése során hozta létre a helyreállítási régióban. Ha ki szeretné zárni az ideiglenes lemezt a replikáció előtt, telepítse a mobilitási szolgáltatást a replikáció engedélyezése előtt. További információ az ideiglenes lemez kizárásáról: [Lemezek kizárása a replikációból](../../site-recovery/vmware-walkthrough-overview.md).
 
 2. A replikációt a következők szerint engedélyezheti:
-   1. Válassza az alkalmazás > **forrásának** **replikálása**lehetőséget. Miután az első alkalommal engedélyezte a replikálást, kattintson a **+ replikálás** a tárolóban lehetőségre a további gépek replikációjának engedélyezéséhez.
+   1. Válassza az **alkalmazás**  >  **forrásának**replikálása lehetőséget. Miután az első alkalommal engedélyezte a replikálást, kattintson a **+ replikálás** a tárolóban lehetőségre a további gépek replikációjának engedélyezéséhez.
    2. Az 1. lépésben állítsa be a **forrást** a Process kiszolgálóként.
    3. A 2. lépésben adja meg a feladatátvétel utáni üzembe helyezési modellt, egy prémium szintű Storage-fiókot, amelyre át kell telepíteni a naplókat, és egy virtuális hálózatot, amely nem fog működni.
    4. A 3. lépésben adja hozzá a védett virtuális gépeket IP-cím szerint. (Szükség lehet egy belső IP-cím megkeresésére.)
    5. A 4. lépésben konfigurálja a tulajdonságokat úgy, hogy kiválasztja a korábban a Process Serveren beállított fiókokat.
    6. Az 5. lépésben válassza ki azt a replikációs házirendet, amelyet korábban a "5. lépés: replikációs beállítások beállítása" című témakörben hozott létre.
-   7. Kattintson az **OK** gombra.
+   7. Válassza az **OK** lehetőséget.
 
    > [!NOTE]
    > Ha egy Azure-beli virtuális gép fel van foglalva és újra elindult, nincs garancia arra, hogy ugyanazt az IP-címet kapja. Ha a konfigurációs kiszolgáló vagy folyamat kiszolgálójának vagy a védett Azure-beli virtuális gépeknek az IP-címe megváltozik, előfordulhat, hogy az ebben a forgatókönyvben lévő replikáció nem fog megfelelően működni.
@@ -173,14 +173,14 @@ A feladatátvétel utáni üzembe helyezési modellt igény szerint választhatj
 
 ### <a name="step-8-run-a-test-failover"></a>8. lépés: feladatátvételi teszt futtatása
 
-A replikálás befejezésének megadásához válassza ki a site Recovery példányt, majd válassza a **Beállítások** > **replikált elemek**lehetőséget. Ekkor megtekintheti a replikációs folyamat állapotát és százalékos arányát. 
+A replikálás befejezésének megadásához válassza ki a site Recovery példányt, majd válassza a **Beállítások**  >  **replikált elemek**lehetőséget. Ekkor megtekintheti a replikációs folyamat állapotát és százalékos arányát. 
 
 A kezdeti replikáció befejezését követően futtasson egy feladatátvételi tesztet a replikációs stratégia ellenőrzéséhez. A feladatátvételi teszt részletes lépéseiért lásd: [feladatátvételi teszt futtatása site Recoveryban](../../site-recovery/vmware-walkthrough-overview.md). 
 
 > [!NOTE]
 > A feladatátvétel futtatása előtt győződjön meg arról, hogy a virtuális gépek és a replikációs stratégia megfelel a követelményeknek. További információ a feladatátvételi teszt futtatásáról: [feladatátvételi teszt tesztelése az Azure-ban site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-A feladatátvételi teszt állapotát a **Beállítások** > **feladatok** > *YOUR_FAILOVER_PLAN_NAMEban*tekintheti meg. A panelen megtekintheti a lépések és a siker/sikertelen eredmények részletezését. Ha a feladatátvételi teszt bármelyik lépésben meghiúsul, válassza ki a lépést a hibaüzenet ellenőrzéséhez. 
+A feladatátvételi teszt állapotát a **Beállítások**  >  **feladatok**  >  *YOUR_FAILOVER_PLAN_NAMEban*tekintheti meg. A panelen megtekintheti a lépések és a siker/sikertelen eredmények részletezését. Ha a feladatátvételi teszt bármelyik lépésben meghiúsul, válassza ki a lépést a hibaüzenet ellenőrzéséhez. 
 
 ### <a name="step-9-run-a-failover"></a>9. lépés: feladatátvétel futtatása
 
@@ -203,7 +203,7 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft Azure Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>További lépések
 

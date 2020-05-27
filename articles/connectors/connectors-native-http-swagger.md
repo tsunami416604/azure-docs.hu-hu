@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74787369"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831925"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -82,7 +82,7 @@ Ez a beépített művelet HTTP-kérést küld a REST API leíró hencegő fájl 
 
 1. Válassza ki azt a lépést, amelyben hozzá szeretné adni a HTTP + hencegés műveletet, és válassza az **új lépés**lehetőséget.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A tervezőben a keresőmezőbe írja be szűrőként a "hencegés" kifejezést. A **műveletek** listából válassza a **http + hencegés** műveletet.
 
@@ -137,9 +137,9 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 1. [Töltse fel a hencegő fájlt a blob-tárolóba](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), vagy a [Azure Portalon](https://portal.azure.com) vagy [Azure Storage Exploreron](https://storageexplorer.com/)keresztül.
 
-1. A blob-tárolóban található fájlra való hivatkozáshoz használjon olyan HTTPS-hivatkozást, amely ezt a formátumot követi, ami megkülönbözteti a kis-és nagybetűket:
+1. A blob-tárolóban található fájlra való hivatkozáshoz szerezze be az ezt a formátumot követő HTTPS URL-címet, amely megkülönbözteti a kis-és nagybetűket, a Azure Storage Explorer:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
@@ -152,7 +152,7 @@ Itt talál további információt a HTTP + hencegő triggerből vagy műveletbő
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
-| Állapotkód | Leírás |
+| Állapotkód | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |

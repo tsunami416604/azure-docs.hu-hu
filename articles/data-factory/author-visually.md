@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674567"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832780"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -31,7 +31,7 @@ A **szerzői műveletek vászon**megnyitásához kattintson a ceruza ikonra.
 
 ![Szerzői vászon](media/author-visually/authoring-canvas.png)
 
-Itt hozza létre a gyárat alkotó folyamatokat, tevékenységeket, adatkészleteket, társított szolgáltatásokat, adatfolyamatokat, eseményindítókat és integrációs modulokat. A folyamat létrehozásához a szerzői műveletek vászon használatával megtudhatja, hogyan másolhat egy folyamatot a [másolási tevékenység használatával](tutorial-copy-data-portal.md). 
+Itt a gyárat alkotó folyamatokat, tevékenységeket, adatkészleteket, társított szolgáltatásokat, adatfolyamatokat, eseményindítókat és integrációs modulokat hozhat létre. A folyamat létrehozásához a szerzői műveletek vászon használatával megtudhatja, hogyan másolhat egy folyamatot a [másolási tevékenység használatával](tutorial-copy-data-portal.md). 
 
 Az alapértelmezett vizualizáció-létrehozási élmény közvetlenül a Data Factory szolgáltatással működik. Az Azure Repos git vagy GitHub integrációja is támogatott, hogy lehetővé váljon a verziókövetés és az együttműködés a saját adatfeldolgozó-folyamatokban. Ha többet szeretne megtudni a szerzői műveletek közötti különbségekről, tekintse meg a [Azure Data Factory a verziókövetés](source-control.md)című témakört.
 
@@ -41,7 +41,7 @@ A legfelső szintű erőforrások, például folyamatok, adatkészletek és adat
 
 ![Szerzői vászon](media/author-visually/properties-pane.png)
 
-A Tulajdonságok ablaktábla alapértelmezés szerint csak az erőforrás-létrehozáskor lesz megnyitva. A szerkesztéshez kattintson a vászon jobb felső sarkában található Tulajdonságok ablaktábla ikonra.
+A Tulajdonságok ablaktábla csak az erőforrások létrehozásakor nyílik meg alapértelmezés szerint. A szerkesztéshez kattintson a vászon jobb felső sarkában található Tulajdonságok ablaktábla ikonra.
 
 ## <a name="expressions-and-functions"></a>Kifejezések és függvények
 
