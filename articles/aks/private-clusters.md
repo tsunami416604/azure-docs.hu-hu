@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: a09781efd58c29acbd8ca445b58b89c04daa94f8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674371"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849688"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -102,7 +102,8 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 * Az IP-címekre jogosult tartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
 * A Availability Zones jelenleg bizonyos régiókban támogatott, tekintse meg a dokumentum elejét 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
-* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból
+* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI) használatát
+* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket][devops-agents]használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz
 * Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
@@ -120,4 +121,4 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-
+[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops

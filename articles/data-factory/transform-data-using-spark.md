@@ -9,13 +9,13 @@ author: nabhishek
 ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 05/31/2018
-ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418847"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849212"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a Spark-tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,11 +61,11 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 | Tulajdonság              | Leírás                              | Kötelező |
 | --------------------- | ---------------------------------------- | -------- |
-| név                  | A folyamatban szereplő tevékenység neve.    | Igen      |
+| name                  | A folyamatban szereplő tevékenység neve.    | Igen      |
 | leírás           | A tevékenység működését leíró szöveg  | Nem       |
-| type                  | Spark-tevékenység esetén a tevékenység típusa HDInsightSpark. | Igen      |
+| típus                  | Spark-tevékenység esetén a tevékenység típusa HDInsightSpark. | Igen      |
 | linkedServiceName     | Azon HDInsight Spark társított szolgáltatás neve, amelyen a Spark-program fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| SparkJobLinkedService | Az Azure Storage társított szolgáltatása, amely tartalmazza a Spark-feladatot tartalmazó fájlt, a függőségeket és a naplókat.  Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. Ennek a tulajdonságnak az értéke csak Azure Storage társított szolgáltatás lehet. | Nem       |
+| SparkJobLinkedService | Az Azure Storage társított szolgáltatása, amely tartalmazza a Spark-feladatot tartalmazó fájlt, a függőségeket és a naplókat. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. Ennek a tulajdonságnak az értéke csak Azure Storage társított szolgáltatás lehet. | Nem       |
 | rootPath              | Az Azure Blob-tároló és a Spark-fájlt tartalmazó mappa. A fájl neve megkülönbözteti a kis-és nagybetűket. A mappa struktúrájával kapcsolatos részletekért tekintse meg a mappa szerkezete szakaszt (következő szakasz). | Igen      |
 | entryFilePath         | A Spark-kód/csomag gyökérkönyvtárának relatív elérési útja. A beviteli fájlnak Python-vagy. jar-fájlnak kell lennie. | Igen      |
 | className             | Alkalmazás Java/Spark fő osztálya      | Nem       |
@@ -79,7 +79,7 @@ A Spark-feladatok sokkal bővíthetők, mint a Pig/kaptár feladatok. A Spark-fe
 
 Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltatás által hivatkozott Azure Blob Storage-tárolóban. Ezután töltse fel a függő fájlokat a **entryFilePath**által jelzett gyökérmappa megfelelő almappáiba. Töltse fel például a Python-fájlokat a pyFiles almappában és a jar-fájlokba a gyökérmappa tégelyek almappájába. Futásidőben a Data Factory szolgáltatás a következő mappastruktúrát várja az Azure Blob Storage-ban:     
 
-| Útvonal                  | Leírás                              | Kötelező | Típus   |
+| Elérési út                  | Leírás                              | Kötelező | Típus   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.`legfelső szintű            | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban | Igen      | Mappa |
 | &lt;felhasználó által definiált&gt; | A Spark-feladathoz tartozó belépési fájlra mutató elérési út | Igen      | Fájl   |

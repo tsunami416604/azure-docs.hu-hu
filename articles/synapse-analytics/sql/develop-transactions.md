@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c921b05dd98c55c8e7db8beac93d1b724de1cd7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428718"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869302"
 ---
 # <a name="using-transactions-in-sql-pool"></a>Tranzakciók használata az SQL-készletben
 
@@ -206,4 +206,4 @@ Ezek a következők:
 
 ## <a name="next-steps"></a>További lépések
 
-A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. Az [SQL-készlet](best-practices-sql-pool.md) és az [igény szerinti SQL-szolgáltatás (előzetes verzió)](on-demand-workspace-overview.md)további ajánlott eljárásokat ismertető útmutatók is rendelkezésre állnak.
+A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. Az [SQL-készlet](best-practices-sql-pool.md) és az [igény szerinti SQL-szolgáltatás (előzetes verzió)](best-practices-sql-on-demand.md)további ajánlott eljárásokat ismertető útmutatók is rendelkezésre állnak.

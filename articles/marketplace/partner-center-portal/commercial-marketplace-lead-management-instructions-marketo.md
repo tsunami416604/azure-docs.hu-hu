@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789878"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849177"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>A Marketo használata a kereskedelmi Piactéri érdeklődők kezelésére
 
@@ -59,8 +59,8 @@ Ez a cikk azt ismerteti, hogyan állíthatja be az Marketo CRM-rendszert a Micro
 
     A következő értékek kiszűrésének másik módja:
 
-    - A kiszolgáló-azonosító a Marketo-példány URL-címében található, például `serverID.marketo.com`:.
-    - Az előfizetés Munchkin-azonosítójának beszerzéséhez nyissa meg a **rendszergazda** > **Munchkin** menüt a **Munchkin-fiók azonosítója** mezőben, vagy a Marketo első részén REST API gazdagép altartománya: `https://{Munchkin ID}.mktorest.com`.
+    - A kiszolgáló-azonosító a Marketo-példány URL-címében található, például: `serverID.marketo.com` .
+    - Az előfizetés Munchkin-azonosítójának beszerzéséhez nyissa meg a **rendszergazda**  >  **Munchkin** menüt a **Munchkin-fiók azonosítója** mezőben, vagy a Marketo első részén REST API gazdagép altartománya: `https://{Munchkin ID}.mktorest.com` .
     - Az űrlap-azonosító a 7. lépésben létrehozott beágyazási kód űrlap azonosítója, amely az érdeklődőket a piactérről irányítja át.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Az ajánlat beállítása, hogy érdeklődőket küldjön a Marketo
@@ -71,9 +71,9 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
 
-1. A **vezető felügyelet** szakaszban válassza a **kapcsolat**lehetőséget. 
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
 
-    ![Érdeklődői felügyelet szakasz csatlakozási gombja](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
 1. A **kapcsolat részletei** előugró ablakban válassza a **Marketo** lehetőséget az **érdeklődő célhelyéhez**.
 
@@ -86,7 +86,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
    Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés**lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

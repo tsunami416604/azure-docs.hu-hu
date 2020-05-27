@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249268"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849671"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-erőforrások monitorozása Azure Monitor
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk ismerteti az Azure-erőforrások által létrehozott figyelési információkat, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és a riasztáshoz.
@@ -49,7 +49,7 @@ A következőhöz kapcsolódóan Azure Monitor költségek is előfordulhatnak. 
 - Metrikák elérése API-n keresztül.
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
-Az Azure-beli erőforrások [naplók](../platform/data-platform-logs.md) és [metrikák](../platform/data-platform-metrics.md) létrehozásakor a következő ábrán láthatók. Tekintse át az egyes Azure-szolgáltatások dokumentációját az általuk létrehozott konkrét információkra, valamint az általuk biztosított további megoldásokra vagy elemzésekre vonatkozóan.
+Az Azure-beli erőforrások a következő ábrán látható [naplókat](../platform/data-platform-logs.md) és [mérőszámokat](../platform/data-platform-metrics.md) állítanak elő. Tekintse át az egyes Azure-szolgáltatások dokumentációját az általuk létrehozott konkrét információkra, valamint az általuk biztosított további megoldásokra vagy elemzésekre vonatkozóan.
 
 ![Áttekintés](media/monitor-azure-resource/logs-metrics.png)
 

@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 3350ff4bc810666f7b772607c2983d86902f5ffc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7f1da47d913b76edb42aab82f588a2b218eac854
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744044"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869335"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a Pythonban
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Python-alkalmazás kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű Python-alkalmazás kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. 
+
+Bár az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,14 +31,14 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasítást.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és adja hozzá a következő importálási utasításokat:
 
    ```python
    import requests
    import json
    ```
 
-2. Hozzon létre változókat a helyesírás-ellenőrzéshez használni kívánt szöveghez, az előfizetési kulcshoz és a Bing Spell Check végponthoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre változókat a helyesírás-ellenőrzéshez használni kívánt szöveghez, az előfizetési kulcshoz és a Bing Spell Check végponthoz. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -52,8 +54,12 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     data = {'text': example_text}
     ```
 
-2. Adja hozzá a kérelem paramétereit. Adja hozzá a piac kódját a következő után: `mkt=` . A piaci kód az az ország/régió, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő után: `&mode=` . A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
+2. Adja hozzá a kérelem paramétereit: 
 
+   a. Rendelje hozzá a piaci kódot a `mkt` paraméterhez az `=` operátorral. A piaci kód annak az országnak/régiónak a kódja, amelyre a kérést végzi. 
+
+   b. Adja hozzá a `mode` paramétert a `&` kezelőhöz, majd rendelje hozzá a helyesírás-ellenőrzési módot. A mód lehet (a `proof` legtöbb helyesírási/nyelvtani hibát felhasználhatja) `spell` , vagy (a legtöbb helyesírási hibát kigyűjti, de nem annyi nyelvtani hibát). 
+ 
     ```python
     params = {
         'mkt':'en-us',
@@ -88,7 +94,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Ha a parancssort használja, futtassa az alábbi parancsot az alkalmazás futtatásához.
+Ha a parancssort használja, a következő paranccsal futtathatja az alkalmazást:
 
 ```bash
 python <FILE_NAME>.py
@@ -142,4 +148,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
 - [Mi a Bing Spell Check API?](../overview.md)
-- [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

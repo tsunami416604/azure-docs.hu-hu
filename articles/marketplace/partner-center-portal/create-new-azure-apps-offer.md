@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773270"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848787"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -128,7 +128,7 @@ Az egyes alkalmazáscsomag közzétételi követelményeinek megismeréséhez te
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-Az **ajánlat beállítása** oldalon megadhatja az ajánlathoz tartozó tesztelési meghajtót és érdeklődői felügyeletet. 
+Az **ajánlat beállítása** oldalon megadhatja az ajánlathoz tartozó tesztelési meghajtót és érdeklődői felügyeletet.
 
 ### <a name="test-drive"></a>Tesztelési meghajtó
 
@@ -141,7 +141,7 @@ További információ: az [ajánlat tesztelése a kereskedelmi piactéren](https
 >[!Note]
 >Mivel az összes Azure-alkalmazás egy Azure Resource Manager sablonnal lett implementálva, az Azure-alkalmazásokhoz elérhető egyetlen, [Azure Resource Manager-alapú tesztelési](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)meghajtó.
 
-## <a name="lead-management"></a>Érdeklődők kezelése
+### <a name="customer-leads"></a>Ügyfél-érdeklődők
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

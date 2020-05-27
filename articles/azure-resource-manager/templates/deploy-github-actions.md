@@ -3,12 +3,12 @@ title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használat
 description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-műveletek használatával telepíteni.
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 5fe147a9c42e83d5e644b0c08dfa67de88ec05c0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82875193"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869183"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -61,7 +61,7 @@ A szkript a következőhöz hasonló JSON-objektumot ad eredményül:
 Másolja a JSON-kimenetet, és tárolja GitHub-titokként a GitHub-tárházban. Ha még nem rendelkezik adattárral, tekintse meg az [előfeltételt](#prerequisites) .
 
 1. A GitHub-adattárból válassza a **Beállítások** lapot.
-1. A bal oldali menüben válassza a **titok** lehetőséget.
+1. Válassza a bal oldali menü **titkok** elemét.
 1. Írja be a következő értékeket:
 
     - **Név**: AZURE_CREDENTIALS

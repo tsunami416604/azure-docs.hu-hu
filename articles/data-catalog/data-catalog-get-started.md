@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 08/01/2019
-ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68976864"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860987"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
 
@@ -22,6 +22,9 @@ Ez a rövid útmutató segítséget nyújt a Azure Data Catalog létrehozásána
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+> [!Note]
+> Az Azure biztonsági követelményei miatt Azure Data Catalog enfored Transport Layer Security (TLS) 1,2. A TLS 1,0 és a TLS 1,1 le lett tiltva. Előfordulhat, hogy a regisztrációs eszköz futtatásakor hibák léptek fel, ha a gép nem frissült a TLS 1,2-hez. A TLS 1,2-es számítógép frissítéséhez lásd: [Transport Layer Security engedélyezése (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 A kezdéshez a következőkre lesz szüksége:
 
@@ -34,7 +37,7 @@ Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajd
 
 Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatkatalógust hozhat létre. Ezért ha a Azure Active Directory tartományhoz tartozó Azure-előfizetés tulajdonosa vagy társtulajdonosa már létrehozott egy katalógust, akkor nem hozhat létre katalógust, még akkor sem, ha több Azure-előfizetéssel rendelkezik. Ha szeretné megnézni, hogy az Ön Azure Active Directory-tartományában hozott-e már létre adatkatalógust valamelyik felhasználó, lépjen az [Azure Data Catalog honlapjára](http://azuredatacatalog.com), és ellenőrizze, hogy lát-e katalógust. Ha valaki már létrehozta a katalógust, ugorja át az itt látható eljárást, és folytassa a következő résszel.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com) > **erőforrás létrehozása** elemre, és válassza a **Data Catalog**lehetőséget.
+1. Lépjen a [Azure Portal](https://portal.azure.com)  >  **erőforrás létrehozása** elemre, és válassza a **Data Catalog**lehetőséget.
 
     ![Azure Data Catalog létrehozás gomb](media/data-catalog-get-started/data-catalog-create.png)
 

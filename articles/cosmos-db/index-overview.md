@@ -1,17 +1,17 @@
 ---
 title: Indexelés az Azure Cosmos DB-ben
 description: Ismerje meg, hogy az indexelés hogyan működik a Azure Cosmos DBban, különböző típusú indexek, például a tartomány, a térbeli és az összetett indexek támogatottak.
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.author: thweiss
-ms.openlocfilehash: fb3467e60ada92c90a84d8e89f6b5f5e94ca42e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746429"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849790"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -105,7 +105,7 @@ A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének 
    ```
 
    ```sql
-   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
 - `ORDER BY`lekérdezések

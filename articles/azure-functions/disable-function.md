@@ -3,12 +3,12 @@ title: Függvények letiltása a Azure Functionsban
 description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvényeket a Azure Functionsban.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115565"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848739"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
 
@@ -122,7 +122,8 @@ vagy
 
 A második példában a függvény le van tiltva, ha van egy IS_DISABLED nevű alkalmazás-beállítás, és a értéke `true` vagy 1.
 
-Szerkesztheti a fájlt a Azure Portal, vagy használhatja a funkció **Áttekintés** lapján található **Engedélyezés** és **Letiltás** gombokat. A portál kapcsoló a *function. JSON* fájl módosításával működik.
+>[!IMPORTANT]  
+>A portál mostantól az Alkalmazásbeállítások használatával letiltja a v1. x függvényeket. Ha egy alkalmazás beállítása ütközik a function. JSON fájllal, hiba léphet fel. A hibák elkerülése érdekében távolítsa el a `disabled` tulajdonságot a function. JSON fájlból. 
 
 
 ## <a name="next-steps"></a>További lépések

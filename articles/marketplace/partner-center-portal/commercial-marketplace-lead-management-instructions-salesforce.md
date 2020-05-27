@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7fbe27845164eb7711d3531173fb440c5a3570f4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789708"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849135"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>A Salesforce vezető felügyeletének konfigurálása
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a Salesforce rendszerét, hogy f
 
        ![Salesforce-telepítő](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. A **telepítés** lapon válassza a **platform eszközök** > **szolgáltatás beállítások** > **marketing** > **web – vezető**lehetőséget.
+    1. A **telepítés** lapon válassza a **platform eszközök**  >  **szolgáltatás beállítások**  >  **marketing**  >  **web – vezető**lehetőséget.
 
         ![Salesforce web – Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
@@ -41,7 +41,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a Salesforce rendszerét, hogy f
 
        ![Klasszikus Salesforce-telepítő](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. A **telepítés** lapon válassza a **Létrehozás** > **Testreszabás** > webes**érdeklődők** > **számára**lehetőséget.
+    1. A **telepítés** lapon válassza a **Létrehozás**  >  **Testreszabás**  >  webes**érdeklődők**  >  **számára**lehetőséget.
 
         ![Salesforce klasszikus webes – vezető](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
@@ -52,7 +52,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a Salesforce rendszerét, hogy f
 
     ![Salesforce-alapú webes telepítés](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-1. A **webes létrehozás űrlap létrehozása**lapon győződjön meg arról, hogy a beállítás `Include reCAPTCHA in HTML` törölve van, majd válassza a **Létrehozás**lehetőséget.
+1. A **webes létrehozás űrlap létrehozása**lapon győződjön meg arról, hogy a `Include reCAPTCHA in HTML` beállítás törölve van, majd válassza a **Létrehozás**lehetőséget.
 
     ![Webes Salesforce létrehozásához](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
@@ -70,17 +70,17 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
 
-1. A **vezető felügyelet** szakaszban válassza a **kapcsolat**lehetőséget. 
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
 
-    ![Érdeklődői felügyelet szakasz csatlakozási gombja](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
-1. A **kapcsolat részletei** előugró ablakban válassza a **Salesforce** lehetőséget a **vezető célhelyhez** , és illessze be `oid` az értéket a létrehozott webes és érdeklődő űrlapból a **szervezeti azonosító** mezőbe.
+1. A **kapcsolat részletei** előugró ablakban válassza a **Salesforce** lehetőséget a **vezető célhelyhez** , és illessze be az `oid` értéket a létrehozott webes és érdeklődő űrlapból a **szervezeti azonosító** mezőbe.
 
     ![Kapcsolat részletei – előugró ablak – a kapcsolattartási e-mail mező ellenőrzése](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
 
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés**lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

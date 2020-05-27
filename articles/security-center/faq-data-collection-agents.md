@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436198"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849042"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -49,6 +49,22 @@ A Windows-vagy Linux-IaaS virtuális gépek az alábbiak szerint minősülnek:
 - A virtuális gép fut állapotban van.
 - A Windows vagy Linux rendszerű Azure-beli [virtuális gép ügynöke](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
 - A virtuális gép nem használatos készülékként, például webalkalmazási tűzfalként vagy a következő generációs tűzfalon.
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>Hol jött létre az alapértelmezett Log Analytics munkaterület?
+
+Az alapértelmezett munkaterület helye az Azure-régiótól függ:
+
+- A Egyesült Államok és Brazíliában lévő virtuális gépek esetében a munkaterület helye a Egyesült Államok
+- Kanadában működő virtuális gépek esetén a munkaterület helye Kanada
+- Az Európában lévő virtuális gépek esetében a munkaterület helye Európa
+- Az Egyesült Királyságban lévő virtuális gépek esetében a munkaterület helye az Egyesült Királyság
+- A Kelet-Ázsia és Délkelet-Ázsiában lévő virtuális gépek esetében a munkaterület helye Ázsia
+- A Koreában lévő virtuális gépek esetében a munkaterület helye Korea
+- Az indiai virtuális gépek esetében a munkaterület helye India
+- A Japánban működő virtuális gépek esetében a munkaterület helye Japán
+- Kínában működő virtuális gépek esetén a munkaterület helye Kína
+- Ausztráliában lévő virtuális gépek esetében a munkaterület helye Ausztrália
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Törölhetem a Security Center által létrehozott alapértelmezett munkaterületeket?

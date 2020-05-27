@@ -7,19 +7,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367567"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848228"
 ---
 # <a name="iot-hub-ip-addresses"></a>IP-címek IoT Hub
 
 IoT Hub nyilvános végpontok IP-címének előtagjait a rendszer rendszeresen közzéteszi a _AzureIoTHub_ [szolgáltatás címkéjén](../virtual-network/service-tags-overview.md).
 
 > [!NOTE]
-> A helyszíni hálózatokon belül üzembe helyezett eszközök esetében az Azure IoT Hub támogatja a VNET-kapcsolatok integrációját a privát végpontokkal. További információ: [IoT hub támogatás a VNET](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) -hez.
+> A helyszíni hálózatokon belül üzembe helyezett eszközök esetében az Azure IoT Hub támogatja a VNET-kapcsolatok integrációját a privát végpontokkal. További információ: [IoT hub támogatás a VNet](./virtual-network-support.md) .
 
 
 Ezeket az IP-cím előtagokat használhatja a IoT Hub és az eszközök vagy hálózati eszközök közötti kapcsolat vezérléséhez a különböző hálózati elkülönítési célok megvalósítása érdekében:

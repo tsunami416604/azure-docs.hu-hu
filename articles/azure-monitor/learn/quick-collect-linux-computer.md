@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637894"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850062"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -26,7 +26,7 @@ A [Azure monitor](../overview.md) adatokat gyűjthet közvetlenül a környezet�
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurálása](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)című témakört.
  
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -115,11 +115,11 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 
 A Azure Monitor a hosszú távú elemzésekhez és jelentéskészítéshez megadott linuxos syslog-és teljesítményszámlálók eseményeinek összegyűjtését teszi elérhetővé. Ha egy adott feltételt észlel, akkor is végezhet műveleteket. A következő lépésekkel konfigurálhatja az események gyűjtését a Linux rendszernaplójából, illetve egyes gyakran használt teljesítményszámlálókból is.  
 
-1. A Azure Portal bal alsó sarkában válassza a **További szolgáltatások**lehetőséget. A keresőmezőbe írja be a **log Analytics**kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a Log Analytics kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza ki **log Analytics munkaterületeket** , és a log Analytics munkaterületek listájában válassza ki a keresett munkaterületet, és válassza a **log Analytics** munkaterület **Speciális beállítások** elemét.
 
 2. Válassza **az**adatelemet, majd válassza a **syslog**lehetőséget.  
 
-3. A syslog hozzáadásához írja be a napló nevét. Adja meg a **syslog** -t, majd **+** válassza ki a plusz jelet.  
+3. A syslog hozzáadásához írja be a napló nevét. Adja meg a **syslog** -t, majd válassza ki a plusz jelet **+** .  
 
 4. A táblában törölje a **Tájékoztatás**, az **Értesítés** és a **Hibakeresés** súlyossági szint jelölését. 
 
@@ -149,7 +149,7 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbel
 
     ![Log Analytics naplóbeli keresés eredménye](media/quick-collect-linux-computer/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, eltávolíthatja az ügynököt a linuxos számítógépről, és törölheti a Log Analytics-munkaterületet.  
 

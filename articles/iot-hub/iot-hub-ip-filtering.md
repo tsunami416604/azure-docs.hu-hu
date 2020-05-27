@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649374"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849850"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -39,17 +39,19 @@ Minden olyan IP-címről érkező kapcsolódási kísérlet, amely megfelel az I
 
 Alapértelmezés szerint a IoT hub-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás azt jelenti, hogy a hub bármely IP-címről fogad kapcsolatokat. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
-![Alapértelmezett IP-szűrési beállítások IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
+Az IP-szűrési beállítások lapon válassza a **hálózatkezelés**, a **nyilvános hozzáférés**, majd a **kijelölt IP-címtartományok**elemet:
+
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Alapértelmezett IP-szűrési beállítások IoT Hub":::
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrési szabály hozzáadása vagy szerkesztése
 
 IP-szűrési szabály hozzáadásához válassza az **+ IP-szűrési szabály hozzáadása**lehetőséget.
 
-![IP-szűrési szabály hozzáadása egy IoT hubhoz](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IP-szűrési szabály hozzáadása egy IoT hubhoz":::
 
 Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően töltse ki a mezőket.
 
-![Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően":::
 
 * Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` rendszer fogadja el.
 
@@ -59,7 +61,7 @@ Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően
 
 A mezők kitöltése után kattintson a **Mentés** gombra a szabály mentéséhez. Megjelenik egy riasztás, amely értesíti, hogy a frissítés folyamatban van.
 
-![Értesítés IP-szűrési szabály mentéséről](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Értesítés IP-szűrési szabály mentéséről":::
 
 A **Hozzáadás** lehetőség le van tiltva, amikor eléri a legfeljebb 10 IP-szűrési szabályt.
 
@@ -69,7 +71,7 @@ Meglévő szabály szerkesztéséhez válassza ki a módosítani kívánt adatai
 
 Ha törölni szeretne egy IP-szűrési szabályt, válassza a Kuka ikont az adott sorban, majd válassza a **Mentés**lehetőséget. A szabály el lett távolítva, és a módosítás mentve lesz.
 
-![IoT Hub IP-szűrési szabály törlése](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub IP-szűrési szabály törlése":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 
@@ -159,11 +161,10 @@ Az IP-szűrési szabályok sorrendjét megváltoztathatja a rácson úgy, hogy a
 
 Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**gombra.
 
-![IoT Hub IP-szűrési szabályok sorrendjének módosítása](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Az IoT HUb IP-szűrési szabályai sorrendjének módosítása":::
 
 ## <a name="next-steps"></a>További lépések
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 
-* [Műveletek figyelése](iot-hub-operations-monitoring.md)
 * [IoT Hub metrikák](iot-hub-metrics.md)

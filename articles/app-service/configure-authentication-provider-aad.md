@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c03a7b89fee188d8a22cfb8ddcd73920ce43f43a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649152"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860519"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -100,7 +100,7 @@ Hajtsa végre a következő lépéseket:
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
 1. **Felügyeleti módban**válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
 
-    |Mező|Description|
+    |Mező|Leírás|
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
     |Kiállító URL-címe| Használja `<authentication-endpoint>/<tenant-id>/v2.0` és cserélje le a hitelesítési végpontot * \<>* a felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontján](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) , valamint a https://login.microsoft.com * \< bérlői azonosító>* helyére az alkalmazás regisztrációját tartalmazó **címtár-(bérlői) azonosítót** . Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. A `/v2.0` szakasz elhagyható az HRE v1-t használó alkalmazások esetében. |
@@ -157,7 +157,7 @@ Ezzel konfigurált egy Daemon ügyfélalkalmazás-alkalmazást, amely a saját i
 ## <a name="next-steps"></a><a name="related-content"> </a>További lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
+* [Oktatóanyag: Felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service-ben](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/

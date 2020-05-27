@@ -3,17 +3,17 @@ title: Internetes társ-és peering szolgáltatás
 titleSuffix: Azure
 description: Internetes társ-és peering szolgáltatás
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75775704"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849382"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetes társ-és peering szolgáltatás
 
@@ -38,15 +38,15 @@ A globális vállalat egyes fiókirodái a fenti ábrán a partner hálózatán 
 
 **A társ-szolgáltatási ügyfél előnyei:**
 * Az optimális teljesítmény és megbízhatóság érdekében a legjobb nyilvános útválasztás az interneten keresztül Microsoft Cloud szolgáltatásokhoz.
-* Lehetőség az előnyben részesített SP kiválasztására a Microsoft Cloudhoz való kapcsolódáshoz.
+* Kiválaszthatja a kívánt szolgáltatót Microsoft Cloudhoz való kapcsolódáshoz.
 * A forgalmi adatok, például a késési jelentések és az előtag-figyelés.
 * Az optimális hálózati ugrások (ugrások) Microsoft Cloudból.
 * Route Analytics és statisztika – Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) útvonal-rendellenességek (szivárgás/eltéríti észlelés) és az optimálisnál rosszabb útválasztás.
 
 ## <a name="peering-service-partnership-requirements"></a>Társ-szolgáltatási partnerségi követelmények
-* Kapcsolódás Microsoft Cloudhoz az ügyfél számára legközelebb eső helyen. A partneri szolgáltató a felhasználó felé legközelebb eső Microsoft Edge-re irányítja át a felhasználói forgalmat. Hasonlóképpen, a felhasználó felé irányuló forgalom esetén a Microsoft átirányítja a forgalmat (a BGP-címkével) a felhasználóhoz legközelebb eső helyre, az SP pedig továbbítja a forgalmat a felhasználónak.
+* Kapcsolódás Microsoft Cloudhoz az ügyfél számára legközelebb eső helyen. A partneri szolgáltató a felhasználó felé legközelebb eső Microsoft Edge-re irányítja át a felhasználói forgalmat. Hasonlóképpen, a felhasználó felé irányuló forgalom esetén a Microsoft átirányítja a forgalmat (a BGP-címkével) a felhasználóhoz és a szolgáltatóhoz legközelebb eső peremhálózati helyre, és továbbítja a forgalmat a felhasználónak.
 * A partner magas rendelkezésre állású, nagy teljesítményű és földrajzilag redundáns kapcsolatot tart fenn a Microsoft globális hálózatával.
-* A partner kihasználhatja meglévő társait, hogy támogassa a partneri szolgáltatást, ha az megfelel a követelményeknek
+* A partner kihasználhatja meglévő társait, hogy támogassa a társ-szolgáltatást, ha az megfelel a követelménynek.
 
 ## <a name="faq"></a>GYIK
 A gyakori kérdésekért lásd: [peering Service – gyakori](service-faqs.md)kérdések.

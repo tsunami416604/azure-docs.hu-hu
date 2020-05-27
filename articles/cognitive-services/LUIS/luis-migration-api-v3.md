@@ -4,12 +4,12 @@ description: Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Eb
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653865"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849331"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -57,7 +57,7 @@ Ha tudja, hogy egyik ügyfélalkalmazás vagy integráció (bot Framework és Bi
 
 ## <a name="not-supported"></a>Nem támogatott
 
-### <a name="bing-spell-check"></a>Bing Spell Check
+### <a name="bing-spell-check"></a>Bing – Helyesírás-ellenőrzés
 
 Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
 
@@ -283,4 +283,4 @@ A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényt
 
 ## <a name="next-steps"></a>További lépések
 
-A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://aka.ms/luis-api-v3) API-kra.
+A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API-kra.

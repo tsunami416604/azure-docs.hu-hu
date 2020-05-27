@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2020
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654660"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860715"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -45,12 +45,12 @@ A mellőzési szabályok határozzák meg azokat a feltételeket, amelyeknek a r
 
 - a túl gyakran kiváltott riasztások mellőzése
 
-[További információ a riasztások Azure Security Center fenyegetés elleni védelemből való letiltásáról](alerts-suppression-rules.md).
+További információ a [riasztások Azure Security Center fenyegetés elleni védelemből való letiltásáról](alerts-suppression-rules.md).
 
 
 ### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>A virtuális gépek sebezhetőségi felmérése mostantól általánosan elérhető
 
-A Security Center standard szintű csomagja mostantól egy beépített sebezhetőségi felmérést is tartalmaz a virtuális gépekhez, felár nélkül. Ezt a bővítményt a Qualys működteti, de az eredményeket közvetlenül visszaküldi Security Centerra. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető.
+A Security Center standard szintű csomagja mostantól egy integrált sebezhetőségi felmérést is tartalmaz a virtuális gépekhez, felár nélkül. Ezt a bővítményt a Qualys működteti, de az eredményeket közvetlenül visszaküldi Security Centerra. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető.
 
 Az új megoldás segítségével folyamatosan ellenőrizheti a virtuális gépeket, és megtalálhatja a biztonsági réseket, és bemutathatja az eredményeket a Security Centerban. 
 
@@ -58,7 +58,7 @@ A megoldás üzembe helyezéséhez használja az új biztonsági javaslatot:
 
 "A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)"
 
-[További információk](built-in-vulnerability-assessment.md).
+További információ a [Security Center a virtuális gépek integrált sebezhetőségi felméréséről](built-in-vulnerability-assessment.md).
 
 
 
@@ -72,7 +72,7 @@ Ez a frissítés a következő módosításokat hajtja végre a szolgáltatásba
 
 - A javaslat úgy lett beállítva, hogy csak akkor legyen aktiválva, ha vannak nyitott felügyeleti portok.
 
-[További információ az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
+További információ [az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Egyéni javaslatok lettek áthelyezve egy külön biztonsági vezérlőbe
@@ -122,14 +122,6 @@ További információ a Windows Defender Exploit Guard-védelemről a biztonság
 További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
 
 
-
-
-
-
-
-
-
-
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők
 
 Az egyéni szabályzatok mostantól a Security Center javaslatok, a biztonságos pontszám és a szabályozási megfelelőségi szabványok irányítópultjának részét képezik. Ez a funkció mostantól általánosan elérhető, és lehetővé teszi a szervezet biztonsági értékelésének kiterjesztését Security Center. 
@@ -138,7 +130,23 @@ Hozzon létre egy egyéni kezdeményezést az Azure Policy-ben, adja hozzá a sz
 
 Most hozzáadjuk az egyéni ajánlási metaadatok szerkesztésének lehetőségét is. A metaadat-beállítások közé tartozik a súlyosság, a Szervizelési lépések, a fenyegetésekkel kapcsolatos információk és egyebek.  
 
-[További információk az egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+További információk az [Egyéni javaslatok részletes információkkal történő növeléséről](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+
+
+### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Összeomlási memóriakép-elemzési képességek migrálása a fájlok közötti támadás észlelése érdekében 
+
+Integráljuk a Windows Crash dump Analysis (CDA) észlelési funkcióit a [fájlok közötti támadás észlelésére](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). A fájlok közötti támadás észlelésének elemzése a következő biztonsági riasztások továbbfejlesztett verzióit biztosítja a Windows rendszerű gépekhez: kód befecskendezése felderített, álcázott Windows-modul, észlelt Héjkód, és gyanús kódrészletet észlelt.
+
+Az áttérés néhány előnye:
+
+- Proaktív **és kellő időben kártevő szoftverek észlelése** – a CDA megközelítése arra vár, hogy összeomlik, majd futtatja az elemzést az aktív kártevők kereséséhez. A fájlok közötti támadás észlelésével a memóriában tárolt fenyegetések proaktív módon azonosíthatók a futás közben. 
+
+- Bővített **riasztások** – a fájlokkal nem rendelkező támadások észlelésével kapcsolatos biztonsági riasztások közé tartoznak a CDA-ból nem elérhető bővítések, például az aktív hálózati kapcsolatok adatai. 
+
+- **Riasztások összesítése** – ha a CDA több támadási mintát észlelt egyetlen összeomlási memóriaképen belül, több biztonsági riasztást váltott ki. A fájl nélkül történő támadás észlelése az összes azonosított támadási mintát egyetlen riasztásba ötvözi, így nem kell több riasztást összekapcsolni.
+
+- A **log Analytics munkaterületre vonatkozó kisebb követelmények** – a potenciálisan bizalmas adatokat tartalmazó összeomlási memóriaképek többé nem lesznek feltöltve a log Analytics-munkaterületre.
+
 
 
 ## <a name="april-2020"></a>2020. április
@@ -159,7 +167,7 @@ Most hozzáadhat olyan szabványokat, mint például a:
 
 Emellett a közelmúltban hozzáadta az **Azure biztonsági teljesítménytesztet**, a Microsoft által készített Azure-specifikus iránymutatásokat a biztonsági és megfelelőségi ajánlott eljárásokhoz a közös megfelelőségi keretrendszerek alapján. Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak.  
  
-[További információ a szabványok készletének testreszabásáról a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
+További információ [a szabványok készletének testreszabásáról a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
 
 
 ### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>A Azure Security Center ingyenes szinten már szerepelnek a személyazonossággal kapcsolatos javaslatok
@@ -174,8 +182,9 @@ Az identitásra és a hozzáférésre vonatkozó javaslatok például a követke
 
 Ha előfizetése van az ingyenes díjszabási szinten, a biztonsági pontszámok hatással lesznek a változásokra, mivel soha nem értékelték a személyazonosságát és a hozzáférés biztonságát.
 
-[További információ az identitással és a hozzáférési javaslatokkal kapcsolatban](recommendations-reference.md#recs-identity).
-[További információ az identitás és a hozzáférés figyeléséről](security-center-identity-access.md).
+További információ az [identitással és a hozzáférési javaslatokkal](recommendations-reference.md#recs-identity)kapcsolatban.
+
+További információ az [identitás és a hozzáférés figyeléséről](security-center-identity-access.md).
 
 
 ## <a name="march-2020"></a>2020. március
@@ -188,7 +197,7 @@ Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megvál
 
 A munkafolyamatok futtatásának automatikus és manuális Security Center funkcióival kapcsolatos további információkért lásd: [munkafolyamat-automatizálás](workflow-automation.md).
 
-Logic Apps létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+További információ a [Logic apps létrehozásáról](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure Security Center integrációja a Windows felügyeleti központtal
@@ -215,8 +224,9 @@ A Security Center védelmi szolgáltatás a következőket tartalmazza:
 - **Biztonsági javaslatok** – gyakorlati ajánlások az AK-ra vonatkozó biztonsági eljárások betartása érdekében. Ezek a javaslatok a biztonságos pontszám részét képezik, így biztosítva, hogy a szervezete biztonsági helyzete része legyen. Egy példa arra, hogy a "szerepköralapú hozzáférés-vezérlést kell használni a Kubernetes Service-fürthöz való hozzáférés korlátozásához".
 - **Veszélyforrások elleni védelem** – az AK üzembe helyezésének folyamatos elemzése révén Security Center riasztást küld, amely a gazdagép és az AK-fürt szintjén észlelt fenyegetésekkel és rosszindulatú tevékenységgel kapcsolatos.
 
-[További információ az Azure Kubernetes Services és a Security Center integrációs szolgáltatásáról](azure-kubernetes-service-integration.md).
-[További információ a Security Center tároló biztonsági funkcióival kapcsolatban](container-security.md).
+További információ az [Azure Kubernetes Services és a Security Center integrálásáról](azure-kubernetes-service-integration.md).
+
+További információ [a Security Center tároló biztonsági funkcióival](container-security.md)kapcsolatban.
 
 
 ### <a name="improved-just-in-time-experience"></a>Továbbfejlesztett, igény szerinti élmény
@@ -226,7 +236,7 @@ A felügyeleti portok védelmét biztosító, a Azure Security Center funkcióit
 - **Indoklási mező** – ha egy virtuális GÉPHEZ (VM) való hozzáférést kér a Azure Portal igény szerinti oldalán, egy új opcionális mező is elérhető, amely a kérelem indoklását adja meg. A mezőben megadott információ nyomon követhető a tevékenység naplójában. 
 - A **redundáns igény szerinti (JIT) szabályok automatikus karbantartása** – amikor egy JIT-házirendet frissít, a rendszer automatikusan futtat egy karbantartó eszközt a teljes szabályrendszert érvényességének ellenőrzéséhez. Az eszköz eltéréseket keres a szabályzat szabályai és a NSG lévő szabályok között. Ha a tisztítási eszköz nem megfelelőnek találja, akkor meghatározza az okot, és ha ez biztonságos, eltávolítja a már nem szükséges beépített szabályokat. A tisztább soha nem törli a létrehozott szabályokat. 
 
-[További információ az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
+További információ [az JIT-hozzáférési szolgáltatásról](security-center-just-in-time.md).
 
 
 ### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Két biztonsági javaslat elavult webalkalmazásokhoz
@@ -241,7 +251,9 @@ A webalkalmazásokkal kapcsolatos két biztonsági javaslat elavult:
 
 Ezek a javaslatok többé nem jelennek meg a javaslatok Security Center listájában. A kapcsolódó házirendeket a rendszer nem fogja tartalmazni a "Security Center default" nevű kezdeményezésben.
 
-[További információ a biztonsági javaslatokról](recommendations-reference.md).
+További információ a [biztonsági javaslatokról](recommendations-reference.md).
+
+
 
 ## <a name="february-2020"></a>2020. február
 

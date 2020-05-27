@@ -9,13 +9,13 @@ author: nabhishek
 ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 01/16/2018
-ms.openlocfilehash: e3060f7e36f9e2696194da12c3c800555103d271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418915"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849246"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Az adatátalakítás a Hadoop MapReduce-tevékenységgel Azure Data Factory
 
@@ -64,12 +64,12 @@ A Pig/kaptár-parancsfájlok HDInsight-fürtön való futtatásával kapcsolatos
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| név              | A tevékenység neve                     | Igen      |
+| name              | A tevékenység neve                     | Igen      |
 | leírás       | A tevékenység által használt szöveg leírása | Nem       |
-| type              | MapReduce tevékenység esetén a tevékenységtípus a következő: HDinsightMapReduce. | Igen      |
+| típus              | MapReduce tevékenység esetén a tevékenységtípus a következő: HDinsightMapReduce. | Igen      |
 | linkedServiceName | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
 | className         | A végrehajtandó osztály neve         | Igen      |
-| jarLinkedService  | Hivatkozás egy, a JAR-fájlok tárolására használt Azure Storage társított szolgáltatásra. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
+| jarLinkedService  | Hivatkozás egy, a JAR-fájlok tárolására használt Azure Storage társított szolgáltatásra. Itt csak az **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** és **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** társított szolgáltatások támogatottak. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
 | jarFilePath       | Adja meg a jarLinkedService által hivatkozott Azure Storage-ban tárolt JAR-fájlok elérési útját. A fájl neve megkülönbözteti a kis-és nagybetűket. | Igen      |
 | jarlibs           | A jarLinkedService-ben definiált, az Azure Storage-ban tárolt feladatok által hivatkozott jar-függvénytárak elérési útjának karakterlánc-tömbje. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem       |
 | getDebugInfo      | Megadja, hogy a rendszer mikor másolja a naplófájlokat a jarLinkedService által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
@@ -112,7 +112,7 @@ A HDInsight MapReduce tevékenység használatával bármilyen MapReduce jar-fá
     }
 }
 ```
-A MapReduce program argumentumai a **argumentumok** szakaszban adhatók meg. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni az alábbi példában látható módon (-s,--bemenet,--output stb.).
+A MapReduce program argumentumai a **argumentumok** szakaszban adhatók meg. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni, ahogy az a következő példában látható (-s,--bemeneti,--kimenet stb.).
 
 ## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:

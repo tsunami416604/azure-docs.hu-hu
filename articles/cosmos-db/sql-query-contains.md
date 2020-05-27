@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0de34e6e0e238887b8f75ae2397e9e650eaac340
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711703"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848974"
 ---
 # <a name="contains-azure-cosmos-db"></a>TARTALMAZZA (Azure Cosmos DB)
 
@@ -40,23 +40,43 @@ CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="examples"></a>Példák
   
-  A következő példa ellenőrzi, hogy az "ABC" tartalmazza-e az "AB" kifejezést, és ha az "ABC" a "d" kifejezést tartalmazza.  
+  A következő példa ellenőrzi, hogy az "ABC" tartalmazza-e az "AB" kifejezést, és ha az "ABC" tartalmazza az "A" kifejezést.  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
+SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CONTAINS("abc", "A", true) AS c3
 ```  
   
  Itt látható az eredményhalmaz.  
   
 ```json
-[{"c1": true, "c2": false}]  
+[
+    {
+        "c1": true,
+        "c2": false,
+        "c3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Megjegyzések
 
 Ez a rendszerfunkció kihasználja a [tartomány indexét](index-policy.md#includeexclude-strategy).
 
-## <a name="next-steps"></a>Következő lépések
+A-ben a tartalmazott RU-használat növekedni fog, mivel a System függvényben megnövekszik a tulajdonsága. Más szóval, ha azt ellenőrzi, hogy egy tulajdonságérték tartalmaz-e egy bizonyos karakterláncot, az RU-lekérdezés díja az adott tulajdonság lehetséges értékeinek számától függ.
+
+Vegyük például a következő két tulajdonságot: város és ország. A város Bíborosa 5 000, az ország pedig 200. Íme két példa a lekérdezésekre:
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.town, "Red", false)
+```
+
+```sql
+    SELECT * FROM c WHERE CONTAINS(c.country, "States", false)
+```
+
+Az első lekérdezés valószínűleg több RUs-t fog használni a második lekérdezésnél, mert a város számos országa magasabb.
+
+## <a name="next-steps"></a>További lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

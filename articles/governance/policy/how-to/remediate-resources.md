@@ -3,12 +3,12 @@ title: Nem megfelelő erőforrások szervizelése
 description: Ez az útmutató végigvezeti az olyan erőforrások szervizelésén, amelyek nem felelnek meg a Azure Policy szabályzatának.
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195230"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849960"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Nem megfelelő erőforrások szervizelése Azure Policy
 
@@ -72,11 +72,11 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-A `$assignment` változó mostantól tartalmazza a felügyelt identitás elsődleges azonosítóját, valamint a szabályzat-hozzárendelés létrehozásakor visszaadott szabványos értékeket. Ez a `$assignment.Identity.PrincipalId`használatával érhető el.
+A `$assignment` változó mostantól tartalmazza a felügyelt identitás elsődleges azonosítóját, valamint a szabályzat-hozzárendelés létrehozásakor visszaadott szabványos értékeket. Ez a használatával érhető el `$assignment.Identity.PrincipalId` .
 
 ### <a name="grant-defined-roles-with-powershell"></a>Definiált szerepkörök megadása a PowerShell-lel
 
-Az új felügyelt identitásnak a Azure Active Directoryon keresztül kell végrehajtania a replikálást, mielőtt a szükséges szerepköröket megadhatja. A replikáció befejeződése után a következő példa megismétli a **roleDefinitionIds** tartozó házirend- `$policyDef` definíciót, és a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával adja meg a szerepkörök új felügyelt identitását.
+Az új felügyelt identitásnak a Azure Active Directoryon keresztül kell végrehajtania a replikálást, mielőtt a szükséges szerepköröket megadhatja. A replikáció befejeződése után a következő példa megismétli a RoleDefinitionIds tartozó házirend-definíciót, `$policyDef` és a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával adja meg a szerepkörök új felügyelt identitását. **roleDefinitionIds**
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -157,7 +157,7 @@ A **szervizelési feladattal** üzembe helyezett erőforrások hozzáadódnak a 
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Szervizelési feladat létrehozása az Azure CLI-n keresztül
 
-Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, `az policy remediation` használja a parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
+Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, használja a `az policy remediation` parancsokat. Cserélje le az `{subscriptionId}` előfizetése azonosítóját és a `{myAssignmentId}` **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -170,7 +170,7 @@ További szervizelési parancsokért és példákért tekintse meg az az [Policy
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Szervizelési feladat létrehozása Azure PowerShell használatával
 
-Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
+Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje le az `{subscriptionId}` előfizetése azonosítóját és a `{myAssignmentId}` **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -180,6 +180,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 Más szervizelési parancsmagok és példák esetében tekintse meg az az [. PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modult.
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Szervizelési feladat létrehozása a házirend-hozzárendelés során a Azure Portalban
+
+A Szervizelési feladatok zökkenőmentes létrehozásához a Azure Portal a házirend-hozzárendelés során. Ha a hozzárendelni kívánt házirend-definíció **deployIfNotExists** vagy **módosítási** hatás, a **szervizelés** lapon lévő varázsló egy _remedation-feladat létrehozása_ lehetőséget kínál. Ha ez a beállítás be van jelölve, a rendszer a szabályzat-hozzárendeléssel megegyező időpontban hozza létre a remedation-feladatot.
 
 ## <a name="next-steps"></a>További lépések
 

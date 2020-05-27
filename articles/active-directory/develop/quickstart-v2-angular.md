@@ -12,17 +12,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4b6a2481c18314a44470a020033ffdc4ba1d7259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81380031"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860052"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes egyoldalas alkalmazás (SPA) olyan felhasználók számára, akik személyes Microsoft-fiókkal, munkahelyi fiókkal vagy iskolai fiókkal rendelkeznek. A szögletes SPA a Microsoft Graph API vagy bármely webes API meghívására is kérhet hozzáférési jogkivonatot.
 
@@ -51,7 +48,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Kövesse az utasításokat [egy egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) a Azure Portal.
-> 1. Vegyen fel egy új platformot az alkalmazás regisztrációjának **hitelesítés** ablaktábláján, és regisztrálja `http://localhost:4200/`az átirányítási URI-t:.
+> 1. Vegyen fel egy új platformot az alkalmazás regisztrációjának **hitelesítés** ablaktábláján, és regisztrálja az átirányítási URI-t: `http://localhost:4200/` .
 > 1. Ez a rövid útmutató az [implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md)használja. Adja meg az **azonosító jogkivonatok** és a **hozzáférési tokenek** **implicit engedélyezési** beállításait. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazás bejelentkezik a felhasználókba, és meghívja az API-t.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -73,7 +70,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 > [!div renderon="docs"]
 >#### <a name="step-3-configure-the-javascript-app"></a>3. lépés: a JavaScript-alkalmazás konfigurálása
 >
-> A *src/app* mappában szerkessze az *app. Module. TS* fájlt, és `clientId` állítsa `authority` be a `MsalModule.forRoot`és a értékeket.
+> A *src/app* mappában szerkessze az *app. Module. TS* fájlt, és állítsa be a `clientId` és a `authority` értékeket `MsalModule.forRoot` .
 >
 >```javascript
 >MsalModule.forRoot({
@@ -102,9 +99,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 >|Érték neve|Leírás|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
->|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz **https://login.microsoftonline.com**írja be a következőt:. Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+>|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
 >|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
->|Enter_the_Redirect_Uri_Here|Cserélje le **http://localhost:4200**a-t.|
+>|Enter_the_Redirect_Uri_Here|Cserélje le a-t **http://localhost:4200** .|
 >|cacheLocation  | Választható Állítsa be a böngésző tárterületét a hitelesítési állapothoz. Az alapértelmezett érték a **sessionStorage**.   |
 >|storeAuthStateInCookie  | Választható Azonosítsa a hitelesítési kérelem állapotát tároló könyvtárat. Ez az állapot szükséges a böngésző cookie-jai hitelesítési folyamatainak ellenőrzéséhez. Ez a cookie be van állítva az Internet Explorer és a Edge számára a két böngésző számára. További részletekért tekintse meg az [ismert problémákat](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
@@ -129,7 +126,7 @@ Ha a Node. js-t használja:
    npm start
    ```
 
-1. Keresse meg **http://localhost:4200/** a következőt:.
+1. Keresse meg a következőt: **http://localhost:4200/** .
 1. Válassza a **Bejelentkezés**lehetőséget.
 1. Válassza ki a **profilt** a Microsoft Graph meghívásához.
 

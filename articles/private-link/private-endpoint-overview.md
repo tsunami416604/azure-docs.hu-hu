@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659688"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849654"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -22,7 +22,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
  A privát végpontok a következő tulajdonságokat határozzák meg: 
 
 
-|Tulajdonság  |Description |
+|Tulajdonság  |Leírás |
 |---------|---------|
 |Name    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
@@ -63,6 +63,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure Database for PostgreSQL – egyetlen kiszolgáló** | Microsoft. DBforPostgreSQL/kiszolgálók    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft. DBforMySQL/kiszolgálók    | Portra beállított mysqlserver |
 |**Azure Database for MariaDB** | Microsoft. DBforMariaDB/kiszolgálók    | mariadbServer |
+|**Azure IoT Hub** | Microsoft. Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft. kulcstartó/tárolók    | tár |
 |**Azure Kubernetes Service – Kubernetes API** | Microsoft. Tárolószolgáltatás/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  
@@ -117,7 +118,7 @@ A privát végpontok számára a DNS konfigurálásával kapcsolatos ajánlott e
 A következő táblázat tartalmazza a privát végpontok használatakor felismert korlátozások listáját: 
 
 
-|Korlátozás |Description |Kezelés  |
+|Korlátozás |Leírás |Kezelés  |
 |---------|---------|---------|
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 

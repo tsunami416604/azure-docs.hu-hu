@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176090"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869719"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -60,7 +60,7 @@ Azure File Sync telepítésekor a következőket javasoljuk:
 - Ügyeljen arra, hogy a Storage-fiók IOPS korlátozásait az Azure-fájlmegosztás telepítésekor. Ideális esetben a Storage-fiókokkal rendelkező 1:1-es fájlmegosztás leképezhető, azonban a különböző korlátok és korlátozások miatt a szervezettől és az Azure-tól is nem mindig lehetséges. Ha egyetlen Storage-fiókban nem lehet egyetlen fájlmegosztást telepíteni, gondolja át, hogy mely megosztások lesznek aktívak, és hogy mely megosztások kevésbé lesznek aktívak, hogy a legforróbb fájlmegosztás ne legyen ugyanazon a Storage-fiókban.
 
 ## <a name="windows-file-server-considerations"></a>Windows-fájlkiszolgáló szempontjai
-A Windows Server szinkronizálási funkciójának engedélyezéséhez telepítenie kell a Azure File Sync letölthető ügynököt. A Azure File Sync ügynök két fő összetevőt biztosít `FileSyncSvc.exe`: a háttérben futó Windows-szolgáltatást, amely a kiszolgáló-végpontok változásainak figyelésére és a szinkronizálási munkamenetek kezdeményezésére, valamint `StorageSync.sys`a felhőalapú rétegek és a gyors vész-helyreállítást lehetővé tevő fájlrendszer-szűrőre szolgál.  
+A Windows Server szinkronizálási funkciójának engedélyezéséhez telepítenie kell a Azure File Sync letölthető ügynököt. A Azure File Sync ügynök két fő összetevőt biztosít: `FileSyncSvc.exe` a háttérben futó Windows-szolgáltatást, amely a kiszolgáló-végpontok változásainak figyelésére és a szinkronizálási munkamenetek kezdeményezésére, valamint `StorageSync.sys` a felhőalapú rétegek és a gyors vész-helyreállítást lehetővé tevő fájlrendszer-szűrőre szolgál.  
 
 ### <a name="operating-system-requirements"></a>Operációsrendszer-követelmények
 A Azure File Sync a Windows Server következő verzióiban támogatott:
@@ -275,7 +275,7 @@ A Azure File Sync nem működik együtt az NTFS fájlrendszerrel titkosított f�
 ### <a name="encryption-in-transit"></a>Titkosítás az átvitel során
 
 > [!NOTE]
-> A Azure File Sync szolgáltatás eltávolítja a TLS 1.0 és a 1,1 támogatását a 2020 augusztusában. Alapértelmezés szerint az összes támogatott Azure File Sync ügynök verziója már használja a TLS 1.2-es verzióját. A TLS korábbi verziójának használata akkor fordulhat elő, ha a TLS 1.2 le lett tiltva a kiszolgálón, vagy a proxy használatban van. Ha proxyt használ, javasoljuk, hogy ellenőrizze a proxy konfigurációját. Azure File Sync a 5/1/2020-es után hozzáadott szolgáltatási régiók csak a TLS 1.2-es és a TLS 1.0-s és 1,1-es támogatást fogják eltávolítani a meglévő régiókból. augusztus 2020.  További információ: [hibaelhárítási útmutató](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
+> A Azure File Sync szolgáltatás a 2020-es augusztus 1-től a TLS 1.0 és a 1,1 támogatását fogja eltávolítani. Alapértelmezés szerint az összes támogatott Azure File Sync ügynök verziója már használja a TLS 1.2-es verzióját. A TLS korábbi verziójának használata akkor fordulhat elő, ha a TLS 1.2 le lett tiltva a kiszolgálón, vagy a proxy használatban van. Ha proxyt használ, javasoljuk, hogy ellenőrizze a proxy konfigurációját. Azure File Sync a 5/1/2020-es után hozzáadott szolgáltatási régiók csak a TLS 1.2-es és a TLS 1.0-s és a 1,1-es támogatást fogják eltávolítani a meglévő régiókból, 2020. augusztus 1-től.  További információ: [hibaelhárítási útmutató](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
 
 Azure File Sync ügynök kommunikál a Storage Sync szolgáltatással és az Azure-fájlmegosztás használatával a Azure File Sync REST protokoll és a legtitkosítási protokoll segítségével, amely mindkét esetben HTTPS protokollt használ a 443-as porton keresztül. Azure File Sync nem küld titkosítatlan kérelmeket HTTP-n keresztül. 
 
@@ -354,7 +354,7 @@ Ha van meglévő Windows-fájlkiszolgáló, Azure File Sync közvetlenül is tel
 
 - Hozzon létre kiszolgálói végpontokat a régi fájlmegosztás és az új fájlmegosztás számára, és hagyja, hogy Azure File Sync szinkronizálja az adatokat a kiszolgálói végpontok között. Ennek a megközelítésnek az az előnye, hogy nagyon egyszerűen előfizethet az új fájlkiszolgálón lévő tárterületre, mivel Azure File Sync a Felhőbeli rétegek számára. Ha elkészült, a végfelhasználókat átvágja az új kiszolgálón található fájlmegosztás fölé, és eltávolíthatja a régi fájlmegosztás kiszolgálói végpontját.
 
-- Csak az új fájlkiszolgálón hozzon létre egy kiszolgálói végpontot, és másolja át az adatait a régi fájlmegosztást a `robocopy`használatával. Attól függően, hogy az új kiszolgálón lévő fájlmegosztás topológiája (hány megosztás van az egyes köteteken, hogyan szabadítható fel az egyes kötetek, stb.), ideiglenesen további tárhelyet kell kiosztania, mivel a régi kiszolgálóról `robocopy` a helyszíni adatközpontban lévő új kiszolgálóra való várakozás során az adatok az Azure-ba való áthelyezésének folyamata gyorsabb lesz, mint Azure file Sync.
+- Csak az új fájlkiszolgálón hozzon létre egy kiszolgálói végpontot, és másolja át az adatait a régi fájlmegosztást a használatával `robocopy` . Attól függően, hogy az új kiszolgálón lévő fájlmegosztás topológiája (hány megosztás van az egyes köteteken, hogyan szabadítható fel az egyes kötetek, stb.), ideiglenesen további tárhelyet kell kiosztania, mivel a `robocopy` régi kiszolgálóról a helyszíni adatközpontban lévő új kiszolgálóra való várakozás során az adatok az Azure-ba való áthelyezésének folyamata gyorsabb lesz, mint Azure file Sync.
 
 A Data Box segítségével áttelepítheti az adatAzure File Sync üzembe helyezési szolgáltatásait is. Az idő nagy részében, amikor az ügyfelek a Data Box az adatok betöltéséhez szeretnék használni, azért, mert úgy gondolják, hogy növeli az üzembe helyezés sebességét, vagy azért, mert ez segít a korlátozott sávszélesség-forgatókönyvek esetén. Habár igaz, hogy a Azure File Sync üzembe helyezése során az adatok betöltésére szolgáló Data Box használata csökkenti a sávszélesség-kihasználtságot, valószínűleg gyorsabb lesz a legtöbb forgatókönyv esetén, hogy online adatfeltöltés történjen a fent ismertetett módszerek egyikével. Ha többet szeretne megtudni arról, hogyan használhatók a Data Box az adatAzure File Sync üzembe helyezéséhez, olvassa el a következő témakört: az [adatáttelepítés a Azure file Syncba Azure Data Box](storage-sync-offline-data-transfer.md).
 

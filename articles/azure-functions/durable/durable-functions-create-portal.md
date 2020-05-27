@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Function
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120146"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848760"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -57,6 +57,8 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 4. A `package.json` feltöltése után futtassa a parancsot a `npm install` kudu távoli végrehajtási konzolon.
 
    ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. Végül (a kompatibilitási mód engedélyezése) [ https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ] egy, a `FUNCTIONS_V2_COMPATIBILITY_MODE` értékkel rendelkező Alkalmazásbeállítás hozzáadásával `true` .
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 

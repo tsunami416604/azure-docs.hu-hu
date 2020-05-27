@@ -12,15 +12,15 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/27/2020
-ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/26/2020
+ms.openlocfilehash: 66c2c5e52ef81f74f7177af897f33eec4ae1779e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654628"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860643"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a felügyelt Azure SQL Database-példányok naplózásával
+# <a name="azure-sql-database-managed-instance-auditing"></a>Felügyelt példányok naplózása Azure SQL Database
 
 A [felügyelt példányok](sql-database-managed-instance.md) naplózása nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat. A naplózás további előnyei:
 
@@ -37,7 +37,9 @@ A következő szakasz ismerteti a felügyelt példány naplózásának konfigur�
    1. Navigáljon az Azure Storage-ba, ahol a naplókat tárolni szeretné.
 
       > [!IMPORTANT]
-      > A régiók közötti olvasási/írási műveletek elkerülése érdekében használjon a felügyelt példányokkal megegyező régióban található Storage-fiókot. Ha a Storage-fiók egy Virtual Network vagy egy tűzfal mögött található, tekintse meg [a virtuális hálózatról való hozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)című témakört.
+      > - A régiók közötti olvasási/írási műveletek elkerülése érdekében használjon a felügyelt példányokkal megegyező régióban található Storage-fiókot. 
+      > - Ha a Storage-fiók egy Virtual Network vagy egy tűzfal mögött található, tekintse meg [a virtuális hálózatról való hozzáférés engedélyezése](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)című témakört.
+      > - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
    1. A Storage-fiókban válassza az **Áttekintés** lehetőséget, majd kattintson a **Blobok**elemre.
 

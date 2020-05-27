@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744555"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849025"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>Fizetés a kereskedelmi piactéren
+# <a name="getting-paid-in-the-commercial-marketplace"></a>Fizetés a kereskedelmi piactéren
 
 Íme néhány fontos információ az ajánlatok, bővítmények és hirdetési bevételek fizetésének fogadásáról.
 
@@ -43,17 +43,15 @@ Lehetősége van arra is, hogy egy adott piac helyi pénznemében adja meg a vá
 
 Ne feledje, hogy a kiválasztott díj olyan értékesítési vagy értéknövelt adót is tartalmazhat, amelyet az ügyfeleknek fizetniük kell. Részletekért lásd [a fizetős ajánlat adózási adatait](tax-details-paid-transactions.md).
 
-
 ## <a name="payout-reporting"></a>Kifizetési jelentéskészítés
 
 A fizetési adatok részleteit a [partner Center](https://partner.microsoft.com/dashboard) **kifizetési összefoglalásával** érheti el, és letöltheti a jelentéseket. Az itt látható információkra és a keresett pénz kategorizálására vonatkozó részletekért tekintse meg a [kifizetési összefoglalás áttekintése](payout-summary-overview.md)című témakört.
-
 
 ## <a name="payout-time-frame"></a>Kinyerési idő kerete
 
 A kifizetések havi rendszerességgel történnek (feltéve, hogy a vonatkozó fizetési küszöbérték teljesült, és az alább leírtak szerint nem helyezte el a befizetését). A hónap 15. napján egy adott hónapban esedékes fizetési díj általában elküldhető. Vegye figyelembe, hogy a kifizetések általában 3 – 10 további munkanapot vesznek igénybe, hogy elérjék a kifizetési fiókját. Részletekért lásd: [fizetési küszöbértékek, metódusok és időbeli keretek](payment-thresholds-methods-timeframes.md).
 
-##  <a name="payout-hold-status"></a>Kifizetés holdjának állapota
+## <a name="payout-hold-status"></a>Kifizetés holdjának állapota
 
 Alapértelmezés szerint a fentiekben leírtak szerint havi rendszerességgel küldjük el a kifizetéseket. Lehetősége van azonban arra is, hogy a kifizetéseit egy megtartott programba helyezi, ami megakadályozza, hogy kifizesse a fiókját. Ha úgy dönt, hogy megtartja a befizetését, továbbra is rögzítjük a beszerzett bevételt, és megadhatjuk a **nyeremények összegzésének**részleteit. Azonban addig nem küldünk fizetést a fiókjába, amíg el nem távolítja a tárolót.
 

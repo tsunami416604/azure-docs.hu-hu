@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835393"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849756"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
 
@@ -268,7 +268,7 @@ A grafikus szerzői műveletek olyan tevékenységek által létrehozott adatoka
 
 ## <a name="work-with-powershell-expressions"></a>PowerShell-kifejezések használata
 
-A grafikus szerzői műveletek egyik előnye, hogy lehetővé teszi, hogy runbook hozzon létre a PowerShell minimális ismeretével. Jelenleg azonban ismernie kell egy kicsit a PowerShellt bizonyos [Paraméterek értékének](#use-activities) és a [kapcsolati feltételek](#use-links-for-workflow)beállításának a megadásához. Ez a szakasz a PowerShell-kifejezések gyors bevezetését ismerteti. A PowerShell részletes adatai a [Windows PowerShell-lel való parancsfájlkezelésben](https://technet.microsoft.com/library/bb978526.aspx)érhetők el.
+A grafikus szerzői műveletek egyik előnye, hogy lehetővé teszi, hogy runbook hozzon létre a PowerShell minimális ismeretével. Jelenleg azonban ismernie kell egy kicsit a PowerShellt bizonyos [Paraméterek értékének](#use-activities) és a [kapcsolati feltételek](#use-links-for-workflow)beállításának a megadásához. Ez a szakasz a PowerShell-kifejezések gyors bevezetését ismerteti. A PowerShell részletes adatai a [Windows PowerShell-lel való parancsfájlkezelésben](https://docs.microsoft.com/powershell/scripting/overview)érhetők el.
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>PowerShell-kifejezés használata adatforrásként
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: dd16753a9b057e441884b0a6a019701766aaa321
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 630769cb9b73a9cbec09085384557bb57ae9c116
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73821394"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848991"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-minták az Azure SQL Database-hez
 
@@ -79,6 +79,6 @@ További információ a [felügyelt példány Azure POWERSHELL API](sql-database
 
 ---
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 Az ezen a lapon felsorolt példák az Azure SQL-erőforrások létrehozására és kezelésére szolgáló [Azure SQL Database-parancsmagokat](/powershell/module/az.sql/) használják. A lekérdezések futtatására szolgáló további parancsmagok és számos adatbázis-feladat végrehajtása a [SQLServer](/powershell/module/sqlserver/) modulban található. További információ: [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

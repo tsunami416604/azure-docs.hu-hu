@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 58f74ab060fef32de31cb91653a1bd38ad946934
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/25/2020
+ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725635"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848874"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyamok leképezését ismertető oktatóvideók
 
@@ -51,6 +51,8 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 
 [Keresési transzformáció](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
+[Keresési transzformációs frissítések & tippek](https://youtu.be/MBskWoeuTLw)
+
 [Kimutatás átalakítása](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
 [Pivot-átalakítás: felsodródott oszlopok leképezése](https://youtu.be/5MygzCX0wnM)
@@ -58,6 +60,8 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 [Átalakítás kiválasztása](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
 [Átalakítás kiválasztása: szabály alapú leképezés](https://youtu.be/5lf1lh1qMwU)
+
+[Átalakítás kiválasztása: nagyméretű adatkészletek](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
 [Helyettes kulcs átalakítása](https://www.youtube.com/watch?v=ISpegL9CbTM)
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197852"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848821"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -31,12 +31,12 @@ Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségein
 
 A módosítások érvénybe léptetésének dátuma:
 
-| Felhő               | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma      |
-|---------------------|--------------------|-------------------------|
-| Azure (globális)      |  2020. január 13.  | Május 11., 2020            |
-| Azure Government    |  Március 13., 2020    | Május 11., 2020            |
-| Azure Germany       |  Március 13., 2020    | Május 11., 2020            |
-| Azure China         |  Március 13., 2020    | Május 11., 2020            |
+| Felhő                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma      |
+|----------------------|--------------------|-------------------------|
+| Azure (globális)       |  2020. január 13.  | Május 11., 2020            |
+| Azure Government     |  Március 13., 2020    | Május 11., 2020            |
+| Azure Germany        |  Március 13., 2020    | Május 11., 2020            |
+| Azure China 21Vianet |  Március 13., 2020    | Május 11., 2020            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzését, hogy az alkalmazás már megfelelő-e
 
@@ -55,7 +55,12 @@ A Redis .NET-ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót haszn
 
 ### <a name="net-core"></a>.NET Core
 
-A Redis .NET Core-ügyfelek alapértelmezés szerint a legújabb TLS-verziót használják.
+A .NET Core-ügyfelek alapértelmezés szerint az operációs rendszer alapértelmezett TLS-verziójára Redis, ami nyilvánvalóan az operációs rendszertől függ. 
+
+Attól függően, hogy mikor adták ki az operációs rendszert, és ha bármilyen más javítás módosította az alapértelmezett TLS-verziót, az operációs rendszer TLS-verziója meglehetősen változatos lehet. Habár nem áll rendelkezésre teljes információ erről a Windows operációs rendszerhez, pontosabban [itt](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)talál további információt. 
+
+Ha azonban egy régebbi operációs rendszert használ, vagy csak azt szeretné, hogy az ügyfélen keresztül manuálisan konfigurálja az előnyben részesített TLS-verziót.
+
 
 ### <a name="java"></a>Java
 

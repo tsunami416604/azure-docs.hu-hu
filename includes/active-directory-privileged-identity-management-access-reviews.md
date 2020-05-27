@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67476247"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868015"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Egy vagy több hozzáférési felülvizsgálat létrehozása
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476247"
     ![Felhasználói hatókör a szerepkör tagságának áttekintéséhez](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Egynél több szerepkör kiválasztásával több hozzáférési felülvizsgálat jön létre. Ha például öt szerepkört választ ki, öt külön hozzáférési felülvizsgálatot fog létrehozni.
+    > - Az itt kiválasztott szerepkörök [állandó és jogosult szerepköröket](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)is tartalmaznak.
+    > - Egynél több szerepkör kiválasztásával több hozzáférési felülvizsgálat jön létre. Ha például öt szerepkört választ ki, öt külön hozzáférési felülvizsgálatot fog létrehozni.
 
-    Ha Azure AD-szerepkörök hozzáférési felülvizsgálatát hozza létre, a következő példa a tagság áttekintése listára mutat.
+    Ha **Azure ad-szerepkörök**hozzáférési felülvizsgálatát hozza létre, a következő példa a tagság áttekintése listára mutat.
 
     ![Tekintse át a tagság ablaktáblát, amely felsorolja a választható Azure AD-szerepköröket](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Ha az Azure-erőforrás szerepköreinek hozzáférési felülvizsgálatát hozza létre, a következő példa a tagság áttekintése listára mutat.
+    Ha az **Azure-erőforrás szerepköreinek**hozzáférési felülvizsgálatát hozza létre, a következő képen egy példa látható a tagság áttekintése listára.
 
     ![Tekintse át a tagság ablaktáblát, amely felsorolja a választható Azure-erőforrás-szerepköröket](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

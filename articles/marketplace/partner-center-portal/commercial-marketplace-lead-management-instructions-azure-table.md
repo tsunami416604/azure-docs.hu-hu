@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791017"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848014"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -123,7 +123,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
 1. A **feltétel** ablakban válassza az **érték kiválasztása**lehetőséget. Ezután válassza ki a **kifejezést** az előugró ablakban.
 
-1. Illessze `length(body('Get_entities')?['value'])` be az **FX** Box-ba. A függvény hozzáadásához kattintson **az OK gombra** . 
+1. Illessze be `length(body('Get_entities')?['value'])` az **FX** Box-ba. A függvény hozzáadásához kattintson **az OK gombra** . 
 
 1. A feltétel beállításának befejezéséhez:
     1. A Select **érték nagyobb, mint** a legördülő listából.
@@ -151,7 +151,7 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 
     1. Ide: adjon meg egy e-mail-címet mindenki **számára, aki**megkapja ezt az értesítést.
     1. **Tárgy**: adjon meg egy tárgyat az e-mailhez. Ilyenek például az **új érdeklődők!**
-    1. **Törzs**: adja hozzá az egyes e-mailekben szerepeltetni kívánt szöveget (opcionális), majd illessze be `body('Get_entities')?['value']`.
+    1. **Törzs**: adja hozzá az egyes e-mailekben szerepeltetni kívánt szöveget (opcionális), majd illessze be `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >További statikus vagy dinamikus adatpontokat is beszúrhat az e-mailek törzséhez.
@@ -182,8 +182,9 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Nyissa meg az ajánlat **telepítési** lapját.
 
-1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban.
-     ![Érdeklődők kezelése](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. Az **ügyfél-érdeklődők** szakaszban válassza a **kapcsolat**lehetőséget.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Ügyfél-érdeklődők":::
 
 1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez**. 
      ![Érdeklődők felügyelete, kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
@@ -193,7 +194,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. **Kapcsolattartási e-mail cím**: adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

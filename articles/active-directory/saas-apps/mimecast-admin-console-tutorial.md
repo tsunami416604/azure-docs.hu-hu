@@ -11,251 +11,217 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 05/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 276a1acb5735e3490f331000799d57c329e7fca0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160654"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848536"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Oktatóanyag: Azure Active Directory integráció a Mimecast felügyeleti konzollal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Mimecast felügyeleti konzollal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Mimecast felügyeleti konzolt Azure Active Directory (Azure AD) használatával.
-A Mimecast felügyeleti konzol Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Mimecast felügyeleti konzolt Azure Active Directory (Azure AD) használatával. A Mimecast felügyeleti konzol Azure AD-vel való integrálásakor a következőket teheti:
 
-* A Mimecast felügyeleti konzolhoz hozzáférő Azure AD-ben is szabályozható.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Mimecast felügyeleti konzolba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A Mimecast felügyeleti konzolhoz hozzáférő Azure AD-beli vezérlés.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek a Mimecast felügyeleti konzolba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció a Mimecast felügyeleti konzollal való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Mimecast felügyeleti konzol egyszeri bejelentkezésre engedélyezett előfizetése
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Mimecast felügyeleti konzol egyszeri bejelentkezéses (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Mimecast felügyeleti konzol támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Mimecast felügyeleti konzol támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A Mimecast felügyeleti konzol konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>Mimecast felügyeleti konzol hozzáadása a gyűjteményből
 
 A Mimecast felügyeleti konzol Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Mimecast felügyeleti konzolt a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Mimecast felügyeleti konzoljának a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Mimecast felügyeleti konzol** kifejezést a keresőmezőbe.
+1. Válassza ki a **Mimecast felügyeleti konzolját** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Mimecast felügyeleti konzolon
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Mimecast felügyeleti konzollal a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Mimecast felügyeleti konzolon.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a Mimecast felügyeleti konzol konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[Mimecast felügyeleti konzol egyszeri bejelentkezésének konfigurálása](#configure-mimecast-admin-console-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. A **[Mimecast felügyeleti konzoljának tesztelése felhasználó](#create-mimecast-admin-console-test-user)** – ha a Mimecast felügyeleti konzolon található, a felhasználó Azure ad-képviseletéhez csatolt B. Simon-ügyféllel rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be a **Mimecast felügyeleti konzol**kifejezést, válassza a **Mimecast felügyeleti konzol** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A [Azure Portal](https://portal.azure.com/)a **Mimecast felügyeleti konzol** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Mimecast felügyeleti konzol az eredmények listájában](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást identitásszolgáltató kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Mimecast felügyeleti konzollal konfigurálhatja és tesztelheti a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Mimecast felügyeleti konzolon található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-Az Azure AD egyszeri bejelentkezés a Mimecast felügyeleti konzollal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+    | Régió  |  Érték | 
+    | --------------- | --------------- |
+    | Európa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
+    | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | Dél-afrikai Köztársaság    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Ausztrália       | `https://au-api.mimecast.com/sso/<accountcode>`|
+    | Offshore szoftverfejlesztési        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Mimecast felügyeleti konzol egyszeri bejelentkezésének konfigurálása](#configure-mimecast-admin-console-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. A **[Mimecast felügyeleti konzoljának tesztelése felhasználó](#create-mimecast-admin-console-test-user)** – a Mimecast felügyeleti konzolján található, a felhasználó Azure ad-Britta összekapcsolt.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+    > [!NOTE]
+    > A `accountcode` Mimecast felügyeleti konzolon található értéket a **Fiókbeállítások**  >  **Settings**  >  **fiók kódja**területen találja. Fűzze hozzá az `accountcode` azonosítót az azonosítóhoz.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet: 
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+    | Régió  |  Érték | 
+    | --------------- | --------------- | 
+    | Európa          | `https://eu-api.mimecast.com/login/saml`|
+    | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
+    | Dél-afrikai Köztársaság    | `https://za-api.mimecast.com/login/saml`|
+    | Ausztrália       | `https://au-api.mimecast.com/login/saml`|
+    | Offshore szoftverfejlesztési        | `https://jer-api.mimecast.com/login/saml`|
 
-Az Azure AD egyszeri bejelentkezés a Mimecast felügyeleti konzollal való konfigurálásához hajtsa végre a következő lépéseket:
+1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Mimecast felügyeleti konzol** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet: 
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    | Régió  |  Érték | 
+    | --------------- | --------------- | 
+    | Európa          | `https://login-eu.mimecast.com/administration/app/#/administration-dashboard`|
+    | Egyesült Államok   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|
+    | Dél-afrikai Köztársaság    | `https://login-za.mimecast.com/administration/app/#/administration-dashboard`|
+    | Ausztrália       | `https://login-au.mimecast.com/administration/app/#/administration-dashboard`|
+    | Offshore szoftverfejlesztési        | `https://login-jer.mimecast.com/administration/app/#/administration-dashboard`|
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+1. Kattintson a **Save** (Mentés) gombra.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    ![Mimecast felügyeleti konzol tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
-
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet:
-    
-    | |
-    | -- |
-    | `https://webmail-uk.mimecast.com`|
-    | `https://webmail-us.mimecast.com`|
-
-    > [!NOTE] 
-    > A bejelentkezési URL-cím a régióra jellemző.
-
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
-
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
-
-6. A **Mimecast felügyeleti konzoljának beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
-
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
-
-    b. Azure ad-azonosító
-
-    c. Kijelentkezési URL-cím
-
-### <a name="configure-mimecast-admin-console-single-sign-on"></a>A Mimecast felügyeleti konzol egyszeri bejelentkezésének konfigurálása
-
-1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Mimecast felügyeleti konzolba.
-
-2. Lépjen a **Services \> alkalmazáshoz**.
-
-    ![Szolgáltatások](./media/mimecast-admin-console-tutorial/ic794998.png "Szolgáltatások")
-
-3. Kattintson a **hitelesítési profilok**elemre.
-
-    ![Hitelesítési profilok](./media/mimecast-admin-console-tutorial/ic794999.png "Hitelesítési profilok")
-    
-4. Kattintson az **új hitelesítési profil**elemre.
-
-    ![Új hitelesítési profilok](./media/mimecast-admin-console-tutorial/ic795000.png "Új hitelesítési profilok")
-
-5. A **hitelesítési profil** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Hitelesítési profil](./media/mimecast-admin-console-tutorial/ic795015.png "Hitelesítési profil")
-    
-    a. A **Leírás** szövegmezőbe írja be a konfiguráció nevét.
-    
-    b. Válassza **az SAML-hitelesítés kikényszerítve a Mimecast felügyeleti konzolon**lehetőséget.
-    
-    c. **Szolgáltatóként**válassza a **Azure Active Directory**lehetőséget.
-    
-    d. Illessze be az **Azure ad-azonosítót**, amelyet a Azure Portal a **kiállító URL** szövegmezőbe másolt.
-    
-    e. Illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal a **bejelentkezési URL** szövegmezőbe másolt.
-
-    f. Illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal a **kijelentkezési URL-** szövegmezőbe másolt.
-    
-    >[!NOTE]
-    >A bejelentkezési URL-cím és a kijelentkezési URL-cím értéke megegyezik a Mimecast felügyeleti konzoljának értékével.
-    
-    g. Nyissa meg Azure Portal a Jegyzettömbben letöltött Base-64 tanúsítványt, távolítsa el az első sort*--*("") és az utolsó sort*--*(""), másolja a vágólapra a fennmaradó tartalmat, majd illessze be az **Identity Provider Certificate (metadata)** szövegmezőbe.
-    
-    h. Jelölje be **az egyszeri bejelentkezés engedélyezése**jelölőnégyzetet.
-    
-    i. Kattintson a **Save** (Mentés) gombra.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás**gombra.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás**gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Mimecast felügyeleti konzolhoz.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Mimecast felügyeleti konzolhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Mimecast felügyeleti konzol**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Mimecast felügyeleti konzol**elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-2. Az alkalmazások listában írja be és válassza a **Mimecast felügyeleti konzol**elemet.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A Mimecast felügyeleti konzoljának hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+## <a name="configure-mimecast-admin-console-sso"></a>A Mimecast felügyeleti konzol egyszeri bejelentkezésének konfigurálása
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+1. Egy másik böngészőablakban jelentkezzen be a Mimecast felügyeleti konzolba.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+1. Navigáljon a **felügyeleti**  >  **szolgáltatások**  >  **alkalmazásaihoz**.
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/services.png)
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Kattintson a **hitelesítési profilok** fülre.
+    
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. Kattintson az **új hitelesítési profil** fülre.
+
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+
+1. Adjon meg egy érvényes leírást a **Leírás** szövegmezőben, és válassza az **SAML-hitelesítés kikényszerítve a felügyeleti konzolon** jelölőnégyzetet.
+
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+
+1. Az **SAML-konfiguráció az adminisztrációs konzolon** lapon hajtsa végre a következő lépéseket:
+
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/sso-settings.png)
+
+    a. A **szolgáltatónál**válassza a legördülő listából a **Azure Active Directory** elemet.
+
+    b. A **metaadatok URL-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
+
+    c. Kattintson az **Importálás**gombra. A metaadatok URL-címének importálása után a mezők automatikusan fel lesznek töltve, nem kell végrehajtania semmilyen műveletet ezeken a mezőkön.
+
+    d. Ügyeljen arra, hogy szüntesse meg a **jelszóval védett környezet használatának** törlését és **az integrált hitelesítési környezet használata** jelölőnégyzeteket.
+
+    e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-mimecast-admin-console-test-user"></a>A Mimecast felügyeleti konzol tesztelési felhasználójának létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Mimecast felügyeleti konzolba, a Mimecast felügyeleti konzolon kell kiépíteni őket. A Mimecast felügyeleti konzol esetében a kiépítés manuális feladat.
+1. Egy másik böngészőablakban jelentkezzen be a Mimecast felügyeleti konzolba.
 
-* A felhasználók létrehozása előtt regisztrálnia kell egy tartományt.
+1. Navigáljon az **adminisztrációs**  >  **könyvtárak**  >  **belső könyvtáraihoz**.
 
-**A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:**
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
-1. Jelentkezzen be rendszergazdaként a **Mimecast felügyeleti konzolra** .
+1. Válassza ki a tartományt, ha a tartomány alább szerepel, máskülönben hozzon létre egy új tartományt az **új tartományra**kattintva.
 
-2. Válassza a **belső \> könyvtárak**lehetőséget.
-   
-    ![Könyvtárak](./media/mimecast-admin-console-tutorial/ic795003.png "Könyvtárak")
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/domain-name.png)
 
-3. Kattintson az **új tartomány regisztrálása**elemre.
-   
-    ![Új tartomány regisztrálása](./media/mimecast-admin-console-tutorial/ic795004.png "Új tartomány regisztrálása")
+1. Kattintson az **új címek** fülre.
 
-4. Az új tartomány létrehozása után kattintson az **új címek**elemre.
-   
-    ![Új címe](./media/mimecast-admin-console-tutorial/ic795005.png "Új címe")
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/new-address.png)
 
-5. Az új címek párbeszédpanelen hajtsa végre a következő lépéseket:
-   
-    ![Mentés](./media/mimecast-admin-console-tutorial/ic795006.png "Mentés")
-   
-    a. Írja be az **e-mail-címet**, a **globális nevet**, a **jelszót**és a **Jelszó megerősítése** attribútumot egy érvényes Azure ad-fiókhoz, amelyet a kapcsolódó szövegdobozokban szeretne kiépíteni.
+1. Adja meg a szükséges felhasználói adatokat a következő oldalon:
 
-    b. Kattintson a **Save** (Mentés) gombra.
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/user-information.png)
 
->[!NOTE]
->Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Mimecast felügyeleti konzol által biztosított Mimecast-felügyeleti konzol felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat. 
+    a. Az **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például: `B.Simon@yourdomainname.com` .
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+    b. A **globális név** szövegmezőbe írja be a felhasználó **teljes nevét** .
+
+    c. **A jelszó és** **Jelszó megerősítése** szövegmezőbe írja be a felhasználó jelszavát.
+
+    d. Válassza **a kényszerített módosítás bejelentkezéskor** jelölőnégyzetet.
+
+    e. Kattintson a **Save** (Mentés) gombra.
+
+    f. Ha szerepköröket szeretne hozzárendelni a felhasználóhoz, kattintson a **szerepkör szerkesztése** lehetőségre, és rendelje hozzá a szükséges szerepkört a felhasználóhoz a szervezete követelményeinek megfelelően.
+
+    ![Mimecast felügyeleti konzol konfigurálása](./media/mimecast-admin-console-tutorial/assign-role.png)
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
@@ -265,7 +231,12 @@ Ha a hozzáférési panelen a Mimecast felügyeleti konzol csempére kattint, au
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [A Mimecast felügyeleti konzol kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A Mimecast felügyeleti konzoljának védetté tétele fejlett láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

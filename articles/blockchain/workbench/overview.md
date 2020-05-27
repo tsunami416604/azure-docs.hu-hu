@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain Workbench előzetes verziójának áttekintése
 description: Az Azure Blockchain Workbench előzetes verziójának és képességeinek áttekintése.
-ms.date: 09/05/2019
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 65eea1b87daf31908d96e95bff0c12b72e4791c6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9f2eafb892be4134d4fb178235249e5640544459
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835903"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850028"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Mi az Azure Blockchain Workbench?
 
@@ -55,7 +55,7 @@ Ha visszajelzést szeretne küldeni a termékről, vagy új funkciókat szeretne
 
 Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
 
-* [Microsoft Q&az Azure Blockchain kapcsolatos kérdések oldalára](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [A Microsoft Q&az Azure Blockchain Workbench kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

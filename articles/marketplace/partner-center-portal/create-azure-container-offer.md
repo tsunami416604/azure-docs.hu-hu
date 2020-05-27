@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 75baddbefc2babf73fee18cafe07177a3f0fb6f2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701028"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848804"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
@@ -59,7 +59,7 @@ Ezen az oldalon különböző hivatkozások jelennek meg az ajánlat aktuális �
 
 Az ajánlat beállításához kövesse az alábbi lépéseket.
 
-### <a name="connect-lead-management--optional"></a>Az érdeklődők felügyeletének összekötése – nem kötelező
+### <a name="customer-leads--optional"></a>Ügyfél-érdeklődők – nem kötelező
 
 Ha az ajánlatot a kereskedelmi piactéren a partner centerrel teszi közzé, akkor azt az Ügyfélkapcsolat-kezelési (CRM) rendszerhez is összekapcsolhatjuk. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket.
 
@@ -144,7 +144,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

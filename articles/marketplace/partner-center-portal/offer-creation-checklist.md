@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281340"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850011"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS-ajánlatlétrehozási ellenőrzőlista
 
@@ -20,7 +20,7 @@ Az SaaS-ajánlat létrehozási folyamata több oldalt is igénybe vesz. Az egyes
 
 Az alább megadott vagy megadható elemek szerepelnek. Bizonyos területek nem kötelezőek, vagy a megadott alapértelmezett értékekkel rendelkeznek, amelyeket igény szerint módosíthat. Ezeket a részeket az itt felsorolt sorrendben nem kell feldolgoznia.
 
-| **Elem**    | **Cél**  |
+| **Item**    | **Cél**  |
 | :---------- | :-------------------|
 | [**Új ajánlat – modális**](#new-offer-modal) | Az ajánlatok azonosító adatait gyűjti.  |
 | [Ajánlat beállítása lap](#offer-setup-page) | Lehetővé teszi, hogy belépjen a főbb funkciók használatára, és válassza ki, hogyan értékesítheti ajánlatát a Microsofton keresztül.  |
@@ -58,7 +58,7 @@ Az ajánlat beállítása oldalon különböző csatornákat és mozgásokat leh
 | Csatornák  | Választható. Alapértelmezett: nincs bekapcsolva a CSP (viszonteladó) csatornába.  |
 | Tesztverzió | Választható. Alapértelmezés: nincs engedélyezve a tesztelési meghajtó.  |
 | A tesztelési meghajtó típusa | A tesztelési meghajtó engedélyezése kötelező. Alapértelmezés: nincs kiválasztva. Beállítások: Azure Resource Manager, Dynamics 365 for Business Central, Dynamics 365 a Customer engagement, a Dynamics 365 for Operations, a Logic apps, a Power BI.  |
-| Vezető felügyelet – kapcsolódás CRM rendszerhez | Akkor szükséges, ha a Microsofton keresztül forgalmaz, vagy ha a lista a "Kapcsolatfelvétel" lehetőséget kínálja. Alapértelmezett: nincs csatlakoztatva CRM-rendszer. CRM-lehetőségek: Azure Table, Azure Blob, Dynamics CRM Online, HTTPs végpont, Marketo, Salesforce  |
+| Ügyfél-érdeklődők – kapcsolódás CRM rendszerhez | Akkor szükséges, ha a Microsofton keresztül forgalmaz, vagy ha a lista a "Kapcsolatfelvétel" lehetőséget kínálja. Alapértelmezett: nincs csatlakoztatva CRM-rendszer. CRM-lehetőségek: Azure Table, Azure Blob, Dynamics CRM Online, HTTPs végpont, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Tulajdonságok lap
 
@@ -78,7 +78,7 @@ A tőzsdei oldalon megadhatja, hogy az ügyfelek milyen szövegeket és képeket
 
 | **Mezőnév**    | **Megjegyzések**   |
 | :---------------- | :-----------| 
-| Name (Név)  | Kötelező, Max 50 karakter. |
+| Name  | Kötelező, Max 50 karakter. |
 | Összefoglalás  | Kötelező, Max 100 karakter. | 
 | Leírás  | Kötelező, Max 3000 karakter. |
 | Első lépések utasítások  | Kötelező, Max 3000 karakter. |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dca235374ca20ef8a17e685706f952127d5ece2a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926187"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869435"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása a Azure Active Directory B2Cban
 
@@ -54,7 +54,7 @@ A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [hozzáférési tokenek használatáról](access-tokens.md).
+További információ a [hozzáférési tokenek igényléséről](access-tokens.md).
 
 
 

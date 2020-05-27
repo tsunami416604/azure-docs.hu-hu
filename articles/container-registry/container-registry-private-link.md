@@ -3,12 +3,12 @@ title: Privát hivatkozás beállítása
 description: Privát végpont beállítása egy tároló-beállításjegyzékben, és hozzáférés engedélyezése privát hivatkozáson keresztül egy helyi virtuális hálózaton
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701398"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850045"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Private-hivatkozás konfigurálása Azure Container registryhez 
 
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lap nyilvános **hozzáférés engedélyezése**területén válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
 
 ## <a name="validate-private-link-connection"></a>Privát kapcsolati kapcsolat ellenőrzése
 

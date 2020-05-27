@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: feea0266b3a724f3d85944073a47e260277cc362
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72025677"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860018"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -37,32 +37,32 @@ A zökkenőmentes egyszeri bejelentkezés ingyenes szolgáltatás, és nincs sz�
 
 **K: a [Microsoft Azure Germany felhőben](https://www.microsoft.de/cloud-deutschland) és a [Microsoft Azure Government felhőben](https://azure.microsoft.com/features/gov/)is elérhető a zökkenőmentes egyszeri bejelentkezés?**
 
-Nem. A zökkenőmentes egyszeri bejelentkezés csak az Azure AD világméretű példányában érhető el.
+A Azure Government felhőhöz zökkenőmentes egyszeri bejelentkezés érhető el. A részletekért tekintse meg [a Azure Government hibrid identitásával kapcsolatos szempontokat](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud).
 
-**K: milyen alkalmazásokat használ a zökkenőmentes `domain_hint` egyszeri `login_hint` bejelentkezés vagy a paraméter funkció?**
+**K: milyen alkalmazásokat használ a `domain_hint` `login_hint` zökkenőmentes egyszeri bejelentkezés vagy a paraméter funkció?**
 
 Az alábbiakban felsoroljuk azokat az alkalmazásokat, amelyek elküldhetik ezeket a paramétereket az Azure AD-be, így a felhasználók csendes bejelentkezési élményt biztosítanak a zökkenőmentes egyszeri bejelentkezés (azaz nem szükséges, hogy a felhasználók be tudják írni a felhasználóneveket vagy a jelszavukat):
 
 | Alkalmazásnév | Használandó alkalmazás-URL-cím |
 | -- | -- |
-| Hozzáférési panel | https:\//MyApps.microsoft.com/contoso.com |
-| Webes Outlook | https:\//Outlook.office365.com/contoso.com |
-| Office 365 portálok | https:\//portal.office.com? domain_hint = contoso. com, https:\//www.Office.com? domain_hint = contoso. com |
+| Hozzáférési panel | https: \/ /MyApps.microsoft.com/contoso.com |
+| Webes Outlook | https: \/ /Outlook.office365.com/contoso.com |
+| Office 365 portálok | https: \/ /Portal.Office.com? domain_hint = contoso. com, https: \/ /www.office.com? domain_hint = contoso. com |
 
-Emellett a felhasználók csendes bejelentkezési élményt kapnak, ha egy alkalmazás olyan bejelentkezési kérelmeket küld az Azure AD-végpontoknak, amelyek bérlőként vannak beállítva – vagyis https:\//login.microsoftonline.com/contoso.com/<.. > vagy https:\//login.microsoftonline.com/<tenant_ID>/<.. > – az Azure AD közös végpontja helyett – vagyis a https:\//login.microsoftonline.com/common/<... >. Az alábbi lista az ilyen típusú bejelentkezési kérelmeket elvégező alkalmazások nem teljes listáját tartalmazza.
+Emellett a felhasználók csendes bejelentkezési élményt kapnak, ha egy alkalmazás olyan bejelentkezési kérelmeket küld az Azure AD-végpontoknak, amelyek bérlőként vannak beállítva – vagyis https: \/ /login.microsoftonline.com/contoso.com/<.. > vagy https: \/ /login.microsoftonline.com/<tenant_ID>/<.. > – az Azure AD közös végpontja helyett – vagyis a https: \/ /login.microsoftonline.com/common/<... >. Az alábbi lista az ilyen típusú bejelentkezési kérelmeket elvégező alkalmazások nem teljes listáját tartalmazza.
 
 | Alkalmazásnév | Használandó alkalmazás-URL-cím |
 | -- | -- |
-| SharePoint Online | https:\//contoso.SharePoint.com |
-| Azure Portal | https:\//Portal.Azure.com/contoso.com |
+| SharePoint Online | https: \/ /contoso.SharePoint.com |
+| Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
 
 A fenti táblázatokban cserélje le a "contoso.com" kifejezést a tartománynevére, hogy a bérlőnek megfelelő alkalmazás URL-címei legyenek.
 
 Ha azt szeretné, hogy más alkalmazások is csendes bejelentkezési élményt használjanak, tudassa velünk a visszajelzések szakaszban.
 
-**K: támogatja `Alternate ID` a zökkenőmentes egyszeri bejelentkezést a Felhasználónév helyett `userPrincipalName`?**
+**K: támogatja a zökkenőmentes egyszeri bejelentkezést `Alternate ID` a Felhasználónév helyett `userPrincipalName` ?**
 
-Igen. A zökkenőmentes egyszeri `Alternate ID` bejelentkezés támogatja a felhasználónevet, ha a Azure ad Connect az [itt](how-to-connect-install-custom.md)látható módon van konfigurálva. Nem minden Office 365-alkalmazás `Alternate ID`támogatja. Tekintse meg az adott alkalmazás dokumentációját a támogatási nyilatkozathoz.
+Igen. A zökkenőmentes egyszeri bejelentkezés támogatja `Alternate ID` a felhasználónevet, ha a Azure ad Connect az [itt](how-to-connect-install-custom.md)látható módon van konfigurálva. Nem minden Office 365-alkalmazás támogatja `Alternate ID` . Tekintse meg az adott alkalmazás dokumentációját a támogatási nyilatkozathoz.
 
 **K: mi a különbség az [Azure ad JOIN](../active-directory-azureadjoin-overview.md) és a zökkenőmentes SSO által nyújtott egyszeri bejelentkezés?**
 
@@ -74,9 +74,9 @@ Az Azure AD Joint és a zökkenőmentes egyszeri bejelentkezést is használhatj
 
 Igen, ehhez a forgatókönyvhöz a [munkahelyi csatlakoztatási ügyfél 2,1-](https://www.microsoft.com/download/details.aspx?id=53554)es vagy újabb verziójára van szükség.
 
-**K: Hogyan lehet átvenni a `AZUREADSSOACC` számítógépfiók Kerberos-visszafejtési kulcsát?**
+**K: Hogyan lehet átvenni a számítógépfiók Kerberos-visszafejtési kulcsát `AZUREADSSO` ?**
 
-Fontos a helyszíni AD-erdőben létrehozott `AZUREADSSOACC` számítógépfiók (amely az Azure ad-t jelképező) Kerberos-visszafejtési kulcsának gyakori átadása.
+Fontos a helyszíni `AZUREADSSO` ad-erdőben létrehozott számítógépfiók (amely az Azure ad-t jelképező) Kerberos-visszafejtési kulcsának gyakori átadása.
 
 >[!IMPORTANT]
 >Javasoljuk, hogy legalább 30 naponként átadja a Kerberos-visszafejtési kulcsot.
@@ -87,13 +87,13 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-   3. Importálja a zökkenőmentes SSO PowerShell-modult a `Import-Module .\AzureADSSO.psd1`következő parancs használatával:.
-   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja `New-AzureADSSOAuthenticationContext`meg a t. Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
-   5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs az AD-erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
+   3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
+   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
+   5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json` . Ez a parancs az AD-erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
 
    **2. lépés. Frissítse a Kerberos-visszafejtési kulcsot minden olyan AD-erdőben, amelyen be lett állítva**
 
-   1. Hívás `$creds = Get-Credential`. Ha a rendszer kéri, adja meg a kívánt Active Directory-erdő tartományi rendszergazdai hitelesítő adatait.
+   1. Hívás `$creds = Get-Credential` . Ha a rendszer kéri, adja meg a kívánt Active Directory-erdő tartományi rendszergazdai hitelesítő adatait.
 
    > [!NOTE]
    >A tartományi rendszergazdai hitelesítő adatok felhasználónevet a SAM-fiók nevének formátumában kell megadni (contoso\johndoe vagy contoso. com\johndoe). A Felhasználónév tartomány részeként a tartományi rendszergazda tartományvezérlőjét kell megkeresni a DNS használatával.
@@ -101,11 +101,11 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
    >[!NOTE]
    >A használt tartományi rendszergazdai fiók nem lehet a Protected Users csoport tagja. Ha igen, a művelet sikertelen lesz.
 
-   2. Hívás `Update-AzureADSSOForest -OnPremCredentials $creds`. Ez a parancs frissíti az adott AD-erdőben lévő `AZUREADSSOACC` számítógépfiók Kerberos-visszafejtési kulcsát, és frissíti azt az Azure ad-ben.
+   2. Hívás `Update-AzureADSSOForest -OnPremCredentials $creds` . Ez a parancs frissíti az `AZUREADSSO` adott ad-erdőben lévő számítógépfiók Kerberos-visszafejtési kulcsát, és frissíti azt az Azure ad-ben.
    3. Ismételje meg a fenti lépéseket minden olyan AD-erdőnél, amelyre beállította a szolgáltatást.
 
    >[!IMPORTANT]
-   >Győződjön meg arról _don't_ , hogy nem `Update-AzureADSSOForest` futtatja többször a parancsot. Ellenkező esetben a funkció addig leáll, amíg a felhasználó Kerberos-jegye lejár, és a helyszíni Active Directory újra kiadja.
+   >Győződjön meg arról, hogy _nem_ futtatja többször a `Update-AzureADSSOForest` parancsot. Ellenkező esetben a funkció addig leáll, amíg a felhasználó Kerberos-jegye lejár, és a helyszíni Active Directory újra kiadja.
 
 **K: Hogyan lehet letiltani a zökkenőmentes egyszeri bejelentkezést?**
 
@@ -128,9 +128,9 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-   3. Importálja a zökkenőmentes SSO PowerShell-modult a `Import-Module .\AzureADSSO.psd1`következő parancs használatával:.
-   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja `New-AzureADSSOAuthenticationContext`meg a t. Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
-   5. Hívás `Enable-AzureADSSO -Enable $false`.
+   3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
+   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
+   5. Hívás `Enable-AzureADSSO -Enable $false` .
 
    >[!IMPORTANT]
    >A zökkenőmentes egyszeri bejelentkezés letiltása a PowerShell használatával nem változtatja meg Azure AD Connect állapotát. A zökkenőmentes egyszeri bejelentkezés a **felhasználó bejelentkezési** oldalának módosítása lapon engedélyezettként jelenik meg.
@@ -141,11 +141,11 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    1. Először töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
    2. Navigáljon a `%programfiles%\Microsoft Azure Active Directory Connect` mappához.
-   3. Importálja a zökkenőmentes SSO PowerShell-modult a `Import-Module .\AzureADSSO.psd1`következő parancs használatával:.
-   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja `New-AzureADSSOAuthenticationContext`meg a t. Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
-   5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs az AD-erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
+   3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
+   4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t `New-AzureADSSOAuthenticationContext` . Ennek a parancsnak meg kell adnia egy előugró ablakban, hogy megadja a bérlő globális rendszergazdai hitelesítő adatait.
+   5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json` . Ez a parancs az AD-erdők listáját tartalmazza (tekintse meg a "tartományok" listát), amelyen a funkció engedélyezve van.
 
-   **3. lépés. Törölje kézzel a `AZUREADSSOACCT` számítógépfiókot a felsorolt ad-erdőkből.**
+   **3. lépés. Törölje kézzel a `AZUREADSSO` számítógépfiókot a felsorolt ad-erdőkből.**
 
 ## <a name="next-steps"></a>További lépések
 

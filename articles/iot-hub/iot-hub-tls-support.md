@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409496"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848245"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
 
@@ -24,7 +24,7 @@ A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: 
 
 A további biztonság érdekében javasoljuk, hogy a IoT-hubokat úgy konfigurálja, hogy *csak* a 1,2-es TLS-verziót használó ügyfélkapcsolatokat engedélyezze, és kényszerítse ki az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát.
 
-Erre a célra hozzon létre egy új IoT Hub a bármelyik [támogatott régióban](#supported-regions) , és állítsa be `minTlsVersion` a tulajdonságot a Azure Resource Manager sablon IoT hub erőforrás `1.2` -specifikációjában:
+Erre a célra hozzon létre egy új IoT Hub a bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon IoT hub erőforrás-specifikációjában:
 
 ```json
 {
@@ -54,7 +54,7 @@ Az ezzel a konfigurációval létrehozott IoT Hub erőforrás elutasítja az esz
 > [!NOTE]
 > A `minTlsVersion` tulajdonság csak olvasható, és a IoT hub-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően tesztelje és ellenőrizze *, hogy a* IoT-eszközök és-szolgáltatások kompatibilisek-e a TLS 1,2-mel és az [ajánlott titkosítási](#recommended-ciphers) megoldásokkal.
 
-### <a name="supported-regions"></a>Támogatott régiók
+## <a name="supported-regions"></a>Támogatott régiók
 
 A TLS 1,2 használatát igénylő IoT-hubok a következő régiókban hozhatók létre:
 
@@ -67,7 +67,7 @@ A TLS 1,2 használatát igénylő IoT-hubok a következő régiókban hozhatók 
 > [!NOTE]
 > Feladatátvétel esetén a `minTlsVersion` IoT hub tulajdonsága továbbra is érvényben marad a helyszíni, a feladatátvételt követő régióban.
 
-### <a name="recommended-ciphers"></a>Ajánlott titkosítási algoritmusok
+## <a name="recommended-ciphers"></a>Ajánlott titkosítási algoritmusok
 
 A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott titkosítási algoritmusok használatát is kikényszerítik:
 
@@ -76,7 +76,22 @@ A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott t
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>A TLS 1,2 használata a IoT Hub SDK-ban
+A TLS 1,2-kényszerítéshez nem konfigurált IoT-hubok esetében a TLS 1,2 továbbra is a következő titkosítási megoldásokkal működik:
+
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_CBC_SHA256`
+* `TLS_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+## <a name="use-tls-12-in-your-iot-hub-sdks"></a>A TLS 1,2 használata a IoT Hub SDK-ban
 
 Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett titkosítási algoritmusokat IoT Hub ügyféloldali SDK-k használatával.
 
@@ -89,6 +104,6 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 | NodeJS   | 1.12.2 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben
+## <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben
 
 A IoT Edge-eszközök úgy konfigurálhatók, hogy a TLS 1,2-et használják a IoT Hubval való kommunikáció során. Erre a célra használja a [IoT Edge dokumentációs oldalát](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

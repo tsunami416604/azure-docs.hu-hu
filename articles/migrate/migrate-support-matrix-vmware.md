@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a0d05c56670c54aca25232a86b5a0e89d2f0bcfd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983652"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849365"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -22,7 +22,7 @@ A VMware virtuális gépek felméréséhez létre kell hoznia egy Azure Migrate 
 --- | ---
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat.<br/><br/> Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 VMWare virtuális gépet is felderítheti és felbecsülheti. Egy projekt tartalmazhatja a fizikai kiszolgálókat és a Hyper-V virtuális gépeket is, az egyes rendszerekhez tartozó értékelési korlátokig.
 **Felfedezés** | A Azure Migrate készülék legfeljebb 10 000 VMware virtuális gépet képes felderíteni egy vCenter Server.
-**Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
+**Assessment** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
 
@@ -39,7 +39,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 **vCenter hitelesítő adatai** | Az alkalmazás-felderítésnek egy vCenter Server fiókra van szüksége, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.
 **Virtuális gép hitelesítő adatai** | Az alkalmazás-felderítés jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, valamint egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
 **VMware-eszközök** | A felderíteni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket. <br/> A VMware-eszközök verziójának későbbinek kell lennie, mint 10.2.0.
-**PowerShell** | A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
+**PowerShell** | A Windows rendszerű virtuális gépeken telepíteni kell a PowerShell 2,0-es vagy újabb verzióját.
 **Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
 **Korlátok** | Az App-Discovery esetében akár 10000 virtuális gépet is felderítheti az egyes Azure Migrate berendezéseken.
 
@@ -53,7 +53,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 **vCenter Server** | A felderítéshez és értékeléshez használni kívánt gépeket a 5,5, 6,0, 6,5 vagy 6,7 vCenter Server-es verzióval kell felügyelni.
 **Engedélyek (Assessment)** | írásvédett fiók vCenter Server.
 **Engedélyek (App-Discovery)** | vCenter Server fiók csak olvasási hozzáféréssel, és a virtuális gépek számára engedélyezett jogosultságokkal **> vendég műveletekkel**.
-**Engedélyek (függőségi vizualizáció)** | vCenter Server fiók írásvédett hozzáféréssel, valamint a **virtuális gépek** > **vendég műveleteihez**engedélyezett jogosultságokkal.
+**Engedélyek (függőségi vizualizáció)** | vCenter Server fiók írásvédett hozzáféréssel, valamint a **virtuális gépek**  >  **vendég műveleteihez**engedélyezett jogosultságokkal.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
@@ -105,7 +105,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Szükséges ügynökök** | Nem szükséges ügynök az elemezni kívánt gépeken.
 **VMware-eszközök** | Az elemezni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket (a 10,2-nál újabb).
 **hitelesítő adatok vCenter Server** | A függőségi vizualizációhoz egy vCenter Server fiókra van szükség, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik. 
-**PowerShell** | A virtuális gépeken telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójának.
+**PowerShell** | A Windows rendszerű virtuális gépeken telepíteni kell a PowerShell 2,0-es vagy újabb verzióját.
 **Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
 
 

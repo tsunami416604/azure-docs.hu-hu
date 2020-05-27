@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701130"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849093"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
 
@@ -62,7 +62,7 @@ Hivatkozásokat tartalmaz az ajánlaton végzett műveletekre, az Ön által vá
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-### <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
+### <a name="customer-leads"></a>Ügyfél-érdeklődők
 
 Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor azt az Ügyfélkapcsolat-kezelési (CRM) rendszerhez kell kötnie. Ez lehetővé teszi az ügyfelek kapcsolattartási adatainak megszerzését, amint valaki érdeklődik a termék iránt, vagy használja a terméket.
 
@@ -159,7 +159,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

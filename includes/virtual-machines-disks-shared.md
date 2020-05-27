@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 57b6bf06e34068b5560829838eb9ee1315df6cde
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778255"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868023"
 ---
 Az Azure Shared Disks (előzetes verzió) az Azure Managed Disks új funkciója, amely lehetővé teszi a felügyelt lemezek egyidejű csatolását több virtuális géphez (VM). A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
@@ -37,14 +37,14 @@ A megosztott felügyelt lemezek nem natív módon biztosítanak egy teljes kör�
 
 ### <a name="windows"></a>Windows
 
-A legtöbb Windows-alapú fürtözés a WSFC-ra épül, amely az összes alapvető infrastruktúrát kezeli a fürt csomópontjainak kommunikációjában, így az alkalmazások kihasználhatják a párhuzamos hozzáférési minták előnyeit. A WSFC a Windows Server verziójától függően CSV-és nem CSV-alapú beállításokat is lehetővé tesz. További részletekért tekintse meg a [feladatátvevő fürt létrehozása](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)című témakört.
+A legtöbb Windows-alapú fürtözés a WSFC-re épít, amely a fürtcsomópontok kommunikációjának alapvető infrastruktúráját kezeli, lehetővé téve az alkalmazások számára a párhuzamos hozzáférési minták kihasználását. A WSFC a Windows Server verziójától függően a CSV- és nem CSV-alapú beállításokat is elérhetővé teszi. A részleteket lásd: [Feladatátvevő fürt létrehozásához](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
 
-A WSFC-on futó népszerű alkalmazások többek között a következők:
+Néhány a WSFC-n futó népszerű alkalmazások közül:
 
-- SQL Server feladatátvevő fürt példányai (%-ban)
+- Az SQL Server fürtözött feladatátvételi példánya (FCI)
 - Kibővíthető fájlkiszolgáló (SoFS)
-- Általános célú fájlkiszolgáló (IW munkaterhelés)
-- Távoli asztal Server felhasználói profil lemeze (RDS UPD)
+- Általános célú fájlkiszolgáló (IW számítási feladat)
+- Távoli asztali kiszolgáló felhasználói profillemez (RDS UPD)
 - SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
@@ -85,7 +85,7 @@ A folyamat a következő:
 
 Az ultra-lemezek további szabályozást kínálnak, összesen két szabályozásra. Ennek köszönhetően az ultra-lemezek foglalási folyamata a korábbi szakaszban leírtak szerint működhet, vagy részletesebben szabályozhatja és terjesztheti a teljesítményt.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely az írásvédett vagy olvasási/írási hozzáférést a foglalás tulajdonosa, a regisztrált és mások számára ábrázolja.":::
 
 ## <a name="ultra-disk-performance-throttles"></a>Ultravékony lemezek teljesítményének szabályozása
 
@@ -119,22 +119,16 @@ Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, 
 
 A következő példa egy, a fürtözött megosztott köteteket használó 2 csomópontos WSFC. Ezzel a konfigurációval mindkét virtuális gépnek egyidejű írási hozzáférése van a lemezhez, ami azt eredményezi, hogy a ReadWrite-szabályozás a két virtuális gép között oszlik el, és a nem használt ReadOnly szabályozás.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Két csomópontos CSV-példa":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Két csomópontos CSV-példa":::
 
 #### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontos fürt fürt megosztási kötetei nélkül
 
 A következő példa egy olyan 2 csomópontos WSFC mutat be, amely nem használ fürtözött megosztott köteteket. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és az írásvédett szabályozás csak a másodlagos használatban van.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-fájl két csomópontja nem rendelkezik a CSV-vel – példa":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-fájl két csomópontja nem rendelkezik a CSV-vel – példa":::
 
 #### <a name="four-node-linux-cluster"></a>Négy csomópontos Linux-fürt
 
 A következő példa egy 4 csomópontos linuxos fürtöt mutat be egyetlen író és három kibővíthető olvasóval. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és a másodlagos virtuális gépek által feldarabolt ReadOnly szabályozás.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópontos Ultra-szabályozási példa":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópontos Ultra-szabályozási példa":::

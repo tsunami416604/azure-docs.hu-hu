@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724258"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849416"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -172,7 +172,7 @@ Megosztott tároló| A virtuális gépek Fürt megosztott kötete (CSV) vagy Kib
 
 ### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Azure-beli virtuális gépek biztonsági mentése akár 32 lemezzel
 
-A Azure Backup mostantól támogatja az Azure-beli virtuális gépek legfeljebb 32 csatlakoztatott lemezzel történő biztonsági mentését.  Ez a funkció nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában.  Ha más régiókban is érdekli ezt a funkciót, regisztráljon a korlátozott előzetes verzióra, és írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com .  
+A Azure Backup mostantól támogatja az Azure-beli virtuális gépek legfeljebb 32 csatlakoztatott lemezzel történő biztonsági mentését.  Ez a funkció nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában, Közép-délkeleti régióban, Dél-Brazília, Kelet-Kanada, Közép-Franciaország, Dél-India, Közép-India, Dél-India, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Afrika, Észak-Afrika, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója Kelet-Ausztrália.  Ha más régiókban is érdekli ezt a funkciót, regisztráljon a korlátozott előzetes verzióra, és írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com .  
 
 >[!NOTE]
 >A Azure Backup csak a nem felügyelt lemezekkel vagy klasszikus virtuális gépekkel rendelkező Azure-beli virtuális gépekhez legfeljebb 16 lemezt támogat.

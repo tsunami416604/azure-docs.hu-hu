@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448360"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849620"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Gyors útmutató: videók keresése a Bing Video Search REST API és a PHP használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Video Search API, és megtekintheti a JSON-válasz keresési eredményét. Ez az egyszerű JavaScript-alkalmazás egy HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a választ. Habár ez az alkalmazás JavaScript nyelven íródott, és a Node. js-t használja, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
-A mintakód úgy lett megírva, hogy PHP 5.6 alatt működjön.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Video Search API. Ez az egyszerű PHP-alkalmazás HTTP-videó keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ. A példában szereplő kód a PHP 5,6-es verziójával működik.
 
-Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) című részben tekintheti meg.
+Bár ez az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,10 +33,10 @@ Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/re
 
 A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
 
-1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
+1. Engedélyezze a biztonságos HTTP-támogatást a `php.ini` fájlban a sor megjegyzésének megírásával `;extension=php_openssl.dll` , az alábbi kódrészletben leírtak szerint.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
-4. A `$accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra. `$endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
+4. A `$accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra. Az érték esetében használhatja `$endpoint` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 5. Futtassa a programot.
 
 ```php

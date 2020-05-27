@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 474eb4f5247aeb77edce0ebfde1611bf2deef493
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0a4d0c22318399370b9ec11046c33a4eb5460eb3
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930403"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860120"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -114,7 +114,7 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynököt.
    - Töltse le a [Windows rendszerű virtuális asztali ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-RdsRegistrationInfo** parancsmagból kapott értéket.
+   - Indítsa el a telepítőt. Ha a telepítő megkérdezi a regisztrációs jogkivonatot, adja meg az **export-AzWVDRegistrationInfo** parancsmagból kapott értéket.
 3. Töltse le és telepítse a Windows rendszerű virtuális asztali ügynök rendszerbetöltőjét.
    - Töltse le a [Windows rendszerű virtuális asztali ügynök Rendszerbetöltőjét](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Indítsa el a telepítőt.

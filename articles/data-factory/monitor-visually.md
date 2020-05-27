@@ -1,5 +1,5 @@
 ---
-title: Vizuális monitorozás Azure Data Factory
+title: Az Azure Data Factory vizuális monitorozása
 description: Ismerje meg, hogyan figyelheti vizuálisan az Azure-beli adatüzemeket
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699610"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860796"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>Vizuális monitorozás Azure Data Factory
+# <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -142,7 +142,7 @@ Az ikonra kattintva megnyithatja az adott folyamat által használt erőforráso
 
 ![Használat figyelése](media/monitor-visually/monitor-consumption-2.png)
 
-Ezeket az értékeket az [Azure díjszabási számológép] modulban lehet csatlakoztatni. (a https://azure.microsoft.com/pricing/details/data-factory/) folyamat futtatási költsége megbecsülhető. További információ a Azure Data Factory díjszabásáról: a [díjszabás ismertetése](pricing-concepts.md).
+Ezeket az értékeket az [Azure díjszabási számológépében](https://azure.microsoft.com/pricing/details/data-factory/) csatlakoztathatja a folyamat futtatási költségének megbecsléséhez. További információ a Azure Data Factory díjszabásáról: a [díjszabás ismertetése](pricing-concepts.md).
 
 > [!NOTE]
 > A díjszabási számológép által visszaadott értékek becslést tartalmaznak. Nem tükrözi azt a pontos összeget, amelyet a Azure Data Factory számláz majd 
@@ -170,7 +170,7 @@ Válassza ki az **információs** ikont a bal alsó sarokban. Ezután válassza 
 
 Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A **Monitor**  >  kezdéshez válassza a**riasztások figyelése & mérőszámok** lehetőséget a Data Factory figyelése lapon.
 
-![A adatgyár-figyelő lapja](media/monitor-visually/alerts01.png)
+![A adatgyár-figyelő lapja](media/monitor-visually/start-page.png)
 
 A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 
@@ -180,31 +180,31 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
 1.  Új riasztás létrehozásához válassza az **új riasztási szabály** lehetőséget.
 
-    ![Új riasztási szabály gomb](media/monitor-visually/alerts02.png)
+    ![Új riasztási szabály gomb](media/monitor-visually/new-alerts.png)
 
 1.  Adja meg a szabály nevét, és válassza ki a riasztás súlyosságát.
 
-    ![A szabály nevének és súlyosságának mezői](media/monitor-visually/alerts03.png)
+    ![A szabály nevének és súlyosságának mezői](media/monitor-visually/name-and-severity.png)
 
 1.  Válassza ki a riasztási feltételeket.
 
-    ![A célként megadott feltételekhez tartozó mező](media/monitor-visually/alerts04.png)
+    ![A célként megadott feltételekhez tartozó mező](media/monitor-visually/add-criteria-1.png)
 
-    ![Feltételek listája](media/monitor-visually/alerts05.png)
+    ![Feltételek listája](media/monitor-visually/add-criteria-2.png)
 
 1.  Adja meg a riasztási logikát. Riasztást hozhat létre a kijelölt metrikához az összes folyamathoz és a kapcsolódó tevékenységekhez. Kiválaszthat egy adott tevékenység típusát, a tevékenység nevét, a folyamat nevét vagy a hiba típusát is.
 
-    ![A riasztási logika konfigurálásának lehetőségei](media/monitor-visually/alerts06.png)
+    ![A riasztási logika konfigurálásának lehetőségei](media/monitor-visually/alert-logic.png)
 
 1.  Az e-mailek, SMS-, leküldéses és hangalapú értesítések konfigurálása a riasztáshoz. Hozzon létre egy műveleti csoportot, vagy válasszon ki egy meglévőt a riasztási értesítésekhez.
 
-    ![Az értesítések konfigurálásának beállításai](media/monitor-visually/alerts07.png)
+    ![Az értesítések konfigurálásának beállításai](media/monitor-visually/configure-notification-1.png)
 
-    ![Értesítések hozzáadásának beállításai](media/monitor-visually/alerts08.png)
+    ![Értesítések hozzáadásának beállításai](media/monitor-visually/configure-notification-2.png)
 
 1.  Hozzon létre egy riasztási szabályt.
 
-    ![Riasztási szabály létrehozásának lehetőségei](media/monitor-visually/alerts09.png)
+    ![Riasztási szabály létrehozásának lehetőségei](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>További lépések
 

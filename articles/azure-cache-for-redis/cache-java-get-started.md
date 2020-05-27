@@ -5,15 +5,15 @@ author: yegu-ms
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/23/2018
+ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: df8c827567e116e3be908221b9004eb455b24c8b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02430e2dfa68ff0ce4bf116666d72a46e1120746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010783"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848855"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Gyors útmutató: az Azure cache használata a Redis Javával
 
@@ -53,7 +53,7 @@ Nyissa meg a *pom.xml* fájlt, és adjon hozzá egy függőséget a [Jedis](http
     <dependency>
         <groupId>redis.clients</groupId>
         <artifactId>jedis</artifactId>
-        <version>2.9.0</version>
+        <version>3.2.0</version>
         <type>jar</type>
         <scope>compile</scope>
     </dependency>
@@ -130,7 +130,7 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 ![Befejeződött az Azure cache a Redis alkalmazáshoz](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 17db9d615dcdd78ca50f88b5dad72d596bf29276
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402472"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860579"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN kapcsolati architektúra az Azure Virtual WAN-ral
 
@@ -39,7 +39,7 @@ Az SD-WAN CPE továbbra is az a hely, ahol a forgalom optimalizálása és az el
 
 Ebben a modellben a valós idejű forgalmi mutatókon alapuló, a gyártótól származó tulajdonosi forgalom optimalizálása nem támogatott, mert a virtuális WAN-kapcsolat az IPsec protokollon keresztül történik, és az IPsec VPN a virtuális WAN VPN-átjárón leáll. Például a dinamikus elérési út a ág CPE-ben való kiválasztása a különböző hálózati csomagok más SD-WAN-csomóponttal való cseréje miatt valósítható meg, ezért a legjobb hivatkozás a különböző rangsorolt forgalomhoz való, dinamikusan a fiókirodában való használatra. Ez a funkció olyan területeken lehet hasznos, ahol a Last Mile Optimization (a legközelebbi Microsoft POP-hoz tartozó ág) megadása kötelező.
 
-A Virtual WAN használatával a felhasználók beszerezhetik az Azure Path Selection-t, amely házirend-alapú útvonal kiválasztása több ISP-kapcsolaton keresztül a fiókirodából a virtuális WAN VPN-átjárók között. A virtuális WAN lehetővé teszi több hivatkozás (elérési út) telepítését ugyanazon SD-WAN ág CPE-ből. az egyes hivatkozások az SD-WAN CPE egyedi nyilvános IP-címétől az Azure Virtual WAN VPN Gateway két különböző példányára mutató kettős bújtatási kapcsolatot jelentenek. Az SD-WAN-szállítók az Azure optimális elérési útját tudják megvalósítani, a szabályzatok által a CPE-hivatkozásokon beállított forgalmi házirendek alapján.
+A Virtual WAN használatával a felhasználók beszerezhetik az Azure Path Selection-t, amely házirend-alapú útvonal kiválasztása több ISP-kapcsolaton keresztül a fiókirodából a virtuális WAN VPN-átjárók között. A virtuális WAN lehetővé teszi több hivatkozás (elérési út) telepítését ugyanazon SD-WAN ág CPE-ből. az egyes hivatkozások az SD-WAN CPE egyedi nyilvános IP-címétől az Azure Virtual WAN VPN Gateway két különböző példányára mutató kettős bújtatási kapcsolatot jelentenek. Az SD-WAN-szállítók az Azure optimális elérési útját tudják megvalósítani, a szabályzatok által a CPE-hivatkozásokon beállított forgalmi házirendek alapján. Az Azure-beli végponton a rendszer minden kapcsolatot egyformán kezel.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Közvetett Interconnect-modell
 

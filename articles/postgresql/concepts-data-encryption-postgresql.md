@@ -1,24 +1,24 @@
 ---
 title: Adattitkosítás az ügyfél által felügyelt kulccsal – Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Azure Database for PostgreSQL egy ügyfél által felügyelt kulccsal rendelkező egykiszolgálós adattitkosítás lehetővé teszi, hogy Bring Your Own Key (BYOK) a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa.
+description: Azure Database for PostgreSQL egy ügyfél által felügyelt kulccsal rendelkező egykiszolgálós adattitkosítás lehetővé teszi, hogy Bring Your Own Key (BYOK) a REST-alapú adatvédelem érdekében. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297022"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849474"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
 > [!NOTE]
-> Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon AskAzureDBforPostgreSQL@service.microsoft.coma következőhöz:.
+> Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz: AskAzureDBforPostgreSQL@service.microsoft.com .
 
-Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Lehetővé teszi a szervezetek számára, hogy a kulcsok és adatok kezelésében a feladatok elkülönítését is megvalósítsa. Az ügyfél által felügyelt titkosítással Ön felelős a kulcs életciklusa, a kulcsfontosságú használati engedélyek és a kulcsok működésének ellenőrzése terén.
+Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
 
 Az ügyfél által felügyelt kulcsokkal rendelkező adattitkosítást Azure Database for PostgreSQL egyetlen kiszolgáló esetén a kiszolgáló szintjén kell beállítani. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL egyetlen kiszolgáló adattitkosítása a követke
 
 A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréssel rendelkező entitás képes visszafejteni ezeket a DEKs. További információ: [Biztonság a titkosításban a REST-ben](../security/fundamentals/encryption-atrest.md).
 
-## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Az ügyfél által felügyelt kulccsal való adattitkosítás működése
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Az adattitkosítás használata az ügyfél által felügyelt kulcsokkal
 
 ![A Bring Your Own Key áttekintését bemutató diagram](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
 
@@ -63,17 +63,15 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 A Key Vault konfigurálásának követelményei a következők:
 
 * Key Vault és Azure Database for PostgreSQL egyetlen kiszolgálónak ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. Az erőforrások áthelyezését követően újra kell konfigurálnia az adattitkosítást.
-* Ha véletlen kulcs (vagy Key Vault) törlése történik, az adatvesztés elleni védelem érdekében engedélyeznie kell a Soft-delete szolgáltatást a kulcstartóban. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
+* Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
 * Az egyedi felügyelt identitás használatával adja meg az Azure Database for PostgreSQL egyetlen kiszolgáló hozzáférését a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel. A Azure Portalban az egyedi identitás automatikusan létrejön, ha az adattitkosítás engedélyezve van a PostgreSQL-kiszolgálón. A Azure Portal használatakor részletes útmutatásért lásd: [Azure Database for PostgreSQL az egyetlen Azure Portal kiszolgáló adattitkosítása](howto-data-encryption-portal.md) .
-
-* Ha Key Vault tűzfallal rendelkező tűzfalat használ, engedélyeznie kell a **megbízható Microsoft-szolgáltatások számára a tűzfal megkerülésének engedélyezése**beállítást.
 
 Az ügyfél által felügyelt kulcs konfigurálásának követelményei a következők:
 
-* A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2028 lehet.
+* A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2048 lehet.
 * A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátumnak (ha be van állítva) jövőbeli dátumnak és időpontnak kell lennie.
 * A kulcsnak *engedélyezett* állapotban kell lennie.
-* Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban (`.pfx`, `.byok`, `.backup`) meg van-e biztosítva.
+* Ha meglévő kulcsot importál a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` ,,) meg van-e biztosítva `.byok` `.backup` .
 
 ## <a name="recommendations"></a>Javaslatok
 
@@ -81,8 +79,10 @@ Ha ügyfél által felügyelt kulccsal használja az adattitkosítást, a Key Va
 
 * Állítsa be Key Vault erőforrás-zárolását annak szabályozására, hogy ki törölheti ezt a kritikus erőforrást, és megelőzheti a véletlen vagy jogosulatlan törlést.
 * Az összes titkosítási kulcs naplózásának és jelentéskészítésének engedélyezése. A Key Vault olyan naplókat biztosít, amelyek könnyen beilleszthető más biztonsági információkba és az eseménykezelő eszközeibe. Azure Monitor Log Analytics egy olyan szolgáltatás, amely már integrálva van.
-
 * Győződjön meg arról, hogy az egyetlen kiszolgáló Key Vault és Azure Database for PostgreSQL ugyanabban a régióban található, így biztosítva, hogy a ADATTITKOSÍTÁSI kulcsot-wrap és a kicsomagolási műveletek gyorsabban hozzáférhessenek.
+* Az Azure kulcstartó zárolása csak **privát végpontok és kiválasztott hálózatok** számára, és csak *megbízható Microsoft* -szolgáltatások engedélyezése az erőforrások biztonságossá tételéhez.
+
+    ![megbízható szolgáltatás – AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
 
 Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
@@ -92,7 +92,13 @@ Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Nem érhető el az ügyfél által felügyelt kulcs állapota
 
-Ha az adattitkosítást Key Vault ügyfél által felügyelt kulccsal konfigurálja, akkor a kiszolgálóhoz való folyamatos hozzáférés szükséges ahhoz, hogy a kiszolgáló online maradjon. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Key Vault, a kiszolgáló 10 percen belül megtagadja az összes kapcsolatot. A kiszolgáló kiadja a megfelelő hibaüzenetet, és a kiszolgáló állapotát nem *elérhetőre*módosítja. Ebben az állapotban az egyetlen, az adott adatbázisban engedélyezett művelet törli azt.
+Ha az adattitkosítást Key Vault ügyfél által felügyelt kulccsal konfigurálja, akkor a kiszolgálóhoz való folyamatos hozzáférés szükséges ahhoz, hogy a kiszolgáló online maradjon. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Key Vault, a kiszolgáló 10 percen belül megtagadja az összes kapcsolatot. A kiszolgáló kiadja a megfelelő hibaüzenetet, és a kiszolgáló állapotát nem *elérhetőre*módosítja. Néhány ok, amiért a kiszolgáló elérheti ezt az állapotot:
+
+* Ha egy időponthoz tartozó visszaállítási kiszolgálót hoz létre a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, amelynek engedélyezve van az adattitkosítása, az újonnan létrehozott kiszolgáló *elérhetetlen* állapotban lesz. A kiszolgáló állapotát [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) vagy [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)használatával javíthatja.
+* Ha olyan olvasási replikát hozunk létre a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, amelynek engedélyezve van az adattitkosítása, a replika kiszolgáló *elérhetetlenné* válik. A kiszolgáló állapotát [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) vagy [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)használatával javíthatja.
+* Ha törli a kulcstartót, akkor a Azure Database for PostgreSQL egyetlen kiszolgáló nem fér hozzá a kulcshoz, és nem *elérhető* állapotba kerül. Állítsa helyre a [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé*tegye a kiszolgálót.
+* Ha töröljük a kulcsot a kulcstartóból, akkor a Azure Database for PostgreSQL egyetlen kiszolgáló nem fér hozzá a kulcshoz, és nem *elérhető* állapotba kerül. Állítsa helyre a [kulcsot](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé*tegye a kiszolgálót.
+* Ha az Azure kulcstartóban tárolt kulcs lejár, a kulcs érvénytelenné válik, és a Azure Database for PostgreSQL egy kiszolgáló *elérhetetlenné* válik. Terjessze ki a kulcs lejárati dátumát a [parancssori](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) felület használatával, majd ellenőrizze újra az adattitkosítást, hogy *elérhetővé*tegye a kiszolgálót.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Véletlen kulcs-hozzáférés visszavonása a Key Vault
 
@@ -112,7 +118,7 @@ Az adatbázis állapotának figyeléséhez, valamint az átlátható adattitkos�
 * [Azure Resource Health](../service-health/resource-health-overview.md): egy nem elérhető adatbázis, amely nem fér hozzá az ügyfél kulcsához, az adatbázishoz való első kapcsolódás megtagadása után "nem érhető el" érték jelenik meg.
 * [Műveletnapló](../service-health/alerts-activity-log-service-notifications.md): Ha az ügyfél által felügyelt Key Vault nem sikerül hozzáférni az ügyfél kulcsához, a rendszer hozzáadja a bejegyzéseket a tevékenységi naplóhoz. Ha riasztásokat hoz létre ezekhez az eseményekhez, a lehető leghamarabb visszaállíthatja a hozzáférést.
 
-* [Műveleti csoportok](../azure-monitor/platform/action-groups.md): ezeket a beállításokat úgy definiálhatja, hogy a beállítások alapján küldje el az értesítéseket és a riasztásokat.
+* [Műveleti csoportok](../azure-monitor/platform/action-groups.md): ezeket a csoportokat úgy definiálhatja, hogy a beállítások alapján küldje el az értesítéseket és a riasztásokat.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Visszaállítás és replikálás az ügyfél felügyelt kulcsával Key Vault
 
