@@ -131,6 +131,8 @@
               href: howto-manage-iot-central-from-cli.md
             - name: Kezelés az Azure PowerShellből
               href: howto-manage-iot-central-from-powershell.md
+            - name: Programozott kezelés
+              href: howto-manage-iot-central-programmatically.md
             - name: Kezelés CSP-portálról
               href: howto-create-and-manage-applications-csp.md
         - name: Alkalmazás szeméyre szabása

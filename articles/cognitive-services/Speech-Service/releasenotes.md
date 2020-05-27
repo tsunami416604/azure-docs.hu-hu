@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c7caa6c2b329d7d24d6c9a3008d884b396fc99ce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ecd1c650456bf506f22366ca1d59a3634751b9e0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584909"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800237"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020 – májusi kiadás
 
-**SPX Azure Speech Services parancssori konzol**
+**Az Azure Speech CLI**
 - Az **SPX** egy új parancssori eszköz, amellyel elvégezhető a parancssorból való felismerés, szintézis, fordítás, kötegelt átírás és egyéni beszédfelismerés. Ezzel tesztelheti az Azure Speech Service-t, vagy elvégezheti a szükséges Speech Service-feladatok futtatását. Töltse le az eszközt, és olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)a dokumentációt.
 
 **Új funkciók**

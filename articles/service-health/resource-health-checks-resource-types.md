@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478901"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816098"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -204,7 +204,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Az adatbázis működik és fut?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft. SQL/Server/adatbázisok
+## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Van-e bejelentkezés az adatbázisba?</li></ul>|

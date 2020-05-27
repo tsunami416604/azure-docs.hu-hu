@@ -4,18 +4,21 @@ description: Csak a CLI-parancsokkal hozhat létre készleteket, tölthet fel be
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726774"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815995"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
-Ha Azure Batch-bővítményt használ az Azure CLI-hez, a Batch-feladatokat kód írása nélkül is futtathatja.
+Ha batch-bővítményt használ az Azure CLI-hez, a Batch-feladatokat kód írása nélkül is futtathatja.
 
 Hozzon létre és használjon JSON-sablonfájlokat az Azure CLI-vel batch-készletek,-feladatok és-feladatok létrehozásához. A CLI bővítmény parancsaival egyszerűen töltheti fel a feladatok bemeneti fájljait a Batch-fiókhoz társított Storage-fiókba, és letöltheti a feladatok kimeneti fájljait.
+
+> [!NOTE]
+> A JSON-fájlok nem támogatják a [Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/template-syntax.md)megegyező funkciókat. A rendszer a nyers REST-kérelem törzséhez hasonlóan formázta őket. A CLI-bővítmény nem módosítja a meglévő parancsokat, de hasonló sablon-lehetőséggel rendelkezik, amely részleges Azure Resource Manager sablon-funkciókat tesz elérhetővé. Lásd: [Azure batch CLI-bővítmények Windows, Mac és Linux rendszerekhez](https://github.com/Azure/azure-batch-cli-extensions).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -283,7 +286,7 @@ A sablon-és fájlátviteli támogatás jelenleg csak az Azure CLI-hez lett hozz
 
 Próbálja ki az Azure CLI batch-bővítményét, és küldjön visszajelzést vagy javaslatokat a jelen cikkhez vagy a [Batch közösségi](https://github.com/Azure/Batch)tárházhoz tartozó megjegyzésekben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A részletes telepítési és használati dokumentáció, példák és forráskódok az [Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházban érhetők el.
 

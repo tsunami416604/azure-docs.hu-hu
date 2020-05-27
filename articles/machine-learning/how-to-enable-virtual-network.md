@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 771f6dd265b2df686d00642d2063915dfab17a86
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 17c6e10b213cb1f3d2b20433a5511c27960cdb06
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722762"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816301"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>A gépi tanulási életciklusok biztonságossá tétele privát virtuális hálózatokkal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,6 +87,7 @@ Ha [felügyelt Azure Machine learning **számítási célt** ](concept-compute-t
 > * Ellenőrizze, hogy a virtuális hálózat előfizetése vagy erőforráscsoport biztonsági szabályzatai vagy zárolásai korlátozzák-e az engedélyeket a virtuális hálózat kezeléséhez. Ha a virtuális hálózat védelmét úgy tervezi, hogy korlátozza a forgalmat, hagyjon meg néhány portot a számítási szolgáltatás számára. További információ: a [szükséges portok](#mlcports) szakasz.
 > * Ha egy virtuális hálózatban több számítási példányt vagy fürtöt szeretne létrehozni, előfordulhat, hogy egy vagy több erőforrásra vonatkozó kvóta-növelést kell kérnie.
 > * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban kell lenniük. 
+> * A számítási példányok Jupyter működéséhez győződjön meg arról, hogy a webes szoftvercsatorna-kommunikáció nincs letiltva.
 
 > [!TIP]
 > A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le __a virtuális hálózatot tartalmazó erőforráscsoporthoz__. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
@@ -638,7 +639,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

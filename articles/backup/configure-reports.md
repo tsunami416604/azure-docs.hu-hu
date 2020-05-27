@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713828"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797534"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -18,7 +18,7 @@ A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy 
 - Biztonsági mentések és visszaállítások naplózása.
 - A legfontosabb trendek azonosítása különböző részletességi szinteken.
 
-A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) és [Azure-munkafüzeteket](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
+A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) és [Azure-munkafüzeteket](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -30,7 +30,7 @@ A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely 
 - Az adatbiztonsági mentési jelentések jelenleg legfeljebb 100 Log Analytics munkaterületen (a bérlők között) jeleníthetők meg.
 - A naplók biztonsági mentési feladatai jelenleg nem jelennek meg a jelentésekben.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A jelentések használatának megkezdéséhez kövesse az alábbi lépéseket.
 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 56059304026b060e2215ce73e0e94e3200573a14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670984"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797705"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése Application Insights
 
@@ -55,12 +55,12 @@ A felhasználók, munkamenetek vagy események jelentésében tárolt adatmásol
 
 A **felhasználók** betartása szakasz az aktuális lekérdezéssel megegyező öt minta felhasználó adatait jeleníti meg. Az összesítések mellett figyelembe kell venni és meg kell vizsgálni az egyének viselkedését, és betekintést nyerhet arról, hogy a felhasználók miként használják ténylegesen az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
     - [Felhasználói folyamatok](usage-flows.md)
-    - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
+    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)

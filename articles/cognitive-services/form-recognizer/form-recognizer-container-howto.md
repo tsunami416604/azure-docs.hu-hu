@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a3860b2cedbdf8154658449349439f918775cb25
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 761cf5831bb2332ae8c3f7a9a8edee707e6810ee
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701859"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816335"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Űrlap-felismerő tárolók telepítése és futtatása (előzetes verzió)
 
@@ -67,7 +67,7 @@ Ez a kulcs a tároló elindítására szolgál, és a megfelelő kognitív szolg
 
 ## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/FormRecognizerContainerRequestAccess) , hogy hozzáférést Kérjen a tárolóhoz.
+Töltse ki és küldje el a [kérelem űrlapját](https://aka.ms/cognitivegate) , hogy hozzáférést Kérjen a tárolóhoz.
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

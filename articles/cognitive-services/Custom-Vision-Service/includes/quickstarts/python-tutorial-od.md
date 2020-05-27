@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: 6d9b88e997f211fd5b13a4ccb92d17a32ca7eaab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b339749a5c09bd1ddcdd4226e507ce3e01eee200
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696525"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806370"
 ---
 Ez a cikk bemutatja, hogyan kezdheti el az első lépéseket a Custom Vision SDK és a Python használatával egy objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
@@ -40,7 +40,7 @@ Hozzon létre egy új fájlt *sample.py* néven a használni kívánt projektkö
 
 Adja hozzá a következő kódot a szkripthez egy új Custom Vision Service-projekt létrehozásához. Illessze be az előfizetői azonosítókat a megfelelő definíciókba. A végpont URL-címét a Custom Vision webhely beállítások lapján szerezheti be.
 
-A projekt létrehozásakor további beállítások megadásához tekintse meg a [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) metódust (a [Kiderítő webportál összeállításának](../../get-started-build-detector.md) útmutatója).  
+A projekt létrehozásakor további beállítások megadásához tekintse meg a [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) metódust (a [Kiderítő webportál összeállításának](../../get-started-build-detector.md) útmutatója).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: fb6fe624248a9098f37b94773b7162052b94b5ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743529"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800400"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Fiók áttelepítése Cloud Partner Portalról a partneri központba
 
@@ -85,7 +85,7 @@ A Dynamics 365 Customer engagement, a PowerApps és a Dynamics 365 üzemeltetés
 
 A [Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0)-ben segítséget kaphat a fórumok szakértőitől és szakértőitől, valamint a Blogok, a webes előadások, a videók, az események és egyebek megismerésére.
 
-Ha segítségre van szüksége a Piactéri ajánlatok közzétételéhez, hitelesítéséhez vagy kezeléséhez, [nyújtson be egy támogatási jegyet](https://partner.microsoft.com/support/v2/?stage=1).
+Ha segítségre van szüksége a Piactéri ajánlatok közzétételéhez, hitelesítéséhez vagy kezeléséhez, [nyújtson be egy támogatási jegyet](https://aka.ms/MarketplacePublisherSupport).
 
 ## <a name="next-step"></a>Következő lépés
 

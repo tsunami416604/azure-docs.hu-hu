@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667871"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797431"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -36,10 +36,12 @@ Azure NetApp Files hálózat tervezésekor érdemes figyelembe vennie néhány m
 Az alábbi funkciók jelenleg nem támogatottak a Azure NetApp Files esetén: 
 
 * A delegált alhálózatra alkalmazott hálózati biztonsági csoportok (NSG-EK)
-* Felhasználó által megadott útvonalak (UDR-EK) az Azure NetApp-fájlok alhálózata címének előtagjaként
+* A delegált alhálózatra alkalmazott, felhasználó által megadott útvonalak (UDR-EK)
 * Azure-szabályzatok (például egyéni elnevezési házirendek) a Azure NetApp Files felületen
 * Terheléselosztó Azure NetApp Files forgalomhoz
-* Az Azure Virtual WAN Azure NetApp Files nem támogatott
+* Azure Virtual WAN 
+* Zóna redundáns Virtual Network átjárók (az átjárók az az paranccsal) 
+* Aktív/aktív Virtual Network GWs 
 
 A következő hálózati korlátozások érvényesek Azure NetApp Filesre:
 
@@ -53,13 +55,13 @@ A következő táblázat a Azure NetApp Files által támogatott hálózati topo
 
 |    Topológiák    |    Támogatott    |     Áthidaló megoldás    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Kapcsolat a kötettel a helyi VNet    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    None    |
-|    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Igen    |         |
-|    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Igen    |        |
-|    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Igen    |         |
-|    Helyszíni kapcsolat a VPN-átjárón keresztüli küllős VNet, illetve a VNet és az átjárók közötti adatforgalom    |    Igen    |         |
+|    Kapcsolat a kötettel a helyi VNet    |    Yes    |         |
+|    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Yes    |         |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    No    |    Nincs    |
+|    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Yes    |         |
+|    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Yes    |        |
+|    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Yes    |         |
+|    Helyszíni kapcsolat a VPN-átjárón keresztüli küllős VNet, illetve a VNet és az átjárók közötti adatforgalom    |    Yes    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek virtuális hálózata
@@ -82,9 +84,10 @@ Ha a VNet egy másik VNet van társítva, akkor nem lehet kibontani a VNet. Emia
 
 ### <a name="udrs-and-nsgs"></a>UDR és NSG
 
-A felhasználó által megadott útvonalak (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon.
+A felhasználó által megadott útvonalak (UDR-EK) és hálózati biztonsági csoportok (NSG-EK) nem támogatottak a Azure NetApp Files delegált alhálózatokon. Azonban a UDR és a NSG más alhálózatokra is alkalmazhatja, akár a Azure NetApp Fileshoz delegált alhálózattal azonos VNet belül.
 
-Áthidaló megoldásként alkalmazhat NSG más alhálózatokra, amelyek engedélyezik vagy megtagadják a Azure NetApp Files delegált alhálózatra irányuló és onnan érkező forgalmat.  
+* Ezután a UDR megadhatja a többi alhálózatról a Azure NetApp Files delegált alhálózatra irányuló forgalmat. Ez segít annak biztosításában, hogy ez a forgalom a Azure NetApp Filesról a többi alhálózatra a rendszerútvonalak használatával legyen összehangolva.  
+* A NSG ezt követően engedélyezi vagy megtagadja a forgalmat a Azure NetApp Files delegált alhálózaton. 
 
 ## <a name="azure-native-environments"></a>Azure-beli natív környezetek
 
@@ -127,6 +130,6 @@ A fenti ábrán látható topológiában a helyszíni hálózat egy Azure-beli h
 * A küllős VNet 1 virtuális gép 4-es verziójában nem lehet csatlakozni a 3. kötethez a küllős VNet 2. Emellett a küllős VNet2 5. virtuális gép nem tud csatlakozni a 2. kötethez a küllős VNet 1. Ez azért van így, mert a küllős virtuális hálózatok nem támogatottak, és az _átviteli útválasztás nem támogatott a VNet_-társítások esetében.
 * A fenti architektúrában, ha van egy átjáró a küllős VNET, akkor a ANF-kötetnek az átjárón keresztül a hub-on keresztül való kapcsolata elvész. A megtervezéssel előnyben részesítette az átjárót a küllő VNet, így csak az átjárón keresztül csatlakozó gépek csatlakozhatnak a ANF-kötethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)

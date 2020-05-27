@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/17/2018
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: 21c551721815847eea4cb1435298ea6f7bf37966
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264478"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800747"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -206,7 +206,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
 1. Kattintson Alkalmazásregisztrációk
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, válassza a "fiókok ebben a szervezeti címtárban" lehetőséget. 
-2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például\/http:/localhost), és kattintson a Hozzáadás gombra.  
+2. Válassza az alkalmazás típusa "web" lehetőséget, adjon meg egy bejelentkezési URL-címet (például http: \/ /localhost), és kattintson a Hozzáadás gombra.  
    A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet
 1. Válassza a tanúsítványok és titkos kulcsok lehetőséget, majd kattintson az új ügyfél titka elemre.
 1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, majd kattintson a Hozzáadás gombra.
@@ -274,7 +274,10 @@ A kerítés eszköz konfigurálásához használja a következő parancsot.
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
-## <a name="next-steps"></a>További lépések
+> [!TIP]
+>Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

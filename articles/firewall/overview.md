@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 05/22/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b54e8efc4f5f22a89526bb5d529805b33371529f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2f466c71673c9239f6f984f838d050af8bf52182
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655119"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816063"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -61,15 +61,15 @@ Központilag hozhat létre *engedélyező* vagy *tiltó* hálózatszűrési szab
 
 ## <a name="fqdn-tags"></a>FQDN-címkék
 
-A teljes tartománynevek lehetővé teszik, hogy a tűzfalon keresztül a jól ismert Azure-szolgáltatás hálózati forgalmát engedélyezze. Tegyük fel például, hogy engedélyezni kívánja a Windows Update hálózati forgalmát a tűzfalon keresztül. Létrehozhat egy alkalmazásszabályt, és hozzáadhatja a Windows Update címkéjét. A Windows Update hálózati forgalma ezután akadálytalanul áthaladhat a tűzfalon.
+A [teljes tartománynevek](fqdn-tags.md) lehetővé teszik, hogy a tűzfalon keresztül a jól ismert Azure-szolgáltatás hálózati forgalmát engedélyezze. Tegyük fel például, hogy engedélyezni kívánja a Windows Update hálózati forgalmát a tűzfalon keresztül. Létrehozhat egy alkalmazásszabályt, és hozzáadhatja a Windows Update címkéjét. A Windows Update hálózati forgalma ezután akadálytalanul áthaladhat a tűzfalon.
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
-A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem hozhat létre saját szolgáltatási címkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén belül. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
+A [szolgáltatási címke](service-tags.md) az IP-címek egy csoportját jelöli, így könnyebben csökkenthető a biztonsági szabályok létrehozásának bonyolultsága. Nem hozhat létre saját szolgáltatási címkét, és nem adhatja meg, hogy mely IP-címek szerepeljenek a címkén belül. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
 ## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
-A fenyegetésekkel kapcsolatos intelligencia-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+A [fenyegetésekkel kapcsolatos intelligencia](threat-intel.md)-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
 
 ## <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
 
@@ -83,7 +83,7 @@ A tűzfal nyilvános IP-címére irányuló bejövő internetes hálózati forga
 
 ## <a name="multiple-public-ip-addresses"></a>Több nyilvános IP-cím
 
-A tűzfallal több nyilvános IP-címet is hozzárendelhet (legfeljebb 250).
+A tűzfallal [több nyilvános IP-címet](deploy-multi-public-ip-powershell.md) is hozzárendelhet (legfeljebb 250).
 
 Ez a következő forgatókönyveket teszi lehetővé:
 
@@ -92,7 +92,7 @@ Ez a következő forgatókönyveket teszi lehetővé:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
-A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba.
+A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](tutorial-diagnostics.md).
 
 ## <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
@@ -107,7 +107,7 @@ A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls 
 
 Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
-|Probléma  |Leírás  |Kezelés  |
+|Probléma  |Description  |Kezelés  |
 |---------|---------|---------|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
@@ -130,7 +130,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A konfigurációs frissítések átlagosan öt percet vehetnek igénybe|Egy Azure Firewall konfigurációs frissítés átlagosan három-öt percet vehet igénybe, és a párhuzamos frissítések nem támogatottak.|A rendszer kivizsgálja a javítást.|
 |Azure Firewall SNI TLS-fejléceket használ a HTTPS-és MSSQL-forgalom szűréséhez|Ha a böngésző vagy a kiszolgáló szoftver nem támogatja a kiszolgálónév-jelző (SNI) bővítményt, nem fog tudni csatlakozni a Azure Firewallon keresztül.|Ha a böngésző vagy a kiszolgáló szoftvere nem támogatja a SNI-t, akkor az alkalmazás szabálya helyett hálózati szabály használatával is vezérelheti a kapcsolódást. Tekintse meg a SNI-t támogató szoftverek [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)

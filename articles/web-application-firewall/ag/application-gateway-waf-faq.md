@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 57081cd948bcee1261415eae31f91b3c61f08c9f
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842850"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798350"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban Application Gateway
 
@@ -52,14 +52,14 @@ A WAF jelenleg a CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 * Robotprogramok, webbejárók és képolvasók elleni védelem
 * Az alkalmazások gyakori konfigurációs beállításainak észlelése (azaz Apache, IIS stb.)
 
-További információ: [OWASP Top-10 biztonsági rések](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
+További információ: [OWASP Top-10 biztonsági rések](https://owasp.org/www-project-top-ten/).
 
 ## <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
 
 Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).

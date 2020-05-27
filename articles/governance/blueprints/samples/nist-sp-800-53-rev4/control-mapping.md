@@ -1,20 +1,20 @@
 ---
 title: NIST SP 800-53 R4 tervezet-minta vezérlők
 description: A NIST SP 800-53 R4 tervrajz-minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 11/18/2019
+ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: 104224ec96a5989a103f4d00310cf08b684b4d67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1950feefae46643825cfe0af46fb7c3a2fe4b39
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546627"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815961"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>A NIST SP 800-53 R4 Blueprint minta vezérlésének leképezése
 
 A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervezetek NIST SP 800-53 R4 tervezet-minta a NIST SP 800-53 R4-vezérlők számára. További információ a vezérlőkről: [NIST SP 800-53](https://nvd.nist.gov/800-53).
 
-A következő leképezések a **NIST SP 800-53 (Rev. 4)** vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki ** \[az\]előnézetet: naplózó NIST SP 800-53 R4 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A következő leképezések a **NIST SP 800-53 (Rev. 4)** vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az ** \[ előnézetet \] : naplózó NIST SP 800-53 R4 vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/nist-sp-800-53-rev4/control-mapping.md).
@@ -84,8 +84,8 @@ A Azure SQL Database speciális adatbiztonságának adatfelderítési és besoro
 
 Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hogy [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével figyeli, hogy a Azure app Service alkalmazás távoli hibakeresése ki van-e kapcsolva. A terv emellett olyan szabályzat-definíciókat is hozzárendel, amelyek a jelszavak nélküli fiókok távoli kapcsolatait engedélyező linuxos virtuális gépeket naplózzák. Emellett a terv egy Azure Policy-definíciót rendel hozzá, amely segítséget nyújt a Storage-fiókok korlátozás nélküli elérésének figyelésében. Ezen mutatók monitorozásával biztosítható, hogy a távelérési módszerek megfeleljenek a biztonsági szabályzatnak.
 
-- \[Előzetes\]verzió: jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: követelmények központi telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
+- \[Előzetes verzió \] : jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
+- \[Előzetes verzió \] : követelmények központi telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
@@ -95,13 +95,13 @@ Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hog
 
 A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi konfigurációt és a felügyeletet. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes\]verzió: log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 Válasz a feldolgozási hibák naplózására
 
@@ -116,25 +116,25 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 
 A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi jelentéskészítést és elemzést. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes\]verzió: log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="au-12-audit-generation"></a>AU-12 naplózási generáció
 
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével. Ezek a szabályzat-definíciók a Log Analytics ügynök Azure-beli virtuális gépeken való üzembe helyezését és az egyéb Azure-erőforrástípusok naplózási beállításainak konfigurálását is kikényszerítik. Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is naplózzák, hogy betekintést nyújtsanak az Azure-erőforrásokon belül végrehajtott műveletekre. Emellett a naplózás és a speciális adatbiztonság is konfigurálva van az SQL-kiszolgálókon.
 
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes\]verzió: log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
@@ -184,29 +184,29 @@ Ez a terv segítséget nyújt a hozzáférés korlátozásához és vezérlésé
 
 Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat rendeli hozzá, amelyek a Linux rendszerű virtuális gépeket a jelszavak nélküli fiókok távoli kapcsolatainak engedélyezésére és/vagy helytelen engedélyekkel rendelkeznek a passwd fájlban. Ez a terv a Windows rendszerű virtuális gépekhez tartozó jelszó-titkosítási típus konfigurációját naplózó szabályzat-definíciókat is hozzárendeli. Ezen mutatók monitorozásával biztosíthatja, hogy a rendszerhitelesítő megfeleljenek a szervezete azonosítási és hitelesítési házirendjének.
 
-- \[Előzetes\]verzió: olyan linuxos virtuális gépek naplózása, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- \[Előzetes\]verzió: jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
-- \[Előzetes\]verzió: a jelszavakat nem tároló Windows rendszerű virtuális gépek naplózása visszafejthető titkosítással
-- \[Előzetes\]verzió: követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- \[Előzetes\]verzió: követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
-- \[Előzetes\]verzió: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
+- \[Előzetes verzió \] : olyan linuxos virtuális gépek naplózása, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
+- \[Előzetes verzió \] : jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
+- \[Előzetes \] verzió: a jelszavakat nem tároló Windows rendszerű virtuális gépek naplózása visszafejthető titkosítással
+- \[Előzetes verzió \] : követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
+- \[Előzetes verzió \] : követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
+- \[Előzetes \] verzió: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) hitelesítő kezelése | Jelszó-alapú hitelesítés
 
 Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem igénylő Windows rendszerű virtuális gépeket naplózzák. A virtuális gépeknek a jelszó erőssége megsértésével kapcsolatos ismerete segít megtenni a szükséges javítási műveleteket, hogy az összes virtuálisgép-felhasználói fiók jelszava megfeleljen a szervezete jelszavas házirendjének.
 
-- \[Előzetes\]verzió: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
-- \[Előzetes\]verzió: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- \[Előzetes\]verzió: engedélyezve van a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: a jelszó minimális hosszát 14 karakternél nem korlátozó Windows-alapú virtuális gépek naplózása
-- \[Előzetes\]verzió: a jelszavakat nem tároló Windows rendszerű virtuális gépek naplózása visszafejthető titkosítással
-- \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
-- \[Előzetes\]verzió: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
-- \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
-- \[Előzetes\]verzió: követelmények központi telepítése a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
-- \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[Előzetes\]verzió: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
+- \[Előzetes \] verzió: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[Előzetes \] verzió: a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
+- \[Előzetes \] verzió: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
+- \[Előzetes verzió \] : engedélyezve van a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózása
+- \[Előzetes verzió \] : a jelszó minimális hosszát 14 karakternél nem korlátozó Windows-alapú virtuális gépek naplózása
+- \[Előzetes \] verzió: a jelszavakat nem tároló Windows rendszerű virtuális gépek naplózása visszafejthető titkosítással
+- \[Előzetes \] verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
+- \[Előzetes \] verzió: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[Előzetes \] verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[Előzetes verzió \] : követelmények központi telepítése a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
+- \[Előzetes verzió \] : követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[Előzetes \] verzió: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 sebezhetőségi vizsgálat
 
@@ -303,13 +303,13 @@ Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony 
 
 Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli naplózásával és érvényesítésével segíti a rendszerek figyelését. A szabályzatok a Log Analytics ügynök üzembe helyezését, valamint az SQL-adatbázisok, a Storage-fiókok és a hálózati erőforrások fokozott biztonsági beállításait naplózzák és érvényesítik. Ezek a képességek segítenek a rendellenes viselkedés és a támadási mutatók észlelésében, így elvégezheti a megfelelő lépéseket.
 
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
-- \[Előzetes\]verzió: log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
-- \[Előzetes\]verzió: log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
-- \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása – nincs listázva a virtuálisgép-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezésének naplózása a VMSS-ben – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Előzetes verzió \] : log Analytics munkaterületének naplózása a virtuális gép számára – a jelentés eltérése
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Előzetes verzió \] : log Analytics ügynök központi telepítése Windows VM Scale sets (VMSS)
+- \[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
@@ -332,8 +332,8 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 Most, hogy áttekintette a NIST SP 800-53 R4 terv vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, és bemutatja, hogyan helyezheti üzembe a mintát:
 
 > [!div class="nextstepaction"]
-> [NIST SP 800-53 R4 terv – áttekintés](./index.md)
-> [NIST SP 800-53 R4 Blueprint – lépések üzembe helyezése](./deploy.md)
+> [NIST SP 800-53 R4 terv – áttekintés](./index.md) 
+>  [NIST SP 800-53 R4 terv – lépések üzembe helyezése](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 

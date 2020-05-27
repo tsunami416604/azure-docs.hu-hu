@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190333"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800501"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -36,7 +36,7 @@ A kirakatokban való közzététel minimális követelménye egy MPNID, így eze
 
 Támogatást kaphat az Ön számára elérhető erőforrások megismeréséhez és az ajánlott eljárások megvalósításához, amelyeket [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-A program előnyeinek részletes leírása a [Marketplace jutalmazási program fedélzeten](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)található.
+A program előnyeinek részletes leírása a [Marketplace jutalmazási program fedélzeten](https://aka.ms/marketplacerewards)található.
 
 A kezdéshez szükséges lépések egyszerűek:
 
@@ -56,7 +56,7 @@ A kezdéshez szükséges lépések egyszerűek:
 2. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
 
 >[!Note]
->Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy az adott ajánlat tulajdonosa a partner Center. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban.
+>Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy az adott ajánlat tulajdonosa a partner Center. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat a [Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásban.
 
 Az Ön számára elérhető tevékenységek köre a piactéren kibővíthető ajánlatokkal bővül. Az összes lista az optimalizálási javaslatok és a promóció alapszintű, az erőforrások és az ajánlott eljárások önkiszolgáló e-mail-címének részeként jelenik meg.
 
@@ -68,7 +68,7 @@ Az alábbi táblázat összefoglalja a listára és próbaverzióra vonatkozó a
 
 ![Piacra jutási előnyök](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)találja.
+Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Piactéri előnyök a Transact-partnerek számára
 
@@ -89,7 +89,7 @@ Minden olyan partner, aki élő ajánlattal rendelkezik, egy dedikált engagemen
 
 \*Az eladott helyek küszöbértéke csak Microsoft 365 alkalmazásokra vonatkozik (a Microsoft Teams, az Office, az Outlook vagy a SharePoint szolgáltatással való integrációval rendelkező SaaS-alkalmazásokra) és a juttatásokat a 2020. június 30-án kell befejezni.
 
-Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)találja.
+Ezen előnyök részletes leírását a [Marketplace jutalmazási programjának paklijában](https://aka.ms/marketplacerewards)találja.
 
 A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmazások partnerei számára is közzé vannak téve a Microsoft AppSource az ISV- [kapcsolaton](https://partner.microsoft.com/solutions/business-applications/isv-overview)keresztül elérhető kiegészítő programozással. Ez magában foglalja a technikai, a marketing és az értékesítés támogatását, amely az üzleti alkalmazásokhoz kapcsolódó partnereink igényeire specializálódott.
 
@@ -97,7 +97,7 @@ A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmaz
 
 ### <a name="publisher-agreement"></a>Kiadói szerződés
 
-Az ezen a lapon bemutatott összes tevékenységet a [Marketplace kiadói szerződés](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) szabályozza, és a kereskedelmi juttatások program kiegészítése alapján történik.
+Az ezen a lapon bemutatott összes tevékenységet a [Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560) szabályozza, és a kereskedelmi juttatások program kiegészítése alapján történik.
 
 ### <a name="cancellation-policy"></a>Lemondási szabályzat
 
@@ -116,12 +116,12 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által számlázott értékesítési program szintjébe, ahogy azt a [lista, a próbaverzió, a Consulting](#list-trial-and-consulting-benefits) szakasz és a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) című szakasz tartalmazza. A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha az ajánlatot a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
 
 Tekintse át az [Ön számára elérhető](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)önkiszolgáló erőforrásokat.
 
-Regisztráljon a [Microsoft AppSource és az Azure Marketplace közösségi fórumára](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) , és ismerkedjen meg a kapcsolódó témakörökkel, vagy csatlakozzon a vitafórumhoz.
+Regisztráljon a [Microsoft AppSource és az Azure Marketplace közösségi fórumára](https://aka.ms/MarketplaceCommunity) , és ismerkedjen meg a kapcsolódó témakörökkel, vagy csatlakozzon a vitafórumhoz.
 
 ---

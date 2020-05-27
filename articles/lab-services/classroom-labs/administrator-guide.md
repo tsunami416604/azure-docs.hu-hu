@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: c877daf3ffdc1f00e90dafb421a7323e05a019ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ce9f8ee592c1fb2f7ac98339bbd14ce57440bc1a
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700049"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815706"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk laboratóriumi fiókjának beállításához. A labor-fiók beállítása után a rendszergazdák vagy a pedagógusok létrehozzák a labor-fiókban található tantermi laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -179,8 +179,9 @@ Amikor a rendszergazdák vagy a labor készítői létrehoznak egy tantermi labo
 | ---- | ----- | ------ | ------------- |
 | Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | <ul><li>4 mag</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
-| Közepes (beágyazott virtualizálás) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
+| Közepes (beágyazott virtualizálás) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.
 | Nagy | <ul><li>8 mag</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
+| Nagyméretű (beágyazott virtualizálás) | <ul><li>8 mag</li><li>16 GB RAM</li></ul>  | [Standard_A8_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series) | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. |
 | Kis GPU (vizualizáció) | <ul><li>6 mag</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |
 | Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a nagy számítógépes igényű alkalmazások, például a mesterséges intelligencia és a Deep learning esetében ajánlott. |
 | Közepes GPU (vizualizáció) | <ul><li>12 mag</li><li>112 GB RAM</li></ul>  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. |

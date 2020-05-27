@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536853"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800003"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -23,7 +23,7 @@ Csak néhány példa arra, hogy mit tehet a Azure Monitor a következők:
 - Az infrastruktúrával kapcsolatos problémák korrelálása a [Azure monitor for VMS](insights/vminsights-overview.md) és [Azure monitor a tárolók esetében](insights/container-insights-overview.md).
 - A monitorozási adatait [log Analytics](log-query/log-query-overview.md) a hibaelhárítás és a mélyreható diagnosztika érdekében végezheti el.
 - Az [intelligens riasztásokkal](platform/alerts-smartgroups-overview.md) és az [automatizált műveletekkel](platform/alerts-action-rules.md)nagy léptékű műveletek használhatók.
-- Vizualizációkat hozhat létre az Azure- [irányítópultok](learn/tutorial-logs-dashboards.md) és- [munkafüzetek](app/usage-workbooks.md)létrehozásával.
+- Vizualizációkat hozhat létre az Azure- [irányítópultok](learn/tutorial-logs-dashboards.md) és- [munkafüzetek](platform/workbooks-overview.md)létrehozásával.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 
@@ -144,7 +144,7 @@ A [Logic apps](https://azure.microsoft.com/services/logic-apps) egy olyan szolg�
 ### <a name="api"></a>API
 Több API áll rendelkezésre a metrikák és a naplók olvasására és írására Azure Monitor a generált riasztások elérése mellett. Lehetőség van a riasztások konfigurálására és lekérésére is. Ez lényegében korlátlan lehetőségeket biztosít a Azure Monitor-nal integrált egyéni megoldások létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk:
 
 * A Azure Monitor által gyűjtött adatok [metrikái és naplói](platform/data-platform.md) .

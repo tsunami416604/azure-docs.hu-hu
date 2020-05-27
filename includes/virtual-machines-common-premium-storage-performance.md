@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204450"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821502"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -27,7 +27,7 @@ A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hog
 
 Ha prémium szintű tárolót csatlakoztat a nagy méretű virtuális gépéhez, az Azure a lemez specifikációinak megfelelően kiosztja a garantált IOPS-t. A P50-es lemeznél például 7500 IOPS lesz kiosztva. Minden nagy méretű virtuális gép rendelkezik egy IOPS-korláttal is, amelyet még fenn tud tartani. A standard GS5 virtuális gép például 80 000 IOPS korláttal rendelkezik.
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 
 Az átviteli sebesség vagy a sávszélesség azt az adatmennyiséget adja meg, amelyet az alkalmazás a megadott intervallumban küld a Storage-lemezeknek. Ha az alkalmazás nagy i/o-méretű bemeneti/kimeneti műveleteket végez, nagy átviteli sebességre van szükség. Az adatraktár-alkalmazások általában nagy mennyiségű adathoz hozzáférő, nagyméretű műveleteket végző, nagyszámú adatokhoz hozzáférő, intenzíven végrehajtott ellenőrzéseket adnak ki. Más szóval az ilyen alkalmazások esetében nagyobb átviteli sebességre van szükség. Ha van ilyen alkalmazás, meg kell terveznie az infrastruktúráját az átviteli sebesség optimalizálása érdekében. A következő szakaszban részletesen ismertetjük azokat a tényezőket, amelyeket meg kell valósítania.
 
@@ -72,7 +72,7 @@ Ezután mérje fel az alkalmazás maximális teljesítményre vonatkozó követe
 | Szekvenciális műveletek%-ban | | | |
 | I/o-kérelem mérete | | | |
 | Átlagos átviteli sebesség | | | |
-| Legfeljebb Átviteli sebesség | | | |
+| Legfeljebb Teljesítmény | | | |
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
@@ -92,11 +92,11 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Leírás | PerfMon | Iostat |
+| Számláló | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
-| **Átviteli sebesség** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
+| **Teljesítmény** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
@@ -119,7 +119,7 @@ Az alábbi táblázat összefoglalja a teljesítménnyel kapcsolatos tényezőke
 
 A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a késésről az egyes virtuálisgép-típusok esetében a [Linux VM-méretek](../articles/virtual-machines/linux/sizes.md) vagy a [Windowsos virtuális gépek méretei](../articles/virtual-machines/windows/sizes.md)című témakörben talál további információt.
 
-| &nbsp; | **IOPS** | **Átviteli sebesség** | **Késés** |
+| &nbsp; | **IOPS** | **Teljesítmény** | **Késés** |
 | --- | --- | --- | --- |
 | **Példa forgatókönyvre** |Nagyvállalati OLTP alkalmazás, amely másodpercenként nagy mennyiségű tranzakciót igényel. |Nagyvállalati adattárház-kezelő alkalmazás nagy mennyiségű adattal. |Közel valós idejű alkalmazások, amelyek azonnali válaszokat igényelnek a felhasználói kérésekre, például az online játékokba. |
 | Teljesítménnyel kapcsolatos tényezők | &nbsp; | &nbsp; | &nbsp; |
@@ -140,9 +140,9 @@ Az i/o-kérések az alkalmazás által elvégezhető bemeneti/kimeneti művelete
 Az IO-méret az egyik legfontosabb tényező. Az i/o-méret az alkalmazás által generált bemeneti/kimeneti műveletre vonatkozó kérelem mérete. Az i/o-méret jelentős hatással van a teljesítményre, különösen a IOPS és a sávszélességre, amelyet az alkalmazás képes elérni. A következő képlet a IOPS, az i/o-méret és a sávszélesség/átviteli sebesség közötti kapcsolatot mutatja.  
     ![](media/premium-storage-performance/image1.png)
 
-Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [\_db-blokk\_méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
+Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [db- \_ blokk \_ méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
 
-Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Például:
+Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Példa:
 
 * Egy OLTP-alkalmazás több millió kis-és véletlenszerű IO-kérelmet hoz létre. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb IOPS kapjon.  
 * Az adattárház-alkalmazások nagy és szekvenciális IO-kérelmeket generálnak. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb sávszélességet vagy átviteli sebességet kapjon.
@@ -189,15 +189,15 @@ Tegyük fel például, hogy egy alkalmazásra vonatkozó követelmény legfeljeb
 *Működési díj*  
 Sok esetben előfordulhat, hogy az Premium Storage használatával járó általános üzemeltetési díj alacsonyabb, mint a standard Storage használata.
 
-Vegyünk például egy 16 000-IOPS igénylő alkalmazást. Ennek a teljesítménynek a megvalósításához szüksége lesz egy\_standard D14 Azure IaaS virtuális gépre, amely maximális IOPS biztosít a 16 000 32 standard Storage 1 TB lemez használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
+Vegyünk például egy 16 000-IOPS igénylő alkalmazást. Ennek a teljesítménynek a megvalósításához szüksége lesz egy standard \_ D14 Azure IaaS virtuális gépre, amely maximális IOPS biztosít a 16 000 32 standard Storage 1 TB lemez használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
 
-Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard\_DS13 virtuális gép négy P30-lemezzel képes megfelelni az 16 000 IOPS-követelménynek. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
+Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard \_ DS13 virtuális gép négy P30-lemezzel képes megfelelni az 16 000 IOPS-követelménynek. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
 | &nbsp; | **Standard** | **Prémium** |
 | --- | --- | --- |
-| **Virtuális gép ára havonta** |$1 570,58 (szabványos\_D14) |$1 003,66 (szabványos\_DS13) |
+| **Virtuális gép ára havonta** |$1 570,58 (szabványos \_ D14) |$1 003,66 (szabványos \_ DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
 | **Teljes díj havonta** |$3 208,98 |$1 544,34 |
 
@@ -237,7 +237,7 @@ Az Azure Premium Storaget használó, nagy teljesítményű virtuális gépek t�
 > [!WARNING]
 > A lemezes gyorsítótárazás nem támogatott a 4 TiB és nagyobb lemezek esetén. Ha több lemez van csatlakoztatva a virtuális géphez, akkor minden 4 TiB-nál kisebb lemez támogatja a gyorsítótárazást.
 >
-> Egy Azure-beli lemez gyorsítótár-beállításainak módosításakor a céllemez le lesz választva, és újra lesz csatlakoztatva. Ha az operációs rendszer lemeze, a virtuális gép újraindul. A lemezgyorsítótár beállításainak módosítása előtt állítson le minden olyan alkalmazást és szolgáltatást, amelyet ez a megszakítás érinthet.
+> Egy Azure-beli lemez gyorsítótár-beállításainak módosításakor a céllemez le lesz választva, és újra lesz csatlakoztatva. Ha az operációs rendszer lemeze, a virtuális gép újraindul. A lemezgyorsítótár beállításainak módosítása előtt állítson le minden olyan alkalmazást és szolgáltatást, amelyet ez a megszakítás érinthet. A javaslatok követése nem eredményezheti az adatsérülést.
 
 Ha többet szeretne megtudni a BlobCache működéséről, tekintse meg az [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blogbejegyzését.
 
@@ -280,9 +280,9 @@ Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQ
 
 Az összes olyan prémium szintű SSD-vagy Ultra-lemez esetében, amelynek a gyorsítótára **readonly** vagy **none**értékre van állítva, le kell tiltania a "korlátok" kifejezést a fájlrendszer csatlakoztatásakor. Ebben az esetben nincs szükség korlátokra, mert a Premium Storage-lemezekre való írás a gyorsítótár beállításainál tartós. Az írási kérelem sikeres befejeződése után a szolgáltatás az adattárolást az állandó tárolóba írja. A "korlátok" letiltásához használja az alábbi módszerek egyikét. Válassza ki a fájlrendszerhez tartozó egyet:
   
-* A **reiserFS**az akadályok letiltásához használja a `barrier=none` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier=flush`a következőt:.)
-* Az **ext3/ext4**esetében az akadályok letiltásához használja `barrier=0` a csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier=1`a következőt:.)
-* A **XFS**az akadályok letiltásához használja a `nobarrier` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier`a következőt:.)
+* A **reiserFS**az akadályok letiltásához használja a `barrier=none` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=flush` következőt:.)
+* Az **ext3/ext4**esetében az akadályok letiltásához használja a `barrier=0` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=1` következőt:.)
+* A **XFS**az akadályok letiltásához használja a `nobarrier` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier` következőt:.)
 * A prémium szintű Storage-lemezek esetében a cache a **READWRITE**beállításnál engedélyezze a korlátokat az írási tartósság érdekében.
 * Ahhoz, hogy a kötetek a virtuális gép újraindítása után is fennmaradnak, frissítenie kell az/etc/fstabet az univerzálisan egyedi azonosítóval (UUID) a lemezekre mutató hivatkozásokkal. További információ: [felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../articles/virtual-machines/linux/add-disk.md).
 
@@ -384,3 +384,4 @@ A csíkozott kötetek esetében elég magas a várólista mélységének megőrz
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
 ## <a name="next-steps"></a>További lépések
+

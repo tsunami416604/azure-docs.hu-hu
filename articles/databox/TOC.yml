@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: Kezelés a helyi webes felhasználói felületen
               href: data-box-local-web-ui-admin.md
+            - name: Önállóan felügyelt szállítás használata
+              href: data-box-portal-customer-managed-shipping.md
             - name: Felhasználó által kezelt kulcs engedélyezése
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Adatok áthelyezése blobszintre
@@ -117,6 +119,8 @@
           items:
             - name: Kezelés az Azure Portalon
               href: data-box-portal-ui-admin.md
+            - name: Önállóan felügyelt szállítás használata
+              href: data-box-disk-portal-customer-managed-shipping.md
             - name: Hibaelhárítás
               items:
                 - name: Zárolásfeloldási problémák

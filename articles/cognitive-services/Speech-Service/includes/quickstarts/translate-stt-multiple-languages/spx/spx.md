@@ -5,26 +5,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 94d50a15b0d5d7bed2bd43516952036044d7f0c0
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c73ee93d89a350763e8ced490187e1c47f8918de
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715100"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806483"
 ---
-## <a name="run-the-spx-tool"></a>Az SPX eszköz futtatása
+## <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
-Most már készen áll az SPX eszköz futtatására, hogy két különböző nyelven szövegbe fordítsa a beszédet.
+Most már készen áll a Speech CLI futtatására, hogy két különböző nyelven szövegeket lehessen lefordítani.
 
-A parancssorban váltson arra a könyvtárra, amely az SPX-eszköz bináris fájlját tartalmazza, és írja be a következőt:
+A parancssorban váltson arra a könyvtárra, amely a parancssori felület bináris fájlját tartalmazza, és írja be a következőt:
 
 ```bash
 spx translate --microphone --target de-DE --target es-MX
 ```
 
-Az SPX-eszköz lefordítja az angol nyelvű szöveget a német és (mexikói) spanyol nyelven kinyomtatott szövegre.
+A Speech CLI az angol nyelvű szöveget a német és (mexikói) spanyol nyelven nyomtatott szövegként fordítja le.
 Az eszköz leállításához nyomja le az ENTER billentyűt.
 
 > [!NOTE]
-> Az SPX-eszköz alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
+> A Speech CLI alapértelmezett értéke az angol. [A beszéd-szöveg táblázatból](../../../../language-support.md)más nyelvet is választhat.
 > Adja meg például a következőt: `--source ja-JP` a japán beszéd felismerése.

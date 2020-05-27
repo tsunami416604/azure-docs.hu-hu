@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: a932f4ec37eda66c353df2c865bb4036ddcc59fa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741086"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798151"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
@@ -105,7 +105,7 @@ Ha engedélyezte a partnert a CSP programban, és a partner már eladta a termé
 
 Ha a CSP program egyik partnere nem adta meg a terméket az ügyfeleknek, és az ajánlat közzétételét követően el szeretné távolítani a CSP-t, kövesse az alábbi utasításokat:
 
-1. Lépjen a [support Request lapra](https://partner.microsoft.com/support/v2/?stage=1). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
+1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
    > [!NOTE]
    > Ne módosítsa a legördülő menü előre megadott beállításait.
@@ -127,7 +127,7 @@ Ebben a szakaszban a három CSP-viszonteladói lehetőség közül lehet navigá
 
 Ha az ajánlat jelenleg **1. lehetőség: bármely partner a CSP programban** , és a másik két lehetőség közül bármelyiket el szeretné érni, a következő utasításokat követve hozhat létre egy kérést:
 
-1. Lépjen a [support Request lapra](https://partner.microsoft.com/support/v2/?stage=1). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
+1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
    > [!NOTE]
    > Ne módosítsa a legördülő menü előre megadott beállításait.
@@ -145,7 +145,7 @@ Ha az ajánlat jelenleg **1. lehetőség: bármely partner a CSP programban** , 
 
 Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és az egyiket szeretné megkeresni **: bármely partner a CSP programban**, az alábbi utasításokat követve hozzon létre egy kérést:
 
-1. Lépjen a [support Request lapra](https://partner.microsoft.com/support/v2/?stage=1). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
+1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
    > [!NOTE]
    > Ne módosítsa a legördülő menü előre megadott beállításait.
@@ -158,7 +158,7 @@ Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partner
 
  Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és a **3. lehetőségre szeretne navigálni: nem található partner a CSP programban**, csak akkor fog tudni erre a lehetőségre navigálni, ha a CSP-program korábban már engedélyezte a partnereket, hogy a végfelhasználóknak ne eladják az ajánlatot. Kérelem létrehozásához kövesse az alábbi utasításokat:
 
-1. Lépjen a [support Request lapra](https://partner.microsoft.com/support/v2/?stage=1). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
+1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
    > [!NOTE]
    > Ne módosítsa a legördülő menü előre megadott beállításait.
@@ -189,7 +189,7 @@ Ha a Cloud Partner Portal a CSP-csatornát választotta, a kiadónak olyan URL-c
 
 ![Cloud Partner Portal CSP-biztosíték információi](media/marketplace-publishers-guide/cpp-csp-information.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutatóba](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 

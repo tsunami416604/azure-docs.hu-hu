@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow képbesorolási modellek betanítása és üzembe helyezése
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Munkaterület létrehozása Resource Manager-sablonnal
+      href: tutorial-resource-manager-workspace.md
 - name: Példák
   items:
     - name: Jupyter-notebookok

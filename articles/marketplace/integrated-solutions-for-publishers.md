@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657973"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800601"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -52,7 +52,7 @@ Az integrált megoldások programjának áttekintéséhez tekintse meg a [partne
 
 ## <a name="submit-a-nomination"></a>Nevezés beküldése
 
-A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
+A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://aka.ms/AA5qicu)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
 
 ## <a name="develop-an-integrated-solution"></a>Integrált megoldás fejlesztése
 
@@ -84,8 +84,8 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
     Használja ezeket az erőforrásokat a fejlesztési folyamathoz:
 
-    * [Üzleti döntési workshop – vitafórum](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-business-workshop.pptx)
-    * [Útmutató a technikai döntési workshophoz](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-technical-workshop.pptx)
+    * [Üzleti döntési workshop – vitafórum](https://aka.ms/AA5qicx)
+    * [Útmutató a technikai döntési workshophoz](https://aka.ms/AA5qid1)
     * [Rövid útmutató videó: integrált megoldások workshopok](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
 
 1. Azonosítson egy partneri projektmenedzsert, amely az üzleti és műszaki workshopokon fejlesztett projekt-tervet és idővonalat irányítja.
@@ -98,8 +98,8 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
     * Egy kombinált megoldás neve.
     * Az integrált megoldás listázási leírása. Ajánlat követése [– ajánlott eljárások listázása](./gtm-offer-listing-best-practices.md).
-    * Egyoldalas szurok az ügyfeleknek. Az [egyoldalas sablon](https://assetsprod.microsoft.com/mpn/integrated-solutions-customer-one-pager-template.pptx)használata.
-    * Egy ügyfél-bemutató. Használja a [bemutató sablont](https://assetsprod.microsoft.com/mpn/customer-presentation-template.pptx).
+    * Egyoldalas szurok az ügyfeleknek. Az [egyoldalas sablon](https://aka.ms/AA5s08a)használata.
+    * Egy ügyfél-bemutató. Használja a [bemutató sablont](https://aka.ms/AA5s7ql).
     * Az egyesített megoldás emblémája.
 
 ## <a name="publish-your-integrated-solution"></a>Az integrált megoldás közzététele
@@ -112,6 +112,6 @@ Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz,
 
 Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az integrált megoldásoknak a piactéren való megvásárlásával kapcsolatos információkért lásd: [integrált megoldások](./integrated-solutions.md).

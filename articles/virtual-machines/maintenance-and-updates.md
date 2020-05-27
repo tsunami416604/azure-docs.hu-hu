@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97605b0cdc7ac6368b21e9427f64e4bca7e35d4a
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250230"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815944"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Az Azure-ban futó virtuális gépek karbantartása
 
@@ -21,7 +21,7 @@ Az Azure rendszeresen frissíti a platformját a virtuális gépek gazdagép-inf
 A frissítések ritkán érintik az üzemeltetett virtuális gépeket. Ha a frissítések hatással vannak, az Azure kiválasztja a legkevésbé hatásos módszert a frissítésekhez:
 
 - Ha a frissítés nem igényel újraindítást, a rendszer szünetelteti a virtuális gépet a gazdagép frissítésekor, vagy a virtuális gép egy már frissített gazdagépre van áttelepítve. 
-- Ha a karbantartás újraindítást igényel, értesítést kap a tervezett karbantartásról. Az Azure egy időablakot is biztosít, amelyben saját maga is elindíthatja a karbantartást. Az önkarbantartási időszak általában 30 nap, kivéve, ha a karbantartás nem sürgős. Az Azure olyan technológiákat fektet be, amelyek csökkentik azon esetek számát, amelyekben a tervezett platform karbantartásához szükség van a virtuális gépek újraindítására. A tervezett karbantartás kezelésével kapcsolatos útmutatásért lásd: tervezett karbantartási értesítések kezelése az Azure [CLI](maintenance-notifications-cli.md), a [PowerShell](maintenance-notifications-powershell.md) vagy a [Portal](maintenance-notifications-portal.md)használatával.
+- Ha a karbantartás újraindítást igényel, értesítést kap a tervezett karbantartásról. Az Azure egy időablakot is biztosít, amelyben saját maga is elindíthatja a karbantartást. Az önkarbantartási időszak általában 35 nap, kivéve, ha a karbantartás nem sürgős. Az Azure olyan technológiákat fektet be, amelyek csökkentik azon esetek számát, amelyekben a tervezett platform karbantartásához szükség van a virtuális gépek újraindítására. A tervezett karbantartás kezelésével kapcsolatos útmutatásért lásd: tervezett karbantartási értesítések kezelése az Azure [CLI](maintenance-notifications-cli.md), a [PowerShell](maintenance-notifications-powershell.md) vagy a [Portal](maintenance-notifications-portal.md)használatával.
 
 Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./windows/manage-availability.md) , illetve a megfelelő [Linux](./linux/manage-availability.md)-cikk.
 
@@ -37,11 +37,11 @@ A legtöbb nem nulla hatású karbantartás kevesebb, mint 10 másodpercig szün
 
 Memória – a karbantartási munkálatok az Azure-beli virtuális gépek több mint 90 százalékára is használhatók. A G, M, N és H sorozat esetében nem működik. Az Azure egyre inkább élő áttelepítési technológiákat használ, és javítja a memória-megőrzést biztosító karbantartási mechanizmusokat a szüneteltetési időtartam csökkentése érdekében.  
 
-Az újraindítást nem igénylő karbantartási műveletek egyszerre csak egy tartalék tartományt alkalmaznak. Ezek akkor állnak le, ha figyelmeztetési állapotra utaló jeleket kapnak. 
+Az újraindítást nem igénylő karbantartási műveletek egyszerre csak egy tartalék tartományt alkalmaznak. Leállnak, ha figyelmeztetési állapotot kapnak a platform monitorozási eszközeitől. 
 
 Az ilyen típusú frissítések hatással lehetnek egyes alkalmazásokra. Ha a virtuális gép élő áttelepítése egy másik gazdagépre történik, egyes érzékeny munkaterhelések némi teljesítménybeli romlást jelezhetnek néhány perc alatt, ami a virtuális gép szüneteltetését eredményezi. A virtuális gépek karbantartásának előkészítéséhez és az Azure-karbantartás során felmerülő hatás csökkentéséhez próbálkozzon az [Scheduled Events Windows](./windows/scheduled-events.md) vagy [Linux](./linux/scheduled-events.md) rendszerű alkalmazásokkal való használatával. 
 
-A nyilvános előzetes verzióban elérhető egy funkció, egy karbantartási vezérlő is, amely segíthet a nem újraindítást igénylő karbantartás kezelésében. Az [Azure dedikált gazdagépeit](./linux/dedicated-hosts.md) vagy egy [elkülönített virtuális gépet](../security/fundamentals/isolation-choices.md)kell használnia. A karbantartási ellenőrzés lehetőséget biztosít a platform frissítéseinek kihagyására és a frissítések alkalmazására az adott időpontban, egy 35 napos időszakon belül. További információ: [a frissítések kezelése a karbantartási és az Azure CLI](maintenance-control-cli.md)használatával.
+Az összes karbantartási tevékenység, beleértve a nulla hatású és újraindítás nélküli frissítéseket, a karbantartási vezérlés funkciót is használhatja. Az [Azure dedikált gazdagépeit](./linux/dedicated-hosts.md) vagy egy [elkülönített virtuális gépet](../security/fundamentals/isolation-choices.md)kell használnia. A karbantartási ellenőrzés lehetőséget biztosít az összes platform frissítésének kihagyása és a frissítések adott időpontban történő alkalmazásához a 35 napos időszakon belül. További információ: [a frissítések kezelése a karbantartási és az Azure CLI](maintenance-control.md)használatával.
 
 
 ### <a name="live-migration"></a>Élő áttelepítés

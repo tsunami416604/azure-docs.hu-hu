@@ -3,12 +3,12 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283956"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797789"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -22,7 +22,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
 
     * *Nem szeretné telepíteni a kiszolgálói kódot? Egyszerűen [hozzon létre egy Azure Application Insights-erőforrást](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Weblap kódja:** A Bezárás ``</head>``előtt adja hozzá a következő szkriptet a weboldalához. Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
+2. **Weblap kódja:** A bezárás előtt adja hozzá a következő szkriptet a weboldalához ``</head>`` . Cserélje le a rendszerállapot-kulcsot a Application Insights erőforrás megfelelő értékére:
     
     ```html
     <script type="text/javascript">
@@ -157,7 +157,7 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 > [!NOTE]
 > Az inicializálás a `ApplicationInsights.config` vagy a használatával `TelemetryConfiguration.Active` való hozzáadása ASP.net Core alkalmazások esetében nem érvényes. 
 
-[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új hozzáadását `TelemetryInitializer` a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` osztály metódusában történik `Startup.cs` .
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -170,10 +170,10 @@ A webalkalmazás-inicializáló, például a Global.asax.cs:
 
 Minden új TelemetryClients automatikusan hozzáadja a megadott tulajdonságérték értékét. Az egyes telemetria-események felülbírálják az alapértelmezett értékeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
    - [Felhasználók, munkamenetek, események](usage-segmentation.md)
    - [Tölcsérek](usage-funnels.md)
    - [Megőrzés](usage-retention.md)
    - [Felhasználói folyamatok](usage-flows.md)
-   - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
+   - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
    - [Felhasználói környezet hozzáadása](usage-send-user-context.md)

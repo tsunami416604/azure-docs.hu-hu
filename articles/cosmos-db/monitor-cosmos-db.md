@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: fcdc80e73d11bbc6d94e921548d346ee436b69ac
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5056762dab18ae23980c7d3b3ebfbb3c3014fa56
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715681"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798700"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Az alábbi részekben a cikk a Azure Cosmos DB gyűjtött adatok leírásával, 
 
 ## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor
 
-A Azure Cosmos DB Azure Monitor a [Azure monitor munkafüzetek szolgáltatásán](../azure-monitor/app/usage-workbooks.md) alapul, és ugyanazokat a figyelési adatokat használja, amelyeket az alábbi szakaszokban ismertetett Cosmos DBhoz gyűjtöttek be. A Azure Monitor segítségével megtekintheti az összes Azure Cosmos DB-erőforrás teljes teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív felhasználói élményben, és a Azure Monitor egyéb funkcióit kihasználhatja részletes elemzés és riasztás céljából. További információért lásd a [Azure Cosmos DB Azure monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md) című cikket.
+A Azure Cosmos DB Azure Monitor a [Azure monitor munkafüzetek szolgáltatásán](../azure-monitor/platform/workbooks-overview.md) alapul, és ugyanazokat a figyelési adatokat használja, amelyeket az alábbi szakaszokban ismertetett Cosmos DBhoz gyűjtöttek be. A Azure Monitor segítségével megtekintheti az összes Azure Cosmos DB-erőforrás teljes teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív felhasználói élményben, és a Azure Monitor egyéb funkcióit kihasználhatja részletes elemzés és riasztás céljából. További információért lásd a [Azure Cosmos DB Azure monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md) című cikket.
 
 > [!NOTE]
 > Tárolók létrehozásakor ügyeljen arra, hogy ne hozzon létre két tárolót ugyanazzal a névvel, de a különböző burkolattal. Ennek az az oka, hogy az Azure-platform egyes részei nem megkülönböztetik a kis-és nagybetűket, így az ilyen nevű tárolók telemetria és műveleteinek összekeveredését és ütközését okozhatják.
