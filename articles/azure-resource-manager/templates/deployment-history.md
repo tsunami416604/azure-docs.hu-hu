@@ -3,13 +3,13 @@ title: Üzembe helyezési előzmények
 description: Ismerteti, hogyan lehet megtekinteni Azure Resource Manager telepítési műveleteket a portál, a PowerShell, az Azure CLI és a REST API használatával.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460296"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816284"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Az üzembe helyezési előzmények megtekintése Azure Resource Manager
 
@@ -145,22 +145,22 @@ A sikertelen műveletek állapotjelző üzenetének lekéréséhez használja a 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Az erőforráscsoporthoz való központi telepítésre vonatkozó központi telepítési műveletek megtekintéséhez használja az az [Deployment Group Operation List](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list) parancsot.
+Ha meg szeretné tekinteni az erőforráscsoport üzembe helyezésének központi telepítési műveleteit, használja az az [Deployment Operation Group List](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) parancsot. Az Azure CLI 2.6.0 vagy újabb verzióval kell rendelkeznie.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 A sikertelen műveletek megtekintéséhez szűrési műveletek **sikertelen** állapottal.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 A sikertelen műveletek állapotjelző üzenetének lekéréséhez használja a következő parancsot:
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)

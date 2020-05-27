@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
-ms.openlocfilehash: 33b2ca8db75acff1ce423aa50087961cce6092b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 122725bff616a49d27981b88f465e04418db9526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418405"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826111"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -36,7 +36,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **t
 
 Adatkészlet létrehozása előtt létre kell hoznia egy [**társított szolgáltatást**](concepts-linked-services.md) , amely összekapcsolja az adattárat az adat-előállítóval. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Gondoljon erre; az adatkészlet a társított adattárakon belüli adatszerkezetet jelöli, és a társított szolgáltatás határozza meg az adatforráshoz való kapcsolódást. Egy Azure Storage-beli társított szolgáltatás például egy Storage-fiókhoz csatolja az adatelőállítót. Az Azure Blob-adatkészlet az Azure Storage-fiókban található BLOB-tárolót és mappát jelöli, amely a feldolgozandó bemeneti blobokat tartalmazza.
 
-Példa erre a forgatókönyvre. Az adatok blob Storage-ból SQL-adatbázisba való másolásához létre kell hoznia két társított szolgáltatást: Azure Storage és Azure SQL Database. Ezután hozzon létre két adatkészletet: az Azure Blob-adatkészletet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table-adatkészletet (amely a Azure SQL Database társított szolgáltatásra hivatkozik). Az Azure Storage és a Azure SQL Database társított szolgáltatások olyan kapcsolati karakterláncokat tartalmaznak, amelyeket a futtatókörnyezet az Azure Storage-hoz és a Azure SQL Databasehoz való kapcsolódáshoz Data Factory használ. Az Azure Blob-adatkészlet meghatározza a blob-tárolóban található bemeneti blobokat tartalmazó BLOB-tárolót és blob mappát. Az Azure SQL Table adatkészlet meghatározza azt az SQL-táblázatot az SQL-adatbázisban, amelybe az adatokat másolni kívánja.
+Példa erre a forgatókönyvre. Az adatok blob Storage-ból SQL Databaseba való másolásához létre kell hoznia két társított szolgáltatást: Azure Storage és Azure SQL Database. Ezután hozzon létre két adatkészletet: az Azure Blob-adatkészletet (amely az Azure Storage társított szolgáltatásra vonatkozik) és az Azure SQL Table-adatkészletet (amely a Azure SQL Database társított szolgáltatásra hivatkozik). Az Azure Storage és a Azure SQL Database társított szolgáltatások olyan kapcsolati karakterláncokat tartalmaznak, amelyeket a futtatókörnyezet az Azure Storage-hoz és a Azure SQL Databasehoz való kapcsolódáshoz Data Factory használ. Az Azure Blob-adatkészlet meghatározza a blob-tárolóban található bemeneti blobokat tartalmazó BLOB-tárolót és blob mappát. Az Azure SQL Table adatkészlet meghatározza a SQL Database azon SQL-tábláját, amelybe az adatokat másolni kívánja.
 
 A következő ábra a folyamat, a tevékenység, az adatkészlet és a társított szolgáltatás közötti kapcsolatokat mutatja Data Factoryban:
 
@@ -72,8 +72,8 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-név | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
-type | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
 szerkezet | Az adatkészlet sémája. Részletekért lásd: [adatkészlet sémája](#dataset-structure-or-schema). | Nem |
 typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
 
@@ -117,14 +117,14 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-név | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
-type | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
 séma | Az adatkészlet sémája. Részletekért lásd: [az adatfolyam-kompatibilis adatkészletek](#dataset-type). | Nem |
 typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
 
 
 ## <a name="dataset-example"></a>Adatkészlet – példa
-Az alábbi példában az adatkészlet egy Sajáttábla nevű táblázatot jelöl egy SQL-adatbázisban.
+A következő példában az adatkészlet a Sajáttábla nevű táblázatot jelöli egy SQL Database.
 
 ```json
 {
@@ -183,10 +183,10 @@ A struktúra minden oszlopa a következő tulajdonságokat tartalmazza:
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-név | Az oszlop neve. | Igen
-type | Az oszlop adattípusa. A Data Factory a következő közbenső adattípusokat támogatja megengedett értékként: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan** | Nem
-kulturális környezet | . A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy. `Datetimeoffset` A mező alapértelmezett értéke: `en-us`. | Nem
-formátumban | A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy. `Datetimeoffset` A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem
+name | Az oszlop neve. | Igen
+típus | Az oszlop adattípusa. A Data Factory a következő közbenső adattípusokat támogatja megengedett értékként: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan** | Nem
+kulturális környezet | . A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`. | Nem
+formátumban | A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem
 
 ### <a name="example"></a>Példa
 A következő példában tegyük fel, hogy a forrás blob-fájl CSV formátumú, és három oszlopot tartalmaz: felhasználóazonosító, név és lastlogindate. A Int64, string és DateTime típusú egyéni datetime formátummal rendelkeznek, a hét napjainak rövidített francia neveivel.
@@ -202,12 +202,12 @@ Adja meg a blob-adatkészlet struktúráját a következőképpen, valamint az o
 ]
 ```
 
-### <a name="guidance"></a>Útmutatás
+### <a name="guidance"></a>Útmutató
 
 A következő irányelvek segítenek megismerni, hogy mikor kell belefoglalni a szerkezet adatait, és mit kell belefoglalni a **struktúra** szakaszba. További információ arról, hogy a adat-előállító hogyan képezi le a forrás adatait, és mikor kell megadnia a szerkezeti adatokat a [séma és típus leképezése](copy-activity-schema-and-type-mapping.md)alapján.
 
 - **Erős séma-adatforrások**esetén csak akkor válassza a struktúra szakaszt, ha a forrás oszlopokat a fogadó oszlopokra szeretné leképezni, és a nevük nem egyeznek. Az ilyen strukturált adatforrás az adatsémát és a beírási adatokat az adatok mellett tárolja. Strukturált adatforrások például a következők: SQL Server, Oracle és Azure SQL Database.<br/><br/>A strukturált adatforrásokhoz már rendelkezésre áll a típus adatai, ezért a szerkezet szakasza nem tartalmazhat beírási adatokat.
-- **A nem/gyenge séma-adatforrások (például a blob Storage-ban lévő szövegfájl) esetében**olyan struktúrát is tartalmaznak, amelyben az adatkészlet egy másolási tevékenység bemenete, és a forrás-adatkészlet adattípusait át kell alakítani a fogadó natív típusaira. És vegyen fel struktúrát, ha a forrás oszlopokat le szeretné képezni a fogadó oszlopokra.
+- **A nem/gyenge séma típusú adatforrások esetében például a blob Storage-ban lévő szövegfájlban**szerepel a struktúra, ha az adatkészlet egy másolási tevékenység bemenete, és a forrás adatkészletének adattípusait át kell alakítani a fogadó natív típusaiba. És vegyen fel struktúrát, ha a forrás oszlopokat le szeretné képezni a fogadó oszlopokra
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Adatkészleteket az alábbi eszközök vagy SDK-k egyikével hozhat létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal

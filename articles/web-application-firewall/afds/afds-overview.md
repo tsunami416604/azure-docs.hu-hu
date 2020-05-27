@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77915639"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816369"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
 
@@ -26,7 +26,7 @@ A WAF megakadályozza, hogy a rosszindulatú támadások a támadási források 
 
 ## <a name="waf-policy-and-rules"></a>WAF szabályzat és szabályok
 
-Beállíthat egy WAF szabályzatot, és hozzárendelheti a szabályzatot egy vagy több előtér-előtérben a védelemhez. A WAF szabályzatok a biztonsági szabályok két típusát alkotják:
+Beállíthat egy [WAF szabályzatot](waf-front-door-create-portal.md) , és hozzárendelheti a szabályzatot egy vagy több előtér-előtérben a védelemhez. A WAF szabályzatok a biztonsági szabályok két típusát alkotják:
 
 - az ügyfél által létrehozott egyéni szabályok.
 

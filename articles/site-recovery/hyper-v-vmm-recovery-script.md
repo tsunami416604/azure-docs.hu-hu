@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084873"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826281"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>VMM-parancsfájl hozzáadása helyreállítási tervhez
 
 Ez a cikk bemutatja, hogyan hozhat létre System Center Virtual Machine Manager (VMM) parancsfájlt, és hogyan adhatja hozzá egy helyreállítási tervhez a [Azure site Recoveryban](site-recovery-overview.md).
 
-A cikk alján vagy az [Azure Recovery Services fórumán](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)közzétett megjegyzéseket vagy kérdéseket tehet közzé.
+A cikk alján található megjegyzéseket vagy kérdéseket felteheti, vagy a [Microsoft Q&az Azure Recovery Services kérdéseit](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,7 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
     - Ha hiba történik, a parancsfájl hátralévő része nem fut.
     - Ha hiba lép fel a nem tervezett feladatátvétel futtatásakor, a helyreállítási terv folytatódik.
     - Ha egy tervezett feladatátvétel futtatásakor hiba történik, a helyreállítási terv leáll. Javítsa ki a parancsfájlt, ellenőrizze, hogy az a várt módon fut-e, majd futtassa újra a helyreállítási tervet.
-        - A `Write-Host` parancs helyreállítási terv parancsfájljában nem működik. Ha parancsfájlban használja `Write-Host` a parancsot, a parancsfájl végrehajtása sikertelen lesz. A kimenet létrehozásához hozzon létre egy proxy-parancsfájlt, amely a fő parancsfájlt futtatja. Annak érdekében, hogy az összes kimenet kifelé legyen, ** \> ** használja az parancsot.
+        - A `Write-Host` parancs helyreállítási terv parancsfájljában nem működik. Ha `Write-Host` parancsfájlban használja a parancsot, a parancsfájl végrehajtása sikertelen lesz. A kimenet létrehozásához hozzon létre egy proxy-parancsfájlt, amely a fő parancsfájlt futtatja. Annak érdekében, hogy az összes kimenet kifelé legyen, használja az **\>\>** parancsot.
         - A parancsfájl túllépi az időkorlátot, ha az 600 másodpercen belül nem tér vissza.
         - Ha bármilyen STDERR van írva, a parancsfájl nem sikerült besorolású. Ezek az információk a parancsfájl-végrehajtás részleteiben jelennek meg.
 
@@ -41,11 +41,11 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
     További információ: Ismerkedés [a Windows PowerShell-lel és a VMM](https://technet.microsoft.com/library/hh875013.aspx).
 * Győződjön meg arról, hogy legalább egy függvénytár-kiszolgálója van a VMM üzemelő példányában. Alapértelmezés szerint a VMM-kiszolgáló megosztott elérési útja helyileg található a VMM-kiszolgálón. A mappa neve MSCVMMLibrary.
 
-  Ha a megosztott kódtár elérési útja távoli (vagy helyi, de nem a MSCVMMLibrary van megosztva), a következőképpen konfigurálja a megosztást \\a libserver2. contoso. com\share\ használatával példaként:
+  Ha a megosztott kódtár elérési útja távoli (vagy helyi, de nem a MSCVMMLibrary van megosztva), a következőképpen konfigurálja a megosztást a \\ libserver2. contoso. com\share\ használatával példaként:
   
   1. Nyissa meg a Beállításszerkesztőt, és lépjen **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
 
-  1. Módosítsa a **ScriptLibraryPath** értékét a ** \\\libserver2.contoso.com\share\\**értékre. A teljes FQDN meghatározása. Adja meg a megosztási hely engedélyeit. Ez a megosztás legfelső szintű csomópontja. A legfelső szintű csomópont kereséséhez a VMM-ben nyissa meg a könyvtárban található legfelső szintű csomópontot. A megnyíló elérési út az elérési út gyökerét képezi. Ezt az elérési utat kell használnia a változóban.
+  1. Módosítsa a **ScriptLibraryPath** értékét a ** \\ \libserver2.contoso.com\share \\ **értékre. A teljes FQDN meghatározása. Adja meg a megosztási hely engedélyeit. Ez a megosztás legfelső szintű csomópontja. A legfelső szintű csomópont kereséséhez a VMM-ben nyissa meg a könyvtárban található legfelső szintű csomópontot. A megnyíló elérési út az elérési út gyökerét képezi. Ezt az elérési utat kell használnia a változóban.
 
   1. Tesztelje a parancsfájlt egy olyan felhasználói fiók használatával, amely azonos szintű felhasználói jogosultságokkal rendelkezik, mint a VMM-szolgáltatásfiók. Ezen felhasználói jogosultságok használata ellenőrzi, hogy az önálló, tesztelt parancsfájlok ugyanúgy futnak-e, mint a helyreállítási tervekben. A VMM-kiszolgálón a következőképpen állítsa be a végrehajtási házirendet a mellőzésre:
 
@@ -60,9 +60,9 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
 Ha rendelkezik VMM, létrehozhat egy parancsfájlt a VMM-kiszolgálón. Ezután vegye fel a szkriptet a helyreállítási tervbe.
 
-1. A könyvtár megosztásában hozzon létre egy új mappát. Például: VMM \<-kiszolgáló neve> \msscvmmlibrary\rpscripts. Helyezze a mappát a forrás és a cél VMM-kiszolgálókra.
+1. A könyvtár megosztásában hozzon létre egy új mappát. Például: \< VMM-kiszolgáló neve> \msscvmmlibrary\rpscripts. Helyezze a mappát a forrás és a cél VMM-kiszolgálókra.
 1. Hozza létre a parancsfájlt. Adja meg például a RPScript parancsfájl nevét. Ellenőrizze, hogy a parancsfájl a várt módon működik-e.
-1. Helyezze a parancsfájlt a \<VMM-kiszolgáló neve> \msscvmmlibrary mappába a forrás és a cél VMM-kiszolgálókon.
+1. Helyezze a parancsfájlt a \< VMM-kiszolgáló neve> \msscvmmlibrary mappába a forrás és a cél VMM-kiszolgálókon.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>A parancsfájl hozzáadása helyreállítási tervhez
 

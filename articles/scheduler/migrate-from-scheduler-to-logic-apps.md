@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899100"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826060"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
 
@@ -53,7 +53,7 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
 
    Az alapszintű lépések végrehajtásához kövesse a gyors üzembe helyezési útmutatót [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. A keresőmezőbe írja be `when a http request` a kifejezést a kérelem triggerének megkereséséhez. Az eseményindítók listából válassza ki ezt az eseményindítót: **http-kérés fogadásakor**
+1. A keresőmezőbe írja be a kifejezést a `when a http request` kérelem triggerének megkereséséhez. Az eseményindítók listából válassza ki ezt az eseményindítót: **http-kérés fogadásakor**
 
    !["Kérelem" trigger hozzáadása](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -116,7 +116,7 @@ Ha például a Poster alkalmazást használja, létrehozhat egy POST-kérést a 
 
 | Kérelem metódusa | URL-cím | Törzs | Fejlécek |
 |----------------|-----|------|---------|
-| **POST** | <*végpont – URL*> | **nyers** <p>**JSON (alkalmazás/JSON)** <p>A **RAW** mezőben adja meg a kérelemben elküldeni kívánt adattartalmat. <p>**Megjegyzés**: Ez a beállítás automatikusan konfigurálja a **fejlécek** értékeit. | **Kulcs**: Content-Type <br>**Érték**: alkalmazás/JSON |
+| **UTÁNI** | <*végpont – URL*> | **nyers** <p>**JSON (alkalmazás/JSON)** <p>A **RAW** mezőben adja meg a kérelemben elküldeni kívánt adattartalmat. <p>**Megjegyzés**: Ez a beállítás automatikusan konfigurálja a **fejlécek** értékeit. | **Kulcs**: Content-Type <br>**Érték**: alkalmazás/JSON |
 |||||
 
 ![Kérelem küldése a logikai alkalmazás manuális elindításához](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -239,7 +239,7 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
 
 **Közösség**
 
-* [Azure Logic Apps fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
+* [A Microsoft Q&egy kérdés oldalt Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>További lépések

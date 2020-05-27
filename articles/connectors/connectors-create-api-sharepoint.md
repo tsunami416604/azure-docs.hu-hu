@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06dfca4fc59ba6ff32714d7a92b0d4a65e262de5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789256"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826009"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>SharePoint-erőforrások figyelése és kezelése Azure Logic Apps
 
@@ -59,14 +59,14 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 1. Üres logikai alkalmazások esetén a keresőmezőbe írja be szűrőként a "SharePoint" kifejezést. Válassza ki a kívánt eseményindítót az eseményindítók listából. 
 
-   – vagy –
+   -vagy-
 
    Meglévő Logic apps esetén az utolsó lépésben, amelyhez SharePoint-műveletet kíván hozzáadni, válassza az **új lépés**lehetőséget. 
    A keresőmezőbe írja be a "SharePoint" kifejezést a szűrőként. 
    A műveletek listában válassza ki a kívánt műveletet.
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. Amikor a rendszer kéri, hogy jelentkezzen be, adja meg a szükséges kapcsolódási adatokat. Ha a SharePoint Servert használja, ügyeljen arra, hogy **a helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget. Ha elkészült, kattintson a **Létrehozás** gombra.
 
@@ -78,7 +78,7 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
