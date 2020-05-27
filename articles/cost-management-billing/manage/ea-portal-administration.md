@@ -3,34 +3,20 @@ title: A nagyvállalati szerződéses Azure Portal adminisztrációja
 description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori feladatait ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 2b2ec7a5954649c36cf9da5d7933c83eec67faa3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a3551b4f09202b33cee768a69f31a6c5d5d36777
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692642"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648198"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
 Ez a cikk a rendszergazdák Azure EA Portalon (https://ea.azure.com) ) elvégzendő gyakori feladatait ismerteti. Az Azure EA Portal egy online felügyeleti portál, amely segítséget nyújt az ügyfeleknek az Azure EA-szolgáltatások költségének kezelésében. Az Azure EA Portallal kapcsolatos bevezető információkért lásd: [Ismerkedés az Azure EA Portallal](ea-portal-get-started.md).
-
-## <a name="add-a-new-enterprise-administrator"></a>Új vállalati rendszergazda hozzáadása
-
-Az Azure EA-regisztrációk kezelésénél a vállalati rendszergazdák rendelkeznek a legtöbb jogosultsággal. Az első Azure EA-rendszergazdát a nagyvállalati szerződés megkötésekor hozták létre. Viszont bármikor hozzá lehet adni új rendszergazdákat, vagy el is lehet távolítani őket. Az új rendszergazdákat csak a meglévő rendszergazdák adhatják hozzá. A vállalati rendszergazdák hozzáadásával kapcsolatos további információkért lásd az [új vállalati rendszergazda létrehozását](ea-portal-get-started.md#create-another-enterprise-administrator) ismertető részt. A számlázási profil szerepköreivel és feladataival kapcsolatos további információkért lásd [a számlázási profil szerepköreinek és azok feladatainak ismertetését](understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-## <a name="update-user-state-from-pending-to-active"></a>A felhasználói állapot frissítése Függőben értékről Aktív értékre
-
-Amikor először hozzáadják az új fióktulajdonosokat (AO) egy Azure EA-regisztrációhoz, a _függőben_ állapot jelenik meg náluk. Amikor az új fióktulajdonosok megkapják az aktiváló e-mailt, be tudnak jelentkezni a fiókjuk aktiválásához. A fiókjuk aktiválásakor a fiók állapota _függőben_ értékről _aktív_ értékre módosul. A fióktulajdonosnak el kell olvasnia a figyelmeztető üzenetet, majd a **Folytatás** lehetőséget kell választania. A rendszer kérheti az új felhasználók vezeték- és utónevét egy Kereskedelmi fiók létrehozásához. Ha kéri, akkor meg kell adniuk a szükséges adatokat a folytatáshoz, majd megtörténik a fiók aktiválása.
-
-## <a name="add-a-department-admin"></a>Részlegszintű rendszergazda hozzáadása
-
-Ha az egyik Azure EA-rendszergazda létrehozott egy részleget, az Azure vállalati rendszergazda részlegszintű rendszergazdákat adhat hozzá, és hozzárendelheti őket egy-egy részleghez. A részlegszintű rendszergazdák új fiókokat hozhatnak létre. Az Azure EA-előfizetések létrehozásához új fiókokra van szükség.
-
-A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](ea-portal-get-started.md#add-a-department-administrator) ismertető témakört.
 
 ## <a name="associate-an-account-to-a-department"></a>Fiókok részlegekhez történő hozzárendelésére
 
@@ -114,108 +100,6 @@ Ha egy felhasználót fióktulajdonosként adnak hozzá az Azure EA Portalon ker
 
 A Dev/Test ajánlat jelenleg nem érhető el az Azure Government-ügyfelek számára.
 
-## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Vállalati fiók átvitele egy új regisztrációba
-
-A fiókátvitellel egy fióktulajdonos áthelyezhető az egyik regisztrációból egy másikba. A fióktulajdonos alá tartozó összes kapcsolódó előfizetés átkerül a célregisztrációba. Akkor használjon fiókátvitelt, ha több aktív regisztráció van, és csak a kiválasztott fióktulajdonosokat szeretné áthelyezni.
-
-Ez a szakasz csak tájékoztató célt szolgál, mert a műveletet vállalati rendszergazda nem végezheti el. Vállalati fiók új regisztrációba történő átviteléhez támogatási kérés leadása szükséges.
-
-Amikor vállalati fiókokat visz át egy új regisztrációba, tartsa szem előtt a következőket:
-
-- A rendszer csak a kérelemben megadott fiókokat viszi át. Ha az összes fiókot kiválasztotta, az átvitel mindegyikre vonatkozni fog.
-- A forrásregisztráció megőrzi az állapotát (aktív vagy meghosszabbítva). Tovább folytathatja a használatát, amíg le nem jár.
-
-### <a name="prerequisites"></a>Előfeltételek
-
-A fiókátvitel kérésekor adja meg az alábbi adatokat:
-
-- A célregisztráció számát, az átvinni kívánt fiók nevét és a fióktulajdonos e-mail-címét
-- A forrásregisztrációhoz a regisztrációs számot és az átvinni kívánt fiókot
-
-Egyéb szempontok, amelyeket érdemes észben tartani a fiókok átvitele előtt:
-
-- A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására
-- Ha egy fiókátvitel nem felel meg az elvárásainak, vegye fontolóra a regisztráció átvitelét.
-- A fiókátvitel az adott fiókokhoz tartozó összes szolgáltatást és előfizetést átviszi.
-- Az átvitel befejezését követően az átvitt fiók inaktívként jelenik meg a forrásregisztráció alatt, és aktívként a célregisztráció alatt.
-- A fiók a záró dátumot a forrásregisztráció hatályos átviteli dátumaként jelenít meg és a célregisztráció kezdő dátumaként.
-- A fiók esetében a hatályos átviteli dátum előtti bármilyen használat a forrásregisztrációhoz tartozik.
-
-
-## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Vállalati regisztráció átvitele egy új regisztrációba
-
-A regisztrációátvitel a következő esetben megfontolandó:
-
-- A jelenlegi regisztráció kötelezettségvállalási időtartama véget ért.
-- A regisztráció lejárt/meghosszabbított állapotban van, és egy új szerződés egyeztetése folyamatban van.
-- Több regisztrációval rendelkezik, és egyetlen regisztráció keretében szeretné összevonni az összes fiókot és számlázást.
-
-Ez a szakasz csak tájékoztató célt szolgál, mert a műveletet vállalati rendszergazda nem végezheti el. Egy vállalati regisztráció egy újba történő átviteléhez támogatási kérés leadása szükséges.
-
-Ha egy teljes vállalati regisztráció átvitelét kéri egy regisztrációba, a következő műveletek mennek végbe:
-
-- A rendszer az összes Azure-szolgáltatást, előfizetést, fiókot, részleget, valamint a teljes regisztrációs struktúrát átviszi az új célregisztrációba, az EA-részlegek rendszergazdáival együtt.
-- A regisztráció állapota _Átvitt_ értékre módosul. Az átvitt regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet elérni.
-- Az átvitt regisztrációkhoz nem adhat hozzá szerepköröket vagy előfizetéseket. Az átvitt állapot megakadályozza a regisztráció további használatának felszámítását.
-- A szerződés pénzügyi keretének fennmaradó egyenlege elveszik, a jövőbeli időszakokkal együtt.
--    Ha a regisztráció, amelyről az átvitelt végzi, rendelkezik megvásárolt fenntartott példányokkal, a fenntartott példány vételára továbbra is a forrásregisztrációban marad, azonban a fenntartott példány összes előnye az új regisztrációban lesz elérhető.
--    A Marketplace-en kifizetett egyszeri vételár és a régi regisztrációban felmerült fix havi díjak nem lesznek áthelyezve az új regisztrációba. A használatalapú Marketplace-díjak átvitele megtörténik.
-
-### <a name="effective-transfer-date"></a>Átvitel hatálybalépési dátuma
-
-Az átvitel hatályba lépésének napja a célregisztráció kezdődátuma vagy egy későbbi időpont lehet.
-
-A forrásregisztráció használatának költsége a pénzügyi keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
-
-### <a name="prerequisites"></a>Előfeltételek
-
-A regisztrációátvitel kérésekor adja meg az alábbi adatokat:
-
-- A forrásregisztrációhoz a regisztrációs számot.
-- A célregisztrációhoz az átvitel céljának regisztrációs számát.
-- A regisztrációátvitel hatálybalépési dátuma lehet a célregisztráció kezdő dátuma vagy egy későbbi időpont. A kiválasztott dátum nem lehet hatással a már kiállított túlhasználati számlákban feltüntetett használatra.
-
-Egyéb szempontok, amelyeket érdemes észben tartani a regisztrációk átvitele előtt:
-
-- A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására.
-- Ha egy regisztrációátvitel nem felel meg az elvárásainak, vegye fontolóra a fiókátvitelt.
-- A forrásregisztráció állapota átvitt lesz, és ezt a regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet majd elérni.
-
-### <a name="monetary-commitment"></a>Pénzügyi keret
-
-A pénzügyi keretet nem lehet átvinni egyik regisztrációból a másikba. A pénzügyi keret egyenlegeit a szerződés ahhoz a regisztrációhoz köti, amelyhez megrendelték őket. A rendszer nem viszi át a pénzügyi keretet a fiók vagy a regisztráció átviteli folyamatának részeként.
-
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>A fiókok és a regisztrációk átvitele nem érinti a szolgáltatásokat
-
-A fiókok és a regisztrációk átvitele során nincs állásidő. Ha az összes szükséges információt megadja, a kérelem benyújtásának napján is el lehet végezni.
-
-## <a name="change-account-owner"></a>Fiók tulajdonosának módosítása
-
-Az Azure EA Portalon át lehet adni az előfizetéseket egyik fióktulajdonostól a másiknak. További információért lásd: [Fiók tulajdonosának módosítása](ea-portal-get-started.md#change-account-owner).
-
-## <a name="subscription-transfer-effects"></a>Az előfizetés-áthelyezés hatásai
-
-Ha az Azure-előfizetést ugyanazon Azure AD-bérlő egy másik fiókjába helyezi át, akkor az összes [szerepköralapú hozzáférés-vezérléssel (RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév megtartja az erőforrások kezeléséhez való hozzáférését.
-
-Az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
-
-1. Az Azure Portalon nyissa meg az **Előfizetések** oldalt.
-2. Válassza ki a megtekinteni kívánt előfizetést, majd válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-3. Válassza a **Szerepkör-hozzárendelések** lehetőséget. A szerepkör-hozzárendelések oldala felsorolja az összes felhasználót, aki RBAC-hozzáféréssel rendelkezik az előfizetéshez.
-
-Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az összes [RBAC-vel](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév _elveszíti_ a hozzáférését az erőforrások kezeléséhez. Bár nincs RBAC-hozzáférés, mégis előfordulhat, hogy az előfizetést el lehet érni biztonsági mechanizmusokon keresztül, például:
-
-- Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
-- A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókok áttekintésében](../../storage/common/storage-account-overview.md) találhat.
-- Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
-
-Ha a címzettnek korlátoznia kell a hozzáférését az Azure-erőforrásokhoz, érdemes megfontolnia a szolgáltatáshoz társított titkok frissítését. A legtöbb erőforrást a következő lépésekkel lehet frissíteni:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. A központi menüben válassza a **Minden erőforrás** elemet.
-3. Válassza ki az erőforrást.
-4. Az erőforrás oldalán válassza a **Beállítások** lehetőséget a meglévő titkos kulcsok megtekintéséhez és frissítéséhez.
-
 ## <a name="delete-subscription"></a>Előfizetés törlése
 
 Egy olyan előfizetés törlése, amely esetében Ön a fióktulajdonos:
@@ -260,60 +144,6 @@ Kapcsolattartó hozzáadása:
 Az új értesítési kapcsolattartó megjelenik az **Értesítendő fél** területen. Az értesítés gyakoriságának módosításához válassza ki az értesítendő felet, majd válassza a kiválasztott sor jobb oldalán található ceruza szimbólumot. Állítsa be a gyakorisághoz a **naponta**, **hetente**, **havonta** vagy a **nincs** értéket.
 
 Figyelmen kívül hagyhatja a _közelgő fedezeti időszak záró dátumát_, valamint _letilthatja és megszüntetheti a közelgő dátummal_ kapcsolatos életciklus-értesítéseket. Az életciklus-értesítések letiltásával figyelmen kívül hagyja a fedezeti időszakról és a szerződés záró dátumáról szóló értesítéseket.
-
-## <a name="manage-partner-administrators"></a>Partneradminisztrátorok kezelése
-
-Az Azure EA Portalon mindegyik partneradminisztrátor jogosult felvenni vagy eltávolítani más partneradminisztrátorokat. A partneradminisztrátorok a közvetett regisztrációk partnerszervezeteihez vannak társítva, és nincsenek közvetlenül társítva a regisztrációkhoz.
-
-### <a name="add-a-partner-administrator"></a>Partneradminisztrátorok hozzáadása
-
-Ha meg szeretné tekinteni az összes olyan regisztrációt, amely ugyanahhoz a partnerszervezethez tartozik, mint az aktuális felhasználó, válassza a **Regisztráció** lapot, és jelölje be a kívánt regisztráció jelölőnégyzetét.
-
-1. Jelentkezzen be partneradminisztrátorként.
-1. Válassza a **Kezelés** elemet a bal oldali navigációs sávon.
-1. Válassza a **Partner** lapot.
-1. Válassza az **+ Adminisztrátor hozzáadása** lehetőséget, és adja meg az e-mail-címét, az értesítési kapcsolattartóját és az értesítési adatait.
-1. Válassza a **Hozzáadás** lehetőséget.
-
-### <a name="remove-a-partner-administrator"></a>Partneradminisztrátorok eltávolítása
-
-Ha meg szeretné tekinteni az összes olyan regisztrációt, amely ugyanahhoz a partnerszervezethez tartozik, mint az aktuális felhasználó, válassza a **Regisztráció** lapot, és jelölje be a kívánt regisztráció jelölőnégyzetét.
-
-1. Jelentkezzen be partneradminisztrátorként.
-1. Válassza a **Kezelés** elemet a bal oldali navigációs sávon.
-1. Válassza a **Partner** lapot.
-1. A Rendszergazda területen válassza ki az eltávolítani kívánt rendszergazdához tartozó sort.
-1. Válassza a jobb oldalon található X szimbólumot.
-1. Erősítse meg a törlési szándékát.
-
-## <a name="manage-partner-notifications"></a>A partnerértesítések kezelése
-
-A partnerrendszergazdák beállíthatják, hogy milyen gyakran kapjanak a regisztrációikkal kapcsolatos használati értesítéseket. A rendszer minden héten automatikusan értesítéseket küld nekik a számlázatlan egyenlegükről. Módosíthatják az értesítések gyakoriságát havonta, hetente, vagy naponta értékre, vagy teljesen ki is kapcsolhatják őket.
-
-Ha a felhasználó nem kap értesítést, a következő lépésekkel ellenőrizze, hogy helyesek-e a felhasználó értesítési beállításai.
-
-1. Jelentkezzen be az Azure EA Portalra partnerrendszergazdaként.
-2. Válassza a **Kezelés** lehetőséget, majd a **Partner** lapot.
-3. Tekintse meg a rendszergazdák listáját a Rendszergazda területen.
-4. Az értesítési beállítások szerkesztéséhez vigye a mutatót a megfelelő rendszergazda fölé, és válassza a ceruza szimbólumot.
-5. Növelje igény szerint az értesítési gyakoriságot és az életciklus-értesítéseket.
-6. Szükség esetén adjon hozzá egy kapcsolattartót, és válassza a **Hozzáadás** lehetőséget.
-7. Kattintson a **Mentés** gombra.
-
-![A Kapcsolattartó hozzáadása panelt mutató példa ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
-
-## <a name="view-enrollments-for-partner-administrators"></a>Partneradminisztrátorok regisztrációinak megtekintése
-
-A partneradminisztrátorok megtekinthetik az Azure EA Portalon elérhető közvetlen és közvetett regisztrációik listáját. A regisztrációk áttekintését tartalmazó mezők a regisztrációs számmal, a regisztráció nevével, egyenleggel és a kerettúllépés mennyiségével jelennek meg.
-
-### <a name="view-a-list-of-enrollments"></a>A regisztrációk listájának megtekintése
-
-1. Jelentkezzen be partneradminisztrátorként.
-1. Válassza a **Kezelés** lehetőséget az oldal bal oldalán található navigációs sávon.
-1. Válassza a **Regisztráció** fület.
-1. Jelölje be a regisztrációhoz tartozó jelölőnégyzetet.
-
-Az összes regisztráció nézete az oldal tetején továbbra is megtekinthető marad az egyes regisztrációkhoz tartozó jelölőnégyzetekkel. Emellett a regisztrációk között a lap bal oldalán lévő navigációs sávon az aktuális regisztrációs számot kiválasztva is válthat. Ekkor megjelenik egy felugró ablak, amely lehetővé teszi a regisztrációk keresését, vagy egy másik regisztráció kiválasztását a megfelelő jelölőnégyzet kiválasztásával.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-ajánlat
 
