@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745218"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871914"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,7 @@ A SharePoint-lista online összekötője egyszerű szolgáltatásnév használat
     > [!NOTE]
     > Ehhez a művelethez SharePoint Online-webhely tulajdonosi engedélye szükséges. A tulajdonos megkereséséhez nyissa meg a webhely kezdőlapját – > kattintson a jobb oldali sarokban lévő "X tagok" elemre, > ellenőrizze, hogy ki a "tulajdonos" szerepkörrel rendelkezik.
 
-    1. Nyissa meg a SharePoint Online-webhely hivatkozást, például: `https://[your_site_url]/_layouts/15/appinv.aspx` (a bérlő és a hely neve helyett).
+    1. Nyissa meg a SharePoint Online-webhely hivatkozást `https://[your_site_url]/_layouts/15/appinv.aspx` (például cserélje le a webhely URL-címét).
     2. Keresse meg a regisztrált alkalmazás AZONOSÍTÓját, töltse ki az üres mezőket, majd kattintson a "létrehozás" gombra.
 
         - Alkalmazás tartománya:`localhost.com`
@@ -117,7 +117,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource**értékre kell állítani. | Igen |
 | listName | A SharePoint Online-lista neve. | Igen |
 
-**Példa**
+**Például**
 
 ```json
 {
@@ -151,7 +151,7 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 | lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
 
-**Példa**
+**Például**
 
 ```json
 "activities":[
@@ -196,7 +196,7 @@ Az adatok SharePoint Online-listából való másolása során a rendszer a köv
 | Pénznem ($, ¥, €)                              | Edm.Double                                           | Double                                   |
 | Dátum és idő                                   | EDM. DateTime                                         | DateTime                                 |
 | Keresés (az ezen a helyen található információk)       | Edm.Int32                                            | Int32                                    |
-| Igen/nem (jelölőnégyzet)                              | Edm.Boolean                                          | Logikai                                  |
+| Igen/nem (jelölőnégyzet)                              | Edm.Boolean                                          | Logikai érték                                  |
 | Person or Group (Személy vagy csoport)                                 | Edm.Int32                                            | Int32                                    |
 | Hiperhivatkozás vagy kép                            | Edm.String                                           | Sztring                                   |
 | Számított (más oszlopok alapján számított számítás) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | String/Double/DateTime/Boolean     |

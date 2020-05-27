@@ -7,38 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20ec1039dc8fc477410891495762395b408f2d6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241048"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870576"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Hitelesítés hozzáadása és felhasználói identitások kezelése a Mobile apps szolgáltatásban
 
 A felhasználó nézete és az alkalmazáson belüli viselkedésük lehetővé teszi a fejlesztők számára, hogy a felhasználók számára testre szabott tapasztalatokat hozzanak létre. Akár olyan alkalmazás-fejlesztő, aki együttműködési alkalmazást készít a szervezeten belüli felhasználók számára, vagy a következő közösségi hálózati platformot hozza létre, szüksége lesz a felhasználók hitelesítésére és a felhasználói identitások kezelésére. Az Identity Management szolgáltatás a mobil háttérrendszer egyik legfontosabb funkciója.
 
 A következő szolgáltatások segítségével engedélyezheti a felhasználók hitelesítését a Mobile apps szolgáltatásban.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-A [app Center Auth](/appcenter/auth/) egy felhőalapú identitáskezelési szolgáltatás, amelyet a fejlesztők a felhasználók hitelesítésére és a felhasználói identitások kezelésére használhatnak. App Center hitelesítés a Visual Studio App Center egyéb részeivel is integrálva van. A fejlesztők a felhasználói identitás használatával [megtekinthetik a felhasználói adatait](/appcenter/data/index) más szolgáltatásokban, sőt [leküldéses értesítéseket is küldhetnek a felhasználóknak az egyes eszközök helyett](/appcenter/push/push-to-user#setting-user-identity). 
-
-**A legfontosabb jellemzők**
-- Powered by Azure Active Directory B2C (Azure AD B2C). 
-    - Nagyvállalati szintű.
-    - Magasan elérhető.
-    - Biztonságos és globális szolgáltatás.
-- Használhatja a saját identitását és a más népszerű identitás-és hozzáférés-kezelési szolgáltatók használatát, például a Auth0 és a Firebase szolgáltatást.
-- Azure Active Directory támogatás.
-    - Meglévő Azure AD-bérlők összekapcsolhatók. 
-    - Vállalati tartományon belüli hitelesítés engedélyezése.
-    - Bizalmas adatokhoz való hozzáférés kezelése.
-- Egyszerű felhasználói élmény és a varázslatos SDK-élmény a Microsoft hitelesítési könyvtárának a Visual Studio App Center SDK-val való becsomagolásával.
-- Platform-támogatás iOS-, Android-, Xamarin-és natív reagáláshoz.
-
-**Referencia**
-- [Regisztráció Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-- [App Center Auth – első lépések](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 A [Azure ad B2C](https://azure.microsoft.com/services/active-directory-b2c/) egy vállalat – felhasználó (B2C) Identitáskezelés szolgáltatás, amellyel a fejlesztők hitelesítheti ügyfeleit. Ez a White-Label szolgáltatás lehetővé teszi a fejlesztők számára a webes, asztali, mobil vagy egyoldalas alkalmazásokkal való biztonságos interakciót. A Azure AD B2C használatával a felhasználók regisztrálhatnak, bejelentkezhetnek, visszaállíthatják a jelszavakat és szerkeszthetik a profilokat. Azure AD B2C az OpenID Connect és a OAuth 2,0 protokollok formáját valósítja meg. 

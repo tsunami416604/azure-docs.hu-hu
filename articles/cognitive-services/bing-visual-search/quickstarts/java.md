@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52a58e3e890ff3baff31322096038d06a1bee6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446627"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872591"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Gyors útmutató: képelemzések lekérése a Bing Visual Search REST API és a Java használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API és megtekintheti az eredményeket. Ez a Java-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Java-ban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search API. Ez a Java-alkalmazás feltölt egy rendszerképet az API-hoz, és megjeleníti a visszaadott adatokat. Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. `endpoint`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. Az érték esetében használhatja `endpoint` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     ```
 
     
-    Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. A `name` paramétert a "rendszerkép" értékre kell állítania, és a `filename` paramétert bármilyen sztringre állíthatja. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
+3. Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. Állítsa a `name` paramétert a "rendszerkép" értékre, és állítsa a `filename` paramétert a rendszerkép fájlnevére. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
     
     ```
     --boundary_1234-abcd
@@ -74,7 +74,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
 
 ## <a name="create-the-json-parser"></a>A JSON-elemző létrehozása
 
-Hozzon létre egy metódust, amely a JSON-választ az API `JsonParser`-tól olvashatóbb módon teszi elérhetővé a következő használatával:
+Hozzon létre egy metódust, amely a JSON-választ az API-tól olvashatóbb módon teszi elérhetővé a használatával `JsonParser` .
 
 ```java
 public static String prettify(String json_text) {
@@ -87,13 +87,13 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
-1. Az alkalmazás fő metódusában hozzon létre egy HTTP-ügyfelet `HttpClientBuilder.create().build();`a használatával:
+1. Az alkalmazás fő metódusában hozzon létre egy HTTP-ügyfelet a használatával `HttpClientBuilder.create().build();` .
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Hozzon `HttpEntity` létre egy objektumot, amellyel feltöltheti a rendszerképet az API-ba:
+2. Hozzon létre egy `HttpEntity` objektumot a RENDSZERKÉP API-ba való feltöltéséhez.
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -102,7 +102,7 @@ public static String prettify(String json_text) {
         .build();
     ```
 
-3. Hozzon `httpPost` létre egy objektumot a végponttal, és állítsa be a fejlécet az előfizetési kulcs használatára:
+3. Hozzon létre egy `httpPost` objektumot a végponttal, és állítsa be a fejlécet az előfizetési kulcs használatára.
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -112,14 +112,14 @@ public static String prettify(String json_text) {
 
 ## <a name="receive-and-process-the-json-response"></a>A JSON-válasz fogadása és feldolgozása
 
-1. A `HttpClient.execute()` metódus használatával küldjön egy kérést az API-nak, és tárolja a választ egy `InputStream` objektumban:
+1. A `HttpClient.execute()` metódus használatával küldjön egy kérést az API-nak, és tárolja a választ egy `InputStream` objektumban.
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Tárolja a JSON-karakterláncot, és nyomtassa ki a választ:
+2. Tárolja a JSON-karakterláncot, és nyomtassa ki a választ.
 
     ```java
     String json = new Scanner(stream).useDelimiter("\\A").next();

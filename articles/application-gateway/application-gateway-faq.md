@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836665"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873503"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -94,7 +94,7 @@ Lásd [Application Gateway alhálózat méretével kapcsolatos szempontokat](htt
 
 Igen. Egy adott Application Gateway-telepítés több példányán kívül egy másik egyedi Application Gateway erőforrást is kiépíthet egy meglévő alhálózatba, amely egy másik Application Gateway erőforrást tartalmaz.
 
-Egyetlen alhálózat nem támogatja A Standard_v2 és a standard Application Gateway együttes használatát.
+Egyetlen alhálózat nem támogatja mind a v2, mind a v1 Application Gateway SKU-t.
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>A Application Gateway v2 támogatja a felhasználó által megadott útvonalakat (UDR)?
 
@@ -211,7 +211,7 @@ Lásd [a feldolgozási szabályok sorrendjét](https://docs.microsoft.com/azure/
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Az egyéni mintavételek esetében Mit jelent a gazdagép mező?
 
-A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a többhelyes Application Gatewayn konfigurált. Ellenkező esetben használja a "127.0.0.1" kulcsszót. Ez az érték eltér a virtuális gép gazdagépének nevétől. A formátuma \<az\>://\<Host\>:\<port\>\<elérési útja\>.
+A gazdagép mező azt a nevet adja meg, amelyet a mintavétel elküldéséhez a többhelyes Application Gatewayn konfigurált. Ellenkező esetben használja a "127.0.0.1" kulcsszót. Ez az érték eltér a virtuális gép gazdagépének nevétől. A formátuma \< az \> :// \< Host \> : \< port \> \< elérési útja \> .
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Engedélyezhető Application Gateway csak néhány forrás IP-cím eléréséhez?
 
@@ -246,7 +246,7 @@ Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2
     
     e. A kimenő internetkapcsolatot nem lehet blokkolni. Ellenkező esetben a naplózással, a metrikákkal és az egyéb problémákkal szembesül.
 
-NSG-konfiguráció a magánhálózati IP-címekhez ![csak hozzáférés: Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
+NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ## <a name="configuration---tls"></a>Konfiguráció – TLS
 
@@ -334,8 +334,8 @@ Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
 
 ### <a name="what-is-an-ingress-controller"></a>Mi az a beáramló vezérlő?
 
-A Kubernetes lehetővé teszi `deployment` a `service` létrehozást és az erőforrást, hogy a fürtön belül belső hüvelyek csoportját tegye elérhetővé. Ahhoz, hogy a szolgáltatás külsőleg is elérhető legyen [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) , egy erőforrás van meghatározva, amely terheléselosztást, TLS-megszakítást és név-alapú virtuális üzemeltetést biztosít.
-Ahhoz, hogy `Ingress` kielégítse ezt az erőforrást, be kell állítani egy bejövő vezérlőt, `Ingress` amely figyeli az erőforrások változásait, és konfigurálja a terheléselosztó-házirendeket.
+A Kubernetes lehetővé teszi a létrehozást `deployment` és az `service` erőforrást, hogy a fürtön belül belső hüvelyek csoportját tegye elérhetővé. Ahhoz, hogy a szolgáltatás külsőleg is elérhető legyen, egy [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrás van meghatározva, amely terheléselosztást, TLS-megszakítást és név-alapú virtuális üzemeltetést biztosít.
+Ahhoz, hogy kielégítse ezt az `Ingress` erőforrást, be kell állítani egy bejövő vezérlőt, amely figyeli az erőforrások változásait, `Ingress` és konfigurálja a terheléselosztó-házirendeket.
 
 Az Application Gateway beáramlási vezérlő lehetővé teszi az [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) számára, hogy az Azure Kubernetes szolgáltatás beáramlási [szolgáltatásaként](https://azure.microsoft.com/services/kubernetes-service/) más néven AK-fürtöt használjanak.
 
@@ -357,7 +357,7 @@ Minden napló gyűjtése 60 másodpercenként történik. További információ:
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Hogyan tudni, hogy a háttér-készlet tagjainak állapota Kifogástalan-e?
 
-Ellenőrizze az állapotot a PowerShell- `Get-AzApplicationGatewayBackendHealth` parancsmag vagy a portál használatával. További információ: [Application Gateway diagnosztika](application-gateway-diagnostics.md).
+Ellenőrizze az állapotot a PowerShell `Get-AzApplicationGatewayBackendHealth` -parancsmag vagy a portál használatával. További információ: [Application Gateway diagnosztika](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Mi a diagnosztikai naplók adatmegőrzési szabályzata?
 
@@ -409,7 +409,7 @@ Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2
     
     e. A kimenő internetkapcsolatot nem lehet blokkolni. Ellenkező esetben a naplózással, a metrikákkal és egyéb problémákkal szembesül.
 
-NSG-konfiguráció a magánhálózati IP-címekhez ![csak hozzáférés: Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
+NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. Ennek a forgatókönyvnek a támogatásához Application Gateway beinjektál egy *ApplicationGatewayAffinityCORS* nevű másik cookie-t a meglévő *ApplicationGatewayAffinity* -cookie mellett.  Ezek a cookie-k hasonlóak, de a *ApplicationGatewayAffinityCORS* -cookie két további attribútummal bővült: *SameSite = none; Biztonságos*. Ezek az attribútumok olyan Sticky-munkameneteket tartanak fenn, amelyek az átszármazási kérelmek esetében is érvényesek További információt a [cookie-alapú affinitás című szakaszban](configuration-overview.md#cookie-based-affinity) talál.

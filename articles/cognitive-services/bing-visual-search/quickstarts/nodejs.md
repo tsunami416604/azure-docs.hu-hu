@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7dfb3adb5d7bf5b005beb7e7b75fb339d456cd15
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379708"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872613"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és Node. js használatával
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API, és megtekintheti a keresési eredményeket. Ez az egyszerű JavaScript-alkalmazás feltölt egy rendszerképet az API-ba, és megjeleníti a róluk visszaadott adatokat. Az alkalmazás JavaScriptben való megírásakor az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search API. Ez az egyszerű JavaScript-alkalmazás feltölt egy rendszerképet az API-ba, és megjeleníti a róluk visszaadott adatokat. Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
-* A JavaScript kérési modulja. A modul telepítéséhez `npm install request` a parancsot használhatja.
+* A JavaScript kérési modulja. `npm install request`A modul telepítéséhez a parancsot használhatja.
 * Az űrlap-adatmodul. A `npm install form-data` parancs használatával telepítheti a modult. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
@@ -39,7 +39,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     var fs = require('fs');
     ```
 
-2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. `baseUri`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
+2. Hozzon létre változókat az API-végponthoz, az előfizetési kulcshoz és a rendszerkép elérési útjához. Az érték esetében használhatja `baseUri` a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
     var imagePath = "path-to-your-image";
     ```
 
-3. Hozzon létre egy `requestCallback()` nevű függvényt az API válaszának kinyomtatásához:
+3. Hozzon létre egy nevű függvényt az `requestCallback()` API válaszának kinyomtatásához.
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -57,25 +57,25 @@ Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Sear
 
 ## <a name="construct-and-send-the-search-request"></a>A keresési kérelem létrehozása és elküldése
 
-Helyi rendszerkép feltöltésekor az űrlaphoz tartozó adatoknak szerepelniük `Content-Disposition` kell a fejlécben. A `name` paramétert a "rendszerkép" értékre kell állítani, `filename` és a paraméter tetszőleges sztringre állítható be. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A legnagyobb feltölthető képméret 1 MB.
+1. Helyi rendszerkép feltöltésekor az űrlapon szerepelnie kell a `Content-Disposition` fejlécnek. Állítsa a `name` paramétert a "rendszerkép" értékre, és állítsa a `filename` paramétert a rendszerkép fájlnevére. Az űrlap tartalma tartalmazza a rendszerkép bináris értékeit. A feltölthető maximális képméret 1 MB lehet.
 
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+   ```
+   --boundary_1234-abcd
+   Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+   ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
---boundary_1234-abcd--
-```
+   --boundary_1234-abcd--
+   ```
 
-1. Hozzon létre **FormData** egy új FormData `FormData()`objektumot a használatával, és fűzze hozzá a rendszerkép elérési útját a következő használatával `fs.createReadStream()`:
+2. Hozzon létre egy új `FormData` objektumot a `FormData()` segítségével, és fűzze hozzá a rendszerkép elérési útját a használatával `fs.createReadStream()` .
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. A kérelem könyvtárával töltse fel a képet, és hívja `requestCallback()` meg a válasz nyomtatását. Ügyeljen arra, hogy az előfizetési kulcsot hozzáadja a kérelem fejlécébe:
+3. A kérelem könyvtárával töltse fel a képet, és hívja `requestCallback()` meg a válasz nyomtatását. Adja hozzá az előfizetési kulcsot a kérelem fejlécébe.
 
     ```javascript
     form.getLength(function(err, length){

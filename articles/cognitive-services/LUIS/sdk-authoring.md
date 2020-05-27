@@ -2,14 +2,14 @@
 title: 'Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése'
 description: Ismerkedjen meg a LUIS ügyféloldali függvénytárával ebben a rövid útmutatóban. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 ms.topic: quickstart
-ms.date: 01/14/2020
+ms.date: 05/22/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 614d40bb3e5bc8b83a2307b89cd517fdf7913dbe
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: dab36a7688e510b4a23f285deedf7d670cd78d10
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77524444"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871260"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rövid útmutató: Language Understanding (LUIS) az ügyféloldali kódtár készítése
 
@@ -33,6 +33,6 @@ Ismerkedjen meg a Language Understanding (LUIS) ügyféloldali kódtár használ
 >[Az SDK használata az előrejelzési végpont lekérdezéséhez](sdk-query-prediction-endpoint.md)
 
 * [Mi a Language Understanding (LUIS) API?](what-is-luis.md)
-* [Mi újság?](whats-new.md)
+* [Újdonságok](whats-new.md)
 * [Szándékok](luis-concept-intent.md), [entitások](luis-concept-entity-types.md)és [példa hosszúságú kimondott szöveg](luis-concept-utterance.md)és [előre összeépített entitások](luis-reference-prebuilt-entities.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)található.

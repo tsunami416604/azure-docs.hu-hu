@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dcb9f554b214813439ab8753cf21e7d11a0fba56
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744592"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872571"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -99,6 +99,7 @@ A **Customer Details (ügyfél részletei** ) tábla a legnépszerűbb 1000-ügy
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
 - A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, a dátum elveszett, az ügyfél e-mail-címe, az ügyfél országa/régiója/állam/város/zip, az ügyfél nyelve stb.
 - Ha egy védett ügyfél vásárolja meg az ajánlatot, a rendszer maszkba veszi az **ügyfelek részletes adatait** (* * * * * * * * * * * * *).
+- Az ügyfél dimenziójának részletei, például a vállalat neve, az ügyfél neve és az ügyfél e-mail-címe a szervezet azonosító szintjén, nem az Azure Marketplace-en vagy a AppSource tranzakciós szintjén.
 
 ### <a name="customer-page-filters"></a>Ügyfél-oldal szűrők
 

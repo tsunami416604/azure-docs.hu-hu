@@ -83,8 +83,6 @@
       href: high-availability-disaster-recovery.md
     - name: Feladat-futtatókörnyezet környezeti változói
       href: batch-compute-node-environment-variables.md
-    - name: Kötegelt integráció Azure-szabályzatokkal
-      href: batch-integration-policies.md
 - name: Útmutatók
   items:
     - name: Batch-fiókok kezelése

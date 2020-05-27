@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166019"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872139"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -31,7 +31,7 @@ Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítés
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-- Visual Studio 2019 Windows rendszeren, amelyen telepítve van az Azure fejlesztői munkaterhelése. A Windowshoz készült Visual Studio 2017 a webes fejlesztési munkaterhelés és a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) telepítve is használható. Ha nincs telepítve a Visual Studio, töltse le [itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019 Windows rendszeren, amelyen telepítve van az Azure fejlesztői munkaterhelése. Ha nincs telepítve a Visual Studio, töltse le [itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
@@ -94,7 +94,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-A fenti példában a nyilvános URL-cím: `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`. 
+A fenti példában a nyilvános URL-cím: `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/` . 
 
 Válassza a **hibakeresés** lehetőséget, majd **indítsa el a hibakeresést**. Néhány másodperc elteltével a szolgáltatás elindul, és a Visual Studio megnyit egy böngészőt a szolgáltatás nyilvános URL-címével. Ha egy böngésző nem nyílik meg automatikusan, navigáljon a szolgáltatás nyilvános URL-címéhez egy böngészőben, és lépjen kapcsolatba a fejlesztői térben futó szolgáltatással.
 
@@ -102,7 +102,7 @@ Előfordulhat, hogy a folyamat letiltotta a szolgáltatáshoz való nyilvános h
 
 ## <a name="update-code"></a>Kód frissítése
 
-Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. A 20. sor `Controllers/HomeController.cs` módosítása a következőre:
+Ha a Visual Studio továbbra is csatlakozik a fejlesztői területhez, kattintson a Leállítás gombra. A 20. sor módosítása a következőre `Controllers/HomeController.cs` :
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -120,7 +120,7 @@ Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jele
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 20-as és az `Controllers/HomeController.cs` *F9 billentyű*megnyomásával helyezi el.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 20-as `Controllers/HomeController.cs` és az *F9 billentyű*megnyomásával helyezi el.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 

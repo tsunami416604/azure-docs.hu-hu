@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28b768e421ac72be363ab187312e52ba15d34970
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81616494"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872993"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Biztonsági javaslatok az Azure Key Vaulthoz
 
@@ -30,7 +30,7 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
-|Helyreállítható Törlés engedélyezése | [Soft-delete](overview-soft-delete.md)) lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását |  - |
+|Helyreállítható Törlés engedélyezése | A [Soft delete](overview-soft-delete.md) lehetővé teszi a törölt tárolók és tároló objektumok helyreállítását |  - |
 | A tár adatelérésének korlátozása  | Kövesse a legalacsonyabb jogosultsági szint elvét, és korlátozza, hogy a szervezet tagjai hozzáférhessenek a tár adataihoz |  - |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés

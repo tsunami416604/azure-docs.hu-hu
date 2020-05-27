@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7a017f9485ec847c0a2c045e4c511b6a68db0cb2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889921"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873327"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
@@ -29,7 +29,7 @@ Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurá
 
 Az iparági szabványok, a szabályozási szabványok és a referenciaértékek a Security Center *megfelelőségi csomagokként*jelennek meg.  Minden csomag egy Azure Policyban definiált kezdeményezés. Ha szeretné megtekinteni a megfelelőségi adatok hozzárendelését az irányítópulton, vegyen fel egy megfelelőségi csomagot a felügyeleti csoportba vagy előfizetésbe a **biztonsági házirend** lapon. (További információ a [biztonsági házirendek](tutorial-security-policy.md)használatáról Azure Policy és kezdeményezésekről.)
 
-Ha standard vagy teljesítménytesztet készített a kiválasztott hatókörhöz, a szabvány megjelenik a megfelelőségi irányítópulton az értékelésként hozzárendelt összes megfelelőségi adattal. Az összegző jelentéseket az előkészített szabványok bármelyikére is letöltheti.
+Ha a kiválasztott hatókörhöz standard vagy teljesítménytesztet állított be, akkor az a hatókörhöz rendeli a kezdeményezést, és a szabvány a megfelelőségi irányítópulton jelenik meg, amely az értékelésként hozzárendelt összes megfelelőségi adattal rendelkezik. Az összegző jelentéseket az előkészített szabványok bármelyikére is letöltheti.
 
 A Microsoft emellett saját maga is nyomon követi a szabályozási szabványokat, és az egyes csomagokban az idő múlásával automatikusan javítja annak lefedettségét. Ha a Microsoft új tartalmat szabadít fel a kezdeményezéshez (új szabályzatok, amelyek a standardban több vezérlőhöz képezhetők le), a további tartalom automatikusan megjelenik az irányítópulton.
 

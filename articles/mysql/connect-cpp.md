@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062583"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871515"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés összekötő/C++ használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet C++-alkalmazás használatával csatlakozni egy Azure Database for MySQL kiszolgálóhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. Ez a témakör feltételezi, hogy már ismeri a C++ használatával való fejlesztést, és Ön még nem működik együtt a Azure Database for MySQL.
@@ -29,6 +29,9 @@ Emellett a következőket kell elvégezni:
 - A [MySQL-összekötő/C++](https://dev.mysql.com/downloads/connector/cpp/) telepítése 
 - A [Boost](https://www.boost.org/) telepítése
 
+> [!IMPORTANT] 
+> Győződjön meg arról, hogy az IP-cím, amelyhez csatlakozik, a [Azure Portal](./howto-manage-firewall-using-portal.md) vagy az [Azure CLI](./howto-manage-firewall-using-cli.md) használatával adja hozzá a kiszolgáló tűzfalszabály-szabályait.
+
 ## <a name="install-visual-studio-and-net"></a>A Visual Studio és a .NET telepítése
 A jelen szakaszban ismertetett lépések feltételezik, hogy már ismeri a .NET használatával történő fejlesztést.
 
@@ -40,8 +43,8 @@ A jelen szakaszban ismertetett lépések feltételezik, hogy már ismeri a .NET 
 ### <a name="configure-visual-studio"></a>**A Visual Studio konfigurálása**
 1. A Visual studióból, a Project-> Properties-> linker-> általános > további könyvtári könyvtárakat, adja hozzá a "\lib\opt" könyvtárat (például: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) a C++ összekötőn.
 2. A Visual Studióban válassza a Project -> Properties -> C/C++ -> General -> Additional Include Directories (További belefoglalt könyvtárak) lehetőséget:
-   - Adja hozzá a c++ összekötő "\include" könyvtárát (például: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
-   - Adja hozzá a Boost kódtár gyökérkönyvtárát (például: C:\ boost_1_64_0\).
+   - Adja hozzá a c++ összekötő "\include" könyvtárát (például: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include \) .
+   - Adja hozzá a Boost kódtár gyökérkönyvtárát (például: C:\ boost_1_64_0 \) .
 3. A Visual Studióban válassza Project -> Properties -> Linker -> Input (Bemenet) -> Additional Dependencies (További függőségek) lehetőséget, és adja hozzá a **mysqlcppconn.lib** elemet a szövegmezőhöz.
 4. Másolja át a **mysqlcppconn.dll** fájlt a 3. lépésben szereplő C++-összekötő könyvtárából az alkalmazás futtatható fájlját tartalmazó könyvtárba, vagy adja hozzá környezeti változóként, hogy az alkalmazás megtalálhassa azt.
 

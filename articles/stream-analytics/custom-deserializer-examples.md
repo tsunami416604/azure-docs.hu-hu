@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612061"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873042"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
@@ -20,9 +20,9 @@ A .NET-alapú egyéni deszerializálók lehetővé teszik, hogy az Azure Stream 
 
 ## <a name="net-custom-deserializer"></a>.NET egyéni deszerializáló
 
-A következő kódrészletek az egyéni deszerializáló és implementált `StreamDeserializer<T>`felületek.
+A következő kódrészletek az egyéni deszerializáló és implementált felületek `StreamDeserializer<T>` .
 
-`UserDefinedOperator`az összes egyéni streaming operátor alaposztálya. Inicializálja a `StreamingContext`-t, amely magában foglalja a diagnosztika közzétételi mechanizmusát, amelynek a deszerializáló hibáit kell elhárítani.
+`UserDefinedOperator`az összes egyéni streaming operátor alaposztálya. Inicializálja a `StreamingContext` -t, amely magában foglalja a diagnosztika közzétételi mechanizmusát, amelynek a deszerializáló hibáit kell elhárítani.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -33,19 +33,19 @@ A következő kódrészletek az egyéni deszerializáló és implementált `Stre
 
 A következő kódrészlet a streaming-adatátvitelek deszerializálása. 
 
-A kihagyható hibákat az átadott `IStreamingDiagnostics` `UserDefinedOperator`inicializálási módszer használatával kell kiállítani. A rendszer az összes kivételt hibákat fogja kezelni, és a deszerializáló újra létrejön. Bizonyos számú hiba után a feladatok sikertelen állapotba kerülnek.
+A kihagyható hibákat az `IStreamingDiagnostics` átadott inicializálási módszer használatával kell kiállítani `UserDefinedOperator` . A rendszer az összes kivételt hibákat fogja kezelni, és a deszerializáló újra létrejön. Bizonyos számú hiba után a feladatok sikertelen állapotba kerülnek.
 
-`StreamDeserializer<T>`egy adatfolyamot deszerializál egy típusú `T`objektumba. A következő feltételeknek kell teljesülniük:
+`StreamDeserializer<T>`egy adatfolyamot deszerializál egy típusú objektumba `T` . A következő feltételeknek kell teljesülniük:
 
 1. A T egy osztály vagy egy struct.
 1. A T összes nyilvános mezője a következők egyike:
     1. Az egyik a [sbyte érték, a byte, a short, a ushort, az int, a uint, a Long, a DateTime, a string, a float, a Double] vagy a nullával egyenértékű.
     1. Egy másik Struct vagy osztály, amely ugyanezeket a szabályokat követi.
-    1. A típusú `T2` tömb, amely ugyanezeket a szabályokat követi.
-    1. IList`T2` , ahol a T2 ugyanazokat a szabályokat követi.
+    1. A típusú tömb, `T2` amely ugyanezeket a szabályokat követi.
+    1. IList, `T2` ahol a T2 ugyanazokat a szabályokat követi.
     1. Nem rendelkezik rekurzív típusokkal.
 
-A paraméter `stream` a szerializált objektumot tartalmazó adatfolyam. `Deserialize``T` példányok gyűjteményét adja vissza.
+A paraméter a `stream` szerializált objektumot tartalmazó adatfolyam. `Deserialize`példányok gyűjteményét adja vissza `T` .
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-Fut `protoc.exe` a **Google. protopuf. Tools** NuGet. cs fájlt hoz létre a definícióval. A létrehozott fájl itt nem jelenik meg.
+Fut `protoc.exe` a **Google. Protopuf. Tools** NuGet. cs fájlt hoz létre a definícióval. A létrehozott fájl itt nem jelenik meg. Győződjön meg arról, hogy a Stream Analytics-projektben használt Protopuf-verzió megegyezik a bemenet létrehozásához használt Protopuf-verzióval. 
 
 A következő kódrészlet a deszerializáló implementációja, feltételezve, hogy a létrehozott fájl szerepel a projektben. Ez a megvalósítás csak egy vékony burkoló a generált fájlon.
 
@@ -219,7 +219,7 @@ A következő JavaScript-kód példa a .NET deszerializáló szerializálási fo
 }  
 ```
 
-`serializationClassName`a-t implementáló osztálynak `StreamDeserializer<T>`kell lennie. Ezt a következő szakaszban ismertetjük.
+`serializationClassName`a-t implementáló osztálynak kell lennie `StreamDeserializer<T>` . Ezt a következő szakaszban ismertetjük.
 
 ## <a name="region-support"></a>Régiós támogatás
 

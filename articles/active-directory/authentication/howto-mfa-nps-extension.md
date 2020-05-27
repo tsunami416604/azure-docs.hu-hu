@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199551"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871223"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -205,9 +205,12 @@ Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett
 
 ### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
 
-Azure Government felhőt használó ügyfelek esetén a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon:
+Azure Government felhőt használó ügyfelek esetén a következő további konfigurációs lépésekre van szükség az egyes NPS-kiszolgálókon.
 
-1. Nyissa meg a **Rendszerleíróadatbázis-szerkesztőt** az NPS-kiszolgálón.
+> [!IMPORTANT]
+> Csak akkor konfigurálja ezeket a beállításjegyzék-beállításokat, ha Ön Azure Government ügyfél.
+
+1. Ha Ön Azure Government ügyfél, nyissa meg a **Beállításszerkesztőt** a hálózati házirend-kiszolgálón.
 1. Nyissa meg a `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` címet. Állítsa be a következő kulcs értékeit:
 
     | Beállításkulcs       | Érték |

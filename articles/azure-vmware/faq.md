@@ -4,12 +4,12 @@ description: Az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 6d8e87dd52871b82109ccc794af04244efe95b06
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854598"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873316"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Gyakran ismételt kérdések az Azure VMware Solution (AVS) előzetes verziójáról
 
@@ -17,7 +17,7 @@ Válaszok az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre.
 
 ## <a name="general"></a>Általános kérdések
 
-**Mi az az Azure VMware Solution (AVS)?**
+**Mi az Azure VMware-megoldás (AVS)?**
 
 Mivel a vállalatok az informatikai modernizációs stratégiákat követve javítják az üzleti rugalmasságot, csökkentik a költségeket, és felgyorsítják az innovációt, a hibrid felhőalapú platformok az ügyfelek digitális átalakításának kulcsfontosságú segítői jelentek meg. Az AVS a VMware szoftveres adatközpont (SDDC) szoftverét kombinálja Microsoft Azure globális felhőalapú szolgáltatás-ökoszisztémával. Az AVS-megoldás a teljesítményre, a rendelkezésre állásra, a biztonságra és a megfelelőségre vonatkozó követelmények teljesítéséhez van kezelve.
 
@@ -45,7 +45,7 @@ Bizonyos integrációk és használati esetek eseti alapon is kiértékelhető.
 
 **Áttelepíthetem a vSphere virtuális gépeket a helyszíni környezetből az AVS Private felhőkbe?**
 
-Igen. A virtuális gépek áttelepítése és vMotion használatával a virtuális gépek áthelyezhetők egy privát felhőbe, ha a standard szintűhttps://kb.vmware.com/s/article/210695Cross vCenter [vMotion-követelmények] [] teljesülnek.
+Igen. A virtuális gépek áttelepítése és vMotion használatával a virtuális gépek áthelyezhetők egy privát felhőbe, ha a standard szintű Cross vCenter [vMotion-követelmények] [ https://kb.vmware.com/s/article/210695 ] teljesülnek.
 
 **A vSphere adott verziója szükséges a helyszíni környezetekben?**
 
@@ -66,6 +66,35 @@ A CloudSimple nem változtatja meg a meglévő Azure VMware-megoldást. Továbbr
 **Áttelepíthetem az Azure VMware-megoldásról az új megoldás CloudSimple?**
 
 Igen, az Azure VMware-megoldás támogatja az áttelepítést a jól ismert VMware-eszközökkel, például a HCX-vel. Az új megoldásba való Migrálás iránt érdeklődő ügyfeleknek a Microsoft-fiók csapatával együttműködve megismerheti a lehetőségeket és a rendelkezésre álló támogatást.
+
+<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Hogyan egy meglévő Azure VMware-megoldáshoz a gazdagép kvótájának növekedését?**
+
+Egy [támogatási kérelem elküldésével](..\azure-portal\supportability\how-to-create-azure-support-request.md)kérheti a kvóta növelését. A kvóta-felügyeleti csapat kiértékeli a kérelmet, és három munkanapon belül jóváhagyja azt.  
+
+> [!IMPORTANT]
+> A kvóta növelésének megkezdése előtt győződjön meg arról, hogy [regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót](tutorial-create-private-cloud.md) a Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
+
+1. A Azure Portal a Súgó és **támogatás**területen hozzon létre egy **új támogatási kérést** , és adja meg a következő információkat a jegyhez:
+   - **Probléma típusa:** Technikai
+   - **Előfizetés:** Az előfizetés azonosítója
+   - **Szolgáltatás:**  Azure VMware-megoldás 
+   - **Összefoglalás:** Kvóta növekedése
+   - **Probléma típusa:** Kapacitás-felügyeleti problémák
+   - **Probléma altípusa:** Ügyfél iránti kérelem további gazdagép-kvótához/kapacitáshoz
+
+1. A támogatási jegy leírásában a Részletek lapon adja meg a következőket:
+   - További csomópontok száma   
+   - Csomópont SKU
+   - Régió
+
+   > [!NOTE] 
+   > Alapértelmezés szerint a rendszer legalább négy csomópontot biztosít.
+
+1. A kérelem elküldéséhez kattintson a **felülvizsgálat + létrehozás** gombra.
 
 ## <a name="compute-network-and-storage"></a>Számítás, hálózat és tárterület
 

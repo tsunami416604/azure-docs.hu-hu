@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446645"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872608"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Gyors útmutató: képelemzések beolvasása a Bing Visual Search REST API és a go használatával
 
-Ez a rövid útmutató a go programozási nyelv használatával hívja meg a Bing Visual Search API és megjeleníti az eredményeket. A POST-kérelem feltölt egy rendszerképet az API-végpontba. Az eredmények közé tartoznak a feltöltött képhez hasonló képek URL-címei és leíró információi.
+Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing Visual Search API a go programozási nyelv használatával. A POST-kérelem feltölt egy rendszerképet az API-végpontba. Az eredmények közé tartoznak a feltöltött képhez hasonló képek URL-címei és leíró információi.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [Go bináris fájlokat](https://golang.org/dl/).
-* Az eredmények megjelenítéséhez a go-spew Deep-nyomtató használatos. A go-köp a `$ go get -u https://github.com/davecgh/go-spew` parancs használatával telepíthető.
+* Telepítse a go-köp Deep Pretty nyomtatót, amely az eredmények megjelenítésére szolgál. A go-köp telepítéséhez használja az `$ go get -u https://github.com/davecgh/go-spew` parancsot.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Projekt és könyvtárak
 
-Hozzon létre egy go-projektet az IDE vagy a szerkesztőben. Ezután importálja `net/http` a kérelmeket, `ioutil` és olvassa el a `encoding/json` választ, és kezelje az eredmények JSON-szövegét. A `go-spew` függvénytár a JSON-eredmények elemzésére szolgál.
+Hozzon létre egy go-projektet az IDE vagy a szerkesztőben. Ezután importálja a `net/http` kérelmeket, `ioutil` és olvassa el a választ, és `encoding/json` kezelje az eredmények JSON-szövegét. A `go-spew` JSON-eredmények elemzéséhez használja a könyvtárat.
 
 ```go
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>Az eredmények formázására szolgáló struct
 
-A `BingAnswer` struktúra FORMÁZZA a JSON-válaszban visszaadott adatmennyiséget, amely többszintű és összetett. A következő implementáció az alapvető tudnivalókat ismerteti:
+A `BingAnswer` struktúra formázza a JSON-válaszban visszaadott adatmennyiséget, amely többszintű és összetett. A következő implementáció az alapvető tudnivalókat ismerteti:
 
 ```go
 type BingAnswer struct {
@@ -109,7 +109,12 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Fő függvény és változók  
 
-A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. A `batchNumber` a post adat kezdő és záró határaihoz szükséges GUID. A `fileName` változó AZONOSÍTJA a bejegyzés képfájlját. `endpoint`az alábbi globális végpont lehet, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja:
+A következő kód deklarálja a fő függvényt, és hozzárendeli a szükséges változókat: 
+
+1. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. 
+2. A esetében `batchNumber` rendeljen hozzá egy GUID azonosítót, amely szükséges a post-adat kezdő és záró határaihoz. 
+3. A esetében `fileName` rendelje hozzá a bejegyzéshez használni kívánt lemezképfájlt. 
+4. A (z) esetében `endpoint` a globális végpontot használhatja a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
 
 ```go
 func main() {
@@ -159,7 +164,12 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>A POST törzs határai
 
-Az Visual Search végpontra irányuló POST-kérelemhez a POST-adatokat tartalmazó, kezdő és záró határok szükségesek. A kezdő határ tartalmaz egy batch-számot, a tartalom típusát azonosítóját `Content-Disposition: form-data; name="image"; filename=`, valamint a közzétenni kívánt rendszerkép fájlnevét. A záró határ egyszerűen a Batch szám. Ezek a függvények nem szerepelnek a `main` blokkban:
+Az Visual Search-végpontra irányuló POST-kérésnek kezdő és záró határokra van szüksége a POST-adatközzétételhez. Ezek a függvények nem szerepelnek a `main()` blokkban.
+
+A kezdő határ tartalmaz egy batch-számot, a tartalomtípus-azonosítót `Content-Disposition: form-data; name="image"; filename=` és a közzétenni kívánt rendszerkép fájlnevét. 
+
+A záró határ csak a Batch-számot tartalmazza. 
+
 
 ```go
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +188,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Képbájtok hozzáadása a szövegtörzs feladásához
 
-Ez a kódrészlet a képadatokat tartalmazó POST kérelmet hozza létre:
+A következő kód létrehozza a képadatokat tartalmazó POST kérelmet:
 
 ```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -226,7 +236,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A `Unmarshall` függvény kinyeri az adatokat a Visual Search API által visszaadott JSON-szövegből. A `go-spew` szép nyomtató az eredményeket jeleníti meg:
+A `Unmarshall` függvény kinyeri az adatokat a Visual Search API által visszaadott JSON-szövegből. A `go-spew` szép nyomtató megjeleníti az eredményeket.
 
 ```go
     // Create a new answer.  
@@ -249,7 +259,7 @@ A `Unmarshall` függvény kinyeri az adatokat a Visual Search API által visszaa
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az eredmények a POST törzsében található képhez hasonló képeket azonosítanak. A hasznos mezők a `WebSearchUrl` következők `Name`:
+Az eredmények a POST törzsében található képhez hasonló képeket azonosítanak. A hasznos mezők a következők: `WebSearchUrl` és `Name` .
 
 ```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {

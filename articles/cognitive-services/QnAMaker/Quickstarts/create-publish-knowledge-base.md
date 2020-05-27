@@ -2,13 +2,13 @@
 title: 'Gyors útmutató: Tudásbázis létrehozása, betanítása és közzététele – QnA Maker'
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a kérdésekre QnA Maker.
 ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756826"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871456"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -17,7 +17,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+> * Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * A Azure Portalban létrehozott QnA Maker [erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Az első QnA Maker Tudásbázis létrehozása
@@ -34,8 +34,8 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 1. A **3. lépésben**válassza ki az Active Directoryt, előfizetést, szolgáltatást (erőforrás) és a szolgáltatásban létrehozott összes Tudásbázis nyelvét.
 
-   ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
-
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról":::
+    
 1. A **3. lépésben**nevezze el az Ön tudásbázisát a **minta QnA kb**-ra.
 
 1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
@@ -64,9 +64,9 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ Adja hozzá a kérdést szövegként és a Markdown formázott választ.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Adja hozzá a kérdést szövegként és a Markdown formázott választ.":::
 
-    A Markdown szimbóluma `*`. Az `\n` új sorhoz használatos.
+    A Markdown szimbóluma `*` . Az `\n` új sorhoz használatos.
 
     A **Szerkesztés** oldalon látható a Markdown. Amikor később a **tesztelési** panelt használja, látni fogja, hogy a Markdown megfelelően jelenik-e meg.
 
@@ -81,7 +81,7 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.":::
 
 1. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A test (teszt) ablak segítségével tesztelheti a Tudásbázis módosításait, mielőtt közzéteszi a tudásbázist.
 
@@ -131,7 +131,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
     A csevegési robot a Tudásbázisban válaszol.
 
-    ![Adjon meg egy felhasználói lekérdezést a teszt webes csevegésben.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Adjon meg egy felhasználói lekérdezést a teszt webes csevegésben.":::
 
 ## <a name="what-did-you-accomplish"></a>Mit ért el?
 
@@ -141,7 +141,7 @@ Miután közzétette a tudásbázist, létrehozott egy robotot, és tesztelte a 
 
 Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, vagy törölni kellene a tartalmat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 

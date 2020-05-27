@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9c5e36fd062a2579ece4aaa1501243295af72e1b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 625a1a256ec5f1668c97e74c37e567a4ceb3612f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649813"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871159"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -55,7 +55,9 @@ Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fi�
 
 Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
-Keresse meg `StartSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `this.cloudSession.Configuration.AccountKey = "MyAccountDomain";` .
+Nyissa meg`Xamarin/SampleXamarin.iOS/ViewControllers/DemoViewControllerBase.cs`
+
+Keresse meg `StartSession()` és adja hozzá a következő sort, amely a fiók tartományához lett behelyettesítve a korábban: `this.cloudSession.Configuration.AccountDomain = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás üzembe helyezése iOS-eszközön
 

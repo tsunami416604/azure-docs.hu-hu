@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 83ee59ca4353cd1af6c613e7624ee15f21b0a27e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650922"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871699"
 ---
 # <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center veszélyforrások elleni védelemből származó riasztások letiltása
 
@@ -22,8 +22,10 @@ Ez az oldal azt ismerteti, hogyan használhatók a riasztások letiltási szabá
 ## <a name="availability"></a>Rendelkezésre állás
 
 - Kiadási állapot: **előzetes** verzió
-- Szükséges szerepkörök: a biztonsági rendszergazda és a tulajdonos létrehozhat/törölhet szabályokat. A biztonsági olvasó és az olvasó megtekintheti a szabályokat.
-- Felhők: mind (globális, nemzeti, kormányzati és szuverén)
+- Szükséges szerepkörök: a **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat. A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.
+- Felhők 
+    - ✔ Kereskedelmi felhők
+    - ✔ National/Sovereign (US Gov, Kína gov, other gov)
 
 
 ## <a name="introduction-to-suppression-rules"></a>A mellőzési szabályok bemutatása

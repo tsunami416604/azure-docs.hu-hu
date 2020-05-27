@@ -2,14 +2,13 @@
 title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.reviewer: sdash
-ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655940"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873348"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
@@ -17,13 +16,16 @@ A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-c
 
 > [!NOTE]
 > A többlépéses webes tesztek a Visual Studio webtest-fájloktól függenek. A rendszer [bejelentette](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , hogy a Visual Studio 2019 a webteszt funkciójának utolsó verziója. Fontos tisztában lenni azzal, hogy a Visual Studio 2019-es webteszt funkciója továbbra is támogatott, és a termék támogatási életciklusa során továbbra is támogatott lesz. A Azure Monitor termék csapata a több lépésből álló rendelkezésre állási tesztek jövőjével kapcsolatos [here](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)kérdéseket tárgyal.  
+> </br>
+> A többlépéses webes tesztek **nem támogatottak** a [Azure Government](https://docs.microsoft.com/azure/azure-government/) felhőben.
+
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
 * Visual Studio 2017 Enterprise vagy újabb.
 * A Visual Studio webes teljesítmény-és terhelés-tesztelési eszközei.
 
-Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítő** > **egyes összetevőit** > **, és tesztelje** > a**webes teljesítményt és a terheléses tesztelési eszközöket**.
+Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítő**  >  **egyes összetevőit**  >  **, és tesztelje**a  >  **webes teljesítményt és a terheléses tesztelési eszközöket**.
 
 ![Képernyőfelvétel a Visual Studio telepítő felhasználói felületéről a webes teljesítmény és a terhelés-tesztelési eszközök elem melletti jelölőnégyzettel jelölt egyedi összetevőkkel](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -39,7 +41,7 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. A rendelkezésre állás ablaktáblán a Application Insights portálon válassza a **tesztelési** > **teszt típusa** > **többlépéses webes teszt**lehetőséget.
+1. A rendelkezésre állás ablaktáblán a Application Insights portálon válassza a **tesztelési**  >  **teszt típusa**  >  **többlépéses webes teszt**lehetőséget.
 
 2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
@@ -64,9 +66,9 @@ A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért teki
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
-|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke** = **– 2, legalább öt tesztelési hely.**|
+|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  **– 2, legalább öt tesztelési hely.**|
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Idő és véletlenszerű számok csatlakoztatása a teszthez
 

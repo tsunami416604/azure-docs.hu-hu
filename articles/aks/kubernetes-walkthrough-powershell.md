@@ -3,13 +3,13 @@ title: 'Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése'
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) a PowerShell használatával.
 services: container-service
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 91a28b935e0972daa181ffc4eb4d6d9595e4b3e1
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/26/2020
+ms.openlocfilehash: a89f76344e48d5af8c71c5a674a94767795b41a9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83717974"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871476"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése a PowerShell használatával
 
@@ -26,9 +26,6 @@ A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára v
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell][install-azure-powershell].
-
-> [!IMPORTANT]
-> Ez a cikk az az. AK PowerShell-modul előzetes verzióját használja. Ezt külön kell telepítenie az az PowerShell-modulból a következő parancs használatával: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Az az. AK PowerShell-modul előzetes verziójának általánosan elérhetővé válása után a rendszer a PowerShell-modul kiadásait és natív módon elérhetővé válik a Azure Cloud Shellon belül.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -257,7 +254,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját is elérheti][kubernetes-dashboard] az AK-fürthöz.
 

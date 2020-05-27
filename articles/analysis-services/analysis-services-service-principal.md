@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásnevet Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699073"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871175"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -110,5 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>További lépések
 [Bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Frissítés a Logic Apps használatával](analysis-services-refresh-logic-app.md)  
+[Frissítés az Azure Automationnel](analysis-services-refresh-azure-automation.md)  
 [Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)  
 [Power BI Premium munkaterület és adatkészlet-feladatok automatizálása egyszerű szolgáltatásokkal](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

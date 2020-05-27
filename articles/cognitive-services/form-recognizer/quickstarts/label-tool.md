@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691339"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871376"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -143,6 +143,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
     > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
     > * A címkézett mezőkben ne szerepeljenek kulcsok, &mdash; csak az értékek.
     > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
+    > * Egy alkalmazott címke törléséhez válassza ki a téglalapot a dokumentum nézetben, és nyomja le a DELETE billentyűt.
 
 ![A minta-címkéző eszköz főszerkesztő ablaka](../media/label-tool/main-editor.png)
 
@@ -164,6 +165,27 @@ A következő típusú értékek és változatok jelenleg támogatottak:
     * alapértelmezett, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
+
+> [!NOTE]
+> A dátum formázásához tekintse meg a következő szabályokat:
+> 
+> A következő karakterek használhatók DMY dátum határolójelként: `, - / . \` . Szóközök nem használhatók határolójelként. Például:
+> * 01, 01, 2020
+> * 01-01-2020
+> * 01/01/2020
+>
+> A nap és a hónap egy vagy két számjegyből állhat, az év pedig két vagy négy számjegyből állhat:
+> * 1-1-2020
+> * 1-01-20
+>
+> Ha egy DMY nyolc számjegyet tartalmaz, a határolójel nem kötelező:
+> * 01012020
+> * 01 01 2020
+>
+> A hónap teljes vagy rövid neveként is megadható. Ha a név használatos, a határoló karakterek nem kötelezőek:
+> * 01/Jan/2020
+> * 01Jan2020
+> * 01 Jan 2020
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 

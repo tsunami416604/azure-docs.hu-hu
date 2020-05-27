@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448551"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873423"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Ruby és a Bing News Search használatával REST API
 
-Ezzel a rövid útmutatóval megteheti az első hívását a Bing News Search API, és JSON-választ kap. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza az eredményeket.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing News Search API. Ez az egyszerű Ruby-alkalmazás keresési lekérdezést küld az API-nak, és feldolgozza a JSON-választ.
 
-Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
+Bár ez az alkalmazás a Rubyban van megírva, az API egy REST-alapú webszolgáltatás, amely a legtöbb programozási nyelvvel kompatibilis. 
+
+A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +34,7 @@ Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgál
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. importálja az alábbi csomagokat a kódfájljába.
+1. Importálja a következő csomagokat a Code fájlba:
 
     ```ruby
     require 'net/https'
@@ -40,7 +42,7 @@ Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgál
     require 'json'
     ```
 
-2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre változókat az API-végponthoz, a Hírek keresési URL-címéhez, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgál
 
 ## <a name="format-and-make-an-api-request"></a>Formázás és API-kérelem létrehozása
 
-Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Küldje el a kérelmet.
+Az előző lépésben szereplő változók használatával formázhatja az API-kérelem keresési URL-címét. Ezt követően küldje el a kérelmet.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>A JSON-válasz feldolgozása és nyomtatása
 
-A válasz fogadása után elemezheti a JSON-t, és kinyomtathatja a válasz törzsét és fejléceit is:
+A válasz fogadása után elemezze a JSON-t, majd nyomtassa ki mind a válasz törzsét, mind a fejléceit.
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
@@ -177,4 +179,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyszeri-alkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

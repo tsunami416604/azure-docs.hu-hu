@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb76151a3f952f932cc533b771283b5d45382366
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240911"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873445"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Mobile Application-adatok tárolása, szinkronizálása és lekérdezése a felhőből
 Függetlenül attól, hogy milyen típusú alkalmazást készít, valószínűleg létrehoz és feldolgozza az adatmennyiséget. Az alkalmazás felhasználói nagy elvárásokkal rendelkeznek. Azt szeretnék, hogy az alkalmazás minden körülmények között gyorsan és zökkenőmentesen működjön. A legtöbb alkalmazás több eszközön is működik. Az alkalmazást asztali vagy mobil eszközről is elérheti. Egyszerre több felhasználó is használhatja az alkalmazást, és megoszthatja az adatokhoz való azonnali és valós idejű adatelérést.
@@ -22,21 +22,6 @@ Az alkalmazás felhasználói nem mindig rendelkeznek internetkapcsolattal. Az a
 A Microsoft számos szolgáltatást biztosít, amelyek szükségtelenné teszik a kiszolgálók üzembe helyezését, az adatbázis kiválasztását, illetve a méretezéssel vagy a biztonsággal kapcsolatos gondot, hogy a lehető legszélesebb körű élményt nyújtsanak. Ezek a szolgáltatások nagyszerű fejlesztői élményt nyújtanak, amely lehetővé teszi, hogy az alkalmazások adatai a felhőben az SQL vagy a NoSQL API-k használatával legyenek tárolva. Az összes eszközön szinkronizálhatja az adatszinkronizálást, és lehetővé teheti, hogy az alkalmazás hálózati kapcsolatban vagy anélkül is működjön, hogy méretezhető és robusztus alkalmazásokat építsen ki.
 
 A következő szolgáltatások segítségével kezelheti és tárolhatja a felhőben tárolt mobileszközök-adattárakat.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center](/appcenter/data/) az adatkezelési szolgáltatás. Lehetővé teszi az alkalmazások számára, hogy a felhőben lévő alkalmazásadatok felügyeletét, megőrzését és szinkronizálását különböző eszközökön és platformokon keresztül, online és offline helyzetekben. A Azure Cosmos DBra épülő App Center az adatskálát a felhasználói bázis és az alkalmazások száma növeli. Biztosítja az alacsony késést, a magas rendelkezésre állást és a nagy skálázhatóságot az összes adattal kapcsolatban.
-
-**A legfontosabb jellemzők**
-- Egyszerű kiépítés egy új Azure Cosmos DB-adatbázisra vagy egy meglévő Azure Cosmos DB-adatbázisra az Visual Studio App Center-portálon.
-- NoSQL adatbázis-támogatás az alkalmazásadatok egyszerű tárolásához, szinkronizálásához és lekérdezéséhez.
-- A Azure Cosmos DBra épülő szolgáltatás a Azure Cosmos DB által kínált legfontosabb funkciók többségét örökli, és globálisan méretezhető az üzleti igények kielégítése érdekében.
-- Az online és az offline szinkronizálási funkciókkal szinkronizálhatja az adatokat az eszközök között.
-- A mobil ügyféloldali SDK-k, amelyek segítségével könnyedén kezelhetik a magánjellegű alkalmazások szolgáltatásait.
-- Platform-támogatás iOS-, Android-, Xamarin-és natív reagáláshoz.
-
-**Referencia**
-- [Regisztráció Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Ismerkedés a App Center-adatkezeléssel](/appcenter/data/getting-started)
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 A [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Felhasználhatja a világra kiterjedő alkalmazások létrehozásához. A Azure Cosmos DB segítségével rugalmasan és egymástól függetlenül méretezheti az átviteli sebességet és a tárterületet az egész világon elérhető Azure-régiók között. A kedvenc API-felületek használatával kihasználhatja a gyors, egyszámjegyű ezredmásodperces adatelérést. Ilyen felületek például az SQL, a MongoDB, a Cassandra, a Tables vagy a Gremlin. Azure Cosmos DB a teljes körű szolgáltatói szerződést (SLA-kat) biztosít az átviteli sebesség, a késés, a rendelkezésre állás és a konzisztencia érdekében.

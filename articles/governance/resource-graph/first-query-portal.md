@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első portál lekérdezése'
 description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74406799"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872085"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -26,28 +26,28 @@ Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel k
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Resource Graph Explorert**.
 
-1. Az ablak **lekérdezés 1** részében adja meg a lekérdezést `Resources | project name, type | limit 5` , és válassza a **lekérdezés futtatása**lehetőséget.
+1. Az ablak **lekérdezés 1** részében adja meg a lekérdezést, `Resources | project name, type | limit 5` és válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
-   > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót `order by`, mint a, a lekérdezés többszöri futtatása valószínűleg egy másik erőforrás-készletet eredményez.
+   > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót, mint a `order by` , a lekérdezés többszöri futtatása valószínűleg egy másik erőforrás-készletet eredményez.
 
 1. Tekintse át a lekérdezési választ az **eredmények** lapon. a lekérdezés részleteinek megtekintéséhez válassza az **üzenetek** fület, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
 
-1. Frissítse a lekérdezést `order by` a **Name (név** ) `Resources | project name, type | limit 5 | order by name asc`tulajdonságra:. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést `order by` a **Name (név** ) tulajdonságra: `Resources | project name, type | limit 5 | order by name asc` . Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
-   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
+   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Ez a parancs először a lekérdezés eredményeit korlátozza, majd megrendeli azokat.
 
-1. Frissítse a lekérdezést először a `order by` **Name (név** ) tulajdonságra, majd `limit` az első öt `Resources | project name, type | order by name asc | limit 5`találatra:. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést először `order by` a **Name (név** ) tulajdonságra, majd az első `limit` öt találatra: `Resources | project name, type | order by name asc | limit 5` . Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
-Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a várt módon jelennek meg – a **Name** tulajdonság szerint rendezve, de továbbra is az első öt találatra korlátozódik.
+Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
 
 ### <a name="schema-browser"></a>Séma böngésző
 
 A séma böngészője a Resource Graph Explorer bal oldali ablaktábláján található. Ezen erőforrások listája az Azure Resource Graph által támogatott Azure-erőforrások összes olyan _erőforrás-típusát_ megjeleníti, amelyek az Ön számára elérhető bérlőben találhatók. Az erőforrás-típus vagy az altulajdonságok kibővítésével megjelenítheti az erőforrás-gráf-lekérdezések létrehozásához használható alárendelt tulajdonságokat.
 
-Válassza ki az erőforrástípus helyét `where type =="<resource type>"` a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztása a `where <propertyName> == "INSERT_VALUE_HERE"` lekérdezés mezőbe kerül.
-A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy _itt\_a\__ saját értékre cserélje le az INSERT értéket, a feltételekkel, operátorokkal és függvényekkel módosítsa a lekérdezéseket a kívánt eredmények eléréséhez.
+Válassza ki az erőforrástípus helyét `where type =="<resource type>"` a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztása `where <propertyName> == "INSERT_VALUE_HERE"` a lekérdezés mezőbe kerül.
+A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy _ \_ \_ itt_ a saját értékre cserélje le az INSERT értéket, a feltételekkel, operátorokkal és függvényekkel módosítsa a lekérdezéseket a kívánt eredmények eléréséhez.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
 
@@ -97,7 +97,7 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
   [![Példa a minta irányítópultjának képének #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
-> A fenti példában az irányítópult képernyőképei az Azure-környezettől függően eltérőek lesznek.
+> A fenti példában látható irányítópultok és diagramok az Azure-környezettől függően eltérőek.
 
 1. Válassza ki és töltse le a kiértékelni kívánt minta irányítópultot.
 
@@ -107,7 +107,7 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
 
 Az importált Irányítópult automatikusan megjelenik. Mivel már létezik a Azure Portalban, szükség szerint feltárhatja és módosíthatja a módosításokat, vagy létrehozhat új irányítópultokat a példából, hogy megossza a csapatával. További információ az irányítópultok használatáról: [irányítópultok létrehozása és megosztása a Azure Portalban](../../azure-portal/azure-portal-dashboards.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azure Portal-környezetből, ezt a következő lépésekkel végezheti el:
 

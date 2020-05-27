@@ -5,34 +5,26 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: jlian
-ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652362"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871241"
 ---
-# <a name="iot-hub-support-for-virtual-networks"></a>IoT Hub virtuális hálózatok támogatása
+# <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
-Ez a cikk bemutatja az VNET-kapcsolati mintát, és azt ismerteti, hogyan állítható be egy magánhálózati kapcsolat az IoT-hubhoz az ügyfél által birtokolt Azure-VNET keresztül.
+Alapértelmezés szerint a IoT Hub állomásneve egy nyilvános végpontra mutat, amely az interneten keresztül nyilvánosan irányítható IP-címmel rendelkezik. A különböző ügyfelek megoszthatják ezt a IoT Hub nyilvános végpontot, és IoT a nagy területű hálózatokon és a helyszíni hálózatokon található eszközöket.
 
-> [!NOTE]
-> A cikkben ismertetett IoT Hub szolgáltatások jelenleg a [felügyelt szolgáltatás identitásával létrehozott](#create-an-iot-hub-with-managed-service-identity) IoT hubok számára érhetők el a következő régiókban: USA keleti régiója, az USA déli középső régiója és az USA 2. nyugati régiója.
-
-
-## <a name="introduction"></a>Bevezetés
-
-Alapértelmezés szerint az IoT Hub állomásnév egy nyilvános végpontra mutat, amely nyilvánosan irányítható IP-címmel rendelkezik az interneten keresztül. Ahogy az alábbi ábrán is látható, ez a IoT Hub nyilvános végpont a különböző ügyfelek tulajdonában lévő hubok között van megosztva, és a IoT-eszközök széles körű hálózatokon, valamint a helyszíni hálózatokon keresztül is elérhetők.
-
-Számos IoT Hub funkció, többek között az [üzenetek útválasztása](./iot-hub-devguide-messages-d2c.md), a [fájlfeltöltés](./iot-hub-devguide-file-upload.md)és a [tömeges eszközök importálása/exportálása](./iot-hub-bulk-identity-mgmt.md) hasonlóan szükséges a IoT hub és az ügyfél által birtokolt Azure-erőforráshoz való kapcsolódás a nyilvános végponton keresztül. Ahogy az alábbi ábrán is látható, ezek a csatlakozási útvonalak együttesen alkotják a kimenő forgalmat a IoT Hubról az ügyfelek erőforrásaira.
 ![IoT Hub nyilvános végpont](./media/virtual-network-support/public-endpoint.png)
 
+IoT Hub funkciók, például az [üzenetek útválasztása](./iot-hub-devguide-messages-d2c.md), a [fájlok feltöltése](./iot-hub-devguide-file-upload.md)és a [tömeges eszközök importálása/exportálása](./iot-hub-bulk-identity-mgmt.md) a nyilvános végponton keresztül a IoT hub kapcsolatát is igényli a felhasználó által birtokolt Azure-erőforráshoz. Ezek a csatlakozási útvonalak együttesen alkotják a kimenő forgalmat IoT Hubról az ügyfelek erőforrásaira.
 
-Az ügyfelek több okból is korlátozhatják az Azure-erőforrásokhoz (beleértve a IoT Hub) való kapcsolódást a saját és a VNET keresztül. Ezek az okok a következők:
+Előfordulhat, hogy korlátozni szeretné az Azure-erőforrások (például IoT Hub) kapcsolatát egy Ön által birtokolt és üzemeltetett VNet keresztül. Ezek az okok a következők:
 
-* A IoT hub hálózati szintű elkülönítése révén további biztonsági rétegeket is bevezetve a központhoz való kapcsolódás megakadályozása a nyilvános interneten keresztül.
+* Az IoT hub hálózati elkülönítésének bemutatása azáltal, hogy megakadályozza a nyilvános internetre való kapcsolódást.
 
 * A helyszíni hálózati eszközök privát kapcsolódási élményének lehetővé tétele, amely biztosítja, hogy az adatok és a forgalom közvetlenül az Azure gerinc-hálózatra legyen továbbítva.
 
@@ -40,59 +32,35 @@ Az ügyfelek több okból is korlátozhatják az Azure-erőforrásokhoz (beleér
 
 * Az Azure-szintű csatlakozási mintákat a [privát végpontok](../private-link/private-endpoint-overview.md)használatával követte.
 
+Ez a cikk azt ismerteti, hogyan valósíthatók meg ezek a célok az [Azure Private-hivatkozással](../private-link/private-link-overview.md) , amellyel a IoT hub és a megbízható Microsoft-szolgáltatások használata kivételt jelent a kimenő adatok IoT hub más Azure-erőforrásokhoz való csatlakoztatásához.
 
-Ez a cikk azt ismerteti, hogyan valósíthatók meg ezek a célok a IoT Hub való csatlakozáshoz használt [privát végpontok](../private-link/private-endpoint-overview.md) használatával, az Azure-beli megbízható első féltől származó szolgáltatások kivételével, a IoT hubról más Azure-erőforrásokhoz való kapcsolódási kivételként.
+## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Csatlakozás IoT Hub az Azure Private link használatával
 
-
-## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Csatlakozás IoT Hub magánhálózati végpontok használatával
-
-A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNET van lefoglalva. Ha saját végpontot használ az IoT hub számára, lehetővé teszi a VNET-ben működő szolgáltatások elérését IoT Hub anélkül, hogy forgalmat kellene elküldeni IoT Hub nyilvános végpontjának. Hasonlóképpen, a helyszíni üzemeltetésű eszközök a [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy a [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát kapcsolatok használatával is VNET az Azure-ban, és később a saját IoT hub (saját végpontján keresztül). Ennek eredményeképpen azok az ügyfelek, akik szeretnék korlátozni az IoT hub nyilvános végpontokhoz való kapcsolódást (vagy esetleg teljesen letiltják a kikapcsolást), az [IoT hub IP-szűrő](./iot-hub-ip-filtering.md) használatával és az Útválasztás konfigurálásával érhetik el ezt a célt, [Ha nem küldenek semmilyen adatnak a beépített végpontnak](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Ez a megközelítés megtartja a kapcsolatot a saját hubhoz az eszközök privát végpontjának használatával. Ennek a beállításnak a fő témája a helyszíni hálózaton belüli eszközök. Ez a beállítás nem ajánlott a nagy kiterjedésű hálózatban üzembe helyezett eszközök esetében.
+A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNet van lefoglalva. Az Azure privát kapcsolaton keresztül beállíthat egy privát végpontot az IoT hub számára, hogy lehetővé tegye a VNet belüli szolgáltatások IoT Hub elérését anélkül, hogy a IoT Hub nyilvános végpontjának kellene elküldeni a forgalmat. Hasonlóképpen a helyszíni eszközök is használhatják a [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy a [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -társítást, hogy hozzáférjenek a VNet és a IoT hub (a saját végpontján keresztül). Ennek eredményeképpen korlátozhatja vagy teljesen letilthatja az IoT hub nyilvános végpontokhoz való kapcsolódást [IoT hub IP-szűrő](./iot-hub-ip-filtering.md) használatával, és úgy [konfigurálhatja az útválasztást, hogy ne küldjön semmilyen adatátvitelt a beépített végpontnak](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Ez a megközelítés a saját hubhoz való kapcsolódást az eszközök magánhálózati végpontjának használatával tartja fenn. Ennek a beállításnak a fő témája a helyszíni hálózaton belüli eszközök. Ez a beállítás nem ajánlott a nagy kiterjedésű hálózatban üzembe helyezett eszközök esetében.
 
 ![IoT Hub nyilvános végpont](./media/virtual-network-support/virtual-network-ingress.png)
 
 A folytatás előtt győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
-* Az IoT hub-t [felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)kell kiépíteni.
+* [Létrehozott egy Azure-VNet](../virtual-network/quick-create-portal.md) egy olyan alhálózattal, amelyben a magánhálózati végpont létre lesz hozva.
 
-* Az IoT hub-t a [támogatott régiók](#regional-availability-private-endpoints)egyikében kell kiépíteni.
-
-* Kiépített egy Azure-VNET egy olyan alhálózattal, amelyben a magánhálózati végpont létre lesz hozva. További részletekért lásd: [virtuális hálózat létrehozása az Azure CLI használatával](../virtual-network/quick-create-cli.md) .
-
-* A helyszíni hálózatokon belül üzemelő eszközökön [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -alapú privát kapcsolatok állíthatók be az Azure VNET.
-
-
-### <a name="regional-availability-private-endpoints"></a>Regionális elérhetőség (privát végpontok)
-
-A IoT Hub által támogatott privát végpontok a következő régiókban hozhatók létre:
-
-* USA keleti régiója
-
-* USA déli középső régiója
-
-* USA nyugati régiója, 2.
-
+* A helyszíni hálózatokban üzemelő eszközök esetében [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát társak beállítása az Azure-VNet.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Magánhálózati végpont beállítása IoT Hub bejövő forgalomhoz
 
-Privát végpont beállításához kövesse az alábbi lépéseket:
+1. A Azure Portal területen válassza a **hálózatkezelés**, **privát végponti kapcsolatok**lehetőséget, majd kattintson a **+ privát végpontra**.
 
-1. A következő Azure CLI-parancs futtatásával regisztrálja újra az Azure IoT Hub providert az előfizetésével:
+    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Képernyőfelvétel: a IoT Hub privát végpontjának hozzáadása":::
 
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.Devices --wait --subscription  <subscription-name>
-    ```
+1. Adja meg az előfizetést, az erőforráscsoportot, a nevet és a régiót, és hozza létre az új privát végpontot a alkalmazásban. Ideális esetben a magánhálózati végpontot ugyanabban a régióban kell létrehozni, ahol a hub található.
 
-2. Navigáljon a IoT Hub portál **Private Endpoint Connections** lapjára (ez a lap csak a [támogatott régiók](#regional-availability-private-endpoints)IoT-hubok esetében érhető el), majd kattintson a **+** jelre egy új privát végpont hozzáadásához.
+1. Kattintson a **Tovább gombra: erőforrás**, és adja meg az előfizetést a IoT hub erőforráshoz, és válassza a **"Microsoft. Devices/IotHubs"** lehetőséget az erőforrás típusaként, a IoT hub nevét **erőforrásként**, és **iotHub** .
 
-3. Adja meg az előfizetést, az erőforráscsoportot, a nevet és a régiót, amelyből létre szeretné hozni az új privát végpontot (ideális esetben a magánhálózati végpontot ugyanabban a régióban kell létrehoznia, ahol a hub található). további részletekért lásd a [regionális elérhetőséget ismertető szakaszt](#regional-availability-private-endpoints) .
+1. Kattintson a **Tovább gombra: konfigurálás** lehetőségre, és adja meg a virtuális hálózatot és az alhálózatot a privát végpont létrehozásához a alkalmazásban. Ha szükséges, válassza az Azure Private DNS-zónával való integráció lehetőségét.
 
-4. Kattintson a **Tovább gombra: erőforrás**lehetőségre, és adja meg az IoT hub erőforrás előfizetését, és válassza a **"Microsoft. Devices/IotHubs"** lehetőséget az erőforrás típusaként, a IoT hub nevét **erőforrásként**, a **iotHub** pedig a cél alerőforrásként.
+1. Kattintson a **Tovább gombra: címkék**, és opcionálisan adja meg az erőforráshoz tartozó címkéket.
 
-5. Kattintson a **Tovább gombra: konfigurálás** lehetőségre, és adja meg a virtuális hálózatot és az alhálózatot a privát végpont létrehozásához a alkalmazásban. Ha szükséges, válassza az Azure Private DNS-zónával való integráció lehetőségét.
-
-6. Kattintson a **Tovább gombra: címkék**, és opcionálisan adja meg az erőforráshoz tartozó címkéket.
-
-7. A privát kapcsolati erőforrás létrehozásához kattintson a **felülvizsgálat + létrehozás** elemre.
+1. A privát kapcsolati erőforrás létrehozásához kattintson a **felülvizsgálat + létrehozás** elemre.
 
 ### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>A beépített Event hub-kompatibilis végpont nem támogatja a privát végponton keresztüli hozzáférést
 
@@ -104,128 +72,37 @@ A IoT Hub [IP-szűrője](iot-hub-ip-filtering.md) nem szabályozza a nyilvános 
 1. Nyilvános hálózati hozzáférés kikapcsolása IP-szűrő használatával az összes IP-cím letiltásához
 1. Kapcsolja ki a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
 1. A [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) kikapcsolása
-1. A kilépések konfigurálása más Azure-erőforrásokhoz az Azure-beli [első felek megbízható szolgáltatásainak](#egress-connectivity-from-iot-hub-to-other-azure-resources) használatával
+1. A kimenő forgalom konfigurálása más Azure-erőforrásokhoz [megbízható Microsoft-szolgáltatás](#egress-connectivity-from-iot-hub-to-other-azure-resources) használatával
 
-### <a name="pricing-private-endpoints"></a>Díjszabás (privát végpontok)
+### <a name="pricing-for-private-link"></a>Privát hivatkozás díjszabása
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>Kimenő kapcsolatok IoT Hubról más Azure-erőforrásokra
 
-IoT Hubnak hozzá kell férnie az Azure Blob Storage-hoz, az Event hubokhoz, a Service Bus erőforrásaihoz az [üzenetek útválasztásához](./iot-hub-devguide-messages-d2c.md), a [fájlfeltöltés](./iot-hub-devguide-file-upload.md)és a [tömeges eszközök importálásához és exportálásához](./iot-hub-bulk-identity-mgmt.md), ami általában az erőforrások nyilvános végpontján történik. Abban az esetben, ha a Storage-fiókot, az Event hubokat vagy a Service Bus-erőforrást egy VNET köti, az ajánlott konfiguráció alapértelmezés szerint letiltja az erőforráshoz való kapcsolódást. Ennek következtében a IoT Hub azon funkcióit akadályozza meg, amelyek hozzáférést igényelnek az adott erőforrásokhoz.
+IoT Hub tud csatlakozni az Azure Blob Storage-hoz, az Event hub-hoz, a Service Bus erőforrásaihoz az [üzenetek útválasztásához](./iot-hub-devguide-messages-d2c.md), a [fájlfeltöltés](./iot-hub-devguide-file-upload.md)és a [tömeges eszközök importálásához és exportálásához](./iot-hub-bulk-identity-mgmt.md) az erőforrások nyilvános végpontján keresztül. Az erőforrás egy VNet való kötése alapértelmezés szerint blokkolja az erőforráshoz való kapcsolódást. Ennek eredményeképpen ez a konfiguráció megakadályozza, hogy a IoT Hub az adatok adatküldését az erőforrásokra. A probléma megoldásához engedélyezze a kapcsolatot a IoT Hub-erőforrásról a Storage-fiókjába, az Event hub-ba vagy a Service Bus-erőforrásokhoz a **megbízható Microsoft szolgáltatás** használatával.
 
-A helyzet enyhítéséhez engedélyeznie kell a IoT Hub-erőforrás kapcsolatát a Storage-fiókkal, az Event hubokkal vagy a Service Bus-erőforrásokkal az **Azure első féltől származó megbízható szolgáltatások** lehetőség használatával.
+### <a name="turn-on-managed-identity-for-iot-hub"></a>Felügyelt identitás bekapcsolása a IoT Hubhoz
 
-Az előfeltételek a következők:
+Ahhoz, hogy más szolgáltatások megbízható Microsoft-szolgáltatásként megtalálják az IoT hubot, rendelkeznie kell egy rendszerhez rendelt felügyelt identitással.
 
-* Az IoT hub-t a [támogatott régiók](#regional-availability-trusted-microsoft-first-party-services)egyikében kell kiépíteni.
+1. A IoT Hub-portálon navigáljon az **identitáshoz**
 
-* A IoT Hub felügyelt szolgáltatás identitását kell hozzárendelni a hub üzembe helyezési idején. Kövesse az utasításokat a [felügyelt szolgáltatás identitásával rendelkező központ létrehozásához](#create-an-iot-hub-with-managed-service-identity).
+1. Az **állapot**területen válassza **a be**lehetőséget, majd kattintson a **Mentés**gombra.
 
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="A IoT Hub felügyelt identitásának bekapcsolását bemutató képernyőkép":::
 
-### <a name="regional-availability-trusted-microsoft-first-party-services"></a>Regionális elérhetőség (megbízható Microsoft első féltől származó szolgáltatások)
+### <a name="pricing-for-managed-identity"></a>A felügyelt identitás díjszabása
 
-Az Azure megbízható első féltől származó szolgáltatások kivételt jelentenek az Azure Storage-ba irányuló tűzfal-korlátozások megkerülése érdekében, az Event hubok és a Service Bus-erőforrások csak a következő régiókban IoT hubok esetében:
-
-* USA keleti régiója
-
-* USA déli középső régiója
-
-* USA nyugati régiója, 2.
-
-
-### <a name="pricing-trusted-microsoft-first-party-services"></a>Díjszabás (megbízható Microsoft első féltől származó szolgáltatások)
-
-A megbízható Microsoft első féltől származó szolgáltatások IoT a [támogatott régiókban](#regional-availability-trusted-microsoft-first-party-services)díjmentes. A kiépített Storage-fiókok, az Event hubok vagy a Service Bus-erőforrások díjai külön vonatkoznak.
-
-
-### <a name="create-an-iot-hub-with-managed-service-identity"></a>IoT hub létrehozása felügyelt szolgáltatás identitásával
-
-A felügyelt szolgáltatás identitása erőforrás-kiépítési időszakban rendelhető hozzá a központhoz (ez a funkció jelenleg nem támogatott a meglévő hubok esetében), amelyhez a IoT hub a minimális verzióként a TLS 1,2 használatát igényli. Erre a célra az alábbi ARM-erőforrás-sablont kell használnia:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Devices/IotHubs",
-      "apiVersion": "2020-03-01",
-      "name": "<provide-a-valid-resource-name>",
-      "location": "<any-of-supported-regions>",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "properties": {
-        "minTlsVersion": "1.2"
-      },
-      "sku": {
-        "name": "<your-hubs-SKU-name>",
-        "tier": "<your-hubs-SKU-tier>",
-        "capacity": 1
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
-      "dependsOn": [
-        "<provide-a-valid-resource-name>"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "contentVersion": "0.9.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Devices/IotHubs",
-              "apiVersion": "2020-03-01",
-              "name": "<provide-a-valid-resource-name>",
-              "location": "<any-of-supported-regions>",
-              "identity": {
-                "type": "SystemAssigned"
-              },
-              "properties": {
-                "minTlsVersion": "1.2"
-              },
-              "sku": {
-                "name": "<your-hubs-SKU-name>",
-                "tier": "<your-hubs-SKU-tier>",
-                "capacity": 1
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-Az erőforráshoz tartozó értékek helyettesítése után `name` `location` `SKU.name` `SKU.tier` Az Azure CLI használatával telepítheti az erőforrást egy meglévő erőforráscsoporthoz a következő használatával:
-
-```azurecli-interactive
-az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
-```
-
-Az erőforrás létrehozása után lekérheti a hubhoz rendelt felügyelt szolgáltatás identitását az Azure CLI használatával:
-
-```azurecli-interactive
-az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
-```
-
-Ha a IoT Hub felügyelt szolgáltatás identitásával lett kiépítve, kövesse a megfelelő szakaszt az útválasztási végpontok beállításához [a Storage-fiókok](#egress-connectivity-to-storage-account-endpoints-for-routing), az esemény- [hubok](#egress-connectivity-to-event-hubs-endpoints-for-routing)és a [Service Bus](#egress-connectivity-to-service-bus-endpoints-for-routing) -erőforrások számára, illetve a [fájlfeltöltés](#egress-connectivity-to-storage-accounts-for-file-upload) és a [csoportos eszközök importálásának és exportálásának](#egress-connectivity-to-storage-accounts-for-bulk-device-importexport)konfigurálásához.
-
+A megbízható Microsoft első féltől származó szolgáltatások kivételi funkciója díjmentes. A kiépített Storage-fiókok, az Event hubok vagy a Service Bus-erőforrások díjai külön vonatkoznak.
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>Kimenő kapcsolatok a Storage-fiókok végpontjai számára az útválasztáshoz
 
-A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Storage-fiókba. Annak engedélyezéséhez, hogy az útválasztási funkció hozzáférjen egy Storage-fiókhoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt szolgáltatás identitásával kell rendelkeznie (lásd: [hub létrehozása felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)). A felügyelt szolgáltatás identitásának kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
+A IoT Hub az üzeneteket az ügyfél által birtokolt Storage-fiókba irányíthatja. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Storage-fiókhoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub [felügyelt identitással](#turn-on-managed-identity-for-iot-hub)kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködő** **SZEREPKÖR**, **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
@@ -237,10 +114,9 @@ A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél ált
 
 Most, hogy az egyéni tárolási végpont a hub rendszerhez rendelt identitásának használatára van beállítva, és a tűzfal korlátozásai ellenére jogosult a tárolási erőforrás elérésére. Ezt a végpontot mostantól útválasztási szabály beállításához is használhatja.
 
-
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>Kimenő kapcsolat az Event hub-végpontokkal az útválasztáshoz
 
-A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Event hub-névtérnek. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Event hubok-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt szolgáltatás identitásával kell rendelkeznie (lásd: [hub létrehozása felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)). A felügyelt szolgáltatás identitásának kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásának az esemény-hubok eléréséhez.
+A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Event hub-névtérnek. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Event hubok-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. Miután létrehozta a felügyelt identitást, kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásának az Event hubok eléréséhez.
 
 1. A Azure Portal navigáljon az Event hub- **hozzáférés-vezérlés (iam)** lapra, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -256,10 +132,9 @@ A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél ált
 
 Most az egyéni Event hub-végpont úgy van beállítva, hogy a hub rendszerhez rendelt identitását használja, és a tűzfal korlátozásai ellenére jogosult az Event hub-erőforrás elérésére. Ezt a végpontot mostantól útválasztási szabály beállításához is használhatja.
 
-
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>Kimenő kapcsolatok a Service Bus-végpontokhoz útválasztáshoz
 
-A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Service Bus-névtérhez. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Service Bus-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt szolgáltatás identitásával kell rendelkeznie (lásd: [hub létrehozása felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)). A felügyelt szolgáltatás identitásának kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
+A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél által birtokolt Service Bus-névtérhez. Ha engedélyezni szeretné, hogy az útválasztási funkció hozzáférjen egy Service Bus-erőforráshoz, amíg a tűzfal korlátozásai teljesülnek, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
 
 1. A Azure Portal nyissa meg a Service Bus hozzáférés- **vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
@@ -269,46 +144,43 @@ A IoT Hub konfigurálható úgy, hogy üzeneteket továbbítson az ügyfél ált
 
 4. A IoT Hub erőforrás lapján navigáljon az üzenet- **Útválasztás** lapra.
 
-5. Navigáljon az **Egyéni végpontok** szakaszhoz, és kattintson a **Hozzáadás**gombra. A végpont típusaként válassza a **Service Bus-várólista** vagy a **Service Bus-témakör** (az alkalmazható) lehetőséget.
+5. Navigáljon az **Egyéni végpontok** szakaszhoz, és kattintson a **Hozzáadás**gombra. A végpont típusaként válassza a **Service Bus-várólista** vagy a **Service Bus témakört** (ha alkalmazható).
 
 6. A megjelenített oldalon adja meg a végpont nevét, válassza ki a Service Bus-névteret és-várólistát vagy-témakört (a megfelelő módon). Kattintson a **Létrehozás** gombra.
 
 Most az egyéni Service Bus-végpont úgy van beállítva, hogy a hub rendszerhez rendelt identitását használja, és a tűzfal korlátozásai ellenére jogosult a Service Bus-erőforrás elérésére. Ezt a végpontot mostantól útválasztási szabály beállításához is használhatja.
 
-
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>A fájlok feltöltésekor használt Storage-fiókokhoz való kimenő kapcsolatok
 
-IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/create-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt szolgáltatás identitásával kell rendelkeznie (lásd: [hub létrehozása felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)). A felügyelt szolgáltatás identitásának kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
+IoT Hub fájlfeltöltés funkciója lehetővé teszi, hogy az eszközök fájlokat töltsenek fel egy ügyfél tulajdonú Storage-fiókjába. Ha engedélyezni szeretné a fájl feltöltését, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz. Ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, az eszköznek a támogatott Storage-fiók mechanizmusát (beleértve a [magánhálózati végpontokat](../private-link/create-private-endpoint-storage-portal.md), a [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)vagy a [közvetlen tűzfal-konfigurációt](../storage/common/storage-network-security.md)) kell használnia a kapcsolat eléréséhez. Hasonlóképpen, ha a Storage-fiókban tűzfal-korlátozások vannak érvényben, IoT Hub konfigurálnia kell a tárolási erőforrás elérését a megbízható Microsoft Services-kivétel használatával. Erre a célra a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Storage-fiók eléréséhez.
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködő** **SZEREPKÖR**, **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
 4. A IoT Hub erőforrás lapján navigáljon a **fájlfeltöltés** lapra.
 
-5. A megjelenő oldalon válassza ki a blob Storage-ban használni kívánt tárolót, konfigurálja a **fájl értesítési beállításait**, az **sas TTL**, az **alapértelmezett TTL** és a **maximális kézbesítési** értéket a kívánt módon. Válassza ki a **hitelesítési típusként** **hozzárendelt rendszer** elemet a tárolási végponthoz. Kattintson a **Létrehozás** gombra.
+5. A megjelenő oldalon válassza ki a blob Storage-ban használni kívánt tárolót, konfigurálja a **fájl értesítési beállításait**, az **sas TTL**, az **alapértelmezett TTL**és a **maximális kézbesítések** értéket a kívánt módon. Válassza ki a **hitelesítési típusként** **hozzárendelt rendszer** elemet a tárolási végponthoz. Kattintson a **Létrehozás** gombra.
 
 A file upload tárolási végpontja most úgy van beállítva, hogy a hub rendszerhez rendelt identitását használja, és a tűzfal korlátozásai ellenére jogosult a tárolási erőforrás elérésére.
-
 
 ### <a name="egress-connectivity-to-storage-accounts-for-bulk-device-importexport"></a>Kilépési kapcsolat a Storage-fiókokkal a tömeges eszközök importálásához/exportálásához
 
 A IoT Hub támogatja az eszközök tömeges [importálására/exportálására](./iot-hub-bulk-identity-mgmt.md) vonatkozó adatokat az ügyfél által megadott Storage-blobba/-ból. Ha engedélyezni szeretné a tömeges importálási/exportálási funkciót, mindkét eszköznek és a IoT Hubnak kapcsolódnia kell a Storage-fiókhoz.
 
-Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal-korlátozásokkal szeretné elérni a Service Bus-erőforrást, a IoT Hub felügyelt szolgáltatás identitásával kell rendelkeznie (lásd: [hub létrehozása felügyelt szolgáltatás identitásával](#create-an-iot-hub-with-managed-service-identity)). A felügyelt szolgáltatás identitásának kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
+Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal-korlátozásokkal szeretné elérni a Service Bus-erőforrást, a IoT Hub felügyelt identitással kell rendelkeznie. A felügyelt identitás kiosztása után kövesse az alábbi lépéseket, hogy RBAC engedélyt adjon a hub erőforrás-identitásához a Service Bus eléréséhez.
 
 1. A Azure Portal nyissa meg a Storage-fiók **hozzáférés-vezérlés (iam)** lapját, és kattintson a **Hozzáadás** lehetőségre a **szerepkör-hozzárendelés hozzáadása** szakaszban.
 
-2. Válassza a **Storage blob-adatközreműködő** **SZEREPKÖR**, **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
+2. Válassza a **Storage blob-adatközreműködői** ([*nem* közreműködő vagy a Storage-fiók közreműködői](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) lehetőséget **szerepkörként**, **Azure ad-felhasználóként, csoportként vagy egyszerű szolgáltatásnévként** **, és válassza ki a IoT hub** erőforrás nevét a legördülő listából. Kattintson a **Mentés** gombra.
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
-Mostantól használhatja az Azure IoT-REST API az [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatos információkért. Vegye figyelembe, hogy a kérés törzsében kell megadnia a-t, és `storageAuthenticationType="identityBased"` a-t és a-t kell használnia a `inputBlobContainerUri="https://..."` Storage- `outputBlobContainerUri="https://..."` fiók bemeneti és kimeneti URL-címével.
+Most már használhatja az Azure IoT REST API-kat [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatban. Meg kell adnia a `storageAuthenticationType="identityBased"` kérés törzsét, és használnia kell a `inputBlobContainerUri="https://..."` és `outputBlobContainerUri="https://..."` a, valamint a Storage-fiók bemeneti és kimeneti URL-címét.
 
-
-Az Azure IoT Hub SDK a szolgáltatás-ügyfél beállításjegyzék-kezelőjében is támogatja ezt a funkciót. A következő kódrészletből megtudhatja, hogyan kezdeményezzen importálási feladatot vagy exportálási feladatot a C# SDK használatával.
+Az Azure IoT Hub SDK-k a szolgáltatás-ügyfél beállításjegyzék-kezelőjében is támogatják ezt a funkciót. A következő kódrészletből megtudhatja, hogyan kezdeményezzen importálási feladatot vagy exportálási feladatot a C# SDK használatával.
 
 ```csharp
 // Call an import job on the IoT Hub
@@ -324,8 +196,7 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-
-Ha az Azure IoT SDK-k ezen régióra korlátozott verzióját szeretné használni a C#, a Java és a Node. js virtuális hálózati támogatásával:
+Az Azure IoT SDK-k ezen verziójának használata a C#, a Java és a Node. js virtuális hálózati támogatásával:
 
 1. Hozzon létre egy nevű környezeti változót `EnableStorageIdentity` , és állítsa be a értékét a következőre: `1` .
 

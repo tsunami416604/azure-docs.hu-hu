@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067935"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870159"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Node. js használatával kapcsolódhat és lekérdezheti Azure Database for MySQL
 
@@ -25,6 +25,9 @@ Ez a témakör azt feltételezi, hogy már ismeri a Node. js használatával vé
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT] 
+> Győződjön meg arról, hogy az IP-cím, amelyhez csatlakozik, a [Azure Portal](./howto-manage-firewall-using-portal.md) vagy az [Azure CLI](./howto-manage-firewall-using-cli.md) használatával adja hozzá a kiszolgáló tűzfalszabály-szabályait.
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>A Node.js és a MySQL-összekötő telepítése
 
@@ -53,7 +56,7 @@ A [Node. js](https://nodejs.org)telepítéséhez kövesse a megfelelő szakaszba
    sudo apt-get install -y nodejs npm
    ```
 
-2. Futtassa a következő parancsokat egy projekt mappájának `mysqlnodejs` létrehozásához, és telepítse a MySQL-csomagot a mappába.
+2. Futtassa a következő parancsokat egy projekt mappájának létrehozásához, `mysqlnodejs` és telepítse a MySQL-csomagot a mappába.
 
    ```bash
    mkdir nodejsmysql
@@ -71,7 +74,7 @@ A [Node. js](https://nodejs.org)telepítéséhez kövesse a megfelelő szakaszba
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Futtassa a következő parancsokat egy projekt mappájának `mysqlnodejs` létrehozásához, és telepítse a MySQL-csomagot a mappába.
+2. Futtassa a következő parancsokat egy projekt mappájának létrehozásához, `mysqlnodejs` és telepítse a MySQL-csomagot a mappába.
 
    ```bash
    mkdir nodejsmysql
@@ -95,8 +98,8 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 ## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
 
 1. Illessze be a JavaScript-kódot szövegfájlokba, és mentse őket egy projektmappába .js kiterjesztéssel (például: C:\nodejsmysql\createtable.js vagy /home/username/nodejsmysql/createtable.js).
-2. Nyissa meg a parancssort vagy a bash rendszerhéjt, majd módosítsa a könyvtárat `cd nodejsmysql`a projekt mappájába.
-3. Az alkalmazás futtatásához írja be a Node parancsot, majd a fájlnevet, például: `node createtable.js`.
+2. Nyissa meg a parancssort vagy a bash rendszerhéjt, majd módosítsa a könyvtárat a projekt mappájába `cd nodejsmysql` .
+3. Az alkalmazás futtatásához írja be a Node parancsot, majd a fájlnevet, például: `node createtable.js` .
 4. Ha Windows rendszeren nem található a Node.js-alkalmazás a path környezeti változóban, előfordulhat, hogy a teljes elérési utat kell használnia a Node.js-alkalmazás elindításához, például: `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása

@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253492"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872717"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN a Verizon Premium Rules Engine funkcióival
 
@@ -20,150 +20,9 @@ Ez a cikk az Azure Content Delivery Network (CDN) [szabályok motorjának](cdn-v
 
 A szabály harmadik része a szolgáltatás. A szolgáltatás határozza meg, hogy milyen típusú műveletet alkalmaz a rendszer az egyeztetési feltételek alapján azonosított kérelem típusára.
 
-## <a name="access-features"></a>Hozzáférési funkciók
 
-Ezek a funkciók a tartalmakhoz való hozzáférés szabályozására szolgálnak.
+A legújabb funkciókért tekintse meg a [Verizon Rules Engine dokumentációját](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions).
 
-Name (Név) | Cél
------|--------
-[Hozzáférés megtagadása (403)](#deny-access-403) | Meghatározza, hogy az összes kérés visszautasítva van-e egy 403 Tiltott válasz esetén.
-[Jogkivonat-hitelesítés](#token-auth) | Meghatározza, hogy a rendszer a jogkivonat-alapú hitelesítést alkalmazza-e a kérelemre.
-[Jogkivonat-hitelesítési elutasítási kód](#token-auth-denial-code) | Meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha jogkivonat-alapú hitelesítés miatt megtagadja a kérelmet.
-[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-eset](#token-auth-ignore-url-case) | Meghatározza, hogy a jogkivonat-alapú hitelesítés által végzett URL-összehasonlítás megkülönbözteti-e a kis-és nagybetűket.
-[Jogkivonat-hitelesítési paraméter](#token-auth-parameter) | Meghatározza, hogy a jogkivonat-alapú hitelesítés lekérdezési karakterláncának paraméterét át kell-e átnevezni.
-
-## <a name="caching-features"></a>Gyorsítótárazási funkciók
-
-Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a tartalom gyorsítótárazásának idejét és módját.
-
-Name (Név) | Cél
------|--------
-[Sávszélesség-paraméterek](#bandwidth-parameters) | Meghatározza, hogy aktív-e a sávszélesség-szabályozási paraméterek (például ec_rate és ec_prebuf).
-[Sávszélesség-szabályozás](#bandwidth-throttling) | A sávszélesség szabályozása a jelenléti pont (POP) által biztosított válasz számára.
-[Gyorsítótár megkerülése](#bypass-cache) | Meghatározza, hogy a kérés kikerülje-e a gyorsítótárazást.
-[Cache-Control fejléc kezelése](#cache-control-header-treatment) | Vezérli a `Cache-Control` fejlécek LÉTREHOZÁSÁT a pop-on, ha a külső Max-Age funkció aktív.
-[Gyorsítótár – kulcs lekérdezési karakterlánca](#cache-key-query-string) | Meghatározza, hogy a gyorsítótár-kulcs tartalmazza-e a kérelemhez társított lekérdezési karakterlánc paramétereit.
-[Gyorsítótár – kulcs újraírása](#cache-key-rewrite) | A kérelemhez társított gyorsítótár-kulcs újraírása.
-[Gyorsítótár kitöltésének befejezése](#complete-cache-fill) | Meghatározza, hogy mi történjen, ha egy kérés részleges gyorsítótárat eredményez egy POP-on.
-[Fájltípusok tömörítése](#compress-file-types) | A kiszolgálón tömörített fájlok fájlformátumait határozza meg.
-[Alapértelmezett belső max. Age](#default-internal-max-age) | Meghatározza a POP-hoz a forrásként szolgáló kiszolgáló gyorsítótárának újraérvényesítésére vonatkozó alapértelmezett maximális életkori időközt.
-[A fejléc kezelése lejár](#expires-header-treatment) | A `Expires` fejlécek előállítását vezérli a pop-ban, ha a külső Max-Age funkció aktív.
-[Külső Max-Age](#external-max-age) | Meghatározza a böngészőnek a POP-gyorsítótár újraérvényesítésére vonatkozó maximális élettartamának intervallumát.
-[A belső Max-Age kényszerítése](#force-internal-max-age) | Meghatározza a POP-a forrásként szolgáló kiszolgáló gyorsítótár-újraérvényesítésének maximális életkori intervallumát.
-[H. 264 támogatás (HTTP Progressive letöltés)](#h264-support-http-progressive-download) | Meghatározza a tartalom továbbítására használható H. 264 fájlformátumok típusait.
-[A no-cache-kérelem tiszteletben tartása](#honor-no-cache-request) | Meghatározza, hogy a rendszer továbbítsa-e a HTTP-ügyfél nem gyorsítótárazott kérelmeit a forráskiszolgáló felé.
-[Kihagyott forrás – gyorsítótár](#ignore-origin-no-cache) | Meghatározza, hogy a CDN figyelmen kívül hagyja-e a forráskiszolgáló által kiszolgált bizonyos irányelveket.
-[Unsatisfiable tartományok figyelmen kívül hagyása](#ignore-unsatisfiable-ranges) | Meghatározza az ügyfeleknek visszaadott választ, amikor egy kérelem létrehoz egy 416 kért tartományt, amely nem teljesíthető.
-[Belső maximális – elavult](#internal-max-stale) | Azt határozza meg, hogy mennyi ideig tart a lejárati idő, amikor egy gyorsítótárazott eszköz kiszolgálható egy POP-ból, ha a POP nem tudja újraérvényesíteni a gyorsítótárazott eszközt a forrás-kiszolgálóval.
-[Részleges gyorsítótár megosztása](#partial-cache-sharing) | Meghatározza, hogy egy kérelem képes-e részlegesen gyorsítótárazott tartalom előállítására.
-[Gyorsítótárazott tartalom előérvényesítése](#prevalidate-cached-content) | Meghatározza, hogy a gyorsítótárazott tartalom jogosult-e a korai újraérvényesítésre, mielőtt lejár az ÉLETTARTAMa.
-[Nulla bájtos gyorsítótár fájljainak frissítése](#refresh-zero-byte-cache-files) | Meghatározza, hogy a rendszer hogyan kezeli a HTTP-ügyfél egy 0 bájtos gyorsítótárazási eszközre vonatkozó kérelmét.
-[Gyorsítótárazható állapotkódok beállítása](#set-cacheable-status-codes) | Meghatározza a gyorsítótárazott tartalmat okozó állapotkódok készletét.
-[Elavult tartalom kézbesítése hiba esetén](#stale-content-delivery-on-error) | Meghatározza, hogy a rendszer a lejárt gyorsítótárazott tartalmat akkor adja-e meg, ha hiba történik a gyorsítótár újraérvényesítése során vagy a kért tartalom ügyfél-kiszolgálóról való beolvasásakor.
-[Elavult az újraellenőrzés során](#stale-while-revalidate) | Javítja a teljesítményt azáltal, hogy lehetővé teszi a POP-nak az elavult ügyfél kiszolgálását a kérelmezőnek az újraérvényesítés során.
-
-## <a name="comment-feature"></a>Megjegyzés funkció
-
-Ez a szolgáltatás úgy lett kialakítva, hogy a szabályon belül további információkat szolgáltasson.
-
-Name (Név) | Cél
------|--------
-[Megjegyzés](#comment) | Lehetővé teszi egy Megjegyzés hozzáadását egy szabályon belül.
-
-## <a name="header-features"></a>Fejléc-funkciók
-
-Ezek a funkciók a kérelemből vagy válaszból származó fejlécek hozzáadására, módosítására és törlésére szolgálnak.
-
-Name (Név) | Cél
------|--------
-[Életkor válaszának fejléce](#age-response-header) | Meghatározza, hogy a rendszer a kérelmezőnek küldött válaszban tartalmazza-e az életkor válaszának fejlécét.
-[Hibakeresési gyorsítótár válaszának fejlécei](#debug-cache-response-headers) | Meghatározza, hogy a válasz tartalmazhatja-e az X-EC-debug válasz fejlécét, amely információt nyújt a kért eszközhöz tartozó gyorsítótár-házirendről.
-[Ügyfél-kérelem fejlécének módosítása](#modify-client-request-header) | Felülírja, hozzáfűzi vagy törli egy fejlécet egy kérelemből.
-[Ügyfél-válasz fejlécének módosítása](#modify-client-response-header) | Egy válasz fejlécének felülírása, hozzáfűzése vagy törlése.
-[Ügyfél IP-címének egyéni fejlécének beállítása](#set-client-ip-custom-header) | Lehetővé teszi, hogy a kérelmező ügyfél IP-címe a kérelemhez egyéni kérelem fejlécként legyen hozzáadva.
-
-## <a name="logging-features"></a>Naplózási funkciók
-
-Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a nyers naplófájlokban tárolt adatfájlokat.
-
-Name (Név) | Cél
------|--------
-[Egyéni napló mezője 1](#custom-log-field-1) | Meghatározza a nyers naplófájl egyéni napló mezőjéhez hozzárendelt formátumot és tartalmat.
-[Napló lekérdezési karakterlánca](#log-query-string) | Meghatározza, hogy a rendszer a lekérdezési karakterláncot a hozzáférési naplók URL-címével együtt tárolja-e.
-
-
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>Forrás jellemzői
-
-Ezek a funkciók úgy vannak kialakítva, hogy a CDN hogyan kommunikáljon a forrás-kiszolgálóval.
-
-Name (Név) | Cél
------|--------
-[Életben tartási kérelmek maximális száma](#maximum-keep-alive-requests) | A Keep-Alive kapcsolatra vonatkozó kérelmek maximális számát határozza meg a bezárás előtt.
-[Proxy speciális fejlécei](#proxy-special-headers) | Meghatározza azon CDN-specifikus kérelmek fejléceit, amelyek a POP-ból a forrás-kiszolgálóra továbbítódnak.
-
-## <a name="specialty-features"></a>Speciális funkciók
-
-Ezek a funkciók speciális funkciókat biztosítanak a speciális felhasználók számára.
-
-Name (Név) | Cél
------|--------
-[Gyorsítótárazható HTTP-metódusok](#cacheable-http-methods) | Meghatározza a hálózaton gyorsítótárazható további HTTP-metódusok készletét.
-[Gyorsítótárazható kérelem törzsének mérete](#cacheable-request-body-size) | Meghatározza azt a küszöbértéket, amely meghatározza, hogy a POST válasz gyorsítótárazható-e.
-[Felhasználói változó](#user-variable) | Csak belső használatra.
-
-## <a name="url-features"></a>URL-funkciók
-
-Ezek a funkciók lehetővé teszik a kérés átirányítását vagy átírását egy másik URL-címre.
-
-Name (Név) | Cél
------|--------
-[Átirányítások követése](#follow-redirects) | Meghatározza, hogy a kérések átirányíthatók-e az ügyfél-kiszolgáló által visszaadott Location fejlécben megadott állomásnévre.
-[URL-átirányítás](#url-redirect) | Átirányítja a kéréseket a Location fejléc használatával.
-[URL-átírás](#url-rewrite)  | A kérelem URL-címének újraírása.
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Azure CDN a Verizon Premium Rules Engine funkcióinak ismertetése
 
@@ -255,7 +114,7 @@ Letiltva|A a válasz fejlécében meghatározott gyorsítótárazási házirendn
 Legfontosabb információk:
 
 - Ez a funkció azt feltételezi, hogy a GET válaszok mindig gyorsítótárazva lesznek. Ennek eredményeképpen a beolvasás HTTP-metódust nem szabad belefoglalni a funkció beállításakor.
-- Ez a funkció csak a HTTP POST metódust támogatja. Engedélyezze a válasz utáni gyorsítótárazást a funkció beállításával `POST`.
+- Ez a funkció csak a HTTP POST metódust támogatja. Engedélyezze a válasz utáni gyorsítótárazást a funkció beállításával `POST` .
 - Alapértelmezés szerint csak azok a kérelmek vannak gyorsítótárazva, amelyeknek a törzse 14 KB-nál kisebb. A kérések maximális méretének beállításához használja a gyorsítótárazható kérelem törzse funkciót.
 
 **Alapértelmezett viselkedés:** Csak a GET válaszok vannak gyorsítótárazva.
@@ -292,16 +151,16 @@ Legfontosabb információk:
 
 ### <a name="cache-control-header-treatment"></a>Cache-Control fejléc kezelése
 
-**Cél:** A `Cache-Control` fejlécek létrehozásának szabályozása a pop-ban, ha a külső Max-Age funkció aktív.
+**Cél:** A fejlécek létrehozásának szabályozása a `Cache-Control` pop-ban, ha a külső Max-Age funkció aktív.
 
 Az ilyen típusú konfiguráció elérésének legegyszerűbb módja a külső Max-Age és a Cache-Control fejléc kezelési funkcióinak elhelyezése ugyanabban az utasításban.
 
 Érték|Eredmény
 --|--
-Felülírás|Biztosítja a következő műveletek elvégzését:<br/> – Felülírja a forráskiszolgáló `Cache-Control` által generált fejlécet. <br/>– Hozzáadja a `Cache-Control` külső Max-Age funkció által előállított fejlécet a válaszhoz.
-Továbbítás|Biztosítja, hogy `Cache-Control` a külső Max-Age funkció által létrehozott fejléc soha ne legyen hozzáadva a válaszhoz. <br/> Ha a forráskiszolgáló létrehoz egy `Cache-Control` fejlécet, a rendszer továbbítja a felhasználót a végfelhasználónak. <br/> Ha a forráskiszolgáló nem hoz létre `Cache-Control` fejlécet, akkor ez a beállítás azt eredményezheti, hogy a válasz fejléce `Cache-Control` nem tartalmaz fejlécet.
-Hozzáadás, ha hiányzik|Ha a `Cache-Control` forráskiszolgáló nem kapott fejlécet, akkor ez a beállítás hozzáadja a `Cache-Control` külső Max-Age szolgáltatás által létrehozott fejlécet. Ez a beállítás akkor hasznos, ha biztosítani szeretné, hogy minden `Cache-Control` eszközhöz hozzá legyen rendelve egy fejléc.
-Eltávolítás| Ezzel a beállítással biztosítható, hogy `Cache-Control` a fejléc ne szerepeljen az élőfej válaszában. Ha már `Cache-Control` hozzá van rendelve egy fejléc, az el lesz távolítva a fejléc-válaszból.
+Felülírás|Biztosítja a következő műveletek elvégzését:<br/> – Felülírja a `Cache-Control` forráskiszolgáló által generált fejlécet. <br/>– Hozzáadja a `Cache-Control` külső Max-Age funkció által előállított fejlécet a válaszhoz.
+Továbbítás|Biztosítja, hogy a `Cache-Control` külső Max-Age funkció által létrehozott fejléc soha ne legyen hozzáadva a válaszhoz. <br/> Ha a forráskiszolgáló létrehoz egy `Cache-Control` fejlécet, a rendszer továbbítja a felhasználót a végfelhasználónak. <br/> Ha a forráskiszolgáló nem `Cache-Control` hoz létre fejlécet, akkor ez a beállítás azt eredményezheti, hogy a válasz fejléce nem tartalmaz `Cache-Control` fejlécet.
+Hozzáadás, ha hiányzik|Ha a `Cache-Control` forráskiszolgáló nem kapott fejlécet, akkor ez a beállítás hozzáadja a `Cache-Control` külső Max-Age szolgáltatás által létrehozott fejlécet. Ez a beállítás akkor hasznos, ha biztosítani szeretné, hogy minden eszközhöz hozzá legyen rendelve egy `Cache-Control` fejléc.
+Eltávolítás| Ezzel a beállítással biztosítható, hogy a fejléc `Cache-Control` ne szerepeljen az élőfej válaszában. Ha `Cache-Control` már hozzá van rendelve egy fejléc, az el lesz távolítva a fejléc-válaszból.
 
 **Alapértelmezett viselkedés:** Felülírja.
 
@@ -338,7 +197,7 @@ Ha a "no-cache" lekérdezési karakterlánc gyorsítótárazási viselkedését 
 
 A szolgáltatás következő példája egy minta kérést és az alapértelmezett gyorsítótár-kulcsot tartalmaz:
 
-- **Példa a kérelemre:** http://wpc.0001.&lt;D omain&gt;/800001/Origin/Folder/Asset.htm? munkamenet = 1234&Language = en&userid = 01
+- **Példa a kérelemre:** http://wpc.0001.&lt ;D omain &gt; /800001/Origin/Folder/Asset.htm? munkamenet-azonosító = 1234&language = EN&userid = 01
 - **Alapértelmezett gyorsítótár – kulcs:** /800001/Origin/Folder/Asset.htm
 
 ##### <a name="include"></a>Belefoglalás
@@ -487,8 +346,8 @@ Internetes adathordozó típusa|Leírás
 szöveg/egyszerű|Egyszerű szövegfájlok
 szöveg/html| HTML-fájlok
 szöveg/css|Egymásra épülő stíluslapok (CSS)
-alkalmazás/x – JavaScript|Javascript
-alkalmazás/JavaScript|Javascript
+alkalmazás/x – JavaScript|JavaScript
+alkalmazás/JavaScript|JavaScript
 
 Legfontosabb információk:
 
@@ -571,13 +430,13 @@ Legfontosabb információk:
 
 - Ez a művelet csak olyan forráskiszolgáló válaszait veszi figyelembe, amely nem rendelt Max-Age jelölést a `Cache-Control` vagy `Expires` fejlécben.
 - Ez a művelet nem kerül sor olyan eszközökre, amelyek nem tekinthetők gyorsítótárazható.
-- Ez a művelet nem érinti a böngészőt a POP-gyorsítótár újraérvényesítésére. Az ilyen típusú újraérvényesítéseket a böngészőnek eljuttatott `Cache-Control` vagy `Expires` az azokat tartalmazó fejlécek határozzák meg, amelyek testreszabhatók a külső Max-Age szolgáltatással.
+- Ez a művelet nem érinti a böngészőt a POP-gyorsítótár újraérvényesítésére. Az ilyen típusú újraérvényesítéseket a `Cache-Control` `Expires` böngészőnek eljuttatott vagy az azokat tartalmazó fejlécek határozzák meg, amelyek testreszabhatók a külső Max-Age szolgáltatással.
 - Ennek a műveletnek az eredményei nem rendelkeznek megfigyelhető hatással a válasz fejlécére és a tartalomhoz a pop-ból visszaadott tartalomra, de ez hatással lehet a pop-ból a forrás-kiszolgálóra küldött újraérvényesítési forgalom mennyiségére.
 - A szolgáltatás konfigurálása a következővel:
     - Válassza ki azt az állapotkódot, amelynek alapértelmezett belső maximális élettartama alkalmazható.
     - Adja meg az egész értéket, majd válassza ki a kívánt időegységet (például másodperc, perc, óra stb.). Ez az érték határozza meg az alapértelmezett belső Max-Age intervallumot.
 
-- Ha az időegységet "off" értékre állítja, a rendszer egy alapértelmezett belső, legfeljebb 7 napos időtartamot rendel hozzá a kérelmekhez, amelyek nem lettek megadva `Cache-Control` a `Expires` Max-Age jelöléssel a vagy a fejlécben.
+- Ha az időegységet "off" értékre állítja, a rendszer egy alapértelmezett belső, legfeljebb 7 napos időtartamot rendel hozzá a kérelmekhez, amelyek nem lettek megadva a Max-Age jelöléssel a `Cache-Control` vagy a `Expires` fejlécben.
 
 **Alapértelmezett érték:** 7 nap
 
@@ -636,10 +495,10 @@ Az ilyen típusú konfiguráció elérésének legegyszerűbb módja a külső M
 
 Érték|Eredmény
 --|--
-Felülírás|Biztosítja, hogy a következő műveletek elvégzése megtörténjen:<br/>– Felülírja a forráskiszolgáló `Expires` által generált fejlécet.<br/>– Hozzáadja a `Expires` külső Max-Age funkció által előállított fejlécet a válaszhoz.
-Továbbítás|Biztosítja, hogy `Expires` a külső Max-Age funkció által létrehozott fejléc soha ne legyen hozzáadva a válaszhoz. <br/> Ha a forráskiszolgáló létrehoz egy `Expires` fejlécet, a rendszer továbbítja a felhasználót a végfelhasználónak. <br/>Ha a forráskiszolgáló nem hoz létre `Expires` fejlécet, akkor ez a beállítás azt eredményezheti, hogy a válasz fejléce `Expires` nem tartalmaz fejlécet.
-Hozzáadás, ha hiányzik| Ha a `Expires` forráskiszolgáló nem kapott fejlécet, akkor ez a beállítás hozzáadja a `Expires` külső Max-Age szolgáltatás által létrehozott fejlécet. Ez a beállítás akkor hasznos, ha biztosítani szeretné, hogy minden eszköz `Expires` hozzá legyen rendelve egy fejléchez.
-Eltávolítás| Gondoskodik arról `Expires` , hogy a fejléc ne szerepeljen az élőfej válaszában. Ha már `Expires` hozzá van rendelve egy fejléc, akkor a rendszer eltávolítja az adott fejléc-válaszból.
+Felülírás|Biztosítja, hogy a következő műveletek elvégzése megtörténjen:<br/>– Felülírja a `Expires` forráskiszolgáló által generált fejlécet.<br/>– Hozzáadja a `Expires` külső Max-Age funkció által előállított fejlécet a válaszhoz.
+Továbbítás|Biztosítja, hogy a `Expires` külső Max-Age funkció által létrehozott fejléc soha ne legyen hozzáadva a válaszhoz. <br/> Ha a forráskiszolgáló létrehoz egy `Expires` fejlécet, a rendszer továbbítja a felhasználót a végfelhasználónak. <br/>Ha a forráskiszolgáló nem `Expires` hoz létre fejlécet, akkor ez a beállítás azt eredményezheti, hogy a válasz fejléce nem tartalmaz `Expires` fejlécet.
+Hozzáadás, ha hiányzik| Ha a `Expires` forráskiszolgáló nem kapott fejlécet, akkor ez a beállítás hozzáadja a `Expires` külső Max-Age szolgáltatás által létrehozott fejlécet. Ez a beállítás akkor hasznos, ha biztosítani szeretné, hogy minden eszköz hozzá legyen rendelve egy `Expires` fejléchez.
+Eltávolítás| Gondoskodik arról, hogy `Expires` a fejléc ne szerepeljen az élőfej válaszában. Ha `Expires` már hozzá van rendelve egy fejléc, akkor a rendszer eltávolítja az adott fejléc-válaszból.
 
 **Alapértelmezett viselkedés:** Felülírja
 
@@ -653,14 +512,14 @@ Eltávolítás| Gondoskodik arról `Expires` , hogy a fejléc ne szerepeljen az 
 
 **Cél:** Meghatározza a böngészőnek a POP-gyorsítótár újraérvényesítésére vonatkozó maximális élettartamának intervallumát. Más szóval azt az időtartamot adja meg, ameddig egy böngésző megkeresi az eszköz új verzióját egy POP-ból.
 
-Ha engedélyezi ezt a funkciót `Cache-Control: max-age` , `Expires` a rendszer létrehozza és kitölti a pop-ket, és elküldi őket a http-ügyfélnek. Alapértelmezés szerint ezek a fejlécek felül fogják írni a forráskiszolgáló által létrehozott fejléceket. Ennek a viselkedésnek a megváltoztatásához azonban a Cache-Control fejléc kezelése és a lejárati fejléc kezelési funkciói is használhatók.
+Ha engedélyezi ezt a funkciót, a rendszer létrehozza `Cache-Control: max-age` és `Expires` kitölti a pop-ket, és elküldi őket a http-ügyfélnek. Alapértelmezés szerint ezek a fejlécek felül fogják írni a forráskiszolgáló által létrehozott fejléceket. Ennek a viselkedésnek a megváltoztatásához azonban a Cache-Control fejléc kezelése és a lejárati fejléc kezelési funkciói is használhatók.
 
 Legfontosabb információk:
 
-- Ez a művelet nem érinti a POP-ról a forrás-kiszolgáló gyorsítótárának újraérvényesítését. Az ilyen típusú újraérvényesítéseket a forrás- `Cache-Control` kiszolgálótól `Expires` kapott és a fejlécek határozzák meg, és testreszabhatók az alapértelmezett belső Max-Age és a Force belső Max-Age funkciókkal.
+- Ez a művelet nem érinti a POP-ról a forrás-kiszolgáló gyorsítótárának újraérvényesítését. Az ilyen típusú újraérvényesítéseket a `Cache-Control` `Expires` forrás-kiszolgálótól kapott és a fejlécek határozzák meg, és testreszabhatók az alapértelmezett belső Max-Age és a Force belső Max-Age funkciókkal.
 - A szolgáltatás konfigurálásához egész értéket kell megadnia, és ki kell választania a kívánt időegységet (például másodperc, perc, óra stb.).
-- Ha ezt a funkciót negatív értékre állítja, a a következő üzenet `Cache-Control: no-cache` jelenik meg `Expires` , amely a böngészőben megjelenő minden egyes válasznál a múltban megadott idő. Bár a HTTP-ügyfél nem gyorsítótárazza a választ, ez a beállítás nem érinti a "pop" lehetőséget a forráskiszolgáló válaszának gyorsítótárazására.
-- Ha az időegységet "off" értékre állítja, akkor letiltja ezt a funkciót. A `Cache-Control` forrás `Expires` -kiszolgáló válaszával gyorsítótárazott és a fejléceket a rendszer átadja a böngészőnek.
+- Ha ezt a funkciót negatív értékre állítja, a a következő üzenet jelenik meg, `Cache-Control: no-cache` `Expires` amely a böngészőben megjelenő minden egyes válasznál a múltban megadott idő. Bár a HTTP-ügyfél nem gyorsítótárazza a választ, ez a beállítás nem érinti a "pop" lehetőséget a forráskiszolgáló válaszának gyorsítótárazására.
+- Ha az időegységet "off" értékre állítja, akkor letiltja ezt a funkciót. A `Cache-Control` `Expires` forrás-kiszolgáló válaszával gyorsítótárazott és a fejléceket a rendszer átadja a böngészőnek.
 
 **Alapértelmezett viselkedés:** Kikapcsolása
 
@@ -697,8 +556,8 @@ Letiltva|A rendszer nem irányítja át a kérelmeket.
 
 Legfontosabb információk:
 
-- Ez a szolgáltatás felülbírálja a forrás-kiszolgáló által `Cache-Control` definiált `Expires` vagy fejlécekben megadott maximális életkori intervallumot.
-- Ez a funkció nem érinti a böngészőt a POP-gyorsítótár újraérvényesítésére. Az ilyen típusú újraérvényesítéseket a böngészőnek eljuttatott `Cache-Control` vagy `Expires` fejlécek határozzák meg.
+- Ez a szolgáltatás felülbírálja a forrás-kiszolgáló által definiált `Cache-Control` vagy fejlécekben megadott maximális életkori intervallumot `Expires` .
+- Ez a funkció nem érinti a böngészőt a POP-gyorsítótár újraérvényesítésére. Az ilyen típusú újraérvényesítéseket a `Cache-Control` `Expires` böngészőnek eljuttatott vagy fejlécek határozzák meg.
 - Ez a funkció nem rendelkezik észlelhető hatással a kérőhöz tartozó POP által küldött válaszra. Előfordulhat azonban, hogy a pop-ból a forrás-kiszolgálóra érkező újraérvényesítési forgalom mennyiségére hatással lehet.
 - A szolgáltatás konfigurálása a következővel:
     - Válassza ki azt az állapotkódot, amelyre a rendszer a belső maximális kort alkalmazza.
@@ -756,7 +615,7 @@ Legfontosabb információk:
 
 **Cél:** Meghatározza, hogy a rendszer továbbítsa-e a HTTP-ügyfél nem gyorsítótárazott kérelmeit a forráskiszolgáló felé.
 
-A nem gyorsítótárra vonatkozó kérelem akkor következik be, amikor `Cache-Control: no-cache` a http- `Pragma: no-cache` ügyfél a http-kérelemben egy és/vagy fejlécet küld.
+A nem gyorsítótárra vonatkozó kérelem akkor következik be, amikor a HTTP-ügyfél `Cache-Control: no-cache` a http-kérelemben egy és/vagy `Pragma: no-cache` fejlécet küld.
 
 Érték|Eredmény
 --|--
@@ -765,7 +624,7 @@ Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett v
 
 Az összes éles forgalom esetében erősen ajánlott a funkciót az alapértelmezett letiltott állapotban hagyni. Ellenkező esetben a rendszer nem védi a forrás-kiszolgálókat a végfelhasználók számára, akik véletlenül sok sikertelen gyorsítótár-kérést indíthatnak a weblapok frissítésekor, vagy a nem gyorsítótár-fejlécet tartalmazó számos népszerű multimédia-lejátszóról. Ez a funkció azonban hasznos lehet bizonyos nem éles üzemi vagy tesztelési címtárakban való alkalmazásra, hogy lehetővé váljon a friss tartalmak igény szerinti lekérése a forrás-kiszolgálóról.
 
-Az a gyorsítótár-állapot, amelyet a rendszer a következő szolgáltatás miatt továbbíthat egy forráskiszolgáló számára `TCP_Client_Refresh_Miss`. A gyorsítótár állapota jelentés, amely az alapszintű jelentési modulban elérhető, statisztikai adatokat biztosít a gyorsítótár állapota alapján. Ez a jelentés lehetővé teszi, hogy nyomon kövesse a forrásként továbbított kérelmek számát és százalékos arányát a szolgáltatás miatt.
+Az a gyorsítótár-állapot, amelyet a rendszer a következő szolgáltatás miatt továbbíthat egy forráskiszolgáló számára `TCP_Client_Refresh_Miss` . A gyorsítótár állapota jelentés, amely az alapszintű jelentési modulban elérhető, statisztikai adatokat biztosít a gyorsítótár állapota alapján. Ez a jelentés lehetővé teszi, hogy nyomon kövesse a forrásként továbbított kérelmek számát és százalékos arányát a szolgáltatás miatt.
 
 **Alapértelmezett viselkedés:** Tiltva.
 
@@ -848,7 +707,7 @@ Ha a POP nem tud kapcsolatot létesíteni a forrás-kiszolgálóval egy ilyen ú
 
 Vegye figyelembe, hogy ez az időtartam akkor kezdődik, amikor az eszköz Max-Age lejárata lejár, nem pedig a sikertelen újraérvényesítés esetén. Ezért az a maximális időtartam, ameddig egy eszköz sikeres újraérvényesítés nélkül kézbesíthető, a Max-Age és a Max-elavult kombináció kombinációja által meghatározott idő. Ha például egy adategységet a 9:00-es verzióban, a max. 30 percben, a max. 15 percen belül, a 9:44-es sikertelen újraérvényesítési kísérlet eredményeképpen egy végfelhasználó kapja meg az elavult gyorsítótárazott objektumot, míg a 9:46-ben meghiúsult újraérvényesítési kísérlet eredményeképpen a végfelhasználó a 504 Gateway időtúllépését fogja kapni.
 
-A szolgáltatáshoz konfigurált bármely értéket felülírja a rendszer `Cache-Control: must-revalidate` , `Cache-Control: proxy-revalidate` vagy a forráskiszolgáló által fogadott fejléceket. Ha ezek a fejlécek a forrás-kiszolgálóról érkeznek, amikor egy eszköz kezdetben gyorsítótárazva van, akkor a POP nem fogja kiszolgálni az elavult gyorsítótárazott eszközt. Ebben az esetben, ha a POP nem tudja újraérvényesíteni a forrást, amikor az eszköz Max-Age intervalluma lejárt, a POP 504 átjáró időtúllépési hibát ad vissza.
+A szolgáltatáshoz konfigurált bármely értéket felülírja a rendszer, `Cache-Control: must-revalidate` vagy `Cache-Control: proxy-revalidate` a forráskiszolgáló által fogadott fejléceket. Ha ezek a fejlécek a forrás-kiszolgálóról érkeznek, amikor egy eszköz kezdetben gyorsítótárazva van, akkor a POP nem fogja kiszolgálni az elavult gyorsítótárazott eszközt. Ebben az esetben, ha a POP nem tudja újraérvényesíteni a forrást, amikor az eszköz Max-Age intervalluma lejárt, a POP 504 átjáró időtúllépési hibát ad vissza.
 
 Legfontosabb információk:
 
@@ -943,7 +802,7 @@ Törlés|Törli a megadott kérelem fejlécét.|**Kérelem fejlécének értéke
 Legfontosabb információk:
 
 - Győződjön meg arról, hogy a név beállításban megadott érték pontosan egyezik a kívánt kérelem fejlécébe.
-- A rendszer nem veszi figyelembe a fejléc azonosítására szolgáló esetet. Például a `Cache-Control` fejléc nevének következő variációi használhatók a azonosításához:
+- A rendszer nem veszi figyelembe a fejléc azonosítására szolgáló esetet. Például a fejléc nevének következő variációi `Cache-Control` használhatók a azonosításához:
     - gyorsítótár-vezérlés
     - GYORSÍTÓTÁR-VEZÉRLÉS
     - Gyorsítótár-vezérlés
@@ -983,7 +842,7 @@ Törlés|A megadott válasz fejlécének törlése.|**Válasz fejlécének ért�
 Legfontosabb információk:
 
 - Győződjön meg arról, hogy a név beállításban megadott érték pontosan egyezik a kívánt válasz fejlécével.
-- A rendszer nem veszi figyelembe a fejléc azonosítására szolgáló esetet. Például a `Cache-Control` fejléc nevének következő variációi használhatók a azonosításához:
+- A rendszer nem veszi figyelembe a fejléc azonosítására szolgáló esetet. Például a fejléc nevének következő variációi `Cache-Control` használhatók a azonosításához:
     - gyorsítótár-vezérlés
     - GYORSÍTÓTÁR-VEZÉRLÉS
     - Gyorsítótár-vezérlés
@@ -995,7 +854,7 @@ Legfontosabb információk:
     - Content-Encoding
     - Content-Length
     - Content-Range
-    - dátum
+    - date
     - kiszolgáló
     - bemutató
     - átvitel – kódolás
@@ -1168,7 +1027,7 @@ Letiltva|A rendszer továbbítja a forráskiszolgáló hibáját a kérelmezőne
 Legfontosabb információk:
 
 - A funkció működése a kiválasztott időegységtől függően változik.
-    - **Időegység:** Adja meg az időtartamot, és válasszon ki egy időegységet (például másodperc, perc, óra stb.) az elavult tartalmak kézbesítésének engedélyezéséhez. Ez a telepítési típus lehetővé teszi, hogy a CDN kiterjessze azt az időtartamot, ameddig a tartalom elérhetővé válik, mielőtt az alábbi képletnek megfelelően érvényesíti az érvényesítést: a **TTL** + **elavult az idő újraérvényesítése során** .
+    - **Időegység:** Adja meg az időtartamot, és válasszon ki egy időegységet (például másodperc, perc, óra stb.) az elavult tartalmak kézbesítésének engedélyezéséhez. Ez a telepítési típus lehetővé teszi, hogy a CDN kiterjessze azt az időtartamot, ameddig a tartalom elérhetővé válik, mielőtt az alábbi képletnek megfelelően érvényesíti az érvényesítést: a **TTL**  +  **elavult az idő újraérvényesítése során** .
     - **Kikapcsolva:** A "ki" érték kiválasztásával megkövetelheti, hogy a rendszer az elavult tartalomra vonatkozó kérelem elvégzése előtt újraérvényesítést kérjen.
         - Ne határozzon meg hosszabb időt, mert nem alkalmazható, és a rendszer figyelmen kívül hagyja.
 
@@ -1314,7 +1173,7 @@ A funkció konfigurálásához a következő beállításokat kell megadni:
 
 Beállítás|Leírás
 -|-
-Kód|Válassza ki a kérelmezőnek visszaadott válasz kódját.
+Code|Válassza ki a kérelmezőnek visszaadott válasz kódját.
 Forrás & minta| Ezek a beállítások egy kérelem URI-mintáját határozzák meg, amely az átirányítható kérelmek típusát azonosítja. Csak azok a kérelmek lesznek átirányítva, amelyek URL-címe megfelel az alábbi feltételeknek: <br/> <br/> **Forrás (vagy tartalom-hozzáférési pont):** Válasszon egy relatív elérési utat, amely azonosítja a forrás-kiszolgálót. Ez az elérési út a _/XXXX/_ szakasz és a végpont neve. <br/><br/> **Forrás (minta):** Meg kell adni egy mintát, amely a relatív elérési út alapján azonosítja a kérelmeket. Ez a reguláris kifejezési minta olyan elérési utat határoz meg, amely közvetlenül a korábban kiválasztott tartalom-hozzáférési pont után indul el (lásd fent). <br/> – Győződjön meg arról, hogy a korábban definiált kérelem URI-feltételei (azaz a forrás & mintája) nem ütköznek a szolgáltatáshoz megadott egyezési feltételekkel. <br/> -Minta meghatározása; Ha üres értéket használ mintázatként, a rendszer az összes karakterláncot egyezteti.
 Cél| Adja meg azt az URL-címet, amelyre a fenti kérelmek átirányítva lesznek. <br/><br/> Dinamikusan hozza létre ezt az URL-címet a következő használatával: <br/> – Reguláris kifejezés mintája <br/>- [HTTP-változók](cdn-http-variables.md) <br/><br/> Helyettesítse be a forrás mintájában rögzített értékeket a cél mintába a $_n_ értékkel, ahol _n_ a rögzített sorrend szerint azonosít egy értéket. Például a $1 a forrás mintában rögzített első értéket jelöli, míg a $2 a második értéket jelöli. <br/>
 
@@ -1322,25 +1181,25 @@ Erősen ajánlott abszolút URL-címet használni. A relatív URL-cím használa
 
 **Példa a forgatókönyvre**
 
-Ez a példa azt mutatja be, hogyan lehet átirányítani egy peremhálózati CNAME URL-címet, amely feloldja az alap\/CDN URL-címét: http:/marketing.azureedge.net/brochures
+Ez a példa azt mutatja be, hogyan lehet átirányítani egy peremhálózati CNAME URL-címet, amely feloldja az alap CDN URL-címét: http: \/ /marketing.azureedge.net/brochures
 
-A megfelelő kéréseket a rendszer átirányítja erre az alapszintű CNAME URL-\/címre: http:/CDN.mydomain.com/Resources
+A megfelelő kéréseket a rendszer átirányítja erre az alapszintű CNAME URL-címre: http: \/ /CDN.mydomain.com/Resources
 
-Az URL-átirányítás a következő konfiguráción keresztül érhető el ![: URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Az URL-átirányítás a következő konfiguráción keresztül érhető el: ![ URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Összefoglalás:**
 
 - Az URL-átirányítás funkció az átirányított kérelmek URL-címeit határozza meg. Ennek eredményeképpen további egyeztetési feltételek nem szükségesek. Bár az egyeztetési feltétel "mindig", csak a "marketing" ügyfél-eredet "prospektusok" mappájára mutató kérések lesznek átirányítva.
 - Az összes egyező kérést a rendszer átirányítja a cél beállításban meghatározott peremhálózati CNAME URL-címre.
     - Példa #1i forgatókönyvre:
-        - Minta kérés (CDN URL-cím):\/http:/marketing.azureedge.net/brochures/widgets.pdf
-        - Kérelem URL-címe (átirányítás után):\/http:/CDN.mydomain.com/Resources/widgets.pdf  
+        - Minta kérés (CDN URL-cím): http: \/ /marketing.azureedge.net/brochures/widgets.pdf
+        - Kérelem URL-címe (átirányítás után): http: \/ /CDN.mydomain.com/Resources/widgets.pdf  
     - Példa #2i forgatókönyvre:
-        - Minta kérése (Edge CNAME URL-cím)\/: http:/marketing.mydomain.com/brochures/widgets.pdf
-        - Kérelem URL-címe (átirányítás után):\/http:/CDN.mydomain.com/Resources/widgets.pdf minta forgatókönyv
+        - Minta kérése (Edge CNAME URL-cím): http: \/ /marketing.mydomain.com/brochures/widgets.pdf
+        - Kérelem URL-címe (átirányítás után): http: \/ /CDN.mydomain.com/Resources/widgets.pdf minta forgatókönyv
     - Példa #3i forgatókönyvre:
-        - Minta kérése (Edge CNAME URL-cím)\/: http:/brochures.mydomain.com/campaignA/Final/productC.ppt
-        - Kérelem URL-címe (átirányítás után):\/http:/CDN.mydomain.com/Resources/campaignA/Final/productC.ppt 
+        - Minta kérése (Edge CNAME URL-cím): http: \/ /brochures.mydomain.com/campaignA/Final/productC.ppt
+        - Kérelem URL-címe (átirányítás után): http: \/ /CDN.mydomain.com/Resources/campaignA/Final/productC.ppt 
 - A (z) (% {Scheme}) változó a cél beállításban van kihasználva, amely biztosítja, hogy a kérelem sémája változatlan maradjon az átirányítás után.
 - A kérelemből rögzített URL-szegmensek hozzáfűzése az új URL-címhez a "$1" használatával történik.
 
@@ -1367,17 +1226,17 @@ Beállítás|Leírás
 
 **1. példa**
 
-Ez a példa azt szemlélteti, hogyan lehet átirányítani egy olyan peremhálózati CNAME URL-címet, amely feloldja ezt\/az alap CDN URL-címet: http:/marketing.azureedge.net/brochures/
+Ez a példa azt szemlélteti, hogyan lehet átirányítani egy olyan peremhálózati CNAME URL-címet, amely feloldja ezt az alap CDN URL-címet: http: \/ /marketing.azureedge.net/brochures/
 
-A megfelelő kéréseket a rendszer átirányítja erre az alapszintű CNAME URL-\/címre: http:/MyOrigin.azureedge.net/Resources/
+A megfelelő kéréseket a rendszer átirányítja erre az alapszintű CNAME URL-címre: http: \/ /MyOrigin.azureedge.net/Resources/
 
-Az URL-átirányítás a következő konfiguráción keresztül érhető el ![: URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Az URL-átirányítás a következő konfiguráción keresztül érhető el: ![ URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **2. minta példa**
 
 Ebből a példából megtudhatja, hogyan irányíthatja át a peremhálózati CNAME URL-címet a kisbetűsről a kisbetűsre reguláris kifejezések használatával.
 
-Az URL-átirányítás a következő konfiguráción keresztül érhető el ![: URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Az URL-átirányítás a következő konfiguráción keresztül érhető el: ![ URL-átirányítás](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 **Összefoglalás:**
 
@@ -1416,13 +1275,10 @@ Ez a szolgáltatás olyan egyeztetési feltételeket tartalmaz, amelyeknek telje
 **Cél:** Csak belső használatra.
 
 [Vissza a tetejére](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>További lépések
 
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
-- [Szabályok motor feltételes kifejezések](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)
 - [Azure CDN áttekintése](cdn-overview.md)

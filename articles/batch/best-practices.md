@@ -1,30 +1,22 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 04/03/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725805"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871358"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
-Ez a cikk a Azure Batch szolgáltatás hatékony és hatékony használatához ajánlott eljárások gyűjteményét tárgyalja. Ezek az ajánlott eljárások a Batch és a Batch-ügyfelek tapasztalataiból származnak. Fontos megérteni ezt a cikket a buktatók, a lehetséges teljesítménybeli problémák és a mintázatok kialakításának elkerülése érdekében a Batch használata során.
-
-Ebben a cikkben a következőket fogja elsajátítani:
-
-> [!div class="checklist"]
-> - Az ajánlott eljárások
-> - Miért érdemes az ajánlott eljárásokat használni
-> - Mi történhet, ha nem sikerül követnie az ajánlott eljárásokat
-> - Az ajánlott eljárások követése
+Ez a cikk bemutatja az ajánlott eljárásokat a Azure Batch szolgáltatás hatékony és hatékony használatához, a Batch használatával való valós idejű felhasználói élmény alapján. Ebből a cikkből megtudhatja, hogyan hozhatja ki a buktatókat, a lehetséges teljesítménnyel kapcsolatos problémákat és a mintázatot a Batch szolgáltatás fejlesztésekor és használatakor.
 
 ## <a name="pools"></a>Készletek
 
-A Batch-készletek a feladatok a Batch szolgáltatásban való végrehajtásához szükséges számítási erőforrások. A következő szakaszokban útmutatást talál a Batch-készletekkel végzett munka során követendő legjobb gyakorlatokról.
+A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok végrehajtásához szükséges számítási erőforrások. A következő szakaszokban a Batch-készletek használatáról szóló ajánlásokat talál.
 
 ### <a name="pool-configuration-and-naming"></a>Készlet konfigurációja és elnevezése
 
@@ -61,98 +53,121 @@ A készlet-foglalási hibák az első kiosztáskor vagy az azt követő átmére
 
 ### <a name="unplanned-downtime"></a>Nem tervezett leállás
 
-Lehetséges, hogy a Batch-készletek az Azure-ban leállási eseményeket tapasztalnak. Fontos szem előtt tartani a Batch-forgatókönyv vagy-munkafolyamat tervezésekor és fejlesztésekor.
+Lehetséges, hogy a Batch-készletek az Azure-ban leállási eseményeket tapasztalnak. Ne feledje, hogy a Batch-forgatókönyvek vagy munkafolyamatok tervezésekor és fejlesztésekor vegye figyelembe a problémát.
 
-Abban az esetben, ha egy csomópont meghibásodik, a Batch automatikusan megkísérli helyreállítani ezeket a számítási csomópontokat az Ön nevében. Ez a helyreállított csomóponton futó feladatok újraütemezését eredményezheti. A megszakított feladatokkal kapcsolatos további tudnivalókért tekintse meg [az újrapróbálkozások tervezése](#designing-for-retries-and-re-execution) című témakört.
+Abban az esetben, ha egy csomópont meghibásodik, a Batch automatikusan megkísérli helyreállítani ezeket a számítási csomópontokat az Ön nevében. Ez a helyreállított csomóponton futó feladatok újraütemezését eredményezheti. A megszakított feladatokkal kapcsolatos további tudnivalókért tekintse meg [az újrapróbálkozások tervezése](#design-for-retries-and-re-execution) című témakört.
 
-- **Azure region-függőség** Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
+### <a name="azure-region-dependency"></a>Azure region-függőség
+
+Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Feladatok
 
-A feladat egy olyan tároló, amely több száz, több ezer vagy akár több millió feladatot tartalmaz.
+A [feladat](jobs-and-tasks.md#jobs) egy olyan tároló, amely több száz, több ezer vagy akár több millió feladatot tartalmaz. Feladatok létrehozásakor kövesse az alábbi irányelveket.
 
-- **Több feladat elhelyezése egy feladatban** A feladatok egyetlen feladat futtatására való használata nem hatékony. Például hatékonyabban használhatja a 1000 feladatokat tartalmazó egyetlen feladatot, és nem hoz létre olyan 100-feladatokat, amelyek mindegyike 10 feladatot tartalmaz. A 1000-es feladatok futtatása egyetlen feladattal, a legkevésbé hatékony, leglassabb és legdrágább módszer.
+### <a name="fewer-jobs-more-tasks"></a>Kevesebb feladat, több feladat
 
-    Ne tervezzen olyan batch-megoldást, amely egyszerre több ezer aktív feladatot igényel. A feladatokhoz nem tartozik kvóta, így a lehető legtöbb feladat végrehajtása a feladatok és a feladatok [ütemezett kvótái](batch-quota-limit.md#resource-quotas)alapján történik.
+A feladatok egyetlen feladat futtatására való használata nem hatékony. Például hatékonyabban használhatja a 1000 feladatokat tartalmazó egyetlen feladatot, és nem hoz létre olyan 100-feladatokat, amelyek mindegyike 10 feladatot tartalmaz. A 1000-es feladatok futtatása egyetlen feladattal, a legkevésbé hatékony, leglassabb és legdrágább módszer.
 
-- **Feladatok élettartama** A Batch-feladatok határozatlan élettartammal rendelkeznek, amíg nem törlik a rendszerből. A feladatok állapota azt jelzi, hogy több feladatot is el tud-e fogadni az ütemezéshez. A feladatok nem helyezhetők automatikusan befejezett állapotba, kivéve, ha explicit módon megszakították. Ezt a [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) tulajdonság vagy a [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)automatikusan aktiválhatja.
+Ezért ügyeljen arra, hogy ne tervezzen olyan batch-megoldást, amelynek több ezer egyidejű aktív feladatra van szüksége. A feladatokhoz nem tartozik kvóta, ezért a lehető leghatékonyabban végrehajtja a feladatokat a feladatok és a feladatok [ütemezett kvótáinak](batch-quota-limit.md#resource-quotas)használatával.
+
+### <a name="job-lifetime"></a>Feladatok élettartama
+
+A Batch-feladatok határozatlan élettartammal rendelkeznek, amíg nem törlik a rendszerből. Az állapota azt jelzi, hogy képes-e további feladatokat fogadni az ütemezéshez, vagy sem.
+
+A feladatok nem helyezhetők automatikusan befejezett állapotba, kivéve, ha explicit módon megszakították. Ezt a [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) tulajdonság vagy a [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)automatikusan aktiválhatja.
 
 Az alapértelmezett [aktív feladatok és a feladatok ütemezett kvótája](batch-quota-limit.md#resource-quotas). A Befejezett állapotú feladatok és feladatok Ütemtervei nem számítanak bele a kvótába.
 
 ## <a name="tasks"></a>Feladatok
 
-A feladatok olyan egyedi Munkaegységek, amelyek feladatból állnak. A feladatokat a felhasználó küldi el és ütemezi a számítási csomópontokra. A feladatok létrehozásakor és végrehajtásakor több kialakítási szempontot is figyelembe kell venni. A következő szakaszokban ismertetjük a gyakori forgatókönyveket, valamint azt, hogy miként lehet megtervezni a problémákat és hatékonyan elvégezni a feladatokat.
+A [feladatok](jobs-and-tasks.md#tasks) olyan egyedi Munkaegységek, amelyek feladatból állnak. A feladatokat a felhasználó küldi el és ütemezi a számítási csomópontokra. A feladatok létrehozásakor és végrehajtásakor több kialakítási szempontot is figyelembe kell venni. A következő szakaszokban ismertetjük a gyakori forgatókönyveket, valamint azt, hogy miként lehet megtervezni a problémákat és hatékonyan elvégezni a feladatokat.
 
-- **Mentse a feladatokat a feladat részeként.**
-    A számítási csomópontok természetüknél fogva elmúlóak. A Batch számos funkciója van, például az autopool és az autoscale, amelyek megkönnyítik a csomópontok eltűnnek. Ha a csomópontok elhagyják a készletet (az átméretezés vagy a készlet törlése miatt), akkor a csomópontokon lévő összes fájl is törlődik. Ezért azt javasoljuk, hogy mielőtt egy feladat befejeződik, áthelyezi a kimenetét a-on futó csomópontból, és egy tartós tárolóba, hasonlóan ha egy feladat meghibásodik, át kell helyeznie azokat a naplókat, amelyek szükségesek ahhoz, hogy egy tartós tároló hibáját diagnosztizálják. A Batch integrált támogatást nyújt az Azure Storage-hoz az adatok [OutputFiles](batch-task-output-files.md)-n keresztüli feltöltéséhez, valamint számos megosztott fájlrendszerhez, vagy a feladatokban a feltöltéshez is.
+### <a name="save-task-data"></a>Tevékenységadatok mentése
 
-### <a name="task-lifetime"></a>Feladat élettartama
+A számítási csomópontok természetüknél fogva elmúlóak. A Batch számos funkciója van, például az autopool és az autoscale, amelyek megkönnyítik a csomópontok eltűnnek. Ha a csomópontok elhagyják a készletet (az átméretezés vagy a készlet törlése miatt), akkor a csomópontokon lévő összes fájl is törlődik. Emiatt a tevékenységnek át kell helyeznie a kimenetét a-on futó csomópontból, és egy tartós tárolóba kell helyeznie, mielőtt befejeződik. Hasonlóképpen, ha egy feladat meghibásodik, akkor át kell helyeznie a naplókat, amelyek szükségesek a tartós tár hibáinak diagnosztizálásához.
 
-- **Feladatok törlése, ha elkészült.**
-    Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha `retentionTime` be van állítva, a Batch automatikusan törli a feladat által a lejáratkor használt lemezterületet `retentionTime` .
+A Batch integrált támogatást nyújt az Azure Storage-hoz az adatok [OutputFiles](batch-task-output-files.md)-n keresztüli feltöltéséhez, valamint számos megosztott fájlrendszerhez, vagy a feladatokban a feltöltéshez is.
 
-    A tevékenységek törlése két dolgot hajt végre. Gondoskodik arról, hogy a feladatban ne legyenek felépítve feladatok, így a lekérdezés/a feladat megkeresése nehezebben megkereshető (mivel a Befejezett feladatok alapján kell szűrnie). Emellett megtisztítja a kapcsolódó tevékenységadatok a csomóponton (a megadott `retentionTime` érték még nem lett kijelölve). Ez biztosítja, hogy a csomópontok ne töltsenek fel a feladattal kapcsolatos adatokkal, és elfogyjon a szabad lemezterület.
+### <a name="manage-task-lifetime"></a>Feladat élettartamának kezelése
 
-### <a name="task-submission"></a>Feladat elküldése
+Törölje a feladatokat, ha már nincs rájuk szükség, vagy állítson be egy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) -feladatra vonatkozó korlátozást. Ha `retentionTime` be van állítva, a Batch automatikusan törli a feladat által a lejáratkor használt lemezterületet `retentionTime` .
 
-- **Nagy számú feladat elküldése egy gyűjteményben.**
-    A feladatokat egyedi alapon vagy gyűjteményekben lehet beküldeni. A feladatok tömeges beküldése a terhelés és a beküldési idő csökkentése érdekében akár 100 [gyűjteményben](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) is elvégezhető.
+A tevékenységek törlése két dolgot hajt végre. Gondoskodik arról, hogy a feladatban ne legyenek felépítve feladatok, ami megnehezíti a kívánt feladat lekérdezését vagy megtalálását (mivel a befejezett feladatokon keresztül kell szűrnie). Emellett megtisztítja a kapcsolódó tevékenységadatok a csomóponton (a megadott `retentionTime` érték még nem lett kijelölve). Ezzel biztosíthatja, hogy a csomópontok ne töltsenek fel a feladattal kapcsolatos adatokkal, és elfogyjon a szabad lemezterület.
 
-### <a name="task-execution"></a>Feladat végrehajtása
+### <a name="submit-large-numbers-of-tasks-in-collection"></a>Nagy számú feladat elküldése a gyűjteményben
 
-- **A feladatok maximális száma a csomóponton** A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra (egy készletben a-ben `maxTasksPerNode = 8` ).
+A feladatokat egyedi alapon vagy gyűjteményekben lehet beküldeni. A feladatok tömeges beküldése a terhelés és a beküldési idő csökkentése érdekében akár 100 [gyűjteményben](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) is elvégezhető.
 
-### <a name="designing-for-retries-and-re-execution"></a>Újrapróbálkozások és újbóli végrehajtás tervezése
+### <a name="set-max-tasks-per-node-appropriately"></a>Feladatok maximális száma a csomóponton megfelelően
+
+A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra (egy készletben a-ben `maxTasksPerNode = 8` ).
+
+### <a name="design-for-retries-and-re-execution"></a>Újrapróbálkozások és újbóli végrehajtás tervezése
 
 A Batch automatikusan újrapróbálkozik a feladatokat. Az újrapróbálkozások két típusa létezik: a felhasználó által vezérelt és a belső. A felhasználó által vezérelt újrapróbálkozásokat a tevékenység [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)adja meg. Ha a feladatban megadott program nem nulla kilépési kóddal kilép, a feladat újra próbálkozik a értékével `maxTaskRetryCount` .
 
 Bár ritka, a feladat a számítási csomópont meghibásodása miatt újra próbálkozhat, például nem lehet frissíteni a belső állapotot vagy a csomópont meghibásodását a feladat futása közben. A feladat újra próbálkozik ugyanazon a számítási csomóponton, ha lehetséges, akár egy belső korláttal, mielőtt felveszi a feladatot, és elhalasztja, hogy a Batch által átütemezett feladatot, esetleg egy másik számítási csomóponton.
 
-- **Tartós feladatok készítése** A feladatokat úgy kell kialakítani, hogy elbírja a meghibásodást, és az újrapróbálkozást. Ez különösen fontos a hosszú ideig futó feladatok esetében. Ehhez győződjön meg arról, hogy a feladatok ugyanazt az eredményt használják, még akkor is, ha egynél többször futnak. Ennek az az egyik módja, hogy a feladatok "cél keresése". A másik lehetőség, hogy ellenőrizze, hogy a feladatok idempotens-e (a tevékenységek a futtatásuk időpontját is megegyeznek).
+A feladatok dedikált vagy alacsony prioritású csomópontokon történő végrehajtásakor nincsenek tervezési különbségek. Azt jelzi, hogy egy feladat előzik alacsony prioritású csomóponton fut-e, vagy egy dedikált csomópont meghibásodása miatt megszakadt, mindkét szituációt enyhíteni kell, ha a feladat megtervezésével ellenáll a meghibásodásnak.
 
-    Gyakori példa a fájlok számítási csomópontba másolására szolgáló feladat. Az egyszerű megközelítés egy olyan feladat, amely minden egyes futtatásakor átmásolja az összes megadott fájlt, ami nem hatékony, és nem áll készen a sikertelen működésre. Ehelyett hozzon létre egy feladatot, amely biztosítja, hogy a fájlok a számítási csomóponton legyenek. olyan feladat, amely nem másolja újra a már meglévő fájlokat. Így a feladat felveszi a feladatot, ha megszakadt.
+### <a name="build-durable-tasks"></a>Tartós feladatok készítése
 
-- **Alacsony prioritású csomópontok** A feladatok dedikált vagy alacsony prioritású csomópontokon történő végrehajtásakor nincsenek tervezési különbségek. Azt jelzi, hogy egy feladat előzik alacsony prioritású csomóponton fut-e, vagy egy dedikált csomópont meghibásodása miatt megszakadt, mindkét szituációt enyhíteni kell, ha a feladat megtervezésével ellenáll a meghibásodásnak.
+A feladatokat úgy kell kialakítani, hogy elbírja a meghibásodást, és az újrapróbálkozást. Ez különösen fontos a hosszú ideig futó feladatok esetében. Ehhez győződjön meg arról, hogy a feladatok ugyanazt az eredményt használják, még akkor is, ha egynél többször futnak. Ennek az az egyik módja, hogy a feladatok "cél keresése". A másik lehetőség, hogy ellenőrizze, hogy a feladatok idempotens-e (a tevékenységek a futtatásuk időpontját is megegyeznek).
 
-- **Feladat végrehajtási ideje** Kerülje a rövid végrehajtási idővel rendelkező feladatokat. Azok a feladatok, amelyek csak egy-két másodpercre futnak, nem ideálisak. Érdemes nagy mennyiségű munkát végrehajtani egy adott feladatban (10 másodperc minimum, akár óra vagy nap is). Ha az egyes feladatok egy percen (vagy több) vannak végrehajtva, akkor az ütemezési terhelés a teljes számítási idő töredékének kis hányada.
+Gyakori példa a fájlok számítási csomópontba másolására szolgáló feladat. Az egyszerű megközelítés egy olyan feladat, amely minden egyes futtatásakor átmásolja az összes megadott fájlt, ami nem hatékony, és nem áll készen a sikertelen működésre. Ehelyett hozzon létre egy feladatot, amely biztosítja, hogy a fájlok a számítási csomóponton legyenek. olyan feladat, amely nem másolja újra a már meglévő fájlokat. Így a feladat felveszi a feladatot, ha megszakadt.
+
+### <a name="avoid-short-execution-time"></a>A rövid végrehajtási idő elkerülése
+
+Azok a feladatok, amelyek csak egy-két másodpercre futnak, nem ideálisak. Érdemes nagy mennyiségű munkát végrehajtani egy adott feladatban (10 másodperc minimum, akár óra vagy nap is). Ha az egyes feladatok egy percen (vagy több) vannak végrehajtva, akkor az ütemezési terhelés a teljes számítási idő töredékének kis hányada.
+
 
 ## <a name="nodes"></a>Csomópontok
 
-- **Az indítási tevékenységeknek idempotens kell lenniük** A többi feladathoz hasonlóan a csomópont indítási tevékenységének is idempotens kell lennie, mivel a csomópont minden indításakor újra futni fog. Egy idempotens feladat egyszerűen egy, amely konzisztens eredményt állít elő többszöri futtatásakor.
+A [számítási csomópont](nodes-and-pools.md#nodes) egy Azure-beli virtuális gép (VM) vagy Cloud Service VM, amely az alkalmazás munkaterhelésének egy részének feldolgozására van kijelölve. A csomópontok használatakor kövesse az alábbi irányelveket.
 
-- **A hosszú ideig futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül.**
-    Előfordulhat, hogy egy másik ügynököt kell futtatnia a csomópontban található batch-ügynök mellett, például az adatoknak a csomópontból való összegyűjtéséhez és jelentéséhez. Javasoljuk, hogy ezeket az ügynököket operációs rendszerként, például Windows-szolgáltatásként vagy Linux-szolgáltatásként telepítse `systemd` .
+### <a name="idempotent-start-tasks"></a>Idempotens-indítási feladatok
 
-    Ezeknek a szolgáltatásoknak a futtatásakor a rendszer nem tudja zárolni a fájl zárolásait a csomóponton található batch által felügyelt könyvtárakban, mert máskülönben a Batch nem fogja tudni törölni ezeket a címtárakat a fájlok zárolása miatt. Ha például Windows-szolgáltatást telepít egy indítási feladatba, ahelyett, hogy közvetlenül az indítási tevékenység munkakönyvtárból indítja el a szolgáltatást, másolja máshová a fájlokat (ha a fájlok már csak kihagyják a másolatot). Telepítse a szolgáltatást az adott helyről. Ha a Batch újrakezdi a kezdési feladatot, az törli a feladat indítása munkakönyvtárat, és újra létrehozza azt. Ez azért működik, mert a szolgáltatás fájl-zárolások vannak a másik címtárban, nem pedig az indítási tevékenység munkakönyvtára.
+Csakúgy, mint más feladatokhoz, a csomópont [indítási tevékenységének](jobs-and-tasks.md#start-task) idempotens kell lennie, mivel a csomópont minden indításakor újra futni fog. Egy idempotens feladat egyszerűen egy, amely konzisztens eredményt állít elő többszöri futtatásakor.
 
-- **Ne hozzon létre címtár-csomópontokat a Windowsban** A címtár-összekapcsolásokat, más néven a címtárbeli rögzített hivatkozásokat, nehéz kezelni a feladatok és a feladatok karbantartása során. A rögzített hivatkozások helyett használjon szimbolikus hivatkozásokat (Soft-Links).
+### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>A hosszan futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül
 
-- **A Batch-ügynök naplófájljainak összegyűjtése, ha probléma merül** fel Ha egy csomóponton futó csomópont vagy feladatok viselkedésével kapcsolatos problémát tapasztal, javasoljuk, hogy a szóban forgó csomópontok felszabadítása előtt Gyűjtse össze a Batch-ügynök naplóit. A Batch-ügynök naplóit a Batch szolgáltatás naplófájljainak API-jával töltheti össze. Ezek a naplók a Microsoft támogatási jegyének részeként is megadhatók, és segítenek a hibaelhárításban és a megoldásban.
+Időnként szükség van egy másik ügynök futtatására a csomóponton található batch-ügynök mellett. Előfordulhat például, hogy adatokat szeretne gyűjteni a csomópontról, és jelentenie kell azt. Javasoljuk, hogy ezeket az ügynököket operációs rendszerként, például Windows-szolgáltatásként vagy Linux-szolgáltatásként telepítse `systemd` .
 
-## <a name="security"></a>Biztonság
+Ezeknek a szolgáltatásoknak a futtatásakor a rendszer nem tudja zárolni a fájl zárolásait a csomóponton található batch által felügyelt könyvtárakban, mert máskülönben a Batch nem fogja tudni törölni ezeket a címtárakat a fájlok zárolása miatt. Ha például Windows-szolgáltatást telepít egy indítási feladatba, ahelyett, hogy közvetlenül az indítási tevékenység munkakönyvtárból indítja el a szolgáltatást, másolja máshová a fájlokat (vagy ha a fájlok már csak kihagyják a másolatot). Ezután telepítse a szolgáltatást az adott helyről. Ha a Batch újrakezdi a kezdési feladatot, az törli a feladat indítása munkakönyvtárat, és újra létrehozza azt. Ez azért működik, mert a szolgáltatás zárolja a fájl zárolásait a másik címtárban, nem az indítási tevékenység munkakönyvtárát.
 
-### <a name="security-isolation"></a>Biztonság elkülönítése
+### <a name="avoid-creating-directory-junctions-in-windows"></a>Ne hozzon létre címtár-csomópontokat a Windowsban
 
-Az elkülönítés érdekében, ha a forgatókönyv megköveteli a feladatok elkülönítését egymástól, akkor el kell különíteni ezeket a feladatokat külön készletekben. A készlet a Batch biztonsági elkülönítési határa, és alapértelmezés szerint a két készlet nem látható, vagy nem tud kommunikálni egymással. Kerülje a különálló batch-fiókok elkülönítésének módját.
+A címtár-összekapcsolásokat, más néven a címtárbeli rögzített hivatkozásokat, nehéz kezelni a feladatok és a feladatok karbantartása során. A rögzített hivatkozások helyett használjon szimbolikus hivatkozásokat (Soft-Links).
 
-## <a name="moving"></a>Mozgó
+### <a name="collect-the-batch-agent-logs"></a>A Batch-ügynök naplóinak összegyűjtése
 
-### <a name="move-batch-account-across-regions"></a>Batch-fiók áthelyezése régiók között
+Ha egy csomóponton futó csomópont vagy feladatok viselkedésével kapcsolatos problémát tapasztal, gyűjtsön a Batch-ügynök naplóit a szóban forgó csomópontok felszabadítása előtt. A Batch-ügynök naplóit a Batch szolgáltatás naplófájljainak API-jával töltheti össze. Ezek a naplók a Microsoft támogatási jegyének részeként is megadhatók, és segítenek a hibaelhárításban és a megoldásban.
 
-Különböző helyzetekben érdemes áthelyeznie meglévő batch-fiókját az egyik régióból a másikba. Előfordulhat például, hogy egy másik régióba szeretne áttérni a vész-helyreállítási tervezés részeként.
+## <a name="isolation-security"></a>Elkülönítés biztonsága
 
-Azure Batch fiókok nem helyezhetők át egyik régióból a másikba. A Batch-fiók meglévő konfigurációjának exportálásához azonban egy Azure Resource Manager sablont is használhat.  Ezután egy másik régióban is elvégezheti az erőforrást, ha a Batch-fiókot egy sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tanúsítványokat, a feladatok ütemterveit és az alkalmazáscsomag-csomagokat. A módosítások elvégzéséhez és a Batch-fiók áthelyezésének befejezéséhez ne felejtse el törölni az eredeti batch-fiókot vagy erőforráscsoportot.
+Az elkülönítés érdekében, ha a forgatókönyv megköveteli a feladatok egymástól való elkülönítését, tegye azokat külön készletekben. A készlet a Batch biztonsági elkülönítési határa, és alapértelmezés szerint a két készlet nem látható, vagy nem tud kommunikálni egymással. Kerülje a különálló batch-fiókok elkülönítésének módját.
+
+## <a name="moving-batch-accounts-across-regions"></a>Batch-fiókok áthelyezése régiók között
+
+Vannak olyan helyzetek, amikor hasznos lehet egy meglévő batch-fiók áthelyezése az egyik régióból a másikba. Előfordulhat például, hogy egy másik régióba szeretne áttérni a vész-helyreállítási tervezés részeként.
+
+Azure Batch fiókok nem helyezhetők át közvetlenül egyik régióból a másikba. A Batch-fiók meglévő konfigurációjának exportálásához azonban egy Azure Resource Manager sablont is használhat. Ezután egy másik régióban is elvégezheti az erőforrást, ha a Batch-fiókot egy sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban.
+
+Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tanúsítványokat, a feladatok ütemterveit és az alkalmazáscsomag-csomagokat. A módosítások elvégzéséhez és a Batch-fiók áthelyezésének befejezéséhez ne felejtse el törölni az eredeti batch-fiókot vagy erőforráscsoportot.
 
 A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
 
-## <a name="connectivity-to-the-batch-service"></a>Kapcsolódás a Batch szolgáltatáshoz
+## <a name="connectivity"></a>Kapcsolatok
+
+Tekintse át a következő útmutatást, amikor a Batch-megoldások kapcsolatát fontolgatja.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Hálózati biztonsági csoportok (NSG) és felhasználó által megadott útvonalak (UDR)
 
 A [Batch-készletek virtuális hálózatban való](batch-virtual-network.md)kiépítés során ügyeljen arra, hogy a `BatchNodeManagement` szolgáltatási címke, a portok, a protokollok és a szabály irányának használatára vonatkozó irányelveket szorosan kövesse.
-A szolgáltatás címkéjének használata kifejezetten ajánlott, nem pedig az alapul szolgáló batch szolgáltatás IP-címei, amelyek idővel változhatnak. A Batch szolgáltatás IP-címeinek közvetlen használata a Batch-készletek instabilitása, megszakítása vagy kimaradása lehet, mivel a Batch szolgáltatás frissíti az adott időszakban használt IP-címeket. Ha jelenleg a Batch szolgáltatás IP-címeit használja a NSG-szabályokban, javasoljuk, hogy váltson a szolgáltatási címke használatára.
+A szolgáltatás címkéjének használata kifejezetten ajánlott, nem az alapul szolgáló batch szolgáltatás IP-címeinek használata. Ennek az az oka, hogy az IP-címek idővel változhatnak. A Batch szolgáltatás IP-címeinek közvetlen használata instabilitást, megszakítást vagy kimaradást okozhat a Batch-készletekben.
 
-A felhasználó által megadott útvonalak esetében ellenőrizze, hogy van-e olyan folyamat, amely rendszeresen frissíti a Batch szolgáltatás IP-címeit az útválasztási táblázatban, mivel ezek idővel változnak. A Batch szolgáltatás IP-címei listájának beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md). A Batch szolgáltatás IP-címei társítva lesznek a `BatchNodeManagement` szolgáltatás címkéjével (vagy a Batch-fiók régiójának megfelelő regionális változattal).
+A felhasználó által megadott útvonalak (UDR-EK) esetében ellenőrizze, hogy van-e olyan folyamat, amely rendszeresen frissíti a Batch szolgáltatás IP-címeit az útválasztási táblázatban, mivel ezek a címek idővel változnak. A Batch szolgáltatás IP-címei listájának beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md). A Batch szolgáltatás IP-címei társítva lesznek a `BatchNodeManagement` szolgáltatás címkéjével (vagy a Batch-fiók régiójának megfelelő regionális változattal).
 
 ### <a name="honoring-dns"></a>A DNS tiszteletben tartása
 
@@ -164,3 +179,25 @@ Ha a kérések 5xx HTTP-válaszokat kapnak, és a válaszban szerepel a "kapcsol
 
 Győződjön meg arról, hogy a Batch szolgáltatás ügyfelei megfelelő újrapróbálkozási szabályzatokkal rendelkeznek a kérések automatikus újrapróbálkozásához, még a normál működés során, és nem kizárólag a szolgáltatás karbantartási időszakai alatt. Az újrapróbálkozási szabályzatoknak legalább 5 perces intervallumot kell kiterjedniük. Az automatikus újrapróbálkozási képességek különböző batch SDK-k, például a [.net RetryPolicyProvider osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet)számára érhetők el.
 
+## <a name="batch-node-underlying-dependencies"></a>A Batch-csomópont mögöttes függőségei
+
+A Batch-megoldások tervezésekor vegye figyelembe a következő függőségeket és korlátozásokat.
+
+### <a name="system-created-resources"></a>Rendszerek által létrehozott erőforrások
+
+Azure Batch létrehozza és kezeli a virtuális gépen lévő felhasználókat és csoportokat, amelyek nem módosíthatók. Ezek a következők:
+
+#### <a name="windows"></a>Windows
+
+- Egy **PoolNonAdmin** nevű felhasználó
+- **WATaskCommon** nevű felhasználói csoport
+
+#### <a name="linux"></a>Linux
+
+- Egy **_azbatch** nevű felhasználó
+
+### <a name="file-cleanup"></a>Fájl karbantartása
+
+A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a feladatok futnak, miután a megőrzési idő lejár. A címtáron kívül írt fájlok [a saját felelőssége,](#manage-task-lifetime) hogy elkerülje a lemezterület kitöltését. 
+
+A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszerű szolgáltatást futtat a startTask Working Directory szolgáltatásból, mert a mappa még használatban van. Ennek hatására csökken a teljesítmény. Ennek a megoldásnak a kijavításához módosítsa a szolgáltatás könyvtárát egy különálló, a Batch által nem kezelt könyvtárba.

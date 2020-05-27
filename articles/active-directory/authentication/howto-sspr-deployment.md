@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450989"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870962"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
 > [!IMPORTANT]
 > Ez a telepítési terv útmutatást és ajánlott eljárásokat nyújt az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez.
 >
-> **Ha Ön és a végfelhasználója, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr)a **következőre:.
+> **Ha Ön és a végfelhasználója, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr) a **következőre:.
 
 Az [önkiszolgáló jelszó-visszaállítás (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) egy Azure Active Directory (ad) szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy segítségre lenne felvenni a kapcsolatot az informatikai személyzettel. A felhasználók gyorsan feloldják magukat, és a munka helyétől függetlenül is dolgozhatnak. Azáltal, hogy az alkalmazottak feloldják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
 

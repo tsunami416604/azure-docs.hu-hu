@@ -8,36 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c3ce10b6d3acb947d3fde6e3c872a2c2a83ddb69
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383612"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871143"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Java és a Bing News Search használatával REST API
 
-Ezzel a rövid útmutatóval elvégezheti az első hívását a Bing News Search API, és megtekintheti a JSON-választ. Ez az egyszerű Java-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a választ.
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing News Search API. Ez az egyszerű Java-alkalmazás egy Hírek keresési lekérdezést küld az API-nak, és megjeleníti a JSON-választ.
 
-Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 
+A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) érhető el. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK) 7-es vagy 8-as verziója](https://aka.ms/azure-jdks)
-
-* A [Gson-kódtár](https://github.com/google/gson)
+* A [Java fejlesztői készlet (JDK) 7 vagy 8](https://aka.ms/azure-jdks).
+* A [Gson könyvtár](https://github.com/google/gson).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.net.*;
@@ -50,7 +49,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre egy új osztályt az API-végpont, az előfizetési kulcs és a keresési kifejezés változók használatával. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre egy új osztályt. Adja hozzá a változókat az API-végponthoz, az előfizetési kulcshoz és a keresési kifejezéshez. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +63,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>A keresési kérelem létrehozása és JSON-válasz fogadása
 
-1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Ne feledje, hogy a keresési kifejezésnek URL-kódolásúnak kell lennie, mielőtt a kérelemhez hozzáfűzné azt.
+1. Az előző lépésben szereplő változók használatával formázhatja az API-kérelem keresési URL-címét. URL – a keresési kifejezés kódolása, mielőtt hozzáfűzi a kéréshez.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -75,7 +74,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     }
     ```
 
-2. Fogadja a JSON-választ a Bing News Search APIból, és hozza létre az eredmény objektumot.
+2. Fogadja a JSON-választ a Bing News Search API és létrehozza az eredmény objektumot.
 
     ```java
     // receive JSON body
@@ -88,6 +87,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
 ## <a name="process-the-json-response"></a>A JSON-válasz feldolgozása
 
 1. Válassza el a Binggel kapcsolatos HTTP-fejléceket a JSON-törzstől, majd a stream bezárásával és az API-válasz visszaadásával.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,8 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     return results;
     ```
 
-2. Metódus létrehozása a JSON elemzéséhez és újraszerializálásához
+2. Hozzon létre egy metódust a JSON-eredmények elemzéséhez és újraszerializálásához.
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -113,7 +114,8 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     ```
 
 3. Az alkalmazás fő metódusában hívja meg a keresési módszert, és jelenítse meg az eredményeket.
-    ```csharp
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -126,7 +128,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
     }
     ```
 
-## <a name="json-response"></a>JSON-válasz
+## <a name="example-json-response"></a>Példa JSON-válaszra
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 

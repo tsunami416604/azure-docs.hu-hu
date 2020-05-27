@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 72afc4f6e03b24e545ad18948119d418970cddf3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3a98308716696f677f04db66e83ff4e9d5d08c85
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747575"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869843"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Node. js-sel
 
-Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű csomópont-alkalmazás egy kérelmet küld az API-nak, és visszaadja a nem felismerhető szavak listáját, amelyet a javasolt javítások követnek. Habár ez az alkalmazás a Node. js-ben íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST API. Ez az egyszerű JavaScript-alkalmazás egy kérelmet küld az API-nak, és a javasolt javítások listáját adja vissza. 
+
+Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +32,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a szigorúság és a szükséges értékeit `https` . Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE vagy szerkesztőben. Állítsa be a szigorúság és a szükséges értékeit `https` . Ezután hozzon létre változókat az API-végpont gazdagépéhez, elérési útjához és az előfizetési kulcshoz. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```javascript
     'use strict';
@@ -41,7 +43,11 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Hozzon létre változókat a keresési paraméterekhez és az áttekinteni kívánt szöveghez. Adja hozzá a piac kódját a következő után: `mkt=` . A piaci kód az az ország/régió, ahonnan a kérést elvégzi. Továbbá a helyesírás-ellenőrzési mód hozzáfűzése a következő után: `&mode=` . A mód vagy `proof` (a legtöbb helyesírási/nyelvtani hibát kigyűjti) vagy `spell` (a legtöbb helyesírási hiba, de nem annyi nyelvtani hiba).
+2. Hozzon létre változókat a keresési paraméterekhez és a megtekinteni kívánt szöveghez: 
+
+   a. Rendelje hozzá a piaci kódot a `mkt` paraméterhez az `=` operátorral. A piaci kód annak az országnak/régiónak a kódja, amelyre a kérést végzi. 
+
+   b. Adja hozzá a `mode` paramétert a `&` kezelőhöz, majd rendelje hozzá a helyesírás-ellenőrzési módot. A mód lehet (a `proof` legtöbb helyesírási/nyelvtani hibát felhasználhatja) `spell` , vagy (a legtöbb helyesírási hibát kigyűjti, de nem annyi nyelvtani hibát).
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +58,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Spell Check REST
 
 ## <a name="create-the-request-parameters"></a>A kérés paramétereinek létrehozása
 
-A kérés paramétereinek létrehozásához hozzon létre egy új objektumot egy `POST` metódussal. Adja meg az elérési utat a végpont elérési útjának hozzáfűzésével és a lekérdezési karakterlánccal. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
+A kérés paramétereinek létrehozásához hozzon létre egy új objektumot egy `POST` metódussal. Adja meg az elérési utat a végpont elérési útjának hozzáfűzésével és a lekérdezési karakterlánccal. Ezután adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
 ```javascript
 let request_params = {
@@ -69,7 +75,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
 
-Hozzon létre egy nevű függvényt, `response_handler` amely a JSON-választ az API-ból veszi át, és nyomtassa ki. Hozzon létre egy változót a válasz törzse számára. A válasz hozzáfűzése a `data` jelző fogadásakor, a használatával `response.on()` . Ha a `end` rendszer jelzőt fogad, nyomtassa ki a JSON-törzset a konzolon.
+Hozzon létre egy nevű függvényt, `response_handler` amely a JSON-választ az API-ból veszi át, és nyomtassa ki. Hozzon létre egy változót a válasz törzse számára. Fűzze hozzá a választ, ha a `data` használatával jelzőt fogad `response.on()` . `end`A jelző fogadása után nyomtassa ki a JSON-törzset a konzolon.
 
 ```javascript
 let response_handler = function (response) {
@@ -89,7 +95,7 @@ let response_handler = function (response) {
 
 ## <a name="send-the-request"></a>A kérelem elküldése
 
-Hívja meg az API `https.request()` -t a kérés paramétereinek és a Response Handler használatával. Írja be a szöveget az API-ba, és utána fejezze be a kérést.
+Hívja meg az API `https.request()` -t a kérelem paramétereinek és a Response Handler használatával. Írja be a szöveget az API-ba, majd fejezze be a kérést.
 
 ```javascript
 let req = https.request (request_params, response_handler);
@@ -100,13 +106,13 @@ req.end ();
 
 ## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Hozza létre és futtassa a projektet.
+1. Hozza létre és futtassa a projektet.
 
-Ha a parancssort használja, az alábbi parancsokkal hozhatja létre és futtathatja az alkalmazást.
+1. Ha a parancssort használja, az alábbi paranccsal hozhatja létre és futtathatja az alkalmazást:
 
-```bash
-node <FILE_NAME>.js
-```
+   ```bash
+   node <FILE_NAME>.js
+   ```
 
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
@@ -157,4 +163,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 > [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
 - [Mi a Bing Spell Check API?](../overview.md)
-- [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7-dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

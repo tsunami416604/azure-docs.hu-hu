@@ -9,13 +9,13 @@ ms.custom:
 - seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/09/2020
-ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: 827a34999cc3f4d90344915a9b57492a0f31bafe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067901"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870031"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Rövid útmutató: a Python használatával csatlakozhat és lekérdezheti az Azure Database for MySQL
 
@@ -28,6 +28,9 @@ Ez a témakör azt feltételezi, hogy már ismeri a fejlesztést a Python haszn�
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Egy Azure Database for MySQL-kiszolgáló. [Hozzon létre egy Azure Database for MySQL kiszolgálót Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [hozzon létre egy Azure Database for MySQL kiszolgálót az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
 
+> [!IMPORTANT] 
+> Győződjön meg arról, hogy az IP-cím, amelyhez csatlakozik, a [Azure Portal](./howto-manage-firewall-using-portal.md) vagy az [Azure CLI](./howto-manage-firewall-using-cli.md) használatával adja hozzá a kiszolgáló tűzfalszabály-szabályait.
+
 ## <a name="install-python-and-the-mysql-connector"></a>A Python és a MySQL-összekötő telepítése
 
 Telepítse a Pythont és a Pythonhoz készült MySQL-összekötőt a számítógépre a következő lépések végrehajtásával: 
@@ -35,15 +38,15 @@ Telepítse a Pythont és a Pythonhoz készült MySQL-összekötőt a számítóg
 > [!NOTE]
 > Ez a rövid útmutató egy nyers SQL-lekérdezési módszert használ a MySQL-hez való kapcsolódáshoz. Ha webes keretrendszert használ, használja az ajánlott összekötőt a keretrendszerhez, például [mysqlclient](https://pypi.org/project/mysqlclient/) for Django.
 
-1. Töltse le és telepítse a [Python 3,7-es vagy újabb](https://www.python.org/downloads/) verzióját az operációs rendszerének. Ügyeljen arra, hogy a Pythont `PATH`hozzáadja a szolgáltatáshoz, mert a MySQL-összekötő ehhez szükséges.
+1. Töltse le és telepítse a [Python 3,7-es vagy újabb](https://www.python.org/downloads/) verzióját az operációs rendszerének. Ügyeljen arra, hogy a Pythont hozzáadja a szolgáltatáshoz `PATH` , mert a MySQL-összekötő ehhez szükséges.
    
-1. Nyisson meg egy parancssort `bash` vagy egy rendszerhéjat, és a nagybetűs V kapcsolóval futtassa `python -V` a Python-verziót.
+1. Nyisson meg egy parancssort vagy egy `bash` rendszerhéjat, és `python -V` a nagybetűs V kapcsolóval futtassa a Python-verziót.
    
-1. A `pip` csomag telepítőjének részét képezi a Python legújabb verziói. Frissítsen `pip` a legújabb verzióra a `pip install -U pip`futtatásával. 
+1. A `pip` csomag telepítőjének részét képezi a Python legújabb verziói. Frissítsen `pip` a legújabb verzióra a futtatásával `pip install -U pip` . 
    
-   Ha `pip` nincs telepítve, letöltheti és telepítheti azt a `get-pip.py`használatával. További információ: [telepítés](https://pip.pypa.io/en/stable/installing/). 
+   Ha `pip` nincs telepítve, letöltheti és telepítheti azt a használatával `get-pip.py` . További információ: [telepítés](https://pip.pypa.io/en/stable/installing/). 
    
-1. A `pip` használatával telepítheti a MySQL-összekötőt a Pythonhoz és annak függőségeihez:
+1. `pip`A használatával telepítheti a MySQL-összekötőt a Pythonhoz és annak függőségeihez:
    
    ```bash
    pip install mysql-connector-python
@@ -70,12 +73,12 @@ Szerezze be a Azure Database for MySQLhoz való kapcsolódáshoz szükséges kap
 A cikkben szereplő kódok mindegyike esetében:
 
 1. Hozzon létre egy új fájlt egy szövegszerkesztőben.
-1. Adja hozzá a példában szereplő kódot a fájlhoz. A kódban cserélje le `<mydemoserver>`a, `<myadmin>`, `<mypassword>`, és `<mydatabase>` helyőrzőket a MySQL-kiszolgáló és-adatbázis értékeire.
+1. Adja hozzá a példában szereplő kódot a fájlhoz. A kódban cserélje le a `<mydemoserver>` , `<myadmin>` ,, `<mypassword>` és `<mydatabase>` helyőrzőket a MySQL-kiszolgáló és-adatbázis értékeire.
 1. Mentse a fájlt a Project mappába egy *.* file kiterjesztésű bővítménnyel, például *C:\pythonmysql\createtable.py* vagy */Home/username/pythonmysql/createtable.py elérési úton*.
-1. A kód futtatásához nyisson meg egy parancssort vagy `bash` egy rendszerhéjat, és módosítsa a könyvtárat a Project `cd pythonmysql`mappájába, például:. Írja be `python` a parancsot, majd a fájlnevet, `python createtable.py`majd nyomja le az ENTER billentyűt. 
+1. A kód futtatásához nyisson meg egy parancssort vagy egy `bash` rendszerhéjat, és módosítsa a könyvtárat a Project mappájába, például: `cd pythonmysql` . Írja be a `python` parancsot, majd a fájlnevet, `python createtable.py` majd nyomja le az ENTER billentyűt. 
    
    > [!NOTE]
-   > Windows rendszeren, ha a *Python. exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *Python. exe*teljes elérési útját, például `C:\python27\python.exe createtable.py`:.
+   > Windows rendszeren, ha a *Python. exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *Python. exe*teljes elérési útját, például: `C:\python27\python.exe createtable.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
 
@@ -138,7 +141,7 @@ A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQ
 
 A kód importálja a MySQL. Connector függvénytárat, és a [csatlakozás ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) függvénnyel csatlakozik Azure Database for MySQLhoz a konfigurációs gyűjtemény [argumentumai](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) segítségével. A kód egy kurzort használ a kapcsolatban, és a [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) metódus hajtja végre az SQL-lekérdezést a MySQL-adatbázison. 
 
-A kód beolvassa az adatsorokat a [fetchall ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) metódussal, megtartja az eredményhalmaz egy gyűjtemény sorában `for` , és egy iterációt használ a sorok áthurkolása érdekében.
+A kód beolvassa az adatsorokat a [fetchall ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) metódussal, megtartja az eredményhalmaz egy gyűjtemény sorában, és egy `for` iterációt használ a sorok áthurkolása érdekében.
 
 ```python
 import mysql.connector

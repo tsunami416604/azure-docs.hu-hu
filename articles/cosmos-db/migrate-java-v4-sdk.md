@@ -5,19 +5,19 @@ author: anfeldma-ms
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/26/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 929fa936cdb864fd9b84f8feba55ef01ae6fed9c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d7028018501c5e6580d7345938a739ccc983ff48
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984706"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873254"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
 
 > [!IMPORTANT]  
-> Az SDK-val kapcsolatos további információkért tekintse meg a Azure Cosmos DB Java SDK v4 kibocsátási megjegyzéseit, a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), a Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md).
+> Az SDK-val kapcsolatos további információkért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), a Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos TIPPEKET](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md).
 >
 
 Ez a cikk azt ismerteti, hogyan frissítheti a régebbi Azure Cosmos DB Java SDK-t használó meglévő Java-alkalmazást az újabb Azure Cosmos DB Java SDK 4,0 for Core (SQL) API-hoz. Azure Cosmos DB Java SDK v4 megfelel a `com.azure.cosmos` csomagnak. Ha az alkalmazást a következő Azure Cosmos DB Java SDK-k bármelyikéről telepíti át, akkor használhatja az ebben a dokumentumban található utasításokat: 
@@ -57,13 +57,13 @@ A következő API-szint módosul Azure Cosmos DB Java SDK 4. x. x verzióban az 
 
 ![A Java SDK elnevezési konvencióinak Azure Cosmos DB](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
 
-* A Azure Cosmos DB Java SDK 3. x. x és 4,0 az ügyfél erőforrásait a `Cosmos<resourceName>`következőképpen tekinti át:. Például `CosmosClient`:, `CosmosDatabase`,. `CosmosContainer` Míg a 2. x. x verzióban a Azure Cosmos DB Java SDK-k nem rendelkeznek egységes elnevezési sémával.
+* A Azure Cosmos DB Java SDK 3. x. x és 4,0 az ügyfél erőforrásait a következőképpen tekinti át: `Cosmos<resourceName>` . Például:, `CosmosClient` `CosmosDatabase` , `CosmosContainer` . Míg a 2. x. x verzióban a Azure Cosmos DB Java SDK-k nem rendelkeznek egységes elnevezési sémával.
 
 * Azure Cosmos DB Java SDK 3. x. x és 4,0 egyaránt kínál szinkronizálási és aszinkron API-kat.
 
-  * **Java SDK 4,0** : az összes osztály a szinkronizálási API-hoz tartozik, kivéve, `Async` ha az osztály nevét `Cosmos`a következővel fűzi hozzá.
+  * **Java SDK 4,0** : az összes osztály a szinkronizálási API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: az összes osztály az aszinkron API-hoz tartozik, kivéve, `Async` ha az osztály nevét a `Cosmos`következővel fűzi hozzá.
+  * **Java SDK 3. x. x**: az összes osztály az aszinkron API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
   * **Aszinkron Java SDK 2. x. x**: az osztályok neve hasonló a Java SDK 2. x. x verziójának szinkronizálásához, a név azonban *aszinkron*módon kezdődik.
 
@@ -79,7 +79,7 @@ A Azure Cosmos DB Java SDK 2. x. x verziójában az összes erőforrásra és do
 
 ### <a name="representing-documents"></a>Dokumentumok képviselete
 
-Azure Cosmos DB Java SDK 4,0-as verzióban az egyéni `JsonNodes` POJO, és a dokumentumok Azure Cosmos DBból való olvasására és írására szolgáló két lehetőség.
+Azure Cosmos DB Java SDK 4,0-as verzióban az egyéni POJO, és `JsonNodes` a dokumentumok Azure Cosmos DBból való olvasására és írására szolgáló két lehetőség.
 
 A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objektumot a nyilvános API teszi elérhetővé, és dokumentum-ábrázolásként szolgál. Ez az osztály az 4,0-es verzióban már nem nyilvánosan elérhető.
 
@@ -88,7 +88,7 @@ A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objek
 * A Azure Cosmos DB Java SDK 4,0 csomagok kezdete`com.azure.cosmos`
   * Azure Cosmos DB Java SDK 3. x. x csomag kezdete`com.azure.data.cosmos`
 
-* Azure Cosmos DB Java SDK 4,0 több osztályt helyez el egy beágyazott `com.azure.cosmos.models`csomagban. A csomagok némelyike az alábbiakat tartalmazza:
+* Azure Cosmos DB Java SDK 4,0 több osztályt helyez el egy beágyazott csomagban `com.azure.cosmos.models` . A csomagok némelyike az alábbiakat tartalmazza:
 
   * `CosmosContainerResponse`
   * `CosmosDatabaseResponse`
@@ -102,9 +102,9 @@ A Azure Cosmos DB Java SDK 3. x. x verziójában az `CosmosItemProperties` objek
 
 ### <a name="accessors"></a>Elérőnek
 
-Azure Cosmos DB Java SDK 4,0 elérhetővé `get` teszi `set` a példány tagjainak elérését és metódusait. Például a példány `CosmosContainer` `container.getId()` és `container.setId()` a metódusok.
+Azure Cosmos DB Java SDK 4,0 elérhetővé `get` teszi `set` a példány tagjainak elérését és metódusait. Például a `CosmosContainer` példány `container.getId()` és a `container.setId()` metódusok.
 
-Ez különbözik a Azure Cosmos DB Java SDK 3. x. x verziótól, amely egy Fluent felületet tesz elérhetővé. Például egy `CosmosSyncContainer` példány, `container.id()` amely túlterhelt az `id` érték beolvasásához vagy beállításához.
+Ez különbözik a Azure Cosmos DB Java SDK 3. x. x verziótól, amely egy Fluent felületet tesz elérhetővé. Például egy példány, `CosmosSyncContainer` `container.id()` amely túlterhelt az érték beolvasásához vagy beállításához `id` .
 
 ## <a name="code-snippet-comparisons"></a>Kódrészletek összehasonlítása
 
