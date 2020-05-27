@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 86e1bc088c3e4327fbd0b9ad4a05e7c42c3fb776
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773491"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800163"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -28,7 +28,6 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Azure Red Hat OpenShift-fürt létrehozásához ellenőrizze az alábbi engedélyeket az Azure-fiók és-felhasználó számára:
 
-[!div class="mx-tdBreakAll"]
 |Engedélyek|Az VNet tartalmazó erőforráscsoport|Felhasználó által futtatott`az aro create`|Az egyszerű szolgáltatás a következőképpen lett átadva`–client-id`|
 |----|:----:|:----:|:----:|
 |**Felhasználói hozzáférés adminisztrátora**|X|X| |
@@ -214,7 +213,7 @@ A parancs végrehajtása után az `az aro create` általában körülbelül 35 p
 > Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

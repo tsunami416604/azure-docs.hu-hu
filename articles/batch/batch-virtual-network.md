@@ -4,12 +4,12 @@ description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 559cf3bc145deeed78b91def9d36211f885005d6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779586"
+ms.locfileid: "83797518"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -49,20 +49,20 @@ Miután létrehozta a VNet, és hozzárendelt egy alhálózatot, létrehozhat eg
 
 Előfordulhat, hogy a szervezete követelményei szerint a rendszer átirányítja (kényszeríti) az internetre irányuló forgalmat az alhálózatról a helyszíni helyre a vizsgálat és a naplózás érdekében. Lehetséges, hogy engedélyezte a kényszerített bújtatást a VNet alhálózatai számára.
 
-Annak biztosítása érdekében, hogy a Azure Batch-készlet számítási csomópontjai olyan VNet működjenek, amelyeken engedélyezve van a kényszerített bújtatás, hozzá kell adnia a következő, [felhasználó által definiált útvonalakat](../virtual-network/virtual-networks-udr-overview.md) ehhez az alhálózathoz:
+Annak biztosítása érdekében, hogy a Azure Batch készlet számítási csomópontjai olyan VNet működjenek, amelyeken engedélyezve van a kényszerített bújtatás, hozzá kell adnia a következő, [felhasználó által definiált útvonalakat](../virtual-network/virtual-networks-udr-overview.md) (UDR) ehhez az alhálózathoz:
 
-* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonalat a Batch szolgáltatás által használt egyes IP-címekhez abban a régióban, ahol a Batch-fiók létezik. A Batch szolgáltatás IP-címeinek beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md). A Batch szolgáltatás IP-címei társítva lesznek a `BatchNodeManagement` szolgáltatás címkéjével (vagy a Batch-fiók régiójának megfelelő regionális változattal).
+* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy UDR a Batch szolgáltatás által használt összes IP-címhez abban a régióban, ahol a Batch-fiók létezik. A Batch szolgáltatás IP-címeinek beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md).
 
 * Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom (pontosabban az űrlap, a és az URL-címek `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ) nincs `<account>.blob.core.windows.net` Letiltva a helyszíni hálózati berendezésen keresztül.
 
-Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **Internet**értékre. Lásd a következő példát:
+UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **internetre**. Lásd a következő példát:
 
 ![Felhasználó által megadott útvonal](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
 > A Batch szolgáltatás IP-címei idővel változhatnak. Ha egy IP-cím változása miatt leáll a leállás, javasoljuk, hogy hozzon létre egy rendszeres folyamatot a Batch szolgáltatás IP-címeinek automatikus frissítéséhez, és tartsa naprakészen az útválasztási táblázatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - A felhasználó által definiált útvonal létrehozásával kapcsolatos információkért lásd: [felhasználó által megadott Route-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).

@@ -16,12 +16,12 @@ ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380199"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799506"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
 
@@ -158,7 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Újra hitelesítheti és hozzárendelheti a PowerShell-munkamenetet ehhez az előfizetéshez egy paranccsal `Connect-AzAccount –Subscription $subs[0].id`, például:. Ha többet szeretne megtudni arról, hogyan végezheti el a hitelesítést az Azure-ból a PowerShellből, például nem interaktív módon, tekintse meg a [bejelentkezés Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+Újra hitelesítheti és hozzárendelheti a PowerShell-munkamenetet ehhez az előfizetéshez egy paranccsal, például: `Connect-AzAccount –Subscription $subs[0].id` . Ha többet szeretne megtudni arról, hogyan végezheti el a hitelesítést az Azure-ból a PowerShellből, például nem interaktív módon, tekintse meg a [bejelentkezés Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )használatával című témakört.
 
 Ha az előfizetésben több Log Analytics munkaterülettel rendelkezik, a [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) parancsmag a munkaterületek listáját adja vissza. Ezután megtalálhatja az Azure AD-naplókkal rendelkezőt. A `CustomerId` parancsmag által visszaadott mező megegyezik a log Analytics munkaterület áttekintésében Azure Portalban megjelenő "munkaterület-azonosító" értékével.
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Következő lépések:
-- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/app/usage-workbooks.md) 
+- [Interaktív jelentések létrehozása Azure Monitor munkafüzetekkel](../../azure-monitor/platform/workbooks-overview.md) 
 

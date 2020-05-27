@@ -5,22 +5,22 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 161138ba09baacdd2a3d18d35c930c645ee78103
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: bd48618a520f547c72bfba7ff04ae6a249d0a673
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715169"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806523"
 ---
-## <a name="run-the-spx-tool"></a>Az SPX eszköz futtatása
+## <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
-Most már készen áll az SPX eszköz futtatására a beszéd szövegből egy új hangfájlba való szintetizálása céljából.
+Most már készen áll a Speech CLI futtatására a beszéd szövegből egy új hangfájlba való szintéziséhez.
 
-A parancssorban váltson arra a könyvtárra, amely az SPX-eszköz bináris fájlját tartalmazza, és írja be a következőt:
+A parancssorban váltson arra a könyvtárra, amely a parancssori felület bináris fájlját tartalmazza, és írja be a következőt:
 
 ```bash
 spx synthesize --text "The speech synthesizer greets you!" --audio output greetings.wav
 ```
 
-Az SPX-eszköz természetes nyelvet hoz létre angol nyelven a `greetings.wav` hangfájlba.
+A Speech CLI a természetes nyelvet angol nyelven hozza létre a `greetings.wav` hangfájlba.
 A Windowsban a hangfájlt a beírásával is lejátszhatja `start greetings.wav` .

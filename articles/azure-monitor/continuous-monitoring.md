@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667193"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797595"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -74,7 +74,7 @@ A figyelés kritikus aspektusa proaktív módon értesíti a rendszergazdákat a
 Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos telemetria és eszközökhöz férjenek hozzá, lehetővé teszi, hogy a teljes környezetben megtekintsék a mintákat, és a lehető legkevesebb időt mutassanak a (MTTD) és a visszaállítási idő (MTTR) számára.
 
 - Készítse elő az [Egyéni irányítópultokat](../azure-monitor/learn/tutorial-app-dashboards.md) a szervezet különböző szerepköreihez tartozó gyakori mérőszámok és naplók alapján. Az irányítópultok az összes Azure-erőforrásból is kombinálhatók.
-- Készítse elő a [munkafüzetek](../azure-monitor/app/usage-workbooks.md) előkészítését a fejlesztés és a műveletek közötti tudásmegosztás biztosításához. Ezek a mérőszám-diagramok és a naplók lekérdezésével, vagy akár a fejlesztők által készített hibaelhárítási útmutatókkal is készíthetők, amelyek segítségével az ügyfelek támogatását vagy műveleteit az alapvető problémák kezelésére lehet használni.
+- Készítse elő a [munkafüzetek](../azure-monitor/platform/workbooks-overview.md) előkészítését a fejlesztés és a műveletek közötti tudásmegosztás biztosításához. Ezek a mérőszám-diagramok és a naplók lekérdezésével, vagy akár a fejlesztők által készített hibaelhárítási útmutatókkal is készíthetők, amelyek segítségével az ügyfelek támogatását vagy műveleteit az alapvető problémák kezelésére lehet használni.
 
 ## <a name="continuously-optimize"></a>Folyamatos optimalizálás
  A monitorozás a népszerű Build-mérték – Learn filozófia egyik alapvető aspektusa, amely a KPI-k és a felhasználói viselkedési mérőszámok folyamatos nyomon követését javasolja, majd a tervezési iterációk segítségével optimalizálja őket. A Azure Monitor segítséget nyújt a vállalata számára releváns mérőszámok és naplók összegyűjtésében, valamint új adatpontok hozzáadásában a szükséges módon.
@@ -83,7 +83,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 - Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor](overview.md)különbségi összetevőiről.
 - [Vegyen fel folyamatos figyelést](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamatba.

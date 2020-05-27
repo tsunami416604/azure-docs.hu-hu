@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Port
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 6cccef176e3e5ba0f4774a5897f082c4847a4005
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778595"
+ms.locfileid: "83800253"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -52,6 +52,9 @@ A Batch-fiókokkal és-forgatókönyvekkel kapcsolatos háttérért lásd: [Batc
 ## <a name="view-batch-account-properties"></a>Batch-fiók tulajdonságainak megtekintése
 
 A fiók létrehozása után jelölje ki azt a beállításai és tulajdonságai eléréséhez. Az összes fiókbeállítást és tulajdonságot elérheti a bal oldali menüből.
+
+> [!NOTE]
+> A Batch-fiók neve az azonosító, ezért nem módosítható. Ha módosítania kell egy batch-fiók nevét, törölnie kell a fiókot, és létre kell hoznia egy újat a kívánt névvel.
 
 ![A Batch-fiók lap az Azure Portalon][account_blade]
 
@@ -134,7 +137,7 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.

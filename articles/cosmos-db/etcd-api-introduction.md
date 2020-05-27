@@ -4,23 +4,23 @@ description: Ez a cikk a etcd API áttekintését és főbb előnyeit ismerteti 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79498596"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797358"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>A Azure Cosmos DB etcd API bemutatása (előzetes verzió)
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Kulcsrakész globális elosztást, rugalmas skálázást biztosít az átviteli sebesség és a tárolás terén, a esetek 99% percentilis egyszámjegyű ezredmásodperces késését és a magas rendelkezésre állást, és mindezt piacvezető SLA-k biztosítják.
 
-A [Etcd](https://github.com/etcd-io/etcd) egy elosztott kulcs/érték tároló. A [Kubernetes](https://kubernetes.io/)-ben a Etcd a Kubernetes-fürtök állapotának és konfigurációjának tárolására szolgál. A etcd rendelkezésre állásának, megbízhatóságának és teljesítményének biztosítása létfontosságú a Kubernetes-fürtök általános állapotának, méretezhetőségének, rugalmasságának és teljesítményének biztosításához. 
+A [Etcd](https://github.com/etcd-io/etcd) egy elosztott kulcs/érték tároló. A [Kubernetes](https://kubernetes.io/)-ben a Etcd a Kubernetes-fürtök állapotának és konfigurációjának tárolására szolgál. A etcd rendelkezésre állásának, megbízhatóságának és teljesítményének biztosítása létfontosságú a Kubernetes-fürtök általános állapotának, méretezhetőségének, rugalmasságának és teljesítményének biztosításához.
 
-A Azure Cosmos DB etcd API-val a Azure Cosmos DB használhatja a háttérbeli tárolóként az [Azure Kubernetes](../aks/index.yml). a Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. A Azure Cosmos DB megvalósítja a etcd átviteli protokollt. A etcd API-val Azure Cosmos DB a fejlesztők automatikusan megbízható, [elérhető](high-availability.md), [globálisan elosztott](distribute-data-globally.md) Kubernetes kapnak. Ez az API lehetővé teszi a fejlesztők számára, hogy a teljes körűen felügyelt Felhőbeli natív Pásti szolgáltatáson keresztül Kubernetes az állami felügyeletet. 
+A Azure Cosmos DB etcd API-val a Azure Cosmos DB használhatja a háttérbeli tárolóként az Azure Kubernetes. a Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. A Azure Cosmos DB megvalósítja a etcd átviteli protokollt. A etcd API-val Azure Cosmos DB a fejlesztők automatikusan megbízható, [elérhető](high-availability.md), [globálisan elosztott](distribute-data-globally.md) Kubernetes kapnak. Ez az API lehetővé teszi a fejlesztők számára, hogy a teljes körűen felügyelt Felhőbeli natív Pásti szolgáltatáson keresztül Kubernetes az állami felügyeletet. 
 
 > [!NOTE]
 > A Azure Cosmos DB egyéb API-jai eltérően a etcd API-fiók nem helyezhető üzembe a Azure Portal, a CLI vagy az SDK-kon keresztül. Etcd API-fiókot csak a Resource Manager-sablon üzembe helyezésével lehet kiépíteni; a részletes lépésekért lásd: [Az Azure Kubernetes](bootstrap-kubernetes-cluster.md) üzembe helyezése Azure Cosmos db cikkben. Azure Cosmos DB etcd API jelenleg korlátozott előzetes verzióban érhető el. A regisztrációs űrlap kitöltésével regisztrálhat [az előzetes](https://aka.ms/cosmosetcdapi-signup)verzióra.
@@ -52,7 +52,7 @@ Mivel a Kubernetes-fürt növekszik, a etcd API Azure Cosmos DB-fiók rugalmasan
 
 Ha a etcd-adatok tárolása Azure Cosmos DB történik, a Kubernetes-fejlesztők automatikusan beszerezhetik a [beépített titkosítást a REST, a](database-encryption-at-rest.md) [minősítések és a megfelelőség szempontjából](compliance.md), valamint a Azure Cosmos db által támogatott [biztonsági mentési és visszaállítási képességeket](online-backup-and-restore.md) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Kubernetes használata Azure Cosmos DB](bootstrap-kubernetes-cluster.md)
 * [A Azure Cosmos DB főbb előnyei](introduction.md)

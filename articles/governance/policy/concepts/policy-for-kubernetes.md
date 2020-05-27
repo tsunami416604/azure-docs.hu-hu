@@ -1,16 +1,16 @@
 ---
-title: A Kubernetes Azure Policy megismerése
-description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
+title: Előzetes verzió – a Kubernetes Azure Policy megismerése
+description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére. Ez egy előzetes verziójú szolgáltatás.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 738b6ae0a2482d1229fdbfe89d0c3dd99a33ec6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772760"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800362"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtök Azure Policy ismertetése
+# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>A Kubernetes-fürtök Azure Policy megismerése (előzetes verzió)
 
 A Azure Policy kiterjeszti a [forgalomirányító](https://github.com/open-policy-agent/gatekeeper) v3-t, amely egy, a [nyílt házirendügynök](https://www.openpolicyagent.org/) (OPA) által biztosított _belépésvezérlés-webhook_ , amely a fürtökre központosított, konzisztens módon alkalmazható. Azure Policy lehetővé teszi, hogy a Kubernetes-fürtök megfelelőségi állapotát egyetlen helyről kezelhesse és jelentse. A bővítmény a következő funkciókat hozza létre:
 
@@ -21,7 +21,7 @@ A Azure Policy kiterjeszti a [forgalomirányító](https://github.com/open-polic
 A Kubernetes Azure Policy a következő fürt-környezeteket támogatja:
 
 - [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
-- [Azure arc-kompatibilis Kubernetes](../../../azure-arc/kubernetes/overview.md)
+- [Azure Arc-kompatibilis Kubernetes](../../../azure-arc/kubernetes/overview.md)
 - [AK-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ A Kubernetes-fürttel való Azure Policy engedélyezéséhez és használatához
 
 1. Konfigurálja a Kubernetes-fürtöt, és telepítse a bővítményt:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
-   - [Azure arc-kompatibilis Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+   - [Azure Arc-kompatibilis Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AK-motor](#install-azure-policy-add-on-for-aks-engine)
 
 1. [A Kubernetes Azure Policy nyelvének megismerése](#policy-language)
@@ -49,6 +49,9 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 1. Szüksége lesz az Azure CLI-verzió 2.0.62 vagy újabb verziójára, és konfigurálva van. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 1. Regisztrálja az erőforrás-szolgáltatókat és az előzetes verziójú funkciókat.
+
+   > [!CAUTION]
+   > Ha az előfizetéshez regisztrál egy szolgáltatást, a szolgáltatás nem regisztrálható. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
    - Azure Portal:
 
@@ -527,7 +530,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

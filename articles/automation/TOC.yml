@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: Hitelesítés konfigurálása az Amazon Web Services segítségével
           href: automation-config-aws-account.md
+        - name: Hitelesítés konfigurálása az Azure AD-vel
+          href: automation-use-azure-ad.md
         - name: Automation-futtatófiók kezelése
           href: manage-runas-account.md
         - name: Szerepköri engedélyek és biztonság kezelése

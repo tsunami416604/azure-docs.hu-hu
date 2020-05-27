@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 32b76687910b2bf028365cc6df2bc8272b393f32
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 385814677a868c0e631bd13bad3308609b174ed3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837464"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800102"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
@@ -38,9 +38,9 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 
 | Régió | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
+| Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Santiago, Chile<br />Bogota, Kolumbia<br />Buenos Aires, Argentína | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chile<br />Bogota, Kolumbia<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Columbia<br />Ecuador<br />Peru<br />Uruguay |
-| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zágráb, Horvátország<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br /> Oslo, Norvégia<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, Egyesült Királyság | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
+| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zágráb, Horvátország<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br /> Oslo, Norvégia<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />Genf, Svájc<br />London, Egyesült Királyság<br />Manchester, Egyesült Királyság | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Cape Town, Dél-Afrika<br />Johannesburg, Dél-Afrika<br />Lagos, Nigéria<br />Nairobi, Kenya | Johannesburg, Dél-Afrika | Dél-afrikai Köztársaság |
 | Közel-Kelet | Dubaj, Egyesült Arab Emírségek<br />Tel Aviv, Izrael<br />Isztambul, Törökország | Muscat, Omán<br />Fujirah, Egyesült Arab Emírségek | Katar<br />Egyesült Arab Emírségek |
 | India | Chennai, India<br />Hyderabad, India<br />Mumbai, India<br />Új-Delhi, India | Bengaluru (Bangalore), India<br />Chennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
@@ -48,6 +48,6 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Ausztrália<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az engedélyezési lista legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](https://docs.microsoft.com/rest/api/cdn/edgenodes)-t.
 

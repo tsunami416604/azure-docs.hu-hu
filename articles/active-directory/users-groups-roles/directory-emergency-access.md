@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74028134"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816182"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
 
@@ -39,12 +39,12 @@ Előfordulhat, hogy egy szervezetnek a következő helyzetekben vészhelyzeti ho
 
 ## <a name="create-emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok létrehozása
 
-Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezeknek a fiókoknak kizárólag felhőalapú fiókoknak kell lenniük, \*amelyek a. onmicrosoft.com tartományt használják, és amelyek nem összevont vagy nem szinkronizált helyszíni környezetből.
+Hozzon létre két vagy több vészhelyzeti hozzáférési fiókot. Ezeknek a fiókoknak kizárólag felhőalapú fiókoknak kell lenniük, amelyek a \* . onmicrosoft.com tartományt használják, és amelyek nem összevont vagy nem szinkronizált helyszíni környezetből.
 
 A fiókok konfigurálásakor a következő követelményeknek kell teljesülniük:
 
 - A segélyhívó fiókok nem társíthatók a szervezet egyetlen felhasználójának sem. Győződjön meg arról, hogy a fiókok nincsenek csatlakoztatva az alkalmazottak által biztosított mobil telefonokhoz, az egyes alkalmazottakkal vagy más, az alkalmazottakra vonatkozó hitelesítő adatokkal rendelkező hardveres jogkivonatokhoz. Ez az elővigyázatosság olyan példányokra vonatkozik, amelyekben az egyes alkalmazottak nem érhetők el, ha a hitelesítő adatok szükségesek. Fontos annak biztosítása, hogy a regisztrált eszközök egy ismert, biztonságos helyen legyenek tárolva, amely több módon kommunikál az Azure AD-vel.
-- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure MFA más mechanizmus lenne.  Ha azonban az Azure MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor vegye fontolóra a különböző megközelítését, például a feltételes hozzáférés használatát egy harmadik féltől származó MFA-szolgáltatóval.
+- A vészhelyzeti hozzáférési fiókhoz használt hitelesítési mechanizmusnak eltérőnek kell lennie a többi rendszergazdai fiók által használttól, beleértve az egyéb vészhelyzeti hozzáférési fiókokat is.  Ha például a normál rendszergazdai bejelentkezés a helyszíni MFA-n keresztül történik, akkor az Azure MFA más mechanizmus lenne.  Ha azonban az Azure MFA a rendszergazdai fiókok hitelesítésének elsődleges része, akkor érdemes lehet más megközelítést használni, például ha feltételes hozzáférést használ egy harmadik féltől származó MFA-szolgáltatóhoz [Egyéni vezérlőkön](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)keresztül.
 - A használat hiánya miatt az eszköznek vagy a hitelesítő adatnak nem szabad lejárnia, illetve nem lehet az automatikus karbantartás hatóköre.  
 - A vészhelyzeti hozzáférési fiókok esetében a globális rendszergazdai szerepkör-hozzárendelést véglegesen el kell végezni. 
 
@@ -79,7 +79,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>A break Glass-fiókok objektumazonosítók beszerzése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely hozzá van rendelve a felhasználói rendszergazdai szerepkörhöz.
-1. Válassza ki **Azure Active Directory** > **felhasználókat**.
+1. Válassza ki **Azure Active Directory**  >  **felhasználókat**.
 1. Keressen rá a break-Glass fiókra, és válassza ki a felhasználó nevét.
 1. Másolja ki és mentse az Object ID attribútumot, hogy később is használhassa.
 1. Ismételje meg az előző lépéseket a második break-Glass-fióknál.
@@ -89,7 +89,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a megfigyelő közreműködő szerepkörhöz van rendelve Azure monitorban.
 1. Válassza a **minden szolgáltatás**lehetőséget, írja be a "log Analytics" kifejezést a Keresés mezőbe, majd válassza ki **log Analytics munkaterületeket**.
 1. Jelöljön ki egy munkaterületet.
-1. A munkaterületen válassza a **riasztások** > **új riasztási szabály**lehetőséget.
+1. A munkaterületen válassza a **riasztások**  >  **új riasztási szabály**lehetőséget.
     1. Az **erőforrás**területen ellenőrizze, hogy az előfizetés az, amelyhez a riasztási szabályt hozzá kívánja rendelni.
     1. A **feltétel**területen válassza a **Hozzáadás**lehetőséget.
     1. Válassza az **egyéni naplók keresése** lehetőséget a **jel neve**alatt.
@@ -131,7 +131,7 @@ A szervezeteknek figyelniük kell a bejelentkezési és a naplózási tevékenys
 1. Válassza ki a **műveletet** **e-mail/SMS/leküldés/hangként**.
 1. Válassza a **részletek szerkesztése** lehetőséget a konfigurálni kívánt értesítési módszerek kiválasztásához, majd adja meg a szükséges kapcsolattartási adatokat, majd a részletek mentéséhez kattintson **az OK gombra** .
 1. Adja meg az aktiválni kívánt további műveleteket.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="validate-accounts-regularly"></a>Fiókok rendszeres ellenőrzése
 

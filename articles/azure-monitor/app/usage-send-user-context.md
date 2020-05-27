@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670933"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797677"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
@@ -22,7 +22,7 @@ Application Insights lehetővé teszi a felhasználók figyelését és nyomon k
 - [Felhasználók, munkamenetek, események](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Tölcsérek](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [Adatmegőrzés](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorszok
-- [Munkafüzetek](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 A felhasználó által az idő múlásával nyomon követhető, Application Insights minden felhasználóhoz vagy munkamenethez szüksége van egy AZONOSÍTÓra. A következő azonosítókat adja meg minden egyéni esemény vagy lap nézetben.
 
@@ -126,7 +126,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [Felhasználók, munkamenetek és események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Megőrzés](usage-retention.md)
-    - [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
+    - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)

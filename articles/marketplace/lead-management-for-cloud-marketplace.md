@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789844"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798594"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 
@@ -86,7 +86,7 @@ Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Fü
 
 **Hol kaphatok segítséget az érdeklődői cél beállításakor?** 
 
-A dokumentációt az [ügyfelek beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) vagy támogatási jegy beküldése a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban című cikk tartalmazza. Válassza az ajánlat típusa és az érdeklődő kezelése lehetőséget. 
+A dokumentációt az [ügyfelek beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) vagy támogatási jegy beküldése a [Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásban című cikk tartalmazza. Válassza az ajánlat típusa és az érdeklődő kezelése lehetőséget. 
 
 **Meg kell-e adni egy érdeklődői célhelyet, hogy közzé lehessen tenni egy ajánlatot a piactéren?**
 
@@ -116,7 +116,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Ajánlat neve> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Ajánlat neve> 
 
 OID = 00Do0000000ZHog 
 
@@ -183,7 +183,7 @@ Az érdeklődő csak akkor lesz írva, ha az Azure BLOB Storage-t az érdeklőd�
 
 **Kaptam egy e-mailt a piactérről, miért nem találom a vezetőt a CRM-ben?**  
 
-Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes azonosításra alkalmas adatokat az. edu tartományból. Támogatási jegy küldése a [Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásban.
+Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes azonosításra alkalmas adatokat az. edu tartományból. Támogatási jegy küldése a [Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásban.
 
 **Az Azure Table/Azure BLOBot az érdeklődői célként konfiguráltam, Hogyan tekinthetem meg az érdeklődőket?** 
 
@@ -193,7 +193,7 @@ A blobot vagy a táblázatot elérheti Azure Portalból, vagy ingyenesen letölt
 
 Igen, kövesse az utasításokat az Azure Table + Function a dokumentációban történő beállításához [.](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md) 
 
-**Úgy konfiguráltam a Salesforce, hogy az érdeklődői célként miért nem találom az érdeklődőket?** 
+**Úgy konfiguráltam a Salesforce, hogy az érdeklődői célként miért nem találom az érdeklődőket?**
 
 Ellenőrizze, hogy a web to Lead űrlap kötelező mező-e a lista alapján. Ha igen, váltson át a mezőre egy nem kötelező szövegmezőre.  
  

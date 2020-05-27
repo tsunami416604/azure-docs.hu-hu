@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 5ae33a69b2c5ec728a8c711ced20419a773dca78
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: b5bdbb76a822f8b6d5134da819828b3dee518165
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979301"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806436"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -249,6 +249,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 Az alkalmazás elindításához nyissa meg kedvenc webböngészőjét, és mutasson a nyilvános URL-címre, amelyen a mappát tárolja, adja meg a [régiót](../../../../regions.md), majd a mikrofon használatával aktiválja a felismerést. Ha konfigurálva van, az beszerez egy jogkivonatot a jogkivonatforrásból.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[!INCLUDE [footer](footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

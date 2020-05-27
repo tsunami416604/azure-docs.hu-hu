@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671052"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797831"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Ismerje meg, hogy az ügyfelek hogyan használják az alkalmazást Application Insights Tölcsérekkel
 
@@ -42,11 +42,11 @@ Az előző képernyőképen öt kiemelt terület szerepel. Ezek a tölcsérek fu
 4. A korábbi konverziós gráf az elmúlt 90 napban mutatja be a konverziós arányt. 
 5. A felhasználók eszköz elérésével jobban megismerheti a felhasználókat. Az egyes lépésekben szűrőket is használhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   * [A használat áttekintése](usage-overview.md)
   * [Felhasználók, munkamenetek és események](usage-segmentation.md)
   * [Megőrzés](usage-retention.md)
-  * [Munkafüzetek](../../azure-monitor/app/usage-workbooks.md)
+  * [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
   * [Felhasználói környezet hozzáadása](usage-send-user-context.md)
   * [Power BI-exportálás](../../azure-monitor/app/export-power-bi.md )
 

@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701522"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815723"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -39,7 +39,7 @@ Először létre kell hoznia egy Application Insights erőforrást a Azure Monit
    | Beállítás        | Érték           | Description  |
    | ------------- |:-------------|:-----|
    | **Név**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
+   | **Resource Group**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
    | **Hely** | USA keleti régiója | Az Ön közelében található hely, vagy a közelében, ahol az alkalmazás üzemeltetve van |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -254,13 +254,13 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
 Alapértelmezés szerint a metrikák exportőre szabványos mérőszámok egy készletét küldi Azure Monitorra. Ezt úgy tilthatja le, ha a `enable_standard_metrics` jelölőt a `False` metrika-exportőr konstruktorában állítja be.
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 Az alábbi lista a jelenleg eljuttatott szabványos metrikákat tartalmazza:
 
 - Rendelkezésre álló memória (bájt)
@@ -338,8 +338,8 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
 4. Az exportőr a Azure Monitorba küldi a naplófájlokat. Az adat a alatt található `traces` . 
 
-> [!NOTE]
-> `traces`Ebben a kontextusban nem ugyanaz, mint a `Tracing` . `traces`arra a telemetria-típusra hivatkozik, amelyet a Azure Monitor fog látni, amikor a-t használja `AzureLogHandler` . `Tracing`egy OpenCensus-koncepcióra hivatkozik, és az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)vonatkozik.
+    > [!NOTE]
+    > `traces`Ebben a kontextusban nem ugyanaz, mint a `Tracing` . `traces`arra a telemetria-típusra hivatkozik, amelyet a Azure Monitor fog látni, amikor a-t használja `AzureLogHandler` . `Tracing`egy OpenCensus-koncepcióra hivatkozik, és az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)vonatkozik.
 
 5. A naplóüzenetek formázásához használhatja `formatters` a beépített Python- [naplózási API](https://docs.python.org/3/library/logging.html#formatter-objects)-t.
 
@@ -371,8 +371,8 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
     ```
 
 6. Az *extra* kulcsszó argumentumban egyéni tulajdonságokat is hozzáadhat a naplóüzenetek számára a custom_dimensions mező használatával. Ezek kulcs-érték párokként fognak megjelenni a `customDimensions` Azure monitorban.
-> [!NOTE]
-> Ahhoz, hogy ez a funkció működjön, át kell adnia egy szótárt a custom_dimensions mezőbe. Ha más típusú argumentumokat ad át, a naplózó figyelmen kívül hagyja őket.
+    > [!NOTE]
+    > Ahhoz, hogy ez a funkció működjön, át kell adnia egy szótárt a custom_dimensions mezőbe. Ha más típusú argumentumokat ad át, a naplózó figyelmen kívül hagyja őket.
 
     ```python
     import logging
@@ -395,25 +395,25 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
 
 A OpenCensus Python nem követ automatikusan nyomon és nem küld `exception` telemetria. Ezeket a rendszer a `AzureLogHandler` használatával a Python naplózási könyvtárán keresztül a kivételek használatával továbbítja. A normál naplózáshoz hasonlóan egyéni tulajdonságokat is hozzáadhat.
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 Mivel a kivételeket explicit módon kell naplózni, a felhasználó a nem kezelt kivételek naplózásához. A OpenCensus nem korlátozza azt a korlátozást, hogy a felhasználó hogyan kívánja ezt megtenni, ha a kivételek telemetria explicit módon naplózzák.
 
 #### <a name="sampling"></a>Mintavételezés
