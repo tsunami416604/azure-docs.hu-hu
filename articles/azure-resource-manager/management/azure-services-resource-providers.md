@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 95846a74f9556fcccb3f583f365679c8ebadecee
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559851"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020149"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. igazolás | Azure-igazolási szolgáltatás |
 | Microsoft.Authorization | [Azure Resource Manager](../index.yml) |
-| Microsoft. Automation | [Automation](../../automation/index.yml) |
+| Microsoft. Automation | [Automatizálás](../../automation/index.yml) |
 | Microsoft. AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft. AzureData | SQL Server beállításjegyzék |
 | Microsoft. AzureStack | Core |
@@ -120,7 +120,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
-| Microsoft. peering | [Azure-partneri szolgáltatás](../../peering-service/index.yml) |
+| Microsoft. peering | [Azure Peering Service](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. Portal | [Azure Portal](/azure/azure-portal/) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
@@ -143,8 +143,8 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. SignalRService | [Azure SignalR szolgáltatás](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Licenc |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
+| Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Felügyelt Azure SQL-példány](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
+| Microsoft. SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](/azure/hpc-cache/) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |

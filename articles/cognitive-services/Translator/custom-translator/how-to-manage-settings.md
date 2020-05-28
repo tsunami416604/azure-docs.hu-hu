@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992946"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -39,17 +39,17 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
 ### <a name="add-existing-key"></a>Meglévő kulcs hozzáadása
 
-1.  Navigáljon a munkaterület "beállítások" lapjára.
-2.  Kattintson a kulcs hozzáadása lehetőségre.
+1.    Navigáljon a munkaterület "beállítások" lapjára.
+2.    Kattintson a kulcs hozzáadása lehetőségre.
 
-    ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
+   ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key.png)
 
 3. A párbeszédpanelen adja meg a fordító-előfizetés kulcsát, majd kattintson a Hozzáadás gombra.
 
     ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  A kulcs hozzáadása után bármikor módosíthatja vagy törölheti a kulcsot.
+4.    A kulcs hozzáadása után bármikor módosíthatja vagy törölheti a kulcsot.
 
-    ![Előfizetés kulcsa a Hozzáadás után](media/how-to/subscription-key-after-add.png)
+   ![Előfizetés kulcsa a Hozzáadás után](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Saját munkaterület kezelése
 
@@ -59,47 +59,47 @@ Ha a munka különböző részeit különböző személyekkel kell megosztani, a
 
 ## <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-1.  Navigáljon a munkaterület "beállítások" lapjára.
-2.  Az "új munkaterület létrehozása" szakaszban kattintson az "új munkaterület" gombra.
+1.    Navigáljon a munkaterület "beállítások" lapjára.
+2.    Az "új munkaterület létrehozása" szakaszban kattintson az "új munkaterület" gombra.
 
-    ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
+   ![Új munkaterület létrehozása](media/how-to/create-new-workspace.png)
 
-4.  A párbeszédpanelen adja meg az új munkaterület nevét.
-5.  Kattintson a Létrehozás gombra.
+4.    A párbeszédpanelen adja meg az új munkaterület nevét.
+5.    Kattintson a Létrehozás gombra.
 
-    ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
+   ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Munkaterület megosztása
 
 Az egyéni fordítóban megoszthatja a munkaterületet másokkal, ha a munka különböző részeit különböző személyekkel kell megosztani.
 
-1.  Navigáljon a munkaterület "beállítások" lapjára.
-2.  Kattintson a megosztás gombra a "megosztási beállítások" szakaszban.
+1.    Navigáljon a munkaterület "beállítások" lapjára.
+2.    Kattintson a megosztás gombra a "megosztási beállítások" szakaszban.
 
-    ![Munkaterület megosztása](media/how-to/share-workspace.png)
+   ![Munkaterület megosztása](media/how-to/share-workspace.png)
 
-3.  A párbeszédpanelen adja meg a munkaterület által megosztott e-mail-címek vesszővel tagolt listáját. Győződjön meg arról, hogy a személy által az egyéni Fordítóba való bejelentkezéshez használt e-mail-címet használja. Ezután válassza ki a megfelelő szintű megosztási engedélyt.
+3.    A párbeszédpanelen adja meg a munkaterület által megosztott e-mail-címek vesszővel tagolt listáját. Győződjön meg arról, hogy a személy által az egyéni Fordítóba való bejelentkezéshez használt e-mail-címet használja. Ezután válassza ki a megfelelő szintű megosztási engedélyt.
 
-4.  Ha a munkaterület még a "saját munkaterület" nevű alapértelmezett névvel rendelkezik, a munkaterület megosztása előtt módosítania kell azt.
-5.  Kattintson a Save (Mentés) gombra.
+4.    Ha a munkaterület még a "saját munkaterület" nevű alapértelmezett névvel rendelkezik, a munkaterület megosztása előtt módosítania kell azt.
+5.    Kattintson a Save (Mentés) gombra.
 
 ## <a name="sharing-permissions"></a>Megosztási engedélyek
 
-1.  **Olvasó:** A munkaterület olvasói megtekinthetik a munkaterület összes adatát.
+1.    **Olvasó:** A munkaterület olvasói megtekinthetik a munkaterület összes adatát.
 
-2.  **Szerkesztő:** A munkaterületen lévő szerkesztők hozzáadhatnak dokumentumokat, betanítási modelleket és törölhetnek dokumentumokat és projekteket. Hozzáadhatnak egy előfizetési kulcsot, de nem módosíthatják, hogy a munkaterület hogyan legyen megosztva, törölje a munkaterületet, vagy módosítsa a munkaterület nevét.
+2.    **Szerkesztő:** A munkaterületen lévő szerkesztők hozzáadhatnak dokumentumokat, betanítási modelleket és törölhetnek dokumentumokat és projekteket. Hozzáadhatnak egy előfizetési kulcsot, de nem módosíthatják, hogy a munkaterület hogyan legyen megosztva, törölje a munkaterületet, vagy módosítsa a munkaterület nevét.
 
-3.  **Tulajdonos:** A tulajdonos teljes hozzáféréssel rendelkezik a munkaterülethez.
+3.    **Tulajdonos:** A tulajdonos teljes hozzáféréssel rendelkezik a munkaterülethez.
 
 ## <a name="change-sharing-permission"></a>Megosztási engedély módosítása
 
 Ha egy munkaterület meg van osztva, a "megosztási beállítások" szakasz megjeleníti az összes e-mail-címet, amelyet a munkaterület megosztva használ. Ha tulajdonosi hozzáféréssel rendelkezik a munkaterülethez, módosíthatja az egyes e-mail-címek meglévő megosztási engedélyeit.
 
-1.  Az egyes e-mailek "megosztási beállítások" szakaszában a legördülő menü megjeleníti az aktuális jogosultsági szintet.
+1.    Az egyes e-mailek "megosztási beállítások" szakaszában a legördülő menü megjeleníti az aktuális jogosultsági szintet.
 
-2.  Kattintson a legördülő menüre, és válassza ki az új jogosultsági szintet, amelyet hozzá szeretne rendelni ehhez az e-mail-címéhez.
+2.    Kattintson a legördülő menüre, és válassza ki az új jogosultsági szintet, amelyet hozzá szeretne rendelni ehhez az e-mail-címéhez.
 
-    ![Megosztási engedély beállításai](media/how-to/sharing-permission-settings.png)
+   ![Megosztási engedély beállításai](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 

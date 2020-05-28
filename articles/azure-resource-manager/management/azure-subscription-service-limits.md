@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584067"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021211"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -323,7 +323,7 @@ A következő táblázat a v1, v2, standard és WAF SKU-ra vonatkozik, hacsak m�
 
 ## <a name="sql-database-limits"></a>SQL Database korlátok
 
-SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás-korlátozásokat](../../sql-database/sql-database-vcore-resource-limits-single-databases.md), [SQL Database a rugalmas készletek és a készletezett adatbázisok](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)erőforrás-korlátait, valamint [SQL Database erőforrás-korlátozásokat a felügyelt példányok számára](../../sql-database/sql-database-managed-instance-resource-limits.md).
+SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Database erőforrás-korlátozásokat](../../azure-sql/database/resource-limits-vcore-single-databases.md), [SQL Database a rugalmas készletek és a készletezett adatbázisok](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)erőforrás-korlátait, valamint [SQL Database erőforrás-korlátozásokat a felügyelt példányok számára](../../azure-sql/managed-instance/resource-limits.md).
 
 ## <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
 
@@ -411,7 +411,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

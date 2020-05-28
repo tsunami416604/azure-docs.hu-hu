@@ -1,18 +1,18 @@
 ---
-title: Fények
+title: Jelenet világítása
 description: A fényforrás leírása és tulajdonságai
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680946"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022146"
 ---
-# <a name="lights"></a>Fények
+# <a name="scene-lighting"></a>Jelenet világítása
 
 Alapértelmezés szerint a távolról megjelenített objektumok egy [Sky-fénnyel](sky.md)vannak kivilágítva. A legtöbb alkalmazás esetében ez már elegendő, de további fényforrásokat is hozzáadhat a jelenethez.
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint a távolról megjelenített objektumok egy [Sky-fénnye
 
 ## <a name="common-light-component-properties"></a>Gyakori világos összetevő tulajdonságai
 
-Minden világos típus az absztrakt alaposztályból `LightComponent` származik, és megosztja ezeket a tulajdonságokat:
+Minden világos típus az absztrakt alaposztályból származik `LightComponent` , és megosztja ezeket a tulajdonságokat:
 
 * **Szín:** A fény színe a gamma- [térben](https://en.wikipedia.org/wiki/SRGB). Az Alpha figyelmen kívül lesz hagyva.
 
@@ -32,7 +32,7 @@ Minden világos típus az absztrakt alaposztályból `LightComponent` származik
 
 ## <a name="point-light"></a>Pont fénye
 
-Az Azure távoli renderelés során `PointLightComponent` a nem csak egyetlen pontról, hanem egy kis gömbből vagy egy kis csőből is képes fényt kibocsátani a lágyabb fényforrások szimulálása érdekében.
+Az Azure távoli renderelés során a `PointLightComponent` nem csak egyetlen pontról, hanem egy kis gömbből vagy egy kis csőből is képes fényt kibocsátani a lágyabb fényforrások szimulálása érdekében.
 
 ### <a name="pointlightcomponent-properties"></a>PointLightComponent tulajdonságai
 
@@ -40,23 +40,23 @@ Az Azure távoli renderelés során `PointLightComponent` a nem csak egyetlen po
 
 * **Hossz:** Ha mindkettő `Length` és `Radius` nem nulla, a fény cső fényként működik. Ez a neon-csövek szimulálására használható.
 
-* **AttenuationCutoff:** Ha a bal oldali (0, 0) értékre áll, a fény gyengülése csak a `Intensity`sajáttól függ. Megadhat azonban olyan egyéni minimális/maximális távolságot, ameddig a fény intenzitása lineárisan 0-ra van méretezve. Ezzel a funkcióval egy adott fény befolyásának kisebb körét lehet kikényszeríteni.
+* **AttenuationCutoff:** Ha a bal oldali (0, 0) értékre áll, a fény gyengülése csak a sajáttól függ `Intensity` . Megadhat azonban olyan egyéni minimális/maximális távolságot, ameddig a fény intenzitása lineárisan 0-ra van méretezve. Ezzel a funkcióval egy adott fény befolyásának kisebb körét lehet kikényszeríteni.
 
 * **ProjectedCubemap:** Ha érvényes [cubemap](../../concepts/textures.md)van beállítva, a textúrát a rendszer a fény környező geometriáján vetíti. A cubemap színe a fény színével van modulálva.
 
 ## <a name="spot-light"></a>Helyszíni fény
 
-A `SpotLightComponent` hasonló a következőhöz `PointLightComponent` , de a fény korlátozza a kúp alakját. A kúp tájolását a *tulajdonosi entitás negatív z-tengelye határozza meg*.
+A hasonló a következőhöz, `SpotLightComponent` `PointLightComponent` de a fény korlátozza a kúp alakját. A kúp tájolását a *tulajdonosi entitás negatív z-tengelye határozza meg*.
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent tulajdonságai
 
-* **RADIUS:** Ugyanaz, mint a `PointLightComponent`esetében.
+* **RADIUS:** Ugyanaz, mint a esetében `PointLightComponent` .
 
 * **SpotAngleDeg:** Ez az intervallum a kúp belső és külső szögét határozza meg fokban mérve. A belső szögen belül minden a teljes fényerővel világít. A rendszer egy hatókört alkalmaz a Penumbra-effektust generáló külső szög irányába.
 
 * **FalloffExponent:** Meghatározza, hogy a belső és a külső kúp szöge között a fakulási átmenetek milyen élesben legyenek. A magasabb érték élesebb átmenetet eredményez. Az alapértelmezett 1,0 a lineáris átmenetet eredményezi.
 
-* **AttenuationCutoff:** Ugyanaz, mint a `PointLightComponent`esetében.
+* **AttenuationCutoff:** Ugyanaz, mint a esetében `PointLightComponent` .
 
 * **Projected2dTexture:** Ha érvényes [2D-textúrára](../../concepts/textures.md)van beállítva, a rendszer a képet a geometriában ábrázolja, és a fény ragyog. A textúra színe a fény színével van modulálva.
 

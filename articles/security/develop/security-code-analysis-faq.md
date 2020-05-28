@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460222"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015845"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
@@ -48,7 +48,7 @@ A legtöbb esetben az Azure DevOps felépítési feladatai a biztonsági eszköz
 
 Észrevehető különbségek:
 
-- Az eszközök az ügynök $ (Build. SourcesDirectory) vagy a (z)% BUILD_SOURCESDIRECTORY% forrás mappájából futnak. Példa a C:\agent\_work\1\s.
+- Az eszközök az ügynök $ (Build. SourcesDirectory) vagy a (z)% BUILD_SOURCESDIRECTORY% forrás mappájából futnak. Példa a C:\agent \_ work\1\s.
 - Az argumentumok elérési útjai a korábban felsorolt forrás könyvtár gyökeréhez képest relatívak lehetnek. Az elérési utak is lehetnek abszolútak. Az abszolút elérési utakat az Azure DevOps Build változók használatával vagy egy helyszíni ügynök futtatásával, a helyi erőforrások ismert telepítési helyeivel érheti el.
 - Az eszközök automatikusan biztosítják a kimeneti fájl elérési útját vagy mappáját. Ha kimeneti helyet ad meg egy felépítési feladathoz, a rendszer lecseréli a helyet a naplófájlok jól ismert helyének elérési útjára a Build-ügynökön.
 - Néhány további parancssori argumentum módosul bizonyos eszközök esetében. Az egyik példa a grafikus felhasználói felület indítását biztosító beállítások hozzáadása vagy eltávolítása.
@@ -63,7 +63,7 @@ A felépítési feladatok szűrnek néhány felhasználói adatot. Erre a kérd�
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Hol jönnek létre a mentett eszközök által létrehozott kimeneti fájlok? 
 
-A Build Tasks automatikusan hozzáadja a kimeneti elérési utakat ehhez a jól ismert helyhez a Build-ügynökön:\_$ (Agent. BuildDirectory) sdt\logs. Mivel ezen a helyen szabványosítjuk az adatokat, a Code-Analysis naplókat előállító vagy használó csapatok hozzáférhetnek a kimenethez.
+A Build Tasks automatikusan hozzáadja a kimeneti elérési utakat ehhez a jól ismert helyhez a Build-ügynökön: $ (Agent. BuildDirectory) \_ sdt\logs. Mivel ezen a helyen szabványosítjuk az adatokat, a Code-Analysis naplókat előállító vagy használó csapatok hozzáférhetnek a kimenethez.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Várólistára helyezhetek egy buildet a feladatok futtatásához egy üzemeltetett Build-ügynökön? 
 
@@ -123,11 +123,11 @@ A CredScan kimeneti fájljából származó titkos kód kivonatának kulcsát az
 
 A fájl kifejezés lehet fájlnév. Egy teljes fájl elérési útjának vagy fájlnevének basename része is lehet. Helyettesítő karakterek nem használhatók.
 
-A következő példák bemutatják, hogyan lehet \<letiltani a fájlt a InputPath> \src\js\lib\angular.js
+A következő példák bemutatják, hogyan tilthatja le a fájlt a \<InputPath> \src\JS\lib\angular.js
 
 Példák az érvényes letiltási szabályokra:
 
-- \<InputPath> \src\JS\lib\angular.js – letiltja a fájlt a megadott elérési úton
+- \<InputPath>\src\JS\lib\angular.js – letiltja a fájlt a megadott elérési úton
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
@@ -155,7 +155,7 @@ Példák az érvényes letiltási szabályokra:
 A következő források segítenek a titkok biztonságos kezelésében és a bizalmas adatok elérésében az alkalmazásokon belül:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Azure AD-Managed Service Identity (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Felügyelt identitások Azure App Service és Azure Functions](../../app-service/overview-managed-identity.md)
@@ -173,7 +173,7 @@ A tartalmi kereső a következőképpen van definiálva:
 - **Name (név**): a hitelesítőadat-olvasó kimeneti fájljaiban használni kívánt leíró kereső neve. Javasoljuk, hogy a keresőmotor neveként a teve-Case elnevezési konvenciót használja.
 - **RuleId**: a kereső stabil átlátszatlan azonosítója:
     - A hitelesítő adatok képolvasó alapértelmezett keresője egy **RuleId** , például a CSCAN0010, a CSCAN0020 vagy a CSCAN0030 értékhez van rendelve. Az utolsó számjegy a keresési csoportok lehetséges egyesítésére és a reguláris kifejezések (regex) használatával való felosztására van fenntartva.
-    - A testreszabott kereső **RuleId** értékének saját névtérrel kell rendelkeznie. Ilyenek például a\<CSCAN\>-Namespace 0010,\<a\>CSCAN-Namespace 0020 és\<a\>CSCAN-Namespace 0030.
+    - A testreszabott kereső **RuleId** értékének saját névtérrel kell rendelkeznie. Ilyenek például a következők: CSCAN- \<Namespace\> 0010, CSCAN- \<Namespace\> 0020 és CSCAN- \<Namespace\> 0030.
     - A teljes kereső neve egy **RuleId** érték és egy kereső neve kombinációja. Ilyenek például a CSCAN0010. KeyStoreFiles és CSCAN0020. Base64EncodedCertificate.
 - **ResourceMatchPattern**: fájlkiterjesztések a keresővel való kereséshez.
 - **ContentSearchPatterns**: karakterláncok tömbje, amely a megfelelő regex-utasításokat tartalmazza. Ha nincs megadva keresési minta, a rendszer az **ResourceMatchPattern** értékkel egyező összes fájlt visszaadja.
@@ -202,13 +202,13 @@ Előfordulhat, hogy a fő Build és a a a a a a a a a a a a a (a)-elemzők lép�
 
 A teljes hibaüzenet:
 
-"a CSC. exe kilépett az 1. hibakódmal – az Analyzer *AAAA* -példánya nem hozható létre a C:\\*BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A megadott fájl nem található. "
+"a CSC. exe kilépett az 1. hibakódmal – az Analyzer *AAAA* -példánya nem hozható létre a C: \\ *BBBB*. dll fájlból: nem sikerült betölteni a (z)" Microsoft. CodeAnalysis, Version =*x. x. x.* x, Culture = semleges, PublicKeyToken = 31bf3856ad364e35 "vagy annak valamelyik függőségét. A megadott fájl nem található. "
 
 Győződjön meg arról, hogy a fordító támogatja a a a a a a "a" A **CSC. exe** verziójának futtatásához a 2,6-es vagy újabb verziójú verziószámot kell jelenteni.
 
 Előfordulhat, hogy egy. csproj-fájl felülbírálja a Build Machine Visual Studio telepítését a Microsoft.Net. Compilers csomagból való hivatkozással. Ha nem kívánja használni a fordító egy adott verzióját, távolítsa el a Microsoft.Net. Compilers mutató hivatkozásait. Ellenkező esetben győződjön meg arról, hogy a hivatkozott csomag verziószáma 2,6 vagy újabb.
 
-Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: f:\ts-services-\_123 work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Próbálja meg lekérni a hiba-napló elérési útját, amely a **CSC. exe/errorlog** beállításban van megadva. A beállítás és az elérési út megjelenik a következő naplóban: a-elemzők felépítési feladata. Ilyenek például a **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>A C# fordítóprogram verziója nem elég közelmúltbeli
 

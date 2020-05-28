@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) lévő fürtök hi
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668315"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020047"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a hitelesítéshez és az engedélyezéshez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -19,6 +19,7 @@ Az Azure Kubernetes szolgáltatásban (ak) lévő fürtök üzembe helyezése é
 Ez az ajánlott eljárás azt ismerteti, hogyan kezelhető a fürt operátora az AK-fürtök hozzáférésének és identitásának kezeléséhez. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * AK-fürt felhasználóinak hitelesítése Azure Active Directory
 > * Az erőforrásokhoz való hozzáférés szabályozása szerepköralapú hozzáférés-vezérléssel (RBAC)
 > * Felügyelt identitás használata más szolgáltatásokkal való hitelesítéshez
@@ -62,7 +63,7 @@ rules:
   verbs: ["*"]
 ```
 
-Ekkor létrejön egy RoleBinding, amely az alábbi YAML-jegyzékben látható módon köti össze az Azure AD felhasználói *developer1\@contoso.com* a RoleBinding.
+Ekkor létrejön egy RoleBinding, amely az alábbi YAML-jegyzékben látható módon köti össze az Azure AD felhasználói *developer1 \@ contoso.com* a RoleBinding.
 
 ```yaml
 kind: RoleBinding
@@ -80,7 +81,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Ha *a\@developer1-contoso.com* hitelesítve van az AK-fürtön, teljes körű engedélyekkel rendelkeznek a *Pénzügy-alkalmazás* névtér erőforrásaihoz. Így logikailag elkülönítheti és szabályozhatja az erőforrásokhoz való hozzáférést. Az Kubernetes-RBAC az előző szakaszban tárgyalt Azure AD-integrációval együtt kell használni.
+Ha a *developer1- \@ contoso.com* hitelesítve van az AK-fürtön, teljes körű engedélyekkel rendelkeznek a *Pénzügy-alkalmazás* névtér erőforrásaihoz. Így logikailag elkülönítheti és szabályozhatja az erőforrásokhoz való hozzáférést. Az Kubernetes-RBAC az előző szakaszban tárgyalt Azure AD-integrációval együtt kell használni.
 
 Ha szeretné megtudni, hogyan használhatja az Azure AD-csoportokat a Kubernetes-erőforrásokhoz való hozzáférés vezérlésére a RBAC használatával, lásd: a [fürt erőforrásaihoz való hozzáférés szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitások használata az AK-ban][azure-ad-rbac].
 
@@ -97,14 +98,14 @@ Felügyelt identitások az Azure-erőforrásokhoz (jelenleg a társított AK-bel
 
 Ha a hüvely egy Azure-szolgáltatáshoz fér hozzá, a hálózati szabályok átirányítják a forgalmat a Node Management Identity (NMI) kiszolgálóra. A NMI-kiszolgáló azonosítja az Azure-szolgáltatásokhoz hozzáférést kérő hüvelyeket a távoli címük alapján, és lekérdezi a felügyelt identitás-vezérlőt (MIC). A MIC ellenőrzi az Azure Identity-hozzárendeléseket az AK-fürtben, és a NMI-kiszolgáló egy hozzáférési jogkivonatot kér Azure Active Directorytól (AD) a pod identitás-leképezése alapján. Az Azure AD hozzáférést biztosít a NMI-kiszolgálóhoz, amelyet a rendszer visszaadott a pod-nek. Ezt a hozzáférési jogkivonatot a pod használhatja a szolgáltatásokhoz való hozzáféréshez az Azure-ban.
 
-A következő példában egy fejlesztő létrehoz egy Pod-t, amely egy felügyelt identitást használ egy Azure SQL Server-példányhoz való hozzáférés kérelmezéséhez:
+A következő példában egy fejlesztő létrehoz egy Pod-t, amely egy felügyelt identitást használ a Azure SQL Databasehoz való hozzáférés kéréséhez:
 
 ![A pod-identitások lehetővé teszik, hogy a pod automatikusan kérjen hozzáférést más szolgáltatásokhoz](media/operator-best-practices-identity/pod-identities.png)
 
 1. A fürt operátora először létrehoz egy szolgáltatásfiókot, amely az identitások hozzárendelésére szolgál, amikor a hüvelyek a szolgáltatásokhoz való hozzáférést igényelnek.
 1. A rendszer üzembe helyezi a NMI-kiszolgálót és a MIC-t, hogy továbbítsa a hozzáférési tokenekhez tartozó összes Pod-kérelmet az Azure AD-be.
 1. A fejlesztő olyan felügyelt identitással helyez üzembe egy Pod-t, amely hozzáférési jogkivonatot kér a NMI-kiszolgálón keresztül.
-1. A rendszer visszaküldi a tokent a pod-nak, és egy Azure SQL Server-példány elérésére használja.
+1. A rendszer visszaküldi a jogkivonatot a pod-nak, és hozzáfér Azure SQL Database
 
 > [!NOTE]
 > A felügyelt Pod-identitások egy nyílt forráskódú projekt, amelyet az Azure technikai támogatása nem támogat.

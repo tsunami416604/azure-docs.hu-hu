@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09f0e0f47ecd94c6db67b3973218cc1323bccde3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 625c1ea474693732ab19e82de4730d2f8c971979
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736126"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117482"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -196,15 +196,15 @@ Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanul
 
 ### <a name="data-featurization"></a>Az adatfeaturization
 
-Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-use-automated-ml-for-ml-models.md#featurization).
+Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](how-to-configure-auto-features.md#) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat.
 
-A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `featurization` . A következő táblázat a featurization elfogadott beállításait mutatja be a [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
+A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a featurization elfogadott beállításait mutatja be a [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
 |Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
-|`"featurization":`&nbsp;`'FeaturizationConfig'`| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
-|`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) .|
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-features.md#customize-featurization).|
 
 > [!NOTE]
 > Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.
@@ -361,7 +361,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatizált funkciók tervezése
 
-Tekintse meg az előfeldolgozás és az [automatizált funkcióinak](concept-automated-ml.md#preprocess) listáját, amely akkor fordul elő, ha `"featurization": 'auto'` .
+Tekintse meg az előfeldolgozás és az [automatizált funkcióinak]() listáját, amely akkor fordul elő, ha `"featurization": 'auto'` .
 
 Megfontolandó példa:
 + Négy bemeneti funkció létezik: A (numerikus), B (numerikus), C (numerikus), D (DateTime)
@@ -430,36 +430,9 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
    |Csökkent|Jelzi, hogy a bemeneti szolgáltatás el lett-e dobva vagy használatban van-e.|
    |EngineeringFeatureCount|Az automatizált funkciók mérnöki átalakításán keresztül generált szolgáltatások száma.|
    |Átalakítások|A bemenő funkciókra alkalmazott átalakítások listája a mérnöki funkciók létrehozásához.|
-   
-### <a name="customize-feature-engineering"></a>A funkciók mérnöki testreszabása
-A szolgáltatások mérnöki testreszabásához válassza a következőt:  `"featurization": FeaturizationConfig` .
-
-A támogatott Testreszabás az alábbiakat tartalmazza:
-
-|Testreszabás|Definíció|
-|--|--|
-|Oszlop céljának frissítése|Felülbírálja a szolgáltatás típusát a megadott oszlophoz.|
-|A transzformátor paraméterének frissítése |A megadott átalakító paramétereinek frissítése. Jelenleg támogatja az imputált (mean, leggyakoribb & medián) és a HashOneHotEncoder.|
-|Oszlopok eldobása |Az eldobni kívánt oszlopok featurized.|
-|Transzformátorok letiltása| A featurization-folyamathoz használandó transzformátorok letiltása.|
-
-Hozza létre a FeaturizationConfig objektumot az API-hívások használatával:
-```python
-featurization_config = FeaturizationConfig()
-featurization_config.blocked_transformers = ['LabelEncoder']
-featurization_config.drop_columns = ['aspiration', 'stroke']
-featurization_config.add_column_purpose('engine-size', 'Numeric')
-featurization_config.add_column_purpose('body-style', 'CategoricalHash')
-#default strategy mean, add transformer param for for 3 columns
-featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
-featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
-featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
-```
-
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel:
 
-A folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](concept-automated-ml.md#preprocess). Itt látható egy mintakimenet:
+A folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](). Itt látható egy mintakimenet:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

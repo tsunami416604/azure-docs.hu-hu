@@ -14,23 +14,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 91962b578f9620384af86d25a33ba35830abb285
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c1fa0d8be0146db045b020a20004fee4df7c913
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418626"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118231"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul kiépítése Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez az oktatóanyag az Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) Azure Data Factory-ben való kiépítésének lépéseit ismerteti a Azure Portal használatával. Az Azure-SSIS IR a következőket támogatja:
+Ez az oktatóanyag az Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) Azure Data Factory-ben való kiépítésének lépéseit ismerteti a Azure Portal használatával. Az Azure-SSIS IR a következőre telepített csomagokat támogatja:
 
-- Egy Azure SQL Database-kiszolgáló vagy egy felügyelt példány (projekt-telepítési modell) által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatása.
-- Fájlrendszerek, fájlmegosztás vagy Azure Files (csomag-telepítési modell) üzembe helyezett csomagjainak futtatása. 
+- SQL Database vagy SQL felügyelt példányban (a projekt-telepítési modellben) üzemeltetett SSIS-katalógus (SSISDB).
+- Fájlrendszerek, fájlmegosztás vagy Azure Files-megosztás (a csomag telepítési modellje).
 
-Egy Azure-SSIS IR kiépítése után jól ismert eszközökkel üzembe helyezheti és futtathatja a csomagokat az Azure-ban. Ezek az eszközök a következők: SQL Server Data Tools (SSDT), SQL Server Management Studio (SSMS) és parancssori eszközök `dtinstall` `dtutil`, például:, `dtexec`és.
+Egy Azure-SSIS IR kiépítése után jól ismert eszközökkel üzembe helyezheti és futtathatja a csomagokat az Azure-ban. Ezek az eszközök a következők: SQL Server Data Tools (SSDT), SQL Server Management Studio (SSMS) és parancssori eszközök, például:, `dtinstall` `dtutil` és `dtexec` .
 
 Elméleti információk az Azure-SSIS integrációs modulokról: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
@@ -44,24 +44,22 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
-- **Azure SQL Database kiszolgáló (nem kötelező)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Data Factory ekkor létrehoz egy SSISDB-példányt ezen az adatbázis-kiszolgálón. 
-
-  Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi az integrációs modul írási végrehajtásának naplózását az Azure-régiók SSISDB nélkül.
+- **Azure-előfizetés**. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+- **SQL Database vagy SQL felügyelt példány**: Ha még nem rendelkezik ilyennel, hozzon létre egyet a Azure Portal az első lépések előtt. Azure Data Factory ezután létrehozza a SSISDB a SQL Database vagy az SQL felügyelt példányán. Azt javasoljuk, hogy hozzon létre SQL Database vagy SQL felügyelt példányt ugyanabban az Azure-régióban, mint az Integration Runtime. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. 
 
   Tartsa szem előtt az alábbi szempontokat:
 
-  - A kiválasztott adatbázis-kiszolgáló alapján a SSISDB-példány létrehozhatók az Ön nevében egyetlen adatbázisként egy rugalmas készlet részeként vagy egy felügyelt példányban. Nyilvános hálózaton vagy virtuális hálózathoz való csatlakozással is elérhető. Az adatbázis-kiszolgáló SSISDB futtatásához való kiválasztásával kapcsolatos útmutatásért lásd: [Azure SQL Database önálló adatbázis, rugalmas készlet és felügyelt példány összevetése](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). 
+  - A kiválasztott adatbázis-kiszolgáló alapján a SSISDB létrehozhatók az Ön nevében egyetlen adatbázisként vagy egy rugalmas készlet részeként SQL Database, vagy az SQL felügyelt példányában, és elérhetők egy nyilvános hálózaton, vagy csatlakozhatnak egy virtuális hálózathoz. Az adatbázis-kiszolgáló SSISDB gazdagéphez való kiválasztásával kapcsolatos útmutatásért lásd: [SQL Database és SQL felügyelt példány összehasonlítása](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)
   
-    Ha olyan Azure SQL Database-kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatcsatorna konfigurálása nélkül szeretné elérni a helyszíni adatait, csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    Ha a SQL Database IP-tűzfallal vagy virtuális hálózati szolgáltatás-végpontokkal, vagy egy SQL-alapú felügyelt példányt használ a SSISDB üzemeltetéséhez, vagy ha a helyszíni adatközponthoz való hozzáférésre van szüksége, a saját üzemeltetésű integrációs modul konfigurálása nélkül csatlakoztassa a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-  - Győződjön meg arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez a beállítás nem alkalmazható, ha olyan Azure SQL Database-kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
+  - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van a SQL Database. Ez a beállítás nem alkalmazható, ha a SQL Database IP-tűzfalszabályok vagy virtuális hálózati szolgáltatás-végpontokkal, vagy egy SQL-alapú felügyelt példányt használ a SSISDB futtatására szolgáló privát végponttal. További információkért lásd: [Az Azure SQL-adatbázis védelme](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Ha ezt a beállítást a PowerShell használatával szeretné engedélyezni, tekintse meg a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)című témakört.
 
-  - Adja hozzá az ügyfélszámítógép IP-címét, vagy egy olyan IP-címtartományt, amely tartalmazza az ügyfélszámítógép IP-címét az adatbázis-kiszolgáló tűzfal beállításai között az ügyfél IP-címei listára. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md).
+  - Adja hozzá az ügyfélszámítógép IP-címét, illetve az ügyfél IP-címét tartalmazó IP-címtartományt az ügyfél IP-címeinek listájához a SQL Database tűzfal beállításai között. További információ: [kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](../azure-sql/database/firewall-configure.md).
 
-  - A kiszolgáló-rendszergazdai hitelesítő adataival SQL-hitelesítéssel, vagy az adat-előállító felügyelt identitásával az Azure AD-hitelesítés használatával kapcsolódhat az adatbázis-kiszolgálóhoz. Az utóbbi esetében hozzá kell adnia az adatok előállítójának felügyelt identitását egy Azure AD-csoportba, amely hozzáférési engedélyekkel rendelkezik az adatbázis-kiszolgálóhoz. További információ: [Azure-SSIS IR létrehozása Azure ad-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+  - A kiszolgáló-rendszergazdai hitelesítő adatokkal való SQL-hitelesítéssel, illetve az adat-előállító felügyelt identitásával az Azure AD-hitelesítés használatával kapcsolódhat SQL Database és SQL felügyelt példányhoz. Az utóbbi esetében hozzá kell adnia az adatok előállítójának felügyelt identitását egy Azure AD-csoportba, amely hozzáférési engedélyekkel rendelkezik a SQL Databasehoz. További információ: [Azure-SSIS IR létrehozása Azure ad-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-  - Győződjön meg arról, hogy az adatbázis-kiszolgáló már rendelkezik SSISDB-példánnyal. Egy Azure-SSIS IR kiépítés nem támogatja a meglévő SSISDB-példányok használatát.
+  - Győződjön meg arról, hogy SQL Database vagy az SQL felügyelt példánya nem rendelkezik már SSISDB-példánnyal. Egy Azure-SSIS IR kiépítés nem támogatja a meglévő SSISDB-példányok használatát.
 
 
 > [!NOTE]
@@ -125,7 +123,7 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
    ![SQL-beállítások](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
-   1. Válassza ki a **Azure SQL Database kiszolgáló/felügyelt példány által üzemeltetett SSIS-katalógust (SSISDB) a projektek/csomagok/környezetek/végrehajtási naplók tárolásához** jelölőnégyzetet, és válassza ki a Azure-SSIS IR futtatni kívánt csomagok telepítési modelljét. Választhatja a projekt üzembe helyezési modelljét is, ahol a csomagok üzembe helyezése az adatbázis-kiszolgáló által üzemeltetett SSISDB történik, vagy a csomag telepítési modellje, ahol a csomagok fájlrendszerekbe, fájlmegosztásba vagy Azure Filesba vannak telepítve.
+   1. Válassza ki a **SQL Database/SQL felügyelt példány által üzemeltetett SSIS-katalógust (SSISDB) a projektek/csomagok/környezetek/végrehajtási naplók tárolásához** jelölőnégyzetet, és válassza ki a Azure-SSIS IR futtatni kívánt csomagok telepítési modelljét. Választhatja a projekt üzembe helyezési modelljét is, ahol a csomagok üzembe helyezése az adatbázis-kiszolgáló által üzemeltetett SSISDB történik, vagy a csomag telepítési modellje, ahol a csomagok fájlrendszerekbe, fájlmegosztásba vagy Azure Filesba vannak telepítve.
    
       Ha bejelöli a jelölőnégyzetet, saját adatbázis-kiszolgálót kell használnia az Ön nevében létrehozandó és kezelt SSISDB.
    
@@ -135,9 +133,9 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
       1. A **Katalógus adatbázis-kiszolgáló végpontja** mezőben válassza az SSISDB-t üzemeltető adatbázis-kiszolgáló végpontját. 
    
-         A kiválasztott adatbázis-kiszolgáló alapján a SSISDB-példány létrehozhatók az Ön nevében egyetlen adatbázisként egy rugalmas készlet részeként vagy egy felügyelt példányban. Nyilvános hálózaton vagy virtuális hálózathoz való csatlakozással is elérhető. Az adatbázis-kiszolgáló SSISDB futtatásához való kiválasztásával kapcsolatos útmutatásért lásd: [Azure SQL Database önálló adatbázis, rugalmas készlet és felügyelt példány összevetése](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).   
+      A kiválasztott adatbázis-kiszolgáló alapján a SSISDB-példány létrehozhatók az Ön nevében önálló adatbázisként, vagy egy rugalmas készlet részeként SQL Database vagy SQL felügyelt példányban. Nyilvános hálózaton vagy virtuális hálózathoz való csatlakozással is elérhető. Az adatbázis-kiszolgáló SSISDB gazdagépként való kiválasztásával kapcsolatos útmutatásért lásd: [SQL Database és az SQL felügyelt példányának összehasonlítása](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
 
-         Ha olyan Azure SQL Database-kiszolgálót választ ki, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatközpont konfigurálása nélkül szeretné elérni a helyszíni adatkezelést, akkor csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+      Ha a SQL Database IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy az SQL felügyelt példánya privát végponttal SSISDB gazdagépre lehetőséget választja, vagy ha saját üzemeltetésű integrációs modul konfigurálása nélkül kíván hozzáférni a helyszíni adatbázishoz, akkor csatlakoztatnia kell a Azure-SSIS IRt egy virtuális hálózathoz. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
       1. Jelölje be a **HRE-hitelesítés használata az ADF felügyelt identitással** jelölőnégyzetet, hogy kiválassza az adatbázis-kiszolgáló hitelesítési módszerét a SSISDB üzemeltetéséhez. Választhatja az SQL-hitelesítést vagy az Azure AD-hitelesítést az adatokhoz tartozó felügyelt identitással.
 
@@ -161,7 +159,7 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
    
    1. Válassza ki a **VNet kiválasztása a Azure-SSIS Integration Runtimehoz, hogy az ADF bizonyos hálózati erőforrásokat hozzon létre, és opcionálisan saját statikus nyilvános IP-címeit** is megadhatja, ha azt szeretné kiválasztani, hogy csatlakoztatni kívánja-e a Azure-SSIS IRt egy virtuális hálózathoz.
 
-      Válassza ezt a lehetőséget, ha olyan Azure SQL Database kiszolgálót használ, amely IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy egy privát végponttal rendelkező felügyelt példánnyal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi hálózathoz szeretne hozzáférni saját üzemeltetésű integrációs modul konfigurálása nélkül. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
+      Válassza ezt a lehetőséget, ha a SQL Database IP-tűzfalszabályok/virtuális hálózati szolgáltatás-végpontokkal vagy az SQL felügyelt példányával, amely privát végponttal rendelkezik a SSISDB üzemeltetéséhez, vagy ha a helyi adatközponthoz szeretne hozzáférni a saját üzemeltetésű integrációs modul konfigurálása nélkül. További információ: [Azure-SSIS IR létrehozása virtuális hálózaton](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
    
    1. Jelölje be a saját üzemeltetésű **Integration Runtime beállítása proxyként a Azure-SSIS Integration Runtime** jelölőnégyzetet annak kiválasztásához, hogy egy saját üzemeltetésű IR-t kíván-e konfigurálni a Azure-SSIS IRhoz. További információ: saját üzemeltetésű integrációs modul [beállítása proxyként](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis).   
 
@@ -188,11 +186,11 @@ Az adatelőállító létrehozása után nyissa meg a Azure Portal áttekintés 
 
 Ha a SSISDB-t használja, a csomagokat üzembe helyezheti, és a Azure-SSIS IR SQL Server Data Tools (SSDT) vagy SQL Server Management Studio (SSMS) eszközzel futtathatja őket. Ezek az eszközök a kiszolgálói végponton keresztül csatlakoznak az adatbázis-kiszolgálóhoz: 
 
-- Azure SQL Database-kiszolgáló esetén a kiszolgálói végpont formátuma a `<server name>.database.windows.net`következő:.
-- Privát végponttal rendelkező felügyelt példány esetén a kiszolgálói végpont formátuma `<server name>.<dns prefix>.database.windows.net`a következő:.
-- Nyilvános végponttal rendelkező felügyelt példány esetén a kiszolgálói végpont formátuma `<server name>.public.<dns prefix>.database.windows.net,3342`a következő:. 
+- Logikai SQL Server esetén a kiszolgálói végpont formátuma a következő: `<server name>.database.windows.net` .
+- Privát végponttal rendelkező SQL felügyelt példány esetén a kiszolgálói végpont formátuma a következő: `<server name>.<dns prefix>.database.windows.net` .
+- Nyilvános végponttal rendelkező SQL felügyelt példány esetén a kiszolgálói végpont formátuma a következő: `<server name>.public.<dns prefix>.database.windows.net,3342` . 
 
-Ha nem használja a SSISDB-t, a csomagokat fájlrendszerekbe, fájlmegosztásba vagy Azure Filesba is telepítheti, és a `dtinstall`, `dtutil`, és `dtexec` parancssori eszközök használatával futtathatja azokat a Azure-SSIS IR. További információ: SSIS- [csomagok telepítése](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+Ha nem használja a SSISDB-t, a csomagokat fájlrendszerekbe, fájlmegosztásba vagy Azure Filesba is telepítheti, és a `dtinstall` , `dtutil` , és parancssori eszközök használatával futtathatja azokat a Azure-SSIS IR `dtexec` . További információ: SSIS- [csomagok telepítése](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
 
 Mindkét esetben a telepített csomagokat Azure-SSIS IR is futtathatja a SSIS-csomag végrehajtása művelettel Data Factory folyamatokban. További információ: [SSIS-csomag végrehajtásának meghívása első osztályú Data Factory tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

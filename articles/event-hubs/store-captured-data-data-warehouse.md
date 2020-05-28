@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130855"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016015"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
@@ -22,18 +22,19 @@ Az Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-c
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
-*   Először hozzon létre egy eseményközpontot, engedélyezze a **Capture** funkciót, és állítsa be az Azure Blob Storage tárolót célként. A WindTurbineGeneratorral létrehozott adatok az eseményközpontba lesznek streamelve, majd a rendszer automatikusan Avro-fájlokként rögzíti őket az Azure Storage-ban. 
-*   Ezután hozzon létre egy Azure Event Grid-előfizetést, ennek az Event Hubs-névtér legyen a forrása és az Azure Functions végpont legyen a célja.
-*   Amikor az Event Hubs Capture funkcióján keresztül egy új Avro-fájl érkezik az Azure Storage-blobba, az Event Grid a blob URI-jével értesíti az Azure Functionst. Az Azure Functions ezután migrálja az adatot a blobból egy SQL Data Warehouse-ba.
+- Először hozzon létre egy eseményközpontot, engedélyezze a **Capture** funkciót, és állítsa be az Azure Blob Storage tárolót célként. A WindTurbineGeneratorral létrehozott adatok az eseményközpontba lesznek streamelve, majd a rendszer automatikusan Avro-fájlokként rögzíti őket az Azure Storage-ban.
+- Ezután hozzon létre egy Azure Event Grid-előfizetést, ennek az Event Hubs-névtér legyen a forrása és az Azure Functions végpont legyen a célja.
+- Amikor az Event Hubs Capture funkcióján keresztül egy új Avro-fájl érkezik az Azure Storage-blobba, az Event Grid a blob URI-jével értesíti az Azure Functionst. Az Azure Functions ezután migrálja az adatot a blobból egy SQL Data Warehouse-ba.
 
-Az oktatóanyag során a következő lépéseket hajtja végre: 
+Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Az infrastruktúra üzembe helyezése
-> * Kód közzététele egy Functions-alkalmazásra
-> * Event Grid-előfizetés létrehozása a Functions-alkalmazásból
-> * Mintaadatok streamelése az Event Hubsba. 
-> * Rögzített adatok ellenőrzése az SQL Data Warehouse-ban
+>
+> - Az infrastruktúra üzembe helyezése
+> - Kód közzététele egy Functions-alkalmazásra
+> - Event Grid-előfizetés létrehozása a Functions-alkalmazásból
+> - Mintaadatok streamelése az Event Hubsba.
+> - Rögzített adatok ellenőrzése az SQL Data Warehouse-ban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,20 +42,22 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
 - A [git-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) letöltése a minta megoldás a következő összetevőket tartalmazza:
-    - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
-    - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI elérési útvonalát, kiolvassa a tartalmát és közzéteszi ezt az adatot egy SQL Data Warehouse-ba.
 
-    Ez a példa a legújabb Azure. Messaging. EventHubs csomagot használja. [Itt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)megtalálhatja a Microsoft. Azure. EventHubs csomagot használó régi mintát. 
+  - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
+  - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI elérési útvonalát, kiolvassa a tartalmát és közzéteszi ezt az adatot egy SQL Data Warehouse-ba.
+
+  Ez a példa a legújabb Azure. Messaging. EventHubs csomagot használja. [Itt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)megtalálhatja a Microsoft. Azure. EventHubs csomagot használó régi mintát.
 
 ### <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
+
 Az Azure PowerShell vagy Azure CLI használatával helyezheti üzembe az oktatóanyag elvégzéséhez szükséges infrastruktúrát ennek az [Azure Resource Manager-sablonnak](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) a segítségével. Ez a sablon a következő erőforrásokat hozza létre:
 
--   Eseményközpont engedélyezett Capture szolgáltatással
--   Tárfiók a rögzített eseményadatokhoz
--   Azure App Service-csomag a Functions alkalmazás üzemeltetéséhez
--   Függvényalkalmazás a rögzített eseményfájlok feldolgozásához
--   SQL Server a Data Warehouse üzemeltetéséhez
--   SQL Data Warehouse a migrált adatok tárolásához
+- Eseményközpont engedélyezett Capture szolgáltatással
+- Tárfiók a rögzített eseményadatokhoz
+- Azure App Service-csomag a Functions alkalmazás üzemeltetéséhez
+- Függvényalkalmazás a rögzített eseményfájlok feldolgozásához
+- Az adatraktár üzemeltetéséhez használt logikai SQL Server
+- SQL Data Warehouse a migrált adatok tárolásához
 
 A következő szakaszok szolgáltatják az Azure CLI és Azure PowerShell parancsokat az oktatóanyaghoz szükséges infrastruktúra üzembe helyezéséhez. Frissítse a következő objektumok neveit a parancsok futtatása előtt: 
 
@@ -62,7 +65,7 @@ A következő szakaszok szolgáltatják az Azure CLI és Azure PowerShell paranc
 - Az erőforráscsoport régiója
 - Event Hubs-névtér
 - Eseményközpont
-- Azure SQL-kiszolgáló
+- Logikai SQL Server
 - SQL-felhasználó (és jelszó)
 - Azure SQL-adatbázis
 - Azure Storage 
@@ -71,6 +74,7 @@ A következő szakaszok szolgáltatják az Azure CLI és Azure PowerShell paranc
 Hosszabb időt vehet igénybe, amíg a szkriptek létrehozzák az összes Azure-összetevőt. Csak akkor lépjen tovább, ha a szkript futása már befejeződött. Ha az üzembe helyezés valamilyen okból sikertelen, törölje az erőforráscsoportot, hárítsa el a jelentett hibát, és futtassa újra a parancsot. 
 
 #### <a name="azure-cli"></a>Azure CLI
+
 A sablon Azure parancssori felülettel történő üzembe helyezéséhez használja a következő parancsokat:
 
 ```azurecli-interactive
@@ -91,8 +95,8 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
+### <a name="create-a-table-in-sql-data-warehouse"></a>Tábla létrehozása az SQL Data Warehouse-ban
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Tábla létrehozása az SQL Data Warehouse-ban 
 Ahhoz, hogy létrehozzon egy táblát az SQL Data Warehouse-ban, futtassa a [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) szkriptet a [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), az [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) vagy a Portálon a Lekérdezésszerkesztő használatával. 
 
 ```sql

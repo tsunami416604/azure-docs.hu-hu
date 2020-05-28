@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 05/27/2020
 tags: connectors
-ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651015"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118668"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -49,23 +49,38 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 * Az [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy az [SAP-üzenetküldési kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Töltse le és telepítse a legújabb [helyszíni adatátjárót](https://www.microsoft.com/download/details.aspx?id=53127) a helyszíni számítógépen. A folytatás előtt győződjön meg arról, hogy az átjárót a Azure Portalban állítja be. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
+* [Töltse le és telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) a helyi számítógépre. Ezután [hozzon létre egy Azure Gateway-erőforrást](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) az adott átjáróhoz a Azure Portal. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz. 
+
+  * Ajánlott eljárásként győződjön meg arról, hogy a helyszíni adatátjáró támogatott verzióját használja. A Microsoft minden hónapban új verziót bocsát ki. A Microsoft jelenleg az utolsó hat verziót támogatja. Ha az átjáróval kapcsolatos problémát tapasztal, próbálkozzon [a legújabb verzióra való frissítéssel](https://aka.ms/on-premises-data-gateway-installer), amely a probléma megoldásához szükséges frissítéseket is tartalmazhatja.
+
+* [Töltse le, telepítse és konfigurálja a legújabb SAP ügyféloldali kódtárat](#sap-client-library-prerequisites) ugyanarra a számítógépre, mint a helyszíni adatátjárót.
+
+* Az SAP-kiszolgálónak küldendő üzenetek, például a minta IDoc fájlnak XML formátumúnak kell lennie, és tartalmaznia kell a használni kívánt SAP-művelet névterét.
+
+### <a name="sap-client-library-prerequisites"></a>Az SAP-ügyfél függvénytárának előfeltételei
+
+* Alapértelmezés szerint az SAP-telepítő az alapértelmezett telepítési mappában helyezi el az összeállítási fájlokat. Másolja a szerelvény fájljait az alapértelmezett telepítési mappából az átjáró telepítési mappájába.
+
+    * Ha az SAP-kapcsolat meghiúsul a következő hibaüzenettel: "Kérjük, ellenőrizze a fiók adatait és/vagy engedélyeit, és próbálkozzon újra", előfordulhat, hogy a szerelvény fájljai nem megfelelő helyen találhatók. Győződjön meg arról, hogy a szerelvény fájljait átmásolta az átjáró telepítési mappájába. Ezt követően [használja a .net Assembly kötési napló megjelenítőjét a hibaelhárításhoz](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), amely lehetővé teszi annak ellenőrzését, hogy a szerelvény fájljai a megfelelő helyen vannak-e.
+
+    * Igény szerint a **globális szerelvény-gyorsítótár regisztrációját** is kiválaszthatja az SAP ügyféloldali kódtár telepítésekor.
+
+* Győződjön meg arról, hogy a legújabb verziót, az [SAP Connectort (nkh 3,0) telepíti a .NET-keretrendszer 4,0-Windows 64-bit (x64) 3.0.22.0 lefordított Microsoft .net](https://softwaredownloads.sap.com/file/0020000001000932019)a következő okok miatt:
+
+    * A korábbi SAP NKH-verziók holtpontra válhatnak, ha egyszerre több IDoc üzenetet küld. Ez az állapot blokkolja az SAP-célhelyre küldött összes újabb üzenetet, ami miatt az üzenetek időtúllépést okoznak.
+    * A helyszíni adatátjáró csak 64 bites rendszereken fut. Ellenkező esetben a "hibás rendszerkép" hibaüzenet jelenik meg, mert az adatátjáró-gazda szolgáltatás nem támogatja a 32 bites szerelvényeket.
+
+    * Az adatátjáró-gazdagép és a Microsoft SAP-adapter egyaránt a .NET-keretrendszer 4,5-es frissítését használja. A .NET-keretrendszer 4,0-es SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 4,0-et használnak a 4.7.1. A .NET-keretrendszer 2,0-es verziójának SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 2,0-t használnak a 3,5-as verzióra, de már nem működik a legújabb helyszíni adatátjáróval.
+
+### <a name="snc-prerequisites"></a>A SNC előfeltételei
+
+Adja meg ezeket a beállításokat, ha a következőt használja: SNC (opcionális):
 
 * Ha a SNC-t egyszeri bejelentkezéssel használja, győződjön meg róla, hogy az átjáró az SAP-felhasználóhoz hozzárendelt felhasználóként fut. Az alapértelmezett fiók módosításához válassza a **fiók módosítása**lehetőséget, és adja meg a felhasználói hitelesítő adatokat.
 
   ![Átjáró fiókjának módosítása](./media/logic-apps-using-sap-connector/gateway-account.png)
 
 * Ha engedélyezi a SNC-t egy külső biztonsági termékkel, másolja a SNC-könyvtárat vagy-fájlokat ugyanarra a gépre, amelyen az átjáró telepítve van. Néhány példa a SNC-termékekre: [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), KERBEROS és NTLM.
-
-* Töltse le és telepítse a legújabb SAP ügyféloldali kódtárat, amely jelenleg az [SAP Connector (nkh 3,0) a .NET-keretrendszer 4,0-Windows 64-bit (x64) használatával összeállított Microsoft .net 3.0.22.0](https://softwaredownloads.sap.com/file/0020000001000932019), ugyanazon a számítógépen, mint a helyszíni adatátjáró. Telepítse ezt a verziót vagy később a következő okok miatt:
-
-  * A korábbi SAP NKH-verziók holtpontra válhatnak, ha egyszerre több IDoc üzenetet küld. Ez az állapot blokkolja az SAP-célhelyre küldött összes újabb üzenetet, ami miatt az üzenetek időtúllépést okoznak.
-  
-  * A helyszíni adatátjáró csak 64 bites rendszereken fut. Ellenkező esetben a "hibás rendszerkép" hibaüzenet jelenik meg, mert az adatátjáró-gazda szolgáltatás nem támogatja a 32 bites szerelvényeket.
-  
-  * Az adatátjáró-gazdagép és a Microsoft SAP-adapter egyaránt a .NET-keretrendszer 4,5-es frissítését használja. A .NET-keretrendszer 4,0-es SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 4,0-et használnak a 4.7.1. A .NET-keretrendszer 2,0-es verziójának SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 2,0-t használnak a 3,5-as verzióra, de már nem működik a legújabb helyszíni adatátjáróval.
-
-* Az SAP-kiszolgálónak küldendő üzenetek, például a minta IDoc fájlnak XML formátumúnak kell lennie, és tartalmaznia kell a használni kívánt SAP-művelet névterét.
 
 <a name="migrate"></a>
 
@@ -88,6 +103,9 @@ Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválhat
 ### <a name="add-an-http-request-trigger"></a>HTTP-kérelem triggerének hozzáadása
 
 Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
+
+> [!NOTE]
+> Ha egy logikai alkalmazás IDoc-csomagokat fogad az SAP-ból, a [kérés-trigger](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) nem támogatja az SAP WE60 IDoc dokumentációjában létrehozott "egyszerű" XML-sémát. Az "egyszerű" XML-séma azonban támogatott olyan forgatókönyvek esetén, amelyek üzeneteket küldenek a Logic apps *és az* SAP között. A kérelem triggert az SAP IDoc XML-kódjával használhatja, de az RFC-IDoc nem. Vagy átalakíthatja az XML-t a szükséges formátumba. 
 
 Ebben a példában egy Azure-beli végponttal rendelkező logikai alkalmazást hoz létre, így *http post-kéréseket* küldhet a logikai alkalmazásnak. Ha a logikai alkalmazás fogadja ezeket a HTTP-kéréseket, az eseményindító elindít és futtatja a következő lépést a munkafolyamatban.
 
@@ -259,7 +277,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
       Logic Apps beállítja és teszteli a kapcsolódást, hogy a kapcsolódás megfelelően működjön.
 
-1. Adja meg a szükséges paramétereket az SAP rendszerkonfigurációja alapján.
+1. Adja meg a [szükséges paramétereket](#parameters) az SAP rendszerkonfigurációja alapján.
 
    Szükség esetén egy vagy több SAP-műveletet is megadhat. A műveletek listája azokat az üzeneteket határozza meg, amelyeket az indító az adatátjárón keresztül fogad az SAP-kiszolgálótól. Az üres lista azt adja meg, hogy az trigger megkapja az összes üzenetet. Ha a lista egynél több üzenetet tartalmaz, az trigger csak a listában megadott üzeneteket kapja meg. Az átjáró visszautasítja az SAP-kiszolgálóról küldött összes többi üzenetet.
 
@@ -284,6 +302,16 @@ A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzene
 > [!NOTE]
 > Az SAP-trigger nem egy lekérdezési trigger, de egy webhook-alapú trigger helyette. Az triggert csak akkor hívja meg az átjáró, ha van ilyen üzenet, ezért nincs szükség lekérdezésre.
 
+<a name="parameters"></a>
+
+#### <a name="parameters"></a>Paraméterek
+
+Az egyszerű karakterlánc-és szám típusú bemenetekkel együtt az SAP-összekötő a következő táblázatos paramétereket ( `Type=ITAB` bemeneteket) fogadja el:
+
+* Táblázat irányának paraméterei, a bemenet és a kimenet is a régebbi SAP-kiadásokhoz.
+* A paraméterek módosítása, amelyek lecserélik a tábla irányának paramétereit az újabb SAP-kiadásokra.
+* Hierarchikus tábla paramétereinek
+
 ### <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 
 1. A logikai alkalmazás elindításához küldjön üzenetet az SAP-rendszerből.
@@ -296,7 +324,7 @@ A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzene
 
 Beállíthatja az SAP-t, hogy [IDOCs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDOCs-csoportok. A IDOC-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDOC-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDOCs való felosztásához.
 
-Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból a [ `xpath()` következő függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
+Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
 1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
 
@@ -304,13 +332,13 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDOC. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, `xpath()` és egy kifejezéssel tárolja a névteret:
+1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDOC. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, és egy kifejezéssel tárolja a névteret `xpath()` :
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
    ![Gyökérszintű névtér beolvasása a IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Egy adott IDOC kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és egy `xpath()` másik kifejezéssel TÁROLJA a IDOC gyűjteményt:
+1. Egy adott IDOC kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és egy másik kifejezéssel tárolja a IDOC gyűjteményt `xpath()` :
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
@@ -320,7 +348,7 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
    ![IDOC küldése SFTP-kiszolgálónak](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Minden IDOC tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van `<Receive></Receive` becsomagolva egy elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDOC az alsóbb rétegbeli alkalmazásba vagy SFTP-kiszolgálóra ebben az esetben.
+   Minden IDOC tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van becsomagolva egy `<Receive></Receive` elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDOC az alsóbb rétegbeli alkalmazásba vagy SFTP-kiszolgálóra ebben az esetben.
 
 A minta rövid útmutató sablonjának használatával új logikai alkalmazás létrehozásakor kiválaszthatja ezt a sablont a Logic app Designer alkalmazásban.
 
@@ -434,7 +462,7 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
    ![Azure Resource Manager művelet az "for each" ciklussal](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)
 
    > [!NOTE]
-   > A sémák Base64 kódolású formátumot használnak. A sémák integrációs fiókba való feltöltéséhez a `base64ToString()` függvény használatával dekódolni kell őket. Az alábbi példa az `"properties"` elem kódját mutatja be:
+   > A sémák Base64 kódolású formátumot használnak. A sémák integrációs fiókba való feltöltéséhez a függvény használatával dekódolni kell őket `base64ToString()` . Az alábbi példa az elem kódját mutatja be `"properties"` :
    >
    > ```json
    > "properties": {
@@ -466,7 +494,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban fel
 
    | Tulajdonság | Leírás |
    |----------| ------------|
-   | **SNC-könyvtár elérési útja** | A SNC-könyvtár neve vagy elérési útja NKH-telepítési helyhez vagy abszolút elérési úthoz viszonyítva. Ilyenek `sapsnc.dll` például `.\security\sapsnc.dll` a `c:\security\sapsnc.dll`következők: vagy. |
+   | **SNC-könyvtár elérési útja** | A SNC-könyvtár neve vagy elérési útja NKH-telepítési helyhez vagy abszolút elérési úthoz viszonyítva. Ilyenek például a következők: `sapsnc.dll` vagy `.\security\sapsnc.dll` `c:\security\sapsnc.dll` . |
    | **SNC SSO** | Ha a-t a SNC-n keresztül kapcsolódik, a rendszer általában a-hívó hitelesítésére használja a SNC-identitást. Egy másik lehetőség, hogy felülbírálja a felhasználó és a jelszó információit a hívó hitelesítéséhez, de a sor továbbra is titkosítva van. |
    | **SNC nevem** | A legtöbb esetben ez a tulajdonság nem hagyható el. A telepített SNC-megoldás általában ismeri a saját SNC-nevét. Csak a több identitást támogató megoldások esetében lehet, hogy meg kell adnia az adott célhelyhez vagy kiszolgálóhoz használni kívánt identitást. |
    | **SNC-partner neve** | A háttér-végpont neve. |
@@ -480,7 +508,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban fel
 
 ## <a name="safe-typing"></a>Biztonságos gépelés
 
-Alapértelmezés szerint az SAP-kapcsolatok létrehozásakor a rendszer erős beírással ellenőrzi az érvénytelen értékeket a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. Ha a **biztonságos gépelés**lehetőséget választja, a dats típusa és a Tims típus az SAP-ban karakterláncként lesz kezelve, nem pedig `xs:date` az `xs:time`XML- `xmlns:xs="http://www.w3.org/2001/XMLSchema"`megfelelő, és ahol. A biztonságos gépelés hatással van a séma összes generációjának viselkedésére, az "elküldött" adattartalomra és a "kapott" válaszra, valamint az aktiválásra vonatkozó üzenet küldésére. 
+Alapértelmezés szerint az SAP-kapcsolatok létrehozásakor a rendszer erős beírással ellenőrzi az érvénytelen értékeket a séma XML-érvényesítésének végrehajtásával. Ez a viselkedés segítséget nyújt a korábbi problémák észlelésében. A **biztonságos gépelési** lehetőség visszamenőleges kompatibilitáshoz érhető el, és csak a karakterlánc hosszát ellenőrzi. Ha a **biztonságos gépelés**lehetőséget választja, a dats típusa és a Tims típus az SAP-ban karakterláncként lesz kezelve, nem pedig az XML-megfelelő, `xs:date` és `xs:time` ahol `xmlns:xs="http://www.w3.org/2001/XMLSchema"` . A biztonságos gépelés hatással van a séma összes generációjának viselkedésére, az "elküldött" adattartalomra és a "kapott" válaszra, valamint az aktiválásra vonatkozó üzenet küldésére. 
 
 Ha erős gépelés van használatban (a**biztonságos gépelés** nincs engedélyezve), a séma a dats és a Tims típusait egyszerűbb XML-típusokra képezi le:
 

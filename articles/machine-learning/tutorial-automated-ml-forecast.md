@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 05/19/2020
-ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656565"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118896"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,8 +138,8 @@ A Machine learning-feladattípus és a konfigurációs beállítások megadásá
         További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|Normalizált legfelső szintű, négyzetes hiba
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
-        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
+        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Bekapcsolás
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Extrém véletlenszerű fák
         További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési horizont**_: a jövőben várhatóan mennyi idő elteltével érdemes <br> _**Előrejelzési cél késései:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_: megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum*érték lesz létrehozva. |Előrejelzési horizont: 14 <br> Előrejelzési &nbsp; cél &nbsp; késései: nincs <br> Cél &nbsp; gördülési &nbsp; ablakának &nbsp; mérete: nincs
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; időpontja (óra): 3 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
@@ -218,7 +218,7 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az automatikus ML-t használta a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához és üzembe helyezéséhez, amely előre jelezi a bike Share bérleti igényét. 
 
@@ -229,7 +229,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Power BI támogatott sémát
 
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
-+ További információ a [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ További információ a [featurization](how-to-configure-auto-features.md#featurization).
 + További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]

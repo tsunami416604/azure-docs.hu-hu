@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758979"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021330"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
 
@@ -27,23 +27,23 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 
 A felülbírálható állapotok rögzített halmaza:
 
-* **Rejtett**: a jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
-* **Színárnyalat színe**: egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
+* **`Hidden`**: A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
+* **`Tint color`**: Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
   
   ![Színárnyalat](./media/color-tint.png)
 
-* **Áttekinthető**: a geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
+* **`See-through`**: A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
 
   ![Áttekintő](./media/see-through.png)
 
   > [!IMPORTANT]
   > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
-* **Kiválasztva**: a geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
+* **`Selected`**: A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
   ![Kijelölési körvonal](./media/selection-outline.png)
 
-* **DisableCollision**: a geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **rejtett** jelző nem kapcsolja ki az ütközéseket, így a két jelzőt gyakran együtt kell beállítani.
+* **`DisableCollision`**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
 
 ## <a name="hierarchical-overrides"></a>Hierarchikus felülbírálások
 
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>Színárnyalat színe
 
-Az árnyalatok színe felülbírálása kis mértékben különleges, ha a be-és kikapcsolás/öröklési állapot és az árnyalat színe tulajdonság is szerepel. Az árnyalat színének alfa része határozza meg az árnyalatos hatás súlyozását: Ha a 0,0 értékre van állítva, a színárnyalat nem látható, és ha a értéke 1,0, az objektum tiszta tónusú színnel jelenik meg. Az értékek között a végső szín az árnyalat színével lesz keverve. A színárnyalatok színének megváltoztatásához a színárnyalat a képkockák alapján módosítható.
+A `tint color` felülbírálás némileg különleges abban az állapotban, hogy a be-és kikapcsolás/öröklési állapot és a színárnyalat-szín tulajdonság is szerepel. Az árnyalat színének alfa része határozza meg az árnyalatos hatás súlyozását: Ha a 0,0 értékre van állítva, a színárnyalat nem látható, és ha a értéke 1,0, az objektum tiszta tónusú színnel jelenik meg. Az értékek között a végső szín az árnyalat színével lesz keverve. A színárnyalatok színének megváltoztatásához a színárnyalat a képkockák alapján módosítható.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f87f5387fc97e3b697488b266cb2c3981409294
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614360"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117730"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell használatával
 
@@ -116,4 +116,4 @@ Miután bejelentkezett, győződjön meg róla, hogy minden működik, ha teszte
 Miután létrehozta a szolgáltatásnevet, és hozzárendelte azt egy szerepkörhöz a Windows rendszerű virtuális asztali bérlőben, a használatával létrehozhat egy gazdagépet. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 
  > [!div class="nextstepaction"]
- > [Gazdagépcsoport létrehozása az Azure Marketplace-en](../create-host-pools-azure-marketplace.md)
+ > [Gazdagépcsoport létrehozása az Azure Marketplace-en](create-host-pools-azure-marketplace-2019.md)

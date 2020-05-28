@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4649ac8bbef23711ed45baffa15bb9e8bff8daec
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119177"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 
@@ -69,7 +69,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használ forrásadattárként. 
-* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket. 
+* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
@@ -116,7 +116,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
-1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben a és `customer_table` `project_table`a nevű tábla létrehozásához:  
+1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben a és a nevű tábla létrehozásához `customer_table` `project_table` :  
     
     ```sql
     create table customer_table
@@ -135,7 +135,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
     ```
 
 ### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL-adatbázisban a felső küszöbértékek tárolására
-1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben egy nevű `watermarktable` tábla létrehozásához a vízjel értékének tárolásához: 
+1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben egy nevű tábla létrehozásához `watermarktable` a vízjel értékének tárolásához: 
     
     ```sql
     create table watermarktable
@@ -233,7 +233,7 @@ END
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**: 
+2. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -310,7 +310,7 @@ Az utolsó lépésben létrehoz egy társított szolgáltatást, amely összekap
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
-    1. A **Server name** (Kiszolgáló neve) mezőben válassza ki az Azure SQL Server-kiszolgáló nevét a legördülő listából. 
+    1. A **kiszolgáló neve**mezőben válassza ki a kiszolgáló nevét a legördülő listából. 
     1. A **Database name** (Adatbázis neve) mezőben válassza ki azt az Azure SQL-adatbázist, amelyben az előfeltételek részeként létrehozta a customer_table és a project_table táblákat. 
     1. A **User name** (Felhasználónév) mezőben adja meg a Azure SQL-adatbázishoz hozzáféréssel rendelkező felhasználó nevét. 
     1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót**. 
@@ -354,7 +354,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
     
 1. A **dinamikus tartalom hozzáadása** ablakban válassza a **SinkTableName** elemet a **Parameters (paraméterek** ) szakaszban. 
  
-1. A **Befejezés**gombra kattintva megtekintheti@dataseta következőt: "(). SinkTableName "a tábla neve.
+1. A **Befejezés**gombra kattintva megtekintheti a következőt: " @dataset (). SinkTableName "a tábla neve.
 
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -450,10 +450,10 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         
 1. Hajtsa végre a következő lépéseket:
 
-    1. Az **adatkészlet tulajdonságai** **SinkTableName** paraméternél adja meg `@{item().TABLE_NAME}`a következőt:.
-    1. A **tárolt eljárás neve** tulajdonságnál adja `@{item().StoredProcedureNameForMergeOperation}`meg a következőt:.
-    1. A **Table Type** tulajdonságnál adja `@{item().TableType}`meg a következőt:.
-    1. A **Table Type paraméter neve**mezőbe írja `@{item().TABLE_NAME}`be a következőt:.
+    1. Az **adatkészlet tulajdonságai** **SinkTableName** paraméternél adja meg a következőt: `@{item().TABLE_NAME}` .
+    1. A **tárolt eljárás neve** tulajdonságnál adja meg a következőt: `@{item().StoredProcedureNameForMergeOperation}` .
+    1. A **Table Type** tulajdonságnál adja meg a következőt: `@{item().TableType}` .
+    1. A **Table Type paraméter neve**mezőbe írja be a következőt: `@{item().TABLE_NAME}` .
 
     ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Kapcsolja a **Copy** (Másolás) tevékenységet a **Stored Procedure** (Tárolt eljárás) tevékenységhez. 
@@ -469,7 +469,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Érték | 
+        | Name | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

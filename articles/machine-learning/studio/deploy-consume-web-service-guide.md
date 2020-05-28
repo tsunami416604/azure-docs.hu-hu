@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9104470a2346052ed17c670ccc39215ff77ef51f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627959"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118416"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezek a webszolgáltatások a gépi tanulási modellek interneten keresztüli meghívására használhatók az előrejelzések valós idejű vagy kötegelt módban történő elvégzéséhez. Mivel a webszolgáltatások REST-alapúak, különböző programozási nyelveken és platformokon, például a .NET-ben és a Java-ban, illetve az alkalmazásokból, például az Excelből is meghívhatók.
 
@@ -68,7 +66,7 @@ Az alkalmazás futtatása webszolgáltatási JSON-sablont hoz létre. Ha a sablo
 
 Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként a *MachineLearningWorkspace* csomóponttal megegyező szinten.
 
-Például:
+Íme egy példa:
 
     "StorageAccount": {
             "name": "YourStorageAccountName",

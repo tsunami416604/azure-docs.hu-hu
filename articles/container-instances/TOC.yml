@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: Vezénylőkkel fennálló kapcsolat
       href: container-instances-orchestrator-relationship.md
-    - name: Biztonsági szempontok
-      href: container-instances-image-security.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
+        - name: Biztonsági szempontok
+          href: container-instances-image-security.md
     - name: Virtuális hálózat
       href: container-instances-virtual-network-concepts.md
 - name: Útmutatók

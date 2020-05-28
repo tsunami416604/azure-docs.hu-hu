@@ -25,7 +25,7 @@ A CLI-t helyileg is telepítheti. A platformra vonatkozó utasításokért lásd
 
 A CLI helyi telepítésének használatához be kell jelentkeznie az Azure-ba. Ez a lépés nem szükséges a Azure Cloud Shellhoz. Jelentkezzen be a `az login` paranccsal.
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőablakot, és a parancssor utasításait követve meg kell adnia egy engedélyezési kódot a böngészőben való https://aka.ms/devicelogin navigálás után.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőablakot, és a parancssor utasításait követve meg kell adnia egy engedélyezési kódot a böngészőben való navigálás után https://aka.ms/devicelogin .
 
 ### <a name="specify-location-of-files"></a>Fájlok helyének meghatározása
 
@@ -45,6 +45,6 @@ A fájl abszolút elérési útja Linux/Mac és Windows operációs rendszeren
 * `@ "/usr/home/mytestfile.json"`
 *    `@"c:\tmp\user\mytestfile.json"`
 
-Akkor `{file}` használja, ha a parancs a fájl elérési útját kéri. Például: `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Akkor `@{file}` használja, ha a parancs betölti a megadott fájlt. Például: `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
+Akkor használja, `{file}` Ha a parancs a fájl elérési útját kéri. Például: `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Akkor használja, `@{file}` Ha a parancs betölti a megadott fájlt. Például: `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Fájlok feltöltése]: ./media/media-services-cli/upload-download-files.png

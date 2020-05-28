@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084741"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016474"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vész-helyreállítás beállítása SQL Serverhoz
 
@@ -37,8 +37,8 @@ Központi telepítés típusa | BCDR technológia | SQL Server várt RTO | SQL S
 SQL Server egy Azure-beli infrastruktúra-(IaaS-) virtuális gépen (VM) vagy a helyszínen.| [Always On rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | A másodlagos replika elsődlegesként való elvégzéséhez szükséges idő. | Mivel a másodlagos replikára történő replikáció aszinkron, némi adatvesztés történik.
 SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| [Feladatátvételi fürtszolgáltatás (always on ()](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | A csomópontok közötti feladatátvételhez szükséges idő. | Mivel a always on a megosztott tárolót használ, a tárolási példány ugyanazon nézete elérhető a feladatátvételben.
 SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| [Adatbázis-tükrözés (nagy teljesítményű mód)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | A szolgáltatás kényszerítéséhez szükséges idő, amely a tükrözött kiszolgálót használja meleg készenléti kiszolgálóként. | A replikálás aszinkron módon történik. Előfordulhat, hogy a tükrözési adatbázis némileg elmarad az elsődleges adatbázis mögött. A késés általában kicsi. Azonban akkor is nagy lehet, ha a rendszerbiztonsági tag vagy a tükrözött kiszolgáló rendszere nagy terhelés alatt áll.<br/><br/>A napló szállítása az adatbázis-tükrözés kiegészítéseként lehet. Ez az aszinkron adatbázis-tükrözés számára kedvező alternatíva.
-Az SQL as platform szolgáltatásként (Péter) az Azure-ban.<br/><br/>Ez a központi telepítési típus rugalmas készleteket és Azure SQL Database-kiszolgálókat tartalmaz. | Aktív georeplikáció | a feladatátvétel elindítása után 30 másodperc.<br/><br/>Ha a feladatátvétel aktiválva van valamelyik másodlagos adatbázis esetében, az összes többi formátumú másodlagos zónák automatikusan az új elsődlegeshez lesz kapcsolva. | RPO öt másodperc.<br/><br/>Az aktív geo-replikáció a SQL Server mindig technológiáját használja. Aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba a pillanatkép-elkülönítés használatával.<br/><br/>A másodlagos adatmennyiség garantáltan soha nem rendelkezhet részleges tranzakciókkal.
-Az SQL as Pásti aktív geo-replikációval van konfigurálva az Azure-ban.<br/><br/>Ez a központi telepítési típus SQL Database felügyelt példányt, rugalmas készleteket és SQL Database kiszolgálókat tartalmaz. | Automatikus feladatátvételi csoportok | RTO egy óra. | RPO öt másodperc.<br/><br/>Az automatikus feladatátvételi csoportok az aktív geo-replikáción alapuló csoportos szemantikai feladatokat biztosítják. Azonban ugyanazt az aszinkron replikációs mechanizmust használja a rendszer.
+Az SQL as platform szolgáltatásként (Péter) az Azure-ban.<br/><br/>Ez a központi telepítési típus önálló adatbázisokat és rugalmas készleteket tartalmaz. | Aktív georeplikáció | a feladatátvétel elindítása után 30 másodperc.<br/><br/>Ha a feladatátvétel aktiválva van valamelyik másodlagos adatbázis esetében, az összes többi formátumú másodlagos zónák automatikusan az új elsődlegeshez lesz kapcsolva. | RPO öt másodperc.<br/><br/>Az aktív geo-replikáció a SQL Server mindig technológiáját használja. Aszinkron módon replikálja a véglegesített tranzakciókat az elsődleges adatbázison egy másodlagos adatbázisba a pillanatkép-elkülönítés használatával.<br/><br/>A másodlagos adatmennyiség garantáltan soha nem rendelkezhet részleges tranzakciókkal.
+Az SQL as Pásti aktív geo-replikációval van konfigurálva az Azure-ban.<br/><br/>Ez a központi telepítési típus SQL Database felügyelt példányokat, rugalmas készleteket és önálló adatbázisokat tartalmaz. | Automatikus feladatátvételi csoportok | RTO egy óra. | RPO öt másodperc.<br/><br/>Az automatikus feladatátvételi csoportok az aktív geo-replikáción alapuló csoportos szemantikai feladatokat biztosítják. Azonban ugyanazt az aszinkron replikációs mechanizmust használja a rendszer.
 SQL Server egy Azure IaaS virtuális gépen vagy a helyszínen.| Replikálás Azure Site Recovery | A RTO jellemzően 15 percnél rövidebb. További információért olvassa el a [site Recovery által biztosított RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)-t. | Egy óra az alkalmazás konzisztenciája érdekében, és öt perc összeomlási konzisztencia esetén. Ha alacsonyabb RPO keres, használjon más BCDR-technológiákat.
 
 > [!NOTE]
@@ -71,8 +71,8 @@ Miután az adatbázis-szintet futtatta a cél Azure-régióban, ellenőrizze, ho
 
 A következő példákban megismerheti, hogyan tervezhet meg alkalmazásokat a kapcsolódási megfontolásokhoz:
 
-* [Alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [Rugalmas készlet vész-helyreállítási stratégiái](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [Alkalmazás tervezése a Felhőbeli vész-helyreállításhoz](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
+* [Rugalmas készlet vész-helyreállítási stratégiái](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>3. lépés: az Always on, az aktív geo-replikáció és az automatikus feladatátvételi csoportok együttműködése
 
@@ -162,6 +162,6 @@ Site Recovery az alkalmazás agnosztikus. A Site Recovery a támogatott operáci
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [site Recovery architektúráról](site-recovery-components.md).
-* Az Azure-beli SQL Server a másodlagos Azure-régióban történő helyreállításhoz használható [magas rendelkezésre állási megoldásokról](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) itt tájékozódhat.
-* SQL Database az [üzletmenet folytonosságát](../sql-database/sql-database-business-continuity.md) és a [magas rendelkezésre állási](../sql-database/sql-database-high-availability.md) lehetőségeket a másodlagos Azure-régióban való helyreállításhoz.
-* A helyszíni SQL Server gépek esetében további információ az Azure-beli helyreállítás [magas rendelkezésre állási lehetőségeiről](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions) Virtual machines.
+* Az Azure-beli SQL Server a másodlagos Azure-régióban történő helyreállításhoz használható [magas rendelkezésre állási megoldásokról](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions) itt tájékozódhat.
+* SQL Database az [üzletmenet folytonosságát](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) és a [magas rendelkezésre állási](../azure-sql/database/high-availability-sla.md) lehetőségeket a másodlagos Azure-régióban való helyreállításhoz.
+* A helyszíni SQL Server gépek esetében további információ az Azure-beli helyreállítás [magas rendelkezésre állási lehetőségeiről](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions) Virtual machines.

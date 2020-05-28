@@ -1,5 +1,5 @@
 ---
-title: CLI-példa – biztonsági mentés – Azure SQL Database
+title: 'Azure CLI: adatbázis biztonsági mentése Azure SQL Database'
 description: Azure CLI-példa parancsfájl egy Azure SQL-adatbázis Azure Storage-tárolóba való biztonsági mentéséhez
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 68af42bd83565243dad5d48f227fa5cef3115cf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 605b2690f85ea8c800e6485b0eb998b795ea9d10
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061867"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022709"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Azure SQL önálló adatbázis biztonsági mentése a CLI használatával Azure Storage-tárolóba
 
-Ez az Azure CLI-példa egy Azure SQL Database-adatbázis biztonsági mentését egy Azure Storage-tárolóba.  
+Ez az Azure CLI-példa egy Azure Storage-tárolóba SQL Database egy adatbázis biztonsági mentését.  
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
@@ -60,4 +60,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

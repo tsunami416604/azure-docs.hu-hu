@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837093"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118794"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -31,7 +31,7 @@ A fiók létrehozásával gyorsan megkezdheti a runbookok létrehozását és ü
 Automation-fiók létrehozásához vagy frissítéséhez, valamint a cikkben ismertetett feladatok végrehajtásához a következő jogosultságokkal és engedélyekkel kell rendelkeznie:
 
 * Az Automation-fiók létrehozásához hozzá kell adni az Azure AD-felhasználói fiókot egy olyan szerepkörhöz, amely az erőforrások tulajdonosi szerepkörével egyenértékű engedélyekkel rendelkezik `Microsoft.Automation` . További információ: [szerepköralapú Access Control Azure Automation](automation-role-based-access-control.md).
-* A Azure Portal **Azure Active Directory**  >  **MANAGE**  >  **felhasználói beállítások**kezelése területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak globális rendszergazdának kell lennie az Azure ad-ben.
+* A Azure Portal **Azure Active Directory**  >  **MANAGE**  >  **felhasználói beállítások**kezelése területen, ha a **Alkalmazásregisztrációk** értéke **Igen**, akkor az Azure ad-bérlő nem rendszergazda felhasználója [regisztrálhat Active Directory alkalmazásokat](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **Alkalmazásregisztrációk** a **nem**értékre van állítva, akkor a műveletet végrehajtó felhasználónak legalább egy alkalmazás-fejlesztői szerepkörrel kell rendelkeznie az Azure ad-ben.
 
 Ha nem tagja az előfizetés Active Directory példányának, mielőtt felveszi az előfizetéshez tartozó globális rendszergazdai vagy társ-felügyeleti szerepkörbe, a rendszer vendégként adja hozzá a Active Directory. Ebben az esetben a következő üzenet jelenik meg az Automation-fiók hozzáadása panelen:`You do not have permissions to create.`
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774267"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118639"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * A Content Moderator és a Facebook HTTP-eseményeit figyelő Azure Functions-függvények létrehozása.
 > * Facebook-oldal csatolása Content Moderator Facebook-alkalmazás használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ez az ábra a forgatókönyv egyes összetevőit szemlélteti:
 
@@ -70,18 +70,18 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
     
     | Alkalmazás-beállítás neve | érték   | 
     | -------------------- |-------------|
-    | cm:TeamId   | A Content Moderator csapatazonosítójának beállítása  | 
-    | cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
-    | cm:Region | A Content Moderator-régió neve szóközök nélkül. Ez az Azure-erőforrás **Áttekintés** lapjának **hely** mezőjében található.|
-    | cm:ImageWorkflow | A képek esetében futtatandó munkafolyamat neve |
-    | cm:TextWorkflow | A szövegek esetében futtatandó munkafolyamat neve |
-    | cm:CallbackEndpoint | Az útmutatóban később létrehozandó CMListener-függvényalkalmazás URL-címe |
-    | fb:VerificationToken | A Facebook-hírcsatornák eseményeire való előfizetéshez használt titkos jogkivonat |
-    | fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. Ezt a tokent egy későbbi lépésben kapja meg. |
+    | `cm:TeamId`   | A Content Moderator csapatazonosítójának beállítása  | 
+    | `cm:SubscriptionKey` | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | A Content Moderator-régió neve szóközök nélkül. Ezt a nevet az Azure-erőforrás **Áttekintés** lapjának **Location (hely** ) mezőjében tekintheti meg.|
+    | `cm:ImageWorkflow` | A képek esetében futtatandó munkafolyamat neve |
+    | `cm:TextWorkflow` | A szövegek esetében futtatandó munkafolyamat neve |
+    | `cm:CallbackEndpoint` | Az útmutatóban később létrehozandó CMListener-függvényalkalmazás URL-címe |
+    | `fb:VerificationToken` | A Facebook-hírcsatornák eseményeire való előfizetéshez használt titkos jogkivonat |
+    | `fb:PageAccessToken` | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. Ezt a tokent egy későbbi lépésben kapja meg. |
 
     Kattintson a **Save (Mentés** ) gombra az oldal tetején.
 
-1. Lépjen vissza a **platform szolgáltatásai** lapra. a bal oldali **+** ablaktáblán található gomb használatával hozza létre az **új függvény** ablaktáblát. A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
+1. Lépjen vissza a **platform szolgáltatásai** lapra. a **+** bal oldali ablaktáblán található gomb használatával hozza létre az **új függvény** ablaktáblát. A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
 
     ![Azure Functions panel a funkció hozzáadása gomb kiemelve.](images/new-function.png)
 

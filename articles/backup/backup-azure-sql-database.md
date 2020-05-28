@@ -3,12 +3,12 @@ title: SQL Server adatbázisok biztonsági mentése az Azure-ba
 description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését ismerteti. A cikk a SQL Server helyreállítást is ismerteti.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408760"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021092"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -25,9 +25,9 @@ A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyv
 
 Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonsági mentésének elvégzéséhez.
 
-* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi a benne lévő adatbázisokat, Azure Backup szolgáltatás a számítási feladatok biztonsági mentési bővítményét a virtuális `AzureBackupWindowsWorkload` gépen telepíti a fájlnévkiterjesztés alapján.
+* Miután megadta a védelemmel ellátni kívánt SQL Server VMt, és lekérdezi a benne lévő adatbázisokat, Azure Backup szolgáltatás a számítási feladatok biztonsági mentési bővítményét a virtuális gépen telepíti a `AzureBackupWindowsWorkload` fájlnévkiterjesztés alapján.
 * Ez a bővítmény egy koordinátorból és egy SQL-beépülő modulból áll. Míg a koordinátor felelős a munkafolyamatok különböző műveletekhez, például a biztonsági mentés konfigurálásához, a biztonsági mentéshez és a visszaállításhoz, a beépülő modul felelős a tényleges adatforgalomért.
-* Ahhoz, hogy fel tudja deríteni a virtuális gép adatbázisait, Azure Backup létrehozza `NT SERVICE\AzureWLBackupPluginSvc`a fiókot. Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatásfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nincs szükség jelszavas felügyeletre. Azure Backup kihasználja `NT AUTHORITY\SYSTEM` az adatbázis-felderítés/-lekérdezés fiókját, így ennek a fióknak nyilvános bejelentkezésre van szüksége az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](#set-vm-permissions).
+* Ahhoz, hogy fel tudja deríteni a virtuális gép adatbázisait, Azure Backup létrehozza a fiókot `NT SERVICE\AzureWLBackupPluginSvc` . Ez a fiók használható a biztonsági mentéshez és a visszaállításhoz, és SQL sysadmin engedélyekre van szükség. A `NT SERVICE\AzureWLBackupPluginSvc` fiók egy [virtuális szolgáltatásfiók](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), ezért nincs szükség jelszavas felügyeletre. Azure Backup kihasználja az `NT AUTHORITY\SYSTEM` adatbázis-felderítés/-lekérdezés fiókját, így ennek a fióknak nyilvános bejelentkezésre van szüksége az SQL-ben. Ha nem hozta létre a SQL Server VM az Azure piactéren, hibaüzenetet kaphat a **UserErrorSQLNoSysadminMembership**. Ha ez történik, [kövesse ezeket az utasításokat](#set-vm-permissions).
 * Miután elindította a védelem konfigurálását a kiválasztott adatbázisokon, a Backup szolgáltatás beállítja a koordinátort a biztonsági mentési ütemtervekkel és egyéb házirend-adatokkal, amelyeket a bővítmény a virtuális gépen helyileg gyorsítótáraz.
 * Az ütemezett időpontban a koordinátor kommunikál a beépülő modullal, és elindítja a biztonsági mentési adatok továbbítását az SQL Serverről a VDI használatával.  
 * A beépülő modul közvetlenül a Recovery Services-tárolóba küldi az adatokat, így nincs szükség átmeneti helyre. Az adattitkosítás és a Azure Backup szolgáltatás tárolja a Storage-fiókokban.
@@ -39,7 +39,7 @@ Ez a megoldás kihasználja az SQL natív API-kat az SQL-adatbázisok biztonság
 
 Mielőtt elkezdené, ellenőrizze az alábbiakat:
 
-1. Győződjön meg arról, hogy rendelkezik az Azure-ban futó SQL Server-példánnyal. [Gyorsan létrehozhat egy SQL Server példányt](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) a piactéren.
+1. Győződjön meg arról, hogy rendelkezik az Azure-ban futó SQL Server-példánnyal. [Gyorsan létrehozhat egy SQL Server példányt](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md) a piactéren.
 2. Tekintse át a [szolgáltatás megfontolási](sql-support-matrix.md#feature-consideration-and-limitations) és [forgatókönyv-támogatását](sql-support-matrix.md#scenario-support).
 3. [Tekintse át](faq-backup-sql-server.md) a forgatókönyvre vonatkozó gyakori kérdéseket.
 
@@ -109,7 +109,7 @@ Adja hozzá az **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc**
 
 7. Kattintson az OK gombra.
 8. Ismételje meg ugyanezeket a lépéseket (1-7 fent) a SQL Server-példányhoz tartozó NT Service\AzureWLBackupPluginSvc-bejelentkezés hozzáadásához. Ha a bejelentkezés már létezik, győződjön meg róla, hogy a rendszergazda kiszolgálói szerepkörrel rendelkezik, és az állapota területen a jogosultsággal rendelkezik az adatbázismotor és a bejelentkezés engedélyezettként való bekapcsolásához.
-9. Az engedélyek megadása után **Fedezze fel újra az adatbázisok** a portálon: **->** tár biztonsági **->** mentési infrastruktúrájának számítási feladatait az Azure virtuális gépen:
+9. Az engedélyek megadása után **Fedezze fel újra az adatbázisok** a portálon: tár biztonsági mentési infrastruktúrájának számítási feladatait az **->** **->** Azure virtuális gépen:
 
     ![A Azure Portalban lévő adatbázisok újbóli felderítése](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

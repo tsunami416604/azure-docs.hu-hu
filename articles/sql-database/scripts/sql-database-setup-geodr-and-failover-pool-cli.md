@@ -1,22 +1,22 @@
 ---
-title: CLI-példa – aktív geo-replikáció – készletezett Azure SQL Database
+title: 'Az CLI: Active geo-replikáció konfigurálása rugalmas készlethez'
 description: Az Azure CLI-szkripttel beállíthatja, hogy az aktív geo-replikáció egy készletezett adatbázishoz legyen Azure SQL Database, és feladatátvételt hajtson végre.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067361"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019383"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>A CLI használatával konfigurálhatja az aktív földrajzi replikálást egy készletezett adatbázishoz Azure SQL Database
 
@@ -62,4 +62,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

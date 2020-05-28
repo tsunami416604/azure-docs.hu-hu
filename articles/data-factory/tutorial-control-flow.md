@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418728"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022112"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -42,13 +42,13 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
 Ez az oktatóanyag a .NET SDK-t használja. Más mechanizmusokkal is használhatja a Azure Data Factory. Data Factory rövid útmutatók: [5 perces](/azure/data-factory/quickstart-create-data-factory-portal)gyors útmutató.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Storage-fiók. A blob Storage-t forrásként szolgáló adattárként használhatja. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 * Azure Storage Explorer. Az eszköz telepítéséhez lásd: [Azure Storage Explorer](https://storageexplorer.com/).
-* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-get-started-portal.md)című témakört.
+* az Azure SQL Database-szel szemben. Ezt az adatbázist használjuk fogadóadattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * Visual Studio. Ez a cikk a Visual Studio 2019-et használja.
 * Azure .NET SDK. Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
 
@@ -79,7 +79,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
+1. Válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
 1. A **Package Manager konzolon**futtassa a következő parancsokat a csomagok telepítéséhez. A részletekért tekintse meg a [Microsoft. Azure. Management. DataFactory nuget csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -135,7 +135,7 @@ C# .NET-konzol alkalmazás létrehozása:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Adja hozzá a következő kódot a `Main` metódushoz: Ez a kód egy `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
+1. Adja hozzá a következő kódot a `Main` metódushoz: Ez a kód egy osztály egy példányát hozza létre `DataFactoryManagementClient` . Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -148,7 +148,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. Adjon hozzá `CreateOrUpdateDataFactory` egy metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `CreateOrUpdateDataFactory` metódust a *program.cs* -fájlhoz:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -181,7 +181,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 
-1. Adjon hozzá `StorageLinkedServiceDefinition` egy metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `StorageLinkedServiceDefinition` metódust a *program.cs* -fájlhoz:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -213,7 +213,7 @@ Ebben a szakaszban két adatkészletet hoz létre, egyet a forráshoz és egyet 
 
 Adjon hozzá egy olyan metódust, amely létrehoz egy *Azure Blob-adatkészletet*. További információ a támogatott tulajdonságokról és részletekről: [Azure Blob-adatkészlet tulajdonságai](connector-azure-blob-storage.md#dataset-properties).
 
-Adjon hozzá `SourceBlobDatasetDefinition` egy metódust a *program.cs* -fájlhoz:
+Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program.cs* -fájlhoz:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -240,7 +240,7 @@ Figyelje meg a *FolderPath*paramétereinek használatát. `sourceBlobContainer`a
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Adatkészlet létrehozása egy fogadó Azure-Blobhoz
 
-1. Adjon hozzá `SourceBlobDatasetDefinition` egy metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program.cs* -fájlhoz:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -270,7 +270,7 @@ Figyelje meg a *FolderPath*paramétereinek használatát. `sourceBlobContainer`a
 
 ## <a name="create-a-c-class-emailrequest"></a>C# osztály létrehozása: EmailRequest
 
-A C#-projektben hozzon létre egy `EmailRequest`nevű osztályt. Ez az osztály határozza meg, hogy a folyamat milyen tulajdonságokat küldjön a törzs kérelmében e-mailben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
+A C#-projektben hozzon létre egy nevű osztályt `EmailRequest` . Ez az osztály határozza meg, hogy a folyamat milyen tulajdonságokat küldjön a törzs kérelmében e-mailben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
 
 * Üzenetet. Az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a megírt adatmennyiséget. Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
 * Az adatelőállító neve. Az adatelőállító neve.
@@ -308,7 +308,7 @@ E-mail küldésének aktiválásához a [Logic Apps](../logic-apps/logic-apps-ov
 
 ### <a name="success-email-workflow"></a>Sikeres műveletről tájékoztató e-mail munkafolyamata
 
-A [Azure Portal](https://portal.azure.com)hozzon létre egy *copysuccessemail munkafolyamatot*nevű Logic apps-munkafolyamatot. Adja meg a munkafolyamat- `When an HTTP request is received`triggert a következőképpen:. A kérelem eseményindítójához a `Request Body JSON Schema` esetében adja meg a következő JSON-t:
+A [Azure Portal](https://portal.azure.com)hozzon létre egy *copysuccessemail munkafolyamatot*nevű Logic apps-munkafolyamatot. Adja meg a munkafolyamat-triggert a következőképpen: `When an HTTP request is received` . A kérelem eseményindítójához a `Request Body JSON Schema` esetében adja meg a következő JSON-t:
 
 ```json
 {
@@ -334,9 +334,9 @@ A munkafolyamat a következő példához hasonlóan néz ki:
 
 ![Sikeres műveletről tájékoztató e-mail munkafolyamata](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-Ez a JSON-tartalom az előző `EmailRequest` szakaszban létrehozott osztályhoz igazodik.
+Ez a JSON-tartalom az `EmailRequest` előző szakaszban létrehozott osztályhoz igazodik.
 
-Adja hozzá a műveletét `Office 365 Outlook – Send an email`. Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Például:
+Adja hozzá a műveletét `Office 365 Outlook – Send an email` . Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Íme egy példa:
 
 ![Logic app Designer – e-mail küldése művelet](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -470,7 +470,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Webes tevékenység
 
-A webes tevékenység lehetővé teszi a REST-végpontok hívását. További információ a tevékenységről: [webes tevékenység Azure Data Factoryban](control-flow-web-activity.md). Ez a folyamat egy webes tevékenységgel hívja meg az Logic Apps e-mail-munkafolyamatot. Két webes tevékenységet hoz létre: az `CopySuccessEmail` egyiket, amely meghívja a munkafolyamatot `CopyFailWorkFlow`, és egy meghívja a-t.
+A webes tevékenység lehetővé teszi a REST-végpontok hívását. További információ a tevékenységről: [webes tevékenység Azure Data Factoryban](control-flow-web-activity.md). Ez a folyamat egy webes tevékenységgel hívja meg az Logic Apps e-mail-munkafolyamatot. Két webes tevékenységet hoz létre: az egyiket, amely meghívja a `CopySuccessEmail` munkafolyamatot, és egy meghívja a-t `CopyFailWorkFlow` .
 
 ```csharp
         new WebActivity
@@ -490,12 +490,12 @@ A webes tevékenység lehetővé teszi a REST-végpontok hívását. További in
         }
 ```
 
-A `Url` tulajdonságban illessze be a **http post URL-** végpontokat a Logic apps munkafolyamatokból. A `Body` tulajdonságban adja át az `EmailRequest` osztály egy példányát. Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
+A `Url` tulajdonságban illessze be a **http post URL-** végpontokat a Logic apps munkafolyamatokból. A `Body` tulajdonságban adja át az osztály egy példányát `EmailRequest` . Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
 
-* Üzenetet. Átadja a `@{activity('CopyBlobtoBlob').output.dataWritten`értékét. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a értékét `dataWritten`. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
-* Adat-előállító neve. A rendszerváltozó `@{pipeline().DataFactory}` értékének átadásával elérheti a megfelelő adatelőállító nevét. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
-* A folyamat neve. Átadja a `@{pipeline().Pipeline}`értékét. Ez a rendszerváltozó lehetővé teszi a megfelelő folyamat nevének elérését.
-* Fogadó. Átadja a `"@pipeline().parameters.receiver"`értékét. A folyamat paramétereinek elérése.
+* Üzenetet. Átadja a értékét `@{activity('CopyBlobtoBlob').output.dataWritten` . Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a értékét `dataWritten` . Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
+* Adat-előállító neve. A `@{pipeline().DataFactory}` rendszerváltozó értékének átadásával elérheti a megfelelő adatelőállító nevét. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
+* A folyamat neve. Átadja a értékét `@{pipeline().Pipeline}` . Ez a rendszerváltozó lehetővé teszi a megfelelő folyamat nevének elérését.
+* Fogadó. Átadja a értékét `"@pipeline().parameters.receiver"` . A folyamat paramétereinek elérése.
 
 Ez a kód olyan új tevékenység-függőséget hoz létre, amely az előző másolási tevékenységtől függ.
 

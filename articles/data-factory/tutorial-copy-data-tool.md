@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418660"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022061"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
 
@@ -42,7 +42,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 * **Azure Storage-fiók**: a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
-* **Azure SQL Database**: használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../sql-database/sql-database-get-started-portal.md)című témakör utasításait.
+* **Azure SQL Database**: használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -76,11 +76,11 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy engedélyezve van **-e az Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgáló** számára a SQL Database rendszert futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához lépjen az Azure SQL Server > biztonsági > tűzfalak és virtuális hálózatok elemre > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálón való eléréshez** **lehetőséget.**
+2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy engedélyezve van **-e az Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgáló** számára a SQL Database rendszert futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához lépjen a logikai SQL Server > biztonsági > tűzfalak és virtuális hálózatok elemre > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálón való elérésre** **lehetőséget.**
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.

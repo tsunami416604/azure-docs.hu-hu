@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ce147ac6c9b21176c738c21114c331b56bf667f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218119"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118474"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klasszikus) munkaterület üzembe helyezése Azure Resource Manager használatával
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Egy Azure Resource Manager telepítési sablon használatával időt takaríthat meg azáltal, hogy méretezhető módon telepíti az összekapcsolt összetevőket egy érvényesítési és újrapróbálkozási mechanizmussal. Azure Machine Learning Studio (klasszikus) munkaterületek beállításához például először be kell állítania egy Azure Storage-fiókot, majd telepítenie kell a munkaterületet. Képzelje el ezt manuálisan a több száz munkaterülethez. Egyszerűbb alternatíva egy Azure Resource Manager sablon használata Studio (klasszikus) munkaterület és annak összes függőségének üzembe helyezéséhez. Ez a cikk végigvezeti a folyamat lépésein. A Azure Resource Manager nagyszerű áttekintését az [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)című témakörben tekintheti meg.
 
@@ -107,7 +105,7 @@ Ezt a lépést minden egyes munkamenetnél meg kell ismételni. A hitelesítés 
 
 Most, hogy elérjük az Azure-t, létrehozhatjuk az erőforráscsoportot.
 
-* Erőforráscsoport létrehozása
+* Hozzon létre egy erőforráscsoportot
 
 ```powershell
 $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"

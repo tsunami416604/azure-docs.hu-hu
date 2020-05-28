@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836311"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013197"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Update Management integrálása Windows-végponttal Configuration Manager
 
@@ -38,7 +38,7 @@ Hajtsa végre a következő lépéseket, ha továbbra is szeretné kezelni a fri
 1. A Azure Automation területen válassza a **Update Management**lehetőséget. Hozzon létre egy új központi telepítést a [frissítés központi telepítésének létrehozása](automation-tutorial-update-management.md#schedule-an-update-deployment) című témakörben ismertetett lépéseket követve, és válassza a **típus** legördülő menüben az **importált csoportok** lehetőséget a megfelelő Windows-végpont Configuration Manager gyűjtemény kiválasztásához Tartsa szem előtt a következő fontos szempontokat: a. Ha egy karbantartási időszak van meghatározva a kiválasztott Windows-végponton Configuration Manager-eszköz gyűjteményben, a gyűjtemény tagjai megtisztelik az ütemezett telepítésben definiált **időtartam** beállítás helyett.
     b. A cél gyűjtemény tagjainak csatlakozniuk kell az internethez (vagy közvetlenül, egy proxykiszolgálón keresztül vagy az Log Analytics átjárón keresztül).
 
-A frissítés telepítésének a Azure Automationon keresztül történő befejezése után a kiválasztott számítógépcsoport tagjai lesznek a helyi ügyfél-gyorsítótárból beütemezett időpontban települő frissítések. [A frissítéstelepítés állapotát bármikor megtekintheti](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a telepítés eredményeinek monitorozásához.
+A frissítés telepítésének a Azure Automationon keresztül történő befejezése után a kiválasztott számítógépcsoport tagjai lesznek a helyi ügyfél-gyorsítótárból beütemezett időpontban települő frissítések. [A frissítéstelepítés állapotát bármikor megtekintheti](automation-tutorial-update-management.md#check-deployment-status) a telepítés eredményeinek monitorozásához.
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Szoftverfrissítések kezelése Azure Automationról
 

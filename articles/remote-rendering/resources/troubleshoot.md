@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844564"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018820"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -29,7 +29,7 @@ Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválas
 * **8266 (TCP + UDP)** – adatátvitelhez szükséges
 * **5000 (TCP**), **5433 (tcp)**, **8443 (TCP)** – szükséges a [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: "leválasztva: VideoFormatNotAvailable"
+## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: " `Disconnected: VideoFormatNotAvailable` "
 
 Győződjön meg arról, hogy a GPU támogatja a hardveres videó-dekódolást. Lásd: [fejlesztői számítógép](../overview/system-requirements.md#development-pc).
 
@@ -37,7 +37,7 @@ Ha két GPU-val rendelkező laptopon dolgozik, akkor előfordulhat, hogy az alap
 
 ## <a name="h265-codec-not-available"></a>A H265-kodek nem érhető el
 
-A kiszolgálónak két oka lehet a **nem elérhető kodekkel** való csatlakozás.
+Két oka lehet annak, hogy a kiszolgáló elutasítja a hibával való kapcsolódást `codec not available` .
 
 **Nincs telepítve a H265-kodek:**
 
@@ -107,7 +107,7 @@ Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél foga
 
 Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.md#overall-number-of-polygons).
 
-**A modell nem a nézet csonkakúpot belül található:**
+**A modell nem a kamera csonkakúpot belül található:**
 
 Sok esetben a modell helyesen jelenik meg, de a kamera csonkakúpot kívül található. Ennek gyakori oka az, hogy a modellt egy távoli középpontú kimutatással exportálták, így azt a kamera távoli nyírási síkja vágja le. Segít lekérdezni a modell határoló mezőjét programozott módon, és megjelenítheti a négyzetet az egységgel, vagy kinyomtathatja az értékeket a hibakeresési naplóba.
 
@@ -142,7 +142,7 @@ Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometri�
 
 **Az Unity Render folyamat nem tartalmazza a renderelési horgokat:**
 
-Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menü *ablakot > analysis > frame Debugger*. Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
+Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menüt *:::no-loc text="Window > Analysis > Frame debugger":::* . Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
 
 ![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
 

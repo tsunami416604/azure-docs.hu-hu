@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: active-directory
 author: eross-msft
 ms.service: active-directory
@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "75613761"
 ---
 >[!Note]
->Ha szeretné megtekinteni vagy törölni személyes adatait, kérjük tekintse át a Microsoft útmutatóját az [Adattárolással kapcsolatos kérelmek Windows-ügyfelek számára a GDPR-hoz igazodóan](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) webhelyen. Ha a GDPR-ral kapcsolatos általános információkra kíváncsi, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Ha szeretne többet megtudni a személyes adatok megtekintéséről vagy törléséről, olvassa el a Microsoft útmutatását a [Windows: GDPR-vonatkozású adattulajdonosi kérelmek](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) című weblapon. Ha a GDPR-ral kapcsolatos általános információkra kíváncsi, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

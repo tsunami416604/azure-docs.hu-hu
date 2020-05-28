@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3800460c7b17adf1a10c1efc3adc12d65bbeb670
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438863"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021987"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75438863"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -59,7 +59,7 @@ Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Az Azure Storage az oktatóanyagban alkalmazott másolási tevékenység forrásadattára, az Azure SQL-adatbázis pedig a fogadó adattára. Meghatározza a másolási tevékenység bemeneti adatait tartalmazó tárfiókot. |
 | Azure SQL Database társított szolgáltatás |Társítja az Azure SQL-adatbázist az adat-előállítóhoz. Meghatározza a másolási tevékenység kimeneti adatait tartalmazó Azure SQL-adatbázist. |
 | Azure Blob bemeneti adatkészlet |Az Azure Storage társított szolgáltatásra vonatkozik. A társított szolgáltatás egy Azure Storage-fiókra hivatkozik, az Azure-blob adatkészlet pedig meghatározza a bemeneti adatokat tartalmazó tárban lévő tárolót, mappát és fájlnevet. |
-| Az Azure SQL kimeneti adatkészlete |Az Azure SQL társított szolgáltatásra vonatkozik. Az Azure SQL társított szolgáltatás egy Azure SQL-kiszolgálóra hivatkozik, az Azure SQL-adatkészlet pedig meghatározza a kimeneti adatokat tartalmazó tábla nevét. |
+| Az Azure SQL kimeneti adatkészlete |Az Azure SQL társított szolgáltatásra vonatkozik. Az Azure SQL társított szolgáltatás egy logikai SQL-kiszolgálóra hivatkozik, az Azure SQL-adatkészlet pedig meghatározza a kimeneti adatokat tartalmazó tábla nevét. |
 | Adatfolyamat |A folyamat egyetlen másolás típusú tevékenységgel rendelkezik, amely Azure Blob-adatkészletet bemenetként, az Azure SQL-adatkészletet pedig kimenetként használja. A másolási tevékenység adatokat másol egy Azure-blobból az Azure SQL-adatbázis egyik táblájába. |
 
 A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy vagy több tevékenység lehet. Kétféle típusú tevékenység létezik: az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) és az [adatátalakítási tevékenységek](data-factory-data-transformation-activities.md). Az oktatóanyag során létrehoz egy egyetlen tevékenységgel (másolási tevékenységgel) rendelkező folyamatot.
@@ -106,9 +106,9 @@ Hozzon létre egy JSON-fájlt **ADFCopyTutorialARM.json** néven a **C:\ADFGetSt
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
       "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
       "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the logical SQL server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the logical SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the logical SQL server." } },
       "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
       "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
       } 
@@ -288,7 +288,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
 > [!IMPORTANT]
 > Adja meg az Azure Storage-fiók nevét és kulcsát a storageAccountName és a storageAccountKey paraméterek értékeiként.  
 > 
-> Adja meg az Azure-beli SQL-kiszolgálót, az adatbázist, a felhasználót és a jelszót az sqlServerName, a databaseName, az sqlServerUserName és az sqlServerPassword paraméterek értékeiként.  
+> A sqlServerName, a databaseName, a sqlServerUserName és a sqlServerPassword paraméterekhez logikai SQL Servert, adatbázist, felhasználót és jelszót adhat meg.  
 
 ```json
 {
@@ -301,7 +301,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
+        "sqlServerName": { "value": "<Name of the logical SQL server>" },
         "databaseName": { "value": "<Name of the Azure SQL database>" },
         "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
@@ -413,7 +413,7 @@ Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előál
 A connectionString a storageAccountName és storageAccountKey paramétereket használja. A paraméterek értékei a konfigurációs fájlok használatával adhatók át. A definíció a sablonban definiált változókat is használja: azureStorageLinkedService és dataFactoryName. 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database társított szolgáltatás
-Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
+Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban. Ebben a szakaszban a logikai SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót kell megadnia. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.  
 
 ```json
 {

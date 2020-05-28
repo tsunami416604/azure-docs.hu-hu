@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 741bd94b290560bdc850cbf7bc24ec57104d8a66
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8afc8b70257f07c95b34c4e372e0e7425ae20fcd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614353"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112668"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: állomáslista létrehozása az Azure Marketplace használatával
 
@@ -67,7 +67,7 @@ Az **alapok** lapon a következő műveleteket végezheti el:
 1. Válasszon **régiót**.
 1. Adja meg a Windows rendszerű virtuális asztali bérlőn belül egyedi alkalmazáskészlet nevét.
 1. Válassza az **asztal típusa**lehetőséget. Ha a **személyes**lehetőséget választja, a gazdagéphez csatlakozó összes felhasználó véglegesen hozzá van rendelve egy virtuális géphez.
-1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést `user1@contoso.com` és `user2@contoso.com` a hozzáférést szeretné használni, írja be a következőt:*`user1@contoso.com,user2@contoso.com`*
+1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést és a hozzáférést szeretné használni `user1@contoso.com` `user2@contoso.com` , írja be a következőt:*`user1@contoso.com,user2@contoso.com`*
 1. A **szolgáltatás metaadatainak helye**területen válassza ki a virtuális hálózattal megegyező helyet, amely kapcsolódik a Active Directory-kiszolgálóhoz.
 
    >[!IMPORTANT]
@@ -148,7 +148,7 @@ Felhasználók társítása az asztali alkalmazás csoportjához:
    Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
    ```
 
-   A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával az Azure AD- *user1@contoso.com*ben, például:. Ha több felhasználót szeretne hozzáadni, futtassa az parancsot minden felhasználóhoz.
+   A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával az Azure AD-ben, például: *user1@contoso.com* . Ha több felhasználót szeretne hozzáadni, futtassa az parancsot minden felhasználóhoz.
 
 Az asztali alkalmazás csoportba felvett felhasználók a támogatott Távoli asztal ügyfelekkel bejelentkezhetnek a Windows rendszerű virtuális asztalra, és megtekinthetik a munkamenetek asztalának erőforrásait.
 
@@ -162,4 +162,4 @@ A jelenleg támogatott ügyfelek:
 Létrehozott egy gazdagépet, és hozzárendelt felhasználókat az asztalához való hozzáféréshez. A gazdagép-készletet a RemoteApp-programokkal töltheti fel. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg ezt az oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Alkalmazás-csoportok kezelése – oktatóanyag](../manage-app-groups.md)
+> [Alkalmazás-csoportok kezelése – oktatóanyag](manage-app-groups-2019.md)

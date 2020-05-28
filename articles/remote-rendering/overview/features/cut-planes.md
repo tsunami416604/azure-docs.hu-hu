@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759081"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021364"
 ---
 # <a name="cut-planes"></a>Síkok kivágása
 
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 A következő tulajdonságok vannak kitéve egy kivágott sík összetevőn:
 
-* **Engedélyezve:** Ideiglenesen kikapcsolhatja a kivágott síkokat az összetevő letiltásával. A letiltott síkok nem terhelik a renderelési terhelést, és nem számítanak bele a globálisan kivágott sík korlátba.
+* `Enabled`: Ideiglenesen kikapcsolhatja a kivágott síkokat az összetevő letiltásával. A letiltott síkok nem terhelik a renderelési terhelést, és nem számítanak bele a globálisan kivágott sík korlátba.
 
-* **Normál:** Megadja, hogy a rendszer melyik irányt (+ X,-X, + Y,-Y, + Z,-Z) használja a normál síkon. Ez az irány a tulajdonos entitás tájolásához képest relatív. Helyezze át és forgassa el a tulajdonos entitást a pontos elhelyezéshez.
+* `Normal`: Megadja, hogy a rendszer melyik irányt (+ X,-X, + Y,-Y, + Z,-Z) használja a normál síkon. Ez az irány a tulajdonos entitás tájolásához képest relatív. Helyezze át és forgassa el a tulajdonos entitást a pontos elhelyezéshez.
 
-* **FadeColor** és **FadeLength:**
+* `FadeColor`és `FadeLength` :
 
   Ha a *FadeColor* alfa értéke nem nulla, a kivágási sík közelébe mutató képpontok a FadeColor RGB-részéhez fognak elhalványulni. Az alfa-csatorna erőssége határozza meg, hogy teljes mértékben elhalványul-e az elhalványulás színe, vagy csak részben. A *FadeLength* határozza meg, hogy a Halványítás milyen távolságra legyen végrehajtva.
 

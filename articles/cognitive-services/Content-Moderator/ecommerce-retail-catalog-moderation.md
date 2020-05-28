@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e74eda9e30c536c0eba4e847019344c87e10cce
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04418e39b1bd0a180a1f1130b2230e31050faa4b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774340"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118631"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: az e-kereskedelmi termékkel foglalkozó közepesen súlyos rendszerképek az Azure Content Moderator
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 A teljes mintakód elérhető az [e-kereskedelmi katalógus-moderálási](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) tárházban a githubon.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,7 +65,7 @@ Ez az oktatóanyag három kognitív szolgáltatást használ; ezért három megf
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Frissítenie kell a `___Key` mezőket az előfizetési kulcsok értékeivel, és módosítania kell a `___Uri` mezőket a megfelelő végponti URL-címekre (a Custom Vision kulcsot és a végpontot később kapja meg). Ezek az értékek az egyes Azure-erőforrások **gyors üzembe helyezési** lapjain találhatók. Töltse ki a `YOURTEAMID` `ReviewUri` mező részét a korábban létrehozott felülvizsgálati csapat azonosítójával. A `CustomVisionUri` mező utolsó részét később kitölti a következő időpontban:.
+Frissítenie kell a mezőket az `___Key` előfizetési kulcsok értékeivel, és módosítania kell a `___Uri` mezőket a megfelelő végponti URL-címekre (a Custom Vision kulcsot és a végpontot később kapja meg). Ezek az értékek az egyes Azure-erőforrások **gyors üzembe helyezési** lapjain találhatók. Töltse ki a `YOURTEAMID` mező részét a `ReviewUri` korábban létrehozott felülvizsgálati csapat azonosítójával. A mező utolsó részét később kitölti a következő `CustomVisionUri` időpontban:.
 
 [!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -89,11 +89,11 @@ A következő módszer egy képurl-címet és a Computer Vision előfizetési ad
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags metódus
 
-Ezután tekintse meg a **EvaluateCustomVisionTags** metódust, amely a tényleges termékeket&mdash;osztályozza ebben az esetben a jelzőket, a játékokat és a tollat. Kövesse a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutatót a saját egyéni rendszerkép-osztályozó létrehozásához, valamint a képeken látható jelzők, játékok és tollak (vagy bármi más, az egyéni címkék alapján) észleléséhez. A [GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **-tárház Sample-images** mappájában található lemezképek segítségével gyorsan betaníthatja a példában szereplő kategóriákat.
+Ezután tekintse meg a **EvaluateCustomVisionTags** metódust, amely a tényleges termékeket osztályozza &mdash; ebben az esetben a jelzőket, a játékokat és a tollat. Kövesse a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutatót a saját egyéni rendszerkép-osztályozó létrehozásához, valamint a képeken látható jelzők, játékok és tollak (vagy bármi más, az egyéni címkék alapján) észleléséhez. A [GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **-tárház Sample-images** mappájában található lemezképek segítségével gyorsan betaníthatja a példában szereplő kategóriákat.
 
 ![Custom Vision weblap a tollak, játékok és jelzők betanítási képeivel](images/tutorial-ecommerce-custom-vision.PNG)
 
-Az osztályozó betanítása után szerezze be az előrejelzési kulcs és az előrejelzési végpont URL-címét (lásd: [az URL-cím és az előrejelzési kulcs beszerzése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , ha segítségre `CustomVisionUri` van szüksége a beolvasáshoz), és ezeket az értékeket a és a `CustomVisionKey` mezőkhöz rendeli A metódus ezeket az értékeket használja az osztályozó lekérdezéséhez. Ha az osztályozó a képen egy vagy több egyéni címkét talál, akkor ez a metódus a **ReviewTags** tömbben lévő megfelelő értékeket állítja be **true**értékre.
+Az osztályozó betanítása után szerezze be az előrejelzési kulcs és az előrejelzési végpont URL-címét (lásd: [az URL-cím és az előrejelzési kulcs beszerzése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , ha segítségre van szüksége a beolvasáshoz), és ezeket az értékeket a `CustomVisionKey` és a `CustomVisionUri` mezőkhöz rendeli A metódus ezeket az értékeket használja az osztályozó lekérdezéséhez. Ha az osztályozó a képen egy vagy több egyéni címkét talál, akkor ez a metódus a **ReviewTags** tömbben lévő megfelelő értékeket állítja be **true**értékre.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

@@ -4,12 +4,12 @@ description: A contoso példa áttelepítési forgatókönyvekre mutató hivatko
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
-ms.openlocfilehash: c57a9f85e8b12bd4e1e66a4fcd5d08ab5f7b9118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e19bcbd041232504a81ac0799e71cae2f459428
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676330"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016916"
 ---
 # <a name="contoso-migration-series"></a>Contoso migrálási sorozat
 
@@ -36,7 +36,7 @@ A sorozat cikkei az alábbi táblázatban vannak összegezve.
 [6. cikk: alkalmazások újraüzemeltetése Azure-beli virtuális gépeken és SQL Server alAlwaysOnon rendelkezésre állási csoportban](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-ag) | A contoso áttelepíti a SmartHotel360 alkalmazást. A contoso a Azure Migrate használatával telepíti át az alkalmazás virtuális gépeket. A Database Migration Service használatával telepíti át az alkalmazás-adatbázist egy olyan SQL Server-fürtre, amelyet egy alAlwaysOnon rendelkezésre állási csoport véd. 
 [7. cikk: Linux-alkalmazás újraüzemeltetése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm) | A contoso az Azure Migrate használatával befejezi a linuxos osTicket-alkalmazásának az Azure-beli virtuális gépekre való átemelését és átváltását.
 [8. cikk: Linux-alkalmazás újraüzemeltetése Azure-beli virtuális gépeken és Azure Database for MySQL](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm-mysql) | A contoso Azure Migrate használatával áttelepíti a linuxos osTicket alkalmazást az Azure-beli virtuális gépekre. Áttelepíti az alkalmazás-adatbázist az Azure Database-be a MySQ-hoz, Azure Database Migration Service használatával (a MySQL Workbench használatával egy másik lehetőség is).
-[9. cikk: alkalmazás újrabontása egy Azure-webalkalmazásban és Azure SQL Database](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | A contoso áttelepíti a SmartHotel360 alkalmazást egy Azure-webalkalmazásba, és áttelepíti az alkalmazás-adatbázist egy Azure SQL Server-példányra a Azure Database Migration Service használatával.
+[9. cikk: alkalmazás újrabontása egy Azure-webalkalmazásban és Azure SQL Database](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | A contoso áttelepíti a SmartHotel360 alkalmazást egy Azure-webalkalmazásba, és áttelepíti az alkalmazás-adatbázist Azure SQL Databasere a Azure Database Migration Service használatával.
 [10. cikk: Windows-alkalmazás újrabontása az Azure App Services és az SQL felügyelt példányának használatával](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql-managed-instance) | A contoso egy helyszíni Windows-alapú alkalmazást telepít át egy Azure-webalkalmazásba, és áttelepíti az alkalmazás adatbázisát egy felügyelt Azure SQL-példányra a Azure Database Migration Service használatával.
 [11. cikk: Linux-alkalmazás újrabontása egy Azure-webalkalmazásban és Azure Database for MySQL](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-linux-app-service-mysql) | A contoso a Linux osTicket alkalmazást egy Azure-webalkalmazásba helyezi át több Azure-régióban, az Azure Traffic Manager használatával, a folyamatos teljesítés érdekében a GitHubral integráltan. A contoso áttelepíti az alkalmazás adatbázisát egy Azure Database for MySQL példányra. 
 [12. cikk: újraTeam Foundation Server az Azure DevOps Services szolgáltatásban](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-tfs-vsts) | A contoso áttelepíti a helyszíni Team Foundation Server üzemelő példányát az Azure DevOps Services szolgáltatásba az Azure-ban.

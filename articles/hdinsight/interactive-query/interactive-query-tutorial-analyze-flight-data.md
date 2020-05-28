@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81313739"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021738"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 2. A lapon törölje az összes mezőt, majd válassza ki a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2019 |
    | Filter Period (Szűrési időszak) |January |
@@ -62,13 +62,13 @@ Számos különböző módon tölthet fel adatokat egy HDInsight-fürthöz tarto
 
     Ha a rendszer kéri, adja meg az igen vagy a nem értéket a folytatáshoz. A beírt szöveg nem látható az ablakban.
 
-2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a nevet a HDInsight-fürt nevére. Ezután írja be a következő parancsot:
+2. Ha a feltöltés befejeződött, csatlakozzon a fürthöz az SSH-val. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` nevet a HDInsight-fürt nevére. Ezután írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Környezeti változó beállítása az SSH-kapcsolatok létrehozása után. `SQL_SERVERNAME`Cserélje `FILE_NAME`le a `SQL_DATABASE`, `SQL_USER`,, `SQL_PASWORD` , és értéket a megfelelő értékekre. Ezután írja be a parancsot:
+3. Környezeti változó beállítása az SSH-kapcsolatok létrehozása után. Cserélje le a,, `FILE_NAME` `SQL_SERVERNAME` ,, `SQL_DATABASE` `SQL_USER` és `SQL_PASWORD` értéket a megfelelő értékekre. Ezután írja be a parancsot:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -205,7 +205,7 @@ Számos módon csatlakozhat az SQL Database-hez, majd hozhat létre egy táblát
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. A telepítés végeztével futtassa a következő parancsot az SQL-adatbáziskiszolgálóhoz való csatlakozáshoz.
+2. A telepítés befejezése után a következő paranccsal csatlakozhat SQL Databasehoz.
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -260,15 +260,15 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Ez a parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben korábban `delays` létrehozta a táblát.
+    Ez a parancs az adatbázisok listáját adja vissza, beleértve azt az adatbázist, amelyben korábban létrehozta a `delays` táblát.
 
-2. Exportálja az `/tutorials/flightdelays/output` adatokat a `delays` táblázatba az alábbi parancs beírásával:
+2. Exportálja az adatokat a `/tutorials/flightdelays/output` `delays` táblázatba az alábbi parancs beírásával:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    A Sqoop a `delays` táblázatot tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` címtárból exportálja az adatait a `delays` táblába.
+    A Sqoop a táblázatot tartalmazó adatbázishoz csatlakozik `delays` , és a címtárból exportálja az adatait `/tutorials/flightdelays/output` a `delays` táblába.
 
 3. A sqoop parancs befejeződése után a TSQL segédprogrammal csatlakozhat az adatbázishoz az alábbi parancs beírásával:
 
@@ -287,7 +287,7 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 
     A tsql eszközből való kilépéshez írja be az `exit` parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

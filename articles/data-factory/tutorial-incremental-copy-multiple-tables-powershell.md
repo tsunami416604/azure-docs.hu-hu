@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84df242cdbfedd0cd1442ac4c4da7f4b6139d244
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410011"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020744"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése több táblázatból SQL Server egy Azure SQL Database
 
@@ -70,7 +70,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használ forrásadattárként. 
-* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket. 
+* **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
@@ -374,7 +374,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
 
 ### <a name="create-the-sql-database-linked-service"></a>Az SQL-adatbázis társított szolgáltatásának létrehozása
 
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A &lt;fájl&gt;mentése &lt;előtt cserélje&gt;le &lt;a servername&gt;, az &lt;adatbázis&gt; nevét, a felhasználónevet és a jelszót a SQL Server adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) &lt; &gt; A fájl mentése előtt cserélje le a servername, az &lt; adatbázis nevét &gt; , a &lt; felhasználónevet &gt; és a jelszót a &lt; &gt; SQL Server adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
 
     ```json
     {  

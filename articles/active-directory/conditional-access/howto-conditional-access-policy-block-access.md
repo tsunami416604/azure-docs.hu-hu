@@ -4,19 +4,19 @@ description: Egyéni feltételes hozzáférési szabályzat létrehozása a köv
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995309"
 ---
 # <a name="conditional-access-block-access"></a>Feltételes hozzáférés: hozzáférés letiltása
 
@@ -43,7 +43,7 @@ A következő lépések segítséget nyújtanak a feltételes hozzáférési sza
 Az első házirend letiltja az összes alkalmazáshoz való hozzáférést, kivéve az Office 365-alkalmazásait, ha nem megbízható helyen vannak.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
@@ -54,13 +54,13 @@ Az első házirend letiltja az összes alkalmazáshoz való hozzáférést, kiv�
    1. A **Belefoglalás**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
    1. A **kizárás**területen válassza az **Office 365 (előzetes verzió)** lehetőséget, válassza a **kiválasztás**, majd a **kész**lehetőséget.
 1. **Feltételek**:
-   1. A **feltételek** > **helye**alatt.
+   1. A **feltételek**  >  **helye**alatt.
       1. **Konfigurálás** beállítása **Igen** értékre
       1. A **Belefoglalás**területen válassza ki **a kívánt helyet**.
       1. A **kizárás**területen válassza ki **az összes megbízható helyet**.
       1. Válassza a **Done** (Kész) lehetőséget.
    1. Az **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen**értékre a **configure** beállítást, majd válassza a **kész**, majd a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés letiltása**, majd a **kiválasztás**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
@@ -72,8 +72,8 @@ Az alábbi második szabályzatot kell létrehoznia a többtényezős hitelesít
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy műveletek** > területen válassza az **alkalmazások kiválasztása**,**majd az** **Office 365 (előzetes verzió)** lehetőséget, és válassza a **kiválasztás**, majd a **kész**elemet.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés engedélyezése**lehetőséget.
+1. A **Cloud apps vagy műveletek területen**  >  **Include**válassza az **alkalmazások kiválasztása**, majd az **Office 365 (előzetes verzió)** lehetőséget, és válassza a **kiválasztás**, majd a **kész**elemet.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés engedélyezése**lehetőséget.
    1. Válassza a **többtényezős hitelesítés megkövetelése** és az **eszköz megfelelőként való megjelölésének megkövetelése** **jelölőnégyzetet.**
    1. Győződjön meg arról, hogy **az összes kijelölt vezérlő** be van jelölve.
    1. Válassza a **Kiválasztás** lehetőséget.

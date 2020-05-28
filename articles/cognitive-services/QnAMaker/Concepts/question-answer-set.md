@@ -1,29 +1,29 @@
 ---
 title: Tudásbázis tervezése – QnA Maker
-description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készletből és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+description: A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756789"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992997"
 ---
-# <a name="question-and-answer-set-concepts"></a>Kérdések és válaszok beállítása – fogalmak
+# <a name="question-and-answer-pair-concepts"></a>Kérdések és válaszok – pár fogalmak
 
-A Tudásbázis a kérdések és válaszok (QnA) készletből áll.  Mindegyik készlet egyetlen választ tartalmaz, és egy készlet tartalmazza az adott _válaszhoz_tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
+A Tudásbázis kérdések és válaszok (QnA) párokból áll.  Minden pár egyetlen választ tartalmaz, és egy pár tartalmazza az adott _válaszhoz_tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat.
 
-## <a name="question-and-answer-sets"></a>Kérdés- és válaszkészletek
+## <a name="question-and-answer-pairs"></a>Kérdések és válaszok párok
 
-A kérdés-válasz (QnA) készlet **kötelező** beállításai a következők:
+A kérdés-válasz (QnA) pár **kötelező** beállításai a következők:
 
 * a **felhasználói lekérdezésnek a QnA Maker** gépi tanuláshoz használt szövege, amely a felhasználó kérdéséhez igazodik a különböző szóhasználattal, de ugyanaz a válasz
-* a **Válasz** – a készlet válasza az a válasz, amelyet a rendszer akkor ad vissza, amikor egy felhasználói lekérdezés megfelel a kapcsolódó kérdésnek
+* a **Válasz** – a pár válasza az a válasz, amelyet a rendszer akkor ad vissza, amikor egy felhasználói lekérdezés megfelel a kapcsolódó kérdésnek
 
-Minden készletet egy **azonosító**képvisel.
+Az egyes párokat **azonosítók**jelölik.
 
-A készlet **választható** beállításai a következők:
+A párok **opcionális** beállításai a következők:
 
 * **A kérdés alternatív formái** – ez segít QnA Maker a megfelelő választ visszaadni a kérdéses szövegezések széles körére
 * **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.

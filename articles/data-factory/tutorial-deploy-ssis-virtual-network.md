@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 3dd2be9a9f618f19ae71de8b19115013896b10cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195553"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118144"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) konfigurálása virtuális hálózathoz való csatlakozáshoz
 
@@ -35,8 +35,8 @@ A lépések a következők:
 
 - **Felhasználói engedély**. A Azure-SSIS IR létrehozó felhasználónak legalább az alábbi lehetőségek egyikével kell rendelkeznie a [szerepkör-hozzárendeléssel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope) Azure Data Factory erőforráson:
 
-    - Használja a beépített hálózati közreműködő szerepkört. Ehhez a szerepkörhöz a _Microsoft. Network/\* _ engedély tartozik, amely a szükségesnél sokkal nagyobb hatókörű.
-    - Hozzon létre egy egyéni szerepkört, amely csak a szükséges _Microsoft. Network\*/virtualNetworks//JOIN/Action_ engedélyt tartalmazza. Ha a Azure-SSIS IR saját nyilvános IP-címeit is szeretné csatlakoztatni egy Azure Resource Manager virtuális hálózathoz, akkor a szerepkörben a _Microsoft. Network/nyilvános IP/*/JOIN/Action_ engedély is szerepel.
+    - Használja a beépített hálózati közreműködő szerepkört. Ehhez a szerepkörhöz a _Microsoft. Network/ \* _ engedély tartozik, amely a szükségesnél sokkal nagyobb hatókörű.
+    - Hozzon létre egy egyéni szerepkört, amely csak a szükséges _Microsoft. Network/virtualNetworks/ \* /JOIN/Action_ engedélyt tartalmazza. Ha a Azure-SSIS IR saját nyilvános IP-címeit is szeretné csatlakoztatni egy Azure Resource Manager virtuális hálózathoz, akkor a szerepkörben a _Microsoft. Network/nyilvános IP/*/JOIN/Action_ engedély is szerepel.
 
 - **Virtuális hálózat**.
 
@@ -45,8 +45,8 @@ A lépések a következők:
     - Győződjön meg arról, hogy a virtuális hálózat erőforráscsoport létrehozhat és törölhet bizonyos Azure-hálózati erőforrásokat.
     
         A Azure-SSIS IR létre kell hoznia bizonyos hálózati erőforrásokat a virtuális hálózattal azonos erőforráscsoporthoz. Ezek az erőforrások a következők:
-        - Egy Azure Load Balancer, amelynek neve * \<GUID>-azurebatch-cloudserviceloadbalancer*
-        - Egy hálózati biztonsági csoport, amelynek neve *\<GUID>-azurebatch-cloudservicenetworksecuritygroup
+        - Egy Azure Load Balancer, amelynek neve: * \<Guid> azurebatch-cloudserviceloadbalancer*
+        - Egy hálózati biztonsági csoport, amelynek neve * \<Guid> -azurebatch-cloudservicenetworksecuritygroup
         - Egy Azure-beli nyilvános IP-cím, amelynek neve: azurebatch-cloudservicepublicip
     
         Ezek az erőforrások a Azure-SSIS IR indításakor lesznek létrehozva. Ha a Azure-SSIS IR leáll, a rendszer törli őket. Ha nem szeretné megakadályozni a Azure-SSIS IR leállítását, ne használja újra ezeket a hálózati erőforrásokat a többi erőforrásban.
@@ -86,7 +86,7 @@ A Azure Portal használatával konfigurálhatja a virtuális hálózatokat, miel
 
     - Győződjön meg arról, hogy a kiválasztott alhálózat rendelkezik-e elegendő szabad hellyel a Azure-SSIS IR használatához. Hagyjon elérhető IP-címeket legalább két alkalommal az IR-csomópont számának. Az Azure néhány IP-címet fenntart az egyes alhálózatokon belül. Ezeket a címeket nem lehet használni. Az alhálózatok első és utolsó IP-címe a protokollok megfelelőségére van fenntartva, és három további címet használ az Azure-szolgáltatásokhoz. További információ: az [IP-címek ezen alhálózatokon belüli használatára vonatkozó korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
     - Ne válassza ki a GatewaySubnet egy Azure-SSIS IR telepítéséhez. A virtuális hálózati átjárók számára dedikált.
-    - Ne használjon olyan alhálózatot, amelyet kizárólag más Azure-szolgáltatások foglalnak magukban (például SQL Database felügyelt példány, App Service stb.).
+    - Ne használjon olyan alhálózatot, amelyet kizárólag más Azure-szolgáltatások foglalnak magukban (például SQL Database SQL felügyelt példány, App Service stb.).
 
 1. Ellenőrizze, hogy a Azure Batch szolgáltató regisztrálva van-e a virtuális hálózattal rendelkező Azure-előfizetésben. Vagy regisztrálja a Azure Batch szolgáltatót. Ha már rendelkezik Azure Batch-fiókkal az előfizetésben, az előfizetés regisztrálva lesz a Azure Batchhoz. (Ha a Azure-SSIS IR a Data Factory portálon hozza létre, a Azure Batch szolgáltató automatikusan regisztrálva lesz.)
 
@@ -137,9 +137,9 @@ Miután konfigurálta a Azure Resource Manager virtuális hálózatot vagy a kla
 
    1. A **Típus mezőben**válassza ki a virtuális hálózat típusát: klasszikus vagy Azure Resource Manager. Javasoljuk, hogy válasszon ki egy Azure Resource Manager virtuális hálózatot, mert a klasszikus virtuális hálózatok hamarosan elavulttá válnak.
 
-   1. A **VNet neve**mezőben válassza ki a virtuális hálózat nevét. A virtuális hálózati szolgáltatás-végpontokkal vagy a felügyelt példányokkal együtt, a SSISDB üzemeltetéséhez használt Azure SQL Database-kiszolgáló esetében azonosnak kell lennie. Vagy a helyszíni hálózathoz csatlakoztatva kell lennie. Ellenkező esetben bármely virtuális hálózat lehet a saját statikus nyilvános IP-címeinek használata Azure-SSIS IR számára.
+   1. A **VNet neve**mezőben válassza ki a virtuális hálózat nevét. A virtuális hálózati szolgáltatás-végpontokkal vagy az SQL felügyelt példányával, amely a SSISDB üzemeltetésére szolgál, ugyanazt a SQL Database használja. Vagy a helyszíni hálózathoz csatlakoztatva kell lennie. Ellenkező esetben bármely virtuális hálózat lehet a saját statikus nyilvános IP-címeinek használata Azure-SSIS IR számára.
 
-   1. Az **alhálózat neve**mezőben válassza ki a virtuális hálózatához tartozó alhálózat nevét. A virtuális hálózati szolgáltatás-végpontokkal a SSISDB üzemeltetéséhez használt Azure SQL Database-kiszolgáló esetében azonosnak kell lennie. Vagy más alhálózatnak kell lennie, amelyet a felügyelt példányhoz használ a SSISDB üzemeltetésére szolgáló privát végponttal. Ellenkező esetben bármilyen alhálózat lehet a saját statikus nyilvános IP-címeinek Azure-SSIS IR számára.
+   1. Az **alhálózat neve**mezőben válassza ki a virtuális hálózatához tartozó alhálózat nevét. A virtuális hálózati szolgáltatás-végpontokkal a SSISDB üzemeltetéséhez használt SQL-DATBASE azonosnak kell lennie. Vagy egy másik alhálózatnak kell lennie, amely az SQL felügyelt példányának a SSISDB-t futtató magánhálózati végponttal való futtatására szolgál. Ellenkező esetben bármilyen alhálózat lehet a saját statikus nyilvános IP-címeinek Azure-SSIS IR számára.
 
    1. Válassza a **VNet érvényesítése**lehetőséget. Ha az ellenőrzés sikeres, válassza a **Folytatás**lehetőséget.
 

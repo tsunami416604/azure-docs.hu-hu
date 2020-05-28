@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758741"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021670"
 ---
 # <a name="components"></a>Összetevők
 
 Az Azure távoli renderelés az [entitás-összetevő](https://en.wikipedia.org/wiki/Entity_component_system) rendszermintáját használja. Míg az [entitások](entities.md) képviselik a pozíciót és az objektumok hierarchikus összetételét, az összetevők a viselkedés végrehajtásáért felelősek.
 
-Az összetevők leggyakrabban használt típusai a [Rácsvonalak](meshes.md), amelyek a renderelési folyamatba helyezik a hálókat. Hasonlóképpen, a [világos összetevőket](../overview/features/lights.md) a rendszer a világító és a [kivágási sík összetevők](../overview/features/cut-planes.md) hozzáadására használja a nyitott rácsvonalak kivágására.
+Az összetevők leggyakrabban használt típusai [:::no-loc text="mesh components":::](meshes.md) , amelyek rácsvonalak hozzáadását teszik elérhetővé a renderelési folyamatban. Hasonlóképpen, a [világos összetevőket](../overview/features/lights.md) a rendszer a világító és a [kivágási sík összetevők](../overview/features/cut-planes.md) hozzáadására használja a nyitott rácsvonalak kivágására.
 
 Ezek az összetevők a hivatkozási pontként, a hozzájuk kapcsolódó entitások átalakítását (pozícióját, elforgatását, méretezését) használják.
 

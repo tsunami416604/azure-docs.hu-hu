@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656519"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118959"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,7 +138,7 @@ A következő kísérletet az Azure Machine learning szolgáltatásban https://m
         További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; ideje (óra): 1 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 2
@@ -215,7 +215,7 @@ Csak a központi telepítési példányt törölje a Azure Machine Learning a ht
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell létrehozásához és üzembe helyezéséhez Azure Machine Learning automatikus ML-interfészét használta. További információkat és további lépéseket a következő cikkekben talál:
 
@@ -224,7 +224,7 @@ Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell lét
 
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
-+ További információ a [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ További információ a [featurization](how-to-configure-auto-features.md#featurization).
 + További információ az [adatprofilkészítésről](how-to-use-automated-ml-for-ml-models.md#profile).
 
 

@@ -45,7 +45,7 @@ A Batch-fiók lehetővé teszi, hogy hatékonyan futtasson nagy méretű párhuz
 
 - A fiók azonosítja a Storage-fiókját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy batch-fiókot a [Azure Portal](batch-account-create-portal.md)használatával.
 - Hozzon létre egy batch-fiókot programozott módon, például a [Batch Management .net könyvtárával](batch-management-dotnet.md).

@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509499"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018752"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
 A Virtual Network (VNet) szolgáltatási végpontok kibővítik a virtuális hálózat saját címterület-területét. A végpontok a VNet identitását is kiterjesztik az Azure-szolgáltatásokra közvetlen kapcsolaton keresztül. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
 
-Ez a funkció a következő Azure-szolgáltatásokhoz és-régiókhoz érhető el. A *Microsoft.\* * Resource zárójelben van. Engedélyezze ezt az erőforrást az alhálózati oldalról a szolgáltatási végpontok szolgáltatáshoz való konfigurálása során:
+Ez a funkció a következő Azure-szolgáltatásokhoz és-régiókhoz érhető el. A *Microsoft. \* * Resource zárójelben van. Engedélyezze ezt az erőforrást az alhálózati oldalról a szolgáltatási végpontok szolgáltatáshoz való konfigurálása során:
 
 **Általánosan elérhető**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft. Storage*): általánosan elérhető az összes Azure-régióban.
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az összes Azure-régióban.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az összes Azure-régióban.
+- **[Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az összes Azure-régióban.
+- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az összes Azure-régióban.
 - **[Azure Database for PostgreSQL-kiszolgáló](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
 - **[Azure Database for MySQL-kiszolgáló](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): általánosan elérhető az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
@@ -147,9 +147,9 @@ A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kap
 
 - [Virtuális hálózati szolgáltatásvégpontok konfigurálása](tutorial-restrict-network-access-to-resources.md)
 - [Azure Storage-fiók biztonságossá tétele virtuális hálózathoz](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure SQL Database biztonságossá tétele virtuális hálózathoz](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure SQL Data Warehouse biztonságossá tétele virtuális hálózathoz](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Azure SQL Database biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure SQL Data Warehouse biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-szolgáltatás integrációja virtuális hálózatokban](virtual-network-for-azure-services.md)
 - [Virtual Network szolgáltatási végpont házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

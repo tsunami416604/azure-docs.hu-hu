@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: Útmutató
   items:
-    - name: DAC-csomagok és Stream Analytics-feladatok
+    - name: Stream Analytics-feladatok üzembe helyezése
       href: stream-analytics.md
     - name: Replikáció konfigurálása
       href: configure-replication.md

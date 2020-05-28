@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681180"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021143"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>A Unity Remote Rendering-csomagjának telepítése
 
@@ -43,9 +43,9 @@ Részletesebb útmutatást az [oktatóanyagban talál: Unity-projekt létrehozá
 
 ## <a name="unity-render-pipelines"></a>Unity renderelési folyamatok
 
-A távoli renderelés az **univerzális renderelési folyamattal** és a **szabványos renderelési folyamattal**is működik. A teljesítménnyel kapcsolatos okokból az univerzális renderelési folyamat ajánlott.
+A távoli renderelés a és a együttesével is működik **:::no-loc text="Universal render pipeline":::** **:::no-loc text="Standard render pipeline":::** . A teljesítménnyel kapcsolatos okokból az univerzális renderelési folyamat ajánlott.
 
-Az **univerzális renderelési folyamat**használatához a csomagot az Unity-ben kell telepíteni. Ezt az egység **csomagkezelő** felhasználói felületén (a csomag neve **univerzális RP**, 7.2.1 vagy újabb verzió) vagy a `Packages/manifest.json` fájlon keresztül teheti meg, az [Unity Project Setup oktatóanyagban](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)leírtak szerint.
+A használatához a **:::no-loc text="Universal render pipeline":::** csomagját az Unity-ben kell telepíteni. Ezt az egység **csomagkezelő** felhasználói felületén (a csomag neve **univerzális RP**, 7.2.1 vagy újabb verzió) vagy a fájlon keresztül teheti meg, az `Packages/manifest.json` [Unity Project Setup oktatóanyagban](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 

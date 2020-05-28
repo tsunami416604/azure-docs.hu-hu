@@ -19,7 +19,7 @@ ms.locfileid: "79461231"
 
 Az Azure Media Services API-khoz való csatlakozáshoz használja az Azure AD szolgáltatásnév hitelesítését. Az alábbi parancs létrehoz egy Azure AD-alkalmazást, majd egy szolgáltatásnevet csatol a fiókhoz. A visszaadott értékeket használja az alkalmazás konfigurálásához.
 
-A szkript futtatása előtt cserélje le a `amsaccount` és `amsResourceGroup` az értékét az erőforrások létrehozásakor kiválasztott nevekre. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
+A szkript futtatása előtt cserélje le a és az `amsaccount` értékét `amsResourceGroup` az erőforrások létrehozásakor kiválasztott nevekre. `amsaccount`: a szolgáltatásnév csatolásához használni kívánt Azure Media Services-fiók neve.
 
 Ha több előfizetéshez is rendelkezik hozzáféréssel, először állítsa be az aktív előfizetést arra az előfizetésre, ahol a Media Services fiókot létrehozták.
 

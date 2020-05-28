@@ -4,18 +4,18 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276828"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996601"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
 Ez az útmutató a JavaScript-Azure Functions írásának bonyolult adatait tartalmazza.
 
-A JavaScript-függvények olyan exportáltak `function` , amelyek indításkor futnak ([a triggerek a function. JSON fájlban vannak konfigurálva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
+A JavaScript-függvények olyan exportáltak, `function` amelyek indításkor futnak ([a triggerek a function. JSON fájlban vannak konfigurálva](functions-triggers-bindings.md)). Az összes függvénynek átadott első argumentum egy `context` objektum, amely a kötési adatok fogadására és küldésére, a naplózásra és a futtatókörnyezettel folytatott kommunikációra szolgál.
 
 Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) használatával vagy [a portálon](functions-create-first-azure-function.md)hajtsa végre a functions rövid útmutatót.
 
@@ -42,17 +42,17 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-A projekt gyökerében található egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function. JSON) tartalmazó mappa. A szülő könyvtár `function.json`neve mindig a függvény neve.
+A projekt gyökerében található egy megosztott [Host. JSON](functions-host-json.md) fájl, amely a Function alkalmazás konfigurálására használható. Minden függvényhez tartozik egy, a saját programkódját (. js) és a kötési konfigurációs fájlt (function. JSON) tartalmazó mappa. A `function.json` szülő könyvtár neve mindig a függvény neve.
 
-A függvények futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a `extensions.csproj` fájlban vannak meghatározva, és a `bin` mappában lévő tényleges függvénytárak fájljai vannak megadva. Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
+A függvények futtatókörnyezet [2. x verziójában](functions-versions.md) szükséges kötési kiterjesztések a fájlban vannak meghatározva `extensions.csproj` , és a mappában lévő tényleges függvénytárak fájljai vannak megadva `bin` . Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
 ## <a name="exporting-a-function"></a>Függvény exportálása
 
-A JavaScript-függvényeket a [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (vagy [`exports`](https://nodejs.org/api/modules.html#modules_exports)) használatával kell exportálni. Az exportált függvénynek JavaScript-függvénynek kell lennie, amely az aktiváláskor végrehajtódik.
+A JavaScript-függvényeket a [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (vagy) használatával kell exportálni [`exports`](https://nodejs.org/api/modules.html#modules_exports) . Az exportált függvénynek JavaScript-függvénynek kell lennie, amely az aktiváláskor végrehajtódik.
 
-Alapértelmezés szerint a functions Runtime a függvényét keresi a `index.js`alkalmazásban `index.js` , ahol ugyanazokat a szülő könyvtárat osztja `function.json`meg a megfelelővel. Az alapértelmezett esetben az exportált függvény csak a fájlból, vagy a (z) vagy `run` `index`a (z) nevű exportálásból exportálható. A fájl helyének és a függvény exportálási nevének konfigurálásához olvassa el a [függvény belépési pontjának konfigurálását](functions-reference-node.md#configure-function-entry-point) alább.
+Alapértelmezés szerint a functions Runtime a függvényét keresi a alkalmazásban `index.js` , ahol `index.js` ugyanazokat a szülő könyvtárat osztja meg a megfelelővel `function.json` . Az alapértelmezett esetben az exportált függvény csak a fájlból, vagy a (z) vagy a (z) nevű exportálásból exportálható `run` `index` . A fájl helyének és a függvény exportálási nevének konfigurálásához olvassa el a [függvény belépési pontjának konfigurálását](functions-reference-node.md#configure-function-entry-point) alább.
 
-Az exportált függvény számos argumentumot adott meg a végrehajtáskor. Az első szükséges argumentum mindig egy `context` objektum. Ha a függvény szinkronban van (nem ad vissza ígéretet), akkor meg `context` kell adnia az objektumot `context.done` , mivel a helyes használathoz hívás szükséges.
+Az exportált függvény számos argumentumot adott meg a végrehajtáskor. Az első szükséges argumentum mindig egy `context` objektum. Ha a függvény szinkronban van (nem ad vissza ígéretet), akkor meg kell adnia az `context` objektumot, mivel a `context.done` helyes használathoz hívás szükséges.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -63,7 +63,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>Aszinkron függvény exportálása
-Ha egy [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarációt vagy egyszerű JavaScriptet [ígér](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) a functions futtatókörnyezet 2. x verziójában, akkor nem kell explicit módon meghívnia [`context.done`](#contextdone-method) a visszahívást, hogy jelezze a függvény befejezését. A függvény akkor fejeződik be, amikor az exportált aszinkron függvény/ígéret befejeződik. Az 1. x verziójú futtatókörnyezetet megcélzó függvények esetén a kód végrehajtásának befejezése után is meg kell hívni a hívást [`context.done`](#contextdone-method) .
+Ha egy [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarációt vagy egyszerű JavaScriptet [ígér](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) a functions futtatókörnyezet 2. x verziójában, akkor nem kell explicit módon meghívnia a [`context.done`](#contextdone-method) visszahívást, hogy jelezze a függvény befejezését. A függvény akkor fejeződik be, amikor az exportált aszinkron függvény/ígéret befejeződik. Az 1. x verziójú futtatókörnyezetet megcélzó függvények esetén a kód végrehajtásának befejezése után is meg kell hívni a hívást [`context.done`](#contextdone-method) .
 
 A következő példa egy egyszerű függvény, amely naplózza, hogy elindították, és azonnal befejezi a végrehajtást.
 
@@ -73,9 +73,9 @@ module.exports = async function (context) {
 };
 ```
 
-Aszinkron függvény exportálásakor a kimeneti kötést is konfigurálhatja az `return` érték megadásához. Ez akkor ajánlott, ha csak egy kimeneti kötése van.
+Aszinkron függvény exportálásakor a kimeneti kötést is konfigurálhatja az érték megadásához `return` . Ez akkor ajánlott, ha csak egy kimeneti kötése van.
 
-`return`Ha a használatával szeretne kimenetet rendelni, `name` módosítsa a `$return` tulajdonságot a következőre: `function.json`.
+Ha a használatával szeretne kimenetet rendelni `return` , módosítsa a `name` tulajdonságot a `$return` következőre: `function.json` .
 
 ```json
 {
@@ -101,14 +101,14 @@ module.exports = async function (context, req) {
 A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak egy függvény function. JSON fájljában. A függvények számos módon működnek együtt a kötésekkel.
 
 ### <a name="inputs"></a>Bemenetek
-A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések ( `direction === "in"`-kötések) háromféle módon olvashatók be a függvényekben:
+A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
  - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek a *function. JSON*fájlban megadott sorrendben adják át őket. A `name` *function. JSON* fájlban definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár az értéknek kell lennie.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Az [`context.bindings`](#contextbindings-property) objektum tagjaként.** Az egyes tagok neve a `name` *function. JSON*fájlban definiált tulajdonság.
+ - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Az egyes tagok neve a `name` *function. JSON*fájlban definiált tulajdonság.
  
    ```javascript
    module.exports = async function(context) { 
@@ -118,7 +118,7 @@ A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger beme
    };
    ```
    
- - **A JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) -objektumot használó bemenetként.** Ez lényegében ugyanaz, mint a bemenetek paraméterként való továbbítása, de lehetővé teszi a bemenetek dinamikus kezelését.
+ - **A JavaScript-objektumot használó bemenetként [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) .** Ez lényegében ugyanaz, mint a bemenetek paraméterként való továbbítása, de lehetővé teszi a bemenetek dinamikus kezelését.
  
    ```javascript
    module.exports = async function(context) { 
@@ -129,7 +129,7 @@ A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger beme
    ```
 
 ### <a name="outputs"></a>Kimenetek
-A ( `direction === "out"`) kimeneteit a függvény számos módon képes írni. A kötésnek a `name` *function. JSON* fájlban megadott tulajdonsága minden esetben megfelel a függvényben írt Object tag nevének. 
+A () kimeneteit a `direction === "out"` függvény számos módon képes írni. A `name` kötésnek a *function. JSON* fájlban megadott tulajdonsága minden esetben megfelel a függvényben írt Object tag nevének. 
 
 Az alábbi módszerek egyikével rendelhet adatokat a kimeneti kötésekhez (ne kombinálja ezeket a metódusokat):
 
@@ -147,7 +147,7 @@ Az alábbi módszerek egyikével rendelhet adatokat a kimeneti kötésekhez (ne 
   };
   ```
 
-  Ha szinkron függvényt használ, ezt az objektumot a (lásd: példa [`context.done`](#contextdone-method) ) használatával adhatja vissza.
+  Ha szinkron függvényt használ, ezt az objektumot a [`context.done`](#contextdone-method) (lásd: példa) használatával adhatja vissza.
 - **_[Egyetlen kimenethez ajánlott_ Közvetlenül egy értéket ad vissza, és a $return kötési nevet használja.** Ez csak az aszinkron/Promise Returns függvények esetében működik. Lásd: példa az [aszinkron függvények exportálására](#exporting-an-async-function). 
 - **Értékek kiosztása `context.bindings` a** következőhöz Az értékeket közvetlenül is hozzárendelheti a Context. kötésekhez.
 
@@ -164,7 +164,7 @@ Az alábbi módszerek egyikével rendelhet adatokat a kimeneti kötésekhez (ne 
 
 ### <a name="bindings-data-type"></a>Kötések adattípusa
 
-Egy bemeneti kötés adattípusának megadásához használja a `dataType` tulajdonságot a kötés definíciójában. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, használja a következőt `binary`:
+Egy bemeneti kötés adattípusának megadásához használja a `dataType` tulajdonságot a kötés definíciójában. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, használja a következőt `binary` :
 
 ```json
 {
@@ -175,12 +175,12 @@ Egy bemeneti kötés adattípusának megadásához használja a `dataType` tulaj
 }
 ```
 
-A következő `dataType` lehetőségei: `binary`, `stream`és `string`.
+A következő lehetőségei `dataType` : `binary` , `stream` és `string` .
 
 ## <a name="context-object"></a>környezeti objektum
-A futtatókörnyezet egy `context` objektum használatával továbbítja az adatait a függvénynek, és lehetővé teszi a kommunikációt a futtatókörnyezettel. A környezeti objektum használható a kötések adatainak olvasására és beállítására, a naplók írására és a `context.done` visszahívás használatára, ha az exportált függvény szinkronban van.
+A futtatókörnyezet egy `context` objektum használatával továbbítja az adatait a függvénynek, és lehetővé teszi a kommunikációt a futtatókörnyezettel. A környezeti objektum használható a kötések adatainak olvasására és beállítására, a naplók írására és a visszahívás használatára, `context.done` Ha az exportált függvény szinkronban van.
 
-Az `context` objektum mindig a függvény első paramétere. A csomagnak szerepelnie kell, mert olyan fontos metódusokkal `context.log`rendelkezik, mint a és a `context.done` . Megadhatja az objektum nevét, `ctx` amit szeretne (például vagy `c`).
+Az `context` objektum mindig a függvény első paramétere. A csomagnak szerepelnie kell, mert olyan fontos metódusokkal rendelkezik, mint a `context.done` és a `context.log` . Megadhatja az objektum nevét, amit szeretne (például `ctx` vagy `c` ).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -196,9 +196,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Egy elnevezett objektumot ad vissza, amely a kötési adatok olvasására vagy hozzárendelésére szolgál. A bemeneti és trigger kötési adatok a `context.bindings`tulajdonságok beolvasásával érhetők el. A kimeneti kötési adatokat hozzá lehet rendelni az adatokat a következőhöz:`context.bindings`
+Egy elnevezett objektumot ad vissza, amely a kötési adatok olvasására vagy hozzárendelésére szolgál. A bemeneti és trigger kötési adatok a tulajdonságok beolvasásával érhetők el `context.bindings` . A kimeneti kötési adatokat hozzá lehet rendelni az adatokat a következőhöz:`context.bindings`
 
-Például a function. JSON következő kötési definíciói lehetővé teszik a várólista tartalmának elérését, `context.bindings.myInput` és kimenetek hozzárendelését egy várólistához a használatával. `context.bindings.myOutput`
+Például a function. JSON következő kötési definíciói lehetővé teszik a várólista tartalmának elérését, `context.bindings.myInput` és kimenetek hozzárendelését egy várólistához a használatával `context.bindings.myOutput` .
 
 ```json
 {
@@ -224,7 +224,7 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-Kiválaszthatja, hogy a kimeneti kötési adatokat az `context.done` `context.binding` objektum helyett a metódussal definiálja (lásd alább).
+Kiválaszthatja, hogy a kimeneti kötési adatokat az `context.done` objektum helyett a metódussal definiálja `context.binding` (lásd alább).
 
 ### <a name="contextbindingdata-property"></a>Context. bindingData tulajdonság
 
@@ -232,7 +232,7 @@ Kiválaszthatja, hogy a kimeneti kötési adatokat az `context.done` `context.bi
 context.bindingData
 ```
 
-Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény`invocationId`Meghívási adatokat tartalmaz (, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs-trigger.md)-ra.
+Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény Meghívási adatokat tartalmaz ( `invocationId` , `sys.methodName` , `sys.utcNow` , `sys.randGuid` ). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs-trigger.md)-ra.
 
 ### <a name="contextdone-method"></a>Context. Done metódus
 
@@ -240,11 +240,11 @@ Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény`i
 context.done([err],[propertyBag])
 ```
 
-Lehetővé teszi, hogy a futtatókörnyezet tudja, hogy a kód befejeződött. Ha a függvény a [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarációt használja, nem kell használnia. `context.done()` A `context.done` visszahívás implicit módon van meghívva. Az aszinkron függvények a 8. csomópontban vagy egy újabb verzióban érhetők el, amelyhez a functions futtatókörnyezet 2. x verziója szükséges.
+Lehetővé teszi, hogy a futtatókörnyezet tudja, hogy a kód befejeződött. Ha a függvény a [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarációt használja, nem kell használnia `context.done()` . A `context.done` visszahívás implicit módon van meghívva. Az aszinkron függvények a 8. csomópontban vagy egy újabb verzióban érhetők el, amelyhez a functions futtatókörnyezet 2. x verziója szükséges.
 
-Ha a függvény nem aszinkron függvény, **meg kell hívnia** `context.done` , hogy tájékoztassa a futtatást a függvény befejezéséről. Ha hiányzik a végrehajtás, időtúllépés történik.
+Ha a függvény nem aszinkron függvény, **meg kell hívnia** , `context.done` hogy tájékoztassa a futtatást a függvény befejezéséről. Ha hiányzik a végrehajtás, időtúllépés történik.
 
-A `context.done` metódus lehetővé teszi, hogy a felhasználó által definiált hibát visszaadja a futtatókörnyezetnek, valamint egy olyan JSON-objektumot, amely kimeneti kötési adatokat tartalmaz. A tulajdonság az `context.done` `context.bindings` objektumon beállított bármilyen érték felülírásával lett átadva.
+A `context.done` metódus lehetővé teszi, hogy a felhasználó által definiált hibát visszaadja a futtatókörnyezetnek, valamint egy olyan JSON-objektumot, amely kimeneti kötési adatokat tartalmaz. `context.done`A tulajdonság az objektumon beállított bármilyen érték felülírásával lett átadva `context.bindings` .
 
 ```javascript
 // Even though we set myOutput to have:
@@ -262,10 +262,10 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log`(z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
+Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Módszer                 | Leírás                                |
+| Metódus                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -284,9 +284,9 @@ Olvassa el a [figyelési Azure functions](functions-monitoring.md) , ha többet 
 
 ## <a name="writing-trace-output-to-the-console"></a>Nyomkövetési kimenet írása a konzolra 
 
-A függvények területen a `context.log` metódusokkal lehet nyomkövetési kimenetet írni a konzolra. A functions v2. x-ben a függvényalkalmazás `console.log` szinten rögzített nyomkövetési kimenetek lesznek rögzítve. Ez azt jelenti, hogy a `console.log` kimenete nem kötődik egy adott függvény meghívásához, és nem jelenik meg egy adott függvény naplóiban. Azonban a Application Insights propagálják őket. A függvények v1. x-ben nem használható `console.log` a-konzolra való íráshoz.
+A függvények területen a `context.log` metódusokkal lehet nyomkövetési kimenetet írni a konzolra. A functions v2. x-ben a függvényalkalmazás szinten rögzített nyomkövetési kimenetek `console.log` lesznek rögzítve. Ez azt jelenti, hogy a kimenete `console.log` nem kötődik egy adott függvény meghívásához, és nem jelenik meg egy adott függvény naplóiban. Azonban a Application Insights propagálják őket. A függvények v1. x-ben nem használható a- `console.log` konzolra való íráshoz.
 
-A híváskor `context.log()`az üzenet a konzolra kerül az alapértelmezett nyomkövetési szinten, amely az _adatok_ nyomkövetési szintje. A következő kód a-konzolra ír az információs nyomkövetési szinten:
+A híváskor az `context.log()` üzenet a konzolra kerül az alapértelmezett nyomkövetési szinten, amely az _adatok_ nyomkövetési szintje. A következő kód a-konzolra ír az információs nyomkövetési szinten:
 
 ```javascript
 context.log({hello: 'world'});  
@@ -322,7 +322,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>A konzol naplózási szintjének konfigurálása
 
-Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjének meghatározását a konzolra való íráshoz, így könnyen szabályozható, hogy a rendszer hogyan írja a nyomkövetéseket a konzolra a függvényből. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a Host. `tracing.consoleLevel` JSON fájlban található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
+Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjének meghatározását a konzolra való íráshoz, így könnyen szabályozható, hogy a rendszer hogyan írja a nyomkövetéseket a konzolra a függvényből. A konzolra írt összes nyomkövetés küszöbértékének megadásához használja a `tracing.consoleLevel` Host. JSON fájlban található tulajdonságot. Ez a beállítás a Function alkalmazás összes függvényére érvényes. A következő példa a nyomkövetési küszöbértéket állítja be a részletes naplózás engedélyezéséhez:
 
 ```json
 {
@@ -332,7 +332,7 @@ Az 1. x függvények lehetővé teszik a küszöbérték nyomkövetési szintjé
 }  
 ```
 
-A **consoleLevel** értékei a `context.log` metódusok neveinek felelnek meg. Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [Host. JSON-dokumentáció](functions-host-json-v1.md).
+A **consoleLevel** értékei a metódusok neveinek felelnek meg `context.log` . Ha le szeretné tiltani az összes nyomkövetési naplózást a konzolon, állítsa a **consoleLevel** beállítást _ki_értékre. További információ: [Host. JSON-dokumentáció](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP-eseményindítók és-kötések
 
@@ -363,13 +363,13 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 | _fejlécek_ | Egy objektum, amely tartalmazza a válasz fejléceit.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formátuma kimarad.    |
 | _állapota_  | A válasz HTTP-állapotkódot.                     |
-| _sütik_ | A válaszban beállított HTTP cookie-objektumok tömbje. A HTTP cookie-objektumok egy `name`, `value`, és más cookie-tulajdonságokkal rendelkeznek, `maxAge` például `sameSite`vagy. |
+| _sütik_ | A válaszban beállított HTTP cookie-objektumok tömbje. A HTTP cookie-objektumok egy `name` , `value` , és más cookie-tulajdonságokkal rendelkeznek, például `maxAge` vagy `sameSite` . |
 
 ### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése 
 
 HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektumok többféleképpen is elérhetők:
 
-+ **Az `req` `context` objektumról és `res` tulajdonságairól.** Így a hagyományos minta használatával érheti el a HTTP-adatok elérését a környezeti objektumból ahelyett, hogy a teljes `context.bindings.name` mintát kellene használnia. Az alábbi példa bemutatja, hogyan érheti el `req` a `res` és az objektumokat `context`a következőn:
++ **`req` `res` Az objektumról és tulajdonságairól `context` .** Így a hagyományos minta használatával érheti el a HTTP-adatok elérését a környezeti objektumból ahelyett, hogy a teljes mintát kellene használnia `context.bindings.name` . Az alábbi példa bemutatja, hogyan érheti el a és az objektumokat a következőn `req` `res` `context` :
 
     ```javascript
     // You can access your HTTP request off the context ...
@@ -378,7 +378,7 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ **Az elnevezett bemeneti és kimeneti kötések közül.** Így a HTTP-trigger és a kötések ugyanúgy működnek, mint bármely más kötés. A következő példa egy nevesített `response` kötés használatával állítja be a válasz objektumot: 
++ **Az elnevezett bemeneti és kimeneti kötések közül.** Így a HTTP-trigger és a kötések ugyanúgy működnek, mint bármely más kötés. A következő példa egy nevesített kötés használatával állítja be a válasz objektumot `response` : 
 
     ```json
     {
@@ -390,9 +390,9 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Válasz csak]_ A hívásával `context.res.send(body?: any)`.** A rendszer egy HTTP-választ hoz `body` létre bemenetként a válasz törzsében. `context.done()`implicit módon van meghívva.
++ **_[Válasz csak]_ A hívásával `context.res.send(body?: any)` .** A rendszer egy HTTP-választ hoz létre bemenetként `body` a válasz törzsében. `context.done()`implicit módon van meghívva.
 
-+ **_[Válasz csak]_ A hívásával `context.done()`.** A speciális HTTP-kötés a `context.done()` metódusnak átadott választ adja vissza. A következő HTTP kimeneti kötés meghatározza a `$return` kimeneti paramétert:
++ **_[Válasz csak]_ A hívásával `context.done()` .** A speciális HTTP-kötés a metódusnak átadott választ adja vissza `context.done()` . A következő HTTP kimeneti kötés meghatározza a `$return` kimeneti paramétert:
 
     ```json
     {
@@ -423,13 +423,13 @@ A következő táblázat az operációs rendszer által támogatott Node. js-ver
 
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
-| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n/a |
+| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n.a. |
 | 2. x  | ~ 8<br/>~ 10 (ajánlott)<br/>~ 12<sup>*</sup> | ~ 8 (ajánlott)<br/>~ 10  |
 | 3. x | ~ 10<br/>~ 12 (ajánlott)  | ~ 10<br/>~ 12 (ajánlott) |
 
 <sup>*</sup>A (z) ~ 12 csomópont jelenleg engedélyezett a functions futtatókörnyezet 2. x verziójában. A legjobb teljesítmény érdekében azonban javasoljuk, hogy a functions Runtime 3. x verzióját használja a ~ 12 csomóponttal. 
 
-A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy `process.version` bármilyen függvényből nyomtat. A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra való beállításával, például: `~10`.
+A futtatókörnyezet által használt aktuális verziót úgy tekintheti meg, ha ellenőrzi a fenti alkalmazás beállítását, vagy `process.version` bármilyen függvényből nyomtat. A verzió megcélzása az Azure-ban a WEBSITE_NODE_DEFAULT_VERSION [alkalmazás beállításának](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra való beállításával, például: `~10` .
 
 ## <a name="dependency-management"></a>Függőségkezelés
 Ha a JavaScript-kódban a közösségi kódtárakat szeretné használni, ahogy az az alábbi példában is látható, gondoskodnia kell arról, hogy az Azure-ban minden függőség telepítve legyen az függvényalkalmazás.
@@ -446,32 +446,32 @@ module.exports = function(context) {
 ```
 
 > [!NOTE]
-> Meg kell adnia egy `package.json` fájlt a függvényalkalmazás gyökerében. A fájl definiálása lehetővé teszi, hogy az alkalmazás összes funkciója ugyanazt a gyorsítótárazott csomagot használja, amely a legjobb teljesítményt biztosítja. Ha ütközés lép fel, azt megoldhatja egy adott függvény mappájában található `package.json` fájl hozzáadásával.  
+> Meg kell adnia egy `package.json` fájlt a függvényalkalmazás gyökerében. A fájl definiálása lehetővé teszi, hogy az alkalmazás összes funkciója ugyanazt a gyorsítótárazott csomagot használja, amely a legjobb teljesítményt biztosítja. Ha ütközés lép fel, azt megoldhatja egy `package.json` adott függvény mappájában található fájl hozzáadásával.  
 
-Ha a forrásoldali vezérlőből helyez üzembe alkalmazásokat, a `package.json` tárházban található összes fájl az üzembe helyezés során `npm install` a mappájában fog megjelenni. Ha azonban a portálon vagy a CLI-n keresztül végzi a telepítést, manuálisan kell telepítenie a csomagokat.
+Ha a forrásoldali vezérlőből helyez üzembe alkalmazásokat, a tárházban található összes `package.json` fájl az `npm install` üzembe helyezés során a mappájában fog megjelenni. Ha azonban a portálon vagy a CLI-n keresztül végzi a telepítést, manuálisan kell telepítenie a csomagokat.
 
 A függvényalkalmazás kétféleképpen telepíthet csomagokat: 
 
 ### <a name="deploying-with-dependencies"></a>Üzembe helyezés függőségekkel
-1. Telepítse az összes szükséges csomagot helyileg a `npm install`futtatásával.
+1. Telepítse az összes szükséges csomagot helyileg a futtatásával `npm install` .
 
-2. Telepítse a kódot, és ellenőrizze, hogy `node_modules` a mappa szerepel-e a központi telepítésben. 
+2. Telepítse a kódot, és ellenőrizze, hogy a `node_modules` mappa szerepel-e a központi telepítésben. 
 
 
 ### <a name="using-kudu"></a>A kudu használata
 1. Nyissa meg a következőt: `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Kattintson a **hibakeresési konzol** > **cmd**elemre.
+2. Kattintson a **hibakeresési konzol**  >  **cmd**elemre.
 
-3. Nyissa `D:\home\site\wwwroot`meg a parancsot, majd húzza a Package. JSON fájlt a **wwwroot** mappába a lap felső részén.  
+3. Nyissa meg a parancsot `D:\home\site\wwwroot` , majd húzza a Package. JSON fájlt a **wwwroot** mappába a lap felső részén.  
     Más módokon is feltölthet fájlokat a Function alkalmazásba. További információ: [Function app Files frissítése](functions-reference.md#fileupdate). 
 
-4. A Package. JSON fájl feltöltése után futtassa a `npm install` parancsot a **kudu távoli végrehajtási konzolon**.  
+4. A Package. JSON fájl feltöltése után futtassa a parancsot a `npm install` **kudu távoli végrehajtási konzolon**.  
     Ez a művelet letölti a Package. JSON fájlban jelzett csomagokat, és újraindítja a Function alkalmazást.
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a `process.env`beállításokat a használatával érheti el, ahogy az itt látható a második és a harmadik `context.log()` hívásban, ahol `AzureWebJobsStorage` a `WEBSITE_SITE_NAME` és a környezeti változókat naplózzák:
+A függvények, az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai a végrehajtás során környezeti változókként jelennek meg. Ezeket a beállításokat a használatával érheti el `process.env` , ahogy az itt látható a második és a harmadik hívásban, `context.log()` ahol a `AzureWebJobsStorage` és a `WEBSITE_SITE_NAME` környezeti változókat naplózzák:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -489,11 +489,11 @@ Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functio
 
 ## <a name="configure-function-entry-point"></a>Függvény belépési pontjának konfigurálása
 
-A `function.json` tulajdonságok `scriptFile` és `entryPoint` az exportált függvény helyének és nevének konfigurálására használhatók. Ezek a tulajdonságok akkor lehetnek fontosak, ha a JavaScript transpiled.
+A `function.json` Tulajdonságok `scriptFile` és az `entryPoint` exportált függvény helyének és nevének konfigurálására használhatók. Ezek a tulajdonságok akkor lehetnek fontosak, ha a JavaScript transpiled.
 
 ### <a name="using-scriptfile"></a>Az `scriptFile` használata
 
-Alapértelmezés szerint a JavaScript-függvényt egy olyan `index.js`fájl hajtja végre, amely ugyanazokat a szülő könyvtárat osztja `function.json`meg, mint a megfelelő.
+Alapértelmezés szerint a JavaScript-függvényt `index.js` egy olyan fájl hajtja végre, amely ugyanazokat a szülő könyvtárat osztja meg, mint a megfelelő `function.json` .
 
 `scriptFile`a következő példához hasonló mappa-struktúra beszerzésére használható:
 
@@ -509,7 +509,7 @@ FunctionApp
  | - package.json
 ```
 
-A `function.json` for `myNodeFunction` műveletnek tartalmaznia `scriptFile` kell egy olyan tulajdonságot, amely a fájlra mutat, és az exportált függvény fut.
+A `function.json` for `myNodeFunction` műveletnek tartalmaznia kell egy olyan `scriptFile` tulajdonságot, amely a fájlra mutat, és az exportált függvény fut.
 
 ```json
 {
@@ -522,9 +522,9 @@ A `function.json` for `myNodeFunction` műveletnek tartalmaznia `scriptFile` kel
 
 ### <a name="using-entrypoint"></a>Az `entryPoint` használata
 
-A `scriptFile` (vagy `index.js`) alkalmazásban a függvényt exportálni `module.exports` kell, hogy a rendszer megtalálja és futtassa a parancsot. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, a nevű `run`exportálásból, vagy a nevű `index`exportálásból.
+A `scriptFile` (vagy) alkalmazásban a `index.js` függvényt exportálni kell, `module.exports` hogy a rendszer megtalálja és futtassa a parancsot. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, a nevű exportálásból, `run` vagy a nevű exportálásból `index` .
 
-Ez a alkalmazásban `entryPoint` konfigurálható `function.json`a következő példában látható módon:
+Ez a alkalmazásban konfigurálható a `entryPoint` `function.json` következő példában látható módon:
 
 ```json
 {
@@ -535,7 +535,7 @@ Ez a alkalmazásban `entryPoint` konfigurálható `function.json`a következő p
 }
 ```
 
-A functions v2. x-ben, `this` amely támogatja a paramétert a felhasználói függvényekben, a függvény kódja a következő példához hasonlóan lehet:
+A functions v2. x-ben, amely támogatja a `this` paramétert a felhasználói függvényekben, a függvény kódja a következő példához hasonlóan lehet:
 
 ```javascript
 class MyObj {
@@ -557,24 +557,21 @@ Ebben a példában fontos megjegyezni, hogy bár egy objektum exportálása foly
 
 ## <a name="local-debugging"></a>Helyi hibakeresés
 
-A `--inspect` paraméterrel megkezdett a Node. js folyamat egy hibakeresési ügyfelet figyel a megadott porton. Azure Functions 2. x verzióban megadhat argumentumokat, amelyeket a kód futtatásához a Node. js-folyamatba továbbíthat, ha hozzáadja a környezeti `languageWorkers:node:arguments = <args>`változót vagy az alkalmazás beállítását. 
+A paraméterrel megkezdett a `--inspect` Node. js folyamat egy hibakeresési ügyfelet figyel a megadott porton. Azure Functions 2. x verzióban megadhat argumentumokat, amelyeket a kód futtatásához a Node. js-folyamatba továbbíthat, ha hozzáadja a környezeti változót vagy az alkalmazás beállítását `languageWorkers:node:arguments = <args>` . 
 
-A helyi hibakereséshez adja `"languageWorkers:node:arguments": "--inspect=5858"` hozzá `Values` a t a [Local. Settings. JSON](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt az 5858-as porthoz.
+A helyi hibakereséshez adja hozzá a t a `"languageWorkers:node:arguments": "--inspect=5858"` `Values` [Local. Settings. JSON](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlhoz, és csatoljon egy hibakeresőt az 5858-as porthoz.
 
-A VS Code használatakor a rendszer `--inspect` automatikusan hozzáadja a paramétert a `port` projekt Launch. JSON fájljában található érték használatával.
+A VS Code használatakor a `--inspect` rendszer automatikusan hozzáadja a paramétert a `port` projekt Launch. JSON fájljában található érték használatával.
 
-Az 1. x verzióban a `languageWorkers:node:arguments` beállítás nem fog működni. A hibakeresési portot a Azure Functions Core Tools [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) paraméterrel lehet kiválasztani.
+Az 1. x verzióban a beállítás `languageWorkers:node:arguments` nem fog működni. A hibakeresési portot a [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) Azure functions Core Tools paraméterrel lehet kiválasztani.
 
 ## <a name="typescript"></a>TypeScript
 
-Ha a functions futtatókörnyezet 2. x verzióját célozza meg, a [Visual Studio Code](functions-create-first-function-vs-code.md) -hoz és a [Azure functions Core Tools](functions-run-local.md) -hoz egyaránt Azure functions is létrehozhat Function apps-alkalmazásokat olyan sablon használatával, amely támogatja az írógéppel Function app-projekteket. A sablon olyan `package.json` fájlokat `tsconfig.json` hoz létre és projektfájlok, amelyek megkönnyítik a JavaScript-függvények transpile, futtatását és közzétételét ezekkel az eszközökkel.
+Ha a functions futtatókörnyezet 2. x verzióját célozza meg, a [Visual Studio Code](functions-create-first-function-vs-code.md) -hoz és a [Azure functions Core Tools](functions-run-local.md) -hoz egyaránt Azure functions is létrehozhat Function apps-alkalmazásokat olyan sablon használatával, amely támogatja az írógéppel Function app-projekteket. A sablon `package.json` olyan fájlokat hoz létre és `tsconfig.json` projektfájlok, amelyek megkönnyítik a JavaScript-függvények transpile, futtatását és közzétételét ezekkel az eszközökkel.
 
 A létrehozott `.funcignore` fájl azt jelzi, hogy mely fájlok ki vannak zárva, amikor egy projekt közzé lett téve az Azure-ban.  
 
-Az transpiled (. TS) a `dist` kimeneti könyvtár JavaScript-fájljaiba (. js) kerülnek. Az írógéppel a (z) `function.json` [ `scriptFile` paraméterének](#using-scriptfile) használatával jelezheti a megfelelő. js fájl helyét a `dist` mappában. A kimeneti helyet a sablon a `outDir` `tsconfig.json` fájl paraméterének használatával állítja be. Ha módosítja ezt a beállítást vagy a mappa nevét, a futtatókörnyezet nem találja a futtatandó kódot.
-
-> [!NOTE]
-> Az írógéppel való kísérleti támogatás létezik a functions futtatókörnyezet 1. x verziója. A kísérleti verzió transpiles írógéppel fájlokat a JavaScript-fájlokba a függvény meghívásakor. A 2. x verzióban ezt a kísérleti támogatást felváltotta az eszköz által vezérelt módszer, amely a gazdagép inicializálása előtt és a telepítési folyamat során transpilation.
+Az transpiled (. TS) a kimeneti könyvtár JavaScript-fájljaiba (. js) kerülnek `dist` . Az írógéppel a (z) [ `scriptFile` paraméterének](#using-scriptfile) használatával `function.json` jelezheti a megfelelő. js fájl helyét a `dist` mappában. A kimeneti helyet a sablon a `outDir` fájl paraméterének használatával állítja be `tsconfig.json` . Ha módosítja ezt a beállítást vagy a mappa nevét, a futtatókörnyezet nem találja a futtatandó kódot.
 
 A helyi fejlesztés és üzembe helyezés módja a fejlesztői eszköztől függ.
 
@@ -582,7 +579,7 @@ A helyi fejlesztés és üzembe helyezés módja a fejlesztői eszköztől függ
 
 A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) bővítményhez készült Azure functions lehetővé teszi a függvények fejlesztését a géppel. Az alapvető eszközök a Azure Functions bővítmény követelménye.
 
-Ha a Visual Studio Code-ban szeretné létrehozni az írógéppel Function `TypeScript` alkalmazást, válassza a nyelvét a Function-alkalmazás létrehozásakor.
+Ha a Visual Studio Code-ban szeretné létrehozni az írógéppel Function alkalmazást, válassza `TypeScript` a nyelvét a Function-alkalmazás létrehozásakor.
 
 Amikor lenyomja az **F5** billentyűt az alkalmazás helyi futtatásához, a transpilation a gazdagép (a (z). exe) inicializálása előtt történik. 
 
@@ -596,13 +593,13 @@ A központi eszközök használata során többféleképpen is eltérhetnek a Ja
 
 Ha a Core Tools használatával szeretne létrehozni egy írógéppel Function app-projektet, a Function alkalmazás létrehozásakor meg kell adnia az írógéppel nyelvi beállítást. Ezt a következő módszerek egyikével teheti meg:
 
-- Futtassa a `func init` parancsot, válassza `node` a nyelvi verem lehetőséget, majd válassza a `typescript`lehetőséget.
+- Futtassa a `func init` parancsot, válassza a `node` nyelvi verem lehetőséget, majd válassza a lehetőséget `typescript` .
 
 - Futtassa a következő parancsot: `func init --worker-runtime typescript`.
 
 #### <a name="run-local"></a>Helyi Futtatás
 
-Ha a Function app-kódot helyileg szeretné futtatni a Core Tools használatával, használja a következő `func host start`parancsokat a helyett: 
+Ha a Function app-kódot helyileg szeretné futtatni a Core Tools használatával, használja a következő parancsokat a helyett `func host start` : 
 
 ```command
 npm install
@@ -618,7 +615,7 @@ A `npm start` parancs egyenértékű a következő parancsokkal:
 
 #### <a name="publish-to-azure"></a>Közzététel az Azure platformon
 
-Mielőtt az [`func azure functionapp publish`] parancsot az Azure-ba történő üzembe helyezéshez használja, a JavaScript-fájlok éles környezetben történő létrehozását a géppel készített forrásfájlokből hozza létre. 
+Mielőtt az parancsot az [`func azure functionapp publish`] Azure-ba történő üzembe helyezéshez használja, a JavaScript-fájlok éles környezetben történő létrehozását a géppel készített forrásfájlokből hozza létre. 
 
 A következő parancsok a géppel készített projekt előkészítését és közzétételét teszik közzé a Core Tools használatával: 
 
@@ -627,7 +624,7 @@ npm run build:production
 func azure functionapp publish <APP_NAME>
 ```
 
-Ebben a parancsban cserélje `<APP_NAME>` le a helyére a Function alkalmazás nevét.
+Ebben a parancsban cserélje le a helyére a `<APP_NAME>` Function alkalmazás nevét.
 
 ## <a name="considerations-for-javascript-functions"></a>A JavaScript-függvények szempontjai
 
@@ -647,11 +644,11 @@ Ha egy Azure Functions-alkalmazásban szolgáltatás-specifikus ügyfelet haszn�
 
 ### <a name="use-async-and-await"></a>Használat `async` és`await`
 
-A JavaScript-Azure Functions írásakor a és `async` `await` a kulcsszavak használatával kell írnia a kódot. A kód `async` és `await` a visszahívások `.then` helyett a ( `.catch` z) és az ígéretekkel való írás során két gyakori probléma elkerülhető:
+A JavaScript-Azure Functions írásakor a és a kulcsszavak használatával kell írnia a kódot `async` `await` . A kód és a visszahívások helyett a (z) és az `async` `await` `.then` `.catch` ígéretekkel való írás során két gyakori probléma elkerülhető:
  - [A Node. js folyamat összeomlása](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)miatt fellépő nem kezelt kivételek eldobása, ami hatással van más függvények végrehajtására.
  - Váratlan viselkedés, például hiányzó naplók a Context. log naplófájlból, a nem megfelelően várt aszinkron hívások miatt.
 
-Az alábbi példában az aszinkron metódust `fs.readFile` egy hiba-első visszahívási függvény hívja meg második paramétereként. Ez a kód a fent említett problémákat is okozhatja. A megfelelő hatókörben nem kifejezetten bekövetkező kivétel összeomlott a teljes folyamaton (a probléma #1). A `context.done()` visszahívás funkció hatókörén kívüli hívás azt jelenti, hogy a függvény meghívása a fájl olvasása előtt megszűnik (probléma #2). Ebben a példában a- `context.done()` től kezdődően a hiányzó naplóbejegyzések közül a túl `Data from file:`korán való hívása.
+Az alábbi példában az aszinkron metódust `fs.readFile` egy hiba-első visszahívási függvény hívja meg második paramétereként. Ez a kód a fent említett problémákat is okozhatja. A megfelelő hatókörben nem kifejezetten bekövetkező kivétel összeomlott a teljes folyamaton (a probléma #1). A `context.done()` visszahívás funkció hatókörén kívüli hívás azt jelenti, hogy a függvény meghívása a fájl olvasása előtt megszűnik (probléma #2). Ebben a példában a- `context.done()` től kezdődően a hiányzó naplóbejegyzések közül a túl korán való hívása `Data from file:` .
 
 ```javascript
 // NOT RECOMMENDED PATTERN
@@ -672,9 +669,9 @@ module.exports = function (context) {
 }
 ```
 
-A és `async` `await` a kulcsszavak használata segít elkerülni mindkét hibát. A Node. js segédprogram függvényt [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) kell használnia a hiba – első visszahívási stílusú függvények bekapcsolásához a várt függvényekbe.
+A `async` és a `await` kulcsszavak használata segít elkerülni mindkét hibát. A Node. js segédprogram függvényt kell használnia a [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) hiba – első visszahívási stílusú függvények bekapcsolásához a várt függvényekbe.
 
-Az alábbi példában a függvény végrehajtása során felmerülő kezeletlen kivételek csak a kivételt okozó egyéni hívás meghiúsulnak. A `await` kulcsszó azt jelenti, hogy `readFileAsync` a csak a `readFile` befejezést követő végrehajtás után következik be. A `async` és `await`a esetében nem kell meghívnia a `context.done()` visszahívást is.
+Az alábbi példában a függvény végrehajtása során felmerülő kezeletlen kivételek csak a kivételt okozó egyéni hívás meghiúsulnak. A `await` kulcsszó azt jelenti, hogy a `readFileAsync` csak a befejezést követő végrehajtás után következik `readFile` be. `async`A és a `await` esetében nem kell meghívnia a `context.done()` visszahívást is.
 
 ```javascript
 // Recommended pattern

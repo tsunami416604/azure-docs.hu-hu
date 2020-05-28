@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758809"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022418"
 ---
 # <a name="z-fighting-mitigation"></a>Z-pufferelési hibák csökkentése
 
-Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon kell megjeleníteni. Az eredmény a képpont alapján is változhat, ami a megtekintéstől függő összetevőket eredményez. Ennek következtében a kamera vagy a háló mozgatásakor ezek a minták vibrálnak. Ezt az összetevőt *z-harcok*nevezik. Az AR-és a VR-alkalmazások esetében a probléma intenzívebbé válik, mert a fej által csatlakoztatott eszközök természetesen mindig áthelyezhetők. Ha meg szeretné akadályozni, hogy a megjelenítők ne tudják elhárítani a megoldást, az Azure Remote rendering szolgáltatásban is elérhető.
+Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon kell megjeleníteni. Az eredmény akár képpont is változhat, ami a kamera nézettől függő összetevőkből ered. Ennek következtében a kamera vagy a háló mozgatásakor ezek a minták vibrálnak. Ezt az összetevőt *z-harcok*nevezik. Az AR-és a VR-alkalmazások esetében a probléma intenzívebbé válik, mert a fej által csatlakoztatott eszközök természetesen mindig áthelyezhetők. Ha meg szeretné akadályozni, hogy a megjelenítők ne tudják elhárítani a megoldást, az Azure Remote rendering szolgáltatásban is elérhető.
 
 ## <a name="z-fighting-mitigation-modes"></a>Z – a megelőzési módok elleni küzdelem
 

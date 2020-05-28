@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680985"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022180"
 ---
 # <a name="late-stage-reprojection"></a>Újravetítés késői fázisban
 
@@ -24,7 +24,7 @@ Mindkét LSR mód javítja a hologramos stabilitást, bár ezek eltérő korlát
 
 ## <a name="choose-lsr-mode-in-unity"></a>LSR mód kiválasztása az egységben
 
-Az Unity Editorban lépjen a *fájl > létrehozási beállítások*elemre. Válassza ki a bal alsó sarokban a *Player-beállítások* elemet, majd a *Player > XR beállítások > virtuális valóság sdk-k > a Windows vegyes valósága* jelölőnégyzetet, hogy be van-e jelölve a **mélységi puffer megosztása**
+A Unity Editorban nyissa meg a következőt: *:::no-loc text="File > Build Settings":::* . Válassza ki *:::no-loc text="Player Settings":::* a bal alsó sarokban, majd jelölje be, *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* hogy be van-e **:::no-loc text="Enable Depth Buffer Sharing":::** jelölve:
 
 ![Mélységi puffer megosztása engedélyezve jelző](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,9 +44,9 @@ A síkbeli LSR újratervezi azokat az objektumokat, amelyek a megadott síkon k�
 
 ### <a name="configure-planar-lsr-in-unity"></a>Síkbeli LSR konfigurálása az egységben
 
-A sík paramétereit egy úgynevezett *fókuszpontból*származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`. A részletekért tekintse meg az [Unity Focus Point API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
+A sík paramétereit egy úgynevezett *fókuszpontból*származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . A részletekért tekintse meg az [Unity Focus Point API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
 
-Saját maga is kiszámíthatja a fókuszt, bár érdemes lehet a távoli renderelési gazdagép alapján kiszámítani. Meghívásával `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` szerezze be a következőt:. A rendszer arra kéri, hogy adjon meg egy koordináta-keretet, amelyben kifejezni szeretné a fókuszt. A legtöbb esetben csak az eredményt `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` szeretné megadni.
+Saját maga is kiszámíthatja a fókuszt, bár érdemes lehet a távoli renderelési gazdagép alapján kiszámítani. Meghívásával szerezze be a következőt: `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` . A rendszer arra kéri, hogy adjon meg egy koordináta-keretet, amelyben kifejezni szeretné a fókuszt. A legtöbb esetben csak az eredményt szeretné megadni `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` .
 
 Általában mind az ügyfél, mind a gazdagép olyan tartalmat jelenít meg, amelyet a másik oldal nem tud, például az ügyfél felhasználói felületi elemeit. Ezért érdemes lehet a távoli fókuszt egy helyileg számított eggyel kombinálni.
 

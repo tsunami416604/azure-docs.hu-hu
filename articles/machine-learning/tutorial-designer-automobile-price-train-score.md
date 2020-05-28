@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656578"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119039"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algor
 
 1. Válassza a **regressziós**  >  **lineáris regresszió**lehetőséget, majd húzza a folyamat vászonra.
 
-1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
-
 1. A modul palettáján bontsa ki a **modul betanítása**szakaszt, majd húzza a **Train Model** modult a vászonra.
 
-1. Válassza ki a **betanítási modell** modult, és húzza a folyamat vászonra.
+1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
 
 1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
     
@@ -323,7 +321,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

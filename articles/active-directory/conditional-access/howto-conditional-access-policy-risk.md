@@ -4,19 +4,19 @@ description: Feltételes hozzáférési szabályzatok létrehozása a szabályza
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9cfba377aba30d4687bab4ba7c5a311c70c4905
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295159"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995156"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Feltételes hozzáférés: kockázatalapú feltételes hozzáférés
 
@@ -53,7 +53,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
    1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek**területen válassza a **felhasználói kockázat**lehetőséget, majd válassza a **magas**lehetőséget.
    1. Kattintson a **kiválasztás** , majd a **kész**gombra.
-1. A **Controls** > **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
+1. A **Controls**  >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
 1. Kattintson a **Save** (Mentés) gombra.
@@ -71,7 +71,7 @@ A legtöbb felhasználó viselkedése normális, amely követhető, és amikor e
    1. Válassza a **Done** (Kész) lehetőséget.
 1. A **feltételek**területen válassza a **bejelentkezési kockázat**lehetőséget, majd válassza a **közepes vagy újabb**lehetőséget.
    1. Kattintson a **kiválasztás** , majd a **kész**gombra.
-1. A **Controls** > **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
+1. A **Controls**  >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
    1. Kattintson a **Kiválasztás** gombra.
 1. **Házirend kényszerített** értékének beállítása **a**következőre:.
 1. Kattintson a **Save** (Mentés) gombra.

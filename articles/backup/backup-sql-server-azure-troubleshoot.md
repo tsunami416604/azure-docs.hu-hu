@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93e06cc3219d5588c1740220af01950a25fcb52f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183330"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017018"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -20,7 +20,7 @@ További információ a biztonsági mentési folyamatról és a korlátozásokr�
 
 Ha egy SQL Server adatbázis védelmét szeretné konfigurálni egy virtuális gépen, telepítenie kell a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Ha a **UserErrorSQLNoSysadminMembership**hibaüzenetet kap, az azt jelenti, hogy az SQL Server-példány nem rendelkezik a szükséges biztonsági mentési engedélyekkel. A hiba elhárításához kövesse a [virtuális gép engedélyeinek beállítása](backup-azure-sql-database.md#set-vm-permissions)című témakör lépéseit.
 
-## <a name="troubleshoot-discover-and-configure-issues"></a>Problémák felderítésével és konfigurálásával kapcsolatos hibák elhárítása
+## <a name="troubleshoot-discover-and-configure-issues"></a>Felderítési és konfigurálási problémák hibaelhárítása
 
 Recovery Services-tároló létrehozása és konfigurálása után az adatbázisok felfedése és a biztonsági mentés konfigurálása két lépésből álló folyamat.<br>
 
@@ -46,7 +46,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
 
-    Cserélje `C:\` le a betűt a *rendszermeghajtó*betűjelére.
+    Cserélje le a `C:\` betűt a *rendszermeghajtó*betűjelére.
 
 1. Zárja ki a virtuális gépen belül futó következő három folyamatot víruskereső vizsgálatból:
 
@@ -209,7 +209,7 @@ Most rendezze a következő formátumot:
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Például:
+Íme egy példa:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -219,7 +219,7 @@ Ha a tartalom karakterláncának mérete meghaladja a 20 000 bájtot, az adatbá
 
 ### <a name="override-the-default-target-restore-file-path"></a>Az alapértelmezett cél-visszaállítási fájl elérési útjának felülbírálása
 
-A visszaállítási művelet során felülbírálhatja a cél-visszaállítási fájl elérési útját úgy, hogy egy olyan JSON-fájlt helyez el, amely tartalmazza az adatbázisfájl hozzárendelését a cél-visszaállítási útvonalra. Hozzon `database_name.json` létre egy fájlt, és helyezze el `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`a helyet.
+A visszaállítási művelet során felülbírálhatja a cél-visszaállítási fájl elérési útját úgy, hogy egy olyan JSON-fájlt helyez el, amely tartalmazza az adatbázisfájl hozzárendelését a cél-visszaállítási útvonalra. Hozzon létre egy `database_name.json` fájlt, és helyezze el a helyet `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` .
 
 A fájl tartalmának a következő formátumúnak kell lennie:
 
@@ -238,7 +238,7 @@ A fájl tartalmának a következő formátumúnak kell lennie:
 ]
 ```
 
-Például:
+Íme egy példa:
 
 ```json
 [
@@ -267,4 +267,4 @@ Ezt a fájlt a visszaállítási művelet elindítása előtt kell elhelyezni.
 
 ## <a name="next-steps"></a>További lépések
 
-A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).
+A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

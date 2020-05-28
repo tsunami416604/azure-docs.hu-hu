@@ -113,8 +113,6 @@
           href: how-to/ingress-https-nginx.md
         - name: A fejlesztői számítógép csatlakoztatása AKS-fürthöz (előzetes verzió)
           href: how-to/connect.md
-        - name: Azure Dev Spaces-fürt konfigurálása a Helm 3 használatára (előzetes verzió)
-          href: how-to/helm-3.md
     - name: Hibaelhárítás
       href: troubleshooting.md
     - name: GYIK

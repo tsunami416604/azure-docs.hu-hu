@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652230"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021398"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -74,7 +74,7 @@ A végső skálázási tényező a geometriai csúcspontokra és a Scene Graph-c
 A középpontba helyezés akkor fontos, ha a forrás modellt a forrástól távol helyezik el, mivel ebben az esetben a lebegőpontos pontossággal kapcsolatos hibák okozhatnak megjelenítési összetevőket.
 
 * `opaqueMaterialDefaultSidedness`– A renderelési motor azt feltételezi, hogy az átlátszatlan anyagok kétoldalasak.
-Ha ez nem a kívánt viselkedés, a paramétert "SingleSided" értékre kell beállítani. További információ: [egyoldalas megjelenítés](../../overview/features/single-sided-rendering.md).
+Ha ez nem a kívánt viselkedés, a paramétert "SingleSided" értékre kell beállítani. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Anyagok felülbírálása
 
@@ -90,7 +90,7 @@ A renderelési motor a színértékeket a lineáris térben várja.
 Ha a modell a gamma szóköz használatával van definiálva, akkor ezeket a beállításokat igaz értékre kell állítani.
 
 * `gammaToLinearMaterial`– Az anyag színeinek konvertálása a gamma-területről a lineáris helyre
-* `gammaToLinearVertex`– A csúcspontok színeinek konvertálása a gamma-területről a lineáris helyre
+* `gammaToLinearVertex`– :::no-loc text="vertex"::: Színek konvertálása a gamma-területről a lineáris helyre
 
 > [!NOTE]
 > FBX-fájlok esetén ezek a beállítások `true` alapértelmezés szerint vannak beállítva. Az összes többi fájltípus esetében az alapértelmezett érték a következő: `false` .
@@ -127,12 +127,12 @@ A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel 
 
 * `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az alapértelmezett értékek: `["+x", "+y", "+z"]` . Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
 
-### <a name="vertex-format"></a>Csúcspont formátuma
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátumban
 
-A hálók csúcspont-formátumát a memória megtakarításának pontossága érdekében lehet módosítani. Az alacsonyabb memória-lábnyom lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adataitól függően azonban a helytelen formátum jelentős hatással lehet a renderelés minőségére.
+Lehetőség van a :::no-loc text="vertex"::: háló formátumának módosítására a memória megtakarításának pontossága érdekében. Az alacsonyabb memória-lábnyom lehetővé teszi nagyobb modellek betöltését vagy jobb teljesítmény elérését. Az adataitól függően azonban a helytelen formátum jelentős hatással lehet a renderelés minőségére.
 
 > [!CAUTION]
-> Ha a modell nem fér bele a memóriába, vagy ha a lehető legjobb teljesítményre van optimalizálva, a csúcspont formátumának módosítását kell utolsóként megadni. A változtatások könnyen bevezethetik a renderelési összetevőket, amelyek egyaránt egyértelműek és finomak. Ha nem tudja, mit kell keresnie, ne módosítsa az alapértelmezett értéket.
+> Ha a :::no-loc text="vertex"::: modell nem fér bele a memóriába, vagy ha a lehető legjobb teljesítményre van optimalizálva, a formátum módosításának utolsónek kell lennie. A változtatások könnyen bevezethetik a renderelési összetevőket, amelyek egyaránt egyértelműek és finomak. Ha nem tudja, mit kell keresnie, ne módosítsa az alapértelmezett értéket.
 
 Ezek a módosítások lehetségesek:
 
@@ -159,11 +159,11 @@ A `vertex` fájl következő szakasza `.json` nem kötelező. Minden explicit m�
 
 Ha az összetevőt arra kényszeríti `NONE` , hogy a kimeneti rácsvonal nem rendelkezik a megfelelő streamtel.
 
-#### <a name="component-formats-per-vertex-stream"></a>Összetevő-formátumok/Vertex Stream
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>Összetevő-formátumok :::no-loc text="vertex"::: adatfolyamként
 
 Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
-| Csúcspont-összetevő | Támogatott formátumok (Bold = default) |
+| :::no-loc text="Vertex"::: -összetevő | Támogatott formátumok (Bold = default) |
 |:-----------------|:------------------|
 |pozíció| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, nincs |
@@ -178,7 +178,7 @@ Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
 A formátumok memória-lábnyomai a következők:
 
-| Formátum | Description | Bájt/csúcspont |
+| Formátum | Leírás | Bájt/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
 |16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
@@ -197,11 +197,11 @@ A formátumok memória-lábnyomai a következők:
 
 #### <a name="example"></a>Példa
 
-Tegyük fel, hogy van egy photogrammetry-modellje, amely a textúrákba besütött világítással rendelkezik. Minden, ami a modell megjelenítéséhez szükséges, a csúcsponti pozíciók és a textúra koordinátái.
+Tegyük fel, hogy van egy photogrammetry-modellje, amely a textúrákba besütött világítással rendelkezik. A modell megjelenítéséhez szükséges összes érték a :::no-loc text="vertex"::: pozíciók és a textúra koordinátái.
 
-Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is létrehozhatja, és felhasználhatja `normal` `tangent` `binormal` azokat. Következésképpen a vertex memóriahasználat `position` (12 bájt) + `texcoord0` (8 bájt) + (4 bájt) + (4 bájt) + ( `normal` 4 bájt `tangent` `binormal` ) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió csúcsponttal rendelkezhetnek, ami a több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
+Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is létrehozhatja, és felhasználhatja `normal` `tangent` `binormal` azokat. Következésképpen a vertex memóriahasználat `position` (12 bájt) + `texcoord0` (8 bájt) + (4 bájt) + (4 bájt) + ( `normal` 4 bájt `tangent` `binormal` ) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió olyan :::no-loc text="vertices"::: modellt eredményeznek, amely akár több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
 
-Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és tudván, hogy az összes textúra koordinátái a tartományon belül vannak, beállíthatja, `[0; 1]` `normal` `tangent` és `binormal` a `NONE` (z) és a (z) és a `texcoord0` (z), a és a (z), és a (z `16_16_FLOAT` ) A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
+Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és annak ismerete, hogy az összes textúra koordinátái a `[0; 1]` tartományon belül vannak megadva `normal` `tangent` `binormal` `NONE` `texcoord0` `16_16_FLOAT` :::no-loc text="vertex"::: A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
 
 ## <a name="typical-use-cases"></a>Jellemző használati esetek
 
@@ -215,7 +215,7 @@ Vannak bizonyos használati esetek, amelyek adott optimalizálásokra érvényes
 
 * Ha a körüli részeket át kell helyeznie, ez általában azt is jelenti, hogy támogatásra van szüksége a raycasts vagy más [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md), így az első helyen kiválaszthatja ezeket a részeket. Ha azonban nem kívánja áthelyezni a körülötte lévőket, valószínűleg nem kell a térbeli lekérdezésekben részt vennie, és így ki is kapcsolhatja a `generateCollisionMesh` jelzőt. Ez a kapcsoló jelentős hatással van az átalakítási időpontokra, a betöltési időpontokra, valamint az egyes kereteken belüli frissítési költségekre is.
 
-* Ha az alkalmazás nem használ [kivágási síkokat](../../overview/features/cut-planes.md), a `opaqueMaterialDefaultSidedness` jelzőt ki kell kapcsolni. A teljesítmény-nyereség általában 20%-30%. A kivágott síkok továbbra is használhatók, de nem lesznek háttérbeli arcok, amikor az objektumok belső részeire néznek, és ez a számláló intuitív. További információ: [egyoldalas megjelenítés](../../overview/features/single-sided-rendering.md).
+* Ha az alkalmazás nem használ [kivágási síkokat](../../overview/features/cut-planes.md), a `opaqueMaterialDefaultSidedness` jelzőt ki kell kapcsolni. A teljesítmény-nyereség általában 20%-30%. A kivágott síkok továbbra is használhatók, de nem lesznek háttérbeli arcok, amikor az objektumok belső részeire néznek, és ez a számláló intuitív. További információ: [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="use-case-photogrammetry-models"></a>Használati eset: photogrammetry-modellek
 

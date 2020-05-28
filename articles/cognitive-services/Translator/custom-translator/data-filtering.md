@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595901"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992841"
 ---
 # <a name="data-filtering"></a>Adatszűrés
 
@@ -37,7 +37,7 @@ Az egyéni fordító eltávolítja azokat a mondatokat, amelyek jelen vannak a b
 * Távolítsa el a mondatokat 1%-nál kevesebb alfanumerikus karakternél.
 * Távolítsa el a több mint 50 szót tartalmazó szótár-bejegyzéseket.
 
-## <a name="white-space"></a>Üres terület
+## <a name="white-space"></a>Térköz
 * Cserélje le a fehér szóközök tetszőleges sorozatát, beleértve a tabulátorokat és a CR/LF-sorozatokat egyetlen szóköz karakterrel.
 * A mondat kezdő vagy záró területének eltávolítása
 

@@ -4,12 +4,12 @@ description: A tartalomtípusok számos szabványos strukturált dokumentumot ta
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2569832f7f87ed7b8fccbc44e431fa45495ba67
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77650197"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996108"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>A tudásbázisba felvehető dokumentumok tartalomtípusai
 A tartalomtípusok számos szabványos strukturált dokumentumot tartalmaznak, mint például a PDF, a DOC és a TXT.
@@ -49,4 +49,4 @@ További információ a különböző fájlokra vonatkozó [formátumokról](../
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogy a rendszer milyen adatokat tárol egy [kérdés-válasz (QnA) készletben](question-answer-set.md).
+Ismerje meg, hogy milyen információkat tárol a [kérdés-és válasz (QnA) pár](question-answer-set.md).

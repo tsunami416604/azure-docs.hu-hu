@@ -1,6 +1,6 @@
 ---
-title: CLI-példa – az Azure SQL Database másolása – új kiszolgáló
-description: Azure CLI-példa parancsfájl egy SQL-adatbázis új kiszolgálóra való másolásához
+title: 'Azure CLI: adatbázis másolása Azure SQL Database új kiszolgálóra'
+description: Példa az Azure CLI-szkriptre egy adatbázis Azure SQL Database egy új kiszolgálóra való másolásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067477"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022692"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>SQL-adatbázis másolása új kiszolgálóra a CLI használatával
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Adatbázis másolása Azure SQL Database új kiszolgálóra a CLI használatával
 
 Ez az Azure CLI-parancsfájl egy meglévő adatbázis másolatát hozza létre egy új kiszolgálón.
 
@@ -61,4 +61,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

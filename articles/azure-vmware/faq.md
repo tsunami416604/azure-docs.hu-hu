@@ -4,12 +4,12 @@ description: Az Azure VMware-megoldással (AVS) kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873316"
+ms.locfileid: "84112684"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Gyakran ismételt kérdések az Azure VMware Solution (AVS) előzetes verziójáról
 
@@ -67,34 +67,7 @@ A CloudSimple nem változtatja meg a meglévő Azure VMware-megoldást. Továbbr
 
 Igen, az Azure VMware-megoldás támogatja az áttelepítést a jól ismert VMware-eszközökkel, például a HCX-vel. Az új megoldásba való Migrálás iránt érdeklődő ügyfeleknek a Microsoft-fiók csapatával együttműködve megismerheti a lehetőségeket és a rendelkezésre álló támogatást.
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Hogyan egy meglévő Azure VMware-megoldáshoz a gazdagép kvótájának növekedését?**
 
-Egy [támogatási kérelem elküldésével](..\azure-portal\supportability\how-to-create-azure-support-request.md)kérheti a kvóta növelését. A kvóta-felügyeleti csapat kiértékeli a kérelmet, és három munkanapon belül jóváhagyja azt.  
-
-> [!IMPORTANT]
-> A kvóta növelésének megkezdése előtt győződjön meg arról, hogy [regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót](tutorial-create-private-cloud.md) a Azure Portal.  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
-
-1. A Azure Portal a Súgó és **támogatás**területen hozzon létre egy **új támogatási kérést** , és adja meg a következő információkat a jegyhez:
-   - **Probléma típusa:** Technikai
-   - **Előfizetés:** Az előfizetés azonosítója
-   - **Szolgáltatás:**  Azure VMware-megoldás 
-   - **Összefoglalás:** Kvóta növekedése
-   - **Probléma típusa:** Kapacitás-felügyeleti problémák
-   - **Probléma altípusa:** Ügyfél iránti kérelem további gazdagép-kvótához/kapacitáshoz
-
-1. A támogatási jegy leírásában a Részletek lapon adja meg a következőket:
-   - További csomópontok száma   
-   - Csomópont SKU
-   - Régió
-
-   > [!NOTE] 
-   > Alapértelmezés szerint a rendszer legalább négy csomópontot biztosít.
-
-1. A kérelem elküldéséhez kattintson a **felülvizsgálat + létrehozás** gombra.
 
 ## <a name="compute-network-and-storage"></a>Számítás, hálózat és tárterület
 
@@ -164,7 +137,7 @@ Nem, nem szükséges a helyszíni NSX használata.
 
 **Mi a VMware-szoftverek frissítési és frissítési ütemterve egy privát felhőben?**
 
-A Private Cloud szoftvercsomag frissítései megtartják a szoftvert a szoftveres csomag VMware-es verziójának legújabb kiadásának egy-egy verzióján belül. A Private Cloud Software-verziók eltérőek lehetnek az egyes szoftver-összetevők legújabb verzióiban (ESXi, NSX-T, vCenter, VSAN).
+A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből származó legújabb kiadásának egy-egy verzióján belül maradnak. A Private Cloud Software-verziók eltérőek lehetnek az egyes szoftver-összetevők legújabb verzióiban (ESXi, NSX-T, vCenter, VSAN).
 
 **Milyen gyakran frissül a Private Cloud Software stack?**
 
@@ -233,6 +206,35 @@ Az AVS támogatását a Microsoft továbbítja. Kérjük, vegye figyelembe, hogy
 **Milyen fiókokra van szükségem egy AVS Private Cloud létrehozásához?**
 
 Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?**
+
+Egy [támogatási kérelem elküldésével](..\azure-portal\supportability\how-to-create-azure-support-request.md)kérheti a kvóta növelését. A kvóta-felügyeleti csapat kiértékeli a kérelmet, és három munkanapon belül jóváhagyja azt.  
+
+> [!IMPORTANT]
+> A kvóta növelésének megkezdése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)című témakört.
+
+1. A Azure Portal a Súgó és **támogatás**területen hozzon létre egy **új támogatási kérést** , és adja meg a következő információkat a jegyhez:
+   - **Probléma típusa:** Technikai
+   - **Előfizetés:** Az előfizetés azonosítója
+   - **Szolgáltatás:**  Azure VMware-megoldás 
+   - **Összefoglalás:** Kvóta növekedése
+   - **Probléma típusa:** Kapacitás-felügyeleti problémák
+   - **Probléma altípusa:** Ügyfél iránti kérelem további gazdagép-kvótához/kapacitáshoz
+
+1. A támogatási jegy leírásában a Részletek lapon adja meg a következőket:
+   - További csomópontok száma   
+   - Csomópont SKU
+   - Régió
+
+   > [!NOTE] 
+   > Alapértelmezés szerint a rendszer legalább négy csomópontot biztosít.
+
+1. A kérelem elküldéséhez kattintson a **felülvizsgálat + létrehozás** gombra.
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

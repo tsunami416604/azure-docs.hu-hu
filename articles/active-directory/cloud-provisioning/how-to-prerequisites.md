@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870931"
+ms.locfileid: "84014387"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>A felhő-kiépítés Azure AD Connectának előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -26,7 +26,7 @@ Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőal
 ## <a name="cloud-provisioning-agent-requirements"></a>A felhőalapú kiépítési ügynökre vonatkozó követelmények
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
     
-- Globális rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
+- Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
 - Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.
 - Helyszíni tűzfal-konfigurációk.
 
@@ -37,7 +37,7 @@ A dokumentum további részében részletes útmutatót talál az előfeltétele
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>A Azure Active Directory felügyeleti központban
 
-1. Hozzon létre egy csak felhőalapú globális rendszergazdai fiókot az Azure AD-bérlőn. Így kezelheti a bérlő konfigurációját, ha a helyszíni szolgáltatások meghibásodnak vagy elérhetetlenné válnak. Ismerje meg, hogyan [adhat hozzá csak felhőalapú globális rendszergazdai fiókot](../active-directory-users-create-azure-portal.md). Ennek a lépésnek a befejezése kritikus fontosságú annak biztosítása érdekében, hogy ne legyen kizárva a bérlőből.
+1. Hozzon létre egy csak felhőalapú hibrid identitás-rendszergazdai fiókot az Azure AD-bérlőn. Így kezelheti a bérlő konfigurációját, ha a helyszíni szolgáltatások meghibásodnak vagy elérhetetlenné válnak. Ismerje meg, hogyan [adhat hozzá csak felhőalapú hibrid identitású rendszergazdai fiókot](../active-directory-users-create-azure-portal.md). Ennek a lépésnek a befejezése kritikus fontosságú annak biztosítása érdekében, hogy ne legyen kizárva a bérlőből.
 1. Adjon hozzá egy vagy több [Egyéni tartománynevet](../active-directory-domains-add-azure-portal.md) az Azure ad-bérlőhöz. A felhasználók a következő tartománynevek egyikével jelentkezhetnek be.
 
 ### <a name="in-your-directory-in-active-directory"></a>A címtárában Active Directory

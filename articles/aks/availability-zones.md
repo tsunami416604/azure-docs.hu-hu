@@ -165,7 +165,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 
 Ahogy az előző kimenetben látható, az első Pod a 0. csomóponton fut, amely a rendelkezésre állási zónában található `eastus2-1` . A második Pod a 2. csomóponton fut, amely a (z `eastus2-3` ) és a (z) 4. csomópontjában található `eastus2-2` . További konfiguráció nélkül a Kubernetes a három rendelkezésre állási zónában helyesen terjeszti a hüvelyeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
 

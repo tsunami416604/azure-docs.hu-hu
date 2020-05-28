@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606429"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112807"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Átalakítás szűrése a leképezési adatfolyamban
 
@@ -21,7 +21,9 @@ ms.locfileid: "81606429"
 
 A szűrő átalakítások lehetővé teszik a sorok szűrését egy adott feltétel alapján. A kimeneti adatfolyam tartalmazza a szűrési feltételnek megfelelő összes sort. A szűrő átalakítása hasonló a WHERE záradékhoz az SQL-ben.
 
-## <a name="configuration"></a>Configuration
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
+
+## <a name="configuration"></a>Konfiguráció
 
 A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kifejezésszerkesztő kifejezést. A Kifejezésszerkesztő megnyitásához kattintson a kék mezőre. A szűrési feltételnek logikai típusúnak kell lennie. A kifejezések létrehozásával kapcsolatos további tudnivalókért tekintse meg a Kifejezésszerkesztő [dokumentációját](concepts-data-flow-expression-builder.md) .
 
@@ -40,7 +42,7 @@ A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kif
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű `FilterBefore1960` szűrő-átalakítás, amely a bejövő adatfolyamot `CleanData`veszi igénybe. A szűrési feltétel a kifejezés `year <= 1960`.
+Az alábbi példa egy nevű szűrő-átalakítás, `FilterBefore1960` amely a bejövő adatfolyamot veszi igénybe `CleanData` . A szűrési feltétel a kifejezés `year <= 1960` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

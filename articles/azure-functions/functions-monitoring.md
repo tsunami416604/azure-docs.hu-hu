@@ -67,7 +67,7 @@ Az Application Insights következő területei hasznosak lehetnek a függvények
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. |
-| **[Mérőszámok](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
+| **[Metrikák](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
 | **[Élő metrikák](../azure-monitor/app/live-stream.md)** | A metrikák adatait a közel valós időben létrehozva tekintheti meg. |
 
 ## <a name="query-telemetry-data"></a>Telemetria-adatbázis lekérdezése

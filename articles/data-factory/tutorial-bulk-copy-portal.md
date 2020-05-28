@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418779"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118283"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 
@@ -33,7 +33,7 @@ Az oktatóanyag a következő főbb lépésekből áll:
 > * Adat-előállító létrehozása
 > * Hozzon létre Azure SQL Database, az Azure szinapszis Analytics (korábban SQL DW) és az Azure Storage társított szolgáltatásait.
 > * Hozzon létre Azure SQL Database és az Azure szinapszis Analytics (korábban SQL DW) adatkészleteket.
-> * Egy folyamat létrehozása a másolni kívánt táblák megkeresésére, és egy másik folyamat létrehozása a tényleges másolási művelet elvégzésére 
+> * Hozzon létre egy folyamatot, amellyel megkeresheti a másolandó táblákat és egy másik folyamatot a tényleges másolási művelet végrehajtásához. 
 > * Folyamat futásának indítása
 > * A folyamat és a tevékenységek futásának monitorozása
 
@@ -47,7 +47,7 @@ Ebben az esetben az Azure szinapszis Analyticsbe (korábbi nevén SQL DW) másol
 * Az első folyamat megkeresi azoknak a tábláknak a listáját, amelyeket át kell másolni a fogadó adattárakba.  Másik megoldásként fenntarthat egy metaadattáblát, amely felsorolja az összes, a fogadó adattárba másolandó táblát. A folyamat ezután elindít egy másik folyamatot, amely végigiterál az adatbázis összes tábláján, és elvégzi az adatmásolási műveletet.
 * A második folyamat hajtja végre a tényleges másolást. A táblák listáját használja paraméterként. A listában szereplő minden táblázat esetében másolja az adott táblázatot Azure SQL Database az Azure szinapszis Analytics (korábbi nevén SQL DW) megfelelő táblájába a [szakaszos másolással a blob Storage-on keresztül,](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) a legjobb teljesítmény érdekében. Ebben a példában az első folyamat a táblák listáját adja át a paraméter értékeként. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure Storage-fiók**. Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
@@ -58,7 +58,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre (korábban SQL DW) másolja.
+Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre (korábban SQL DW) másolja.
 
 **A fogadó Azure szinapszis Analytics (korábban SQL DW) előkészítése**:
 
@@ -68,14 +68,15 @@ Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az 
 
 ## <a name="azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
 
-A SQL Database és az Azure szinapszis Analytics (korábban SQL DW) esetében is lehetővé teszi az Azure-szolgáltatások számára az SQL Server elérését. Győződjön **meg** arról, hogy az Azure- **szolgáltatások és-erőforrások elérésének engedélyezése ezen a kiszolgálón** beállítás be van kapcsolva az Azure SQL Serverhez. Ez a beállítás lehetővé teszi, hogy az Data Factory szolgáltatás beolvassa az adatait a Azure SQL Databaseból, és adatokkal írja az Azure szinapszis Analyticsbe (korábban SQL DW). 
+A SQL Database és az Azure szinapszis Analytics (korábban SQL DW) esetében is lehetővé teszi az Azure-szolgáltatások számára az SQL Server elérését. Győződjön **meg** arról, hogy az **Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz** beállítás be van kapcsolva a kiszolgálón. Ez a beállítás lehetővé teszi, hogy az Data Factory szolgáltatás beolvassa az adatait a Azure SQL Databaseból, és adatokkal írja az Azure szinapszis Analyticsbe (korábban SQL DW). 
 
-A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg az Azure SQL Server > biztonsági > tűzfalak és virtuális hálózatok > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáférésének engedélyezését** **.**
+A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgálót > biztonsági > tűzfalak és virtuális hálózatok > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez** **beállítást.**
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
+
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Lépjen a [Azure Portal](https://portal.azure.com). 
-1. A Azure Portal menü bal oldalán válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**lehetőséget. 
+1. A Azure Portal menü bal oldalán válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**lehetőséget. 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **új adatgyár** lapon adja meg a **ADFTutorialBulkCopyDF** **nevet**. 
  
@@ -114,7 +115,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-
 
     a. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet.
     
-    b. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
+    b. **Kiszolgáló kiválasztása** a kiszolgálónévhez
     
     c. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
     
@@ -135,7 +136,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-
    
     a. A **Név** mezőbe írja be az **AzureSqlDWLinkedService** nevet.
      
-    b. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
+    b. **Kiszolgáló kiválasztása** a kiszolgálónévhez
      
     c. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
      
@@ -193,7 +194,7 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 
     ![Adatkészlet-kapcsolatok táblanév](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    b. A **dinamikus tartalom hozzáadása** lapon kattintson a **DWTAbleName** elemre a **Paraméterek**területen, amely automatikusan feltölti a felső kifejezés szövegmezőjét `@dataset().DWTableName`, majd kattintson a **Befejezés**gombra. Az adatkészlet **tableName** tulajdonságához beállított értéket továbbítja a rendszer argumentumként a **DWTableName** paraméterhez. A ForEach tevékenység végighalad egy táblalistán, és egyesével továbbítja azokat a másolási tevékenységnek. 
+    b. A **dinamikus tartalom hozzáadása** lapon kattintson a **DWTAbleName** elemre a **Paraméterek**területen, amely automatikusan feltölti a felső kifejezés szövegmezőjét `@dataset().DWTableName` , majd kattintson a **Befejezés**gombra. Az adatkészlet **tableName** tulajdonságához beállított értéket továbbítja a rendszer argumentumként a **DWTableName** paraméterhez. A ForEach tevékenység végighalad egy táblalistán, és egyesével továbbítja azokat a másolási tevékenységnek. 
 
     ![Adatkészlet paramétereinek szerkesztője](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
@@ -228,7 +229,7 @@ A **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paraméte
 
     b. Váltson a **Beállítások** lapra, kattintson az **elemek**beviteli mezőjére, majd kattintson a **dinamikus tartalom hozzáadása** hivatkozásra. 
 
-    c. A **dinamikus tartalom hozzáadása** lapon bontsa ki a **rendszerváltozók** és **függvények** szakaszokat, kattintson a **tableList** elemre a **Parameters (paraméterek** `@pipeline().parameter.tableList`) területen, amely automatikusan feltölti a felső kifejezés szövegmezőjét. Ezután kattintson a **Befejezés** gombra. 
+    c. A **dinamikus tartalom hozzáadása** lapon bontsa ki a **rendszerváltozók** és **függvények** szakaszokat, kattintson a **tableList** elemre a **Parameters (paraméterek**) területen, amely automatikusan feltölti a felső kifejezés szövegmezőjét `@pipeline().parameter.tableList` . Ezután kattintson a **Befejezés** gombra. 
 
     ![Foreach paramétereinek szerkesztője](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -253,7 +254,7 @@ A **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paraméte
 1. Váltson a **Fogadó** lapra, és végezze el az alábbi lépéseket: 
 
     1. **Fogadó-adatkészletnek** válassza a következőt: **AzureSqlDWDataset**.
-    1. Kattintson a beviteli mezőre a DWTableName paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` be a kifejezést parancsfájlként, > válassza a **Befejezés**gombot.
+    1. Kattintson a beviteli mezőre a DWTableName paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja be a `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` kifejezést parancsfájlként, > válassza a **Befejezés**gombot.
     1. A másolási módszer beállításnál válassza a **alapszintű**lehetőséget. 
     1. Törölje az **alapértelmezett típus használata** beállítást. 
     1. Kattintson a **Másolás előtti szkript** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg szkriptként a következő kifejezést, majd kattintson a **Befejezés** gombra. 

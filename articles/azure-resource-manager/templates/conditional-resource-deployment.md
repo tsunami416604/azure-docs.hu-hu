@@ -3,12 +3,12 @@ title: Feltételes üzembe helyezés sablonokkal
 description: Ismerteti, hogyan lehet erőforrást feltételesen üzembe helyezni egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 001a1a7d6d15fe29b0f3184b75892f4ec75cef27
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153420"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017494"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Feltételes üzembe helyezés ARM-sablonokban
 
@@ -35,7 +35,7 @@ A feltételes telepítés használatával létrehozhat egy új erőforrást, vag
 
 Ha a **newOrExisting** paraméter értéke **új**, a feltétel igaz értéket ad vissza. A Storage-fiók telepítve van. Ha azonban a **newOrExisting** a **meglévő**értékre van állítva, a feltétel hamis értéket ad vissza, és a Storage-fiók nincs telepítve.
 
-A `condition` elemet használó teljes példaként tekintse meg a [virtuális gép új vagy meglévő Virtual Network, tárterületet és nyilvános IP-címet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+A elemet használó teljes példaként `condition` tekintse meg a [virtuális gép új vagy meglévő Virtual Network, tárterületet és nyilvános IP-címet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
 ## <a name="allow-condition"></a>Feltétel engedélyezése
 

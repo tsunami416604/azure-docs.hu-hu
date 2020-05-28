@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 59f969a920c30bb017e10d2aa233df02d69918e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594168"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116909"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
@@ -34,15 +34,15 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 ## <a name="set-up-training-data"></a>Betanítási adatértékek beállítása
 
-Ezután be kell állítania a szükséges bemeneti adatokat. A címkével ellátott adatok funkció az egyéni modellek betanításához szükséges speciális bemeneti követelményekkel rendelkezik. 
+Ezután be kell állítania a szükséges bemeneti adatokat. A címkézett adatok funkció olyan speciális bemeneti követelményekkel rendelkezik, amelyeken túl van szükség az egyéni modellek címkék nélküli betanításához.
 
 Győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha több formátumban is rendelkezik űrlapokkal, a közös formátum alapján rendezheti őket az almappákba. A betanítás során az API-t egy almappába kell irányítani.
 
 Ha címkével ellátott adatokkal kívánja betanítani a modellt, a következő fájloknak kell lennie bemenetként az almappában. Ebből a fájlból megtudhatja, hogyan hozhatja létre az alábbi fájlt.
 
 * **Forrásoldali űrlapok** – az adatok kinyerésére szolgáló űrlapok. A támogatott típusok a következők: JPEG, PNG, PDF vagy TIFF.
-* **OCR-elrendezési fájlok** – JSON-fájlok, amelyek leírják az összes olvasható szöveg méretét és pozícióit az egyes forrás űrlapokon. Ezeket az adattípusokat az űrlap-felismerő elrendezési API-val fogja használni. 
-* **Címkézett fájlok** – a felhasználó által manuálisan megadott adatfeliratokat leíró JSON-fájlok.
+* **OCR-elrendezési fájlok** – ezek a JSON-fájlok, amelyek az összes olvasható szöveg méretét és helyét írják le az egyes forrás űrlapokon. Ezeket az adattípusokat az űrlap-felismerő elrendezési API-val fogja használni. 
+* **Címkézett fájlok** – ezek olyan JSON-fájlok, amelyek a felhasználó által manuálisan megadott adatfeliratokat írják le.
 
 Az összes fájlnak ugyanabban az almappájában kell lennie, és a következő formátumúnak kell lennie:
 
@@ -63,7 +63,7 @@ Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanítás
 
 1. Hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolójában a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz **műveleti helye** fejlécében található azonosítót.
 1. Hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t az előző lépés műveleti azonosítójának használatával.
-1. Kérje le a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json` . Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
+1. Szerezze be a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json` . Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
 
     ```json
     {
@@ -116,7 +116,7 @@ Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanítás
 
 ### <a name="create-the-label-files"></a>A címkefájl létrehozása
 
-A címkézett fájlok olyan kulcs-érték társításokat tartalmaznak, amelyeket a felhasználó kézzel írt be. A címkével ellátott adatképzéshez szükségesek, de nem minden forrásfájl számára szükséges a megfelelő címkefájl. A címkék nélküli forrásfájlok általános betanítási dokumentumként lesznek kezelve. A megbízható képzéshez öt vagy több címkézett fájlt ajánlunk.
+A címkézett fájlok olyan kulcs-érték társításokat tartalmaznak, amelyeket a felhasználó kézzel írt be. A címkével ellátott adatképzéshez szükségesek, de nem minden forrásfájl számára szükséges a megfelelő címkefájl. A címkék nélküli forrásfájlok általános betanítási dokumentumként lesznek kezelve. A megbízható képzéshez öt vagy több címkézett fájlt ajánlunk. A fájlok létrehozásához használhat egy felhasználói felületi eszközt, például a [minta feliratozási eszközét](./label-tool.md) .
 
 A címkefájl létrehozásakor megadhatja, hogy &mdash; az egyes régiók pontosan milyen értékekkel rendelkeznek a dokumentumban. Ez a képzés még nagyobb pontosságot eredményez. A régiók formátuma nyolc értékből áll, amelyek megfelelnek a négy X, Y koordinátáknak: felülről balra, jobb felső sarok, jobb alsó és bal alsó. A koordináta-értékek nulla és egy, a lap méretei közé vannak méretezve.
 
@@ -187,8 +187,8 @@ Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet f
                 ...
 ```
 
-> [!NOTE]
-> Csak egy címkét alkalmazhat az egyes szöveges elemekre, és az egyes címkék csak egyszer használhatók fel oldalanként. Jelenleg nem alkalmazhat címkét több oldalra.
+> [!IMPORTANT]
+> Csak egy címkét alkalmazhat az egyes szöveges elemekre, és az egyes címkék csak egyszer használhatók fel oldalanként. Nem alkalmazhat címkét több oldalra.
 
 
 ## <a name="train-a-model-using-labeled-data"></a>Modell betanítása címkézett adattal
@@ -554,4 +554,7 @@ Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az [API-referenciák dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) , amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
+Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az API-referenciák dokumentációját, amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
+
+> [!div class="nextstepaction"]
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

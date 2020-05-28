@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061934"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022777"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz a CLI használatával
 
@@ -61,4 +61,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).
 
-További SQL Database Azure CLI-szkriptek a [Azure SQL Database Azure CLI-szkriptekben](../sql-database-cli-samples.md)találhatók.
+További SQL Database Azure CLI-szkriptek a [Azure SQL Database Azure CLI-szkriptekben](../../azure-sql/database/az-cli-script-samples-content-guide.md)találhatók.

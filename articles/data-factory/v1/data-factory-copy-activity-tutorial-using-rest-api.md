@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438874"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119234"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: REST API használata adatmásoló Azure Data Factory-folyamat létrehozásához 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75438874"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -70,7 +70,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére. 
+  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +121,7 @@ A JSON tulajdonságokról további részleteket tartalmaz az [Azure Storage tár
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice. JSON
 > [!IMPORTANT]
-> A **servername**, a **databasename**, a **username** és a **password** kifejezés helyére írja be Azure SQL-kiszolgálója nevét, az SQL-adatbázis nevét, a felhasználói fiókot, valamint a fiók jelszavát.  
+> A **kiszolgálónév**, a **databasename**, a **Felhasználónév**és a **jelszó** helyére írja be a kiszolgáló nevét, az SQL Database nevét, a felhasználói fiókot és a jelszót a fiókhoz.  
 > 
 >
 
@@ -179,7 +179,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| type | A tulajdonság beállításának értéke **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
+| típus | A tulajdonság beállításának értéke **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
 | linkedServiceName | A korábban létrehozott **AzureStorageLinkedService** szolgáltatásra hivatkozik. |
 | folderPath | A bemeneti blobokat tartalmazó **blobtárolót** és **mappát** adja meg. Ebben az oktatóanyagban az adftutorial a blobtároló és a folder a gyökérmappa. | 
 | fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, a rendszer a folderPath elérési úton található összes fájlt kiválasztja. Ebben az oktatóanyagban az **emp.txt** a fileName értéke, így a rendszer csak ezt a fájlt használja a feldolgozáshoz. |
@@ -222,7 +222,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| type | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL-adatbázis egyik táblájába történik. |
+| típus | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL-adatbázis egyik táblájába történik. |
 | linkedServiceName | A korábban létrehozott **AzureSqlLinkedService** szolgáltatásra hivatkozik. |
 | tableName | Azt a **táblát** határozza meg, amelybe a rendszer az adatokat másolja. | 
 | frequency/interval | A frequency (gyakoriság) értéke **Hour** (Óra), az interval (időköz) értéke pedig **1**, azaz a rendszer a kimeneti szeleteket **óránként** állítja elő a folyamat kezdő és befejező időpontja közti időszakban (és nem azon kívül).  |
@@ -403,7 +403,7 @@ Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítójáh
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>Azure SQL társított szolgáltatás létrehozása
-Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállítóhoz. Ebben a szakaszban megadhatja az Azure SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.
+Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállítóhoz. Ebben a szakaszban a logikai SQL-kiszolgáló nevét, az adatbázis nevét, a felhasználónevet és a felhasználói jelszót kell megadnia. Az Azure SQL társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure SQL társított szolgáltatás](data-factory-azure-sql-connector.md#linked-service-properties) című szakaszt.
 
 1. Rendelje a parancsot a **cmd** nevű változóhoz. 
    
@@ -487,7 +487,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
     Write-Host $results
     ```
 
-**Gratulálok!** Sikeresen létrehozott egy Azure-adatelőállítót, amelyhez adatokat az Azure Blob Storage-tárból egy Azure SQL-adatbázisba másoló adatcsatorna tartozik.
+**Gratulálunk!** Sikeresen létrehozott egy Azure-adatelőállítót, amelyhez adatokat az Azure Blob Storage-tárból egy Azure SQL-adatbázisba másoló adatcsatorna tartozik.
 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 Ebben a lépésben a Data Factory REST API segítségével figyelheti meg az adatcsatorna által készített szeleteket.

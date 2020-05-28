@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7b51417814e74cc7e3559029c9af8c35cbf6f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128469"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016355"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
@@ -22,24 +22,24 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrás-naplók sémája
 
-| Name (Név) | Kötelező vagy nem kötelező | Leírás |
+| Name | Kötelező vagy nem kötelező | Leírás |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
 | tenantId | A bérlői naplókhoz szükséges | Annak a Active Directory bérlőnek a bérlői azonosítója, amelyhez ez az esemény hozzá van kötve. Ez a tulajdonság csak a bérlői szintű naplók esetében használatos, nem jelenik meg az erőforrás-szintű naplókban. |
-| operationName | Kötelező | Az esemény által jelzett művelet neve. Ha az esemény egy RBAC műveletet jelöl, akkor ez a RBAC művelet neve (például Microsoft. Storage/storageAccounts/blobServices/Blobok/olvasás). Általában Resource Manager-művelet formájában modellezve, még akkor is, ha nem ténylegesen dokumentált erőforrás-kezelői műveletek`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`() |
-| operationVersion | Optional | A művelethez társított API-verzió, ha a operationName API-val (például:) lett elvégezve. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
+| operationName | Kötelező | Az esemény által jelzett művelet neve. Ha az esemény egy RBAC műveletet jelöl, akkor ez a RBAC művelet neve (például Microsoft. Storage/storageAccounts/blobServices/Blobok/olvasás). Általában Resource Manager-művelet formájában modellezve, még akkor is, ha nem ténylegesen dokumentált erőforrás-kezelői műveletek ( `Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>` ) |
+| operationVersion | Választható | A művelethez társított API-verzió, ha a operationName API-val (például:) lett elvégezve. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
 | category | Kötelező | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. A szokásos naplózási kategóriák "audit" "működési" "végrehajtás" és "kérelem". |
-| resultType | Optional | Az esemény állapota. A tipikus értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
-| resultSignature | Optional | Az esemény alállapota. Ha ez a művelet egy REST API hívásnak felel meg, akkor ez a megfelelő REST-hívás HTTP-állapotkód. |
-| resultDescription | Optional | A művelet statikus szöveges leírása, például:. "Tárolási fájl beolvasása" |
-| durationMs | Optional | A művelet időtartama ezredmásodpercben. |
-| callerIpAddress | Optional | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
-| correlationId | Optional | A kapcsolódó események halmazának csoportosítására szolgáló GUID. Általában, ha két esemény ugyanazzal a operationName, de két különböző állapottal rendelkezik (például "Elindítva" és "sikeres") ugyanaz a korrelációs azonosító. Ez az események közötti egyéb kapcsolatokat is jelenthet. |
-| identity | Optional | Egy JSON-blob, amely leírja a műveletet végrehajtó felhasználó vagy alkalmazás identitását. Ez általában magában foglalja az Active Directoryból származó engedélyezési és jogcímek/JWT tokent is. |
-| Szint | Optional | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
-| location | Optional | Az eseményt kibocsátó erőforrás régiója, például:. "USA keleti régiója" vagy "Dél-Franciaország" |
-| properties | Optional | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
+| resultType | Választható | Az esemény állapota. A tipikus értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
+| resultSignature | Választható | Az esemény alállapota. Ha ez a művelet egy REST API hívásnak felel meg, akkor ez a megfelelő REST-hívás HTTP-állapotkód. |
+| resultDescription | Választható | A művelet statikus szöveges leírása, például:. "Tárolási fájl beolvasása" |
+| durationMs | Választható | A művelet időtartama ezredmásodpercben. |
+| callerIpAddress | Választható | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
+| correlationId | Választható | A kapcsolódó események halmazának csoportosítására szolgáló GUID. Általában, ha két esemény ugyanazzal a operationName, de két különböző állapottal rendelkezik (például "Elindítva" és "sikeres") ugyanaz a korrelációs azonosító. Ez az események közötti egyéb kapcsolatokat is jelenthet. |
+| identity | Választható | Egy JSON-blob, amely leírja a műveletet végrehajtó felhasználó vagy alkalmazás identitását. Ez általában magában foglalja az Active Directoryból származó engedélyezési és jogcímek/JWT tokent is. |
+| Szint | Választható | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
+| location | Választható | Az eseményt kibocsátó erőforrás régiója, például:. "USA keleti régiója" vagy "Dél-Franciaország" |
+| properties | Választható | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>Az erőforrás-naplók szolgáltatás-specifikus sémái
 Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kategóriától függően változik. Ez a lista az összes olyan szolgáltatást megjeleníti, amely elérhető erőforrás-naplókat készít, valamint a szolgáltatásra mutató hivatkozásokat, valamint a kategória-specifikus sémát.
@@ -76,7 +76,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
 | Service Bus |[Naplók Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL Database naplózás](../../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL Database | [Azure SQL Database naplózás](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Feladatnaplók](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager naplózási séma](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuális hálózatok | A séma nem érhető el. |
@@ -84,7 +84,7 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
 
-Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ez az összes olyan lista, amely valamilyen formában elérhető.  Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../sql-database/sql-database-metrics-diag-logging.md). 
+Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ez az összes olyan lista, amely valamilyen formában elérhető.  Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 |Erőforrás típusa|Kategória|Kategória megjelenítendő neve|
 |---|---|---|
@@ -195,7 +195,7 @@ Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak
 |Microsoft. EventHub/névterek|KafkaUserErrorLogs|Kafka felhasználói hibák naplói|
 |Microsoft. EventHub/névterek|EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|
 |Microsoft. EventHub/névterek|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|
-|Microsoft. HealthcareApis/szolgáltatások|AuditLogs|Naplók|
+|Microsoft. HealthcareApis/szolgáltatások|AuditLogs|Auditnaplók|
 |Microsoft. bepillantások/AutoscaleSettings|AutoscaleEvaluations|Az autoscale-értékelések|
 |Microsoft. bepillantások/AutoscaleSettings|AutoscaleScaleActions|Méretezési műveletek az autoskálázáshoz|
 |Microsoft. IoTSpaces/Graph|Nyomkövetés|Nyomkövetés|

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 12/09/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592763"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996941"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
@@ -24,7 +24,7 @@ Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott
 
 Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd: [Microsoft Translator languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az egyéni Translator különböző funkciókat biztosít az egyéni fordítási rendszerek létrehozásához, majd ezt követően azt is elérheti.
 

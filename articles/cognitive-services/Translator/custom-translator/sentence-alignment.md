@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80370142"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996346"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
@@ -26,7 +26,7 @@ Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítás
 
 ## <a name="pre-aligned-documents"></a>Előre igazított dokumentumok
 
-Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és egy `.align` kiterjesztéssel feltöltheti a fájlt. A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
+Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és egy kiterjesztéssel feltöltheti a fájlt `.align` . A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
 
 A legjobb eredmények érdekében érdemes meggyőződni arról, hogy soronként egy mondat van a fájlokban.Egy mondaton belül ne legyen sortörés karakter, mert ez gyenge igazítást okoz.
 

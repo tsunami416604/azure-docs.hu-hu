@@ -1,52 +1,44 @@
 ---
-title: A Azure Automation Change Tracking és a leltár hatókör-konfigurációinak használata
-description: Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a Change Tracking és a leltár használatakor.
+title: Azure Automation Change Tracking és a leltár központi telepítési hatókörének korlátozása
+description: Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a Change Tracking és a leltári telepítés hatókörének korlátozására.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832163"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117428"
 ---
-# <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>A Change Tracking és a leltár hatókör-konfigurációinak használata
+# <a name="limit-change-tracking-and-inventory-deployment-scope"></a>A Change Tracking és a leltár központi telepítési hatókörének korlátozása
 
-Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a [Update Management](automation-update-management.md) szolgáltatás virtuális gépeken való engedélyezésekor. 
+Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a [change Tracking és leltár](change-tracking.md) funkció használatakor a virtuális gépek változásainak üzembe helyezéséhez. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="about-scope-configurations"></a>A hatókör-konfigurációk ismertetése
 
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+A hatókör-konfiguráció egy vagy több mentett keresés (lekérdezés) csoportja, amely a Change Tracking és a leltár hatókörének adott számítógépekre való korlátozására szolgál. A hatókör-konfiguráció a Log Analytics munkaterületen található, hogy megcélozza az engedélyezni kívánt számítógépeket. Ha hozzáad egy számítógépet a szolgáltatás változásaihoz, a rendszer a munkaterületen lévő mentett kereséshez is hozzáadja a számítógépet.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>A hatókör-konfiguráció keresése
+## <a name="set-the-scope-limit"></a>Hatókör korlátjának beállítása
 
-A Update Management a Log Analytics munkaterület hatókör-konfigurációját használja, hogy megcélozza a Update Management számára engedélyezni kívánt számítógépeket. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a szolgáltatás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk elérése:
+A Change Tracking hatókörének és a leltár üzembe helyezésének korlátozása:
 
-1. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. 
+1. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **csatolt munkaterület** lehetőséget.
 
-2. Válassza ki a munkaterületet a **munkaterület-adatforrások**területen, és válassza a **hatókör-konfigurációk**elemet.
+2. Kattintson **a munkaterület ugrása**elemre.
 
-3. Ha a kiválasztott munkaterülethez még nincs engedélyezve a Update Management funkció, a létrehozza a `MicrosoftDefaultScopeConfig-ChangeTracking` hatókör-konfigurációt. 
+3. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások**területen.
 
-4. Ha a kijelölt munkaterületen már engedélyezve van a funkció, nincs újratelepítve, és a hatókör-konfiguráció nincs hozzáadva. 
+4. Válassza ki a hatókör-konfigurációtól jobbra található három pontot `MicrosoftDefaultScopeConfig-ChangeTracking` , majd kattintson a **Szerkesztés**gombra. 
 
-5. Válassza ki a három pontot a hatókör bármelyik konfigurációján, majd kattintson a **Szerkesztés**gombra. 
-
-6. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések.
-
-## <a name="view-a-saved-search"></a>Mentett keresés megtekintése
-
-Ha a számítógép bekerül a Change Tracking és a leltárba, azt a rendszer a munkaterületen lévő mentett kereséshez is hozzáadja. A mentett keresés egy olyan lekérdezés, amely a célként megadott számítógépeket tartalmazza.
-
-1. Navigáljon a Log Analytics munkaterületre, és válassza a **mentett keresések** **általános**lehetőséget. Az Update Management által használt mentett keresés:
+5. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. A Change Tracking és a leltár által használt mentett keresés:
 
     |Name     |Kategória  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
-2. A mentett keresés elem kiválasztásával megtekintheti a csoport feltöltéséhez használt lekérdezést. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
+6. A mentett keresés elem kiválasztásával megtekintheti és szerkesztheti a csoport feltöltéséhez használt lekérdezést. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
 
     ![Mentett keresések](media/automation-scope-configurations-change-tracking/logsearch.png)
 

@@ -198,7 +198,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 >
 >**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az [Azure VM-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
 * [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

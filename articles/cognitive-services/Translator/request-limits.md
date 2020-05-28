@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995785"
 ---
 # <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
 
@@ -27,14 +27,14 @@ Az összes fordítási kérelem 5 000 karakterből áll, az összes megcélzott 
 
 A következő táblázat a fordító egyes műveleteinek tömb elemeit és karakteres korlátait sorolja fel.
 
-| Művelet | Tömb elemének maximális mérete |   Tömb elemeinek maximális száma |  Kérelmek maximális mérete (karakter) |
+| Művelet | Tömb elemének maximális mérete |    Tömb elemeinek maximális száma |    Kérelmek maximális mérete (karakter) |
 |:----|:----|:----|:----|
-| Fordítás | 5000 | 100   | 5000 |
-| Átírás | 5000 | 10    | 5000 |
-| Észlelés | 10,000 | 100 |   50 000 |
-| BreakSentence | 10,000    | 100 | 50 000 |
-| Keresés a szótárban| 100 |  10  | 1,000 |
-| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|   2000 |
+| Fordítás | 5000    | 100    | 5000 |
+| Átírás | 5000    | 10    | 5000 |
+| Észlelés | 10,000 |    100 |    50 000 |
+| BreakSentence | 10,000    | 100 |    50 000 |
+| Keresés a szótárban| 100 |    10    | 1,000 |
+| Szótár – példák | 100 szöveg és 100 fordításhoz (200 összesen)| 10|    2000 |
 
 ## <a name="character-limits-per-hour"></a>Karakteres korlátok óránként
 
@@ -82,4 +82,4 @@ A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator
 
 * [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 Translator – dokumentáció](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [3-as verziójú Translator-referencia](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,0 +1,71 @@
+---
+title: Migrálás DTU-ról virtuálismag-alapú modellre
+description: Áttelepíthet egy adatbázist Azure SQL Database a DTU modellből a virtuális mag modellbe. A virtuális mag-re való Migrálás hasonló a standard és a prémium szint közötti verziófrissítéshez vagy visszalépéshez.
+services: sql-database
+ms.service: sql-database
+ms.subservice: service
+ms.topic: conceptual
+ms.custom: sqldbrb=1
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan, moslake, carlrab
+ms.date: 03/09/2020
+ms.openlocfilehash: c1f34f2eb6290ff5c255e9b50f8d5db4af65093c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84051324"
+---
+# <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database migrálása a DTU-alapú modellből a virtuális mag-alapú modellbe
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Ez a cikk azt ismerteti, hogyan telepítheti át az adatbázist Azure SQL Database a [DTU-alapú vásárlási modellből](service-tiers-dtu.md) a [virtuális mag-alapú vásárlási modellbe](service-tiers-vcore.md). 
+
+## <a name="migrate-a-database"></a>Adatbázisok migrálása
+
+A DTU-alapú vásárlási modellből a virtuális mag-alapú vásárlási modellbe való átAzure SQL Database telepítéshez hasonló a standard és a prémium szintű szolgáltatási szintek közötti verziófrissítéshez vagy visszalépéshez a DTU-alapú vásárlási modellben.
+
+## <a name="migrate-geo-replicated-databases"></a>Geo-replikált adatbázisok migrálása
+
+A DTU-alapú modellről a virtuális mag-alapú vásárlási modellre való Migrálás hasonló a standard és prémium szintű szolgáltatási szinten lévő adatbázisok közötti földrajzi replikálási kapcsolatok frissítéséhez vagy visszaminősítéséhez. Az áttelepítés során nem kell leállítania a Geo-replikálást, de a következő sorrendi szabályokat kell követnie:
+
+- A frissítéskor először frissítenie kell a másodlagos adatbázist, majd frissítenie kell az elsődlegest.
+- A visszalépéskor a sorrend megfordítása: először az elsődleges adatbázist kell visszaadnia, majd vissza kell állítani a másodlagosat.
+
+Ha a Geo-replikációt két rugalmas készlet között használja, javasoljuk, hogy jelöljön ki egy készletet elsődlegesként, a másikat pedig másodlagosként. Ebben az esetben, ha rugalmas készleteket telepít át, ugyanazt a sorrendi útmutatást kell használnia. Ha azonban olyan rugalmas készletekkel rendelkezik, amelyek elsődleges és másodlagos adatbázisokat is tartalmaznak, akkor a készletet a magasabb kihasználtsággal kell kezelni elsődlegesként, és ennek megfelelően kövesse az előkészítési szabályokat.  
+
+Az alábbi táblázat a speciális áttelepítési forgatókönyvekhez nyújt útmutatást:
+
+|Aktuális szolgáltatási szintek|Cél szolgáltatási szintje|Áttelepítés típusa|Felhasználói műveletek|
+|---|---|---|---|
+|Standard|Általános célú|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
+|Prémium|Üzleti szempontból kritikus|Oldalirányú|Az áttelepíthető bármilyen sorrendben, de biztosítani kell a megfelelő virtuális mag-méretezést *|
+|Standard|Üzleti szempontból kritikus|Frissítés|Először át kell telepítenie a másodlagost|
+|Üzleti szempontból kritikus|Standard|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
+|Prémium|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
+|Általános célú|Prémium|Frissítés|Először át kell telepítenie a másodlagost|
+|Üzleti szempontból kritikus|Általános célú|Alacsonyabb szintre|Először át kell telepítenie az elsődlegest|
+|Általános célú|Üzleti szempontból kritikus|Frissítés|Először át kell telepítenie a másodlagost|
+||||
+
+\*A standard szintű csomag 100 DTU legalább 1 virtuális mag kell lennie, és a prémium szint 125 DTU legalább 1 virtuális mag kell lennie. További információ: [virtuális mag-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
+
+## <a name="migrate-failover-groups"></a>Feladatátvételi csoportok áttelepíthetők
+
+A több adatbázissal rendelkező feladatátvételi csoportok áttelepítése az elsődleges és a másodlagos adatbázisok egyedi áttelepítését igényli. A folyamat során ugyanazok a megfontolások és az előkészítési szabályok érvényesek. Miután az adatbázisok át lettek konvertálva a virtuális mag-alapú vásárlási modellre, a feladatátvételi csoport ugyanazokkal a házirend-beállításokkal marad érvényben.
+
+### <a name="create-a-geo-replication-secondary-database"></a>Geo-replikációs másodlagos adatbázis létrehozása
+
+A Geo-replikációs másodlagos adatbázist (a Geo-másodlagost) csak az elsődleges adatbázishoz használt szolgáltatási réteg használatával lehet létrehozni. A nagy log-generálási arányú adatbázisok esetében javasoljuk, hogy a Geo-másodlagost ugyanazzal a számítási mérettel hozza létre, mint az elsődleges.
+
+Ha egyetlen elsődleges adatbázishoz hoz létre egy geo-másodlagost a rugalmas készletben, akkor győződjön meg arról, hogy a `maxVCore` Készlet beállítása megfelel az elsődleges adatbázis számítási méretének. Ha egy másik rugalmas készletben elsődlegesként hoz létre egy geo-másodlagost, akkor azt javasoljuk, hogy a készletek azonos `maxVCore` beállításokkal rendelkezzenek.
+
+## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Adatbázis-másolat használata DTU-alapú adatbázis virtuális mag-alapú adatbázisba való átalakításához
+
+A DTU-alapú számítási mérettel rendelkező adatbázisok bármely adatbázisba másolhatók egy virtuális mag-alapú számítási mérettel korlátozás vagy speciális sorrendbe rendezés nélkül, feltéve, hogy a célként megadott számítási méret támogatja a forrásadatbázis maximális adatbázis-méretét. Az adatbázis-másolat létrehoz egy pillanatképet az adatokról a másolási művelet kezdési időpontjáról, és nem szinkronizálja az adatokat a forrás és a cél között.
+
+## <a name="next-steps"></a>További lépések
+
+- Az önálló adatbázisok számára elérhető számítási méretek és a tárolási méretek tekintetében lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok az önálló adatbázisokhoz](resource-limits-vcore-single-databases.md).
+- A rugalmas készletekhez rendelkezésre álló számítási méretek és a tárhelyek méretére vonatkozó választási lehetőségekért tekintse meg a [rugalmas készletek SQL Database virtuális mag-alapú erőforrás-korlátozásait](resource-limits-vcore-elastic-pools.md).

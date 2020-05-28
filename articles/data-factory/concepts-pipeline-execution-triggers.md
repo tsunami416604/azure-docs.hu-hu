@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562202"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997009"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 
@@ -236,14 +236,14 @@ Ahhoz, hogy az ütemező eseményindító kiváltsa egy folyamat indítását, a
 Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
 | JSON-tulajdonság | Leírás |
-|:--- |:--- |
+| --- | --- |
 | **startTime** | Dátum-idő érték. Alapszintű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. <!-- This property is optional. --> |
 | **timeZone** | Az időzóna. Jelenleg csak az UTC időzóna támogatott. |
 | **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency**, **interval**, **endTime**, **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
 | **frekvencia** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: minute, hour, day, week és month (percenként, óránként, naponta, hetente és havonta). |
 | **interval** | Pozitív egész szám, amely a **frequency** érték időközét jelöli. A **frequency** érték határozza meg a trigger futtatási gyakoriságát. Ha például az **interval** értéke 3, a **frequency** értéke pedig week, az eseményindító három hetente ismétlődik. |
-| **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
+| **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál. |
 
 ### <a name="schedule-trigger-example"></a>Példa ütemezési eseményindítóra
 
@@ -282,18 +282,18 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 ### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| --- | --- | --- | --- | --- | --- |
 | **startTime** | sztring | Igen | Nincs | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **megismétlődésének** | objektum | Igen | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | szám | No | 1 | 1–1000 | `"interval":10` |
+| **interval** | szám | Nem | 1 | 1–1000 | `"interval":10` |
 | **endTime** | sztring | Igen | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | objektum | No | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **menetrend** | objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
 
 | startTime értéke | Ismétlődés ütemezés nélkül | Ismétlődés ütemezéssel |
-|:--- |:--- |:--- |
+| --- | --- | --- |
 | **A kezdés időpontja a múltban van** | Kiszámítja a kezdő időpont utáni első jövőbeli végrehajtási időpontot, és abban az időpontban fut.<br /><br />A további végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki.<br /><br />Lásd a táblázat alatti példát. | Az eseményindító _nem indulhat hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdő időpontból kiszámított ütemezésen alapul.<br /><br />Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
 | **A kezdő időpont jövőbeli, illetve az aktuális időpont** | Egyszer fut a megadott kezdési időpontban.<br /><br />A további végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki. | Az trigger _nem kezdődhet hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdő időpontból kiszámított ütemezésen alapul.<br /><br />Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
 
@@ -315,20 +315,17 @@ Ha több **Schedule** elem is meg van adva, a kiértékelés sorrendje a legtöb
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 | JSON-elem | Leírás | Érvényes értékek |
-|:--- |:--- |:--- |
-| **perc** | Az óra azon perce, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje|
-| **óra** | A nap azon órái, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje|
-| **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg.|<br />– Hétfő<br />– Kedd<br />– Szerda<br />– Csütörtök<br />– Péntek<br />– Szombat<br />– Vasárnap<br />– Nap értékek tömbje (a tömb maximális mérete 7)<br /><br />A napi értékek nem megkülönböztetik a kis-és nagybetűket|
-| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. |– **MonthlyOccurrence** objektumok tömbje:`{ "day": day, "occurrence": occurrence }`<br />– A **day** attribútum a hét azon napja, amelyen a trigger fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.<br />– Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.|
-| **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. |– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között<br />– Értékek tömbje|
+| --- | --- | --- |
+| **perc** | Az óra azon perce, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje |
+| **óra** | A nap azon órái, amikor az eseményindító fut. |– Egész szám<br />– Egész számok tömbje |
+| **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg.|<br />– Hétfő<br />– Kedd<br />– Szerda<br />– Csütörtök<br />– Péntek<br />– Szombat<br />– Vasárnap<br />– Nap értékek tömbje (a tömb maximális mérete 7)<br /><br />A napi értékek nem megkülönböztetik a kis-és nagybetűket |
+| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. |– **MonthlyOccurrence** objektumok tömbje:`{ "day": day, "occurrence": occurrence }`<br />– A **day** attribútum a hét azon napja, amelyen a trigger fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.<br />– Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező. |
+| **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. |– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között<br />– Értékek tömbje |
 
 ## <a name="tumbling-window-trigger"></a>Átfedésmentes ablakos eseményindító
 Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Az átfedésmentes ablakok rögzített méretű, egymást nem fedő és összefüggő időintervallumok.
 
 További információ a kieséses ablak-eseményindítókkal kapcsolatban: a [kieséses ablak eseményindítójának létrehozása](how-to-create-tumbling-window-trigger.md).
-
-> [!NOTE]
-> A kikapcsoló ablak triggere *megvárja az aktivált folyamat* befejeződését. A futtatási állapota az aktivált folyamat futtatásának állapotát tükrözi. Ha például egy aktivált folyamat futása megszakad, a rendszer megszakítja a megfelelő késleltetésű ablak-trigger futtatását. Ez különbözik az ütemezett trigger "tűz és elfelejtés" viselkedésével, amely sikeresnek van megjelölve, amíg a folyamat futtatása elindult.
 
 ## <a name="event-based-trigger"></a>Eseményalapú trigger
 
@@ -342,7 +339,7 @@ Ez a szakasz az ismétlődésütemezésekre mutat be példákat. A **schedule** 
 A példák azt feltételezik, hogy az **intervallum** értéke 1, és a **gyakoriság** értéke helyes az ütemezés definíciója szerint. Például nem rendelkezhet "Day" **Frequency** értékkel, és az **monthDays** módosítás is szerepel az **ütemezett** objektumban. Ezen korlátozások leírása az előző szakaszban található táblázatban szerepel.
 
 | Példa | Leírás |
-|:--- |:--- |
+| --- | --- |
 | `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
 | `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |
 | `{"minutes":[15], "hours":[5,17]}` | Minden nap 05:15-kor és 17:15-kor fut le. |
@@ -373,15 +370,18 @@ A példák azt feltételezik, hogy az **intervallum** értéke 1, és a **gyakor
 ## <a name="trigger-type-comparison"></a>Eseményindító-típusok összehasonlítása
 Az átfedésmentes ablakos eseményindító és az ütemezési eseményindító is időszívverés alapján működik. Mi a különbség közöttük?
 
+> [!NOTE]
+> A kikapcsoló ablak triggere *megvárja az aktivált folyamat* befejeződését. A futtatási állapota az aktivált folyamat futtatásának állapotát tükrözi. Ha például egy aktivált folyamat futása megszakad, a rendszer megszakítja a megfelelő késleltetésű ablak-trigger futtatását. Ez különbözik az ütemezett trigger "tűz és elfelejtés" viselkedésével, amely sikeresnek van megjelölve, amíg a folyamat futtatása elindult.
+
 Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az ütemezési eseményindító összehasonlítása látható:
 
-|  | Átfedésmentes ablakos eseményindító | Ütemezési eseményindító |
-|:--- |:--- |:--- |
+| Item | Átfedésmentes ablakos eseményindító | Ütemezési eseményindító |
+| --- | --- | --- |
 | **Visszatöltési forgatókönyvek** | Támogatott. A folyamatfuttatások ütemezhetők múltbéli időszakokra. | Nem támogatott. A folyamatfuttatások csak az aktuális időszaktól vagy egy jövőbeli időszaktól hajthatók végre. |
 | **Megbízhatóság** | 100%-os megbízhatóság. A folyamatfuttatások egy adott kezdési időponttól minden időszakhoz ütemezhetők, hézagok nélkül. | Kevésbé megbízható. |
 | **Újrapróbálkozási képesség** | Támogatott. A sikertelen folyamatfuttatások alapértelmezett újrapróbálkozási szabályzata 0, vagy a felhasználó által az eseményindító definíciójában megadott szabályzat. Automatikusan újrapróbálkozik, ha a folyamat egyidejűségi/kiszolgálói/szabályozási korlátok miatt meghiúsul (azaz 400: felhasználói hiba, 429: túl sok kérés, 500: belső kiszolgálóhiba). | Nem támogatott. |
 | **Egyidejűség** | Támogatott. A felhasználók explicit módon adhatják meg az eseményindító egyidejűségi korlátját. 1 és 50 közötti egyidejű aktivált folyamatfuttatást engedélyez. | Nem támogatott. |
-| **Rendszerváltozók** | Támogatja a **WindowStart** és **WindowEnd** rendszerváltozók használatát. A felhasználók hozzáférhetnek a `triggerOutputs().windowStartTime` és `triggerOutputs().windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` és `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nem támogatott. |
+| **Rendszerváltozók** | A @trigger (). scheduledTime és (). kezdő időponttal együtt a @trigger **WindowStart** és a **WindowEnd** rendszerváltozók használatát is támogatja. A felhasználók hozzáférhetnek a `triggerOutputs().windowStartTime` és `triggerOutputs().windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` és `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | @triggerA csak az alapértelmezett (). scheduledTime és @trigger (). kezdő időpontokra vonatkozó változókat támogatja. |
 | **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. |
 
 ## <a name="next-steps"></a>További lépések

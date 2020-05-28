@@ -6,174 +6,200 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5bc71c5462ed1c721d2c94f889146400a07dd19e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829154"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119200"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
-Ez a cikk bemutatja, hogyan kezelheti az Azure-beli virtuális gépek frissítéseit és javításait a Azure Automation [Update Management](automation-update-management.md) szolgáltatással. 
+Ez a cikk bemutatja, hogyan kezelheti az Azure-beli virtuális gépek frissítéseit és javításait a Azure Automation [Update Management](automation-update-management.md) szolgáltatással. A díjszabással kapcsolatos információkért lásd: [Update Management automatizálási díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
-A díjszabással kapcsolatos információkért lásd: [Update Management automatizálási díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+> [!NOTE]
+> A Update Management támogatja az első féltől származó frissítések telepítését és a javítások előzetes letöltését. Ehhez a támogatáshoz módosításokat kell elvégezni a javított rendszereken. A beállítások a rendszereken való konfigurálásával kapcsolatban lásd: [Windows Update beállításainak konfigurálása Azure Automation Update Management](automation-configure-windows-update.md) .
 
-## <a name="prerequisites"></a>Előfeltételek
+Az ebben a cikkben ismertetett eljárások használata előtt győződjön meg arról, hogy engedélyezte Update Management a virtuális gépeken a következő módszerek egyikének használatával:
 
-* A [Update Management](automation-update-management.md) funkció engedélyezve van egy vagy több virtuális gépen. 
-* Update Management számára engedélyezett [virtuális gép](../virtual-machines/windows/quick-create-portal.md) .
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+* [Az Update Management engedélyezése Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
+* [Update Management engedélyezése a Azure Portal tallózásával](automation-onboard-solutions-from-browse.md)
+* [Az Update Management engedélyezése runbookból](automation-onboard-solutions.md)
+* [Az Update Management engedélyezése Azure-beli virtuális gépről](automation-onboard-solutions-from-vm.md)
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-A Update Management engedélyezése után megnyílik az Update Management lap. Ha a rendszer hiányzóként azonosította a frissítéseket, a hiányzó **frissítések** lapon megjelenik a hiányzó frissítések listája.
+Frissítés értékelésének megtekintése:
 
-Az **információ hivatkozás**alatt válassza a frissítés hivatkozást a frissítés támogatási cikkének megnyitásához. A frissítéssel kapcsolatos fontos információkhoz is tájékozódhat.
+1. Az Automation-fiókban válassza **a frissítés kezelése** lehetőséget az **Update Management**alatt. 
 
-![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+2. A környezet frissítései a frissítés kezelése oldalon találhatók. Ha a rendszer hiányzóként azonosította a frissítéseket, a hiányzó **frissítések** lapon megjelenik a hiányzó frissítések listája.
 
-A frissítésben kattintson a továbbiak elemre, hogy megnyissa a naplóbeli keresés ablaktáblát a kiválasztott frissítéshez. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja ezt a lekérdezést, vagy létrehozhat egy saját lekérdezést a környezetében üzembe helyezett vagy hiányzó frissítések részletes adatainak megtekintéséhez.
+3. Az **információ hivatkozás**alatt válassza ki a frissítésre mutató hivatkozást a támogatási cikk megnyitásához, amely fontos információkat nyújt a frissítésről.
 
-![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/logsearch.png)
+    ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+
+4. A frissítés gombra kattintva nyissa meg a naplóbeli keresés ablaktáblát. A naplókeresés lekérdezése az adott frissítéshez előre meg van adva. Módosíthatja a lekérdezést, vagy létrehozhat egy saját lekérdezést a részletes információk megtekintéséhez.
+
+    ![Frissítés állapotának megtekintése](./media/automation-tutorial-update-management/logsearch.png)
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
-Ebben a lépésben megtudhatja, hogyan állíthat be egy riasztást, amely lehetővé teszi egy frissítés központi telepítésének állapotát.
+Kövesse az alábbi lépéseket a riasztások beállításához, hogy megismerje a frissítések központi telepítésének állapotát:
 
-### <a name="alert-conditions"></a>A riasztás feltételei
+1. Az Automation-fiókjában lépjen a **riasztások** elemre a **figyelés**területen, majd kattintson az **új riasztási szabály**elemre.
 
-Az Automation-fiókjában lépjen a **riasztások** elemre a **figyelés**területen, majd kattintson az **új riasztási szabály**elemre.
+2. A riasztási szabály létrehozása lapon az Automation-fiók már ki van választva erőforrásként. Ha módosítani szeretné, kattintson az **erőforrás szerkesztése**elemre. 
 
-Az Automation-fiókja már ki van választva erőforrásként. Ha módosítani kívánja, kattintson a **kiválasztás**gombra. Az erőforrás kiválasztása lapon válassza az Automation- **fiókok** lehetőséget a **szűrés erőforrás típusa** legördülő menüből. Válassza ki az Automation-fiókját, majd kattintson a **kész**gombra.
+3. Az erőforrás kiválasztása lapon válassza az Automation- **fiókok** lehetőséget a **szűrés erőforrás típusa** legördülő menüből. 
 
-Kattintson a **feltétel hozzáadása** elemre a frissítés telepítéséhez megfelelő jel kiválasztásához. Az alábbi táblázat a két elérhető jel részleteit mutatja be.
+4. Válassza ki a használni kívánt Automation-fiókot, majd kattintson a **kész**gombra.
 
-|Jel neve|Dimenziók|Leírás|
-|---|---|---|
-|`Total Update Deployment Runs`|-Központi telepítési név frissítése<br>– Állapot|Ez a riasztás a frissítés központi telepítésének általános állapotára mutat.|
-|`Total Update Deployment Machine Runs`|-Központi telepítési név frissítése</br>– Állapot</br>– Célszámítógép</br>-A központi telepítés futtatási AZONOSÍTÓjának frissítése|Ez a riasztás egy adott gépekre irányuló frissítés központi telepítésének állapotát jelzi.|
+5. Kattintson a **feltétel hozzáadása** elemre a frissítés telepítéséhez megfelelő jel kiválasztásához. Az alábbi táblázat a két elérhető jel részleteit mutatja be.
 
-Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, kattintson a **\+** dimenzió melletti jelre, és írja be az egyéni nevet. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \* ** gombra. Ha nem választja ki egy dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
+    |Jel neve|Dimenziók|Leírás
+    |---|---|---|
+    |`Total Update Deployment Runs`|-Központi telepítési név frissítése<br>– Állapot    |Riasztások egy frissítés központi telepítésének általános állapotáról.|
+    |`Total Update Deployment Machine Runs`|-Központi telepítési név frissítése</br>– Állapot</br>– Célszámítógép</br>-A központi telepítés futtatási AZONOSÍTÓjának frissítése    |Adott gépekre irányuló frissítési központi telepítés állapotára vonatkozó riasztások.|
 
-![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
+6. Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, kattintson a dimenzió elemre, **\+** és írja be az egyéni nevet a következőre:. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \* ** gombra. Ha nem választja ki a dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
 
-A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkészült, válassza a **Kész** lehetőséget.
+    ![Jellogika konfigurálása](./media/automation-tutorial-update-management/signal-logic.png)
 
-### <a name="alert-details"></a>Riasztás részletei
+7. A **riasztási logika**szakaszban adja meg az értékeket az **idő összesítése** és a **küszöbérték** mezőkben, majd kattintson a **kész**gombra.
 
-A **2. résznél. Adja meg a riasztás részleteit**, adjon meg egy nevet és egy leírást a riasztáshoz. Állítsa a **Súlyosság** beállítást sikeres futtatás esetén **Tájékoztató (Sev 2)** értékre, sikertelen futtatás esetén pedig **Tájékoztató (Sev 1)** értékre.
+8. A következő ablaktáblán adja meg a riasztás nevét és leírását.
 
-![Jellogika konfigurálása](./media/automation-tutorial-update-management/define-alert-details.png)
+9. Állítsa be a **Súlyosság** mezőt a **tájékoztatási (2** . szint) értékre a sikeres futtatáshoz vagy **tájékoztatáshoz (az 1.** szinthez) a sikertelen futtatáshoz.
 
-A **műveleti csoportok**területen válassza az **új létrehozása**lehetőséget. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. A műveletek tartalmazhatnak e-mailes értesítéseket, runbookok, webhookokat és sok más műveletet. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
+    ![Jellogika konfigurálása](./media/automation-tutorial-update-management/define-alert-details.png)
 
-A **műveleti csoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A Update Management egy teljes műveleti csoport neve helyett a rövid nevet használja az értesítések a megadott csoport használatával történő küldésekor.
+10. Kattintson az **Igen** vagy a **nem**gombra, attól függően, hogyan szeretné engedélyezni a riasztási szabályt.
 
-A **műveletek**területen adja meg a művelet nevét, például az **e-mailes értesítést**. A **Művelettípus mezőben**válassza az **e-mail/SMS/leküldés/hang**lehetőséget. **Részletekért**válassza a **részletek szerkesztése**lehetőséget.
+11. Ha nem szeretne riasztásokat kapni ehhez a szabályhoz, válassza a **riasztások letiltása**lehetőséget.
 
-Az E-mail/SMS/Küldés/Hang ablaktáblán adjon meg egy nevet. Jelölje be az **e-mail** jelölőnégyzetet, majd adjon meg egy érvényes e-mail-címet.
+## <a name="configure-action-groups-for-your-alerts"></a>Műveleti csoportok konfigurálása a riasztásokhoz
 
-![E-mail műveletcsoport konfigurálása](./media/automation-tutorial-update-management/configure-email-action-group.png)
+Miután beállította a riasztásokat, beállíthat egy műveleti csoportot, amely a több riasztáson keresztül használható műveletek csoportja. A műveletek tartalmazhatnak e-mailes értesítéseket, runbookok, webhookokat és sok más műveletet. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
-Az E-mail/SMS/leküldés/hang ablaktáblán kattintson az **OK**gombra. A műveleti csoport hozzáadása panelen kattintson **az OK**gombra.
+1. Válasszon ki egy riasztást, majd válassza az **új létrehozása** a **műveleti csoportok**alatt lehetőséget. 
 
-A riasztási e-mail tárgyának testreszabásához a **szabály létrehozása**területen a **műveletek testreszabása**területen válassza az **e-mail tárgy**elemet. Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra. A riasztás azt jelzi, hogy a frissítés telepítése sikeres volt-e, és mely gépek voltak a frissítés központi telepítésének része.
+2. Adjon meg egy teljes nevet és egy rövid nevet a műveleti csoportnak. A Update Management a rövid nevet használja az értesítések megadott csoport használatával történő küldésekor.
+
+3. A **műveletek**területen adjon meg egy nevet, amely megadja a műveletet, például az **e-mail értesítéseket**. 
+
+4. A **Művelettípus**mezőben válassza ki a megfelelő típust, például **e-mail/SMS/leküldéses/hang**. 
+
+5. Kattintson a **részletek szerkesztése**elemre.
+
+6. Adja meg a művelet típusát a ablaktáblán. Ha például az **e-mailek/SMS/leküldés/hang**lehetőséget használja, adja meg a művelet nevét, jelölje be az **e-mail** jelölőnégyzetet, adjon meg egy érvényes e-mail-címet, majd kattintson **az OK**gombra.
+
+    ![E-mail műveletcsoport konfigurálása](./media/automation-tutorial-update-management/configure-email-action-group.png)
+
+7. A műveleti csoport hozzáadása panelen kattintson **az OK**gombra.
+
+8. Riasztási e-mail esetén testreszabhatja az e-mail tárgyát. Válassza a **műveletek testreszabása** a **szabály létrehozása**alatt lehetőséget, majd válassza az **e-mail tárgy**elemet. 
+
+9. Ha elkészült, kattintson a **riasztási szabály létrehozása**elemre. 
 
 ## <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
-A frissítések telepítéséhez ütemezzen egy központi telepítést, amely a kiadási ütemterv és a szolgáltatás ablakát követi. Kiválaszthatja, hogy milyen frissítési típusok szerepeljenek a központi telepítésben. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
+A frissítési központi telepítés ütemezése egy olyan [ütemezési](shared-resources/schedules.md) erőforrást hoz létre, amely a **MicrosoftOMSComputers** runbook van társítva, amely kezeli a frissítés központi telepítését a célszámítógépen. A frissítések telepítéséhez be kell ütemeznie egy központi telepítést, amely a kiadási ütemterv és a szolgáltatás ablakát követi. Kiválaszthatja, hogy milyen frissítési típusok szerepeljenek a központi telepítésben. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
 
 >[!NOTE]
->A frissítési központi telepítés ütemezése egy olyan [ütemezési](shared-resources/schedules.md) erőforrást hoz létre, amely a **MicrosoftOMSComputers** runbook van társítva, amely kezeli a frissítés központi telepítését a célszámítógépen. Ha törli az ütemezési erőforrást a Azure Portal vagy a PowerShellt a telepítés létrehozása után, a törlés megszakítja az ütemezett frissítés központi telepítését, és hibaüzenetet jelenít meg, amikor megkísérli újrakonfigurálni az ütemezési erőforrást a portálról. Az ütemezett erőforrást csak a megfelelő központi telepítési ütemterv törlésével törölheti.  
+>Ha törli az ütemezési erőforrást a Azure Portal vagy a PowerShellt a telepítés létrehozása után, a törlés megszakítja az ütemezett frissítés központi telepítését, és hibaüzenetet jelenít meg, amikor megkísérli újrakonfigurálni az ütemezési erőforrást a portálról. Az ütemezett erőforrást csak a megfelelő központi telepítési ütemterv törlésével törölheti.  
 
-Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez válassza a **Frissítéskezelés**, majd a **Frissítések központi telepítésének ütemezése** elemet.
+Új frissítés központi telepítésének beütemezett időpontja:
 
-Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
+1. Az Automation-fiókban **lépjen az Update Management elemre** **, majd**válassza a **frissítés központi telepítése**lehetőséget.
 
-* **Név**: Adjon egyedi nevet a frissítéstelepítésnek.
+2. Az **új frissítés telepítése**alatt használja a **név** mezőt, és adjon meg egy egyedi nevet a telepítéshez.
 
-* **Operációs rendszer**: Válassza ki azt az operációs rendszert, amelyre a frissítéstelepítés vonatkozni fog.
+3. Válassza ki a frissítés központi telepítéséhez használni kívánt operációs rendszert.
 
-* **Frissítendő csoportok (előzetes verzió)**: olyan lekérdezés definiálása, amely kombinálja az előfizetést, az erőforráscsoportot, a helyszíneket és a címkéket, hogy az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjait hozza létre. További információ: [dinamikus csoportok](automation-update-management-groups.md).
+4. A **groups to Update (előzetes verzió)** régióban adjon meg egy olyan lekérdezést, amely kombinálja az előfizetést, az erőforráscsoportot, a helyszíneket és a címkéket, hogy az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjait hozza létre További információ: [dinamikus csoportok használata a Update Management használatával](automation-update-management-groups.md).
 
-* **Frissítendő gépek**: válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ha a **gépek**lehetőséget választja, az egyes gépek készültségi állapota az **Update Agent Readiness (frissítési ügynök készültsége** ) oszlopban látható. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md).
+5. A **frissítendő gépek** területen válasszon ki egy mentett keresést, egy importált csoportot, vagy válasszon ki **gépeket** a legördülő menüből, és válassza az egyes gépek lehetőséget. Ezzel a beállítással megtekintheti az egyes gépek Log Analytics ügynökének készültségét. A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről további információt a következő témakörben talál: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md).
 
-* **Frissítés besorolása**: minden termék esetében törölje az összes támogatott frissítési besorolást, de azokat is, amelyeket bele szeretne foglalni a frissítés telepítésére. A besorolási típusok leírását lásd: [frissítési besorolások](automation-view-update-assessments.md#work-with-update-classifications).
+6. A **frissítési** besorolások régió használatával adhatja meg a termékek [frissítési besorolását](automation-view-update-assessments.md#work-with-update-classifications) . Minden termék esetében törölje az összes támogatott frissítési besorolást, de azokat is, amelyeket bele szeretne foglalni a frissítés telepítésére.
 
-* **Belefoglalási** /kizárási frissítések – megnyitja a Belefoglalás/kizárás lapot. A felvenni vagy kizárni kívánt frissítések külön lapokon találhatók a TUDÁSBÁZISCIKK AZONOSÍTÓinak számának megadásával. Egy vagy több azonosító számának megadásakor el kell távolítania vagy törölnie kell az összes besorolást a frissítés központi telepítésével. Ezzel biztosíthatja, hogy a frissítési csomagok a frissítési azonosítók megadásakor ne tartalmazzanak más frissítéseket.
+7. A **frissítések belefoglalása/kizárása** régió használatával válassza ki a központi telepítés adott frissítéseit. A belefoglalási/kizárási oldal megjeleníti a frissítéseket a TUDÁSBÁZISCIKK által belefoglalni vagy kizárni kívánt AZONOSÍTÓk száma alapján. 
+    
+   > [!IMPORTANT]
+   > Ne feledje, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management kizárja az összes javítást vagy csomagot a telepítésből. A kizárt javítások továbbra is hiányzóként jelennek meg a gépeken. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
 
-> [!NOTE]
-> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy kizárási szabályt `*` , Update Management nem telepít javításokat vagy csomagokat, ahogy az összes ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomaggal rendelkezik, Update Management nem telepíti a fő csomagot.
+   > [!NOTE]
+   > Nem adhat meg olyan frissítéseket, amelyek felváltották a frissítés központi telepítésbe való felvételét.
 
-> [!NOTE]
-> Nem adhat meg olyan frissítéseket, amelyeket a rendszer a frissítés központi telepítésére való felvételre váltott ki.
->
-* **Ütemezési beállítások**: Megnyitja az Ütemezési beállítások ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
+8. Válassza az **időzítési beállítások**lehetőséget. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
-   Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Hagyja meg az alapértelmezett értéket 1 nap alatt, majd kattintson **az OK**gombra. Ezek a bejegyzések ismétlődő ütemtervet állítanak be.
+9. Az **Ismétlődés** mező segítségével megadhatja, hogy a központi telepítés egyszer történjen-e, vagy ismétlődő ütemezéset használ, majd kattintson **az OK**gombra.
 
-* **Előkészítő szkriptek és utólagos szkriptek**: Válassza ki, mely szkripteket szeretné futtatni az üzembe helyezés előtt, illetve után. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
+10. A **parancsfájl előtti és utáni parancsfájlok (előzetes verzió)** területen válassza ki azokat a parancsfájlokat, amelyeket a telepítés előtt és után szeretne futtatni. További információ: a [parancsfájlok előtti és utáni parancsfájlok kezelése](pre-post-scripts.md).
+    
+11. A frissítések telepítésének időtartamát a **karbantartási időszak (perc)** mező segítségével adhatja meg. Karbantartási időszak megadásakor vegye figyelembe a következő részleteket:
 
-* **Karbantartási időszak (perc)**: Fogadja el az alapértelmezett értéket. A karbantartási időszakok a frissítések telepítésének időtartamát szabályozzák. Karbantartási időszak megadásakor vegye figyelembe a következő részleteket:
+    * A karbantartási időszakok azt szabályozzák, hogy a rendszer hány frissítést telepítsen.
+    * A Update Management nem állítja le az új frissítések telepítését, ha a karbantartási időszak végére közeledik.
+    * A Update Management nem szakítja meg a folyamatban lévő frissítéseket, ha a karbantartási időszak túllépve.
+    * Ha a karbantartási időszak túllépi a Windowst, gyakran előfordul, hogy a szervizcsomag frissítése hosszú időt vesz igénybe.
 
-  * A karbantartási időszakok azt szabályozzák, hogy a rendszer hány frissítést telepítsen.
-  * A Update Management nem állítja le az új frissítések telepítését, ha a karbantartási időszak végére közeledik.
-  * A Update Management nem szakítja meg a folyamatban lévő frissítéseket, ha a karbantartási időszak túllépve.
-  * Ha a karbantartási időszak túllépi a Windowst, gyakran előfordul, hogy a szervizcsomag frissítése hosszú időt vesz igénybe.
+    > [!NOTE]
+    > Ha el szeretné kerülni, hogy a frissítések ne legyenek alkalmazva az Ubuntu karbantartási időszakán kívül, konfigurálja újra a `Unattended-Upgrade` csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért tekintse meg az [Ubuntu Server útmutatójának automatikus frissítések témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-  > [!NOTE]
-  > Ha el szeretné kerülni, hogy a frissítések ne legyenek alkalmazva az Ubuntu karbantartási időszakán kívül, konfigurálja újra a felügyelet nélküli frissítési csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért lásd [az Ubuntu Server útmutatójának automatikus frissítések témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+12. Az újraindítási **Beállítások** mező segítségével megadhatja, hogyan kezelje az újraindítást az üzembe helyezés során. A következő beállítások érhetők el: 
+    * Újraindítás szükség esetén (alapértelmezett)
+    * Mindig induljon újra
+    * Soha ne induljon újra
+    * Csak újraindítás; Ez a beállítás nem telepíti a frissítéseket
 
-* Újraindítási **Beállítások**: az újraindítások kezelésére szolgáló beállítások megadására használható. A következő beállítások érhetők el:
-  * Újraindítás szükség esetén (alapértelmezett)
-  * Mindig induljon újra
-  * Soha ne induljon újra
-  * Csak újraindítás – nem telepíti a frissítéseket
+    > [!NOTE]
+    > Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra**.
 
-> [!NOTE]
-> Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra**.
+13. Amikor befejezte a központi telepítési ütemterv konfigurálását, kattintson a **Létrehozás**gombra.
 
-Ha elkészült az ütemterv konfigurálásával, kattintson a **Létrehozás**gombra.
+    ![A frissítés ütemezési beállításai ablaktábla](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-![A frissítés ütemezési beállításai ablaktábla](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
+14. Ekkor visszalép az állapot-irányítópultra. A létrehozott központi telepítési ütemezés megjelenítéséhez válassza az **ütemezett frissítések központi telepítése** lehetőséget.
 
-Ekkor visszalép az állapot-irányítópultra. Válassza az **ütemezett frissítések központi telepítése** lehetőséget az imént létrehozott központi telepítési ütemezés megjelenítéséhez.
+## <a name="schedule-an-update-deployment-programmatically"></a>Frissítési üzembe helyezés programozott módon történő beütemezett
 
-> [!NOTE]
-> Update Management támogatja az első féltől származó frissítések telepítését és a javítások előzetes letöltését. Ehhez a támogatáshoz módosításokat kell elvégezni a javított rendszereken. Tekintse meg az [első fél és a letöltés előtti támogatást](automation-configure-windows-update.md) , amelyből megtudhatja, hogyan konfigurálhatja ezeket a beállításokat a rendszereken.
+Ha meg szeretné tudni, hogyan hozhat létre frissítési központi telepítést a REST API, tekintse meg a [szoftverfrissítési konfigurációk – létrehozás](/rest/api/automation/softwareupdateconfigurations/create)című témakört. 
 
-A frissítési központi telepítéseket programozott módon is létrehozhatja. Ha meg szeretné tudni, hogyan hozhat létre frissítési központi telepítést a REST API, tekintse meg a [szoftverfrissítési konfigurációk – létrehozás](/rest/api/automation/softwareupdateconfigurations/create)című témakört. Létezik egy minta runbook is, amely használatával hetente frissítheti az üzembe helyezést. További információ erről a runbook: [heti frissítési telepítés létrehozása egy vagy több virtuális géphez egy erőforráscsoport esetében](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+A heti frissítések központi telepítésének létrehozásához minta-runbook is használhat. További információ erről a runbook: [heti frissítési telepítés létrehozása egy vagy több virtuális géphez egy erőforráscsoport esetében](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-## <a name="view-results-of-an-update-deployment"></a>Frissítéstelepítés eredményeinek megtekintése
+## <a name="check-deployment-status"></a>Központi telepítés állapotának keresése
 
-Miután az ütemezett telepítés elindult, a **Frissítéskezelés** panel **Frissítéstelepítések** lapján láthatóvá válik a telepítés állapota. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre**változik. Ha a központi telepítés egy vagy több frissítésével kapcsolatban hiba történik, az állapot **részben meghiúsult**.
+Az ütemezett telepítés megkezdése után az állapot megjelenik a frissítés **telepítések** lapon az **Update Management**alatt. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre**változik. Ha a központi telepítés egy vagy több frissítésével kapcsolatban hiba történik, az állapot **részben meghiúsult**.
 
-Válassza ki a befejezett frissítés központi telepítését az irányítópult megtekintéséhez.
+## <a name="view-results-of-a-completed-update-deployment"></a>Befejezett frissítés telepítésének eredményeinek megtekintése
+
+Az üzembe helyezés befejezésekor kiválaszthatja, hogy megjelenjen-e az irányítópult.
 
 ![Adott telepítés frissítéstelepítési állapotának irányítópultja](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
-A **Frissítés eredményei** terület összesíti a frissítések teljes számát és az adott virtuális gépre vonatkozó telepítési eredményeket. A jobb oldali táblázat az egyes frissítések részletes áttekintését és a telepítés eredményét tartalmazza.
+A **frissítés eredményei**között az összefoglalás a frissítések és a telepítési eredmények teljes számát adja meg a cél virtuális gépeken. A jobb oldali táblázat a frissítések részletes részletezését és a telepítés eredményét jeleníti meg.
 
 Az elérhető értékek a következők:
 
-* **Nem történt kísérlet**: a frissítés nem lett telepítve, mert a karbantartási időszak meghatározott időtartama alapján nem volt elegendő idő a rendelkezésére.
-* **Sikeres**: a frissítés sikeresen befejeződött.
-* **Sikertelen**: a frissítés nem sikerült.
+* **Nem lett megkísérelve** – a frissítés nem lett telepítve, mert a karbantartási időszak meghatározott időtartama alapján nem volt elegendő idő a rendelkezésére.
+* **Nincs kiválasztva** – a frissítés nem lett kijelölve telepítésre.
+* **Sikeres** – a frissítés sikeres volt.
+* **Sikertelen** – a frissítés sikertelen volt.
 
 A **minden napló** lehetőség kiválasztásával megtekintheti az üzemelő példány által létrehozott összes naplóbejegyzést.
 
-Válassza a **Kimenet** lehetőséget azon runbook feladatstreamjének megtekintéséhez, amely a frissítések telepítését kezeli a virtuális célgépen.
+Válassza a **kimenet** lehetőséget, hogy megtekintse a runbook a cél virtuális gépeken történő telepítésének kezeléséért felelős folyamat adatfolyamát.
 
 A telepítés közben felmerülő hibák részletes információinak megtekintéséhez válassza a **Hibák** elemet.
 
-A frissítés sikeres üzembe helyezése után egy, az alábbihoz hasonló e-mailt kap:
+## <a name="view-the-deployment-alert"></a>Az üzembe helyezési riasztás megtekintése
+
+A frissítés telepítésének befejezésekor a telepítés során megadott riasztás jelenik meg. Például itt egy e-mail-üzenet megerősíti a javítást.
 
 ![E-mail konfigurálása műveletcsoport](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* A Update Management részleteiért lásd: [Update Management áttekintése](automation-update-management.md).
+* Ha a telepítésekkel fejeződött be, tekintse [meg a munkaterületek összekapcsolását az Automation-fiókból a Update Management](automation-unlink-workspace-update-management.md).
+* A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).

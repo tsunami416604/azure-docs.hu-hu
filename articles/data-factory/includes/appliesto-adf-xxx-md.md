@@ -6,4 +6,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398818"
 ---
-<Token>**A** ![következőkre vonatkozik](../media/applies-to/yes.png): ![igen](../media/applies-to/no.png)Azure Data Factory nincs Azure szinapszis Analytics (előzetes verzió)</Token>
+<Token>**a következőkre vonatkozik:** ![ igen ](../media/applies-to/yes.png) Azure Data Factory ![ nincs ](../media/applies-to/no.png) Azure szinapszis Analytics (előzetes verzió)</Token>

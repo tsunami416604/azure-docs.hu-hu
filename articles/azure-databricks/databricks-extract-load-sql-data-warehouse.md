@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018718"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az adatátalakítás Azure Databricks.
 > * Betöltés az Azure Szinapszisba.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
@@ -93,7 +93,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
     ![Erőforrás létrehozása Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
 
-    Ezután válassza az **elemzési** > **Azure Databricks**elemet.
+    Ezután válassza az **elemzési**  >  **Azure Databricks**elemet.
 
     ![Azure Databricks létrehozása Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
 
@@ -129,7 +129,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
     * Adjon egy nevet a fürtnek.
 
-    * Győződjön meg arról, hogy a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzet be van állítva. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
+    * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van állítva. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
 
     * Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
@@ -185,13 +185,13 @@ Ebben a szakaszban egy jegyzetfüzetet hoz létre Azure Databricks munkaterület
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. A kód blokkban cserélje le a `<app-id>`, `<secret>` `<tenant-id>`,, és `<storage-account-name>` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le `<file-system-name>` a helyőrző értékét bármilyen névre, amelyet a fájlrendszerhez szeretne adni.
+6. A kód blokkban cserélje le a `<app-id>` ,,, `<secret>` `<tenant-id>` és `<storage-account-name>` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le a `<file-system-name>` helyőrző értékét bármilyen névre, amelyet a fájlrendszerhez szeretne adni.
 
-   * A `<app-id>`és `<secret>` az az alkalmazás, amelyet az Active Directoryban regisztrált az egyszerű szolgáltatásnév létrehozása során.
+   * A `<app-id>` és az `<secret>` az alkalmazás, amelyet az Active Directoryban regisztrált az egyszerű szolgáltatásnév létrehozása során.
 
    * Az `<tenant-id>` előfizetésből származik.
 
-   * A `<storage-account-name>` a Azure Data Lake Storage Gen2 Storage-fiók neve.
+   * A a `<storage-account-name>` Azure Data Lake Storage Gen2 Storage-fiók neve.
 
 7. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -370,7 +370,7 @@ Ahogy azt korábban említettük, az Azure szinapszis-összekötő az Azure Blob
    > [!NOTE]
    > Ez a példa a `forward_spark_azure_storage_credentials` jelzőt használja, ami azt eredményezi, hogy az Azure szinapszis egy hozzáférési kulccsal fér hozzá az adatokhoz a blob Storage-ból. Ez az egyetlen támogatott hitelesítési módszer.
    >
-   > Ha az Azure Blob Storage a virtuális hálózatok kiválasztására van korlátozva, az Azure Szinapszishoz [hozzáférési kulcsok helyett Managed Service Identity](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)szükséges. Ez a következő hibaüzenetet eredményezi: "Ez a kérelem nem jogosult a művelet végrehajtására."
+   > Ha az Azure Blob Storage a virtuális hálózatok kiválasztására van korlátozva, az Azure Szinapszishoz [hozzáférési kulcsok helyett Managed Service Identity](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)szükséges. Ez a következő hibaüzenetet eredményezi: "Ez a kérelem nem jogosult a művelet végrehajtására."
 
 6. Kapcsolódjon az SQL-adatbázishoz, és ellenőrizze, hogy megjelenik-e a **SampleTable**nevű adatbázis.
 
@@ -380,13 +380,13 @@ Ahogy azt korábban említettük, az Azure szinapszis-összekötő az Azure Blob
 
     ![A minta táblázat tartalmának ellenőrzése](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "A minta táblázat tartalmának ellenőrzése")
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az oktatóanyag befejezése után leállíthatja a fürtöt. A Azure Databricks munkaterületen kattintson a bal oldali **fürtök** elemre. A fürt megszakításához a **műveletek**területen mutasson a három pontra (...), és válassza a **Befejezés** ikont.
 
 ![Databricks-fürt leállítása](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás ennyi perc \_ \_ inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás ennyi \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 

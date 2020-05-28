@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b907663971e7a8a7c3b2c6cac95c38131e1ccb26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47714be27cd4588b9bdf481750974394d3738985
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74931734"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119287"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "74931734"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -66,7 +66,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
     ```powershell
     Get-AzSubscription
     ```
-4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére.
+4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -134,7 +134,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezeket a beállításokat a **GetAuthorizationHeader** segédmetódus használja.
 
-    Cserélje le az ** &lt;alkalmazás-&gt;azonosító**, ** &lt;a&gt;jelszó**, ** &lt;az előfizetés-azonosító&gt;** és ** &lt;a bérlői azonosító&gt; ** értékeit a saját értékeire.
+    Cserélje le az ** &lt; alkalmazás- &gt; azonosító**, a ** &lt; jelszó &gt; **, az ** &lt; előfizetés- &gt; azonosító**és a ** &lt; bérlői azonosító &gt; ** értékeit a saját értékeire.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +240,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 9. Adja hozzá az alábbi kódot, amely létrehozza az **Azure SQL-társított szolgáltatást** a **Main** metódusban.
 
    > [!IMPORTANT]
-   > A **servername**, **databasename**, **username** és **password** paraméterek értékét cserélje le az Azure SQL-kiszolgáló, az adatbázis és a felhasználói fiók nevére, valamint a felhasználói fiók jelszavára.
+   > A **kiszolgálónév**, a **databasename**, a **Felhasználónév**és a **jelszó** helyére írja be a kiszolgáló, az adatbázis, a felhasználó és a jelszó nevét.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -511,7 +511,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
     John, Doe
     Jane, Doe
     ```
-18. Futtassa a mintát úgy, hogy a menüben a hibakeresés**megkezdése** parancsra **kattint.** ->  Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
+18. Futtassa a mintát úgy, **Debug**hogy  ->  a menüben a hibakeresés**megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 19. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
     * Társított szolgáltatás: **LinkedService_AzureStorage**
     * Adatkészlet: **InputDataset** és **OutputDataset**.

@@ -63,12 +63,12 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
-|Windows 8.1|Igen\*|N/A|Igen|Igen\*\*\*|N/A
-|Windows 8|Igen\*|N/A|Igen|Igen\*\*\*|N/A
-|Windows 7|Igen\*|N/A|Igen|Igen\*\*\*|N/A
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Igen|Igen\*\*\*|N/A
-|Mac OS X|N/A|N/A|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
+|Windows 8.1|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows 8|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows 7|Igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 
 \*Az Internet Explorer 10-es vagy újabb verzióját igényli

@@ -16,4 +16,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75527059"
 ---
-**A** ![következőkre vonatkozik](media/aml-applies-to-skus/yes.png): igen ![alapszintű &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; kiadás &nbsp; igen](media/aml-applies-to-skus/yes.png)Enterprise Edition &nbsp; [Upgrade to Enterprise edition](../articles/machine-learning/how-to-manage-workspace.md#upgrade)(frissítés az Enterprise kiadásra) &nbsp; &nbsp; &nbsp; &nbsp;  
+**a következőkre vonatkozik:** ![ igen ](media/aml-applies-to-skus/yes.png) , alapszintű kiadás ![ ](media/aml-applies-to-skus/yes.png) , igen Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([frissítés az Enterprise Edition](../articles/machine-learning/how-to-manage-workspace.md#upgrade)rendszerre)  

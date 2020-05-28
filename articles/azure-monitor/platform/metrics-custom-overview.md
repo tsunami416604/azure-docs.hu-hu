@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837311"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018531"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Egyéni metrikák a Azure Monitorban (előzetes verzió)
 
@@ -28,7 +28,7 @@ Az egyéni metrikák több módszer használatával is elküldhetők Azure Monit
 - Az alkalmazást az Azure Application Insights SDK használatával, az egyéni telemetria pedig a Azure Monitorba küldheti. 
 - Telepítse a Windows Azure Diagnostics (WAD) bővítményt az [Azure](collect-custom-metrics-guestos-resource-manager-vm.md)-beli virtuális gépre, a [virtuálisgép-méretezési csoportra](collect-custom-metrics-guestos-resource-manager-vmss.md), a [klasszikus virtuális gépre](collect-custom-metrics-guestos-vm-classic.md)vagy a [klasszikus Cloud Servicesre](collect-custom-metrics-guestos-vm-cloud-service-classic.md) , és küldje el a teljesítményszámlálók Azure monitor. 
 - Telepítse a [InfluxData-előgrafi ügynököt](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gépre, és küldje el a metrikákat a Azure monitor kimeneti beépülő modullal.
-- Egyéni metrikák küldése [közvetlenül a Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Egyéni metrikák küldése [közvetlenül a Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-rentention"></a>Díjszabási modell és megőrzése
 
@@ -51,7 +51,7 @@ Ha egyéni metrikákat szeretne beküldeni a Azure Monitorba, a metrikát elkül
 A kérelem hitelesítéséhez Azure Monitor érvényesíti az alkalmazás tokenjét az Azure AD nyilvános kulcsaival. A meglévő **figyelési metrikák közzétevői** szerepköre már rendelkezik ezzel az engedéllyel. Ez elérhető a Azure Portalban. Az egyszerű szolgáltatásnév attól függően, hogy milyen erőforrásokra bocsát ki egyéni metrikákat, megadhatja a **figyelési metrikák közzétevői** szerepkörét a szükséges hatókörben. Ilyenek például az előfizetés, az erőforráscsoport vagy az adott erőforrás.
 
 > [!TIP]  
-> Ha Azure AD-jogkivonatot kér egyéni metrikák kibocsátására, győződjön meg arról, hogy a tokenhez tartozó célközönség vagy `https://monitoring.azure.com/`erőforrás a (z). Ügyeljen arra, hogy tartalmazza a "/" zárót.
+> Ha Azure AD-jogkivonatot kér egyéni metrikák kibocsátására, győződjön meg arról, hogy a tokenhez tartozó célközönség vagy erőforrás a (z `https://monitoring.azure.com/` ). Ügyeljen arra, hogy tartalmazza a "/" zárót.
 
 ### <a name="subject"></a>Tárgy
 Ez a tulajdonság rögzíti, hogy az egyéni metrika melyik Azure-erőforrás-AZONOSÍTÓval van jelezve. Ezek az adatok az API-hívás URL-címében lesznek kódolva. Az egyes API-k csak egyetlen Azure-erőforráshoz küldhetnek metrikai értékeket.
@@ -189,31 +189,31 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |Azure-régió |Regionális végpont előtagja|
 |---|---|
 | **Egyesült Államok és Kanada** | |
-|USA nyugati középső régiója | https:\//westcentralus.monitoring.Azure.com/ |
-|USA nyugati régiója, 2.       | https:\//westus2.monitoring.Azure.com/ |
-|USA északi középső régiója | https:\//northcentralus.monitoring.Azure.com
-|USA déli középső régiója| https:\//southcentralus.monitoring.Azure.com/ |
-|USA középső régiója      | https:\//CentralUS.monitoring.Azure.com |
-|Közép-Kanada | https:\//canadacentral.monitoring.Azure.comc
-|USA keleti régiója| https:\//eastus.monitoring.Azure.com/ |
+|USA nyugati középső régiója | https: \/ /westcentralus.monitoring.Azure.com/ |
+|USA nyugati régiója, 2.       | https: \/ /westus2.monitoring.Azure.com/ |
+|USA északi középső régiója | https: \/ /northcentralus.monitoring.Azure.com
+|USA déli középső régiója| https: \/ /southcentralus.monitoring.Azure.com/ |
+|USA középső régiója      | https: \/ /CentralUS.monitoring.Azure.com |
+|Közép-Kanada | https: \/ /canadacentral.monitoring.Azure.comc
+|USA keleti régiója| https: \/ /eastus.monitoring.Azure.com/ |
 | **Európa** | |
-|Észak-Európa    | https:\//northeurope.monitoring.Azure.com/ |
-|Nyugat-Európa     | https:\//westeurope.monitoring.Azure.com/ |
-|Az Egyesült Királyság déli régiója | https:\//uksouth.monitoring.Azure.com
-|Közép-Franciaország | https:\//francecentral.monitoring.Azure.com |
+|Észak-Európa    | https: \/ /northeurope.monitoring.Azure.com/ |
+|Nyugat-Európa     | https: \/ /westeurope.monitoring.Azure.com/ |
+|Az Egyesült Királyság déli régiója | https: \/ /uksouth.monitoring.Azure.com
+|Közép-Franciaország | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
-|Dél-Afrika északi régiója | https:\//southafricanorth.monitoring.Azure.com
+|Dél-Afrika északi régiója | https: \/ /southafricanorth.monitoring.Azure.com
 | **Ázsia** | |
-|Közép-India | https:\//centralindia.monitoring.Azure.com
-|Kelet-Ausztrália | https:\//australiaeast.monitoring.Azure.com
-|Kelet-Japán | https:\//japaneast.monitoring.Azure.com
-|Délkelet-Ázsia  | https:\//southeastasia.monitoring.Azure.com |
-|Kelet-Ázsia | https:\//eastasia.monitoring.Azure.com
-|Dél-Korea középső régiója   | https:\//koreacentral.monitoring.Azure.com
+|Közép-India | https: \/ /centralindia.monitoring.Azure.com
+|Kelet-Ausztrália | https: \/ /australiaeast.monitoring.Azure.com
+|Kelet-Japán | https: \/ /japaneast.monitoring.Azure.com
+|Délkelet-Ázsia  | https: \/ /southeastasia.monitoring.Azure.com |
+|Kelet-Ázsia | https: \/ /eastasia.monitoring.Azure.com
+|Dél-Korea középső régiója   | https: \/ /koreacentral.monitoring.Azure.com
 
 ## <a name="latency-and-storage-retention"></a>Késés és tárolás megőrzése
 
-Ha hozzáad egy új mérőszámot, vagy egy mérőszámhoz hozzáadott új dimenziót, akár 2 – 3 percet is igénybe vehet. A rendszeren egyszer az adatmennyiségnek az idő 99%-ában kevesebb, mint 30 másodperc függőleges kell lennie. 
+Ha hozzáad egy új mérőszámot, vagy egy mérőszámhoz hozzáadott új dimenziót, akár 2 – 3 percet is igénybe vehet. A rendszeren egyszer az adatmennyiség az idő 99%-ában kevesebb, mint 30 másodperc. 
 
 Ha töröl egy metrikát, vagy eltávolít egy dimenziót, a módosítás elvégzése egy hétig is elvégezheti a rendszerből a hónapot.
 

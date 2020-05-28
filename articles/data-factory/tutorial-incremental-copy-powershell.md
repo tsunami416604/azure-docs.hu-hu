@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f4de4c25cea251ea0db72bcb435ceb63eb308ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22fa0e1cc6bdad109c5dcb82cc08b81d91674f9a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409233"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022454"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a PowerShell használatával
 
@@ -63,7 +63,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket.
 * **Azure Storage**. A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
 * **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
@@ -199,7 +199,7 @@ Vegye figyelembe a következő szempontokat:
 Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban a tárfiókkal és az SQL-adatbázissal társított szolgáltatásokat hoz létre.
 
 ### <a name="create-a-storage-linked-service"></a>Storage-beli társított szolgáltatás létrehozása
-1. Hozzon létre egy AzureStorageLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A `<accountName>` fájl `<accountKey>` mentése előtt cserélje le a és a nevet a Storage-fiók nevére és kulcsára.
+1. Hozzon létre egy AzureStorageLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) `<accountName>`A fájl mentése előtt cserélje le a és a `<accountKey>` nevet a Storage-fiók nevére és kulcsára.
 
     ```json
     {
@@ -230,7 +230,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>SQL Database-beli társított szolgáltatás létrehozása
-1. Hozzon létre egy AzureSQLDatabaseLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A &lt;fájl&gt;mentése &lt;előtt&gt;cserélje &lt;le a&gt;kiszolgálót, &lt;az&gt; adatbázist, a felhasználói azonosítót és a jelszót a kiszolgáló, az adatbázis, a felhasználói azonosító és a jelszó helyére.
+1. Hozzon létre egy AzureSQLDatabaseLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) &lt;A fájl mentése előtt cserélje le a kiszolgálót, &gt; az adatbázist, a &lt; &gt; &lt; felhasználói azonosítót &gt; és &lt; a jelszót a &gt; kiszolgáló, az adatbázis, a felhasználói azonosító és a jelszó helyére.
 
     ```json
     {

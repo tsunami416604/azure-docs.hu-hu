@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68950235"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021602"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Oktatóanyag: adategységek regisztrálása a Azure Data Catalogban
 
@@ -39,7 +39,7 @@ Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajd
 
 ### <a name="register-a-data-source"></a>Adatforrás regisztrálása
 
-Az adategységeket (táblákat) egy [Azure SQL Database-mintából](../sql-database/sql-database-single-database-get-started.md)regisztrálja, de bármilyen támogatott adatforrást használhat, ha Ön szívesebben dolgozik a szerepköre számára ismerős és releváns adatokkal. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
+Az adategységeket (táblákat) egy [Azure SQL Database-mintából](../azure-sql/database/single-database-create-quickstart.md)regisztrálja, de bármilyen támogatott adatforrást használhat, ha Ön szívesebben dolgozik a szerepköre számára ismerős és releváns adatokkal. A támogatott adatforrások listájáért lásd: [Supported data sources](data-catalog-dsr.md) (Támogatott adatforrások).
 
 Az oktatóanyagban használt Azure SQL Database-adatbázis neve *RLSTest*.
 
@@ -71,7 +71,7 @@ Mostantól a Azure Data Catalog használatával regisztrálhat adategységeket a
 
     2. Válassza a **termék**, a **ProductCategory**, a **ProductDescription**és a **ProductModel** lehetőséget a CTRL + Select billentyűkombinációval.
 
-    3. Válassza a **mozgatás kijelölt nyilat** (**>**). Ez a művelet az összes kiválasztott objektumot áthelyezi az **Objects to be registered** (Regisztrálandó objektumok) listára.
+    3. Válassza a **mozgatás kijelölt nyilat** ( **>** ). Ez a művelet az összes kiválasztott objektumot áthelyezi az **Objects to be registered** (Regisztrálandó objektumok) listára.
 
           ![Azure Data Catalog oktatóanyag – objektumok megkeresése és kiválasztása](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
@@ -190,7 +190,7 @@ Ebben a gyakorlatban a Azure Data Catalog portál használatával jegyzeteket ad
 
 Ebben a gyakorlatban egyetlen adategységet (ProductPhoto) fogunk dekorációkkal ellátni. Hozzáadunk egy rövid nevet és egy leírást a ProductPhoto adategységhez.  
 
-1. Nyissa meg a [Azure Data Catalog kezdőlapját](https://www.azuredatacatalog.com) , és `tags:product` keresse meg a t a regisztrált adategységek kereséséhez.
+1. Nyissa meg a [Azure Data Catalog kezdőlapját](https://www.azuredatacatalog.com) , és keresse meg a t a `tags:product` regisztrált adategységek kereséséhez.
 
 2. a keresési eredmények között válassza a **ProductModel** lehetőséget.  
 
@@ -295,7 +295,7 @@ Az Azure Data Catalogban az adategységek egyesével és csoportosan is törölh
 
 1. Nyissa meg az [Azure Data Catalog honlapját](https://www.azuredatacatalog.com).
 
-2. A **Keresés** szövegmezőbe írja be `tags:cycles` a kifejezést, majd kattintson az ENTER ( **bevitel**) gombra.
+2. A keresés szövegmezőbe írja be a **kifejezést** , `tags:cycles` majd kattintson az ENTER ( **bevitel**) gombra.
 
 3. Válasszon ki egy elemet az eredmények listájában, és válassza a **Törlés** lehetőséget az eszköztáron az alábbi ábrán látható módon:
 
