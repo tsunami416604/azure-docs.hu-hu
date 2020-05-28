@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757466"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022794"
 ---
 # <a name="server-side-performance-queries"></a>Kiszolgálóoldali teljesítménylekérdezések
 
@@ -18,7 +18,7 @@ A megfelelő megjelenítési teljesítmény a kiszolgálón kritikus fontosság�
 
 A renderelési teljesítmény legjelentősebb hatása a modell bemeneti adatai. A bemeneti adatokat a [modell átalakításának konfigurálása](../../how-tos/conversion/configure-model-conversion.md)című témakörben leírtak szerint állíthatja be.
 
-Az ügyféloldali alkalmazások teljesítménye is szűk keresztmetszet lehet. Az ügyféloldali teljesítmény részletes elemzéséhez javasolt a [teljesítmény nyomon követése](../../how-tos/performance-tracing.md).
+Az ügyféloldali alkalmazások teljesítménye is szűk keresztmetszet lehet. Az ügyféloldali teljesítmény részletes elemzéséhez azt javasoljuk, hogy tegye a következőt: [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) .
 
 ## <a name="clientserver-timeline"></a>Ügyfél/kiszolgáló idővonala
 

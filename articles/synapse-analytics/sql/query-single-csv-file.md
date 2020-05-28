@@ -236,7 +236,7 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek a következőkre mutatnak:
 

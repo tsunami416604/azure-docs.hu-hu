@@ -5,14 +5,14 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 254ff2906d2b80b6c34ba930daffbb2c65f2b22f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117929"
 ---
-# <a name="enable-update-management-from-an-azure-vm"></a>Update Management engedélyezése Azure-beli virtuális gépről
+# <a name="enable-update-management-from-an-azure-vm"></a>Az Update Management engedélyezése Azure-beli virtuális gépről
 
 Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [Update Management](automation-update-management.md) funkció más gépeken való engedélyezéséhez. Az Azure-beli virtuális gépek méretének engedélyezéséhez Update Management használatával engedélyeznie kell egy meglévő virtuális gépet. 
 
@@ -43,14 +43,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Az Update Management engedélyezése](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>A hatókör-konfiguráció keresése
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>A központi telepítés hatókörének korlátozása
 
-Update Management a munkaterületen belül a hatókör-konfigurációt használja a szolgáltatás engedélyezéséhez szükséges számítógépek célzására. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a szolgáltatás hatókörének meghatározott számítógépekre való korlátozására szolgál. További információ: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
+Update Management a munkaterületen belüli hatókör-konfigurációval célozza meg a számítógépeket a frissítések fogadásához. További információ: a [Update Management központi telepítési hatókörének korlátozása](automation-scope-configurations-update-management.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * Az Update Management virtuális gépekhez való használatához lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).
-* A hatókör-konfigurációk esetében lásd: a [Update Management hatókör-konfigurációinak használata](automation-scope-configurations-update-management.md).
+* A hatókör-konfigurációk esetében lásd: [Update Management központi telepítési hatókör korlátozása](automation-scope-configurations-update-management.md).
 * Ha már nincs szüksége a Log Analytics munkaterületre, tekintse meg a [Update Management automatizálási munkaterületének leválasztása az Automation-fiókban](automation-unlink-workspace-update-management.md)című témakör utasításait.
 * A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).

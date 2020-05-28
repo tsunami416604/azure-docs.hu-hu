@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617718"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119222"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -27,7 +27,7 @@ Szinte minden szolgáltatás minden szinten elérhető, beleértve az ingyenes s
 
 Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ismerteti.
 
-| Szolgáltatás | Korlátozások |
+| Funkció | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben. |
 | [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
@@ -41,7 +41,7 @@ A rétegek a következők szerint különböztethetők meg:
 
 A kiválasztott rétegek határozzák meg a számlázható sebességet. A következő képernyőkép a Azure Portal megjeleníti az elérhető csomagokat, mínusz a díjszabás (amely a Portálon és a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. Az **ingyenes**, az **alapszintű**és a **standard** a leggyakoribb szintek.
 
-Az **ingyenes** szolgáltatás korlátozott keresési szolgáltatást hoz létre kisebb projektekhez, beleértve a gyors útmutatót és az oktatóanyagokat. Belsőleg a több előfizető között megosztott replikák és partíciók. Az ingyenes szolgáltatás nem méretezhető, és nem futtathat jelentős számítási feladatokat.
+Az **ingyenes** szolgáltatás korlátozott keresési szolgáltatást hoz létre kisebb projektekhez, beleértve a gyors útmutatót és az oktatóanyagokat. Belsőleg a replikák és partíciók megosztása több előfizető között történik. Az ingyenes szolgáltatás nem méretezhető, és nem futtathat jelentős számítási feladatokat.
 
 Az **alapszintű és a** **standard** a leggyakrabban használt számlázó rétegek, amelyek alapértelmezett értéke a **standard** . A vezérlőhöz tartozó dedikált erőforrásokkal nagyobb projekteket telepíthet, optimalizálhatja a teljesítményt, és beállíthatja a kapacitást.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327561"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014910"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
 2. Az oldalon válassza ki a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Name | Érték |
    | --- | --- |
    | Filter Year (Szűrési év) |2013 |
    | Filter Period (Szűrési időszak) |January |
@@ -70,9 +70,9 @@ Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok m�
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * Cserélje le `<file-name>` a helyőrzőt a. zip fájl nevére.
-   * Cserélje le `<ssh-user-name>` a helyőrzőt a HDInsight-fürt SSH-azonosítójával.
-   * Cserélje le `<cluster-name>` a helyőrzőt a HDInsight-fürt nevére.
+   * Cserélje le a `<file-name>` helyőrzőt a. zip fájl nevére.
+   * Cserélje le a `<ssh-user-name>` helyőrzőt a HDInsight-fürt SSH-azonosítójával.
+   * Cserélje le a `<cluster-name>` helyőrzőt a HDInsight-fürt nevére.
 
    Ha az SSH-bejelentkezést egy jelszóval hitelesíti, a rendszer bekéri a jelszót.
 
@@ -98,9 +98,9 @@ Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok m�
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Cserélje le `<container-name>` a helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
+   Cserélje le a `<container-name>` helyőrzőt arra a névre, amelyet meg szeretne adni a tárolónak.
 
-   Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
+   Cserélje le a `<storage-account-name>` helyőrzőt a Storage-fiók nevére.
 
 5. A következő parancs használatával hozzon létre egy könyvtárat.
 
@@ -128,7 +128,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
    nano flightdelays.hql
    ```
 
-2. Módosítsa a következő szöveget úgy, hogy `<container-name>` lecseréli a és `<storage-account-name>` a helyőrzőket a tároló-és a Storage-fiók nevére. Ezután másolja és illessze be a szöveget a nano Console-ba a SHIFT billentyű lenyomásával és a jobb egérgombos kattintás gomb használatával.
+2. Módosítsa a következő szöveget úgy, hogy lecseréli a `<container-name>` és a `<storage-account-name>` helyőrzőket a tároló-és a Storage-fiók nevére. Ezután másolja és illessze be a szöveget a nano Console-ba a SHIFT billentyű lenyomásával és a jobb egérgombos kattintás gomb használatával.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -192,7 +192,7 @@ A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy
     FROM delays_raw;
     ```
 
-3. Mentse a fájlt a CTRL + X billentyűkombináció használatával, majd írja `Y` be a következőt:.
+3. Mentse a fájlt a CTRL + X billentyűkombináció használatával, majd írja be a következőt: `Y` .
 
 4. Indítsa el a Hive-ot, és futtassa a **flightdelays.hql** fájlt az alábbi paranccsal:
 
@@ -244,16 +244,16 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. A telepítés befejezése után a következő parancs használatával csatlakozhat a SQL Database-kiszolgálóhoz.
+6. A telepítés befejezése után a következő parancs használatával csatlakozhat SQL Databasehoz.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Cserélje le `<server-name>` a helyőrzőt a SQL Database-kiszolgáló nevére.
+   * Cserélje le a `<server-name>` helyőrzőt a logikai SQL-kiszolgáló nevére.
 
-   * Cserélje le `<admin-login>` a helyőrzőt SQL Database rendszergazdai bejelentkezési azonosítójával.
+   * Cserélje le a `<admin-login>` helyőrzőt SQL Database rendszergazdai bejelentkezési azonosítójával.
 
-   * Cserélje le `<database-name>` a helyőrzőt az adatbázis nevére.
+   * Cserélje le a `<database-name>` helyőrzőt az adatbázis nevére.
 
    Amikor a rendszer kéri, adja meg a SQL Database rendszergazdai bejelentkezéshez használt jelszót.
 
@@ -300,7 +300,7 @@ Ehhez a művelethez szüksége lesz az SQL-adatbázis kiszolgálójának nevére
 
 ## <a name="export-and-load-the-data"></a>Az adatexportálás és-betöltés
 
-Az előző részekben a helyről `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`másolta az átalakított adatterületet. Ebben a szakaszban a Sqoop használatával exportálja az adatait `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` az Azure SQL Database-ben létrehozott táblába.
+Az előző részekben a helyről másolta az átalakított adatterületet `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . Ebben a szakaszban a Sqoop használatával exportálja az adatait az `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL Database-ben létrehozott táblába.
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
@@ -316,7 +316,7 @@ Az előző részekben a helyről `abfs://<container-name>@<storage-account-name>
    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
-   A Sqoop a **késések** táblát tartalmazó adatbázishoz csatlakozik, és a `/tutorials/flightdelays/output` címtárból exportálja az adatait a **késések** táblájába.
+   A Sqoop a **késések** táblát tartalmazó adatbázishoz csatlakozik, és a címtárból exportálja az adatait `/tutorials/flightdelays/output` a **késések** táblájába.
 
 3. A `sqoop` parancs befejeződése után a TSQL segédprogrammal csatlakozhat az adatbázishoz:
 
@@ -333,9 +333,9 @@ Az előző részekben a helyről `abfs://<container-name>@<storage-account-name>
 
    A táblában látnia kell az adatok listáját. A tábla a városok nevét és az egyes városokhoz tartozó átlagos késések idejét tartalmazza.
 
-5. A `exit` TSQL segédprogramból való kilépéshez írja be a parancsot.
+5. `exit`A TSQL segédprogramból való kilépéshez írja be a parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az oktatóanyagban használt összes erőforrás már létezik. Nincs szükség karbantartásra.
 

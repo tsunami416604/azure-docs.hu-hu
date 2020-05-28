@@ -90,7 +90,7 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 |||
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha segítségre van szükség az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásához, tekintse meg [a megfelelő üzembe helyezési lehetőséget az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
 - A SQL Database és az SQL felügyelt példány funkcióinak összehasonlítását lásd: [SQL Database & SQL felügyelt példányának funkciói](database/features-comparison.md).

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681076"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021381"
 ---
 # <a name="color-materials"></a>Színes anyagok
 
@@ -22,7 +22,7 @@ A színanyagok hatékonyabbak, mint a [pbr-anyagok](pbr-materials.md) , az egysz
 
 Ezek a tulajdonságok az összes anyagnál közösek:
 
-* **albedoColor:** A rendszer ezt a színt más színekkel szorozza meg, például a *albedoMap* vagy a *csúcspont színével*. Ha az *átlátszóság* engedélyezve van egy adott anyagon, az alfa-csatorna az opacitás beállítására szolgál `1` , amely teljes mértékben `0` átlátszatlan és teljes átláthatóságot jelent. Az alapértelmezett érték fehér.
+* **albedoColor:** Ez a szín más színekkel, például a *albedoMap* vagy a * :::no-loc text="vertex"::: színekkel*együtt van megszorozva. Ha az *átlátszóság* engedélyezve van egy adott anyagon, az alfa-csatorna az opacitás beállítására szolgál, amely `1` teljes mértékben átlátszatlan és `0` teljes átláthatóságot jelent. Az alapértelmezett érték fehér.
 
   > [!NOTE]
   > Mivel a színanyagok nem tükrözik a környezetet, a teljes átlátszó színanyag láthatatlanná válik. Ez a pbr- [anyagok](pbr-materials.md)esetében különbözik.
@@ -33,15 +33,15 @@ Ezek a tulajdonságok az összes anyagnál közösek:
 
 * **textureCoordinateScale** és **textureCoordinateOffset:** a skála az UV-textúra koordinátáiba van szorozva, az eltolás hozzá lesz adva. A textúrák nyújtására és átváltására használható. Az alapértelmezett skála (1, 1) és az eltolás (0, 0).
 
-* **useVertexColor:** Ha a háló csúcspont színeket tartalmaz, és ez a beállítás engedélyezve van, a rácsvonalak csúcspontjának színét a rendszer a *albedoColor* és a *albedoMap*szorozza. Alapértelmezés szerint a csúcspontok színei le vannak tiltva.
+* **useVertexColor:** Ha a háló :::no-loc text="vertex"::: színeket tartalmaz, és ez a beállítás engedélyezve van, a rácsvonalak :::no-loc text="vertex"::: színe megszorozva a *AlbedoColor* és a *albedoMap*. Alapértelmezés szerint a *useVertexColor* le van tiltva.
 
-* **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [egyoldalas megjelenítés](single-sided-rendering.md).
+* **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [ :::no-loc text="Single-sided"::: renderelés](single-sided-rendering.md).
 
 ## <a name="color-material-properties"></a>Színanyag tulajdonságai
 
 A következő tulajdonságok a színanyagokra jellemzőek:
 
-* **vertexMix:** A és a `0` közötti `1` érték határozza meg, hogy a [Rácsvonalak](../../concepts/meshes.md) csúcspontjának színe hogyan járul hozzá a végső színhez. Az alapértelmezett 1 értéknél a csúcspont színe teljesen megszorozva lesz a albedó színével. A 0 értékkel a csúcspontok színei teljesen figyelmen kívül lesznek hagyva.
+* **vertexMix:** Ez az érték `0` és `1` annak megadása, hogy a :::no-loc text="vertex"::: [Rácsvonalak](../../concepts/meshes.md) színe milyen mértékben járul hozzá a végső színhez. Az alapértelmezett 1 értéknél a szín a :::no-loc text="vertex"::: albedó teljes színének szorzata. A 0 értékkel a :::no-loc text="vertex"::: színek figyelmen kívül lesznek hagyva.
 
 * **transparencyMode:** A [pbr-anyagokkal](pbr-materials.md)ellentétben a színanyagok különbséget tesznek a különböző áttetszőségi módok között:
 

@@ -144,7 +144,7 @@ Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `Azur
 
 Ha a `AzureSession.IsConnected` értéke TRUE (igaz), a `AzureSession.Actions` egy példányát adja vissza `RemoteManager` , amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Entitások](entities.md)
 * [Modellek](models.md)

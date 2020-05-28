@@ -47,7 +47,7 @@ Ez a sablon két régióban hoz létre egy Azure Cosmos-fiókot, amely a konzisz
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Néhány további információforrás:
 
