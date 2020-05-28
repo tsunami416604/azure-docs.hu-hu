@@ -543,6 +543,8 @@
       items:
         - name: Az adatáthelyezés biztonsági szempontjai
           href: data-movement-security-considerations.md
+        - name: Adathozzáférési stratégiák
+          href: data-access-strategies.md
         - name: Azure Integration Runtime – IP-címek
           href: azure-integration-runtime-ip-addresses.md
         - name: Hitelesítő adatok tárolása az Azure Key Vaultban

@@ -6,18 +6,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835070"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020353"
 ---
 # <a name="compose-dsc-configurations"></a>DSC-konfigurációk összeállítása
 
 Ha több mint egy kívánt állapot-konfigurációval (DSC) kell kezelnie az erőforrást, a legjobb elérési út az [összetett erőforrások](/powershell/scripting/dsc/resources/authoringresourcecomposite)használata. Az összetett erőforrás egy beágyazott és paraméteres konfiguráció, amely DSC-erőforrásként van használatban egy másik konfiguráción belül. Az összetett erőforrások használata lehetővé teszi, hogy összetett konfigurációkat hozzon létre, miközben lehetővé teszi az alapul szolgáló összetett erőforrások egyedi felügyeletét és létrehozását.
 
-Azure Automation lehetővé teszi az [összetett erőforrások importálását és összeállítását](automation-dsc-compile.md). Miután importálta az összetett erőforrásokat az Automation-fiókjába, használhatja Azure Automation állapot konfigurációját az Azure Portal **DSC** szolgáltatásával.
+Azure Automation lehetővé teszi az [összetett erőforrások importálását és összeállítását](automation-dsc-compile.md). Miután importálta az összetett erőforrásokat az Automation-fiókjába, használhatja Azure Automation állapot konfigurációját a Azure Portal **állapot konfigurálása (DSC)** funkciójával.
 
 ## <a name="compose-a-configuration"></a>Konfiguráció összeállítása
 

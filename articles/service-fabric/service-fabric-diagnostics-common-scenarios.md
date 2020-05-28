@@ -130,7 +130,7 @@ Az alkalmazások Reliable Services vagy szereplőinek teljesítményének nyomon
 
 A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-diagnostics.md) és [szereplőkkel](service-fabric-reliable-actors-diagnostics.md) kapcsolatos teljesítményszámlálók teljes listájáért olvassa el a következő hivatkozásokat:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyakori programkód-aktiválási hibák megkeresése](./service-fabric-diagnostics-code-package-errors.md)
 * [Riasztások beállítása az AI-ben](/azure/azure-monitor/platform/alerts-log) a teljesítmény vagy a használat változásairól való értesítéshez

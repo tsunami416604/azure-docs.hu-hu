@@ -152,6 +152,6 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Válassza a bal oldali menüben a **telepítés – Storage – fiók – sablon** (feladatnév) elemet. A feladatok neve a munkafolyamatban van definiálva.
 1. Válassza ki az **ARM-sablon üzembe helyezése** (lépés neve) elemet a kibontásához. Az REST API választ láthatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).

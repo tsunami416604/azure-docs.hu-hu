@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 868130b23bc29acf0f1271f68a45f44cee98fe98
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653048"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015624"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analytics szolgáltatásban
 
@@ -54,16 +54,16 @@ Alapértelmezés szerint a kapcsolat a *Master* adatbázishoz csatlakozik, nem p
 A Azure Active Directory előnyei a következők:
 
 * A SQL Server hitelesítés alternatíváját adja meg.
-* Segít leállítani a felhasználói identitások elterjedését az adatbázis-kiszolgálókon.
+* Segít leállítani a felhasználói identitások elterjedését a kiszolgálók között.
 * Központi helyet biztosít a jelszóváltoztatáshoz
 * Adatbázis-engedélyek kezelése külső (Azure AD) csoportok használatával.
-* Az integrált Windows-hitelesítés és a Azure Active Directory által támogatott hitelesítés más formáinak engedélyezésével kiküszöböli a jelszavak tárolását.
+* Az integrált Windows-hitelesítés, valamint a Azure Active Directory által támogatott, a hitelesítéssel nem rendelkező hitelesítési formák engedélyezésével kiküszöböli a jelszavak tárolását.
 * A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 * Támogatja a jogkivonat-alapú hitelesítést az SQL-készlethez kapcsolódó alkalmazások esetében.
-* A többtényezős hitelesítést Active Directory univerzális hitelesítéssel támogatja különböző eszközökhöz, például [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és [SQL Server Data Toolsekhez](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+* A többtényezős hitelesítést Active Directory univerzális hitelesítéssel támogatja különböző eszközökhöz, például [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és [SQL Server Data Toolsekhez](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 > [!NOTE]
-> Azure Active Directory még mindig viszonylag új, és bizonyos korlátozásokkal rendelkezik. Annak biztosítása érdekében, hogy Azure Active Directory a környezetnek megfelelő legyen, tekintse meg az [Azure ad-szolgáltatások és-korlátozások](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)című témakört, pontosabban a további szempontokat.
+> Azure Active Directory még mindig viszonylag új, és bizonyos korlátozásokkal rendelkezik. Annak biztosítása érdekében, hogy Azure Active Directory a környezetnek megfelelő legyen, tekintse meg az [Azure ad-szolgáltatások és-korlátozások](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)című témakört, pontosabban a további szempontokat.
 
 ### <a name="configuration-steps"></a>Konfigurációs lépések
 
@@ -80,7 +80,7 @@ Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Ex
 
 ### <a name="find-the-details"></a>A részletek megkeresése
 
-* A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak az Azure-beli Azure SQL Database és a szinapszis SQL-ben. A Azure Active Directory-hitelesítés használatával hajtsa végre a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL-készlethez](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+* A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak az Azure-beli Azure SQL Database és a szinapszis SQL-ben. A Azure Active Directory-hitelesítés használatával hajtsa végre a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL-készlethez](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 * Hozzon létre egyéni adatbázis-szerepköröket, és adja hozzá a felhasználókat a szerepkörökhöz. Ezután adjon meg részletes engedélyeket a szerepkörökhöz. További információ: [első lépések az adatbázismotor engedélyeivel](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>További lépések

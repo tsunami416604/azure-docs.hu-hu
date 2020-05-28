@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185556"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014366"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory átmenő hitelesítés biztonsági mélye
 
@@ -72,9 +72,12 @@ A következő szakaszok részletesen tárgyalják ezeket a szakaszokat.
 
 ### <a name="authentication-agent-installation"></a>Hitelesítési ügynök telepítése
 
-Egy helyszíni kiszolgálón csak a globális rendszergazdák telepíthetnek hitelesítési ügynököt (Azure AD Connect vagy önálló használatával). A telepítő két új bejegyzést hoz létre a **Vezérlőpult** > **programok** > **programok és szolgáltatások** listájához:
+Egy helyszíni kiszolgálón csak a globális rendszergazdák telepíthetnek hitelesítési ügynököt (Azure AD Connect vagy önálló használatával). A telepítő két új bejegyzést hoz létre a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások** listájához:
 - Maga a hitelesítési ügynök alkalmazása. Ez az alkalmazás [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) jogosultságokkal fut.
 - A hitelesítési ügynök automatikus frissítéséhez használt Updater alkalmazás. Ez az alkalmazás [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) jogosultságokkal fut.
+
+>[!IMPORTANT]
+>Biztonsági szempontból a rendszergazdáknak az PTA ESP-ügynököt futtató kiszolgálót kell kezelnie, mintha tartományvezérlővé tennék.  Az PTA-ügynök kiszolgálóit meg kell erősíteni a [tartományvezérlők támadás elleni biztonságossá](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) tételével megegyező sorok mentén.
 
 ### <a name="authentication-agent-registration"></a>Hitelesítési ügynök regisztrációja
 

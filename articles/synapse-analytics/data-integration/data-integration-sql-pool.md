@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: acfe367033d1553f5ee408ad0f4170e5d981377e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982700"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021823"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Az adatgyűjtés egy SQL-készletbe
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését egy 
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
 * **Azure Storage-fiók**: a 2. generációs Azure Data Lake Storage használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
-* **Azure szinapszis Analytics**: SQL-készletet használ *fogadó adattárként* . Ha nem rendelkezik Azure-beli szinapszis Analytics-példánnyal, tekintse meg az [SQL-készlet létrehozása](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a létrehozás lépéseihez című témakört.
+* **Azure szinapszis Analytics**: SQL-készletet használ *fogadó adattárként* . Ha nem rendelkezik Azure-beli szinapszis Analytics-példánnyal, tekintse meg az [SQL-készlet létrehozása](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a létrehozás lépéseihez című témakört.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 

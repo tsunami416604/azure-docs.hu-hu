@@ -183,7 +183,7 @@ A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az öss
 
  ![Példa: szolgáltatások ablak, amelyen az Azure AD Services helyi](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
 - [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

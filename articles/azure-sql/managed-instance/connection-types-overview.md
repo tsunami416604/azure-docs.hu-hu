@@ -65,7 +65,7 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatbázis visszaállítása egy felügyelt SQL-példányra](restore-sample-database-quickstart.md)
 - Megtudhatja, hogyan [konfigurálhat nyilvános végpontot az SQL felügyelt példányain](public-endpoint-configure.md)

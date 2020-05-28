@@ -113,6 +113,6 @@ A DNS-aliasok jelenléte a következő korlátozásokkal jár:
 
 - [A Azure SQL Database üzleti folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md), beleértve a vész-helyreállítást is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [PowerShell DNS-aliashoz Azure SQL Database](dns-alias-powershell-create.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804435"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013397"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei App Service Environment PowerApps az Azure ExpressRoute
 
@@ -35,7 +35,7 @@ App Service Environment működéséhez a következő hálózati kapcsolati beá
 
 * Kimenő hálózati kapcsolat a 445-es porton futó Azure Files szolgáltatással.
 
-* Kimenő hálózati kapcsolat Azure SQL Database-végpontokhoz, amelyek ugyanabban a régióban találhatók, mint App Service Environment. SQL Database végpontok a database.windows.net tartomány alatt oldhatók fel, amelyhez nyitott hozzáférés szükséges a 1433, 11000-11999 és 14000-14999 portokhoz. A SQL Database V12-es port használatának részleteit lásd: [1433-nál nagyobb portok a ADO.NET 4,5-hez](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Kimenő hálózati kapcsolat Azure SQL Database-végpontokhoz, amelyek ugyanabban a régióban találhatók, mint App Service Environment. SQL Database végpontok a database.windows.net tartomány alatt oldhatók fel, amelyhez nyitott hozzáférés szükséges a 1433, 11000-11999 és 14000-14999 portokhoz. A SQL Database V12-es port használatának részleteit lásd: [1433-nál nagyobb portok a ADO.NET 4,5-hez](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md).
 
 * Kimenő hálózati kapcsolat az Azure Management-Plane-végpontokkal (a klasszikus Azure üzemi modell és a Azure Resource Manager végpontok). Az ezekhez a végpontokhoz való kapcsolódás magában foglalja a management.core.windows.net és a management.azure.com tartományokat. 
 
@@ -87,7 +87,7 @@ Ez a szakasz a App Service Environment UDR-konfigurációját mutatja be.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. A legújabb PowerShell-parancsmagok telepítéséhez a **parancssori eszközök** > **Windows PowerShell**területén válassza a **telepítés** lehetőséget.
+* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. **Command-line tools**  >  A legújabb PowerShell-parancsmagok telepítéséhez a parancssori eszközök**Windows PowerShell**területén válassza a **telepítés** lehetőséget.
 
 * Hozzon létre egy egyedi alhálózatot, amely kizárólagos használatra App Service Environment. Az egyedi alhálózat biztosítja, hogy az alhálózatra alkalmazott UDR csak App Service Environment számára legyen nyitott kimenő forgalom.
 

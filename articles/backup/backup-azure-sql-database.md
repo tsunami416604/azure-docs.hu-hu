@@ -148,7 +148,7 @@ catch
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók SQL Server adatbázisok biztonsági](backup-sql-server-database-azure-vms.md) mentéséről.
 * [Tudnivalók a](restore-sql-database-azure-vm.md) SQL Server adatbázisok biztonsági másolatának visszaállításáról.

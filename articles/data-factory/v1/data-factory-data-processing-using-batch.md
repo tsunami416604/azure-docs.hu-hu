@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684397"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021534"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -38,8 +38,8 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 
  Ha nem ismeri a Batch szolgáltatást, a következő cikkek segítenek megérteni a cikkben ismertetett megoldás architektúráját/megvalósítását:   
 
-* [A Batch alapjai](../../batch/batch-technical-overview.md)
-* [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
+* [A Batch alapjai](../../azure-sql/database/sql-database-paas-overview.md)
+* [A Batch funkcióinak áttekintése](../../batch/batch-service-workflow-features.md)
 
 Ha többet szeretne megtudni a Batch szolgáltatásról, tekintse meg [a Batch dokumentációját](https://docs.microsoft.com/azure/batch/).
 
@@ -578,7 +578,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást a Batch-fiókjához
    d. Adja meg a Batch URI-JÁT a **batchUri** JSON tulajdonságához.
 
       > [!IMPORTANT]
-      > A **Batch-fiók** panel URL-címe a következő formátumban van: \< accountname \> . \< region \> . Batch.Azure.com. A JSON-parancsfájl **batchUri** tulajdonságához el kell távolítania a "accountname" a88. * * az URL-címről. Például: `"batchUri": "https://eastus.batch.azure.com"`.
+      > A **Batch-fiók** panel URL-címe a következő formátumban van: \<accountname\> . \<region\> . batch.azure.com. A JSON-parancsfájl **batchUri** tulajdonságához el kell távolítania a "accountname" a88. * * az URL-címről. Például: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
@@ -793,9 +793,9 @@ Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban l�
 
    * Csak egy tevékenység van a folyamatban, és a típusa **DotNetActivity**.
    * A **AssemblyName** a dll **MyDotNetActivity. dll**fájljának nevére van beállítva.
-   * A **BelépésiPont** értéke **MyDotNetActivityNS. MyDotNetActivity**. Ez alapvetően a \< névtér \> . \< osztálynév \> a kódban.
+   * A **BelépésiPont** értéke **MyDotNetActivityNS. MyDotNetActivity**. Alapvetően \<namespace\> .\<classname\> a kódban.
    * A **PackageLinkedService** értéke **StorageLinkedService**, amely az egyéni tevékenység zip-fájlját tartalmazó blob Storage-ra mutat. Ha különböző tárolási fiókokat használ a bemeneti/kimeneti fájlokhoz és az egyéni tevékenység zip-fájljához, létre kell hoznia egy másik Storage-beli társított szolgáltatást. Ez a cikk azt feltételezi, hogy ugyanazt a Storage-fiókot használja.
-   * A **PackageFile** értéke **customactivitycontainer/MyDotNetActivity. zip**. A formátuma \< containerforthezip \> / \< nameofthezip. zip \> .
+   * A **PackageFile** értéke **customactivitycontainer/MyDotNetActivity. zip**. A formátuma \<containerforthezip\> / \<nameofthezip.zip\> .
    * Az egyéni tevékenység kimenetként a bemeneti és a **OutputDataset** **InputDataset** veszi át.
    * Az egyéni tevékenység **linkedServiceName** tulajdonsága a **AzureBatchLinkedService**-ra mutat, ami azt jelzi, Data Factory, hogy az egyéni tevékenységnek futnia kell a Batch szolgáltatásban.
    * A **Egyidejűség** beállítása fontos. Ha az alapértelmezett értéket használja (1), akkor is, ha a Batch-készletben kettő vagy több számítási csomópont van, akkor a szeletek feldolgozása egy másik után történik. Ezért nem használja ki a Batch párhuzamos feldolgozási funkciójának előnyeit. Ha nagyobb értékre állítja a **párhuzamosságot** , mondjuk 2, azt jelenti, hogy két szelet (amely a Batch két feladatának felel meg) egyszerre is feldolgozható. Ebben az esetben a rendszer a Batch-készletben lévő virtuális gépeket is használja. Állítsa be a párhuzamossági tulajdonságot megfelelően.
@@ -964,7 +964,7 @@ Az adatfeldolgozást követően online eszközökkel, például Power BI haszná
 * [Power BIban lévő Adatfrissítés](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure és Power BI: alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [A Data Factory szolgáltatás bemutatása](data-factory-introduction.md)
@@ -972,8 +972,8 @@ Az adatfeldolgozást követően online eszközökkel, például Power BI haszná
   * [Egyéni tevékenységek használata egy Data Factory-folyamatban](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [A Batch alapjai](../../batch/batch-technical-overview.md)
-  * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
+  * [A Batch alapjai](../../azure-sql/database/sql-database-paas-overview.md)
+  * [A Batch szolgáltatásainak áttekintése](../../batch/batch-service-workflow-features.md))
   * [Batch-fiók létrehozása és kezelése a Azure Portalban](../../batch/batch-account-create-portal.md)
   * [Ismerkedés a .NET-hez készült batch ügyféloldali kódtáraval](../../batch/quick-run-dotnet.md)
 

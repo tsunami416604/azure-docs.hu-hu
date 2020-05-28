@@ -198,7 +198,7 @@ except Exception as e:
     raise e
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure Batch CLI-bővítmény [Batch CLI-sablonokkal](batch-cli-templates.md)történő használatáról.
 * További információ a [Batch PYTHON SDK bővítményről](https://pypi.org/project/azure-batch-extensions/).

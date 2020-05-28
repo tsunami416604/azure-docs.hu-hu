@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664668"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141721"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Kapcsolódás felügyelt identitással Azure Database for MySQL
 
@@ -22,6 +22,9 @@ Ez a cikk bemutatja, hogyan használható egy Azure-beli virtuális gép (VM) fe
 > * Hozzon létre egy felhasználót a virtuális gép felhasználó által hozzárendelt identitását képviselő adatbázisban
 > * Hozzáférési jogkivonat beszerzése a virtuálisgép-identitás használatával és a Azure Database for MySQL-kiszolgáló lekérdezéséhez
 > * Token lekérésének implementálása C#-alkalmazásban
+
+> [!IMPORTANT]
+> A felügyelt identitással való csatlakozás csak a MySQL 5,7-es és újabb verzióiban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -200,6 +203,6 @@ Connected!
 MySQL version: 5.7.27
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL

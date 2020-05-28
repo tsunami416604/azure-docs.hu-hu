@@ -104,7 +104,7 @@ Szintaxis:
       [ OBJECT_NAME = N'nonescaped_object_name',]
       DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
 
-**Például**
+**Példa**
 
     CREATE EXTERNAL TABLE [dbo].[order_line](
          [ol_o_id] int NOT NULL,
@@ -206,7 +206,7 @@ Az alkalmazáshoz, a BI-hoz és az adatintegrációs eszközökhöz a külső t�
 * A rugalmas lekérdezés jelenleg nem hajtja végre a szegmensek eltávolítását, ha az predikátumok a horizontális Felskálázási kulcs során lehetővé teszik, hogy biztonságosan kizárjon bizonyos szegmenseket a feldolgozásból.
 * A rugalmas lekérdezés a legjobb megoldás, ha a számítások többsége a szegmenseken végezhető el. A legjobb lekérdezési teljesítményt általában a szelektív szűrési predikátumokkal lehet kiértékelni, amelyek kiértékelése a szegmenseken vagy az összekapcsolások a particionálási kulcsokon keresztül történik, amelyek az összes szegmensen elvégezhető partícióra igazított módon hajthatók végre. Előfordulhat, hogy más lekérdezési minták nagy mennyiségű adat betöltését végzik a szegmensek és a fő csomópont között, és nem megfelelően
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](elastic-query-getting-started-vertical.md).

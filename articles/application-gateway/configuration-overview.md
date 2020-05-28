@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856061"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996397"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -20,7 +20,7 @@ Az Azure Application Gateway számos olyan összetevőből áll, amelyek külön
 
 ![Application Gateway összetevők folyamatábrája](./media/configuration-overview/configuration-overview1.png)
 
-Ez a rendszerkép olyan alkalmazást mutat be, amely három figyelővel rendelkezik. Az első kettő a `http://acme.com/*` és `http://fabrikam.com/*`a többhelyes figyelő. Figyelje a 80-es portot is. A harmadik egy alapszintű figyelő, amely végpontok közötti Transport Layer Security (TLS) megszakítással, korábbi nevén SSL (SSL) megszakítással rendelkezik.
+Ez a rendszerkép olyan alkalmazást mutat be, amely három figyelővel rendelkezik. Az első kettő a és a többhelyes figyelő `http://acme.com/*` `http://fabrikam.com/*` . Figyelje a 80-es portot is. A harmadik egy alapszintű figyelő, amely végpontok közötti Transport Layer Security (TLS) megszakítással, korábbi nevén SSL (SSL) megszakítással rendelkezik.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -162,7 +162,7 @@ Válassza ki azt az előtér-IP-címet, amelyet hozzá szeretne rendelni ehhez a
 
 Válassza ki az előtér-portot. Válasszon ki egy meglévő portot, vagy hozzon létre egy újat. Válassza ki a [portok megengedett tartományának](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)tetszőleges értékét. Nem csak a jól ismert portok, például a 80 és a 443, de a megfelelő egyéni portok is használhatók. Egy port használható nyilvános figyelők vagy magánjellegű figyelők számára.
 
-### <a name="protocol"></a>Protocol (Protokoll)
+### <a name="protocol"></a>Protokoll
 
 HTTP vagy HTTPS kiválasztása:
 
@@ -219,14 +219,12 @@ Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, lé
 
 Szabály létrehozásakor az [ *alapszintű* és az *elérési út alapján*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)kell választania.
 
-- Válassza az alapszintű lehetőséget, ha szeretné továbbítani az összes kérelmet a társított figyelőn (például: *<i></i>blog\*. contoso.com/)* egyetlen háttér-készletre.
+- Válassza az alapszintű lehetőséget, ha szeretné továbbítani az összes kérelmet a társított figyelőn (például: *blog <i></i> . contoso.com/ \* )* egyetlen háttér-készletre.
 - Válassza az elérésiút-alapú lehetőséget, ha az adott URL-címről érkező kérelmeket adott háttérbeli készletekre szeretné irányítani. Az elérésiút-minta csak az URL elérési útjára lesz alkalmazva, nem pedig a lekérdezési paraméterekre.
 
 #### <a name="order-of-processing-rules"></a>Feldolgozási szabályok sorrendje
 
-A v1 SKU esetében a bejövő kérések egyeztetését abban a sorrendben dolgozza fel a rendszer, hogy az elérési utak megjelennek az elérésiút-alapú szabály URL-címének elérési útja alatt. Ha egy kérelem megegyezik az elérési út két vagy több elérési útjában szereplő mintázattal, az elsőként megjelenő elérési út illeszkedik. A rendszer továbbítja a kérést az elérési úthoz társított háttér-végponthoz.
-
-A v2 SKU esetében az URL-cím elérési útjának pontos egyezése magasabb prioritás, mint az elérésiút-sorrend. Ha egy kérelem két vagy több elérési úton egyezik a mintával, a rendszer továbbítja a kérést a háttérnek, amely ahhoz az elérési úthoz van társítva, amely pontosan megfelel a kérelemnek. Ha a bejövő kérelem elérési útja nem egyezik meg pontosan a Térkép egyik elérési útjával sem, a rendszer a kérelem megfeleltetését dolgozza fel a Path-alapú szabály elérésiút-leképezési sorrendjének listájában.
+A v1-es és v2-es SKU esetében a bejövő kérések egyeztetését abban a sorrendben dolgozza fel a rendszer, hogy az elérési utak megjelennek az elérésiút-alapú szabály URL-címének elérési útja alatt. Ha egy kérelem megegyezik az elérési út két vagy több elérési útjában szereplő mintázattal, az elsőként megjelenő elérési út illeszkedik. A rendszer továbbítja a kérést az elérési úthoz társított háttér-végponthoz.
 
 ### <a name="associated-listener"></a>Társított figyelő
 
@@ -250,7 +248,7 @@ Elérésiút-alapú szabály esetén adjon hozzá több háttérbeli HTTP-beáll
 
 ### <a name="redirection-setting"></a>Átirányítás beállítása
 
-Ha az átirányítás alapszintű szabályhoz van konfigurálva, a rendszer a társított figyelő összes kérelmét átirányítja a célhelyre. Ez *globális* átirányítás. Ha az átirányítás egy elérésiút-alapú szabályhoz van konfigurálva, akkor a rendszer csak egy adott hely területén lévő kérelmeket irányítja át. Ilyenek például a */cart/\** által jegyzett bevásárlókosár-területek. Ez az *elérésiút-alapú* átirányítás.
+Ha az átirányítás alapszintű szabályhoz van konfigurálva, a rendszer a társított figyelő összes kérelmét átirányítja a célhelyre. Ez *globális* átirányítás. Ha az átirányítás egy elérésiút-alapú szabályhoz van konfigurálva, akkor a rendszer csak egy adott hely területén lévő kérelmeket irányítja át. Ilyenek például a */cart/ \* *által jegyzett bevásárlókosár-területek. Ez az *elérésiút-alapú* átirányítás.
 
 További információ az átirányításokról: [Application Gateway átirányítások áttekintése](redirect-overview.md).
 
@@ -311,7 +309,7 @@ Vegye figyelembe, hogy az alapértelmezett affinitási cookie neve *ApplicationG
 
 A kapcsolatok kiürítése megkönnyíti a háttérbeli készlet tagjainak biztonságos eltávolítását a tervezett szolgáltatási frissítések során. Ezt a beállítást a szabályok létrehozásakor a háttérbeli készlet összes tagjára alkalmazhatja. Gondoskodik róla, hogy a háttér-készletek összes regisztrációja továbbra is megőrizze a meglévő kapcsolatokat, és a rendelkezésre állási kérelmeket a konfigurálható időtúllépés mellett kézbesítse, és ne kapjon új kéréseket és kapcsolatokat. Ez alól kivételt képeznek a példányok deregisztrációja az átjáró által felügyelt munkamenet-affinitás miatt, és a rendszer továbbra is továbbítja őket a deregistering példányokra. A kapcsolatok kiürítése olyan háttérbeli példányokra vonatkozik, amelyek kifejezetten eltávolíthatók a háttér-készletből.
 
-### <a name="protocol"></a>Protocol (Protokoll)
+### <a name="protocol"></a>Protokoll
 
 A Application Gateway a HTTP-t és a HTTPS-t is támogatja a háttér-kiszolgálókra irányuló útválasztási kérelmek esetében. Ha a HTTP lehetőséget választja, a háttér-kiszolgálókra irányuló forgalom titkosítatlan. Ha a titkosítatlan kommunikáció nem elfogadható, válassza a HTTPS lehetőséget.
 
@@ -378,7 +376,7 @@ Olyan egyéni tartomány esetében, amelynek meglévő egyéni DNS-neve az App S
 
 Ez a funkció a megadott állomásnévvel helyettesíti az Application Gateway bejövő kérelmében szereplő *állomásfejléc* -fejlécet.
 
-Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, az eredeti kérelem *`https://appgw.eastus.cloudapp.azure.com/path1` a (z) *`https://www.contoso.com/path1` értékre módosul, amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
+Ha például a *www.contoso.com* meg van adva az **állomásnév** beállításban, az eredeti kérelem * a (z) * értékre `https://appgw.eastus.cloudapp.azure.com/path1` módosul, `https://www.contoso.com/path1` Amikor a kérést a rendszer továbbítja a háttér-kiszolgálónak.
 
 ## <a name="back-end-pool"></a>Háttérkészlet
 

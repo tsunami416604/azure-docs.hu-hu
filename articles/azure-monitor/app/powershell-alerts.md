@@ -89,7 +89,7 @@ Olyan alkalmazással rendelkezem, amelyben a [TrackMetric ()](../../azure-monito
 Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](../../azure-monitor/app/api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
 
 ## <a name="metric-names"></a>Metrikák nevei
-| Metrika neve | Képernyő neve | Leírás |
+| Metrika neve | Képernyő neve | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
 | `basicExceptionServer.count` |Kiszolgálói kivételek |Az alkalmazás által eldobott kezeletlen kivételek száma |
@@ -126,7 +126,7 @@ A metrikákat különböző telemetria-modulok küldik:
 ## <a name="webhooks"></a>Webhookok
 [A riasztásra adott válasz automatizálható](../../azure-monitor/platform/alerts-webhooks.md). Az Azure meghívja a választott webcímet, ha riasztást vált ki.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Application Insights konfigurálására szolgáló parancsfájl](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Application Insights-és webes tesztelési erőforrások létrehozása sablonokból](powershell.md)
 * [Összekapcsolási Microsoft Azure Diagnostics automatizálása Application Insights](powershell-azure-diagnostics.md)

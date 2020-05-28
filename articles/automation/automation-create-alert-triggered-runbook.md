@@ -29,7 +29,7 @@ Az Automation runbookok háromféle riasztási típust használhat:
 
 Amikor egy riasztás meghívja a runbook, a tényleges hívás egy HTTP POST-kérelem a webhooknak. A POST kérelem törzse egy JSON-formátumú objektumot tartalmaz, amely a riasztáshoz kapcsolódó hasznos tulajdonságokkal rendelkezik. Az alábbi táblázat felsorolja az egyes riasztási típusok adatforgalmi sémájára mutató hivatkozásokat:
 
-|Riasztás  |Leírás|Hasznos adatok sémája  |
+|Riasztás  |Description|Hasznos adatok sémája  |
 |---------|---------|---------|
 |[Gyakori riasztás](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|A gyakori riasztási séma, amely szabványosítja a riasztási értesítések fogyasztási élményét az Azure-ban még ma.|Gyakori riasztási adattartalom sémája|
 |[Tevékenység naplójának riasztása](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Értesítés küldése, ha az Azure-tevékenység naplójában minden új esemény megfelel bizonyos feltételeknek. Ha például egy művelet a `Delete VM` **myProductionResourceGroup** -ban vagy egy új, aktív állapotú Azure Service Health eseményt jelenít meg.| [Műveletnapló riasztási hasznos sémája](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
@@ -189,7 +189,7 @@ A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás álta
 
 1. A **riasztás részletei**területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A runbook webhook használatával történő indításához tekintse meg [a Runbook indítása webhookból](automation-webhooks.md)című témakört.
 * A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](automation-starting-a-runbook.md).

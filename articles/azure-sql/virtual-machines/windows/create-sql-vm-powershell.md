@@ -425,7 +425,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A virtuális gép létrehozása után a következőket teheti:
 
 - Kapcsolódás a virtuális géphez RDP használatával

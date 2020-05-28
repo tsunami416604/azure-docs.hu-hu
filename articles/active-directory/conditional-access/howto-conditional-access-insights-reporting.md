@@ -132,6 +132,6 @@ A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a **Azure A
 
 A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csak feltételes hozzáférésű jelentés üzemmódja](concept-conditional-access-report-only.md)

@@ -129,6 +129,6 @@ A következő metrikákat kell jelenteni a fürtszolgáltatási modellek kiért�
 -   Az eredmények minden szakaszának alján az **összesített értékelési** pontszám felsorolja az adott modellben létrehozott fürtök átlagos pontszámait.  
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

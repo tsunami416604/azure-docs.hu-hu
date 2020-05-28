@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 13430ff5f197560089ed184bc4a82f6a179ea3b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 91968a9701c46114d56b30ec6e3a93cfa76bf023
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117988"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022163"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
@@ -35,5 +35,5 @@ További információ a rendelkezésre álló lemezek típusairól: [lemez típu
 
 SQL Server felhasználók esetében olvassa el a SQL Server teljesítményére vonatkozó ajánlott eljárásokat ismertető cikket:
 
-* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](../windows/sql/virtual-machines-windows-sql-performance.md)
+* [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Az Azure Premium Storage a legmagasabb teljesítményt nyújtja az Azure-beli virtuális gépek SQL Server számára](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)
