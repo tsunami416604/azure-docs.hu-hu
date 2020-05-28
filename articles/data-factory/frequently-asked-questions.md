@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81412942"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118356"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -83,7 +83,7 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 
 -    A projektek/csomagok SSIS-adatbázisának (SSISDB) üzemeltetéséhez a Azure SQL Database három további konfigurációjának/változatának támogatása:
 -    SQL Database virtuális hálózati szolgáltatásbeli végpontokkal
--    Felügyelt példány
+-    SQL Managed Instance
 -    Rugalmas készlet
 -    Egy klasszikus virtuális hálózatra épülő Azure Resource Manager virtuális hálózat támogatása a jövőben elavulttá válik, ami lehetővé teszi az Azure-SSIS integrációs modul beléptetését vagy csatlakoztatását egy, a virtuális hálózati szolgáltatás végpontokkal/MI/helyszíni adateléréssel SQL Database konfigurált virtuális hálózathoz. További információkért lásd még: [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Azure Active Directory-(Azure AD-) hitelesítés és SQL-hitelesítés támogatása a SSISDB való kapcsolódáshoz, az Azure AD-hitelesítés engedélyezése a Data Factory felügyelt identitásával az Azure-erőforrásokhoz
@@ -109,7 +109,7 @@ Az Integration Runtime-példányok száma nincs korlátozva az adatelőállító
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Mik a Azure Data Factory legfelső szintű fogalmai?
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. A Azure Data Factory négy fő összetevőt tartalmaz, amelyek együtt működnek olyan platformként, amelyen adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezési és-átalakítási lépésekkel.
 
-### <a name="pipelines"></a>Folyamatok
+### <a name="pipelines"></a>Pipelines
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
 
 ### <a name="data-flows"></a>Adatfolyamok
@@ -129,7 +129,7 @@ A társított szolgáltatásoknak két célja van Data Factoryban:
 - Egy olyan *adattár* képviseletére, amely tartalmazza, de nem korlátozódik a helyszíni SQL Server példányra, egy Oracle Database-példányra, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 - Olyan *számítási erőforrás* jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsight struktúra tevékenység például egy HDInsight Hadoop-fürtön fut. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd: az [adatok átalakítása Azure Data Factoryban](transform-data.md).
 
-### <a name="triggers"></a>Eseményindítók
+### <a name="triggers"></a>Triggerek
 Az eseményindítók olyan feldolgozási egységeket jelölnek, amelyek meghatározzák, hogy mikor indul el a folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. 
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
@@ -174,13 +174,13 @@ Igen, a paraméterek a Data Factory első osztályú, legfelső szintű koncepci
 Igen. Megadhatja a folyamatok paramétereinek alapértelmezett értékeit. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Lehet egy folyamat egy tevékenysége egy folyamat futtatására átadott argumentumokat használni? 
-Igen. A folyamaton belül minden tevékenység felhasználhatja a folyamatnak átadott paraméterérték értékét, és futtathatja `@parameter` a konstrukciót. 
+Igen. A folyamaton belül minden tevékenység felhasználhatja a folyamatnak átadott paraméterérték értékét, és futtathatja a `@parameter` konstrukciót. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Felhasználható egy tevékenység kimeneti tulajdonsága egy másik tevékenységben? 
-Igen. Egy tevékenység kimenete egy későbbi tevékenységben is felhasználható `@activity` a konstrukcióval.
+Igen. Egy tevékenység kimenete egy későbbi tevékenységben is felhasználható a `@activity` konstrukcióval.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hogyan szabályosan kezeli a tevékenység kimenetében lévő null értékeket? 
-A kifejezésekben a `@coalesce` szerkezet használatával a null értékek megfelelően kezelhető. 
+A `@coalesce` kifejezésekben a szerkezet használatával a null értékek megfelelően kezelhető. 
 
 ## <a name="mapping-data-flows"></a>Adatfolyamok leképezése
 
@@ -266,7 +266,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 * bigint
 * hosszú
 * szöveg
-* dátum
+* date
 * dátum/idő
 * datetime2
 * idő adattípusúra

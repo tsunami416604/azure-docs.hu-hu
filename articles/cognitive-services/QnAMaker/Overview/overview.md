@@ -3,12 +3,12 @@ title: Mi az QnA Maker szolgáltatás?
 description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen létrehoz egy természetes társalgási réteget az adataiban. A felhasználó az egyéni Tudásbázis (KB) adatai alapján megkeresheti a legmegfelelőbb választ az adott természetes nyelvi bevitelhez.
 ms.topic: overview
 ms.date: 05/26/2020
-ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873729"
+ms.locfileid: "83994867"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Mi a QnA Maker szolgáltatás?
 
@@ -40,9 +40,9 @@ QnA Maker Tudásbázis közzétételét követően az ügyfélalkalmazás egy k�
 
 ## <a name="what-is-a-knowledge-base"></a>Mi az a Tudásbázis?
 
-QnA Maker [importálja a tartalmat](../concepts/knowledge-base.md) a kérdés-és Levelesláda tudásbázisba. Az importálási folyamat kigyűjti a strukturált és részben strukturált tartalom részei közötti kapcsolat adatait, hogy a kérdés-és a válaszfájlok közötti kapcsolatra utaljon. Ezeket a kérdéseket és a válaszokat szerkesztheti, vagy hozzáadhat új készleteket is.
+QnA Maker [importálja a tartalmat](../concepts/knowledge-base.md) a kérdések és válaszok pár tudásbázisba. Az importálási folyamat kigyűjti a strukturált és a félig strukturált tartalom részei közötti kapcsolat adatait, hogy az a kérdés és a válasz párok közötti kapcsolatokat is magában foglalja. A kérdések és válaszok párokat szerkesztheti, vagy új párokat adhat hozzá.
 
-A kérdés és a válaszfájl tartalma a következőket tartalmazza:
+A kérdés-válasz pár tartalma a következőket tartalmazza:
 * A kérdés összes alternatív formája
 * A keresés során a válaszadási lehetőségek szűréséhez használt metaadatok címkéi
 * Követési kérések a keresés finomításának folytatásához
@@ -53,7 +53,7 @@ Miután közzétette a tudásbázist, egy ügyfélalkalmazás elküldi a felhasz
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Kód nélküli robot létrehozása, kezelése és közzététele
 
-A QnA Maker portál a teljes Tudásbázis-létrehozási élményt biztosítja. Az aktuális formában importálhatja a dokumentumokat a tudásbázisba. Ezek a dokumentumok (például a gyakori kérdések, a manuális, a számolótáblák vagy a weblapok) át lesznek alakítva a kérdés-és a válasz-készletekbe. Az egyes készleteket a rendszer a követő kérések elemzésére és más készletekhez való csatlakozásra elemzi. A végső _Markdown_ formátuma támogatja a gazdag bemutatót, beleértve a képeket és a hivatkozásokat.
+A QnA Maker portál a teljes Tudásbázis-létrehozási élményt biztosítja. Az aktuális formában importálhatja a dokumentumokat a tudásbázisba. Ezek a dokumentumok (például a gyakori kérdések, a manuális, a számolótáblák vagy a weblapok) át lesznek alakítva kérdés-válasz párokba. Az egyes párok elemzése a követő kérések és a más párokhoz való csatlakozás alapján történik. A végső _Markdown_ formátuma támogatja a gazdag bemutatót, beleértve a képeket és a hivatkozásokat.
 
 A Tudásbázis szerkesztése után tegye közzé a tudásbázist egy működő [Azure webalkalmazás-roboton](https://azure.microsoft.com/services/bot-service/) anélkül, hogy kódot kellene írnia. Tesztelje a robotot a [Azure Portalban](https://portal.azure.com) , vagy töltse le és folytassa a fejlesztést.
 
@@ -63,7 +63,7 @@ A QnA Maker rendszer egy rétegzett rangsorolási megközelítés. Az adattárol
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker javítja a beszélgetési folyamatot
 
-A QnA Maker lehetővé teszi a több funkciós és az aktív tanulást, hogy segítsen az alapvető kérdés-és válaszfájlok tökéletesítésében.
+A QnA Maker többfunkciós és aktív tanulást tesz lehetővé az alapvető kérdések és válaszok párosításának javítása érdekében.
 
 A **több fordulatos kérések** lehetővé teszi a kérdések és válaszok párok összekapcsolását. Ez a kapcsolódás lehetővé teszi az ügyfélalkalmazás számára a legjobb válasz megadását, és további kérdéseket biztosít a végső válasz keresésének pontosításához.
 

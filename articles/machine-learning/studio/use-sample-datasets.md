@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217786"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115493"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [top]: #machine-learning-sample-datasets
 
@@ -46,7 +44,7 @@ Az 1994-es népszámlálási adatbázis egy részhalmaza, amely a 16. korban dol
 <p></p>
 <b>Használat:</b> A demográfiai adatokkal rendelkező személyek besorolása annak előrejelzéséhez, hogy egy személy évente több mint 50 000-et keres.
 <p></p>
-<b>Kapcsolódó kutatás:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -67,7 +65,7 @@ A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt köve
 <p></p>
 <b>Használat:</b> A funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Schlimmer, J.C. (1987). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Schlimmer, J.C. (1987). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -98,7 +96,7 @@ A donori adatmennyiség tartalmazza a legutóbbi adományozás óta eltelt hóna
 <p></p>
 <b>Használat:</b> A cél az, hogy megjósolja az osztályozást, hogy a donor a 2007 márciusában adományozta-e a vért, ahol az 1 egy donort jelez a megcélzott időszakban, és 0 a nem adományozó. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Yeh, I.C., (2008). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Kapcsolódó kutatás:</b> Yeh, I.C., (2008). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang és Ting, Tao-Ming, "Knowledge Discovery for RFM Model a Bernoulli Sequence használatával" szakértői rendszerek alkalmazásokkal, 2008,<a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -111,7 +109,7 @@ Az Onkológiai Intézet által a gépi tanulási irodalomban gyakran megjelenő 
 <p></p>
 <b>Használat:</b> A rák típusának osztályozása 9 attribútum alapján, amelyek némelyike lineáris, némelyik pedig kategorikus. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Wohlberg, W.H., utca, W.N., & Mangasarian, O.L. (1995). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Wohlberg, W.H., utca, W.N., & Mangasarian, O.L. (1995). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -164,7 +162,7 @@ Szimulált energia-profilok gyűjteménye 12 különböző építési alakzat al
 <p></p>
 <b>Használat:</b> A regresszió vagy a besorolás használatával előre jelezhető az energiahatékonysági minősítés a két valós értékű válasz egyike alapján. A többosztályos besorolás esetében a válasz változó a legközelebbi egész számra van kerekítve. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Xifara, A. & Tsanas, A. (2012). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Xifara, A. & Tsanas, A. (2012). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -189,7 +187,7 @@ A repülőgép-repülési beérkezések és a távozások nyilvántartása Egyes
 <p></p>
 <b>Használat:</b> Repülési késések előrejelzése. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Az USA-beli közlekedési <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>részlegtől.
+<b>Kapcsolódó kutatás:</b> Az USA- <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> beli közlekedési részlegtől.
   </td>
 </tr>
 
@@ -200,9 +198,9 @@ Időjárási jellegű, például hőmérsékleti és páratartalom-indexeket tar
 <p></p>
 <b>Használat:</b> Ez egy nehéz regressziós feladat, amelynek célja, hogy előre megjósolja az erdőtüzek kiégett területét. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Cortez, P., & Morais, A. (2008). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Kapcsolódó kutatás:</b> Cortez, P., & Morais, A. (2008). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
-[Cortez és Morais, 2007] P. Cortez és A. Morais. Adatbányászati megközelítés az erdőtüzek előrejelzéséhez meteorológiai adatmennyiség használatával. J. neves, M. F. Santos és J. Machado EDS., a mesterséges intelligencia új trendjei, a 13. EPIA 2007 – portugál konferencia a mesterséges intelligencia, december, Guimarães, Portugália, PP. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. A következő címen <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>érhető el:.
+[Cortez és Morais, 2007] P. Cortez és A. Morais. Adatbányászati megközelítés az erdőtüzek előrejelzéséhez meteorológiai adatmennyiség használatával. J. neves, M. F. Santos és J. Machado EDS., a mesterséges intelligencia új trendjei, a 13. EPIA 2007 – portugál konferencia a mesterséges intelligencia, december, Guimarães, Portugália, PP. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. A következő címen érhető el: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> .
   </td>
 </tr>
 
@@ -229,7 +227,7 @@ Ez talán a legismertebb adatbázis, amely a minta felismerési irodalomban tal�
 <p></p>
 <b>Használat:</b> Jósolja meg az írisz típusát a mérések közül.  
 <p></p>
-<b>Kapcsolódó kutatás:</b> Fisher, Romsics (1988). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Fisher, Romsics (1988). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -248,7 +246,7 @@ Az adatmennyiség a különböző személygépkocsik tüzelőanyag-felhasználá
 <p></p>
 <b>Használat:</b> A tüzelőanyag gazdaságosságának előrejelzése három többértékű diszkrét attribútum és öt folytonos attribútum alapján. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -258,7 +256,7 @@ Az országos Institute of diabétesz és az emésztési és a vese diseases adat
 <p></p>
 <b>Használat:</b> Tippelje meg, hogy a tárgy rendelkezik-e cukorbetegséggel (bináris besorolás). 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Sigillito, V. (1990). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
+<b>Kapcsolódó kutatás:</b> Sigillito, V. (1990). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml "</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -268,7 +266,7 @@ Az ügyfelekkel kapcsolatos metaadatok összessége, beleértve a demográfiai a
 <p></p>
 <b>Használat:</b> Ezt az adatkészletet a másik két éttermi adatkészlettel együtt használva betaníthatja és tesztelheti az Ajánlói rendszereket. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science.
+<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -279,7 +277,7 @@ Az éttermekkel és azok funkcióival, például élelmiszer-típussal, étkezé
 <p></p>
 <b>Használat:</b> Ezt az adatkészletet a másik két éttermi adatkészlettel együtt használva betaníthatja és tesztelheti az Ajánlói rendszereket. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science.
+<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -290,7 +288,7 @@ A felhasználók által az éttermek számára a 0 és 2 közötti skálán mega
 <p></p>
 <b>Használat:</b> Ezt az adatkészletet a másik két éttermi adatkészlettel együtt használva betaníthatja és tesztelheti az Ajánlói rendszereket. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science.
+<b>Kapcsolódó kutatás:</b> BACHE, K. és Licher, M. (2013). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -303,7 +301,7 @@ Ez az adatkészlet az acél-kiégetési kísérletekből származó rekordokat t
 <p></p>
 Az acélipari osztályok a SAE és más szervezetek által meghatározott szabványos szabványt követik. Egy adott "osztályzat" (osztály változó) értéket keres, és szeretné megismerni a szükséges értékeket. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Sterling, D. & Buntine, W. (NA). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science
+<b>Kapcsolódó kutatás:</b> Sterling, D. & Buntine, W. (NA). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 A Steel-osztályok hasznos útmutatója itt található:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -324,7 +322,7 @@ Az adatok előre feldolgozva lettek egy hosszúkás fürt létrehozásához a ho
 <p></p>
 Azt is vegye figyelembe, hogy a háttérben futó események (h, hadronic-zuhanyzók) száma nem becsülhető meg. A valós mérések során a h vagy a Noise osztály az események többségét jelöli. 
 <p></p>
-<b>Kapcsolódó kutatás:</b> Bock, polgár (1995). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, információs iskola </td>
+<b>Kapcsolódó kutatás:</b> Bock, polgár (1995). UCI Machine Learning adattár <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, információs iskola </td>
 </tr>
 
 <tr>
@@ -345,7 +343,7 @@ Az időjárási adatok a repülőtéri meteorológiai állomások megfigyelései
 <tr>
   <td>Wikipedia SP 500 adatkészlet</td>
   <td>
-Az adatok a Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) alapján jelennek meg, az összes S&P 500 vállalat, amely XML-adatként van tárolva.
+Az adatok a Wikipedia ( <a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a> ) alapján jelennek meg, az összes S&P 500 vállalat, amely XML-adatként van tárolva.
 <p></p>
 Azure Machine Learning Studio (klasszikus) feltöltésének megkezdése előtt az adatkészlet a következőképpen lett feldolgozva:
 <ul>
@@ -393,7 +391,7 @@ Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="h
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témák. qrels. csv</a></td>
   <td>
-Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletében. Egy újságcikk több témakörhöz is hozzárendelhető. Az egyes sorok formátuma a "&lt;téma neve&gt; &lt;dokumentum azonosítója&gt; 1". Az adatkészlet 2,6 M témakör-hozzárendeléseket tartalmaz. Dávid az adathalmazt adta elérhetővé. D. Lewis.
+Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletében. Egy újságcikk több témakörhöz is hozzárendelhető. Az egyes sorok formátuma a " &lt; téma neve &gt; &lt; dokumentum azonosítója &gt; 1". Az adatkészlet 2,6 M témakör-hozzárendeléseket tartalmaz. Dávid az adathalmazt adta elérhetővé. D. Lewis.
   </td>
 </tr>
 

@@ -3,12 +3,12 @@ title: Tudásbázis szerkesztése – QnA Maker
 description: A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650806"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993575"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -85,7 +85,7 @@ Bármely QnA pár mező szerkeszthető, az eredeti adatforrástól függetlenül
 
 ## <a name="delete-a-qna-pair"></a>QnA pár törlése
 
-A QnA törléséhez kattintson a QnA sor jobb szélén található **Törlés** ikonra. Ez egy állandó művelet. Nem vonható vissza. A készletek törlése előtt érdemes lehet a TUDÁSBÁZISt a **közzétételi** lapról exportálni.
+A QnA törléséhez kattintson a QnA sor jobb szélén található **Törlés** ikonra. Ez egy állandó művelet. Nem vonható vissza. A párok törlése előtt érdemes lehet a TUDÁSBÁZISt a **közzétételi** lapról exportálni.
 
 ![QnA pár törlése](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ A válasz metaadataiban nem lehet összekapcsolni a QnA párokat.
 
 ## <a name="add-metadata"></a>Metaadatok hozzáadása
 
-Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet a metaadat-készlet hozzáadásához. Ez a készlet egy kulcsból és egy értékből áll.
+Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet egy metaadat-pár hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
 
 ## <a name="save-changes-to-the-qna-pairs"></a>QnA-párok módosításainak mentése
 

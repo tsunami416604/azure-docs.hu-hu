@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: ffebb8f82a69f0404974e6c8ea91bec951ca80e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9228d33ac8ad4dd2d274c8ae642861bf3fbdc888
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415770"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118252"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS Integration Runtime újrakonfigurálása
 
@@ -45,7 +45,7 @@ A Azure-SSIS IR leállításához, szerkesztéséhez/újrakonfigurálásához va
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Az Azure-SSIS integrációs modul egy példányának üzembe helyezése és elindítása után `Stop`  -  `Set`  -  `Start` a PowerShell-parancsmagok sorozatának egymás utáni futtatásával újrakonfigurálhatja. A következő PowerShell-szkript például az Azure-SSIS Integration Runtime-példányhoz lefoglalt csomópontok számát öt értékre módosítja.
+Az Azure-SSIS integrációs modul egy példányának üzembe helyezése és elindítása után a `Stop`  -  `Set`  -  `Start` PowerShell-parancsmagok sorozatának egymás utáni futtatásával újrakonfigurálhatja. A következő PowerShell-szkript például az Azure-SSIS Integration Runtime-példányhoz lefoglalt csomópontok számát öt értékre módosítja.
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>Azure-SSIS IR újrakonfigurálása
 
@@ -96,8 +96,8 @@ Az Azure-SSIS integrációs modul egy példányának üzembe helyezése és elin
 Az Azure-SSIS futtatókörnyezettel kapcsolatos további információkért tekintse meg a következő témaköröket: 
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az integrációs modulokkal kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IR. 
-- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt Azure SQL Database felügyelt példányának használatáról és az IR virtuális hálózathoz való csatlakoztatásáról. 
+- [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk részletes útmutatást nyújt egy Azure-SSIS IR létrehozásához, és a Azure SQL Database használatával futtatja az SSIS-katalógust. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatást nyújt az Azure SQL felügyelt példányának használatáról és az IR virtuális hálózathoz való csatlakoztatásáról. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a virtuális hálózat oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson ahhoz. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
  

@@ -5,18 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836651"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117417"
 ---
 # <a name="remove-vms-from-update-management"></a>Virtuális gépek eltávolítása az Update Managementből
-
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Amikor befejezte a frissítések telepítését a környezetben lévő virtuális gépekre, eltávolíthatja őket a [Update Management](automation-update-management.md) szolgáltatásból.
 
@@ -28,7 +24,7 @@ Amikor befejezte a frissítések telepítését a környezetben lévő virtuáli
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. Az **általános**log Analytics munkaterületen nyissa meg a mentett kereséseket.
+3. Az **általános**területen lévő log Analytics munkaterületen nyissa meg a hatókör-konfiguráció mentett kereséseit `MicrosoftDefaultScopeConfig-Updates` .
 
 4. A mentett kereséshez `MicrosoftDefaultComputerGroup` kattintson a jobb oldalon található három pontra, majd válassza a **Szerkesztés**lehetőséget. 
 

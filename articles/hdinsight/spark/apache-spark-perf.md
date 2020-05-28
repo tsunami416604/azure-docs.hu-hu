@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: f92a351087670ce0b37921a496eabfa883a3b1fc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780115"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117966"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark feladatok optimalizálása a HDInsight-ben
 
@@ -22,16 +22,16 @@ Ez a cikk áttekintést nyújt a Apache Spark feladatok Azure HDInsight való op
 
 A Apache Spark feladatok teljesítménye több tényezőtől függ. Ezek a teljesítménnyel kapcsolatos tényezők: az adatok tárolásának módja, a fürt konfigurálásának módja, valamint az adatok feldolgozásakor használt műveletek.
 
-Az esetlegesen felmerülő gyakori kihívások közé tartoznak a memóriabeli megkötések, mivel a nem megfelelő méretű végrehajtók, a hosszan futó műveletek és a Descartes-as műveleteket eredményező tevékenységek.
+Az esetlegesen felmerülő gyakori kihívások: a memória korlátozásai a nem megfelelő méretű végrehajtók, a hosszan futó műveletek és a Descartes műveletet eredményező feladatok miatt.
 
-Vannak olyan különböző stratégiák is, amelyek segítségével elháríthatja ezeket a kihívásokat, például a gyorsítótárazást, és lehetővé teszi az adatok eldöntését.
+Számos optimalizálási lehetőség is rendelkezésre áll, amelyek segítségével elháríthatja ezeket a kihívásokat, például a gyorsítótárazást, és lehetővé teszi az adatok eldöntését.
 
-A következő cikkekben a Spark-optimalizálás különböző szempontjaival kapcsolatos gyakori kihívásokat és megoldásokat talál.
+A következő cikkekben a Spark-optimalizálás különböző szempontjaival kapcsolatos információkat talál.
 
-* [Adattárolás optimalizálása](optimize-data-storage.md)
-* [Az adatfeldolgozás optimalizálása](optimize-data-processing.md)
-* [Memóriahasználat optimalizálása](optimize-memory-usage.md)
-* [Fürt konfigurációjának optimalizálása](optimize-cluster-configuration.md)
+* [Az adattároló optimalizálása Apache Spark](optimize-data-storage.md)
+* [Az adatfeldolgozás optimalizálása Apache Spark](optimize-data-processing.md)
+* [Memória használatának optimalizálása Apache Spark](optimize-memory-usage.md)
+* [A HDInsight-fürt konfigurációjának optimalizálása Apache Spark](optimize-cluster-configuration.md)
 
 ## <a name="next-steps"></a>További lépések
 

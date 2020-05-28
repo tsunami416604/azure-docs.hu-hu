@@ -1430,5 +1430,5 @@ Kiadás dátuma: szeptember 2014
 
 **Azure AD-szinkronizáló kezdeti kiadása.**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

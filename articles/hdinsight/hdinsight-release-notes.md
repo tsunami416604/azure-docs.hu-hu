@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d0f12274f3cbc0cd2726097e0507079cb858d59f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849705"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116570"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -49,13 +49,13 @@ Ebben a kiadásban nem változik a viselkedés. A közelgő változásokról a [
 A következő módosítások a közelgő kiadásokban fognak történni. 
 
 ### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>A Spark 2,1-es és 2,2-es verziójának elavult változata a HDInsight 3,6 Spark-fürtben
-Július 1 2020-től kezdődően az ügyfelek nem tudnak új Spark-fürtöket létrehozni a Spark 2,1 és a 2,2 használatával a HDInsight 3,6-ben. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Vegye figyelembe, hogy a Spark 2,3-ra való áttérés a HDInsight 30 2020 3,6-re, a lehetséges rendszer-és támogatási megszakítás elkerülése érdekében.
+2020. július 1-től az ügyfelek nem tudnak új Spark-fürtöket létrehozni a Spark 2,1 és a 2,2 használatával a HDInsight 3,6-ben. A meglévő fürtök a Microsoft támogatás nélkül futnak. Vegye fontolóra a Spark 2,3-ra való áttérést a HDInsight 3,6-re a 2020. június 30-ig, hogy elkerülje a lehetséges rendszer/támogatás megszakadását. További információ: [Apache Spark 2,1-es és 2,2-es számítási feladatok migrálása 2,3-ra és 2,4](./spark/migrate-versions.md)-re.
 
 ### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>A Spark 2,3 elavult változata a HDInsight 4,0 Spark-fürtben
-Július 1 2020-től kezdve az ügyfelek nem tudnak új Spark-fürtöket létrehozni a Spark 2,3-mel a HDInsight 4,0-on. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Vegye fontolóra a Spark 2,4-ra való áttérést a HDInsight 30 2020 4,0-re a lehetséges rendszer/támogatás megszakadásának elkerülése érdekében.
+2020. július 1-től az ügyfelek nem tudnak új Spark-fürtöket létrehozni a Spark 2,3-mel a HDInsight 4,0-on. A meglévő fürtök a Microsoft támogatás nélkül futnak. Vegye fontolóra a Spark 2,4-ra való áttérést a HDInsight 4,0-re a 2020. június 30-ig, hogy elkerülje a lehetséges rendszer/támogatás megszakadását. További információ: [Apache Spark 2,1-es és 2,2-es számítási feladatok migrálása 2,3-ra és 2,4](./spark/migrate-versions.md)-re.
 
 ### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Kafka 1,1 elavult változata a HDInsight 4,0 Kafka-fürtben
-Július 1 2020-től kezdődően az ügyfelek nem tudnak új Kafka-fürtöket létrehozni a HDInsight 4,0-on futó Kafka 1,1-mel. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. A potenciális rendszer/támogatás megszakításának elkerülése érdekében érdemes áthelyezni a Kafka 2,1-et a HDInsight 30 2020 4,0-re.
+A 1 2020. júliustól kezdődően az ügyfelek nem fognak tudni új Kafka-fürtöket létrehozni a HDInsight 4,0-on futó Kafka 1,1-mel. A meglévő fürtök a Microsoft támogatás nélkül futnak. A potenciális rendszer/támogatás megszakításának elkerülése érdekében érdemes áthelyezni a Kafka 2,1-et a HDInsight 30 2020 4,0-re. További információ: Apache Kafka- [munkaterhelések áttelepítése az Azure HDInsight 4,0](./kafka/migrate-versions.md)-re.
 
 ### <a name="hbase-20-to-216"></a>HBase 2,0 – 2.1.6
 A közelgő HDInsight 4,0-es kiadásban a HBase verziója a 2,0-es verzióról a 2.1.6-re lesz frissítve.

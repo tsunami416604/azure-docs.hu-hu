@@ -9,16 +9,14 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e70467d0ef956802e1ab7f416da7c2cbec37c58
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115571"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Az alkalmazások életciklusának kezelése Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A Azure Machine Learning Studio (klasszikus) az Azure Cloud platformon üzemelő gépi tanulási kísérletek fejlesztésére szolgáló eszköz. Olyan, mint a Visual Studio IDE és a skálázható felhőalapú szolgáltatás egyetlen platformba egyesítve. A standard szintű alkalmazás-életciklus-kezelési (ALM) eljárásokat beépítheti a különböző eszközökről az automatikus végrehajtásra és üzembe helyezésre Azure Machine Learning Studio (klasszikus). Ez a cikk néhány lehetőséget és megközelítést ismertet.
 
@@ -46,7 +44,7 @@ A futtatási előzmények pillanatképei megőrzik a kísérlet megváltoztathat
 A JSON-fájl a kísérleti gráf szöveges ábrázolása, amely tartalmazhatja a munkaterületen lévő eszközökre, például egy adatkészletre vagy egy betanított modellre mutató hivatkozást is. Nem tartalmazza az eszköz szerializált verzióját. Ha a JSON-dokumentumot visszahelyezi a munkaterületre, a hivatkozott objektumoknak már léteznie kell ugyanazzal az azonosítóval, amely a kísérletben hivatkozik. Ellenkező esetben nem férhet hozzá az importált kísérlethez.
 
 ## <a name="versioning-trained-model"></a>A betanított modell verziószámozása
-Azure Machine Learning Studio (klasszikus) betanított modell szerializálható egy iLearner-fájlként (`.iLearner`) ismert formátumba, és a munkaterülethez társított Azure Blob Storage-fiókban tárolódik. A iLearner-fájl másolatának beszerzésének egyik módja az átképzési API-n keresztül történik. [Ez a cikk](/azure/machine-learning/studio/retrain-machine-learning-model) bemutatja, hogyan működik az átképzési API. A magas szintű lépések:
+Azure Machine Learning Studio (klasszikus) betanított modell szerializálható egy iLearner-fájlként () ismert formátumba `.iLearner` , és a munkaterülethez társított Azure Blob Storage-fiókban tárolódik. A iLearner-fájl másolatának beszerzésének egyik módja az átképzési API-n keresztül történik. [Ez a cikk](/azure/machine-learning/studio/retrain-machine-learning-model) bemutatja, hogyan működik az átképzési API. A magas szintű lépések:
 
 1. Állítsa be a betanítási kísérletet.
 2. Adjon hozzá egy webszolgáltatás kimeneti portját a Train Model modulhoz vagy a betanított modellt létrehozó modulhoz, például a modell Hiperparaméter vagy az R-modell létrehozásához.

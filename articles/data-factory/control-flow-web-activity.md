@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417895"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017664"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,11 +68,11 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-név | A webes tevékenység neve | Sztring | Igen
-type | **Webtevékenységre**kell beállítani. | Sztring | Igen
+name | A webes tevékenység neve | Sztring | Igen
+típus | **Webtevékenységre**kell beállítani. | Sztring | Igen
 method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
 url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 percenként időtúllépést jelez, ha a végponttól nem érkezik válasz. | Igen
-fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
+fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
 body (Törzs) | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adatait tartalmazó sémában](#request-payload-schema) . | A POST/PUT metódusokhoz szükséges.
 hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
 adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
@@ -95,7 +95,7 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincs
 
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 
@@ -125,7 +125,7 @@ A PFX-fájl és a jelszó Base64 kódolású tartalmának megadása.
 
 ### <a name="managed-identity"></a>Felügyelt identitás
 
-Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatát a rendszer az adatok előállítójának felügyelt identitása alapján kéri le. Az Azure Resource Management API meghívásához használja `https://management.azure.com/`a következőt:. További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
+Itt adhatja meg azt az erőforrás-URI-t, amelynek a hozzáférési jogkivonatát a rendszer az adatok előállítójának felügyelt identitása alapján kéri le. Az Azure Resource Management API meghívásához használja a következőt: `https://management.azure.com/` . További információ a felügyelt identitások működéséről: [felügyelt identitások az Azure-erőforrások áttekintéséhez](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -161,7 +161,7 @@ Ha a POST/PUT metódust használja, a Body (törzs) tulajdonság a végpontnak e
 ```
 
 ## <a name="example"></a>Példa
-Ebben a példában a folyamat webes tevékenysége REST-végpontot hív meg. Egy Azure SQL társított szolgáltatást és egy Azure SQL-adatkészletet továbbít a végpontnak. A REST-végpont az Azure SQL-kapcsolati karakterlánc használatával csatlakozik az Azure SQL Serverhez, és az SQL Server-példány nevét adja vissza.
+Ebben a példában a folyamat webes tevékenysége REST-végpontot hív meg. Egy Azure SQL társított szolgáltatást és egy Azure SQL-adatkészletet továbbít a végpontnak. A REST-végpont az Azure SQL kapcsolati karakterlánc használatával csatlakozik a logikai SQL-kiszolgálóhoz, és az SQL Server-példány nevét adja vissza.
 
 ### <a name="pipeline-definition"></a>Folyamat definíciója
 

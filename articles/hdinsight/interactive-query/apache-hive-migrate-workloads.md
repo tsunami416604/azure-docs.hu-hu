@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015012"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -34,12 +34,12 @@ A kaptár egyik előnye, hogy lehetővé teszi a metaadatok exportálását egy 
 A HDInsight 3,6 és a HDInsight 4,0 ACID táblázatok eltérően értelmezik a savas különbözeteket. Az áttelepítés előtt csak a "MAJOR" tömörítést kell végrehajtani az 3,6-fürt minden egyes savas táblájánál. A tömörítéssel kapcsolatos részletekért tekintse meg a [kaptár nyelvi útmutatóját](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) .
 
 ### <a name="2-copy-sql-database"></a>2. az SQL Database másolása
-Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár használ, az egyik biztonságos és egyszerű módszer a metaadattár másolására, ha az adatbázist másik néven szeretné [visszaállítani](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) a SQL Database Restore függvény használatával.  További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
+Hozzon létre egy új másolatot a külső metaadattár. Ha külső metaadattár használ, az egyik biztonságos és egyszerű módszer a metaadattár másolására, ha az adatbázist másik néven szeretné [visszaállítani](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) a SQL Database Restore függvény használatával.  További információ a külső metaadattár HDInsight-fürthöz való csatolásáról: [külső metaadat-tárolók használata az Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. a metaadattár séma frissítése
 A metaadattár **másolásának** befejeződése után futtasson egy [séma-frissítési parancsfájlt a meglévő](../hdinsight-hadoop-customize-cluster-linux.md) HDInsight 3,6-fürtön az új metaadattár a kaptár 3 sémára való frissítéséhez. (Ehhez a lépéshez nem szükséges, hogy az új metaadattár csatlakozni lehessen egy fürthöz.) Ez lehetővé teszi, hogy az adatbázis HDInsight 4,0 metaadattár legyen csatolva.
 
-Használja az alábbi táblázatban szereplő értékeket. Cserélje `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` le a értéket a Hive-metaadattár **Másolás**megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
+Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` értéket a Hive-metaadattár **Másolás**megfelelő értékeire, szóközzel elválasztva. Ne adja meg a ". database.windows.net" kifejezést az SQL Server nevének megadásakor.
 
 |Tulajdonság | Érték |
 |---|---|
@@ -103,7 +103,7 @@ A HDInsight 3,6-es és 4,0-es fürtöknek ugyanazt a Storage-fiókot kell haszn�
 >
 > * A szkript befejezése után feltételezhető, hogy a régi fürtöt a rendszer többé nem fogja használni a parancsfájlban hivatkozott táblák vagy adatbázisok eléréséhez.
 >
-> * Az összes felügyelt tábla tranzakciós lesz a HDInsight 4,0-ben. Ha szeretné, megtarthatja a tábla nem tranzakciós beállításait úgy, hogy az adatexportálást egy külső táblába exportálja a "External. table. Purge" = "true" tulajdonsággal. Például:
+> * Az összes felügyelt tábla tranzakciós lesz a HDInsight 4,0-ben. Ha szeretné, megtarthatja a tábla nem tranzakciós beállításait úgy, hogy az adatexportálást egy külső táblába exportálja a "External. table. Purge" = "true" tulajdonsággal. Példa:
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -124,7 +124,7 @@ A HDInsight 3,6-es és 4,0-es fürtöknek ugyanazt a Storage-fiókot kell haszn�
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * Az ESP nélküli normál HDInsight-fürtök esetében egyszerűen hajtsa `exporthive_hdi_3_6.sh`végre a végrehajtást.
+    * Az ESP nélküli normál HDInsight-fürtök esetében egyszerűen hajtsa végre a végrehajtást `exporthive_hdi_3_6.sh` .
 
     * Az ESP-vel rendelkező fürtök esetében a kinit parancsot és az argumentumok módosítása: futtassa a következőt, és határozza meg az Azure AD-felhasználó teljes kaptár-engedélyekkel rendelkező felhasználó-és TARTOMÁNYát.
 
@@ -221,14 +221,14 @@ A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló gra
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Csomópont típusa (i)|Head|
 
-Várjon 10 – 15 percet, majd indítsa el az adatelemzési studiót az `https://CLUSTERNAME.azurehdinsight.net/das/`alábbi URL-cím használatával:.
+Várjon 10 – 15 percet, majd indítsa el az adatelemzési studiót az alábbi URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/` .
 
 A DAS-hoz való hozzáférés előtt a Ambari felhasználói felületének frissítése és/vagy az összes Ambari-összetevő újraindítása szükséges lehet.
 
 Ha a DAS telepítve van, ha nem látja a futtatott lekérdezéseket a lekérdezések megjelenítőben, hajtsa végre a következő lépéseket:
 
 1. Állítsa be a kaptár, a TEZ és a DAS konfigurációit az útmutatóban ismertetett módon a [Das telepítésének hibaelhárítása](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)című részben leírtak szerint.
-2. Győződjön meg arról, hogy a következő Azure Storage-címtár-konfiguráció a lapok blobja, és hogy `fs.azure.page.blob.dirs`azok szerepelnek a területen:
+2. Győződjön meg arról, hogy a következő Azure Storage-címtár-konfiguráció a lapok blobja, és hogy azok szerepelnek a területen `fs.azure.page.blob.dirs` :
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. Indítsa újra a HDFS, a kaptárt, a TEZ és a DAS-t mindkét átjárócsomópontokkal.

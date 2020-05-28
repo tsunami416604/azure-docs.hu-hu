@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83744313"
 ---
-# <a name="troubleshoot-runbook-issues"></a>Runbook kapcsolatos problémák elhárítása
+# <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
  Ez a cikk az esetlegesen előforduló runbook problémákat és azok megoldását ismerteti. Általános információk: [Runbook végrehajtása Azure Automationban](../automation-runbook-execution.md).
 

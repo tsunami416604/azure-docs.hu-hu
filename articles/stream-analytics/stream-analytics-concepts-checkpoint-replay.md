@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426395"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020608"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Ellenőrzőpont-és visszajátszás-fogalmak a Azure Stream Analytics-feladatokban
 Ez a cikk ismerteti a Azure Stream Analytics belső ellenőrzőpont-és újralejátszási fogalmait, valamint a feladatokra gyakorolt hatást. Minden alkalommal, amikor egy Stream Analytics feladatot futtat, az állapotadatok belsőleg maradnak. Az állapotadatok rendszeres időközönként kerülnek mentésre. Bizonyos esetekben az ellenőrzőpont-információk a feladatok helyreállítására szolgálnak, ha a feladattal kapcsolatos hiba vagy frissítés történik. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és szükség van egy újrajátszásra.
@@ -47,7 +47,7 @@ A Microsoft alkalmanként frissíti a Stream Analytics feladatokat futtató bin�
 
 Jelenleg a helyreállítási ellenőrzőpont formátuma nem marad meg a frissítések között. Ennek eredményeképpen az adatfolyam-lekérdezés állapotát teljes egészében vissza kell állítani a Replay Technique használatával. Ha engedélyezni szeretné, hogy Stream Analytics feladatok a korábban megadott adatokat újra visszajátszják, fontos, hogy a forrásadatok adatmegőrzési szabályát legalább a lekérdezésben szereplő ablakméret értékre állítsa. Ha ezt elmulasztja, a szolgáltatás frissítése során helytelen vagy részleges eredményeket eredményezhet, mivel előfordulhat, hogy a forrásadatok nem maradnak meg elég messzire, hogy belefoglalják a teljes ablak méretét.
 
-Általánosságban elmondható, hogy az újraindításhoz szükséges mennyiség arányos az ablak méretével, szorozva az esemény átlagos értékével. Példaként egy olyan feladathoz, amely másodpercenként 1000 eseményt tartalmaz, az egy óránál hosszabb ablak mérete nagy újrajátszás méretének minősül. Előfordulhat, hogy akár egy órányi adat újrafeldolgozására is szükség lehet az állapot inicializálásához, hogy teljes és helyes eredményeket lehessen létrehozni, ami késleltetett kimenetet eredményezhet (nincs kimenet) egy hosszabb ideig. A Windows vagy más időszakos operátorokkal ( `JOIN` például vagy `LAG`) nem rendelkező lekérdezések esetében nulla visszajátszás lenne.
+Általánosságban elmondható, hogy az újraindításhoz szükséges mennyiség arányos az ablak méretével, szorozva az esemény átlagos értékével. Példaként egy olyan feladathoz, amely másodpercenként 1000 eseményt tartalmaz, az egy óránál hosszabb ablak mérete nagy újrajátszás méretének minősül. Előfordulhat, hogy akár egy órányi adat újrafeldolgozására is szükség lehet az állapot inicializálásához, hogy teljes és helyes eredményeket lehessen létrehozni, ami késleltetett kimenetet eredményezhet (nincs kimenet) egy hosszabb ideig. A Windows vagy más időszakos operátorokkal (például vagy) nem rendelkező lekérdezések esetében `JOIN` `LAG` nulla visszajátszás lenne.
 
 ## <a name="estimate-replay-catch-up-time"></a>Visszajátszási Felskálázási idő becslése
 A szolgáltatás verziófrissítése miatti késés hosszának becsléséhez kövesse ezt a technikát:
@@ -58,7 +58,7 @@ A szolgáltatás verziófrissítése miatti késés hosszának becsléséhez kö
 
 3. A kezdési időpont és az első kimenet létrehozása közötti idő mérése. Az idő durva, hogy a szolgáltatás frissítése során mennyi késleltetéssel jár a feladatok.
 
-4. Ha a késés túl hosszú, próbálja meg particionálni a feladatot, és növelje a SUs számát, így a terhelést több csomópontra is kiterjesztheti. Azt is megteheti, hogy csökkenti a lekérdezésben szereplő ablakméret méretét, és további összesítést vagy más állapot-nyilvántartó feldolgozást hajt végre az alsóbb rétegbeli fogadó Stream Analytics feladata által létrehozott kimeneten (például az Azure SQL Database használatával).
+4. Ha a késés túl hosszú, próbálja meg particionálni a feladatot, és növelje a SUs számát, így a terhelést több csomópontra is kiterjesztheti. Azt is megteheti, hogy csökkenti a lekérdezésben szereplő ablakméret méretét, és további összesítést vagy más állapot-nyilvántartó feldolgozást hajt végre az alsóbb rétegbeli fogadó Stream Analytics feladata által létrehozott kimeneten (például Azure SQL Database használatával).
 
 A kritikus fontosságú feladatok frissítése során felmerülő általános szolgáltatási stabilitás érdekében érdemes lehet ismétlődő feladatokat futtatni a párosított Azure-régiókban. További információ: a [szolgáltatás frissítéseinek stream Analytics a feladatok megbízhatóságának garantálása](stream-analytics-job-reliability.md).
 

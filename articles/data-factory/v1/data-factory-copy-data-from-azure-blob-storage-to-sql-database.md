@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75979729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118587"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75979729"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -66,7 +66,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókj�
 7. Az **X**gombra kattintva zárjuk le az összes pengét.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, adatbázis, felhasználónevek gyűjtése
-Ehhez az oktatóanyaghoz az Azure SQL Server, az adatbázis és a felhasználó nevét kell megadnia. Jegyezze fel a **kiszolgáló**, az **adatbázis**és a **felhasználó** nevét az Azure SQL Database-ben.
+Ehhez az oktatóanyaghoz a logikai SQL Server, az adatbázis és a felhasználó nevét kell megadnia. Jegyezze fel a **kiszolgáló**, az **adatbázis**és a **felhasználó** nevét az Azure SQL Database-ben.
 
 1. A **Azure Portal**kattintson a bal oldali **minden szolgáltatás** elemre, és válassza az **SQL-adatbázisok**lehetőséget.
 2. Az **SQL-adatbázisok**panelen válassza ki az oktatóanyagban használni kívánt **adatbázist** . Jegyezze fel az **adatbázis nevét**.  
@@ -75,7 +75,7 @@ Ehhez az oktatóanyaghoz az Azure SQL Server, az adatbázis és a felhasználó 
 5. Az **X**gombra kattintva zárjuk le az összes pengét.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
-Győződjön **meg** arról, hogy az Azure- **szolgáltatások hozzáférésének engedélyezése** beállítás be van kapcsolva az Azure SQL Serverhez, hogy a Data Factory szolgáltatás hozzáférhessen az Azure SQL Serverhez. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
+Győződjön **meg** arról, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be van kapcsolva a kiszolgálón, hogy a Data Factory szolgáltatás hozzáférhessen a kiszolgálóhoz. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
 1. Kattintson a bal oldali **összes szolgáltatás** központ elemre, majd az **SQL-kiszolgálók**lehetőségre.
 2. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
@@ -107,9 +107,9 @@ Készítse elő az Azure Blob Storage-t és az Azure SQL Database-t az oktatóan
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Ha a számítógépen SQL Server 2012/2014 van telepítve:** kövesse az [Azure SQL Database SQL Server Management Studio használatával történő kezelésével](../../sql-database/sql-database-manage-azure-ssms.md) kapcsolatos utasításokat az Azure SQL Serverhez való kapcsolódáshoz és az SQL-szkript futtatásához.
+    **Ha a számítógépen SQL Server 2012/2014 van telepítve:** kövesse az [Azure SQL Database SQL Server Management Studio használatával történő kezelésével](../../sql-database/sql-database-manage-azure-ssms.md) kapcsolatos utasításokat a kiszolgálóhoz való KAPCSOLÓDÁShoz és az SQL-szkript futtatásához.
 
-    Ha az ügyfél számára nem engedélyezett az Azure SQL Server elérése, konfigurálnia kell az Azure SQL Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../../sql-database/sql-database-configure-firewall-settings.md).
+    Ha az ügyfél nem fér hozzá a logikai SQL-kiszolgálóhoz, úgy kell beállítania a tűzfalat, hogy engedélyezze a hozzáférést a gépről (IP-cím). A kiszolgáló tűzfalának konfigurálásához szükséges lépéseket [ebben a cikkben](../../sql-database/sql-database-configure-firewall-settings.md) találja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 Végrehajtotta az előfeltételeket. A következő módszerek egyikével hozhat létre egy adatelőállítót: Az oktatóanyag elvégzéséhez kattintson a felül lévő legördülő lista egyik lehetőségére, vagy az alábbi hivatkozásokra.     
@@ -117,7 +117,7 @@ Végrehajtotta az előfeltételeket. A következő módszerek egyikével hozhat 
 * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-* [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 

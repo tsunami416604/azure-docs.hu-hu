@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8ad945e20e1274025595620e08f264863297892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204562"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117369"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -55,7 +53,7 @@ Ebben az adathalmazban számos különböző autót bemutató bejegyzés szerepe
 
 A következőképpen vonhatja be az adathalmazt a kísérletbe.
 
-1. Hozzon létre egy új kísérletet az Machine Learning Studio (klasszikus) ablak alján található **+ új** elemre kattintva. Válassza a **kísérlet** >  **üres kísérlet**lehetőséget.
+1. Hozzon létre egy új kísérletet az Machine Learning Studio (klasszikus) ablak alján található **+ új** elemre kattintva. Válassza a **kísérlet**  >   **üres kísérlet**lehetőséget.
 
 1. A kísérlet kap egy alapértelmezett nevet, amelyet a vászon tetején láthat. Jelölje ki ezt a szöveget, és módosítsa valami értelmesebbre, például arra, hogy **Autó árának előrejelzése**. A névnek nem kell egyedinek lennie.
 
@@ -233,7 +231,7 @@ A következő statisztikák tekinthetők meg:
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb értékek azt jelzik, hogy az előrejelzés közelebb van a tényleges értékekhez. A **Coefficient of Determination** (determinációs együttható) értéke minél közelebb van az egyhez (1,0-hoz), annál pontosabb az előrejelzés.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 

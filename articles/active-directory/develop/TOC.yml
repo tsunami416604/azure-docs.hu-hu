@@ -595,7 +595,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: A Microsoft Graph identitási és hozzáférési API-jai
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
+      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
     - name: Hitelesítés és hitelesítési hibakódok
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

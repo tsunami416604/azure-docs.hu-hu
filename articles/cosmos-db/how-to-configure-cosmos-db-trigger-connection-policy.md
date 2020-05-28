@@ -3,15 +3,15 @@ title: Azure Functions trigger Cosmos DB-kapcsolatok házirendjéhez
 description: Megtudhatja, hogyan konfigurálhatja a Azure Functions trigger által használt kapcsolódási szabályzatot Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df30a0ddca58e6d7bd74184fa7287df6818cfc37
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604965"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117149"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>A Azure Functions trigger által használt kapcsolódási szabályzat konfigurálása Cosmos DBhoz
 
@@ -23,7 +23,7 @@ Két kapcsolattípus van – közvetlen mód és átjáró mód. Ha többet szer
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>A kapcsolati mód és a protokoll módosítása
 
-Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfigurációs beállítás érhető el – a **kapcsolati mód** és a **kapcsolati protokoll**. A Azure Functions trigger által használt alapértelmezett kapcsolati mód és protokoll a Cosmos DB és az összes [Azure Cosmos db kötés](../azure-functions/functions-bindings-cosmosdb-v2-output.md)esetében módosítható. Az alapértelmezett beállítások módosításához meg kell keresnie a `host.json` fájlt a Azure functions projektben vagy Azure functions alkalmazásban, és hozzá kell adnia a következő [extra beállítást](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
+Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfigurációs beállítás érhető el – a **kapcsolati mód** és a **kapcsolati protokoll**. A Azure Functions trigger által használt alapértelmezett kapcsolati mód és protokoll a Cosmos DB és az összes [Azure Cosmos db kötés](../azure-functions/functions-bindings-cosmosdb-v2-output.md)esetében módosítható. Az alapértelmezett beállítások módosításához meg kell keresnie a fájlt a `host.json` Azure functions projektben vagy Azure functions alkalmazásban, és hozzá kell adnia a következő [extra beállítást](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
 
 ```js
 {
@@ -36,7 +36,7 @@ Az ügyfélkapcsolati házirend konfigurálásához két kulcsfontosságú konfi
 
 Ahol `connectionMode` a kötelező kapcsolati mód (közvetlen vagy átjáró) és `protocol` a kívánt kapcsolati protokoll (TCP vagy https) szükséges. 
 
-Ha a Azure Functions-projekt a Azure Functions v1 futtatókörnyezettel dolgozik, a konfigurációnak kisebb a neve, akkor a következők `documentDB` helyett érdemes `cosmosDB`használni:
+Ha a Azure Functions-projekt a Azure Functions v1 futtatókörnyezettel dolgozik, a konfigurációnak kisebb a neve, akkor a következők `documentDB` helyett érdemes használni `cosmosDB` :
 
 ```js
 {

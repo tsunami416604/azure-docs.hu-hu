@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204182"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117786"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Elemzések elvégzése Azure Machine Learning Studio (klasszikus) használatával helyszíni SQL Server-adatbázis segítségével
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok helyszíni SQL Server-adatbázisból való beolvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a helyszíni SQL Server-adatbázisból is beolvasható a betanítási és pontozási feladatokhoz.
 
@@ -70,7 +68,7 @@ A telepítési előfeltételekről, a telepítési lépésekről és a hibaelhá
 Ebben az útmutatóban egy Azure Data Factory Integration Runtime kell beállítania egy Azure Machine Learning munkaterületen, konfigurálnia kell, majd el kell olvasnia egy helyszíni SQL Server-adatbázis adatait.
 
 > [!TIP]
-> Mielőtt elkezdené, tiltsa le a böngésző előugró ablak-blokkoló `studio.azureml.net`eszközét. Ha a Google Chrome böngészőt használja, töltse le és telepítse a Google Chrome webáruházban elérhető több beépülő modul egyikét, [majd kattintson az alkalmazás kiterjesztésére](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Mielőtt elkezdené, tiltsa le a böngésző előugró ablak-blokkoló eszközét `studio.azureml.net` . Ha a Google Chrome böngészőt használja, töltse le és telepítse a Google Chrome webáruházban elérhető több beépülő modul egyikét, [majd kattintson az alkalmazás kiterjesztésére](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
 > Azure Data Factory saját üzemeltetésű Integration Runtime korábbi nevén adatkezelés átjáró. Az útmutató lépésről lépésre oktatóanyag továbbra is átjáróként hivatkozik rá.  

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641601"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112771"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
 
@@ -98,6 +98,23 @@ Megtekintheti az egyes feltételekhez tartozó felhasználók vagy bejelentkezé
 Egy adott felhasználó bejelentkezéseit is megvizsgálhatja az irányítópult alján található bejelentkezések keresésével. A bal oldali lekérdezés a leggyakoribb felhasználókat jeleníti meg. A felhasználó kiválasztásával a jobb oldalon szűrheti a lekérdezést.  
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Miért sikertelenek a lekérdezések az engedélyek hibája miatt?
+
+A munkafüzet eléréséhez szükség van a megfelelő Azure AD-engedélyekre, valamint Log Analytics munkaterület engedélyeire. Egy minta log Analytics-lekérdezés futtatásával tesztelheti, hogy rendelkezik-e a megfelelő munkaterület-engedélyekkel:
+
+1. Jelentkezzen be az **Azure Portalra**.
+1. Tallózással keresse meg **Azure Active Directory**  >  **naplókat**.
+1. Írja be `SigninLogs` a lekérdezés mezőbe, és válassza a **Futtatás**lehetőséget.
+1. Ha a lekérdezés nem ad vissza semmilyen eredményt, előfordulhat, hogy a munkaterülete helytelenül van konfigurálva. 
+
+![Sikertelen lekérdezések hibáinak megoldása](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Az Azure AD bejelentkezési naplófájljainak Log Analytics munkaterületre való továbbításáról további információt az [Azure ad-naplók integrálása Azure monitor naplókkal](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)című cikkben talál.
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Miért üres a feltételes hozzáférési házirendek paraméter?
+
+A szabályzatok listáját a legújabb bejelentkezési eseményre kiértékelt szabályzatok alapján hozza létre a rendszer. Ha a bérlő nem rendelkezik újabb bejelentkezésekkel, előfordulhat, hogy néhány percet várnia kell, amíg a munkafüzet betölti a feltételes hozzáférési szabályzatok listáját. Ez közvetlenül a Log Analytics konfigurálása után fordulhat elő, vagy ha a bérlő nem rendelkezik közelmúltbeli bejelentkezési tevékenységgel.
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>Miért hosszú időt vesz a munkafüzet betöltése?  
 

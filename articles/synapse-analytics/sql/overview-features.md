@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 556cce9e18c812759ccb6c4b8ee2c91c4cef2b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b4c44f0097b2896a063f3f3922760860e1d4a22
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658895"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118295"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Az Azure szinapszis SQL által támogatott Transact-SQL-funkciók
 
@@ -42,7 +42,7 @@ A szinapszis SQL felhasználási modelljei lehetővé teszik különböző adatb
 | **[Tábla indexei](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Igen | Nem |
 | **[Tábla partíciói](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Igen | Nem |
 | **[Statisztika](develop-tables-statistics.md)**            | Igen | Igen |
-| **[Erőforrás-osztályok és Egyidejűség](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Igen    | Nem |
+| **[Számítási feladatok kezelése, erőforrás-osztályok és Egyidejűség-vezérlés](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Igen    | Nem |
 
 ## <a name="query-language"></a>Lekérdezés nyelve
 
@@ -50,7 +50,7 @@ A szinapszis SQL-ben használt lekérdezési nyelvek különböző támogatott f
 
 |   | Kiépítve | Kiszolgáló nélküli |
 | --- | --- | --- |
-| **SELECT utasítás** | Igen. A Transact-SQL-lekérdezési záradékok nem támogatottak [az XML/JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-hoz, a Match és a [prediktív](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) [egyeztetéshez](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . | Igen. A Transact-SQL-lekérdezési záradékok nem támogatottak [az XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-, a [egyezési](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), a [prediktív](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és a lekérdezési mutatóhoz. Az [eltolás/lekérés](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) és a [PIVOT/unpivot](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) művelettel csak az ideiglenes táblákban (nem külső adatforrásokban) lévő adatlekérdezés használható. |
+| **SELECT utasítás** | Igen. A Transact-SQL-lekérdezési záradékok nem támogatottak [az XML/JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-hoz, az [egyeztetéshez](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és az [előrejelzéshez](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . | Igen. A Transact-SQL-lekérdezési záradékok nem támogatottak [az XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-, a [egyezési](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), a [prediktív](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)és a lekérdezési mutatóhoz. Az [eltolás/BEolvasás](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) és a [PIVOT/unpivot](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felhasználható a Rendszerobjektumok (nem külső adatforrások) lekérdezésére. |
 | **INSERT utasítás** | Igen | Nem |
 | **FRISSÍTÉSI utasítás** | Igen | Nem |
 | **Utasítás törlése** | Igen | Nem |
@@ -77,20 +77,31 @@ A szinapszis SQL lehetővé teszi, hogy az adatai védelméhez és a hozzáfér�
 | --- | --- | --- |
 | **Bejelentkezések** | N/A (csak a benne foglalt felhasználók támogatottak az adatbázisokban) | Igen |
 | **Felhasználók** |  N/A (csak a benne foglalt felhasználók támogatottak az adatbázisokban) | Igen |
-| **[Tartalmazott felhasználók](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Igen. **Megjegyzés:** csak egy HRE-felhasználó lehet korlátlan rendszergazda | Igen |
-| **Azure Active Directory (HRE) hitelesítés**| Igen, HRE-felhasználók | Igen, HRE bejelentkezések és felhasználók |
-| **Storage HRE átadó hitelesítés** | Igen | Igen |
+| **[Tartalmazott felhasználók](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Igen. **Megjegyzés:** csak egy Azure ad-felhasználó lehet korlátlan rendszergazda | Igen |
+| **SQL Felhasználónév/jelszó hitelesítése**| Igen | Igen |
+| **Azure Active Directory (HRE) hitelesítés**| Igen, az Azure AD-felhasználók | Igen, Azure AD-bejelentkezések és felhasználók |
+| **Storage Azure Active Directory (HRE) továbbító hitelesítés** | Igen | Igen |
 | **Storage SAS-jogkivonat hitelesítése** | Nem | Igen, az [adatbázis-hatókörrel rendelkező hitelesítő adatok](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használata [külső adatforrásban](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vagy példány-szintű [hitelesítő](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)adatban. |
 | **Tárterület-hozzáférési kulcs hitelesítése** | Igen, [adatbázis-hatókörű hitelesítő](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) adat használata a [külső adatforrásban](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nem |
-| **Storage felügyelt identitások hitelesítése** | Igen, [Managed Service Identity hitelesítő adat](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával | Igen, a `Managed Identity` hitelesítő adatok használatával. |
+| **Storage [felügyelt identitások](../security/synapse-workspace-managed-identity.md) hitelesítése** | Igen, [Managed Service Identity hitelesítő adat](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával | Igen, a `Managed Identity` hitelesítő adatok használatával. |
 | **Storage-alkalmazás identitásának hitelesítése** | [Igen](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nem |
 | **Engedélyek – objektum szintű** | Igen, beleértve a felhasználók engedélyeinek megadására, megtagadására és visszavonására vonatkozó képességet. | Igen, beleértve a felhasználók/bejelentkezések engedélyének ENGEDÉLYEZÉSét, megtagadását és visszavonását a támogatott rendszerobjektumokon |
 | **Engedélyek – séma szintű** | Igen, beleértve a sémában a felhasználókra/bejelentkezésekre vonatkozó engedélyek megadásának, megtagadásának és visszavonásának képességét. | Igen, beleértve a sémában a felhasználókra/bejelentkezésekre vonatkozó engedélyek megadásának, megtagadásának és visszavonásának képességét. |
 | **Engedélyek – [adatbázis szintű](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Igen | Igen |
 | **Engedélyek – [kiszolgáló szintű](/sql/relational-databases/security/authentication-access/server-level-roles)** | Nem | Igen, a sysadmin és más kiszolgálói szerepkörök támogatottak |
+| **Engedélyek – [oszlop szintű biztonság](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Igen | Igen |
 | **Szerepkörök/csoportok** | Igen (az adatbázis hatóköre) | Igen (a kiszolgáló és az adatbázis hatóköre is) |
 | **Biztonsági &amp; azonosító függvények** | Egyes Transact-SQL biztonsági függvények és operátorok:,,,, `CURRENT_USER` `HAS_DBACCESS` `IS_MEMBER` `IS_ROLEMEMBER` `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` `EXECUTE AS` ,,`OPEN/CLOSE MASTER KEY` | Egyes Transact-SQL biztonsági függvények és operátorok:,,,,,,,, `CURRENT_USER` `HAS_DBACCESS` `HAS_PERMS_BY_NAME` `IS_MEMBER', 'IS_ROLEMEMBER` `IS_SRVROLEMEMBER` `SESSION_USER` `SUSER_NAME` `SUSER_SNAME` `SYSTEM_USER` , `USER` ,, `USER_NAME` `EXECUTE AS` és `REVERT` . A biztonsági függvények nem használhatók külső adatok lekérdezésére (a lekérdezésben használható, változóban tárolt eredmény tárolására).  |
 | **ADATBÁZIS-HATÓKÖRŰ HITELESÍTŐ ADAT** | Igen | Igen |
+| **KISZOLGÁLÓ HATÓKÖRŰ HITELESÍTŐ ADATAI** | Nem | Igen |
+| **Sorszintű biztonság** | [Igen](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | Nem |
+| **Transzparens adattitkosítás (TDE)** | [Igen](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | Nem | 
+| **Adatfelderítési & besorolása** | [Igen](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nem |
+| **Sebezhetőségi felmérés** | [Igen](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nem |
+| **Advanced Threat Protection** | [Igen](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+| **Naplózás** | [Igen](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nem |
+| **[Tűzfalszabályok](../security/synapse-workspace-ip-firewall.md)**| Igen | Igen |
+| **[Privát végpont](../security/synapse-workspace-managed-private-endpoints.md)**| Igen | Igen |
 
 Az SQL-készlet és az SQL on-demand standard Transact-SQL nyelvű használata az adatlekérdezéshez. A részletes különbségekért tekintse meg a [Transact-SQL nyelvi referenciáját](/sql/t-sql/language-reference).
 
@@ -120,6 +131,7 @@ Az elemzett adattípusok különböző tárolási típusok tárolására haszná
 | **Belső tárterület** | Igen | Nem |
 | **Azure Data Lake v2** | Igen | Igen |
 | **Azure Blob Storage** | Igen | Igen |
+| **Azure CosmosDB analitikai tároló** | Nem | Igen, a [szinapszis hivatkozás](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) használatával (a [GateD Preview](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)alatt) |
 
 ## <a name="data-formats"></a>Adatformátumok
 
@@ -133,6 +145,7 @@ Az elemzett adattárak különböző tárolási formátumokban tárolhatók. A k
 | **Kaptári ork** | [Igen](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nem |
 | **Struktúra RC** | [Igen](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nem |
 | **JSON** | Igen | [Igen](query-json-files.md) |
+| **Avro** | Nem | Nem |
 | **[Delta – Lake](https://delta.io/)** | Nem | Nem |
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Nem | Nem |
 

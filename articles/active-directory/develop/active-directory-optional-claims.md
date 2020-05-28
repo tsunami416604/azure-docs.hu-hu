@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993695"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: opcionális jogcímek megadása az Azure AD-alkalmazáshoz
 
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N/A         | Támogatott   |
+| Személyes Microsoft-fiók | N.A.         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -85,7 +85,6 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 | `pwd_exp`     | Jelszó lejárati ideje        | Az a dátum és idő, amikor a jelszó lejár. |       |
 | `pwd_url`     | Jelszó URL-címének módosítása             | URL-cím, amelyet a felhasználó megkereshet a jelszavuk módosításához.   |   |
 | `in_corp`     | Vállalati hálózaton belül        | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet.   |  Az MFA [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címeinek beállításai alapján.    |
-| `nickname`    | Becenév                        | A felhasználó további neve. A becenév elkülönül az utónévtől vagy az utónévtől. A `profile` hatókört igényli.|
 | `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name": "Miller" | Támogatott a MSA és az Azure AD-ben. A `profile` hatókört igényli.   |
 | `given_name`  | Utónév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben.  A `profile` hatókört igényli. |
 | `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a legfontosabb adathoz. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|

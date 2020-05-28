@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80473468"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114826"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások kezelése API Management használatával
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan lehet gyorsan megkezdeni a API Management használatát a Azure Machine Learning Studio (klasszikus) webszolgáltatások kezeléséhez.
@@ -65,7 +63,7 @@ Az API létrehozása:
 
 1. Kattintson az **API hozzáadása**lehetőségre.
 2. Adja meg a **webes API nevét** (ez a példa a "AZUREML demo API"-t használja).
-3. A **webszolgáltatás URL-címe**mezőbe írja`https://ussouthcentral.services.azureml.net`be a következőt: "".
+3. A **webszolgáltatás URL-címe**mezőbe írja be a következőt: " `https://ussouthcentral.services.azureml.net` ".
 4. Adjon meg egy * * webes API URL-utótagot. Ez lesz az URL-cím utolsó része, amelyet az ügyfelek a szolgáltatási példánynak küldött kérések küldésére használnak (ez a példa a "azureml-demo" kifejezést használja).
 5. A **webes API URL-sémája**beállításnál válassza a **https**lehetőséget.
 6. **Termékek**esetében válassza az **alapszintű**lehetőséget.
@@ -84,12 +82,12 @@ Ekkor megjelenik az **új művelet** ablak, és alapértelmezés szerint az **al
 Először hozzon létre egy műveletet a AzureML ERŐFORRÁSREKORDOK szolgáltatáshoz:
 
 1. A **http-művelethez**válassza a **post**lehetőséget.
-2. Az **URL-sablonhoz**írja be`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`a következőt: "".
+2. Az **URL-sablonhoz**írja be a következőt: " `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` ".
 3. Adja meg a **megjelenítendő nevet** (ez a példa a "erőforrásrekordok végrehajtása" kifejezést használja).
 
    ![Add-erőforrásrekordok-Operation-Signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. Kattintson a bal oldalon a **válaszok** > **Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
+4. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 5. A művelet mentéséhez kattintson a **Mentés** gombra.
 
    ![Add-RR-Operation-Response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
@@ -103,36 +101,36 @@ Először hozzon létre egy műveletet a AzureML ERŐFORRÁSREKORDOK szolgáltat
 
 1. Kattintson a **művelet hozzáadása** lehetőségre egy BES művelet az API-hoz való hozzáadásához.
 2. A **http-művelethez**válassza a **post**lehetőséget.
-3. Az **URL-sablonhoz**írja be`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`a következőt: "".
+3. Az **URL-sablonhoz**írja be a következőt: " `/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}` ".
 4. Adja meg a **megjelenítendő nevet** (ez a példa a "BES submit" kifejezést használja).
-5. Kattintson a bal oldalon a **válaszok** > **Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
+5. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 6. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="start-a-batch-execution-job"></a>Kötegelt végrehajtási feladatok indítása
 
 1. Kattintson a **művelet hozzáadása** lehetőségre egy BES művelet az API-hoz való hozzáadásához.
 2. A **http-művelethez**válassza a **post**lehetőséget.
-3. A **http-művelethez**írja be`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`a következőt: "".
+3. A **http-művelethez**írja be a következőt: " `/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}` ".
 4. Adja meg a **megjelenítendő nevet** (ez a példa a "BES Start" kifejezést használja).
-6. Kattintson a bal oldalon a **válaszok** > **Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
+6. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 7. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Kötegelt végrehajtási feladatok állapotának vagy eredményének beolvasása
 
 1. Kattintson a **művelet hozzáadása** lehetőségre egy BES művelet az API-hoz való hozzáadásához.
 2. A **http-művelethez**válassza a **beolvasás**lehetőséget.
-3. Az **URL-sablonhoz**írja be`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`a következőt: "".
+3. Az **URL-sablonhoz**írja be a következőt: " `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}` ".
 4. Adja meg a **megjelenítendő nevet** (ez a példa a "BES status" kifejezést használja).
-6. Kattintson a bal oldalon a **válaszok** > **Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
+6. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 7. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="delete-a-batch-execution-job"></a>Batch-végrehajtási feladatok törlése
 
 1. Kattintson a **művelet hozzáadása** lehetőségre egy BES művelet az API-hoz való hozzáadásához.
 2. A **http-művelethez**válassza a **Törlés**lehetőséget.
-3. Az **URL-sablonhoz**írja be`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`a következőt: "".
+3. Az **URL-sablonhoz**írja be a következőt: " `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}` ".
 4. Adja meg a **megjelenítendő nevet** (ez a példa a "BES Delete" kifejezést használja).
-5. Kattintson a bal oldalon a **válaszok** > **Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
+5. Kattintson **Responses**  >  a bal oldalon a válaszok**Hozzáadás** elemre, és válassza a **200 OK**lehetőséget.
 6. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>Művelet meghívása a fejlesztői portálról
@@ -153,9 +151,9 @@ A műveletek meghívhatók közvetlenül a fejlesztői portálról, amely kénye
 
 4. A **kérés paramétereinek**megtekintéséhez írja be a **munkaterületet** és a **szolgáltatást**, írja be a "2,0 for the **apiversion**" és a "true" értéket a **részletekre**. A **munkaterület** és a **szolgáltatás** a AzureML webszolgáltatás irányítópultján található (lásd: **a webszolgáltatás tesztelése** az a függelékben).
 
-   A **kérések fejléce**lapon kattintson a **fejléc hozzáadása** elemre, és írja be a "Content-Type" és az "Application/JSON" kifejezést. Kattintson ismét a **fejléc hozzáadása** elemre, és írja be * \<az "engedélyezés" és a "\>tulajdonos a szolgáltatás API-kulcsa*" kifejezést. Az API-kulcs a AzureML webszolgáltatás irányítópultján található (lásd: **a webszolgáltatás tesztelése** az a függelékben).
+   A **kérések fejléce**lapon kattintson a **fejléc hozzáadása** elemre, és írja be a "Content-Type" és az "Application/JSON" kifejezést. Kattintson ismét a **fejléc hozzáadása** elemre, és írja be az "engedélyezés" és a "tulajdonos *\<your service API-KEY\>* " kifejezést. Az API-kulcs a AzureML webszolgáltatás irányítópultján található (lásd: **a webszolgáltatás tesztelése** az a függelékben).
 
-   A **kérelem törzse**mezőbe `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`írja be a következőt:.
+   A **kérelem törzse**mezőbe írja be a következőt: `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` .
 
    ![azureml-bemutató-API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
@@ -175,7 +173,7 @@ Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolg�
 | --- | --- |
 | Ez egy jó nap |1 1 2 2 0 2 0 1 |
 
-Először a kívánt böngésző használatával lépjen a következő helyre: [https://studio.azureml.net/](https://studio.azureml.net/) , és adja meg a bejelentkezéshez szükséges hitelesítő adatait. Ezután hozzon létre egy új üres kísérletet.
+Először a kívánt böngésző használatával lépjen a következő helyre:, [https://studio.azureml.net/](https://studio.azureml.net/) és adja meg a bejelentkezéshez szükséges hitelesítő adatait. Ezután hozzon létre egy új üres kísérletet.
 
 ![Keresés – kísérlet – sablonok](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 

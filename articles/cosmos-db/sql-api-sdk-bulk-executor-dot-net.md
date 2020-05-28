@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 23ba8b12651c4de05fd8fb0b2721839beb36a7a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 398f1495fdfc9da7273ff372fbb57a6ba304c490
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660460"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117712"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: letöltési információ 
 
@@ -21,7 +21,7 @@ ms.locfileid: "83660460"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node. js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
@@ -73,6 +73,10 @@ ms.locfileid: "83660460"
 ### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0 – előzetes verzió
 
 * A .NET Standard 2,0 a támogatott cél keretrendszerek egyike, hogy a tömeges végrehajtó függvénytár működjön a .NET Core-alkalmazásokkal.
+
+### <a name="189"></a><a name="1.8.9"/>1.8.9
+
+* Javítva lett a BulkDeleteAsync hibája, ha az Escape-idézőjelekkel rendelkező értékek bemeneti paraméterekként lettek átadva.
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 

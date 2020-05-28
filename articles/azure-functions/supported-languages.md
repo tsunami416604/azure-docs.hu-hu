@@ -1,26 +1,25 @@
 ---
 title: Támogatott nyelvek a Azure Functions
-description: Megtudhatja, hogy mely nyelvek támogatottak (GA), és melyek kísérleti vagy előzetes verziójúak.
+description: Megtudhatja, hogy mely nyelvek támogatottak (GA), és melyek előzetes verzióban érhetők el, és hogyan bővíthetők a függvények fejlesztése más nyelvekre.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994901"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Támogatott nyelvek a Azure Functions
 
-Ez a cikk a Azure Functions használatával használható nyelvekhez kínált támogatási szinteket ismerteti.
+Ez a cikk a Azure Functions használatával használható nyelvekhez kínált támogatási szinteket ismerteti. Emellett ismerteti a függvények a natív módon nem támogatott nyelvekkel való létrehozására vonatkozó stratégiákat is.
 
 ## <a name="levels-of-support"></a>Támogatási szintek
 
-Három támogatási szint létezik:
+Két támogatási szint létezik:
 
 * **Általánosan elérhető (GA)** – teljes mértékben támogatott és jóváhagyott éles használatra.
 * **Előzetes** verzió – még nem támogatott, de a jövőben várhatóan elérhető lesz a ga állapota.
-* **Kísérleti** – nem támogatott, és a jövőben is elhagyható; az előzetes verzió vagy a GA-állapot jótállása nem lehetséges.
 
 ## <a name="languages-by-runtime-version"></a>Nyelvek futásidejű verzió szerint 
 
@@ -28,15 +27,11 @@ Három támogatási szint létezik:
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Kísérleti nyelvek
+## <a name="custom-handlers-preview"></a>Egyéni kezelők (előzetes verzió) 
 
-Az 1. x verzióban a kísérleti nyelvek nem méretezhetők jól, és nem támogatják az összes kötést.
+Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek a Azure Functions gazdagépről kapnak eseményeket. Minden olyan nyelv, amely támogatja a HTTP primitíveket, egyéni kezelőt valósíthat meg. Ez azt jelenti, hogy az egyéni kezelők a nem hivatalosan támogatott nyelveken is létrehozhatnak függvényeket. További információ: [Azure functions egyéni kezelők (előzetes verzió)](functions-custom-handlers.md).
 
-Ne használjon olyan kísérleti funkciókat, amelyekre támaszkodik, mivel nem rendelkezik hivatalos támogatással a számukra. A kísérleti nyelvekkel kapcsolatos problémák esetén nem szabad megnyitni a támogatási eseteket. 
-
-A későbbi futásidejű verziók nem támogatják a kísérleti nyelveket. Az új nyelvek támogatását csak akkor adja hozzá a rendszer, ha a nyelv az éles környezetben is támogatott. 
-
-### <a name="language-extensibility"></a>Nyelvi bővíthetőség
+## <a name="language-extensibility"></a>Nyelvi bővíthetőség
 
 A 2. x verziótól kezdődően a futtatókörnyezet [nyelvi bővíthetőséget](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)kínál. A 2. x futtatókörnyezetben található JavaScript-és Java-nyelvek ezzel a bővíthetőséggel vannak felépítve.
 

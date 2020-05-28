@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218145"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118442"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a cikk bemutatja, hogyan értékelheti ki a modell teljesítményét Azure Machine Learning Studio (klasszikus), és rövid magyarázatot ad a feladathoz elérhető mérőszámokról. Három közös felügyelt tanulási forgatókönyv jelenik meg: 
 
@@ -140,7 +138,7 @@ Ebben a kísérletben a népszerű [írisz](https://archive.ics.uci.edu/ml/datas
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
-* [Adatok importálása][import-data]
+* [Adatimportálás][import-data]
 * [Többosztályos döntési erdő][multiclass-decision-forest]
 * [Adatok felosztása][split]
 * [Modell betanítása][train-model]
@@ -151,7 +149,7 @@ A portok a 10. ábrán látható módon csatlakoztathatók.
 
 Állítsa a [Train Model][train-model] modul felirat oszlopának indexét 5 értékre. Az adatkészlet nem tartalmaz fejlécsort, de tudjuk, hogy az osztály címkéi az ötödik oszlopban vannak.
 
-Kattintson az [adatimportálási][import-data] modulra, és állítsa be az *adatforrás* tulajdonságot a *webes URL-címre http-n keresztül*, valamint a következő *URL-címet* : http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Kattintson az [adatimportálási][import-data] modulra, és állítsa be az *adatforrás* tulajdonságot a *webes URL-címre http-n keresztül*, valamint a következő *URL-címet* : http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
 
 Állítsa be, hogy a példányok milyen hányadát szeretné használni az [Adatfelosztási][split] modulban (0,7 például) a betanításhoz.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457365"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117184"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Mappák és több CSV-fájl lekérdezése  
 
@@ -24,25 +24,10 @@ Az SQL on-demand támogatja több fájl/mappa olvasását helyettesítő karakte
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk további részének olvasása előtt mindenképpen tekintse át az alábbi cikkeket:
+Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
-- [Első beállítás](query-data-storage.md#first-time-setup)
-- [Előfeltételek](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>Több fájl olvasása a mappában
-
-A minta lekérdezések követéséhez a *CSV/taxi* mappát kell használnia. A New York-i, a sárga taxis utazás a következő adatokat tartalmazza: július 2016 és június 2018.
-
-A *CSV/taxiban* található fájlokat az év és hónap után nevezték el:
-
-- yellow_tripdata_2016 -07. csv
-- yellow_tripdata_2016 -08. csv
-- yellow_tripdata_2016 -09. csv
-- ...
-- yellow_tripdata_2018 -04. csv
-- yellow_tripdata_2018 -05. csv
-- yellow_tripdata_2018 -06. csv
-
+A minta lekérdezések követéséhez a *CSV/taxi* mappát kell használnia. A New York-i, a sárga taxis utazás a következő adatokat tartalmazza: július 2016 és június 2018. A *CSV/taxiban* található fájlokat a következő minta alapján nevezi el az év és hónap után: yellow_tripdata_ <year> - <month> . csv
+        
 Minden fájl a következő szerkezettel rendelkezik:
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
@@ -57,28 +42,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +69,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +104,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -184,7 +142,7 @@ ORDER BY
 A fájlok több mappából is olvashatók a helyettesítő karakterek használatával. A következő lekérdezés beolvassa az összes olyan fájlt, amely a *CSV* mappában található összes mappából a *t* és a t végződéssel kezdődő neveket *tartalmaz.*
 
 > [!NOTE]
-> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t&ast;* " nevű fájlokat fogja megcélozni.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast; * " nevű fájlokat fogja megcélozni.
 
 ```sql
 SELECT
@@ -192,8 +150,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -231,7 +190,7 @@ Mivel csak egy olyan mappa van, amely megfelel a feltételeknek, a lekérdezés 
 Több helyettesítő karaktert is használhat a különböző elérési utak szintjén. Például a korábbi lekérdezések gazdagabbá tehetők csak a 2017 adatokkal rendelkező fájlok olvasására, az összes olyan mappából, amelynél a nevek a *t* értékkel kezdődnek, és az *i*-vel végződik.
 
 > [!NOTE]
-> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t&ast;* " nevű fájlokat fogja megcélozni.
+> Jegyezze fel az elérési út végén található/végét az alábbi lekérdezésben. Egy mappát jelöl. Ha a/ki van hagyva, a lekérdezés a " *t &ast; * " nevű fájlokat fogja megcélozni.
 > Lekérdezés legfeljebb 10 helyettesítő karakterből áll.
 
 ```sql
@@ -240,8 +199,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

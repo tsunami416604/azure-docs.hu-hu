@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fd240abee3bb19b3c54650756a3329d4d1ef8ae5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118393"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113523"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,29 +41,29 @@ Először is szüksége lesz egy Azure Storage-blobban található betanítási 
 
 Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-ját a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
-1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
+1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-A `201 (Success)` válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója. 
+A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az értéke a betanított új modell azonosítója. 
 
 ## <a name="get-training-results"></a>Képzési eredmények beolvasása
 
 Miután elindította a vonatok műveletét, új műveletet fog használni, **[Egyéni modell beszerzésével](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetCustomModel)** ellenőrizhető a betanítási állapot. Adja át a modell AZONOSÍTÓját ebbe az API-hívásba a betanítási állapot megtekintéséhez:
 
-1. Cserélje `<Endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot.
-1. Lecserélés `<subscription key>` az előfizetési kulccsal
-1. Cserélje `<model ID>` le az t az előző lépésben kapott modell-azonosítóra.
+1. Cserélje le `<Endpoint>` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot.
+1. Lecserélés az `<subscription key>` előfizetési kulccsal
+1. Cserélje le az `<model ID>` t az előző lépésben kapott modell-azonosítóra.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-A következő formátumban kap `200 (Success)` választ egy JSON-törzsből. Figyelje meg `"status"` a mezőt. Ez az érték `"ready"` a betanítás befejezése után lesz. Ha a modell nem fejeződött be, a parancs újbóli futtatásával újra le kell kérdezni a szolgáltatást. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+`200 (Success)`A következő formátumban kap választ egy JSON-törzsből. Figyelje meg a `"status"` mezőt. Ez az érték a `"ready"` betanítás befejezése után lesz. Ha a modell nem fejeződött be, a parancs újbóli futtatásával újra le kell kérdezni a szolgáltatást. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
 A `"modelId"` mező tartalmazza a betanított modell azonosítóját. Ezt a következő lépéshez kell megadnia.
 
@@ -137,32 +137,32 @@ A `"modelId"` mező tartalmazza a betanított modell azonosítóját. Ezt a köv
 
 Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. Hívja meg az **[elemzés űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API-t a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje `<model ID>` le az értékét az előző szakaszban kapott modell-azonosítóra.
-1. Cserélje `<SAS URL>` le egy sas URL-címet a fájlra az Azure Storage-ban. Kövesse a betanítás szakasz lépéseit, de ahelyett, hogy a teljes blob-tároló SAS URL-címét beolvassa, szerezze be egyet az elemezni kívánt fájlhoz.
+1. Cserélje le `<Endpoint>` az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le az értékét az `<model ID>` előző szakaszban kapott modell-azonosítóra.
+1. Cserélje le `<SAS URL>` egy sas URL-címet a fájlra az Azure Storage-ban. Kövesse a betanítás szakasz lépéseit, de ahelyett, hogy a teljes blob-tároló SAS URL-címét beolvassa, szerezze be egyet az elemezni kívánt fájlhoz.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
 curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-`202 (Success)` Választ fog kapni egy **műveleti hely** fejlécével. Ennek a fejlécnek az értéke tartalmazza az elemzési művelet eredményeinek nyomon követésére használt eredmény-azonosítót. Mentse a következő lépés eredmény-AZONOSÍTÓját.
+Választ fog kapni egy `202 (Success)` **műveleti hely** fejlécével. Ennek a fejlécnek az értéke tartalmazza az elemzési művelet eredményeinek nyomon követésére használt eredmény-azonosítót. Mentse a következő lépés eredmény-AZONOSÍTÓját.
 
 ## <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
 
 A következő API használatával kérdezheti le az elemzési művelet eredményét.
 
-1. Cserélje `<Endpoint>` le az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje `<result ID>` le az azonosítót az előző szakaszban kapott azonosítóra.
+1. Cserélje le `<Endpoint>` az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le az `<result ID>` azonosítót az előző szakaszban kapott azonosítóra.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
 curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyzeResults/<result ID>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
-A következő formátumban kap `200 (Success)` választ egy JSON-törzsből. A kimenet lerövidítve az egyszerűség kedvéért. Figyelje meg `"status"` a mező alján található mezőt. Ez az érték `"succeeded"` lesz az elemzési művelet befejezésekor. Ha az elemzési művelet nem fejeződött be, újra le kell kérdezni a szolgáltatást a parancs újbóli futtatásával. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+`200 (Success)`A következő formátumban kap választ egy JSON-törzsből. A kimenet lerövidítve az egyszerűség kedvéért. Figyelje meg a `"status"` mező alján található mezőt. Ez az érték lesz az elemzési `"succeeded"` művelet befejezésekor. Ha az elemzési művelet nem fejeződött be, újra le kell kérdezni a szolgáltatást a parancs újbóli futtatásával. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
-A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomóponton találhatók. Ha az egyszerű szöveg kinyerését is a *includeTextDetails* URL-cím paraméterrel `"readResults"` adta meg, akkor a csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
+A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomóponton találhatók. Ha az egyszerű szöveg kinyerését is a *includeTextDetails* URL-cím paraméterrel adta meg, akkor a `"readResults"` csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
 
 ```json
 {

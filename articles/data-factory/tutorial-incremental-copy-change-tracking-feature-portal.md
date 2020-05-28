@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfe7a88cd02b109124b9d35247aa2d4cbc5373c5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415423"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116603"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával
 
@@ -70,11 +70,11 @@ Ebben az oktatóanyagban két folyamatot hoz létre, amelyek az alábbi két mű
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure SQL Database**. Ezt az adatbázist használjuk **forrásadattárként**. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
+* **Azure SQL Database**. Ezt az adatbázist használjuk **forrásadattárként**. Ha még nem rendelkezik Azure SQL Database-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket.
 * **Azure Storage-fiók**. A blobtárolót használjuk majd **fogadóadattárként**. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Hozzon létre egy tárolót **adftutorial** néven. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Adatforrástábla létrehozása az Azure SQL-adatbázisban
-1. Indítsa el az **SQL Server Management Studiót**, és csatlakozzon az Azure SQL Serverhez.
+1. Indítsa el **SQL Server Management Studio**, és kapcsolódjon a SQL Databasehoz.
 2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra**, és válassza az **Új lekérdezés** elemet.
 3. Futtassa a következő SQL-parancsot az Azure SQL-adatbázison egy tábla `data_source_table` néven, adatforrástárként történő létrehozásához.  
 
@@ -154,7 +154,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -216,8 +216,8 @@ Ebben a lépésben az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja.
 3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőben adja meg az **AzureSqlDatabaseLinkedService** értéket.
-    2. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server-kiszolgálót.
-    4. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázist.
+    2. Válassza ki a kiszolgáló **nevét a kiszolgálónév** mezőhöz.
+    4. Válassza ki az adatbázist az **adatbázis neve** mezőhöz.
     5. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
     6. A **Jelszó** mezőben adja meg a felhasználóhoz tartozó jelszót.
     7. A kapcsolat teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
@@ -263,7 +263,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
 
     1. A **Társított szolgáltatás** mezőben válassza az **AzureStorageLinkedService** értéket.
     2. A **filePath****mappa** részéhez írja be az **adftutorial/incchgtracking** kifejezést.
-    3. Adja meg ** \@a concat (növekményes, folyamat () értéket. RunId, '. txt ')** a **filepath** **fájljának** részeként.  
+    3. Adja meg ** \@ a concat (növekményes, folyamat () értéket. RunId, '. txt ')** a **filepath** **fájljának** részeként.  
 
        ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -416,7 +416,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     2. Válassza az **Importálási paraméter** lehetőséget.
     3. A **tárolt eljárás paramétereinél** adja meg az alábbi értékeket a paraméterekhez:
 
-        | Name (Név) | Típus | Érték |
+        | Name | Típus | Érték |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Sztring | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

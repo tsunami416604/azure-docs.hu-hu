@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275463"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116556"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
 
@@ -41,9 +41,9 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics beállítások
 
-Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának támogatott lehetőségeit vázolja fel, egyet az önálló és a készletezett adatbázisokhoz, valamint a rugalmas készletekhez, a másikat pedig felügyelt példányok és példány-adatbázisok számára.
+Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának támogatott lehetőségeit ismerteti, amelyek közül az egyiket Azure SQL Database, a másikat pedig az Azure SQL felügyelt példány-adatbázisaihoz.
 
-| Azure SQL Analytics lehetőség | Leírás | Önálló és készletezett adatbázisok és rugalmas készletek támogatása | Felügyelt példányok és példányok adatbázis-támogatása |
+| Azure SQL Analytics lehetőség | Leírás | SQL Database támogatás | SQL felügyelt példányok támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típus szerint | Az összes figyelt erőforrást megszámoló perspektíva. | Igen | Igen |
 | Insights | Hierarchikus részletezést biztosít a Intelligent Insightsba a teljesítményig. | Igen | Igen |
@@ -54,7 +54,7 @@ Az alábbi táblázat a Azure SQL Analytics irányítópult két verziójának t
 | Lekérdezés időtartama | Hierarchikus részletezést biztosít a lekérdezés végrehajtási statisztikái, például a lekérdezési időtartam, a CPU-használat, az adatio-használat, a log IO használata során. | Igen | Igen |
 | Lekérdezési várakozások | Hierarchikus részletezést biztosít a lekérdezési várakozási statisztikákra a várakozási kategóriánként. | Igen | Igen |
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Használja a [Solutions Gallery Azure monitor-megoldások hozzáadása az](../../azure-monitor/insights/solutions.md) Azure SQL Analytics (előzetes verzió) a log Analytics munkaterülethez való hozzáadásához használt eljárást.
 
@@ -62,7 +62,7 @@ Használja a [Solutions Gallery Azure monitor-megoldások hozzáadása az](../..
 
 Miután létrehozta Azure SQL Analytics megoldást a munkaterületen, **konfigurálnia** kell az összes figyelni kívánt erőforrást, hogy a diagnosztikai telemetria továbbítsa a Azure SQL Analytics. Kövesse az oldalon található részletes utasításokat:
 
-- Engedélyezze Azure Diagnostics az Azure SQL Database-hez, hogy a [stream diagnosztikai telemetria Azure SQL Analytics](../../sql-database/sql-database-metrics-diag-logging.md).
+- Engedélyezze Azure Diagnostics az Azure SQL Database-hez, hogy a [stream diagnosztikai telemetria Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 A fenti oldalon megtudhatja, hogyan engedélyezheti a több Azure-előfizetés figyelését egyetlen Azure SQL Analytics munkaterületről egyetlen üvegtáblaként.
 
@@ -72,13 +72,13 @@ Azure SQL Analytics a munkaterülethez való hozzáadásakor a rendszer hozzáad
 
 ![Azure SQL Analytics összefoglaló csempe](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-A betöltés után a csempén látható az önálló és a készletezett adatbázisok, a rugalmas készletek, a felügyelt példányok és a felügyelt példányok adatbázisainak száma, amelyekből Azure SQL Analytics diagnosztikai telemetria kapnak.
+A betöltést követően a csempén látható az adatbázisok és a rugalmas készletek száma a SQL Database és felügyelt példányokban és példány-adatbázisokban az SQL felügyelt példányában, amelyből a Azure SQL Analytics diagnosztikai telemetria kap.
 
 ![Azure SQL Analytics csempe](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL Analytics két különálló nézetet biztosít – egyet az önálló adatbázisok és a készletezett adatbázisok, valamint a rugalmas készletek figyelésére, valamint a felügyelt példányok és példányok adatbázisainak figyelésére szolgáló másik nézetre.
+Azure SQL Analytics két különálló nézetet biztosít – egyet a figyelési SQL Databasehoz, valamint a felügyelt SQL-példány figyelésének másik nézetét.
 
-Az önálló és a készletezett adatbázisok és rugalmas készletek Azure SQL Analytics monitorozási irányítópultjának megtekintéséhez kattintson a csempe felső részén. A felügyelt példányok és példány-adatbázisok Azure SQL Analytics monitorozási irányítópultjának megtekintéséhez kattintson a csempe alsó részére.
+A SQL Database Azure SQL Analytics monitorozási irányítópultjának megtekintéséhez kattintson a csempe felső részén. A felügyelt SQL-példányok Azure SQL Analytics figyelési irányítópultjának megtekintéséhez kattintson a csempe alsó részére.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>AdatAzure SQL Analyticsek megtekintése
 
@@ -86,7 +86,7 @@ Az irányítópult a különböző perspektívák által figyelt adatbázisok á
 
 Ha egyes mérőszámok vagy naplók nem áramlanak be Azure Monitorba, a Azure SQL Analytics csempéi nem lesznek kitöltve a figyelési információkkal.
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>Önálló és készletezett adatbázisok és rugalmas készletek nézet
+### <a name="sql-database-view"></a>SQL Database nézet
 
 Miután kiválasztotta az adatbázis Azure SQL Analytics csempét, megjelenik a figyelési irányítópult.
 
@@ -98,7 +98,7 @@ A csempék bármelyikének kiválasztásával megnyithatja a részletezési jele
 
 Az ebben a nézetben szereplő összes perspektíva összefoglalókat biztosít az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintjén. Emellett minden perspektívában látható a jelentésre vonatkozó perspektíva a jobb oldalon. Ha kijelöli az előfizetést, a kiszolgálót, a készletet vagy az adatbázist a listából, folytatja a részletezést.
 
-### <a name="managed-instance-and-instances-databases-view"></a>Felügyelt példányok és példányok adatbázisainak nézete
+### <a name="sql-managed-instance-view"></a>SQL felügyelt példány nézet
 
 Miután kiválasztotta az adatbázisok Azure SQL Analytics csempét, megjelenik a figyelési irányítópult.
 
@@ -106,13 +106,13 @@ Miután kiválasztotta az adatbázisok Azure SQL Analytics csempét, megjelenik 
 
 A csempék bármelyikének kiválasztásával megnyithatja a részletezési jelentést az adott perspektívában. A perspektíva kiválasztását követően megnyílik a részletezési jelentés.
 
-A felügyelt példány nézet kiválasztásával megtekintheti a felügyelt példányok kihasználtságának részleteit, a benne lévő adatbázisokat és a példányon végrehajtott lekérdezések telemetria.
+Az SQL felügyelt példány nézetének kiválasztásával megtekintheti a felügyelt példányok kihasználtságát, a benne lévő adatbázisokat és a telemetria a példányon végrehajtott lekérdezések részleteit.
 
 ![Azure SQL Analytics időtúllépések](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights jelentés
 
-Azure SQL Database [Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) segítségével megtudhatja, mi történik az összes Azure SQL-adatbázis teljesítményével. Az összegyűjtött Intelligent Insights a bepillantások perspektívájában megjeleníthetők és elérhetők.
+Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) segítségével megtudhatja, mi történik az összes Azure SQL-adatbázis teljesítményével. Az összegyűjtött Intelligent Insights a bepillantások perspektívájában megjeleníthetők és elérhetők.
 
 ![Azure SQL Analyticsi adatfelismerés](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +170,7 @@ Az új szerepkör létrehozása után rendelje hozzá ezt a szerepkört minden o
 
 ## <a name="analyze-data-and-create-alerts"></a>Az adatelemzés és a riasztások létrehozása
 
-Az adatelemzés Azure SQL Analytics az egyéni lekérdezés és jelentéskészítés [log Analytics nyelvén](../log-query/get-started-queries.md) alapul. Az adatbázis-erőforrásból összegyűjtött rendelkezésre álló adatok leírását az egyéni lekérdezésekhez a [mérőszámok és naplók elérhetővé](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)tételében találja.
+Az adatelemzés Azure SQL Analytics az egyéni lekérdezés és jelentéskészítés [log Analytics nyelvén](../log-query/get-started-queries.md) alapul. Az adatbázis-erőforrásból összegyűjtött rendelkezésre álló adatok leírását az egyéni lekérdezésekhez a [mérőszámok és naplók elérhetővé](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)tételében találja.
 
 A Azure SQL Analytics automatikus riasztásai olyan Log Analytics-lekérdezés írásán alapulnak, amely egy adott feltétel teljesülése esetén riasztást indít el. Az alábbi példákban talál néhány példát Log Analytics lekérdezésekre, amelyeken a riasztás beállítható Azure SQL Analyticsban.
 
@@ -178,7 +178,7 @@ A Azure SQL Analytics automatikus riasztásai olyan Log Analytics-lekérdezés �
 
 Egyszerűen létrehozhat Azure SQL Database erőforrásokból érkező adatokkal kapcsolatos [riasztásokat](../platform/alerts-metric.md) . Íme néhány hasznos, a log-riasztással használható [naplózási lekérdezés](../log-query/log-query-overview.md) :
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Magas CPU Azure SQL Database
+#### <a name="high-cpu"></a>Magas CPU-használat
 
 ```
 AzureMetrics
@@ -194,7 +194,7 @@ AzureMetrics
 > - A riasztás beállításának előfeltétele, hogy a figyelt adatbázisok az alapszintű mérőszámokat a Azure SQL Analyticsra továbbítsák.
 > - Ehelyett cserélje le a MetricName értéket cpu_percent és dtu_consumption_percent a magas DTU eredmények beszerzéséhez.
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Magas CPU Azure SQL Database rugalmas készletekben
+#### <a name="high-cpu-on-elastic-pools"></a>Magas CPU rugalmas készleteken
 
 ```
 AzureMetrics
@@ -210,7 +210,7 @@ AzureMetrics
 > - A riasztás beállításának előfeltétele, hogy a figyelt adatbázisok az alapszintű mérőszámokat a Azure SQL Analyticsra továbbítsák.
 > - Ehelyett cserélje le a MetricName értéket cpu_percent és dtu_consumption_percent a magas DTU eredmények beszerzéséhez.
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Az elmúlt 1 HR-ben átlagosan a 95%-nál nagyobb tárterületet Azure SQL Database.
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>Az elmúlt 1 HR-ben átlagosan 95%-nál nagyobb tárterület
 
 ```
 let time_range = 1h;
@@ -254,9 +254,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>Riasztások létrehozása a felügyelt példányokhoz
+### <a name="creating-alerts-for-sql-managed-instance"></a>Riasztások létrehozása a felügyelt SQL-példányhoz
 
-#### <a name="managed-instance-storage-is-above-90"></a>A felügyelt példányok tárolója 90% fölött van
+#### <a name="storage-is-above-90"></a>A tárterület 90%-nál nagyobb
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +272,7 @@ AzureDiagnostics
 > - A riasztás beállításának előfeltétele, hogy a felügyelt példány figyelése a ResourceUsageStats-napló folyamatos átvitelét teszi lehetővé Azure SQL Analytics.
 > - Ehhez a lekérdezéshez riasztási szabályt kell beállítani a riasztás kikapcsolásához, ha a lekérdezés eredménye (> 0 eredmény) létezik, jelezve, hogy a feltétel létezik a felügyelt példányon. A kimenet a felügyelt példány tárolási százalékos aránya.
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Felügyelt példány CPU átlagos fogyasztása 95%-nál nagyobb az elmúlt 1 HR-ben
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>A CPU átlagos fogyasztása 95% fölött van az elmúlt 1 HR-ben
 
 ```
 let cpu_percentage_threshold = 95;

@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839113"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018786"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
 
 Ez a cikk azokat a tippeket ismerteti, amelyekkel jobb írási teljesítmény érhető el, ha az adatok betöltését SQL Azure adatbázisba Azure Stream Analytics használatával végezheti el.
 
-A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, lehetőségként. Ez a beállítás lehetővé teszi a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) feladatok topológiáit, amelyekben egyszerre több kimeneti partíció is írásra kerül a célhely táblába. A beállítás engedélyezése Azure Stream Analytics azonban nem elegendő a magasabb átviteli sebességek eléréséhez, mivel ez jelentős mértékben függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az indexek, a fürtözési kulcs, az indexek kitöltési tényezője és a tömörítés megválasztása hatással van a táblázatok betöltésének idejére. A SQL Azure-adatbázis optimalizálásával kapcsolatos további információkért tekintse meg az [SQL Database teljesítményének útmutatója](../sql-database/sql-database-performance-guidance.md)című témakört a lekérdezés és a teljesítmény javítása érdekében. Az írási sorrend nem garantált a SQL Azure adatbázissal párhuzamos íráskor.
+A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, lehetőségként. Ez a beállítás lehetővé teszi a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) feladatok topológiáit, amelyekben egyszerre több kimeneti partíció is írásra kerül a célhely táblába. A beállítás engedélyezése Azure Stream Analytics azonban nem elegendő a magasabb átviteli sebességek eléréséhez, mivel ez jelentős mértékben függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az indexek, a fürtözési kulcs, az indexek kitöltési tényezője és a tömörítés megválasztása hatással van a táblázatok betöltésének idejére. A SQL Azure-adatbázis optimalizálásával kapcsolatos további információkért tekintse meg az [SQL Database teljesítményének útmutatója](../azure-sql/database/performance-guidance.md)című témakört a lekérdezés és a teljesítmény javítása érdekében. Az írási sorrend nem garantált a SQL Azure adatbázissal párhuzamos íráskor.
 
 Íme néhány konfiguráció az egyes szolgáltatásokon belül, amelyek segíthetnek a megoldás általános teljesítményének javításában.
 
@@ -37,7 +37,7 @@ A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, 
 
 - **Particionált tábla és indexek** [– particionált SQL-](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) táblázat és particionált indexek használatával a táblán ugyanazzal az oszloppal, mint a partíciós kulccsal (például PartitionID) az írás során jelentősen csökkenthetik a partíciók közötti adattartalmakat. Particionált tábla esetén létre kell hoznia egy [Partition függvényt](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) és egy [partíciós sémát](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) az elsődleges fájlcsoportja. Ez a meglévő adatmennyiségek rendelkezésre állását is növeli az új adatbetöltések során. A log IO-korlát lehet a partíciók száma alapján, ami növelhető az SKU frissítésével.
 
-- **Kerülje az egyedi kulcs megsértését** – ha [több kulcs megsértését jelző figyelmeztető üzenetet](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) kap a Azure stream Analyticsi tevékenység naplójában, ügyeljen arra, hogy a feladatot ne befolyásolja az egyedi korlátozás megsértése, amely valószínűleg a helyreállítási esetekben fog történni. Ennek elkerüléséhez állítsa be a [dup\_\_-kulcs mellőzése](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) beállítást az indexeken.
+- **Kerülje az egyedi kulcs megsértését** – ha [több kulcs megsértését jelző figyelmeztető üzenetet](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) kap a Azure stream Analyticsi tevékenység naplójában, ügyeljen arra, hogy a feladatot ne befolyásolja az egyedi korlátozás megsértése, amely valószínűleg a helyreállítási esetekben fog történni. Ennek elkerüléséhez állítsa be a [dup- \_ \_ kulcs mellőzése](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) beállítást az indexeken.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory és memóriában tárolt táblák
 

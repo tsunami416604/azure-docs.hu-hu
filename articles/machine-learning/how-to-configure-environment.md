@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9a02efedb0e002ac13294429c06e39ea18019c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399009"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117470"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ A DSVM használata fejlesztési környezetként:
     * Az Azure CLI:
 
         > [!IMPORTANT]
-        > * Ha az Azure CLI-t használja, először be kell jelentkeznie az Azure-előfizetésbe `az login` az parancs használatával.
+        > * Ha az Azure CLI-t használja, először be kell jelentkeznie az Azure-előfizetésbe az `az login` parancs használatával.
         >
         > * Ha az ebben a lépésben szereplő parancsokat használja, meg kell adnia az erőforráscsoport nevét, a virtuális gép nevét, a felhasználónevet és a jelszót.
 
@@ -136,7 +136,7 @@ További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.
 
 ## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
 
-Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Például:
+Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hozzon létre egy Anaconda-környezetet, és telepítse az SDK-t. Íme egy példa:
 
 1. Ha még nincs telepítve, töltse le és telepítse az [anacondat](https://www.anaconda.com/distribution/#download-section) (Python 3,7 verzió).
 
@@ -145,7 +145,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
     Futtassa a következő parancsot a környezet létrehozásához.
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     Ezután aktiválja a környezetet.
@@ -154,7 +154,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
     conda activate myenv
     ```
 
-    Ez a példa egy, a Python 3.6.5 használatával létrehozott környezetet hoz létre, de az egyes alverziókat is kiválaszthatja. Előfordulhat, hogy az SDK kompatibilitása bizonyos főverziók esetében nem garantált (3,5 + ajánlott), és ha hibát tapasztal, érdemes egy másik verziót/alverziót kipróbálni az anaconda-környezetben. A környezet létrehozása több percet is igénybe vehet, miközben az összetevők és csomagok letöltődnek.
+    Ez a példa egy, a Python 3.7.7 használatával létrehozott környezetet hoz létre, de az egyes alverziókat is kiválaszthatja. Előfordulhat, hogy az SDK kompatibilitása bizonyos főverziók esetében nem garantált (3,5 + ajánlott), és ha hibát tapasztal, érdemes egy másik verziót/alverziót kipróbálni az anaconda-környezetben. A környezet létrehozása több percet is igénybe vehet, miközben az összetevők és csomagok letöltődnek.
 
 1. Futtassa az alábbi parancsokat az új környezetben a környezet-specifikus IPython-kernelek engedélyezéséhez. Ez biztosítja a várt kernel-és csomag-importálási viselkedést a Jupyter-jegyzetfüzetek anaconda-környezeteken belüli használata esetén:
 
@@ -170,7 +170,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
 1. A csomagok telepítéséhez használja az alábbi parancsokat:
 
-    Ez a parancs telepíti az alap Azure Machine Learning SDK-t `automl` a jegyzetfüzettel és az extrákkal. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-ELŐKÉSZÍTÉSi SDK-t is tartalmazza alapértelmezett függőségként.
+    Ez a parancs telepíti az alap Azure Machine Learning SDK-t a jegyzetfüzettel és az `automl` extrákkal. Az `automl` extra egy nagyméretű telepítés, és a zárójelből is eltávolítható, ha nem szeretne automatizált gépi tanulási kísérleteket futtatni. Az `automl` extra a Azure Machine learning adat-előkészítési SDK-t is tartalmazza alapértelmezett függőségként.
 
     ```bash
     pip install azureml-sdk[notebooks,automl]
@@ -181,7 +181,7 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * A macOS Catalinatől kezdve a zsh (Z Shell) az alapértelmezett bejelentkezési rendszerhéj és az interaktív rendszerhéj. A zsh-ben használja az alábbi parancsot, amely a "\\" (fordított perjel) karakterrel rendelkező zárójeleket követi:
+   > * A macOS Catalinatől kezdve a zsh (Z Shell) az alapértelmezett bejelentkezési rendszerhéj és az interaktív rendszerhéj. A zsh-ben használja az alábbi parancsot, amely a " \\ " (fordított perjel) karakterrel rendelkező zárójeleket követi:
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -189,13 +189,13 @@ Ha helyi számítógépet használ (amely távoli virtuális gép is lehet), hoz
 
 1. Telepítsen további csomagokat a Machine learning-kísérletezéshez.
 
-    Használja a következő parancsok egyikét, és cserélje le * \<az új csomag>* a telepíteni kívánt csomagra. A csomagok az `conda install` -on keresztül történő telepítése megköveteli, hogy a csomag az aktuális csatornák része legyen (az új csatornák hozzáadhatók az anaconda Cloud-ban).
+    Használja a következő parancsok egyikét, és cserélje le *\<new package>* a parancsot a telepíteni kívánt csomagra. A csomagok az-on keresztül történő telepítése `conda install` megköveteli, hogy a csomag az aktuális csatornák része legyen (az új csatornák hozzáadhatók az anaconda Cloud-ban).
 
     ```bash
     conda install <new package>
     ```
 
-    Azt is megteheti, hogy `pip`csomagokat telepít a használatával.
+    Azt is megteheti, hogy csomagokat telepít a használatával `pip` .
 
     ```bash
     pip install <new package>
@@ -234,7 +234,7 @@ Az összetevők engedélyezése a Jupyter Notebook környezetben:
     azureml.core.VERSION
     ```
 
-1. Ha problémákba ütközik a modulok importálása és a `ModuleNotFoundError`fogadása során, győződjön meg arról, hogy a Jupyter-kernel a környezete megfelelő elérési útjához csatlakozik, ehhez futtassa a következő kódot egy jegyzetfüzet-cellában.
+1. Ha problémákba ütközik a modulok importálása és a fogadása `ModuleNotFoundError` során, győződjön meg arról, hogy a Jupyter-kernel a környezete megfelelő elérési útjához csatlakozik, ehhez futtassa a következő kódot egy jegyzetfüzet-cellában.
 
     ```python
     import sys
@@ -285,7 +285,7 @@ Hozzon létre egy [Databricks-fürtöt](https://docs.microsoft.com/azure/azure-d
 
 Használja ezeket a beállításokat:
 
-| Beállítás |A következőkre vonatkozik:| Érték |
+| Beállítás |A következőre érvényes:| Érték |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
 | A Databricks futtatókörnyezete |mindig|Nem ML futtatókörnyezet 6,5 (Scala 2,11, Spark 2.4.3) |
@@ -299,11 +299,11 @@ A folytatás előtt várjon, amíg a fürt fut.
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>A megfelelő SDK telepítése Databricks-tárba
 Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , hogy csatolja a megfelelő Azure Machine learning SDK-csomagot a fürthöz.
 
-1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza a**könyvtár** **létrehozása** > lehetőséget.
+1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create**a  >  **könyvtár**létrehozása lehetőséget.
 
 1. **Csak egy** lehetőséget válasszon (más SDK-telepítés nem támogatott)
 
-   |SDK&nbsp;-&nbsp;csomag extrái|Forrás|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK- &nbsp; csomag &nbsp; extrái|Forrás|PyPi &nbsp; neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Databricks| Python-tojás vagy PyPI feltöltése | azureml – SDK [databricks]|
    |Databricks esetében –<br> automatizált ML-képességek| Python-tojás vagy PyPI feltöltése | azureml – SDK [automl]|
@@ -329,17 +329,17 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 
 Ha a telepítés sikeres volt, az importált függvénytárnak a következőhöz hasonlóan kell kinéznie:
 
-SDK a Databricks **_without_** -hez a Databricks ![-hez készült automatikus gépi tanulás nélkül Azure Machine learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+SDK a Databricks-hez a Databricks-hez készült automatikus gépi tanulás **_nélkül_** ![ Azure Machine learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK az Databricks-hez **készült** automatizált ![Machine learning SDK-val a Databricks-re telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.png)
+SDK az Databricks-hez **készült** automatizált Machine learning SDK-val a Databricks-re ![ telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Kezdje el az ismerkedést
 
 Próbálja ki:
 + Habár több jegyzetfüzet is elérhető, **csak ezek a [minta-jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) működnek együtt Azure Databricksokkal.**
 
-+ Importálja ezeket a mintákat közvetlenül a munkaterületről. Lásd alább: ![válassza](./media/how-to-configure-environment/azure-db-screenshot.png)
-![az importálás importálás panelt](./media/how-to-configure-environment/azure-db-import.png)
++ Importálja ezeket a mintákat közvetlenül a munkaterületről. Lásd alább: válassza az importálás importálás ![ ](./media/how-to-configure-environment/azure-db-screenshot.png)
+ ![ panelt](./media/how-to-configure-environment/azure-db-import.png)
 
 + Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
 
@@ -357,7 +357,7 @@ A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, h
 
 A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml*nevű alkönyvtár vagy egy szülő könyvtárban.
 
-Ha ezt a fájlt a kódból szeretné használni, `ws=Workspace.from_config()`használja a következőt:. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
+Ha ezt a fájlt a kódból szeretné használni, használja a következőt: `ws=Workspace.from_config()` . Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
 
 A konfigurációs fájlt háromféleképpen is létrehozhatja:
 

@@ -7,26 +7,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b1f2d97aabfee47110946336c0ad8ad03d86a163
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118493"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116578"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a cURL használatával
 
-Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API és a cURL használatával kinyerheti és azonosíthatja a releváns információkat az USA értékesítési nyugtáján.
+Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a cURL használatával kinyerheti és azonosíthatja az USA-beli értékesítési nyugták fontos adatait.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - a [fürt](https://curl.haxx.se/windows/) telepítve van.
-- Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) is használhat.
+- Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) is használhat.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -36,15 +36,15 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 A nyugták elemzésének megkezdéséhez hívja meg az **[elemzés visszaigazolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
-1. Cserélje `<your receipt URL>` le a értékét egy nyugtát ábrázoló RENDSZERKÉP URL-címére.
-1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje le `<Endpoint>` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
+1. Cserélje le a értékét `<your receipt URL>` egy nyugtát ábrázoló rendszerkép URL-címére.
+1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő `operations/` karakterlánc a művelet azonosítója.
+Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `operations/` művelet azonosítója.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -54,8 +54,8 @@ https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations
 
 Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés visszaigazolásának eredményét](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
-1. Cserélje `<operationId>` le az elemet az előző lépésben szereplő műveleti azonosítóra.
+1. Cserélje le `<Endpoint>` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
+1. Cserélje le az `<operationId>` elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
@@ -64,7 +64,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. Az első mező `"status"`jelzi a művelet állapotát. Ha a művelet befejeződött, a `"recognitionResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, és a `"understandingResults"` mező a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza. Ha a művelet nem fejeződött be, a `"status"` `"running"` vagy `"notStarted"`a érték lesz, és az API-t manuálisan vagy parancsfájlon keresztül kell meghívni. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
+A rendszer a `200 (Success)` JSON-kimenettel kapcsolatos választ küld. Az első mező `"status"` jelzi a művelet állapotát. Ha a művelet befejeződött, a `"recognitionResults"` mező a beérkezésből kinyert szöveg minden sorát tartalmazza, és a `"understandingResults"` mező a Bevételezés legfontosabb részeinek kulcs/érték információit tartalmazza. Ha a művelet nem fejeződött be, a vagy a érték lesz, `"status"` `"running"` `"notStarted"` és az API-t manuálisan vagy parancsfájlon keresztül kell meghívni. Javasoljuk, hogy a hívások között egy másodperc vagy több intervallum legyen.
 
 Tekintse meg az alábbi beérkezési képet és a hozzá tartozó JSON-kimenetet. A kimenet le lett rövidítve az olvashatóság érdekében.
 
@@ -399,7 +399,7 @@ A `"recognitionResults"` csomópont tartalmazza az összes felismert szöveget. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a cURL használatával egy értékesítési visszaigazolás tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
+Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a cURL használatával az értékesítési nyugták tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
 > [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

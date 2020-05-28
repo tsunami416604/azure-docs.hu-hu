@@ -156,7 +156,7 @@ Ha készen áll az eszköz beállítására, szüksége lesz arra a kapcsolati k
 
 A `device-id` paraméter értéke megkülönbözteti a kis-és nagybetűket. Ne másolja az idézőjeleket a kapcsolatok sztring köré.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy az IoT hub-ban regisztrálta az eszköz azonosítóját, készen áll a IoT Edge futtatókörnyezet telepítésére az eszközökön. Telepítse a futtatókörnyezetet az eszköz operációs rendszere szerint:
 

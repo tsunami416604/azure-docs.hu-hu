@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732731"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996643"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 
@@ -42,7 +42,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-Nyisson `build.gradle` meg egy egyedi `appName` nevet a következő szakaszban, és módosítsa a tartománynevet az Azure-ba való üzembe helyezéskor. 
+Nyisson meg `build.gradle` `appName` egy egyedi nevet a következő szakaszban, és módosítsa a tartománynevet az Azure-ba való üzembe helyezéskor. 
 
 ```gradle
 azurefunctions {
@@ -60,7 +60,7 @@ azurefunctions {
 Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Java* elérési útról, és tekintse át a generált kódot. Ez a kód egy [http által aktivált](functions-bindings-http-webhook.md) függvény, amely megismétli a kérelem törzsét. 
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -93,14 +93,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 A várt kimenet a következő:
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges.  
+> [!NOTE]
+> Ha a authLevel a vagy a értékre állítja `FUNCTION` `ADMIN` , a [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges a helyi futtatásakor.  
+
 A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
@@ -128,10 +130,10 @@ Ez létrehozza a következő erőforrásokat az Azure-ban a Build. gradle fájl 
 
 Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
-Mivel a közzétett HTTP-trigger használatban `authLevel = AuthorizationLevel.FUNCTION`van, a Function (függvény) végpontot a HTTP protokollon keresztül hívhatja. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
+A authLevel a HTTP-triggerhez a minta projektben `ANONYMOUS` , amely kihagyja a hitelesítést. Ha azonban más authLevel (például vagy) használ, a függvényt a `FUNCTION` `ADMIN` HTTP protokollon keresztül a függvény végpontjának meghívásához le kell kérnie. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>HTTP-trigger URL-címének beolvasása
 
@@ -139,9 +141,9 @@ A függvény elindításához szükséges URL-címet a Azure Portalból kérheti
 
 1. Keresse meg a [Azure Portalt], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
  
-1. A Function alkalmazásban bontsa ki a **függvények elemet (csak olvasható)**, válassza ki a függvényt, majd válassza a **</> a függvény URL-címének beolvasása** lehetőséget a jobb felső sarokban. 
+1. A Function alkalmazásban válassza a **függvények**lehetőséget, válassza ki a függvényt, majd kattintson a jobb felső sarokban található **</> a függvény URL-címének beolvasása** lehetőségre. 
 
-    ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="A függvény URL-címének másolása az Azure portálról":::
 
 1. Válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget, majd válassza a **Másolás**lehetőséget. 
 
@@ -149,20 +151,20 @@ Mostantól a másolt URL-cím használatával is elérheti a függvényt.
 
 ## <a name="verify-the-function-in-azure"></a>A függvény ellenőrzése az Azure-ban
 
-Az Azure `cURL`-on futó Function alkalmazás ellenőrzéséhez cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
+Az Azure-on futó Function alkalmazás ellenőrzéséhez `cURL` cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
-Ez POST `AzureFunctions` -kérést küld a függvény végpontjának a kérelem törzsében. A következő válasz jelenik meg.
+Ez POST-kérést küld a függvény végpontjának a `AzureFunctions` kérelem törzsében. A következő válasz jelenik meg.
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,7 +1,7 @@
 ---
 title: Metaadatok a GenerateAnswer API-val – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker lehetővé teszi metaadatok hozzáadását kulcs/érték párok formájában a kérdés-válasz készletekhez. Az eredményeket felhasználói lekérdezésekre szűrheti, és további, a követési beszélgetésekbe felhasználható információk tárolására is használható.
+description: QnA Maker lehetővé teszi metaadatok hozzáadását kulcs/érték párok formájában a kérdés-válasz párokhoz. Az eredményeket felhasználói lekérdezésekre szűrheti, és további, a követési beszélgetésekbe felhasználható információk tárolására is használható.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659561"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993507"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
 Ha az előre jelzett választ egy felhasználó kérdéséhez szeretné lekérni, használja a GenerateAnswer API-t. Ha közzétesz egy tudásbázist, láthatja, hogyan használhatja ezt az API-t a **közzétételi** oldalon. Az API-t úgy is beállíthatja, hogy metaadatok alapján szűrje a válaszokat, és a végponton tesztelje a tudásbázist a test Query string paraméterrel.
 
-QnA Maker lehetővé teszi metaadatok hozzáadását kulcs-érték párok formájában a kérdések és válaszok csoportjaihoz. Ezt az információt használhatja az eredmények felhasználói lekérdezésekre való szűrésére, valamint a követési beszélgetések során használható további információk tárolására. További információ: [Tudásbázis](../Concepts/knowledge-base.md).
+QnA Maker lehetővé teszi metaadatok hozzáadását kulcs-érték párok formájában a kérdésekre és a válaszokra. Ezt az információt használhatja az eredmények felhasználói lekérdezésekre való szűrésére, valamint a követési beszélgetések során használható további információk tárolására. További információ: [Tudásbázis](../Concepts/knowledge-base.md).
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ Minden QnA entitás egyedi és állandó AZONOSÍTÓval rendelkezik. Az AZONOSÍ
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Válaszok előrejelzése a GenerateAnswer API-val
 
-A [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) -t a robotban vagy az alkalmazásban használhatja a Tudásbázis felhasználói kérdésekkel való lekérdezéséhez, hogy a legjobb egyezést kapja a kérdés-és a válasz-készletekben.
+A [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) -t a robotjában vagy alkalmazásában használhatja a Tudásbázis felhasználói kérdésekkel való lekérdezéséhez, hogy a legjobb egyezést kapja a kérdés és válasz párokban.
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ Mivel az eredmények csak a "Paradise" étterem esetében szükségesek, beáll�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Kérdések és válaszok eredményeinek használata a beszélgetési környezet megőrzése érdekében
 
-A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és a válaszfájl megfelelő metaadat-információit. Ezt az információt használhatja az ügyfélalkalmazás számára, hogy az előző beszélgetés kontextusát tárolja a későbbi beszélgetések során való használatra.
+A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és válasz pároknak megfelelő metaadat-információkat. Ezt az információt használhatja az ügyfélalkalmazás számára, hogy az előző beszélgetés kontextusát tárolja a későbbi beszélgetések során való használatra.
 
 ```json
 {

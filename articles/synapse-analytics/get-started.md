@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d5484f5725047201770e5b3cbab89847b27117f9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836481"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116928"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Első lépések az Azure szinapszis Analytics használatával
 
@@ -22,23 +22,15 @@ Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához 
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Storage-fiók előkészítése a szinapszis-munkaterülettel való használatra
 
-1. A [Azure Portal](https://portal.azure.com) megnyitása
-1. Hozzon létre egy új Storage-fiókot a következő beállításokkal:
-    * Az **alapok** lapon
-
-    |Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|
-    |**Storage-fiók neve**| Bármilyen nevet megadhat.|Ebben a dokumentumban a következőre hivatkozunk: `contosolake` .
-    |**Fiók típusa**|A következőre kell beállítani`StorageV2`||
-    |**Hely**|Bármelyik helyet kiválaszthatja| Javasoljuk, hogy a szinapszis-munkaterület és a Azure Data Lake Storage (ADLS) Gen2-fiók ugyanabban a régióban legyen.|
-    ||||
-    
-    * A **speciális** lapon
-    
-    |Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|
-    |**2. generációs Data Lake Storage**|`Enabled`| Az Azure szinapszis csak olyan Storage-fiókokkal működik, ahol ez a beállítás engedélyezve van.|
-    ||||
+* A [Azure Portal](https://portal.azure.com) megnyitása
+* Hozzon létre egy új Storage-fiókot a következő beállításokkal:
+    |Tab|Beállítás | Ajánlott érték | Leírás |
+    |---|---|---|---|
+    |Alapvető beállítások|**Storage-fiók neve**| Bármilyen nevet megadhat.|Ebben a dokumentumban a következőre hivatkozunk: `contosolake` .|
+    |Alapvető beállítások|**Fiók típusa**|A következőre kell beállítani`StorageV2`||
+    |Alapvető beállítások|**Hely**|Bármelyik helyet kiválaszthatja| Javasoljuk, hogy a szinapszis-munkaterület és a Azure Data Lake Storage (ADLS) Gen2-fiók ugyanabban a régióban legyen.|
+    |Felsőfokú|**2. generációs Data Lake Storage**|`Enabled`| Az Azure szinapszis csak olyan Storage-fiókokkal működik, ahol ez a beállítás engedélyezve van.|
+    |||||
 
 1. A Storage-fiók létrehozása után a bal oldali navigációs sávon válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Ezután rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy azok már hozzá vannak rendelve. 
     a. * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz a b Storage-fiókban. * Rendelje hozzá magát a Storage- **blob adat-tulajdonosi** szerepköréhez a Storage-fiókban
@@ -46,16 +38,15 @@ Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához 
 
 ## <a name="create-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com) és a felső kereséssel `Synapse` .
-1. A **szolgáltatások**területen található keresési eredmények között válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió) lehetőséget.**
-1. Válassza a **+ Hozzáadás** lehetőséget
-1. **Alapbeállítások** lap:
+* Nyissa meg a [Azure Portal](https://portal.azure.com) és a felső kereséssel `Synapse` .
+* A **szolgáltatások**területen található keresési eredmények között válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió) lehetőséget.**
+* Válassza a **+ Hozzáadás** lehetőséget, ha új munkaterületet szeretne létrehozni ezekkel a beállításokkal
 
-    |Beállítás | Ajánlott érték | Leírás |
-    |---|---|---|
-    |**Munkaterület neve**|Bármilyen hívást megadhat.| Ebben a dokumentumban a következőt fogjuk használni:`myworkspace`
-    |**Régió**|A Storage-fiók régiójának egyeztetése||
-    |||
+    |Tab|Beállítás | Ajánlott érték | Leírás |
+    |---|---|---|---|
+    |Alapvető beállítások|**Munkaterület neve**|Bármilyen hívást megadhat.| Ebben a dokumentumban a következőt fogjuk használni:`myworkspace`|
+    |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése|
+    ||||
 
 1. A **2. generációs Data Lake Storage kiválasztása**területen válassza ki a korábban létrehozott fiókot és tárolót.
     > [!NOTE]
@@ -137,7 +128,7 @@ Minden munkaterülethez egy előre összeállított és nem törölhető, **SQL 
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>A New York-i taxi-mintaadatok betöltése a SQLDB1-adatbázisba
 
-1. A szinapszis Studióban a legfelső kék menüben jelölje be a **?** ikont.
+1. A szinapszis Studióban a legfelső kék menüben jelölje be a **?** ikonra.
 1. Az első lépések **> első lépések központ** kiválasztása
 1. A kártya **lekérdezési mintaadatok**elemnél válassza ki a nevű SQL-készletet.`SQLDB1`
 1. Válassza ki a **lekérdezési adatelemet**. Ekkor megjelenik egy értesítés, amely a "mintaadatok betöltése" üzenetet jeleníti meg, majd eltűnik.
@@ -270,7 +261,7 @@ Az Azure szinapszis számos feladatát felhasználhatja. Ebben a szakaszban lát
 1. Húzza a jegyzetfüzetet a folyamatba.
 1. A folyamatban válassza az **trigger hozzáadása > új/szerkesztés**lehetőséget.
 1. Az **eseményindító** kiválasztása területen válassza az **új**lehetőséget, majd az ismétlődés beállításnál állítsa az eseményindítót 1 óránként futtatva.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 1. Válassza az **összes közzététele** lehetőséget, és a folyamat óránként fog futni.
 1. Ha azt szeretné, hogy a folyamat most a következő órára való várakozás nélkül fusson, válassza az **trigger hozzáadása > új/szerkesztés**lehetőséget.
 

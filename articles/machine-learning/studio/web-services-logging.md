@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: dc4a2f83f59ab94d1bff8a005b37124f2822c72b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 45acac646fece808065d12081bdc28eff92a1b79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209417"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119329"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások naplózási képességével kapcsolatos információkat tartalmaz. A naplózási szolgáltatás további információkat tartalmaz, amelyek csak egy adott számú és egy üzeneten felül segítenek a Machine Learning Studio (klasszikus) API-k hívásának hibakeresésében.  
 
@@ -28,7 +26,7 @@ Ez a dokumentum a Machine Learning Studio (klasszikus) webszolgáltatások napl�
 
 Engedélyezi a naplózást a [Azure Machine learning Studio (klasszikus) webszolgáltatások](https://services.azureml.net) portálján. 
 
-1. Jelentkezzen be a Azure Machine Learning Studio (klasszikus) webszolgáltatások portálján [https://services.azureml.net](https://services.azureml.net)a következő címen:. A klasszikus webszolgáltatások esetében az új webMachine Learning Studio **szolgáltatások** használata a Studióban (klasszikus) webszolgáltatások lapján is elérhetővé teheti a portált.
+1. Jelentkezzen be a Azure Machine Learning Studio (klasszikus) webszolgáltatások portálján a következő címen: [https://services.azureml.net](https://services.azureml.net) . A klasszikus webszolgáltatások esetében az új webMachine Learning Studio **szolgáltatások** használata a Studióban (klasszikus) webszolgáltatások lapján is elérhetővé teheti a portált.
 
    ![Új webszolgáltatási élmény hivatkozása](./media/web-services-logging/new-web-services-experience-link.png)
 

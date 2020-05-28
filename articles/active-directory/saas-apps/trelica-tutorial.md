@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402440"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994272"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trelica
 
@@ -90,9 +90,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
     1. A **Válasz URL-címe** mezőbe írja be a mintát tartalmazó URL-címet `https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` .
 
     > [!NOTE]
-    > A **Válasz URL-cím** értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez lépjen kapcsolatba a [Trelica ügyfél-támogatási csapatával](mailto:support@trelica.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A válasz URL-cím értéke nem valódi. Frissítse ezt az értéket a tényleges válasz URL-címmel (más néven ACS).
+    > Ezt úgy érheti el, ha bejelentkezik a Trelica-be, majd a [SAML Identity Providers konfigurációs oldalra](https://app.trelica.com/Admin/Profile/SAML) (rendszergazdai > fiók > SAML). Kattintson az **állítási fogyasztói szolgáltatás (ACS) URL-címe** melletti Másolás gombra, hogy ezt a vágólapra helyezze, és készen áll a **Válasz URL** szövegmezőbe való BEILLESZTÉSre az Azure ad-ben.
+    > Ha kérdése van, olvassa el a [Trelica súgóját](https://docs.trelica.com/admin/saml/azure-ad) , vagy vegye fel a kapcsolatot a Trelica ügyfélszolgálati [csapatával](mailto:support@trelica.com) .
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon lépjen az **SAML-aláíró tanúsítvány** szakaszra. Az **alkalmazás-összevonás metaadat-URL-címétől**jobbra kattintson a Másolás gombra az URL-cím másolásához. Mentse az URL-címet a számítógépén.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![Az SAML aláíró tanúsítvány szakasza, az alkalmazás-összevonási metaadatok URL-címe melletti másolás gombbal.](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 
 ## <a name="configure-trelica-sso"></a>Trelica SSO konfigurálása
 
-Ha az egyszeri bejelentkezést az **Trelica** oldalon szeretné konfigurálni, küldje el a másolt **alkalmazás-összevonási metaadatok URL-címét** a [Trelica támogatási csapatának](mailto:support@trelica.com). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+Ha az egyszeri bejelentkezést az **Trelica** oldalon szeretné konfigurálni, lépjen a [SAML Identity Providers konfigurációs oldalra](https://app.trelica.com/Admin/Profile/SAML) (rendszergazdai > fiók > SAML). Kattintson az **új** gombra. Adja meg az **Azure ad** nevet, és válassza ki a metaadatokat a metaadat típusa **URL-címéből** . Illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet az Azure ad-ből kapott a Trelica **metaadat-URL** mezőjébe.
+
+Ha kérdése van, olvassa el a [Trelica súgóját](https://docs.trelica.com/admin/saml/azure-ad) , vagy vegye fel a kapcsolatot a Trelica ügyfélszolgálati [csapatával](mailto:support@trelica.com) .
 
 ### <a name="create-a-trelica-test-user"></a>Trelica-teszt felhasználó létrehozása
-
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Trelica-ben.
 
 A Trelica támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nem végezhető művelet. Ha egy felhasználó még nem létezik a Trelica-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
@@ -142,7 +144,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a Trelica csempét a saját alkalmazások portálon, automatikusan bejelentkezik arra a Trelica, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [Bevezetés a My apps portálra](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

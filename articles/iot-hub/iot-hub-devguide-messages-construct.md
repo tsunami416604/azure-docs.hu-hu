@@ -121,7 +121,7 @@ A **iothub-kapcsolat-Auth-Method** tulajdonság JSON szerializált objektumot ta
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a IoT Hub üzenet méretének korlátairól: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
 

@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3c2bdd2dcd5fcef62c0a4691160c5457d19f196
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408055"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112603"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adatraktár-egységek (DWU)
 
@@ -72,7 +72,7 @@ Minden teljesítményszint némileg eltérő mértékegységet használ az adatt
 
 Mind a DWU, mind a cDWUs támogatja a méretezési számítási kapacitást, és szünetelteti a számítást, ha nem kell használnia az adattárházat. Ezek a műveletek mind igény szerint használhatók. A Gen2 egy helyi lemezes gyorsítótárat használ a számítási csomópontokon a teljesítmény javítása érdekében. A rendszer skálázása vagy szüneteltetése után a gyorsítótár érvénytelenné válik, így az optimális teljesítmény elérése előtt szükség van egy gyorsítótár-felmelegedésre.  
 
-Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
 ## <a name="capacity-limits"></a>Kapacitási korlátok
 
@@ -107,7 +107,7 @@ Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Ser
 Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
-2. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
 3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
 
 ```sql
@@ -149,7 +149,7 @@ A T-SQL használatával megtekintheti az aktuális DWUsettings, módosíthatja a
 
 A DWU módosítása:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+1. Kapcsolódjon a kiszolgálóhoz társított Master adatbázishoz.
 2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW.
 
 ```Sql
@@ -185,7 +185,7 @@ A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető 
 
 A DWU változásainak állapotának ellenõrzése:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+1. Kapcsolódjon a kiszolgálóhoz társított Master adatbázishoz.
 2. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
 
 ```sql

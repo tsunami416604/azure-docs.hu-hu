@@ -4,18 +4,18 @@ description: Alkalmazásteljesítmény-felügyelet és élő webalkalmazások ha
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996091"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
 A Application Insights a [Azure monitor](../overview.md)egy funkciója, amely egy bővíthető Application Performance Management-(APM-) szolgáltatás fejlesztők és DevOps szakemberek számára. Használhatja az élő alkalmazások figyelésére. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítségével diagnosztizálhatja a problémákat, és megtudhatja, hogy a felhasználók mit tesznek ténylegesen az alkalmazással.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az alkalmazások számos platformon használhatók, többek között a .NET, a Node. js, a Java és a Python helyszíni, hibrid vagy bármely nyilvános felhőben. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
 
 ## <a name="how-does-application-insights-work"></a>Hogyan működik az Application Insights?
-Telepítsen egy kisméretű Instrumentation-csomagot (SDK-t) az alkalmazásba, vagy engedélyezze Application Insights codelessly, ha [támogatottak](../../azure-monitor/app/platforms.md). A Instrumentation figyeli az alkalmazást, és a telemetria adatait egy Azure Application Insights-erőforrásra irányítja egy egyedi GUID-azonosító használatával, amelyet rendszerállapot-kulcsként említünk.
+Telepít egy kisméretű Instrumentation-csomagot (SDK-t) az alkalmazásban, vagy engedélyezheti Application Insights [használatát a](../../azure-monitor/app/platforms.md)Application Insights ügynökkel. A Instrumentation figyeli az alkalmazást, és a telemetria adatait egy Azure Application Insights-erőforrásra irányítja egy egyedi GUID-azonosító használatával, amelyet rendszerállapot-kulcsként említünk.
 
 Ráadásul nem csak webszolgáltatási alkalmazásokat vizsgálhat, hanem háttérösszetevőket és weboldalak JavaScript-kódjait is. Az alkalmazás és annak összetevői bárhol futhatnak – nem kell az Azure-ban üzemeltetni.
 
@@ -26,7 +26,7 @@ Emellett telemetriai adatok olvashatók be a gazdakörnyezetekből, például te
 Az összes ilyen telemetria-adatfolyam integrálva van Azure Monitorba. A Azure Portalban hatékony elemzési és keresési eszközöket alkalmazhat a nyers adatfeldolgozásra.
 
 ### <a name="whats-the-overhead"></a>Milyen mértékű a többletterhelés?
-Az alkalmazásteljesítményre gyakorolt hatás rendkívül kicsi. A nem blokkoló nyomkövetési hívásokat a rendszer kötegeli, és a küldés külön szálakon történik.
+Az alkalmazás teljesítményére gyakorolt hatás kicsi. A nem blokkoló nyomkövetési hívásokat a rendszer kötegeli, és a küldés külön szálakon történik.
 
 ## <a name="what-does-application-insights-monitor"></a>Mit figyel az Application Insights?
 
@@ -54,7 +54,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 | [**Profilkészítő**](../../azure-monitor/app/profiler.md)<br/>A mintavételezett kérelmek végrehajtási profiljainak vizsgálata. |![Profilkészítő](./media/app-insights-overview/profiler.png) |
 | [**Használat elemzése**](../../azure-monitor/app/usage-overview.md)<br/>Felhasználószegmentálás és -megtartás elemzése.|![Megtartási eszköz](./media/app-insights-overview/retention.png) |
 | [**Példányadatok diagnosztikai keresése**](../../azure-monitor/app/diagnostic-search.md)<br/>Események keresése és szűrése, például kérések, kivételek, függőségi hívások, naplókivonatok és lapmegtekintések.  |![Telemetriai adatok keresése](./media/app-insights-overview/search-tn.png) |
-| [**Összesített adatok metrikaböngészője**](../../azure-monitor/platform/metrics-charts.md)<br/>Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása. |![Mérőszámok](./media/app-insights-overview/metrics-tn.png) |
+| [**Összesített adatok metrikaböngészője**](../../azure-monitor/platform/metrics-charts.md)<br/>Összesített adatok – például kérés- és hibaarányok, valamint kivételek, válaszidők és lapbetöltési idők – böngészése, szűrése és szegmentálása. |![Metrikák](./media/app-insights-overview/metrics-tn.png) |
 | [**Irányítópultok**](../../azure-monitor/app/overview-dashboard.md)<br/>Különböző erőforrásokból származó adatokat fűzhet össze és oszthat meg másokkal. Kiváló megoldás több összetevőből álló alkalmazások, valamint csoportszobában való folyamatos megjelenítés esetén. |![Példa az irányítópultokra](./media/app-insights-overview/dashboard-tn.png) |
 | [**Élő metrikastream**](../../azure-monitor/app/live-stream.md)<br/>Új buildverzió telepítésekor közel valós idejű teljesítménymutatókat figyelhet, és meggyőződhet arról, hogy minden megfelelő módon működik-e. |![Példa a valós idejű metrikákra](./media/app-insights-overview/live-metrics-tn.png) |
 | [**Elemzés**](../../azure-monitor/app/analytics.md)<br/>A hatékony lekérdezési nyelvnek köszönhetően válaszokat kaphat az alkalmazás teljesítményére és használatára vonatkozó legégetőbb kérdésekre. |![Példa az elemzésre](./media/app-insights-overview/analytics-tn.png) |
@@ -69,7 +69,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 ### <a name="monitor"></a>Figyelés
 Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), és az alábbiakra nyílik lehetőség:
 
-* Nézze meg az alapértelmezett [alkalmazás-irányítópultot](../../azure-monitor/app/overview-dashboard.md) a munkaterületén, és tartsa szem előtt a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
+* Tekintse meg az alapértelmezett [alkalmazás-irányítópultot](../../azure-monitor/app/overview-dashboard.md) a munkahelye számára, hogy figyelje a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
 * Megismerheti a leglassabb és a legsikertelenebb kéréseket.
 * Figyelheti az [élő streamet](../../azure-monitor/app/live-stream.md) új kiadások telepítésekor, és azonnal értesülhet bármilyen teljesítménycsökkenésről.
 
@@ -101,7 +101,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
   * [Alkalmazások ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
   * [.NET-konzol alkalmazásai](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Node. js](../../azure-monitor/app/nodejs.md)
   * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Más platformok](../../azure-monitor/app/platforms.md)
 * Megtekintheti **[a weblapok](../../azure-monitor/app/javascript.md)** megtekintését, Ajax-t és más ügyféloldali telemetria.
@@ -120,7 +120,7 @@ Első lépések fejlesztéskor:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
+* [Node. js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 

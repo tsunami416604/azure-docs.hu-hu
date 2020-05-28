@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c58c99faa83d6f04ac37d03789202e111f1b06d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f879ebd2f3628b8282342d730a5f3957cf2a615f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611160"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994987"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` -cím ![másolásával és beillesztésével: az RSS-hírcsatorna olvasójának ikonját](./media/whats-new/feed-icon-16x16.png) a hírcsatorna-olvasóba.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Active+Directory%22&locale=en-us` az ![ RSS-hírcsatorna olvasójának ikonját a ](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasóba.
 
 Az Azure AD folyamatosan fejleszti a fejlesztéseket. A legújabb fejleményekkel naprakészen tarthatja a következő információkat:
 
@@ -487,7 +487,7 @@ Az Azure AD-naplók Azure Monitor integrációja már elérhető a Azure Governm
 **Szolgáltatás kategóriája:** Identity Protection  
 A **termék képességei:** Identitás-biztonsági & védelme
 
-Örömmel vesszük, hogy most már bevezetjük a frissített [Azure ad Identity Protection](https://aka.ms/IdentityProtectionDocs) élményt a [Microsoft Azure Government portálon](https://portal.azure.us/). További információt a [bejelentési blogbejegyzésben](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)talál.
+Örömmel vesszük, hogy most már bevezetjük a frissített [Azure ad Identity Protection](https://aka.ms/IdentityProtectionDocs)   élményt a [Microsoft Azure Government portálon](https://portal.azure.us/). További információt a [bejelentési blogbejegyzésben](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)talál.
 
 ---
 
@@ -544,7 +544,7 @@ Az ingyenes bérlőket használó ügyfeleink akár 7 napig is hozzáférhetnek 
 **Szolgáltatás kategóriája:** Csoport kezelése  
 A **termék képességei:** Együttműködés
 
-Annak érdekében, hogy az ügyfelek rugalmasabban hozzanak létre olyan, címtárra kiterjedő csoportokat, amelyek megfelelnek az igényeiknek **, a csoport**  > **általános** beállításai **közül a Azure Portal**, a [dinamikus csoportokra vonatkozó dokumentációra](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)mutató hivatkozást váltottunk ki. Továbbfejlesztettük a dokumentációt, hogy több útmutatást is tartalmazzon, így a rendszergazdák létrehozhatnak olyan összes felhasználói csoportot, amely tartalmazza vagy kizárják a vendég felhasználókat.
+Annak érdekében, hogy az ügyfelek rugalmasabban hozzanak létre olyan, címtárra kiterjedő csoportokat, amelyek megfelelnek az igényeiknek **, a csoport** **Groups**  >  **általános** beállításai közül a Azure Portal, a [dinamikus csoportokra vonatkozó dokumentációra](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)mutató hivatkozást váltottunk ki. Továbbfejlesztettük a dokumentációt, hogy több útmutatást is tartalmazzon, így a rendszergazdák létrehozhatnak olyan összes felhasználói csoportot, amely tartalmazza vagy kizárják a vendég felhasználókat.
 
 ---
 
@@ -658,7 +658,7 @@ A fiókom, az összes végfelhasználói fiók-felügyeleti szükségletet leál
 **Szolgáltatás kategóriája:** Saját profil/fiók  
 A **termék képességei:** Végfelhasználói élmények
  
-Az új fiókom végfelhasználói élménye a következő hónapban frissülni fog `https://myaccount.microsoft.com` az URL-címével. További információk a felhasználói élményről és az összes olyan fiókról, amely a [saját fiók portál súgójában](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)elérhető végfelhasználók számára biztosít segítséget.
+Az új fiókom végfelhasználói élménye a következő hónapban frissülni fog az URL-címével `https://myaccount.microsoft.com` . További információk a felhasználói élményről és az összes olyan fiókról, amely a [saját fiók portál súgójában](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)elérhető végfelhasználók számára biztosít segítséget.
 
 ---
  
@@ -789,7 +789,7 @@ További információ az új biztonsági alapbeállításokról: [Mik a biztons�
 **Szolgáltatás kategóriája:** Hitelesítések (bejelentkezések)  
 A **termék képességei:** Felhasználói hitelesítés
 
-A cookie-k számára a biztonságos alapértelmezett modell részeként a Chrome 80 böngésző megváltoztatja a cookie-k `SameSite` attribútum nélküli kezelésének módját. Minden olyan cookie, amely nem `SameSite` adja meg az attribútumot `SameSite=Lax`, a rendszer úgy kezeli, mintha a értékre lett állítva, ami azt eredményezi, hogy a Chrome blokkolja a több tartományon belüli cookie-megosztási forgatókönyveket, amelyektől az alkalmazás függ. A korábbi Chrome-viselkedés fenntartása érdekében használhatja az attribútumot `SameSite=None` , és hozzáadhat egy további `Secure` attribútumot, így a helyek közötti cookie-k csak HTTPS-kapcsolatokon keresztül érhetők el. A Chrome a módosítás befejezését ütemezi a 2020. február 4-én.
+A cookie-k számára a biztonságos alapértelmezett modell részeként a Chrome 80 böngésző megváltoztatja a cookie-k attribútum nélküli kezelésének módját `SameSite` . Minden olyan cookie, amely nem adja meg az `SameSite` attribútumot, a rendszer úgy kezeli, mintha a értékre lett állítva `SameSite=Lax` , ami azt eredményezi, hogy a Chrome blokkolja a több tartományon belüli cookie-megosztási forgatókönyveket, amelyektől az alkalmazás függ. A korábbi Chrome-viselkedés fenntartása érdekében használhatja az `SameSite=None` attribútumot, és hozzáadhat egy további `Secure` attribútumot, így a helyek közötti cookie-k csak HTTPS-kapcsolatokon keresztül érhetők el. A Chrome a módosítás befejezését ütemezi a 2020. február 4-én.
 
 Azt javasoljuk, hogy a fejlesztők az alábbi útmutató segítségével tesztelik alkalmazásaikat:
 
@@ -797,7 +797,7 @@ Azt javasoljuk, hogy a fejlesztők az alábbi útmutató segítségével tesztel
 
 - Állítsa a **SameSite** attribútum alapértelmezett értékét **none**értékre.
 
-- Adjon hozzá egy `SameSite` további **biztonságos**attribútumot.
+- Adjon hozzá egy további `SameSite` **biztonságos**attribútumot.
 
 További információ: a [közelgő SameSite cookie-változások a ASP.net és a ASP.net Core](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/) , valamint az [ügyfelek webhelyeire és a Microsoft termékeire és szolgáltatásaira vonatkozó lehetséges fennakadások a Chrome 79-os és újabb verzióiban](https://support.microsoft.com/help/4522904/potential-disruption-to-microsoft-services-in-chrome-beta-version-79).
 

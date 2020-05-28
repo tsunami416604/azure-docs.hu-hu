@@ -10,16 +10,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204256"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117829"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -58,7 +56,7 @@ Machine Learning Studio (klasszikus) használatához Microsoft Azure Machine Lea
 
 Munkaterület létrehozásához lásd: [Azure Machine learning Studio (klasszikus) munkaterület létrehozása és megosztása](create-workspace.md).
 
-A munkaterület létrehozása után nyissa meg Machine Learning Studio (klasszikus) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Ha több munkaterülettel rendelkezik, a munkaterületet az ablak jobb felső sarkában található eszköztárban választhatja ki.
+A munkaterület létrehozása után nyissa meg Machine Learning Studio (klasszikus) ( [https://studio.azureml.net/Home](https://studio.azureml.net/Home) ). Ha több munkaterülettel rendelkezik, a munkaterületet az ablak jobb felső sarkában található eszköztárban választhatja ki.
 
 ![Munkaterület kiválasztása a Studióban (klasszikus)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
@@ -113,9 +111,9 @@ Mindkét esetben létrehozta az adatok vesszővel tagolt verzióját egy **néme
 
 Miután az adatok CSV formátumra lettek konvertálva, fel kell töltenie Machine Learning Studioba (klasszikus). 
 
-1. Nyissa meg a Machine Learning Studio (klasszikus) kezdőlapját ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Nyissa meg a Machine Learning Studio (klasszikus) kezdőlapját ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. Kattintson az ablak ![bal](./media/tutorial-part1-credit-risk/menu.png) felső sarkában található menü menüre, majd a **Azure Machine learning**elemre, válassza a **Studio**lehetőséget, és jelentkezzen be.
+2. Kattintson az ablak bal felső sarkában található menü menüre, majd a ![ ](./media/tutorial-part1-credit-risk/menu.png) **Azure Machine learning**elemre, válassza a **Studio**lehetőséget, és jelentkezzen be.
 
 3. Az ablak alján kattintson az **+ új** elemre.
 
@@ -288,7 +286,7 @@ A kísérlet most a következőhöz hasonlóan néz ki:
 További információ az R-szkriptek kísérletekben való használatáról: [a kísérlet kiterjesztése az r](extend-your-experiment-with-r.md)használatával.
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 

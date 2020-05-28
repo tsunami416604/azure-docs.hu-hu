@@ -3,26 +3,26 @@ title: Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási beállítások és korlátozások összegzését tartalmazza.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 09ca5264280c990db8f57400aef1a876f842a210
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684622"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117686"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
 Az Azure-fájlmegosztás biztonsági mentését a [Azure Backup szolgáltatással](https://docs.microsoft.com/azure/backup/backup-overview) végezheti el. Ez a cikk összefoglalja a támogatási beállításokat, amikor biztonsági mentést készít az Azure-fájlmegosztás Azure Backup.
 
-## <a name="supported-geos"></a>Támogatott térségek
+## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure-fájlmegosztás biztonsági mentése a következő térségek érhető el:
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Az Azure file shares biztonsági mentésének GA régiói
 
-**GA-régiók**:<br>
-Kelet-Ausztrália, Közép-Kanada (CNC), az USA nyugati középső régiója (WCUS), az USA déli középső régiója (SCUS), USA 2. nyugati régiója (WUS 2), Dél-India (INS), USA északi középső régiója (NCUS), Kelet-Japán (JPE), Dél-Brazília (BRS), Dél-Kelet-Ázsia (tenger), Nyugat-Svájc (SZW), UAE Central (UAC), Kelet-Japán (NAZT), Nyugat-India (INW), Ausztrália középső régiója (ACL), Korea középső régiója (KRC), Nyugat-Japán (JPW) , Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW), Dél-Korea (KRS), Észak-Európa (NE), Észak-Németország (GN), Norvégia nyugati régiója (NWW), Dél-Afrika nyugati régiója (SAW), Észak-Svájc (SZN), Középnyugat-Németország (GWC), UAE North (karbamid), Közép-Franciaország (FRC), India középső régiója (INC), Kelet-Kanada (CNE), Kelet-Ázsia (EA), Kelet-Ausztrália (AE), Közép-USA (ke), USA nyugati régiója (WUS), US Gov Arizona (UGA), US Gov Texas , US Gov Virginia (UGV), US DoD – középső régió (UDC), US DoD – keleti régió (UDE)
+Az Azure-fájlmegosztás biztonsági mentése minden régióban elérhető, **kivéve** a következőt: Németország középső régiója (szuverén), Északkelet-Németország (szuverén), Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2, US gov Iowa
 
-**Támogatott régiók (az előzetes verzió részeként), de még nem GA**:<br>
-USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), Nyugat-Európa (mi)
+### <a name="supported-regions-for-accidental-delete-protection"></a>A véletlen törlés elleni védelem támogatott régiói
+
+USA nyugati középső régiója
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 

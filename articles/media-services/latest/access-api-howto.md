@@ -27,7 +27,7 @@ Ha Azure AD-hitelesítést használ a Azure Media Services API eléréséhez, k�
 - **Egyszerű szolgáltatásnév hitelesítése** (ajánlott)
 
     Szolgáltatás hitelesítése. Az ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak: webalkalmazások, Function apps, Logic apps, API-k vagy egy szolgáltatás.
-- **Felhasználóhitelesítés**
+- **Felhasználói hitelesítés**
 
     Az alkalmazást használó személy hitelesítése Media Services erőforrásokkal való interakcióhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a hitelesítő adatok megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak. 
 

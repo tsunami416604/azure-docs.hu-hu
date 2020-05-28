@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653020"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012908"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
 
@@ -26,7 +26,7 @@ Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehet
 
 A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek a metrikák [Azure monitoron](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)keresztül vannak felszínben.
 
-| Metrika neve             | Description                                                  | Aggregáció típusa |
+| Metrika neve             | Leírás                                                  | Aggregáció típusa |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Processzorhasználat (%)          | CPU-kihasználtság az adatraktár összes csomópontja között      | AVG, min, Max    |
 | Adat IO kihasználtsága (%)      | I/o-kihasználtság az adatraktár összes csomópontja között       | AVG, min, Max    |
@@ -49,7 +49,7 @@ A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek 
 A metrikák megtekintésekor megfontolandó szempontok és riasztások beállítása:
 
 - A használt DWU csak az SQL-készletben lévő **használat magas szintű ábrázolását** jelöli, és nem a kihasználtság átfogó mutatója. Annak megállapításához, hogy fel vagy le kell-e skálázást, gondolja át a DWU által befolyásolható összes tényezőt, például a párhuzamosságot, a memóriát, a tempdb és az adaptív gyorsítótárazási kapacitást. Azt javasoljuk, hogy [a számítási feladatokat különböző DWU-beállításokon futtassa](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) , hogy megtudja, mi a legmegfelelőbb az üzleti célok teljesítéséhez.
-- Egy adott adattárház esetében nem sikerült a sikertelen és sikeres kapcsolatok jelentése – nem a logikai kiszolgálóhoz
+- A sikertelen és sikeres kapcsolatok egy adott adattárházra vonatkozóan lesznek jelezve – nem maga a kiszolgáló.
 - A memória százalékos aránya a kihasználtságot is tükrözi, még akkor is, ha az adatraktár tétlen állapotban van – nem tükrözi az aktív munkaterhelés-memória használatát. A metrikák használata és nyomon követése másokkal (tempdb, Gen2 cache), hogy átfogó döntést hozzon, ha a további gyorsítótár-kapacitás skálázása növeli a munkaterhelés teljesítményét a követelmények teljesítése érdekében.
 
 ## <a name="query-activity"></a>Lekérdezési tevékenység

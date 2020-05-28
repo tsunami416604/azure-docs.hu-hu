@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 2b23ffec76de3fa644abe3b65876a60c65c05eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686006"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116392"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Helyszíni SSIS számítási feladatok migrálása az ADF-SSIS
 
@@ -24,7 +24,7 @@ ms.locfileid: "81686006"
 
 ## <a name="overview"></a>Áttekintés
 
-Amikor áttelepíti az adatbázis-munkaterheléseket a helyszíni SQL Serverról az Azure Database Servicesre, azaz Azure SQL Database vagy Azure SQL Database felügyelt példányra, akkor a SQL Server Integration Services (SSIS) ETL-számítási feladatait is át kell telepítenie az elsődleges értéknövelt szolgáltatások egyikével.
+Amikor áttelepíti az adatbázis-munkaterheléseket a helyszíni SQL Serverról az Azure Database Servicesre, azaz Azure SQL Database vagy az Azure SQL felügyelt példányára, akkor a SQL Server Integration Services (SSIS) az elsődleges értéknövelt szolgáltatások egyikét is át kell telepítenie.
 
 A Azure Data Factory (ADF) Azure-SSIS Integration Runtime (IR) támogatja a SSIS-csomagok futtatását. A Azure-SSIS IR kiépítése után a csomagok üzembe helyezéséhez és futtatásához használhatja a jól ismert eszközöket, például a SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és a parancssori segédeszközöket, például a dtinstall/dtutil/dtexec. További információ: az [Azure SSIS lift-and-SHIFT áttekintése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
@@ -57,14 +57,14 @@ Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [vé
 
 [A forrás](#four-storage-types-for-ssis-packages) SSIS csomagjainak és az adatbázis-munkaterhelések áttelepítési célhelyének függvényében a **SSIS-csomagok** áttelepítésének lépései, valamint a SSIS-csomagok végrehajtásának elvégzésére szolgáló **SQL Server Agent feladatok** eltérőek lehetnek. Két forgatókönyv létezik:
 
-- [**Felügyelt példány Azure SQL Database** adatbázis-munkaterhelés célhelyként](#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Az **Azure SQL felügyelt példánya** adatbázis-munkaterhelési célként](#azure-sql-managed-instance-as-database-workload-destination)
 - [**Azure SQL Database** adatbázis-munkaterhelés célhelyként](#azure-sql-database-as-database-workload-destination)
 
-### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>**Felügyelt példány Azure SQL Database** adatbázis-munkaterhelés célhelyként
+### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>Az **Azure SQL felügyelt példánya** adatbázis-munkaterhelési célként
 
 | **Csomag tárolási típusa** |SSIS-csomagok áttelepítésének módja|SSIS-feladatok kötegelt áttelepítésének módja|
 |-|-|-|
-|SSISDB|[**SSISDB** migrálása](scenario-ssis-migration-ssisdb-mi.md)|[SSIS-feladatok migrálása Azure SQL Database felügyelt példány ügynökének](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|SSISDB|[**SSISDB** migrálása](scenario-ssis-migration-ssisdb-mi.md)|[SSIS-feladatok migrálása az Azure SQL felügyelt példány-ügynökére](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
 |Fájlrendszer|Az dtinstall/dtutil/manuális másolással, vagy a fájlrendszerben a VNet/saját üzemeltetésű integrációs modulon keresztüli eléréshez való hozzáférés érdekében telepítse újra azokat a fájlmegosztás/Azure Files számára. További információ: [dtutil segédprogram](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrálás a [SSIS-feladatok áttelepítése varázslóval a SSMS-ben](how-to-migrate-ssis-job-ssms.md) <li>Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportálja őket a fájlrendszerekbe/fájlmegosztásba/Azure Filesba a SSMS/dtutil használatával. További információ: SSIS- [csomagok exportálása](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Package Store|Exportálja őket a fájlrendszerek/fájlmegosztás/Azure Files SSMS/dtutil keresztül, vagy telepítse azokat a fájlmegosztás/Azure Files a dtinstall/dtutil/manuális másolással, vagy tartsa azokat a fájlrendszerekben a VNet/saját üzemeltetésű integrációs modulon keresztül való hozzáféréshez. További információ: dtutil segédprogram. További információ: [dtutil segédprogram](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
@@ -78,12 +78,12 @@ Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [vé
 |SQL Server (MSDB)|Exportálja őket a fájlrendszerekbe/fájlmegosztásba/Azure Filesba a SSMS/dtutil használatával. További információ: SSIS- [csomagok exportálása](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Package Store|Exportálja őket a fájlrendszerek/fájlmegosztás/Azure Files SSMS/dtutil keresztül, vagy telepítse azokat a fájlmegosztás/Azure Files a dtinstall/dtutil/manuális másolással, vagy tartsa azokat a fájlrendszerekben a VNet/saját üzemeltetésű integrációs modulon keresztül való hozzáféréshez. További információ: dtutil segédprogram. További információ: [dtutil segédprogram](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Konvertálja őket ADF-folyamatokba/tevékenységekbe/eseményindítókkal parancsfájlok/SSMS/ADF-portálon keresztül. További információ: SSMS- [ütemezési funkció](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Adatbázis Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview)
 - [A SSIS számítási feladatainak átemelése és áthelyezése a felhőbe](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [SSIS-csomagok migrálása felügyelt Azure SQL Database-példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [SSIS-csomagok migrálása az Azure SQL felügyelt példányára](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Csomagok újbóli üzembe helyezése Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>További lépések

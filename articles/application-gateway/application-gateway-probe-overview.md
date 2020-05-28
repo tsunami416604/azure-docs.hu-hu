@@ -59,7 +59,7 @@ Miután megadta a megfeleltetési feltételeket, a PowerShellben található par
 
 ### <a name="default-health-probe-settings"></a>Alapértelmezett állapot mintavételi beállításai
 
-| Mintavételi tulajdonság | Érték | Description |
+| Mintavételi tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Mintavételi URL-cím |http://127.0.0.1:\<port\>/ |URL-cím elérési útja |
 | Intervallum |30 |Az az időtartam másodpercben, ameddig a következő állapotú mintavétel elküldése előtt várni kell.|
@@ -85,7 +85,7 @@ Az egyéni mintavételek segítségével részletesebben szabályozhatja az áll
 
 Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatkozó definíciókat tartalmazza.
 
-| Mintavételi tulajdonság | Description |
+| Mintavételi tulajdonság | Leírás |
 | --- | --- |
 | Name |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |

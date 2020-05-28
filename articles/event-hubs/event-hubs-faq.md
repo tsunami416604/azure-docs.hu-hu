@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835614"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996618"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -102,6 +102,24 @@ Ha a zóna redundanciát használja a névtérhez, néhány további lépést is
     <name>-s3.servicebus.windows.net
     ```
 3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
+
+### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>Hol találom az ügyfél IP-küldési és-fogadási üzeneteit a névtérbe?
+Először engedélyezze az [IP-szűrést](event-hubs-ip-filtering.md) a névtérben. 
+
+Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcsolatok eseményeihez](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) a [diagnosztikai naplók engedélyezése](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)című témakör utasításait követve. Ekkor megtekintheti az IP-címet, amelyhez a rendszer megtagadja a kapcsolódást.
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka integráció
 

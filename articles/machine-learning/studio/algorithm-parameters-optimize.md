@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eeca7a51c1ff22f845b45f50f9fccee4b60f3221
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218268"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119121"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Ez a témakör azt ismerteti, hogyan választhatja ki a megfelelő hiperparaméter-készletet Azure Machine Learning Studio (klasszikus) algoritmushoz. A legtöbb gépi tanulási algoritmushoz paraméterek vannak beállítva. A modellek betanításakor meg kell adnia a paraméterek értékeit. A betanított modell hatékonysága a választott modell-paraméterektől függ. A paraméterek optimális készletének megkeresésének folyamata modell- *kiválasztás*néven ismert.
 

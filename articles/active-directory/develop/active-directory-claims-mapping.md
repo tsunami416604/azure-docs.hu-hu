@@ -321,7 +321,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | othermail | Egyéb E-mail |
 | Felhasználó | ország | Ország/régió |
 | Felhasználó | city | Város |
-| Felhasználó | state | Állapot |
+| Felhasználó | state | Állam |
 | Felhasználó | beosztás | Beosztás |
 | Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |

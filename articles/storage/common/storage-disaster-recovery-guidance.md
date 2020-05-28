@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857778"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994697"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vész-helyreállítási és Storage-fiók feladatátvétele
 
@@ -26,8 +26,6 @@ Az Azure Storage támogatja a fiókok feladatátvételét a földrajzilag redund
 A fiók feladatátvétele az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusaihoz Azure Resource Manager üzemelő példányokkal érhető el. A fiók feladatátvétele az összes nyilvános régióban támogatott, de jelenleg nem érhető el szuverén vagy országos felhőkben.
 
 Ez a cikk a fiók feladatátvételével kapcsolatos fogalmakat és folyamatokat ismerteti, és bemutatja, hogyan készítheti elő a Storage-fiókját a lehető legkevesebb vásárlói hatású helyreállításra. A fiók feladatátvételének elindításáról a Azure Portal vagy a PowerShellben tekintse meg a [fiók feladatátvételének kezdeményezése](storage-initiate-account-failover.md)című témakört.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -171,7 +169,7 @@ Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagosho
 
 Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS vagy RA-GZRS van konfigurálva.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
 - [Fiók feladatátvételének indítása](storage-initiate-account-failover.md)

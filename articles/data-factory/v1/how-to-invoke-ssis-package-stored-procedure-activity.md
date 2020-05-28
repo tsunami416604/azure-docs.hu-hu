@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 225414760507bb023d0a514290420fc7cb59b950
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438789"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118325"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag meghívása tárolt eljárási tevékenység használatával Azure Data Factory
 Ez a cikk azt ismerteti, hogyan hívhat meg egy SSIS-csomagot egy Azure Data Factory folyamatból egy tárolt eljárási tevékenység használatával. 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan hívhat meg egy SSIS-csomagot egy Azure Data Fac
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-A jelen cikkben található útmutató egy Azure SQL Database-adatbázist használ, amely a SSIS-katalógust tárolja. Használhat Azure SQL Database felügyelt példányt is.
+A jelen cikkben található útmutató Azure SQL Databaset használ. Használhatja a felügyelt Azure SQL-példányokat is.
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
 Hozzon létre egy Azure-SSIS integrációs modult, ha még nem rendelkezik az oktatóanyag részletes utasításával [: SSIS-csomagok telepítése](../tutorial-create-azure-ssis-runtime-portal.md). Azure-SSIS integrációs modul létrehozásához nem használható az 1. Data Factory-es verzió. 
@@ -87,7 +87,7 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az Azure SQ
 1. Hozzon létre egy **AzureSqlDatabaseLinkedService. JSON** nevű JSON-fájlt a **C:\ADF\RunSSISPackage** mappában a következő tartalommal: 
 
     > [!IMPORTANT]
-    > A &lt;fájl&gt;mentése &lt;előtt&gt;@&lt;cserélje&gt; le &lt;a&gt; servername, a username servername és a Password értéket a Azure SQL Database értékeire.
+    > &lt; &gt; A fájl mentése előtt cserélje le a servername, &lt; &gt; @ &lt; a username servername &gt; és a &lt; Password értéket a &gt; Azure SQL Database értékeire.
 
     ```json
     {
@@ -138,7 +138,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
 1. Hozzon létre egy **MyPipeline. JSON** nevű JSON-fájlt a **C:\ADF\RunSSISPackage** mappában a következő tartalommal:
 
     > [!IMPORTANT]
-    > A &lt;fájl mentése&gt;előtt &lt;cserélje le&gt;a &lt;mappa nevét&gt; , a projekt nevét, a csomag nevét, valamint a mappa, a projekt és a csomag nevét a SSIS-katalógusba.
+    > &lt;A fájl mentése előtt cserélje le a mappa nevét, a &gt; &lt; projekt nevét &gt; , a &lt; csomag nevét, valamint a &gt; mappa, a projekt és a csomag nevét a SSIS-katalógusba.
 
     ```json
     {
@@ -190,7 +190,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
 
     Futtassa a parancsmagot, amíg a szelet **Ready** (Kész) vagy **Failed** (Sikertelen) állapotú nem lesz. 
 
-    A következő lekérdezést futtathatja az Azure SQL Server SSISDB-adatbázisán annak ellenőrzéséhez, hogy a csomag végre lett hajtva. 
+    A következő lekérdezést futtathatja a kiszolgáló SSISDB adatbázisán annak ellenőrzéséhez, hogy a csomag végre lett hajtva. 
 
     ```sql
     select * from catalog.executions

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: e078893b3bbe0ef5661cd87bad62b320f78ceb5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424859"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112757"
 ---
 # <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure szinapszis Analytics SQL-erőforrások felhasználása
 
@@ -77,7 +77,7 @@ Az adatraktár-egységek növelése során lineárisan növelheti a számítást
 
 #### <a name="capacity-limits"></a>Kapacitási korlátok
 
-Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
+Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kvótával, amely egy adott számú adattárház-egységet engedélyez. További információ: [munkaterhelés-kezelési kapacitás korlátai](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ### <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adatraktár-egységre van szükségem
 
@@ -106,7 +106,7 @@ Az Azure-erőforrások, például az SQL-adatbázis közreműködői és SQL Ser
 Az aktuális DWU-beállítás megtekintése:
 
 1. Nyissa meg SQL Server Object Explorer a Visual Studióban.
-2. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+2. Kapcsolódjon a logikai SQL-kiszolgálóhoz társított Master adatbázishoz.
 3. Válasszon a sys. database_service_objectives dinamikus felügyeleti nézetből. Például:
 
 ```sql
@@ -148,7 +148,7 @@ A T-SQL használatával megtekintheti az aktuális DWUsettings, módosíthatja a
 
 A DWU módosítása:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+1. Kapcsolódjon a kiszolgálóhoz társított Master adatbázishoz.
 2. Használja az [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL utasítást. A következő példa a szolgáltatási szint célkitűzését állítja be a DW1000c adatbázis-MySQLDW.
 
 ```Sql
@@ -184,7 +184,7 @@ A kibővíthető műveletekhez tartozó adatbázis-állapot nem ellenőrizhető 
 
 A DWU változásainak állapotának ellenõrzése:
 
-1. Kapcsolódjon a logikai SQL Database kiszolgálóhoz társított Master adatbázishoz.
+1. Kapcsolódjon a kiszolgálóhoz társított Master adatbázishoz.
 2. Az adatbázis állapotának vizsgálatához küldje el a következő lekérdezést.
 
 ```sql
