@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679953"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021439"
 ---
 # <a name="about-azure-remote-rendering"></a>Az Azure Remote Rendering ismertetése
 
@@ -22,7 +22,11 @@ Az *Azure távoli renderelés* (ARR) egy olyan szolgáltatás, amely lehetővé 
 
 ![Minta modell](../media/arr-engine.png)
 
-A nem lekötött eszközök korlátozott számítási teljesítménnyel rendelkeznek a komplex modellek rendereléséhez. Számos alkalmazás esetében elfogadhatatlan lenne, azonban a vizualizációs hűség bármilyen módon történő csökkentése.
+A nem lekötött eszközök korlátozott számítási teljesítménnyel rendelkeznek a komplex modellek rendereléséhez. Számos alkalmazás esetében elfogadhatatlan lenne, azonban a vizualizációs hűség bármilyen módon történő csökkentése. A következő képernyőkép összehasonlítja a modellt teljes részletességgel egy olyan modellel, amelyet a közös tartalom-létrehozási eszköz használatával megtizedeltek:
+
+![Minta modell](./media/engine-model-decimated.png)
+
+A csökkentett modell körülbelül 200 000 háromszögből áll (beleértve a részletes belső részeket is), és az eredeti modellben több mint 18 000 000 háromszöget tartalmaz.
 
 A *távoli renderelés* megoldja ezt a problémát azáltal, hogy áthelyezi a renderelési munkafolyamatot a felhőben lévő magas szintű GPU-k felé. A felhőben üzemeltetett grafikus motor rendereli a képet, kódolja a videót, és továbbítja azokat a célként megadott eszköznek.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645871"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022590"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645871"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -313,8 +313,8 @@ Ez a dokumentum több különböző területet ölel fel, amelyeket figyelembe k
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>A Windows rendszeren futó SAP MaxDB üzemelő példányokra vonatkozó részletek
 ### <a name="sap-maxdb-version-support-on-azure"></a>Az SAP MaxDB-verziójának támogatása az Azure-ban
-Az SAP jelenleg a 7,9-es vagy újabb verziójú SAP-MaxDB támogatja az Azure-beli SAP NetWeaver-alapú termékekkel való használatra. Az SAP MaxDB-kiszolgáló, illetve a JDBC-és az ODBC-illesztőprogramok az SAP NetWeaver-alapú termékekkel való használatának minden frissítését kizárólag az SAP <https://support.sap.com/swdc>szolgáltatási Piactéren keresztül biztosítjuk.
-Az SAP NetWeaver SAP MaxDB való futtatásával kapcsolatos általános információk a következő <https://www.sap.com/community/topic/maxdb.html>címen találhatók:.
+Az SAP jelenleg a 7,9-es vagy újabb verziójú SAP-MaxDB támogatja az Azure-beli SAP NetWeaver-alapú termékekkel való használatra. Az SAP MaxDB-kiszolgáló, illetve a JDBC-és az ODBC-illesztőprogramok az SAP NetWeaver-alapú termékekkel való használatának minden frissítését kizárólag az SAP szolgáltatási Piactéren keresztül biztosítjuk <https://support.sap.com/swdc> .
+Az SAP NetWeaver SAP MaxDB való futtatásával kapcsolatos általános információk a következő címen találhatók: <https://www.sap.com/community/topic/maxdb.html> .
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Támogatott Microsoft Windows-verziók és Azure-beli virtuálisgép-típusok az SAP MaxDB adatbázis-kezelők számára
 Az Azure-beli SAP MaxDB-adatbázis támogatott Microsoft Windows-verziójának megkereséséhez tekintse meg a következőt:
@@ -328,7 +328,7 @@ Javasoljuk, hogy a Microsoft Windows operációs rendszer legújabb verzióját 
 Az SAP MaxDB dokumentációjának frissített listáját a következő SAP-megjegyzésekben találja: [767598]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-konfigurációs irányelvek az SAP-telepítésekhez az Azure virtuális gépeken
-#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tároló konfigurálása
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tárolási konfiguráció
 Az Azure Storage ajánlott eljárásai az SAP-MaxDB az RDBMS-alapú [virtuális gépek tárolási struktúrájának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)fejezetében említett általános ajánlásokat követve.
 
 > [!IMPORTANT]

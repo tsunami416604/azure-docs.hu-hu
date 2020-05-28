@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978049"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017579"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Helyi AlwaysOn rendelkezésre állási csoportok kiterjesztése az Azure-ra
 Az Always On rendelkezésre állási csoportok magas rendelkezésre állást biztosítanak az adatbázis-csoportok számára másodlagos replikák hozzáadásával. Ezek a replikák meghibásodás esetén lehetővé teszik az adatbázisok feladatátvételét. Emellett az olvasási munkaterhelések vagy a biztonsági mentési feladatok kiszervezésére is használhatók.
@@ -41,7 +41,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
 > [!IMPORTANT]
 > Az **Azure replika hozzáadása varázsló** csak a klasszikus üzembe helyezési modellel létrehozott virtuális gépeket támogatja. Az új virtuális gépek üzembe helyezéséhez az újabb Resource Manager-modellt kell használni. Ha a Resource Managerrel rendelkező virtuális gépeket használja, manuálisan kell hozzáadnia a másodlagos Azure-replikát a Transact-SQL-parancsokkal (itt nem látható). A varázsló nem fog működni a Resource Manager-forgatókönyvben.
 
-1. SQL Server Management Studio belül bontsa ki az **Always on magas rendelkezésre** > állású**rendelkezésre állási csoportok** > **[a rendelkezésre állási csoport neve]** elemet.
+1. SQL Server Management Studio belül bontsa ki az **Always on magas rendelkezésre**állású  >  **rendelkezésre állási csoportok**  >  **[a rendelkezésre állási csoport neve]** elemet.
 2. Kattintson a jobb gombbal a **rendelkezésre állási replikák**elemre, majd kattintson a **replika hozzáadása**parancsra.
 3. Alapértelmezés szerint a **replika hozzáadása a rendelkezésre állási csoporthoz varázsló** jelenik meg. Kattintson a **Tovább** gombra.  Ha bejelölte a **ne jelenjen meg többé ez az oldal** lehetőség az oldal alján a varázsló előző elindítása során, akkor ez a képernyő nem jelenik meg.
    
@@ -90,7 +90,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
 A rendelkezésre állási csoport létrehozása után létre kell hoznia egy figyelőt, amellyel az ügyfelek csatlakoznak a replikához. A figyelők a bejövő kapcsolatokat az elsődleges vagy írásvédett másodlagos replikára irányítják. További információ a figyelőkről: [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>További lépések
-Amellett, hogy az **Azure replika hozzáadása varázslót** használja az Always On rendelkezésre állási csoport kiterjesztésére az Azure-ra, az Azure-ba való teljes körű SQL Server munkaterhelések is áthelyezhetők. Első lépésként tekintse [meg SQL Server virtuális gép üzembe helyezése az Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)-ban című témakört.
+Amellett, hogy az **Azure replika hozzáadása varázslót** használja az Always On rendelkezésre állási csoport kiterjesztésére az Azure-ra, az Azure-ba való teljes körű SQL Server munkaterhelések is áthelyezhetők. Első lépésként tekintse [meg SQL Server virtuális gép üzembe helyezése az Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)-ban című témakört.
 
-A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

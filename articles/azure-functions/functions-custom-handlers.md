@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479253"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995870"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions egyéni kezelők (előzetes verzió)
 
@@ -20,9 +20,9 @@ Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek eseményeket fogad
 
 Az egyéni kezelők a legmegfelelőbbek olyan helyzetekben, amikor a következőket kívánja használni:
 
-- Functions-alkalmazás implementálása a hivatalosan támogatott nyelveken túli nyelveken
-- Functions-alkalmazás implementálása nyelvi verzióban vagy futtatókörnyezetben alapértelmezés szerint nem támogatott
-- Az alkalmazás végrehajtási környezetének részletes szabályozása
+- Nem hivatalosan támogatott nyelven implementálhatja a Function alkalmazást.
+- A Function alkalmazás implementálása nyelvi verzióban vagy futtatókörnyezetben alapértelmezés szerint nem támogatott.
+- Részletesebb szabályozást biztosíthat a Function app végrehajtási környezetében.
 
 Az egyéni kezelők esetében az összes [eseményindító és bemeneti és kimeneti kötés](./functions-triggers-bindings.md) támogatott a [bővítmények](./functions-bindings-register.md)használatával.
 
@@ -56,11 +56,11 @@ Az alábbi ábrán látható, hogyan jelennek meg a fájlok a "Order" nevű füg
 | host.json
 ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 Az alkalmazás a *Host. JSON* fájl használatával van konfigurálva. Ez a fájl közli a functions-gazdagépgel, hogy hová kell elküldeni a kérelmeket, ha a HTTP-események feldolgozására képes webkiszolgálóra mutat.
 
-Az egyéni kezelőt a *Host. JSON* fájl konfigurálásával határozzák meg, amely a webkiszolgáló `httpWorker` szakaszon keresztüli futtatásának részleteit tartalmazza.
+Az egyéni kezelőt a *Host. JSON* fájl konfigurálásával határozzák meg, amely a webkiszolgáló szakaszon keresztüli futtatásának részleteit tartalmazza `httpWorker` .
 
 ```json
 {
@@ -73,9 +73,9 @@ Az egyéni kezelőt a *Host. JSON* fájl konfigurálásával határozzák meg, a
 }
 ```
 
-A `httpWorker` szakasz a által meghatározott célra mutat `defaultExecutablePath`. A végrehajtási cél lehet egy parancs, végrehajtható fájl vagy fájl, amelyben a webkiszolgáló implementálva van.
+A `httpWorker` szakasz a által meghatározott célra mutat `defaultExecutablePath` . A végrehajtási cél lehet egy parancs, végrehajtható fájl vagy fájl, amelyben a webkiszolgáló implementálva van.
 
-A megírt alkalmazások `defaultExecutablePath` esetében a parancsfájl nyelvi futtatókörnyezetére mutat, és `defaultWorkerPath` a parancsfájl helyére mutat. Az alábbi példa bemutatja, hogyan van konfigurálva egy JavaScript-alkalmazás a Node. js-ben egyéni kezelőként.
+A megírt alkalmazások esetében `defaultExecutablePath` a parancsfájl nyelvi futtatókörnyezetére mutat, és `defaultWorkerPath` a parancsfájl helyére mutat. Az alábbi példa bemutatja, hogyan van konfigurálva egy JavaScript-alkalmazás a Node. js-ben egyéni kezelőként.
 
 ```json
 {
@@ -89,7 +89,7 @@ A megírt alkalmazások `defaultExecutablePath` esetében a parancsfájl nyelvi 
 }
 ```
 
-Argumentumokat a `arguments` tömb használatával is át lehet adni:
+Argumentumokat a tömb használatával is át lehet adni `arguments` :
 
 ```json
 {
@@ -123,7 +123,7 @@ A tiszta HTTP-függvények kérelme a nyers HTTP-kérelem hasznos adattartalma. 
 
 Bármilyen más típusú függvény, amely tartalmazza a bemenetet, a kimeneti kötéseket vagy a HTTP-n kívüli eseményindítót, egyéni kérelem-adattartalommal rendelkezik.
 
-A következő kód egy példaként szolgáló kérelem hasznos adatait jelöli. Az adattartalom tartalmaz egy JSON-struktúrát két `Data` taggal `Metadata`: és.
+A következő kód egy példaként szolgáló kérelem hasznos adatait jelöli. Az adattartalom tartalmaz egy JSON-struktúrát két taggal: `Data` és `Metadata` .
 
 A `Data` tag olyan kulcsokat tartalmaz, amelyek megfelelnek a bemeneti és a trigger neveknek a *function. JSON* fájl kötések tömbében meghatározottak szerint.
 
@@ -181,9 +181,9 @@ Az egyezmény szerint a függvények válaszai kulcs/érték párokként vannak 
 
 | <nobr>Hasznos adatok kulcsa</nobr>   | Adattípus | Megjegyzések                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | A `bindings` *function. JSON* fájl tömbje által meghatározott válasz értékeket tartalmazza.<br /><br />Ha például egy függvény egy "blob" nevű blob Storage kimeneti kötéssel van konfigurálva, akkor `Outputs` a egy nevű `blob`kulcsot tartalmaz, amely a blob értékére van állítva. |
+| `Outputs`     | JSON      | A `bindings` *function. JSON* fájl tömbje által meghatározott válasz értékeket tartalmazza.<br /><br />Ha például egy függvény egy "blob" nevű blob Storage kimeneti kötéssel van konfigurálva, akkor a egy `Outputs` nevű kulcsot tartalmaz `blob` , amely a blob értékére van állítva. |
 | `Logs`        | tömb     | Az üzenetek megjelennek a függvények hívási naplóiban.<br /><br />Az Azure-ban futtatott üzenetek Application Insightsban jelennek meg. |
-| `ReturnValue` | sztring    | Arra szolgál, hogy a *függvény. JSON* fájljában a `$return` kimenet beállításakor választ adjon. |
+| `ReturnValue` | sztring    | Arra szolgál, hogy a `$return` *függvény. JSON* fájljában a kimenet beállításakor választ adjon. |
 
 Tekintse [meg a minta hasznos](#bindings-implementation)adatokat bemutató példát.
 
@@ -196,7 +196,7 @@ Az egyéni kezelők bármilyen nyelven telepíthetők, amely támogatja a HTTP-e
 
 ## <a name="http-only-function"></a>Csak HTTP-függvény
 
-Az alábbi példa bemutatja, hogyan konfigurálhat egy HTTP által aktivált függvényt további kötések és kimenetek nélkül. Az ebben a példában megvalósított forgatókönyv egy nevű `http` függvényt tartalmaz, `GET` amely `POST` a vagy a paramétert fogadja.
+Az alábbi példa bemutatja, hogyan konfigurálhat egy HTTP által aktivált függvényt további kötések és kimenetek nélkül. Az ebben a példában megvalósított forgatókönyv egy nevű függvényt tartalmaz `http` , amely a vagy a paramétert fogadja `GET` `POST` .
 
 A következő kódrészlet azt mutatja be, hogyan áll a függvényre irányuló kérés.
 
@@ -233,7 +233,7 @@ A *http*nevű mappában a *function. JSON* fájl konfigurálja a http által akt
 }
 ```
 
-A függvény a (z) `GET` és `POST` a kérelmek fogadására van konfigurálva, és az eredmény értékét egy `res`nevű argumentummal kell megadnia.
+A függvény a (z) és a kérelmek fogadására van konfigurálva, `GET` `POST` és az eredmény értékét egy nevű argumentummal kell megadnia `res` .
 
 Az alkalmazás gyökerében a *Host. JSON* fájl a Node. js futtatására van konfigurálva, és rámutat a `server.js` fájlra.
 
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a `FUNCTIONS_HTTPWORKER_PORT`-on keresztüli kérelmek figyelésére van beállítva.
+Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a-on keresztüli kérelmek figyelésére van beállítva `FUNCTIONS_HTTPWORKER_PORT` .
 
-A függvény a következő elérési úton van `/hello`definiálva:. `GET`a kérések kezelése egy egyszerű JSON-objektum visszaadása `POST` révén történik, és a kérések a `req.body`kérések törzséhez is hozzáférnek a használatával.
+A függvény a következő elérési úton van definiálva: `/hello` . `GET`a kérések kezelése egy egyszerű JSON-objektum visszaadása révén történik, és a kérések a kérések `POST` törzséhez is hozzáférnek a használatával `req.body` .
 
-A Order függvény útvonala itt van `/hello` , és nem `/api/hello` , mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
+A Order függvény útvonala itt van, `/hello` és nem, `/api/hello` mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
 
 >[!NOTE]
 >A `FUNCTIONS_HTTPWORKER_PORT` nem a függvény meghívásához használt nyilvános port. A functions gazdagép ezt a portot használja az egyéni kezelő meghívásához.
 
 ## <a name="function-with-bindings"></a>Függvény kötésekkel
 
-Az ebben a példában megvalósított forgatókönyv egy nevű `order` függvényt tartalmaz, `POST` amely a termék megrendelését jelképező hasznos adatokat fogad el. Mivel a függvény elküld egy megrendelést, létrejön egy Queue Storage üzenet, és a rendszer egy HTTP-választ ad vissza.
+Az ebben a példában megvalósított forgatókönyv egy nevű függvényt tartalmaz `order` , amely a `POST` termék megrendelését jelképező hasznos adatokat fogad el. Mivel a függvény elküld egy megrendelést, létrejön egy Queue Storage üzenet, és a rendszer egy HTTP-választ ad vissza.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -379,16 +379,16 @@ app.post("/order", (req, res) => {
 });
 ```
 
-Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a `FUNCTIONS_HTTPWORKER_PORT`-on keresztüli kérelmek figyelésére van beállítva.
+Ebben a példában az expressz használatával webkiszolgálót hozhat létre a HTTP-események kezeléséhez, és a a-on keresztüli kérelmek figyelésére van beállítva `FUNCTIONS_HTTPWORKER_PORT` .
 
-A függvény a következő elérési úton van `/order` definiálva:.  A Order függvény útvonala itt van `/order` , és nem `/api/order` , mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
+A függvény a következő elérési úton van definiálva: `/order` .  A Order függvény útvonala itt van, `/order` és nem, `/api/order` mert a functions gazdagép a kérést az egyéni kezelőhöz rendeli.
 
-Mivel `POST` a rendszer a kérelmeket elküldi erre a függvénybe, az adat néhány ponton elérhetővé válnak:
+Mivel a `POST` rendszer a kérelmeket elküldi erre a függvénybe, az adat néhány ponton elérhetővé válnak:
 
 - A kérelem törzse a-on keresztül érhető el`req.body`
 - A függvénynek közzétett adat a következőn keresztül érhető el`req.body.Data.req.Body`
 
-A függvény válasza egy kulcs/érték párokba van formázva, `Outputs` ahol a tag olyan JSON-értéket tartalmaz, amelyben a kulcsok megfelelnek a *function. JSON* fájlban meghatározott kimeneteknek.
+A függvény válasza egy kulcs/érték párokba van formázva, ahol a `Outputs` tag olyan JSON-értéket tartalmaz, amelyben a kulcsok megfelelnek a *function. JSON* fájlban meghatározott kimeneteknek.
 
 Ha a `message` kérelemben szereplő üzenettel egyenlő értéket ad meg, és `res` a várt http-válaszra van állítva, akkor ez a függvény egy üzenetet küld Queue Storage és egy http-választ ad vissza.
 

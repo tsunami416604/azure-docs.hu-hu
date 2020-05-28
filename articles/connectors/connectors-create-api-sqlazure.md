@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402599"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020727"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -26,7 +26,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) vagy [Azure SQL Database](../sql-database/sql-database-get-started-portal.md)
+* Egy [SQL Server adatbázis](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) vagy [Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)
 
   A tábláknak adatokkal kell rendelkezniük, hogy a logikai alkalmazás a műveletek meghívásakor eredményeket lehessen visszaadni. Ha Azure SQL Database hoz létre, használhat példákat tartalmazó adatbázisokat is.
 

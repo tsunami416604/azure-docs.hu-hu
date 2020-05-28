@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9224b361adff8bfc53ca2f31dccb2519591dc7e5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743376"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021806"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>A PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -66,7 +66,8 @@ Ha módosítani szeretné az alapértelmezett előfizetést a bejelentkezés ut�
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-A listából a out-GridView parancsmag használatával is kiválaszthatja a következőt:
+Az out-GridView parancsmag használatával is kiválaszthat egyet a listából:
+
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```

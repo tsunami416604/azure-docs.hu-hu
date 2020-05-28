@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821502"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017604"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -92,7 +92,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Description | PerfMon | Iostat |
+| Számláló | Leírás | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -333,7 +333,7 @@ A lemezes csíkozás fontos konfigurációja a sáv mérete. A sáv mérete vagy
 
 Ha például az alkalmazás által generált i/o-kérelem nagyobb, mint a lemezes szalag mérete, akkor a tárolási rendszer több lemezen írja azt át a csíkozott egység határai közé. Amikor a rendszer elvégzi az adatelérést, több csíkozott egységen kell keresnie a kérelem teljesítéséhez. Az ilyen viselkedés kumulatív hatása jelentős teljesítménybeli romláshoz vezethet. Ha azonban az IO-kérelmek mérete kisebb, mint a szalag mérete, és ha véletlenszerű jellegű, az i/o-kérések hozzáadhatnak ugyanazon a lemezen, ami torlódást okoz, és végső soron az i/o-teljesítmény csökkenését eredményezi.
 
-Az alkalmazás által futtatott számítási feladat típusától függően válasszon egy megfelelő szalagos méretet. Véletlenszerű kisméretű i/o-kérelmek esetén használjon kisebb szalagos méretet. Míg a nagy sorszámú IO-kérelmeknél nagyobb szalagos méret van használatban. Ismerje meg a Premium Storageon futó alkalmazáshoz tartozó Stripe-méretre vonatkozó javaslatokat. SQL Server esetében konfigurálja a 64 KB-ot a OLTP számítási feladatokhoz és a 256 KB-ban az adatraktározási munkaterhelésekhez. További információért tekintse meg [Az Azure-beli virtuális gépek SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) .
+Az alkalmazás által futtatott számítási feladat típusától függően válasszon egy megfelelő szalagos méretet. Véletlenszerű kisméretű i/o-kérelmek esetén használjon kisebb szalagos méretet. Míg a nagy sorszámú IO-kérelmeknél nagyobb szalagos méret van használatban. Ismerje meg a Premium Storageon futó alkalmazáshoz tartozó Stripe-méretre vonatkozó javaslatokat. SQL Server esetében konfigurálja a 64 KB-ot a OLTP számítási feladatokhoz és a 256 KB-ban az adatraktározási munkaterhelésekhez. További információért tekintse meg [Az Azure-beli virtuális gépek SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > A DS-sorozatú virtuális gépeken és a 64 Premium Storage-lemezeken legfeljebb 32 Premium Storage-lemez használható a GS sorozatú virtuális gépeken.

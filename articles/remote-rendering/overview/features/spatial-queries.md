@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758843"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021296"
 ---
 # <a name="spatial-queries"></a>Térbeli lekérdezések
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 Három találati gyűjtési mód van:
 
-* **Legközelebb:** Ebben a módban csak a legközelebbi találatot fogja jelenteni.
-* **Bármelyik:** Ezt a módot érdemes használni, ha szeretné tudni, *hogy* a Ray egyáltalán nem talált-e valamit, de nem érdekli, hogy pontosan mi volt a találat. Ez a lekérdezés jelentősen olcsóbbá teheti a kiértékelést, de csak néhány alkalmazást is tartalmaz.
-* **Összes:** Ebben a módban a Ray összes találata látható, távolság szerint rendezve. Ne használja ezt a módot, ha nincs szüksége az első találatra. Korlátozza a jelentett találatok számát a `MaxHits` kapcsolóval.
+* ** `Closest` :** Ebben a módban csak a legközelebbi találatot fogja jelenteni.
+* ** `Any` :** Ezt a módot érdemes használni, ha azt szeretné tudni, hogy a Ray megtalál-e bármit, de nem érdekli, *hogy* pontosan mi volt a találat. Ez a lekérdezés jelentősen olcsóbbá teheti a kiértékelést, de csak néhány alkalmazást is tartalmaz.
+* ** `All` :** Ebben a módban a Ray összes találata látható, távolság szerint rendezve. Ne használja ezt a módot, ha nincs szüksége az első találatra. Korlátozza a jelentett találatok számát a `MaxHits` kapcsolóval.
 
 Ha az objektumokat szelektív módon szeretné kizárni a Ray-öntvények számára, akkor a [HierarchicalStateOverrideComponent](override-hierarchical-state.md) összetevő használható.
 
@@ -106,11 +106,11 @@ A Ray Cast lekérdezés eredménye a találatok tömbje. A tömb üres, ha nincs
 
 A találatok a következő tulajdonságokkal rendelkeznek:
 
-* **HitEntity:** Melyik [entitást](../../concepts/entities.md) észlelt a program.
-* Legtöbbje **:** Melyik *alhálót* találta meg egy [MeshComponent](../../concepts/meshes.md). A használatával indexelheti `MeshComponent.UsedMaterials` a-t, és megkeresheti az [anyagot](../../concepts/materials.md) ezen a ponton.
-* **HitPosition:** Az a hely, ahol a Ray összemetszi az objektumot.
-* **HitNormal:** A háló területének normál mérete a rácsvonal pozíciójában.
-* **DistanceToHit:** A sugár kezdő pozíciója és a találat közötti távolság.
+* ** `HitEntity` :** Melyik [entitást](../../concepts/entities.md) észlelt a program.
+* ** `SubPartId` :** Melyik *alhálót* találta meg egy [MeshComponent](../../concepts/meshes.md). A használatával indexelheti `MeshComponent.UsedMaterials` a-t, és megkeresheti az [anyagot](../../concepts/materials.md) ezen a ponton.
+* ** `HitPosition` :** Az a hely, ahol a fénysugár összemetszi az objektumot.
+* ** `HitNormal` :** A háló területének normál mérete a rácsvonal pozíciójában.
+* ** `DistanceToHit` :** A sugár kezdő pozíciója és a találat közötti távolság.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849654"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022197"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -86,7 +86,7 @@ A munkaterhelések teljes mértékben lezárhatók a nyilvános végpontokhoz va
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Hozzáférés egy privát kapcsolati erőforráshoz jóváhagyási munkafolyamat használatával 
 A következő kapcsolat-jóváhagyási módszerekkel csatlakozhat egy privát kapcsolati erőforráshoz:
-- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft. \< Szolgáltató>/<resource_type>/privateEndpointConnectionApproval/action
+- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft. \<Provider> /<resource_type>/privateEndpointConnectionApproval/action
 - **Manuális** kérés, ha nem rendelkezik a szükséges engedélyekkel, és hozzáférést szeretne kérni. A rendszer elindít egy jóváhagyási munkafolyamatot. A privát végpont és a következő privátvégpont-kapcsolat „Függőben” állapotban jön létre. A privát hivatkozás erőforrásának tulajdonosa felelős a kapcsolat jóváhagyásáért. A jóváhagyást követően a magánhálózati végpont engedélyezve van a forgalom normál módon történő elküldéséhez, ahogy az a következő jóváhagyási munkafolyamat-diagramon is látható.  
 
 ![munkafolyamat-jóváhagyás](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,9 +124,9 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 
 
 ## <a name="next-steps"></a>További lépések
-- [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
-- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
-- [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)
+- [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
+- [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
+- [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)
 - [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
 - [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)

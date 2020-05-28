@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849042"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996244"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -65,6 +65,14 @@ Az alapértelmezett munkaterület helye az Azure-régiótól függ:
 - A Japánban működő virtuális gépek esetében a munkaterület helye Japán
 - Kínában működő virtuális gépek esetén a munkaterület helye Kína
 - Ausztráliában lévő virtuális gépek esetében a munkaterület helye Ausztrália
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Milyen adatokat gyűjtenek a Log Analytics ügynök?
+
+Az ügynök által figyelt alkalmazások és szolgáltatások teljes listájáért tekintse meg a [mi által figyelt Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)című témakört.
+
+> [!IMPORTANT]
+> Vegye figyelembe, hogy egyes szolgáltatásokhoz, például a Azure Firewallhoz, ha engedélyezte a naplózást, és kiválasztott egy csevegő erőforrást a naplóhoz (például a naplót *részletesen*állítja be), jelentős hatással lehet az log Analytics munkaterület tárolási igényeire. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Törölhetem a Security Center által létrehozott alapértelmezett munkaterületeket?
@@ -201,9 +209,17 @@ Az ügynök manuális eltávolítása:
 
 ## <a name="how-do-i-disable-data-collection"></a>Hogyan az adatgyűjtés letiltása?
 
-Az automatikus kiépítés alapértelmezés szerint ki van kapcsolva. A biztonsági házirendben a beállítás kikapcsolásával bármikor letilthatja az erőforrások automatikus kiépítési lehetőségeit. Az automatikus kiépítés kifejezetten ajánlott ahhoz, hogy biztonsági riasztásokat és javaslatokat kapjon a rendszerfrissítésekkel, az operációs rendszer sebezhetőségével és az Endpoint Protection szolgáltatással kapcsolatban.
+Az automatikus kiépítés kifejezetten ajánlott ahhoz, hogy biztonsági riasztásokat és javaslatokat kapjon a rendszerfrissítésekkel, az operációs rendszer sebezhetőségével és az Endpoint Protection szolgáltatással kapcsolatban. Alapértelmezés szerint az automatikus kiépítés le van tiltva.
 
-Az adatgyűjtés letiltásához [Jelentkezzen be a Azure Portalba](https://portal.azure.com), válassza a **Tallózás**lehetőséget, válassza a **Security Center**lehetőséget, majd válassza a **házirend kiválasztása**lehetőséget. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Amikor kiválaszt egy előfizetési **biztonsági házirendet** , megnyílik az adatgyűjtés. Az **automatikus kiépítés**alatt válassza ki a **ki**lehetőséget.
+Ha engedélyezte, de most le szeretné tiltani:
+
+1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center** és válassza a **biztonsági házirend**elemet.
+
+1. Válassza ki azt az előfizetést, amelyen le szeretné tiltani az automatikus kiépítés szolgáltatást.
+
+    **Biztonsági házirend – az adatgyűjtés** megnyílik.
+
+1. Az **automatikus kiépítés**alatt válassza ki a **ki**lehetőséget.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Hogyan engedélyezi az adatgyűjtés?
@@ -233,9 +249,6 @@ Az adatok gyűjtéséhez az egyes virtuális gépeknek és kiszolgálóknak HTTP
 Az ügynök a rendszererőforrások névleges mennyiségét használja fel, és kevés hatással van a teljesítményre. A teljesítményre gyakorolt hatásra, valamint az ügynökre és a bővítményre vonatkozó további információkért tekintse meg a [tervezési és üzemeltetési útmutatót](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
-## <a name="where-is-my-data-stored"></a>Hol vannak tárolva az adataim?
-
-Az ettől az ügynöktől gyűjtött adatokat az előfizetéséhez vagy egy új munkaterülethez társított meglévő Log Analytics munkaterületen tároljuk. További információkért lásd az [adatbiztonságot](security-center-data-security.md)ismertető témakört.
 
 
 <!--Image references-->

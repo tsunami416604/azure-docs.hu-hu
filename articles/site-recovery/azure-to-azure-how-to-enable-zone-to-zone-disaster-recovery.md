@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891503"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996499"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
 
@@ -65,7 +65,7 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Szolgáltatás  | Támogatási nyilatkozat  |
+|Funkció  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |
@@ -117,6 +117,9 @@ A Site Recovery csapat és az Azure Capacity Management csapata elegendő infras
 
 **4. mely operációs rendszerek támogatottak?**
 A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+
+**5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
+Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
 
 ## <a name="next-steps"></a>További lépések
 

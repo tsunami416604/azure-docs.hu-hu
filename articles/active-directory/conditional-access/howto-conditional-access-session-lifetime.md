@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bba37b5d72bd9dca2e10c699f4ba259319a6c71
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263282"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995085"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
 
@@ -50,6 +50,10 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 - Csapat webes ügyfele
 - Dynamics CRM Online
 - Azure Portal
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Felhasználói bejelentkezés gyakorisága és multi-Factor Authentication
+
+Korábban csak az Azure AD-hez csatlakoztatott eszközökön, a hibrid Azure AD-hez csatlakoztatott és az Azure AD-ben regisztrált eszközön történt a bejelentkezés gyakorisága. A többtényezős hitelesítés (MFA) az adott eszközökön való újbóli betartatása nem volt egyszerű módszer. Az ügyfelek visszajelzései alapján a bejelentkezési gyakoriság az MFA-ra is érvényes lesz.
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Felhasználói bejelentkezés gyakorisága és az eszközök identitása
 
@@ -90,7 +94,7 @@ A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium s
    > [!NOTE]
    > A legjobb felhasználói élmény érdekében javasoljuk, hogy a kulcs Microsoft Office alkalmazások, például az Exchange Online és a SharePoint Online esetében az egyenlő hitelesítési kérések gyakoriságát adja meg.
 
-1. Nyissa meg a **hozzáférés-vezérlési** > **munkamenetet** , és kattintson a **bejelentkezési gyakoriság** lehetőségre.
+1. Nyissa meg a **hozzáférés-vezérlési**  >  **munkamenetet** , és kattintson a **bejelentkezési gyakoriság** lehetőségre.
 1. Adja meg az első szövegmezőben a napok és órák szükséges értékét
 1. Válassza ki az **órák** vagy **napok** értékét a legördülő listából
 1. Szabályzat mentése
@@ -109,7 +113,7 @@ Ha az azonos böngésző-munkamenetben futó különböző webalkalmazásokhoz e
    > [!NOTE]
    > Vegye figyelembe, hogy ehhez a vezérlőhöz a "minden felhőalapú alkalmazás" lehetőséget kell választania feltételként. A böngésző-munkamenet megőrzését a hitelesítési munkamenet tokenje vezérli. A böngésző-munkamenet összes lapja egyetlen munkamenet-jogkivonattal rendelkezik, ezért mindegyiknek meg kell egyeznie az adatmegőrzési állapottal.
 
-1. Nyissa meg a **hozzáférés-vezérlési** > **munkamenetet** , és kattintson az **állandó böngésző munkamenet**
+1. Nyissa meg a **hozzáférés-vezérlési**  >  **munkamenetet** , és kattintson az **állandó böngésző munkamenet**
 1. Válasszon ki egy értéket a legördülő listából
 1. Szabályzat mentése
 

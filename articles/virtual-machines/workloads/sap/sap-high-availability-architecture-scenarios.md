@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279909"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021126"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -90,7 +90,7 @@ ms.locfileid: "79279909"
 [planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92
 
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md
 
 [sap-ha-bc-virtual-env-hyperv-vmware-white-paper]:https://scn.sap.com/docs/DOC-44415
 [sap-ha-partner-information]:https://scn.sap.com/docs/DOC-8541
@@ -265,7 +265,7 @@ A Premium Storage szolgáltatással jelenleg a 99,9%-os virtuális gépekre vona
 
 A számítás alapja havi 30 nap, vagy 43 200 perc. Például a 0,05%-os állásidő megfelel a 21,6 percnek. A szokásos módon a különböző szolgáltatások rendelkezésre állását a következőképpen számítjuk ki:
 
-(Rendelkezésre állási szolgáltatás #1/100) * (rendelkezésre állási szolgáltatás #2/100) * (rendelkezésre állási szolgáltatás #3/100) \*...
+(Rendelkezésre állási szolgáltatás #1/100) * (rendelkezésre állási szolgáltatás #2/100) * (rendelkezésre állási szolgáltatás #3/100) \* ...
 
 Például:
 
@@ -367,8 +367,8 @@ Az Azure-beli rendelkezésre állási csoport által az Azure-méretezési egys�
 
 Ha a dedikált virtuális gépeken néhány SAP Application Server-példányt telepít, feltételezve, hogy öt frissítési tartománnyal rendelkezünk, az alábbi kép látható. A rendelkezésre állási csoporton belüli frissítési és tartalék tartományok tényleges maximális száma a jövőben változhat:
 
-![2. ábra: az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása][planning-guide-figure-3000]
-az Azure rendelkezésre állási készletében_**2. ábra:** az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása Azure rendelkezésre állási csoportokban_
+![2. ábra: az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása az Azure rendelkezésre állási készletében ][planning-guide-figure-3000]
+ _**2. ábra:** az SAP-alkalmazások kiszolgálóinak magas rendelkezésre állása Azure rendelkezésre állási csoportokban_
 
 További információ: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban][azure-virtual-machines-manage-availability].
 

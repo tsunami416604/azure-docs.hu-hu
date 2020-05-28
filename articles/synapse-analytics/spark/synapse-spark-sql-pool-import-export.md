@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739277"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020863"
 ---
 # <a name="introduction"></a>Introduction (Bevezetés)
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 Az importálási utasítások nem szükségesek, ezeket a rendszer előre importálja a jegyzetfüzet felhasználói felületén.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Adatok átvitele a munkaterülethez csatolt logikai kiszolgáló (DW-példány) és egy SQL-készletbe
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Adatok átvitele a munkaterülethez csatolt SQL-készletbe vagy-ból
 
 > [!NOTE]
 > **A notebook-élményben nem szükséges importálás**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 A Storage és a SQL Server hitelesítése befejeződött
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Ha a munkaterületen kívüli logikai kiszolgálón található SQL-készletből vagy-adatbázisból továbbít adatátvitelt.
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Ha a munkaterületen kívüli SQL-készletbe vagy-adatbázisba küldi át az adatátvitelt
 
 > [!NOTE]
 > A notebook-élményben nem szükséges importálás

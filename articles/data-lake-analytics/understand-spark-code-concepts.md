@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74424003"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016950"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>A U-SQL-fejlesztők Apache Spark kódjának megismerése
 
@@ -44,7 +44,7 @@ Az U-SQL-parancsfájlok a következő feldolgozási mintát követik:
 
 1. Az adatok beolvasása a strukturálatlan fájlokból, az `EXTRACT` utasítás, a hely vagy a fájl készletének specifikációja, valamint a beépített vagy a felhasználó által definiált kivonó és a kívánt séma alapján, illetve U-SQL-táblákból (felügyelt vagy külső táblákból) történik. A rendszer sorhalmazként jelöli meg.
 2. A sorhalmaz több olyan U-SQL-utasításban van átalakítva, amely U-SQL-kifejezéseket alkalmaz a sorhalmazokra, és új sorhalmazokat állít elő.
-3. Végül az eredményül kapott sorhalmazok egy fájlba `OUTPUT` kerülnek, amely a hely (ek), a beépített vagy a felhasználó által definiált vagy egy U-SQL-tábla helyét határozza meg.
+3. Végül az eredményül kapott sorhalmazok egy fájlba kerülnek, `OUTPUT` amely a hely (ek), a beépített vagy a felhasználó által definiált vagy egy U-SQL-tábla helyét határozza meg.
 
 A szkriptet a rendszer lustán értékeli ki, ami azt jelenti, hogy minden egyes kinyerési és átalakítási lépés egy kifejezés fastruktúrába kerül, és globálisan kiértékelt (a adatfolyam).
 
@@ -141,9 +141,9 @@ A Spark-ban alapértelmezés szerint a types (NULL) értékek engedélyezése a 
 
 A Sparkban NULL azt jelzi, hogy az érték ismeretlen. A Spark NULL érték eltér bármely értéktől, beleértve a saját magát is. A két Spark NULL érték vagy egy NULL érték és bármely más érték közötti összehasonlítás ismeretlen, mert az egyes NULL értékek értéke ismeretlen.  
 
-Ez a viselkedés különbözik a U-SQL-től, amely a C# `null` szemantikai sorrendjét követi, amely eltér az összes értéktől, de önmagával egyenlő.  
+Ez a viselkedés különbözik a U-SQL-től, amely a C# szemantikai sorrendjét követi, amely `null` eltér az összes értéktől, de önmagával egyenlő.  
 
-Így a által `SELECT` használt `WHERE column_name = NULL` SparkSQL-utasítás nulla sorokat ad vissza, még akkor is, `column_name`ha a-ben Null érték van, míg az U-SQL `column_name` -ben, `null`akkor az a sor, amelyben a érték van beállítva. Hasonlóképpen, A használt `SELECT` `WHERE column_name != NULL` Spark-utasítás nulla sorokat ad vissza, akkor is, ha nem null érték `column_name`szerepel a rendszerben, míg a U-SQL esetében a nem null értékű sorokat adja vissza. Így ha azt szeretné, hogy a U-SQL null-ellenőrzési szemantikaa legyen, használja a [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) és a [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (vagy a DSL-egyenértékét).
+Így a `SELECT` által használt SparkSQL-utasítás `WHERE column_name = NULL` nulla sorokat ad vissza, még akkor is, ha a-ben Null érték van `column_name` , míg az U-SQL-ben, akkor az a sor, amelyben a érték van `column_name` beállítva `null` . Hasonlóképpen, A használt Spark- `SELECT` utasítás `WHERE column_name != NULL` nulla sorokat ad vissza, akkor is, ha nem null érték szerepel a rendszerben `column_name` , míg a U-SQL esetében a nem null értékű sorokat adja vissza. Így ha azt szeretné, hogy a U-SQL null-ellenőrzési szemantikaa legyen, használja a [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) és a [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (vagy a DSL-egyenértékét).
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL-katalógus objektumainak átalakítása
 
@@ -160,8 +160,8 @@ Ha a U-SQL-katalógus segítségével megoszthatja az adatkezelési és a kód o
 Az U-SQL alapvető nyelve a sorhalmazok átalakítása, és az SQL-alapú. Az alábbi lista az U-SQL-ben kínált leggyakoribb sorhalmaz-kifejezések nem kimerítő listáját tartalmazza:
 
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Összesítések +`HAVING`/`ORDER BY`+`FETCH`
-- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN` kifejezések
-- `CROSS`/`OUTER``APPLY` kifejezések
+- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`kifejezések
+- `CROSS`/`OUTER``APPLY`kifejezések
 - `PIVOT`/`UNPIVOT`kifejezések
 - `VALUES`sorhalmaz konstruktora
 
@@ -170,8 +170,8 @@ Az U-SQL alapvető nyelve a sorhalmazok átalakítása, és az SQL-alapú. Az al
 Emellett az U-SQL számos SQL-alapú skaláris kifejezést is biztosít, például:
 
 - `OVER`ablakos kifejezések
-- számos beépített aggregator és rangsorolási függvény (`SUM` `FIRST` stb.)
-- A legismertebb SQL skaláris kifejezések: `CASE`, `LIKE`, (`NOT`) `IN`, `AND` `OR` stb.
+- számos beépített aggregator és rangsorolási függvény ( `SUM` `FIRST` stb.)
+- A legismertebb SQL skaláris kifejezések: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` stb.
 
 A Spark a legtöbb ilyen kifejezéshez egyenértékű kifejezéseket biztosít a DSL-és a SparkSQL-űrlapon. A Sparkban natív módon nem támogatott kifejezések némelyikét a natív Spark-kifejezések és a szemantikailag egyenértékű minták kombinációjával újra kell írni. Például `OUTER UNION` le kell fordítani a kivetítések és a szakszervezetek megfelelő kombinációjára.
 
@@ -179,11 +179,11 @@ A NULL értékek eltérő kezelésének köszönhetően a U-SQL-illesztések min
 
 ## <a name="transform-other-u-sql-concepts"></a>Más U-SQL-fogalmak átalakítása
 
-Az U-SQL számos más funkciót és fogalmat is kínál, például az összevont lekérdezéseket SQL Server adatbázisokra, paraméterekre, skaláris kifejezésekre, valamint a `OPTION` lambda kifejezések változóit, a rendszerváltozókat és a tippeket.
+Az U-SQL számos más funkciót és fogalmat is kínál, például az összevont lekérdezéseket SQL Server adatbázisokra, paraméterekre, skaláris kifejezésekre, valamint a lambda kifejezések változóit, a rendszerváltozókat és a `OPTION` tippeket.
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>Összevont lekérdezések SQL Server adatbázisok/külső táblák között
 
-Az U-SQL adatforrást és külső táblákat is biztosít, valamint közvetlen lekérdezéseket Azure SQL Database. Míg a Spark nem nyújt ugyanazokat az objektum-absztrakciókat, a [Spark-összekötőt biztosít az](../sql-database/sql-database-spark-connector.md) SQL-adatbázisok lekérdezéséhez használható Azure SQL Databasehoz.
+Az U-SQL adatforrást és külső táblákat is biztosít, valamint közvetlen lekérdezéseket Azure SQL Database. Míg a Spark nem nyújt ugyanazokat az objektum-absztrakciókat, a [Spark-összekötőt biztosít az](../azure-sql/database/spark-connector.md) SQL-adatbázisok lekérdezéséhez használható Azure SQL Databasehoz.
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL paraméterek és változók
 
@@ -196,7 +196,7 @@ var x = 2 * 3;
 println(x)
 ```
 
-A U-SQL rendszerváltozói (a `@@`-től kezdődő változók) két kategóriába oszthatók:
+A U-SQL rendszerváltozói (a-től kezdődő változók `@@` ) két kategóriába oszthatók:
 
 - Beállítható rendszerváltozók, amelyek meghatározott értékekre állíthatók a parancsfájlok viselkedésének hatására.
 - Információs rendszerváltozók, amelyek a rendszer-és a feladat-szintű információkat kérdezik le
@@ -208,8 +208,8 @@ A beállítható rendszerváltozók többsége nem rendelkezik közvetlen egyen�
 Az U-SQL számos szintaktikai módszert kínál a lekérdezés-optimalizáló és a végrehajtó motor számára:  
 
 - U-SQL rendszerváltozó beállítása
-- a `OPTION` sorhalmaz-kifejezéshez tartozó záradék, amely egy adatkészletet vagy egy tippet biztosít
-- illesztési mutató a JOIN kifejezés szintaxisában (például `BROADCASTLEFT`)
+- `OPTION`a sorhalmaz-kifejezéshez tartozó záradék, amely egy adatkészletet vagy egy tippet biztosít
+- illesztési mutató a JOIN kifejezés szintaxisában (például `BROADCASTLEFT` )
 
 A Spark költséghatékony lekérdezés-optimalizáló funkciója lehetővé teszi a javaslatok és a lekérdezési teljesítmény finomhangolását. Tekintse meg a vonatkozó dokumentációt.
 

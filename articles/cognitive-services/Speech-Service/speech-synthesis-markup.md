@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 855feaf9b5b47b7b725ee7927418a2b3a9e25393
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714321"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017768"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -79,7 +79,7 @@ Az `voice` elem megadása kötelező. A szövegről beszédre használt hang meg
 |-----------|-------------|---------------------|
 | `name` | A szöveg-beszéd kimenethez használt hang azonosítása. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg. | Kötelező |
 
-**Példa**
+**Például**
 
 > [!NOTE]
 > Ez a példa a `en-US-AriaRUS` hangot használja. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
@@ -109,7 +109,7 @@ A `speak` elemen belül több hang is megadható a szöveg – beszéd kimenethe
 
 A Speech SDK nyelvétől függően a `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` tulajdonságot `false` az objektum egy példányán kell beállítania `SpeechConfig` .
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 További információ: <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
@@ -173,7 +173,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -227,7 +227,7 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  | 
 
-**Példa**
+**Például**
 
 Ez a SSML-kódrészlet azt szemlélteti, hogy az `<mstts:express-as>` elem hogyan változtatja meg a beszéd stílusát a alkalmazásban `cheerful` .
 
@@ -272,7 +272,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | erős                        | 1000 MS     |
 | x – erős                      | 1250 MS     |
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -297,7 +297,7 @@ Az `s` elem tartalmazhat szöveget és a következő elemeket:,,,,, `audio` `bre
 <s></s>
 ```
 
-**Példa**
+**Például**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -330,7 +330,7 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
-| `alphabet` | Megadja az attribútumban szereplő karakterlánc kiejtésének szintetizálása során használandó fonetikus ábécét `ph` . Az ábécét megadó karakterláncot kisbetűs betűkkel kell megadni. Az alábbiakban megadhatja a lehetséges ábécéket.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Nemzetközi fonetikus ábécé <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [Beszédfelismerési szolgáltatás fonetikus ábécéje](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;Univerzális telefon készlet</li></ul><br>Az ábécé csak a `phoneme` elemre vonatkozik. | Választható |
+| `alphabet` | Megadja az attribútumban szereplő karakterlánc kiejtésének szintetizálása során használandó fonetikus ábécét `ph` . Az ábécét megadó karakterláncot kisbetűs betűkkel kell megadni. Az alábbiakban megadhatja a lehetséges ábécéket.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Nemzetközi fonetikus ábécé <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [Beszédfelismerési szolgáltatás fonetikus ábécéje](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzális telefon készlet</a></li></ul><br>Az ábécé csak a `phoneme` elemre vonatkozik. | Választható |
 | `ph` | Olyan telefonszámot tartalmazó karakterlánc, amely a szó kiejtését határozza meg a `phoneme` elemben. Ha a megadott karakterlánc nem felismerhető telefonokat tartalmaz, a szöveg-beszéd (TTS) szolgáltatás elutasítja a teljes SSML-dokumentumot, és a dokumentumban megadott egyik beszédfelismerési kimenetet sem hozza létre. | Fonémák használata esetén kötelező. |
 
 **Példák**
@@ -502,7 +502,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 
 A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neurális hangokra és standard hangokra. 
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -518,7 +518,7 @@ A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neuráli
 
 A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a standard hangokra. Míg a kötetek módosításai csak a mondat szintjén alkalmazhatók a neurális hangokra.
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -534,7 +534,7 @@ A kötetek módosításai a Word vagy a mondat szintjén is alkalmazhatók a sta
 
 A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standard hangokra. Míg a szurok módosításait csak a mondat szintjén lehet a neurális hangokra alkalmazni.
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -549,7 +549,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 > [!IMPORTANT]
 > A Pitch Contour változásai mostantól a neurális hangokkal is támogatottak.
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -598,7 +598,7 @@ A `interpret-as` és attribútumok támogatott tartalomtípusai a következők: 
 
 Az `say-as` elem csak szöveget tartalmazhat.
 
-**Példa**
+**Például**
 
 A Speech szintézis motor a következő példát szemlélteti: "az első kérés egy, a tizenkilencedik 20 10-es, a korai érkezési idő pedig a 12 35 ÓRAKOR."
  
@@ -638,7 +638,7 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Megadja a hangfájl helyét/URL-címét. | Kötelező, ha a hangelemet használja a SSML-dokumentumban. |
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -677,7 +677,7 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 | `fadein` | Meghatározza a háttérbeli hang "elhalványulás" időtartamát ezredmásodpercben. Az alapértelmezett érték `0` :, amely a nem áttűnéssel egyenértékű. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
 | `fadeout` | Meghatározza, hogy a háttérbeli hang mennyi ideig elhalványul ezredmásodpercben. Az alapértelmezett érték a `0` , ami egyenértékű a kihalványítás nélkül. **Elfogadott értékek**: `0` a `10000` bezárólag.  | Választható |
 
-**Példa**
+**Például**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
@@ -688,6 +688,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

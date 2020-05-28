@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772862"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022401"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -569,26 +569,6 @@ Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használn
 Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üzembe helyezési feladat előtt és után.
 
 Ha nincs beállítva a git, a csatolt sablonokat az **ARM-sablonok** listájában, az **Exportálás ARM-sablon** használatával érheti el.
-
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Azure-SSIS integrációs modulok kizárása CI/CD-ről
-
-Ha a fejlesztői gyár Azure-SSIS integrációs modulja van, akkor az alábbi forgatókönyvben kizárhatja az összes Azure-SSIS integrációs modult a CI/CD-folyamatból:
-
-- Azure-SSIS IR az infrastruktúra összetett, és az egyes környezetekben eltérő lehet.  
-- A Azure-SSIS IR beállítása manuálisan történik az azonos nevű környezetekben. Ellenkező esetben a közzététel sikertelen lesz, ha a tevékenység Azure-SSIS IRtól függ.
-
-Az Azure SSIS Integration Runtime kizárása:
-
-1. Ha nem létezik, vegyen fel egy publish_config. JSON fájlt a gyökérkönyvtárba az együttműködési ág mappájába.
-1. Adja hozzá az alábbi beállítást a publish_config. JSON fájlhoz: 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-Az együttműködési ágban való közzétételkor a rendszer kizárja az Azure-SSIS integrációs modulokat a generált Resource Manager-sablonból.
 
 ## <a name="hotfix-production-branch"></a>Gyorsjavítások üzemi ága
 

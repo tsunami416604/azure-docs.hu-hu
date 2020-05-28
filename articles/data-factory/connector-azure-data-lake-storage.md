@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/25/2020
-ms.openlocfilehash: efa4ec42396a51cbbc93a53e5892177bad0d87fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0689a7705e91b8fcaf9ca31887e6cefbf90f1e59
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649670"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021007"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Lake Storage Gen2 adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -74,7 +74,7 @@ Az Azure Data Lake Storage Gen2-összekötő a következő hitelesítési típus
 
 A Storage-fiók kulcsos hitelesítésének használatához a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot **AzureBlobFS**értékre kell beállítani. |Igen |
 | url | Data Lake Storage Gen2 végpontja a mintázatával `https://<accountname>.dfs.core.windows.net` . | Igen |
@@ -126,7 +126,7 @@ Az egyszerű szolgáltatás hitelesítésének használatához kövesse az aláb
 
 A társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot **AzureBlobFS**értékre kell beállítani. |Igen |
 | url | Data Lake Storage Gen2 végpontja a mintázatával `https://<accountname>.dfs.core.windows.net` . | Igen |
@@ -176,11 +176,11 @@ Az Azure erőforrás-hitelesítéshez használt felügyelt identitások használ
 >Ha Data Factory felhasználói felületet használ a létrehozáshoz, és a felügyelt identitás nincs beállítva a "Storage blob-Adatolvasó/közreműködői" szerepkörrel a IAM-ban, akkor a kapcsolódás vagy a Tallózás/Navigálás mappák között válassza a "kapcsolódás a fájl elérési útjához" vagy a "Tallózás a megadott elérési úttal" lehetőséget, és adjon meg egy elérési utat **olvasási + végrehajtás** engedéllyel.
 
 >[!IMPORTANT]
->Ha a Data Lake Storage Gen2ba való betöltését a SQL Data Warehouseba, a Data Lake Storage Gen2 felügyelt identitás hitelesítésének használatakor az [útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1. és 2. lépését is végrehajtja, akkor a SQL Database-kiszolgáló Azure Active Directory (Azure ad) és 2) regisztrálásával adja hozzá a Storage blob adatközreműködői szerepkört a SQL Database-kiszolgálóhoz; a REST-et a Data Factory kezeli. Ha a Data Lake Storage Gen2 egy Azure Virtual Network-végponttal van konfigurálva, akkor az adatoknak a használatával történő betöltéséhez használja a felügyelt identitás-hitelesítést.
+>Ha a Data Lake Storage Gen2ból az adatok SQL Data Warehouseba való betöltéséhez használja a-t, a Data Lake Storage Gen2 felügyelt identitások hitelesítésének használatakor győződjön meg arról, hogy az [útmutató](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1. és 2. lépése is az 1. lépésre vonatkozik, regisztrálja a with Azure Active Directory (Azure ad) és 2) a Storage blob adatközreműködői szerepkört a-kiszolgálóhoz. a REST-et a Data Factory kezeli. Ha a Data Lake Storage Gen2 egy Azure Virtual Network-végponttal van konfigurálva, akkor az adatoknak a használatával történő betöltéséhez használja a felügyelt identitás-hitelesítést.
 
 A társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot **AzureBlobFS**értékre kell beállítani. |Igen |
 | url | Data Lake Storage Gen2 végpontja a mintázatával `https://<accountname>.dfs.core.windows.net` . | Igen |
@@ -212,7 +212,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 A következő tulajdonságok támogatottak Data Lake Storage Gen2 `location` a Format-alapú adatkészlet beállítások területén:
 
-| Tulajdonság   | Description                                                  | Kötelező |
+| Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
 | típus       | Az `location` adatkészletben található Type tulajdonságot **AzureBlobFSLocation**értékre kell állítani. | Igen      |
 | Fájlrendszer | A Data Lake Storage Gen2 fájlrendszer neve.                              | Nem       |
@@ -262,7 +262,7 @@ Az adatok ADLS Gen2ból való másolásának számos lehetősége van:
 
 A következő tulajdonságok támogatottak Data Lake Storage Gen2 `storeSettings` Formátum-alapú másolási forrás beállításai alatt:
 
-| Tulajdonság                 | Description                                                  | Kötelező                                      |
+| Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | típus                     | A Type tulajdonságot a `storeSettings` **AzureBlobFSReadSettings**értékre kell állítani. | Igen                                           |
 | ***Keresse meg a másolandó fájlokat:*** |  |  |
@@ -323,7 +323,7 @@ A következő tulajdonságok támogatottak Data Lake Storage Gen2 `storeSettings
 
 A következő tulajdonságok támogatottak Data Lake Storage Gen2 a `storeSettings` Format-alapú másolási fogadó beállításaiban:
 
-| Tulajdonság                 | Description                                                  | Kötelező |
+| Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | típus                     | A Type tulajdonságot a `storeSettings` **AzureBlobFSWriteSettings**értékre kell állítani. | Igen      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem       |
@@ -510,7 +510,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát **AzureBlobFSFile**értékre kell állítani. |Igen |
 | folderPath | A Data Lake Storage Gen2 mappájának elérési útja. Ha nincs megadva, a gyökérre mutat. <br/><br/>A helyettesítő karakteres szűrő használata támogatott. Az engedélyezett helyettesítő karakterek `*` (nulla vagy több karakternek felelnek meg) és `?` (nulla vagy egyetlen karakternek felelnek meg). `^`Ha a tényleges mappanév helyettesítő karakterrel rendelkezik, vagy a menekülési karakter be van zárva, használja a Escape-nevet. <br/><br/>Példák: fájlrendszer/mappa/. További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. |Nem |
@@ -555,7 +555,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásának modellje
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát **AzureBlobFSSource**értékre kell állítani. |Igen |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | Nem |
@@ -595,7 +595,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-copy-activity-sink-model"></a>Örökölt másolási tevékenység fogadó modellje
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát **AzureBlobFSSink**értékre kell állítani. |Igen |
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem |

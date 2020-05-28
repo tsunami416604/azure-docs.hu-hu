@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019451"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Váltáson nyilvános társviszony-létesítésről Microsoft-társviszony-létesítésre
 
@@ -33,7 +33,7 @@ A Microsoft-partneri kapcsolathoz való kapcsolódáshoz be kell állítania és
 
 A Microsoft-társítás konfigurálása előtt tekintse meg a [több hálózati elérési úttal rendelkező aszimmetrikus útválasztást](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) .
 
-* Ha nyilvános társítást használ, és jelenleg IP-hálózati szabályok érvényesek az [Azure Storage](../storage/common/storage-network-security.md) vagy a [Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)ELÉRÉSére használt nyilvános IP-címekhez, meg kell győződnie arról, hogy a Microsoft-TÁRSÍTÁSSAL konfigurált NAT IP-címkészlet szerepel az Azure Storage-fiók vagy az Azure SQL-FIÓKHOZ tartozó nyilvános IP-címek listáján.<br>
+* Ha nyilvános társítást használ, és jelenleg IP-hálózati szabályok érvényesek az [Azure Storage](../storage/common/storage-network-security.md) vagy a [Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md)ELÉRÉSére használt nyilvános IP-címekhez, meg kell győződnie arról, hogy a Microsoft-TÁRSÍTÁSSAL konfigurált NAT IP-címkészlet szerepel az Azure Storage-fiók vagy az Azure SQL-FIÓKHOZ tartozó nyilvános IP-címek listáján.<br>
 * Ha a Microsoft-társat leállás nélkül szeretné áthelyezni, a jelen cikkben ismertetett lépéseket követve hozhatja meg.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Microsoft-társak létrehozása

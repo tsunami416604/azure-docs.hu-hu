@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722894"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996040"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
 
@@ -26,7 +26,7 @@ A blob index a következőket teszi lehetővé:
 - Feltételes viselkedés megadása a blob API-k számára az index címkék kiértékelése alapján
 - Indexelő címkék használata speciális vezérlőkhöz a blob platform szolgáltatásaihoz, például az [életciklus-kezeléshez](storage-lifecycle-management-concepts.md)
 
-Vegye figyelembe azt a forgatókönyvet, ahol több millió blob található a Storage-fiókban, amelyet számos különböző alkalmazás írt és elért. Egyetlen projekt összes kapcsolódó adatát szeretné megkeresni, de nem biztos benne, hogy mi van a hatókörben, mivel az adatok több tárolóban is elterjedhetnek, különböző blob elnevezési konvenciókkal. Azonban biztos abban, hogy az alkalmazások az összes olyan címkét feltöltik az összes adattal, amely a megfelelő projekten és a leíráson alapul. Ahelyett, hogy több millió blobot keres, és nem hasonlítja össze a neveket és `Project = Contoso` a tulajdonságokat, egyszerűen használhatja felderítési feltételként. A blob index a teljes Storage-fiókban lévő összes tárolót szűri, így gyorsan megkeresheti és visszaküldheti a 50- `Project = Contoso`es Blobok készletét. 
+Vegye figyelembe azt a forgatókönyvet, ahol több millió blob található a Storage-fiókban, amelyet számos különböző alkalmazás írt és elért. Egyetlen projekt összes kapcsolódó adatát szeretné megkeresni, de nem biztos benne, hogy mi van a hatókörben, mivel az adatok több tárolóban is elterjedhetnek, különböző blob elnevezési konvenciókkal. Azonban biztos abban, hogy az alkalmazások az összes olyan címkét feltöltik az összes adattal, amely a megfelelő projekten és a leíráson alapul. Ahelyett, hogy több millió blobot keres, és nem hasonlítja össze a neveket és a tulajdonságokat, egyszerűen használhatja `Project = Contoso` felderítési feltételként. A blob index a teljes Storage-fiókban lévő összes tárolót szűri, így gyorsan megkeresheti és visszaküldheti a 50-es Blobok készletét `Project = Contoso` . 
 
 A blob index használatára vonatkozó példákkal kapcsolatban lásd: [blob index használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md).
 
@@ -43,7 +43,7 @@ Vegye figyelembe a következő öt blobot a Storage-fiókban:
 > naplók/2020/01/01/logfile. txt  
 >
 
-Ezek a Blobok jelenleg a tároló/virtuális mappa vagy a blob nevének előtagja alapján vannak elválasztva. A blob index használatával az alábbi öt blobon beállíthatja az `Project = Contoso` index címke attribútumát, hogy azok együtt legyenek kategorizálva az aktuális előtag-szervezetük megtartása mellett. Így nem kell áthelyeznie az adatok áthelyezését azáltal, hogy lehetővé teszi az adatok szűrését és keresését a Storage platform többdimenziós indexének használatával.
+Ezek a Blobok jelenleg a tároló/virtuális mappa vagy a blob nevének előtagja alapján vannak elválasztva. A blob index használatával az alábbi öt blobon beállíthatja az index címke attribútumát, hogy azok együtt legyenek `Project = Contoso` kategorizálva az aktuális előtag-szervezetük megtartása mellett. Így nem kell áthelyeznie az adatok áthelyezését azáltal, hogy lehetővé teszi az adatok szűrését és keresését a Storage platform többdimenziós indexének használatával.
 
 ## <a name="setting-blob-index-tags"></a>BLOB-index címkék beállítása
 
@@ -70,14 +70,14 @@ A következő korlátozások vonatkoznak a blob index címkékre:
 - A címke kulcsainak 1 – 128 karakter közé kell esnie
 - A címke értékének 0 és 256 karakter közöttinek kell lennie
 - A kulcsok és értékek címkézése megkülönbözteti a kis-és nagybetűket
-- A kulcsok és az értékek címkézése csak a karakterlánc-adattípusokat támogatja; a rendszer karakterláncként menti a számokat és a speciális karaktereket.
+- A kulcsok és az értékek címkézése csak a karakterlánc-adattípusokat támogatja; a rendszer karakterláncként menti a számokat, a dátumot, az időpontokat és a speciális karaktereket.
 - A kulcsok és értékek címkézésének meg kell felelnie a következő elnevezési szabályoknak:
   - Alfanumerikus karakterek: a-z, A-Z, 0-9
   - Speciális karakterek: szóköz, plusz, mínusz, pont, kettőspont, egyenlő, aláhúzás, továbbítási perjel
 
 ## <a name="getting-and-listing-blob-index-tags"></a>BLOB-index címkék beolvasása és listázása
 
-A blob-indexek címkéi a blob-adatok mellett alerőforrásként vannak tárolva, és az alapul szolgáló blob-adatoktól függetlenül kérhetők le. A beállítás után a blob-index címkéi egy adott blobhoz azonnal lekérhető és ellenőrizhető a GetBlobTags művelettel. A ListBlobs művelet a `include:tags` (z) paraméterrel együtt a tárolóban lévő összes blobot is visszaküldi az alkalmazott blob-index címkékkel. 
+A blob-indexek címkéi a blob-adatok mellett alerőforrásként vannak tárolva, és az alapul szolgáló blob-adatoktól függetlenül kérhetők le. A beállítás után a blob-index címkéi egy adott blobhoz azonnal lekérhető és ellenőrizhető a GetBlobTags művelettel. A ListBlobs művelet a (z `include:tags` ) paraméterrel együtt a tárolóban lévő összes blobot is visszaküldi az alkalmazott blob-index címkékkel. 
 
 A legalább 1 blob index címkével rendelkező Blobok esetében a rendszer az x-MS-tag-Count értéket adja vissza a ListBlobs, a GetBlob és a GetBlobProperties műveletekben, amelyek a blob-index címkéi számát jelzik.
 
@@ -97,30 +97,37 @@ A blob index szűrésére a következő feltételek érvényesek:
 
 Az alábbi táblázatban a FindBlobsByTags összes érvényes operátora látható:
 
-|  Művelet  |  Leírás  | Példa |
+|  Operátor  |  Leírás  | Példa |
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" | 
 |     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb mint    | "Age" < "32" |
+|     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 | @container |  Hatókör egy adott tárolóra   | @container= "videofiles" és "status" = "kész" |
 
+> [!NOTE]
+> A címkék beállításakor és lekérdezése során Ismerje meg a lexicographical megrendelését.
+> - A számok a betűk előtt vannak rendezve. A számok az első számjegy alapján vannak rendezve.
+> - A nagybetűket a kisbetűs karakterek előtt rendezi a rendszer.
+> - A szimbólumok nem szabványosak. Egyes szimbólumok a numerikus értékek előtt vannak rendezve. A többi szimbólum a levelek előtt vagy után van rendezve.
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Feltételes blob-műveletek a blob-index címkékkel
-Az 2019-10-10-as és újabb REST-verziók esetében a legtöbb [blob Service API](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) mostantól támogatja a feltételes fejlécet, az x-MS-if-Tags-t, így a művelet csak akkor lesz sikeres, ha a megadott blob-index feltétele teljesül. Ha a feltétel nem teljesül, a rendszer lekérdezi `error 412: The condition specified using HTTP conditional header(s) is not met`.
+Az 2019-10-10-as és újabb REST-verziók esetében a legtöbb [blob Service API](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) mostantól támogatja a feltételes fejlécet, az x-MS-if-Tags-t, így a művelet csak akkor lesz sikeres, ha a megadott blob-index feltétele teljesül. Ha a feltétel nem teljesül, a rendszer lekérdezi `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
 Előfordulhat, hogy az x-MS-if-Tags fejléc kombinálva van a többi meglévő HTTP feltételes fejléctel (IF-Match, If-None-Match stb.).  Ha egy kérelemben több feltételes fejléc van megadva, akkor a művelet sikerességéhez minden esetben igaz értéket kell kiértékelni.  A feltételes fejlécek hatékonyan kombinálhatók a logikai és a szolgáltatással. 
 
 Az alábbi táblázatban a feltételes műveletek összes érvényes operátora látható:
 
-|  Művelet  |  Leírás  | Példa |
+|  Operátor  |  Leírás  | Példa |
 |------------|---------------|---------|
 |     =      |     Egyenlő     | "Status" = "folyamatban" |
 |     <>     |   Nem egyenlő   | "Állapot"  <>  "kész"  | 
 |     >      |  Nagyobb, mint |  "Date" > "2018-06-18" |
 |     >=     |  Nagyobb vagy egyenlő mint | "Prioritás" >= "5" | 
-|     <      |  Kisebb mint    | "Age" < "32" |
+|     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
 |     VAGY     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
@@ -138,7 +145,7 @@ Az új blobIndexMatch használata az életciklus-kezelésben, áthelyezheti az a
 
 A blob-indexeket beállíthatja úgy, hogy egy életciklus-szabályban beállított önálló szűrőként alkalmazza a címkézett adatműveleteket. Vagy kombinálhatja az előtag-egyezést és a blob-index egyezését, hogy azok megfeleljenek az egyes adatkészleteknek. Ha több szűrőt alkalmaz egy életciklus-szabályra, az egy logikai és egy művelet, amely szerint a művelet csak akkor érvényes, ha az összes szűrési feltétel egyezik. 
 
-A következő minta életciklus-kezelési szabály a "videofiles" tárolóban lévő blobok és a rétegek Blobok archiválására vonatkozik, ha az adatok megfelelnek a blob-index címkéi feltételeinek ```"Status" = 'Processed' AND "Source" == 'RAW'```.
+A következő minta életciklus-kezelési szabály a "videofiles" tárolóban lévő blobok és a rétegek Blobok archiválására vonatkozik, ha az adatok megfelelnek a blob-index címkéi feltételeinek ```"Status" = 'Processed' AND "Source" == 'RAW'``` .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 ![A blob-index egyezési szabálya a Azure Portal életciklus-felügyeletére vonatkozó példa](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
@@ -246,9 +253,11 @@ A blob index díjszabása jelenleg nyilvános előzetes verzióban érhető el, 
 
 ## <a name="regional-availability-and-storage-account-support"></a>Regionális rendelkezésre állási és Storage-fiókok támogatása
 
-A blob index jelenleg csak általános célú v2 (GPv2) fiókkal érhető el. A Azure Portal egy meglévő általános célú (GPv1-) fiókot frissíthet egy GPv2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
+A blob index jelenleg csak általános célú v2 (GPv2) fiókokban érhető el, amelyeken a hierarchikus névtér (HNS) le van tiltva. A általános célú-(GPV1-) fiókok nem támogatottak, de bármely GPv1-fiókot GPv2-fiókra frissíthet. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 Nyilvános előzetes verzióban a blob index jelenleg csak a következő régiókban érhető el:
+- Közép-Kanada
+- Kelet-Kanada
 - Közép-Franciaország
 - Dél-Franciaország
 
@@ -276,7 +285,7 @@ az provider register --namespace 'Microsoft.Storage'
 Ez a szakasz a blob index aktuális nyilvános előzetes verziójának ismert problémáit és feltételeit ismerteti. A legtöbb előzetes verzióhoz hasonlóan ez a funkció nem használható éles számítási feladatokhoz, amíg a viselkedés megváltozhat.
 
 -   Előzetes verzióként regisztrálnia kell az előfizetését, mielőtt a Storage-fiókhoz az előzetes verziójú régiókban lévő blob-indexet használhassa.
--   Előzetes verzióban jelenleg csak GPv2-fiókok támogatottak. A blob, a BlockBlobStorage és a HNS enabled DataLake Gen2-fiókok jelenleg nem támogatottak a blob indexben.
+-   Előzetes verzióban jelenleg csak GPv2-fiókok támogatottak. A blob, a BlockBlobStorage és a HNS enabled DataLake Gen2-fiókok jelenleg nem támogatottak a blob indexben. A GPv1-fiókok nem támogatottak.
 -   Az oldal-Blobok indexelési címkékkel való feltöltése jelenleg nem őrzi meg a címkéket. Az oldal blobjának feltöltése után be kell állítania a címkéket.
 -   Ha a szűrés egyetlen tárolóra van korlátozva, a @container csak akkor adható át, ha a szűrő kifejezésben szereplő összes indexelő címke egyenlőségi ellenőrzés (kulcs = érték). 
 -   A és a (z) és a (z) és a (z) és a (z) a 100 < (z) és a (z) és a (z) és a (z) és a (z) fel> tétellel rendelkező
@@ -290,6 +299,9 @@ Ez a szakasz a blob index aktuális nyilvános előzetes verziójának ismert pr
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>A blob-index segíthet a saját blobokban lévő tartalmak szűrésében és lekérdezésében? 
 Nem, a blob index címkéi segítenek megtalálni a keresett blobokat. Ha a blobokon belül kell keresnie, használja a lekérdezés gyorsítását vagy a Azure Search.
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Vannak olyan különleges megfontolások, amelyek a blob-indexek címkéi értékeire vonatkoznak?
+A blob index címkéi csak a karakterlánc-adattípusokat támogatják, a lekérdezés pedig az eredményeket a lexicographical rendeléssel adja vissza. A számok esetében ajánlott nulla pad a számot használni. A dátum-és időpontok esetében ajánlott ISO 8601-kompatibilis formátumban tárolni.
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>A blob-indexek címkéi és a hozzájuk kapcsolódó Azure Resource Manager Címkék?
 Nem, Azure Resource Manager címkék segítenek megszervezni a vezérlési sík erőforrásait, például az előfizetéseket, az erőforráscsoportokat és a Storage-fiókokat. A blob index címkéi az objektumok kezelését és felderítését biztosítják az adatsík erőforrásain, például a Storage-fiókban található blobokon.

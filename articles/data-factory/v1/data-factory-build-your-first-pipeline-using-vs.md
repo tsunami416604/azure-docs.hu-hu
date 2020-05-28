@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7bfa6ec405841934cd068cbc90c2b071fc0afc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438979"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022094"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: adat-előállító létrehozása a Visual Studióval
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -65,7 +65,7 @@ Az útmutató során a következő lépéseket fogja elvégezni:
 3. A számítógépre a következőket kell telepíteni:
    * Visual Studio 2013 vagy Visual Studio 2015
    * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök** -> **bővítmények és frissítések** -> **online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**lehetőségre.
+   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények és frissítések**  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**lehetőségre.
 
 Most hozzunk létre egy Azure data factoryt a Visual Studióval.
 
@@ -170,10 +170,10 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
 
     Tulajdonság | Leírás |
     -------- | ----------- |
-    type |A Type tulajdonság a **AzureBlob** értékre van állítva, mert az Azure Blob Storageban található adat.
+    típus |A Type tulajdonság a **AzureBlob** értékre van állítva, mert az Azure Blob Storageban található adat.
     linkedServiceName | A korábban létrehozott AzureStorageLinkedService1 szolgáltatásra hivatkozik.
     fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az esetben csak az input.log fájl lesz feldolgozva.
-    type | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
+    típus | A naplófájlok szövegformátumúak, ezért a TextFormat típust használjuk. |
     columnDelimiter | A naplófájlokban vesszővel (`,`) vannak elválasztva az oszlopok
     frequency/interval | A frequency (gyakoriság) beállítása Month (Hónap), az interval (időköz) beállítása pedig 1, ami azt jelenti, hogy a bemeneti szeletek havonta érhetők el.
     external | Ez a tulajdonság true (igaz) értékre van állítva, ha a tevékenység bemeneti adatait nem a folyamat hozta létre. Ez a tulajdonság csak a bemeneti adatkészleteken van meghatározva. Az első tevékenység bemeneti adatkészlete esetében mindig állítsa igaz értékre.
@@ -472,7 +472,7 @@ Adjon hozzá konfigurációs fájlt az egyes környezetekhez a következő lép�
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure sql server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }
@@ -565,7 +565,7 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 
 | Témakör | Leírás |
 |:--- |:--- |
-| [Folyamatok](data-factory-create-pipelines.md) |Ebből a cikkből megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
+| [Pipelines](data-factory-create-pipelines.md) |Ebből a cikkből megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adathalmazok](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |
 | [Adatátalakítási tevékenységek](data-factory-data-transformation-activities.md) |Ez a cikk felsorolja az Azure Data Factory által támogatott adatátalakítási tevékenységeket (mint például a jelen oktatóanyagban használt HDInsight Hive-átalakítás). |
 | [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) |Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. |

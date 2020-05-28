@@ -9,12 +9,12 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7e818a80f9df97ce4e5f5b8f1ef9385d2e6b0ecc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827760"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022333"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -203,7 +203,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenetben szerepel az "ügyfél IP-címmel"... a nem fér hozzá a kiszolgálóhoz, és a Azure SQL Databasehoz próbál csatlakozni, általában Azure SQL Database tűzfal okozza a problémát.
 
-- **Javaslat**: az Azure SQL Server tűzfal konfigurációjában engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. Dokumentáció: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
+- **Javaslat**: a logikai SQL Server tűzfal konfigurációjában engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. Dokumentáció: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Hibakód: SqlOperationFailed

@@ -6,18 +6,18 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74685385"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020030"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>App Service-alkalmazás összekötése egy SQL-adatbázissal
 
 Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Azure SQL Database-adatbázist és egy App Service alkalmazást. Ezután az alkalmazás-beállítások használatával összekapcsolja az SQL-adatbázist az alkalmazással.
 
-Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítással, majd futtassa a parancsot `Connect-AzAccount` az Azure-hoz való kapcsolódáshoz.
+Szükség esetén telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban](/powershell/azure/overview)található utasítással, majd futtassa a parancsot az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -42,8 +42,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
 | [Új – AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy App Service alkalmazást. |
-| [Új – AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL-adatbáziskiszolgálót. |
-| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt egy SQL-adatbáziskiszolgáló számára. |
+| [Új – AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy kiszolgálót. |
+| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt. |
 | [Új – AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy adatbázist vagy egy rugalmas adatbázist. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy App Service alkalmazás konfigurációját. |
 

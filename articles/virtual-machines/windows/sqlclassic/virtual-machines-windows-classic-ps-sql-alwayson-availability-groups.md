@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978143"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014859"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépen PowerShell-lel
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75978143"
 > * [Klasszikus: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Mielőtt elkezdené, vegye figyelembe, hogy most már elvégezheti ezt a feladatot az Azure Resource Manager-modellben. Az Azure Resource Manager-modellt ajánlott új környezetekhez. Tekintse [meg SQL Server always on rendelkezésre állási csoportokat az Azure Virtual Machines](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)szolgáltatásban.
+Mielőtt elkezdené, vegye figyelembe, hogy most már elvégezheti ezt a feladatot az Azure Resource Manager-modellben. Az Azure Resource Manager-modellt ajánlott új környezetekhez. Tekintse [meg SQL Server always on rendelkezésre állási csoportokat az Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)szolgáltatásban.
 
 > [!IMPORTANT]
 > Javasoljuk, hogy az új központi telepítések a Resource Manager-modellt használják. Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
@@ -158,7 +158,7 @@ Ebből az oktatóanyagból megtudhatja, hogy milyen lépéseket kell végrehajta
    * A **Add-AzureDataDisk** hozzáadja az adatlemezt, amelyet Active Directory-adattároláshoz fog használni, a gyorsítótárazás beállítás értékeként pedig a none értékre van állítva.
    * A **New-AzureVM** létrehoz egy új felhőalapú szolgáltatást, és létrehozza az új Azure-beli virtuális gépet az új felhőalapú szolgáltatásban.
 
-7. Várjon, amíg az új virtuális gép kiépíthető, majd töltse le a távoli asztali fájlt a munkakönyvtárra. Mivel az új Azure-beli virtuális gép hosszú időt vesz igénybe `while` , a hurok továbbra is lekérdezi az új virtuális gépet, amíg készen nem áll a használatra.
+7. Várjon, amíg az új virtuális gép kiépíthető, majd töltse le a távoli asztali fájlt a munkakönyvtárra. Mivel az új Azure-beli virtuális gép hosszú időt vesz igénybe, a `while` hurok továbbra is lekérdezi az új virtuális gépet, amíg készen nem áll a használatra.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -481,7 +481,7 @@ Végül már készen áll a rendelkezésre állási csoport konfigurálására. 
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Töltse le a **CreateAzureFailoverCluster. ps1** -t a [feladatátvevő fürt létrehozása az Azure-beli virtuális gépen található always on rendelkezésre állási csoportokhoz](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Ezt a szkriptet fogja használni a funkcionális feladatátvevő fürt létrehozásához. Fontos információk arról, hogy a Windows feladatátvételi fürtszolgáltatás hogyan kommunikál az Azure-hálózattal: a [magas rendelkezésre állás és a vész-helyreállítás az azure Virtual Machines SQL Server](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. Töltse le a **CreateAzureFailoverCluster. ps1** -t a [feladatátvevő fürt létrehozása az Azure-beli virtuális gépen található always on rendelkezésre állási csoportokhoz](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Ezt a szkriptet fogja használni a funkcionális feladatátvevő fürt létrehozásához. Fontos információk arról, hogy a Windows feladatátvételi fürtszolgáltatás hogyan kommunikál az Azure-hálózattal: a [magas rendelkezésre állás és a vész-helyreállítás az azure Virtual Machines SQL Server](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Váltson a munkakönyvtárra, és hozza létre a feladatátvevő fürtöt a letöltött parancsfájllal.
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Végül már készen áll a rendelkezésre állási csoport konfigurálására. 
 ## <a name="next-steps"></a>További lépések
 Sikeresen implementálta SQL Server always on Azure-beli rendelkezésre állási csoport létrehozásával. Ehhez a rendelkezésre állási csoporthoz tartozó figyelő konfigurálását lásd: [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](../classic/ps-sql-int-listener.md).
 
-További információ az Azure-beli SQL Server használatáról: [SQL Server az Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)szolgáltatásban.
+További információ az Azure-beli SQL Server használatáról: [SQL Server az Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)szolgáltatásban.

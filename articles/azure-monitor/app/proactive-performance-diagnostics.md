@@ -4,18 +4,18 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697174"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016848"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan elemzi a webalkalmazás teljesítményét, és figyelmezteti a lehetséges problémákra. Lehet, hogy ezt olvashatja, mert az intelligens észlelési értesítések egyikét kapta.
 
-Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást Application Insights ( [ASP.net](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)vagy [Node. js](../../azure-monitor/app/nodejs.md)-ben, illetve [weboldali kódban](../../azure-monitor/app/javascript.md)) konfigurálja. Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
+Ehhez a szolgáltatáshoz nincs szükség speciális beállításra, kivéve, ha az alkalmazást a Application Insightsra konfigurálja a [támogatott nyelvre](../../azure-monitor/app/platforms.md). Akkor aktív, ha az alkalmazás elég telemetria hoz létre.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Mikor kapok egy intelligens észlelési értesítést?
 

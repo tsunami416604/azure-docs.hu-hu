@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdb913434d7aab3ceadbbf19d7a95000abf6776c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281547"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022010"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 > [!NOTE]
@@ -49,7 +49,7 @@ A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Ha
 2017. december 15. után:
 
 - Már nem hozhat létre a Linux-alapú HDInsight 3,3-es (vagy korábbi verziójú) fürtöket egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
-- Ha a [ **osType** és a **verzió** tulajdonságai](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, osType = Windows** verzió **=\<legújabb HDI alapértelmezett verzióra\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType = Linux**) módosul.
+- Ha a [ **osType** és a **verzió** tulajdonságai](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, osType = Windows** – **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux**) értékre módosul.
 
 2018. július 31-ig:
 
@@ -121,8 +121,8 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság                     | Leírás                              | Kötelező |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | Állítsa a Type (típus) tulajdonságot **HDInsightOnDemand**értékre. | Igen      |
-| clusterSize                  | A fürtben található feldolgozó és adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal jön létre a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 magot tartalmaz. A 4 munkavégző csomópont-fürt 24 magot (4\*4 = 16 magot a feldolgozó csomópontok számára,\*valamint 2 4 = 8 mag a főcsomópontokhoz) tart. A Standard_D3 szintjével kapcsolatos további információkért lásd: [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
+| típus                         | Állítsa a Type (típus) tulajdonságot **HDInsightOnDemand**értékre. | Igen      |
+| clusterSize                  | A fürtben található feldolgozó és adatcsomópontok száma. A HDInsight-fürt két fő csomóponttal jön létre a tulajdonsághoz megadott munkavégző csomópontok száma mellett. A csomópontok mérete Standard_D3, amely 4 magot tartalmaz. A 4 munkavégző csomópont-fürt 24 magot (4 \* 4 = 16 magot a feldolgozó csomópontok számára, valamint 2 \* 4 = 8 mag a főcsomópontokhoz) tart. A Standard_D3 szintjével kapcsolatos további információkért lásd: [Linux-alapú Hadoop-fürtök létrehozása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
 | timeToLive                   | Az igény szerinti HDInsight-fürt számára engedélyezett üresjárati idő. Meghatározza, hogy az igény szerinti HDInsight-fürt mennyi ideig maradjon életben, ha a tevékenység futtatása befejeződött, ha nincsenek más aktív feladatok a fürtben.<br /><br />Ha például egy tevékenység futása 6 percet vesz igénybe, és a **TimeToLive** 5 percre van állítva, a fürt a tevékenység futtatásának 6 perce után 5 perccel továbbra is életben marad. Ha egy másik tevékenység futtatása a 6 perces ablakban történik, akkor azt ugyanazon fürt dolgozza fel.<br /><br />Egy igény szerinti HDInsight-fürt létrehozása költséges művelet (eltarthat egy darabig). Ezt a beállítást igény szerint használhatja az adat-előállító teljesítményének növeléséhez egy igény szerinti HDInsight-fürt újrafelhasználásával.<br /><br />Ha a **TimeToLive** értéket **0-ra**állítja, akkor a rendszer a tevékenység futtatása után azonnal törli a fürtöt. Ha azonban magas értéket állít be, előfordulhat, hogy a fürt tétlen maradhat, ami szükségtelenül magas költségekkel jár. Fontos, hogy az igényeinek megfelelően állítsa be a megfelelő értéket.<br /><br />Ha a **TimeToLive** értéke megfelelően van beállítva, több folyamat is megoszthatja az igény szerinti HDInsight-fürt példányát. | Igen      |
 | version                      | A HDInsight-fürt verziója. Az engedélyezett HDInsight-verziók esetében lásd: [támogatott HDInsight-verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ha ez az érték nincs megadva, a rendszer a [legújabb HDI alapértelmezett verziót](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) használja. | Nem       |
 | linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt az adattároláshoz és-feldolgozáshoz használ. A HDInsight-fürt ugyanabban a régióban jön létre, mint a Storage-fiók.<p>Jelenleg nem hozhat létre Azure Data Lake Store tárolóként használó igény szerinti HDInsight-fürtöt. Ha az HDInsight feldolgozásból származó eredményeket szeretné tárolni Data Lake Storeban, a másolási tevékenység használatával másolja át az adatait a blob Storage-ból a Data Lake Storeba. </p> | Igen      |
@@ -257,7 +257,7 @@ Létrehozhat egy HDInsight társított szolgáltatást, hogy regisztrálja a saj
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Állítsa a Type (típus) tulajdonságot **HDInsight**értékre. | Igen      |
+| típus              | Állítsa a Type (típus) tulajdonságot **HDInsight**értékre. | Igen      |
 | clusterUri        | A HDInsight-fürt URI-ja.        | Igen      |
 | felhasználónév          | A meglévő HDInsight-fürthöz való kapcsolódáshoz használandó felhasználói fiók neve. | Igen      |
 | jelszó          | A felhasználói fiók jelszava.   | Igen      |
@@ -268,7 +268,7 @@ Létrehozhat egy batch-társított szolgáltatást, amely a virtuális gépek (V
 
 Ha új a Batch szolgáltatás használatához:
 
-* Ismerkedjen meg [Azure batch alapjaival](../../batch/batch-technical-overview.md).
+* Ismerkedjen meg [Azure batch alapjaival](../../azure-sql/database/sql-database-paas-overview.md).
 * A [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) parancsmag megismerése. Ezzel a parancsmaggal hozhat létre batch-fiókot. A Batch-fiókot a [Azure Portal](../../batch/batch-account-create-portal.md)használatával is létrehozhatja. A parancsmag használatával kapcsolatos részletes információkért lásd: a [Batch-fiók kezelése a PowerShell használatával](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
 * A [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) parancsmag megismerése. Ezzel a parancsmaggal hozhat létre batch-készletet.
 
@@ -289,7 +289,7 @@ Ha új a Batch szolgáltatás használatához:
 }
 ```
 
-A **accountName** tulajdonsághoz fűzze a következőt: **.\< a régió\> neve** a Batch-fiók nevéhez. Például:
+A **accountName** tulajdonsághoz fűzze a következőt: **. \<region name\> ** a Batch-fiók nevével. Például:
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -305,7 +305,7 @@ Egy másik lehetőség, hogy megadja a **batchUri** -végpontot. Például:
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | Állítsa a Type (típus) tulajdonságot **AzureBatch**értékre. | Igen      |
+| típus              | Állítsa a Type (típus) tulajdonságot **AzureBatch**értékre. | Igen      |
 | accountName       | A Batch-fiók neve.         | Igen      |
 | accessKey         | A Batch-fiók elérési kulcsa.  | Igen      |
 | poolName          | A virtuális gépek készletének neve.    | Igen      |
@@ -343,7 +343,7 @@ A következő táblázat a JSON-definícióban használt általános tulajdonsá
 
 | Tulajdonság                 | Leírás                              | Kötelező                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | Állítsa a Type (típus) tulajdonságot **AzureDataLakeAnalytics**értékre. | Igen                                      |
+| típus                 | Állítsa a Type (típus) tulajdonságot **AzureDataLakeAnalytics**értékre. | Igen                                      |
 | accountName          | A Data Lake Analytics fiók neve.  | Igen                                      |
 | dataLakeAnalyticsUri | A Data Lake Analytics URI-ja.           | Nem                                       |
 | subscriptionId       | Az Azure-előfizetés azonosítója.                    | Nem<br /><br />(Ha nincs megadva, a rendszer az adatgyár-előfizetést használja.) |

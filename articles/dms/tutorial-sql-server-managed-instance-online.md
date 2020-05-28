@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 236c68b3c26049073d3e6e942ce2a6be8b7f4fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82d6fe190b191b6aca3bd51dcefb03ecda95b4f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298909"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020438"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra online a DMS használatával
 
-A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni SQL Server példányról egy [Azure SQL Database felügyelt példányra](../sql-database/sql-database-managed-instance.md) minimális állásidővel. A manuális beavatkozást igénylő további módszerekhez tekintse meg a [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](../sql-database/sql-database-managed-instance-migrate.md)című cikket.
+A Azure Database Migration Service segítségével telepítheti át az adatbázisokat egy helyszíni SQL Server példányról egy [Azure SQL Database felügyelt példányra](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) minimális állásidővel. A manuális beavatkozást igénylő további módszerekhez tekintse meg a [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)című cikket.
 
 Ebben az oktatóanyagban áttelepíti a **Adventureworks2012** -adatbázist a SQL Server helyszíni példányáról egy SQL Database felügyelt példányra, minimális állásidővel Azure Database Migration Service használatával.
 
@@ -212,7 +212,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     |**Felhasználónév** | Győződjön meg arról, hogy a Windows-felhasználó teljes körű jogosultságokkal rendelkezik a fent megadott hálózati megosztáson. A Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy feltöltse a biztonságimásolat-fájlokat az Azure Storage-tárolóba a visszaállítási művelethez. Ha az Azure-fájlmegosztást használja, használja az AZURE \ gyobb mértékben nevű Storage-fiók nevét a felhasználónévként. |
     |**Jelszó** | A felhasználó jelszava. Ha az Azure-fájlmegosztást használja, használja a Storage-fiók kulcsát jelszóként. |
     |**Az Azure Storage-tárfiók előfizetése** | Válassza ki az Azure Storage-tárfiókot tartalmazó előfizetést. |
-    |**Azure Storage-fiók** | Válassza ki az Azure Storage-tárfiókot, amelybe a DMS feltöltheti az SMB hálózati megosztásból származó biztonsági mentési fájlokat, majd felhasználhatja azokat a migráláskor.  Az optimális fájlfeltöltési teljesítmény érdekében javasoljuk, hogy a tárfiók ugyanabban a régióban legyen, mint a DMS-szolgáltatás. |
+    |**Azure Storage-tárfiók neve** | Válassza ki az Azure Storage-tárfiókot, amelybe a DMS feltöltheti az SMB hálózati megosztásból származó biztonsági mentési fájlokat, majd felhasználhatja azokat a migráláskor.  Az optimális fájlfeltöltési teljesítmény érdekében javasoljuk, hogy a tárfiók ugyanabban a régióban legyen, mint a DMS-szolgáltatás. |
 
     ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
@@ -267,5 +267,5 @@ Miután a teljes adatbázis biztonsági mentését visszaállította SQL Databas
 ## <a name="next-steps"></a>További lépések
 
 * Ha egy oktatóanyag azt mutatja be, hogyan telepíthet át egy adatbázist felügyelt példányra a T-SQL Restore paranccsal, tekintse meg a [biztonsági másolat visszaállítása felügyelt példányra a Restore parancs használatával](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)című témakört.
-* A felügyelt példányokkal kapcsolatos információkért lásd: [Mi az a felügyelt példány](../sql-database/sql-database-managed-instance.md).
-* Az alkalmazások felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../sql-database/sql-database-managed-instance-connect-app.md).
+* A felügyelt példányokkal kapcsolatos információkért lásd: [Mi az a felügyelt példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+* Az alkalmazások felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../azure-sql/managed-instance/connect-application-instance.md).

@@ -4,12 +4,12 @@ description: A Azure Functions használatával ütemezhet egy olyan feladatot, a
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366809"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020336"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
@@ -21,13 +21,13 @@ Ha első alkalommal használja a C# függvények használatát, olvassa el a [Az
 
 + Hajtsa végre az [első függvény létrehozása a Visual Studióval](functions-create-your-first-function-visual-studio.md) című cikkben ismertetett lépéseket a helyi function alkalmazás létrehozásához, amely a 2. x vagy a futtatókörnyezet újabb verzióját célozza meg. Emellett közzé kell tennie a projektet egy Azure-beli Function alkalmazásban.
 
-+ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a [Azure Portal Azure SQL Database-adatbázis létrehozása](../sql-database/sql-database-get-started-portal.md)című cikkben ismertetett lépéseket.
++ Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a [Azure Portal Azure SQL Database-adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md)című cikkben ismertetett lépéseket.
 
 + A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen az SQL Database-példányhoz a helyi számítógépről.  
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
-Az [Azure SQL Database-adatbázis létrehozásakor](../sql-database/sql-database-get-started-portal.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
+Az [Azure SQL Database-adatbázis létrehozásakor](../azure-sql/database/single-database-create-quickstart.md)létrehozott adatbázishoz tartozó kapcsolódási karakterláncot le kell kérni a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -43,11 +43,11 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
 Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette meg, [tegye közzé a Function alkalmazást az Azure](functions-develop-vs.md#publish-to-azure)-ban.
 
-1. A Megoldáskezelőban kattintson a jobb gombbal a Function app projektre, **és válassza a** > **Szerkesztés Azure app Service beállítások szerkesztése**lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe `sqldb_connection`írja be a nevet, majd kattintson **az OK gombra**.
+1. A Megoldáskezelőban kattintson a jobb gombbal a Function app projektre, **és válassza a**  >  **Szerkesztés Azure app Service beállítások szerkesztése**lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe írja be a nevet `sqldb_connection` , majd kattintson **az OK gombra**.
 
     ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. Az új **sqldb_connection** beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, a helyére `{your_username}` és `{your_password}` a helyőrzőket valós értékekkel. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
+1. Az új **sqldb_connection** beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, a helyére `{your_username}` és a `{your_password}` helyőrzőket valós értékekkel. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
 
     ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -63,7 +63,7 @@ Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az ada
 
 1. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
 
-1. A **System. SqlClient** lapon válassza a verzió `4.5.1` lehetőséget, majd kattintson a **telepítés**gombra.
+1. A **System. SqlClient** lapon válassza a verzió lehetőséget, `4.5.1` majd kattintson a **telepítés**gombra.
 
 1. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához.
 
@@ -73,7 +73,7 @@ Most hozzáadhatja a SQL Databasehoz csatlakozó C#-függvény kódját.
 
 ## <a name="add-a-timer-triggered-function"></a>Időzítő által aktivált hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza az**új Azure-függvény** **hozzáadása** > lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és **Add**válassza az  >  **új Azure-függvény**hozzáadása lehetőséget.
 
 1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet, `DatabaseCleanup.cs` majd válassza a **Hozzáadás**lehetőséget.
 
@@ -86,7 +86,7 @@ Most hozzáadhatja a SQL Databasehoz csatlakozó C#-függvény kódját.
     using System.Threading.Tasks;
     ```
 
-1. Cserélje le a `Run` meglévő függvényt a következő kódra:
+1. Cserélje le a meglévő `Run` függvényt a következő kódra:
 
     ```cs
     [FunctionName("DatabaseCleanup")]
@@ -118,9 +118,9 @@ Most hozzáadhatja a SQL Databasehoz csatlakozó C#-függvény kódját.
 
     ![Tekintse meg a függvények naplóit.](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
 
-    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy az `UPDATE` utasításban több sort is kiválasszanak.
+    Az első végrehajtáskor frissítenie kell az 32-es adatsorokat. A következő futtatások nem frissítik az adatsorokat, hacsak nem módosítja a SalesOrderHeader, hogy az utasításban több sort is kiválasszanak `UPDATE` .
 
-Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), `TimerTrigger` ne felejtse el módosítani az attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
+Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), ne felejtse el módosítani az `TimerTrigger` attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931627"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113704"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -84,7 +84,7 @@ A következő útmutató egy folyamat tárolt eljárási tevékenységét haszn�
     ```
 
    > [!IMPORTANT]
-   > A paraméter **nevének** és **burkolatának** (ebben a példában a DateTime) meg kell egyeznie a folyamat/tevékenység JSON-ban megadott paraméterrel. A tárolt eljárás definíciójában ügyeljen arra, **\@** hogy a paraméter előtagjaként legyen használva.
+   > A paraméter **nevének** és **burkolatának** (ebben a példában a DateTime) meg kell egyeznie a folyamat/tevékenység JSON-ban megadott paraméterrel. A tárolt eljárás definíciójában ügyeljen arra, hogy **\@** a paraméter előtagjaként legyen használva.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
@@ -114,10 +114,10 @@ Az adatelőállító létrehozása után létre kell hoznia egy Azure SQL társ�
    ![Új adattár](media/data-factory-stored-proc-activity/new-data-store.png)
 3. A JSON-parancsfájlban hajtsa végre a következő módosításokat:
 
-   1. Cserélje `<servername>` le a nevet a Azure SQL Database kiszolgálójának nevére.
-   2. Cserélje `<databasename>` le a helyére azt az adatbázist, amelyben létrehozta a táblát és a tárolt eljárást.
-   3. Cserélje `<username@servername>` le az-t arra a felhasználói fiókra, amely hozzáféréssel rendelkezik az adatbázishoz.
-   4. Cserélje `<password>` le a jelszót a felhasználói fiók jelszavára.
+   1. Cserélje le a `<servername>` nevet a kiszolgáló nevére.
+   2. Cserélje le `<databasename>` a helyére azt az adatbázist, amelyben létrehozta a táblát és a tárolt eljárást.
+   3. Cserélje le az-t arra `<username@servername>` a felhasználói fiókra, amely hozzáféréssel rendelkezik az adatbázishoz.
+   4. Cserélje le a `<password>` jelszót a felhasználói fiók jelszavára.
 
       ![Új adattár](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
 4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy (üzembe helyezés** ) elemére. Győződjön meg arról, hogy a bal oldali fanézetben megjelenik a AzureSqlLinkedService.
@@ -204,10 +204,10 @@ Figyelje meg a következő tulajdonságokat:
 2. A **diagram nézetben**az oktatóanyagban használt folyamatok és adatkészletek áttekintése látható.
 
     ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. A diagram nézetben kattintson duplán az adatkészletre `sprocsampleout`. A szeletek kész állapotban jelennek meg. Öt szeletnek kell lennie, mivel a JSON-ből a kezdési idő és a befejezési idő között minden órában létrejön egy szelet.
+3. A diagram nézetben kattintson duplán az adatkészletre `sprocsampleout` . A szeletek kész állapotban jelennek meg. Öt szeletnek kell lennie, mivel a JSON-ből a kezdési idő és a befejezési idő között minden órában létrejön egy szelet.
 
     ![diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. Ha egy szelet **üzemkész** állapotban van, futtasson egy `select * from sampletable` lekérdezést az Azure SQL Database-ben annak ellenőrzéséhez, hogy a tárolt eljárás beszúrta-e az adott táblát a táblába.
+4. Ha egy szelet **üzemkész** állapotban van, futtasson egy `select * from sampletable` LEKÉRDEZÉST az Azure SQL Database-ben annak ellenőrzéséhez, hogy a tárolt eljárás beszúrta-e az adott táblát a táblába.
 
    ![Kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
 
@@ -305,9 +305,9 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név | A tevékenység neve |Igen |
+| name | A tevékenység neve |Igen |
 | leírás |A tevékenység által használt szöveg leírása |Nem |
-| type | A következőre kell beállítani: **SqlServerStoredProcedure** | Igen |
+| típus | A következőre kell beállítani: **SqlServerStoredProcedure** | Igen |
 | bemenetek | Választható. Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. |Nem |
 | kimenetek | Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez. A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). <br/><br/>A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. <br/><br/>A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység által végzett későbbi feldolgozás céljából (a folyamaton belüli[láncolt tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) . A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál. |Igen |
 | storedProcedureName |Adja meg a tárolt eljárás nevét az Azure SQL Database-ben, vagy Azure SQL Data Warehouse vagy SQL Server adatbázist, amelyet a kimeneti tábla által használt társított szolgáltatás képvisel. |Igen |

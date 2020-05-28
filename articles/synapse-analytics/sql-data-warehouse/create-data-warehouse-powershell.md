@@ -1,6 +1,6 @@
 ---
 title: Szinapszis SQL-készlet létrehozása és lekérdezése Azure PowerShell
-description: Hozzon létre gyorsan egy szinapszis SQL Pool logikai kiszolgálót egy kiszolgálói szintű tűzfalszabály használatával Azure PowerShell segítségével.
+description: Hozzon létre gyorsan egy szinapszis SQL-készletet egy kiszolgálói szintű tűzfalszabály segítségével Azure PowerShell használatával.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 57564e9dffd6022e1e4fe464b4b26a5bb8eb318b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90c976da7316652b1d700a4deda7ba6e42894c78
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631325"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015760"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése Azure PowerShell
 
@@ -59,7 +59,7 @@ Ebben a rövid útmutatóban a szkriptekben használt változókat határozhat m
 # The data center and resource name for your resources
 $resourcegroupname = "myResourceGroup"
 $location = "WestEurope"
-# The logical server name: Use a random value or replace with your own value (don't capitalize)
+# The server name: Use a random value or replace with your own value (don't capitalize)
 $servername = "server-$(Get-Random)"
 # Set an admin name and password for your database
 # The sign-in information for the server
@@ -72,17 +72,17 @@ $endip = "0.0.0.0"
 $databasename = "mySampleDataWarehouse"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. Az erőforráscsoport egy tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 
-## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
+## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-Hozzon létre egy [Azure SQL logikai kiszolgálót](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. Az alábbi példa egy véletlenszerűen megnevezett kiszolgálót hoz létre az erőforráscsoporthoz egy nevű `ServerAdmin` rendszergazdai felhasználóval és egy jelszóval `ChangeYourAdminPassword1`. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [logikai SQL Server-kiszolgálót](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A kiszolgáló adatbázisok egy csoportját tartalmazza, amelyeket a rendszer egy csoportként kezel. Az alábbi példa egy véletlenszerűen megnevezett kiszolgálót hoz létre az erőforráscsoporthoz egy nevű rendszergazdai felhasználóval `ServerAdmin` és egy jelszóval `ChangeYourAdminPassword1` . Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -91,9 +91,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 ```
 
-## <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
+## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
-Hozzon létre egy [Azure SQL Server-szintű tűzfalszabályok](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például SQL Server Management Studio vagy a SQLCMD segédprogram számára az SQL-készlethez való kapcsolódást az SQL Pool szolgáltatás tűzfala segítségével.
+Hozzon létre egy [kiszolgálói szintű tűzfalszabály](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például SQL Server Management Studio vagy a SQLCMD segédprogram számára az SQL-készlethez való kapcsolódást az SQL Pool szolgáltatás tűzfala segítségével.
 
 A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
@@ -104,7 +104,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> Az SQL-végpontok a 1433-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, akkor nem fog tudni csatlakozni az Azure SQL Server-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
+> Az SQL-végpontok a 1433-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, akkor nem fog tudni csatlakozni a kiszolgálóhoz, ha az informatikai részleg megnyitja a 1433-es portot.
 >
 
 ## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
@@ -137,7 +137,7 @@ A választható paraméterek a következők:
 
 A paraméter beállításairól további információt a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakörben talál.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutatóra épül.
 

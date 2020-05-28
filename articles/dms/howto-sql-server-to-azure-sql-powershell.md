@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650690"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021483"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>A helyszíni SQL Server migrálása Azure SQL Database használatával Azure PowerShell
 
@@ -51,7 +51,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 Az Azure-előfizetéshez a PowerShell használatával történő bejelentkezéshez használja a [Azure PowerShell bejelentkezve](https://docs.microsoft.com/powershell/azure/authenticate-azureps) található cikk utasításait.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot a virtuális gép létrehozása előtt.
 
@@ -65,7 +65,7 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 ## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Database Migration Service-példány létrehozása
 
-Azure Database Migration Service új példányát a `New-AzDataMigrationService` parancsmag használatával hozhatja létre. Ez a parancsmag a következő szükséges paramétereket várja:
+Azure Database Migration Service új példányát a parancsmag használatával hozhatja létre `New-AzDataMigrationService` . Ez a parancsmag a következő szükséges paramétereket várja:
 
 * *Azure-erőforráscsoport neve*. A [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) paranccsal Azure-erőforráscsoportot is létrehozhat a korábban megjelenített módon, és paraméterként megadhatja a nevét.
 * *Szolgáltatás neve*. A Azure Database Migration Service kívánt egyedi szolgáltatásnév megfelelő karakterlánc 
@@ -93,7 +93,7 @@ Azure Database Migration Service példány létrehozása után hozzon létre egy
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Adatbázis-kapcsolati információs objektum létrehozása a forrás és a cél kapcsolatokhoz
 
-A `New-AzDmsConnInfo` parancsmag használatával létrehozhat egy adatbázis-elérhetőségi adatobjektumot. Ez a parancsmag a következő paramétereket várja:
+A parancsmag használatával létrehozhat egy adatbázis-elérhetőségi adatobjektumot `New-AzDmsConnInfo` . Ez a parancsmag a következő paramétereket várja:
 
 * *ServerType*. A kért adatbázis-kapcsolatok típusa, például az SQL, az Oracle vagy a MySQL. Az SQL használata a SQL Server és az Azure SQL használatához.
 * *Adatforrás*. Egy SQL Server-példány vagy egy Azure SQL-adatbázis neve vagy IP-címe.
@@ -109,7 +109,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-A következő példa egy SQLAzureTarget nevű Azure SQL Database-kiszolgálóhoz tartozó kapcsolatbiztonsági adatok létrehozását mutatja be az SQL-hitelesítés használatával:
+A következő példa azt mutatja be, hogyan kell létrehozni az SQL-hitelesítés használatával a SQLAzureTarget nevű kiszolgálóhoz tartozó kapcsolatok adatait:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -120,9 +120,9 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 ### <a name="provide-databases-for-the-migration-project"></a>Adatbázisok biztosítása az áttelepítési projekthez
 
-Hozzon létre egy `AzDataMigrationDatabaseInfo` olyan objektumot, amely a projekt létrehozásához paraméterként megadható Azure Database áttelepítési projekt részeként adja meg az adatbázisokat. A parancsmag `New-AzDataMigrationDatabaseInfo` használatával AzDataMigrationDatabaseInfo hozhatók létre. 
+Hozzon létre egy olyan `AzDataMigrationDatabaseInfo` objektumot, amely a projekt létrehozásához paraméterként megadható Azure Database áttelepítési projekt részeként adja meg az adatbázisokat. A parancsmag használatával `New-AzDataMigrationDatabaseInfo` AzDataMigrationDatabaseInfo hozhatók létre. 
 
-A következő példa létrehoz `AzDataMigrationDatabaseInfo` egy projektet a **AdventureWorks2016** adatbázishoz, és hozzáadja azt a listához, amelyet paraméterként kíván megadni a projekt létrehozásához.
+A következő példa létrehoz egy `AzDataMigrationDatabaseInfo` projektet a **AdventureWorks2016** adatbázishoz, és hozzáadja azt a listához, amelyet paraméterként kíván megadni a projekt létrehozásához.
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -186,7 +186,7 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 
 ### <a name="create-the-migration-task-and-start-it"></a>Hozza létre az áttelepítési feladatot, és indítsa el
 
-Az áttelepítési feladat létrehozásához és elindításához használja a `New-AzDataMigrationTask` parancsmagot. Ez a parancsmag a következő paramétereket várja:
+Az `New-AzDataMigrationTask` áttelepítési feladat létrehozásához és elindításához használja a parancsmagot. Ez a parancsmag a következő paramétereket várja:
 
 * *TaskType*. A SQL Server számára létrehozandó áttelepítési feladat típusa Azure SQL Database áttelepítési típus *MigrateSqlServerSqlDb* várható. 
 * *Erőforráscsoport neve*. Azon Azure-erőforráscsoport neve, amelyben létre kívánja hozni a feladatot.

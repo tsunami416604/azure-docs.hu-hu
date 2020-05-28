@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73683146"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022027"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása az Azure Machine Learning és az Azure Data Factory használatával
 
@@ -80,7 +80,7 @@ Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést kész
 > [!IMPORTANT]
 > Ha a webszolgáltatás több bemenetet is igénybe vesz, használja a **webServiceInputs** tulajdonságot a **webServiceInput**használata helyett. Tekintse meg a [webszolgáltatáshoz több bemenet szükséges](#web-service-requires-multiple-inputs) szakaszt a webServiceInputs tulajdonság használatához.
 >
-> A **webServiceInput**/**webServiceInputs** és a **webServiceOutputs** tulajdonságok ( **typeProperties**) által hivatkozott adatkészleteket is fel kell venni a tevékenység **bemenetei** és **kimenetei**közé.
+> A **webServiceInput** / **webServiceInputs** és a **webServiceOutputs** tulajdonságok ( **typeProperties**) által hivatkozott adatkészleteket is fel kell venni a tevékenység **bemenetei** és **kimenetei**közé.
 >
 > A Azure Machine Learning Studio-kísérletben a webszolgáltatás bemeneti és kimeneti portjai és a globális paraméterek alapértelmezett neve ("input1", "input2") testreszabható. A webServiceInputs, a webServiceOutputs és a globalParameters-beállításokhoz használt névnek pontosan egyeznie kell a kísérletekben szereplő nevekkel. Az Azure Machine Learning Studio-végpont batch-végrehajtás Súgó lapján megtekintheti a minta kérések hasznos adatait a várt leképezés ellenőrzéséhez.
 >
@@ -311,7 +311,7 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Forgatókönyv: az olvasó/író modulok használatával végzett kísérletek különböző tárolókban lévő adataira vonatkoznak
 Azure Machine Learning Studio-kísérletek létrehozásakor egy másik gyakori forgatókönyv az olvasó és az író modulok használata. Az olvasó modul az adatok kísérletbe való betöltésére szolgál, az író modul pedig az adatok a kísérletekből való mentéséhez. Az olvasó és az író modulok részletes ismertetését az MSDN Library [olvasó](https://msdn.microsoft.com/library/azure/dn905997.aspx) és [író](https://msdn.microsoft.com/library/azure/dn905984.aspx) témaköreiben találja.
 
-Az olvasó-és író modulok használata esetén célszerű webszolgáltatási paramétert használni az olvasó/író modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olvasó modullal, amely egy Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezése után engedélyezni szeretné a webszolgáltatás felhasználói számára, hogy megadják a YYY.database.windows.net nevű másik Azure-SQL Server. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
+Az olvasó-és író modulok használata esetén célszerű webszolgáltatási paramétert használni az olvasó/író modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olvasó modullal, amely egy Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezését követően engedélyezni szeretné a webszolgáltatás felhasználói számára, hogy megadják a YYY.database.windows.net nevű másik logikai SQL Server-kiszolgálót. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
 
 > [!NOTE]
 > A webszolgáltatások bemenete és kimenete eltér a webszolgáltatás paramétereinek. Az első forgatókönyvben azt tapasztalja, hogyan adható meg egy Azure Machine Learning Studio webszolgáltatás bemenete és kimenete. Ebben a forgatókönyvben egy olyan webszolgáltatás paramétereit adja át, amely az olvasó/író modulok tulajdonságainak felel meg.
@@ -347,7 +347,7 @@ A webszolgáltatás paramétereinek átadásához [Data Factory függvények](da
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Olvasó modul használata az Azure blobban található több fájlból származó adatok olvasásához
 A Pig és a kaptár tevékenységekkel rendelkező Big adatfolyamatok egy vagy több kimeneti fájlt is létrehozhatnak kiterjesztés nélkül. Ha például külső kaptár-táblázatot ad meg, a külső struktúra táblázatának az Azure Blob Storage-ban tárolt adattára a következő névvel 000000_0. Egy kísérlet olvasó moduljának használatával több fájlt is beolvashat, és az előrejelzésekhez használhatja őket.
 
-Ha egy Azure Machine Learning kísérletben az olvasó modult használja, megadhatja bemenetként az Azure blobot. Az Azure Blob Storage-ban található fájlok lehetnek a HDInsight-on futó Pig-és kaptár-parancsfájlok által előállított kimeneti fájlok (például: 000000_0). Az olvasó modul lehetővé teszi a fájlok (kiterjesztés nélküli) olvasását a **tároló, a könyvtár és a blob elérési útjának**konfigurálásával. A **tárolóra mutató elérési út** a tárolóra, a **könyvtárra és a blobra** mutat, hogy a fájlokat tartalmazó mappa a következő képen látható módon jelenjen meg. A csillag **() azt adja meg,\*hogy a tárolóban/mappában lévő összes fájl (azaz az aggregateddata/év = 2014/hónap-6/)** a kísérlet részeként legyen beolvasva. \*
+Ha egy Azure Machine Learning kísérletben az olvasó modult használja, megadhatja bemenetként az Azure blobot. Az Azure Blob Storage-ban található fájlok lehetnek a HDInsight-on futó Pig-és kaptár-parancsfájlok által előállított kimeneti fájlok (például: 000000_0). Az olvasó modul lehetővé teszi a fájlok (kiterjesztés nélküli) olvasását a **tároló, a könyvtár és a blob elérési útjának**konfigurálásával. A **tárolóra mutató elérési út** a tárolóra, a **könyvtárra és a blobra** mutat, hogy a fájlokat tartalmazó mappa a következő képen látható módon jelenjen meg. A csillag \* **() azt adja meg, hogy a tárolóban/mappában lévő összes fájl (azaz az aggregateddata/év = 2014/hónap-6/ \* )** a kísérlet részeként legyen beolvasva.
 
 ![Azure-Blob tulajdonságai](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 

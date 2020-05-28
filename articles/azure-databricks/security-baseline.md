@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681691"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016338"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks Azure biztonsági alapterve
 
@@ -200,7 +200,7 @@ A naplózási naplózáshoz a Azure Databricks átfogó, teljes körű diagnoszt
 
 Megjegyzés: Azure Databricks a diagnosztikai naplókhoz a prémium szintű Azure Databricks terv szükséges
 
-* Az Azure-beli [tevékenység naplójának diagnosztikai beállításainak engedélyezése](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 * [A Azure Databricks diagnosztikai beállításainak engedélyezése](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs)
 
@@ -262,7 +262,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Megjegyzés: Azure Databricks a diagnosztikai naplókhoz a prémium szintű Azure Databricks terv szükséges
 
-* [Azure Databricks naplók küldése log Analytics munkaterületre](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery))
+* [Azure Databricks naplók küldése Log Analytics munkaterületre](https://docs.microsoft.com/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs#configure-diagnostic-log-delivery)
 
 * [Riasztások konfigurálása Log Analytics munkaterületen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
 

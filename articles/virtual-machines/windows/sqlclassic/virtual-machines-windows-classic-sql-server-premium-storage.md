@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833931"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020880"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -41,7 +41,7 @@ Fontos megérteni az Azure-Premium Storage az IAAS-alapú virtuális gépekkel v
 * Lehetséges áttelepítési módszerek.
 * Teljes körű példa az Azure-ra, a Windowsra és a SQL Server a meglévő always on-implementáció áttelepítésének lépéseire.
 
-Az Azure Virtual Machines SQL Serverával kapcsolatos további háttérinformációk: [SQL Server az azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Az Azure Virtual Machines SQL Serverával kapcsolatos további háttérinformációk: [SQL Server az azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 **Szerző:** Daniel Sol **technikai felülvizsgálók:** Luis Carlos Vargas hering, Sanjay, Juergen Thomas, Gonzalo Ruiz.
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: a megengedett hibák javítása az erőforrásokon – \< opcionális>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: a megengedett hibák javítása az erőforrásokon\<Optional>
 
 Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon korlátok vannak attól függően, hogy hány hiba fordulhat elő egy adott időszakban, ahol a fürtszolgáltatás megkísérli újraindítani az erőforráscsoportot. Javasoljuk, hogy ezt az eljárást csak akkor növelje, ha a folyamat leállításával nem végez manuálisan feladatátvételt, és nem indítja el a feladatátvételt. ehhez a korláthoz közelebb kerülhet.
 
@@ -691,7 +691,7 @@ Az Always On rendelkezésre állási csoportba tartozó egyes erőforrásokon ko
 
 Módosítsa a maximális hibákat 6-ra.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: a fürthöz tartozó IP-cím erőforrás hozzáadása \< opcionális>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: a fürthöz tartozó IP-cím erőforrásának hozzáadása\<Optional>
 
 Ha a fürthöz csak egy IP-cím tartozik, és ez a Felhőbeli alhálózathoz van igazítva, ügyeljen arra, hogy ha véletlenül offline állapotba helyezi az összes fürtcsomópontot a felhőben ezen a hálózaton, akkor a fürt IP-erőforrása és a fürt hálózati neve nem fog tudni online állapotba helyezni. Ebben az esetben megakadályozza a más fürterőforrás-erőforrások frissítését.
 
@@ -1250,7 +1250,7 @@ Az IP-cím hozzáadásához tekintse meg a következő függeléket: 14. lépés
 
 * [Azure-Premium Storage](../disks-types.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-* [SQL Server az Azure-ban Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [SQL Server az Azure-ban Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

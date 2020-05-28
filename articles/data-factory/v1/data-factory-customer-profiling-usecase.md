@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969294"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021891"
 ---
 # <a name="use-case---customer-profiling"></a>Használati eset – ügyfél-profilkészítés
 Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  További információ a Cortana Intelligenceről: [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). Ebben a dokumentumban egy egyszerű használati esetet ismertetünk, amely segít megismerni, hogy Azure Data Factory Hogyan oldhatók meg a gyakori elemzési problémák.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 A contoso egy szerencsejáték-cég, amely több platformhoz hoz létre játékokat: játékkonzolok, kézi eszközök és személyi számítógépek (PC-k). Ahogy a játékosok játszanak ilyen játékokat, nagy mennyiségű naplózási adatok készülnek, amelyek nyomon követik a felhasználó használati mintáit, a játék stílusát és a felhasználói preferenciákat.  Demográfiai, regionális és Termékadatok együttes használata esetén a contoso az elemzések elvégzésével megtudhatja, hogyan javíthatja a játékosok élményét, és hogyan célozhatja meg azokat a frissítésekhez és a játékon belüli vásárlásokhoz. 
 
 A contoso célja, hogy a játékosok szerencsejáték-előzményei alapján azonosítsa a fel-eladás/értékesítés utáni lehetőségeket, és látványos funkciókat adjon az üzleti növekedéshez, és jobb felhasználói élményt nyújtson az ügyfeleknek. Ebben a használati esetben egy szerencsejáték-vállalatot használunk egy üzleti példaként. A vállalat a játékosok viselkedése alapján szeretné optimalizálni játékait. Ezek az alapelvek minden olyan vállalkozásra érvényesek, amely az ügyfeleit a termékeivel és szolgáltatásaival kapcsolatban kívánja elérni, és fokozza ügyfelei tapasztalatait.
@@ -38,7 +38,7 @@ Ehhez az egyszerű használati esethez mindössze egy [Azure-előfizetés](https
 3. A **mintavételezési folyamatok** panelen kattintson a telepíteni kívánt **ügyfél-profilkészítésre** .
 
     ![Mintavételezési folyamatok panel](./media/data-factory-samples/SampleTile.png)
-4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók nevét és kulcsát, az Azure SQL Server nevét, az adatbázist, a felhasználói azonosítót és a jelszót.
+4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók nevét és kulcsát, a logikai SQL-kiszolgáló nevét, az adatbázist, a felhasználói azonosítót és a jelszót.
 
     ![Minta panel](./media/data-factory-samples/SampleBlade.png)
 5. Miután végzett a konfigurációs beállítások megadásával, a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a folyamatok által használt mintavételi folyamatokat és társított szolgáltatásokat/táblákat.

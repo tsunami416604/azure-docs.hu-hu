@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018837"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop használata a Hadooppal a HDInsightban
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Ismerje meg, hogy miként lehet az Apache Sqoop használatával HDInsight importálni és exportálni egy HDInsight-fürt és egy Azure SQL Database-adatbázis között.
+Ismerje meg, hogyan importálhat és exportálhat egy HDInsight-fürt és Azure SQL Database között az Apache Sqoop használatával a HDInsight.
 
 Bár a Apache Hadoop a strukturálatlan és részben strukturált adatmennyiségek, például naplók és fájlok feldolgozásának természetes lehetősége, előfordulhat, hogy a kapcsolódó adatbázisokban tárolt strukturált adatmennyiségeket is fel kell dolgoznia.
 
-Az [Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) egy olyan eszköz, amely a Hadoop-fürtök és a kapcsolati adatbázisok közötti adatátvitelre szolgál. Felhasználhatja az adatok importálását a RDBMS (például SQL Server, MySQL vagy Oracle) a Hadoop elosztott fájlrendszerbe (HDFS), átalakíthatja a Hadoop-ben lévő adatait MapReduce vagy Apache Hive, majd visszaexportálhatja az adatok RDBMS. Ebben a cikkben egy SQL Server adatbázist használ a kapcsolódó adatbázishoz.
+Az [Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) egy olyan eszköz, amely a Hadoop-fürtök és a kapcsolati adatbázisok közötti adatátvitelre szolgál. Felhasználhatja az adatok importálását a RDBMS (például SQL Server, MySQL vagy Oracle) a Hadoop elosztott fájlrendszerbe (HDFS), átalakíthatja a Hadoop-ben lévő adatait MapReduce vagy Apache Hive, majd visszaexportálhatja az adatok RDBMS. Ebben a cikkben a Azure SQL Databaset használja a kapcsolódó adatbázishoz.
 
 > [!IMPORTANT]  
 > Ez a cikk egy tesztkörnyezetben állítja be az adatátvitel végrehajtását. Ezután válasszon egy adatátviteli módszert ehhez a környezethez a [Sqoop-feladatok futtatása](#run-sqoop-jobs)szakaszban, a továbbiak részben.
@@ -33,7 +33,7 @@ A HDInsight-fürtökön támogatott Sqoop-verziókért lásd: [Újdonságok a HD
 
 A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát használja:
 
-* Egy Apache Log4j naplófájl, amely a következő helyen található `/example/data/sample.log`:. Az alábbi naplók a fájlból vannak kinyerve:
+* Egy Apache Log4j naplófájl, amely a következő helyen található: `/example/data/sample.log` . Az alábbi naplók a fájlból vannak kinyerve:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,7 +42,7 @@ A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát 
 ...
 ```
 
-* Egy nevű `hivesampletable`struktúra-tábla, amely a következő helyen található adatfájlra hivatkozik: `/hive/warehouse/hivesampletable`. A tábla tartalmaz néhány mobileszköz-adategységet.
+* Egy nevű struktúra `hivesampletable` -tábla, amely a következő helyen található adatfájlra hivatkozik: `/hive/warehouse/hivesampletable` . A tábla tartalmaz néhány mobileszköz-adategységet.
   
   | Mező | Adattípus |
   | --- | --- |
@@ -62,7 +62,7 @@ Ebben a cikkben ezt a két adatkészletet használja a Sqoop importálásának �
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Tesztkörnyezet beállítása
 
-A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül jönnek létre Azure Resource Manager sablon használatával. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)található. A Resource Manager-sablon egy bacpac-csomagot hív meg, hogy a tábla sémáit egy SQL-adatbázisba telepítse.  A bacpac csomag egy nyilvános blob-tárolóban található https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Ha privát tárolót szeretne használni a bacpac-fájlokhoz, használja a következő értékeket a sablonban:
+A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül jönnek létre Azure Resource Manager sablon használatával. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)található. A Resource Manager-sablon egy bacpac-csomagot hív meg, hogy a tábla sémáit egy SQL-adatbázisba telepítse.  A bacpac csomag egy nyilvános blob-tárolóban található https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac . Ha privát tárolót szeretne használni a bacpac-fájlokhoz, használja a következő értékeket a sablonban:
 
 ```json
 "storageKeyType": "Primary",
@@ -84,18 +84,18 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
     |Erőforráscsoport |Válassza ki az erőforráscsoportot a legördülő listából, vagy hozzon létre egy újat|
     |Hely |Válasszon ki egy régiót a legördülő listából.|
     |Fürt neve |Adja meg a Hadoop-fürt nevét. Csak kisbetűket használjon.|
-    |Fürt bejelentkezési felhasználóneve |Tartsa meg az előre megadott értéket `admin`.|
+    |Fürt bejelentkezési felhasználóneve |Tartsa meg az előre megadott értéket `admin` .|
     |Fürt bejelentkezési jelszava |Adjon meg egy jelszót.|
-    |SSH-Felhasználónév |Tartsa meg az előre megadott értéket `sshuser`.|
+    |SSH-Felhasználónév |Tartsa meg az előre megadott értéket `sshuser` .|
     |SSH-jelszó |Adjon meg egy jelszót.|
-    |SQL-rendszergazdai bejelentkezés |Tartsa meg az előre megadott értéket `sqluser`.|
+    |SQL-rendszergazdai bejelentkezés |Tartsa meg az előre megadott értéket `sqluser` .|
     |SQL-rendszergazdai jelszó |Adjon meg egy jelszót.|
     |_artifacts helye | Használja az alapértelmezett értéket, ha egy másik helyen szeretné használni a saját bacpac-fájlját.|
     |_artifacts hely sas-tokenje |Hagyja üresen.|
     |Bacpac-fájl neve |Használja az alapértelmezett értéket, ha nem kívánja használni a saját bacpac-fájlját.|
     |Hely |Használja az alapértelmezett értéket.|
 
-    Az Azure SQL Server neve lesz `<ClusterName>dbserver`. Az adatbázis neve lesz `<ClusterName>db`. A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu`.
+    A [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) neve lesz `<ClusterName>dbserver` . Az adatbázis neve lesz `<ClusterName>db` . A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu` .
 
 3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
 
@@ -113,8 +113,8 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 
 ## <a name="limitations"></a>Korlátozások
 
-* Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
-* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a kapcsolót a `-batch` lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
+* Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
+* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót a lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
 
 ## <a name="next-steps"></a>További lépések
 

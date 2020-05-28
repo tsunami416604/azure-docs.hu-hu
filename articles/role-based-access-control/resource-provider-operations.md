@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 679b5e60f65daac2006598c6bf12c9cdeec5541d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199564"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015913"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
@@ -2727,7 +2727,7 @@ Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 > | Műveletek | Microsoft. CostManagement/externalSubscriptions/előrejelzés/olvasás | A külső BillingAccounts vonatkozó használati adatok előrejelzése. |
 > |  | **externalSubscriptions/lekérdezés** |  |
 > | Műveletek | Microsoft. CostManagement/externalSubscriptions/Query/READ | Külső előfizetés használati adatait kérdezheti le. |
-> |  | **Időjárás** |  |
+> |  | **forecast** |  |
 > | Műveletek | Microsoft. CostManagement/előrejelzés/olvasás | Használati adatok előrejelzése hatókör alapján. |
 > |  | **Operations** |  |
 > | Műveletek | Microsoft. CostManagement/Operations/READ | A Microsoft. CostManagement erőforrás-szolgáltató által támogatott összes művelet listázása. |
@@ -5127,7 +5127,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft. inviews/MetricDefinitions/Providers/Microsoft. bepillantások/olvasás | Metrikus definíciók olvasása |
 > |  | **Metricnamespaces** |  |
 > | Műveletek | Microsoft. bepillantások/Metricnamespaces/olvasás | Metrikus névterek olvasása |
-> |  | **Mérőszámok** |  |
+> |  | **Metrikák** |  |
 > | Műveletek | Microsoft. bepillantások/mérőszámok/olvasás | Metrikák olvasása |
 > |  | **Metrikák/Microsoft. bepillantások** |  |
 > | Műveletek | Microsoft. inviews/mérőszámok/Microsoft. bepillantások/olvasás | Metrikák olvasása |
@@ -5181,7 +5181,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft. bepillantások/munkafüzetek/olvasás | Munkafüzet beolvasása |
 > |  | **DataCollectionRules/-adatkészletek** |  |
 > | DataAction | Microsoft. elemzések/DataCollectionRules/adatfeldolgozás/írás | Az adatgyűjtési szabályba való adatküldés |
-> |  | **Mérőszámok** |  |
+> |  | **Metrikák** |  |
 > | DataAction | Microsoft. bepillantások/mérőszámok/írás | Mérőszámok írása |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
@@ -8521,7 +8521,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 > | Műveletek | Microsoft. Resources/Links/READ | Lekérdezi vagy felsorolja az erőforrás-hivatkozásokat. |
 > | Műveletek | Microsoft. Resources/Links/Write | Létrehoz vagy frissít egy erőforrás-hivatkozást. |
 > | Műveletek | Microsoft. Resources/Links/delete | Töröl egy erőforrás-hivatkozást. |
-> |  | **piactér** |  |
+> |  | **piacon** |  |
 > | Műveletek | Microsoft. Resources/Marketplace/vásárlás/művelet | Vásárol egy erőforrást a piactéren. |
 > |  | **szolgáltatók** |  |
 > | Műveletek | Microsoft. Resources/Providers/READ | A szolgáltatók listájának beolvasása. |
@@ -9055,7 +9055,7 @@ Azure-szolgáltatás: [Azure Managed Applications](../azure-resource-manager/man
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
+Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml) [SQL Data Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |
@@ -9333,7 +9333,7 @@ Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data
 > | Műveletek | Microsoft. SQL/Operations/READ | Elérhető REST-műveletek beolvasása |
 > |  | **kiszolgálók** |  |
 > | Műveletek | Microsoft. SQL/kiszolgálók/tdeCertificates/művelet | TDE-tanúsítvány létrehozása/frissítése |
-> | Műveletek | Microsoft. SQL/kiszolgálók/disableAzureADOnlyAuthentication/művelet | Csak a logikai kiszolgálón lévő hitelesítés letiltása Azure Active Directory |
+> | Műveletek | Microsoft. SQL/kiszolgálók/disableAzureADOnlyAuthentication/művelet | Azure Active Directory csak hitelesítés letiltása Azure SQL Database-kiszolgálón|
 > | Műveletek | Microsoft. SQL/kiszolgálók/olvasás | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | Műveletek | Microsoft. SQL/kiszolgálók/írás | Létrehoz egy kiszolgálót a megadott paraméterekkel, vagy frissíti a megadott kiszolgálóhoz tartozó tulajdonságokat vagy címkéket. |
 > | Műveletek | Microsoft. SQL/kiszolgálók/törlés | Töröl egy meglévő kiszolgálót. |
@@ -9628,7 +9628,7 @@ Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data
 > |  | **kiszolgálók/importExportOperationResults** |  |
 > | Műveletek | Microsoft. SQL/kiszolgálók/importExportOperationResults/olvasás | Folyamatban lévő importálási/exportálási műveletek beolvasása |
 > |  | **kiszolgálók/inaccessibleDatabases** |  |
-> | Műveletek | Microsoft. SQL/kiszolgálók/inaccessibleDatabases/olvasás | A nem elérhető adatbázis (ok) listájának visszaadása egy logikai kiszolgálón. |
+> | Műveletek | Microsoft. SQL/kiszolgálók/inaccessibleDatabases/olvasás | A nem elérhető adatbázis (ok) listájának visszaadása egy Azure SQL-DATBASE található kiszolgálón. |
 > |  | **kiszolgálók/interfaceEndpointProfiles** |  |
 > | Műveletek | Microsoft. SQL/kiszolgálók/interfaceEndpointProfiles/írás | Létrehoz egy illesztőfelület-végponti profilt a megadott paraméterekkel, vagy frissíti a megadott csatoló-végpont tulajdonságait vagy címkéit. |
 > | Műveletek | Microsoft. SQL/kiszolgálók/interfaceEndpointProfiles/olvasás | A megadott csatoló-végpont profiljának tulajdonságait adja vissza. |
@@ -9699,7 +9699,7 @@ Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
-Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |

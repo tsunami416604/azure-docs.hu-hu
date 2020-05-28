@@ -16,16 +16,16 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978207"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017650"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (klasszikus üzembe helyezési modell)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)
 > * [Klasszikus](../classic/sql-connect.md)
 > 
 > 
@@ -34,7 +34,7 @@ ms.locfileid: "75978207"
 Ez a témakör azt ismerteti, hogyan lehet csatlakozni az Azure-beli virtuális gépen futó SQL Server-példányhoz. [Általános csatlakozási forgatókönyveket](#connection-scenarios) tartalmaz, és [részletesen ismerteti a SQL Server-kapcsolatok Azure-beli virtuális gépen való konfigurálásának lépéseit](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Resource Manager-alapú virtuális gépeket használ, tekintse meg a következőt: [kapcsolódás SQL Server virtuális géphez az Azure-ban a Resource Manager használatával](../sql/virtual-machines-windows-sql-connect.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Resource Manager-alapú virtuális gépeket használ, tekintse meg a következőt: [kapcsolódás SQL Server virtuális géphez az Azure-ban a Resource Manager használatával](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).
 
 ## <a name="connection-scenarios"></a>Kapcsolatok forgatókönyvei
 Az ügyfélnek a virtuális gépen futó SQL Serverhoz való csatlakozásának módja eltér az ügyfél helyétől és a számítógép/hálózat konfigurációjától függően. Ezek a forgatókönyvek a következőket biztosítják:
@@ -106,9 +106,9 @@ A következő ábra összegzi a kapcsolatok elérési útját:
 ## <a name="next-steps"></a>Következő lépések
 Ha a magas rendelkezésre állás és a vész-helyreállítás AlwaysOn rendelkezésre állási csoportok használatát is tervezi, érdemes fontolóra vennie egy figyelő megvalósítását. Az adatbázis-ügyfelek nem közvetlenül az egyik SQL Server példányhoz csatlakoznak a figyelőhöz. A figyelő a rendelkezésre állási csoportban lévő elsődleges replikára irányítja az ügyfeleket. További információ: [ILB-figyelő konfigurálása AlwaysOn rendelkezésre állási csoportokhoz az Azure-ban](../classic/ps-sql-int-listener.md).
 
-Fontos, hogy áttekintse az Azure-beli virtuális gépeken futó SQL Server vonatkozó ajánlott biztonsági eljárásokat. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../sql/virtual-machines-windows-sql-security.md).
+Fontos, hogy áttekintse az Azure-beli virtuális gépeken futó SQL Server vonatkozó ajánlott biztonsági eljárásokat. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../../../azure-sql/virtual-machines/windows/security-considerations-best-practices.md).
 
 Az Azure virtuális gépeken futó SQL Server [képzési tervének felfedezése](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/). 
 
-A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 
