@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 77b49d8446c7882a155742e8455d77bd1ec110cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb167f121027272330399f8345c90602d93ecbaf
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606188"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113865"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-hitelesítés engedélyezése az Azure-SSIS integrációs modulhoz
 
@@ -24,21 +24,22 @@ ms.locfileid: "81606188"
 
 Ez a cikk bemutatja, hogyan engedélyezhető Azure Active Directory (Azure AD) hitelesítés a Azure Data Factory (ADF) felügyelt identitásával, és hogyan használható a hagyományos hitelesítési módszerek (például az SQL-hitelesítés) helyett a következőkre:
 
-- Hozzon létre egy Azure-SSIS Integration Runtime (IR), amely bekapcsolja az SSIS Catalog adatbázist (SSISDB) a Azure SQL Database kiszolgáló/felügyelt példányban az Ön nevében.
+- Hozzon létre egy Azure-SSIS Integration Runtime (IR), amely bekapcsolja az SSIS Catalog adatbázist (SSISDB) a SQL Database vagy az SQL felügyelt példányában az Ön nevében.
 
 - Csatlakozás különböző Azure-erőforrásokhoz, amikor Azure-SSIS IR SSIS-csomagokat futtat.
 
 Az ADF felügyelt identitásával kapcsolatos további információkért lásd: [Data Factory felügyelt identitása](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
->-  Ebben az esetben az automatikus lapadagolóba felügyelt identitással való Azure AD-hitelesítés csak a SSIS IR létrehozási és további indítási műveleteiben használatos, amelyek pedig kiépítik és csatlakoznak a SSISDB. A SSIS-csomagok végrehajtásához a SSIS IR a SSISDB-létesítés során létrehozott, teljes körűen felügyelt fiókokkal csatlakozik a SSISDB-hez.
->-  Ha már létrehozta a SSIS IR-t az SQL-hitelesítés használatával, nem állíthatja be újra az Azure AD-hitelesítés használatát a PowerShellen keresztül, de ezt Azure Portal/ADF-alkalmazáson keresztül teheti meg. 
+>
+> - Ebben az esetben az automatikus lapadagolóba felügyelt identitással való Azure AD-hitelesítés csak a SSIS IR létrehozási és további indítási műveleteiben használatos, amelyek pedig kiépítik és csatlakoznak a SSISDB. A SSIS-csomagok végrehajtásához a SSIS IR a SSISDB-létesítés során létrehozott, teljes körűen felügyelt fiókokkal csatlakozik a SSISDB-hez.
+> - Ha már létrehozta a SSIS IR-t az SQL-hitelesítés használatával, nem állíthatja be újra az Azure AD-hitelesítés használatát a PowerShellen keresztül, de ezt Azure Portal/ADF-alkalmazáson keresztül teheti meg. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-ad-on-azure-sql-database"></a>Az Azure AD engedélyezése Azure SQL Database
 
-Azure SQL Database-kiszolgáló támogatja az adatbázisok Azure AD-felhasználóval történő létrehozását. Először létre kell hoznia egy Azure AD-csoportot, amelynek a felügyelt identitása tagja az ADF-nek. Ezután egy Azure AD-felhasználót kell beállítania Active Directory-rendszergazdaként a Azure SQL Database-kiszolgálóhoz, majd hozzá kell csatlakoznia a SQL Server Management Studio (SSMS) szolgáltatáshoz az adott felhasználó használatával. Végül létre kell hoznia egy, az Azure AD-csoportot jelképező felhasználót, így az ADF felügyelt identitását Azure-SSIS IR használhatja a SSISDB létrehozásához az Ön nevében.
+SQL Database támogatja az adatbázisok Azure AD-felhasználóval történő létrehozását. Először létre kell hoznia egy Azure AD-csoportot, amelynek a felügyelt identitása tagja az ADF-nek. Ezután be kell állítania egy Azure AD-felhasználót a SQL Database Active Directory-rendszergazdájaként, majd csatlakoznia kell hozzá a SQL Server Management Studio (SSMS) alkalmazásban a felhasználó használatával. Végül létre kell hoznia egy, az Azure AD-csoportot jelképező felhasználót, így az ADF felügyelt identitását Azure-SSIS IR használhatja a SSISDB létrehozásához az Ön nevében.
 
 ### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Azure AD-csoport létrehozása az ADF felügyelt identitásával tagként
 
@@ -46,7 +47,7 @@ Használhat meglévő Azure AD-csoportot, vagy létrehozhat egy újat az Azure A
 
 1.  Telepítse az [Azure ad PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -modult.
 
-2.  Jelentkezzen be `Connect-AzureAD`a használatával, majd a következő parancsmag futtatásával hozzon létre egy csoportot, és mentse egy változóba:
+2.  Jelentkezzen be  `Connect-AzureAD` a használatával, majd a következő parancsmag futtatásával hozzon létre egy csoportot, és mentse egy változóba:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -77,13 +78,13 @@ Használhat meglévő Azure AD-csoportot, vagy létrehozhat egy újat az Azure A
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Azure AD-hitelesítés konfigurálása Azure SQL Database-kiszolgálóhoz
+### <a name="configure-azure-ad-authentication-for-sql-database"></a>Azure AD-hitelesítés konfigurálása SQL Databasehoz
 
 Az [Azure ad-hitelesítést az alábbi lépésekkel konfigurálhatja és kezelheti az SQL-](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) sel:
 
-1.  A Azure Portal területen válassza a **minden szolgáltatás** -> **SQL-kiszolgálók** lehetőséget a bal oldali navigációs sávon.
+1.  A Azure Portal területen válassza a **minden szolgáltatás**  ->  **SQL-kiszolgálók** lehetőséget a bal oldali navigációs sávon.
 
-2.  Válassza ki az Azure AD-hitelesítéssel konfigurálni kívánt Azure SQL Database-kiszolgálót.
+2.  Válassza ki a kiszolgálót SQL Database az Azure AD-hitelesítéssel való konfiguráláshoz.
 
 3.  A panel **Beállítások** szakaszában válassza a **Active Directory rendszergazda**elemet.
 
@@ -93,21 +94,21 @@ Az [Azure ad-hitelesítést az alábbi lépésekkel konfigurálhatja és kezelh
 
 6.  A parancssorban válassza a **Mentés lehetőséget.**
 
-### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Egy foglalt felhasználó létrehozása az Azure AD-csoportot képviselő Azure SQL Database-kiszolgálón
+### <a name="create-a-contained-user-in-sql-database-representing-the-azure-ad-group"></a>Egy foglalt felhasználó létrehozása az Azure AD-csoportot képviselő SQL Databaseban
 
-Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) van szükség.
+Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   (SSMS) van szükség.
 
 1. Indítsa el a SSMS.
 
-2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a Azure SQL Database kiszolgáló nevét a **kiszolgáló neve** mezőben.
+2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen írja be a kiszolgáló nevét a **kiszolgáló neve** mezőbe.
 
 3. A **hitelesítés** mezőben válassza a **Active Directory-Universal az MFA-támogatással** lehetőséget (a másik két Active Directory hitelesítési típust is használhatja, lásd: [Azure ad-hitelesítés konfigurálása és kezelése az SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)használatával).
 
-4. A **Felhasználónév** mezőben adja meg a kiszolgáló-rendszergazdaként beállított Azure ad-fiók nevét, például: testuser@xxxonline.com.
+4. A **Felhasználónév** mezőben adja meg a kiszolgáló-rendszergazdaként beállított Azure ad-fiók nevét, például: testuser@xxxonline.com .
 
 5. Válassza a **kapcsolat** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-6. A **Object Explorer**bontsa ki a **Databases** -> **System Databases (adatbázisok rendszeradatbázisok** ) mappát.
+6. A **Object Explorer**bontsa ki a **Databases**  ->  **System Databases (adatbázisok rendszeradatbázisok** ) mappát.
 
 7. Kattintson a jobb gombbal a **Master** adatbázis elemre, és válassza az **Új lekérdezés**lehetőséget.
 
@@ -145,23 +146,23 @@ Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https
 
     A parancsnak sikeresen el kell végeznie, és meg kell adnia a befoglalt felhasználó számára a SSISDB elérésének lehetőségét.
 
-## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Az Azure AD engedélyezése Azure SQL Database felügyelt példányon
+## <a name="enable-azure-ad-on-sql-managed-instance"></a>Az Azure AD engedélyezése a felügyelt SQL-példányon
 
-Azure SQL Database felügyelt példány lehetővé teszi, hogy közvetlenül az ADF felügyelt identitásával hozzon létre egy adatbázist. Nem kell csatlakoztatnia az ADF felügyelt identitását egy Azure AD-csoporthoz, vagy létre kell hoznia egy, az adott csoportot jelképező felhasználót a felügyelt példányában.
+Az SQL felügyelt példánya lehetővé teszi, hogy közvetlenül az ADF felügyelt identitásával hozzon létre egy adatbázist. Nem kell csatlakoztatnia az ADF felügyelt identitását egy Azure AD-csoporthoz, vagy létre kell hoznia egy, az adott csoportot jelképező felhasználót az SQL felügyelt példányában.
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Azure AD-hitelesítés konfigurálása Azure SQL Database felügyelt példányhoz
+### <a name="configure-azure-ad-authentication-for-azure-sql-managed-instance"></a>Azure AD-hitelesítés konfigurálása az Azure SQL felügyelt példányaihoz
 
-Kövesse a [felügyelt példány Azure Active Directory-rendszergazdájának kiépítése](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)című témakör lépéseit.
+Hajtsa végre az [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)című témakör lépéseit.
 
-### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Az ADF felügyelt identitásának hozzáadása felhasználóként Azure SQL Database felügyelt példányban
+### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-sql-managed-instance"></a>Az ADF felügyelt identitásának hozzáadása felhasználóként az SQL felügyelt példányában
 
-Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) van szükség.
+Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   (SSMS) van szükség.
 
 1.  Indítsa el a SSMS.
 
-2.  Kapcsolódjon a felügyelt példányhoz egy **rendszergazdaként**SQL Server fiókkal. Ez egy ideiglenes korlátozás, amely akkor lesz eltávolítva, ha Azure SQL Database felügyelt példányhoz tartozó Azure AD Server rendszerbiztonsági tag (Logins) lesz a GA. A következő hibaüzenet jelenik meg, ha egy Azure AD-beli rendszergazdai fiókot próbál használni a bejelentkezés létrehozásához: msg 15247, 16. szint, 1. sor, az 1. sorban a felhasználónak nincs engedélye a művelet elvégzésére.
+2.  Kapcsolódjon az SQL felügyelt példányához egy olyan SQL Server fiók használatával, amely **rendszergazda**. Ez egy ideiglenes korlátozás, amely akkor lesz eltávolítva, ha az Azure AD-kiszolgáló rendszerbiztonsági tagja (bejelentkezések) az Azure SQL felügyelt példányaihoz a GA lesz. A következő hibaüzenet jelenik meg, ha egy Azure AD-beli rendszergazdai fiókot próbál használni a bejelentkezés létrehozásához: msg 15247, 16. szint, 1. sor, az 1. sorban a felhasználónak nincs engedélye a művelet elvégzésére.
 
-3.  A **Object Explorer**bontsa ki a **Databases** -> **System Databases (adatbázisok rendszeradatbázisok** ) mappát.
+3.  A **Object Explorer**bontsa ki a **Databases**  ->  **System Databases (adatbázisok rendszeradatbázisok** ) mappát.
 
 4.  Kattintson a jobb gombbal a **Master** adatbázis elemre, és válassza az **Új lekérdezés**lehetőséget.
 
@@ -188,7 +189,7 @@ Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](https
 
 ## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Azure-SSIS IR kiépítése Azure Portal/ADF-alkalmazásban
 
-Ha Azure Portal/ADF-alkalmazásban kiépíti a Azure-SSIS IR, az **SQL-beállítások** lapon válassza a **HRE-hitelesítés használata az ADF-hez tartozó felügyelt identitással** lehetőséget. Az alábbi képernyőfelvételen a SSISDB-t futtató Azure SQL Database kiszolgálóval rendelkező IR-beállítások láthatók. A felügyelt példányokat üzemeltető SSISDB, a **katalógus adatbázis-szolgáltatási szintje** és az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás nem alkalmazható, míg más beállítások ugyanazok.
+Ha Azure Portal/ADF-alkalmazásban kiépíti a Azure-SSIS IR, az **SQL-beállítások** lapon válassza a **HRE-hitelesítés használata az ADF-hez tartozó felügyelt identitással** lehetőséget. Az alábbi képernyőfelvételen a SQL Database üzemeltetési SSISDB rendelkező IR-beállítások láthatók. A SSISDB-t futtató SQL felügyelt példányok esetében a **katalógus adatbázis-szolgáltatási szintje** és az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás nem alkalmazható, míg más beállítások ugyanazok.
 
 A Azure-SSIS IR létrehozásával kapcsolatos további információkért lásd: [Azure-SSIS integrációs modul létrehozása Azure Data Factory-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
@@ -198,9 +199,9 @@ A Azure-SSIS IR létrehozásával kapcsolatos további információkért lásd: 
 
 A Azure-SSIS IR PowerShell-lel való kiépítéséhez tegye a következőket:
 
-1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modul telepítése.
+1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)   modul telepítése.
 
-2.  A szkriptben ne állítsa be `CatalogAdminCredential` a paramétert. Például:
+2.  A szkriptben ne állítsa be a `CatalogAdminCredential` paramétert. Például:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

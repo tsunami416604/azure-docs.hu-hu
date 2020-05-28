@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a5fc469c3db7da45f818230909026cedf6c71a4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37c646e2f08745b2a12df41b6310fb5d3834998b
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101739"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142554"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
@@ -59,7 +59,7 @@ A számítógép-szintű proxybeállítások konfigurálásához kövesse az al�
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Adja hozzá a <system.net> szakaszt a Machine. config fájlokban (a <System. serviceModel> szakaszban).  Módosítsa a 127.0.01:8888 a proxykiszolgáló IP-címére és portjára. 
+   - Adja hozzá a < System. net > szakaszt a Machine. config fájlokban (a < System. serviceModel > szakaszban).  Módosítsa a 127.0.01:8888 a proxykiszolgáló IP-címére és portjára. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -84,7 +84,7 @@ A számítógép-szintű proxybeállítások konfigurálásához kövesse az al�
 
       Megjegyzés: a Storage Sync Agent (filesyncsvc) szolgáltatás a leállítást követően automatikusan elindul.
 
-## <a name="firewall"></a>Tűzfal
+## <a name="firewall"></a>Firewall
 Ahogy az előző szakaszban is említettük, a 443-es portot kell megnyitni. Az adatközpontban, ágban vagy régióban lévő szabályzatok alapján szükség lehet arra, hogy a porton keresztüli adatforgalmat bizonyos tartományokra szűkítse.
 
 A következő táblázat ismerteti a szükséges tartományokat a kommunikációhoz:
@@ -100,54 +100,55 @@ A következő táblázat ismerteti a szükséges tartományokat a kommunikáció
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Miután telepítette a Azure File Sync ügynököt, a PKI URL-címével letöltheti a Azure File Sync szolgáltatással és az Azure-fájlmegosztás használatával folytatott kommunikációhoz szükséges köztes tanúsítványokat. Az OCSP URL-cím segítségével ellenőrizhető a tanúsítvány állapota. |
 
 > [!Important]
-> Ha a. one.microsoft.com &ast;-re irányuló forgalom lehetővé teszi, a-kiszolgálóról érkező forgalom több, mint a szinkronizálási szolgáltatásra van lehetséges. Számos további Microsoft-szolgáltatás érhető el az altartományok alatt.
+> Ha engedélyezi a forgalmat a &ast; . AFS.Azure.net, a forgalom csak a szinkronizálási szolgáltatás számára lehetséges. Nincsenek más Microsoft-szolgáltatások, amelyek ezt a tartományt használják.
+> Ha a. one.microsoft.com-re irányuló forgalom lehetővé teszi, a- &ast; kiszolgálóról érkező forgalom több, mint a szinkronizálási szolgáltatásra van lehetséges. Számos további Microsoft-szolgáltatás érhető el az altartományok alatt.
 
-Ha &ast;a. One.microsoft.com túl széles, korlátozhatja a kiszolgáló kommunikációját azáltal, hogy lehetővé teszi a kommunikációt az Azure Files Sync szolgáltatás explicit regionális példányaira. A kiválasztható példány (ok) a Storage Sync szolgáltatás azon régiójától függ, amelyet üzembe helyezett, és amelybe regisztrálta a kiszolgálót. Ezt a régiót az alábbi táblázatban "elsődleges végpont URL-ként" nevezzük.
+Ha &ast; a. AFS.Azure.net vagy &ast; a. One.microsoft.com túl széles, korlátozhatja a kiszolgáló kommunikációját azáltal, hogy lehetővé teszi a kommunikációt az Azure Files Sync szolgáltatás explicit regionális példányaira. A kiválasztható példány (ok) a Storage Sync szolgáltatás azon régiójától függ, amelyet üzembe helyezett, és amelybe regisztrálta a kiszolgálót. Ezt a régiót az alábbi táblázatban "elsődleges végpont URL-ként" nevezzük.
 
 Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előfordulhat, hogy az Azure-fájlmegosztást globálisan redundáns (GRS) Storage-fiókban adta meg. Ha ez az eset áll fenn, akkor az Azure-fájlmegosztás egy tartós regionális kimaradás esetén átveszi a feladatokat a párosított régióba. Azure File Sync ugyanazokat a regionális párosításokat használja, mint a Storage. Így ha GRS-fiókokat használ, engedélyeznie kell a további URL-címeket, hogy a kiszolgáló a párosított régióval beszéljen a Azure File Sync. Az alábbi táblázat ezt a "párosított régiót" hívja meg. Ezen kívül egy Traffic Manager-profil URL-címét is engedélyezni kell. Ez biztosítja, hogy a hálózati forgalom zökkenőmentesen átirányítható legyen a párosított régióba feladatátvétel esetén, és az alábbi táblázatban "felderítési URL-cím" néven jelenik meg.
 
 | Felhő  | Régió | Elsődleges végpont URL-címe | Párosított régió | Felderítési URL-cím |
 |--------|--------|----------------------|---------------|---------------|
-| Nyilvános |Kelet-Ausztrália | https:\//Kailani-Aue.One.microsoft.com | Délkelet-Ausztrália | https:\//TM-Kailani-Aue.One.microsoft.com |
-| Nyilvános |Délkelet-Ausztrália | https:\//Kailani-AUS.One.microsoft.com | Kelet-Ausztrália | https:\//TM-Kailani-AUS.One.microsoft.com |
-| Nyilvános | Dél-Brazília | https:\//brazilsouth01.AFS.Azure.net | USA déli középső régiója | https:\//TM-brazilsouth01.AFS.Azure.net |
-| Nyilvános | Közép-Kanada | https:\//Kailani-CAC.One.microsoft.com | Kelet-Kanada | https:\//TM-Kailani-CAC.One.microsoft.com |
-| Nyilvános | Kelet-Kanada | https:\//Kailani-CAE.One.microsoft.com | Közép-Kanada | https:\//TM-Kailani.CAE.One.microsoft.com |
-| Nyilvános | Közép-India | https:\//Kailani-cin.One.microsoft.com | Dél-India | https:\//TM-Kailani-cin.One.microsoft.com |
-| Nyilvános | USA középső régiója | https:\//Kailani-cus.One.microsoft.com | USA 2. keleti régiója | https:\//TM-Kailani-cus.One.microsoft.com |
-| Nyilvános | Kelet-Ázsia | https:\//kailani11.One.microsoft.com | Délkelet-Ázsia | https:\//TM-kailani11.One.microsoft.com |
-| Nyilvános | USA keleti régiója | https:\//kailani1.One.microsoft.com | USA nyugati régiója | https:\//TM-kailani1.One.microsoft.com |
-| Nyilvános | USA 2. keleti régiója | https:\//Kailani-ESS.One.microsoft.com | USA középső régiója | https:\//TM-Kailani-ESS.One.microsoft.com |
-| Nyilvános | Kelet-Japán | https:\//japaneast01.AFS.Azure.net | Nyugat-Japán | https:\//TM-japaneast01.AFS.Azure.net |
-| Nyilvános | Nyugat-Japán | https:\//japanwest01.AFS.Azure.net | Kelet-Japán | https:\//TM-japanwest01.AFS.Azure.net |
-| Nyilvános | Dél-Korea középső régiója | https:\//koreacentral01.AFS.Azure.net/ | Dél-Korea déli régiója | https:\//TM-koreacentral01.AFS.Azure.net/ |
-| Nyilvános | Dél-Korea déli régiója | https:\//koreasouth01.AFS.Azure.net/ | Dél-Korea középső régiója | https:\//TM-koreasouth01.AFS.Azure.net/ |
-| Nyilvános | USA északi középső régiója | https:\//northcentralus01.AFS.Azure.net | USA déli középső régiója | https:\//TM-northcentralus01.AFS.Azure.net |
-| Nyilvános | Észak-Európa | https:\//kailani7.One.microsoft.com | Nyugat-Európa | https:\//TM-kailani7.One.microsoft.com |
-| Nyilvános | USA déli középső régiója | https:\//southcentralus01.AFS.Azure.net | USA északi középső régiója | https:\//TM-southcentralus01.AFS.Azure.net |
-| Nyilvános | Dél-India | https:\//Kailani-Sin.One.microsoft.com | Közép-India | https:\//TM-Kailani-Sin.One.microsoft.com |
-| Nyilvános | Délkelet-Ázsia | https:\//kailani10.One.microsoft.com | Kelet-Ázsia | https:\//TM-kailani10.One.microsoft.com |
-| Nyilvános | Az Egyesült Királyság déli régiója | https:\//Kailani-UKs.One.microsoft.com | Az Egyesült Királyság nyugati régiója | https:\//TM-Kailani-UKs.One.microsoft.com |
-| Nyilvános | Az Egyesült Királyság nyugati régiója | https:\//Kailani-Ukw.One.microsoft.com | Az Egyesült Királyság déli régiója | https:\//TM-Kailani-Ukw.One.microsoft.com |
-| Nyilvános | USA nyugati középső régiója | https:\//westcentralus01.AFS.Azure.net | USA nyugati régiója, 2. | https:\//TM-westcentralus01.AFS.Azure.net |
-| Nyilvános | Nyugat-Európa | https:\//kailani6.One.microsoft.com | Észak-Európa | https:\//TM-kailani6.One.microsoft.com |
-| Nyilvános | USA nyugati régiója | https:\//Kailani.One.microsoft.com | USA keleti régiója | https:\//TM-Kailani.One.microsoft.com |
-| Nyilvános | USA nyugati régiója, 2. | https:\//westus201.AFS.Azure.net | USA nyugati középső régiója | https:\//TM-westus201.AFS.Azure.net |
-| Government | USA-beli államigazgatás – Arizona | https:\//usgovarizona01.AFS.Azure.us | USA-beli államigazgatás – Texas | https:\//TM-usgovarizona01.AFS.Azure.us |
-| Government | USA-beli államigazgatás – Texas | https:\//usgovtexas01.AFS.Azure.us | USA-beli államigazgatás – Arizona | https:\//TM-usgovtexas01.AFS.Azure.us |
+| Nyilvános |Kelet-Ausztrália | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.microsoft.com | Délkelet-Ausztrália | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.microsoft.com |
+| Nyilvános |Délkelet-Ausztrália | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-AUS.One.microsoft.com | Kelet-Ausztrália | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-AUS.One.microsoft.com |
+| Nyilvános | Dél-Brazília | https: \/ /brazilsouth01.AFS.Azure.net | USA déli középső régiója | https: \/ /TM-brazilsouth01.AFS.Azure.net |
+| Nyilvános | Közép-Kanada | https: \/ /canadacentral01.AFS.Azure.net<br>https: \/ /Kailani-CAC.One.microsoft.com | Kelet-Kanada | https: \/ /TM-canadacentral01.AFS.Azure.net<br>https: \/ /TM-Kailani-CAC.One.microsoft.com |
+| Nyilvános | Kelet-Kanada | https: \/ /canadaeast01.AFS.Azure.net<br>https: \/ /Kailani-CAE.One.microsoft.com | Közép-Kanada | https: \/ /TM-canadaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani.CAE.One.microsoft.com |
+| Nyilvános | Közép-India | https: \/ /centralindia01.AFS.Azure.net<br>https: \/ /Kailani-cin.One.microsoft.com | Dél-India | https: \/ /TM-centralindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-cin.One.microsoft.com |
+| Nyilvános | USA középső régiója | https: \/ /centralus01.AFS.Azure.net<br>https: \/ /Kailani-cus.One.microsoft.com | USA 2. keleti régiója | https: \/ /TM-centralus01.AFS.Azure.net<br>https: \/ /TM-Kailani-cus.One.microsoft.com |
+| Nyilvános | Kelet-Ázsia | https: \/ /eastasia01.AFS.Azure.net<br>https: \/ /kailani11.One.microsoft.com | Délkelet-Ázsia | https: \/ /TM-eastasia01.AFS.Azure.net<br>https: \/ /TM-kailani11.One.microsoft.com |
+| Nyilvános | USA keleti régiója | https: \/ /eastus01.AFS.Azure.net<br>https: \/ /kailani1.One.microsoft.com | USA nyugati régiója | https: \/ /TM-eastus01.AFS.Azure.net<br>https: \/ /TM-kailani1.One.microsoft.com |
+| Nyilvános | USA 2. keleti régiója | https: \/ /eastus201.AFS.Azure.net<br>https: \/ /Kailani-ESS.One.microsoft.com | USA középső régiója | https: \/ /TM-eastus201.AFS.Azure.net<br>https: \/ /TM-Kailani-ESS.One.microsoft.com |
+| Nyilvános | Kelet-Japán | https: \/ /japaneast01.AFS.Azure.net | Nyugat-Japán | https: \/ /TM-japaneast01.AFS.Azure.net |
+| Nyilvános | Nyugat-Japán | https: \/ /japanwest01.AFS.Azure.net | Kelet-Japán | https: \/ /TM-japanwest01.AFS.Azure.net |
+| Nyilvános | Dél-Korea középső régiója | https: \/ /koreacentral01.AFS.Azure.net/ | Dél-Korea déli régiója | https: \/ /TM-koreacentral01.AFS.Azure.net/ |
+| Nyilvános | Dél-Korea déli régiója | https: \/ /koreasouth01.AFS.Azure.net/ | Dél-Korea középső régiója | https: \/ /TM-koreasouth01.AFS.Azure.net/ |
+| Nyilvános | USA északi középső régiója | https: \/ /northcentralus01.AFS.Azure.net | USA déli középső régiója | https: \/ /TM-northcentralus01.AFS.Azure.net |
+| Nyilvános | Észak-Európa | https: \/ /northeurope01.AFS.Azure.net<br>https: \/ /kailani7.One.microsoft.com | Nyugat-Európa | https: \/ /TM-northeurope01.AFS.Azure.net<br>https: \/ /TM-kailani7.One.microsoft.com |
+| Nyilvános | USA déli középső régiója | https: \/ /southcentralus01.AFS.Azure.net | USA északi középső régiója | https: \/ /TM-southcentralus01.AFS.Azure.net |
+| Nyilvános | Dél-India | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-Sin.One.microsoft.com | Közép-India | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-Sin.One.microsoft.com |
+| Nyilvános | Délkelet-Ázsia | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.microsoft.com | Kelet-Ázsia | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.microsoft.com |
+| Nyilvános | Az Egyesült Királyság déli régiója | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKs.One.microsoft.com | Az Egyesült Királyság nyugati régiója | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKs.One.microsoft.com |
+| Nyilvános | Az Egyesült Királyság nyugati régiója | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-Ukw.One.microsoft.com | Az Egyesült Királyság déli régiója | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-Ukw.One.microsoft.com |
+| Nyilvános | USA nyugati középső régiója | https: \/ /westcentralus01.AFS.Azure.net | USA nyugati régiója, 2. | https: \/ /TM-westcentralus01.AFS.Azure.net |
+| Nyilvános | Nyugat-Európa | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.microsoft.com | Észak-Európa | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.microsoft.com |
+| Nyilvános | USA nyugati régiója | https: \/ /westus01.AFS.Azure.net<br>https: \/ /Kailani.One.microsoft.com | USA keleti régiója | https: \/ /TM-westus01.AFS.Azure.net<br>https: \/ /TM-Kailani.One.microsoft.com |
+| Nyilvános | USA nyugati régiója, 2. | https: \/ /westus201.AFS.Azure.net | USA nyugati középső régiója | https: \/ /TM-westus201.AFS.Azure.net |
+| Államigazgatás | USA-beli államigazgatás – Arizona | https: \/ /usgovarizona01.AFS.Azure.us | USA-beli államigazgatás – Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
+| Államigazgatás | USA-beli államigazgatás – Texas | https: \/ /usgovtexas01.AFS.Azure.us | USA-beli államigazgatás – Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
 
 - Ha a helyileg redundáns (LRS) vagy a Zone redundáns (ZRS) Storage-fiókokat használja, csak engedélyeznie kell az "elsődleges végpont URL-címe" alatt felsorolt URL-címet.
 
 - Ha globálisan redundáns (GRS) tárolási fiókokat használ, engedélyezze a három URL-címet.
 
-**Példa:** Üzembe helyezi a Storage Sync szolgáltatást `"West US"` a-ben, és regisztrálja azt a kiszolgálóval. Az URL-címek, amelyek lehetővé teszik, hogy a kiszolgáló kommunikáljon a következő esetekben:
+**Példa:** Üzembe helyezi a Storage Sync szolgáltatást a-ben, `"West US"` és regisztrálja azt a kiszolgálóval. Az URL-címek, amelyek lehetővé teszik, hogy a kiszolgáló kommunikáljon a következő esetekben:
 
-> - https:\//Kailani.One.microsoft.com (elsődleges VÉGPONT: USA nyugati régiója)
-> - https:\//kailani1.One.microsoft.com (párosított feladatátvételi régió: USA keleti régiója)
-> - https:\//TM-Kailani.One.microsoft.com (az elsődleges régió felderítési URL-címe)
+> - https: \/ /westus01.AFS.Azure.net (elsődleges végpont: USA nyugati régiója)
+> - https: \/ /eastus01.AFS.Azure.net (párosított feladatátvételi régió: USA keleti régiója)
+> - https: \/ /TM-westus01.AFS.Azure.net (az elsődleges régió felderítési URL-címe)
 
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP-címek engedélyezési listájának engedélyezése
-Azure File Sync támogatja a szolgáltatás- [címkék](../../virtual-network/service-tags-overview.md)használatát, amely az adott Azure-szolgáltatáshoz tartozó IP-cím előtagjainak egy csoportját jelöli. A szolgáltatás-címkék használatával olyan tűzfalszabályok hozhatók létre, amelyek lehetővé teszik a Azure File Sync szolgáltatással folytatott kommunikációt. Azure File Sync a szolgáltatás címkéje `StorageSyncService`.
+Azure File Sync támogatja a szolgáltatás- [címkék](../../virtual-network/service-tags-overview.md)használatát, amely az adott Azure-szolgáltatáshoz tartozó IP-cím előtagjainak egy csoportját jelöli. A szolgáltatás-címkék használatával olyan tűzfalszabályok hozhatók létre, amelyek lehetővé teszik a Azure File Sync szolgáltatással folytatott kommunikációt. Azure File Sync a szolgáltatás címkéje `StorageSyncService` .
 
 Ha az Azure-ban Azure File Synct használ, a hálózati biztonsági csoportban található szolgáltatás neve közvetlenül a forgalom engedélyezéséhez használható. Ha többet szeretne megtudni Ennek módjáról, tekintse meg a [hálózati biztonsági csoportok](../../virtual-network/security-overview.md)című témakört.
 
@@ -155,7 +156,7 @@ Ha helyszíni Azure File Sync használ, a Service tag API-val adott IP-címtarto
 
 - A szolgáltatási címkéket támogató összes Azure-szolgáltatáshoz tartozó IP-címtartományok aktuális listája a Microsoft letöltőközpontban, egy JSON-dokumentum formájában, hetente van közzétéve. Mindegyik Azure-felhő saját JSON-dokumentummal rendelkezik, amely a felhőhöz kapcsolódó IP-címtartományt tartalmazza:
     - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure USA kormánya](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - A Service tag Discovery API (előzetes verzió) lehetővé teszi az aktuális szolgáltatási címkék programozott lekérését. Az előzetes verzióban a Service tag Discovery API a Microsoft letöltőközpontból közzétett JSON-dokumentumokból származó információknál kevésbé naprakész adatokat adhat vissza. Az API felületét az automatizálási beállítások alapján használhatja:
@@ -260,7 +261,7 @@ if ($found) {
 }
 ```
 
-Ezután az IP-címtartományok `$ipAddressRanges` használatával frissítheti a tűzfalat. A tűzfal vagy a hálózati készülék webhelyének frissítésével kapcsolatos információkért olvassa el a tűzfal frissítését ismertető témakört.
+Ezután az IP-címtartományok használatával `$ipAddressRanges` frissítheti a tűzfalat. A tűzfal vagy a hálózati készülék webhelyének frissítésével kapcsolatos információkért olvassa el a tűzfal frissítését ismertető témakört.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Hálózati kapcsolat tesztelése a szolgáltatási végpontokhoz
 Ha egy kiszolgáló regisztrálva van a Azure File Sync szolgáltatásban, a test-StorageSyncNetworkConnectivity parancsmag és a ServerRegistration. exe segítségével tesztelheti a kiszolgálón található összes végponttal (URL-címmel) folytatott kommunikációt. Ez a parancsmag segít elhárítani a hiányos kommunikációt, ami megakadályozza, hogy a kiszolgáló teljes mértékben működjön a Azure File Sync, és használható a proxy és a tűzfal konfigurációjának finomhangolására.
@@ -276,7 +277,7 @@ A dokumentum korábbi listája tartalmazza azokat az URL-címeket, Azure File Sy
 
 A tartomány korlátozására vonatkozó tűzfalszabályok beállítása lehet egy mérték a biztonság növelése érdekében. Ha ezeket a tűzfal-konfigurációkat használja, az egyiknek figyelembe kell vennie, hogy az URL-címek fel lesznek véve, és akár idővel is változhatnak. Ebben a cikkben rendszeresen tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

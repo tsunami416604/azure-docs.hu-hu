@@ -72,7 +72,7 @@ A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem ig
 1. Válassza a **Done** (Kész) lehetőséget.
 1. **Mentse** a szabályzat módosításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

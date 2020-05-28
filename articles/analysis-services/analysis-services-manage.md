@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572794"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015502"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
 Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, hogy bizonyos adminisztrációs és felügyeleti feladatok elvégzéséhez azonnal el kell végeznie az utat. Például futtasson feldolgozást az adatfrissítésre, szabályozhatja, hogy ki férhet hozzá a modellekhez a kiszolgálón, vagy figyelje a kiszolgáló állapotát. Egyes felügyeleti feladatok csak Azure Portalban hajthatók végre, másokat SQL Server Management Studio (SSMS), és néhány feladatot bármelyikben elvégezhet.
@@ -51,7 +51,7 @@ Győződjön meg arról, hogy a legújabb funkciókat és a legsimább felhaszn�
 
     **Active Directory a jelszó-hitelesítés** szervezeti fiók használatára. Például egy tartományhoz nem csatlakoztatott számítógépről való csatlakozáskor.
 
-    **Active Directory-Universal, MFA-támogatással** , [nem interaktív vagy többtényezős hitelesítés](../sql-database/sql-database-ssms-mfa-authentication.md)használatára. 
+    **Active Directory-Universal, MFA-támogatással** , [nem interaktív vagy többtényezős hitelesítés](../azure-sql/database/authentication-mfa-ssms-overview.md)használatára. 
    
     ![Csatlakozás az SSMS-ben](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

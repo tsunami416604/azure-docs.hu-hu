@@ -2,13 +2,13 @@
 title: Telemetria folyamatos exportálása a Application Insightsból | Microsoft Docs
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744865"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017535"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -53,7 +53,8 @@ A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkci�
 
 4. Hozzon létre vagy válasszon ki egy tárolót a tárolóban.
 
-Miután létrehozta az exportálást, elindul. Csak az Exportálás létrehozása után megjelenő adatkérések érkeznek meg.
+> [!NOTE]
+> Miután létrehozta az exportálást, az újonnan betöltött adatforgalom az Azure Blob Storage-ba kerül. A folyamatos Exportálás csak a folyamatos Exportálás engedélyezése után létrehozott/beolvasott új telemetria továbbítja. A folyamatos Exportálás engedélyezése előtt létező összes adattal nem exportálja a rendszer, és a korábban létrehozott adatexportálást nem lehet visszamenőlegesen exportálni a folyamatos exportálás használatával.
 
 A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 

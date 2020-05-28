@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: Metaadatok szerkesztése
       href: edit-metadata.md
+    - name: Adatok csoportosítása intervallumokba
+      href: group-data-into-bins.md
     - name: Adatok összekapcsolása
       href: join-data.md
     - name: Adatok normalizálása
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: Szövegelemzés
   items:
+    - name: Szó konvertálása vektorrá
+      href: convert-word-to-vector.md
     - name: N-Gram-funkciók kinyerése szövegből
       href: extract-n-gram-features-from-text.md
     - name: Funkciókivonatolás

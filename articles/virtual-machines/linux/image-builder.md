@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 9774d7765906d07c974ca19ce6a0f4807898c3a0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: b0df0fc43fcd125c6fc96fd2abbe3857d0d23afa
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928329"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141976"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Linux-rendszerkép létrehozása és terjesztése megosztott képgyűjteménybe 
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja az Azure rendszerkép-kész�
 
 A rendszerkép konfigurálásához egy minta. JSON sablont fogunk használni. Az általunk használt. JSON fájl a következő: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](image-builder-json.md#distribute-sharedimage) használja a sablon `distribute` szakaszának értékeként.
+A rendszerkép megosztott képtárba való terjesztéséhez a sablon a [sharedImage](image-builder-json.md#distribute-sharedimage) használja a `distribute` sablon szakaszának értékeként.
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
@@ -80,7 +80,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti `az account show | grep id`el:.
+Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következővel érheti el: `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -97,14 +97,14 @@ A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
-idenityName=aibBuiUserId$(date +'%s')
-az identity create -g $sigResourceGroup -n $idenityName
+identityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName | grep "clientId" | cut -c16- | tr -d '",')
 
 # get the user identity URI, needed for the template
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
@@ -122,7 +122,7 @@ az role definition create --role-definition ./aibRoleImageCreation.json
 # grant role definition to the user assigned identity
 az role assignment create \
     --assignee $imgBuilderCliId \
-    --role $imageRoleDefName \
+    --role "$imageRoleDefName" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
 
@@ -227,7 +227,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 *******************************************************
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha most újra testre szeretné szabni a rendszerkép verzióját, hogy ugyanazon rendszerkép új verzióját hozza létre, ugorja át a következő lépéseket, és folytassa az [Azure rendszerkép-készítő használatával egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md).
 
@@ -257,7 +257,7 @@ az role definition delete --name "$imageRoleDefName"
 az identity delete --ids $imgBuilderId
 ```
 
-Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely `0.`mindig a következővel kezdődik, majd törli a rendszerkép verzióját:
+Szerezze be a rendszerkép-szerkesztő által létrehozott rendszerkép verzióját, amely mindig a következővel kezdődik `0.` , majd törli a rendszerkép verzióját:
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -296,6 +296,6 @@ Törölje az erőforráscsoportot.
 az group delete -n $sigResourceGroup -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.

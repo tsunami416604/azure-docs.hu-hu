@@ -102,6 +102,6 @@ A releváns, a csatlakoztatott, a pontos és a megfelelő adatokat tartalmazó �
 
 Tekintse meg a további négy videót az *adatelemzésben* a Microsoft Azure Machine learning Studio (klasszikus) kezdőknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
 * [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

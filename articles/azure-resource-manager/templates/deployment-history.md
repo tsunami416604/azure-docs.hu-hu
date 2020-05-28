@@ -3,17 +3,19 @@ title: Üzembe helyezési előzmények
 description: Ismerteti, hogyan lehet megtekinteni Azure Resource Manager telepítési műveleteket a portál, a PowerShell, az Azure CLI és a REST API használatával.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816284"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117834"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Az üzembe helyezési előzmények megtekintése Azure Resource Manager
 
-A Azure Resource Manager segítségével megtekintheti az üzembe helyezési előzményeket, és megvizsgálhatja a korábbi üzemelő példányok adott műveleteit. Megtekintheti a telepített erőforrásokat, és információkat kaphat a hibákról.
+Azure Resource Manager lehetővé teszi az üzembe helyezési előzmények megtekintését. Megvizsgálhatja a korábbi üzemelő példányok adott műveleteit, és megtekintheti, hogy mely erőforrások lettek telepítve. Ez az előzmény a hibákkal kapcsolatos információkat tartalmaz.
+
+Egy erőforráscsoport üzembe helyezési előzményei a 800-es üzemelő példányokra korlátozódnak. A korlát közelében az üzembe helyezések automatikusan törlődnek az előzményekből. További információ: [automatikus törlések az üzembe helyezési előzményekből](deployment-history-deletions.md).
 
 Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd: [gyakori hibák megoldása az erőforrások Azure-ba való telepítésekor a Azure Resource Manager használatával](common-deployment-errors.md).
 
@@ -117,7 +119,7 @@ Az egyes központi telepítések több műveletet is tartalmazhatnak. A központ
 
 1. A központi telepítés összegzése lapon válassza a **művelet részletei**lehetőséget.
 
-    ![Telepítési műveletek kiválasztása](./media/deployment-history/get-operation-details.png)
+    ![Művelet részleteinek kiválasztása](./media/deployment-history/get-operation-details.png)
 
 1. Ekkor megjelenik a központi telepítés adott lépésének részletei. Hiba esetén a részletek között szerepel a hibaüzenet.
 
@@ -210,6 +212,6 @@ A válasz egy hibaüzenetet tartalmaz.
 ## <a name="next-steps"></a>További lépések
 
 * Az egyes telepítési hibák elhárításával kapcsolatos segítségért lásd: [gyakori hibák megoldása az erőforrások Azure-ba való telepítésekor a Azure Resource Manager használatával](common-deployment-errors.md).
-* Ha további információt szeretne arról, hogyan használhatja a tevékenység naplóit más típusú műveletek figyelésére, tekintse meg a [Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../management/view-activity-logs.md)című témakört.
+* Ha többet szeretne megtudni arról, hogy az üzembe helyezések hogyan kezelhetők az előzményekben, tekintse meg az [automatikus törlés a telepítési előzményekből](deployment-history-deletions.md)című témakört.
 * Az üzembe helyezés előtti ellenőrzéshez tekintse meg az [erőforráscsoport üzembe helyezése Azure Resource Manager sablonnal](deploy-powershell.md)című témakört.
 

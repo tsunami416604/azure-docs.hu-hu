@@ -1079,6 +1079,8 @@
       displayName: ARM
 - name: További források
   items:
+    - name: Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: ARM-sablonok létrehozása
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/

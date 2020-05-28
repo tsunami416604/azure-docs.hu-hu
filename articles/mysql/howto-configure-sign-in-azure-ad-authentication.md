@@ -6,16 +6,19 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652255"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140888"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Active Directory hozzáférését Azure Database for MySQL és hogyan csatlakozhat Azure AD-jogkivonat használatával.
+
+> [!IMPORTANT]
+> Azure Active Directory hitelesítés csak a MySQL 5,7-es és újabb verzióiban érhető el.
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda felhasználó beállítása
 
@@ -195,10 +198,10 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Perl
   * DBD:: MySQL: támogatott
   * NET:: MySQL: nem támogatott
-* Go
+* Indítás
   * Go-SQL-illesztőprogram: támogatott, Hozzáadás `?tls=true&allowCleartextPasswords=true` a kapcsolódási karakterlánchoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
 

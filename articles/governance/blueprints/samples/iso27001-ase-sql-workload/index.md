@@ -3,12 +3,12 @@ title: Az ISO 27001 ASE/SQL-számításifeladat tervmintája – Áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 834096ec529673bae1728877310ba7153ae94cb3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ab6a1b7e5569be39cc3b2934ec9891d5aa5712ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460579"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012993"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
@@ -33,7 +33,7 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabvá
 - Egyetlen alhálózatot tartalmazó virtuális hálózat, amely egy már meglévő [megosztott szolgáltatási](../iso27001-shared/index.md)környezethez van társítva, és arra kényszeríti a teljes adatforgalmat, hogy a [megosztott szolgáltatások](../iso27001-shared/index.md) tűzfalán haladjon át. A virtuális hálózaton a következő erőforrások találhatók:
   - Egy vagy több webalkalmazás, webes API vagy funkció üzemeltetésére használható [Azure App Service Environment-környezet](../../../../app-service/environment/intro.md)
   - Az [Azure Key Vault](../../../../key-vault/general/overview.md) VNet-szolgáltatásvégpontot használó példánya, amely a számítási feladat környezetében futó alkalmazások titkos kulcsainak tárolására szolgál
-  - Az [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) VNet-szolgáltatásvégpontot használó kiszolgálópéldánya, amely a számítási feladat környezetében futó alkalmazásokhoz használt adatbázisok üzemeltetésére szolgál
+  - Az [Azure SQL Database](../../../../azure-sql/database/sql-database-paas-overview.md) VNet-szolgáltatásvégpontot használó kiszolgálópéldánya, amely a számítási feladat környezetében futó alkalmazásokhoz használt adatbázisok üzemeltetésére szolgál
 
 ## <a name="next-steps"></a>További lépések
 

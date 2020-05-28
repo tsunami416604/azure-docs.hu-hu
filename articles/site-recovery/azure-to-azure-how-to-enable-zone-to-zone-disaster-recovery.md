@@ -121,7 +121,7 @@ A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operá
 **5. a forrás-és a célként megadott erőforráscsoportok is megegyeznek?**
 Nem, a feladatátvételt egy másik erőforráscsoporthoz kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A vész-helyreállítási részletezés, feladatátvétel, ismételt védelem és feladat-visszavétel futtatásához követendő lépések megegyeznek az Azure-beli vész-helyreállítási forgatókönyv lépéseivel.
 

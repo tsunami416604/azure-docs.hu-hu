@@ -40,7 +40,7 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 * TCP a 443-es porton – >`https://:443`
 * TCP a 9418-es porton – >`git://:9418`
 
-| Végpont (DNS)                                                                                               | Leírás                                                                                                                 |
+| Végpont (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Ahhoz szükséges, hogy az ügynök csatlakozhasson az Azure-hoz, és regisztrálja a fürtöt                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Adatsík végpontja az ügynök számára az állapot leküldéséhez és a konfigurációs adatok beolvasásához                                      |
@@ -216,7 +216,7 @@ A Azure Portal törli az `Microsoft.Kubernetes/connectedcluster` erőforrást az
 
 Ha el szeretné távolítani a fürtben lévő ügynököket, a vagy a-t kell futtatnia `az connectedk8s delete` `helm uninstall azurearcfork8s` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [GitOps használata csatlakoztatott fürtben](./use-gitops-connected-cluster.md)
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

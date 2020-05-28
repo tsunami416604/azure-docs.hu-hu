@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: Tároló törlése
               href: delete-vault.md
-    - name: Site Recovery-támogatás közelségi csoportokhoz
+    - name: Site Recovery közelségi csoportokhoz
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: Alkalmazások vészhelyreállítása
       items:

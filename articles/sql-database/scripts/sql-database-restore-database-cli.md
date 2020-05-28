@@ -1,6 +1,6 @@
 ---
-title: CLI-példa – biztonsági mentés visszaállítása – Azure SQL Database
-description: Azure CLI-példa parancsfájl egy Azure SQL-adatbázis egy korábbi időpontra történő visszaállításához az automatikus biztonsági mentésből
+title: 'Azure CLI: biztonsági másolat visszaállítása'
+description: Az Azure CLI példa parancsfájlt Azure SQL Database egy adatbázis visszaállítására egy korábbi időpontra az automatikus biztonsági mentésből.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774278"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022624"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Azure SQL-adatbázis visszaállítása egy korábbi időpontra a CLI használatával
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Egyetlen adatbázis visszaállítása a CLI használatával Azure SQL Database egy korábbi időpontra
 
-Ez az Azure CLI-példa egy Azure SQL Database-adatbázist állít vissza egy adott időpontra.  
+Ez az Azure CLI-példa egy adott időpontra Azure SQL Database egyetlen adatbázist állít vissza.  
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
@@ -60,4 +60,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

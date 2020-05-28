@@ -90,7 +90,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 
   Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a **Közzététel** és az **összes közzététel** gombhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

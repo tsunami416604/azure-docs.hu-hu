@@ -127,5 +127,5 @@ A [Microsoft Q&egy kérdés oldal a Azure Logic apps](https://docs.microsoft.com
 Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek elküldésével [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket Logic apps API-k [listájában](apis-list.md).

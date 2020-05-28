@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671875"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993854"
 ---
 # <a name="conditional-access-session"></a>Feltételes hozzáférés: munkamenet
 
@@ -48,7 +48,7 @@ Feltételes hozzáférést biztosító alkalmazás-vezérlő lehetővé teszi a 
 
 További információkért tekintse meg a [Kiemelt alkalmazások feltételes hozzáférést biztosító alkalmazás-vezérlő üzembe helyezése](/cloud-app-security/proxy-deployment-aad)című cikket.
 
-## <a name="sign-in-frequency-preview"></a>Bejelentkezési gyakoriság (előzetes verzió)
+## <a name="sign-in-frequency"></a>Bejelentkezési gyakoriság
 
 A bejelentkezési gyakoriság határozza meg azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, amikor egy erőforráshoz próbál hozzáférni.
 
@@ -66,13 +66,13 @@ A bejelentkezési gyakoriság beállítása olyan alkalmazásokkal működik, am
 
 További információ: a [hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel](howto-conditional-access-session-lifetime.md#user-sign-in-frequency).
 
-## <a name="persistent-browser-session-preview"></a>Állandó böngésző-munkamenet (előzetes verzió)
+## <a name="persistent-browser-session"></a>Állandó böngésző-munkamenet
 
 Az állandó böngésző-munkamenet lehetővé teszi a felhasználók számára, hogy a böngészőablak bezárása és újbóli megnyitása után is bejelentkezve maradjanak.
 
 További információ: a [hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

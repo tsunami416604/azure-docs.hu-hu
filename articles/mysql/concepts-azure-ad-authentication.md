@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635290"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142078"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -74,6 +74,7 @@ Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat 
 
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
+- Azure Active Directory hitelesítés csak a MySQL 5,7-es és újabb verzióiban érhető el.
 - A Azure Database for MySQL kiszolgálókhoz egyszerre csak egy Azure AD-rendszergazda konfigurálható.
 - Először csak a MySQL-hez készült Azure AD-rendszergazda csatlakozhat a Azure Database for MySQL egy Azure Active Directory-fiókkal. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Ha töröl egy felhasználót az Azure AD-ből, a felhasználó nem fogja tudni hitelesíteni az Azure AD-t, így az adott felhasználó hozzáférési jogkivonata már nem lesz lehetséges. Ebben az esetben, bár a megfelelő felhasználó továbbra is az adatbázisban marad, nem lehet csatlakozni a kiszolgálóhoz az adott felhasználóval.
@@ -82,7 +83,7 @@ Miután hitelesítette a Active Directory, lekérheti a tokent. Ez a jogkivonat 
 - Ha az Azure AD-rendszergazda el lett távolítva a kiszolgálóról, a kiszolgáló már nem lesz társítva az Azure AD-bérlőhöz, ezért az összes Azure AD-bejelentkezés le lesz tiltva a kiszolgálón. Ha új Azure AD-rendszergazdát ad hozzá ugyanahhoz a bérlőhöz, az Azure AD-bejelentkezések ismét engedélyezve lesznek.
 - A Azure Database for MySQL a felhasználó egyedi Azure AD-beli felhasználói AZONOSÍTÓjának használatával egyezteti a hozzáférési jogkivonatokat a Azure Database for MySQL felhasználó számára, a Felhasználónév használata helyett. Ez azt jelenti, hogy ha egy Azure AD-felhasználót törölnek az Azure AD-ben, és egy azonos nevű új felhasználó lett létrehozva, Azure Database for MySQL úgy véli, hogy egy másik felhasználó. Ezért ha egy felhasználó törlődik az Azure AD-ből, és egy új, azonos nevű felhasználó lett hozzáadva, az új felhasználó nem fog tudni csatlakozni a meglévő felhasználóhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan hozhat létre és tölthet fel Azure AD-t, majd hogyan konfigurálhatja az Azure AD-t a Azure Database for MySQLsal, tekintse meg az Azure ad- [vel való konfigurálást és bejelentkezést Azure Database for MySQL](howto-configure-sign-in-azure-ad-authentication.md)
 - A bejelentkezések és az adatbázis-felhasználók Azure Database for MySQL való áttekintését lásd: [felhasználók létrehozása a Azure Database for MySQLban](howto-create-users.md).

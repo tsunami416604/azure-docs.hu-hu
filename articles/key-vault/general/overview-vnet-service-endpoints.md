@@ -84,7 +84,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Key Vault biztonságossá tétele](secure-your-key-vault.md))
 * [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](network-security.md)

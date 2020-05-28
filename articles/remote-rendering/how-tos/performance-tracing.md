@@ -5,22 +5,22 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681310"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021160"
 ---
 # <a name="create-client-side-performance-traces"></a>Ügyféloldali teljesítménykövetés létrehozása
 
 Számos oka lehet annak, hogy az Azure-alapú távoli renderelés teljesítménye miért nem megfelelő a kívánt módon. A felhő-kiszolgáló tiszta renderelési teljesítménye mellett különösen a hálózati kapcsolatok minősége jelentős hatással van a felhasználói élményre. A kiszolgáló teljesítményének [megkereséséhez](../overview/features/performance-queries.md)tekintse meg a kiszolgálóoldali teljesítménnyel kapcsolatos lekérdezések című fejezetet.
 
-Ez a fejezet arra összpontosít, hogy miként azonosíthatók a potenciális ügyféloldali szűk keresztmetszetek a *teljesítmény-nyomkövetéseken*keresztül.
+Ez a fejezet a lehetséges ügyféloldali szűk keresztmetszetek azonosítására összpontosít *:::no-loc text="performance traces":::* .
 
 ## <a name="getting-started"></a>Első lépések
 
-Ha még nem ismeri a Windows teljesítmény-nyomkövetési funkcióját, ez a szakasz ismerteti a legfontosabb feltételeket és alkalmazásokat, amelyekkel elsajátíthatja az első lépéseket.
+Ha még nem ismeri a Windows :::no-loc text="performance tracing"::: funkcionalitását, ez a szakasz ismerteti a legfontosabb feltételeket és alkalmazásokat, amelyekkel elsajátíthatja az első lépéseket.
 
 ### <a name="installation"></a>Telepítés
 
@@ -37,11 +37,11 @@ A teljesítmény-nyomkövetéssel kapcsolatos információk keresésekor a rends
 
 A **ETW** az [ **E**- **T** **W**indows](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Ez egyszerűen a Windows rendszerbe épített, hatékony kernel szintű nyomkövetési létesítmény átfogó neve. Ez az *esemény* -nyomkövetés, mivel a ETW támogató alkalmazások olyan naplózási műveletekhez bocsátanak ki eseményeket, amelyek segíthetnek a teljesítménnyel kapcsolatos problémák nyomon követésében. Alapértelmezés szerint az operációs rendszer már elküldi az eseményeket olyan dolgokhoz, mint a lemez-hozzáférés, a feladathoz tartozó kapcsolók és az ilyen. Az olyan alkalmazások, mint az ARR, egyéni eseményeket bocsátanak ki, például az eldobott kereteket, a hálózati késést stb.
 
-Az **ETL** az **E**Vent **T**Race **L**ogging áll. Ez egyszerűen azt jelenti, hogy egy nyomkövetést gyűjtöttek (naplózott), ezért általában a nyomkövetési adatokat tároló fájlok fájlkiterjesztésként használatosak. Így ha nyomkövetést végez, általában egy \*. etl-fájllal fog rendelkezni.
+Az **ETL** az **E**Vent **T**Race **L**ogging áll. Ez egyszerűen azt jelenti, hogy egy nyomkövetést gyűjtöttek (naplózott), ezért általában a nyomkövetési adatokat tároló fájlok fájlkiterjesztésként használatosak. Így ha nyomkövetést végez, általában egy. etl-fájllal fog rendelkezni \* .
 
-A **WPR** a [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) értékre áll, és az az alkalmazás neve, amely elindítja és leállítja az esemény-Nyomkövetések rögzítését. A WPR egy profilt (\*. wprp) használ, amely a naplózni kívánt eseményeket konfigurálja. Egy `wprp` ilyen fájl az ARR SDK-val van megadva. Ha egy asztali számítógépen nyomkövetést végez, a WPR közvetlenül is elindíthatja. Amikor nyomkövetést végez a HoloLens, általában a webes felületen halad át.
+A **WPR** a [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) értékre áll, és az az alkalmazás neve, amely elindítja és leállítja az esemény-Nyomkövetések rögzítését. A WPR egy profilt ( \* . wprp) használ, amely a naplózni kívánt eseményeket konfigurálja. Egy ilyen `wprp` fájl az ARR SDK-val van megadva. Ha egy asztali számítógépen nyomkövetést végez, a WPR közvetlenül is elindíthatja. Amikor nyomkövetést végez a HoloLens, általában a webes felületen halad át.
 
-A **WPA** a [ **W**indows **P**erformance **A**](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) , a nalyzer pedig az. etl fájlok MEGNYITÁSához \*és a teljesítménnyel kapcsolatos problémák azonosításához használt gui-alkalmazás neve. A WPA lehetővé teszi, hogy különböző feltételek alapján rendezze az adatokat, több módon jelenítse meg az adatokat, részletezve a részleteket, és korrelálja az adatokat.
+A **WPA** a [ **W**indows **P**erformance **A**](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) , a nalyzer pedig az \* . etl fájlok megnyitásához és a teljesítménnyel kapcsolatos problémák azonosításához használt gui-alkalmazás neve. A WPA lehetővé teszi, hogy különböző feltételek alapján rendezze az adatokat, több módon jelenítse meg az adatokat, részletezve a részleteket, és korrelálja az adatokat.
 
 Míg az ETL-nyomkövetés bármely Windows-eszközön (helyi számítógépen, HoloLens, felhőalapú kiszolgálón stb.) hozható létre, a rendszer általában lemezre menti, és az asztali SZÁMÍTÓGÉPeken lévő WPA használatával elemzi őket. Az ETL-fájlokat más fejlesztőknek is elküldhetik, hogy lássák. Ügyeljen arra, hogy a bizalmas adatokat, például a fájlelérési utakat és az IP-címeket az ETL-nyomkövetésekben is rögzítheti. A ETW kétféleképpen is használhatja: Nyomkövetések rögzítésére vagy a Nyomkövetések elemzésére. A rögzítési Nyomkövetések közvetlen továbbítást igényelnek, és minimális beállításra van szükség. A nyomkövetési adatok elemzéséhez szükség van a WPA-eszköz és a vizsgált probléma tisztességes megismerésére. A WPA learning általános tananyaga alább található, valamint útmutatást ad az ARR-specifikus Nyomkövetések értelmezéséhez.
 
@@ -51,7 +51,7 @@ Az ARR teljesítménybeli problémák azonosításához érdemes közvetlenül e
 
 ### <a name="wpr-configuration"></a>WPR-konfiguráció
 
-1. Indítsa el a [Windows Performance Recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) alkalmazást a *Start menüből*.
+1. Indítsa el a alkalmazást [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) a *Start menüből*.
 1. **További lehetőségek** kibontása
 1. Kattintson a **profilok hozzáadása...** elemre.
 1. Válassza ki a *AzureRemoteRenderingNetworkProfiling. wprp*fájlt. Ez a fájl az ARR SDK-ban található az *eszközök/ETLProfiles*területen.
@@ -81,7 +81,7 @@ A nyomkövetés HoloLens való rögzítéséhez indítsa el az eszközt, és adj
 
 1. A bal oldalon navigáljon a *teljesítmény > a teljesítmény nyomon követése*elemre.
 1. **Egyéni profilok** kiválasztása
-1. Kattintson a **Tallózás gombra...**
+1. Kattintson**:::no-loc text="Browse...":::**
 1. Válassza ki a *AzureRemoteRenderingNetworkProfiling. wprp*fájlt. Ez a fájl az ARR SDK-ban található az *eszközök/ETLProfiles*területen.
 1. Kattintson a **Nyomkövetés indítása** elemre
 1. A HoloLens most már rögzíti a nyomkövetést. Győződjön meg arról, hogy aktiválja a vizsgálni kívánt teljesítménnyel kapcsolatos problémákat. Ezután kattintson a **nyomkövetés leállítása**elemre.

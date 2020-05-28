@@ -4,12 +4,12 @@ description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS op
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596504"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141534"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -88,9 +88,6 @@ desIdentity=$(az disk-encryption-set show -n myDiskEncryptionSetName  -g myResou
 
 # Update security policy settings
 az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIdentity --key-permissions wrapkey unwrapkey get
-
-# Assign the reader role
-az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Új AK-fürt létrehozása és az operációsrendszer-lemez titkosítása
@@ -175,7 +172,7 @@ kubectl apply -f byok-azure-disk.yaml
 * A Virtual Machine Scale Setst használó AK-fürtök szükségesek, a virtuális gépek rendelkezésre állási csoportjai nem támogatottak
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az AK-fürtök biztonságával kapcsolatos ajánlott eljárások][best-practices-security] áttekintése
 

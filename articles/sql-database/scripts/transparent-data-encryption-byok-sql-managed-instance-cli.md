@@ -1,5 +1,5 @@
 ---
-title: CLI-példa – a BYOK TDE-Azure SQL Database felügyelt példányának engedélyezése
+title: CLI-példa – a BYOK TDE engedélyezése – Azure SQL felügyelt példány
 description: Megtudhatja, hogyan konfigurálhat egy Azure SQL felügyelt példányt úgy, hogy a PowerShell használatával megkezdje a BYOK transzparens adattitkosítás (TDE) használatát a titkosításhoz.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061736"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019348"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Felügyelt példányon lévő transzparens adattitkosítás kezelése a saját kulcsának használatával Azure Key Vault
 
-Ez az Azure CLI parancsfájl-példa transzparens adattitkosítás (TDE) konfigurációját konfigurálja a felügyelt Azure SQL-példányhoz az ügyfél által felügyelt kulccsal, Azure Key Vault-kulcs használatával. Ezt gyakran nevezik Bring Your Own Key TDE-forgatókönyvnek. Ha többet szeretne megtudni az ügyfél által felügyelt kulccsal TDE, tekintse meg a [TDE bring your own Key az Azure SQL](../transparent-data-encryption-byok-azure-sql.md)-ben című témakört.
+Ez az Azure CLI parancsfájl-példa transzparens adattitkosítás (TDE) konfigurációját konfigurálja a felügyelt Azure SQL-példányhoz az ügyfél által felügyelt kulccsal, Azure Key Vault-kulcs használatával. Ezt gyakran nevezik Bring Your Own Key TDE-forgatókönyvnek. Ha többet szeretne megtudni az ügyfél által felügyelt kulccsal TDE, tekintse meg a [TDE bring your own Key az Azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md)-ben című témakört.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
@@ -28,7 +28,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Egy meglévő felügyelt példány: [Azure SQL Database felügyelt példány létrehozásához használja az Azure CLI-t](sql-database-create-configure-managed-instance-cli.md).
+Egy meglévő felügyelt példány: Azure [SQL felügyelt példány létrehozása az Azure CLI használatával](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -65,4 +65,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

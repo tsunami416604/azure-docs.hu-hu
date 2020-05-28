@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3275a372e496b79da2c9f31258f557389c5b1ee1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209366"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118410"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Prediktív kísérlet létrehozásakor általában egy webszolgáltatás bemenetét és kimenetét kell hozzáadnia. A kísérlet telepítésekor a felhasználók adatokat küldhetnek és fogadhatnak a webszolgáltatástól a bemeneteken és kimeneteken keresztül. Egyes alkalmazások esetében előfordulhat, hogy a fogyasztó adatait adatcsatornán keresztül vagy egy külső adatforrásban, például az Azure Blob Storage-ban tárolja. Ezekben az esetekben nem szükséges az adatok olvasása és írása a webszolgáltatás-bemenetek és-kimenetek használatával. Ehelyett a Batch-végrehajtási szolgáltatás (BES) használatával olvashatnak az adatforrásból az adatok importálásával, és a pontozási eredményeket egy másik adatterületre írhatja az exportálási adatok modul használatával.
 
@@ -101,7 +99,7 @@ A klasszikus webszolgáltatásként való üzembe helyezéshez és a használatb
 2. A Futtatás befejeződése után kattintson a **webszolgáltatás üzembe** helyezése elemre, és válassza a **webszolgáltatás telepítése [klasszikus]** lehetőséget.
 3. Keresse meg az API-kulcsot a webszolgáltatás irányítópultján. Másolja ki és mentse el később a használathoz.
 4. Az **alapértelmezett végpont** táblában kattintson a Batch- **végrehajtás** hivatkozásra az API-Súgó oldal megnyitásához.
-5. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új** > **Project** > **Visual C#** > **Windows klasszikus asztali** > **konzol alkalmazás (.NET-keretrendszer)**.
+5. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új**  >  **Project**  >  **Visual C#**  >  **Windows klasszikus asztali**  >  **konzol alkalmazás (.NET-keretrendszer)**.
 6. Az API-Súgó lapon keresse meg a kódlap alján található **mintakód** szakaszt.
 7. Másolja és illessze be a C#-mintakód a Program.cs-fájlba, és távolítsa el az összes hivatkozást a blob Storage-ba.
 8. Frissítse a *apiKey* változó értékét a korábban mentett API-kulccsal.
@@ -130,7 +128,7 @@ A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalma
 3. A kísérlet telepítése lapon adja meg a webszolgáltatás nevét, és válasszon ki egy díjszabási csomagot, majd kattintson a **telepítés**elemre.
 4. A rövid **útmutató lapon kattintson a felhasználás** elemre **.**
 5. A **mintakód** szakaszban kattintson a **Batch**elemre.
-6. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új** > **Project** > **Visual C#** > **Windows klasszikus asztali** > **konzol alkalmazás (.NET-keretrendszer)**.
+6. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új**  >  **Project**  >  **Visual C#**  >  **Windows klasszikus asztali**  >  **konzol alkalmazás (.NET-keretrendszer)**.
 7. Másolja ki és illessze be a C#-mintakód a Program.cs fájlba.
 8. Frissítse a *apiKey* változó értékét az **alapszintű felhasználás adatai** szakaszban található **elsődleges kulccsal** .
 9. Keresse meg a *scoreRequest* -deklarációt, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.

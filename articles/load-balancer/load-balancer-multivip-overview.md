@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75771257"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022811"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Több előtér Azure Load Balancer
 
@@ -146,7 +146,7 @@ A bejövő folyamat célja a virtuális gép visszacsatolási felületének IP-c
 
 Figyelje meg, hogy ez a példa nem változtatja meg a célként megadott portot. Annak ellenére, hogy ez egy lebegő IP-forgatókönyv, Azure Load Balancer is támogatja a szabályok definiálását a háttérbeli célport újraírásához, és annak eltérővé tételéhez a frontend célport.
 
-A lebegőpontos IP-szabály típusa több terheléselosztó-konfigurációs minta alapja. A jelenleg elérhető egyik példa a [több figyelővel rendelkező SQL-AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) . Az idő múlásával több ilyen forgatókönyvet fogunk dokumentálni.
+A lebegőpontos IP-szabály típusa több terheléselosztó-konfigurációs minta alapja. A jelenleg elérhető egyik példa a [több figyelővel rendelkező SQL-AlwaysOn](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) . Az idő múlásával több ilyen forgatókönyvet fogunk dokumentálni.
 
 ## <a name="limitations"></a>Korlátozások
 

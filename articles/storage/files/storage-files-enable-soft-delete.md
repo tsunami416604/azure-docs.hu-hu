@@ -1,6 +1,6 @@
 ---
 title: Soft delete – Azure-fájlmegosztás engedélyezése
-description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás helyreállítható törlését az adathelyreállításhoz, és megakadályozhatja a véletlen törlést.
+description: Megtudhatja, hogyan engedélyezheti az Azure-fájlmegosztás Soft Delete (előzetes verzió) szolgáltatását az adathelyreállításhoz és a véletlen törlés megakadályozásához.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 70081114995d46e7c5db7c9549cfce2fdff42975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a31fc675ca32697ece1fe7240112bb5610feda9d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116491"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142095"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
-Az Azure Storage helyreállítható törlést biztosít a fájlmegosztás számára, így könnyebben állíthatja helyre az adatokat, amikor egy alkalmazás vagy más Storage-fiók felhasználója véletlenül törölte azt. További információ a Soft delete szolgáltatásról: az [Azure-fájlmegosztás véletlen törlésének megakadályozása](storage-files-prevent-file-share-deletion.md).
+Az Azure Storage a fájlmegosztás (előzetes verzió) helyreállítható törlésével megkönnyíti az adatok helyreállítását, amikor egy alkalmazás vagy más Storage-fiók felhasználója véletlenül törölte azokat. További információ a Soft delete szolgáltatásról: az [Azure-fájlmegosztás véletlen törlésének megakadályozása](storage-files-prevent-file-share-deletion.md).
 
 A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a Soft delete használatát az Azure-fájlmegosztás számára egy meglévő Storage-fiókban:
 
@@ -98,6 +98,6 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatvédelem és a helyreállítás más formájával kapcsolatos további információkért tekintse meg a [Azure Files-Pillanatképek megosztásának áttekintését](storage-snapshots-files.md)ismertető cikket.

@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a711fa522f6b105eb98d57d4f63afb90be255b3f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262086"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995037"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -78,6 +78,12 @@ Hozzáférési felülvizsgálatok létrehozásához kövesse az alábbi lépése
 
    ![Hozzáférési felülvizsgálatok kezdőlapja](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Hozzáférési felülvizsgálat létrehozása egy Azure AD-szerepkörhöz hozzárendelhető csoporton
+Ha a hozzáférési felülvizsgálatok legújabb verzióját futtatja (a felülvizsgálók alapértelmezés szerint a **saját hozzáférésre** vannak irányítva), akkor csak a globális rendszergazda hozhat létre hozzáférési felülvizsgálatot a szerepkörhöz hozzárendelhető csoportokon. Ha azonban a hozzáférési felülvizsgálatok régebbi verzióját futtatja (a felülvizsgálók alapértelmezés szerint a **hozzáférési panelre** vannak irányítva), akkor a globális rendszergazda és a felhasználói rendszergazda egyaránt létrehozhat hozzáférési felülvizsgálatot a szerepkörhöz hozzárendelhető csoportokon.  
+
+Az új felhasználói élmény minden ügyfelünk számára augusztus 1-től 2020, de ha hamarabb szeretné frissíteni, küldjön egy kérést – [Azure ad hozzáférési felülvizsgálatok – frissített felülvizsgáló élmény a hozzáférési regisztrációban](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+
+[További információ a csoportok Azure ad-szerepkörökhöz való hozzárendeléséről](https://go.microsoft.com/fwlink/?linkid=2103037).
 
 ## <a name="learn-about-access-reviews"></a>Tudnivalók a hozzáférési felülvizsgálatokról
 
@@ -114,13 +120,13 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |
 | A rendszergazda 500 felhasználóval hoz létre hozzáférési felülvizsgálatot a B csoport számára. Saját felülvizsgálatot tesz lehetővé. | 500 licenc az egyes felhasználókhoz, mint önfelülvizsgáló | 500 |
 | A rendszergazda a C csoport hozzáférési felülvizsgálatát 50 tag felhasználókkal és 25 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 50 licenc minden felhasználóhoz, mint önellenőrzési.<br/>(a vendég felhasználói a szükséges 1:5-os arányban szerepelnek) | 50 |
-| A rendszergazda a D csoporthoz tartozó hozzáférési felülvizsgálatot hoz létre 6 tagú felhasználóval és 108 vendég felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 6 licenc minden felhasználó számára, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára. 6 licenc, amely a 6\*5 = 30 vendég felhasználót fedi le. A fennmaradó (108-6\*5) = 78 vendég felhasználóhoz, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
+| A rendszergazda a D csoporthoz tartozó hozzáférési felülvizsgálatot hoz létre 6 tagú felhasználóval és 108 vendég felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 6 licenc minden felhasználó számára, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára. 6 licenc, amely a 6 \* 5 = 30 vendég felhasználót fedi le. A fennmaradó (108-6 \* 5) = 78 vendég felhasználóhoz, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
 
 ## <a name="next-steps"></a>További lépések
 

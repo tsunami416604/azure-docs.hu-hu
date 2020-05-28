@@ -101,7 +101,7 @@ A funkciók mérnöki és kijelölési funkciói is kombinálhatók, így a tanu
 
 Nem mindig feltétlenül kell végrehajtani a funkciók mérnöki vagy szolgáltatásbeli kijelölését. Ez az adatoktól, a kiválasztott algoritmustól és a kísérlet céljától függ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Bizonyos környezetekben lévő adatszolgáltatások létrehozásához tekintse meg a következő cikkeket:
 

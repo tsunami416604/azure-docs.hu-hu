@@ -152,7 +152,7 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 A részletekért és a használati példákért tekintse meg az [API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az Azure Security Center letiltási szabályait ismerteti, amelyek automatikusan elmulasztják a nemkívánatos riasztásokat.
 

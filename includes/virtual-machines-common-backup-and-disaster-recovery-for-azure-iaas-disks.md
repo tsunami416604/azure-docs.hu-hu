@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77179133"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124362"
 ---
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 
@@ -107,7 +107,7 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
  A következő táblázat a DR számára elérhető megoldások összegzését tartalmazza.
 
-| Forgatókönyv | Automatikus replikáció | DR megoldás |
+| Eset | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
 | Premium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
@@ -146,7 +146,7 @@ A következő lépésekkel engedélyezheti a virtuális gépek biztonsági ment�
 
     b. A **Recovery Services** -tárolók menüben kattintson a **Hozzáadás** gombra, és kövesse a lépéseket egy új tároló létrehozásához ugyanabban a régióban, ahol a virtuális gép található. Ha például a virtuális gép az USA nyugati régiójában található, válassza az USA nyugati régióját a tárolóhoz.
 
-1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok** > **biztonsági mentési konfiguráció** > **frissítése**elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
+1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok**  >  **biztonsági mentési konfiguráció**  >  **frissítése**elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
 
 1.  Konfigurálja a biztonsági mentési szabályzatot, és válassza ki a virtuális gépet ugyanabból a felhasználói felületről.
 
@@ -231,7 +231,7 @@ Több lemezzel rendelkező virtuális gépek esetén az azonos koordinált vissz
 
 ### <a name="sql-server"></a>SQL Server
 
-A virtuális gépen futó SQL Server saját beépített képességekkel rendelkezik a SQL Server-adatbázis Azure Blob Storage-ba vagy fájlmegosztásba való biztonsági mentéséhez. Ha a Storage-fiók földrajzilag redundáns tárolást vagy olvasási hozzáférésű geo-redundáns tárolót használ, a biztonsági másolatok a Storage-fiók másodlagos adatközpontjában, a korábban tárgyalt korlátozásokkal érhetők el. További információ: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machines szolgáltatásban](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md). A biztonsági mentés és a visszaállítás mellett [SQL Server AlAlwaysOnon rendelkezésre állási csoportok](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) is kezelhetik az adatbázisok másodlagos replikáit. Ez a képesség nagy mértékben csökkenti a vész-helyreállítási időt.
+A virtuális gépen futó SQL Server saját beépített képességekkel rendelkezik a SQL Server-adatbázis Azure Blob Storage-ba vagy fájlmegosztásba való biztonsági mentéséhez. Ha a Storage-fiók földrajzilag redundáns tárolást vagy olvasási hozzáférésű geo-redundáns tárolót használ, a biztonsági másolatok a Storage-fiók másodlagos adatközpontjában, a korábban tárgyalt korlátozásokkal érhetők el. További információ: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machines szolgáltatásban](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). A biztonsági mentés és a visszaállítás mellett [SQL Server AlAlwaysOnon rendelkezésre állási csoportok](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) is kezelhetik az adatbázisok másodlagos replikáit. Ez a képesség nagy mértékben csökkenti a vész-helyreállítási időt.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005156"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014927"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -32,6 +32,9 @@ Tekintse meg a gyakori központi telepítések ARM-sablonjaihoz tartozó Azure L
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>Miben különböznek a bejövő NAT-szabályok a terheléselosztási szabályoktól?
 A NAT-szabályok olyan háttér-erőforrás megadására szolgálnak, amely a forgalmat irányítja át. Például egy adott terheléselosztó-port konfigurálása egy adott virtuális gépre irányuló RDP-forgalom küldéséhez. A terheléselosztási szabályok segítségével megadhatók a háttér-erőforrások készlete a forgalom átirányításához, valamint a terhelés elosztása az egyes példányok között. Egy terheléselosztó-szabály például átirányíthatja a TCP-csomagokat a terheléselosztó 80-es portjára a webkiszolgálók készletén keresztül.
+
+## <a name="what-is-ip-1686312916"></a>Mi az IP-168.63.129.16?
+Az Azure-infrastruktúra Load Balancer címkézett gazdagéphez tartozó virtuális IP-cím, amelyen az Azure Health-Szondák származnak. A háttérbeli példányok konfigurálásakor engedélyezni kell, hogy az adott IP-címről érkező forgalom sikeresen válaszoljon az állapot-próbára. Ez a szabály nem működik együtt a Load Balancer előtér-felületéhez való hozzáféréssel. Ha nem használja a Azure Load Balancer, felülbírálhatja ezt a szabályt. A szolgáltatással kapcsolatos címkékkel kapcsolatban [itt](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)talál további információt.
 
 ## <a name="next-steps"></a>Következő lépések
 Ha a kérdés nem szerepel a fentiekben, küldjön visszajelzést erről az oldalról a kérdésével kapcsolatban. Ez egy GitHub-problémát hoz létre a termékért felelős csapat számára, amely biztosítja, hogy az összes értékes vásárlói kérdés megválaszolva legyen.

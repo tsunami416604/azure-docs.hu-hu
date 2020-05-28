@@ -29,7 +29,7 @@ Az Automation hitelesítőadat-adategység olyan objektumot tartalmaz, amely biz
 
 Az alábbi táblázatban található parancsmagok automatizálási hitelesítő adatokat hoznak létre és kezelhetnek a PowerShell-lel. Az az [modulok](modules.md#az-modules)részét képezik.
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 |:--- |:--- |
 | [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |A hitelesítő adatokkal kapcsolatos metaadatokat tartalmazó [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) objektum beolvasása. A parancsmag nem kérdezi le `PSCredential` magát az objektumot.  |
 | [Új – AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Létrehoz egy új Automation-hitelesítő adatot. |
@@ -40,7 +40,7 @@ Az alábbi táblázatban található parancsmagok automatizálási hitelesítő 
 
 A következő táblázatban található parancsmagok a runbookok és a DSC-konfigurációkhoz tartozó hitelesítő adatok elérésére szolgálnak. 
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Lekéri egy `PSCredential` runbook vagy DSC-konfigurációban használandó objektumot. Leggyakrabban a parancsmag helyett ezt a [belső parancsmagot](modules.md#internal-cmdlets) kell használnia, `Get-AzAutomationCredential` mivel az utóbbi csak a hitelesítő adatokat kéri le. Ezek az információk általában nem hasznosak egy másik parancsmagnak való továbbításra. |
 | [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Hitelesítő adat beolvasása a Felhasználónév és a jelszó megadásával. Ez a parancsmag az alapértelmezett Microsoft. PowerShell. Security modul része. Lásd: [alapértelmezett modulok](modules.md#default-modules).|
@@ -161,7 +161,7 @@ print cred["username"]
 print cred["password"]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

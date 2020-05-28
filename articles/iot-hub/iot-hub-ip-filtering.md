@@ -163,7 +163,7 @@ Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Az IoT HUb IP-szűrési szabályai sorrendjének módosítása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IoT Hub képességeinek további megismeréséhez lásd:
 

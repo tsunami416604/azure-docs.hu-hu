@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8501f9d07ffa2d04915d4d1a351317cc145f9844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116247"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118267"
 ---
 # <a name="overview-query-data-in-storage"></a>Áttekintés: adatlekérdezés a Storage szolgáltatásban
 
 Ez a szakasz azokat a lekérdezéseket tartalmazza, amelyekkel kipróbálhatja az Azure-beli SQL on-demand (előzetes verzió) erőforrást az Azure szinapszis Analyticsen belül.
-A jelenleg támogatott fájlok a következők: 
+A jelenleg támogatott formátumok a következők:  
 - CSV
 - Parquet
 - JSON
@@ -44,67 +44,13 @@ Emellett a paraméterek a következők:
 
 ## <a name="first-time-setup"></a>Első beállítás
 
-A jelen cikk későbbi részében szereplő minták használata előtt két lépésből áll:
-
-- Hozzon létre egy adatbázist a nézetekhez (ha a nézeteket szeretné használni)
-- A tárolóban lévő fájlok eléréséhez igény szerint az SQL igény szerint használandó hitelesítő adatok létrehozása
-
-### <a name="create-database"></a>Adatbázis létrehozása
-
-A nézetek létrehozásához adatbázisra van szükség. Ezt az adatbázist fogja használni a dokumentációban szereplő példák némelyikére.
+Első lépésként létre kell **hoznia egy adatbázist** , amelyen végre fogja hajtani a lekérdezéseket. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban lévő adatok olvasásához használt külső fájlformátumokat.
 
 > [!NOTE]
 > Az adatbázisokat csak a metaadatok megtekintésére használják, nem a tényleges adatokhoz.  Jegyezze fel a használni kívánt adatbázis nevét, később szüksége lesz rá.
 
 ```sql
 CREATE DATABASE mydbname;
-```
-
-### <a name="create-credentials"></a>Hitelesítő adatok létrehozása
-
-A lekérdezések futtatása előtt létre kell hoznia a hitelesítő adatokat. Ezt a hitelesítő adatot az SQL igény szerinti szolgáltatása fogja használni a tárolóban lévő fájlok eléréséhez.
-
-> [!NOTE]
-> Az ebben a szakaszban található útmutató sikeres futtatásához az SAS-tokent kell használnia.
->
-> Az SAS-tokenek használatának megkezdéséhez el kell dobnia a UserIdentity, amelyet az alábbi [cikkben](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)ismertetünk.
->
-> Alapértelmezés szerint az SQL igény szerinti használata mindig a HRE-továbbítást használja.
-
-A tárterület-hozzáférés-vezérlés kezelésével kapcsolatos további információkért olvassa el ezt a [hivatkozást](develop-storage-files-storage-access-control.md).
-
-A CSV-, JSON-és parketta-tárolók hitelesítő adatainak létrehozásához futtassa az alábbi kódot:
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
 ```
 
 ## <a name="provided-demo-data"></a>Megadott bemutatói információk
@@ -132,24 +78,6 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | JSON                                                       | JSON formátumú adatszülő mappa                        |
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
-## <a name="validation"></a>Ellenőrzés
-
-Hajtsa végre a következő három lekérdezést, és ellenőrizze, hogy a hitelesítő adatok megfelelően lettek-e létrehozva.
-
-> [!NOTE]
-> A mintavételi lekérdezések összes URI-je az észak-európai Azure-régióban található Storage-fiókot használja. Győződjön meg arról, hogy a megfelelő hitelesítő adatokat hozta létre. Futtassa az alábbi lekérdezést, és győződjön meg arról, hogy a Storage-fiók szerepel a listában.
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-Ha nem találja a megfelelő hitelesítő adatokat, tekintse meg az [első alkalommal történő telepítést](#first-time-setup).
-
 ### <a name="sample-query"></a>Mintalekérdezés
 
 Az érvényesítés utolsó lépése a következő lekérdezés végrehajtása:
@@ -159,7 +87,8 @@ SELECT
     COUNT_BIG(*)
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc;
 ```

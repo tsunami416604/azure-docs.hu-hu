@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68a3b1291d2e001c535a0c5a6b0c754c9d2b2e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679596"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021347"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Oktatóanyag: Unity-projekt létrehozása a semmiből
 
@@ -44,13 +44,13 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 ## <a name="create-a-new-unity-project"></a>Új Unity-projekt létrehozása
 
 Hozzon létre egy új projektet az Unity hub-ból.
-Ebben a példában feltételezzük, hogy a projekt létrehozása egy nevű `RemoteRendering`mappában történik.
+Ebben a példában feltételezzük, hogy a projekt létrehozása egy nevű mappában történik `RemoteRendering` .
 
 ![új projekt ablak](media/new-project.png)
 
 ## <a name="configure-the-projects-manifest"></a>A projekt jegyzékfájljának konfigurálása
 
-Módosítania kell a Unity Project `Packages/manifest.json` mappában található fájlt. Nyissa meg a fájlt egy szövegszerkesztőben, és fűzze hozzá az alább felsorolt sorokat:
+Módosítania kell a `Packages/manifest.json` Unity Project mappában található fájlt. Nyissa meg a fájlt egy szövegszerkesztőben, és fűzze hozzá az alább felsorolt sorokat:
 
 ```json
 {
@@ -77,9 +77,9 @@ Miután módosította és mentette a jegyzékfájlt, az Unity automatikusan fris
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Győződjön meg arról, hogy a csomag legújabb verziója van
 
 A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési csomag legújabb verzióját használja.
-1. Válassza ki a csomagot a projekt ablakban, és kattintson a csomag ikonra: ![a csomag ikon kiválasztása](media/package-icons.png)
-1. Az Ellenőrben kattintson a "megtekintés a csomagkezelő alkalmazásban" ![: csomagkezelő](media/package-properties.png)
-1. A távoli renderelési csomag csomagkezelő lapján ellenőrizze, hogy elérhető-e a frissítés gomb. Ha igen, akkor a gombra kattintva a rendszer frissíti a csomagot a legújabb elérhető verzióra ![: az ARR csomag a csomagkezelő](media/package-manager.png)
+1. Válassza ki a csomagot a projekt ablakban, és kattintson az :::no-loc text="package"::: ikonra: ![ a csomag ikon kiválasztása](media/package-icons.png)
+1. Az Ellenőrben kattintson a "megtekintés a csomagkezelő alkalmazásban": ![ csomagkezelő](media/package-properties.png)
+1. A távoli renderelési csomag csomagkezelő lapján ellenőrizze, hogy elérhető-e a frissítés gomb. Ha igen, akkor a gombra kattintva a rendszer frissíti a csomagot a legújabb elérhető verzióra: ![ az ARR csomag a csomagkezelő](media/package-manager.png)
 1. Időnként előfordulhat, hogy a csomag frissítése hibákhoz vezethet a konzolon. Ha ez történik, próbálkozzon a projekt bezárásával és újbóli megnyitásával.
 
 ## <a name="configure-the-camera"></a>A kamera konfigurálása
@@ -90,11 +90,11 @@ Válassza ki a **fő kamera** csomópontot.
 
     ![kamera átalakításának alaphelyzetbe állítása](media/camera-reset-transform.png)
 
-1. **Tiszta jelzők** beállítása a *folytonos színre*
+1. Beállítás **:::no-loc text="Clear flags":::** értéke*:::no-loc text="Solid Color":::*
 
-1. **Háttér** beállítása *feketére*
+1. Beállítás **:::no-loc text="Background":::** értéke*:::no-loc text="Black":::*
 
-1. Állítsa a **kivágási síkokat** *közel = 0,3* és *Far = 20*értékre. Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél nagyobb méretű klipet ábrázol.
+1. Állítsa a a következőre: **:::no-loc text="Clipping Planes":::** *közel = 0,3* és *Far = 20*. Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél nagyobb méretű klipet ábrázol.
 
     ![Unity kamera tulajdonságai](media/camera-properties.png)
 
@@ -109,10 +109,10 @@ Válassza ki a **fő kamera** csomópontot.
 1. Válassza ki a bal oldali **grafikát** .
 1. Módosítsa a **szkriptek renderelési folyamatának** beállítását *HybridRenderingPipeline*értékre. Hagyja ki ezt a lépést, ha nincs használatban az univerzális leképezési folyamat.
 
-    ![a Project Graphics](media/settings-graphics-lwrp.png) beállításainak módosítása időnként a felhasználói felület nem tölti fel az elérhető adatcsatorna-típusok listáját a csomagokból, ebben az esetben a *HybridRenderingPipeline* eszközt kézzel kell húzni a mezőre ![: a Project Graphics beállításainak módosítása](media/hybrid-rendering-pipeline.png)
+    ![a Project Graphics beállításainak módosítása ](media/settings-graphics-lwrp.png) időnként a felhasználói felület nem tölti fel az elérhető adatcsatorna-típusok listáját a csomagokból, ebben az esetben a *HybridRenderingPipeline* eszközt kézzel kell húzni a mezőre: a ![ Project Graphics beállításainak módosítása](media/hybrid-rendering-pipeline.png)
 1. Válassza ki a bal oldali **lejátszót** .
 1. Válassza a **univerzális Windows-platform beállítások** lapot.
-1. Az **XR beállításainak** módosítása a Windows vegyes valóságának támogatásához: ![lejátszó beállításai](media/xr-player-settings.png)
+1. Az **XR beállításainak** módosítása a Windows vegyes valóságának támogatásához: ![ lejátszó beállításai](media/xr-player-settings.png)
 1. Válassza a fenti képernyőképen látható beállításokat:
     1. **Virtuális valóság támogatásának** engedélyezése
     1. **Mélységi formátum** beállítása *16 bites mélységre*
@@ -309,7 +309,7 @@ Ha ez nem sikerül, ellenőrizze, hogy helyesen adta-e meg a fiók adatait a Rem
 
 ![Munkamenet kezdő kimenete](media/create-session-output.png)
 
-Ezen a ponton az Azure kiépít egy kiszolgálót, és elindít egy távoli renderelési virtuális gépet. Ez általában **3 – 5 percet vesz igénybe**. Ha a virtuális gép elkészült, a rendszer végrehajtja `OnSessionStatusChanged` az Unity-szkript visszahívását, és kinyomtatja az új munkamenet állapotát:
+Ezen a ponton az Azure kiépít egy kiszolgálót, és elindít egy távoli renderelési virtuális gépet. Ez általában **3 – 5 percet vesz igénybe**. Ha a virtuális gép elkészült, a rendszer `OnSessionStatusChanged` végrehajtja az Unity-szkript visszahívását, és kinyomtatja az új munkamenet állapotát:
 
 ![Munkamenetre kész kimenet](media/create-session-output-2.png)
 
@@ -420,7 +420,7 @@ Ha megnyomja a *Lejátszás*gombot, a nézetablakban három gomb is megjelenik: 
 A **AutoStartSessionAsync** függvénnyel szimulálhatja a gomb megnyomását a szerkesztőn kívül.
 
 > [!TIP]
-> A leállított, lejárt vagy hibás állapotú munkamenetek megnyithatók. Amíg nem használhatók a rendereléshez, lekérdezheti az adatokat, miután megnyitotta az inaktív munkamenetet. A fenti kód ellenőrzi a munkamenet állapotát a alkalmazásban `ARRService_OnSessionStarted`, hogy automatikusan leálljon, ha a munkamenet használhatatlanná válik.
+> A leállított, lejárt vagy hibás állapotú munkamenetek megnyithatók. Amíg nem használhatók a rendereléshez, lekérdezheti az adatokat, miután megnyitotta az inaktív munkamenetet. A fenti kód ellenőrzi a munkamenet állapotát a alkalmazásban `ARRService_OnSessionStarted` , hogy automatikusan leálljon, ha a munkamenet használhatatlanná válik.
 
 Ezzel a funkcióval mostantól olyan munkameneteket hozhat létre és használhat újra, amelyek jelentősen javítják a fejlesztési munkafolyamatot.
 

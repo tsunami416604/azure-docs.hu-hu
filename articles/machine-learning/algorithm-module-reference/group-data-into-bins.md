@@ -1,5 +1,5 @@
 ---
-title: Adatcsoportosítás a raktárhelyekre
+title: Adatok csoportosítása intervallumokba
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja a csoportosítási adatok a Raktárhelyek modulba a számok csoportosításához vagy a folyamatos adatok eloszlásának módosításához.
 services: machine-learning
@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83853826"
 ---
-# <a name="group-data-into-bins"></a>Adatcsoportosítás a raktárhelyekre
+# <a name="group-data-into-bins"></a>Adatok csoportosítása intervallumokba
 
 Ez a cikk azt ismerteti, hogyan használhatók a [csoportba](group-data-into-bins.md) foglalt adatok a Azure Machine learning Designerben (előzetes verzió), a számok csoportosításához vagy a folyamatos adatok eloszlásának módosításához.
 
@@ -110,6 +110,6 @@ Egy **dobozolási-transzformációt**is visszaad, amely egy olyan függvény, am
 > 
 > Annak biztosítása érdekében, hogy az adatokat mindig ugyanazzal a dobozolási módszerrel alakítsa át, javasoljuk, hogy mentse a hasznos adatátalakításokat, majd alkalmazza őket más adatkészletekbe az [átalakítás alkalmazása](apply-transformation.md) modul használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
