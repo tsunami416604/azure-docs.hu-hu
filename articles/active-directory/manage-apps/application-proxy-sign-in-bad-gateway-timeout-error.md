@@ -103,6 +103,6 @@ Ha a hiba továbbra is fennáll, lépjen arra a gépre, amelyen az összekötő 
 
 Ha az adott gépről elérheti az alkalmazást, akkor az összekötővel kapcsolatos problémákat és hibákat kereshet. A [hibaelhárítási dokumentumban](application-proxy-troubleshoot.md#connector-errors)néhány gyakori hibát láthat. A hibák azonosításához közvetlenül az összekötő naplófájljaiban is kereshet. A hibaüzenetek nagy része a javításokra vonatkozó konkrétabb javaslatok megosztását is lehetővé teheti. A naplók megtekintésének megismeréséhez tekintse meg az [Összekötők dokumentációját](application-proxy-connectors.md#under-the-hood).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)

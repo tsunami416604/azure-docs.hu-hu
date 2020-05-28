@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683644"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995819"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
 Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az Oracle Marketplace katalógusból a [lemezképből](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -55,7 +55,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel `publicIpAddress`a értékét. Ennek a címnek a használatával férhet hozzá a virtuális géphez.
+A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg. Jegyezze fel a értékét `publicIpAddress` . Ennek a címnek a használatával férhet hozzá a virtuális géphez.
 
 ```output
 {
@@ -72,7 +72,7 @@ A virtuális gép létrehozása után az Azure CLI az alábbi példához hasonl�
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet `publicIpAddress` a virtuális gép értékére.
+Ha SSH-munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet a `publicIpAddress` virtuális gép értékére.
 
 ```bash
 ssh azureuser@<publicIpAddress>
@@ -85,7 +85,7 @@ Az Oracle-szoftver már telepítve van a Piactéri rendszerképre. Hozzon létre
 1.  Váltson az *Oracle* -rendszeradminisztrátorra, majd inicializálja a figyelőt a naplózáshoz:
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -150,7 +150,7 @@ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Ellenőrizze, hogy az alábbi utasítások hozzá lettek- `~/.bashrc` e adva a fájlhoz az Ön által választott szerkesztőprogram használatával.
+Emellett ORACLE_HOME és ORACLE_SID változókat is hozzáadhat a. bashrc fájlhoz. Ez a jövőbeli bejelentkezések környezeti változóit fogja menteni. Ellenőrizze, hogy az alábbi utasítások hozzá lettek-e adva a `~/.bashrc` fájlhoz az Ön által választott szerkesztőprogram használatával.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -190,14 +190,14 @@ A grafikus felhasználói felülettel rendelkező felügyeleti eszközökhöz, a
       3           PDB1                      MOUNT
     ```
 
-4. Ha a OPEN_MODE `PDB1` nem írható írás, akkor futtassa az alábbi PARANCSOKAT a PDB1 megnyitásához:
+4. Ha a OPEN_MODE `PDB1` nem ÍRHATÓ írás, akkor futtassa az alábbi parancsokat a PDB1 megnyitásához:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Be kell írnia `quit` a SQLPlus-munkamenet befejezéséhez, `exit` és be kell írnia az Oracle-felhasználó kijelentkezését.
+Be kell írnia a `quit` SQLPlus-munkamenet befejezéséhez, és be kell írnia `exit` az Oracle-felhasználó kijelentkezését.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Adatbázis indításának és leállításának automatizálása
 
@@ -209,13 +209,13 @@ Az Oracle-adatbázis alapértelmezés szerint nem indul el automatikusan a virtu
     sudo su -
     ```
 
-2.  A kedvenc szerkesztője segítségével szerkessze a `/etc/oratab` fájlt, és módosítsa `N` az `Y`alapértelmezett értéket:
+2.  A kedvenc szerkesztője segítségével szerkessze a fájlt, `/etc/oratab` és módosítsa az alapértelmezett értéket `N` `Y` :
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Hozzon létre egy `/etc/init.d/dbora` nevű fájlt, és illessze be a következő tartalmakat:
+3.  Hozzon létre egy nevű fájlt `/etc/init.d/dbora` , és illessze be a következő tartalmakat:
 
     ```bash
     #!/bin/sh
@@ -315,7 +315,7 @@ Jelentkezzen be a **sys** -fiók használatával, és jelölje be a **as SYSDBA*
 
 ![Az Oracle OEM Express bejelentkezési oldalának képernyőképe](./media/oracle-quick-start/oracle_oem_express_login.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuális gép már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 
@@ -323,7 +323,7 @@ Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuál
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az Azure-beli egyéb [Oracle-megoldásokkal](oracle-considerations.md). 
 
