@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203962"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998097"
 ---
 Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -34,13 +34,13 @@ Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott v
 A metaadatokon alapuló válaszhoz használja az előző gyors lekérdezési tudásbázist.
 
 1. A Tudásbázis **Beállítások** lapján válassza a **curl** fület egy példaként szolgáló curl-parancs megjelenítéséhez, amelyet a rendszer a Tudásbázisból kapott válasz létrehozásához használ.
-1. Másolja a parancsot egy szerkeszthető környezetbe (például szövegfájlba), így szerkesztheti a parancsot. Szerkessze a kérdés értékét a következőképpen, hogy a metaadatok `service:qna_maker` a QnA párokhoz szűrőként legyenek felhasználva.
+1. Másolja a parancsot egy szerkeszthető környezetbe (például szövegfájlba), így szerkesztheti a parancsot. Szerkessze a kérdés értékét a következőképpen, hogy a metaadatok a `service:qna_maker` QnA párokhoz szűrőként legyenek felhasználva.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    A kérdés csak egyetlen szó, `size`amely a két QnA párok bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
+    A kérdés csak egyetlen szó, `size` amely a két QnA párok bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
 
 1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek. A következő cURL-válasz formázva lett az olvashatóság érdekében:
 
@@ -77,11 +77,11 @@ A metaadatokon alapuló válaszhoz használja az előző gyors lekérdezési tud
     }
     ```
 
-    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános `No good match found in KB.` választ adja vissza.
+    Ha van olyan kérdés-válasz pár, amely nem felel meg a keresési kifejezésnek, de nem felel meg a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános választ `No good match found in KB.` adja vissza.
 
 ## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
 
-A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá `debug` a következő tulajdonságot:
+A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá a következő `debug` tulajdonságot:
 
 ```json
 Debug: {Enable:true}
@@ -206,7 +206,7 @@ A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-le
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>A cURL használata a Chit-csevegési válaszok lekérdezéséhez
 
-1. A cURL-kompatibilis terminálon használjon egy, a felhasználótól származó bot-beszélgetés-befejezési utasítást `Thank you` , például a kérdést. Nincsenek beállítva más tulajdonságok.
+1. A cURL-kompatibilis terminálon használjon egy, a felhasználótól származó bot-beszélgetés-befejezési utasítást, például `Thank you` a kérdést. Nincsenek beállítva más tulajdonságok.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
@@ -300,7 +300,7 @@ A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-le
 
 A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték nem teljesül, a rendszer az alapértelmezett választ adja vissza.
 
-1. Adja hozzá `threshold` a (z) tulajdonságot, `size` hogy válaszoljon a 80%-os vagy annál nagyobb küszöbértékre. A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%. Az eredmény a Tudásbázis létrehozásakor megadott alapértelmezett választ adja vissza.
+1. Adja hozzá a `threshold` (z) tulajdonságot, hogy válaszoljon a `size` 80%-os vagy annál nagyobb küszöbértékre. A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%. Az eredmény a Tudásbázis létrehozásakor megadott alapértelmezett választ adja vissza.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
@@ -325,7 +325,7 @@ A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték n
     }
     ```
 
-    QnA Maker egy pontszámot adott vissza `0`, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
+    QnA Maker egy pontszámot adott vissza `0` , ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
 
 1. Módosítsa a küszöbértéket 60%-ra, és kérje újra a lekérdezést:
 

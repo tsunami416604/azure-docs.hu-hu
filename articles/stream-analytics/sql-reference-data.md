@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651935"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021687"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
@@ -40,7 +40,7 @@ A következő lépésekkel adhat hozzá Azure SQL Database hivatkozásként mega
 
    ![SQL Database hivatkozás konfigurálása](./media/sql-reference-data/sql-input-config.png)
 
-3. Tesztelje a pillanatkép-lekérdezést az SQL-lekérdezés szerkesztőjében. További információ: [a Azure Portal SQL-lekérdezési szerkesztőjének használata a kapcsolódáshoz és az adatok lekérdezéséhez](../sql-database/sql-database-connect-query-portal.md)
+3. Tesztelje a pillanatkép-lekérdezést az SQL-lekérdezés szerkesztőjében. További információ: [a Azure Portal SQL-lekérdezési szerkesztőjének használata a kapcsolódáshoz és az adatok lekérdezéséhez](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>Storage-fiók meghatározása a feladatok konfigurációjában
 
@@ -69,7 +69,7 @@ A következő lépésekkel adhatja hozzá a Azure SQL Databaset a Visual Studio 
 
 ### <a name="create-a-sql-database-table"></a>SQL Database tábla létrehozása
 
-A SQL Server Management Studio használatával hozzon létre egy táblázatot a hivatkozási adatai tárolásához. A részletekért lásd: [az első Azure SQL Database-adatbázis megtervezése a SSMS használatával](../sql-database/sql-database-design-first-database.md) .
+A SQL Server Management Studio használatával hozzon létre egy táblázatot a hivatkozási adatai tárolásához. A részletekért lásd: [az első Azure SQL Database-adatbázis megtervezése a SSMS használatával](../azure-sql/database/design-first-database-tutorial.md) .
 
 Az alábbi példában a következő utasításban használt példában szereplő táblázat jött létre:
 
@@ -129,7 +129,7 @@ Mielőtt üzembe helyezné a feladatot az Azure-ban, a lekérdezési logikát he
 
 ## <a name="delta-query"></a>Különbözeti lekérdezés
 
-A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database ideiglenes táblákat](../sql-database/sql-database-temporal-tables.md) ajánlott használni.
+A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database ideiglenes táblákat](../azure-sql/temporal-tables.md) ajánlott használni.
 
 1. Hozzon létre egy ideiglenes táblázatot a Azure SQL Databaseban.
    

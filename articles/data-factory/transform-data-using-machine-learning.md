@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418864"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019894"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása az Azure Machine Learning és az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -67,7 +67,7 @@ Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (w
 
 A JSON-definíció tulajdonságaival kapcsolatos leírásért tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket.
 
-A Azure Machine Learning a klasszikus webszolgáltatásokat és az új webszolgáltatásokat is támogatja a prediktív kísérlethez. Kiválaszthatja, hogy melyik elemet szeretné használni Data Factoryból. A Azure Machine Learning társított szolgáltatás létrehozásához szükséges információk beszerzéséhez nyissa meg https://services.azureml.neta következőt:, ahol megjelenik az összes (új) webszolgáltatás és a klasszikus webszolgáltatás. **Kattintson az** elérni kívánt webszolgáltatásra, majd kattintson a felhasználás lap elemre. Másolja a **apiKey** tulajdonság **elsődleges kulcsát** és a **mlEndpoint** tulajdonsághoz tartozó **Batch-kérelmeket** .
+A Azure Machine Learning a klasszikus webszolgáltatásokat és az új webszolgáltatásokat is támogatja a prediktív kísérlethez. Kiválaszthatja, hogy melyik elemet szeretné használni Data Factoryból. A Azure Machine Learning társított szolgáltatás létrehozásához szükséges információk beszerzéséhez nyissa meg a https://services.azureml.net következőt:, ahol megjelenik az összes (új) webszolgáltatás és a klasszikus webszolgáltatás. **Kattintson az** elérni kívánt webszolgáltatásra, majd kattintson a felhasználás lap elemre. Másolja a **apiKey** tulajdonság **elsődleges kulcsát** és a **mlEndpoint** tulajdonsághoz tartozó **Batch-kérelmeket** .
 
 ![Webszolgáltatások Azure Machine Learning](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -127,9 +127,9 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végr
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| név              | A folyamatban szereplő tevékenység neve     | Igen      |
+| name              | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás       | A tevékenység működését leíró szöveg  | Nem       |
-| type              | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa **AzureMLBatchExecution**. | Igen      |
+| típus              | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa **AzureMLBatchExecution**. | Igen      |
 | linkedServiceName | Társított szolgáltatások a Azure Machine Learning társított szolgáltatáshoz. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
 | webServiceInputs  | Kulcs-érték párok, Azure Machine Learning webszolgáltatás-bemenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált bemeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a bemeneti Blobok helyét adja meg. | Nem       |
 | webServiceOutputs | Kulcs, érték párok, Azure Machine Learning webszolgáltatás-kimenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált kimeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a kimeneti Blobok helyét adja meg. | Nem       |
@@ -192,7 +192,7 @@ Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést kész
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>2. forgatókönyv: az olvasó/író modulok használatával végzett kísérletek különböző tárolókban lévő adataira
 Azure Machine Learning Studio (klasszikus) kísérletek létrehozásakor egy másik gyakori forgatókönyv az adatimportálás és a kimeneti adatmodulok használata. Az adatok importálása modul használatával betöltheti az adatokat egy kísérletbe, és a kimeneti adatok modulban adatokat menthet a kísérletekből. Az adatok és a kimeneti adatmodulok importálásával kapcsolatos további információkért lásd: adatok és [kimeneti adatok](https://msdn.microsoft.com/library/azure/dn905984.aspx) [importálása](https://msdn.microsoft.com/library/azure/dn905997.aspx) témakörök az MSDN Library webhelyen.
 
-Az Adatimportálási és-kimeneti adatmodulok használatakor célszerű webszolgáltatási paramétert használni a modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olyan adatimportálási modullal, amely Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezése után engedélyezni szeretné a webszolgáltatás felhasználói számára egy másik Azure-SQL Server megadását `YYY.database.windows.net`. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
+Az Adatimportálási és-kimeneti adatmodulok használatakor célszerű webszolgáltatási paramétert használni a modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olyan adatimportálási modullal, amely Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezését követően engedélyezni szeretné a webszolgáltatás felhasználóinak, hogy megadják a nevű másik logikai SQL Servert `YYY.database.windows.net` . Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
 
 > [!NOTE]
 > A webszolgáltatások bemenete és kimenete eltér a webszolgáltatás paramétereinek. Az első forgatókönyvben azt tapasztalja, hogy egy Azure Machine Learning Studio (klasszikus) webszolgáltatás bemenete és kimenete megadható. Ebben a forgatókönyvben egy olyan webszolgáltatás paramétereit adja át, amely megfelel az importálási adatok/kimeneti adatmodulok tulajdonságainak.

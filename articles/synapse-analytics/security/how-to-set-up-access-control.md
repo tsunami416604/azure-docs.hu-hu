@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015828"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Description |
+|Beállítás | Példaérték | Leírás |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -130,7 +130,7 @@ Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kel
 
 ## <a name="step-8-network-security"></a>8. lépés: hálózati biztonság
 
-A munkaterület tűzfalának, a virtuális hálózatnak és a [privát kapcsolatnak](../../sql-database/sql-database-private-endpoint-overview.md)a konfigurálásához.
+A munkaterület tűzfalának, a virtuális hálózatnak és a [privát kapcsolatnak](../../azure-sql/database/private-endpoint-overview.md)a konfigurálásához.
 
 ## <a name="step-9-completion"></a>9. lépés: Befejezés
 

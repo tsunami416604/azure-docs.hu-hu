@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086096"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021653"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory hitelesítés használata a szinapszis SQL-sel való hitelesítéshez
 
@@ -22,7 +22,7 @@ Azure Active Directory hitelesítés a Azure Active Directory (Azure AD) identit
 Az Azure AD-hitelesítés segítségével központilag kezelheti az Azure Szinapszishoz hozzáférő felhasználói identitásokat az engedélyek kezelésének egyszerűsítése érdekében. Ez az alábbi előnyökkel jár:
 
 - Alternatívát biztosít a normál Felhasználónév és jelszó hitelesítéshez.
-- Segít leállítani a felhasználói identitások elterjedését az adatbázis-kiszolgálókon.
+- Segít leállítani a felhasználói identitások elterjedését a kiszolgálók között.
 - Lehetővé teszi a jelszó elforgatását egyetlen helyen.
 - Az ügyfelek külső (Azure AD-) csoportokkal kezelhetik az engedélyeket.
 - Az integrált Windows-hitelesítés és a Azure Active Directory által támogatott hitelesítés más formáinak engedélyezésével megtörölheti a jelszavak tárolását.
@@ -70,7 +70,7 @@ A csoportfiók rendszergazdaként való használata javítja a kezelhetőséget 
 
 ## <a name="permissions"></a>Engedélyek
 
-Új felhasználók létrehozásához `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban. Az `ALTER ANY USER` engedélyek bármelyik adatbázis-felhasználó számára megadhatók. Az `ALTER ANY USER` engedélyt a kiszolgálói rendszergazdai fiókok, valamint az `CONTROL ON DATABASE` adatbázis-felhasználók vagy `ALTER ON DATABASE` az adatbázis-szerepkör tagjai `db_owner` is megtartják.
+Új felhasználók létrehozásához engedéllyel kell rendelkeznie az `ALTER ANY USER` adatbázisban. Az `ALTER ANY USER` engedélyek bármelyik adatbázis-felhasználó számára megadhatók. Az `ALTER ANY USER` engedélyt a kiszolgálói rendszergazdai fiókok, valamint az adatbázis-felhasználók vagy az adatbázis `CONTROL ON DATABASE` `ALTER ON DATABASE` -szerepkör tagjai is megtartják `db_owner` .
 
 Ha egy tárolt adatbázis-felhasználót szeretne létrehozni a szinapszis SQL-ben, akkor Azure AD-identitás használatával kell csatlakoznia az adatbázishoz vagy a példányhoz. Az első tárolt adatbázis-felhasználó létrehozásához az adatbázishoz kell csatlakoznia egy Azure AD-rendszergazda használatával (aki az adatbázis tulajdonosa). 
 
@@ -85,11 +85,11 @@ Minden Azure AD-hitelesítés csak akkor lehetséges, ha az Azure AD-rendszergaz
   - A többi Azure AD-ből származó, natív vagy összevont tartományi tagokból importált tagok.
   - Active Directory biztonsági csoportként létrehozott csoportokat.
 
-- A kiszolgálói szerepkörrel rendelkező `db_owner` csoportok részét képező Azure ad-felhasználók nem HASZNÁLHATJÁK az **[adatbázishoz tartozó HATÓKÖRrel rendelkező hitelesítő adatok létrehozása](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** a szinapszis SQL-re. A következő hibaüzenet jelenik meg:
+- A kiszolgálói szerepkörrel rendelkező csoportok részét képező Azure AD-felhasználók `db_owner` nem használhatják az **[ADATBÁZISHOZ tartozó hatókörrel rendelkező hitelesítő adatok létrehozása](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** a szinapszis SQL-re. A következő hibaüzenet jelenik meg:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Adja meg `db_owner` a szerepkört közvetlenül az egyes Azure ad-felhasználók számára az **adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok létrehozásakor** felmerülő problémák enyhítése érdekében.
+    Adja meg a `db_owner` szerepkört közvetlenül az egyes Azure ad-felhasználók számára az **adatbázis-HATÓKÖRREL rendelkező hitelesítő adatok létrehozásakor** felmerülő problémák enyhítése érdekében.
 
 - Ezek a rendszerfunkciók NULL értéket adnak vissza, amikor az Azure AD-rendszerbiztonsági tag alatt hajtja végre:
 
@@ -118,7 +118,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) (**nyilvános előzetes**ver
 
 - A kezelhetőség növelése érdekében javasoljuk, hogy hozzon létre egy dedikált Azure AD-csoportot rendszergazdaként.
 - Egyszerre csak egy Azure AD-rendszergazda (egy felhasználó vagy csoport) konfigurálható a szinapszis SQL-készlethez.
-  - Az SQL on-demand (előzetes verzió) Azure AD-kiszolgálói rendszerbiztonsági tagjainak (bejelentkezési funkcióinak) hozzáadásával több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) hozható létre, amelyek hozzáadhatók `sysadmin` a szerepkörhöz.
+  - Az SQL on-demand (előzetes verzió) Azure AD-kiszolgálói rendszerbiztonsági tagjainak (bejelentkezési funkcióinak) hozzáadásával több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) hozható létre, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
 - A szinapszis SQL-hez csak egy Azure AD-rendszergazda csatlakozhat a szinapszis SQL-hez egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
 - SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója**támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Ezért az eszközök és az adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.

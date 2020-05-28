@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: nitinme
-ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ff160c57b86e2269165f5fe1d2808684d2e6e86e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118266"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118533"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
@@ -58,7 +58,7 @@ Ezt a tárolót használja a modell betanításához szükséges mintaadatok fel
 
 Töltse le a [githubon](https://go.microsoft.com/fwlink/?linkid=2090451)elérhető mintaadatok letöltését. Bontsa ki az adatok mappát egy helyi mappába, és töltse fel a **/Train** mappa tartalmát a korábban létrehozott **formrecocontainer** . Az adatok tárolóba való feltöltéséhez kövesse az alábbi utasításokat: [Block blob feltöltése](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) .
 
-Másolja a tároló URL-címét. Ezt az URL-címet később az oktatóanyagban kell megadnia. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt névvel, akkor az URL-cím *https\/:/formrecostorage.blob.Core.Windows.net/formrecocontainer/* lesz.
+Másolja a tároló URL-címét. Ezt az URL-címet később az oktatóanyagban kell megadnia. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt névvel, akkor az URL-cím *https: \/ /formrecostorage.blob.Core.Windows.net/formrecocontainer/* lesz.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -73,20 +73,20 @@ A Azure Logic Apps a feladatok és munkafolyamatok automatizálására és össz
 
 A munkafolyamat beállításához kövesse az alábbi lépéseket.
 
-1. Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
+1. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
 1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás részleteit az itt látható módon. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | <*logikai alkalmazás neve*> | A logikai alkalmazás neve, amely csak betűket, számokat`-`, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
+   | **Név** | <*logikai alkalmazás neve*> | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
    | **Előfizetés** | <*Azure-előfizetés – név*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | <*Azure-Erőforrás-csoport-név*> | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](./../../azure-resource-manager/management/overview.md) neve. Ez a példa a "My-First-LA-RG" kifejezést használja. |
    | **Hely** | <*Azure-régió*> | A logikai alkalmazás adatainak tárolására szolgáló régió. Ez a példa a "West US"-t használja. |
    | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések** > **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz. Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések**  >  **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz. Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
    Megnyílik a Logikaialkalmazás-tervező, és egy bemutató videót és a gyakran használt triggereket tartalmazó oldalt jelenít meg. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
 
@@ -377,7 +377,6 @@ A logikai alkalmazás teszteléséhez használja a **/test** mappában találhat
       }
     ]
     ```
-    Sikeresen elvégezte az oktatóanyagot.
 
 ## <a name="next-steps"></a>További lépések
 

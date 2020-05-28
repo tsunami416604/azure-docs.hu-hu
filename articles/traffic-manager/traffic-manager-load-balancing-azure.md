@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757205"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020795"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
@@ -41,7 +41,7 @@ Koncepcionális szinten a szolgáltatások mindegyike külön szerepet játszik 
 * A **Application Gateway** az Application Delivery Controller (ADC) szolgáltatást nyújtja, amely különböző, 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazáshoz. Lehetővé teszi az ügyfelek számára a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezik a CPU-igényes TLS-lezárást az Application Gateway felé. Az egyéb 7. rétegbeli útválasztási képességek közé tartozik a bejövő forgalom ciklikus lekéréses eloszlása, a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, valamint az egyetlen Application Gateway mögött több webhely üzemeltetése. Application Gateway konfigurálható internetre irányuló átjáróként, csak belső átjáróként, vagy mindkettő kombinációja. A Application Gateway teljes mértékben az Azure által felügyelt, méretezhető és magasan elérhető. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **Load Balancer** az Azure Sdn stack szerves része, amely nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztási szolgáltatásokat biztosít minden UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Ebben a példában egy egyszerű webhelyet használunk, amely két típusú tartalmat kínál: a képeket és a dinamikusan megjelenített weblapokat. A webhelynek földrajzilag redundánsnak kell lennie, és a felhasználókat a legközelebbi (legalacsonyabb késésű) helyről kell kiszolgálni. Az alkalmazás fejlesztői úgy döntöttek, hogy a/images/* mintának megfelelő URL-címek a webfarm többi részétől eltérő, dedikált virtuális gépekből származnak.
 
@@ -65,7 +65,7 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>1. lépés: Traffic Manager profil létrehozása
 
-1. A Azure Portal kattintson az **erőforrás** > **létrehozása hálózatkezelés** > **Traffic Manager profil** > **létrehozása**elemre.
+1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása**elemre.
 2. Adja meg a következő alapvető információkat:
 
    * **Név**: adja meg a Traffic Manager-profilt a DNS-előtag neveként.
@@ -80,7 +80,7 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 
 ### <a name="step-2-create-the-application-gateways"></a>2. lépés: az Application Gateway létrehozása
 
-1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás** > létrehozása**hálózatkezelés** > **Application Gateway**elemre.
+1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Application Gateway**elemre.
 2. Adja meg az Application Gateway következő alapvető adatait:
 
    * **Name (név**): az Application Gateway neve.
@@ -96,7 +96,7 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 
 #### <a name="configure-url-routing-for-application-gateways"></a>URL-útválasztás konfigurálása Application Gateway-hez
 
-Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Application Gateway a kérés URL-címéhez tartozó elérésiút-mintát veszi fel a ciklikus multiplexelés eloszlása mellett. Ebben a forgatókönyvben egy elérésiút-alapú szabályt adunk hozzá, amely a "/images/\*" URL-címet a rendszerkép-kiszolgáló készlethez irányítja. Az Application Gateway URL-alapú útválasztásának konfigurálásával kapcsolatos további információkért lásd: [elérésiút-alapú szabály létrehozása Application gatewayhez](../application-gateway/application-gateway-create-url-route-portal.md).
+Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Application Gateway a kérés URL-címéhez tartozó elérésiút-mintát veszi fel a ciklikus multiplexelés eloszlása mellett. Ebben a forgatókönyvben egy elérésiút-alapú szabályt adunk hozzá, amely a "/images/" URL-címet \* a rendszerkép-kiszolgáló készlethez irányítja. Az Application Gateway URL-alapú útválasztásának konfigurálásával kapcsolatos további információkért lásd: [elérésiút-alapú szabály létrehozása Application gatewayhez](../application-gateway/application-gateway-create-url-route-portal.md).
 
 ![Application Gateway webes réteg diagramja](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -127,7 +127,7 @@ Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Appl
    + **Http-beállítás**: a szabályhoz használandó http-beállítások.
 
    > [!IMPORTANT]
-   > Elérési utak: az érvényes elérési utaknak "/" értékkel kell kezdődnie. A "\*" helyettesítő karakter csak a végén engedélyezett. Érvényes példák:/XYZ,/XYZ\*vagy/XYZ/\*.
+   > Elérési utak: az érvényes elérési utaknak "/" értékkel kell kezdődnie. A "" helyettesítő karakter \* csak a végén engedélyezett. Érvényes példák:/XYZ,/XYZ \* vagy/XYZ/ \* .
 
    ![Application Gateway "elérésiút-alapú szabály hozzáadása" panel](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
@@ -154,11 +154,11 @@ Ebben a forgatókönyvben Traffic Manager a különböző régiókban találhat�
 
 Ebben a forgatókönyvben a Load Balancer a webes rétegből származó kapcsolatokat a magas rendelkezésre állású fürtben lévő adatbázisokra terjeszti.
 
-Ha a magas rendelkezésre állású adatbázis-fürt SQL Server AlwaysOn használ, a Részletes utasításokért tekintse [meg egy vagy több always on rendelkezésre állási csoport figyelőjét](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) .
+Ha a magas rendelkezésre állású adatbázis-fürt SQL Server AlwaysOn használ, a Részletes utasításokért tekintse [meg egy vagy több always on rendelkezésre állási csoport figyelőjét](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) .
 
 A belső terheléselosztó konfigurálásával kapcsolatos további információkért lásd: [belső terheléselosztó létrehozása a Azure Portalban](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás** > létrehozása**hálózatkezelés** > **Load Balancer**elemre.
+1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**elemre.
 2. Válassza ki a terheléselosztó nevét.
 3. Állítsa a **típust** **belső**értékre, majd válassza ki a megfelelő virtuális hálózatot és alhálózatot ahhoz, hogy a terheléselosztó elérhető legyen.
 4. Az **IP-cím hozzárendelése**területen válassza a **dinamikus** vagy a **statikus**lehetőséget.

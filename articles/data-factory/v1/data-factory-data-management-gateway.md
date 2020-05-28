@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065407"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021568"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -51,7 +51,7 @@ Az adatkezelési átjáró a következő képességeket biztosítja:
 ### <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama
 Ha másolási tevékenységet használ a helyszíni és a felhő közötti adatmásoláshoz, a tevékenység átjáró használatával továbbítja az adatok átvitelét a helyszíni adatforrásból a felhőbe, és fordítva.
 
-Itt látható az adatátjáróval való másolás lépéseinek részletes adatfolyamata és összefoglalása: ![az átjárót használó adatforgalom](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Itt látható az adatátjáróval való másolás lépéseinek részletes adatfolyamata és összefoglalása: az ![ átjárót használó adatforgalom](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Az adatfejlesztő létrehoz egy átjárót egy Azure Data Factoryhoz a [Azure Portal](https://portal.azure.com) vagy a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.datafactory/)használatával.
 2. Az adatfejlesztő létrehoz egy társított szolgáltatást a helyszíni adattárakhoz az átjáró megadásával. A társított szolgáltatás beállításának részeként az adat-fejlesztő a hitelesítő adatok beállítása alkalmazás használatával határozza meg a hitelesítési típusokat és a hitelesítő adatokat. A hitelesítő adatok beállítása párbeszédpanel kommunikál az adattárral a kapcsolatok teszteléséhez és az átjáróhoz a hitelesítő adatok mentéséhez.
@@ -161,7 +161,7 @@ Győződjön meg arról, hogy a tűzfalszabályok megfelelően engedélyezve van
 Ha például egy helyszíni **adattárból egy Azure SQL Database fogadóba vagy egy Azure SQL Data Warehouse**fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
 
 * Engedélyezze a kimenő **TCP** -kommunikációt az **1433** -as porton a Windows tűzfal és a vállalati tűzfal esetében is.
-* Az Azure SQL Server tűzfalbeállítások konfigurálásával adja hozzá az átjáró-számítógép IP-címét az engedélyezett IP-címek listájához.
+* Konfigurálja a logikai SQL Server tűzfalbeállítások beállítását, és adja hozzá az átjáró-számítógép IP-címét az engedélyezett IP-címek listájához.
 
 > [!NOTE]
 > Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolás](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) használatával SQL Azure adatbázis/SQL Azure DW. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
@@ -204,8 +204,8 @@ Configuration Manager eszköz használatával megtekintheti és frissítheti a H
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló beállításainak konfigurálása
 Ha a HTTP-proxyhoz a **rendszerproxy használata** beállítást választja, az átjáró a diahost. exe. config és a diawp. exe. config fájl proxybeállításait használja. Ha nincs megadva proxy a diahost. exe. config és a diawp. exe. config fájlban, az átjáró közvetlenül a proxyn keresztül csatlakozik a Cloud Service-hez. Az alábbi eljárás útmutatást nyújt a diahost. exe. config fájl frissítéséhez.
 
-1. A Fájlkezelőben hozzon létre egy biztonságos másolatot *a C\\\\: program\\Files Microsoft adatkezelés\\Gateway\\2,0\\Shared diahost. exe. config* fájlban az eredeti fájl biztonsági mentéséhez.
-2. Indítsa el a Notepad. exe alkalmazást rendszergazdaként, és nyissa meg a *C:\\\\program\\Files\\Microsoft\\adatkezelés\\Gateway 2,0 Shared diahost. exe. config*fájlt. A system.net alapértelmezett címkéjét az alábbi kódban látható módon találja:
+1. A Fájlkezelőben hozzon létre egy biztonságos másolatot a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared \\ diahost. exe. config* fájlban az eredeti fájl biztonsági mentéséhez.
+2. Indítsa el a Notepad. exe alkalmazást rendszergazdaként, és nyissa meg a *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared \\ diahost. exe. config*fájlt. A system.net alapértelmezett címkéjét az alábbi kódban látható módon találja:
 
     ```
     <system.net>
@@ -279,7 +279,7 @@ A következő lépések végrehajtásával letilthatja/engedélyezheti az automa
 
 [Egyetlen csomópontos átjáróhoz]
 1. Indítsa el a Windows PowerShellt az átjáró-gépen.
-2. Váltson a *C\\\\: Program Files\\\\Microsoft Integration Runtime 3,0\\PowerShellScript\\ * mappára.
+2. Váltson a *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ PowerShellScript \\ * mappára.
 3. A következő parancs futtatásával kapcsolja ki az automatikus frissítés funkciót (Letiltás).
 
     ```powershell
@@ -292,7 +292,7 @@ A következő lépések végrehajtásával letilthatja/engedélyezheti az automa
     ```
    [Több csomópontos, magasan elérhető és méretezhető átjáró esetén](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Indítsa el a Windows PowerShellt az átjáró-gépen.
-2. Váltson a *C\\\\: Program Files\\\\Microsoft Integration Runtime 3,0\\PowerShellScript\\ * mappára.
+2. Váltson a *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ PowerShellScript \\ * mappára.
 3. A következő parancs futtatásával kapcsolja ki az automatikus frissítés funkciót (Letiltás).
 
     A magas rendelkezésre állási funkcióval rendelkező átjáró esetén extra AuthKey paraméter szükséges.
@@ -309,7 +309,7 @@ A következő lépések végrehajtásával letilthatja/engedélyezheti az automa
 Miután telepítette az átjárót, a következő módszerek egyikével indíthatja el adatkezelés átjáró Configuration Manager:
 
 1. A **Keresés** ablakban írja be **adatkezelés átjárót** a segédprogram eléréséhez.
-2. Futtassa a végrehajtható *ConfigManager. exe* fájlt a mappában: *C:\\\\Program Files\\Microsoft adatkezelés Gateway\\2,0\\Shared*.
+2. Futtassa a végrehajtható *ConfigManager. exe* fájlt a mappában: *C: \\ \\ Program Files \\ Microsoft adatkezelés Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Kezdőlap
 A kezdőlapon a következő műveletek végezhetők el:
@@ -364,8 +364,8 @@ Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlo
 
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
-Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
-status | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
+Name | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
+Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
 Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.
 Processzorhasználat | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
@@ -378,7 +378,7 @@ Ezen a lapon néhány olyan beállítás látható, amely több értelmet mutat,
 ### <a name="gateway-status"></a>Átjáró állapota
 Az alábbi táblázat egy **átjáró-csomópont**lehetséges állapotát tartalmazza:
 
-status  | Megjegyzések/forgatókönyvek
+Állapot  | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
 Offline | A csomópont offline állapotban van.
@@ -388,7 +388,7 @@ Inaktív | A csomópont más többségi csomópontok konfigurációjától elté
 
 A következő táblázat a **logikai átjáró**lehetséges állapotait tartalmazza. Az átjáró állapota az átjáró csomópontjainak állapotától függ.
 
-status | Megjegyzések
+Állapot | Megjegyzések
 :----- | :-------
 Regisztráció szükséges | Ehhez a logikai átjáróhoz még nincs regisztrálva csomópont
 Online | Az átjáró-csomópontok online állapotban vannak
@@ -510,7 +510,7 @@ Ez a szakasz azt ismerteti, hogyan lehet átjárót létrehozni és regisztráln
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. A Azure PowerShellban váltson a következő mappára: *C:\\\\Program Files\\Microsoft Integration Runtime\\3,0\\PowerShellScript\\*. Futtassa a *RegisterGateway. ps1* parancsot a helyi változóhoz **$Key** az alábbi parancsban látható módon. Ez a parancsfájl regisztrálja a gépen a korábban létrehozott logikai átjáróval telepített ügyfél-ügynököt.
+1. A Azure PowerShellban váltson a következő mappára: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ PowerShellScript \\ *. Futtassa a *RegisterGateway. ps1* parancsot a helyi változóhoz **$Key** az alábbi parancsban látható módon. Ez a parancsfájl regisztrálja a gépen a korábban létrehozott logikai átjáróval telepített ügyfél-ügynököt.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
