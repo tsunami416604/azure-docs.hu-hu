@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: dfacbfbc57ec536eb983394c28920da719af4b1d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82876067"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996523"
 ---
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -21,7 +21,13 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 + A [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) verziója 2.7.1846 vagy újabb 2. x verzió.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ A Python 3,6-es és 3,7-es verziójának [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 vagy újabb 2. x verziójúnak kell lennie. A Python 3,8-es verziójának a Core Tools [3. x verzióját](../articles/azure-functions/functions-run-local.md#v2) kell megadnia.
++ Az Azure Functions Core Tools verziója, amely megfelel a telepített Python-verziónak:
+
+   | Python-verzió | A Core Tools verziója |
+   | -------------- | ------------------ |
+   | Python 3,8     | [3. x verzió](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3,6<br/>Python 3.7 | [Verzió 2.7.1846 vagy újabb 2. x verzió](../articles/azure-functions/functions-run-local.md#v2) |
+  
 ::: zone-end
 
 + Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója. 

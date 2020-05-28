@@ -15,12 +15,12 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914789"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014876"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>SQL Server rendszerű virtuális gép létrehozása az Azure PowerShell-lel (klasszikus)
 
@@ -31,7 +31,7 @@ Ez a cikk a SQL Server virtuális gépek Azure-beli létrehozásával kapcsolato
 > [!NOTE] 
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-A jelen témakör Resource Manager-verziójának használatával kapcsolatban lásd: [SQL Server virtuális gép kiépítése Azure PowerShell Resource Managerrel](../sql/virtual-machines-windows-ps-sql-create.md).
+A jelen témakör Resource Manager-verziójának használatával kapcsolatban lásd: [SQL Server virtuális gép kiépítése Azure PowerShell Resource Managerrel](../../../azure-sql/virtual-machines/windows/create-sql-vm-powershell.md).
 
 ### <a name="install-and-configure-powershell"></a>A PowerShell telepítése és konfigurálása:
 1. Ha nem rendelkezik Azure-fiókkal, az [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/) biztosít.
@@ -203,8 +203,8 @@ Miután bejelentkezett a gépre a távoli asztal használatával, konfigurálja 
 
 A Virtual Machines és a [Virtual Machines dokumentációjában](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)további útmutatást talál a virtuális gépek üzembe helyezéséhez.
 
-Sok esetben a következő lépés az adatbázisok migrálása erre az új SQL Server VMra. Az adatbázis-áttelepítési útmutató: [adatbázis áttelepítése Azure-beli virtuális gépen SQL Server](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Sok esetben a következő lépés az adatbázisok migrálása erre az új SQL Server VMra. Az adatbázis-áttelepítési útmutató: [adatbázis áttelepítése Azure-beli virtuális gépen SQL Server](../../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Ha az SQL-Virtual Machines létrehozásához is érdekli a Azure Portal használata, tekintse [meg a SQL Server virtuális gép Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md)-beli üzembe helyezésével foglalkozó témakört. Vegye figyelembe, hogy az oktatóanyag, amely végigvezeti a portálon, létrehozza a virtuális gépeket az ajánlott Resource Manager-modell használatával, nem pedig a jelen PowerShell-témakörben használt klasszikus modellt.
+Ha az SQL-Virtual Machines létrehozásához is érdekli a Azure Portal használata, tekintse [meg a SQL Server virtuális gép Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)-beli üzembe helyezésével foglalkozó témakört. Vegye figyelembe, hogy az oktatóanyag, amely végigvezeti a portálon, létrehozza a virtuális gépeket az ajánlott Resource Manager-modell használatával, nem pedig a jelen PowerShell-témakörben használt klasszikus modellt.
 
-Ezen erőforrások mellett azt javasoljuk, hogy tekintse át az [Azure Virtual Machines futó SQL Serverával kapcsolatos egyéb témaköröket](../sql/virtual-machines-windows-sql-server-iaas-overview.md)is.
+Ezen erőforrások mellett azt javasoljuk, hogy tekintse át az [Azure Virtual Machines futó SQL Serverával kapcsolatos egyéb témaköröket](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)is.

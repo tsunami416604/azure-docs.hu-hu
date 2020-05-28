@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886925"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014536"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
 
@@ -63,13 +63,13 @@ WAF szabályzat létrehozásakor alapértelmezés szerint *észlelési* módban 
 
 Az Azure által felügyelt OWASP-szabályok alapértelmezés szerint engedélyezve vannak. Ha le szeretne tiltani egy szabály csoportjának egy adott szabályát, bontsa ki a szabály csoporton belüli szabályokat, jelölje be a szabály száma előtt található jelölőnégyzetet, majd válassza a **Letiltás** lehetőséget a fenti lapon.
 
-[![Felügyelt](../media/create-waf-policy-ag/managed-rules.png) szabályok](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
+[![Felügyelt szabályok ](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>Egyéni szabályok
 
 Egyéni szabály létrehozásához válassza az egyéni **szabály hozzáadása** lehetőséget az **Egyéni szabályok** lapon. Ekkor megnyílik az egyéni szabály konfigurációja lap. Az alábbi képernyőfelvételen egy olyan egyéni szabály látható, amely egy kérelem blokkolására van konfigurálva, ha a lekérdezési karakterlánc tartalmazza a szöveges *blockme*.
 
-[![Egyéni szabály](../media/create-waf-policy-ag/edit-custom-rule.png) szerkesztése](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
+[![Egyéni szabály ](../media/create-waf-policy-ag/edit-custom-rule.png) szerkesztése](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate-your-waf-config-to-a-waf-policy"></a><a name="migrate"></a>WAF-konfiguráció migrálása WAF-házirendre
 
@@ -81,7 +81,7 @@ Ha rendelkezik meglévő WAF, előfordulhat, hogy a portálon néhány változá
 
 Megtudhatja, hogy melyik állapotban van a WAF, ha megtekinti a portálon. Ha a WAF beállításai láthatók, és a Application Gateway nézetből módosíthatók, a WAF az 1. állapotú.
 
-[![WAF-](../media/create-waf-policy-ag/waf-configure.png) konfiguráció](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
+[![WAF-konfiguráció ](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 Ha a **webalkalmazási tűzfal** lehetőséget választja, és egy kapcsolódó házirendet jelenít meg, akkor a WAF 2. vagy 3. állapotú. Ha a házirendbe való navigálás után **csak** az egyéni szabályokat és a társított Application Gateway átjárókat jeleníti meg, akkor csak az egyéni szabályok érvényesek.
 
@@ -97,9 +97,20 @@ Ha egyéni szabályok csak WAF szabályzattal rendelkeznek, akkor érdemes lehet
 
 Az egyéni szabály szerkesztése csak a WAF házirend le van tiltva. A WAF beállításainak, például a szabályok letiltásának, a kizárások hozzáadásának és más beállításoknak a szerkesztéséhez át kell térnie egy új, legfelső szintű tűzfalszabály-erőforrásra.
 
-Ehhez hozzon létre egy *webalkalmazási tűzfal-házirendet* , és rendelje hozzá az Ön által választott Application Gateway (ok) hoz és figyelőhöz. Az új szabályzatnak pontosan **meg** kell egyeznie a jelenlegi WAF-konfigurációval, ami azt jelenti, hogy minden egyéni szabályt, kizárást, letiltott szabályt stb. át kell másolni a létrehozandó új szabályzatba. Ha rendelkezik a Application Gatewayhoz tartozó szabályzattal, akkor folytathatja a WAF-szabályok és-beállítások módosítását. Ezt Azure PowerShell is elvégezheti. További információ: WAF- [házirend hozzárendelése meglévő Application Gatewayhoz](associate-waf-policy-existing-gateway.md).
+Ehhez hozzon létre egy *webalkalmazási tűzfal-házirendet* , és rendelje hozzá az Ön által választott Application Gateway (ok) hoz és figyelőhöz. Az új szabályzatnak pontosan meg kell egyeznie a jelenlegi WAF-konfigurációval, ami azt jelenti, hogy minden egyéni szabályt, kizárást, letiltott szabályt stb. át kell másolni a létrehozandó új szabályzatba. Ha rendelkezik a Application Gatewayhoz tartozó szabályzattal, akkor folytathatja a WAF-szabályok és-beállítások módosítását. Ezt Azure PowerShell is elvégezheti. További információ: WAF- [házirend hozzárendelése meglévő Application Gatewayhoz](associate-waf-policy-existing-gateway.md).
 
 Igény szerint áttelepítési parancsfájlt is használhat egy WAF-házirendbe való áttelepítéshez. További információ: [webalkalmazási tűzfal házirendjeinek Áttelepítése Azure PowerShell használatával](migrate-policy.md).
+
+## <a name="force-mode"></a>Kényszerített mód
+
+Ha nem szeretne mindent másolni egy olyan szabályzatba, amely pontosan megegyezik a jelenlegi konfigurációval, beállíthatja a WAF "Force" módba. Futtassa a következő Azure PowerShell kódot, és a WAF kényszerítési módban lesz. Ezt követően bármilyen WAF szabályzatot hozzárendelhet a WAF, még akkor is, ha nem ugyanazokkal a beállításokkal rendelkezik, mint a konfiguráció. 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+Ezután ProCeeS a WAF szabályzatnak az Application gatewayhez való hozzárendelésének lépéseit. További információ: WAF- [házirend hozzárendelése meglévő Application Gatewayhoz.](associate-waf-policy-existing-gateway.md)
 
 ## <a name="next-steps"></a>További lépések
 

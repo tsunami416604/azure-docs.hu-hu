@@ -10,20 +10,20 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743531"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996669"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>Gyors útmutató: értesítési központ létrehozása Azure Resource Manager sablon használatával
 
 Az Azure Notification Hubs egy könnyen használható és méretezhető leküldéses motort biztosít, amely lehetővé teszi, hogy bármilyen háttérből (Felhőbeli vagy helyszíni) bármilyen platformra (iOS, Android, Windows, Kindle stb.) küldjön értesítéseket. A szolgáltatással kapcsolatos további információkért lásd: [Mi az az Azure Notification Hubs](notification-hubs-push-notification-overview.md).
 
-Ez a rövid útmutató egy Azure Resource Manager sablonnal hozza létre az Azure Notification Hubs névteret, valamint egy "MyHub" nevű értesítési központot a névtérben.
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ez a rövid útmutató egy Azure Resource Manager sablonnal hoz létre egy Azure Notification Hubs névteret, valamint egy **MyHub** nevű értesítési központot az adott névtéren belül.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -32,8 +32,6 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 Nincsenek.
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>Notification Hubs névtér és hub létrehozása
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
@@ -48,7 +46,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 
 Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon egy Notification Hubs névtér nevét adja meg paraméterként. A sablon Ezután létrehoz egy névteret a névvel és egy **MyHub** nevű értesítési központtal az adott névtéren belül.
 
-[![Üzembe helyezés az Azure-ban](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 

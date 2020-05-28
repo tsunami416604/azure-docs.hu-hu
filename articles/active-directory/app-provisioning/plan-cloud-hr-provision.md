@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593301"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014434"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -52,7 +52,7 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
@@ -73,7 +73,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -81,10 +81,11 @@ Emellett érvényes prémium szintű Azure AD P1 vagy magasabb szintű előfizet
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure AD globális rendszergazdai hozzáférése az Azure AD Connect létesítési ügynök konfigurálásához.
+- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) az Azure ad Connect létesítési ügynök konfigurálásához.
+- Az Azure AD- [alkalmazás rendszergazdai](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) szerepköre a kiépítési alkalmazás konfigurálásához a Azure Portal
 - A Cloud HR-alkalmazás tesztelési és éles példánya.
 - Rendszergazdai jogosultságok a Cloud HR alkalmazásban egy rendszerintegrációs felhasználó létrehozásához, valamint a tesztelési célú alkalmazottak ellenőrzésének megváltoztatásához.
-- A Active Directory való felhasználók számára a [Azure ad Connect kiépítési ügynök](https://go.microsoft.com/fwlink/?linkid=847801)futtatásához a .net 4.7.1 + futtatókörnyezettel rendelkező, Windows Server 2012 vagy újabb rendszert futtató kiszolgáló szükséges.
+- A Active Directory való felhasználói üzembe helyezéshez egy Windows Server 2012 vagy újabb rendszert futtató kiszolgáló szükséges a .NET 4.7.1 + Runtime futtatásához a Azure AD Connect kiépítési ügynök üzemeltetéséhez.
 - [Azure ad Connect](../hybrid/whatis-azure-ad-connect.md) a felhasználók Active Directory és az Azure ad közötti szinkronizálásához.
 
 ### <a name="training-resources"></a>Erőforrások betanítása
@@ -248,7 +249,7 @@ Alapértelmezés szerint a Felhőbeli HR alkalmazás azon attribútuma, amely az
 
 Több egyező attribútumot is beállíthat, és hozzárendelheti a megfeleltetési prioritást. A kiértékelésük a megfeleltetések sorrendje szerint történik. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 
-[Testre szabhatja az alapértelmezett attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)is, például módosíthatja vagy törölheti a meglévő attribútumok hozzárendeléseit. Az üzleti igényeknek megfelelően új attribútum-leképezéseket is létrehozhat. További információ: a Cloud HR-alkalmazás oktatóanyaga (például [munkanap](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) a leképezésre szolgáló egyéni attribútumok listájához.
+[Testre szabhatja az alapértelmezett attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)is, például módosíthatja vagy törölheti a meglévő attribútumok hozzárendeléseit. Az üzleti igényeknek megfelelően új attribútum-leképezéseket is létrehozhat. További információ: a Cloud HR-alkalmazás oktatóanyaga (például [munkanap](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)) a leképezésre szolgáló egyéni attribútumok listájához.
 
 ### <a name="determine-user-account-status"></a>Felhasználói fiók állapotának meghatározása
 
@@ -285,7 +286,7 @@ Az összekapcsolást kezdeményezők által kezdeményezett folyamat indításak
 | | Milyen érvényes dátumokat kell figyelembe venni a felhasználói megszakítás feldolgozásához? |
 | | Hogyan befolyásolja az alkalmazottak és a függő munkavégzők a meglévő Active Directory fiókokat? |
 
-A követelményektől függően módosíthatja a leképezéseket, hogy azok megfeleljenek az integrációs céloknak. További információkért tekintse meg az adott Felhőbeli HR-alkalmazás oktatóanyagát (például a [munkanapokat](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) a leképezésre szolgáló egyéni attribútumok listájához.
+A követelményektől függően módosíthatja a leképezéseket, hogy azok megfeleljenek az integrációs céloknak. További információkért tekintse meg az adott Felhőbeli HR-alkalmazás oktatóanyagát (például a [munkanapokat](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)) a leképezésre szolgáló egyéni attribútumok listájához.
 
 ### <a name="generate-a-unique-attribute-value"></a>Egyedi attribútumérték létrehozása
 
@@ -365,7 +366,9 @@ Előfordulhat, hogy a Felhőbeli HR-felhasználó kiépítési implementációja
 
 Válassza ki a Felhőbeli HR-alkalmazást, amely igazodik a megoldás követelményeihez.
 
-**Munkanap**: Ha munkavégző profilokat szeretne importálni a munkanapokból Active Directory és Azure ad-be, tekintse meg a következőt [: oktatóanyag: munkanapok konfigurálása automatikus felhasználó](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)kiépítéséhez. Igény szerint visszaírhatja az e-mail-címet és a felhasználónevet a munkanapokra.
+**Munkanap**: Ha munkavégző profilokat szeretne importálni a munkanapokból Active Directory és Azure ad-be, tekintse meg a következőt [: oktatóanyag: munkanapok konfigurálása automatikus felhasználó](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)kiépítéséhez. Igény szerint visszaírhatja az e-mail-címet, a felhasználónevet és a telefonszámot a munkanapokra.
+
+**SAP-SuccessFactors**: munkavégző profilok importálása a SuccessFactors-ből a Active Directory és az Azure ad-be, lásd [: OKTATÓANYAG: az SAP-SuccessFactors konfigurálása a felhasználók automatikus](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)üzembe helyezéséhez. Igény szerint visszaírhatja az e-mail-címet és a felhasználónevet a SuccessFactors.
 
 ## <a name="manage-your-configuration"></a>A konfiguráció kezelése
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386731"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015369"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -152,7 +152,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 8. Jelölje be az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzetet.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
-    ![Új SQL-adatbáziskiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Kattintson a **Létrehozás**gombra.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
@@ -353,7 +353,7 @@ A megoldás létrehozása után áttekinti a felhőszolgáltatás-projektekre n�
 6. Keresse meg a *Microsoft.WindowsAzure.ConfigurationManager* NuGet-csomagot, majd telepítse a feldolgozói szerepkör projektben.
 
 ### <a name="set-project-references"></a>A projekt hivatkozásainak beállítása
-1. A ContosoAdsWeb projektben állítson be egy hivatkozást a ContosoAdsCommon projektre. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson a **hivatkozások** - **Hozzáadás hivatkozásokra**. A **Hivatkozáskezelő** párbeszédpanelen válassza a bal oldali ablaktáblában lévő **Megoldás – Projektek**, majd a **ContosoAdsCommon** lehetőséget, és végül kattintson az **OK** gombra.
+1. A ContosoAdsWeb projektben állítson be egy hivatkozást a ContosoAdsCommon projektre. Kattintson a jobb gombbal a ContosoAdsWeb projektre, majd kattintson a **hivatkozások**  -  **Hozzáadás hivatkozásokra**. A **Hivatkozáskezelő** párbeszédpanelen válassza a bal oldali ablaktáblában lévő **Megoldás – Projektek**, majd a **ContosoAdsCommon** lehetőséget, és végül kattintson az **OK** gombra.
 2. A ContosoAdsWorker projektben állítson be egy hivatkozást a ContosoAdsCommon projektre.
 
     A ContosoAdsCommon tartalmazza az Entity Framework-adatmodellt és a környezeti osztályt, amelyet az elő- és a háttéralkalmazás egyaránt használ.
@@ -398,7 +398,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 ### <a name="add-code-files"></a>Kódfájlok hozzáadása
 Ebben a szakaszban kódfájlokat fog másolni a letöltött megoldásból az új megoldásba. A következő szakaszok bemutatják és ismertetik a kód legfontosabb részeit.
 
-Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a jobb gombbal a projektre vagy mappára, majd kattintson a**meglévő elem** **hozzáadása** - lehetőségre. Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
+Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a jobb gombbal a projektre vagy **Add**mappára, majd kattintson a  -  **meglévő elem**hozzáadása lehetőségre. Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
 
 1. A ContosoAdsCommon projektben törölje a *Class1.cs* fájlt, és a helyére illessze be az *Ad.cs* és a *ContosoAdscontext.cs* fájlt a letöltött projektből.
 2. A ContosoAdsWeb projektben adja hozzá az alábbi fájlokat a letöltött projektből.

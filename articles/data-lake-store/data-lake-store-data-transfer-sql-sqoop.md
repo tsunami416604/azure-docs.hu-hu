@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839060"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015930"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
 
@@ -28,14 +28,14 @@ Az [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) egy o
 
 Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A fiók létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md) foglalkozó témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Ez a cikk feltételezi, hogy rendelkezik egy Data Lake Storage Gen1 hozzáféréssel rendelkező HDInsight Linux-fürttel.
 * **Azure SQL Database**. A létrehozásával kapcsolatos útmutatásért tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-get-started.md) című témakört.
 
 ## <a name="create-sample-tables-in-the-azure-sql-database"></a>Minta táblák létrehozása az Azure SQL Database-ben
 
-1. A kezdéshez hozzon létre két minta táblát az Azure SQL Database-ben. A [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon az adatbázishoz, majd futtassa a következő lekérdezéseket.
+1. A kezdéshez hozzon létre két minta táblát az Azure SQL Database-ben. A [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon az adatbázishoz, majd futtassa a következő lekérdezéseket.
 
     **Tábla1 létrehozása**
 
@@ -81,7 +81,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Adatok importálása Azure SQL Databaseból a Data Lake Storage Gen1ba
 
-1. Navigáljon ahhoz a könyvtárhoz, ahol elérhetők a Sqoop-csomagok. Ez a hely általában a `/usr/hdp/<version>/sqoop/bin`következő:.
+1. Navigáljon ahhoz a könyvtárhoz, ahol elérhetők a Sqoop-csomagok. Ez a hely általában a következő: `/usr/hdp/<version>/sqoop/bin` .
 
 1. Importálja a **tábla1** adatait a Data Lake Storage Gen1-fiókba. Használja a következő szintaxist:
 
@@ -89,7 +89,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
    Az **SQL-Database-Server-Name** helyőrző annak a kiszolgálónak a nevét jelöli, amelyen az Azure SQL Database fut. az **SQL-Database-Name** helyőrző az adatbázis tényleges nevét jelöli.
 
-   Például:
+   Példa:
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
@@ -113,11 +113,11 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-   Például:
+   Példa:
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Ellenőrizze, hogy az adatSQL Databasei táblába lett-e feltöltve. A [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon a Azure SQL Databasehoz, majd futtassa a következő lekérdezést.
+1. Ellenőrizze, hogy az adatSQL Databasei táblába lett-e feltöltve. A [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) vagy a Visual Studio használatával kapcsolódjon a Azure SQL Databasehoz, majd futtassa a következő lekérdezést.
 
        SELECT * FROM TABLE2
 

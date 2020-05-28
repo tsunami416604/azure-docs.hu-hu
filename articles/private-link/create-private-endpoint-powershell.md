@@ -7,21 +7,21 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 7db3ac13cd4e2f2e2b712f9d53b86f9ccda5e736
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583771"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021721"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy Azure Private-végponttal rendelkező SQL Database-kiszolgálót Azure PowerShell használatával. Ezután biztonságosan hozzáférhet a SQL Database-kiszolgálóhoz a virtuális gépről.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy Azure Private-végponttal rendelkező logikai SQL Servert Azure PowerShell használatával. Ezután biztonságosan hozzáférhet SQL Database a virtuális gépről.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot, amely a Virtual Network és a privát végpontot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)tárolja. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestUS* helyen:
 
@@ -61,7 +61,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> A `PrivateEndpointNetworkPoliciesFlag` paramétert egyszerűen összekeverheti egy másik elérhető jelzővel `PrivateLinkServiceNetworkPoliciesFlag`, mivel ezek hosszú szavak, és hasonló megjelenéssel rendelkeznek.  Győződjön meg arról, `PrivateEndpointNetworkPoliciesFlag`hogy a megfelelőt használja.
+> A paramétert egyszerűen összekeverheti `PrivateEndpointNetworkPoliciesFlag` egy másik elérhető jelzővel, `PrivateLinkServiceNetworkPoliciesFlag` mivel ezek hosszú szavak, és hasonló megjelenéssel rendelkeznek.  Győződjön meg arról, hogy a megfelelőt használja `PrivateEndpointNetworkPoliciesFlag` .
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Az alhálózat hozzárendelése a Virtual Networkhoz
 
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>SQL Database-kiszolgáló létrehozása 
+## <a name="create-a-logical-sql-server"></a>Logikai SQL-kiszolgáló létrehozása 
 
-Hozzon létre egy SQL Database-kiszolgálót a New-AzSqlServer parancs használatával. Ne feledje, hogy a SQL Database-kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
+Hozzon létre egy logikai SQL-kiszolgálót a New-AzSqlServer parancs használatával. Ne feledje, hogy a kiszolgáló nevének egyedinek kell lennie az Azure-ban, ezért a helyőrző értékét zárójelek között a saját egyedi értékkel kell helyettesítenie:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
-A Virtual Network SQL Database-kiszolgáló magánhálózati végpontja a [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+A Virtual Network-kiszolgáló magánhálózati végpontja a [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása 
-Hozzon létre egy magánhálózati DNS-zónát SQL Database Server-tartományhoz, és hozzon létre egy társítási hivatkozást a virtuális hálózattal: 
+Hozzon létre egy magánhálózati DNS-zónát SQL Database tartományhoz, és hozzon létre egy társítási hivatkozást a virtuális hálózattal: 
 
 ```azurepowershell
 
@@ -178,7 +178,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje <publicIpAddress> le az elemet az utolsó lépésből visszaadott nyilvános IP-címhez: 
+Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje le az <publicIpAddress> elemet az utolsó lépésből visszaadott nyilvános IP-címhez: 
 
 
 > [!NOTE]
@@ -195,10 +195,10 @@ mstsc /v:<publicIpAddress>
 3. Kattintson az **OK** gombra. 
 4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
+## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
 
 1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. Ne felejtse `myserver` el lecserélni az SQL-kiszolgáló nevét.
+2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. Ne felejtse el lecserélni az `myserver` SQL-kiszolgáló nevét.
 
     Ehhez hasonló üzenet jelenik meg:
     
@@ -227,8 +227,8 @@ mstsc /v:<publicIpAddress>
 7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 8. A távoli asztali kapcsolat bezárásával *myVM*. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
-Ha végzett a privát végponttal, SQL Database-kiszolgálóval és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
+Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

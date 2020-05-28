@@ -1,6 +1,6 @@
 ---
-title: CLI-példa – feladatátvételi csoport – Azure SQL Database felügyelt példány
-description: Azure CLI-példa parancsfájl egy Azure SQL Database felügyelt példány létrehozásához, a feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
+title: CLI-példa – feladatátvételi csoport – felügyelt Azure SQL-példány
+description: Azure CLI-példa parancsfájl egy felügyelt Azure SQL-példány létrehozásához, a feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8ffe40662ffaf8a1fb35a3d31acfaea78ea0fbeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9efb4e222e74f97a4f3d88639b02a86a3a6d660
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061924"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115430"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Azure SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz a CLI használatával
+# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Azure SQL felügyelt példány hozzáadása feladatátvételi csoporthoz a CLI használatával
 
 Ez az Azure CLI-példa két felügyelt példányt hoz létre, hozzáadja azokat egy feladatátvételi csoporthoz, majd teszteli a feladatátvételt az elsődleges felügyelt példányról a másodlagos felügyelt példányra.
 
@@ -36,7 +36,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást. Az erőforráscsoportot kétszer kell eltávolítania. Az erőforráscsoport eltávolításakor a rendszer először eltávolítja a felügyelt példányt és a virtuális fürtöket, de a hibaüzenettel meghiúsul `az group delete : Long running operation failed with status 'Conflict'.`. Futtassa az az Group delete parancsot a második alkalommal, hogy eltávolítsa a fennmaradó erőforrásokat és az erőforráscsoportot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást. Az erőforráscsoportot kétszer kell eltávolítania. Az erőforráscsoport eltávolításakor a rendszer először eltávolítja a felügyelt példányt és a virtuális fürtöket, de a hibaüzenettel meghiúsul `az group delete : Long running operation failed with status 'Conflict'.` . Futtassa az az Group delete parancsot a második alkalommal, hogy eltávolítsa a fennmaradó erőforrásokat és az erőforráscsoportot.
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -52,13 +52,13 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network vnet subnet](/cli/azure/network/vnet/subnet) | Virtuális hálózati alhálózati parancsok. |
 | [az Network NSG](/cli/azure/network/nsg) | Hálózati biztonsági csoport parancsai. |
 | [az Network Route-Table](/cli/azure/network/route-table) | Útválasztási táblázat parancsai |
-| [az SQL mi](/cli/azure/sql/mi) | Felügyelt példányok parancsai. |
+| [az SQL mi](/cli/azure/sql/mi) | SQL felügyelt példányok parancsai. |
 | [az Network Public-IP](/cli/azure/network/public-ip) | Hálózati nyilvános IP-címek parancsai. |
 | [az Network vnet-Gateway](/cli/azure/network/vnet-gateway) | Virtual Network átjáró parancsai. |
-| [az SQL instance-feladatátvétel-Group](/cli/azure/sql/instance-failover-group) | Felügyelt példány feladatátvételi csoportjának parancsai. |
+| [az SQL instance-feladatátvétel-Group](/cli/azure/sql/instance-failover-group) | SQL felügyelt példány feladatátvételi csoportjának parancsai. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

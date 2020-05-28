@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996074"
 ---
 # <a name="language-and-region-support-for-translator"></a>Nyelvi és területi támogatás fordítóknak
 
@@ -40,80 +40,80 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 > [!NOTE]
 > Jelenleg a neurális nyelvek egy részhalmaza érhető el az egyéni fordítóban, és fokozatosan adunk hozzá továbbikat. [Az egyéni fordítóban jelenleg elérhető nyelvek megtekintése](#customization).
 
-|Nyelv|  Nyelvkód|  V3 API|
+|Nyelv|    Nyelvkód|    V3 API|
 |:-----|:-----:|:-----|
-|búr| `af`|   Neurális|
-|Arab|    `ar`    |   Neurális|
-|Bangla|    `bn`    |   Neurális|
-|Bosnyák (latin betűs)|   `bs`    |   Neurális|
-|Bolgár| `bg`    |   Neurális|
-|Kantoni (hagyományos)|   `yue`|  Statisztikai|
-|Katalán|   `ca`    |   Statisztikai|
+|búr|    `af`|    Neurális|
+|Arab|    `ar`    |    Neurális|
+|Bangla|    `bn`    |    Neurális|
+|Bosnyák (latin betűs)|    `bs`    |    Neurális|
+|Bolgár|    `bg`    |    Neurális|
+|Kantoni (hagyományos)|    `yue`|    Statisztikai|
+|Katalán|    `ca`    |    Statisztikai|
 |kínai (egyszerűsített)|    `zh-Hans`|Neurális|
-|kínai (hagyományos)|   `zh-Hant`       |Neurális|
-|Horvát|  `hr`    |Neurális|
-|Cseh| `cs`    |   Neurális|
+|kínai (hagyományos)|    `zh-Hant`        |Neurális|
+|Horvát|    `hr`    |Neurális|
+|Cseh|    `cs`    |    Neurális|
 |Dán|    `da`        |Neurális|
-|Holland| `nl`|   Neurális|
-|Angol|   `en`    |   Neurális|
-|Észt|  `et`    |   Neurális|
-|Fidzsi|    `fj`    |   Statisztikai|
-|Filipino|  `fil`   |   Statisztikai|
-|Finn|   `fi`    |   Neurális|
-|Francia|    `fr`    |   Neurális|
-|Német|    `de`    |   Neurális|
-|Görög| `el`    |   Neurális|
-|gudzsaráti|  `gu`    |   Neurális|
+|Holland|    `nl`|    Neurális|
+|Angol|    `en`    |    Neurális|
+|Észt|    `et`    |    Neurális|
+|Fidzsi|    `fj`    |    Statisztikai|
+|Filipino|    `fil`    |    Statisztikai|
+|Finn|    `fi`    |    Neurális|
+|Francia|    `fr`    |    Neurális|
+|Német|    `de`    |    Neurális|
+|Görög|    `el`    |    Neurális|
+|gudzsaráti|    `gu`    |    Neurális|
 |Haiti kreol|    `ht`        |Statisztikai|
-|Héber |`he`   |Neurális
-|Hindi| `hi`    |   Neurális|
-|Hmong DAW| `mww`   |   Statisztikai|
-|Magyar| `hu`    |   Neurális|
-|Izlandi| `is`    |   Neurális|
-|Indonéz|    `id`    |   Statisztikai|
+|Héber    |`he`    |Neurális
+|Hindi|    `hi`    |    Neurális|
+|Hmong DAW|    `mww`    |    Statisztikai|
+|Magyar|    `hu`    |    Neurális|
+|Izlandi|    `is`    |    Neurális|
+|Indonéz|    `id`    |    Statisztikai|
 |Ír | `ga`| Neurális
-|Olasz|   `it`    |   Neurális|
-|Japán|  `ja`    |   Neurális|
+|Olasz|    `it`    |    Neurális|
+|Japán|    `ja`    |    Neurális|
 |kannada|`kn`| Neurális
-|Kiswahili| `sw`    |   Statisztikai|
-|Klingon|   `tlh`   |   Statisztikai|
-|Klingon (plqaD)|   `tlh-Qaak`  |   Statisztikai|
-|Koreai |`ko`   |   Neurális|
-|Lett|   `lv`    |   Neurális|
-|Litván|    `lt`    |   Neurális|
-|Malgas|  `mg`    |   Statisztikai|
-|Maláj| `ms`        |Statisztikai|
+|Kiswahili|    `sw`    |    Statisztikai|
+|Klingon|    `tlh`    |    Statisztikai|
+|Klingon (plqaD)|    `tlh-Qaak`    |    Statisztikai|
+|Koreai    |`ko`    |    Neurális|
+|Lett|    `lv`    |    Neurális|
+|Litván|    `lt`    |    Neurális|
+|Malgas|    `mg`    |    Statisztikai|
+|Maláj|    `ms`        |Statisztikai|
 |malajálam| `ml` | Neurális
-|Máltai|   `mt`    |   Statisztikai|
+|Máltai|    `mt`    |    Statisztikai|
 |maori| `mi`  | Neurális|
 |marathi| `mr`  | Neurális|
-|Norvég| `nb`    |   Neurális|
-|perzsa|   `fa`    |   Neurális|
-|Lengyel|    `pl`    |   Neurális|
-|Portugál (Brazília)|   `pt-br` |   Neurális|
+|Norvég|    `nb`    |    Neurális|
+|perzsa|    `fa`    |    Neurális|
+|Lengyel|    `pl`    |    Neurális|
+|Portugál (Brazília)|    `pt-br`    |    Neurális|
 |Portugál (Portugália)| `pt-pt` | Neurális
 |pandzsábi|`pa`|Neurális
-|Queretaro otomi|   `otq`   |   Statisztikai|
-|Román|  `ro`    |   Neurális|
-|Orosz|   `ru`    |   Neurális|
-|Szamoai|    `sm`    |   Statisztikai|
-|Szerb (cirill betűs)|    `sr-Cyrl`|  Statisztikai|
-|Szerb (latin betűs)|   `sr-Latn`       |Statisztikai|
-|Szlovák|    `sk`    |   Neurális|
-|Szlovén| `sl`    |   Neurális|
-|Spanyol|   `es`    |   Neurális|
-|Svéd|   `sv`    |Neurális|
-|Tahitian|  `ty`    |Statisztikai|
-|tamil| `ta`    |   Neurális|
-|telugu|    `te`    |   Neurális|
-|Thai|  `th`    |   Neurális|
-|Tongai|    `to`    |   Statisztikai|
-|Török|   `tr`        |Neurális|
-|Ukrán| `uk`    |   Neurális|
-|urdu|  `ur`    |   Statisztikai|
-|Vietnami|    `vi`    |   Neurális|
-|walesi| `cy`    |   Neurális|
-|Yucatec Maya|  `yua`   |   Statisztikai|
+|Queretaro otomi|    `otq`    |    Statisztikai|
+|Román|    `ro`    |    Neurális|
+|Orosz|    `ru`    |    Neurális|
+|Szamoai|    `sm`    |    Statisztikai|
+|Szerb (cirill betűs)|    `sr-Cyrl`|    Statisztikai|
+|Szerb (latin betűs)|    `sr-Latn`        |Statisztikai|
+|Szlovák|    `sk`    |    Neurális|
+|Szlovén|    `sl`    |    Neurális|
+|Spanyol|    `es`    |    Neurális|
+|Svéd|    `sv`    |Neurális|
+|Tahitian|    `ty`    |Statisztikai|
+|tamil|    `ta`    |    Neurális|
+|telugu|    `te`    |    Neurális|
+|Thai|    `th`    |    Neurális|
+|Tongai|    `to`    |    Statisztikai|
+|Török|    `tr`        |Neurális|
+|Ukrán|    `uk`    |    Neurális|
+|urdu|    `ur`    |    Statisztikai|
+|Vietnami|    `vi`    |    Neurális|
+|walesi|    `cy`    |    Neurális|
+|Yucatec Maya|    `yua`    |    Statisztikai|
 
 > [!NOTE]
 > A Nyelvkód `pt` alapértelmezett értéke `pt-br` , Portugál (Brazília).
@@ -224,7 +224,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Bosnyák (latin betűs)      | `bs`          |
 | Bolgár      | `bg`          |
 | kínai (egyszerűsített)      | `zh-Hans`          |
-|kínai (hagyományos)|   `zh-Hant`   |
+|kínai (hagyományos)|    `zh-Hant`    |
 | Horvát      | `hr`          |
 | Cseh      | `cs`          |
 | Dán      | `da`          |
@@ -239,15 +239,15 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Hindi      | `hi`          |
 | Magyar      | `hu`          |
 | Izlandi | `is` |
-| Indonéz|   `id`    |
-| Ír | `ga`  |
+| Indonéz|    `id`    |
+| Ír | `ga`    |
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 | Kiswahili|    `sw`    |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |
-| Malgas| `mg`    |
+| Malgas|    `mg`    |
 | maori| `mi`  |
 | Norvég      | `nb`          |
 | perzsa      | `fa`          |
@@ -255,7 +255,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Portugál (Brazília) | `pt-br` |
 | Román      | `ro`          |
 | Orosz      | `ru`          |
-| Szamoai|   `sm`    |
+| Szamoai|    `sm`    |
 | Szerb (latin betűs)      | `sr-Latn`          |
 | Szlovák     | `sk`          |
 | Szlovén      | `sl`          |

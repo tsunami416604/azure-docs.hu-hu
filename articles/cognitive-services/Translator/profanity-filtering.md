@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586796"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996159"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Káromkodás-szűrés hozzáadása a fordítóval
 
@@ -26,10 +26,10 @@ Ha nem szeretné megtekinteni a káromkodást a fordításban, akkor is, ha a fo
 A translate () metódus a "Options" paramétert veszi fel, amely tartalmazza az új "ProfanityAction" elemet. A ProfanityAction elfogadott értékei a következők: "nincs művelet", "megjelölt" és "törölve".
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>ProfanityAction és példák elfogadott értékei
-|ProfanityAction érték | Művelet | Példa: forrás – Japán | Példa: cél-angol|
+|ProfanityAction érték | Műveletek | Példa: forrás – Japán | Példa: cél-angol|
 | :---|:---|:---|:---|
 | NoAction | Default (Alapértelmezett): Ugyanaz, mint a beállítás beállítása. A káromkodás a forrás és a cél között halad át. | 彼は変態です 。 | Egy bunkó. |
-| Megjelölve | A profán szavakat az XML-címkék \< káromkodása>.. \< . /profanity>. | 彼は変態です 。 | Egy \< profán>jerk \< /profanity>. |
+| Megjelölve | A profán szavakat XML-címkék veszik körül.. \<profanity> . \</profanity> | 彼は変態です 。 | Egy \<profanity> bunkó \</profanity> . |
 | Törölve | A rendszer eltávolítja a profán szavakat a kimenetből a csere nélkül. | 彼は 。 | Ő a. |
 
 ## <a name="next-steps"></a>További lépések

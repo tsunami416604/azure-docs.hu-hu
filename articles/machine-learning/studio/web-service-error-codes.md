@@ -12,17 +12,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209519"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115441"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klasszikus) REST API hibakódok
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
- 
 A következő hibakódokat egy Azure Machine Learning Studio (klasszikus) webszolgáltatás egyik művelete is visszaküldheti.
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (400-es HTTP-állapotkód)
@@ -35,30 +33,30 @@ Ez az osztály azt jelenti, hogy a megadott argumentum érvénytelen. Ez lehet e
 | ---------- |--------------|
 | BadParameterValue | A paraméter megadott értéke nem felel meg a paraméter szabályának. |
 | BadSubscriptionId | A pontszámhoz használt előfizetés-azonosító nem az erőforrásban lévő egyik. |
-| BadVersionCall | Érvénytelen Version paraméter lett átadva az API-hívás {0}során:. A megfelelő verzió átadásához tekintse meg az API-Súgó lapot, és próbálkozzon újra. |
-| BatchJobInputsNotSpecified | A kérelemben nem voltak megadva a következő kötelező bevitel (ek): {0}. Gondoskodjon arról, hogy minden bemeneti adat meg legyen adva, majd próbálkozzon újra. |
-| BatchJobInputsTooManySpecified | A kérelem több bemenetet adott meg, mint amennyit a szolgáltatás meghatároz. Elfogadott bevitel (ek) listája: {0}. Győződjön meg arról, hogy az összes bemeneti adat helyesen van megadva, és próbálkozzon újra. |
-| BlobNameTooLong | A diagnosztikai kimenethez megadott Azure Blob Storage-elérési út {0}túl hosszú:. Rövidítse le az elérési utat, és próbálkozzon újra. |
-| BlobNotFound | Nem lehet hozzáférni a megadott Azure- {0}blobhoz.  Azure-hibaüzenet: {1}. |
+| BadVersionCall | Érvénytelen Version paraméter lett átadva az API-hívás során: {0} . A megfelelő verzió átadásához tekintse meg az API-Súgó lapot, és próbálkozzon újra. |
+| BatchJobInputsNotSpecified | A kérelemben nem voltak megadva a következő kötelező bevitel (ek): {0} . Gondoskodjon arról, hogy minden bemeneti adat meg legyen adva, majd próbálkozzon újra. |
+| BatchJobInputsTooManySpecified | A kérelem több bemenetet adott meg, mint amennyit a szolgáltatás meghatároz. Elfogadott bevitel (ek) listája: {0} . Győződjön meg arról, hogy az összes bemeneti adat helyesen van megadva, és próbálkozzon újra. |
+| BlobNameTooLong | A diagnosztikai kimenethez megadott Azure Blob Storage-elérési út túl hosszú: {0} . Rövidítse le az elérési utat, és próbálkozzon újra. |
+| BlobNotFound | Nem lehet hozzáférni a megadott Azure-blobhoz {0} .  Azure-hibaüzenet: {1} . |
 | ContainerIsEmpty | Nem adta meg az Azure Storage-tároló nevét. Adjon meg egy érvényes nevet, és próbálkozzon újra. |
 | ContainerSegmentInvalid | A tároló neve érvénytelen. Adjon meg egy érvényes nevet, és próbálkozzon újra. |
-| ContainerValidationFailed | A blob-tároló érvényesítése sikertelen volt {0}a következő hibával:. |
+| ContainerValidationFailed | A blob-tároló érvényesítése sikertelen volt a következő hibával: {0} . |
 | DataTypeNotSupported | Nem támogatott adattípus van megadva. Adjon meg érvényes adattípust, és próbálkozzon újra. |
 | DuplicateInputInBatchCall | A Batch-kérelem érvénytelen. Egyszerre csak egy és több bemenet adható meg. Távolítsa el az egyik elemet a kérelemből, majd próbálkozzon újra. |
-| ExpiryTimeInThePast | A megadott lejárati idő a múltban: {0}. Adja meg az UTC jövőbeli lejárati idejét, és próbálkozzon újra. Ha soha nem jár le, állítsa a lejárati időt NULL értékre. |
+| ExpiryTimeInThePast | A megadott lejárati idő a múltban: {0} . Adja meg az UTC jövőbeli lejárati idejét, és próbálkozzon újra. Ha soha nem jár le, állítsa a lejárati időt NULL értékre. |
 | IncompleteSettings | A diagnosztikai beállítások hiányosak. |
 | InputBlobRelativeLocationInvalid | Nem adta meg az Azure Storage-blob nevét. Adjon meg egy érvényes blob-nevet, és próbálkozzon újra. |
-| InvalidBlob | Érvénytelen blob-specifikáció a blobhoz: {0}. Győződjön meg arról, hogy a kapcsolati karakterlánc/relatív elérési út vagy az SAS-jogkivonat specifikációja helyes, és próbálkozzon újra. |
-| InvalidBlobConnectionString | A bemeneti/kimeneti Blobok egyikéhez megadott, érvénytelen kapcsolatok karakterlánca: {0}. Javítsa ki ezt, és próbálkozzon újra. |
-| InvalidBlobExtension | A blob-hivatkozás {0} : érvénytelen vagy hiányzó fájlkiterjesztés. A következő kimeneti típushoz támogatott fájlkiterjesztések: "{1}". |
-| InvalidInputNames | Érvénytelen a kérésben megadott szolgáltatás-bemeneti név (ek) {0}:. Rendelje hozzá a bemeneti adatokat a megfelelő szolgáltatási bemenetekhez, és próbálkozzon újra. |
-| InvalidOutputOverrideName | A kimeneti felülbírálás neve érvénytelen {0}:. A szolgáltatásnak nincs ilyen nevű kimeneti csomópontja. Adja át a megfelelő kimeneti csomópont nevét a felülbíráláshoz (a kis-és nagybetűk megkülönböztetése érvényes). |
-| InvalidQueryParameter | A lekérdezési paraméter{0}("") érvénytelen. {1} |
+| InvalidBlob | Érvénytelen blob-specifikáció a blobhoz: {0} . Győződjön meg arról, hogy a kapcsolati karakterlánc/relatív elérési út vagy az SAS-jogkivonat specifikációja helyes, és próbálkozzon újra. |
+| InvalidBlobConnectionString | A bemeneti/kimeneti Blobok egyikéhez megadott, érvénytelen kapcsolatok karakterlánca: {0} . Javítsa ki ezt, és próbálkozzon újra. |
+| InvalidBlobExtension | A blob-hivatkozás: {0} érvénytelen vagy hiányzó fájlkiterjesztés. A következő kimeneti típushoz támogatott fájlkiterjesztések: " {1} ". |
+| InvalidInputNames | Érvénytelen a kérésben megadott szolgáltatás-bemeneti név (ek): {0} . Rendelje hozzá a bemeneti adatokat a megfelelő szolgáltatási bemenetekhez, és próbálkozzon újra. |
+| InvalidOutputOverrideName | A kimeneti felülbírálás neve érvénytelen: {0} . A szolgáltatásnak nincs ilyen nevű kimeneti csomópontja. Adja át a megfelelő kimeneti csomópont nevét a felülbíráláshoz (a kis-és nagybetűk megkülönböztetése érvényes). |
+| InvalidQueryParameter | A lekérdezési paraméter (" {0} ") érvénytelen. {1} |
 | MissingInputBlobInformation | Hiányzó Azure Storage-blob-információ. Adjon meg érvényes karakterláncot és relatív elérési utat vagy URI-t, majd próbálkozzon újra. |
 | MissingJobId | Nem adta meg a megadott azonosítójú feladatot. A rendszer egy feladatot ad vissza, amikor első alkalommal küldi el a feladatot. Ellenőrizze, hogy helyes-e a feladatokhoz tartozó azonosító, majd próbálkozzon újra. |
 | MissingKeys | Nincsenek megadva kulcsok, vagy az elsődleges vagy a másodlagos kulcs egyike sincs megadva. |
 | MissingModelPackage | Nincs megadva modell-csomag azonosítója vagy modell-csomag. Adjon meg egy érvényes Model Package ID-t vagy modell-csomagot, és próbálkozzon újra. |
-| MissingOutputOverrideSpecification | A kérelemből hiányzik a blob-specifikáció a kimenet {0}felülbírálásához. Adjon meg egy érvényes blob-helyet a kérelemben, vagy távolítsa el a kimeneti specifikációt, ha nincs szükség a hely felülbírálására. |
+| MissingOutputOverrideSpecification | A kérelemből hiányzik a blob-specifikáció a kimenet felülbírálásához {0} . Adjon meg egy érvényes blob-helyet a kérelemben, vagy távolítsa el a kimeneti specifikációt, ha nincs szükség a hely felülbírálására. |
 | MissingRequestInput | A webszolgáltatás egy bemenetet vár, de nincs megadva bemenet. Győződjön meg arról, hogy az érvényes bemenetek a modellben közzétett bemeneti portok alapján vannak megadva, és próbálkozzon újra. |
 | MissingRequiredGlobalParameters | Nem minden szükséges webszolgáltatás-paraméter (ek) van megadva. Ellenőrizze, hogy helyesek-e a modul (ok) re várt paraméter (ek), és próbálkozzon újra. |
 | MissingRequiredOutputOverrides | Egy titkosított szolgáltatási végpont meghívásakor kötelező megadni a kimeneti felülbírálásokat az összes szolgáltatás kimenete számára. A kimenetek jelenleg nincsenek felülbírálások:{0} |
@@ -73,10 +71,10 @@ Ez az osztály azt jelenti, hogy a megadott argumentum érvénytelen. Ez lehet e
 | UnexpectedParameter | Váratlan paraméterek vannak megadva. Ellenőrizze, hogy az összes paraméter neve helyesen van-e megadva, csak a várt paraméterek lesznek átadva, majd próbálkozzon újra. |
 | UnknownError | Ismeretlen hiba. |
 | UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | A {0} webszolgáltatásra vonatkozó egyidejű kérelmekre vonatkozó követelmények nem módosíthatók. |
+| WebServiceConcurrentRequestRequirementInvalid | A webszolgáltatásra vonatkozó egyidejű kérelmekre vonatkozó követelmények nem módosíthatók {0} . |
 | WebServiceIdInvalid | Érvénytelen webszolgáltatás-azonosító van megadva. A webszolgáltatás azonosítójának érvényes GUID-azonosítónak kell lennie. |
-| WebServiceTooManyConcurrentRequestRequirement | Az egyidejű kérelmek nem állíthatók be több {0}értékre. |
-| WebServiceTypeInvalid | Érvénytelen a megadott webszolgáltatás-típus. Győződjön meg arról, hogy az érvényes webszolgáltatás-típus helyes, és próbálkozzon újra. Érvényes webszolgáltatás-típusok: {0}. |
+| WebServiceTooManyConcurrentRequestRequirement | Az egyidejű kérelmek nem állíthatók be több értékre {0} . |
+| WebServiceTypeInvalid | Érvénytelen a megadott webszolgáltatás-típus. Győződjön meg arról, hogy az érvényes webszolgáltatás-típus helyes, és próbálkozzon újra. Érvényes webszolgáltatás-típusok: {0} . |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (400-es HTTP-állapotkód)
  
@@ -85,7 +83,7 @@ A megadott felhasználói argumentum érvénytelen.
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | InputMismatchError | A bemeneti adatok nem felelnek meg a bemeneti port sémájának. |
-| InputParseError | A bemeneti vektor elemzése sikertelen volt.  Ellenőrizze, hogy a bemeneti vektor megfelelő számú oszloppal és adattípussal rendelkezik-e.  További részletek: {0}. |
+| InputParseError | A bemeneti vektor elemzése sikertelen volt.  Ellenőrizze, hogy a bemeneti vektor megfelelő számú oszloppal és adattípussal rendelkezik-e.  További részletek: {0} . |
 | MissingRequiredGlobalParameters | A webszolgáltatás által várt paraméter (ek) hiányoznak. Győződjön meg arról, hogy a webszolgáltatás által várt összes szükséges paraméter helyes, és próbálkozzon újra. |
 | UnexpectedParameter | Győződjön meg arról, hogy csak a webszolgáltatás által várt szükséges paraméterek lesznek átadva, majd próbálkozzon újra. |
 | UserParameterInvalid | {0} |
@@ -96,7 +94,7 @@ A kérelem érvénytelen az aktuális környezetben.
  
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
-| CannotStartJob | A feladatot nem lehet elindítani, mert {0} állapotban van. |
+| CannotStartJob | A feladatot nem lehet elindítani, mert állapotban van {0} . |
 | IncompatibleModel | A modell nem kompatibilis a kérelem verziójával. A kérelem verziója csak egyetlen DataTable kimeneti modellt támogat. |
 | MultipleInputsNotAllowed | A modell nem engedélyez több bemenetet. |
  
@@ -178,7 +176,7 @@ A végrehajtás belső hibába ütközött.
 | ClusterConfigBlobMisconfigured |  |
 | ContainerProcessTerminatedWithSystemError | A tároló folyamata rendszerhiba miatt összeomlott |
 | ContainerProcessTerminatedWithUnknownError | A tároló folyamata ismeretlen hiba miatt összeomlott |
-| ContainerValidationFailed | A blob-tároló érvényesítése sikertelen volt {0}a következő hibával:. |
+| ContainerValidationFailed | A blob-tároló érvényesítése sikertelen volt a következő hibával: {0} . |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
@@ -193,7 +191,7 @@ A végrehajtás belső hibába ütközött.
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | A port ID{0} = nem támogatott adattípusú: {1}. |
+| PortDataTypeNotSupported | A port ID = {0} nem támogatott adattípusú: {1} . |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
@@ -201,7 +199,7 @@ A végrehajtás belső hibába ütközött.
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | UnknownError |  |
-| UnknownJobStatusCode | Ismeretlen a feladathoz tartozó {0}állapotkód. |
+| UnknownJobStatusCode | Ismeretlen a feladathoz tartozó állapotkód {0} . |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
@@ -239,7 +237,7 @@ A szolgáltatás átmenetileg nem érhető el.
 | Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | NoMoreResources | Nem érhető el erőforrás a kérelemhez. |
-| RequestThrottled | A kérelem le lett szabályozva a végpont számára {0} . A végponthoz tartozó maximális Egyidejűség {1}. |
+| RequestThrottled | A kérelem le lett szabályozva a {0} végpont számára. A végponthoz tartozó maximális Egyidejűség {1} . |
 | TooManyConcurrentRequests | Túl sok egyidejű kérelem elküldése. |
 | TooManyHostsBeingInitialized | Túl sok gazdagép van inicializálva egyszerre. Vegye fontolóra a szabályozást és az újrapróbálkozást. |
 | TooManyHostsBeingInitializedPerModel | Túl sok gazdagép van inicializálva egyszerre. Vegye fontolóra a szabályozást és az újrapróbálkozást. |

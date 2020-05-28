@@ -6,21 +6,21 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 452947821d598bc3c81dea84d8ca177f1fd56950
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888139"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992793"
 ---
 # <a name="custom-translator-glossary"></a>Egyéni fordítói Szószedet
 
 Az [Egyéni fordítói](https://portal.customtranslator.azure.ai) Szószedet ismerteti azokat a feltételeket, amelyek az egyéni fordítóval való együttműködés során merülhetnek fel.
 
-| **Szó vagy kifejezés**       | **Meghatározás**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Szó vagy kifejezés**       | **Definíció**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Forrás nyelve          | A forrás nyelve a kezdéshez használt nyelv, és egy másik nyelvre (a "cél") kíván váltani.                                                                                                                                                                                                                                                                                                                                                         |
 | Cél nyelve          | A célként megadott nyelv az a nyelv, amelyet a gépi fordításnak meg kell adnia, miután megkapta a forrás nyelvét.                                                                                                                                                                                                                                                                                                                                               |

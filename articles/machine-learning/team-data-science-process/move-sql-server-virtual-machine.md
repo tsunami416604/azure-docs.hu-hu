@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721370"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022435"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -62,7 +62,7 @@ A BCP egy SQL Server telepített parancssori segédprogram, amely az adatáthely
 >
 >
 
-1. Győződjön meg arról, hogy az adatbázis és a táblák a cél SQL Server adatbázisban jönnek létre. Íme egy példa arra, hogyan végezheti el a következő `Create Database` műveleteket `Create Table` a és parancsok használatával:
+1. Győződjön meg arról, hogy az adatbázis és a táblák a cél SQL Server adatbázisban jönnek létre. Íme egy példa arra, hogyan végezheti el a következő műveleteket a `Create Database` és `Create Table` parancsok használatával:
 
     ```sql
     CREATE DATABASE <database_name>
@@ -174,7 +174,7 @@ A következő áttelepítési stratégiákat is használhatja:
 Az alábbi lehetőségeket ismertetjük:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>SQL Server-adatbázis üzembe helyezése Microsoft Azure virtuális gép varázslóban
-Az **SQL Server-adatbázis központi telepítése Microsoft Azure virtuális gépre varázsló** egyszerű és ajánlott módszer az adatok áthelyezésére egy helyszíni SQL Server-példányról egy Azure-beli virtuális gépen SQL Server. A részletes lépések, valamint a további alternatívák megvitatására lásd: [adatbázisok Áttelepítésének SQL Server Azure-beli virtuális gépen](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
+Az **SQL Server-adatbázis központi telepítése Microsoft Azure virtuális gépre varázsló** egyszerű és ajánlott módszer az adatok áthelyezésére egy helyszíni SQL Server-példányról egy Azure-beli virtuális gépen SQL Server. A részletes lépések, valamint a további alternatívák megvitatására lásd: [adatbázisok Áttelepítésének SQL Server Azure-beli virtuális gépen](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exportálás az egyszerű fájlba
 Számos módszer használható a helyszíni SQL Server adatainak tömeges exportálására az [adatok tömeges importálása és exportálása (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) című témakörben leírtak szerint. Ez a dokumentum a tömeges másolási programot (BCP) fedi le példaként. Ha az adatexportálást egy egyszerű fájlba exportálja, az importálható egy másik SQL Server-kiszolgálóra tömeges importálás használatával.
@@ -182,7 +182,7 @@ Számos módszer használható a helyszíni SQL Server adatainak tömeges export
 1. Exportálja a helyszíni SQL Server adatait egy fájlba a BCP segédprogrammal a következőképpen:
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
-2. Hozza létre az adatbázist és a táblázatot a SQL Server VM az Azure- `create database` ban `create table` a és az 1. lépésben exportált tábla sémájának használatával.
+2. Hozza létre az adatbázist és a táblázatot a SQL Server VM az Azure- `create database` ban a és az `create table` 1. lépésben exportált tábla sémájának használatával.
 3. Hozzon létre egy formázó fájlt, amely leírja az exportált/importált adatmennyiség táblázatos sémáját. A formátumú fájl részletes ismertetését lásd: [Format fájl létrehozása (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
     Fájl létrehozásának formázása a BCP SQL Server számítógépről való futtatásakor
@@ -210,9 +210,9 @@ Alább látható az adatbázis biztonsági mentési/visszaállítási lehetősé
 ![SQL Server importálási eszköz][1]
 
 ## <a name="resources"></a>További források
-[Adatbázis migrálása SQL Server Azure-beli virtuális gépen](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Adatbázis migrálása SQL Server Azure-beli virtuális gépen](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Az SQL Server használata az Azure Virtual Machinesben – áttekintés](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Az SQL Server használata az Azure Virtual Machinesben – áttekintés](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

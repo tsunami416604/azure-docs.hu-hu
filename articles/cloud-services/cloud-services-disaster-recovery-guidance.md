@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157506"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015299"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Mi a teendő az Azure Cloud Servicest befolyásoló Azure szolgáltatás kiesése esetén?
 A Microsoftnál keményen dolgozunk, hogy a szolgáltatások mindig elérhetők legyenek, amikor szüksége van rájuk. A szabályozáson kívüli erők időnként a nem tervezett szolgáltatások megszakadását okozó módokat érintik.
@@ -47,7 +47,7 @@ A Cloud Service-alkalmazások létrehozásáról és üzembe helyezéséről a [
 Az alkalmazás adatforrásaitól függően előfordulhat, hogy ellenőriznie kell az alkalmazás adatforrásának helyreállítási eljárásait.
 
 * Az Azure Storage-adatforrások esetében tekintse meg az [Azure Storage redundancia](../storage/common/storage-redundancy.md) című témakört, amely az alkalmazáshoz választott redundancia-modell alapján elérhető beállításokat vizsgálja.
-* SQL Database-források esetében olvassa el az [Áttekintés: felhőalapú Üzletmenet-folytonosság és az adatbázis](../sql-database/sql-database-business-continuity.md) vész-helyreállítása a SQL Database segítségével, hogy az alkalmazáshoz választott replikációs modell alapján elérhető lehetőségek közül a rendelkezésre álló lehetőségeket is megtekintheti.
+* SQL Database-források esetében olvassa el az [Áttekintés: felhőalapú Üzletmenet-folytonosság és az adatbázis](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) vész-helyreállítása a SQL Database segítségével, hogy az alkalmazáshoz választott replikációs modell alapján elérhető lehetőségek közül a rendelkezésre álló lehetőségeket is megtekintheti.
 
 
 ## <a name="option-3-wait-for-recovery"></a>3. lehetőség: várakozás a helyreállításra

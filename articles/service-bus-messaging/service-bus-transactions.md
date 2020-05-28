@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79d0e917ba741e72e2bbecd4a1f94a4c99e5393
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260903"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996057"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
@@ -36,8 +36,8 @@ A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, tém
 
 A tranzakciók hatókörén belül elvégezhető műveletek a következők:
 
-* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: teljes, CompleteAsync, lemondás, AbandonAsync, kézbesítetlen levelek, DeadletterAsync, késleltetés, DeferAsync, RenewLock, RenewLockAsync 
+* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**:,,,, `Complete` `CompleteAsync` `Abandon` `AbandonAsync` `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` ,`RenewLockAsync` 
 
 A fogadási műveletek nem szerepelnek, mert feltételezhető, hogy az alkalmazás a [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód használatával, egy fogadási hurokban vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -visszahívással szerzi be az üzeneteket, és csak ezután nyit meg egy tranzakció-hatókört az üzenet feldolgozásához.
 
@@ -45,7 +45,7 @@ Az üzenet (teljes, lemondás, kézbesítetlen levél, elhalasztás) a (z) és a
 
 ## <a name="transfers-and-send-via"></a>Átvitel és "Küldés"
 
-Ha engedélyezni szeretné az adatok tranzakciós *átadását*egy várólistáról a processzorra, majd egy másik várólistára, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába*, és az átviteli várólista azonnal áthelyezi az üzenetet a kívánt cél várólistára ugyanazzal a robusztus átvitelsel, amelyet az automatikus továbbítási funkció használ. Az üzenet soha nem lesz véglegesítve az átviteli várólista naplójába úgy, hogy láthatóvá válik az átviteli várólista felhasználói számára.
+Ha engedélyezni szeretné az adatok tranzakciós *átadását*egy várólistáról a processzorra, majd egy másik várólistára, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába*, és az átviteli várólista azonnal áthelyezi az üzenetet a kívánt cél várólistára ugyanazzal a robusztus átvitelsel, amelyet az autoforward funkció támaszkodik. Az üzenet soha nem lesz véglegesítve az átviteli várólista naplójába úgy, hogy láthatóvá válik az átviteli várólista felhasználói számára.
 
 A tranzakciós képesség ereje nyilvánvalóvá válik, ha maga az átviteli várólista a küldő bemeneti üzeneteinek forrása. Más szóval, Service Bus átviheti az üzenetet a célhelyre az átviteli várólistán keresztül, miközben egy teljes (vagy késleltetett) műveletet végez a bemeneti üzenetben, mindezt egyetlen atomi műveletben. 
 
@@ -97,13 +97,16 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>Időkorlát
+Egy tranzakció időtúllépése 2 perc múlva megtörténik. A tranzakció-időzítő akkor indul el, amikor a tranzakció első művelete elindul. 
+
 ## <a name="next-steps"></a>További lépések
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
-* [Service Bus entitások láncolása automatikus továbbítással](service-bus-auto-forwarding.md)
-* [Automatikus továbbítás mintája](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Service Bus entitások láncolása az autoforwarding révén](service-bus-auto-forwarding.md)
+* [Autoforward minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Atomi tranzakciók Service Bus mintával](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [Az Azure Queues és a Service Bus-várólisták összehasonlítása](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

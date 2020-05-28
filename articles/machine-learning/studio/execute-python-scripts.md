@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7d34cd8a841f7931ce85d3f9830c5497bb2f93
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118509"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python Machine learning-parancsfájlok végrehajtása Azure Machine Learning Studio (klasszikus)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A Python egy értékes eszköz, amely számos adatszakértőkből álló eszközben található. Ez a szokásos gépi tanulási munkafolyamatok minden szakaszában használatos, beleértve az adatfeltárást, a szolgáltatások kinyerését, a modellek betanítását és az érvényesítést, valamint a telepítést.
 
@@ -27,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan használható a Python-szkript végrehajtása a 
 
 ## <a name="using-the-execute-python-script-module"></a>A Python-parancsfájl végrehajtása modul használata
 
-Az elsődleges felület a Pythonhoz a Studióban (klasszikus) a [Python-szkript végrehajtása][execute-python-script] modulon keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy speciális névvel ellátott belépési pont `azureml_main`nevű függvénnyel.
+Az elsődleges felület a Pythonhoz a Studióban (klasszikus) a [Python-szkript végrehajtása][execute-python-script] modulon keresztül történik. Legfeljebb három bemenetet fogad el, és legfeljebb két kimenetet hoz létre, hasonlóan az [R-szkript végrehajtása][execute-r-script] modulhoz. A Python-kód bekerül a paraméter mezőbe egy speciális névvel ellátott belépési pont nevű függvénnyel `azureml_main` .
 
 ![Python parancsfájl-modul végrehajtása](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -62,7 +60,7 @@ A Studio-adatkészletek nem egyeznek a Panda DataFrames. Ennek eredményeképpen
 | Karakterláncok és numerikus számok| Lefordítva |
 | Panda ' NA ' | Lefordítva "hiányzó érték" |
 | Indexelő vektorok | Támogatott |
-| Nem karakterláncos oszlopnevek | Oszlop `str` nevének meghívása |
+| Nem karakterláncos oszlopnevek | Oszlop nevének meghívása `str` |
 | Ismétlődő oszlopnevek | Adja hozzá a numerikus utótagot: (1), (2), (3) és így tovább.
 
 **A Python-64 függvény összes bemeneti adatkeretének értéke a 0 és az 1 közötti számú numerikus index.*
@@ -87,7 +85,7 @@ Töltse fel a zip-fájlt adatkészletként a studióba (klasszikus). Ezután hoz
 
 ![Felhasználó által definiált Python-kód zip-fájlként feltöltve](./media/execute-python-scripts/figure6b.png)
 
-A modul kimenete azt mutatja, hogy a zip-fájl kicsomagolása megtörtént `print_hello` , és a függvény futtatása megtörtént.
+A modul kimenete azt mutatja, hogy a zip-fájl kicsomagolása megtörtént, és a függvény futtatása megtörtént `print_hello` .
 
 ![Felhasználó által definiált függvényt megjelenítő modul kimenete](./media/execute-python-scripts/figure7.png)
 

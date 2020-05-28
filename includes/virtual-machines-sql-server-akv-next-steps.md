@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784095"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014696"
 ---
 ## <a name="next-steps"></a>További lépések
 
@@ -17,9 +17,9 @@ Azure Key Vault integráció engedélyezése után engedélyezheti SQL Server ti
 
 A titkosítás többféle formában is kihasználható:
 
-* [Transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Titkosított biztonsági másolatok](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Oszlop szintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Titkosított biztonsági másolatok](/sql/relational-databases/backup-restore/backup-encryption)
+* [Oszlop szintű titkosítás (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 A következő Transact-SQL-szkriptek példákat biztosítanak ezekre a területekre vonatkozóan.
 
@@ -146,4 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 A titkosítási funkciók használatáról további információt a [EKM használata SQL Server titkosítási funkciókkal](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)című témakörben talál.
 
-Vegye figyelembe, hogy a cikkben ismertetett lépések azt feltételezik, hogy már fut SQL Server Azure-beli virtuális gépen. Ha nem, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure-ban](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)című témakört. A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további útmutatásért lásd: [SQL Server az azure Virtual Machines áttekintése](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Vegye figyelembe, hogy a cikkben ismertetett lépések azt feltételezik, hogy már fut SQL Server Azure-beli virtuális gépen. Ha nem, tekintse [meg a SQL Server virtuális gép üzembe helyezése az Azure-ban](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)című témakört. A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további útmutatásért lásd: [SQL Server az azure Virtual Machines áttekintése](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
