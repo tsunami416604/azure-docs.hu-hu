@@ -9,16 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982190"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117857"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a ML Studio (klasszikus) t az R-kód létrehozásához, teszteléséhez és végrehajtásához. A végén egy teljes előrejelző megoldás fog megjelenni.  
@@ -37,7 +35,7 @@ Az előrejelzés egy széles körben alkalmazott és nagyon hasznos analitikai m
 
 Ebben az oktatóanyagban a kaliforniai tejtermék-termelési és díjszabási adatokat használja, amelyek havi információkat tartalmaznak a tejtermékek előállításával és a tejzsír árának összehasonlításával.
 
-A cikkben használt adatok, valamint az R-parancsfájlok is letölthetők a [MachineLearningSamples-Notebooks/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)-ből. A fájlban `cadairydata.csv` lévő adatok eredetileg a Wisconsini Egyetemen elérhető információkból származnak [https://dairymarkets.com](https://dairymarkets.com).
+A cikkben használt adatok, valamint az R-parancsfájlok is letölthetők a [MachineLearningSamples-Notebooks/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)-ből. A fájlban lévő adatok `cadairydata.csv` eredetileg a Wisconsini Egyetemen elérhető információkból származnak [https://dairymarkets.com](https://dairymarkets.com) .
 
 
 
@@ -125,9 +123,9 @@ Ha jelenleg nem érti a kód utolsó sorát, olvassa el a következőt:. A cikk 
 
 A RStudio egy széles körben használt IDE az R-hez. RStudio használok a jelen útmutatóban használt R-kód némelyikének szerkesztéséhez, teszteléséhez és hibakereséséhez. Miután megtörtént az R-kód tesztelése és elkészítése, egyszerűen kivágással és beillesztéssel a RStudio-szerkesztőből egy Machine Learning Studio (klasszikus) [r script][execute-r-script] modulba.  
 
-Ha nincs telepítve az R programozási nyelv az asztali gépen, azt javasoljuk, hogy tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a következő címen [https://www.r-project.org/](https://www.r-project.org/)érhető el: átfogó r Archive Network (Cran). Letölthetők a Windows, Mac OS és a Linux/UNIX rendszerhez készült letöltések. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatmanipulációs csomagot tartalmaz.
+Ha nincs telepítve az R programozási nyelv az asztali gépen, azt javasoljuk, hogy tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a következő címen érhető el: átfogó R Archive Network (CRAN) [https://www.r-project.org/](https://www.r-project.org/) . Letölthetők a Windows, Mac OS és a Linux/UNIX rendszerhez készült letöltések. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatmanipulációs csomagot tartalmaz.
 
-Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX operációs rendszerekhez készült letöltései http://www.rstudio.com/products/RStudio/találhatók. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
+Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX operációs rendszerekhez készült letöltései találhatók http://www.rstudio.com/products/RStudio/ . Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
 
 A RStudio oktatóanyagának bemutatása [a RSTUDIO ide használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)érhető el.
 
@@ -218,7 +216,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio (klasszikus) a zip-fájlokban lévő fájlokat úgy kezeli, mintha a src/könyvtárban vannak, ezért a fájlneveket előtaggal kell elvégeznie. Ha például a zip tartalmazza a fájlokat `yourfile.R` , és `yourData.rdata` a zip gyökérkönyvtárában található, akkor a és a használatakor a `src/yourfile.R` következőt `src/yourData.rdata` fogja `source` használni `load`.
+> Azure Machine Learning Studio (klasszikus) a zip-fájlokban lévő fájlokat úgy kezeli, mintha a src/könyvtárban vannak, ezért a fájlneveket előtaggal kell elvégeznie. Ha például a zip tartalmazza a fájlokat, `yourfile.R` és a `yourData.rdata` zip gyökérkönyvtárában található, akkor a és a használatakor a következőt fogja `src/yourfile.R` `src/yourData.rdata` használni `source` `load` .
 
 Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betöltéséről. Miután létrehozta és tesztelte az előző szakaszban bemutatott R-szkriptet, tegye a következőket:
 
@@ -245,7 +243,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. A **zip-adatok** ikon kimenetének összekötése az [R-parancsfájl végrehajtása][execute-r-script] modul **parancsfájl-kötegbeli** bemenetével.
 
-1. Írja be `source()` a függvényt a zip-fájl nevével az R- [szkript végrehajtása][execute-r-script] modul kódjának ablakába. Az én esetemben begépeltem `source("src/simpleplot.R")`.  
+1. Írja be a `source()` függvényt a zip-fájl nevével az R- [szkript végrehajtása][execute-r-script] modul kódjának ablakába. Az én esetemben begépeltem `source("src/simpleplot.R")` .  
 
 1. Győződjön meg róla, hogy a **Mentés**gombra kattint.
 
@@ -305,13 +303,13 @@ Ezek az eredmények többnyire a vártnak megfelelően működnek, és a datafra
 
 #### <a name="dataset2"></a>Dataset2
 
-A Dataset2-bemenet viselkedése megegyezik a Dataset1 elemet. Ennek a bemenetnek a használatával egy második téglalap alakú táblázatot adhat át az R-kódjába. A függvény `maml.mapInputPort(2)`a 2. argumentummal továbbítja ezeket az adatfájlokat.  
+A Dataset2-bemenet viselkedése megegyezik a Dataset1 elemet. Ennek a bemenetnek a használatával egy második téglalap alakú táblázatot adhat át az R-kódjába. A függvény a `maml.mapInputPort(2)` 2. argumentummal továbbítja ezeket az adatfájlokat.  
 
 ### <a name="execute-r-script-outputs"></a>R-szkriptek kimenetének végrehajtása
 
 #### <a name="output-a-dataframe"></a>Dataframe kimenete
 
-Az R-dataframe tartalmát téglalap alakú táblázatként is kiválaszthatja az eredményül kapott Dataset1 elemet-porton `maml.mapOutputPort()` keresztül a függvény használatával. Az egyszerű R-szkriptben ezt a következő sor hajtja végre.
+Az R-dataframe tartalmát téglalap alakú táblázatként is kiválaszthatja az eredményül kapott Dataset1 elemet-porton keresztül a `maml.mapOutputPort()` függvény használatával. Az egyszerű R-szkriptben ezt a következő sor hajtja végre.
 
 ```
 maml.mapOutputPort('cadairydata')
@@ -359,7 +357,7 @@ Ha a táblázatos adatokat egy külső forrásból olvassa be az R-be, mindig é
 
 Szerencsére az egyik típust könnyen át lehet alakítani egy másikra, amíg a leképezés lehetséges. Például nem alakíthatja át a "Nevada" értéket numerikus értékké, de a faktor (kategorikus változó) értékre is konvertálhatja. Egy másik példaként átalakíthatja a numerikus 1-től az "1" karaktert vagy egy faktort.  
 
-A konverziók szintaxisa egyszerű: `as.datatype()`. Ilyen típusú átalakítási függvények a következők:
+A konverziók szintaxisa egyszerű: `as.datatype()` . Ilyen típusú átalakítási függvények a következők:
 
 * `as.numeric()`
 * `as.character()`
@@ -503,7 +501,7 @@ Van egy jó hírünk! Megkapjuk a várt eredményeket.
 
 Az idősorozat-modellek létrehozásához kényelmes, hogy egy olyan oszlop legyen, amely az idősorozat kezdete óta eltelt időt tartalmazza. Létre fogunk hozni egy új "month. Count" oszlopot.
 
-A kód rendszerezése érdekében létre fogjuk hozni az első egyszerű függvényt `num.month()`. Ezután ezt a függvényt fogjuk alkalmazni egy új oszlop létrehozásához a dataframe. Az új kód a következő.
+A kód rendszerezése érdekében létre fogjuk hozni az első egyszerű függvényt `num.month()` . Ezután ezt a függvényt fogjuk alkalmazni egy új oszlop létrehozásához a dataframe. Az új kód a következő.
 
 ```R
 ## Create a new column with the month count
@@ -559,7 +557,7 @@ Ha megtekinti a dataframe összefoglalóinak értékeit, itt valami furcsaat kel
 
 Az előrejelzési modellhez multiplikatív modellt használunk az adattrendek és a szezonális beállítások megváltoztatásához. A log-átalakítás lehetővé teszi, hogy lineáris modellt használjon, ezzel egyszerűbbé téve ezt a folyamatot. A log-transzformációt ugyanabban a függvényben lehet alkalmazni, ahol a szorzót alkalmazták.
 
-A következő kódban Definiálok egy új függvényt `log.transform()`, és alkalmazza azt a numerikus értékeket tartalmazó sorokra. Az R `Map()` függvény a `log.transform()` függvény a dataframe kijelölt oszlopaira való alkalmazására szolgál. `Map()`hasonló, `apply()` de a függvényhez több argumentumot is engedélyez. Vegye figyelembe, hogy a multiplikátorok listája a `log.transform()` függvény második argumentumát adja meg. A `na.omit()` függvény egy kis karbantartási művelet, amely gondoskodik arról, hogy ne legyenek hiányzó vagy nem definiált értékek a dataframe.
+A következő kódban Definiálok egy új függvényt, `log.transform()` és alkalmazza azt a numerikus értékeket tartalmazó sorokra. Az R `Map()` függvény a `log.transform()` függvény a dataframe kijelölt oszlopaira való alkalmazására szolgál. `Map()`hasonló, `apply()` de a függvényhez több argumentumot is engedélyez. Vegye figyelembe, hogy a multiplikátorok listája a függvény második argumentumát adja meg `log.transform()` . A `na.omit()` függvény egy kis karbantartási művelet, amely gondoskodik arról, hogy ne legyenek hiányzó vagy nem definiált értékek a dataframe.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -594,7 +592,7 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-A `log.transform()` függvényben meglehetősen sok történik. A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
+A függvényben meglehetősen sok történik `log.transform()` . A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
 
 A védekező programozás célja, hogy megakadályozza egy olyan függvény meghibásodását, amely megakadályozza a feldolgozás folytatását. A hosszú futású elemzések hirtelen meghibásodása meglehetősen idegesítő lehet a felhasználók számára. A probléma elkerülése érdekében az alapértelmezett visszatérési értékeket úgy kell megválasztani, hogy az a sérülést az alsóbb rétegbeli feldolgozásra korlátozza. Egy üzenet figyelmezteti a felhasználókat, hogy valamilyen hiba történt.
 
@@ -602,8 +600,8 @@ Ha nem használja az R-ben az R-programozást, akkor ez a kód egy kicsit nyomas
 
 1. Négy üzenet vektora van definiálva. Ezek az üzenetek a kóddal megjelenő lehetséges hibákkal és kivételekkel kapcsolatos információk közlésére szolgálnak.
 2. Minden esetben a NA értéket visszaállítom. Számos más lehetőség is van, amelyek kevesebb mellékhatással rendelkezhetnek. Nullák vektort vagy az eredeti bemeneti vektort lehet visszaadni, például:.
-3. Az ellenőrzések a függvény argumentumai szerint futnak. Minden esetben, ha a rendszer hibát észlel, egy alapértelmezett értéket ad vissza, és a `warning()` függvény egy üzenetet hoz létre. Nem úgy használok `warning()` , `stop()` mint ahogy az utóbbi leállítja a végrehajtást, pontosan azt, amit megpróbálok elkerülni. Vegye figyelembe, hogy ezt a kódot egy eljárási stílusban írtam, ahogy ebben az esetben a funkcionális megközelítés bonyolultnak és homályosnak tűnt.
-4. A rendszer becsomagolja `tryCatch()` a naplózási számításokat, hogy a kivételek ne okozzák hirtelen a feldolgozást. Az `tryCatch()` R függvények által kiváltott hibák hiányában egy leállítási jel jelenik meg, amely csak ezt teszi.
+3. Az ellenőrzések a függvény argumentumai szerint futnak. Minden esetben, ha a rendszer hibát észlel, egy alapértelmezett értéket ad vissza, és a függvény egy üzenetet hoz létre `warning()` . Nem úgy használok `warning()` `stop()` , mint ahogy az utóbbi leállítja a végrehajtást, pontosan azt, amit megpróbálok elkerülni. Vegye figyelembe, hogy ezt a kódot egy eljárási stílusban írtam, ahogy ebben az esetben a funkcionális megközelítés bonyolultnak és homályosnak tűnt.
+4. A rendszer becsomagolja a naplózási számításokat, `tryCatch()` hogy a kivételek ne okozzák hirtelen a feldolgozást. Az `tryCatch()` R függvények által kiváltott hibák hiányában egy leállítási jel jelenik meg, amely csak ezt teszi.
 
 Hajtsa végre ezt az R-kódot a kísérletben, és tekintse meg a kimeneti. log fájl nyomtatott kimenetét. Ekkor láthatja a naplóban szereplő négy oszlop átalakított értékeit, ahogy az a 13. ábrán látható.
 
@@ -752,7 +750,7 @@ A változók közötti kapcsolatokban valamilyen furcsa megjelenésű struktúra
 
 ### <a name="correlation-analysis"></a>Korrelációs elemzés
 
-A korrelációs elemzés végrehajtásához a változókat is el kell végezni. Egyszerűen használhatja az R `scale()` -függvényt, amely a központok és a skála változókat is használja. Előfordulhat, hogy ez a függvény jóval gyorsabban fut. Szeretném azonban megmutatni, hogyan lehet védekező programot használni az R-ben.
+A korrelációs elemzés végrehajtásához a változókat is el kell végezni. Egyszerűen használhatja az R- `scale()` függvényt, amely a központok és a skála változókat is használja. Előfordulhat, hogy ez a függvény jóval gyorsabban fut. Szeretném azonban megmutatni, hogyan lehet védekező programot használni az R-ben.
 
 Az `ts.detrend()` alább látható függvény mindkét műveletet végrehajtja. A következő két sornyi kód lenyomja az adatokat, majd egységesíti az értékeket.
 
@@ -801,13 +799,13 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-A `ts.detrend()` függvényben meglehetősen sok történik. A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
+A függvényben meglehetősen sok történik `ts.detrend()` . A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
 
-Már beszéltünk egy példát a védekező programozásra az érték-átalakításokban. Mindkét számítási blokk be `tryCatch()`van csomagolva. Bizonyos hibák esetén érdemes visszaadni az eredeti bemeneti vektort, más esetekben pedig nulla típusú vektort ad vissza.  
+Már beszéltünk egy példát a védekező programozásra az érték-átalakításokban. Mindkét számítási blokk be van csomagolva `tryCatch()` . Bizonyos hibák esetén érdemes visszaadni az eredeti bemeneti vektort, más esetekben pedig nulla típusú vektort ad vissza.  
 
 Vegye figyelembe, hogy a megszüntetéshez használt lineáris regresszió egy idősorozat-regresszió. A prediktív változó egy idősorozat-objektum.  
 
-Ha `ts.detrend()` meg van adva, a rendszer a dataframe érdeklődési változóit alkalmazza. Az dataframe által létrehozott `lapply()` listát a használatával `as.data.frame()`kell kényszeríteni. A védelmi szempontjai `ts.detrend()`miatt a változók egyikének feldolgozása nem akadályozza meg a többiek helyes feldolgozását.  
+Ha `ts.detrend()` meg van adva, a rendszer a dataframe érdeklődési változóit alkalmazza. Az dataframe által létrehozott listát a használatával kell kényszeríteni `lapply()` `as.data.frame()` . A védelmi szempontjai miatt a `ts.detrend()` változók egyikének feldolgozása nem akadályozza meg a többiek helyes feldolgozását.  
 
 A kód utolsó sora létrehoz egy páros-scatterplot. Az R-kód futtatása után a scatterplot eredményei a 17. ábrán láthatók.
 
@@ -925,8 +923,8 @@ outframe
 A kód első sora egy kicsit trükkös, és néhány magyarázat segíthet megérteni. A belső használatból a következő műveleteket végezheti el:
 
 1. Az "**1**" argumentummal rendelkező "**[[**" operátor kiválasztja a nem a CCF-objektumok listájának első elemében lévő késések vektorát.
-2. A `do.call()` függvény alkalmazza a `rbind()` függvényt a lista azon elemeire, amelyeket `lapply()`az ad vissza.
-3. A `data.frame()` függvény kikényszeríti a által `do.call()` előállított eredményt egy dataframe.
+2. A függvény `do.call()` alkalmazza a `rbind()` függvényt a lista azon elemeire, amelyeket az ad vissza `lapply()` .
+3. A `data.frame()` függvény kikényszeríti a által előállított eredményt `do.call()` egy dataframe.
 
 Vegye figyelembe, hogy a sorok nevei a dataframe egyik oszlopában vannak. Ezzel megőrzi a sorok nevét, amikor a [végrehajtás R-szkriptből][execute-r-script]származnak.
 
@@ -995,7 +993,7 @@ Ezzel az eredménnyel készen állunk az elemzés megkezdésére.
 
 ### <a name="create-a-training-dataset"></a>Képzési adatkészlet létrehozása
 
-A kiépített dataframe létre kell hozni egy betanítási adatkészletet. Ez az adat tartalmazza az összes észrevételt, kivéve a 2013-as év utolsó 12 számát, amely a tesztelési adatkészlet. A következő kód kijelöli a dataframe, és létrehozza a tejtermékek termelési és árképzési változóit. Ezután létrehozunk a négy termelési és árképzési változóból álló ábrákat. A Névtelen függvények segítségével megadható a mintaterület egyes kibővítései, majd megismételhető a másik két argumentum listája a következővel `Map()`:. Ha úgy gondolja, hogy a for loop a következőhöz lett kidolgozva, akkor helyes. Mivel azonban az R funkcionális nyelv, egy funkcionális megközelítést mutatunk be.
+A kiépített dataframe létre kell hozni egy betanítási adatkészletet. Ez az adat tartalmazza az összes észrevételt, kivéve a 2013-as év utolsó 12 számát, amely a tesztelési adatkészlet. A következő kód kijelöli a dataframe, és létrehozza a tejtermékek termelési és árképzési változóit. Ezután létrehozunk a négy termelési és árképzési változóból álló ábrákat. A Névtelen függvények segítségével megadható a mintaterület egyes kibővítései, majd megismételhető a másik két argumentum listája a következővel: `Map()` . Ha úgy gondolja, hogy a for loop a következőhöz lett kidolgozva, akkor helyes. Mivel azonban az R funkcionális nyelv, egy funkcionális megközelítést mutatunk be.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1057,7 +1055,7 @@ Ez a következőt hozza létre.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-A kimenetben látható`Pr(>|t|)`P értékek () esetében láthatjuk, hogy a négyzetes kifejezés nem lehet jelentős. Ezt a modellt fogom `update()` használni a modell megváltoztatásához a négyzetes kifejezés eldobásával.
+A `Pr(>|t|)` kimenetben látható P értékek () esetében láthatjuk, hogy a négyzetes kifejezés nem lehet jelentős. Ezt a modellt fogom használni a modell megváltoztatásához `update()` a négyzetes kifejezés eldobásával.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
@@ -1107,7 +1105,7 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 A trend Model esetében be kell jelentkeznie, és tartalmaznia kell az idényjellegű hatásokat. Az év hónapját a lineáris modellben lévő dummy változóként fogjuk használni, hogy rögzítse a hónapról hónapra érvényes hatást. Vegye figyelembe, hogy amikor egy modellbe bevezeti a faktor változóit, az elfogás nem számítható ki. Ha ezt nem teszi meg, a képlet túl van megadva, és az R levonja az egyik kívánt tényezőt, de megtartja az elfogási kifejezést.
 
-Mivel megfelelő trend-modellel rendelkezünk, a `update()` függvény használatával adhatjuk hozzá az új feltételeket a meglévő modellhez. A frissítési képletben az-1 az elfogási kifejezést eldobja. Folytatás a RStudio a pillanatra:
+Mivel megfelelő trend-modellel rendelkezünk, a függvény használatával `update()` adhatjuk hozzá az új feltételeket a meglévő modellhez. A frissítési képletben az-1 az elfogási kifejezést eldobja. Folytatás a RStudio a pillanatra:
 
 ```R
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1187,7 +1185,7 @@ A fennmaradó mintaterület a 25. ábrán látható.
 
 Ezek a maradványok ésszerűnek tűnnek. Az 2008-2009-es recesszió hatásának hiányában nincs különleges struktúra, amely a modellünk esetében nem számít különösen jól.
 
-A 25. ábrán látható ábra hasznos lehet a maradékokban lévő időfüggő minták észlelésére. A számítási és a megmaradt maradványok kirajzolásának explicit megközelítése, amelyet a maradékok időbeli sorrendbe helyeznek a parcellán. Ha a másik viszont úgy rajzolt `milk.lm$residuals`, hogy a mintaterület nem lett volna időbeli sorrend.
+A 25. ábrán látható ábra hasznos lehet a maradékokban lévő időfüggő minták észlelésére. A számítási és a megmaradt maradványok kirajzolásának explicit megközelítése, amelyet a maradékok időbeli sorrendbe helyeznek a parcellán. Ha a másik viszont úgy rajzolt, hogy `milk.lm$residuals` a mintaterület nem lett volna időbeli sorrend.
 
 A használatával `plot.lm()` diagnosztikai mintaterületek sorozatát is létrehozhatja.
 
@@ -1262,7 +1260,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-Ahogy az " `log.transform()` átalakítások" szakaszban tárgyalt függvényhez hasonlóan, a függvény számos hiba-ellenőrzési és kivétel-helyreállítási kódot tartalmaz. Az alkalmazott elvek ugyanazok. A munka két helyen történik `tryCatch()`. Először is exponentiated az idősorozat, mert az értékek naplóival dolgozunk. Másodszor, a tényleges RMS-hiba számítása.  
+Ahogy az `log.transform()` "átalakítások" szakaszban tárgyalt függvényhez hasonlóan, a függvény számos hiba-ellenőrzési és kivétel-helyreállítási kódot tartalmaz. Az alkalmazott elvek ugyanazok. A munka két helyen történik `tryCatch()` . Először is exponentiated az idősorozat, mert az értékek naplóival dolgozunk. Másodszor, a tényleges RMS-hiba számítása.  
 
 Az RMS-hiba mérésére szolgáló függvénnyel kell létrehozni és kiadni az RMS-hibákat tartalmazó dataframe. A trend modelhez és a teljes modellhez szezonális tényezőket tartalmazó feltételek is beletartoznak. A következő kód végzi el a feladatot a létrehozott két lineáris modell használatával.
 
@@ -1315,7 +1313,7 @@ Az R-ben számos könyv található, amely segítséget nyújt az első lépése
 * A Paul Teetor **r szakácskönyve** problémát és megoldást kínál az r használatára.  
 * Az **R in Action** by Robert Kabacoff egy másik hasznos bevezető könyv. A Companion [gyors R-webhely](https://www.statmethods.net/) hasznos erőforrás.
 * Az **r Inferno** Patrick Burns egy meglepően vicces könyv, amely számos olyan trükkös és bonyolult témakört tartalmaz, amelyek az R-ben való programozás során fordulhatnak elő. A könyv ingyenesen elérhető az [R infernonél](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Ha szeretné, hogy az R-vel kapcsolatos speciális témakörök részletesen megtekintsenek, tekintse meg a **speciális r** -t a Hadley Wickham. A könyv online verziója ingyenesen elérhető [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
+* Ha szeretné, hogy az R-vel kapcsolatos speciális témakörök részletesen megtekintsenek, tekintse meg a **speciális r** -t a Hadley Wickham. A könyv online verziója ingyenesen elérhető [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/) .
 
 Az R idősorozat-csomagok katalógusa a Cran- [feladat nézetében található: idősorozat-elemzés](https://cran.r-project.org/web/views/TimeSeries.html). Az adott idősorozat-objektum csomagjaival kapcsolatos információkért tekintse meg az adott csomag dokumentációját.
 

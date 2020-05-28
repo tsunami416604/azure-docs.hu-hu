@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 416be7de4b3cef4fb6e1bcfd09d934937f8c96d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 240e0a6469f16adee971492e70d88479c6a0bbd9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020914"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra a DMS használatával
 
-A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy helyszíni SQL Server-példányról egy [Azure SQL Database felügyelt példányra](../sql-database/sql-database-managed-instance.md). A manuális beavatkozást igénylő további módszerekhez tekintse meg a [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](../sql-database/sql-database-managed-instance-migrate.md)című cikket.
+A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat egy helyszíni SQL Server-példányról egy [Azure SQL Database felügyelt példányra](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md). A manuális beavatkozást igénylő további módszerekhez tekintse meg a [SQL Server példány áttelepítése Azure SQL Database felügyelt példányra](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)című cikket.
 
 Ebben az oktatóanyagban áttelepíti a **Adventureworks2012** -adatbázist a SQL Server helyszíni példányáról egy SQL Database felügyelt példányra Azure Database Migration Service használatával.
 
@@ -243,5 +243,5 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 ## <a name="next-steps"></a>További lépések
 
 - Ha egy oktatóanyag azt mutatja be, hogyan telepíthet át egy adatbázist felügyelt példányra a T-SQL Restore paranccsal, tekintse meg a [biztonsági másolat visszaállítása felügyelt példányra a Restore parancs használatával](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)című témakört.
-- A felügyelt példányokkal kapcsolatos információkért lásd: [Mi az a felügyelt példány](../sql-database/sql-database-managed-instance.md).
-- Az alkalmazások felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../sql-database/sql-database-managed-instance-connect-app.md).
+- A felügyelt példányokkal kapcsolatos információkért lásd: [Mi az a felügyelt példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+- Az alkalmazások felügyelt példányhoz való csatlakoztatásával kapcsolatos információkért lásd: [alkalmazások csatlakoztatása](../azure-sql/managed-instance/connect-application-instance.md).

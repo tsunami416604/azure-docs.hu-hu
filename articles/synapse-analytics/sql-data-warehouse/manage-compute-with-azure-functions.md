@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631968"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014893"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
@@ -29,7 +29,7 @@ Az Azure-függvényalkalmazás SQL-készlettel való használatához létre kell
 A sablon üzembe helyezéséhez a következő információk szükségesek:
 
 - Azon erőforráscsoport neve, amelyben az SQL-készlet példánya szerepel
-- Annak a logikai kiszolgálónak a neve, amelyen az SQL-készlet példánya található
+- Annak a kiszolgálónak a neve, amelyen az SQL-készlet példánya található
 - Az SQL-készlet példányának neve
 - Az Azure Active Directory bérlőazonosítója (Directory-azonosító)
 - Előfizetés azonosítója
@@ -101,7 +101,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függv
 
    ![Új függvény létrehozása](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. A Nyelv területen válassza a *Javascript* elemet, majd a *TimerTrigger* elemet.
+2. A nyelv területen válassza a *JavaScript*lehetőséget, majd válassza a *TimerTrigger*lehetőséget.
 
    ![Új függvény létrehozása](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függv
 
 5. Állítsa a műveleti változót a kívánt viselkedésre a következőképpen:
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -137,7 +137,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függv
 
 Ez a szakasz röviden bemutatja, hogy mire van szükség a szüneteltetési, a folytatási és a méretezési funkciók összetettebb ütemezésének megkezdéséhez.
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 
 Vertikális felskálázás 8:00-kor DW600 értékre, és vertikális leskálázás 20:00-kor DW200 értékre, minden nap.
 
@@ -146,7 +146,7 @@ Vertikális felskálázás 8:00-kor DW600 értékre, és vertikális leskáláz�
 | 1. függvény | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | 2. függvény | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 
 Napi méretezés 08:00 és DW1000 között, a leskálázás egyszer, kor DW600 16:00-kor, és 10 – DW200.
 
@@ -156,7 +156,7 @@ Napi méretezés 08:00 és DW1000 között, a leskálázás egyszer, kor DW600 1
 | 2. függvény | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
 | 3. függvény | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 
 Vertikális felskálázás 8:00-kor DW1000 értékre, és vertikális leskálázás 16:00-kor DW600 értékre a hétköznapokon. Szüneteltetés péntek 23:00-kor, folytatás hétfő reggel 7:00-kor.
 

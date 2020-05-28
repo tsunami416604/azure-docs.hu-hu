@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/30/2020
-ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d956a9c93280ac22c4707f22c0769853f0f36c83
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929332"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015148"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -38,7 +38,7 @@ Alapértelmezés szerint a HDInsight létrehoz egy metaadattár minden fürt tí
 
 * Az alapértelmezett metaadattár nem oszthatók meg más fürtökkel.
 
-* Az alapértelmezett metaadattár az alapszintű Azure SQL DB-t használja, amely öt DTU (adatbázis-tranzakciós egység) korlátot tartalmaz.
+* Az alapértelmezett metaadattár az alapszintű Azure SQL Database, amely öt DTU (adatbázis-tranzakciós egység) korlátot használ.
 Ez az alapértelmezett metaadattár jellemzően viszonylag egyszerű számítási feladatokhoz használatos. Olyan munkaterhelések, amelyek nem igényelnek több fürtöt, és nem kell megőrizniük a fürt életciklusán túli metaadatokat.
 
 * Éles számítási feladatokhoz ajánlott áttelepíteni egy külső metaadattár. További részletekért tekintse meg az alábbi szakaszt.
@@ -53,7 +53,7 @@ A HDInsight az éles fürtökhöz ajánlott egyéni metaadattárak is támogatja
 
 * Az egyéni metaadattár több fürtöt és fürtöt is csatlakoztathat ehhez a metaadattár. Például egyetlen metaadattár oszthatók meg az interaktív lekérdezés, a kaptár és a Spark-fürtök között a HDInsight-ben.
 
-* Az Ön által választott teljesítményszint alapján kell fizetnie a metaadattár (Azure SQL DB) költségeiért.
+* Egy metaadattár (Azure SQL Database) költségeiért kell fizetnie a választott teljesítményszint alapján.
 
 * Igény szerint méretezheti a metaadattár.
 
@@ -63,9 +63,9 @@ A HDInsight az éles fürtökhöz ajánlott egyéni metaadattárak is támogatja
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Az egyéni metaadattár létrehozási és konfigurációs Azure SQL Database
 
-Hozzon létre vagy rendelkezzen meglévő Azure SQL Database a HDInsight-fürthöz tartozó egyéni Hive-metaadattár beállítása előtt.  További információ: rövid útmutató [: önálló adatbázis létrehozása az Azure SQL dB-ben](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+Hozzon létre vagy rendelkezzen meglévő Azure SQL Database a HDInsight-fürthöz tartozó egyéni Hive-metaadattár beállítása előtt.  További információ: gyors útmutató [: önálló adatbázis létrehozása Azure SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
-A fürt létrehozása során a HDInsight szolgáltatásnak csatlakoznia kell a külső metaadattár, és ellenőriznie kell a hitelesítő adatait. Azure SQL Database tűzfalszabályok konfigurálásával engedélyezheti az Azure-szolgáltatások és-erőforrások számára a kiszolgáló elérését. Engedélyezze ezt a beállítást a Azure Portal a **kiszolgáló tűzfalának beállítása**elem kiválasztásával. Ezután válassza a **nincs** a **nyilvános hálózati hozzáférés megtagadása**alatt lehetőséget, és **Igen** , az **Azure-szolgáltatások és-erőforrások engedélyezése** alatt az Azure SQL Database-kiszolgálóhoz vagy-adatbázishoz való hozzáféréshez a kiszolgálóhoz. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) foglalkozó témakörben talál.
+A fürt létrehozása során a HDInsight szolgáltatásnak csatlakoznia kell a külső metaadattár, és ellenőriznie kell a hitelesítő adatait. Azure SQL Database tűzfalszabályok konfigurálásával engedélyezheti az Azure-szolgáltatások és-erőforrások számára a kiszolgáló elérését. Engedélyezze ezt a beállítást a Azure Portal a **kiszolgáló tűzfalának beállítása**elem kiválasztásával. Ezután válassza a **nincs** a **nyilvános hálózati hozzáférés megtagadása**alatt lehetőséget, és **Igen** , az **Azure-szolgáltatások és-erőforrások engedélyezése alatt a kiszolgálóhoz való hozzáféréshez** Azure SQL Database. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) foglalkozó témakörben talál.
 
 Az SQL-áruházakhoz tartozó magánhálózati végpontok nem támogatottak.
 
@@ -87,7 +87,7 @@ A fürtöt egy korábban létrehozott Azure SQL Databasere irányíthatja bármi
 
 * Ha több HDInsight-fürthöz is szeretne hozzáférni, használjon külön adatbázist az egyes fürtök metaadattár. Ha több HDInsight-fürtön keresztül oszt meg egy metaadattár, az azt jelenti, hogy a fürtök ugyanazokat a metaadatokat és a mögöttes felhasználói adatfájlokat használják.
 
-* Rendszeresen készítse elő az egyéni metaadattár biztonsági mentését. Azure SQL Database automatikusan készít biztonsági másolatokat, de a biztonsági mentés megőrzési időkerete változó. További információ: az [automatikus SQL Database biztonsági mentések](../sql-database/sql-database-automated-backups.md)ismertetése.
+* Rendszeresen készítse elő az egyéni metaadattár biztonsági mentését. Azure SQL Database automatikusan készít biztonsági másolatokat, de a biztonsági mentés megőrzési időkerete változó. További információ: az [automatikus SQL Database biztonsági mentések](../azure-sql/database/automated-backups-overview.md)ismertetése.
 
 * Keresse meg a metaadattár és a HDInsight-fürtöt ugyanabban a régióban. Ez a konfiguráció biztosítja a legmagasabb teljesítmény és a legalacsonyabb hálózati kimenő forgalom díját.
 

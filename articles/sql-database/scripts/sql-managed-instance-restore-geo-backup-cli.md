@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774458"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019843"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példányok adatbázisának visszaállítása a CLI használatával egy másik földrajzi régióba
 
@@ -28,7 +28,7 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-A felügyelt példányok egy meglévő párja: az [Azure CLI használata Azure SQL Database felügyelt példány létrehozásához](sql-database-create-configure-managed-instance-cli.md).
+A felügyelt példányok egy meglévő párja: az [Azure CLI használata egy felügyelt Azure SQL-példány létrehozásához](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -64,4 +64,4 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../../azure-sql/database/az-cli-script-samples-content-guide.md) találhat.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978175"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014815"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>ILB-figyelő konfigurálása az Azure SQL Server virtuális gépek rendelkezésre állási csoportjaihoz
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "75978175"
 > [!IMPORTANT]
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Azure Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. Javasoljuk, hogy az új központi telepítések a Resource Manager-modellt használják.
 
-A Resource Manager-modellben található always on rendelkezésre állási csoport figyelőjét a következő témakörben tekintheti meg: [Load Balancer konfigurálása az Azure-beli always on rendelkezésre állási csoporthoz](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+A Resource Manager-modellben található always on rendelkezésre állási csoport figyelőjét a következő témakörben tekintheti meg: [Load Balancer konfigurálása az Azure-beli always on rendelkezésre állási csoporthoz](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md).
 
 A rendelkezésre állási csoport olyan replikákat tartalmazhat, amelyek csak a helyszíni vagy az Azure-beli, illetve a helyszíni és az Azure-beli hibrid konfigurációkra is kiterjednek. Az Azure-replikák ugyanazon a régión belül vagy több, több virtuális hálózatot használó régióban találhatók. A cikkben ismertetett eljárások feltételezik, hogy már [konfigurált egy rendelkezésre állási csoportot](../classic/portal-sql-alwayson-availability-groups.md) , de még nem konfigurálta a figyelőt.
 
@@ -105,7 +105,7 @@ Hozzon létre egy elosztott terhelésű végpontot minden olyan virtuális géph
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. A változók beállítása után másolja a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra **>>** is megjelenik, az ENTER billentyű lenyomásával ellenőrizze, hogy a parancsfájl fut-e.
+13. A változók beállítása után másolja a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is megjelenik **>>** , az ENTER billentyű lenyomásával ellenőrizze, hogy a parancsfájl fut-e.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Szükség esetén ellenőrizze, hogy a KB2854082 telepítve van-e
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ Hozza létre a rendelkezésre állási csoport figyelőjét két lépésben. El�
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. A változók beállítása után nyisson meg egy emelt szintű Windows PowerShell-ablakot, illessze be a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra **>>** is megjelenik, nyomja le ismét az ENTER billentyűt, és győződjön meg arról, hogy a parancsfájl futása megkezdődik.
+3. A változók beállítása után nyisson meg egy emelt szintű Windows PowerShell-ablakot, illessze be a szkriptet a szövegszerkesztőből a PowerShell-munkamenetbe a futtatásához. Ha a kérdés továbbra is megjelenik **>>** , nyomja le ismét az ENTER billentyűt, és győződjön meg arról, hogy a parancsfájl futása megkezdődik.
 
 4. Ismételje meg az előző lépéseket minden egyes virtuális géphez.  
     Ez a szkript konfigurálja az IP-cím erőforrást a Cloud Service IP-címével, és más paramétereket (például a mintavételi portot) állít be. Ha az IP-cím erőforrás online állapotba kerül, az a korábban létrehozott elosztott terhelésű végponton keresztül válaszolhat a mintavételi port lekérdezésére.
