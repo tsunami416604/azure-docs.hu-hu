@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454645"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012976"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure encryption áttekintése
 
@@ -28,7 +28,7 @@ Ez a cikk áttekintést nyújt a titkosítás használatáról Microsoft Azureba
 
 ## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 
-A nyugalmi állapotban lévő adatok olyan információkat tartalmaznak, amelyek a fizikai adathordozón található állandó tárolóban találhatók, bármilyen digitális formátumban. Az adathordozó tartalmazhat mágneses vagy optikai adathordozón található fájlokat, archivált adatokat és az adatok biztonsági másolatait. Microsoft Azure különféle adattárolási megoldásokat kínál a különböző igények kielégítéséhez, többek között fájl-, lemez-, blob-és Table Storage-szolgáltatásokhoz. A Microsoft emellett titkosítást is biztosít [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos db](../../data-factory/introduction.md)és Azure Data Lake védelemmel.
+A nyugalmi állapotban lévő adatok olyan információkat tartalmaznak, amelyek a fizikai adathordozón található állandó tárolóban találhatók, bármilyen digitális formátumban. Az adathordozó tartalmazhat mágneses vagy optikai adathordozón található fájlokat, archivált adatokat és az adatok biztonsági másolatait. Microsoft Azure különféle adattárolási megoldásokat kínál a különböző igények kielégítéséhez, többek között fájl-, lemez-, blob-és Table Storage-szolgáltatásokhoz. A Microsoft emellett titkosítást is biztosít [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos db](../../data-factory/introduction.md)és Azure Data Lake védelemmel.
 
 Az inaktív adatok titkosítása a szolgáltatott szoftver (SaaS), a szolgáltatásként nyújtott platform (IaaS) és az infrastruktúra-szolgáltatás (Cloud models) között érhető el. Ez a cikk az Azure titkosítási beállításainak használatának megkönnyítésére szolgáló forrásokat összegzi és biztosítja.
 
@@ -85,11 +85,11 @@ Végül az Azure Storage ügyféloldali kódtár használatával is elvégezheti
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Inaktív adatok titkosítása Azure SQL Database
 
-A [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) egy általános célú, az Azure-ban található, olyan struktúrákat támogató adatbázis-szolgáltatás, mint például a viszonyítási adat, a JSON, a térbeli és az XML. A SQL Database támogatja a kiszolgálóoldali titkosítást a transzparens adattitkosítás (TDE) szolgáltatással és az ügyféloldali titkosítással az Always Encrypted funkció használatával.
+A [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) egy általános célú, az Azure-ban található, olyan struktúrákat támogató adatbázis-szolgáltatás, mint például a viszonyítási adat, a JSON, a térbeli és az XML. A SQL Database támogatja a kiszolgálóoldali titkosítást a transzparens adattitkosítás (TDE) szolgáltatással és az ügyféloldali titkosítással az Always Encrypted funkció használatával.
 
 #### <a name="transparent-data-encryption"></a>Transzparens adattitkosítás
 
-A [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) a [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)és [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adatfájlok valós idejű titkosítására szolgál, amely az adatbázis-rendszerindító rekordban tárolódik a helyreállítás során rendelkezésre álló adatbázis-titkosítási kulcs (adattitkosítási kulcsot) használatával.
+A [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) a [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)és [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adatfájlok valós idejű titkosítására szolgál, amely az adatbázis-rendszerindító rekordban tárolódik a helyreállítás során rendelkezésre álló adatbázis-titkosítási kulcs (adattitkosítási kulcsot) használatával.
 
 A TDE az AES és a Triple Encryption Standard (3DES) titkosítási algoritmusok használatával védi az adatfájlokat és a naplófájlokat. Az adatbázisfájl titkosítása az oldal szintjén történik. A titkosított adatbázisban lévő lapok titkosítva lesznek a lemezre írásuk előtt, és a memóriába való beolvasás során visszafejtésre kerülnek. A TDE mostantól alapértelmezés szerint engedélyezve van az újonnan létrehozott Azure SQL-adatbázisokon.
 

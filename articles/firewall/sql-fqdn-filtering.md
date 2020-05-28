@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655104"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015964"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
 
@@ -63,4 +63,4 @@ Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a port
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL proxy és az átirányítási módok megismeréséhez tekintse meg az [Azure SQL Database kapcsolódási architektúráját](../sql-database/sql-database-connectivity-architecture.md)ismertető témakört.
+Az SQL proxy és az átirányítási módok megismeréséhez tekintse meg az [Azure SQL Database kapcsolódási architektúráját](../azure-sql/database/connectivity-architecture.md)ismertető témakört.

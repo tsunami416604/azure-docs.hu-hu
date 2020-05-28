@@ -3,12 +3,12 @@ title: Azure Backup helyreállítható törlés
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791391"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116421"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup helyreállítható törlés
 
@@ -16,7 +16,10 @@ A biztonsági problémákkal, például a kártevővel, a ransomware és a behat
 
 Az egyik ilyen funkció a Soft delete. A helyreállítható törléssel akkor is, ha egy rosszindulatú színész töröl egy biztonsági másolatot (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat 14 további napig tart, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek.
 
-Az Azure [Virtual Machines szolgáltatásban](soft-delete-virtual-machines.md) az Azure-beli virtuális gépekre vonatkozó Soft delete Protection és az Azure-beli virtuális GÉPEN futó SQL Server rendszerbeli, [valamint az Azure-](soft-delete-sql-saphana-in-azure-vm.md) beli virtuális gép számítási feladataihoz tartozó SAP HANA
+A következő szolgáltatások esetében érhető el a Soft delete Protection:
+
+- [Azure-beli virtuális gépekhez készült Soft delete](soft-delete-virtual-machines.md)
+- [Az Azure-beli virtuális gépen futó SQL Server helyreállítható törlését és az Azure-beli virtuális gépek számítási feladataiban SAP HANA](soft-delete-sql-saphana-in-azure-vm.md)
 
 Ez a folyamatábra a biztonsági mentési elemek különböző lépéseit és állapotát jeleníti meg, ha a Soft delete engedélyezve van:
 
@@ -32,8 +35,8 @@ A Soft delete alapértelmezés szerint engedélyezve van az újonnan létrehozot
 
 A Soft delete letiltásához kövesse az alábbi lépéseket:
 
-1. A Azure Portal nyissa meg a tárolót, majd lépjen a **Beállítások** -> **Tulajdonságok menüpontra**.
-2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások** -> **frissítés**lehetőséget.  
+1. A Azure Portal nyissa meg a tárolót, majd lépjen a **Beállítások**  ->  **Tulajdonságok menüpontra**.
+2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások**  ->  **frissítés**lehetőséget.  
 3. A biztonsági beállítások ablaktábla **Soft delete**területén válassza a **Letiltás**lehetőséget.
 
 ![Nem kötelező törlés letiltása](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
@@ -41,7 +44,7 @@ A Soft delete letiltásához kövesse az alábbi lépéseket:
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>A Soft delete letiltása a Azure PowerShell használatával
 
 > [!IMPORTANT]
-> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. A ```Install-Module -Name Az.RecoveryServices -Force``` legújabb verziójának beszerzéséhez használja a következőt:.
+> Az az. Recoveryservices szolgáltatónál verzió, amely az Azure PS használatával történő Soft-delete használatát igényli, min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```A legújabb verziójának beszerzéséhez használja a következőt:.
 
 A letiltáshoz használja a [set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS parancsmagot.
 

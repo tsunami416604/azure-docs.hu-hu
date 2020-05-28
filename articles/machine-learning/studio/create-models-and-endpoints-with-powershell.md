@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208516"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117297"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Íme egy gyakori gépi tanulási probléma: több olyan modellt szeretne létrehozni, amely azonos képzési munkafolyamattal rendelkezik, és ugyanazt az algoritmust használja. Azonban azt szeretné, hogy a különböző betanítási adatkészletek bemenetként legyenek kiválasztva. Ebből a cikkből megtudhatja, hogyan végezheti el ezt a méretezést Azure Machine Learning Studio (klasszikus) használatával csupán egyetlen kísérlettel.
 
@@ -96,7 +94,7 @@ Most létrehozott 10 végpontot, és mindegyikük ugyanazt a betanított modellt
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A végpontok frissítése külön betanítási adatkészletek használatára a PowerShell használatával
 A következő lépés a végpontok frissítése az egyes ügyfelek egyedi adateszközeire egyedileg betanított modellekkel. Először is létre kell hoznia ezeket a modelleket a **Bike Rental Training** web szolgáltatásból. Térjünk vissza a **Bike Rental Training** webszolgáltatáshoz. 10 különböző modell létrehozásához meg kell hívnia a BES-végpontot 10 alkalommal 10 különböző betanítási adatkészlettel. Ehhez használja a **InovkeAmlWebServiceBESEndpoint** PowerShell-parancsmagot.
 
-Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell `$configContent`adnia a alkalmazásban. A következő mezőkben `AccountName` `AccountKey`: és `RelativeLocation`. Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható (*Storage* TAB). Miután rákattintott egy Storage-fiókra `AccountKey` , az a (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs*másolásával érhető el. Az `RelativeLocation` a tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű `hai`tárolóra mutat, és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra `retrain`, és nevezze el. Összefoglalva, a következő parancsfájl szükséges módosításai a, és `AccountName` `AccountKey` `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) értékre vonatkoznak.
+Emellett a blob Storage-fiókjához tartozó hitelesítő adatokat is meg kell adnia a alkalmazásban `$configContent` . A következő mezőkben: `AccountName` `AccountKey` és `RelativeLocation` . Az `AccountName` lehet az egyik fiók neve, ahogy az a **Azure Portalban** látható (*Storage* TAB). Miután rákattintott egy Storage-fiókra, az a `AccountKey` (z) alján található **hozzáférési kulcsok kezelése** gomb lenyomásával és az *elsődleges elérési kulcs*másolásával érhető el. Az a `RelativeLocation` tárolóhoz viszonyított elérési út, ahol egy új modellt fog tárolni. Például a következő parancsfájl elérési útja `hai/retrain/bike_rental/` egy nevű tárolóra mutat `hai` , és `/retrain/bike_rental/` almappák. Jelenleg nem hozhatók létre almappák a portál felhasználói felületén keresztül, de [több Azure Storage-tallózó](../../storage/common/storage-explorers.md) is lehetővé teszi. Azt javasoljuk, hogy hozzon létre egy új tárolót a tárolóban az új betanított modellek (. iLearner fájlok) tárolásához a következő módon: a tárterület lapon kattintson az alján található **Hozzáadás** gombra, és nevezze el `retrain` . Összefoglalva, a következő parancsfájl szükséges módosításai a, `AccountName` `AccountKey` és `RelativeLocation` (:) értékre vonatkoznak `"retrain/model' + $seq + '.ilearner"` .
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

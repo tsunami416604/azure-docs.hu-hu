@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e40367e07fcda572cca73a3c01d9036e322c85c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77067395"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020098"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Apache Ambari-használat az Azure HDInsight
 
@@ -24,7 +24,7 @@ Az összes fürtkonfiguráció a [Ambari felhasználói felületén](./hdinsight
 
 A HDInsight feladatátvételi vezérlő a átjárócsomóponthoz gazdagép IP-címének frissítéséhez is felelős, amely az aktuális aktív fő csomópontra mutat. Az összes Ambari-ügynök úgy van konfigurálva, hogy az állapotát és szívverését a átjárócsomóponthoz gazdagépnek jelentse. A feladatátvételi vezérlő a fürt minden csomópontján futó szolgáltatások készlete, ha nem futnak, előfordulhat, hogy a átjárócsomóponthoz feladatátvétel nem működik megfelelően, és a HTTP 502-es verzióval próbálkozik a Ambari-kiszolgáló elérésére.
 
-A átjárócsomóponthoz aktív állapotának vizsgálatához az egyik módszer az SSH használata a fürt egyik csomópontján, majd az IP- `ping headnodehost` cím és a két átjárócsomópontokkal összevetése.
+A átjárócsomóponthoz aktív állapotának vizsgálatához az egyik módszer az SSH használata a fürt egyik csomópontján, majd az `ping headnodehost` IP-cím és a két átjárócsomópontokkal összevetése.
 
 Ha a feladatátvételi vezérlő szolgáltatásai nem futnak, előfordulhat, hogy a átjárócsomóponthoz feladatátvétel nem fog megfelelően működni, ami végül nem fut a Ambari-kiszolgálóval. A feladatátvételi vezérlő szolgáltatásainak futtatásához futtassa a következőt:
 
@@ -56,7 +56,7 @@ A szolgáltatás indítási ideje a rendszerindításkor:
 
 ## <a name="ambari-database"></a>Ambari-adatbázis
 
-A HDInsight SQL Azure adatbázist hoz létre a motorháztető alatt, hogy a Ambari-kiszolgáló adatbázisának szolgáljon. Az alapértelmezett [szolgáltatási szintet a S0](../sql-database/sql-database-elastic-pool-scale.md).
+A HDInsight SQL Azure adatbázist hoz létre a motorháztető alatt, hogy a Ambari-kiszolgáló adatbázisának szolgáljon. Az alapértelmezett [szolgáltatási szintet a S0](../azure-sql/database/elastic-pool-scale.md).
 
 Ha a fürt létrehozásakor a munkavégző csomópontok száma nagyobb, mint 16, az S2 az adatbázis-szolgáltatási réteg.
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265505"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020897"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -24,6 +24,7 @@ Az Azure adatmegosztási szolgáltatással az adatszolgáltató és a fogyasztó
 Az Azure-beli adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítani az Azure-adattárhoz. Az Azure adatmegosztási szolgáltatás ezután ezt a felügyelt identitást használja az adatok olvasására és írására a pillanatkép-alapú megosztáshoz, valamint a szimbolikus hivatkozás létrehozásához a helyi megosztáshoz. 
 
 Az Azure-adattárból származó adatok megosztásához vagy fogadásához a felhasználónak legalább a következő engedélyekkel kell rendelkeznie. Az SQL-alapú megosztáshoz további engedélyek szükségesek.
+
 * Engedély az Azure-adattárba való íráshoz. Ez az engedély általában a **közreműködő** szerepkörben található.
 * Engedély a szerepkör-hozzárendelés létrehozásához az Azure-adattárban. A szerepkör-hozzárendelések létrehozásához általában a **tulajdonosi** szerepkör, a felhasználói hozzáférés rendszergazdai szerepköre, vagy a Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély hozzárendelésére vonatkozó engedély van rendelve. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. Az alábbi táblázatban találja a szükséges szerepkört.
 
@@ -35,7 +36,7 @@ Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendel
 |Azure Blob Storage| Storage blob-Adatolvasó | Storage blob adatközreműködői
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
 |Azure Data Lake Gen2 | Storage blob-Adatolvasó | Storage blob adatközreműködői
-|Azure-SQL Server | SQL-adatbázis közreműködői | SQL-adatbázis közreműködői
+|Azure SQL Server | SQL-adatbázis közreműködői | SQL-adatbázis közreműködői
 |Azure Adatkezelő-fürt | Közreműködő | Közreműködő
 |
 
@@ -48,8 +49,8 @@ SQL-alapú megosztás esetén az SQL-felhasználót az Azure-beli adatmegosztás
 |Azure Synapse Analytics (korábban SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
 
+### <a name="data-provider"></a>Adatszolgáltató
 
-### <a name="data-provider"></a>Adatszolgáltató 
 Az adatkészletek Azure-adatmegosztásban való hozzáadásához a szolgáltatói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a forrás Azure-adattárhoz. A Storage-fiók esetében például az adatmegosztási erőforrás felügyelt identitása megkapja a Storage blob adatolvasói szerepkört. 
 
 Ezt az Azure-adatmegosztási szolgáltatás automatikusan elvégzi, ha a felhasználó Azure Portalon keresztül adja hozzá az adatkészletet, és a felhasználó rendelkezik a megfelelő engedélyekkel. Például a felhasználó az Azure-beli adattár tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amely rendelkezik a Microsoft. Authorization/szerepkör-hozzárendelésekkel/írási engedéllyel. 

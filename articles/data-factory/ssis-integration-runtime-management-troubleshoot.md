@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414697"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118828"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -30,27 +30,27 @@ Ha bármilyen probléma merül fel a SSIS IR kiépítése vagy megszüntetése s
 
 Ha a hibakód InternalServerError, a szolgáltatás átmeneti problémákba ütközik, és később újra kell próbálkoznia a művelettel. Ha egy újrapróbálkozás nem segít, lépjen kapcsolatba a Azure Data Factory támogatási csapatával.
 
-Ellenkező esetben a három fő külső függőség hibákhoz vezethet: egy Azure SQL Database-kiszolgáló vagy egy felügyelt példány, egy egyéni telepítési parancsfájl és egy virtuális hálózati konfiguráció.
+Ellenkező esetben a három fő külső függőség hibát okozhat: Azure SQL Database vagy az Azure SQL felügyelt példányát, egy egyéni telepítési parancsfájlt és egy virtuális hálózati konfigurációt.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL Database kiszolgáló vagy felügyelt példány problémái
+## <a name="sql-database-or-sql-managed-instance-issues"></a>A felügyelt példányok SQL Database vagy SQL-problémái
 
-Azure SQL Database-kiszolgálóra vagy felügyelt példányra van szükség, ha SSIS IR-t helyez üzembe egy SSIS-katalógusadatbázissal. Az SSIS IR-nek hozzáféréssel kell rendelkeznie az Azure SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz. Az Azure SQL Database-kiszolgáló vagy a felügyelt példány fiókjának is szüksége van engedélyre az SSIS-katalógusadatbázis (SSISDB) létrehozásához. Ha hiba történik, a Data Factory portálján megjelenik a hibakód és egy, az SQL-kivétellel kapcsolatos részletes üzenet. Az alábbi listában található információkkal értelmezheti a hibakódokat.
+SQL Database vagy SQL felügyelt példányra van szükség, ha a SSIS IR-t egy SSIS-katalógus-adatbázissal szeretné kiépíteni. A SSIS IR-nek képesnek kell lennie a felügyelt SQL Database vagy SQL-példányhoz való hozzáférésre. Emellett a SQL Database vagy SQL felügyelt példányhoz tartozó bejelentkezési fióknak engedéllyel kell rendelkeznie a SSIS-katalógus adatbázisának létrehozásához (SSISDB). Ha hiba történik, a Data Factory portálján megjelenik a hibakód és egy, az SQL-kivétellel kapcsolatos részletes üzenet. Az alábbi listában található információkkal értelmezheti a hibakódokat.
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 Ezt a hibát akkor láthatja, ha új SSIS IR-t helyez üzembe, vagy miközben az IR fut. Ha ezt a hibát az IR üzembe helyezése során tapasztalja, akkor az SQL-kivétellel kapcsolatos részletes üzenetet találhat a hibaüzenetben, amely a következő problémák valamelyikét jelzi:
 
-* Hálózati kapcsolati hiba. Ellenőrizze, hogy az SQL Server vagy a felügyelt példány gazdagépneve elérhető-e. Azt is ellenőrizze, hogy nem blokkolja-e tűzfal vagy hálózati biztonsági csoport (NSG) az SSIS IR-t a kiszolgáló elérése során.
+* Hálózati kapcsolati hiba. Győződjön meg arról, hogy a SQL Database vagy SQL felügyelt példány állomásneve elérhető. Azt is ellenőrizze, hogy nem blokkolja-e tűzfal vagy hálózati biztonsági csoport (NSG) az SSIS IR-t a kiszolgáló elérése során.
 * A bejelentkezés sikertelen volt az SQL-hitelesítés során. A megadott fiókkal nem lehet bejelentkezni az SQL Server-adatbázisba. Ügyeljen rá, hogy helyes felhasználói fiókot adjon meg.
 * A bejelentkezés sikertelen volt a Microsoft Azure Active Directory- (Azure AD-) hitelesítés során (felügyelt identitás). Adja hozzá a gyár felügyelt identitását egy AAD-csoporthoz, és győződjön meg arról, hogy a felügyelt identitás rendelkezik hozzáférési engedélyekkel a katalógus adatbázis-kiszolgálójához.
 * Kapcsolati időtúllépés. Ezt a hibát mindig egy biztonsággal kapcsolatos konfiguráció okozza. A következő megoldást javasoljuk:
   1. Hozzon létre egy új virtuális gépet.
   1. Csatlakoztassa a virtuális GÉPET ugyanahhoz a Microsoft Azure Virtual Networkhoz, ha az IR virtuális hálózaton van.
-  1. Telepítse a SSMS, és győződjön meg arról, hogy a Azure SQL Database-kiszolgáló vagy a felügyelt példány állapota.
+  1. Telepítse a SSMS, és keresse meg a SQL Database vagy az SQL felügyelt példányának állapotát.
 
-Egyéb problémák esetén javítsa ki az SQL-kivétellel kapcsolatos részletes hibaüzenetben látható hibát. Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure SQL Database-kiszolgáló vagy a felügyelt példány támogatási csapatával.
+Egyéb problémák esetén javítsa ki az SQL-kivétellel kapcsolatos részletes hibaüzenetben látható hibát. Ha továbbra is problémákat tapasztal, lépjen kapcsolatba a SQL Database vagy az SQL felügyelt példányának támogatási csapatával.
 
-Ha a hiba akkor jelentkezik, amikor az IR fut, akkor valószínűleg a hálózati biztonsági csoport vagy a tűzfal módosításai miatt nem fér hozzá az SSIS IR munkavégző csomópontja az Azure SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz. Oldja fel az SSIS IR munkavégző csomópontjára vonatkozó zárolást, hogy az hozzáférhessen az Azure SQL Database-kiszolgálóhoz vagy a felügyelt példányhoz.
+Ha a hiba akkor jelenik meg, ha az IR fut, a hálózati biztonsági csoport vagy a tűzfal módosításai valószínűleg meggátolják, hogy a SSIS IR feldolgozó csomópont hozzáférjen SQL Database vagy SQL felügyelt példányához. Oldja fel a SSIS IR Worker csomópontot, hogy az hozzáférhessen SQL Database vagy SQL felügyelt példányhoz.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ A lehetséges megoldások a következők:
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Ez a hiba azt jelenti, hogy az Azure SQL Database-kiszolgáló vagy a felügyelt példány már rendelkezik SSISDB adatbázissal, és azt egy másik IR használja. Meg kell adnia egy másik Azure SQL Database-kiszolgálót vagy felügyelt példányt, vagy törölnie kell a meglévő SSISDB adatbázist, és újra kell indítania az új IR-t.
+Ez a hiba azt jelenti, SQL Database vagy SQL felügyelt példány már rendelkezik egy SSISDB, és azt egy másik IR használja. Meg kell adnia egy másik SQL Database vagy SQL felügyelt példányt, vagy törölnie kell a meglévő SSISDB, és újra kell indítania az új IR-t.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 Ez a hiba a következő okok valamelyike miatt jelentkezhet:
 
 * Az SSIS IR-hez konfigurált felhasználói fiók nem rendelkezik engedéllyel az adatbázis létrehozásához. Engedélyt adhat a felhasználónak az adatbázis létrehozásához.
-* Időtúllépés (például végrehajtási időtúllépés vagy adatbázis-műveleti időtúllépés) történik az adatbázis létrehozása során. Próbálja meg később újra végrehajtani a műveletet. Ha az újrapróbálkozás nem működik, lépjen kapcsolatba az Azure SQL Database-kiszolgáló vagy a felügyelt példány támogatási csapatával.
+* Időtúllépés (például végrehajtási időtúllépés vagy adatbázis-műveleti időtúllépés) történik az adatbázis létrehozása során. Próbálja meg később újra végrehajtani a műveletet. Ha az Újrapróbálkozás nem sikerül, lépjen kapcsolatba a SQL Database vagy az SQL felügyelt példányának támogatási csapatával.
 
-Egyéb problémák esetén tekintse meg az SQL-kivétel hibaüzenetét, és javítsa ki a hiba részleteiben szereplő problémát. Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az Azure SQL Database-kiszolgáló vagy a felügyelt példány támogatási csapatával.
+Egyéb problémák esetén tekintse meg az SQL-kivétel hibaüzenetét, és javítsa ki a hiba részleteiben szereplő problémát. Ha továbbra is problémákat tapasztal, lépjen kapcsolatba a SQL Database vagy az SQL felügyelt példányának támogatási csapatával.
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Az ilyen típusú hibaüzenet így néz ki: "érvénytelen objektumnév" Catalog. catalog_properties "." Ebben az esetben vagy már rendelkezik egy SSISDB nevű adatbázissal, de nem a SSIS IR hozta létre, vagy az adatbázis érvénytelen állapotban van, amelyet az utolsó SSIS IR-kiépítés során hibák okoztak. Elvetheti az SSISDB nevű meglévő adatbázist, vagy új Azure SQL Database-kiszolgálót vagy felügyelt példányt konfigurálhat az IR-hez.
+Az ilyen típusú hibaüzenet így néz ki: "érvénytelen objektumnév" Catalog. catalog_properties "." Ebben az esetben vagy már rendelkezik egy SSISDB nevű adatbázissal, de nem a SSIS IR hozta létre, vagy az adatbázis érvénytelen állapotban van, amelyet az utolsó SSIS IR-kiépítés során hibák okoztak. A meglévő adatbázist elhúzhatja a SSISDB néven, vagy beállíthat egy új SQL Database vagy SQL felügyelt példányt az IR-hez.
 
 ## <a name="custom-setup-issues"></a>Egyéni telepítési problémák
 

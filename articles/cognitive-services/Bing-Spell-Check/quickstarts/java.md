@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869805"
+ms.locfileid: "83995973"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és Javával
 
@@ -59,9 +59,9 @@ Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgá
 
 1. Hozzon létre egy nevű függvényt `check()` az API-kérelem létrehozásához és elküldéséhez. A függvényen belül adja hozzá a következő lépésekben megadott kódot. Karakterlánc létrehozása a kérés paramétereinek:
 
-   a. Rendelje hozzá a piaci kódot a `mkt` paraméterhez az `=` operátorral. 
+   1. Rendelje hozzá a piaci kódot a `mkt` paraméterhez az `=` operátorral. 
 
-   b. Adja hozzá a `mode` paramétert a `&` kezelőhöz, majd rendelje hozzá a helyesírás-ellenőrzési módot. 
+   1. Adja hozzá a `mode` paramétert a `&` kezelőhöz, majd rendelje hozzá a helyesírás-ellenőrzési módot. 
 
    ```java
    public static void check () throws Exception {

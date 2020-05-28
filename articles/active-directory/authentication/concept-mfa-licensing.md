@@ -41,7 +41,7 @@ Az Azure Multi-Factor Authentication a szervezet igényeitől függően különb
 
 A következő táblázat felsorolja az Azure Multi-Factor Authentication különböző verzióiban elérhető funkciókat. Tervezze meg a felhasználói hitelesítés biztonságossá tételének szükségességét, majd határozza meg, hogy melyik megközelítés teljesíti ezeket a követelményeket. Például bár a ingyenes Azure AD biztosít az Azure Multi-Factor Authenticationt biztosító biztonsági alapértékeket, csak a mobil hitelesítő alkalmazás használható a hitelesítési kéréshez, nem pedig telefonhíváshoz vagy SMS-hez. Ez a megközelítés akkor lehet korlátozás, ha nem biztos benne, hogy a Mobile Authentication alkalmazás telepítve van a felhasználó személyes eszközén.
 
-| Szolgáltatás | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Office 365 Business Premium, E3 vagy E5 | prémium szintű Azure AD P1 vagy P2 |
+| Funkció | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Office 365 Business Premium, E3 vagy E5 | prémium szintű Azure AD P1 vagy P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Azure AD-bérlői rendszergazdai fiókok biztosítása MFA-val | ● | ● (Csak*Azure ad globális rendszergazdai* fiókok) | ● | ● |
 | Mobile App második tényezőként | ● | ● | ● | ● |

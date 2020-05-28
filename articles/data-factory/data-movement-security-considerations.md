@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416473"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019979"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -47,7 +47,7 @@ A Data Factory minősítése a következő:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Ha érdekli az Azure megfelelősége, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi központba](https://microsoft.com/en-us/trustcenter/default.aspx). Az összes Azure- https://aka.ms/AzureCompliancemegfelelőségi ajánlat legújabb listájáért látogasson el a következőre:.
+Ha érdekli az Azure megfelelősége, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi központba](https://microsoft.com/en-us/trustcenter/default.aspx). Az összes Azure-megfelelőségi ajánlat legújabb listájáért látogasson el a következőre: https://aka.ms/AzureCompliance .
 
 Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
@@ -155,6 +155,12 @@ Az alábbi képek a saját üzemeltetésű integrációs modul használatát mut
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Tűzfal-konfigurációk és engedélyezési lista beállítása IP-címekhez
 
+> [!NOTE] 
+> Előfordulhat, hogy a megfelelő adatforrások által megkövetelt portokat kell kezelnie, vagy a vállalati tűzfal szintjén be kell állítania a tartományok engedélyezési listáját. Ez a táblázat csak Azure SQL Database, Azure SQL Data Warehouse és Azure Data Lake Storeeket használ példaként.
+
+> [!NOTE] 
+> Az Azure Data Factoryon keresztüli adatelérési stratégiákkal kapcsolatos részletekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory).
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz    
 A vállalatokban a vállalati tűzfal a szervezet központi útválasztóján fut. A Windows tűzfal démonként fut azon a helyi gépen, amelyben a saját üzemeltetésű integrációs modul telepítve van. 
 
@@ -178,7 +184,7 @@ A felhőben lévő egyes adattárakhoz az is szükséges, hogy engedélyezze az 
 
 A következő felhőalapú adattárakhoz a saját üzemeltetésű Integration Runtime-gép IP-címének engedélyezése szükséges. Az adattárak némelyike alapértelmezés szerint nem igényel engedélyezési listát. 
 
-- [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)

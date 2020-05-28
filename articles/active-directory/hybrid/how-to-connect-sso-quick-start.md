@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261202"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993490"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
 ## <a name="deploy-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés üzembe helyezése
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
 
 * **A Azure ad Connect-kiszolgáló beállítása**: Ha a bejelentkezési módszere [átmenő hitelesítést](how-to-connect-pta.md) használ, nincs szükség további előfeltételek ellenőrzésére. Ha a bejelentkezési módszerként [jelszó-kivonatolási szinkronizálást](how-to-connect-password-hash-synchronization.md) használ, és ha tűzfal van Azure ad Connect és az Azure ad között, ügyeljen a következőkre:
    - A Azure AD Connect 1.1.644.0 vagy újabb verzióját használja. 
-   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezést, akkor az a ** \*. msappproxy.net** URL-címekkel létesített kapcsolatokat a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
+   - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a ** \* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
 
     >[!NOTE]
     >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) további információért.
@@ -93,15 +93,16 @@ Kövesse ezeket az utasításokat annak ellenőrzéséhez, hogy megfelelően eng
 ![Azure Portal: Azure AD Connect panel](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> A zökkenőmentes egyszeri bejelentkezés minden egyes AD `AZUREADSSOACC` -erdőben létrehoz egy nevű számítógépfiókot a helyszíni Active Directoryban (ad). Biztonsági `AZUREADSSOACC` okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és a Active Directory egyetlen más fiókja sincs `AZUREADSSOACC` delegálási engedélyekkel a számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá.
+> A zökkenőmentes egyszeri bejelentkezés minden egyes AD-erdőben létrehoz egy nevű számítógépfiókot a helyszíni `AZUREADSSOACC` Active Directoryban (ad). `AZUREADSSOACC`Biztonsági okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és a Active Directory egyetlen más fiókja sincs delegálási engedélyekkel a `AZUREADSSOACC` számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá.
 
 >[!NOTE]
-> Ha a pass-The-hash és a hitelesítőadat-lopás mérséklési architektúrát használja a helyszíni környezetben, végezze el a megfelelő módosításokat annak biztosításához `AZUREADSSOACC` , hogy a számítógépfiók ne kerüljön be a karanténba helyezett tárolóba. 
+> Ha a pass-The-hash és a hitelesítőadat-lopás mérséklési architektúrát használja a helyszíni környezetben, végezze el a megfelelő módosításokat annak biztosításához, hogy a `AZUREADSSOACC` számítógépfiók ne kerüljön be a karanténba helyezett tárolóba. 
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: a funkció bevezetése
 
-A zökkenőmentes SSO-t fokozatosan kiderítheti a felhasználók számára az alábbi utasítások alapján. Első lépésként adja hozzá a következő Azure AD URL-címet az összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory Csoportházirend használatával:
+A zökkenőmentes SSO-t fokozatosan kiderítheti a felhasználók számára az alábbi utasítások alapján. Első lépésként adja hozzá a következő Azure AD URL-címeket az összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory Csoportházirend használatával:
 
+- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Emellett engedélyeznie kell egy intranetes zóna házirend-beállítását, amelynek neve a **frissítés engedélyezése az állapotsoron parancsfájlon** keresztül csoportházirend. 
@@ -111,7 +112,7 @@ Emellett engedélyeznie kell egy intranetes zóna házirend-beállítását, ame
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért kell módosítania a felhasználók intranetes zónájának beállításait?
 
-Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónát (Internet vagy intranet) egy adott URL-címről. Például `http://contoso/` az intranet zónához, míg `http://intranet.contoso.com/` az Internet zónához való leképezés (mivel az URL-cím egy pontot tartalmaz). A böngészők nem küldenek Kerberos-jegyeket a Felhőbeli végpontoknak (például az Azure AD URL-címére), kivéve, ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
+Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónát (Internet vagy intranet) egy adott URL-címről. Például az `http://contoso/` intranet zónához, míg az `http://intranet.contoso.com/` Internet zónához való leképezés (mivel az URL-cím egy pontot tartalmaz). A böngészők nem küldenek Kerberos-jegyeket a Felhőbeli végpontoknak (például az Azure AD URL-címére), kivéve, ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
 
 A felhasználók intranetes zónájának beállításai kétféleképpen módosíthatók:
 
@@ -124,7 +125,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
 2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
-3. Tallózással keresse meg a **felhasználói konfigurációs** > **házirendet** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** > **biztonsági lapján**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
+3. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági lapján**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Engedélyezze a szabályzatot, majd adja meg a következő értékeket a párbeszédpanelen:
    - **Érték neve**: a Kerberos-jegyek továbbítására szolgáló Azure ad URL-cím.
@@ -144,7 +145,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Tallózással keresse meg a **felhasználói konfigurációs** > **házirendet** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** > **biztonsági oldalának** > **intranet zónájában**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
+6. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági oldalának**  >  **intranet zónájában**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +157,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
 2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
-3. Tallózással keresse meg a **felhasználói konfiguráció** > **beállításait** > a**Windows beállításai** > **beállításjegyzék** > **új** > **beállításjegyzék-eleme**.
+3. Tallózással keresse meg a **felhasználói konfiguráció**  >  **beállításait**a  >  **Windows beállításai**  >  **beállításjegyzék**  >  **új**  >  **beállításjegyzék-eleme**.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -175,10 +176,10 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (minden platform)
 
 A Mozilla Firefox nem használ automatikusan Kerberos-hitelesítést. Az alábbi lépések segítségével minden felhasználónak manuálisan hozzá kell adnia az Azure AD URL-címét a Firefox-beállításaihoz:
-1. Futtassa a Firefoxot, `about:config` és írja be a címsorba. Zárja be a megjelenő értesítéseket.
+1. Futtassa a Firefoxot, és írja be `about:config` a címsorba. Zárja be a megjelenő értesítéseket.
 2. Keressen rá a **Network. Negotiate – auth. megbízható – URI-** k beállításra. Ez a beállítás felsorolja a Firefox megbízható helyeit a Kerberos-hitelesítéshez.
 3. Kattintson a jobb gombbal, és válassza a **módosítás**lehetőséget.
-4. Adja `https://autologon.microsoftazuread-sso.com` meg a mezőt a mezőben.
+4. Adja meg `https://autologon.microsoftazuread-sso.com` a mezőt a mezőben.
 5. Kattintson **az OK gombra** , majd nyissa meg újra a böngészőt.
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -187,19 +188,19 @@ Győződjön meg arról, hogy a macOS-t futtató számítógép csatlakozik az A
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge a Chromium alapján (minden platform)
 
-Ha felülbírálta a [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) vagy a [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét (`https://autologon.microsoftazuread-sso.com`) is hozzáadja hozzájuk.
+Ha felülbírálta a [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) vagy a [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét ( `https://autologon.microsoftazuread-sso.com` ) is hozzáadja hozzájuk.
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge króm alapján (macOS és egyéb nem Windows platform)
 
-A Microsoft Edge a Chromium on Mac OS és más, nem Windows rendszerű platformokon a [Microsoft Edge a Chromium-szabályzatok alapján listán](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) található információk arról, hogyan adható hozzá az Azure ad URL-cím az integrált hitelesítéshez az engedélyezési listához.
+A macOS és más nem Windows rendszerű platformokon a Chromium-alapú Microsoft Edge esetén [a Chromium-szabályzatok listája alapján](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) tájékozódhat arról, hogyan adhat hozzá az Azure ad URL-címet integrált hitelesítéshez az engedélyezési listához.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
-Ha felülbírálta a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét (`https://autologon.microsoftazuread-sso.com`) is hozzáadja hozzájuk.
+Ha felülbírálta a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállításait a környezetben, ügyeljen arra, hogy az Azure ad URL-címét ( `https://autologon.microsoftazuread-sso.com` ) is hozzáadja hozzájuk.
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS és egyéb nem Windows platform)
 
-A Google Chrome Mac OS és más, nem Windows platformokon történő használata esetén tekintse meg [a Chromium-projekt házirendjének listáját](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) , amelyből megtudhatja, hogyan engedélyezheti az Azure ad URL-cím integrált hitelesítéshez való engedélyezési módját.
+A Google Chrome macOS és más nem Windows platformokon való használata esetén tekintse meg [a Chromium-projekt házirendjének listáját](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) , ahol megtudhatja, hogyan szabályozhatja az Azure ad URL-cím engedélyezési listáját az integrált hitelesítéshez.
 
 A harmadik féltől származó Active Directory Csoportházirend bővítmények használata az Azure AD URL-címének a Firefox-ra és a Google Chrome-ra való bevezetésére Mac-felhasználókon kívül esik a jelen cikk hatókörén.
 

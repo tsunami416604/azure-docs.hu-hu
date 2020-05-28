@@ -3,15 +3,15 @@ title: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos DB-ben.
 description: Megtudhatja, hogyan kezelheti Azure Cosmos DB erőforrásait a Azure Portal, a PowerShell, a CLI és a Azure Resource Manager sablonok használatával
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745024"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116699"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -31,7 +31,7 @@ Lásd: [Azure Cosmos db fiók létrehozása az Azure CLI-vel](manage-with-cli.md
 
 Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](manage-with-powershell.md#create-account) című témakört.
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sablon
 
 Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablonokkal](manage-sql-with-resource-manager.md) című témakört.
 
@@ -43,9 +43,9 @@ Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablono
 
 1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
-1. Régiók hozzáadásához válassza ki a térképen a hatszögeket a kívánt régió **+** (k) nek megfelelő címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
+1. Régiók hozzáadásához válassza ki a térképen a hatszögeket a **+** kívánt régió (k) nek megfelelő címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
 
-1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a jobb oldalon található régió🗑melletti "szemétkosár" () ikont.
+1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a 🗑 jobb oldalon található régió melletti "szemétkosár" () ikont.
 
 1. A módosítások mentéséhez kattintson **az OK gombra**.
 
@@ -81,7 +81,7 @@ Lásd: [több írási régió engedélyezése a PowerShell](manage-with-powershe
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-sablon
 
-A fiók a fiók és a beállítás `enableMultipleWriteLocations: true`létrehozásához használt Resource Manager-sablon üzembe helyezésével telepíthető át egyetlen főkiszolgálóról a több főkiszolgálóra. A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
+A fiók a fiók és a beállítás létrehozásához használt Resource Manager-sablon üzembe helyezésével telepíthető át egyetlen főkiszolgálóról a több főkiszolgálóra `enableMultipleWriteLocations: true` . A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
 
 ```json
 {
@@ -196,7 +196,7 @@ Lásd: [a feladatátvételi prioritás beállítása az Azure CLI-vel](manage-wi
 
 Lásd: [a feladatátvételi prioritás beállítása a PowerShell](manage-with-powershell.md#modify-failover-priority) -lel
 
-## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Manuális feladatátvétel végrehajtása Azure Cosmos-fiókon
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Manuális feladatátvétel végrehajtása egy Azure Cosmos DB-fiókon
 
 > [!IMPORTANT]
 > Ahhoz, hogy a művelet sikeres legyen, az Azure Cosmos-fióknak konfigurálva kell lennie a manuális feladatátvételhez.

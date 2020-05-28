@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631217"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020846"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben
 
@@ -30,7 +30,7 @@ Az *adatraktár-visszaállítás* egy új adattárház, amely egy meglévő vagy
 
 ## <a name="automatic-restore-points"></a>Automatikus visszaállítási pontok
 
-A pillanatképek a szolgáltatás beépített funkciója, amely visszaállítási pontokat hoz létre. Nem kell engedélyeznie ezt a funkciót. Az SQL-készletnek azonban aktív állapotban kell lennie a visszaállítási pont létrehozásához. Ha az SQL-készletet gyakran szüneteltetik, előfordulhat, hogy az Automatikus visszaállítási pontok nem hozhatók létre, ezért mindenképpen hozzon létre felhasználó által definiált visszaállítási pontot az SQL-készlet szüneteltetése előtt. A felhasználók jelenleg nem törölhetik az Automatikus visszaállítási pontokat, mivel a szolgáltatás ezeket a visszaállítási pontokat használja a SLA-nak a helyreállításhoz való fenntartásához.
+A pillanatképek egy beépített szolgáltatás, amely visszaállítási pontokat hoz létre. Nem kell engedélyeznie ezt a funkciót. Az SQL-készletnek azonban aktív állapotban kell lennie a visszaállítási pont létrehozásához. Ha az SQL-készletet gyakran szüneteltetik, előfordulhat, hogy az Automatikus visszaállítási pontok nem hozhatók létre, ezért mindenképpen hozzon létre felhasználó által definiált visszaállítási pontot az SQL-készlet szüneteltetése előtt. A felhasználók jelenleg nem törölhetik az Automatikus visszaállítási pontokat, mivel a szolgáltatás ezeket a visszaállítási pontokat használja a SLA-nak a helyreállításhoz való fenntartásához.
 
 Az adattárház pillanatképeit a rendszer a nap folyamán hozza létre a hét napig elérhető visszaállítási pontok létrehozásához. Ez a megőrzési időszak nem módosítható. Az SQL-készlet támogatja a 8 órás helyreállítási időkorlátot (RPO). Az adattárházat az elsődleges régióban állíthatja vissza az elmúlt hét napban készített Pillanatképek közül.
 
@@ -65,7 +65,7 @@ A következő felsorolás a visszaállítási pontok megőrzési időszakait ism
 Egy SQL-készlet eldobásakor a rendszer a végleges pillanatképet hozza létre és hét napig menti. Az SQL-készletet visszaállíthatja a törléskor létrehozott utolsó visszaállítási pontra. Ha az SQL-készlet szüneteltetve állapotban van, a rendszer nem készít pillanatképet. Ebben az esetben ügyeljen arra, hogy egy felhasználó által definiált visszaállítási pontot hozzon létre az SQL-készlet eldobása előtt.
 
 > [!IMPORTANT]
-> Ha töröl egy logikai SQL Server-példányt, a példányhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Törölt kiszolgálót nem lehet visszaállítani.
+> Ha törli az SQL-készletet futtató kiszolgálót, a kiszolgálóhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Törölt kiszolgálót nem lehet visszaállítani.
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geo – biztonsági mentések és vész-helyreállítás
 
@@ -96,7 +96,7 @@ A törölt vagy szüneteltetett adattárházak visszaállításához [létrehozh
 
 ## <a name="cross-subscription-restore"></a>Több előfizetés visszaállítása
 
-Ha közvetlenül kell visszaállítani az előfizetést, szavazzon erre a [képességre](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Térjen vissza egy másik logikai kiszolgálóra, és a kiszolgáló [áthelyezi](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a kiszolgálót az előfizetések között a több előfizetés visszaállításának végrehajtásához.
+Ha közvetlenül kell visszaállítani az előfizetést, szavazzon erre a [képességre](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Állítsa vissza egy másik kiszolgálóra, és [Helyezze](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) át a kiszolgálót az előfizetések között a több előfizetés visszaállításának végrehajtásához.
 
 ## <a name="geo-redundant-restore"></a>Geo-redundáns visszaállítás
 
@@ -107,4 +107,4 @@ Az SQL-készletet bármely olyan régióra [visszaállíthatja](sql-data-warehou
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a katasztrófák tervezéséről: az [üzletmenet folytonosságának áttekintése](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+További információ a katasztrófák tervezéséről: az [üzletmenet folytonosságának áttekintése](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)

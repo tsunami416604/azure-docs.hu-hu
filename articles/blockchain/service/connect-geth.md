@@ -1,19 +1,19 @@
 ---
 title: A geth használata az Azure Blockchain szolgáltatáshoz való csatlakoztatáshoz
 description: Csatolás geth-példányhoz az Azure Blockchain szolgáltatás tranzakciós csomópontján
-ms.date: 11/20/2019
+ms.date: 05/26/2020
 ms.topic: quickstart
-ms.reviewer: janders
-ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: maheshna
+ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74455827"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994783"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Gyors útmutató: Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz való csatolás geth használata
 
-Ebben a rövid útmutatóban egy Azure Blockchain szolgáltatás-tranzakciós csomóponton található geth-példányhoz csatolja a geth-ügyfelet. Miután csatolta, a geth JavaScript-konzollal hívhat meg egy web3 JavaScript Dapp API-t.
+Ebben a rövid útmutatóban egy Azure Blockchain szolgáltatás-tranzakciós csomóponton található geth-példányhoz csatolja a geth-ügyfelet. A csatolást követően a geth-konzollal hívhat meg egy Ethereum JavaScript API-t.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ A Azure Portal Azure Blockchain szolgáltatásbeli tranzakciós csomópontjához
     geth attach <connection string>
     ```
 
-1. Miután csatlakozott a tranzakciós csomópont Ethereum-konzolhoz, meghívhatja a web3 JavaScript Dapp API-t vagy a felügyeleti API-t.
+1. Miután csatlakozott a tranzakciós csomópont Ethereum-konzolhoz, használhatja a Ethereum JavaScript API-t.
 
     A chainId megkereséséhez például használja a következő API-t.
 
@@ -57,7 +57,7 @@ A Azure Portal Azure Blockchain szolgáltatásbeli tranzakciós csomópontjához
 
     ![Az Azure Blockchain szolgáltatás lehetősége](./media/connect-geth/geth-attach.png)
 
-1. A konzolról való leválasztáshoz `exit`írja be a következőt:.
+1. A konzolról való leválasztáshoz írja be a következőt: `exit` .
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161936"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016933"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionális vész-helyreállítás Azure Databricks-fürtökhöz
 
@@ -150,7 +150,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -225,7 +225,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
    A feladatok konfigurációjának új vagy meglévő fürt beállításait kell megadnia. Ha meglévő fürtöt használ, az alábbi szkript ás kód megkísérli a régi fürt AZONOSÍTÓjának cseréjét új fürt-AZONOSÍTÓval.
 
-   Másolja és mentse a következő Python-szkriptet egy fájlba. Cserélje le a `old_cluster_id` és `new_cluster_id`a értékét a fürt áttelepítésének kimenetére az előző lépésben. Futtassa a parancsot a databricks parancssori felületen, például: `python scriptname.py`.
+   Másolja és mentse a következő Python-szkriptet egy fájlba. Cserélje le a és a értékét a `old_cluster_id` `new_cluster_id` fürt áttelepítésének kimenetére az előző lépésben. Futtassa a parancsot a databricks parancssori felületen, például: `python scriptname.py` .
 
    ```python
    from subprocess import call, check_output
@@ -290,7 +290,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 9. **A fürt inicializálási parancsfájljainak migrálása**
 
-   A fürt inicializálási parancsfájljai a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples)használatával a régiről az új munkaterületre is áttelepíthetők. Először másolja a szükséges parancsfájlokat `dbfs:/dat abricks/init/..` a helyi asztali vagy virtuális gépre. Ezután másolja ezeket a parancsfájlokat az új munkaterületre ugyanazon az elérési úton.
+   A fürt inicializálási parancsfájljai a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples)használatával a régiről az új munkaterületre is áttelepíthetők. Először másolja a szükséges parancsfájlokat a `dbfs:/dat abricks/init/..` helyi asztali vagy virtuális gépre. Ezután másolja ezeket a parancsfájlokat az új munkaterületre ugyanazon az elérési úton.
 
    ```bash
    // Primary to local
@@ -308,7 +308,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Vész-helyreállítás az Azure-ökoszisztéma esetében
 
-Ha más Azure-szolgáltatásokat használ, mindenképpen hajtsa végre a vész-helyreállítási ajánlott eljárásokat ezen szolgáltatások esetében is. Ha például külső Hive-metaadattár-példányt szeretne használni, érdemes megfontolnia a vész-helyreállítást az [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), az [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)és/vagy a [Azure Database for MySQL](../mysql/concepts-business-continuity.md). A vész-helyreállítással kapcsolatos általános információkért lásd: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Ha más Azure-szolgáltatásokat használ, mindenképpen hajtsa végre a vész-helyreállítási ajánlott eljárásokat ezen szolgáltatások esetében is. Ha például külső Hive-metaadattár-példányt szeretne használni, érdemes megfontolnia a [Azure SQL Database](../azure-sql/database/disaster-recovery-guidance.md), az [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)és/vagy a [Azure Database for MySQL](../mysql/concepts-business-continuity.md)vész-helyreállítását. A vész-helyreállítással kapcsolatos általános információkért lásd: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>További lépések
 

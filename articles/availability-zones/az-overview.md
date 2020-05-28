@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9014d446b29b9a81a807c002cd7f83a2c3bdaa51
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 124aac96550b5d462c0794053452ed28dba27452
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231339"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013214"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N.A. | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -112,7 +112,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Service Bus | Azure Firewall | Data Box Heavy |
 > | Service Fabric | Azure Functions | Data Catalog |
 > | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtuális gépek | Azure IoT Hub | Data Lake Analytics |
+> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
 > | Virtual Machines: Av2 sorozat | Azure Kubernetes Service (AKS) | Machine Learning Studio |
 > | Virtual Machines: BS sorozat | Azure Machine Learning | Microsoft Genomics |
 > | Virtual Machines: DSv2 sorozat | Azure Private Link | Remote Rendering |
@@ -166,7 +166,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Virtuális gépek terheléselosztása zónák között egy olyan standard Load Balancer használatával, amely zóna nélküli előtérbeli felületet használ](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [Virtuális gépek terheléselosztása zónán belül egy standard Load Balancer és egy zóna-előtérbeli felület használatával](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
-- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Event Hubs georeplikációs vészhelyreállítás](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus georeplikációs vészhelyreállítás](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Zónaredundáns virtuális hálózati átjáró létrehozása](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

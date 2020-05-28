@@ -3,15 +3,15 @@ title: Naplók konfigurálása és olvasása Azure Functions triggerrel Cosmos D
 description: Megtudhatja, hogyan teheti elérhetővé a naplókat a Azure Functions naplózási folyamatához Azure Functions trigger használatakor Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bd53eda7197c1083f5eca70bb8602137c9fb1a8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441834"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117124"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Naplók konfigurálása és olvasása a Azure Functions trigger használatakor Cosmos DB
 
@@ -25,7 +25,7 @@ Az állapotadatok azt írják le, hogy a Cosmos DB Azure Functions triggere hogy
 
 ## <a name="enabling-logging"></a>Naplózás engedélyezése
 
-A naplózás engedélyezéséhez Cosmos DB Azure Functions trigger használata esetén keresse meg a `host.json` fájlt a Azure functions projektben vagy Azure functions alkalmazásban, és [konfigurálja a szükséges naplózás szintjét](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Engedélyeznie kell a nyomkövetést a következő mintában látható `Host.Triggers.CosmosDB` módon:
+A naplózás engedélyezéséhez Cosmos DB Azure Functions trigger használata esetén keresse meg a `host.json` fájlt a Azure functions projektben vagy Azure functions alkalmazásban, és [konfigurálja a szükséges naplózás szintjét](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Engedélyeznie kell a nyomkövetést a következő mintában `Host.Triggers.CosmosDB` látható módon:
 
 ```js
 {
@@ -39,7 +39,7 @@ A naplózás engedélyezéséhez Cosmos DB Azure Functions trigger használata e
 }
 ```
 
-Miután telepítette az Azure-függvényt a frissített konfigurációval, a Nyomkövetések részeként megjelenik a Cosmos DB naplók Azure Functions triggere. A megadott naplózási szolgáltató naplóit a *Kategória* `Host.Triggers.CosmosDB`alatt tekintheti meg.
+Miután telepítette az Azure-függvényt a frissített konfigurációval, a Nyomkövetések részeként megjelenik a Cosmos DB naplók Azure Functions triggere. A megadott naplózási szolgáltató naplóit a *Kategória* alatt tekintheti meg `Host.Triggers.CosmosDB` .
 
 ## <a name="query-the-logs"></a>Naplók lekérdezése
 

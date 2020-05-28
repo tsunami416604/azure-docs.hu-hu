@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645803"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014519"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645803"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/eresources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -332,7 +332,7 @@ A folytatás előtt néhány SQL Server a IaaS-specifikus információkkal:
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Javaslatok az SAP-hez kapcsolódó SQL Server központi telepítések virtuális gépekre/VHD-struktúrájára
-Az általános leírásnak megfelelően SQL Server végrehajtható fájlokat a virtuális gép operációsrendszer-lemezének rendszermeghajtóján (C meghajtó:\)) kell elhelyezni vagy telepíteni.  Általában a SQL Server rendszeradatbázisok többségét az SAP NetWeaver számítási feladatait nem magas szinten használják. Ennek eredményeképpen a SQL Server (Master, msdb és Model) rendszeradatbázisai továbbra is megmaradhatnak a C:\ meghajtó is. Kivételt kell tempdb, ami az SAP-munkaterhelések esetében nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényelheti. I/O-munkaterhelés, amely nem alkalmazható az operációs rendszer VHD-re. Ilyen rendszerek esetén a következő lépéseket kell végrehajtani:
+Az általános leírásnak megfelelően SQL Server végrehajtható fájlokat a virtuális gép operációsrendszer-lemezének rendszermeghajtóján (C meghajtó:) kell elhelyezni vagy telepíteni \) .  Általában a SQL Server rendszeradatbázisok többségét az SAP NetWeaver számítási feladatait nem magas szinten használják. Ennek eredményeképpen a SQL Server (Master, msdb és Model) rendszeradatbázisai továbbra is megmaradhatnak a C:\ meghajtó is. Kivételt kell tempdb, ami az SAP-munkaterhelések esetében nagyobb adatmennyiséget vagy I/O-műveletek mennyiségét igényelheti. I/O-munkaterhelés, amely nem alkalmazható az operációs rendszer VHD-re. Ilyen rendszerek esetén a következő lépéseket kell végrehajtani:
 
 
 * Az összes SAP-tanúsítvánnyal rendelkező virtuálisgép-típussal (lásd: SAP-Megjegyzés [1928533]), kivéve a-sorozatú virtuális gépeket, a tempdb és a naplófájlokat a nem megőrzött D:\ lehet helyezni meghajtó. 
@@ -439,7 +439,7 @@ A sok SAP-ügyfél esetében nem volt lehetőség a kezdésre, és bevezetni az 
 ## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>SQL Server rendszerkép használata a Microsoft Azure Marketplace
 A Microsoft olyan virtuális gépeket kínál az Azure piactéren, amelyek már tartalmazzák a SQL Server verzióit. A SQL Server és a Windows rendszerhez szükséges licenceket igénylő SAP-ügyfelek esetén a lemezképek segítségével lefedi a licencek igényét, ha a virtuális gépeket SQL Server már telepítette. Az SAP-hez készült rendszerképek használatához a következő szempontokat kell figyelembe venni:
 
-* A SQL Server nem próbaverziós verziók magasabb költségeket igényelnek, mint az Azure Marketplace-ről üzembe helyezett "Windows-only" virtuális gép. Tekintse meg az alábbi cikkeket az <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> árak <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>összehasonlításához: és. 
+* A SQL Server nem próbaverziós verziók magasabb költségeket igényelnek, mint az Azure Marketplace-ről üzembe helyezett "Windows-only" virtuális gép. Tekintse meg az alábbi cikkeket az árak összehasonlításához: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> és <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/> . 
 * Csak a SAP által támogatott SQL Server kiadásokat használhatja.
 * Az Azure Marketplace-en elérhető virtuális gépekre telepített SQL Server példány rendezése nem a SQL Server példány futtatásához szükséges. A rendezést a következő szakasz utasításai szerint módosíthatja.
 
@@ -448,7 +448,7 @@ Mivel az Azure Marketplace-en lévő SQL Server rendszerképek nincsenek beáll�
 
 * Nyisson meg egy Windows-parancssorablakot rendszergazdaként.
 * A könyvtár módosítása a C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Hajtsa végre a parancsot: setup. exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER`<local_admin_account_name` /SQLSYSADMINACCOUNTS =>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Hajtsa végre a parancsot: setup. exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> az a fiók, amely rendszergazdai fiókként lett meghatározva a virtuális gép első telepítésekor a katalóguson keresztül.
 
 A folyamat csak néhány percet vesz igénybe. A következő lépések végrehajtásával győződjön meg arról, hogy a lépés a megfelelő eredménnyel zárult-e:

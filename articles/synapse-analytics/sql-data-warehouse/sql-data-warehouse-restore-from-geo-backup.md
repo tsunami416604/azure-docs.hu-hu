@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99a6373c314530741bbff67a4573005ff2523d6d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745076"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020217"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja vissza az SQL-készletet a Ge
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy SQL-kiszolgáló (például myserver.database.windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ellenőrizze a DTU kapacitását.** Minden SQL-készletet egy [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) (például MyServer.database.Windows.net) üzemeltet, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Visszaállítás egy Azure földrajzi régióból a PowerShell használatával
 
@@ -49,7 +49,7 @@ A Geo biztonsági mentésből való visszaállításhoz használja a [Get-AzSqlD
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -81,7 +81,7 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
    ![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. Kattintson az **adatbázisok** , majd a * * Azure szinapszis Analytics (korábbi NEVÉN SQL DW) * * elemre.
+3. Kattintson az **adatbázisok** , majd az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
 
    ![Új DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 

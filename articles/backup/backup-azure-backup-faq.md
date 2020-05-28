@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ec2f9101f724d0c5c6c5e52bb69fea82513efe5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196264"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118024"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -75,7 +75,7 @@ Igen.
 
 Az Azure Backup a következő operációs rendszerek fájljainak és mappáinak biztonsági mentését támogatja, az Azure Backup Server és a DPM által védett alkalmazások mellett.
 
-**OS** | **SKU** | **Részletek**
+**OS** | **Termékváltozat** | **Részletek**
 --- | --- | ---
 Munkaállomás | |
 Windows 10, 64 bites | Enterprise, Pro, Home | A gépekre telepítve kell lenniük a legújabb szervizcsomagoknak és frissítéseknek.
@@ -208,7 +208,7 @@ Igen. Az Azure-ban az inaktív állapotú adatok titkosítva vannak.
 
 A Microsoft soha nem fejt vissza adatokat.
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Mi az adatok biztonsági másolatának titkosításához használt titkosítási kulcs minimális hossza?
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Mekkora a biztonsági mentési adatmennyiség titkosításához használt titkosítási kulcs minimális hossza?
 
 Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 karakterből kell állnia. Az Azure-beli virtuális gépek esetében nincs korlátozva az Azure KeyVault által használt kulcsok hossza.
 

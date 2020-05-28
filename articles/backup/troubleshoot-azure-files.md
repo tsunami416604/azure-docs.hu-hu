@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116736"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -50,7 +50,7 @@ Próbálja megismételni a regisztrációt. Ha a probléma továbbra is fennáll
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Nem sikerült törölni a Recovery Services tárolót a fájlmegosztás feloldása után
 
-A Azure Portal nyissa **meg** > a tároló**biztonsági mentési infrastruktúrájának** > **Storage-fiókjait** , és kattintson a **regisztráció megszüntetése** gombra a Storage-fiókok Recovery Services-tárból való eltávolításához.
+A Azure Portal nyissa **meg a tároló**  >  **biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait** , és kattintson a **regisztráció megszüntetése** gombra a Storage-fiókok Recovery Services-tárból való eltávolításához.
 
 >[!NOTE]
 >A Recovery Services-tároló csak a tárban regisztrált összes Storage-fiók regisztrációjának törlése után törölhető.
@@ -276,6 +276,45 @@ Hibakód: BMSUserErrorObjectLocked
 Hibaüzenet: egy másik művelet van folyamatban a kijelölt elemen.
 
 Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálkozzon újra később.
+
+A fájlból: troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>Gyakori törléssel kapcsolatos gyakori hibák
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState – ez a visszaállítási pont nem érhető el, mert az ehhez a ponthoz társított pillanatkép olyan fájlmegosztás, amely helyreállított állapotban van
+
+Hibakód: UserErrorRestoreAFSInSoftDeleteState
+
+Hibaüzenet: Ez a visszaállítási pont nem érhető el, mert az ehhez a ponthoz társított pillanatkép olyan fájlmegosztás, amely helyreállított állapotban van.
+
+A visszaállítási művelet nem hajtható végre, ha a fájlmegosztás töröletlen állapotban van. Törölje a fájlmegosztást a Files portálról, vagy használja a [törlési parancsfájlt](scripts/backup-powershell-script-undelete-file-share.md) , majd próbálja meg visszaállítani.
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState – a felsorolt visszaállítási pontok nem érhetők el, mert a visszaállítási pontok pillanatképeit tartalmazó társított fájlmegosztás véglegesen törölve lett
+
+Hibakód: UserErrorRestoreAFSInDeleteState
+
+Hibaüzenet: a felsorolt visszaállítási pontok nem érhetők el, mert a visszaállítási pontok pillanatképeit tartalmazó társított fájlmegosztás véglegesen törölve lett.
+
+Ellenőrizze, hogy a mentett fájlmegosztás törölve van-e. Ha a fájl nem lett törölve, akkor ellenőrizze, hogy a helyreállított törlés megőrzési ideje túl van-e, és hogy a helyreállítás nem történt-e vissza. Ezekben az esetekben az összes pillanatképet véglegesen elveszítjük, és nem fogják tudni helyreállítani az adatokat.
+
+>[!NOTE]
+> Azt javasoljuk, hogy ne törölje a biztonsági másolatba mentett fájlmegosztást, vagy törölje a törlést a törlés előtti megőrzési időszak lejárta előtt, hogy elkerülje az összes visszaállítási pont elvesztését.
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState – a biztonsági mentés nem sikerült, mert az Azure-fájlmegosztás Soft-Deleted állapotban van
+
+Hibakód: UserErrorBackupAFSInSoftDeleteState
+
+Hibaüzenet: a biztonsági mentés nem sikerült, mert az Azure-fájlmegosztás Soft-Deleted állapotban van
+
+Törölje a fájlmegosztást a **Files portálról** , vagy a [Törlés törlése](scripts/backup-powershell-script-undelete-file-share.md) paranccsal folytassa a biztonsági mentést, és akadályozza meg az adatok végleges törlését.
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState – a biztonsági mentés nem sikerült, mert a társított Azure-fájlmegosztás véglegesen törölve lett
+
+Hibakód: UserErrorBackupAFSInDeleteState
+
+Hibaüzenet: a biztonsági mentés nem sikerült, mert a társított Azure-fájlmegosztás véglegesen törölve lett
+
+Ellenőrizze, hogy a mentett fájlmegosztás véglegesen törölve lett-e. Ha igen, állítsa le a fájlmegosztás biztonsági mentését, hogy elkerülje az ismételt biztonsági mentési hibákat. A védelem leállításával kapcsolatos további információkért lásd: [Az Azure-fájlmegosztás védelmének leállítása](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>További lépések
 

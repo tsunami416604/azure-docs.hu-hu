@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f84098d376f2494805465a8c713a21fceae6438d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739481"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116852"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -45,7 +45,7 @@ A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már n
 - **Rögzített ár** – ez egy Standard_v2 vagy WAF_v2 átjáró kiépítésének óránkénti (vagy részleges órányi) díja. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva.
 - **Kapacitási egység díja** – ez egy fogyasztási alapú költség, amelyet a rögzített költség mellett számítunk fel. A kapacitási egység díját óránként vagy részben is számításba kell venni. A kapacitás egysége – számítási egység, állandó kapcsolatok és átviteli sebesség – három dimenzióval rendelkezik. A számítási egység a felhasznált processzorkapacitás mérőszáma. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.  A számlázás a fenntartott példányok számának megfelelő kapacitás egység szintjén történik.
 
-Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
+Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, 2500 állandó kapcsolat és 2,22 – Mbps átviteli sebesség.
 
 Számítási egységre vonatkozó útmutató:
 
@@ -67,7 +67,7 @@ Az alábbi táblázat az árakat mutatja be, és csak illusztrációs célokat s
 
 A díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-gateway/). 
 
-**1. példa**
+**1\. példa**
 
 Az Application Gateway Standard_v2 a manuális skálázási módban automatikus skálázás nélkül, öt példány rögzített kapacitással lett kiépítve.
 
@@ -76,7 +76,7 @@ Kapacitási egységek = 744 (óra) * 10 kapacitási egység/példány * 5 péld�
 
 Teljes ár = $148,8 + $297,6 = $446,4
 
-**2. példa**
+**2\. példa**
 
 Egy Application Gateway standard_v2 egy hónapig van kiépítve, minimális példányszámban, és ez idő alatt 25 új TLS-kapcsolat/s, átlagosan 8,88 – Mbps adatátvitelt kap. Ha a kapcsolatok rövid életűek, az ár a következő:
 
@@ -92,7 +92,7 @@ Amint láthatja, a rendszer csak négy kapacitású egységért számláz, nem p
 > A Max függvény a legnagyobb értéket adja vissza egy értékben.
 
 
-**3. példa**
+**3\. példa**
 
 Egy Application Gateway standard_v2 egy hónapig van kiépítve, amely legalább öt példányból áll. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
 

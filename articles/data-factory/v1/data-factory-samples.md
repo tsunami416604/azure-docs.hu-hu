@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139265"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019911"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -62,7 +62,7 @@ Az adat-előállító kezdőlapján a **mintavételezési folyamatok** csempe ha
 3. A **mintavételezési folyamatok** panelen kattintson arra a **mintára** , amelyet központilag telepíteni szeretne.
 
     ![Mintavételezési folyamatok panel](./media/data-factory-samples/SampleTile.png)
-4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók neve és a fiók kulcsa, az Azure SQL Server-név, az adatbázis, a felhasználói azonosító és a jelszó stb.
+4. A minta konfigurációs beállításainak megadása. Például az Azure Storage-fiók neve és a fiók kulcsa, a logikai SQL-kiszolgáló neve, az adatbázis, a felhasználói azonosító és a jelszó stb.
 
     ![Minta panel](./media/data-factory-samples/SampleBlade.png)
 5. Miután végzett a konfigurációs beállítások megadásával, a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a folyamatok által használt mintavételi folyamatokat és társított szolgáltatásokat/táblákat.
@@ -80,7 +80,7 @@ A számítógépre a következőket kell telepíteni:
 
 * Visual Studio 2013 vagy Visual Studio 2015
 * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson **az eszközök** -> **bővítmények** -> elemre, és frissítse az**online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update szolgáltatást**.
+* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények**elemre, és frissítse az  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update szolgáltatást**.
 
 ### <a name="use-data-factory-templates"></a>Data Factory-sablonok használata
 1. Kattintson a menüben a **fájl** elemre, mutasson az **új**elemre, majd kattintson a **projekt**elemre.

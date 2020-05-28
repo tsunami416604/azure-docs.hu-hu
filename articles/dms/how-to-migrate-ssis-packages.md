@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648529"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021517"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-csomagok újbóli üzembe helyezése Azure SQL Databasere Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Ha SQL Server Integration Servicest (SSIS) használ, és a SQL Server által a A
 Ha a használt SSIS-verzió korábbi, mint 2012, a SSIS-projektek/csomagok projekt-telepítési modellbe való újbóli üzembe helyezése előtt először konvertálnia kell őket az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> A Azure Database Migration Service (DMS) jelenleg nem támogatja a forrás-SSISDB áttelepítését egy Azure SQL Database-kiszolgálóra, de a következő eljárással újra üzembe helyezheti a SSIS-projekteket/csomagokat.
+> A Azure Database Migration Service (DMS) jelenleg nem támogatja a forrás-SSISDB áttelepítését Azure SQL Databasere, de a következő folyamat használatával újra üzembe helyezheti a SSIS-projekteket/csomagokat.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -39,20 +39,20 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 A lépések elvégzéséhez a következőkre lesz szüksége:
 
 * A SSMS 17,2-es vagy újabb verziója.
-* A célként megadott adatbázis-kiszolgáló egy példánya a SSISDB üzemeltetéséhez. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure SQL Database kiszolgálót (adatbázis nélkül) a Azure Portal használatával a SQL Server (csak logikai kiszolgáló) [űrlapra](https://ms.portal.azure.com/#create/Microsoft.SQLServer)való navigálással.
-* A SSIS-et Azure Data Factory (ADF)-ben kell kiépíteni, amely tartalmazza a Azure-SSIS Integration Runtime (IR) és a Azure SQL Database kiszolgáló példánya által üzemeltetett célként megadott SSISDB (a [Azure-SSIS Integration Runtime kiépítése Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)) című cikkben leírtak szerint.
+* A célként megadott adatbázis-kiszolgáló egy példánya a SSISDB üzemeltetéséhez. Ha még nem rendelkezik ilyennel, hozzon létre egy [logikai SQL Servert](../azure-sql/database/logical-servers.md) (adatbázis nélkül) a Azure Portal használatával a SQL Server (csak logikai kiszolgáló) [űrlapra](https://ms.portal.azure.com/#create/Microsoft.SQLServer)való navigálással.
+* A SSIS-et Azure Data Factory (ADF)-ben kell kiépíteni, amely tartalmazza Azure-SSIS Integration Runtime (IR) és a SQL Database által üzemeltetett célként megadott SSISDB (a [Azure-SSIS Integration Runtime kiépítése Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)) című cikkben leírtak szerint.
 
 ## <a name="assess-source-ssis-projectspackages"></a>Forrás SSIS projektek/csomagok értékelése
 
-Bár a forrás-SSISDB értékelése még nincs integrálva az adatbázis Migration Assistant (DMA) vagy a Azure Database Migration Service (DMS) szolgáltatásba, a SSIS-projekteket/csomagokat a rendszer értékeli/érvényesíti, mivel azokat újra üzembe helyezi a Azure SQL Database-kiszolgálón üzemeltetett cél SSISDB.
+Bár a forrás SSISDB értékelése még nincs integrálva az adatbázis Migration Assistant (DMA) vagy a Azure Database Migration Service (DMS) szolgáltatásba, a SSIS-projekteket/csomagokat a rendszer értékeli/érvényesíti, mivel azokat a Azure SQL Database által üzemeltetett cél SSISDB telepíti újra.
 
 ## <a name="migrate-ssis-projectspackages"></a>SSIS-projektek/csomagok migrálása
 
-A SSIS-projektek/csomagok Azure SQL Database kiszolgálóra történő áttelepítéséhez hajtsa végre a következő lépéseket.
+A SSIS-projektek/csomagok Azure SQL Databaseba való áttelepítéséhez hajtsa végre a következő lépéseket.
 
 1. Nyissa meg a SSMS, majd válassza a **Beállítások lehetőséget** a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel megjelenítéséhez.
 
-2. A **login (bejelentkezés** ) lapon határozza meg a cél SSISDB futtató Azure SQL Database kiszolgálóhoz való kapcsolódáshoz szükséges adatokat.
+2. A **login (bejelentkezés** ) lapon határozza meg a cél SSISDB futtató kiszolgálóhoz való kapcsolódáshoz szükséges adatokat.
 
     ![SSIS bejelentkezés lap](media/how-to-migrate-ssis-packages/dms-ssis-login-tab.png)
 
@@ -81,7 +81,7 @@ A SSIS-projektek/csomagok Azure SQL Database kiszolgálóra történő áttelep�
 8. Kattintson a **Tovább** gombra.
 9. A **cél kiválasztása** lapon adja meg a projekt célját.
 
-    a. A kiszolgálónév szövegmezőbe írja be a teljes Azure SQL Database kiszolgáló nevét (<server_name>. database.windows.net).
+    a. A kiszolgáló neve szövegmezőbe írja be a teljes kiszolgálónevet (<server_name>. database.windows.net).
 
     b. Adja meg a hitelesítési adatokat, majd válassza a **kapcsolat**lehetőséget.
 

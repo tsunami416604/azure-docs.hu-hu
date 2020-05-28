@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583124"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116620"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -175,9 +175,9 @@ Az összekötők a Windows Server webalkalmazás-proxyn alapulnak, így többek 
 
 ![Teljesítményszámlálók hozzáadása az összekötőhöz a Teljesítményfigyelővel](./media/application-proxy-connectors/performance-monitor.png)
 
-Az összekötők rendszergazdai és munkamenet-naplókkal is rendelkeznek. A felügyeleti naplók a legfontosabb eseményeket és azok hibáit tartalmazzák. A munkamenet-naplók tartalmazzák az összes tranzakciót és a feldolgozás részleteit.
+Az összekötők **rendszergazdai** és **munkamenet** -naplókkal is rendelkeznek. A **rendszergazdai** napló a legfontosabb eseményeket és azok hibáit tartalmazza. A **munkamenet** -napló tartalmazza az összes tranzakciót és a feldolgozás részleteit.
 
-A naplók megtekintéséhez lépjen a Eseménynaplóra, nyissa meg a **nézet** menüt, és engedélyezze az **elemzési és hibakeresési naplók megjelenítése**lehetőséget. Ezután az események gyűjtésének megkezdéséhez engedélyezze őket. Ezek a naplók nem jelennek meg a webalkalmazás-proxyban a Windows Server 2012 R2-ben, mivel az összekötők egy újabb verzión alapulnak.
+A naplók megjelenítéséhez nyissa meg **Eseménynapló** és lépjen az **alkalmazások és szolgáltatások naplóba**a  >  **Microsoft**  >  **AadApplicationProxy**-  >  **összekötő**. A **munkamenet** naplójának láthatóvá tételéhez válassza a **nézet** menü **elemzési és hibakeresési naplók megjelenítése**parancsát. A **munkamenet** -napló általában hibaelhárításhoz használatos, és alapértelmezés szerint le van tiltva. Lehetővé teszi, hogy megkezdse az események gyűjtését, és letiltja azt, ha már nincs rá szükség.
 
 A szolgáltatás állapotát a szolgáltatások ablakban ellenőrizheti. Az összekötő két Windows-szolgáltatásból áll: a tényleges összekötőből és a updaterből. Mindkettőnek minden alkalommal futnia kell.
 

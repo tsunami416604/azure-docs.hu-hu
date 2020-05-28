@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3f8f0ff50138c3b08abd118493cc30a6476640f5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118083"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116836"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a Python használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,10 +41,10 @@ Először is szüksége lesz egy Azure Storage blob-tárolóban található beta
 
 Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, a következő Python-kód futtatásával hívja meg a **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
-1. Cserélje `<subscription key>` le az elemet az előző lépésből másolt előfizetési kulcsra.
-1. Cserélje `<endpoint>` le az értékét az űrlap-felismerő erőforrás végponti URL-címére.
-1. Cserélje `<Blob folder name>` le a helyére a mappa elérési útját a blob Storage-ban, ahol az űrlapok találhatók. Ha az űrlapok a tároló gyökerében találhatók, hagyja üresen ezt a karakterláncot.
+1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. Cserélje le az `<subscription key>` elemet az előző lépésből másolt előfizetési kulcsra.
+1. Cserélje le az értékét `<endpoint>` az űrlap-felismerő erőforrás végponti URL-címére.
+1. Cserélje le a helyére a `<Blob folder name>` mappa elérési útját a blob Storage-ban, ahol az űrlapok találhatók. Ha az űrlapok a tároló gyökerében találhatók, hagyja üresen ezt a karakterláncot.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -66,7 +66,7 @@ Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani eg
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,
@@ -124,7 +124,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-A betanítási folyamat befejezésekor a következőhöz hasonló JSON `201 (Success)` -tartalom érkezik:
+A betanítási folyamat befejezésekor a `201 (Success)` következőhöz hasonló JSON-tartalom érkezik:
 
 ```json
 { 
@@ -196,7 +196,7 @@ Másolja az `"modelId"` értéket a következő lépésekben való használatra.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Ha a folyamat befejeződött, a JSON-tartalommal `200 (Success)` kapcsolatos választ a következő formátumban fogja kapni. A válasz lerövidítve lett az egyszerűség kedvéért. A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomóponton találhatók. Ha az egyszerű szöveg kinyerését is a *includeTextDetails* URL-cím paraméterrel `"readResults"` adta meg, akkor a csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
+Ha a folyamat befejeződött, a `200 (Success)` JSON-tartalommal kapcsolatos választ a következő formátumban fogja kapni. A válasz lerövidítve lett az egyszerűség kedvéért. A fő kulcs/érték párok társításai és táblái a `"pageResults"` csomóponton találhatók. Ha az egyszerű szöveg kinyerését is a *includeTextDetails* URL-cím paraméterrel adta meg, akkor a `"readResults"` csomópont megjeleníti a dokumentumban lévő összes szöveg tartalmát és pozícióit.
 
 ```bash
 {

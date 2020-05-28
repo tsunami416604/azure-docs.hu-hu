@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611066"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020404"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
@@ -29,7 +29,7 @@ Az adatvédelem egy speciális biztonsági funkció, amely az Azure-beli adatfor
 - Biztonsági helyzetek, mint például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása
 - A fokozottan bizalmas adatokat tartalmazó adattárak biztonságának szabályozása és a hozzáférés megerősítése
  
-Az [sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementálja ezt a paradigmát az SQL-adattárak számára, jelenleg a Azure SQL Database támogatja. Az SQL Information Protection automatikusan felkeresi és osztályozza a potenciálisan bizalmas adatokat, egy címkéző mechanizmust biztosít a bizalmas adatoknak a besorolási attribútumokkal való tartós címkézéséhez, valamint egy részletes irányítópultot, amely az adatbázis besorolási állapotát mutatja. Emellett kiszámítja az SQL-lekérdezések eredmény-beállítását is, így a bizalmas adatokat kinyerő lekérdezések explicit módon naplózhatók, és az adatok védetté is menthetők. További információ az SQL Information Protectionről: [Azure SQL Database adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md).
+Az [sql Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) implementálja ezt a paradigmát az SQL-adattárak számára, jelenleg a Azure SQL Database támogatja. Az SQL Information Protection automatikusan felkeresi és osztályozza a potenciálisan bizalmas adatokat, egy címkéző mechanizmust biztosít a bizalmas adatoknak a besorolási attribútumokkal való tartós címkézéséhez, valamint egy részletes irányítópultot, amely az adatbázis besorolási állapotát mutatja. Emellett kiszámítja az SQL-lekérdezések eredmény-beállítását is, így a bizalmas adatokat kinyerő lekérdezések explicit módon naplózhatók, és az adatok védetté is menthetők. További információ az SQL Information Protectionről: [Azure SQL Database adatfelderítés és besorolás](../azure-sql/database/data-discovery-and-classification-overview.md).
  
 A besorolási mechanizmus két elsődleges összeállításon alapul, amelyek a besorolási besorolást – **címkéket** és **adattípusokat**alkotnak.
 - **Labels (címkék** ) – a fő besorolási attribútumok, amelyek az oszlopban tárolt adatmennyiség érzékenységi szintjének meghatározására szolgálnak. 
@@ -79,7 +79,7 @@ Miután az adatvédelmi szabályzatot teljesen meghatározta és mentette, a bé
  
 ## <a name="next-steps"></a>További lépések
  
-Ebben a cikkben megtanulta, hogyan határozhat meg egy SQL Information Protection szabályzatot a Azure Security Centerban. Ha többet szeretne megtudni az SQL-Information Protection használatáról az SQL-adatbázisokban található bizalmas adatok osztályozásához és védelméhez, olvassa el az [adatfelderítés és-besorolás Azure SQL Database](../sql-database/sql-database-data-discovery-and-classification.md). 
+Ebben a cikkben megtanulta, hogyan határozhat meg egy SQL Information Protection szabályzatot a Azure Security Centerban. Ha többet szeretne megtudni az SQL-Information Protection használatáról az SQL-adatbázisokban található bizalmas adatok osztályozásához és védelméhez, olvassa el az [adatfelderítés és-besorolás Azure SQL Database](../azure-sql/database/data-discovery-and-classification-overview.md). 
 
 A Azure Security Center biztonsági házirendjeivel és adatvédelmével kapcsolatos további információkért tekintse meg a következő cikkeket:
  

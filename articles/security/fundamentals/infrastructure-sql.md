@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942952"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021857"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database biztonsági funkciók    
 A Azure SQL Database az Azure-ban egy kapcsolódó adatbázis-szolgáltatást biztosít. Az ügyféladatok védelme és az ügyfelek által a kapcsolati adatbázis-szolgáltatástól várt erős biztonsági funkciók biztosítása érdekében SQL Database saját biztonsági képességekkel rendelkezik. Ezek a képességek az Azure-ból örökölt vezérlőkre épülnek.
@@ -31,13 +31,13 @@ A Azure SQL Database az Azure-ban egy kapcsolódó adatbázis-szolgáltatást bi
 A Azure SQL Database csak a táblázatos adatfolyam (TDS) protokollt támogatja, amely megköveteli, hogy az adatbázis csak a TCP/1433 alapértelmezett portján legyen elérhető.
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database tűzfal
-Az ügyféladatok védelme érdekében Azure SQL Database tartalmaz egy tűzfal-funkciót, amely alapértelmezés szerint megakadályozza a SQL Database-kiszolgálóhoz való hozzáférést az alább látható módon.
+Az ügyféladatok védelme érdekében Azure SQL Database tartalmaz egy tűzfal-funkciót, amely alapértelmezés szerint megakadályozza az összes SQL Database elérését az alább látható módon.
 
 ![Azure SQL Database tűzfal](./media/infrastructure-sql/sql-database-firewall.png)
 
 Az átjáró tűzfala korlátozhatja a címeket, ami lehetővé teszi, hogy az ügyfelek részletesen szabályozzák az elfogadható IP-címek tartományait. A tűzfal az egyes kérések származó IP-címe alapján biztosítja a hozzáférést.
 
-Az ügyfelek felügyeleti portál használatával vagy programozott módon érhetik el a tűzfal konfigurációját a Azure SQL Database felügyeleti REST API használatával. Az Azure SQL Database-átjáró tűzfal alapértelmezés szerint megakadályozza az összes ügyfél TDS-hozzáférését az Azure SQL Database-példányokhoz. Az ügyfeleknek hozzáférés-vezérlési listákkal (ACL-ekkel) kell konfigurálniuk a hozzáférést, hogy a forrás-és cél-internetes címek, protokollok és portszámok alapján Azure SQL Database kapcsolatokat.
+Az ügyfelek felügyeleti portál használatával vagy programozott módon érhetik el a tűzfal konfigurációját a Azure SQL Database felügyeleti REST API használatával. A Azure SQL Database-átjáró tűzfal alapértelmezés szerint megakadályozza az összes ügyfél TDS-hozzáférését a Azure SQL Databasehoz. Az ügyfeleknek hozzáférés-vezérlési listákkal (ACL-ekkel) kell konfigurálniuk a hozzáférést, hogy a forrás-és cél-internetes címek, protokollok és portszámok alapján Azure SQL Database kapcsolatokat.
 
 ### <a name="dosguard"></a>DoSGuard
 A szolgáltatásmegtagadási (DoS) támadásokat egy DoSGuard nevű SQL Database Gateway szolgáltatás csökkenti. A DoSGuard aktívan nyomon követi a sikertelen bejelentkezéseket az IP-címekről. Ha egy adott IP-címről több sikertelen bejelentkezés történt egy adott időtartamon belül, az IP-cím blokkolva lesz a szolgáltatásban lévő összes erőforráshoz egy előre meghatározott időszakra vonatkozóan.

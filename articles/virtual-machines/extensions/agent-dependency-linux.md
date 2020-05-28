@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf4653ea7e49404af9e6d46796a7b00d9373c6da
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254039"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996550"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 
@@ -73,11 +73,11 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa |
+| Name | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | közzétevő | Microsoft. Azure. monitoring. DependencyAgent |
-| type | DependencyAgentLinux |
+| típus | DependencyAgentLinux |
 | typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
@@ -154,7 +154,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ```
-/opt/microsoft/dependcency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log 
 ```
 
 ### <a name="support"></a>Támogatás

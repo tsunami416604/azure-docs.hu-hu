@@ -1,22 +1,22 @@
 ---
 title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
-description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
+description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873685"
+ms.locfileid: "83994663"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
-Miután létrehozta a tudásbázist, adjon hozzá metaadatokat tartalmazó kérdés-és QnA-készleteket a válasz szűréséhez. Az alábbi táblázatban szereplő kérdések az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure-szolgáltatással kell rendelkezniük.
+Miután létrehozta a tudásbázist, adja hozzá a kérdés-és válasz (QnA) párokat metaadatokkal a válasz szűréséhez. Az alábbi táblázatban szereplő kérdések az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure-szolgáltatással kell rendelkezniük.
 
 <a name="qna-table"></a>
 
-|Beállítás|Kérdések|Válasz|Metaadatok|
+|Pár|Kérdések|Válasz|Metaadatok|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ Miután hozzáadta a metaadatokat egy QnA-párosításhoz, az ügyfélalkalmazá
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>További megfogalmazott kérdések hozzáadása
 
-Az aktuális Tudásbázis rendelkezik a QnA Maker hibaelhárítási QnA párokkal. Ezek a készletek akkor jöttek létre, amikor az URL-címet hozzáadták a tudásbázishoz a létrehozási folyamat során.
+Az aktuális Tudásbázis rendelkezik a QnA Maker hibaelhárítási QnA párokkal. Ezek a párok akkor jöttek létre, amikor az URL-címet hozzáadták a tudásbázishoz a létrehozási folyamat során.
 
 Az URL-cím importálása után csak egy kérdés lett létrehozva. Ebben az eljárásban további kérdéseket is megadhat.
 
-1. A **Szerkesztés** lapon használja a kérdés-és Levelesláda fölötti keresési szövegmezőt a kérdés megtalálásához.`How large a knowledge base can I create?`
+1. A **Szerkesztés** lapon használja a kérdés és válasz párok fölötti keresési szövegmezőt a kérdés megtalálásához.`How large a knowledge base can I create?`
 
 1. A **kérdés** oszlopban válassza az **+ alternatív megfogalmazás hozzáadása** lehetőséget, majd adja hozzá a következő táblázatban megadott összes új megfogalmazást.
 
@@ -70,7 +70,7 @@ Az URL-cím importálása után csak egy kérdés lett létrehozva. Ebben az elj
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Metaadatok hozzáadása a válaszok szűréséhez
 
-Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalkalmazás szűrt válaszokat kér. Ezt a szűrőt az [első és a második rangsor](../concepts/query-knowledge-base.md#ranker-process) alkalmazása előtt alkalmazza a rendszer.
+A metaadatok kérdés-válasz párokhoz való hozzáadásával az ügyfélalkalmazás szűrt válaszokat kérhet. Ezt a szűrőt az [első és a második rangsor](../concepts/query-knowledge-base.md#ranker-process) alkalmazása előtt alkalmazza a rendszer.
 
 1. Adja hozzá a második kérdést és választ a metaadatok nélkül a rövid útmutató [első táblájából](#qna-table), majd folytassa a következő lépésekkel.
 

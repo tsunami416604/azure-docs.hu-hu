@@ -3,12 +3,12 @@ title: A tárolók Azure Monitor áttekintése | Microsoft Docs
 description: Ez a cikk azokat a tárolókat ismerteti Azure Monitor, amelyek az AK-tárolók bevezetési megoldását figyelik, valamint a általa nyújtott értéket az AK-fürtök és az Azure-Container Instances állapotának figyelésével.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275229"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118078"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>A tárolókhoz készült Azure Monitor áttekintése
 
@@ -48,7 +48,7 @@ A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó á
 
 A Windows Server-fürtök Linux-fürthöz képest történő figyelésének fő eltérései a következők:
 
-- A memóriabeli RSS-metrika nem érhető el a Windows-csomópontok és-tárolók esetében.
+- A Windows nem rendelkezik memóriabeli RSS-metrikával, ezért a Windows-csomópontok és-tárolók esetében nem érhető el. A munkakészlet elérhető. További információ a [Windowsos memória-kezelésről](https://docs.microsoft.com/windows/win32/memory/working-set).
 - A lemezes tárolás kapacitására vonatkozó információk nem érhetők el Windows-csomópontok esetén.
 - A tároló-naplók nem érhetők el Windows-csomópontokon futó tárolók esetén.
 - Az élő adatszolgáltatások (előzetes verzió) funkcióinak támogatása a Windows-tároló naplói kivételével érhető el.

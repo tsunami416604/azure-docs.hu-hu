@@ -175,7 +175,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ### <a name="exit-codes"></a>Kilépési kódok
 
-| Kilépési kód | Jelentés | Lehetséges művelet |
+| Kilépési kód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
 | 0 | Sikeres művelet |
 | 1 | A bővítmény helytelen használata | Végrehajtás kimeneti naplójának keresése |

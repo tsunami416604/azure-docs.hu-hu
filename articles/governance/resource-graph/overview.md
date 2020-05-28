@@ -3,12 +3,12 @@ title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c3ac82c823df8cdde7b616b62ee409de500b5990
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381519"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995858"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -22,8 +22,8 @@ Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrá
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
+> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+>  _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -44,7 +44,7 @@ Az Azure-erőforrások frissítésekor a változás erőforrás-kezelője értes
 Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf emellett normál _teljes vizsgálatot_is végez. Ez a vizsgálat biztosítja, hogy az erőforrás-gráf-adat aktuális, ha kimaradt értesítések vannak, vagy ha egy erőforrást a Resource Manageren kívülről frissítenek.
 
 > [!NOTE]
-> Az erőforrás-gráf `GET` a-t használja az egyes erőforrás-szolgáltatók legújabb, nem előzetes verziójú API-jával a tulajdonságok és értékek összegyűjtéséhez. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálva lett, hogy az eredményekben még több aktuális vagy széles körben használt tulajdonság legyen elérhető. A környezet teljes listájáért tekintse meg az [API-verzió megjelenítése az egyes erőforrástípus](./samples/advanced.md#apiversion) -mintákhoz című témakört.
+> Az erőforrás-gráf a `GET` -t használja az egyes erőforrás-szolgáltatók legújabb, nem előzetes VERZIÓJÚ API-jával a tulajdonságok és értékek összegyűjtéséhez. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálva lett, hogy az eredményekben még több aktuális vagy széles körben használt tulajdonság legyen elérhető. A környezet teljes listájáért tekintse meg az [API-verzió megjelenítése az egyes erőforrástípus](./samples/advanced.md#apiversion) -mintákhoz című témakört.
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
@@ -79,16 +79,17 @@ További információ: [útmutatás a szabályozott kérelmekhez](./concepts/gui
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 
-A Azure Portal részét képező Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portalban futtassa az erőforrás-gráf lekérdezéseit. Dinamikus diagramként rögzítheti az eredményeket, hogy valós idejű dinamikus információkat nyújtson a portál munkafolyamatainak. További információ: [első lekérdezés az Azure Resource Graph Explorerben](first-query-portal.md).
+A Azure Portal részét képező Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portalban futtassa az erőforrás-gráf lekérdezéseit. Dinamikus diagramként rögzítheti az eredményeket, hogy valós idejű dinamikus információkat nyújtson a portál munkafolyamatainak. További információ: [első lekérdezés az Azure Resource Graph Explorerben](./first-query-portal.md).
 
-Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez készült Azure SDK-t és egyebeket. A lekérdezés minden nyelv esetében azonos szerkezetű. Ismerje meg, hogyan engedélyezhető az erőforrás-gráf a következővel:
+Az erőforrás-gráf támogatja az Azure CLI-t, a Azure PowerShell, a Pythonhoz készült Azure SDK-t és egyebeket. A lekérdezés minden nyelv esetében azonos szerkezetű. Ismerje meg, hogyan engedélyezhető az erőforrás-gráf a következővel:
 
-- [Azure Portal és Resource Graph Explorer](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
-- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+- [Azure Portal és Resource Graph Explorer](./first-query-portal.md) 
+- [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
+- [Python](./first-query-python.md#add-the-resource-graph-library)
 
 ## <a name="next-steps"></a>További lépések
 
-- Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
-- Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
-- Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
+- További információ a [lekérdezési nyelvről](./concepts/query-language.md).
+- Tekintse meg az [alapszintű lekérdezésekben](./samples/starter.md)használt nyelvet.
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](./samples/advanced.md).

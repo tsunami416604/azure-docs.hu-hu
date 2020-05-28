@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131752"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117517"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Computer Vision szolgáltatása olyan fejlett algoritmusokhoz biztosít hozzáférést a fejlesztőknek, amelyek a kívánt vizuális funkcióktól függően képeket dolgoznak fel, és adatokat adnak vissza. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, vagy megtalálhatja a képen látható összes emberi arcot.
+Az Azure Computer Vision szolgáltatása lehetővé teszi a fejlesztők számára, hogy olyan fejlett algoritmusokhoz férhessenek hozzá, amelyek képeket dolgoznak fel, és az Önt érdeklő vizuális funkciók alapján adnak vissza adatokat. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, megkeresheti-e az adott márkákat vagy objektumokat, vagy megkeresheti az emberi arcokat.
 
-Az alkalmazásban használhatja a Computer Visiont natív SDK-n keresztül, vagy közvetlenül a REST API meghívásával. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
+Az alkalmazásban Computer Vision az ügyféloldali kódtár SDK-n keresztül, vagy közvetlenül a REST API meghívásával is használhatja. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision a digitális eszközök kezeléséhez
 
@@ -32,7 +32,7 @@ A Computer Vision számos digitális Asset Management-(DAM-) forgatókönyvet k�
 
 ## <a name="analyze-images-for-insight"></a>Képek elemzése eredmények kinyeréséhez
 
-A képeket elemezheti a vizualizáció funkcióinak és jellemzőinek észleléséhez és elemzéséhez. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API tartalmazza.
+Elemezheti a képeket, hogy információkat szolgáltasson a vizualizáció szolgáltatásairól és jellemzőiről. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API tartalmazza.
 
 | Műveletek | Leírás |
 | ------ | ----------- |
@@ -50,7 +50,7 @@ A képeket elemezheti a vizualizáció funkcióinak és jellemzőinek észlelés
 
 ## <a name="extract-text-from-images"></a>Szöveg kinyerése képekből
 
-A Computer Vision [READ](concept-recognizing-text.md#read-api) API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttérbeli szöveggel dolgozik, például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Jelenleg az egyetlen támogatott nyelv az angol és a spanyol.
+A Computer Vision [READ](concept-recognizing-text.md#read-api) API-val kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttéren, például nyugtán, plakáton, névjegykártyán, levélen és táblán is működik szöveggel. Jelenleg hét különböző nyelven működik (lásd a [nyelvi támogatást](./language-support.md)).
 
 Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatával több nyelven is kinyerheti a nyomtatott szöveget. Ha szükséges, az OCR kijavította a felismert szöveg forgását, és megadja az egyes szavak keretének koordinátáit. Az OCR 25 nyelvet támogat, és automatikusan észleli a felismert szöveg nyelvét.
 

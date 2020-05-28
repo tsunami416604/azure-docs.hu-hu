@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767586"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013010"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Apache Sqoop-feladatok futtatása a HDInsight-ben a curl segítségével
 
@@ -26,7 +26,7 @@ A curl segítségével bemutatjuk, hogyan használhatja a HDInsight a Sqoop-fela
 
 * A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
 
-* A Azure SQL Database lekérdezésére szolgáló ügyfél. Használjon [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) vagy [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)-ot.
+* A Azure SQL Database lekérdezésére szolgáló ügyfél. Használjon [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) vagy [Visual Studio Code](../../azure-sql/database/connect-query-vscode.md)-ot.
 
 * [Curl](https://curl.haxx.se/). A curl egy eszköz, amellyel a vagy a HDInsight-fürtbe lehet továbbítani az adatok átvitelét.
 
@@ -41,7 +41,7 @@ A curl használatával adatok exportálhatók az Azure Storage-ból SQL Server a
 > [!NOTE]  
 > Amikor a Curl vagy más REST kommunikációt használ a WebHCattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája felhasználónevének és jelszavának megadásával. A fürtnevet a kérések kiszolgálóhoz küldéséhez használt egységes erőforrás-azonosító (URI) részeként is használnia kell.
 
-Az ebben a szakaszban szereplő parancsokra cserélje `USERNAME` le a felhasználót a fürtre történő hitelesítésre, majd cserélje `PASSWORD` le a parancsot a felhasználói fiók jelszavára. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
+Az ebben a szakaszban szereplő parancsokra cserélje le a `USERNAME` felhasználót a fürtre történő hitelesítésre, majd cserélje le a parancsot a `PASSWORD` felhasználói fiók jelszavára. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgálóhoz.
 
@@ -91,7 +91,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
        {"id":"job_1415651640909_0026"}
        ```
 
-1. A feladatok állapotának megtekintéséhez használja a következő parancsot. Cserélje `JOBID` le az értéket az előző lépésben visszaadott értékre. Ha például a visszatérési érték volt `{"id":"job_1415651640909_0026"}`, akkor `JOBID` a következő lesz `job_1415651640909_0026`:. Szükség szerint módosítsa a `jq` helyet.
+1. A feladatok állapotának megtekintéséhez használja a következő parancsot. Cserélje le az `JOBID` értéket az előző lépésben visszaadott értékre. Ha például a visszatérési érték volt `{"id":"job_1415651640909_0026"}` , akkor a következő `JOBID` lesz: `job_1415651640909_0026` . Szükség szerint módosítsa a helyet `jq` .
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -104,7 +104,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
    > [!NOTE]  
    > Ez a curl-kérelem egy JavaScript Object Notation (JSON) dokumentumot ad vissza, amely a feladattal kapcsolatos információkkal szolgál. a jQ csak az állapot értékének beolvasására szolgál.
 
-1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; Ebben az esetben a `wasb:///example/data/sqoop/curl`. Ez a címe a HDInsight-fürt által használt alapértelmezett `example/data/sqoop/curl` tároló könyvtárában tárolja a feladatok kimenetét.
+1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az esetben: `wasb:///example/data/sqoop/curl` . Ez a címe a `example/data/sqoop/curl` HDInsight-fürt által használt alapértelmezett tároló könyvtárában tárolja a feladatok kimenetét.
 
     A stderr és az stdout Blobok eléréséhez használhatja a Azure Portal.
 
@@ -118,7 +118,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
 ## <a name="limitations"></a>Korlátozások
 
 * Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
-* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a kapcsolót a `-batch` lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
+* Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót a lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
 
 ## <a name="summary"></a>Összefoglalás
 

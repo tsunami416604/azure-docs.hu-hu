@@ -1,102 +1,85 @@
 ---
-title: Csempék hozzáadása az irányítópulthoz | Microsoft Docs
-description: A Builder használatával megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central alkalmazás-irányítópultot.
-author: mavoge
-ms.author: mavoge
-ms.date: 10/17/2019
+title: Csempék hozzáadása az Azure IoT Central irányítópulthoz | Microsoft Docs
+description: A Builder segítségével megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central alkalmazás-irányítópultot csempék használatával.
+author: Haley-Rowland
+ms.author: harowl
+ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 1110f76a792a7e3955d5fd32e01ac1566d467151
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659053"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022876"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
 
-Az **irányítópult** az a lap, amely akkor töltődik be, amikor az alkalmazáshoz hozzáférő felhasználók megnyitják az alkalmazás URL-címét. Ha az alkalmazást az egyik **alkalmazás-sablonból**hozta létre, akkor az alkalmazás előre definiált irányítópultot fog kezdeni. Ha **egyéni alkalmazás** -sablonból hozta létre az alkalmazást, az irányítópulton néhány tipp jelenik meg az első lépésekhez.
+Az **irányítópult** az első lap, amely akkor jelenik meg, amikor egy IoT Central alkalmazáshoz csatlakozik. Ha az alkalmazást az iparágban központilag megcélzott [alkalmazás-sablonokból](./concepts-app-templates.md)hozza létre, az alkalmazásnak előre definiált irányítópulttal kell kezdődnie. Ha egyéni [alkalmazás-sablonból](./concepts-app-templates.md)hozza létre az alkalmazást, az irányítópulton néhány tippet láthat a kezdéshez.
 
-> [!NOTE]
+> [!TIP]
 > A felhasználók az alapértelmezett alkalmazás-irányítópulton kívül [több irányítópultot is létrehozhatnak](howto-create-personal-dashboards.md) . Ezek az irányítópultok csak a felhasználó személyes tagjai, vagy az alkalmazás összes felhasználója között megoszthatók.  
 
 ## <a name="add-tiles"></a>Csempék hozzáadása
 
-Az alábbi képernyőfelvételen az **egyéni alkalmazás** sablonjában létrehozott alkalmazás irányítópultja látható. Az alkalmazás alapértelmezett irányítópultjának testreszabásához válassza a lap bal felső sarkában található **Szerkesztés** lehetőséget.
+Az alábbi képernyőfelvételen az **egyéni alkalmazás** sablonjában létrehozott alkalmazás irányítópultja látható. Ha testre szeretné szabni az aktuális irányítópultot, válassza a **Szerkesztés**lehetőséget, ha egyéni személyes vagy megosztott irányítópultot szeretne hozzáadni, válassza az **új**lehetőséget:
 
-> [!div class="mx-imgBorder"]
-> ![Az alkalmazások irányítópultja a "minta contoso" sablon alapján](media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png)
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
-A **Szerkesztés** lehetőség kiválasztásával megnyílik az irányítópult könyvtára panel. A függvénytár tartalmazza az irányítópult testreszabásához használható csempéket és irányítópult-primitíveket.
+A **Szerkesztés** vagy az **új**lehetőség kiválasztása után az irányítópult *szerkesztési* módban van. Az irányítópult **szerkesztése** panelen található eszközök segítségével csempéket adhat hozzá az irányítópulthoz, és saját maga is testreszabhatja és eltávolíthatja a csempéket az irányítópulton. Például egy **telemetria** csempe hozzáadásához egy vagy több eszköz által jelentett aktuális hőmérséklet megjelenítéséhez:
 
-> [!div class="mx-imgBorder"]
-> ![Irányítópult-könyvtár](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
+1. Az **irányítópult szerkesztése** panelen válasszon ki egy **eszközt**.
+1. Válasszon ki egy vagy több eszközt az **eszközök** legördülő menüben a csempén való megjelenítéshez. Ekkor megjelenik az eszközökön elérhető telemetria, tulajdonságok és parancsok.
+1. Válassza a **hőmérséklet** lehetőséget a telemetria szakaszban, majd kattintson a **csempe hozzáadása**lehetőségre. A csempe most már az irányítópulton látható, ahol módosíthatja a vizualizációt, átméretezheti a csempét, és konfigurálhatja:
 
-Hozzáadhat például egy **telemetria** csempét az eszköz aktuális hőmérsékletéhez. Ehhez tegye a következőket:
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hőmérséklet-telemetria csempe hozzáadása az irányítópulthoz":::
 
-1. Válassza ki az **eszköz sablonját**
-1. Válasszon ki egy eszközt az **eszközök** közül az irányítópult csempén megjeleníteni kívánt eszközhöz. Ezután megjelenik az eszköz azon tulajdonságainak listája, amelyeket a csempén lehet használni.
-1. Ha a csempét az irányítópulton szeretné létrehozni, kattintson a **hőmérséklet** elemre, és húzza azt az irányítópult-területen. Kattintson a **hőmérséklet** elem melletti jelölőnégyzetre, majd kattintson a **csempe hozzáadása**lehetőségre. Az alábbi képernyőfelvételen egy eszköz sablonjának és az eszköz példányának kiválasztását, majd az irányítópulton egy hőmérséklet-telemetria-csempét kell létrehoznia.
-1. A bal felső sarokban található **Mentés** elemre kattintva mentheti a csempét az irányítópulton.
+Ha befejezte a csempék hozzáadását és testreszabását az irányítópulton, válassza a **Mentés**lehetőséget.
 
-> [!div class="mx-imgBorder"]
-> !["Az eszköz részleteinek konfigurálása" űrlap a beállítások és a tulajdonságok részleteivel](media/howto-add-tiles-to-your-dashboard/device-details.png)
+## <a name="customize-tiles"></a>Csempék testreszabása
 
-Most, amikor egy operátor megtekinti az alapértelmezett alkalmazás-irányítópultot, az új csempe jelenik meg, amely az eszköz **hőmérsékletét** tartalmazza. Az egyes csempék előre kiválasztott gráftal, diagrammal, valamint a csempék létrehozásakor megjelenő táblázattal rendelkeznek. A felhasználók azonban módosíthatják és módosíthatják a vizualizációt.  
+Az irányítópulton egy csempe testreszabásához szerkesztési módban kell lennie. Az elérhető testreszabási beállítások a [csempe típusától](#tile-types)függenek:
 
-> [!div class="mx-imgBorder"]
-> !["Irányítópult" lap, amely megjeleníti a csempén látható beállításokat és tulajdonságokat](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
+* A csempe vonalzó ikonja lehetővé teszi a vizualizáció módosítását. A vizualizációk közé tartoznak a sorok, a legutóbbi ismert értékek és a Heat maps.
 
-## <a name="edit-tiles"></a>Csempék szerkesztése
+* A négyzet ikon segítségével átméretezheti a csempét.
 
-Az irányítópulton található csempe szerkesztéséhez először kattintson a lap bal felső részén található **Szerkesztés** gombra, amely megnyitja az irányítópult szerkesztési módját és az összes csempéjét.  
-
-> [!div class="mx-imgBorder"]
-> ![Az irányítópult képernyője, amely a szerkesztési módot aktiválta egy kiválasztott csempén](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
-
-Ezután kattintson a **fogaskerék** ikonra a szerkeszteni kívánt csempe jobb felső sarkában. Itt szerkesztheti a csempék aspektusait, beleértve a címét, a vizualizációját, az összesítést stb.
-
-> [!div class="mx-imgBorder"]
-> ![Csempe-összesítési beállítások legördülő listája](media/howto-add-tiles-to-your-dashboard/aggregation-settings.png)
-
-A diagram vizualizációját úgy is megváltoztathatja, hogy a csempén a **vonalzó** ikonra kattint.
-
-> [!div class="mx-imgBorder"]
-> ![Csempe vizualizációs beállításainak legördülő listája](media/howto-add-tiles-to-your-dashboard/visualization-settings.png)
+* A fogaskerék ikon lehetővé teszi a vizualizáció konfigurálását. A Diagramos vizualizációk esetében például megadhatja a jelmagyarázat és a tengelyek megjelenítését, és kiválaszthatja a nyomtatandó időtartományt.
 
 ## <a name="tile-types"></a>Csempe típusai
 
-Az alábbi táblázat összefoglalja a csempék használatát az Azure IoT Centralban:
+A következő táblázat ismerteti az irányítópulthoz felvehető különböző típusú csempéket:
 
-| Csempe | Irányítópult | Description
-| ----------- | ------- | ------- |
-| Tartalom | Alkalmazások és eszközök beállítása irányítópultok |A Markdown által támogatott csempék a fejléc és a Leírás szövegét megjelenítő csempék. Ezt a csempét hivatkozás csempéként is használhatja, hogy a felhasználó az alkalmazáshoz kapcsolódó URL-címhez navigáljon.|
-| Kép | Alkalmazások és eszközök beállítása irányítópultok |A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Egy képcsempe használatával képeket adhat hozzá egy irányítópulthoz, és opcionálisan engedélyezheti a felhasználónak az alkalmazáshoz kapcsolódó URL-cím megkeresését.|
-| Címke | Alkalmazás-irányítópultok |A felirat csempék egyéni szöveget jelenítenek meg az irányítópulton. Megadhatja a szöveg méretét. A címke csempével fontos információkat adhat hozzá az irányítópulthoz, például a leírásokat, a kapcsolattartási adatokat vagy a súgót.|
-| Térkép | Alkalmazás-és eszköz-irányítópultok |A Térkép csempéi megjelenítik egy eszköz helyét egy térképen. Akár 100 pontot is megjeleníthet egy eszköz tartózkodási előzményeiről. Megjelenítheti például a mintavételes útvonalat, ahol egy eszköz az elmúlt héten van.|
-| Vonalas diagram | Alkalmazás-és eszköz-irányítópultok |A vonalas diagram csempéi egy adott időszakra vonatkozóan egy adott eszköz összesített mértékének diagramját jelenítik meg. Megjeleníthet például egy olyan diagramot, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
-| Oszlopdiagram | Alkalmazás-és eszköz-irányítópultok |A oszlopdiagram csempéi egy adott időszakra vonatkozó összesített mérési diagramot jelenítenek meg. Megjeleníthet például egy olyan sávdiagram, amely az elmúlt órában egy eszköz átlagos hőmérsékletét és terhelését jeleníti meg.|
-| Tortadiagram | Alkalmazások és eszközök beállítása irányítópultok |A tortadiagram csempéi egy adott időszakra vonatkozó összesített mérési diagramot jelenítenek meg.|
-| Hőtérkép | Alkalmazások és eszközök beállítása irányítópultok |A Heat Térkép csempéi a színként jelölt eszközről jelenítenek meg információkat.|
-| Események előzményei | Alkalmazás-és eszköz-irányítópultok |Az esemény előzményei csempék az adott időszakon belül megjelenítik az adott eszköz eseményeit. Használhatja például az eszköz összes hőmérséklet-változásának megjelenítésére az elmúlt órában.|
-| Korábbi állapotok | Alkalmazás-és eszköz-irányítópultok |Az állapot előzményei csempék egy adott időszak mérési értékeit jelenítik meg. Használhatja például az eszköz hőmérsékleti értékének megjelenítésére az elmúlt órában.|
-| KPI | Alkalmazás-és eszköz-irányítópultok | A KPI-csempék összesített telemetria vagy az esemény mértékét jelenítik meg egy adott időszakra vonatkozóan. Használhatja például az eszköz utolsó órájában elérhető maximális hőmérséklet megjelenítését.|
-| Utolsó ismert érték | Alkalmazás-és eszköz-irányítópultok |Az utolsó ismert érték csempék a telemetria vagy az állapot mérésének legújabb értékét jelenítik meg. Ezzel a csempével például megjelenítheti az eszközök hőmérsékletének, nyomásának és nedvességtartalmának legutóbbi méréseit. |
-| Tulajdonság | Alkalmazás-és eszköz-irányítópultok | A tulajdonságok csempéi az eszköz tulajdonságainak és Felhőbeli tulajdonságainak aktuális értékét jelenítik meg. Ezt a csempét használhatja például az eszközök gyártói vagy belső vezérlőprogram-verziójának megjelenítéséhez. |
+| Csempe             | Leírás |
+| ---------------- | ----------- |
+| Markdown         | A Markdown csempéi olyan csempék, amelyek fejléceket és leírásokat jelenítenek meg a Markdown használatával formázott szövegekben. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
+| Kép            | A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
+| Címke            | A felirat csempék egyéni szöveget jelenítenek meg az irányítópulton. Megadhatja a szöveg méretét. A címke csempével fontos információkat adhat hozzá az irányítópulthoz, például a leírásokat, a kapcsolattartási adatokat vagy a súgót.|
+| Darabszám            | A számlálási csempék az eszközcsoport eszközeinek számát jelenítik meg.|
+| Térkép              | A térképes csempék egy vagy több eszköz helyét jelenítik meg a térképen. Akár 100 pontot is megjeleníthet egy eszköz tartózkodási előzményeiről. Megjelenítheti például a mintavételes útvonalat, ahol egy eszköz az elmúlt héten van.|
+| KPI              |  A KPI-csempék egy vagy több eszköz összesített telemetria-értékeit jelenítik meg egy adott időszakban. A segítségével például megjelenítheti az elmúlt órában egy vagy több eszközre vonatkozóan elért maximális hőmérsékletet és nyomást.|
+| Vonaldiagram       | A vonalas diagram csempék egy vagy több összesített telemetria-értéket ábrázolnak egy adott időszakra vonatkozóan egy vagy több eszközhöz. Megjeleníthet például egy diagramot, amely az elmúlt órában egy vagy több eszköz átlagos hőmérsékletét és terhelését ábrázolja.|
+| Sávdiagram        | A oszlopdiagram-csempék egy vagy több összesített telemetria-értéket ábrázolnak egy adott időszakra vonatkozóan egy vagy több eszközhöz. Megjeleníthet például egy sávdiagram, amely egy vagy több eszköz átlagos hőmérsékletét és terhelését jeleníti meg az elmúlt órában.|
+| Tortadiagram        | A tortadiagram csempéi egy vagy több összesített telemetria-értéket jelenítenek meg egy vagy több eszközhöz egy adott időszakra vonatkozóan.|
+| Heat Térkép         | A Heat Map csempék egy vagy több, színként jelölt eszköz adatait jelenítik meg.|
+| Utolsó ismert érték | Az utolsó ismert érték csempék egy vagy több eszköz legújabb telemetria-értékeit jelenítik meg. Ezt a csempét használhatja például egy vagy több eszköz legutóbbi hőmérséklet-, nyomás-és páratartalom-értékének megjelenítésére. |
+| Események előzményei    | Az esemény előzményei csempék az adott időszakon belül megjelenítik az adott eszköz eseményeit. Használhatja például, hogy megjelenítse az összes nyitott és záró eseményt az elmúlt órában egy vagy több eszközhöz.|
+| Tulajdonság         |  A tulajdonságok csempéi egy vagy több eszköz tulajdonságainak és Felhőbeli tulajdonságainak aktuális értékét jelenítik meg. Ezt a csempét használhatja például az eszköz tulajdonságainak, például az eszköz gyártójának vagy belső vezérlőprogram-verziójának a megjelenítéséhez. |
+
+Jelenleg legfeljebb 10 eszközt adhat hozzá több eszközt támogató csempék hozzáadásához.
 
 ### <a name="customizing-visualizations"></a>Vizualizációk testreszabása
 
-A vonalas diagramok, a sávdiagramok és a tortadiagramok esetében testre szabhatja a diagramon a különböző telemetriáiról megjelenített színeket. Ehhez válassza ki a testre szabni kívánt telemetria melletti szájpadlás ikont, és válasszon egy színt.
+Az összesített értékeket megjelenítő csempék esetében válassza a telemetria típusa melletti fogaskerék ikont a **diagram konfigurálása** panelen az Összesítés kiválasztásához. Az átlag, a Sum, a maximum, a minimum és a darabszám közül választhat.
 
-> [!div class="mx-imgBorder"]
-> ![Telemetria Színmegjelenítési beállításainak legördülő listája](media/howto-add-tiles-to-your-dashboard/color-customization.png)
+A vonalas diagramok, a sávdiagramok és a tortadiagramok esetében testreszabhatja a különböző telemetria-értékek színét. Válassza a paletta ikont a testreszabni kívánt telemetria mellett:
 
-A telemetriáiról vagy a karakterlánc típusú tulajdonságok esetében kiválaszthatja, hogyan szeretné megjeleníteni a szöveget. Ha például az eszköz karakterlánc-telemetria küld egy URL-címet, az URL-címet kattintható hivatkozásként jelenítheti meg. Ha az URL-cím egy képre hivatkozik, az utolsó ismert érték vagy tulajdonság csempén jelenítheti meg a képet. A telemetria neve melletti fogaskerék kiválasztásával megváltoztathatja a karakterlánc telemetria megjelenítésének módját. Így szövegként, hivatkozásként vagy képként jelenítheti meg a szöveget.
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Telemetria érték színének módosítása":::
 
-> [!div class="mx-imgBorder"]
-> ![Karakterlánc-vizualizációs beállítások legördülő listája](media/howto-add-tiles-to-your-dashboard/string-viz-customization.png)
+A karakterlánc-tulajdonságokat vagy telemetria értékeket megjelenítő csempék esetében kiválaszthatja, hogyan jelenjen meg a szöveg. Ha például az eszköz egy karakterlánc-tulajdonságban tárolja az URL-címet, akkor megjeleníthető hivatkozásként. Ha az URL-cím egy képre hivatkozik, az utolsó ismert érték vagy tulajdonság csempén jelenítheti meg a képet. A karakterlánc megjelenítésének módosításához a csempe konfigurációjában válassza a fogaskerék ikont a telemetria típusa vagy tulajdonsága mellett:
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="A karakterlánc megjelenítése a csempén":::
 
 ## <a name="next-steps"></a>További lépések
 

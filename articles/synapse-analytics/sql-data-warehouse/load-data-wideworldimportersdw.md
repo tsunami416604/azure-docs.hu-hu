@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 16263a23c978e3486ff7c5d9281117f850cb885c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14868b2642b2b77ce6bc7315e58a7ae2dc0f115d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744360"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019928"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Oktatóanyag: az Azure szinapszis Analytics SQL-készletbe való betöltés
 
@@ -46,7 +46,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Üres adattárház létrehozása az SQL-készletben
 
-A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az SQL-készlet egy Azure- [erőforráscsoport](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és egy [Azure SQL logikai kiszolgáló](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)között jön létre.
+A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az SQL-készlet egy Azure- [erőforráscsoport](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és egy [logikai SQL Server-kiszolgáló](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)között jön létre.
 
 Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
 
@@ -73,11 +73,11 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
-    ![adatbázis-kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-database-server.png)
+    ![kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-database-server.png)
 
 1. **Válassza a teljesítmény szintet**. Alapértelmezés szerint a csúszka a **DW1000c**értékre van állítva. Mozgassa a csúszkát felfelé és lefelé a kívánt teljesítmény-méretezés kiválasztásához.
 
-    ![adatbázis-kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
+    ![2. kiszolgáló létrehozása](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
 1. A **További beállítások** lapon állítsa be a **meglévő értékek használata** none értékre, és hagyja meg a **rendezést** az alapértelmezett *SQL_Latin1_General_CP1_CI_AS*.
 
@@ -87,10 +87,10 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL-készletet.
 
 ## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
 
-Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
+Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. A csatlakozás engedélyezéséhez hozzáadhat tűzfalszabályokat, amelyek adott IP-címekkel engedélyezik a kapcsolódást.  A következő lépéseket követve hozzon létre egy [kiszolgálószintű tűzfalszabályt](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az ügyfél IP-címéhez.
 
 > [!NOTE]
-> Az Azure szinapszis Analytics SQL-készlet az 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
+> Az Azure szinapszis Analytics SQL-készlet az 1433-as porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a kiszolgálóhoz, kivéve, ha az informatikai részleg megnyitja a 1433-es portot.
 >
 
 1. Az üzembe helyezés befejezése után keresse meg a készlet nevét a navigációs menü keresőmezőbe, és válassza ki az SQL-készlet erőforrását. Válassza ki a kiszolgálónevet.
@@ -100,7 +100,7 @@ Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolg�
 1. Válassza ki a kiszolgálónevet.
     ![kiszolgáló neve](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget. Megnyílik az SQL-készlet kiszolgálójának **tűzfalbeállítások** lapja.
+1. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
     ![kiszolgáló beállításai](./media/load-data-wideworldimportersdw/server-settings.png)
 
@@ -108,9 +108,9 @@ Az Azure szinapszis Analytics szolgáltatás egy tűzfalat hoz létre a kiszolg�
 
     ![kiszolgálói tűzfalszabály](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
-1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt az aktuális IP-címhez, amely megnyitja az 1433-es portot a kiszolgálón.
 
-Most már csatlakozhat az SQL Serverhez az ügyfél IP-címe alapján. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
+Most már csatlakozhat a kiszolgálóhoz az ügyfél IP-címe alapján. A csatlakozás az SQL Server Management Studio vagy más, választott eszköz használatával lehetséges. A csatlakozáskor használja a korábban létrehozott ServerAdmin-fiókot.  
 
 > [!IMPORTANT]
 > Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. A tűzfal az összes Azure-szolgáltatásra vonatkozó letiltásához kattintson ezen az oldalon a **KI** gombra, majd a **Mentés** parancsra.
@@ -123,7 +123,7 @@ A kiszolgálóhoz való kapcsolódáshoz használt teljes kiszolgálónév. Nyis
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
-Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával építjük fel a kapcsolatot az Azure SQL-kiszolgálóval.
+Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) használatával létesít kapcsolatot a kiszolgálóval.
 
 1. Nyissa meg az SQL Server Management Studiót.
 
@@ -1073,7 +1073,7 @@ A jó lekérdezési teljesítmény eléréséhez fontos statisztikákat létreho
     EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az adattárházába betöltött számítási erőforrások és adatok díjkötelesek. Ezeket külön-külön számlázzuk.  
 
@@ -1081,13 +1081,13 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és kattintson az adattárházra.
 
-    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az Adattárolásért kell fizetnie, és folytathatja a számítást, amikor készen áll az adatokkal való munkára. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítási erőforrások újraindításához kattintson az **Indítás** gombra.
 
 3. Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is. Ha el szeretné távolítani az adattárházat, hogy a számítási és tárolási erőforrásokért se kelljen fizetnie, kattintson a **Törlés** parancsra.
 
-4. A korábban létrehozott SQL-kiszolgáló eltávolításához kattintson az előző képen látható **sample-svr.database.windows.net** elemre, majd a **Törlés** parancsra.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
+4. A létrehozott kiszolgáló eltávolításához kattintson a **Sample-SVR.database.Windows.net** elemre az előző képen, majd kattintson a **Törlés**gombra.  Ezzel kapcsolatban legyen körültekintő, mert a kiszolgáló törlésével a kiszolgálóhoz rendelt összes adatbázis is törölve lesz.
 
 5. Az erőforráscsoport törléséhez kattintson a **SampleRG** elemre, majd az **Erőforráscsoport törlése** parancsra.
 

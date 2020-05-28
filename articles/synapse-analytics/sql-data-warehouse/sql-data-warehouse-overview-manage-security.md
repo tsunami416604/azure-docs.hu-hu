@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d86a0df5265418a28e1fe68de0dc2cd601e71f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416057"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015591"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Szinapszisban
 
@@ -33,11 +33,11 @@ Ez a cikk végigvezeti a szinapszis SQL-készlet biztonságossá tételének ala
 
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
-A tűzfalszabályok a-kiszolgáló és az adatbázis használatával is elutasítja a kapcsolódási kísérleteket az olyan IP-címekről, amelyek nincsenek explicit módon engedélyezve. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
+A tűzfalszabályok a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) és az adatbázisai egyaránt használják a kapcsolódási kísérletek elutasítására olyan IP-címekről, amelyek nincsenek explicit módon engedélyezve. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
 
-Az ajánlott eljárás a kiszolgáló tűzfalán átengedett IP-címtartományokat lehető legnagyobb mértékű korlátozása.  Ha a helyi számítógépről szeretné elérni az SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt az 1433-as TCP-porton  
+Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  Ha a helyi számítógépről szeretné elérni az SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen engedélyezi a kimenő kommunikációt az 1433-as TCP-porton  
 
-Az Azure szinapszis Analytics kiszolgálói szintű IP-tűzfalszabályok használatával működik. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Az Azure szinapszis Analytics kiszolgálói szintű IP-tűzfalszabályok használatával működik. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 Az SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
 
@@ -45,11 +45,11 @@ Az SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rend
 
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL-készlet jelenleg támogatja a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directory.
 
-Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezeknek a hitelesítő adatoknak a használatával a hitelesítő adatokat az adott kiszolgálón található adatbázis-tulajdonosként vagy a "dbo" SQL Server hitelesítésen keresztül végezheti el.
+Amikor létrehozta a kiszolgálót az adatbázishoz, a "kiszolgálói rendszergazda" bejelentkezési azonosítót adta meg felhasználónévvel és jelszóval. Ezeknek a hitelesítő adatoknak a használatával a hitelesítő adatokat az adott kiszolgálón található adatbázis-tulajdonosként vagy a "dbo" SQL Server hitelesítésen keresztül végezheti el.
 
 Az ajánlott eljárás szerint azonban a szervezet felhasználóinak egy másik fiókot kell használniuk a hitelesítéshez. Így korlátozhatja az alkalmazás számára biztosított engedélyeket, és csökkentheti a kártékony tevékenységek kockázatát abban az esetben, ha az alkalmazás kódja sebezhető az SQL-injektálási támadásokkal szemben.
 
-SQL Server hitelesített felhasználó létrehozásához kapcsolódjon a kiszolgálón található **Master** adatbázishoz a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy új kiszolgálói bejelentkezést.  Érdemes létrehozni egy felhasználót is a Master adatbázisban. A felhasználók a Master szolgáltatásban való létrehozása lehetővé teszi, hogy a felhasználó egy adatbázis nevének megadása nélkül jelentkezzen be a SSMS-hez hasonló eszközökkel.  Azt is lehetővé teszi, hogy az Object Explorer használatával megtekintsék az SQL Server összes adatbázisát.
+SQL Server hitelesített felhasználó létrehozásához kapcsolódjon a kiszolgálón található **Master** adatbázishoz a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy új kiszolgálói bejelentkezést.  Érdemes létrehozni egy felhasználót is a Master adatbázisban. A felhasználók a Master szolgáltatásban való létrehozása lehetővé teszi, hogy a felhasználó egy adatbázis nevének megadása nélkül jelentkezzen be a SSMS-hez hasonló eszközökkel.  Azt is lehetővé teszi, hogy az Object Explorer használatával megtekintsék a kiszolgálókon lévő összes adatbázist.
 
 ```sql
 -- Connect to master database and create a login
@@ -64,9 +64,9 @@ Ezután kapcsolódjon az **SQL-készlet adatbázisához** a kiszolgáló-rendsze
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ahhoz, hogy a felhasználó engedélyt nyújtson további műveletek elvégzésére, például bejelentkezések létrehozására vagy új adatbázisok létrehozására, rendelje `Loginmanager` hozzá `dbmanager` a felhasználót a Master adatbázis és a szerepkörökhöz.
+Ahhoz, hogy a felhasználó engedélyt nyújtson további műveletek elvégzésére, például bejelentkezések létrehozására vagy új adatbázisok létrehozására, rendelje hozzá a felhasználót a `Loginmanager` `dbmanager` Master adatbázis és a szerepkörökhöz.
 
-További információ ezekről a további szerepkörökről és a SQL Database való hitelesítésről: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseokban](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  A Azure Active Directory használatával való csatlakozással kapcsolatos további információkért lásd: [csatlakozás Azure Active Directory-hitelesítés használatával](sql-data-warehouse-authentication.md).
+További információ ezekről a további szerepkörökről és a SQL Database való hitelesítésről: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseokban](../../azure-sql/database/logins-create-manage.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).  A Azure Active Directory használatával való csatlakozással kapcsolatos további információkért lásd: [csatlakozás Azure Active Directory-hitelesítés használatával](sql-data-warehouse-authentication.md).
 
 ## <a name="authorization"></a>Engedélyezés
 
@@ -92,13 +92,13 @@ A következő példa olvasási hozzáférést biztosít egy felhasználó által
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Az adatbázisok és logikai kiszolgálók Azure Portal vagy a Azure Resource Manager API használatával történő kezeléséhez a portál felhasználói fiókjának szerepkör-hozzárendelései vannak vezérelve. További információ: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Az adatbázisok és kiszolgálók Azure Portal vagy a Azure Resource Manager API használatával történő kezeléséhez a portál felhasználói fiókjának szerepkör-hozzárendelései vannak vezérelve. További információ: [szerepköralapú hozzáférés-vezérlés Azure Portalban](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="encryption"></a>Titkosítás
 
 A transzparens adattitkosítás (TDE) segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy titkosítja és visszafejti az adatait a nyugalmi állapotban. Az adatbázis titkosításakor a társított biztonsági másolatok és a tranzakciós naplófájlok az alkalmazások módosítása nélkül titkosítva lesznek. A TDE egy teljes adatbázis tartalmát titkosítja egy szimmetrikus kulcs – az adatbázis-titkosítási kulcs – használatával.
 
-SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgálói tanúsítvány minden SQL Database-kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A használt titkosítási algoritmus az AES-256. A TDE általános ismertetését lásd: [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótanúsítvány védi. A beépített kiszolgáló tanúsítványa minden kiszolgáló esetében egyedi. A Microsoft automatikusan elforgatja ezeket a tanúsítványokat legalább 90 naponta. A használt titkosítási algoritmus az AES-256. A TDE általános ismertetését lásd: [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.md) vagy a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával végezhető el.
 

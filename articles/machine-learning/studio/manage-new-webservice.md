@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 554e3fa07ef733c443371aca6f1621770686895a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217972"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119010"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Webszolgáltatás kezelése a Azure Machine Learning Studio (klasszikus) webszolgáltatások portál használatával
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 A Microsoft Azure Machine Learning webszolgáltatások portál használatával kezelheti Machine Learning új és klasszikus webszolgáltatásait. Mivel a klasszikus webszolgáltatások és az új webszolgáltatások különböző alapul szolgáló technológiákon alapulnak, némileg eltérő felügyeleti képességei vannak.
 

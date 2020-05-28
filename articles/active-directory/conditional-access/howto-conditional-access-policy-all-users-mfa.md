@@ -4,19 +4,19 @@ description: Egyéni feltételes hozzáférési szabályzat létrehozása, amely
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617623"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995345"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Feltételes hozzáférés: MFA megkövetelése minden felhasználó számára
 
@@ -44,17 +44,17 @@ A szervezeteknek sok Felhőbeli alkalmazása lehet. Előfordulhat, hogy nem mind
 A következő lépések segítenek létrehozni egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy minden felhasználó elvégezzen többtényezős hitelesítést.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférését**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat**lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó** lehetőséget.
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek** > területen**válassza a** **minden felhőalapú alkalmazás**lehetőséget.
+1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
    1. A **kizárás**területen válassza ki azokat az alkalmazásokat, amelyek nem igénylik a többtényezős hitelesítést.
-1. A **feltételek** > **ügyfélalkalmazások (előzetes verzió)** területen állítsa **az** **Igen**értékre, majd válassza a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés** > **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
+1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen**értékre a **konfigurálást** . **A válassza ki azokat az ügyfélalkalmazások, amelyekre ez a szabályzat vonatkozik,** az összes kijelölt alapértelmezett értékre kerül, majd válassza a **kész**lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
@@ -64,7 +64,7 @@ A szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatokn
 
 A fenti példában szereplő házirendben a szervezet dönthet úgy, hogy nem igényli a többtényezős hitelesítést, ha a vállalati hálózatról fér hozzá a felhőalapú alkalmazásokhoz. Ebben az esetben a következő konfigurációt vehetik fel a szabályzatba:
 
-1. A **hozzárendelések**területen válassza a **feltételek** > **helyszínek**lehetőséget.
+1. A **hozzárendelések**területen válassza a **feltételek**  >  **helyszínek**lehetőséget.
    1. Konfigurálja az **Igen értéket**.
    1. Adjon meg **bármilyen helyet**.
    1. **Az összes megbízható helyszín**kizárása.

@@ -1,52 +1,44 @@
 ---
-title: Hatókör-konfigurációk használata Azure Automation Update Management
-description: Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a Update Management használatakor.
+title: Azure Automation Update Management központi telepítési hatókör korlátozása
+description: Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a Update Management üzemelő példány hatókörének korlátozására.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832027"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117407"
 ---
-# <a name="work-with-scope-configurations-for-update-management"></a>A Update Management hatókör-konfigurációinak használata
+# <a name="limit-update-management-deployment-scope"></a>Update Management központi telepítési hatókör korlátozása
 
-Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a [Update Management](automation-update-management.md) szolgáltatás virtuális gépeken való használatakor. 
+Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk, ha a [Update Management](automation-update-management.md) funkció használatával telepítheti a frissítéseket és a javításokat a virtuális gépekre. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="about-scope-configurations"></a>A hatókör-konfigurációk ismertetése
 
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+A hatókör-konfiguráció egy vagy több mentett keresés (lekérdezés) csoportja, amely a Update Management hatókörének adott számítógépekre való korlátozására szolgál. A hatókör-konfiguráció a Log Analytics munkaterületen található, hogy megcélozza az engedélyezni kívánt számítógépeket. Ha hozzáad egy számítógépet a Update Management frissítéseinek fogadásához, a rendszer a munkaterületen lévő mentett kereséshez is hozzáadja a számítógépet.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>A hatókör-konfiguráció keresése
+## <a name="set-the-scope-limit"></a>Hatókör korlátjának beállítása
 
-A Update Management a Log Analytics munkaterület hatókör-konfigurációját használja a szolgáltatás engedélyezéséhez szükséges számítógépek célzására. A hatókör-konfiguráció egy vagy több mentett keresés csoportja, amely a szolgáltatás hatókörének meghatározott számítógépekre való korlátozására szolgál. A hatókör-konfigurációk elérése:
+A Update Management-telepítés hatókörének korlátozása:
 
-1. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **munkaterület**lehetőséget. 
+1. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **csatolt munkaterület** lehetőséget.
 
-2. Válassza ki a munkaterületet a **munkaterület-adatforrások**területen, és válassza a **hatókör-konfigurációk**elemet.
+2. Kattintson **a munkaterület ugrása**elemre.
 
-3. Ha a kiválasztott munkaterülethez még nincs engedélyezve a Update Management funkció, a létrehozza a `MicrosoftDefaultScopeConfig-Updates` hatókör-konfigurációt. 
+3. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások**területen.
 
-4. Ha a kijelölt munkaterületen már engedélyezve van a funkció, nincs újratelepítve, és a hatókör-konfiguráció nincs hozzáadva. 
+4. Válassza ki a hatókör-konfigurációtól jobbra található három pontot `MicrosoftDefaultScopeConfig-Updates` , majd kattintson a **Szerkesztés**gombra. 
 
-5. Válassza ki a három pontot a hatókör bármelyik konfigurációján, majd kattintson a **Szerkesztés**gombra. 
+5. A szerkesztési ablaktáblán bontsa ki a **számítógépcsoportok kijelölése elemet**. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. Az Update Management által használt mentett keresés:
 
-6. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések.
+    |Name     |Kategória  |Alias  |
+    |---------|---------|---------|
+    |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 
-## <a name="view-a-saved-search"></a>Mentett keresés megtekintése
-
-Amikor hozzáad egy számítógépet a Update Managementhoz, azt a rendszer a munkaterületen lévő mentett kereséshez is hozzáadja. A mentett keresés egy olyan lekérdezés, amely a célként megadott számítógépeket tartalmazza.
-
-1. Navigáljon a Log Analytics munkaterületre, és válassza a **mentett keresések** **általános**lehetőséget. Az Update Management által használt mentett keresés:
-
-|Name     |Kategória  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
-
-2. A mentett keresés elem kiválasztásával megtekintheti a csoport feltöltéséhez használt lekérdezést. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
+6. A mentett keresés elem kiválasztásával megtekintheti és szerkesztheti a csoport feltöltéséhez használt lekérdezést. Az alábbi ábrán a lekérdezés és annak eredményei láthatók:
 
     ![Mentett keresések](media/automation-scope-configurations-update-management/logsearch.png)
 

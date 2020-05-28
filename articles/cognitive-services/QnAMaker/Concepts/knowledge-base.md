@@ -1,24 +1,24 @@
 ---
 title: Importálás adatforrásokból – QnA Maker
-description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készletből és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+description: A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804282"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993099"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
-A Tudásbázis a nyilvános URL-címek és fájlok által benyújtott kérdés-és answer-csoportokból áll.
+A Tudásbázis a nyilvános URL-címek és fájlok által benyújtott kérdések és válaszok párokból áll.
 
 ## <a name="data-source-locations"></a>Adatforrás helyei
 
 A tartalom egy adatforrásból származó tudásbázisba kerül. Az adatforrás helyei **nyilvános URL-címek vagy fájlok**, amelyek nem igényelnek hitelesítést.
 
-A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasources.md)kivételt képeznek. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. Ha az URL-cím egy webes bővítménnyel végződik, például:. ASPX, a rendszer nem importálja QnA Maker a SharePointból.
+A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasources.md)kivételt képeznek. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. Ha az URL-cím egy webes kiterjesztéssel végződik, pl. ASPX, a rendszer nem importálja azt a SharePointból a QnA Makerbe.
 
 ## <a name="chit-chat-content"></a>Chit-csevegési tartalom
 
@@ -26,7 +26,7 @@ A Chit Chat QnA teljes tartalom-adatforrásként van felkínálva több nyelven 
 
 ## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálással
 
-A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz olyan `.tsv` strukturált fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz készleteket, és azokat egy adott adatforráshoz rendelni.
+A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz olyan strukturált `.tsv` fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz párokat, és azokat egy adott adatforráshoz rendelni.
 
 | Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |
 |-----------|---------|----|---------------------|
@@ -35,12 +35,12 @@ A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az 
 
 ## <a name="structured-multi-turn-format-through-import"></a>Strukturált többsoros formátum importálással
 
-A többszörös kapcsolású beszélgetéseket `.tsv` fájlformátumban hozhatja létre. A formátum lehetővé teszi a többfordulatos beszélgetések létrehozását a korábbi csevegési naplók elemzésével (más folyamatokkal, nem a QnA Maker használatával), majd a `.tsv` fájl létrehozását az Automation segítségével. Importálja a fájlt a meglévő Tudásbázis cseréjéhez.
+A többszörös kapcsolású beszélgetéseket fájlformátumban hozhatja létre `.tsv` . A formátum lehetővé teszi a többfordulatos beszélgetések létrehozását a korábbi csevegési naplók elemzésével (más folyamatokkal, nem a QnA Maker használatával), majd a fájl létrehozását az `.tsv` Automation segítségével. Importálja a fájlt a meglévő Tudásbázis cseréjéhez.
 
 > [!div class="mx-imgBorder"]
 > ![3 szintű többfunkciós kérdés fogalmi modellje](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-A többszörös bekapcsolás oszlopa `.tsv`a többszörös bekapcsolásra **vonatkozik.** Az Excelben `.tsv`látható példa a több bekapcsolású gyermekeket definiáló információk megjelenítéséhez:
+A többszörös bekapcsolás oszlopa a többszörös `.tsv` bekapcsolásra vonatkozik. **Prompts** Az `.tsv` Excelben látható példa a több bekapcsolású gyermekeket definiáló információk megjelenítéséhez:
 
 ```JSON
 [
@@ -56,16 +56,16 @@ A **displayOrder** numerikus, és a **szöveg** olyan szöveg, amely nem tartalm
 
 ## <a name="export-as-example"></a>Exportálás példaként
 
-Ha nem biztos abban, hogy az QnA-párt képviselje `.tsv` a fájlban:
+Ha nem biztos abban, hogy az QnA-párt képviselje a `.tsv` fájlban:
 * Ezt a [letölthető példát használhatja a githubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
-* Vagy hozza létre a készletet a QnA Maker-portálon, mentse, majd exportálja a tudásbázist egy példaként, hogy miként ábrázolja a készletet.
+* Vagy hozza létre a párt a QnA Maker portálon, mentse, majd exportálja a tudásbázist egy példaként, hogy miként reprezentálja a párt.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A tudásbázisok fejlesztési életciklusa](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 A válaszok formázásához használja a QnA Maker [Markdown-referenciát](../reference-markdown-format.md) .
 

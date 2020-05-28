@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673475"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998115"
 ---
 Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -64,7 +64,7 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáa
     }
     ```
 
-    A kérdés csak egyetlen szó, `size` amely a két kérdés-és válaszfájl bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
+    A kérdés csak egyetlen szó, `size` amely a két kérdés és válasz párok bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
 
 1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek.
 
@@ -103,12 +103,12 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáa
     }
     ```
 
-    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános választ `No good match found in KB.` adja vissza.
+    Ha van olyan kérdés-válasz pár, amely nem felel meg a keresési kifejezésnek, de nem felel meg a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános választ `No good match found in KB.` adja vissza.
 
 ## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
 
 > [!NOTE]
->Nem ajánlott hibakeresési poreperty használni bármilyen függőséghez. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban. 
+>Nem ajánlott hibakeresési poreperty használni bármilyen függőséghez. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban.
 
 A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá a következő `debug` tulajdonságot:
 

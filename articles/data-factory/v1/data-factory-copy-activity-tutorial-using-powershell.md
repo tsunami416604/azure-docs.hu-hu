@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73682858"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119267"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Oktatóanyag: Data Factory-folyamat létrehozása adatok áthelyezéséhez az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "73682858"
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure Resource Manager sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Azure Resource Manager-sablon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -90,7 +90,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
     Get-AzSubscription
     ```
 
-    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje ** &lt;** le az NameOfAzureSubscription&gt; -t az Azure-előfizetés nevére:
+    Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére:
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -189,7 +189,7 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
 1. Hozzon létre egy AzureSqlLinkedService.json nevű JSON-fájlt a C:\ADFGetStartedPSH mappában az alábbi tartalommal:
 
     > [!IMPORTANT]
-    > A &lt;servername&gt;, &lt;databasename&gt;, &lt;username@servername&gt; és &lt;password&gt; paraméterek értékét cserélje le az Azure SQL-kiszolgáló, az adatbázis és a felhasználói fiók nevére, valamint a jelszóra.
+    > Cserélje le a &lt; servername &gt; , &lt; &gt; a databasename és a &lt; username@servername &gt; &lt; Password nevet a &gt; kiszolgáló, az adatbázis, a felhasználói fiók és a jelszó nevével.
     
     ```json
     {
@@ -218,7 +218,7 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
     ProvisioningState : Succeeded
     ```
 
-   Győződjön meg arról, hogy az **Allow access to Azure services** (Azure-szolgáltatásokhoz való hozzáférés engedélyezése) beállítás BE van kapcsolva az SQL-adatbáziskiszolgálón. Az ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
+   Ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be van-e kapcsolva a kiszolgálón. Az ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
     1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
     1. Kattintson a bal oldalon a **További szolgáltatások>** menüpontra, majd az **SQL kiszolgálók**ra az **ADATBÁZISOK** kategóriában.
@@ -276,7 +276,7 @@ Ebben a lépésben hozza létre az InputDataset nevű adatkészletet, amely az A
 
     | Tulajdonság | Leírás |
     |:--- |:--- |
-    | type | A tulajdonság beállításának értéke **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
+    | típus | A tulajdonság beállításának értéke **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
     | linkedServiceName | A korábban létrehozott **AzureStorageLinkedService** szolgáltatásra hivatkozik. |
     | folderPath | A bemeneti blobokat tartalmazó **blobtárolót** és **mappát** adja meg. Ebben az oktatóanyagban az adftutorial a blobtároló és a folder a gyökérmappa. | 
     | fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, a rendszer a folderPath elérési úton található összes fájlt kiválasztja. Ebben az oktatóanyagban az **emp.txt** a fileName értéke, így a rendszer csak ezt a fájlt használja a feldolgozáshoz. |
@@ -341,7 +341,7 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
 
     | Tulajdonság | Leírás |
     |:--- |:--- |
-    | type | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL-adatbázis egyik táblájába történik. |
+    | típus | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL-adatbázis egyik táblájába történik. |
     | linkedServiceName | A korábban létrehozott **AzureSqlLinkedService** szolgáltatásra hivatkozik. |
     | tableName | Azt a **táblát** határozza meg, amelybe a rendszer az adatokat másolja. | 
     | frequency/interval | A frequency (gyakoriság) értéke **Hour** (Óra), az interval (időköz) értéke pedig **1**, azaz a rendszer a kimeneti szeleteket **óránként** állítja elő a folyamat kezdő és befejező időpontja közti időszakban (és nem azon kívül).  |
@@ -450,12 +450,12 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
     ProvisioningState : Succeeded
     ```
 
-**Gratulálok!** Sikeresen létrehozott egy Azure-beli adat-előállítót egy olyan folyamattal, amely az Azure Blob Storage-ból egy Azure SQL-adatbázisba másol adatokat. 
+**Gratulálunk!** Sikeresen létrehozott egy Azure-beli adat-előállítót egy olyan folyamattal, amely az Azure Blob Storage-ból egy Azure SQL-adatbázisba másol adatokat. 
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data factory eseményeit.
 
-1. Cserélje &lt;le&gt; a DataFactoryName nevet az adatgyárának nevére, és futtassa a **Get-AzDataFactory**parancsot, és rendelje hozzá a kimenetet egy változóhoz $DF.
+1. Cserélje le a &lt; DataFactoryName &gt; nevet az adatgyárának nevére, és futtassa a **Get-AzDataFactory**parancsot, és rendelje hozzá a kimenetet egy változóhoz $DF.
 
     ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
