@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207632"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021228"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -45,39 +45,39 @@ A következőket fogja megtanulni:
 
 Ez a cikk az [oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure](app-service-web-tutorial-dotnet-sqldatabase.md) -ban a SQL Database vagy [oktatóanyag: ASP.net Core és SQL Database alkalmazás létrehozása Azure app Service](app-service-web-tutorial-dotnetcore-sqldb.md). Ha még nem tette meg, kövesse az első két oktatóanyag egyikét. Azt is megteheti, hogy a saját .NET-alkalmazásának lépéseit a SQL Database használatával is módosíthatja.
 
-Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)című témakör lépéseit követve.
+Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)című témakör lépéseit követve.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Adatbázis-hozzáférés biztosítása az Azure AD-felhasználóhoz
 
-Először engedélyezze az Azure AD-hitelesítés SQL Database egy Azure AD-felhasználó kiosztásával a SQL Database-kiszolgáló Active Directory rendszergazdájaként. Ez a felhasználó különbözik az Azure-előfizetéshez való regisztrációhoz használt Microsoft-fióktól. Az Azure AD-ben létrehozott, importált, szinkronizált vagy meghívott felhasználónak kell lennie. További információ az engedélyezett Azure AD-felhasználókról: [Azure ad-szolgáltatások és-korlátozások a SQL Database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
+Először engedélyezze az Azure AD-hitelesítés használatát SQL Database egy Azure AD-felhasználó kiosztásával a kiszolgáló Active Directory rendszergazdájához. Ez a felhasználó különbözik az Azure-előfizetéshez való regisztrációhoz használt Microsoft-fióktól. Az Azure AD-ben létrehozott, importált, szinkronizált vagy meghívott felhasználónak kell lennie. További információ az engedélyezett Azure AD-felhasználókról: [Azure ad-szolgáltatások és-korlátozások a SQL Database](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations).
 
 Ha az Azure AD-bérlő még nem rendelkezik felhasználóval, hozzon létre egyet a [felhasználók hozzáadása vagy törlése a Azure Active Directory használatával](../active-directory/fundamentals/add-users-azure-active-directory.md)című rész lépéseit követve.
 
-Keresse meg az Azure ad-felhasználó objektum-azonosítóját [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) a (z) és a Replace * \<User-principal-name>* használatával. Az eredmény egy változóba lesz mentve.
+Keresse meg az Azure AD-felhasználó objektum-AZONOSÍTÓját a [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) és a csere használatával *\<user-principal-name>* . Az eredmény egy változóba lesz mentve.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
 ```
 > [!TIP]
-> Az Azure AD összes egyszerű felhasználóneve listájának megtekintéséhez futtassa a parancsot `az ad user list --query [].userPrincipalName`.
+> Az Azure AD összes egyszerű felhasználóneve listájának megtekintéséhez futtassa a parancsot `az ad user list --query [].userPrincipalName` .
 >
 
-Adja hozzá ezt az Azure AD-felhasználót Active Directory rendszergazdaként a Cloud Shell parancs használatával [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) . A következő parancsban cserélje le * \<a Server-Name>* a SQL Database-kiszolgáló nevére ( `.database.windows.net` utótag nélkül).
+Adja hozzá ezt az Azure AD-felhasználót Active Directory rendszergazdaként [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) a Cloud Shell parancs használatával. A következő parancsban cserélje le a *\<server-name>* nevet a kiszolgáló nevére ( `.database.windows.net` utótag nélkül).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-Active Directory-rendszergazda hozzáadásával kapcsolatos további információkért lásd: [Azure Active Directory-rendszergazda létesítése a Azure SQL Database-kiszolgálóhoz](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)
+Active Directory-rendszergazda hozzáadásával kapcsolatos további információkért lásd: [Azure Active Directory-rendszergazda létesítése a kiszolgálóhoz](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)
 
 ## <a name="set-up-visual-studio"></a>A Visual Studio telepítése
 
 ### <a name="windows"></a>Windows
-A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a**Fiókbeállítások** **kiválasztásával** > a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
+A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >  **Account Settings** a menüben, majd kattintson a **fiók hozzáadása**lehetőségre.
 
-Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök** > **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési** > **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
+Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök**  >  **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési**  >  **fiók kiválasztása**lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK**gombra.
 
 Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
 
@@ -109,13 +109,13 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 
 A *web. config*fájlban a fájl elejére, és végezze el a következő módosításokat:
 
-- A `<configSections>`alkalmazásban adja hozzá a következő szakasz deklarációját:
+- A alkalmazásban `<configSections>` adja hozzá a következő szakasz deklarációját:
 
     ```xml
     <section name="SqlAuthenticationProviders" type="System.Data.SqlClient.SqlAuthenticationProviderConfigurationSection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     ```
 
-- a záró `</configSections>` címke alatt adja hozzá a következő XML-kódot `<SqlAuthenticationProviders>`.
+- a záró `</configSections>` címke alatt adja hozzá a következő XML-kódot `<SqlAuthenticationProviders>` .
 
     ```xml
     <SqlAuthenticationProviders>
@@ -125,14 +125,14 @@ A *web. config*fájlban a fájl elejére, és végezze el a következő módosí
     </SqlAuthenticationProviders>
     ```    
 
-- Keresse meg a nevű `MyDbConnection` kapcsolati karakterláncot `connectionString` , és `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`cserélje le az értékét a értékre. Cserélje le _ \<a Server-Name>_ és _ \<az db-Name>_ a kiszolgáló nevére és az adatbázis nevére.
+- Keresse meg a nevű kapcsolati karakterláncot, `MyDbConnection` és cserélje le az `connectionString` értékét a értékre `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"` . Cserélje _\<server-name>_ le _\<db-name>_ a és a nevet a kiszolgáló nevére és az adatbázis nevére.
 
 > [!NOTE]
 > Az imént regisztrált SqlAuthenticationProvider a korábban telepített AppAuthentication-könyvtár tetején alapul. Alapértelmezés szerint a rendszer hozzárendelt identitást használ. A felhasználó által hozzárendelt identitás kihasználása érdekében további konfigurációt kell megadnia. Tekintse meg a AppAuthentication könyvtárának a [kapcsolatok karakterláncának támogatását](../key-vault/general/service-to-service-authentication.md#connection-string-support) .
 
-Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database-kiszolgálót később kell beállítania, hogy engedélyezze a kapcsolódást a App Service alkalmazás felügyelt identitásával.
+Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database később beállíthatja, hogy lehetővé tegye a App Service alkalmazás felügyelt identitásával való kapcsolódást.
 
-Írja `Ctrl+F5` be újra az alkalmazás futtatását. A böngészőben megjelenő szifilisz-alkalmazás mostantól közvetlenül az Azure AD-hitelesítés használatával csatlakozik a Azure SQL Databasehoz. Ez a beállítás lehetővé teszi, hogy adatbázis-áttelepítést futtasson a Visual studióból.
+Írja be `Ctrl+F5` újra az alkalmazás futtatását. A böngészőben megjelenő szifilisz-alkalmazás mostantól közvetlenül az Azure AD-hitelesítés használatával csatlakozik a Azure SQL Databasehoz. Ez a beállítás lehetővé teszi, hogy adatbázis-áttelepítést futtasson a Visual studióból.
 
 ### <a name="modify-aspnet-core"></a>ASP.NET Core módosítása
 
@@ -142,13 +142,13 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A [ASP.net Core és SQL Database oktatóanyagban](app-service-web-tutorial-dotnetcore-sqldb.md)nincs használatban a `MyDbConnection` kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appSettings. JSON*fájlban cserélje le a `MyDbConnection` kapcsolatok karakterláncának értékét a alábbiakra:
+A [ASP.net Core és SQL Database oktatóanyagban](app-service-web-tutorial-dotnetcore-sqldb.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appSettings. JSON*fájlban cserélje le a kapcsolatok karakterláncának értékét a alábbiakra `MyDbConnection` :
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs*-ben adja hozzá a következő kódot az üres `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` konstruktor kapcsos zárójelében:
+Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs*-ben adja hozzá a következő kódot az üres konstruktor kapcsos zárójelében `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
 
 ```csharp
 var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
@@ -158,23 +158,23 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > [!NOTE]
 > Ez a demonstrációs kód a világosság és az egyszerűség érdekében szinkronban van.
 
-Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database-kiszolgálót később kell beállítania, hogy engedélyezze a kapcsolódást a App Service alkalmazás felügyelt identitásával. Az `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában lévő jogkivonatot, és lekéri azt az Azure ad-ből a lejárat előtt. Nincs szüksége egyéni kódra a jogkivonat frissítéséhez.
+Ez minden dolog, amire szüksége van a SQL Databasehoz való kapcsolódáshoz. A Visual Studióban végzett hibakeresés során a kód a [Visual Studióban](#set-up-visual-studio)beállított Azure ad-felhasználót használja. A SQL Database később beállíthatja, hogy lehetővé tegye a App Service alkalmazás felügyelt identitásával való kapcsolódást. Az `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában lévő jogkivonatot, és lekéri azt az Azure ad-ből a lejárat előtt. Nincs szüksége egyéni kódra a jogkivonat frissítéséhez.
 
 > [!TIP]
-> Ha az Ön által konfigurált Azure AD-felhasználó több bérlőhöz fér hozzá, `GetAccessTokenAsync("https://database.windows.net/", tenantid)` a megfelelő hozzáférési jogkivonat lekéréséhez hívja meg a kívánt bérlői azonosítót.
+> Ha az Ön által konfigurált Azure AD-felhasználó több bérlőhöz fér hozzá, a `GetAccessTokenAsync("https://database.windows.net/", tenantid)` megfelelő hozzáférési jogkivonat lekéréséhez hívja meg a kívánt bérlői azonosítót.
 
-Írja `Ctrl+F5` be újra az alkalmazás futtatását. A böngészőben megjelenő szifilisz-alkalmazás mostantól közvetlenül az Azure AD-hitelesítés használatával csatlakozik a Azure SQL Databasehoz. Ez a beállítás lehetővé teszi, hogy adatbázis-áttelepítést futtasson a Visual studióból.
+Írja be `Ctrl+F5` újra az alkalmazás futtatását. A böngészőben megjelenő szifilisz-alkalmazás mostantól közvetlenül az Azure AD-hitelesítés használatával csatlakozik a Azure SQL Databasehoz. Ez a beállítás lehetővé teszi, hogy adatbázis-áttelepítést futtasson a Visual studióból.
 
 ## <a name="use-managed-identity-connectivity"></a>Felügyelt identitású kapcsolat használata
 
 Ezután konfigurálja a App Service alkalmazást úgy, hogy az SQL Databasehoz kapcsolódjon egy rendszerhez rendelt felügyelt identitással.
 
 > [!NOTE]
-> Míg az ebben a szakaszban szereplő utasítások egy rendszerhez rendelt identitásra vonatkoznak, a felhasználó által hozzárendelt identitást egyszerűen használhatja. Ehhez tegye a következőt:. a kívánt felhasználóhoz rendelt identitás `az webapp identity assign command` hozzárendeléséhez a módosításra van szükség. Ezután az SQL-felhasználó létrehozásakor ügyeljen arra, hogy a hely neve helyett a felhasználó által hozzárendelt identitási erőforrás nevét használja.
+> Míg az ebben a szakaszban szereplő utasítások egy rendszerhez rendelt identitásra vonatkoznak, a felhasználó által hozzárendelt identitást egyszerűen használhatja. Ehhez tegye a következőt:. a `az webapp identity assign command` kívánt felhasználóhoz rendelt identitás hozzárendeléséhez a módosításra van szükség. Ezután az SQL-felhasználó létrehozásakor ügyeljen arra, hogy a hely neve helyett a felhasználó által hozzárendelt identitási erőforrás nevét használja.
 
 ### <a name="enable-managed-identity-on-app"></a>Felügyelt identitás engedélyezése az alkalmazásban
 
-Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. A következő parancsban cserélje le * \<az App-Name>*.
+Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le a következőt: *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -204,13 +204,13 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 > ```
 >
 
-A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-be. Cserélje _ \<le a Server-Name>t_ a SQL Database kiszolgálónévre, _ \<az db-Name>_ az alkalmazás által használt adatbázis nevére, a _ \<HRE>_ és _ \<a HRE>_ pedig az Azure ad-felhasználó hitelesítő adataival.
+A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-be. Cserélje le a _\<server-name>_ nevet a kiszolgáló nevére, _\<db-name>_ az alkalmazás által használt adatbázis nevére, valamint az _\<aad-user-name>_ _\<aad-password>_ Azure ad-felhasználó hitelesítő adataival.
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Például: 
+A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Példa: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-az Identity-Name>a felügyelt identitás neve az Azure ad-ben. * \<* Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
+*\<identity-name>* a felügyelt identitás neve az Azure AD-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
 
 Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
@@ -229,7 +229,7 @@ Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
 ### <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
-Ne feledje, hogy a *web. config* vagy a *appSettings. JSON* fájlban elvégzett módosítások a felügyelt identitással működnek, így az egyetlen teendő, ha eltávolítja a meglévő kapcsolati karakterláncot app Service, amelyet a Visual Studio az alkalmazás első üzembe helyezésével hozott létre. Használja az alábbi parancsot, de cserélje le * \<az App-Name>* az alkalmazás nevére.
+Ne feledje, hogy a *web. config* vagy a *appSettings. JSON* fájlban elvégzett módosítások a felügyelt identitással működnek, így az egyetlen teendő, ha eltávolítja a meglévő kapcsolati karakterláncot app Service, amelyet a Visual Studio az alkalmazás első üzembe helyezésével hozott létre. Használja az alábbi parancsot, de a helyére írja *\<app-name>* be az alkalmazás nevét.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection

@@ -98,9 +98,9 @@ Ha először szeretné megtekinteni az Azure-beli adatmegosztási meghívást az
 1. Válassza ki az Azure-adatmegosztáshoz használt előfizetést.
 1. Kattintson az **erőforrás-szolgáltatók**elemre.
 1. Keressen rá a Microsoft. DataShare kifejezésre.
-1. Kattintson a **regisztrálás**gombra.
+1. Kattintson a **Regisztrálás** parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

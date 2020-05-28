@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 09/01/2019
-  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: d80b82b9e8e41e9bfdc7b9ac180ccc8916481acb
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70239206"
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84116114"
 landingContent:
 - title: Az Azure Blueprints bemutatása
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
     links:
     - text: Azure Friday – Az Azure Blueprints áttekintése
       url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: quickstart
     links:
@@ -81,10 +81,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
+    - text: Microsoft Q&A – Azure Blueprints
+      url: /answers/topics/azure-blueprints.html.html
     - text: Az Azure Governance YouTube-csatornája
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: Termékfunkció kérése
-      url: https://feedback.azure.com/forums/915958-azure-governance
+      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345058
     - text: Az Azure Governance technikai közössége
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: Referencia

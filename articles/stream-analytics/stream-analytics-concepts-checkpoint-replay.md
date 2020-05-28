@@ -67,7 +67,7 @@ A lekérdezési szintaxis egy folyamatos átviteli feladaton való szerkesztés�
 
 Ellenőrzőpont-adatok nem használhatók a felhasználó által kezdeményezett feladatok újraindításához. Az újraindításkor a kimenet késleltetésének megbecsléséhez használja ugyanazt az eljárást, mint az előző szakaszban leírtak szerint, és alkalmazzon hasonló mérséklést, ha a késés túl hosszú.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A megbízhatósággal és a méretezhetőséggel kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Oktatóanyag: riasztások beállítása Azure Stream Analytics feladatokhoz](stream-analytics-set-up-alerts.md)
 - [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)

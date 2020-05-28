@@ -63,6 +63,6 @@ Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.

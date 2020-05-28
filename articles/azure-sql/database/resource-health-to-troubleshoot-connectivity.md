@@ -73,7 +73,7 @@ Az Azure-infrastruktúra rendszeresen hajtja végre a tervezett karbantartást �
 
 Az újrakonfigurálás átmeneti feltételeknek tekintendő, és időről időre várható. Ezeket az eseményeket terheléselosztás vagy szoftver/hardver meghibásodása esetén aktiválhatja. A felhőalapú adatbázishoz csatlakozó összes ügyfél-előállító alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia, mivel ez segít az ilyen helyzetek enyhítésében, és általánosságban a hibákat általában a végfelhasználók számára transzparensvé teszi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [átmeneti hibákra vonatkozó újrapróbálkozási logikáról](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)
 - [SQL-csatlakozási hibák elhárítása, diagnosztizálása és elkerülése](troubleshoot-common-connectivity-issues.md)

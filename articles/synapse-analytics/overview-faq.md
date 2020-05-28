@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744086"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118389"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterület előzetes verziója) – gyakori kérdések
 
@@ -32,13 +32,6 @@ A: az Azure szinapszis egy integrált adatplatform a BI, AI és folyamatos intel
 - Egyszerűen figyelheti és gyorsan optimalizálhatja, reagálhatja és hibakeresési eseményeket végezhet a munkaterület tevékenységeiben bármely rétegben.
 - A metaadatok kezelése a motorok között. Hozzon létre egy Spark-táblázatot, amely automatikusan elérhető lesz az Azure szinapszis-adatbázisaiban.
 - Az adatkezelés egységes felhasználói élményt nyújt. A szinapszis Studio nagy adatfejlesztőket, adatmérnököket, Adattervezők, adatelemzőket és adatszakértőket kínál ugyanahhoz a platformhoz.
-
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>K: Hogyan Ismerkedés az Azure szinapszis Analytics szolgáltatással
-
-Válasz: az Azure szinapszis Analytics használatának megkezdéséhez [regisztrálja az Azure szinapszis erőforrás-szolgáltatót](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) a *Microsoft. szinapszis* kiválasztásával az erőforrás-szolgáltatók listájából. Ezután hozzon létre egy [szinapszis-munkaterületet](https://portal.azure.com) (ingyenes!), és hozza létre az adott munkaterületen használni kívánt erőforrásokat. Követheti a gyors üzembe helyezési útmutatók egyikét, például [a SZINAPSZIS SQL-készlet létrehozását](quickstart-create-sql-pool-portal.md) , vagy [létrehozhat egy munkaterületet](quickstart-create-workspace.md), amely végigvezeti az egyszerű használati eseteken. A [tárházban](https://github.com/Azure-Samples/Synapse)megtalálhatja a minta-jegyzetfüzeteket és az SQL-parancsfájlokat is. Ha nyilvános adatkészlethez kell csatlakoznia, hozzon létre egy új társított szolgáltatást a következő attribútumokkal:
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (írás **""**)
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>K: az Azure szinapszis Analytics fő összetevői
 
@@ -100,7 +93,7 @@ A: a fájlokhoz és mappákhoz való hozzáférés jelenleg ADLS Gen2 felügyelh
 
 Válasz: igen, a harmadik féltől származó üzleti alkalmazásokat, például a tablót és a Power BI is használhatja az SQL-készlethez és az igény szerinti SQL-hez való kapcsolódáshoz. A Spark támogatja a IntelliJ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Munkaterület létrehozása](quickstart-create-workspace.md)
 - [A szinapszis Studio használata](quickstart-synapse-studio.md)

@@ -116,7 +116,7 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 * Tömeges exportálás – a Linux-alapú HDInsight a Sqoop-összekötő, amellyel az adatexportálás Microsoft SQL Server vagy SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 * Kötegelt feldolgozás – a Linux-alapú HDInsight, amikor a `-batch` kapcsolót a lapkák végrehajtásakor használja, a Sqoop több beszúrást hajt végre a beszúrási műveletek kötegelt feldolgozása helyett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 

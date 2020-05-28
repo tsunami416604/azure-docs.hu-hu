@@ -196,6 +196,6 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     select * from catalog.executions
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A tárolt eljárási tevékenységgel kapcsolatos részletekért tekintse meg a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.
 

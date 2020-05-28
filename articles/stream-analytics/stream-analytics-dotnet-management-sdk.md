@@ -287,7 +287,7 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További információt a következő cikkekben talál:
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

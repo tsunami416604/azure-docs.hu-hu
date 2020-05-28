@@ -88,7 +88,7 @@ Ez a cikk a [SQL Server on Linux Azure Virtual Machines](sql-server-on-linux-vm-
 
    Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 1. **Az Azure-beli virtuális gépeken támogatott magas rendelkezésre állású megoldások SQL Server?**
 

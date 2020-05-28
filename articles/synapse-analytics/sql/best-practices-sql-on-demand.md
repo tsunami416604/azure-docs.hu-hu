@@ -141,6 +141,6 @@ Az SQL on-demand lehetővé teszi a tárolóban lévő fájlok elérését Azure
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készletek helyett SQL-készleteket használ, tekintse meg az [ajánlott eljárásokat az SQL-készletekhez](best-practices-sql-pool.md) az adott útmutatáshoz.

@@ -45,7 +45,7 @@ A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel
 
 További hibaelhárítási lépésekért lásd: [működése OutOfMemoryError-kivételek Apache Spark az Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Az adattároló optimalizálása Apache Spark](optimize-data-storage.md)

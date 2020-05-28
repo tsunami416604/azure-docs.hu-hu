@@ -56,11 +56,11 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 
 | Áruház típusa | Fájlrendszer | Sebesség | Átmeneti | Használati esetek |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Átmeneti fürt |
+| Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Yes | Átmeneti fürt |
+| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Yes | Átmeneti fürt |
+| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Yes | Átmeneti fürt |
+| Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | No | Interaktív 24/7-fürt |
 
 A tárolási lehetőségek teljes leírását lásd: [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](../hdinsight-hadoop-compare-storage-options.md).
 
@@ -100,7 +100,7 @@ Bizonyos speciális gyűjtő funkciók a következők:
 
 Egyszerre használhatja a particionálást és a gyűjtőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Memória használatának optimalizálása Apache Spark](optimize-memory-usage.md)

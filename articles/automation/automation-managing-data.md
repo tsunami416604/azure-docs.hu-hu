@@ -74,7 +74,7 @@ Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a kü
 
 4. Importálja a runbookok az Automation-fiókjába a másodlagos régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a Azure Automation található biztonságos eszközökről, tekintse meg a biztonságos adategységek [titkosítása Azure Automation-ben](automation-secure-asset-encryption.md)című témakört.
 * További információ a Geo-replikációról: [Active geo-replikáció létrehozása és használata](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication).

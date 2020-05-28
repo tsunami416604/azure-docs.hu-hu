@@ -16,16 +16,16 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c84be9a23713080f348daf8dddf0ad6b0390ded
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978125"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014697"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Key Vault integráció konfigurálása SQL Server Azure-beli Virtual Machines (klasszikus)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/azure-key-vault-integration-configure.md)
 > * [Klasszikus](../classic/ps-sql-keyvault.md)
 > 
 > 
@@ -53,7 +53,7 @@ A következő táblázat a PowerShell-parancsfájl következő szakaszban való 
 
 | Paraméter | Leírás | Példa |
 | --- | --- | --- |
-| **$akvURL** |**A Key Vault URL-címe** |"https:\//contosokeyvault.Vault.Azure.net/" |
+| **$akvURL** |**A Key Vault URL-címe** |"https: \/ /contosokeyvault.Vault.Azure.net/" |
 | **$spName** |**Egyszerű szolgáltatásnév** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Egyszerű szolgáltatás titka** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
 | **$credName** |**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |

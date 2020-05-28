@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700311"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020772"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -164,9 +164,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 > [!NOTE]
-> Az adatbázis-felhasználók SQL Database-kiszolgáló bejelentkezési alapján való létrehozásának egyik gyakori oka, hogy olyan felhasználók számára van szükség, akiknek több adatbázishoz kell hozzáférnie. Mivel a tárolt adatbázis-felhasználók egyedi entitások, az egyes adatbázisok a saját felhasználóit és a hozzá tartozó jelszavukat is megőrzik. Ez túlterhelést okozhat, mivel a felhasználónak emlékeznie kell minden egyes adatbázishoz tartozó jelszóra, és nem tarthat fenn, ha több jelszót szeretne több adatbázishoz módosítani. Azonban SQL Server bejelentkezések és magas rendelkezésre állás (aktív geo-replikálás és feladatátvételi csoportok) használatakor a SQL Server bejelentkezéseket manuálisan kell beállítani az egyes kiszolgálókon. Ellenkező esetben az adatbázis felhasználója a feladatátvétel után már nem lesz leképezve a kiszolgálói bejelentkezéshez, és nem fog tudni hozzáférni az adatbázishoz a feladatátvétel után. 
+> Az adatbázis-felhasználók kiszolgálói bejelentkezésen alapuló létrehozásának egyik gyakori oka, hogy a felhasználóknak több adatbázishoz kell hozzáférnie. Mivel a tárolt adatbázis-felhasználók egyedi entitások, az egyes adatbázisok a saját felhasználóit és a hozzá tartozó jelszavukat is megőrzik. Ez túlterhelést okozhat, mivel a felhasználónak emlékeznie kell minden egyes adatbázishoz tartozó jelszóra, és nem tarthat fenn, ha több jelszót szeretne több adatbázishoz módosítani. Azonban SQL Server bejelentkezések és magas rendelkezésre állás (aktív geo-replikálás és feladatátvételi csoportok) használatakor a SQL Server bejelentkezéseket manuálisan kell beállítani az egyes kiszolgálókon. Ellenkező esetben az adatbázis felhasználója a feladatátvétel után már nem lesz leképezve a kiszolgálói bejelentkezéshez, és nem fog tudni hozzáférni az adatbázishoz a feladatátvétel után. 
 
-A Geo-replikálási bejelentkezések konfigurálásával kapcsolatos további információkért lásd: [Azure SQL Database biztonsági beállításainak konfigurálása és kezelése a Geo-visszaállításhoz vagy a feladatátvételhez](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A Geo-replikálási bejelentkezések konfigurálásával kapcsolatos további információkért lásd: [Azure SQL Database biztonsági beállításainak konfigurálása és kezelése a Geo-visszaállításhoz vagy a feladatátvételhez](../../azure-sql/database/active-geo-replication-security-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="configuring-the-database-level-firewall"></a>Adatbázisszintű tűzfal konfigurálása
 
@@ -233,7 +233,7 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - A `CREATE/ALTER/DROP` utasítás használatához a felhasználónak `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban.
 - Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba akkor következik be, ha a felhasználó a tulajdonos számára nem látható. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál.
  

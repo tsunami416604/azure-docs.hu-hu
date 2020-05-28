@@ -198,7 +198,7 @@ A rendszerverzióval ellátott időszakos táblázatok esetében az előzmények
 - [Tábla particionálása](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-table-partitioning-approach)
 - [Egyéni karbantartási parancsfájl](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-custom-cleanup-script-approach)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az időbeli táblázatokkal kapcsolatos további információkért lásd: [ideiglenes táblák](/sql/relational-databases/tables/temporal-tables)megtekintése.
 - Látogasson el a Channel 9 csatornára, hogy meghallgassa az [ügyfél időbeli megvalósításának sikertörténetét](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) , és figyelje az [élő időbeli bemutatót](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

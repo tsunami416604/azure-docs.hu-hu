@@ -990,6 +990,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: További források
   items:
+    - name: Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: ARM-sablonok létrehozása
       displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

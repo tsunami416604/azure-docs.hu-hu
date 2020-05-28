@@ -746,7 +746,7 @@ A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azu
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-what-is-event-hubs.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Metrikai riasztások létrehozása [Azure monitorban](../../monitoring-and-diagnostics/insights-alerts-portal.md) a begyűjtött mérőszámokhoz.
 * [Figyelési diagramok](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) létrehozása a mérőszámokhoz.

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873543"
+ms.locfileid: "83995887"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
 
@@ -18,7 +18,7 @@ Az Azure dev Spaces lehetővé teszi a Kubernetes-alkalmazások gyors megismétl
 
 ## <a name="prepare-your-aks-cluster"></a>Az AK-fürt előkészítése
 
-Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást a fürtön a Azure Portal, navigáljon a fürthöz, kattintson a *dev Spaces (fejlesztői*szóközök *használata* ) elemre *, és*kattintson a *Mentés*gombra. Az Azure dev Spaces az Azure CLI-vel is engedélyezhető a futtatásával `az aks use-dev-spaces` .
+Az AK-fürt fejlesztői tárhelyekre való előkészítéséhez ellenőrizze, hogy az AK-fürt az [Azure dev Spaces által támogatott][supported-regions] régióban van-e, és Kubernetes 1.10.3 vagy újabb verziót futtat. A futtatásával engedélyezheti az Azure dev Spaces szolgáltatást az Azure CLI-vel `az aks use-dev-spaces` .
 
 Ha például egy AK-fürtöt kíván beállítani a fejlesztői tárhelyekhez, tekintse meg a [Team Development][quickstart-team]rövid útmutatót.
 

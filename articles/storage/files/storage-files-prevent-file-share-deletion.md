@@ -8,18 +8,18 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 96e3d5001d11455337ae092776a1a4c5c3738012
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9ffc065cb877c7f87cd38671f586f0754a42b2b8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883071"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141585"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure-fájlmegosztás véletlen törlésének megakadályozása
 
-Az Azure Storage mostantól lágy törlést biztosít a fájlmegosztás számára. A Soft delete lehetővé teszi az adatok helyreállítását, ha azt egy alkalmazás vagy más Storage-fiók felhasználója véletlenül törölte.
+Az Azure Storage mostantól helyreállítható törlést biztosít a fájlmegosztás (előzetes verzió) számára. A Soft delete lehetővé teszi az adatok helyreállítását, ha azt egy alkalmazás vagy más Storage-fiók felhasználója véletlenül törölte.
 
-## <a name="how-soft-delete-works"></a>A Soft delete működése
+## <a name="how-soft-delete-preview-works"></a>A Soft Delete (előzetes verzió) működése
 
 Ha engedélyezve van, a Soft delete lehetővé teszi a fájlmegosztás mentését és helyreállítását a törlésük után. Ha az adat törlődik, a rendszer véglegesen törli a törölt állapotot a végleges törlés helyett. Beállíthatja, hogy a rendszer a véglegesen törölt adatmennyiséget a végleges törlés előtt helyreállítsa.
 
@@ -29,7 +29,7 @@ A prémium szintű törölt fájlmegosztás esetén a fájlmegosztás kvótájá
 
 ### <a name="availability"></a>Rendelkezésre állás
 
-Az Azure-fájlmegosztás esetén a Soft delete minden tárolási szinten elérhető, minden tárolási fióktípus és minden olyan régióban, amely Azure Files elérhető.
+Az Azure-fájlmegosztás (előzetes verzió) Soft delete szolgáltatás minden tárolási szinten elérhető, minden tárolási fiók típusa és minden olyan régióban, amely Azure Files elérhető.
 
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -51,6 +51,6 @@ Az Azure File Storage általános díjszabásával kapcsolatos további informá
 
 Amikor először engedélyezte a Soft delete használatát, javasoljuk, hogy használjon egy kis megőrzési időtartamot, hogy jobban megértse, hogyan befolyásolja a szolgáltatás a számlát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan engedélyezheti és használhatja a Soft deletet, folytassa a [Soft delete engedélyezésével](storage-files-enable-soft-delete.md)

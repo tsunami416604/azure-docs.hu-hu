@@ -245,7 +245,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 > [!IMPORTANT]
 > Ezek a Transact-SQL-parancsok csak az aktív földrajzi replikálásra vonatkoznak, és nem vonatkoznak a feladatátvételi csoportokra. Ennek megfelelően az SQL felügyelt példány példányaira sem vonatkoznak, mivel csak a feladatátvételi csoportokat támogatják.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
@@ -262,7 +262,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Egy vagy több adatbázist kér le. |
 | [Új – AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Létrehoz egy másodlagos adatbázist egy meglévő adatbázishoz, és elkezdi az adatok replikálását. |
@@ -276,7 +276,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: önálló és készletezett adatbázisok feladatátvételének kezelése
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Adatbázis létrehozása vagy frissítése (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Egy elsődleges vagy egy másodlagos adatbázis létrehozása, frissítése vagy visszaállítása. |
 | [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |
@@ -287,7 +287,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/setup-geodr-and-failover-database-powershell.md)

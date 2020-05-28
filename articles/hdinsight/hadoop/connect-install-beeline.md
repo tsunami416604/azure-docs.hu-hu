@@ -162,7 +162,7 @@ Bár a Beeline szerepel a fő csomópontokon, érdemes helyileg telepítenie.  A
 
 1. A kapcsolatok tesztelése. Használja a kapcsolat formátumát a fentiekben [nyilvános vagy privát végpontokon](#over-public-or-private-endpoints).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példák a Beeline-ügyfél Apache Hive használatával történő használatára: az [Apache Beeline használata a Apache Hive](apache-hadoop-use-hive-beeline.md)
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)

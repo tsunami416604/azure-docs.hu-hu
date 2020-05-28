@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure Kubernetes Services az üzletmenet folytonosságának biztosításához és a vész-helyreállítás előkészítéséhez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295827"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996924"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
@@ -27,14 +27,6 @@ A fejlesztői szóközöknek a különböző régiókban található AK-fürtök
 
 Az AK többrégiós üzembe helyezésével kapcsolatos általános információkért lásd: [a többrégiós telepítés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>A fejlesztői szóközök engedélyezése a Azure Portal használatával
-
-Válassza a **dev Spaces** menüpontot a Azure Portal egyes fürtjének beállításai alatt. Ezután válassza a fejlesztői szóközök engedélyezését és a mentés lehetőséget.
-
-![A fejlesztői szóközök engedélyezése Azure Portal használatával](../media/common/enable-dev-spaces.jpg)
-
-Ismételje meg a folyamatot az egyes fürtökön.
-
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>A dev Spaces használatának engedélyezése az Azure CLI-n keresztül
 
 A dev Spaces is engedélyezhető a parancssorban:
@@ -45,7 +37,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>A csapat alaptervének üzembe helyezése minden fürtön
 
-A dev Spaces használata esetén általában a teljes alkalmazást a Kubernetes-fürt szülő-fejlesztői területére telepíti. Alapértelmezés szerint a rendszer `default` a helyet használja. A kezdeti üzembe helyezés magában foglalja az összes szolgáltatást, valamint a szolgáltatástól függő külső erőforrásokat, például az adatbázisokat vagy a várólistákat. Ezt az *alaptervnek*nevezzük. Miután beállította az alapkonfigurációt a szülő fejlesztői térben, megismételheti és hibakeresést végezhet a gyermek-fejlesztési tereken belüli egyes szolgáltatásokon.
+A dev Spaces használata esetén általában a teljes alkalmazást a Kubernetes-fürt szülő-fejlesztői területére telepíti. Alapértelmezés szerint a `default` rendszer a helyet használja. A kezdeti üzembe helyezés magában foglalja az összes szolgáltatást, valamint a szolgáltatástól függő külső erőforrásokat, például az adatbázisokat vagy a várólistákat. Ezt az *alaptervnek*nevezzük. Miután beállította az alapkonfigurációt a szülő fejlesztői térben, megismételheti és hibakeresést végezhet a gyermek-fejlesztési tereken belüli egyes szolgáltatásokon.
 
 Az alapkonfiguráció-készlet legújabb verzióit több régióban lévő fürtökre kell telepítenie. Az alapszolgáltatások frissítése így biztosíthatja, hogy továbbra is használhatja a fejlesztői helyeket, ha van Azure-régió meghibásodása. Ha például egy CI/CD folyamaton keresztül telepíti az alapkonfigurációt, módosítsa úgy a folyamatot, hogy az a különböző régiókban lévő több fürtre legyen telepítve.
 
@@ -88,11 +80,11 @@ Ismételje meg ezeket a lépéseket minden más, az eredeti fürt használatára
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Szolgáltatás elérése egy tartalék fürtön
 
-Ha úgy állította be a szolgáltatást, hogy a nyilvános DNS-nevet használja, akkor a szolgáltatás egy másik URL-címmel fog rendelkezni, ha egy biztonsági mentési fürtön futtatja. A nyilvános DNS-nevek mindig formátuma `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Ha másik fürtre vált, a fürt GUID azonosítója és valószínűleg a régió módosul.
+Ha úgy állította be a szolgáltatást, hogy a nyilvános DNS-nevet használja, akkor a szolgáltatás egy másik URL-címmel fog rendelkezni, ha egy biztonsági mentési fürtön futtatja. A nyilvános DNS-nevek mindig formátuma `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Ha másik fürtre vált, a fürt GUID azonosítója és valószínűleg a régió módosul.
 
-A dev Spaces mindig a megfelelő URL-címet jeleníti `azds up`meg a szolgáltatás futásakor, illetve a Visual Studióban, az **Azure dev Spaces**alatt.
+A dev Spaces mindig a megfelelő URL-címet jeleníti meg a szolgáltatás futásakor `azds up` , illetve a Visual Studióban, az **Azure dev Spaces**alatt.
 
-Az URL-címet a `azds list-uris` parancs futtatásával is megkeresheti:
+Az URL-címet a parancs futtatásával is megkeresheti `azds list-uris` :
 ```
 $ azds list-uris
 Uri                                                     Status

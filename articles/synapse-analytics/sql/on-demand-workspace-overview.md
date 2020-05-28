@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 55ef72b23f804ce7fcdb339ba4c66bcefe39db46
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702058"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020812"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
 
@@ -110,7 +110,7 @@ Az SQL on-demand az adataihoz való hozzáférés biztosítására szolgáló me
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
-Az SQL on-demand segítségével központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
+Az SQL on-demand segítségével központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. A Azure Active Directory (Azure AD) támogatja a [többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) az adatkezelés és az alkalmazások biztonságának növelésére az egyszeri bejelentkezési folyamat támogatása mellett.
 
 #### <a name="authentication"></a>Hitelesítés
 
@@ -140,7 +140,7 @@ Az SQL igény szerinti szolgáltatásba bejelentkezett felhasználónak jogosult
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol az SQL-on igénybe vett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus az SQL on-demand szolgáltatásba bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználók típusai nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

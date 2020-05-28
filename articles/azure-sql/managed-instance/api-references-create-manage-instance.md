@@ -38,7 +38,7 @@ Felügyelt példányok Azure PowerShell használatával történő létrehozás�
 > [!TIP]
 > A PowerShell-parancsfájlok például a következő témakörben találhatók [: gyors indítású parancsfájl: SQL felügyelt példány létrehozása a PowerShell-függvénytár használatával](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[Új – AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy felügyelt Azure SQL-példányt |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|A felügyelt Azure SQL-példányra vonatkozó adatokat adja vissza.|
@@ -56,7 +56,7 @@ Felügyelt példányok [Azure CLI](/cli/azure)-vel való létrehozásához és k
 > [!TIP]
 > Azure CLI-gyors útmutató: az [SQL felügyelt példány használata az Azure CLI használatával](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Parancsmag | Leírás |
+| Parancsmag | Description |
 | --- | --- |
 |[az SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Felügyelt példány létrehozása|
 |[az SQL mi List](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Az elérhető felügyelt példányok listája|
@@ -77,7 +77,7 @@ Példány-adatbázis létrehozásához és kezeléséhez a felügyelt példány 
 > [!IMPORTANT]
 > Felügyelt példány nem hozható létre és nem törölhető a Transact-SQL használatával.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[ADATBÁZIS LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Létrehoz egy új felügyelt példány-adatbázist. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ADATBÁZIS MÓDOSÍTÁSA](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Módosít egy Azure SQL felügyelt példány-adatbázist.|
@@ -86,7 +86,7 @@ Példány-adatbázis létrehozásához és kezeléséhez a felügyelt példány 
 
 Felügyelt példányok létrehozásához és kezeléséhez használja ezeket a REST API kérelmeket.
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 |[Felügyelt példányok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Felügyelt példány létrehozása vagy frissítése.|
 |[Felügyelt példányok – törlés](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Felügyelt példány törlése.|
@@ -95,7 +95,7 @@ Felügyelt példányok létrehozásához és kezeléséhez használja ezeket a R
 |[Felügyelt példányok – erőforráslista szerint csoportosítva](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Egy erőforráscsoport felügyelt példányainak listáját adja vissza.|
 |[Felügyelt példányok – frissítés](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Felügyelt példány frissítése.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server-adatbázisok Azure-ba történő áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](../database/migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](../database/features-comparison.md).

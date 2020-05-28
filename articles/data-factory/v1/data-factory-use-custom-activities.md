@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265726"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020132"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -53,7 +53,7 @@ Az oktatóanyaghoz hozzon létre egy Azure Batch-fiókot virtuális gépek kész
 
 1. Hozzon létre egy **Azure batch fiókot** a [Azure Portal](https://portal.azure.com)használatával. Útmutatásért tekintse meg a [Azure batch-fiók létrehozása és kezelése][batch-create-account] című cikket.
 2. Jegyezze fel a Azure Batch fiók nevét, a fiók kulcsát, az URI-t és a készlet nevét. Szükség van rájuk egy Azure Batch társított szolgáltatás létrehozásához.
-    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com`. Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Például: `https://<region>.batch.azure.com`.
+    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com` . Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Például: `https://<region>.batch.azure.com`.
     2. A bal oldali menüben kattintson a **kulcsok** elemre, és másolja ki az **elsődleges hozzáférési kulcsot**.
     3. Meglévő készlet használatához kattintson a menü **készletek** elemére, és jegyezze fel a készlet **azonosítóját** . Ha nem rendelkezik meglévő készlettel, lépjen a következő lépésre.
 2. Hozzon létre egy **Azure batch készletet**.
@@ -372,7 +372,7 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
     > A .NET-keretrendszer 4.5.2-es verziójának beállítása a projekt célként szolgáló keretrendszereként: kattintson a jobb gombbal a projektre, majd kattintson a **Tulajdonságok** elemre a cél keretrendszer beállításához. A Data Factory nem támogatja az 4.5.2-nél újabb .NET-keretrendszer-verziókkal összeállított egyéni tevékenységeket.
 
 11. Indítsa el a **Windows Intézőt**, és a Build típusától függően navigáljon a **bin\debug** vagy a **bin\release** mappához.
-12. Hozzon létre egy **MyDotNetActivity. zip** nevű zip-fájlt, amely tartalmazza \<a Project\>mappa \bin\Debug mappájában található összes bináris fájlt. Adja meg a **MyDotNetActivity. pdb** fájlt, hogy további részleteket kapjon, például a forráskódban található sorszámot, amely miatt hiba történt.
+12. Hozzon létre egy **MyDotNetActivity. zip** nevű zip-fájlt, amely a \bin\Debug mappában található összes bináris fájlt tartalmazza \<project folder\> . Adja meg a **MyDotNetActivity. pdb** fájlt, hogy további részleteket kapjon, például a forráskódban található sorszámot, amely miatt hiba történt.
 
     > [!IMPORTANT]
     > Az egyéni tevékenység zip-fájljában lévő összes fájlnak a **legfelső szinten** kell lennie, almappák nélkül.
@@ -440,7 +440,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
 2. Kattintson a parancssáv **új adattár** elemére, és válassza az **Azure Storage**lehetőséget. A szerkesztőben megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-parancsfájl.
 
     ![Új adattár – Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Cserélje `<accountname>` le az Azure Storage-fiók nevét és `<accountkey>` az Azure Storage-fiók hozzáférési kulcsát. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
+3. Cserélje le az `<accountname>` Azure Storage-fiók nevét és `<accountkey>` Az Azure Storage-fiók hozzáférési kulcsát. A Storage-hozzáférési kulcs beszerzéséről a Storage- [fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md)című témakörben olvashat bővebben.
 
     ![Azure Storage – szeretett szolgáltatás](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Deploy** (Üzembe helyezés) elemére.
@@ -451,7 +451,7 @@ A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat
     ![Új számítás – Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. Hajtsa végre a következő módosításokat a JSON-parancsfájlban:
 
-   1. Adja meg Azure Batch fióknevet a **accountName** tulajdonsághoz. A **Azure batch fiók** panel **URL-címe** a következő formátumú:. `http://accountname.region.batch.azure.com` A JSON **batchUri** tulajdonságához el kell távolítania `accountname.` az URL-címet, és a `accountname` for the `accountName` JSON tulajdonságot kell használnia.
+   1. Adja meg Azure Batch fióknevet a **accountName** tulajdonsághoz. A **Azure batch fiók** panel **URL-címe** a következő formátumú: `http://accountname.region.batch.azure.com` . A JSON **batchUri** tulajdonságához el kell távolítania `accountname.` az URL-címet, és a `accountname` for the `accountName` JSON tulajdonságot kell használnia.
    2. Itt adhatja meg a **accessKey** tulajdonsághoz tartozó Azure batch-fiók kulcsát.
    3. Adja meg a **poolName** tulajdonság előfeltételeinek részeként létrehozott készlet nevét. A készlet AZONOSÍTÓját a készlet neve helyett is megadhatja.
    4. Azure Batch URI megadása a **batchUri** tulajdonsághoz. Példa: `https://westus.batch.azure.com`.
@@ -1031,7 +1031,7 @@ A GitHubon található [Azure Data Factory helyi környezeti](https://github.com
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

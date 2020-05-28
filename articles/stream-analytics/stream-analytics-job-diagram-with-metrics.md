@@ -81,7 +81,7 @@ Ha a fenti lekérdezési lépés egy bemeneti processzor, a bemeneti metrikák s
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Stream Analyticsba](stream-analytics-introduction.md)
 * [Ismerkedés a Stream Analytics szolgáltatással](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok skálázása](stream-analytics-scale-jobs.md)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített PHP-tá
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758873"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142112"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -43,11 +43,11 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
-1. Futtassa az egyéni parancsfájlt, `PRE_BUILD_SCRIPT_PATH`ha a meg van adva.
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
 1. Futtassa az `php composer.phar install` parancsot.
-1. Futtassa az egyéni parancsfájlt, `POST_BUILD_SCRIPT_PATH`ha a meg van adva.
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg `PRE_BUILD_COMMAND`a következőt:. A létrehozás utáni parancsok futtatásához adja meg `POST_BUILD_COMMAND`a következőt:.
+`PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
 
 A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
 
@@ -62,7 +62,7 @@ A PHP-alkalmazások Linux rendszeren való futtatásáról és App Serviceáról
 
 ## <a name="customize-start-up"></a>Indítás testreszabása
 
-Alapértelmezés szerint a beépített PHP-tároló futtatja az Apache-kiszolgálót. Indításkor a fut `apache2ctl -D FOREGROUND"`. Ha szeretné, egy másik parancsot is futtathat az indításkor, ha a következő parancsot futtatja a [Cloud Shellban](https://shell.azure.com):
+Alapértelmezés szerint a beépített PHP-tároló futtatja az Apache-kiszolgálót. Indításkor a fut `apache2ctl -D FOREGROUND"` . Ha szeretné, egy másik parancsot is futtathat az indításkor, ha a következő parancsot futtatja a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -70,7 +70,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Ha például egy nevű `DB_HOST`alkalmazáshoz szeretne hozzáférni, használja a következő kódot:
+App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Ha például egy nevű alkalmazáshoz szeretne hozzáférni `DB_HOST` , használja a következő kódot:
 
 ```php
 getenv("DB_HOST")
@@ -85,7 +85,7 @@ A App Service alapértelmezett PHP-rendszerképe Apache-t használ, és nem tesz
 ```
 <IfModule mod_rewrite.c>
     RewriteEngine on
-
+    RewriteCond %{REQUEST_URI} ^/$
     RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
@@ -94,7 +94,7 @@ Ha inkább nem használná a *.htaccess* újraírást, üzembe helyezheti a Lara
 
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e `X-Forwarded-Proto` , vagy sem, vizsgálja meg a fejlécet.
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
 
 ```php
 if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
@@ -102,7 +102,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 }
 ```
 
-A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés `X_FORWARDED_PROTO` szerint ellenőrzi a értéket.
+A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi a értéket `X_FORWARDED_PROTO` .
 
 ## <a name="customize-phpini-settings"></a>A php. ini beállításainak testreszabása
 
@@ -134,19 +134,19 @@ A *. htaccess*használatának alternatívájaként a [ini_set ()](https://www.ph
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
 
-PHP_INI_SYSTEM irányelvek testreszabásához (lásd a [php. ini-irányelveket](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az `PHP_INI_SCAN_DIR` Alkalmazásbeállítások használatával külön mechanizmust biztosít.
+PHP_INI_SYSTEM irányelvek testreszabásához (lásd a [php. ini-irányelveket](https://www.php.net/manual/ini.list.php)) nem használhatja a *. htaccess* megközelítést. A App Service az Alkalmazásbeállítások használatával külön mechanizmust biztosít `PHP_INI_SCAN_DIR` .
 
-Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.com) egy, a következő nevű `PHP_INI_SCAN_DIR`alkalmazás-beállítás hozzáadásához:
+Először futtassa az alábbi parancsot a [Cloud Shellban](https://shell.azure.com) egy, a következő nevű alkalmazás-beállítás hozzáadásához `PHP_INI_SCAN_DIR` :
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`az alapértelmezett könyvtár, ahol a *php. ini fájl* létezik. `/home/site/ini`az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a `:`értékkel válassza el.
+`/usr/local/etc/php/conf.d`az alapértelmezett könyvtár, ahol a *php. ini fájl* létezik. `/home/site/ini`az az egyéni könyvtár, amelyben hozzá kell adnia egy egyéni *. ini* -fájlt. Az értékeket az a értékkel válassza el `:` .
 
-Navigáljon a web SSH-munkamenethez a Linux-`https://<app-name>.scm.azurewebsites.net/webssh/host`tárolóval ().
+Navigáljon a web SSH-munkamenethez a Linux-tárolóval ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Hozzon létre egy `/home/site` könyvtárat `ini`a néven, majd hozzon létre egy *. ini* fájlt a `/home/site/ini` könyvtárban (például: *Settings. ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php. ini* fájlban is használni fog. 
+Hozzon létre egy könyvtárat a `/home/site` néven `ini` , majd hozzon létre egy *. ini* fájlt a `/home/site/ini` könyvtárban (például: *Settings. ini)* a testreszabni kívánt irányelvek alapján. Használja ugyanazt a szintaxist, amelyet egy *php. ini* fájlban is használni fog. 
 
 > [!TIP]
 > A App Service beépített Linux-tárolókban a */Home* a megőrzött megosztott tárolóként szolgál. 
@@ -172,7 +172,7 @@ A beépített PHP-telepítések a leggyakrabban használt bővítményeket tarta
 
 További bővítmények engedélyezéséhez kövesse az alábbi lépéseket:
 
-Adjon hozzá `bin` egy könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.so` bővítmény fájljait (például *mongodb.so*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
+Adjon hozzá egy `bin` könyvtárat az alkalmazás gyökérkönyvtárához, és helyezze a `.so` bővítmény fájljait (például *mongodb.so*). Győződjön meg arról, hogy a bővítmények kompatibilisek az Azure PHP-verziójával, és VC9 és nem szálon (Zem) kompatibilisek.
 
 Telepítse a módosításokat.
 
@@ -199,14 +199,14 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 
 - [A log stream elérése](#access-diagnostic-logs).
 - Az alkalmazás helyi tesztelése éles módban. App Service a Node. js-alkalmazásokat éles módban futtatja, ezért a projektnek a várt módon kell működnie a helyi üzemi módban. Például:
-    - A *Composer. JSON*fájltól függően különböző csomagok is telepíthetők üzemi módba (`require` vagy `require-dev`).
+    - A *Composer. JSON*fájltól függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
-- Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` `true`alkalmazás beállítását ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)adja meg.
+- Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` `true` alkalmazás beállítását ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)adja meg.
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: PHP-alkalmazás és MySQL](tutorial-php-mysql-app.md)

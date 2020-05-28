@@ -43,9 +43,9 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 | Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nem | Igen |
-| **Terjesztő** | Nem | Igen|
-| **Lekéréses előfizető** | Nem | Igen|
+| **Publisher** | No | Yes |
+| **Terjesztő** | No | Yes|
+| **Lekéréses előfizető** | No | Yes|
 | **Leküldéses előfizető**| Igen | Igen|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -72,11 +72,11 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
+| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -189,7 +189,7 @@ Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfize
 - Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat.
 - Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési idején kívül esik, az SQL felügyelt példányának rendszergazdájának újra kell inicializálnia az előfizetés-adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 

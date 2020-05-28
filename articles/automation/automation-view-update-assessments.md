@@ -34,7 +34,7 @@ Az alábbi táblázat a Update Management támogatott frissítési besorolásait
 
 ### <a name="windows"></a>Windows
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus frissítések     | Frissítések a kritikus, nem biztonsági hibákkal kapcsolatos problémák megoldásához.        |
 |Biztonsági frissítések     | A termékre vonatkozó, biztonsággal kapcsolatos problémák frissítései.        |
@@ -47,7 +47,7 @@ Az alábbi táblázat a Update Management támogatott frissítési besorolásait
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus vagy biztonsági frissítések     | Adott probléma vagy termékspecifikus, biztonsággal kapcsolatos probléma frissítései.         |
 |Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |
@@ -62,6 +62,6 @@ Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhet
 
 A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Általános információk: az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).

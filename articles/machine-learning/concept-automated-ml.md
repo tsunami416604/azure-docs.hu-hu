@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119082"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -35,14 +35,15 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 
 ### <a name="classification"></a>Osztályozás
 
-A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-use-automated-ml-for-ml-models.md#featurization). 
+A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 
 A besorolási modellek fő célja, hogy megjósolja, hogy az új adatok milyen kategóriákba esnek a betanítási adatokból származó tanulások alapján. Gyakori besorolási példák például a csalások észlelése, a kézírás-felismerés és az objektumok észlelése.  További információk: az [automatikus gépi tanulásra vonatkozó besorolási](tutorial-train-models-with-aml.md)példa.
 
 Példák a besorolásra és az automatizált gépi tanulásra ezekben a Python-jegyzetfüzetekben: [csalások észlelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [marketing-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)és [hírcsoport-adatbesorolás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
 ### <a name="regression"></a>Regresszió
-A besoroláshoz hasonlóan a regressziós feladatok is közösen felügyelt tanulási feladat. Azure Machine Learning [featurizations kifejezetten ezekre a feladatokra](how-to-use-automated-ml-for-ml-models.md#featurization)vonatkozik.
+
+A besoroláshoz hasonlóan a regressziós feladatok is közösen felügyelt tanulási feladat. Azure Machine Learning [featurizations kifejezetten ezekre a feladatokra](how-to-configure-auto-features.md#featurization)vonatkozik.
 
 Eltér a besorolástól, ahol az előre jelzett kimeneti értékek kategorikusak, a regressziós modellek előre jelezik a numerikus kimeneti értékeket a független előrejelzők alapján. A regresszió során a cél az, hogy segítsen a független prediktív változók közötti kapcsolat kialakításában azzal, hogy megbecsüli, hogyan befolyásolja a többi változó. Például az autó árát a (z), a gáz kilométer, a biztonsági minősítés stb. jellemzői alapján. További információ: a [regressziós példa a gépi tanulás](tutorial-auto-train-models.md)automatizálására.
 
@@ -99,20 +100,21 @@ A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>Előfeldolgozás
+## <a name="feature-engineering"></a>Jellemzőkiemelés
 
-Minden automatizált gépi tanulási kísérlet során az adatai az alapértelmezett módszerekkel és opcionálisan a speciális előfeldolgozással vannak feldolgozva.
+A szolgáltatás-mérnöki folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a ML-algoritmusok jobb megismerésében. A Azure Machine Learning a skálázási és a normalizáló technikákat a funkciók mérnöki működésének megkönnyítése érdekében alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatások fejlesztését együttesen featurization nevezzük.
+
+Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalmazza a featurization, de az adatai alapján is testreszabható. [További információ arról, hogy milyen featurization tartalmaz](how-to-configure-auto-features.md#featurization).  
 
 > [!NOTE]
-> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+> Az automatizált gépi tanulás featurization lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos featurization-lépéseket automatikusan alkalmazza a rendszer a bemeneti adatokra.
 
-### <a name="automatic-preprocessing-standard"></a>Automatikus előfeldolgozás (standard)
+### <a name="automatic-featurization-standard"></a>Automatikus featurization (standard)
 
-Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a autoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
+Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Description |
+|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -122,15 +124,15 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Ez a transzformátor lineáris dimenzióját-csökkentést végez a csonkolt számú érték lebomlásával (SVD). A PCA-vel ellentétben ez a kalkulátor nem helyezi középpontba az adatmennyiséget, mielőtt feldolgozza az egyes SciPy. a ritka mátrixok hatékonyan működnek. |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | A rendszer minden mintát (azaz az Adatmátrix minden sorát) legalább egy nullától eltérő összetevővel együtt átméretezi, hogy a norma (L1 vagy L2) eggyel egyenlő legyen. |
 
-### <a name="advanced-preprocessing--featurization"></a>Speciális előfeldolgozási & featurization
+### <a name="customize-featurization"></a>Featurization testreszabása
 
-További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-use-automated-ml-for-ml-models.md#featurization). A beállítás engedélyezése a következővel:
+További mérnöki technikák, például a kódolás és az átalakítás is elérhetők. 
 
-+ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+A beállítás engedélyezése a következővel:
 
-+ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` az [ `AutoMLConfig` osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)megadása. 
++ Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
-
++ Python SDK: adja meg a `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumban. További információ: [featurization engedélyezése] ((útmutató – configure-Auto-features.md). 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellek
 

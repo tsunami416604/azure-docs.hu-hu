@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454254"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016389"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -59,7 +59,7 @@ A további feladatokban az SSMS használatával csatlakozhat a kiszolgálóhoz �
     ![Csatlakozás az SSMS-ben](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > Javasolt az Active Directory univerzális hitelesítést választani MFA-támogatással. Ez a hitelesítés-típus támogatja a [nem interaktív és többtényezős hitelesítést](../../sql-database/sql-database-ssms-mfa-authentication.md). 
+    > Javasolt az Active Directory univerzális hitelesítést választani MFA-támogatással. Ez a hitelesítés-típus támogatja a [nem interaktív és többtényezős hitelesítést](../../azure-sql/database/authentication-mfa-ssms-overview.md). 
 
 3. Az **Object Explorerben** bontsa ki a kiszolgálóobjektumokat. A jobb gombbal kattintva megjelenítheti a kiszolgáló tulajdonságait.
    
@@ -67,7 +67,7 @@ A további feladatokban az SSMS használatával csatlakozhat a kiszolgálóhoz �
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Felhasználói fiók hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz
 
-Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Ha biztonsági csoportot ad meg, használja `obj:groupid@tenantid`a t.
+Ebben a feladatban Azure AD-jából fog felhasználói vagy csoportfiókot hozzáadni a kiszolgáló-rendszergazdai szerepkörhöz. Ha biztonsági csoportot ad meg, használja a t `obj:groupid@tenantid` .
 
 1. Az **Object Explorerben** kattintson a jobb gombbal a kiszolgáló nevére, majd a **Tulajdonságok** lehetőségre. 
 2. Az **Analysis Server-tulajdonságok** ablakban kattintson a **Biztonság** > **Hozzáadás** lehetőségre.
@@ -130,13 +130,13 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/analysis-services/tmsl/
 ## <a name="verify-your-changes"></a>Módosítások ellenőrzése
 
 1. Az **Object Explorerben** kattintson a kiszolgálója nevére, majd kattintson a **Frissítés** lehetőségre, vagy nyomja le az **F5** billentyűt.
-2. Bontsa ki az **adatbázisok** > **AdventureWorks** > **szerepkörök**elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
+2. Bontsa ki az **adatbázisok**  >  **AdventureWorks**  >  **szerepkörök**elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
 
     ![Ellenőrzés az Object Explorerben](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok** > **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés**parancsra.
+Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok**  >  **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés**parancsra.
 
 
 ## <a name="next-steps"></a>További lépések

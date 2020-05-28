@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872139"
+ms.locfileid: "83995938"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -32,25 +32,43 @@ Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítés
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 - Visual Studio 2019 Windows rendszeren, amelyen telepítve van az Azure fejlesztői munkaterhelése. Ha nincs telepítve a Visual Studio, töltse le [itt](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
 
-A [támogatott régiókban][supported-regions]létre kell hoznia egy AK-fürtöt. Fürt létrehozása:
+Létre kell hoznia egy AK-fürtöt egy [támogatott régióban][supported-regions]. Az alábbi parancsok létrehoznak egy *MyResourceGroup* nevű erőforráscsoportot és egy *MyAKS*nevű AK-fürtöt.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
-1. Válassza *az + erőforrás létrehozása > Kubernetes szolgáltatás*lehetőséget. 
-1. Adja meg az _előfizetést_, az _erőforráscsoportot_, a _Kubernetes-fürt nevét_, a _régiót_, a _Kubernetes-verziót_és a _DNS-név előtagját_.
-
-    ![AK létrehozása a Azure Portalban](media/get-started-netcore-visualstudio/create-aks-portal.png)
-
-1. Kattintson az *Áttekintés + létrehozás* elemre.
-1. Kattintson a *Létrehozás*gombra.
+```azurecli
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
+```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Az Azure dev-helyek engedélyezése az AK-fürtön
 
-Navigáljon az AK-fürthöz a Azure Portalban, és kattintson a *dev Spaces*elemre. Módosítsa a *fejlesztői szóközöket* *Igen* értékre, és kattintson a *Mentés*gombra.
+A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
 
-![Fejlesztői szóközök engedélyezése a Azure Portalban](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+> [!NOTE]
+> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```
+
+```output
+'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
+
+Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
+
+Select a dev space or Kubernetes namespace to use as a dev space.
+ [1] default
+Type a number or a new name: 1
+
+Kubernetes namespace 'default' will be configured as a dev space. This will enable Azure Dev Spaces instrumentation for new workloads in the namespace. Continue? (Y/n): Y
+
+Configuring and selecting dev space 'default'...3s
+
+Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
+```
 
 ## <a name="create-a-new-aspnet-web-app"></a>Új ASP.NET-Webalkalmazás létrehozása
 

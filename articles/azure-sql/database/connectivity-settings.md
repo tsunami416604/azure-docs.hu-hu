@@ -198,7 +198,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését lásd: [kapcsolati architektúra](connectivity-architecture.md)
 - További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).

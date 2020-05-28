@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az összes SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [SQL Security – áttekintés](security-overview.md).

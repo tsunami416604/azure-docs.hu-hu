@@ -370,7 +370,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 * Az alkalmazás/szolgáltatás egyszerű objektumában az RP-kérelmek ellenőrzéséhez írja be az aláíró kulcsot.
 * A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 - Szerezze be az SAML-teszt webalkalmazást [Azure ad B2C GitHub közösségi](https://github.com/azure-ad-b2c/saml-sp-tester)adattárból.

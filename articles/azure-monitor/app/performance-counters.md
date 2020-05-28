@@ -149,7 +149,7 @@ A teljesítményszámlálók támogatása ASP.NET Core korlátozott:
 ## <a name="alerts"></a>Riasztások
 Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/platform/alerts-log.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 * [Függőségek nyomon követése](../../azure-monitor/app/asp-net-dependencies.md)
 * [Kivétel követése](../../azure-monitor/app/asp-net-exceptions.md)

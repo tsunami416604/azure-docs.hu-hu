@@ -20,7 +20,7 @@ Azure Cloud Shell elindítása:
 | Beállítás | Példa/hivatkozás |
 |-----------------------------------------------|---|
 | Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. A **kipróbálás** lehetőség kiválasztásával a kód nem másolja automatikusan Cloud Shellba. | ![Példa a Azure Cloud Shell kipróbálására](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Nyissa [https://shell.azure.com](https://shell.azure.com)meg a gombot, vagy kattintson a **Cloud Shell elindítása** gombra a Cloud Shell megnyitásához a böngészőben. | [![Cloud Shell elindítása új ablakban](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| [https://shell.azure.com](https://shell.azure.com)Nyissa meg a gombot, vagy kattintson a **Cloud Shell elindítása** gombra a Cloud Shell megnyitásához a böngészőben. | [![Cloud Shell elindítása új ablakban](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | Kattintson a **Cloud Shell** gombra a [Azure Portal](https://portal.azure.com)jobb felső sarkában található menüsorban. | ![Cloud Shell gomb a Microsoft Azure Portal-on](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 A következő cikkben szereplő kód futtatásához Azure Cloud Shell:
@@ -29,6 +29,6 @@ A következő cikkben szereplő kód futtatásához Azure Cloud Shell:
 
 1. A kód másolásához kattintson a kód blokk **Másolás** gombjára.
 
-1. Illessze be a kódot a Cloud Shell-munkamenetbe úgy, hogy a Windows és Linux rendszeren a CTRL**SHIFT**+**v** **billentyűkombinációt**+választja, vagy a **cmd**+**SHIFT**+**v** -t a MacOS rendszeren.
+1. Illessze be a kódot a Cloud Shell-munkamenetbe úgy, hogy a Windows és Linux rendszeren a CTRL SHIFT v **billentyűkombinációt**választja, + **Shift** + **V** vagy a **cmd** + **SHIFT** + **v** -t a MacOS rendszeren.
 
 1. A kód futtatásához válassza az **ENTER billentyűt** .

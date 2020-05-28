@@ -136,7 +136,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 * [ODBC C++ Windows-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), töltse le a Windows C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 * [ODBC C++ Linux-minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), töltse le a Linux C++ ODBC-mintát az Azure SQL-hez való kapcsolódáshoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [SQL Database fejlesztés áttekintését](develop-overview.md)
 * További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)

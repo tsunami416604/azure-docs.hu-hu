@@ -155,6 +155,6 @@ Az áthelyezés befejeződése után ellenőrizze, hogy az alábbi képességek 
 |Frissítéskezelés|Ellenőrizze, hogy látja-e a gépeket, és hogy kifogástalanok-e.</br>Futtasson egy teszt szoftverfrissítés központi telepítését.|[Az Update Management hibáinak megoldása](../troubleshoot/update-management.md)|
 |Megosztott erőforrások|Győződjön meg arról, hogy az összes megosztott erőforrás, például a [hitelesítő adatok](../shared-resources/credentials.md) és a [változók](../shared-resources/variables.md)láthatók.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások Azure-ban való áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md).

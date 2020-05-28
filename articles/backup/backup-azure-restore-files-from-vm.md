@@ -3,12 +3,12 @@ title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonság
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 0cb3b588aadcda232d1a9a07fc6d9336448cb5a5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757976"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118135"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -181,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Ha a RAID-lemezen van egy másik LVM konfigurálva, akkor használja a fenti eljárást az LVM-partíciók esetében, de használja a kötet nevét a RAID-lemez nevének helyén.
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 ### <a name="for-windows-os"></a>Windows operációs rendszer esetén
 
@@ -228,7 +228,7 @@ Ha korlátozott hozzáféréssel rendelkező számítógépen futtatja a parancs
 
 - `download.microsoft.com`
 - Helyreállítási szolgáltatás URL-címei (a Geo-név arra a régióra utal, ahol a helyreállítási tár található)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Nyilvános Azure-térségek)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Azure-beli nyilvános régiókban)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Az Azure China 21Vianet esetében)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Azure USA kormánya)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Az Azure Germany esetében)

@@ -158,7 +158,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hiteles
 - Az Azure AD-hitelesítés a Azure SQL Database és az Azure szinapszis számára is támogatott a Azure Portal **importálási adatbázis** és az **adatbázis exportálása** lapok használatával. Az Azure AD-hitelesítéssel történő Importálás és exportálás a PowerShell-parancsokból is támogatott.
 - Az Azure AD-hitelesítés támogatott az SQL Database, az SQL felügyelt példánya, valamint az Azure szinapszis a CLI használatával. További információ: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis](authentication-aad-configure.md) és [SQL Server – az SQL Server](https://docs.microsoft.com/cli/azure/sql/server)segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD létrehozásával és feltöltésével, valamint az Azure AD Azure SQL Database, SQL felügyelt példányával vagy az Azure szinapszis szolgáltatással való konfigurálásával kapcsolatban lásd: [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database, SQL felügyelt példánysal vagy Azure szinapszisokkal](authentication-aad-configure.md).
 - Az Azure AD-kiszolgálói rendszerbiztonsági példányok (bejelentkezések) SQL felügyelt példányaival való használatával kapcsolatos oktatóanyagért lásd: az [Azure ad-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) az SQL felügyelt példányaival](../managed-instance/aad-security-configure-tutorial.md)

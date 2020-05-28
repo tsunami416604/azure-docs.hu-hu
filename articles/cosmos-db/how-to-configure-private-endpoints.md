@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan állíthatja be az Azure Private-hivatkozást e
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697886"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116662"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 
@@ -83,8 +83,8 @@ Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támoga
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  SQL       |  privatelink.documents.azure.com    |
-|Táblázat    |    Táblázat     |   privatelink.table.cosmos.azure.com    |
-|Táblázat     |   SQL      |  privatelink.documents.azure.com    |
+|Tábla    |    Tábla     |   privatelink.table.cosmos.azure.com    |
+|Tábla     |   SQL      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
@@ -618,9 +618,11 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 * Ha nem konfigurálja a tűzfalszabályok egyikét sem, akkor alapértelmezés szerint minden forgalom elérheti az Azure Cosmos-fiókokat.
 
-* Ha nyilvános forgalmat vagy szolgáltatási végpontot állít be, és privát végpontokat hoz létre, akkor a megfelelő tűzfalszabály engedélyezi a bejövő forgalom különböző típusait.
+* Ha nyilvános forgalmat vagy szolgáltatási végpontot állít be, és privát végpontokat hoz létre, akkor a megfelelő tűzfalszabály engedélyezi a bejövő forgalom különböző típusait. Ha a magánhálózati végpont olyan alhálózaton van konfigurálva, ahol a szolgáltatási végpont is be van állítva:
+  * a privát végpont által leképezett adatbázis-fiók felé irányuló forgalmat privát végponton keresztül irányítja a rendszer.
+  * az alhálózatról érkező más adatbázis-fiókok felé irányuló forgalmat a szolgáltatás-végponton keresztül irányítja a rendszer.
 
-* Ha nem állít be nyilvános forgalmat vagy szolgáltatási végpontot, és privát végpontokat hoz létre, akkor az Azure Cosmos-fiók csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatási végpontot, az összes jóváhagyott privát végpont elutasítása vagy törlése után a fiók nyitva van a teljes hálózaton.
+* Ha nem állít be nyilvános forgalmat vagy szolgáltatási végpontot, és privát végpontokat hoz létre, akkor az Azure Cosmos-fiók csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatási végpontot, az összes jóváhagyott privát végpont elutasítása vagy törlése után a fiók nyitva van a teljes hálózatra, kivéve, ha a PublicNetworkAccess nincs letiltva (lásd az alábbi szakaszt).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Nyilvános hálózati hozzáférés letiltása a fiók létrehozása során
 

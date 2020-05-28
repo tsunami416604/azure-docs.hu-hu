@@ -9,10 +9,17 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: DB létrehozása – portál
-      href: quickstart-create-mariadb-server-database-using-azure-portal.md
-    - name: DB létrehozása – Azure CLI
-      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: Adatbázis létrehozása
+      items:
+        - name: DB létrehozása – portál
+          href: quickstart-create-mariadb-server-database-using-azure-portal.md
+        - name: DB létrehozása – Azure CLI
+          href: quickstart-create-mariadb-server-database-using-azure-cli.md
+        - name: Adatbázis létrehozása – Azure PowerShell
+          href: quickstart-create-mariadb-server-database-using-azure-powershell.md
+        - name: Adatbázis létrehozása – ARM-sablon
+          href: quickstart-create-mariadb-server-database-arm-template.md
+          displayName: deploy azure resource manager template
     - name: Csatlakozás és lekérdezés
       items:
         - name: MySQL Workbench
@@ -25,6 +32,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -119,6 +128,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: Adatbázisok migrálása
       items:
         - name: Memóriakép és visszaállítás
@@ -137,12 +148,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: Tárterület automatikus növelése
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: Nyilvános hálózati hozzáférés megtagadása
       items:
         - name: Azure Portal
@@ -173,6 +188,8 @@
           href: howto-read-replicas-portal.md
         - name: Olvasási replikák létrehozása – Azure CLI és REST API
           href: howto-read-replicas-cli.md
+        - name: Olvasási replikák létrehozása – Azure PowerShell
+          href: howto-read-replicas-powershell.md
     - name: Hibaelhárítás
       items:
         - name: Csatlakozási hibák elhárítása
@@ -201,6 +218,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: Referencia
   items:
     - name: Azure CLI

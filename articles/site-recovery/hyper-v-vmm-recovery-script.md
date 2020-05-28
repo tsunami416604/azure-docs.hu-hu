@@ -76,6 +76,6 @@ Miután hozzáadta a virtuális gépeket vagy replikációs csoportokat egy hely
 1. Annak érdekében, hogy a parancsfájl a várt módon működjön, végezzen feladatátvételi tesztet a helyreállítási tervből.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [feladatátvételek futtatásáról](site-recovery-failover.md).
 

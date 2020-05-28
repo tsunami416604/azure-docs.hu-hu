@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637245"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021704"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: privát végpont létrehozása Azure Portal használatával
 
-A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy SQL Database-kiszolgálót egy Azure Private-végponttal a Azure Portal használatával. Ezután biztonságosan hozzáférhet a SQL Database-kiszolgálóhoz a virtuális gépről.
+A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépet Azure-Virtual Network, egy Azure Private-végponttal rendelkező logikai SQL Servert a Azure Portal használatával. Ezután biztonságosan hozzáférhet SQL Database a virtuális gépről.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -36,18 +36,18 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroup |
-| **\<virtuális hálózat neve>** | myVirtualNetwork          |
-| **\<régió neve>**          | USA nyugati középső régiója    |
-| **\<IPv4 – címtartomány>**   | 10.1.0.0/16          |
-| **\<alhálózat – név>**          | mySubnet        |
-| **\<alhálózat – címtartomány>** | 10.1.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA nyugati középső régiója    |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -93,10 +93,11 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
 
-## <a name="create-a-sql-database-server"></a>SQL Database-kiszolgáló létrehozása
-Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban. 
+## <a name="create-a-logical-sql-server"></a>Logikai SQL-kiszolgáló létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**adatbázisok** > **SQL Database**lehetőséget.
+Ebben a szakaszban egy logikai SQL Server-kiszolgálót fog létrehozni az Azure-ban. 
+
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **SQL Database**lehetőséget.
 
 1. Az **SQL Database létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
@@ -127,7 +128,7 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
 
 Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia egy privát végpontot. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > **Networking** > létrehozása magánhálózat**Private link Center (előzetes verzió)** lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **magánhálózat**  >  **Private link Center (előzetes verzió)** lehetőséget.
 2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
 1. A **privát végpont létrehozása (előzetes verzió) – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -137,7 +138,7 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name (Név) | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    | Name | Adja meg a *myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |Régió|Válassza a **WestCentralUS**lehetőséget.|
     |||
 5. Válassza a **Tovább: erőforrás**elemet.
@@ -185,7 +186,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
 1. Kattintson az **OK** gombra.
 
@@ -193,7 +194,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Az SQL Database-kiszolgáló magánhálózati elérése a virtuális gépről
+## <a name="access-sql-database-privately-from-the-vm"></a>Hozzáférési SQL Database a virtuális gépről
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 
@@ -216,7 +217,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
     | ------- | ----- |
     | Kiszolgáló típusa| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
     | Kiszolgálónév| *MyServer.database.Windows.net* kiválasztása |
-    | Felhasználónév | Adja meg a username@servername felhasználónevet, amely az SQL Server létrehozásakor van megadva. |
+    | Felhasználónév | Adja meg a felhasználónevet, username@servername amely az SQL Server létrehozásakor van megadva. |
     |Jelszó |Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
     |Jelszó megjegyzése|Válassza az **Igen** lehetőséget.|
     |||
@@ -225,7 +226,7 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 3. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 4. A távoli asztali kapcsolat bezárásával *myVm*. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
 Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
 1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 
@@ -233,4 +234,4 @@ Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép has
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy SQL Database-kiszolgálón és egy privát végponton a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál az SQL Database-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
+Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy logikai SQL Serveren és egy privát végponton a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál SQL Database privát kapcsolat használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).

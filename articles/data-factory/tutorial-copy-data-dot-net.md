@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418694"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118171"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 * *Azure Storage-fiók*. A blobtárolót használjuk *forrás* adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [az általános célú Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
-* *Azure SQL Database*. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-single-database-get-started.md)című témakört.
+* *Azure SQL Database*. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * *Visual Studio*. A jelen cikkben található útmutató a Visual Studio 2019-et használja.
 * *[Azure SDK a .net-hez](/dotnet/azure/dotnet-tools)*.
 * *Azure Active Directory alkalmazás*. Ha nem rendelkezik Azure Active Directory alkalmazással, tekintse meg a következő témakört: a [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) című rész, amelyből megtudhatja, [hogyan hozhat létre Azure ad-alkalmazást a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md). Másolja a következő értékeket a későbbi lépésekben való használatra: **alkalmazás (ügyfél) azonosítója**, **hitelesítési kulcs**és **könyvtár (bérlő) azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
@@ -81,7 +81,7 @@ Következő lépésként hozzon létre egy fogadó SQL-táblázatot:
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön meg arról, hogy engedélyezte az Azure-szolgáltatásokhoz való hozzáférést az Azure SQL Serveren, hogy a Data Factory szolgáltatás adatírást tud írni az Azure SQL Serverre. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
+2. Engedélyezi az Azure-szolgáltatások számára a SQL Database elérését. Győződjön meg arról, hogy engedélyezi az Azure-szolgáltatásokhoz való hozzáférést a kiszolgálón, így a Data Factory szolgáltatás adatírást tud írni SQL Databaseba. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
     1. Az SQL Server kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **SQL-kiszolgálókat**.
 
@@ -104,7 +104,7 @@ Hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióval.
 
 Ezután telepítse a szükséges függvénytár-csomagokat a NuGet csomagkezelő használatával.
 
-1. A menüsávban válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
+1. A menüsávban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
 2. A **Package Manager konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információ a Azure Data Factory NuGet csomagról: [Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```package manager console
@@ -117,7 +117,7 @@ Ezután telepítse a szükséges függvénytár-csomagokat a NuGet csomagkezelő
 
 Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
 
-1. Nyissa meg a *program.cs*, majd `using` írja felül a meglévő utasításokat a következő kóddal, hogy hozzáadja a névterekre mutató hivatkozásokat.
+1. Nyissa meg a *program.cs*, majd írja felül a meglévő `using` utasításokat a következő kóddal, hogy hozzáadja a névterekre mutató hivatkozásokat.
 
     ```csharp
     using System;
@@ -133,7 +133,7 @@ Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
 
 2. Adja hozzá a következő kódot a `Main` metódushoz, amely beállítja a változókat. Cserélje le a 14 helyőrzőt a saját értékeire.
 
-    Ha szeretné megtekinteni azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). A **termékek** legördülő listában válassza a **Tallózás** > **Analytics** > **Data Factory**lehetőséget. Ezután a **régiók** legördülő listában válassza ki az Önt érdeklő régiókat. Megjelenik egy rács a kiválasztott régiókban Data Factory termékek rendelkezésre állási állapotával.
+    Ha szeretné megtekinteni azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). A **termékek** legördülő listában válassza a **Tallózás**  >  **Analytics**  >  **Data Factory**lehetőséget. Ezután a **régiók** legördülő listában válassza ki az Önt érdeklő régiókat. Megjelenik egy rács a kiválasztott régiókban Data Factory termékek rendelkezésre állási állapotával.
 
     > [!NOTE]
     > Az adattárak, például az Azure Storage és a Azure SQL Database, valamint a számítások, például a HDInsight, a Data Factory által használt más régiókban is lehetnek, mint amit a Data Factory választott.
@@ -171,7 +171,7 @@ Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy `DataFactoryManagementClient` osztály egy példányát. Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható.
+3. Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy osztály egy példányát `DataFactoryManagementClient` . Ezzel az objektummal adat-előállítót, társított szolgáltatást, adatkészleteket és folyamatot hozhat létre. Ezenfelül ez az objektum a folyamat futása részleteinek monitorozására is használható.
 
     ```csharp
     // Authenticate and create a data factory management client
@@ -276,7 +276,7 @@ Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *Azur
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a Blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik, és a következőket írja le:
 
 - A másolandó blob helye: `FolderPath` és`FileName`
-- A tartalom `TextFormat` elemzését, a hozzá tartozó beállításokat, például az oszlop elválasztóját jelző blob formátum
+- A tartalom elemzését `TextFormat` , a hozzá tartozó beállításokat, például az oszlop elválasztóját jelző blob formátum
 - Az adatstruktúra, beleértve az oszlopnevek és az adattípusokat, amelyek ebben a példában a fogadó SQL-táblára mutatnak.
 
 ```csharp
@@ -337,7 +337,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *másolási tevékenységgel rendelkező*folyamatot. Ebben az oktatóanyagban ez a folyamat egy tevékenységet tartalmaz `CopyActivity`:, amely a blob-adatkészletet forrásként és az SQL-adatkészletként veszi fel fogadóként. További információ a másolási tevékenység részleteiről: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
+Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *másolási tevékenységgel rendelkező*folyamatot. Ebben az oktatóanyagban ez a folyamat egy tevékenységet tartalmaz: `CopyActivity` , amely a blob-adatkészletet forrásként és az SQL-adatkészletként veszi fel fogadóként. További információ a másolási tevékenység részleteiről: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -432,7 +432,7 @@ Most szúrja be a kódot a folyamat futtatási állapotának vizsgálatához, é
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Hozza létre az alkalmazást a **Build** > **Build megoldás**kiválasztásával. Ezután indítsa el az alkalmazást a **hibakeresés** > **megkezdése**parancs kiválasztásával, és ellenőrizze a folyamat végrehajtását.
+Hozza létre az alkalmazást a **Build**  >  **Build megoldás**kiválasztásával. Ezután indítsa el az alkalmazást a **hibakeresés**  >  **megkezdése**parancs kiválasztásával, és ellenőrizze a folyamat végrehajtását.
 
 A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozásának állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási részletei az adatok olvasási/írási méretével. Ezt követően a SQL Server Management Studio (SSMS) vagy a Visual Studio használatával csatlakozhat a célhelyhez Azure SQL Database és megtekintheti, hogy a megadott céltábla tartalmazza-e a másolt adatait.
 

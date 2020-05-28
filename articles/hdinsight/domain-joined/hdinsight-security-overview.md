@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996312"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -43,7 +43,7 @@ Ezzel a beállítással a vállalati alkalmazottak tartományi hitelesítő adat
 
 Az ajánlott eljárás a legtöbb vállalatnál azt biztosítja, hogy nem minden alkalmazott teljes hozzáféréssel rendelkezik az összes vállalati erőforráshoz. Hasonlóképpen a rendszergazda szerepköralapú hozzáférés-vezérlési házirendeket is meghatározhat a fürterőforrások számára. Ez a művelet csak az ESP-fürtökben érhető el.
 
-A Hadoop-rendszergazda konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC). A konfigurációk az Apache [kaptár](apache-domain-joined-run-hive.md), a [HBase](apache-domain-joined-run-hbase.md)és a [Kafka](apache-domain-joined-run-kafka.md) Apache Range beépülő modult biztosítják. A RBAC-házirendek konfigurálása lehetővé teszi, hogy a szervezet egyik szerepkörével társítsa az engedélyeket. Ez az absztrakciós réteg megkönnyíti annak biztosítását, hogy az emberek csak a munkahelyi feladataik elvégzéséhez szükséges engedélyeket használják. A Ranger lehetővé teszi az alkalmazottak és a hozzáférés-vezérlési házirendek által végzett módosítások naplózását is.
+A Hadoop-rendszergazda konfigurálhatja a szerepköralapú hozzáférés-vezérlést (RBAC). A konfigurációk [az Apache](apache-domain-joined-run-hive.md) [HBase](apache-domain-joined-run-hbase.md)és a [Kafka](apache-domain-joined-run-kafka.md) -t az Apache Ranger beépülő modulokkal védik. A RBAC-házirendek konfigurálása lehetővé teszi, hogy a szervezet egyik szerepkörével társítsa az engedélyeket. Ez az absztrakciós réteg megkönnyíti annak biztosítását, hogy az emberek csak a munkahelyi feladataik elvégzéséhez szükséges engedélyeket használják. A Ranger lehetővé teszi az alkalmazottak és a hozzáférés-vezérlési házirendek által végzett módosítások naplózását is.
 
 Például, a rendszergazda konfigurálhatja az [Apache Ranger](https://ranger.apache.org/) keretrendszert, hogy beállítsa a Hive hozzáférés-vezérlés házirendjét. Ez a funkció biztosítja a sor szintű és az oszlop szintű szűrést (adatmaszkolás). És szűri a bizalmas adatokat a jogosulatlan felhasználóktól.
 
@@ -89,8 +89,8 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Hálózati biztonság | [Virtuális hálózat](../hdinsight-plan-virtual-network-deployment.md) konfigurálása |
 |  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) konfigurálása | Ügyfél |
 |  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
-| Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
-| Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |
+| Virtualizált infrastruktúra | N.A. | HDInsight (felhőalapú szolgáltató) |
+| Fizikai infrastruktúra biztonsága | N.A. | HDInsight (felhőalapú szolgáltató) |
 
 ## <a name="next-steps"></a>További lépések
 

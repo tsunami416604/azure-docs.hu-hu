@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b97fe6e55e2c36b6f101071e702952f529146281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 537c7e70176d902c5bc7458b60de7a70ea040c85
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631658"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117341"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás felhasználása
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Miután telepített egy Azure Machine Learning Studio (klasszikus) prediktív modellt webszolgáltatásként, használhat egy REST API az adatküldés és az előrejelzések beszerzése érdekében. Az adatküldés valós időben vagy batch módban is elvégezhető.
 
@@ -99,7 +97,7 @@ Machine Learning webszolgáltatáshoz való kapcsolódáshoz telepíteni kell a 
 **A Microsoft. AspNet. WebApi. Client NuGet telepítése a Visual Studióban**
 
 1. Tegye közzé a letöltési adatkészletet az UCI: Adult 2 Class adatkészlet webszolgáltatás webszolgáltatásból.
-2. Kattintson az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzol**elemre.
+2. Kattintson az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzol**elemre.
 3. Válassza a **Microsoft. AspNet. WebApi. Client csomag telepítése**lehetőséget.
 
 **A mintakód futtatása**
@@ -306,7 +304,7 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>JavaScript-minta
 
-Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **NPM-csomagot a** projektben. Az objektumot a `JSON` bemenet formázásához és az eredmény elemzéséhez is használni fogja. Telepítse a `npm install request --save`-t a `"request": "*"` használatával, vagy vegye fel a `dependencies` csomagot. `npm install`JSON fájlt a és a Futtatás alatt.
+Ha Machine Learning webszolgáltatáshoz szeretne csatlakozni, használja a **NPM-csomagot a** projektben. Az `JSON` objektumot a bemenet formázásához és az eredmény elemzéséhez is használni fogja. Telepítse `npm install request --save` a-t a használatával, vagy vegye fel `"request": "*"` a csomagot. JSON fájlt a `dependencies` és a Futtatás alatt `npm install` .
 
 **A teljes kérelem így fog kinézni.**
 ```js

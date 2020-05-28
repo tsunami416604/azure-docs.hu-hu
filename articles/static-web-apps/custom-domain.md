@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655236"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142061"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure statikus Web Apps előzetes verziójában
 
@@ -80,7 +80,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
 
 1. Kattintson az **Érvényesítés** gombra.
 
-Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni tudja a globális változásokat. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg az egyéni tartományt, beleértve a `www` elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
+Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni kívánja a módosításokat világszerte. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg az egyéni tartományt, beleértve a `www` elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
 
 Ha a DNS-módosítások feltöltve lettek, a webhely a statikus webalkalmazás automatikusan generált URL-címét (például _Random-Name-123456789c.azurestaticapps.net_) adja vissza.
 
@@ -121,7 +121,7 @@ Most, hogy a helyettesítő karakteres tartomány konfigurálva van, több órá
 
 Ha a DNS-módosítások feltöltése megtörtént, a webhely visszaadja a statikus webalkalmazáshoz konfigurált egyéni tartományt (például: `www.example.com` ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Alkalmazásbeállítások konfigurálása](application-settings.md)

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ff8d82966d479491bc9600a0331f69ffd09253d1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701066"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112709"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
@@ -190,9 +190,9 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
-- [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)
+- [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisáról](database.md)
 
 

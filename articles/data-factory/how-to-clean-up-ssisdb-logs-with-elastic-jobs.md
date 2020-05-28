@@ -10,30 +10,30 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15ab5f08b7f9f5bc4824aec8980ed4b711ae1d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606180"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020285"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk azt ismerteti, hogyan használható az Azure Elastic Database-feladatok a SQL Server Integration Services Catalog- `SSISDB`adatbázis naplófájljainak tisztítására szolgáló tárolt eljárás elindításához.
+Ez a cikk azt ismerteti, hogyan használható az Azure Elastic Database-feladatok a SQL Server Integration Services Catalog-adatbázis naplófájljainak tisztítására szolgáló tárolt eljárás elindításához `SSISDB` .
 
 Elastic Database feladatok egy Azure-szolgáltatás, amely megkönnyíti a feladatok automatizálását és futtatását egy adatbázison vagy egy adatbázis-csoporton. Ezeket a feladatokat a Azure Portal, a Transact-SQL, a PowerShell vagy a REST API-k használatával ütemezheti, futtathatja és figyelheti. A Elastic Database feladat használatával aktiválhatja a napló-karbantartási műveletet egy alkalommal vagy egy ütemezett időpontban. Az SSISDB erőforrás-használat alapján kiválaszthatja az ütemezett időközt, hogy elkerülje a nagy mennyiségű adatbázis terhelését.
 
-További információ: [adatbázisok csoportjainak kezelése Elastic Database feladatokkal](../sql-database/elastic-jobs-overview.md).
+További információ: [adatbázisok csoportjainak kezelése Elastic Database feladatokkal](../azure-sql/database/elastic-jobs-overview.md).
 
-A következő szakaszok azt ismertetik, hogyan kell elindítani `[internal].[cleanup_server_retention_window_exclusive]`a tárolt eljárást, amely eltávolítja a rendszergazda által beállított adatmegőrzési időszakon kívüli SSISDB-naplókat.
+A következő szakaszok azt ismertetik, hogyan kell elindítani a tárolt eljárást `[internal].[cleanup_server_retention_window_exclusive]` , amely eltávolítja a rendszergazda által beállított adatmegőrzési időszakon kívüli SSISDB-naplókat.
 
 ## <a name="clean-up-logs-with-power-shell"></a>Naplók törlése a Power shellben
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Az alábbi PowerShell-parancsfájlok új rugalmas feladatot hoznak létre a SSISDB-napló karbantartásához tárolt eljárás elindításához. További információ: [rugalmas feladatok ügynökének létrehozása a PowerShell használatával](../sql-database/elastic-jobs-powershell.md).
+Az alábbi PowerShell-parancsfájlok új rugalmas feladatot hoznak létre a SSISDB-napló karbantartásához tárolt eljárás elindításához. További információ: [rugalmas feladatok ügynökének létrehozása a PowerShell használatával](../azure-sql/database/elastic-jobs-powershell-create.md).
 
 ### <a name="create-parameters"></a>Paraméterek létrehozása
 
@@ -41,7 +41,7 @@ Az alábbi PowerShell-parancsfájlok új rugalmas feladatot hoznak létre a SSIS
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +52,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -191,7 +191,7 @@ A következő példa Transact-SQL-szkriptek új rugalmas feladatot hoznak létre
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Adja meg a megfelelő engedélyeket a SSISDB-adatbázishoz. A SSISDB-katalógusnak megfelelő engedélyekkel kell rendelkeznie ahhoz, hogy a tárolt eljárás sikeresen futtassa a SSISDB-napló karbantartását. Részletes útmutatásért lásd: [bejelentkezések kezelése](../sql-database/sql-database-manage-logins.md).
+4. Adja meg a megfelelő engedélyeket a SSISDB-adatbázishoz. A SSISDB-katalógusnak megfelelő engedélyekkel kell rendelkeznie ahhoz, hogy a tárolt eljárás sikeresen futtassa a SSISDB-napló karbantartását. Részletes útmutatásért lásd: [bejelentkezések kezelése](../azure-sql/database/logins-create-manage.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

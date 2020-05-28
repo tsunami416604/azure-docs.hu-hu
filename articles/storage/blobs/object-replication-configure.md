@@ -272,6 +272,6 @@ az storage account or-policy delete \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Objektum-replikáció áttekintése (előzetes verzió)](object-replication-overview.md)

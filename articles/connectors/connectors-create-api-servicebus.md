@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261619"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141993"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -60,7 +60,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath`  paraméterhez tartozó kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a paraméterhez tartozó kapcsolódási karakterláncot `EntityPath`   . Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger hozzáadása
 
@@ -114,7 +114,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 1. Válassza ki azt a lépést, amelyben a műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
 
-   Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure Service Bus" kifejezést. A műveletek listából válassza ki a kívánt műveletet. 
 
@@ -152,12 +152,22 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>Korrelált üzenetek küldése sorrendben
+
+Ha a kapcsolódó üzeneteket egy adott sorrendben kell elküldeni, használhatja a [ *szekvenciális konvoj* mintát](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) az [Azure Service Bus-összekötő](../connectors/connectors-create-api-servicebus.md)használatával. A korrelált üzenetek olyan tulajdonsággal rendelkeznek, amely meghatározza az üzenetek közötti kapcsolatot, például a [munkamenet](../service-bus-messaging/message-sessions.md) azonosítóját Service Busban.
+
+Logikai alkalmazás létrehozásakor kiválaszthatja a **korrelált sorrend szerinti kézbesítést a Service Bus-munkamenetek** sablonnal, amely megvalósítja a szekvenciális konvojos mintát. További információ: [kapcsolódó üzenetek küldése sorrendben](../logic-apps/send-related-messages-sequential-convoy.md).
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakaríthat a Service Bus és az összekötő gyorsítótára között. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. További információ: [üzenetküldési munkamenetek](../service-bus-messaging/message-sessions.md).
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért, amelyeket az összekötő hencegő leírása ismertet, tekintse át az [összekötő-hivatkozás lapot](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -105,7 +105,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat |Leírás |
+    |Nyilatkozat |Description |
     |---|---|
     |TÁBLÁZAT ELDOBÁSA|Ha a tábla létezik, törölve lett.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy **külső** táblát a struktúrában. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
@@ -168,7 +168,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat |Leírás |
+    |Nyilatkozat |Description |
     |---|---|
     |CREATE TABLE, HA NEM LÉTEZIK|Ha a tábla még nem létezik, akkor létrejön. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblák a struktúra adattárházában tárolódnak, és a struktúra teljes mértékben felügyeli őket.|
     |ORK-KÉNT TÁROLVA|Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork formátum a kaptárak adatok tárolására szolgáló, kiválóan optimalizált és hatékony formátum.|
@@ -205,7 +205,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További általános információk a HDInsight-beli Kaptárról: [Apache Hive használata a Apache Hadoop használatával a HDInsight](hdinsight-use-hive.md)
 

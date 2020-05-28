@@ -122,6 +122,6 @@ Szükség van egy helyettesítő eszközre, ha a meglévő eszköz hardveres hib
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.

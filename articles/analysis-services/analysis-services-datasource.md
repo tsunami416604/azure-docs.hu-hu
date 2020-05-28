@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71df537535003fe23902949c70b086a30a6b5049
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4f026a6a0155f9d4add15adb26951b4913d11685
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698136"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019809"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -33,12 +33,13 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |Azure HDInsight Spark     |   Igen       |   Nem       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-**Megjegyzi**   
+**Megjegyzi**
+
 <a name="tab1400a">1</a> – táblázatos 1400 és újabb modellek.  
-<a name="azprovider">2</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200-es és a magasabb modellekben, a memóriában és a DirectQuery-modellekben a Microsoft OLE DB illesztőprogram szükséges a SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatójának SQL Server.    
-<a name="azsqlmanaged">3</a> – Azure SQL Database felügyelt példány támogatott. Mivel a felügyelt példány egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni [adatátjáró](analysis-services-gateway.md) szükséges.    
-<a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.   
-<a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.   
+<a name="azprovider">2</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200-es és a magasabb modellekben, a memóriában és a DirectQuery-modellekben a Microsoft OLE DB illesztőprogram szükséges a SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatójának SQL Server.  
+<a name="azsqlmanaged">3</a> – Azure SQL Database felügyelt példány támogatott. Mivel a felügyelt példány egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni [adatátjáró](analysis-services-gateway.md) szükséges.  
+<a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.  
+<a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.
 
 ## <a name="other-data-sources"></a>Más adatforrások
 
@@ -67,7 +68,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |SAP HANA     |  Igen | Nem |  |
 |SAP Business Warehouse    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SharePoint-lista      |   Igen | Nem | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Adattárház SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-adatbázis     |  Igen | Nem |  |
 |Teradata | Igen  | Igen  | <sup>[10](#teradata)</sup> |
@@ -75,15 +76,15 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |XML-táblázat    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-**Megjegyzi**   
+**Megjegyzi**  
 <a name="tab1400b">6</a> – csak táblázatos 1400 és újabb modellek.  
 <a name="sqlim">7</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200 és a magasabb modellekben, adja meg a Microsoft OLE DB illesztőprogramot SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatóját SQL Serverhoz.  
 <a name="instgw">8</a> – ha a MSOLEDBSQL adatszolgáltatóként van megadva, előfordulhat, hogy a helyszíni adatátjáróval megegyező számítógépen le kell töltenie és telepítenie kell a [Microsoft OLE DB illesztőprogramot a SQL Serverhoz](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) .  
 <a name="oracle">9</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforráshoz táblázatos 1400 + modellekben, a .net-hez készült Oracle-adatszolgáltató megadása.  
-<a name="teradata">10</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforrásként táblázatos 1400 + modellekben a Teradata-adatszolgáltató megadása a .net-hez.   
+<a name="teradata">10</a> – táblázatos 1200-modellekhez vagy *szolgáltatói* adatforrásként táblázatos 1400 + modellekben a Teradata-adatszolgáltató megadása a .net-hez.  
 <a name="filesSP">11</a> – a helyszíni SharePointban található fájlok nem támogatottak.
 
-Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatlakozáshoz helyszíni [átjáró](analysis-services-gateway.md)szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek. 
+Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatlakozáshoz helyszíni [átjáró](analysis-services-gateway.md)szükséges. Átjáró használata esetén 64 bites szolgáltatók szükségesek.
 
 ## <a name="understanding-providers"></a>Szolgáltatók ismertetése
 
@@ -105,7 +106,6 @@ Mint a táblázatos 1200 modell projektjeihez hasonlóan, a **tábla importálá
 
 ![Örökölt adatforrások speciális tulajdonságai](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
-
 ## <a name="impersonation"></a>Megszemélyesítési
 Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban vagy SQL Server Management Studioban (SSMS).
 
@@ -120,11 +120,11 @@ Felhőbeli adatforrások esetén:
 
 ## <a name="oauth-credentials"></a>OAuth hitelesítő adatai
 
-A 1400-es és magasabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis Analytics (SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
+A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis (korábban SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
 
 A OAuth hitelesítő adatai nem támogatják a közvetlen lekérdezési módot.
 
 ## <a name="next-steps"></a>További lépések
-[Helyszíni átjáró](analysis-services-gateway.md)   
-[A kiszolgáló kezelése](analysis-services-manage.md)   
 
+* [Helyszíni átjáró](analysis-services-gateway.md)
+* [A kiszolgáló kezelése](analysis-services-manage.md)

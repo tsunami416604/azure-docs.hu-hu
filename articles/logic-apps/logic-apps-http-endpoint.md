@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005511"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141789"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -148,11 +148,14 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 * [Értékek elfogadása a Get paraméterek vagy az](#get-parameters) URL-paraméterek használatával.
 
-  Ezeket az értékeket a rendszer név-érték párokként adja át a végpont URL-címében. Ehhez a beállításhoz a GET metódust kell használnia a kérelem triggerében. Egy későbbi művelet során a paraméter értékeit trigger kimenetként lehet beolvasni egy kifejezésben szereplő `triggerOutputs()` függvény használatával.
+  Ezeket az értékeket a rendszer név-érték párokként adja át a végpont URL-címében. Ehhez a beállításhoz a GET metódust kell használnia a kérelem triggerében. Egy későbbi művelet során a paraméter értékeit trigger kimenetként lehet beolvasni `triggerOutputs()` egy kifejezésben szereplő függvény használatával.
 
 * Értékek elfogadása a kérelem-trigger paramétereinek [relatív elérési útján](#relative-path) .
 
   Ezeket az értékeket a rendszer a végpont URL-címében lévő relatív elérési úton adja át. Emellett explicit módon [ki kell választania azt a metódust](#select-method) , amelyet az trigger elvár. Egy későbbi művelet során a paraméterek értékét trigger kimenetként is lekérheti, ha közvetlenül a kimenetekre hivatkozik.
+
+> [!NOTE]
+> Az URL-cím a "at" szimbólumot ( **@** ) használja, de nem a kivonat szimbólumát ( **#** ).
 
 <a name="get-parameters"></a>
 
@@ -164,11 +167,11 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 1. A kérelem trigger alatt adja meg azt a műveletet, amelyben használni szeretné a paraméter értékét. Ehhez a példához adja hozzá a **Válasz** műveletet.
 
-   1. A kérelem trigger alatt válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
    
    1. A **válasszon műveletet**területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
 
-1. A paraméter értékét `triggerOutputs()` lekérő kifejezés létrehozásához kövesse az alábbi lépéseket:
+1. A `triggerOutputs()` paraméter értékét lekérő kifejezés létrehozásához kövesse az alábbi lépéseket:
 
    1. Kattintson a válasz tevékenység **törzs** tulajdonságára, hogy megjelenjen a dinamikus tartalom lista, és válassza a **kifejezés**lehetőséget.
 
@@ -190,11 +193,11 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      Tegyük fel például, hogy egy nevű `postalCode`paraméter értékét át szeretné adni. A **Body** tulajdonság megadja a karakterláncot `Postal Code: ` egy záró szóközzel, amelyet a megfelelő kifejezés követ:
+      Tegyük fel például, hogy egy nevű paraméter értékét át szeretné adni `postalCode` . A **Body** tulajdonság megadja a karakterláncot `Postal Code: ` egy záró szóközzel, amelyet a megfelelő kifejezés követ:
 
       ![Példa "triggerOutputs ()" kifejezés hozzáadása az aktiváláshoz](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. A hívható végpont teszteléséhez másolja a visszahívási URL-címet a kérelem-triggerből, és illessze be az URL-címet egy másik böngészőablakba. Az URL-címben adja hozzá a kérdőjelet (`?`) követő paraméter nevét és értékét az URL-címhez a következő formátumban, majd nyomja le az ENTER billentyűt.
+1. A hívható végpont teszteléséhez másolja a visszahívási URL-címet a kérelem-triggerből, és illessze be az URL-címet egy másik böngészőablakba. Az URL-címben adja hozzá a kérdőjelet () követő paraméter nevét és értékét az `?` URL-címhez a következő formátumban, majd nyomja le az ENTER billentyűt.
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,11 +207,11 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    ![Válasz a visszahívási URL-címre küldött kérelemre](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. Ha a paraméter nevét és értékét egy másik pozícióban szeretné elhelyezni az URL-címen belül, ügyeljen arra, hogy`&`előtagként használja az jellel (), például:
+1. Ha a paraméter nevét és értékét egy másik pozícióban szeretné elhelyezni az URL-címen belül, ügyeljen arra, hogy előtagként használja az jellel ( `&` ), például:
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   Ez a példa a visszahívási URL-címet mutatja a minta `postalCode=123456` paraméter nevével és értékével az URL-cím különböző helyein belül:
+   Ez a példa a visszahívási URL-címet mutatja a minta paraméter nevével és értékével `postalCode=123456` az URL-cím különböző helyein belül:
 
    * 1. pozíció:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
@@ -222,19 +225,19 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    ![A "relatív elérési út" tulajdonság hozzáadása az aktiváláshoz](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. A **relatív elérési út** tulajdonságnál adja meg a JSON-séma paraméterének relatív elérési útját, amelyet az URL-cím el szeretne `/address/{postalCode}`fogadni, például:.
+1. A **relatív elérési út** tulajdonságnál adja meg a JSON-séma paraméterének relatív elérési útját, amelyet az URL-cím el szeretne fogadni, például: `/address/{postalCode}` .
 
    ![A paraméter relatív elérési útjának megadása](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 1. A kérelem trigger alatt adja meg azt a műveletet, amelyben használni szeretné a paraméter értékét. Ehhez a példához adja hozzá a **Válasz** műveletet.
 
-   1. A kérelem trigger alatt válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+   1. A kérelem trigger alatt válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
 
    1. A **válasszon műveletet**területen, a keresőmezőbe írja be `response` szűrőként a kifejezést. A műveletek listából válassza ki a **Válasz** műveletet.
 
 1. A válasz tevékenység **törzs** tulajdonságában adja meg az trigger relatív elérési útján megadott paramétert jelölő tokent.
 
-   Tegyük fel például, hogy a válasz műveletét vissza `Postal Code: {postalCode}`szeretné állítani.
+   Tegyük fel például, hogy a válasz műveletét vissza szeretné állítani `Postal Code: {postalCode}` .
 
    1. A **Body (törzs** ) tulajdonságban adjon meg `Postal Code: ` egy záró szóközt. Tartsa a kurzort a szerkesztési mezőben, hogy a dinamikus tartalmak listája nyitva maradjon.
 
@@ -252,7 +255,7 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. A hívható végpont teszteléséhez másolja át a frissített visszahívási URL-címet a kérelem-triggerből, illessze be az URL `{postalCode}` -címet egy másik `123456`böngészőablakba, majd cserélje le az URL-címet a értékre, majd nyomja le az ENTER
+1. A hívható végpont teszteléséhez másolja át a frissített visszahívási URL-címet a kérelem-triggerből, illessze be az URL-címet egy másik böngészőablakba, majd cserélje le az URL-címet a értékre `{postalCode}` `123456` , majd nyomja le az ENTER
 
    A böngésző a következő szöveggel kapcsolatos választ ad vissza:`Postal Code: 123456`
 
@@ -268,7 +271,7 @@ Miután létrehozta a végpontot, aktiválhatja a logikai alkalmazást egy HTTPS
 
 Ha JSON-sémát ad meg a kérelem-triggerben, a Logic app Designer jogkivonatokat hoz létre a séma tulajdonságaihoz. Ezeket a jogkivonatokat használhatja a logikai alkalmazás munkafolyamatán keresztüli adattovábbításhoz.
 
-Ha például további tulajdonságokat `"suite"`(például) ad hozzá a JSON-sémához, akkor ezekhez a tulajdonságokhoz tartozó jogkivonatok használhatók a logikai alkalmazás későbbi lépéseiben. Itt látható a teljes JSON-séma:
+Ha például további tulajdonságokat (például) ad hozzá `"suite"` a JSON-sémához, akkor ezekhez a tulajdonságokhoz tartozó jogkivonatok használhatók a logikai alkalmazás későbbi lépéseiben. Itt látható a teljes JSON-séma:
 
 ```json
    {
@@ -302,7 +305,7 @@ Ha például további tulajdonságokat `"suite"`(például) ad hozzá a JSON-sé
 
 A munkafolyamatokat a logikai alkalmazásban úgy ágyazhatja be, hogy más, a kérelmeket fogadó logikai alkalmazásokat is felvesz. A logikai alkalmazások belefoglalásához kövesse az alábbi lépéseket:
 
-1. A lépés alatt, ahol másik logikai alkalmazást szeretne meghívni, válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
+1. A lépés alatt, ahol másik logikai alkalmazást szeretne meghívni, válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `logic apps` szűrőként a kifejezést. A műveletek listából válassza ki **a Logic apps munkafolyamatot**.
 
@@ -316,9 +319,9 @@ A munkafolyamatokat a logikai alkalmazásban úgy ágyazhatja be, hogy más, a k
 
 ## <a name="reference-content-from-an-incoming-request"></a>Hivatkozás egy bejövő kérelem tartalmára
 
-Ha a bejövő kérelem tartalomtípusa `application/json`, akkor hivatkozhat a bejövő kérelemben szereplő tulajdonságokra. Ellenkező esetben ezt a tartalmat egyetlen bináris egységként kezeli a rendszer, amelyet átadhat más API-khoz. Ha ezt a tartalmat a logikai alkalmazás munkafolyamatán belül szeretné hivatkozni, először konvertálnia kell a tartalmat.
+Ha a bejövő kérelem tartalomtípusa, akkor `application/json` hivatkozhat a bejövő kérelemben szereplő tulajdonságokra. Ellenkező esetben ezt a tartalmat egyetlen bináris egységként kezeli a rendszer, amelyet átadhat más API-khoz. Ha ezt a tartalmat a logikai alkalmazás munkafolyamatán belül szeretné hivatkozni, először konvertálnia kell a tartalmat.
 
-Ha például `application/xml` átadja a Type típusú tartalmat, a [ `@xpath()` kifejezéssel](../logic-apps/workflow-definition-language-functions-reference.md#xpath) XPath-kibontást is végrehajthat, vagy az [ `@json()` ](../logic-apps/workflow-definition-language-functions-reference.md#json) XML-fájl JSON formátumra való átalakítására szolgáló kifejezést használhatja. További információ a támogatott [tartalomtípusok](../logic-apps/logic-apps-content-type.md)használatáról.
+Ha például `application/xml` átadja a Type típusú tartalmat, a [ `@xpath()` kifejezéssel](../logic-apps/workflow-definition-language-functions-reference.md#xpath) XPath-kibontást is végrehajthat, vagy az XML-fájl JSON formátumra való átalakítására szolgáló [ `@json()` kifejezést](../logic-apps/workflow-definition-language-functions-reference.md#json) használhatja. További információ a támogatott [tartalomtípusok](../logic-apps/logic-apps-content-type.md)használatáról.
 
 Egy bejövő kérelem kimenetének lekéréséhez használhatja a [ `@triggerOutputs` kifejezést](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs). Tegyük fel például, hogy olyan kimenettel rendelkezik, amely a következő példához hasonlít:
 
@@ -333,7 +336,7 @@ Egy bejövő kérelem kimenetének lekéréséhez használhatja a [ `@triggerOut
 }
 ```
 
-A `body` tulajdonság eléréséhez használhatja a [ `@triggerBody()` kifejezést](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) parancsikonként.
+A tulajdonság eléréséhez használhatja `body` a [ `@triggerBody()` kifejezést](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) parancsikonként.
 
 ## <a name="respond-to-requests"></a>Válaszadás a kérelmekre
 
@@ -345,13 +348,13 @@ A beágyazott logikai alkalmazások esetében a szülő logikai alkalmazás tov�
 
 ### <a name="construct-the-response"></a>A válasz felépítése
 
-A válasz törzsében több fejlécet és bármilyen típusú tartalmat is megadhat. A válasz fejléce például azt adja meg, hogy a válasz tartalomtípusa, `application/json` és hogy a törzs tartalmazza a `town` és `postalCode` a tulajdonságok értékeit a témakörben korábban ismertetett JSON-séma alapján a kérelem-triggerhez.
+A válasz törzsében több fejlécet és bármilyen típusú tartalmat is megadhat. A válasz fejléce például azt adja meg, hogy a válasz tartalomtípusa, `application/json` és hogy a törzs tartalmazza a és a tulajdonságok értékeit a `town` `postalCode` témakörben korábban ismertetett JSON-séma alapján a kérelem-triggerhez.
 
 ![Adja meg a válasz tartalmát a HTTPS-válasz művelethez](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 A válaszok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Leírás |
+| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Állapotkód** | `statusCode` | A bejövő kérelemre adott válaszban használandó HTTPS-állapotkód. Ez a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx kezdődik. A 3xx-állapotkódok azonban nem engedélyezettek. |
 | **Fejlécek** | `headers` | Egy vagy több, a válaszban szerepeltetni kívánt fejléc |
@@ -399,6 +402,6 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 * A API Management-tartományok beállítása a [Azure Portal](https://portal.azure.com/)
 * Házirend beállítása az egyszerű hitelesítés kereséséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával](../connectors/connectors-native-reqres.md)
