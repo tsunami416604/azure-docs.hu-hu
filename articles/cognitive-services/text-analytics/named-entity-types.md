@@ -1,40 +1,38 @@
 ---
-title: Megnevezett entitások felismeréséhez támogatott típusok
+title: Megnevezett entitások felismeréséhez támogatott kategóriák
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a Text Analytics API támogatott entitások típusait.
+description: A Text Analytics API támogatott entitások kategóriáinak megismerése.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 03/30/2020
 ms.author: aahi
-ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086883"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140926"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Megnevezett entitás-felismerési 3-as verzió (előnézet) támogatott típusai
+# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>Támogatott entitások kategóriái a nevesített entitások felismerése v3
 
-Az Text Analytics API lehetővé teszi a szövegben talált entitások azonosítását és egyértelműsítse. Az [elnevezett entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md) lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra kategorizálja.
+Ebből a cikkből megtudhatja, hogy mely entitás-kategóriákat lehet visszaadni, [névvel ellátott entitás-felismeréssel](how-tos/text-analytics-how-to-entity-linking.md) . Az Egypéldányos v 3.1 előzetes verziója is elérhető, amely magában foglalja a személyes ( `PII` ) és az állapotadatok ( `PHI` ) adatainak észlelését.
 
-## <a name="entity-types"></a>Entitástípusok
-
-A támogatott entitások típusai és altípusai (ahol vannak ilyenek) alább láthatók:
+## <a name="entity-categories"></a>Entitások kategóriái
 
 #### <a name="general"></a>[Általános](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-information"></a>[Személyes adatok](#tab/personal)
+#### <a name="personal-and-health"></a>[Személyes és állapot](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
 ***
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Elnevezett entitások felismerésének használata a Text Analyticsban](how-tos/text-analytics-how-to-entity-linking.md)

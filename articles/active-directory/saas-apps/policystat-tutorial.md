@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848770"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Azure Active Directory integráció a PolicyStat
 
@@ -175,11 +175,11 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
    
     a. A **username attribútum** szövegmezőbe írja be a következőt: **UID**.
 
-    b. Az **Utónév attribútum** szövegmezőbe írja be az első név attribútum-jogcím nevét az Azure-ból **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    b. Az **Utónév attribútum** szövegmezőbe írja be az első név attribútum-jogcím nevét az Azure-ból **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    c. A **vezetéknév attribútum** szövegmezőbe írja be a vezetékneve nevét az Azure-ból **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    c. A **vezetéknév attribútum** szövegmezőbe írja be a vezetékneve nevét az Azure-ból **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .
 
-    d. Az **e-mail-attribútum** szövegmezőbe írja be az e-mail-attribútum jogcím nevét az Azure-ból **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    d. Az **e-mail-attribútum** szövegmezőbe írja be az e-mail-attribútum jogcím nevét az Azure-ból **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
     e. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 

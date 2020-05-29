@@ -8,86 +8,61 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/27/2020
+ms.date: 05/18/2020
 ms.author: aahi
-ms.openlocfilehash: 99a62daf6dced88efd9bda591a0ca44a8b259a75
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195638"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141245"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Útmutató: érzelmek észlelése a Text Analytics API használatával
 
 A Text Analytics API Hangulatelemzés funkciója kiértékeli a szöveget, és az egyes mondatokhoz tartozó érzelmi pontszámokat és címkéket adja vissza. Ez hasznos lehet a közösségi média, az ügyfelek és a vitafórumok pozitív és negatív észlelésére. Az API által használt AI-modelleket a szolgáltatás nyújtja, csak tartalmat kell elküldeni az elemzéshez.
 
-> [!TIP]
-> A Text Analytics egy Linux-alapú Docker-tároló rendszerképet is biztosít a nyelvfelismerés számára, így a Text Analytics tárolót az adatokhoz közelebb is [telepítheti és futtathatja](text-analytics-how-to-install-containers.md) .
+A hangulati elemzési kérelem elküldése után az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és a megbízhatósági pontszámokat adja vissza a mondat és a dokumentum szintjén.
 
 A Hangulatelemzés számos különböző nyelvet támogat, több előzetes verzióban. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
-## <a name="concepts"></a>Alapelvek
-
-A Text Analytics API egy Machine learning-besorolási algoritmust használ, amely egy 0 és 1 közötti hangulati pontszámot eredményez. Az 1-hez közeli értékek pozitív, míg a 0-hoz közeliek negatív hangulatot jelölnek. Az érzelmek elemzése a teljes dokumentumon történik, a szövegben szereplő egyes entitások helyett. Ez azt jelenti, hogy a hangulati pontszámok egy dokumentum vagy egy mondat szintjén lesznek visszaadva. 
-
-A használt modell előre betanítva, a szöveg-és a hangulati társítások széles választékával. Az elemzési módszerek kombinációját használja, többek között a szöveg feldolgozását, a beszédek elemzését, a szavak elhelyezését és a Word-társításokat. Az algoritmussal kapcsolatos további információk: [A Text Analytics bemutatása](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Jelenleg nem lehet saját betanítási adatait megadnia. 
-
-A pontozás pontossága olyankor nő, amikor a dokumentumok kevesebb mondatot tartalmaznak, nem pedig egy nagy blokkot. Az objektivitás megfelelőségvizsgálati fázis során a modell meghatározza, hogy a dokumentum egészében objektív-e vagy hangulatot tartalmaz. Egy olyan dokumentum, amely többnyire objektív, nem halad az észlelési fázisra, ami egy 0,50 pontszámot eredményez, és nincs szükség további feldolgozásra. A folyamat során folytatott dokumentumok esetében a következő fázis a 0,50-es vagy újabb pontszámot generálja. A pontszám a dokumentumban észlelt érzelmek szintjétől függ.
-
 ## <a name="sentiment-analysis-versions-and-features"></a>Verziók és szolgáltatások Hangulatelemzés
 
-A Text Analytics API a Hangulatelemzés-v2 és v3 két verzióját kínálja. A Hangulatelemzés v3 (nyilvános előzetes verzió) jelentős mértékben javítja az API szövegének kategorizálása és pontozása pontosságát és részletességét.
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-> [!NOTE]
-> * Az Hangulatelemzés v3 kérelem formátuma és [adatkorlátja](../overview.md#data-limits) megegyezik az előző verzióval.
-> * A Hangulatelemzés v3 a következő régiókban érhető el `Australia East`: `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `Southeast Asia` `South Central US` `UK South` `West Europe`,,,,,,,,,, és `West US 2`.
+| Funkció                                   | Hangulatelemzés v3 | Hangulatelemzés v 3.1 (előzetes verzió) |
+|-------------------------------------------|-----------------------|-----------------------------------|
+| Egyszeri és batch-kérelmek módszerei    | X                     | X                                 |
+| Érzelmek pontszámai és címkézése             | X                     | X                                 |
+| Linux-alapú [Docker-tároló](text-analytics-how-to-install-containers.md) | X  |  |
+| Vélemény bányászata                            |                       | X                                 |
 
-| Szolgáltatás                                   | Hangulatelemzés v2 | Hangulatelemzés v3 |
-|-------------------------------------------|-----------------------|-----------------------|
-| Egyszeri és batch-kérelmek módszerei    | X                     | X                     |
-| A teljes dokumentum hangulati pontszámai  | X                     | X                     |
-| Az egyéni mondatok hangulati pontszámai |                       | X                     |
-| Érzelmek címkézése                        |                       | X                     |
-| Modell verziószámozása                   |                       | X                     |
+### <a name="sentiment-scoring-and-labeling"></a>Érzelmek pontozása és címkézése
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+A (z) v3 Hangulatelemzés a szövegre, a mondatok és a dokumentumok szintjén visszaadott szövegre vonatkozik, és mindegyikhez megbízhatósági pontszám szükséges. 
 
-### <a name="sentiment-scoring"></a>Érzelmek pontozása
-
-Hangulatelemzés v3 a szövegeket az érzelmekkel kapcsolatos címkékkel osztályozza (lásd alább). A visszaadott pontszámok a modell megbízhatóságát jelentik, hogy a szöveg pozitív, negatív vagy semleges. A magasabb értékek nagyobb megbízhatóságot jelentenek. 
-
-### <a name="sentiment-labeling"></a>Érzelmek címkézése
-
-Hangulatelemzés v3 egy mondaton és a dokumentum szintjén (`positive`, `negative`, és `neutral`) a megbízhatósági pontszámokkal együtt visszaadja a hangulati címkéket. A `mixed` hangulat címkéje a dokumentum szintjén is visszaadható. 
-
-A dokumentum hangulatát a következők határozzák meg:
+A Címkék: `positive` , `negative` és `neutral` . A dokumentum szintjén a `mixed` hangulat felirat is visszaadható. A dokumentum hangulatát a következők határozzák meg:
 
 | Mondat hangulata                                                                            | Visszaadott dokumentum címkéje |
 |-----------------------------------------------------------------------------------------------|-------------------------|
-| Legalább egy `positive` mondat szerepel a dokumentumban. A mondatok további részei `neutral`. | `positive`              |
-| Legalább egy `negative` mondat szerepel a dokumentumban. A mondatok további részei `neutral`. | `negative`              |
+| Legalább egy `positive` mondat szerepel a dokumentumban. A mondatok további részei `neutral` . | `positive`              |
+| Legalább egy `negative` mondat szerepel a dokumentumban. A mondatok további részei `neutral` . | `negative`              |
 | Legalább egy `negative` mondat és legalább egy `positive` mondat szerepel a dokumentumban.    | `mixed`                 |
-| A dokumentumban szereplő összes mondat `neutral`.                                                  | `neutral`               |
+| A dokumentumban szereplő összes mondat `neutral` .                                                  | `neutral`               |
 
-### <a name="model-versioning"></a>Modell verziószámozása
+A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. Az egyes dokumentumokban vagy mondatokban szereplő megbízhatósági pontszámok akár 1-re is felvehetők.
 
-> [!NOTE]
-> A modell-verziószámozás az érzelmek elemzéséhez a verziótól `v3.0-preview.1`kezdve érhető el.
+### <a name="opinion-mining"></a>Vélemény bányászata
 
-[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezdődően érhető el. 1. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
 
-### <a name="example-c-code"></a>Példa C#-kódra
+Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például "a szoba nagyszerű volt, de a személyzet nem volt barátja", a kisegítő adatbányászat megkeresi a szövegben szereplő szempontokat, valamint a hozzájuk kapcsolódó véleményeket és érzelmeket:
 
-Olyan C#-alkalmazást talál, amely meghívja a Hangulatelemzés ezen verzióját a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs).
+| Aspektus | Véleményét    | Hangulat |
+|--------|------------|-----------|
+| szoba   | nagyszerű      | pozitív  |
+| személyzet  | nemkívánatos | negatív  |
 
-
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>Érzelmek pontozása
-
-Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
-
----
+Ha szeretné kivonni a kiértékelést az eredmények között, a megjelölést is fel kell vennie az `opinionMining=true` érzelmek elemzésére vonatkozó kérelembe. A vélemény adatbányászati eredményei szerepelni fognak az érzelmi elemzésre adott válaszban.
 
 ## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése 
 
@@ -103,28 +78,36 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 
 Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) vagy az API- **tesztelési konzolt** a következő hivatkozásokra kattintva gyorsan strukturálhatja és küldheti el. 
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-[Hangulatelemzés v3 – dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+[Hangulatelemzés v3 – dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-31-preview1"></a>[3,1-es verzió – előzetes verzió. 1](#tab/version-3-1)
 
-[Hangulatelemzés v2 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+[Hangulatelemzés v 3.1 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ---
+
+### <a name="request-endpoints"></a>Kérelmek végpontjai
 
 Állítsa be a HTTPS-végpontot az érzelmek elemzéséhez az Azure-ban vagy egy példányban létrehozott [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell adnia a használni kívánt verzió helyes URL-címét. Például:
 
 > [!NOTE]
 > Az Azure Portalon megtalálhatja Text Analytics erőforrásának kulcsát és végpontját. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés**területen találhatók. 
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-31-preview1"></a>[3,1-es verzió – előzetes verzió. 1](#tab/version-3-1)
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+
+A vélemény adatbányászati eredményeinek beszerzéséhez meg kell adnia a `opinionMining=true` paramétert. Például:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+
+Ez a paraméter alapértelmezés szerint be van állítva `false` . 
 
 ---
 
@@ -132,22 +115,17 @@ A Text Analytics API kulcsot tartalmazó kérelem fejlécének beállítása. A 
 
 ### <a name="example-sentiment-analysis-request"></a>Példa Hangulatelemzés kérelemre 
 
-A következő egy példa hangulatelemzésre beküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójával.
+A következő egy példa hangulatelemzésre beküldhető tartalomra. A kérelem formátuma megegyezik mindkét verzió esetében.
     
 ```json
 {
-    "documents": [
+  "documents": [
     {
-        "language": "en",
-        "id": "1",
-        "text": "Hello world. This is some input text that I love."
-    },
-    {
-        "language": "en",
-        "id": "2",
-        "text": "It's incredibly sunny outside! I'm so happy."
+      "language": "en",
+      "id": "1",
+      "text": "The restaurant had great food and our waiter was friendly."
     }
-    ],
+  ]
 }
 ```
 
@@ -160,15 +138,15 @@ A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen a
 
 ### <a name="view-the-results"></a>Eredmények megtekintése
 
-Az a hangulat-elemző a szöveget túlnyomórészt pozitívként vagy negatívként osztályozza. 0 és 1 közötti pontszámot rendel hozzá. A 0,5 közeli értékek semlegesek vagy határozatlanok. A 0,5-ös pontszám semlegességet jelez. Ha egy sztringet nem lehet elemezni az érzelmekkel kapcsolatban, vagy nincs hangulata, a pontszám mindig 0,5 pontosan. Ha például egy spanyol nyelvű sztringet ad meg angol nyelvi kóddal, a pontszám 0,5 lesz.
+Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők.
 
 A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információkért lásd: [eltolások feldolgozása](../concepts/text-offsets.md) .
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-### <a name="sentiment-analysis-v3-example-response"></a>Példa Hangulatelemzés v3-es válaszra
+### <a name="sentiment-analysis-v30-example-response"></a>Hangulatelemzés v 3.0-s példa válasz
 
-Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vonatkozó véleményeket és pontszámokat tartalmaznak. `documentScores`nem adja vissza, ha a dokumentum hangulati `mixed`címkéje.
+Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vonatkozó véleményeket és pontszámokat tartalmaznak.
 
 ```json
 {
@@ -176,86 +154,125 @@ Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vo
         {
             "id": "1",
             "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
-                    },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
             },
             "sentences": [
                 {
                     "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
                     },
                     "offset": 0,
-                    "length": 30
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
-                    },
-                    "offset": 31,
-                    "length": 13
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
                 }
-            ]
+            ],
+            "warnings": []
         }
     ],
-    "errors": []
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
-#### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
+#### <a name="version-31-preview1"></a>[3,1-es verzió – előzetes verzió. 1](#tab/version-3-1)
 
-### <a name="sentiment-analysis-v2-example-response"></a>Példa Hangulatelemzés v2 válaszra
+### <a name="sentiment-analysis-v31-example-response"></a>Példa Hangulatelemzés v 3.1-re – válasz
 
-A Hangulatelemzés v2 válaszai az egyes elküldött dokumentumokhoz tartozó hangulati pontszámokat tartalmaznak.
+A Hangulatelemzés v 3.1 az 3,0-es **verzióban** található Response objektumon kívül a vélemények kibővítését is biztosítja. Az alábbi válaszban az *étterem nagy élelmiszerekkel rendelkezett, és a várt* két aspektusa van: az *élelmiszer* és a *pincér*. Az egyes aspektusok `relations` tulajdonsága egy értéket tartalmaz, `ref` amelynek URI-hivatkozása a társított `documents` , `sentences` és `opinions` objektumokra vonatkozik.
 
 ```json
 {
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly.",
+                    "aspects": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 25,
+                            "length": 4,
+                            "text": "food",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/0"
+                                }
+                            ]
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 38,
+                            "length": 6,
+                            "text": "waiter",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/1"
+                                }
+                            ]
+                        }
+                    ],
+                    "opinions": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 19,
+                            "length": 5,
+                            "text": "great",
+                            "isNegated": false
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 49,
+                            "length": 8,
+                            "text": "friendly",
+                            "isNegated": false
+                        }
+                    ]
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
@@ -265,7 +282,7 @@ A Hangulatelemzés v2 válaszai az egyes elküldött dokumentumokhoz tartozó ha
 
 Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek elemzéséhez szükséges fogalmakat és munkafolyamatokat. Összegezve:
 
-+ A Hangulatelemzés két verzióban érhető el a kiválasztott nyelvekhez.
++ A Hangulatelemzés a kiválasztott nyelvekhez érhető el.
 + A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
 + A POST kérelem a `/sentiment` végponthoz egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak hangulati pontszámát tartalmazza, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t. Például: Excel és Power BI.

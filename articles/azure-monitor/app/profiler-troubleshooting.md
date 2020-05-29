@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640948"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148344"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
@@ -48,7 +48,7 @@ A Profiler nyomkövetési üzeneteket és egyéni eseményeket ír a Application
 * Győződjön meg arról, hogy az alkalmazás a .NET-keretrendszer 4,6-es verzióját futtatja.
 * Ha a webalkalmazás egy ASP.NET Core alkalmazás, legalább ASP.NET Core 2,0-at kell futtatnia.
 * Ha a megtekinteni kívánt adatmennyiség régebbi, mint néhány hétig, próbálja meg korlátozni az időszűrőt, és próbálkozzon újra. A Nyomkövetések hét nap után törlődnek.
-* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem https://gateway.azureserviceprofiler.nettiltotta le a hozzáférést a következőhöz:.
+* Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a hozzáférést a következőhöz: https://gateway.azureserviceprofiler.net .
 * A Profiler ingyenes vagy megosztott app Service-csomagok esetén nem támogatott. Ha ezen csomagok valamelyikét használja, próbálja meg az alapszintű csomagok és a Profiler használatának megkezdését.
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Dupla számlálás párhuzamos szálakban
@@ -87,7 +87,7 @@ A Profiler megfelelő működéséhez:
 
       ![Profiler-webjobs-log]
 
-Ha nem tudja kideríteni, hogy a Profiler miért nem működik Önnek, letöltheti a naplót, és elküldheti a serviceprofilerhelp@microsoft.comcsapatnak segítségért. 
+Ha nem tudja kideríteni, hogy a Profiler miért nem működik Önnek, letöltheti a naplót, és elküldheti a csapatnak segítségért serviceprofilerhelp@microsoft.com . 
     
 ### <a name="manual-installation"></a>Manuális telepítés
 
@@ -110,11 +110,11 @@ A Profiler konfigurálásakor a rendszer frissíti a webalkalmazás beállítás
 
 Jelenleg a Profilert legfeljebb négy Azure Web Apps és üzembe helyezési pont használatával engedélyezheti, amelyek ugyanabban a szolgáltatáscsomag futnak. Ha több mint négy, egy app Service-csomagban futó webalkalmazása van, a Profiler a *Microsoft. ServiceProfiler. kivétellistájára. TooManyETWSessionException*. A Profiler külön fut az egyes webalkalmazásokhoz, és megkísérli az egyes alkalmazások Windows esemény-nyomkövetés (ETW) munkamenetének indítását. Egyszerre azonban csak korlátozott számú ETW-munkamenet lehet aktív. Ha a Profiler webjobs túl sok aktív profilkészítési munkamenetet jelez, helyezzen át néhány webalkalmazást egy másik szolgáltatáscsomag.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Üzembe helyezési hiba: a könyvtár nem\\üres\\:\\Kezdőlap\\hely\\wwwroot App_Data feladatok
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Üzembe helyezési hiba: a könyvtár nem üres: \\ Kezdőlap \\ hely \\ wwwroot \\ App_Data \\ feladatok
 
 Ha a webalkalmazást egy olyan Web Apps erőforrásra telepíti újra, amelyen a Profiler engedélyezve van, akkor a következő üzenet jelenhet meg:
 
-*A könyvtár nem üres:\\Kezdőlap\\hely\\wwwroot\\App_Data\\feladatok*
+*A könyvtár nem üres: \\ Kezdőlap \\ hely \\ wwwroot \\ App_Data \\ feladatok*
 
 Ez a hiba akkor fordul elő, ha a web Deploy szkriptből vagy az Azure DevOps üzembe helyezési folyamatból futtatja. A megoldás a következő további központi telepítési paramétereket adja hozzá a web Deploy feladathoz:
 
@@ -128,7 +128,7 @@ Ezek a paraméterek törlik a Application Insights Profiler által használt map
 
 A Profiler folyamatos webjobs fut a webalkalmazásban. A webalkalmazás-erőforrást a [Azure Portalban](https://portal.azure.com)nyithatja meg. A **webjobs** ablaktáblán tekintse meg a **ApplicationInsightsProfiler**állapotát. Ha nem fut, nyissa meg a **naplókat** , hogy további információkat kapjon.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>A Profiler és a Azure Diagnostics problémáinak elhárítása
+## <a name="troubleshoot-vms-and-cloud-services"></a>Virtuális gépek és Cloud Services hibáinak megoldása
 
 >**A Profilerben szereplő hiba, amely a Cloud Services WAD-ban található.** A Cloud Services WAD (1.12.2.0) legújabb verziója az App ininsights SDK legújabb verzióival működik. A Cloud Service-gazdagépek automatikusan frissítik a WAD-t, de nem azonnal. A frissítés kényszerítéséhez újra üzembe helyezheti a szolgáltatást, vagy újraindíthatja a csomópontot.
 
@@ -141,27 +141,45 @@ Ha szeretné megtekinteni, hogy a Profiler megfelelően van-e konfigurálva a Az
 
 A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését:
 
-1. Jelentkezzen be a virtuális gépre (VM), majd nyissa meg a naplófájlt ezen a helyen. (A meghajtó lehet a c: vagy a d:, és a beépülő modul verziója eltérő lehet.)
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    vagy
+1. Jelentkezzen be a virtuális gépre (VM), majd nyissa meg a naplófájlt ezen a helyen. Előfordulhat, hogy a beépülő modul verziója újabb a gépen.
+    
+    Virtuális gépek esetén:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Cloud Services esetén:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. A fájlban megkeresheti a **WadCfg** karakterláncot, hogy megkeresse a virtuális gép számára átadott beállításokat a Azure Diagnostics konfigurálásához. Megtekintheti, hogy helyes-e a Profiler-fogadó által használt Rendszerállapotkulcsot.
 
-1. A Profiler elindításához használt parancssorban keresse meg a következőt:. A Profiler elindításához használt argumentumok a következő fájlban találhatók. (A meghajtó lehet c: vagy d:)
+1. A Profiler elindításához használt parancssorban keresse meg a következőt:. A Profiler elindításához használt argumentumok a következő fájlban találhatók. (A meghajtó lehet c: vagy d:, és a könyvtár rejtett lehet.)
 
+    Virtuális gépek esetén:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    Cloud Services esetén:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Ellenőrizze, hogy helyes-e a Rendszerállapotkulcsot a Profiler parancssorban. 
 
-1. Az előző *config. JSON* fájlban található elérési út használatával keresse meg a Profiler naplófájlját. Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+1. Az előző *config. JSON* fájlban található elérési út használatával keresse meg a Profiler-naplófájlt, az úgynevezett **BootstrapN. log**fájlt. Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+
+    A virtuális gépek esetében általában a fájl a következő:
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Cloud Services esetén:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     Ha a Profiler fut, miközben az alkalmazás fogadja a kérelmeket, a következő üzenet jelenik meg: a *rendszerállapotkulcsot által észlelt tevékenység*. 
 

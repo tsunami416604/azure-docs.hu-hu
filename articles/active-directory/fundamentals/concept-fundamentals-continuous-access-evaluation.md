@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112575"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148123"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -50,13 +50,13 @@ A jövőben reméljük, hogy további eseményeket fogunk hozzáadni, beleértve
 A folyamatos hozzáférés kiértékelése előtt az ügyfelek mindig megpróbálják visszajátszani a hozzáférési tokent a gyorsítótárból mindaddig, amíg nem járt le. A CAE-vel új esetet vezetünk be, hogy egy erőforrás-szolgáltató akkor is elutasíthatja a tokent, ha az nem járt le. Ahhoz, hogy tájékoztassa az ügyfeleket a gyorsítótár megkerüléséről annak ellenére, hogy a gyorsítótárazott tokenek nem jártak le, bevezetünk egy **jogcím-kihívás**nevű mechanizmust. A CAE-nek szüksége van egy ügyfél frissítésére a jogcím-kihívás megismerése érdekében. A következő alkalmazások legújabb verziója támogatja a jogcím kihívását:
 
 - Windows Outlook 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- IOS rendszerhez készült Outlook 
+- Outlook az Androidhoz 
+- Mac Outlook 
 - Windows rendszerű csapatok
-- Csapatok iOS 
-- Csapat Android 
-- Csapatok Mac 
+- IOS rendszerű csapatok 
+- Androidos csapatok 
+- Mac csapatok 
 
 ## <a name="token-lifetime"></a>Jogkivonat élettartama
 
@@ -93,6 +93,6 @@ Habár a célunk az, hogy a kényszerítés azonnali legyen, bizonyos esetekben 
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

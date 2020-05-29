@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835172"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148276"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -115,7 +115,6 @@ A frissítés központi telepítésének kiválasztásával további részleteke
 
 ![A telepítés futtatásának eredményei](./media/pre-post-scripts/deployment-run.png)
 
-es a szkriptben.
 
 ## <a name="stop-a-deployment"></a>Központi telepítés leállítása
 
@@ -243,6 +242,6 @@ $variable = Get-AutomationVariable -Name $runId
 > [!NOTE]
 > A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Update Management részleteiért lásd: [Az Azure-beli virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md).

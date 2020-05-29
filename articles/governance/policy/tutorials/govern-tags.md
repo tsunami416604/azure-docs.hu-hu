@@ -3,16 +3,16 @@ title: 'Oktatóanyag: a címke irányításának kezelése'
 description: Ebben az oktatóanyagban a Azure Policy módosításának hatása alapján létrehozhatja és érvényesítheti a címke irányítási modelljét az új és a meglévő erőforrásokon.
 ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759066"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142265"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
 
-A [címkék](../../../azure-resource-manager/management/tag-resources.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+A [címkék](../../../azure-resource-manager/management/tag-resources.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources).
 Függetlenül attól, hogy hogyan vagy miért használja a címkéket, fontos, hogy gyorsan hozzá lehessen adni, módosítani és eltávolítani ezeket a címkéket az Azure-erőforrásokon. Ha szeretné megtudni, hogy az Azure-erőforrás támogatja-e a címkézést, lásd: [támogatás](../../../azure-resource-manager/management/tag-support.md)címkézése.
 
 Azure Policy [módosításának](../concepts/effects.md#modify) hatása úgy van kialakítva, hogy segítse a címkék irányítását, függetlenül attól, hogy az erőforrás-szabályozás milyen szakaszában van. A **módosítás** a következőkhöz nyújt segítséget:
@@ -148,7 +148,7 @@ Az Azure-környezetben található minden környezethez szükség van egy [módo
 > [!NOTE]
 > Mivel ez a házirend-szabály egy erőforráscsoportot _céloz meg, a házirend_ -definícióban az "all" értéknek kell lennie az "indexelt" helyett.
 
-Ez a szabályzat csak az üzemi erőforrásokhoz használt minta elnevezési sémával rendelkező erőforráscsoportokat `prd-`felel meg. Az összetettebb elnevezési sémák több **egyeztetési** feltétellel is elérhetők, **mint** például ebben a példában.
+Ez a szabályzat csak az üzemi erőforrásokhoz használt minta elnevezési sémával rendelkező erőforráscsoportokat felel meg `prd-` . Az összetettebb elnevezési sémák több **egyeztetési** feltétellel is elérhetők, **mint** például ebben a példában.
 
 ### <a name="modify-resources-to-inherit-the-env-tag"></a>Erőforrások módosítása az ENV címke örökléséhez
 
@@ -194,7 +194,7 @@ Miután létrehozta a fenti címkézési szabályzatokat, csatlakoztassa azokat 
 
 A [deployIfNotExists](../concepts/effects.md#deployifnotexists) -szabályzatokhoz hasonlóan a **módosítási** házirend szervizelési feladatokat használ a meglévő nem megfelelő erőforrások módosításához. Kövesse az [erőforrások szervizelésének](../how-to/remediate-resources.md) utasításait a nem megfelelő erőforrás- **módosítási** erőforrások azonosításához, és javítsa ki a címkéket a definiált besorolásban.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett az oktatóanyag erőforrásainak használatával, a következő lépésekkel törölheti a fent létrehozott hozzárendeléseket vagy definíciókat:
 
@@ -213,7 +213,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > - Minden követelmény leképezve egy házirend-definícióba
 > - A címkézési házirendek csoportosítása egy kezdeményezésbe
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

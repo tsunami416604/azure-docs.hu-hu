@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 59f969a920c30bb017e10d2aa233df02d69918e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 482e1bfe14181a59b744efd794a5636a442ce9a4
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116909"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141942"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
@@ -27,6 +27,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
 - Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy Azure Storage-fiókban.
+
+> [!NOTE]
+> Ez a rövid útmutató az URL-cím által elért távoli dokumentumokat használja. Ha inkább helyi fájlokat szeretne használni, tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -552,7 +555,7 @@ Esetenként, ha ugyanazon a sorban eltérő címkéket alkalmaz, a szolgáltatá
 
 Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek számára, és a jövőben is dolgozunk. Jelenleg azt javasoljuk, hogy a felhasználók több zsúfolt mezőt is felcímkéznek egyetlen mezőként, majd elkülönítsék a feltételeket a kinyerési eredmények utólagos feldolgozásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az API-referenciák dokumentációját, amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
 

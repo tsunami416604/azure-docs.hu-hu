@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021398"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147943"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -178,7 +178,7 @@ Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
 A formátumok memória-lábnyomai a következők:
 
-| Formátum | Leírás | Bájt/:::no-loc text="vertex"::: |
+| Formátum | Description | Bájt/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
 |16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
@@ -202,6 +202,51 @@ Tegyük fel, hogy van egy photogrammetry-modellje, amely a textúrákba besütö
 Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is létrehozhatja, és felhasználhatja `normal` `tangent` `binormal` azokat. Következésképpen a vertex memóriahasználat `position` (12 bájt) + `texcoord0` (8 bájt) + (4 bájt) + (4 bájt) + ( `normal` 4 bájt `tangent` `binormal` ) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió olyan :::no-loc text="vertices"::: modellt eredményeznek, amely akár több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
 
 Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és annak ismerete, hogy az összes textúra koordinátái a `[0; 1]` tartományon belül vannak megadva `normal` `tangent` `binormal` `NONE` `texcoord0` `16_16_FLOAT` :::no-loc text="vertex"::: A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
+
+## <a name="memory-optimizations"></a>Memória optimalizálása
+
+A betöltött tartalom memóriájának felhasználása szűk keresztmetszetet jelenthet a renderelési rendszeren. Ha a memória hasznos tartalma túl nagy lesz, akkor veszélyeztetheti a renderelési teljesítményt, vagy ha a modell nem töltődik be együtt. Ez a bekezdés néhány fontos stratégiát tárgyal a memória helyigényének csökkentése érdekében.
+
+### <a name="instancing"></a>Egypéldányos
+
+A egypéldányos olyan fogalom, amelyben a rácsvonalak a különböző térbeli átalakításokkal rendelkező részek számára újra használatban vannak, nem pedig a saját egyedi geometriára hivatkozó összes részre. A egypéldányos jelentős hatással van a memória lábnyomára.
+Példa egypéldányos az építészeti modellben lévő motor-modellekben vagy székeknél használt használati esetek.
+
+> [!NOTE]
+> A egypéldányos jelentősen növelheti a memória-használatot (és így a betöltési időt), azonban a renderelési teljesítmény oldalának továbbfejlesztései nem jelentősek.
+
+A konverziós szolgáltatás tiszteletben tartja a egypéldányos, ha a részek ennek megfelelően vannak megjelölve a forrásfájlban. A konverzió azonban nem végez további mély elemzést a rácsvonalak adatairól az újrafelhasználható részek azonosítására. Így a tartalom-létrehozási eszköz és az exportálási folyamat a megfelelő egypéldányos-telepítés döntő feltételei.
+
+Egy egyszerű módszer annak tesztelésére, hogy a egypéldányos adatai megmaradnak-e az átalakítás során, hogy megtekintse a [kimeneti statisztikát](get-information.md#example-info-file), konkrétan a `numMeshPartsInstanced` tagot. Ha a értéke `numMeshPartsInstanced` nagyobb nullánál, akkor azt jelzi, hogy a rácsvonalak több példány között vannak elosztva.
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>Példa: egypéldányos-telepítő a 3ds Max-ban
+
+Az [Autodesk 3ds Max](https://www.autodesk.de/products/3ds-max) különböző objektum-klónozási módokat (ún **`Copy`** .) tartalmaz, **`Instance`** **`Reference`** amelyek eltérően működnek az exportált fájlban lévő egypéldányos kapcsolatban `.fbx` .
+
+![Klónozás a 3ds Max-ban](./media/3dsmax-clone-object.png)
+
+* **`Copy`**: Ebben a módban a rácsvonal klónozása megtörténik, ezért a rendszer nem használ egypéldányos ( `numMeshPartsInstanced` = 0).
+* **`Instance`**: A két objektum ugyanazt a hálót használja, ezért a rendszer egypéldányos használ ( `numMeshPartsInstanced` = 1).
+* **`Reference`**: A geometriák esetében különálló módosítók alkalmazhatók, így az exportőr konzervatív megközelítést választ, és nem használja a egypéldányos ( `numMeshPartsInstanced` = 0).
+
+
+### <a name="depth-based-composition-mode"></a>Mélység-alapú kompozíció mód
+
+Ha a memória aggodalomra ad okot, konfigurálja a renderelést a [mélység-alapú kompozíciós móddal](../../concepts/rendering-modes.md#depthbasedcomposition-mode). Ebben a módban a GPU hasznos adatai több GPU-ban oszlanak el.
+
+### <a name="decrease-vertex-size"></a>Csúcspont méretének csökkentése
+
+Az [összetevők formátumának változásai](configure-model-conversion.md#best-practices-for-component-format-changes) című szakaszban ismertetett eljárás szerint a csúcspont formátumának módosítása csökkentheti a memória helyigényét. Ez a beállítás azonban a legvégső megoldás.
+
+### <a name="texture-sizes"></a>Textúra mérete
+
+A forgatókönyv típusától függően a textúra-adatmennyiség meghaladhatja a rácsvonalak esetében felhasznált memóriát. A photogrammetry modellek jelöltek.
+Az átalakítás konfigurációja nem teszi lehetővé a textúrák automatikus méretezését. Ha szükséges, a textúra skálázást ügyféloldali előzetes feldolgozási lépésként kell elvégezni. Az átalakítási lépés a megfelelő [textúra tömörítési formátumának](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)kiválasztása:
+
+* `BC1`átlátszatlan színes textúrák esetén
+* `BC7`a forrás színtextúrák alfa-csatornával
+
+Mivel a formátum `BC7` kétszer is megtelt a memória-lábnyomhoz képest `BC1` , fontos, hogy a bemeneti textúrák ne nyújtsanak szükségtelen alfa-csatornát.
 
 ## <a name="typical-use-cases"></a>Jellemző használati esetek
 
@@ -234,7 +279,7 @@ Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel
 * A Ray-öntvények általában az alkalmazás szerves részét képezik, ezért az ütközési hálókat kell létrehozni.
 * A kivágott síkok jobban kitűnnek a `opaqueMaterialDefaultSidedness` jelzővel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](model-conversion.md)
 * [Színes anyagok](../../overview/features/color-materials.md)

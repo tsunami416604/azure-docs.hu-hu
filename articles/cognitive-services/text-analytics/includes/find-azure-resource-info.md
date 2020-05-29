@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: 8887a68b0e1170f98e740c4c813b2c2662f950af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 46f3d3d016893e9f2344e729225e266b086da148
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77912639"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140719"
 ---
 > [!IMPORTANT]
-> Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott Text Analytics erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés**területen találhatók. Ezután cserélje le az alábbi kódban szereplő karakterláncokat a kulcsra és a végpontra. 
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Text Analytics erőforrás sikeresen telepítve van, kattintson az **Ugrás erőforrásra** gombra a **következő lépések**alatt. A kulcsot és a végpontot az erőforrás- **kezelés**területen, az erőforrás **kulcs és végpont** lapján találja. 
 >
 > Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Például az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

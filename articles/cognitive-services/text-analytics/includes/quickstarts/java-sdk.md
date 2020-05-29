@@ -9,24 +9,24 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 31afb7bc00250887841adccc8c3cc4dc69462d55
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bd070300427716634d786e685cfe1cf8e45a246c
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81642885"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140721"
 ---
 <a name="HOLTop"></a>
 
-[Útmutató a dokumentáció](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | -[csomagjának](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) | [mintái](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Dokumentáció](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Csomag](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4)  |  [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) a 8-as vagy újabb verzióval
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="hozzon"  target="_blank">létre egy Text Analytics erőforrást, és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez.  Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hozzon létre egy Text Analytics erőforrást, "  target="_blank"> és hozzon létre egy Text Analytics-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez.  Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Text Analytics APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
-    * Az ingyenes díjszabási csomag (`F0`) segítségével kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
+    * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -39,7 +39,7 @@ Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejleszté
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.4</version>
+        <version>1.0.0-beta.5</version>
     </dependency>
 </dependencies>
 ```
@@ -47,7 +47,7 @@ Hozzon létre egy Maven-projektet az előnyben részesített IDE-vagy fejleszté
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
 
-Hozzon létre egy nevű `TextAnalyticsSamples.java`Java-fájlt. Nyissa meg a fájlt, és `import` adja hozzá a következő utasításokat:
+Hozzon létre egy nevű Java-fájlt `TextAnalyticsSamples.java` . Nyissa meg a fájlt, és adja hozzá a következő `import` utasításokat:
 
 ```java
 import com.azure.core.credential.AzureKeyCredential;
@@ -102,17 +102,17 @@ Hozzon létre egy metódust az `TextAnalyticsClient` objektum létrehozásához 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
     return new TextAnalyticsClientBuilder()
-        .apiKey(new AzureKeyCredential(key))
+        .credential(new AzureKeyCredential(key))
         .endpoint(endpoint)
         .buildClient();
 }
 ```
 
-A program metódusában `main()` hívja meg a hitelesítési módszert az ügyfél létrehozásához.
+A program `main()` metódusában hívja meg a hitelesítési módszert az ügyfél létrehozásához.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-Hozzon létre egy nevű `sentimentAnalysisExample()` új függvényt, amely a korábban létrehozott ügyfelet veszi át `analyzeSentiment()` , és hívja meg a függvényt. A visszaadott `AnalyzeSentimentResult` objektum fogja `documentSentiment` tartalmazni, és `sentenceSentiments` ha ez `errorMessage` sikeres, vagy ha nem. 
+Hozzon létre egy nevű új függvényt `sentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `analyzeSentiment()` függvényt. A visszaadott `AnalyzeSentimentResult` objektum fogja tartalmazni, `documentSentiment` és `sentenceSentiments` Ha ez sikeres, vagy `errorMessage` Ha nem. 
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -135,8 +135,8 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
             sentenceSentiment.getConfidenceScores().getPositive(),
             sentenceSentiment.getConfidenceScores().getNeutral(),
             sentenceSentiment.getConfidenceScores().getNegative());
+        }
     }
-}
 ```
 
 ### <a name="output"></a>Kimenet
@@ -149,10 +149,10 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-Hozzon létre egy nevű `detectLanguageExample()` új függvényt, amely a korábban létrehozott ügyfelet veszi át `detectLanguage()` , és hívja meg a függvényt. A visszaadott `DetectLanguageResult` objektum tartalmazni fog egy elsődleges nyelvet, amely a sikeres, illetve `errorMessage` ha nem, más nyelvek listáját észlelte.
+Hozzon létre egy nevű új függvényt `detectLanguageExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `detectLanguage()` függvényt. A visszaadott `DetectLanguageResult` objektum tartalmazni fog egy elsődleges nyelvet, amely a sikeres, illetve ha nem, más nyelvek listáját észlelte `errorMessage` .
 
 > [!Tip]
-> Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter használatával kétbetűs országkód adható meg. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre `countryHint = ""`állítja. Másik alapértelmezett érték beállításához állítsa be a `TextAnalyticsClientOptions.DefaultCountryHint` tulajdonságot, és adja át azt az ügyfél inicializálása során.
+> Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján. A `countryHint` paraméter használatával kétbetűs országkód adható meg. Alapértelmezés szerint az API az "USA"-t használja alapértelmezett countryHintként, hogy eltávolítsa ezt a paramétert úgy, hogy ezt az értéket üres sztringre állítja `countryHint = ""` . Másik alapértelmezett érték beállításához állítsa be a `TextAnalyticsClientOptions.DefaultCountryHint` tulajdonságot, és adja át azt az ügyfél inicializálása során.
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -164,7 +164,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
     System.out.printf("Detected primary language: %s, ISO 6391 name: %s, score: %.2f.%n",
         detectedLanguage.getName(),
         detectedLanguage.getIso6391Name(),
-        detectedLanguage.getScore());
+        detectedLanguage.getConfidenceScore());
 }
 ```
 
@@ -176,11 +176,11 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
 > [!NOTE]
-> A verzióban `3.0-preview`:
+> A verzióban `3.0` :
 > * A tájékoztató külön módszereket tartalmaz a személyes adatok észlelésére. 
 > * Az entitások összekapcsolása egy külön kérelem, mint a kapcsolatfelvétel.
 
-Hozzon létre egy nevű `recognizeEntitiesExample()` új függvényt, amely a korábban létrehozott ügyfelet veszi át `recognizeEntities()` , és hívja meg a függvényt. A visszaadott `RecognizeEntitiesResult` objektum tartalmazni fog egy `NamedEntity` listát, ha a sikeres `errorMessage` , vagy ha nem.
+Hozzon létre egy nevű új függvényt `recognizeEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeEntities()` függvényt. A visszaadott `RecognizeEntitiesResult` objektum tartalmazni fog egy listát, `NamedEntity` Ha a sikeres, vagy `errorMessage` Ha nem.
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -193,7 +193,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
             "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
             entity.getText(),
             entity.getCategory(),
-            entity.getSubCategory(),
+            entity.getSubcategory(),
             entity.getConfidenceScore());
     }
 }
@@ -202,36 +202,37 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Kimenet
 
 ```console
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
+Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.82.
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
 ## <a name="entity-linking"></a>Entitás összekapcsolása
 
-Hozzon létre egy nevű `recognizeLinkedEntitiesExample()` új függvényt, amely a korábban létrehozott ügyfelet veszi át `recognizeLinkedEntities()` , és hívja meg a függvényt. A visszaadott `RecognizeLinkedEntitiesResult` objektum tartalmazni fog egy `LinkedEntity` listát, ha a sikeres `errorMessage` , vagy ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az azonos entitások előfordulásainak az `LinkedEntity` `LinkedEntityMatch` objektumok listáján vannak csoportosítva.
+Hozzon létre egy nevű új függvényt `recognizeLinkedEntitiesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `recognizeLinkedEntities()` függvényt. A visszaadott `RecognizeLinkedEntitiesResult` objektum tartalmazni fog egy listát, `LinkedEntity` Ha a sikeres, vagy `errorMessage` Ha nem. Mivel a csatolt entitások egyedi módon vannak azonosítva, az azonos entitások előfordulásainak az `LinkedEntity` objektumok listáján vannak csoportosítva `LinkedEntityMatch` .
 
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 {
     // The text that need be analyzed.
     String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-            "to develop and sell BASIC interpreters for the Altair 8800. " +
-            "During his career at Microsoft, Gates held the positions of chairman, " +
-            "chief executive officer, president and chief software architect, " +
-            "while also being the largest individual shareholder until May 2014.";
+        "to develop and sell BASIC interpreters for the Altair 8800. " +
+        "During his career at Microsoft, Gates held the positions of chairman, " +
+        "chief executive officer, president and chief software architect, " +
+        "while also being the largest individual shareholder until May 2014.";
 
     System.out.printf("Linked Entities:%n");
     for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-                linkedEntity.getName(),
-                linkedEntity.getDataSourceEntityId(),
-                linkedEntity.getUrl(),
-                linkedEntity.getDataSource());
+            linkedEntity.getName(),
+            linkedEntity.getDataSourceEntityId(),
+            linkedEntity.getUrl(),
+            linkedEntity.getDataSource());
         System.out.printf("Matches:%n");
-        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
+        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
             System.out.printf("Text: %s, Score: %.2f%n",
-                    linkedEntityMatch.getText(),
-                    linkedEntityMatch.getConfidenceScore());
+            linkedEntityMatch.getText(),
+            linkedEntityMatch.getConfidenceScore());
         }
     }
 }
@@ -243,28 +244,28 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
 Matches:
-Text: Altair 8800, Score: 0.78
+Text: Altair 8800, Score: 0.88
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
 Matches:
-Text: Bill Gates, Score: 0.55
-Text: Gates, Score: 0.55
+Text: Bill Gates, Score: 0.63
+Text: Gates, Score: 0.63
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
 Matches:
-Text: Paul Allen, Score: 0.53
+Text: Paul Allen, Score: 0.60
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
 Matches:
-Text: Microsoft, Score: 0.47
-Text: Microsoft, Score: 0.47
+Text: Microsoft, Score: 0.55
+Text: Microsoft, Score: 0.55
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
 Matches:
-Text: April 4, Score: 0.25
+Text: April 4, Score: 0.32
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
 Matches:
-Text: BASIC, Score: 0.28
+Text: BASIC, Score: 0.33
 ```
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-Hozzon létre egy nevű `extractKeyPhrasesExample()` új függvényt, amely a korábban létrehozott ügyfelet veszi át `extractKeyPhrases()` , és hívja meg a függvényt. A visszaadott `ExtractKeyPhraseResult` objektum a kulcsfontosságú kifejezések listáját tartalmazza, ha a művelet sikeres, `errorMessage` vagy ha nem.
+Hozzon létre egy nevű új függvényt `extractKeyPhrasesExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `extractKeyPhrases()` függvényt. A visszaadott `ExtractKeyPhraseResult` objektum a kulcsfontosságú kifejezések listáját tartalmazza, ha a művelet sikeres, vagy `errorMessage` Ha nem.
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)

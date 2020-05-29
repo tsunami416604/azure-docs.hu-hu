@@ -3,12 +3,12 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017535"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147970"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -34,8 +34,6 @@ A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkci�
 
 * A [VNET/Azure Storage-tűzfalak](https://docs.microsoft.com/azure/storage/common/storage-network-security) használata az Azure Blob Storage szolgáltatással együtt.
 
-* Nem módosítható [tároló](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) az Azure Blob Storage-hoz.
-
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>Folyamatos exportálás létrehozása
@@ -60,7 +58,7 @@ A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 
 Az első exportálás befejezése után a következőhöz hasonló struktúra található az Azure Blob Storage-tárolóban: (ez a gyűjtött adatoktól függően változhat.)
 
-|Name | Leírás |
+|Name | Description |
 |:----|:------|
 | [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Esemény](export-data-model.md#events) | A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események. 

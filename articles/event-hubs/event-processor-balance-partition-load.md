@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2020
+ms.date: 05/28/2020
 ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628861"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147868"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partíciók terhelésének elosztása az alkalmazás több példánya között
 Az Event Processing-alkalmazás méretezéséhez az alkalmazás több példánya is futtatható, és saját maguk is elérhetik a terhelést. A régebbi verziókban a [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya közötti terhelés elosztását és az ellenőrzőpont-események fogadását. Az újabb verziókban (5,0-ig) a **EventProcessorClient** (.net és Java) vagy a **EventHubConsumerClient** (Python és JavaScript) is lehetővé teszi ugyanezt. A fejlesztési modellt az események használatával egyszerűbbé teszik. Előfizet az Önt érdeklő eseményekre egy eseménykezelő regisztrálásával.
@@ -44,7 +44,7 @@ A fogyasztó elosztott környezetben történő tervezésekor a forgatókönyvne
 
 ## <a name="event-processor-or-consumer-client"></a>Event processzor vagy fogyasztói ügyfél
 
-A követelmények teljesítéséhez nem kell saját megoldást létrehoznia. Az Azure Event Hubs SDK-k biztosítják ezt a funkciót. .NET-vagy Java SDK-k esetén az EventHubConsumerClient-t használja a EventProcessorClient, valamint a Python-és Java-parancsfájlok SDK-ban. Az SDK régi verziójában ez volt az a funkciókat támogató EventProcessorHost-gazda.
+A követelmények teljesítéséhez nem kell saját megoldást létrehoznia. Az Azure Event Hubs SDK-k biztosítják ezt a funkciót. .NET-vagy Java SDK-k esetén az EventHubConsumerClient-t használja a EventProcessorClient, a Pythonban és a JavaScript SDK-ban. Az SDK régi verziójában ez volt az a funkciókat támogató EventProcessorHost-gazda.
 
 Az éles környezetek többsége számára azt javasoljuk, hogy az Event Processor-ügyfelet az események olvasására és feldolgozására használja. A processzor-ügyfél hatékony élményt biztosít az Event hub összes partícióján lévő események teljesítménybeli és hibatűrő módon történő feldolgozásához, miközben a folyamat előrehaladását is lehetővé teszi. Az Event Processor-ügyfelek az adott Event hub felhasználói csoportjainak kontextusában is képesek együttműködni. Az ügyfelek automatikusan kezelik a munka eloszlását és kiegyensúlyozását, mivel a példányok elérhetővé válnak, vagy nem lesznek elérhetők a csoport számára.
 
@@ -54,7 +54,7 @@ Egy esemény-feldolgozó példány általában egy vagy több partícióról sz�
 
 Minden eseményvezérelt processzor egyedi azonosítót kap, és a partíciók tulajdonjogát egy ellenőrzőpont-tárolóban lévő bejegyzés hozzáadásával vagy frissítésével állítja be. Az összes Event Processor-példány rendszeresen kommunikál a tárolóval, hogy frissítse a saját feldolgozási állapotát, valamint az egyéb aktív példányok megismerését. Ezt követően a rendszer az aktív processzorok közötti terhelés elosztására használja fel ezeket az adatkészleteket. Az új példányok a felskálázáshoz csatlakozhatnak a feldolgozó készlethez. Ha a példányok leállnak, a meghibásodások vagy a vertikális leskálázás miatt, a partíciók tulajdonjoga szabályosan átkerül más aktív processzorokra.
 
-Az ellenőrzőpont-tárolóban található partíciós tulajdonosi rekordok nyomon követik Event Hubs névteret, az Event hub nevét, a fogyasztói csoportot, az eseményvezérelt processzor azonosítóját (más néven tulajdonost), a partíció azonosítóját és az utolsó módosítás időpontját.
+Az ellenőrzőpont-tárolóban található partíciós tulajdonosi rekordok nyomon követhetik Event Hubs névteret, az Event hub nevét, a fogyasztói csoportot, az eseményvezérelt processzor azonosítóját (más néven tulajdonost), a partíció AZONOSÍTÓját és az utolsó módosítás időpontját.
 
 
 
@@ -92,9 +92,9 @@ Ha az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére ha
 
 ## <a name="thread-safety-and-processor-instances"></a>A szál biztonsági és processzor-példányai
 
-Alapértelmezés szerint az eseményvezérelt processzor vagy a fogyasztó a szál biztonságos, és szinkron módon viselkedik. Amikor az események megérkeznek egy partícióra, a rendszer az eseményeket feldolgozó függvényt hívja meg. A függvény további üzenetei és hívásai a jelenetek mögött, az üzenet-szivattyú pedig továbbra is a háttérben futnak a többi szálon. Ez a szál biztonsága megszünteti a szál-biztonságos gyűjtemények szükségességét, és jelentősen növeli a teljesítményt.
+Alapértelmezés szerint az eseményeket feldolgozó függvényt a rendszer szekvenciálisan egy adott partícióra hívja. Az ezt a függvényt érintő további események és hívások ugyanabból a partíciós várólistából a háttérben, ahogy az esemény-szivattyú továbbra is fut a háttérben a többi szálon. Vegye figyelembe, hogy a különböző partíciók eseményei egyszerre is feldolgozhatók, és a partíciók között elérhető megosztott állapotokat szinkronizálni kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg az alábbi rövid útmutatókat:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)

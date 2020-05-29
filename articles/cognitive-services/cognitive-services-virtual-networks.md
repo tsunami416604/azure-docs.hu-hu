@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588339"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148089"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatok konfigurálása
 
@@ -485,7 +485,69 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="use-private-endpoints"></a>Privát végpontok használata
+
+A Cognitive Services erőforrásaihoz [saját végpontokat](../private-link/private-endpoint-overview.md) is használhat, amelyek lehetővé teszik, hogy a virtuális hálózat (VNet) ügyfelei biztonságosan hozzáférjenek az [adatkapcsolatokhoz](../private-link/private-link-overview.md). A privát végpont IP-címet használ a Cognitive Services erőforráshoz tartozó VNet. A VNet lévő ügyfelek és az erőforrás közötti hálózati forgalom áthalad a VNet és a Microsoft gerinc hálózatán lévő privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget.
+
+A Cognitive Services erőforrásokhoz tartozó magánhálózati végpontok a következőket teszik lehetővé:
+
+- A Cognitive Services-erőforrás biztonságossá tételéhez konfigurálja a tűzfalat úgy, hogy az Cognitive Services szolgáltatás nyilvános végpontján lévő összes kapcsolatot letiltsa.
+- A VNet biztonságának fokozása azáltal, hogy letiltja a VNet kiszűrése adatait.
+- Biztonságosan csatlakozhat Cognitive Services erőforrásokhoz olyan helyszíni hálózatokból, amelyek VPN-vagy [Expressroute](../expressroute/expressroute-locations.md) [-](../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a VNet.
+
+### <a name="conceptual-overview"></a>Fogalmi áttekintés
+
+A privát végpontok egy speciális hálózati adapterek a [VNet](../virtual-network/virtual-networks-overview.md)található Azure-szolgáltatásokhoz. Amikor létrehoz egy privát végpontot a Cognitive Services erőforráshoz, biztonságos kapcsolatot biztosít a VNet található ügyfelek és az erőforrás között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a Cognitive Services szolgáltatás közötti kapcsolat biztonságos privát hivatkozást használ.
+
+A VNet lévő alkalmazások zökkenőmentesen kapcsolódhatnak a szolgáltatáshoz a magánhálózati végponton keresztül, ugyanazokkal a kapcsolati karakterláncokkal és engedélyezési mechanizmusokkal, amelyeket egyébként használni fognak. A kivétel a beszédfelismerési szolgáltatás, amelyhez külön végpont szükséges. Tekintse meg a [saját végpontok című szakaszt a Speech Service](#private-endpoints-with-the-speech-service)-ben. A magánhálózati végpontok a Cognitive Services erőforrás által támogatott összes protokollal használhatók, beleértve a REST-et is.
+
+A magánhálózati végpontok olyan alhálózatokban hozhatók létre, amelyek [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)használnak. Az alhálózaton lévő ügyfelek privát végponton keresztül csatlakozhatnak egy Cognitive Services erőforráshoz, míg más szolgáltatás-végpontok használatával is hozzáférhetnek.
+
+Ha a VNet egy Cognitive Services-erőforráshoz hoz létre privát végpontot, a rendszer jóváhagyásra vonatkozó kérést küld a Cognitive Services erőforrás-tulajdonosnak. Ha a privát végpont létrehozását kérő felhasználó az erőforrás tulajdonosa is, akkor a rendszer ezt a jóváhagyási kérést automatikusan jóváhagyja.
+
+Cognitive Services erőforrás-tulajdonosok kezelhetik a belefoglalt kérelmeket és a privát végpontokat a [Azure Portal](https://portal.azure.com)Cognitive Services erőforrásának "*privát végpontok*" lapján.
+
+### <a name="private-endpoints"></a>Privát végpontok
+
+A magánhálózati végpont létrehozásakor meg kell adnia azt a Cognitive Services erőforrást, amelyhez csatlakozik. A privát végpontok létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+- [Privát végpont létrehozása a Azure Portal privát kapcsolati központjának használatával](../private-link/create-private-endpoint-portal.md)
+- [Privát végpont létrehozása az Azure CLI-vel](../private-link/create-private-endpoint-cli.md)
+- [Privát végpont létrehozása Azure PowerShell használatával](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Csatlakozás privát végpontokhoz
+
+A privát végpontot használó VNet lévő ügyfeleknek ugyanazt a kapcsolati karakterláncot kell használniuk a Cognitive Services erőforráshoz, mint a nyilvános végponthoz csatlakozó ügyfelek. A kivétel a beszédfelismerési szolgáltatás, amelyhez külön végpont szükséges. Tekintse meg a [saját végpontok című szakaszt a Speech Service](#private-endpoints-with-the-speech-service)-ben. A DNS-feloldási szolgáltatás arra támaszkodik, hogy automatikusan átirányítja a kapcsolatokat a VNet a Cognitive Services erőforráshoz egy privát kapcsolaton keresztül. A beszédfelismerési szolgáltatás 
+
+A VNet csatolt [saját DNS-zónát](../dns/private-dns-overview.md) hozunk létre a privát végpontokhoz szükséges frissítésekkel, alapértelmezés szerint. Ha azonban a saját DNS-kiszolgálóját használja, előfordulhat, hogy további módosításokat kell végeznie a DNS-konfigurációban. Az alábbi [DNS-változások](#dns-changes-for-private-endpoints) című szakasz a privát végpontokhoz szükséges frissítéseket ismerteti.
+
+### <a name="private-endpoints-with-the-speech-service"></a>Privát végpontok a beszédfelismerési szolgáltatással
+
+Ha privát végpontokat használ a beszédfelismerési szolgáltatással, egyéni végpontot kell használnia a Speech Service API meghívásához. A globális végpontot nem használhatja. Használjon {Account} formátumú végpontot. {STT | TTS | hang | DLS}. Speech. microsoft. com.
+
+### <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
+
+Privát végpont létrehozásakor a rendszer a Cognitive Services erőforráshoz tartozó DNS CNAME erőforrásrekordot a "*privatelink*" előtaggal rendelkező altartományban lévő aliasra frissíti. Alapértelmezés szerint a "*privatelink*" altartománynak megfelelő [privát DNS-zónát](../dns/private-dns-overview.md)is létrehozunk, a DNS a saját végpontokhoz tartozó erőforrásrekordokat.
+
+Ha a végponti URL-címet a VNet kívülről a privát végpontra oldja fel, a rendszer a Cognitive Services erőforrás nyilvános végpontját oldja fel. A privát végpontot futtató VNet feloldva a végpont URL-címe feloldódik a magánhálózati végpont IP-címére.
+
+Ez a megközelítés lehetővé teszi a Cognitive Services erőforrás elérését ugyanazzal a kapcsolati karakterlánccal, mint a privát végpontokat üzemeltető VNet lévő ügyfelekre, valamint a VNet kívüli ügyfelekre.
+
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük feloldani a Cognitive Services erőforrás-végpont teljes tartománynevét (FQDN) a magánhálózati végpont IP-címére. A DNS-kiszolgálót úgy kell konfigurálni, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához.
+
+> [!TIP]
+> Ha egyéni vagy helyszíni DNS-kiszolgálót használ, a DNS-kiszolgálót úgy kell konfigurálnia, hogy az "privatelink" altartományban lévő Cognitive Services erőforrás nevét feloldja a magánhálózati végpont IP-címére. Ezt úgy teheti meg, hogy delegálja a "privatelink" altartományt a VNet magánhálózati DNS-zónájába, vagy konfigurálja a DNS-zónát a DNS-kiszolgálón, és hozzáadja a DNS-rekordot.
+
+A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+- [Azure virtuális hálózatokon található erőforrások névfeloldása](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [A magánhálózati végpontok DNS-konfigurációja](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>Díjszabás
+
+A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
+
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

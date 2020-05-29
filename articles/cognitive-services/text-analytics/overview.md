@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395734"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141857"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -86,9 +86,9 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Az akt
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5 120 karakter, a következőképpen [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)mérve:. |
+| Az egyes dokumentumok maximális mérete | 5 120 karakter, a következőképpen mérve: [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
 | Teljes kérés maximális mérete | 1 MB |
-| Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
+| Egy kérésbe foglalt dokumentumok maximális száma | Legfeljebb 1 000 dokumentum ([az egyes szolgáltatások esetében változó](concepts/data-limits.md)) |
 
 A díjszabási korlátja az Ön díjszabási szintjétől függ.
 
@@ -105,9 +105,9 @@ A kérelmeket külön kell mérni az egyes Text Analytics szolgáltatásokhoz. E
 
 ## <a name="unicode-encoding"></a>Unicode-kódolás
 
-A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha a karakterek [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
+A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 
