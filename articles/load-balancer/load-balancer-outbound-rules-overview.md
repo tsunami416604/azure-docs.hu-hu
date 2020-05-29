@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6c7464eb1bf51a4e42d0db98d92459dc39fbb11
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304191"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170817"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer kimenő szabályok
 
@@ -42,7 +42,7 @@ A kimenő szabályok kibővítik a [2. forgatókönyvet](load-balancer-outbound-
 
 Az összes Load Balancer-szabályhoz hasonlóan a kimenő szabályok ugyanazt a szintaxist követik, mint a terheléselosztás és a bejövő NAT-szabályok:
 
-**frontend**előtér-**Paraméterek** + **háttér-készlete**  + 
+előtér- **felület**  +  **Paraméterek**  +  **háttér-készlet**
 
 Egy kimenő szabály konfigurálja a kimenő NAT-t a _háttér-készlet által azonosított összes virtuális gép_ számára, hogy a rendszer lefordítsa a _felületet_.  A és a _Paraméterek_ további részletes szabályozást biztosítanak a kimenő NAT-algoritmushoz képest.
 
@@ -66,7 +66,7 @@ Az "2018-07-01" API-verzió lehetővé teszi, hogy a kimenő szabályok definíc
 
 ### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Kimenő NAT méretezése több IP-címmel
 
-Míg egy kimenő szabály csak egyetlen nyilvános IP-címmel használható, a kimenő szabályok megkönnyítik a kimenő NAT skálázásának konfigurációs terhelését. Több IP-címet is használhat a nagy léptékű forgatókönyvek tervezéséhez, és a kimenő szabályok használatával csökkentheti a [SNAT kimerülésének](load-balancer-outbound-connections.md#snatexhaust) hajlamos mintázatát.  
+Míg egy kimenő szabály csak egyetlen nyilvános IP-címmel használható, a kimenő szabályok megkönnyítik a kimenő NAT skálázásának konfigurációs terhelését. Több IP-címet is használhat a nagy léptékű forgatókönyvek tervezéséhez, és a kimenő szabályok használatával csökkentheti a [SNAT kimerülésének](troubleshoot-outbound-connection.md#snatexhaust) hajlamos mintázatát.  
 
 A frontend által biztosított minden további IP-cím 64 000 ideiglenes portot biztosít Load Balancer számára, SNAT-portként való használatra. Míg a terheléselosztás vagy a bejövő NAT-szabályok egyetlen előtérrel rendelkeznek, a Kimenő szabály kibővíti a előtér-fogalmat, és lehetővé teszi a több előtér-szabály használatát.  A több előtérbeli felülettel rendelkező SNAT a rendelkezésre álló portok mennyisége megszorozva minden nyilvános IP-címmel, és a nagyméretű forgatókönyvek is támogatottak.
 
@@ -95,7 +95,7 @@ A következő paraméterrel állíthatja be a kimenő üresjárati időkorlátot
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> A TCP alaphelyzetbe állításának engedélyezése üresjárati időkorláton
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>A TCP alaphelyzetbe állításának engedélyezése üresjárati időkorláton
 
 Load Balancer alapértelmezett viselkedése a folyamat csendes eldobása a kimenő Üresjárati időkorlát elérésekor.  A enableTCPReset paraméterrel előre jelezhető alkalmazások viselkedését engedélyezheti, és szabályozhatja, hogy a kimenő Üresjárati időkorlát időtúllépése esetén a kétirányú TCP-visszaállítást (TCP-t) kell-e küldeni. 
 
@@ -208,7 +208,7 @@ Belső standard Load Balancer használata esetén a kimenő NAT nem érhető el,
 - A Load Balancer nem támogatja az ICMP protokollt a kimenő NAT-hoz.
 - A kimenő szabályok csak a hálózati adapter elsődleges IP-konfigurációjához alkalmazhatók.  Több hálózati adapter is támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Kimenő kapcsolatok Load Balancer](load-balancer-outbound-connections.md)használatáról.
 - A [standard Load Balancer](load-balancer-standard-overview.md)megismerése.

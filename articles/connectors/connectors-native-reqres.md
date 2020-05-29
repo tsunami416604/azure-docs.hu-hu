@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1e1a7f2e82ba2e90a641a6559062348f8d4d3aea
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142452"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171531"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -185,9 +185,9 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
    Ez a lépés a logikai alkalmazást indító kérelem küldéséhez használandó URL-címet hozza létre. Az URL-cím másolásához válassza a másolás ikont az URL mellett.
 
    ![A logikai alkalmazás aktiválását használó URL-cím](./media/connectors-native-reqres/generated-url.png)
-   
+
    > [!NOTE]
-   > Az URL-cím a "at" szimbólumot ( **@** ) használja, de nem a kivonat szimbólumát ( **#** ).
+   > Ha a kivonatot vagy a font szimbólumot () az URI-ban szeretné felvenni a **#** kérelem-trigger hívása során, használja inkább a következő kódolt verziót:`%25%23`
 
 1. A logikai alkalmazás elindításához küldjön egy HTTP-BEJEGYZÉST a generált URL-címre.
 

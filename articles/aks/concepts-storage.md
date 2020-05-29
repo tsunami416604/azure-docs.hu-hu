@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) tárolóját, b
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77595994"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171378"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -55,12 +55,14 @@ A PersistentVolume lehet *statikusan* létrehozni, vagy a Kubernetes API-kiszolg
 
 A különböző tárolási rétegek (például a prémium és a standard) definiálásához létrehozhat egy *StorageClass*. A StorageClass a *reclaimPolicy*is meghatározza. Ez a reclaimPolicy az alapul szolgáló Azure Storage-erőforrás viselkedését szabályozza a pod törlésekor, és előfordulhat, hogy az állandó kötetre már nincs szükség. A mögöttes tárolási erőforrás törölhető vagy megtartható egy későbbi Pod-nal való használathoz.
 
-Az AK-ban két kezdeti StorageClasses jön létre:
+Az AK-ban 4 kezdeti StorageClasses jönnek létre:
 
-- *alapértelmezett* – felügyelt lemez létrehozásához az Azure standard Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- *default* – felügyelt lemez létrehozásához az Azure StandardSSD Storage szolgáltatást használja. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
 - *Managed-Premium* – az Azure Premium Storage használatával felügyelt lemez hozható létre. A visszaigénylési házirend újból azt jelzi, hogy az alapul szolgáló Azure-lemez törlődik, ha az azt használó állandó kötet törlődik.
+- *azurefile* – az Azure standard Storage használatával hozza létre az Azure-fájlmegosztást. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-fájlmegosztás törlődik, ha az azt használó állandó kötet törlődik.
+- *azurefile – prémium* – az Azure Premium Storage használatával Azure-fájlmegosztás hozható létre. A visszaigénylési házirend azt jelzi, hogy az alapul szolgáló Azure-fájlmegosztás törlődik, ha az azt használó állandó kötet törlődik.
 
-Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. A használatával `kubectl`további igényekhez is létrehozhat StorageClass. Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
+Ha nem ad meg StorageClass egy állandó kötethez, a rendszer az alapértelmezett StorageClass használja. Ügyeljen arra, hogy az állandó kötetek kérésekor a szükséges tárterületet használják. A használatával további igényekhez is létrehozhat StorageClass `kubectl` . Az alábbi példa prémium Managed Disks használ, és megadja, hogy a mögöttes Azure-lemezt meg kell *őrizni* a pod törlésekor:
 
 ```yaml
 kind: StorageClass
@@ -118,7 +120,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

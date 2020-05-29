@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6afa3d4d2d62541a51c3bab85843d41b48397100
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118777"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170290"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -22,6 +22,10 @@ A cikkben ismertetett eljárások használata előtt győződjön meg arról, ho
 * [Change Tracking és leltár engedélyezése a Azure Portal tallózásával](automation-enable-changes-from-browse.md)
 * [A Change Tracking és az Inventory engedélyezése runbookból](automation-enable-changes-from-runbook.md)
 * [A Change Tracking és az Inventory engedélyezése Azure-beli virtuális gépről](automation-enable-changes-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>A központi telepítés hatókörének korlátozása
+
+A Change Tracking és a leltár a munkaterületen belüli hatókör-konfigurációval célozza meg a számítógépeket, hogy fogadják a módosításokat. További információ: a [change Tracking és a leltár központi telepítési hatókörének korlátozása](automation-scope-configurations-change-tracking.md).
 
 ## <a name="track-files"></a>Fájlok nyomon követése
 
@@ -137,7 +141,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
 
 A változási rekordok esetében különböző kereséseket végezhet a Azure Monitor naplókon. Ha megnyitotta a Change Tracking (változások nyomon követése) lapot, kattintson **log Analytics** a naplók lap megnyitásához. A következő táblázat a változási rekordokra vonatkozó példákat tartalmaz.
 
-|Lekérdezés  |Leírás  |
+|Lekérdezés  |Description  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|
@@ -163,7 +167,10 @@ Ezt a példát követve megtudhatja, hogyan hozhat létre riasztásokat a válto
 
     ![A műveleti csoport beállítása a riasztásra a módosításkor](./media/change-tracking/action-groups.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* A hatókör-konfigurációkkal kapcsolatos további információkért lásd: a [change Tracking és a leltár központi telepítési hatókörének korlátozása](automation-scope-configurations-change-tracking.md).
 * Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
+* Ha a telepítésekkel fejeződött be, tekintse [meg az Automation-fiók összekapcsolása a Change Tracking és a leltárhoz](automation-unlink-workspace-change-tracking.md)című témakört.
+* A virtuális gépek Change Tracking és leltárból való törléséhez lásd: [virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md).
 * A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

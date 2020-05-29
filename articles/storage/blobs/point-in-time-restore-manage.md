@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118210"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170103"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)
 
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Visszaállítási művelet végrehajtása
 
-A visszaállítási művelet elindításához hívja meg a Restore-AzStorageBlobRange parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhat egy vagy több lexicographical-tartományt a visszaállításhoz, vagy kihagyhat egy tartományt az összes blob visszaállításához a Storage-fiókban lévő összes tárolóban. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
+A visszaállítási művelet elindításához hívja meg a Restore-AzStorageBlobRange parancsot, és adja meg a visszaállítási pontot UTC **datetime** értékként. Megadhatja az lexicographical-tartományokat, amelyekkel visszaállíthatja a blobokat, vagy kihagyhat egy tartományt a Storage-fiók összes tárolójában lévő összes blob visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott. A visszaállítási művelet végrehajtása több percet is igénybe vehet.
 
 A visszaállítandó Blobok tartományának megadásakor vegye figyelembe a következő szabályokat:
 
 - A kezdési tartományhoz és a befejezési tartományhoz megadott tároló mintázatnak legalább három karaktert kell tartalmaznia. A tároló nevének a blob nevéből való elkülönítéséhez használt perjel (/) nem számít bele ebbe a minimumba.
-- Egy visszaállítási műveletben csak egy tartomány adható meg.
+- Egy visszaállítási művelet legfeljebb 10 tartományt adhat meg.
 - A helyettesítő karakterek használata nem támogatott. Ezeket standard karakterként kezeli a rendszer.
 - A és a tárolóban lévő Blobok visszaállításához `$root` `$web` explicit módon megadhatja őket egy visszaállítási műveletnek átadott tartományban. A `$root` és a `$web` tárolók csak akkor állíthatók vissza, ha explicit módon vannak megadva. Más rendszertárolók nem állíthatók vissza.
+
+> [!IMPORTANT]
+> Ha visszaállítási műveletet hajt végre, az Azure Storage blokkolja a művelet időtartamára visszaállított tartományokban lévő Blobok adatműveleteit. Az olvasási, írási és törlési műveletek blokkolva vannak az elsődleges helyen. Ezért az olyan műveletek, mint például a tárolók listázása a Azure Portalban előfordulhat, hogy nem a várt módon hajtják végre a visszaállítási műveletet.
+>
+> A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
 
 ### <a name="restore-all-containers-in-the-account"></a>A fiókban lévő összes tároló visszaállítása
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>Blokkos Blobok több tartományának visszaállítása
 
-A blokkos Blobok több tartományának visszaállításához adja meg a paraméter tartományának tömbjét `-BlobRestoreRange` . A következő példa visszaállítja a *container1* és a *container4*teljes tartalmát:
+A blokkos Blobok több tartományának visszaállításához adja meg a paraméter tartományának tömbjét `-BlobRestoreRange` . Egy visszaállítási művelet legfeljebb 10 tartományt támogat. Az alábbi példa két tartományt határoz meg a *container1* és a *container4*teljes tartalmának visszaállításához:
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
@@ -159,7 +164,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -BlobRestoreRange @($range1, $range2)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)](point-in-time-restore-overview.md)
 - [Helyreállítható törlés](soft-delete-overview.md)

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 38f6cfef60cf3bfe66742cba204d74db1c22ca77
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195220"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169287"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
 
@@ -26,15 +26,13 @@ Ha szeretné megtudni, hogyan engedélyezhető az időponthoz tartozó visszaál
 
 Az időponthoz tartozó visszaállítás engedélyezéséhez létre kell hoznia egy felügyeleti szabályzatot a Storage-fiókhoz, és meg kell adnia egy megőrzési időtartamot. A megőrzési időszak alatt visszaállíthatja a blokk blobokat a jelen állapotból egy korábbi időpontban lévő állapotba.
 
-Egy időponthoz tartozó visszaállítás kezdeményezéséhez hívja meg a blob- [tartományok visszaállítása](/rest/api/storagerp/storageaccounts/restoreblobranges) műveletet, és adja meg a visszaállítási pontot UTC idő szerint. Megadhatja a visszaállítandó tároló-és blob-nevek lexicographical, vagy kihagyhatja a tartományt a Storage-fiókban lévő összes tároló visszaállításához. A **blob-tartományok visszaállítása** művelet egy visszaállítási azonosítót ad vissza, amely egyedileg azonosítja a műveletet.
+Egy időponthoz tartozó visszaállítás kezdeményezéséhez hívja meg a blob- [tartományok visszaállítása](/rest/api/storagerp/storageaccounts/restoreblobranges) műveletet, és adja meg a visszaállítási pontot UTC idő szerint. Megadhatja a visszaállítandó tároló-és blob-nevek lexicographical, vagy kihagyhatja a tartományt a Storage-fiókban lévő összes tároló visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott.
 
 Az Azure Storage elemzi a megadott Blobok összes módosítását a kért visszaállítási pont között, az UTC időpontban és a jelen pillanatban megadva. A visszaállítási művelet atomi, így az összes módosítás visszaállításával vagy meghibásodásával teljesen sikeres lesz. Ha vannak olyan Blobok, amelyek nem állíthatók vissza, a művelet meghiúsul, és az érintett tárolók olvasási és írási műveletei folytatódnak.
 
-Ha visszaállítási műveletet kér, az Azure Storage blokkolja az adatműveleteket a művelet időtartamára visszaállított tartományban lévő blobokban. Az olvasási, írási és törlési műveletek blokkolva vannak az elsődleges helyen. A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
-
 Egyszerre csak egy visszaállítási műveletet lehet futtatni a Storage-fiókban. A visszaállítási művelet nem szakítható meg, ha folyamatban van, de egy második visszaállítási művelet is végrehajtható az első művelet visszavonásához.
 
-Egy adott időponthoz tartozó visszaállítás állapotának megtekintéséhez hívja meg a visszaállítási **állapot lekérése** műveletet a **blob-tartományok visszaállítása** művelet által VISSZAadott visszaállítási azonosítóval.
+A **blob-tartományok visszaállítása** művelet egy visszaállítási azonosítót ad vissza, amely egyedileg azonosítja a műveletet. Egy adott időponthoz tartozó visszaállítás állapotának megtekintéséhez hívja meg a visszaállítási **állapot lekérése** műveletet a **blob-tartományok visszaállítása** művelet által VISSZAadott visszaállítási azonosítóval.
 
 Ne feledje, hogy a visszaállítási műveletekre a következő korlátozások vonatkoznak:
 
@@ -42,6 +40,11 @@ Ne feledje, hogy a visszaállítási műveletekre a következő korlátozások v
 - Az aktív bérlettel rendelkező Blobok nem állíthatók vissza. Ha egy aktív bérlettel rendelkező blob szerepel a visszaállítani kívánt Blobok tartományában, a visszaállítási művelet atomi módon sikertelen lesz.
 - A pillanatképeket a rendszer nem hozza létre vagy törli a visszaállítási művelet részeként. A rendszer csak az alap blobot állítja vissza az előző állapotába.
 - Ha egy blob a jelen pillanatban és a visszaállítási pont közötti időszakban a gyors és a lassú elérési szint között mozgott, a blob vissza lesz állítva az előző szintjére. Az archiválási szintre áthelyezett Blobok azonban nem lesznek visszaállítva.
+
+> [!IMPORTANT]
+> Ha visszaállítási műveletet hajt végre, az Azure Storage blokkolja a művelet időtartamára visszaállított tartományokban lévő Blobok adatműveleteit. Az olvasási, írási és törlési műveletek blokkolva vannak az elsődleges helyen. Ezért az olyan műveletek, mint például a tárolók listázása a Azure Portalban előfordulhat, hogy nem a várt módon hajtják végre a visszaállítási műveletet.
+>
+> A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
 
 > [!CAUTION]
 > Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból úgy, hogy meghívja a tároló [törlése](/rest/api/storageservices/delete-container) műveletet az időponthoz tartozó visszaállítási előzetes verzióban, a tároló nem állítható vissza visszaállítási művelettel. Az előzetes verzióban a tároló törlése helyett törölje az egyes blobokat, ha vissza szeretné állítani őket.
@@ -131,7 +134,7 @@ Az időponthoz tartozó visszaállítás díjszabásáról további információ
 
 Ha kérdéseket szeretne feltenni az időponthoz tartozó visszaállítás előzetes verziójával kapcsolatban, vagy visszajelzést szeretne küldeni, forduljon a Microsofthoz pitrdiscussion@microsoft.com .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Időponthoz való visszaállítás engedélyezése és kezelése a blokk Blobok számára (előzetes verzió)](point-in-time-restore-manage.md)
 - [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)

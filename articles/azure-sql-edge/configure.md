@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5dcdd1604674ca56fb7a646d4c571d63bd2c0e3e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dc2b76a31982a3f72da02348c1a4796212887cb7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596959"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168250"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változókat. Ha meg van adva, a rendszer figyelmen kívül hagyja ezeket a környezeti változókat a tároló inicializálásakor.
 
-| Környezeti változó | Leírás |
+| Környezeti változó | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az "1" érték például engedélyezve van, és a "0" le van tiltva. |
 
@@ -72,8 +72,8 @@ Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot
 ```
 
 A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
-</br></br>
-|Beállítás|Leírás|
+
+|Beállítás|Description|
 |:---|:---|
 |**Felhasználói visszajelzés** | Adja meg, hogy SQL Server küld-e visszajelzést a Microsoftnak. |
 |**Database Mail profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |

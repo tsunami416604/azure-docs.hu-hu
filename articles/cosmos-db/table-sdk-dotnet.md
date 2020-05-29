@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984980"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168148"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB table .NET API: letöltési és kibocsátási megjegyzések
 
@@ -27,7 +27,7 @@ ms.locfileid: "80984980"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Első lépések**|[Azure Cosmos DB: alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
+|**Gyorsútmutató**|[Azure Cosmos DB: alkalmazás létrehozása a .NET-tel és a Table API](create-table-dotnet.md)|
 |**Oktatóanyag**|[Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -39,40 +39,40 @@ ms.locfileid: "80984980"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 
 * Hibajavítások
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 
 * Hibajavítások
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Többrégiós írási támogatás hozzáadva
 * Rögzített NuGet-csomagok függőségei a Microsoft. Azure. DocumentDB, a Microsoft. OData. Core, a Microsoft. OData. EDM, a Microsoft. térbeli
 
-### <a name="113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
 * Rögzített NuGet-csomagok függőségei a Microsoft. Azure. Storage. Common és a Microsoft. Azure. DocumentDB.
 * Hibajavítások a tábla szerializálásakor, ha a JsonConvert. DefaultSettings konfigurálva van.
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * A helytelenül formázott Etagek való ellenőrzésének hozzáadása közvetlen módban.
 * Rögzített LINQ lekérdezési hiba az átjáró módban.
 * A szinkron API-k mostantól a SynchronizationContext tulajdonságot segítségével futnak a szál készletében.
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * TableQueryMaxItemCount, TableQueryEnableScan, TableQueryMaxDegreeOfParallelism és TableQueryContinuationTokenLimitInKb hozzáadása a TableRequestOptions
 * Hibajavítások
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * Általánosan elérhető kiadás
 
-### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0 – előzetes verzió
+### <a name="090-preview"></a><a name="0.1.0-preview"></a>0.9.0 – előzetes verzió
 
 * Kezdeti előzetes kiadás
 

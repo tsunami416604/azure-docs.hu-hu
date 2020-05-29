@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Function
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848760"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171395"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -58,7 +58,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
    ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. Végül (a kompatibilitási mód engedélyezése) [ https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ] egy, a `FUNCTIONS_V2_COMPATIBILITY_MODE` értékkel rendelkező Alkalmazásbeállítás hozzáadásával `true` .
+5. Végül a [kompatibilitási mód engedélyezéséhez](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) adjon hozzá egy értéket a `FUNCTIONS_V2_COMPATIBILITY_MODE` értékkel `true` .
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
@@ -128,7 +128,7 @@ Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-funct
 
 Az első tartós funkció most már működik az Azure-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a tartós függvények gyakori mintái](durable-functions-overview.md#application-patterns)

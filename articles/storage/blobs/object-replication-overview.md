@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800770"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170596"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektum-replikálás blokk-Blobok számára (előzetes verzió)
 
@@ -54,7 +54,7 @@ A replikációs szabályok létrehozásakor alapértelmezés szerint csak a forr
 
 Egy vagy több szűrőt is megadhat egy replikációs szabály részeként a blokk Blobok előtag alapján történő szűréséhez. Egy előtag megadásakor a rendszer csak a forrás tárolóban lévő előtaggal egyező blobokat másolja a célhelyre.
 
-A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs házirend létrehozása után a cél tároló írásvédett lesz. A célként megadott tárolóba való írásra tett kísérletek sikertelenek, hibakód: 409 (ütközés). Meghívhatja azonban a [blob-rétegek beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon, hogy azt egy másik hozzáférési szinten helyezze át. A tárolóban lévő blobokat áthelyezheti például az archív szintre, így megtakaríthatja a költségeket.
+A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs házirend létrehozása után a cél tároló írásvédett lesz. A célként megadott tárolóba való írásra tett kísérletek sikertelenek, hibakód: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 

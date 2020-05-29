@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758894"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170579"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -81,9 +81,9 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | zárak | hozzárendelés hatóköre | 1–90 | Alfanumerikus karakterek, időszakok, aláhúzások, kötőjelek és zárójelek.<br><br>Nem végződhet ponttal. |
-> | policyassignments | hozzárendelés hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
-> | policydefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
-> | policySetDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel.  |
+> | policyAssignments | hozzárendelés hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
+> | policyDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
+> | policySetDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-64 erőforrás neve<br><br>1-24 erőforrás neve a felügyeleti csoport hatókörében | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel.  |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -700,6 +700,6 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!NOTE]
 > A Azure Functions azonos elnevezési szabályokkal és korlátozásokkal rendelkezik, mint a Microsoft. Web/Sites.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások elnevezésével kapcsolatos ajánlásokat a [Ready: ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben talál.

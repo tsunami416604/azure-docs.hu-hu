@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871175"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168335"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -26,7 +26,7 @@ A Analysis Services a felügyelt identitások által végrehajtott műveleteket 
  
 Az egyszerű szolgáltatások a Azure Portal vagy a PowerShell használatával hozhatók létre. További tudnivalókért lásd:
 
-[Egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Szolgáltatásnév létrehozása – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>A hitelesítő adatok és a tanúsítványok eszközeinek tárolása Azure Automation
@@ -48,7 +48,7 @@ A szolgáltatás egyszerű appID és jelszava vagy tanúsítványa ugyanúgy has
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Az az. AnalysisServices modul használata
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Az az. AnalysisServices modul használata
 
 Ha az az [. AnalysisServices](/powershell/module/az.analysisservices) modullal erőforrás-kezelési műveletekhez egyszerű szolgáltatásnevet használ, használja a `Connect-AzAccount` parancsmagot. 
 
@@ -73,7 +73,7 @@ Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/
 Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
 ```
 
-#### <a name="using-sqlserver-module"></a>A SQLServer modul használata
+#### <a name="using-sqlserver-module"></a>Az SQLServer modul használata
 
 A következő példában a appID és a jelszó használatával végezhető el a modell adatbázis-frissítési művelete:
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfélalkalmazások és a webalkalmazások, az [amo és a ADOMD ügyfél-kódtárak](analysis-services-data-providers.md) verziójának 15.0.2 és magasabb telepíthető csomagjai a NuGet a következő szintaxissal használhatók a kapcsolati sztringekben: `app:AppID` és jelszó vagy `cert:thumbprint` . 
+Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](analysis-services-data-providers.md) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
 
-A következő példában `appID` és a a `password` modell adatbázis-frissítési műveletének végrehajtásához használható:
+Az alábbi példában az `appID` és egy `password` segítségével végezheti el egy modelladatbázis frissítési műveletét:
 
 ```csharp
 string appId = "xxx";

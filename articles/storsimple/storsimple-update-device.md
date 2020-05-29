@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933420"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170086"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz frissítése
 > [!NOTE]
@@ -84,22 +84,22 @@ Ha karbantartási mód frissítéseit kell alkalmaznia, a klasszikus Azure port�
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>1. lépés: Kapcsolódás a soros konzolhoz<a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>1. lépés: Kapcsolódás a soros konzolhoz<a name="step1"></a>
 Először használjon egy alkalmazást, például a PuTTY-t a soros konzol eléréséhez. Az alábbi eljárás azt ismerteti, hogyan használható a PuTTY a soros konzolhoz való kapcsolódáshoz.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>2. lépés: a karbantartási mód megadása<a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>2. lépés: a karbantartási mód megadása<a name="step2"></a>
 A konzolhoz való kapcsolódás után állapítsa meg, hogy vannak-e frissítések a telepítéshez, majd adja meg a karbantartási módot a telepítéshez.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>3. lépés: a frissítések telepítése<a name="step3">
+### <a name="step-3-install-your-updates"></a>3. lépés: a frissítések telepítése<a name="step3"></a>
 Ezután telepítse a frissítéseket.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>4. lépés: Kilépés a karbantartási módból<a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>4. lépés: Kilépés a karbantartási módból<a name="step4"></a>
 Végül zárja be a karbantartási módot.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
@@ -119,7 +119,7 @@ A következő eljárások azt ismertetik, hogyan használhatók a Windows PowerS
 ## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Mi történik a frissítésekkel, ha az eszköz gyári alaphelyzetbe állítását végzi?
 Ha egy eszköz visszaáll a gyári beállításokra, akkor az összes frissítés elvész. A gyári beállítások visszaállítása után az eszköz regisztrálása és konfigurálása után manuálisan kell telepítenie a frissítéseket a klasszikus Azure portálon és/vagy Windows PowerShell StorSimple-bővítménye. A gyári beállítások visszaállításával kapcsolatos további információkért lásd: [az eszköz visszaállítása a gyári alapértékekre](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple-eszköz felügyeletének Windows PowerShell StorSimple-bővítménye használatáról](storsimple-windows-powershell-administration.md).
 * További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-manager-service-administration.md).
 

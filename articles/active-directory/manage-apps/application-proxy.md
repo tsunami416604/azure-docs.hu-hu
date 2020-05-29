@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609952"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168726"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz Azure Active Directory alkalmazásproxy használatával
 
@@ -41,7 +41,7 @@ Az alkalmazásproxy a következőket támogatja:
 * Űrlapalapú vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférést használó webalkalmazások
 * Webes API-k, amelyeket a különböző eszközökön lévő gazdag alkalmazások számára kíván tenni
 * Egy [Távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md) mögött futó alkalmazások
-* A Active Directory-hitelesítési tár (ADAL) integrált, gazdag ügyfélalkalmazások
+* A Microsoft Authentication Library (MSAL) szolgáltatással integrált, gazdag alkalmazások
 
 Az alkalmazásproxy támogatja az egyszeri bejelentkezést. További információ a támogatott módszerekről: [egyszeri bejelentkezés módszerének kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
@@ -60,7 +60,7 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 5. Az összekötő elküldi a kérést a helyszíni alkalmazásnak.
 6. A választ az összekötő és az alkalmazásproxy szolgáltatás továbbítja a felhasználónak.
 
-| Összetevő | Leírás |
+| Összetevő | Description |
 | --------- | ----------- |
 | Végpont  | A végpont egy URL-cím vagy egy [végfelhasználói portál](end-user-experiences.md). A felhasználók a hálózaton kívül érhetik el az alkalmazásokat egy külső URL-cím elérésével. A hálózaton belüli felhasználók egy URL-címen vagy egy végfelhasználói portálon keresztül érhetik el az alkalmazást. Ha a felhasználók ezen végpontok egyikén jelentkeznek, a hitelesítés az Azure AD-ben történik, majd az összekötőn keresztül a helyszíni alkalmazáshoz irányítja őket.|
 | Azure AD | Az Azure AD a felhőben tárolt bérlői könyvtár használatával végzi a hitelesítést. |
@@ -69,7 +69,7 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 | Active Directory (AD) | Active Directory a tartományi fiókok hitelesítésének végrehajtásához a helyszínen fut. Ha az egyszeri bejelentkezés konfigurálva van, az összekötő az AD-vel kommunikálva további hitelesítést hajt végre.
 | Helyszíni alkalmazás | Végül a felhasználó hozzáférhet egy helyszíni alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.
 
 A legfrissebb híreket és frissítéseket az [alkalmazásproxy blogjában](https://blogs.technet.com/b/applicationproxyblog/) találja.

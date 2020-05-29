@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007551"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171555"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
 * A címkézésre vonatkozó utasítások.
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree) .
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
@@ -55,8 +55,7 @@ Ha az adatai már az Azure Blob Storage-ban vannak, akkor a címkézési projekt
 
 Projekt létrehozásához válassza a **projekt hozzáadása**lehetőséget. Adjon megfelelő nevet a projektnek, és válassza ki a **feladattípus címkézése**elemet.
 
-![Projekt-létrehozási varázsló címkézése](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Projekt-létrehozási varázsló címkézése":::
 
 * Válassza a **Képbesorolás többosztályos** a projektekhez lehetőséget, ha csak *egyetlen osztályt* szeretne alkalmazni osztályokból egy képből.
 * Válassza a **Képbesorolás több címkét** a projektekhez lehetőséget, ha egy *vagy több* címkét szeretne alkalmazni az osztályok egy adott képére. Előfordulhat például, hogy egy kutya fényképét a *kutya* és a *nappali*is címkézi.
@@ -75,15 +74,15 @@ Sok esetben elég a helyi fájlok feltöltése. A [Azure Storage Explorer](https
 
 Adatkészlet létrehozása az Azure Blob Storage-ban már tárolt adatokból:
 
-1. Válassza az **adatkészlet** > létrehozása**adattárból**lehetőséget.
+1. Válassza az **adatkészlet létrehozása**  >  **adattárból**lehetőséget.
 1. Rendeljen egy **nevet** az adatkészlethez.
 1. Válassza a **fájl** lehetőséget **adatkészlet típusaként**.  
 1. Válassza ki az adattárt.
 1. Ha az adatai a blob Storage-ban található almappában találhatók, válassza a **Tallózás** lehetőséget az elérési út kiválasztásához.
     * Fűzze hozzá a "/* *" utótagot az elérési úthoz, hogy az tartalmazza a kijelölt útvonal almappáiban található összes fájlt.
-    * A "**/*. *" hozzáfűzésével adja meg az aktuális tárolóban és annak almappáiban lévő összes adatforrást.
+    * A "* */* . *" hozzáfűzésével adja meg az aktuális tárolóban és annak almappáiban lévő összes adatforrást.
 1. Adja meg az adatkészlet leírását.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. Erősítse meg a részleteket. A **vissza** gombra kattintva módosíthatja a beállításokat, vagy **létrehozhatja** az adatkészletet.
 
 > [!NOTE]
@@ -93,13 +92,13 @@ Adatkészlet létrehozása az Azure Blob Storage-ban már tárolt adatokból:
 
 Az adatok közvetlen feltöltéséhez:
 
-1. Válassza az **adatkészlet** > létrehozása**helyi fájlokból**lehetőséget.
+1. Válassza az **adatkészlet létrehozása**  >  **helyi fájlokból**lehetőséget.
 1. Rendeljen egy **nevet** az adatkészlethez.
 1. Válassza a "fájl" lehetőséget az **adatkészlet típusaként**.
 1. Nem *kötelező:* Válassza a **Speciális beállítások** lehetőséget az adattár, a tároló és az adatelérési út testreszabásához.
 1. Válassza a **Tallózás** lehetőséget a feltölteni kívánt helyi fájlok kiválasztásához.
 1. Adja meg az adatkészlet leírását.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. Erősítse meg a részleteket. A **vissza** gombra kattintva módosíthatja a beállításokat, vagy **létrehozhatja** az adatkészletet.
 
 A rendszer feltölti az adatait a Machine Learning munkaterület alapértelmezett blob-tárolójába ("workspaceblobstore").
@@ -108,7 +107,7 @@ A rendszer feltölti az adatait a Machine Learning munkaterület alapértelmezet
 
 A **címkézési osztályok** lapon adja meg az adatkategorizálni kívánt osztályok készletét. Ezt körültekintően hajtsa végre, mert a címke pontosságát és sebességét az osztályok közül választhatják ki. Például a növények vagy állatok teljes nemzetségének és fajainak helyesírása helyett használjon mezőkód vagy rövidítse a nemet.
 
-Soronként egy címkét adjon meg. Új sor **+** hozzáadásához használja a gombot. Ha több mint 3 vagy 4 címke van, de kevesebb, mint 10, érdemes lehet előtagot ("1:", "2:") használni, hogy a jelölők a számgombok használatával gyorsítsák fel a munkájukat.
+Soronként egy címkét adjon meg. **+** Új sor hozzáadásához használja a gombot. Ha több mint 3 vagy 4 címke van, de kevesebb, mint 10, érdemes lehet előtagot ("1:", "2:") használni, hogy a jelölők a számgombok használatával gyorsítsák fel a munkájukat.
 
 ## <a name="describe-the-labeling-task"></a>A címkézési feladat leírása
 
@@ -173,7 +172,7 @@ A projekt inicializálását követően az Azure elindítja a futtatását. Vál
 
 Az **adat** lapon megtekintheti az adatkészletet, és ellenőrizheti a címkézett adatokat. Ha nem megfelelően címkézett információt lát, jelölje ki, majd válassza az **elutasítás**lehetőséget, amely eltávolítja a címkéket, és visszahelyezi az adatfelirat nélküli várólistába.
 
-A projekt szüneteltetéséhez vagy újraindításához kattintson az**Indítás** **szüneteltetése**/gombra. Csak akkor címkézheti az adatfeliratot, ha a projekt fut.
+A projekt szüneteltetéséhez vagy újraindításához kattintson az indítás **szüneteltetése** / **Start** gombra. Csak akkor címkézheti az adatfeliratot, ha a projekt fut.
 
 Az adatokat közvetlenül a **Project Details (projekt részletei** ) oldaláról is megcímkézheti a **felirat adatainak**kiválasztásával.
 
@@ -187,7 +186,7 @@ A következő lépések segítségével adhat hozzá egy vagy több címkét egy
 1. A lap tetején válassza a **felfüggesztés** lehetőséget a címkéző tevékenységtől való leállításához.
 1. Válassza a **Részletek** fület.
 1. A bal oldali listában válassza a **címke osztályok**lehetőséget.
-1. A lista tetején válassza a **+ címkék** ![hozzáadása feliratot](media/how-to-create-labeling-projects/add-label.png)
+1. A lista tetején válassza a **+ Címkék hozzáadása** ![ feliratot](media/how-to-create-labeling-projects/add-label.png)
 1. Az űrlapon adja hozzá az új címkét, és válassza ki, hogyan kell továbblépni.  Mivel módosította a képekhez elérhető címkéket, kiválaszthatja, hogyan kezelje a már címkézett adatok:
     * Kezdje újra, és távolítsa el az összes meglévő címkét.  Akkor válassza ezt a lehetőséget, ha az elejétől kezdve a címkék új teljes készletével szeretne feliratot kezdeni. 
     * Kezdjen el az összes meglévő címke megtartásával.  Válassza ezt a lehetőséget, ha az összes adatfelirat nélküli értéket szeretné megjelölni, de a meglévő címkéket a korábban címkézett lemezképek alapértelmezett címkéjéként kívánja megtartani.
@@ -203,7 +202,7 @@ A kókusz-fájl a Azure Machine Learning munkaterület alapértelmezett blob-tá
 
 ![Exportált adatkészlet](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: az első képbesorolási címkézési projekt létrehozása](tutorial-labeling.md).
 * [Képbesorolás vagy objektum-észlelési](how-to-label-images.md) lemezképek címkézése

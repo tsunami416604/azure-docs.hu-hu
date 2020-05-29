@@ -7,25 +7,25 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 2a7e2b9f731dbf05dfeb2ac01f1ae258c5250827
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758826"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170001"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
 
-Ez a cikk azt ismerteti, hogyan használható a Event Grid partner erőforrásainak magánjellegű használata, és hogyan válhat nyilvánosan elérhető partneri témakör típusa.
+Ez a cikk azt ismerteti, hogyan használható a Azure Event Grid partner erőforrásainak magánjellegű használata, és hogyan válhat nyilvánosan elérhető partneri témakör típusa.
 
-Nincs szükség különleges engedélyre a közzétételi eseményekhez Event Grid-partnerként társított Event Grid-erőforrástípusok használatának megkezdéséhez. Valójában a mai napon is felhasználhatja az események közzétételét a saját Azure-előfizetései számára, és tesztelheti az erőforrás-modellt, ha a partnernek kellene lennie.
+Nincs szükség különleges engedélyre a közzétételi eseményekhez Event Grid-partnerként társított Event Grid-erőforrástípusok használatának megkezdéséhez. Valójában a mai napon közzéteheti az eseményeket a saját Azure-előfizetései számára, és tesztelheti az erőforrás-modellt, ha fontolóra veszi a partnert.
 
-## <a name="becoming-an-event-grid-partner"></a>Event Grid partnerré válás
+## <a name="become-an-event-grid-partner"></a>Legyen Event Grid partner
 
-Ha szeretné, hogy egy nyilvános Event Grid partner legyen, kezdje az [űrlap](https://aka.ms/gridpartnerform)kitöltésével, majd vegye fel a kapcsolatot a Event Grid csapatával a következő címen: [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) .
+Ha szeretné, hogy egy nyilvános Event Grid partner legyen, kezdje az [űrlap](https://aka.ms/gridpartnerform)kitöltésével. Ezután forduljon a Event Grid csapatához [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) .
 
 ## <a name="how-partner-topics-work"></a>A partneri témák működése
-A partneri témákban megtalálhatók a meglévő architektúrák, amelyeket a Event Grid már használ az Azure-erőforrások (például a Storage és a IoT Hub) eseményeinek közzétételéhez, és nyilvánosan elérhetővé teszi ezeket az eszközöket bárki számára. Ezek az eszközök alapértelmezés szerint csak a saját Azure-előfizetésére vonatkoznak. Az események nyilvánosan elérhetővé tételéhez töltse ki a fenti űrlapot, és [lépjen kapcsolatba a Event Grid csapatával](mailto:gridpartner@microsoft.com).
+A partneri témákban megtalálhatók a meglévő architektúra, amelyet Event Grid már használ az Azure-erőforrások, például az Azure Storage és az Azure IoT Hub eseményeinek közzétételéhez, és az eszközök nyilvánosan elérhetővé tételét mindenki számára. Ezek az eszközök alapértelmezés szerint csak a saját Azure-előfizetésére vonatkoznak. Az események nyilvánosan elérhetővé tételéhez töltse ki az űrlapot, és [lépjen kapcsolatba a Event Grid csapatával](mailto:gridpartner@microsoft.com).
 
 A partneri témakörök lehetővé teszik az események közzétételét Azure Event Grid a több-bérlős felhasználásra.
 
@@ -34,22 +34,22 @@ A partneri témakörök lehetővé teszik az események közzétételét Azure E
 #### <a name="partner-flow"></a>Partneri folyamat
 
 1. Hozzon létre egy Azure-bérlőt, ha még nem rendelkezik ilyennel.
-1. A CLI használatával hozzon létre egy új Event Grid `partnerRegistration` . Ez az erőforrás olyan adatokat tartalmaz, mint például a megjelenítendő név, a leírás, a beállítási URI és így tovább.
+1. Új Event Grid létrehozásához használja az Azure CLI-t `partnerRegistration` . Ez az erőforrás olyan adatokat tartalmaz, mint a megjelenítendő név, a leírás, a beállítási URI stb.
 
     ![Partneri témakör létrehozása](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. Hozzon létre egyet vagy többet `partnerNamespaces` minden olyan régióban, amelyen közzé kívánja tenni az eseményeket. Ennek részeként Event Grid szolgáltatás kiépít egy közzétételi végpontot (például `https://contoso.westus-1.eventgrid.azure.net/api/events` ) és a hozzáférési kulcsokat.
+1. Hozzon létre egy vagy több partneri névteret minden olyan régióban, ahol eseményeket szeretne közzétenni. A Event Grid szolgáltatás egy közzétételi végpontot (például `https://contoso.westus-1.eventgrid.azure.net/api/events` ) és a hozzáférési kulcsokat foglal le.
 
     ![Partneri névtér létrehozása](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
-1. Adja meg, hogy az ügyfelek hogyan regisztrálhatnak a rendszeren, hogy a partneri témakört szeretnék regisztrálni.
-1. Lépjen kapcsolatba a Event Grid csapatával, és tudassa velünk, hogy szeretné, ha a partneri témakör nyilvánosan megismerje.
+1. Adja meg, hogy az ügyfelek hogyan regisztrálhatnak a rendszeren, hogy egy partneri témakört szeretnének használni.
+1. Vegye fel a kapcsolatot a Event Grid csapatával, és tájékoztassa őket arról, hogy szeretné, hogy a partneri témakör típusa nyilvános legyen.
 
 #### <a name="customer-flow"></a>Felhasználói folyamat
 
-1. Az ügyfél felkeresi az Azure Portal az Azure-előfizetés AZONOSÍTÓját és az erőforráscsoportot, amelyet a partneri témakörben hoztak létre.
-1. Az ügyfél a rendszeren keresztül egy partneri témakört fog kérni. Válaszként létre fog hozni egy esemény-alagutat a partner névterében.
-1. Event Grid létre fog hozni egy **függőben lévő** partneri témakört az ügyfél Azure-előfizetésében és erőforráscsoporthoz.
+1. Az ügyfél meglátogatja a Azure Portalt, hogy jegyezze fel az Azure-előfizetés AZONOSÍTÓját és az erőforráscsoportot, amelyre a partneri témakört létre kívánja hozni.
+1. Az ügyfél a rendszeren keresztül kér partneri témakört. Válaszként hozzon létre egy esemény-alagutat a partneri névtérhez.
+1. Event Grid létrehoz egy **függőben lévő** partneri témakört az ügyfél Azure-előfizetésében és erőforráscsoporthoz.
 
     ![Esemény-csatorna létrehozása](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
 
@@ -57,19 +57,20 @@ A partneri témakörök lehetővé teszik az események közzétételét Azure E
 
     ![Partneri témakör aktiválása](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
-## <a name="resource-model"></a>Erőforrás-modell
+## <a name="resource-model"></a>Erőforrásmodell
 
-Alább látható az erőforrás-modell a partneri témakörökhöz.
+
+A következő erőforrás-modell a partneri témakörökben található.
 
 ### <a name="partner-registrations"></a>Partneri regisztrációk
 * Erőforrás`partnerRegistrations`
 * Használja: partnerek
-* Leírás: rögzíti az SaaS-partner globális metaadatait (például név, megjelenítendő név, leírás, beállítási URI).
+* Leírás: rögzíti a szolgáltatott szoftver (SaaS) globális metaadatait (például név, megjelenítendő név, leírás, beállítási URI).
     
-    A partnerek regisztrációjának létrehozása/frissítése a partnereknek szóló önkiszolgáló művelet. Ez az önkiszolgáló képesség lehetővé teszi a partnerek számára a teljes végpontok közötti folyamat kiépítését és tesztelését.
+    A partnerek regisztrációjának létrehozása vagy frissítése a partnereknek szóló önkiszolgáló művelet. Ez az önkiszolgáló képesség lehetővé teszi a partnerek számára a teljes körű folyamat kiépítését és tesztelését.
     
-    Az ügyfelek csak a Microsoft által jóváhagyott partnerRegistrations érhetők el.
-* Hatókör: létrehozás a partner Azure-előfizetésében. Metaadatok láthatók az ügyfelek számára a nyilvánosság előtt.
+    Az ügyfelek csak a Microsoft által jóváhagyott partneri regisztrációkat vehetik igénybe.
+* Hatókör: létrehozás a partner Azure-előfizetésében. A metaadatok láthatók az ügyfelek számára, miután nyilvánosságra került.
 
 ### <a name="partner-namespaces"></a>Partneri névterek
 * Erőforrás: partnerNamespaces
@@ -80,35 +81,35 @@ Alább látható az erőforrás-modell a partneri témakörökhöz.
 ### <a name="event-channel"></a>Esemény-csatorna
 * Erőforrás`partnerNamespaces/eventChannels`
 * Használja: partnerek
-* Leírás: az esemény-alagutak tükrözik az ügyfél partneri témakörét. Egy esemény-alagút létrehozásával és a metaadatokban az ügyfél Azure-előfizetésének és erőforráscsoportének megadásával jelezheti, hogy Event Grid, hogy az ügyfélhez hozzon létre egy partneri témakört. Event Grid egy ARM-hívást fog kiadni, amely létrehoz egy megfelelő partnerTopic az ügyfél előfizetésében. A partneri témakör "függő" állapotban lesz létrehozva. Az egyes eventTunnel és partnerTopic között van egy 1-1-kapcsolat.
+* Leírás: az esemény-alagutak tükrözik az ügyfél partneri témakörét. Egy esemény-alagút létrehozásával és a metaadatokban az ügyfél Azure-előfizetésének és erőforráscsoportének megadásával Event Grid, hogy partneri témakört hozzon létre az ügyfél számára. Event Grid az ARM-hívással hozza létre a megfelelő partnerTopic az ügyfél előfizetésében. A partneri témakör egy függőben lévő állapotban jön létre. Egy-az-egyhez kapcsolat áll fenn az egyes esemény-alagutak és a partneri témakörök között.
 * Hatókör: a partner előfizetésében él.
 
-### <a name="partner-topics"></a>Partneri témakörök
+### <a name="partner-topics"></a>Partnertémakörök
 * Erőforrás`partnerTopics`
 * Használja: ügyfelek
-* Leírás: a partneri témakörök a Event Grid egyéni témaköréhez és rendszertémaköréhez hasonlóak. Minden partneri témakör egy adott forráshoz (például `Contoso:myaccount` ) és egy adott partneri témakörhöz (például "contoso") van társítva. Az ügyfelek a partneri témakörben esemény-előfizetéseket hozhatnak létre az események különböző eseménykezelők számára történő átirányításához.
+* Leírás: a partneri témakörök hasonlóak az egyéni témakörökhöz és a Event Grid rendszerbeli témaköreihez. Minden partneri témakör egy adott forráshoz (például `Contoso:myaccount` ) és egy adott partneri témakörhöz (például contoso) van társítva. Az ügyfelek a partneri témakörben esemény-előfizetéseket hozhatnak létre az események különböző eseménykezelők számára történő átirányításához.
 
-    Az ügyfelek nem tudják közvetlenül létrehozni ezt az erőforrást. A partneri témakör létrehozásának egyetlen módja az esemény-alagutakat létrehozó partneri művelet.
+    Az ügyfelek nem tudják közvetlenül létrehozni ezt az erőforrást. A partneri témakör létrehozásának egyetlen módja egy esemény-alagutat létrehozó partneri művelet.
 * Hatókör: az ügyfél előfizetésében él.
 
 ### <a name="partner-topic-types"></a>Partneri témák típusai
 * Erőforrás`partnerTopicTypes`
 * Használja: ügyfelek
-* Leírás: a partneri témák a bérlői szintű erőforrástípusok, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím a következőképpen fog megjelenni:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Leírás: a partneri témák olyan tenantwide, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím így néz ki:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Hatókör: globális
 
-## <a name="publishing-events-to-event-grid"></a>Események közzététele Event Grid
-Amikor létrehoz egy partnerNamespace egy Azure-régióban, egy regionális végpontot és a hozzá tartozó hitelesítési kulcsokat fog kapni. A névtérben lévő összes ügyfél-esemény bújtatása számára események kötegeit teheti közzé ehhez a végponthoz. Az esemény "forrás" mezője alapján Azure Event Grid minden eseményt leképez a kapcsolódó partneri témakör (ek) vel.
+## <a name="publish-events-to-event-grid"></a>Események közzététele Event Grid
+Amikor létrehoz egy partneri névteret egy Azure-régióban, egy regionális végpontot és a hozzá tartozó hitelesítési kulcsokat kap. A névtérben lévő összes ügyfél-esemény bújtatása számára események kötegeit teheti közzé ehhez a végponthoz. Az esemény forrás mezője alapján Azure Event Grid az egyes eseményeket a kapcsolódó partneri témakörökkel együtt leképezi.
 
 ### <a name="event-schema-cloudevents-v10"></a>Event Schema: CloudEvents 1.0-s verzió
-Események közzététele Azure Event Grid a CloudEvents 1,0 séma használatával. Event Grid támogatja a strukturált módot és a kötegelt üzemmódot is. A CloudEvents 1,0 az egyetlen támogatott esemény sémája a partneri névterekhez.
+A CloudEvents 1,0 séma használatával teheti közzé az eseményeket a Azure Event Grid. Event Grid támogatja a strukturált módot és a kötegelt üzemmódot is. A CloudEvents 1,0 az egyetlen támogatott esemény sémája a partneri névterekhez.
 
 ### <a name="example-flow"></a>Példa folyamatra
 
 1.  A közzétételi szolgáltatás HTTP-BEJEGYZÉST végez a következőhöz: `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
-2.  A kérelemben adjon meg egy AEG-sas-Key nevű fejlécet, amely a hitelesítés kulcsát tartalmazza. Ez a kulcs a partnerNamespace létrehozása során lett kiépítve. Egy érvényes fejléc-érték például az AEG-sas-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
-3.  Állítsa be a Content-type fejlécet az "Application/cloudevents-batch + JSON;" értékre. charset = UTF-8 ".
-4.  Hajtson végre egy HTTP-BEJEGYZÉST a fenti közzétételi URL-címen az adott régiónak megfelelő események kötegével. Például:
+1.  A kérelemben adjon meg egy AEG-sas-Key nevű fejlécet, amely a hitelesítés kulcsát tartalmazza. Ez a kulcs a partneri névtér létrehozásakor lett kiépítve. Egy érvényes fejléc-érték például az AEG-sas-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
+1.  Állítsa be a Content-type fejlécet az "Application/cloudevents-batch + JSON;" értékre. charset = UTF-8a ".
+1.  Végezzen HTTP-BEJEGYZÉST a közzétételi URL-címre az adott régiónak megfelelő események kötegével. Például:
 
 ``` json
 [
@@ -143,7 +144,7 @@ Események közzététele Azure Event Grid a CloudEvents 1,0 séma használatáv
 ]
 ```
 
-A partnerNamespace-végpontra történő közzététel után választ kap. A válasz egy szabványos HTTP-válasz kódja. Néhány gyakori Válasz:
+A partnerNamespace-végpontra való közzététel után választ kap. A válasz egy szabványos HTTP-válasz kódja. Néhány gyakori Válasz:
 
 | Eredmény                             | Válasz              |
 |------------------------------------|-----------------------|
@@ -153,7 +154,7 @@ A partnerNamespace-végpontra történő közzététel után választ kap. A vá
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="reference"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)

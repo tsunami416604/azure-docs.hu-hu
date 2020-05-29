@@ -2,14 +2,14 @@
 title: 'Gyors útmutató: SDK-lekérdezések előrejelzési végpontja – LUIS'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan küldhet el egy felhasználót az Azure Cognitive Services LUIS alkalmazásnak az SDK használatával, és hogyan kaphat előrejelzést.
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 05/28/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 69c9dce1c1b48ebf21e90ff9a4d3db6ac5b889c0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 2275b50086eaf070d0748e3bb9b8de90ea9ee78e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141330"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171273"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Gyors útmutató: v3 előrejelzési végpont lekérdezése SDK-val
 

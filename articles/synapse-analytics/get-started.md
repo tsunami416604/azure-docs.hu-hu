@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: d5484f5725047201770e5b3cbab89847b27117f9
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 75c8d52a750567d3b34ad2aea236477ca8c97245
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116928"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171412"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Első lépések az Azure szinapszis Analytics használatával
 
@@ -24,13 +24,12 @@ Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához 
 
 * A [Azure Portal](https://portal.azure.com) megnyitása
 * Hozzon létre egy új Storage-fiókot a következő beállításokkal:
-    |Tab|Beállítás | Ajánlott érték | Leírás |
+    |Tab|Beállítás | Ajánlott érték | Description |
     |---|---|---|---|
     |Alapvető beállítások|**Storage-fiók neve**| Bármilyen nevet megadhat.|Ebben a dokumentumban a következőre hivatkozunk: `contosolake` .|
     |Alapvető beállítások|**Fiók típusa**|A következőre kell beállítani`StorageV2`||
     |Alapvető beállítások|**Hely**|Bármelyik helyet kiválaszthatja| Javasoljuk, hogy a szinapszis-munkaterület és a Azure Data Lake Storage (ADLS) Gen2-fiók ugyanabban a régióban legyen.|
-    |Felsőfokú|**2. generációs Data Lake Storage**|`Enabled`| Az Azure szinapszis csak olyan Storage-fiókokkal működik, ahol ez a beállítás engedélyezve van.|
-    |||||
+    |Felsőfokú|**Data Lake Storage Gen2**|`Enabled`| Az Azure szinapszis csak olyan Storage-fiókokkal működik, ahol ez a beállítás engedélyezve van.|
 
 1. A Storage-fiók létrehozása után a bal oldali navigációs sávon válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Ezután rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy azok már hozzá vannak rendelve. 
     a. * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz a b Storage-fiókban. * Rendelje hozzá magát a Storage- **blob adat-tulajdonosi** szerepköréhez a Storage-fiókban
@@ -42,11 +41,10 @@ Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához 
 * A **szolgáltatások**területen található keresési eredmények között válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió) lehetőséget.**
 * Válassza a **+ Hozzáadás** lehetőséget, ha új munkaterületet szeretne létrehozni ezekkel a beállításokkal
 
-    |Tab|Beállítás | Ajánlott érték | Leírás |
+    |Tab|Beállítás | Ajánlott érték | Description |
     |---|---|---|---|
     |Alapvető beállítások|**Munkaterület neve**|Bármilyen hívást megadhat.| Ebben a dokumentumban a következőt fogjuk használni:`myworkspace`|
     |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése|
-    ||||
 
 1. A **2. generációs Data Lake Storage kiválasztása**területen válassza ki a korábban létrehozott fiókot és tárolót.
     > [!NOTE]
@@ -79,10 +77,9 @@ A szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a 
 1. Válassza az **+ új** lehetőséget, és adja meg a következő beállításokat:
 
     |Beállítás | Ajánlott érték | 
-    |---|---|---|
+    |---|---|
     |**SQL-készlet neve**| `SQLDB1`|
     |**Teljesítményszint**|`DW100C`|
-    |||
 
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
 1. Az SQL-készlet néhány percen belül elkészül.
@@ -100,11 +97,10 @@ Az SQL-készlet létrehozásakor egy SQL Pool-adatbázishoz (más néven **SQLDB
 1. Válassza az **+ új** lehetőséget, és adja meg a következő beállításokat:
 
     |Beállítás | Ajánlott érték | 
-    |---|---|---|
+    |---|---|
     |**Apache Spark készlet neve**|`Spark1`
     |**Csomópont mérete**| `Small`|
     |**Csomópontok száma**| Állítsa be a minimumot 3 értékre, a maximumot 3 értékre|
-    |||
 
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
 1. A Apache Spark-készlet néhány másodpercen belül elkészül.
@@ -333,11 +329,10 @@ Power BI munkaterületet összekapcsolhatja a szinapszis munkaterülettel. Ez le
 1. Válassza az **+ új** lehetőséget, majd a **Kapcsolódás Power bi** lehetőséget, és adja meg a következő mezőket:
 
     |Beállítás | Ajánlott érték | 
-    |---|---|---|
+    |---|---|
     |**Név**|`NYCTaxiWorkspace1`|
     |**Munkaterület neve**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>A szinapszis-munkaterületen lévő adatokat használó Power BI adatkészlet létrehozása
@@ -385,7 +380,7 @@ Power BI munkaterületet összekapcsolhatja a szinapszis munkaterülettel. Ez le
 1. Ezen a helyen megtekintheti a munkaterületen zajló összes tevékenység előzményeit, és azokat is, amelyek aktívak.
 1. Ismerkedjen meg a **folyamat futtatásával**, **Apache Spark alkalmazásokkal**és **SQL-kérelmekkel** , és megtekintheti, hogy mit tett a munkaterületen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure szinapszis Analytics (előzetes verzió) szolgáltatásról](overview-what-is.md)
 

@@ -3,12 +3,12 @@ title: 'Rövid útmutató: az első portál lekérdezése'
 description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872085"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148038"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -51,7 +51,7 @@ A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben h
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
 
-A fenti utolsó lekérdezés futtatása után a **diagramok** lapon megjelenik egy üzenet arról, hogy "az eredményhalmaz nem kompatibilis a tortadiagram vizualizációval." A lista eredményeit tartalmazó lekérdezések nem hozhatók létre diagramba, de az erőforrásokat tartalmazó lekérdezések is megadhatók. Hozzon létre egy vizualizációt az erőforrás-gráf lekérdezésből, és használja a [minta lekérdezési számú virtuális gépet az operációs rendszer típusa alapján](./samples/starter.md#count-virtual-machines-by-os-type).
+A fenti utolsó lekérdezés futtatása után a **diagramok** lapon megjelenik egy üzenet arról, hogy "az eredményhalmaz nem kompatibilis a tortadiagram vizualizációval." A lista eredményeit tartalmazó lekérdezések nem hozhatók létre diagramba, de az erőforrásokat tartalmazó lekérdezések is megadhatók. Hozzon létre egy vizualizációt az erőforrás-gráf lekérdezésből, és használja a [minta lekérdezési számú virtuális gépet az operációs rendszer típusa alapján](./samples/starter.md#count-os).
 
 1. Az ablak **lekérdezés 1** részében adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
 
@@ -117,7 +117,7 @@ Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azu
 
 1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az Azure Resource Graph Explorer használatával futtatta az első lekérdezést, és megvizsgálta az irányítópulton megjelenő példákat. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141789"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170273"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -154,9 +154,6 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
   Ezeket az értékeket a rendszer a végpont URL-címében lévő relatív elérési úton adja át. Emellett explicit módon [ki kell választania azt a metódust](#select-method) , amelyet az trigger elvár. Egy későbbi művelet során a paraméterek értékét trigger kimenetként is lekérheti, ha közvetlenül a kimenetekre hivatkozik.
 
-> [!NOTE]
-> Az URL-cím a "at" szimbólumot ( **@** ) használja, de nem a kivonat szimbólumát ( **#** ).
-
 <a name="get-parameters"></a>
 
 ### <a name="accept-values-through-get-parameters"></a>Értékek elfogadása a GET paraméterekkel
@@ -217,6 +214,9 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
    * második pozíció:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
+> [!NOTE]
+> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót:`%25%23`
+
 <a name="relative-path"></a>
 
 ### <a name="accept-values-through-a-relative-path"></a>Értékek elfogadása relatív elérési úton
@@ -260,6 +260,9 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
    A böngésző a következő szöveggel kapcsolatos választ ad vissza:`Postal Code: 123456`
 
    ![Válasz a visszahívási URL-címre küldött kérelemre](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+> [!NOTE]
+> Ha a kivonatot vagy a font szimbólumot () is bele kívánja foglalni **#** az URI-ba, használja inkább a következő kódolt verziót:`%25%23`
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logikai alkalmazás hívása a végpont URL-címén keresztül
 

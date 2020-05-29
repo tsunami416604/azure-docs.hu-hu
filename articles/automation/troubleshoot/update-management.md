@@ -8,14 +8,14 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735888"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170256"
 ---
-# <a name="troubleshoot-update-management-issues"></a>Update Management problémák elhárítása
+# <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
 Ez a cikk azokat a problémákat ismerteti, amelyekkel a Update Management funkciónak a gépeken való telepítésekor futhat. A hibrid Runbook-feldolgozó ügynöknek van egy ügynök-hibakeresője a mögöttes probléma meghatározásához. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [Windows Update Agent problémáinak elhárítása](update-agent-issues.md) és a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues-linux.md)című témakört. A szolgáltatással kapcsolatos egyéb problémák esetén lásd: a [funkciók üzembe helyezésével kapcsolatos problémák elhárítása](onboarding.md).
 
@@ -50,7 +50,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A [hálózati konfiguráció](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
 
-* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-scope-configurations-update-management.md) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Távolítsa el a munkavégző konfigurációt a [hibrid Runbook-feldolgozó eltávolítása helyszíni Windows-számítógépről](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy a [hibrid Runbook-](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)feldolgozó eltávolítása egy helyszíni Linux-számítógépről című témakör lépéseit követve. 
 
@@ -608,7 +608,7 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 

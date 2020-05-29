@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688318"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170766"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
 Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -39,7 +39,7 @@ A hibaelhárítás három különálló feladatra osztható, szekvenciális sorr
 
 [App Service](overview.md) az egyes lépésekben különböző lehetőségeket biztosít.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. az alkalmazások viselkedésének megfigyelése és figyelése
 #### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
@@ -84,7 +84,7 @@ Az egyes App Service alkalmazások egy bővíthető felügyeleti végpontot bizt
 
 Az [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítmény-figyelési hely kiterjesztése, amely szintén elérhető. Application Insights használatához újra kell építenie a kódot egy SDK-val. Olyan bővítményt is telepíthet, amely hozzáférést biztosít a további információkhoz. Az SDK lehetővé teszi, hogy kódot írjon az alkalmazás használatának és teljesítményének figyelésére részletesebben. További információ: [a teljesítmény figyelése a webalkalmazásokban](../azure-monitor/app/web-monitor-performance.md).
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. adatgyűjtés
 A App Service diagnosztikai funkciókat biztosít a webkiszolgálóról és a webalkalmazásból származó adatok naplózásához. Az információk a webkiszolgáló-diagnosztika és az Application Diagnostics szolgáltatásban vannak elkülönítve.
@@ -126,7 +126,7 @@ App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vag
 #### <a name="use-the-kudu-debug-console"></a>A kudu hibakeresési konzoljának használata
 A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt a konzolt az alkalmazás *kudu-konzoljának* vagy *SCM-irányítópultjának* nevezzük.
 
-Ehhez az irányítópulthoz az **https://&lt;>. SCM.azurewebsites.net/** hivatkozást kell megnyitnia.
+Ehhez az irányítópulthoz az **https:// &lt;>. SCM.azurewebsites.net/** hivatkozást kell megnyitnia.
 
 A kudu által biztosított néhány dolog:
 
@@ -139,7 +139,7 @@ A kudu egy másik hasznos funkciója, hogy ha az alkalmazás első alkalommal ki
 
 A kudu-ben elérhető szolgáltatásokkal kapcsolatos további információkért lásd: [Azure DevOps-eszközök](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. a probléma enyhítése
 #### <a name="scale-the-app"></a>Az alkalmazás méretezése

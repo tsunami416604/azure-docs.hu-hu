@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282511"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169202"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -27,10 +27,10 @@ A következőket kell tennie:
 - Az import/export szolgáltatáshoz használható aktív Azure-előfizetéssel rendelkezik.
 - Rendelkeznie kell legalább egy Azure Storage-fiókkal. Tekintse meg a [támogatott Storage-fiókok és tárolási típusok listáját az importálási/exportálási szolgáltatáshoz](storage-import-export-requirements.md). További információ az új Storage-fiókok létrehozásáról: [Storage-fiók létrehozása](storage-account-create.md).
 - Megfelelő számú lemezzel rendelkezik a [támogatott típusok](storage-import-export-requirements.md#supported-disks)közül.
-- Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations `adbops@microsoft.com`csapatával a következő címen:.
+- Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen: `adbops@microsoft.com` .
   - A fióknak érvényesnek kell lennie, egyensúlyt kell tartalmaznia, és vissza kell adni a szállítási képességeket.
   - Nyomkövetési szám létrehozása az exportálási feladatokhoz.
-  - Minden feladattípusnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott több feladat ugyanazzal a követési számmal.
+  - Minden feladatnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott, hogy több feladatnak is ugyanaz legyen a nyomkövetési száma.
   - Ha nem rendelkezik Carrier-fiókkal, lépjen a következőre:
     - [Hozzon létre egy FedEx-fiókot](https://www.fedex.com/en-us/create-account.html), vagy
     - [Hozzon létre egy DHL-fiókot](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -39,7 +39,7 @@ A következőket kell tennie:
 
 Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladatot a Azure Portal.
 
-1. Jelentkezzen be https://portal.azure.com/a következőre:.
+1. Jelentkezzen be a következőre: https://portal.azure.com/ .
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -83,7 +83,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
 
 6. **Visszaszállítási adatok**:
 
-    - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával `adbops@microsoft.com` a használni kívánt szolgáltatóra vonatkozó információkkal.
+    - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com` használni kívánt szolgáltatóra vonatkozó információkkal.
     - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az exportálási feladatok befejezése után.
     - Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
 
@@ -129,7 +129,7 @@ Az Exportálás befejeződött.
 
 Ha a WAImportExport eszköz 1.4.0.300 használja, használja a következő parancsot a meghajtó zárolásának feloldásához:
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
 Ha az eszköz korábbi verzióit használja, a BitLocker párbeszédpanellel oldhatja fel a meghajtót.
 
@@ -140,7 +140,7 @@ Ekkor törölheti a feladatot, vagy meghagyhatja. A feladatok 90 nap után autom
 Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szükséges meghajtók számát. Ezt a lépést a [támogatott operációsrendszer-verziókat](storage-import-export-requirements.md#supported-operating-systems)futtató Windows rendszereken hajtsa végre.
 
 1. [Töltse le a WAImportExport 1-es verzióját](https://www.microsoft.com/download/details.aspx?id=42659) a Windows rendszerre.
-2. Bontsa ki az alapértelmezett `waimportexportv1`mappát. Például: `C:\WaImportExportV1`.
+2. Bontsa ki az alapértelmezett mappát `waimportexportv1` . Például: `C:\WaImportExportV1`.
 3. Nyisson meg egy PowerShell-vagy parancssori ablakot rendszergazdai jogosultságokkal. Ha a könyvtárat a kibontott mappára szeretné módosítani, futtassa a következő parancsot:
 
     `cd C:\WaImportExportV1`
@@ -151,13 +151,13 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Leírás|  
+    |Parancssori paraméter|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|  
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|  
     |**sk**|Csak akkor szükséges, ha nincs megadva tároló SAS. Az exportálási feladatokhoz tartozó Storage-fiókhoz tartozó fiók kulcsa.|  
     |**csas**|Csak akkor szükséges, ha nincs megadva a Storage-fiók kulcsa. A tároló SAS az exportálási feladatokba exportálandó Blobok listázásához.|  
-    |**/ExportBlobListFile:**|Kötelező. Annak az XML-fájlnak az elérési útja, amely a Blobok elérési útját vagy a blob elérési útjának előtagjainak listáját tartalmazza. Az importálási/exportálási `BlobListBlobPath` szolgáltatás REST API [put-feladatok](/rest/api/storageimportexport/jobs) műveletének elemében használt fájlformátum.|  
+    |**/ExportBlobListFile:**|Kötelező. Annak az XML-fájlnak az elérési útja, amely a Blobok elérési útját vagy a blob elérési útjának előtagjainak listáját tartalmazza. Az `BlobListBlobPath` importálási/exportálási szolgáltatás REST API [put-feladatok](/rest/api/storageimportexport/jobs) műveletének elemében használt fájlformátum.|  
     |**/DriveSize:**|Kötelező. Az exportálási feladatokhoz használandó meghajtók mérete, *például*500 GB, 1,5 TB.|  
 
     Tekintse meg [a PreviewExport parancs példáját](#example-of-previewexport-command).
@@ -166,7 +166,7 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
 ### <a name="example-of-previewexport-command"></a>Példa a PreviewExport parancs használatára
 
-A következő példa a `PreviewExport` parancsot mutatja be:  
+A következő példa a parancsot mutatja be `PreviewExport` :  
 
 ```powershell
     WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
@@ -205,7 +205,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |
@@ -215,7 +215,7 @@ A következő táblázat példákat mutat be a Blobok érvényes elérési útja
    | Egyenlő |$root/logo.bmp |BLOB **logo. bmp** exportálása a gyökér-tárolóban |
    | Egyenlő |videók/Story. MP4 |BLOB **Story. mp4** exportálása a Container **videosban** |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A feladatok és a meghajtó állapotának megtekintése](storage-import-export-view-drive-status.md)
 - [Importálási/exportálási követelmények áttekintése](storage-import-export-requirements.md)

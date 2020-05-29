@@ -3,12 +3,12 @@ title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: c3ac82c823df8cdde7b616b62ee409de500b5990
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995858"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167264"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -22,7 +22,7 @@ Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrá
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history) 
 >  _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
@@ -88,7 +88,7 @@ Az erőforrás-gráf támogatja az Azure CLI-t, a Azure PowerShell, a Pythonhoz 
 - [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
 - [Python](./first-query-python.md#add-the-resource-graph-library)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési nyelvről](./concepts/query-language.md).
 - Tekintse meg az [alapszintű lekérdezésekben](./samples/starter.md)használt nyelvet.

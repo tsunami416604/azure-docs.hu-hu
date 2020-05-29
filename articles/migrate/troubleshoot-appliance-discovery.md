@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677326"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170902"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -31,7 +31,7 @@ Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzé
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
-   - A **saját** > **leltár**területen válassza a **fájl** > **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
+   - A **saját**  >  **leltár**területen válassza a **fájl**  >  **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon Azure Migrate támogatási szolgálathoz.
 
 ## <a name="cant-connect-to-the-internet"></a>Nem lehet csatlakozni az internethez
@@ -62,7 +62,7 @@ A dátum-és időszinkronizálással (802) kapcsolatos hiba azt jelzi, hogy a ki
 
 ## <a name="unabletoconnecttoserver"></a>"UnableToConnectToServer"
 
-Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCenter Server *servername*. com: 9443. A hiba részletei azt jelzik, hogy nem figyelhető `https://\*servername*.com:9443/sdk` végpont, amely fogadja az üzenetet.
+Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCenter Server *servername*. com: 9443. A hiba részletei azt jelzik, hogy nem figyelhető végpont, `https://\*servername*.com:9443/sdk` amely fogadja az üzenetet.
 
 - Győződjön meg arról, hogy a készülék legújabb verzióját futtatja-e. Ha nem, frissítse a készüléket a [legújabb verzióra](https://docs.microsoft.com/azure/migrate/concepts-collector).
 - Ha a probléma továbbra is a legújabb verzióban következik be, előfordulhat, hogy a készülék nem tudja feloldani a megadott vCenter Server nevet, vagy a megadott port helytelen lehet. Alapértelmezés szerint, ha a port nincs megadva, a gyűjtő megpróbál csatlakozni a 443-as számú portszámhoz.
@@ -135,7 +135,7 @@ Ha ez nem működik, és a VMware-kiszolgálókat felkeresi:
 
 Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-adat elavult, várjon néhány percet. Akár 30 percet is igénybe vehet, hogy a felderített virtuális gépek konfigurációs információi megjelenjenek a portálon. Eltarthat néhány órát az alkalmazásadatok változásainak megjelenítéséhez. Ha ez idő után nem állnak rendelkezésre adatsorok, próbálkozzon a frissítéssel, a következőképpen
 
-1. A **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
+1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
 2. A **kezelés**területen válassza a **Agent Health**lehetőséget.
 3. Válassza az **ügynök frissítése**lehetőséget.
 4. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
@@ -151,7 +151,7 @@ Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások fe
 A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve. 
 
 **Hiba** | **Okozhat** | **Művelet**
---- | --- | --- | ---
+--- | --- | --- 
 10000: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat". | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
 10001: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba – néhány hiányzó fájl a berendezésben. | Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
 10002: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
@@ -170,8 +170,8 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 9010: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba lehet.  | TF a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
 9011: "a vendégen letölthető fájl nem található a vendég virtuális gépen" | A probléma belső hiba miatt fordulhat elő. | A probléma 24 órán belül automatikusan fel lesz oldva. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 9012: "az eredmény fájljának tartalma üres." | A probléma belső hiba miatt fordulhat elő. | A probléma 24 órán belül automatikusan fel lesz oldva. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9013: "új ideiglenes profil jön létre a VMware virtuális géphez való minden bejelentkezéshez" | A rendszer minden bejelentkezéskor létrehoz egy új ideiglenes profilt a virtuális géphez | Győződjön meg arról, hogy a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva.
-9015: "nem lehet csatlakozni a VMware virtuális gépekhez, mert nincs megfelelő jogosultsága a vCenter" | A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókján | Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján.
+9013: "új ideiglenes profil jön létre a VMware virtuális géphez való minden bejelentkezéshez" | A rendszer minden bejelentkezéshez új ideiglenes profilt hoz létre a virtuális gépen. | Győződjön meg arról, hogy a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva. Miután módosította a vendég virtuális gép hitelesítő adataiban megadott felhasználónevet UPN formátumra, a tálcán a Feladatkezelő eszközben indítsa újra a Microsoft Azure VMWare Discovery szolgáltatást az új felderítés megkereséséhez.
+9015: "nem lehet csatlakozni a VMware virtuális gépekhez, mert nincs megfelelő jogosultsága a vCenter" | A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókon. | Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján.
 9016: "nem sikerült csatlakozni a VMware virtuális gépekhez, mert a vendég műveleti ügynök kívül esik az adatokon" | A VMware-eszközök nincsenek megfelelően telepítve vagy nem naprakészek. | Győződjön meg arról, hogy a VMware-eszközök megfelelően vannak telepítve és naprakészek.
 9017: "a felderített metaadatokat tartalmazó fájl nem található a virtuális gépen." | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
 9018: "a PowerShell nincs telepítve a vendég virtuális gépeken." | A PowerShell nem érhető el a vendég virtuális gépen. | Telepítse a PowerShellt a vendég virtuális gépen.
@@ -182,9 +182,9 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 9023: "a rendszergyökér környezeti változó értéke üres." | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 9024: "a TEMP környezeti változó értéke üres." | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 9025: "a PowerShell sérült a vendég virtuális gépeken." | Ismeretlen | Telepítse újra a PowerShellt a vendég virtuális gépen, és ellenőrizze, hogy a PowerShell futtatható-e a vendég virtuális gépen.
-8084: "nem sikerült felderíteni az alkalmazásokat VMware- <Exception from VMware>hiba miatt:" | Az Azure Migrate készülék VMware API-kat használ az alkalmazások felderítéséhez. Ez a probléma akkor fordulhat elő, ha a vCenter Server kivételt okoz az alkalmazások felderítésére tett kísérlet során. A VMware hibaüzenet jelenik meg a portálon megjelenített hibaüzenetben. | Keresse meg az üzenetet a [VMware-dokumentációban](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), és kövesse a lépéseket a javításhoz. Ha nem tudja kijavítani, forduljon a Microsoft ügyfélszolgálatához.
+8084: "nem sikerült felderíteni az alkalmazásokat VMware-hiba miatt:  <Exception from VMware> " | Az Azure Migrate készülék VMware API-kat használ az alkalmazások felderítéséhez. Ez a probléma akkor fordulhat elő, ha a vCenter Server kivételt okoz az alkalmazások felderítésére tett kísérlet során. A VMware hibaüzenet jelenik meg a portálon megjelenített hibaüzenetben. | Keresse meg az üzenetet a [VMware-dokumentációban](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), és kövesse a lépéseket a javításhoz. Ha nem tudja kijavítani, forduljon a Microsoft ügyfélszolgálatához.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 7db3ac13cd4e2f2e2b712f9d53b86f9ccda5e736
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 81dbbeda9d0132de63180cc13f6243761e0ba865
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021721"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171582"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -211,7 +211,7 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
     
-3. Telepítse a SQL Server Management Studio.
+3. Telepítse a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
 4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
@@ -220,7 +220,7 @@ mstsc /v:<publicIpAddress>
     | Kiszolgálónév | myserver.database.windows.net |
     | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
     | Jelszó | Adja meg a létrehozás során megadott jelszót |
-    | Jelszó megjegyzése | Igen |
+    | Jelszó megjegyzése | Yes |
     
 5. Kattintson a **Csatlakozás** gombra.
 6. Az **adatbázisok** tallózása a bal oldali menüben. 
@@ -234,5 +234,5 @@ Ha végzett a privát végponttal, SQL Database és a virtuális géppel, a [Rem
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private linkről](private-link-overview.md)

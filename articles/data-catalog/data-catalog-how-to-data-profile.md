@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950217"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171225"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Adatprofil adatforrásai Azure Data Catalog
 
@@ -45,7 +45,7 @@ Az adategységek regisztrálásakor a felhasználók az adatforrásokkal kapcsol
 > Emellett dokumentációt is hozzáadhat egy eszközhöz, amely leírja, hogyan integrálható az alkalmazások egy alkalmazásba. Lásd: [az adatforrások dokumentálása](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Adatprofil belefoglalása az adatforrás regisztrálásakor
 
@@ -57,7 +57,7 @@ Az adatforrások regisztrálásával kapcsolatos további tudnivalókért lásd:
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Olyan adategységek szűrése, amelyek adatprofilokat tartalmaznak
 
-Ha olyan adategységeket szeretne felderíteni, amelyek adatprofilokat `has:columnsDataProfiles` tartalmaznak, a keresési kifejezéseket is megadhatja `has:tableDataProfiles` .
+Ha olyan adategységeket szeretne felderíteni, amelyek adatprofilokat tartalmaznak, a `has:tableDataProfiles` keresési kifejezéseket is megadhatja `has:columnsDataProfiles` .
 
 > [!NOTE]
 > Ha az **Adatprofil belefoglalása** lehetőséget választja az adatforrás regisztrálása eszközben, akkor a tábla és az oszlop szintű profilra vonatkozó információk is szerepelnek. A Data Catalog API azonban lehetővé teszi, hogy az adategységek csak egy profil-információval legyenek regisztrálva.

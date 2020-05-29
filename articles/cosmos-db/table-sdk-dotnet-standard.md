@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272576"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168199"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: letöltési és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "81272576"
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Minta**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Első lépések**|[Első lépések](create-table-dotnet.md)|
+|**Gyorsútmutató**|[Gyorsútmutató](create-table-dotnet.md)|
 |**Oktatóanyag**|[Oktatóanyag](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Probléma jelentése**|[Probléma jelentése](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -36,51 +36,51 @@ ms.locfileid: "81272576"
 ## <a name="release-notes-for-200-series"></a>A 2.0.0 sorozat kibocsátási megjegyzései
 a 2.0.0 sorozat a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)függőségét, a teljesítmény javítását és a névtér összevonását Cosmos db végpontra.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0 – előzetes verzió
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0 – előzetes verzió
 * a 2.0.0 Table SDK kezdeti előzetes verziója, amely a [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)függőségét veszi igénybe, a teljesítmény javításával és a névtér-konszolidációval Cosmos db végpontra. A nyilvános API-k változatlanok maradnak.
 
 ## <a name="release-notes-for-100-series"></a>A 1.0.0 sorozat kibocsátási megjegyzései
 a 1.0.0-sorozat a [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)fájltól függ.
 
-### <a name="107"></a><a name="1.0.7"/>1.0.7
+### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * A teljesítmény javítása a Table SDK alapértelmezett nyomkövetési szintjének a SourceLevels. Off értékre állításával, amely az app. config fájlon keresztül engedélyezhető.
 
-### <a name="105"></a><a name="1.0.5"/>1.0.5
+### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * A TableClientConfiguration alatt új konfigurációt kell bevezetni a REST-végrehajtó használatára Cosmos DB Table API való kommunikációhoz
 
-### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5 – előzetes verzió
+### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5 – előzetes verzió
 * Hibajavítások
 
-### <a name="104"></a><a name="1.0.4"/>1.0.4
-* Hibajavítások
-* Adja meg a HttpClientTimeout beállítást a RestExecutorConfiguration számára.
-
-### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4 – előzetes verzió
+### <a name="104"></a><a name="1.0.4"></a>1.0.4
 * Hibajavítások
 * Adja meg a HttpClientTimeout beállítást a RestExecutorConfiguration számára.
 
-### <a name="101"></a><a name="1.0.1"/>1.0.1
+### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4 – előzetes verzió
+* Hibajavítások
+* Adja meg a HttpClientTimeout beállítást a RestExecutorConfiguration számára.
+
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * Hibajavítások
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Általánosan elérhető kiadás
 
-### <a name="0110-preview"></a><a name="0.11.0-preview"/>0.11.0 – előzetes verzió
+### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0 – előzetes verzió
 * Módosítások történtek a CloudTableClient konfigurálásához. Most egy TableClientConfiguration objektumot vesz igénybe az építőiparban. A TableClientConfiguration különböző tulajdonságokat biztosít az ügyfél viselkedésének konfigurálásához attól függően, hogy a célként megadott végpont Cosmos DB-e Table API vagy az Azure Storage Table API.
 * A TableQuery-támogatás hozzáadva az eredmények egy egyéni oszlopon rendezett sorrendbe való visszaküldéséhez. Ez a funkció csak Cosmos DB tábla-végpontokon támogatott.
 * További támogatás a RequestCharges elérhetővé tétele különböző eredménycsoportok esetében. Ez a funkció csak Cosmos DB tábla-végpontokon támogatott.
 
-### <a name="0101-preview"></a><a name="0.10.1-preview"/>0.10.1 – előzetes verzió
+### <a name="0101-preview"></a><a name="0.10.1-preview"></a>0.10.1 – előzetes verzió
 * A SAS-token, a TablePermissions, a ServiceProperties és a ServiceStats műveleteinek támogatása az Azure Storage Table-végpontokon. 
    > [!NOTE]
    > Az előző Azure Storage Table SDK-k bizonyos funkciói még nem támogatottak, például az ügyféloldali titkosítás.
 
-### <a name="0100-preview"></a><a name="0.10.0-preview"/>0.10.0 – előzetes verzió
+### <a name="0100-preview"></a><a name="0.10.0-preview"></a>0.10.0 – előzetes verzió
 * Támogatás hozzáadása az alapvető szifilisz-, batch-és lekérdezési műveletekhez az Azure Storage Table-végpontokon. 
    > [!NOTE]
    > Az előző Azure Storage Table SDK-k bizonyos funkciói még nem támogatottak, például az ügyféloldali titkosítás.
 
-### <a name="091-preview"></a><a name="0.9.1-preview"/>0.9.1 – előzetes verzió
+### <a name="091-preview"></a><a name="0.9.1-preview"></a>0.9.1 – előzetes verzió
 * Azure Cosmos DB table .NET Standard SDK egy platformfüggetlen .NET-könyvtár, amely hatékony hozzáférést biztosít a Table adatmodellhez Cosmos DB. Ez a kezdeti kiadás a tábla és az entitások közötti szifilisz + lekérdezési funkciók teljes készletét támogatja hasonló API-kkal, mint a [.net-keretrendszerhez készült Cosmos db Table SDK](table-sdk-dotnet.md)-t. 
    > [!NOTE]
    >  Az Azure Storage Table-végpontok még nem támogatottak a 0.9.1 előzetes verziójában.

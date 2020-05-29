@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: b9b5d51d0d35284d9854bd048396df84881266d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c562aa462248ffcf7c71ad247e05f0a7de15cdb3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76771423"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168046"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Java-Azure Cosmos DB Table API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "76771423"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Általánosan elérhető kiadás
 
 ## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok

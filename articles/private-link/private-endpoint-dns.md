@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 7c8ff0808ada522dc24ef3c27156f4151832fbcd
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 64e09e4c4b1060bf6046c1a4876e0f7d2afc9ac0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715936"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171505"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Private Endpoint DNS-konfiguráció
 
@@ -67,10 +67,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 | Azure Event Grid (Microsoft. EventGrid/Domains)/tartomány | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure WebApps (Microsoft. Web/Sites)/webhely | privatelink.azurewebsites.net | azurewebsites.net |
 | Azure Machine Learning (Microsoft. MachineLearningServices/munkaterületek)/munkaterület | privatelink.api.azureml.ms | api.azureml.ms |
-
  
-
-
 ## <a name="dns-configuration-scenarios"></a>DNS-konfigurációs forgatókönyvek
 
 A szolgáltatások teljes tartományneve automatikusan feloldásra kerül egy nyilvános IP-címhez, így a magánhálózati végpont magánhálózati IP-címére való feloldás érdekében a DNS-konfigurációt ennek megfelelően kell módosítania.
@@ -81,11 +78,12 @@ A beállítások alapján az alábbi forgatókönyvek érhetők el az integrált
 
 - [Virtuális hálózati munkaterhelések egyéni DNS-kiszolgáló nélkül](#virtual-network-workloads-without-custom-dns-server)
 - [DNS-továbbítót használó helyszíni számítási feladatok](#on-premises-workloads-using-a-dns-forwarder)
+- [Virtuális hálózat és helyszíni számítási feladatok DNS-továbbító használatával](#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)
+
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtuális hálózati munkaterhelések egyéni DNS-kiszolgáló nélkül
 
 Ez a konfiguráció az egyéni DNS-kiszolgáló nélküli virtuális hálózati munkaterhelésekhez megfelelő. Ebben az esetben az ügyfél lekérdezi a magánhálózati végpont IP-címét az Azure által megadott DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). Azure DNS a magánhálózati DNS-zónák DNS-feloldására lesz felelős.
-
 
 > [!NOTE]
 > Ez a forgatókönyv az Azure SQL Database ajánlott saját DNS zónáját használja. Más szolgáltatások esetében a modellt a következő [Azure-szolgáltatások DNS-zóna konfigurációjának](#azure-services-dns-zone-configuration)használatával állíthatja be.
@@ -107,6 +105,9 @@ Ez a modell bővíthető több, ugyanahhoz a privát végponthoz társított vir
 > [!IMPORTANT]
 > Ehhez a konfigurációhoz egyetlen privát DNS-zónára van szükség, így a különböző virtuális hálózatok azonos nevű zónáinak létrehozásához kézi műveletekre van szükség a DNS-rekordok egyesítéséhez.
 
+> [!IMPORTANT]
+> Ha egy hub-beli privát végpontot használ, és egy másik előfizetésből küllő modellt, akkor ugyanazt a saját DNS-zónát használja a központban.
+
 Ebben a forgatókönyvben egy központilag [& küllős](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hálózati topológia a közös privát végpontot megosztó küllős hálózatokkal, és az összes küllős virtuális hálózat ugyanahhoz a magánhálózati DNS-zónához van csatolva. 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub és küllő az Azure által biztosított DNS-sel":::
@@ -114,7 +115,6 @@ Ebben a forgatókönyvben egy központilag [& küllős](https://docs.microsoft.c
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS-továbbítót használó helyszíni számítási feladatok
 
 Ahhoz, hogy a helyszíni munkaterhelések fel tudják oldani a privát végpontok teljes tartománynevét a magánhálózati IP-címekre, DNS-továbbítót kell használnia az Azure-ban üzembe helyezett Azure [-szolgáltatás nyilvános DNS-zónájának](#azure-services-dns-zone-configuration) feloldásához.
-
 
 A következő forgatókönyv olyan helyszíni hálózat számára megfelelő, amely az Azure-ban DNS-továbbítót tartalmaz, amely az összes DNS-lekérdezést az Azure által biztosított DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) való kiszolgálói szintű továbbítón keresztül oldja fel. 
 
@@ -154,6 +154,30 @@ A következő ábra a DNS-feloldási sorozatot mutatja be egy helyszíni hálóz
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Helyszíni továbbítás Azure DNS":::
 
+## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>Virtuális hálózat és helyszíni számítási feladatok DNS-továbbító használatával
+
+A virtuális és a helyszíni hálózatokból származó privát végpontokhoz hozzáférést igénylő munkaterhelésekhez megfelelő általános megközelítéshez megosztott DNS-továbbítót kell használnia az Azure-ban üzembe helyezett Azure [-szolgáltatás nyilvános DNS-zónájának](#azure-services-dns-zone-configuration) feloldásához.
+
+A következő forgatókönyv olyan helyszíni hálózat számára megfelelő, amely az Azure-ban DNS-továbbítót tartalmaz, valamint olyan virtuális hálózatokat, amelyeknek hozzáférést kell biztosítani a megosztott hub-hálózatban található privát végponthoz. A DNS-továbbító feladata az összes DNS-lekérdezés feloldása a kiszolgálói szintű továbbítón keresztül az Azure által megadott DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
+
+> [!IMPORTANT]
+> Ehhez a konfigurációhoz egyetlen magánhálózati DNS-zónára van szükség, a helyszíni és a [társ virtuális hálózatokból](../virtual-network/virtual-network-peering-overview.md)végrehajtott összes ügyfélkapcsolatnak   ugyanazt a magánhálózati DNS-zónát kell használnia.
+
+> [!NOTE]
+> Ez a forgatókönyv az Azure SQL Database ajánlott saját DNS zónáját használja. Más szolgáltatások esetében a modellt a következő [Azure-szolgáltatások DNS-zóna konfigurációjának](#azure-services-dns-zone-configuration)használatával állíthatja be.
+
+A megfelelő konfigurálásához a következő erőforrásokra lesz szüksége:
+
+- Helyszíni hálózat
+- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- [Egyenrangú virtuális hálózat](../virtual-network/virtual-network-peering-overview.md) 
+- DNS-továbbító üzembe helyezése az Azure-ban
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)     [type A Record](../dns/dns-zones-records.md#record-types)
+- Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
+
+A következő ábra a DNS-feloldási sorozatot mutatja be egy olyan helyszíni és virtuális hálózatról, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md) privát DNS-zóna végzi.
+
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Hibrid forgatókönyv":::
 
 ## <a name="next-steps"></a>Következő lépések
 - [További tudnivalók a privát végpontokról](private-endpoint-overview.md)

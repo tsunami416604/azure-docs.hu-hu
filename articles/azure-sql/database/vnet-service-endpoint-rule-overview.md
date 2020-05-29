@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: a89fd0ba39de3d4528dda44280d02a993bedd6b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047355"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171140"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -208,7 +208,7 @@ A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *vir
 
 *Hiba feloldása:* Adja meg az ügyfél IP-címét IP-szabályként. Ezt az Azure Portal Tűzfal panelén végezheti el.
 
-<a name="anchor-how-to-by-using-firewall-portal-59j" />
+<a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>A portál létrehozhat egy virtuális hálózati szabályt
 
@@ -236,7 +236,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 - A megfelelő végpont-típus neve a **Microsoft. SQL**.
 - Ha az alhálózat nem címkézhető a típus nevével, tekintse [meg az alhálózat ellenőrzése végpontot][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
-<a name="a-portal-steps-for-vnet-rule-200" />
+<a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
@@ -275,14 +275,14 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 > - **Törölve:** Csak a törlési műveletre vonatkozik, és azt jelzi, hogy a szabály törölve lett, és már nem érvényes.
 > - **Inprogress:** Azt jelzi, hogy a művelet folyamatban van. A régi szabály akkor érvényes, ha a művelet ebben az állapotban van.
 
-<a name="anchor-how-to-links-60h" />
+<a name="anchor-how-to-links-60h"></a>
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 - [Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek

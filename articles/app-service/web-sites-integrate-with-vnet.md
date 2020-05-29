@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770840"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170783"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása Azure-beli virtuális hálózattal
 
@@ -117,17 +117,17 @@ Ha átjáróval megkövetelt VNet-integrációt használ a társításhoz, néh�
 
 1. Adjon hozzá egy egyenrangú kapcsolatot azon a VNet, amelyhez az alkalmazás csatlakozik. A társítási kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés** engedélyezése beállítást, és válassza a **továbbított forgalom** engedélyezése és az **átjáró átvitelének**engedélyezése lehetőséget.
 1. Hozzon létre egy egyenrangú kapcsolatot a VNet, amely a csatlakoztatott VNet van csatlakoztatva. Amikor hozzáadja a társítási kapcsolatot a cél VNet, engedélyezze a **virtuális hálózati hozzáférés** engedélyezése és a **továbbított forgalom** engedélyezése és a **távoli átjárók engedélyezése**beállítást.
-1. Nyissa meg a **app Service terv** > **hálózatkezelés** > **VNet-integráció** felhasználói felületét a portálon. Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg annak a VNet a VNet, amelyhez az alkalmazás csatlakoztatva van.
+1. Nyissa meg a **app Service terv**  >  **hálózatkezelés**  >  **VNet-integráció** felhasználói felületét a portálon. Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg annak a VNet a VNet, amelyhez az alkalmazás csatlakoztatva van.
 
 ## <a name="manage-vnet-integration"></a>VNet-integráció kezelése
 
-A VNet való csatlakozás és a kapcsolat bontása alkalmazási szinten történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Servicei csomag szintjén találhatók. Az alkalmazás > **hálózatkezelés** > **VNet-integrációs** portálján megtekintheti a VNet adatait. A app Servicei terv szintjén hasonló információkat tekinthet meg a**hálózatkezelés** > **VNet-integrációs** portál **app Service megtervezése** > című témakörben.
+A VNet való csatlakozás és a kapcsolat bontása alkalmazási szinten történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Servicei csomag szintjén találhatók. Az alkalmazás > **hálózatkezelés**  >  **VNet-integrációs** portálján megtekintheti a VNet adatait. A app Servicei terv szintjén hasonló információkat tekinthet meg a **App Service plan**  >  **hálózatkezelés**  >  **VNet-integrációs** portál app Service megtervezése című témakörben.
 
 Az egyetlen művelet, amelyet a VNet-integrációs példány alkalmazás nézetében elvégezhet, az alkalmazás leválasztása a VNet, amelyhez jelenleg csatlakozik. Az alkalmazás VNet való leválasztásához válassza a **Leválasztás**lehetőséget. Az alkalmazás újraindul, amikor leválaszt egy VNet. A kapcsolat bontása nem módosítja a VNet. Az alhálózat vagy átjáró nem törlődik. Ha ezt követően törölni szeretné a VNet, először válassza le az alkalmazást a VNet, és törölje az abban lévő erőforrásokat, például az átjárókat.
 
 A App Service terv VNet-integrációs felhasználói felülete megjeleníti az App Service-csomagban lévő alkalmazások által használt összes VNet-integrációt. Az egyes VNet részleteinek megtekintéséhez válassza ki azt a VNet, amelyre kíváncsi. Az átjárók számára szükséges VNet-integráció két műveletet hajt végre:
 
-* **Szinkronizáló hálózat**: a szinkronizálási hálózati művelet csak az átjárótól függő VNet-integrációs szolgáltatás esetében használatos. A szinkronizálási hálózati művelet végrehajtása biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha hozzáadja vagy megváltoztatja a VNet DNS-t, hajtson végre egy szinkronizálási hálózati műveletet. Ez a művelet újraindítja az összes olyan alkalmazást, amely ezt a VNet használja.
+* **Szinkronizáló hálózat**: a szinkronizálási hálózati művelet csak az átjárótól függő VNet-integrációs szolgáltatás esetében használatos. A szinkronizálási hálózati művelet végrehajtása biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha hozzáadja vagy megváltoztatja a VNet DNS-t, hajtson végre egy szinkronizálási hálózati műveletet. Ez a művelet újraindítja az összes olyan alkalmazást, amely ezt a VNet használja. Ez a művelet nem működik, ha egy alkalmazást és egy, a különböző előfizetésekhez tartozó vnet használ.
 * **Útvonalak hozzáadása**: útvonalak hozzáadása a kimenő forgalmat a VNet.
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Átjáró – kötelező VNet integrációs Útválasztás
