@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: cfb4e0e563bc604b0f03dcc5fb128c87d9710430
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ae329ece6432444162f060be283e10d9088c23db
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696483"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124340"
 ---
-| Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | Saját üzemeltetésű [IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
+| Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | [Helyi integrációs modul](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Cognitive Search index](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
+| &nbsp; |[Az Azure Cognitive Search indexe](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[MongoDB-hez készült Azure Cosmos DB API](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Adatkezelő](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
+| &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[1. generációs Azure Data Lake Storage](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
@@ -29,9 +29,9 @@ ms.locfileid: "83696483"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Felügyelt Azure SQL Database-példány](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Felügyelt Azure SQL-példány](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics (korábban SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
 | **Adatbázis** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |✓ | |✓ |✓  |
@@ -49,10 +49,10 @@ ms.locfileid: "83696483"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (előzetes verzió)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse az Open hub használatával](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
-| &nbsp; |[SAP Business Warehouse MDX használatával](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse via Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse via MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
-| &nbsp; |[SAP-táblázat](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
+| &nbsp; |[SAP-tábla](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |✓ | | |✓  |
@@ -97,9 +97,9 @@ ms.locfileid: "83696483"
 |  |[SharePoint Online-lista](../articles/data-factory/connector-sharepoint-online-list.md) |✓ | |✓ |✓ |
 | &nbsp; |[Shopify (előzetes verzió)](../articles/data-factory/connector-shopify.md) |✓ | |✓ |✓  |
 | &nbsp; |[Square (előzetes verzió)](../articles/data-factory/connector-square.md) |✓ | |✓ |✓  |
-| &nbsp; |[Webes tábla (HTML-táblázat)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
+| &nbsp; |[Webtábla (HTML-tábla)](../articles/data-factory/connector-web-table.md) |✓ | | |✓  |
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |✓ | |✓ |✓  |
 | &nbsp; |[Zoho (előzetes verzió)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Ha egy összekötő *előzetesen*van megjelölve, kipróbálhatja, és visszajelzést küldhet nekünk. Ha az előzetes verziójú összekötőket szeretné használni a megoldásban, forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/).
+> Az *előzetes verzió* jelzéssel ellátott összekötőket kipróbálhatja, és visszajelzést küldhet róluk. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).

@@ -73,6 +73,8 @@
       href: spring-cloud-howto-persistent-storage.md
     - name: Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
       href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: Az Azure Spring Cloud-alkalmazás rendszer által hozzárendelt felügyelt identitásának engedélyezése
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
 - name: DevOps-telepítés az Azure Spring Cloudba
   items:
     - name: CI/CD az Azure DevOps használatával

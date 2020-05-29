@@ -82,6 +82,8 @@
           href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: Kötegelt feldolgozási üzenetek
           href: logic-apps-batch-process-send-receive-messages.md
+        - name: Üzenetek küldése sorrendben – Sequential Convoy
+          href: send-related-messages-sequential-convoy.md
         - name: JSON-definíciók készítése
           href: logic-apps-author-definitions.md
         - name: Tartalomtípusok kezelése

@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Belső terheléselosztó – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: Hibaelhárítás
-      items:
-        - name: Az Azure Load Balancer hibaelhárítása
-          href: load-balancer-troubleshoot.md
-        - name: Gyakori üzembehelyezési hibák elhárítása
-          href: load-balancer-common-deployment-errors.md
+- name: Hibaelhárítás
+  items:
+    - name: Az Azure Load Balancer hibaelhárítása
+      href: load-balancer-troubleshoot.md
+    - name: Gyakori üzembehelyezési hibák elhárítása
+      href: load-balancer-common-deployment-errors.md
+    - name: Gyakori kimenő kapcsolati problémák elhárítása
+      href: troubleshoot-outbound-connection.md
 - name: Referencia
   items:
     - name: Kódminták

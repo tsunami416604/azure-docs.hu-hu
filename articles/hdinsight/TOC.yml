@@ -772,6 +772,8 @@
               href: ./hadoop/hdinsight-use-hive.md
             - name: Az Apache Hive-nézet használata
               href: ./hadoop/apache-hadoop-use-hive-ambari-view.md
+            - name: Csatlakozás Apache Beeline-hoz
+              href: ./hadoop/connect-install-beeline.md
             - name: Az Apache Hive Beeline használata
               href: ./hadoop/apache-hadoop-use-hive-beeline.md
             - name: Grafana használata

@@ -13,22 +13,22 @@ ms.locfileid: "76766465"
 ---
 ## <a name="use-azure-cloud-shell"></a>Az Azure Cloud Shell használata
 
-Az Azure gazdagépek Azure Cloud Shell, amely egy interaktív rendszerhéj-környezet, amelyet a böngészőn keresztül használhat. Az Azure-szolgáltatásokkal való együttműködéshez a bash vagy a PowerShell Cloud Shell is használható. A cikkben szereplő kódot a Cloud Shell előre telepített parancsokkal futtathatja anélkül, hogy bármit telepíteni kellene a helyi környezetre.
+Az Azure által üzemeltetett Azure Cloud Shell egy interaktív felület, amelyet a böngészőből használhat. A Bash vagy a PowerShell segítségével is használhatja a Cloud Shellt az Azure-szolgáltatásokhoz. Az ebben a cikkben található kódot a Cloud Shell előtelepített parancsaival is futtathatja, így semmit nem kell a helyi környezetben telepítenie.
 
-Azure Cloud Shell elindítása:
+Az Azure Cloud Shell indítása:
 
-| Beállítás | Példa/hivatkozás |
+| Lehetőség | Példa/hivatkozás |
 |-----------------------------------------------|---|
-| Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. A **kipróbálás** lehetőség kiválasztásával a kód nem másolja automatikusan Cloud Shellba. | ![Példa a Azure Cloud Shell kipróbálására](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| [https://shell.azure.com](https://shell.azure.com)Nyissa meg a gombot, vagy kattintson a **Cloud Shell elindítása** gombra a Cloud Shell megnyitásához a böngészőben. | [![Cloud Shell elindítása új ablakban](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| Kattintson a **Cloud Shell** gombra a [Azure Portal](https://portal.azure.com)jobb felső sarkában található menüsorban. | ![Cloud Shell gomb a Microsoft Azure Portal-on](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
+| Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. A **Kipróbálás** lehetőségre kattintással nem másolja a kódot automatikusan a Cloud Shellbe. | ![Példa az Azure Cloud Shell Kipróbálás lehetőségére](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Látogasson el a [https://shell.azure.com](https://shell.azure.com) webhelyre, vagy kattintson a **Cloud Shell indítása** gombra a böngészőben. | [![A Cloud Shell indítása új ablakban](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Az [Azure Portal](https://portal.azure.com) jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. | ![Cloud Shell gomb a Microsoft Azure Portal-on](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
-A következő cikkben szereplő kód futtatásához Azure Cloud Shell:
+Az ebben a cikkben szereplő kód Azure Cloud Shellben való futtatásához:
 
-1. Cloud Shell elindítása.
+1. Indítsa el a Cloud Shellt.
 
-1. A kód másolásához kattintson a kód blokk **Másolás** gombjára.
+1. A kód másolásához válassza az adott kódblokkhoz tartozó **Másolás** gombot.
 
-1. Illessze be a kódot a Cloud Shell-munkamenetbe úgy, hogy a Windows és Linux rendszeren a CTRL SHIFT v **billentyűkombinációt**választja, + **Shift** + **V** vagy a **cmd** + **SHIFT** + **v** -t a MacOS rendszeren.
+1. Illessze be a kódot a Cloud Shell-munkamenetbe a **Ctrl**+**Shift**+**V** billentyűkombinációval Windows és Linux rendszeren, vagy a **Cmd**+**Shift**+**V** billentyűkombinációval macOS rendszeren.
 
-1. A kód futtatásához válassza az **ENTER billentyűt** .
+1. A kód futtatásához nyomja le az **Enter** billentyűt.

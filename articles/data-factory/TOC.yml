@@ -236,8 +236,8 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
-        - name: Felügyelt Azure SQL Database-példány
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Felügyelt Azure SQL-példány
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (korábban SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -697,7 +697,7 @@
       items:
         - name: SSIS-migrálás áttekintése
           href: scenario-ssis-migration-overview.md
-        - name: SSISDB-migrálás felügyelt Azure SQL Database-példányra
+        - name: SSISDB-migrálás felügyelt Azure SQL-példányra
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referencia
   items:

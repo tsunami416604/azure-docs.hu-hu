@@ -156,6 +156,8 @@
       href: templates-cloud-consistency.md
     - name: Üzembehelyezési módok
       href: deployment-modes.md
+    - name: Üzembehelyezési előzmények törlései
+      href: deployment-history-deletions.md
     - name: Törlés Teljes mód esetén
       href: complete-mode-deletion.md
     - name: Deployment Manager

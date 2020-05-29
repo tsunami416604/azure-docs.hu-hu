@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: Privát végpont létrehozása – Azure CLI
       href: create-private-endpoint-cli.md
+    - name: Privát végpont létrehozása – ARM-sablon
+      href: create-private-endpoint-template.md
     - name: Privát kapcsolati szolgáltatás létrehozása – Portal
       href: create-private-link-service-portal.md
     - name: Privát kapcsolati szolgáltatás létrehozása – PowerShell

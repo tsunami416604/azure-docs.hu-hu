@@ -11,12 +11,12 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68669669"
 ---
-Az Azure-beli Function alkalmazáshoz tartozó folyamatos átviteli naplók bekapcsolása:
+A streamnaplók bekapcsolása az Azure-ban a függvényalkalmazáshoz:
 
-1. Válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a parancsot **Azure functions: Start streaming logs**.
+1. Az F1 billentyűparanccsal nyissa meg a parancskatalógust, és keresse meg, majd futtassa az **Azure Functions: Start Streaming Logs** parancsot.
 
-1. Válassza ki a Function alkalmazást az Azure-ban, majd válassza az **Igen** lehetőséget az alkalmazás naplózásának engedélyezéséhez a Function alkalmazásban.
+1. Válassza ki a függvényalkalmazást az Azure-ban, majd válassza az **Igen** lehetőséget, hogy engedélyezze az alkalmazásnaplózást a függvényalkalmazás számára.
 
-1. Aktiválja funkcióit az Azure-ban. Figyelje meg, hogy a naplózási adatokat a rendszer a Visual Studio Code kimenet ablakában jeleníti meg.
+1. Aktiválja a függvényeket az Azure-ban. Ekkor a Visual Studio Code Output (Kimenet) ablakában naplózási adatok jelennek meg.
 
-1. Ha elkészült, ne felejtse el futtatni a (z) **Azure functions parancsot: a streaming-naplók leállítása** a Function alkalmazás naplózásának letiltásához.
+1. Ha végzett, ne feledje futtatni az **Azure Functions: Stop Streaming Logs** parancsot a függvényalkalmazás naplózásának leállításához.

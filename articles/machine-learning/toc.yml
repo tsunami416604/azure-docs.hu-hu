@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: Gépi tanulási feladatok meghatározása
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: A jellemzősítés az automatizált gépi tanulásban (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: Automatizált gépi tanulás használata a gépi tanulási folyamatokban (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
@@ -449,8 +452,6 @@
     - name: Tervezőmodul-referencia
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: Nagy léptékű gépi tanulás
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: Adatreferencia monitorozása
       href: monitor-resource-reference.md
     - name: Machine Learning-folyamatok – YAML-referencia

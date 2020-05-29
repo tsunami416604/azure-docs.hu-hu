@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: Értesítési központ létrehozása – Azure CLI
       href: create-notification-hub-azure-cli.md
-    - name: Értesítési központ létrehozása – Azure Resource Manager-sablon
+    - name: Értesítési központ létrehozása – ARM-sablon
       href: create-notification-hub-template.md
     - name: Értesítési központ konfigurálása
       href: configure-notification-hub-portal-pns-settings.md

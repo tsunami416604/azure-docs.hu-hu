@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: A felügyelt Azure SQL-példány dokumentációja
+summary: A felügyelt Azure SQL-példány dokumentációja, amely egy, a Microsoft SQL Server legújabb, stabil verzióján alapuló, Azure-beli felügyelt példány.
+metadata:
+  title: A felügyelt Azure SQL-példány dokumentációja
+  description: A felügyelt Azure SQL-példány dokumentációja, amely egy, a Microsoft SQL Server legújabb, stabil verzióján alapuló, Azure-beli felügyelt példány.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 967bf5461a1f4e6cf8869bcea6a0e7c74204d1a1
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023619"
+landingContent:
+- title: Felügyelt Azure SQL-példány
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Felügyelt SQL-példány létrehozása
+      url: instance-create-quickstart.md
+  - linkListType: concept
+    links:
+    - text: Újdonságok
+      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: Mi az a felügyelt SQL-példány?
+      url: sql-managed-instance-paas-overview.md
+    - text: Vásárlási lehetőségek
+      url: ../database/purchasing-models.md
+    - text: Szolgáltatásszintek
+      url: ../database/service-tiers-general-purpose-business-critical.md
+    - text: Tranzakciós replikáció
+      url: replication-transactional-overview.md
+    - text: Migrálás az SQL Serverről
+      url: migrate-to-instance-from-sql-server.md
+    - text: A T-SQL és az SQL Server közötti eltérések
+      url: transact-sql-tsql-differences-sql-server.md
+- title: Magas szintű biztonság
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Biztonsági képességek
+      url: ../database/security-overview.md
+    - text: Ajánlott biztonsági eljárások
+      url: ../database/security-best-practice.md
+    - text: Bejelentkezések, felhasználói fiókok, szerepkörök és engedélyek
+      url: ../database/logins-create-manage.md
+    - text: Azure Active Directory
+      url: ../database/authentication-aad-overview.md
+    - text: Naplózás
+      url: auditing-configure.md
+    - text: Transzparens adattitkosítás (TDE)
+      url: ../database/transparent-data-encryption-tde-overview.md
+    - text: Dinamikus adatmaszkolás
+      url: ../database/dynamic-data-masking-overview.md
+    - text: Nyilvános végpontok
+      url: public-endpoint-overview.md
+- title: Referencia
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Oktatási célú SQL-erőforrások
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI-minták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell-példák
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM-sablonminták
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Migrálási útmutató
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: Az üzletmenet folytonossága
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Az üzletmenet folytonossága
+      url: ../database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: Magas rendelkezésre állás
+      url: ../database/high-availability-sla.md
+    - text: Automatikus feladatátvételi csoportok
+      url: ../database/auto-failover-group-overview.md
+    - text: Automatikus biztonsági mentések
+      url: ../database/automated-backups-overview.md
+    - text: Helyreállítás biztonsági mentésből
+      url: ../database/recovery-using-backups.md
+    - text: Biztonsági mentés hosszú távú megőrzése
+      url: ../database/long-term-retention-overview.md
+- title: Példánykészletek
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Mi az a példánykészlet?
+      url: instance-pools-overview.md
+    - text: Konfigurálás
+      url: instance-pools-configure.md

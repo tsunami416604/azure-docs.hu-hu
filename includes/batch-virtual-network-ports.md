@@ -49,41 +49,41 @@ A virtuális hálózat további követelményei eltérhetnek attól függően, h
 **További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban.
 
 > [!IMPORTANT]
->Minden 50 dedikált csomóponthoz (vagy 20 alacsony prioritású csomóponthoz) a Batch kiosztása: egy hálózati biztonsági csoport (NSG), egy nyilvános IP-cím és egy terheléselosztó. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagyméretű készletek esetén előfordulhat, hogy egy vagy több ilyen erőforráshoz kvótát kell emelni.
+>Minden 50 dedikált csomóponthoz (vagy minden 20 alacsony prioritású csomóponthoz) a Batch lefoglal 1 hálózati biztonsági csoportot (NSG-t), 1 nyilvános IP-címet és 1 terheléselosztót. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
 
-#### <a name="network-security-groups-batch-default"></a>Hálózati biztonsági csoportok: batch alapértelmezett
+#### <a name="network-security-groups-batch-default"></a>Hálózati biztonsági csoportok: Batch-alapértelmezés
 
-Az alhálózatnak engedélyeznie kell a Batch szolgáltatás bejövő kommunikációját, hogy képes legyen a feladatok ütemezhetnek a számítási csomópontokon, és a kimenő kommunikáció az Azure Storage szolgáltatással vagy más erőforrásokkal való kommunikációhoz szükséges. A virtuális gép konfigurációjában lévő készletek esetében a Batch a számítási csomópontokhoz csatolt hálózati adapterek (NIC) szintjén adja hozzá a NSG. Ezek a NSG a következő további szabályokkal vannak konfigurálva:
+Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal, a számítási feladat igényeinek megfelelően. A virtuálisgép-konfigurációban lévő készletekhez a Batch az NSG-ket a számítási csomópontokhoz kapcsolt hálózati adapterek (NIC-k) szintjén adja hozzá. Ezek az NSG-k a következő kiegészítő szabályokkal vannak konfigurálva:
 
-* Bejövő TCP-forgalom a 29876-es és a `BatchNodeManagement` 29877-es portokon a szolgáltatás címkéjének megfelelő batch szolgáltatás IP-címeitől.
-* A bejövő TCP-forgalom a 22-es porton (Linux-csomópontok) vagy a 3389-es porton (Windows-csomópontok) keresztül a távoli hozzáférés engedélyezéséhez. A Linuxon futó, több példányos feladatokhoz (például MPI) is engedélyezni kell az SSH-port 22-es forgalmát a Batch számítási csomópontokat tartalmazó alhálózat IP-címei számára. Ez az alhálózati szintű NSG-szabályok (lásd alább) esetében blokkolva lehet.
-* Kimenő forgalom bármilyen porton keresztül a virtuális hálózathoz. Ez az alhálózati szintű NSG-szabályok alapján módosítható (lásd alább).
-* Kimenő forgalom bármely porton az interneten. Ez az alhálózati szintű NSG-szabályok alapján módosítható (lásd alább).
+* A Batch szolgáltatás a `BatchNodeManagement` szolgáltatáscímkének megfelelő IP-címeiről érkező bejövő TCP-forgalom a 29876-os és a 29877-es portokon keresztül.
+* A bejövő TCP-forgalom a 22-es porton (Linux-csomópontok) vagy a 3389-es porton (Windows-csomópontok) keresztül a távoli hozzáférés engedélyezéséhez. A Linuxon futó többpéldányos feladatok bizonyos típusai (például MPI) esetében is engedélyezni kell a 22-es SSH-port forgalmát a Batch számítási csomópontokat tartalmazó alhálózat IP-címei számára. Ez az alhálózati szintű NSG-szabályok (lásd alább) alapján blokkolható.
+* Kimenő forgalom bármilyen porton keresztül a virtuális hálózathoz. Ez az alhálózati szintű NSG-szabályok (lásd alább) alapján módosítható.
+* Kimenő forgalom bármilyen porton keresztül az internetre. Ez az alhálózati szintű NSG-szabályok (lásd alább) alapján módosítható.
 
 > [!IMPORTANT]
-> Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, ellenkező esetben a felhasználó által kezdeményezett műveletek, például a készlet törlése miatt megakadályozhatja az erőforrások törlését.
+> Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. Emellett nem szabad erőforrás-zárolást alkalmazni a Batch által létrehozott semmilyen erőforrásra, mivel az a felhasználó által kezdeményezett műveletek, például egy készlet törlése eredményeképpen megakadályozhatja az erőforrások eltávolítását.
 
-#### <a name="network-security-groups-specifying-subnet-level-rules"></a>Hálózati biztonsági csoportok: alhálózat szintű szabályok megadására
+#### <a name="network-security-groups-specifying-subnet-level-rules"></a>Hálózati biztonsági csoportok: Alhálózati szintű szabályok meghatározása
 
-A virtuális hálózati alhálózat szintjén nem szükséges megadni a NSG, mert a Batch konfigurálja a saját NSG (lásd fent). Ha van olyan NSG társítva az alhálózathoz, ahol a Batch számítási csomópontok telepítve vannak, vagy ha egyéni NSG szabályokat szeretne alkalmazni az alapértelmezett beállítások felülbírálására, akkor a NSG-t legalább a bejövő és kimenő biztonsági szabályokkal kell konfigurálnia, ahogy az a következő táblázatban látható.
+Nem szükséges megadnia NSG-t a virtuális hálózat alhálózati szintjén, mert a Batch konfigurálja a saját NSG-it (lásd fentebb). Ha rendelkezik olyan NSG-vel, amely ahhoz az alhálózathoz van társítva. amelyen a Batch számítási csomópontok üzembe lettek helyezve, vagy egyéni NSG-szabályokat szeretne használni az alkalmazott alapértelmezett beállítások felülbírálására, akkor legalább a következő táblázatokban látható bejövő és kimenő biztonsági szabályokkal kell konfigurálnia az adott NSG-t.
 
-Konfigurálja a bejövő forgalmat a 3389 (Windows) vagy a 22 (Linux) porton, ha engedélyezni szeretné a külső forrásokból származó számítási csomópontok távoli elérését. Előfordulhat, hogy engedélyezni kell a 22-es portra vonatkozó szabályokat a Linuxon, ha több példányra vonatkozó, bizonyos MPI-futtatókörnyezetekkel kapcsolatos feladatokra van szüksége. Ezen portok forgalmának engedélyezése nem feltétlenül szükséges ahhoz, hogy a készlet számítási csomópontjai felhasználhatók legyenek.
+Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 22-es porton (Linux) keresztül, ha engedélyeznie kell a számítási csomópontok külső forrásból való távoli elérését. Linux rendszeren előfordulhat, hogy engedélyezni kell a 22-es portra vonatkozó szabályokat, ha többpéldányos, bizonyos MPI-futtatókörnyezetekkel rendelkező feladatok támogatására van szüksége. E portok forgalmának engedélyezése nem feltétlenül szükséges a készletezett számítási csomópontok használhatóságához.
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrásoldali szolgáltatás címkéje | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
+| Forrás IP-címek | Forrás szolgáltatáscímke | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| N/A | `BatchNodeManagement`[Szolgáltatás címkéje](../articles/virtual-network/security-overview.md#service-tags) (ha regionális változatot használ, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
-| Felhasználói forrás IP-címei a számítási csomópontok és/vagy a számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladataihoz, ha szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
+| N/A | `BatchNodeManagement` [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
+| Felhasználók forrás IP-címei a számítási csomópontok és/vagy egy számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladatai esetében, amennyiben szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
 
 > [!WARNING]
-> A Batch szolgáltatás IP-címei idővel változhatnak. Ezért erősen ajánlott a NSG-szabályokhoz használni `BatchNodeManagement` a szolgáltatási címkét (vagy a regionális változatot). Nem ajánlott a NSG-szabályokat közvetlenül a Batch szolgáltatás IP-címeivel feltölteni.
+> A Batch szolgáltatás IP-címei idővel módosulhatnak. Ezért kifejezetten ajánlott az NSG-szabályokhoz a `BatchNodeManagement` szolgáltatáscímke (vagy helyi változatának) használata. Nem ajánlott az NSG-szabályok feltöltése közvetlenül a Batch szolgáltatás IP-címeivel.
 
 **Kimenő biztonsági szabályok**
 
-| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protocol (Protokoll) | Műveletek |
+| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(regionális változat használata esetén a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
+| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Készletek a Cloud Services konfigurációjában
 
@@ -103,17 +103,17 @@ Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejö
 
 Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
 
-Konfigurálja a bejövő forgalmat a Windows 3389-es portján, ha engedélyeznie kell az RDP-hozzáférést a készlet csomópontjaihoz. Ez nem szükséges a készletezett csomópontok használhatóságához.
+Windows rendszer esetében csak akkor konfigurálja a bejövő forgalmat a 3389-es porton keresztül, ha engedélyeznie kell az RDP-hozzáférést a készletezett csomópontokhoz. Ez nem szükséges a készletezett csomópontok használhatóságához.
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
+| Forrás IP-címek | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- |
 Bármelyik <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás minden egyes csomópont szintjén alkalmaz egy ACL-szabályt, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Bármelyik | 10100, 20100, 30100 | TCP | Engedélyezés |
-| Nem kötelező, ha engedélyezni szeretné a számítási csomópontok RDP-hozzáférését. | * | Bármelyik | 3389 | TCP | Engedélyezés |
+| Nem kötelező, a számítási csomópontokhoz való RDP-hozzáférés engedélyezésére szolgál. | * | Bármelyik | 3389 | TCP | Engedélyezés |
 
 **Kimenő biztonsági szabályok**
 
-| Forrás | Forrásportok | Cél | Célportok | Protocol (Protokoll) | Műveletek |
+| Forrás | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- |
 | Bármelyik | * | Bármelyik | 443  | Bármelyik | Engedélyezés |

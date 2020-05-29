@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: Állapotmonitorozás konfigurációja
           href: insights/container-insights-health-monitors-config.md
+        - name: A költségek és a használat kezelése
+          href: insights/container-insights-cost.md
         - name: Monitorozás letiltása
           items:
             - name: AKS monitorozásának letiltása
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: Hálózatok
           href: insights/network-insights-overview.md
         - name: Storage
