@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688329"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170800"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>A "502 hibás átjáró" és "503 szolgáltatás nem érhető el" HTTP-hibák elhárítása Azure App Service
 a "502 hibás átjáró" és a "503 szolgáltatás nem érhető el" gyakori hibák a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714)üzemeltetett alkalmazásban. Ez a cikk segít a hibák elhárításában.
@@ -38,7 +38,7 @@ A hibaelhárítás három különálló feladatra osztható, szekvenciális sorr
 
 [App Service](overview.md) az egyes lépésekben különböző lehetőségeket biztosít.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. az alkalmazások viselkedésének megfigyelése és figyelése
 #### <a name="track-service-health"></a>Szolgáltatás állapotának nyomon követése
@@ -62,7 +62,7 @@ További információkért lásd:
 * [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
 * [Riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. adatgyűjtés
 #### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszköz használata
@@ -73,7 +73,7 @@ App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vag
 #### <a name="use-the-kudu-debug-console"></a>A kudu hibakeresési konzoljának használata
 A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt nevezzük az alkalmazás *kudu-konzoljának* vagy *SCM-irányítópultjának* .
 
-Ehhez az irányítópulthoz az **https://&lt;>. SCM.azurewebsites.net/** hivatkozást kell megnyitnia.
+Ehhez az irányítópulthoz az **https:// &lt;>. SCM.azurewebsites.net/** hivatkozást kell megnyitnia.
 
 A kudu által biztosított néhány dolog:
 
@@ -86,7 +86,7 @@ A kudu egy másik hasznos funkciója, hogy ha az alkalmazás első alkalommal ki
 
 A kudu-ben elérhető szolgáltatásokkal kapcsolatos további információkért lásd: az [Azure websites online eszközei, amelyekről érdemes tudni](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. a probléma enyhítése
 #### <a name="scale-the-app"></a>Az alkalmazás méretezése

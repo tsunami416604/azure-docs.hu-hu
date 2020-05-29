@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: e193b272460fe97f599adff414fcac6e80648104
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6025c4c694da1e036201aef35ab73500429f7e2c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738370"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170562"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partneri témakörök
 ![Auth0 embléma](./media/auth0-overview/auth0-logo.png)
@@ -23,26 +23,29 @@ A Auth0-partneri témakör lehetővé teszi, hogy a Auth0's rendszer által kibo
 
 Az integráció lehetővé teszi, hogy magas szintű megbízhatósággal továbbítsa a Auth0-naplózási eseményeket az Azure-ba. Ott felhasználhatja az eseményeket kedvenc Azure-erőforrásaival. Ez az integráció lehetővé teszi az események megválaszolása, az elemzések, a biztonsági problémák figyelése és a más, hatékony adatfolyamatokkal való interakciót.
 
-Az Auth0 és az Azure-t használó szervezetek esetében ez az integráció lehetővé teszi, hogy zökkenőmentesen integrálja az adatait a teljes verembe. 
+Az Auth0-t és az Azure-t használó szervezetek esetében ez az integráció lehetővé teszi, hogy zökkenőmentesen integrálja az adatait a teljes verembe. 
  
 ## <a name="available-event-types"></a>Elérhető események típusai
-Az elérhető Auth0-események teljes listája és azok leírása [itt](https://auth0.com/docs/logs/references/log-event-type-codes)érhető el.
+Az elérhető Auth0-események teljes listája és azok leírása elérhető [ezen a webhelyen](https://auth0.com/docs/logs/references/log-event-type-codes).
 
 ## <a name="use-cases"></a>Használati esetek
 
 ### <a name="engage-with-your-users"></a>Felhasználói részvétel
-Az erős felhasználói élmény biztosítása kritikus fontosságú a forgalom csökkentése és a felhasználók megtartása érdekében. A Auth0-események használatával Azure Functions és Logic Apps segítségével testre szabható alkalmazási élményeket biztosíthat. 
+Az erős felhasználói élmény biztosítása kritikus fontosságú a forgalom csökkentése és a felhasználók megtartása érdekében. A Auth0-események Azure Functions és Azure Logic Apps használatával történő kihasználása több testre szabott alkalmazási élményt biztosít. 
 
 ### <a name="understand-user-behavior"></a>A felhasználó viselkedésének megértése
-Ismerje meg, hogy mikor férhetnek hozzá a felhasználók a termékhez, hol vannak bejelentkezve, és milyen eszközöket használnak. A fenti jelek nyomon követésével megismerheti a leginkább fontos terméktartományoknak. Ezek a jelek segítenek eldönteni, hogy mely böngészők és eszközök támogatják a támogatást, a nyelveket, hogy az alkalmazást a alkalmazásban lokalizálják, és a maximális forgalmi idő szerint. 
+Ismerje meg, hogy mikor férhetnek hozzá a felhasználók a termékhez, hol vannak bejelentkezve, és milyen eszközöket használnak. A fenti jelek nyomon követésével megismerheti a leginkább fontos terméktartományoknak. Ezek a jelek segítenek a következő meghatározásában:
+- A támogatni kívánt böngészők és eszközök. 
+- Milyen nyelveket kell honosítani az alkalmazásához. 
+- A maximális forgalmának időpontjában. 
 
-### <a name="manage-user-data"></a>Felhasználói adatkezelés
+### <a name="manage-user-data"></a>Felhasználói adatok kezelése
 A felhasználói műveletek megőrzése és naplózása létfontosságú a biztonság fenntartásához és az iparági szabályozások követéséhez. A felhasználói adatok szerkesztésének, eltávolításának vagy exportálásának lehetősége egyre fontosabbá válik az adatvédelmi törvények, például az Európai Unió Általános adatvédelmi rendelet (GDPR) követése érdekében.
 
 ### <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
-Az elosztott rendszerek védelme fontos a biztonsági monitorozás és az incidensek reagálási eljárásainak kombinálásával. Ezért fontos, hogy az összes adathalmazt egy helyen tárolja, és figyelje a teljes veremet. 
+A biztonsági figyelés és az incidensek válaszának összevonása fontos az elosztott rendszerek védelme során. Ezért fontos, hogy az összes adathalmazt egy helyen tárolja, és figyelje a teljes veremet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Az Auth0-partneri témakör használata](auth0-how-to.md)

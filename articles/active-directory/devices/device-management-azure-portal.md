@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79474d85d9b2349c79aeff0c33ffed9afad690fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262242"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169699"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az eszközök identitásának kezelése a Azure Portal használatával
 
@@ -27,12 +27,14 @@ A cikk tartalma:
 - Feltételezi, hogy ismeri a [Azure Active Directory eszköz-identitások kezelésének bevezetését](overview.md)
 - Információt nyújt az eszköz identitásának az Azure AD-portál használatával történő kezeléséről
 
+![A Azure Portal összes eszköz nézete](./media/device-management-azure-portal/all-devices-azure-portal.png)
+
 ## <a name="manage-device-identities"></a>Eszközidentitások kezelése
 
 Az Azure AD-portál központi helyet biztosít az eszköz identitásának kezeléséhez. Ezt a helyet [közvetlen hivatkozással](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) vagy a következőkkel érheti el:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Tallózással keresse meg **Azure Active Directory** > **eszközöket**.
+1. Tallózással keresse meg **Azure Active Directory**  >  **eszközöket**.
 
 Az **eszközök** lap a következőket teszi lehetővé:
 
@@ -47,7 +49,7 @@ Az eszköz identitásának Azure AD-portálon való kezeléséhez az eszközökn
 
 Az eszközbeállítások lapon konfigurálhatja az eszköz identitásával kapcsolatos beállításokat:
 
-![Intune-eszköz kezelése](./media/device-management-azure-portal/21.png)
+![Az Azure AD-hez kapcsolódó eszközbeállítások](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - A **felhasználók csatlakozhatnak az eszközökhöz az Azure ad** -ben – ezzel a beállítással kiválaszthatja azokat a felhasználókat, akik regisztrálhatják az eszközeiket az Azure ad-hez csatlakoztatott eszközökként. Az alapértelmezett érték az **összes**.
 
@@ -55,7 +57,7 @@ Az eszközbeállítások lapon konfigurálhatja az eszköz identitásával kapcs
 > Előfordulhat, hogy a **felhasználók az Azure ad-be való csatlakoztatáshoz** csak az Azure ad-csatlakozásra vonatkoznak a Windows 10 rendszeren.
 
 - **További helyi rendszergazdák az Azure ad-hez csatlakoztatott eszközökön** : kiválaszthatja azokat a felhasználókat, akik helyi rendszergazdai jogosultságokat kapnak az eszközön. Az itt hozzáadott felhasználók az Azure AD-ben az *eszköz-rendszergazdák* szerepkörbe kerülnek. A globális rendszergazdák az Azure AD-ben és az eszközök tulajdonosai alapértelmezés szerint helyi rendszergazdai jogosultságokat kapnak. Ez a lehetőség egy prémium kiadású funkció, amely olyan termékeken keresztül érhető el, mint a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS).
-- A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és macOs-eszközök regisztrálását az Azure ad-ben. Ha a **nincs**lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. Az Office 365-hez készült Microsoft Intune vagy mobileszköz-felügyelettel (MDM) való regisztrációhoz regisztráció szükséges. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
+- A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és MacOS-eszközök regisztrálását az Azure ad-ben. Ha a **nincs**lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. Az Office 365-hez készült Microsoft Intune vagy mobileszköz-felügyelettel (MDM) való regisztrációhoz regisztráció szükséges. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
 - **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. A különböző Azure multi-Factor Authentication-szolgáltatásokkal kapcsolatos további információkért lásd: [Az Azure multi-Factor Authentication első lépései](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
@@ -82,13 +84,9 @@ Mindkét lehetőséggel megtekintheti a következőket:
 - Részletes áttekintést nyújt a regisztrált és csatlakoztatott eszközökről
 - Lehetővé teszi az eszközök általános felügyeleti feladatainak elvégzését
 
-![Minden eszköz](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* Ha megjelenik egy "hibrid Azure AD-hez csatlakoztatott" állapotú eszköz, amely a regisztrált oszlopban a "függőben" állapotban van, az azt jelzi, hogy az eszköz szinkronizálva lett az Azure AD-kapcsolattal, és az ügyféltől való regisztráció befejezésére vár. További információ a [hibrid Azure ad-csatlakozás megvalósításának megtervezéséről](hybrid-azuread-join-plan.md). További információt a cikkben, az [eszközök gyakori kérdéseiben](faq.md)találhat.
->
->   ![Függőben lévő eszközök](./media/device-management-azure-portal/75.png)
 >
 >* Egyes iOS-eszközök esetében az aposztrófokat tartalmazó eszközök nevei különböző karaktereket használhatnak, amelyek hasonlóak az aposztrófokhoz. Így az ilyen eszközök keresése kicsit trükkös – ha nem látja megfelelően a keresési eredményeket, ügyeljen arra, hogy a keresési karakterlánc a megfelelő aposztróf-karaktert tartalmazza.
 
@@ -97,13 +95,13 @@ Mindkét lehetőséggel megtekintheti a következőket:
 Globális rendszergazdaként vagy felhőalapú eszköz-rendszergazdaként felügyelheti a regisztrált vagy csatlakoztatott eszközöket. Az Intune szolgáltatás-rendszergazdák a következőket tehetik:
 
 - Eszközök frissítése – a példák olyan napi műveletek, mint például az eszközök engedélyezése/letiltása
-- Eszközök törlése – ha egy eszköz ki van vonva, és az Azure AD-ben kell törölni
+- Eszközök törlése – az eszköz kivonása és az Azure AD-ben való törlése
 
 Ez a szakasz az eszköz általános identitás-kezelési feladataival kapcsolatos információkat tartalmaz.
 
 ### <a name="manage-an-intune-device"></a>Intune-eszköz kezelése
 
-Ha Ön Intune-rendszergazda, akkor a **Microsoft Intuneként**megjelölt eszközöket kezelheti. Ha az eszköz nincs regisztrálva Microsoft Intune a "kezelés" beállítás szürkén jelenik meg.
+Ha Ön Intune-rendszergazda, akkor a **Microsoft Intuneként**megjelölt eszközöket kezelheti. Ha az eszköz nincs regisztrálva Microsoft Intune, a "kezelés" beállítás szürkén jelenik meg.
 
 ![Intune-eszköz kezelése](./media/device-management-azure-portal/31.png)
 
@@ -171,6 +169,27 @@ A BitLocker-kulcsok megtekintéséhez vagy másolásához az eszköz tulajdonos�
 > [!NOTE]
 > A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökhöz nem tartozik tulajdonos. Így ha az eszközt tulajdonos szerint keresi, és nem találta meg, akkor keresse meg az eszköz AZONOSÍTÓját.
 
+### <a name="device-list-filtering-preview"></a>Eszközök listájának szűrése (előzetes verzió)
+
+Korábban csak tevékenység és engedélyezett állapot alapján szűrheti az eszközök listáját. Ez az előzetes verzió lehetővé teszi az eszközök listájának szűrését az eszköz következő attribútumai alapján:
+
+- Engedélyezett állapot
+- Megfelelő állapot
+- Csatlakozás típusa (Azure AD-hez csatlakoztatott, hibrid Azure AD-hez csatlakoztatott, Azure AD-regisztráció)
+- Tevékenység-időbélyeg
+- Operációs rendszer
+- Eszköz típusa (nyomtatók, biztonságos virtuális gépek, megosztott eszközök, regisztrált eszközök)
+
+Az előnézet szűrési funkciójának engedélyezése a **minden eszköz** nézetben:
+
+![A szűrési Előnézet funkció engedélyezése](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Tallózással keresse meg **Azure Active Directory**  >  **eszközöket**.
+1. Válassza ki a szalagcímet, amely szerint **kipróbálhatja az új eszközök szűrésének újdonságait. Ide kattintva engedélyezheti az előzetes verziót.**
+
+Mostantól lehetősége lesz **szűrők hozzáadására** a **minden eszköz** nézethez.
+
 ## <a name="audit-logs"></a>Naplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
@@ -207,6 +226,6 @@ A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 ![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

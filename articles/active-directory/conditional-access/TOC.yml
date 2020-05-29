@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: Hibaelhárítás a Lehetőségelemzési eszközzel
           href: troubleshoot-conditional-access-what-if.md
+        - name: GYIK
+          href: faqs.md
 - name: További források
   items:
     - name: Azure visszajelzési fórum

@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994697"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169219"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vész-helyreállítási és Storage-fiók feladatátvétele
 
@@ -102,6 +102,8 @@ A **legutóbbi szinkronizálás időpontja** tulajdonság azt jelzi, hogy az els
 
 Ajánlott eljárásként tervezze meg az alkalmazást úgy, hogy az utolsó szinkronizálási időt használja a várt adatvesztés kiértékeléséhez. Ha például az összes írási műveletet naplózza, akkor a legutóbbi írási műveletek időpontját összehasonlíthatja a legutóbbi szinkronizálás időpontjával, és meghatározhatja, hogy mely írásokat nem szinkronizálta a rendszer a másodlagosra.
 
+A **legutóbbi szinkronizálás időpontjának** ellenőrzésével kapcsolatos további információkért tekintse [meg a Storage-fiók utolsó szinkronizálási idejének tulajdonságát](last-sync-time-get.md).
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Körültekintően járjon el, ha az eredeti elsődlegesnek nem sikerül visszatérnie
 
 Az elsődlegesről a másodlagos régióba való feladatátvételt követően a Storage-fiók úgy van konfigurálva, hogy helyileg redundáns legyen az új elsődleges régióban. Ezután konfigurálhatja a fiókot a Geo-redundancia érdekében. Ha a fiók a feladatátvételt követően ismét a Geo-redundancia beállításra van konfigurálva, az új elsődleges régió azonnal megkezdi az adatok másolását az új másodlagos régióba, amely az eredeti feladatátvétel előtt volt az elsődleges. Azonban eltarthat egy ideig, amíg az elsődlegesben lévő meglévő adatértékek teljes egészében át nem másolódnak az új másodlagosra.
@@ -169,8 +171,9 @@ Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagosho
 
 Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS vagy RA-GZRS van konfigurálva.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
 - [Fiók feladatátvételének indítása](storage-initiate-account-failover.md)
+- [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val](../blobs/storage-create-geo-redundant-storage.md)

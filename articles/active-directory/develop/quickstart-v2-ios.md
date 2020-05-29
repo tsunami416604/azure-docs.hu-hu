@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536131"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169848"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -57,10 +57,10 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 >      - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, amikor bejelentkeznek vagy beleegyeznek az alkalmazásba.
 >      - Egyéb konfigurációk kihagyása ezen a lapon.
 >      - Válassza a(z) `Register` lehetőséget.
-> 1. A **kezelés** szakaszban válassza a elemet `Authentication`  >  `Add Platform`  >  `iOS`.
->      - Adja meg az alkalmazáshoz tartozó ***köteg azonosítóját*** . A köteg azonosítója csak egy egyedi karakterlánc, amely egyedileg azonosítja az alkalmazást, például `com.<yourname>.identitysample.MSALMacOS`:. Jegyezze fel a használt értéket.
+> 1. A **kezelés** szakaszban válassza a elemet `Authentication`  >  `Add Platform`  >  `iOS` .
+>      - Adja meg az alkalmazáshoz tartozó ***köteg azonosítóját*** . A köteg azonosítója csak egy egyedi karakterlánc, amely egyedileg azonosítja az alkalmazást, például: `com.<yourname>.identitysample.MSALMacOS` . Jegyezze fel a használt értéket.
 >      - Vegye figyelembe, hogy az iOS-konfiguráció a macOS-alkalmazásokra is érvényes.
-> 1. A `Configure` rövid útmutató későbbi részében válassza ki és mentse a ***MSAL-konfiguráció*** részleteit.
+> 1. A rövid útmutató `Configure` későbbi részében válassza ki és mentse a ***MSAL-konfiguráció*** részleteit.
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
@@ -78,7 +78,7 @@ Ez a rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány 
 
 #### <a name="step-3-install-dependencies"></a>3. lépés: a függőségek telepítése
 
-A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és futtassa a `pod install` parancsot a legújabb MSAL-könyvtár telepítéséhez.
+A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és futtassa a parancsot a `pod install` legújabb MSAL-könyvtár telepítéséhez.
 
 #### <a name="step-4-configure-your-project"></a>4. lépés: a projekt konfigurálása
 
@@ -87,7 +87,7 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazásnak a portálon korábban a portálon való regisztrálása során mentett ügyfél-azonosítóval:
+> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a értéket az `kClientID` alkalmazásnak a portálon korábban a portálon való regisztrálása során mentett ügyfél-azonosítóval:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -100,8 +100,8 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 >    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
 >    ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
-> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás** > **forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `CFBundleURLSchemes` a-t a portálon megadott csomag- ***azonosítóra*** .
+> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget.
+> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le a `CFBundleURLSchemes` -t a portálon megadott ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -121,23 +121,23 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 > [!div renderon="docs"]
 >
 > 1. Csomagolja ki a tömörített fájlt, és nyissa meg a projektet az XCode-ban.
-> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a `kClientID` értéket az alkalmazás a portálon korábban a portálon való regisztrálása során mentett clientID:
+> 1. Szerkessze a **ViewController. Swift** -et, és cserélje le a "Let kClientID" kezdetű sort a következő kódrészlettel. Ne felejtse el frissíteni a értéket az `kClientID` alkalmazás a portálon korábban a portálon való regisztrálása során mentett clientID:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Ha az [Azure ad nemzeti felhőkhöz](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)hoz létre alkalmazást, cserélje le a sort a "Let kGraphEndpoint" és a "Let kAuthority" kifejezésre a megfelelő végpontokkal. Globális hozzáférés esetén használja az alapértelmezett értékeket:
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
 > 1. A többi végpontot [itt](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)dokumentálja. Ha például a gyors üzembe helyezést az Azure AD Germany használatával szeretné futtatni, használja a következőt:
->     ```objective-c
+>     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
-> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás** > **forrásként kód**lehetőséget.
-> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le `Enter_the_bundle_Id_Here` a-t a portálon használt csomag- ***azonosítóra*** .
+> 1. Csak iOS esetén kattintson a jobb gombbal az **info. plist** fájlra, és válassza a **Megnyitás**  >  **forrásként kód**lehetőséget.
+> 1. Csak iOS esetén a dict gyökérszintű csomópont alatt cserélje le a `Enter_the_bundle_Id_Here` -t a portálon használt ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -205,7 +205,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Csak iOS esetén, további alkalmazásokra vonatkozó követelmények
 
-Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a következővel:. Ez lehetővé teszi, hogy a MSAL SDK kezelje a jogkivonat választ az Auth Broker alkalmazástól a hitelesítés során.
+Az alkalmazásnak a következőkkel is rendelkeznie kell a következővel: `AppDelegate` . Ez lehetővé teszi, hogy a MSAL SDK kezelje a jogkivonat választ az Auth Broker alkalmazástól a hitelesítés során.
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -216,7 +216,7 @@ Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a követke
  ```
 
 > [!NOTE]
-> Ha a `UISceneDelegate` helyett `UIApplicationDelegate`az iOS 13 + verziót alkalmazza, helyezze el ezt a kódot a `scene:openURLContexts:` visszahívás helyett (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
+> Ha a helyett az iOS 13 + verziót alkalmazza, `UISceneDelegate` `UIApplicationDelegate` Helyezze el ezt a kódot a `scene:openURLContexts:` visszahívás helyett (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)).
 > Ha mind a UISceneDelegate, mind a UIApplicationDelegate támogatja a régebbi iOS-kompatibilitást, a MSAL visszahívást mindkét helyre kell helyezni.
 
  ```swift
@@ -233,7 +233,7 @@ Az alkalmazásnak a következőkkel is rendelkeznie kell `AppDelegate`a követke
     }
  ```
 
-Végezetül az alkalmazásnak tartalmaznia kell egy `LSApplicationQueriesSchemes` bejegyzést az ***info. plist*** fájl mellett `CFBundleURLTypes`. Ehhez a mintához tartozik.
+Végezetül az alkalmazásnak tartalmaznia kell egy `LSApplicationQueriesSchemes` bejegyzést az ***info. plist*** fájl mellett `CFBundleURLTypes` . Ehhez a mintához tartozik.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -249,7 +249,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: token beszerzése interaktív módon
 
-Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Például:
+Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Példa:
 
 * Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 * Ha a felhasználó alaphelyzetbe állítja a jelszavát, meg kell adnia a hitelesítő adataikat
@@ -263,7 +263,7 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |Az elemek magyarázata:||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ()`api://<Application ID>/access_as_user` |
+> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: hozzáférési token lekérése csendesen
 
@@ -283,10 +283,10 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ()`api://<Application ID>/access_as_user` |
-> | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a `accountsFromDeviceForParameters:completionBlock:` jogkivonat-kérelmekhez a és a megfelelő érték beadásával.`accountIdentifier` |
+> | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
+> | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával.`accountIdentifier` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az iOS és macOS rendszerhez készült oktatóanyagot, amely részletes útmutatót nyújt az alkalmazások létrehozásához, beleértve a gyors útmutató részletes ismertetését is.
 

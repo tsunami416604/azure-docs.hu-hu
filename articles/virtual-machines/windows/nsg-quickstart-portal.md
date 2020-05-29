@@ -1,20 +1,20 @@
 ---
-title: Portok megnyitása virtuális géphez az Azure Portal használatával
-description: Megtudhatja, hogyan nyithat meg egy portot/ hozhat létre végpontot a Windows virtuális géphez az Azure Portal használatával
+title: Portok megnyitása virtuális géphez a Azure Portal használatával
+description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a Windows rendszerű virtuális géphez a Azure Portal használatával
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865490"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170039"
 ---
-# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális gépre az Azure Portalsegítségével
+# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -23,61 +23,59 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-1. Keresse meg és jelölje ki a virtuális gép erőforráscsoportját, válassza a **Hozzáadás**lehetőséget, majd keresse meg és válassza a **Hálózati biztonsági csoport lehetőséget.**
+1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás**lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot**.
 
-2. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** gombra.
 
-    Megnyílik **a Hálózati biztonsági csoport létrehozása** ablak.
+    Megnyílik a **hálózati biztonsági csoport létrehozása** ablak.
 
     ![Hálózati biztonsági csoport létrehozása](./media/nsg-quickstart-portal/create-nsg.png)
 
-2. Adja meg a hálózati biztonsági csoport nevét. 
+1. Adja meg a hálózati biztonsági csoport nevét. 
 
-3. Jelöljön ki vagy hozzon létre egy erőforráscsoportot, majd jelöljön ki egy helyet.
+1. Válasszon ki vagy hozzon létre egy erőforráscsoportot, majd válasszon ki egy helyet.
 
-4. A hálózati biztonsági csoport létrehozásához válassza a **Létrehozás** gombot.
+1. Válassza a **Létrehozás** lehetőséget a hálózati biztonsági csoport létrehozásához.
 
 ## <a name="create-an-inbound-security-rule"></a>Bejövő biztonsági szabály létrehozása
 
 1. Válassza ki az új hálózati biztonsági csoportot. 
 
-2. Válassza **a Bejövő biztonsági szabályok**lehetőséget, majd a **Hozzáadás lehetőséget.**
+1. A bal oldali menüben válassza a **bejövő biztonsági szabályok** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-    ![Bejövő szabály hozzáadása](./media/nsg-quickstart-portal/add-inbound-rule.png)
+    ![Váltás a speciális lapra](./media/nsg-quickstart-portal/advanced.png)
 
-3. Válassza az **Advanced** (Speciális) lehetőséget. 
+1. A **bejövő biztonsági szabály hozzáadása** lapon váltson át a **speciális** elemre az **alapszintű** oldalon a lap tetején. 
 
-4. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http**. Az Egyéni lehetőséget akkor is **kiválaszthatja,** ha egy adott portot szeretne megadni. 
+1. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http**. A **Custom (egyéni** ) lehetőséget is választhatja, ha a használni kívánt portot szeretné megadni. 
 
-5. Szükség esetén módosítsa a **Prioritás** vagy a **Név .** A prioritás a szabályok alkalmazásának sorrendjét befolyásolja: minél alacsonyabb a numerikus érték, annál előbbre alkalmazza a szabályt.
+1. Szükség esetén módosíthatja a **prioritást** vagy a **nevet**. A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
 
-6. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
+1. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
 
-## <a name="associate-your-network-security-group-with-a-subnet"></a>A hálózati biztonsági csoport társítása alhálózattal
+## <a name="associate-your-network-security-group-with-a-subnet"></a>Hálózati biztonsági csoport hozzárendelése alhálózattal
 
-Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózattal vagy egy adott hálózati adapterrel. Ebben a példában a hálózati biztonsági csoportot egy alhálózathoz társítjuk. 
+Az utolsó lépés a hálózati biztonsági csoport társítása egy alhálózattal vagy egy adott hálózati adapterrel. Ebben a példában a hálózati biztonsági csoportot egy alhálózattal társítjuk. 
 
-1. Válassza **az Alhálózatok**lehetőséget, majd a **Társítás**lehetőséget.
+1. Válassza ki az **alhálózatok** elemet a bal oldali menüben, majd válassza a **hozzárendelés**lehetőséget.
 
-    ![Hálózati biztonsági csoport társítása alhálózattal](./media/nsg-quickstart-portal/associate-subnet.png)
-
-2. Válassza ki a virtuális hálózatot, majd válassza ki a megfelelő alhálózatot.
+1. Válassza ki a virtuális hálózatot, majd válassza ki a megfelelő alhálózatot.
 
     ![Hálózati biztonsági csoport társítása virtuális hálózattal](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-    Az alhálózathoz csatlakozó virtuális gépek most már elérhetők a 80-as porton.
+1. Ha elkészült, kattintson az **OK** gombra.
 
 ## <a name="additional-information"></a>További információ
 
-A [cikkben ismertetett lépéseket az Azure PowerShell használatával](nsg-quickstart-powershell.md)is végrehajthatja.
+[A cikkben ismertetett lépéseket a Azure PowerShell használatával is végrehajthatja](nsg-quickstart-powershell.md).
 
-Az ebben a cikkben leírt parancsok lehetővé teszik, hogy gyorsan a virtuális gépre áramló forgalmat. A hálózati biztonsági csoportok számos nagyszerű szolgáltatást és részletességet biztosítanak az erőforrásokhoz való hozzáférés szabályozásához. További információt a [Hálózati forgalom szűrése hálózati biztonsági csoporttal](../../virtual-network/tutorial-filter-network-traffic.md)című témakörben talál.
+A cikkben ismertetett parancsok segítségével gyorsan lekérheti a virtuális gépre irányuló forgalmat. A hálózati biztonsági csoportok számos nagyszerű szolgáltatást és részletességet biztosítanak az erőforrásokhoz való hozzáférés szabályozásához. További információ: [hálózati forgalom szűrése hálózati biztonsági csoporttal](../../virtual-network/tutorial-filter-network-traffic.md).
 
-A magas rendelkezésre állású webes alkalmazások esetében fontolja meg a virtuális gépek egy Azure-terheléselosztó mögé helyezését. A terheléselosztó forgalmat oszt ki a virtuális gépek, egy hálózati biztonsági csoport, amely a forgalom szűrése. További információ: [Terheléselosztás Windows virtuális gépek az Azure-ban, hogy hozzon létre egy magas rendelkezésre állású alkalmazás.](tutorial-load-balancer.md)
+A magasan elérhető webalkalmazások esetében érdemes lehet egy Azure Load Balancer mögött elhelyezni a virtuális gépeket. A terheléselosztó elosztja a forgalmat a virtuális gépekre egy olyan hálózati biztonsági csoporttal, amely forgalmi szűrést biztosít. További információkért lásd: [Windows rendszerű virtuális gépek terheléselosztása az Azure-ban egy magasan elérhető alkalmazás létrehozásához](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, létrehozott egy bejövő szabályt, amely engedélyezi a HTTP-forgalmat a 80-as porton, majd a szabályt egy alhálózathoz társítja. 
+## <a name="next-steps"></a>Következő lépések
+Ebben a cikkben létrehozott egy hálózati biztonsági csoportot, létrehozott egy bejövő szabályt, amely engedélyezi a HTTP-forgalmat az 80-as porton, majd hozzárendeli a szabályt egy alhálózathoz. 
 
-A részletesebb környezetek létrehozásáról az alábbi cikkekben talál információt:
+A részletesebb környezetek létrehozásáról a következő cikkekben talál információt:
 - [Az Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md)
 - [Biztonsági csoportok](../../virtual-network/security-overview.md)

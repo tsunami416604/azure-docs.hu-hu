@@ -2,13 +2,13 @@
 title: Értékelések a Azure Migrate Server Assessment szolgáltatásban
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769925"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171004"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Értékelések a Azure Migrateban: kiszolgáló értékelése
 
@@ -110,7 +110,7 @@ Tulajdonság | Részletek
 **Célhely** | Az áttelepíteni kívánt hely. A kiszolgáló értékelése jelenleg a következő Azure-régiókat támogatja:<br/><br/> Kelet-Ausztrália, Kelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Egyesült Királyság déli régiója, Észak-Európa , Az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és az USA 2. nyugati régiója.
 **Cél Storage-lemez (méretezés)** | Az Azure-beli tároláshoz használandó lemez típusa. <br/><br/> A célként megadott Storage-lemezt prémium szintű felügyelt, standard SSD által felügyelt vagy standard HDD által felügyelt határozza meg.
 **Cél tárolóeszköz lemeze (teljesítmény-alapú méretezés)** | Meghatározza a célként megadott tároló lemezének típusát automatikus, prémium szintű felügyelt, standard HDD által felügyelt vagy standard SSD által felügyelt.<br/><br/> **Automatikus**: a lemezre vonatkozó javaslat a lemezek teljesítményadatokat, azaz a IOPS és az átviteli sebességen alapul.<br/><br/>**Prémium vagy standard**: az értékelés azt javasolja, hogy egy lemez SKU legyen a kiválasztott tárolási típuson belül.<br/><br/> Ha a 99,9%-os egypéldányos virtuálisgép-szolgáltatói szerződést (SLA) szeretne használni, érdemes prémium szintű felügyelt lemezeket használnia. Ez a használat biztosítja, hogy az értékelésben szereplő összes lemez prémium szintű felügyelt lemezként legyen ajánlott.<br/><br/> A Azure Migrate csak a felügyelt lemezeket támogatja az áttelepítési értékeléshez.
-**Azure Reserved Virtual Machine Instances** | [Fenntartott példányokat](https://azure.microsoft.com/pricing/reserved-vm-instances/) határoz meg, hogy az értékelésben szereplő költségbecslés figyelembe vegye azokat.<br/><br/> A Azure Migrate jelenleg csak az utólagos elszámolású ajánlatok esetében támogatja a Azure Reserved VM Instances.
+**Azure Reserved VM Instances** | [Fenntartott példányokat](https://azure.microsoft.com/pricing/reserved-vm-instances/) határoz meg, hogy az értékelésben szereplő költségbecslés figyelembe vegye azokat.<br/><br/> Ha a fenntartott példányok ki vannak választva, hagyja meg az alapértelmezett beállításokat a kedvezményben (%) és a virtuális gép üzemidő tulajdonságai.<br/><br/> A Azure Migrate jelenleg csak az utólagos elszámolású ajánlatok esetében támogatja a Azure Reserved VM Instances.
 **Méretezési feltételek** | Az Azure-beli virtuális gép megfelelő méretben helyezheti használatos.<br/><br/> A következőképpen történő használat: méretezés vagy teljesítmény-alapú méretezés.
 **Teljesítményelőzmények** | Teljesítmény-alapú méretezéssel használatos. A teljesítmény előzményei a teljesítményadatok kiértékeléséhez használt időtartamot határozzák meg.
 **Százalékos kihasználtság** | Teljesítmény-alapú méretezéssel használatos. A percentilis kihasználtsága meghatározza a megadásában használt teljesítmény mintájának százalékos értékét.
@@ -121,6 +121,8 @@ Tulajdonság | Részletek
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott előfizetés-specifikus kedvezmények. Az alapértelmezett beállítás 0%.
 **Virtuális gép üzemideje** | A folyamatosan nem futó Azure-beli virtuális gépek esetében a havi és a napi munkaórák száma. A becsült költségbecslés ezen időtartam alapján történik.<br/><br/> Az alapértelmezett értékek havi 31 nap, és naponta 24 óra.
 **Azure Hybrid Benefit** | Megadja, hogy rendelkezik-e frissítési garanciával, és jogosult-e a [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Ha a beállítás alapértelmezett értéke "yes", akkor a Windows rendszerű virtuális gépekre a Windows rendszertől eltérő operációs rendszerek Azure-árai tekintendők.
+**EA-előfizetés** | Megadja, hogy a rendszer egy Nagyvállalati Szerződés (EA) előfizetést használ a költségbecslés során. Az előfizetésre érvényes kedvezményt veszi figyelembe. <br/><br/> Hagyja meg a fenntartott példányok beállításait, kedvezmény (%) és a virtuális gép üzemidő tulajdonságai az alapértelmezett beállításokkal.
+
 
 [Tekintse át az](best-practices-assessment.md) értékelés létrehozásához szükséges ajánlott eljárásokat a kiszolgáló értékelésével.
 
@@ -143,7 +145,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat a komfort tényező alkalmazása nélkül használja. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m&nbsp;<sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a lefoglalt RAM-ot a komfort faktor alkalmazása nélkül használja a rendszer.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 
@@ -282,7 +284,7 @@ A méretezési javaslatok befejezését követően a Azure Migrate kiszámítja 
 
 A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 

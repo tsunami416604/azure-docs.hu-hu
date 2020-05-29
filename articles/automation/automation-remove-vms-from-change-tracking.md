@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 23dfad844c17b0b8c8a35b6a94d6a96327afe19c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117456"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169454"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Virtuális gépek eltávolítása a Change Trackingből és az Inventoryból
 
 Amikor befejezte a környezetben lévő virtuális gépek változásainak telepítését, eltávolíthatja őket a [change Tracking és a leltár](change-tracking.md) szolgáltatásból.
+
+## <a name="to-remove-your-vms"></a>Virtuális gépek eltávolítása
 
 1. Az Automation-fiókban válassza a **változások követése** vagy **leltározás** elemet a **konfiguráció**felügyelete alatt.
 
@@ -34,7 +36,7 @@ Amikor befejezte a környezetben lévő virtuális gépek változásainak telep�
 
 7. Mentse a mentett keresést a Szerkesztés befejezése után. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Change Tracking és a leltár használatának folytatásához tekintse meg a [change Tracking és a leltár kezelése](change-tracking-file-contents.md)című témakört.
 * Az általános szolgáltatással kapcsolatos problémák megoldásához lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

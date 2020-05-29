@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739099"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140793"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -36,7 +36,7 @@ A Azure AD B2C-bérlőben használt elsődleges erőforrások a következők:
   * Olyan *közösségi* identitás-szolgáltatók, mint például a Facebook, a LinkedIn vagy a Twitter, amelyet támogatni kíván az alkalmazásaiban.
   * Olyan *külső* identitás-szolgáltatók, amelyek támogatják a szabványos azonosító protokollokat, például a OAuth 2,0, az OpenID Connect és más szolgáltatásokat.
   * *Helyi* fiókok, amelyek lehetővé teszik a felhasználók számára a regisztrációt és bejelentkezést a felhasználónévvel (vagy e-mail-címmel vagy más azonosítóval) és jelszóval.
-* **Kulcsok** – titkosítási kulcsok hozzáadása és kezelése a jogkivonatok aláírásához és érvényesítéséhez.
+* **Kulcsok** – titkosítási kulcsok hozzáadása és kezelése a tokenek, az ügyfél titkos kulcsainak, tanúsítványainak és jelszavainak aláírásához és érvényesítéséhez.
 
 A Azure AD B2C bérlő az első olyan erőforrás, amelyet a Azure AD B2C megkezdéséhez létre kell hoznia. Útmutató [: Azure Active Directory B2C-bérlő létrehozása az oktatóanyagban](tutorial-create-tenant.md).
 
@@ -69,7 +69,7 @@ További információ a felhasználói fiókok típusairól Azure AD B2C a [Azur
 
 ## <a name="external-identity-providers"></a>Külső identitásszolgáltatók
 
-A Azure AD B2C konfigurálható úgy, hogy a felhasználók a külső közösségi vagy vállalati identitás-szolgáltatóktól (identitásszolgáltató) származó hitelesítő adatokkal jelentkezzenek be az alkalmazásba. Azure AD B2C támogatja a külső identitás-szolgáltatókat, mint például a Facebook, a Microsoft-fiók, a Google, a Twitter, valamint a OAuth 1,0, a OAuth 2,0, az OpenID Connect, az SAML vagy a WS-Federation protokollokat támogató identitás-szolgáltatókat.
+A Azure AD B2C konfigurálható úgy, hogy a felhasználók a külső közösségi vagy vállalati identitás-szolgáltatóktól (identitásszolgáltató) származó hitelesítő adatokkal jelentkezzenek be az alkalmazásba. Azure AD B2C támogatja a külső identitás-szolgáltatókat, mint például a Facebook, a Microsoft-fiók, a Google, a Twitter, valamint a OAuth 1,0, OAuth 2,0, OpenID Connect és SAML protokollokat támogató identitás-szolgáltatókat.
 
 ![Külső identitásszolgáltatók](media/technical-overview/external-idps.png)
 
@@ -134,15 +134,13 @@ További információ az egyéni házirendekről [Azure Active Directory B2Cban]
 
 ## <a name="protocols-and-tokens"></a>Protokollok és tokenek
 
-Azure AD B2C támogatja az [OpenID Connect és a OAuth 2,0 protokollt](protocols-overview.md) a felhasználói útvonalakhoz. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat.
+- Alkalmazások esetén a Azure AD B2C támogatja a [OAuth 2,0](protocols-overview.md), [OpenID Connect](openid-connect.md)és [SAML protokollt](connect-with-saml-service-providers.md) a felhasználói útvonalakhoz. Az alkalmazás megkezdi a felhasználói utazást a Azure AD B2C felé irányuló hitelesítési kérések kiállításával. Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító token, hozzáférési jogkivonat](tokens-overview.md)vagy SAML-jogkivonat. Ez a biztonsági jogkivonat határozza meg a felhasználó identitását az alkalmazáson belül.
 
-Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](tokens-overview.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek olyan Azure AD B2C-végpontokból érkeznek, mint a `/token` vagy a `/authorize` végpont. Ezekkel a jogkivonatokkal olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
+- Külső identitások esetén a Azure AD B2C támogatja a OAuth 1,0, OAuth 2,0, OpenID Connect és SAML Identity szolgáltatók összevonását.
 
-Külső identitások esetében a Azure AD B2C támogatja a OAuth 1,0, OAuth 2,0, OpenID Connect, SAML és WS-fed identitás-szolgáltatóval való összevonást.
+Az alábbi ábra azt mutatja be, hogy a Azure AD B2C hogyan tud kommunikálni különböző protokollok használatával ugyanazon a hitelesítési folyamaton belül:
 
 ![Az SAML-alapú identitásszolgáltató rendelkező, OIDC-alapú ügyfélalkalmazások egyesítő ábrája](media/technical-overview/protocols.png)
-
-Az előző ábrán látható, hogy Azure AD B2C képes kommunikálni különböző protokollok használatával ugyanazon a hitelesítési folyamaton belül:
 
 1. A függő entitás alkalmazás a Azure AD B2C OpenID Connect használatával kezdeményezi az engedélyezési kérelmet.
 1. Ha az alkalmazás egy felhasználója úgy dönt, hogy egy SAML protokollt használó külső Identitáskezelő használatával jelentkezik be, Azure AD B2C az SAML protokollt hívja meg az identitás-szolgáltatóval való kommunikációra.
@@ -262,7 +260,7 @@ Azure AD B2C segítségével felfedezheti, hogy mikor regisztrálhatnak vagy jel
 
 További információ a használati elemzésekről: a [felhasználói viselkedés nyomon követése Azure Active Directory B2C a Application Insights használatával](analytics-with-application-insights.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy alaposabban megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, a szolgáltatással való ismerkedéshez hozzon létre egy B2C-bérlőt:
 

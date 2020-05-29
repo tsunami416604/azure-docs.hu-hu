@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072645"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169984"
 ---
 # <a name="search-for-gif-images"></a>GIF-képek keresése 
 
@@ -26,7 +26,7 @@ A következő URL-cím az animált. gif rendszerképek lekérdezése.
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-A [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés a `animatedGif` [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatát is megadja.
+A [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) paraméter határozza meg a keresési kifejezéseket.  Az előző lekérdezés `animatedGif` a [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Filter paraméter használatát is megadja.
 
 A találatok megjelenítéséhez használja a következő URL-címet a bing.com kereséséhez.
 ```
@@ -46,7 +46,7 @@ A lekérdezési paraméterekkel és beállításokkal kapcsolatos további infor
 - A támogatott nyelvek és helyszínek teljes listájáért lásd: [MKT](supported-countries-markets.md) .
 - A *AnimatedGifHttps* csak a https-címről érkező animált GIF-képeket adja vissza. A biztonság érdekében számos alkalmazás igényli a https-kapcsolaton keresztüli külső webes hivatkozásokhoz való kapcsolódást. Például az Apple App Store-nak HTTPS-kapcsolaton keresztül kell kapcsolódnia a webszolgáltatásokhoz, amely az átvitel során titkosítja a felhasználói adatvédelmet.
 
-<a name="gifExample" />
+<a name="gifExample"></a>
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Példa az animált GIF keresésére a Javával
 
@@ -207,6 +207,6 @@ A kód a következő eredményeket kéri JSON-objektumokként:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [C# – rövid útmutató](quickstarts/csharp.md)
 - [Oktatóanyag Image Search egyoldalas alkalmazás](tutorial-bing-image-search-single-page-app.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801773"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167859"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
@@ -43,15 +43,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 Alapértelmezés szerint a keresőmotor az első 50 egyezést adja vissza, amelyet a keresési pontszám határoz meg, ha a lekérdezés teljes szöveges keresést használ, vagy tetszőleges sorrendben a pontos egyezésű lekérdezésekhez.
 
-Ha más számú egyező dokumentumot szeretne visszaadni, `$top` adja `$skip` hozzá a lekérdezési kérelemhez a és a paramétereket. A következő lista ismerteti a logikát.
+Ha más számú egyező dokumentumot szeretne visszaadni, adja hozzá `$top` `$skip` a lekérdezési kérelemhez a és a paramétereket. A következő lista ismerteti a logikát.
 
-+ A `$count=true` Hozzáadás gombra kattintva megadhatja az indexen belüli egyező dokumentumok teljes számát.
++ A Hozzáadás gombra kattintva megadhatja `$count=true` Az indexen belüli egyező dokumentumok teljes számát.
 
 + A 15 egyező dokumentum első készletének visszaadása, valamint a teljes egyezések száma:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Adja vissza a második készletet, kihagyva az első 15 értéket a következő `$top=15&$skip=15`15: érték beszerzéséhez. Tegye meg ugyanezt a 15. harmadik készletnél:`$top=15&$skip=30`
++ Adja vissza a második készletet, kihagyva az első 15 értéket a következő 15: érték beszerzéséhez `$top=15&$skip=15` . Tegye meg ugyanezt a 15. harmadik készletnél:`$top=15&$skip=30`
 
-A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legyenek, ha az alapul szolgáló index változik. A lapozás megváltoztatja az egyes `$skip` lapok értékeit, de az egyes lekérdezések függetlenek, és az adatok aktuális nézetén működnek, mivel a lekérdezési időpontban már szerepel az indexben (vagyis nem áll rendelkezésre az eredmények gyorsítótárazása vagy pillanatképe, például egy általános célú adatbázisban található).
+A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legyenek, ha az alapul szolgáló index változik. A lapozás megváltoztatja az `$skip` egyes lapok értékeit, de az egyes lekérdezések függetlenek, és az adatok aktuális nézetén működnek, mivel a lekérdezési időpontban már szerepel az indexben (vagyis nem áll rendelkezésre az eredmények gyorsítótárazása vagy pillanatképe, például egy általános célú adatbázisban található).
  
 Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumentummal rendelkező index feltételezése:
 
@@ -60,12 +60,12 @@ Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumen
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-Most tegyük fel, hogy az eredményeket a rendszer egy időben, a minősítés alapján rendezi. Ezt a lekérdezést kell végrehajtania az eredmények első oldalának beolvasásához: `$top=2&$skip=0&$orderby=rating desc`a következő eredmények előállításával:
+Most tegyük fel, hogy az eredményeket a rendszer egy időben, a minősítés alapján rendezi. Ezt a lekérdezést kell végrehajtania az eredmények első oldalának beolvasásához: `$top=2&$skip=0&$orderby=rating desc` a következő eredmények előállításával:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum kerül a lekérdezési hívások közötti indexbe: `{ "id": "5", "rating": 4 }`.  Röviddel azután, hogy végrehajt egy lekérdezést a második lap beolvasásához: `$top=2&$skip=2&$orderby=rating desc`, és a következő eredményeket kapja:
+A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum kerül a lekérdezési hívások közötti indexbe: `{ "id": "5", "rating": 4 }` .  Röviddel azután, hogy végrehajt egy lekérdezést a második lap beolvasásához: `$top=2&$skip=2&$orderby=rating desc` , és a következő eredményeket kapja:
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
@@ -78,7 +78,7 @@ A teljes szöveges keresési lekérdezések esetében a találatok automatikusan
 
 A keresési eredmények általános jelentőséggel bírnak, amely az azonos eredményhalmaz más dokumentumaihoz képest az egyezés erősségét tükrözi. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor előfordulhat, hogy a keresési dokumentumok rendezésének módja kis eltéréseket észlel. A probléma oka több magyarázat is lehet.
 
-| Ok | Leírás |
+| Ok | Description |
 |-----------|-------------|
 | Adatvolatilitás | Az indexelési tartalom a dokumentumok hozzáadása, módosítása vagy törlése során változik. A kifejezés gyakorisága módosul, mert az index frissítései időben lesznek feldolgozva, ami hatással van a megfelelő dokumentumok keresési pontjaira. |
 | Több replika | Több replikát használó szolgáltatások esetén a lekérdezéseket párhuzamosan kell kiadni az egyes replikákkal. A keresési pontszám kiszámításához használt index statisztikáit a rendszer replika alapon számítja ki, a lekérdezési válaszban egyesítve és elrendezve az eredményeket. A replikák többnyire egymást tükrözik, de a statisztikák eltérőek lehetnek az állami különbségek miatt. Előfordulhat például, hogy az egyik replika törölte a statisztikához hozzájáruló dokumentumokat, amelyek más replikából lettek egyesítve. A replikák statisztikái közötti különbségek jellemzően kisebb indexekben figyelhetők meg. |
@@ -98,7 +98,7 @@ A találatok kiemelésének engedélyezéséhez adja hozzá `highlight=[comma-de
 
 Alapértelmezés szerint az Azure Cognitive Search egy mezőn legfeljebb öt kiemelést ad vissza. Ezt a számot úgy állíthatja be, hogy hozzáfűzi a kötőjelet egy egész számmal kiegészítve. A (z `highlight=Description-10` ) például a Description (Leírás) mezőben szereplő tartalomra vonatkozó, legfeljebb 10 kiemelést ad vissza.
 
-A formázás a teljes távú lekérdezésekre vonatkozik. A formázás típusát a címkék határozzák meg, `highlightPreTag` `highlightPostTag`és a kód kezeli a választ (például félkövér betűtípust vagy sárga hátteret alkalmaz).
+A formázás a teljes távú lekérdezésekre vonatkozik. A formázás típusát a címkék határozzák meg, `highlightPreTag` és `highlightPostTag` a kód kezeli a választ (például félkövér betűtípust vagy sárga hátteret alkalmaz).
 
 A következő példában a Leírás mezőben a "Sandy", a "Sand", a "strandok", a "Beach" kifejezés a kiemeléshez van címkézve. Azok a lekérdezések, amelyek kiváltják a lekérdezés kiterjesztését a motorban, például a fuzzy és a helyettesítő karakteres keresés, korlátozott támogatást biztosítanak a találatok kiemeléséhez.
 
@@ -126,12 +126,10 @@ Az új viselkedéssel:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   Vegye figyelembe, hogy a *zsetonok* nem rendelkeznek kiemeléssel, mert nem egyezik a teljes kifejezéssel.
-  
-* Megadhatja a kiemelés során visszaadott töredék méretét. A darabolási méret a karakterek számaként van megadva (a maximális érték 1000 karakter).
 
 Ha olyan állapotkódot ír, amely megvalósítja a találatok kiemelését, vegye figyelembe a változást. Vegye figyelembe, hogy ez csak akkor lesz hatással, ha teljesen új keresési szolgáltatást hoz létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfél keresési oldalának gyors létrehozásához vegye figyelembe a következő lehetőségeket:
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833813"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167247"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>A tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)
 
@@ -1106,7 +1106,7 @@ A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítség
 
  Ha a modul kivétele szerint egy SQL által generált üzenet jelenik meg, akkor a jelentett hiba alapján végezze el a műveletet. Előfordulhat például, hogy a hibaüzenetek időnként konkrét útmutatást tartalmaznak a valószínű hibára vonatkozóan:
 + *Nincs ilyen oszlop vagy hiányzó adatbázis*, ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
-+ *SQL-logikai hiba közel \< SQL- \> kulcsszó*, amely azt jelzi, hogy szintaktikai hiba lehet a megadott kulcsszó előtt
++ *SQL-logikai hiba \<SQL keyword\> a közelében *, ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
 
   
 |Kivételek üzenetei|
@@ -1500,7 +1500,7 @@ Megoldás:
 
 
 ## <a name="error-0159"></a>0159-es hiba
- Kivétel történik, ha az átadott modul-modell könyvtára érvénytelen. 
+ Kivétel történik, ha a modul modelljének könyvtára érvénytelen. 
 
 |Kivételek üzenetei|
 |------------------------------------------------------------|

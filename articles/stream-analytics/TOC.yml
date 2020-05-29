@@ -9,14 +9,18 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Feladat létrehozása – Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: Feladat létrehozása – PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: Feladat létrehozása – Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: Feladat létrehozása – Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: Feladat létrehozása
+      items:
+        - name: Azure Portal
+          href: stream-analytics-quick-create-portal.md
+        - name: ARM-sablon
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Feladat létrehozása/kezelése

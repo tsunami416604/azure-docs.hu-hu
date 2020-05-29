@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746982"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168505"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -82,7 +82,7 @@ Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all` . A portálo
 
 `indexed`a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok** és az **előfizetések**. Az erőforráscsoport vagy előfizetés helyét vagy címkéit kényszerítő szabályzat-definíciók **módot** kell beállítani a (z `all` ) és a (z) és a (z `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` ) típusra. Példaként tekintse meg a [minta: címkék – minta #1](../samples/pattern-tags.md). A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Erőforrás-szolgáltatói módok (előzetes verzió)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Erőforrás-szolgáltatói módok (előzetes verzió)
 
 Az előzetes verzióban jelenleg a következő erőforrás-szolgáltatói módok támogatottak:
 
@@ -284,11 +284,11 @@ A következő mezők támogatottak:
 - `tags`
 - `tags['<tagName>']`
   - Ez a zárójel-szintaxis támogatja a írásjeleket, például kötőjelet, pontot vagy szóközt.
-  - Ahol a ** \< TagName \> ** annak a címkének a neve, amelynek a feltételét érvényesíteni szeretné.
+  - Ahol a a **\<tagName\>** címke neve, amely ellenőrzi a feltételt.
   - Példák: `tags['Acct.CostCenter']` az **acct. CostCenter** a címke neve.
 - `tags['''<tagName>''']`
   - Ez a zárójel-szintaxis támogatja az aposztrófokat tartalmazó címkéket dupla aposztrófokkal.
-  - Ahol a **" \< TagName \> "** a címke neve, amely ellenőrzi a feltételt.
+  - Ahol a **" \<tagName\> "** annak a címkének a neve, amely a feltételt érvényesíti.
   - Példa: `tags['''My.Apostrophe.Tag''']` ahol a **"My. aposztróf. tag"** a címke neve.
 - tulajdonság-aliasok – lista esetén lásd: [aliasok](#aliases).
 
@@ -432,7 +432,7 @@ A **Count**a következő tulajdonságokat használja:
 - **Count. Field** (kötelező): a tömb elérési útját tartalmazza, és tömb aliasnak kell lennie. Ha a tömb hiányzik, a kifejezés kiértékelése _hamis_ értékre történik a feltétel kifejezésének mérlegelése nélkül.
 - **darabszám. where** (nem kötelező): a feltétel kifejezése, hogy egyenként kiértékelje az egyes [ \[ \* \] aliasok](#understanding-the--alias) tömbbeli tagjainak száma **. mező értékét**. Ha ez a tulajdonság nincs megadva, a "Field" elérési úttal rendelkező összes tömb-tag _igaz_értékre van kiértékelve. Ezen a tulajdonságon belül bármely [feltétel](../concepts/definition-structure.md#conditions) használható.
   A tulajdonságon belül a [logikai operátorok](#logical-operators) összetett értékelési követelmények létrehozására használhatók.
-- ** \< feltétel \> ** (kötelező): a rendszer összehasonlítja az értéket a darabszámban teljesített elemek számával **. where** feltétel kifejezése. Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
+- **\<condition\>**(kötelező): a rendszer összehasonlítja az értéket a darabszámban teljesített elemek számával **. where** feltétel kifejezése. Numerikus [feltételt](../concepts/definition-structure.md#conditions) kell használni.
 
 #### <a name="count-examples"></a>Példák száma
 
@@ -793,7 +793,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy kezdeményezést két cím
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatok hatásainak ismertetése](effects.md).

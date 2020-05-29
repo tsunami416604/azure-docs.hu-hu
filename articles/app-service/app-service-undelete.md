@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779216"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167791"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
@@ -66,7 +66,7 @@ A következő parancs bemenetei:
 - **Név**: az alkalmazás nevének globálisan egyedinek kell lennie.
 - **TargetAppServicePlanName**: app Service az alkalmazáshoz társított csomag
 
-Alapértelmezés szerint az `Restore-AzDeletedWebApp` alkalmazás konfigurációját és tartalmát is visszaállítja a rendszer. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
+Alapértelmezés szerint az `Restore-AzDeletedWebApp` alkalmazás konfigurációját és tartalmát is visszaállítja. Ha csak a tartalmat szeretné visszaállítani, használja a `-RestoreContentOnly` jelzőt ezzel a parancsmagot.
 
 > [!NOTE]
 > Ha az alkalmazás futott, majd törölve lett egy App Service Environment, akkor csak akkor állítható vissza, ha a megfelelő App Service Environment továbbra is létezik.
