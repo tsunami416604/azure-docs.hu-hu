@@ -8,16 +8,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 847e9b692ddbd7880c37d1068d61447dcccb9c80
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200588"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747150"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Nyílt bankolás (PSD2) és erős ügyfél-hitelesítés (SCA) Azure-ügyfeleknek
 
-2019. szeptember 14-től az [Európai Gazdasági Térség](https://en.wikipedia.org/wiki/European_Economic_Area) 31 országának bankjai kötelesek ellenőrizni az online vásárlást végző személy személyazonosságát a fizetés feldolgozása előtt. Az ellenőrzéshez többtényezős hitelesítés szükséges, amely biztosítja az online vásárlások biztonságát és védelmét. Az ellenőrzési követelmény bevezetése egyes országokban későbbi dátumra esik. További információkért lásd a [Microsoft PSD2-vel kapcsolatos GYIK-oldalát](https://support.microsoft.com/en-us/help/4517854?preview).
+2019. szeptember 14-től az [Európai Gazdasági Térség](https://en.wikipedia.org/wiki/European_Economic_Area) 31 országának/régiójának bankjai kötelesek ellenőrizni az online vásárlást végző személy személyazonosságát a fizetés feldolgozása előtt. Az ellenőrzéshez többtényezős hitelesítés szükséges, amely biztosítja az online vásárlások biztonságát és védelmét. Az ellenőrzési követelmény bevezetése egyes országokban vagy régiókban későbbi dátumra esik. További információkért lásd a [Microsoft PSD2-vel kapcsolatos GYIK-oldalát](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Mit jelent a PSD2 az Azure-ügyfelek szempontjából?
 
@@ -58,5 +58,5 @@ A Marketplace- és foglalásvásárlásokat az Azure-szolgáltatásoktól külö
 5. Az előfizetés legördülő szűrőjében válassza ki a Marketplace- vagy foglalásvásárláshoz tartozó előfizetést.
 6. A számlák táblázatában tekintse át a Típus oszlopot. Ha a típus **Azure Marketplace és foglalások**, és a számla esedékes vagy lejárt, megjelenik az **Azonnali fizetés** lehetőség. Ha nem jelenik meg az **Azonnali fizetés**, az azt jelenti, hogy a számla már rendezve lett. A rendszer kéri, hogy végezze el a többtényezős hitelesítést az azonnali fizetés során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az Azure-számlák befizetéséről további információt talál [Az Azure-előfizetés lejárt esedékességű tartozásának rendezése](resolve-past-due-balance.md) című szakaszban.

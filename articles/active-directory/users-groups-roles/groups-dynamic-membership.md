@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744691"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171157"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -78,7 +78,7 @@ Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerül
 
 A tagsági szabályok létrehozásához háromféle tulajdonságot lehet használni.
 
-- Logikai
+- Logikai érték
 - Sztring
 - Karakterlánc-gyűjtemény
 
@@ -160,7 +160,7 @@ Ha egy felhasználói attribútum értékét össze szeretné hasonlítani szám
 
 
 ### <a name="using-the--match-operator"></a>A-Match operátor használata 
-A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Példák:
+A **-Match** operátor a reguláris kifejezések egyeztetésére szolgál. Angol nyelvű Példák:
 
 ```
 user.displayName -match "Da.*"   
@@ -261,7 +261,7 @@ A-any és az-All operátor használatával feltételt alkalmazhat a gyűjtemény
 * -any (akkor teljesül, ha a gyűjtemény legalább egy eleme megfelel a feltételnek)
 * -All (akkor teljesül, ha a gyűjtemény összes eleme megfelel a feltételnek)
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 a assignedPlans egy többértékű tulajdonság, amely felsorolja a felhasználóhoz rendelt összes szervizcsomagot. A következő kifejezés kiválasztja azokat a felhasználókat, akik a (z) Exchange Online (2. csomag) szolgáltatáscsomag (GUID-érték) esetében is engedélyezve vannak:
 
@@ -271,7 +271,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 
 Az ilyen szabályok például az összes olyan felhasználó csoportosítására használhatók, akik számára engedélyezve van az Office 365 (vagy más Microsoft Online Service) képesség. Ezután alkalmazhat szabályzatokat a csoportra.
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 A következő kifejezés kiválasztja azokat a felhasználókat, akik az Intune szolgáltatáshoz társított szolgáltatási csomaggal rendelkeznek (a "SCO" szolgáltatásnév azonosítja):
 
@@ -384,7 +384,7 @@ A következő eszköz-attribútumok használhatók.
  deviceManufacturer | bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Személyes, vállalati, ismeretlen | (Device. deviceOwnership-EQ "vállalat")
- enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
+ enrollmentProfileName | Apple-eszköz beléptetési profil neve, Android vállalati vállalati tulajdonú dedikált eszköz beléptetési profil neve vagy a Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
  deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
@@ -395,7 +395,7 @@ A következő eszköz-attribútumok használhatók.
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

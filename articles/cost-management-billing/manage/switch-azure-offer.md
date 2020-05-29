@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199517"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715885"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure-előfizetés egy másik ajánlatra történő módosítása
 
@@ -45,7 +45,7 @@ Használatalapú fizetéses egyéni előfizetésről a következőkre válthat:
 
 1. Jelentkezzen be az [Azure Fiókközpontba](https://account.windowsazure.com/Subscriptions).
 1. Válassza ki a használatalapú fizetéses egyéni előfizetését.
-1. Kattintson a **Váltás másik ajánlatra** elemre. A lehetőség csak akkor érhető el, ha van egy használatalapú fizetéses egyéni előfizetése, és az első számlázási időszak már lezárult.
+1. Kattintson a **Váltás másik ajánlatra** elemre. A lehetőség csak akkor érhető el, ha használatalapú fizetéses egyéni előfizetéssel rendelkezik, és az első számlázási időszak már lezárult.
 
    ![Figyelje meg az oldal jobb oldalán található Ajánlatváltás gombot](./media/switch-azure-offer/switchbutton.png)
 1. **Válassza ki a kívánt ajánlatot** az előfizetés-váltásra alkalmas ajánlatok listájából. A lista azon tagság alapján változik, amelyhez a fiók társítva van. Ha nincs elérhető lehetőség, tekintse meg [azon elérhető ajánlatok listáját, amelyekre átválthat](#whats-supported), és győződjön meg arról, hogy a megfelelő tagságokkal rendelkezik.
@@ -54,7 +54,7 @@ Használatalapú fizetéses egyéni előfizetésről a következőkre válthat:
 1. Attól függően, hogy milyen ajánlatra vált, a váltás következményeiről is láthat egy megjegyzést. A továbblépés előtt nézze át alaposan a listát, és kövesse az utasításokat.
 
    ![Tekintse át a megjegyzéseket](./media/switch-azure-offer/thingstonote.png)
-1. Átnevezheti az előfizetését. Alapértelmezés szerint az előfizetés neve az új ajánlat neve lesz. A folyamat befejezéséhez kattintson az **Ajánlatváltás** elemre.
+1. Átnevezheti az előfizetését. Alapértelmezés szerint az előfizetés neveként nem az új ajánlat neve van beállítva. A folyamat befejezéséhez kattintson az **Ajánlatváltás** elemre.
 
    ![Kattintson a zöld gombra](./media/switch-azure-offer/confirmpage.png)
 1. Sikerült! Az előfizetése át lett váltva az új ajánlatra.
@@ -100,7 +100,7 @@ A váltás napján létrejön egy számla a fennálló tartozásokról. Ezután 
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Migrálhatok egy használatalapú fizetéses díjakon alapuló előfizetésből egy Felhőszolgáltatóra (CSP) vagy egy Nagyvállalati Szerződésre (EA)?
 
-* A felhőszolgáltatóra történő migrálással kapcsolatban lásd a [használatalapú fizetéses Azure-előfizetés felhőszolgáltatóra történő migrálását](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp) ismertető cikket.
+* CSP-re való migráláshoz tekintse meg az [Azure-előfizetések előfizetők és CSP-k közötti átvitelét](transfer-subscriptions-subscribers-csp.md) ismertető témakört.
 * A Nagyvállalati Szerződésre történő migráláshoz kérje meg a regisztrációs adminisztrátort, hogy adja hozzá a fiókját a Nagyvállalati Szerződéshez. Az előfizetései nagyvállalati szerződéses regisztrációba történő áthelyezéséhez kövesse a meghívó e-mailjében található utasításokat. További információkért tekintse meg a [meglévő fiókok társítását](https://ea.azure.com/helpdocs/associateExistingAccount) ismertető cikket az EA Portalon.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Migrálhatom az adatokat és a szolgáltatásokat egy új előfizetésbe?
@@ -112,5 +112,5 @@ A váltás napján létrejön egy számla a fennálló tartozásokról. Ezután 
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md)

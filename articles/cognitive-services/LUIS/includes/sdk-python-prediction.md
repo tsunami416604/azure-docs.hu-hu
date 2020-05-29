@@ -6,29 +6,29 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: eabec50f57785bde6760db053eb3b12f6f5b6452
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732098"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171275"
 ---
 A Pythonhoz készült Language Understanding (LUIS) előrejelzési ügyféloldali kódtára a következőre használható:
 
 * Előrejelzés beolvasása tárolóhely alapján
 * Előrejelzés lekérése verzió alapján
 
-[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | a[könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [-előrejelzési futtatókörnyezetének (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [ mintái](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  [Előrejelzési futtatókörnyezet csomagja (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Language Understanding (LUIS) portál fiók – [hozzon létre egyet ingyen](https://www.luis.ai)
 * [Python 3.x](https://www.python.org/)
-* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás `df67dcdb-c37d-46af-88e1-8b97951ca1c2`azonosítóját. A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
+* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás AZONOSÍTÓját `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -40,7 +40,7 @@ Szerezze be a [futásidejű kulcsot](../luis-how-to-azure-subscription.md) egy L
 
 ### <a name="create-a-new-python-file"></a>Új Python-fájl létrehozása
 
-Hozzon létre egy új Python-fájlt az előnyben részesített szerkesztőben vagy az IDE nevű `prediction_quickstart.py`fájlban.
+Hozzon létre egy új Python-fájlt az előnyben részesített szerkesztőben vagy az IDE nevű fájlban `prediction_quickstart.py` .
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
@@ -67,28 +67,28 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-A projekt könyvtárában nyissa meg `prediction_quickstart.py` a fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő függőségeket:
+A projekt könyvtárában nyissa meg a `prediction_quickstart.py` fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő függőségeket:
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Dependencies)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 1. Hozzon létre változókat a saját szükséges LUIS-adataihoz:
 
-    Adja hozzá a változókat az előrejelzési kulcs egy nevű `LUIS_RUNTIME_KEY`környezeti változóból való kezeléséhez. Ha az alkalmazás elindítása után hozta létre a környezeti változót, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusok később lesznek létrehozva.
+    Adja hozzá a változókat az előrejelzési kulcs egy nevű környezeti változóból való kezeléséhez `LUIS_RUNTIME_KEY` . Ha az alkalmazás elindítása után hozta létre a környezeti változót, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusok később lesznek létrehozva.
 
-    Hozzon létre egy változót az erőforrás `LUIS_RUNTIME_ENDPOINT`nevének tárolásához.
+    Hozzon létre egy változót az erőforrás nevének tárolásához `LUIS_RUNTIME_ENDPOINT` .
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=AuthorizationVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. Hozzon létre egy változót az alkalmazás-AZONOSÍTÓhoz egy `LUIS_APP_ID`nevű környezeti változóként. Állítsa a környezeti változót a nyilvános IoT alkalmazásra **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Hozzon létre egy változót `production` a közzétett tárolóhely beállításához.
+1. Hozzon létre egy változót az alkalmazás-AZONOSÍTÓhoz egy nevű környezeti változóként `LUIS_APP_ID` . Állítsa a környezeti változót a nyilvános IoT alkalmazásra **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** . Hozzon létre egy változót a `production` közzétett tárolóhely beállításához.
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=OtherVariables)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. Hozzon létre egy hitelesítő adatokat tartalmazó objektumot a kulccsal, és használja a végpontján egy [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() objektum létrehozásához.
+1. Hozzon létre egy hitelesítő adatokat tartalmazó objektumot a kulccsal, és használja a végpontján egy [LUISRuntimeClientConfiguration] https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() objektum létrehozásához.
 
-    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=Client)]
+    [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 
 ## <a name="get-prediction-from-runtime"></a>Előrejelzés lekérése futtatókörnyezetből
 
@@ -98,7 +98,7 @@ A felhasználó kimondása a [prediction_request](https://docs.microsoft.com/pyt
 
 A **[get_slot_prediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.operations.predictionoperations?view=azure-python#get-slot-prediction-app-id--slot-name--prediction-request--verbose-none--show-all-intents-none--log-none--custom-headers-none--raw-false----operation-config-)** metódusnak több paraméterre van szüksége, például az alkalmazás azonosítója, a tárolóhely neve és az előrejelzési kérelem objektum a kérelem teljesítéséhez. A többi lehetőség, például a részletes, az összes leképezés megjelenítése és a napló megadása nem kötelező. A kérelem egy [PredictionResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.predictionresponse?view=azure-python) objektumot ad vissza.
 
-[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/prediction_quickstart.py?name=predict)]
+[!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=predict)]
 
 ## <a name="main-code-for-the-prediction"></a>Az előrejelzés fő kódja
 
@@ -107,9 +107,9 @@ A következő fő módszer használatával összekapcsolhatja a változókat és
 ```python
 predict(luisAppID, luisSlotName)
 ```
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Futtassa az alkalmazást a paranccsal `python prediction_quickstart.py` az alkalmazás könyvtárából.
+Futtassa az alkalmazást a `python prediction_quickstart.py` paranccsal az alkalmazás könyvtárából.
 
 ```console
 python prediction_quickstart.py
@@ -125,6 +125,6 @@ Intents:
 Entities: {'HomeAutomation.Operation': ['on']}
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a jóslatokkal, törölje a munkát ebből a rövid útmutatóból a fájl és az alkönyvtárak törlésével.

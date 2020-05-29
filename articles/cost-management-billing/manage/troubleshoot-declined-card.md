@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409383"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745523"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Az Azure-regisztráció során elutasított bankkártyával kapcsolatos probléma elhárítása
 
@@ -20,9 +20,9 @@ Előfordulhat, hogy olyan problémát vagy hibát tapasztal, amikor a rendszer e
 
 A probléma megoldásához válassza ki az alábbi témák közül azt, amelyik leginkább hasonlít a hibára.
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Nem elfogadott a hitelkártya-kibocsátó az adott ország esetében
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>Nem elfogadott a hitelkártya-kibocsátó az adott ország vagy régió esetében.
 
-A kártya kiválasztásakor az Azure megjeleníti a választott országban elfogadott kártyatípusokat. Lépjen kapcsolatba bankjával vagy a kártya kibocsátójával, és ellenőrizze, hogy a hitelkártya esetében engedélyezettek-e a nemzetközi tranzakciók. További információ a támogatott országokról és pénznemekről: [Azure-vásárlással kapcsolatos gyakori kérdések](https://azure.microsoft.com/pricing/faq/).
+A kártya kiválasztásakor az Azure megjeleníti a választott országban vagy régióban elfogadott kártyatípusokat. Lépjen kapcsolatba bankjával vagy a kártya kibocsátójával, és ellenőrizze, hogy a hitelkártya esetében engedélyezettek-e a nemzetközi tranzakciók. További információ a támogatott országokról vagy régiókról és pénznemekről: [Azure-vásárlással kapcsolatos gyakori kérdések](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >Az American Express hitelkártyák jelenleg nem minősülnek elfogadott fizetőeszköznek Indiában. Nem áll módunkban tudni, mikor válnak elfogadott fizetőeszközzé.
@@ -47,7 +47,7 @@ További információt az Azure-ba történő regisztráció során adódó prob
 
 ## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Olyan vállalkozást képvisel, amely nem kíván kártyával fizetni
 
-Egy vállalkozás képviselőjeként más fizetési módok használatával, például csekken és banki átutalással is kiegyenlítheti az Azure-előfizetés díját. Ha a számlás fizetést választotta a fiók létrehozásakor, később nem válthat másik fizetési módra, kivéve, ha rendelkezik Microsoft-ügyfélszerződéssel, és az Azure webhelyén regisztrált az Azure-ba.
+Egy vállalkozás képviselőjeként más fizetési módok használatával, például csekken és banki átutalással is kiegyenlítheti az Azure-előfizetés díját. Ha a számlás fizetést választotta a fiók létrehozásakor, később nem válthat másik fizetési módra, kivéve, ha rendelkezik Microsoft Ügyfélszerződéssel, és az Azure webhelyén regisztrált az Azure-ba.
 
 További információ a számlás fizetésről: [Az Azure-előfizetés számlás kifizetésére vonatkozó kérés elküldése](pay-by-invoice.md).
 
@@ -68,6 +68,6 @@ Az Azure-számlázással és -előfizetésekkel kapcsolatos további hibaelhár�
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-számlázás dokumentációja](../../billing/index.md)

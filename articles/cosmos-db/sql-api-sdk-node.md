@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650736"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171599"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -44,23 +44,23 @@ ms.locfileid: "83650736"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name=""></a><a name="3.1.0"/>3.1.0</a>
+### <a name="310"></a><a name="3.1.0"></a>3.1.0
 * Állítsa be az alapértelmezett ResponseContinuationTokenLimitInKB a 1kb értékre. Alapértelmezés szerint ez a 1kb a hosszú fejlécek elkerülésére van korlátozva (a Node. js globális fejlécének korlátja). A felhasználók megadhatják ezt a mezőt a hosszú fejlécek engedélyezéséhez, ami segíthet a háttérben a lekérdezés-végrehajtás optimalizálásában.
 * Távolítsa el a disableSSLVerification. Ez a beállítás új alternatívákat tartalmaz [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
-### <a name=""></a><a name="3.0.4"/>3.0.4</a>
+### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * A partíciós kulcs fejlécének explicit módon történő beállításának engedélyezése a initialHeaders számára
 * A Package. JSON # fájlok használatával megakadályozhatja a külső fájlok közzétételét
 * Az útválasztási Térkép rendezési hibájának javítása a Node + V8 régebbi verziójában
 * Kijavítja a hibát, ha a felhasználó részleges újrapróbálkozási lehetőségeket biztosít
 
-### <a name=""></a><a name="3.0.3"/>3.0.3</a>
+### <a name="303"></a><a name="3.0.3"></a>3.0.3
 * A webpack használatának megakadályozása a Required nevű modulok feloldásával
 
-### <a name=""></a><a name="3.0.2"/>3.0.2</a>
+### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * Kijavítja a hosszú ideig fennálló hibát, amelyben az RUs az összesített lekérdezések esetében 0
 
-### <a name=""></a><a name="3.0.0"/>3.0.0</a>
+### <a name="300"></a><a name="3.0.0"></a>3.0.0
 
 🎉 v3 kiadás! 🎉 számos új funkciót, hibajavítást és néhány megszakítási változást. A kiadás elsődleges céljai:
 
@@ -211,30 +211,30 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * NoUnusedLocals és noUnusedParameters engedélyezése (#275)
 * A CI buildek Azure-YAML (#298)
 
-### <a name=""></a><a name="2.1.5"/>2.1.5</a>
+### <a name="215"></a><a name="2.1.5"></a>2.1.5
 * Nem változik a kód. Kijavít egy problémát, amelyben néhány további fájl szerepel a 2.1.4-csomagban.
 
-### <a name=""></a><a name="2.1.4"/>2.1.4</a>
+### <a name="214"></a><a name="2.1.4"></a>2.1.4
 * Regionális feladatátvétel javítása az újrapróbálkozási szabályzaton belül
 * A ChangeFeed hasMoreResults tulajdonságának javítása
 * Fejlesztői függőségek frissítései
 * PolicheckExclusions. txt hozzáadása
 
-### <a name=""></a><a name="2.1.3"/>2.1.3</a>
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Váltás _ts típus karakterláncról számra
 * Alapértelmezett indexelési tesztek javítása
 * Vezetnie uniqueKeyPolicy – v2
 * Javítások a bemutató és a bemutató hibakereséséhez
 
-### <a name=""></a><a name="2.1.2"/>2.1.2</a>
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * A vezetnie a v3 ág javításait kínálja
 * Hibajavítás a executeNext () típusú aláírásban
 * Sajtóhiba-javítások
 
-### <a name=""></a><a name="2.1.1"/>2.1.1</a>
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Készítse elő a szerkezetátalakítást. Lehetővé teszi az SDK verziójának kihúzását a felépítési időpontban.
 
-### <a name=""></a><a name="2.1.0"/>2.1.0</a>
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 #### <a name="new-features"></a>Új funkciók
 * ChangeFeed-támogatás hozzáadva (#196)
 * Többsokszögű adattípus hozzáadva az indexeléshez (#191)
@@ -247,76 +247,76 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * Integrált teszt hozzáadása az írógéppel történő használathoz (#199)
 * Közvetlen telepítés engedélyezése a GitHubról (#194)
 
-### <a name=""></a><a name="2.0.5"/>2.0.5</a>
+### <a name="205"></a><a name="2.0.5"></a>2.0.5
 * A csomópont-ügynök típusához tartozó felületet adja meg. A géppel rendelkező felhasználóknak többé nem kell @types/node függőségként telepíteniük
 * Az előnyben részesített helyszínek mostantól megfelelőek
 * Fejlesztés a fejlesztői dokumentációban
 * Különböző typo-javítások
 
-### <a name=""></a><a name="2.0.4"/>2.0.4</a>
+### <a name="204"></a><a name="2.0.4"></a>2.0.4
 * A 2.0.3-ben bevezetett hibajavítások definíciós problémája
 
-### <a name=""></a><a name="2.0.3"/>2.0.3</a>
+### <a name="203"></a><a name="2.0.3"></a>2.0.3
 * `big-integer`Függőség eltávolítása
 * Váltson a AsyncIterable típusra vonatkozó hivatkozási irányelvekre. Az írógéppel a felhasználóknak már nem kell testreszabnia a "lib" beállítást.
 * Sajtóhiba-javítások
 
-### <a name=""></a><a name="2.0.2"/>2.0.2</a>
+### <a name="202"></a><a name="2.0.2"></a>2.0.2
 * Readme-hivatkozások javítása
 
-### <a name=""></a><a name="2.0.1"/>2.0.1</a>
+### <a name="201"></a><a name="2.0.1"></a>2.0.1
 * Az újrapróbálkozási felület implementációjának javítása
 
-### <a name=""></a><a name="2.0.0"/>2.0.0</a>
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * A JavaScript SDK 2.0.0 verziója
 * A többrégiós írások támogatása hozzáadva.
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0 – 3</a>
+### <a name="200-3"></a><a name="2.0.0-3"></a>2.0.0 – 3
 * A nyilvános előzetes verzióhoz készült JavaScript SDK 2.0.0 verziója RC1.
 * Új objektummodell, amely a legfelső szintű CosmosClient és metódusokat a megfelelő adatbázis, tároló és elem osztályok között osztja szét. 
 * Az [ígéretek](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises)támogatása. 
 * Az SDK formátuma írógéppel lett konvertálva.
 
-### <a name=""></a><a name="1.14.4"/>1.14.4</a>
+### <a name="1144"></a><a name="1.14.4"></a>1.14.4
 * a NPM dokumentációja kijavítva.
 
-### <a name=""></a><a name="1.14.3"/>1.14.3</a>
+### <a name="1143"></a><a name="1.14.3"></a>1.14.3
 * Az alapértelmezett újrapróbálkozások támogatása a kapcsolódási problémák esetén.
 * A gyűjtemény módosítási csatornájának olvasási támogatása.
 * Rögzített munkamenet-konzisztenciai hiba, amely időnként az "olvasási munkamenet nem érhető el" hibát okozott.
 * A lekérdezési metrikák támogatása hozzáadva.
 * Módosította a http-ügynök maximális számú kapcsolatát.
 
-### <a name=""></a><a name="1.14.2"/>1.14.2</a>
+### <a name="1142"></a><a name="1.14.2"></a>1.14.2
 * Az Azure DocumentDB helyett a Azure Cosmos DB referenciára szolgáló dokumentáció frissítve.
 * A proxyUrl-beállítás támogatása a ConnectionPolicy-ben.
 
-### <a name=""></a><a name="1.14.1"/>1.14.1</a>
+### <a name="1141"></a><a name="1.14.1"></a>1.14.1
 * Kis javítás a kis-és nagybetűket megkülönböztető fájlrendszerekhez.
 
-### <a name=""></a><a name="1.14.0"/>1.14.0</a>
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * A munkamenet-konzisztencia támogatását adja meg.
 * Az SDK-verzióhoz a [Azure Cosmos db Emulator](https://aka.ms/cosmosdb-emulator)legújabb verziójára van szükség.
 
-### <a name=""></a><a name="1.13.0"/>1.13.0</a>
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * Megszakított több partíciós lekérdezés felosztása.
 * Támogatja az erőforrás-hivatkozáshoz vezető és záró perjelet (és a hozzájuk tartozó teszteket).
 
-### <a name=""></a><a name="1.12.2"/>1.12.2</a>
+### <a name="1122"></a><a name="1.12.2"></a>1.12.2
 *    a NPM dokumentációja kijavítva.
 
-### <a name=""></a><a name="1.12.1"/>1.12.1</a>
+### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * Kijavított egy hibát a executeStoredProcedure, ahol az érintett dokumentumok speciális Unicode-karaktereket (LS, PS) tartalmaztak.
 * A partíciós kulcsban Unicode karaktereket tartalmazó dokumentumok kezelésére vonatkozó hiba javítva.
 * Rögzített támogatás az adathordozó nevű gyűjtemények létrehozásához. GitHub-probléma #114.
 * Az engedély-engedélyezési jogkivonat rögzített támogatása. GitHub-probléma #178.
 
-### <a name=""></a><a name="1.12.0"/>1.12.0</a>
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * Egy új, ConsistentPrefix nevű [konzisztencia-szint](consistency-levels.md) támogatása.
 * A UriFactory támogatása.
 * Rögzített Unicode-támogatási hiba. GitHub-probléma #171.
 
-### <a name=""></a><a name="1.11.0"/>1.11.0</a>
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * Az összesítési lekérdezések támogatása (DARABSZÁM, MIN., MAX., SUM és AVG).
 * Ezzel a beállítással megadható a párhuzamossági fok a több partíciós lekérdezéseknél.
 * A TLS-ellenőrzés letiltásának lehetősége a Azure Cosmos DB emulátoron való futtatáskor.
@@ -324,87 +324,87 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * Kijavította a folytatási token hibáját egy partíciós gyűjteményhez. GitHub-probléma #107.
 * A executeStoredProcedure-hiba javítva lett a 0 értékben, egyetlen param-ként. GitHub-probléma #155.
 
-### <a name=""></a><a name="1.10.2"/>1.10.2</a>
+### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * Rögzített felhasználói ügynök fejléce, amely tartalmazza az SDK verzióját.
 * Másodlagos kód karbantartása.
 
-### <a name=""></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1101"></a><a name="1.10.1"></a>1.10.1
 * A TLS-ellenőrzés letiltása, ha az SDK használatával célozza meg az emulátort (hostname = localhost).
 * A parancsfájl-naplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
 
-### <a name=""></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * További támogatás a több partíciós párhuzamos lekérdezésekhez.
 * A TOP/ORDER szintű támogatás hozzáadva a particionált gyűjtemények lekérdezései alapján.
 
-### <a name=""></a><a name="1.9.0"/>1.9.0</a>
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * Ismételt újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Azure Cosmos DB alapértelmezés szerint a 429-es hibakód miatt a rendszer az egyes kérések esetében kilenc alkalommal újrapróbálkozik, a válasz fejlécében a retryAfter idő tiszteletben tartásával. A ConnectionPolicy objektum RetryOptions tulajdonságának részeként megadható a rögzített újrapróbálkozási időköz, ha figyelmen kívül hagyja az újrapróbálkozások között a kiszolgáló által visszaadott retryAfter időt. Azure Cosmos DB most legfeljebb 30 másodpercig vár minden szabályozott kérelem esetében (az újrapróbálkozások számától függetlenül), és visszaadja a 429-es hibakódú választ. Ez az idő felülbírálható a ConnectionPolicy objektum RetryOptions tulajdonságában is.
 * Cosmos DB most visszaadja az x-MS-szabályozás-újrapróbálkozások száma és az x-MS-szabályozás-újrapróbálkozás-WAIT-Time-MS értéket az összes kérelemben, hogy az újrapróbálkozások számának és a kérésnek az újrapróbálkozások között megvárt kumulatív időpontját jelöli.
 * A rendszer hozzáadta a RetryOptions osztályt, felfedte a RetryOptions tulajdonságot a ConnectionPolicy osztályban, amely az alapértelmezett újrapróbálkozási lehetőségek némelyikének felülbírálására használható.
 
-### <a name=""></a><a name="1.8.0"/>1.8.0</a>
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * A többrégiós adatbázis-fiókok támogatása hozzáadva.
 
-### <a name=""></a><a name="1.7.0"/>1.7.0</a>
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * Az élettartam (TTL) szolgáltatás támogatása a dokumentumok számára.
 
-### <a name=""></a><a name="1.6.0"/>1.6.0</a>
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * A [particionált gyűjtemények](partition-data.md) és a [felhasználó által definiált teljesítményszint](performance-levels.md)implementálva.
 
-### <a name=""></a><a name="1.5.6"/>1.5.6</a>
+### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Rögzített RangePartitionResolver. resolveForRead hiba, amely miatt nem tért vissza hivatkozások az eredmények rossz Összefűzés miatt.
 
-### <a name=""></a><a name="1.5.5"/>1.5.5</a>
+### <a name="155"></a><a name="1.5.5"></a>1.5.5
 * Rögzített hashPartitionResolver resolveForRead (): Ha nincs megadva partíciós kulcs, a rendszer az összes regisztrált hivatkozás listájának visszaadása helyett kivételt váltott ki.
 
-### <a name=""></a><a name="1.5.4"/>1.5.4</a>
+### <a name="154"></a><a name="1.5.4"></a>1.5.4
 * Javítások [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – dedikált HTTPS-ügynök: ne módosítsa a globális ügynököt Azure Cosmos db célokra. A lib összes kérelméhez használjon dedikált ügynököt.
 
-### <a name=""></a><a name="1.5.3"/>1.5.3</a>
+### <a name="153"></a><a name="1.5.3"></a>1.5.3
 * Kijavítja a problémát [#81](https://github.com/Azure/azure-documentdb-node/issues/81) – az adathordozó-azonosítókban megfelelően kezeli a kötőjeleket.
 
-### <a name=""></a><a name="1.5.2"/>1.5.2</a>
+### <a name="152"></a><a name="1.5.2"></a>1.5.2
 * Javítások [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -EventEmitter figyelő szivárgásával kapcsolatos figyelmeztetés.
 
-### <a name=""></a><a name="1.5.1"/>1.5.1</a>
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Javítja a problémát [#92](https://github.com/Azure/azure-documentdb-node/issues/90) – mappa kivonatának átnevezése a kis-és nagybetűket megkülönböztető rendszerek esetében.
 
-### <a name=""></a><a name="1.5.0"/>1.5.0</a>
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * A felosztási támogatás megvalósításához kivonatoló &-tartomány partíció-feloldókat adhat hozzá.
 
-### <a name=""></a><a name="1.4.0"/>1.4.0</a>
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * Upsert implementálása. Új upsertXXX metódusok a documentClient-on.
 
-### <a name=""></a><a name="1.3.0"/>1.3.0</a>
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * A rendszer kihagyta a verziószámok más SDK-kal való igazítását.
 
-### <a name=""></a><a name="1.2.2"/>1.2.2</a>
+### <a name="122"></a><a name="1.2.2"></a>1.2.2
 * A Split Q megígéri a burkolót az új tárházhoz.
 * Frissítsen a csomagfájl NPM-beállításjegyzékbe.
 
-### <a name=""></a><a name="1.2.1"/>1.2.1</a>
+### <a name="121"></a><a name="1.2.1"></a>1.2.1
 * Az azonosító alapú útválasztás implementálása.
 * Javítások [#49](https://github.com/Azure/azure-documentdb-node/issues/49) – az aktuális tulajdonság ütközik az aktuális metódussal ().
 
-### <a name=""></a><a name="1.2.0"/>1.2.0</a>
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * A térinformatikai index támogatása.
 * Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítói nem tartalmazhatják a következő karaktereket:?,/, #,  &#47;&#47;, karakter, vagy egy szóközzel végződik.
 * Hozzáadja az új "index átalakítási folyamat" fejlécet a ResourceResponse.
 
-### <a name=""></a><a name="1.1.0"/>1.1.0</a>
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * A v2 indexelési házirendet implementálja.
 
-### <a name=""></a><a name="1.0.3"/>1.0.3</a>
+### <a name="103"></a><a name="1.0.3"></a>1.0.3
 * [#40](https://github.com/Azure/azure-documentdb-node/issues/40) által megvalósított eslint-és morog-konfigurációk kiadása a Core és az Promise SDK-ban.
 
-### <a name=""></a><a name="1.0.2"/>1.0.2</a>
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 * Probléma [#45](https://github.com/Azure/azure-documentdb-node/issues/45) – az ígéretek burkolója nem tartalmaz hibát tartalmazó fejlécet.
 
-### <a name=""></a><a name="1.0.1"/>1.0.1</a>
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * A readConflicts, a readConflictAsync és a queryConflicts hozzáadásával megvalósítható az ütközések lekérdezésének lehetősége.
 * Frissített API-dokumentáció.
 * Probléma [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -Client. createDocumentAsync hiba.
 
-### <a name=""></a><a name="1.0.0"/>1.0.0</a>
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok

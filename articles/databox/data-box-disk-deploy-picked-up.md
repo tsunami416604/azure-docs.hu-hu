@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995994"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747674"
 ---
 ::: zone target="docs"
 
@@ -49,7 +49,7 @@ Mielőtt hozzákezd, mindenképp végezze el az [ adatok Azure Data Box Diskre t
     - Ajánlott megfelelően rögzített buborékfóliát használni a lemezek becsomagolásához.
     - Gondoskodjon róla, hogy a lemez szorosan illeszkedjen a dobozba.
 
-A következő lépéseket az határozza meg, hogy hová küldi vissza az eszközt. Az utasítások különbözőek az Egyesült Államok/Kanada, az Európai Unió (EU), Ausztrália és az ázsiai országok esetén.
+A következő lépések attól függenek, hogy hol küldi vissza az eszközt. Az utasítások eltérőek az Egyesült Államok/Kanada, az Európai Unió (EU), Ausztrália és az ázsiai országok/régiók esetén.
 
 ### <a name="in-us-or-canada"></a>[Az Egyesült Államokban vagy Kanadában](#tab/in-us-or-canada)
 
@@ -142,10 +142,10 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
     To: kadcustcare@singpost.com
     Subject: Microsoft Azure Pick-up - XZ00001234567 
     Body: 
-     a. Requestor name
-     b. Requestor contact number
-     c. Requestor collection address
-     d. Preferred collection date
+     a.    Requestor name
+     b.    Requestor contact number
+     c.    Requestor collection address
+     d.    Preferred collection date
     ```
 
    > [!NOTE]
@@ -167,7 +167,7 @@ Ha a Data Box Disket Japánban, Szingapúrban, Koreában vagy Nyugat-Európában
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

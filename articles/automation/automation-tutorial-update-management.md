@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5bc71c5462ed1c721d2c94f889146400a07dd19e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170307"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -26,6 +26,10 @@ Az ebben a cikkben ismertetett eljárások használata előtt győződjön meg a
 * [Update Management engedélyezése a Azure Portal tallózásával](automation-onboard-solutions-from-browse.md)
 * [Az Update Management engedélyezése runbookból](automation-onboard-solutions.md)
 * [Az Update Management engedélyezése Azure-beli virtuális gépről](automation-onboard-solutions-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>A központi telepítés hatókörének korlátozása
+
+Update Management a munkaterületen belüli hatókör-konfigurációval célozza meg a számítógépeket a frissítések fogadásához. További információ: a [Update Management központi telepítési hatókörének korlátozása](automation-scope-configurations-update-management.md).
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -57,7 +61,7 @@ Kövesse az alábbi lépéseket a riasztások beállításához, hogy megismerje
 
 5. Kattintson a **feltétel hozzáadása** elemre a frissítés telepítéséhez megfelelő jel kiválasztásához. Az alábbi táblázat a két elérhető jel részleteit mutatja be.
 
-    |Jel neve|Dimenziók|Leírás
+    |Jel neve|Dimenziók|Description
     |---|---|---|
     |`Total Update Deployment Runs`|-Központi telepítési név frissítése<br>– Állapot    |Riasztások egy frissítés központi telepítésének általános állapotáról.|
     |`Total Update Deployment Machine Runs`|-Központi telepítési név frissítése</br>– Állapot</br>– Célszámítógép</br>-A központi telepítés futtatási AZONOSÍTÓjának frissítése    |Adott gépekre irányuló frissítési központi telepítés állapotára vonatkozó riasztások.|
@@ -199,7 +203,12 @@ A frissítés telepítésének befejezésekor a telepítés során megadott rias
 
 ![E-mail konfigurálása műveletcsoport](./media/automation-tutorial-update-management/email-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* A hatókör-konfigurációkkal kapcsolatos további információkért lásd: [Update Management központi telepítési hatókör korlátozása](automation-scope-configurations-update-management.md).
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
 * Ha a telepítésekkel fejeződött be, tekintse [meg a munkaterületek összekapcsolását az Automation-fiókból a Update Management](automation-unlink-workspace-update-management.md).
 * A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
+* Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).
+* A Windows Update agenttel kapcsolatos problémák elhárításához tekintse meg a [Windows Update Agent problémáinak elhárítása](troubleshoot/update-agent-issues.md)című témakört.
+* A Linux Update agenttel kapcsolatos problémák elhárításához tekintse meg a[Linux frissítési ügynökkel kapcsolatos problémák elhárítása](troubleshoot/update-agent-issues-linux.md)című témakört.

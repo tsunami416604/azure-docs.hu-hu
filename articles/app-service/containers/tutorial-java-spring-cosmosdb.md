@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0b65e8f470b36ab1642e9144e081253a577dabc3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10a637400c513f05d59af74942df49ac6626c70f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202502"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170375"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Oktatóanyag: Java Spring boot-Webalkalmazás létrehozása Azure App Service Linux és Azure Cosmos DB rendszeren
 
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
         -l <your-resource-group-region>
     ```
 
-3. Hozzon létre Azure Cosmos DB `GlobalDocumentDB` a típussal. Cosmos DB nevének csak kisbetűket kell használnia. Jegyezze fel a `documentEndpoint` parancs válaszában szereplő mezőt.
+3. Hozzon létre Azure Cosmos DB a `GlobalDocumentDB` típussal. Cosmos DB nevének csak kisbetűket kell használnia. Jegyezze fel a `documentEndpoint` parancs válaszában szereplő mezőt.
 
     ```bash
     az cosmosdb create --kind GlobalDocumentDB \
@@ -77,7 +77,7 @@ Az alábbi lépéseket követve létrehozhat egy Azure Cosmos DB adatbázist az 
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Azure Cosmos DB kulcsának beszerzése az alkalmazáshoz való kapcsolódáshoz. A következő `primaryMasterKey`lépésben `documentEndpoint` meg kell őriznie a közeli lépéseket.
+4. Azure Cosmos DB kulcsának beszerzése az alkalmazáshoz való kapcsolódáshoz. A `primaryMasterKey` `documentEndpoint` következő lépésben meg kell őriznie a közeli lépéseket.
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -92,7 +92,7 @@ cd initial/spring-todo-app
 cp set-env-variables-template.sh .scripts/set-env-variables.sh
 ```
  
-Szerkessze `.scripts/set-env-variables.sh` kedvenc szerkesztőjét, és adja meg Azure Cosmos db a kapcsolatok adatait. A App Service Linux-konfiguráció esetében használja ugyanazt a régiót, mint`your-resource-group-region`az előző () és`your-azure-group-name`az erőforráscsoport (), amelyet a rendszer a Cosmos db-adatbázis létrehozásakor használ. Olyan WEBAPP_NAME válasszon, amely egyedi, mert nem tudja duplikálni a webalkalmazások nevét bármely Azure-telepítésben.
+Szerkessze `.scripts/set-env-variables.sh` kedvenc szerkesztőjét, és adja meg Azure Cosmos db a kapcsolatok adatait. A App Service Linux-konfiguráció esetében használja ugyanazt a régiót, mint az előző ( `your-resource-group-region` ) és az erőforráscsoport ( `your-azure-group-name` ), amelyet a rendszer a Cosmos db-adatbázis létrehozásakor használ. Olyan WEBAPP_NAME válasszon, amely egyedi, mert nem tudja duplikálni a webalkalmazások nevét bármely Azure-telepítésben.
 
 ```bash
 export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
@@ -125,7 +125,7 @@ public interface TodoItemRepository extends DocumentDbRepository<TodoItem, Strin
 }
 ```
 
-Ezután a minta alkalmazás a `@Document` -ból `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` importált megjegyzéssel állítja be a Cosmos db által tárolt és felügyelt entitás típusát:
+Ezután a minta alkalmazás a `@Document` -ból importált megjegyzéssel `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` állítja be a Cosmos db által tárolt és felügyelt entitás típusát:
 
 ```java
 @Document
@@ -165,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Az alkalmazás elindítása után az alábbi hivatkozással érheti el helyileg a Spring TODO alkalmazást: `http://localhost:8080/`.
+Az alkalmazás elindítása után az alábbi hivatkozással érheti el helyileg a Spring TODO alkalmazást: `http://localhost:8080/` .
 
  ![A Spring TODO-alkalmazás helyi elérése](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Ha a "Started TodoApplication" üzenet helyett kivételek jelennek meg, ellenőrizze, `bash` hogy az előző lépésben szereplő parancsfájl megfelelően exportálta-e a környezeti változókat, és hogy helyesek-e a létrehozott Azure Cosmos db adatbázishoz tartozó értékek.
+Ha a "Started TodoApplication" üzenet helyett kivételek jelennek meg, ellenőrizze, hogy az `bash` előző lépésben szereplő parancsfájl megfelelően exportálta-e a környezeti változókat, és hogy helyesek-e a létrehozott Azure Cosmos db adatbázishoz tartozó értékek.
 
 ## <a name="configure-azure-deployment"></a>Az Azure-telepítés konfigurálása
 
-Nyissa `pom.xml` meg a fájlt `initial/spring-boot-todo` a címtárban, és adja hozzá a következő [Azure Web App beépülő modult a Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) -konfigurációhoz.
+Nyissa meg a `pom.xml` fájlt a `initial/spring-boot-todo` címtárban, és adja hozzá a következő [Azure Web App beépülő modult a Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) -konfigurációhoz.
 
 ```xml    
 <plugins> 
@@ -185,7 +185,7 @@ Nyissa `pom.xml` meg a fájlt `initial/spring-boot-todo` a címtárban, és adja
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.9.0</version>
+        <version>1.9.1</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -250,7 +250,9 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.9.0:deploy (default-cli) @ spring-todo-app ---
+[INFO] --- azure-webapp-maven-plugin:1.9.1:deploy (default-cli) @ spring-todo-app ---
+[INFO] Auth Type : AZURE_CLI, Auth Files : [C:\Users\testuser\.azure\azureProfile.json, C:\Users\testuser\.azure\accessTokens.json]
+[INFO] Subscription : xxxxxxxxx
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'ServicePlanb6ba8178-5bbb-49e7'...
 [INFO] Successfully created App Service Plan.
@@ -295,7 +297,7 @@ az appservice plan update --number-of-workers 2 \
    --resource-group <your-azure-group-name>
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
   
@@ -305,10 +307,10 @@ az group delete --name <your-azure-group-name>
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Azure Java-fejlesztőknek](/java/azure/)
-[tavaszi rendszerindítás](https://spring.io/projects/spring-boot), Cosmos db, [Azure Cosmos db](/azure/cosmos-db/sql-api-introduction) és [app Service Linux](app-service-linux-intro.md)rendszerhez készült [Spring-alapú adatfeldolgozás](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).
+[Azure Java-fejlesztőknek](/java/azure/) 
+ [Spring boot](https://spring.io/projects/spring-boot), Cosmos DB, [Azure Cosmos db](/azure/cosmos-db/sql-api-introduction) és [app Service Linux](app-service-linux-intro.md) [Spring-adatvédelme](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable).
 
 További információ a Java-alkalmazások App Service Linux rendszeren való futtatásáról a Fejlesztői útmutatóban.
 

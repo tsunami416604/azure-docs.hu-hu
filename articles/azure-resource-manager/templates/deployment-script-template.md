@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83708006"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168573"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -60,7 +60,7 @@ Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhet
   read resourceGroupName &&
   echo "Enter the managed identity name:" &&
   read idName &&
-  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  az identity show -g $resourceGroupName -n $idName --query id
   ```
 
   # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -166,7 +166,7 @@ A következő sablon egyetlen erőforrással van definiálva a `Microsoft.Resour
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
 
 > [!NOTE]
-> Mivel a beágyazott telepítési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő karakterláncokat csak egyszeres idézőjelek közé kell foglalni. A PowerShell escape-karaktere **&#92;**. Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon. Tekintse meg a name paraméter alapértelmezett értékét.
+> Mivel a beágyazott üzembe helyezési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő sztringeket **&#92;** vagy szimpla idézőjelek közé kell tenni. Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon.
 
 A parancsfájl egy paramétert fogad, és kiírja a paraméter értékét. A **DeploymentScriptOutputs** a kimenetek tárolására szolgál.  A kimenetek szakaszban az **érték** sorban látható, hogyan férhet hozzá a tárolt értékekhez. `Write-Output`hibakeresési célra szolgál. A kimeneti fájl elérésének megismeréséhez tekintse meg az [üzembe helyezési parancsfájlok hibakeresését](#debug-deployment-scripts)ismertető témakört.  A tulajdonságok leírását lásd: [példák a sablonokra](#sample-templates).
 
@@ -306,7 +306,20 @@ Ha meg szeretné tekinteni a deploymentScripts-erőforrást a portálon, válass
 
 A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van meglévő Storage-fiók megadására, máskülönben a Storage-fiókkal együtt automatikusan létrejön a tároló-példány. Meglévő Storage-fiók használatára vonatkozó követelmények:
 
-- A támogatott Storage-fiókok a következők: általános célú v2, általános célú v1 és FileStorage fiókok. A prémium SKU-t csak a FileStorage támogatja. További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md).
+- A támogatott Storage-fiókok a következők:
+
+    | Termékváltozat             | Támogatott típus     |
+    |-----------------|--------------------|
+    | Premium_LRS     | FileStorage        |
+    | Premium_ZRS     | FileStorage        |
+    | Standard_GRS    | Tárolás, StorageV2 |
+    | Standard_GZRS   | StorageV2          |
+    | Standard_LRS    | Tárolás, StorageV2 |
+    | Standard_RAGRS  | Tárolás, StorageV2 |
+    | Standard_RAGZRS | StorageV2          |
+    | Standard_ZRS    | StorageV2          |
+
+    Ezek a kombinációk támogatják a fájlmegosztást.  További információ: Azure- [fájlmegosztás](../../storage/files/storage-how-to-create-file-share.md) és- [típusú tárolási fiókok](../../storage/common/storage-account-overview.md)létrehozása.
 - A Storage-fiók tűzfalszabályok még nem támogatottak. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md).
 - A telepítési parancsfájl felhasználó által hozzárendelt felügyelt identitásának engedélyekkel kell rendelkeznie a Storage-fiók kezeléséhez, beleértve az olvasás, a létrehozás és a fájlmegosztás törlését.
 

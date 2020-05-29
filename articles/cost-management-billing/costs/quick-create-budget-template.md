@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103633"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830310"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Gyorsútmutató: Költségvetés létrehozása Azure Resource Manager-sablonnal
 
@@ -39,21 +39,23 @@ Az alábbi Azure-engedélyek, vagy -hatókörök, támogatottak az egyes előfiz
 
 További információ a Cost Management adataihoz való hozzáférés hozzárendeléséről: [A Cost Management adataihoz való hozzáférés hozzárendelése](assign-access-acm-data.md).
 
-## <a name="review-the-template"></a>A sablon áttekintése
+## <a name="create-a-budget"></a>Költségvetés létrehozása
+
+### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/create-budget) származik.
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 A sablonban egyetlen Azure-erőforrás van definiálva:
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Azure-költségvetés létrehozása.
 
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Kattintson az alábbi gombra az Azure-ba való bejelentkezéshez és egy sablon megnyitásához. A sablon létrehoz egy költségvetést.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége a költségvetésre, a következő módszerekkel törölheti:
+
+### <a name="azure-portal"></a>Azure Portal
+
+Lépjen a **Költségkezelés + számlázás** területre > válasszon egy számlázási hatókört > **Költségvetések** > válasszon egy költségvetést > válassza a **Költségkeret törlése** lehetőséget.
+
+### <a name="command-line"></a>Parancssor
+
+A költségvetést eltávolíthatja az Azure CLI vagy az Azure PowerShell használatával.
+
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

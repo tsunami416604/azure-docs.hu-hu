@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133172"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745542"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
@@ -63,7 +63,7 @@ A böngésző cookie-beállításainak frissítéséhez hajtsa végre az alábbi
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>A hitelkártyaűrlap nem támogatja a számlázási címet
 
-A számlázási címnek **Az Ön adatai** szakaszban kiválasztott országban kell lennie. Ügyeljen arra, hogy a helyes országot válassza ki.
+A számlázási címnek **Az Ön adatai** szakaszban kiválasztott országban vagy régióban kell lennie. Ügyeljen arra, hogy a helyes országot vagy régiót válassza ki.
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Nem érkezett szöveges üzenet vagy hívás a regisztráció részét képező fiókellenőrzés során
 
@@ -72,7 +72,7 @@ Bár a folyamat általában gyors, az ellenőrző kód megérkezéséig akár n�
 Néhány további tipp:
 
 - A telefonos ellenőrzéshez nem használható VoIP-telefonszám.
-- Ellenőrizze a megadott telefonszámot, beleértve a legördülő menüből kiválasztott országkódot.
+- Ellenőrizze a megadott telefonszámot, beleértve a legördülő menüből kiválasztott ország-/régiókódot.
 - Ha a telefonja nem fogad szöveges üzeneteket (SMS-eket), próbálkozzon a **Hívást kérek** lehetőséggel.
 - Ellenőrizze, hogy a telefonja fogadhat-e hívást vagy SMS-üzenetet egyesült államokbeli telefonszámról.
 
