@@ -1,21 +1,21 @@
 ---
 title: CIS Microsoft Azure alapítványok teljesítményteszt-mintájának vezérlői
 description: Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének leképezése a Azure Policyra.
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863960"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167230"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
 A következő cikk azt ismerteti, hogy az Azure-tervrajzok CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintáját a CIS-Microsoft Azure a Founds-referenciaértékekre vonatkozó ajánlások alapján. A javaslatokkal kapcsolatos további információkért lásd: a [CIS Microsoft Azure alapítványok alapjai](https://www.cisecurity.org/benchmark/azure/).
 
 A következő leképezések a **CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0** javaslataira vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy konkrét javaslat-hozzárendelésre ugorhat.
-A leképezett javaslatok többsége [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósul meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki ** \[az\] előzetes verziójú audit CIS Microsoft Azure a founds benchmark v 1.1.0 javaslatokat, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A leképezett javaslatok többsége [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósul meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az ** \[ előzetes \] verziójú audit CIS Microsoft Azure a founds benchmark v 1.1.0 javaslatokat, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -192,14 +192,14 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4,4 Győződjön meg róla, hogy az SQL Server "Advanced Security" beállítása "on" értékre van állítva
 
-Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely lehetővé teszi, hogy az SQL-kiszolgálókon és az SQL felügyelt példányain engedélyezve legyen a speciális adatbiztonság.
+Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely lehetővé teszi, hogy az SQL Database és az SQL felügyelt példány-kiszolgálókon engedélyezve legyen a speciális adatbiztonság.
 
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 győződjön meg arról, hogy a "veszélyforrások észlelésének típusai" értéke "all".
 
-Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy az összetett veszélyforrások elleni védelem megfelelően legyen KONFIGURÁLVA az SQL-kiszolgálókon és az SQL felügyelt példányain.
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a komplex veszélyforrások elleni védelem megfelelően legyen konfigurálva SQL Database és SQL felügyelt példány-kiszolgálókon.
 
 - Az összetett veszélyforrások elleni védelem típusait "all" értékre kell állítani az SQL Server speciális adatbiztonsági beállításaiban
 - Az összetett veszélyforrások elleni védelem típusait "all" értékre kell beállítani az SQL felügyelt példány speciális adatbiztonsági beállításainál
@@ -232,7 +232,7 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4,10 gondoskodjon arról, hogy az SQL Server TDE Protector titkosítva legyen a BYOK (saját kulcs használata)
 
-Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy az SQL-kiszolgálók és az SQL-felügyelt példányok transzparens titkosított védelme a saját kulccsal legyen titkosítva.
+Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a SQL Database és az SQL felügyelt példány-kiszolgálóinak transzparens titkosított védelme a saját kulccsal legyen titkosítva.
 
 - Az SQL Server TDE-védőt a saját kulccsal kell titkosítani
 - A felügyelt SQL-példányok TDE-védőjét a saját kulcsával kell titkosítani
@@ -519,13 +519,13 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozz
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a Function app futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a webalkalmazás futtatására használatos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, vagy megtekintheti a Azure Policy a Azure Portal a kezdeményezés hozzárendeléséhez:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure alapítványok teljesítményteszt-terv – áttekintés](./index.md)
-> [CIS Microsoft Azure alapítványok teljesítményteszt-terv – a lépések üzembe helyezése](./deploy.md)
+> [CIS Microsoft Azure alapítványok teljesítményteszt-tervezete – áttekintés](./index.md) 
+>  [CIS Microsoft Azure alapítványok teljesítményteszt-terv – üzembe helyezési lépések](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 

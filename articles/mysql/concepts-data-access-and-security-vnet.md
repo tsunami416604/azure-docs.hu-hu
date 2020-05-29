@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4ca8fe3e217d3b4affc1bc0bda9ed193e91b2104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0714bf27897de72246461ae3ad3250c55390e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537142"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170664"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata az Azure Database for MySQL-hez
 
@@ -25,7 +25,7 @@ Virtuális hálózati szabály létrehozásához először [virtuális hálózat
 > Ez a funkció az Azure minden régiójában elérhető, ahol a Azure Database for MySQL általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
 > VNet esetén, ha a forgalom egy közös VNet-átjárón keresztül áramlik a szolgáltatási végpontokkal, és a partnernek kell lennie, hozzon létre egy ACL/VNet szabályt, amely lehetővé teszi, hogy az Azure Virtual Machines az átjáró VNet hozzáférjenek a Azure Database for MySQL-kiszolgálóhoz.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
@@ -45,7 +45,7 @@ Egy virtuális hálózati szabály közli a Azure Database for MySQL-kiszolgál�
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Virtuális hálózati szabály előnyei
 
@@ -69,7 +69,7 @@ Ha a **Microsoft. SQL** Server a virtuális hálózat egyik alhálózatának cso
 
 Azonban augusztus 2018-én a Azure Database for MySQL szolgáltatás még nem tartozik az alhálózathoz közvetlenül hozzárendelhető szolgáltatások közé.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>A virtuális hálózati szabályok részletei
 
@@ -89,8 +89,8 @@ Minden virtuális hálózati szabály a teljes Azure Database for MySQL-kiszolg�
 
 A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási végpontok felügyelete alatt áll. A következő szerepkörök mindegyike esetében beavatkozásra van szükség:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végpontot.
-- **Adatbázis-rendszergazda:** &nbsp; frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a Azure Database for MySQL-kiszolgálóhoz.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végpontot.
+- **Adatbázis-rendszergazda:** &nbsp; Frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a Azure Database for MySQL-kiszolgálóhoz.
 
 *RBAC alternatíva:*
 
@@ -140,7 +140,7 @@ A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használa
 - [Azure-beli virtuális hálózatok][vm-virtual-network-overview]
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
 - [Azure Database for MySQL VNet-szabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-vnet-using-portal.md)
 - [Azure Database for MySQL VNet-szabályok létrehozása és kezelése az Azure CLI használatával](howto-manage-vnet-using-cli.md)

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 04/16/2020
-ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726612"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147817"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Azure Media Services élő stream létrehozása a OBS
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban a következőket mutatjuk be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -147,7 +147,7 @@ A következő eljárásban visszatérhet Azure Media Services a böngészőben a
 
    ![OBS kimeneti beállításai](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Hagyja meg a többi beállítást, és kattintson az **OK**gombra.
+1. Hagyja változatlanul a beállítások hátralévő részét, és kattintson **az OK**gombra.
 
 ### <a name="start-streaming"></a>Streaming indítása
 
@@ -203,7 +203,7 @@ A létrehozott kimenet elérhető az igény szerinti folyamatos átvitelhez, ha 
 1. Válassza a **lejátszó frissítése**lehetőséget.
 1. Az igény szerinti eszköz megtekintéséhez válassza a videó **Lejátszás** ikonját.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 > [!IMPORTANT]
 > Állítsa le a szolgáltatásokat! A rövid útmutató lépéseinek elvégzése után ne felejtse el leállítani az élő eseményt és a folyamatos átviteli végpontot, vagy ha a futása alatt marad. Az élő esemény leállításához tekintse meg a [szórási eljárás leállítása](#stop-the-broadcast) , 2. és 3. lépéseit.
@@ -217,7 +217,7 @@ A folyamatos átviteli végpont leállítása:
 > [!TIP]
 > Ha nem szeretné megtartani az adott eseményből származó eszközöket, ne felejtse el törölni őket, hogy ne kelljen fizetnie a tárterületért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Élő események és élő kimenetek Media Services](./live-events-outputs-concept.md)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610139"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169508"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -228,13 +228,13 @@ A általában névtelenül elérhető helyszíni alkalmazásokhoz, amelyek nem i
 
 Ha ezt a beállítást választja, a nem engedélyezi a felhasználók számára a helyszíni alkalmazás elérését az engedélyek nélküli Azure AD alkalmazás proxyn keresztül, ezért körültekintően járjon el.
 
-Az alkalmazás közzététele után elérhetőnek kell lennie a külső URL-cím beírásával egy böngészőben vagy a ikonja [https://myapps.microsoft.com](https://myapps.microsoft.com/)alapján.
+Az alkalmazás közzététele után elérhetőnek kell lennie a külső URL-cím beírásával egy böngészőben vagy a ikonja alapján [https://myapps.microsoft.com](https://myapps.microsoft.com/) .
 
 ### <a name="enable-pre-authentication"></a>Előzetes hitelesítés engedélyezése
 
 Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül a külső URL-cím használatával.
 
-1. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** elemre, és válassza ki a kezelni kívánt alkalmazást.
+1. Navigáljon **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** elemre, és válassza ki a kezelni kívánt alkalmazást.
 
 2. **Alkalmazásproxy**kiválasztása
 
@@ -254,7 +254,7 @@ Olvasási [egyszeri bejelentkezés az Azure ad-alkalmazásokba](what-is-single-s
 
 ###  <a name="working-with-other-types-of-applications"></a>Más típusú alkalmazások használata
 
-Az Azure AD Application Proxy képes támogatni az Azure AD Authentication Library ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) vagy a Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) használatára fejlesztett alkalmazásokat is. Támogatja a natív ügyfélalkalmazások használatát azáltal, hogy az ügyfél kérésének fejléc-adataiban kapott Azure AD-jogkivonatokat használja az előhitelesítés végrehajtásához a felhasználók nevében.
+Az Azure AD Application Proxy képes támogatni a Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) használatára fejlesztett alkalmazásokat is. Támogatja a natív ügyfélalkalmazások használatát azáltal, hogy az ügyfél kérésének fejléc-adataiban kapott Azure AD-jogkivonatokat használja az előhitelesítés végrehajtásához a felhasználók nevében.
 
 Az Application proxy elérhető konfigurációinak megismeréséhez olvassa el a [natív és mobil ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) és a [jogcímbarát alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) közzétételét ismertető témakört.
 

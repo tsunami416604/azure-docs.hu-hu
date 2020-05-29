@@ -3,16 +3,16 @@ title: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hib
 description: Ez a cikk bemutat néhány gyakori problémát, amelyek az Azure Nagyvállalati Szerződéssel kapcsolatban léphetnek fel az Azure EA Portalon.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691186"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654745"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
 
@@ -64,15 +64,15 @@ Vagy azért is kaphat _Érvénytelen felhasználó_ hibaüzenetet, mert helytele
   - Ha ellenőrizni szeretné az elsődleges aliast, látogasson el a [https://account.live.com](https://account.live.com) címre. Ezután kattintson a **Saját adatok**, majd a **Microsoft-fiókba való bejelentkezés módja** elemre. Az útmutatást követve ellenőrizze a másodlagos e-mail-címet, és igényeljen egy kódot a bizalmas információk eléréséhez. Adja meg a biztonsági kódot. Válassza a **Beállítás később** lehetőséget, ha nem szeretné beállítani a kétfaktoros hitelesítést.
   - Ezután megjelenik a **Microsoft-fiókba való bejelentkezés módja** oldal, ahol megtekintheti a fiókhoz tartozó meglévő aliasokat. Ellenőrizze, hogy az elsődleges aliast használja-e az Azure EA Portalra történő bejelentkezéshez. Ha nem, beállíthatja az elsődleges aliasaként, vagy használhatja az elsődleges aliasát az Azure EA Portalra való bejelentkezéshez.
 
-## <a name="no-activation-email-received"></a>Nem érkezett aktiválási e-mail
+## <a name="azure-ea-activation-faq"></a>Az Azure EA aktiválása – gyakori kérdések
+
+A cikk ezen szakasza az Azure EA aktiválásával kapcsolatos gyakori problémák megoldásait ismerteti.
+
+### <a name="i-didnt-receive-an-activation-email"></a>Nem kaptam meg az aktiválási e-mailt.
 
 Az Azure EA Portal aktiválási e-mailje a *waep@microsoft.com* címről érkezik. Ha nem kapott aktiválási e-mailt, ellenőrizze a levélszemét mappát. Az üzenet tárgya a következő: _Invitation to View/Manage the Microsoft Azure service_subject_ (Meghívás a Microsoft Azure-szolgáltatás megtekintésére/kezelésére). Minden újonnan hozzáadott nagyvállalati rendszergazda megkapja ezt az e-mailt.
 
 Ha biztos benne, hogy Ön vállalati rendszergazdaként lett beállítva, nem kell megvárnia az aktiválási e-mail megérkezését, hogy bejelentkezhessen az Azure EA Portalra. A https://ea.azure.com címen bejelentkezhet a munkahelyi, iskolai vagy Microsoft-fiókjához tartozó e-mail-címével és jelszavával.
-
-## <a name="azure-ea-activation-faq"></a>Az Azure EA aktiválása – gyakori kérdések
-
-A cikk ezen szakasza az Azure EA aktiválásával kapcsolatos gyakori problémák megoldásait ismerteti.
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>Új EA-rendszergazdát szeretnék hozzáadni a regisztrációhoz
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016338"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170477"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure Databricks Azure biztonsági alapterve
 
@@ -968,7 +968,7 @@ A Azure Databricks fürtcsomóponton vagy a kapcsolódó erőforrásokra feltöl
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
 
-**Útmutató**: a Azure Databricks-megvalósításokhoz kapcsolódó ügyfelek által felügyelt kulcsok Azure Key Vaultn belüli biztonsági mentése. A Databricks konfigurációk napi biztonsági mentését REST API és CLI használatával is létrehozhatja. A Databricks konfigurációk napi biztonsági mentését REST API/CLI használatával is létrehozhatja.
+**Útmutató**: a Azure Databricks-megvalósításokhoz kapcsolódó ügyfelek által felügyelt kulcsok Azure Key Vaultn belüli biztonsági mentése. A Databricks konfigurációk napi biztonsági mentését REST API és/vagy CLI használatával is létrehozhatja.
 
 * [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1082,7 +1082,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

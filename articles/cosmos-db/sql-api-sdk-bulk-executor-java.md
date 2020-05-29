@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6fe075d2679ec13217200bc8b0da132e8f4d9b57
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c826b9f813c30a50d8b88b2cca1b188c328465b0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660440"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171650"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtár: letöltési információ
 
@@ -43,23 +43,23 @@ ms.locfileid: "83660440"
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="2100"></a><a name="2.10.0"/>2.10.0
+### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 
 * Javítsa ki a DocumentAnalyzer. Java fájlt, hogy megfelelően kinyerje a beágyazott partíciós kulcs értékeit a JSON-ből.
 
-### <a name="294"></a><a name="2.9.4"/>2.9.4
+### <a name="294"></a><a name="2.9.4"></a>2.9.4
 
 * Adja hozzá a BulkDelete műveletek funkcióit, és próbálkozzon újra a hibákkal, és adja vissza azon hibák listáját, amelyeket újra lehet próbálni.
 
-### <a name="293"></a><a name="2.9.3"/>2.9.3
+### <a name="293"></a><a name="2.9.3"></a>2.9.3
 
 * A Cosmos SDK verziójának 2.4.7 frissítése.
 
-### <a name="292"></a><a name="2.9.2"/>2.9.2
+### <a name="292"></a><a name="2.9.2"></a>2.9.2
 
 * Javítsa ki a "mergeAll" parancsot a "id" és a "Partition Key" érték folytatásához, hogy a rendszer az "id" és a "Partition Key" érték után elhelyezett javított dokumentum-tulajdonságokat hozzáadja a frissített elemek listájához.
 
-### <a name="291"></a><a name="2.9.1"/>2.9.1
+### <a name="291"></a><a name="2.9.1"></a>2.9.1
 
 * Frissítse a párhuzamossági fokot 1 értékre, és adja hozzá a hibakeresési naplókat a minibatch.
 

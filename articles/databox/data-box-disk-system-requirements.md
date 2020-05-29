@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214258"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873941"
 ---
 ::: zone target="docs"
 
@@ -56,7 +56,7 @@ Windows rendszerű ügyfelek esetén a következőket is telepíteni kell.
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET-keretrendszer |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>A Linux rendszerű ügyfelekhez kötelező egyéb szoftverek
@@ -79,10 +79,6 @@ Itt láthatja a Data Box Disk támogatott tárolótípusainak listáját.
 | Klasszikus | Standard |
 | Általános célú  |Standard; a V1 és a V2 is támogatott. A gyakori és a ritka elérésű szintek is támogatottak. |
 | Blob Storage-fiók | |
-
->[!NOTE]
-> Az Azure Data Lake Storage Gen2-fiókok nem támogatottak.
-
 
 ## <a name="supported-storage-types-for-upload"></a>Feltöltéshez támogatott tárolótípusok
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238159"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745854"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -144,8 +144,8 @@ Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, a
 
 Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](add-change-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlési (RBAC-)](../../role-based-access-control/role-assignments-portal.md) hozzárendelései [nem lesznek átadva](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Átadhatom a fiók tulajdonjogát egy másik országban található felhasználónak?
-Sajnos az Azure Portalon nem végezhetők országok közötti átadási műveletek. Az előfizetés országok közötti átadásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Átadhatom a fiók tulajdonjogát egy másik országban vagy régióban található felhasználónak?
+Sajnos az Azure Portalon nem végezhetők országok vagy régiók közötti átviteli műveletek. Az előfizetés országok vagy régiók közötti átviteléhez [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Két fiók rendszergazdája vagyok. Megtehetem, hogy átadom az egyik fiókomban található előfizetést a másik fiókomnak?
 Igen, átadhat előfizetéseket a fiókjai között. A fiókjai technikailag két különálló felhasználó fiókjainak tekinthetők, ezért az előfizetések fiókok közötti átadására vonatkozó fenti eljárás ebben az esetben alkalmazható.

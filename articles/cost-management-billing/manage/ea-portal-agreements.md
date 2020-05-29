@@ -3,34 +3,26 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 570a7b3bef702d0e42e23bc4b7af41cc431b9cc8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690994"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648180"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
 Ez a cikk bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati szerződések és a módosításaik az Azure-szolgáltatások hozzáférésére, használatára és kifizetésére.
 
-## <a name="amendment-status"></a>Módosítás állapota
-
-Az Azure-ügyfelekkel kapcsolatos módosításoknak keresztül kell menniük a partnerükön vagy a Microsoft-fiókok ügyfélszolgálatán, majd a regionális műveleti központnak fel kell dolgoznia őket. Ha úgy véli, hogy a módosítást nem dolgozták fel, érdeklődjön a partnerénél, a szoftvertanácsadójánál vagy a Microsoft-fiókok ügyfélszolgálatánál.
-
 ## <a name="enrollment-provisioning-status"></a>Regisztráció kiépítési állapota
 
 Az új pénzügyi keret kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztüli pénzügyikeret-megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha a pénzügyikeret-rendelését egy másik régióban dolgozzák fel. A https://www.explore.ms webhelyen található megrendelésen az érvényesség kezdő dátuma a pénzügyi keret kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor a pénzügyi keret megjelenik az Azure EA Portalon.
 
-## <a name="support-offer-not-provisioned"></a>A támogatási ajánlat nem jött létre
-
-A támogatásspecifikus termékváltozatok megvásárlásakor Standard vagy Pro-Direct támogatást rendelhet. A rendelés hasonlít az EA Azure pénzügyi termékváltozat megrendeléséhez. Például: 6QK-00001. A támogatási termékváltozatok száma a következő: W6T-00002 (Pro-Direct) és W6T-00003 (Standard). A támogatási termékváltozatok megvásárlása előtt tekintse meg az aktuális támogatási ajánlatokat.
-
-A támogatási ajánlat létrehozásához a regisztrációnak legalább egy aktív fiókkal kell rendelkeznie.
+## <a name="support-for-enterprise-customers"></a>Vállalati ügyfelek támogatása
 
  Néhány ügyfél számára elérhető az Azure [Nagyvállalati szerződéshez kapcsolódó támogatási csomagajánlat](https://azure.microsoft.com/offers/enterprise-agreement-support/).
 
@@ -158,24 +150,6 @@ A kvótanövelést bármikor kérheti egy [online kérés](https://g.microsofton
 - A szolgáltatáshoz társított előfizetés-azonosító az Azure Developer Portalon.
   - Az előfizetés-azonosító beszerzésével kapcsolatos információért [forduljon az ügyfélszolgálathoz](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="azure-compute-pre-purchase-plan-cpp"></a>Előzetesen vásárolt Azure Compute-csomag (CPP)
-
-Az Előzetesen vásárolt Azure Compute-csomag (CPP – korábbi nevén Azure Compute Promo) egy olyan ajánlat, amellyel a stabil állapotú, kiszámítható számítási feladatokkal rendelkező ügyfelek az Azure Compute 12 hónapra történő előzetes megvásárlásával jelentős kedvezményekre tehetnek szert. A vállalati rendszergazdák számára érhető el, és az EA Portalon látható.
-
-Ha egy CPP SKU-t rendelt, az egy adott adatközpontban található, adott típusú gépre vonatkozik. Mivel ez a szolgáltatás jelenleg is rendelkezésre áll, nem biztosítunk listát az ügyfél által megvásárolt összes CPP-vásárlásról, így nincsenek listázva a várt kreditek. Ha azonban a vásárlás helyszínéül szolgáló adatközpontban konfigurálja a megvásárolt gépek típusait, a havi foglalást az EA Portal használati adatokat összegző jelentésében fogja látni.
-
-Az előre megvásárolt összeg megjelenik jóváírásként a „Belefoglalt egységek” oszlopban, és a használati díjat csak a „Belefoglalt egységek” felhasználása után számítja fel a rendszer. A felhasználás után a további használat díja a normál nagyvállalati szerződéssel rendelkező ügyfelek díjszabását követi.
-
-A kreditek megvásárlásának módja a havonta az osztályba tartozó gépek számán alapul. Ha például az USA 2. keleti régiójában évente 70 A2-es virtuális gépet vásárol, az EA Portalon valószínűleg nem ugyanúgy jelennek meg, mint vásárláskor.
-
-A havi gépek a számítás szerint gépek havonta 744 órát futnak. Ez órákra átváltva 70-szer 744, vagyis 52 080 órát jelent havonta az A2-es virtuális gépek esetén. Mivel az EA Portal Használati adatok összegzésében az A2-es virtuális gépek 100 órás növekményekkel jelennek meg, havonta 520,8 (52 080/100) „Belefoglalt egységnyi” kreditet, valamint a hónapban addig felhasznált egységeket látná. A használati díjaknak nullának kell lenniük, amíg a havi felhasznált egységek száma meg nem haladja a havi belefoglalt egységeket.
-
-A különböző típusú gépek különböző mértékegységeket használnak, így például a D3-as és a D4-es virtuális gépek 10 órás mértékegységet használnak a használati adatok összegzési jelentésében, tehát 70 db megvásárlása havonta 5208 belefoglalt egységként (52 080/10) jelenne meg.
-
-Általánosságban elmondható, hogy az alábbi képlet megadja a megvásárolt virtuális gépek számát a használt mértékegységük alapján:
-
-<center><b> („Szolgáltatási keret” * „Mértékegység”) / 744 </b></center>
-
 ## <a name="plan-skus"></a>Csomag termékváltozatai
 
 A csomag termékváltozatai lehetővé teszik, hogy az integrált szolgáltatáscsomagot kedvezményes díjszabással vásárolja meg. A csomag termékváltozatait úgy tervezték, hogy további integrált ajánlatokkal és csomagokkal egészítsék ki egymást, ezzel nagyobb költségmegtakarítást biztosítva.
@@ -191,35 +165,6 @@ A vállalati rendszergazdák a következő lépések végrehajtásával rendelhe
 1. Kattintson az **Árlista** fülre.
 1. Kattintson a jobb felső sarokban lévő Letöltés ikonra.
 1. Keresse meg a megfelelő csomag termékváltozatainak cikkszámait a „Szolgáltatási keret” oszlop szűrőjével, és válassza a „0”-nál nagyobb értékeket.
-
-### <a name="provision-the-plan-skus"></a>A csomag termékváltozatainak kiépítése
-
-A vállalati rendszergazdák hozzáadhatnak új fióktulajdonosokat, hozzárendelhetnek egy meglévő fióktulajdonost, vagy megkérhetik a meglévő fióktulajdonosokat, hogy jelentkezzenek be az Azure EA Portalra, és az alábbi lépések szerint építsék ki a korábban megvásárolt csomag termékváltozatait az Azure EA Portalon.  
-
-**Új fióktulajdonos hozzáadása (az EA-rendszergazda hajtja végre):**
-
-1. Az Azure EA Portalon kattintson a **Kezelés** elemre a bal oldali navigációs sávon.
-1. Kattintson a **Fiók** fülre.
-1. A Fiók lapon kattintson a **+Fiók hozzáadása** elemre.
-1. Válasszon ki egy részleget, vagy hagyja hozzárendelés nélkül.
-1. Válassza ki a kívánt hitelesítési típust.
-1. Adjon meg egy felhasználóbarát nevet a fiók jelentéskor történő azonosításához.
-1. Adja meg az új fiókhoz hozzárendelni kívánt fióktulajdonos e-mail-címét.
-1. Erősítse meg az új fiókhoz társítani kívánt e-mail-címet.
-1. Kattintson a **Hozzáadás** parancsra.
-1. Hozzáadhat egy másik fiókot a **Másik fiók hozzáadása** elemre, illetve a bal oldali eszköztár jobb alsó sarkában lévő **Hozzáadás** gombra kattintva.
-1. A fiók tulajdonosa most már bejelentkezhet, hogy hozzáadja a megfelelő előfizetéseket a csomag termékváltozatainak kiépítéséhez.
-
-**Meglévő fióktulajdonos hozzárendelése:**
-
-1. Az Enterprise Portalon kattintson a **Kezelés** elemre.
-1. Kattintson a **Fiók** fülre.
-1. Kattintson a **+Fiók hozzáadása** elemre. Adja meg a meglévő fiókhoz társított Microsoft-fiókot, munkahelyi vagy iskolai fiókot.
-1. Erősítse meg a meglévő fiókhoz társított Microsoft-fiókot, munkahelyi vagy iskolai fiókot.
-1. Adjon meg egy nevet a fiók jelentéskor történő azonosításához.
-1. Kattintson a **Hozzáadás** parancsra.
-1. További fiók hozzáadásához válassza a **+ Fiók hozzáadása** lehetőséget, vagy térjen vissza a kezdőlapra a **Rendszergazda** gomb kiválasztásával.  
-1. Ha a Fiók lap megtekintésére kattint, az újonnan hozzáadott fiók Függő állapotban fog megjelenni. „Aktív” állapotra vált, amikor a fióktulajdonos először bejelentkezik az EA Portalra.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Új előfizetések létrehozása meglévő/új fióktulajdonosként
 

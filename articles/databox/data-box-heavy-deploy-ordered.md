@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 91d78975106299c3b3a6df6d8dee05f337dd339a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415167"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742986"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Oktatóanyag: Az Azure Data Box Heavy megrendelése
 
@@ -75,7 +75,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |---------|---------|
     |Előfizetés     | Válasszon egy EA-, CSP- vagy Azure Sponsorship-előfizetést a Data Box szolgáltatáshoz. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
     |Átvitel típusa     | Válassza az **Importálás az Azure-ba** lehetőséget.        |
-    |Forrásország     | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
+    |Forrásország/-régió     | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     | Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.        |
 
     [![Válassza ki a Data Box-termékcsalád elérhetőségét](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
@@ -91,7 +91,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Name (Név)     | Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.      |
     |Erőforráscsoport     | Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója.         |
     |Azure-beli célrégió     | Válasszon ki egy régiót a tárfiókhoz. <br> További információt a [regionális elérhetőséget](https://azure.microsoft.com/global-infrastructure/services/?products=databox) tárgyaló témakörben talál.        |
-    |Tárolási célhely     | Válassz a Tárfiók vagy a Felügyelt lemezek lehetőséget, vagy mindkettőt. <br> A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. <br>A Data Box Heavy legfeljebb 10 tárfiókkal köthető össze. <br> Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. <br> Az Azure Data Lake Storage Gen2-fiókok nem támogatottak. Tekintse meg az [eszköz által támogatott tárfiókokat](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információért tekintse meg, hogyan [adhat hozzá Azure Data Box-szolgáltatást megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).|
+    |Tárolási célhely     | Válassz a Tárfiók vagy a Felügyelt lemezek lehetőséget, vagy mindkettőt. <br> A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. <br>A Data Box Heavy legfeljebb 10 tárfiókkal köthető össze. <br> Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. <br>Tekintse meg az [eszköz által támogatott tárfiókokat](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információért tekintse meg, hogyan [adhat hozzá Azure Data Box-szolgáltatást megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).|
 
     Ha tárfiókot használ tárolási célhelyként, a következő képernyőképet fogja látni:
 

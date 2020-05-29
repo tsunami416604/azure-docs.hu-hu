@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927632"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170358"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -69,7 +69,7 @@ A RequestTimeout általában a Direct/TCP használatakor fordul elő, de az átj
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
 A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) használatával lehet azonosítani.
 
-Ha nincsenek [időtúllépések](#request-timeouts) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és `ResponseTime` `RequestStartTime`a közötti különbségnél (>300 ezredmásodperc ebben a példában):
+Ha nincsenek [időtúllépések](#request-timeouts) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -94,10 +94,10 @@ Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-
 * Adja hozzá Azure Cosmos DB szolgáltatási végpontját az Azure Virtual Machines Virtual Network alhálózatához. További információ: [Azure Virtual Network Service-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
     Ha a szolgáltatási végpont engedélyezve van, a rendszer a kérelmeket már nem küldi el a nyilvános IP-címről Azure Cosmos DB. Ehelyett a rendszer elküldi a virtuális hálózatot és az alhálózati identitást. Ez a változás akkor okozhat tűzfalat, ha csak a nyilvános IP-címek engedélyezettek. Ha tűzfalat használ, a szolgáltatás végpontjának engedélyezésekor [Virtual Network ACL](../virtual-network/virtual-networks-acl.md)-EK használatával adjon hozzá egy alhálózatot a tűzfalhoz.
-* Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/load-balancer-outbound-connections.md#assignilpip).
+* Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="http-proxy"></a>HTTP-proxy
-Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK `ConnectionPolicy`-ban konfigurált kapcsolatok számát.
+Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
 Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 
 ### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya

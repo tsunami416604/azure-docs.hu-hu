@@ -2,131 +2,123 @@
 title: 'Oktatóanyag: a G Suite konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Ismerje meg, hogyan lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a G Suite-be.
 services: active-directory
-documentationCenter: na
-author: jeevansd
-manager: daveba
+documentationcenter: ''
+author: zchia
+writer: zchia
+manager: beatrizd
 ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2020
-ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969a2fb5444ae8ece2aa302c04a5bbb85dcca917
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: Zhchia
+ms.openlocfilehash: aff2eca677bbacf16cf6de638547dd52b6985e02
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77057703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170182"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a G Suite-ban végrehajtandó lépéseket és Azure Active Directory (Azure AD) az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a G Suite-t.
+Ez az oktatóanyag a G Suite és a Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket ismerteti az automatikus felhasználó-kiépítés konfigurálásához. A konfigurálást követően az Azure AD automatikusan kiépíti és kiosztja a [G Suite](https://gsuite.google.com/) -hoz tartozó felhasználókat és csoportokat az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
 
 > [!NOTE]
 > A G Suite-összekötőt nemrég, október 2019-én frissítették. A G Suite-összekötőn végrehajtott módosítások a következők:
-> - További támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz. 
-> - A G Suite-cél attribútumainak neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékekkel.
-> - Az alapértelmezett attribútum-hozzárendelések frissítve.
+>
+> * További támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz.
+> * A G Suite-cél attribútumainak neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékekkel.
+> * Az alapértelmezett attribútum-hozzárendelések frissítve.
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása G Suite-ban
+> * Ha már nincs szükség hozzáférésre, távolítsa el a felhasználókat a G Suite-ban
+> * A felhasználói attribútumok szinkronizálása az Azure AD és a G Suite között
+> * Csoportok és csoporttagságok kiépítése G Suite-ban
+> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial) a G Suite-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció a G Suite-nal való konfigurálásához a következő elemek szükségesek:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-- Azure AD-bérlő
-- [G Suite-bérlő](https://gsuite.google.com/pricing.html)
-- A G Suite felhasználói fiókja rendszergazdai jogosultságokkal.
+* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [G Suite-bérlő](https://gsuite.google.com/pricing.html)
+* A G Suite felhasználói fiókja rendszergazdai jogosultságokkal.
 
-## <a name="assign-users-to-g-suite"></a>Felhasználók társítása G Suite-hoz
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg az [Azure ad és a G Suite közötti leképezési](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)adatok körét. 
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
-
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD-ben mely felhasználók és/vagy csoportok férhetnek hozzá a G Suite-hoz. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat és/vagy csoportokat a G Suite-hoz:
-
-* [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-g-suite"></a>Fontos Tippek a felhasználóknak a G Suite-hoz való hozzárendeléséhez
-
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a G Suite-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
-
-* Ha a felhasználó a G Suite-hoz van hozzárendelve, akkor a hozzárendelés párbeszédpanelen ki kell választania egy érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az **alapértelmezett hozzáférési** szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
-
-## <a name="setup-g-suite-for-provisioning"></a>A G Suite beállítása a kiépítés számára
+## <a name="step-2-configure-g-suite-to-support-provisioning-with-azure-ad"></a>2. lépés A G Suite konfigurálása az Azure AD-vel való kiépítés támogatásához
 
 Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, engedélyeznie kell a SCIM-létesítést a G Suite-ban.
 
 1. Jelentkezzen be a [G Suite felügyeleti konzolra](https://admin.google.com/) a rendszergazdai fiókjával, majd válassza a **Biztonság**elemet. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
 
-    ![Válassza a biztonság elemet.][10]
+    ![G Suite biztonság](./media/google-apps-provisioning-tutorial/gapps-security.png)
 
-1. A **Biztonság** lapon válassza az **API-hivatkozás**lehetőséget.
+2. A **Biztonság** lapon válassza az **API-hivatkozás**lehetőséget.
 
-    ![Válassza az API-referenciát.][15]
+    ![G Suite API](./media/google-apps-provisioning-tutorial/gapps-api.png)
 
-1. Válassza az **API-hozzáférés engedélyezése**lehetőséget.
+3. Válassza az **API-hozzáférés engedélyezése**lehetőséget.
 
-    ![Válassza az API-referenciát.][16]
+    ![G Suite API engedélyezve](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
 
-   > [!IMPORTANT]
-   > Minden, a G Suite-nak kiépíteni kívánt felhasználó számára az **Azure ad-** beli felhasználónevét egy egyéni tartományhoz kell kötni. Például az így megjelenő felhasználóneveket bob@contoso.onmicrosoft.com a G Suite nem fogadja el. bob@contoso.com Másrészről elfogadjuk. A meglévő felhasználó tartományát az [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)található útmutatás alapján módosíthatja.
+    > [!IMPORTANT]
+   > Minden, a G Suite-nak kiépíteni kívánt felhasználó számára az **Azure ad-** beli felhasználónevét egy egyéni tartományhoz kell kötni. Például az így megjelenő felhasználóneveket a bob@contoso.onmicrosoft.com G Suite nem fogadja el. Másrészről bob@contoso.com elfogadjuk. A meglévő felhasználó tartományát az [itt](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)található útmutatás alapján módosíthatja.
 
-1. Miután hozzáadta és ellenőrizte a kívánt egyéni tartományokat az Azure AD-vel, újra ellenőriznie kell azokat a G Suite-val. A G Suite tartományának ellenőrzéséhez tekintse meg a következő lépéseket:
+4. Miután hozzáadta és ellenőrizte a kívánt egyéni tartományokat az Azure AD-vel, újra ellenőriznie kell azokat a G Suite-val. A G Suite tartományának ellenőrzéséhez tekintse meg a következő lépéseket:
 
     a. A [G Suite felügyeleti konzolon](https://admin.google.com/)válassza a **tartományok**lehetőséget.
 
-    ![Tartományok kiválasztása][20]
+    ![G Suite-tartományok](./media/google-apps-provisioning-tutorial/gapps-domains.png)
 
     b. Válassza **a tartomány hozzáadása vagy a tartományi alias**lehetőséget.
 
-    ![Új tartomány hozzáadása][21]
+    ![G Suite tartomány hozzáadása](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
 
     c. Válassza a **másik tartomány hozzáadása**lehetőséget, majd írja be a hozzáadni kívánt tartomány nevét.
 
-    ![Írja be a tartománynevet][22]
+    ![G Suite – másik hozzáadása](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
 
     d. Válassza **a Folytatás lehetőséget, és ellenőrizze a tartomány tulajdonjogát**. Ezután kövesse a lépéseket annak ellenőrzéséhez, hogy a tartománynév tulajdonosa-e. A tartomány a Google-vel való ellenőrzésével kapcsolatos részletes utasításokért lásd: [a hely tulajdonjogának ellenőrzése](https://support.google.com/webmasters/answer/35179).
 
     e. Ismételje meg az előző lépéseket a G Suite-ba felvenni kívánt további tartományok esetében.
 
-1. Ezután határozza meg, hogy melyik rendszergazdai fiókot szeretné használni a G Suite-ban a felhasználók üzembe helyezésének kezeléséhez. Navigáljon a **rendszergazdai szerepkörök**elemre.
+5. Ezután határozza meg, hogy melyik rendszergazdai fiókot szeretné használni a G Suite-ban a felhasználók üzembe helyezésének kezeléséhez. Navigáljon a **rendszergazdai szerepkörök**elemre.
 
-    ![Google Apps kiválasztása][26]
+    ![G Suite-rendszergazda](./media/google-apps-provisioning-tutorial/gapps-admin.png)
 
-1. A fiók **rendszergazdai szerepköréhez** szerkessze az adott szerepkörhöz tartozó **jogosultságokat** . Ügyeljen arra, hogy az összes **rendszergazdai API-jogosultságot** engedélyezze, hogy ez a fiók használható legyen az üzembe helyezéshez.
+6. A fiók **rendszergazdai szerepköréhez** szerkessze az adott szerepkörhöz tartozó **jogosultságokat** . Ügyeljen arra, hogy az összes **rendszergazdai API-jogosultságot** engedélyezze, hogy ez a fiók használható legyen az üzembe helyezéshez.
 
-    ![Google Apps kiválasztása][27]
+    ![A G Suite rendszergazdai jogosultságai](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
 
-## <a name="add-g-suite-from-the-gallery"></a>G csomag hozzáadása a gyűjteményből
+## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>3. lépés G csomag hozzáadása az Azure AD Application Galleryből
 
-Ha a G Suite-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez szeretné konfigurálni, a G Suite-t hozzá kell adnia az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához. 
+Vegye fel a G Suite-t az Azure AD-alkalmazás-katalógusból a G Suite-ba való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a G Suite-ot az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+* Amikor felhasználókat és csoportokat rendel a G Suite-hoz, az **alapértelmezett hozzáféréstől**eltérő szerepkört kell kijelölnie. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-g-suite"></a>5. lépés Automatikus felhasználó-kiépítés konfigurálása a G Suite-hoz 
 
-1. A keresőmezőbe írja be a **g Suite**kifejezést, válassza a **g Suite** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
-
-    ![G Suite az eredmények listájában](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-g-suite"></a>Automatikus felhasználó-kiépítés beállítása a G Suite-ba 
-
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a G Suite-ban lévő felhasználókat és/vagy csoportokat.
-
-> [!TIP]
-> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezi a G Suite-hoz, a [g Suite egyszeri bejelentkezés oktatóanyagában](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
 > [!NOTE]
 > A G Suite címtár API-végpontjának megismeréséhez tekintse meg a [Directory API](https://developers.google.com/admin-sdk/directory)-t.
@@ -135,96 +127,163 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **G Suite**elemet.
+    ![Minden alkalmazás panel](./media/google-apps-provisioning-tutorial/all-applications.png)
+
+2. Az alkalmazások listában válassza a **G Suite**elemet.
 
     ![A G Suite-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza ki a **kiépítés** lapot.
+3. Válassza ki a **kiépítés** fület. kattintson az első **lépések**elemre.
 
     ![Kiépítés lap](common/provisioning.png)
 
-1. Állítsa a **kiépítési módot** **automatikus**értékre.
+      ![Első lépések panel](./media/google-apps-provisioning-tutorial/get-started.png)
+
+4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok** szakaszban válassza az **Engedélyezés**lehetőséget. Megnyílik egy Google-engedélyezési párbeszédpanel egy új böngészőablakban.
+5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés**elemre. A rendszer átirányítja az új böngészőablakban található Google-engedélyezési párbeszédpanelre.
 
-    ![G Suite engedélyezése](media/google-apps-provisioning-tutorial/authorize.png)
+      ![G Suite engedélyezése](./media/google-apps-provisioning-tutorial/authorize-1.png)
 
-1. Győződjön meg arról, hogy az Azure AD-beli engedélyeket szeretné megadni a G Suite-bérlő módosításához. Válassza ki az **Elfogadás** lehetőséget.
+6. Győződjön meg arról, hogy az Azure AD-beli engedélyeket szeretné megadni a G Suite-bérlő módosításához. Válassza ki az **Elfogadás** lehetőséget.
 
-    ![Erősítse meg az engedélyeket.][28]
+     ![G Suite bérlői hitelesítés](./media/google-apps-provisioning-tutorial/gapps-auth.png)
 
-1. A Azure Portal válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad csatlakozhasson az alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a G Suite-fiókja rendelkezik a csoport rendszergazdai engedélyeivel. Ezután próbálja megismételni az **Engedélyezés** lépést.
+7. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad tud csatlakozni a G Suite-hoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a G Suite-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra. Ezután próbálja megismételni az **Engedélyezés** lépést.
 
-1. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
     ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a G Suite-** ba lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése**lehetőséget.
 
-    ![G Suite felhasználói leképezések](media/google-apps-provisioning-tutorial/usermappings.png)
+9. Tekintse át az Azure AD-ból a G Suite-be szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a G Suite-ban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a G Suite API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-1. Tekintse át az Azure AD-ból a G Suite-be szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a G Suite-ban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+   |Attribútum|Típus|
+   |---|---|
+   |primaryEmail|Sztring|
+   |kapcsolatok. [type EQ "Manager"]. Value|Sztring|
+   |név. familyName|Sztring|
+   |név. givenName|Sztring|
+   |függesztve|Sztring|
+   |externalIds. [type EQ "Custom"]. Value|Sztring|
+   |externalIds. [type EQ "szervezet"]. Value|Sztring|
+   |címek. [type EQ "work"]. Country|Sztring|
+   |címek. [type EQ "work"]. streetAddress|Sztring|
+   |címek. [írja be a következőt: EQ "work"]. régió|Sztring|
+   |címek. [írja be a következőt: EQ "work"]. helység|Sztring|
+   |címek. [type EQ "work"]. irányítószám|Sztring|
+   |e-mailek. [írja be a következőt: EQ "work"]. címe|Sztring|
+   |szervezetek. [írja be a következőt: EQ "work"]. részleg|Sztring|
+   |szervezetek. [type EQ "work"]. title|Sztring|
+   |phoneNumbers. [type EQ "work"]. Value|Sztring|
+   |phoneNumbers. [type EQ "Mobile"]. Value|Sztring|
+   |phoneNumbers. [type EQ "work_fax"]. Value|Sztring|
+   |e-mailek. [írja be a következőt: EQ "work"]. címe|Sztring|
+   |szervezetek. [írja be a következőt: EQ "work"]. részleg|Sztring|
+   |szervezetek. [type EQ "work"]. title|Sztring|
+   |phoneNumbers. [type EQ "work"]. Value|Sztring|
+   |phoneNumbers. [type EQ "Mobile"]. Value|Sztring|
+   |phoneNumbers. [type EQ "work_fax"]. Value|Sztring|
+   |címek. [type EQ "Home"]. Country|Sztring|
+   |címek. [type EQ "Home"]. formázott|Sztring|
+   |címek. [type EQ "Home"]. helység|Sztring|
+   |címek. [type EQ "Home"]. irányítószám|Sztring|
+   |címek. [type EQ "Home"]. régió|Sztring|
+   |címek. [type EQ "Home"]. streetAddress|Sztring|
+   |címek. [type EQ "other"]. Country|Sztring|
+   |címek. [type EQ "other"]. formázott|Sztring|
+   |címek. [írja be a következőt: EQ "other"]. helység|Sztring|
+   |címek. [type EQ "other"]. irányítószám|Sztring|
+   |címek. [type EQ "other"]. régió|Sztring|
+   |címek. [type EQ "other"]. streetAddress|Sztring|
+   |címek. [type EQ "work"]. formázott|Sztring|
+   |changePasswordAtNextLogin|Sztring|
+   |e-mailek. [type EQ "Home"]. címe|Sztring|
+   |e-mailek. [type EQ "other"]. címe|Sztring|
+   |externalIds. [írja be a következőt: EQ "account"]. Value|Sztring|
+   |externalIds. [type EQ "Custom"]. customType|Sztring|
+   |externalIds. [type EQ "Customer"]. Value|Sztring|
+   |externalIds. [type EQ "login_id"]. Value|Sztring|
+   |externalIds. [type EQ "Network"]. Value|Sztring|
+   |nemre. Type|Sztring|
+   |GeneratedImmutableId|Sztring|
+   |Azonosító|Sztring|
+   |IMS. [type EQ "Home"]. protokoll|Sztring|
+   |IMS. [type EQ "other"]. Protocol|Sztring|
+   |IMS. [írja be a következőt: EQ "work"]. protokoll|Sztring|
+   |includeInGlobalAddressList|Sztring|
+   |ipWhitelisted|Sztring|
+   |szervezetek. [type EQ "School"]. costCenter|Sztring|
+   |szervezetek. [type EQ "iskola"]. részleg|Sztring|
+   |szervezetek. [type EQ "School"]. domain|Sztring|
+   |szervezetek. [type EQ "School"]. fullTimeEquivalent|Sztring|
+   |szervezetek. [írja be a következőt: EQ "School"]. hely|Sztring|
+   |szervezetek. [type EQ "School"]. név|Sztring|
+   |szervezetek. [type EQ "iskola"]. szimbólum|Sztring|
+   |szervezetek. [type EQ "iskola"]. title|Sztring|
+   |szervezetek. [type EQ "work"]. costCenter|Sztring|
+   |szervezetek. [type EQ "work"]. domain|Sztring|
+   |szervezetek. [type EQ "work"]. fullTimeEquivalent|Sztring|
+   |szervezetek. [írja be a következőt: EQ "work"]. hely|Sztring|
+   |szervezetek. [írja be a következőt: EQ "work"]. név|Sztring|
+   |szervezetek. [írja be a következőt: EQ "work"]. szimbólum|Sztring|
+   |OrgUnitPath|Sztring|
+   |phoneNumbers. [type EQ "Home"]. Value|Sztring|
+   |phoneNumbers. [type EQ "other"]. Value|Sztring|
+   |weboldalak. [type EQ "Home"]. Value|Sztring|
+   |weboldalak. [type EQ "other"]. Value|Sztring|
+   |weboldalak. [type EQ "work"]. Value|Sztring|
+   
 
-    ![G Suite felhasználói attribútumok](media/google-apps-provisioning-tutorial/userattributes.png)
+10. A **leképezések** szakaszban válassza ki a **Azure Active Directory csoportok kiépítése**lehetőséget.
 
-1. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a G csomagba**lehetőséget.
+11. Tekintse át az Azure AD-ból a G Suite-be szinkronizált csoport attribútumait az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a G Suite-ban a frissítési műveletekhez tartozó csoportokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![G Suite csoportos megfeleltetések](media/google-apps-provisioning-tutorial/groupmappings.png)
+      |Attribútum|Típus|
+      |---|---|
+      |e-mail|Sztring|
+      |Tagok|Sztring|
+      |name|Sztring|
+      |leírás|Sztring|
 
-1. Tekintse át az Azure AD-ból a G Suite-be szinkronizált csoport attribútumait az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a G Suite-ban a frissítési műveletekhez tartozó csoportokkal egyeznek meg. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra. A felhasználói felület megjeleníti az Azure AD és a G Suite közötti attribútum-hozzárendelések alapértelmezett készletét. Az új leképezés hozzáadása lehetőségre kattintva további attribútumokat is hozzáadhat, például a szervezeti egységet.
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-    ![G Suite-csoport attribútumai](media/google-apps-provisioning-tutorial/groupattributes.png)
-
-1. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
-
-1. A G Suite-hoz készült Azure AD-kiépítési szolgáltatás engedélyezéséhez módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
+13. A G Suite-hoz készült Azure AD-kiépítési szolgáltatás engedélyezéséhez módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
     ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-1. Adja meg a G Suite-hoz kiépíteni kívánt felhasználókat és/vagy csoportokat, ha a **Settings (beállítások** ) szakaszban a megfelelő értékeket választja ki a **hatókörben** .
+14. Adja meg a G Suite-hoz kiépíteni kívánt felhasználókat és/vagy csoportokat, ha a **Settings (beállítások** ) szakaszban a megfelelő értékeket választja ki a **hatókörben** .
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-1. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a G Suite-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut.
 
 > [!NOTE]
 > Ha a felhasználók már rendelkeznek egy meglévő személyes/fogyasztói fiókkal az Azure AD-felhasználó e-mail-címével, akkor előfordulhat, hogy a címtár-szinkronizálás végrehajtása előtt a Google átadási eszköz használatával feloldható néhány probléma.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
 
-## <a name="additional-resources"></a>További háttéranyagok
+1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+## <a name="additional-resources"></a>További források
+
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="common-issues"></a>Gyakori problémák
-* Az engedélyezési hibák akkor fordulhatnak elő, ha a kapcsolat létesítéséhez használt fiók nem a GSuite rendszergazdájának tagja. Győződjön meg arról, hogy a hozzáférés engedélyezéséhez használt fiók rendszergazdai engedélyekkel rendelkezik az **összes olyan tartományon** , amelyet a felhasználóknak telepíteniük kell. 
-* Az Azure AD támogatja a felhasználók letiltását a GSuite, így azok nem férhetnek hozzá az alkalmazáshoz, de nem törlik a GSuite lévő felhasználókat.
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
-
-<!--Image references-->
-
-[10]: ./media/google-apps-provisioning-tutorial/gapps-security.png
-[15]: ./media/google-apps-provisioning-tutorial/gapps-api.png
-[16]: ./media/google-apps-provisioning-tutorial/gapps-api-enabled.png
-[20]: ./media/google-apps-provisioning-tutorial/gapps-domains.png
-[21]: ./media/google-apps-provisioning-tutorial/gapps-add-domain.png
-[22]: ./media/google-apps-provisioning-tutorial/gapps-add-another.png
-[24]: ./media/google-apps-provisioning-tutorial/gapps-provisioning.png
-[25]: ./media/google-apps-provisioning-tutorial/gapps-provisioning-auth.png
-[26]: ./media/google-apps-provisioning-tutorial/gapps-admin.png
-[27]: ./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png
-[28]: ./media/google-apps-provisioning-tutorial/gapps-auth.png
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
