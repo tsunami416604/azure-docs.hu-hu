@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/25/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b51dcc214e099ed573fa297d979cfc55ba1513b9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240126"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140723"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár használata
 
@@ -32,7 +32,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * A Text Analytics API legújabb előzetes verziója `3.0-preview`, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és [elnevezett entitások felismeréséhez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). A legújabb stabil verzió: `2.1`.
+> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
@@ -43,7 +43,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Ez a rövid útmutató csak az `3.0-preview` Text Analytics ügyféloldali kódtár verziójára vonatkozik, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és [elnevezett entitások felismeréséhez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -53,7 +53,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * A Text Analytics API legújabb előzetes verziója `3.0-preview`, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és [elnevezett entitások felismeréséhez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). A legújabb stabil verzió: `2.1`.
+> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt.
 > * A [böngészőben](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)a Text Analytics ügyféloldali kódtár ezen verzióját is futtathatja.
@@ -65,7 +65,7 @@ A következő műveletek végrehajtásához használja a Text Analytics ügyfél
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * A Text Analytics API legújabb előzetes verziója `3.0-preview`, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és [elnevezett entitások felismeréséhez](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). A legújabb stabil verzió: `2.1`.
+> * Az Text Analytics ügyféloldali függvénytár legújabb stabil verziója `3.0` .
 >    * Ügyeljen arra, hogy csak az Ön által használt verzió utasításait kövesse.
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Éles környezetekben javasolt a kötegelt aszinkron módszerek használata a teljesítmény és a méretezhetőség érdekében. Tekintse meg az alábbi dokumentációt. 
 
@@ -86,20 +86,20 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
 
 * [Text Analytics áttekintése](../overview.md)
-* [Hangulatelemzés](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Entitások felismerése](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Nyelv felismerése](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Nyelvi felismerés](../how-tos/text-analytics-how-to-language-detection.md)

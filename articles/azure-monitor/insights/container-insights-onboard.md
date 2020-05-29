@@ -2,13 +2,13 @@
 title: A tárolók Azure Monitorának engedélyezése | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185931"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147902"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor engedélyezése tárolók számára
 
@@ -66,26 +66,23 @@ A következő táblázatban található információk a tároló-ügynök által
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
 Az alábbi táblázatban található információk az Azure China proxy-és tűzfal-konfigurációs információit ismertetik.
 
-|Ügynök erőforrása|Portok |Leírás | 
+|Ügynök erőforrása|Portok |Description | 
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Adatfeldolgozás |
 | *. oms.opinsights.azure.cn | 443 | OMS bevezetése |
-| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
 | dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
 
 Az alábbi táblázatban található információk az Azure US government proxy-és tűzfal-konfigurációs információit ismertetik.
 
-|Ügynök erőforrása|Portok |Leírás | 
+|Ügynök erőforrása|Portok |Description | 
 |--------------|------|-------------|
 | *. ods.opinsights.azure.us | 443 | Adatfeldolgozás |
 | *. oms.opinsights.azure.us | 443 | OMS bevezetése |
-| microsoft.com | 80 | Hálózati kapcsolathoz használatos. Erre csak akkor van szükség, ha az ügynök rendszerképének verziója ciprod09262019 vagy korábbi. |
 | dc.services.visualstudio.com | 443 | Az Azure Public Cloud Application Insightst használó ügynök telemetria. |
 
 ## <a name="components"></a>Összetevők
@@ -104,7 +101,7 @@ Az ügynök új verziójának felszabadításakor a rendszer automatikusan friss
 
 A tárolók Azure Monitor a következő táblázatban leírt módszerek egyikével engedélyezheti.
 
-| Központi telepítés állapota | Módszer | Leírás |
+| Központi telepítés állapota | Metódus | Description |
 |------------------|--------|-------------|
 | Új AK Kubernetes-fürt | [AK-fürt létrehozása az Azure CLI-vel](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Engedélyezheti az Azure CLI-vel létrehozott új AK-fürtök figyelését. |
 | | [AK-fürt létrehozása a Terraform használatával](container-insights-enable-new-cluster.md#enable-using-terraform)| A nyílt forráskódú eszköz Terraform használatával engedélyezheti a létrehozott új AK-fürtök figyelését. |
@@ -119,6 +116,6 @@ A tárolók Azure Monitor a következő táblázatban leírt módszerek egyikév
 | | [OpenShift-fürt engedélyezése Azure Resource Manager sablon használatával](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Az előre konfigurált Azure Resource Manager sablonnal engedélyezheti egy meglévő OpenShift-fürt figyelését. |
 | | [OpenShift-fürt engedélyezése Azure Monitor](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Engedélyezheti egy vagy több, a Azure Monitor több fürtből származó OpenShift-fürt figyelését. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha engedélyezve van a figyelés, megkezdheti az Azure Kubernetes szolgáltatás (ak), Azure Stack vagy más környezetekben üzemeltetett Kubernetes-fürtök teljesítményének elemzését. A Azure Monitor for containers használatának megismeréséhez tekintse meg a [Kubernetes-fürt teljesítményének megtekintése](container-insights-analyze.md)című témakört.

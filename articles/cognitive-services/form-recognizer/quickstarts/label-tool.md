@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871376"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141891"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -143,7 +143,8 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
     > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
     > * A címkézett mezőkben ne szerepeljenek kulcsok, &mdash; csak az értékek.
     > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
-    > * Egy alkalmazott címke törléséhez válassza ki a téglalapot a dokumentum nézetben, és nyomja le a DELETE billentyűt.
+    > * A **+** címkék kereséséhez, átnevezéséhez, átrendezéséhez és törléséhez kattintson a jobb oldalon található gombokra.
+    > * Ha el szeretné távolítani egy alkalmazott címkét a címke törlése nélkül, válassza ki a címkézett téglalapot a dokumentum nézetben, és nyomja le a DELETE billentyűt.
 
 ![A minta-címkéző eszköz főszerkesztő ablaka](../media/label-tool/main-editor.png)
 
@@ -229,7 +230,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. vott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha szeretné integrálni a címkéző eszközt a saját alkalmazásba, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 

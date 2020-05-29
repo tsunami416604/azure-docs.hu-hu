@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219246"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141813"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
 
@@ -51,7 +51,14 @@ Az elnevezett entitások felismerésével azonosíthatja a dokumentumok személy
 
 ![Egy rendszerkép, amely leírja, hogyan használható a személyes adatok észlelése és kivonása a dokumentumok használatával](media/use-cases/sensitive-docs.jpg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="perform-opinion-mining"></a>A vélemények kitermelésének elvégzése
+
+A termék vagy szolgáltatás felmérésekben, vásárlói visszajelzésekben vagy a szövegben való megjelenésével kapcsolatos véleményeket tartalmazó csoportok véleményezése. Ezzel segítséget nyújt a termékek üzembe helyezéséhez és fejlesztéséhez, a marketinggel kapcsolatos erőfeszítésekhez, illetve a termék vagy szolgáltatás teljesítményének kiemeléséhez. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="Példa a hotelre vonatkozó véleményekre.":::
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)
 * [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)

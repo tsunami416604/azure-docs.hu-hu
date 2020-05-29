@@ -7,12 +7,15 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: Databricks-munkaterület létrehozása – Portal
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: Databricks-munkaterület létrehozása – Resource Manager-sablon
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Databricks-munkaterület létrehozása – virtuális hálózat
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: Munkaterület létrehozása
+      items:
+        - name: Portál
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: ARM-sablon
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: Virtuális hálózat
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Oktatóanyagok
   items:
     - name: Docker-tárolóban futó SQL Server lekérdezése

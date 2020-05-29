@@ -3,18 +3,18 @@ title: A virtuális gépek vész-helyreállításának befejezése
 description: Ez a cikk bemutatja, hogyan végezheti el a virtuális gépek vész-helyreállítását az AVS használatával
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740550"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148157"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMWare-megoldás használatával
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>A virtuális gépek vész-helyreállításának befejezése az Azure VMware-megoldás használatával
 
-Ez a cikk a VMWare Hybrid Cloud Extension (HCX) megoldással rendelkező virtuális gépek vész-helyreállítási folyamatát tartalmazza, és egy Azure VMWare-megoldás saját felhőjét használja helyreállítási vagy célhelyként.
+Ez a cikk a VMware Hybrid Cloud Extension (HCX) megoldással rendelkező virtuális gépek vész-helyreállítási folyamatát tartalmazza, és egy Azure VMware-megoldás saját felhőjét használja helyreállítási vagy célhelyként.
 
-A VMWare HCX különböző műveleteket biztosít, amelyek a replikációs házirendekben részletes szabályozást és részletességet biztosítanak. Az elérhető műveletek a következők:
+A VMware HCX különböző műveleteket biztosít, amelyek a replikációs házirendekben részletes szabályozást és részletességet biztosítanak. Az elérhető műveletek a következők:
 
 - Fordított – katasztrófa után. A reverse segít a B helynek a forrás helyének és helyének a megadásában, ahol a védett virtuális gép már él.
 
@@ -144,7 +144,7 @@ A replikációt az egyes virtuális gépek részletek szakaszában lehet figyeln
 
 ## <a name="disaster-recovery-plan-automation"></a>Vész-helyreállítási terv automatizálása
 
-A VMWare HCX jelenleg nem rendelkezik beépített mechanizmussal a vész-helyreállítási terv létrehozásához és automatizálásához. Ez a funkció nem létezik a HCX. Azonban REST API-kat is biztosít, beleértve a vész-helyreállítási művelethez szükséges API-kat is.
+A VMware HCX jelenleg nem rendelkezik beépített mechanizmussal a vész-helyreállítási terv létrehozásához és automatizálásához. Ez a funkció nem létezik a HCX. Azonban REST API-kat is biztosít, beleértve a vész-helyreállítási művelethez szükséges API-kat is.
 
 Az API-specifikáció a HCX-kezelőben az URL-címen érhető el.
 

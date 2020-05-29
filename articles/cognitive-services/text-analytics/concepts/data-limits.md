@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 4af2d060c11b804c5fa09bfdabbcb9753f7d5885
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204413"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142367"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok
 <a name="data-limits"></a>
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban kül
 
 Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt API-verziótól és szolgáltatástól függ.
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-3"></a>[3-as verzió](#tab/version-3)
 
 > [!NOTE]
 > Ha a V3 API-kérelem meghaladja ezeket a korlátokat, de a v2 határértékeken belül van, akkor a rendszer figyelmeztetést ad vissza az API-válaszban. 7/15/2020-től kezdődően a rendszer 400 hibakódot ad vissza. 
@@ -44,7 +44,7 @@ Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt 
 A következő korlátok módosultak az API v3-as verziójában. Az alábbi határértékek meghaladása esetén a rendszer figyelmeztetést hoz majd az API-válaszban.
 
 
-| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
+| Funkció | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 10 |
@@ -54,7 +54,7 @@ A következő korlátok módosultak az API v3-as verziójában. Az alábbi hatá
 
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
-| Szolgáltatás | Dokumentumok maximális száma kérelem szerint | 
+| Funkció | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 1000 |

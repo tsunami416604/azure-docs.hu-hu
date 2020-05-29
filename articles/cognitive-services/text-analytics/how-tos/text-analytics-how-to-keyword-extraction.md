@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/29/2019
-ms.author: raymondl
-ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/13/2020
+ms.author: aahi
+ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72429021"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142401"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
 
-A [Key Phrase Extraction API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját.
+A [Key Phrase Extraction API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját.
 
 Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
@@ -72,16 +72,16 @@ A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy 
 
 További információ a kérelem meghatározásáról: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md). A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Key kifejezések API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Key kifejezések API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell `/text/analytics/v2.1/keyPhrases` adnia az URL-címet. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell adnia `/text/analytics/v3.0/keyPhrases` az URL-címet. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót.
 
 > [!Tip]
-> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
+> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
 ## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
 
@@ -152,7 +152,7 @@ Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavaka
 
 Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szükséges fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
-+ A [Kulcsszókeresés API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) csak egyes nyelvekre érhető el.
++ A [Kulcsszókeresés API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) csak egyes nyelvekre érhető el.
 + A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
 + POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak legfontosabb szavaiból és kifejezésből áll, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t, beleértve a Microsoft Office Excel és Power BI is, hogy csak néhányat említsünk.
@@ -162,7 +162,8 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [Szövegelemzések API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+* [Text Analytics áttekintése](../overview.md)
+* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
+* [Újdonságok](../whats-new.md)

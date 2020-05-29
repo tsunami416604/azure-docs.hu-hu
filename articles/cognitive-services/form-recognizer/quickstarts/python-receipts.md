@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 926c15a9b96c2ed7967df2b5918a2f3c5f6c5718
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116818"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141925"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -27,6 +27,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
 - Egy nyugtát ábrázoló rendszerkép URL-címe. Ehhez a rövid útmutatóhoz [minta képet](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) is használhat.
+
+> [!NOTE]
+> Ez a rövid útmutató az URL-cím alapján elért távoli nyugtát használja. Ha inkább helyi fájlokat szeretne használni, tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -457,7 +460,7 @@ A `"recognitionResults"` csomópont tartalmazza az összes felismert szöveget. 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával az értékesítési nyugták tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

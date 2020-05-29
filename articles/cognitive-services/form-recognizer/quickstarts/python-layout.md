@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d2217b9cdd35852e5fb2480dec302ce28d9540b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116889"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141959"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: szöveg-és elrendezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -27,6 +27,10 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
 - Egy űrlap-dokumentum. Az ehhez a rövid útmutatóhoz tartozó [minta adatkészletből](https://go.microsoft.com/fwlink/?linkid=2090451) letöltheti a rendszerképet.
+
+> [!NOTE]
+> Ez a rövid útmutató egy helyileg tárolt dokumentumot használ. Az URL-cím alapján elért távoli fájlok használatának megismeréséhez tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync).
+
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -273,7 +277,7 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a számla szöveg elrendezésének kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

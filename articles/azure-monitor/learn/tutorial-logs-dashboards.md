@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661532"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148259"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Irányítópultok létrehozása és megosztása Log Analytics-adatokból
 
@@ -35,6 +35,14 @@ Válassza az **irányítópult** lehetőséget az alapértelmezett [irányítóp
 ![Azure Portal irányítópultja](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Itt összeállíthatók az informatikai szempontból legfontosabb működési adatok az összes Azure-erőforrásra vonatkozóan, beleértve az Azure Log Analyticsből származó telemetriákat.  Mielőtt megkezdené a naplózási lekérdezés megjelenítését, először hozzon létre egy irányítópultot, és ossza meg azt.  Ezután a példában szereplő Teljesítménynapló-lekérdezésre koncentrálunk, amely diagramként fog megjelenni, és hozzáadja az irányítópulthoz.  
+
+> [!NOTE]
+> A következő diagramtípusok támogatottak az Azure-irányítópultokon a naplók használatával:
+> - areachart
+> - columnchart
+> - piechart (az irányítópulton fánkként jelenik meg)
+> - scatterchart
+> - idődiagramját
 
 Egy irányítópult létrehozásához kattintson az **Új irányítópult** gombra a jelenlegi irányítópult neve mellett.
 
@@ -78,7 +86,7 @@ Most, hogy rögzítettünk egy lekérdezést az irányítópulton, láthatja, ho
 
 ![A minta-irányítópult kész konfigurációja](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre irányítópultot a Azure Portalban, és hogyan adhat hozzá egy napló-lekérdezést.  Folytassa a következő oktatóanyaggal, amely a napló lekérdezési eredményei alapján megvalósítható különböző válaszokat ismerteti.  
 
 > [!div class="nextstepaction"]

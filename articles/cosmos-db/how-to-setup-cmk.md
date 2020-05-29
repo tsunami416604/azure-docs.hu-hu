@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 5629ddfe496ef1abd071ab579c885cbe1adeb344
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592097"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148191"
 ---
-# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Cosmos-fiókhoz Azure Key Vault
+# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
 Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal (**szolgáltatás által felügyelt kulcsok**). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a kezelt kulcsokkal (az**ügyfél által felügyelt kulcsokkal**).
 
@@ -220,6 +220,10 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="error-handling"></a>Hibakezelés
+
+Ha az ügyfél által felügyelt kulcsokat (CMK) Azure Cosmos DBban használja, akkor a Azure Cosmos DB a válaszban szereplő HTTP-alállapot-kóddal együtt visszaadja a hiba részleteit. Ezt az alállapot-kódot használhatja a probléma kiváltó okának a hibakereséséhez. Tekintse meg a http- [állapotkódok Azure Cosmos db](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) cikket a támogatott http-alállapot-kódok listájának lekéréséhez.
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="is-there-an-additional-charge-to-enable-customer-managed-keys"></a>Díjköteles az ügyfél által felügyelt kulcsok?
@@ -286,7 +290,7 @@ Másik lehetőségként a Azure Key Vault-példány összes kulcsának visszavon
 
 Az egyetlen művelet lehetséges, ha a titkosítási kulcs visszavonva van, a fiók törlése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Cosmos db adattitkosításáról](./database-encryption-at-rest.md).
 - Tekintse át a [Cosmos db lévő adathozzáférések biztonságos elérését](secure-access-to-data.md)ismertető cikket.

@@ -3,12 +3,12 @@ title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637751"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148021"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
@@ -44,7 +44,7 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
 
    Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
 
-   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-os).
 
 
 1. Válassza a **Mentés** vagy a **Mentés másként**lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
@@ -76,7 +76,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
     
    Válassza a **lekérdezés futtatása** lehetőséget a lekérdezés eredményeinek megtekintéséhez az alsó ablaktáblán.
 
-   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-virtual-machines-by-os-type).
+   A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-os).
 
 1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget.
 

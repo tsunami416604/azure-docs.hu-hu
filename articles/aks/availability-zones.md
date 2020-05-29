@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 35aaad31728f4a0cd73913ecf397d8123b3f909a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 20b796e2da7fe602a8987d3de98bd3a5d9fafb5c
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725096"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148174"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -48,7 +48,7 @@ A következő korlátozások érvényesek az AK-fürtök rendelkezésre állási
 
 ### <a name="azure-disks-limitations"></a>Azure-lemezek korlátozásai
 
-Az Azure Managed Disks-t használó kötetek jelenleg nem redundáns erőforrások. A kötetek nem csatlakoztathatók több zónához, és ugyanabban a zónában kell lenniük, mint a cél pod-t működtető csomópont.
+Az Azure Managed Disks-t használó kötetek jelenleg nem redundáns erőforrások. A kötetek nem csatlakoztathatók több zónához, és ugyanabban a zónában kell lenniük, mint a cél pod-t üzemeltető adott csomópont.
 
 Ha állapot-nyilvántartó számítási feladatokat kell futtatnia, használja a csomópont-készletet a pod specs-ban, hogy csoportosítsa a pod-ütemezést a lemezekkel megegyező zónában. Azt is megteheti, hogy olyan hálózati tárterületet használ, mint például a Azure Files, amelyek a zónák közötti ütemezés szerint csatolhatók a hüvelyekhez.
 
@@ -165,7 +165,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 
 Ahogy az előző kimenetben látható, az első Pod a 0. csomóponton fut, amely a rendelkezésre állási zónában található `eastus2-1` . A második Pod a 2. csomóponton fut, amely a (z `eastus2-3` ) és a (z) 4. csomópontjában található `eastus2-2` . További konfiguráció nélkül a Kubernetes a három rendelkezésre állási zónában helyesen terjeszti a hüvelyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
 

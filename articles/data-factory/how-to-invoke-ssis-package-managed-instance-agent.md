@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 1a0015c12f942eebb0a26738f5d7144bbe28ef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe32d67dd5d15ccf2f889cf40b79d35c890d5313
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022290"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148293"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-csomagok futtatása az Azure SQL felügyelt példány-ügynök használatával
 
@@ -108,13 +108,14 @@ Ha meg szeretné szüntetni a csomagok végrehajtását egy Azure SQL Database f
 1. Keresse meg az SQL Agent **jobId** az **msdb. dbo. sysjobs**címről.
 1. Keresse meg a megfelelő SSIS- **executionId** a feladatsor alapján a következő lekérdezés használatával:
    ```sql
-   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
+   Ha a SSIS-csomagok SSISDB vannak, akkor a **SSISDB. internal. execution_parameter_values** táblát használja a feladatok végrehajtásához. Ha a SSIS-csomagok a fájlrendszerben találhatók, akkor használja a **ssisdb. internal. execution_parameter_values_noncatalog**.
 1. Kattintson a jobb gombbal a SSISDB-katalógusra, majd válassza az **aktív műveletek**elemet.
 
    !["Aktív műveletek" a SSISDB-katalógus helyi menüjében](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
 
 1. Állítsa le a megfelelő műveletet a **executionId**alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Azure Data Factory használatával is ütemezhet SSIS-csomagokat. Részletes útmutatásért lásd: [Azure Data Factory eseményvezérelt eseményindító](how-to-create-event-trigger.md). 

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 0e98a10573a2e3abda255c325845190ed5067bb3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 979c714ca5446d3f1eabb76e97535ee5ffa2e359
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778177"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140724"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 a [v3-referenciák dokumentációja](https://aka.ms/azsdk-net-textanalytics-ref-docs)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics)  |  [v3 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
@@ -42,9 +42,9 @@ a [v3-referenciák dokumentációja](https://aka.ms/azsdk-net-textanalytics-ref-
 
 Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy ""Helló világ!"alkalmazás" projektet egyetlen C# forrásfájl használatával: *program.cs*.
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő válassza a **Tallózás**lehetőséget, jelölje be az **előzetes verzió**használata jelölőnégyzetet, és keressen rá `Azure.AI.TextAnalytics` . Válassza `1.0.0-preview.4` a verzió, majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése**lehetőséget. A megnyíló csomagkezelő válassza a **Tallózás**lehetőséget, jelölje be az **előzetes verzió**használata jelölőnégyzetet, és keressen rá `Azure.AI.TextAnalytics` . Válassza `1.0.0-preview.5` a verzió, majd a **telepítés**lehetőséget. Használhatja a [Package Manager konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), amely a jelen rövid útmutatóban szereplő példákat tartalmazza. 
@@ -58,7 +58,7 @@ Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldá
 
 ---
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
 
@@ -121,7 +121,7 @@ Cserélje le az alkalmazás `Main` metódusát. Az itt megnevezett metódusokat 
 
 A Text Analytics ügyfél egy olyan `TextAnalyticsClient` objektum, amely az Azure-ban hitelesíti a kulcsot, és függvényeket biztosít a szöveg egyetlen karakterláncként vagy kötegként való fogadásához. Az API-ra szinkron módon vagy aszinkron módon küldhet szöveget. A válasz objektum fogja tartalmazni az összes elküldött dokumentum elemzési információit. 
 
-Ha a szolgáltatás verzióját használja `3.0-preview` , egy opcionális példánnyal is elvégezheti `TextAnalyticsClientOptions` az ügyfél inicializálását különböző alapértelmezett beállításokkal (például az alapértelmezett nyelv vagy az ország/régió tipp). Azure Active Directory jogkivonat használatával is végezhet hitelesítést. 
+Ha a szolgáltatás verzióját használja `3.0` , egy opcionális példánnyal is elvégezheti `TextAnalyticsClientOptions` az ügyfél inicializálását különböző alapértelmezett beállításokkal (például az alapértelmezett nyelv vagy az ország/régió tipp). Azure Active Directory jogkivonat használatával is végezhet hitelesítést. 
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -133,7 +133,7 @@ Ha a szolgáltatás verzióját használja `3.0-preview` , egy opcionális péld
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Győződjön meg arról, hogy a korábban létrehozott fő metódus létrehoz egy új ügyfél-objektumot a végponttal és a hitelesítő adatokkal.
 
@@ -155,7 +155,7 @@ Hozzon létre egy metódust a [TextAnalyticsClient](https://docs.microsoft.com/d
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Hozzon létre egy nevű új függvényt `SentimentAnalysisExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `AnalyzeSentiment()` függvényt. A visszaadott `Response<DocumentSentiment>` objektum a teljes bemeneti dokumentum hangulati címkéjét és pontszámát, valamint az egyes mondatok sikerességi elemzését fogja tartalmazni. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 
@@ -169,8 +169,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
+        Console.WriteLine($"\tText: \"{sentence.Text}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
         Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
         Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
@@ -184,14 +183,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -215,7 +212,7 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>Nyelvfelismerés
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 
 Hozzon létre egy nevű új függvényt `LanguageDetectionExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `DetectLanguage()` függvényt. A visszaadott `Response<DetectedLanguage>` objektum az észlelt nyelvet, valamint a nevét és az ISO-6391 kódot fogja tartalmazni. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
@@ -258,11 +255,11 @@ Language: English
 
 ## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 
 > [!NOTE]
-> Új verzió `3.0-preview` :
+> Új verzió `3.0` :
 > * Az entitások összekapcsolása mostantól el van különítve az entitások felismerésével.
 
 
@@ -276,7 +273,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
     foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
+        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -285,11 +282,14 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 
 ```console
 Named Entities:
+        Text: trip,     Category: Event,        Sub-Category:
+                Score: 0.61
+
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Length: 7,      Score: 0.92
+                Score: 0.82
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Length: 9,      Score: 0.80
+                Score: 0.80
 ```
 
 ## <a name="entity-linking"></a>Entitás összekapcsolása
@@ -313,7 +313,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
+            Console.WriteLine($"\t\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -326,38 +326,38 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Length: 11,     Score: 0.78
+                Score: 0.88
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Length: 10,     Score: 0.55
+                Score: 0.63
 
                 Text: Gates
-                Length: 5,      Score: 0.55
+                Score: 0.63
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Length: 10,     Score: 0.53
+                Score: 0.60
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Length: 7,      Score: 0.25
+                Score: 0.32
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Length: 5,      Score: 0.28
+                Score: 0.33
 ```
 
 #### <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
@@ -374,7 +374,7 @@ Hozzon létre egy nevű új függvényt `RecognizeEntitiesExample()` , amely a k
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 
-#### <a name="version-30-preview"></a>[3,0-es verzió – előzetes verzió](#tab/version-3)
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Hozzon létre egy nevű új függvényt `KeyPhraseExtractionExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `ExtractKeyPhrases()` függvényt. A visszaadott `<Response<IReadOnlyCollection<string>>` objektum az észlelt legfontosabb kifejezések listáját fogja tartalmazni. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 

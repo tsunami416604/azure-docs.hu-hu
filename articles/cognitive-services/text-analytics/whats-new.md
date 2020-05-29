@@ -8,39 +8,86 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 05/19/2020
 ms.author: aahi
-ms.openlocfilehash: 162e60ac8d33dc5d1951a58b0a9643b668608d7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 32dc7e86d5cd737533a4a6c8b3d9ce7d00795c65
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77188798"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140505"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="may-2020"></a>2020. május
+
+### <a name="text-analytics-api-v3-general-availability"></a>A Text Analytics API v3 általánosan elérhető
+
+A Text Analysis API v3 mostantól általánosan elérhető a következő frissítésekkel:
+
+* Modell verziója`2020-04-01`
+* Új [adatkorlátok](concepts/data-limits.md) az egyes szolgáltatásokhoz
+* Frissítve a [Hangulatelemzés (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md) [nyelvi támogatása](language-support.md)
+* Különálló végpont az entitás összekapcsolásához 
+* Új "címe" entitásának kategóriája [elnevezett entitás-felismerési () v3](how-tos/text-analytics-how-to-entity-linking.md).
+* Új alkategóriák:
+   * Földrajzi hely
+   * Hely – szerkezeti
+   * Szervezet – Értéktőzsde
+   * Szervezet – orvosi
+   * Szervezet – sportok
+   * Esemény – kulturális
+   * Esemény – természetes
+   * Esemény – sport
+
+A JSON-válaszban a következő tulajdonságok lettek hozzáadva:
+   * `SentenceText`Hangulatelemzés
+   * `Warnings`minden dokumentumhoz 
+
+A JSON-válaszban a következő tulajdonságok nevei módosultak, ahol lehetséges:
+
+* A `score` új nevet kapott: `confidenceScore`
+    * `confidenceScore`két tizedesjegy pontossággal rendelkezik. 
+* A `type` új nevet kapott: `category`
+* A `subtype` új nevet kapott: `subcategory`
+
+[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
+
+> [!div class="nextstepaction"]
+> [További információ a Text Analytics API v3-ról](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
+
+### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics API v 3.1 nyilvános előzetes verzió
+   * Új Hangulatelemzés funkció – [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
+   * Új [személyes ( `PII` ) tartományi szűrő](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) a védett állapotra vonatkozó információkhoz ( `PHI` ).
+   * Új személyes ( `PII` ) Kategóriák:
+      * Betegségek nemzetközi osztályozása (ICD-9-CM)
+      * Betegségek nemzetközi osztályozása (ICD-10-CM)
+
+> [!div class="nextstepaction"]
+> [További információ a Text Analytics API v 3.1 előzetes verziójáról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ## <a name="february-2020"></a>2020. február
 
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK-támogatás a Text Analytics API v3 nyilvános előzetes verziójához
 
 Az [egységes Azure SDK kiadás](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)részeként a Text Analytics API v3 SDK mostantól elérhető nyilvános előzetes verzióként a következő programozási nyelvekhez:
-   * [C #](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
+   * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
    * [JavaScript (node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
-
-> [!div class="nextstepaction"]
+   
+   > [!div class="nextstepaction"]
 > [További információ a Text Analytics API v3 SDK-ról](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
 
-További entitás-típusok mostantól elérhetők az elnevezett entitás-felismerési (megnevezett) v3 nyilvános előzetes verzióban, mivel kiterjesztjük a szövegben található általános és személyes információk entitások észlelését. Ez a frissítés bevezeti a [modell verzióját](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2020-02-01`, amely a következőket tartalmazza:
+További entitás-típusok mostantól elérhetők az elnevezett entitás-felismerési (megnevezett) v3 nyilvános előzetes verzióban, mivel kiterjesztjük a szövegben található általános és személyes információk entitások észlelését. Ez a frissítés bevezeti a [modell verzióját](concepts/model-versioning.md) `2020-02-01` , amely a következőket tartalmazza:
 
 * A következő általános entitás-típusok felismerése (csak angol nyelven):
     * PersonType
-    * Product
+    * Termék
     * Esemény
     * Geopolitikai entitás (GPE) a hely alatt altípusként
     * Ügyességi
@@ -66,7 +113,7 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
 
 * Különálló végpontok az [entitások felismeréséhez](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) és az [entitások összekapcsolásához](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
-* [Modell verziója](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2019-10-01`, amely a következőket tartalmazza:
+* [Modell verziója](concepts/model-versioning.md) `2019-10-01` , amely a következőket tartalmazza:
     * A szövegben talált entitások kibővített észlelése és kategorizálása. 
     * A következő új entitások típusának felismerése:
         * Telefonszám
@@ -77,22 +124,22 @@ Az entitások csatolása az angol és a spanyol nyelvet támogatja. A nyelv tám
 #### <a name="sentiment-analysis-v3-public-preview"></a>Hangulatelemzés v3 nyilvános előzetes verzió
 
 * [Új végpont](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) az érzelmek elemzéséhez.
-* [Modell verziója](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) `2019-10-01`, amely a következőket tartalmazza:
+* [Modell verziója](concepts/model-versioning.md) `2019-10-01` , amely a következőket tartalmazza:
 
     * Az API szövegének és pontozásának pontosságának és részletességének jelentős javulása.
     * Automatikus címkézés a különböző érzelemekhez a szövegben.
     * A dokumentumok és a mondatok szintjének elemzése és kimenete. 
 
-Támogatja az angol (`en`), a japán`ja`(), a kínai`zh-Hans`egyszerűsített (), a`zh-Hant`kínai hagyományos ()`fr`, a francia (`it`), az olasz`es`(), a`nl`spanyol (),`pt`a holland (),`de`a portugál () és a német () nyelveket, és `East Asia`a `East US`következő `East US 2`régiókban `Southeast Asia`érhető `South Central US`el `UK South`: `West Europe` `West US 2` `Australia East` `Central Canada` `Central US` `North Europe`,,,,,,,,,, és. 
+Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-Hans` ), a kínai hagyományos (), a `zh-Hant` francia (), az `fr` olasz () `it` , a spanyol (), a `es` holland () `nl` , a portugál ( `pt` ) és a német () nyelveket `de` , és a következő régiókban érhető el: `Australia East` `Central Canada` `Central US` `East Asia` `East US` `East US 2` `North Europe` `Southeast Asia` `South Central US` `UK South` `West Europe` `West US 2` ,,,,,,,,,, és. 
 
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
-* [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
 * [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)
