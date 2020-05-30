@@ -12,17 +12,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e55b75b26eec3112472d78c0c22c147a80177007
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118700"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219347"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-A tranzakciós replikáció az Azure SQL felügyelt SQL Server példányának egyik funkciója, amely lehetővé teszi az adatok replikálását az Azure SQL felügyelt példányain lévő táblákból, illetve a távoli adatbázisokra helyezett táblázatok SQL Server. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban.
+A tranzakciós replikáció az Azure SQL felügyelt SQL Server példányának egyik funkciója, amely lehetővé teszi az adatok replikálását az Azure SQL felügyelt példányain lévő táblákból vagy egy SQL Server-példányból a távoli adatbázisokra helyezett táblákba. Ez a funkció lehetővé teszi több tábla szinkronizálását különböző adatbázisokban.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -43,21 +43,21 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 | Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Yes |
-| **Terjesztő** | No | Yes|
-| **Lekéréses előfizető** | No | Yes|
+| **Publisher** | Nem | Igen |
+| **Terjesztő** | Nem | Igen|
+| **Lekéréses előfizető** | Nem | Igen|
 | **Leküldéses előfizető**| Igen | Igen|
 | &nbsp; | &nbsp; | &nbsp; |
 
-A **közzétevő** közzéteszi az egyes táblákon (cikkeken) végrehajtott módosításokat úgy, hogy elküldi a frissítéseket a terjesztőnek. A közzétevő lehet egy Azure SQL felügyelt példány vagy egy SQL Server.
+A **közzétevő** közzéteszi az egyes táblákon (cikkeken) végrehajtott módosításokat úgy, hogy elküldi a frissítéseket a terjesztőnek. A közzétevő lehet egy Azure SQL felügyelt példány vagy egy SQL Server példány.
 
-A **terjesztő** begyűjti a cikkek változásait egy közzétevőtől, és elosztja azokat az előfizetőknek. A terjesztő lehet az Azure SQL felügyelt példánya vagy SQL Server (bármely verzió, ameddig a közzétevő verziója megegyezik vagy annál nagyobb).
+A **terjesztő** begyűjti a cikkek változásait egy közzétevőtől, és elosztja azokat az előfizetőknek. A terjesztő lehet egy Azure SQL felügyelt példány vagy egy SQL Server-példány (bármely verzió, ameddig a közzétevő verziója megegyezik vagy annál nagyobb.)
 
-Az **előfizető** a közzétevőn végrehajtott módosításokat fogadja. A SQL Server és az Azure SQL felügyelt példánya leküldéses és lekéréses előfizetők is lehetnek, bár a lekéréses előfizetések nem támogatottak, ha a terjesztő egy Azure SQL felügyelt példány, és az előfizető nem. Azure SQL Database csak leküldéses előfizető lehet.
+Az **előfizető** a közzétevőn végrehajtott módosításokat fogadja. Egy SQL Server példány és az Azure SQL felügyelt példánya leküldéses és lekéréses előfizetők is lehetnek, bár a lekéréses előfizetések nem támogatottak, ha a terjesztő egy Azure SQL felügyelt példány, és az előfizető nem. Azure SQL Database-adatbázis csak leküldéses előfizető lehet.
 
 Az Azure SQL felügyelt példánya a következő SQL Server-verziók előfizetői számára is képes támogatni:
 
-- SQL Server 2016 és újabb
+- SQL Server 2016 és újabb verziók
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) vagy [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
 - SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) vagy [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
 
@@ -72,17 +72,17 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
 | [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Támogatási mátrix
 
-  A felügyelt Azure SQL-példány tranzakciós replikációs támogatási mátrixa ugyanaz, mint a helyszíni SQL Server.
+  A felügyelt Azure SQL-példány tranzakciós replikációs támogatási mátrixa ugyanaz, mint SQL Server.
   
 | **Publisher**   | **Terjesztő** | **Előfizető** |
 | :------------   | :-------------- | :------------- |
@@ -114,15 +114,15 @@ A tranzakciós replikáció a következő esetekben hasznos:
 
 Általánosságban a közzétevőnek és a terjesztőnek a felhőben vagy a helyszínen kell lennie. A következő konfigurációk vannak támogatva:
 
-### <a name="publisher-with-local-distributor-on-sql-mi"></a>Közzétevő helyi terjesztővel SQL MI
+### <a name="publisher-with-local-distributor-on-sql-managed-instance"></a>Közzétevő helyi terjesztővel a felügyelt SQL-példányon
 
 ![Önálló példány Közzétevőként és terjesztőként](./media/replication-transactional-overview/01-single-instance-asdbmi-pubdist.png)
 
-A közzétevő és a terjesztő egyetlen felügyelt példányon belül van konfigurálva, és a módosításokat a többi Azure-SQL Server, az Azure SQL felügyelt példányán, vagy SQL Server a helyszínen vagy egy virtuális gépen végezheti el.
+A közzétevő és a terjesztő egyetlen SQL felügyelt példányon belül van konfigurálva, és a módosításokat egy másik, felügyelt SQL-példányra, SQL Database vagy SQL Server példányra terjeszti.
 
-### <a name="publisher-with-remote-distributor-on-sql-mi"></a>Közzétevő távoli terjesztővel SQL MI
+### <a name="publisher-with-remote-distributor-on-sql-managed-instance"></a>Közzétevő távoli terjesztővel a felügyelt SQL-példányon
 
-Ebben a konfigurációban az egyik felügyelt példány egy másik felügyelt példányra helyezi a terjesztőt, amely számos forrás által felügyelt példányt képes kiszolgálni, és az Azure-SQL Server, az Azure SQL felügyelt példányon, illetve a helyszíni vagy egy virtuális gépen SQL Server egy vagy több célponton végezheti el a módosításokat.
+Ebben a konfigurációban egy felügyelt példány közzétesz egy másik, felügyelt SQL-példányra helyezett terjesztőt, amely számos forrás SQL felügyelt példányt képes kiszolgálni, és a módosításokat egy vagy több, Azure SQL Database, Azure SQL felügyelt példányon vagy SQL Servern lévő célpontra terjesztheti.
 
 ![A közzétevő és a terjesztő külön példányai](./media/replication-transactional-overview/02-separate-instances-asdbmi-pubdist.png)
 
@@ -131,11 +131,11 @@ A közzétevő és a terjesztő két felügyelt példányon van konfigurálva. E
 - Mindkét felügyelt példány ugyanazon a vNet található.
 - Mindkét felügyelt példány ugyanazon a helyen található.
 
-### <a name="on-prem-pubdist-with-remote-subscriber"></a>Helyszíni pub/dist távoli előfizetővel
+### <a name="on-premises-publisherdistributor-with-remote-subscriber"></a>Helyszíni közzétevő/terjesztő távoli előfizetővel
 
 ![Azure SQL Database előfizetőként](./media/replication-transactional-overview/03-azure-sql-db-subscriber.png)
 
-Ebben a konfigurációban egy Azure SQL Database vagy egy Azure SQL felügyelt példány adatbázisa előfizető. Ez a konfiguráció támogatja a helyszíni rendszerről az Azure-ba való áttelepítést. Ha Azure SQL Database előfizető, leküldéses módban kell lennie.  
+Ebben a konfigurációban a Azure SQL Database vagy az Azure SQL felügyelt példányának egyik adatbázisa előfizető. Ez a konfiguráció támogatja a helyszíni rendszerről az Azure-ba való áttelepítést. Ha az előfizető Azure SQL Database adatbázisa, leküldéses módban kell lennie.  
 
 ## <a name="requirements"></a>Követelmények
 
@@ -151,7 +151,7 @@ Ebben a konfigurációban egy Azure SQL Database vagy egy Azure SQL felügyelt p
 
 ## <a name="with-failover-groups"></a>Feladatátvételi csoportokkal
 
-Az [aktív geo-replikáció](../database/active-geo-replication-overview.md) nem támogatott az SQL felügyelt példányainak tranzakciós replikációval való használata esetén. Az aktív geo-replikáció helyett használjon [automatikus feladatátvételi csoportokat](../database/auto-failover-group-overview.md), de vegye figyelembe, hogy a kiadványt [manuálisan kell törölni](transact-sql-tsql-differences-sql-server.md#replication) az elsődleges felügyelt példányból, és újból létre kell hozni a másodlagos SQL felügyelt példányon a feladatátvétel után.
+Az [aktív geo-replikáció](../database/active-geo-replication-overview.md) nem támogatott az SQL felügyelt példányainak tranzakciós replikációval való használata esetén. Az aktív geo-replikáció helyett használjon [automatikus feladatátvételi csoportokat](../database/auto-failover-group-overview.md), de vegye figyelembe, hogy a kiadványt [manuálisan kell törölni](transact-sql-tsql-differences-sql-server.md#replication) az elsődleges felügyelt példányból, majd újra létre kell hozni a másodlagos SQL felügyelt példányon a feladatátvétel után.
 
 Ha a földrajzi replikáció engedélyezve van a **közzétevő** vagy a **terjesztő** SQL felügyelt példányán egy [feladatátvételi csoportban](../database/auto-failover-group-overview.md), akkor az SQL felügyelt példányának rendszergazdájának törölnie kell az összes kiadványt a régi elsődleges gépen, és újra kell konfigurálnia azokat az új elsődlegesen a feladatátvételt követően. Ebben a forgatókönyvben a következő tevékenységek szükségesek:
 
@@ -189,18 +189,18 @@ Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfize
 - Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat.
 - Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési idején kívül esik, az SQL felügyelt példányának rendszergazdájának újra kell inicializálnia az előfizetés-adatbázist.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 
-- [A MI közzétevő és előfizető közötti replikáció konfigurálása](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [A MI közzétevő, a MI terjesztő és a SQL Server előfizető közötti replikáció konfigurálása](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
+- [Replikáció konfigurálása egy SQL felügyelt példány közzétevője és előfizetője között](../managed-instance/replication-between-two-instances-configure-tutorial.md)
+- [Replikáció konfigurálása egy felügyelt SQL-példány közzétevője, az SQL felügyelt példány-terjesztője és SQL Server előfizető között](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Hozzon létre egy kiadványt](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például a `N'azuresqldbdns.database.windows.net` Azure SQL Database nevet a célként megadott adatbázisként (például **AdventureWorks**). )
+- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks**). )
 
-## <a name="see-also"></a>Lásd még:  
+## <a name="see-also"></a>Lásd még  
 
-- [Replikáció egy MI és egy feladatátvételi csoporttal](transact-sql-tsql-differences-sql-server.md#replication)
+- [Replikálás SQL felügyelt példánnyal és feladatátvételi csoporttal](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replikáció az SQL Database-be](../database/replication-to-sql-database.md)
 - [Replikálás felügyelt példányra](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

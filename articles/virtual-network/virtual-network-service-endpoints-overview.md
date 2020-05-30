@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018752"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220431"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
-A Virtual Network (VNet) szolgáltatási végpontok kibővítik a virtuális hálózat saját címterület-területét. A végpontok a VNet identitását is kiterjesztik az Azure-szolgáltatásokra közvetlen kapcsolaton keresztül. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át.
+A Virtual Network (VNet) szolgáltatás végpontja biztonságos és közvetlen kapcsolatot biztosít az Azure-szolgáltatásokkal az Azure-beli gerinces hálózaton keresztül optimalizált útvonalon. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A szolgáltatási végpontok lehetővé teszik, hogy a VNet magánhálózati IP-címei elérjék az Azure-szolgáltatások végpontját anélkül, hogy a VNet nyilvános IP-címet kellene megadniuk.
 
 Ez a funkció a következő Azure-szolgáltatásokhoz és-régiókhoz érhető el. A *Microsoft. \* * Resource zárójelben van. Engedélyezze ezt az erőforrást az alhálózati oldalról a szolgáltatási végpontok szolgáltatáshoz való konfigurálása során:
 
@@ -151,5 +151,5 @@ A gyakori kérdésekért lásd: [Virtual Network szolgáltatási végponttal kap
 - [Azure SQL Data Warehouse biztonságossá tétele virtuális hálózathoz](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-szolgáltatás integrációja virtuális hálózatokban](virtual-network-for-azure-services.md)
 - [Virtual Network szolgáltatási végpont házirendjei](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

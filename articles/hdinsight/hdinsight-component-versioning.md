@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/20/2020
-ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: 0ce7077300b1c59fcc858197e70a921d1454fd13
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846222"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219708"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -43,7 +43,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2,4           | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4           | 2.3.2, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
 | Apache Kafka           | 2.1           | 1.1                        |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
@@ -51,7 +51,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> HDInsight 4,0: a Spark 2,4 és a Kafka 2,1 teljes mértékben támogatott. A Spark 2,3 és a Kafka 1,1 azonban nincsenek kiszolgálva. HDInsight 3,6: a Spark 2,3 és a Kafka 1,1 teljes mértékben támogatott.  
+> HDInsight 4,0: a Spark 2,4 és a Kafka 2,1 teljes mértékben támogatott. Azonban a Spark 2,3 és a Kafka 1,1 típusú fürtök nincsenek kiszolgálva. HDInsight 3,6: a Spark 2,3 és a Kafka 1,1 teljes mértékben támogatott.  
 
 ## <a name="check-for-current-apache-component-version-information"></a>Az Apache összetevő aktuális verziójával kapcsolatos információk keresése
 
@@ -80,10 +80,10 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Igen |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | December 31., 2020 |December 31., 2020 |Igen |Igen |
 
-A Spark 2,1, 2,2 és Kafka 1,0 támogatásának érvényessége 2020. június 30-án jár le.
+A Spark 2,1, 2,2 és Kafka 1,0-fürt támogatása a 2020. június 30-án jár le.
 
 > [!NOTE]
-> A verzió támogatásának lejárta után előfordulhat, hogy nem érhető el a Azure Portalon keresztül. A fürt verziója továbbra is elérhető a Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban található **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
+> Ha a fürt verziójának támogatása lejár, előfordulhat, hogy a Azure Portal nem érhető el. Bizonyos esetekben a fürtcsomópontok továbbra is elérhetők a Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban lévő **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
 
 ### <a name="retired-versions"></a>Kivont verziók
 

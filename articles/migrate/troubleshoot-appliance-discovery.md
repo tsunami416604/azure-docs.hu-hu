@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170902"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219248"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt a [Azure Migrate](migrate-services-overview.md) be
 
 Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzés" hibaüzenet jelenik meg, tegye a következőket:
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információ](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
@@ -144,6 +144,23 @@ Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-a
 
 Ha törli a virtuális gépeket, és azok továbbra is megjelennek a portálon, várjon 30 percet. Ha továbbra is megjelennek, frissítse a fentiekben leírtak szerint.
 
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Hiba: a feltöltött fájl nem a várt formátumban van
+Egyes eszközök olyan területi beállításokkal rendelkeznek, amelyek pontosvesszővel elválasztva hozza létre a CSV-fájlt. Módosítsa a beállításokat, hogy a határolójel vessző legyen.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Importáltam egy CSV-fájlt, de "a felderítés folyamatban van"
+Ez az állapot akkor jelenik meg, ha a CSV-feltöltés érvényesítési hiba miatt meghiúsult. Próbálja újra importálni a CSV-fájlt. Letöltheti az előző feltöltés hibajelentését, és a hibák elhárításához kövesse a fájl szervizelési útmutatását. A hibajelentés a "gépek felderítése" lap "adatok importálása" részéből tölthető le.
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Ne tekintse meg az alkalmazás részleteit még a vendég hitelesítő adatainak frissítése után is
+Az alkalmazás-felderítés 24 óránként egyszer fut. Ha azonnal szeretné megtekinteni a részleteket, frissítse az alábbiak szerint. Ez a nem függvénytől függően néhány percet is igénybe vehet. a felderített virtuális gépek.
+
+1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
+2. A **kezelés**területen válassza a **Agent Health**lehetőséget.
+3. Válassza az **ügynök frissítése**lehetőséget.
+4. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
+
+## <a name="unable-to-export-application-inventory"></a>Nem lehet exportálni az alkalmazás leltárát
+Győződjön meg arról, hogy a portálon a leltárt letöltő felhasználó rendelkezik közreműködői jogosultságokkal az előfizetésben.
+
 ## <a name="common-app-discovery-errors"></a>Gyakori alkalmazás-felderítési hibák
 
 Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások felderítését Azure Migrate használatával: Server Assessment. Az alkalmazás-felderítés jelenleg csak VMware esetén támogatott. [További](how-to-discover-applications.md) információ az alkalmazások felderítésének beállításával kapcsolatos követelményekről és lépésekről.
@@ -186,5 +203,5 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

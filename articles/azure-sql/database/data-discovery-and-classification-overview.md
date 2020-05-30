@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 387ec3f792b5d61b6c909b4955a588146aa258f5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0f1e43e4300cff6fba1c71d2b7740a3b2b678253
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050680"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218938"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészség�
 Az adatfelderítési & besorolása a [speciális adatbiztonsági](advanced-data-security.md) ajánlat része, amely a fejlett Azure SQL-alapú biztonsági funkciók egységes csomagja. Az adatfelderítési & besorolását a Azure Portal központi **SQL Advanced adatbiztonság** szakasza segítségével érheti el és kezelheti.
 
 > [!NOTE]
-> További információ a SQL Serverról (helyszíni): SQL- [adatok felderítése és besorolása](https://go.microsoft.com/fwlink/?linkid=866999).
+> További információ a helyszíni SQL Serverról: SQL- [Adatfelderítés & besorolása](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Mi az az adatfelderítési & besorolás?
 
@@ -42,7 +42,7 @@ Az adatfelderítési & besorolása fejlett szolgáltatásokat és új képesség
 
 - **Felderítés és javaslatok:** A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezután egyszerűen áttekintheti és alkalmazhatja az ajánlott besorolást a Azure Portal használatával.
 
-- **Címkézés:** Az adatbesorolási címkéket tartósan alkalmazhatja az oszlopokra az SQL Database motorhoz hozzáadott új metaadat-attribútumok használatával. Ezt a metaadatokat ezután speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvekhez lehet használni.
+- **Címkézés:** Az adatbesorolási címkéket tartósan alkalmazhatja az oszlopokra a SQL Server adatbázis-kezelőhöz hozzáadott új metaadat-attribútumok használatával. Ezt a metaadatokat ezután speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvekhez lehet használni.
 
 - **Lekérdezési eredmény – beállított érzékenység:** A lekérdezési eredményhalmaz érzékenységét valós időben számítjuk ki naplózási célokra.
 
@@ -66,9 +66,9 @@ Az adatfelderítési & besorolása tartalmaz egy beépített érzékenységi cí
 
 A besorolási besorolást a teljes Azure-szervezet egyik központi helyén definiálhatja és testreszabhatja. Ez a hely [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Ezt a feladatot csak a szervezet legfelső szintű felügyeleti csoportjának rendszergazdai jogosultsággal rendelkező személye teheti meg.
 
-Az SQL Information Protection házirend-kezelésének részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Saját egyéni adattípusokat is hozzáadhat, és karakterlánc-mintázatokkal konfigurálhatja őket. A rendszer hozzáadja a mintákat a felderítési logikához az ilyen típusú adattípusok azonosításához az adatbázisokban.
+Az Information Protection házirend-kezelésének részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Saját egyéni adattípusokat is hozzáadhat, és karakterlánc-mintázatokkal konfigurálhatja őket. A rendszer hozzáadja a mintákat a felderítési logikához az ilyen típusú adattípusok azonosításához az adatbázisokban.
 
-További információ a szabályzatok testreszabásáról és kezeléséről az [SQL Information Protection szabályzat útmutatójában](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+További információ: [az SQL Information Protection-szabályzat testreszabása Azure Security Center (előzetes verzió)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az egyes adatbázisok besorolását a testreszabott házirend használatával.
 
@@ -83,7 +83,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
    ![Speciális adatbiztonság ablaktábla Azure Portal](./media/data-discovery-and-classification-overview/data_classification.png)
 
-3. Az **adatfelderítési & besorolása** lapon az **Áttekintés** lapon szerepel az adatbázis aktuális besorolási állapotának összegzése. Az összefoglalás tartalmazza az összes besorolt oszlop részletes listáját, amelyeket szűrheti is, ha csak bizonyos sémákat, adattípusokat és címkéket szeretne megjeleníteni. Ha még nem sorolt be oszlopokat, [ugorjon az 5. lépésre](#step-5).
+3. Az **Adatfelderítési & besorolása** lapon az **Áttekintés** lapon szerepel az adatbázis aktuális besorolási állapotának összegzése. Az összefoglalás tartalmazza az összes besorolt oszlop részletes listáját, amelyeket szűrheti is, ha csak bizonyos sémákat, adattípusokat és címkéket szeretne megjeleníteni. Ha még nem sorolt be oszlopokat, [ugorjon az 5. lépésre](#step-5).
 
    ![Aktuális besorolási állapot összegzése](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
 
@@ -193,4 +193,4 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 
 - További információ a [speciális adatbiztonságról](advanced-data-security.md).
 - Érdemes lehet az [Azure SQL auditot](../../azure-sql/database/auditing-overview.md) beállítani a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
-- Az adatfelderítést és-besorolást tartalmazó bemutatókért lásd: az [SQL-adatok védelmének észlelése, osztályozása, címkézése & | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Adatfelderítési & besorolást tartalmazó bemutató esetén tekintse meg a következőt: az [SQL-adatok védelmének észlelése, osztályozása, címkézése & | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).

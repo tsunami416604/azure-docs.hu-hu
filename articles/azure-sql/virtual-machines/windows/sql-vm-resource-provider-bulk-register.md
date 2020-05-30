@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d59c022d72269e0e353f52727d36e18f1c321598
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051135"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219311"
 ---
-# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL Servert futtató virtuális gépek tömeges regisztrálása az Azure-ban az SQL VM-erőforrásszolgáltatóval
+# <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan lehet tömegesen regisztrálni a SQL Server virtuális gépet (VM) az Azure-ban az SQL VM erőforrás-szolgáltatóval a `Register-SqlVMs` PowerShell-parancsmag használatával.
+Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval a `Register-SqlVMs` PowerShell-parancsmag használatával.
 
 A `Register-SqlVMs` parancsmag használatával az összes virtuális gép regisztrálható az előfizetések, az erőforráscsoportok vagy az adott virtuális gépek listája alapján. A parancsmag _egyszerűsített_ felügyeleti módban regisztrálja a virtuális gépeket, majd [jelentést és naplófájlt](#output-description)is hoz. 
 
@@ -40,15 +40,15 @@ A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a követk
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A továbblépés előtt először létre kell hoznia egy helyi példányt a parancsfájlból, majd importálnia kell egy PowerShell-modulként, és kapcsolódnia kell az Azure-hoz. 
 
-### <a name="create-script"></a>Parancsfájl létrehozása
+### <a name="create-the-script"></a>A parancsfájl létrehozása
 
 A parancsfájl létrehozásához másolja a [teljes szkriptet](#full-script) a cikk végéről, és mentse helyileg a következőként: `RegisterSqlVMs.psm1` . 
 
-### <a name="import-script"></a>Parancsfájl importálása
+### <a name="import-the-script"></a>A parancsfájl importálása
 
 A szkript létrehozása után a PowerShell-terminál modulként is importálhatja. 
 
@@ -67,7 +67,7 @@ Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-list-of-subscriptions"></a>Az előfizetések listáján szereplő összes virtuális gép 
+## <a name="register-all-vms-in-a-list-of-subscriptions"></a>Az összes virtuális gép regisztrálása az előfizetések listájában 
 
 A következő parancsmaggal regisztrálja az összes SQL Server virtuális gépet az előfizetések listájában:
 
@@ -91,7 +91,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>Egyetlen előfizetésben lévő összes virtuális gép
+## <a name="register-all-vms-in-a-single-subscription"></a>Egyetlen előfizetésben lévő összes virtuális gép regisztrálása
 
 A következő parancsmaggal regisztrálhat egyetlen előfizetésben lévő összes SQL Server virtuális gépet: 
 
@@ -113,7 +113,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>Több erőforráscsoport összes virtuális gépe
+## <a name="register-all-vms-in-multiple-resource-groups"></a>Az összes virtuális gép regisztrálása több erőforráscsoport esetében
 
 A következő parancsmaggal regisztrálhat egyetlen előfizetésben található összes SQL Server virtuális gépet több erőforráscsoporthoz:
 
@@ -134,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>Az erőforráscsoporthoz tartozó összes virtuális gép
+## <a name="resister-all-vms-in-a-resource-group"></a>Egy erőforráscsoport összes virtuális gépe
 
 A következő parancsmaggal regisztrálhat egyetlen erőforráscsoport összes SQL Server virtuális gépét: 
 
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-single-resource-group"></a>Egy erőforráscsoport adott virtuális gépei
+## <a name="register-specific-vms-in-single-resource-group"></a>Adott virtuális gépek regisztrálása egyetlen erőforráscsoporthoz
 
 A következő parancsmaggal regisztrálhat adott SQL Server virtuális gépeket egyetlen erőforráscsoporthoz:
 
@@ -176,7 +176,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vm"></a>Adott virtuális gép
+## <a name="register-a-specific-vm"></a>Adott virtuális gép regisztrálása
 
 Egy adott SQL Server virtuális gép regisztrálásához használja a következő parancsmagot: 
 
@@ -197,7 +197,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="output-description"></a>Kimenet leírása
 
-A rendszer minden alkalommal létrehoz egy jelentést és egy naplófájlt, amikor a `Register-SqlVMs` parancsmagot használja. 
+A rendszer minden alkalommal létrehoz egy jelentést és egy naplófájlt a `Register-SqlVMs` parancsmag használatakor. 
 
 ### <a name="report"></a>Jelentés
 
@@ -217,11 +217,11 @@ A jelentés egy `.txt` nevű fájlként jön létre, `RegisterSqlVMScriptReport<
 
 ### <a name="log"></a>Napló 
 
-A rendszer naplózza a hibákat a naplófájlban `VMsNotRegisteredDueToError<Timestamp>.log` , ahol az időbélyeg a parancsfájl elindításának időpontja. Ha a hiba az előfizetés szintjén van, a napló tartalmazza a vesszővel tagolt SubscriptionID és a hibaüzenetet. Ha a hiba a virtuális gép regisztrációja, a napló tartalmazza az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a virtuális gép nevét, a hibakódot és az üzenetet vesszővel elválasztva. 
+A rendszer naplózza a hibákat a nevű naplófájlban `VMsNotRegisteredDueToError<Timestamp>.log` , ahol az időbélyeg az az idő, amikor a parancsfájl elindult. Ha a hiba az előfizetés szintjén van, a napló tartalmazza a vesszővel tagolt előfizetés-azonosítót és a hibaüzenetet. Ha a hiba a virtuális gép regisztrációja, a napló tartalmazza az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a virtuális gép nevét, a hibakódot és az üzenetet vesszővel elválasztva. 
 
 ## <a name="remarks"></a>Megjegyzések
 
-Ha a megadott parancsfájllal regisztrálja SQL Server virtuális gépeket az erőforrás-szolgáltatón keresztül, vegye figyelembe a következőket:
+Ha SQL Server virtuális gépeket regisztrál az erőforrás-szolgáltatóval a megadott parancsfájl használatával, vegye figyelembe a következőket:
 
 - Az erőforrás-szolgáltatóval való regisztrációhoz a SQL Server VM futó vendég ügynöknek kell futnia. A Windows Server 2008-lemezképek nem rendelkeznek vendég ügynökkel, így ezek a virtuális gépek sikertelenek lesznek, és manuálisan kell regisztrálni a nem [ügynök-felügyeleti mód](sql-vm-resource-provider-register.md#management-modes)használatával.
 - A beépített újrapróbálkozási logika az átlátható hibák elhárítására szolgál. Ha a virtuális gép regisztrálása sikeresen megtörtént, akkor gyors művelet. Ha azonban a regisztráció meghiúsul, minden egyes virtuális gép újra próbálkozik.  Ezért jelentős időt kell biztosítani a regisztrációs folyamat befejezéséhez – bár a tényleges idő követelménye a hibák típusától és számától függ. 

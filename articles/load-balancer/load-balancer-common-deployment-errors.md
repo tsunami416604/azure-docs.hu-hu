@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658641"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221016"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Load Balancer
 
@@ -28,6 +28,7 @@ Ez a cikk néhány gyakori Azure Load Balancer telepítési hibát ismertet, és
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| A nyilvános IP-SKU-nak és a Load Balancer SKU-nak is egyeznie kell. Győződjön meg arról, Azure Load Balancer és a nyilvános IP-címek megfelelnek. A standard SKU használata éles számítási feladatokhoz ajánlott. További információ az [SKU-beli különbségekről](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | A virtuálisgép-méretezési csoportok alapértelmezett értéke az alapszintű terheléselosztó, ha az SKU nincs meghatározva, vagy standard nyilvános IP-címek nélkül van üzembe helyezve. Telepítse újra a virtuálisgép-méretezési csoport standard nyilvános IP-címekkel való üzembe helyezését az egyes példányokon, hogy standard Load Balancer legyen kiválasztva, vagy egyszerűen válassza ki a standard LB-t a virtuálisgép-méretezési csoport Azure Portal való telepítésekor. |
 |MaxAvailabilitySetsInLoadBalancerReached | Egy Load Balancer háttér-készlete legfeljebb 150 rendelkezésre állási készletet tartalmazhat. Ha nem rendelkezik explicit módon meghatározott rendelkezésre állási csoportokkal a virtuális gépekhez a háttér-készletben, minden egyes virtuális gép a saját rendelkezésre állási csoportba kerül. Így a 150 önálló virtuális gépek üzembe helyezése azt jelentené, hogy 150 rendelkezésre állási készletekkel rendelkezett volna, így a korlátot megtalálhatja. Lehetőség van egy rendelkezésre állási csoport üzembe helyezésére és további virtuális gépek hozzáadására megkerülő megoldásként. |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | Az alapszintű SKU Load Balancer esetében a hálózati adapternek és a Load balancernek ugyanabban a rendelkezésre állási csoportba kell esnie. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| Egy adott terheléselosztó-típuson (belső, nyilvános) nem lehet egynél több szabályt létrehozni ugyanazzal a háttérbeli porttal és protokollal, amelyre ugyanezen virtuálisgép-méretezési csoport hivatkozik. Módosítsa a szabályt az ismétlődő szabály létrehozásának megváltoztatásához. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| Egy adott terheléselosztó-típuson (belső, nyilvános) nem lehet egynél több szabályt létrehozni ugyanazzal a háttérbeli porttal és protokollal, amelyre ugyanezen virtuálisgép-méretezési csoport hivatkozik. Módosítsa a szabály paramétereit az ismétlődő szabály létrehozásának megváltoztatásához. |
 |AnotherInternalLoadBalancerExists| Csak egy belső típusú Load Balancer lehet a Load Balancer háttérbeli virtuális gépek/hálózati adapterek azonos készletében. Frissítse az üzemelő példányt, és győződjön meg arról, hogy csak egy azonos típusú Load Balancer hoz létre. |

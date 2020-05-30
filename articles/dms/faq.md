@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650981"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196588"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
@@ -49,7 +49,7 @@ A Azure Database Migration Service használatával offline és online áttelepí
 A Azure Database Migration Service az adatbázis áttelepítésének előnyben részesített módszere a Microsoft Azure méretekben. További információ arról, hogy Azure Database Migration Service hogyan hasonlítható össze a Microsoft adatbázis-áttelepítési eszközeivel, illetve a szolgáltatás különböző forgatókönyvekhez való használatával kapcsolatos javaslatokért tekintse meg a [Microsoft adatbázis-áttelepítési eszközeit és szolgáltatásait megkülönböztető](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)blogbejegyzéseket.
 
 **K. milyen Azure Database Migration Service összehasonlítani a Azure Migrate ajánlattal?**
-Azure Migrate segíti a helyszíni virtuális gépek Azure IaaS való áttelepítését. A szolgáltatás felméri az áttelepítési alkalmasságot és a teljesítmény-alapú méretezést, és a helyszíni virtuális gépek Azure-ban való futtatásának becsült költségeit is tartalmazza. Azure Migrate hasznos a helyszíni virtuálisgép-alapú számítási feladatok Azure IaaS virtuális gépekre történő áttelepítésének és átváltásának elvégzéséhez. A Azure Database Migration Servicetól eltérően azonban Azure Migrate nem egy speciális adatbázis-áttelepítési szolgáltatás, amely az Azure-beli Azure SQL Database, vagy a Azure SQL Database felügyelt példányokhoz hasonló, az Azure-beli,
+Azure Migrate segíti a helyszíni virtuális gépek Azure IaaS való áttelepítését. A szolgáltatás felméri az áttelepítési alkalmasságot és a teljesítmény-alapú méretezést, és a helyszíni virtuális gépek Azure-ban való futtatásának becsült költségeit is tartalmazza. Azure Migrate hasznos a helyszíni virtuálisgép-alapú számítási feladatok Azure IaaS virtuális gépekre történő áttelepítésének és átváltásának elvégzéséhez. A Azure Database Migration Servicetól eltérően azonban Azure Migrate nem egy speciális adatbázis-áttelepítési szolgáltatás, amely az Azure-beli, vagy az Azure SQL felügyelt példányaihoz, például a Azure SQL Databasehoz és az Azure SQL-hez készült
 
 ## <a name="setup"></a>Telepítés
 

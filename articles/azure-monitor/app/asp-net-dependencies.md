@@ -3,12 +3,12 @@ title: Függőségek nyomon követése az Azure Application Insightsban | Micros
 description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980847"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204752"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -16,7 +16,7 @@ A *függőség* egy külső összetevő, amelyet az alkalmazás meghív. Által�
 
 ## <a name="automatically-tracked-dependencies"></a>Automatikusan követett függőségek
 
-Application Insights SDK-kat .NET-és .NET Core `DependencyTrackingTelemetryModule` -hajókhoz, amelyekkel a telemetria modul automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagként szállítja, és automatikusan a NuGet-csomagok `Microsoft.ApplicationInsights.Web` vagy `Microsoft.ApplicationInsights.AspNetCore`a használatával történik.
+Application Insights SDK-kat .NET-és .NET Core-hajókhoz, `DependencyTrackingTelemetryModule` amelyekkel a telemetria modul automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagként szállítja, és automatikusan a NuGet-csomagok vagy a használatával `Microsoft.ApplicationInsights.Web` történik `Microsoft.ApplicationInsights.AspNetCore` .
 
  `DependencyTrackingTelemetryModule`a jelenleg automatikusan nyomon követi a következő függőségeket:
 
@@ -24,7 +24,7 @@ Application Insights SDK-kat .NET-és .NET Core `DependencyTrackingTelemetryModu
 |---------------|-------|
 |HTTP/HTTPS | Helyi vagy távoli HTTP/HTTPS-hívások |
 |WCF-hívások| Csak automatikusan nyomon követhető, ha HTTP-alapú kötések vannak használatban.|
-|SQL | A-vel `SqlClient`végzett hívások. [Tekintse meg az SQL](#advanced-sql-tracking-to-get-full-sql-query) -lekérdezés rögzítését ismertető témakört.  |
+|SQL | A-vel végzett hívások `SqlClient` . [Tekintse meg az SQL](#advanced-sql-tracking-to-get-full-sql-query) -lekérdezés rögzítését ismertető témakört.  |
 |[Azure Storage (blob, tábla, üzenetsor)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-ügyféllel kezdeményezett hívások. |
 |[EventHub ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | A 1.1.0 vagy újabb verzió. |
 |[ServiceBus ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0 vagy újabb verzió. |
@@ -34,7 +34,7 @@ Ha hiányzik egy függőség, vagy egy másik SDK-t használ, győződjön meg r
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Automatikus függőség-követés beállítása a konzolos alkalmazásokban
 
-A .NET-konzol alkalmazásaitól származó függőségek automatikus nyomon követéséhez `Microsoft.ApplicationInsights.DependencyCollector`telepítse a Nuget csomagot `DependencyTrackingTelemetryModule` , és inicializálja a következőt:
+A .NET-konzol alkalmazásaitól származó függőségek automatikus nyomon követéséhez telepítse a Nuget csomagot `Microsoft.ApplicationInsights.DependencyCollector` , és inicializálja a `DependencyTrackingTelemetryModule` következőt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -60,7 +60,7 @@ Az alábbiakban néhány példát láthat a függőségekről, amelyeket a rends
 
 Az SDK által automatikusan összegyűjtött függőségek esetében manuálisan nyomon követheti azokat a [TRACKDEPENDENCY API](api-custom-events-metrics.md#trackdependency) -val, amelyet a standard automatikus gyűjtemény moduljai használnak.
 
-Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem írt magával, akkor az összes hívást megtudhatja, hogy megtudja, milyen mértékben járul hozzá a válaszadási időpontokhoz. Ha meg szeretné jeleníteni ezeket az adataikat a Application Insights függőségi diagramokban, küldje `TrackDependency`el a következővel:.
+Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem írt magával, akkor az összes hívást megtudhatja, hogy megtudja, milyen mértékben járul hozzá a válaszadási időpontokhoz. Ha meg szeretné jeleníteni ezeket az adataikat a Application Insights függőségi diagramokban, küldje el a következővel: `TrackDependency` .
 
 ```csharp
 
@@ -78,7 +78,7 @@ Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem �
     }
 ```
 
-Azt is `TelemetryClient` megteheti `StartOperation` , `StopOperation` hogy bővítményi metódusokat biztosít, amelyek használatával manuálisan követheti a függőségeket, ahogy az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható.
+Azt is megteheti, `TelemetryClient` hogy bővítményi metódusokat biztosít, `StartOperation` `StopOperation` amelyek használatával manuálisan követheti a függőségeket, ahogy az [itt](custom-operations-tracking.md#outgoing-dependencies-tracking) látható.
 
 Ha ki szeretné kapcsolni a normál függőség-követési modult, távolítsa el a ASP.NET-alkalmazások [ApplicationInsights. config fájljában](../../azure-monitor/app/configuration-with-applicationinsights-config.md) található DependencyTrackingTelemetryModule mutató hivatkozást. ASP.NET Core alkalmazásokhoz kövesse az alábbi [utasításokat.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
@@ -88,9 +88,12 @@ Weblapok esetében Application Insights JavaScript SDK automatikusan függőség
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Részletes SQL-követés a teljes SQL-lekérdezés beszerzéséhez
 
-SQL-hívások esetén a rendszer a kiszolgáló és az adatbázis nevét gyűjti össze és tárolja az összegyűjtött `DependencyTelemetry`név szerint. Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
+SQL-hívások esetén a rendszer a kiszolgáló és az adatbázis nevét gyűjti össze és tárolja az összegyűjtött név szerint `DependencyTelemetry` . Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
 
-ASP.NET Core alkalmazások esetében nincs szükség további lépésekre a teljes SQL-lekérdezés beszerzéséhez.
+ASP.NET Core alkalmazások esetében most meg kell adnia az SQL-szöveg gyűjtését a következő használatával:
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
 A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezéseket a rendszer a System. adat. SqlClient könyvtár helyett a [Microsoft. adat. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használatával gyűjti. Az alább leírtak szerint további platform-specifikus lépések szükségesek.
 
@@ -101,7 +104,7 @@ A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezéseket a rendszer a Sys
 | Azure-felhőszolgáltatás | [Indítási feladat hozzáadása a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást a NuGet-csomagok [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.net Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) számára történő telepítésével kell előkészíteni a ApplicationInsights SDK-ra. |
 | IIS Express | A [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használata
 
-A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött `DependencyTelemetry` SDK-verzió "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
+A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött SDK-verzió `DependencyTelemetry` "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
 
 ## <a name="where-to-find-dependency-data"></a>A függőségi adatkeresés helye
 
@@ -184,7 +187,7 @@ A függőségeket a [Kusto lekérdezési nyelvén](/azure/kusto/query/)követhet
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Hogyan nem sikerült az automatikus függőségi gyűjtő jelentése a függőségek meghívására?*
 
-* Sikertelen függőségi hívások esetén a "sikeres" mező értéke false (hamis) lesz. `DependencyTrackingTelemetryModule`nem jelent jelentést `ExceptionTelemetry`. A függőség teljes adatmodelljéről [itt](data-model-dependency-telemetry.md)olvashat.
+* Sikertelen függőségi hívások esetén a "sikeres" mező értéke false (hamis) lesz. `DependencyTrackingTelemetryModule`nem jelent jelentést `ExceptionTelemetry` . A függőség teljes adatmodelljéről [itt](data-model-dependency-telemetry.md)olvashat.
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 Mint minden Application Insights SDK, a függőség-gyűjtési modul is nyílt forráskódú. Olvassa el és járuljon hozzá a kóddal, vagy jelentse [a hibákat a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)-tárházban.

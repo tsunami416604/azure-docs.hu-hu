@@ -1,6 +1,6 @@
 ---
-title: SQL Server VM egy dedikált Azure-gazdagépen
-description: További információ a SQL Server VM Azure dedikált gazdagépen való futtatásának részleteiről.
+title: SQL Server VM futtatása egy dedikált Azure-gazdagépen
+description: Megtudhatja, hogyan futtathat SQL Server VM egy dedikált Azure-gazdagépen.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,17 +14,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a16ec7a3fa1f41d8c9339f84be6a0ffc3842d099
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1c16c2cdae671a9b18a34b88b9490b5b61c24c8e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046025"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220227"
 ---
-# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM egy dedikált Azure-gazdagépen 
+# <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM futtatása egy dedikált Azure-gazdagépen 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk a SQL Server VM [Azure dedikált gazdagéptel](/azure/virtual-machines/windows/dedicated-hosts)való használatának részleteit részletezi. Az Azure dedikált gazdagép további információit az [Azure dedikált gazdagép bevezetését](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)ismertető blogbejegyzésben találja. 
+Ez a cikk a SQL Server virtuális gép (VM) [Azure dedikált gazdagépen](/azure/virtual-machines/windows/dedicated-hosts)való használatának részleteit részletezi. Az Azure dedikált gazdagép további információit az [Azure dedikált gazdagép bevezetését](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)ismertető blogbejegyzésben találja. 
 
 ## <a name="overview"></a>Áttekintés
 Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyeket a Microsoft adatközpontjai használnak erőforrásként. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
@@ -34,24 +34,24 @@ Az [Azure dedikált gazdagép](/azure/virtual-machines/windows/dedicated-hosts) 
 - A virtuális gépek méretezési csoportjai jelenleg nem támogatottak a dedikált gazdagépeken.
 - A következő virtuálisgép-sorozatok támogatottak: DSv3 és ESv3. 
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
-Két különböző licencelési lehetőség közül választhat, amikor hozzáadja a SQL Server VMt egy Azure dedikált gazdagéphez. 
+Két különböző licencelési lehetőség közül választhat, ha a SQL Server VM egy Azure dedikált gazdagépen helyezi el. 
 
   - **SQL virtuális gép licencelése**: Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
   - **Dedikált gazdagép licencelése**: az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
 
 
 A meglévő SQL Server licencek használatára vonatkozó gazdagép-szintű beállítások: 
-  - SQL Server Enterprise Edition Azure Hybrid Benefit
+  - SQL Server Enterprise Edition Azure Hybrid Benefit (AHB)
     - Elérhető az SA vagy előfizetéssel rendelkező ügyfelek számára.
     - Licenc az összes rendelkezésre álló fizikai magot és korlátlan virtualizációt élvez (a gazdagép által támogatott maximális vCPU).
-        - A Azure Hybrid Benefit Azure dedikált gazdagépre való alkalmazásával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit gyakori kérdések](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)című témakört. 
+        - További információ a AHB Azure dedikált gazdagépre való alkalmazásáról: [Azure Hybrid BENEFIT GYIK](https://azure.microsoft.com/pricing/hybrid-benefit/faq/). 
   - SQL Server az október 1. előtt beszerzett licencek
       - A SQL Server Enterprise kiadásban a gazdagép-és a virtuális gépek licencelési lehetőségei is megadhatók. 
-      - A SQL Server Standard Edition rendszerhez csak a-VM licencelési lehetőség áll rendelkezésre. 
-          - Részletekért tekintse [meg a Microsoft termék használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products). 
-  - Ha nincs kiválasztva SQL Server dedikált gazdagép-szintű beállítás, akkor SQL Server AHB az egyes virtuális gépek szintjén lehet kiválasztani, ugyanúgy, mint a több-bérlős virtuális gépekhez.
+      - A SQL Server Standard Edition rendszerhez csak a virtuális gépekre vonatkozó licencelési lehetőség áll rendelkezésre. 
+          - Részletekért lásd: [Microsoft-termékek használati feltételei](https://www.microsoft.com/licensing/product-licensing/products). 
+  - Ha nincs kiválasztva SQL Server dedikált gazdagép-szintű beállítás, akkor a több-bérlős virtuális gépekhez hasonlóan a SQL Server AHB is kiválaszthatja az egyes virtuális gépek szintjén.
 
 
 
@@ -62,9 +62,9 @@ Egy meglévő SQL Server VM a dedikált gazdagéphez való hozzáadásának foly
 
 ## <a name="virtualization"></a>Virtualizáció 
 
-A dedikált gazdagépek egyik előnye, hogy korlátlan a virtualizáció. Rendelkezhet például 64 virtuális mag-licenccel, de úgy is beállíthatja a gazdagépet, hogy 128-virtuális mag rendelkezzen, így megduplázhatja a virtuális mag, de csak a SQL Server licencek feléért fizet. 
+A dedikált gazdagépek egyik előnye, hogy korlátlan a virtualizáció. Rendelkezhet például 64 virtuális mag-licenccel, de úgy is beállíthatja, hogy a gazdagép 128-virtuális mag rendelkezzen, így megduplázhatja a virtuális mag, de csak a felet kell fizetnie a SQL Server licencekhez. 
 
-Mivel ez a gazdagép, jogosult a virtualizáció 1:2 arányú beállítására. 
+Mivel mivel ez a gazdagép, jogosult a virtualizáció 1:2 arányú beállítására. 
 
 ## <a name="faq"></a>GYIK
 

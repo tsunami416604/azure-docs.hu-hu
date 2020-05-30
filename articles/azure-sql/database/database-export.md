@@ -11,18 +11,18 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27e5bee041ca6be2f179a50732f58396b317e179
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: efd5e33f5ed8ecffa84dd0e9dc356d5ec3b1f69d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045283"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188851"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database--sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Ha archiválni vagy egy másik platformra szeretne áthelyezni egy adatbázist, exportálhatja az adatbázis-sémát és az [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -fájlba. A BACPAC-fájl egy ZIP-fájl, amelynek kiterjesztése BACPAC, amely tartalmazza a metaadatokat és az adatokat az adatbázisból. A BACPAC-fájlok az Azure Blob Storage-ban vagy helyi tárolóban tárolhatók, és később importálhatók a Azure SQL Databaseba, az Azure SQL felügyelt példányaiba vagy egy SQL Server helyszíni telepítésbe.
+Ha archiválni vagy egy másik platformra szeretne áthelyezni egy adatbázist, exportálhatja az adatbázis-sémát és az [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -fájlba. A BACPAC-fájl egy ZIP-fájl, amelynek kiterjesztése BACPAC, amely tartalmazza a metaadatokat és az adatokat az adatbázisból. A BACPAC-fájlok az Azure Blob Storage-ban vagy helyi tárolóban tárolhatók, és később importálhatók Azure SQL Databaseba, az Azure SQL felügyelt példányaiba vagy egy SQL Server példányba.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 

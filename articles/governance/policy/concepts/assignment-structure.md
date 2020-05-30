@@ -3,12 +3,12 @@ title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683220"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205041"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -75,7 +75,7 @@ A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tár
 ## <a name="policy-definition-id"></a>Házirend-definíció azonosítója
 
 Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció teljes elérési útjának kell szerepelnie.
-`policyDefinitionId`karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./definition-structure.md#initiatives) használjon.
+`policyDefinitionId`karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./initiative-definition-structure.md) használjon.
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -93,7 +93,7 @@ Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíci
 }
 ```
 
-Ebben a példában a házirend-definícióban korábban definiált paraméterek a `prefix` és `suffix`a. Ez az adott szabályzat- `prefix` hozzárendelés a **depta** és `suffix` a **-LC**értékre van szabva. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
+Ebben a példában a házirend-definícióban korábban definiált paraméterek a `prefix` és a `suffix` . Ez az adott szabályzat `prefix` -hozzárendelés a **depta** és `suffix` a **-LC**értékre van szabva. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
 
 ## <a name="next-steps"></a>További lépések
 

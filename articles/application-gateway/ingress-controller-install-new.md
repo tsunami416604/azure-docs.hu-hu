@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42443cac199c4ba9a5df25e13393bb2103cb340e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585885"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205075"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése új Application Gateway használatával
 
@@ -38,7 +38,7 @@ A [Azure Cloud Shell](https://shell.azure.com/) már rendelkezik az összes szü
 
 ## <a name="create-an-identity"></a>Identitás létrehozása
 
-Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [egyszerű szolgáltatásnév-objektumot](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Jegyezze fel a `appId`, `password`, és `objectId` értékeket – ezeket az alábbi lépésekben fogjuk használni.
+Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [egyszerű szolgáltatásnév-objektumot](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Jegyezze fel a `appId` , `password` , és `objectId` értékeket – ezeket az alábbi lépésekben fogjuk használni.
 
 1. AD egyszerű szolgáltatás létrehozása ([További információ a RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
     ```azurecli
@@ -46,14 +46,14 @@ Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    A `appId` JSON `password` -kimenet és az értékek a következő lépésekben lesznek felhasználva
+    A `appId` JSON-kimenet és az `password` értékek a következő lépésekben lesznek felhasználva
 
 
-1. `appId` Az új egyszerű szolgáltatás beszerzéséhez `objectId` használja az előző parancs kimenetét:
+1. Az `appId` új egyszerű szolgáltatás beszerzéséhez használja az előző parancs kimenetét `objectId` :
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    A parancs `objectId`kimenete a következő Azure Resource Manager sablonban lesz felhasználva
+    A parancs kimenete a `objectId` következő Azure Resource Manager sablonban lesz felhasználva
 
 1. Hozza létre a paramétert, amelyet később a Azure Resource Manager sablon üzembe helyezéséhez fog használni.
     ```bash
@@ -66,7 +66,7 @@ Az alábbi lépéseket követve hozzon létre egy Azure Active Directory (HRE) [
     }
     EOF
     ```
-    **RBAC** -kompatibilis fürt üzembe helyezéséhez állítsa be `aksEnabledRBAC` a mezőt`true`
+    **RBAC** -kompatibilis fürt üzembe helyezéséhez állítsa be a `aksEnableRBAC` mezőt`true`
 
 ## <a name="deploy-components"></a>Összetevők üzembe helyezése
 Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
@@ -82,7 +82,7 @@ Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. Telepítse a Azure Resource Manager sablont a `az cli`használatával. Ez akár 5 percet is igénybe vehet.
+1. Telepítse a Azure Resource Manager sablont a használatával `az cli` . Ez akár 5 percet is igénybe vehet.
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,7 +99,7 @@ Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
             --parameters parameters.json
     ```
 
-1. Miután az üzembe helyezés befejeződött, töltse le a központi telepítési kimenetet `deployment-outputs.json`egy nevű fájlba.
+1. Miután az üzembe helyezés befejeződött, töltse le a központi telepítési kimenetet egy nevű fájlba `deployment-outputs.json` .
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
@@ -109,7 +109,7 @@ Ez a lépés a következő összetevőket adja hozzá az előfizetéséhez:
 Az előző szakaszban ismertetett utasítások alapján létrehozunk és konfiguráltunk egy új AK-fürtöt és egy Application Gateway. Most már készen áll egy minta-alkalmazás és egy bejövő vezérlő üzembe helyezésére az új Kubernetes-infrastruktúrában.
 
 ### <a name="setup-kubernetes-credentials"></a>Kubernetes hitelesítő adatainak beállítása
-A következő lépésekhez szükség van a Setup [kubectl](https://kubectl.docs.kubernetes.io/) parancsra, amelyet az új Kubernetes-fürthöz való kapcsolódáshoz fogunk használni. [Cloud Shell](https://shell.azure.com/) már `kubectl` telepítve van. A Kubernetes hitelesítő adatainak beszerzéséhez a CLI-t fogjuk használni `az` .
+A következő lépésekhez szükség van a Setup [kubectl](https://kubectl.docs.kubernetes.io/) parancsra, amelyet az új Kubernetes-fürthöz való kapcsolódáshoz fogunk használni. [Cloud Shell](https://shell.azure.com/) `kubectl` már telepítve van. A `az` Kubernetes hitelesítő adatainak beszerzéséhez a CLI-t fogjuk használni.
 
 Hitelesítő adatok beolvasása az újonnan üzembe helyezett AK-hoz ([További információ](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
 ```azurecli
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory Pod Identity jogkivonat-alapú hozzáférést biztosít [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)számára.
 
   A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) a következő összetevőket fogja hozzáadni a Kubernetes-fürthöz:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
    * [Felügyelt identitás-vezérlő (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) összetevő
    * [Csomópont által felügyelt identitás (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) összetevő
 
@@ -144,9 +144,9 @@ A HRE Pod Identity telepítése a fürtre:
      ```
 
 ### <a name="install-helm"></a>A Helm telepítése
-A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelő. A csomag telepítéséhez a `application-gateway-kubernetes-ingress` következőt fogjuk használni:
+A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csomagkezelő. A csomag telepítéséhez a következőt fogjuk használni `application-gateway-kubernetes-ingress` :
 
-1. Telepítse a [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) -t, és futtassa `application-gateway-kubernetes-ingress` a következő parancsot a Helm-csomag hozzáadásához:
+1. Telepítse a [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) -t, és futtassa a következő parancsot a Helm-csomag hozzáadásához `application-gateway-kubernetes-ingress` :
 
     - *RBAC engedélyezve* AK-fürt
 
@@ -237,7 +237,7 @@ A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csom
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Szerkessze az újonnan letöltött Helm-config. YAML, és töltse ki `appgw` a `armAuth`szakaszt és a.
+1. Szerkessze az újonnan letöltött Helm-config. YAML, és töltse ki a szakaszt `appgw` és a `armAuth` .
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -254,16 +254,16 @@ A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csom
      - `appgw.subscriptionId`: Az Azure-előfizetés azonosítója, amelyben Application Gateway található. Például: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: Az Azure-erőforráscsoport neve, amelyben a Application Gateway létre lett hozva. Például: `app-gw-resource-group`
      - `appgw.name`: A Application Gateway neve. Például: `applicationgatewayd0f0`
-     - `appgw.shared`: Ezt a logikai jelzőt alapértelmezett értékre `false`kell állítani. A `true` beállítás értékeként [megosztott Application Gatewayra](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)van szükség.
+     - `appgw.shared`: Ezt a logikai jelzőt alapértelmezett értékre kell állítani `false` . A beállítás értékeként `true` [megosztott Application Gatewayra](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)van szükség.
      - `kubernetes.watchNamespace`: Adja meg a név területet, amely AGIC kell néznie. Ez lehet egy karakterlánc-érték vagy a névterek vesszővel tagolt listája.
     - `armAuth.type`: lehet `aadPodIdentity` vagy`servicePrincipal`
     - `armAuth.identityResourceID`: Az Azure által felügyelt identitás erőforrás-azonosítója
     - `armAuth.identityClientId`: Az identitás ügyfél-azonosítója. Az identitással kapcsolatos további információkért lásd alább.
-    - `armAuth.secretJSON`: Csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusát választotta `armAuth.type` (ha be van `servicePrincipal`állítva) 
+    - `armAuth.secretJSON`: Csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusát választotta (ha `armAuth.type` be van állítva `servicePrincipal` ) 
 
 
    > [!NOTE]
-   > A `identityResourceID` ( `identityClientID` z) és az [összetevők telepítése](ingress-controller-install-new.md#deploy-components) lépések során létrehozott értékek, amelyeket a következő parancs használatával lehet megszerezni:
+   > A (z) `identityResourceID` és az `identityClientID` [összetevők telepítése](ingress-controller-install-new.md#deploy-components) lépések során létrehozott értékek, amelyeket a következő parancs használatával lehet megszerezni:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

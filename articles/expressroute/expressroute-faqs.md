@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 99549be75e812668c07d9d71062d9d0f8c7b58ec
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745760"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217531"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -118,7 +118,7 @@ Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat
 A Dynamics 365-és Common Data Service-(CDS-) környezetek az Azure-ban futnak, ezért az ügyfelek az Azure-erőforrások mögöttes ExpressRoute-támogatás előnyeit élvezik. Ha az útválasztó szűrője tartalmazza azokat az Azure-régiókat, amelyeken a Dynamics 365/CDS-környezetek futnak, csatlakozhat a szolgáltatási végpontokhoz.
 
 > [!NOTE]
-> A Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül **nem** szükséges a [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) használata.
+> Az [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) **nem** szükséges a Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül, ha az ExpressRoute-áramkör ugyanazon a [geopolitikai régión](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)belül van üzembe helyezve.
 
 ## <a name="data-and-connections"></a>Az adatkezelés és a kapcsolatok
 

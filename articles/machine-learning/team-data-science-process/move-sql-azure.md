@@ -1,6 +1,6 @@
 ---
 title: Adatáthelyezés Azure SQL Database-csoportos adatelemzési folyamatba
-description: Az adatok áthelyezhetők az egyszerű fájlokból (CSV vagy TSV formátumokból) vagy egy helyszíni SQL Server tárolt adatokból egy Azure SQL Databaseba.
+description: Az adatok az egyszerű fájlokból (CSV vagy TSV formátumokból) vagy egy SQL Server tárolt adatokból egy Azure SQL Databaseba helyezhetők át.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722458"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194395"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 
-Ez a cikk az adatok sima fájlokból (CSV vagy TSV formátumokból) vagy egy helyszíni SQL Server tárolt adatokból egy Azure SQL Database való áthelyezésének lehetőségeit ismerteti. Az adatok felhőbe való áthelyezésével kapcsolatos feladatok a csoportos adatelemzési folyamat részét képezik.
+Ez a cikk az adatok sima fájlokból (CSV vagy TSV formátumokból) vagy SQL Serverban tárolt adatokból egy Azure SQL Databaseba való áthelyezésének lehetőségeit ismerteti. Az adatok felhőbe való áthelyezésével kapcsolatos feladatok a csoportos adatelemzési folyamat részét képezik.
 
-Egy olyan témakörben, amely az adatáthelyezési lehetőségeket ismerteti egy helyszíni SQL Server Machine Learning számára, tekintse meg az [Azure-beli virtuális gépeken az adatáthelyezés SQL Serverre](move-sql-server-virtual-machine.md)című témakört.
+Egy olyan témakörben, amely az adatáthelyezési beállításokat ismerteti Machine Learning SQL Serverre, tekintse [meg az Azure-beli virtuális gépeken az adatáthelyezés SQL Serverre](move-sql-server-virtual-machine.md)című témakört.
 
 A következő táblázat összefoglalja az adatáthelyezési beállításokat egy Azure SQL Databaseba.
 
@@ -41,7 +41,7 @@ Az itt leírt eljárásokhoz a következők szükségesek:
 
 **Adat**: az áttelepítési folyamatokat a [New York-i taxi adatkészlet](https://chriswhong.com/open-data/foil_nyc_taxi/)mutatja be. A New York-i taxi adatkészlet az utazási adatokról és a vásárokról tartalmaz információkat, és az Azure Blob Storage-ban érhető el: a [NYC-taxi adatai](https://www.andresmh.com/nyctaxitrips/). Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
 
-Az itt ismertetett eljárásokat a saját adataihoz igazíthatja, vagy a New York-i taxi adatkészletének használatával követheti a leírt lépéseket. A New York-i taxi-adatkészlet helyszíni SQL Server adatbázisba való feltöltéséhez kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban leírt eljárást. Ezek az utasítások az Azure-beli virtuális gépek SQL Serverére vonatkoznak, de a helyszíni SQL Server való feltöltésének eljárása azonos.
+Az itt ismertetett eljárásokat a saját adataihoz igazíthatja, vagy a New York-i taxi adatkészletének használatával követheti a leírt lépéseket. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
 ## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Adatok áthelyezése egy egyszerű fájlból a Azure SQL Databaseba
 Az egyszerű fájlokban (CSV vagy TSV formátumú) tárolt adat áthelyezhető egy Azure SQL Databaseba egy tömeges INSERT SQL-lekérdezés használatával.
@@ -49,8 +49,8 @@ Az egyszerű fájlokban (CSV vagy TSV formátumú) tárolt adat áthelyezhető e
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL-lekérdezés tömeges beszúrása
 A tömeges beszúrási SQL-lekérdezést használó eljárás lépései hasonlóak az Azure-beli virtuális gépeken SQL Server az adatok egy sima fájlból való áthelyezéséhez. További részletek: [SQL-lekérdezés tömeges beszúrása](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Adatok áthelyezése a helyszíni SQL Serverból egy Azure SQL Databaseba
-Ha a forrásadatok tárolása helyszíni SQL Server történik, számos lehetőség áll rendelkezésre az adatAzure SQL Databaseba való áthelyezésre:
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Adatok áthelyezése SQL Serverból egy Azure SQL Databaseba
+Ha a forrásadatok tárolása SQL Server történik, számos lehetőség áll rendelkezésre az adatAzure SQL Databaseba való áthelyezésre:
 
 1. [Exportálás az egyszerű fájlba](#export-flat-file)
 2. [SQL Database áttelepítési varázsló](#insert-tables-bcp)
@@ -69,6 +69,6 @@ Az SQL Database áttelepítési varázsló használatának lépései hasonlóak 
 Az adatbázis biztonsági mentésének és visszaállításának használatának lépései hasonlóak az [adatbázis biztonsági mentése és visszaállítása](move-sql-server-virtual-machine.md#sql-backup)során felsorolt utasításokhoz.
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Megtudhatja, hogyan helyezhet át adatáthelyezést egy Azure Data Factory (ADF) Azure SQL Databaseba a témakörben, hogyan [helyezhet át egy helyszíni SQL Server-kiszolgálóról a Azure Data Factory-be SQL Azure](move-sql-azure-adf.md). Ez a témakör azt mutatja be, hogyan lehet az ADF használatával áthelyezni az adatok egy helyszíni SQL Server-adatbázisból egy Azure SQL Databaseba az Azure Blob Storage használatával.
+Megtudhatja, hogyan helyezhet át adatátvitelt egy Azure Data Factory (ADF) Azure SQL Databaseba a jelen témakörben, hogyan [helyezhet át egy SQL Serverból az adatok SQL Azure Azure Data Factory használatával](move-sql-azure-adf.md). Ez a témakör azt mutatja be, hogyan lehet az ADF használatával áthelyezni az adatok egy SQL Server adatbázisból egy Azure SQL Databaseba az Azure Blob Storage használatával.
 
 Akkor érdemes az ADF használatát használni, ha a helyszíni és a Felhőbeli forrásokból folyamatosan át kell telepíteni az adatátvitelt.  Az ADF abban az esetben is segít az adatátalakításban, vagy új üzleti logikát igényel az áttelepítés során. Az ADF lehetővé teszi a feladatok ütemezését és figyelését olyan egyszerű JSON-parancsfájlokkal, amelyek rendszeres időközönként kezelik az adatok áthelyezését. Az ADF más képességekkel is rendelkezik, mint például az összetett műveletek támogatása.

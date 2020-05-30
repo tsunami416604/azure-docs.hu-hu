@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681440"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220197"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Megtudhatja, hogyan futtathat Jupyter-jegyzetfüzeteket közvetlenül a munkaterületen a Azure Machine Learning Studióban. A [Jupyter](https://jupyter.org/) vagy a [JupyterLab](https://jupyterlab.readthedocs.io)elindításához lehetősége van a jegyzetfüzetek szerkesztésére és futtatására is a munkaterület elhagyása nélkül.
@@ -101,7 +101,7 @@ A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja. 
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
-|Billentyűzet  |Művelet  |
+|Billentyűzet  |Műveletek  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
 |CTRL + M (Windows)     |  A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.       |
@@ -140,14 +140,14 @@ A notebook eszköztár lehetővé teszi, hogy megváltoztassa a környezetet, am
 
 Ezek a műveletek nem változtatják meg a jegyzetfüzet állapotát vagy a jegyzetfüzetben lévő változók értékeit:
 
-|Művelet  |Eredmény  |
+|Műveletek  |Eredmény  |
 |---------|---------| --------|
 |A kernel leállítása     |  Leállítja a futó cellákat. A cella futtatása automatikusan újraindítja a rendszermagot. |
 |Navigáljon egy másik munkaterület szakaszhoz     |     A futó cellák le vannak állítva. |
 
 Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a jegyzetfüzetben lévő összes változót visszaállítják.
 
-|Művelet  |Eredmény  |
+|Műveletek  |Eredmény  |
 |---------|---------| --------|
 | A kernel módosítása | A jegyzetfüzet új kernelt használ |
 | Számítás váltása    |     A jegyzetfüzet automatikusan az új számítást használja. |

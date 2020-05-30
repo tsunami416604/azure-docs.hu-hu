@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67179515"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200432"
 ---
 ---
 | Korlátazonosító | Korlát | Megjegyzések |
@@ -16,4 +16,5 @@ ms.locfileid: "67179515"
 | Folyamatos átviteli egységek maximális száma |192 |Stream Analytics feladatokban rögzített számú folyamatos átviteli egység (192). |
 | A feladatok maximális száma régiónként |1500 |Minden előfizetés legfeljebb 1 500 feladatot tartalmazhat földrajzi régiónként. |
 | Referenciaadatok Blob MB-ban megadott mérete | 300 | A hivatkozási adatblobok nem lehetnek 300 MB-nál nagyobb méretűek. |
+| A lekérdezésben szereplő karakterek maximális száma | 512000 | A Azure Stream Analytics-feladatok lekérdezésében rögzített 512k-karakterek száma korlátozott.|
 

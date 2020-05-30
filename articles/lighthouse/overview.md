@@ -1,18 +1,18 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 05/05/2020
+ms.date: 05/28/2020
 ms.topic: overview
-ms.openlocfilehash: bc54a6f67ed3d0ac194793baba4270d524edf5b1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 27f99cb398294d570b2d91131fcf40dd0648e981
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857131"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219053"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
-Az Azure Lighthouse egyetlen vezérlőt kínál a szolgáltatók számára az Azure megtekintésére és kezelésére az összes ügyfeleik számára, magasabb szintű automatizálással, méretezéssel és fokozott irányítással. Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Ez az ajánlat olyan vállalati IT-szervezeteket is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat. 
+Az Azure Lighthouse egyetlen vezérlőt kínál a szolgáltatók számára az Azure megtekintésére és kezelésére az összes ügyfeleik számára, magasabb szintű automatizálással, méretezéssel és fokozott irányítással. Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Ez az ajánlat olyan vállalati IT-szervezeteket is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat.
 
 ![Az Azure Lighthouse áttekintési ábrája](media/azure-lighthouse-overview.jpg)
 
@@ -20,13 +20,13 @@ Az Azure Lighthouse egyetlen vezérlőt kínál a szolgáltatók számára az Az
 
 Az Azure Lighthouse segítségével nyereségesen és hatékonyan hozhat létre és kezelhet felügyelt szolgáltatásokat ügyfelei számára. Ez a következő előnyöket nyújtja:
 
-- Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető. A meglévő API-k, felügyeleti eszközök és munkafolyamatok a delegált ügyfelek erőforrásaival is használhatók.
+- Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető. A meglévő API-k, felügyeleti eszközök és munkafolyamatok a delegált ügyfelek erőforrásaival is használhatók, függetlenül attól, hogy mely régiókban találhatók.
 - **Nagyobb láthatóság és pontosság az ügyfelek számára**: az ügyfelek jobban megtekinthetik a műveleteiket, és pontosan szabályozzák a felügyeletre delegált hatókört, beleértve a hozzáférés teljes eltávolításának lehetőségét is, az IP-cím megőrzése mellett.
 - **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](https://docs.microsoft.com/partner-center/csp-overview)működnek. Az Azure Lighthouse integrálható a meglévő munkafolyamataiba és alkalmazásaiba, és nyomon követheti az ügyfelek bevonásával kapcsolatos hatásokat a [partner azonosítójának összekapcsolásával](../billing/billing-partner-admin-link-started.md).
 
 Az Azure Lighthouse használata nem jár további költségekkel az ügyfelek Azure-erőforrásainak kezeléséhez. Bármely Azure-ügyfél vagy-partner használhatja az Azure Lighthouse-t.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az Azure Lighthouse több módszert is kínál az ügyfelek részvételének és felügyeletének megkönnyítésére:
 

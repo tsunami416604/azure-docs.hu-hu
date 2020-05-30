@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: ab104463ad0bd3db88af47176d541dd4074037d7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048440"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195095"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database rugalmas lekérdezés áttekintése (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ A rugalmas lekérdezés funkció (előzetes verzió) lehetővé teszi, hogy olya
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-Az adatbázisokban való lekérdezés Azure SQL Database teljes egészében T-SQL-ben. Ez lehetővé teszi a távoli adatbázisok írásvédett lekérdezését, és lehetőséget nyújt a jelenlegi helyszíni SQL Server ügyfelek számára az alkalmazások áttelepítésére három és négy részből álló névvel vagy csatolt kiszolgáló használatával SQL Database.
+Az adatbázisokban való lekérdezés Azure SQL Database teljes egészében T-SQL-ben. Ez lehetővé teszi a távoli adatbázisok írásvédett lekérdezését, és lehetőséget biztosít a jelenlegi SQL Server ügyfelek számára, hogy az alkalmazásokat három és négy részből álló névvel vagy csatolt kiszolgálóval áttelepítse SQL Databasere.
 
 ### <a name="available-on-standard-tier"></a>Elérhető a standard szinten
 
@@ -146,7 +146,7 @@ A rugalmas lekérdezés a Azure SQL Database díja részét képezi. Vegye figye
 * A nvarchar (max) kivételével a LOB-típusok (beleértve a térbeli típusokat is) nem támogatottak a külső táblák definíciójában. Megkerülő megoldásként létrehozhat egy nézetet a távoli adatbázison, amely a LOB-típust a nvarchar (max), az alaptábla helyett a nézetben definiálja a külső táblát, majd visszahelyezi azt az eredeti LOB-típusba a lekérdezésekben.
 * Az eredményhalmaz nvarchar (max) adattípusának oszlopai letiltják a rugalmas lekérdezési implementációban használt speciális kötegelt feldolgozást, és befolyásolhatják a lekérdezés teljesítményét a nem kanonikus használati esetekben, ha nagy mennyiségű nem aggregált adat kerül át a lekérdezés eredményeképpen.
 * A külső táblákon lévő oszlopok statisztikái jelenleg nem támogatottak. A tábla statisztikái támogatottak, de manuálisan kell létrehozni.
-* A rugalmas lekérdezés csak Azure SQL Databaseekkel működik. Nem használhatja a helyszíni SQL Server lekérdezésére, vagy egy virtuális gépen SQL Server.
+* A rugalmas lekérdezés csak Azure SQL Databaseekkel működik. SQL Server példány lekérdezéséhez nem használható.
 
 ## <a name="feedback"></a>Visszajelzés
 

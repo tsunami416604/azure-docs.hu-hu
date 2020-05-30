@@ -1,14 +1,14 @@
 ---
 title: Az Azure által delegált erőforrás-kezelés
 description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat adjanak az ügyfeleknek az Azure piactéren.
-ms.date: 04/01/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548424"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219067"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
@@ -40,7 +40,7 @@ Magas szinten a következőképpen működik az Azure-beli delegált erőforrás
 3. Az ügyfél bevezetését követően a jogosult felhasználók bejelentkezhetnek a szolgáltatói bérlőbe, és a megadott hozzáférés alapján elvégezhetik a felügyeleti feladatokat az adott ügyfél hatókörében.
 
 > [!NOTE]
-> A két bérlő közötti előfizetés delegálása külön felhők között nem támogatott.
+> A különböző [régiókban](../../availability-zones/az-overview.md#regions)található delegált erőforrásokat is kezelheti. Azonban az előfizetések delegálása egy [nemzeti felhőben](../../active-directory/develop/authentication-national-cloud.md) és az Azure nyilvános felhőben, vagy két külön nemzeti felhők között nem támogatott.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure-beli delegált erőforrás-kezelés támogatása
 

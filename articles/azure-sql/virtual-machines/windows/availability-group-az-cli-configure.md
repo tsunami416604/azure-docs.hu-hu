@@ -1,5 +1,5 @@
 ---
-title: Rendelkezésre állási csoport konfigurálása (Azure CLI)
+title: Rendelkezésre állási csoport konfigurálása az Azure CLI használatával
 description: Az Azure CLI használatával hozza létre a Windows feladatátvevő fürtöt, a rendelkezésre állási csoport figyelőjét és a belső Load balancert egy Azure-beli SQL Server VMon.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a48095343fd24071a20d789704b8146be79d02c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041979"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219626"
 ---
-# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Az Azure parancssori felületének használata az Always On rendelkezésre állási csoport konfigurálásához SQL Server Azure-beli virtuális gépen
+# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>Az Azure CLI használata az Azure-beli virtuális gépeken SQL Server always on rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan használható az [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) egy Windows feladatátvevő fürt üzembe helyezéséhez, SQL Server virtuális gépek hozzáadásához a fürthöz, és a belső terheléselosztó és figyelő létrehozása egy always on rendelkezésre állási csoport számára. Az Always On rendelkezésre állási csoport üzembe helyezése manuálisan, SQL Server Management Studio (SSMS) keresztül történik. 
@@ -38,7 +38,7 @@ Az Always On rendelkezésre állási csoport Azure CLI használatával történ�
 Az Always On rendelkezésre állási csoport az Azure CLI használatával történő konfigurálásához a következő fiókra van szükség: 
 
 - Egy meglévő tartományi felhasználói fiók, amely **számítógép-objektum létrehozása** engedéllyel rendelkezik a tartományban. Például egy tartományi rendszergazdai fióknak jellemzően megfelelő engedélye van (például: account@domain.com ). _Ennek a fióknak a helyi rendszergazda csoportnak is szerepelnie kell az egyes virtuális gépeken a fürt létrehozásához._
-- A SQL Server szolgáltatást vezérlő tartományi felhasználói fiók. 
+- A SQL Server vezérlő tartományi felhasználói fiók. 
  
 ## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>1. lépés: Storage-fiók létrehozása Felhőbeli tanúsító
 A fürtnek olyan Storage-fiókra van szüksége, amely tanúsítja a felhőt. Bármilyen meglévő Storage-fiókot használhat, vagy létrehozhat egy új Storage-fiókot is. Ha meglévő Storage-fiókot szeretne használni, ugorjon a következő szakaszra. 

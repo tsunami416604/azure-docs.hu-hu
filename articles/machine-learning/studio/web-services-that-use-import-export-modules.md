@@ -11,18 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: aa8500e0e301de5f015d074646bf4da82e4de0a1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118410"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192562"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
 
 Prediktív kísérlet létrehozásakor általában egy webszolgáltatás bemenetét és kimenetét kell hozzáadnia. A kísérlet telepítésekor a felhasználók adatokat küldhetnek és fogadhatnak a webszolgáltatástól a bemeneteken és kimeneteken keresztül. Egyes alkalmazások esetében előfordulhat, hogy a fogyasztó adatait adatcsatornán keresztül vagy egy külső adatforrásban, például az Azure Blob Storage-ban tárolja. Ezekben az esetekben nem szükséges az adatok olvasása és írása a webszolgáltatás-bemenetek és-kimenetek használatával. Ehelyett a Batch-végrehajtási szolgáltatás (BES) használatával olvashatnak az adatforrásból az adatok importálásával, és a pontozási eredményeket egy másik adatterületre írhatja az exportálási adatok modul használatával.
 
-Az adatok importálása és az adatexportálási modulok a különböző adatterületek, például webes URL-cím HTTP-n keresztül, egy struktúra-lekérdezés, egy Azure SQL Database-adatbázis, az Azure Table Storage, az Azure Blob Storage, az adatcsatorna vagy egy helyszíni SQL-adatbázis használatával olvashatók és írhatók.
+Az adatok importálása és az adatexportálási modulok a különböző adatterületeket, például webes URL-címet HTTP-n keresztül, egy struktúra-lekérdezéssel, egy Azure SQL Database-adatbázis, az Azure Table Storage, az Azure Blob Storage, az adatcsatorna vagy egy SQL Server adatbázis használatával olvashatnak és írhatnak.
 
 Ebben a témakörben az "5. példa: Train, test, reértékelés a bináris besorolás: felnőtt adatkészlet" mintát használja, és azt feltételezi, hogy az adatkészlet már be van töltve egy censusdata nevű Azure SQL-táblába.
 

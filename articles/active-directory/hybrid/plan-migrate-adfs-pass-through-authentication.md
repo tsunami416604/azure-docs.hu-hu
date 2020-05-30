@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528642"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219035"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -25,6 +25,9 @@ Ez a cikk azt ismerteti, hogyan helyezheti át szervezeti tartományait Active D
 
 > [!NOTE]
 > A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. Az [előkészített](how-to-connect-staged-rollout.md) bevezetéssel az áteresztő hitelesítéssel alternatív módszerekkel lehet tesztelni és fokozatosan áttérni az összevonás és a felhő közötti hitelesítésre.
+> 
+> Ha lépcsőzetes bevezetést használ, ne feledje, hogy kikapcsolja a szakaszos bevezetési funkciókat, miután befejezte a kivágást.  További információ: [Migrálás felhőalapú hitelesítésre szakaszos bevezetés használatával](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Az átmenő hitelesítésre való Migrálás előfeltételei
 
@@ -49,7 +52,7 @@ A legtöbb ügyfél esetében két vagy három hitelesítési ügynök elegendő
 
 Két módszer közül választhat, amelyek áttelepíthetők az összevont identitások kezeléséről az átmenő hitelesítésre és a zökkenőmentes egyszeri bejelentkezésre (SSO). Az Ön által használt módszer attól függ, hogy a AD FS-példányt eredetileg konfigurálták-e.
 
-* **Azure ad Connect**. Ha eredetileg Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázslóval át *kell* váltania az átmenő hitelesítésre.
+* **Azure AD Connect**. Ha eredetileg Azure AD Connect használatával konfigurálta a AD FSt, akkor a Azure AD Connect varázslóval át *kell* váltania az átmenő hitelesítésre.
 
    A Azure AD Connect automatikusan futtatja a **set-MsolDomainAuthentication** parancsmagot a felhasználói bejelentkezési módszer módosításakor. Azure AD Connect automatikusan unfederates az összes ellenőrzött összevont tartományt az Azure AD-bérlőben.
 
@@ -223,7 +226,7 @@ Megtervezte a megoldást. Most már elvégezheti a megvalósítást. A megvalós
 
 Ahhoz, hogy az eszközök zökkenőmentes egyszeri bejelentkezést használjanak, hozzá kell adnia egy Azure AD-URL-címet a felhasználók intranetes zónájának beállításaihoz egy Active Directory csoportházirend használatával.
 
-Alapértelmezés szerint a böngészők automatikusan kiszámítják a megfelelő zónát (Internet vagy intranet) egy URL-címről. Például **http\/\/: contoso/** maps to the intranet zóna és **\/\/http: intranet.contoso.com** maps to the Internet Zone (mivel az URL-cím egy pontot tartalmaz). A böngészők Kerberos-jegyeket küldenek egy Felhőbeli végpontra (például az Azure AD URL-címére), ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
+Alapértelmezés szerint a böngészők automatikusan kiszámítják a megfelelő zónát (Internet vagy intranet) egy URL-címről. Például **http: \/ \/ contoso/** maps to the intranet zóna és **http: \/ \/ intranet.contoso.com** maps to the Internet Zone (mivel az URL-cím egy pontot tartalmaz). A böngészők Kerberos-jegyeket küldenek egy Felhőbeli végpontra (például az Azure AD URL-címére), ha explicit módon hozzáadja az URL-címet a böngésző intranetes zónájához.
 
 Végezze [el az](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) eszközök szükséges módosításainak lépéseit.
 
@@ -269,7 +272,7 @@ Először módosítsa a bejelentkezési módszert:
 
 Tovább gombra. További hitelesítési módszerek üzembe helyezése:
 
-1. A Azure Portal lépjen a **Azure Active Directory** > **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
+1. A Azure Portal lépjen a **Azure Active Directory**  >  **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
 2. Az **átmenő hitelesítés** lapon kattintson a **Letöltés** gombra.
 3. Az **ügynök letöltése** lapon válassza a **feltételek elfogadása és a letöltés**lehetőséget.
 
@@ -331,7 +334,7 @@ Először engedélyezze az átmenő hitelesítést:
 
 Következő lépésként telepítsen további hitelesítési ügynököket:
 
-1. A Azure Portal lépjen a **Azure Active Directory** > **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
+1. A Azure Portal lépjen a **Azure Active Directory**  >  **Azure ad Connect**elemre, majd válassza az **átmenő hitelesítés**lehetőséget.
 2. Az **átmenő hitelesítés** lapon kattintson a **Letöltés** gombra. 
 3. Az **ügynök letöltése** lapon válassza a **feltételek elfogadása és a letöltés**lehetőséget.
  
@@ -359,7 +362,7 @@ Fejezze be az átalakítást az Azure AD PowerShell-modul használatával:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Az Azure ad-portálon válassza a **Azure Active Directory** > **Azure ad Connect**lehetőséget.
+3. Az Azure ad-portálon válassza a **Azure Active Directory**  >  **Azure ad Connect**lehetőséget.
 4. Az összes összevont tartomány konvertálása után ellenőrizze ezeket a beállításokat:
    * Az **összevonás** **Letiltva**értékre van állítva.
    * A **zökkenőmentes egyszeri bejelentkezés** **engedélyezve**értékre van állítva.
@@ -378,7 +381,7 @@ Ha a bérlő összevont identitást használt, a rendszer átirányítja a felha
 Az átmenő hitelesítés tesztelése:
 
 1. Nyissa meg az Internet Explorert InPrivate módban, hogy a zökkenőmentes SSO ne jelentkezzen be automatikusan.
-2. Nyissa meg az Office 365 bejelentkezési oldalát ([https://portal.office.com](https://portal.office.com/)).
+2. Nyissa meg az Office 365 bejelentkezési oldalát ( [https://portal.office.com](https://portal.office.com/) ).
 3. Adjon meg egy felhasználói UPN-t, majd kattintson a **tovább**gombra. Győződjön meg arról, hogy megadta a helyszíni Active Directory-példányról szinkronizált hibrid felhasználó egyszerű felhasználónevét, és korábban összevont hitelesítést használt. Ekkor megjelenik a Felhasználónév és a jelszó megadására szolgáló lap:
 
    ![Képernyőkép, amely megjeleníti a bejelentkezési oldalt, amelyben beírja a felhasználónevet](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
@@ -396,8 +399,8 @@ A zökkenőmentes egyszeri bejelentkezés tesztelése:
 1. Jelentkezzen be egy olyan tartományhoz csatlakoztatott gépre, amely a vállalati hálózathoz csatlakozik.
 2. Az Internet Explorerben vagy a Chrome-ban nyissa meg a következő URL-címek egyikét (a "contoso" kifejezést cserélje le a tartományra):
 
-   * https:\/\/MyApps.microsoft.com/contoso.com
-   * https:\/\/MyApps.microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ MyApps.microsoft.com/contoso.com
+   * https: \/ \/ MyApps.microsoft.com/contoso.onmicrosoft.com
 
    A rendszer röviden átirányítja a felhasználót az Azure AD bejelentkezési oldalára, amely megjeleníti a "kísérlet a bejelentkezésre" üzenetet. A felhasználó nem kér felhasználónevet vagy jelszót.<br />
 

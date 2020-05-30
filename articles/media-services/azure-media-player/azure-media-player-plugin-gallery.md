@@ -6,24 +6,24 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4ca74e9c10175f2c34133886e1c8a06782b588c2
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: ba8f60ea10a8b0b85bc030b23dfa71cf3cb264ff
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148225"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195645"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
 
 ## <a name="plugins"></a>Beépülő modulok ##
 
-| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Description    |
+| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Leírás    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | További funkciók                 | | | |
 | **Új!** AMP360Video                | [Bemutató](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | A beépülő modul lehetővé teszi a 360 videó megjelenítését az amp vagy az asztalon vagy a VR-kompatibilis eszközökön. A teljes dokumentáció [itt](https://doc\.babylonjs\.com/extensions/amp360video)érhető el: |
 |  Sprite tipp                         | [Bemutató](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) beépülő modul a videó miniatűr képének megjelenítéséhez, amely Azure Media Services (AMS) Media Encoder Standard (MES) alapján jön létre. |
 | Diagnosztika átfedésben                 | [Bemutató](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Ez a beépülő modul a következőt jeleníti meg: az összes kulcsfontosságú paraméter, a videó statisztikái, a videolejátszás életciklusának összes eseménye, valamint a DRM-védelemmel kapcsolatos információk, például a Key ID, a licenc-megszerzési URL-címek,                                                                                                                                                                      |
-| Frame rate és időkód kalkulátor | [Bemutató](http://mconvertitest001.blob.core.windows.net/public/example.html)                        | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Ez a beépülő modul kiszámítja a videó képkocka arányát az `tfhd` / `trun` első MPEG-Dash videó töredékének MP4-mezői alapján, elemezi az időméretezési értéket az MPEG-Dash ügyfél-jegyzékfájlból, valamint lehetővé teszi az időkód létrehozását egy adott abszolút időtartamra a lejátszótól (valamint a játékosnak az időkód által megadott abszolút időt is biztosít) |
+| Frame rate és időkód kalkulátor | Nincs elérhető bemutató | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Ez a beépülő modul kiszámítja a videó képkocka arányát az `tfhd` / `trun` első MPEG-Dash videó töredékének MP4-mezői alapján, elemezi az időméretezési értéket az MPEG-Dash ügyfél-jegyzékfájlból, valamint lehetővé teszi az időkód létrehozását egy adott abszolút időtartamra a lejátszótól (valamint a játékosnak az időkód által megadott abszolút időt is biztosít) |
 | <strike>Lejátszás sebessége</strike>                      | [Bemutató](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Ez a beépülő modul lehetővé teszi a nézők számára a videó sebességének szabályozását. *Vegye figyelembe, hogy ez a funkció automatikusan elérhető az AMP v 2.0.0 + verzióban, de alapértelmezés szerint le van tiltva.* Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a mintákat [itt](https://github.com/Azure-Samples/azure-media-player-samples) |
 | Egérmutató időbeli hegye                      | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Időpontot jelenít meg a folyamatjelző sáv fölé az egérmutatón az idő pontos keresésekor. *Megjegyzés: Ez a beépülő modul már integrálva van az amp-be* , de ha szeretné megismerni, hogy milyen módon van programozva, nyugodtan tekintse meg.                                                                                                                       |
 | Cím átfedésben                       | [Bemutató](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | Átfedésben lévő videó címe a képernyőn |
@@ -40,6 +40,6 @@ ms.locfileid: "84148225"
 | Közösségi tartalom                              | | | |
 | Megosztás                               | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Ez a beépülő modul egy megosztás gombot ad hozzá a lejátszó vezérlőelem sávjához, így a nézők megoszthatják a barátaikat a Facebook, a Twitter vagy a LinkedIn használatával. |
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

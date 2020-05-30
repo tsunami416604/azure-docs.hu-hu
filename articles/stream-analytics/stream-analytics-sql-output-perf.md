@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e0fcbec2e502088024805ebc1f02007c09a12c9d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018786"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192504"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
 
-Ez a cikk azokat a tippeket ismerteti, amelyekkel jobb írási teljesítmény érhető el, ha az adatok betöltését SQL Azure adatbázisba Azure Stream Analytics használatával végezheti el.
+Ez a cikk azokat a tippeket ismerteti, amelyekkel jobb írási teljesítményt érhet el, ha az adatok betöltését Azure SQL Database Azure Stream Analytics használatával végzi.
 
-A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, lehetőségként. Ez a beállítás lehetővé teszi a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) feladatok topológiáit, amelyekben egyszerre több kimeneti partíció is írásra kerül a célhely táblába. A beállítás engedélyezése Azure Stream Analytics azonban nem elegendő a magasabb átviteli sebességek eléréséhez, mivel ez jelentős mértékben függ a SQL Azure adatbázis-konfigurációtól és a tábla sémájától. Az indexek, a fürtözési kulcs, az indexek kitöltési tényezője és a tömörítés megválasztása hatással van a táblázatok betöltésének idejére. A SQL Azure-adatbázis optimalizálásával kapcsolatos további információkért tekintse meg az [SQL Database teljesítményének útmutatója](../azure-sql/database/performance-guidance.md)című témakört a lekérdezés és a teljesítmény javítása érdekében. Az írási sorrend nem garantált a SQL Azure adatbázissal párhuzamos íráskor.
+A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, lehetőségként. Ez a beállítás lehetővé teszi a [teljes párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) feladatok topológiáit, amelyekben egyszerre több kimeneti partíció is írásra kerül a célhely táblába. A beállítás engedélyezése Azure Stream Analytics azonban nem lehet elegendő a nagyobb átviteli sebesség eléréséhez, mivel az adatbázis-konfiguráció és a tábla sémája jelentősen függ. Az indexek, a fürtözési kulcs, az indexek kitöltési tényezője és a tömörítés megválasztása hatással van a táblázatok betöltésének idejére. További információ arról, hogyan optimalizálhatja az adatbázist a lekérdezés és a teljesítmény növeléséhez a belső referenciaértékek alapján: az [SQL Database teljesítményének útmutatója](../azure-sql/database/performance-guidance.md). Az írási sorrend nem garantált, ha párhuzamosan SQL Database.
 
 Íme néhány konfiguráció az egyes szolgáltatásokon belül, amelyek segíthetnek a megoldás általános teljesítményének javításában.
 

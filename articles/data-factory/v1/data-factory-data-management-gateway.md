@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021568"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188312"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "84021568"
 
 Az adatkezelési átjáró egy olyan ügyfél-ügynök, amelyet a helyszíni környezetbe kell telepítenie a Felhőbeli és a helyszíni adattárak közötti adatmásoláshoz. A Data Factory által támogatott helyszíni adattárak listája a [támogatott adatforrások](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szakaszban található.
 
-Ez a cikk az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között című cikk lépéseit](data-factory-move-data-between-onprem-and-cloud.md) egészíti ki. Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez. Ez a cikk részletes információkat tartalmaz az adatkezelési átjáróról.
+Ez a cikk az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között című cikk lépéseit](data-factory-move-data-between-onprem-and-cloud.md) egészíti ki. Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok SQL Server adatbázisból egy Azure-blobba való áthelyezéséhez. Ez a cikk részletes információkat tartalmaz az adatkezelési átjáróról.
 
 Egy adatkezelési átjárót úgy méretezheti fel, hogy több helyszíni gépet társít az átjáróhoz. Az adatáthelyezési feladatok növekvő száma növelhető, amely egyidejűleg futhat egy csomóponton. Ez a funkció egyetlen csomóponttal rendelkező logikai átjáró esetén is elérhető. Részletekért lásd: az [adatkezelési átjáró skálázása Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) cikkben.
 
@@ -103,7 +103,7 @@ Az adatkezelési átjárót a következő módokon lehet telepíteni:
 10. A számítógépen futó **adatkezelés gateway Configuration Manager** átjárójának **regisztrálása** lapon végezze el a következő lépéseket:
     1. Illessze be a kulcsot a szövegbe.
     2. Ha szeretné megtekinteni a kulcs szövegét, kattintson az **átjáró kulcsának megjelenítése** lehetőségre.
-    3. Kattintson a **regisztrálás**gombra.
+    3. Kattintson a **Regisztrálás** parancsra.
 
 ### <a name="register-gateway-using-key"></a>Átjáró regisztrálása kulcs használatával
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Ha még nem hozott létre logikai átjárót a portálon
@@ -164,7 +164,7 @@ Ha például egy helyszíni **adattárból egy Azure SQL Database fogadóba vagy
 * Konfigurálja a logikai SQL Server tűzfalbeállítások beállítását, és adja hozzá az átjáró-számítógép IP-címét az engedélyezett IP-címek listájához.
 
 > [!NOTE]
-> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolás](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) használatával SQL Azure adatbázis/SQL Azure DW. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
+> Ha a tűzfal nem engedélyezi a 1433-es kimenő portot, az átjáró nem fér hozzá közvetlenül az Azure SQL-hez. Ebben az esetben a [szakaszos másolással](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) SQL Database/SQL felügyelt példány/SQL Azure DW-t használhat. Ebben az esetben csak HTTPS (443-es port) szükséges az adatáthelyezéshez.
 >
 >
 
@@ -364,7 +364,7 @@ Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlo
 
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
-Name | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
+Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
 Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
 Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.
@@ -543,4 +543,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez.
+* Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok SQL Server adatbázisból egy Azure-blobba való áthelyezéséhez.

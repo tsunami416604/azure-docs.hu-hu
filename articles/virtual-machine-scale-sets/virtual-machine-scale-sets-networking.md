@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 07/17/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125196"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221296"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -51,6 +51,8 @@ A virtuálisgép-méretezési csoportok és a terheléselosztó használatakor a
   * Minden virtuálisgép-méretezési csoportnak rendelkeznie kell egy bejövő NAT-szabállyal.
   * A méretezési csoport létrehozása után a háttér-port nem módosítható a terheléselosztó állapot-mintavételi eljárása által használt terheléselosztási szabályhoz. A port módosításához távolítsa el az állapot-mintavételt az Azure virtuálisgép-méretezési csoport frissítésével, frissítse a portot, majd konfigurálja újra az állapotot.
   * Ha a terheléselosztó backend-készletében a virtuálisgép-méretezési csoport van használatban, az alapértelmezett bejövő NAT-szabályok automatikusan jönnek létre.
+* **Bejövő NAT-készlet**:
+  * A bejövő NAT-készlet a bejövő NAT-szabályok gyűjteménye. 1 a bejövő NAT-készlet nem támogatja több VM Scale Sets használatát.
 * **Terheléselosztási szabályok**:
   * A terheléselosztó backend-készletében lévő virtuálisgép-méretezési csoport használatakor az alapértelmezett terheléselosztási szabály automatikusan létrejön.
 * **Kimenő szabályok**:

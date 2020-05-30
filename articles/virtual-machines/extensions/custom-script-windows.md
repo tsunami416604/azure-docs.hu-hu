@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478145"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220960"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -30,7 +30,17 @@ Ez a dokumentum részletesen ismerteti, hogyan használhatók az egyéni szkript
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Windowshoz készült egyéni parancsfájl-bővítmény a bővítmény által támogatott bővítmény OSs-t futtatja, további információ: ez az [Azure-bővítmény által támogatott operációs rendszerek](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
+A Windowshoz készült egyéni parancsfájl-bővítmény az OSs támogatott bővítményét fogja futtatni;
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>Parancsfájl helye
 
@@ -112,9 +122,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 | Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
+| apiVersion | 2015-06-15 | date |
 | közzétevő | Microsoft.Compute | sztring |
-| type | CustomScriptExtension | sztring |
+| típus | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.10 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
@@ -131,7 +141,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 * `commandToExecute`: (**kötelező**, karakterlánc) a belépési pont parancsfájlját végre kell hajtani. Akkor használja ezt a mezőt, ha a parancs titkos kódokat (például jelszavakat) tartalmaz, vagy ha a fileUris bizalmasak.
 * `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
 * `timestamp`(opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újrafuttatásának indítására használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
-* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, `fileUris` az összes URL-címet az Azure-Blobok számára kell megadni.
+* `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris` URL-címet az Azure-Blobok számára kell megadni.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
 * `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
   * `clientId`: (nem kötelező, karakterlánc) a felügyelt identitás ügyfél-azonosítója
@@ -167,7 +177,7 @@ Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtu
 
 Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
 
-> Példák:
+> Angol nyelvű Példák:
 >
 > ```json
 > {
@@ -211,7 +221,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Több parancsfájl használata
 
-Ebben a példában három parancsfájlt használ a kiszolgáló létrehozásához. A **commandToExecute** meghívja az első parancsfájlt, majd a mások meghívásának lehetőségeit. Rendelkezhet például egy olyan főparancsfájllal, amely a megfelelő hibák kezelésével, naplózásával és állapotának kezelésével vezérli a végrehajtást. A parancsfájlok a helyi gépre lesznek letöltve a futtatáshoz. Például `1_Add_Tools.ps1` ha `2_Add_Features.ps1` a szkripthez hozzáadja `.\2_Add_Features.ps1` a parancsot, és megismétli ezt a folyamatot a ben `$settings`definiált többi parancsfájlhoz.
+Ebben a példában három parancsfájlt használ a kiszolgáló létrehozásához. A **commandToExecute** meghívja az első parancsfájlt, majd a mások meghívásának lehetőségeit. Rendelkezhet például egy olyan főparancsfájllal, amely a megfelelő hibák kezelésével, naplózásával és állapotának kezelésével vezérli a végrehajtást. A parancsfájlok a helyi gépre lesznek letöltve a futtatáshoz. Például ha a `1_Add_Tools.ps1` `2_Add_Features.ps1` `.\2_Add_Features.ps1` szkripthez hozzáadja a parancsot, és megismétli ezt a folyamatot a ben definiált többi parancsfájlhoz `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -265,7 +275,7 @@ Azt is megteheti, hogy a [ForceUpdateTag](/dotnet/api/microsoft.azure.management
 
 ### <a name="using-invoke-webrequest"></a>A meghívás-webkérés használata
 
-Ha a szkriptben a [meghívás-Webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert `-UseBasicParsing` , különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
+Ha a szkriptben a [meghívás-Webkérést](/powershell/module/microsoft.powershell.utility/invoke-webrequest) használja, meg kell adnia a paramétert, `-UseBasicParsing` különben a részletes állapot ellenőrzésekor a következő hibaüzenetet fogja kapni:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -328,9 +338,9 @@ A megadott fájlok a cél virtuális gép következő mappájába lesznek letöl
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-ahol `<n>` a decimális egész szám, amely változhat a bővítmény végrehajtásai között.  Az `1.*` érték megegyezik a bővítmény tényleges, `typeHandlerVersion` aktuális értékével.  Például a tényleges könyvtár lehet `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+ahol a `<n>` decimális egész szám, amely változhat a bővítmény végrehajtásai között.  Az `1.*` érték megegyezik a bővítmény tényleges, aktuális `typeHandlerVersion` értékével.  Például a tényleges könyvtár lehet `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` .  
 
-A `commandToExecute` parancs végrehajtásakor a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a `fileURIs` tulajdonságon keresztül letöltött fájlok megkereséséhez. Példákért tekintse meg az alábbi táblázatot.
+A parancs végrehajtásakor `commandToExecute` a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2` ) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát a tulajdonságon keresztül letöltött fájlok megkereséséhez `fileURIs` . Példákért tekintse meg az alábbi táblázatot.
 
 Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet relatív parancsfájl-/fájlelérési utakat választani a `commandToExecute` karakterláncban, amikor csak lehetséges. Például:
 
@@ -338,7 +348,7 @@ Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdeme
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Az elérési út adatai az első URI-szegmens megtartása után `fileUris` a tulajdonságok listáján letöltött fájlok számára.  Ahogy az alábbi táblázatban is látható, a letöltött fájlok a letöltési alkönyvtárakba vannak leképezve, hogy tükrözzék `fileUris` az értékek szerkezetét.  
+Az elérési út adatai az első URI-szegmens megtartása után a `fileUris` Tulajdonságok listáján letöltött fájlok számára.  Ahogy az alábbi táblázatban is látható, a letöltött fájlok a letöltési alkönyvtárakba vannak leképezve, hogy tükrözzék az értékek szerkezetét `fileUris` .  
 
 #### <a name="examples-of-downloaded-files"></a>Példák a letöltött fájlokra
 

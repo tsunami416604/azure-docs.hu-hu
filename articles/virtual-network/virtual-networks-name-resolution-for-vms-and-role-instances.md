@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262196"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204769"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -84,9 +84,9 @@ Az Azure által biztosított névfeloldás használatakor megfontolandó szempon
 
 ### <a name="reverse-dns-considerations"></a>Fordított DNS-megfontolások
 A fordított DNS minden ARM-alapú virtuális hálózatban támogatott. Fordított DNS-lekérdezéseket adhat ki (PTR-lekérdezések) a virtuális gépek IP-címeinek a virtuális gépek teljes tartománynevére való leképezéséhez.
-* A virtuális gépek IP-címeire vonatkozó összes PTR-lekérdezés a vmname \[\]űrlap teljes tartománynevét fogja visszaadni. internal.cloudapp.net
-* A címkeresés a vmname \[\]űrlap teljes tartománynevén történik. a Internal.cloudapp.net a virtuális géphez hozzárendelt IP-címekre lesz feloldva.
-* Ha a virtuális hálózat egy [Azure DNS magánhálózati zónához](../dns/private-dns-overview.md) van csatolva regisztrációs virtuális hálózatként, akkor a fordított DNS-lekérdezések két rekordot adnak vissza. Az egyik rekord az űrlap \[vmname\]lesz. [priatednszonename] és más lenne a Form \[vmname\]. internal.cloudapp.net
+* A virtuális gépek IP-címeire vonatkozó összes PTR-lekérdezés a vmname űrlap teljes tartománynevét fogja visszaadni \[ \] . internal.cloudapp.net
+* A címkeresés a vmname űrlap teljes tartománynevén \[ \] történik. a Internal.cloudapp.net a virtuális géphez HOZZÁRENDELT IP-címekre lesz feloldva.
+* Ha a virtuális hálózat egy [Azure DNS magánhálózati zónához](../dns/private-dns-overview.md) van csatolva regisztrációs virtuális hálózatként, akkor a fordított DNS-lekérdezések két rekordot adnak vissza. Az egyik rekord a vmname formában jelenik \[ meg \] . [ privatednszonename] és más lenne a Form \[ vmname \] . internal.cloudapp.net
 * A fordított DNS-keresés hatóköre egy adott virtuális hálózatra terjed ki, még akkor is, ha más virtuális hálózatokhoz van kiállítva. A fordított DNS-lekérdezések (PTR-lekérdezések) a társ virtuális hálózatokban található virtuális gépek IP-címeihez a NXDOMAIN lesznek visszaadva.
 * Ha ki szeretné kapcsolni a fordított DNS-függvényt egy virtuális hálózatban, akkor ehhez hozzon létre egy névkeresési zónát [Azure DNS privát zónák](../dns/private-dns-overview.md) használatával, és kapcsolja a zónát a virtuális hálózathoz. Ha például a virtuális hálózat IP-címe 10.20.0.0/16, akkor létrehozhat egy üres magánhálózati DNS-zónát a 20.10.in-addr. arpa paranccsal, és összekapcsolhatja azt a virtuális hálózattal. A zóna virtuális hálózathoz való összekapcsolásakor le kell tiltania az automatikus regisztrációt a hivatkozáson. Ez a zóna felülbírálja a virtuális hálózat alapértelmezett névkeresési zónáit, és mivel ez a zóna üres, a fordított DNS-lekérdezések NXDOMAIN fogja kapni. A saját DNS-zónák létrehozásával és a virtuális hálózattal való összekapcsolásával kapcsolatos további tudnivalókért tekintse meg a rövid [útmutató útmutatóját](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) .
 
@@ -108,19 +108,19 @@ Az alapértelmezett Windows DNS-ügyfél beépített DNS-gyorsítótárral rende
 Számos különböző DNS-gyorsítótárazási csomag elérhető (például DNSMasq). A következőképpen telepítheti a DNSMasq a leggyakoribb disztribúciók esetében:
 
 * **Ubuntu (resolvconf-t használ)**:
-  * Telepítse a DNSMasq csomagot a `sudo apt-get install dnsmasq`-val.
+  * Telepítse a DNSMasq csomagot a-val `sudo apt-get install dnsmasq` .
 * **SUSE (netconf használ)**:
-  * Telepítse a DNSMasq csomagot a `sudo zypper install dnsmasq`-val.
-  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`szolgáltatással. 
-  * Indítsa el a DNSMasq szolgáltatást `systemctl start dnsmasq.service`a szolgáltatással. 
+  * Telepítse a DNSMasq csomagot a-val `sudo zypper install dnsmasq` .
+  * Engedélyezze a DNSMasq szolgáltatást a szolgáltatással `systemctl enable dnsmasq.service` . 
+  * Indítsa el a DNSMasq szolgáltatást a szolgáltatással `systemctl start dnsmasq.service` . 
   * Szerkessze a **/etc/sysconfig/network/config**, és módosítsa a *NETCONFIG_DNS_FORWARDER = ""* *DNSMasq*.
-  * Frissítse a resolv. conf `netconfig update`fájlt a használatával a gyorsítótár helyi DNS-feloldóként való beállításához.
+  * Frissítse a resolv. conf fájlt a `netconfig update` használatával a gyorsítótár helyi DNS-feloldóként való beállításához.
 * **CentOS (hálózatkezelő használ)**:
-  * Telepítse a DNSMasq csomagot a `sudo yum install dnsmasq`-val.
-  * Engedélyezze a DNSMasq szolgáltatást a `systemctl enable dnsmasq.service`szolgáltatással.
-  * Indítsa el a DNSMasq szolgáltatást `systemctl start dnsmasq.service`a szolgáltatással.
+  * Telepítse a DNSMasq csomagot a-val `sudo yum install dnsmasq` .
+  * Engedélyezze a DNSMasq szolgáltatást a szolgáltatással `systemctl enable dnsmasq.service` .
+  * Indítsa el a DNSMasq szolgáltatást a szolgáltatással `systemctl start dnsmasq.service` .
   * Adja *hozzá* a **/etc/dhclient-eth0.conf**.
-  * Indítsa újra a hálózati szolgáltatást `service network restart`a használatával, hogy a gyorsítótárat a helyi DNS-feloldóként állítsa be.
+  * Indítsa újra a hálózati szolgáltatást a `service network restart` használatával, hogy a gyorsítótárat a helyi DNS-feloldóként állítsa be.
 
 > [!NOTE]
 > A DNSMasq-csomag csak a Linuxon elérhető számos DNS-gyorsítótár egyike. A használata előtt győződjön meg arról, hogy megfelel az igényeinek, és győződjön meg arról, hogy nincs telepítve más gyorsítótár.
@@ -133,7 +133,7 @@ A DNS elsődlegesen UDP protokoll. Mivel az UDP protokoll nem garantálja az üz
 * A Windows operációs rendszer újrapróbálkozik egy másodperc elteltével, majd ismét egy másik két másodperc, négy másodperc és egy másik négy másodperc után. 
 * Az alapértelmezett Linux-telepítő öt másodperc elteltével próbálkozik újra. Javasoljuk, hogy az újrapróbálkozási specifikációkat ötször, egy másodperces időközönként módosítsa.
 
-A Linux rendszerű virtuális gépek aktuális beállításainak megtekintése `cat /etc/resolv.conf`a következővel:. Tekintse meg a *Beállítások* sort, például:
+A Linux rendszerű virtuális gépek aktuális beállításainak megtekintése a következővel: `cat /etc/resolv.conf` . Tekintse meg a *Beállítások* sort, például:
 
 ```bash
 options timeout:1 attempts:5
@@ -143,13 +143,13 @@ Az resolv. conf fájl általában automatikusan jön létre, és nem szerkeszthe
 
 * **Ubuntu** (resolvconf-t használ):
   1. Adja hozzá a *Options* sort a következőhöz: **/etc/resolvconf/resolv.conf.d/tail**.
-  2. A `resolvconf -u` frissítéshez futtassa a parancsot.
+  2. `resolvconf -u`A frissítéshez futtassa a parancsot.
 * **SUSE** (netconf használ):
   1. *Időkorlát hozzáadása: 1 kísérlet: 5* a **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** paraméterhez a **/etc/sysconfig/network/config**.
-  2. A `netconfig update` frissítéshez futtassa a parancsot.
+  2. `netconfig update`A frissítéshez futtassa a parancsot.
 * **CentOS** (hálózatkezelő használ):
   1. Adja hozzá az *echo "Options timeout: 1 kísérlet: 5"* **/etc/NetworkManager/Dispatcher.d/11-dhclient**.
-  2. Frissítés a `service network restart`szolgáltatással.
+  2. Frissítés a szolgáltatással `service network restart` .
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Saját DNS-kiszolgálót használó névfeloldás
 

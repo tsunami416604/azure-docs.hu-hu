@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72518303"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220140"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
 
@@ -43,15 +43,15 @@ azcopy bench [destination] [flags]
 
 Teljesítményteszt-teszt futtatása alapértelmezett paraméterekkel (legfeljebb 1 GB/s sebességű hálózatok esetében alkalmas): "
 
-- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS>"
+- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS> "
 
 Futtasson egy teljesítményteszt-tesztet, amely 100 fájlt tölt fel, amelyek mindegyike 2 GiB méretű: (gyors hálózaton, például 10 GB/s):
 
-- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS>" --file-Count 100--size-per-file 2G
+- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS> " --file-Count 100--size-per-file 2G
 
 Ugyanaz, mint a fentiekben, de a 50 000-fájlok használata, a 8 MiB mérete és a kiszámított MD5-kivonatok (ugyanúgy, ahogyan a--Put-MD5 jelző ezt a másolási paranccsal végzi el). Az--Put-MD5 használata, ha a benchmarking ellenőrzi, hogy az MD5-számítás befolyásolja-e a kiválasztott fájlok számát és méretét:
 
-- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS>" --file-Count 50000-méret-fájlonként 8P--Put-MD5
+- azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS> " --file-Count 50000-méret-fájlonként 8P--Put-MD5
 
 ## <a name="options"></a>Beállítások
 
@@ -76,6 +76,8 @@ Ugyanaz, mint a fentiekben, de a 50 000-fájlok használata, a 8 MiB mérete és
 **--Cap-Mbps UInt32**  Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
 
 **--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text").
+
+**--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
 
 ## <a name="see-also"></a>Lásd még
 

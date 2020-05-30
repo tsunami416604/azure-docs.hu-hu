@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188586"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204735"
 ---
 # <a name="azure-operational-security-best-practices"></a>Az Azure működési biztonságának ajánlott eljárásai
 Ez a cikk az Azure-ban tárolt adatok, alkalmazások és egyéb eszközök védelmére vonatkozó ajánlott eljárásokat ismerteti.
@@ -215,8 +215,8 @@ További információ: [házirendek létrehozása és kezelése a megfelelőség
 **Ajánlott eljárás**: a szabályzat megsértésének figyeléséhez felelős szerepkörök azonosítása, valamint a megfelelő szervizelési műveletek gyors elvégzésének biztosítása.   
 **Részletek**: a hozzárendelt szerepkör-figyelő megfelelősége a [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) vagy a [parancssoron](../../governance/policy/how-to/get-compliance-data.md#command-line)keresztül.
 
-**Ajánlott eljárás**: Azure Policy a szervezet írásos szabályzatának technikai ábrázolása. Képezze le az összes Azure-szabályzatot a szervezeti házirendekhez a zűrzavar csökkentése és a konzisztencia növeléséhez.   
-**Részletek**: dokumentumok leképezése a szervezet dokumentációjában vagy maga a Azure Policy-definícióban a szervezeti házirendre mutató hivatkozás hozzáadásával a [Azure Policy definíciójában](../../governance/policy/concepts/definition-structure.md#display-name-and-description) vagy a [Azure Policy kezdeményezés](../../governance/policy/concepts/definition-structure.md#initiatives) leírása.
+**Ajánlott eljárás**: Azure Policy a szervezet írásos szabályzatának technikai ábrázolása. Társítsa az összes Azure Policy definíciót a szervezeti házirendekhez, hogy csökkentse a zavart és növelje a konzisztenciát.   
+**Részletek**: dokumentumok leképezése a szervezet dokumentációjában vagy maga a Azure Policy-definícióban a szervezeti házirendre mutató hivatkozás hozzáadásával a [házirend-definícióban](../../governance/policy/concepts/definition-structure.md#display-name-and-description) vagy a [kezdeményezés definíciójának](../../governance/policy/concepts/initiative-definition-structure.md#metadata) leírása.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD kockázati jelentések figyelése
 A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók a felhasználó identitásának ellopásával hozzáférnek a környezetekhez. A feltört identitások feltárása nem egyszerű feladat. Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy [kockázati észlelésnek](../../active-directory/reports-monitoring/concept-risk-events.md)nevezett rekordban tárol. A kockázati észlelések az Azure AD biztonsági jelentéseiben vannak rögzítve. További információért olvassa el a [veszélyeztetett felhasználókról szóló jelentést](../../active-directory/reports-monitoring/concept-user-at-risk.md) , valamint a [kockázatos bejelentkezések biztonsági jelentését](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).

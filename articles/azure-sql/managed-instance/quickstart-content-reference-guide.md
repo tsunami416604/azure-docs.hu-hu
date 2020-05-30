@@ -12,17 +12,17 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 2ef242b95bdafd1781e4db6e72a6374ecf8298c5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 105c7ae2b0e7f39c29500634391b4388fa2a4723
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054346"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194947"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az [Azure SQL felügyelt példánya](sql-managed-instance-paas-overview.md) egy olyan adatbázist hoz létre, amely közel 100%-os kompatibilitással rendelkezik a legújabb SQL Server helyszíni (Enterprise Edition) adatbázis-kezelővel, amely egy olyan natív [virtuális hálózati (VNet)](../../virtual-network/virtual-networks-overview.md) implementációt biztosít, amely a közös biztonsági kérdésekre, valamint a helyszíni SQL Server ügyfeleknek kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül.
+Az [Azure SQL felügyelt példánya](sql-managed-instance-paas-overview.md) egy olyan adatbázist hoz létre, amely közel 100%-os kompatibilitással rendelkezik a legújabb SQL Server (Enterprise Edition) adatbázis-kezelővel, amely egy olyan natív [virtuális hálózati (VNet)](../../virtual-network/virtual-networks-overview.md) implementációt biztosít, amely az általános biztonsági kérdésekre és a meglévő SQL Server ügyfelek számára kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül.
 
 Ebben a cikkben olyan tartalmakra mutató hivatkozásokat talál, amelyek megtanítják, hogyan lehet gyorsan konfigurálni és létrehozni egy SQL felügyelt példányt, és hogyan telepíthet át adatbázisokat.
 
@@ -48,7 +48,7 @@ A felügyelt SQL-példány manuális létrehozása helyett használhatja a [Powe
 
 ### <a name="migrate-your-databases"></a>Adatbázisok migrálása
 
-A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti az adatbázisok áttelepítését SQL Server helyszíni vagy Azure-beli virtuális gépekről. Az áttelepítés sikertelen lehet, mert az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
+A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti a SQL Server-adatbázisok áttelepítését. Az áttelepítés sikertelen lehet, mert az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
 
 Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt SQL-példányra, a natív SQL Server visszaállítási képességeivel állíthatja vissza az adatbázist egy SQL felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy Azure-beli virtuális gépen telepített SQL Server-adatbázismotor használatával. Gyors útmutató: visszaállítás a [biztonsági másolatból egy SQL-felügyelt példányra](restore-sample-database-quickstart.md). Ebben a rövid útmutatóban egy, `.bak` Az Azure Blob Storage-ban tárolt fájlból kell visszaállítani a `RESTORE` Transact-SQL parancs használatával.
 

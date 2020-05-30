@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065002"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194467"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
 > [!NOTE]
@@ -49,8 +49,8 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 -   DNS-bejegyzéseket adhat hozzá a engedélyezési listához Service Bus ahelyett, hogy az összes Azure-beli IP-címet a tűzfalról (ha szükséges) engedélyezte. További részleteket itt talál.
 -   Mostantól akár 4,75 TB-ig is másolhatja az adatait egy blokkos blobba, amely a blokkolt Blobok maximálisan támogatott mérete. (korábbi korlát: 195 GB).
 -   Kijavítva: kevés a memória-probléma, miközben a másolási tevékenység során több kis fájlt is kicsomagolta.
--   Javítva: a tartományon kívüli hiba történt a dokumentum-ADATBÁZISról egy helyszíni SQL Serverra való másoláskor a idempotencia szolgáltatással.
--   Kijavítva: az SQL-karbantartási parancsfájl nem működik helyszíni SQL Server a másolás varázslóval.
+-   Kijavítva: az index tartományon kívüli probléma a Document DB-ről SQL Server a idempotencia szolgáltatással való másoláskor.
+-   Kijavítva: az SQL-karbantartási parancsfájl nem működik SQL Server a másolás varázslóval.
 -   Javítva: az oszlop neve, amelynek a végén található a helye, nem működik a másolási tevékenységben.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 *  A DB2-illesztőprogram mostantól támogatja a z/OS és a DB2-t (AS/400) a már támogatott platformokkal (Linux, UNIX és Windows) együtt.
 *  Támogatja Azure Cosmos DB használatát a helyszíni adattárakhoz forrásként vagy célhelyként
 *  A támogatja az adatok másolását a/a hideg/gyors blob Storage-ba és a már támogatott általános célú Storage-fiókkal együtt.
-*  Lehetővé teszi, hogy az átjárón keresztül helyi SQL Serverhoz kapcsolódjon távoli bejelentkezési jogosultságokkal.  
+*  Lehetővé teszi az átjárón keresztüli SQL Server kapcsolódását távoli bejelentkezési jogosultságokkal.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +126,7 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
     *  Átszervezve és egyszerűsített vezérlők.
 
     *  Az adatok a [kód – ingyenes másolási eszközzel](data-factory-copy-data-wizard-tutorial.md)másolhatók a tárolóból. A szolgáltatással kapcsolatos további részletekért tekintse meg a [szakaszos másolást](data-factory-copy-activity-performance.md#staged-copy) .
-*  A adatkezelés Gateway segítségével közvetlenül a helyszíni SQL Server-adatbázisból is beáramlhat az adatokba Azure Machine Learningba.
+*  A adatkezelés Gateway segítségével közvetlenül egy SQL Server-adatbázisból is beáramlhat az adatokba Azure Machine Learning.
 
 *  Teljesítménnyel kapcsolatos fejlesztések
 

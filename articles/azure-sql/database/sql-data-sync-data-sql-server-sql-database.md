@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: f4bec780fcf40b4fbee7ccf6c59463a5efb1adc0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048776"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188714"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Az adatszinkronizálás a szinkronizálási csoport fogalmán alapul. A szinkron
 Az adatszinkronizálás sugarasan és küllős topológiával szinkronizálja az adatokat. A szinkronizálási csoportban lévő adatbázisok egyikét a hub-adatbázisként kell meghatároznia. A többi adatbázis a tagok adatbázisai. A szinkronizálás csak a hub és az egyes tagok között történik.
 
 - A **hub-adatbázisnak** Azure SQL Databasenak kell lennie.
-- A **tagok adatbázisai** lehetnek Azure SQL Database, helyszíni SQL Server adatbázisok vagy SQL Server példányok az Azure Virtual Machines szolgáltatásban.
+- A **tagsági adatbázisok** lehetnek Azure SQL Database vagy SQL Server példányaiban található adatbázisok.
 - A **szinkronizálási adatbázis** tartalmazza a metaadatokat és a naplót az adatok szinkronizálásához. A szinkronizálási adatbázisnak egy olyan Azure SQL Database kell lennie, amely ugyanabban a régióban található, mint a hub-adatbázis. A szinkronizálási adatbázis az ügyfél által létrehozott és az ügyfél tulajdonában van.
 
 > [!NOTE]
@@ -59,12 +59,12 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Eset | Néhány ajánlott megoldás |
+| Forgatókönyv | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
 | ETL (OLTP – OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Áttelepítés a helyszíni SQL Serverról a Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Áttelepítés SQL Serverról Azure SQL Databasera | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 
@@ -184,9 +184,9 @@ SQL-adatszinkronizálás minden régióban elérhető.
 
 Igen. A hub-adatbázis üzemeltetéséhez SQL Database-fiókkal kell rendelkeznie.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Használhatok adatszinkronizálást SQL Server helyszíni adatbázisok közötti szinkronizálásra
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Használhatok adatszinkronizálást SQL Server adatbázisok közötti szinkronizálásra
 
-Nem közvetlenül. A SQL Server helyszíni adatbázisok között közvetve szinkronizálhat, azonban egy központi adatbázis létrehozásával az Azure-ban, majd a helyszíni adatbázisokat hozzáadja a szinkronizálási csoporthoz.
+Nem közvetlenül. A SQL Server adatbázisok közötti szinkronizálás közvetetten, azonban egy központi adatbázis létrehozása az Azure-ban, majd a helyszíni adatbázisok hozzáadása a szinkronizálási csoporthoz.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Használhatom az adatszinkronizálást a különböző előfizetésekhez tartozó SQL-adatbázisok közötti szinkronizáláshoz
 

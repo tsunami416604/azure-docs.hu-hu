@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: ea4b201cd9ad6fa295bbccafe445733aadcf31c1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 12e53e6960cbd55b78c8459ae9db080f32e2ffb6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054316"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189643"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Gyors útmutató: Azure SQL Database a kapcsolat és a lekérdezés
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,24 +27,24 @@ Az alábbi dokumentum olyan Azure-példákra mutató hivatkozásokat tartalmaz, 
 
 | |  |
 |---|---|
-|[SQL Server Management Studio](connect-query-ssms.md)|Ez a rövid útmutató bemutatja, hogyan használható a SSMS a Azure SQL Databasehoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
-|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Data Studio a Azure SQL Databasehoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-(T-SQL-) utasítások használatával létrehozni az Azure Data Studio oktatóanyagokban használt oktatóanyagaiban.|
-|[Azure Portal](connect-query-portal.md)|Ez a rövid útmutató ismerteti, hogyan használható a Lekérdezésszerkesztő az SQL-adatbázisokhoz való csatlakozáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
-|[Visual Studio Code](connect-query-vscode.md)|Ez a rövid útmutató bemutatja, hogyan használható a Visual Studio Code a Azure SQL Databasehoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
-|[.NET Visual Studióval](connect-query-dotnet-visual-studio.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a .NET-keretrendszer egy C#-program létrehozásához a Visual Studióval a Azure SQL Databasehoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[.NET Core](connect-query-dotnet-core.md)|Ez a rövid útmutató bemutatja, hogyan használható a .NET Core a Windows/Linux/macOS rendszeren egy C#-program létrehozásához a Azure SQL Databasehoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[Ugrás](connect-query-go.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Go a Azure SQL Databasehoz való kapcsolódáshoz. Emellett az adatok lekérdezéséhez és módosításához használatos Transact-SQL-utasításokat is bemutatja.|
-|[Java](connect-query-java.md)|Ez a rövid útmutató bemutatja, hogyan használható a Java a Azure SQL Databasehoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[Node. js](connect-query-nodejs.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Node. js egy olyan program létrehozásához, amely a Azure SQL Databasehoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[PHP](connect-query-php.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a PHP egy program létrehozásához a Azure SQL Databasehoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[Python](connect-query-python.md)|Ez a rövid útmutató bemutatja, hogyan használható a Python a Azure SQL Databasehoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni. |
-|[Ruby](connect-query-ruby.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Ruby egy olyan program létrehozásához, amely a Azure SQL Databasehoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
-|[R](connect-query-r.md)|Ez a rövid útmutató azt ismerteti, hogyan használható az R és Azure SQL Database Machine Learning Services egy program létrehozásához a Azure SQL Databasehoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[SQL Server Management Studio](connect-query-ssms.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a SSMS a Azure SQL Database-adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
+|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Data Studio egy Azure SQL Database-adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-(T-SQL-) utasítások használatával létrehozni a Azure Data Studio oktatóanyagokban használt oktatóanyagaiban.|
+|[Azure Portal](connect-query-portal.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Lekérdezéstervező a Azure SQL Database található adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
+|[Visual Studio Code](connect-query-vscode.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Visual Studio Code egy Azure SQL Database-adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
+|[.NET Visual Studióval](connect-query-dotnet-visual-studio.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a .NET-keretrendszer egy C#-program létrehozásához a Visual Studióval a Azure SQL Database-adatbázishoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[.NET Core](connect-query-dotnet-core.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a .NET Core a Windows/Linux/macOS rendszeren egy olyan C#-program létrehozásához, amely Azure SQL Database adatbázisához csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[Ugrás](connect-query-go.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a go egy adatbázishoz való kapcsolódáshoz Azure SQL Database-ben. Emellett az adatok lekérdezéséhez és módosításához használatos Transact-SQL-utasításokat is bemutatja.|
+|[Java](connect-query-java.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Java a Azure SQL Database-adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[Node.js](connect-query-nodejs.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Node. js egy olyan program létrehozásához, amely egy Azure SQL Database adatbázisához csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[PHP](connect-query-php.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a PHP egy olyan program létrehozásához, amely Azure SQL Database adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[Python](connect-query-python.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Python a Azure SQL Database-adatbázishoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni. |
+|[Ruby](connect-query-ruby.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a Ruby egy olyan program létrehozásához, amely Azure SQL Database adatbázishoz csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
+|[R](connect-query-r.md)|Ez a rövid útmutató azt ismerteti, hogyan használható az R és Azure SQL Database Machine Learning Services egy olyan program létrehozásához, amely a Azure SQL Database adatbázisához csatlakozik, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>TLS-megfontolások az SQL Database-kapcsolatokhoz
 
-A Transport Layer Security (TLS) protokollt az összes Microsoft által biztosított vagy támogatott illesztő használja az Azure SQL Database-hez való csatlakozáshoz. Nincs szükség különleges konfigurációra. A SQL Serverhoz, Azure SQL Databasehoz vagy az Azure SQL felügyelt példányához tartozó összes kapcsolathoz javasoljuk, hogy az összes alkalmazás a következő konfigurációkat vagy azok megfelelőit állítsa be:
+A Transport Layer Security (TLS) a Microsoft által szolgáltatott és a Azure SQL Database-adatbázishoz való csatlakozást támogató összes illesztőprogramhoz használható. Nincs szükség különleges konfigurációra. A SQL Server-példányok, a Azure SQL Database-adatbázisok vagy az Azure SQL felügyelt példányok egy példányának minden kapcsolata esetén azt javasoljuk, hogy minden alkalmazás a következő konfigurációkat vagy azok megfelelőit állítsa be:
 
 - **Encrypt = On**
 - **TrustServerCertificate = Off**
@@ -86,8 +86,8 @@ Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezé
 ## <a name="next-steps"></a>További lépések
 
 - A kapcsolati architektúrával kapcsolatos információkért tekintse meg [az Azure SQL Database kapcsolati architektúráját](connectivity-architecture.md) ismertető cikket.
-- Ügyfél-alkalmazásokból való kapcsolódáshoz használt [SQL Server-illesztőprogramok](https://msdn.microsoft.com/library/mt654049.aspx) keresése
-- Kapcsolódás SQL Databasehoz:
+- Megtalálhatja SQL Server az ügyfélalkalmazások közötti kapcsolódáshoz használt [illesztőprogramokat](https://msdn.microsoft.com/library/mt654049.aspx) .
+- Kapcsolódás Azure SQL Databasehoz:
   - [Csatlakozás SQL Database adatbázishoz  .NET (C#) használatával](connect-query-dotnet-core.md)
   - [Csatlakozás az SQL Database-hez a PHP használatával](connect-query-php.md)
   - [Csatlakozás az SQL Database-hez a Node.js használatával](connect-query-nodejs.md)
@@ -95,8 +95,8 @@ Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezé
   - [Csatlakozás az SQL Database-hez a Python használatával](connect-query-python.md)
   - [Csatlakozás az SQL Database-hez a Ruby használatával](connect-query-ruby.md)
 - Próbálja újra a logikai kódok példáit:
-  - [Rugalmas csatlakozás az SQL-hez a ADO.NET használatával][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [Rugalmas csatlakozás az SQL-hez a PHP-vel][step-4-connect-resiliently-to-sql-with-php-p42h]
+  - [Rugalmas csatlakozás SQL Database a ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [Rugalmas csatlakozás a PHP-SQL Databasehoz][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 

@@ -3,12 +3,12 @@ title: SQL Server munkaterhelések biztonsági mentése Azure Stack
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Azure Backup Servert (MABS) SQL Server-adatbázisok védelmére Azure Stackon.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74172313"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192983"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
 
@@ -38,7 +38,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Védelmi csoport típusának kiválasztása – "kiszolgálók"](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. A csoporttagok **kiválasztása** képernyőn az elérhető tagok lista a különböző adatforrásokat jeleníti meg. Kattintson **+** ide a mappa kibontásához és az almappák megjelenítéséhez. Kattintson a jelölőnégyzetre egy elem kiválasztásához.
+4. A csoporttagok **kiválasztása** képernyőn az elérhető tagok lista a különböző adatforrásokat jeleníti meg. Kattintson ide a **+** mappa kibontásához és az almappák megjelenítéséhez. Kattintson a jelölőnégyzetre egy elem kiválasztásához.
 
     ![SQL-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
 
@@ -65,7 +65,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Kezdeti replikációs módszer](./media/backup-azure-backup-sql/pg-manual.png)
 
-    A kezdeti biztonsági másolathoz a teljes adatforrást (SQL Server adatbázist) át kell vinni az üzemi kiszolgálóról (SQL Server gépről) a Azure Backup Serverre. Ezek az adatmennyiségek nagy méretűek lehetnek, és a hálózaton keresztüli adatátvitel meghaladhatja a sávszélességet. Ebből kifolyólag dönthet úgy, hogy áthelyezi a kezdeti biztonsági másolatot: **manuálisan** (cserélhető adathordozó használatával) a sávszélesség-torlódás elkerüléséhez, vagy **automatikusan a hálózaton keresztül** (adott időpontban).
+    A kezdeti biztonsági másolathoz a teljes adatforrást (SQL Server adatbázist) át kell vinni az üzemi kiszolgálóról (SQL Server számítógépről) a Azure Backup Serverre. Ezek az adatmennyiségek nagy méretűek lehetnek, és a hálózaton keresztüli adatátvitel meghaladhatja a sávszélességet. Ebből kifolyólag dönthet úgy, hogy áthelyezi a kezdeti biztonsági másolatot: **manuálisan** (cserélhető adathordozó használatával) a sávszélesség-torlódás elkerüléséhez, vagy **automatikusan a hálózaton keresztül** (adott időpontban).
 
     A kezdeti biztonsági mentés befejezését követően a biztonsági mentések a kezdeti biztonsági másolaton lévő növekményes biztonsági másolatok. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 
@@ -73,7 +73,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Konzisztencia-ellenőrzés](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    A Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont integritásán. Azure Backup Server kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a forgatókönyvben SQL Server gépen), valamint az adott fájl biztonsági másolatait. Ütközés esetén feltételezi, hogy a biztonsági másolatban szereplő fájl sérült Azure Backup Server. Azure Backup Server helyesbíti a biztonsági másolatban szereplő adatokat úgy, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzések teljesítmény-igényesek, a konzisztencia-ellenőrzést ütemezhet vagy automatikusan futtathatja.
+    A Azure Backup Server konzisztencia-ellenőrzést végez a biztonsági mentési pont integritásán. Azure Backup Server kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (SQL Server számítógép ebben a forgatókönyvben), valamint az adott fájl biztonsági másolatait. Ütközés esetén feltételezi, hogy a biztonsági másolatban szereplő fájl sérült Azure Backup Server. Azure Backup Server helyesbíti a biztonsági másolatban szereplő adatokat úgy, hogy elküldi az ellenőrzőösszeg-eltérésnek megfelelő blokkokat. Mivel a konzisztencia-ellenőrzések teljesítmény-igényesek, a konzisztencia-ellenőrzést ütemezhet vagy automatikusan futtathatja.
 
 10. Az adatforrások online védelmének megadásához válassza ki az Azure-ba védeni kívánt adatbázisokat, és kattintson a **tovább**gombra.
 

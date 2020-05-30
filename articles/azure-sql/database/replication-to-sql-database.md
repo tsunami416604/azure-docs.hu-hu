@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: eebf0bb2a5f2a813ff282854b62f10957475e3b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046438"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192969"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Az Azure SQL Databaset leküldéses előfizetőként konfigurálhatja egy egyir�
 
 A Azure SQL Database való sikeres replikáláshoz SQL Server közzétevőknek és forgalmazóknak a következő verziók egyikét kell használnia: 
 
-A SQL Server következő verziói támogatják a helyszíni SQL Server Azure SQL Database történő közzétételét:
+A SQL Server következő verziói támogatják a SQL Server-adatbázisok bármely Azure SQL Database való közzétételét:
 
 - SQL Server 2016 és újabb
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) vagy [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
@@ -84,13 +84,13 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 ### <a name="typical-replication-scenario"></a>Tipikus replikációs forgatókönyv  
 
-1. Hozzon létre egy tranzakciós replikációs kiadványt egy helyszíni SQL Server adatbázison.  
-2. A helyszíni SQL Server az **új előfizetés varázslóval** vagy Transact-SQL-utasításokkal hozzon létre egy leküldéses előfizetést a Azure SQL Databaseba.  
+1. Tranzakciós replikálási kiadvány létrehozása SQL Server adatbázison.  
+2. SQL Server az **új előfizetés varázsló** vagy a Transact-SQL-utasítások használatával hozzon létre egy leküldéses előfizetést a Azure SQL Databaseba.  
 3. A Azure SQL Database önálló és készletezett adatbázisaiban a kezdeti adatkészlet olyan pillanatkép, amelyet a pillanatkép-ügynök hozott létre, és amelyet a terjesztési ügynök kioszt és alkalmaz. A felügyelt SQL-példányok közzétevője egy adatbázis biztonsági másolatát is használhatja a Azure SQL Database előfizető kivetéséhez.
 
 ### <a name="data-migration-scenario"></a>Adatáttelepítési forgatókönyv  
 
-1. Tranzakciós replikálás használatával replikálhatja a helyszíni SQL Server-adatbázis adatait a Azure SQL Databaseba.  
+1. A tranzakciós replikálás használatával replikálhatja a SQL Server-adatbázis adatait a Azure SQL Databaseba.  
 2. Az adatbázis-másolat frissítéséhez irányítsa át az ügyfelet vagy a középső rétegbeli alkalmazásokat.  
 3. Állítsa le a táblázat SQL Server verziójának frissítését, és távolítsa el a kiadványt.  
 

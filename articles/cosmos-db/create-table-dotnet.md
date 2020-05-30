@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: df26021a3718c17d72f0fdb25588487043918732
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084107"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218176"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB 
 
@@ -66,7 +66,8 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
 
-> ! Tipp A hasonló kódok részletesebb ismertetése: [Cosmos DB Table API minta](table-storage-how-to-use-dotnet.md) cikk.
+> [!TIP]
+> A hasonló kódok részletesebb ismertetése: [Cosmos DB Table API minta](table-storage-how-to-use-dotnet.md) cikk.
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>A mintaalkalmazás megnyitása a Visual Studióban
 
@@ -75,6 +76,26 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
    ![A megoldás megnyitása](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
 2. Navigáljon ahhoz a mappához, ahová klónozott a minta alkalmazást, és nyissa meg a TableStorage. SLN fájlt.
+
+## <a name="review-the-code"></a>A kód áttekintése
+
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Ellenkező esetben ugorjon [a dokumentum kapcsolódási karakterlánc szakaszának frissítéséhez](#update-your-connection-string) .
+
+* A következő kód bemutatja, hogyan hozhat létre táblát az Azure Storage-ban:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
+
+* Az alábbi kód bemutatja, hogyan szúrhat be adatbevitelt a táblába:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
+
+* A következő kód bemutatja, hogyan lehet lekérdezni a tábla adatait:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+
+* A következő kód bemutatja, hogyan törölhet adatok a táblából:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 

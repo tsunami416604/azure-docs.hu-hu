@@ -3,7 +3,7 @@ title: Magas rendelkezésre állás beállítása Azure Resource Manager virtuá
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy always on rendelkezésre állási csoportot az Azure Virtual Machines Azure Resource Manager módban.
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: f824ef4964a1039c5ed866e470d19e1306107afe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d00d8245f14b042b5fa779697ed74edacaf397a6
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049588"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219607"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok konfigurálása az Azure-ban Virtual Machines automatikusan: Resource Manager
 
@@ -67,10 +67,10 @@ Az Azure egy katalógus-rendszerképet biztosít a teljes megoldáshoz. A sablon
 1. Jelentkezzen be a Azure Portalba a fiók használatával.
 2. Az Azure Portal az **új** ablaktábla megnyitásához válassza az **erőforrás létrehozása** lehetőséget.
 3. Az **új** ablaktáblán keresse meg a **AlwaysOn**.
-   ![AlwaysOn-sablon keresése](./media/availability-group-azure-marketplace-template-configure/16-findalwayson.png)
-4. A keresési eredmények között keresse meg **SQL Server AlwaysOn-fürtöt**.
-   ![AlwaysOn-sablon](./media/availability-group-azure-marketplace-template-configure/17-alwaysontemplate.png)
-5. A **telepítési modell kiválasztása**lapon válassza a **Resource Manager**lehetőséget.
+  Az Azure Marketplace a SQL Server-fürtöt tartalmazó keresési eredményeket jeleníti meg. Ez a funkció előzetes verzióban érhető el.
+4. A keresési eredmények között keresse meg és kattintson **SQL Server AlwaysOn-fürt (előzetes verzió)** elemre. A megoldás létrehozásához kövesse az utasításokat.
+
+A következő szakasz ismerteti a megoldás bemenetét. 
 
 ### <a name="basics"></a>Alapvető beállítások
 

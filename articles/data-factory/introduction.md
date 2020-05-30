@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410942"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191108"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -83,11 +83,11 @@ A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amel
 
 A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 
-- Egy **adattár**, például egy helyszíni SQL Server-adatbázis, Oracle-adatbázis, fájlmegosztás vagy egy Azure Blob Storage-fiók jelölésére. A támogatott adattárak listáját lásd a [másolási tevékenység](copy-activity-overview.md) cikkben.
+- Olyan **adattár** jelölésére, amely tartalmaz, de nem korlátozódik a SQL Server adatbázisra, az Oracle-adatbázisra, a fájlmegosztás vagy az Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd a [másolási tevékenység](copy-activity-overview.md) cikkben.
 
 - Olyan **számítási erőforrás** jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd az [adatok átalakítása](transform-data.md) cikkben.
 
-### <a name="triggers"></a>Eseményindítók
+### <a name="triggers"></a>Triggerek
 Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak.
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
