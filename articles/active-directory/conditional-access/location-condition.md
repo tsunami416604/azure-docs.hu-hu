@@ -6,69 +6,74 @@ ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263230"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220612"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a hely feltétele a feltételes hozzáférés Azure Active Directory? 
+# <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
-A [Azure Active Directory (Azure ad) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)segítségével szabályozhatja, hogy a jogosult felhasználók hogyan férhessenek hozzá a felhőalapú alkalmazásokhoz. A feltételes hozzáférési szabályzat helyének feltétele lehetővé teszi a hozzáférés-vezérlési beállítások összekapcsolását a felhasználók hálózati helyein.
+Ahogy az [áttekintő cikkben](overview.md) is látható, a feltételes hozzáférési szabályzatok az alapszintű egy if-then utasításban a jelek kombinálásával, a döntések elvégzéséhez és a szervezeti szabályzatok betartatásához szükségesek. A döntéshozatali folyamatba beépíthető jelek egyike a hálózati hely.
 
-Ez a cikk a hely feltételének konfigurálásához szükséges információkat tartalmazza.
+![Koncepcionális feltételes jel plusz döntés a kényszerítés beszerzéséhez](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-## <a name="locations"></a>Helyek
-
-Az Azure AD lehetővé teszi az egyszeri bejelentkezést az eszközökre, alkalmazásokra és szolgáltatásokra bárhonnan a nyilvános interneten. A hely feltételével a felhasználó hálózati helye alapján vezérelheti a felhőalapú alkalmazásokhoz való hozzáférést. A hely feltételének gyakori használati esetei a következők:
+A szervezetek a következő általános feladatokhoz használhatják ezt a hálózati helyet: 
 
 - Többtényezős hitelesítés megkövetelése a szolgáltatáshoz hozzáférő felhasználók számára a vállalati hálózaton kívülről.
 - Hozzáférés letiltása adott országokból vagy régiókból származó szolgáltatáshoz hozzáférő felhasználók számára.
 
-A hely egy olyan hálózati hely címkéje, amely vagy egy elnevezett hely vagy a multi-Factor Authentication megbízható IP-címei.
+A hálózati helyet az ügyfél által a Azure Active Directory számára biztosított nyilvános IP-cím határozza meg. A feltételes hozzáférési szabályzatok alapértelmezés szerint az összes IPv4-és IPv6-címre érvényesek. 
+
+> [!TIP]
+> Az IPV6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
 
 ## <a name="named-locations"></a>Nevesített helyek
 
-Az elnevezett helyszínekkel logikai csoportosításokat hozhat létre az IP-címtartományok vagy országok és régiók számára.
+A helyszínek a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **névvel ellátott helyei**területen vannak kijelölve. Ezek a nevesített hálózati helyek olyan helyekhez tartozhatnak, mint például a szervezeti központ hálózati tartományai, a VPN-hálózatok tartományai vagy a blokkolni kívánt tartományok. 
 
-A elnevezett helyekhez a feltételes hozzáférés lap **kezelés** szakaszában férhet hozzá.
+![Elnevezett helyszínek a Azure Portal](./media/location-condition/new-named-location.png)
 
-![Nevesített helyszínek a feltételes hozzáférésben](./media/location-condition/02.png)
-
-Egy elnevezett hely a következő összetevőket tartalmazhatja:
-
-![Új elnevezett hely létrehozása](./media/location-condition/42.png)
-
-- **Name (név** ) – egy elnevezett hely megjelenítendő neve.
-- **IP-címtartományok** – egy vagy több IPv4-címtartomány CIDR formátumban. IPv6-címtartomány meghatározása nem támogatott.
-
-   > [!NOTE]
-   > Az IPv6-címtartományok jelenleg nem szerepelhetnek egy elnevezett helyen. Ez azt jelenti, hogy az IPv6-tartományok nem zárhatók ki feltételes hozzáférési szabályzatból.
-
-- **Megjelölés megbízható helyként** – egy megnevezett helyhez beállítható jelző, amely megbízható helyet jelez. A megbízható helyek általában az IT-részleg által vezérelt hálózati területek. A feltételes hozzáférés mellett az Azure Identity Protection és az Azure AD biztonsági jelentései is felhasználják a megbízható névvel ellátott helyek használatát a [téves pozitív](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)adatok csökkentése érdekében.
-- **Országok/régiók** – ez a beállítás lehetővé teszi egy vagy több ország vagy régió kiválasztását egy elnevezett hely definiálásához.
-- **Ismeretlen területek belefoglalása** – néhány IP-cím nincs leképezve egy adott országra vagy régióra. Ezzel a beállítással megadhatja, hogy ezek az IP-címek szerepeljenek-e a megnevezett helyen. Akkor használja ezt a beállítást, ha a nevesített helyet használó házirendet ismeretlen helyekre kell alkalmazni.
+A hely konfigurálásához meg kell adnia legalább egy **nevet** és az IP-címtartományt. 
 
 A konfigurálható elnevezett helyszínek számát a kapcsolódó objektum mérete korlátozza az Azure AD-ben. A következő korlátozások alapján állíthatja be a helyszíneket:
 
-- Egy elnevezett hely, amely legfeljebb 1200 IP-tartománnyal rendelkezik.
+- Egy elnevezett hely legfeljebb 1200 IPv4-tartománnyal.
 - Legfeljebb 90 elnevezett helyet, amelyek mindegyike egy IP-tartománnyal van társítva.
 
-A feltételes hozzáférési szabályzat az IPv4-és IPv6-forgalomra vonatkozik. A jelenleg elnevezett helyszínek nem teszik lehetővé IPv6-tartományok konfigurálását. Ez a korlátozás a következő helyzeteket okozza:
+> [!TIP]
+> Az IPV6-tartományok csak a **[nevesített hely (előzetes verzió)](#preview-features)** felületén támogatottak. 
 
-- A feltételes hozzáférési szabályzat nem célozhat meghatározott IPv6-tartományokat.
-- A feltételes hozzáférési szabályzat nem tud bizonyos IPV6-tartományokat kizárni
+### <a name="trusted-locations"></a>Megbízható helyek
 
-Ha egy házirend úgy van konfigurálva, hogy a "bármely helyre" vonatkozzon, akkor az IPv4-és IPv6-forgalomra is érvényes lesz. A megadott országokban és régiókban konfigurált elnevezett helyszínek csak IPv4-címeket támogatnak. Az IPv6-forgalom csak abban az esetben szerepel, ha a "ismeretlen területek belefoglalása" lehetőséget választotta.
+Hálózati hely létrehozásakor a rendszergazdának lehetősége van a hely megbízható helyként való megjelölésére. 
 
-## <a name="trusted-ips"></a>Megbízható IP-címek
+![Megbízható helyek a Azure Portal](./media/location-condition/new-trusted-location.png)
+
+Ez a beállítás a feltételes hozzáférési házirendekben fordulhat elő, ahol például a megbízható hálózati helyről való regisztráció megkövetelése a többtényezős hitelesítéshez. Emellett a Azure AD Identity Protection kockázati számítását is figyelembe veszi, ami csökkenti a felhasználók bejelentkezési kockázatát, ha a megbízhatóként megjelölt helyről érkezik.
+
+### <a name="countries-and-regions"></a>Országok és régiók
+
+Egyes szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatok elnevezett helyei szerint határozzák meg az összes országot vagy régióbeli IP-határokat. Ezeket a helyeket akkor használhatják, amikor blokkolják a szükségtelen forgalmat, ha tudják, hogy az érvényes felhasználók soha nem olyan helyről származnak, mint az Észak-Korea. Az IP-cím és az ország közötti leképezések rendszeresen frissülnek. 
+
+> [!NOTE]
+> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt.
+
+![Új ország vagy régió alapú hely létrehozása a Azure Portal](./media/location-condition/new-named-location-country-region.png)
+
+#### <a name="include-unknown-areas"></a>Ismeretlen területek belefoglalása
+
+Néhány IP-cím nincs leképezve egy adott országra vagy régióra. Ezeknek az IP-helyeknek a rögzítéséhez jelölje be az **ismeretlen területek** megadása a hely meghatározásakor jelölőnégyzetet. Ezzel a beállítással megadhatja, hogy ezek az IP-címek szerepeljenek-e a megnevezett helyen. Akkor használja ezt a beállítást, ha a nevesített helyet használó házirendet ismeretlen helyekre kell alkalmazni.
+
+### <a name="configure-mfa-trusted-ips"></a>MFA megbízható IP-címeinek konfigurálása
 
 A [multi-Factor Authentication szolgáltatás beállításaiban](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)konfigurálhatja a szervezet helyi intranetét JELKÉPEZŐ IP-címtartományt is. Ez a funkció lehetővé teszi, hogy legfeljebb 50 IP-címtartományt konfiguráljon. Az IP-címtartományok CIDR formátumúak. További információ: [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)-címek.  
 
@@ -83,19 +88,44 @@ A beállítás ellenőrzése után a megnevezett hely **MFA megbízható IP** -c
 A hosszú élettartamú munkamenetek élettartamát tartalmazó mobil-és asztali alkalmazások esetében a feltételes hozzáférés időszakosan újraértékelve lesz. Az alapértelmezett érték óránként egyszer. Ha a vállalati hálózati jogcímek csak a kezdeti hitelesítéskor jelennek meg, előfordulhat, hogy az Azure AD nem rendelkezik a megbízható IP-címtartományok listájával. Ebben az esetben nehezebb megállapítani, hogy a felhasználó továbbra is a vállalati hálózaton van-e:
 
 1. Ellenőrizze, hogy a felhasználó IP-címe a megbízható IP-címtartományok egyikén van-e.
-2. Győződjön meg arról, hogy a felhasználó IP-címének első három oktettje megegyezik-e a kezdeti hitelesítés IP-címének első három oktettével. A rendszer összehasonlítja az IP-címet a kezdeti hitelesítéssel, ha a belső vállalati hálózati jogcím eredetileg ki lett állítva, és a felhasználói hely ellenőrzése megtörtént.
+1. Győződjön meg arról, hogy a felhasználó IP-címének első három oktettje megegyezik-e a kezdeti hitelesítés IP-címének első három oktettével. A rendszer összehasonlítja az IP-címet a kezdeti hitelesítéssel, ha a belső vállalati hálózati jogcím eredetileg ki lett állítva, és a felhasználói hely ellenőrzése megtörtént.
 
 Ha mindkét lépés meghiúsul, a rendszer a felhasználót már nem megbízható IP-címekre tekinti.
 
-## <a name="location-condition-configuration"></a>Hely állapotának konfigurálása
+## <a name="preview-features"></a>Előzetes verziójú funkciók
+
+Az általánosan elérhető elnevezett Location funkció mellett egy megnevezett hely is található (előzetes verzió). A megnevezett hely villámnézetét az aktuális elnevezett hely panel tetején található szalagcím használatával érheti el.
+
+![Az elnevezett helyszínek előzetes verziójának kipróbálása](./media/location-condition/preview-features.png)
+
+A megnevezett hely előzetes verziójával lehetősége van
+
+- Akár 195 elnevezett helyszín konfigurálása
+- Akár 2000 IP-tartomány konfigurálása egy nevesített helyen
+- IPv6-címek konfigurálása
+
+További ellenőrzéseket is felvettünk, amelyek segítenek csökkenteni a helytelen konfiguráció változását.
+
+- A magánhálózati IP-címtartományok már nem konfigurálhatók.
+- A tartományba felvehető IP-címek száma korlátozott. IP-címtartomány konfigurálásakor csak a/8-nál nagyobb CIDR-maszkok engedélyezettek.
+
+Az előzetes verzióban mostantól két létrehozási lehetőség közül választhat: 
+
+- **Országok helye**
+- **IP-címtartományok helye**
+
+> [!NOTE]
+> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt.
+
+![Elnevezett helyszínek előzetes kezelőfelülete](./media/location-condition/named-location-preview.png)
+
+## <a name="location-condition-in-policy"></a>Hely feltétele a házirendben
 
 A hely feltételének konfigurálásakor lehetősége van a következők megkülönböztetésére:
 
 - Bármely hely
 - Minden megbízható helyszín
 - Kiválasztott helyszínek
-
-![Hely állapotának konfigurálása](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>Bármely hely
 
@@ -129,12 +159,9 @@ Alapértelmezés szerint az Azure AD egy tokent bocsát ki óránként. A válla
 
 A házirend kiértékeléséhez használt IP-cím a felhasználó nyilvános IP-címe. A magánhálózaton lévő eszközök esetében ez az IP-cím nem az intraneten lévő felhasználó eszközének ügyfél-IP-címe, hanem a hálózat által a nyilvános internethez való kapcsolódáshoz használt cím.
 
-> [!WARNING]
-> Ha az eszköz csak IPv6-címekkel rendelkezik, a hely feltételének konfigurálása nem támogatott.
-
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Elnevezett helyszínek tömeges feltöltése és letöltése
 
-Ha elnevezett helyeket hoz létre vagy frissít, a tömeges frissítésekhez feltölthet vagy letölthet egy CSV-fájlt az IP-címtartományok használatával. A feltöltés felváltja a listában szereplő IP-tartományokat a fájlból származó értékekkel. A fájl minden sora egy IP-címtartományt tartalmaz CIDR formátumban.
+Ha elnevezett helyeket hoz létre vagy frissít, a tömeges frissítésekhez feltölthet vagy letölthet egy CSV-fájlt az IP-címtartományok használatával. A feltöltés felváltja a listában szereplő IP-tartományokat a fájlból származó tartományokkal. A fájl minden sora egy IP-címtartományt tartalmaz CIDR formátumban.
 
 ### <a name="cloud-proxies-and-vpns"></a>Felhőalapú proxyk és VPN-EK
 
@@ -144,9 +171,9 @@ Ha egy felhőalapú proxy van érvényben, a tartományhoz csatlakoztatott eszk�
 
 ### <a name="api-support-and-powershell"></a>API-támogatás és PowerShell
 
-Az API és a PowerShell még nem támogatott a nevesített helyszíneken, illetve a feltételes hozzáférési házirendekben.
+Az API és a PowerShell még nem támogatott a nevesített helyein.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha tudni szeretné, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)című témakört.
-- Ha készen áll a környezet feltételes hozzáférési házirendjeinek konfigurálására, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).
+- Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
+- A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)

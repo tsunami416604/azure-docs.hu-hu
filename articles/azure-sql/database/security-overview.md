@@ -1,7 +1,7 @@
 ---
 title: Biztonsági áttekintés
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Ismerje meg a Azure SQL Database és az Azure SQL felügyelt példányának biztonságát, beleértve a helyszíni SQL Servertől való eltérést is.
+description: Ismerje meg a Azure SQL Database és az Azure SQL felügyelt példányának biztonságát, beleértve a SQL Servertól való eltérést is.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,14 +12,15 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 0f2f412045ddb86996ec98965a147d80944c642a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049959"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191711"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>A Azure SQL Database & SQL felügyelt példány biztonsági képességeinek áttekintése
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a cikk a [Azure SQL Database](sql-database-paas-overview.md) és az [Azure SQL felügyelt példányát](../managed-instance/sql-managed-instance-paas-overview.md)használó alkalmazások adatszintjeinek biztonságossá tételének alapjait ismerteti. A leírt biztonsági stratégia az alábbi képen látható, többrétegű védelem részletes megközelítését követi, és a következőn kívülről lép:
@@ -41,7 +42,7 @@ A [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtua
 A [virtuális hálózati szabályok](vnet-service-endpoint-rule-overview.md) lehetővé teszik, hogy a Azure SQL Database csak a virtuális hálózaton belüli kijelölt alhálózatokból továbbított kommunikációt fogadják.
 
 > [!NOTE]
-> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik **a felügyelt SQL-példányokra**. További információ a szükséges hálózati konfigurációról: [Csatlakozás SQL felügyelt példányhoz](../managed-instance/connect-application-instance.md)
+> A tűzfalszabályok hozzáférésének szabályozása *nem* vonatkozik **a felügyelt SQL-példányokra**. További információ a szükséges hálózati konfigurációról: [Csatlakozás SQL felügyelt példányhoz](../managed-instance/connect-application-instance.md).
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 

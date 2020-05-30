@@ -7,19 +7,19 @@ ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0361d42ea614b394142e32a9193ab1d48d1a4a6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75666856"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194238"
 ---
 # <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Az Office 365-felhasználók profiljainak lekérése és kezelése Azure Logic Apps használatával
 
 Kapcsolódjon az Office 365-felhasználókhoz profilok, keresés a felhasználók és egyebek között. Az Office 365-felhasználókkal a következőket teheti:
 
 * Az Office 365-felhasználóktól kapott adatok alapján hozza létre üzleti folyamatát. 
-* Olyan műveleteket használhat, amelyek közvetlen jelentéseket kapnak, beszerezhetik a felettes felhasználói profilját és egyebeket. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Például beszerezhet egy személy közvetlen jelentéseit, majd elvégezheti ezeket az adatokat, és frissítheti SQL Azure adatbázisát. 
+* Olyan műveleteket használhat, amelyek közvetlen jelentéseket kapnak, beszerezhetik a felettes felhasználói profilját és egyebeket. Ezek a műveletek választ kapnak, majd elérhetővé teszik a kimenetet más műveletekhez. Például beszerezhet egy személy közvetlen jelentéseit, majd megteheti ezeket az adatokat, és frissítheti Azure SQL Database-adatbázisát. 
 
 A logikai alkalmazások létrehozásának első lépéseiről a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című témakörben olvashat.
 

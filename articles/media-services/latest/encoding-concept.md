@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366579"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220166"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
@@ -98,7 +98,10 @@ A következő beállításkészletek jelenleg támogatottak:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: egyetlen MP4-fájlt hoz létre, amely kizárólag 192 kbps-nál kódolt sztereó hanganyagot tartalmaz.
 - **EncoderNamedPreset. AdaptiveStreaming** (ajánlott): további információért lásd a [bitráta-létrák automatikus generálását](autogen-bitrate-ladder.md)ismertető témakört.
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: egy kísérleti beállításkészletet tesz elérhetővé a Content-Aware kódoláshoz. A szolgáltatás bármilyen bemeneti tartalmat megpróbál automatikusan meghatározni a rétegek optimális számának meghatározására, valamint a megfelelő bitrátát és feloldási beállításokat az adaptív adatfolyam-továbbítással. Az alapul szolgáló algoritmusok az idő múlásával továbbra is fejlődnek lesznek. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [kísérleti beállításkészlet a Content-Aware kódoláshoz](content-aware-encoding.md).
+- **EncoderNamedPreset. ContentAwareEncoding**: egy előre beállított tartalmat tesz elérhetővé a Content-Aware kódoláshoz. A szolgáltatás bármilyen bemeneti tartalmat megpróbál automatikusan meghatározni a rétegek optimális számának meghatározására, valamint a megfelelő bitrátát és feloldási beállításokat az adaptív adatfolyam-továbbítással. Az alapul szolgáló algoritmusok az idő múlásával továbbra is fejlődnek lesznek. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [Content-Aware kódolás](content-aware-encoding.md).
+
+  > [!NOTE]
+  > Ügyeljen arra, hogy az **ContentAwareEncoding** ne ContentAwareEncodingExperimental.
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: nyolc GOP-igazítású MP4-fájlt állít elő, amely 6000 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A felbontás 1080p-kor kezdődik, és a 360p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: hat GOP-igazítású MP4-fájlt állít elő, amely 3400 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás 720p-kor kezdődik, és a 360p-re mutat.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: öt GOP-igazítású MP4-fájlt állít elő, amely 1600 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás a 480p-on kezdődik, és a 360p-re mutat.

@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847633"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193534"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségben lévő elhelyezési csoportokban futó Azure-beli virtuális gépek replikálása egy másik régióba
 
@@ -27,6 +27,9 @@ Egy tipikus forgatókönyv esetében előfordulhat, hogy a virtuális gépek egy
 - A legjobb megoldás az, ha a virtuális gépeket egy közelségi elhelyezési csoportba helyezi a feladatátvétel/feladat-visszavétel során. Ha azonban a virtuális gép a feladatátvétel/feladat-visszavétel során nem tud megjelenni a közelségben, akkor a feladatátvétel/feladat-visszavétel továbbra is megtörténik, és a virtuális gépeket a közelségi elhelyezési csoporton kívül hozza létre a rendszer.
 -  Ha egy rendelkezésre állási csoport egy közelségi helyhez van rögzítve, és a rendelkezésre állási csoportban lévő feladatátvételi/feladat-visszavételi virtuális gépeken foglalási korlátozás van megadva, akkor a virtuális gépek a rendelkezésre állási csoporton és a közelségi elhelyezési csoportban kívül is létrejönnek.
 -  Nem felügyelt lemezek esetén nem támogatott a közelségi csoportok Site Recovery.
+
+> [!Note]
+> A Azure Site Recovery nem támogatja a Hyper-V – Azure forgatókönyvek esetében a felügyelt lemezek feladat-visszavételét. Ezért az Azure-ból a Hyper-V-be történő, a közelségi elhelyezési csoportból történő feladat-visszavétel nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -188,7 +191,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 8. Futtasson [feladatátvételi](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)tesztet.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A VMware-ből az Azure-ba történő ismételt védelem és feladat-visszavétel végrehajtásához kövesse az [itt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)ismertetett lépéseket.
 

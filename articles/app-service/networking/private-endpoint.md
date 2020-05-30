@@ -8,13 +8,13 @@ ms.date: 05/25/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4c48a2fad927812cc45543243b48a2df81acf73b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: 2151b72e647726a075e11bbaea968ccf30cdc78a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846953"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196396"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 

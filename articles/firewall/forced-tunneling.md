@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d9afb93611712109d5e8fcc8a686f4f9196f3396
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649599"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204038"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Kényszerített bújtatás Azure Firewall
 
@@ -26,7 +26,7 @@ A kényszerített bújtatás támogatásához a szolgáltatás-felügyeleti forg
 
 Ha a BGP-n keresztül meghirdetett alapértelmezett útvonalon keresztül kényszeríti a forgalmat a helyszíni rendszerbe, létre kell hoznia a *AzureFirewallSubnet* és a *AzureFirewallManagementSubnet* a tűzfal üzembe helyezése előtt, és rendelkeznie kell egy, az internetre irányuló alapértelmezett útvonallal, és a **virtuális hálózati átjáró útvonal-propagálása** le van tiltva.
 
-Ezen a konfiguráción belül a *AzureFirewallSubnet* mostantól útvonalakat is tartalmazhatnak bármely helyszíni TŰZFAL vagy NVA számára, hogy a forgalmat az internetre való továbbítás előtt dolgozzák fel. Ezeket az útvonalakat a BGP-n keresztül is közzéteheti, ha engedélyezve van a **virtuális hálózati átjáró** *AzureFirewallSubnet* ezen az alhálózaton.
+Ebben a konfigurációban a *AzureFirewallSubnet* mostantól a helyszíni tűzfalakhoz vagy NVA útvonalakat is tartalmazhatnak a forgalom feldolgozásához, mielőtt a rendszer átadja az internetre. Ezeket az útvonalakat a BGP-n keresztül is közzéteheti, ha engedélyezve van a **virtuális hálózati átjáró** *AzureFirewallSubnet* ezen az alhálózaton.
 
 Létrehozhat például egy alapértelmezett útvonalat a *AzureFirewallSubnet* a VPN-átjáróval a következő ugrásként a helyszíni eszköz beszerzéséhez. Vagy engedélyezheti a **virtuális hálózati átjáró útvonal-propagálását** , hogy lekérje a megfelelő útvonalakat a helyszíni hálózatra.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database felügyelt példány használata az Azure-SQL Server Integration Services (SSIS) használatával Azure Data Factory
-description: Megtudhatja, hogyan használhatja Azure SQL Database felügyelt példányt SQL Server Integration Services (SSIS) használatával Azure Data Factory.
+title: Az Azure SQL felügyelt példányának használata az Azure-SQL Server Integration Services (SSIS) használatával Azure Data Factory
+description: Ismerje meg, hogyan használható az Azure SQL felügyelt példánya SQL Server Integration Services (SSIS) használatával Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015284"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195368"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Database felügyelt példány használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csomagjait és munkaterheléseit az Azure-felhőbe. SSIS-projektek és-csomagok üzembe helyezése, futtatása és kezelése Azure SQL Database vagy SQL Database felügyelt példányon olyan ismerős eszközökkel, mint például a SQL Server Management Studio (SSMS). Ez a cikk a Azure SQL Database felügyelt példány Azure-SSIS Integration Runtime (IR) használatával történő használatakor a következő konkrét területeket emeli ki:
+Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csomagjait és munkaterheléseit az Azure-felhőbe. SSIS-projektek és-csomagok üzembe helyezése, futtatása és kezelése Azure SQL Database vagy SQL felügyelt példányon olyan ismerős eszközökkel, mint például a SQL Server Management Studio (SSMS). Ez a cikk az Azure SQL felügyelt példányának Azure-SSIS Integration Runtime (IR) használatával történő használatakor a következő konkrét területeket emeli ki:
 
-- [Azure-SSIS IR kiépítése Azure SQL Database felügyelt példány által üzemeltetett SSIS-katalógussal (SSISDB)](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
+- [Azure-SSIS IR kiépítése az Azure SQL felügyelt példányai által üzemeltetett SSIS-katalógussal (SSISDB)](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS-csomagok végrehajtása az Azure SQL felügyelt példány-ügynökének feladata](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSISDB-naplók törlése az Azure SQL felügyelt példány-ügynök feladata alapján](#clean-up-ssisdb-logs)
-- [Feladatátvétel Azure-SSIS IR Azure SQL Database felügyelt példánnyal](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Helyszíni SSIS-munkaterhelések migrálása az ADF-ben lévő Azure SQL Database felügyelt példánytal az adatbázis-munkaterhelés céljaként való SSIS](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
+- [Azure-SSIS IR feladatátvétel az Azure SQL felügyelt példányával](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [A helyszíni SSIS számítási feladatainak áttelepíthetők az ADF-ben lévő SSIS az Azure SQL felügyelt példányával az adatbázis-munkaterhelés céljaként](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure-SSIS IR kiépítése az Azure SQL felügyelt példányai által üzemeltetett SSISDB
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Azure Active Directory hitelesítés kiválasztásakor [engedélyezze a Azure Active Directory (Azure ad) Azure SQL Database felügyelt példányon](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+1. A Azure Active Directory hitelesítés kiválasztásakor [engedélyezze Azure Active Directory (Azure ad) használatát az Azure SQL felügyelt példányain](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Válassza ki, hogyan csatlakozhat az SQL felügyelt példányhoz magán-végponton vagy nyilvános végponton keresztül:
 
@@ -44,13 +44,13 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
             - Ugyanazon a virtuális hálózaton belül, amelyen az SQL felügyelt példánya **eltérő alhálózattal**rendelkezik.
             - Egy másik virtuális hálózaton belül, mint az SQL felügyelt példánya, virtuális hálózati társításon keresztül (amely ugyanahhoz a régióhoz van korlátozva a globális VNet-megkötések miatt) vagy virtuális hálózatról virtuális hálózatra való kapcsolódás.
 
-            További információ az SQL felügyelt példányok kapcsolatáról: [az alkalmazás csatlakoztatása Azure SQL Database felügyelt példányhoz](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            További információ az SQL felügyelt példányok kapcsolatáról: [az alkalmazás csatlakoztatása az Azure SQL felügyelt példányához](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Konfigurálja a virtuális hálózatot](#configure-virtual-network).
 
     - Nyilvános végponton keresztül
 
-        Azure SQL Database felügyelt példányok [nyilvános végpontokon](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)keresztül is biztosíthatnak kapcsolatot. A bejövő és kimenő követelményeknek meg kell felelniük a felügyelt SQL-példány és a Azure-SSIS IR közötti adatforgalom engedélyezéséhez:
+        Az Azure SQL felügyelt példányai [nyilvános végpontokon](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)keresztül is biztosíthatnak kapcsolatot. A bejövő és kimenő követelményeknek meg kell felelniük a felügyelt SQL-példány és a Azure-SSIS IR közötti adatforgalom engedélyezéséhez:
 
         - Ha Azure-SSIS IR nem a virtuális hálózaton belül (előnyben részesített)
 
@@ -147,7 +147,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
 
     ![Katalógus – nyilvános végpont](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Az Azure AD-hitelesítés engedélyezésével kapcsolatos további információkért lásd: [Az Azure ad engedélyezése Azure SQL Database felügyelt példányon](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+    Az Azure AD-hitelesítés engedélyezésével kapcsolatos további információkért lásd: az [Azure ad engedélyezése az Azure SQL felügyelt példányain](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Ha érvényes, csatlakoztassa Azure-SSIS IRt a virtuális hálózathoz.
 

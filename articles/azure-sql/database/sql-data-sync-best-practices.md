@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 60df6597d13ea5c8ca265959b0dba5cb83bcdcba
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044737"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196358"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Ajánlott eljárások az Azure SQL Data Synchez 
 
@@ -34,7 +34,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 ### <a name="client-agent"></a>Ügyfél ügynöke
 
 -   Telepítse az ügynököt a hálózati szolgáltatás elérésével rendelkező, legkevésbé privilegizált felhasználói fiók használatával.  
--   Telepítse az ügyféloldali ügynököt olyan számítógépre, amely nem a helyszíni SQL Server számítógép.  
+-   Telepítse az ügyféloldali ügynököt olyan számítógépre, amely nem a SQL Server számítógép.  
 -   Ne regisztráljon egy helyszíni adatbázist egynél több ügynökkel.    
     -   Ezt akkor is el kell kerülni, ha különböző táblákat szinkronizál a különböző szinkronizálási csoportokhoz.  
     -   Egy helyszíni adatbázis több ügyfél-ügynökkel való regisztrálása kihívást jelent, amikor törli az egyik szinkronizálási csoportot.
@@ -195,9 +195,9 @@ Elavult szinkronizálási csoportok megelőzése:
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Eset
+#### <a name="scenario"></a>Forgatókönyv
 
-1. Az A szinkronizálási csoport egy SQL Database-példány és egy helyszíni SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
+1. Az A szinkronizálási csoport egy SQL Database-példány és egy SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).
 3. A helyszíni adatbázis helyi ügynökből való regisztrációjának törlése eltávolítja a helyszíni adatbázishoz tartozó A szinkronizálási csoport nyomon követését és meta tábláit.
 4. A szinkronizálási csoport egy művelete meghiúsul, ezzel a hibával: "az aktuális művelet nem fejeződött be, mert az adatbázis nincs kiépítve szinkronizálásra, vagy Önnek nincs engedélye a szinkronizálási konfigurációs táblákhoz."
@@ -232,8 +232,8 @@ A probléma megoldásához csökkentse a szinkronizálási metaadat-adatbázist 
 További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)
--   SQL-adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
+-   Az SQL Data Sync beállítása
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
     - A PowerShell-lel
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

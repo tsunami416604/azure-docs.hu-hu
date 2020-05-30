@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536156"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193674"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>A Azure Data Lake Storage Gen1 használata big data követelményekhez
 
@@ -108,7 +108,7 @@ Az alábbi példákat is megtekintheti.
 ## <a name="download-data-from-data-lake-storage-gen1"></a>Adatok letöltése Data Lake Storage Gen1ról
 Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letölteni vagy áthelyezni az adatok Azure Data Lake Storage Gen1:
 
-* Más adattárakba helyezheti át az adatait a meglévő adatfeldolgozási folyamatokkal. Előfordulhat például, hogy át szeretné helyezni az adatok Data Lake Storage Gen1ról Azure SQL Database vagy helyszíni SQL Serverre.
+* Más adattárakba helyezheti át az adatait a meglévő adatfeldolgozási folyamatokkal. Előfordulhat például, hogy át szeretné helyezni az adatok Data Lake Storage Gen1ról Azure SQL Database vagy SQL Serverre.
 * Az alkalmazások prototípusának kiépítése során az IDE-környezetekben tárolt adatfeldolgozási folyamatokat a helyi számítógépre töltheti le.
 
 ![Kimenő adatok Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Kimenő adatok Data Lake Storage Gen1")

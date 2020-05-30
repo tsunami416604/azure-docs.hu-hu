@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/27/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118668"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220506"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -28,12 +28,12 @@ Ez a cikk bemutatja, hogyan érheti el a helyszíni SAP-erőforrásokat egy logi
 Az SAP-összekötő az [SAP .net Connector (NKH) függvénytárát](https://support.sap.com/en/product/connectors/msnet.html) használja, és a következő műveleteket biztosítja:
 
 * **Üzenet küldése az SAP**-nak: küldje el az IDoc-t a tRFC-on keresztül, hívja meg az BAPI függvényt az RFC-en keresztül, vagy hívja az RFC/tRFC
+
 * **Ha üzenet érkezik az SAP**: Receive IDoc over tRFC, hívja a BAPI functions-t a tRFC-on keresztül, vagy hívja meg az RFC/tRFC-t az SAP Systems-ben.
+
 * **Sémák előállítása**: sémák előállítása az SAP-összetevőkhöz a IDoc, a BAPI és az RFC számára.
 
 Ezen műveletek esetében az SAP-összekötő a felhasználónevek és jelszavak használatával támogatja az alapszintű hitelesítést. Az összekötő támogatja a [biztonságos hálózati kommunikációt (Snc)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true)is. A SNC az SAP NetWeaver egyszeri bejelentkezéshez (SSO), vagy egy külső biztonsági termék által biztosított további biztonsági képességekhez használható.
-
-Az SAP-összekötő helyszíni SAP-rendszerekkel integrálódik a helyszíni [adatátjárón](../logic-apps/logic-apps-gateway-connection.md)keresztül. A küldési forgatókönyvek esetében például, amikor egy logikai alkalmazásból egy SAP-rendszerbe küldenek egy üzenetet, az adatátjáró RFC-ügyfélként működik, és továbbítja a logikai alkalmazástól az SAP-nek fogadott kérelmeket. Hasonlóképpen, a fogadási helyzetekben az adatátjáró olyan RFC-kiszolgálóként működik, amely az SAP-kérelmeket fogadja, és továbbítja őket a logikai alkalmazásnak.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre az SAP-nal integrálható, például a korábban leírt integrációs forgatókönyveket használó logikai alkalmazásokat. A régebbi SAP-összekötőket használó Logic apps esetén ez a cikk bemutatja, hogyan telepíthet át logikai alkalmazásait a legújabb SAP-összekötőre.
 
@@ -49,42 +49,121 @@ Ennek a cikknek a követéséhez a következő elemek szükségesek:
 
 * Az [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy az [SAP-üzenetküldési kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* [Töltse le és telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) a helyi számítógépre. Ezután [hozzon létre egy Azure Gateway-erőforrást](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) az adott átjáróhoz a Azure Portal. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz. 
-
-  * Ajánlott eljárásként győződjön meg arról, hogy a helyszíni adatátjáró támogatott verzióját használja. A Microsoft minden hónapban új verziót bocsát ki. A Microsoft jelenleg az utolsó hat verziót támogatja. Ha az átjáróval kapcsolatos problémát tapasztal, próbálkozzon [a legújabb verzióra való frissítéssel](https://aka.ms/on-premises-data-gateway-installer), amely a probléma megoldásához szükséges frissítéseket is tartalmazhatja.
-
-* [Töltse le, telepítse és konfigurálja a legújabb SAP ügyféloldali kódtárat](#sap-client-library-prerequisites) ugyanarra a számítógépre, mint a helyszíni adatátjárót.
-
 * Az SAP-kiszolgálónak küldendő üzenetek, például a minta IDoc fájlnak XML formátumúnak kell lennie, és tartalmaznia kell a használni kívánt SAP-művelet névterét.
+
+* Ha az SAP triggertől **érkező üzenetet** szeretne használni, a következő lépéseket is végre kell hajtania:
+
+  * Állítsa be az SAP Gateway biztonsági engedélyeit a következő beállítással:
+
+    `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
+
+  * Állítsa be az SAP Gateway biztonsági naplózását, amely segít megkeresni Access Control lista (ACL) hibáit, és alapértelmezés szerint nincs engedélyezve. Ellenkező esetben a következő hibaüzenetet kapja:
+
+    `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
+
+    További információ: SAP-súgótémakör [beállítása átjáró naplózása](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm).
+
+<a name="multi-tenant"></a>
+
+### <a name="multi-tenant-azure-prerequisites"></a>Több-bérlős Azure-előfeltételek
+
+Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások több-bérlős Azure-ban futnak, és a felügyelt SAP-összekötőt szeretné használni, amely nem fut natív módon egy [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Ellenkező esetben, ha prémium szintű ISE-t használ, és az ISE-ben natív módon futó SAP-összekötőt szeretné használni, tekintse meg az [integrációs szolgáltatási környezet (ISE) előfeltételeit](#sap-ise).
+
+A felügyelt (nem ISE) SAP-összekötő a helyszíni [adatátjárón](../logic-apps/logic-apps-gateway-connection.md)keresztül integrálódik a helyszíni SAP-rendszerekkel. Az üzenetküldési forgatókönyvek esetében például, amikor egy logikai alkalmazásból egy SAP-rendszernek küldenek üzenetet, az adatátjáró RFC-ügyfélként működik, és továbbítja a logikai alkalmazástól az SAP-nek fogadott kérelmeket. Hasonlóképpen, a fogadási üzenetekben az adatátjáró olyan RFC-kiszolgálóként működik, amely fogadja az SAP-kéréseket, és továbbítja őket a logikai alkalmazásnak.
+
+* [Töltse le és telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) a helyi számítógépre. Ezután [hozzon létre egy Azure Gateway-erőforrást](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) az adott átjáróhoz a Azure Portal. Az átjáró segítségével biztonságosan férhet hozzá a helyszíni információkhoz és erőforrásokhoz.
+
+  Ajánlott eljárásként győződjön meg arról, hogy a helyszíni adatátjáró támogatott verzióját használja. A Microsoft minden hónapban új verziót bocsát ki. A Microsoft jelenleg az utolsó hat verziót támogatja. Ha az átjáróval kapcsolatos problémát tapasztal, próbálkozzon [a legújabb verzióra való frissítéssel](https://aka.ms/on-premises-data-gateway-installer), amely a probléma megoldásához szükséges frissítéseket is tartalmazhatja.
+
+* [Töltse le és telepítse a legújabb SAP ügyféloldali kódtárat](#sap-client-library-prerequisites) ugyanarra a számítógépre, mint a helyszíni adatátjárót.
+
+<a name="sap-ise"></a>
+
+### <a name="integration-service-environment-ise-prerequisites"></a>Integrációs szolgáltatási környezet (ISE) előfeltételei
+
+Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium szintű (nem fejlesztői szintű) [Integration Service Environment (ISE) környezetben](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futnak, és az olyan SAP-összekötőt szeretné használni, amely natív módon fut egy ISE-ben. Az ISE hozzáférést biztosít az Azure Virtual Network által védett erőforrásokhoz, és más ISE-natív összekötőket biztosít, amelyek lehetővé teszik a Logic apps számára, hogy a helyszíni adatátjáró használata nélkül közvetlenül hozzáférhessenek a helyszíni erőforrásokhoz.
+
+> [!NOTE]
+> Bár az SAP ISE-összekötő látható egy fejlesztői szintű ISE-ben, az összekötő telepítésére tett kísérletek sikertelenek lesznek.
+
+1. Ha még nem rendelkezik Azure Storage-fiókkal és blob-tárolóval, hozza létre a tárolót a [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) vagy [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával.
+
+1. [Töltse le és telepítse a legújabb SAP ügyféloldali kódtárat](#sap-client-library-prerequisites) a helyi számítógépen. A következő szerelvény-fájloknak kell szerepelniük:
+
+   * libicudecnumber. dll
+   * rscp4n. dll
+   * sapnco. dll
+   * sapnco_utils. dll
+
+1. Hozzon létre egy. zip-fájlt, amely tartalmazza ezeket a szerelvényeket, és töltse fel ezt a csomagot a blob-tárolóba az Azure Storage-ban.
+
+1. A Azure Portal vagy Azure Storage Explorer területen keresse meg azt a tárolót, ahová a. zip fájlt feltöltötte.
+
+1. Másolja ki az adott hely URL-címét, és győződjön meg arról, hogy tartalmazza a közös hozzáférésű aláírás (SAS) tokenjét.
+
+   Ellenkező esetben az SAS-token nem lesz engedélyezve, és az SAP ISE-összekötő üzembe helyezése sikertelen lesz.
+
+1. Az SAP ISE-összekötő használata előtt telepítenie és telepítenie kell az összekötőt az ISE-ben.
+
+   1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az ISE-t.
+   
+   1. Az ISE menüben válassza a **felügyelt összekötők**  >  **Hozzáadás**elemet. Az összekötők listájában keresse meg és válassza ki az **SAP**elemet.
+   
+   1. Az **új felügyelt összekötő hozzáadása** ablaktábla **SAP-csomag** mezőjébe illessze be az SAP-szerelvényekkel rendelkező. zip-fájl URL-címét. *Győződjön meg arról, hogy tartalmazza az SAS-tokent.*
+
+   1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+
+   További információ: ISE- [Összekötők hozzáadása](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
+
+1. Ha az SAP-példány és az ISE különböző virtuális hálózatokban vannak, akkor [ezeket a hálózatokat](../virtual-network/tutorial-connect-virtual-networks-portal.md) is el kell végeznie, hogy az ISE virtuális hálózata csatlakoztatva legyen az SAP-példány virtuális hálózatához.
+
+<a name="sap-client-library-prerequisites"></a>
 
 ### <a name="sap-client-library-prerequisites"></a>Az SAP-ügyfél függvénytárának előfeltételei
 
-* Alapértelmezés szerint az SAP-telepítő az alapértelmezett telepítési mappában helyezi el az összeállítási fájlokat. Másolja a szerelvény fájljait az alapértelmezett telepítési mappából az átjáró telepítési mappájába.
+* Győződjön meg arról, hogy a legújabb verziót, az [SAP Connectort (nkh 3,0) telepíti Microsoft .net 3.0.22.0 a .NET-keretrendszer 4,0-Windows 64-bit (x64) használatával lefordítva](https://softwaredownloads.sap.com/file/0020000001000932019). A korábbi verziók kompatibilitási problémákat okozhatnak. További információ: [SAP ügyféloldali függvénytár-verziók](#sap-library-versions).
 
-    * Ha az SAP-kapcsolat meghiúsul a következő hibaüzenettel: "Kérjük, ellenőrizze a fiók adatait és/vagy engedélyeit, és próbálkozzon újra", előfordulhat, hogy a szerelvény fájljai nem megfelelő helyen találhatók. Győződjön meg arról, hogy a szerelvény fájljait átmásolta az átjáró telepítési mappájába. Ezt követően [használja a .net Assembly kötési napló megjelenítőjét a hibaelhárításhoz](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), amely lehetővé teszi annak ellenőrzését, hogy a szerelvény fájljai a megfelelő helyen vannak-e.
+* Alapértelmezés szerint az SAP-telepítő az alapértelmezett telepítési mappában helyezi el az összeállítási fájlokat. Ezeket a szerelvény-fájlokat egy másik helyre kell másolnia a forgatókönyv alapján, az alábbiak szerint:
 
-    * Igény szerint a **globális szerelvény-gyorsítótár regisztrációját** is kiválaszthatja az SAP ügyféloldali kódtár telepítésekor.
+  Az ISE-ben futó Logic apps esetén kövesse az [integrációs szolgáltatás környezetének előfeltételei](#sap-ise)című témakörben leírt lépéseket. A több-bérlős Azure-ban futó Logic apps és a helyszíni adatátjáró használata esetén másolja az alapértelmezett telepítési mappából az adatátjáró telepítési mappájába az összeállítási fájlokat. Ha az adatátjáróval kapcsolatos problémákba ütközik, tekintse át a következő problémákat:
 
-* Győződjön meg arról, hogy a legújabb verziót, az [SAP Connectort (nkh 3,0) telepíti a .NET-keretrendszer 4,0-Windows 64-bit (x64) 3.0.22.0 lefordított Microsoft .net](https://softwaredownloads.sap.com/file/0020000001000932019)a következő okok miatt:
+  * Telepítenie kell az SAP ügyféloldali kódtár 64 bites verzióját, mert az adatátjáró csak 64 bites rendszereken fut. Ellenkező esetben a "hibás rendszerkép" hibaüzenet jelenik meg, mert az adatátjáró-gazda szolgáltatás nem támogatja a 32 bites szerelvényeket.
 
-    * A korábbi SAP NKH-verziók holtpontra válhatnak, ha egyszerre több IDoc üzenetet küld. Ez az állapot blokkolja az SAP-célhelyre küldött összes újabb üzenetet, ami miatt az üzenetek időtúllépést okoznak.
-    * A helyszíni adatátjáró csak 64 bites rendszereken fut. Ellenkező esetben a "hibás rendszerkép" hibaüzenet jelenik meg, mert az adatátjáró-gazda szolgáltatás nem támogatja a 32 bites szerelvényeket.
+  * Ha az SAP-kapcsolat meghiúsul a következő hibaüzenettel: "Kérjük, ellenőrizze a fiók adatait és/vagy engedélyeit, és próbálkozzon újra", előfordulhat, hogy a szerelvény fájljai nem megfelelő helyen találhatók. Győződjön meg arról, hogy a szerelvény fájljait a adatátjáró telepítési mappájába másolta.
 
-    * Az adatátjáró-gazdagép és a Microsoft SAP-adapter egyaránt a .NET-keretrendszer 4,5-es frissítését használja. A .NET-keretrendszer 4,0-es SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 4,0-et használnak a 4.7.1. A .NET-keretrendszer 2,0-es verziójának SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 2,0-t használnak a 3,5-as verzióra, de már nem működik a legújabb helyszíni adatátjáróval.
+    A hibák elhárításához [használja a .net-szerelvény kötési naplójának megjelenítőjét](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), amely lehetővé teszi, hogy a szerelvény fájljai a megfelelő helyen legyenek. Igény szerint a **globális szerelvény-gyorsítótár regisztrációját** is kiválaszthatja az SAP ügyféloldali kódtár telepítésekor.
 
-### <a name="snc-prerequisites"></a>A SNC előfeltételei
+<a name="sap-library-versions"></a>
 
-Adja meg ezeket a beállításokat, ha a következőt használja: SNC (opcionális):
+#### <a name="sap-client-library-versions"></a>SAP ügyféloldali függvénytár-verziók
 
-* Ha a SNC-t egyszeri bejelentkezéssel használja, győződjön meg róla, hogy az átjáró az SAP-felhasználóhoz hozzárendelt felhasználóként fut. Az alapértelmezett fiók módosításához válassza a **fiók módosítása**lehetőséget, és adja meg a felhasználói hitelesítő adatokat.
+A korábbi SAP NKH-verziók holtpontra válhatnak, ha egyszerre több IDoc üzenetet küld. Ez az állapot blokkolja az SAP-célhelyre küldött összes újabb üzenetet, ami miatt az üzenetek időtúllépést okoznak.
 
-  ![Átjáró fiókjának módosítása](./media/logic-apps-using-sap-connector/gateway-account.png)
+Az SAP ügyféloldali kódtár, a .NET-keretrendszer, a .NET-futtatókörnyezet és az átjáró közötti kapcsolatok:
 
-* Ha engedélyezi a SNC-t egy külső biztonsági termékkel, másolja a SNC-könyvtárat vagy-fájlokat ugyanarra a gépre, amelyen az átjáró telepítve van. Néhány példa a SNC-termékekre: [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), KERBEROS és NTLM.
+* A Microsoft SAP-adapter és az átjáró-gazdagép szolgáltatás egyaránt a .NET-keretrendszer 4,5-es szervizcsomagját használja.
+
+* A .NET-keretrendszer 4,0-es SAP-NKH olyan folyamatokkal működik, amelyek .NET Runtime 4,0-et használnak a 4.7.1.
+
+* A .NET-keretrendszer 2,0-es verziójának SAP-NKH olyan folyamatokkal működik, amelyek a .NET Runtime 2,0-et használják a 3,5-ra, de már nem működik a legújabb átjáróval.
+
+### <a name="secure-network-communications-prerequisites"></a>A hálózati kommunikáció előfeltételeinek védelme
+
+Ha a helyszíni adatátjárót a választható biztonságos hálózati kommunikációval (SNC) használja, amely csak a több-bérlős Azure-ban támogatott, a következő beállításokat is konfigurálnia kell:
+
+* Ha a SNC-t egyszeri bejelentkezéssel (SSO) használja, győződjön meg arról, hogy az adatátjáró az SAP-felhasználóhoz hozzárendelt felhasználóként fut. Az alapértelmezett fiók módosításához válassza a **fiók módosítása**lehetőséget, és adja meg a felhasználói hitelesítő adatokat.
+
+  ![Adatátjáró-fiók módosítása](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Ha a SNC-t egy külső biztonsági termékkel engedélyezi, másolja a SNC-könyvtárat vagy-fájlokat ugyanarra a számítógépre, ahol az adatátjáró telepítve van. Néhány példa a SNC-termékekre: [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), KERBEROS és NTLM.
+
+További információ az adatátjáróhoz tartozó SNC engedélyezéséről: a [biztonságos hálózati kommunikáció engedélyezése](#secure-network-communications).
 
 <a name="migrate"></a>
 
 ## <a name="migrate-to-current-connector"></a>Migrálás az aktuális összekötőre
+
+A korábban felügyelt (nem ISE) SAP-összekötőről a jelenlegi felügyelt SAP-összekötőre való Migrálás lépései:
 
 1. Ha még nem tette meg, frissítse a helyszíni [adatátjárót](https://www.microsoft.com/download/details.aspx?id=53127) , hogy a legújabb verzióval rendelkezzen. További információ: [helyszíni adatátjáró telepítése Azure Logic Appshoz](../logic-apps/logic-apps-gateway-install.md).
 
@@ -139,13 +218,15 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Az "üzenet küldése az SAP-nek" művelet kiválasztása a vállalati lapon](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet. Ha azonban a rendszer megkéri a kapcsolat részleteinek megadását, adja meg az adatokat, hogy most létrehozza a kapcsolatát a helyszíni SAP-kiszolgálóval.
+1. Ha a kapcsolat már létezik, folytassa a következő lépéssel, hogy beállítsa az SAP-műveletet. Ha azonban a rendszer megkérdezi a kapcsolat részleteit, adja meg az adatokat, hogy létre tudja hozni a kapcsolatát a helyszíni SAP-kiszolgálóval.
 
    1. Adja meg a kapcsolatok nevét.
 
-   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
+   1. Ha az adatátjárót használja, kövesse az alábbi lépéseket:
    
-   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
+      1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az Azure-előfizetést az adatátjáró-erőforráshoz, amelyet az adatátjáró-telepítés Azure Portalban hozott létre.
+   
+      1. A **csatlakoztatási átjáró**területen válassza ki az adatátjáró-erőforrást az Azure-ban.
 
    1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
    
@@ -257,9 +338,11 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    1. Adja meg a kapcsolatok nevét.
 
-   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
+   1. Ha az adatátjárót használja, kövesse az alábbi lépéseket:
 
-   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
+      1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az Azure-előfizetést az adatátjáró-erőforráshoz, amelyet az adatátjáró-telepítés Azure Portalban hozott létre.
+
+      1. A **csatlakoztatási átjáró**területen válassza ki az adatátjáró-erőforrást az Azure-ban.
 
    1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
 
@@ -279,7 +362,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
 1. Adja meg a [szükséges paramétereket](#parameters) az SAP rendszerkonfigurációja alapján.
 
-   Szükség esetén egy vagy több SAP-műveletet is megadhat. A műveletek listája azokat az üzeneteket határozza meg, amelyeket az indító az adatátjárón keresztül fogad az SAP-kiszolgálótól. Az üres lista azt adja meg, hogy az trigger megkapja az összes üzenetet. Ha a lista egynél több üzenetet tartalmaz, az trigger csak a listában megadott üzeneteket kapja meg. Az átjáró visszautasítja az SAP-kiszolgálóról küldött összes többi üzenetet.
+   Szükség esetén egy vagy több SAP-műveletet is megadhat. A műveletek listája azokat az üzeneteket határozza meg, amelyeket az trigger az SAP-kiszolgálótól kap. Az üres lista azt adja meg, hogy az trigger megkapja az összes üzenetet. Ha a lista egynél több üzenetet tartalmaz, az trigger csak a listában megadott üzeneteket kapja meg. A rendszer elutasítja az SAP-kiszolgálóról küldött összes többi üzenetet.
 
    Kiválaszthat egy SAP-műveletet a file pickerből:
 
@@ -293,14 +376,14 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    ![Több üzenetet fogadó trigger – példa](media/logic-apps-using-sap-connector/example-trigger.png)
 
-   Az SAP-művelettel kapcsolatos további információkért lásd: [IDOC-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
+   Az SAP-művelettel kapcsolatos további információkért lásd: [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
 1. Most mentse a logikai alkalmazást, így elkezdheti az SAP-rendszerből érkező üzenetek fogadását. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
 A logikai alkalmazás most már készen áll az SAP-rendszerből érkező üzenetek fogadására.
 
 > [!NOTE]
-> Az SAP-trigger nem egy lekérdezési trigger, de egy webhook-alapú trigger helyette. Az triggert csak akkor hívja meg az átjáró, ha van ilyen üzenet, ezért nincs szükség lekérdezésre.
+> Az SAP-trigger nem egy lekérdezési trigger, de egy webhook-alapú trigger helyette. Ha az adatátjárót használja, az trigger csak akkor lesz meghívva az adatátjáróról, ha van ilyen üzenet, ezért nincs szükség lekérdezésre.
 
 <a name="parameters"></a>
 
@@ -320,11 +403,11 @@ Az egyszerű karakterlánc-és szám típusú bemenetekkel együtt az SAP-össze
 
 1. Nyissa meg a legutóbbi futtatást, amely az SAP-rendszerből a trigger kimenetek szakaszban küldött üzenetet mutatja.
 
-## <a name="receive-idoc-packets-from-sap"></a>IDOC-csomagok fogadása az SAP-ból
+## <a name="receive-idoc-packets-from-sap"></a>IDoc-csomagok fogadása az SAP-ból
 
-Beállíthatja az SAP-t, hogy [IDOCs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDOCs-csoportok. A IDOC-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDOC-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDOCs való felosztásához.
+Beállíthatja az SAP-t, hogy [IDocs küldjön a csomagokban](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), amelyek kötegek vagy IDocs-csoportok. A IDoc-csomagok fogadásához az SAP-összekötőt, és különösen az triggert nem kell külön konfigurálni. Ahhoz azonban, hogy az trigger megkapja a csomagot, a IDoc-csomagok minden egyes elemét fel kell dolgozni, néhány további lépés szükséges a csomag különálló IDocs való felosztásához.
 
-Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
+Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
 1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-from-sap).
 
@@ -332,23 +415,23 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDOCs egy csomagból
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDOC. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, és egy kifejezéssel tárolja a névteret `xpath()` :
+1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDoc. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, és egy kifejezéssel tárolja a névteret `xpath()` :
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Gyökérszintű névtér beolvasása a IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Gyökérszintű névtér beolvasása a IDoc](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Egy adott IDOC kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és egy másik kifejezéssel tárolja a IDOC gyűjteményt `xpath()` :
+1. Egy adott IDoc kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy tömböt változót, és egy másik kifejezéssel tárolja a IDoc gyűjteményt `xpath()` :
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Elemek tömbének beolvasása](./media/logic-apps-using-sap-connector/get-array.png)
 
-   A Array változó lehetővé teszi, hogy minden IDOC elérhető legyen a logikai alkalmazás számára a gyűjteményre való enumerálással. Ebben a példában a logikai alkalmazás az egyes IDOC egy SFTP-kiszolgálóra továbbítja egy hurok használatával:
+   A Array változó lehetővé teszi, hogy minden IDoc elérhető legyen a logikai alkalmazás számára a gyűjteményre való enumerálással. Ebben a példában a logikai alkalmazás az egyes IDoc egy SFTP-kiszolgálóra továbbítja egy hurok használatával:
 
-   ![IDOC küldése SFTP-kiszolgálónak](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![IDoc küldése SFTP-kiszolgálónak](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Minden IDOC tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van becsomagolva egy `<Receive></Receive` elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDOC az alsóbb rétegbeli alkalmazásba vagy SFTP-kiszolgálóra ebben az esetben.
+   Minden IDoc tartalmaznia kell a legfelső szintű névteret, ami azt okozza, hogy a fájl tartalma miért van becsomagolva egy `<Receive></Receive` elembe a legfelső szintű névtérrel együtt, mielőtt elküldi a IDoc az alsóbb rétegbeli alkalmazásba vagy SFTP-kiszolgálóra ebben az esetben.
 
 A minta rövid útmutató sablonjának használatával új logikai alkalmazás létrehozásakor kiválaszthatja ezt a sablont a Logic app Designer alkalmazásban.
 
@@ -391,9 +474,9 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
    1. Adja meg a kapcsolatok nevét.
 
-   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az átjáró-erőforráshoz tartozó Azure-előfizetést, amelyet az átjáró telepítéséhez Azure Portal hozott létre. 
+   1. Az **adatátjáró** szakaszban az **előfizetés**területen válassza ki azt az Azure-előfizetést az adatátjáró-erőforráshoz, amelyet az adatátjáró-telepítés Azure Portalban hozott létre. 
    
-   1. A **csatlakoztatási átjáró**területen válassza ki az átjáró erőforrását.
+   1. A **csatlakoztatási átjáró**területen válassza ki az adatátjáró-erőforrást az Azure-ban.
 
    1. Folytassa a kapcsolatok adatainak biztosítását. A **bejelentkezési típus** tulajdonságnál kövesse a lépést attól függően, hogy a tulajdonság az **Application Server** vagy a **Group**értékre van-e állítva:
    
@@ -427,7 +510,7 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
    ![Két elem megjelenítése](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDOC-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)című témakört.
+   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)című témakört.
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -480,12 +563,16 @@ A létrehozott sémákat (például blob, Storage vagy integrációs fiók) is l
 
 1. Sikeres Futtatás után lépjen az integrációs fiókra, és győződjön meg arról, hogy a létrehozott sémák léteznek.
 
+<a name="secure-network-communications"></a>
+
 ## <a name="enable-secure-network-communications"></a>Biztonságos hálózati kommunikáció engedélyezése
 
-Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban felsorolt [előfeltételeket](#pre-reqs):
+Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a korábban felsorolt [előfeltételeket](#pre-reqs), amelyek csak akkor érvényesek, ha az adatátjárót és a logikai alkalmazásokat a több-bérlős Azure-ban futtatja:
 
-* A helyszíni adatátjáró olyan gépre van telepítve, amely az SAP-rendszerrel megegyező hálózaton van.
-* Az SSO esetében az átjáró egy SAP-felhasználóhoz hozzárendelt felhasználóként fut.
+* Győződjön meg arról, hogy a helyszíni adatátjáró olyan számítógépre van telepítve, amely ugyanabban a hálózatban van, mint az SAP-rendszer.
+
+* Az egyszeri bejelentkezés (SSO) esetében az adatátjáró olyan felhasználóként fut, amely egy SAP-felhasználóhoz van hozzárendelve.
+
 * A további biztonsági funkciókat biztosító SNC-függvénytár ugyanarra a gépre van telepítve, mint az adatátjáró. Ilyenek például a [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), a Kerberos és az NTLM.
 
    Ha engedélyezni szeretné a SNC-t az SAP-rendszerből vagy azokból érkező kérésekhez, jelölje be az SAP-kapcsolatban a **Snc használata** jelölőnégyzetet, és adja meg a következő tulajdonságokat:
@@ -554,7 +641,7 @@ Ha az üzenetek **biztonságos gépeléssel** való küldése engedélyezve van,
 
 ### <a name="confirm-transaction-explicitly"></a>Tranzakció explicit megerősítése
 
-Ha Logic Appsről küld tranzakciókat az SAP-nak, ez az Exchange két lépésben történik az SAP-dokumentumban, a [tranzakciós RFC-kiszolgáló programjaiban](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)leírtak szerint. Alapértelmezés szerint a **Küldés az SAP-be** művelet a függvények átvitelének lépéseit és a tranzakciós megerősítést egyetlen hívásban kezeli. Az SAP-összekötő lehetővé teszi, hogy leválasztsa ezeket a lépéseket. IDOC küldhet, és nem lehet automatikusan megerősíteni a tranzakciót, a explicit tranzakció- **azonosító megerősítése** műveletet használhatja.
+Ha Logic Appsről küld tranzakciókat az SAP-nak, ez az Exchange két lépésben történik az SAP-dokumentumban, a [tranzakciós RFC-kiszolgáló programjaiban](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)leírtak szerint. Alapértelmezés szerint a **Küldés az SAP-be** művelet a függvények átvitelének lépéseit és a tranzakciós megerősítést egyetlen hívásban kezeli. Az SAP-összekötő lehetővé teszi, hogy leválasztsa ezeket a lépéseket. IDoc küldhet, és nem lehet automatikusan megerősíteni a tranzakciót, a explicit tranzakció- **azonosító megerősítése** műveletet használhatja.
 
 Ez a tranzakció-azonosító megerősítése leválasztásának lehetősége akkor hasznos, ha nem szeretne ismétlődő tranzakciókat használni az SAP-ban, például olyan helyzetekben, ahol a hibák oka lehet például a hálózati problémák miatt. A tranzakció-azonosító külön megerősítésével a tranzakció csak egyszer lesz végrehajtva az SAP-rendszeren.
 
@@ -562,7 +649,7 @@ Az alábbi példa a következő mintát mutatja be:
 
 1. Hozzon létre egy üres logikai alkalmazást, és adjon hozzá egy HTTP-triggert.
 
-1. Az SAP-összekötőben adja hozzá a **Send IDOC** műveletet. Adja meg az SAP-rendszernek küldött IDOC adatait.
+1. Az SAP-összekötőben adja hozzá a **Send IDOC** műveletet. Adja meg az SAP-rendszernek küldött IDoc adatait.
 
 1. Ha explicit módon szeretné megerősíteni a tranzakció AZONOSÍTÓját egy külön lépésben, a **TID megerősítése** mezőben válassza a **nem**lehetőséget. A nem kötelező **tranzakció-azonosító GUID-azonosítója** mezőben manuálisan is megadhatja az értéket, vagy az összekötő automatikusan létrehozhatja és visszaküldheti ezt a GUID azonosítót a Send IDOC művelet válaszában.
 
@@ -576,7 +663,7 @@ Az alábbi példa a következő mintát mutatja be:
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-Az SAP-összekötő jelenleg ismert problémái és korlátai:
+A felügyelt (nem ISE) SAP-összekötő jelenleg ismert problémái és korlátozásai:
 
 * Az SAP-trigger nem támogatja az adatátjáró-fürtöket. Bizonyos feladatátvételi esetekben az SAP-rendszerrel kommunikáló adatátjáró-csomópont eltérhet az aktív csomóponttól, ami váratlan viselkedést eredményez. A küldési forgatókönyvek esetében az adatátjáró-fürtök támogatottak.
 

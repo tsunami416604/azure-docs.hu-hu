@@ -13,14 +13,15 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141840"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190072"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példánya is létrehozza az adatbázis biztonsági másolatait, amelyeket a rendszer a konfigurált megőrzési időtartamig tart. Az Azure [olvasási hozzáférésű geo-redundáns tárolást (ra-GRS)](../../storage/common/storage-redundancy.md) használnak a biztonsági másolatok megőrzésének biztosításához, még akkor is, ha az adatközpont nem érhető el.
@@ -43,7 +44,7 @@ A biztonsági másolatokat a következő célokra használhatja:
 A visszaállítás végrehajtásához tekintse meg [az adatbázis biztonsági másolatokból való visszaállítását](recovery-using-backups.md)ismertető témakört.
 
 > [!NOTE]
-> Az Azure Storage-ban a *replikálás* kifejezés arra utal, hogy fájlokat másol az egyik helyről a másikra. Az SQL-ben az *adatbázis-replikáció* arra utal, hogy több másodlagos adatbázis is szinkronizálva van egy elsődleges adatbázissal.
+> Az Azure Storage-ban a *replikálás* kifejezés arra utal, hogy fájlokat másol az egyik helyről a másikra. A Azure SQL Database és az SQL felügyelt példányában az *adatbázis-replikáció* arra utal, hogy több másodlagos adatbázis is szinkronizálva van egy elsődleges adatbázissal.
 
 Az alábbi példákkal kipróbálhatja a következő műveleteket:
 
@@ -61,7 +62,7 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 
 A SQL Database és az SQL felügyelt példánya támogatja az önkiszolgáló visszaállítást (PITR) a teljes biztonsági másolatok, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági mentéseinak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente jön létre, és a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre. A tranzakciónaplók biztonsági mentései általában 5 – 10 percenként jönnek létre. A tranzakciónapló biztonsági mentései gyakorisága a számítási mérettől és az adatbázis-tevékenység mennyiségétől függ.
 
-Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Ez a biztonsági mentés általában 30 percen belül elvégezhető, de hosszabb időt is igénybe vehet, ha az adatbázis nagy méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a további mentések felhasználói beavatkozás nélkül, a háttérben lesznek automatikusan ütemezve és felügyelve. Az adatbázis biztonsági másolatának pontos időzítését az SQL Database vagy az SQL felügyelt példány-szolgáltatás határozza meg, mivel a rendszer a teljes rendszerterhelést kiegyensúlyozza. A biztonsági mentési feladatok nem módosíthatók és nem tilthatók le.
+Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Ez a biztonsági mentés általában 30 percen belül elvégezhető, de hosszabb időt is igénybe vehet, ha az adatbázis nagy méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a további mentések felhasználói beavatkozás nélkül, a háttérben lesznek automatikusan ütemezve és felügyelve. Az adatbázis biztonsági mentésének pontos időzítését SQL Database vagy SQL felügyelt példány határozza meg, mivel a rendszer a teljes rendszerterhelést kiegyensúlyozza. A biztonsági mentési feladatok nem módosíthatók és nem tilthatók le.
 
 ### <a name="default-backup-retention-period"></a>Alapértelmezett biztonsági mentés megőrzési ideje
 
@@ -142,7 +143,7 @@ Adjon hozzá egy szűrőt a **szolgáltatás neveként**, majd válassza az **SQ
 
 ## <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
-Microsoft Azure SQL-ben az összes adatbázisnak van egy 7 napos alapértelmezett biztonsági mentési megőrzési időtartama. [A biztonsági másolatok megőrzési időszaka](#change-the-pitr-backup-retention-period) a 1-35 nap között bárhol módosítható.
+A SQL Database és az SQL felügyelt példányában található összes adatbázisnak van egy 7 napos alapértelmezett biztonsági mentési megőrzési időtartama. [A biztonsági másolatok megőrzési időszaka](#change-the-pitr-backup-retention-period) a 35 napnál hosszabb ideig is megváltoztatható.
 
 Ha töröl egy adatbázist, az Azure ugyanúgy megőrzi a biztonsági mentéseket, mint az online adatbázisban. Ha például olyan alapszintű adatbázist töröl, amely hét napos megőrzési időtartammal rendelkezik, akkor a négy napos biztonsági mentés még három napig is elmenthető.
 
@@ -156,7 +157,7 @@ Ha a biztonsági mentéseket a maximális megőrzési időtartamnál hosszabb id
 
 ## <a name="encrypted-backups"></a>Titkosított biztonsági másolatok
 
-Ha az adatbázis TDE van titkosítva, a biztonsági másolatok automatikusan titkosítva maradnak, beleértve a LTR biztonsági mentéseket is. Ha a TDE engedélyezve van SQL Database vagy SQL felügyelt példányhoz, a biztonsági mentések is titkosítva lesznek. Az Azure SQL összes új adatbázisa alapértelmezés szerint engedélyezve van a TDE. További információ a TDE-ről: [transzparens adattitkosítás SQL Database & SQL felügyelt példányával](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Ha az adatbázis TDE van titkosítva, a biztonsági másolatok automatikusan titkosítva maradnak, beleértve a LTR biztonsági mentéseket is. Ha a TDE engedélyezve van SQL Database vagy SQL felügyelt példányhoz, a biztonsági mentések is titkosítva lesznek. A SQL Database és az SQL felügyelt példány összes új adatbázisa alapértelmezés szerint engedélyezve van a TDE. További információ a TDE-ről: [transzparens adattitkosítás SQL Database & SQL felügyelt példányával](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Biztonsági mentés integritása
 
@@ -192,7 +193,7 @@ A SQL Database PITR biztonsági mentési megőrzésének módosításai a kiszol
 
 ![PITR-megőrzés, kiszolgáló szintjének módosítása](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
 
 Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosításai egyedi adatbázis-szinten hajthatók végre. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázishoz a Azure Portal, lépjen az egyes adatbázisok áttekintés paneljére. Ezután válassza a **biztonsági másolatok megőrzésének konfigurálása** lehetőséget a képernyő tetején:
 
@@ -245,7 +246,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 További információ: a [biztonsági másolatok megőrzésének REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a Azure Portal használatával](recovery-using-backups.md).

@@ -1,6 +1,6 @@
 ---
-title: Adatok betöltése az Azure SQL Data Warehouse-ba
-description: Az Adatmásolás Azure Data Factory használatával Azure SQL Data Warehouse
+title: Betöltés az Azure szinapszis Analyticsbe
+description: Az Adatmásolás az Azure szinapszis Analytics szolgáltatásba Azure Data Factory használatával
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,38 +10,38 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2020
-ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020557"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194767"
 ---
-# <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az SQL Data Warehouse-ba Azure Data Factory használatával
+# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A [Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely képes nagy mennyiségű, egymással rokon és nem rokon adatmennyiség feldolgozására. A SQL Data Warehouse a nagyvállalati adattárház számítási feladataihoz optimalizált, nagymértékben párhuzamos feldolgozási (MPP) architektúrára épül. A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
+Az [Azure szinapszis Analytics (korábbi nevén SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővített adatbázis, amely képes a nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére. Az Azure szinapszis Analytics a nagymértékben párhuzamos feldolgozási (MPP) architektúrára épül, amelyet a vállalati adattárház számítási feladataihoz optimalizáltak. A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
-A Azure SQL Data Warehouse használatának első lépései mostantól minden eddiginél könnyebben használhatók Azure Data Factory használatakor. A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás. A szolgáltatással feltöltheti a meglévő rendszerből származó adatokkal rendelkező SQL Data Warehouseokat, és időt takaríthat meg az elemzési megoldások kiépítésekor.
+Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben használhatók Azure Data Factory használatakor. A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás. A szolgáltatás segítségével feltöltheti az Azure szinapszis Analytics szolgáltatást a meglévő rendszerből származó adatokkal, és időt takaríthat meg az elemzési megoldások létrehozásakor.
 
-Azure Data Factory a következő előnyöket biztosítja az adatAzure SQL Data Warehouseba való betöltéshez:
+Azure Data Factory a következő előnyöket biztosítja az Azure szinapszis Analyticsbe való betöltéshez:
 
 * **Egyszerűen beállítható**: egy intuitív 5 lépésből álló varázsló, amely nem igényel parancsfájlt.
 * **Gazdag adattár-támogatás**: beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez. Részletes listát a [támogatott adattárakkal](copy-activity-overview.md#supported-data-stores-and-formats)foglalkozó táblázatban talál.
 * **Biztonságos és megfelelő**: az adatátvitel HTTPS-vagy ExpressRoute-kapcsolaton keresztül történik. A globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt.
-* **Páratlan teljesítmény**a következő használatával: a "Base" a leghatékonyabb módszer az adatok Azure SQL Data Warehouseba való áthelyezésére. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el minden típusú adattárból, beleértve az Azure Blob Storage-t és a Data Lake Storet is. (A Base alapértelmezés szerint támogatja az Azure Blob Storage-t és a Azure Data Lake Store.) Részletekért lásd: [másolási tevékenység teljesítménye](copy-activity-performance.md).
+* **Páratlan teljesítmény a Base használatával**: a Base a leghatékonyabb módszer az adatok Azure szinapszis-elemzésbe való áthelyezésére. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el minden típusú adattárból, beleértve az Azure Blob Storage-t és a Data Lake Storet is. (A Base alapértelmezés szerint támogatja az Azure Blob Storage-t és a Azure Data Lake Store.) Részletekért lásd: [másolási tevékenység teljesítménye](copy-activity-performance.md).
 
-Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszköz az _adatok Azure SQL Databaseból Azure SQL Data Warehouseba való betöltéséhez_. Az adatok más típusú adattárakból történő másolásához hasonló lépéseket kell követnie.
+Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból származó adatok az Azure szinapszis Analytics_szolgáltatásba a Data Factory adatok másolása eszköz használatával. Az adatok más típusú adattárakból történő másolásához hasonló lépéseket kell követnie.
 
 > [!NOTE]
-> További információ: [adatok másolása Azure SQL Data Warehouseba vagy a Azure Data Factory használatával](connector-azure-sql-data-warehouse.md).
+> További információ: [adatok másolása az Azure szinapszis Analytics szolgáltatásba vagy onnan az Azure Data Factory használatával](connector-azure-sql-data-warehouse.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
-* Azure SQL Data Warehouse: az adatraktár tartalmazza az SQL-adatbázisból másolt adatok tárolását. Ha nem rendelkezik Azure SQL Data Warehouseval, tekintse meg a [SQL Data Warehouse létrehozása](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)című témakör utasításait.
+* Azure szinapszis Analytics: az adattárház az SQL-adatbázisból másolt adatok tárolására használatos. Ha nem rendelkezik Azure szinapszis Analytics-elemzéssel, tekintse meg az [Azure szinapszis Analytics létrehozása](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)című témakör utasításait.
 * Azure SQL Database: ez az oktatóanyag az Azure SQL Database-ből származó adatok másolását végzi az Adventure Works LT mintaadatok alapján. SQL-adatbázis létrehozásához kövesse az [Azure SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
 * Azure Storage-fiók: az Azure Storage a tömeges másolási művelet során _átmeneti_ blobként szolgál. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
 
@@ -64,7 +64,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
    Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse-ba
+## <a name="load-data-into-azure-synapse-analytics"></a>Betöltés az Azure szinapszis Analyticsbe
 
 1. Az Adatok másolása eszköz elindításához az **Első lépések** oldalon kattintson az **Adatok másolása** csempére.
 
@@ -115,7 +115,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 1. A **tábla-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra**. Megjelenik egy intelligens táblázat-hozzárendelés. A forrástábla a táblák nevei alapján van leképezve a céltábla számára. Ha a forrás tábla nem létezik a célhelyen, Azure Data Factory alapértelmezés szerint ugyanazzal a névvel hozza létre a célhelyet. A forrástábla egy meglévő céltábla számára is képezhető le.
 
    > [!NOTE]
-   > A SQL Data Warehouse fogadó automatikus táblájának létrehozása akkor érvényes, ha SQL Server vagy Azure SQL Database a forrás. Ha más forrás-adattárból másol be egy másikat, előbb létre kell hoznia a sémát a fogadó Azure SQL Data Warehouse az adatok másolásának végrehajtása előtt.
+   > Az Azure szinapszis Analytics-fogadó automatikus tábla-létrehozási SQL Server vagy Azure SQL Database a forrást alkalmazza. Ha más forrás-adattárból másol adatokból, előbb létre kell hoznia a sémát a fogadó Azure szinapszis Analyticsben az adatok másolásának végrehajtása előtt.
 
    ![Tábla hozzárendelése oldal](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
@@ -125,7 +125,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 1. A **Beállítások** lapon végezze el a következő lépéseket:
 
-    a. Az **előkészítési beállítások** szakaszban kattintson az **+ új** elemre az átmeneti tárolók új létrehozásához. A tárterület az adatok átmeneti tárolásához használatos, mielőtt a rendszer betölti a SQL Data Warehouset a Base használatával. A másolás befejezése után a rendszer automatikusan megtisztítja az Azure Blob Storage ideiglenes adattartalmát.
+    a. Az **előkészítési beállítások** szakaszban kattintson az **+ új** elemre az átmeneti tárolók új létrehozásához. A tárterület az adatok előkészítéséhez használatos, mielőtt betöltődik az Azure szinapszis Analyticsbe a Base használatával. A másolás befejezése után a rendszer automatikusan megtisztítja az Azure Blob Storage ideiglenes adattartalmát.
 
     b. Az **új társított szolgáltatás** oldalon válassza ki a Storage-fiókját, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
@@ -152,7 +152,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását:
+A következő cikkből megismerheti az Azure szinapszis Analytics támogatását:
 
 > [!div class="nextstepaction"]
->[Azure SQL Data Warehouse-összekötő](connector-azure-sql-data-warehouse.md)
+>[Azure szinapszis Analytics-összekötő](connector-azure-sql-data-warehouse.md)

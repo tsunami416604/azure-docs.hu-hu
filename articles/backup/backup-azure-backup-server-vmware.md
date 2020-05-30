@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537406"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204718"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -26,6 +26,10 @@ Ez a cikk a következőket ismerteti:
 
 - Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amely támogatja a biztonsági mentést. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
 - Győződjön meg arról, hogy beállította Azure Backup Server. Ha még nem tette meg, a Kezdés előtt [végezze el a](backup-azure-microsoft-azure-backup.md) következőt:. A legújabb frissítésekkel Azure Backup Servert kell futtatnia.
+- Győződjön meg arról, hogy a következő hálózati portok nyitva vannak:
+    - MABS és vCenter közötti TCP 443
+    - TCP 443 és TCP 902 a MABS és ESXi-gazdagép között
+
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Biztonságos kapcsolatok létrehozása a vCenter Server
 
@@ -58,7 +62,7 @@ A következőképpen állíthatja be a biztonságos csatornát:
 
 4. Mentse a fájlt a Azure Backup Server gépre. zip kiterjesztéssel.
 
-5. Kattintson a jobb gombbal a **download. zip** > **kibontása**elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
+5. Kattintson a jobb gombbal a **download. zip**  >  **kibontása**elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
    - A főtanúsítvány fájlja egy olyan bővítménnyel, amely egy számú, például. 0 és. 1 típusú sorszámmal kezdődik.
    - A CRL-fájl kiterjesztése olyan, mint. R0 vagy. R1. A CRL-fájl egy tanúsítvánnyal van társítva.
 
@@ -115,11 +119,11 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
     ![Felügyelet](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. Az **adminisztrációs** > **szerepkörök**területen kattintson a szerepkör hozzáadása ikonra (a + szimbólum).
+3. Az **adminisztrációs**  >  **szerepkörök**területen kattintson a szerepkör hozzáadása ikonra (a + szimbólum).
 
     ![Szerepkör hozzáadása](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. A **szerepkör** > -szerepkör létrehozása mezőben adja meg a *BackupAdminRole***nevet**. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
+4. A **szerepkör**-szerepkör létrehozása mezőben  >  adja meg a *BackupAdminRole***nevet**. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
 
 5. Válassza ki az alábbi táblázatban összefoglalt jogosultságokat, majd kattintson az **OK**gombra.  Az új szerepkör megjelenik a **szerepkörök** panel listájában.
    - A szülő címke melletti ikonra kattintva bontsa ki a szülőt, és tekintse meg a gyermek jogosultságokat.
@@ -221,11 +225,11 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
     ![Felhasználó vagy csoport kiválasztása](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. A **felhasználók/csoportok kiválasztása lapon**válassza a **BackupAdmin** > **Hozzáadás**lehetőséget. A **felhasználók**a felhasználói fiókhoz a *tartomány \ Felhasználónév* formátumot használják. Ha másik tartományt szeretne használni, válassza ki a **tartományt a tartomány** listából. Kattintson az **OK** gombra a kijelölt felhasználók hozzáadásához az **engedély hozzáadása** párbeszédpanelen.
+6. A **felhasználók/csoportok kiválasztása lapon**válassza a **BackupAdmin**  >  **Hozzáadás**lehetőséget. A **felhasználók**a felhasználói fiókhoz a *tartomány \ Felhasználónév* formátumot használják. Ha másik tartományt szeretne használni, válassza ki a **tartományt a tartomány** listából. Kattintson az **OK** gombra a kijelölt felhasználók hozzáadásához az **engedély hozzáadása** párbeszédpanelen.
 
     ![BackupAdmin-felhasználó hozzáadása](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-7. A **hozzárendelt szerepkör**listából válassza a legördülő lista **BackupAdminRole** > **OK**elemét.
+7. A **hozzárendelt szerepkör**listából válassza a legördülő lista **BackupAdminRole**  >  **OK**elemét.
 
     ![Felhasználó társítása szerepkörhöz](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
@@ -237,7 +241,7 @@ A **globális engedélyek** panel **kezelés** lapján az új felhasználói fi�
 
     ![Azure Backup Server ikon](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. A Azure Backup Server-konzolon kattintson a **felügyeleti** >  **üzemi kiszolgálók** > **kezelése VMware**elemre.
+2. A Azure Backup Server-konzolon kattintson a **felügyeleti**  >   **üzemi kiszolgálók**  >  **kezelése VMware**elemre.
 
     ![Azure Backup Server konzol](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -257,11 +261,11 @@ A **globális engedélyek** panel **kezelés** lapján az új felhasználói fi�
 
 Adja hozzá a vCenter Servert a Azure Backup Serverhoz.
 
-1. A Azure Backup Server-konzolon kattintson a **felügyeleti** > **üzemi kiszolgálók** > **Hozzáadás**elemre.
+1. A Azure Backup Server-konzolon kattintson a **felügyeleti**  >  **üzemi kiszolgálók**  >  **Hozzáadás**elemre.
 
     ![Az üzemi kiszolgáló hozzáadása varázsló megnyitása](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. Az **üzemi kiszolgáló hozzáadása varázslóban** > **válassza ki a termelési kiszolgáló típusa** lapot, válassza ki a **VMware-kiszolgálók**elemet, majd kattintson a **tovább**gombra.
+2. Az **üzemi kiszolgáló hozzáadása varázslóban**  >  **válassza ki a termelési kiszolgáló típusa** lapot, válassza ki a **VMware-kiszolgálók**elemet, majd kattintson a **tovább**gombra.
 
     ![Üzemi kiszolgáló hozzáadása varázsló](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -275,7 +279,7 @@ Adja hozzá a vCenter Servert a Azure Backup Serverhoz.
 
     ![Hitelesítő adat megadása](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. A **Hozzáadás** gombra kattintva vegye fel a VMware-kiszolgálót a kiszolgálók listára. Kattintson a **Tovább** gombra.
+6. A **Hozzáadás** gombra kattintva vegye fel a VMware-kiszolgálót a kiszolgálók listára. Ezután kattintson a **Tovább** gombra.
 
     ![VMWare-kiszolgáló és hitelesítő adat hozzáadása](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -303,14 +307,14 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
 1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** elemet, majd kattintson a **tovább**gombra. Megjelenik a **csoporttagok kiválasztása** lap.
 
-1. A **csoporttagok kiválasztása**területen válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Kattintson a **Tovább** gombra.
+1. A **csoporttagok kiválasztása**területen válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Ezután kattintson a **Tovább** gombra.
 
     - Ha kijelöl egy mappát, vagy a mappában található virtuális gépek vagy mappák is ki vannak választva a biztonsági mentéshez. Törölheti azokat a mappákat vagy virtuális gépeket, amelyekről nem kíván biztonsági másolatot készíteni.
 1. Ha már folyamatban van egy virtuális gép vagy mappa biztonsági mentése, azt nem lehet kijelölni. Ez biztosítja, hogy a rendszer duplikált helyreállítási pontokat hozzon létre egy virtuális géphez.
 
     ![Csoporttagok kiválasztása](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Az **adatvédelmi módszer kiválasztása** lapon adja meg a védelmi csoport nevét, valamint a védelmi beállításokat. Az Azure-ba történő biztonsági mentéshez állítsa be a rövid távú védelmet a **lemezre** , és engedélyezze az online védelmet. Kattintson a **Tovább** gombra.
+1. Az **adatvédelmi módszer kiválasztása** lapon adja meg a védelmi csoport nevét, valamint a védelmi beállításokat. Az Azure-ba történő biztonsági mentéshez állítsa be a rövid távú védelmet a **lemezre** , és engedélyezze az online védelmet. Ezután kattintson a **Tovább** gombra.
 
     ![Az adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -341,17 +345,17 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. A **konzisztencia-ellenőrzés beállításainál**válassza ki, hogyan és mikor szeretné automatizálni a konzisztencia-ellenőrzéseket. Kattintson a **Tovább** gombra.
+1. A **konzisztencia-ellenőrzés beállításainál**válassza ki, hogyan és mikor szeretné automatizálni a konzisztencia-ellenőrzéseket. Ezután kattintson a **Tovább** gombra.
       - A konzisztencia-ellenőrzéseket futtathatja, ha a replika adatai inkonzisztensek, vagy egy meghatározott ütemterv alapján.
       - Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, akkor manuális ellenőrzést is futtathat. Ehhez kattintson a jobb gombbal a védelmi csoportra > **konzisztencia-ellenőrzés végrehajtása**parancsra.
 
-1. Az **online védelmi adatkapcsolat megadása** oldalon válassza ki azokat a virtuális gépeket vagy virtuálisgép-mappákat, amelyekről biztonsági másolatot szeretne készíteni. A tagokat egyenként is kiválaszthatja, vagy az **összes kijelölése** lehetőségre kattintva kiválaszthatja az összes tagot. Kattintson a **Tovább** gombra.
+1. Az **online védelmi adatkapcsolat megadása** oldalon válassza ki azokat a virtuális gépeket vagy virtuálisgép-mappákat, amelyekről biztonsági másolatot szeretne készíteni. A tagokat egyenként is kiválaszthatja, vagy az **összes kijelölése** lehetőségre kattintva kiválaszthatja az összes tagot. Ezután kattintson a **Tovább** gombra.
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Az **online biztonsági mentés** időpontjának megadása oldalon határozza meg, hogy milyen gyakran szeretné biztonsági mentést készíteni a helyi tárolóból az Azure-ba.
 
-    - Az adatfelhőbeli helyreállítási pontok az ütemterv szerint lesznek létrehozva. Kattintson a **Tovább** gombra.
+    - Az adatfelhőbeli helyreállítási pontok az ütemterv szerint lesznek létrehozva. Ezután kattintson a **Tovább** gombra.
     - A helyreállítási pont létrehozása után a rendszer átviszi a Recovery Services-tárolóba az Azure-ban.
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

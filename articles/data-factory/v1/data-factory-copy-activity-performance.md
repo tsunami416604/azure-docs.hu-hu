@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527384"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196112"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és finomhangolásához
 
@@ -202,7 +202,7 @@ Ha átmeneti tároló használatával aktiválja az adatáthelyezést, megadhatj
 
 Jelenleg nem másolhat Adatmásolást két helyszíni adattár között egy átmeneti tároló használatával. Reméljük, hogy ez a lehetőség hamarosan elérhető lesz.
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 Konfigurálja a **enableStaging** beállítást a másolási tevékenységben annak megadásához, hogy a blob Storage-ban kívánja-e az adatelőkészítést, mielőtt betölti azt egy célhely-adattárba. Ha a **enableStaging** értéke TRUE (igaz) értékre van állítva, adja meg a következő táblázatban felsorolt további tulajdonságokat. Ha még nem rendelkezik ilyennel, létre kell hoznia egy Azure Storage vagy Storage közös hozzáférésű aláírással társított szolgáltatást az előkészítéshez.
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
@@ -366,8 +366,8 @@ Ha a másolni kívánt adatméret nagy, beállíthatja az üzleti logikáját, h
 
 Legyen óvatos az adathalmazok számával és a másolási tevékenységekkel, amelyeknek Data Factoryt kell megadniuk az ugyanahhoz az adattárhoz való csatlakozáshoz. Számos egyidejű másolási feladat szabályozhatja az adattárakat, és csökkentheti a teljesítményt, átmásolhatja a feladat belső újrapróbálkozásait, és bizonyos esetekben a végrehajtási hibákat is.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Példa: másolás helyszíni SQL Serverból blob Storage-tárolóba
-**Forgatókönyv**: egy folyamat úgy van felépítve, hogy egy helyszíni SQL Serverról másolja át a blob Storage-ba az adatok CSV-formátumban történő másolását. A másolási feladatok gyorsabb elvégzéséhez a CSV-fájlokat a bzip2 formátumba kell tömöríteni.
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Példa: másolás egy SQL Server adatbázisból a blob Storage-ba
+**Forgatókönyv**: egy folyamat úgy van felépítve, hogy egy SQL Server-adatbázisból másolja át a blob Storage-ba az adatok CSV formátumban történő másolását. A másolási feladatok gyorsabb elvégzéséhez a CSV-fájlokat a bzip2 formátumba kell tömöríteni.
 
 **Tesztelés és elemzés**: a másolási tevékenység átviteli sebessége kevesebb, mint 2 Mbps, ami sokkal lassabb, mint a teljesítménnyel kapcsolatos teljesítményteszt.
 
@@ -385,7 +385,7 @@ Az alábbi tényezők közül egy vagy több a teljesítmény szűk keresztmetsz
 
 * **Forrás**: SQL Server maga a nagy terhelés miatt alacsony átviteli sebességű.
 * **Adatkezelés átjáró**:
-  * **LAN**: az átjáró távol van a SQL Server gépről, és alacsony sávszélességű kapcsolattal rendelkezik.
+  * **LAN**: az átjáró a SQL Server számítógéptől távol található, és alacsony sávszélességű kapcsolattal rendelkezik.
   * **Átjáró**: az átjáró elérte a terhelési korlátozásokat a következő műveletek elvégzéséhez:
     * **Szerializálás**: az adatfolyam CSV-formátumba való szerializálásának lassú átviteli sebessége van.
     * **Tömörítés**: lassú tömörítési kodeket (például bzip2, 2,8 Mbps, Core i7) választott.

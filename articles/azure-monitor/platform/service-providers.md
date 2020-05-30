@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658880"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190415"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Szolgáltatók Azure Monitor naplófájljai
 
@@ -19,7 +19,7 @@ Log Analytics munkaterületek Azure Monitor segíthetnek a felügyelt szolgálta
 
 A nagyvállalatok számos hasonlóságot biztosítanak a szolgáltatók számára, különösen akkor, ha van egy központosított informatikai csapat, amely számos különböző üzleti egységért felelős. Az egyszerűség kedvéért ez a dokumentum a *szolgáltató* kifejezést használja, de ugyanez a funkció a vállalatok és más ügyfelek számára is elérhető.
 
-A [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program részét képező partnerek és szolgáltatók esetében a log Analytics Azure monitor az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
+A [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) program részét képező partnerek és szolgáltatók esetében a log Analytics Azure monitor az Azure CSP-előfizetésekben elérhető Azure-szolgáltatások egyike.
 
 A Azure Monitor Log Analyticst egy, az Azure-beli Azure-beli felügyelt erőforrás-kezelési képességgel rendelkező szolgáltató is használhatja az [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)-ban.
 

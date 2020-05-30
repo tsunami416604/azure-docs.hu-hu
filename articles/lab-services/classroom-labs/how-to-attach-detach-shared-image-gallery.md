@@ -11,17 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/28/2020
 ms.author: spelluru
-ms.openlocfilehash: aef5cd13742c0265851f5ba2918d557b4e1026d0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7ae0fa5a8816f353636c9b4d58293e825361b207
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592644"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204295"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztott képgyűjteményt egy labor-fiókhoz. 
+
+> [!NOTE]
+> Ha egy [tesztkörnyezet sablonjának rendszerképét](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) Azure Lab Services egy megosztott képtárba menti, a képet speciális képként feltölti a katalógusba. A [speciális képek](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) a gép-specifikus információkat és a felhasználói profilokat őrzik meg. Továbbra is közvetlenül feltöltheti az általánosított rendszerképet a katalógusba Azure Lab Serviceson kívül. 
+>
+> A tesztkörnyezet létrehozója létrehozhat egy sablonból álló virtuális gépet, amely a Azure Lab Services általánosított és speciális rendszerképein alapul. 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Íme a funkció által támogatott néhány forgatókönyv: 
@@ -29,11 +34,7 @@ Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztot
 - A labor-fiók rendszergazdája egy megosztott képtárat csatol a labor-fiókhoz, és feltölt egy rendszerképet a közös rendszerkép-katalógusba egy labor környezetén kívül. Ezután a labor-készítők a megosztott képkatalógusból is használhatják ezt a rendszerképet a Labs létrehozásához. 
 - A labor-fiók rendszergazdája egy megosztott képtárat csatol a labor-fiókhoz. A tesztkörnyezet létrehozója (oktató) elmenti a saját laborjának testreszabott képét a megosztott képgyűjteménybe. Ezután más labor-készítők is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablonokat hozzanak létre a laborokhoz. 
 
-    Ha egy képet megosztott képkatalógusba ment, Azure Lab Services replikálja a mentett rendszerképet más, azonos [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)régiókban elérhető régiókba. Gondoskodik arról, hogy a rendszerkép elérhető legyen a más régiókban, ugyanabban a földrajzi régióban létrehozott laborokhoz. Ha a képeket egy megosztott képkatalógusba menti, további költségekkel jár, ami magában foglalja az összes replikált rendszerkép díját. Ez a díj eltér a Azure Lab Services használati díjaktól. A megosztott képkatalógus díjszabásával kapcsolatos további információkért lásd: [megosztott képgyűjtemény – számlázás]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
-
-    > [!NOTE]
-    > Azure Lab Services támogatja a sablon típusú virtuális gépek létrehozását a megosztott képtárban lévő **általánosított** és **speciális** lemezképek alapján. 
-
+    Ha egy képet megosztott képkatalógusba ment, Azure Lab Services replikálja a mentett rendszerképet más, azonos [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)régiókban elérhető régiókba. Gondoskodik arról, hogy a rendszerkép elérhető legyen a más régiókban, ugyanabban a földrajzi régióban létrehozott laborokhoz. Ha a képeket egy megosztott képkatalógusba menti, további költségekkel jár, ami magában foglalja az összes replikált rendszerkép díját. Ez a díj eltér a Azure Lab Services használati díjaktól. A megosztott képkatalógus díjszabásával kapcsolatos további információkért lásd: [megosztott képgyűjtemény – számlázás](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
 Labor-fiók létrehozásakor csatlakoztathat egy megosztott képtárat a labor-fiókhoz. Választhat egy meglévő megosztott képtárat a legördülő listából, vagy létrehozhat egy újat. Megosztott képtárat a labor-fiókhoz való létrehozásához és csatolásához válassza az **új létrehozása**lehetőséget, adja meg a katalógus nevét, majd írja be **az OK gombot**. 
@@ -95,4 +96,4 @@ Csak egy megosztott képtárat lehet csatlakoztatni egy laborhoz. Ha egy másik 
 ## <a name="next-steps"></a>További lépések
 Ha szeretne többet megtudni arról, hogyan mentheti a tesztkörnyezet rendszerképét a megosztott képkatalógusba, vagy hogyan hozhat létre virtuális gépet a megosztott rendszerkép-katalógusban, olvassa el a következő témakört: [a megosztott képgyűjtemény használata](how-to-use-shared-image-gallery.md).
 
-A megosztott képtárakkal kapcsolatos további információkért lásd: [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógus.
+A megosztott képtárakkal kapcsolatos további információkért lásd: [megosztott rendszerkép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)-katalógus.

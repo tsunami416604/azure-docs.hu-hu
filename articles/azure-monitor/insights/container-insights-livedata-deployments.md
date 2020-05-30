@@ -3,16 +3,17 @@ title: Tárolók üzembe helyezésének Azure Monitor megtekintése (előzetes v
 description: Ez a cikk a Kubernetes-telepítések valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 98901ba8622404c03f3456b4ca404715d7016d9c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75404772"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195004"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Központi telepítések (előzetes verzió) valós idejű megtekintése
 
-A Azure Monitor for containers (előzetes verzió) szolgáltatásban a központi telepítések (előzetes verzió) funkció valós időben közvetlen hozzáférést emulál a Kubernetes `kubeclt get deployments` üzembe `kubectl describe deployment {your deployment}` helyezési objektumaihoz a és a parancsokkal. 
+A Azure Monitor for containers (előzetes verzió) szolgáltatásban a központi telepítések (előzetes verzió) funkció valós időben közvetlen hozzáférést emulál a Kubernetes üzembe helyezési objektumaihoz a `kubeclt get deployments` és a `kubectl describe deployment {your deployment}` parancsokkal. 
 
 >[!NOTE]
 >Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. Ez a funkció arra támaszkodik, hogy közvetlenül a böngészőből egy proxykiszolgálón keresztül éri el a Kubernetes API-t. A hálózati biztonság engedélyezésével letilthatja a Kubernetes API-t ebből a proxyból, és letiltja a forgalmat. 
@@ -26,9 +27,9 @@ További tudnivalókért tekintse át a [központi telepítések](https://kubern
 
 Az élő adatok (előzetes verzió) funkció közvetlenül a Kubernetes API-hoz érhető el, és a hitelesítési modellel kapcsolatos további információk [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)találhatók. 
 
-A központi telepítések (előzetes verzió) funkció egy egyszeri (frissíthető) terhelést hajt végre a központi telepítések végpontján `/apis/apps/v1/deployments`. Lehetővé teszi egy adott központi telepítés kiválasztását, és betölti az adott központi telepítési végpontra `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}`vonatkozó leírás részleteit. 
+A központi telepítések (előzetes verzió) funkció egy egyszeri (frissíthető) terhelést hajt végre a központi telepítések végpontján `/apis/apps/v1/deployments` . Lehetővé teszi egy adott központi telepítés kiválasztását, és betölti az adott központi telepítési végpontra vonatkozó leírás részleteit `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}` . 
 
-Ha a lap bal felső részén a **frissítés** lehetőséget választja, a rendszer frissíti a központi telepítési listát. Ez szimulálja a `kubectl` parancs újbóli futtatását. 
+Ha a lap bal felső részén a **frissítés** lehetőséget választja, a rendszer frissíti a központi telepítési listát. Ez szimulálja a parancs újbóli futtatását `kubectl` . 
 
 >[!IMPORTANT]
 >A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A rendszer a munkamenet során rögzített összes információt törli a böngésző bezárásakor, vagy innen navigál.  
@@ -38,7 +39,7 @@ Ha a lap bal felső részén a **frissítés** lehetőséget választja, a rends
 
 ## <a name="deployments-describe"></a>Központi telepítések leírása
 
-Az alábbi lépéseket követve tekintheti meg a központi telepítés részletes leírását, amely egyenértékű `kubectl describe deployment`a következő lépésekkel:.
+Az alábbi lépéseket követve tekintheti meg a központi telepítés részletes leírását, amely egyenértékű a `kubectl describe deployment` következő lépésekkel:.
 
 1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 
@@ -48,11 +49,11 @@ Az alábbi lépéseket követve tekintheti meg a központi telepítés részlete
 
     ![Központi telepítések nézet a Azure Portal](./media/container-insights-livedata-deployments/deployment-view.png)
 
-A nézet megjeleníti az összes futó üzemelő példány listáját, valamint a névteret és egyéb részletes információkat, a parancs `kubectl get deployments –all-namespaces`végrehajtásának emulálása mellett. Az eredményeket az oszlopok valamelyikének kiválasztásával rendezheti. 
+A nézet megjeleníti az összes futó üzemelő példány listáját, valamint a névteret és egyéb részletes információkat, a parancs végrehajtásának emulálása mellett `kubectl get deployments –all-namespaces` . Az eredményeket az oszlopok valamelyikének kiválasztásával rendezheti. 
 
 ![Központi telepítések tulajdonságai ablaktábla részletei](./media/container-insights-livedata-deployments/deployment-properties-pane-details.png)
 
-Amikor kijelöl egy központi telepítést a listából, a rendszer automatikusan megjeleníti a tulajdonságok panelt a lap jobb oldalán. A kiválasztott központi telepítéssel kapcsolatos információkat jeleníti meg, amelyeket a parancs `kubectl describe deployment {deploymentName}`futtatásakor megtekint. Előfordulhat, hogy észrevette, hogy az információ leírása hiányzik néhány részletről. A **sablon** többnyire hiányzik. A **RAW** lapon való kiválasztással megnyithatja a nem elemzett Leírás részleteit.  
+Amikor kijelöl egy központi telepítést a listából, a rendszer automatikusan megjeleníti a tulajdonságok panelt a lap jobb oldalán. A kiválasztott központi telepítéssel kapcsolatos információkat jeleníti meg, amelyeket a parancs futtatásakor megtekint `kubectl describe deployment {deploymentName}` . Előfordulhat, hogy észrevette, hogy az információ leírása hiányzik néhány részletről. A **sablon** többnyire hiányzik. A **RAW** lapon való kiválasztással megnyithatja a nem elemzett Leírás részleteit.  
 
 ![Központi telepítések tulajdonságai ablaktábla nyers részletei](./media/container-insights-livedata-deployments/deployment-properties-pane-raw.png)
 

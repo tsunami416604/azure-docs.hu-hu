@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744113"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193561"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -195,7 +195,37 @@ Igen. A sávszélesség szabályozásával kapcsolatos további információkér
 * [A VMware virtuális gépek és fizikai kiszolgálók replikálásának kapacitásának megtervezése](site-recovery-plan-capacity-vmware.md)
 * [A Hyper-V virtuális gépek Azure-ba történő replikálásának kapacitásának megtervezése](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Engedélyezhető a replikáció az App-konzisztencia használatával a Linux-kiszolgálókon? 
+Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az előzetes és utáni beállításokkal rendelkező egyéni szkriptet a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazások konzisztenciája során. Az alábbi lépésekkel engedélyezheti.
 
+1. Jelentkezzen be root-ként a gépre.
+2. Módosítsa a könyvtárat Azure Site Recovery mobilitási ügynök telepítési helyére. Az alapértelmezett érték a "/usr/local/ASR"<br>
+    `# cd /usr/local/ASR`
+3. A telepítés helye alatt váltson a "VX/Scripts" könyvtárra.<br>
+    `# cd VX/scripts`
+4. Hozzon létre egy "customscript.sh" nevű bash shell-szkriptet a root user végrehajtási engedélyeivel.<br>
+    a. A parancsfájlnak támogatnia kell a "--pre" és a "--post" (a dupla kötőjeleket) parancssori kapcsolókat.<br>
+    b. Ha a parancsfájlt előzetes beállítással hívja meg, akkor az alkalmazás bemenetének/kimenetének rögzítése, valamint a post-Option paraméterrel való hívás esetén fel kell szólítani az alkalmazás bemenetét/kimenetét.<br>
+    c. Egy minta sablon –<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Adja hozzá a bemeneti/kimeneti parancsok befagyasztása és feloldása az alkalmazás-konzisztenciaot igénylő alkalmazások előzetes és utólagos lépéseiben. Dönthet úgy is, hogy hozzáad egy másik szkriptet, és meghívja azt a "customscript.sh" értékkel a pre és a post kapcsolóval.
 
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?

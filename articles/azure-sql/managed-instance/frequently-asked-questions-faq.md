@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: c1a7f22314af472037194150b78e881395c14c2e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 518c4b83721e80aeaadfbdf5b03cddc62ae5479f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117380"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216335"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Ez a cikk az [Azure SQL felügyelt példányának](sql-managed-instance-paas-ove
 
 A felügyelt SQL-példány támogatott funkcióinak listáját lásd: az [Azure SQL felügyelt példányának funkciói](../database/features-comparison.md).
 
-A felügyelt Azure SQL-példányok és a helyszíni SQL Server közötti eltérések esetében lásd: a [T-SQL eltérései SQL Server](transact-sql-tsql-differences-sql-server.md).
+A felügyelt Azure SQL-példány és a SQL Server szintaxisának és viselkedésének különbségeit lásd: a [T-SQL eltérései SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
 ## <a name="tech-spec--resource-limits"></a>Technikai spec & erőforrás-korlátok
@@ -60,7 +60,7 @@ A felügyelt SQL-példányok létrehozásának vagy a szolgáltatási szint (vir
 
 ## <a name="naming-convention"></a>Elnevezési konvenció
 
-**A felügyelt SQL-példányok neve ugyanaz, mint a helyszíni SQL Server?**
+**A felügyelt SQL-példányok neve megegyezik a helyszíni SQL Server példánnyal?**
 
 Az SQL felügyelt példány nevének módosítása nem támogatott.
 
@@ -240,3 +240,44 @@ Miután a titkosítási védő elérhetővé vált az SQL felügyelt példánya 
 **Hogyan telepíthetek át Azure SQL Databaseról SQL felügyelt példányra?**
 
 A felügyelt SQL-példányok a számítási és a tárolási méretnél ugyanazok a teljesítménnyel rendelkeznek, mint Azure SQL Database. Ha egyetlen példányon szeretné összevonni az adatait, vagy egyszerűen csak az SQL felügyelt példányában támogatott szolgáltatást kell használnia, az adatait exportálási/importálási (BACPAC) funkciók használatával is áttelepítheti.
+
+## <a name="password-policy"></a>Jelszóházirend 
+
+**Milyen jelszavas szabályzatok vonatkoznak az SQL felügyelt példány SQL-bejelentkezésekre?**
+
+Az SQL-bejelentkezések SQL-alapú felügyelt példányának jelszavas szabályzata örökli a felügyelt példányt tároló virtuális fürtöket alkotó virtuális gépekre alkalmazott Azure platform-házirendeket. Jelenleg nem lehet módosítani ezeket a beállításokat, mivel ezeket a beállításokat az Azure definiálja, és a felügyelt példány örökli.
+
+ > [!IMPORTANT]
+ > Az Azure platform megváltoztathatja a házirendre vonatkozó követelményeket anélkül, hogy a szolgáltatásokat a szabályzatokra támaszkodva értesíti.
+
+**Mik a jelenlegi Azure platform-szabályzatok?**
+
+Minden bejelentkezéskor be kell állítania a jelszavát a bejelentkezés után, és módosítania kell a jelszavát, miután elérte a maximális kort.
+
+| **Szabályzat** | **Biztonsági beállítás** |
+| --- | --- |
+| Jelszó maximális kora | 42 nap |
+| Jelszó minimális kora | 1 nap |
+| Jelszó minimális hossza | 10 karakter |
+| A jelszónak meg kell felelnie a bonyolultsági követelményeknek | Engedélyezve |
+
+**Le lehet tiltani a jelszó bonyolultságát és a lejáratot az SQL felügyelt példányain a bejelentkezési szinten?**
+
+Igen, a bejelentkezési szinten CHECK_POLICY és CHECK_EXPIRATION mezőket is szabályozhatja. Az aktuális beállításokat a következő T-SQL-parancs végrehajtásával tekintheti meg:
+
+```sql
+SELECT *
+FROM sys.sql_logins
+```
+
+Ezt követően a következő végrehajtásával módosíthatja a megadott bejelentkezési beállításokat:
+
+```sql
+ALTER LOGIN test WITH CHECK_POLICY = ON;
+ALTER LOGIN test WITH CHECK_EXPIRATION = ON;
+```
+
+(a "test" kifejezés helyett a kívánt bejelentkezési nevet adja meg)
+
+ > [!Note]
+ > A CHECK_POLICY és CHECK_EXPIRATION alapértelmezett értékei kikapcsolva értékre vannak állítva.

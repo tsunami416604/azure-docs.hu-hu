@@ -12,17 +12,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c781e23b23f5dbaf8eba9efe4c27428ef35c7be1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113628"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216377"
 ---
-# <a name="deploy-an-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL felügyelt példány üzembe helyezése egy példány-készletben
+# <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ez a cikk részletesen ismerteti, hogyan hozhat létre egy [példány-készletet](instance-pools-overview.md) , és hogyan helyezhet üzembe egy felügyelt Azure SQL-példányt. 
+Ez a cikk részletesen ismerteti, hogyan hozhat létre egy [példány-készletet](instance-pools-overview.md) , és hogyan telepítheti az Azure SQL felügyelt példányát. 
 
 ## <a name="instance-pool-operations"></a>Példányok készletének műveletei
 
@@ -30,23 +30,23 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 |Parancs|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Példánykészlet létrehozása|Nem|Igen|
-|Példány frissítése (korlátozott számú tulajdonság)|Nem |Igen |
-|Példány-készlet használatának és tulajdonságainak megtekintése|Nem|Igen |
+|Példány-készlet létrehozása|Nem|Igen|
+|Példány készletének frissítése (korlátozott számú tulajdonság)|Nem |Igen |
+|Példány-készlet használatának és tulajdonságainak keresése|Nem|Igen |
 |Példány-készlet törlése|Nem|Igen|
-|SQL felügyelt példány létrehozása a példány-készleten belül|Nem|Igen|
-|SQL felügyelt példány erőforrás-használatának frissítése|Igen |Igen|
-|SQL felügyelt példány használatának és tulajdonságainak keresése|Igen|Igen|
-|SQL felügyelt példány törlése a készletből|Igen|Igen|
+|Felügyelt példány létrehozása egy példány-készleten belül|Nem|Igen|
+|Felügyelt példány erőforrás-használatának frissítése|Igen |Igen|
+|Felügyelt példány használatának és tulajdonságainak keresése|Igen|Igen|
+|Felügyelt példány törlése a készletből|Igen|Igen|
 |Adatbázis létrehozása példányban a készleten belül|Igen|Igen|
 |SQL felügyelt példányról származó adatbázis törlése|Igen|Igen|
 
-Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/)
+Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/):
 
 |Parancsmag |Leírás |
 |:---|:---|
 |[Új – AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Létrehoz egy SQL-alapú felügyelt példány-készletet. |
-|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | A példány-készletre vonatkozó adatokat adja vissza. |
+|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Egy példány-készlet adatait adja vissza. |
 |[Set-AzSqlInstancePool](/powershell/module/az.sql/set-azsqlinstancepool/) | Egy példány tulajdonságainak beállítása az SQL felügyelt példányában. |
 |[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | Eltávolít egy példány-készletet a felügyelt SQL-példányban. |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Az SQL felügyelt példány-készlet használatára vonatkozó adatokat adja vissza. |
@@ -58,29 +58,29 @@ A készleteken és az önálló példányokon belüli példányokkal kapcsolatos
 
 ## <a name="deployment-process"></a>Üzembehelyezési folyamat
 
-Ha egy SQL felügyelt példányt szeretne üzembe helyezni egy példány-készletbe, először telepítenie kell a példány-készletet, amely egy egyszeri, hosszan futó művelet, amelyben az időtartam ugyanaz, mint egy [üres alhálózaton létrehozott egyetlen példány](sql-managed-instance-paas-overview.md#management-operations)üzembe helyezése. Ezután központilag telepítheti az SQL felügyelt példányokat a készletbe, amely egy viszonylag gyors művelet, amely általában akár öt percet is igénybe vehet. A példány-készlet paraméterét explicit módon meg kell adni a művelet részeként.
+Ha felügyelt példányt szeretne üzembe helyezni egy példány-készletben, először telepítenie kell a példány-készletet, amely egy egyszeri, hosszan futó művelet, amelyben az időtartam ugyanaz, mint egy [üres alhálózaton létrehozott egyetlen példány](sql-managed-instance-paas-overview.md#management-operations)üzembe helyezése. Ezután üzembe helyezhet egy felügyelt példányt a készletben, amely egy viszonylag gyors művelet, amely általában akár öt percet is igénybe vehet. A példány-készlet paraméterét explicit módon meg kell adni a művelet részeként.
 
-Nyilvános előzetes verzióban mindkét művelet csak a PowerShell és Resource Manager-sablonok használatával támogatott. A Azure Portal-élmény jelenleg nem érhető el.
+Nyilvános előzetes verzióban mindkét művelet csak a PowerShell és a Azure Resource Manager sablonok használatával támogatott. A Azure Portal-élmény jelenleg nem érhető el.
 
-Miután telepítette az SQL felügyelt példányt egy készletre, a *Azure Portal segítségével módosíthatja* a tulajdonságait a díjszabási csomag lapon.
+A felügyelt példányok készletre való telepítése után a Azure Portal *segítségével módosíthatja* a tulajdonságait a díjszabási csomag lapon.
 
-## <a name="create-virtual-network-with-a-subnet"></a>Virtuális hálózat létrehozása alhálózattal 
+## <a name="create-a-virtual-network-with-a-subnet"></a>Virtuális hálózat létrehozása alhálózattal 
 
 Ha több példányra vonatkozó készletet szeretne elhelyezni ugyanazon a virtuális hálózaton belül, tekintse meg a következő cikkeket:
 
-- [VNet-alhálózat méretének meghatározása egy felügyelt Azure SQL-példányhoz](vnet-subnet-determine-size.md).
+- [Az Azure SQL felügyelt példányának VNet-alhálózati méretének meghatározása](vnet-subnet-determine-size.md).
 - Hozzon létre új virtuális hálózatot és alhálózatot a [Azure Portal sablonnal](virtual-network-subnet-create-arm-template.md) , vagy kövesse a [meglévő virtuális hálózat előkészítésének](vnet-existing-add-subnet.md)utasításait.
  
 
-## <a name="create-instance-pool"></a>Példánykészlet létrehozása 
+## <a name="create-an-instance-pool"></a>Példány-készlet létrehozása 
 
 Az előző lépések elvégzése után készen áll egy példány-készlet létrehozására.
 
 A következő korlátozások vonatkoznak a példány-készletekre:
 
 - Nyilvános előzetes verzióban csak általános célú és Gen5 érhető el.
-- A készlet neve csak kisbetűket, számokat és kötőjelet tartalmazhat, és nem kezdődhet kötőjeltel.
-- Ha a AHB (Azure Hybrid Benefit) szeretné használni, azt a rendszer a példány készlet szintjén alkalmazza. A licenc típusát a készlet létrehozása során állíthatja be, vagy a létrehozás után bármikor frissítheti.
+- A készlet neve csak kisbetűket, számokat és kötőjeleket tartalmazhat, és nem kezdődhet kötőjellel.
+- Ha Azure Hybrid Benefitt szeretne használni, a rendszer a példány-készlet szintjén alkalmazza. A licenc típusát a készlet létrehozása során állíthatja be, vagy a létrehozás után bármikor frissítheti.
 
 > [!IMPORTANT]
 > A példányok üzembe helyezése hosszú ideig futó művelet, amely körülbelül 4,5 órát vesz igénybe.
@@ -109,11 +109,11 @@ $instancePool = New-AzSqlInstancePool `
 > [!IMPORTANT]
 > Mivel egy példány-készlet üzembe helyezése hosszú ideig futó művelet, meg kell várnia, amíg be nem fejeződik a jelen cikkben ismertetett lépések bármelyikének futtatása.
 
-## <a name="create-sql-managed-instance"></a>Felügyelt SQL-példány létrehozása
+## <a name="create-a-managed-instance"></a>Felügyelt példány létrehozása
 
-A példány-készlet sikeres üzembe helyezése után ideje létrehozni egy SQL felügyelt példányt.
+A példány-készlet sikeres üzembe helyezése után itt az ideje, hogy felügyelt példányt hozzon létre benne.
 
-SQL felügyelt példány létrehozásához hajtsa végre a következő parancsot:
+Felügyelt példány létrehozásához hajtsa végre a következő parancsot:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
@@ -127,9 +127,9 @@ $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása 
 
-Egy készleten belüli SQL felügyelt példányban lévő adatbázisok létrehozásához és kezeléséhez használja az Egypéldányos parancsokat.
+Egy készleten belüli felügyelt példányban lévő adatbázisok létrehozásához és kezeléséhez használja az Egypéldányos parancsokat.
 
-Adatbázis létrehozása egy felügyelt SQL-példányon belül:
+Adatbázis létrehozása felügyelt példányon belül:
 
 ```powershell
 $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poolmi-001" -ResourceGroupName "myResourceGroup"
@@ -172,8 +172,8 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 ## <a name="scale"></a>Méretezés 
 
 
-Miután kitöltötte az SQL felügyelt példányát az adatbázisokkal, a tárolóra vagy a teljesítményre vonatkozó korlátozásokat is elérheti. Ebben az esetben, ha nem lépték túl a készlet használatát, méretezheti a példányt.
-Az SQL felügyelt példányok készleten belüli skálázása egy művelet, amely néhány percet vesz igénybe. A skálázás előfeltétele, hogy a virtuális mag és a tárterület elérhető legyen a példányok készletének szintjén.
+A felügyelt példány adatbázisokkal való feltöltése után a tárolóra vagy a teljesítményre vonatkozó korlátozásokat is elérheti. Ebben az esetben, ha nem lépték túl a készlet használatát, méretezheti a példányt.
+A felügyelt példányok készleten belüli skálázása egy művelet, amely néhány percet vesz igénybe. A skálázás előfeltétele, hogy a virtuális mag és a tárterület elérhető legyen a példányok készletének szintjén.
 
 A virtuális mag és a tárterület méretének frissítése:
 
@@ -190,14 +190,14 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 ## <a name="connect"></a>Kapcsolódás 
 
-Egy készletben lévő SQL felügyelt példányhoz való kapcsolódáshoz a következő két lépés szükséges:
+A készletben lévő felügyelt példányokhoz való kapcsolódáshoz a következő két lépés szükséges:
 
-1. [Engedélyezze a példány nyilvános végpontját](#enable-public-endpoint).
+1. [Engedélyezze a példány nyilvános végpontját](#enable-the-public-endpoint).
 2. [Adjon hozzá egy bejövő szabályt a hálózati biztonsági csoporthoz (NSG)](#add-an-inbound-rule-to-the-network-security-group).
 
 Mindkét lépés befejezése után csatlakozhat a példányhoz a példány létrehozásakor megadott nyilvános végponti címen, porton és hitelesítő adatokon keresztül. 
 
-### <a name="enable-public-endpoint"></a>Nyilvános végpont engedélyezése
+### <a name="enable-the-public-endpoint"></a>Nyilvános végpont engedélyezése
 
 Egy példány nyilvános végpontjának engedélyezése a Azure Portalon vagy a következő PowerShell-parancs használatával végezhető el:
 
@@ -215,7 +215,7 @@ Ez a lépés a Azure Portalon vagy a PowerShell-parancsok használatával végez
 Részletekért lásd: [nyilvános végponti forgalom engedélyezése a hálózati biztonsági csoportban](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
 
 
-## <a name="move-existing-single-instance-to-pool"></a>Meglévő önálló példány áthelyezése a készletbe
+## <a name="move-an-existing-single-instance-to-a-pool"></a>Meglévő önálló példány áthelyezése egy készletbe
  
 A készleten belüli és kívüli példányok áthelyezése a nyilvános előzetes verzióra vonatkozó korlátozások egyike. A megkerülő megoldás a készleten kívüli példányok adatbázisainak adott időpontra történő visszaállítására támaszkodik egy már egy készletben lévő példányra. 
 
@@ -225,7 +225,7 @@ Ez a folyamat leállási idővel rendelkezik.
 
 Meglévő adatbázisok áthelyezése:
 
-1. Szüneteltetheti a munkaterheléseket azon az SQL felügyelt példányon, amelyre az áttelepítést végzi.
+1. A munkaterhelések felfüggesztése az áttelepíteni kívánt felügyelt példányon.
 2. Parancsfájlok létrehozásával rendszeradatbázisokat hozhat létre, és végrehajthatja azokat a példányon belül.
 3. Végezze el az egyes adatbázisok adott időponthoz való visszaállítását a készletben lévő példányok között.
 
@@ -248,7 +248,7 @@ Meglévő adatbázisok áthelyezése:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Mutasson az alkalmazásra az új példányra, és folytassa a számítási feladatokat.
+4. Irányítsa az alkalmazást az új példányra, és folytassa a számítási feladatokat.
 
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
@@ -257,7 +257,7 @@ Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).
 - További információ a VNet konfigurálásáról: [SQL felügyelt példány VNet konfigurációja](connectivity-architecture-overview.md).
-- Egy felügyelt példányt létrehozó gyors útmutató, valamint egy adatbázis biztonságimásolat-fájlból történő visszaállítása: [SQL felügyelt példány létrehozása](instance-create-quickstart.md).
-- Az áttelepítésre szolgáló Azure Database Migration Service (DMS) használatával kapcsolatos oktatóanyagért lásd: [SQL felügyelt példányok áttelepítése a DMS használatával](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Egy felügyelt példányt létrehozó gyors útmutató, valamint egy adatbázis biztonságimásolat-fájlból való visszaállítása: [felügyelt példány létrehozása](instance-create-quickstart.md).
+- A Azure Database Migration Service áttelepítésre való használatával kapcsolatos oktatóanyagért lásd: [SQL felügyelt példányok áttelepítése Database Migration Service használatával](../../dms/tutorial-sql-server-to-managed-instance.md).
 - Az SQL felügyelt példány-adatbázis teljesítményének speciális monitorozásához a beépített hibaelhárítási intelligenciával kapcsolatban lásd: az [Azure SQL felügyelt példány figyelése Azure SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

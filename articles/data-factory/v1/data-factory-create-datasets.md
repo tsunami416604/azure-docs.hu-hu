@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c97c1be81f1aef393f4aa101fc84972e3ae9ac7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260435"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193821"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -32,7 +32,7 @@ Ez a cikk ismerteti, hogy mely adatkészletek, hogyan vannak meghatározva JSON 
 > Ha Data Factory új, tekintse meg az áttekintést a [Azure Data Factory bemutatása](data-factory-introduction.md) című témakört. Ha nem rendelkezik gyakorlati tapasztalattal az adatüzemek létrehozásához, akkor jobb megértést nyerhet az [Adatátalakítási oktatóanyag](data-factory-build-your-first-pipeline.md) és az [adatáthelyezési oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)olvasásával.
 
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy egy másolási tevékenységgel másol egy helyszíni SQL Server adatait az Azure Blob Storage szolgáltatásba. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek Azure Data Factoryban](data-factory-create-pipelines.md).
+A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Előfordulhat például, hogy egy másolási tevékenységgel másol egy SQL Server adatbázis adatait az Azure Blob Storage-ba. Ezt követően felhasználhat egy kaptár-műveletet, amely egy Azure HDInsight-fürtön futó struktúra-parancsfájlt futtat a blob Storage-beli adatok feldolgozásához a kimeneti adatok előállításához. Végezetül pedig egy második másolási tevékenységet is használhat a kimeneti adatok Azure SQL Data Warehouseba másolásához, amelyek alapján az üzleti intelligencia (BI) jelentéskészítési megoldásai épülnek. A folyamatokkal és tevékenységekkel kapcsolatos további információkért lásd: [folyamatok és tevékenységek Azure Data Factoryban](data-factory-create-pipelines.md).
 
 Egy tevékenység nulla vagy több bemeneti **adatkészletet**is igénybe vehet, és egy vagy több kimeneti adatkészletet hoz létre. A bemeneti adatkészlet a folyamat egy tevékenységének bemenetét jelöli, a kimeneti adatkészlet pedig a tevékenység kimenetét jelöli. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blob-tárolóban található BLOB-tárolót és mappát, amelyből a folyamat beolvassa az adatokat.
 
@@ -79,8 +79,8 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 | Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
-| név |Az adatkészlet neve. Lásd: [Azure Data Factory-elnevezési szabályok](data-factory-naming-rules.md) az elnevezési szabályokhoz. |Igen |NA |
-| type |Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészlet típusa](#Type). |Igen |NA |
+| name |Az adatkészlet neve. Lásd: [Azure Data Factory-elnevezési szabályok](data-factory-naming-rules.md) az elnevezési szabályokhoz. |Igen |NA |
+| típus |Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészlet típusa](#Type). |Igen |NA |
 | szerkezet |Az adatkészlet sémája.<br/><br/>Részletekért lásd az [adatkészlet szerkezetét](#Structure)ismertető témakört. |Nem |NA |
 | typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure Blob, Azure SQL Table). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#Type). |Igen |NA |
 | external | Logikai jelző annak megadásához, hogy az adatkészletet explicit módon állították-e be egy adat-előállító folyamat vagy sem. Ha egy tevékenység bemeneti adatkészletét nem az aktuális folyamat állítja elő, a jelzőt állítsa igaz értékre. Ezt a jelzőt állítsa igaz értékre a folyamat első tevékenységének bemeneti adatkészletében.  |Nem |hamis |
@@ -176,7 +176,7 @@ Az előző szakaszban szereplő példában az adatkészlet típusa **tulajdonsá
 ```
 
 ## <a name="dataset-structure"></a><a name="Structure"></a>Adatkészlet szerkezete
-A **struktúra** szakasz nem kötelező. Meghatározza az adatkészlet sémáját úgy, hogy az oszlopok neveinek és adattípusának gyűjteményét tartalmazza. A struktúra szakasz használatával megadhatja a típusokat és a leképezési oszlopokat a forrásról a célhelyre. A következő példában az adatkészlet három oszloppal rendelkezik: `slicetimestamp`, `projectname`és. `pageviews` Karakterlánc, karakterlánc és decimális típusúak.
+A **struktúra** szakasz nem kötelező. Meghatározza az adatkészlet sémáját úgy, hogy az oszlopok neveinek és adattípusának gyűjteményét tartalmazza. A struktúra szakasz használatával megadhatja a típusokat és a leképezési oszlopokat a forrásról a célhelyre. A következő példában az adatkészlet három oszloppal rendelkezik: `slicetimestamp` , `projectname` és `pageviews` . Karakterlánc, karakterlánc és decimális típusúak.
 
 ```json
 structure:
@@ -191,10 +191,10 @@ A struktúra minden oszlopa a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
-| type |Az oszlop adattípusa.  |Nem |
-| kulturális környezet |. A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy. `Datetimeoffset` A mező alapértelmezett értéke: `en-us`. |Nem |
-| formátumban |A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy. `Datetimeoffset` |Nem |
+| name |Az oszlop neve. |Igen |
+| típus |Az oszlop adattípusa.  |Nem |
+| kulturális környezet |. A .NET-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`. |Nem |
+| formátumban |A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy `Datetimeoffset` . |Nem |
 
 A következő irányelvek segítenek meghatározni, hogy mikor kell belefoglalni a szerkezeti adatokat, és mit kell belefoglalni a **struktúra** szakaszba.
 
@@ -240,7 +240,7 @@ A következő táblázat a rendelkezésre állási szakaszban használható tula
 | offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/>Vegye figyelembe, hogy ha a **anchorDateTime** és az **eltolás** is meg van adva, az eredmény a kombinált eltolás. |Nem |NA |
 
 ### <a name="offset-example"></a>eltolási példa
-Alapértelmezés szerint a napi (`"frequency": "Day", "interval": 1`) szeletek az egyezményes VILÁGIDŐ (UTC) szerint kezdődnek: 12 órakor (éjfélkor). Ha a kezdési időpontot 6 UTC-időre szeretné használni, állítsa be az eltolást az alábbi kódrészletben látható módon:
+Alapértelmezés szerint a napi ( `"frequency": "Day", "interval": 1` ) szeletek az egyezményes világidő (UTC) szerint kezdődnek: 12 órakor (éjfélkor). Ha a kezdési időpontot 6 UTC-időre szeretné használni, állítsa be az eltolást az alábbi kódrészletben látható módon:
 
 ```json
 "availability":
@@ -251,7 +251,7 @@ Alapértelmezés szerint a napi (`"frequency": "Day", "interval": 1`) szeletek a
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime példa
-A következő példában az adatkészlet 23 óránként egyszer jön létre. Az első szelet a **anchorDateTime**által megadott időpontban kezdődik, amely a `2017-04-19T08:00:00` következőre van beállítva: (UTC).
+A következő példában az adatkészlet 23 óránként egyszer jön létre. Az első szelet a **anchorDateTime**által megadott időpontban kezdődik, amely a következőre van beállítva: `2017-04-19T08:00:00` (UTC).
 
 ```json
 "availability":
@@ -263,7 +263,7 @@ A következő példában az adatkészlet 23 óránként egyszer jön létre. Az 
 ```
 
 ### <a name="offsetstyle-example"></a>eltolás/stílus – példa
-A következő adatkészlet havonta történik, és minden hónap harmadik napján, 8:00-kor (`3.08:00:00`) jön létre:
+A következő adatkészlet havonta történik, és minden hónap harmadik napján, 8:00-kor () jön létre `3.08:00:00` :
 
 ```json
 "availability": {
@@ -316,7 +316,7 @@ Ha Data Factory nem állít elő adatkészletet, akkor azt **külsőnek**kell me
 
 | Name (Név) | Leírás | Kötelező | Alapértelmezett érték |
 | --- | --- | --- | --- |
-| dataDelay |Az adott szelet külső adatának rendelkezésre állására vonatkozó ellenőrzések késleltetésének ideje. A beállítással például késleltetheti az óránkénti ellenőrzéseket.<br/><br/>A beállítás csak a jelen időpontra érvényes. Ha például ez a 1:00 PM, és ez az érték 10 perc, az érvényesítés 1:10 ÓRAKOR kezdődik.<br/><br/>Vegye figyelembe, hogy ez a beállítás nem érinti a szeleteket a múltban. A szeletek**dataDelay** < - **befejezési idejét** + tartalmazó szeletek késleltetés**nélkül lesznek** feldolgozva.<br/><br/>23:59 óránál nagyobb időt kell megadni a `day.hours:minutes:seconds` formátum használatával. Ha például 24 órát szeretne megadni, ne használja a 24:00:00-et. Ehelyett használja az 1.00:00:00 értéket. Ha 24:00:00-et használ, azt 24 nap (24.00:00:00) kezeli. 1 és 4 óra esetén a 1:04:00:00-es megadását kell megadnia. |Nem |0 |
+| dataDelay |Az adott szelet külső adatának rendelkezésre állására vonatkozó ellenőrzések késleltetésének ideje. A beállítással például késleltetheti az óránkénti ellenőrzéseket.<br/><br/>A beállítás csak a jelen időpontra érvényes. Ha például ez a 1:00 PM, és ez az érték 10 perc, az érvényesítés 1:10 ÓRAKOR kezdődik.<br/><br/>Vegye figyelembe, hogy ez a beállítás nem érinti a szeleteket a múltban. A szeletek dataDelay- **befejezési idejét**tartalmazó szeletek  +  **dataDelay**  <  **Now** késleltetés nélkül lesznek feldolgozva.<br/><br/>23:59 óránál nagyobb időt kell megadni a `day.hours:minutes:seconds` formátum használatával. Ha például 24 órát szeretne megadni, ne használja a 24:00:00-et. Ehelyett használja az 1.00:00:00 értéket. Ha 24:00:00-et használ, azt 24 nap (24.00:00:00) kezeli. 1 és 4 óra esetén a 1:04:00:00-es megadását kell megadnia. |Nem |0 |
 | retryInterval |A hiba és a következő próbálkozás közötti várakozási idő. Ez a beállítás a jelenlegi időpontra vonatkozik. Ha az előző próbálkozás sikertelen volt, a következő próbálkozás a **retryInterval** időszak után következik be. <br/><br/>Ha jelenleg 1:00 PM, kezdjük az első próbálkozással. Ha az első érvényesítési ellenőrzés befejezésének időtartama 1 perc, és a művelet meghiúsult, a következő újrapróbálkozás a 1:00 + 1min (időtartam) + 1min (újrapróbálkozás időköze) = 1:02 PM címen érhető el. <br/><br/>A múltban a szeletek esetében nincs késés. Az újrapróbálkozás azonnal megtörténik. |Nem |00:01:00 (1 perc) |
 | retryTimeout |Az újrapróbálkozási kísérletek időtúllépése.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítést 10 percen belül el kell végezni. Ha az ellenőrzés elvégzése 10 percnél hosszabb időt vesz igénybe, az újrapróbálkozások időtúllépést jelentenek.<br/><br/>Ha a rendszer minden alkalommal megkísérli az érvényesítést, a szelet **időtúllépés**lesz megjelölve. |Nem |00:10:00 (10 perc) |
 | maximumRetry |A külső adatforrások rendelkezésre állását megkereső időpontok száma. A maximálisan megengedett érték 10. |Nem |3 |

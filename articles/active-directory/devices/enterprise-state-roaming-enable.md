@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ddbb62a758da2f55e05add7f675deec947629af
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672393"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194041"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 
@@ -55,7 +56,7 @@ Az ország/régió érték az Azure AD-címtár létrehozási folyamatának rés
 Az alábbi lépéseket követve megtekintheti a felhasználónkénti eszköz szinkronizálási állapotáról szóló jelentést.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
-1. Válassza **Azure Active Directory** &gt; **Users** Azure Active Directory &gt; **minden felhasználó**lehetőséget.
+1. Válassza **Azure Active Directory** &gt; **Users** &gt; **minden felhasználó**lehetőséget.
 1. Válassza ki a felhasználót, majd válassza az **eszközök**lehetőséget.
 1. A **Megjelenítés**területen válassza ki a **beállítások és alkalmazásadatok szinkronizálása** a szinkronizálási állapot megjelenítéséhez eszközt.
   

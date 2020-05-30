@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460732"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194458"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sablonok használata Azure Data Factory entitások létrehozásához
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460732"
 ## <a name="overview"></a>Áttekintés
 Az adatintegrációs igényekhez Azure Data Factory használatakor előfordulhat, hogy a különböző környezetekben ugyanazt a mintát használja, vagy ismétlődően alkalmazza ugyanazt a feladatot ugyanazon a megoldáson belül. A sablonok megkönnyítik ezen forgatókönyvek megvalósítását és kezelését. A Azure Data Factory sablonjai ideálisak az újrahasználhatóságot és a ismétlődést érintő forgatókönyvekhez.
 
-Vegye figyelembe azt a helyzetet, amelyben a szervezet 10 gyártó üzeme van a világ minden tájáról. Az egyes létesítmények naplófájljai külön helyszíni SQL Server adatbázisban tárolódnak. A vállalat egyetlen adattárházat szeretne létrehozni a felhőben az ad hoc elemzésekhez. Azt is szeretné, hogy ugyanazokat a logikát, de a fejlesztési, tesztelési és éles környezetekben használt konfigurációkat is meg kell adni.
+Vegye figyelembe azt a helyzetet, amelyben a szervezet 10 gyártó üzeme van a világ minden tájáról. Az egyes létesítmények naplófájljai külön SQL Server adatbázisban tárolódnak. A vállalat egyetlen adattárházat szeretne létrehozni a felhőben az ad hoc elemzésekhez. Azt is szeretné, hogy ugyanazokat a logikát, de a fejlesztési, tesztelési és éles környezetekben használt konfigurációkat is meg kell adni.
 
 Ebben az esetben egy feladatot ugyanabban a környezetben kell megismételni, de különböző értékekkel kell rendelkeznie az egyes gyártói üzemekhez tartozó 10 adat-előállítók között. Érvényben van az **Ismétlődés** . A sablon lehetővé teszi ennek az általános folyamatnak az absztrakcióját (azaz a folyamatokat, amelyek ugyanazt a tevékenységet használják az egyes adatelőállítókban), de az egyes gyártási üzemekhez külön paramétereket használnak.
 
@@ -41,14 +41,14 @@ A következő oktatóanyagok részletes útmutatást biztosítanak Data Factory 
 * [Oktatóanyag: folyamat létrehozása adatfeldolgozásra Azure Resource Manager sablon használatával](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Sablonok Data Factory a GitHubon
-Tekintse meg a következő Azure gyors üzembe helyezési sablonokat a GitHubon:
+Tekintse meg a következő Azure-előugró sablonokat a GitHubon:
 
 * [Hozzon létre egy adatelőállítót az adatok Azure-Blob Storageból való másolásához Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [Adatelőállító létrehozása struktúra-tevékenységgel az Azure HDInsight-fürtön](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [Adatok előállítójának létrehozása a Salesforce-ből az Azure-Blobokra való másoláshoz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [Adatfeldolgozó létrehozása a láncok tevékenységekhez: adatok másolása egy FTP-kiszolgálóról az Azure-Blobokra, egy struktúra-parancsfájl meghívása egy igény szerinti HDInsight-fürtön az adatok átalakításához, és a másolás eredménye Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-Nyugodtan megoszthatja Azure Data Factory-sablonjait az [Azure gyors üzembe helyezésével](https://azure.microsoft.com/documentation/templates/). Tekintse meg a [hozzájárulási útmutatót](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) a tárházon keresztül megosztható sablonok fejlesztése során.
+Nyugodtan megoszthatja Azure Data Factory-sablonjait az [Azure](https://azure.microsoft.com/documentation/templates/)rövid útmutatójában. Tekintse meg a [hozzájárulási útmutatót](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) a tárházon keresztül megosztható sablonok fejlesztése során.
 
 A következő szakaszokban részletesen ismertetjük Data Factory erőforrásoknak egy Resource Manager-sablonban való definiálásának részleteit.
 

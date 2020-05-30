@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 27336028fb6b141d8ece4d975b7590b3daf875f2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c0b34e17c202cb060773c53aa5775343ade9c2ee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050960"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193776"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Az adatbázis-áttelepítési folyamat magas szinten a következőképpen néz k
 
 ## <a name="assess-sql-managed-instance-compatibility"></a>Felügyelt SQL-példányok kompatibilitásának felmérése
 
-Először határozza meg, hogy az SQL felügyelt példány kompatibilis-e az alkalmazás adatbázis-követelményeivel. Az SQL felügyelt példányának célja, hogy könnyen áthelyezhető áttelepítést biztosítson a SQL Server helyszíni vagy virtuális gépeken használó meglévő alkalmazások többsége számára. Előfordulhat azonban, hogy esetenként olyan szolgáltatásokat vagy képességeket igényel, amelyek még nem támogatottak, és a megkerülő megoldás megvalósításának díja túl magas.
+Először határozza meg, hogy az SQL felügyelt példány kompatibilis-e az alkalmazás adatbázis-követelményeivel. Az SQL felügyelt példánya úgy lett kialakítva, hogy a SQL Servert használó meglévő alkalmazások többsége számára könnyen áthelyezhető legyen a lift és a váltás. Előfordulhat azonban, hogy esetenként olyan szolgáltatásokat vagy képességeket igényel, amelyek még nem támogatottak, és a megkerülő megoldás megvalósításának díja túl magas.
 
 A [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) használatával észlelheti az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat Azure SQL Databaseeken. Ha valamilyen letiltási probléma merül fel, lehetséges, hogy egy másik lehetőséget kell figyelembe vennie, például az Azure-beli [virtuális gépeken való SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 
@@ -121,7 +121,7 @@ Ha többet szeretne megtudni erről a forgatókönyvről és a DMS konfiguráci�
 
 ### <a name="native-restore-from-url"></a>Natív VISSZAÁLLÍTÁS URL-címből
 
-Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban elérhető, SQL Server helyszíni vagy [SQL Server on Virtual Machinesról](https://azure.microsoft.com/services/virtual-machines/sql-server/)származó natív biztonsági másolatok (. bak fájlok) visszaállítása az SQL felügyelt példányának egyik fő funkciója, amely lehetővé teszi a gyors és egyszerű offline adatbázisok áttelepítését.
+Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban elérhető, SQL Server példányról származó natív biztonsági másolatok (. bak fájlok) visszaállítása az SQL felügyelt példányának egyik fő funkciója, amely lehetővé teszi a gyors és egyszerű offline adatbázisok áttelepítését.
 
 Az alábbi ábra a folyamat magas szintű áttekintését tartalmazza:
 

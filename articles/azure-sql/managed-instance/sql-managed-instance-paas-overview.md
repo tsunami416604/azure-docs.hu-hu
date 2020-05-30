@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure SQL felügyelt példánya?
-description: Ismerje meg az Azure SQL felügyelt példányát, amely közel 100%-os kompatibilitást biztosít a legújabb SQL Server helyszíni (Enterprise Edition) adatbázismotor
+description: Ismerje meg az Azure SQL felügyelt példányát, amely közel 100%-os kompatibilitást biztosít a legújabb SQL Server (Enterprise Edition) adatbázismotor
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 9f8f001c1e20e7685683d6bf3d3564d355db38cb
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 886653bcfa255c7929f7e23082b74f171c97c7a1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119372"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195438"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL termékcsalád részét képező Azure SQL felügyelt példány az intelligens, skálázható, felhőalapú adatbázis-szolgáltatás, amely a legszélesebb körben felügyelt és örökzöld platform szolgáltatásként nyújtott előnyökkel ötvözi a legteljesebb SQL Server az adatbázismotor kompatibilitását. Az SQL felügyelt példány közel 100%-os kompatibilitást biztosít a legújabb SQL Server helyszíni (Enterprise Edition) adatbázis-motorral, amely egy natív [virtuális hálózat (VNet)](../../virtual-network/virtual-networks-overview.md) megvalósítását biztosítja, amely az általános biztonsági kérdésekre és a helyszíni SQL Server ügyfeleknek kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül. Az SQL felügyelt példánya lehetővé teszi a meglévő SQL Server ügyfelek számára, hogy a felhőbe a helyszíni alkalmazásaikat minimális alkalmazás-és adatbázis-módosításokkal emelje át. Ugyanakkor az SQL felügyelt példánya megőrzi az összes olyan Péter-képességet (az automatikus javításokat és a verziószámokat, az [automatizált biztonsági mentéseket](../database/automated-backups-overview.md)és a [magas rendelkezésre állást](../database/high-availability-sla.md) ), amelyek drasztikusan csökkentik a felügyeleti terhelést és a TCO-t.
+Az Azure SQL termékcsalád részét képező Azure SQL felügyelt példány az intelligens, skálázható, felhőalapú adatbázis-szolgáltatás, amely a legszélesebb körben felügyelt és örökzöld platform szolgáltatásként nyújtott előnyökkel ötvözi a legteljesebb SQL Server az adatbázismotor kompatibilitását. Az SQL felügyelt példány közel 100%-os kompatibilitást biztosít a legújabb SQL Server (Enterprise Edition) adatbázis-motorral, amely egy natív [virtuális hálózat (VNet)](../../virtual-network/virtual-networks-overview.md) megvalósítását biztosítja, amely az általános biztonsági kérdésekre és a meglévő SQL Server ügyfelek számára kedvező [üzleti modellre](https://azure.microsoft.com/pricing/details/sql-database/) épül. Az SQL felügyelt példánya lehetővé teszi a meglévő SQL Server ügyfelek számára, hogy a felhőbe a helyszíni alkalmazásaikat minimális alkalmazás-és adatbázis-módosításokkal emelje át. Ugyanakkor az SQL felügyelt példánya megőrzi az összes olyan Péter-képességet (az automatikus javításokat és a verziószámokat, az [automatizált biztonsági mentéseket](../database/automated-backups-overview.md)és a [magas rendelkezésre állást](../database/high-availability-sla.md) ), amelyek drasztikusan csökkentik a felügyeleti terhelést és a TCO-t.
 
 > [!IMPORTANT]
 > Azoknak a régióknak a listájáért, amelyeken jelenleg elérhető az SQL felügyelt példány, tekintse meg a [támogatott régiók](resource-limits.md#supported-regions)című témakört.
@@ -30,7 +30,7 @@ Az alábbi ábra az SQL felügyelt példányainak főbb funkcióit vázolja fel:
 
 ![főbb funkciók](./media/sql-managed-instance-paas-overview/key-features.png)
 
-Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni a helyszíni vagy IaaS, a saját készítésű vagy az ISV által biztosított környezetből a teljes körűen felügyelt, kihasználatlan Felhőbeli környezetbe, a lehető legkevesebb migrációs megoldással. Az Azure-ban a teljes mértékben automatizált [adatáttelepítési szolgáltatás (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) használatával az ügyfelek a helyszíni SQL Servert egy olyan SQL felügyelt példányra helyezhetik át, amely a helyszíni SQL Serverekkel való kompatibilitást és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítését biztosítja.  A frissítési garanciával lehetősége van arra, hogy a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával a felügyelt SQL-példányok kedvezményes díjszabására cserélje le. Az SQL felügyelt példány a felhőben a legjobb áttelepítési cél SQL Server olyan példányok esetében, amelyeknek magas a biztonságuk, valamint egy sokoldalú programozható felület szükséges.
+Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni a helyszíni vagy IaaS, a saját készítésű vagy az ISV által biztosított környezetből a teljes körűen felügyelt, kihasználatlan Felhőbeli környezetbe, a lehető legkevesebb migrációs megoldással. Az Azure-ban a teljes mértékben automatizált [adatáttelepítési szolgáltatás (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) használatával az ügyfelek megemelik és áthelyezhetik meglévő SQL Server példányaikat egy olyan SQL-alapú felügyelt példányra, amely kompatibilis a SQL Server és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítésével.  A frissítési garanciával lehetősége van arra, hogy a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával a felügyelt SQL-példányok kedvezményes díjszabására cserélje le. Az SQL felügyelt példány a felhőben a legjobb áttelepítési cél SQL Server olyan példányok esetében, amelyeknek magas a biztonságuk, valamint egy sokoldalú programozható felület szükséges.
 
 ## <a name="key-features-and-capabilities"></a>Főbb funkciók és képességek
 
@@ -50,7 +50,7 @@ A felügyelt SQL-példányok a Azure SQL Database és SQL Server adatbázismotor
 
 Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban láthatók:
 
-|Funkció | Leírás|
+|Szolgáltatás | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
 | Felügyelt automatizált biztonsági másolatok | Igen |
@@ -146,7 +146,7 @@ A következő táblázat összefoglalja a műveleteket és a jellemző általán
 |Üzembe helyezés |Egy másik hardver generációjának első példánya egy nem üres alhálózatban (például az első gen 5 példány egy 4. generációs példánnyal rendelkező alhálózatban)|Virtuális fürt létrehozása *|a műveletek 90%-a 4 órán belül befejeződik|
 |Üzembe helyezés |4 virtuális mag első példányának létrehozása üres vagy nem üres alhálózatban|Virtuális fürt létrehozása * *|a műveletek 90%-a 4 órán belül befejeződik|
 |Üzembe helyezés |A következő példány létrehozása a nem üres alhálózaton belül (2., 3. stb. példány)|Virtuális fürtök átméretezése|a műveletek 90%-a befejezve 2,5 órában|
-|**Frissítés** |Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N.A.|Legfeljebb 1 perc|
+|**Frissítés** |Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N/A|Legfeljebb 1 perc|
 |Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Adatbázisfájlok csatolása|a műveletek 90%-a befejeződik 5 percen belül|
 |Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
 |Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
@@ -247,7 +247,7 @@ Az Azure SQL felügyelt példánya olyan speciális biztonsági funkciókat kín
 - A [sor szintű biztonság](/sql/relational-databases/security/row-level-security) lehetővé teszi, hogy az adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzőinek (például csoporttagság vagy végrehajtási környezet) alapján szabályozza. A sorszintű biztonság (RLS) egyszerűsíti az alkalmazás védelmének megtervezését és kódolását. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Tegyük fel például, hogy a dolgozók csak a saját részlegéhez tartozó adatsorokhoz férhessenek hozzá, vagy csak a releváns adatokat korlátozzák.
 - Az [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) a felügyelt SQL-példányok adatfájljait titkosítja, más néven az inaktív adatok titkosítását. A TDE az adatok és naplófájlok valós idejű I/O-titkosítását és visszafejtését hajtja végre. A titkosítás egy adatbázis-titkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) használ, amely az adatbázis-rendszerindítási rekordban van tárolva a helyreállítás során. A felügyelt példányokban lévő összes adatbázist transzparens adattitkosítással lehet védelemmel ellátni. A TDE SQL Server bevált titkosítási funkciója, amelyre számos megfelelőségi szabványnak szüksége van a tárolási adathordozók lopása elleni védelemhez.
 
-A titkosított adatbázisok SQL felügyelt példányra történő áttelepítése a Azure Database Migration Service (DMS) vagy a natív visszaállítás használatával támogatott. Ha egy titkosított adatbázist natív visszaállítással kíván áttelepíteni, akkor a meglévő TDE-tanúsítvány áttelepítése a helyszíni SQL Server vagy a virtuális gépen SQL Server egy SQL-alapú felügyelt példányra egy szükséges lépés. További információ az áttelepítési lehetőségekről: [SQL Server Migrálás az SQL felügyelt példányára](migrate-to-instance-from-sql-server.md).
+A titkosított adatbázisok SQL felügyelt példányra történő áttelepítése a Azure Database Migration Service (DMS) vagy a natív visszaállítás használatával támogatott. Ha egy titkosított adatbázist natív visszaállítással szeretne áttelepíteni, a meglévő TDE-tanúsítvány áttelepítése a SQL Server példányból egy SQL-felügyelt példányra szükséges lépés. További információ az áttelepítési lehetőségekről: [SQL Server Migrálás az SQL felügyelt példányára](migrate-to-instance-from-sql-server.md).
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory integráció
 
@@ -286,7 +286,7 @@ Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az 
 - További információ az URL-címről való visszaállításról: [NATÍV visszaállítás az URL-](migrate-to-instance-from-sql-server.md#native-restore-from-url)címről.
 
 > [!IMPORTANT]
-> A felügyelt SQL-példányokról csak egy másik SQL felügyelt példányra lehet visszaállítani a biztonsági másolatokat. Nem állíthatók vissza helyszíni SQL Server vagy Azure SQL Database.
+> A felügyelt SQL-példányokról csak egy másik SQL felügyelt példányra lehet visszaállítani a biztonsági másolatokat. Nem állíthatók vissza SQL Server példányra vagy Azure SQL Database.
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
@@ -294,7 +294,7 @@ A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás
 
 ## <a name="sql-features-supported"></a>Támogatott SQL-funkciók
 
-Az SQL felügyelt példányának célja, hogy a szakaszos kiadási csomagon keresztül 100%-os felülettel kompatibilis legyen a legújabb helyszíni SQL Server verziójával. A szolgáltatások és az összehasonlítások listájáért lásd: az [SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md), valamint az SQL felügyelt példányok és a SQL Server közötti t-SQL-különbségek listája: az [SQL felügyelt példányok t-SQL-különbözetei SQL Server](transact-sql-tsql-differences-sql-server.md).
+Az SQL felügyelt példányának célja, hogy a szakaszos kiadási csomagon keresztül 100%-os felülettel kompatibilis legyen a legújabb SQL Server verziójával. A szolgáltatások és az összehasonlítások listájáért lásd: az [SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md), valamint az SQL felügyelt példányok és a SQL Server közötti t-SQL-különbségek listája: az [SQL felügyelt példányok t-SQL-különbözetei SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 Az SQL felügyelt példánya támogatja az SQL 2008-adatbázisok visszamenőleges kompatibilitását. Az SQL 2005 adatbázis-kiszolgálókról történő közvetlen áttelepítés támogatott, az áttelepített SQL 2005-adatbázisok kompatibilitási szintje pedig az SQL 2008-ra frissül.
   
@@ -304,7 +304,7 @@ Az alábbi ábra az SQL felügyelt példányának felületi kompatibilitását i
 
 ### <a name="key-differences-on-premises-and-sql-managed-instance"></a>A legfontosabb különbségek a helyszíni és az SQL felügyelt példányon
 
-Az SQL felügyelt példányának előnye, hogy mindig naprakészek a felhőben, ami azt jelenti, hogy a helyszíni SQL Server egyes funkciói elavultak, kivonhatók vagy alternatívák lehetnek. Bizonyos esetekben szükség van arra, hogy az eszközök tisztában legyenek azzal, hogy egy adott funkció némileg eltérő módon működik, vagy a szolgáltatás olyan környezetben fut, amely nem teljes mértékben szabályozható.
+Az SQL felügyelt példányának előnye, hogy mindig naprakészek a felhőben, ami azt jelenti, hogy SQL Server egyes funkciói elavultak, kivonhatók vagy alternatívák lehetnek. Bizonyos esetekben szükség van arra, hogy az eszközök tisztában legyenek azzal, hogy egy adott funkció némileg eltérő módon működik, vagy a szolgáltatás olyan környezetben fut, amely nem teljes mértékben szabályozható.
 
 Néhány kulcsfontosságú különbség:
 

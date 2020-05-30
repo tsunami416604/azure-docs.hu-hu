@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731697"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192535"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -49,7 +49,7 @@ A következő szolgáltatások olyan funkciók, amelyekkel ellenőrizheti, hogy 
 
 | [Biztonságos platform](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Adatvédelmi & vezérlők](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
-| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Trust Center](https://www.microsoft.com/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [Kötelező biztonsági képzés, háttérbeli ellenőrzés](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Az adathely vezérlése](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls hub](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Hogyan kezeli a Microsoft az adattárolási helyet az Azure-szolgáltatásokban](https://azuredatacentermap.azurewebsites.net/)|
 | [Behatolási teszt](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolás-észlelés, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [naplózás & naplózás](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Adathozzáférés biztosítása a használati feltételekhez](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services átvilágítás ellenőrzőlista](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[A Microsoft a következő feltételekkel férhet hozzá az adataihoz:](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [A Art adatközpont, a](https://www.microsoft.com/cloud-platform/global-datacenters)fizikai biztonság, a [biztonságos hálózat](network-overview.md) állapota | [Válaszadás a bűnüldözésre](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatás, hely & iparág szerint](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
@@ -308,7 +308,7 @@ A [transzparens adattitkosítás (TDE)](../../virtual-machines/windows/sqlclassi
 
 A Azure Key Vault (AKV) szolgáltatás úgy lett kialakítva, hogy javítsa a kulcsok biztonságát és felügyeletét egy biztonságos és magasan elérhető helyen. A SQL Server Connector lehetővé teszi, hogy a SQL Server ezeket a kulcsokat a Azure Key Vault használatával használhassa.
 
-Ha a SQL Servert a helyszíni gépekkel futtatja, akkor a helyszíni SQL Server számítógépéről elérhető lépéseket követve elérheti a Azure Key Vault. Az Azure-beli virtuális gépek SQL Server azonban időt takaríthat meg a Azure Key Vault integrációs funkciójával. Néhány Azure PowerShell parancsmaggal engedélyezheti ezt a funkciót, automatizálhatja az SQL-alapú virtuális gépekhez szükséges konfigurációt a kulcstartó eléréséhez.
+Ha a SQL Servert a helyszíni gépekkel futtatja, akkor a helyszíni SQL Server-példányon lévő Azure Key Vault eléréséhez szükséges lépéseket követheti. Az Azure-beli virtuális gépek SQL Server azonban időt takaríthat meg a Azure Key Vault integrációs funkciójával. Néhány Azure PowerShell parancsmaggal engedélyezheti ezt a funkciót, automatizálhatja az SQL-alapú virtuális gépekhez szükséges konfigurációt a kulcstartó eléréséhez.
 
 ### <a name="vm-disk-encryption"></a>VM-lemez titkosítása
 A [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) egy új képesség, amely segít a Windows-és Linux-IaaS virtuális gépek lemezeinek titkosításában. Ez a Windows iparági szabványnak megfelelő BitLocker-szolgáltatásra és a Linux DM-Crypt szolgáltatására vonatkozik, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vault a Key Vault-előfizetésében lévő lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. A megoldás azt is biztosítja, hogy a virtuális gépek lemezein lévő összes adatok titkosítva legyenek az Azure Storage-ban.

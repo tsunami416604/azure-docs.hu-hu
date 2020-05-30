@@ -5,65 +5,189 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/29/2020
+ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594967"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219220"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
-Ez a cikk a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdéseket (GYIK) tárgyalja.
+Ez a cikk a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdéseket (GYIK) válaszolja meg.
 
-## <a name="which-azure-regions-are-supported"></a>Mely Azure-régiók támogatottak?
+## <a name="installation-and-upgrade"></a>Telepítés és frissítés
 
-Tekintse meg a [támogatott forrásokat](supported-resources.md#azure-regions) azon globális régiók listájához, ahol az Azure Red Hat OpenShift támogatott.
+### <a name="which-azure-regions-are-supported"></a>Mely Azure-régiók támogatottak?
 
-## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
+Az Azure Red Hat OpenShift 4. x támogatott régiói listáját az [elérhető régiók](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)részben tekintheti meg.
 
-Nem. Egy Azure Red Hat OpenShift-fürtöt pedig összekapcsolhatók egy meglévő virtuális hálózathoz. A részletekért lásd: [fürt virtuális hálózatának összekötése meglévő virtuális hálózathoz](tutorial-create-cluster.md#create-the-cluster) .
+Az Azure Red Hat OpenShift 3,11 támogatott régiói listáját itt tekintheti meg: [régiókban elérhető termékek](supported-resources.md#azure-regions).
 
-## <a name="what-cluster-operations-are-available"></a>Milyen fürtözött műveletek érhetők el?
+### <a name="what-virtual-machine-sizes-can-i-use"></a>Milyen virtuálisgép-méreteket használhatok?
 
-Csak a számítási csomópontok számának vertikális fel-és leskálázására van lehetőség. A létrehozás után más módosítások nem engedélyezettek `Microsoft.ContainerService/openShiftManagedClusters` az erőforrásban. A számítási csomópontok maximális száma 20-ra van korlátozva.
+Az Azure Red Hat OpenShift 4 által támogatott virtuálisgép-méretek listáját lásd: [Az Azure Red Hat OpenShift 4 támogatott erőforrásai](support-policies-v4.md).
 
-## <a name="what-virtual-machine-sizes-can-i-use"></a>Milyen virtuálisgép-méreteket használhatok?
+Az Azure Red Hat OpenShift 3,11 által támogatott virtuálisgép-méretek listáját lásd: az [Azure Red Hat OpenShift 3,11 támogatott erőforrásai](supported-resources.md).
 
-Tekintse meg az [Azure Red Hat OpenShift virtuálisgép](supported-resources.md#virtual-machine-sizes) -méreteit az Azure Red Hat OpenShift-fürtökkel használható virtuálisgép-méretek listájáért.
+### <a name="what-is-the-maximum-number-of-pods-in-an-azure-red-hat-openshift-cluster--what-is-the-maximum-number-of-pods-per-node-in-azure-red-hat-openshift"></a>Mi a hüvelyek maximális száma egy Azure Red Hat OpenShift-fürtben?  Mekkora a hüvelyek maximális száma egy csomóponton az Azure Red Hat OpenShift?
 
-## <a name="is-data-on-my-cluster-encrypted"></a>A fürtön lévő adatai titkosítva vannak?
+A támogatott hüvelyek tényleges száma az alkalmazás memóriájának, PROCESSZORának és tárolási követelményeitől függ.
 
-Alapértelmezés szerint a titkosítás inaktív állapotban van. Az Azure Storage platform automatikusan titkosítja az adatait, mielőtt megőrzi azt, és visszafejti az adatok beolvasása előtt. A részletekért tekintse meg [Az Azure Storage Service encryption for](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) inaktív adatokat.
+Az Azure Red Hat OpenShift 4. x 250 Pod-csomópontos korláttal és egy 100-os számítási csomóponti korláttal rendelkezik. A fürtben támogatott hüvelyek maximális száma a 250 &times; 100 = 25 000.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Használhatom a Prometheus/Grafana-t az alkalmazásaim figyelésére?
+Az Azure Red Hat OpenShift 3,11 egy 50-es Pod-csomópontos korláttal és 20 számítási csomópontos korláttal rendelkezik. A fürtben támogatott hüvelyek maximális száma a 50 &times; 20 = 1 000.
 
-Igen, üzembe helyezheti a Prometheus-t a névtérben, és figyelheti a névterében lévő alkalmazásokat.
+### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Lehet egy fürt több Azure-régióban is számítási csomópontokkal rendelkezik?
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Használhatom a Prometheus/Grafana-t a fürt állapotával és kapacitásával kapcsolatos metrikák figyelésére?
+Nem. Egy Azure Red Hat OpenShift-fürt minden csomópontjának ugyanabból az Azure-régióból kell származnia.
 
-Nem, aktuális időpontban nem.
+### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>Több rendelkezésre állási zónában is üzembe helyezhetők a fürtök?
 
-## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A Docker-beállításjegyzék külsőleg is elérhető, így olyan eszközöket is használhatok, mint például a Jenkins?
+Igen. Ez automatikusan megtörténik, ha a fürt egy olyan Azure-régióban van telepítve, amely támogatja a rendelkezésre állási zónákat. További információ: [rendelkezésre állási zónák](../availability-zones/az-overview.md#availability-zones).
 
-A Docker- `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` beállításjegyzék elérhető, de nincs megadva erős tárolási tartóssági garancia. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)is használhatja.
+### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>A vezérlési sík csomópontjai el vannak-e látva az Azure Kubernetes szolgáltatással (ak)?
 
-## <a name="is-cross-namespace-networking-supported"></a>Támogatott-e a névterek közötti hálózatkezelés?
+Nem. Az összes erőforrás, beleértve a fürt fő csomópontjait is, az ügyfél-előfizetésben fut. Az ilyen típusú erőforrások írásvédett erőforráscsoporthoz kerülnek.
 
-Az ügyfél és az egyéni projekt-rendszergazdák a különböző névtérbeli hálózatkezelést (beleértve a megtagadást is) az `NetworkPolicy` objektumok használatával, projektenként is testre szabhatják.
+### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>A fürt egy ügyfél-előfizetésben található? 
 
-## <a name="can-an-admin-manage-users-and-quotas"></a>A rendszergazdák kezelhetik a felhasználókat és a kvótákat?
+Az Azure által felügyelt alkalmazás egy zárolt erőforráscsoport és az ügyfél-előfizetés között él. Az ügyfelek megtekinthetik az adott erőforráscsoporthoz tartozó objektumokat, de nem módosíthatják azokat.
+
+### <a name="is-there-any-element-in-azure-red-hat-openshift-shared-with-other-customers-or-is-everything-independent"></a>Van olyan elem az Azure Red Hat OpenShift, amelyet más ügyfelek is megosztanak? Vagy minden független?
+
+Minden egyes Azure Red Hat OpenShift-fürt egy adott ügyfélhez van hozzárendelve, és az ügyfél előfizetésén belül él. 
+
+### <a name="are-infrastructure-nodes-available"></a>Érhetők el infrastruktúra-csomópontok?
+
+Az Azure Red Hat OpenShift 4. x fürtökön jelenleg nem érhetők el infrastruktúra-csomópontok.
+
+Az Azure Red Hat OpenShift 3,11-fürtökön alapértelmezés szerint az infrastruktúra-csomópontok is szerepelnek.
+
+## <a name="upgrades"></a>Frissítések
+
+###  <a name="what-is-the-general-upgrade-process"></a>Mi az általános frissítési folyamat?
+
+A rendszer automatikusan alkalmazza a javításokat a fürtön. Nem kell semmilyen műveletet végrehajtania a fürtön a javítások frissítéseinek fogadásához.
+
+A frissítés futtatása biztonságos folyamat, amely nem zavarja a fürtszolgáltatásokat. A közös Microsoft-Red Hat csapat aktiválhatja a frissítési folyamatot, ha új verzió érhető el, vagy gyakori biztonsági rések és a kitettségek is fennállnak. Az elérhető frissítések egy átmeneti környezetben vannak tesztelve, majd az üzemi fürtökre alkalmazhatók. Az ajánlott eljárások követésével minimálisan nem lehet leállást biztosítani.
+
+A tervezett karbantartás nincs előre beütemezhetve az ügyféllel. A karbantartással kapcsolatos értesítéseket e-mailben lehet elküldeni.
+
+### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Mi az Azure Red Hat OpenShift-karbantartási folyamata?
+
+Az Azure Red Hat OpenShift két típusa van: a frissítések és a felhőalapú szolgáltató által kezdeményezett karbantartás.
+- A frissítések közé tartoznak a szoftverfrissítések és a gyakori biztonsági rések és a kitettségek.
+- A felhőalapú szolgáltató által kezdeményezett karbantartás magában foglalja a hálózat, a tárolás és a regionális kimaradásokat. A karbantartás a felhőalapú szolgáltatótól függ, és a szolgáltató által biztosított frissítésekre támaszkodik.
+
+### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Mi a helyzet a sürgősségi és a tervezett karbantartási időszakokkal?
+
+A két karbantartási típus között nem kell különbséget tenni. Csapatunk 24/7/365, és nem használja a hagyományos ütemezett "munkaidőn kívüli" karbantartási időszakokat.
+
+### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Hogyan fogja frissíteni a gazda operációs rendszer és a OpenShift szoftverét?
+
+A gazda operációs rendszerek és a OpenShift szoftverek frissülnek, mivel az Azure Red Hat OpenShift a másodlagos OpenShift-tároló platformból származó kisebb kiadási verziókat és javításokat használnak.
+
+### <a name="whats-the-process-to-reboot-the-updated-node"></a>Mi a folyamat a frissített csomópont újraindítására?
+
+A csomópontok a frissítés részeként újraindulnak.
+
+## <a name="cluster-operations"></a>Fürtműveletek
+
+### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Használhatom a Prometheus-t az alkalmazásaim figyelésére?
+
+A Prometheus előre telepítve és konfigurálva van az Azure Red Hat OpenShift 4. x fürtökhöz. További információ a [fürtök figyeléséről](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html).
+
+Az Azure Red Hat OpenShift 3,11-fürtök esetében a Prometheus-t üzembe helyezheti a névtérben, és figyelheti az alkalmazásokat a névtérben. További információ: [a Prometheus-példány üzembe helyezése az Azure Red Hat OpenShift-fürtben](howto-deploy-prometheus.md).
+
+### <a name="can-i-use-prometheus-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Használhatom a Prometheus-t a fürt állapotával és kapacitásával kapcsolatos metrikák figyelésére?
+
+Az Azure Red Hat OpenShift 4. x: igen.
+
+Az Azure Red Hat OpenShift 3,11: nem.
+
+### <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Az alapul szolgáló virtuális gépek naplófájljai továbbítva lesznek egy ügyfél-naplózási elemzési rendszerbe?
+
+Az alapul szolgáló virtuális gépek naplófájljait a felügyelt szolgáltatás kezeli, és az ügyfelek számára nem érhető el.
+
+### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Hogyan érhetik el az ügyfelek az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb problémákhoz hasonló műveleteket végezzenek. Nem úgy tűnik, hogy a kubectl-t egy Azure Red Hat OpenShift-fürtön futtatom.
+
+Az Azure Red Hat OpenShift 4. x fürtök esetében a OpenShift webkonzol a csomópont szintjén található összes mérőszámot tartalmazza. További információ: Red Hat dokumentáció a [fürt adatainak megtekintéséhez](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html).
+
+Az Azure Red Hat OpenShift 3,11-fürtök esetében az ügyfelek a következő paranccsal érhetik el a CPU-/memória-metrikákat a csomópont szintjén: parancs `oc adm top nodes` vagy `kubectl top nodes` az ügyfél-rendszergazda fürt szerepkör. Az ügyfelek a (z) parancshoz tartozó CPU-/memória-metrikákat is használhatják `pods` `oc adm top pods` `kubectl top pods` .
+
+### <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Ha felskálázást végez az üzembe helyezés során, hogyan képezhetők le az Azure-beli tartalék tartományok a pod-elhelyezésbe, hogy a szolgáltatáshoz tartozó összes hüvely ne legyen kiütéssel egyetlen tartalék tartomány meghibásodása esetén?
+
+A virtuálisgép-méretezési csoportok az Azure-ban való használatakor alapértelmezés szerint öt tartalék tartomány van. A méretezési csoportokban lévő virtuálisgép-példányok az egyik tartalék tartományba kerülnek. Ez biztosítja, hogy a fürt számítási csomópontjain üzembe helyezett alkalmazások külön tartalék tartományokban legyenek elhelyezve.
+
+További információ: [a virtuálisgép-méretezési csoporthoz tartozó tartalék tartományok megfelelő számának kiválasztása](../virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains.md).
+
+### <a name="is-there-a-way-to-manage-pod-placement"></a>Van mód a pod elhelyezés kezelésére?
+
+Ügyfeleinknek lehetősége van a csomópontok beszerzésére és a címkék megtekintésére ügyfél-rendszergazdaként. Ez lehetőséget biztosít a méretezési csoportba tartozó bármely virtuális gép célzására.
+
+Adott címkék használatakor körültekintően kell eljárni:
+
+- Az állomásnév nem használható. Az állomásnév gyakran a frissítésekkel és frissítésekkel lesz elforgatva, és a változás garantált.
+- Ha az ügyfél egy adott címkére vagy egy központi telepítési stratégiára vonatkozó kéréssel rendelkezik, akkor ez a megoldás a mérnöki erőfeszítésekhez szükséges, és jelenleg nem támogatott.
+
+További információ: a [Pod elhelyezésének szabályozása](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+
+### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A rendszerkép beállításjegyzéke külsőleg is elérhető, így olyan eszközöket is használhatok, mint például a Jenkins?
+
+4. x fürtök esetén ki kell tenni egy biztonságos beállításjegyzéket, és konfigurálnia kell a hitelesítést. További információt a következő Red Hat dokumentációban talál:
+
+- [Beállításjegyzék kimutatása](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
+- [A beállításjegyzék elérése](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+
+3,11-fürtök esetén a Docker-rendszerkép beállításjegyzéke elérhető. A Docker-beállításjegyzék elérhető innen: `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry is használhatja.
+
+## <a name="networking"></a>Hálózat
+
+### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
+
+4. x fürtben a fürtöket meglévő VNet is üzembe helyezheti.
+
+3,11-fürtökben nem telepíthet fürtöt meglévő VNet. Egy Azure Red Hat OpenShift 3,11-fürtöt összekapcsolhatók egy meglévő VNet a peering használatával.
+
+### <a name="is-cross-namespace-networking-supported"></a>Támogatott-e a névterek közötti hálózatkezelés?
+
+Az ügyfél és az egyéni projekt rendszergazdája testre szabható a névterek közötti hálózatkezelés (beleértve a Megtagadás megtagadását is) az `NetworkPolicy` objektumok használatával projektenként.
+
+### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben próbálok egyenrangú virtuális hálózatra csatlakozni, de nem sikerült lekérni a VNet CIDR-hibát.
+
+Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja a `Microsoft.ContainerService` szolgáltatót a következő paranccsal:`az provider register -n Microsoft.ContainerService --wait`
+
+### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Megadhatjuk az IP-címtartományok üzembe helyezését a privát VNet, így elkerülhetők a többi vállalati virtuális hálózatok való ütközések?
+
+4. x-fürtökben megadhatja saját IP-tartományait.
+
+3,11-fürtökben az Azure Red Hat OpenShift támogatja a VNet-társítást, és lehetővé teszi, hogy az ügyfél VNet biztosítson a partnernek és egy VNet-CIDR, amelyben a OpenShift-hálózat működni fog.
+
+Az Azure Red Hat OpenShift által létrehozott VNet védettek lesznek, és nem fogadják el a konfigurációs módosításokat. A VNet az ügyfél vezérli, és az előfizetésében található.
+
+### <a name="is-the-software-defined-network-module-configurable"></a>Konfigurálható a szoftveresen definiált hálózati modul?
+
+A szoftver által definiált hálózat `openshift-ovs-networkpolicy` nem konfigurálható.
+
+### <a name="what-azure-load-balancer-is-used-by-azure-red-hat-openshift--is-it-standard-or-basic-and-is-it-configurable"></a>Milyen Azure Load balancert használ az Azure Red Hat OpenShift?  Standard vagy alapszintű, és ez konfigurálható?
+
+Az Azure Red Hat OpenShift standard Azure Load Balancer használ, és nem konfigurálható.
+
+## <a name="permissions"></a>Engedélyek
+
+### <a name="can-an-admin-manage-users-and-quotas"></a>A rendszergazdák kezelhetik a felhasználókat és a kvótákat?
 
 Igen. Az Azure Red Hat OpenShift rendszergazdája a felhasználók és a kvóták kezelését is képes kezelni az összes felhasználó által létrehozott projekthez való hozzáférés mellett.
 
-## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Korlátozható a fürt csak bizonyos Azure AD-felhasználókra?
+### <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Korlátozható a fürt csak bizonyos Azure AD-felhasználókra?
 
-Igen. Az Azure ad-alkalmazás konfigurálásával korlátozhatja, hogy mely Azure AD-felhasználók tudnak bejelentkezni a fürtbe. További információ [: How to: az alkalmazás korlátozása felhasználói csoportra](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Igen. Az Azure ad-alkalmazás konfigurálásával korlátozhatja, hogy mely Azure AD-felhasználók tudnak bejelentkezni a fürtbe. További információ [: How to: az alkalmazás korlátozása felhasználói csoportra](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md).
 
-## <a name="can-i-restrict-users-from-creating-projects"></a>Korlátozható a felhasználók projekt létrehozása?
+### <a name="can-i-restrict-users-from-creating-projects"></a>Korlátozható a felhasználók projekt létrehozása?
 
-Igen. Jelentkezzen be a fürtbe Azure Red Hat OpenShift-rendszergazdaként, és hajtsa végre a következő parancsot:
+Igen. Jelentkezzen be a fürtbe rendszergazdaként, és hajtsa végre a következő parancsot:
 
 ```
 oc adm policy \
@@ -71,138 +195,43 @@ oc adm policy \
     system:authenticated:oauth
 ```
 
-További információkért tekintse meg a OpenShift dokumentációját a [saját kiépítés letiltásához](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning).
+További információkért tekintse meg a fürt verziójának önálló kiépítés letiltására vonatkozó OpenShift dokumentációját:
 
-## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Lehet egy fürt több Azure-régióban is számítási csomópontokkal rendelkezik?
+- [Önálló kiépítés letiltása 4,3-fürtökben](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [Önálló kiépítés letiltása 3,11-fürtökben](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
-Nem. Egy Azure Red Hat OpenShift-fürt minden csomópontjának ugyanabból az Azure-régióból kell származnia.
+### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Mely UNIX-jogosultságok érhetők el a Masters/infra/app-csomópontok számára a IaaS-ben?
 
-## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>A fő-és infrastruktúra-csomópontok el vannak-e látva az Azure Kubernetes szolgáltatással (ak)?
+4. x fürtök esetén a csomópont-hozzáférés a fürt – rendszergazda szerepkörön keresztül érhető el. További információ: [RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
-Nem. Az összes erőforrás, beleértve a fürt főkiszolgálóját is, az ügyfél-előfizetésben fut. Az ilyen típusú erőforrások írásvédett erőforráscsoporthoz kerülnek.
+3,11-fürtök esetében a Node-hozzáférés tiltott.
 
-## <a name="is-open-service-broker-for-azure-osba-supported"></a>Támogatott-e az Azure-hoz (OSBA) készült Open Service Broker?
+### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Milyen OCP-jogosultságokkal rendelkezik? Fürt – rendszergazda? Projekt – rendszergazda?
 
-Igen. A OSBA az Azure Red Hat OpenShift használatával is használhatja. További információért lásd a [Service Broker megnyitása az Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) -ban című témakört.
+4. x fürtök esetén a fürt – rendszergazda szerepkör elérhető. További információ: [RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben lévő virtuális hálózatba próbálok csatlakozni, de hibaüzenetet kapok `Failed to get vnet CIDR` .
+3,11-fürtök esetében további részletekért tekintse meg a [Fürtfelügyelő áttekintését](https://docs.openshift.com/aro/admin_guide/index.html) .
 
-Ügyeljen arra, hogy a virtuális hálózattal rendelkező előfizetésben regisztrálja `Microsoft.ContainerService` a szolgáltatót a következővel:`az provider register -n Microsoft.ContainerService --wait` 
+### <a name="which-identity-providers-are-available"></a>Mely identitás-szolgáltatók érhetők el?
 
-## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Mi az Azure Red Hat OpenShift (ARO) karbantartási folyamata?
+4. x fürtök esetén a saját identitás-szolgáltatót kell konfigurálnia. További információ: a Red Hat dokumentációja az Identity-előállítók [konfigurálásáról](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html).
 
-Az ARO-ban háromféle karbantartási lehetőség létezik: a etcd-és a felhő-szolgáltató által kezdeményezett karbantartás, valamint a biztonsági mentés és helyreállítás.
+3,11-fürtök esetében az Azure AD-integrációt használhatja. 
 
-+ A frissítések közé tartoznak a szoftverfrissítések és a CVEs. A CVE szervizelése indításkor a futtatásával `yum update` történik, és azonnali mérséklést tesz lehetővé.  Párhuzamosan új rendszerkép-Build jön létre a jövőbeli fürt létrehozásához.
+## <a name="storage"></a>Storage
 
-+ A etcd-adatbázis biztonsági mentése és kezelése egy automatizált folyamat, amely a művelettől függően a fürt leállását igényli. Ha a etcd-adatbázis visszaállítása biztonsági másolatból történik, a rendszer leállást eredményez. Óránként biztonsági mentést készítünk a etcd, és megtartjuk az elmúlt 6 órányi biztonsági mentést.
+### <a name="is-data-on-my-cluster-encrypted"></a>A fürtön lévő adatai titkosítva vannak?
 
-+ A felhőalapú szolgáltató által kezdeményezett karbantartás magában foglalja a hálózat, a tárolás és a regionális kimaradásokat. A karbantartás a felhőalapú szolgáltatótól függ, és a szolgáltató által biztosított frissítésekre támaszkodik.
+Alapértelmezés szerint az adatok titkosítva vannak a nyugalmi állapotban. Az Azure Storage platform automatikusan titkosítja az adatait, mielőtt megőrzi azt, és visszafejti az adatok beolvasása előtt. További információ: [Azure Storage Service encryption for](../storage/common/storage-service-encryption.md)inaktív adatok.
 
-## <a name="what-is-the-general-upgrade-process"></a>Mi az általános frissítési folyamat?
+### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>A etcd-ben tárolt adatforgalom az Azure Red Hat OpenShift van titkosítva?
 
-A frissítés futtatásának biztonságos folyamatnak kell lennie, és nem szabad megszakítani a fürtszolgáltatásokat. A SRE kiválthatja a frissítési folyamatot, ha új verzió érhető el, vagy a CVEs is fennáll.
+Az Azure Red Hat OpenShift 4 fürtök esetében az adattitkosítás alapértelmezés szerint nem történik meg, de engedélyezheti a titkosítást. További információ: a [etcd titkosításának](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html)útmutatója.
 
-Az elérhető frissítések tesztelése egy fázis-környezetben történik, majd az üzemi fürtökre lesz alkalmazva. Alkalmazása esetén az új csomópontot átmenetileg hozzáadja a rendszer, és a csomópontok egy forgó módon frissülnek, így a hüvelyek megőrzik a replikák számát. Az ajánlott eljárások követésével minimálisan nem lehet leállást biztosítani.
+3,11-fürtök esetében az adattitkosítás nem a etcd szinten történik. A titkosítás bekapcsolásának lehetősége jelenleg nem támogatott. A OpenShift támogatja ezt a funkciót, de mérnöki erőfeszítésekre van szükség a közúti térképen való működéshez. Az adatátvitel a lemez szintjén történik. További információkért tekintse meg az [adatok titkosítása az adattár rétegében](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) című témakört.
 
-A függőben lévő frissítés vagy frissítés súlyossága alapján a folyamat eltérhet abban, hogy a frissítéseket gyorsan alkalmazhatja, hogy enyhítse a szolgáltatásnak a CVE-ra való kitettségét. Az új rendszerképeket aszinkron módon, tesztelve és a fürt frissítése során kell kiépíteni. Ettől függetlenül nincs különbség a vészhelyzet és a tervezett karbantartás között. A tervezett karbantartás nincs előre beütemezhetve az ügyféllel.
+### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Választhatunk bármilyen állandó tárolási megoldást, például a OCS-t? 
 
-Az értesítések elküldése az ICM-n keresztül és e-mailben történik, ha az ügyféllel való kommunikációra van szükség.
+4. x fürtök esetében az Azure Disk (Premium_LRS) alapértelmezett tárolási osztályként van konfigurálva. További tárhely-szolgáltatók esetén, valamint a konfigurációs adatokhoz (beleértve az Azure-fájlt is) tekintse meg a Red Hat dokumentációját az [állandó tárterületen](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
 
-## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Mi a helyzet a sürgősségi és a tervezett karbantartási időszakokkal?
-
-A két karbantartási típus között nem kell különbséget tenni. Csapatunk 24/7/365, és nem használja a hagyományos ütemezett "munkaidőn kívüli" karbantartási időszakokat.
-
-## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>Hogyan fogja frissíteni a gazdagép operációs rendszer-és OpenShift szoftverét?
-
-A gazda operációs rendszer és a OpenShift szoftver az általános frissítési és rendszerkép-létrehozási folyamaton keresztül frissül.
-
-## <a name="whats-the-process-to-reboot-the-updated-node"></a>Mi a folyamat a frissített csomópont újraindítására?
-
-Ezt a frissítés részeként kell kezelni.
-
-## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>A etcd-ben tárolt adatforgalom ARO-ra van titkosítva?
-
-A etcd szintjén nincs titkosítva. A bekapcsolásának lehetősége jelenleg nem támogatott. A OpenShift támogatja ezt a funkciót, de mérnöki erőfeszítésekre van szükség a közúti térképen való működéshez. Az adatátvitel a lemez szintjén történik. További információkért tekintse meg az [adatok titkosítása az adattár rétegében](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) című témakört.
-
-## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Az alapul szolgáló virtuális gépek naplófájljai továbbítva lesznek egy ügyfél-naplózási elemzési rendszerbe?
-
-A syslog, a Docker-naplók, a Journal és a dmesg kezelése a felügyelt szolgáltatással történik, és az ügyfelek számára nem érhető el.
-
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Nem úgy tűnik, hogy `kubectl top` egy ARO-fürtön fusson.
-
-Az ügyfelek a (z) parancs `oc adm top nodes` használatával vagy `kubectl top nodes` az ügyfél-rendszergazda clusterrole érhetik el a CPU-/memória-metrikákat a csomópont szintjén.  Az ügyfelek a (z) parancshoz `pods` `oc adm top pods` tartozó CPU-/memória-metrikákat is használhatják`kubectl top pods`
-
-## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Mi az az alapértelmezett Pod Scheduler-konfiguráció az ARO-hoz?
-
-Az ARO a OpenShift lévő alapértelmezett ütemező szolgáltatást használja. Az ARO-ban nem támogatott néhány további mechanizmus. További részletekért tekintse meg az [alapértelmezett Scheduler-dokumentációt](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) és a [fő Scheduler dokumentációját](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json) .
-
-A speciális/egyéni ütemezés jelenleg nem támogatott. További részletekért tekintse meg az [ütemezési dokumentációt](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) .
-
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Ha felskálázást végez az üzembe helyezés során, hogyan képezhetők le az Azure-beli tartalék tartományok a pod-elhelyezésbe, hogy a szolgáltatáshoz tartozó összes hüvely ne legyen kiütéssel egyetlen tartalék tartomány meghibásodása esetén?
-
-A virtuálisgép-méretezési csoportok az Azure-ban való használatakor alapértelmezés szerint öt tartalék tartomány van. A méretezési csoportokban lévő virtuálisgép-példányok az egyik tartalék tartományba kerülnek. Ez biztosítja, hogy a fürt számítási csomópontjain üzembe helyezett alkalmazások külön tartalék tartományokban legyenek elhelyezve.
-
-További részletekért tekintse meg [a virtuális gépek méretezési csoportjának megfelelő számú tartalék tartomány kiválasztása](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) című témakört.
-
-## <a name="is-there-a-way-to-manage-pod-placement"></a>Van mód a pod elhelyezés kezelésére?
-
-Ügyfeleinknek lehetősége van a csomópontok beszerzésére és a címkék megtekintésére ügyfél-rendszergazdaként.  Ez lehetőséget biztosít a méretezési csoportba tartozó bármely virtuális gép célzására.
-
-Adott címkék használatakor körültekintően kell eljárni:
-
-- Az állomásnév nem használható. Az állomásnév gyakran a frissítésekkel és frissítésekkel lesz elforgatva, és a változás garantált.
-
-- Ha az ügyfél egy adott címkére vagy egy központi telepítési stratégiára vonatkozó kéréssel rendelkezik, akkor ez a megoldás a mérnöki erőfeszítésekhez szükséges, és jelenleg nem támogatott.
-
-## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Mi a hüvelyek maximális száma egy ARO-fürtben?Mekkora számú hüvely/csomópont az ARO-ban?
-
- Az Azure Red Hat OpenShift 3,11 egy 50-Pod/Node korláttal rendelkezik, és az [ARO 20 számítási csomópontos korlátot](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)tartalmaz, így az ARO-fürtökben legfeljebb 50 * 20 = 1000-ra támogatott hüvelyek maximális száma adható meg.
-
-## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Megadhatjuk az IP-címtartományok üzembe helyezését a privát VNET, így elkerülhetők a többi vállalati virtuális hálózatok való ütközések?
-
-Az Azure Red Hat OpenShift támogatja a VNET-társítást, és lehetővé teszi az ügyfél számára, hogy VNET biztosítson a társának és egy olyan VNET-CIDR, amelyben a OpenShift-hálózat működni fog.
-
-Az ARO által létrehozott VNET védettek lesznek, és nem fogadják el a konfigurációs módosításokat. A VNET az ügyfél vezérli, és az előfizetésében található.
-
-## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>A fürt egy ügyfél-előfizetésben található? 
-
-Az Azure által felügyelt alkalmazás egy zárolt erőforráscsoport és az ügyfél-előfizetés között él. Az ügyfél megtekintheti az adott RG objektumait, de nem módosítható.
-
-## <a name="is-the-sdn-module-configurable"></a>Konfigurálható az SDN-modul?
-
-Az SDN a openshift-OVS-networkpolicy, és nem konfigurálható.
-
-## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Mely UNIX-jogosultságok érhetők el a Masters/infra/app-csomópontok számára a IaaS-ben?
-
-Nem alkalmazható erre az ajánlatra. A csomópont-hozzáférés tiltott.
-
-## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Milyen OCP-jogosultságokkal rendelkezik? Fürt – rendszergazda? Projekt – rendszergazda?
-
-Részletekért tekintse meg az Azure Red Hat OpenShift- [fürt felügyeletének áttekintése](https://docs.openshift.com/aro/admin_guide/index.html)című témakört.
-
-## <a name="which-kind-of-federation-with-ldap"></a>Milyen típusú összevonás van az LDAP-sel?
-
-Ez az Azure AD-integráción keresztül érhető el. 
-
-## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Van olyan elem az ARO-ban, amelyet más ügyfelek is megosztanak? Vagy minden független?
-
-Minden egyes Azure Red Hat OpenShift-fürt egy adott ügyfélhez van hozzárendelve, és az ügyfél előfizetésén belül él. 
-
-## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Választhatunk bármilyen állandó tárolási megoldást, például a OCS-t? 
-
-A következő két tárolási osztály közül választhat: Azure Disk és Azure-fájl.
-
-## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hogyan frissül a fürt (beleértve a főbb és a kiskorúakat a sebezhetőségek miatt)?
-
-Lásd: [Mi az általános frissítési folyamat?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
-
-## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Milyen Azure Load balancert használ az ARO?Standard vagy alapszintű, és ez konfigurálható?
-
-Az ARO szabványos Azure Load Balancer használ, és nem konfigurálható.
-
-## <a name="can-aro-use-netapp-based-storage"></a>Az ARO a NetApp-alapú tárolást is használhatja?
-
-Jelenleg az egyetlen támogatott tárolási lehetőség az Azure Disk és az Azure file Storage-osztályok. 
-
-
+3,11-fürtök esetében alapértelmezés szerint két tárolási osztály van megadva: az egyik az Azure Disk (Premium_LRS) és egy Azure-fájl.

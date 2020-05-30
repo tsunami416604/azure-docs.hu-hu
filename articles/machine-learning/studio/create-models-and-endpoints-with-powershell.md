@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117297"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195347"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Több webszolgáltatás-végpont létrehozása egy kísérletből ML Studio (klasszikus) és a PowerShell használatával
 
@@ -50,7 +50,7 @@ Vegye figyelembe, hogy a **webszolgáltatások kimeneti** modulja hozzá lett ad
 Ha a kísérlet webszolgáltatásként van telepítve, a kimenethez társított végpont egy. ilearner-fájl formátumban adja vissza a betanított modellt.
 
 Azt is vegye figyelembe, hogy az **adatimportálási** modul által használt URL-címet meghatározó webszolgáltatás-paramétert állít be. Ez lehetővé teszi, hogy a paraméterrel egyéni betanítási adatkészleteket határozzon meg az egyes helyekhez tartozó modell betanításához.
-Ezt többféleképpen is elvégezheti. Egy webszolgáltatási paraméterrel rendelkező SQL-lekérdezés használatával lekérheti az adatok SQL Azure adatbázisból való beolvasását. A **webszolgáltatások bemeneti** moduljának használatával pedig egy adatkészletet adhat át a webszolgáltatásnak.
+Ezt többféleképpen is elvégezheti. Egy webszolgáltatási paraméterrel rendelkező SQL-lekérdezés használatával lekérheti az adatok Azure SQL Database-adatbázisból való beolvasását. A **webszolgáltatások bemeneti** moduljának használatával pedig egy adatkészletet adhat át a webszolgáltatásnak.
 
 ![Egy betanított modell modul kimenete egy webszolgáltatás kimeneti moduljának](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

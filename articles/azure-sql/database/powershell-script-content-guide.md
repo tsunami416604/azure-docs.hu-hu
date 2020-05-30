@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d80291909b29576c60f39afc63ec174c091f1c5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93fac2e3ae8d83f0fa49f94a3ba7880a2ecc2b4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053356"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193894"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell minták a Azure SQL Database és az Azure SQL felügyelt példányaihoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-p
 | [Adatbázis importálása bacpac-fájlból](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl egy adatbázist importál Azure SQL Database egy bacpac-fájlból. |
 | **Adatok szinkronizálása adatbázisok között**||
 | [Adatok szinkronizálása SQL-adatbázisok között](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-parancsfájl úgy konfigurálja az adatszinkronizálást, hogy Azure SQL Database több adatbázis között szinkronizáljon. |
-| [Adatok helyszíni szinkronizálása az SQL Database és az SQL Server között](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript úgy konfigurálja az adatszinkronizálást, hogy szinkronizáljon egy Azure SQL Database és egy SQL Server helyszíni adatbázis között. |
+| [Az adatszinkronizálás SQL Database és SQL Server között](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-parancsfájl úgy konfigurálja az adatszinkronizálást, hogy szinkronizáljon egy adatbázis Azure SQL Database és egy SQL Server adatbázis között. |
 | [Az SQL Data Sync szinkronizálási sémájának frissítése](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript adatokat ad hozzá a Data Sync szinkronizálási sémához, vagy eltávolítja belőle azokat. |
 |||
 

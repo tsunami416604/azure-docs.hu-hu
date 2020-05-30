@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: SQL Server migrálása SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Megtudhatja, hogyan telepítheti át a helyszíni SQL Serverról Azure SQL Databasere a Azure Database Migration Service Azure PowerShell használatával.
+description: Megtudhatja, hogyan telepíthet át egy datagbase a SQL Serverról a Azure SQL Databasere a Azure Database Migration Service Azure PowerShell használatával.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021483"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192660"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>A helyszíni SQL Server migrálása Azure SQL Database használatával Azure PowerShell
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>SQL Server-adatbázis migrálása Azure SQL Databasera a Azure PowerShell használatával
 
-Ebben a cikkben a **Adventureworks2012** -adatbázist a Microsoft Azure PowerShell használatával SQL Server 2016 vagy újabb rendszerű helyszíni példányra telepíti át egy Azure SQL Database. Az adatbázisokat áttelepítheti egy helyszíni SQL Server-példányról a Azure SQL Databasere a `Az.DataMigration` Microsoft Azure PowerShell moduljának használatával.
+Ebben a cikkben a **Adventureworks2012** -adatbázist a Microsoft Azure PowerShell használatával SQL Server 2016 vagy újabb rendszerű helyszíni példányra telepíti át egy Azure SQL Database. Az adatbázisokat áttelepítheti egy SQL Server-példányról a Azure SQL Databasere a `Az.DataMigration` Microsoft Azure PowerShell moduljának használatával.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 Az Azure-előfizetéshez a PowerShell használatával történő bejelentkezéshez használja a [Azure PowerShell bejelentkezve](https://docs.microsoft.com/powershell/azure/authenticate-azureps) található cikk utasításait.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot a virtuális gép létrehozása előtt.
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 968a880568743867c2bdfc11f98de322a591c009
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117266"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195548"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -131,7 +131,7 @@ A feladatátvételi csoport feladatátvételi tesztje a Azure Portal használat�
    ![Az adatbázist tartalmazó feladatátvételi csoport feladatátvétele](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Tekintse át, hogy melyik kiszolgáló legyen az elsődleges, és melyik kiszolgáló a másodlagos. Ha a feladatátvétel sikeres volt, a két kiszolgálónak felcserélt szerepkörrel kell rendelkeznie.
-1. Válassza újra a **feladatátvételt** , hogy a kiszolgálókat visszaállítsa az eredeti szerepköreire.
+1. Válassza újra a **feladatátvételt** , hogy a kiszolgálók vissza tudják térni az eredeti szerepköreiknek.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -342,11 +342,11 @@ Feladatátvétel a másodlagos kiszolgálóra:
 > [!IMPORTANT]
 > Ha törölnie kell a másodlagos adatbázist, a törlése előtt távolítsa el a feladatátvételi csoportból. Ha egy másodlagos adatbázist töröl a feladatátvételi csoportból való eltávolítása előtt, akkor kiszámíthatatlan viselkedést okozhat.
 
-## <a name="sql-managed-instance"></a>SQL Managed Instance
+## <a name="sql-managed-instance"></a>Felügyelt SQL-példány
 
-Hozzon létre egy feladatátvételi csoportot az SQL felügyelt példány két felügyelt példánya között a Azure Portal vagy a PowerShell használatával.
+A Azure Portal vagy a PowerShell használatával hozzon létre egy feladatátvételi csoportot a felügyelt Azure SQL-példány két felügyelt példánya között.
 
-Be kell állítania a [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) -t, vagy létre kell hoznia egy átjárót a felügyelt példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot.
+Konfigurálnia kell a [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) -t, vagy létre kell hoznia egy átjárót az egyes FELÜGYELt SQL-példányok virtuális hálózatához, össze kell kapcsolnia a két átjárót, majd létre kell hoznia a feladatátvételi csoportot.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -381,7 +381,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
     | **Mező** | Érték |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
-    | **Név** | A virtuális hálózati átjáró neve. |
+    | **Name (Név)** | A virtuális hálózati átjáró neve. |
     | **Régió** | Az a régió, ahol az elsődleges felügyelt példánya van. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
@@ -443,7 +443,7 @@ A következő táblázat a másodlagos felügyelt példány átjárója számár
    | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
-   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . |
+   | **Name (Név)** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . |
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | **Útvonal-alapú** |
@@ -557,7 +557,7 @@ Hozza létre a felügyelt példányok feladatátvételi csoportját a Azure Port
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Hozzon létre egy feladatátvételi csoportot a felügyelt példányok számára Azure Portal használatával.
+Hozza létre a feladatátvételi csoportot az SQL felügyelt példányaihoz a Azure Portal használatával.
 
 1. Válassza az **Azure SQL** lehetőséget a [Azure Portal](https://portal.azure.com)bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az Azure SQL kifejezést a keresőmezőbe. Választható Válassza ki az **Azure SQL** melletti csillagot a kedvencekhez, és adja hozzá elemként a bal oldali navigációs sávon.
 1. Válassza ki azt az elsődleges felügyelt példányt, amelyet hozzá szeretne adni a feladatátvételi csoporthoz.  

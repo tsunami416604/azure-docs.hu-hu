@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 1c1b48d3715d838827f88f99fc0849d25677fdcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585746"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218645"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry integráció a Security Center
 
@@ -27,7 +27,7 @@ Ha Azure Security Center standard szintű csomaggal rendelkezik, hozzáadhatók 
 
 Ha egy rendszerképet küld a beállításjegyzékbe, Security Center automatikusan megvizsgálja a képet. A rendszerkép vizsgálatának elindításához küldje le az adattárba.
 
-Ha a vizsgálat befejeződik (általában körülbelül 10 percet követően), az eredmények a következőhöz hasonló Security Center-javaslatokban érhetők el:
+Ha a vizsgálat befejeződik (általában körülbelül 10 percet vesz igénybe, de akár 48h is eltarthat), az eredmények az alábbi Security Center-javaslatokban érhetők el:
 
 [![Példa Azure Security Center a Azure Container Registry (ACR) tárolt rendszerképben felderített biztonsági rések észlelésére](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

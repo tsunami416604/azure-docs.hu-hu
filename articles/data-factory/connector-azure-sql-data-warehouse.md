@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: c72a49d938bbf89b727d3f3e5896359df3c3911d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 872cab4575b143dea057fe7fd070b433f8d54eb9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019024"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220337"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban Azure SQL Data Warehouse) a használatával Azure Data Factory
 
@@ -42,7 +42,7 @@ Másolási tevékenység esetén ez az Azure szinapszis Analytics-összekötő a
 
 - Adatmásolás SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat hitelesítéssel az Azure-erőforrásokhoz tartozó egyszerű szolgáltatásnév vagy felügyelt identitás használatával.
 - Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával kérhet le egy adatforrást.
-- Fogadóként az adatok betöltését a [Base](#use-polybase-to-load-data-into-azure-sql-data-warehouse) vagy a [copy utasítás](#use-copy-statement) (előzetes verzió) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás (előzetes verzió).
+- Fogadóként az adatok betöltését a [Base](#use-polybase-to-load-data-into-azure-sql-data-warehouse) vagy a [copy utasítás](#use-copy-statement) (előzetes verzió) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás (előzetes verzió). Az összekötő támogatja a céltábla automatikus létrehozását is, ha az nem létezik a forrásoldali séma alapján.
 
 > [!IMPORTANT]
 > Ha Azure Data Factory Integration Runtime használatával másol Adatmásolást, konfigurálja a [kiszolgálói szintű tűzfalszabály](../azure-sql/database/firewall-configure.md) használatát, hogy az Azure-szolgáltatások hozzáférhessenek a [logikai SQL-kiszolgálóhoz](../azure-sql/database/logical-servers.md).
@@ -624,7 +624,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
       5. `skipLineCount`alapértelmezett vagy 0 értékre van állítva.
       6. `compression`nem lehet **tömörítés** vagy **gzip**.
 
-3. Ha a forrás mappa, `recursive` a másolási tevékenységnek igaz értékűnek kell lennie, és a következőnek kell `wildcardFilename` lennie: `*` . A COPY utasítás lekéri az összes fájlt a mappából és annak almappáiból, és figyelmen kívül hagyja a rejtett mappákat és az aláhúzás (_) vagy pont (.) kezdetű fájlokat, kivéve, ha explicit módon meg van adva az elérési útban. 
+3. Ha a forrás mappa, `recursive` a másolási tevékenységnek igaz értékűnek kell lennie, és a következőnek kell `wildcardFilename` lennie: `*` . 
 
 4. `wildcardFolderPath`, `wildcardFilename` (a kivételével `*` ), `modifiedDateTimeStart` `modifiedDateTimeEnd` és `additionalColumns` nincs megadva.
 
@@ -682,16 +682,6 @@ A másolási tevékenység alatt a következő MÁSOLÁSi utasítás beállítá
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
-
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
-
-## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
-
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md)
-
-## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse adattípusának leképezése
-
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
 Az adatok leképezési folyamatba való átalakításakor az Azure szinapszis Analyticsből származó táblákat olvashat és írhat. További információ: a forrás- [átalakítás](data-flow-source.md) és a fogadó [transzformáció](data-flow-sink.md) a leképezési adatfolyamatokban.
@@ -736,6 +726,14 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a fogad�
 **SQL-parancsfájlok előtti és utáni**műveletek: Itt adhatja meg azokat a TÖBBsoros SQL-parancsfájlokat, amelyek a (z) előtti (előfeldolgozási) és a (feldolgozás utáni) adatainak a fogadó adatbázisba való beírásakor lesznek végrehajtva
 
 ![SQL-feldolgozási parancsfájlok előzetes és utáni feldolgozása](media/data-flow/prepost1.png "SQL-feldolgozási parancsfájlok")
+
+## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+
+## <a name="getmetadata-activity-properties"></a>GetMetadata tevékenység tulajdonságai
+
+A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md)
 
 ## <a name="data-type-mapping-for-azure-synapse-analytics"></a>Adattípusok leképezése az Azure szinapszis Analytics szolgáltatáshoz
 

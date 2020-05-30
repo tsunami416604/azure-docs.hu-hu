@@ -1,6 +1,6 @@
 ---
 title: Helyszíni adatai másolása az Azure Adatok másolása eszköz használatával
-description: Létrehozhat egy Azure-beli adat-előállítót, majd az Adatok másolása eszközzel másolhat adatokat egy helyszíni SQL Server-adatbázisból az Azure Blob Storage-tárolóba.
+description: Hozzon létre egy Azure-beli adatelőállítót, majd az Adatok másolása eszközzel másolja át az adatait egy SQL Server-adatbázisból az Azure Blob Storage-ba.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: 6b4df324fec38d08355754146d8be76d225e6cb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418592"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194592"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása az Adatok másolása eszközzel helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](tutorial-hybrid-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel létrehoz egy folyamatot, amely egy helyszíni SQL Server-adatbázisból másol adatokat egy Azure-blobtárolóba.
+Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezt követően a Adatok másolása eszközzel létrehozhat egy folyamatot, amely egy SQL Server-adatbázisból másolja az Azure Blob Storage-ba.
 
 > [!NOTE]
 > - Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Data Factory szolgáltatást bemutató](introduction.md) cikket.
@@ -47,7 +47,7 @@ Az adat-előállító példányok létrehozásához annak a felhasználói fiók
 Az előfizetésben található engedélyek megtekintéséhez lépjen be az Azure Portalra. Válassza ki a felhasználónevét a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md) című cikket.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
-Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forrásadattárként*. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Blob Storage-tárolóba (fogadó). Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
+Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) a blob Storage-ba (fogadóba) másolja az adatait. Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
 
 1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) cikket.
 
@@ -74,7 +74,7 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forr
     ```
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú tárfiókkal, a létrehozást segítő útmutatásért tekintse meg a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol a helyszíni SQL Server-adatbázisból (forrás) a Blob Storage tárolóba (fogadó). 
+Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú tárfiókkal, a létrehozást segítő útmutatásért tekintse meg a [tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyagban létrehozott adatfeldolgozó folyamata az SQL Server-adatbázisból (forrás) származó adatok másolása erre a blob Storage-tárolóba (fogadó). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
 Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfiók nevét és kulcsát az alábbi lépéseket követve szerezheti be:
@@ -109,7 +109,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **+ erőforrás** > **létrehozása elemzési** > **Data Factory**elemet.
+1. A bal oldali menüben válassza az **+ erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**elemet.
 
    ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -169,13 +169,13 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
     a. A **Név** mezőben adja meg az **SqlServerLinkedService** nevet.
 
-    b. A **Kiszolgáló neve** alatt adja meg a helyszíni SQL Server-példánya nevét.
+    b. A **Kiszolgáló neve** alatt adja meg az SQL Server-példány nevét.
 
     c. Az **Adatbázis neve** mezőben adja meg a helyszíni adatbázis nevét.
 
     d. A **Hitelesítés típusa** mezőben válassza a megfelelő hitelesítést.
 
-    e. A **Felhasználónév** mezőben adja meg a helyszíni SQL Server-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét.
+    e. A **Felhasználónév**mezőbe írja be a SQL Serverhoz hozzáféréssel rendelkező felhasználó nevét.
 
     f. Adja meg a felhasználó **jelszavát** .
 
@@ -202,7 +202,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    c. A **Tárfiók neve** alatt a legördülő menüből válassza ki a tárfiókja nevét.
 
-   d. Válassza a **Finish** (Befejezés) elemet.
+   d. Válassza a **Befejezés** gombot.
 
 1. Győződjön meg arról, hogy az **Azure Blob Storage** van kiválasztva a **célhely adattára** párbeszédpanelen. Ezután válassza a **tovább**lehetőséget.
 
@@ -233,7 +233,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 
 ## <a name="next-steps"></a>További lépések
-A példában szereplő folyamat adatokat másol egy helyszíni SQL Server-adatbázisból Blob Storage-tárolóba. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Az ebben a példában szereplő folyamat átmásolja az adatait egy SQL Server adatbázisból a blob Storage-ba. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

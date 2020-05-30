@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 209445378b71b4d6da2f40ea2744d3a2da0d8c45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4b4a852f0f102277701191eb24158763998e7b5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046326"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195767"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure-beli virtuális gépeken futó SQL Server – alkalmazásminták és fejlesztési stratégiák
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,8 +59,9 @@ Mielőtt elkezdené a cikk elolvasását, ismernie kell a SQL Server és az Azur
 Ez a cikk számos olyan alkalmazási mintát ismertet, amelyek alkalmasak lehetnek az egyszerű alkalmazásokhoz, valamint a nagymértékben összetett vállalati alkalmazásokhoz. Az egyes minták részletezése előtt javasoljuk, hogy ismerkedjen meg az Azure-ban elérhető adattárolási szolgáltatásokkal, például az [Azure Storage](../../../storage/common/storage-introduction.md)-ban, a [Azure SQL Database](../../database/sql-database-paas-overview.md)és az [Azure-beli virtuális gépeken SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md). Az alkalmazásokra vonatkozó legjobb tervezési döntések meghozatalához meg kell ismernie, hogy mikor érdemes egyértelműen használni az adattárolási szolgáltatást.
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>SQL Server kiválasztása Azure-beli virtuális gépen:
+
 * SQL Server-és Windows-vezérlésre van szükség. Ilyen lehet például a SQL Server verziója, a speciális gyorsjavítások, a teljesítmény konfigurációja stb.
-* A helyszíni SQL Server teljes kompatibilitást igényel, és a meglévő alkalmazásokat át szeretné helyezni az Azure-ba.
+* A SQL Server teljes kompatibilitása szükséges, és a meglévő alkalmazásokat át szeretné helyezni az Azure-ba.
 * Szeretné kihasználni az Azure-környezet képességeit, de a Azure SQL Database nem támogatja az alkalmazás által igényelt összes funkciót. Ez a következő területeket tartalmazhatja:
   
   * **Adatbázis mérete**: a cikk frissítésének időpontjában SQL Database legfeljebb 1 TB adatból álló adatbázist támogat. Ha az alkalmazás több mint 1 TB-nyi adatra van szüksége, és nem szeretne egyéni horizontális megoldásokat megvalósítani, azt javasoljuk, hogy az Azure-beli virtuális gépeken SQL Server használjon. A legfrissebb információkért lásd: horizontális [felskálázás Azure SQL Database](https://msdn.microsoft.com/library/azure/dn495641.aspx), [DTU-alapú vásárlási modell](../../database/service-tiers-dtu.md)és [virtuális mag-alapú vásárlási modell](../../database/service-tiers-vcore.md)(előzetes verzió).
