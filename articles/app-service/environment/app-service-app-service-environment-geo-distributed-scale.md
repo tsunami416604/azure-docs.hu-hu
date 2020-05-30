@@ -6,13 +6,13 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 04ba8e7b3ccd18306cb8da0fd15d2cd88f363c70
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688817"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193322"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
 ## <a name="overview"></a>Áttekintés
@@ -79,7 +79,7 @@ Figyelje meg, hogy az egyes alkalmazás-példányok esetében van *-e AzureTraff
 Mindhárom végpont ugyanazt az értéket (10) használja a *súlyozási* paraméterhez.  Ez azt eredményezi, hogy Traffic Manager az ügyfelek kérelmeit az összes három alkalmazás-példány között viszonylag egyenletesen terjeszti. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Az alkalmazás egyéni tartományának mutatása a Traffic Manager tartományban
-Az utolsó lépés ahhoz szükséges, hogy az alkalmazás egyéni tartományát a Traffic Manager tartományban mutasson.  A minta alkalmazás esetében ez azt jelenti `www.scalableasedemo.com` , `scalable-ase-demo.trafficmanager.net`hogy a következő mutat:.  Ezt a lépést az egyéni tartományt felügyelő tartományregisztráló használatával kell végrehajtani.  
+Az utolsó lépés ahhoz szükséges, hogy az alkalmazás egyéni tartományát a Traffic Manager tartományban mutasson.  A minta alkalmazás esetében ez azt jelenti, hogy a következő mutat `www.scalableasedemo.com` : `scalable-ase-demo.trafficmanager.net` .  Ezt a lépést az egyéni tartományt felügyelő tartományregisztráló használatával kell végrehajtani.  
 
 A regisztrátor tartományi felügyeleti eszközeinek használatával létre kell hoznia egy CNAME rekordot, amely az Traffic Manager tartományban lévő egyéni tartományt mutat.  Az alábbi képen látható egy példa arra, hogy a CNAME konfiguráció hogyan néz ki:
 
@@ -87,14 +87,14 @@ A regisztrátor tartományi felügyeleti eszközeinek használatával létre kel
 
 Bár ez a témakör nem foglalkozik, ne feledje, hogy minden egyes alkalmazás-példánynak rendelkeznie kell az egyéni tartománnyal is.  Ellenkező esetben, ha egy kérelem egy alkalmazás-példányra vonatkozik, és az alkalmazás nem rendelkezik az alkalmazásban regisztrált egyéni tartománnyal, a kérelem sikertelen lesz.  
 
-Ebben a példában az egyéni tartomány a `www.scalableasedemo.com`, és minden alkalmazás-példányhoz hozzá van rendelve egy egyéni tartomány.
+Ebben a példában az egyéni tartomány a `www.scalableasedemo.com` , és minden alkalmazás-példányhoz hozzá van rendelve egy egyéni tartomány.
 
 ![Egyéni tartomány][CustomDomain] 
 
 Az egyéni tartományok Azure App Service alkalmazásokkal való regisztrálásának bekapcsolásához tekintse meg a következő cikket az [Egyéni tartományok regisztrálásáról][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Az elosztott topológia kipróbálása
-A Traffic Manager és a DNS konfigurációjának végeredménye az, hogy a `www.scalableasedemo.com` kérelmek a következő sorozatot követik majd át:
+A Traffic Manager és a DNS konfigurációjának végeredménye az, hogy a kérelmek a `www.scalableasedemo.com` következő sorozatot követik majd át:
 
 1. Egy böngésző vagy eszköz DNS-keresést végez a következőhöz:`www.scalableasedemo.com`
 2. A tartományregisztrálónál lévő CNAME bejegyzés a DNS-címkeresés átirányítását okozza az Azure Traffic Manager.

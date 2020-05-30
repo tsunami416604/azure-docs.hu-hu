@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3464c0fc3946e47400f87063ef6f83ceb942abb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660024"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192452"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Az betöltési stratégiák a szinapszis SQL-készlethez
 
@@ -113,7 +113,7 @@ A parketta betöltésekor az SQL adattípus-leképezés a következő:
 |                            INT32                             |            INT (8, hamis)            |     tinyint      |
 |                            INT32                             |            INT (16, hamis)             |       int        |
 |                            INT32                             |           INT (32, hamis)            |      bigint      |
-|                            INT32                             |                 DATE                  |       dátum       |
+|                            INT32                             |                 DATE                  |       date       |
 |                            INT32                             |                DECIMÁLIS                |     tizedes tört      |
 |                            INT32                             |            IDŐ (MILLIS)             |       time       |
 |                            INT64                             |            INT (64, true)            |      bigint      |
@@ -148,7 +148,7 @@ A táblázatot előre létre kell hozni a MÁSOLÁSt végző előkészítési t�
 Az adatok alapszintű betöltéséhez használhatja a következő betöltési lehetőségeket:
 
 - A [T-SQL-](load-data-from-azure-blob-storage-using-polybase.md) sel jól használható, ha az adatok Azure Blob Storage-ban vagy Azure Data Lake Storeban vannak. A leghatékonyabban szabályozhatja a betöltési folyamatot, de külső adatobjektumokat is meg kell határoznia. A többi módszer ezeket az objektumokat a háttérben úgy definiálja, ahogy a forrástábla táblázatokra van leképezve.  A T-SQL-terhelések összehangolása érdekében Azure Data Factory, SSIS vagy Azure functions-T használhat.
-- A [SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jól működik, ha a forrásadatok SQL Server, vagy SQL Server a helyszínen vagy a felhőben. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek.
+- A SSIS jól működik [,](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ha a forrásadatok SQL Serverban működnek. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek.
 - [A Base és a copy utasítás Azure Data Factory (ADF) egy másik összehangoló](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eszköz.  Meghatározza a folyamatokat és az ütemezett feladatokat.
 - A [Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a tábla adatait egy Databricks-dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír be egy tábla használatával.
 

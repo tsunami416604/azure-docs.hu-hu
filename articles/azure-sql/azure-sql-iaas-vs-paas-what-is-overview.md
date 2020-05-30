@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 68f6977059af84fc7fa98fe5817f9f5b4fbdcf90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2ec92573870ea1e43c45f4b4fc5c552b2932f1c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045416"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195156"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84045416"
 Az Azure SQL a felügyelt, biztonságos és intelligens SQL Server adatbázis-termékek családja.
 
 - **Azure SQL Database**: támogatja a modern felhőalapú alkalmazásokat egy intelligens, felügyelt adatbázis-szolgáltatásban, amely kiszolgáló nélküli számítást is tartalmaz. 
-- **Felügyelt Azure SQL-példány**: a meglévő SQL Server-alkalmazások nagy mértékben modernizálása egy intelligens, teljes körűen felügyelt példány használatával, közel 100%-os szolgáltatás-paritással a használt SQL Serverhoz. A legalkalmasabb a felhőbe való Migrálás során.
+- **Felügyelt Azure SQL-példány**: a meglévő SQL Server-alkalmazások nagy mértékben modernizálása egy intelligens, teljes körűen felügyelt példányként, a SQL Server adatbázismotor csaknem 100%-os szolgáltatási paritásával. A legalkalmasabb a felhőbe való Migrálás során.
 - **SQL Server Azure-beli virtuális gépeken**: a SQL Server számítási feladatokat könnyedén, a 100%-os SQL Server kompatibilitás és az operációs rendszer szintű hozzáférés fenntartásával. 
  
 Az Azure SQL a jól ismert SQL Server motorra épül, így könnyedén áttelepítheti az alkalmazásokat, és tovább használhatja azokat az eszközöket, nyelveket és erőforrásokat, amelyeket már ismer. Tudását és tapasztalatait a felhőbe helyezheti át, így még többet is megtudhat a már meglévő képességeiről. 
@@ -98,7 +98,7 @@ A következő táblázatban további különbségek vannak felsorolva, de a ***S
 
 | Azure SQL Database | Felügyelt Azure SQL-példány | Azure virtuális gépen futó SQL Server |
 | :--- | :--- | :--- |
-|A a legtöbb helyszíni adatbázis-szintű funkciót támogatja. A leggyakrabban használt SQL Server funkciók érhetők el.<br/>99,995%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>A szükséges erőforrások (CPU/tárterület) egyedi adatbázisokhoz való hozzárendelésének lehetősége.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| Szinte minden helyszíni példány-és adatbázis-szintű funkciót támogat. Nagy kompatibilitás a SQL Server helyszíni környezettel.<br/>99,99%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>SQL Server egyszerű Migrálás.<br/>Magánhálózati IP-cím az Azure VNet-n belül.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| A SQL Server motor teljes körű vezérléssel rendelkezik. Támogatja az összes helyszíni funkciót.<br/>Akár 99,99%-os rendelkezésre állást.<br/>Teljes paritás a helyszíni SQL Server megfelelő verziójával.<br/>Javított, jól ismert adatbázismotor-verzió.<br/>Könnyű Migrálás SQL Server helyszíni környezetből.<br/>Magánhálózati IP-cím az Azure VNet-n belül.<br/>Az alkalmazást vagy szolgáltatásokat a gazdagépen helyezheti üzembe, ahol a SQL Server elhelyezve.|
+|A a legtöbb helyszíni adatbázis-szintű funkciót támogatja. A leggyakrabban használt SQL Server funkciók érhetők el.<br/>99,995%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>A szükséges erőforrások (CPU/tárterület) egyedi adatbázisokhoz való hozzárendelésének lehetősége.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| Szinte minden helyszíni példány-és adatbázis-szintű funkciót támogat. Nagy kompatibilitás a SQL Serversal.<br/>99,99%-os rendelkezésre állás garantált.<br/>Beépített biztonsági másolatok, javítás, helyreállítás.<br/>A stabil adatbázismotor legújabb verziója.<br/>SQL Server egyszerű Migrálás.<br/>Magánhálózati IP-cím az Azure VNet-n belül.<br/>Beépített speciális intelligenciát és biztonságot.<br/>Erőforrások online változása (CPU/Storage).| A SQL Server motor teljes körű vezérléssel rendelkezik. Támogatja az összes helyszíni funkciót.<br/>Akár 99,99%-os rendelkezésre állást.<br/>Teljes paritás a helyszíni SQL Server megfelelő verziójával.<br/>Javított, jól ismert adatbázismotor-verzió.<br/>SQL Server egyszerű Migrálás.<br/>Magánhálózati IP-cím az Azure VNet-n belül.<br/>Az alkalmazást vagy szolgáltatásokat a gazdagépen helyezheti üzembe, ahol a SQL Server elhelyezve.|
 |A SQL Server áttelepítése kihívást jelenthet.<br/>Néhány SQL Server szolgáltatás nem érhető el.<br/>Nincs garantált pontos karbantartási idő (de majdnem transzparens).<br/>A SQL Server verziójával való kompatibilitás csak az adatbázis-kompatibilitási szintek használatával érhető el.<br/>A magánhálózati IP-cím nem rendelhető hozzá (a tűzfalszabályok használatával korlátozhatja a hozzáférést).|Még mindig van néhány minimális számú SQL Server szolgáltatás, amely nem érhető el.<br/>Nincs garantált pontos karbantartási idő (de majdnem transzparens).<br/>A SQL Server verziójával való kompatibilitás csak az adatbázis-kompatibilitási szintek használatával érhető el.|Kezelnie kell a biztonsági mentéseket és a javításokat.<br>Saját, magas rendelkezésre állású megoldást kell megvalósítani.<br/>Az erőforrások (processzor/tároló) módosítása közben állásidő van|
 | Legfeljebb 100 TB-os adatbázisok. | Akár 8 TB-ig. | SQL Server példányok száma akár 256 TB tárhellyel. A példányok annyi adatbázist képesek támogatni, amennyire szükség van. |
 | A helyszíni alkalmazások hozzáférhetnek Azure SQL Databasehoz. | [Natív virtuális hálózat megvalósítása](managed-instance/vnet-existing-add-subnet.md) és a helyszíni környezethez való kapcsolódás az Azure Express Route vagy a VPN Gateway használatával. | Az SQL Virtual Machines szolgáltatásban a felhőben és részben helyileg futó alkalmazások is lehetnek. Például az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) segítségével kiterjesztheti helyszíni hálózatát és Active Directory-tartományát a felhőre. A hibrid felhőalapú megoldásokkal kapcsolatos további információkért lásd: helyszíni [Adatmegoldások kiterjesztése a felhőre](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |

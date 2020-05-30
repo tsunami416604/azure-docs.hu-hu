@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649602"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196276"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Ismert problémák/áttelepítési korlátozások hibrid mód használatával
 
@@ -93,10 +93,10 @@ Ha már nincs hozzáférése a munkavégző számítógéphez, a következő lé
 
 Az alábbi szakaszok a Azure Database Migration Service hibrid mód használatával történő online áttelepítés elvégzéséhez kapcsolódó forgatókönyv-specifikus problémákat írják le.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online áttelepítés Azure SQL Database felügyelt példányhoz
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Online Migrálás az Azure SQL felügyelt példányára
 
 **Magas processzorhasználat**
 
-**Probléma**: a SQL Database felügyelt példányának online áttelepítése esetén a hibrid feldolgozót futtató számítógép magas CPU-használatot fog tapasztalni, ha túl sok biztonsági mentés van, vagy ha a biztonsági másolatok túl nagyok.
+**Probléma**: az SQL felügyelt példányának online áttelepítése esetén a hibrid feldolgozót futtató számítógép magas CPU-használatot fog tapasztalni, ha túl sok biztonsági mentés van, vagy ha a biztonsági másolatok túl nagyok.
 
 Megoldás **: a probléma enyhítése**érdekében használjon tömörített biztonsági mentéseket, Ossza szét az áttelepítést, hogy az több megosztást használjon, vagy a hibrid feldolgozót futtató számítógépet.

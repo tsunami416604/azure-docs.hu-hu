@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836413"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197040"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és a fizikai kiszolgálók replikációs problémáinak elhárítása
 
@@ -77,7 +77,7 @@ A probléma megoldásához:
     - Navigáljon az érintett replikált gép lemezek paneljére, és másolja a replika lemez nevét
     - Navigáljon a replika felügyelt lemezéhez
     - Előfordulhat, hogy megjelenik egy szalagcím az Áttekintés panelen, amely azt jelzi, hogy egy SAS URL-cím lett létrehozva. Kattintson erre a szalagcímre, és szakítsa meg az exportálást. Ha nem látja a szalagcímet, hagyja figyelmen kívül ezt a lépést.
-    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy az ASR támogassa a forrás lemezen megfigyelt adatforgalom mértékét.
+    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy a Azure Site Recovery támogassa a megfigyelt adatforgalom mértékét a forrásoldali lemezen
 - Ha a megfigyelt forgalom ideiglenes, várjon néhány órát, amíg a függőben lévő adatok feltöltése megtörténik, és létre kell hozni a helyreállítási pontokat.
 - Ha a lemez olyan nem kritikus fontosságú adatokhoz is tartalmaz, mint például az ideiglenes naplók, az adatok tesztelése stb., érdemes lehet máshová áthelyezni ezeket az adatfájlokat, vagy teljes mértékben kizárni ezt a lemezt
 - Ha a probléma továbbra is fennáll, az Site Recovery [Deployment Planner](site-recovery-deployment-planner.md#overview) segítségével tervezze meg a replikálást.
@@ -146,6 +146,8 @@ A leggyakoribb problémák némelyike alább látható
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3. ok: ismert probléma SQL Server 2016 és 2017
 **Javítási útmutató** [: tudásbáziscikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>4. ok: az alkalmazás-konzisztencia nincs engedélyezve a Linux-kiszolgálókon
+**Javítás** : a Linux operációs rendszer Azure site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az egyéni parancsfájl előtti és utáni beállításokat a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazás-konzisztencia érdekében. Az [alábbi lépéseket](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) követve engedélyezheti.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>További okok a VSS-vel kapcsolatos problémák miatt:
 

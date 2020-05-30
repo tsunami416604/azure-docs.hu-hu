@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4468025f6389d31269d9e587fca25390f19bdbbc
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196940"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200474"
 ---
 Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultralemezek olyan adatigényes számítási feladatokhoz használhatók, mint az SAP HANA, a felső szintű adatbázisok és a tranzakcióigényes számítási feladatok.
 
@@ -30,11 +30,11 @@ Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik re
 #### <a name="cli"></a>parancssori felület
 
 ```azurecli
-$subscription = "<yourSubID>"
+subscription = "<yourSubID>"
 # example value is southeastasia
-$region = "<yourLocation>"
+region = "<yourLocation>"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -51,7 +51,7 @@ A válasz az alábbi űrlaphoz hasonló lesz, ahol az X a kiválasztott régiób
 
 Őrizze meg a **zónák** értékét, amely a rendelkezésre állási zónát képviseli, és szüksége lesz rá egy ultra-lemez üzembe helyezése érdekében.
 
-|ResourceType  |Name  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
+|ResourceType  |Name (Név)  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
 |---------|---------|---------|---------|---------|---------|---------|
 |lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -65,10 +65,10 @@ Most, hogy megismerte, hogy melyik zónát kívánja telepíteni, kövesse a jel
 Az USA nyugati régiójában üzembe helyezett Ultra lemezeket redundancia nélkül kell üzembe helyezni. Ebben a régióban azonban nem minden olyan lemez mérete lehet, amely támogatja az ultra-lemezeket. Annak megállapításához, hogy az USA nyugati régiójában milyenek támogatják az ultra-lemezeket, az alábbi kódrészletek bármelyikét használhatja. Először cserélje le a `vmSize` és az `subscription` értékeket:
 
 ```azurecli
-$subscription = "<yourSubID>"
-$region = "westus"
+subscription = "<yourSubID>"
+region = "westus"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -219,12 +219,12 @@ az vm start -n $vmName -g $rgName
 Most, hogy rendelkezik egy olyan virtuális géppel, amely képes az ultra-lemezek csatolására, létrehozhat és csatlakoztathat egy ultra-lemezt.
 
 ```azurecli-interactive
-$location="eastus2"
-$subscription="xxx"
-$rgname="ultraRG"
-$diskname="ssd1"
-$vmname="ultravm1"
-$zone=123
+location="eastus2"
+subscription="xxx"
+rgname="ultraRG"
+diskname="ssd1"
+vmname="ultravm1"
+zone=123
 
 #create an ultra disk
 az disk create `
@@ -244,10 +244,10 @@ az disk create `
 Ha a meglévő virtuális gép egy olyan régióban vagy rendelkezésre állási zónában van, amely képes az ultra-lemezek használatára, az új virtuális gép létrehozása nélkül is használhatja az ultra lemezeket.
 
 ```azurecli
-$rgName = "<yourResourceGroupName>"
-$vmName = "<yourVMName>"
-$diskName = "<yourDiskName>"
-$subscriptionId = "<yourSubscriptionID>"
+rgName = "<yourResourceGroupName>"
+vmName = "<yourVMName>"
+diskName = "<yourDiskName>"
+subscriptionId = "<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

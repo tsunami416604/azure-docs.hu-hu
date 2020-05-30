@@ -1,6 +1,6 @@
 ---
 title: Advanced Data Security
-description: Ismerje meg a bizalmas adatok felderítésének és besorolásának funkcióit, az adatbázis-sebezhetőségek kezelését, valamint a rendellenes tevékenységek észlelését, amelyek veszélyeztethetik a Azure SQL Database, az Azure SQL felügyelt példányát vagy az Azure Szinapszisot.
+description: Ismerkedjen meg a bizalmas adatok felderítésével és besorolásával, az adatbázis biztonsági réseinak kezelésével, valamint a rendellenes tevékenységek észlelésével, amelyek fenyegetést jelenthetnek az adatbázisra Azure SQL Database, az Azure SQL felügyelt példányain vagy az Azure szinapszis szolgáltatásban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,32 +12,31 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: ed7d4b10219f4d4a3c437331bd1daf870495949d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047852"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195131"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-A speciális adatbiztonság (ADS) a fejlett SQL-alapú biztonsági képességek egységes csomagja. A hirdetések a Azure SQL Database, az Azure SQL felügyelt példányaihoz és az Azure Szinapszishoz érhetők el. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek feltárására és kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
+A speciális adatbiztonság (ADS) a fejlett SQL-alapú biztonsági képességek egységes csomagja. A hirdetések Azure SQL Database, az Azure SQL felügyelt példányaihoz és az Azure szinapszis Analyticshez érhetők el. Lehetőséget nyújt a bizalmas adatok felderítésére és titkossá minősítésére, az adatbázis biztonsági réseinek feltárására és kezelésére, továbbá az adatbázisra nézve fenyegetést jelentő rendellenes tevékenységek észlelésére. Segítségével egyetlen helyen engedélyezhetők és kezelhetők ezek a képességek.
 
 ## <a name="overview"></a>Áttekintés
 
-A speciális adatbiztonság (ADS) fejlett SQL biztonsági képességeket biztosít, beleértve az adatfelderítési & besorolást, a sebezhetőségi felmérést és az összetett veszélyforrások elleni védelmet.
+A hirdetések fejlett SQL biztonsági képességeket biztosítanak, beleértve az adatfelderítési & besorolást, az SQL sebezhetőségi felmérést és az összetett veszélyforrások elleni védelmet.
+- Az [Adatfelderítési & besorolása](data-discovery-and-classification-overview.md) a Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis szolgáltatásba épített képességeket biztosít az adatbázisaiban található bizalmas adatok feltárásához, osztályozásához, címkézéséhez és jelentéséhez. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
+- A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni, nyomon követni és segíteni a lehetséges adatbázis-sebezhetőségeket. A szolgáltatás láthatóságot biztosít a biztonsági állapotában, valamint a biztonsági problémák megoldásához és az adatbázis-erődítmények fejlesztéséhez szükséges műveleteket is tartalmaz.
+- Az [Advanced Threat Protection](threat-detection-overview.md) észleli az adatbázisai hozzáférésére és az adatbázisai biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. Folyamatosan figyeli az adatbázist a gyanús tevékenységekhez, és azonnali biztonsági riasztásokat biztosít a potenciális sebezhetőségekről, az Azure SQL-injektálási támadásokról és a rendellenes adatbázis-hozzáférési mintákról. Az Advanced Threat Protection által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
 
-- Az [Adatfelderítési & besorolása](data-discovery-and-classification-overview.md) a Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis-nak köszönhetően a bizalmas adatoknak az adatbázisokban való feltárásához, besorolásához, címkézéséhez &. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
-- A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
-- Az [Advanced Threat Protection](threat-detection-overview.md) észleli az adatbázisai hozzáférésére és az adatbázisai biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. Az Advanced Threat Protection által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
-
-Engedélyezze az SQL-HIRDETÉSEKET egyszer az összes ilyen funkció engedélyezéséhez. Egyetlen kattintással engedélyezheti az Azure- [kiszolgálón](logical-servers.md) lévő összes adatbázishoz tartozó hirdetéseket (amely SQL Database vagy az Azure szinapszis Analytics szolgáltatást futtatja) vagy az Azure SQL felügyelt példányában. A hirdetési beállítások engedélyezéséhez vagy kezeléséhez az SQL [Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörhöz, az SQL Database-rendszergazdai szerepkörhöz vagy az SQL Server rendszergazdai szerepkörhöz kell tartoznia.
+Engedélyezze a speciális adatbiztonságot az összes ilyen funkció engedélyezéséhez. Egyetlen kattintással engedélyezheti a [kiszolgáló](logical-servers.md) összes adatbázisára vonatkozó hirdetéseket az Azure-ban vagy az SQL felügyelt példányában. A hirdetési beállítások engedélyezéséhez vagy kezeléséhez az [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörhöz vagy az adatbázis vagy a kiszolgáló rendszergazdai szerepköreihez kell tartoznia.
 
 A ADS díjszabása a Azure Security Center Standard csomaggal igazodik, ahol minden egyes védett kiszolgáló vagy felügyelt példány egyetlen csomópontnak számít. Az újonnan védett erőforrások Security Center standard szintű ingyenes próbaidőszakra érvényesek. További információkért tekintse meg a [Azure Security Center díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="getting-started-with-ads"></a>Első lépések a HIRDETÉSekkel
+## <a name="getting-started-with-ads"></a>Ismerkedés a hirdetések használatába
 
 A következő lépésekkel kezdheti meg a HIRDETÉSEKET.
 

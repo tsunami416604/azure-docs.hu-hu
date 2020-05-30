@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170596"
+ms.locfileid: "84193424"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Objektum-replikálás blokk-Blobok számára (előzetes verzió)
 
@@ -73,7 +73,9 @@ Az előzetes verzió ideje alatt a Storage-fiókok közötti replikálás nem j�
 
 ### <a name="prerequisites-for-object-replication"></a>Az objektumok replikálásának előfeltételei
 
-Az objektum-replikációhoz a következő Azure Storage-funkciókra van szükség:
+Az objektum-replikációhoz a következő Azure Storage-funkciókra van szükség: 
+- [Csatorna módosítása](storage-blob-change-feed.md)
+- [Verziókezelés](versioning-overview.md)
 
 Az objektumok replikálásának konfigurálása előtt engedélyezze az előfeltételeket. A módosítási csatornát engedélyezni kell a forrásoldali fiókon, és a blob verziószámozását is engedélyezni kell a forrás-és a cél fiókban. A szolgáltatások engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -154,6 +156,8 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 
 Ha kérdéseket szeretne feltenni az objektum-replikálás előzetes verziójával kapcsolatban, vagy visszajelzést szeretne küldeni, forduljon a Microsofthoz AzureStorageFeedback@microsoft.com . Az Azure Storage szolgáltatással kapcsolatos ötleteket és javaslatokat mindig az [Azure Storage visszajelzési fóruma](https://feedback.azure.com/forums/217298-storage)fogadja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Objektum-replikáció konfigurálása (előzetes verzió)](object-replication-configure.md)
+- [A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)](storage-blob-change-feed.md)
+- [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

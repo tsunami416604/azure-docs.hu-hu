@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772118"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193411"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>A lekérdezés gyorsításának SQL nyelvi referenciája (előzetes verzió)
 
@@ -32,7 +32,7 @@ A lekérdezési gyorsítás által támogatott egyetlen SQL-utasítás a SELECT 
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-CSV formátumú adat esetén a *táblának* a következőnek kell lennie `BlobStorage`:.  Ez azt jelenti, hogy a lekérdezés a REST-hívásban megadott blobon fog futni.
+CSV formátumú adat esetén a *táblának* a következőnek kell lennie: `BlobStorage` .  Ez azt jelenti, hogy a lekérdezés a REST-hívásban megadott blobon fog futni.
 JSON formátumú adat esetén a *tábla* a "táblázat leírója".   Lásd a jelen cikk [táblázatos descripters](#table-descriptors) című szakaszát.
 
 Az alábbi példában minden olyan sorra, amelynél a WHERE *kifejezés* igaz értéket ad vissza, ez az utasítás egy új sort fog visszaadni, amely az egyes leképezési kifejezések kiértékelésével készül.
@@ -54,7 +54,7 @@ A következő példa egy CSV-formátumú blob felosztására alkalmas eltolások
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>Adattípusok
 
@@ -109,7 +109,7 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-A [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvény segítségével megkeresheti a mintázatot. Íme néhány példa, amely a [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvényt használja az adatkarakterlánc ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``kereséséhez.
+A [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvény segítségével megkeresheti a mintázatot. Íme néhány példa, amely a [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) függvényt használja az adatkarakterlánc kereséséhez ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
 
 |Lekérdezés|Példa|
 |--|--|
@@ -129,9 +129,9 @@ Jelenleg a [szabványos IS08601 összes dátumformátum-formátumát](https://ww
 
 #### <a name="date_add-function"></a>DATE_ADD függvény
 
-A lekérdezés gyorsításának SQL nyelve az ``DATE_ADD`` év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja.
+A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja ``DATE_ADD`` .
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 DATE_ADD(datepart, quantity, timestamp)
@@ -140,7 +140,7 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF függvény
 
-A lekérdezés gyorsításának SQL nyelve az ``DATE_DIFF`` év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja.
+A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja ``DATE_DIFF`` .
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -149,9 +149,9 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>Kinyerési függvény
 
-A ``DATE_ADD`` függvény által támogatott, a Date résztől eltérő Kibontás esetén a lekérdezési gyorsítás SQL nyelve a timezone_hour és az timezone_minutet is támogatja.
+A függvény által támogatott, a Date résztől eltérő Kibontás esetén ``DATE_ADD`` a lekérdezési gyorsítás SQL nyelve a timezone_hour és az timezone_minutet is támogatja.
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 EXTRACT(datepart FROM timestampstring)
@@ -160,14 +160,14 @@ EXTRACT(YEAR FROM '2010-01-01T')
 
 #### <a name="to_string-function"></a>TO_STRING függvény
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a ``TO_STRING`` függvény kimeneti formátumának megadásához használhat.
+Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kimeneti formátumának megadásához használhat ``TO_STRING`` .
 
 |Formázó sztring    |Kimenet                               |
 |-----------------|-------------------------------------|
@@ -203,7 +203,7 @@ Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a ``TO_STRING`` 
 
 Csak IS08601-formátumok támogatottak.
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 TO_TIMESTAMP(string)
@@ -211,7 +211,7 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> A rendszeridőt a ``UTCNOW`` függvény használatával is lekérheti.
+> A ``UTCNOW`` rendszeridőt a függvény használatával is lekérheti.
 
 
 ## <a name="aggregate-expressions"></a>Összesítő kifejezések
@@ -220,7 +220,7 @@ A SELECT utasítás tartalmazhat egy vagy több leképezési kifejezést, vagy e
 
 |Kifejezés|Leírás|
 |--|--|
-|[DARABSZÁM (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |A predikátum kifejezésének megfelelő rekordok számát adja vissza.|
+|[DARABSZÁM ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |A predikátum kifejezésének megfelelő rekordok számát adja vissza.|
 |[DARABSZÁM (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Azon rekordok számát adja vissza, amelyek esetében a kifejezés nem null értékű.|
 |[ÁTLAG (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |A kifejezés null értéktől eltérő értékeinek átlagát adja vissza.|
 |[MIN (kifejezés)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |A kifejezés minimális nem null értékű értékét adja vissza.|
@@ -229,13 +229,13 @@ A SELECT utasítás tartalmazhat egy vagy több leképezési kifejezést, vagy e
 
 ### <a name="missing"></a>HIÁNYZÓ
 
-Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezés GYORSÍTÁSának SQL-nyelve támogat.  JSON-adatok esetén, ha egy mező hiányzik egy adott bemeneti rekordból, a kifejezés mező ``IS MISSING`` az igaz logikai értéket fogja kiértékelni.
+Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezés gyorsításának SQL-nyelve támogat.  JSON-adatok esetén, ha egy mező hiányzik egy adott bemeneti rekordból, a kifejezés mező az ``IS MISSING`` igaz logikai értéket fogja kiértékelni.
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Tábla leírói
 
-CSV-adatként a tábla neve mindig `BlobStorage`.  Például:
+CSV-adatként a tábla neve mindig `BlobStorage` .  Például:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -279,7 +279,7 @@ Ez a mintaadatok:
 }
 ```
 
-Lehet, hogy csak a fenti adatokból származó `warehouses` JSON-objektum érdekli. Az `warehouses` objektum egy JSON-tömb típusa, ezért ezt a FROM záradékban lehet megemlíteni. A mintául szolgáló lekérdezés valahogy így néz ki.
+Lehet, hogy csak a `warehouses` fenti adatokból származó JSON-objektum érdekli. Az `warehouses` objektum egy JSON-tömb típusa, ezért ezt a FROM záradékban lehet megemlíteni. A mintául szolgáló lekérdezés valahogy így néz ki.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
@@ -287,22 +287,22 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 A lekérdezés lekérdezi az összes mezőt, de csak a földrajzi szélességet választja.
 
-Ha csak a `dimensions` JSON-objektum értékének elérését szeretné elérni, a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Például:
+Ha csak a JSON-objektum értékének elérését szeretné elérni `dimensions` , a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Például:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-Ez korlátozza a hozzáférést az `dimensions` objektum tagjaihoz is. Ha a JSON-mezők más tagjait és a JSON-objektumok belső értékeit is el szeretné érni, akkor olyan lekérdezéseket használhat, mint például az alábbi példában látható:
+Ez korlátozza a hozzáférést az objektum tagjaihoz is `dimensions` . Ha a JSON-mezők más tagjait és a JSON-objektumok belső értékeit is el szeretné érni, akkor olyan lekérdezéseket használhat, mint például az alábbi példában látható:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> A BlobStorage és a\*BlobStorage [] mindkettő a teljes objektumra vonatkozik. Ha azonban a FROM záradékban van egy elérési út, akkor a következőt kell használnia:\*BlobStorage []. Path
+> A BlobStorage és a BlobStorage [ \* ] mindkettő a teljes objektumra vonatkozik. Ha azonban a FROM záradékban van egy elérési út, akkor a következőt kell használnia: BlobStorage [ \* ]. Path
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys. Split
 
@@ -314,7 +314,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 Használja ezt az utasítást azokban az esetekben, amikor le szeretné tölteni, majd feldolgozza a CSV-adatrekordokat a kötegekben. Így párhuzamosan feldolgozhatja a rekordokat ahelyett, hogy egyszerre le kellene töltenie az összes rekordot. Ez az utasítás nem ad vissza rekordokat a CSV-fájlból. Ehelyett a Batch-méretek gyűjteményét adja vissza. Ezután az egyes batch-méretekkel lekérheti az adatrekordok kötegét. 
 
-A *split_size* paraméterrel adhatja meg, hogy hány bájtot szeretne használni a kötegek. Ha például egyszerre csak 10 MB-nyi adat feldolgozását szeretné feldolgozni, akkor a következőhöz hasonló utasítást kell kinéznie `SELECT sys.split(10485760)FROM BlobStorage` : mivel a 10 mb értéke 10 485 760 bájt. Minden köteg annyi rekordot fog tartalmazni, amelyek elférnek a 10 MB-ban. 
+A *split_size* paraméterrel adhatja meg, hogy hány bájtot szeretne használni a kötegek. Ha például egyszerre csak 10 MB-nyi adat feldolgozását szeretné feldolgozni, akkor a következőhöz hasonló utasítást kell kinéznie: `SELECT sys.split(10485760)FROM BlobStorage` mivel a 10 MB értéke 10 485 760 bájt. Minden köteg annyi rekordot fog tartalmazni, amelyek elférnek a 10 MB-ban. 
 
 A legtöbb esetben az egyes kötegek mérete valamivel nagyobb lesz, mint a megadott szám. Ennek oka, hogy egy köteg nem tartalmazhat részleges rekordot. Ha egy köteg utolsó rekordja a küszöb vége előtt indul el, a köteg nagyobb lesz, hogy a teljes rekordot is tartalmazza. Az utolsó köteg mérete valószínűleg kisebb lesz, mint a megadott méret.
 

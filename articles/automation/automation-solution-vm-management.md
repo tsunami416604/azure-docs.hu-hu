@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743710"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205126"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
@@ -50,24 +50,24 @@ Ha egy meglévő Automation-fiókkal és Log Analytics munkaterülettel kívánj
 
 | Engedély | Hatókör|
 | --- | --- |
-| Microsoft. Automation/automationAccounts/READ | Resource Group |
-| Microsoft. Automation/automationAccounts/változók/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/ütemterv/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/runbookok/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/kapcsolatok/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/tanúsítványok/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/modulok/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/modulok/olvasás | Resource Group |
-| Microsoft. Automation/automationAccounts/jobSchedules/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/feladatok/írás | Resource Group |
-| Microsoft. Automation/automationAccounts/feladatok/olvasás | Resource Group |
-| Microsoft. OperationsManagement/megoldások/írás | Resource Group |
-| Microsoft. OperationalInsights/munkaterületek/* | Resource Group |
-| Microsoft. bepillantások/diagnosticSettings/írás | Resource Group |
-| Microsoft. bepillantások/ActionGroups/írás | Resource Group |
-| Microsoft. bepillantások/ActionGroups/olvasás | Resource Group |
-| Microsoft. Resources/Subscriptions/resourceGroups/READ | Resource Group |
-| Microsoft. Resources/üzemelő példány/* | Resource Group |
+| Microsoft. Automation/automationAccounts/READ | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/változók/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/ütemterv/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/runbookok/Write | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/kapcsolatok/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/tanúsítványok/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/modulok/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/modulok/olvasás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/feladatok/írás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/feladatok/olvasás | Erőforráscsoport |
+| Microsoft. OperationsManagement/megoldások/írás | Erőforráscsoport |
+| Microsoft. OperationalInsights/munkaterületek/* | Erőforráscsoport |
+| Microsoft. bepillantások/diagnosticSettings/írás | Erőforráscsoport |
+| Microsoft. bepillantások/ActionGroups/írás | Erőforráscsoport |
+| Microsoft. bepillantások/ActionGroups/olvasás | Erőforráscsoport |
+| Microsoft. Resources/Subscriptions/resourceGroups/READ | Erőforráscsoport |
+| Microsoft. Resources/üzemelő példány/* | Erőforráscsoport |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Engedélyek új Automation-fiókhoz és új Log Analytics munkaterület
 
@@ -83,10 +83,10 @@ Az új Automation-fiókkal és Log Analytics munkaterülettel engedélyezheti a 
 | Microsoft. Authorization/engedélyek/olvasás |Előfizetés|
 | Microsoft. Authorization/roleAssignments/olvasás | Előfizetés |
 | Microsoft.Authorization/roleAssignments/write | Előfizetés |
-| Microsoft. Authorization/roleAssignments/delete | Előfizetés || Microsoft. Automation/automationAccounts/kapcsolatok/olvasás | Resource Group |
-| Microsoft. Automation/automationAccounts/tanúsítványok/olvasás | Resource Group |
-| Microsoft. Automation/automationAccounts/írás | Resource Group |
-| Microsoft. OperationalInsights/munkaterületek/írás | Resource Group |
+| Microsoft. Authorization/roleAssignments/delete | Előfizetés || Microsoft. Automation/automationAccounts/kapcsolatok/olvasás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/tanúsítványok/olvasás | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/írás | Erőforráscsoport |
+| Microsoft. OperationalInsights/munkaterületek/írás | Erőforráscsoport |
 
 ## <a name="components"></a>Összetevők
 
@@ -104,15 +104,15 @@ Az összes szülő runbookok tartalmazza a `WhatIf` paramétert. Ha igaz érték
 |Forgatókönyv | Paraméterek | Leírás|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Meghívva a szülő runbook. Ez a runbook a riasztásokat erőforrás-alapon hozza létre az automatikus leállítási forgatókönyvhöz.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList`a a virtuális gépek vesszővel tagolt listája. Például: `vm1, vm2, vm3`.<br> `WhatIf`lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
-|AutoStop_Disable | Nincs | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList`a a virtuális gépek vesszővel tagolt listája (szóközök nélkül), például: `vm1,vm2,vm3` .<br> `WhatIf`lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
+|AutoStop_Disable | None | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
 |AutoStop_VM_Child | WebHookData | Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy klasszikus virtuális gép leállításához.|
 |AutoStop_VM_Child_ARM | WebHookData |Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy virtuális gép leállítására.  |
 |ScheduledStartStop_Base_Classic | Felhőszolgáltatásneve<br> Művelet: indítás vagy leállítás<br> VMList  | Elvégzi a művelet indítását vagy leállítását a klasszikus virtuálisgép-csoportban Cloud Services alapján. |
 |ScheduledStartStop_Child | VMName <br> Művelet: indítás vagy leállítás <br> ResourceGroupName | Meghívva a szülő runbook. Végrehajt egy indítási vagy leállítási műveletet az ütemezett leállítás előtt.|
 |ScheduledStartStop_Child_Classic | VMName<br> Művelet: indítás vagy leállítás<br> ResourceGroupName | Meghívva a szülő runbook. Indítási vagy leállítási műveletet hajt végre a klasszikus virtuális gépek ütemezett leállításakor. |
 |ScheduledStartStop_Parent | Művelet: indítás vagy leállítás <br>VMList <br> WhatIf: true vagy FALSE | Elindítja vagy leállítja az előfizetésben lévő összes virtuális gépet. Szerkessze a változókat `External_Start_ResourceGroupNames` , és `External_Stop_ResourceGroupNames` csak ezekre a célcsoportokra legyen végrehajtva. Az egyes virtuális gépeket a változó frissítésével is kizárhatja `External_ExcludeVMNames` .|
-|SequencedStartStop_Parent | Művelet: indítás vagy leállítás <br> WhatIf: true vagy FALSE<br>VMList| A **sequencestart** és a **sequencestop** nevű címkéket hoz létre minden olyan virtuális gépen, amelynél le kívánja állítani az indítási/leállítási tevékenységet. A címkék nevei megkülönböztetik a kis-és nagybetűket. A címke értékének pozitív egész számnak (1, 2, 3) kell lennie, amely megfelel az elindítani vagy leállítani kívánt sorrendnek. <br>**Megjegyzés**: a virtuális gépeknek a (z `External_Start_ResourceGroupNames` ), `External_Stop_ResourceGroupNames` , és változóban definiált erőforráscsoport-csoportokon belül kell lenniük `External_ExcludeVMNames` . A megfelelő címkékkel kell rendelkezniük a műveletek életbe léptetéséhez.|
+|SequencedStartStop_Parent | Művelet: indítás vagy leállítás <br> WhatIf: true vagy FALSE<br>VMList| A **sequencestart** és a **sequencestop** nevű címkéket hoz létre minden olyan virtuális gépen, amelynél le kívánja állítani az indítási/leállítási tevékenységet. A címkék nevei megkülönböztetik a kis-és nagybetűket. A címke értékének a pozitív egész számok (például:) listáját kell tartalmaznia, `1,2,3` amely az elindítani vagy leállítani kívánt sorrendnek felel meg. <br>**Megjegyzés**: a virtuális gépeknek a (z `External_Start_ResourceGroupNames` ), `External_Stop_ResourceGroupNames` , és változóban definiált erőforráscsoport-csoportokon belül kell lenniük `External_ExcludeVMNames` . A megfelelő címkékkel kell rendelkezniük a műveletek életbe léptetéséhez.|
 
 ### <a name="variables"></a>Változók
 
@@ -170,7 +170,7 @@ A klasszikus virtuális gépekkel rendelkező szolgáltatás használatához kla
 Ha a Cloud Service-ben több mint 20 virtuális gép van, a következő javaslatok közül választhat:
 
 * Hozzon létre több ütemtervet a szülő runbook **ScheduledStartStop_Parent** és ütemezzen 20 virtuális gépet. 
-* Az ütemterv tulajdonságainál a paraméter használatával `VMList` vesszővel tagolt listaként adhatja meg a virtuális gépek nevét. 
+* Az ütemterv tulajdonságainál a `VMList` paraméterrel megadhatja a virtuális gépek nevét vesszővel tagolt listaként (ne legyen szóköz). 
 
 Ellenkező esetben, ha a szolgáltatás automatizálási feladata több mint három órát futtat, átmenetileg el lett távolítva vagy leállítva a [méltányos megosztási](automation-runbook-execution.md#fair-share) korláton belül.
 

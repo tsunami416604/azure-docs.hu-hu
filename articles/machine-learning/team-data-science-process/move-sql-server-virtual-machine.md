@@ -1,6 +1,6 @@
 ---
 title: Az adatáthelyezés SQL Server virtuális gépre – csoportos adatelemzési folyamat
-description: Az adatok áthelyezhetők a sima fájlokból vagy egy helyszíni SQL Serverból az Azure-beli virtuális gépen SQL Server.
+description: Az adatok áthelyezhetők a sima fájlokból vagy a helyszíni SQL Serverból az Azure-beli virtuális gépen SQL Server.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022435"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194372"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -203,7 +203,7 @@ Számos módszer használható a helyszíni SQL Server adatainak tömeges export
 SQL Server a következőket támogatja:
 
 1. Az [adatbázis biztonsági mentése és visszaállítása funkció](https://msdn.microsoft.com/library/ms187048.aspx) (mindkettő egy helyi fájlra, vagy a blobba történő exportálás bacpac) és [az adatcsomag-alkalmazásokra](https://msdn.microsoft.com/library/ee210546.aspx) (a bacpac használatával).
-2. Lehetőség van arra, hogy közvetlenül létrehozzon SQL Server virtuális gépeket az Azure-ban egy másolt adatbázissal, vagy másoljon egy meglévő SQL Azure-adatbázisba. További információ: [az adatbázis másolása varázsló használata](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Lehetőség van arra, hogy közvetlenül létrehozzon SQL Server virtuális gépeket az Azure-ban egy másolt adatbázissal, vagy másoljon egy meglévő adatbázisba SQL Database. További információ: [az adatbázis másolása varázsló használata](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Alább látható az adatbázis biztonsági mentési/visszaállítási lehetőségeinek képernyőképe SQL Server Management Studio.
 

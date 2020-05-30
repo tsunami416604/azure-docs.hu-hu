@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c65160cb648954ef97bd2a3d3e9ac0d38440ce7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732898"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193844"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -31,7 +31,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ## <a name="create-a-java-app"></a>Java-alkalmazás létrehozása
 
-A következő Maven-parancs végrehajtásával hozzon létre egy nevű `helloworld`új alkalmazást a Cloud Shell promptban:
+A következő Maven-parancs végrehajtásával hozzon létre egy nevű új alkalmazást a Cloud Shell promptban `helloworld` :
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
@@ -97,7 +97,7 @@ Ha szeretné `pom.xml` megtekinteni a beépülő modul konfigurációját, navig
 
  Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---
-`<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a `v1`következők `v2`:,. | 1.5.2
+`<schemaVersion>` | hamis | Határozza meg a konfigurációs séma verzióját. A támogatott értékek a következők: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | igaz | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | igaz | A webalkalmazás neve. | 0.1.0 +
 `<region>` | igaz | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
@@ -120,7 +120,7 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 ![Azure App Service futó minta alkalmazás](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gratulálok!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
+**Gratulálunk!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -147,7 +147,7 @@ A parancs futtatása egy percig is eltarthat.
 > [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Java-alkalmazás konfigurálása](configure-custom-container.md)
+> [Java-alkalmazás konfigurálása](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [CI/CD – Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)

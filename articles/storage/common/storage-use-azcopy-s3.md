@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f6d2be3760a28a8702b221dbd484901918441d9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75941501"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195211"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Adatok másolása az Amazon S3-ból az Azure Storage-ba a AzCopy használatával
 
@@ -30,7 +30,7 @@ A AzCopy olyan parancssori segédprogram, amellyel blobokat vagy fájlokat máso
 A AzCopy letöltéséhez tekintse meg az [első lépések a AzCopy](storage-use-azcopy-v10.md) című cikket, és válassza ki, hogyan adja meg az engedélyezési hitelesítő adatokat a Storage szolgáltatás számára.
 
 > [!NOTE]
-> A cikkben szereplő példák azt feltételezik, hogy a `AzCopy login` parancs használatával hitelesítette a személyazonosságát. A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
+> A cikkben szereplő példák azt feltételezik, hogy a parancs használatával hitelesítette a személyazonosságát `AzCopy login` . A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
 >
 > Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
@@ -56,11 +56,11 @@ A AzCopy a [put blokkot használja az URL API-ból](https://docs.microsoft.com/r
 > [!TIP]
 > Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
- Ezek a példák olyan fiókokkal is működnek, amelyek hierarchikus névtérrel rendelkeznek. A [több protokollon keresztüli hozzáférés Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé teszi, hogy ugyanazt az URL`blob.core.windows.net`-szintaxist () használja a fiókokon. 
+ Ezek a példák olyan fiókokkal is működnek, amelyek hierarchikus névtérrel rendelkeznek. A [több protokollon keresztüli hozzáférés Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé teszi, hogy ugyanazt az URL-szintaxist () használja a `blob.core.windows.net` fiókokon. 
 
 ### <a name="copy-an-object"></a>Objektum másolása
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
@@ -69,15 +69,15 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
-> A jelen cikkben szereplő példák az AWS S3-gyűjtők elérési útja stílusú URL-címeket `http://s3.amazonaws.com/<bucket-name>`használják (például:). 
+> A jelen cikkben szereplő példák az AWS S3-gyűjtők elérési útja stílusú URL-címeket használják (például: `http://s3.amazonaws.com/<bucket-name>` ). 
 >
-> Emellett használhatja a virtuálisan üzemeltetett stílusú URL-címeket is (például: `http://bucket.s3.amazonaws.com`). 
+> Emellett használhatja a virtuálisan üzemeltetett stílusú URL-címeket is (például: `http://bucket.s3.amazonaws.com` ). 
 >
-> Ha többet szeretne megtudni a gyűjtők virtuális üzemeltetéséről, tekintse meg a következőt: [ahttps://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)gyűjtők virtuális üzemeltetése]] (.
+> Ha többet szeretne megtudni a gyűjtők virtuális üzemeltetéséről, tekintse meg a következőt: [a gyűjtők virtuális üzemeltetése]] ( https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) .
 
 ### <a name="copy-a-directory"></a>Könyvtár másolása
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
@@ -87,7 +87,7 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 
 ### <a name="copy-a-bucket"></a>Gyűjtő másolása
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
@@ -97,7 +97,7 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Összes gyűjtő másolása minden régióban
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
@@ -107,7 +107,7 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Az összes gyűjtő másolása egy adott S3 régióban
 
-Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
@@ -119,15 +119,15 @@ Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz
 
 Az AWS S3 az Azure Blob-tárolókkal összehasonlítva különböző elnevezési konvenciókat tartalmaz a gyűjtők neveihez. [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)olvashat róluk. Ha a gyűjtők egy csoportját egy Azure Storage-fiókba másolja, a másolási művelet a névadási különbségek miatt sikertelen lehet.
 
-A AzCopy két leggyakoribb problémát okoz, amelyek felmerülhetnek; az egymást követő kötőjeleket tartalmazó pontokat és gyűjtőket tartalmazó gyűjtők. Az AWS S3-gyűjtők neve tartalmazhat pontokat és egymást követő kötőjeleket, de az Azure-beli tárolók nem. A AzCopy lecseréli a kötőjelekkel és egymást követő kötőjelekkel rendelkező időszakokat egy számmal, amely az egymást követő kötőjelek `my----bucket` számát `my-4-bucket`jelöli (például: egy nevű gyűjtő. 
+A AzCopy két leggyakoribb problémát okoz, amelyek felmerülhetnek; az egymást követő kötőjeleket tartalmazó pontokat és gyűjtőket tartalmazó gyűjtők. Az AWS S3-gyűjtők neve tartalmazhat pontokat és egymást követő kötőjeleket, de az Azure-beli tárolók nem. A AzCopy lecseréli a kötőjelekkel és egymást követő kötőjelekkel rendelkező időszakokat egy számmal, amely az egymást követő kötőjelek számát jelöli (például: egy nevű gyűjtő `my----bucket` `my-4-bucket` . 
 
-Továbbá, mivel a AzCopy fájlokba másolja a fájlokat, ellenőrzi a névadási ütközéseket, és megkísérli a megoldását. Ha például vannak olyan gyűjtők, amelyeknek a neve `bucket-name` és `bucket.name`a, a AzCopy először a nevű `bucket.name` gyűjtőt oldja `bucket-name` fel, majd `bucket-name-2`a (z) értékre.
+Továbbá, mivel a AzCopy fájlokba másolja a fájlokat, ellenőrzi a névadási ütközéseket, és megkísérli a megoldását. Ha például vannak olyan gyűjtők, amelyeknek a neve `bucket-name` és a `bucket.name` , a AzCopy először a nevű gyűjtőt oldja `bucket.name` fel, majd a (z `bucket-name` ) értékre `bucket-name-2` .
 
 ## <a name="handle-differences-in-object-metadata"></a>Az objektum metaadatai közötti különbségek kezelése
 
 Az AWS S3 és az Azure különböző karakterkészleteket tesz lehetővé az objektumok kulcsainak neveiben. [Itt](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)olvashat azokról a karakterekről, amelyeket az AWS S3 használ. Az Azure oldalon a blob-objektumok kulcsai megfelelnek a [C# azonosítók](https://docs.microsoft.com/dotnet/csharp/language-reference/)elnevezési szabályainak.
 
-Egy AzCopy `copy` parancs részeként megadhat egy értéket a nem kötelezően megadandó `s2s-invalid-metadata-handle` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
+Egy AzCopy parancs részeként megadhat `copy` egy értéket a nem kötelezően megadandó `s2s-invalid-metadata-handle` jelzőhöz, amely meghatározza, hogyan szeretné kezelni azokat a fájlokat, amelyekben a fájl metaadatai a nem kompatibilis kulcsok nevét tartalmazzák. A következő táblázat ismerteti az egyes jelző értékeket.
 
 | Jelölő értéke | Leírás  |
 |--------|-----------|
@@ -135,7 +135,7 @@ Egy AzCopy `copy` parancs részeként megadhat egy értéket a nem kötelezően 
 | **FailIfInvalid** | Az objektumok nem másolhatók. A AzCopy naplóz egy hibát, és tartalmazza azt a hibás darabszámot, amely megjelenik az átvitel összegzésében.  |
 | **RenameIfInvalid**  | A AzCopy feloldja az érvénytelen metaadat-kulcsot, és átmásolja az objektumot az Azure-ba a megoldott metaadat-kulcs értéke pár használatával. Ha pontosan szeretné megtudni, hogy milyen lépések szükségesek az AzCopy átnevezéséhez, tekintse meg az alábbi [AzCopy átnevezése az objektumok kulcsairól](#rename-logic) című szakaszt. Ha a AzCopy nem tudja átnevezni a kulcsot, az objektum nem lesz átmásolva. |
 
-<a id="rename-logic" />
+<a id="rename-logic"></a>
 
 ### <a name="how-azcopy-renames-object-keys"></a>A AzCopy átnevezi az objektumok kulcsait
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0a013d702b48864a182180fa6fe382973bff2cd0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043946"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188244"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Synckel kapcsolatos hibák elhárítása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ Az ügyfél ügynökével kapcsolatos problémák elhárításához lásd: [az a
 
 - [Nem tudom törölni a szinkronizálási csoportot](#setup-delete)
 
-- [Nem tudom törölni a helyszíni SQL Server adatbázis regisztrációját](#setup-unreg)
+- [Nem lehet törölni egy SQL Server adatbázis regisztrációját](#setup-unreg)
 
 - [Nem rendelkezem megfelelő jogosultsággal a rendszerszolgáltatások indításához](#setup-perms)
 
@@ -166,11 +166,11 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
 - **Megoldás**. Várjon, amíg befejeződik a kiépítési vagy szinkronizálási folyamat, majd próbálkozzon újra a szinkronizálási csoport törlésével.
 
-### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a><a name="setup-unreg"></a>Nem tudom törölni a helyszíni SQL Server adatbázis regisztrációját
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Nem lehet törölni egy SQL Server adatbázis regisztrációját
 
 - **OK**. Legvalószínűbb, hogy olyan adatbázist próbál meg törölni, amely már törölve lett.
 
-- **Megoldás**. Helyszíni SQL Server-adatbázis regisztrációjának törléséhez válassza ki az adatbázist, majd válassza a **kényszerített törlés**lehetőséget.
+- **Megoldás**. SQL Server adatbázis regisztrációjának törléséhez válassza ki az adatbázist, majd válassza a **kényszerített törlés**lehetőséget.
 
   Ha a művelet nem tudja eltávolítani az adatbázist a szinkronizálási csoportból:
 
@@ -244,7 +244,7 @@ További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a SQL Server közötti adatszinkronizáláshoz](sql-data-sync-sql-server-configure.md)
     - A PowerShell-lel
         -  [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Azure SQL Database és egy SQL Server-példányban található adatbázis közötti szinkronizálás a PowerShell használatával](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

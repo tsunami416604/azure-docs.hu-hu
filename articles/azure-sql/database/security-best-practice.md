@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: b2694d83f3059ac9d291f5164a76acd8b011c9a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049994"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217915"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Forgatókönyv a közös biztonsági követelmények kezeléséhez Azure SQL Database & SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Ez a dokumentum útmutatást nyújt a Azure SQL Database és az Azure SQL felüg
 
 - Azure SQL Data Warehouse
 - Azure SQL virtuális gépek (IaaS)
-- Helyszíni SQL Server
+- SQL Server
 
 ### <a name="audience"></a>Célközönség
 
@@ -800,6 +800,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
 
 - További üzletmenet-folytonossági funkciók, például automatikus feladatátvételi csoportok a különböző Azure-térségek az itt leírtak szerint konfigurálhatók: [az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

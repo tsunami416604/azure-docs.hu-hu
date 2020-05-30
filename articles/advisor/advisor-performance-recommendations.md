@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 description: Az Advisor használatával optimalizálja az Azure-beli üzemelő példányok teljesítményét.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787940"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196418"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor azonosítja a hosszabb ÉLETTARTAMú Traffic Manager profilokat, �
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Az adatbázis teljesítményének növelése az SQL DB Advisorral
 
-Az Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor a SQL Azure-adatbázis teljesítményének javítására vonatkozó javaslatok bevonásával integrálható.SQL Database Advisor a használati előzmények elemzésével értékeli a SQL Azure adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
+Az Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforrásra vonatkozó javaslatokról. A SQL Database Advisor az adatbázis teljesítményének javítására vonatkozó javaslatok beépítésével integrálható.SQL Database Advisor a használati előzmények elemzésével értékeli az adatbázisok teljesítményét. Ezután ajánlásokat nyújt az adatbázis tipikus számítási feladatainak futtatásához.
 
 > [!NOTE]
 > A javaslatok beszerzéséhez egy adatbázisnak körülbelül egy hétig kell lennie, és ezen a héten belül bizonyos konzisztens tevékenységnek kell lennie. A SQL Database Advisor könnyebben optimalizálható a konzisztens lekérdezési mintáknál, mint a tevékenységek véletlenszerű kitörése esetén.
@@ -80,19 +80,19 @@ Egy Azure-régió legfeljebb 250 Storage-fiókot tud támogatni előfizetésre. 
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Érdemes megfontolni a VNet Gateway SKU méretének növelését a magas P2S-használat érdekében
 
-Minden átjáró SKU csak az egyidejű P2S-kapcsolatok megadott számát támogatja. Ha a kapcsolatok száma megközelíti az átjáró korlátját, a további kapcsolódási kísérletek sikertelenek lehetnek. Az átjáró méretének növelése lehetővé teszi az egyidejű P2S-felhasználók támogatását. Az Advisor ajánlásokat és lépéseket tesz elérhetővé.
+Minden egyes átjáró-SKU csak meghatározott számú egyidejű P2S-kapcsolatot támogat. Ha a kapcsolatok száma megközelíti az átjáró korlátját, a további kapcsolódási kísérletek sikertelenek lehetnek. Az átjáró méretének növelése lehetővé teszi az egyidejű P2S-felhasználók támogatását. Az Advisor ajánlásokat és lépéseket tesz elérhetővé.
 
-## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Érdemes megfontolni a VNet Gateway SKU méretének növelését a magas CPU-megoldáshoz
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Magas processzorhasználat esetén fontolja meg a virtuális hálózati átjáró SKU-ja méretének növelését
 
-A nagy forgalmú terhelés alatt a VPN-átjáró magas CPU miatt csökkenhet a csomagok. Érdemes lehet frissíteni a VPN Gateway SKU-t, mivel a VPN-t folyamatosan futtatták a-ben. A VPN-átjáró méretének növelésével biztosíthatja, hogy a kapcsolatok ne legyenek elvetve a magas CPU miatt. Advisor provdes-javaslat a probléma proaktív megoldásához. 
+Nagy mennyiségű forgalom esetén a VPN-átjáró eldobhatja a csomagokat a magas processzorhasználat miatt. Érdemes lehet frissíteni a VPN Gateway SKU-t, mivel a VPN-t folyamatosan futtatták a-ben. A VPN-átjáró méretének növelésével biztosíthatja, hogy a kapcsolatok ne legyenek elvetve a magas CPU miatt. Advisor provdes-javaslat a probléma proaktív megoldásához. 
 
-## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>A köteg méretének növelése a terhelés maximalizálása, az adattömörítés és a lekérdezési teljesítmény maximalizálása érdekében
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>A köteg méretének betöltéskor történő növelése a terhelésátvitel, az adattömörítés és a lekérdezési teljesítmény maximalizálása érdekében
 
-Az Advisor felismeri, hogy növelheti a terhelési teljesítményt és az átviteli sebességet azáltal, hogy növeli a köteg méretét az adatbázisba való betöltéskor. Érdemes lehet a COPY utasítást használni. Ha nem tudja használni a COPY utasítást, vegye fontolóra a Batch méretének növelését, ha olyan betöltési segédprogramokat használ, mint például a SQLBulkCopy API vagy a BCP – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret. Ez növeli a terhelési sebességet, az adattömörítést és a lekérdezési teljesítményt.
+Az Advisor felismeri, hogy növelheti a terhelési teljesítményt és az átviteli sebességet azáltal, hogy növeli a köteg méretét az adatbázisba való betöltéskor. Érdemes lehet a COPY utasítást használni. Ha nem tudja használni a COPY utasítást, vegye fontolóra a köteg méretének növelését az olyan betöltési segédprogramok használata esetén, mint például a SQLBulkCopy API vagy a BCP – általános szabályként a százezer és egymillió határérték közötti kötegméretek alkalmazása ajánlott. Ez növeli a terhelési sebességet, az adattömörítést és a lekérdezési teljesítményt.
 
-## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>A tárolási fiók megkeresése ugyanazon a régión belül a késés minimalizálásához a betöltéskor
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Helyezze el a tárfiókot ugyanabban a régióban a betöltési késés minimalizálása érdekében
 
-Az Advisor felismeri, hogy egy olyan régióból töltődik be, amely eltér az SQL-készlettől. Érdemes megfontolni az olyan Storage-fiók betöltését, amely ugyanabban a régióban található, mint az SQL-készlet, hogy az adatok betöltése során csökkentse a késést. Ez segít csökkenteni a késést, és növeli a terhelési teljesítményt.
+Az Advisor felismeri, hogy egy olyan régióból töltődik be, amely eltér az SQL-készlettől. Érdemes olyan tárfiókból végezni a betöltést, amely az SQL-készletével azonos régióban található, így minimalizálható a késés az adatok betöltése során. Ez segít csökkenteni a késést, és növeli a terhelési teljesítményt.
 
 ## <a name="unsupported-kubernetes-version-is-detected"></a>A rendszer nem támogatott Kubernetes-verziót észlelt
 
@@ -107,7 +107,7 @@ A CPU nagy kihasználtsága hosszabb időn keresztül lassú lekérdezési telje
 Az alacsony gyorsítótár-találatok aránya lassabb lekérdezési teljesítményt és nagyobb IOPS eredményezhet. Ennek oka lehet egy hibás lekérdezési csomag vagy a memória-igényes munkaterhelés futtatása. A lekérdezési terv vagy az Azure Database for PostgreSQL adatbázis-kiszolgáló, az Azure MySQL adatbázis-kiszolgáló vagy az Azure MariaDB-kiszolgáló [memóriájának](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) javítása segít optimalizálni az adatbázis-számítási feladatok végrehajtását. Azure Advisor azonosítja a nagy pufferméret miatt érintett kiszolgálókat, és a lekérdezési terv kijavítását, a több memóriával rendelkező magasabb SKU-ra való áttérést, vagy a tárterület méretének növelését javasolja, hogy további IOPS legyenek.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Az Azure MySQL vagy az Azure PostgreSQL olvasási replikájának használata az olvasási igényű számítási feladatokhoz
-Azure Advisor kihasználja a munkaterhelés-alapú heurisztikus műveleteket, például az olvasások arányát a kiszolgálón az elmúlt hét napban, az olvasási igényű számítási feladatok azonosítása érdekében. Az Azure Database for PostgreSQL-erőforrás vagy az Azure Database for MySQL-erőforrás nagyon magas olvasási/írási aránnyal eredményezheti a CPU-és/vagy memória-tartalmakat, ami lelassítja a lekérdezési teljesítményt. A [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadásával a rendszer kibővíti az olvasási adatokat a replika-kiszolgálóra, megakadályozva a processzor és/vagy a memória korlátozásait az elsődleges kiszolgálón. Az Advisor a nagy olvasási igényű számítási feladatokkal rendelkező kiszolgálókat azonosítja, és egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hozzáadását javasolja a beolvasott számítási feladatok kiszervezéséhez.
+Azure Advisor kihasználja a munkaterhelés-alapú heurisztikus műveleteket, például az olvasások arányát a kiszolgálón az elmúlt hét napban, az olvasási igényű számítási feladatok azonosítása érdekében. Az Azure Database for PostgreSQL-erőforrás vagy az Azure Database for MySQL-erőforrás nagyon magas olvasási/írási aránnyal eredményezheti a CPU-és/vagy memória-tartalmakat, ami lelassítja a lekérdezési teljesítményt. A [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadásával a rendszer kibővíti az olvasási adatokat a replika-kiszolgálóra, megakadályozva a processzor és/vagy a memória korlátozásait az elsődleges kiszolgálón. Az Advisor a nagy olvasási igényű számítási feladatokkal rendelkező kiszolgálókat azonosítja, és egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)hozzáadását javasolja a   beolvasott számítási feladatok kiszervezéséhez.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Az Azure MySQL, az Azure PostgreSQL vagy az Azure MariaDB-kiszolgáló méretezése magasabb SKU-ra a kapcsolatok megkötésének megakadályozása érdekében

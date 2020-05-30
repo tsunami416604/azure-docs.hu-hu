@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7fdced5a777c5303e402a5cc58048e076b104b4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bfb273ec0013925076669c99f08933bd10ffc465
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049266"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197132"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli virtuális gépeken SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 ## <a name="create-an-azure-account"></a>Azure-fiók létrehozása
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson ide **+** egy új objektum létrehozásához a portálon.
 
@@ -83,7 +83,7 @@ A virtuális hálózat létrehozása:
 
    | **Mező** | Érték |
    | --- | --- |
-   | **Név** |autoHAVNET |
+   | **Name (Név)** |autoHAVNET |
    | **Címtér** |10.33.0.0/24 |
    | **Alhálózat neve** |Rendszergazda |
    | **Alhálózati címtartomány** |10.33.0.0/29 |
@@ -123,7 +123,7 @@ A következő táblázat összefoglalja a hálózati konfiguráció beállítás
 
 | **Mező** | Érték |
 | --- | --- |
-| **Név** |**autoHAVNET** |
+| **Name (Név)** |**autoHAVNET** |
 | **Címtér** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/16. |
 | **Alhálózat neve** |**rendszergazda** |
 | **Alhálózati címtartomány** |Ez az érték az előfizetés elérhető címeitől függ. Egy tipikus érték a 10.0.0.0/24. |
@@ -145,7 +145,7 @@ Konfigurálja a két rendelkezésre állási csoportot a következő táblázatb
 
 | **Mező** | Tartományvezérlő rendelkezésre állási készlete | Rendelkezésre állási csoport SQL Server |
 | --- | --- | --- |
-| **Név** |adavailabilityset |sqlavailabilityset |
+| **Name (Név)** |adavailabilityset |sqlavailabilityset |
 | **Erőforráscsoport** |SQL-HA-RG |SQL-HA-RG |
 | **Tartalék tartományok** |3 |3 |
 | **Frissítési tartományok** |5 |3 |
@@ -176,7 +176,7 @@ A következő táblázat a két gép beállításait mutatja be:
 
 | **Mező** | Érték |
 | --- | --- |
-| **Név** |Első tartományvezérlő: *ad-Primary-DC*.</br>Második tartományvezérlő *ad-másodlagos-tartományvezérlő*. |
+| **Name (Név)** |Első tartományvezérlő: *ad-Primary-DC*.</br>Második tartományvezérlő *ad-másodlagos-tartományvezérlő*. |
 | **Virtuális merevlemez típusa** |SSD |
 | **Felhasználónév** |Rdfe |
 | **Jelszó** |Contoso! 0000 |
@@ -376,7 +376,7 @@ Ezután hozzon létre három virtuális gépet – két SQL Server virtuális g�
 <br/>
 
 > [!NOTE]
-> Az itt javasolt gépi méretek a rendelkezésre állási csoportok tesztelésére szolgálnak az Azure-beli virtuális gépeken. Az éles számítási feladatokhoz szükséges legjobb teljesítmény érdekében tekintse meg a SQL Server gépek méretének és konfigurálásának javaslatait az [Azure-beli virtuális gépeken történő SQL Server teljesítményének bevált eljárásaiban](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Az itt javasolt gépi méretek a rendelkezésre állási csoportok tesztelésére szolgálnak az Azure-beli virtuális gépeken. Az éles számítási feladatokhoz szükséges legjobb teljesítmény érdekében tekintse meg a SQL Server virtuálisgép-méretekre és-konfigurációra vonatkozó ajánlásokat az [Azure-beli virtuális gépeken való SQL Server teljesítményének ajánlott eljárásaiban](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 

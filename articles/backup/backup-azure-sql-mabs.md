@@ -3,12 +3,12 @@ title: SQL Server biztonsági mentése Azure Backup Server használatával
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést SQL Server adatbázisokról Microsoft Azure Backup Server (MABS) használatával.
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159250"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194184"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>SQL Server biztonsági mentése az Azure-ba Azure Backup Server használatával
 
@@ -36,7 +36,7 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 1. A védelmi csoport típusa beállításnál válassza a **kiszolgálók**elemet.
 
     ![A kiszolgálók védelmi csoport típusának kiválasztása](./media/backup-azure-backup-sql/pg-servers.png)
-1. Bontsa ki azt a SQL Server gépet, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Kattintson a **Tovább** gombra.
+1. Bontsa ki azt a SQL Server-példányt, ahol a biztonsági másolatot készíteni kívánt adatbázisok találhatók. Megtekintheti azokat az adatforrásokat, amelyekről biztonsági másolatot készíthet az adott kiszolgálóról. Bontsa ki az **összes SQL-megosztás** elemet, majd válassza ki azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni. Ebben a példában a reportserver $ MSDPM2012 és a reportserver $ MSDPM2012TempDB választjuk. Kattintson a **Tovább** gombra.
 
     ![SQL Server-adatbázis kiválasztása](./media/backup-azure-backup-sql/pg-databases.png)
 1. Nevezze el a védelmi csoportot, majd válassza az **online védelmet szeretnék**lehetőséget.
@@ -64,14 +64,14 @@ SQL Server-adatbázisok védelméhez az Azure-ban először hozzon létre egy bi
 
     ![Replika-létrehozási módszer választása a MABS-ben](./media/backup-azure-backup-sql/pg-manual.png)
 
-    A kezdeti biztonsági másolat a teljes adatforrás (SQL Server adatbázis) átvitelét igényli. A biztonsági mentési adatok az üzemi kiszolgálóról (SQL Server gépről) a MABS-re kerülnek. Ha a biztonsági mentés nagy méretű, akkor az adatátvitelt a hálózaton keresztül okozhatja a sávszélesség zsúfoltsága. Emiatt a rendszergazdák úgy dönthetnek, hogy cserélhető adathordozót használnak a kezdeti biztonsági mentés **manuális**átviteléhez. Az adatok pedig automatikusan átvihetők **a hálózaton keresztül** egy adott időpontban.
+    A kezdeti biztonsági másolat a teljes adatforrás (SQL Server adatbázis) átvitelét igényli. A biztonsági mentési adatok az üzemi kiszolgálóról (SQL Server számítógépről) a MABS-re kerülnek. Ha a biztonsági mentés nagy méretű, akkor az adatátvitelt a hálózaton keresztül okozhatja a sávszélesség zsúfoltsága. Emiatt a rendszergazdák úgy dönthetnek, hogy cserélhető adathordozót használnak a kezdeti biztonsági mentés **manuális**átviteléhez. Az adatok pedig automatikusan átvihetők **a hálózaton keresztül** egy adott időpontban.
 
     A kezdeti biztonsági mentés befejeződése után a biztonsági mentések a kezdeti biztonsági másolaton fokozatosan folytatódnak. A növekményes biztonsági mentések általában kicsik, és könnyen átvihetők a hálózaton keresztül.
 1. Válassza ki a konzisztencia-ellenőrzés futtatásának idejét. Ezután válassza a **tovább**lehetőséget.
 
     ![A konzisztencia-ellenőrzés futtatási idejének kiválasztása](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    A MABS képes konzisztencia-ellenőrzés futtatására a biztonsági mentési pont integritásán. Kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a példában a SQL Server gép) és az adott fájl biztonsági másolatait a MABS-ben. Ha az ellenőrzési ütközést észlel, akkor a rendszer a MABS található biztonsági másolati fájlt is megsérültnek tekinti. A MABS az ellenőrzőösszeg-eltérésnek megfelelő blokkok küldésével javítja a biztonsági másolatban szereplő adatokat. Mivel a konzisztencia-ellenőrzés teljesítmény-igényes művelet, a rendszergazdák dönthetnek úgy, hogy a konzisztencia-ellenőrzés vagy a Futtatás automatikusan történik.
+    A MABS képes konzisztencia-ellenőrzés futtatására a biztonsági mentési pont integritásán. Kiszámítja a biztonságimásolat-fájl ellenőrzőösszegét az üzemi kiszolgálón (ebben a példában a SQL Server számítógép) és az adott fájl biztonsági másolatait a MABS-ben. Ha az ellenőrzési ütközést észlel, akkor a rendszer a MABS található biztonsági másolati fájlt is megsérültnek tekinti. A MABS az ellenőrzőösszeg-eltérésnek megfelelő blokkok küldésével javítja a biztonsági másolatban szereplő adatokat. Mivel a konzisztencia-ellenőrzés teljesítmény-igényes művelet, a rendszergazdák dönthetnek úgy, hogy a konzisztencia-ellenőrzés vagy a Futtatás automatikusan történik.
 1. Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat. Ezután válassza a **tovább**lehetőséget.
 
     ![Válassza ki az Azure-ban védetté tenni kívánt adatforrásokat](./media/backup-azure-backup-sql/pg-sqldatabases.png)

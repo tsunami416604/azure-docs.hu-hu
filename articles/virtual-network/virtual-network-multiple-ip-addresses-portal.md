@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820e50d9fe60b76639bf74067129e65c7394ff4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146598"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194215"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-cím hozzárendelését a virtuális gépekhez a Azure Portal használatával
 
@@ -38,7 +38,7 @@ A következő lépések végrehajtásával adhat hozzá privát és nyilvános I
 
 ### <a name="core-steps"></a><a name="coreadd"></a>Alapvető lépések
 
-1. Szükség esetén keresse meg a https://portal.azure.com Azure Portal, és jelentkezzen be.
+1. Szükség esetén keresse meg a Azure Portal https://portal.azure.com , és jelentkezzen be.
 2. A portálon kattintson a **További szolgáltatások** > írja be a *virtuális gépek* értéket a szűrő mezőbe, majd kattintson a **virtuális gépek**elemre.
 3. A **virtuális gépek** ablaktáblán kattintson arra a virtuális gépre, amelyhez IP-címeket szeretne hozzáadni. Navigáljon a **hálózatkezelés** lapra. a lapon kattintson a **hálózati adapter** elemre. Ahogy az alábbi képen is látható: 
 
@@ -52,8 +52,8 @@ A következő lépések végrehajtásával adhat hozzá privát és nyilvános I
 
 Új magánhálózati IP-cím hozzáadásához hajtsa végre a következő lépéseket:
 
-1. Hajtsa végre a jelen cikk [alapvető lépések](#coreadd) szakaszának lépéseit.
-2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4* nevű IP-KONFIGURÁCIÓt *statikus* magánhálózati IP-címként a *10.0.0.7* , majd kattintson **az OK**gombra.
+1. Hajtsa végre a jelen cikk [alapvető lépések](#coreadd) szakaszának lépéseit, és győződjön meg arról, hogy a virtuális gép hálózati adapterének **IP-konfigurációk** szakaszában található.  Tekintse át az alapértelmezettként megjelenő alhálózatot (például 10.0.0.0/24).
+2. Kattintson a **Hozzáadás** parancsra. A megjelenő **IP-konfiguráció hozzáadása** panelen hozzon létre egy *ipconfig-4* nevű IP-konfigurációt egy új *statikus* magánhálózati IP-címmel úgy, hogy kivesz egy új számot a végső Oktetthez, majd kattintson **az OK**gombra.  (A 10.0.0.0/24 alhálózathoz egy példa IP- *10.0.0.7*lenne.)
 
     > [!NOTE]
     > Statikus IP-cím hozzáadásakor meg kell adnia egy nem használt, érvényes címet azon az alhálózaton, amelyhez a hálózati adapter csatlakozik. Ha a kiválasztott cím nem érhető el, a portál egy X értéket jelenít meg az IP-címhez, és ki kell választania egy másikat.
@@ -74,8 +74,8 @@ A nyilvános IP-címet egy nyilvános IP-cím típusú erőforrás társításá
 
 A nyilvános IP-cím a nyilvános IP-cím erőforrásának egyik beállítása. Ha van olyan nyilvános IP-cím erőforrása, amely jelenleg nincs olyan IP-konfigurációhoz társítva, amelyet egy IP-konfigurációhoz szeretne társítani, ugorja át a következő lépéseket, és hajtsa végre az alábbi lépések egyikét, ahogy szükséges. Ha nincs elérhető nyilvános IP-cím erőforrása, a következő lépésekkel hozhat létre egyet:
 
-1. Szükség esetén keresse meg a https://portal.azure.com Azure Portal, és jelentkezzen be.
-3. A portálon kattintson az **erőforrás** > létrehozása**hálózati** > **nyilvános IP-cím**elemre.
+1. Szükség esetén keresse meg a Azure Portal https://portal.azure.com , és jelentkezzen be.
+3. A portálon kattintson az **erőforrás létrehozása**  >  **hálózati**  >  **nyilvános IP-cím**elemre.
 4. A megjelenő **nyilvános IP-cím létrehozása** panelen adjon meg egy **nevet**, válasszon ki egy **IP-cím-hozzárendelési** típust, egy **előfizetést**, egy **erőforráscsoportot**és egy **helyet**, majd kattintson a **Létrehozás**gombra, ahogy az alábbi képen látható:
 
     ![Nyilvános IP-cím erőforrás létrehozása](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)

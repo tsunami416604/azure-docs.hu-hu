@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 281a6b713c5480c6bd25539eeacc304670352667
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76710326"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194350"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -75,7 +75,7 @@ Vegye fontolóra Azure Data Factory (ADF) használatát, ha folyamatosan át kel
 * hibrid forgatókönyv, amely a helyszíni és a Felhőbeli erőforrásokat egyaránt magában foglalja
 * olyan forgatókönyv, amelyben az üzleti logika az áttelepítés során az adatfeldolgozást, módosítást vagy módosítást végez
 
-További információ: [adatok áthelyezése helyszíni SQL serverről SQL Azurera Azure Data Factory használatával](move-sql-azure-adf.md).
+További információ: [adatok áthelyezése egy SQL Server-adatbázisból SQL Azurera a Azure Data Factory használatával](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Mennyibe kell helyezni az adatmennyiséget az Azure-ba?
 

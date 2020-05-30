@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648118"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197061"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
 
@@ -92,7 +92,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>Több fájl szinkronizálása egy művelettel 
 
-Ha a konfiguráció több fájlban található, az alábbi minta használatával elindíthat egy szinkronizálást a fájl módosításakor. Ez a minta a glob könyvtárat használjahttps://www.npmjs.com/package/glob 
+Ha a konfiguráció több fájlban található, az alábbi minta használatával elindíthat egy szinkronizálást a fájl módosításakor. Ez a minta a glob könyvtárat használja https://www.npmjs.com/package/glob . Vegye figyelembe, hogy ha a konfigurációs fájl neve vesszőt tartalmaz, egy fordított perjelet is használhat. 
 
 ```json
 on:
@@ -316,7 +316,7 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 | címke | Nem | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
 | szigorú | Nem | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték a hamis. |
 | mélység | Nem | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
-| címkét | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
+| tags | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,17 +15,17 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01e8eae154172cc48decb209e4964dc5ff0d835f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8476029fb189db846eca3eba31fe8cc62d3726f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049140"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219456"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Azure-beli Gyorsindítás sablonok használata az Azure-beli virtuális gépek SQL Server rendelkezésre állási csoportjának konfigurálásához
+# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan használható az Azure gyorsindítási sablonok az Azure-ban SQL Server virtuális gépekre vonatkozó always on rendelkezésre állási csoport konfigurációjának részleges automatizálására. Ebben a folyamatban két Azure rövid útmutató-sablont használunk: 
+Ez a cikk azt ismerteti, hogyan használható az Azure gyorsindítási sablonok az Azure-ban SQL Server virtuális gépek (VM-EK) always on rendelkezésre állási csoportjának konfigurációjának részleges automatizálására. Ebben a folyamatban két Azure rövid útmutató-sablont használunk: 
 
    | Sablon | Leírás |
    | --- | --- |
@@ -47,11 +47,11 @@ Ha egy always on rendelkezésre állási csoport beállítását szeretné autom
 Az Always On rendelkezésre állási csoport Azure Gyorsindítás sablonok használatával történő konfigurálásához a következő engedélyek szükségesek: 
 
 - Egy meglévő tartományi felhasználói fiók, amely **számítógép-objektum létrehozása** engedéllyel rendelkezik a tartományban.  Például egy tartományi rendszergazdai fióknak jellemzően megfelelő engedélye van (például: account@domain.com ). _Ennek a fióknak a helyi rendszergazda csoportnak is szerepelnie kell az egyes virtuális gépeken a fürt létrehozásához._
-- A SQL Server szolgáltatást vezérlő tartományi felhasználói fiók. 
+- A SQL Server vezérlő tartományi felhasználói fiók. 
 
 
 ## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>1. lépés: a feladatátvevő fürt létrehozása és SQL Server virtuális gépek csatlakoztatása a fürthöz egy rövid útmutató sablon használatával 
-Miután a SQL Server virtuális gépek regisztrálva lettek az SQL VM erőforrás-szolgáltatóval, csatlakoztathatja a SQL Server virtuális gépeket a *SqlVirtualMachineGroups*. Ez az erőforrás a Windows feladatátvevő fürt metaadatait határozza meg. A metaadatok tartalmazzák a verziót, a kiadást, a teljes tartománynevet, a Active Directory fiókokat, amelyek a fürt és a SQL Server szolgáltatás felügyeletét, valamint a Storage-fiókot Felhőbeli tanúsító kezelik. 
+Miután a SQL Server virtuális gépek regisztrálva lettek az SQL VM erőforrás-szolgáltatóval, csatlakoztathatja a SQL Server virtuális gépeket a *SqlVirtualMachineGroups*. Ez az erőforrás a Windows feladatátvevő fürt metaadatait határozza meg. A metaadatok tartalmazzák a verziót, a kiadást, a teljes tartománynevet, Active Directory a fürt és a SQL Server kezelésére szolgáló fiókokat, valamint a Storage-fiókot a Felhőbeli tanúként. 
 
 SQL Server virtuális gépeknek a *SqlVirtualMachineGroups* erőforráscsoporthoz való hozzáadása a Windows feladatátvevő fürtszolgáltatást a fürt létrehozásához, majd a fürthöz tartozó SQL Server virtuális gépekhez csatlakoztatja. Ez a lépés a **101-SQL-VM-AG-Setup** gyorsindítási sablonnal automatizálható. A következő lépések végrehajtásával valósítható meg:
 
@@ -71,10 +71,10 @@ SQL Server virtuális gépeknek a *SqlVirtualMachineGroups* erőforráscsoportho
    | **Meglévő tartományi fiók** | Egy meglévő tartományi felhasználói fiók, amely **számítógép-objektum létrehozása** engedéllyel rendelkezik a tartományban, mivel a [CNO](/windows-server/failover-clustering/prestage-cluster-adds) a sablon központi telepítése során jön létre. Például egy tartományi rendszergazdai fióknak jellemzően megfelelő engedélye van (például: account@domain.com ). *Ennek a fióknak a helyi rendszergazda csoportnak is szerepelnie kell az egyes virtuális gépeken a fürt létrehozásához.*| 
    | **Tartományi fiók jelszava** | A korábban említett tartományi felhasználói fiók jelszava. | 
    | **Meglévő SQL-szolgáltatásfiók** | A [SQL Server szolgáltatást](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) a rendelkezésre állási csoport telepítése során vezérlő tartományi felhasználói fiók (például: account@domain.com ). |
-   | **SQL-szolgáltatás jelszava** | A SQL Server szolgáltatást vezérlő tartományi felhasználói fiók által használt jelszó. |
+   | **SQL-szolgáltatás jelszava** | A SQL Server vezérlő tartományi felhasználói fiók által használt jelszó. |
    | **Felhőbeli tanúsító neve** | Új Azure Storage-fiók, amely a Felhőbeli tanúsító számára lesz létrehozva és használva. Ezt a nevet módosíthatja. |
    | **\_összetevők helye** | Ez a mező alapértelmezés szerint be van állítva, és nem módosítható. |
-   | **\_összetevők helye sas-token** | Ez a mező szándékosan üresen marad. |
+   | **\_összetevők helye SaS-token** | Ez a mező szándékosan üresen marad. |
    | &nbsp; | &nbsp; |
 
 1. Ha elfogadja a használati feltételeket, jelölje be az Elfogadom **a fenti feltételeket és kikötéseket** jelölőnégyzetet. Ezután válassza a **vásárlás** lehetőséget a Gyorsindítás sablon üzembe helyezésének befejezéséhez. 
@@ -106,7 +106,7 @@ Csak létre kell hoznia a belső Load balancert. A 4. lépésben a **101-SQL-VM-
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Név** |Adja meg a terheléselosztó nevét jelölő szöveges nevet. Írja be például a következőt: **sqlLB**. |
+   | **Name (Név)** |Adja meg a terheléselosztó nevét jelölő szöveges nevet. Írja be például a következőt: **sqlLB**. |
    | **Típus** |**Belső**: a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
    | **Virtuális hálózat** | Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** | Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
@@ -188,7 +188,7 @@ A probléma megoldásához távolítsa el a figyelőt a [PowerShell](#remove-the
 Ez a hiba akkor fordulhat elő, ha az **101-SQL-VM-aglistener-Setup** sablont üzembe helyezi, ha a figyelőt SQL Server Management Studio (SSMS) használatával törölte, de az nem lett törölve az SQL VM erőforrás-szolgáltatótól. A figyelő a SSMS-n keresztül történő törlése nem távolítja el a figyelő metaadatait az SQL VM erőforrás-szolgáltatótól. A figyelőt törölni kell az erőforrás-szolgáltatóról a [PowerShell](#remove-the-availability-group-listener)használatával. 
 
 ### <a name="domain-account-does-not-exist"></a>A tartományi fiók nem létezik.
-Ennek a hibának két oka lehet. Vagy a megadott tartományi fiók nem létezik, vagy hiányzik az egyszerű felhasználónév [(UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Az **101-SQL-VM-AG-Setup** sablon tartományi fiókot vár az UPN-űrlapon (azaz *user@domain.com* ), de előfordulhat, hogy bizonyos tartományi fiókok hiányoznak. Ez általában akkor fordul elő, ha egy helyi felhasználó át lett telepítve az első tartományi rendszergazdai fiókba, ha a kiszolgálót tartományvezérlővé adták elő, vagy ha a felhasználó a PowerShell használatával lett létrehozva. 
+Ennek a hibának két oka lehet. Vagy a megadott tartományi fiók nem létezik, vagy hiányzik az egyszerű felhasználónév [(UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Az **101-SQL-VM-AG-Setup** sablon tartományi fiókot vár az UPN-űrlapon (azaz user@domain.com ), de előfordulhat, hogy bizonyos tartományi fiókok hiányoznak. Ez általában akkor fordul elő, ha egy helyi felhasználó át lett telepítve az első tartományi rendszergazdai fiókba, ha a kiszolgálót tartományvezérlővé adták elő, vagy ha a felhasználó a PowerShell használatával lett létrehozva. 
 
 Ellenőrizze, hogy létezik-e a fiók. Ha igen, lehet, hogy a második szituációban fut. A probléma megoldásához tegye a következőket:
 

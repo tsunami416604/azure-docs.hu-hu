@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 375dac3fffc1a49cc3d10999c4969a7365dfb49c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232376"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193440"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
 
@@ -57,13 +57,13 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
 
     !["Kapcsolat és másolás" oldal](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. A hozzáférés a Storage-fiókhoz és az adatok feltöltése párbeszédpanelen másolja a **blob Service-végpontot** és a **Storage-fiók kulcsát**. A blob Service-végpontból hagyja ki `https://` a és a záró perjelet.
+2. A hozzáférés a Storage-fiókhoz és az adatok feltöltése párbeszédpanelen másolja a **blob Service-végpontot** és a **Storage-fiók kulcsát**. A blob Service-végpontból hagyja ki a `https://` és a záró perjelet.
 
-    Ebben az esetben a végpont a következő: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. A használni kívánt URI Host része a következők egyike: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Példa: [Kapcsolódás a REST-hez http-](/azure/databox/data-box-deploy-copy-data-via-rest)kapcsolaton keresztül. 
+    Ebben az esetben a végpont a következő: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . A használni kívánt URI Host része a következők egyike: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Példa: [Kapcsolódás a REST-hez http-](/azure/databox/data-box-deploy-copy-data-via-rest)kapcsolaton keresztül. 
 
      !["Hozzáférés a Storage-fiókhoz és adatok feltöltése" párbeszédpanel](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Adja hozzá a végpontot és a Data Box vagy Data Box Heavy csomópont IP `/etc/hosts` -címét az egyes csomópontokon.
+3. Adja hozzá a végpontot és a Data Box vagy Data Box Heavy csomópont IP-címét az `/etc/hosts` egyes csomópontokon.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -71,11 +71,11 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
 
     Ha más DNS-mechanizmust használ, győződjön meg arról, hogy a Data Box végpont feloldható.
 
-4. Állítsa a rendszerhéj változót `azjars` a `hadoop-azure` és `azure-storage` JAR fájlok helyére. Ezek a fájlok a Hadoop telepítési könyvtárában találhatók.
+4. Állítsa a rendszerhéj változót a `azjars` `hadoop-azure` és `azure-storage` JAR fájlok helyére. Ezek a fájlok a Hadoop telepítési könyvtárában találhatók.
 
-    Annak megállapításához, hogy ezek a fájlok léteznek-e, `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`használja a következő parancsot:. Cserélje le `<hadoop_install_dir>` a helyőrzőt annak a könyvtárnak az elérési útjára, amelyen a Hadoop telepítette. Ügyeljen arra, hogy teljesen minősített elérési utakat használjon.
+    Annak megállapításához, hogy ezek a fájlok léteznek-e, használja a következő parancsot: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` . Cserélje le a `<hadoop_install_dir>` helyőrzőt annak a könyvtárnak az elérési útjára, amelyen a Hadoop telepítette. Ügyeljen arra, hogy teljesen minősített elérési utakat használjon.
 
-    Példák:
+    Angol nyelvű Példák:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -88,13 +88,13 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Cserélje le `<blob_service_endpoint>` a helyőrzőt a blob Service-végpont nevére.
+    * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
 
-    * Cserélje le `<account_key>` a helyőrzőt a fiókja hozzáférési kulcsára.
+    * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
 
-    * Cserélje le `<container-name>` a helyőrzőt a tároló nevére.
+    * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
 
-    * Cserélje le `<destination_directory>` a helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
+    * Cserélje le a `<destination_directory>` helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
 
 6. A LIST parancs futtatásával győződjön meg arról, hogy a tároló és a könyvtár létrejött.
 
@@ -105,11 +105,11 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * Cserélje le `<blob_service_endpoint>` a helyőrzőt a blob Service-végpont nevére.
+   * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
 
-   * Cserélje le `<account_key>` a helyőrzőt a fiókja hozzáférési kulcsára.
+   * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
 
-   * Cserélje le `<container-name>` a helyőrzőt a tároló nevére.
+   * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
 
 7. Adatok másolása a Hadoop-HDFS Data Box blob Storage-ba a korábban létrehozott tárolóba. Ha a másolandó címtár nem található, a parancs automatikusan létrehozza azt.
 
@@ -123,21 +123,21 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * Cserélje le `<blob_service_endpoint>` a helyőrzőt a blob Service-végpont nevére.
+    * Cserélje le a `<blob_service_endpoint>` helyőrzőt a blob Service-végpont nevére.
 
-    * Cserélje le `<account_key>` a helyőrzőt a fiókja hozzáférési kulcsára.
+    * Cserélje le a `<account_key>` helyőrzőt a fiókja hozzáférési kulcsára.
 
-    * Cserélje le `<container-name>` a helyőrzőt a tároló nevére.
+    * Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
 
-    * Cserélje le `<exlusion_filelist_file>` a helyőrzőt annak a fájlnak a nevére, amely a fájl-kizárások listáját tartalmazza.
+    * Cserélje le a `<exlusion_filelist_file>` helyőrzőt annak a fájlnak a nevére, amely a fájl-kizárások listáját tartalmazza.
 
-    * Cserélje le `<source_directory>` a helyőrzőt annak a könyvtárnak a nevére, amely a másolni kívánt adatmennyiséget tartalmazza.
+    * Cserélje le a `<source_directory>` helyőrzőt annak a könyvtárnak a nevére, amely a másolni kívánt adatmennyiséget tartalmazza.
 
-    * Cserélje le `<destination_directory>` a helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
+    * Cserélje le a `<destination_directory>` helyőrzőt annak a könyvtárnak a nevére, amelyre az adatait másolni kívánja.
 
-    Ez `-libjars` a beállítás a `hadoop-azure*.jar` és a függő `azure-storage*.jar` fájlok elérhetővé tételére szolgál `distcp`. Előfordulhat, hogy néhány fürt esetében ez már előfordulhat.
+    `-libjars`Ez a beállítás a `hadoop-azure*.jar` és a függő `azure-storage*.jar` fájlok elérhetővé tételére szolgál `distcp` . Előfordulhat, hogy néhány fürt esetében ez már előfordulhat.
 
-    Az alábbi példa azt szemlélteti, `distcp` hogy a parancs hogyan használható az adatmásoláshoz.
+    Az alábbi példa azt szemlélteti, hogy a `distcp` parancs hogyan használható az adatmásoláshoz.
 
     ```
      hadoop distcp \
@@ -206,7 +206,7 @@ Ez a parancs a másolt fájlok listáját hozza létre az engedélyeik alapján.
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Identitások listájának létrehozása és a Azure Active Directory (Hozzáadás) identitások leképezése
 
-1. Töltse le `copy-acls.py` a szkriptet. Tekintse [meg a Súgó letöltése segítő parancsfájlokat, és állítsa be az Edge-csomópontot a cikk futtatásához](#download-helper-scripts) című szakaszát.
+1. Töltse le a `copy-acls.py` szkriptet. Tekintse [meg a Súgó letöltése segítő parancsfájlokat, és állítsa be az Edge-csomópontot a cikk futtatásához](#download-helper-scripts) című szakaszát.
 
 2. Futtassa ezt a parancsot az egyedi identitások listájának létrehozásához.
 
@@ -215,11 +215,11 @@ Ez a parancs a másolt fájlok listáját hozza létre az engedélyeik alapján.
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Ez a szkript létrehoz egy nevű `id_map.json` fájlt, amely tartalmazza azokat az identitásokat, amelyeket hozzá kell rendelni a Hozzáadás-alapú identitásokhoz.
+   Ez a szkript létrehoz egy nevű fájlt `id_map.json` , amely tartalmazza azokat az identitásokat, amelyeket hozzá kell rendelni a Hozzáadás-alapú identitásokhoz.
 
-3. Nyissa `id_map.json` meg a fájlt egy szövegszerkesztőben.
+3. Nyissa meg a `id_map.json` fájlt egy szövegszerkesztőben.
 
-4. Minden olyan JSON-objektum esetében, amely megjelenik a fájlban, `target` frissítse a megfelelő leképezett identitású HRE (UPN) vagy ObjectId (OID) attribútumot. Ha elkészült, mentse a fájlt. Ezt a fájlt a következő lépésben kell megadnia.
+4. Minden olyan JSON-objektum esetében, amely megjelenik a fájlban, frissítse a `target` megfelelő leképezett identitású HRE (UPN) vagy ObjectId (OID) attribútumot. Ha elkészült, mentse a fájlt. Ezt a fájlt a következő lépésben kell megadnia.
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Engedélyek alkalmazása a másolt fájlokra és az identitás-hozzárendelések alkalmazása
 
@@ -229,17 +229,17 @@ Futtassa ezt a parancsot a Data Lake Storage Gen2-fiókba másolt adathozzáfér
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
 ```
 
-* Cserélje le `<storage-account-name>` a helyőrzőt a Storage-fiók nevére.
+* Cserélje le a `<storage-account-name>` helyőrzőt a Storage-fiók nevére.
 
-* Cserélje le `<container-name>` a helyőrzőt a tároló nevére.
+* Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
 
-* Cserélje le `<application-id>` a `<client-secret>` és a helyőrzőket az alkalmazás-azonosítóra és az ügyfél titkos kódjára, amelyet az egyszerű szolgáltatás létrehozásakor gyűjtött.
+* Cserélje le a `<application-id>` és a `<client-secret>` helyőrzőket az alkalmazás-azonosítóra és az ügyfél titkos kódjára, amelyet az egyszerű szolgáltatás létrehozásakor gyűjtött.
 
 ## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Függelék: az adatmegosztás több Data Box eszköz között
 
 Mielőtt áthelyezi az adatait egy Data Box eszközre, le kell töltenie néhány segítő parancsfájlt, meg kell győződnie arról, hogy az adatai úgy vannak rendszerezve, hogy illeszkedjenek egy Data Box eszközre, és kizárják a szükségtelen fájlokat.
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Segítő parancsfájlok letöltése és az Edge-csomópont beállítása a futtatásához
 
@@ -281,7 +281,7 @@ Ha az adatméret meghaladja az egyetlen Data Box eszköz méretét, akkor a fáj
 
 Ha az adatai nem haladják meg a Singing Data Box eszköz méretét, folytassa a következő szakasszal.
 
-1. Emelt szintű engedélyekkel futtassa `generate-file-list` az előző szakasz útmutatását követve a letöltött szkriptet.
+1. Emelt szintű engedélyekkel futtassa az `generate-file-list` előző szakasz útmutatását követve a letöltött szkriptet.
 
    A parancs paramétereinek leírása:
 
@@ -323,7 +323,7 @@ Néhány könyvtárat ki kell zárnia a DisCp feladatokból. Kizárhatja példá
 
 Hozzon létre egy fájlt azon a helyszíni Hadoop-fürtön, ahol el szeretné indítani a DistCp-feladatot. a kizárni kívánt könyvtárak listáját meghatározó fájl létrehozása.
 
-Például:
+Íme egy példa:
 
 ```
 .*ranger/audit.*

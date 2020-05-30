@@ -3,12 +3,13 @@ title: Azure Monitor beállítása az élő adattárolók számára (előzetes v
 description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók valós idejű nézetét (StdOut/stderr) és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: ec75cc0a014b8a4f8c9b9d89a5bdca93936eb68a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275372"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196040"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -36,15 +37,15 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hitelesítést az élő adatok (e
 
 ## <a name="authentication-model"></a>Hitelesítési modell
 
-Az élő adatszolgáltatások (előzetes verzió) funkciói a Kubernetes API-t `kubectl` használják, amely megegyezik a parancssori eszközzel. A Kubernetes API-végpontok olyan önaláírt tanúsítványt használnak, amelyet a böngésző nem tud érvényesíteni. Ez a szolgáltatás egy belső proxy használatával ellenőrzi a tanúsítványt az AK szolgáltatással, így biztosítva a forgalom megbízhatóságát.
+Az élő adatszolgáltatások (előzetes verzió) funkciói a Kubernetes API-t használják, amely megegyezik a `kubectl` parancssori eszközzel. A Kubernetes API-végpontok olyan önaláírt tanúsítványt használnak, amelyet a böngésző nem tud érvényesíteni. Ez a szolgáltatás egy belső proxy használatával ellenőrzi a tanúsítványt az AK szolgáltatással, így biztosítva a forgalom megbízhatóságát.
 
-A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejelentkezési hitelesítő adatait, és átirányítsa Önt az ügyfél-regisztráció beállítására a fürt létrehozásakor (és ebben a cikkben újra konfigurálva). Ez a viselkedés hasonló a által `kubectl`igényelt hitelesítési folyamathoz. 
+A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejelentkezési hitelesítő adatait, és átirányítsa Önt az ügyfél-regisztráció beállítására a fürt létrehozásakor (és ebben a cikkben újra konfigurálva). Ez a viselkedés hasonló a által igényelt hitelesítési folyamathoz `kubectl` . 
 
 >[!NOTE]
->A fürthöz való engedélyezést a Kubernetes és a szolgáltatással konfigurált biztonsági modell kezeli. A szolgáltatáshoz hozzáférő felhasználóknak engedélyt kell kérniük a futtatáshoz `az aks get-credentials -n {your cluster name} -g {your resource group}`hasonló Kubernetes-konfiguráció (*kubeconfig*) letöltésére. Ez a konfigurációs fájl az **Azure Kubernetes Service cluster felhasználói szerepkör**engedélyezési és hitelesítési jogkivonatát tartalmazza, az Azure RBAC-kompatibilis és az AK-alapú fürtök esetében, ha nincs engedélyezve a RBAC-hitelesítés. Az Azure AD-vel és az ügyfél-regisztrációs adatokkal kapcsolatos információkat tartalmaz, ha az AK Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel van engedélyezve.
+>A fürthöz való engedélyezést a Kubernetes és a szolgáltatással konfigurált biztonsági modell kezeli. A szolgáltatáshoz hozzáférő felhasználóknak engedélyt kell kérniük a futtatáshoz hasonló Kubernetes-konfiguráció (*kubeconfig*) letöltésére `az aks get-credentials -n {your cluster name} -g {your resource group}` . Ez a konfigurációs fájl az **Azure Kubernetes Service cluster felhasználói szerepkör**engedélyezési és hitelesítési jogkivonatát tartalmazza, az Azure RBAC-kompatibilis és az AK-alapú fürtök esetében, ha nincs engedélyezve a RBAC-hitelesítés. Az Azure AD-vel és az ügyfél-regisztrációs adatokkal kapcsolatos információkat tartalmaz, ha az AK Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel van engedélyezve.
 
 >[!IMPORTANT]
->A funkciók felhasználói az [Azure Kubernetes-fürt felhasználói szerepkörét](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) igénylik a fürthöz a funkció `kubeconfig` letöltéséhez és használatához. A szolgáltatás használatához a felhasználóknak **nincs** szükségük közreműködői hozzáférésre a fürthöz. 
+>A funkciók felhasználói az [Azure Kubernetes-fürt felhasználói szerepkörét](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) igénylik a fürthöz a funkció letöltéséhez `kubeconfig` és használatához. A szolgáltatás használatához a felhasználóknak **nincs** szükségük közreműködői hozzáférésre a fürthöz. 
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser használata RBAC-kompatibilis fürtökkel
 
@@ -60,7 +61,7 @@ Ha olyan Kubernetes-fürttel rendelkezik, amely nincs Kubernetes RBAC-hitelesít
 
 ## <a name="configure-kubernetes-rbac-authorization"></a>Kubernetes RBAC-hitelesítés konfigurálása
 
-Ha engedélyezi a Kubernetes RBAC-engedélyezést, a rendszer két felhasználót használ: a **clusterUser** és a **CLUSTERADMIN** a Kubernetes API eléréséhez. Ez a felügyeleti lehetőség nélküli `az aks get-credentials -n {cluster_name} -g {rg_name}` futtatáshoz hasonló. Ez azt jelenti, hogy a **clusterUser** hozzáférést kell biztosítani a Kubernetes API végponti pontjaihoz.
+Ha engedélyezi a Kubernetes RBAC-engedélyezést, a rendszer két felhasználót használ: a **clusterUser** és a **CLUSTERADMIN** a Kubernetes API eléréséhez. Ez `az aks get-credentials -n {cluster_name} -g {rg_name}` a felügyeleti lehetőség nélküli futtatáshoz hasonló. Ez azt jelenti, hogy a **clusterUser** hozzáférést kell biztosítani a Kubernetes API végponti pontjaihoz.
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja a fürt szerepkörének kötését ebből a YAML-konfigurációs sablonból.
 
@@ -96,10 +97,10 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a fürt szerepkörének
       apiGroup: rbac.authorization.k8s.io 
     ```
 
-2. A konfiguráció frissítéséhez futtassa a következő parancsot: `kubectl apply -f LogReaderRBAC.yaml`.
+2. A konfiguráció frissítéséhez futtassa a következő parancsot: `kubectl apply -f LogReaderRBAC.yaml` .
 
 >[!NOTE] 
-> Ha a `LogReaderRBAC.yaml` fájl egy korábbi verzióját alkalmazza a fürtre, frissítse azt a fenti 1. lépésben bemutatott új kód másolásával és beillesztésével, majd futtassa a 2. lépésben látható parancsot a fürtön való alkalmazásához.
+> Ha a fájl egy korábbi verzióját alkalmazza `LogReaderRBAC.yaml` a fürtre, frissítse azt a fenti 1. lépésben bemutatott új kód másolásával és beillesztésével, majd futtassa a 2. lépésben látható parancsot a fürtön való alkalmazásához.
 
 ## <a name="configure-ad-integrated-authentication"></a>AD-integrált hitelesítés konfigurálása 
 
@@ -118,10 +119,10 @@ A Kubernetes speciális biztonsági beállításaival kapcsolatos további infor
 
 2. A bal oldali ablaktáblán válassza a **hitelesítés** lehetőséget. 
 
-3. Adjon hozzá két átirányítási URL-címet **a listához webalkalmazás-** típusokként. Az első alap URL-címnek a `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` értéknek kell lennie, a második `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`URL-címnek pedig az értéknek kell lennie.
+3. Adjon hozzá két átirányítási URL-címet **a listához webalkalmazás-** típusokként. Az első alap URL-címnek a értéknek kell lennie `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` , a második URL-címnek pedig az értéknek kell lennie `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` .
 
     >[!NOTE]
-    >Ha ezt a funkciót az Azure China-ban használja, az első alap URL-értéknek a következőnek kell lennie `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` , `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`és a második alap URL-címnek kell lennie. 
+    >Ha ezt a funkciót az Azure China-ban használja, az első alap URL-értéknek a következőnek kell lennie, `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` és a második alap URL-címnek kell lennie `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` . 
     
 4. Az átirányítási URL-címek regisztrálását követően az **implicit engedélyezés**területen válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** lehetőséget, majd mentse a módosításokat.
 

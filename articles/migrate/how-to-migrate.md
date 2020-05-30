@@ -3,12 +3,12 @@ title: Áttelepítési eszközök hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901473"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195826"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure M
 2. Válassza ki a használni kívánt áttelepítési forgatókönyvet:
 
     - Ha gépeket és számítási feladatokat szeretne áttelepíteni az Azure-ba, válassza a **kiszolgálók felmérése és áttelepíteni**lehetőséget.
-    - A helyszíni SQL-gépek átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni**lehetőséget.
+    - A helyszíni SQL Server-adatbázisok átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni**lehetőséget.
     - A helyszíni webalkalmazások átköltöztetéséhez válassza a **webalkalmazások felmérése és áttelepíteni**lehetőséget.
     - Ha nagy mennyiségű helyszíni adatátvitelt szeretne áttelepíteni az Azure-ba offline módban, válassza **az Data Box megrendelése**lehetőséget.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2faadc962b31560e9e2eb10372493a483bf06905
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282990"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203885"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -46,13 +46,13 @@ Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot v
 
 Az indexelő adattárakat térképez fel az Azure-ban.
 
-* [Azure-Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [SQL felügyelt példányok az Azure-ban](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [Felügyelt SQL-példány](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
@@ -130,7 +130,7 @@ Az alapok megismerése után következő lépés a követelmények és az egyes 
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure-Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-csv-blobs.md)
 * [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő](search-howto-index-json-blobs.md)

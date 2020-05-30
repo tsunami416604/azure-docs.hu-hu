@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 635cf32fa27a8bc5be12964852c451190e7f1aae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 643c94736d6ee519907913bc9ec59f808081f089
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050757"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216405"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és
 
 ## <a name="deployment-models"></a>Üzembe helyezési modellek
 
-Az Azure SQL Database az alábbi lehetőségeket kínálja az Azure SQL-adatbázisok üzembe helyezésére:
+Azure SQL Database a következő telepítési beállításokat biztosítja egy adatbázishoz:
 
 - Az [önálló adatbázisok](single-database-overview.md) egy teljes körűen felügyelt, elkülönített adatbázist jelentenek. Ezt a lehetőséget akkor használhatja, ha olyan modern Felhőbeli alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyeknek egyetlen megbízható adatforrásra van szükségük. Az önálló adatbázisok a [Microsoft SQL Server adatbázismotor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)egy [tárolt adatbázisához](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) hasonlóak.
 - A [rugalmas készlet](elastic-pool-overview.md) olyan [önálló adatbázisok](single-database-overview.md) gyűjteménye, amelyek erőforrásainak, például a processzornak vagy a memóriának a közös készletét tartalmazzák. Az önálló adatbázisok egy rugalmas készletbe helyezhetők és kivehetők.
@@ -190,18 +190,13 @@ Az SQL Database az [Azure Active Directory-integráció](authentication-aad-over
 
 Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létrehozását és karbantartását. Az SQL Database lehetővé teszi, hogy arra koncentrálhasson, amit legjobban tud: kiváló alkalmazások készítésére. SQL Database a már meglévő eszközök és szaktudás használatával kezelheti és fejlesztheti.
 
-- [A Azure Portal](https://portal.azure.com/):
-
-  Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms):
-
-  Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.
-- [SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt):
-
-  Ingyenes, letölthető ügyfélalkalmazás SQL Server-alapú, Microsoft Azure SQL-adatbázisok, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.
-- [Visual Studio Code](https://code.visualstudio.com/docs):
-
-  Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.
+|Eszköz|Leírás|
+|:---|:---|
+|[Az Azure Portal](https://portal.azure.com/)|Webalapú alkalmazás az összes Azure-szolgáltatás kezeléséhez.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Platformfüggetlen adatbázis-eszköz, amely Windows, MacOS és Linux rendszeren fut.|
+|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Ingyenes, letölthető ügyfélalkalmazás bármely SQL-infrastruktúra kezelésére, SQL Serverról SQL Databasere.|
+|[SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Ingyenes, letölthető ügyfélalkalmazás SQL Server-alapú, Microsoft Azure SQL-adatbázisok, integrációs szolgáltatások csomagjai, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.|
 
 A SQL Database támogatja a Python, a Java, a Node. js, a PHP, a Ruby és a .NET alkalmazások létrehozását macOS, Linux és Windows rendszeren. Az SQL Database az SQL Serverrel azonos [adatkapcsolattárakat](connect-query-content-reference-guide.md#libraries) támogat.
 

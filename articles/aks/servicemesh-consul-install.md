@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273741"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197234"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,9 +20,9 @@ A [konzul][consul-github] egy nyílt forráskódú szolgáltatás rácsvonala, a
 Ez a cikk bemutatja, hogyan telepítheti a konzult. A konzuli összetevők egy Kubernetes-fürtre vannak telepítve az AK-ban.
 
 > [!NOTE]
-> Ezek az utasítások a konzul `1.6.0`verzióját használják, és legalább Helm- `2.14.2`verziót használnak.
+> Ezek az utasítások a konzul verzióját `1.6.0` használják, és legalább Helm-verziót használnak `2.14.2` .
 >
-> A konzuli `1.6.x` kiadásokat Kubernetes-verziókon `1.13+`lehet futtatni. További konzuli verziók a [GitHub-konzuli][consul-github-releases] kiadásokban és az egyes kiadásokra vonatkozó információk a [Consul-kibocsátási megjegyzésekben][consul-release-notes]című témakörben találhatók.
+> A konzuli `1.6.x` kiadásokat Kubernetes-verziókon lehet futtatni `1.13+` . További konzuli verziók a [GitHub-konzuli][consul-github-releases] kiadásokban és az egyes kiadásokra vonatkozó információk a [Consul-kibocsátási megjegyzésekben][consul-release-notes]című témakörben találhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt `1.13` (Kubernetes és újabb, RBAC engedélyezve), és létesítettek egy `kubectl` , a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket. Győződjön meg arról, hogy a fürt legalább 3 csomóponttal rendelkezik a Linux-csomópontok készletében.
+A cikkben részletezett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb, RBAC engedélyezve), és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket. Győződjön meg arról, hogy a fürt legalább 3 csomóponttal rendelkezik a Linux-csomópontok készletében.
 
 Az utasítások követéséhez és a konzul telepítéséhez a [Helm][helm] szükséges. Javasoljuk, hogy a legújabb stabil verziót megfelelően telepítse és konfigurálja a fürtben. Ha segítségre van szüksége a Helm telepítéséhez, tekintse meg az [AK Helm telepítési útmutatóját][helm-install]. Az összes konzuli hüvelyt is be kell ütemezni a Linux-csomópontokon történő futtatásra.
 
@@ -41,7 +41,7 @@ Ez a cikk a konzuli telepítési útmutatót több különálló lépésben vál
 
 ### <a name="install-the-consul-components-on-aks"></a>A konzuli összetevők telepítése az AK-on
 
-Kezdjük a Consul Helm diagram verziójának `v0.10.0` letöltésével. A diagram ezen verziója tartalmazza a konzul verzióját `1.6.0`.
+Kezdjük `v0.10.0` a Consul Helm diagram verziójának letöltésével. A diagram ezen verziója tartalmazza a konzul verzióját `1.6.0` .
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -94,13 +94,13 @@ A Helm és a letöltött `consul-helm` diagram használatával telepítse a konz
 
 ::: zone-end
 
-A `Consul` Helm diagram több objektumot helyez üzembe. A listát a fenti `helm install` parancs kimenetében tekintheti meg. A konzuli összetevők üzembe helyezése a fürt-környezettől függően 3 percet is igénybe vehet.
+A `Consul` Helm diagram több objektumot helyez üzembe. A listát a fenti parancs kimenetében tekintheti meg `helm install` . A konzuli összetevők üzembe helyezése a fürt-környezettől függően 3 percet is igénybe vehet.
 
 Ekkor központilag telepítette a konzult az AK-fürtbe. A konzul sikeres üzembe helyezésének biztosítása érdekében térjünk át a következő szakaszra a konzul telepítésének ellenőrzéséhez.
 
 ## <a name="validate-the-consul-installation"></a>A konzul telepítésének ellenőrzése
 
-Győződjön meg arról, hogy az erőforrások létrehozása sikeresen megtörtént. A [kubectl Get SVC][kubectl-get] és a [kubectl Get Pod][kubectl-get] parancsok használatával kérdezheti `consul` le a névteret, ahol a konzuli összetevőket `helm install` a parancs telepítette:
+Győződjön meg arról, hogy az erőforrások létrehozása sikeresen megtörtént. A [kubectl Get SVC][kubectl-get] és a [kubectl Get Pod][kubectl-get] parancsok használatával kérdezheti le a `consul` névteret, ahol a konzuli összetevőket a parancs telepítette `helm install` :
 
 ```console
 kubectl get svc --namespace consul --output wide
@@ -128,7 +128,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Az összes hüvelynek állapota a `Running`következő:. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
+Az összes hüvelynek állapota a következő: `Running` . Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
 
 ## <a name="accessing-the-consul-ui"></a>A konzul felhasználói felületének elérése
 
@@ -138,7 +138,7 @@ A konzul felhasználói felülete telepítve lett a fenti beállításokban, és
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-Most megnyithat egy böngészőt, és rámutathat `http://localhost:8080/ui` a konzul felhasználói felületének megnyitására. A felhasználói felület megnyitásakor a következőnek kell megjelennie:
+Most megnyithat egy böngészőt, és rámutathat a `http://localhost:8080/ui` konzul felhasználói felületének megnyitására. A felhasználói felület megnyitásakor a következőnek kell megjelennie:
 
 ![Konzul felhasználói felülete](./media/servicemesh/consul/consul-ui.png)
 
@@ -149,7 +149,7 @@ Most megnyithat egy böngészőt, és rámutathat `http://localhost:8080/ui` a k
 
 ### <a name="remove-consul-components-and-namespace"></a>A konzul összetevőinek és névterének eltávolítása
 
-Ha el szeretné távolítani a konzult az AK-fürtből, használja a következő parancsokat. A `helm delete` parancsok el fogják távolítani `consul` a diagramot, `kubectl delete namespace` és a parancs eltávolítja `consul` a névteret.
+Ha el szeretné távolítani a konzult az AK-fürtből, használja a következő parancsokat. A `helm delete` parancsok el fogják távolítani a `consul` diagramot, és a `kubectl delete namespace` parancs eltávolítja a `consul` névteret.
 
 ```console
 helm delete --purge consul
@@ -166,6 +166,8 @@ A konzul további telepítési és konfigurációs lehetőségeinek megismerés�
 A következő esetekben is elvégezheti a további forgatókönyvek használatát:
 
 - [Konzuli példa alkalmazása][consul-app-example]
+- [Konzuli Kubernetes hivatkozási architektúrája][consul-reference]
+- [Konzuli háló átjárók][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
@@ -177,9 +179,11 @@ A következő esetekben is elvégezheti a további forgatókönyvek használatá
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

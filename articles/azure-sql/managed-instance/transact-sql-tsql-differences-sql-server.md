@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 89b33f22cf5e6f08b42fca0e8966a36001bdb29f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d3b337a697151f7f9ae1e3a1fb75795068da9e68
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116755"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204973"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "84116755"
 Ez a cikk a felügyelt Azure SQL-példány és a SQL Server szintaxisának és viselkedésének különbségeit összegzi és ismerteti. 
 
 
-Az SQL felügyelt példánya magas kompatibilitást biztosít a helyszíni SQL Server adatbázis-motorral, és a legtöbb funkció támogatott egy SQL felügyelt példányban.
+Az SQL felügyelt példánya magas kompatibilitást biztosít a SQL Server adatbázis-motorral, és a legtöbb funkció támogatott egy SQL felügyelt példányban.
 
 ![Migrálás](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
@@ -502,10 +502,13 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 - A régiókban üzembe helyezhető virtuális mag és típusok száma bizonyos [korlátozásokkal és korlátozásokkal](resource-limits.md#regional-resource-limitations)rendelkezik.
 - Vannak olyan [biztonsági szabályok, amelyeket az alhálózaton kell alkalmazni](connectivity-architecture-overview.md#network-requirements).
 
-### <a name="vnet"></a>VNET
+### <a name="vnet"></a>Virtuális hálózat
 - A VNet az Resource Model használatával telepíthető – a VNet klasszikus modellje nem támogatott.
 - A felügyelt SQL-példányok létrehozása után az SQL felügyelt példányának vagy VNet másik erőforráscsoporthoz vagy előfizetésbe való áthelyezése nem támogatott.
 - Egyes szolgáltatások, például a App Service környezetek, a Logic apps és az SQL felügyelt példányai (földrajzi replikálás, tranzakciós replikálás vagy csatolt kiszolgálókon keresztül) nem férnek hozzá a különböző régiókban lévő SQL felügyelt példányokhoz, ha a virtuális hálózatok [globális](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)társítással kapcsolódnak egymáshoz. Ezekhez az erőforrásokhoz a ExpressRoute vagy a VNet – VNet használatával csatlakozhat a VNet-átjárók segítségével.
+
+### <a name="failover-groups"></a>Feladatátvételi csoportok
+A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
 
 ### <a name="tempdb"></a>TEMPDB
 

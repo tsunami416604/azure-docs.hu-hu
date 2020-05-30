@@ -11,19 +11,20 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4b5378b5df36c158c3f401f214730b4f493f5def
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 527626b1ff423a50f7a6c695c5b2ff2e2f17d640
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043610"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189811"
 ---
-# <a name="managing-azure-sql-database-using-azure-automation"></a>Azure SQL Database kezelése Azure Automation használatával
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb.md)]
+# <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Azure SQL Database-adatbázisok kezelése Azure Automation használatával
 
-Ez az útmutató bemutatja a Azure Automation szolgáltatást, valamint azt, hogy miként lehet egyszerűsíteni az adatbázisok kezelését az Azure SQL Database-ben.
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-## <a name="what-is-azure-automation"></a>Mi az Azure Automation?
+Ez az útmutató bemutatja a Azure Automation szolgáltatást, valamint azt, hogy miként használható a Azure SQL Database adatbázisok kezelésének egyszerűbbé tételéhez.
+
+## <a name="about-azure-automation"></a>Tudnivalók Azure Automation
 
 [Azure Automation](https://azure.microsoft.com/services/automation/) egy Azure-szolgáltatás, amely egyszerűbbé teszi a felhőalapú felügyeletet a folyamatok automatizálásával. A Azure Automation, a hosszan futó, a manuális, a hibákra hajlamos és a gyakran ismétlődő feladatok használatával automatizálható a szervezet megbízhatóságának, hatékonyságának és időpontjának növelése. További információ az első lépésekről: [Azure Automation intro](../../automation/automation-intro.md)
 
@@ -31,13 +32,13 @@ A Azure Automation magas megbízhatóságot és magas rendelkezésre állást bi
 
 Csökkentse a működési terhelést, és szabadítson fel informatikai/DevOps-személyzetet, hogy az üzleti értékeket felhasználva a Felhőbeli felügyeleti feladatok automatikus futtatásával Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-sql-database"></a>Hogyan lehet Azure Automation segíteni a Azure SQL Database kezelésében
+## <a name="how-azure-automation-can-help-manage-your-databases"></a>Hogyan segítheti a Azure Automation az adatbázisok kezelését
 
-A Azure SQL Database Azure Automation a [Azure PowerShell eszközökben](/powershell/azure/overview)elérhető [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) használatával kezelhetők. Azure Automation ezen Azure SQL Database PowerShell-parancsmagok elérhetők a dobozból, így az összes SQL Database felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
+A Azure Automation segítségével a [Azure PowerShell-eszközökön](/powershell/azure/overview)elérhető PowerShell- [parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) használatával kezelheti Azure SQL Database adatbázisait. Azure Automation ezen Azure SQL Database PowerShell-parancsmagok elérhetők a dobozból, így az összes SQL Database felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
 
 A Azure Automation az SQL-kiszolgálókkal való közvetlen kommunikációt is lehetővé teszi az SQL-parancsok a PowerShell használatával történő kiadásával.
 
-A runbook és modul-galériák [Azure Automation](../../automation/automation-runbook-gallery.md) a Microsoft és a Közösség különböző runbookok, amelyeket importálhat Azure Automationba. Ha szeretné használni, töltsön le egy runbook a katalógusból, vagy közvetlenül importálhatja a runbookok a katalógusból vagy az Automation-fiókjából a Azure Portal.
+[Azure Automation](../../automation/automation-runbook-gallery.md) runbook és modul-galériák a Microsoft és a Közösség különböző runbookok kínálják, amelyeket importálhat a Azure Automationba. Ha szeretné használni, töltsön le egy runbook a katalógusból, vagy közvetlenül importálhatja a runbookok a katalógusból vagy az Automation-fiókjából a Azure Portal.
 
 ## <a name="next-steps"></a>További lépések
 

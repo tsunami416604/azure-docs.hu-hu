@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fd7900eb9de55b29cc06ed338514e5a46d160f11
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047453"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193930"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Ha nincs konfigurálva automatikus feladatátvételi csoport, az alkalmazásnak 
 
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Hogyan változik a vész-helyreállítási terv a helyszínen a SQL Database
 
-Összefoglalva, a hagyományos helyszíni SQL Server beállításával aktívan felügyelheti a rendelkezésre állást olyan funkciókkal, mint például a feladatátvételi fürtszolgáltatás, az adatbázis-tükrözés, a tranzakciós replikáció vagy a napló szállítása, valamint a biztonsági másolatok karbantartása és kezelése az üzletmenet folytonosságának biztosítása érdekében. A SQL Database segítségével a platform kezeli ezeket az alkalmazásokat, így az adatbázis-alkalmazás fejlesztésére és optimalizálására koncentrálhat, és nem kell aggódnia a katasztrófák kezelésével kapcsolatban. A biztonsági mentési és vész-helyreállítási terveket konfigurálhatja, és csak néhány kattintással dolgozhat a Azure Portalon (vagy a PowerShell API-kat használó néhány paranccsal).
+Összefoglalva, SQL Server a telepítőnek aktívan kell kezelnie a rendelkezésre állást olyan funkciókkal, mint a feladatátvételi fürtszolgáltatás, az adatbázis-tükrözés, a tranzakciós replikáció vagy a napló szállítása, valamint a biztonsági másolatok karbantartása és kezelése az üzletmenet folytonosságának biztosítása érdekében. A SQL Database segítségével a platform kezeli ezeket az alkalmazásokat, így az adatbázis-alkalmazás fejlesztésére és optimalizálására koncentrálhat, és nem kell aggódnia a katasztrófák kezelésével kapcsolatban. A biztonsági mentési és vész-helyreállítási terveket konfigurálhatja, és csak néhány kattintással dolgozhat a Azure Portalon (vagy a PowerShell API-kat használó néhány paranccsal).
 
 További információ a vész-helyreállítási szolgáltatásról: [Azure SQL Database vész-helyreállítási 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
@@ -125,7 +125,7 @@ Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapc
 - VNet szolgáltatási végpontok
 - Fenntartott IP-címek
 
-#### <a name="firewall"></a>Firewall
+#### <a name="firewall"></a>Tűzfal
 
 A tűzfal nem engedélyezi a hozzáférést a kiszolgálóhoz egy külső entitásból azáltal, hogy csak bizonyos entitások férhetnek hozzá a kiszolgálóhoz. Alapértelmezés szerint a kiszolgálón belüli adatbázisokhoz való összes kapcsolat nem engedélyezett, a többi Azure-szolgáltatástól érkező kapcsolatok kivételével (optionally7). Tűzfalszabály esetén a számítógép IP-címének a tűzfalon keresztüli engedélyezésével megnyithatja a kiszolgálóhoz való hozzáférést csak olyan entitások (például egy fejlesztői számítógép) számára, amelyeknek jóvá kell hagynia. Azt is lehetővé teszi, hogy olyan IP-címtartományt határozzon meg, amelyet engedélyezni szeretne a kiszolgálóhoz való hozzáféréshez. A szervezet fejlesztői számítógépének IP-címei például a tűzfal beállításai lapon egy tartomány megadásával adhatók hozzá.
 
@@ -330,8 +330,8 @@ A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszi
 
 Ezt többféleképpen is elérheti:
 
-- **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több helyszíni SQL Server-adatbázis és-SQL Database között. A helyszíni SQL Server adatbázisaival való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
-- **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat a helyszínen, hogy Azure SQL Database a gyártó és a Azure SQL Database az előfizető számára. Egyelőre csak ez a beállítás támogatott. További információ arról, hogyan migrálhatja adatait a helyszínről az Azure SQL-be minimális állásidővel: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
+- **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
+- **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>További lépések
 

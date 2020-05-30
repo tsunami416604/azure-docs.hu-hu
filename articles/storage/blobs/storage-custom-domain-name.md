@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370474"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195236"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
@@ -23,9 +23,9 @@ Az egyéni tartományt egy blob Service-végpontra vagy egy [statikus webhely](s
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com`). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például `contoso.com`:), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezéséhez szükséges, az adott szakaszon belül a HTTPS engedélyezésének lépései nem kötelező. 
+> Ez a leképezés csak altartományok esetén működik (például: `www.contoso.com` ). Ha azt szeretné, hogy a webes végpont elérhető legyen a legfelső szintű tartományban (például: `contoso.com` ), akkor a Azure CDNt kell használnia. Útmutatásért tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. Mivel ennek a cikknek a szakasza az egyéni tartomány legfelső szintű tartományának engedélyezéséhez szükséges, az adott szakaszon belül a HTTPS engedélyezésének lépései nem kötelező. 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>Egyéni tartomány leképezése csak HTTP-engedélyezve
 
@@ -33,7 +33,7 @@ Ez a megközelítés egyszerűbb, de csak HTTP-hozzáférést tesz lehetővé. H
 
 A HTTPS-hozzáférés engedélyezéséhez tekintse meg a jelen cikk [egyéni tartomány leképezése HTTPS-kompatibilis](#enable-https) szakasszal című szakaszát. 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>Egyéni tartomány leképezése
 
@@ -50,7 +50,7 @@ Ha nem aggódik amiatt, hogy a tartomány rövid ideig nem érhető el a felhasz
 
 : heavy_check_mark: 4. lépés: az egyéni tartomány tesztelése.
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>1. lépés: a tárolási végpont állomásnévének beolvasása 
 
@@ -71,7 +71,7 @@ Az állomásnév a tárolási végpont URL-címe a protokoll azonosítója és a
   
    Ezt az értéket később adja meg.
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>2. lépés: kanonikus név (CNAME) rekord létrehozása a tartományi szolgáltatóval
 
@@ -87,11 +87,11 @@ Hozzon létre egy CNAME rekordot, amely az állomásnévre mutat. A CNAME rekord
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
-   - Az altartomány aliasa, `www` például `photos`vagy. Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak. 
+   - Az altartomány aliasa, például `www` vagy `photos` . Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak. 
       
    - A jelen cikk korábbi részében a [tárolási végpont gazdagépének beolvasása](#endpoint) szakaszban beszerzett állomásnév. 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>3. lépés: az egyéni tartomány regisztrálása az Azure-ban
 
@@ -105,7 +105,7 @@ Hozzon létre egy CNAME rekordot, amely az állomásnévre mutat. A CNAME rekord
 
 3. A **tartománynév** szövegmezőbe írja be az egyéni tartomány nevét, beleértve az altartományt is  
    
-   Ha például a tartománya *contoso.com* , és az altartomány aliasa a *www*, írja `www.contoso.com`be a következőt:. Ha az altartomány *fényképek*, adja meg `photos.contoso.com`a értéket.
+   Ha például a tartománya *contoso.com* , és az altartomány aliasa a *www*, írja be a következőt: `www.contoso.com` . Ha az altartomány *fényképek*, adja meg a értéket `photos.contoso.com` .
 
 4. Az egyéni tartomány regisztrálásához kattintson a **Save (Mentés** ) gombra.
 
@@ -117,7 +117,7 @@ Annak ellenőrzéséhez, hogy az egyéni tartomány hozzá van-e rendelve a blob
 
 Ha például egy webes űrlapot szeretne elérni a *myForms* -tárolóban a *photos.contoso.com* egyéni altartományában, a következő URI-t használhatja:`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Egyéni tartomány leképezése nulla állásidővel
 
@@ -136,7 +136,7 @@ Ha a tartomány jelenleg olyan szolgáltatói szerződéssel (SLA-val) rendelkez
 
 : heavy_check_mark: 5. lépés: az egyéni tartomány tesztelése.
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>1. lépés: a tárolási végpont állomásnévének beolvasása 
 
@@ -171,9 +171,9 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat. A C
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
-   - Az altartomány aliasa, `www` például `photos`vagy. Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak.
+   - Az altartomány aliasa, például `www` vagy `photos` . Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak.
 
-     Adja hozzá `asverify` az altartományt az aliashoz. Például: `asverify.www` vagy `asverify.photos`.
+     Adja hozzá az `asverify` altartományt az aliashoz. Például: `asverify.www` vagy `asverify.photos` .
        
    - A jelen cikk korábbi részében a [tárolási végpont gazdagépének beolvasása](#endpoint) szakaszban beszerzett állomásnév. 
 
@@ -197,7 +197,7 @@ Ha előzetesen regisztrálja az egyéni tartományt az Azure-ban, lehetővé tes
 
 3. A **tartománynév** szövegmezőbe írja be az egyéni tartomány nevét, beleértve az altartományt is  
    
-   Ha például a tartománya *contoso.com* , és az altartomány aliasa a *www*, írja `www.contoso.com`be a következőt:. Ha az altartomány *fényképek*, adja meg `photos.contoso.com`a értéket.
+   Ha például a tartománya *contoso.com* , és az altartomány aliasa a *www*, írja be a következőt: `www.contoso.com` . Ha az altartomány *fényképek*, adja meg a értéket `photos.contoso.com` .
 
 4. Jelölje be a **közvetlen CNAME-ellenőrzés használata** jelölőnégyzetet.
 
@@ -219,7 +219,7 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat.
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
-   - Az altartomány aliasa, `www` például `photos`vagy. Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak.
+   - Az altartomány aliasa, például `www` vagy `photos` . Az altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak.
       
    - A jelen cikk korábbi részében a [tárolási végpont gazdagépének beolvasása](#endpoint-2) szakaszban beszerzett állomásnév. 
 
@@ -250,7 +250,7 @@ Miután sikeresen eltávolította az egyéni tartományt, egy portál értesít�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Egyéni tartományi regisztráció eltávolításához használja az az [Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI parancsot, majd adja meg az`""` `--custom-domain` argumentum értékének üres karakterláncát ().
+Egyéni tartományi regisztráció eltávolításához használja az az [Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI parancsot, majd adja meg az `""` `--custom-domain` argumentum értékének üres karakterláncát ().
 
 * Parancs formátuma:
 
@@ -274,7 +274,7 @@ Egyéni tartományi regisztráció eltávolításához használja az az [Storage
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Egyéni tartományi regisztráció eltávolításához használja a [set-AzStorageAccount PowerShell-](/powershell/module/az.storage/set-azstorageaccount) parancsmagot, majd adja meg az`""` `-CustomDomainName` argumentum értékének üres karakterláncát ().
+Egyéni tartományi regisztráció eltávolításához használja a [set-AzStorageAccount PowerShell-](/powershell/module/az.storage/set-azstorageaccount) parancsmagot, majd adja meg az `""` argumentum értékének üres karakterláncát () `-CustomDomainName` .
 
 * Parancs formátuma:
 
@@ -295,7 +295,7 @@ Egyéni tartományi regisztráció eltávolításához használja a [set-AzStora
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>Egyéni tartomány leképezése HTTPS-támogatással
 

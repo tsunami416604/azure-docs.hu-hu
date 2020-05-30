@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124074"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196425"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -96,13 +96,13 @@ A különbözeti lekérdezés beállításnál Stream Analytics először a pill
 
 A SQL Database hivatkozási adatok konfigurálásához először létre kell hoznia a **hivatkozási adatok** bevitelét. Az alábbi táblázat minden olyan tulajdonságot ismertet, amelyet meg kell adnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor. További információ: [Azure stream Analytics feladathoz tartozó SQL Database hivatkozási adatainak használata](sql-reference-data.md).
 
-[Azure SQL Database felügyelt példányt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) a hivatkozásként használt adatok bemenetként használhatja. [Azure SQL Database felügyelt példányban konfigurálnia kell a nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
+Az [Azure SQL felügyelt példánya](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) használható a hivatkozásként használt adatok beviteléhez. [Konfigurálnia kell a nyilvános végpontot az SQL felügyelt példányában](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , majd manuálisan kell konfigurálnia a következő beállításokat a Azure stream Analyticsban. A SQL Servert futtató Azure-beli virtuális gépeket az alábbi beállítások manuális konfigurálásával is támogatja.
 
 |**Tulajdonság neve**|**Leírás**  |
 |---------|---------|
 |Bemeneti alias|Egy rövid név, amelyet a rendszer a lekérdezésben a bemenetre való hivatkozáshoz fog használni.|
 |Előfizetés|Válassza ki az előfizetését|
-|Adatbázis|A hivatkozási adatait tartalmazó Azure SQL Database. Azure SQL Database felügyelt példány esetében az 3342-es portot kell megadni. Például: *sampleserver. public. database. Windows. net, 3342*|
+|Adatbázis|A hivatkozási adatait tartalmazó Azure SQL Database. SQL felügyelt példány esetén a 3342-es portot kell megadnia. Például: *sampleserver. public. database. Windows. net, 3342*|
 |Felhasználónév|A Azure SQL Databasehoz társított Felhasználónév.|
 |Jelszó|A Azure SQL Databasehoz társított jelszó.|
 |Rendszeres frissítés|Ez a beállítás lehetővé teszi a frissítési sebesség kiválasztását. A "bekapcsolva" beállítással megadhatja a frissítési gyakoriságot a DD: óó: PP értékben.|

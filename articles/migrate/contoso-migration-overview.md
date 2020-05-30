@@ -4,12 +4,12 @@ description: A contoso példa áttelepítési forgatókönyvekre mutató hivatko
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
-ms.openlocfilehash: 6e19bcbd041232504a81ac0799e71cae2f459428
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2cc03462fd72db1a50434d3d6de0851660414cd9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016916"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195848"
 ---
 # <a name="contoso-migration-series"></a>Contoso migrálási sorozat
 
@@ -31,7 +31,7 @@ A sorozat cikkei az alábbi táblázatban vannak összegezve.
 [1. cikk: áttekintés](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | A cikk sorozata, a contoso áttelepítési stratégiája és az adatsorozatban használt minta alkalmazások áttekintése. 
 [2. cikk: az Azure-infrastruktúra üzembe helyezése](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | A contoso felkészíti a helyszíni infrastruktúrát és az Azure-infrastruktúrát az áttelepítésre. Ugyanaz az infrastruktúra van használatban az adatsorozat összes cikkében. 
 [3. cikk: helyszíni erőforrások felmérése az Azure-ba való áttelepítéshez](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/assess?tabs=Tools)  | A contoso a VMware-en futó helyszíni SmartHotel360-alkalmazás értékelését futtatja. A contoso a Azure Migrate szolgáltatással és az alkalmazás SQL Server-adatbázissal Data Migration Assistant használatával vizsgálja ki az alkalmazás virtuális gépeket.
-[4. cikk: alkalmazások újraüzemeltetése Azure-beli virtuális gépen és SQL Database felügyelt példány](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-managed-instance) | A contoso az Azure-ba helyezi át a helyszíni SmartHotel360-alkalmazáshoz való átállást. A contoso a [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)használatával telepíti át az alkalmazás ELŐTÉR-virtuális gépét. A contoso áttelepíti az alkalmazás-adatbázist egy Azure SQL Database felügyelt példányra a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)használatával.
+[4. cikk: alkalmazások újraüzemeltetése Azure-beli virtuális gépen és felügyelt SQL-példányon](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-managed-instance) | A contoso az Azure-ba helyezi át a helyszíni SmartHotel360-alkalmazáshoz való átállást. A contoso a [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)használatával telepíti át az alkalmazás ELŐTÉR-virtuális gépét. A contoso áttelepíti az alkalmazás adatbázisát egy felügyelt SQL-példányra a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview)használatával.
 [5. cikk: alkalmazások újraüzemeltetése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm) | A contoso a Azure Migrate szolgáltatás használatával áttelepíti a SmartHotel360-alkalmazás virtuális gépeit az Azure-beli virtuális gépekre. 
 [6. cikk: alkalmazások újraüzemeltetése Azure-beli virtuális gépeken és SQL Server alAlwaysOnon rendelkezésre állási csoportban](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-ag) | A contoso áttelepíti a SmartHotel360 alkalmazást. A contoso a Azure Migrate használatával telepíti át az alkalmazás virtuális gépeket. A Database Migration Service használatával telepíti át az alkalmazás-adatbázist egy olyan SQL Server-fürtre, amelyet egy alAlwaysOnon rendelkezésre állási csoport véd. 
 [7. cikk: Linux-alkalmazás újraüzemeltetése Azure-beli virtuális gépeken](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm) | A contoso az Azure Migrate használatával befejezi a linuxos osTicket-alkalmazásának az Azure-beli virtuális gépekre való átemelését és átváltását.

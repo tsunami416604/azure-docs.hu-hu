@@ -1,5 +1,5 @@
 ---
-title: Always Encrypted konfigurálása a Windows-tanúsítványtároló használatával
+title: Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 description: Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database adatbázis-titkosítással az SQL Server Management Studio (SSMS) Always Encrypted varázslójával. Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
 keywords: adatok titkosítása, SQL-titkosítás, adatbázis-titkosítás, bizalmas adatok Always Encrypted
 services: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 0287e5a965710ea5c3b1ada73fc32dda49c05819
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8b1b8297f285a5481909e2e2d91118e15d7d5095
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047705"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190393"
 ---
-# <a name="configure-always-encrypted-using-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows-tanúsítványtároló használatával
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis-titkosítással az [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Ez a cikk bemutatja, hogyan védheti meg a bizalmas adatokat Azure SQL Database vagy az Azure SQL felügyelt példányában az adatbázis-titkosítással [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) [Always encrypted varázslójával](/sql/relational-databases/security/encryption/always-encrypted-wizard) . Emellett azt is bemutatja, hogyan tárolhatja a titkosítási kulcsokat a Windows-tanúsítványtárolóban.
 
 A Always Encrypted egy adattitkosítási technológia, amely segít a kiszolgálón tárolt bizalmas adatok védelme során, az ügyfél és a kiszolgáló közötti váltás során, és az adatok használatban vannak, így biztosítva, hogy a bizalmas adatok soha nem jelennek meg az adatbázis-rendszeren belüli egyszerű szövegként. Az adattitkosítást követően csak a kulcsokhoz hozzáférő ügyfélalkalmazások vagy kiszolgálóalkalmazások férhetnek hozzá az egyszerű szöveges adataihoz. Részletes információ: [Always encrypted (adatbázismotor)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -56,7 +57,7 @@ Az *alkalmazás azonosítójának* és *kulcsának*beszerzéséhez kövesse az [
 
 ## <a name="connect-with-ssms"></a>Csatlakozás SSMS segítségével
 
-Nyissa meg SQL Server Managed Studio (SSMS) alkalmazást, és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
+Nyissa meg SQL Server Management Studio (SSMS), és kapcsolódjon a kiszolgálóhoz, vagy kezelje az adatbázisával.
 
 1. Nyissa meg az SSMS-t. (Kattintson a **kapcsolat**  >  gombra **Adatbázismotor** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, ha nincs megnyitva.
 2. Adja meg a kiszolgáló nevét és a hitelesítő adatait.

@@ -1,6 +1,6 @@
 ---
 title: Adatok másolása a helyszínről az Azure-ba a PowerShell használatával
-description: Ez a PowerShell-parancsfájl egy helyszíni SQL Server adatbázisból egy másik Azure-Blob Storageba másolja az adatait.
+description: Ez a PowerShell-parancsfájl egy SQL Server adatbázisból egy másik Azure-Blob Storageba másolja az adatait.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,16 +10,16 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75974694"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194633"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>A PowerShell használata a helyszíni adatok Azure-ba való másolásához szükséges adatfeldolgozó-folyamat létrehozásához
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Adatok másolása SQL Serverról az Azure-ba a PowerShell használatával
 
-Ez a PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban, amely egy helyszíni SQL Server-adatbázisból egy Azure-Blob Storage másolja az adatokból.
+Ez a példa PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban, amely egy SQL Server-adatbázisból egy Azure-Blob Storage másolja az adatok.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ Ez a PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban, amely 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **SQL Server**. Ebben a példában egy helyszíni SQL Server-adatbázist használ **forrásként** szolgáló adattárként.
+- **SQL Server**. Ebben a példában egy SQL Server adatbázist használ **forrásként** szolgáló adattárként.
 - **Azure Storage-fiók**. Ebben a példában az Azure Blob Storage-t **célként/fogadó** adattárként kell használni. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
 - **Saját üzemeltetésű integrációs**modul. Töltse le az MSI-fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , és futtassa a saját üzemeltetésű integrációs modul telepítéséhez a gépen.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Mintaadatbázis létrehozása a SQL Serverban
-1. A helyszíni SQL Server adatbázisban hozzon létre egy **EMP** nevű táblát a következő SQL-parancsfájl használatával:
+1. A SQL Server adatbázisban hozzon létre egy **EMP** nevű táblát a következő SQL-parancsfájl használatával:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +57,7 @@ Ez a PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban, amely 
 > [!IMPORTANT]
 > Ez a szkript olyan JSON-fájlokat hoz létre, amelyek meghatározzák Data Factory entitásokat (társított szolgáltatás, adatkészlet és folyamat) a merevlemezen a c:\ mappa.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása

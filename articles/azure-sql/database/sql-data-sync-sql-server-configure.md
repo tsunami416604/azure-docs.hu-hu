@@ -1,5 +1,5 @@
 ---
-title: SQL-adatszinkronizálás beállítása
+title: Az SQL Data Sync beállítása
 description: Ez az oktatóanyag bemutatja, hogyan állíthat be SQL-adatszinkronizálás az Azure-hoz
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: d0380239fde2c58e7c9a2e7dc3638881dbd8fd73
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043974"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188696"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és a helyszíni SQL Server között
+# <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és SQL Server adatbázisai között
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a SQL-adatszinkronizálás egy olyan szinkronizálási csoport létrehozásával, amely Azure SQL Database és SQL Server példányokat is tartalmaz. A szinkronizálási csoport egyéni konfigurálva van, és szinkronizálja a beállított ütemtervet.
@@ -27,7 +27,7 @@ Az oktatóanyag feltételezi, hogy van legalább néhány korábbi tapasztalata 
 
 A SQL-adatszinkronizálás áttekintését lásd: az [adatszinkronizálás a Felhőbeli és a helyszíni adatbázisok között SQL-adatszinkronizálásokkal](sql-data-sync-data-sql-server-sql-database.md).
 
-PowerShell-példák a SQL-adatszinkronizálás konfigurálására: az [adatbázisok közötti szinkronizálás SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md) vagy [egy Azure SQL Database és egy SQL Server helyszíni adatbázis](scripts/sql-data-sync-sync-data-between-azure-onprem.md) között.
+PowerShell-példák a SQL-adatszinkronizálás konfigurálásának módjáról: az [adatbázisok közötti szinkronizálás SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md) vagy [adatbázisok között Azure SQL Database és SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
 > [!IMPORTANT]
 > A SQL-adatszinkronizálás jelenleg **nem** támogatja az Azure SQL felügyelt példányát.
@@ -96,9 +96,9 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy Azure SQL Databas
 
 <a name="add-on-prem"></a>
 
-### <a name="to-add-an-on-premises-sql-server-database"></a>Helyszíni SQL Server-adatbázis hozzáadása
+### <a name="to-add-a-sql-server-database"></a>SQL Server-adatbázis hozzáadása
 
-A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy helyszíni SQL Server a szinkronizálási csoporthoz a helyszíni **adatbázis hozzáadása**lehetőség kiválasztásával. Megnyílik a helyszíni **Konfigurálás** lap, ahol a következő műveleteket végezheti el:
+A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy SQL Server adatbázist a szinkronizálási csoporthoz a helyszíni **adatbázis hozzáadása**lehetőség kiválasztásával. Megnyílik a helyszíni **Konfigurálás** lap, ahol a következő műveleteket végezheti el:
 
 1. Válassza **a szinkronizálási ügynök átjárójának kiválasztása**lehetőséget. Megnyílik a **szinkronizálási ügynök kiválasztása** lap.
 

@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253339"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220136"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ További információért tekintse meg a példákat.
 - [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Speciális
+## <a name="advanced"></a>Felsőfokú
 
 A AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
 
@@ -147,25 +147,25 @@ Az összes blob-tároló,-könyvtár és-blob másolása a Storage-fiókból egy
 
 Egyetlen objektum másolása Amazon Web Services (AWS) S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
   
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[Object]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[Path/to/blob]? [SAS] "
+- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[Object]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/a/blob]? [ SAS] "
 
 Egy teljes könyvtár másolása az AWS S3-Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[mappa]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [SAS] "--rekurzív = True
+- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[mappa]" "https://[destaccount]. blob. Core. Windows. net/[Container]/[elérési út/könyvtár]? [ SAS] "--rekurzív = True
 
-A [mappa https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html ] helyőrző jobb megismeréséhez tekintse meg a következőt:.
+https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.htmlA [mappa] helyőrző jobb megismeréséhez tekintse meg a következőt:.
 
 Másolja az összes gyűjtőt a Amazon Web Services (AWS) Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP " https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [ SAS] "--rekurzív = True
 
 Másolja az összes gyűjtőt egy Amazon Web Services (AWS) régióból Blob Storage egy hozzáférési kulccsal és egy SAS-token használatával. Először állítsa be AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót az AWS S3-forráshoz.
 
-- azcopy CP "https://s3-[region]. Amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP " https://s3- [region]. Amazonaws. com/" "https://[destaccount]. blob. Core. Windows. net? [ SAS] "--rekurzív = True
 
 Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimbólum használatával a gyűjtő nevében. Az előző példákhoz hasonlóan egy hozzáférési kulcsra és egy SAS-jogkivonatra is szüksége lesz. Ügyeljen arra, hogy az AWS S3-forráshoz AWS_ACCESS_KEY_ID és AWS_SECRET_ACCESS_KEY környezeti változót állítsa be.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket * name]/" https://[destaccount]. blob. Core. Windows. net? [SAS] "--rekurzív = True
+- azcopy CP " https://s3.amazonaws.com/ [Bucket * name]/" https://[destaccount]. blob. Core. Windows. net? [ SAS] "--rekurzív = True
 
 ## <a name="options"></a>Beállítások
 
@@ -225,11 +225,11 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 
 **--megőrzés-utolsó módosítás időpontja**          Csak akkor érhető el, ha a cél fájlrendszer.
 
-**--megőrzése-az SMB-permissions** sztringet alapértelmezés szerint False (hamis) értékre állítja. Az SMB ACL-ek megőrzése az adatforrások (Windows és Azure Files) között. A letöltések esetében a `--backup` jelzőt is kell használnia az engedélyek visszaállításához, ha az új tulajdonos nem lesz a AzCopy-t futtató felhasználó. Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva `include-pattern`egy csak fájlra vonatkozó szűrő (például).
+**--megőrzése-az SMB-permissions** sztringet alapértelmezés szerint False (hamis) értékre állítja. Az SMB ACL-ek megőrzése az adatforrások (Windows és Azure Files) között. A letöltések esetében a jelzőt is kell használnia az `--backup` engedélyek visszaállításához, ha az új tulajdonos nem lesz a AzCopy-t futtató felhasználó. Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva egy csak fájlra vonatkozó szűrő (például `include-pattern` ).
 
 **--a megőrzése-SMB-info** sztring alapértelmezés szerint false. A megőrzi az SMB-tulajdonságok adatait (az utolsó írási időt, a létrehozási időt, az attribútum-biteket) az SMB-kompatibilis erőforrások (Windows és Azure Files) között. Csak az Azure Files által támogatott attribútum-bitek lesznek átadva; minden más figyelmen kívül lesz hagyva. Ez a jelző mind a fájlokra, mind a mappákra vonatkozik, kivéve, ha meg van adva egy csak fájlhoz tartozó szűrő (például: include-Pattern). A mappákhoz továbbított adatok ugyanazok, mint a fájlok esetében, kivéve az utolsó írási időt, amelyet a rendszer soha nem tart fenn a mappákban.
 
-**--megőrzés – tulajdonos**                       A csak akkor lép életbe, ha az adatletöltést végzi `--preserve-smb-permissions` , és csak a használatakor. Ha az értéke TRUE (alapértelmezett), a fájl tulajdonosa és a csoport letöltése megmarad. Ha ez a jelző hamis értékre van `--preserve-smb-permissions` állítva, a továbbra is megőrizheti az ACL-eket, de a tulajdonos és a csoport a AzCopy-t futtató felhasználó alapján fog alapulni.
+**--megőrzés – tulajdonos**                       A csak akkor lép életbe, ha az adatletöltést végzi, és csak a `--preserve-smb-permissions` használatakor. Ha az értéke TRUE (alapértelmezett), a fájl tulajdonosa és a csoport letöltése megmarad. Ha ez a jelző hamis értékre van állítva, a továbbra is `--preserve-smb-permissions` megőrizheti az ACL-eket, de a tulajdonos és a csoport a AzCopy-t futtató felhasználó alapján fog alapulni.
 
 **--put-MD5**                             Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
 
@@ -248,6 +248,8 @@ a- **-include-Path** sztring csak a másoláskor tartalmazza ezeket az elérési
 **--Cap-Mbps UInt32**      Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.
 
 **--** a parancs kimenetének kimeneti típusú karakterlánc-formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text". (alapértelmezett "text")
+
+**--a megbízható-Microsoft-utótagok** karakterlánca további tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.
 
 ## <a name="see-also"></a>Lásd még
 

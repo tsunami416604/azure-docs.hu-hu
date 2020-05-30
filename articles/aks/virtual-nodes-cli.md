@@ -5,12 +5,13 @@ description: Ismerje meg, hogyan használhatja az Azure CLI-t olyan Azure Kubern
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 826c7f98b9540d84ac151e05cd81f2cc6042776c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: a5f930df37200531cce709d77130e1e1b7930883
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128918"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193986"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -73,7 +74,7 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.49 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -156,7 +157,7 @@ Egy AK-fürtöt az előző lépésben létrehozott AK alhálózatba helyez üzem
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje `<subnetId>` le az értéket az előző lépésben BEszerzett azonosítóra, `<appId>` majd `<password>` az előző szakaszban összegyűjtött értékekre.
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le az `<subnetId>` értéket az előző lépésben beszerzett azonosítóra, majd az `<appId>` `<password>` előző szakaszban összegyűjtött értékekre.
 
 ```azurecli-interactive
 az aks create \
@@ -210,7 +211,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Minta alkalmazás üzembe helyezése
 
-Hozzon létre egy `virtual-node.yaml` nevű fájlt, és másolja a következő YAML. A tárolónak a csomóponton való megadásához meg kell adni a [nodeSelector][node-selector] és a [tolerancia][toleration] értéket.
+Hozzon létre egy nevű fájlt `virtual-node.yaml` , és másolja a következő YAML. A tárolónak a csomóponton való megadásához meg kell adni a [nodeSelector][node-selector] és a [tolerancia][toleration] értéket.
 
 ```yaml
 apiVersion: apps/v1
@@ -249,7 +250,7 @@ Futtassa az alkalmazást az [kubectl Apply][kubectl-apply] paranccsal.
 kubectl apply -f virtual-node.yaml
 ```
 
-A [kubectl Get hüvely][kubectl-get] parancs használatával adja meg `-o wide` az argumentumot a hüvelyek és az ütemezett csomópontok listájának kimenetéhez. Figyelje meg, `aci-helloworld` hogy a pod ütemezve van `virtual-node-aci-linux` a csomóponton.
+A [kubectl Get hüvely][kubectl-get] parancs használatával adja `-o wide` meg az argumentumot a hüvelyek és az ütemezett csomópontok listájának kimenetéhez. Figyelje meg, hogy a `aci-helloworld` Pod ütemezve van a `virtual-node-aci-linux` csomóponton.
 
 ```console
 kubectl get pods -o wide
@@ -263,7 +264,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 A pod a virtuális csomópontokkal való használatra delegált Azure virtuális hálózati alhálózatból származó belső IP-címet kap.
 
 > [!NOTE]
-> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és `HTTP response status code 400 error code "InaccessibleImage"`nem jelentik a hibát.
+> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és nem jelentik a hibát `HTTP response status code 400 error code "InaccessibleImage"` .
 
 ## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont-Pod tesztelése
 
@@ -273,13 +274,13 @@ A virtuális csomóponton futó Pod teszteléséhez keresse meg a bemutató alka
 kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
-Telepítés `curl` a pod használatával `apt-get`:
+Telepítés `curl` a pod használatával `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Most nyissa meg a pod-t `curl` *http://10.241.0.4*a használatával, például:. Az előző `kubectl get pods` parancsban megjelenő saját belső IP-cím megadása:
+Most nyissa meg a pod `curl` -t a használatával, például: *http://10.241.0.4* . Az előző parancsban megjelenő saját belső IP-cím megadása `kubectl get pods` :
 
 ```console
 curl -L http://10.241.0.4
@@ -295,7 +296,7 @@ Megjelenik a bemutató alkalmazás, ahogy az a következő tömörített példá
 [...]
 ```
 
-Zárjuk be a terminál-munkamenetet a test `exit`Pod-be a használatával. Ha a munkamenet véget ér, a rendszer törli a pod-t.
+Zárjuk be a terminál-munkamenetet a test Pod-be a használatával `exit` . Ha a munkamenet véget ér, a rendszer törli a pod-t.
 
 ## <a name="remove-virtual-nodes"></a>Virtuális csomópontok eltávolítása
 

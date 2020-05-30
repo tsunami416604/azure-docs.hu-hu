@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb38037b905e9d7f938b648954bcb9e419be5af
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76772097"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217423"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
 
@@ -78,6 +78,8 @@ TransformOutput[] output = new TransformOutput[]
 > [!NOTE]
 > Az `ContentAwareEncoding` előre beállított kódolási feladatok számlázása a kimeneti percek alapján történik. 
 
+Ügyeljen arra, hogy az **ContentAwareEncoding** előre beállított ContentAwareEncodingExperimental ne használja.
+  
 ## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével](stream-files-tutorial-with-api.md)

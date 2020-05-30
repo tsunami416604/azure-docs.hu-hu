@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414147"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193714"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -70,7 +70,7 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 
 - **"A továbbítási lista forrása" hosszú munkaidőtartamot tapasztalt**: a forrásfájlok vagy a forrás-adatbázis adatpartícióinak számbavétele lassú.
 
-  - Ha fájl-alapú forrásból másol adatokat, ha **helyettesítő szűrőt** használ a mappa elérési útján vagy a fájlnéven`wildcardFolderPath` ( `wildcardFileName`vagy), vagy a **fájl utolsó módosításának időszűrőjét** (`modifiedDatetimeStart` vagy`modifiedDatetimeEnd`) használja, vegye figyelembe, hogy az ilyen szűrő a másolási tevékenységet fogja eredményezni a megadott mappában lévő összes fájlnak a kliens oldalára való listázásakor, majd alkalmazza a szűrőt. Ilyenkor előfordulhat, hogy a fájl enumerálása különösen szűk keresztmetszetet jelenthet, ha csak a fájlok kis halmaza felel meg a szűrési szabálynak.
+  - Ha fájl-alapú forrásból másol adatokat, ha **helyettesítő szűrőt** használ a mappa elérési útján vagy a fájlnéven ( `wildcardFolderPath` vagy `wildcardFileName` ), vagy a **fájl utolsó módosításának időszűrőjét** ( `modifiedDatetimeStart` vagy) használja `modifiedDatetimeEnd` , vegye figyelembe, hogy az ilyen szűrő a másolási tevékenységet fogja eredményezni a megadott mappában lévő összes fájlnak a kliens oldalára való listázásakor, majd alkalmazza a szűrőt. Ilyenkor előfordulhat, hogy a fájl enumerálása különösen szűk keresztmetszetet jelenthet, ha csak a fájlok kis halmaza felel meg a szűrési szabálynak.
 
     - Győződjön meg arról, hogy [a fájlok másolását a DateTime partíciós fájl elérési útja vagy neve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)végezheti el. Ez a módszer nem jelent terhet a forrás oldal listázására.
 
@@ -124,7 +124,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
 
   - Ellenőrizze, hogy a saját üzemeltetésű IR-gép kevés késéssel kapcsolódik-e a forrás-adattárhoz. Ha a forrás az Azure-ban található, [ezzel az eszközzel](http://www.azurespeed.com/Azure/Latency) ellenőrizhető a saját ÜZEMELTETÉSű IR-gép késése az Azure-régióban, annál kevesebb a jobb.
 
-  - Ha fájl-alapú forrásból másol adatokat, ha **helyettesítő szűrőt** használ a mappa elérési útján vagy a fájlnéven`wildcardFolderPath` ( `wildcardFileName`vagy), vagy a **fájl utolsó módosításának időszűrőjét** (`modifiedDatetimeStart` vagy`modifiedDatetimeEnd`) használja, vegye figyelembe, hogy az ilyen szűrő a másolási tevékenységet fogja eredményezni a megadott mappában lévő összes fájlnak a kliens oldalára való listázásakor, majd alkalmazza a szűrőt. Ilyenkor előfordulhat, hogy a fájl enumerálása különösen szűk keresztmetszetet jelenthet, ha csak a fájlok kis halmaza felel meg a szűrési szabálynak.
+  - Ha fájl-alapú forrásból másol adatokat, ha **helyettesítő szűrőt** használ a mappa elérési útján vagy a fájlnéven ( `wildcardFolderPath` vagy `wildcardFileName` ), vagy a **fájl utolsó módosításának időszűrőjét** ( `modifiedDatetimeStart` vagy) használja `modifiedDatetimeEnd` , vegye figyelembe, hogy az ilyen szűrő a másolási tevékenységet fogja eredményezni a megadott mappában lévő összes fájlnak a kliens oldalára való listázásakor, majd alkalmazza a szűrőt. Ilyenkor előfordulhat, hogy a fájl enumerálása különösen szűk keresztmetszetet jelenthet, ha csak a fájlok kis halmaza felel meg a szűrési szabálynak.
 
     - Győződjön meg arról, hogy [a fájlok másolását a DateTime partíciós fájl elérési útja vagy neve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)végezheti el. Ez a módszer nem jelent terhet a forrás oldal listázására.
 
@@ -181,13 +181,13 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 * Azure SQL Database: nyomon követheti [a teljesítményt](../sql-database/sql-database-single-database-monitor.md) , és ellenőrizheti az adatbázis-tranzakciós egység (DTU) százalékos arányát.
 * Azure SQL Data Warehouse: a képesség mérése adatraktár-egységekben (DWU) történik. Lásd: [a számítási teljesítmény kezelése Azure SQL Data Warehouseban (áttekintés)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Azure Cosmos db teljesítmény szintjei](../cosmos-db/performance-levels.md).
-* Helyszíni SQL Server: a [teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
+* SQL Server: [a teljesítmény figyelése és finomhangolása](https://msdn.microsoft.com/library/ms189081.aspx).
 * Helyszíni fájlkiszolgáló: a [fájlkiszolgálók teljesítményének finomhangolása](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató](copy-activity-performance.md)
 - [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
 - [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)

@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 07af9fa20fd6a331313050d3ba2cfbbe9c3fe7e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050302"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195110"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető, Azure SQL Database és az Azure SQL felügyelt példányának funkcióit sorolja fel. SQL Database és SQL felügyelt példányok frissítései és tökéletesítései: [SQL Database & SQL felügyelt példányok szolgáltatásának frissítései](https://azure.microsoft.com/updates/?product=sql-database). Az egyéb Azure-szolgáltatások frissítéseihez és tökéletesítéséhez tekintse meg a [Service Updates](https://azure.microsoft.com/updates)című témakört.
@@ -29,7 +30,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányának dokumentációja
 
 Ezt azért hajtottuk végre, mert bizonyos funkciók és funkciók nagy mértékben változnak egyetlen adatbázis és felügyelt példány között, és egyre nagyobb kihívást jelent az Azure SQL Database és az Azure SQL felügyelt példánya között az egyes "megosztott" cikkekbe foglalt összetett árnyalatok ismertetése.
 
-A különböző Azure SQL-termékek közötti pontosítás egyszerűsíti és egyszerűsíti az Azure-beli SQL Server adatbázismotor használatának folyamatát, függetlenül attól, hogy egyetlen felügyelt adatbázis a Azure SQL Databaseban, egy teljes körűen felhasználható felügyelt példány, amely több adatbázist üzemeltet az Azure SQL felügyelt példányain, illetve a jól ismert helyszíni SQL Server termékben, de az Azure-beli virtuális gépen üzemel.
+A különböző Azure SQL-termékek közötti pontosítás egyszerűsíti és egyszerűsíti az Azure-beli SQL Server adatbázismotor használatának folyamatát, függetlenül attól, hogy a Azure SQL Database egyetlen felügyelt adatbázisa, egy teljes körűen felügyelt példány, amely több adatbázist üzemeltet az Azure SQL felügyelt példányain, vagy az Azure-beli virtuális gépeken tárolt ismerős SQL Server terméket.
 
 Vegye figyelembe, hogy ez a folyamat folyamatban van, és nem minden cikket frissítették még. Például a Transact-SQL (T-SQL) utasítások, a tárolt eljárások és a Azure SQL Database és az Azure SQL felügyelt példánya között megosztott számos szolgáltatás dokumentációja még nem fejeződött be, ezért köszönjük türelmét, hogy továbbra is tisztázza a tartalmat. 
 
@@ -42,13 +43,13 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 |**Azure SQL Database**|*Önálló adatbázis* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza. |
 |**Azure SQL Database**|*Rugalmas készlet* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza.  |
 |**Azure SQL Database** |Azure SQL Database | Bár a kifejezés változatlan marad, az már csak az önálló adatbázisra és a rugalmas készletekre vonatkozik, és nem tartalmazza a felügyelt példányt. |
-| **Azure SQL**| N.A. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
+| **Azure SQL**| N/A | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](service-tiers-vcore.md#hardware-generations).|
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
@@ -67,7 +68,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">a Create login utasítás használatával a külső szolgáltató</a> utasításban. |
@@ -92,7 +93,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
   - <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Azure havi Kredittel</a> rendelkező előfizetések támogatása a Visual Studio-előfizetőknek és a megnövekedett [regionális korlátoknak](../managed-instance/resource-limits.md#regional-resource-limitations)megfelelően.
   - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 és SharePoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> támogatása
   - Hozzon létre SQL felügyelt példányokat az Ön által választott <a href="https://aka.ms/managed-instance-collation">példány-szintű rendezéssel</a> és <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">időzónával</a> .
-  - Az SQL felügyelt nstances már védett a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md).
+  - Az SQL felügyelt példányai mostantól a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md)védettek.
   - Konfigurálja a felügyelt SQL-példányokat [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) kapcsolatban a hálózati teljesítmény növeléséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , vagy <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurálja a biztonsági másolatok megőrzését 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
   - Az új funkciók lehetővé teszik, hogy az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázist egy másik adatközpontba állítsa be a PowerShell használatával</a>, az [adatbázis átnevezésével](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), a [virtuális fürt törlésével](../managed-instance/virtual-cluster-delete.md).
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.

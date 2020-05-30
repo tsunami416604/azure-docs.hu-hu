@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393701"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204871"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
 
@@ -59,9 +59,9 @@ A lassú elérési szint alacsonyabb tárolási költségekkel és magasabb hozz
 
 ## <a name="archive-access-tier"></a>Archivált adatok hozzáférési szintje
 
-Az archív hozzáférési szint a legalacsonyabb tárolási díjat számítja ki. A gyakori és a ritka elérésű szintekhez képest azonban nagyobb Adatlekérdezési költségekkel jár. Az archiválási szinten tárolt adatok több órát is igénybe vehetnek. Az adatoknak az archiválási szinten kell maradniuk legalább 180 napig, vagy egy korai törlési díjat kell fizetni.
+Az archív hozzáférési szint a legalacsonyabb tárolási díjat számítja ki. A gyakori és a ritka elérésű szintekhez képest azonban nagyobb Adatlekérdezési költségekkel jár. Az adatoknak az archiválási szinten kell maradniuk legalább 180 napig, vagy egy korai törlési díjat kell fizetni. Az archiválási szinten lévő adatok több órát is igénybe vehetnek, ha a rehidratálás prioritása függ. Kisméretű objektumok esetében a magas prioritású rehidratálás az 1 óra alatti archívumból kérheti le az objektumot. További információért lásd [a blob-adatok rehidratálása az archív szintről](storage-blob-rehydration.md) című témakört.
 
-Míg a Blobok archiválási tárolóban találhatók, a blob-adatok offline állapotban vannak, és nem olvashatók, írhatók felül vagy módosíthatók. Az archívumban található Blobok olvasásához vagy letöltéséhez először egy online szintre kell kiszáradni. Az archív tárolóban nem lehet pillanatképeket készíteni egy blobról. A blob metaadatai azonban online és elérhető állapotban maradnak, és lehetővé teszik a blob és a hozzá tartozó tulajdonságok listázását. Az archív Blobok esetében az egyetlen érvényes művelet a GetBlobProperties, a GetBlobMetadata, a ListBlobs, a SetBlobTier, a CopyBlob és a DeleteBlob. További információért lásd [a blob-adatok rehidratálása az archív szintről](storage-blob-rehydration.md) című témakört.
+Míg a Blobok archiválási tárolóban találhatók, a blob-adatok offline állapotban vannak, és nem olvashatók, írhatók felül vagy módosíthatók. Az archívumban található Blobok olvasásához vagy letöltéséhez először egy online szintre kell kiszáradni. Az archív tárolóban nem lehet pillanatképeket készíteni egy blobról. A blob metaadatai azonban online és elérhető állapotban maradnak, így a blob, a tulajdonságai, a metaadatok és a blob-index címkéi is kilistázható. A blob metaadatainak beállítása vagy módosítása az archívumban nem engedélyezett; azonban beállíthatja és módosíthatja a blob-index címkéit. Az archív Blobok esetében az egyetlen érvényes művelet a GetBlobProperties, a GetBlobMetadata, a SetBlobTags, a GetBlobTags, a FindBlobsByTags, a ListBlobs, a SetBlobTier, a CopyBlob és a DeleteBlob.
 
 Az archív hozzáférési szint használati forgatókönyvei például a következők:
 
@@ -119,7 +119,7 @@ Az alábbi táblázat a prémium szintű, a blob Storage és a gyakori, ritka el
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Rendelkezésre állás**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
 | **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N/A                       | 99.99%       | 99.9%               | Offline           |
-| **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférési és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
+| **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális objektumméret**                   | N/A                       | N/A          | N/A                 | N/A               |
 | **Minimális tárolási időtartam**              | N/A                       | N/A          | 30 nap<sup>1</sup> | 180 nap
 | **Késés** <br> **(az első bájtig eltelt idő)** | Egy számjegyű ezredmásodperc | ezredmásodperc | ezredmásodperc        | óra<sup>2</sup> |
@@ -252,7 +252,7 @@ A ritka elérésű hozzáférési szinten lévő Blobok valamivel alacsonyabb re
 
 **A műveletek megegyeznek a gyakori és a ritka elérésű, valamint az archív tárolási szint esetében?**
 
-A gyakori és a ritka elérésű szint esetében minden művelet teljesen megegyezik. Az összes érvényes archiválási művelet, beleértve a GetBlobProperties, a GetBlobMetadata, a ListBlobs, a SetBlobTier és a DeleteBlob, a gyors és a ritka elérésű 100%. A blob-adatok nem olvashatók és nem módosíthatók az archiválási szinten, amíg újra nem hidratálja őket. archiválás közben csak a blob-metaadatok olvasási műveletei támogatottak.
+A gyakori és a ritka elérésű szint esetében minden művelet teljesen megegyezik. Az összes érvényes archiválási művelet, beleértve a GetBlobProperties, a GetBlobMetadata, a SetBlobTags, a GetBlobTags, a FindBlobsByTags, a ListBlobs, a SetBlobTier és a DeleteBlob is, a 100%-os és a ritka elérésű A blob-adatok nem olvashatók és nem módosíthatók az archiválási szinten, amíg újra nem hidratálja őket. archiválás közben csak a blob-metaadatok olvasási műveletei támogatottak. Az archívumban azonban a blob-indexek címkéi is olvashatók, állíthatók be vagy módosíthatók.
 
 **Amikor az archív tárolási szintről rehidratálok egy blobot a gyakori vagy ritka elérésű szintre, honnan tudom, hogy befejeződött-e a rehidratálás?**
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827675"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204389"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -44,11 +44,15 @@ Engedélyezheti a műveletet egy előfizetéshez és az erőforráscsoporthoz, v
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>A Start és a stop művelet megcélzása virtuálisgép-lista alapján
 
-1. Futtassa a **ScheduledStartStop_Parent** runbook a következő **művelettel** : **Start**értékre, adja hozzá a virtuális gépek vesszővel tagolt listáját a **VMList** paraméter mezőben, majd állítsa a **WHATIF** paramétert igaz értékre. A módosítások előnézete.
+1. Futtassa a **ScheduledStartStop_Parent** runbook a következő **művelettel** : **Start**.
 
-2. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3).
+2. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóköz nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
-3. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
+3. Állítsa a **WHATIF** paramétert True (igaz) értékre.
+
+4. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3).
+
+5. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
 
     > [!NOTE]
     > A célként megadott **ResourceGroup-nevek** értékét a rendszer a és a értékének megfelelően tárolja `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` . A további részletesség érdekében módosíthatja ezeket a változókat a különböző erőforráscsoportok megcélzásához. Az indítási művelethez használja a parancsot `External_Start_ResourceGroupNames` , és használja `External_Stop_ResourceGroupNames` a stop művelethez. A virtuális gépek automatikusan hozzáadódnak az indítási és leállítási ütemtervekhez.
@@ -71,13 +75,17 @@ Egy olyan környezetben, amely több, elosztott munkaterhelést támogató virtu
 
 1. `sequencestart` `sequencestop` A paraméterhez hozzáadni kívánt virtuális gépekhez adjon hozzá pozitív egész értékkel rendelkező és egy címkét `VMList` .
 
-2. Futtassa a **SequencedStartStop_Parent** runbook a következő **művelettel** : **Start**értékre, adja hozzá a virtuális gépek vesszővel tagolt listáját a **VMList** paraméter mezőben, majd állítsa a **WHATIF** értéket True értékre. A módosítások előnézete.
+2. Futtassa a **SequencedStartStop_Parent** runbook a következő **művelettel** : **Start**.
 
-3. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3).
+3. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóköz nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
-4. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
+4. Állítsa a **WHATIF** igaz értékre. 
 
-5. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a **figyelés és diagnosztika/figyelés – művelet – groupsrunbook** paramétert a **false**értékre. Azt is megteheti, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan az előírt ütemterv szerint futnak.
+5. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával.
+
+6. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
+
+7. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a **figyelés és diagnosztika/figyelés – művelet – groupsrunbook** paramétert a **false**értékre. Azt is megteheti, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan az előírt ütemterv szerint futnak.
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>3. forgatókönyv: automatikusan indítás vagy leállítás CPU-kihasználtság alapján
 

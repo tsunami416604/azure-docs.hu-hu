@@ -6,13 +6,13 @@ ms.service: azure
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: cynthn
-ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b181316ac2c6998676a17589fff246cf88ff50c2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: fasttrack-edit, mvc, references_regions
+ms.openlocfilehash: 903bfd0be6c82cb5836248a784805b45edcabf36
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123802"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196376"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Az Azure-Availability Zones támogató régiók
 
@@ -24,10 +24,10 @@ Ez a szakasz felsorolja a Availability Zones támogató Azure-szolgáltatásokat
 
 Az egyes régiókban elérhető szolgáltatások, valamint a rendelkezésre állásra vonatkozó közelgő ütemterv a [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)között található.
 
-|                                 |Amerika |              |           |           | Európa |              |          |              | Ázsia és a Csendes-óceáni térség |                 |                |
+|                                 |Észak-, Dél- és Közép-Amerika |              |           |           | Európa |              |          |              | Ázsia és a Csendes-óceáni térség |                 |                |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|-------------|
 |          |USA középső régiója|USA keleti régiója|USA 2. keleti régiója|USA nyugati régiója, 2.|Közép-Franciaország|Észak-Európa|Az Egyesült Királyság déli régiója|Nyugat-Európa|Kelet-Japán|Délkelet-Ázsia|Kelet-Ausztrália|
-| **Compute**                         |            |              |           |           |                |              |          |             |            |                |                |
+| **Számítás**                         |            |              |           |           |                |              |          |             |            |                |                |
 | Linux rendszerű virtuális gépek          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Windows rendszerű virtuális gépek        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |
 | Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |                |

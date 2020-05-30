@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 757b11c7fd6eaeac1ef0d6d3bb8cea9be2af983c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047145"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193915"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Microsoft Azure SQL Database és az Azure SQL felügyelt példány teljesítményének figyelése dinamikus felügyeleti nézetek használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,7 +43,7 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 Az Azure SQL felügyelt példányain a dinamikus felügyeleti nézetek lekérdezése a **kiszolgáló állapotának megtekintéséhez** szükséges engedélyek megadását igényli. További információ: [rendszerszintű dinamikus felügyeleti nézetek](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions).
 
-A helyszíni SQL Server és az Azure SQL felügyelt példányainak egy példányában a dinamikus felügyeleti nézetek a kiszolgáló állapotával kapcsolatos információkat adnak vissza. Azure SQL Database a csak az aktuális logikai adatbázisra vonatkozó adatokat adja vissza.
+SQL Server és az Azure SQL felügyelt példányainak egy példányában a dinamikus felügyeleti nézetek a kiszolgáló állapotával kapcsolatos információkat adnak vissza. Azure SQL Database a csak az aktuális logikai adatbázisra vonatkozó adatokat adja vissza.
 
 Ez a cikk a következő típusú lekérdezési teljesítménnyel kapcsolatos problémák észlelésére szolgáló DMV-lekérdezések gyűjteményét tartalmazza SQL Server Management Studio vagy Azure Data Studio használatával:
 
@@ -673,7 +673,7 @@ SELECT COUNT(*) AS [Concurrent_Requests]
 FROM sys.dm_exec_requests R;
 ```
 
-Egy helyszíni SQL Server adatbázis munkaterhelésének elemzéséhez módosítsa ezt a lekérdezést az elemezni kívánt adatbázis szűréséhez. Ha például egy MyDatabase nevű helyszíni adatbázissal rendelkezik, akkor ez a Transact-SQL-lekérdezés az adatbázisban egyidejű kérelmek számát adja vissza:
+Egy SQL Server adatbázis munkaterhelésének elemzéséhez módosítsa ezt a lekérdezést az elemezni kívánt adatbázis szűréséhez. Ha például egy MyDatabase nevű helyszíni adatbázissal rendelkezik, akkor ez a Transact-SQL-lekérdezés az adatbázisban egyidejű kérelmek számát adja vissza:
 
 ```sql
 SELECT COUNT(*) AS [Concurrent_Requests]
@@ -702,7 +702,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections
 ```
 
-Ha helyszíni SQL Server munkaterhelést elemez, módosítsa a lekérdezést úgy, hogy az egy adott adatbázisra összpontosítsanak. Ez a lekérdezés segít meghatározni a lehetséges munkamenet-igényeket az adatbázishoz, ha azt tervezi, hogy áthelyezi az Azure-ba.
+Ha SQL Server munkaterhelést elemez, módosítsa a lekérdezést úgy, hogy az egy adott adatbázisra összpontosítsanak. Ez a lekérdezés segít meghatározni a lehetséges munkamenet-igényeket az adatbázishoz, ha azt tervezi, hogy áthelyezi az Azure-ba.
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [A Azure SQL Database és az Azure SQL felügyelt példányának bemutatása](sql-database-paas-overview.md)

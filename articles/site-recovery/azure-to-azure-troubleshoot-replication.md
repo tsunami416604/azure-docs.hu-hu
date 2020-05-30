@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901357"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196088"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
 
@@ -28,7 +28,7 @@ Az alábbi szakaszok az okait és megoldásait ismertetik.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Magas adatváltozási érték a forrás virtuális gépen
 
-Azure Site Recovery esemény jön létre, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Ha szeretné megtekinteni, hogy a probléma magas adatforgalom miatt történt-e, nyissa meg a **replikált elemek** > **VM** > virtuálisgép **-események – utolsó 72 óra**lehetőséget.
+Azure Site Recovery esemény jön létre, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Ha szeretné megtekinteni, hogy a probléma magas adatforgalom miatt történt-e, nyissa meg a **replikált elemek**virtuálisgép  >  **VM**  >  **-események – utolsó 72 óra**lehetőséget.
 Az esemény- **adatváltozási arányt a támogatott korlátokon felül**kell látni:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
@@ -105,6 +105,10 @@ A **javítás módja**: Tekintse meg a SQL Server 2017-as számú [, a 16. össz
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>Az Azure Közvetlen tárolóhelyek konfigurációját használja
 
 **Javítás**: a Azure site Recovery nem tudja létrehozni az alkalmazás konzisztens helyreállítási pontját közvetlen tárolóhelyek-konfigurációhoz. [Konfigurálja a replikációs házirendet](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>Az alkalmazás-konzisztencia nincs engedélyezve a Linux-kiszolgálókon
+
+**Javítás** : a Linux operációs rendszer Azure site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az egyéni parancsfájl előtti és utáni beállításokat a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazás-konzisztencia érdekében. Az [alábbi lépéseket](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) követve engedélyezheti.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>A VSS-vel kapcsolatos problémák több oka is van:
 
