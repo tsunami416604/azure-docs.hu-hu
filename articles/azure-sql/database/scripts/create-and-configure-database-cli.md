@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: egyetlen adatbázis létrehozása'
-description: Az Azure CLI példa szkriptjét egyetlen Azure SQL Database létrehozására használhatja.
+title: 'Az Azure CLI: hozzon létre egy önálló adatbázist'
+description: Az Azure CLI példa szkriptjét egyetlen adatbázis létrehozására használhatja.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: ab847f13b6c75eeb31c4d20877d7a314e53f47ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054088"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196880"
 ---
-# <a name="use-the-azure-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Egyetlen Azure SQL Database létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
+# <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Egyetlen adatbázis létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez az Azure CLI-parancsfájl egy Azure SQL Database hoz létre, és konfigurál egy kiszolgálói szintű tűzfalszabály-szabályt. Miután a szkript sikeresen lefutott, az SQL Database elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről.
+Ez az Azure CLI-parancsfájl egyetlen adatbázist hoz létre a Azure SQL Databaseban, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. A szkript sikeres futtatása után az adatbázis az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 

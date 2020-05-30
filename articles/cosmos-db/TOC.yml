@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: Partnerek
       href: partners-migration-cosmosdb.md
+    - name: Microsoft Q&A kérdések oldala
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: Videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure-ütemterv

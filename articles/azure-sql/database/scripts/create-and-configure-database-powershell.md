@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: egyetlen adatbázis létrehozása'
-description: Azure PowerShell példa parancsfájlt egyetlen Azure SQL Database létrehozásához.
+description: Azure PowerShell példa parancsfájl használatával hozzon létre egyetlen adatbázist a Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9468ebd91ac0742c928bfd5cd1e1c449ae62c69b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d8cc407e09702472978e645650ebe8df0963ff7b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053734"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196909"
 ---
-# <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-server-level-firewall-rule"></a>Egyetlen Azure SQL Database létrehozása és egy kiszolgálói szintű tűzfalszabály konfigurálása a PowerShell használatával
+# <a name="use-powershell-to-create-a-single-database-and-configure-a-server-level-firewall-rule"></a>Egyetlen adatbázis létrehozása és egy kiszolgálói szintű tűzfalszabály konfigurálása a PowerShell használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez a PowerShell-parancsfájl egy Azure SQL Database hoz létre, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. Miután a szkript sikeresen lefutott, az SQL Database elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről.
+Ez a Azure PowerShell parancsfájl egy önálló adatbázist hoz létre a Azure SQL Databaseban, és egy kiszolgálói szintű tűzfalszabály konfigurálását végzi. A szkript sikeres futtatása után az adatbázis az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -56,6 +57,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

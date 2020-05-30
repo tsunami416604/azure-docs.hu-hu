@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501825"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219128"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box NFS-en keresztül
 
@@ -93,8 +93,10 @@ A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adat
   * Az eset a névben marad.
   * A fájlok kis-és nagybetűk megkülönböztetése nélkül.
 
-    Ha például a másoláskor `SampleFile.txt` a `Samplefile.Txt`(z), a (z) és a (z), akkor a rendszer a nevet megőrzi a Data boxban, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak számítanak.
-* Győződjön meg róla, hogy karbantartja a forrásadatok másolatát, amíg meg nem erősíti, hogy a Data Box átvitte az adatait az Azure Storage szolgáltatásba.
+    Ha például a másoláskor a (z `SampleFile.txt` ), a (z) és a (z `Samplefile.Txt` ), akkor a rendszer a nevet megőrzi a Data boxban, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak számítanak.
+
+> [!IMPORTANT]
+> Győződjön meg róla, hogy karbantartja a forrásadatok másolatát, amíg meg nem erősíti, hogy a Data Box átvitte az adatait az Azure Storage szolgáltatásba.
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -102,31 +104,31 @@ A `cp` parancs az egyik legjobb választás a könyvtárak másolására. A para
 
 Amennyiben az rsyncet használja többszálas másoláshoz, a következő irányelveket kell betartania:
 
- - Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
+* Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  Telepítse az **Rsyncet** és a **Parallelt** (a Linux elosztott verziójától függően).
+* Az **rsync** és a **Parallel** telepítése (a Linux elosztott verziótól függően változhat).
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - Hozzon létre egy csatlakozási pontot.
+* Hozzon létre egy csatlakozási pontot.
 
     `sudo mkdir /mnt/databox`
 
- - Csatlakoztassa a kötetet.
+* Csatlakoztassa a kötetet.
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - Tükrözze a mappa könyvtárstruktúráját.  
+* Tükrözze a mappa könyvtárstruktúráját.  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - Másolja át a fájlokat. 
+* Másolja át a fájlokat.
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -140,22 +142,20 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 
 Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
-    
-   ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
 > [!div class="checklist"]
+>
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
 > * Adatok másolása a Data Boxra
-
 
 Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan küldheti vissza a Data Boxot a Microsoftnak.
 
 > [!div class="nextstepaction"]
 > [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)
-

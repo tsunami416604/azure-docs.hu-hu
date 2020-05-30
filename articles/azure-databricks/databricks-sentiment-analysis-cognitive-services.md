@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 382dff156c088f367200f0dd46c3758193ade189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4979129331114cf22f459ce632ac3674a7d866d1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889229"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197180"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -63,7 +63,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/?WT.mc_id=sparkeven
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Azure Databricks**lehetőséget.
 
     ![Databricks Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -77,7 +77,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/management/overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Díjszabási csomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
    * Adjon egy nevet a fürtnek.
    * Ehhez a cikkhez hozzon létre egy **6,0** futtatókörnyezettel rendelkező fürtöt.
-   * Győződjön meg arról, hogy a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzet be van jelölve. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
    Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok méretét a technikai feltételekhez és a [költségvetéshez](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
 
@@ -164,7 +164,7 @@ Ebben az oktatóanyagban az [Azure Cognitive Services Text Analytics API-kat](..
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
-3. Az Azure Marketplace területen válassza a **mesterséges intelligencia és Cognitive Services** > **text Analytics API**lehetőséget.
+3. Az Azure Marketplace területen válassza a **mesterséges intelligencia és Cognitive Services**  >  **text Analytics API**lehetőséget.
 
     ![Kognitív szolgáltatások fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Kognitív szolgáltatások fiók létrehozása")
 
@@ -216,7 +216,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks munkaterületen 
 Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőket a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 > [!NOTE]
-> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **adatforrást** a `test` helyett `twitter` , és töltse fel a listához az előnyben részesített **testSource** .
+> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **adatforrást** a `test` helyett, `twitter` és töltse fel a listához az előnyben részesített **testSource** .
 
 ```scala
     import scala.collection.JavaConverters._
@@ -324,7 +324,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -429,7 +429,7 @@ A kimenetnek ezután a következő kódrészlethez hasonlónak kell lennie:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -463,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Adjon hozzá egy új kódcellát, és illessze be az alábbi részletet. Ez a kódrészlet egy olyan objektumot tartalmaz, amely a Text Analysis API nyelvfelismerés és hangulatelemzés céljára való hívásához szükséges függvényeket tartalmaz. Győződjön meg arról, hogy a `<PROVIDE ACCESS KEY HERE>` helyőrzőt a Cognitive Services fiókjához beolvasott értékre cseréli.
+Adjon hozzá egy új kódcellát, és illessze be az alábbi részletet. Ez a kódrészlet egy olyan objektumot tartalmaz, amely a Text Analysis API nyelvfelismerés és hangulatelemzés céljára való hívásához szükséges függvényeket tartalmaz. Győződjön meg arról, hogy a helyőrzőt `<PROVIDE ACCESS KEY HERE>` a Cognitive Services fiókjához beolvasott értékre cseréli.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection
@@ -607,7 +607,7 @@ A következő kódrészlethez hasonló kimenetnek kell megjelennie:
     +--------------------------------+------------------+
     |Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah   #cloudcomputing #Azure          |0.7761918306350708|
-    |Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
+    |Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
     |@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|0.5               |
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
@@ -622,7 +622,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Megismerte, hogyan végezheti el az alábbi műveleteket:

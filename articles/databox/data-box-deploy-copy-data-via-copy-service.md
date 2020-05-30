@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501879"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219158"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Oktatóanyag: az adatmásolási szolgáltatás használata az Adatmásolás Azure Data Boxba (előzetes verzió)
 
@@ -50,11 +50,12 @@ Miután csatlakozott a NAS-eszközhöz, a következő lépés az adatai másolá
 
 * Ha az adatmásolási szolgáltatás az Adatmásolás során módosul, az adatvesztés vagy az adatsérülés tapasztalható.
 
-* Győződjön meg róla, hogy karbantartja a forrásadatok másolatát, amíg meg nem erősíti, hogy a Data Box átvitte az adatait az Azure Storage szolgáltatásba.
+> [!IMPORTANT]
+> Győződjön meg róla, hogy karbantartja a forrásadatok másolatát, amíg meg nem erősíti, hogy a Data Box átvitte az adatait az Azure Storage szolgáltatásba.
 
 Az adatok adatmásolási szolgáltatással történő másolásához létre kell hoznia egy feladatot:
 
-1. A Data Box eszköz helyi webes felületén nyissa meg az**Adatmásolás** **kezelése** > lapot.
+1. A Data Box eszköz helyi webes felületén nyissa meg az **Manage**  >  **Adatmásolás**kezelése lapot.
 2. Az **Adatmásolás** lapon válassza a **Létrehozás**lehetőséget.
 
     ![Válassza a létrehozás lehetőséget az "Adatmásolás" oldalon](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -63,14 +64,14 @@ Az adatok adatmásolási szolgáltatással történő másolásához létre kell
     
     |Mező                          |Érték    |
     |-------------------------------|---------|
-    |**Feladat neve**                       |A feladatokhoz 230 karakternél rövidebb egyedi név. Ezek a karakterek nem engedélyezettek a feladattípusban \<: \> \| \? \* \\ \: \/,,,,,,, és\\\.         |
-    |**Forrás helye**                |Adja meg az adatforrás SMB-elérési útját a következő `\\<ServerIPAddress>\<ShareName>` formátumban `\\<ServerName>\<ShareName>`: vagy.        |
+    |**Feladat neve**                       |A feladatokhoz 230 karakternél rövidebb egyedi név. A következő karakterek nem engedélyezettek a feladattípusban:,,,,,, \<, \> \| \? \* \\ \: \/ és\\\.         |
+    |**Forrás helye**                |Adja meg az adatforrás SMB-elérési útját a következő formátumban: `\\<ServerIPAddress>\<ShareName>` vagy `\\<ServerName>\<ShareName>` .        |
     |**Username**                       |A Felhasználónév `\\<DomainName><UserName>` formátuma az adatforrás eléréséhez. Ha egy helyi rendszergazda csatlakozik, akkor explicit biztonsági engedélyekre van szükségük. Kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok** lehetőséget, majd válassza a **Biztonság**elemet. Ehhez hozzá kell adnia a helyi rendszergazdát a **Biztonság** lapon.       |
     |**Jelszó**                       |Az adatforrás eléréséhez használt jelszó.           |
     |**Cél Storage-fiók**    |Válassza ki a cél Storage-fiókot, hogy az adatok a listáról legyenek feltöltve.         |
     |**Cél típusa**       |Válassza ki a cél tárolási típust a listából: **blob letiltása**, **oldal blobja**vagy **Azure Files**.        |
-    |**Cél tároló/megosztás**    |Adja meg annak a tárolónak vagy megosztásnak a nevét, amelyhez fel kívánja tölteni az adatait a célhely Storage-fiókjába. A név lehet egy megosztás neve vagy egy tároló neve. Például használhatja a következőket: `myshare` vagy `mycontainer`. A nevet megadhatja a (z `sharename\directory_name` `containername\virtual_directory_name`) formátumban is.        |
-    |**Fájlokra vonatkozó megfelelő minta másolása**    | A fájlnév-megfeleltetési mintát a következő két módon adhatja meg:<ul><li>**Helyettesítő kifejezések használata:** `?` Csak `*` a helyettesítő karakteres kifejezésekben támogatott. A kifejezés `*.vhd` például megfelel a `.vhd` kiterjesztéssel rendelkező összes fájlnak. Hasonlóképpen, `*.dl?` a kiterjesztéssel `.dl` vagy a-vel `.dl`kezdődő összes fájlra megegyezik, például: `.dll`. Hasonlóképpen, `*foo` az összes olyan fájlra illeszkedik, amelynek `foo`a nevei véget ért.<br>A mezőbe közvetlenül is beírhatja a helyettesítő karaktert. Alapértelmezés szerint a mezőben megadott értéket helyettesítő kifejezésként kezeli a rendszer.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések támogatottak. A reguláris kifejezés `.*\.vhd` például megfelel a `.vhd` kiterjesztéssel rendelkező összes fájlnak. A reguláris kifejezések esetében adja meg `<pattern>` a közvetlenül `regex(<pattern>)`a következőt:. További információ a reguláris kifejezésekről: [reguláris kifejezés nyelve – gyors hivatkozás](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Cél tároló/megosztás**    |Adja meg annak a tárolónak vagy megosztásnak a nevét, amelyhez fel kívánja tölteni az adatait a célhely Storage-fiókjába. A név lehet egy megosztás neve vagy egy tároló neve. Például használhatja a következőket: `myshare` vagy `mycontainer`. A nevet megadhatja a (z) formátumban is `sharename\directory_name` `containername\virtual_directory_name` .        |
+    |**Fájlokra vonatkozó megfelelő minta másolása**    | A fájlnév-megfeleltetési mintát a következő két módon adhatja meg:<ul><li>**Helyettesítő kifejezések használata:** Csak `*` `?` a helyettesítő karakteres kifejezésekben támogatott. A kifejezés például megfelel a `*.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . Hasonlóképpen, a `*.dl?` kiterjesztéssel `.dl` vagy a-vel kezdődő összes fájlra megegyezik `.dl` , például: `.dll` . Hasonlóképpen, `*foo` az összes olyan fájlra illeszkedik, amelynek a nevei véget ért `foo` .<br>A mezőbe közvetlenül is beírhatja a helyettesítő karaktert. Alapértelmezés szerint a mezőben megadott értéket helyettesítő kifejezésként kezeli a rendszer.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések támogatottak. A reguláris kifejezés például megfelel a `.*\.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . A reguláris kifejezések esetében adja meg a közvetlenül a következőt: `<pattern>` `regex(<pattern>)` . További információ a reguláris kifejezésekről: [reguláris kifejezés nyelve – gyors hivatkozás](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Fájl optimalizálása**              |Ha ez a funkció engedélyezve van, az 1 MB-nál kisebb fájlok a betöltés során lesznek csomagolva. Ez a csomagolás felgyorsítja a kis méretű fájlok adatmásolási feladatait. Emellett jelentős időt takaríthat meg, ha a fájlok száma messze meghaladja a címtárak számát.        |
  
 4. Válassza az **Indítás** elemet. A rendszer érvényesíti a bemeneteket, és ha az érvényesítés sikeres, akkor elindul a feladatok. Eltarthat néhány percig, amíg a feladatok elindulnak.
@@ -150,4 +151,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan szállít
 
 > [!div class="nextstepaction"]
 > [Azure Data Box eszköz szállítása a Microsoftnak](./data-box-deploy-picked-up.md)
-

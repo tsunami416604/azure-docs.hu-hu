@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584620"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220212"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -26,7 +26,7 @@ A Cognitive Services gépi tanulási képességeket biztosít olyan általános 
 |--|--|
 |[Döntés](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.|
 |[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.|
-|[Keresés](https://azure.microsoft.com/services/cognitive-services/directory/search/)|A Bing Search API-jait az alkalmazásaihoz adva több milliárd weboldalt, képet, videót és hírt fésülhet át egyetlen API-hívással.|
+|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|A Bing Search API-jait az alkalmazásaihoz adva több milliárd weboldalt, képet, videót és hírt fésülhet át egyetlen API-hívással.|
 |[Beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|A beszédet szöveggé, a szöveget pedig természetesen hangzó beszéddé alakíthatja. Egyik nyelvtől a másikra fordíthat, valamint engedélyezheti a beszélő ellenőrzését és felismerését.|
 |[Látás](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Felismerheti, azonosíthatja, feliratozhatja, indexelheti és moderálhatja képeit, videóit és digitális szabadkézi tartalmait.|
 ||||
@@ -91,12 +91,12 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 
 |Kognitív szolgáltatás|Nincs szükség betanítási adatgyűjtésre|Megadhat egy vagy több betanítási adatkészletet|Valós idejű vagy közel valós idejű adatgyűjtés|
 |--|--|--|--|
-|[Anomáliadetektor](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing kereső |x|||
-|[Computer Vision](./Computer-vision/Home.md)|x|||
-|[Content Moderator](./Content-Moderator/overview.md)|x||x|
+|[Számítógépes látástechnológia](./Computer-vision/Home.md)|x|||
+|[Tartalommoderátor](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Face](./Face/Overview.md)|x|x||
+|[Arcfelismerés](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Modern olvasó](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
@@ -106,9 +106,9 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Beszélő felismerő](./speaker-recognition/home.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
-|[Speech Translation](speech-service/speech-translation.md)|x|||
-|[Text Analytics](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Beszédfordítás](speech-service/speech-translation.md)|x|||
+|[Szövegelemzés](./text-analytics/overview.md)|x|||
+|[Fordító](./translator/translator-info-overview.md)|x|||
 |[Translator-Custom Translator](./translator/custom-translator/overview.md)||x||
 
 * A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 

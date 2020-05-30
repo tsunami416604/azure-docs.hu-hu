@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása Azure Portal használatával
-description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából egy Azure SQL Database-be.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 4649ac8bbef23711ed45baffa15bb9e8bff8daec
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3c29d7b30541e0d289182d448b5bcbf69d02a3dc
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119177"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194557"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely egy SQL Server adatbázis több táblájából származó különbözeti adatok betöltését egy Azure SQL Database-adatbázisba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -68,12 +68,12 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használ forrásadattárként. 
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
 * **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
-1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon a helyszíni SQL Server-adatbázishoz.
+1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon az SQL Server-adatbázishoz.
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
@@ -281,10 +281,10 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Győződjön meg róla, hogy a **MySelfHostedIR** szerepel az integrációs modulok listájában.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban a helyszíni SQL Server-adatbázissal és az Azure SQL-adatbázissal társított szolgáltatásokat hoz létre. 
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a SQL Server-adatbázishoz és az Azure SQL Database-hez. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Az SQL Server társított szolgáltatásának létrehozása
-Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előállítóval.
+Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállítóval.
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 
@@ -469,7 +469,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name | Típus | Érték | 
+        | Name (Név) | Típus | Érték | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

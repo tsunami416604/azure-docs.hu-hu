@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: SQL Database-adatbázis biztonsági másolatának visszaállítása'
-description: Azure PowerShell példa szkriptet egy adatbázis visszaállítására SQL Database egy korábbi időpontra az automatikus biztonsági mentésből
+title: 'PowerShell: adatbázis automatikus biztonsági másolatának visszaállítása SQL Database'
+description: Azure PowerShell-parancsfájl használatával visszaállíthat egy adatbázist a SQL Database egy korábbi időpontra az automatikus biztonsági mentésből.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,14 +11,15 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 52398fa083765acf70b11602e939fbcd2b1f6da6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 321c0ee7448a977366ac727c9435a88685a6a5c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054052"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196806"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-database-to-an-earlier-point-in-time"></a>Azure SQL Database visszaállítása egy korábbi időpontra a PowerShell használatával
+# <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra a PowerShell használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Ez a PowerShell-parancsfájl egy adott időpontra visszaállítja SQL Database adatbázisát.  
@@ -27,7 +28,7 @@ Ez a PowerShell-parancsfájl egy adott időpontra visszaállítja SQL Database a
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -58,6 +59,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

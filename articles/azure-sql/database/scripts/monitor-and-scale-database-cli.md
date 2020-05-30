@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: & skálázási adatbázis monitorozása Azure SQL Database'
-description: Példa az Azure CLI-szkriptre egyetlen adatbázis monitorozásához és méretezéséhez Azure SQL Database
+title: 'Azure CLI: egyetlen adatbázis monitorozása és méretezése Azure SQL Database'
+description: Egy Azure CLI-parancsfájl használatával figyelheti és méretezheti a Azure SQL Database egyetlen adatbázisát.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,19 +11,20 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: be57309e4b327027ed0185c8eabf783a18cc957e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e6fc57a1e0d8988666dd4fe1391e157a2a15f682
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053722"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196815"
 ---
-# <a name="use-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése a CLI használatával Azure SQL Database
+# <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése az Azure CLI használatával Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Ez az Azure CLI-parancsfájl például az adatbázis méretére vonatkozó információk lekérése után egy különálló adatbázist Azure SQL Database egy másik számítási méretre.
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -39,10 +40,10 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="run-the-script"></a>A szkript futtatása
 
-[!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a single database in Azure SQL Database")]
+[!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> Az az [SQL db op List](/cli/azure/sql/db/op?#az-sql-db-op-list) paranccsal lekérheti az adatbázison végrehajtott műveletek listáját, az [az SQL db op Cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) paranccsal pedig megszakíthatja a frissítési műveletet az adatbázison.
+> Az az [SQL db op List](/cli/azure/sql/db/op?#az-sql-db-op-list) paranccsal kérheti le az adatbázison végrehajtott műveletek listáját, és az [az SQL db op Cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) paranccsal szakíthat meg egy frissítési műveletet az adatbázison.
 
 ### <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -59,7 +60,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | | |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Egy vagy készletezett adatbázis méret-használati információit jeleníti meg. |
+| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Megjeleníti egy adatbázis méretkihasználtsági adatait. |
 
 ## <a name="next-steps"></a>További lépések
 

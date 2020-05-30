@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 03/12/2020
-ms.openlocfilehash: 7e222762c8bfa7218fd27e15b97de7b1166d749d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/29/2020
+ms.openlocfilehash: 708236cbbd9bf10c6e9edf6b59a3d8e814a40e9f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418575"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194615"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy adat-előállító folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
+Ebben az oktatóanyagban a Azure Data Factory felhasználói felülettel (UI) létrehoz egy olyan adatfeldolgozó-folyamatot, amely egy SQL Server-adatbázisból másolja az Azure Blob Storage-ba. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. További információ: [A Data Factory bemutatása](introduction.md).
@@ -48,7 +48,7 @@ A adat-előállító példányok létrehozásához az Azure-ba való bejelentkez
 Az előfizetésben található engedélyek megtekintéséhez lépjen be az Azure Portalra. Válassza ki a felhasználónevet a jobb felső sarokban, majd válassza az **Engedélyek** elemet. Ha több előfizetéshez is rendelkezik hozzáféréssel, válassza ki a megfelelő előfizetést. Ha szeretne példautasításokat látni egy felhasználó szerepkörhöz adására, olvassa el a [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md) című cikket.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 és 2017
-Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forrásadattárként*. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol egy helyszíni SQL Server-adatbázisból (forrás) egy Blob Storage-tárolóba (fogadó). Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
+Ebben az oktatóanyagban egy SQL Server-adatbázist használ *forrásként* szolgáló adattárként. Az oktatóanyagban létrehozott adatfeldolgozó folyamata a SQL Server-adatbázisból (forrás) a blob Storage-ba (fogadóba) másolja az adatait. Ezután hozzon létre egy **EMP** nevű táblát a SQL Server-adatbázisban, és szúrjon be néhány minta bejegyzést a táblába.
 
 1. Indítsa el az SQL Server Management Studiót. Ha még nincs telepítve a számítógépen, tekintse meg az [SQL Server Management Studio letöltését ismertető](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) cikket.
 
@@ -74,7 +74,7 @@ Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk *forr
    ```
 
 ### <a name="azure-storage-account"></a>Azure Storage-fiók
-Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyag során létrehozott adat-előállító folyamata adatokat másol a helyszíni SQL Server-adatbázisból (forrás) a Blob Storage-tárolóba (fogadó). 
+Ebben az oktatóanyagban egy általános célú Azure Storage-fiókot (ebben az esetben blobtárolót) használunk cél-/fogadóadattárként. Ha még nem rendelkezik általános célú Azure Storage-fiókkal, tekintse meg a [Tárfiók létrehozását](../storage/common/storage-account-create.md) ismertető cikket. Az oktatóanyagban létrehozott adatfeldolgozó folyamata az SQL Server-adatbázisból (forrás) a blob Storage-ba (fogadóba) másolja az adatait. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Tárfióknév és fiókkulcs beszerzése
 Ebben az oktatóanyagban a tárfiók nevét és kulcsát használjuk. A tárfiók nevét és kulcsát az alábbi lépéseket követve szerezheti be:
@@ -110,7 +110,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban.
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -144,7 +144,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
    ![Első lépések lap](./media/doc-common-process/get-started-page.png)
 
-1. A **Tulajdonságok** ablak alján található **általános** lapon a **név**mezőbe írja be a következőt: **SQLServerToBlobPipeline**.
+1. A **Tulajdonságok**terület általános paneljén adja meg **SQLServerToBlobPipeline** a SQLServerToBlobPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. A **tevékenységek** eszközben bontsa ki az **Áthelyezés & átalakítás**elemet. Húzza a **Másolás** tevékenységet a folyamat tervezési felületére. Állítsa a tevékenység nevét a következőre: **CopySqlServerToAzureBlobActivity**.
 
@@ -178,7 +178,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
     d. A **Hitelesítés típusa** alatt válassza ki azt a hitelesítési típust, amelyet a Data Factorynak az SQL Server-adatbázishoz történő csatlakozáshoz használnia kell.
 
-    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány\\\\myuser*.
+    e. A **Felhasználónév** és a **Jelszó** alatt adja meg a felhasználónevet és a jelszót. Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser*.
 
     f. Válassza a **Kapcsolat tesztelése** elemet. Ezzel a lépéssel ellenőrizheti, hogy Data Factory tud-e csatlakozni a SQL Server-adatbázishoz a létrehozott saját üzemeltetésű integrációs modul használatával.
 
@@ -219,11 +219,11 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
     c. A **fájl** résznél válassza a **dinamikus tartalom hozzáadása**lehetőséget.
     ![dinamikus kifejezés a fájlnév feloldásához](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Adja `@CONCAT(pipeline().RunId, '.txt')`hozzá, majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID. txt fájlba.
+    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')` , majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID. txt fájlba.
 
 1. Lépjen a megnyitott folyamatot tartalmazó lapra, vagy válassza ki a folyamatot a fanézetben. Ellenőrizze, hogy a **Fogadó-adatkészlet** mezőben az **AzureBlobDataset** érték van-e kiválasztva.
 
-1. A folyamat beállításainak érvényesítéséhez válassza az **Érvényesítés** elemet a folyamat eszköztárán. A **cső érvényesítési kimenetének**bezárásához válassza **>>** a ikont.
+1. A folyamat beállításainak érvényesítéséhez válassza az **Érvényesítés** elemet a folyamat eszköztárán. A **cső érvényesítési kimenetének**bezárásához válassza a **>>** ikont.
     ![folyamat ellenőrzése](./media/tutorial-hybrid-copy-portal/validate-pipeline.png)
     
 

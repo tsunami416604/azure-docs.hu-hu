@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759183"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196507"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt (előzetes verzió) létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. Válassza a **+ projekt hozzáadása**elemet.
 
-    ![Projekt létrehozása](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Projekt létrehozása":::
 
 ### <a name="project-details"></a>Projekt részletei
 
@@ -196,7 +196,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 1. A címkék sikeres exportálása után a bal oldalon található **adatkészletek** elemre kattintva megtekintheti az eredményeket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]

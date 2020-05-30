@@ -1,7 +1,7 @@
 ---
-title: 'PowerShell: példány hozzáadása automatikus feladatátvételi csoporthoz'
+title: 'PowerShell: felügyelt példány hozzáadása egy automatikus feladatátvételi csoporthoz'
 titleSuffix: Azure SQL Managed Instance
-description: Azure PowerShell példa parancsfájlt egy felügyelt Azure SQL-példány létrehozásához, vegye fel azt egy automatikus feladatátvételi csoportba, és tesztelje a feladatátvételt.
+description: Azure PowerShell példa parancsfájlt egy felügyelt példány létrehozásához, vegye fel azt egy automatikus feladatátvételi csoportba, majd tesztelje a feladatátvételt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,23 +12,24 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 0dbd6fbefababd36d87047a91d3ec320dc795e65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 27179f217d370a5ae4b9a4e87eaebc7659b66930
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053980"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220941"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Azure SQL felügyelt példány hozzáadása feladatátvételi csoporthoz a PowerShell használatával 
+# <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>Felügyelt példány hozzáadása feladatátvételi csoporthoz a PowerShell használatával 
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-Ez a PowerShell-parancsfájl két SQL felügyelt példányt hoz létre, hozzáadja azokat egy feladatátvételi csoporthoz, majd az elsődleges SQL felügyelt példányról a másodlagos SQL felügyelt példányra történő feladatátvételt teszteli. 
+Ez a PowerShell-parancsfájl két felügyelt példányt hoz létre, hozzáadja azokat egy feladatátvételi csoporthoz, majd az elsődleges felügyelt példányról a másodlagos felügyelt példányra ellenőrzi a feladatátvételt. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz Azure PowerShell 1.4.0 vagy újabb rendszerre van szükség. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-scripts"></a>Mintaparancsfájlok
 
@@ -36,7 +37,7 @@ Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanya
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást. Az erőforráscsoportot kétszer kell eltávolítania. Az erőforráscsoport eltávolításakor a rendszer először eltávolítja az SQL felügyelt példányt és a virtuális fürtöket, de a hibaüzenettel meghiúsul `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.` . Futtassa a Remove-AzResourceGroup parancsot egy második alkalommal, hogy eltávolítsa a fennmaradó erőforrásokat és az erőforráscsoportot.
+A következő parancs használatával távolítsa el az erőforráscsoportot és az ahhoz társított összes erőforrást. Az erőforráscsoportot kétszer kell eltávolítania. Az erőforráscsoport eltávolításakor a rendszer először eltávolítja a felügyelt példányt és a virtuális fürtöket, de a hibaüzenettel meghiúsul `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Futtassa a Remove-AzResourceGroup parancsot egy második alkalommal, hogy eltávolítsa a fennmaradó erőforrásokat és az erőforráscsoportot.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -62,8 +63,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Egy hálózati biztonsági csoport frissítése.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Útvonalat helyez el egy útválasztási táblához. |
 | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Frissíti az útválasztási táblázatot.  |
-| [Új – AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Létrehoz egy felügyelt Azure SQL-példányt.  |
-| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| A felügyelt SQL-példányra vonatkozó adatokat adja vissza. |
+| [Új – AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Létrehoz egy felügyelt példányt.  |
+| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| A felügyelt Azure SQL-példányra vonatkozó adatokat adja vissza. |
 | [Új – AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Egy nyilvános IP-címet hoz létre.  | 
 | [Új – AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Egy Virtual Network átjáró IP-konfigurációjának létrehozása |
 | [Új – AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Virtual Network átjáró létrehozása |
@@ -75,6 +76,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
-További SQL felügyelt példányok PowerShell-parancsfájlokat az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md)találhat.
+Az SQL felügyelt példányaihoz további PowerShell-szkriptek is megtalálhatók az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md).

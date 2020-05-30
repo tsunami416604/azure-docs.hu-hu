@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása a PowerShell használatával
-description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi a helyszíni SQL Server-adatbázis több táblájából egy Azure SQL Databaseba.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából egy Azure SQL Databasere.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: 84df242cdbfedd0cd1442ac4c4da7f4b6139d244
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020744"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194534"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése több táblázatból SQL Server egy Azure SQL Database
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a helyszíni SQL Server több táblájából származó különbözeti adatok betöltésével egy Azure SQL Database.    
+Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely a SQL Server-adatbázis több táblájából származó különbözeti adatok betöltését egy Azure SQL Databaseba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -69,12 +69,12 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használ forrásadattárként. 
+* **SQL Server**. Ebben az oktatóanyagban egy SQL Server adatbázist használ a forrásként szolgáló adattárként. 
 * **Azure SQL Database**. Egy SQL-adatbázist használ fogadóadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../azure-sql/database/single-database-create-quickstart.md) ismertető cikket. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Forrástáblák létrehozása az SQL Server-adatbázisban
 
-1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a helyszíni SQL Server-adatbázishoz.
+1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a SQL Server-adatbázishoz.
 
 2. A **Server Explorerben (SSMS)** vagy a **kapcsolatok ablaktáblán (Azure Data Studio)** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
 
@@ -113,7 +113,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltábla létrehozása a Azure SQL Databaseban
 
-1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a helyszíni SQL Server-adatbázishoz.
+1. Nyissa meg [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio), és kapcsolódjon a SQL Server-adatbázishoz.
 
 2. A **Server Explorerben (SSMS)** vagy a **kapcsolatok ablaktáblán (Azure Data Studio)** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
 
@@ -289,11 +289,11 @@ Vegye figyelembe a következő szempontokat:
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a helyszíni SQL Server-adatbázishoz, és Azure SQL Database. 
+Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban társított szolgáltatásokat hoz létre a SQL Server-adatbázishoz, és Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Az SQL Server társított szolgáltatásának létrehozása
 
-Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előállítóval.
+Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállítóval.
 
 1. Hozzon létre egy **SqlServerLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában (hozza létre a helyi mappákat, ha még nem léteznek) az alábbi tartalommal. Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.  
 

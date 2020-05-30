@@ -1,6 +1,6 @@
 ---
 title: Az Adatmásolás növekményes másolása Change Tracking használatával
-description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
+description: Ebben az oktatóanyagban egy Azure Data Factory folyamatot hoz létre, amely a különbözeti adatok növekményes másolását végzi egy SQL Server-adatbázis több táblájából Azure SQL Databasere.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 7937c2c623fdca4e59dc0aac059bd1b8fd735a21
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b83b10c15bcc5d1a8ea9fc094e1d709d57221902
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119167"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196160"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával
 
@@ -44,7 +44,7 @@ Adatintegrációs megoldások esetében gyakran használt forgatókönyv az adat
 Íme az adatok változáskövetési technológiával történő növekményes betöltési munkafolyamatának részletes lépései.
 
 > [!NOTE]
-> Az Azure SQL Database és az SQL Server is támogatja a változáskövetési technológiát. Ez az oktatóanyag az Azure SQL Database-t használja forrásadattárként. Vagy egy helyszíni SQL Servert is használhat.
+> Az Azure SQL Database és az SQL Server is támogatja a változáskövetési technológiát. Ez az oktatóanyag az Azure SQL Database-t használja forrásadattárként. Használhat SQL Server példányt is.
 
 1. **Előzményadatok kezdeti betöltése** (egyszeri futtatás):
     1. Engedélyezze a változáskövetési technológiát a forrás Azure SQL-adatbázisban.

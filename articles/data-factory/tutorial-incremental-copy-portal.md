@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f5a7bc3cd22d49a65ba3b83d2a9ff41112d07c1a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119147"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194546"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a Azure Portal használatával
 
@@ -272,7 +272,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     1. A **tárolt eljárás neve**mezőben válassza a **usp_write_watermark**lehetőséget.
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez:
 
-        | Name | Típus | Érték |
+        | Name (Név) | Típus | Érték |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Sztring | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -398,7 +398,7 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 > * A folyamat második futtatásának monitorozása.
 > * A második futtatás eredményeinek ellenőrzése.
 
-Ebben az oktatóanyagban a folyamat egy SQL-adatbázisban lévő egyetlen táblából másolt adatokat egy blobtárolóba. Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat egy helyszíni SQL Server adatbázis több táblájából egy SQL-adatbázisba.
+Ebben az oktatóanyagban a folyamat egy SQL-adatbázisban lévő egyetlen táblából másolt adatokat egy blobtárolóba. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan másolhat egy SQL Server-adatbázis több táblájából származó adatok SQL Databaseba.
 
 > [!div class="nextstepaction"]
 >[Adatok növekményes betöltése az SQL Server több táblájából az Azure SQL-adatbázisba](tutorial-incremental-copy-multiple-tables-portal.md)

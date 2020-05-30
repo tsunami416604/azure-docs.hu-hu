@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411939"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195575"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
@@ -250,7 +250,7 @@ A gyors útmutató során már telepítette a *StackExchange.Redis* ügyfélolda
 
     ![Csoportvezérlő](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Adja hozzá a következő `using` két utasítást a **TeamsController.cs**:
+1. Adja hozzá a következő két `using` utasítást a **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -615,7 +615,7 @@ A szerkezeti kódot a rendszer ezen minta részeként állítja elő a csapatok 
     </table>
     ```
 
-1. Görgessen az **index. cshtml** fájl aljához, és adja hozzá a `tr` következő elemet, hogy az a fájl utolsó táblájának utolsó sora legyen:
+1. Görgessen az **index. cshtml** fájl aljához, és adja hozzá a következő `tr` elemet, hogy az a fájl utolsó táblájának utolsó sora legyen:
 
     ```html
     <tr><td colspan="5">@ViewBag.Msg</td></tr>
@@ -642,9 +642,9 @@ Az alkalmazás helyi futtatása:
 
 ## <a name="publish-and-run-in-azure"></a>Közzététel és futtatás az Azure-ban
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>SQL Azure-adatbázis üzembe helyezése az alkalmazáshoz
+### <a name="provision-a-database-for-the-app"></a>Adatbázis kiépítése az alkalmazáshoz
 
-Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-ban üzemeltetett alkalmazás számára.
+Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy az alkalmazás az Azure-ban üzemeltethető legyen.
 
 1. Az [Azure Portalon](https://portal.azure.com/) kattintson a portál bal felső sarkában található **Erőforrás létrehozása** elemre.
 

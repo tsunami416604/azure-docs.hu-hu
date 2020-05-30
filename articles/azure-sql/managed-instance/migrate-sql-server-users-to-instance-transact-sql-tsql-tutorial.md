@@ -1,6 +1,6 @@
 ---
 title: SQL Server Windows-felhasználók és-csoportok migrálása SQL felügyelt példányra T-SQL használatával
-description: Ismerje meg, hogyan telepítheti át SQL Server helyszíni Windows-felhasználókat és-csoportokat az Azure SQL felügyelt példányaira
+description: Ismerje meg, hogyan telepítheti át a Windows-felhasználókat és-csoportokat egy SQL Server-példányban az Azure SQL felügyelt példányaira
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,14 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: aba5013bbba95efcb5f27af5aa61f91d880601aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 79a9f59b4fb6f7ae71c1e6866e8c50baa4e7974b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053554"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193753"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: SQL Server helyszíni Windows-felhasználók és-csoportok migrálása az Azure SQL felügyelt példányára T-SQL DDL-szintaxis használatával
+# <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: Windows-felhasználók és-csoportok áttelepíthetők egy SQL Server példányban az Azure SQL felügyelt példányára T-SQL DDL-szintaxis használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek érvényesek:
 
 ## <a name="t-sql-ddl-syntax"></a>A T-SQL DDL szintaxisa
 
-Alább látható a T-SQL DDL-szintaxis, amely a helyszíni Windows-felhasználók és-csoportok Azure AD-hitelesítéssel való áttelepítésének támogatásához használható a felügyelt SQL-példányra SQL Server.
+Alább látható a T-SQL DDL szintaxisa, amely támogatja a Windows-felhasználók és-csoportok áttelepítését egy SQL Server példányról az SQL felügyelt példányra az Azure AD-hitelesítéssel.
 
 ```sql
 -- For individual Windows users with logins
@@ -77,7 +77,7 @@ Felhasználó újraleképezése az Azure AD-bejelentkezésre
 _groupName_</br>
 Megadja az adatbázison belül azonosított csoport nevét.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>1. rész: bejelentkezések létrehozása SQL Server helyszíni felhasználók és csoportok számára
+## <a name="part-1-create-logins-in-sql-server-for-windows-users-and-groups"></a>1. rész: bejelentkezések létrehozása a SQL Server a Windows-felhasználók és-csoportok számára
 
 > [!IMPORTANT]
 > A következő szintaxis egy felhasználót és egy csoportos bejelentkezést hoz létre a SQL Serverban. Az alábbi szintaxis végrehajtása előtt meg kell győződnie arról, hogy a felhasználó és a csoport a Active Directory (AD) belül található. </br> </br>

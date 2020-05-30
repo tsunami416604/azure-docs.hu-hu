@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409904"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194491"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Növekményes módon betölti az adatokat egy forrásadattárból egy céladattárba
 
@@ -32,7 +32,7 @@ Ebben az esetben a forrásadatbázisban meghatároz egy vízjelet. A küszöbér
 
 A részletes utasításokhoz tekintse meg a következő oktatóanyagokat: 
 - [Adatok növekményes másolása az Azure SQL Database egyik táblájából az Azure Blob Storage-ba](tutorial-incremental-copy-powershell.md)
-- [Adatok növekményes másolása a helyszíni SQL Server több táblájából az Azure SQL Database-be](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [Adatok növekményes másolása egy SQL Server-példány több táblájából a Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 Sablonok esetében tekintse meg a következőket:
 - [Változásadatok másolása vezérlőtáblával](solution-template-delta-copy-with-control-table.md)

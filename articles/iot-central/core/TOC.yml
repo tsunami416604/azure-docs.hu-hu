@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: Szabályok konfigurálása
           href: howto-configure-rules.md
-        - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz
-          href: howto-configure-rules-advanced.md
         - name: Eszközadatok elemzése
           href: howto-create-analytics.md
         - name: Csempék hozzáadása az irányítópulthoz
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: Szabályokra vonatkozó webhookok létrehozása
           href: howto-create-webhooks.md
+        - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz
+          href: howto-configure-rules-advanced.md
         - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
           href: howto-use-action-groups.md
         - name: Egyéni szabályok létrehozása

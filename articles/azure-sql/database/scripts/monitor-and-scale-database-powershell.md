@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példa – monitor – méretezés – önálló adatbázis Azure SQL Database
-description: Azure PowerShell példa parancsfájlt egy önálló adatbázis figyelésére és méretezésére Azure SQL Database
+title: Egyetlen adatbázis figyelése és méretezése a PowerShell használatával Azure SQL Database
+description: Egy Azure PowerShell példa parancsfájl használatával figyelheti és méretezheti az egyes adatbázisokat Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,23 +11,24 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 9fa70e5888ecde8437c7d6ea6bbd52827eb6639d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d4f33a2601d9c19896c006af010a394f21fc8219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054070"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196856"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis figyelése és méretezése a PowerShell használatával Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Ez a PowerShell-példaszkript egy adatbázis teljesítmény-mérőszámait monitorozza, egy magasabb számítási mérethez skálázza az adatbázist, és létrehoz egy riasztási szabályt az egyik teljesítmény-mérőszámon.
+Ez a PowerShell-parancsfájl egy adott adatbázis teljesítmény-mérőszámait figyeli, méretezi azt egy magasabb számítási méretre, és riasztási szabályt hoz létre az egyik teljesítmény-mérőszámon.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az az PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -55,13 +56,13 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy kiszolgálót, amely egyetlen adatbázist vagy rugalmas készletet üzemeltet. |
 | [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | Megjeleníti az adatbázis méretkihasználtsági adatait.|
-| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Frissíti az adatbázis tulajdonságait vagy az adatbázist egy rugalmas készletbe, egy rugalmas készletből vagy rugalmas készletek között helyezi át. |
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Frissíti az adatbázis tulajdonságait, vagy áthelyezi az adatbázist a rugalmas készletek között, illetve azok között. |
 | [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Riasztási szabályt állít be a mérőszámok jövőbeli automatikus figyeléséhez. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
 A PowerShell-parancsfájlok további mintái [Azure PowerShell parancsfájlokban](../powershell-script-content-guide.md)találhatók.

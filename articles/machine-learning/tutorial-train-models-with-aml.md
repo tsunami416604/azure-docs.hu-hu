@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60f539dfad4f5f3942be92f35b84cc42968f95a0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115567"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220734"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit-Learn 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 Megtudhatja, hogyan választhatja ki a modelleket, és hogyan telepítheti azt az [oktatóanyag második részében](tutorial-deploy-models-with-aml.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
 > A cikkben ismertetett kód [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.83-verzióval lett tesztelve.
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Kapcsolódás munkaterülethez
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a **config. JSON** fájlt, és betölti a részleteket `ws`egy nevű objektumba:
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. `Workspace.from_config()`beolvassa a **config. JSON** fájlt, és betölti a részleteket egy nevű objektumba `ws` :
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -107,7 +107,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 A felügyelt Azure Machine Learning számítási szolgáltatással az adatszakértők a gépi tanulási modelleket az Azure-beli virtuális gépek fürtjén is betanítják. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban Azure Machine Learning számítást hoz létre képzési környezetként. Az oktatóanyag későbbi részében a virtuális gépen való futtatáshoz a Python-kódot kell elküldenie. 
 
-Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen.
+Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen. Egy olyan fürtöt állít be, amely nincs használatban 0-ra, és legfeljebb 4 csomópontra méretezhető. 
 
  **A számítási cél létrehozása körülbelül öt percet vesz igénybe.** Ha a számítási erőforrás már szerepel a munkaterületen, a kód ezt használja, és kihagyja a létrehozási folyamatot.
 
@@ -159,9 +159,9 @@ A modellek betanítása előtt meg kell ismernie a betanításához használt ad
 
 ### <a name="download-the-mnist-dataset"></a>Az MNIST-adathalmaz letöltése
 
-A nyers MNIST-adatfájlok beszerzéséhez használja az Azure Open adatkészleteket. Az [Azure Open-adatkészletek](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. Ebben az esetben minden adatkészlet rendelkezik egy `MNIST` megfelelő osztállyal, amely különböző módokon kéri le az adatokat.
+A nyers MNIST-adatfájlok beszerzéséhez használja az Azure Open adatkészleteket. Az [Azure Open-adatkészletek](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) olyan beszerzett nyilvános adatkészletek, amelyekkel pontosabb modelleket adhat hozzá a gépi tanulási megoldásokhoz. Ebben az esetben minden adatkészlet rendelkezik egy megfelelő osztállyal, amely `MNIST` különböző módokon kéri le az adatokat.
 
-Ez a kód egy `FileDataset` objektumként kérdezi le az adatmennyiséget, amely a `Dataset`következő alosztálya:. A `FileDataset` egy vagy több fájlra hivatkozik az adattárolókban vagy a nyilvános URL-címekben. Az osztály lehetővé teszi a fájlok a számításhoz való letöltését vagy csatlakoztatását az adatforrás helyére mutató hivatkozás létrehozásával. Emellett regisztrálja az adatkészletet a munkaterületen a betanítás során történő egyszerű lekéréshez.
+Ez a kód egy objektumként kérdezi le az adatmennyiséget `FileDataset` , amely a következő alosztálya: `Dataset` . A egy `FileDataset` vagy több fájlra hivatkozik az adattárolókban vagy a nyilvános URL-címekben. Az osztály lehetővé teszi a fájlok a számításhoz való letöltését vagy csatlakoztatását az adatforrás helyére mutató hivatkozás létrehozásával. Emellett regisztrálja az adatkészletet a munkaterületen a betanítás során történő egyszerű lekéréshez.
 
 Az adatkészletekről és azok használatáról az SDK-ban kövesse az [útmutató](how-to-create-register-datasets.md) című témakört.
 
@@ -183,7 +183,7 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Mintaképek megjelenítése
 
-Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Ehhez a lépéshez egy `load_data` `util.py` fájlhoz tartozó függvényre van szükség. Ezt a fájlt a mintamappa tartalmazza. Győződjön meg arról, hogy az a jegyzetfüzettel megegyező mappába van helyezve. A `load_data` függvény egyszerűen elemzi a tömörített fájlokat a NumPy tömbökben.
+Töltse be a tömörített fájlokat `numpy` tömbökbe. Ezután a `matplotlib` használatával ábrázoljon 30 véletlenszerű képet az adathalmazból, felettük a hozzájuk tartozó címkével. Ehhez a lépéshez egy `load_data` fájlhoz tartozó függvényre van szükség `util.py` . Ezt a fájlt a mintamappa tartalmazza. Győződjön meg arról, hogy az a jegyzetfüzettel megegyező mappába van helyezve. A `load_data` függvény egyszerűen elemzi a tömörített fájlokat a NumPy tömbökben.
 
 ```python
 # make sure utils.py is in the same directory as this code
@@ -300,7 +300,7 @@ Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
 + A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Ehhez a címtárhoz az oktatóanyagban később férhet hozzá a modellhez. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ A betanítási parancsfájl használatához `utils.py` a fájlnak megfelelően be kell töltenie az adatkészletet. A következő kód bemásolja `utils.py` `script_folder` a fájlt, hogy a fájl elérhető legyen a távoli erőforráson lévő betanítási parancsfájllal együtt.
++ A betanítási parancsfájl használatához a fájlnak `utils.py` megfelelően be kell töltenie az adatkészletet. A következő kód bemásolja a `utils.py` `script_folder` fájlt, hogy a fájl elérhető legyen a távoli erőforráson lévő betanítási parancsfájllal együtt.
 
   ```python
   import shutil
@@ -382,7 +382,7 @@ Mi történik a várakozás közben:
 
 - **Feldolgozás után**a rendszer átmásolja a futtatáshoz tartozó **./outputs** könyvtárat a munkaterület futtatási előzményeibe, így elérheti ezeket az eredményeket.
 
-A futó feladatok előrehaladását többféleképpen is megtekintheti. Ez az oktatóanyag egy Jupyter widgetet és `wait_for_completion` egy metódust használ.
+A futó feladatok előrehaladását többféleképpen is megtekintheti. Ez az oktatóanyag egy Jupyter widgetet és egy `wait_for_completion` metódust használ.
 
 ### <a name="jupyter-widget"></a>Jupyter-vezérlő
 
@@ -401,7 +401,7 @@ Ha le kell mondania egy futtatást, kövesse [az alábbi utasításokat](https:/
 
 ### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
-A modell betanítása és monitorozása a háttérben zajlik. Várjon, amíg a modell befejezte a képzést, mielőtt további kódokat futtasson. A `wait_for_completion` következő paranccsal jelenítheti meg, hogy mikor fejeződik be a modell betanítása:
+A modell betanítása és monitorozása a háttérben zajlik. Várjon, amíg a modell befejezte a képzést, mielőtt további kódokat futtasson. `wait_for_completion`A következő paranccsal jelenítheti meg, hogy mikor fejeződik be a modell betanítása:
 
 ```python
 run.wait_for_completion(show_output=False)  # specify True for a verbose log
@@ -423,7 +423,7 @@ A következő oktatóanyagban részletesebben megismerheti ezt a modellt.
 
 ## <a name="register-model"></a>Modell regisztrálása
 
-A betanítási parancsfájl utolsó lépése a fájlt `outputs/sklearn_mnist_model.pkl` egy, a fürt virtuális `outputs` gépe nevű könyvtárban írta, amelyben a feladatot futtatja. `outputs`egy speciális könyvtár, amelyben a címtárban található összes tartalom automatikusan fel lesz töltve a munkaterületre. Ez a tartalom a futtatásrekordban jelenik meg a kísérletben a munkaterületén. Így a modell fájlja már elérhető a munkaterületen is.
+A betanítási parancsfájl utolsó lépése a fájlt `outputs/sklearn_mnist_model.pkl` egy, a fürt virtuális gépe nevű könyvtárban írta, `outputs` amelyben a feladatot futtatja. `outputs`egy speciális könyvtár, amelyben a címtárban található összes tartalom automatikusan fel lesz töltve a munkaterületre. Ez a tartalom a futtatásrekordban jelenik meg a kísérletben a munkaterületén. Így a modell fájlja már elérhető a munkaterületen is.
 
 A futtatáshoz tartozó fájlok láthatók:
 

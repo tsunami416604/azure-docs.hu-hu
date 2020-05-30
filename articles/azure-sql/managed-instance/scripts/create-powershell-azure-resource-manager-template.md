@@ -1,7 +1,7 @@
 ---
-title: 'Példány létrehozása (ARM-sablon & PowerShell) '
+title: Felügyelt példány létrehozása (ARM-sablon & PowerShell)
 titleSuffix: Azure SQL Managed Instance
-description: Ezzel a Azure PowerShell parancsfájllal létrehozhat egy felügyelt Azure SQL-példányt.
+description: Ezt a Azure PowerShell példát használva felügyelt példányt hozhat létre.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,27 +12,28 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 55b0c8f569a91075d4cd87541af7aeff5da69f9a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9024759f87d30cddfa2f3b7ea6b965ce03632f59
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053968"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220874"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-managed-instance"></a>A PowerShell használata Azure Resource Manager sablonnal egy felügyelt Azure SQL-példány létrehozásához
+# <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Felügyelt példány létrehozása Azure Resource Manager sablonnal a PowerShell használatával
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL felügyelt példánya Azure PowerShell könyvtár és Azure Resource Manager sablonok használatával hozható létre.
+Felügyelt példány létrehozásához használja a Azure PowerShell könyvtárat és Azure Resource Manager sablonokat.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz AZ AZ PowerShell 1.4.0 vagy újabb verzió szükséges. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, futtassa az parancsot `Connect-AzAccount` Az Azure-hoz való kapcsolódás létrehozásához.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz Azure PowerShell 1.4.0 vagy újabb rendszerre van szükség. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, futtassa az parancsot `Connect-AzAccount` Az Azure-hoz való kapcsolódás létrehozásához.
 
 Azure PowerShell parancsok előre definiált Azure Resource Manager sablonnal is elindíthatók. A sablonban a következő tulajdonságokat lehet megadni:
 
-- SQL felügyelt példányának neve
+- Felügyelt példány neve
 - SQL-rendszergazdai Felhasználónév és jelszó.
 - A példány mérete (magok száma és a tárterület maximális mérete).
 - A VNet és az alhálózat, ahová a példány kerül.
@@ -42,10 +43,10 @@ A példány neve, az SQL-rendszergazda felhasználóneve, a VNet/alhálózat és
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a példa feltételezi, hogy [létrehozott egy érvényes hálózati környezetet](../virtual-network-subnet-create-arm-template.md) , vagy módosította az SQL felügyelt példányának [meglévő VNet](../vnet-existing-add-subnet.md) . A hálózati környezetet igény szerint külön [Azure erőforrás-felügyelt sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)is előkészítheti. 
+Ez a példa feltételezi, hogy [létrehozott egy érvényes hálózati környezetet](../virtual-network-subnet-create-arm-template.md) , vagy [módosított egy meglévő VNet](../vnet-existing-add-subnet.md) a felügyelt példányhoz. Szükség esetén külön [Azure Resource Manager sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)is előkészítheti a hálózati környezetet. 
 
 
-A minta a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) parancsmagot használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
+A minta a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) és a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)parancsmagot használja, ezért győződjön meg arról, hogy telepítette a következő PowerShell-modulokat:
 
 ```powershell
 Install-Module Az.Network
@@ -112,7 +113,7 @@ Frissítse az alábbi PowerShell-parancsfájlt a korábban mentett. JSON fájl h
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
-# Managed Instance properties
+# Managed instance properties
 $resourceGroup = "rg_mi"
 $location = "West Central US"
 $name = "managed-instance-name"
@@ -127,16 +128,16 @@ $vNet = Get-AzVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGro
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vNet
 $subnetId = $subnet.Id
 
-# Deploy Instance using Azure Resource Manager template:
+# Deploy instance using Azure Resource Manager template:
 New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```
 
-A parancsfájl befejeződése után az SQL felügyelt példánya az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
+A parancsfájl befejeződése után a felügyelt példány az összes Azure-szolgáltatásból és a konfigurált IP-címről is elérhető.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
 
-További SQL felügyelt példányok PowerShell-parancsfájlokat az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md)találhat.
+Az Azure SQL felügyelt példányaihoz további PowerShell-szkriptek is megtalálhatók az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md).

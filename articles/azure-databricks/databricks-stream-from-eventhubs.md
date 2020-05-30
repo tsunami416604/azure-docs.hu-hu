@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4461ad5e1ddd867305b5fbbd01bc84f3af9035d7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889143"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197146"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -62,7 +62,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure Portal használatával.
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**adatok és Analitika** > **Azure Databricks**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Azure Databricks**lehetőséget.
 
     ![Databricks Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks Azure Portal")
 
@@ -76,7 +76,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |---------|---------|
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/management/overview.md). |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/management/overview.md). |
     |**Hely**     | Válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
     |**Díjszabási csomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -102,7 +102,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
    * Adjon egy nevet a fürtnek.
    * Ehhez a cikkhez hozzon létre egy **6,0** futtatókörnyezettel rendelkező fürtöt.
-   * Győződjön meg arról, hogy a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzet be van jelölve. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van jelölve. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
    Válassza ki a fürt feldolgozója és az illesztőprogram-csomópontok méretét a technikai feltételekhez és a [költségvetéshez](https://azure.microsoft.com/pricing/details/databricks/).
 
@@ -175,7 +175,7 @@ Ebben a szakaszban két jegyzetfüzetet hoz létre a Databricks-munkaterületen 
 Illessze be a következő kódot a **SendTweetsToEventHub** jegyzetfüzetbe, és cserélje le a helyőrzőket a korábban létrehozott Event Hubs névtér és Twitter-alkalmazás értékeire. Ez a jegyzetfüzet valós időben streameli az „Azure” kifejezést tartalmazó tweeteket az Event Hubsba.
 
 > [!NOTE]
-> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **adatforrást** a `test` helyett `twitter` , és töltse fel a listához az előnyben részesített **testSource** .
+> A Twitter API bizonyos kérelmekre vonatkozó korlátozásokat és [kvótákat](https://developer.twitter.com/en/docs/basics/rate-limiting.html)tartalmaz. Ha nem elégedett meg a Twitter API-ban érvényes standard díjszabással, a jelen példában szereplő Twitter API használata nélkül is létrehozhat szöveges tartalmakat. Ehhez állítsa be a változó **adatforrást** a `test` helyett, `twitter` és töltse fel a listához az előnyben részesített **testSource** .
 
 ```scala
     import scala.collection.JavaConverters._
@@ -283,7 +283,7 @@ A jegyzetfüzet futtatásához használja a **SHIFT + ENTER** billentyűparancso
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -388,7 +388,7 @@ A kimenetnek ezután a következő kódrészlethez hasonlónak kell lennie:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -406,7 +406,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Data
 
 ![Databricks-fürt leállítása](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte a **megszakítás perc \_ \_ inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

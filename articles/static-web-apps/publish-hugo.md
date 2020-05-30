@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: c6f3a912a9b3c9ff65fb9975eaf13b38ee3d9483
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870694"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195286"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új Azure-beli statikus Web Apps a kapcsolódó GitHub-műveletekkel, amelyek segítségével szabályozhatja az alkalmazás felépítésének és közzétételének módját.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -153,7 +153,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Nyissa meg a Hugo alkalmazást egy szövegszerkesztőben, és nyissa meg a _. GitHub/munkafolyamatok/Azure-Pages-<WORKFLOW_NAME>. YML_ fájlt.
 
-1. A `- uses: actions/checkout@v2` Hugo-alkalmazás létrehozásához cserélje le a sort (18. sor) a következőre.
+1. A `- uses: actions/checkout@v2` Hugo-alkalmazás létrehozásához cserélje le a sort (18. sor) a következőre. Ha a Hugo Extended, a comment (Megjegyzés) lehetőségre van szüksége `extended: true` .
 
    ```yml
    - uses: actions/checkout@v2
@@ -164,6 +164,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
      uses: peaceiris/actions-hugo@v2.4.8
      with:
        hugo-version: "latest"
+       # extended: true
 
    - name: Build
      run: hugo
@@ -183,7 +184,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 

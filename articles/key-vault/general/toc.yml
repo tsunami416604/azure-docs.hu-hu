@@ -1,6 +1,7 @@
 - name: Általános kérdések
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Információk az Azure Key Vaultról
       href: overview.md
