@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086402"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234535"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről PowerShell-lel
 
@@ -112,7 +112,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Ha ezt a pillanatképet szeretné használni a nagy teljesítményt igénylő virtuális gépek létrehozásához, adja hozzá a `-AccountType Premium_LRS` paramétert a New-AzSnapshotConfig parancshoz. Ez a paraméter hozza létre a pillanatképet, hogy az a prémium szintű felügyelt lemezként legyen tárolva. A prémium szintű Managed Disks drágábbak, mint a standard, ezért a paraméter használata előtt győződjön meg róla, hogy prémiumra van szüksége.
+Ha ezt a pillanatképet szeretné használni a nagy teljesítményt igénylő virtuális gépek létrehozásához, adja hozzá a paramétert `-AccountType Premium_LRS` a New-AzSnapshotConfig parancshoz. Ez a paraméter hozza létre a pillanatképet, hogy az a prémium szintű felügyelt lemezként legyen tárolva. A prémium szintű Managed Disks drágábbak, mint a standard, ezért a paraméter használata előtt győződjön meg róla, hogy prémiumra van szüksége.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Új lemez létrehozása a pillanatképből
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
 További információ a végpontokról és a NSG-szabályokról: [portok megnyitása az Azure-beli virtuális](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)gépekhez a PowerShell használatával.
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és hálózati adapter létrehozása
-Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel való kommunikációt, szüksége lesz egy [nyilvános IP-címére](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapterre.
+Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel való kommunikációt, szüksége lesz egy [nyilvános IP-címére](../../virtual-network/public-ip-addresses.md) és egy hálózati adapterre.
 
 1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve *myIP*értékre van állítva.
    
@@ -261,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a**virtuális gépek** **böngészése** > vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com) .
+Az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése**vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com)  >  **Virtual machines**.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

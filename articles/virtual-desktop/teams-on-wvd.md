@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65f0cf66dc6cef33e98258106e5f1573efdf39e5
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203860"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234570"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -94,7 +94,7 @@ A WebSocket szolgáltatás és a csapatok asztali alkalmazás telepítése után
 
 3. Válassza ki a felhasználói profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
 
-      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang**látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, ellenőrizze, hogy a fenti telepítési lépések megtörténtek-e.
+      Ha a média-optimalizálás betöltődik, a helyileg elérhető hangeszközök és fényképezőgépek enumerálása az eszköz menüjében történik. Ha a menüben a **távoli hang**látható, lépjen ki a csapatok alkalmazásból, és próbálkozzon újra. Ha az eszközök továbbra sem jelennek meg a menüben, lépjen vissza a [Microsoft Teams telepítéséhez](#install-microsoft-teams) , és ellenőrizze, hogy befejeződött-e a telepítési folyamat.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
@@ -140,10 +140,8 @@ A gazdagépek RDP protokoll (RDP) tulajdonságainak, például a többmonitoros 
 
 A mikrofon és a kamera átirányításának engedélyezéséhez állítsa be a következő RDP-tulajdonságokat:
 
-|RDP-tulajdonságok   | Leírás |
-|-----------------|-------------|
-|audiocapturemode: i: 1  | Hangrögzítés engedélyezése a helyi eszközről és átirányítás a távoli munkamenetben lévő hangalkalmazásba |
-|hangüzemmód: i: 0         | Hang lejátszása a helyi számítógépen |
-|camerastoredirect: s: * | Összes kamera átirányítása |
+- `audiocapturemode:i:1`engedélyezi a hangrögzítést a helyi eszközről, és redirets a távoli munkamenetben lévő hangalkalmazásokat.
+- `audiomode:i:0`hang lejátszása a helyi számítógépen.
+- `camerastoredirect:s:*`átirányítja az összes kamerát.
 
 További információért tekintse meg [a gazdagépek RDP protokoll tulajdonságainak testreszabása](customize-rdp-properties.md)című témakört.

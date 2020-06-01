@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9f7e2760ef8bf06a2e680dce90c323672ca9d491
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 091e4dc0759ce1b227349d5d1b6b08b9eda66ee0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "66416064"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237665"
 ---
 * Az átalakításhoz újra kell indítani a virtuális gépet, ezért ütemezze a virtuális gépek migrálását egy meglévő karbantartási időszakra. 
 
@@ -19,6 +19,6 @@ ms.locfileid: "66416064"
 
 * Mindenképpen tesztelje az átalakítást. Migráljon egy tesztcélú virtuális gépet, mielőtt végrehajtja a migrálást éles környezetben.
 
-* Az átalakítás közben felszabadítja a virtuális gépet. A virtuális gép új IP-címet kap, amikor elindul az átalakítás után. Szükség esetén [hozzárendelhet egy statikus IP-címet](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) a virtuális géphez.
+* Az átalakítás közben felszabadítja a virtuális gépet. A virtuális gép új IP-címet kap, amikor elindul az átalakítás után. Szükség esetén [hozzárendelhet egy statikus IP-címet](../articles/virtual-network/public-ip-addresses.md) a virtuális géphez.
 
 * Tekintse át az Azure-beli virtuálisgép-ügynöknek az átalakítási folyamat támogatásához szükséges minimális verzióját. Az ügynök verziójának vizsgálatával és frissítésével kapcsolatos információkért lásd: virtuálisgép [-ügynökök minimális verziójának támogatása az Azure-ban](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)

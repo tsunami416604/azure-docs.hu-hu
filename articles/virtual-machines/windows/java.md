@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870029"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232975"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
@@ -26,7 +26,7 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
@@ -45,7 +45,7 @@ Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-1. A `testAzureApp` mappában Nyissa meg a `pom.xml` fájlt, és adja hozzá a Build &lt;konfigurációt a projekthez&gt; , hogy lehetővé váljon az alkalmazás létrehozása:
+1. A `testAzureApp` mappában Nyissa meg a `pom.xml` fájlt, és adja hozzá a Build konfigurációt a &lt; projekthez &gt; , hogy lehetővé váljon az alkalmazás létrehozása:
 
     ```xml
     <build>
@@ -114,7 +114,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-1. Hozzon létre egy `azureauth.properties` nevű fájlt, és adja hozzá ezeket a tulajdonságokat:
+1. Hozzon létre egy nevű fájlt `azureauth.properties` , és adja hozzá ezeket a tulajdonságokat:
 
     ```
     subscription=<subscription-id>
@@ -127,14 +127,14 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le ** &lt;az előfizetés&gt; -azonosítót** az előfizetési azonosítóra, ** &lt;az Application-ID&gt; -** t a Active Directory alkalmazás-azonosítóra, ** &lt;a hitelesítési kulcsot&gt; ** az alkalmazás kulcsára, és ** &lt;&gt; a bérlő azonosítóját** a bérlő azonosítójával.
+    Cserélje le az ** &lt; előfizetés &gt; -azonosítót** az előfizetési azonosítóra, az ** &lt; application-ID &gt; -** t a Active Directory alkalmazás-azonosítóra, a ** &lt; hitelesítési kulcsot &gt; ** az alkalmazás kulcsára, és ** &lt; &gt; a bérlő azonosítóját** a bérlő azonosítójával.
 
 2. Mentse a fájlt.
 3. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a rendszerhéjban a hitelesítési fájl teljes elérési útjával.
 
 ### <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa `App.java` meg a `src\main\java\com\fabrikam` fájlt a (z) területen, és győződjön meg róla, hogy a Package utasítás felül van:
+1. Nyissa meg a `App.java` fájlt a `src\main\java\com\fabrikam` (z) területen, és győződjön meg róla, hogy a Package utasítás felül van:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
 
-A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
+A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) szükséges.
 
 A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a Main metódusban található Try blokkhoz:
 
@@ -451,7 +451,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 2. Mentse az app. Java fájlt.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig.
 

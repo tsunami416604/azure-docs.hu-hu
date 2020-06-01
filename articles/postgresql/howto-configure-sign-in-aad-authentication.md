@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652546"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236321"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
 
@@ -54,21 +54,19 @@ Jelenleg a következő ügyfeleket teszteltük:
 
 Ezek a lépések, amelyekkel egy felhasználónak/alkalmazásnak a következőkben ismertetett Azure AD-hitelesítéssel kell rendelkeznie:
 
+### <a name="prerequisites"></a>Előfeltételek
+
+A Azure Cloud Shell, egy Azure-beli virtuális gép vagy a helyi gépen is követheti. Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>1. lépés: hitelesítés az Azure AD-vel
 
-Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
+Először jelentkezzen be az Azure AD-vel az Azure CLI eszköz használatával. Ez a lépés nem szükséges a Azure Cloud Shellban.
 
-Hívja meg az Azure CLI eszközt az Azure AD-vel való hitelesítéshez. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
-
-```azurecli-interactive
+```
 az login
 ```
 
-Ezzel a paranccsal megnyílik egy böngészőablak az Azure AD-hitelesítés lapra.
-
-> [!NOTE]
-> Ezen lépések végrehajtásához Azure Cloud Shell is használhatja.
-> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg kell hívnia `az login` , majd újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a `get-access-token` parancs a várt módon fog működni.
+A parancs egy böngészőablakot indít az Azure AD-hitelesítés lapra. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. lépés: az Azure AD hozzáférési jogkivonatának beolvasása
 

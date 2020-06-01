@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9cb38037b905e9d7f938b648954bcb9e419be5af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217423"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234899"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Az adott megoldás optimális bitráta-értékének megkereséséhez használja a Content-Aware kódolási beállításkészletet
 
@@ -55,9 +55,10 @@ Az alábbiakban láthatók a tartalomforrás egy másik kategóriájára vonatko
 
 A következő módon hozhat létre olyan átalakításokat, amelyek ezt az beállításkészletet használják. 
 
-> [!TIP]
-> A át-kimeneteket használó oktatóanyagokat a [következő lépések](#next-steps) szakaszban találja. A kimeneti eszköz az olyan protokollok Media Services streaming végpontokból is elérhető, mint például az MPEG-DASH és a HLS (az oktatóanyagokban látható).
+A át-kimeneteket használó oktatóanyagokat a [következő lépések](#next-steps) szakaszban találja. A kimeneti eszköz az olyan protokollok Media Services streaming végpontokból is elérhető, mint például az MPEG-DASH és a HLS (az oktatóanyagokban látható).
 
+> [!NOTE]
+> Ügyeljen arra, hogy az **ContentAwareEncoding** előre beállított ContentAwareEncodingExperimental ne használja.
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,8 +78,6 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > Az `ContentAwareEncoding` előre beállított kódolási feladatok számlázása a kimeneti percek alapján történik. 
-
-Ügyeljen arra, hogy az **ContentAwareEncoding** előre beállított ContentAwareEncodingExperimental ne használja.
   
 ## <a name="next-steps"></a>További lépések
 

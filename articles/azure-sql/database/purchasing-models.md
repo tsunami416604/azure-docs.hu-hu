@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/09/2020
-ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 05/28/2020
+ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219860"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231238"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -82,15 +82,7 @@ A virtuális mag-alapú vásárlási modell lehetővé teszi a számítási és 
 
 Ha a Azure SQL Database több mint 300 DTU használ, a virtuális mag-alapú vásárlási modellre való áttérés csökkentheti a költségeket. A konverziót a választható API-k használatával vagy a Azure Portal használatával végezheti el állásidő nélkül. Azonban a konverzió nem szükséges, és nem történik meg automatikusan. Ha a DTU-alapú vásárlási modell megfelel a teljesítményre és az üzleti követelményekre, akkor továbbra is használja.
 
-A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modellre való áttéréshez válassza ki a számítási méretet a következő hüvelykujj-szabályok használatával:
-
-- A standard szinten minden 100 DTU legalább 1 virtuális mag igényel a általános célú szolgáltatási szinten.
-- A prémium szintű csomag 125 DTU legalább 1 virtuális mag kell lennie a üzletileg kritikus szolgáltatási szinten.
-
-> [!NOTE]
-> A virtuális mag-Méretezési irányelvek DTU megközelítik, és a célként megadott adatbázis-szolgáltatási cél kezdeti becslésében nyújtanak segítséget. A céladatbázis optimális konfigurációja a munkaterhelés függ.
->
-> Az optimális ár/teljesítmény arány eléréséhez szükség lehet a virtuális mag-modell rugalmasságának kihasználására a virtuális mag, a [hardver-generálás](service-tiers-vcore.md#hardware-generations), a [szolgáltatás](service-tiers-vcore.md#service-tiers) és a [számítási](service-tiers-vcore.md#compute-tiers) rétegek számának, valamint más adatbázis-konfigurációs paraméterek (például a [maximális párhuzamossági fok](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)) finomhangolása érdekében.
+A DTU-alapú vásárlási modellről a virtuális mag-alapú vásárlási modellre való áttérésért lásd: [áttelepítés a DTU-ről a virtuális mag-re](migrate-dtu-to-vcore.md).
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 

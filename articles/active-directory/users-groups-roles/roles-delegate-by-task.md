@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 7fc447b97b35cefbe2ab8d44db6f9f6279c8533e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779960"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236217"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -153,17 +153,18 @@ SharePoint Online-webhelyek hozzáadása a katalógushoz | Globális rendszergaz
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Licenc hozzárendelése | Felhasználói rendszergazda | 
-Csoport létrehozása | Felhasználói rendszergazda | 
+Csoport létrehozása | Csoportok rendszergazdája | Felhasználói rendszergazda
 Csoport vagy alkalmazás hozzáférési felülvizsgálatának létrehozása, frissítése vagy törlése | Felhasználói rendszergazda | 
 Csoport lejáratának kezelése | Felhasználói rendszergazda | 
 Csoportbeállítások kezelése | Csoportok rendszergazdája | Felhasználói rendszergazda | 
 Az összes konfiguráció olvasása (kivéve a rejtett tagságot) | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Rejtett tagság olvasása | Csoporttag | Csoport tulajdonosa, jelszó-rendszergazda, Exchange-rendszergazda, SharePoint-rendszergazda, csapat rendszergazdája, felhasználói rendszergazda
 Rejtett tagsággal rendelkező csoportok tagságának olvasása | Segélyszolgálat rendszergazdája | Felhasználói rendszergazda, csapat rendszergazdája
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
 Csoporttagság frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
 Csoport tulajdonosainak frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
 Csoport tulajdonságainak frissítése | Csoport tulajdonosa ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói rendszergazda
+Csoport törlése | Csoportok rendszergazdája | Felhasználói rendszergazda
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -184,10 +185,10 @@ Biztonsági rések beolvasása | Biztonsági olvasó |
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc hozzárendelése | Licencek rendszergazdája | Felhasználói rendszergazda
 Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
-Előfizetés kipróbálása vagy megvásárlása | Számlázási rendszergazda | 
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
+Előfizetés kipróbálása vagy megvásárlása | Számlázási adminisztrátor | 
 
 
 ## <a name="monitoring---audit-logs"></a>Figyelés – naplók
@@ -324,7 +325,7 @@ Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Felhasználó hozzáadása a címtárbeli szerepkörhöz | Kiemelt szerepkörű rendszergazda | 
 Felhasználó felvétele a csoportba | Felhasználói rendszergazda | 
-Licenc hozzárendelése | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc hozzárendelése | Licencek rendszergazdája | Felhasználói rendszergazda
 Vendég felhasználó létrehozása | Vendég meghívója | Felhasználói rendszergazda
 Felhasználó létrehozása | Felhasználói rendszergazda | 
 Felhasználók törlése | Felhasználói rendszergazda | 
@@ -335,7 +336,7 @@ Alapszintű konfiguráció olvasása | Alapértelmezett felhasználói szerepkö
 Korlátozott rendszergazdák jelszavának alaphelyzetbe állítása (lásd: dokumentáció) | Felhasználói rendszergazda | 
 Nem rendszergazdák jelszavának alaphelyzetbe állítása (lásd: dokumentáció) | Jelszókezelő | Felhasználói rendszergazda
 Emelt szintű rendszergazdák jelszavának alaphelyzetbe állítása | Kiemelt jogosultságú hitelesítés rendszergazdája | 
-Licenc visszavonása | Licenc rendszergazdája | Felhasználói rendszergazda
+Licenc visszavonása | Licencek rendszergazdája | Felhasználói rendszergazda
 Az összes tulajdonság frissítése az egyszerű felhasználónév kivételével | Felhasználói rendszergazda | 
 Egyszerű felhasználónevek frissítése korlátozott rendszergazdák számára (lásd: dokumentáció) | Felhasználói rendszergazda | 
 Az egyszerű felhasználónév tulajdonság frissítése a Kiemelt rendszergazdáknál (lásd: dokumentáció) | Globális rendszergazda | 

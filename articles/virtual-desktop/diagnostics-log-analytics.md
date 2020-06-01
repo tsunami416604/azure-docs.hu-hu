@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd28117350913bc25f5bf7cec08d28683ad9daca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020064"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234555"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -117,6 +117,9 @@ Log Analytics munkaterületeket a Azure Portal vagy a Azure Monitorban érheti e
 4. A lekérdezés hatókörének beállításához kövesse a naplózás lapon megjelenő utasításokat.  
 
 5. Készen áll a diagnosztika lekérdezésére. Az összes diagnosztikai tábla "WVD" előtaggal rendelkezik.
+
+>[!NOTE]
+>A Azure Monitor-naplókban tárolt táblázatokkal kapcsolatos részletesebb információkért tekintse meg a [Azure monitor az adatok újrakerítése](https://docs.microsoft.com/azure/azure-monitor/reference/)című témakört. A Windows rendszerű virtuális asztallal kapcsolatos összes tábla "WVD" címkével rendelkezik.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>A diagnosztikai események küldésének ritmusa
 
@@ -239,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+Egy hiba előfordulásának megkeresése az összes felhasználónál:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+Az alkalmazások felhasználóinak lekérdezéséhez futtassa a következő lekérdezést:
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->A legfontosabb hibaelhárítási táblázat a WVDErrors. Ezzel a lekérdezéssel megtudhatja, hogy milyen problémák merülhetnek fel a felhasználói tevékenységek, például a kapcsolatok vagy a hírcsatornák esetében, amikor egy felhasználó előfizet az alkalmazások vagy az asztali számítógépek listájára. A tábla megjeleníti a felügyeleti hibákat, valamint az állomások regisztrálásával kapcsolatos problémákat.
->
->Ha a nyilvános előzetes verzióban segítségre van szüksége a probléma megoldásához, győződjön meg arról, hogy a CorrelationID a hibaüzenetet adja meg. Győződjön meg arról is, hogy a szolgáltatási hiba értéke mindig azt mondja, ServiceError = "false". A "hamis" érték azt jelenti, hogy a probléma megoldásához a végén egy rendszergazdai feladat is feloldható. Ha a ServiceError = "true" (igaz) értéket adja meg, a problémát a Microsoftnak kell megadnia.
+>- Amikor a felhasználó megnyitja a teljes asztalt, az alkalmazás használata a munkamenetben nem kerül nyomon ellenőrzőpontként a WVDCheckpoints táblában.
+>- A WVDConnections tábla ResourcesAlias oszlopa azt jeleníti meg, hogy a felhasználó egy teljes asztalhoz vagy egy közzétett alkalmazáshoz csatlakozott-e. Az oszlop csak a csatlakozás során megnyíló első alkalmazást jeleníti meg. A felhasználó által megnyitott közzétett alkalmazások követése a WVDCheckpoints-ben történik.
+>- A WVDErrors tábla megjeleníti a felügyeleti hibákat, a gazdagépek regisztrálásával kapcsolatos problémákat, valamint azokat a problémákat, amelyek akkor jelentkeznek, amikor a felhasználó előfizet az alkalmazások vagy az asztali számítógépek listájára.
+>- A WVDErrors segítségével azonosíthatja a rendszergazdai feladatok által feloldható problémákat. A ServiceError értéke mindig "hamis" értéket ad az ilyen típusú problémákhoz. Ha a ServiceError = "true" (igaz) értéket adja meg, a problémát a Microsoftnak kell megadnia. Győződjön meg arról, hogy megadja a CorrelationID a felmerülő hibákhoz.
 
 ## <a name="next-steps"></a>További lépések 
 

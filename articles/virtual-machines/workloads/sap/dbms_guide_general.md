@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101363"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232651"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -54,7 +54,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 Ebben a dokumentumban az Azure-beli virtuális gépeken futó SAP-vel kapcsolatos adatbázis-kezelő rendszerek futtatásával kapcsolatos szempontokat ismertetjük. Ebben a fejezetben az egyes adatbázis-kezelő rendszerekre is hivatkozunk. Ehelyett a jelen dokumentumon belül az adott adatbázis-kezelő rendszerek kezelése történik.
 
-## <a name="definitions"></a>Meghatározások
+## <a name="definitions"></a>Definíciók
 A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 * **IaaS**: infrastruktúra-szolgáltatás.
@@ -280,7 +280,7 @@ Ezek az ajánlott eljárások több száz ügyfél-telepítés eredménye:
 
 - Az SAP-alkalmazás üzembe helyezésének virtuális hálózatai nem férnek hozzá az internethez.
 - Az adatbázis virtuális gépei ugyanabban a virtuális hálózatban futnak, mint az alkalmazási réteg.
-- A virtuális hálózaton belüli virtuális gépeken a magánhálózati IP-cím statikus kiosztása van. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)című témakörben talál.
+- A virtuális hálózaton belüli virtuális gépeken a magánhálózati IP-cím statikus kiosztása van. További információt [az IP-címek típusai és a kiosztási módszerek az Azure-ban](../../../virtual-network/public-ip-addresses.md)című témakörben talál.
 - Az adatbázis-kezelői virtuális gépekre és *rendszerre* irányuló útválasztási korlátozások nincsenek beállítva a helyi adatbázis-kezelő virtuális gépekre telepített tűzfalakkal. Ehelyett a forgalom útválasztása [hálózati biztonsági csoportokkal (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview)van definiálva.
 - Az adatbázis-kezelő rendszerbeli virtuális gépre irányuló forgalom elkülönítéséhez és elkülönítéséhez rendeljen hozzá különböző hálózati adaptereket a virtuális géphez. Minden hálózati adapter egy másik IP-címet kap, és minden hálózati adapter egy másik virtuális hálózati alhálózathoz van rendelve. Minden alhálózat különböző NSG-szabályokkal rendelkezik. A hálózati forgalom elkülönítése vagy elkülönítése az Útválasztás mértéke. A hálózati átviteli sebességre vonatkozó kvóták beállítása nem használható.
 

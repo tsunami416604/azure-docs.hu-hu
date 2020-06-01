@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098068"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233350"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -25,15 +25,15 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
 1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
-2. A Visual Studio telepítése és elindítása után kattintson a **fájl** > **új** > **projekt**elemre.
-3. Kattintson a **sablonok** > **Python** > **Python-alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+2. A Visual Studio telepítése és elindítása után kattintson a **fájl**  >  **új**  >  **projekt**elemre.
+3. Kattintson a **sablonok**  >  **Python**  >  **Python-alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
 ## <a name="install-packages"></a>Csomagok telepítése
 
@@ -164,7 +164,7 @@ A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyí
     input('Availability set created. Press enter to continue...')
     ```
 
-A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
+A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) szükséges.
 
 1. Ha nyilvános IP-címet szeretne létrehozni a virtuális géphez, adja hozzá ezt a függvényt a. a. reszelő változóhoz tartozó változók után:
 
@@ -554,7 +554,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 3. Mentse a *myPythonProject.py*.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 1. A konzol alkalmazás futtatásához kattintson a **Start** gombra a Visual Studióban.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a665c3c27cca03a084896895ae51c56732ceb7b6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461988"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237725"
 ---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -42,7 +42,7 @@ A virtuális géphez csatlakoztatott hálózati adaptereknek a virtuális géppe
 
 Ez a táblázat egy hálózati adapter létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | Azure Portal | Amikor virtuális gépet hoz létre az Azure Portalon, automatikusan létrejön egy hálózati adapter is (külön létrehozott hálózati adapter nem használható). A portál csak egy hálózati adapterrel hoz létre virtuális gépeket. Ha egynél több hálózati adapterrel rendelkező virtuális gépet kíván létrehozni, akkor más módszert kell alkalmaznia. |
 | [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | A [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) és a **-PublicIpAddressId** paraméter használatával adja meg a korábban létrehozott nyilvános IP-cím azonosítóját. |
@@ -51,7 +51,7 @@ Ez a táblázat egy hálózati adapter létrehozásának lehetséges módszereit
 
 ## <a name="ip-addresses"></a>IP-címek 
 
-Az Azure-ban az alábbi [IP-cím](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)típusokat rendelheti egy hálózati adapterhez:
+Az Azure-ban az alábbi [IP-cím](../articles/virtual-network/public-ip-addresses.md)típusokat rendelheti egy hálózati adapterhez:
 
 - **Nyilvános IP-címek** – Az internettel és a VNethez nem csatlakoztatott egyéb Azure-erőforrásokkal folytatott bejövő és kimenő (hálózati címfordítás (NAT) nélküli) kommunikációhoz használható. Nem kötelező nyilvános IP-címet rendelni egy hálózati adapterhez. A nyilvános IP-címekhez névleges díj tartozik, és az előfizetések maximális száma is felhasználható.
 - **Magánhálózati IP-címek** – A VNeten és a helyszíni hálózaton belüli, illetve az internettel folytatott (hálózati címfordítást (NAT) használó) kommunikációhoz használható. Legalább egy magánhálózati IP-címet hozzá kell rendelni egy virtuális géphez. Az Azure-on belüli hálózati címfordítással kapcsolatos további információkért olvassa el a [az Azure kimenő kapcsolatait](../articles/load-balancer/load-balancer-outbound-connections.md) ismertető cikket.
@@ -64,7 +64,7 @@ A lefoglalási módszert állíthatja statikusra is, hogy a virtuális géphez t
     
 Ez a táblázat egy IP-cím létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Alapértelmezés szerint a nyilvános IP-címek dinamikusak, a hozzájuk rendelt cím pedig a virtuális gép leállításakor vagy törlésekor változhat. Ha biztosítani szeretné, hogy a virtuális gép ugyanazt a nyilvános IP-címet használja, hozzon létre egy statikus nyilvános IP-címet. Alapértelmezés szerint virtuális gép létrehozásakor a portál dinamikus magánhálózati IP-címet rendel egy hálózati adapterhez. Ezt az IP-címet a virtuális gép létrehozása után is módosíthatja statikusra.|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | A [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) a **-AllocationMethod** paraméterrel dinamikus vagy statikusként használható. |
@@ -85,7 +85,7 @@ Alapértelmezés szerint nincs biztonsági határ az alhálózatok között, hog
 
 Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módszereit sorolja fel.    
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/quick-create-portal.md) | Ha engedélyezi, hogy az Azure a virtuális gép létrehozáskor létrehozzon egy VNetet, akkor a név a VNetet tartalmazó erőforráscsoport nevéből és a **-vnet** elemből tevődik össze. A címtér a 10.0.0.0/24, a szükséges alhálózati név a **default**, az alhálózati címtartomány pedig a 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | A [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) és a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) használatával hozzon létre egy alhálózatot és egy VNet. Az [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) használatával alhálózatot is hozzáadhat egy meglévő VNet. |
@@ -106,7 +106,7 @@ A virtuális gépek és a VNet tervezésekor az NSG-re vonatkozóan is [készít
 
 Ez a táblázat egy hálózati biztonsági csoport létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Amikor virtuális gépet hoz létre az Azure Portalon, automatikusan létrejön egy NSG is, amelyet a rendszer a portál által létrehozott hálózati adapterhez rendel. Az NSG neve a virtuális gép nevéből és az **-nsg** elemből tevődik össze. Az NSG egy 1000-es prioritású bejövő szabályt, egy RDP beállítású szolgáltatást, egy TCP beállítású protokollt, egy 3389 beállítású portot és egy Engedélyezés beállítású műveletet tartalmaz. Ha bármilyen egyéb bejövő forgalmat kíván engedélyezni a virtuális gépre, további szabályokat kell az NSG-hez adnia. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Használja a [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) , és adja meg a szükséges szabály adatait. A [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) használatával hozza létre a NSG. A [set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig) használatával konfigurálja az alhálózat NSG. A [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) használatával adja hozzá a NSG a VNet. |
@@ -130,7 +130,7 @@ Terheléselosztó létrehozásakor figyelembe kell vennie az alábbi konfigurác
 
 Ez a táblázat egy internetkapcsolattal rendelkező terheléselosztó létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | Azure Portal |  [A virtuális gépekre az Azure Portal használatával lehet terheléselosztást alkalmazni az internetes forgalomra](../articles/load-balancer/tutorial-load-balancer-standard-manage-portal.md). |
 | [Azure PowerShell](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | A korábban létrehozott nyilvános IP-cím azonosítójának megadásához használja a [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) és a **-PublicIpAddress** paramétert. A [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) használatával hozza létre a háttér-címkészlet konfigurációját. A [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) használatával hozza létre a létrehozott előtér-IP-konfigurációhoz társított bejövő NAT-szabályokat. A [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) használatával hozza létre a szükséges mintavételi teszteket. A Load Balancer konfigurációjának létrehozásához használja a [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) . A Load Balancer létrehozásához használja a [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) .|
@@ -139,7 +139,7 @@ Ez a táblázat egy internetkapcsolattal rendelkező terheléselosztó létrehoz
     
 Ez a táblázat egy belső terheléselosztó létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | Azure Portal | [A belső forgalom terhelését a Azure Portal terheléselosztási szolgáltatásával egyenlítheti](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md)ki. |
 | [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | Ha privát IP-címet szeretne megadni a hálózati alhálózatban, használja a [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) és a **-privateipaddress tulajdonságot** paramétert. A [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) használatával hozza létre a háttér-címkészlet konfigurációját. A [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) használatával hozza létre a létrehozott előtér-IP-konfigurációhoz társított bejövő NAT-szabályokat. A [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) használatával hozza létre a szükséges mintavételi teszteket. A Load Balancer konfigurációjának létrehozásához használja a [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) . A Load Balancer létrehozásához használja a [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) .|
@@ -160,7 +160,7 @@ Ha létrehoz egy virtuális gépet, majd később áttelepítené egy VNetbe, ak
 
 Ez a táblázat virtuális gépek VNetben való létrehozásának lehetséges módszereit sorolja fel.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | ------ | ----------- |
 | [Azure Portal](../articles/virtual-machines/windows/quick-create-portal.md) | A korábban említett hálózati beállítások használatával hoz létre virtuális gépet egyetlen hálózati adapterrel. Több hálózati adapterrel rendelkező virtuális gép létrehozásához más módszert kell alkalmaznia. |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | Az [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) használatával adja hozzá a korábban a virtuális gép konfigurációjához létrehozott hálózati adaptert. |

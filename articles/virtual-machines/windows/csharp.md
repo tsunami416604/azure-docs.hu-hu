@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082883"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234519"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban C használatával # #
 
@@ -25,21 +25,21 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
 1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). A munkaterhelések lapon válassza ki a **.net Desktop Development** elemet, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **.NET-keretrendszer 4 – 4,6 fejlesztői eszközei** automatikusan ki vannak választva. Ha már telepítette a Visual studiót, a .NET-munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
-2. A Visual Studióban kattintson a **fájl** > **új** > **projekt**elemre.
-3. A **sablonok** > **Visual C#**-ban válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, írja be a *myDotnetProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+2. A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt**elemre.
+3. A **sablonok**  >  **Visual C#**-ban válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, írja be a *myDotnetProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
 ## <a name="install-the-package"></a>A csomag telepítése
 
 A NuGet csomagok a legegyszerűbben a lépések végrehajtásához szükséges kódtárak telepítésére szolgálnak. A Visual Studióban szükséges kódtárak beszerzéséhez hajtsa végre a következő lépéseket:
 
-1. Kattintson az **eszközök** > **Nuget csomagkezelő**elemre, majd a **Package Manager konzol**elemre.
+1. Kattintson az **eszközök**  >  **Nuget csomagkezelő**elemre, majd a **Package Manager konzol**elemre.
 2. Írja be ezt a parancsot a konzolba:
 
     ```
@@ -52,7 +52,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-1. A Megoldáskezelőban kattintson a jobb gombbal a *myDotnetProject* > **Add** > **új elem**hozzáadása lehetőségre, majd válassza a **szövegfájl** *elemet a Visual C# elemekben*. Nevezze el a *azureauth. properties*fájlt, majd kattintson a **Hozzáadás**gombra.
+1. A Megoldáskezelőban kattintson a jobb gombbal a *myDotnetProject*  >  **Add**  >  **új elem**hozzáadása lehetőségre, majd válassza a **szövegfájl** *elemet a Visual C# elemekben*. Nevezze el a *azureauth. properties*fájlt, majd kattintson a **Hozzáadás**gombra.
 2. Adja hozzá az alábbi engedélyezési tulajdonságokat:
 
     ```
@@ -66,7 +66,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le ** &lt;az előfizetés&gt; -azonosítót** az előfizetési azonosítóra, ** &lt;az Application-ID&gt; -** t a Active Directory alkalmazás-azonosítóra, ** &lt;a hitelesítési kulcsot&gt; ** az alkalmazás kulcsára, és ** &lt;&gt; a bérlő azonosítóját** a bérlő azonosítójával.
+    Cserélje le az ** &lt; előfizetés &gt; -azonosítót** az előfizetési azonosítóra, az ** &lt; application-ID &gt; -** t a Active Directory alkalmazás-azonosítóra, a ** &lt; hitelesítési kulcsot &gt; ** az alkalmazás kulcsára, és ** &lt; &gt; a bérlő azonosítóját** a bérlő azonosítójával.
 
 3. Mentse a azureauth. properties fájlt. 
 4. Állítson be egy környezeti változót az AZURE_AUTH_LOCATION nevű Windowsban a létrehozott hitelesítési fájl teljes elérési útjával. Például a következő PowerShell-parancs használható:
@@ -136,7 +136,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
 
-A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
+A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) szükséges.
 
 A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a Main metódushoz:
    
@@ -378,7 +378,7 @@ Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódushoz:
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. 
 

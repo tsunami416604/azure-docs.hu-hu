@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109521"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234080"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hogyan biztosítja az Azure AD a felhőben szabályozott felügyeletet a helyszíni számítási feladatokhoz
 
@@ -93,7 +93,7 @@ Egy olyan szervezet számára, amely már használ helyszíni identitás-szolgá
 
 ![Az Azure AD evolúciója](media/cloud-governed-management-for-on-premises/image5.png)
 
-Az összevont alkalmazások identitás-szolgáltatóként való áttelepítésének megkezdéséhez tekintse meg https://aka.ms/migrateapps a következő hivatkozásokat is:
+Az összevont alkalmazások identitás-szolgáltatóként való áttelepítésének megkezdéséhez tekintse meg a következő https://aka.ms/migrateapps hivatkozásokat is:
 
 * Az [alkalmazások áttelepítése a Azure Active Directoryre](https://aka.ms/migrateapps/whitepaper), amely az áttelepítés előnyeit mutatja be, és leírja, hogyan tervezze meg az áttelepítést négy jól tagolt fázisban: felderítés, besorolás, áttelepítés és folyamatos felügyelet. Útmutatást kaphat arról, hogyan gondolhatja át a folyamatot, és hogyan bontják le a projektet könnyen felhasználható darabokra. A dokumentum teljes egészében olyan fontos erőforrásokra mutató hivatkozásokat talál, amelyek segítenek az Ön számára.
 

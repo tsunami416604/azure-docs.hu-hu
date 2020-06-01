@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan adhat hozzá kimeneti kötést a C# Class Libra
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74849207"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235375"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Függvények összekötése az Azure Storage-ba a Visual Studióval
 
@@ -17,13 +17,13 @@ ms.locfileid: "74849207"
 
 Ez a cikk bemutatja, hogyan használhatja a Visual studiót az [előző] rövid útmutatóban létrehozott funkció Azure Storage-ba való összekapcsolásához. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure üzenetsor-tárolási várólistán lévő üzenetbe. 
 
-A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű `AzureWebJobsStorage`alkalmazás-beállításban van tárolva.  
+A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű alkalmazás-beállításban van tárolva `AzureWebJobsStorage` .  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk elindítása előtt a következőket kell tennie: 
 
- - Fejezze be [a Visual Studio](./functions-create-first-function-vs-code.md)rövid útmutatójának 1. részét. 
+ - Fejezze be [a Visual Studio](./functions-create-your-first-function-visual-studio.md)rövid útmutatójának 1. részét. 
 
 - Jelentkezzen be az Azure-előfizetésbe a Visual studióból.
 
@@ -39,13 +39,13 @@ Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban lé
 
 1. A **AzureWebJobsStorage**alatt másolja a **távoli** karakterlánc értéket a **helyi**értékre, majd kattintson **az OK gombra**. 
 
-A kapcsolat `AzureWebJobsStorage` beállítását használó tárolási kötések mostantól helyileg is csatlakozhatnak a várólista-tárolóhoz.
+A kapcsolat beállítását használó tárolási kötések `AzureWebJobsStorage` mostantól helyileg is csatlakozhatnak a várólista-tárolóhoz.
 
 ## <a name="register-binding-extensions"></a>Kötési bővítmények regisztrálása
 
 Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. 
 
-1. Az **eszközök** menüben válassza a **NuGet Package** > Manager**csomagkezelő konzol**lehetőséget. 
+1. Az **eszközök** menüben válassza a **NuGet Package**Manager  >  **csomagkezelő konzol**lehetőséget. 
 
 1. A-konzolon futtassa a következő [Install-Package](/nuget/tools/ps-ref-install-package) parancsot a tárolási bővítmények telepítéséhez:
 
@@ -61,7 +61,7 @@ Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-A kötés meghatározása után a kötést használhatja `name` a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+A kötés meghatározása után a `name` kötést használhatja a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -69,7 +69,7 @@ A kötés meghatározása után a kötést használhatja `name` a függvény al�
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-A rendszer létrehoz egy `outqueue` nevű új várólistát a Storage-fiókban a functions futtatókörnyezetben a kimeneti kötés első használatakor. A Cloud Explorer használatával ellenőrizheti, hogy a várólista létrejött-e az új üzenettel együtt.
+A rendszer létrehoz egy nevű új várólistát a `outqueue` Storage-fiókban a functions futtatókörnyezetben a kimeneti kötés első használatakor. A Cloud Explorer használatával ellenőrizheti, hogy a várólista létrejött-e az új üzenettel együtt.
 
 ## <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 
@@ -91,7 +91,7 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget, majd válassza a **Közzététel** lehetőséget a projekt újbóli közzétételéhez az Azure-ban.
 
-1. Az üzembe helyezés befejezése után újra használhatja a böngészőt az újratelepített függvény teszteléséhez. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez.
+1. Az üzembe helyezés befejezése után újra használhatja a böngészőt az újratelepített függvény teszteléséhez. Ahogy korábban is, fűzze hozzá a lekérdezési karakterláncot `&name=<yourname>` az URL-címhez.
 
 1. Ismét [tekintse meg az üzenetet a Storage-várólistán](#examine-the-output-queue) annak ellenőrzéséhez, hogy a kimeneti kötés ismét létrehoz egy új üzenetet a várólistában.
 

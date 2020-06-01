@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658840"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235287"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure szinapszis-hivatkozás (előzetes verzió) Azure Cosmos DB támogatott funkciókhoz
 
-Ez a cikk azokat a funkciókat ismerteti, amelyeket jelenleg a Azure Cosmos DB Azure szinapszis-hivatkozása támogat. 
+Ez a cikk azokat a funkciókat ismerteti, amelyeket jelenleg a Azure Cosmos DB Azure szinapszis-hivatkozása támogat.
 
 ## <a name="azure-synapse-support"></a>Azure szinapszis-támogatás
 
 A Azure Cosmos DB kétféle tároló létezik:
 * HTAP-tároló – egy szinapszis-hivatkozással rendelkező tároló. Ez a tároló tranzakciós tárolót és analitikai tárolót is tartalmaz. 
 * OLTP-tároló – csak tranzakciós tárolóval rendelkező tároló; A szinapszis-hivatkozás nincs engedélyezve. 
+
+> [!IMPORTANT]
+> A Azure Cosmos DB Azure szinapszis hivatkozása jelenleg támogatott olyan munkaterületek esetében, amelyeken nincs engedélyezve a felügyelt virtuális hálózat. 
 
 A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos DB tárolóhoz, ebben az esetben csak olvasható/írható lehet a tranzakciós tároló. Az alábbi lista a Azure Cosmos DB szinapszis-hivatkozáson belüli jelenleg támogatott szolgáltatásainak listáját tartalmazza. 
 
@@ -58,7 +61,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 | **Válassza ki a Top 100** |Első 100-elem előnézete egy tárolóból|X| ✓ |
 | **Nézet létrehozása** |Hozzon létre egy nézetet, amely közvetlenül rendelkezik BI-hozzáféréssel egy tárolóban a szinapszis SQL használatával|X| ✓ |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Lásd: [Csatlakozás a szinapszishoz hivatkozás Azure Cosmos db](../quickstart-connect-synapse-link-cosmos-db.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](how-to-query-analytical-store-spark.md)

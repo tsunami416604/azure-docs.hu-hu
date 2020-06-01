@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140888"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229860"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
@@ -57,21 +57,19 @@ A leggyakoribb alkalmazás-illesztőprogramokat is teszteltük, a lap végén l�
 
 Ezek a lépések, amelyekkel egy felhasználónak/alkalmazásnak a következőkben ismertetett Azure AD-hitelesítéssel kell rendelkeznie:
 
+### <a name="prerequisites"></a>Előfeltételek
+
+A Azure Cloud Shell, egy Azure-beli virtuális gép vagy a helyi gépen is követheti. Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>1. lépés: hitelesítés az Azure AD-vel
 
-Győződjön meg arról, hogy az [Azure CLI telepítve](/cli/azure/install-azure-cli)van.
-
-Hívja meg az Azure CLI eszközt az Azure AD-vel való hitelesítéshez. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
+Először jelentkezzen be az Azure AD-vel az Azure CLI eszköz használatával. Ez a lépés nem szükséges a Azure Cloud Shellban.
 
 ```
 az login
 ```
 
-Ezzel a paranccsal megnyílik egy böngészőablak az Azure AD-hitelesítés lapra.
-
-> [!NOTE]
-> Ezen lépések végrehajtásához Azure Cloud Shell is használhatja.
-> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg kell hívnia `az login` , majd újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a `get-access-token` parancs a várt módon fog működni.
+A parancs egy böngészőablakot indít az Azure AD-hitelesítés lapra. Ehhez meg kell adnia az Azure AD-beli felhasználói azonosítót és a jelszót.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. lépés: az Azure AD hozzáférési jogkivonatának beolvasása
 
@@ -79,19 +77,19 @@ Hívja meg az Azure CLI eszközt az 1. lépésben az Azure AD hitelesített felh
 
 Példa (nyilvános felhő esetén):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 A fenti erőforrás-értéket pontosan az ábrán látható módon kell megadni. Más felhők esetében az erőforrás értéke a következő használatával kereshető fel:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Az Azure CLI 2.0.71-es és újabb verziói esetén a parancs a következő kényelmesebb verzióban adható meg az összes felhőhöz:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -201,7 +199,7 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Indítás
   * Go-SQL-illesztőprogram: támogatott, Hozzáadás `?tls=true&allowCleartextPasswords=true` a kapcsolódási karakterlánchoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [Azure Active Directory hitelesítéssel](concepts-azure-ad-authentication.md) kapcsolatos általános fogalmakat Azure Database for MySQL
 

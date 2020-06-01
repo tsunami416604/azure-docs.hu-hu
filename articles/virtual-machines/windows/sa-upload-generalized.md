@@ -9,12 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: e2ecdb6f436806f93610325b4d5adf28cb3253e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099631"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234623"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Általános VHD feltöltése az Azure-ba új virtuális gép létrehozásához
 
@@ -44,7 +44,7 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 > 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd `sysprep.exe`futtassa a parancsot.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd futtassa a parancsot `sysprep.exe` .
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
 5. Kattintson az **OK** gombra.
@@ -75,7 +75,7 @@ Ha még nincs telepítve a PowerShell 1,4-es vagy újabb verziója, olvassa el [
     ```powershell
     Get-AzSubscription
     ```
-3. Állítsa be a megfelelő előfizetést az előfizetés-azonosító használatával. A `<subscriptionID>` helyére írja be a megfelelő előfizetés azonosítóját.
+3. Állítsa be a megfelelő előfizetést az előfizetés-azonosító használatával. A helyére írja be a `<subscriptionID>` megfelelő előfizetés azonosítóját.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -115,7 +115,7 @@ Ha létre kell hoznia egy Storage-fiókot, kövesse az alábbi lépéseket:
  
 ### <a name="start-the-upload"></a>A feltöltés elindítása 
 
-Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** `"C:\Users\Public\Documents\Virtual hard disks\"` fájlt egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** -erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
+Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** fájlt `"C:\Users\Public\Documents\Virtual hard disks\"` egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** -erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,7 +148,7 @@ Most már használhatja a feltöltött VHD-t egy új virtuális gép létrehozá
 
 ### <a name="set-the-uri-of-the-vhd"></a>A VHD URI-azonosítójának beállítása
 
-A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.Core.Windows.net/**mycontainer**/**MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
+A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.Core.Windows.net/**mycontainer** / **MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -175,7 +175,7 @@ Hozza létre a [virtuális hálózat](../../virtual-network/virtual-networks-ove
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Nyilvános IP-cím és hálózati adapter létrehozása
-A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
+A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/public-ip-addresses.md) és egy hálózati adapter szükséges.
 
 1. Hozzon létre egy nyilvános IP-címet. Ez a példa egy **myPip**nevű nyilvános IP-címet hoz létre. 
    
@@ -276,7 +276,7 @@ A következő PowerShell-szkript bemutatja, hogyan állíthatja be a virtuálisg
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Ha elkészült, az újonnan létrehozott virtuális gépet a**virtuális gépek** **böngészése** > vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portalban](https://portal.azure.com) :
+Ha elkészült, az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése**vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portalban](https://portal.azure.com)  >  **Virtual machines**:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

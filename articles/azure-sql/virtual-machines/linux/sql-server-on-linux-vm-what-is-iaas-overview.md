@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e916e005687c1f0a197f8c97f643e5a26552c23c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b60b815c62b34fb0dc5024a85d7dcb905f3df9da
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046200"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234317"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,7 +69,7 @@ A Linuxon futó SQL Server konfigurálásakor a telepítő telepíti az adatbáz
 ### <a name="networking"></a>Hálózat
 
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
-* [IP-címek az Azure-ban](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/windows/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL

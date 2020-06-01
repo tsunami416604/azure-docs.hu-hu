@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 03/03/2020
-ms.openlocfilehash: 48f37a29b227c714552596337d3ff3c692830488
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041408"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235752"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|7|14|21|28|35|42|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|
 |Napló maximális mérete|154|227|461|461|461|614|
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -60,8 +60,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -79,7 +79,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|2048|2048|2048|2048|3584|4096|
 |Napló maximális mérete (GB)|614|614|614|614|1075|1229|
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
@@ -92,8 +92,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -113,7 +113,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|2048|
 |Napló maximális mérete (GB)|154|227|461|461|461|614|614|
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
@@ -126,8 +126,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -145,21 +145,21 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|2048|3072|3072|3072|4096|4096|4096|
 |Napló maximális mérete (GB)|614|922|922|922|1229|1229|1229|
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárolási típus|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|Prémium (távoli) tárterület|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS/készletben <sup>2</sup> |6 400|7 200|8,000|9600|12 800|16000|32 000|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup> |6 400|7 200|8,000|9600|12 800|16000|16000|
 |Maximális naplózási arány (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -179,7 +179,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|136,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
 |TempDB maximális adatméret (GB)|333|
@@ -192,8 +192,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű munkamenetek maximális száma|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-72|
 |Replikák száma|1|
-|Több – AZ|N.A.|
-|Olvasási felskálázás|N.A.|
+|Több – AZ|N/A|
+|Olvasási felskálázás|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -247,7 +247,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Oszlopcentrikus-támogatás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Memóriában tárolt OLTP-tároló (GB)|7|8|9,5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|

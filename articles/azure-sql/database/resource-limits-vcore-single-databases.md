@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/11/2020
-ms.openlocfilehash: 4a49d4ba4d0e82273c06afa178630be32ca1c463
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043071"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235688"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Az virtuális mag beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Minimális memória maximális mérete (GB)|2.02 – 3|2.05 – 6|2.10-12|2,25 – 18|3,00 – 24|
 |Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|60|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|1024|1024|1024|1536|
 |Napló maximális mérete (GB)|154|307|307|307|461|
 |TempDB maximális adatméret (GB)|32|64|128|192|256|
@@ -54,8 +54,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|75|150|300|450|600|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -69,7 +69,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Minimális memória maximális mérete (GB)|3,75 – 30|4.50 – 36|5.25 – 42|6,00 – 48|
 |Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1536|3072|3072|3072|
 |Napló maximális mérete (GB)|461|461|461|922|
 |TempDB maximális adatméret (GB)|320|384|448|512|
@@ -80,8 +80,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|750|900|1050|1200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -97,7 +97,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Memória (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100|
 |Napló maximális mérete (TB)|1 |1 |1 |1 |1 |1 |
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -108,7 +108,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Másodlagos replikák|0-4|0-4|0-4|0-4|0-4|0-4|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
 |Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|
 |||
@@ -122,7 +122,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Memória (GB)|49|56|63|70|112|159,5|
 |[RBPEX](service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |
 |Napló maximális mérete (TB)|1 |1 |1 |1 |1 |1 |
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
@@ -133,7 +133,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|1400|1600|1800|2000|3200|4800|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Másodlagos replikák|0-4|0-4|0-4|0-4|0-4|0-4|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
 |Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|
 |||
@@ -151,7 +151,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100|
 |Napló maximális mérete (TB)|1 |1 |1 |1 |1 |1 |1 |
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
@@ -162,7 +162,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|1400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Másodlagos replikák|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|
 |||
@@ -178,7 +178,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100 |
 |Napló maximális mérete (TB)|1 |1 |1 |1 |1 |1 |1 |
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
@@ -189,7 +189,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Másodlagos replikák|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|
 |||
@@ -217,7 +217,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|1|2|3|4|5|6|
 |Memória (GB)|7|14|21|28|35|42|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|
 |Napló maximális mérete (GB)|307|307|461|461|461|922|
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -228,8 +228,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -242,7 +242,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|3072|3072|3072|3072|4096|4096|
 |Napló maximális mérete (GB)|922|922|922|922|1229|1229|
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
@@ -253,8 +253,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|1400|1600|1800|2000|3200|4800|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -269,7 +269,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|2|4|6|8|10|12|14|
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Napló maximális mérete (GB)|307|307|461|461|461|922|922|
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|384|
@@ -280,8 +280,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|1400|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -294,19 +294,19 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|16|18|20|24|32|40|80|
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Napló maximális mérete (GB)|922|922|922|1229|1229|1229|1229|
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
 |Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
 |IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS *|5120|5760|6400|7680|10240|12800|25600|
+|Maximális adatmennyiség IOPS *|5120|5760|6400|7680|10240|12800|12800|
 |Maximális naplózási arány (MBps)|30|30|30|30|30|30|30|
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Olvasási felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
@@ -321,7 +321,7 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Virtuális mag|72|
 |Memória (GB)|136,2|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
 |TempDB maximális adatméret (GB)|333|
@@ -333,8 +333,8 @@ A [kiszolgáló nélküli számítási rétegek](serverless-tier-overview.md) je
 |Egyidejű bejelentkezések maximális száma|3600|
 |Egyidejű munkamenetek maximális száma|30 000|
 |Replikák száma|1|
-|Több – AZ|N.A.|
-|Olvasási felskálázás|N.A.|
+|Több – AZ|N/A|
+|Olvasási felskálázás|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 \*Az i/o-méretek maximális értéke 8 KB és 64 KB között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).

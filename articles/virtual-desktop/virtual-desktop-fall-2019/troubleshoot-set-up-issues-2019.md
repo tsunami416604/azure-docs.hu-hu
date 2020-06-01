@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615395"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235895"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
 
@@ -28,13 +28,29 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>A Windows 10 Enterprise több munkamenetet ábrázoló rendszerképének beszerzése
 
-A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, majd válassza az első **lépések** > **Microsoft Windows 10** > és [Windows 10 Enterprise for Virtual desktops, 1809-es verzió](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)lehetőséget.
+A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, majd válassza az első **lépések**  >  **Microsoft Windows 10** > és [Windows 10 Enterprise for Virtual desktops, 1809-es verzió](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)lehetőséget.
 
 ![Képernyőkép a Windows 10 Enterprise rendszerű virtuális asztalok, 1809-es verzió kiválasztásáról.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
 
 Ez a szakasz a Windows rendszerű virtuális asztali bérlő létrehozásakor felmerülő esetleges problémákat ismerteti.
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Hiba: a AADSTS650052 az alkalmazásnak hozzá kell férnie egy szolgáltatáshoz.
+
+Nyers hiba – példa:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**OK:** Az Azure Active Directory-példányban nem adható meg a Windows rendszerű virtuális asztal.
+
+**Javítás:** [kövesse ezt az útmutatót](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) a jóváhagyás megadásához.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
 
@@ -122,7 +138,7 @@ A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi tel
 3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) a probléma megoldásához.
 4. Törölje az előző központi telepítés során létrehozott erőforrásokat, majd próbálkozzon újra a sablon üzembe helyezésével.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült...\<. állomásnév>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült.... \<hostname> /JoinDomain
 
 ![A telepítés sikertelen képernyőkép.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
