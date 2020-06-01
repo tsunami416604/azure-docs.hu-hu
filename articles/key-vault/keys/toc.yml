@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: Oktatóanyagok
   items:
-    - name: HSM által védett kulcsok importálása
+    - name: HSM által védett kulcsok importálása (áttekintés)
       href: hsm-protected-keys.md
-    - name: HSM által védett kulcsok importálása (előzetes verzió)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: HSM által védett kulcsok importálása (örökölt)
-      href: hsm-protected-keys-legacy.md
+    - name: HSM által védett kulcsok importálása (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: HSM által védett kulcsok importálása (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei
@@ -47,6 +47,8 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Saját kulcs használatának specifikációja
+      href: byok-specification.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

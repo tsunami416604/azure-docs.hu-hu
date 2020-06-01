@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud-metrikák ismertetése
       href: spring-cloud-concept-metrics.md
+    - name: Alkalmazás kezelése és monitorozása az Azure Spring Boot Actuatorrel
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Az Azure Spring Cloud Service biztonsági vezérlői
       href: spring-cloud-concept-security-controls.md
     - name: Az Azure Spring Cloud alkalmazásállapotainak ismertetése

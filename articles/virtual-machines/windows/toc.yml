@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Virtuális gép létrehozása
                   items:
+                    - name: Specializált
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Általánosított
                       href: ../vm-generalized-image-version-cli.md
                 - name: Rendszerkép-erőforrások frissítése
@@ -664,7 +666,7 @@
                       items:
                         - name: Virtuális gép
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: Virtuálisgép-méretezési csoport
+                        - name: Méretezési csoport
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Küldés az Event Hubsba
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

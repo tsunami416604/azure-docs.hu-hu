@@ -177,6 +177,8 @@
       items:
         - name: Üzemelő IoT Edge-példányok monitorozása
           href: how-to-monitor-iot-edge-deployments.md
+        - name: Ikermodulok monitorozása
+          href: how-to-monitor-module-twins.md
         - name: Közvetlen EdgeAgent-metódusok
           href: how-to-edgeagent-direct-method.md
     - name: IoT Edge-eszközök használata átjáróként

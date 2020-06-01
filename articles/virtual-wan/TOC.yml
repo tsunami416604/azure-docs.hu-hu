@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: Virtuális központ érvényes útvonalainak megtekintése
           href: effective-routes-virtual-hub.md
+        - name: Több ISP-hivatkozás – Azure-elérési út kiválasztása
+          href: path-selection-multiple-links.md
     - name: Biztonság
       items:
         - name: Az Azure Firewall központban történő telepítése

@@ -20,6 +20,8 @@
       href: create-private-link-service-powershell.md
     - name: Privát kapcsolati szolgáltatás létrehozása – Azure CLI
       href: create-private-link-service-cli.md
+    - name: Privát kapcsolati szolgáltatás létrehozása – ARM-sablon
+      href: create-private-link-service-template.md
 - name: Alapelvek
   items:
     - name: Privát végpont

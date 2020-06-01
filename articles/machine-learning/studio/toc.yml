@@ -58,7 +58,7 @@
       items:
         - name: Adatok importálása
           href: import-data.md
-        - name: Adatok használata helyszíni SQL-ből
+        - name: Az SQL Server adatainak használata
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: Modellek betanítása

@@ -67,15 +67,17 @@
         - name: Az első ML-kísérlet létrehozása (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: Betanítás és üzembe helyezés parancssori felülettel
+          href: tutorial-train-deploy-model-cli.md
+        - name: Munkaterületek létrehozása Resource Manager-sablonokkal
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning-bővítmény üzembe helyezése
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow képbesorolási modellek betanítása és üzembe helyezése
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Munkaterület létrehozása Resource Manager-sablonnal
-      href: tutorial-resource-manager-workspace.md
 - name: Példák
   items:
     - name: Jupyter-notebookok

@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: Erőforrások üzembe helyezése
           href: ./samples/pattern-deploy-resources.md
+    - name: Előírásoknak való megfelelés beépített elemei
+      items:
+        - name: Azure-biztonsági teljesítményteszt
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: Alapelvek
   items:
-    - name: Azure szabályzatdefiníciók struktúrája
+    - name: Definíciók struktúrája
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: A szabályzat hatásainak megismerése
+    - name: A hatások megismerése
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy-hozzárendelés struktúrája
+    - name: Kezdeményezési struktúra
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Hozzárendelés struktúrája
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: Új szabályzat hatásának értékelése
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Előírásoknak való megfelelőség
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: Szabályzat tervezése kódmunkafolyamatokként
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: Az Azure Monitor engedélyezése virtuális gépek számára (előzetes verzió)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Hibaelhárítás
+  href: ./troubleshoot/general.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub – Közösségi szabályzatok adattára
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A – Azure Policy
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: A Governance YouTube-csatornája
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Vendégkonfiguráció – videók
