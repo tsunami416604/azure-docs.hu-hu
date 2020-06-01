@@ -2,19 +2,19 @@
 title: Az Azure SQL Edge (előzetes verzió) üzembe helyezése a Azure Portal használatával
 description: Ismerje meg, hogyan helyezheti üzembe az Azure SQL Edge (előzetes verzió) szolgáltatását a Azure Portal használatával
 keywords: SQL Edge üzembe helyezése
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681238"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233244"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Az Azure SQL Edge üzembe helyezése (előzetes verzió) 
 
@@ -57,7 +57,7 @@ Az Azure Marketplace egy online alkalmazások és szolgáltatások piaca, ahol a
 
    |**Paraméter**  |**Leírás**|
    |---------|---------|
-   | Name | A modul neve. |
+   | Name (Név) | A modul neve. |
    |SA_PASSWORD  | Erős jelszót kell megadnia az SQL Edge rendszergazdai fiókjához. |
    |MSSQL_LCID   | Beállítja a SQL Server használandó nyelvi azonosítót. Például 1036 a francia. |
    |MSSQL_COLLATION | Beállítja SQL Server alapértelmezett rendezését. Ez a beállítás felülbírálja a nyelvi azonosító (LCID) alapértelmezett leképezését a rendezéshez. |

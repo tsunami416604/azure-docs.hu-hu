@@ -2,19 +2,19 @@
 title: ALTER EXTERNAL STREAM (Transact-SQL) – Azure SQL Edge (előzetes verzió)
 description: Ismerje meg az ALTER EXTERNAL STREAM utasítást az Azure SQL Edge-ben (előzetes verzió)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0183972b5eb92d3f081b857940609bffc183b331
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2559c4b4b875403b7c70671e27cb6222a3f1103a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597939"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235202"
 ---
 # <a name="alter-external-stream-transact-sql"></a>KÜLSŐ STREAM módosítása (Transact-SQL)
 
@@ -43,7 +43,7 @@ További információ az Alter External stream parancs argumentumáról: [küls�
 Ha a művelet sikeres, a külső STREAM módosítása 0 értéket ad vissza. A nullától eltérő visszatérési érték azt jelzi, hogy hiba történt.
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [KÜLSŐ STREAM létrehozása (Transact-SQL)](create-external-stream-transact-sql.md) 
 - [KÜLSŐ STREAM eldobása (Transact-SQL)](drop-external-stream-transact-sql.md) 

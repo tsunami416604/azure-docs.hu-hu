@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 31b5c56f6d78b0f90ff5d77e09886f31f92ea58f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d2d8572af40ef80f94d5b4d7dbe4a31b813a90
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653387"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233066"
 ---
-|Name |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Saját kulcsú adatvédelem engedélyezése a PostgreSQL-kiszolgálókon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |Ez a szabályzat PostgreSQL-kiszolgálókat naplóz a környezetben anélkül, hogy engedélyezve lenne a saját kulcsú adatvédelem. További részletekért látogasson el a következő oldalra: [https://aka.ms/postgresqlbyok](https://aka.ms/postgresqlbyok) . |AuditIfNotExists, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[A kapcsolatok szabályozását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Ezzel a szabályzattal a környezetében lévő PostgreSQL-adatbázisok naplózása nem engedélyezett a kapcsolatok szabályozása nélkül. Ez a beállítás lehetővé teszi, hogy az IP-címek ideiglenes kapcsolatának szabályozása túl sok érvénytelen jelszó-bejelentkezési hiba esetén. |AuditIfNotExists, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

@@ -3,12 +3,12 @@ title: Azure Backup támogatási mátrix az Azure-beli virtuális gépeken futó
 description: Összefoglalja a támogatási beállításokat és korlátozásokat, amikor Azure-beli virtuális gépeken SQL Server biztonsági mentést készít a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 79a7e30ab9240c489a66b547ff85bea7887131b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409998"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234250"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
 
@@ -19,7 +19,7 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott központi telepítések** | Az SQL Marketplace Azure-beli virtuális gépek és a nem piactér (SQL Server manuálisan telepített) virtuális gépek támogatottak.
-**Támogatott térségek** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc <br> Közép-Franciaország <br> Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2
+**Támogatott régiók** | Dél-Ausztrália, Kelet-Ausztrália (AE), Ausztrália középső régiója (AC), Ausztrália középső régiója (AC) <br> Dél-Brazília (BRS)<br> Közép-Kanada (CNC), Kelet-Kanada (CE)<br> Dél-Kelet-Ázsia (tenger), Kelet-Ázsia (EA) <br> USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), USA nyugati középső régiója (WCUS), USA nyugati régiója (WUS); USA 2. nyugati régiója (WUS 2), USA északi középső régiója (NCUS), USA középső régiója (ke), USA déli középső régiója (SCUS) <br> India Central (INC), Dél-India (INS), Nyugat-India <br> Kelet-Japán (JPE), Nyugat-Japán (JPW) <br> Korea középső régiója (KRC), Dél-Korea (KRS) <br> Észak-Európa (NE), Nyugat-Európa <br> Egyesült Királyság déli régiója (UKS), Egyesült Királyság nyugati régiója (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Texas, US DoD – középső régió, US DoD – keleti régió <br> Észak-Németország, Középnyugat-Németország <br> Észak-Svájc, Nyugat-Svájc <br> Közép-Franciaország <br> Kelet-Kína, Kelet-Kína 2, Észak-Kína, Észak-Kína 2
 **Támogatott operációs rendszerek** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> A Linux jelenleg nem támogatott.
 **Támogatott SQL Server verziók** | SQL Server 2019, SQL Server 2017 a [termék életciklusának keresése lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 és az SPS a [termék életciklusa lapon](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, standard, web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es vagy újabb verziója telepítve a virtuális gépen
@@ -41,7 +41,7 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 * Ha szeretné, hogy a kiszolgálók hány adatbázis védelmét tudják védeni, vegye figyelembe az olyan tényezőket, mint a sávszélesség, a virtuális gép mérete, a biztonsági mentés gyakorisága, az adatbázis mérete stb. [Töltse le](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) az erőforrás-tervezőt, hogy a virtuális gépek erőforrásai és a biztonsági mentési szabályzat alapján számítsa ki a kiszolgálónként használható adatbázisok hozzávetőleges számát.
 * A rendelkezésre állási csoportok konfigurálásakor a biztonsági mentések a különböző csomópontokból származnak, néhány tényező alapján. A rendelkezésre állási csoport biztonsági mentési viselkedését az alábbiakban összegzi.
 
-### <a name="back-up-behavior-with-always-on-availability-groups"></a>Az Always On rendelkezésre állási csoportokkal kapcsolatos biztonsági mentés
+### <a name="back-up-behavior-with-always-on-availability-groups"></a>Biztonsági mentés működése az Always On rendelkezésreállási csoportok esetén
 
 Azt javasoljuk, hogy a biztonsági mentés a rendelkezésre állási csoport (AG) csak egy csomópontjára legyen konfigurálva. Mindig konfigurálja a biztonsági mentést ugyanabban a régióban, mint az elsődleges csomópontot. Más szóval mindig szüksége lesz az elsődleges csomópontra abban a régióban, ahol a biztonsági mentést konfigurálja. Ha az AG összes csomópontja ugyanabban a régióban van, ahol a biztonsági mentés be van állítva, nincs semmi gond.
 
@@ -54,7 +54,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 
 #### <a name="backup-preference-primary"></a>Biztonsági mentési beállítások: elsődleges
 
-**Biztonsági mentés típusa** | **Node**
+**Biztonsági mentés típusa** | **Csomópont**
 --- | ---
 Összes | Elsődleges
 Differenciál | Elsődleges
@@ -63,7 +63,7 @@ Csak másolás – teljes |  Elsődleges
 
 #### <a name="backup-preference-secondary-only"></a>Biztonsági mentési beállítás: csak másodlagos
 
-**Biztonsági mentés típusa** | **Node**
+**Biztonsági mentés típusa** | **Csomópont**
 --- | ---
 Összes | Elsődleges
 Differenciál | Elsődleges
@@ -72,7 +72,7 @@ Csak másolás – teljes |  Másodlagos
 
 #### <a name="backup-preference-secondary"></a>Biztonsági mentési beállítások: másodlagos
 
-**Biztonsági mentés típusa** | **Node**
+**Biztonsági mentés típusa** | **Csomópont**
 --- | ---
 Összes | Elsődleges
 Differenciál | Elsődleges
@@ -81,7 +81,7 @@ Csak másolás – teljes |  Másodlagos
 
 #### <a name="no-backup-preference"></a>Nincs biztonsági mentési beállítás
 
-**Biztonsági mentés típusa** | **Node**
+**Biztonsági mentés típusa** | **Csomópont**
 --- | ---
 Összes | Elsődleges
 Differenciál | Elsődleges

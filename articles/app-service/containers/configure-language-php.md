@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített PHP-tá
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142112"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234937"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Linux PHP-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -109,7 +109,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 Ha módosítania kell a PHP-telepítést, a következő lépésekkel módosíthatja a [php. ini-irányelvek](https://www.php.net/manual/ini.list.php) bármelyikét.
 
 > [!NOTE]
-> A PHP-verzió és az aktuális *php. ini* -konfiguráció megtekintéséhez a legjobb módszer a [phpinfo ()](https://php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
+> A PHP-verzió és az aktuális *php. ini* -konfiguráció megtekintéséhez a legjobb módszer a [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) meghívása az alkalmazásban.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Testreszabás – nem PHP_INI_SYSTEM irányelvek
@@ -206,7 +206,7 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: PHP-alkalmazás és MySQL](tutorial-php-mysql-app.md)

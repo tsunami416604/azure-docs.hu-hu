@@ -2,19 +2,19 @@
 title: Adatok szinkronizálása az Azure SQL Edge-ből (előzetes verzió) Azure Data Factory használatával
 description: Tudnivalók az Azure SQL Edge (előzetes verzió) és az Azure Blob Storage közötti adatszinkronizálásról
 keywords: SQL Edge, adatok szinkronizálása az SQL Edge-ből, az SQL Edge-adatgyárból
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1238505a10214c315bd5f2ceb428cf097b3ef5c6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599660"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235048"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
 
@@ -107,7 +107,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     ![Társított szolgáltatás létrehozása](media/tutorial-sync-data-factory/create-linked-service.png)
 
-    7. Válassza az **OK** lehetőséget.
+    7. Kattintson az **OK** gombra.
 
 8. A **Beállítások** lapon válassza a **Szerkesztés**lehetőséget.
 
@@ -125,7 +125,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A **táblázat**alatt válassza ki a szinkronizálni kívánt táblát. Ehhez az adatkészlethez is megadhat egy lekérdezést az oktatóanyag későbbi részében leírtak szerint. A lekérdezés elsőbbséget élvez az ebben a lépésben megadott táblázatban.
 
-    3. Válassza az **OK** lehetőséget.
+    3. Kattintson az **OK** gombra.
 
 14. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával. A keresési tevékenység tulajdonságok ablakában ellenőrizze, hogy a **SourceDataset** van-e kiválasztva a **forrás adatkészlet** listájában.
 
@@ -179,7 +179,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     1. A **fájl elérési útja**területen adja meg a *asdedatasync/incrementalcopy*nevet, ahol a *asdedatasync* a blob-tároló neve, a *incrementalcopy* pedig a mappa neve. Ha nem létezik, hozza létre a tárolót, vagy használjon egy meglévőt. Azure Data Factory automatikusan létrehozza a kimeneti mappa *incrementalcopy* , ha az nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
 
-    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Finish** (Befejezés) elemet. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
+    2. A **fájl elérési útjának** **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd írja be a ** @CONCAT következőt: (növekményes, folyamat (). RunId, '. txt ')** a megnyíló ablakban. Válassza a **Befejezés** gombot. A fájl nevét a kifejezés dinamikusan hozza létre. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához.
 
 28. Váltson a folyamat-szerkesztőre a felső részen található folyamat lapon, vagy a bal oldali fanézetben a folyamat nevének kiválasztásával.
 
@@ -195,7 +195,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
     2. A tárolt eljárás paraméterei értékének megadásához válassza a **paraméter importálása** lehetőséget, majd adja meg az alábbi értékeket a paraméterekhez:
 
-    |Name|Típus|Érték|
+    |Name (Név)|Típus|Érték|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity ("NewWaterMark"). output. firstRow. NewWatermarkvalue}|
     |TableName|Sztring|@ {Activity ("OldWaterMark"). output. firstRow. Táblanév}|
@@ -210,7 +210,7 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 2. Nevezze el az trigger **HourlySync**. A **típus**területen válassza az **ütemterv**lehetőséget. Állítsa be az **ismétlődést** 1 óránként.
 
-3. Válassza az **OK** lehetőséget.
+3. Kattintson az **OK** gombra.
 
 4. Kattintson **Az összes közzététele** gombra.
 

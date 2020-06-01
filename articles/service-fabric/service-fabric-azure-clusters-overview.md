@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75614672"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234698"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -48,9 +48,9 @@ A méretezési csoportok segítségével virtuális gépek gyűjteményét telep
 További információért olvassa el [Service Fabric csomópont-és virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md)csoportok című témakört.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-A virtuálisgép-példányok egy olyan [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)mögött vannak, amely egy [nyilvános IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) és egy DNS-címkével van társítva.  Amikor kiépít egy fürtöt * &lt;a&gt;clustername*, a DNS-nevet, * &lt;a clustername&gt;.&lt; a&gt;location. cloudapp.Azure.com* a terheléselosztó a méretezési csoport elején lévő DNS-címkéje.
+A virtuálisgép-példányok egy olyan [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)mögött vannak, amely egy [nyilvános IP-címmel](../virtual-network/public-ip-addresses.md) és egy DNS-címkével van társítva.  Amikor kiépít egy fürtöt a * &lt; &gt; clustername*, a DNS-nevet, a * &lt; clustername &gt; . &lt; a Location &gt; . cloudapp.Azure.com* a terheléselosztó a méretezési csoport elején lévő DNS-címkéje.
 
-A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)rendelkeznek.  A felügyeleti forgalom és a szolgáltatás forgalmának továbbítása a nyilvánosan elérhető terheléselosztó használatával történik.  A hálózati forgalom a NAT-szabályok (adott csomópontokhoz/példányokhoz csatlakozó ügyfelek) vagy terheléselosztási szabályok (a forgalom a virtuális gépek ciklikus időszeletelése) felé irányítja át ezeket a gépeket.  A terheléselosztó egy DNS-névvel rendelkező nyilvános IP-címmel rendelkezik, amely a ( * &lt;z&gt;)&lt; clustername formátumú. Location&gt;. cloudapp.Azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha egy fürtben több csomópont-típust határoz meg, a rendszer minden egyes csomópont típusú/méretezési csoporthoz létrehoz egy terheléselosztó-t. Vagy beállíthat egyetlen Load balancert több csomópontos típushoz is.  Az elsődleges csomópont típusának DNS-címkéje * &lt;&gt;clustername&lt; . Location&gt;. cloudapp.Azure.com*, más típusú csomópontok esetén a DNS-címke * &lt;&gt;-&lt;&gt;clustername&lt; NodeType rendelkezik. Location&gt;. cloudapp.Azure.com*.
+A fürtben lévő virtuális gépek csak [magánhálózati IP-címmel](../virtual-network/private-ip-addresses.md)rendelkeznek.  A felügyeleti forgalom és a szolgáltatás forgalmának továbbítása a nyilvánosan elérhető terheléselosztó használatával történik.  A hálózati forgalom a NAT-szabályok (adott csomópontokhoz/példányokhoz csatlakozó ügyfelek) vagy terheléselosztási szabályok (a forgalom a virtuális gépek ciklikus időszeletelése) felé irányítja át ezeket a gépeket.  A terheléselosztó egy DNS-névvel rendelkező nyilvános IP-címmel rendelkezik, amely a (z * &lt; ) clustername formátumú &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  A nyilvános IP-cím az erőforráscsoport egy másik Azure-erőforrása.  Ha egy fürtben több csomópont-típust határoz meg, a rendszer minden egyes csomópont típusú/méretezési csoporthoz létrehoz egy terheléselosztó-t. Vagy beállíthat egyetlen Load balancert több csomópontos típushoz is.  Az elsődleges csomópont típusának DNS-címkéje * &lt; clustername &gt; . &lt; Location &gt; . cloudapp.Azure.com*, más típusú csomópontok esetén a DNS-címke * &lt; clustername &gt; - &lt; NodeType rendelkezik &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Tárfiókok
 Az [Azure Storage-fiók](/azure/storage/common/storage-introduction) és a felügyelt lemezek minden egyes fürtcsomópont-típust támogatnak.

@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758945"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235334"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -157,9 +157,9 @@ Operációs rendszer típusa | VM. SummaryConfig.GuestFullName
 Rendszerindítás típusa | VM. Config. firmware
 Magok száma | VM. Config. Hardware. NumCPU
 Memória (MB) | VM. Config. Hardware. MemoryMB
-Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk). darabszám
-Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x => VirtualDisk)
-Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x => VirtualEthernet). darabszám
+Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
+Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
+Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
 Processzorhasználat | CPU. használat. átlag
 Memória kihasználtsága |mem. használat. átlag
 **/Lemez adatai** | 
@@ -180,7 +180,7 @@ IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name | tároló. GetType (). név
+Name (Név) | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
@@ -206,11 +206,77 @@ Lemez írási műveletei másodpercenként | virtualDisk. numberWriteAveraged. A
 Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | A virtuális gép méretének kiszámítása
 Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A virtuális gép méretének kiszámítása
 
+
+### <a name="installed-apps-metadata"></a>Telepített alkalmazások metaadatainak
+
+Az Application Discovery a telepített alkalmazásokat és az operációs rendszer adatait gyűjti.
+
+#### <a name="windows-vm-apps-data"></a>Windowsos VM-alkalmazások – adatszolgáltatások
+
+Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkalmazások felderítéséhez engedélyezett összes virtuális gépről gyűjt. Ezek az adatküldés az Azure-ba történik.
+
+**Adatok** | **Beállításjegyzékbeli hely** | **Kulcs**
+--- | --- | ---
+Alkalmazásnév  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Verzió  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Szolgáltató  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows rendszerű virtuális gép szolgáltatásainak adatvédelme
+
+Itt találja azokat a funkciókat, amelyeket a készülék az alkalmazások felderítéséhez engedélyezett összes virtuális gépről gyűjt. Ezek az adatküldés az Azure-ba történik.
+
+**Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
+--- | --- | ---
+Name (Név)  | Get-WindowsFeature  | Name (Név)
+Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
+Szülő  | Get-WindowsFeature  | Szülő
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows VM SQL Server metaadatok
+
+Itt találja azokat az SQL Server-metaadatokat, amelyeket a készülék a Microsoft SQL Servert futtató virtuális gépekről gyűjt az alkalmazások felderítéséhez. Ezek az adatküldés az Azure-ba történik.
+
+**Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
+--- | --- | ---
+Name (Név)  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
+Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás 
+Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
+Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows rendszerű virtuális gép operációsrendszer-információi
+
+Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások felderítéséhez engedélyezett összes virtuális gépre gyűjt. Ezek az adatküldés az Azure-ba történik.
+
+Adatok  | WMI-osztály  | WMI-osztály tulajdonsága
+--- | --- | ---
+Name (Név)  | Win32_operatingsystem  | Képaláírás
+Verzió  | Win32_operatingsystem  | Verzió
+Architektúra  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux rendszerű virtuális gépekre vonatkozó alkalmazások
+
+Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkalmazások felderítéséhez engedélyezett összes virtuális gépről gyűjt. A virtuális gép operációs rendszere alapján egy vagy több parancs fut. Ezek az adatküldés az Azure-ba történik.
+
+Adatok  | Parancs
+--- | --- 
+Name (Név) | RPM, dpkg-Query, Snap
+Verzió | RPM, dpkg-Query, Snap
+Szolgáltató | RPM, dpkg-Query, Snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux rendszerű virtuális gép operációsrendszer-információi
+
+Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások felderítéséhez engedélyezett összes virtuális gépre gyűjt. Ezek az adatküldés az Azure-ba történik.
+
+**Adatok**  | **Parancs** 
+--- | --- | ---
+Name (Név) <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Architektúra | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Alkalmazás-függőségek metaadatai
 
 Az ügynök nélküli függőségi elemzések összegyűjtik a kapcsolatokat és dolgozzák fel az adatokat.
 
-#### <a name="connection-data"></a>Kapcsolatok adatvédelme
+#### <a name="windows-vm-app-dependencies-data"></a>Windows rendszerű virtuális gép alkalmazás függőségeinek adatvédelme
 
 Itt láthatók azok a kapcsolatok, amelyeket a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett összes virtuális gépről gyűjt. Ezek az adatküldés az Azure-ba történik.
 
@@ -224,7 +290,7 @@ TCP-kapcsolatok állapota | netstat
 Folyamatazonosító | netstat
 Aktív kapcsolatok száma | netstat
 
-#### <a name="process-data"></a>Adatok feldolgozása
+
 Itt láthatók azok az adatok, amelyeket a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett összes virtuális gépről gyűjt. Ezek az adatküldés az Azure-ba történik.
 
 **Adatok** | **WMI-osztály** | **WMI-osztály tulajdonsága**
@@ -233,7 +299,7 @@ Folyamatnév | Win32_Process | ExecutablePath
 Folyamat argumentumai | Win32_Process | CommandLine
 Alkalmazásnév | Win32_Process | A ExecutablePath tulajdonság VersionInfo. ProductName paramétere
 
-#### <a name="linux-vm-data"></a>Linux rendszerű virtuális gépekre vonatkozó
+#### <a name="linux-vm-app-dependencies-data"></a>Linuxos VM-alkalmazás függőségeinek adatvédelme
 
 Itt láthatók azok a kapcsolatok és folyamatok, amelyeket a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett Linux rendszerű virtuális gépekről gyűjt. Ezek az adatküldés az Azure-ba történik.
 

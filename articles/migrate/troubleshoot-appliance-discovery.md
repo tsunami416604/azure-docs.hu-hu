@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219248"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235459"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -168,37 +168,38 @@ Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások fe
 A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve. 
 
 **Hiba** | **Okozhat** | **Művelet**
---- | --- | --- 
-10000: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat". | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
-10001: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba – néhány hiányzó fájl a berendezésben. | Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
-10002: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
-10003 "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
-10004: "nem sikerült felderíteni a telepített alkalmazásokat <Windows/Linux> gépekhez." |  A <Windows/Linux> gépekhez való hozzáféréshez szükséges hitelesítő adatok nem voltak megadva a berendezésben.| Adjon hozzá egy hitelesítő adatot a készülékhez, amely hozzáféréssel rendelkezik a <Windows/Linux> gépekhez.
-10005: "nem lehet hozzáférni a helyszíni kiszolgálóhoz". | Lehet, hogy a hozzáférési hitelesítő adatok helytelenek. | Frissítse a készülék hitelesítő adatait, és győződjön meg arról, hogy a megfelelő számítógéphez fér hozzá. 
-10006: "nem lehet hozzáférni a helyszíni kiszolgálóhoz". | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux.|  Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
+--- | --- | --- | ---
+10000: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat" | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
+10001: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások" | Belső hiba – néhány hiányzó fájl a berendezésben. | Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
+10002: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások" | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
+10003 "nem sikerült beolvasni a kiszolgálót telepített alkalmazások" | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
+10004: "nem sikerült felderíteni a telepített alkalmazásokat <Windows/Linux> gépekhez" |  A <Windows/Linux> gépekhez való hozzáféréshez szükséges hitelesítő adatok nem voltak megadva a berendezésben.| Adjon hozzá egy hitelesítő adatot a készülékhez, amely hozzáféréssel rendelkezik a <Windows/Linux> gépekhez.
+10005: "nem lehet hozzáférni a helyszíni kiszolgálóhoz" | Lehet, hogy a hozzáférési hitelesítő adatok helytelenek. | Frissítse a készülék hitelesítő adatait, és győződjön meg arról, hogy a megfelelő számítógéphez fér hozzá. 
+10006: "nem lehet hozzáférni a helyszíni kiszolgálóhoz" | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux.|  Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
 10007: "nem sikerült feldolgozni a metaadatok lekérését" | Ez a belső hiba történt a JSON deszerializálására tett kísérlet során. | Megoldásért forduljon Microsoft ügyfélszolgálata
-9000/9001/9002: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat". | Előfordulhat, hogy a VMware-eszközök nincsenek telepítve vagy sérültek. | Telepítse/Telepítse újra a VMware-eszközöket a megfelelő gépre, és győződjön meg róla, hogy fut.
-9003: nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat ". | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
-9004: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat". | Ez akkor fordulhat elő, ha a virtuális gép ki van kapcsolva. | A felderítéshez győződjön meg arról, hogy a virtuális gép be van kapcsolva.
-9005: "nem sikerült felderíteni a virtuális gépre telepített alkalmazásokat. | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
-9006/9007: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
+9000/9001/9002: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat" | Előfordulhat, hogy a VMware-eszközök nincsenek telepítve vagy sérültek. | Telepítse/Telepítse újra a VMware-eszközöket a megfelelő gépre, és győződjön meg róla, hogy fut.
+9003: nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat " | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
+9004: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat" | Ez akkor fordulhat elő, ha a virtuális gép ki van kapcsolva. | A felderítéshez győződjön meg arról, hogy a virtuális gép be van kapcsolva.
+9005: "nem sikerült felderíteni a virtuális gépre telepített alkalmazásokat | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
+9006/9007: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások" | Előfordulhat, hogy a készülék felderítési ügynöke nem működik megfelelően. | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz
 9008: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba lehet.  | TF a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
-9009: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Akkor fordulhat elő, ha a kiszolgálón a Windows felhasználói fiókok felügyelete (UAC) beállításai korlátozóak, és megakadályozza a telepített alkalmazások felderítését. | Keressen rá a "felhasználói fiókok felügyelete" beállításokra a kiszolgálón, és konfigurálja az UAC-beállítást a kiszolgálón az alacsonyabb két szint egyikére.
-9010: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba lehet.  | TF a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
+9009: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások" | Akkor fordulhat elő, ha a kiszolgálón a Windows felhasználói fiókok felügyelete (UAC) beállításai korlátozóak, és megakadályozza a telepített alkalmazások felderítését. | Keressen rá a "felhasználói fiókok felügyelete" beállításokra a kiszolgálón, és konfigurálja az UAC-beállítást a kiszolgálón az alacsonyabb két szint egyikére.
+9010: "a virtuális gép ki van kapcsolva" | A virtuális gép ki van kapcsolva.  | Győződjön meg arról, hogy a virtuális gép be van kapcsolva.
 9011: "a vendégen letölthető fájl nem található a vendég virtuális gépen" | A probléma belső hiba miatt fordulhat elő. | A probléma 24 órán belül automatikusan fel lesz oldva. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9012: "az eredmény fájljának tartalma üres." | A probléma belső hiba miatt fordulhat elő. | A probléma 24 órán belül automatikusan fel lesz oldva. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9013: "új ideiglenes profil jön létre a VMware virtuális géphez való minden bejelentkezéshez" | A rendszer minden bejelentkezéshez új ideiglenes profilt hoz létre a virtuális gépen. | Győződjön meg arról, hogy a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva. Miután módosította a vendég virtuális gép hitelesítő adataiban megadott felhasználónevet UPN formátumra, a tálcán a Feladatkezelő eszközben indítsa újra a Microsoft Azure VMWare Discovery szolgáltatást az új felderítés megkereséséhez.
-9015: "nem lehet csatlakozni a VMware virtuális gépekhez, mert nincs megfelelő jogosultsága a vCenter" | A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókon. | Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján.
+9012: "az eredmény fájljának tartalma üres" | A probléma belső hiba miatt fordulhat elő. | A probléma 24 órán belül automatikusan fel lesz oldva. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+9013: "új ideiglenes profil jön létre a VMware virtuális géphez való minden bejelentkezéshez" | A rendszer minden bejelentkezéskor létrehoz egy új ideiglenes profilt a virtuális géphez | Győződjön meg arról, hogy a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva.
+9014: "nem sikerült lehívni a metaadatokat a vendég virtuális fájlrendszerből" | Probléma merült fel az ESXi-gazdagéphez való csatlakozás során | Győződjön meg arról, hogy a készülék csatlakozni tud a 443-es porthoz a virtuális gépet futtató ESXi-gazdagépen
+9015: "nem lehet csatlakozni a VMware virtuális gépekhez, mert nincs megfelelő jogosultsága a vCenter" | A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókján | Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján.
 9016: "nem sikerült csatlakozni a VMware virtuális gépekhez, mert a vendég műveleti ügynök kívül esik az adatokon" | A VMware-eszközök nincsenek megfelelően telepítve vagy nem naprakészek. | Győződjön meg arról, hogy a VMware-eszközök megfelelően vannak telepítve és naprakészek.
-9017: "a felderített metaadatokat tartalmazó fájl nem található a virtuális gépen." | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9018: "a PowerShell nincs telepítve a vendég virtuális gépeken." | A PowerShell nem érhető el a vendég virtuális gépen. | Telepítse a PowerShellt a vendég virtuális gépen.
+9017: "a felderített metaadatokat tartalmazó fájl nem található a virtuális gépen" | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
+9018: "a PowerShell nincs telepítve a vendég virtuális gépeken" | A PowerShell nem érhető el a vendég virtuális gépen. | Telepítse a PowerShellt a vendég virtuális gépen.
 9019: "nem sikerült felderíteni a vendég virtuális gép műveletének hibája miatt" | A VMware Guest művelet sikertelen volt a virtuális gépen. | Győződjön meg arról, hogy a virtuális gép hitelesítő adatai érvényesek, és a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva.
-9020: "a fájl létrehozása engedély megtagadva." | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót, hogy hozza létre a fájlt a mappában. | Ellenőrizze, hogy a megadott vendég felhasználó rendelkezik-e létrehozás engedéllyel a fájlhoz a mappában. A mappa nevében tekintse meg az **értesítések** a kiszolgáló értékelése című témakört.
-9021: "a fájl létrehozása engedély megtagadva a mapparendszer ideiglenes elérési útján". | A VMware-eszköz verziója nem támogatott a virtuális gépen | Frissítse a VMware-eszköz verzióját a 10.2.0 felett.
-9022: "a WMI-objektum elérésének beolvasása megtagadva." | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót a WMI-objektum elérésére. | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9023: "a rendszergyökér környezeti változó értéke üres." | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9024: "a TEMP környezeti változó értéke üres." | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9025: "a PowerShell sérült a vendég virtuális gépeken." | Ismeretlen | Telepítse újra a PowerShellt a vendég virtuális gépen, és ellenőrizze, hogy a PowerShell futtatható-e a vendég virtuális gépen.
+9020: "a fájl létrehozása engedély megtagadva" | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót, hogy hozza létre a fájlt a mappában. | Ellenőrizze, hogy a megadott vendég felhasználó rendelkezik-e létrehozás engedéllyel a fájlhoz a mappában. A mappa nevében tekintse meg az **értesítések** a kiszolgáló értékelése című témakört.
+9021: "a fájl létrehozása engedély megtagadva a mapparendszer ideiglenes elérési útján" | A VMware-eszköz verziója nem támogatott a virtuális gépen | Frissítse a VMware-eszköz verzióját a 10.2.0 felett.
+9022: "a WMI-objektum hozzáférésének beolvasása megtagadva" | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót a WMI-objektum elérésére. | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+9023: "a rendszergyökér környezeti változó értéke üres" | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+9024: "a TEMP környezeti változó értéke üres" | Ismeretlen | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
+9025: "a PowerShell sérült a vendég virtuális gépeken" | Ismeretlen | Telepítse újra a PowerShellt a vendég virtuális gépen, és ellenőrizze, hogy a PowerShell futtatható-e a vendég virtuális gépen.
 8084: "nem sikerült felderíteni az alkalmazásokat VMware-hiba miatt:  <Exception from VMware> " | Az Azure Migrate készülék VMware API-kat használ az alkalmazások felderítéséhez. Ez a probléma akkor fordulhat elő, ha a vCenter Server kivételt okoz az alkalmazások felderítésére tett kísérlet során. A VMware hibaüzenet jelenik meg a portálon megjelenített hibaüzenetben. | Keresse meg az üzenetet a [VMware-dokumentációban](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), és kövesse a lépéseket a javításhoz. Ha nem tudja kijavítani, forduljon a Microsoft ügyfélszolgálatához.
 
 

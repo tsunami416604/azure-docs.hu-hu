@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c60273cced46ba2afe536c004bf4cfc6f1eab646
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 157f629ff92781c8178c3b7facfaaa0bc58262ec
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654828"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236203"
 ---
-|Name |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Logic Apps diagnosztikai beállításainak üzembe helyezése az Event hub-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1dae6c7-13f3-48ea-a149-ff8442661f60) |Központilag telepíti a Logic Apps diagnosztikai beállításait egy regionális Event hubhoz, ha bármely olyan Logic Apps, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |DeployIfNotExists, letiltva |2.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogicApps_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Logic Apps diagnosztikai beállításainak központi telepítése Log Analytics munkaterületre](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb889a06c-ec72-4b03-910a-cb169ee18721) |Központilag telepíti a Logic Apps diagnosztikai beállításait a helyi Log Analytics munkaterületre, ha bármely olyan Logic Apps, amelyből hiányzik a diagnosztikai beállítások létrehozása vagy frissítése. |DeployIfNotExists, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogicApps_DeployDiagnosticLog_Deploy_LogAnalytics.json) |

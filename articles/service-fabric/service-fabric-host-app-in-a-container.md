@@ -3,12 +3,12 @@ title: .NET-alkalmazás üzembe helyezése tárolóban az Azure Service Fabric
 description: Megtudhatja, hogyan helyezhet tárolóba egy meglévő .NET-alkalmazást a Visual Studio segítségével, illetve hogyan végezhet helyi hibakeresést a Service Fabric szolgáltatásbeli tárolókon. A tárolóba helyezett alkalmazást a rendszer Azure-tárolóregisztrációs adatbázisba küldi, és üzembe helyezi egy Service Fabric-fürtben. Az Azure-ban való üzembe helyezéskor az alkalmazás Azure SQL-adatbázist használ adatmegőrzéshez.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 06c284a06be4879f9ecb514ed30c28332cd11cc8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017001"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234236"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
@@ -233,7 +233,7 @@ Most, hogy az alkalmazása kész, üzembe helyezheti az Azure-beli fürtben köz
 
 ![Az alkalmazás közzététele][publish-app]
 
-Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon. Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Például: https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon. Ha az alkalmazás üzembe helyezése befejeződött, nyisson meg egy böngészőablakot, és írja be a fürt címét és az alkalmazásportot. Például: `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![A Fabrikam mintaalkalmazás webes felülete][fabrikam-web-page-deployed]
 
@@ -241,7 +241,7 @@ Az üzembe helyezés folyamatát a kimeneti ablakban követheti nyomon. Ha az al
 
 A CI/CD-alkalmazástelepítés Service Fabric-fürtben végzett, Azure DevOpsszal való konfigurálásáról lásd: [Oktatóanyag: Alkalmazások üzembe helyezése Service Fabric-fürtön CI/CD használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Az oktatóanyagban ismertetett folyamat ugyanaz ehhez a (FabrikamFiber) projekthez, csak hagyja ki a szavazási minta letöltését, és a szavazás helyett a FabrikamFiber nevet írja be az adattár neveként.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett, ne felejtse el eltávolítani a létrehozott erőforrásokat.  Ennek legegyszerűbb módja az, ha törli azt az erőforráscsoportot, amely tartalmazza a Service Fabric-fürtöt, az Azure SQL-adatbázist és az Azure Container Registry-adatbázist.
 

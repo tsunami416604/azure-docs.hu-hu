@@ -2,21 +2,21 @@
 title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager-sablonját. Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 05/20/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714797"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235214"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
 Ez az oktatóanyag bemutatja Azure Resource Manager (ARM) sablonokat. Bemutatja, hogyan hozhat létre kezdő sablont, és hogyan helyezheti üzembe az Azure-ban. Megismerheti a sablon felépítését és a sablonokkal való munkához szükséges eszközöket. Az oktatóanyag elvégzése körülbelül **12 percet** vesz igénybe, de a tényleges idő attól függően változik, hogy hány eszközt kell telepítenie.
 
-Ez az oktatóanyag egy sorozat első része. Ahogy halad az adatsorozaton, a sablon megkezdése lépésről lépésre módosítja, amíg az ARM-sablonok összes alapvető részét meg nem vizsgálja. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
+Ez az oktatóanyag egy sorozat első része. Ahogy halad a sorozaton, módosítja a sablon indítása lépésről lépésre, amíg meg nem tárja az ARM-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
 
 Ha szeretné megismerni a sablonok használatának előnyeit, és azt, hogy miért érdemes a sablonokkal automatizálni az üzembe helyezést, olvassa el a [Azure Resource Manager-sablonok](overview.md)című témakört.
 
@@ -34,11 +34,14 @@ A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van s
 
 A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. Ha az Azure CLI-t használja, a legújabb verziót kell használnia. A telepítési utasításokért lásd:
 
-- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
 
 A Azure PowerShell vagy az Azure CLI telepítését követően ellenőrizze, hogy az első alkalommal jelentkezik-e be. Segítségért lásd: [Bejelentkezés – PowerShell](/powershell/azure/install-az-ps#sign-in) vagy [Bejelentkezés – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
+
+> [!IMPORTANT]
+> Ha az Azure CLI-t használja, ellenőrizze, hogy rendelkezik-e a 2,6-es vagy újabb verziójával. Az oktatóanyagban megjelenő parancsok nem fognak működni, ha régebbi verziókat használ. A telepített verziójának vizsgálatához használja a következőt: `az --version` .
 
 Most már készen áll a sablonok megismerésének megkezdésére.
 
@@ -67,7 +70,7 @@ Most már készen áll a sablonok megismerésének megkezdésére.
 
     A JSON-fájl a következő elemeket tartalmazza:
 
-    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2019-04-01. Ez a séma-verzió naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
+    - **$Schema**: a JSON-séma fájljának helyét adja meg. A sémafájl a sablonon belül elérhető tulajdonságokat írja le. A séma például az **erőforrásokat** egy sablon érvényes tulajdonságainak egyike alapján határozza meg. Ne aggódjon, hogy a séma dátuma 2019-04-01. A séma verziója naprakész, és tartalmazza a legújabb funkciókat. A séma dátumának módosítása nem történt meg, mert a bevezetése óta nem történt változás.
     - **contentVersion**: a sablon verzióját adja meg (például 1.0.0.0). Ehhez az elemhez bármilyen értéket megadhat. Ezzel az értékkel dokumentálhatja a sablon jelentős változásait. Ha a sablonnal telepít erőforrásokat, ezzel az értékkel meggyőződhet arról, hogy a megfelelő sablon használatban van-e.
     - **erőforrások**: tartalmazza a telepíteni vagy frissíteni kívánt erőforrásokat. Jelenleg üres, de később további erőforrásokat fog hozzáadni.
 
@@ -197,7 +200,7 @@ A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a
 
    ![Központi telepítés összegzésének megtekintése](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha továbblép a következő oktatóanyagra, nem kell törölnie az erőforráscsoportot.
 
@@ -208,7 +211,7 @@ Ha most leáll, érdemes törölni az erőforráscsoportot.
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy egyszerű sablont az Azure-ba való üzembe helyezéshez. A következő oktatóanyagban hozzá kell adnia egy Storage-fiókot a sablonhoz, és telepítenie kell azt az erőforráscsoporthoz.
 

@@ -4,12 +4,12 @@ description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozá
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780009"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229852"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -126,7 +126,7 @@ A támogatási kérelem elküldését követően az Azure-támogatás kapcsolatb
 Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigurációban található batch-készletek automatikusan további Azure hálózati erőforrásokat foglalnak magukban. A következő erőforrásokra van szükség egy virtuális hálózat 50-es készlet-csomópontjaihoz:
 
 * Egy [hálózati biztonsági csoport](../virtual-network/security-overview.md#network-security-groups)
-* Egy [nyilvános IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* Egy [nyilvános IP-cím](../virtual-network/public-ip-addresses.md)
 * Egy [Load Balancer](../load-balancer/load-balancer-overview.md)
 
 Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás**lehetőség kiválasztásával növelje a Azure Portal növekedését.

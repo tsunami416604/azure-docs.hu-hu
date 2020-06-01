@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 22fc625b6da2e9c6320920274153a9962e0d910f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6e74948ab89b7b952830aec8b3761ba0097b6454
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656284"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235755"
 ---
-|Name |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Data Lake Storage Gen1 diagnosztikai beállításainak üzembe helyezése az Event hub-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe8d096bc-85de-4c5f-8cfb-857bd1b9d62d) |Központilag telepíti a Data Lake Storage Gen1 diagnosztikai beállításait egy regionális Event hubhoz, ha bármely olyan Data Lake Storage Gen1, amelyből hiányzik ez a diagnosztikai beállítás, létrejön vagy frissül. |DeployIfNotExists, letiltva |2.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DataLakeStorage_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Data Lake Storage Gen1 diagnosztikai beállításainak központi telepítése Log Analytics munkaterületre](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F25763a0a-5783-4f14-969e-79d4933eb74b) |Központilag telepíti a Data Lake Storage Gen1 diagnosztikai beállításait a helyi Log Analytics munkaterületre, ha bármely olyan Data Lake Storage Gen1, amelyből hiányzik a diagnosztikai beállítások létrehozása vagy frissítése. |DeployIfNotExists, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DataLakeStorage_DeployDiagnosticLog_Deploy_LogAnalytics.json) |

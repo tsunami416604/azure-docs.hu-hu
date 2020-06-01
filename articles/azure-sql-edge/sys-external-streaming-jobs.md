@@ -2,19 +2,19 @@
 title: sys. external_streaming_jobs (Transact-SQL) – Azure SQL Edge (előzetes verzió)
 description: Tudnivalók a sys. external_streaming_jobs használatáról az Azure SQL Edge-ben (előzetes verzió)
 keywords: sys. external_streaming_jobs, SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7d4f66375c5490906e773c6f105a029c3a88465c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4da73e3197df894a0726556b4e92141818a520e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597274"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233068"
 ---
 # <a name="sysexternal_streaming_jobs-transact-sql"></a>sys. external_streaming_jobs (Transact-SQL)
 
@@ -29,8 +29,8 @@ Az adatbázis hatókörében létrehozott összes külső adatfolyam-feladatsor 
 |**parent_object_id**|**ID**| az adatfolyamhoz tartozó szülőobjektum objektum-azonosító száma. Az aktuális implementációban ez az érték mindig null|
 |**típusa**|**char (2)**|Objektumtípus. Stream-objektumok esetében a típus mindig "EJ".|
 |**type_desc**|**nvarchar (60)**| Az objektumtípus leírása. Stream-objektumok esetében a típus mindig "EXTERNAL_STREAMING_JOB"|
-|**create_date**|**dátum/idő**| Az objektum létrehozásának dátuma.|
-|**modify_date**|**dátum/idő**| Az aktuális implementációban ez az érték ugyanaz, mint az adatfolyam-objektum create_date |
+|**create_date**|**datetime**| Az objektum létrehozásának dátuma.|
+|**modify_date**|**datetime**| Az aktuális implementációban ez az érték ugyanaz, mint az adatfolyam-objektum create_date |
 |**is_ms_shipped**|**bit**| Egy belső összetevő által létrehozott objektum.|  
 |**is_published**|**bit**| Az objektum közzé van téve.|  
 |**is_schema_published**|**bit**|Csak az objektum sémája lesz közzétéve.|
@@ -42,7 +42,7 @@ Az adatbázis hatókörében létrehozott összes külső adatfolyam-feladatsor 
 
 A metaadatoknak a katalógus nézeteiben való láthatósága azon biztonságos elemek migrálására korlátozódik, amelyeknek a felhasználó tulajdonában van, vagy amelyeken a felhasználó engedélyt kapott. További információ: [metaadatok láthatóságának konfigurálása](/sql/relational-databases/security/metadata-visibility-configuration/).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [T-SQL streaming Catalog-nézetek](overview.md)
 - [Katalógus nézetei (Transact-SQL)](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql/)

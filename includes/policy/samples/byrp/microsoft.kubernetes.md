@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ba1d36ee12fe021f320c8f0474fc418d8468dd1a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0488fe619775e98929019863fdb9a4e6487df297
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649265"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236251"
 ---
-|Name |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Emelt szintű tárolók letiltása a Kubernetes-fürtben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Ez a szabályzat nem engedélyezi a privilegizált tárolók létrehozását egy Kubernetes-fürtben. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |enforceOPAConstraint, letiltva |3.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege_EnforceOPAConstraint.json) |
 |[HTTPS bejövő forgalom betartatása a Kubernetes-fürtben](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Ez a szabályzat a HTTPS bejövő forgalmat kényszeríti ki egy Kubernetes-fürtben. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |enforceOPAConstraint, letiltva |3.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly_EnforceOPAConstraint.json) |

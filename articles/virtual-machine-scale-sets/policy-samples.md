@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure-beli virtuálisgép-méretezési csoportokhoz
 description: Az Azure virtuálisgép-méretezési csoportok beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 0c408fc37e59b20770266a018c55e2465744943f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5d7a4a036690f67313fa20558382b660a811bc88
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655156"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235590"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machine-scale-sets"></a>Az Azure virtuálisgép-méretezési csoportok beépített szabályzat-definícióinak Azure Policy
 

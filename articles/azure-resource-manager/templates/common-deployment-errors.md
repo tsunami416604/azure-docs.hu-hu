@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b7a318f73a513d699de97f0973ece9b6481b93
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460381"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230635"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -27,7 +27,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | AccountPropertyCannotBeSet | Keresse meg a rendelkezésre álló Storage-fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | A fürt vagy a régió nem rendelkezik elérhető erőforrásokkal, vagy nem támogatja a kért virtuálisgép-méretet. Ismételje meg a kérést később, vagy igényeljen egy másik virtuálisgép-méretet. | A Linux, a [kiépítési és a foglalási problémák](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md) kiosztása [és lefoglalása](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)a Windows rendszerhez és a foglalási [hibák elhárítása](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg az egyidejű művelet befejeződik. | |
-| AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
+| AuthorizationFailed | A fiók vagy az egyszerű szolgáltatásnév nem rendelkezik megfelelő hozzáféréssel az üzemelő példány befejezéséhez. Győződjön meg arról, hogy a fiókja a szerepkörhöz tartozik, valamint a központi telepítési hatókörhöz való hozzáférése.<br><br>Ez a hiba akkor jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú Access Control](../../role-based-access-control/role-assignments-portal.md)<br><br>[Regisztráció feloldása](error-register-resource-provider.md) |
 | BadRequest | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
 | Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. Például a lemezek átméretezése csak a virtuális gép létrehozásakor vagy a virtuális gép kiosztása esetén engedélyezett. | |
 | DeploymentActiveAndUneditable | Várjon, amíg a rendszer végrehajtja az adott erőforráscsoport egyidejű üzembe helyezését. | |
@@ -62,8 +62,8 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | OperationNotAllowed | Az üzemelő példány olyan műveletet próbál végrehajtani, amely meghaladja az előfizetés, az erőforráscsoport vagy a régió kvótáját. Ha lehetséges, módosítsa úgy a központi telepítést, hogy a kvótán belül maradjon. Ellenkező esetben érdemes lehet módosítani a kvótákat. | [Kvóták feloldása](error-resource-quota.md) |
 | ParentResourceNotFound | A gyermek erőforrások létrehozása előtt győződjön meg arról, hogy a szülő erőforrás létezik. | [Szülő erőforrás feloldása](error-parent-resource.md) |
 | PasswordTooLong | Előfordulhat, hogy túl sok karakterből álló jelszót jelölt ki, vagy a jelszó értékét egy biztonságos karakterláncra konvertálta, mielőtt paraméterként átadná. Ha a sablon tartalmaz egy **biztonságos karakterlánc** -paramétert, akkor nem szükséges az érték konvertálása biztonságos karakterlánccá. Adja meg a jelszó értékét szövegként. |  |
-| PrivateIPAddressInReservedRange | A megadott IP-cím tartalmazza az Azure által igényelt címtartományt. Módosítsa az IP-címet a fenntartott tartomány elkerüléséhez. | [IP-címek](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózat tartományán kívül esik. Módosítsa az IP-címet az alhálózati tartományba eső értékre. | [IP-címek](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | A megadott IP-cím tartalmazza az Azure által igényelt címtartományt. Módosítsa az IP-címet a fenntartott tartomány elkerüléséhez. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | A megadott IP-cím az alhálózat tartományán kívül esik. Módosítsa az IP-címet az alhálózati tartományba eső értékre. | [IP-címek](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | Egyes tulajdonságok nem módosíthatók központilag telepített erőforrásokon. Egy erőforrás frissítésekor korlátozza az engedélyezett tulajdonságok módosításait. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Az előfizetés tartalmaz egy erőforrás-szabályzatot, amely megakadályozza az üzembe helyezés során végrehajtani kívánt műveleteket. Keresse meg a műveletet blokkoló házirendet. Ha lehetséges, módosítsa az üzemelő példányt, hogy megfeleljen a szabályzat korlátainak. | [Szabályzatok feloldása](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Adja meg a fenntartott nevet nem tartalmazó erőforrás nevét. | [Fenntartott erőforrások nevei](error-reserved-resource-name.md) |

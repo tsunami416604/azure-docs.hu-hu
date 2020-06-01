@@ -2,19 +2,19 @@
 title: IoT Edge modulok beállítása az Azure SQL Edge-ben
 description: A három részből álló Azure SQL Edge-oktatóanyag első részében a vasérc-szennyeződések előrejelzéséhez IoT Edge modulokat és kapcsolatokat kell beállítania.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599684"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235024"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modulok és kapcsolatok beállítása
 
@@ -25,7 +25,7 @@ Az alábbi, a három részből álló oktatóanyagban az Iron Ore-szennyeződés
 
 ## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics modul létrehozása
 
-Hozzon létre egy Azure Stream Analytics modult, amely ebben az oktatóanyagban lesz felhasználva. Ha többet szeretne megtudni a streaming-feladatok SQL Edge használatával történő használatáról, tekintse meg a [folyamatos átviteli feladatok használata SQL Database Edge használatával](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)című témakört.
+Hozzon létre egy Azure Stream Analytics modult, amely ebben az oktatóanyagban lesz felhasználva. Ha többet szeretne megtudni a streaming-feladatok SQL Edge használatával történő használatáról, tekintse meg a következőt: [streaming Jobs használata az SQL Edge használatával](stream-analytics.md).
 
 Miután létrehozta a Azure Stream Analytics feladatot az Edge-vel beállított üzemeltetési környezettel, állítsa be az oktatóanyag bemeneteit és kimeneteit.
 
@@ -35,7 +35,7 @@ Miután létrehozta a Azure Stream Analytics feladatot az Edge-vel beállított 
    -----|-----
    Esemény szerializálási formátuma|JSON
    Encoding|UTF-8
-   Esemény tömörítési típusa|Nincs
+   Esemény tömörítési típusa|None
 
 2. A **kimenet**létrehozásához kattintson a **+ Hozzáadás** elemre, és válassza a SQL Database lehetőséget. Töltse ki a részletek szakaszt az alábbi információk alapján.
 
@@ -48,7 +48,7 @@ Miután létrehozta a Azure Stream Analytics feladatot az Edge-vel beállított 
    Kiszolgálónév|TCP:., 1433
    Felhasználónév|sa
    Jelszó|Erős jelszó megadása
-   Táblázat|IronOreMeasurements1
+   Tábla|IronOreMeasurements1
 
 3. Navigáljon a **lekérdezés** szakaszhoz, és állítsa be a lekérdezést a következőképpen:
 
@@ -77,7 +77,7 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
    _Mező_|_Érték_
    -------|-------
-   Name|Beállításjegyzék neve
+   Name (Név)|Beállításjegyzék neve
    Cím|Bejelentkezési kiszolgáló
    Felhasználónév|Felhasználónév
    Jelszó|Jelszó
@@ -101,7 +101,7 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Az Azure SQL Edge-modul üzembe helyezése
 
-1. Az Azure SQL Edge-modul üzembe helyezéséhez kövesse az [üzembe helyezés Azure SQL Database Edge előzetes](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge)verziójában felsorolt lépéseket.
+1. Telepítse az Azure SQL Edge-modult az [Azure SQL Edge (előzetes verzió) üzembe helyezése](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)című témakörben ismertetett lépéseket követve.
 
 2. A **modulok beállítása** lap **útvonal megadása** lapján adja meg a modul útvonalait IoT Edge hub-kommunikációt az alábbiak szerint. 
 

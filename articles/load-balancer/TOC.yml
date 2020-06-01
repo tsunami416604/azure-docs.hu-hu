@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: Kimenő kapcsolatok
       href: load-balancer-outbound-connections.md
-    - name: Kimenő szabályok
-      href: load-balancer-outbound-rules-overview.md
     - name: A TCP visszaállítása üresjárati időtúllépés esetén
       href: load-balancer-tcp-reset.md
     - name: A Standard Load Balancer és a rendelkezésre állási zónák

@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007855"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231422"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -110,7 +110,7 @@ Ha önálló, saját DNS-zónát szeretne létrehozni az Azure-ban, ugyanezt a l
 
 Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) a régiókódokhoz.
 
-Az URL-címek elnevezési konvenciói az országos térségek:
+Az URL-címek elnevezési konvenciói a nemzeti régiókban:
 
 - [Kína](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [Németország](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)

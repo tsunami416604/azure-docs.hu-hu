@@ -2,19 +2,19 @@
 title: Adatok szinkronizálása az Azure SQL Edge-ből (előzetes verzió) SQL-adatszinkronizálás használatával
 description: Tudnivalók az Azure SQL Edge (előzetes verzió) adatainak az Azure SQL-adatszinkronizálás használatával történő szinkronizálásáról
 keywords: SQL Edge, adatok szinkronizálása az SQL Edge-ből, az SQL Edge adatszinkronizálása
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f72602143063807043d53bb1779866fe521f9f59
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196471"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235018"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből a Azure SQL Databasere SQL-adatszinkronizálás használatával
 

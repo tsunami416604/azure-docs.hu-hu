@@ -2,19 +2,19 @@
 title: Azure Stream Analytics Edge-feladatok használata az Azure SQL Edge használatával (előzetes verzió)
 description: Tudnivalók a Stream Analytics feladatok használatáról az Azure SQL Edge-ben (előzetes verzió)
 keywords: SQL Edge, Stream Analytics,
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597316"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233141"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Azure Stream Analytics feladatok használata az SQL Edge használatával
 
@@ -56,7 +56,7 @@ Az Azure SQL Edge a stream Analytics futtatókörnyezet natív implementációj�
     |Kiszolgálónév | Az SQL-példány neve (vagy IP-címe) és portszáma. SQL Edge-telepítés esetén a kiszolgálónévhez használhatja a **TCP:., 1433** nevet.|
     |Felhasználónév | Olyan SQL-bejelentkezési fiók, amely adatolvasóval és adatírókkal fér hozzá a korábban megadott adatbázishoz.|
     |Jelszó | A korábban megadott SQL-bejelentkezési fiók jelszava.|
-    |Táblázat | A folyamatos átviteli feladatokhoz használandó tábla neve.|
+    |Tábla | A folyamatos átviteli feladatokhoz használandó tábla neve.|
     |Particionálás öröklése| Engedélyezi az előző lekérdezési lépés vagy bemenet particionálási sémájának öröklését. Ha ez a beállítás engedélyezve van, a lemezes táblára való írásnál nagyobb átviteli sebesség várható, és a feladatokhoz teljes mértékben párhuzamos topológia szükséges.|
     |Köteg mérete| Az összes tömeges beszúrási tranzakcióval ellátott rekordok maximális száma.|
 

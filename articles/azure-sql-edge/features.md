@@ -2,19 +2,19 @@
 title: Az Azure SQL Edge támogatott funkciói (előzetes verzió)
 description: Ismerje meg az Azure SQL Edge által támogatott szolgáltatások részleteit (előzetes verzió)
 keywords: az SQL Edge bemutatása, mi az SQL Edge, az SQL Edge áttekintése
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e3bac1cbb0e57f9be4a489207f2fe8b30b5d457e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684368"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233212"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
 
@@ -68,7 +68,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | A stretch DB és a kapcsolódó DDL-parancsok és a Transact-SQL függvények, a katalógus nézetei és a dinamikus felügyeleti nézetek |
 | &nbsp; | Teljes szöveges indexek és keresési és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek|
 | &nbsp; | Lehasználható, FILESTREAM és kapcsolódó DDL-parancsok és Transact-SQL függvények, katalógus-nézetek és dinamikus felügyeleti nézetek|
-| **Adatbázismotor** | Replikáció. Az Azure SQL Edge azonban konfigurálható egy replikációs topológia leküldéses előfizetői számára. |
+| **Adatbázismotor** | Replikációs. Az Azure SQL Edge azonban konfigurálható egy replikációs topológia leküldéses előfizetői számára. |
 | &nbsp; | Polybase. Az Azure SQL Edge azonban megadható célként a következő külső táblákhoz: |
 | &nbsp; | Nyelvi bővíthetőség a Java és a Spark használatával |
 | &nbsp; | Active Directory-integráció |

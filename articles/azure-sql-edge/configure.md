@@ -2,19 +2,19 @@
 title: Az Azure SQL Edge konfigurálása (előzetes verzió)
 description: Tudnivalók az Azure SQL Edge konfigurálásáról (előzetes verzió)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: dc2b76a31982a3f72da02348c1a4796212887cb7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168250"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235149"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Az Azure SQL Edge konfigurálása (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változókat. Ha meg van adva, a rendszer figyelmen kívül hagyja ezeket a környezeti változókat a tároló inicializálásakor.
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az "1" érték például engedélyezve van, és a "0" le van tiltva. |
 
@@ -73,7 +73,7 @@ Az Azure SQL Edge nem tartalmazza az [MSSQL-conf konfigurációs segédprogramot
 
 A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |:---|:---|
 |**Felhasználói visszajelzés** | Adja meg, hogy SQL Server küld-e visszajelzést a Microsoftnak. |
 |**Database Mail profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |

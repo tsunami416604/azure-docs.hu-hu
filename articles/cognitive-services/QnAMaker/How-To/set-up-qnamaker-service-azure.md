@@ -3,12 +3,12 @@ title: QnA Maker szolgáltatás beállítása – QnA Maker
 description: Mielőtt bármilyen QnA Maker tudásbázist létrehozni, először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Az előfizetésben lévő új erőforrások létrehozásához szükséges engedélyekkel rendelkező bárki beállíthat QnA Maker szolgáltatást.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171174"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235520"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -210,6 +210,11 @@ Annak érdekében, hogy az előrejelzési végpont alkalmazás betöltődik, mé
 1. A rendszer megkérdezi, hogy szeretné-e újraindítani az alkalmazást az új beállítás használatához. Válassza a **Folytatás** elemet.
 
 További információ a App Service [általános beállításainak](../../../app-service/configure-common.md#configure-general-settings)konfigurálásáról.
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Environment konfigurálása a QnA Maker számára App Service
+A App Service Environment használható QnA Maker app Service üzemeltetéséhez. Ha a App Service Environment belső, akkor az alábbi lépéseket kell követnie:
+1. Hozzon létre egy app Service-t és egy Azure Search-szolgáltatást.
+2. Tegye közzé az App Service-t nyilvános DNS-en és engedélyezési QnA Maker Service-címkén: CognitiveServicesManagement vagy őrizze meg az internetkapcsolatot.
+3. Hozzon létre egy QnA Maker kognitív szolgáltatási példányt (Microsoft. CognitiveServices/accounts) Azure Resource Manager használatával, ahol a QnA Maker végpontot App Service Environment értékre kell állítani. 
 
 ## <a name="business-continuity-with-traffic-manager"></a>Üzletmenet-folytonosság a Traffic Managerrel
 
@@ -238,7 +243,7 @@ A fentiekben képviselt magas szintű ötlet a következő:
 
 Ha törli a QnA Maker tudásbázishoz használt Azure-erőforrásokat, a tudásbázisok nem fognak működni. Az erőforrások törlése előtt győződjön meg arról, hogy a tudásbázisokat a **Beállítások** lapról exportálja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 

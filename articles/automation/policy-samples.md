@@ -1,15 +1,15 @@
 ---
 title: A Azure Automation beépített szabályzat-definíciói
 description: A Azure Automation Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 31d27eb81ec78a3eb0f638f724022b93c917e140
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e314bbc82c993db1c3fc23089f903ae68f10290e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740756"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229821"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-automation"></a>Azure Policy beépített szabályzat-definíciók a Azure Automation
 

@@ -2,19 +2,19 @@
 title: T-SQL streaming-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió)
 description: Tudnivalók Stream Analytics feladatok létrehozásáról az Azure SQL Edge-ben (előzetes verzió)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685173"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233305"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
 
@@ -42,12 +42,12 @@ Emellett az SQL Edge (vagy SQL Server, Azure SQL) kimeneti adatfolyamként való
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|
-| Azure Blob Storage | N | I | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
-| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel/AMD verziójához érhető el, és nem érhető el az SQL Edge ARM64 verziójához.|
+| Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
+| SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|
+| Azure Blob Storage | N | Y | Adatforrás, amely az Azure Storage-fiókban lévő blobba írja az adatforrást. |
+| Kafka | Y | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel/AMD verziójához érhető el, és nem érhető el az SQL Edge ARM64 verziójához.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Példa: külső stream bemeneti/kimeneti objektum létrehozása Azure IoT Edge hubhoz
 

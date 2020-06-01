@@ -2,19 +2,19 @@
 title: Mi az Azure SQL Edge (előzetes verzió)?
 description: Tudnivalók az Azure SQL Edge (előzetes verzió) szolgáltatásról
 keywords: az SQL Edge bemutatása, mi az SQL Edge, az SQL Edge áttekintése
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712808"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233166"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
 
@@ -70,7 +70,7 @@ Az Azure SQL Edge egyszerűbbé és hatékonyabbá teszi az alkalmazások fejles
 - [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és Azure SQL Data Warehouse lekérdezéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [Az SQL Edge Machine Learning és mesterséges intelligencia](onnx-overview.md)

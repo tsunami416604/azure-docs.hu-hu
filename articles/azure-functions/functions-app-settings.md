@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690763"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235352"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -20,27 +20,27 @@ A [Host. JSON](functions-host-json.md) fájlban és a [Local. Settings. JSON](fu
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights rendszerállapot-kulcsa. Csak a vagy `APPLICATIONINSIGHTS_CONNECTIONSTRING`a `APPINSIGHTS_INSTRUMENTATIONKEY` valamelyikét használja. További információ: [Azure functions figyelése](functions-monitoring.md). 
+Application Insights rendszerállapot-kulcsa. Csak a vagy a valamelyikét használja `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTION_STRING` . További információ: [Azure functions figyelése](functions-monitoring.md). 
 
 |Kulcs|Mintaérték|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
 
-## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-A Application Insightshoz tartozó kapcsolatok karakterlánca. Akkor `APPLICATIONINSIGHTS_CONNECTIONSTRING` használja, `APPINSIGHTS_INSTRUMENTATIONKEY` ha a Function alkalmazáshoz a kapcsolati sztring használatával támogatott további testreszabások szükségesek. További információ: a [kapcsolatok karakterláncai](../azure-monitor/app/sdk-connection-string.md). 
+A Application Insightshoz tartozó kapcsolatok karakterlánca. `APPLICATIONINSIGHTS_CONNECTION_STRING`Akkor használja, `APPINSIGHTS_INSTRUMENTATIONKEY` Ha a Function alkalmazáshoz a kapcsolati sztring használatával támogatott további testreszabások szükségesek. További információ: a [kapcsolatok karakterláncai](../azure-monitor/app/sdk-connection-string.md). 
 
 |Kulcs|Mintaérték|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey = [kulcs]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
+|APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [kulcs]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű környezet alapján konfigurálja az alkalmazások viselkedését. Az [inicializálás során](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)ez az érték olvasható. `AZURE_FUNCTIONS_ENVIRONMENT` Bármelyik értéket megadhatja, de [három érték](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatott: [fejlesztés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [előkészítés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)és [éles környezet](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ha `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, az alapértelmezett `Development` érték egy helyi környezetben és `Production` az Azure-ban. Ezt a beállítást a futásidejű környezet beállítása `ASPNETCORE_ENVIRONMENT` helyett kell használni. 
+A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű környezet alapján konfigurálja az alkalmazások viselkedését. Az [inicializálás során](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)ez az érték olvasható. Bármelyik értéket megadhatja `AZURE_FUNCTIONS_ENVIRONMENT` , de [három érték](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatott: [fejlesztés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [előkészítés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)és [éles környezet](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ha `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, az alapértelmezett érték `Development` egy helyi környezetben és `Production` Az Azure-ban. Ezt `ASPNETCORE_ENVIRONMENT` a beállítást a futásidejű környezet beállítása helyett kell használni. 
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-A functions futtatókörnyezet 2. x vagy újabb verziójában az Alkalmazásbeállítások felülbírálják a [gazdagép. JSON](functions-host-json.md) beállításait az aktuális környezetben. Ezek a felülbírálások az Alkalmazásbeállítások nevű `AzureFunctionsJobHost__path__to__setting`alkalmazás-beállításokban vannak kifejezve. További információ: a [Host. JSON értékek felülbírálása](functions-host-json.md#override-hostjson-values).
+A functions futtatókörnyezet 2. x vagy újabb verziójában az Alkalmazásbeállítások felülbírálják a [gazdagép. JSON](functions-host-json.md) beállításait az aktuális környezetben. Ezek a felülbírálások az Alkalmazásbeállítások nevű alkalmazás-beállításokban vannak kifejezve `AzureFunctionsJobHost__path__to__setting` . További információ: a [Host. JSON értékek felülbírálása](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -48,10 +48,10 @@ Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók táro
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName =<name>; AccountKey =<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = <name> ; AccountKey =<key>|
 
 > [!NOTE]
-> A jobb teljesítmény és a használhatóság érdekében a Runtime 2. x vagy újabb verziója a APPINSIGHTS_INSTRUMENTATIONKEY és az alkalmazás-ellenőrzési funkciókat használja a `AzureWebJobsDashboard`figyeléshez.
+> A jobb teljesítmény és a használhatóság érdekében a Runtime 2. x vagy újabb verziója a APPINSIGHTS_INSTRUMENTATIONKEY és az alkalmazás-ellenőrzési funkciókat használja a figyeléshez `AzureWebJobsDashboard` .
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -61,13 +61,13 @@ Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók táro
 |---|------------|
 |AzureWebJobsDisableHomepage|igaz|
 
-Ha ezt az alkalmazást kihagyja vagy beállítja `false`, a következő példához hasonló oldal jelenik meg az URL-címre `<functionappname>.azurewebsites.net`adott válaszban.
+Ha ezt az alkalmazást kihagyja vagy beállítja, a `false` következő példához hasonló oldal jelenik meg az URL-címre adott válaszban `<functionappname>.azurewebsites.net` .
 
 ![Function app kezdőlapja](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false` hibakeresési módot használ. Az alapértelmezett szint a `true`.
+`true`azt jelenti, hogy a kiadási módot használja a .NET-kód fordításakor; `false`hibakeresési módot használ. Az alapértelmezett szint a `true`.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -105,51 +105,51 @@ Az írógéppel használt fordító elérési útja. Lehetővé teszi az alapér
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
-## <a name="function_app_edit_mode"></a>FUNKCIÓ\_alkalmazás\_szerkesztési\_módja
+## <a name="function_app_edit_mode"></a>FUNKCIÓ \_ alkalmazás \_ szerkesztési \_ módja
 
 Azt diktálja, hogy engedélyezve van-e a Azure Portal szerkesztése. Az érvényes értékek: "READWRITE" és "ReadOnly".
 
 |Kulcs|Mintaérték|
 |---|------------|
-|FUNKCIÓ\_alkalmazás\_szerkesztési\_módja|ReadOnly|
+|FUNKCIÓ \_ alkalmazás \_ szerkesztési \_ módja|ReadOnly|
 
-## <a name="functions_extension_version"></a>\_functions\_bővítmény verziója
+## <a name="functions_extension_version"></a>FUNCTIONs \_ bővítmény \_ verziója
 
 A Function alkalmazásban használni kívánt functions futtatókörnyezet verziója. A nagyobb verziószámú tilde a főverzió legújabb verzióját használja (például "~ 2"). Ha az azonos főverzióhoz tartozó új verziók elérhetők, a rendszer automatikusan telepíti őket a Function alkalmazásba. Az alkalmazás egy adott verzióra való rögzítéséhez használja a teljes verziószámot (például "2.0.12345"). Az alapértelmezett érték a "~ 2". Az alkalmazás a `~1` futtatókörnyezet 1. x verziójára való PIN-kód.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|\_functions\_bővítmény verziója|~ 2|
+|FUNCTIONs \_ bővítmény \_ verziója|~ 2|
 
-## <a name="functions_v2_compatibility_mode"></a>\_Functions\_v2\_kompatibilitási mód
+## <a name="functions_v2_compatibility_mode"></a>FUNCTIONs \_ v2 \_ kompatibilitási \_ mód
 
 Ez a beállítás lehetővé teszi, hogy a Function alkalmazás 2. x kompatibilis módban fusson a 3. x verziójú futtatókörnyezetben. Ezt a beállítást csak akkor használja, ha problémák merülnek [fel a Function alkalmazás 2. x és 3. x verzióra való frissítésekor](functions-versions.md#migrating-from-2x-to-3x). 
 
 >[!IMPORTANT]
 > Ez a beállítás csak rövid távú megkerülő megoldás, ha úgy frissíti az alkalmazást, hogy megfelelően fusson a 3. x verzióban. Ez a beállítás akkor támogatott, ha a [2. x futtatókörnyezet támogatott](functions-versions.md). Ha olyan problémák merülnek fel, amelyek megakadályozzák, hogy az alkalmazás a 3. x verzión fusson anélkül, hogy ezt a beállítást használja, [jelentse a problémát](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
 
-Megköveteli, hogy a [functions\_bővítmény\_verziója](functions-app-settings.md#functions_extension_version) legyen beállítva. `~3`
+Megköveteli, hogy a [functions \_ bővítmény \_ verziója](functions-app-settings.md#functions_extension_version) legyen beállítva `~3` .
 
 |Kulcs|Mintaérték|
 |---|------------|
-|\_Functions\_v2\_kompatibilitási mód|igaz|
+|FUNCTIONs \_ v2 \_ kompatibilitási \_ mód|igaz|
 
-## <a name="functions_worker_process_count"></a>\_functions\_munkavégző folyamatok\_száma
+## <a name="functions_worker_process_count"></a>FUNCTIONs \_ munkavégző \_ folyamatok \_ száma
 
-Meghatározza a nyelv munkavégző folyamatainak maximális számát, alapértelmezett értékkel `1`. A megengedett maximális érték: `10`. A függvények meghívása egyenletesen oszlik meg a nyelvi munkavégző folyamatok között. A nyelv munkavégző folyamatai 10 másodpercenként jönnek létre, amíg el nem éri a\_\_functions\_munkavégző folyamatának száma. Több nyelvi feldolgozó folyamat használata nem ugyanaz, mint a [skálázás](functions-scale.md). Akkor érdemes ezt a beállítást használni, ha a számítási feladathoz CPU-kötésű és I/O-kötésű hívás is tartozik. Ez a beállítás az összes non-.NET nyelvre vonatkozik.
+Meghatározza a nyelv munkavégző folyamatainak maximális számát, alapértelmezett értékkel `1` . A megengedett maximális érték: `10` . A függvények meghívása egyenletesen oszlik meg a nyelvi munkavégző folyamatok között. A nyelv munkavégző folyamatai 10 másodpercenként jönnek létre, amíg el nem éri a FUNCTIONs \_ munkavégző \_ folyamatának \_ száma. Több nyelvi feldolgozó folyamat használata nem ugyanaz, mint a [skálázás](functions-scale.md). Akkor érdemes ezt a beállítást használni, ha a számítási feladathoz CPU-kötésű és I/O-kötésű hívás is tartozik. Ez a beállítás az összes non-.NET nyelvre vonatkozik.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|\_functions\_munkavégző folyamatok\_száma|2|
+|FUNCTIONs \_ munkavégző \_ folyamatok \_ száma|2|
 
 
-## <a name="functions_worker_runtime"></a>\_functions\_Worker futtatókörnyezet
+## <a name="functions_worker_runtime"></a>FUNCTIONs \_ Worker \_ futtatókörnyezet
 
 A Function alkalmazásban betölteni kívánt nyelvi feldolgozó futtatókörnyezet.  Ez megfelel az alkalmazásban használt nyelvnek (például "DotNet"). A függvények több nyelven is közzétehető több alkalmazásban, amelyek mindegyike egy megfelelő munkavégző futásidejű értékkel rendelkezik.  Érvényes értékek: `dotnet` (C#/f #), `node` (JavaScript/írógéppel), `java` (Java), `powershell` (PowerShell) és `python` (Python).
 
 |Kulcs|Mintaérték|
 |---|------------|
-|\_functions\_Worker futtatókörnyezet|dotnet|
+|FUNCTIONs \_ Worker \_ futtatókörnyezet|dotnet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -159,7 +159,7 @@ Csak a prémium csomagok fogyasztása &. A Storage-fiókhoz tartozó, a Function
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [név]; AccountKey = [kulcs]|
 
-## <a name="website_contentshare"></a>WEBHELY\_CONTENTSHARE
+## <a name="website_contentshare"></a>WEBHELY \_ CONTENTSHARE
 
 Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és konfigurációjának elérési útja. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING használatával használható. Az alapértelmezett érték egy egyedi karakterlánc, amely a Function alkalmazás nevével kezdődik. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -167,7 +167,7 @@ Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>a\_webhely\_maximális\_dinamikus\_alkalmazás\_-felskálázása
+## <a name="website_max_dynamic_application_scale_out"></a>a webhely \_ maximális \_ dinamikus alkalmazás- \_ \_ felskálázása \_
 
 Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud skálázásra. Az alapértelmezett érték nem korlát.
 
@@ -176,26 +176,26 @@ Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud sk�
 
 |Kulcs|Mintaérték|
 |---|------------|
-|a\_webhely\_maximális\_dinamikus\_alkalmazás\_-felskálázása|5|
+|a webhely \_ maximális \_ dinamikus alkalmazás- \_ \_ felskálázása \_|5|
 
-## <a name="website_node_default_version"></a>WEBHELY\_-\_csomópont DEFAULT_VERSION
+## <a name="website_node_default_version"></a>WEBHELY- \_ csomópont \_ DEFAULT_VERSION
 
 _Csak Windows._  
-Beállítja a Node. js azon verzióját, amelyet a Function alkalmazás Windows rendszeren való futtatásakor használ. Ha a futásidejű modult használja, használjon egy tilde (~) verziót a célként megadott főverzió legújabb elérhető verziójának használatára. Ha például a értékre `~10`van állítva, a rendszer a Node. js 10 legújabb verzióját használja. Ha egy főverziót egy tilde megcéloz, nem kell manuálisan frissítenie a másodlagos verziót. 
+Beállítja a Node. js azon verzióját, amelyet a Function alkalmazás Windows rendszeren való futtatásakor használ. Ha a futásidejű modult használja, használjon egy tilde (~) verziót a célként megadott főverzió legújabb elérhető verziójának használatára. Ha például a értékre `~10` van állítva, a rendszer a Node. js 10 legújabb verzióját használja. Ha egy főverziót egy tilde megcéloz, nem kell manuálisan frissítenie a másodlagos verziót. 
 
 |Kulcs|Mintaérték|
 |---|------------|
-|WEBHELY\_-\_csomópont DEFAULT_VERSION|~ 10|
+|WEBHELY- \_ csomópont \_ DEFAULT_VERSION|~ 10|
 
-## <a name="website_run_from_package"></a>WEBHELY\_futtatása\_\_csomagból
+## <a name="website_run_from_package"></a>WEBHELY \_ futtatása \_ \_ csomagból
 
 Lehetővé teszi, hogy a Function alkalmazás egy csatlakoztatott csomagfájl használatával fusson.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|WEBHELY\_futtatása\_\_csomagból|1|
+|WEBHELY \_ futtatása \_ \_ csomagból|1|
 
-Az érvényes értékek egy URL-cím, amely feloldja a központi telepítési csomag fájljának helyét, vagy `1`. Ha a értékre `1`van állítva, a csomagnak `d:\home\data\SitePackages` a mappában kell lennie. Ha a zip-telepítést ezzel a beállítással használja, a csomag automatikusan erre a helyre lesz feltöltve. Az előzetes verzióban ez a beállítás `WEBSITE_RUN_FROM_ZIP`neve. További információkért lásd: [függvények futtatása csomagfájl alapján](run-functions-from-deployment-package.md).
+Az érvényes értékek egy URL-cím, amely feloldja a központi telepítési csomag fájljának helyét, vagy `1` . Ha a értékre `1` van állítva, a csomagnak a mappában kell lennie `d:\home\data\SitePackages` . Ha a zip-telepítést ezzel a beállítással használja, a csomag automatikusan erre a helyre lesz feltöltve. Az előzetes verzióban ez a beállítás neve `WEBSITE_RUN_FROM_ZIP` . További információkért lásd: [függvények futtatása csomagfájl alapján](run-functions-from-deployment-package.md).
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 

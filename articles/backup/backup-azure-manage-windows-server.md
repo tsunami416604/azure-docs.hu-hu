@@ -3,16 +3,16 @@ title: Azure Recovery Services-tárolók és-kiszolgálók kezelése
 description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Recovery Services-tárolókat a Recovery Services-tároló áttekintő irányítópultjának használatával.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131975"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234609"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
 
-Ez a cikk azt ismerteti, hogyan használható a Recovery Services-tároló **áttekintése** irányítópult a Recovery Services-tárolók monitorozásához és kezeléséhez. Amikor megnyit egy Recovery Services tárolót a listából, megnyílik a kiválasztott tárolóhoz tartozó **áttekintő** irányítópult. Az irányítópult a tár különböző részleteit tartalmazza. A következő *csempék* láthatók: a kritikus és figyelmeztető riasztások állapota, a folyamatban lévő és a sikertelen biztonsági mentési feladatok, valamint a helyileg redundáns tárolás (LRS) és a Geo redundáns tárolás (GRS) mennyisége. Ha Azure-beli virtuális gépekről készít biztonsági mentést a [ **tárolóba, a biztonsági mentés előzetes ellenőrzési állapota** csempe megjeleníti a kritikus vagy figyelmeztető elemeket](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). Az alábbi képen a **contoso-Vault** **Áttekintés** irányítópultja látható. A **biztonsági mentési elemek** csempén látható, hogy a tárolóban kilenc elem van regisztrálva.
+Ez a cikk azt ismerteti, hogyan használható a Recovery Services-tároló **áttekintése** irányítópult a Recovery Services-tárolók monitorozásához és kezeléséhez. Amikor megnyit egy Recovery Services tárolót a listából, megnyílik a kiválasztott tárolóhoz tartozó **áttekintő** irányítópult. Az irányítópult a tár különböző részleteit tartalmazza. A következő *csempék* láthatók: a kritikus és figyelmeztető riasztások állapota, a folyamatban lévő és a sikertelen biztonsági mentési feladatok, valamint a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mennyisége. Ha Azure-beli virtuális gépekről készít biztonsági mentést a [ **tárolóba, a biztonsági mentés előzetes ellenőrzési állapota** csempe megjeleníti a kritikus vagy figyelmeztető elemeket](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). Az alábbi képen a **contoso-Vault** **Áttekintés** irányítópultja látható. A **biztonsági mentési elemek** csempén látható, hogy a tárolóban kilenc elem van regisztrálva.
 
 ![Recovery Services-tároló irányítópultja](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -113,7 +113,7 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 * Severity
 * Időtartam
 * Létrehozás ideje
-* status
+* Állapot
 * Legutóbbi előfordulás időpontja
 
 ### <a name="change-the-details-in-alerts-report"></a>A riasztások jelentés adatainak módosítása
@@ -231,19 +231,19 @@ Az elemtípus a védett példány biztonságimásolat-kezelési típusa. Négy t
 Megtekintheti az egyik műveletet vagy az összes műveletet. Két vagy három műveletet nem választhat ki. Az elérhető műveletek a következők:
 
 * Minden művelet
-* Regisztráljon
+* Regisztráció
 * Biztonsági mentés konfigurálása
 * Backup
 * Visszaállítás
 * Biztonsági mentés letiltása
 * Biztonsági mentési adatok törlése
 
-#### <a name="status"></a>status
+#### <a name="status"></a>Állapot
 
 Az összes állapotot vagy egyet megtekintheti. Két vagy három állapotot nem lehet kijelölni. Az elérhető állapotok a következők:
 
 * Minden állapot
-* Befejezve
+* Befejeződött
 * Folyamatban
 * Sikertelen
 * Megszakítva
@@ -274,9 +274,9 @@ Az irányítópulton található Backup Storage (biztonsági mentés) csempén a
 
 **Probléma:** A Azure Backup ügynöktől származó feladatok és/vagy riasztások nem jelennek meg a portálon.
 
-**Hibaelhárítási lépések:** A folyamat ```OBRecoveryServicesManagementAgent```elküldi a feladatot és a riasztási adatokat a Azure Backup szolgáltatásnak. Alkalmanként ez a folyamat beragadhat vagy leállíthatja.
+**Hibaelhárítási lépések:** A folyamat ```OBRecoveryServicesManagementAgent``` elküldi a feladatot és a riasztási adatokat a Azure Backup szolgáltatásnak. Alkalmanként ez a folyamat beragadhat vagy leállíthatja.
 
-1. Annak ellenőrzéséhez, hogy a folyamat nem fut, nyissa meg ```OBRecoveryServicesManagementAgent``` a **Feladatkezelő eszközt**, és ellenőrizze, hogy fut-e.
+1. Annak ellenőrzéséhez, hogy a folyamat nem fut, nyissa meg a **Feladatkezelő eszközt**, és ellenőrizze, hogy fut-e ```OBRecoveryServicesManagementAgent``` .
 
 2. Ha a folyamat nem fut, nyissa meg a **Vezérlőpultot**, és tallózással keresse meg a szolgáltatások listáját. Indítsa el vagy indítsa újra **Microsoft Azure Recovery Services felügyeleti ügynököt**.
 

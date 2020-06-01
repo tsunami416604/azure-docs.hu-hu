@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
 description: Felsorolja Azure Policy Azure Service Bus üzenetkezeléshez tartozó beépített szabályzat-definíciókat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 0bda32fc86b40029889f8297d54c85a8cf163b43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7d81625fef2836160d71f8f97cf7ed37456c621e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650996"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234190"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-service-bus-messaging"></a>Azure Policy beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
 

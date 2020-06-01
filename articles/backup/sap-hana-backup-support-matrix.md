@@ -3,12 +3,12 @@ title: A SAP HANA biztonsági mentésének támogatási mátrixa
 description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és korlátozásokat, amikor az Azure Backup használatával biztonsági másolatot készít SAP HANA adatbázisokról az Azure-beli virtuális gépeken.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 5dcbfa67ce69a3dad1c263427ea3a0e34e8cef18
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ed7b3abacd5da3fd06e621d9f35a8dcdddcb9000
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747337"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234779"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -22,7 +22,7 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 | **Forgatókönyv**               | **Támogatott konfigurációk**                                | **Nem támogatott konfigurációk**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topológia**               | Csak az Azure Linux rendszerű virtuális gépeken futó SAP HANA                    | HANA Large instances (HLI)                                   |
-| **Térségek**                   | **GA**<br> **Amerikai** Egyesült Államok, USA középső régiója, USA 2. keleti régiója, az USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója, Nyugat-Kanada <br> **Ázsia és a csendes-óceáni térség** – Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-korea, Kelet-Ázsia, Délkelet-Ázsia, Közép-India, Dél-India, Nyugat-india, Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2 <br> **Európa** – Nyugat-Európa, Észak-Európa, Közép-franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Észak-Németország, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc, központi Észak-Svájc <br> **Afrika/Me** – Dél-Afrika, Észak-Afrika, Nyugat-Európa, Észak-Európa, Egyesült Arab Emírségek középső régiója  <BR>  **Azure Government-régiók** | Dél-Franciaország, Közép-Németország, Északkelet-Németország, US Gov IOWA |
+| **Régiók**                   | **GA**<br> **Amerikai** Egyesült Államok, USA középső régiója, USA 2. keleti régiója, az USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója, Nyugat-Kanada <br> **Ázsia és a csendes-óceáni térség** – Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-korea, Kelet-Ázsia, Délkelet-Ázsia, Közép-India, Dél-India, Nyugat-india, Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2 <br> **Európa** – Nyugat-Európa, Észak-Európa, Közép-franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Észak-Németország, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc, központi Észak-Svájc <br> **Afrika/Me** – Dél-Afrika, Észak-Afrika, Nyugat-Európa, Észak-Európa, Egyesült Arab Emírségek középső régiója  <BR>  **Azure Government-régiók** | Dél-Franciaország, Közép-Németország, Északkelet-Németország, US Gov IOWA |
 | **OPERÁCIÓSRENDSZER-verziók**            | SLES: 12 SP2, SP3 vagy SP4; SLES 15 SP1                              | RHEL                                                |
 | **HANA-verziók**          | SDC on HANA 1. x, MDC on HANA 2. x <= SPS04 Rev 46       | -                                                            |
 | **HANA-telepítések**       | SAP HANA egyetlen Azure-beli virtuális gépen – csak vertikális felskálázással. <br><br> A magas rendelkezésre állású központi telepítések esetében a két különböző gép csomópontjait különálló, külön adatláncú csomópontként kezeli a rendszer.               | Bővítés <br><br> Magas rendelkezésre állású telepítések esetén a biztonsági mentés automatikusan nem végzi el a feladatátvételt a másodlagos csomópontra. A biztonsági mentés konfigurálását külön kell elvégezni az egyes csomópontokon.                                           |

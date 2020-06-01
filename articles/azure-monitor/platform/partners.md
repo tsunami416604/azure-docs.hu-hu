@@ -3,13 +3,13 @@ title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854933"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233397"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -108,6 +108,9 @@ A Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi az időso
 
 A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platformot biztosít, amely az alapoktól kezdve a DevOps-és IoT-alkalmazások metrikáinak és eseményeinek (idősoros adatok) elemzésére épül. Akár emberekből, érzékelőkből vagy gépekből származó adatokról van szó, a InfluxData lehetővé teszi a fejlesztők számára, hogy a következő generációs monitorozási, elemzési és IoT alkalmazásokat gyorsabban, könnyebben és a valós üzleti értékek gyors méretezésével méretezheti. A San Franciscóban alapuló InfluxData több mint 420 ügyfél, például a Cisco, az eBay, az IBM és a Siemens.
 
+A InfluxData a InfluxDB, a nyílt forráskódú idősorozat-adatbázis létrehozója. A technológiánk célja, hogy kezelje a IoT-eszközök, alkalmazások, hálózatok, tárolók és számítógépek által előállított nagy mennyiségű időbélyeget. Célunk, hogy segítse a fejlesztőket és a szervezeteket, például az IBM, a Visa, a Siemens, a Tesla és a NASA szolgáltatásait, a valós idejű adattárolást és-elemzést, az átalakítást, az elemzési és IoT alkalmazások gyors és méretezhető kialakítását. Microsoft Azure figyelő metrikáinak és eseményeinek gyűjtési képességei kiterjeszthetők a InfluxData-kiszolgálóval, amely lehetővé teszi a Microsoft felhasználói számára, hogy kihasználhassanak egy vezető idősorozatos adatbázis-megoldást, és kihasználják az egyre növekvő nyílt forráskódú, a-hez való hozzájárulást
+
+
 [Nyissa meg a dokumentációt.][influxdata-doc]
 
 
@@ -115,7 +118,7 @@ A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platform
 
 ![Logic monitor embléma](./media/partners/logicmonitor.png)
 
-A&reg; LogicMonitor az összetett informatikai infrastruktúra vezető SaaS-alapú, teljesítmény-figyelési platformja. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
+A LogicMonitor az &reg; összetett informatikai infrastruktúra vezető SaaS-alapú, teljesítmény-figyelési platformja. A LogicMonitor több ezer technológiával rendelkezik, és részletes láthatóságot biztosít az infrastruktúra és az alkalmazások teljesítményében. Az LM-felhő átfogó Azure-figyelése lehetővé teszi a felhasználók számára az Azure-felhő, a helyszíni és a hibrid Felhőbeli erőforrások teljesítményének összekapcsolását – mindezt egyetlen platformról. Az automatizált erőforrás-felderítés, beépített figyelési sablonok, előre konfigurált riasztási küszöbértékek és testreszabható irányítópultok kombinálva lehetővé teszik a sikerhez szükséges sebességet, rugalmasságot és láthatóságot.
 
 [Nyissa meg a dokumentációt.][logicmonitor-doc]
 

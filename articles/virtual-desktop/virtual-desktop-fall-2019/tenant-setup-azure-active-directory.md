@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124397"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234104"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -152,9 +152,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>További lépések
-
-Részletesebb útmutatóként tekintse meg a [Windows rendszerű virtuális asztali tanulási útvonalat](https://docs.microsoft.com/learn/paths/m365-wvd/).
-
 A bérlő létrehozása után létre kell hoznia egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzá kell rendelnie egy szerepkört a Windows rendszerű virtuális asztalon belül. Az egyszerű szolgáltatásnév lehetővé teszi a Windows rendszerű virtuális asztali Azure Marketplace-ajánlat sikeres üzembe helyezését egy gazda készlet létrehozásához. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 
 > [!div class="nextstepaction"]

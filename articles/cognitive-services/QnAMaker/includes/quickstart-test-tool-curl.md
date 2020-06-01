@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998097"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237737"
 ---
 Ez a cURL-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
@@ -80,6 +80,8 @@ A metaadatokon alapuló válaszhoz használja az előző gyors lekérdezési tud
     Ha van olyan kérdés-válasz pár, amely nem felel meg a keresési kifejezésnek, de nem felel meg a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános választ `No good match found in KB.` adja vissza.
 
 ## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
+> [!NOTE]
+>A függőségek hibakeresési tulajdonságát nem ajánlott használni. Ez a tulajdonság hozzá lett adva, hogy segítse a termék csapatát a hibaelhárításban.
 
 A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá a következő `debug` tulajdonságot:
 

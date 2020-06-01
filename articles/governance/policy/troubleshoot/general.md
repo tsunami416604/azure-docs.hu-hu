@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8935176badabf559d494c3d60fb1dec236efbdc2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221376"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234173"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -130,7 +130,7 @@ A generált jelszó tartalmaz egy vesszőt ( `,` ), amely a Helm diagramra van f
 
 #### <a name="resolution"></a>Megoldás:
 
-A jelszó értékében válassza a vessző ( `,` ) értéket a `helm install azure-policy-addon` Backspace () billentyűvel való futtatáskor `\` .
+A jelszó értékében válassza a vessző ( `,` ) értéket, ha `helm install azure-policy-addon` fordított perjelet ( `\` ) használ.
 
 ### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Forgatókönyv: a telepítés a Helm diagram használatával meghiúsul, mert a név már létezik
 
