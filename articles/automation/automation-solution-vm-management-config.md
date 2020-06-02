@@ -3,14 +3,14 @@ title: Azure Automation konfigurálása Start/Stop VMs during off-hours
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Start/Stop VMs during off-hours funkciót a különböző használati esetek és forgatókönyvek támogatásához.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204389"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266715"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -46,11 +46,11 @@ Engedélyezheti a műveletet egy előfizetéshez és az erőforráscsoporthoz, v
 
 1. Futtassa a **ScheduledStartStop_Parent** runbook a következő **művelettel** : **Start**.
 
-2. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóköz nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
+2. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóközök nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
 3. Állítsa a **WHATIF** paramétert True (igaz) értékre.
 
-4. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3).
+4. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3), és ne legyen szóköz a vesszővel tagolt értékek között.
 
 5. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
 
@@ -77,11 +77,11 @@ Egy olyan környezetben, amely több, elosztott munkaterhelést támogató virtu
 
 2. Futtassa a **SequencedStartStop_Parent** runbook a következő **művelettel** : **Start**.
 
-3. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóköz nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
+3. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóközök nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
 4. Állítsa a **WHATIF** igaz értékre. 
 
-5. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával.
+5. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával, a vesszővel tagolt értékek közötti szóközök nélkül.
 
 6. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
 
@@ -128,7 +128,7 @@ A **AutoStop_CreateAlert_Parent** runbook futtatásakor ellenőrzi, hogy a célk
 
 1. Hozzon létre egy új [ütemtervet](shared-resources/schedules.md#create-a-schedule) , és kapcsolja össze a **AutoStop_CreateAlert_Parent** runbook, és adja hozzá a virtuális gépek neveinek vesszővel tagolt listáját a `VMList` paraméterhez.
 
-2. Ha a virtuális gépeket az autostop műveletből szeretné kizárni, akkor a virtuálisgép-nevek vesszővel tagolt listáját a változóhoz is hozzáadhatja `External_ExcludeVMNames` .
+2. Ha néhány virtuális GÉPET ki szeretne zárni az autostop műveletből, hozzáadhat egy vesszővel tagolt listát a virtuálisgép-nevekhez (szóközök nélkül) a `External_ExcludeVMNames` változóhoz.
 
 ## <a name="configure-email-notifications"></a>E-mail-értesítések konfigurálása
 
@@ -159,13 +159,13 @@ A funkció lehetővé teszi, hogy a virtuális gépeket megcélozva vagy kizárv
 
 A szolgáltatás futása során kétféleképpen biztosítható, hogy egy virtuális gép szerepeljen:
 
-* A szolgáltatás minden szülő [runbookok](automation-solution-vm-management.md#runbooks) rendelkezik egy `VMList` paraméterrel. A virtuális gépek neveinek vesszővel tagolt listáját átadhatja erre a paraméterre, ha a megfelelő fölérendelt runbook ütemezi a helyzethez, és ezeket a virtuális gépeket a szolgáltatás futtatásakor fogja tartalmazni.
+* A szolgáltatás minden szülő [runbookok](automation-solution-vm-management.md#runbooks) rendelkezik egy `VMList` paraméterrel. A virtuális gépek neveinek vesszővel tagolt listáját (szóközök nélkül) is átadhatja a paraméternek, ha a megfelelő fölérendelt runbook ütemezi a helyzethez, és ezeket a virtuális gépeket a szolgáltatás futása során is felveszi a rendszer.
 
 * Több virtuális gép kiválasztásához állítson be `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupNames` azokat az erőforráscsoport-nevekkel, amelyek tartalmazzák az elindítani vagy leállítani kívánt virtuális gépeket. A változókat úgy is beállíthatja, hogy `*` a szolgáltatás az előfizetésben lévő összes erőforráscsoport esetében le legyen állítva.
 
 ### <a name="exclude-a-vm"></a>Virtuális gép kizárása
 
-Ha ki szeretne zárni egy virtuális gépet a munkaidőn kívüli leállítási/kezdő virtuális gépekből, adja hozzá a nevét a `External_ExcludeVMNames` változóhoz. Ez a változó a szolgáltatásból kizárandó meghatározott virtuális gépek vesszővel tagolt listája. Ez a lista 140 virtuális gépre korlátozódik. Ha több mint 140 virtuális gépet ad hozzá a listához, a kizárni kívánt virtuális gépeket a rendszer akaratlanul elindíthatja vagy leállíthatja.
+Ha ki szeretne zárni egy virtuális gépet a munkaidőn kívüli leállítási/kezdő virtuális gépekből, adja hozzá a nevét a `External_ExcludeVMNames` változóhoz. Ez a változó az adott virtuális gépek (szóközök nélkül) vesszővel tagolt listája, amely kizárható a szolgáltatásból. Ez a lista 140 virtuális gépre korlátozódik. Ha több mint 140 virtuális gépet ad hozzá a listához, a kizárni kívánt virtuális gépeket a rendszer akaratlanul elindíthatja vagy leállíthatja.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Az indítási és leállítási ütemtervek módosítása
 

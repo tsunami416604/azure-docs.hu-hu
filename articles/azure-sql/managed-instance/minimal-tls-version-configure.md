@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: bf09994e8ebae09771ce110f9284aa3e99fc1816
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122478"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267120"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának minimális TLS-verziójának konfigurálása
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítása lehetővé teszi, hogy az ügyfelek szabályozzák az Azure SQL felügyelt példányai által használt TLS-verziót.
@@ -24,7 +24,7 @@ Jelenleg a TLS 1,0, 1,1 és 1,2 támogatottak. A TLS minimális verziójának be
 
 A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verziószámát. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót. 
 
-További információ: TLS- [megfontolások SQL Database kapcsolathoz](../database/connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+További információ: TLS- [megfontolások SQL Database kapcsolathoz](../database/connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 A minimális TLS-verzió beállítása után a bejelentkezés a következő hibával meghiúsul, ha a TLS-t használó ügyfelek nem a minimális TLS-verziót használják:
 

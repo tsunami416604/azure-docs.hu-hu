@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258771"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259473"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
 Az Azure Service Fabric fürterőforrás-kezelő funkciója számos módszert kínál a fürtök leírására:
@@ -83,9 +83,9 @@ A következő ábra három tartalék tartományba tartozó frissítési tartomá
 
 Vannak olyan előnyök és hátrányok, amelyek nagy számú frissítési tartománnyal rendelkeznek. A további frissítési tartományok a frissítés minden egyes lépése részletesebbek, és kisebb számú csomópontot vagy szolgáltatást érint. A rendszernek kevesebb szolgáltatást kell áthelyeznie. Ez általában növeli a megbízhatóságot, mivel a frissítés során bevezetett egyik probléma nem érinti a szolgáltatás kisebb részét. A további frissítési tartományok azt is jelenti, hogy a frissítés hatásának kezeléséhez kevesebb rendelkezésre állású pufferre van szükség más csomópontokon. 
 
-Ha például öt frissítési tartománnyal rendelkezik, az egyes csomópontok nagyjából 20%-át kezelik a forgalmat. Ha le kell állítania a frissítési tartományt a frissítéshez, a terhelésnek általában valahova kell mennie. Mivel négy további frissítési tartománnyal rendelkezik, mindegyiknek a teljes forgalom 5%-ának megfelelő helyet kell tartalmaznia. A további frissítési tartományok azt jelentik, hogy a fürt csomópontjain kevesebb pufferre van szükség. 
+Ha például öt frissítési tartománnyal rendelkezik, az egyes csomópontok nagyjából 20%-át kezelik a forgalmat. Ha le kell állítania a frissítési tartományt a frissítéshez, a terhelésnek általában valahova kell mennie. Mivel négy további frissítési tartománnyal rendelkezik, mindegyiknek a teljes forgalom 25%-ának megfelelő helyet kell tartalmaznia. A további frissítési tartományok azt jelentik, hogy a fürt csomópontjain kevesebb pufferre van szükség.
 
-Vegye figyelembe, hogy ehelyett 10 frissítési tartománnyal rendelkezett. Ebben az esetben minden frissítési tartomány csak a teljes forgalom 10 százalékát fogja kezelni. A fürtön keresztüli frissítési lépések esetén minden tartománynak a teljes forgalom 1,1%-ának megfelelő helyet kell biztosítania. A további frissítési tartományok általában lehetővé teszik, hogy magasabb kihasználtságú csomópontokat futtasson, mert kevesebb fenntartott kapacitásra van szüksége. Ugyanez érvényes a tartalék tartományokra is.  
+Vegye figyelembe, hogy ehelyett 10 frissítési tartománnyal rendelkezett. Ebben az esetben minden frissítési tartomány csak a teljes forgalom 10 százalékát fogja kezelni. A fürtön keresztüli frissítési lépések esetén minden tartománynak a teljes forgalom 11%-ának megfelelő helyet kell biztosítania. A további frissítési tartományok általában lehetővé teszik, hogy magasabb kihasználtságú csomópontokat futtasson, mert kevesebb fenntartott kapacitásra van szüksége. Ugyanez érvényes a tartalék tartományokra is.  
 
 Számos frissítési tartomány hátránya, hogy a frissítések általában hosszabb ideig tarthatnak. Service Fabric egy rövid időszakot vár a frissítési tartomány befejezése után, és ellenőrzi a következő frissítés megkezdése előtt. Ezek a késések lehetővé teszik a frissítés által bevezetett problémák észlelését a frissítés előtt. A kompromisszum elfogadható, mert megakadályozza, hogy a helytelen változások a szolgáltatás egyszerre túl nagy részét befolyásolják.
 
@@ -363,7 +363,7 @@ Az ilyen típusú konfigurációk támogatásához Service Fabric tartalmaz olya
 ### <a name="built-in-node-properties"></a>Beépített csomópont tulajdonságai
 Service Fabric definiál néhány alapértelmezett csomópont-tulajdonságot, amelyet automatikusan használhat, így nem kell megadnia azokat. Az egyes csomópontokon definiált alapértelmezett tulajdonságok a **NodeType** és a **csomópontnév**. 
 
-Például megadhat egy elhelyezési korlátozást a következőként: `"(NodeType == NodeType03)"`. A **NodeType** egy általánosan használt tulajdonság. Ez azért hasznos, mert megfelel a 1:1-nek a gép egy típusával. Minden típusú gép egy hagyományos n szintű alkalmazásban a számítási feladatok típusának felel meg.
+Például megadhat egy elhelyezési korlátozást a következőként: `"(NodeType == NodeType03)"` . A **NodeType** egy általánosan használt tulajdonság. Ez azért hasznos, mert megfelel a 1:1-nek a gép egy típusával. Minden típusú gép egy hagyományos n szintű alkalmazásban a számítási feladatok típusának felel meg.
 
 <center>
 
@@ -416,7 +416,7 @@ Tegyük fel, hogy a következő csomópont-tulajdonságokat definiálták egy cs
 Az alábbi példa a ClusterConfig. JSON fájlon keresztül meghatározott csomópont-tulajdonságokat jeleníti meg az Azure által üzemeltetett fürtök önálló telepítései vagy template. JSON fájljában. 
 
 > [!NOTE]
-> A Azure Resource Manager-sablonban a csomópont típusa általában paraméteres. A NodeType01 `"[parameters('vmNodeType1Name')]"` helyett a következőképpen fog kinézni.
+> A Azure Resource Manager-sablonban a csomópont típusa általában paraméteres. A NodeType01 helyett a következőképpen fog kinézni `"[parameters('vmNodeType1Name')]"` .
 >
 
 ```json
@@ -447,7 +447,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Ha a NodeType01 összes csomópontja érvényes, akkor a csomópont típusát is kiválaszthatja a megkötéssel `"(NodeType == NodeType01)"`.
+Ha a NodeType01 összes csomópontja érvényes, akkor a csomópont típusát is kiválaszthatja a megkötéssel `"(NodeType == NodeType01)"` .
 
 A szolgáltatás elhelyezési korlátozásai dinamikusan frissíthetők a futtatókörnyezet során. Ha szükséges, áthelyezheti a szolgáltatást a fürtön, a követelmények hozzáadásával és eltávolításával stb. Service Fabric biztosítja, hogy a szolgáltatás az ilyen típusú változások után is rendelkezésre álljon.
 

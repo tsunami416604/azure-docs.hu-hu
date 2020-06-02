@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: acada42cd50d607925d7c4583820c2590ff76639
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994082"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266559"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit elvégezhet a Windows Data Science Virtual Machine
 
@@ -55,24 +55,24 @@ Az R esetében használhat olyan IDE-t, mint a RStudio, amely a Start menüben v
 
 A Python esetében használhat olyan IDE-t, mint a Visual Studio Community Edition, amelyen előre telepítve van a Python Tools for Visual Studio (PTVS) bővítmény. Alapértelmezés szerint csak a Python 3,6, a root Conda-környezet van konfigurálva a PTVS. A következő lépések elvégzésével engedélyezheti az anaconda Python 2,7-et:
 
-1. Hozzon létre egyéni környezeteket az egyes verziókhoz az **eszközök** > **Python-eszközök** > **Python-környezetek**területen, majd válassza a **+ Custom** elemet a Visual Studio Community Edition kiadásban.
+1. Hozzon létre egyéni környezeteket az egyes verziókhoz az **eszközök**  >  **Python-eszközök**  >  **Python-környezetek**területen, majd válassza a **+ Custom** elemet a Visual Studio Community Edition kiadásban.
 1. Adjon meg egy leírást, és állítsa be a környezeti előtag elérési útját **c:\anaconda\envs\python2** for anaconda Python 2,7.
-1. A környezet mentéséhez válassza az **automatikus észlelés** > **alkalmazása** elemet.
+1. A környezet mentéséhez válassza az **automatikus észlelés**  >  **alkalmazása** elemet.
 
 A Python-környezetek létrehozásával kapcsolatos további információkért tekintse meg a [PTVS dokumentációját](https://aka.ms/ptvsdocs) .
 
-Most, hogy létrehoz egy új Python-projektet. Nyissa meg a **fájl** > **új** > **projekt** > **Python** elemet, és válassza ki az Ön által felépített Python-alkalmazás típusát. Az aktuális projekt Python-környezetét a kívánt verzióra (Python 2,7 vagy 3,6) állíthatja be úgy, hogy a jobb gombbal a **Python-környezetek** lehetőségre kattint, majd kiválasztja a **Python-környezetek hozzáadása/eltávolítása**lehetőséget. A PTVS használatáról a [termékdokumentációban](https://aka.ms/ptvsdocs)talál további információt.
+Most, hogy létrehoz egy új Python-projektet. Nyissa meg a **fájl**  >  **új**  >  **projekt**  >  **Python** elemet, és válassza ki az Ön által felépített Python-alkalmazás típusát. Az aktuális projekt Python-környezetét a kívánt verzióra (Python 2,7 vagy 3,6) állíthatja be úgy, hogy a jobb gombbal a **Python-környezetek** lehetőségre kattint, majd kiválasztja a **Python-környezetek hozzáadása/eltávolítása**lehetőséget. A PTVS használatáról a [termékdokumentációban](https://aka.ms/ptvsdocs)talál további információt.
 
 ## <a name="use-jupyter-notebooks"></a>A Jupyter notebookok használata
 A Jupyter Notebook egy böngészőalapú IDE-t biztosít az adatelemzéshez és a modellezéshez. A Jupyter-jegyzetfüzetekben a Python 2, a Python 3 vagy az R (nyílt forráskódú és Microsoft R Server) is használható.
 
-A Jupyter Notebook elindításához kattintson a **Start** menüben vagy az asztalon található **Jupyter notebook** ikonra. A DSVM-parancssorban futtathatja ```jupyter notebook``` azt a könyvtárat is, ahol meglévő jegyzetfüzetekkel rendelkezik, vagy új jegyzetfüzeteket kíván létrehozni.  
+A Jupyter Notebook elindításához kattintson a **Start** menüben vagy az asztalon található **Jupyter notebook** ikonra. A DSVM-parancssorban futtathatja azt a könyvtárat is, ```jupyter notebook``` ahol meglévő jegyzetfüzetekkel rendelkezik, vagy új jegyzetfüzeteket kíván létrehozni.  
 
-A Jupyter megkezdése után navigáljon `/notebooks` a könyvtárba, például a DSVM előre csomagolt jegyzetfüzeteket. Ezután:
+A Jupyter megkezdése után navigáljon a `/notebooks` könyvtárba, például a DSVM előre csomagolt jegyzetfüzeteket. Ezután:
 
 * Válassza ki a jegyzetfüzetet a kód megtekintéséhez.
 * Futtassa az egyes cellákat a SHIFT + ENTER billentyűkombináció kiválasztásával.
-* Futtassa a teljes jegyzetfüzetet a **cella** > **futtatása**lehetőség kiválasztásával.
+* Futtassa a teljes jegyzetfüzetet a **cella**futtatása lehetőség kiválasztásával  >  **Run**.
 * Hozzon létre egy új jegyzetfüzetet úgy, hogy kiválasztja a Jupyter ikont (a bal felső sarokban), majd kiválasztja az **új** gombot a jobb oldalon, majd kiválasztja a jegyzetfüzet nyelvét (más néven kerneleket).   
 
 > [!NOTE]
@@ -139,7 +139,7 @@ A következő eljárás és kódrészletek használatával beállíthatja, létr
 
 #### <a name="set-up"></a>Beállítás
 
-Hozzon létre egy Settings. JSON fájlt egy ```.azureml``` , a saját kezdőkönyvtár alatt megnevezett könyvtárban. Adja meg a paramétereket a Azure Machine Learning munkaterületen.
+Hozzon létre egy Settings. JSON fájlt egy, a saját kezdőkönyvtár alatt megnevezett könyvtárban ```.azureml``` . Adja meg a paramétereket a Azure Machine Learning munkaterületen.
 
 A Settings. JSON fájl szerkezete:
 
@@ -171,7 +171,7 @@ ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema =
 ```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>A Azure Machine Learning üzembe helyezett modell felhasználása
-Ha a modellt egy ügyfélalkalmazás alapján kívánja használni, a Azure Machine Learning-függvénytár használatával keresse meg a közzétett webszolgáltatás nevét. A végpont `services` meghatározásához használja az API-hívást. Ezután hívja meg a `consume` függvényt, és továbbítsa az adatkeretet az előre jelzett értékre.
+Ha a modellt egy ügyfélalkalmazás alapján kívánja használni, a Azure Machine Learning-függvénytár használatával keresse meg a közzétett webszolgáltatás nevét. A `services` végpont meghatározásához használja az API-hívást. Ezután hívja meg a `consume` függvényt, és továbbítsa az adatkeretet az előre jelzett értékre.
 
 Használja a következő kódot a Azure Machine Learning webszolgáltatásként közzétett modell felhasználásához:
 
@@ -246,7 +246,7 @@ A git használatával kapcsolatos további információkért látogasson el a [G
 
 A DSVM a parancssorban és a grafikus felhasználói felületen is betöltődik a GitHub-tárház eléréséhez. A git és a GitHub működéséhez használt parancssori eszköz git bash néven is ismert. A Visual Studio telepítve van a DSVM, és a git-bővítmények. Ezen eszközök ikonjai a **Start** menüben és az asztalon találhatók.
 
-Ha egy GitHub-tárházból szeretne kódot letölteni, használja ```git clone``` a parancsot. Például a Microsoft által az aktuális könyvtárba közzétett adatelemzési tárház letöltéséhez futtassa a következő parancsot a git Bashben:
+Ha egy GitHub-tárházból szeretne kódot letölteni, használja a ```git clone``` parancsot. Például a Microsoft által az aktuális könyvtárba közzétett adatelemzési tárház letöltéséhez futtassa a következő parancsot a git Bashben:
 
     git clone https://github.com/Azure/DataScienceVM.git
 
@@ -266,7 +266,7 @@ Az Azure Blob Storage egy megbízható, gazdaságos felhőalapú tárolási szol
 
    ![Képernyőfelvétel a Storage-fiók létrehozási folyamatáról a Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. A azcopy. exe fájlt tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
+* Ellenőrizze, hogy a parancssori AzCopy eszköz előre van-e telepítve: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . A azcopy. exe fájlt tartalmazó könyvtár már a PATH környezeti változóban van, így az eszköz futtatásakor nem lehet beírni a teljes parancs elérési útját. A AzCopy eszközzel kapcsolatos további információkért tekintse meg a [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md).
 * Indítsa el a Azure Storage Explorer eszközt. A [Storage Explorer weboldaláról](https://storageexplorer.com/)tölthető le. 
 
    ![A Storage-fiók elérésének Azure Storage Explorer képernyőképe](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -298,8 +298,8 @@ Miután futtatta a AzCopy parancsot egy Azure-blobba való másolásra, a fájl 
 
 Az adatok a virtuális gépen lévő helyi fájlból is tölthetők fel Azure Storage Explorer használatával:
 
-* Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra. ![Képernyőkép a feltöltés gombról Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* A **fájlok** mező jobb oldalán válassza a három pontot (**..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra. ![ Képernyőkép a feltöltés gombról Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
+* A **fájlok** mező jobb oldalán válassza a három pontot (**..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![ Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Adatok beolvasása egy Azure-blobból: Machine Learning olvasó modul
 
@@ -454,10 +454,10 @@ Azure Cosmos DB egy NoSQL-adatbázis a felhőben. Használhatja a JSON-hoz hason
 
 A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DSVM:
 
-1. A Azure Cosmos DB Python SDK már telepítve van a DSVM. A frissítéséhez futtassa ```pip install pydocumentdb --upgrade``` a parancsot a parancssorból.
+1. A Azure Cosmos DB Python SDK már telepítve van a DSVM. A frissítéséhez futtassa a ```pip install pydocumentdb --upgrade``` parancsot a parancssorból.
 2. Hozzon létre egy Azure Cosmos DB fiókot és adatbázist a [Azure Portal](https://portal.azure.com).
 3. Töltse le a Azure Cosmos DB adatáttelepítési eszközt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=53595) , és bontsa ki a kívánt könyvtárat.
-4. Egy [nyilvános blobban](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) tárolt JSON-adatok (vulkáni adatok) importálása Azure Cosmos DBba az áttelepítési eszközhöz a következő parancs-paraméterekkel. (Használja a dtui. exe fájlt abban a könyvtárban, ahol a Azure Cosmos DB adatáttelepítési eszközt telepítette.) Adja meg a forrás és a cél helyét a következő paraméterekkel:
+4. Egy [nyilvános blobban](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) tárolt JSON-adatok (vulkáni adatok) importálása Azure Cosmos DBba az áttelepítési eszközhöz a következő parancs-paraméterekkel. (Használja a dtui. exe fájlt abban a könyvtárban, ahol a Azure Cosmos DB adatáttelepítési eszközt telepítette.) Adja meg a forrás és a cél helyét a következő paraméterekkel:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
@@ -466,11 +466,11 @@ Az adat importálása után nyissa meg a Jupyter, és nyissa meg a *DocumentDBSa
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI jelentések és irányítópultok használata 
 Megjelenítheti a vulkáni JSON-fájlt az előző Azure Cosmos DB például Power BI Desktop, hogy vizuális elemzéseket nyerjen az adatokból. A részletes lépések a [Power bi cikkben](../../cosmos-db/powerbi-visualize.md)találhatók. A magas szintű lépések:
 
-1. Indítsa el a Power BI Desktopot, majd válassza az **Adatok beolvasása** lehetőséget. Az URL-címet a `https://cahandson.blob.core.windows.net/samples/volcano.json`következőképpen adhatja meg:.
+1. Indítsa el a Power BI Desktopot, majd válassza az **Adatok beolvasása** lehetőséget. Az URL-címet a következőképpen adhatja meg: `https://cahandson.blob.core.windows.net/samples/volcano.json` .
 2. Ekkor megjelenik a listaként importált JSON-rekordok listája. Alakítsa át a listát egy táblázatba, hogy Power BI képes legyen vele dolgozni.
 4. Bontsa ki az oszlopokat a Expand (nyíl) ikon kiválasztásával.
 5. Figyelje meg, hogy a hely egy **rekord** mező. Bontsa ki a rekordot, és csak a koordinátákat válassza ki. A **koordináta** egy lista oszlop.
-6. Adjon hozzá egy új oszlopot a lista koordináta oszlopának egy vesszővel tagolt **LatLong** oszlopba való átalakításához. Összefűzi a két elemet a koordináta-lista mezőben a képlet ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```használatával.
+6. Adjon hozzá egy új oszlopot a lista koordináta oszlopának egy vesszővel tagolt **LatLong** oszlopba való átalakításához. Összefűzi a két elemet a koordináta-lista mezőben a képlet használatával ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` .
 7. Alakítsa át a **jogosultságszint-emelési** oszlopot decimális értékre, és válassza a **Bezárás** és **alkalmazás** gombokat.
 
 A fenti lépések helyett illessze be a következő kódot. Az adatátalakítások lekérdezési nyelven való írásához a Power BI Speciális szerkesztőban használt lépéseket.
@@ -508,7 +508,7 @@ Hasonlóképpen, a virtuális gépek feldolgozási kapacitásának csökkentése
 ## <a name="add-more-tools"></a>További eszközök hozzáadása
 A DSVM beépített eszközök számos gyakori adatelemzési igényt tudnak kezelni. Ezzel időt takaríthat meg, mert nem kell egyenként telepítenie és konfigurálnia a környezeteket. Pénzt takarít meg, mivel csak a felhasznált erőforrásokért kell fizetnie.
 
-A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. További csomagokat is telepíthet a Pythonban és az R-ben, amelyek nincsenek előre telepítve. A Python esetében használhatja a ```conda``` vagy ```pip```a programot is. Az ```install.packages()``` r esetében használhatja az r-konzolt, vagy használhatja az ide-t, és válassza a **csomagok** > **telepítési csomagok**lehetőséget.
+A cikkben ismertetett egyéb Azure-adatelemzési és-elemzési szolgáltatások segítségével javíthatja az elemzési környezetét. Bizonyos esetekben további eszközökre lehet szükség, beleértve néhány saját partneri eszközt is. A virtuális gépen teljes körű rendszergazdai hozzáféréssel rendelkezik a szükséges új eszközök telepítéséhez. További csomagokat is telepíthet a Pythonban és az R-ben, amelyek nincsenek előre telepítve. A Python esetében használhatja a vagy a programot is ```conda``` ```pip``` . Az r esetében használhatja az ```install.packages()``` r-konzolt, vagy használhatja az ide-t, és válassza a **csomagok**  >  **telepítési csomagok**lehetőséget.
 
 ## <a name="deep-learning"></a>Deep learning
 

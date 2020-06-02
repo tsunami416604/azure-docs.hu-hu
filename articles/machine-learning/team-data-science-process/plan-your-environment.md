@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 281a6b713c5480c6bd25539eeacc304670352667
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194350"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267941"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -55,7 +55,7 @@ Helyi vagy Felhőbeli adatai vannak? A lehetséges helyszínek a következők:
 Hol kell az adatai feldolgozásához vagy modellezéséhez? 
 
 * Azure Blob Storage
-* Adatbázisok SQL Azure
+* SQL Azure-adatbázisok
 * Azure virtuális gépen futó SQL Server
 * HDInsight (Hadoop az Azure-ban) vagy kaptár táblák
 * Azure Machine Learning
@@ -150,7 +150,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter notebookok](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

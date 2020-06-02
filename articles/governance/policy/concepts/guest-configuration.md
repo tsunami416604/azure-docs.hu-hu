@@ -3,16 +3,16 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684289"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259150"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy vendég konfigurációjának ismertetése
 
-Az Azure-erőforrások naplózása és [szervizelését](../how-to/remediate-resources.md) után Azure Policy naplózhatja a beállításokat a gépen belül. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
+Azure Policy a beállításokat a gépen belül naplózhatja. Az érvényesítést a Vendégkonfiguráció bővítmény és ügyfél végzi. A bővítmény az ügyfélen keresztül ellenőrzi a beállításokat, például a következőket:
 
 - Az operációs rendszer konfigurációja
 - Alkalmazás konfigurációja vagy jelenléte
@@ -46,8 +46,8 @@ Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken h
 
 |Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
 |-|-|-|
-|Windows|[Windows PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef Inspect](https://www.chef.io/inspec/)| Ha a Ruby és a Python nem a gépen található, akkor a vendég konfigurációs bővítmény telepíti őket. |
+|Windows|[PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| A rendszer csak az Azure Policy által használt mappába betöltve. Nem ütközik a Windows PowerShell DSC-vel. A PowerShell Core nincs hozzáadva a rendszer elérési útjához.|
+|Linux|[Chef Inspect](https://www.chef.io/inspec/)| Telepíti a Chef Inspect verzió 2.2.61 az alapértelmezett helyen, és hozzáadja a rendszer elérési útjához. A Dependenices, például a Ruby és a Python is telepítve van. |
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
@@ -87,7 +87,7 @@ A bővítményt a virtuális gépekhez hozzáadó **DeployIfNotExists** szabály
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 
-Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges.
+Minden vendég konfigurációhoz tartozó naplózási futtatáshoz két házirend-definíció, egy **DeployIfNotExists** -definíció és egy **AuditIfNotExists** -definíció szükséges. A **DeployIfNotExists** házirend-definíciói az egyes gépeken végzett naplózási függőségeket kezelik.
 
 A **DeployIfNotExists** házirend-definíciója ellenőrzi és kijavította a következő elemeket:
 

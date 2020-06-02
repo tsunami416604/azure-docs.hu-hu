@@ -1,6 +1,7 @@
 ---
 title: A Ruby használata a lekérdezéshez
-description: Ez a témakör bemutatja, hogyan használható a Ruby egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz csatlakozik, és hogyan kérdezheti le a Transact-SQL-utasítások használatával.
+description: Ebből a témakörből megtudhatja, hogyan használhatja a Rubyt egy adatbázishoz csatlakozó és a Transact-SQL-utasítások használatával történő lekérdezésre szolgáló program létrehozásához.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,24 +11,24 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: d8d5ca8c6d583ec50788ef42632a07310d043f41
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: c297a40a5452938d8e706bf2e0791e4a7d03210c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189066"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267290"
 ---
-# <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database"></a>Gyors útmutató: adatbázisok lekérdezése a Ruby használatával Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Ruby használatával
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a rövid útmutató azt ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) a Azure SQL Database-adatbázishoz való kapcsolódáshoz, és hogyan lehet adatokat lekérdezni a Transact-SQL-utasításokkal.
+Ez a rövid útmutató azt ismerteti, hogyan használható a [Ruby](https://www.ruby-lang.org) egy adatbázishoz való kapcsolódáshoz, és hogyan lehet adatokat lekérdezni a Transact-SQL-utasításokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
-- Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhatja létre és konfigurálhatja az adatbázist:
+- Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhatja létre és konfigurálhatja az adatbázist:
 
   || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|

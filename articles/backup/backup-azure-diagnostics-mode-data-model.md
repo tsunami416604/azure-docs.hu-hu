@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707989"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248923"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -204,7 +204,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 | YearlyRetentionDaysOfTheMonth_s |Szöveg ||Az éves megőrzéshez kiválasztott hónap dátuma |
 | SynchronisationFrequencyPerDay_s |Egész szám |v2|Napok száma egy nap során a rendszer az SC DPM és a MABS esetében szinkronizálja a fájlok biztonsági mentését |
 | DiffBackupFormat_s |Szöveg |v2|Az SQL-alapú különbözeti biztonsági másolatok formátuma az Azure virtuális gép biztonsági mentésében |
-| DiffBackupTime_s |Time |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje|
+| DiffBackupTime_s |Idő |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének ideje|
 | DiffBackupRetentionDuration_s |Tizedes tört |v2|Az SQL Azure-beli virtuális gépek biztonsági mentésének megőrzési időtartama|
 | LogBackupFrequency_s |Tizedes tört |v2|SQL-naplók biztonsági másolatainak gyakorisága|
 | LogBackupRetentionDuration_s |Tizedes tört |v2|Az SQL Azure-beli virtuális gép biztonsági mentésében tárolt biztonsági másolatok megőrzési időtartama|
@@ -467,6 +467,6 @@ A visszamenőleges kompatibilitás miatt a Azure Backup-ügynök és az Azure vi
 
 A fent ismertetett [adatmodellben](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) tekintse meg a harmadik oszlop "Description" utasítását, és azonosítsa, hogy mely oszlopok csak a v1 sémához tartoznak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmodell áttekintése után megkezdheti az [Egyéni lekérdezések létrehozását](../azure-monitor/learn/tutorial-logs-dashboards.md) Azure monitor naplókban a saját irányítópultjának létrehozásához.

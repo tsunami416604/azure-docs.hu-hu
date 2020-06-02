@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 51567ff07930599b0c13d8a9546ebeca396c4b45
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993541"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266593"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és-engedélyezési hibakódok
 
@@ -63,7 +63,7 @@ A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll d
 | Hibakód         | Leírás        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet.|
-| `invalid_grant`    | A hitelesítési anyagok némelyike (Auth-kód, frissítési jogkivonat, hozzáférési jogkivonat, PKCE Challenge) érvénytelen, nem elemezhető, hiányzó vagy egyéb módon használhatatlan | Új engedélyezési kód beszerzéséhez próbáljon ki egy új kérelmet a `/authorize` végponthoz.  Érdemes áttekinteni és érvényesíteni az alkalmazás által használt protokollokat. |
+| `invalid_grant`    | Bizonyos hitelesítési anyagok (Auth-kód, frissítési token, hozzáférési jogkivonat, PKCE Challenge) érvénytelenek voltak, nem elemezhető, hiányzik vagy egyéb módon használhatatlan | Új engedélyezési kód beszerzéséhez próbáljon ki egy új kérelmet a `/authorize` végponthoz.  Érdemes áttekinteni és érvényesíteni az alkalmazás által használt protokollokat. |
 | `unauthorized_client` | A hitelesített ügyfél nem jogosult az engedélyezési támogatás típusának használatára. | Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
 | `invalid_client` | Nem sikerült az ügyfél-hitelesítés.  | Az ügyfél hitelesítő adatai nem érvényesek. A javításhoz az alkalmazás rendszergazdája frissíti a hitelesítő adatokat.   |
 | `unsupported_grant_type` | Az engedélyezési kiszolgáló nem támogatja az engedélyezési engedély típusát. | Módosítsa a kérelemben szereplő Grant típust. Ez a típusú hiba csak a fejlesztés során fordul elő, és a rendszer a kezdeti tesztelés során észleli. |
@@ -126,8 +126,8 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided – a bérlők azonosítására szolgáló információ nem található a kérelemben vagy a megadott hitelesítő adatokban. A felhasználó felveheti a kapcsolatot a bérlő rendszergazdájával a probléma megoldásához. |
 | AADSTS50061 | SignoutInvalidRequest – a kijelentkezési kérelem érvénytelen. |
 | AADSTS50064 | CredentialAuthenticationError – a Felhasználónév vagy jelszó hitelesítő adatainak érvényesítése sikertelen volt. |
-| AADSTS50068 | A SignoutInitiatorNotParticipant-kijelentkezés sikertelen volt. A kijelentkezés kezdeményező alkalmazás nem résztvevő az aktuális munkamenetben. |
-| AADSTS50070 | A SignoutUnknownSessionIdentifier-kijelentkezés sikertelen volt. A kijelentkezés kérelem olyan nevet adott meg, amely nem felel meg a meglévő munkamenet (ek) nek. |
+| AADSTS50068 | SignoutInitiatorNotParticipant – a kijelentkezés sikertelen volt. A kijelentkezést kezdeményező alkalmazás nem résztvevő az aktuális munkamenetben. |
+| AADSTS50070 | SignoutUnknownSessionIdentifier – a kijelentkezés sikertelen volt. A kijelentkezési kérelem olyan nevet adott meg, amely nem felel meg a meglévő munkamenet (ek) nek. |
 | AADSTS50071 | SignoutMessageExpired – a kijelentkezési kérelem lejárt. |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt – a felhasználónak regisztrálnia kell a második tényezős hitelesítéshez (interaktív). |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt – erős hitelesítésre van szükség, és a felhasználó nem adta át az MFA-feladatot. |
@@ -173,7 +173,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS50187 | DeviceInformationNotProvided – a szolgáltatás nem tudta végrehajtani az eszköz hitelesítését. |
 | AADSTS50196 | LoopDetected – A rendszer egy ügyfél-hurkot észlelt. Ellenőrizze az alkalmazás logikáját, és győződjön meg arról, hogy a jogkivonat-gyorsítótárazás implementálva van, és hogy a hibákra vonatkozó feltételek megfelelően vannak kezelve.  Az alkalmazás túl sok olyan kérést hajtott végre túl rövid ideig, amely azt jelzi, hogy hibás állapotban van, vagy a visszaélésszerűen kéri a jogkivonatokat. |
 | AADSTS50197 | ConflictingIdentities – a felhasználó nem található. Próbálkozzon újra a bejelentkezéssel. |
-| AADSTS50199 | CmsiInterrupt – biztonsági okokból a kérelemhez felhasználói megerősítés szükséges.  Mivel ez egy "interaction_required" hiba, az ügyfélnek interaktív hitelesítést kell végeznie.  Ennek az az oka, hogy a rendszer webnézete egy natív alkalmazás jogkivonatának igénylésére lett felhasználva – a felhasználónak meg kell kérnie, hogy megkérdezze, valóban volt-e az alkalmazás, amelyet be kellett jelentkeznie.|
+| AADSTS50199 | CmsiInterrupt – biztonsági okokból a kérelemhez felhasználói megerősítés szükséges.  Mivel ez egy "interaction_required" hiba, az ügyfélnek interaktív hitelesítést kell végeznie.  Ennek az az oka, hogy a rendszer webnézete egy natív alkalmazás jogkivonatának igénylésére lett felhasználva – a felhasználónak meg kell kérnie, hogy megkérdezze, valóban volt-e az alkalmazás, amelyet be kellett jelentkeznie. A kérdés elkerüléséhez az átirányítási URI-nak a következő biztonságos lista részét kell képeznie: <br />http://<br />https://<br />msauth://(csak iOS esetén)<br />msauthv2://(csak iOS esetén)<br />Chrome-Extension://(csak asztali Chrome böngésző) |
 | AADSTS51000 | RequiredFeatureNotEnabled – a szolgáltatás le van tiltva. |
 | AADSTS51001 | A DomainHintMustbePresent-tartományhoz a helyszíni biztonsági azonosítóval vagy a helyszíni egyszerű felhasználónévvel kell rendelkeznie. |
 | AADSTS51004 | UserAccountNotInDirectory – a felhasználói fiók nem létezik a címtárban. |
@@ -314,7 +314,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, mert egynél több erőforrást tartalmaz. |
 | AADSTS700023 | InvalidResourcelessScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, ha hozzáférési jogkivonatot kér. |
 | AADSTS7000215 | Érvénytelen ügyfél-titkos kulcs van megadva. Fejlesztői hiba – az alkalmazás a szükséges vagy helyes hitelesítési paraméterek nélkül próbál bejelentkezni.|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided – a megadott ügyfél titkos kulcsainak érvényessége lejárt. Az Azure Portalon új kulcsokat hozhat létre az alkalmazáshoz, vagy fontolóra veheti a tanúsítvány hitelesítő adatainak használatát a további biztonság érdekében:https://aka.ms/certCreds |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – a megadott ügyfél titkos kulcsainak érvényessége lejárt. Látogasson el a Azure Portal új kulcsok létrehozásához az alkalmazáshoz, vagy vegye fontolóra a tanúsítvány hitelesítő adatainak használatát a további biztonság érdekében:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | A InvalidGrantRedeemAgainstWrongTenant által biztosított engedélyezési kód más Bérlővel való használatra készült, ezért el lett utasítva. A OAuth2-engedélyezési kódot a (/gyakori hibák vagy/{tenant-ID}) megszerzett Bérlővel azonos Bérlővel kell beváltani. |
 | AADSTS1000000 | UserNotBoundError – a kötési API megköveteli, hogy az Azure AD-felhasználó egy külső IDENTITÁSSZOLGÁLTATÓ is hitelesítse magát, ami még nem történt meg. |
 | AADSTS1000002 | BindCompleteInterruptError – a kötés sikeresen befejeződött, de a felhasználót tájékoztatni kell. |

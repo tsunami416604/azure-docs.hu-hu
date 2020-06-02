@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478303"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246883"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -43,15 +43,17 @@ A forrás számítógép a mobilitási ügynök telepítésekor regisztrálja a 
     4. Hálózati problémák megoldásakor próbálja megismételni a regisztrációt a [forráskiszolgáló regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)című rész útmutatásait követve.
 
 6. Ha a string **post kérelem: (7) – nem sikerült csatlakozni a kiszolgálóhoz** , a naplófájlban keresse meg a következő karakterlánc- **kérelmet: (60) – a társ-tanúsítvány nem hitelesíthető a megadott hitelesítésszolgáltatói tanúsítványokkal**. Ez a hiba akkor fordulhat elő, ha a konfigurációs kiszolgáló tanúsítványa lejárt, vagy a forrásoldali gép nem támogatja a TLS 1,0-es vagy újabb protokollokat. Akkor is előfordulhat, ha a tűzfal blokkolja a TLS-kommunikációt a forrásoldali gép és a konfigurációs kiszolgáló között. Ha a karakterlánc megtalálható: 
-    1. A megoldáshoz kapcsolódjon a konfigurációs kiszolgáló IP-címéhez a forrásoldali gépen lévő webböngészővel. Használja az URI https:\/ \/<konfigurációs kiszolgáló IP-\>címét: 443/. Győződjön meg arról, hogy a forrásoldali számítógép elérheti a konfigurációs kiszolgálót a 443-es porton keresztül.
+    1. A megoldáshoz kapcsolódjon a konfigurációs kiszolgáló IP-címéhez a forrásoldali gépen lévő webböngészővel. Használja az URI https: \/ \/<konfigurációs kiszolgáló IP-címét \> : 443/. Győződjön meg arról, hogy a forrásoldali számítógép elérheti a konfigurációs kiszolgálót a 443-es porton keresztül.
     2. Győződjön meg arról, hogy a forrásoldali számítógépen lévő tűzfalszabályok hozzáadására vagy eltávolítására van szükség ahhoz, hogy a forrásszámítógép a konfigurációs kiszolgálóval kommunikáljon. Az esetlegesen használatban lévő tűzfal-szoftverek miatt nem lehet kilistázni az összes szükséges tűzfal-konfigurációt. A hálózati rendszergazdákkal együttműködve oldja fel a kapcsolódási problémákat.
     3. Győződjön meg arról, hogy az [site Recovery mappában](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) felsorolt mappák ki vannak zárva a víruskereső szoftverből.  
     4. A problémák megoldását követően próbálja megismételni a regisztrációt a [forráskiszolgáló regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)című rész útmutatásait követve.
 
-7. Linux rendszeren, ha a <INSTALLATION_DIR\>/etc/drscout.conf megsérült a platform értéke, a regisztráció meghiúsul. A probléma azonosításához nyissa meg a/var/log/ua_install. log fájlt. Keresse meg a **konfigurációt megszakító karakterláncot, mert VM_PLATFORM érték vagy Null, vagy nem VMware/Azure**. A platformot **VMware** -re vagy **Azure**-ra kell beállítani. Ha a drscout. conf fájl sérült, javasoljuk, hogy [távolítsa el a mobilitási ügynököt](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) , majd telepítse újra a mobilitási ügynököt. Ha az Eltávolítás sikertelen, hajtsa végre a következő lépéseket: a. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és véleményezze a **StopServices** függvény hívását.
+7. Linux rendszeren, ha a <INSTALLATION_DIR \> /etc/drscout.conf megsérült a platform értéke, a regisztráció meghiúsul. A probléma azonosításához nyissa meg a/var/log/ua_install. log fájlt. Keresse meg a **konfigurációt megszakító karakterláncot, mert VM_PLATFORM érték vagy Null, vagy nem VMware/Azure**. A platformot **VMware** -re vagy **Azure**-ra kell beállítani. Ha a drscout. conf fájl sérült, javasoljuk, hogy [távolítsa el a mobilitási ügynököt](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) , majd telepítse újra a mobilitási ügynököt. Ha az Eltávolítás sikertelen, hajtsa végre a következő lépéseket: a. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és véleményezze a **StopServices** függvény hívását.
     b. Nyissa meg a Installation_Directory/VX/bin/uninstall.sh fájlt, és véleményezze a **stop_services** függvény hívását.
     c. Nyissa meg a Installation_Directory/FX/uninstall.sh fájlt, és tegye megjegyzésbe az FX szolgáltatás leállítására tett kísérlet teljes szakaszát.
     d. [Távolítsa el](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a mobilitási ügynököt. A sikeres eltávolítást követően indítsa újra a rendszerét, majd próbálja meg újra telepíteni a mobilitási ügynököt.
+
+8. Győződjön meg arról, hogy a többtényezős hitelesítés nincs engedélyezve a felhasználói fiókhoz. A Azure Site Recovery jelenleg nem támogatja a többtényezős hitelesítést a felhasználói fiókhoz. Regisztrálja a konfigurációs kiszolgálót a többtényezős hitelesítés engedélyezett felhasználói fiókja nélkül.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Telepítési hiba: nem sikerült betölteni a fiókokat
 
@@ -97,7 +99,7 @@ Futtassa a következő parancsot a forrásoldali gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | UnifiedAgentConfigurator. exe/CSEndPoint <konfigurációs kiszolgáló IP-\> címének/PassphraseFilePath <a hozzáférési kód elérési útja\>
+Használat | UnifiedAgentConfigurator. exe/CSEndPoint < konfigurációs kiszolgáló IP-címének \> /PassphraseFilePath < a hozzáférési kód elérési útja\>
 Ügynök konfigurációs naplói | A%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log. alatt található
 /CSEndPoint | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 /PassphraseFilePath |  Kötelező. A jelszó helye. Használjon bármely érvényes UNC-vagy helyi elérési útvonalat.
@@ -112,7 +114,7 @@ Futtassa a következő parancsot a forrásoldali gépen:
 
 Beállítás | Részletek
 --- | ---
-Használat | CD-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <konfigurációs kiszolgáló IP-\> címe – P <hozzáférési fájl elérési útja\>
+Használat | CD-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <konfigurációs kiszolgáló IP \> -címe – P <hozzáférési fájl elérési útja\>
 -i | Kötelező paraméter. A konfigurációs kiszolgáló IP-címét adja meg. Bármilyen érvényes IP-címet használjon.
 – P |  Kötelező. A fájl teljes elérési útja, amelyben a rendszer menti a jelszót. Bármilyen érvényes mappát használjon.
 
@@ -203,7 +205,7 @@ Ezt jellemzően a 443-es port hibája okozza. A következő lépésekkel oldja f
 
 Annak ellenőrzéséhez, hogy a fő célként megadott ügynök létrehozhat-e TCP-munkamenetet a konfigurációs kiszolgáló IP-címéhez, keresse meg az alábbihoz hasonló nyomkövetést a fő célkiszolgáló naplófájljaiban:
 
-TCP \<cserélje le az IP-címet a CS IP \<-címmel>:52739 IP-cím helyett a CS ip-címet itt>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here> : 52739 \<Replace IP with CS IP here> : 443 SYN_SENT 
 
 TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//cserélje le az IP-címet CS IP-címmel
 

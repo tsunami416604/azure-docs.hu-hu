@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 204fd1b1a0a2984886684bbabf33dc7e73c1b45c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c2e18919b287713f59ba8785006c952134994be0
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653540"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258368"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -66,7 +66,7 @@ A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "PARQUEt"
 OPENROWSET
 (
     { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] | SINGLE_BLOB | SINGLE_CLOB | SINGLE_NCLOB } }
+    { FORMATFILE = 'format_file_path' [ <bulk_options>] } }
 )
 AS table_alias(column_alias,...n)
 <bulk_options> ::=
@@ -105,7 +105,7 @@ Az olvasni kívánt oszlopok megadásához a OPENROWSET utasításban megadhat e
 OPENROWSET
 ...
 | BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] | SINGLE_BLOB | SINGLE_CLOB | SINGLE_NCLOB } }
+{ FORMATFILE = 'format_file_path' [ <bulk_options>] } }
 ) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 ```
 
@@ -215,7 +215,7 @@ Lásd az alábbi szintaxist:
 
 Lekérdezési mintákat talál az elemek az ismétlődő oszlopokból való eléréséhez a [lekérdezési parketta beágyazott típusai](query-parquet-nested-types.md#access-elements-from-repeated-columns) cikkben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

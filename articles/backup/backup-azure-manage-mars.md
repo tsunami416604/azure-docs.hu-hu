@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025101"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248600"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -22,7 +22,7 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 - **Elemek hozzáadása** ezt a lehetőséget csak új elemek biztonsági mentéshez való hozzáadásához használja. Meglévő elemek eltávolításához használja az **elemek eltávolítása** vagy a **kizárási beállítások** lehetőséget.  
 - **Elemek eltávolítása** ezzel a beállítással távolíthatja el az elemeket a biztonsági mentésből.
   - A **kizárási beállítások** használatával **távolítsa el**a köteten belüli összes elemet az elemek eltávolítása helyett.
-  - Egy kötet összes kijelölésének törlésével a rendszer a legutóbbi biztonsági mentés időpontjában megőrzési beállításokként megőrzi az elemek régi biztonsági másolatait, a módosítás hatóköre nélkül.
+  - Egy kötet összes kijelölésének törlésével a rendszer a legutóbbi biztonsági mentés időpontjában megőrzi az elemek régi biztonsági másolatait, a módosítás hatóköre nélkül.
   - Ha újra kiválasztja ezeket az elemeket, a rendszer az első teljes biztonsági mentést és az új házirend-módosításokat nem alkalmazza a régi biztonsági másolatokra.
   - A teljes kötet kijelölésének megszüntetése megőrzi a korábbi biztonsági mentést az adatmegőrzési szabályzat módosításának hatóköre nélkül.
 - **Kizárási beállítások** ezzel a beállítással kizárhat bizonyos elemeket a biztonsági mentésből.
@@ -125,7 +125,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 
     ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Nyissa meg **Recovery Services** > tároló**beállításai** > **tulajdonságokat**.
+5. Nyissa meg **Recovery Services**tároló  >  **beállításai**  >  **tulajdonságokat**.
 6. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
 7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
 
@@ -156,7 +156,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 
 A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helyszíni vagy helyi gép a MARS-ügynökkel vagy az Azure-ból történő biztonsági mentése vagy visszaállítása során. Ha elvesztette vagy elfelejtette a jelszót, akkor újra létrehozhatja a jelszót (ha a számítógép továbbra is regisztrálva van a Recovery Services-tárolóban, és a biztonsági mentés konfigurálva van), kövesse az alábbi lépéseket:
 
-- A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára** > , és**módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
+- A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára**, és  >  **módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
 - Válassza a **jelszó módosítása** jelölőnégyzetet.<br>
 - Adjon meg egy új jelszót, vagy kattintson a **jelszó létrehozása**lehetőségre.
 - Az új jelszó mentéséhez kattintson a **Tallózás** gombra.

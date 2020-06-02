@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 description: Ismerje meg, hogyan készíthet biztonsági mentést az Azure-fájlmegosztás számára a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d4129b3618810d80df7d5289a7a7417d74fd077
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105743"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259021"
 ---
 # <a name="about-azure-file-share-backup"></a>Tudnivalók az Azure-fájlmegosztás biztonsági mentéséről
 
@@ -21,6 +21,7 @@ Az Azure fájlmegosztás biztonsági mentése natív, felhőalapú biztonsági m
 * Beépített felügyeleti képességek: ütemezheti a biztonsági mentéseket, és megadhatja a kívánt megőrzési időtartamot az adatok további terhelése nélkül.
 * Azonnali visszaállítás: az Azure fájlmegosztás biztonsági mentése fájlmegosztási pillanatképeket használ, így egyszerűen kiválaszthatja azokat a fájlokat, amelyeket azonnal vissza szeretne állítani.
 * Riasztások és jelentéskészítés: beállíthatja a riasztásokat a biztonsági mentési és visszaállítási hibákhoz, és a Azure Backup által biztosított jelentéskészítési megoldás használatával bepillantást nyerhet a fájlok megosztásainak biztonsági másolatából.
+* Fájlmegosztás véletlen törlésével szembeni védelem: Azure Backup engedélyezi a helyreállítható [törlési funkciót](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) a Storage-fiók szintjén egy 14 napos megőrzési időtartammal. Még ha rosszindulatú színész is törli a fájlmegosztást, a fájlmegosztás tartalmát és a helyreállítási pontokat (pillanatképeket) a rendszer megőrzi egy konfigurálható megőrzési időszakra, amely lehetővé teszi a forrás tartalmának és pillanatképének sikeres és teljes helyreállítását adatvesztés nélkül.
 
 ## <a name="architecture"></a>Architektúra
 

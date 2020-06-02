@@ -3,12 +3,12 @@ title: A Hyper-V értékelésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate kiszolgáló értékelésével
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 5ba7e74624f719feb6efbb3fb58dd3375250d649
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744599"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266780"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -24,7 +24,7 @@ A Hyper-V virtuális gép értékelésének beállításához létre kell hoznia
 **Értékelési korlátok** | Egyetlen [Azure Migrate-projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 Hyper-V virtuális gépet is felfedezhet és felderítheti.
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A Hyper-V-alapú virtuális gépeken kívül a projektek tartalmazhatják a VMware virtuális gépeket és a fizikai kiszolgálókat is, az egyes alkalmazásokra vonatkozó értékelési korlátokig.
 **Felfedezés** | A Azure Migrate készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
-**Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egy csoportra vonatkozóan akár 35 000 virtuális gépet is megvizsgálhat egyetlen értékeléssel.
+**Assessment** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egy csoportra vonatkozóan akár 35 000 virtuális gépet is megvizsgálhat egyetlen értékeléssel.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
 
@@ -44,7 +44,7 @@ A Hyper-V virtuális gép értékelésének beállításához létre kell hoznia
 
 | **Támogatás**                  | **Részletek**               
 | :----------------------------- | :------------------- |
-| **Operációs rendszer** | Minden [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -alapú operációs rendszer. |
+| **Operációs rendszer** | Az összes operációs rendszer kiértékelése áttelepítésre végezhető.  |
 | **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
 
 

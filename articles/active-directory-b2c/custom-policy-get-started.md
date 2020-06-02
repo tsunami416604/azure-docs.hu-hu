@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738251"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247988"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -151,7 +151,7 @@ Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban k
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
 1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
 1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." mindkét hatókör **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
+1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." a hatókörök – offline_access, OpenID és user_impersonation **állapot** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
 
 * * *
 

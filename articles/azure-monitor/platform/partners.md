@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233397"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248971"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -106,8 +106,6 @@ A Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi az időso
 
 ![InfluxData embléma](./media/partners/Influxdata.png)
 
-A InfluxData, a InfluxDB létrehozója egy modern, nyílt forráskódú platformot biztosít, amely az alapoktól kezdve a DevOps-és IoT-alkalmazások metrikáinak és eseményeinek (idősoros adatok) elemzésére épül. Akár emberekből, érzékelőkből vagy gépekből származó adatokról van szó, a InfluxData lehetővé teszi a fejlesztők számára, hogy a következő generációs monitorozási, elemzési és IoT alkalmazásokat gyorsabban, könnyebben és a valós üzleti értékek gyors méretezésével méretezheti. A San Franciscóban alapuló InfluxData több mint 420 ügyfél, például a Cisco, az eBay, az IBM és a Siemens.
-
 A InfluxData a InfluxDB, a nyílt forráskódú idősorozat-adatbázis létrehozója. A technológiánk célja, hogy kezelje a IoT-eszközök, alkalmazások, hálózatok, tárolók és számítógépek által előállított nagy mennyiségű időbélyeget. Célunk, hogy segítse a fejlesztőket és a szervezeteket, például az IBM, a Visa, a Siemens, a Tesla és a NASA szolgáltatásait, a valós idejű adattárolást és-elemzést, az átalakítást, az elemzési és IoT alkalmazások gyors és méretezhető kialakítását. Microsoft Azure figyelő metrikáinak és eseményeinek gyűjtési képességei kiterjeszthetők a InfluxData-kiszolgálóval, amely lehetővé teszi a Microsoft felhasználói számára, hogy kihasználhassanak egy vezető idősorozatos adatbázis-megoldást, és kihasználják az egyre növekvő nyílt forráskódú, a-hez való hozzájárulást
 
 
@@ -140,7 +138,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A fókusz **műveleti híd** automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol fut, és alkalmazza a AIOps minden adattípusra – események, metrikák, naplók és függőségek. A szolgáltatás minőségének egyedi kombinációja, amely a részletes alkalmazás-állapot elemzésével párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-Részletek
+Tudjon meg többet
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.

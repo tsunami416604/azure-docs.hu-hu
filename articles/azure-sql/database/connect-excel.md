@@ -1,30 +1,30 @@
 ---
 title: Kapcsolódás Excellel
-description: Ismerje meg, hogyan csatlakoztatható a Microsoft Excel egy adatbázishoz a Azure SQL Database-ben. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+description: Megtudhatja, hogyan csatlakoztatható a Microsoft Excel egy adatbázishoz Azure SQL Database vagy az Azure SQL felügyelt példányában. Adatok importálása Excelbe jelentésekhez és adatok áttekintéséhez.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joseidz
-ms.author: craigg
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/12/2019
-ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195497"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267511"
 ---
-# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Az Excel összekötése egy Azure SQL Database adatbázissal és jelentés létrehozása
+# <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Az Excel csatolása Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz, és jelentés létrehozása
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+Az Excelt összekapcsolhatja egy adatbázissal, majd importálhatja az adatait, és létrehozhat táblákat és diagramokat az adatbázis értékei alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
 
-Az Excelt összekapcsolhatja egy Azure SQL Database adatbázisával, majd importálhatja az adatok importálását, és táblákat és diagramokat hozhat létre az adatbázisban lévő értékek alapján. Ebben az oktatóanyagban csatlakoztatjuk az Excelt az adatbázistáblához, elmentjük az adatokat tároló fájlt és az Excelre vonatkozó kapcsolatadatokat, és kimutatásdiagramot hozunk létre az adatbázis értékeiből.
-
-Az első lépések előtt létre kell hoznia egy adatbázist a SQL Databaseban. Ha még nem rendelkezik ilyennel, tekintse meg az [adatbázis létrehozása a Azure SQL Database-ben](single-database-create-quickstart.md) és a [kiszolgálói szintű IP-tűzfal létrehozása](firewall-create-server-level-portal-quickstart.md) című témakört, amely néhány percen belül beolvashatja az adatbázist a mintaadatok használatával.
+Az első lépések előtt létre kell hoznia egy adatbázist. Ha még nem rendelkezik ilyennel, tekintse meg az [adatbázis létrehozása a Azure SQL Database-ben](single-database-create-quickstart.md) és a [kiszolgálói szintű IP-tűzfal létrehozása](firewall-create-server-level-portal-quickstart.md) című témakört, amely néhány percen belül beolvashatja az adatbázist a mintaadatok használatával.
 
 Ebben a cikkben a mintaadatok importálása az Excel programba című cikkből származnak, de a saját adataival hasonló lépéseket is követheti.
 
@@ -101,6 +101,6 @@ Ha véglegesen szeretné menteni a kapcsolat részleteit, létrehozhat egy. odc-
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kapcsolódás az SQL Database adatbázishoz az SQL Server Management Studio használatával](connect-query-ssms.md) speciális lekérdezés és elemzés céljából.
+* Megtudhatja, hogyan [csatlakozhat és lekérdezéseket SQL Server Management Studio](connect-query-ssms.md) a speciális lekérdezésekhez és elemzésekhez.
 * Tudjon meg többet a [rugalmas készletek](elastic-pool-overview.md) előnyeiről.
-* [A háttérben SQL Database adatbázishoz kapcsolódó webalkalmazás létrehozása](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).
+* Megtudhatja, hogyan [hozhat létre olyan webalkalmazást, amely a háttérbeli Azure SQL Databasehoz csatlakozik](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).

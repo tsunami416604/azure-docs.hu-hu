@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022401"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268041"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -570,7 +570,7 @@ Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üz
 
 Ha nincs beállítva a git, a csatolt sablonokat az **ARM-sablonok** listájában, az **Exportálás ARM-sablon** használatával érheti el.
 
-## <a name="hotfix-production-branch"></a>Gyorsjavítások üzemi ága
+## <a name="hotfix-production-environment"></a>Gyorsjavítások éles környezete
 
 Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal, amelyet azonnal meg kell oldani, de nem tudja telepíteni az aktuális együttműködési ágat, előfordulhat, hogy telepítenie kell egy gyorsjavítást. Ez a megközelítés a Quick-Fix Engineering vagy a QFE.
 
@@ -611,7 +611,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 - A tervezés szerint a Data Factory nem teszi lehetővé az erőforrások elküldését vagy szelektív közzétételét. A közzététel magában foglalja az adatelőállítóban végrehajtott összes módosítást is.
 
     - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
-    - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások üzemi ága](#hotfix-production-branch).
+    - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások éles környezete](#hotfix-production-environment).
 
 -   Privát ágakból nem lehet közzétenni.
 

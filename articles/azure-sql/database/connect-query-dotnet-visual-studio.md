@@ -1,6 +1,7 @@
 ---
 title: A Visual Studio használata a .NET és a C# használatával a lekérdezéshez
-description: A Visual Studióval hozzon létre egy C#-alkalmazást, amely Azure SQL Database-adatbázishoz kapcsolódik, és a Transact-SQL-utasításokkal kérdezi le.
+description: A Visual Studióval hozzon létre egy C#-alkalmazást, amely Azure SQL Database vagy az Azure SQL felügyelt példányában található adatbázishoz kapcsolódik, és lekérdezéseket futtat.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,16 +11,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 12/31/2019
-ms.openlocfilehash: 37567e09fc87a8677934ede4f110d029902c1373
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 94f005ee4b2542e4cc0908880d589a2ee6a4d798
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189570"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267426"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban a Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz és lekérdezéshez
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ez a rövid útmutató azt ismerteti, hogyan használható a [.NET-keretrendszer](https://www.microsoft.com/net/) és a C# kód a Visual Studióban egy adatbázis lekérdezéséhez Azure SQL Database Transact-SQL-utasításokkal.
 

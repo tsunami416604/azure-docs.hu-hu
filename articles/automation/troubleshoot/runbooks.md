@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744313"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266066"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -50,7 +50,7 @@ Ha a Azure Automation runbook végrehajtása során hibákat kap, a következő 
 
 1. Ezt a lépést akkor hajtsa végre, ha a hibrid Runbook-feldolgozó runbook-feladata vagy-környezete nem válaszol.
 
-    Ha Azure Automation helyett hibrid Runbook-feldolgozón futtatja a runbookok, előfordulhat, hogy [a hibrid feldolgozót is el kell hárítania](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
+    Ha Azure Automation helyett hibrid Runbook-feldolgozón futtatja a runbookok, előfordulhat, hogy [a hibrid feldolgozót is el kell hárítania](hybrid-runbook-worker.md).
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Forgatókönyv: a Runbook nem tud engedélyt vagy tiltott 403 hibát végrehajtani
 
@@ -64,7 +64,7 @@ Előfordulhat, hogy a futtató fiókok nem rendelkeznek azonos engedélyekkel az
 
 ### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) .
+Győződjön meg arról, hogy a futtató fiók rendelkezik a parancsfájlban használt [erőforrások eléréséhez szükséges engedélyekkel](../../role-based-access-control/role-assignments-portal.md) .
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Forgatókönyv: nem sikerült az Azure-fiókba való bejelentkezés
 
@@ -99,7 +99,7 @@ A probléma okának megállapításához kövesse az alábbi lépéseket:
    Connect-AzAccount –Credential $Cred
    ```
 
-1. Ha a hitelesítés helyileg meghiúsul, nem állította be megfelelően a Azure Active Directory (Azure AD) hitelesítő adatait. Ha helyesen szeretné beállítani az Azure AD-fiókot, tekintse meg az [Azure-ban a Azure Active Directory használatával végzett hitelesítés](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)utáni blogbejegyzésben.
+1. Ha a hitelesítés helyileg meghiúsul, nem állította be megfelelően a Azure Active Directory (Azure AD) hitelesítő adatait. Az Azure AD-fiók megfelelő beállításához tekintse meg a következő cikket: hitelesítés az Azure-ban a [Azure Active Directory használatával](../automation-use-azure-ad.md).
 
 1. Ha a hiba úgy tűnik, hogy átmeneti, próbálkozzon újra az újrapróbálkozási logikával a hitelesítési rutinhoz, hogy megbízhatóbb legyen a hitelesítés.
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy lejárt a futtató fiók. További információ: [Azure Automation futtató fiókok kezelése](https://docs.microsoft.com/azure/automation/manage-runas-account).
+Ez a hiba akkor fordulhat elő, ha nem futtató fiókot használ, vagy lejárt a futtató fiók. További információ: [Azure Automation futtató fiókok kezelése](../manage-runas-account.md).
 
 Ennek a hibának két elsődleges oka van:
 
@@ -274,7 +274,7 @@ Ha az Azure-fiókjában többtényezős hitelesítés van, nem használhat Azure
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha a klasszikus Azure üzembehelyezési modell-parancsmagokkal rendelkező tanúsítványt szeretne használni, tekintse meg [a tanúsítvány létrehozása és hozzáadása az Azure-szolgáltatások kezeléséhez](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)című témakört. Ha Azure Resource Manager-parancsmagokkal szeretne szolgáltatásnevet használni, tekintse meg az [egyszerű szolgáltatásnév létrehozása Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) és [a szolgáltatásnév hitelesítése az Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)használatával című témakört.
+Ha klasszikus futtató fiókot szeretne használni a klasszikus Azure üzembehelyezési modell-parancsmagokkal, tekintse [meg a klasszikus futtató fiók létrehozása az Azure-szolgáltatások kezeléséhez](../automation-create-standalone-account.md#create-a-classic-run-as-account)című témakört. Ha Azure Resource Manager-parancsmagokkal szeretne szolgáltatásnevet használni, tekintse meg az [egyszerű szolgáltatásnév létrehozása Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) és [a szolgáltatásnév hitelesítése az Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)használatával című témakört.
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Forgatókönyv: A Runbook meghiúsult "A feladat megszakadt" hibaüzenet jelenik meg
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordulhat elő, ha a runbook nem hajtja végre a megfelelő lépéseket az `Add-AzAccount` Automation-fiók hozzáadásának meghívása előtt. A szükséges lépések egyikének példája egy futtató fiókkal való bejelentkezés. A runbook használt helyes műveletekért lásd: [runbook-végrehajtás a Azure Automation-ben](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+Ez a hiba akkor fordulhat elő, ha a runbook nem hajtja végre a megfelelő lépéseket az `Add-AzAccount` Automation-fiók hozzáadásának meghívása előtt. A szükséges lépések egyikének példája egy futtató fiókkal való bejelentkezés. A runbook használt helyes műveletekért lásd: [runbook-végrehajtás a Azure Automation-ben](../automation-runbook-execution.md).
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Forgatókönyv: az objektum hivatkozása nem az objektum egy példányára van beállítva
 
@@ -652,16 +652,16 @@ A probléma lehetséges okai a következők:
 
 #### <a name="not-using-a-run-as-account"></a>Nem futtató fiók használata
 
-Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások kezeléséhez című témakört](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) , amely biztosítja, hogy a futtató fiókot használja a Key Vault eléréséhez.
+Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások kezeléséhez című témakört](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) , amely biztosítja, hogy a futtató fiókot használja a Key Vault eléréséhez.
 
 #### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
 
-[Adja hozzá az Key Vaulthoz szükséges engedélyeket](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) annak biztosításához, hogy a futtató fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez.
+[Adja hozzá az Key Vaulthoz szükséges engedélyeket](../manage-runas-account.md#add-permissions-to-key-vault) annak biztosításához, hogy a futtató fiók megfelelő engedélyekkel rendelkezik a Key Vault eléréséhez.
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
 * [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
-* [Runbook indítása Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Runbook indítása Azure Automation](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>További lépések
 

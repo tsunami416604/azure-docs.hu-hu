@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148191"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267086"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
@@ -222,7 +222,7 @@ az cosmosdb show \
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Ha az ügyfél által felügyelt kulcsokat (CMK) Azure Cosmos DBban használja, akkor a Azure Cosmos DB a válaszban szereplő HTTP-alállapot-kóddal együtt visszaadja a hiba részleteit. Ezt az alállapot-kódot használhatja a probléma kiváltó okának a hibakereséséhez. Tekintse meg a http- [állapotkódok Azure Cosmos db](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) cikket a támogatott http-alállapot-kódok listájának lekéréséhez.
+Ha az ügyfél által felügyelt kulcsokat (CMK) Azure Cosmos DBban használja, akkor a Azure Cosmos DB a válaszban szereplő HTTP-alállapot-kóddal együtt visszaadja a hiba részleteit. Ezt az alállapot-kódot használhatja a probléma kiváltó okának a hibakereséséhez. Tekintse meg a http- [állapotkódok Azure Cosmos db](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) cikket a támogatott http-alállapot-kódok listájának lekéréséhez.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -290,7 +290,7 @@ Másik lehetőségként a Azure Key Vault-példány összes kulcsának visszavon
 
 Az egyetlen művelet lehetséges, ha a titkosítási kulcs visszavonva van, a fiók törlése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Cosmos db adattitkosításáról](./database-encryption-at-rest.md).
 - Tekintse át a [Cosmos db lévő adathozzáférések biztonságos elérését](secure-access-to-data.md)ismertető cikket.

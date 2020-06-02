@@ -1,6 +1,7 @@
 ---
 title: A Python használata adatbázis lekérdezéséhez
 description: Ez a témakör bemutatja, hogyan használható a Python egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz kapcsolódik, és hogyan kérdezheti le azt a Transact-SQL-utasítások használatával.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: 4a6bcee7e2868c80491471640f33bb7709f740a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 1d1d4ca6d3ccd20d851f0a88d1879f9e9a8175c4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189177"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267324"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database"></a>Rövid útmutató: adatbázisok lekérdezése a Python használatával Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Python használatával
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a Python használatával csatlakozik egy Azure SQL Database-adatbázishoz, és T-SQL-utasítások használatával kérdez le adatokat.
+Ebben a rövid útmutatóban a Python használatával csatlakozhat Azure SQL Database vagy az Azure SQL felügyelt példányához, és a T-SQL-utasítások használatával adatokat kérdez le.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

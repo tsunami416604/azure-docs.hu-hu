@@ -1,7 +1,7 @@
 ---
 title: A Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Megtudhatja, hogyan csatlakozhat Azure SQL Databasehoz vagy egy SQL felügyelt példányhoz az Azure-ban a Visual Studio Code használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
+description: Ismerje meg, hogyan csatlakozhat Azure SQL Database vagy SQL felügyelt példányhoz az Azure-ban a Visual Studio Code használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: ed7cd7db24e26ea8705628916e31ce95b5c17a6e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189019"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267256"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rövid útmutató: a Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus Kódszerkesztő Linux, MacOS és Windows rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) SQL Server példány lekérdezéséhez, Azure SQL Database, egy Azure SQL felügyelt példányhoz és egy Azure szinapszis Analytics-adatbázishoz. Ebben a rövid útmutatóban a Visual Studio Code használatával csatlakozik Azure SQL Database vagy az Azure SQL felügyelt példányához, majd Transact-SQL-utasítások futtatásával kérdezheti le, szúrhatja be, frissítheti és törölheti az adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure SQL Database vagy SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || SQL Database | Felügyelt SQL-példány |
+  || Azure SQL Database | Felügyelt Azure SQL-példány |
   |:--- |:--- |:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) |
   || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
