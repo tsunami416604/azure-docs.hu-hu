@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: Exchange-társviszony létesítése vagy módosítása útvonal-kiszolgálóval
+      items:
+        - name: Portál
+          href: how-to-exchange-route-server-portal.md
 - name: Referencia
   items:
     - name: Azure CLI

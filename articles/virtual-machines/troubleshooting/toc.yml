@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: Útmutatás a virtuális gépek üzembe helyezéséhez
   items:
+    - name: Frissítés az SLES 15 SP1 rendszerre
+      href: linux-upgrade-suse-15sp1.md
     - name: Új virtuális gépek üzembe helyezése
       items:
         - name: Linux

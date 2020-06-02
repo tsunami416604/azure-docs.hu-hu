@@ -202,6 +202,8 @@
               href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Dav4 és Dasv4 sorozat
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ddv4 és Ddsv4 sorozat
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Számításra optimalizált
           items:
             - name: Áttekintés
@@ -219,6 +221,8 @@
               href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Eav4 és Easv4 sorozat
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Edv4 és Edsv4 sorozat
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: M sorozat
               href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Mv2 sorozat

@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: Hozzáférési jogkivonatok
               href: access-tokens.md
+            - name: UserInfo végpont
+              href: userinfo.md
             - name: Tanúsítványok hitelesítő adatai
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 protokoll

@@ -595,6 +595,9 @@
         - name: Azure Media Player
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
+        - name: Live Video Analytics az IoT Edge-en
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
     - name: Üzenetküldő szolgáltatások
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/

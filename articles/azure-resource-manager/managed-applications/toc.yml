@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: Igény szerinti hozzáférés igénylése
           href: request-just-in-time-access.md
+        - name: Meglévő virtuális hálózat használata
+          href: existing-vnet-integration.md
         - name: Kezelt erőforrások frissítése
           href: update-managed-resources.md
         - name: Alkalmazásdefiníció közzététele a portál használatával

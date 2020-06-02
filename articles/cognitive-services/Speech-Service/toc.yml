@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: Egyéni parancsok (előzetes verzió)
       items:
-        - name: Mi az a Custom Commands-alkalmazás?
+        - name: Mik azok az egyéni parancsok?
           href: custom-commands.md
         - name: Rövid útmutatók
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Egyéni kulcsszófelismerés
           href: speech-devices-sdk-create-kws.md
+- name: Beszélőfelismerés
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi a Speaker Recognition?
+          href: speaker-recognition-overview.md
+    - name: Referencia
+      items:
+        - name: REST API-k
+          items:
+            - name: Beszédfelismerési REST API
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Üzemeltetés
   items:
     - name: Az üzemeltetés dokumentációja
