@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: Fejlett fenyegetésvédelem
               href: database/threat-detection-overview.md
+            - name: Adatfelderítés és besorolás
+              href: database/data-discovery-and-classification-overview.md
             - name: Dinamikus adatmaszkolás
               href: database/dynamic-data-masking-overview.md
             - name: SQL-sebezhetőségi felmérés
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Saját kulcs használata (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: Adatfelderítés és besorolás
-                  href: database/data-discovery-and-classification-overview.md
         - name: Az üzletmenet folytonossága
           displayName: 'Backup, back up, restore, recovery'
           items:

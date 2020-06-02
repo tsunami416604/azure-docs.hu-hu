@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: Az alkalmazás exportálása
               href: howto-use-app-templates.md
+            - name: Alkalmazásállapot monitorozása
+              href: howto-monitor-application-health.md
         - name: Kezelés más helyekről
           items:
             - name: Kezelés az Azure Portalról

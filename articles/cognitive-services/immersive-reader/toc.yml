@@ -7,12 +7,8 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: 'A C# használata'
-      href: Quickstart.md
-    - name: A Node.js használata
-      href: quickstart-nodejs.md
-    - name: A Swift használata (iOS)
-      href: ios-quickstart.md
+    - name: Az ügyfélkódtár használata
+      href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: A Modern olvasó indítása (Python)

@@ -199,8 +199,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Esettanulmányok
       href: data-factory-customer-case-studies.md
-    - name: Képzési terv
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
     - name: Microsoft Q&A kérdések oldala
       href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: Díjszabás

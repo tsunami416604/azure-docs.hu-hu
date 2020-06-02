@@ -200,6 +200,6 @@
         - name: Data Box-termék
           href: 'https://azure.microsoft.com/services/storage/databox/data/'
         - name: A Data Box díjszabása
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: A Data Box Disk díjszabása
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/disk/'
