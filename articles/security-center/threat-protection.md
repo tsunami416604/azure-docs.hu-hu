@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744160"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267154"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -162,11 +162,15 @@ További információkért lásd:
 
 ## <a name="threat-protection-for-azure-storage"></a>Veszélyforrások elleni védelem az Azure Storage-ban<a name="azure-storage"></a>
 
-A Storage komplex veszélyforrások elleni védelme szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
+Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében. 
 
-Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. 
+A biztonsági riasztások akkor aktiválódnak, ha a rendszer gyanús tevékenységeket észlel a Storage-fiókban, vagy rendellenes viselkedést észlel. A gyanús tevékenységek tartalmazhatják a kártevőket tartalmazó Blobok feltöltését is. A rendellenes viselkedési riasztások közé tartozik a hozzáférési minta módosítása a Storage-fiókban.
 
-Ez a szolgáltatás a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régió.
+A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat.
+
+Az Azure Storage veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. 
+
+Ez a szolgáltatás a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régió. 
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 

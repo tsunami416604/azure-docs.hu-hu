@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2e3a08521e503a9f73bdccca3a125c7d2416b534
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 13cafdcd7ac4b7f46bd5f7c3b007372228234ba6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219657"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267800"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizált Backup v2 Azure-beli virtuális gépekhez (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,13 +37,11 @@ Az automatikus biztonsági mentés v2-es verziójának használatához tekintse 
 
 **Operációs rendszer**:
 
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 R2 vagy újabb rendszerűnek kell lennie
 
 **SQL Server verzió/kiadás**:
 
-- SQL Server 2016: fejlesztő, standard vagy Enterprise
-- SQL Server 2017: fejlesztő, standard vagy Enterprise
+- SQL Server 2016 vagy újabb: fejlesztői, standard vagy Enterprise
 
 > [!IMPORTANT]
 > Az automatizált Backup v2 SQL Server 2016-es vagy újabb verziójával működik. Ha a SQL Server 2014-es verzióját használja, az adatbázisok biztonsági mentéséhez használhatja az automatizált Backup v1-et is. További információ: [SQL Server 2014 Azure Virtual Machines (VM) automatizált biztonsági mentése](automated-backup-sql-2014.md).

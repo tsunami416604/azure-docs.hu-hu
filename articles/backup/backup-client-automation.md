@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: bd7a48fa44d33274fe2378d0efdce13eae86aff4
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 696da2c94a439e5efaebbd148f6e05a9e0e15f37
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234658"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247750"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -694,7 +694,7 @@ Az ügynök bináris fájljainak számítógépről való eltávolítása néhá
 * A rendszer eltávolítja az összes házirend-információt a gépről, de a házirend-információkat továbbra is a szolgáltatás tárolja.
 * Az összes biztonsági mentési ütemezés el lesz távolítva, és nem készül további biztonsági másolat.
 
-Az Azure-ban tárolt adatok azonban továbbra is megmaradnak, és az adatmegőrzési szabályzat beállításának megfelelően megmaradnak. A régebbi pontok automatikusan elévülnek.
+Az Azure-ban tárolt adatok azonban továbbra is megmaradnak, és a megőrzési szabályzat beállításának megfelelően megmaradnak. A régebbi pontok automatikusan elévülnek.
 
 ## <a name="remote-management"></a>Távfelügyelet
 

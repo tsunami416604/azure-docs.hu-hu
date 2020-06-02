@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4ec2f9101f724d0c5c6c5e52bb69fea82513efe5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118024"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247665"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -190,7 +190,7 @@ Nem. A helyreállítás ingyenes, és nem kell fizetni a kimenő forgalomért.
 
 Amikor új szabályzatot léptet érvénybe, a rendszer annak az ütemezését és megőrzési szabályait fogja követni.
 
-- Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak.
+- Ha a megőrzés kibővül, a meglévő helyreállítási pontok úgy vannak megjelölve, hogy az új szabályzatnak megfelelően megőrizze őket.
 - Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
 
 ## <a name="encryption"></a>Titkosítás

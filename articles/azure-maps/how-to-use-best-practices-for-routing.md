@@ -1,6 +1,6 @@
 ---
 title: Ajánlott eljárások Azure Maps Route Servicehoz | Microsoft Azure térképek
-description: Megtudhatja, hogyan irányíthatja hatékonyan a Route Servicet a Microsoft Azure Maps használatával.
+description: Megtudhatja, hogyan irányíthatja a járműveket Microsoft Azure Maps Route Service használatával.
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335417"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266695"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
@@ -56,7 +56,7 @@ Ha a forgatókönyve a következő, érdemes megfontolnia a mátrix útválaszt�
 
 Íme egy összehasonlítás az Útvonalterv és a mátrix API-k bizonyos képességeinek megjelenítéséhez:
 
-| Azure Maps API | A kérelemben szereplő lekérdezések maximális száma | Területek elkerülése | Tehergépkocsi-és elektromos járművek útválasztása | a fordulópontok és az utazási ügynök optimalizálása | Támogató pontok |
+| Azure Maps API | A kérelemben szereplő lekérdezések maximális száma | Területek elkerülése | Tehergépkocsi-és elektromos járművek útválasztása | A fordulópontok és az utazási ügynök optimalizálása | Támogató pontok |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
 | Útvonal irányának beolvasása | 1 | | X | X | |
 | Útvonal irányának elküldése | 1 | X | X | X | X |
@@ -129,7 +129,7 @@ A válasz egy összegzést tartalmaz, az alábbi ábrán látható módon. A tor
 
 ## <a name="request-route-and-leg-details"></a>A kérés útvonala és a láb részletei
 
-Alapértelmezés szerint az útvonal-szolgáltatás a koordináták tömbjét fogja visszaadni. A válasz az elérési utat tartalmazó koordinátákat fogja tartalmazni egy nevű `points`listában. Az útvonal válasza az útvonal elejétől és az eltelt időponttól számított távolságot is tartalmazza. Ezek az értékek a teljes útvonal átlagos sebességének kiszámítására használhatók.
+Alapértelmezés szerint az útvonal-szolgáltatás a koordináták tömbjét fogja visszaadni. A válasz az elérési utat tartalmazó koordinátákat fogja tartalmazni egy nevű listában `points` . Az útvonal válasza az útvonal elejétől és az eltelt időponttól számított távolságot is tartalmazza. Ezek az értékek a teljes útvonal átlagos sebességének kiszámítására használhatók.
 
 Az alábbi képen az `points` elem látható.
 
@@ -139,7 +139,7 @@ Az alábbi képen az `points` elem látható.
 
 </center>
 
-Bontsa `point` ki az elemet az elérési út koordinátáinak megjelenítéséhez:
+Bontsa ki az `point` elemet az elérési út koordinátáinak megjelenítéséhez:
 
 <center>
 
@@ -149,7 +149,7 @@ Bontsa `point` ki az elemet az elérési út koordinátáinak megjelenítéséhe
 
 Az útválasztási utasítások API-jai különböző, a **instructionsType** paraméter megadásával felhasználható utasítások formátumait támogatják. Az egyszerű számítógép-feldolgozásra vonatkozó utasítások formázásához használja a **instructionsType = kódolt**lehetőséget. Használja a **instructionsType = Tagged** utasítást a felhasználó szövegének megjelenítéséhez. Emellett az utasítások szövegként is formázhatók, ahol az utasítások egyes elemei meg vannak jelölve, az utasítás pedig speciális formázással jelenik meg. További információkért tekintse meg a [támogatott utasításkészlet-típusok listáját](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
-Ha a rendszer utasításokat kér, a válasz egy új elemet ad `guidance`vissza. Az `guidance` elem két információt tartalmaz: lépésenkénti utasítások és összegzett utasítások.
+Ha a rendszer utasításokat kér, a válasz egy új elemet ad vissza `guidance` . Az `guidance` elem két információt tartalmaz: lépésenkénti utasítások és összegzett utasítások.
 
 <center>
 
@@ -183,7 +183,7 @@ Az alábbi minta-kérelem egy kereskedelmi teherautó útvonalát kérdezi le. A
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-Az Route API olyan irányokat ad vissza, amelyek a kamion és a veszélyes hulladék méreteinek megfelelően vannak elhelyezve. Az útvonalra vonatkozó utasításokat az `guidance` elem kibontásával érheti el.
+Az Route API olyan irányokat ad vissza, amelyek a kamion és a veszélyes hulladék méreteinek megfelelően vannak elhelyezve. Az útvonalra vonatkozó utasításokat az elem kibontásával érheti el `guidance` .
 
 <center>
 
@@ -199,7 +199,7 @@ Ha megváltoztatja az USA HAZMAT osztályát, a fenti lekérdezésből eltérő 
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-Az alábbi válasz egy 9. osztályú veszélyes anyagot hordozó teherautóra mutat, amely kevésbé veszélyes, mint az 1. osztályba tartozó veszélyes anyagok. Ha kibontja `guidance` az elemet az utasítások olvasásához, megfigyelheti, hogy az irányok nem egyeznek. Az 1. osztályú veszélyes anyagokhoz több útvonalra vonatkozó útmutatást is talál.
+Az alábbi válasz egy 9. osztályú veszélyes anyagot hordozó teherautóra mutat, amely kevésbé veszélyes, mint az 1. osztályba tartozó veszélyes anyagok. Ha kibontja az `guidance` elemet az utasítások olvasásához, megfigyelheti, hogy az irányok nem egyeznek. Az 1. osztályú veszélyes anyagokhoz több útvonalra vonatkozó útmutatást is talál.
 
 <center>
 
@@ -209,11 +209,11 @@ Az alábbi válasz egy 9. osztályú veszélyes anyagot hordozó teherautóra mu
 
 ## <a name="request-traffic-information-along-a-route"></a>Forgalmi adatok kérése az útvonal mentén
 
-A Azure Maps Route Direction API-kkal a fejlesztők az egyes szakaszok típusait is megadhatják `sectionType` a kérelemben szereplő paraméterrel együtt. Megkérheti például az egyes forgalmi Jam-szegmensek sebességére vonatkozó információkat. Tekintse meg a [sectionType-kulcs értékeinek listáját](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) , és ismerkedjen meg a kért különféle részletekkel.
+A Azure Maps Route Direction API-kkal a fejlesztők az egyes szakaszok típusait is megadhatják a `sectionType` kérelemben szereplő paraméterrel együtt. Megkérheti például az egyes forgalmi Jam-szegmensek sebességére vonatkozó információkat. Tekintse meg a [sectionType-kulcs értékeinek listáját](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) , és ismerkedjen meg a kért különféle részletekkel.
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
-A következő lekérdezés állítja be `sectionType` a `traffic`-t. A Seattle-ből San Diego-ra irányuló forgalmi adatokat tartalmazó szakaszt kér.
+A következő lekérdezés állítja be a `sectionType` -t `traffic` . A Seattle-ből San Diego-ra irányuló forgalmi adatokat tartalmazó szakaszt kér.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +249,7 @@ Ha optimalizálni szeretné a legmegfelelőbb sorrendet a megadott útpontok meg
 
 ### <a name="sample-query"></a>Mintalekérdezés
 
-A következő lekérdezés hat útpontok elérési útját kéri le, a `computeBestOrder` paraméter értéke pedig `false`. Ez a `computeBestOrder` paraméter alapértelmezett értéke is.
+A következő lekérdezés hat útpontok elérési útját kéri le, a `computeBestOrder` paraméter értéke pedig `false` . Ez a paraméter alapértelmezett értéke is `computeBestOrder` .
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861

@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744063"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259422"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -83,7 +83,7 @@ Mint bármely alkalmazás vagy szolgáltatás esetében, a cél a lehető legala
 
 #### <a name="user-management-permissions"></a>Felhasználói kezelési engedélyek
 
-A functions támogatja az [Azure szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/overview.md). A függvények által támogatott RBAC-szerepkörök a [közreműködő](../role-based-access-control/built-in-roles.md#contributor), a [tulajdonos](../role-based-access-control/built-in-roles.md#owner)és az [olvasó](../role-based-access-control/built-in-roles.md#owner). 
+A functions támogatja a beépített [Azure szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/overview.md). A függvények által támogatott RBAC-szerepkörök a [közreműködő](../role-based-access-control/built-in-roles.md#contributor), a [tulajdonos](../role-based-access-control/built-in-roles.md#owner)és az [olvasó](../role-based-access-control/built-in-roles.md#owner). 
 
 Az engedélyek a Function app szintjén érvényesek. A közreműködő szerepkörnek a legtöbb alkalmazás-szintű feladat végrehajtásához kell tartoznia. Csak a tulajdonosi szerepkör törölheti a Function alkalmazást. 
 

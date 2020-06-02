@@ -1,28 +1,32 @@
 ---
 title: SNAT magánhálózati IP-címtartományok Azure Firewall
-description: Az IP-címek magánhálózati tartományait úgy is konfigurálhatja, hogy a tűzfal ne SNAT az ezen IP-címekre irányuló forgalmat.
+description: A SNAT IP-címtartományok is konfigurálhatók.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28ec61c4aefeacb8014e0a5d48d0259cf7fcf7f3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064808"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267025"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
-A Azure Firewall nem SNAT hálózati szabályokkal, ha a célként megadott IP-cím az [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány része. Az alkalmazási szabályok mindig [transzparens proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) használatával lesznek alkalmazva a cél IP-címről függetlenül.
+A Azure Firewall a nyilvános IP-címekre irányuló összes kimenő forgalom automatikus SNAT biztosítja. Alapértelmezés szerint a Azure Firewall nem SNAT meg a hálózati szabályokkal, ha a célként megadott IP-cím az [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)magánhálózati IP-címtartomány része. Az alkalmazási szabályok mindig [transzparens proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) használatával lesznek alkalmazva a cél IP-címről függetlenül.
+
+Ez a logika jól működik, ha közvetlenül az internetre irányítja át a forgalmat. Ha azonban engedélyezte a [kényszerített bújtatást](forced-tunneling.md), az internethez kötött forgalom a AzureFirewallSubnet egyik címfordítást, a forrást pedig a helyszíni tűzfalból elrejti.
 
 Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok számára, Azure Firewall SNATs a forgalmat a AzureFirewallSubnet egyik tűzfal magánhálózati IP-címére. Azonban úgy is konfigurálhatja a Azure Firewallt, hogy **ne** SNAT a nyilvános IP-címtartományt.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok konfigurálása
+Ha úgy szeretné konfigurálni a Azure Firewallt, hogy soha ne SNAT meg a cél IP-címről, használja a **0.0.0.0/0 értéket** a magánhálózati IP-címtartomány alapján. Ezzel a konfigurációval a Azure Firewall soha nem irányíthatja át a forgalmat közvetlenül az internetre. Ha úgy szeretné beállítani a tűzfalat, hogy mindig SNAT a célhelytől függetlenül, használja a **255.255.255.255/32** protokollt magánhálózati IP-címtartományként.
 
-A Azure PowerShell használatával olyan IP-címtartományt adhat meg, amelyet a tűzfal nem SNAT.
+## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>SNAT magánhálózati IP-címtartományok konfigurálása – Azure PowerShell
+
+A Azure PowerShell használatával megadhatja a tűzfal magánhálózati IP-címtartományt.
 
 ### <a name="new-firewall"></a>Új tűzfal
 
@@ -47,7 +51,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ### <a name="templates"></a>Sablonok
 
-A `additionalProperties` szakaszhoz a következőket adhatja hozzá:
+A szakaszhoz a következőket adhatja hozzá `additionalProperties` :
 
 ```
 "additionalProperties": {
@@ -55,6 +59,20 @@ A `additionalProperties` szakaszhoz a következőket adhatja hozzá:
                 },
 ```
 
+## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT magánhálózati IP-címtartományok konfigurálása – Azure Portal
+
+A Azure Portal segítségével megadhatja a tűzfal magánhálózati IP-címtartományt.
+
+1. Válassza ki az erőforráscsoportot, majd válassza ki a tűzfalat.
+2. Az **Áttekintés** oldalon válassza a **magánhálózati IP-címtartományok**elemet, majd az alapértelmezett értéket az **IANA RFC 1918**.
+
+   Megnyílik a **privát IP-előtag szerkesztése** oldal:
+
+   :::image type="content" source="media/snat-private-range/private-ip.png" alt-text="Magánhálózati IP-előtagok szerkesztése":::
+
+1. Alapértelmezés szerint a **IANAPrivateRanges** konfigurálva van.
+2. Szerkessze a környezet magánhálózati IP-címeinek tartományát, majd válassza a **Mentés**lehetőséget.
+
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).
+- Ismerkedjen meg [Azure Firewall kényszerített bújtatással](forced-tunneling.md).

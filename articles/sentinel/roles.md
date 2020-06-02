@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 9fa10dd1b278b48eb714affb74af59140c8baa09
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744750"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259337"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Engedélyek az Azure Sentinelben
 
-Az Azure Sentinel [szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)használ a felhasználókhoz, csoportokhoz és szolgáltatásokhoz az Azure-ban hozzárendelhető [beépített szerepkörök](../role-based-access-control/built-in-roles.md) biztosításához.
+Az Azure Sentinel [szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)használ a felhasználókhoz, [built-in roles](../role-based-access-control/built-in-roles.md)   csoportokhoz és szolgáltatásokhoz az Azure-ban hozzárendelhető beépített szerepkörök biztosításához.
 
 A RBAC használatával a biztonsági műveleti csapaton belül szerepköröket hozhat létre, és a megfelelő hozzáférést biztosíthatja az Azure Sentinelhez. A szerepkörök alapján részletesen szabályozhatja, hogy mely felhasználók férhetnek hozzá az Azure Sentinel szolgáltatáshoz. RBAC-szerepköröket közvetlenül az Azure Sentinel-munkaterületen, vagy egy olyan előfizetéshez vagy erőforráscsoporthoz rendelhet hozzá, amelyhez a munkaterület tartozik.
 

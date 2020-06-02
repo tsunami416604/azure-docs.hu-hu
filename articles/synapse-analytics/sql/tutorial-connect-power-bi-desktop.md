@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745402"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258283"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: SQL on-demand (előzetes verzió) használata Power BI Desktop & jelentés létrehozása
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -29,10 +29,14 @@ Az oktatóanyag a következőket ismerteti:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következő szoftverek szükségesek:
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+
+- [Power bi Desktop](https://powerbi.microsoft.com/downloads/) – az adatmegjelenítéshez és a jelentés létrehozásához szükséges.
+- [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) – adatbázis, külső adatforrás és nézet létrehozásához szükséges.
+
+Nem kötelező:
 
 - Egy SQL-lekérdezési eszköz, például [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)vagy [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
-- [Power bi Desktop](https://powerbi.microsoft.com/downloads/).
 
 A következő paraméterek értékei:
 
@@ -147,7 +151,7 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
    ![Válassza ki a kívánt oszlopokat a térképes jelentés létrehozásához.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépésekkel:
 

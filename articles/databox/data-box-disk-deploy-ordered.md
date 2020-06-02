@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746084"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266525"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
 
@@ -67,7 +67,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
     |---|---|
     |Előfizetés|Válassza ki azt az előfizetést, amely számára engedélyezve van a Data Box szolgáltatás.<br> Az előfizetés az Ön számlázási fiókjához lesz társítva. |
     |Átvitel típusa| Importálás az Azure-ba|
-    |Forrás ország/régió | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.|
+    |Forrásország/-régió | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.|
     |Azure-beli célrégió|Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.|
   
 4. Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
@@ -105,7 +105,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
 7. A **Szállítási cím** lapon adja meg az utónevét és a vezetéknevét, a cége nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről.
 
-   A megrendelés feldolgozása után e-mailben értesítést fog kapni. Az önfelügyelt szállítással kapcsolatos további információkért lásd: [saját üzemeltetésű szállítás használata](data-box-disk-portal-customer-managed-shipping.md).
+   A megrendelés feldolgozása után e-mailben értesítést fog kapni. Ha az önfelügyelt szállítást választotta, tekintse meg a saját felügyeletű [szállítás használata](data-box-disk-portal-customer-managed-shipping.md)című témakört.
 
     ![Szállítási cím megadása](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.

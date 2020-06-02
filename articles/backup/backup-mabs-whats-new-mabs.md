@@ -3,12 +3,12 @@ title: A Microsoft Azure Backup Server újdonságai
 description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonsági mentési lehetőségeket biztosít a virtuális gépek, fájlok és mappák, munkaterhelések és egyebek védelméhez. Megtudhatja, hogyan telepítheti vagy frissíthet Azure Backup Server v3-ra.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 358de6f2986036621accde90550e2afcc47f9135
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582806"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247546"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>A Microsoft Azure Backup Server újdonságai
 
@@ -26,7 +26,7 @@ A vállalatokban a MABS-t a rendszergazdák csoportja felügyeli. Noha a biztons
 
 ## <a name="custom-size-allocation"></a>Egyéni méret kiosztása
 
-A modern biztonsági másolati tárhely (MBS) a tárolást vékonyan, és szükség esetén használja. Ehhez a MABS kiszámítja a biztonsági mentésre kerülő adatmennyiséget, amikor a védelemre van konfigurálva. Ha azonban sok fájl és mappa biztonsági mentése folyamatban van, például egy fájlkiszolgáló esetében, a méret kiszámítása hosszú időt is igénybe vehet. A MABS v3 használatával beállíthatja, hogy a MABS az alapértelmezett értékként fogadja el a kötet méretét az egyes fájlok méretének kiszámítása helyett, így időt takaríthat meg.
+A modern biztonsági másolati tárhely (MBS) a tárolást vékonyan, és szükség esetén használja. Ehhez a MABS kiszámítja a biztonsági mentésre kerülő adatmennyiséget, amikor a védelemre van konfigurálva. Ha azonban sok fájl és mappa biztonsági mentése folyamatban van, például egy fájlkiszolgáló esetében, a méret kiszámítása hosszú időt is igénybe vehet. A MABS v3 használatával beállíthatja, hogy a MABS az alapértelmezett értékként fogadja el a kötet méretét az egyes fájlok méretének kiszámítása helyett, ami időt takarít meg.
 
 ## <a name="optimized-cc-for-rct-vms"></a>RCT virtuális gépekhez optimalizált CC
 

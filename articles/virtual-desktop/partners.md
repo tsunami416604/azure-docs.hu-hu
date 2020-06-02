@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692237"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266729"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -245,7 +245,7 @@ a sepago-t 2002-ben alapították Kölnben négy baráttal. Napjainkban a sepago
 a sepago innovációs és fejlesztési laborja big data-és AI-technológiák használatával intelligens megoldásokat hoz létre. Ezek a megoldások az üzleti, a felhasználói élmény és a partneri termékek (például a Windows Virtual Desktop) felügyeletének javítására összpontosítanak.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
-- [Lépjen a partner webhelyére](https://www.sepago.de/wvd-value-add-tools/).
+- [Lépjen a partner webhelyére](https://www.sepago.de/en/).
 
 ## <a name="thinprint"></a>ThinPrint
 

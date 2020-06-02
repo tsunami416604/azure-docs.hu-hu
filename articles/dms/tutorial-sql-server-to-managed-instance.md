@@ -9,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 28be6c46f3d914d76ed14dd5d4ac61a4dc5aee68
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 36efd3e90731e7659f023ad99df1eb9cb3c0198f
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194252"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247444"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása egy felügyelt Azure SQL-példányra a DMS használatával
 
@@ -76,6 +76,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Jegyezzen fel egy olyan Windows-felhasználót (és jelszót), amely teljes körű jogosultságokkal rendelkezik az Ön által korábban létrehozott hálózati megosztáson. Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy a biztonsági mentési fájlokat feltöltse az Azure Storage-tárolóba a visszaállítási művelethez.
 - Hozzon létre egy blobtárolót, és kérje le annak SAS URI-ját az [Azure Blob Storage-erőforrások Storage Explorerrel történő kezelésével](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) foglalkozó cikkben leírt lépések szerint. Az SAS URI létrehozásakor ügyeljen arra, hogy minden jogosultságot (írási, olvasási, törlési, listázási) kiválasszon a szabályzat ablakában. Ez a részletes Azure Database Migration Service hozzáférést biztosít a Storage-fiók tárolóhoz az adatbázisok SQL felügyelt példányra való áttelepítéséhez használt biztonságimásolat-fájlok feltöltéséhez.
 
+    > [!NOTE]
+    > A Azure Database Migration Service nem támogatja a fiók szintű SAS-token használatát a Storage-fiók beállításainak konfigurálásakor az [áttelepítési beállítások konfigurálása](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance#configure-migration-settings) lépés során.
+    
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
 1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
@@ -201,7 +204,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     |**Hálózatihely-megosztás** | Az a helyi SMB-hálózati megosztás, amely Azure Database Migration Service a forrásadatbázis biztonsági másolatait elvégezheti. A forrásként szolgáló SQL Server-példányt futtató szolgáltatásfióknak írási jogosultságokkal kell rendelkeznie ehhez a hálózati megosztáshoz. Adja meg a hálózati megosztáson található kiszolgáló FQDN- vagy IP-címét, például \\\servername.domainname.com\backupfolder vagy \\\IP address\backupfolder.|
     |**Felhasználónév** | Győződjön meg arról, hogy a Windows-felhasználó teljes körű jogosultságokkal rendelkezik a fent megadott hálózati megosztáson. A Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy feltöltse a biztonságimásolat-fájlokat az Azure Storage-tárolóba a visszaállítási művelethez. Ha TDE-kompatibilis adatbázisok vannak migrálásra kijelölve, a fenti Windows-felhasználónak a beépített rendszergazdai fióknak kell lennie, és a [felhasználói fiókok felügyeletét](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview) le kell tiltani, hogy az Azure Database Migration Service feltölthesse és törölhesse a tanúsítványfájlokat. |
     |**Jelszó** | A felhasználó jelszava. |
-    |**Tárfiók beállításai** | Az SAS URI-ja, amely hozzáférést biztosít Azure Database Migration Service számára a Storage-fiók tárolóhoz, amelyhez a szolgáltatás feltölti a biztonságimásolat-fájlokat, és az adatbázisok áttelepítésére szolgál az SQL felügyelt példányára. [Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
+    |**Tárfiók beállításai** | Az SAS URI-ja, amely hozzáférést biztosít Azure Database Migration Service számára a Storage-fiók tárolóhoz, amelyhez a szolgáltatás feltölti a biztonságimásolat-fájlokat, és az adatbázisok áttelepítésére szolgál az SQL felügyelt példányára. [Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Ennek az SAS URI-nak a blob-tárolóhoz kell tartoznia, nem a Storage-fiókhoz.|
     |**TDE-beállítások** | Ha a forrás-adatbázisokat a transzparens adattitkosítás (TDE) engedélyezésével telepíti át, írási jogosultsággal kell rendelkeznie a célként megadott SQL felügyelt példányon.  Válassza ki azt az előfizetést, amelyben a legördülő menüből kiépített SQL felügyelt példány szerepel.  A legördülő menüben válassza ki a célul szolgáló **felügyelt Azure SQL Database-példányt**. |
 
     ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)

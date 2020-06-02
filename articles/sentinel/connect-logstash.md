@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 79d29ef228fc27655da30edbeb64abcb01e45d5e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5edba7f5a7576cac189aa44936f9d8f24f3ffcaf
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237177"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248999"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
@@ -51,7 +51,7 @@ A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú a
 - [További információ a Log Analytics Rest APIról](https://docs.microsoft.com/rest/api/loganalytics/create-request).
 - [További információ az egyéni naplókról](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
 
-## <a name="installing-and-configuring-the-azure-sentinel-output-plugin-in-logstash"></a>Az Azure Sentinel kimeneti beépülő modul telepítése és konfigurálása a Logstash-ben
+## <a name="deploying-the-azure-sentinel-output-plugin-in-logstash"></a>Az Azure Sentinel kimeneti beépülő modul üzembe helyezése a Logstash-ben
 
 1. **Telepítés**
 
@@ -112,11 +112,11 @@ A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú a
 
     1. Az Azure Sentinel navigációs menüjében kattintson a **naplók**elemre. A **táblák** fejléc alatt bontsa ki az **egyéni naplók** kategóriát. Keresse meg és kattintson a megadott tábla nevére ( `_CL` utótaggal) a konfigurációban.
 
-        ![Logstash egyéni naplók](./media/connect-logstash/logstash-custom-logs-menu.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Logstash egyéni naplók":::
 
     1. A tábla rekordjainak megjelenítéséhez a tábla nevét a séma alapján kérdezheti le.
 
-        ![Logstash egyéni naplók lekérdezése](./media/connect-logstash/logstash-custom-logs-query.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Logstash egyéni naplók lekérdezése":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>A kimeneti beépülő modul naplófájljainak figyelése
 

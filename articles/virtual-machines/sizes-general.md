@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: fc263eb6fbe6c6402aaf529229bb7025f070b8d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e597eebda6a730d301eefdbd2d7e6859f5a7cc
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269669"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248311"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuálisgép-méretek
 
@@ -40,7 +40,8 @@ Az általános célú virtuálisgép-méretek kiegyensúlyozott processzor-memó
 
 - [Dv3 és Dsv3 sorozat](dv3-dsv3-series.md) A virtuális gépek az Intel® Xeon® 8171M 2.1 GHz-es (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz-es (Broadwell), vagy az Intel® Xeon® E5-2673 v3 2,4 GHz-es (Haswell) processzorok egy Hyper-threaded konfigurációban, jobb értékű kiosztást biztosítanak a legtöbb általános célú munkaterheléshez. A memória ki lett bontva (~ 3,5 GiB/vCPU – 4 GiB/vCPU), míg a lemez-és hálózati korlátokat a rendszer alapszinten igazította ki, hogy az a feleznie-re legyen igazítva. A Dv3-sorozat már nem rendelkezik a D/Dv2 sorozat nagy memóriabeli virtuálisgép-méretével, ezeket a rendszer áthelyezte a memória-optimalizált [Ev3 és Esv3-sorozatba](ev3-esv3-series.md).
 
-Példa: a D sorozat használati esetei nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
+- [Ddv4 és Ddsv4 sorozat](ddv4-ddsv4-series.md) A virtuális gépek a 2. generációs Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon futnak, és jobb értékű kiosztást biztosítanak a legtöbb általános célú munkaterheléshez. A szolgáltatás egy tartós, 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)által fenntartott, az összes alapvető Turbo órajelét tartalmazza. 
+
 
 ## <a name="other-sizes"></a>Egyéb méretek
 

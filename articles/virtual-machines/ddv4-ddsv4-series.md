@@ -1,0 +1,95 @@
+---
+title: Ddv4 és Ddsv4 sorozat – Azure Virtual Machines
+description: A DV4, a Ddv4, a Dsv4 és a Ddsv4 sorozatú virtuális gépek specifikációi.
+author: brbell
+ms.author: brbell
+ms.reviewer: cynthn
+ms.custom: mimckitt
+ms.service: virtual-machines
+ms.topic: conceptual
+ms.date: 06/01/2020
+ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263245"
+---
+# <a name="ddv4-and-ddsv4-series"></a>Ddv4 és Ddsv4 sorozat
+
+A Ddv4 és a Ddsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és jobb ár-arányt biztosít a legtöbb általános célú munkaterheléshez. A szolgáltatás az összes 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)számára fenntartott, teljes körű órajelet tartalmaz. Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók, mint a [Dv3-/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) -méretek és a Gen2-alapú virtuális [gépek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+
+A D sorozat használati esetei többek között nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
+
+> [!IMPORTANT]
+> Ha a Ddv4 vagy a Ddsv4 sorozat használatával telepít egy új virtuális gépet, és Linux-lemezképet szeretne használni, akkor a RHEL 8. x, CentOS 8. x vagy Oracle 7. x vagy újabb verziókat kell használnia. Ha a RHEL 7. x, CentOS 7. x vagy Orcale 6. x lehetőséget választja, a kernel pánik hiba lesz. A Microsoft aktívan telepíti a javítást. Csak a RHEL, a CentOS és az Oracle van hatással. 
+
+## <a name="ddv4-series"></a>Ddv4 sorozat
+
+A Ddv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) futnak. A Ddv4 sorozat vCPU, memória és ideiglenes lemez kombinációját kínálja a legtöbb éles számítási feladathoz.
+
+Az új Ddv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-tároló (akár 2 400 GiB is), és olyan alkalmazások számára készült, amelyek alacsony késésű, nagy sebességű helyi tárterületet igényelnek, például olyan alkalmazásokhoz, amelyeknél gyors olvasási/írási műveletek szükségesek a temp Storage szolgáltatáshoz, vagy a gyorsítótárak vagy ideiglenes fájlok átmeneti tárolására van szükségük. A Ddv4 virtuális gépekhez szabványos SSD-ket és standard HDD-tárolót is csatolhat. A távoli adatlemezek tárterületét a rendszer külön számlázza a virtuális gépektől.
+
+ACU: 195-210
+
+Premium Storage: nem támogatott
+
+Premium Storage gyorsítótárazás: nem támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
+
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
+|---|---|---|---|---|---|---|
+| Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2/1000 |
+| Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2/2000 |
+| Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77000/485 | 4/4000 |
+| Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154000/968 | 8/8000 |
+| Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8/16000 |
+| Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8/24000 |
+| Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8/30000 |
+
+## <a name="ddsv4-series"></a>Ddsv4 sorozat
+
+A Ddsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) fut. A Ddsv4 sorozat vCPU, memória és ideiglenes lemez kombinációját kínálja a legtöbb éles számítási feladathoz.
+
+Az új Ddsv4 virtuálisgép-méretek közé tartozik a gyors, nagyobb helyi SSD-tároló (akár 2 400 GiB is), és olyan alkalmazások számára készült, amelyek alacsony késésű, nagy sebességű helyi tárterületet igényelnek, például olyan alkalmazásokhoz, amelyeknél gyors olvasási/írási műveletek szükségesek a temp Storage szolgáltatáshoz, vagy a gyorsítótárak vagy ideiglenes fájlok átmeneti tárolására van szükségük. 
+
+ > [!NOTE]
+ >A Ddsv4-méretek díjszabása és számlázási mérőszámai azonosak a Ddv4 sorozattal.
+
+ACU: 195-210
+
+Premium Storage: támogatott
+
+Premium Storage gyorsítótárazás: támogatott
+
+Élő áttelepítés: támogatott
+
+Memória megőrzésének frissítései: támogatott
+
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
+| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |
+| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
+| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
+| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308000/1936 (800) | 51200/768 | 8/16000 |
+| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
+| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes"></a>Egyéb méretek
+
+- [Általános célú](sizes-general.md)
+- [Memóriaoptimalizált](sizes-memory.md)
+- [Tárolásra optimalizált](sizes-storage.md)
+- [GPU-optimalizált](sizes-gpu.md)
+- [Nagy teljesítményű számítás](sizes-hpc.md)
+- [Előző generációk](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>További lépések
+
+További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

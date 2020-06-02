@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649797"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259303"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
@@ -55,7 +55,7 @@ A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztik
 
 Event Hubs a következő kategóriákhoz tartozó diagnosztikai naplókat rögzíti:
 
-| Kategória | Description | 
+| Kategória | Leírás | 
 | -------- | ----------- | 
 | Archiválási naplók | Adatokat rögzít [Event Hubs rögzítési](event-hubs-capture-overview.md) műveletekről, pontosabban a rögzítési hibákkal kapcsolatos naplókat. |
 | Operatív naplók | Rögzítse az Azure Event Hubs-névtéren végrehajtott összes felügyeleti műveletet. Az adatműveletek nem kerülnek rögzítésre, mert az Azure Event Hubson végrehajtott nagy mennyiségű adatművelet miatt. |
@@ -72,7 +72,7 @@ Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva. M
 
 Az Archive log JSON-karakterláncok az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
-Name | Description
+Name | Leírás
 ------- | -------
 Feladatnév | A sikertelen feladat leírása
 Tevékenységazonosító | A nyomon követéshez használt belső azonosító
@@ -110,7 +110,7 @@ A következő kód egy példa egy archivált log JSON-karakterláncra:
 
 Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
-Name | Description
+Name | Leírás
 ------- | -------
 Tevékenységazonosító | Belső azonosító, követési célokra használatos |
 EventName | Művelet neve |
@@ -142,7 +142,7 @@ Example:
 ## <a name="autoscale-logs-schema"></a>Naplók autoskálázása séma
 Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
-| Name | Description |
+| Name | Leírás |
 | ---- | ----------- | 
 | TrackingId | Belső azonosító, amely nyomkövetési célokra szolgál |
 | ResourceId | Azure Resource Manager erőforrás-azonosító. |
@@ -161,7 +161,7 @@ Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 ## <a name="kafka-coordinator-logs-schema"></a>A Kafka-koordinátor naplói sémája
 A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name | Description |
+| Name | Leírás |
 | ---- | ----------- | 
 | Kérelemazonosító | A kérelem azonosítója, amely nyomkövetési célokra szolgál |
 | ResourceId | Erőforrás-azonosító Azure Resource Manager |
@@ -189,7 +189,7 @@ A Kafka-koordinátor log JSON a következő táblázatban felsorolt elemeket tar
 ## <a name="kafka-user-error-logs-schema"></a>Kafka felhasználói hiba naplóinak sémája
 A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name | Description |
+| Name | Leírás |
 | ---- | ----------- |
 | TrackingId | Nyomkövetési azonosító, amely nyomkövetési célokra szolgál. |
 | Namespacename tulajdonság | Névtér neve |
@@ -204,12 +204,12 @@ A Kafka felhasználói hibanapló JSON a következő táblázatban felsorolt ele
 
 Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
 
-| Name | Description |
+| Name | Leírás |
 | ---  | ----------- | 
 | SubscriptionId | Azure-előfizetés azonosítója |
 | Namespacename tulajdonság | Névtér neve |
 | IPAddress | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
-| Művelet | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
+| Műveletek | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
 | Ok | A művelet elvárt okát adja meg |
 | Darabszám | Az adott művelet előfordulásainak száma |
 | ResourceId | Azure Resource Manager erőforrás-azonosító. |
@@ -232,7 +232,7 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 ## <a name="customer-managed-key-user-logs"></a>Ügyfél által felügyelt kulcsfontosságú felhasználói naplók
 Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő táblázatban felsorolt elemeket tartalmazza:
 
-| Name | Description |
+| Name | Leírás |
 | ---- | ----------- | 
 | Kategória | Az üzenet kategóriájának típusa A következő értékek egyike: **hiba** és **információ** |
 | ResourceId | Belső erőforrás-azonosító, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját és a névtér nevét |
@@ -247,7 +247,7 @@ Az ügyfél által felügyelt kulcs felhasználói napló JSON a következő tá
 
 ## <a name="next-steps"></a>További lépések
 - [Bevezetés a Event Hubsba](event-hubs-what-is-event-hubs.md)
-- [Event Hubs API overview (Event Hubs API – áttekintés)](event-hubs-api-overview.md)
+- [Event Hubs minták](sdks.md)
 - Bevezetés az Event Hubs használatába
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

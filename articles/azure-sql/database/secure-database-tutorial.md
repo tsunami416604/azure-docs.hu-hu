@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c1a8c5231e0a6d6674ca55be78a491074a3d3a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053638"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267902"
 ---
 # <a name="tutorial-secure-an-azure-sql-database"></a>Oktatóanyag: Azure SQL Database biztonságossá tétele
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Az ügyfélalkalmazás és a SQL Database közötti biztonságos, titkosított k
 - Titkosított kapcsolatok kérése
 - Nem bízik meg a kiszolgálói tanúsítványban
 
-A rendszer Transport Layer Security (TLS) használatával hozza meg a kapcsolatokat, és csökkenti a támadók általi támadás kockázatát. A kapcsolódási karakterláncok adatbázison keresztül érhetők el, és előre konfigurálva vannak az olyan ügyfelek illesztőprogramjainak támogatásához, mint például a ADO.NET, a JDBC, az ODBC és a PHP. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+A rendszer Transport Layer Security (TLS) használatával hozza meg a kapcsolatokat, és csökkenti a támadók általi támadás kockázatát. A kapcsolódási karakterláncok adatbázison keresztül érhetők el, és előre konfigurálva vannak az olyan ügyfelek illesztőprogramjainak támogatásához, mint például a ADO.NET, a JDBC, az ODBC és a PHP. További információ a TLS-ről és a kapcsolatokról: [A TLS megfontolandó szempontjai](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 Biztonságos kapcsolódási sztring másolása:
 

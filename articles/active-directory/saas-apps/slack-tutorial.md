@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834407"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259286"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Slacktel
 
@@ -40,7 +40,7 @@ Első lépésként a következő elemeket kell megadnia:
 * A Slack egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Ha több Slack-példánnyal kell integrálnia egy bérlőben, az egyes alkalmazások azonosítója változó lehet.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -93,20 +93,24 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot a [Slack-ügyfél támogatási csoportjával](https://slack.com/help/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    
+    > [!NOTE]
+    > Az **azonosító (Entity ID)** értéke változó lehet, ha több Slack-példánnyal rendelkezik, amelyet integrálni kell a Bérlővel. Használja a mintát `https://<DOMAIN NAME>.slack.com` . Ebben az esetben a Slack egy másik beállításával is párosítani kell ugyanazzal az értékkel.
 
 1. A Slack-alkalmazás megadott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül a Slack alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket. Ha a felhasználók nem rendelkeznek e-mail-címmel, akkor rendelje hozzá az **EmailAddress** -t a **User. userPrincipalName**.
+1. A fentieken kívül a Slack alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket. Az attribútumot is hozzá kell adnia `email` . Ha a felhasználó nem rendelkezik e-mail-címmel, rendelje hozzá az **EmailAddress** címet a **User. userPrincipalName** -hez, és képezze le az **e-maileket** a **User. userPrincipalName**
 
     | Name | Forrás attribútum |
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
+    | e-mail | User. userPrincipalName |
     | | |
 
-> [!NOTE]
-    > A szolgáltatói (SP) konfiguráció beállításához kattintson a **Kibontás** lehetőségre a SAML-konfiguráció lapon a **Speciális beállítások** elem mellett. A **szolgáltatói kiállító** mezőben adja meg a munkaterület URL-címét. Az alapértelmezett érték a slack.com. 
+   > [!NOTE]
+   > A szolgáltatói (SP) konfiguráció beállításához kattintson a **Kibontás** lehetőségre a SAML-konfiguráció lapon a **Speciális beállítások** elem mellett. A **szolgáltatói kiállító** mezőben adja meg a munkaterület URL-címét. Az alapértelmezett érték a slack.com. 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -172,9 +176,12 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. Kattintson a **Kibontás** gombra, és írja be `https://slack.com` az **Identity Provider kiállító** szövegmezőbe.
+    e. Kattintson a **Kibontás** elemre, és adja meg `https://slack.com` a **szolgáltató kiállítójának** szövegmezőjét.
 
     f.  Kattintson a **konfiguráció mentése**gombra.
+    
+    > [!NOTE]
+    > Ha egynél több Slack-példánnyal kell integrálni az Azure AD-val, állítsa `https://<DOMAIN NAME>.slack.com` a **szolgáltatói kiállítót** úgy, hogy az az Azure-alkalmazás **azonosítójának** beállításával párosítható legyen.
 
 ### <a name="create-slack-test-user"></a>Slack-teszt felhasználó létrehozása
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125757"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258810"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
@@ -39,7 +39,7 @@ A Service Bus három szűrési feltételt támogat:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Címzett**
+     - **Hogy**
      - bármely felhasználó által definiált tulajdonság. 
      
      Ha egy tulajdonsághoz tartozó üzenet értéke megegyezik a korrelációs szűrőben megadott értékkel, akkor egyezés áll fenn. Karakterlánc-kifejezések esetében az összehasonlítás a kis-és nagybetűk megkülönböztetése. Több egyezési tulajdonság megadásakor a szűrő logikai és feltételként kombinálja őket, ami azt jelenti, hogy a szűrőnek egyeznie kell, minden feltételnek egyeznie kell.
@@ -64,13 +64,13 @@ Az Útválasztás szűrőket használ az üzenetek különböző témakör-előf
 
 
 > [!NOTE]
-> A Azure Portal jelenleg nem teszi lehetővé az előfizetések szűrési szabályainak megadását. Az előfizetési szabályok definiálásához a támogatott SDK-k vagy Azure Resource Manager-sablonok bármelyikét használhatja. 
+> Mivel a Azure Portal mostantól támogatja a Service Bus Explorer funkcióit, a portálon létrehozhatók és szerkeszthetők az előfizetési szűrők. 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a következő mintákat: 
 
 - [.NET – alapszintű küldési és fogadási útmutató szűrőkkel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – témakör szűrők](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager sablon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
+- [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
 

@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 8ee5238fd8043161271eef2c130a8e0a385a0bc0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67179114"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84269021"
 ---
 Egyes adatbázis-munkaterhelések, például az SQL Server vagy az Oracle, nagy mennyiségű memóriát, tárterületet és I/O-sávszélességet igényelnek, de nem magas alapszám. Sok adatbázis-munkaterhelés nem CPU-igényes. Az Azure bizonyos virtuálisgép-méreteket biztosít, amelyekkel korlátozható a virtuális gépek vCPU száma, így csökkenthető a szoftverek licencelésének díja, miközben ugyanaz a memória, a tárterület és az I/O-sávszélesség is fennmarad.
 
@@ -24,7 +24,7 @@ A virtuális gép jelenlegi Standard_GS5 mérete például a következő: 32 vCP
 A SQL Server vagy Oracle esetében felszámított licencelési díjak az új vCPU-számra vannak korlátozva, és más termékeket az új vCPU száma alapján kell fizetni. Ennek eredményeképpen 50% – 75% növekszik a virtuálisgép-specifikációk aktív (számlázható) vCPU arányában. Ezek az új virtuálisgép-méretek lehetővé teszik az ügyfelek számára, hogy ugyanazt a memóriát, tárterületet és I/O-sávszélességet használják, miközben optimalizálja a szoftver licencelési költségeit. Jelenleg a számítási díj, amely magában foglalja az operációs rendszer licencelését, ugyanaz marad, mint az eredeti méret. További információ: Azure-beli [virtuális gépek méretei a költséghatékony adatbázis](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)-számítási feladatokhoz.
 
 
-| Name (Név)                | vCPU | Jellemzők           |
+| Name                | vCPU | Jellemzők           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2ms     | 2    | Ugyanaz, mint a M8ms    |
 | Standard_M8 – 4ms     | 4    | Ugyanaz, mint a M8ms    |
@@ -45,6 +45,15 @@ A SQL Server vagy Oracle esetében felszámított licencelési díjak az új vCP
 | Standard_E32 – 8s_v3  | 8    | Ugyanaz, mint E32s_v3 |
 | Standard_E64 – 32s_v3 | 32   | Ugyanaz, mint E64s_v3 |
 | Standard_E64 – 16s_v3 | 16   | Ugyanaz, mint E64s_v3 |
+| Standard_E4 – 2ds_v4  | 2    | Ugyanaz, mint E4ds_v4 |
+| Standard_E8 – 4ds_v4  | 4    | Ugyanaz, mint E8ds_v4 |
+| Standard_E8 – 2ds_v4  | 2    | Ugyanaz, mint E8ds_v4 |
+| Standard_E16 – 8ds_v4 | 8    | Ugyanaz, mint E16ds_v4|
+| Standard_E16 – 4ds_v4 | 4    | Ugyanaz, mint E16ds_v4|
+| Standard_E32 – 16ds_v4| 16   | Ugyanaz, mint E32ds_v4|
+| Standard_E32 – 8ds_v4 | 8    | Ugyanaz, mint E32ds_v4|
+| Standard_E64 – 32ds_v4| 32   | Ugyanaz, mint E64ds_v4|
+| Standard_E64 – 16ds_v4| 16   | Ugyanaz, mint E64ds_v4|
 | Standard_GS4 – 8      | 8    | Ugyanaz, mint a GS4     |
 | Standard_GS4 – 4      | 4    | Ugyanaz, mint a GS4     |
 | Standard_GS5 – 16     | 16   | Ugyanaz, mint a GS5     |

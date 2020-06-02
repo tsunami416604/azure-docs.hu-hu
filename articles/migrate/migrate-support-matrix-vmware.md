@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849365"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267885"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -49,7 +49,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 
 **VMware** | **Részletek**
 --- | ---
-**VMware virtuális gépek** | Az értékelés minden Windows-és Linux-operációs rendszeren támogatott.
+**VMware virtuális gépek** | Az összes operációs rendszer kiértékelése áttelepítésre végezhető. 
 **vCenter Server** | A felderítéshez és értékeléshez használni kívánt gépeket a 5,5, 6,0, 6,5 vagy 6,7 vCenter Server-es verzióval kell felügyelni.
 **Engedélyek (Assessment)** | írásvédett fiók vCenter Server.
 **Engedélyek (App-Discovery)** | vCenter Server fiók csak olvasási hozzáféréssel, és a virtuális gépek számára engedélyezett jogosultságokkal **> vendég műveletekkel**.

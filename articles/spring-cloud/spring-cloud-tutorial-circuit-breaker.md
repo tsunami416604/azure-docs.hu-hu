@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701556"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248855"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
 A Spring [Cloud Netflix turbina](https://github.com/Netflix/Turbine) széles körben használatos több [Hystrix](https://github.com/Netflix/Hystrix) mérőszámok összesítésére, így a streamek egyetlen nézetben figyelhetők meg a Hystrix-irányítópult használatával. Ez az oktatóanyag bemutatja, hogyan használhatja őket az Azure Spring Cloud-on.
@@ -59,7 +59,7 @@ Miután az összes alkalmazás fut és felderíthető, elérheti `user-service` 
 Ellenőrizze a nyilvános végpontok vagy a privát tesztelési végpontok használatát.
 
 ### <a name="using-public-endpoints"></a>Nyilvános végpontok használata
-Hozzáférés a Hystrix-turbinához a böngésző elérési útjával `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` .  Az alábbi ábra az alkalmazásban futó Hystrix-irányítópultot mutatja be.
+Hozzáférés a Hystrix-turbinához a böngésző elérési útjával `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` .  Az alábbi ábra az alkalmazásban futó Hystrix-irányítópultot mutatja be.
 
 ![Hystrix-irányítópult](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 
@@ -76,6 +76,6 @@ A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbel
 
 Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoint` . Ha nem működik megfelelően, két ok lehet: először a (z) vagy a `test-endpoint` (z) alapurl-címének módosítása a `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` (z) vagy a másodperc alapján, a webalkalmazás a statikus erőforrás abszolút elérési útját használja. A működésének megkezdéséhez `test-endpoint` Előfordulhat, hogy manuálisan kell szerkesztenie az <base> előtér-fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)

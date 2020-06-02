@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052386"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267273"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
@@ -55,12 +55,12 @@ A magával ragadó olvasó úgy lett kialakítva, hogy mindenki számára elérh
 
 ## <a name="how-does-immersive-reader-work"></a>Hogyan működik a alámerülés olvasó?
 
-A részletes olvasó egy önálló webalkalmazás, amely a saját webalkalmazásának a használatával történő meghívásakor jelenik meg a meglévő webalkalmazáson keresztül `iframe`. Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a `iframe` és a kommunikáció létrehozását és stílusát az olvasói háttérrendszer-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
+A részletes olvasó egy önálló webalkalmazás, amely a saját webalkalmazásának a használatával történő meghívásakor jelenik meg a meglévő webalkalmazáson keresztül `iframe` . Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a és a kommunikáció létrehozását és stílusát `iframe` az olvasói háttérrendszer-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
 
 ## <a name="next-steps"></a>További lépések
 
 A Modern olvasó használatának első lépései:
 
-* Ugrás [a gyors](./quickstart.md) üzembe helyezésre
+* Ugrás [a gyors](./quickstarts/client-libraries.md?pivots=programming-language-csharp) üzembe helyezésre
 * Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
 * Olvassa el a [magára olvasó SDK-referenciát](./reference.md)

@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294922"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247053"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
-Azure Backup több biztonsági mentési megoldást biztosít a biztonsági mentési követelmények és az infrastruktúra-topológia (helyszíni vagy Azure) alapján. Minden biztonsági mentési felhasználónak vagy rendszergazdának látnia kell, hogy mi történik az összes megoldásban, és a várhatóan fontos helyzetekben kapjon értesítést. Ez a cikk a Azure Backup szolgáltatás által biztosított figyelési és értesítési képességeket részletezi.
+Azure Backup több biztonsági mentési megoldást biztosít a biztonsági mentési követelmények és az infrastruktúra-topológia (helyszíni vagy Azure) alapján. Minden biztonsági mentési felhasználónak vagy rendszergazdának látnia kell, hogy mi történik az összes megoldásban, és fontos forgatókönyvekben várhatóan értesítést kapjon. Ez a cikk a Azure Backup szolgáltatás által biztosított figyelési és értesítési képességeket részletezi.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Biztonsági mentési feladatok a Recovery Services-tárolóban
 
@@ -21,19 +21,19 @@ A Azure Backup a Azure Backup által védett munkaterhelések számára beépít
 
 ![RS-tár beépített figyelése](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltmonitoring.png)
 
-A feladatok akkor jönnek létre, ha olyan műveleteket végeznek, mint például a biztonsági mentés, a biztonsági mentés, a visszaállítás, a biztonsági mentés törlése és így tovább.
+A feladatok akkor jönnek létre, amikor olyan műveletek történnek, mint a biztonsági mentés konfigurálása, a biztonsági mentés, a visszaállítás, a biztonsági másolat törlése és így tovább.
 
 Az alábbi Azure Backup-megoldásokból származó feladatok itt láthatók:
 
 - Azure-beli virtuális gép biztonsági mentése
 - Azure-fájlok biztonsági mentése
-- Azure munkaterhelés biztonsági mentés, például SQL és SAP HANA
+- Azure-beli számítási feladatok biztonsági mentése, például SQL és SAP HANA
 - Azure Backup ügynök (MAB)
 
 A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
 
 > [!NOTE]
-> Az Azure-beli virtuális gépeken belüli SQL-és SAP HANA biztonsági másolatok nagy számú biztonsági mentési feladattal rendelkeznek. A naplók biztonsági mentései például 15 percenként is futtathatók. Ezért az adatbázis-munkaterhelések esetében csak a felhasználó által aktivált műveletek jelennek meg. Az ütemezett biztonsági mentési műveletek nem jelennek meg.
+> Az Azure-beli virtuális gépeken belüli SQL-és SAP HANA biztonsági másolatok nagy számú biztonsági mentési feladattal rendelkeznek. A naplók biztonsági mentései például 15 percenként is futtathatók. Így az adatbázis-munkaterhelések esetében csak a felhasználó által aktivált műveletek jelennek meg. Az ütemezett biztonsági mentési műveletek nem jelennek meg.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Biztonsági mentési riasztások Recovery Services-tárolóban
 
@@ -59,7 +59,7 @@ A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókön
 
 ### <a name="consolidated-alerts"></a>Konszolidált riasztások
 
-Az Azure munkaterhelés biztonsági mentési megoldásai, például az SQL és a SAP HANA esetében a naplók biztonsági mentése nagyon gyakori (akár 15 percenként, a szabályzatnak megfelelően) hozható létre. Ezért is lehetséges, hogy a napló biztonsági mentésével kapcsolatos hibák is nagyon gyakoriak (akár 15 percenként). Ebben az esetben a végfelhasználó akkor lesz túlterhelve, ha riasztás jön létre az egyes hibák előfordulásakor. Így a rendszer riasztást küld az első előfordulásra, és ha a következő hibák ugyanarra az alapvető ok miatt következnek be, akkor a további riasztások nem jönnek létre. Az első riasztás a hibák számával frissül. Ha azonban a felhasználó inaktiválja a riasztást, akkor a következő esemény egy másik riasztást indít el, és ez az esemény első riasztása lesz. Így Azure Backup végrehajtja a riasztások összevonását az SQL és a SAP HANA biztonsági mentések esetében.
+Az Azure munkaterhelés biztonsági mentési megoldásai, például az SQL és a SAP HANA esetében a naplók biztonsági mentése nagyon gyakori (akár 15 percenként, a szabályzatnak megfelelően) hozható létre. Ezért is lehetséges, hogy a napló biztonsági mentésével kapcsolatos hibák is nagyon gyakoriak (akár 15 percenként). Ebben az esetben a végfelhasználó akkor lesz túlterhelve, ha riasztás jön létre az egyes hibák előfordulásakor. Így a rendszer riasztást küld az első előfordulásra, és ha a későbbi hibák ugyanarra az alapvető ok miatt következnek be, akkor a további riasztások nem jönnek létre. Az első riasztás a hibák számával frissül. Ha azonban a felhasználó inaktiválja a riasztást, akkor a következő esemény egy másik riasztást indít el, és ez az esemény első riasztása lesz. Így Azure Backup végrehajtja a riasztások összevonását az SQL és a SAP HANA biztonsági mentések esetében.
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Kivételek, ha a riasztás nem merült fel
 
@@ -77,8 +77,8 @@ A fenti kivételek úgy lettek kialakítva, hogy a műveletek eredménye (elsős
 A riasztás súlyossága alapján a riasztásokat háromféle típusban lehet meghatározni:
 
 - **Kritikus**: elvileg a biztonsági mentési vagy helyreállítási hibák (ütemezett vagy felhasználó által aktivált) a riasztások generálásához vezetnek, és kritikus riasztásként, valamint olyan romboló műveletekkel is rendelkeznek, mint például a biztonsági mentés törlése.
-- **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, a rendszer figyelmeztető riasztásként sorolja fel őket.
-- **Tájékoztatás**: a mai naptól kezdve a Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
+- **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, azok figyelmeztető riasztásként jelennek meg.
+- **Tájékoztatás**: jelenleg Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
 
 ## <a name="notification-for-backup-alerts"></a>Értesítés a biztonsági mentési riasztásokról
 
@@ -91,7 +91,7 @@ A riasztások kiemelése után a rendszer értesíti a felhasználókat. A Azure
 
 Ha az értesítés konfigurálva van, egy üdvözlő vagy bevezető e-mailt fog kapni. Ezzel erősíti meg, hogy Azure Backup e-maileket küldhet ezekre a címekre riasztás esetén.<br>
 
-Ha a gyakoriság egy óránkénti kivonatoló értékre lett beállítva, és egy órán belül megoldották a riasztást, akkor nem lesz része a közelgő óránkénti kivonatnak.
+Ha a gyakoriságot egy óránkénti kivonatoló értékre állították be, és egy órán belül megoldották a riasztást, akkor nem lesz része a közelgő óránkénti kivonatnak.
 
 > [!NOTE]
 >

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744565"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248226"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -21,7 +21,7 @@ A védett elemek biztonsági másolatának törlése olyan jelentős művelet, a
 
 Vannak azonban olyan forgatókönyvek, amelyekben ez a képesség nem szükséges. Az Azure Recovery Services-tároló nem törölhető, ha olyan biztonsági másolati elemek találhatók benne, amelyeken még nem is törlődnek. Ez problémát jelenthet, ha a tárolót azonnal törölni kell. Például: az üzembe helyezési műveletek gyakran törlik a létrehozott erőforrásokat ugyanabban a munkafolyamatban. A központi telepítés létrehozhat egy tárolót, konfigurálhatja a biztonsági másolatokat egy elemhez, tesztet állíthat vissza, majd folytathatja a biztonsági mentési elemek és a tár törlését. Ha a tár törlése sikertelen, a teljes telepítés sikertelen lehet. A törlés letiltásával garantálható az azonnali törlés.
 
-Ezért az ügyfélnek gondosan ki kell választania, hogy letiltsa-e az adott tár helyreállítható törlését a forgatókönyvtől függően. További információ: [Soft-delete cikk](backup-azure-security-feature-cloud.md).
+Ezért alaposan ki kell választania, hogy le kell-e tiltani egy adott tár helyreállítható törlését a forgatókönyvtől függően. További információ: [Soft-delete cikk](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Helyreállítható törlési állapot beolvasása REST API használatával
 
@@ -33,7 +33,7 @@ A tárolóhoz tartozó helyreállítható törlés aktuális állapotának beolv
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-A Get URI a `{subscriptionId}`, `{vaultName}`a `{vaultresourceGroupName}` paraméterekkel rendelkezik. Ebben a példában `{vaultName}` a "testVault" és `{vaultresourceGroupName}` a "testVaultRG". Mivel az összes szükséges paraméter meg van adva az URI-ban, nincs szükség külön kérelem törzsére.
+A Get URI a, a `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` paraméterekkel rendelkezik. Ebben a példában a `{vaultName}` "testVault" és a `{vaultresourceGroupName}` "testVaultRG". Mivel az összes szükséges paraméter meg van adva az URI-ban, nincs szükség külön kérelem törzsére.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -71,7 +71,7 @@ A Recovery Services-tároló törlési állapotának REST API használatával t�
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-A javítás URI `{subscriptionId}`- `{vaultName}`ja: `{vaultresourceGroupName}` , paraméterek. Ebben a példában `{vaultName}` a "testVault" és `{vaultresourceGroupName}` a "testVaultRG". Ha az URI-t a fenti értékekre cseréljük, akkor az URI a következőképpen fog kinézni.
+A javítás URI-ja:, `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` paraméterek. Ebben a példában a `{vaultName}` "testVault" és a `{vaultresourceGroupName}` "testVaultRG". Ha az URI-t a fenti értékekre cseréljük, akkor az URI a következőképpen fog kinézni.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -88,7 +88,7 @@ További részletekért tekintse meg [a REST API dokumentációját](https://doc
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  igaz       |Sztring         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|címkét     |         | Objektum        |     Erőforráscímkék    |
+|tags     |         | Objektum        |     Erőforráscímkék    |
 
 #### <a name="example-request-body"></a>Példa kérelem törzsére
 

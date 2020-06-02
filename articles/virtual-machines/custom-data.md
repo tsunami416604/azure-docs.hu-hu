@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759141"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259116"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni és Cloud-init az Azure Virtual Machines
 
@@ -84,7 +84,7 @@ Az egyéni adatvégrehajtás hibaelhárításához tekintse át a hibaelhárít�
 
 ## <a name="faq"></a>GYIK
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>A virtuális gép létrehozása után frissíthetem az egyéni adatértékeket?
-Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait REST API (PS vagy AZ CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
+Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (PS vagy az CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
 * A VMSS lévő meglévő példányok nem kapják meg az egyéni adatok frissítését, csak addig, amíg el nem távolítják őket.
 * A frissített VMSS lévő meglévő példányok nem kapják meg a frissített egyéni adatértékeket.
 * Az új példányok megkapják az új egyéni adatértékeket.

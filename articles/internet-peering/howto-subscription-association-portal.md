@@ -3,21 +3,21 @@ title: Társ ASN társítása Azure-előfizetéshez a portál használatával
 titleSuffix: Azure
 description: Társ ASN társítása Azure-előfizetéshez a portál használatával
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 9feefa8801892a668784ed7406f46dba2afd69da
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683957"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266950"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Társ ASN társítása Azure-előfizetéshez a portál használatával
 
-A kérések elküldése előtt először társítsa az ASN-t az Azure-előfizetéshez az alábbi lépések segítségével.
+Internetszolgáltató vagy internetes Exchange-szolgáltatóként, mielőtt elküld egy kérést, először társítsa az ASN-t egy Azure-előfizetéshez az alábbi lépések segítségével.
 
 Ha szeretné, a [PowerShell](howto-subscription-association-powershell.md)használatával is elvégezheti ezt az útmutatót.
 
@@ -55,8 +55,7 @@ Regisztráljon az előfizetésben az alábbi lépésekkel: Ha nem hajtja végre 
     > ![A regisztráció befejeződött](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn létrehozása
-Internetszolgáltatóként vagy internetes Exchange-szolgáltatóként létrehozhat egy új PeerAsn-erőforrást egy autonóm rendszerszám (ASN) Azure-előfizetéssel való társításához. Az előfizetéshez több ASN is hozzárendelhet, ehhez navigáljon a [PeerASN hozzárendelése lapra](https://go.microsoft.com/fwlink/?linkid=2129592) a hozzárendelni kívánt ASN-hez.
-
+Internetszolgáltatóként vagy internetes Exchange-szolgáltatóként létrehozhat egy olyan új PeerAsn-erőforrást, [amely az Azure](https://go.microsoft.com/fwlink/?linkid=2129592) -előfizetéssel társít egy autonóm rendszerszámot (ASN) az Azure-előfizetéssel. Egy előfizetéshez több ASN is hozzárendelhet, ehhez létre kell hoznia egy **PeerAsn** a társítandó ASN-hez.
 
 1. A társ-visszavonási ASN-oldal **társítása** az **alapok** lapon töltse ki a mezőket az alább látható módon.
 

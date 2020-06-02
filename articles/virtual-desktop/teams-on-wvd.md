@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234570"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267137"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -32,8 +32,9 @@ A Microsoft Teams-hez készült Media Optimization szolgáltatással a Windows a
 Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű virtuális asztalon, ezeket a következő műveleteket kell végrehajtania:
 
 - [Készítse elő a hálózatát](/microsoftteams/prepare-network/) a Microsoft Teams szolgáltatásban.
-- Telepítse a [Windows asztali ügyfelet](connect-windows-7-and-10.md) egy olyan Windows 10-es eszközre, amely megfelel a Microsoft Teams [Hardware követelményeinek](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Telepítse a [Windows asztali ügyfelet](connect-windows-7-and-10.md) olyan Windows 10-es eszközre, amely megfelel a Microsoft Teams Windows [rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Csatlakozhat egy Windows 10 rendszerű többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuális géphez (VM).
+- Telepítse a Teams Desktop alkalmazást a gazdagépre számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
 ## <a name="install-the-teams-desktop-app"></a>A Teams asztali alkalmazás telepítése
 
@@ -46,7 +47,7 @@ A csapatok számítógépenkénti telepítésének engedélyezéséhez állítsa
 1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Hozza létre a következő értéket a csapatok kulcsához:
 
-| Name (Név)             | Típus   | Az adatértékek/értékek  |
+| Name             | Típus   | Az adatértékek/értékek  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 
@@ -59,6 +60,10 @@ Telepítse a [WebSocket szolgáltatást](https://query.prod.cms.rt.microsoft.com
 A Teams Desktop alkalmazást üzembe helyezheti gépi telepítéssel. A Microsoft Teams telepítése a Windows rendszerű virtuális asztali környezetben:
 
 1. Töltse le a környezetének megfelelő [Teams msi-csomagot](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) . Javasoljuk, hogy a 64 bites telepítőt egy 64 bites operációs rendszeren használja.
+
+      > [!NOTE]
+      > A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
+
 2. A parancs futtatásával telepítse az MSI-t a gazda virtuális gépre.
 
       ```console
@@ -138,7 +143,7 @@ Ha kapcsolatba szeretne lépni a Microsoft Teams ügyfélszolgálatával, lépje
 
 A gazdagépek RDP protokoll (RDP) tulajdonságainak, például a többmonitoros élménynek vagy a mikrofon és a hangvezéreltség beállításának testreszabásával optimális felhasználói élményt biztosíthat a felhasználóknak az igényeik alapján.
 
-A mikrofon és a kamera átirányításának engedélyezéséhez állítsa be a következő RDP-tulajdonságokat:
+Az eszközök átirányításának engedélyezése nem szükséges a média-optimalizálással rendelkező csapatok használata esetén. Ha Media Optimization nélküli csapatokat használ, állítsa be a következő RDP-tulajdonságokat a mikrofon és a kamera átirányításának engedélyezéséhez:
 
 - `audiocapturemode:i:1`engedélyezi a hangrögzítést a helyi eszközről, és redirets a távoli munkamenetben lévő hangalkalmazásokat.
 - `audiomode:i:0`hang lejátszása a helyi számítógépen.

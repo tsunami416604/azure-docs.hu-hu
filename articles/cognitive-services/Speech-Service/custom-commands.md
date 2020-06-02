@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367839"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266015"
 ---
-# <a name="what-are-custom-commands-preview"></a>Mik azok az egyéni parancsok (előzetes verzió)?
+# <a name="what-is-custom-commands-preview"></a>Mi az egyéni parancsok (előzetes verzió)?
 
-A hangvezérelt alkalmazások, például a [hangsegédek](voice-assistants.md) figyelik a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet. Az eszközök a Speech SDK `DialogServiceConnector` objektumával csatlakoznak a segédekhez.
+A hangvezérelt alkalmazások, például a [hangsegédek](voice-assistants.md) figyelik a felhasználókat, és válaszként reagálnak, gyakran beszélnek vissza. A felhasználók beszédének [szövegét](speech-to-text.md) használják a felhasználó beszédének átírására, majd a szöveg természetes nyelvének megismerésére. Ez a művelet gyakran tartalmazza a [szöveg-beszéd](text-to-speech.md)kapcsolattal generált segédből származó beszédes kimenetet. Az eszközök a Speech SDK objektumával csatlakoznak a segédekhez `DialogServiceConnector` .
 
 Az **egyéni parancsok (előzetes verzió)** egy egyszerűsített megoldás a hangalapú alkalmazások létrehozásához. Egységes szerzői élményt, automatikus üzemeltetési modellt és viszonylag alacsony komplexitást biztosít, valamint más lehetőségeket, például a [közvetlen vonalas beszédet](direct-line-speech.md). Ez az egyszerűsítés azonban a rugalmasság csökkenésével jár. Így az egyéni parancsok (előzetes verzió) a feladatok befejezéséhez és a parancs-és vezérlési forgatókönyvekhez legmegfelelőbbek. Különösen jól illeszkedik eszközök internetes hálózata (IoT) és a fej nélküli eszközökhöz.
 

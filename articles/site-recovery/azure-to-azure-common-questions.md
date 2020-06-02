@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834577"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248345"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -172,6 +172,10 @@ Az első létrehozott helyreállítási pont a teljes másolattal rendelkezik. A
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Növeli a helyreállítási pontok megőrzési időtartamát?
 
 Igen, ha 24 óra és 72 óra között növeli a megőrzési időtartamot, Site Recovery a helyreállítási pontokat további 48 óráig fogja menteni. A hozzáadott idő tárolási díjat von maga után. Előfordulhat például, hogy egy helyreállítási pont 10 GB-os különbözeti változásokkal rendelkezik, és GB-os $0,16-os díjat tartalmaz. További díjak: $1,60 × 48/hó.
+
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Engedélyezhető a replikáció az App-konzisztencia használatával a Linux-kiszolgálókon?
+
+Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az előzetes és utáni beállításokkal rendelkező egyéni szkriptet a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazások konzisztenciája során. [További információ](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia
 

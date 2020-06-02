@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuál
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248150"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248583"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -167,7 +167,7 @@ Az adatai védelme érdekében Azure Backup tartalmazza a Soft delete funkciót.
 
 * Ha az Azure Backup szolgáltatáshoz konfigurált Azure-beli virtuális gépeket törölték vagy áthelyezik a védelem leállítása nélkül, akkor az ütemezett biztonsági mentési feladatok és az igény szerinti (ad-hoc) biztonsági mentési feladatok sikertelenek lesznek a hiba UserErrorVmNotFoundV2. A biztonsági mentés előzetes ellenőrzési művelete csak a sikertelen igény szerinti biztonsági mentési feladatokhoz kritikusként jelenik meg (sikertelen ütemezett feladatok nem jelennek meg).
 * Ezek a biztonsági mentési elemek aktívak maradnak a rendszernek a felhasználó által beállított biztonsági mentési és adatmegőrzési házirend betartásával. Az Azure-beli virtuális gépek biztonsági másolatait az adatmegőrzési szabályzatnak megfelelően megőrzi a rendszer. A lejárt helyreállítási pontok (a legutóbbi helyreállítási pont kivételével) a biztonsági mentési szabályzatban beállított megőrzési időtartam alapján törlődnek.
-* A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mivel az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a biztonsági mentés díjszabása szerint számítjuk fel.
+* A felhasználók számára ajánlott törölni azokat a biztonsági mentési elemeket, amelyekben az elsődleges adatforrás már nem létezik, hogy elkerülje a további költségeket, ha a törlési erőforrások biztonsági mentési elemére/adatokra már nincs szükség, mivel az utolsó helyreállítási pontot örökre megőrzik, és a felhasználót a biztonsági mentés díjszabása alapján számítjuk fel.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 31d326b19c560981531ebf0716b614046b2337b6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217242"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258640"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
 
@@ -31,7 +31,7 @@ Kiszolgáló nélküli API-kat adhat hozzá az Azure statikus Web Appshoz a Azur
 
 A következő lépések bemutatják, hogyan hozhat létre új tárházat, és hogyan klónozott fájlokat a számítógépére.
 
-1. Új tárház létrehozásához navigáljon a következőhöz: https://github.com/staticwebdev/vanilla-basic/generate .
+1. Győződjön meg arról, hogy bejelentkezett a GitHubba, és navigáljon https://github.com/staticwebdev/vanilla-basic/generate egy új tárház létrehozásához.
 1. Az _adattár neve_ mezőbe írja be **a My-Vanilla-API**értéket.
 1. Kattintson **a tárház létrehozása sablonból**elemre.
 

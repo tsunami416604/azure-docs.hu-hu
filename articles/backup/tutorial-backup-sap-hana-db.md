@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747226"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248243"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -22,6 +22,9 @@ Ez az oktatóanyag bemutatja, hogyan készíthet biztonsági mentést SAP HANA A
 
 [Itt](sap-hana-backup-support-matrix.md#scenario-support) találja az összes olyan forgatókönyvet, amelyet jelenleg támogatunk.
 
+>[!NOTE]
+>[Ismerkedés](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a következőket végzi el:
@@ -34,9 +37,7 @@ A biztonsági mentések konfigurálása előtt győződjön meg arról, hogy a k
 * Futtassa a SAP HANA biztonsági mentési konfigurációs parancsfájlt (előzetes regisztrációs parancsfájl) azon a virtuális gépen, ahol a HANA telepítve van, a legfelső szintű felhasználóként. [Ez a szkript](https://aka.ms/scriptforpermsonhana) a HANA-rendszer biztonsági mentésre kész állapotba helyezését kéri le. Az előzetes regisztrációs szkripttel kapcsolatos további információkért tekintse meg az [előzetes regisztrációs parancsfájlt](#what-the-pre-registration-script-does) ismertető szakaszt.
 
 >[!NOTE]
->A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást az Azure-beli virtuális gépen futó SAP HANA-adatbázis biztonsági mentésekor.
->
->Szükség szerint módosítsa manuálisan a szabályzatot.
+>Az előregisztrációs parancsfájl a RHEL-on (7,4, 7,6 és 7,7) futó SAP HANA-munkaterhelések unixODBC234 telepíti, valamint a RHEL 8,1 **-** **unixODBC** . [Ez a csomag a RHEL for SAP HANA (a RHEL 7 Server esetében) Update Services for SAP Solutions (RPMs)](https://access.redhat.com/solutions/5094721)tárházban található.  Az Azure Marketplace RHEL rendszerképében a tárház a következő lenne: **rhui-RHEL-SAP-Hana-for-RHEL-7-Server-rhui-e4s-RPMs**.
 
 ## <a name="set-up-network-connectivity"></a>Hálózati kapcsolat beállítása
 

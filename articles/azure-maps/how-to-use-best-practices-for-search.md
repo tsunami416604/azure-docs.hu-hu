@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742768"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264366"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service
 
-A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) különböző képességeket kínáló API-kat tartalmaz. A keresési címek API például megkeresheti az érdekes helyeket (POI-ket) vagy egy adott hely körüli adatpontokat. 
+A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) olyan API-kat tartalmaz, amelyek különböző képességeket biztosítanak a fejlesztők számára a címek, a helyek, az üzleti listák név vagy kategória szerinti kereséséhez, valamint más földrajzi információkhoz. A[zavaros keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) például lehetővé teszi, hogy a felhasználók megkeressék az adott címeket vagy érdekes pontokat (POI).
 
 Ez a cikk azt ismerteti, hogyan alkalmazhatók a helyes eljárások a Azure Maps Search Service adatainak meghívásakor. A következőket fogja megtanulni:
 
-* Lekérdezések készítése a megfelelő egyezések visszaküldéséhez.
-* A keresési eredmények korlátozása.
-* Ismerje meg az eredményhalmaz közötti különbségeket.
-* Olvassa el a címek keresése – válasz struktúrát.
+* Lekérdezések készítése a megfelelő egyezések visszaküldéséhez
+* Keresési eredmények korlátozása
+* Az eredményhalmaz közötti különbségek megismerése
+* A címek keresése – válasz struktúra beolvasása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ A Azure Maps Service API-k hívásához szükség van egy Azure Maps-fiókra és
 A Azure Maps-hitelesítéssel kapcsolatos információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 > [!TIP]
-> Search Service lekérdezéséhez a [Poster alkalmazást](https://www.getpostman.com/apps) használhatja Rest-hívások létrehozásához. Vagy bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
+> Search Service lekérdezéséhez a [Poster alkalmazást](https://www.getpostman.com/apps) használhatja REST API-hívások létrehozásához. Vagy bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Ajánlott eljárások geocode-címekhez
 
@@ -61,7 +61,7 @@ Ahhoz, hogy a felhasználó a megfelelő területen geobias az eredményeket, mi
 
 #### <a name="fuzzy-search-parameters"></a>Fuzzy keresési paraméterek
 
-Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -t, ha nem tudja, hogy a felhasználói bemenetek egy keresési lekérdezéshez. Az API egy kanonikus *egysoros kereséshez*ÖTVÖZI a POI-kereséseket és a helymeghatározáshoz: 
+Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -t, ha nem tudja, hogy a felhasználói bemenetek egy keresési lekérdezéshez. A felhasználótól származó bevitel például lehet egy címnek vagy egy érdekes helynek (POI) a típusa, például a *Shopping Mall*. Az API egy kanonikus *egysoros kereséshez*ÖTVÖZI a POI-kereséseket és a helymeghatározáshoz: 
 
 * A `minFuzzyLevel` és `maxFuzzyLevel` paraméterek segítenek a releváns egyezések visszaadásában, még akkor is, ha a lekérdezési paraméterek nem egyeznek pontosan a felhasználó által kívánt információkkal. A teljesítmény maximalizálása és a szokatlan eredmények csökkentése érdekében a keresési lekérdezéseket a és a alapértelmezett értékeire állítsa be `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
@@ -85,7 +85,7 @@ Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](https://docs.microso
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Geocode és szűrés egy földrajzi entitás típusához
 
-Ha fordított geocode keresést végez a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-ban, a szolgáltatás a felügyeleti területekhez tartozó sokszögeket adhat vissza.Ha a keresést egy adott földrajzi egység típusára szeretné szűkíteni, adja `entityType` meg a paramétert a kérésekben. 
+Ha fordított geocode keresést végez a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-ban, a szolgáltatás a felügyeleti területekhez tartozó sokszögeket adhat vissza. Előfordulhat például, hogy a Yoi szeretné beolvasni egy város területének sokszögét.Ha a keresést egy adott földrajzi egység típusára szeretné szűkíteni, adja `entityType` meg a paramétert a kérésekben. 
 
 Az eredményül kapott válasz tartalmazza a földrajzi azonosítót és az egyező entitás típusát. Ha egynél több entitást ad meg, a végpont az *elérhető legkisebb entitást*adja vissza. A visszaadott geometriai azonosító használatával lekérheti a földrajz geometriáját a [keresési sokszög szolgáltatáson](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)keresztül.
 

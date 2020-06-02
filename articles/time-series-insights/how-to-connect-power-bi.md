@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f51f6867d773c906d2df24c7e61ad897a4304f6
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863842"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258886"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
 
@@ -111,8 +111,10 @@ Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést
     [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  A vizualizációk oszlopban válassza ki a kívánt **vizualizációt** . Válassza például a **vonal diagram**elemet. Ez egy üres vonalas diagramot ad hozzá a vászonhoz.
- 
-1.  A **mezők** listában válassza az **időbélyegző** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén lévő elemek megjelenítéséhez.
+
+1.  A **mezők** listában válassza a **_Timestamp** lehetőséget, majd húzza a **tengely** mezőre az X tengely mentén megjelenített elemek megjelenítéséhez. Ügyeljen arra, hogy **_Timestampre** váltson a **tengely** értékeként (az alapértelmezett dátum- **hierarchia**).
+
+    [![Jelentés nézet kiválasztása](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  A **mezők** listában kattintson a **TimeSeriesId** elemre, majd húzza a **Values (értékek** ) mezőbe az Y tengely melletti elemek megjelenítéséhez.
 

@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80157617"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248209"
 ---
 # <a name="export-your-application"></a>Az alkalmazás exportálása
-
-
 
 Ez a cikk azt ismerteti, hogyan lehet a megoldás-kezelőként exportálni egy IoT Central alkalmazást, hogy újra lehessen használni.
 
@@ -93,4 +91,4 @@ Az alkalmazás sablonjának frissítéséhez módosítsa a sablon nevét vagy le
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](howto-manage-iot-central-from-portal.md)
+Most, hogy megismerte az alkalmazás sablonjainak használatát, a javasolt következő lépés az, hogy megtudja, hogyan [figyelheti az IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotát](howto-monitor-application-health.md) .

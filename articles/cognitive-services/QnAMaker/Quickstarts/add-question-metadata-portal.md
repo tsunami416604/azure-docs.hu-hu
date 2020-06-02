@@ -3,12 +3,12 @@ title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portá
 description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994663"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266576"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
@@ -85,7 +85,7 @@ A metaadatok kérdés-válasz párokhoz való hozzáadásával az ügyfélalkalm
 1. Metaadat-párok hozzáadása ugyanahhoz a két metaadat-címkéhez:
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     Most már két kérdés van ugyanazzal a metaadatokkal, amelyek különböző értékeket tartalmaznak.
 
@@ -99,7 +99,7 @@ A metaadatok kérdés-válasz párokhoz való hozzáadásával az ügyfélalkalm
 
 A tudásbázist úgy szerkesztette, hogy több kérdést támogasson, és a név/érték párokat is támogassa a keresés során a legjobb válasz vagy utófeldolgozó keresésekor a válasz vagy válaszok visszaadása után.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
