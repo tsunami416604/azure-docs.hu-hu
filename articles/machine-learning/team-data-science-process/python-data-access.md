@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720979"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267994"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -40,7 +40,7 @@ A következő csomagoktól függ:
 * Python – dateutil
 * Pandák
 
-Javasoljuk, hogy olyan Python-disztribúciót használjon, mint például a [anaconda](http://continuum.io/downloads#all) vagy a [lombkorona](https://store.enthought.com/downloads/), amely a Pythonhoz, a IPython-hoz és a fent felsorolt három csomaghoz készült. Bár a IPython nem feltétlenül szükséges, ez nagyszerű környezet az adatkezeléshez és az interaktív megjelenítéshez.
+Javasoljuk, hogy olyan Python-disztribúciót használjon, mint például a [anaconda](https://www.anaconda.com/) vagy a [lombkorona](https://store.enthought.com/downloads/), amely a Pythonhoz, a IPython-hoz és a fent felsorolt három csomaghoz készült. Bár a IPython nem feltétlenül szükséges, ez nagyszerű környezet az adatkezeléshez és az interaktív megjelenítéshez.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>A Azure Machine Learning Python ügyféloldali kódtár telepítése
 A jelen témakörben ismertetett feladatok végrehajtásához telepítse a Azure Machine Learning Python ügyféloldali kódtárat. Ez a könyvtár a Python- [csomag indexében](https://pypi.python.org/pypi/azureml)érhető el. A Python-környezetbe való telepítéséhez futtassa a következő parancsot a helyi Python-környezetből:
@@ -110,7 +110,7 @@ A következő formátumok támogatottak (a formátumok állandói a `azureml.Dat
 
 A formátumot a modul kimeneti csomópontjának fölé húzva határozhatja meg. Megjelenik a csomópont neve mellett egy elemleírásban.
 
-Néhány modul, például a [felosztott][split] modul, kimenete egy nevű `Dataset`formátumba, amelyet a Python ügyféloldali kódtár nem támogat.
+Néhány modul, például a [felosztott][split] modul, kimenete egy nevű formátumba, `Dataset` amelyet a Python ügyféloldali kódtár nem támogat.
 
 ![Adatkészlet formátuma][dataset-format]
 
@@ -141,7 +141,7 @@ Az alábbi lépések egy kísérletet létrehozó példát mutatnak be, és a k�
 
 ## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Adatkészletek elérése, olvasása, létrehozása és kezelése a Machine Learning Python ügyféloldali kódtár használatával
 ### <a name="workspace"></a>Munkaterület
-A munkaterület a Python ügyféloldali kódtár belépési pontja. Példány létrehozásához adja meg az `Workspace` osztályt a munkaterület-azonosítóval és az engedélyezési jogkivonattal:
+A munkaterület a Python ügyféloldali kódtár belépési pontja. `Workspace`Példány létrehozásához adja meg az osztályt a munkaterület-azonosítóval és az engedélyezési jogkivonattal:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -188,10 +188,10 @@ Mások az Azure ML-ben hozzárendelt értékek:
     print(ds.created_date)
     print(ds.size)
 
-A rendelkezésre `SourceDataset` álló metaadatokkal kapcsolatos további információkért tekintse meg az osztályt.
+A `SourceDataset` rendelkezésre álló metaadatokkal kapcsolatos további információkért tekintse meg az osztályt.
 
 ### <a name="read-contents"></a>Tartalom olvasása
-A Machine Learning Studio (klasszikus) által megadott kódrészletek automatikusan letöltik és deszerializálják az adatkészletet egy Panda DataFrame objektumba. Ezt a `to_dataframe` metódussal végezheti el:
+A Machine Learning Studio (klasszikus) által megadott kódrészletek automatikusan letöltik és deszerializálják az adatkészletet egy Panda DataFrame objektumba. Ezt a metódussal végezheti el `to_dataframe` :
 
     frame = ds.to_dataframe()
 
@@ -236,7 +236,7 @@ Ha az adatai már szerializálva vannak, a következőket használhatja:
         description='my description'
     )
 
-A Python ügyféloldali kódtár a következő formátumokra képes a pandák DataFrame szerializálására (az `azureml.DataTypeIds` állandók az osztályban találhatók):
+A Python ügyféloldali kódtár a következő formátumokra képes a pandák DataFrame szerializálására (az állandók az `azureml.DataTypeIds` osztályban találhatók):
 
 * PlainText
 * GenericCSV
@@ -255,7 +255,7 @@ Meglévő adatkészlet frissítéséhez először be kell szereznie a meglévő 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ezután a `update_from_dataframe` használatával szerializálhatja és lecserélheti az adatkészlet tartalmát az Azure-ban:
+Ezután a használatával `update_from_dataframe` szerializálhatja és lecserélheti az adatkészlet tartalmát az Azure-ban:
 
     dataset = ws.datasets['existing dataset']
 
@@ -265,7 +265,7 @@ Ezután a `update_from_dataframe` használatával szerializálhatja és lecseré
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Ha más formátumba kívánja szerializálni az adathalmazt, akkor a választható `data_type_id` paraméter értékét is meg kell adni.
+Ha más formátumba kívánja szerializálni az adathalmazt, akkor a választható paraméter értékét is meg kell adni `data_type_id` .
 
     from azureml import DataTypeIds
 
@@ -280,7 +280,7 @@ Ha más formátumba kívánja szerializálni az adathalmazt, akkor a választhat
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-A `description` paraméter értékének megadásával megadhat egy új leírást.
+A paraméter értékének megadásával megadhat egy új leírást `description` .
 
     dataset = ws.datasets['existing dataset']
 
@@ -293,7 +293,7 @@ A `description` paraméter értékének megadásával megadhat egy új leírást
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-A `name` paraméter értékének megadásával új nevet is beállíthat. Mostantól a csak az új név használatával kérdezi le az adatkészletet. A következő kód frissíti az adathalmazt, a nevet és a leírást.
+A paraméter értékének megadásával új nevet is beállíthat `name` . Mostantól a csak az új név használatával kérdezi le az adatkészletet. A következő kód frissíti az adathalmazt, a nevet és a leírást.
 
     dataset = ws.datasets['existing dataset']
 
@@ -312,7 +312,7 @@ A `name` paraméter értékének megadásával új nevet is beállíthat. Mostan
 
 A `data_type_id` `name` és `description` paraméterek nem kötelezőek, és alapértelmezés szerint az előző értékük. A `dataframe` paramétert mindig kötelező megadni.
 
-Ha az adatai már szerializálva vannak, a `update_from_raw_data` helyett használja `update_from_dataframe`a parancsot. Ha a `dataframe`helyett csak a `raw_data` -t adja át, akkor hasonló módon működik.
+Ha az adatai már szerializálva vannak, `update_from_raw_data` a helyett használja a parancsot `update_from_dataframe` . Ha a helyett csak a-t adja át `raw_data` `dataframe` , akkor hasonló módon működik.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

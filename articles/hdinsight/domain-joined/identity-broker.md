@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685514"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265250"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Az ID Broker (előzetes verzió) használata a hitelesítő adatok kezeléséhez
 
@@ -47,7 +47,7 @@ Az ID Broker szolgáltatás egy további virtuális gépet ad hozzá a fürthöz
 ![Az ID Broker engedélyezésének lehetősége](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
-Ha új szerepkört `idbrokernode` ad hozzá a következő attribútumokkal a sablon számítási profiljához, akkor a fürt az azonosító-átvitelszervező csomóponttal lesz létrehozva:
+Ha új szerepkört ad hozzá a `idbrokernode` következő attribútumokkal a sablon számítási profiljához, akkor a fürt az azonosító-átvitelszervező csomóponttal lesz létrehozva:
 
 ```json
 .
@@ -92,7 +92,7 @@ A HDInsight [IntelliJ beépülő modul](https://docs.microsoft.com/azure/hdinsig
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-hozzáférés jelszó-kivonat nélkül az Azure-ban AD DS
 
-Az azonosító-átvitelszervező engedélyezése után az Azure AD DSban tárolt jelszó-kivonatot kell használnia a tartományi fiókokkal való SSH-forgatókönyvekhez. Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a `kinit` parancs futtatására szeretné futtatni, meg kell adnia egy jelszót. 
+Az azonosító-átvitelszervező engedélyezése után az Azure AD DSban tárolt jelszó-kivonatot kell használnia a tartományi fiókokkal való SSH-forgatókönyvekhez. Ha az SSH-t egy tartományhoz csatlakoztatott virtuális gépre vagy a parancs futtatására szeretné futtatni, `kinit` meg kell adnia egy jelszót. 
 
 Az SSH-hitelesítéshez szükséges, hogy a kivonat elérhető legyen az Azure AD DSban. Ha csak rendszergazdai forgatókönyvekhez kíván SSH-t használni, létrehozhat egy csak felhőalapú fiókot, és az SSH-t a fürthöz is használhatja. Más felhasználók továbbra is használhatják az Ambari-vagy HDInsight-eszközöket (például a IntelliJ beépülő modult) anélkül, hogy az Azure AD DSban elérhetővé tennék a jelszó kivonatát.
 
@@ -100,7 +100,7 @@ Az SSH-hitelesítéshez szükséges, hogy a kivonat elérhető legyen az Azure A
 
 Az azonosító-átvitelszervező beállításakor a rendszer frissítheti az átjáróhoz csatlakozó egyéni alkalmazásokat és ügyfeleket, hogy először megszerezze a szükséges OAuth tokent. A jelen [dokumentumban](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) ismertetett lépéseket követve szerezze be a jogkivonatot a következő információkkal:
 
-*   OAuth erőforrás URI-ja:https://hib.azurehdinsight.net 
+*   OAuth erőforrás URI-ja:`https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Engedély: (név: cluster. ReadWrite, azonosító: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 

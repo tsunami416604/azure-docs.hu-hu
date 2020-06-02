@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684903"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267613"
 ---
 # <a name="monitor-azure-storage"></a>Az Azure Storage figyelése
 
@@ -82,7 +82,7 @@ Ha diagnosztikai beállítást hoz létre, válassza ki azt a tárterületet, am
 
 Meg kell adnia azoknak a műveleteknek a kategóriáit is, amelyekhez naplókat kíván gyűjteni. Az Azure Storage kategóriái az alábbi táblázatban láthatók.
 
-| Kategória | Description |
+| Kategória | Leírás |
 |:---|:---|
 | StorageRead | Olvasási műveletek a blobokon. |
 | StorageWrite | Írási műveletek a blobokon. |
@@ -325,7 +325,7 @@ A naplók úgy jelennek meg, mint a cél Storage-fiókban lévő tárolóban tá
 
 Az Event hub-nak küldött naplók nem fájlként vannak tárolva, de ellenőrizheti, hogy az Event hub kapott-e naplózási adatokat. A Azure Portal nyissa meg az Event hub eszközt, és ellenőrizze, hogy a **Bejövő üzenetek** száma nagyobb-e nullánál. 
 
-![Auditnaplók](media/monitor-storage/event-hub-log.png)
+![Naplók](media/monitor-storage/event-hub-log.png)
 
 A biztonsági információkkal és az események kezelésével és figyelési eszközeivel elérheti és beolvashatja az Event hub-nak elküldett naplózási adatokat. További információ: Mit tehetek [az Event hub-ba küldött figyelési adatokkal?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
@@ -337,7 +337,7 @@ További információ: [Bevezetés a log Analytics használatába Azure monitor]
 
 Az adattárolás ezekben a táblázatokban történik.
 
-| Táblázat | Description |
+| Táblázat | Leírás |
 |:---|:---|
 |StorageBlobLogs | A blob Storage-ban tevékenységet leíró naplók. |
 |StorageFileLogs | A fájlmegosztás tevékenységeit leíró naplók. |
@@ -407,4 +407,3 @@ Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 - Az Azure Storage által létrehozott naplók és mérőszámok ismertetését az [Azure Storage-figyelési adatok referenciája](monitor-storage-reference.md)című témakörben tekintheti meg.
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).
 - A metrikák áttelepítésével kapcsolatos további információkért lásd: [Azure Storage-metrikák áttelepítése](./storage-metrics-migration.md).
-

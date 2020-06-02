@@ -1,6 +1,7 @@
 ---
 title: Ugrás a lekérdezéshez
-description: A go használatával hozzon létre egy programot, amely egy Azure SQL Database adatbázisához csatlakozik, és Transact-SQL-utasítások használatával kérdezheti le és módosíthatja az adatokat.
+description: A go használatával hozzon létre egy programot, amely a Azure SQL Database vagy az Azure SQL felügyelt példányában található adatbázishoz csatlakozik, és lekérdezéseket futtat.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -8,27 +9,27 @@ ms.custom: sqldbrb=2 
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
-ms.author: craigg
+ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: d9cb49fdc425028e718216e0127821933fcc3b9f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1dd92a8178b7da475e44298f09d696ab1907bc0f
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189552"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267409"
 ---
-# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database"></a>Gyors útmutató: adatbázis lekérdezése a Golang használatával Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: adatbázis lekérdezése Azure SQL Database vagy Azure SQL felügyelt példányban
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelvet fogja használni Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a Transact-SQL-utasítások futtatásával lekérdezheti és módosíthatja az adatokat. A [Golang](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti egyszerű, megbízható és hatékony szoftverek készítését.  
+Ebben a rövid útmutatóban a [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) programozási nyelvet fogja használni Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz. Ezután a Transact-SQL-utasítások futtatásával lekérdezheti és módosíthatja az adatokat. A [Golang](https://golang.org/) egy nyílt forráskódú programozási nyelv, amely megkönnyíti egyszerű, megbízható és hatékony szoftverek készítését.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre adatbázist:
 
   || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
@@ -52,7 +53,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 
-A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
+Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 

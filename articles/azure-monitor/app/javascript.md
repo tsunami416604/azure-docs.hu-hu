@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854977"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266988"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -47,7 +47,7 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>Kódrészlet-alapú telepítés
 
-Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy a `<head>` szakasz első szkriptje legyen, amely képes figyelni az összes függőségével kapcsolatos esetleges problémákat. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a (z) `_Host.cshtml` `<head>` szakaszban található fájl elejéhez.
+Ha az alkalmazás nem használja az NPM-t, akkor közvetlenül a weblapjait az egyes lapok tetején található kódrészlettel Application Insightshatja. Lehetséges, hogy a szakasz első szkriptje legyen, `<head>` amely képes figyelni az összes függőségével kapcsolatos esetleges problémákat. Ha a Blazer Server alkalmazást használja, adja hozzá a kódrészletet a (z) szakaszban található fájl elejéhez `_Host.cshtml` `<head>` .
 
 ```html
 <script type="text/javascript">
@@ -80,9 +80,9 @@ Alapértelmezés szerint a Application Insights JavaScript SDK autogyűjt számo
 - **A munkamenetadatokat**
 
 ### <a name="telemetry-initializers"></a>Telemetria inicializálók
-A telemetria inicializálók segítségével módosítható a begyűjtött telemetria tartalma, mielőtt a felhasználó böngészőjéből elküldjék. Azt is felhasználhatják, hogy bizonyos telemetria ne küldjön vissza `false`. Több telemetria-inicializáló is felvehető a Application Insights-példányba, és ezeket a rendszer a hozzáadásuk sorrendjében hajtja végre.
+A telemetria inicializálók segítségével módosítható a begyűjtött telemetria tartalma, mielőtt a felhasználó böngészőjéből elküldjék. Azt is felhasználhatják, hogy bizonyos telemetria ne küldjön vissza `false` . Több telemetria-inicializáló is felvehető a Application Insights-példányba, és ezeket a rendszer a hozzáadásuk sorrendjében hajtja végre.
 
-A bemenet argumentuma `addTelemetryInitializer` egy olyan visszahívás, amely [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) argumentumként fogadja el a függvényt, és visszaadja a vagy `boolean` `void`a értéket. Ha visszatér `false`, a rendszer nem küldi el az telemetria elemet, ellenkező esetben a következő telemetria-inicializálást (ha van ilyen), vagy pedig a telemetria-gyűjtemény végpontjának küldi el.
+A bemenet argumentuma `addTelemetryInitializer` egy olyan visszahívás, amely argumentumként fogadja el a [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) függvényt, és visszaadja a vagy a értéket `boolean` `void` . Ha visszatér `false` , a rendszer nem küldi el az telemetria elemet, ellenkező esetben a következő telemetria-inicializálást (ha van ilyen), vagy pedig a telemetria-gyűjtemény végpontjának küldi el.
 
 Példa telemetria inicializálók használatára:
 ```ts
@@ -97,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
 ## <a name="configuration"></a>Konfiguráció
-A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező `instrumentationKey`, kivéve a következőt:.
+A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
 | Name | Alapértelmezett | Leírás |
 |------|---------|-------------|
@@ -109,7 +109,7 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | maxBatchInterval | 15 000 | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) |
 | disableExceptionTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. Az alapértelmezett érték a false (hamis). |
 | disableTelemetry | hamis | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. Az alapértelmezett érték a false (hamis). |
-| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>***Megjegyzés:*** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, `consoleLoggingLevel` érdemes `telemetryLoggingLevel` lehet a `enableDebug`vagy a helyett használni. |
+| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>***Megjegyzés:*** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
 | loggingLevelConsole | 0 | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | loggingLevelTelemetry | 1 | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | diagnosticLogInterval | 10000 | belső A belső naplózási várólista lekérdezési időköze (MS) |
@@ -136,23 +136,23 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | appId | null | A AppId az AJAX-függőségek közötti korrelációt használja a kiszolgálóoldali kérelmekkel az ügyfélen. Ha a Beacon API engedélyezve van, nem használható automatikusan, de manuálisan is beállítható a konfigurációban. Az alapértelmezett érték null |
 | enableCorsCorrelation | hamis | Ha az értéke igaz, az SDK két fejlécet ("Request-id" és "Request-Context") ad hozzá az összes CORS-kérelemhez a kimenő AJAX-függőségek összekapcsolásához a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték false (hamis) |
 | namePrefix | nem definiált | Egy nem kötelezően megadandó érték, amely a localStorage és a cookie neveként a Postfix nevet fogja használni.
-| enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai`example.com/foo#bar`() új oldalletöltésekként is rögzítve lesznek.
+| enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai ( `example.com/foo#bar` ) új oldalletöltésekként is rögzítve lesznek.
 | enableRequestHeaderTracking | hamis | Igaz értéke esetén az AJAX & a lekérési kérelmek fejlécének nyomon követése, az alapértelmezett érték a false.
 | enableResponseHeaderTracking | hamis | Igaz értéke esetén a rendszer az AJAX & beolvasási kérelem válaszának fejléceit nyomon követi, az alapértelmezett érték a false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással.
+| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
 
 ## <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
-Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez `enableAutoRouteTracking: true` hozzáadhat a telepítési konfigurációhoz.
+Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez hozzáadhat a `enableAutoRouteTracking: true` telepítési konfigurációhoz.
 
 Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálunk, amelyet az SDK-val inicializálhat. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
 
 > [!NOTE]
-> Csak `enableAutoRouteTracking: true` akkor használja, ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
+> Csak akkor használja `enableAutoRouteTracking: true` , ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfiguráció: autoTrackPageVisitTime
 
-A beállítás `autoTrackPageVisitTime: true`szerint a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime`. Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
+A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
 
 ## <a name="react-extensions"></a>Reakciós bővítmények
 
@@ -183,7 +183,7 @@ Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **
 
 ### <a name="analytics"></a>Elemzés
 
-A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. Egy `where` utasítás `client_Type == "Browser"`hozzáadásával csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
+A JavaScript SDK által gyűjtött telemetria lekéréséhez válassza a **megtekintés a naplókban (elemzés)** gombot. Egy utasítás hozzáadásával `where` `client_Type == "Browser"` csak a JavaScript SDK-ból és más SDK-k által gyűjtött kiszolgálóoldali telemetria fog adatokat kizárni.
  
 ```kusto
 // average pageView duration by name
@@ -220,7 +220,7 @@ A könnyű használhatóság érdekében telepítheti az Application Insights al
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Ez a verzió a szolgáltatások és funkciók minimális számát tartalmazza, és arra támaszkodik, hogy felépítse azt, ahogy jónak látja. Például nem hajt végre autocollectiont (nem kezelt kivételeket, AJAX-t stb.). Az egyes telemetria-típusok ( `trackTrace` `trackException`például stb.) küldésére szolgáló API-k nem szerepelnek ebben a verzióban, ezért meg kell adnia a saját burkolóját. Az egyetlen elérhető API `track`. Itt található egy [minta](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
+Ez a verzió a szolgáltatások és funkciók minimális számát tartalmazza, és arra támaszkodik, hogy felépítse azt, ahogy jónak látja. Például nem hajt végre autocollectiont (nem kezelt kivételeket, AJAX-t stb.). Az egyes telemetria-típusok (például stb.) küldésére szolgáló API `trackTrace` `trackException` -k nem szerepelnek ebben a verzióban, ezért meg kell adnia a saját burkolóját. Az egyetlen elérhető API `track` . Itt található egy [minta](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
 
 ## <a name="examples"></a>Példák
 
@@ -231,10 +231,10 @@ A futtatható-példákat lásd: [Application Insights JavaScript SDK-minták](ht
 Az SDK v2 verziójában feltört változások:
 - A jobb API-aláírások engedélyezéséhez néhány API-hívás (például a trackPageView és a trackException) frissült. Az Internet Explorer 8 és a böngésző korábbi verziói nem támogatottak.
 - Az telemetria-borítékban az Adatséma frissítései miatt a mező neve és szerkezete módosul.
-- Áthelyezve a `context.operation` `context.telemetryTrace`következő helyre:. Egyes mezők is módosultak (`operation.id` --> `telemetryTrace.traceID`).
-  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`a következőt:.
+- Áthelyezve a következő helyre: `context.operation` `context.telemetryTrace` . Egyes mezők is módosultak ( `operation.id`  -->  `telemetryTrace.traceID` ).
+  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja a következőt: `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
     > [!NOTE]
-    > A nyomkövetési azonosító egyediként való megtartásához, `Util.newId()`ahol korábban már `Util.generateW3CId()`használta, használja a következőt:. Mindkét esetben végül a művelet azonosítója jelenik meg.
+    > A nyomkövetési azonosító egyediként való megtartásához, ahol korábban már használta, használja a következőt: `Util.newId()` `Util.generateW3CId()` . Mindkét esetben végül a művelet azonosítója jelenik meg.
 
 Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használja, és szeretné megtekinteni, hogy az új SDK működik-e futásidőben, frissítse az URL-címet az aktuális SDK-betöltési forgatókönyvtől függően.
 
@@ -243,7 +243,7 @@ Ha az aktuális Application bepillantást előállító SDK-t (1.0.20) használj
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- NPM-forgatókönyv: `downloadAndSetup` meghívja a teljes ApplicationInsights-szkript letöltését a CDN-ből, és inicializálja a kialakítási kulccsal:
+- NPM-forgatókönyv: meghívja a `downloadAndSetup` teljes ApplicationInsights-szkript letöltését a CDN-ből, és inicializálja a kialakítási kulccsal:
 
    ```ts
    appInsights.downloadAndSetup({

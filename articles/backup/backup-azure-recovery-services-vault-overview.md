@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597950"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248906"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -20,7 +20,7 @@ Egy Azure-előfizetésen belül akár 500 Recovery Services-tárolót is létreh
 
 Ha továbbra is rendelkezik biztonságimásolat-tárolókkal, azok automatikusan Recovery Services tárba frissülnek. November 2017-ig az összes Backup-tároló frissítve lett Recovery Services-tárolóra.
 
-Recovery Services-tárolók az Azure Azure Resource Manager modelljén alapulnak, míg a Backup-tárolók az Azure Service Manager modellen alapulnak. Amikor egy Recovery Services-tárolóra frissít egy biztonságimásolat-tárolót, a biztonsági mentési állapot a frissítési folyamat során és után sértetlen marad. Recovery Services-tárolók olyan funkciókat biztosítanak, amelyek nem érhetők el a Backup-tárolók számára, például:
+Recovery Services-tárolók az Azure Azure Resource Manager modelljén alapulnak, de a Backup-tárolók az Azure Service Manager modellen alapulnak. Amikor egy Recovery Services-tárolóra frissít egy biztonságimásolat-tárolót, a biztonsági mentési állapot a frissítési folyamat során és után sértetlen marad. Recovery Services-tárolók olyan funkciókat biztosítanak, amelyek nem érhetők el a Backup-tárolók számára, például:
 
 - **Továbbfejlesztett funkciók a biztonsági mentési adatokat biztonságossá tételéhez**: a Recovery Services-tárolók révén a Azure Backup biztonsági funkciókat biztosít a Felhőbeli biztonsági másolatok védelméhez. A biztonsági funkciók biztosítják, hogy biztonságban legyenek a biztonsági másolatok, és biztonságosan helyreállítsák az adatokat, még akkor is, ha a termelési és a biztonsági mentési kiszolgálók biztonsága sérül. [További információ](backup-azure-security-feature.md)
 

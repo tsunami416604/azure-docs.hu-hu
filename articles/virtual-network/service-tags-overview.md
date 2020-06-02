@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fbf63a8082bbfabd3b5e4a4d62afbe63d18c983c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234497"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263196"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureDataExplorerManagement** | Azure Adatkezelő-felügyelet. | Bejövő | Nem | Nem |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Kimenő | Nem | Igen |
 | **AzureDevSpaces** | Azure fejlesztői tárhelyek. | Kimenő | Nem | Nem |
-| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Megjegyzés:* Ez a címke az USA déli középső régiójában, az USA keleti régiójában, az USA keleti régiójában, az USA 2. nyugati régiójában és az USA középső régiójában található Azure Event Grid | Mindkettő | Nem | Nem |
+| **AzureEventGrid** | Azure Event Grid. | Mindkettő | Nem | Nem |
 | **AzureFrontDoor. frontend** <br/> **AzureFrontDoor. backend** <br/> **AzureFrontDoor.FirstParty**  | Azure bejárati ajtó. | Mindkettő | Nem | Nem |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke a **AzureActiveDirectory**, a **AzureFrontDoor. frontend** és a **AzureFrontDoor. FirstParty** címkéktől függ. | Kimenő | Nem | Nem |
 | **AzureIoTHub** | Azure IoT Hub. | Kimenő | Nem | Nem |

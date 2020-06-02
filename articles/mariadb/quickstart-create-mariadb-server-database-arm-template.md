@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: ff7a22c0006d124f8d89b2f933dd213499dc1771
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997574"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266423"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
+# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása Resource Manager-sablonnal
 
 A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MariaDB-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre Azure Database for MariaDB-kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 
@@ -31,7 +31,7 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](htt
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, [Azure PowerShell](/powershell/azure/).
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Ha a kódot helyileg szeretné futtatni, az [Azure CLI](/cli/azure/)-t.
@@ -44,7 +44,7 @@ Az Azure Database for MariaDB-kiszolgálót számítási és tárolási erőforr
 
 ### <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mariadb-with-vnet/)származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-managed-mariadb-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 
@@ -58,7 +58,7 @@ A sablon öt Azure-erőforrást határoz meg:
 
 További Azure Database for MariaDB-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
 
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 A sablon használatával hozzon létre egy új Azure Database for MariaDB-kiszolgálót a következő interaktív kóddal. A kód az új kiszolgálónév, egy új erőforráscsoport nevének és helyének, valamint egy rendszergazdai fiók nevének és jelszavának megadását kéri.
 
@@ -160,7 +160,7 @@ Get-AzResource -ResourceType "Microsoft.DbForMariaDB/servers" -Name $serverName 
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 Futtassa a következő interaktív kódot a Azure Database for MariaDB-kiszolgáló részleteinek megtekintéséhez. Meg kell adnia az új kiszolgáló nevét és erőforrás-csoportját.
 
@@ -173,7 +173,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -195,7 +195,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Read-Host -Prompt "Press [ENTER] to continue: "
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
 read -p "Enter the Resource Group name: " resourceGroupName &&

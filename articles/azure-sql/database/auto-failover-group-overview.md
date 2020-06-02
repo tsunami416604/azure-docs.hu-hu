@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: bea815dbf9f0da6c0acda000478203f514b2fb2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220383"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258572"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -309,8 +309,8 @@ Tegyük fel, hogy az a példány az elsődleges példány, a B példány a megl�
 ### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>A rendszeradatbázisok objektumaitól függő forgatókönyvek engedélyezése
 A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ha olyan forgatókönyveket szeretne engedélyezni, amelyek a rendszeradatbázisokból származó objektumtól függenek, a másodlagos példányon győződjön meg arról, hogy ugyanazokat az objektumokat hozza létre a másodlagos kiszolgálón. Ha például ugyanazokat a bejelentkezéseket kívánja használni a másodlagos példányon, ügyeljen arra, hogy az azonos biztonsági azonosítóval hozza létre őket. 
 ```SQL
--- Sample code to create login on the secondary instance
-CREATE LOGIN foo WITH PASSWORD = 'password', SID = 0x12345
+-- Code to create login on the secondary instance
+CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 ``` 
 
 

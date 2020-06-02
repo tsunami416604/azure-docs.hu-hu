@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8f2e21bddf0701ee6ce45af8012c853064e23168
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df01108a1cb103fc7392b1a599961a99a453a160
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021755"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265471"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Rövid útmutató: privát végpont létrehozása az Azure CLI-vel
 
@@ -22,7 +22,7 @@ A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehe
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez futtassa a parancsot `az --version` . További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot a Virtual Network üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 
@@ -109,7 +109,7 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>A saját DNS zóna konfigurálása
 
-Hozzon létre egy saját DNS zónát SQL Database tartományhoz, és hozzon létre egy társítási hivatkozást a Virtual Network.
+Hozzon létre egy saját DNS zónát SQL Database tartományhoz, hozzon létre egy társítási hivatkozást a Virtual Network, és hozzon létre egy DNS-zónát, hogy társítsa a privát végpontot a saját DNS zónához. 
 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \
@@ -119,16 +119,12 @@ az network private-dns link vnet create --resource-group myResourceGroup \
    --name MyDNSLink \
    --virtual-network myVirtualNetwork \
    --registration-enabled false
-
-#Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name myPrivateEndpoint --resource-group myResourceGroup --query 'networkInterfaces[0].id' -o tsv)
-
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
-# Copy the content for privateIPAddress and FQDN matching the SQL server name
-
-#Create DNS records
-az network private-dns record-set a create --name myserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-endpoint dns-zone-group create \
+   --resource-group myResourceGroup \
+   --endpoint-name myPrivateEndpoint \
+   --name MyZoneGroup \
+   --private-dns-zone "privatelink.database.windows.net" \
+   --zone-name sql
 ```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
@@ -188,7 +184,7 @@ Ebben a szakaszban a virtuális gépről a privát végpont használatával fog 
 7. Opcionálisan Információk létrehozása vagy lekérdezése a *mydatabase*
 8. A távoli asztali kapcsolat bezárásával *myVm*.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az erőforráscsoportot és a hozzá tartozó összes erőforrást:
 

@@ -12,16 +12,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/10/2020
-ms.openlocfilehash: bc1e767227f0bdd4ac6b90124c9ccca8f4a0669b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054376"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267307"
 ---
-# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database"></a>Rövid útmutató: a SSMS használata a Azure SQL Databasehoz való kapcsolódáshoz és lekérdezéshez
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Ebből a rövid útmutatóból megtudhatja, hogyan használható SQL Server Management Studio (SSMS) Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódáshoz, valamint néhány lekérdezés futtatásához.
 
@@ -33,10 +33,10 @@ A rövid útmutató elvégzéséhez a következő elemek szükségesek:
 
 - Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || SQL Database | SQL Managed Instance | Azure virtuális gépen futó SQL Server |
+  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [parancssori felület](scripts/create-and-configure-database-cli.md) | [parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
   |||[Kapcsolódás a webhelyről](../managed-instance/point-to-site-p2s-configure.md) | [Csatlakozás az SQL Serverhez](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
@@ -96,7 +96,7 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Futtassa ezt a [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-kódot az első 20 termék kategóriánkénti lekérdezéséhez.
+Futtassa ezt a [Select](/sql/t-sql/queries/select-transact-sql/) Transact-SQL-kódot az első 20 termék kategóriánkénti lekérdezéséhez.
 
 1. A Object Explorer kattintson a jobb gombbal a **mySampleDatabase** elemre, és válassza az **Új lekérdezés**elemet. Megnyílik az adatbázishoz csatlakoztatott új lekérdezési ablak.
 
@@ -115,7 +115,7 @@ Futtassa ezt a [Select](https://msdn.microsoft.com/library/ms189499.aspx) Transa
 
 ### <a name="insert-data"></a>Adat beszúrása
 
-Futtassa ezt a [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-kódot egy új termék létrehozásához a `SalesLT.Product` táblában.
+Futtassa ezt a [Insert](/sql/t-sql/statements/insert-transact-sql/) Transact-SQL-kódot egy új termék létrehozásához a `SalesLT.Product` táblában.
 
 1. Cserélje le az előző lekérdezést ezzel az eggyel.
 
@@ -155,7 +155,7 @@ Futtassa ezt a [Insert](https://msdn.microsoft.com/library/ms174335.aspx) Transa
 
 ### <a name="update-data"></a>Adatok frissítése
 
-Futtassa ezt a [frissítési](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-kódot az új termék módosításához.
+Futtassa ezt a [frissítési](/sql/t-sql/statements/update-transact-sql) Transact-SQL-kódot az új termék módosításához.
 
 1. Cserélje le az előző lekérdezést, amely a korábban létrehozott új rekordot adja vissza:
 
@@ -169,7 +169,7 @@ Futtassa ezt a [frissítési](https://msdn.microsoft.com/library/ms177523.aspx) 
 
 ### <a name="delete-data"></a>Adat törlése
 
-Futtassa ezt a [delete](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-kódot az új termék eltávolításához.
+Futtassa ezt a [delete](/sql/t-sql/statements/delete-transact-sql/) Transact-SQL-kódot az új termék eltávolításához.
 
 1. Cserélje le az előző lekérdezést ezzel az eggyel.
 
@@ -182,7 +182,7 @@ Futtassa ezt a [delete](https://msdn.microsoft.com/library/ms189835.aspx) Transa
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a SSMS: [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- További információ a SSMS: [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez lásd: [Kapcsolódás és lekérdezés a Azure Portal SQL-lekérdezés szerkesztőjével](connect-query-portal.md).
 - A Visual Studio Code használatával történő csatlakozásról és lekérdezésről lásd a [Visual Studio Code használatával végzett csatlakozásról és lekérdezésről](connect-query-vscode.md) szóló témakört.
 - A .NET használatával történő csatlakozásról és lekérdezésről lásd a [.NET használatával végzett csatlakozásról és lekérdezésről](connect-query-dotnet-visual-studio.md) szóló témakört.

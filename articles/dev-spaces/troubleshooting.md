@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872018"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263499"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -97,7 +97,7 @@ A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cl
 
 Ez a hiba akkor fordulhat elő, ha az Azure dev Spaces nem tud csatlakozni az AK-fürt API-kiszolgálójához.
 
-Ha az AK-alapú fürt API-kiszolgálójához való hozzáférés le van tiltva, vagy ha az AK-fürthöz engedélyezve van az [API-kiszolgáló által engedélyezett IP-címtartományok](../aks/api-server-authorized-ip-ranges.md) , akkor a fürtön a [régión alapuló további tartományokat](https://github.com/Azure/dev-spaces/tree/master/public-ips)is [létre kell hoznia](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) vagy [frissítenie](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) kell.
+Ha az AK-fürt API-kiszolgálójához való hozzáférés le van zárva, vagy ha az AK-fürthöz engedélyezve van az [API-kiszolgáló által engedélyezett IP-címtartományok](../aks/api-server-authorized-ip-ranges.md) , akkor a fürtön a [régión alapuló további tartományokat](configure-networking.md#aks-cluster-network-requirements) is [létre kell hoznia](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) vagy [frissítenie](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) kell.
 
 A kubectl parancsok futtatásával győződjön meg arról, hogy az API-kiszolgáló elérhető. Ha az API-kiszolgáló nem érhető el, forduljon az AK-támogatáshoz, és próbálkozzon újra, ha az API-kiszolgáló működik.
 
@@ -150,7 +150,7 @@ Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem tud kommunikálni a fü
 
 A probléma megoldásához indítsa újra a fürtben lévő ügynökök csomópontjait.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Hiba: "a kiadás azds- \< Identifier \> - \< spacename \> - \< szolgáltatásnév \> sikertelen: a (z)" \< szolgáltatásnév \> "szolgáltatás már létezik" vagy "lekéréses hozzáférés megtagadva a \< szolgáltatásnév számára, a \> tárház nem létezik, vagy" Docker bejelentkezhessen "szükséges.
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Hiba történt a kiadási azds – \<identifier\> - \<spacename\> - \<servicename\> sikertelen: \<servicename\> a (z) "" szolgáltatás már létezik "vagy" lekéréses hozzáférés megtagadva \<servicename\> , a tárház nem létezik, vagy a "Docker bejelentkezhessen" is szükséges.
 
 Ezek a hibák akkor fordulhatnak elő, ha a (például,, vagy) rendszerű Direct Helm-parancsokat (például `helm install` , `helm upgrade` vagy) futtatja a dev Spaces `helm delete` parancsokkal (például `azds up` és `azds down` ). Ezek azért történnek, mert a dev Spaces saját kormányrúd-példánnyal rendelkezik, ami ütközik a saját, azonos fejlesztői térben futó példányával.
 
@@ -272,7 +272,7 @@ Például a *Windows BranchCache* szolgáltatás leállításához és letiltás
 * Igény szerint letilthatja azt az *indítási típus* *letiltásának beállításával.*
 * Kattintson az *OK* gombra.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Hiba: "nem található AzureAssignedIdentity a (z) Pod: azds/azds-webhook – Deployment- \< ID \> a hozzárendelt állapotban"
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Hiba: "nem található AzureAssignedIdentity a következőhöz: Pod: azds/azds-webhook-Deployment- \<id\> in Assigned State"
 
 Ha egy, a [felügyelt identitással](../aks/use-managed-identity.md) és a [Pod által felügyelt identitásokkal](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) rendelkező AK-fürtön futó Azure fejlesztői tárhelyekkel rendelkező szolgáltatást futtat, akkor a folyamat a *diagram telepítése* lépés után lefagyhat. Ha megvizsgálja a *azds-injektort – webhookot* a *azds* -névtérben, akkor ezt a hibaüzenetet láthatja.
 
@@ -591,7 +591,7 @@ Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, 
 | storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
 | azds – <guid> . <location> . azds.io | HTTPS: 443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A teljes tartománynevet a (z)% dataplaneFqdn-ben találja a következőben:% felhasználói név% \. azds\settings.JSON|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "nem található a fürt \< fürtje \> az előfizetés \< subscriptionId \> "
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "a fürt nem található az \<cluster\> előfizetésben \<subscriptionId\> "
 
 Ez a hiba akkor fordulhat elő, ha a kubeconfig-fájl egy másik fürtöt vagy előfizetést céloz meg, mint amennyit az Azure dev Spaces ügyféloldali eszközeivel szeretne használni. Az Azure dev Spaces ügyféloldali eszközkészlete replikálja a *kubectl*viselkedését, amely [egy vagy több kubeconfig-fájlt](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) használ a fürt kiválasztásához és az azokkal való kommunikációhoz.
 

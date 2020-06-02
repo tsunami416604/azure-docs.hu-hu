@@ -9,38 +9,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741372"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266219"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
 >[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
+>Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure Active Directory (Azure AD) környezetét a [Azure Active Directory felügyeleti dokumentációjában](https://docs.microsoft.com/azure/active-directory).
+>
+> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni a Microsoft-fiókba](https://support.microsoft.com/help/12429) .  Emellett további információkat is megtudhat arról, hogy mi a teendő, ha a ["Ez a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
 
-A Microsoft Authenticator alkalmazás segít bejelentkezni a fiókjába, ha kétfaktoros ellenőrzést használ. A kétfaktoros ellenőrzés segítségével biztonságosabban férhet hozzá a fiókokhoz, különösen a bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejthető, ellopott vagy sérült, a kétfaktoros ellenőrzés egy további biztonsági lépés, amely segít a fiók védelmében azáltal, hogy nehezebbé teszi a más személyek számára a betörést.
-
-A Microsoft Authenticator alkalmazást többféleképpen is használhatja, többek között:
+A Microsoft Authenticator alkalmazás segít bejelentkezni a fiókjába, ha kétfaktoros ellenőrzést használ. A kétfaktoros ellenőrzésekkel biztonságosabban használhatja a fiókokat, mivel a jelszavakat elfelejtheti, ellopott vagy feltörték. A kétfaktoros ellenőrzés egy második tényezőt használ, például a telefont, hogy megnehezíti a többi személy számára a fiókba való betörést. A Microsoft Authenticator alkalmazást többféleképpen is használhatja, többek között:
 
 - **Kétfaktoros ellenőrzés.** A standard ellenőrzési módszer, amelyben az egyik tényező a jelszava. Miután bejelentkezett felhasználónevével és jelszavával, jóváhagyhat egy értesítést, vagy megadhat egy megadott ellenőrző kódot.
 
-- **Telefonos bejelentkezés.** A kétfaktoros ellenőrzés olyan verziója, amely jelszó kérése nélkül, a felhasználónévvel és a mobileszköz ujjlenyomattal, képpel vagy PIN-kódjával való bejelentkezését teszi lehetővé.
+- **Telefonos bejelentkezés.** A kétfaktoros ellenőrzés olyan verziója, amely lehetővé teszi jelszó kérése nélkül, a felhasználónévvel és a mobileszköz használatával történő bejelentkezést az ujjlenyomattal, az oldallal vagy a PIN-kóddal.
 
 - **Kód létrehozása.** A hitelesítő alkalmazásokat támogató egyéb fiókok számára.
 
-> [!Important]
-> A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az idő-alapú egyszeri jelszó (TOTP) szabványait.
->
-> Előfordulhat, hogy a szervezete hitelesítő alkalmazást használ a bejelentkezéshez, és hozzáfér a szervezeti adataihoz és dokumentumaihoz. Bár a Felhasználónév megjelenhet az alkalmazásban, a fiók valójában nem úgy van beállítva, hogy ellenőrzési módszerként működjön, amíg el nem végzi a regisztrációs folyamatot. További információkért lásd: [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md).
-> 
-> [!NOTE]
-> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni a Microsoft-fiókba](https://support.microsoft.com/help/12429) .  További információ arról, hogy mi a teendő, ha ["a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
+A hitelesítő minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az időalapú egyszeri jelszó (TOTP) szabványait.
+
+Előfordulhat, hogy a szervezetének a hitelesítő alkalmazás használatával kell bejelentkeznie, és hozzá kell férnie a szervezet adataihoz és dokumentumaihoz. Még ha a felhasználó neve is megjelenik az alkalmazásban, a fiók nincs beállítva ellenőrzési módszerként, amíg el nem végzi a regisztrációt. További információkért lásd: [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md).
 
 ## <a name="download-and-install-the-app"></a>Az alkalmazás letöltése és telepítése
 
@@ -55,7 +51,7 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 
 ## <a name="next-steps"></a>További lépések
 
-Miután letöltötte és telepítette az alkalmazást, hozzá kell adnia a különböző fiókokat. További információkért lásd:
+Az alkalmazás letöltése és telepítése után további információért tekintse meg a [hitelesítő alkalmazás áttekintését](user-help-auth-app-overview.md) . További beállítási lehetőségeket a következő témakörben talál:
 
 - **Hitelesítő alkalmazás.** Töltse le és használjon egy hitelesítő alkalmazást a jóváhagyási értesítés vagy a véletlenszerűen generált jóváhagyási kód beszerzéséhez a kétlépéses ellenőrzéshez vagy a jelszó-visszaállításhoz. A Microsoft Authenticator alkalmazás beállításával és használatával kapcsolatos részletes utasításokért lásd: [biztonsági adatok beállítása hitelesítő alkalmazás használatára](security-info-setup-auth-app.md).
 

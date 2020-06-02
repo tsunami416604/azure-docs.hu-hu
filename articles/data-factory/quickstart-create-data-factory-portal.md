@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683356"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248532"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyors útmutató: a Azure Data Factory felhasználói felületének használatával létrehozhatja az adatelőállítót
 
@@ -125,7 +125,7 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     d. A **fájl vagy mappa kiválasztása** ablakban keresse meg a **bemeneti** mappát az **adftutorial** tárolóban, válassza ki az **EMP. txt** fájlt, majd kattintson az **OK gombra**.
     
-    e. Válassza az **OK** lehetőséget.   
+    e. Kattintson az **OK** gombra.   
 
     ![InputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket:  
@@ -140,15 +140,16 @@ A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azu
 
     e. A **fájl elérési útja**területen adja meg az **adftutorial/output**értéket. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység futásidőben hozza létre.
 
-    f. Válassza az **OK** lehetőséget.   
+    f. Kattintson az **OK** gombra.   
 
     ![OutputDataset tulajdonságainak beállítása](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása 
 A feladat részeként létrehozza és megerősíti azt a másolási tevékenységgel rendelkező folyamatot, amely a bemeneti és a kimeneti adatkészletet használja. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba. Ha a bemeneti adatkészlet csak egy mappát ad meg (de fájlnevet nem), a másolási tevékenység a forrásmappában található összes fájlt átmásolja a célhelyre. 
 
 1. Válassza a **+** (plusz) gombot, majd válassza a **folyamat**elemet. 
 
-1. Az **Általános** lapon a **CopyPipeline****Nevet** adja meg. 
+1. A **Tulajdonságok**terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. A **Tevékenységek** eszközkészletben bontsa ki az **Áthelyezés és átalakítás** elemet. Húzza a **adatok másolása** tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
    ![Adatmásolási tevékenység létrehozása](./media/quickstart-create-data-factory-portal/copy-activity.png)
@@ -220,5 +221,5 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
 
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

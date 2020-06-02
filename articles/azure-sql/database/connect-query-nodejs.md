@@ -1,6 +1,7 @@
 ---
 title: Adatbázis lekérdezése a Node. js használatával
-description: Hogyan használható a Node. js egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
+description: Hogyan használható a Node. js egy olyan program létrehozásához, amely Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,19 +10,19 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 03/25/2019
+ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: b666e053c16e4dcac50505e3d36012f2a8677eb2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189352"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267375"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database"></a>Rövid útmutató: a Node. js használatával kérdez le egy adatbázist a Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a Node. js használatával lekérdezheti a Azure SQL Database vagy az Azure SQL felügyelt példányain lévő adatbázisokat
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a Node. js használatával kapcsolódhat Azure SQL Database adatbázisához, és T-SQL-utasításokkal adatokat lehet lekérdezni.
+Ebben a rövid útmutatóban a Node. js használatával kapcsolódhat egy adatbázishoz, és lekérdezheti azokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

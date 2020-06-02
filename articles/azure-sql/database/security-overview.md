@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191711"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266049"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>A Azure SQL Database & SQL felügyelt példány biztonsági képességeinek áttekintése
 
@@ -109,7 +109,7 @@ Például a ADO.NET-illesztőprogram használata esetén ez a **titkosítás = T
 > [!IMPORTANT]
 > Vegye figyelembe, hogy egyes nem Microsoft-illesztőprogramok nem használhatják a TLS-t alapértelmezés szerint, vagy a TLS (<1,2) régebbi verzióját használják a működéshez. Ebben az esetben a kiszolgáló továbbra is lehetővé teszi az adatbázishoz való kapcsolódást. Javasoljuk azonban, hogy értékelje a biztonsági kockázatokat, amelyek lehetővé teszik, hogy az ilyen illesztőprogramok és alkalmazások csatlakozzanak a SQL Databasehoz, különösen ha bizalmas adatokat tárol.
 >
-> A TLS-vel és a kapcsolattal kapcsolatos további információkért lásd: [TLS-megfontolások](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity)
+> A TLS-vel és a kapcsolattal kapcsolatos további információkért lásd: [TLS-megfontolások](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transzparens adattitkosítás (titkosítás – REST)
 

@@ -1,6 +1,7 @@
 ---
-title: A .NET Core használata a lekérdezéshez
-description: Ebből a témakörből megtudhatja, hogyan használhatja a .NET Core-t egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz kapcsolódik, és a Transact-SQL-utasítások használatával kérdezi le azokat.
+title: Adatbázis összekötése és lekérdezése a .NET Core használatával
+description: Ebből a témakörből megtudhatja, hogyan használhatja a .NET Core-t egy olyan program létrehozásához, amely Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz kapcsolódik, és a Transact-SQL-utasítások használatával kérdezi le azokat.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/29/2019
-ms.openlocfilehash: ff90cf7de3bb83a235f866d8035ccb036e021b83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 87acf1ab1591dadd5b3ac9c96fa36654bcbb4368
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189580"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267443"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database vagy Azure SQL felügyelt példányban
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a C# kódot fogja használni Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
+Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a C# kódot fogja használni az adatbázishoz való kapcsolódáshoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
 
 > [!TIP]
 > A következő Microsoft Learn modul segítséget nyújt a [ASP.NET-alkalmazások fejlesztéséhez és konfigurálásához, amelyek egy adatbázist kérdeznek le Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
@@ -31,7 +32,7 @@ Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist:
 
   || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
@@ -204,6 +205,6 @@ namespace sqltest
 ## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
-- Ismerje meg, hogyan [kapcsolódhat és kérhet le egy adatbázist a Azure SQL Database a .NET-keretrendszer és a Visual Studio használatával](connect-query-dotnet-visual-studio.md).  
-- Megtudhatja, hogyan [tervezheti meg az első adatbázisát Azure SQL Database a SSMS használatával](design-first-database-tutorial.md) , vagy [megtervezheti a Azure SQL Databaseban található adatbázist, és hogyan csatlakozhat a C# és a ADO.net](design-first-database-csharp-tutorial.md).
+- Ismerkedjen meg [a .NET-keretrendszer és a Visual Studio használatával a Azure SQL Database vagy az Azure SQL felügyelt példányának összekapcsolásával és lekérdezésével](connect-query-dotnet-visual-studio.md).  
+- Megtudhatja, hogyan [tervezheti meg első adatbázisát a SSMS](design-first-database-tutorial.md) , vagy [megtervezheti az adatbázist, és csatlakozhat a C# és a ADO.net](design-first-database-csharp-tutorial.md)szolgáltatáshoz.
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.

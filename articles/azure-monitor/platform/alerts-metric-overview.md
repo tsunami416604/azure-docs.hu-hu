@@ -4,12 +4,12 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855039"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248821"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -34,7 +34,7 @@ Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika ri
 
 A riasztási szabály létrehozásakor a figyelő 1 percenként fut, és az elmúlt 5 perc metrikai értékeit vizsgálja, és ellenőrzi, hogy az értékek átlaga meghaladja-e a 70 értéket. Ha a feltétel teljesül, az utolsó 5 perc átlagos CPU-értéke meghaladja az 70-as értéket, a riasztási szabály aktivált értesítést indít el. Ha e-mailt vagy webhook-műveletet konfigurált a riasztási szabályhoz társított műveleti csoportban, akkor mindkettőn aktiválva lesz egy értesítés.
 
-Ha egy szabályban több feltételt használ, a "and" szabály együttesen szerepel a feltételekben.  Ez azt eredményezi, hogy a riasztás akkor aktiválódik, ha a riasztás minden feltétele igaz értékre van kiértékelve, és akkor oldódik fel, ha az egyik feltétel már nem igaz. Az ilyen típusú riasztás például akkor riasztás, ha a "CPU nagyobb, mint 90%" és a "várólista hossza több mint 300 elem". 
+Ha egy szabályban több feltételt használ, a "and" szabály együttesen szerepel a feltételekben. Ez azt eredményezi, hogy a riasztási szabály minden feltétele igaz értékre van kiértékelve, és ha az egyik feltétel már nem igaz, akkor a riasztás megoldódik. Ilyen típusú riasztási szabály például egy Azure-beli virtuális gép figyelése és riasztás, ha a "százalék CPU értéke nagyobb, mint 90%", a "várólista hossza több mint 300 elem".
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Riasztási szabály dinamikus feltétel típussal
 
@@ -129,9 +129,9 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 | Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL Server-adatbázisok | **Igen** | **Igen** | No |
-| SQL Server rugalmas készletek | **Igen** | **Igen** | No |
-| Adatmező peremhálózati eszközei | **Igen** | **Igen** | No |
+| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 

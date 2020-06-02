@@ -1,6 +1,7 @@
 ---
 title: A PHP használata a lekérdezéshez
-description: Hogyan használható a PHP egy olyan program létrehozásához, amely Azure SQL Database-adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
+description: Hogyan használható a PHP egy olyan program létrehozásához, amely Azure SQL Database vagy az Azure SQL felügyelt példányában található adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,26 +10,26 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 02/12/2019
+ms.date: 05/29/2020
 ms.custom: sqldbrb=2 
-ms.openlocfilehash: 8c6ba33ac522272e36b8cd297ca525ec9f97875f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5443955bd24ed269ebf35f974be8c0497e2bfb60
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189324"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267341"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Rövid útmutató: a PHP használatával kérdez le egy adatbázist a Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ez a cikk bemutatja, hogyan használható a [php](https://php.net/manual/en/intro-whatis.php) a Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
+Ez a cikk bemutatja, hogyan használható a [php](https://php.net/manual/en/intro-whatis.php) egy Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
+- Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist:
 
   || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|

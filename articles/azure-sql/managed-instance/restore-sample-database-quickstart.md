@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 74975c050ef77c02e8912ce6cdd9404ac5bba019
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c750912e942d5dadeb97e6675427f1730912704a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054730"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267579"
 ---
 # <a name="quickstart-restore-a-database-to-an-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása egy felügyelt Azure SQL-példányra a SSMS használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,6 +96,7 @@ A SQL Server Management Studio (SSMS) alkalmazásban az alábbi lépéseket köv
 
 ## <a name="next-steps"></a>További lépések
 
+- Ha az 5. lépésben az adatbázis-visszaállítás a 22003-es AZONOSÍTÓJÚ üzenettel megszűnik, hozzon létre egy új biztonságimásolat-fájlt, amely biztonsági mentési ellenőrzőösszegeket tartalmaz, és végezze el a visszaállítást. A biztonsági mentés vagy a visszaállítás során olvassa el a [biztonsági másolatok ellenőrzőösszegének engedélyezése vagy letiltása](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)című témakört.
 - Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Az alkalmazás-csatlakozási lehetőségek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).
 - Ha kedvenc eszközeit vagy nyelveit szeretné lekérdezni, tekintse meg a rövid útmutatók [: Azure SQL Database a kapcsolódás és a lekérdezés](../database/connect-query-content-reference-guide.md)című témakört.

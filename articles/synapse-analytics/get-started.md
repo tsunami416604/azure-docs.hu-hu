@@ -9,22 +9,23 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 75c8d52a750567d3b34ad2aea236477ca8c97245
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171412"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248328"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Első lépések az Azure szinapszis Analytics használatával
 
-Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához és használatához szükséges alapvető lépéseken.
+Ez a dokumentum végigvezeti az Azure szinapszis Analytics beállításához és használatához szükséges alapvető lépéseken.
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Storage-fiók előkészítése a szinapszis-munkaterülettel való használatra
 
 * A [Azure Portal](https://portal.azure.com) megnyitása
 * Hozzon létre egy új Storage-fiókot a következő beállításokkal:
-    |Tab|Beállítás | Ajánlott érték | Description |
+
+    |Tab|Beállítás | Ajánlott érték | Leírás |
     |---|---|---|---|
     |Alapvető beállítások|**Storage-fiók neve**| Bármilyen nevet megadhat.|Ebben a dokumentumban a következőre hivatkozunk: `contosolake` .|
     |Alapvető beállítások|**Fiók típusa**|A következőre kell beállítani`StorageV2`||
@@ -32,23 +33,25 @@ Ez az oktatóanyag végigvezeti az Azure szinapszis Analytics beállításához 
     |Felsőfokú|**Data Lake Storage Gen2**|`Enabled`| Az Azure szinapszis csak olyan Storage-fiókokkal működik, ahol ez a beállítás engedélyezve van.|
 
 1. A Storage-fiók létrehozása után a bal oldali navigációs sávon válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Ezután rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy azok már hozzá vannak rendelve. 
+
     a. * Rendelje hozzá magát a **tulajdonosi** szerepkörhöz a b Storage-fiókban. * Rendelje hozzá magát a Storage- **blob adat-tulajdonosi** szerepköréhez a Storage-fiókban
+
 1. A bal oldali navigációs sávon válassza a **tárolók** lehetőséget, és hozzon létre egy tárolót. Bármilyen nevet megadhat. Fogadja el az alapértelmezett **nyilvános hozzáférési szintet**. Ebben a dokumentumban a tárolót fogjuk hívni `users` . Kattintson a **Létrehozás** gombra. 
+
+A következő lépésben úgy konfigurálja a szinapszis-munkaterületet, hogy ezt a Storage-fiókot használja az "elsődleges" Storage-fiókként, valamint a munkaterület adatait tároló tárolót. A munkaterület Apache Spark táblákban és a Spark-alkalmazás naplófájljaiban tárolja a fiókban található, a nevű mappában tárolt adatnaplókat `/synapse/workspacename` .
 
 ## <a name="create-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
 * Nyissa meg a [Azure Portal](https://portal.azure.com) és a felső kereséssel `Synapse` .
 * A **szolgáltatások**területen található keresési eredmények között válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió) lehetőséget.**
-* Válassza a **+ Hozzáadás** lehetőséget, ha új munkaterületet szeretne létrehozni ezekkel a beállításokkal
+* Válassza a **+ Hozzáadás** lehetőséget a munkaterület létrehozásához ezekkel a beállításokkal
 
-    |Tab|Beállítás | Ajánlott érték | Description |
+    |Tab|Beállítás | Ajánlott érték | Leírás |
     |---|---|---|---|
     |Alapvető beállítások|**Munkaterület neve**|Bármilyen hívást megadhat.| Ebben a dokumentumban a következőt fogjuk használni:`myworkspace`|
     |Alapvető beállítások|**Régió**|A Storage-fiók régiójának egyeztetése|
 
 1. A **2. generációs Data Lake Storage kiválasztása**területen válassza ki a korábban létrehozott fiókot és tárolót.
-    > [!NOTE]
-    > Az itt kiválasztott Storage-fiók a szinapszis munkaterülethez tartozó "elsődleges" Storage-fiókra hivatkozik. Ez a fiók az adattárolásra szolgál az Apache Spark-táblákban, illetve a Spark-készletek létrehozásakor vagy Spark-alkalmazások futtatásakor létrehozott naplók esetében.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kattintson a **Létrehozás** gombra. A munkaterület néhány percen belül elkészül.
 
@@ -61,7 +64,7 @@ Lehetséges, hogy ezt már elvégezték. Minden esetben ellenőrizze, hogy van-e
     a. Rendelje hozzá a munkaterület identitását a Storage **blob adatközreműködői** szerepkörhöz a Storage-fiókban. A munkaterület identitásának neve megegyezik a munkaterülettel. Ebben a dokumentumban a munkaterület neve, `myworkspace` így a munkaterület identitása`myworkspaced`
 1. Kattintson a **Mentés** gombra.
     
-## <a name="launch-synapse-studio"></a>A szinapszis Studio elindítása
+## <a name="launch-synapse-studio"></a>A Synapse Studio indítása
 
 A szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a szinapszis Studio alkalmazást:
 * Nyissa meg a szinapszis munkaterületet a [Azure Portalban](https://portal.azure.com) , és az **Áttekintés** szakasz tetején válassza a **szinapszis Studio elindítása** elemet.
@@ -70,10 +73,6 @@ A szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a 
 ## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
 
 1. A szinapszis Studióban a bal oldali navigációs sávon válassza a **> SQL-készletek kezelése** lehetőséget.
-
-    > [!NOTE] 
-    > Az összes szinapszis-munkaterület egy előre létrehozott, **SQL on-demand**nevű készlettel rendelkezik.
-
 1. Válassza az **+ új** lehetőséget, és adja meg a következő beállításokat:
 
     |Beállítás | Ajánlott érték | 
@@ -82,14 +81,9 @@ A szinapszis-munkaterület létrehozása után kétféleképpen nyithatja meg a 
     |**Teljesítményszint**|`DW100C`|
 
 1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
-1. Az SQL-készlet néhány percen belül elkészül.
+1. Az SQL-készlet néhány percen belül elkészül. Az SQL-készlet létrehozásakor egy SQL Pool-adatbázishoz (más néven **SQLDB1**) lesz társítva.
 
-    > [!NOTE]
-    > A szinapszis SQL-készlet megfelel a (z) "Azure SQL Data Warehouse" néven használt
-
-Az SQL-készletek számlázható erőforrásokat használnak, amíg fut. Így szükség esetén szüneteltetheti a készletet a költségek csökkentése érdekében.
-
-Az SQL-készlet létrehozásakor egy SQL Pool-adatbázishoz (más néven **SQLDB1**) lesz társítva.
+Az SQL-készletek számlázható erőforrásokat használnak, amíg aktívak. A készletet később is szüneteltetheti a költségek csökkentése érdekében.
 
 ## <a name="create-an-apache-spark-pool"></a>Apache Spark-készlet létrehozása
 
@@ -113,7 +107,7 @@ Mivel ezek a metaadatok, a Spark-készletek nem indíthatók el és nem állíth
 Ha bármilyen Spark-tevékenységet végzett a Szinapszisban, meg kell adnia a használni kívánt Spark-készletet. A készlet tájékoztatja, hogy hány Spark-erőforrást kell használni. Csak a felhasznált erőforrások Thar kell fizetnie. Ha aktívan abbahagyja a készlet használatát, az erőforrások automatikusan időtúllépést okoznak, és újra lesznek hasznosítva.
 
 > [!NOTE]
-> A Spark-adatbázisok a Spark-készletektől függetlenül jönnek létre. A munkaterületnek mindig van egy **alapértelmezett** Spark-adatbázisa, és további Spark-adatbázisok is létrehozhatók.
+> A Spark-adatbázisok a Spark-készletektől függetlenül jönnek létre. A munkaterületnek mindig van egy **alapértelmezett** Spark-adatbázisa, és további Spark-adatbázisokat is létrehozhat.
 
 ## <a name="the-sql-on-demand-pool"></a>Az igény szerinti SQL-készlet
 
@@ -136,7 +130,7 @@ Minden munkaterülethez egy előre összeállított és nem törölhető, **SQL 
 1. Navigáljon a **SQLDB1 > táblákhoz**. Ekkor több táblázat is be van töltve.
 1. Kattintson a jobb gombbal a **dbo. Utazási** táblázat, és válassza az **új SQL-szkript > válassza a Top 100 sort**
 1. A rendszer létrehoz egy új SQL-parancsfájlt, és automatikusan futtatja azt.
-1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a SQLDB1 nevű SQL-készletre lesz beállítva.
+1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a nevű SQL-készletre lesz beállítva `SQLDB1` .
 1. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
 
     ```sql
@@ -154,7 +148,7 @@ Minden munkaterülethez egy előre összeállított és nem törölhető, **SQL 
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>A New York-i taxi-mintaadatok betöltése a Spark nyctaxi-adatbázisba
 
-A (z) egy táblájában elérhetők az adatkészletek `SQLDB1` . Most betöltjük egy "nyctaxi" nevű Spark-adatbázisba.
+A (z) egy táblájában elérhetők az adatkészletek `SQLDB1` . Most betöltjük egy nevű Spark-adatbázisba `nyctaxi` .
 
 1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz
 1. **+** **Jegyzetfüzet** kiválasztása és kiválasztása
@@ -176,7 +170,7 @@ A (z) egy táblájában elérhetők az adatkészletek `SQLDB1` . Most betöltjü
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
 
 1. Visszatérés a jegyzetfüzetbe
-1. Hozzon létre egy új kódlapot, írja be az alábbi szöveget, és futtassa a cellát, hogy például a Spark-ADATBÁZISba betöltött New York-i taxi-adathalmazt `nyctaxi` .
+1. Hozzon létre egy új kódlapot, írja be az alábbi szöveget, és futtassa a cellát, hogy például a Spark-adatbázisba betöltött New York-i taxi-adathalmazt `nyctaxi` .
 
    ```py
    %%pyspark
@@ -286,8 +280,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. **Csatolt** kijelölése
 1. Navigáljon a **Storage-fiókok > sajátmunkaterület (elsődleges-contosolake)**
 1. **Felhasználók kiválasztása (elsődleges) "**
-1. Ekkor egy "NYCTaxi" nevű mappát kell megjelennie. A belsejében két "PassengerCountStats. csv" és "PassengerCountStats. Parque" nevű mappa jelenik meg.
-1. Navigáljon a "PassengerCountStats. Parque" mappába.
+1. Ekkor megjelenik egy nevű mappa `NYCTaxi` . A belsejében két mappát kell látnia `PassengerCountStats.csv` `PassengerCountStats.parquet` .
+1. Navigáljon a `PassengerCountStats.parquet` mappába.
 1. Kattintson a jobb gombbal a parketta-fájlra, és válassza az **új jegyzetfüzet**lehetőséget, majd hozzon létre egy jegyzetfüzetet a következőhöz hasonló cellával:
 
     ```py
@@ -330,7 +324,7 @@ Power BI munkaterületet összekapcsolhatja a szinapszis munkaterülettel. Ez le
 
     |Beállítás | Ajánlott érték | 
     |---|---|
-    |**Név**|`NYCTaxiWorkspace1`|
+    |**Name (Név)**|`NYCTaxiWorkspace1`|
     |**Munkaterület neve**|`NYCTaxiWorkspace1`|
         
 1. Kattintson a **Létrehozás** gombra.
@@ -380,7 +374,7 @@ Power BI munkaterületet összekapcsolhatja a szinapszis munkaterülettel. Ez le
 1. Ezen a helyen megtekintheti a munkaterületen zajló összes tevékenység előzményeit, és azokat is, amelyek aktívak.
 1. Ismerkedjen meg a **folyamat futtatásával**, **Apache Spark alkalmazásokkal**és **SQL-kérelmekkel** , és megtekintheti, hogy mit tett a munkaterületen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure szinapszis Analytics (előzetes verzió) szolgáltatásról](overview-what-is.md)
 

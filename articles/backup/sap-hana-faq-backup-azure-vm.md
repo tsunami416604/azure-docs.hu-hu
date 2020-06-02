@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701008"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248804"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -86,6 +86,10 @@ Győződjön meg arról, hogy a helyreállítás **kényszerítése** beállít�
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Miért látom a "forrás-és célszámítógépek visszaállítása nem kompatibilis" hibaüzenetet?
 
 A jelenleg támogatott visszaállítási típusok megtekintéséhez tekintse meg a [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP HANA megjegyzését.
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Használhatok a SLES-on futó adatbázis biztonsági másolatát egy RHEL HANA rendszerre való visszaállításra, vagy fordítva?
+
+Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA rendszer is kompatibilis a visszaállítással az SAP alapján. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
 
 ## <a name="next-steps"></a>További lépések
 

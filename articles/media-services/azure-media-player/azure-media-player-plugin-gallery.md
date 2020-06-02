@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: ba8f60ea10a8b0b85bc030b23dfa71cf3cb264ff
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195645"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263737"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
 
@@ -25,8 +25,8 @@ ms.locfileid: "84195645"
 | Diagnosztika átfedésben                 | [Bemutató](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Ez a beépülő modul a következőt jeleníti meg: az összes kulcsfontosságú paraméter, a videó statisztikái, a videolejátszás életciklusának összes eseménye, valamint a DRM-védelemmel kapcsolatos információk, például a Key ID, a licenc-megszerzési URL-címek,                                                                                                                                                                      |
 | Frame rate és időkód kalkulátor | Nincs elérhető bemutató | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Ez a beépülő modul kiszámítja a videó képkocka arányát az `tfhd` / `trun` első MPEG-Dash videó töredékének MP4-mezői alapján, elemezi az időméretezési értéket az MPEG-Dash ügyfél-jegyzékfájlból, valamint lehetővé teszi az időkód létrehozását egy adott abszolút időtartamra a lejátszótól (valamint a játékosnak az időkód által megadott abszolút időt is biztosít) |
 | <strike>Lejátszás sebessége</strike>                      | [Bemutató](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Ez a beépülő modul lehetővé teszi a nézők számára a videó sebességének szabályozását. *Vegye figyelembe, hogy ez a funkció automatikusan elérhető az AMP v 2.0.0 + verzióban, de alapértelmezés szerint le van tiltva.* Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a mintákat [itt](https://github.com/Azure-Samples/azure-media-player-samples) |
-| Egérmutató időbeli hegye                      | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Időpontot jelenít meg a folyamatjelző sáv fölé az egérmutatón az idő pontos keresésekor. *Megjegyzés: Ez a beépülő modul már integrálva van az amp-be* , de ha szeretné megismerni, hogy milyen módon van programozva, nyugodtan tekintse meg.                                                                                                                       |
-| Cím átfedésben                       | [Bemutató](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | Átfedésben lévő videó címe a képernyőn |
+| Egérmutató időbeli hegye                      | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Időpontot jelenít meg a folyamatjelző sáv fölé az egérmutatón az idő pontos keresésekor. *Megjegyzés: Ez a beépülő modul már integrálva van az amp-be* , de ha szeretné megismerni, hogy milyen módon van programozva, nyugodtan tekintse meg.                                                                                                                 |
+| Cím átfedésben                       | [Bemutató](https://azure-samples.github.io/media-services-javascript-azure-media-player-title-overlay-plugin)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-title-overlay-plugin)                     | Átfedésben lévő videó címe a képernyőn |
 | Idősor-jelölők                    | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timelinemarkers/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-timeline-markers-plugin)                     | Ez a beépülő modul az időpontok tömbjét veszi igénybe, és a folyamatjelző sáv fölé rendezi az egyes időpontokat. |
 | Elemzés                           | | | |
 | Application Insights                | [Blogbejegyzés](https://azure.microsoft.com/blog/player-analytics-azure-media-player-plugin/)                   | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin)                     | Ez a beépülő modul, amely nyomon követi a lejátszó metrikáit és portjait, hogy Power BI a megtekintők játékosi élményének intuitív grafikus ábrázolását. |

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643339"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266355"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -65,8 +65,8 @@ Az Azure Multi-Factor Authentication-regisztrációt követően a következő ki
 - Exchange-rendszergazda
 - Feltételes hozzáférésű rendszergazda
 - Biztonsági rendszergazda
-- Segélyszolgálat rendszergazdája vagy jelszavas rendszergazdája
-- Számlázási rendszergazda
+- Segélyszolgálat rendszergazdája
+- Számlázási adminisztrátor
 - Felhasználói rendszergazda
 - Hitelesítés rendszergazdája
 
@@ -145,9 +145,9 @@ A feltételes hozzáférés használatával a biztonsági alapértékekhez hason
 
 Az alábbiakban részletes útmutatók láthatók arról, hogy a feltételes hozzáférés hogyan konfigurálható a biztonsági alapértékek által engedélyezett szabályzatoknak megfelelő házirendekkel:
 
-- [MFA megkövetelése rendszergazdák számára](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [MFA megkövetelése a rendszergazdáktól](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [MFA megkövetelése az Azure-beli felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Örökölt hitelesítés tiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Régi hitelesítési folyamat letiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA megkövetelése minden felhasználótól](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – a prémium szintű Azure AD P2 Azure ad Identity Protection részét igényli.
 
@@ -177,4 +177,4 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 
 ## <a name="next-steps"></a>További lépések
 
-[Általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
+[Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

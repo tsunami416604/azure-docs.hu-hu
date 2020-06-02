@@ -4,14 +4,14 @@ description: Az Azure-régiók között áthelyezhető Azure-erőforrástípusok
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f59bbb4711d79fdcb59e39378c25c031ac68af8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760708"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249059"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
 
@@ -186,7 +186,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | szolgáltatás |  Igen | 
+> | szolgáltatás |  Igen (sablon használatával) <br/><br/> [API Management áthelyezése a régiók között](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -200,7 +200,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | apiapps | Nem | 
+> | apiapps | Igen (sablon használatával)<br/><br/> [App Service alkalmazás áthelyezése másik régióba](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | Nem | 
 > | átjárók | Nem | 
 
@@ -217,7 +217,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | automationaccounts | Nem | 
+> | automationaccounts | Igen (sablon használatával) <br/><br/> [Geo-replikáció használata](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/konfigurációk | Nem | 
 > | automationaccounts/runbookok | Nem | 
 
@@ -249,7 +249,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | batchaccounts | Nem |
+> | batchaccounts |  Igen (sablon használatával)<br/><br/> [Batch-fiók áthelyezése régiók között](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft. BatchAI
 
@@ -355,6 +355,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | fiókok | Nem | 
+> | Cognitive Search | Igen (sablon használatával)<br/><br/> [Cognitive Search-szolgáltatás áthelyezése másik régióba](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -588,6 +589,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | tartományvezérlők | Nem | 
+> | AK-fürt | Nem<br/><br/> [További](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) információ a másik régióba való áttérésről.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
@@ -636,7 +638,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | fürtök | Nem |  
-> | névterek | Nem | 
+> | névterek | Igen (sablonnal)<br/><br/> [Event hub-névtér áthelyezése másik régióba](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
@@ -713,7 +715,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | iotapps |  Nem |  
+> | checknameavailability |  Nem
+> | Graph | Nem
+
+## <a name="microsoftiothub"></a>Microsoft. IoTHub
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Régió áthelyezése | 
+> | ------------- | ----------- |
+> |  iothub |  Igen (klónozási központ) <br/><br/> [IoT-központ klónozása egy másik régióba](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
@@ -897,7 +907,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | expressrouteports | Nem | 
 > | frontdoors | Nem | 
 > | frontdoorwebapplicationfirewallpolicies | Nem | 
-> | loadbalancers | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br> – Igen standard SKU |
+> | loadbalancers | Igen <br/><br/> Exportálhatja a meglévő konfigurációt sablonként, és üzembe helyezheti a sablont az új régióban. Ismerje meg, hogyan helyezhető át [külső](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) vagy [belső](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) terheléselosztó. |
 > | localnetworkgateways |  Nem | 
 > | natgateways |  Nem | 
 > | networkintentpolicies |  Nem | 
@@ -913,7 +923,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | privatednszones / virtualnetworklinks |  Nem |  
 > | privateendpoints | Nem | 
 > | privatelinkservices | Nem | 
-> | nyilvános IP | Igen – alapszintű SKU<br>Nem szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
+> | nyilvános IP | Igen<br/><br/> Exportálhatja a meglévő nyilvános IP-cím konfigurációját sablonként, és üzembe helyezheti a sablont az új régióban. [További](../../virtual-network/move-across-regions-publicip-portal.md) információ a nyilvános IP-címek áthelyezéséről. |
 > | publicipprefixes | Nem | 
 > | routefilters | Nem | 
 > | routetables |  Nem | 
@@ -1142,7 +1152,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storageaccounts | Igen | 
+> | storageaccounts | Igen<br/><br/> [Azure Storage-fiók áthelyezése másik régióba](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 

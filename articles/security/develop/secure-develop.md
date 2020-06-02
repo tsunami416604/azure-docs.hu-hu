@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800290"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266763"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -128,7 +128,7 @@ A dinamikus Application Security Testing (Zsuzsanna) egy olyan folyamat, amely a
 
 A Zsuzsanna eltér a statikus alkalmazások biztonsági tesztelésének (17:00). A 17:00-eszközök elemzik a forráskódot vagy a kód lefordított verzióit, ha a kód nem fut a biztonsági hibák megállapítása érdekében.
 
-Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a [penetrációs teszter](../fundamentals/pen-testing.md) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
+Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a [penetrációs teszter](../fundamentals/pen-testing.md) vagy a sebezhetőségi felmérés) segítségével. Ha egy biztonsági szakember nem érhető el, a Zsuzsanna saját kezűleg is elvégezheti egy webproxy-olvasóval és néhány betanítással. A Zsuzsanna-szkennert korán csatlakoztatva biztosíthatja, hogy ne vezessen be nyilvánvaló biztonsági problémákat a kódban. A webalkalmazási sebezhetőségi képolvasók listáját a [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) webhelyén tekintheti meg.
 
 ### <a name="perform-fuzz-testing"></a>A fuzz-tesztelés végrehajtása
 
@@ -150,7 +150,7 @@ Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden má
 
 Az Azure-hoz készült [Secure DevOps Kit](https://azsk.azurewebsites.net/index.html) (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)

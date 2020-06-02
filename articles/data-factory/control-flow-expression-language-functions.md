@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9870b239ca0501e63df3d800b8e4847cb0f390ac
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860936"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266848"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és függvények az Azure Data Factoryben
 
@@ -235,7 +235,7 @@ Ezek a függvények a feltételeken belül hasznosak lehetnek, és bármilyen t�
 | [float](control-flow-expression-language-functions.md#float) | Lebegőpontos szám visszaadása egy bemeneti értékhez. |
 | [int](control-flow-expression-language-functions.md#int) | Egy sztring egész változatának visszaadása. |
 | [JSON](control-flow-expression-language-functions.md#json) | A JavaScript Object Notation (JSON) típusú értéket vagy objektumot adja vissza egy karakterlánc vagy XML számára. |
-| [karakterlánc](control-flow-expression-language-functions.md#string) | Egy bemeneti érték karakterlánc-verziójának visszaadása. |
+| [sztring](control-flow-expression-language-functions.md#string) | Egy bemeneti érték karakterlánc-verziójának visszaadása. |
 | [uriComponent](control-flow-expression-language-functions.md#uriComponent) | Az URI-kódolású verziót adja vissza egy bemeneti értékhez az URL-nem biztonságos karakterek a Escape-karakterekkel való lecserélésével. |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | Egy URI-kódolású karakterlánc bináris verziójának visszaadása. |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | URI-kódolású karakterlánc karakterlánc-verziójának visszaadása. |
@@ -532,21 +532,21 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 ### <a name="and"></a>és
 
-Győződjön meg arról, hogy az összes kifejezés igaz-e.
-Igaz értéket ad vissza, ha az összes kifejezés igaz, vagy hamis értéket ad vissza, ha legalább egy kifejezés hamis.
+Győződjön meg arról, hogy mindkét kifejezés igaz-e.
+Igaz értéket ad vissza, ha mindkét kifejezés igaz, vagy hamis értéket ad vissza, ha legalább egy kifejezés hamis.
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*Kifejezés2*>,... | Igen | Logikai érték | Az ellenőrzési kifejezések |
+| <*expression1*>, <*Kifejezés2*> | Igen | Logikai érték | Az ellenőrzési kifejezések |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
-| true (igaz) vagy false (hamis) | Logikai érték | Igaz értéket ad vissza, ha az összes kifejezés igaz. Hamis értéket ad vissza, ha legalább egy kifejezés hamis. |
+| true (igaz) vagy false (hamis) | Logikai érték | Igaz értéket ad vissza, ha mindkét kifejezés igaz. Hamis értéket ad vissza, ha legalább egy kifejezés hamis. |
 ||||
 
 *1\. példa*
@@ -567,7 +567,7 @@ and(false, false)
 
 *2\. példa*
 
-Ezek a példák azt jelzik, hogy a megadott kifejezések mind igazak-e:
+Ezek a példák azt jelzik, hogy a megadott kifejezések igazak-e:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -2389,20 +2389,20 @@ not(equals(1, 1))
 ### <a name="or"></a>vagy
 
 Győződjön meg arról, hogy legalább egy kifejezés igaz értékű-e.
-Igaz értéket ad vissza, ha legalább egy kifejezés igaz értékű, vagy hamis értéket ad vissza, ha az összes hamis.
+Igaz értéket ad vissza, ha legalább egy kifejezés igaz, vagy hamis értéket ad vissza, ha mindkettő hamis.
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*Kifejezés2*>,... | Igen | Logikai érték | Az ellenőrzési kifejezések |
+| <*expression1*>, <*Kifejezés2*> | Igen | Logikai érték | Az ellenőrzési kifejezések |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| true (igaz) vagy false (hamis) | Logikai érték | Igaz értéket ad vissza, ha legalább egy kifejezés igaz. Hamis értéket ad vissza, ha az összes kifejezés hamis. |
+| true (igaz) vagy false (hamis) | Logikai érték | Igaz értéket ad vissza, ha legalább egy kifejezés igaz. Hamis értéket ad vissza, ha mindkét kifejezés hamis. |
 ||||
 
 *1\. példa*
