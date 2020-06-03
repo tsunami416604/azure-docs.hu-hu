@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131194"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300790"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -42,7 +42,7 @@ Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási ké
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Site Recovery konfigurálása naplók küldéséhez
 
-1. A tárolóban kattintson a **diagnosztikai beállítások** > **Hozzáadás diagnosztikai beállítás**elemre.
+1. A tárolóban kattintson a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás**elemre.
 
     ![Erőforrás-naplózás kiválasztása](./media/monitoring-log-analytics/add-diagnostic.png)
 
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Riasztások beállítása – példák
 
-Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) információ a naplózási riasztások beállításáról. 
+Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) információ a naplózási riasztások beállításáról. 
 
 > [!NOTE]
 > Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.

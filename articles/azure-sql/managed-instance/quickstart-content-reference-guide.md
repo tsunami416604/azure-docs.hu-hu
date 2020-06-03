@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 105c7ae2b0e7f39c29500634391b4388fa2a4723
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5ed88514650b9931a52e5f155abc34fbf734a3b7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194947"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310767"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,18 +48,18 @@ A felügyelt SQL-példány manuális létrehozása helyett használhatja a [Powe
 
 ### <a name="migrate-your-databases"></a>Adatbázisok migrálása
 
-A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti a SQL Server-adatbázisok áttelepítését. Az áttelepítés sikertelen lehet, mert az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
+A felügyelt SQL-példányok létrehozása és a hozzáférés konfigurálása után megkezdheti a SQL Server-adatbázisok áttelepítését. Az áttelepítés sikertelen lehet, ha az áttelepíteni kívánt forrásadatbázis nem támogatott funkciói vannak. A hibák elkerülése és a kompatibilitás ellenőrzése érdekében [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) segítségével elemezheti az adatbázisait SQL Server és megkeresheti az SQL felügyelt példányra való áttelepítést megakadályozó problémákat, például a [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) vagy több naplófájlt. Ha megoldja ezeket a problémákat, az adatbázisok készen állnak az SQL felügyelt példányra való áttelepítésre. [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) egy másik hasznos eszköz, amely rögzíti a munkaterhelést SQL Server és visszajátszhatja azt egy SQL felügyelt példányon, így megállapítható, hogy az SQL-ben felügyelt példányra való Migrálás során probléma merül fel.
 
-Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt SQL-példányra, a natív SQL Server visszaállítási képességeivel állíthatja vissza az adatbázist egy SQL felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy Azure-beli virtuális gépen telepített SQL Server-adatbázismotor használatával. Gyors útmutató: visszaállítás a [biztonsági másolatból egy SQL-felügyelt példányra](restore-sample-database-quickstart.md). Ebben a rövid útmutatóban egy, `.bak` Az Azure Blob Storage-ban tárolt fájlból kell visszaállítani a `RESTORE` Transact-SQL parancs használatával.
+Ha biztos benne, hogy áttelepítheti az adatbázist egy felügyelt SQL-példányra, a natív SQL Server visszaállítási képességeivel állíthatja vissza az adatbázist egy SQL felügyelt példányra egy `.bak` fájlból. Ezzel a módszerrel áttelepítheti az adatbázisokat a helyszíni vagy az Azure Virtual Machines telepített SQL Server-adatbázismotor használatával. Gyors útmutató: visszaállítás a [biztonsági másolatból egy SQL-felügyelt példányra](restore-sample-database-quickstart.md). Ebben a rövid útmutatóban egy, `.bak` Az Azure Blob Storage-ban tárolt fájlból kell visszaállítani a `RESTORE` Transact-SQL parancs használatával.
 
 > [!TIP]
 > Ha a `BACKUP` Transact-SQL parancs használatával szeretne biztonsági másolatot készíteni az adatbázisról az Azure Blob Storage-ban, tekintse [meg SQL Server biztonsági mentés URL-címére](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-Ezek a rövid útmutatók lehetővé teszik az adatbázis biztonsági másolatának gyors létrehozását, konfigurálását és visszaállítását egy SQL-felügyelt példányra. Bizonyos helyzetekben a felügyelt SQL-példányok és a szükséges hálózati környezet testreszabására vagy automatizálására van szükség. A következő forgatókönyvek leírását alább találja.
+Ezek a rövid útmutatók lehetővé teszik az adatbázis biztonsági másolatának gyors létrehozását, konfigurálását és visszaállítását egy SQL-felügyelt példányra. Bizonyos esetekben testre kell szabnia vagy automatizálni kell az SQL felügyelt példányának és a szükséges hálózati környezetnek a telepítését. A következő forgatókönyvek leírását alább találja.
 
 ## <a name="customize-network-environment"></a>Hálózati környezet testreszabása
 
-Bár a VNet/alhálózat automatikusan konfigurálható, ha a példányt [a Azure Portal használatával hozza létre](instance-create-quickstart.md), érdemes lehet létrehozni az SQL felügyelt példányainak létrehozása előtt, mivel beállíthatja a VNet és az alhálózat paramétereit. A hálózati környezet létrehozásának és konfigurálásának legegyszerűbb módja az [Azure erőforrás-telepítési](virtual-network-subnet-create-arm-template.md) sablon használata, amely létrehozza és konfigurálja a hálózatot és az alhálózatot, ahol a példány el lesz helyezve. Csak a Azure Resource Manager üzembe helyezése gombot kell megnyomnia, és fel kell töltenie az űrlapot paraméterekkel.
+Bár a VNet/alhálózat automatikusan konfigurálható, ha a példányt [a Azure Portal használatával hozza létre](instance-create-quickstart.md), érdemes lehet létrehozni, mielőtt megkezdené a példányok LÉTREHOZÁSÁT az SQL felügyelt példányban, mert beállíthatja a VNet és az alhálózat paramétereit. A hálózati környezet létrehozásának és konfigurálásának legegyszerűbb módja az [Azure erőforrás-telepítési](virtual-network-subnet-create-arm-template.md) sablon használata, amely létrehozza és konfigurálja a hálózatot és az alhálózatot, ahol a példány el lesz helyezve. Csak a Azure Resource Manager üzembe helyezése gombot kell megnyomnia, és fel kell töltenie az űrlapot paraméterekkel.
 
 Ezt a [PowerShell-szkriptet](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/) is használhatja a hálózat létrehozásának automatizálására.
 

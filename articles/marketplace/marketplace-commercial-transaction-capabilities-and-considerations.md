@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800053"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298210"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -53,7 +53,7 @@ A használt tranzakciós lehetőségtől függően a szoftverlicenc-díjak a kö
 - **Ingyenes** – a szoftveres licencek díjmentesek.
 - **Saját licenc** használata (BYOL) – a licenccel kapcsolatos összes díjat közvetlenül a közzétevő és az ügyfél között kezelheti. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. Ez csak a Virtual Machines és az Azure-alkalmazásokra vonatkozik.
 - **Utólagos elszámolású – a** szoftverlicenc-díj a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelenik meg. Ez csak a Virtual Machines és az Azure-alkalmazásokra vonatkozik.
-- Az **előfizetés díjszabása** – a szoftverlicenc-díj a havi vagy az éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van kiszámlázva. Ez csak az SaaS-alkalmazásokra és az Azure-alkalmazások által felügyelt alkalmazásokra vonatkozik.
+- Az **előfizetés díjszabása** – a szoftverlicenc-díj a havi vagy az éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van kiszámlázva. Ez csak az SaaS-alkalmazásokra (havi vagy éves) és az Azure Applications által felügyelt alkalmazásokra vonatkozik (havonta).
 - **Ingyenes szoftver próbaverziója** – a szoftverlicenc 30 vagy 90 napig díjmentes.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ingyenes és saját licencek (BYOL) díjszabása
@@ -185,7 +185,7 @@ A Transact Publishing beállítás csak a következő Piactéri ajánlatok eset�
 - **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, valamint az ajánlat szintjén meghatározott SKU-t. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
 - **Azure-alkalmazások: megoldási sablon vagy felügyelt alkalmazás** – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 - Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.
