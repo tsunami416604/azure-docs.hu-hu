@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333572"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310189"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
@@ -23,12 +23,12 @@ Azure Maps az összes ország és régió esetében nem rendelkezik azonos szint
 
 Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási információkról nyújt információt.
 
-| Szimbólum | Jelentés |
+| Szimbólum | Értelmezés |
 |--------|---------|
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -86,7 +86,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad és Tobago                      | ✓ |   |  ✓| 
 | Turks- és Caicos-szigetek                 | ✓ |   |  ✓| 
-| Amerikai Egyesült Államok lakatlan külbirtokai                    | ✓ |   |  ✓| 
+| Az Amerikai Egyesült Államok lakatlan külbirtokai                    | ✓ |   |  ✓| 
 | Amerikai Virgin-szigetek                      | ✓ |   |  ✓| 
 | Egyesült Államok                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -166,7 +166,6 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Tunézia                     | ✓               |                              |        ✓| 
 | Uganda                      | ✓               |                              |        ✓| 
 | Egyesült Arab Emírségek        | ✓               |                              |        ✓| 
-| Nyugat-Szahara              | ✓               |                              |        ✓| 
 | Jemen                       | ✓               |                              |        ✓| 
 | Zambia                      | ✓               |                              |        ✓| 
 | Zimbabwe                    | ✓               |                              |        ✓| 
@@ -299,4 +298,4 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Törökország                 | ✓ |   |  ✓| 
 | Ukrajna                | ✓ |   |  ✓| 
 | Egyesült Királyság         | ✓ | ✓ |  ✓| 
-| Vatikáni Városállam           | ✓ |   |  ✓| 
+| Vatikán           | ✓ |   |  ✓| 

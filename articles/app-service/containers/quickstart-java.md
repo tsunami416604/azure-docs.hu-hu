@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac4290963891a029f153bd26f94d5c671329f632
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248957"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300068"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -34,7 +34,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 A következő Maven-parancs végrehajtásával hozzon létre egy nevű új alkalmazást a Cloud Shell promptban `helloworld` :
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 Ezután módosítsa a munkakönyvtárat a projekt mappájába:
 
@@ -89,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > Ebben a cikkben csak WAR-fájlokba csomagolt Java-alkalmazásokat használunk. Ez a beépülő modul támogatja a JAR-webalkalmazásokat is. Ennek kipróbálásához tekintse meg [a Java SE JAR-fájlok Linuxon futó App Service-ben való üzembe helyezését ismertető részt](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Ha szeretné `pom.xml` megtekinteni a beépülő modul konfigurációját, navigáljon újra, és szükség esetén módosítsa a app Service egyéb konfigurációit is, ha szükséges, néhány gyakori elem az alábbi listában látható:
+A Megnyitás gombra `pom.xml` kattintva megtekintheti a frissített konfigurációt.
+
+```bash
+code pom.xml
+```
+
+Szükség esetén közvetlenül a Pom-fájlban módosíthatja a App Service konfigurációit, néhány gyakori érték az alábbiak szerint jelenik meg:
 
  Tulajdonság | Kötelező | Leírás | Verzió
 ---|---|---|---

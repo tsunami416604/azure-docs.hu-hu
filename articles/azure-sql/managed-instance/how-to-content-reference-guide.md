@@ -77,7 +77,7 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 
-- [Kapcsolatok](../database/connect-query-content-reference-guide.md#libraries)
+- [Kapcsolódás](../database/connect-query-content-reference-guide.md#libraries)
 - [Spark-összekötő használata](../../cosmos-db/spark-connector.md)
 - [Alkalmazás hitelesítése](../database/application-authentication-get-client-id-keys.md)
 - [Kötegelt feldolgozás használata a jobb teljesítmény érdekében](../performance-improve-use-batching.md)
