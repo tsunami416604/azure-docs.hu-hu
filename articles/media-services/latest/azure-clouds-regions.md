@@ -25,7 +25,7 @@ A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Ge
 
 ## <a name="feature-availability-in-azure-clouds"></a>Funkciók elérhetősége az Azure-felhőkben
 
-| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
