@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190072"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299808"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -36,8 +36,8 @@ Mind a SQL Database, mind az SQL felügyelt példánya SQL Server technológiáv
 
 A biztonsági másolatokat a következő célokra használhatja:
 
-- A Azure Portal, Azure PowerShell, az Azure CLI vagy a REST API használatával **állítsa vissza a meglévő adatbázist egy korábbi időpontra** a megőrzési időszakon belül. Az önálló és a készletezett adatbázisok esetében a művelet egy új adatbázist hoz létre az eredeti adatbázissal megegyező kiszolgálón. Felügyelt példányokban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy egy másik felügyelt példányt is ugyanazzal az előfizetéssel.
-- A **törölt adatbázis visszaállítása a törlés időpontjára** vagy a megőrzési időtartamon belül bármikor. A törölt adatbázist csak ugyanazon a kiszolgálón vagy felügyelt példányon lehet visszaállítani, ahol az eredeti adatbázis létrejött.
+- A Azure Portal, Azure PowerShell, az Azure CLI vagy a REST API használatával **állítsa vissza a meglévő adatbázist egy korábbi időpontra** a megőrzési időszakon belül. Az önálló és a készletezett adatbázisok esetében a művelet egy új adatbázist hoz létre ugyanazon a kiszolgálón, amely ugyanabban az előfizetésben található, mint az eredeti adatbázis. Felügyelt példányokban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy egy másik felügyelt példányt is ugyanazzal az előfizetéssel.
+- A **törölt adatbázis visszaállítása a törlés időpontjára** vagy a megőrzési időtartamon belül bármikor. A törölt adatbázist csak ugyanazon a kiszolgálón vagy felügyelt példányon lehet visszaállítani, és ugyanabban az előfizetésben, ahol az eredeti adatbázist létrehozták.
 - **Adatbázis visszaállítása egy másik földrajzi régióba**. A Geo-visszaállítás lehetővé teszi a helyreállítást földrajzi katasztrófa esetén, amikor nem fér hozzá a kiszolgálóhoz és az adatbázishoz. Egy új adatbázist hoz létre bármely meglévő kiszolgálón, bárhol a világon.
 - Egy adatbázis **visszaállítása egy adott hosszú távú biztonsági másolatból** egy adatbázis vagy készletezett adatbázis esetében, ha az adatbázis hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) van konfigurálva. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) vagy [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](long-term-retention-overview.md).
 

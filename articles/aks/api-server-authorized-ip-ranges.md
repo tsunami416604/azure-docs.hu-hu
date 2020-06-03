@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 357c8ea4da2a07864215225f7d618f9eb58b7e49
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266185"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299570"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -36,7 +36,7 @@ További információ az API-kiszolgálóról és az egyéb fürt-összetevőkr�
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>AK-fürt létrehozása az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezve
 
-Az API-kiszolgáló által jóváhagyott IP-címtartományok csak az új AK-fürtök esetében működnek. Hozzon létre egy fürtöt az az [AK Create][az-aks-create] paranccsal, és adja meg a *--API-Server-engedélyezve-IP-címtartományok* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
+Az API-kiszolgáló által engedélyezett IP-címtartományok csak az új AK-fürtök esetében működnek, és privát AK-fürtök esetén nem támogatottak. Hozzon létre egy fürtöt az az [AK Create][az-aks-create] paranccsal, és adja meg a *--API-Server-engedélyezve-IP-címtartományok* paramétert a jóváhagyott IP-címtartományok listájának megadásához. Ezek az IP-címtartományok általában a helyszíni hálózatok vagy a nyilvános IP-címek által használt címtartományok. CIDR-tartomány megadásakor a tartomány első IP-címével kezdjen el. Például a *137.117.106.90/29* egy érvényes tartomány, de győződjön meg arról, hogy az első IP-címet adta meg a tartományban, például *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint a fürt a [standard SKU Load balancert][standard-sku-lb] használja, amelyet a kimenő átjáró konfigurálására használhat. Ha engedélyezi az API-kiszolgálók engedélyezett IP-tartományait a fürt létrehozása során, a fürt nyilvános IP-címe alapértelmezés szerint is engedélyezett a megadott tartományokon kívül. Ha *""* értéket ad meg, vagy nincs megadva a *--API-Server-engedélyezett-IP-címtartományok*, az API-kiszolgáló által engedélyezett IP-címtartományok le lesznek tiltva. Vegye figyelembe, hogy ha a PowerShellt használja, használja a *--API-Server-engedélyezve-IP-tartományok = ""* (egyenlő aláírással) lehetőséget az elemzési problémák elkerüléséhez.

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411130"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300606"
 ---
 # <a name="system-requirements"></a>Rendszerkövetelmények
 
@@ -69,6 +69,9 @@ Hálózati problémák elhárításához tekintse meg a [hibaelhárítási útmu
 A következő szoftvereket kell telepíteni:
 
 * A **Visual Studio 2019** legújabb verziója [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio-eszközök vegyes valósághoz](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
+  * **Asztali fejlesztés C++ nyelven**
+  * **Univerzális Windows-platform (UWP) fejlesztése**
 * **Windows SDK 10.0.18362.0** [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(letöltés)](https://git-scm.com/downloads)
 * Nem kötelező: Ha a videó streamet szeretné megtekinteni egy asztali számítógépen lévő kiszolgálóról, szüksége lesz a **HEVC** [(Microsoft Store hivatkozás)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).

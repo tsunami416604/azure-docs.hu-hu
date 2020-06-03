@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: b215e938bb4de7d6831e45997148a84b655611be
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: d3d1b8a9e822d3a314df887ad9aff8fe70b93210
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84230989"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298652"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Dedikált Azure-szolgáltatások üzembe helyezése virtuális hálózatokon
 
@@ -28,7 +28,7 @@ Amikor dedikált Azure-szolgáltatásokat helyez üzembe egy [virtuális hálóz
 A szolgáltatások virtuális hálózaton belüli üzembe helyezése a következő képességeket biztosítja:
 
 - A virtuális hálózaton belül található erőforrások privát IP-címeken keresztül kommunikálhatnak egymással. Például közvetlenül az HDInsight és a virtuális gépen futó SQL Server közötti adatátvitel a virtuális hálózaton.
-- A helyszíni erőforrások a virtuális hálózatban lévő erőforrásokhoz magánhálózati IP-címek használatával férhetnek hozzá a [helyek közötti VPN (VPN Gateway)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) vagy a [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)számára.
+- A helyszíni erőforrások a virtuális hálózatban lévő erőforrásokhoz magánhálózati IP-címek használatával férhetnek hozzá a [helyek közötti VPN (VPN Gateway)](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) vagy a [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)számára.
 - A virtuális hálózatok lehetővé teszik [, hogy a](virtual-network-peering-overview.md) virtuális hálózatok erőforrásai a magánhálózati IP-címek használatával kommunikáljanak egymással.
 - A virtuális hálózatban lévő szolgáltatási példányokat általában teljes mértékben az Azure-szolgáltatás kezeli. Ide tartozik az erőforrások állapotának figyelése és a terheléssel való skálázás.
 - A szolgáltatási példányok egy virtuális hálózatban lévő alhálózatba vannak telepítve. Az alhálózat bejövő és kimenő hálózati hozzáférését [hálózati biztonsági csoportokon](security-overview.md#network-security-groups)keresztül kell megnyitni a szolgáltatás által biztosított útmutatás alapján.

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2737da028d8fea1c31b728c8e9864ad421d08ec
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457926"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309600"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz
 
@@ -42,7 +42,7 @@ Az összes felhasználó rendelkezik egyetlen *kezdőkönyvtár* -címtárral a 
 
 Az előfizetés hozzárendelése vagy hozzáadása előtt végezze el a következő feladatokat:
 
-- Tekintse át az alábbi módosításokat, és hogy milyen hatással lehet rájuk:
+- Tekintse át az alábbi módosításokat, amelyek az előfizetés hozzárendelése vagy hozzáadása után következnek be, és hogy milyen hatással lehet a következőkre:
 
   - Azok a felhasználók, akik a RBAC használatával rendeltek szerepköröket, elvesztik a hozzáférést
   - A szolgáltatás-rendszergazda és a társ-rendszergazdák elvesztik a hozzáférést
@@ -71,13 +71,13 @@ A meglévő előfizetés Azure AD-címtárhoz való hozzárendeléséhez kövess
 
     ![Módosítsa a könyvtár lapot, és jelenítse meg a módosítani kívánt könyvtárat](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    Az előfizetéshez tartozó címtár módosul, és a rendszer sikert jelző üzenetet kap.
+    Miután megtörtént az előfizetés címtárának módosítása, megjelenik egy sikeres üzenet.
 
-    ![A címtár változásával kapcsolatos sikeres üzenet](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. Az előfizetés lapon válassza a **könyvtárak váltása** lehetőséget, hogy megnyissa az új könyvtárat. 
 
-A **switch Directory** használatával lépjen az új könyvtárba. Több órát is igénybe vehet, hogy minden megfelelően megjelenjen. Ha úgy tűnik, hogy túl sokáig tart, ellenőrizze a **globális előfizetés szűrőjét**. Győződjön meg arról, hogy az áthelyezett előfizetés nem rejtett. Előfordulhat, hogy ki kell jelentkeznie a Azure Portal, majd újra be kell jelentkeznie az új könyvtár megtekintéséhez.
+      ![Címtár-kapcsoló oldal, a minta adataival](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![Címtár-kapcsoló oldal, a minta adataival](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      Több órát is igénybe vehet, hogy minden megfelelően megjelenjen. Ha úgy tűnik, hogy túl sokáig tart, ellenőrizze a **globális előfizetés szűrőjét**. Győződjön meg arról, hogy az áthelyezett előfizetés nem rejtett. Előfordulhat, hogy ki kell jelentkeznie a Azure Portal, majd újra be kell jelentkeznie az új könyvtár megtekintéséhez.
 
 Az előfizetés könyvtárának módosítása szolgáltatás szintű művelet, így nem befolyásolja az előfizetés számlázási tulajdonjogát. A fiók rendszergazdája továbbra is módosíthatja a szolgáltatás rendszergazdáját a [Account Center](https://account.azure.com/subscriptions)webhelyről. Az eredeti könyvtár törléséhez át kell vinnie az előfizetés számlázási tulajdonosát egy új fiók Rendszergazdájába. További információ a számlázási tulajdonjog átadásáról: [Azure-előfizetés tulajdonjogának átadása másik fiókra](../../cost-management-billing/manage/billing-subscription-transfer.md).
 

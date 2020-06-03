@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660540"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299842"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -29,7 +29,9 @@ Oracle-adatbázisok futtatása Azure-infrastruktúrán az Azure Marketplace-en e
 
 * Oracle Database 12,1, 12,2 és 18,3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 és 18,3 Standard Edition 
+* Oracle Database 12,1, 12,2 és 18,3 Standard Edition
+
+* Oracle Database 19,3
 
 Azt is megteheti, hogy az Azure-ban elérhető nem Oracle Linux rendszerképeken beállít egy olyan megoldást, amely a teljesen új Azure-ban létrehozott, vagy a helyszíni környezetből származó egyéni rendszerkép feltöltésével Oracle Database.
 
@@ -45,7 +47,7 @@ Vállalati alkalmazások futtatása az Azure-ban támogatott Oracle operációs 
 
 * Oracle WebLogic-kiszolgáló 12.1.2
 
-* Oracle Linux a nem törhető vállalati rendszermaggal (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 és 7,6 
+* Oracle Linux a nem törhető Enterprise kernel (UEK) 6,8, 6,9, 6,10, 7,3, 7,7, 8,0, 8,1. 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Magas rendelkezésre állás és vész-helyreállítási lehetőségek
 
@@ -72,8 +74,7 @@ Oracle-alkalmazások futtatása Azure-infrastruktúrában, háttér-adatbázisok
 
 Az Azure-infrastruktúra beállításához és az Oracle-alkalmazások telepítéséhez használjon Terraform-sablonokat. 
 
-> [!IMPORTANT]
-> Az Oracle tanúsítja ezeket az alkalmazásokat az Azure-ban való futtatásra, ha az Azure/Oracle Cloud Interconnect megoldást a 2020-es verzióval használja.
+Az Azure/Oracle Cloud Interconnect megoldás használata esetén a következő Oracle-alkalmazások hitelesítve vannak az Azure-ban való futtatásra: 2020
 
 * E-Business csomag
 * JD Edwards EnterpriseOne
@@ -88,7 +89,7 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-alkalmazásokkal együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
 

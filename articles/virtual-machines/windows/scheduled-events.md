@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779783"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297921"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -49,7 +49,7 @@ Az Azure metaadat-szolgáltatás a virtuális gépről elérhető REST-végpont 
 ### <a name="endpoint-discovery"></a>Végpont felderítése
 A VNET-kompatibilis virtuális gépek esetében a metaadat-szolgáltatás statikus, nem irányítható IP-címről érhető el `169.254.169.254` . A Scheduled Events legújabb verziójának teljes végpontja a következő: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Services és a klasszikus virtuális gépek esetében az alapértelmezett esetekben további logikára van szükség ahhoz, hogy felderítse a használni kívánt IP-címet. Tekintse át ezt a mintát, hogy megtudja, hogyan [derítheti fel a gazdagép végpontját](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
@@ -58,6 +58,8 @@ A Scheduled Events szolgáltatás verziója. A verziók kötelezőek, a jelenleg
 
 | Verzió | Kiadás típusa | Régiók | Release Notes (Kibocsátási megjegyzések) | 
 | - | - | - | - |
+| 2019-08-01 | Általános elérhetőség | Mind | <li> EventSource-támogatás hozzáadva |
+| 2019-04-01 | Általános elérhetőség | Mind | <li> Az esemény leírásának támogatása hozzáadva |
 | 2019-01-01 | Általános elérhetőség | Mind | <li> A virtuálisgép-méretezési csoportok támogatásának támogatása a EventType leállításához |
 | 2017-11-01 | Általános elérhetőség | Mind | <li> A (z) megelőzik helyszíni VM-kilakoltatás EventType támogatása<br> | 
 | 2017-08-01 | Általános elérhetőség | Mind | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
@@ -86,7 +88,7 @@ A következő hívással lehet lekérdezni Scheduled Events egyszerűen:
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01 -H @{"Metadata"="true"}
 ```
 
 A válasz ütemezett események tömbjét tartalmazza. Az üres tömb azt jelenti, hogy jelenleg nincsenek ütemezett események.
@@ -102,6 +104,8 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
             "NotBefore": {timeInUTC},
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -117,6 +121,8 @@ A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az esemé
 | További források| Az események által gyakorolt erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmazhat, de nem tartalmazhatja az UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Esemény állapota | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény a tulajdonságban megadott idő után indul el `NotBefore` .<li>`Started`: Ez az esemény megkezdődött.</ul> A rendszer nem adta meg vagy nem hasonló állapotot, mert az eseményt a rendszer `Completed` már nem adja vissza az esemény befejezésekor.
 | NotBefore| Az az idő, amely után ez az esemény kezdődhet. <br><br> Példa: <br><ul><li> Hétfő, 19 Sep 2016 18:29:47 GMT  |
+| Leírás | Az esemény leírása. <br><br> Példa: <br><ul><li> A gazdagép-kiszolgáló karbantartás alatt áll. |
+| EventSource | Az esemény kezdeményezője. <br><br> Példa: <br><ul><li> `Platform`: Ezt az eseményt a platfrom kezdeményezi. <li>`User`: Ezt az eseményt a felhasználó kezdeményezi. |
 
 ### <a name="event-scheduling"></a>Események ütemezése
 Az egyes események ütemezése a jövőben az esemény típusa alapján várhatóan minimális idő. Ez az idő egy esemény tulajdonságában jelenik meg `NotBefore` . 

@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 60f77d7bb29af8bcd1a0932a9ac93f5fe4b8e3ac
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653355"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299247"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -386,7 +386,7 @@ New-AzSubscriptionDeployment `
 
 [Létrehozhat](../../governance/blueprints/tutorials/create-from-sample.md) egy tervrajz-definíciót egy sablonból.
 
-:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/subscription-deployments/blueprints-new-blueprint/azuredeploy.json":::
 
 Az előfizetéshez tartozó terv definíciójának létrehozásához használja az alábbi CLI-parancsot:
 
@@ -394,7 +394,7 @@ Az előfizetéshez tartozó terv definíciójának létrehozásához használja 
 az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 A sablon PowerShell használatával történő üzembe helyezéséhez használja a következőt:
@@ -403,17 +403,17 @@ A sablon PowerShell használatával történő üzembe helyezéséhez használja
 New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Sablonminták
 
-* [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Hozzon létre egy erőforráscsoportot, zárolja, és adjon hozzá engedélyeket](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment).
 * [Hozzon létre egy erőforráscsoportot, egy házirendet és egy házirend-hozzárendelést](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>További lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments)találhatók.
+* A sablonok a [githubon](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments)találhatók.
 * A sablonokat [felügyeleti csoport szintjén](deploy-to-management-group.md) és [bérlői szinten](deploy-to-tenant.md)is üzembe helyezheti.

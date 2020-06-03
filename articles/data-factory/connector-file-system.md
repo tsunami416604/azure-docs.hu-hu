@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 05/29/2020
 ms.author: jingwang
-ms.openlocfilehash: fd8fd7b7657622978e9019b09ba0d3d885f803fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6553dc88bebf25141bed8a5e5d52585433da6046
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656459"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299077"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Adatok másolása fájlrendszerből vagy rendszerbe a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -55,7 +55,7 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A fájlrendszerhez társított szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **fileserver**. | Igen |
 | gazda | Megadja a másolni kívánt mappa gyökerének elérési útját. A "Escape" karakter használata a \" karakterlánc speciális karaktereinek számára. Példákat a következő témakörben talál: példa [társított szolgáltatás és adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) . | Igen |
@@ -104,7 +104,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 A fájlrendszer a következő tulajdonságokat támogatja a `location` Format-alapú adatkészlet beállítások területén:
 
-| Tulajdonság   | Description                                                  | Kötelező |
+| Tulajdonság   | Leírás                                                  | Kötelező |
 | ---------- | ------------------------------------------------------------ | -------- |
 | típus       | Az `location` adatkészletben található Type tulajdonságot **FileServerLocation**értékre kell állítani. | Igen      |
 | folderPath | A mappa elérési útja. Ha a mappa szűréséhez helyettesítő karaktert szeretne használni, hagyja ki ezt a beállítást, és a tevékenység forrásának beállításai között válassza a lehetőséget. | Nem       |
@@ -146,13 +146,14 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Format-alapú másolási forrás beállítások területén:
 
-| Tulajdonság                 | Description                                                  | Kötelező                                      |
+| Tulajdonság                 | Leírás                                                  | Kötelező                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | típus                     | A Type tulajdonságot a `storeSettings` **FileServerReadSettings**értékre kell állítani. | Igen                                           |
 | ***Keresse meg a másolandó fájlokat:*** |  |  |
 | 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott mappa vagy fájl elérési útját. Ha az összes fájlt egy mappából szeretné másolni, azt is meg kell adnia `wildcardFileName` `*` . |  |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
-| 2. lehetőség: helyettesítő karakter<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen |
+| 2. lehetőség: Kiszolgálóoldali szűrő<br>– fileFilter  | A Fájlkiszolgálói oldalsó natív szűrő, amely jobb teljesítményt nyújt, mint a 3. lehetőség helyettesítő szűrője. `*`Nulla vagy több karakter összeegyeztetésére, valamint `?` a nulla vagy egy karakter megfeleltetésére használható. Az [ebben a szakaszban](https://docs.microsoft.com/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)található **Megjegyzések** szintaxisáról és megjegyzéseit itt találja. | Nem                                                          |
+| 3. lehetőség: ügyféloldali szűrő<br>- wildcardFolderPath | A mappa elérési útja helyettesítő karakterekkel a forrás mappák szűréséhez. Ez a szűrő az ADF oldalon történik, az ADF a megadott elérési úton lévő mappák/fájlok enumerálása, majd a helyettesítő szűrő alkalmazása.<br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^` <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Nem                                            |
+| 3. lehetőség: ügyféloldali szűrő<br>- wildcardFileName | A forrásfájl szűréséhez a megadott folderPath/wildcardFolderPath helyettesítő karaktereket tartalmazó fájlnév. Ez a szűrő az ADF oldalon történik, az ADF a megadott elérési úton lévő fájlok enumerálása, majd a helyettesítő szűrő alkalmazása.<br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy egy karakter egyezése) `^`<br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Igen |
 | 3. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adja meg a fájl nevét az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |Nem |
 | ***További beállítások:*** |  | |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |Nem |
@@ -207,7 +208,7 @@ A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Form
 
 A fájlrendszer a következő tulajdonságokat támogatja a `storeSettings` Format-alapú másolási fogadó beállításai alatt:
 
-| Tulajdonság                 | Description                                                  | Kötelező |
+| Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | típus                     | A Type tulajdonságot a `storeSettings` **FileServerWriteSettings**értékre kell állítani. | Igen      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | Nem       |
@@ -301,7 +302,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-dataset-model"></a>Örökölt adatkészlet-modell
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **fájlmegosztás** |Igen |
 | folderPath | A mappa elérési útja. A helyettesítő karakteres szűrő támogatott, az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (a nulla vagy az egyetlen karakternek felel meg); `^` Ha a tényleges mappanevet helyettesítő karakter vagy a escape-karakter található, akkor a Escape karaktert kell használnia. <br/><br/>Példák: gyökérmappa/almappa/, további példák a példaként szolgáló [társított szolgáltatás és adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) , valamint a [mappa-és fájlszűrő-példák](#folder-and-file-filter-examples)elemre. |Nem |
@@ -349,7 +350,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-copy-activity-source-model"></a>Örökölt másolási tevékenység forrásának modellje
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **FileSystemSource** |Igen |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a rekurzív értéke TRUE (igaz), a fogadó pedig a fájl alapú tároló, akkor a rendszer nem másolja/hozza létre az üres mappát/almappát a fogadóban.<br/>Az engedélyezett értékek: **true** (alapértelmezett), **false** | Nem |
@@ -389,7 +390,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 
 ### <a name="legacy-copy-activity-sink-model"></a>Örökölt másolási tevékenység fogadó modellje
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **FileSystemSink** |Igen |
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célfájl automatikusan generált névvel rendelkezik. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Az egyesítés során nem történik meg a rekordok deduplikálása. Ha a fájl neve meg van adva, az egyesített fájlnév a megadott név lesz. Ellenkező esetben az automatikusan generált fájlnév lenne. | Nem |

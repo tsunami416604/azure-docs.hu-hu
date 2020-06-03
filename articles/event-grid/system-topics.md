@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393153"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308268"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rendszertémakörök a Azure Event Grid
 A Azure Event Grid szolgáltatás rendszertémaköröket hoz létre, amikor létrehoz egy első esemény-előfizetést egy Azure-esemény forrásához. Jelenleg Event Grid nem hoz létre rendszertémaköröket a március, 15, 2020. előtt létrehozott témakör-forrásokhoz. Az ezen dátumon vagy azt követően létrehozott összes témakörhöz Event Grid automatikusan létrehozza a rendszertémaköröket. Ez a cikk a Azure Event Grid **rendszertémaköreit** ismerteti.
@@ -25,6 +25,9 @@ Ha az első esemény-előfizetést egy Azure-eseményforrás, például az Azure
 
 A rendszertémakör nem alkalmazható egyéni témakör-forgatókönyvekre, azaz Event Grid témakörökre és Event Grid tartományokra. 
 
+## <a name="name"></a>Name 
+Korábban, amikor létrehozott egy előfizetést az Azure-források által kiváltott eseményhez, a Event Grid szolgáltatás automatikusan létrehozta a rendszertémakört egy **véletlenszerűen generált névvel**. Most megadhatja a rendszertémakör nevét, miközben létrehozza a témakört a Azure Portalban. Ezt a rendszertémakör-erőforrást használhatja a metrikák és a diagnosztikai naplók felderítésére.
+
 ## <a name="location"></a>Hely
 Egy adott régióban/helyen található Azure-beli eseményforrás esetén a rendszertémakör ugyanazon a helyen jön létre, mint az Azure-esemény forrása. Ha például egy Azure Blob Storage-hoz hoz létre egy Event-előfizetést az USA keleti régiójában, akkor a rendszer témakör az USA keleti régiójában jön létre. A globális Azure-események, például az Azure-előfizetések, az erőforráscsoportok vagy a Azure Maps esetében a Event Grid a **globális** helyen hozza létre a rendszer témakört. 
 
@@ -35,8 +38,6 @@ Amikor megpróbálja törölni az erőforráscsoportot a Storage-fiókkal, az é
 
 ![Erőforráscsoport törlése](./media/system-topics/delete-resource-group.png)
 
-## <a name="next-steps"></a>További lépések
-Lásd az alábbi cikkeket: 
 
-- [Egyéni témakörök](custom-topics.md)
-- [Tartományok](event-domains.md)
+## <a name="next-steps"></a>További lépések
+Tekintse meg a következő cikket: [rendszertémakörök létrehozása, megtekintése és kezelése](create-view-manage-system-topics.md).

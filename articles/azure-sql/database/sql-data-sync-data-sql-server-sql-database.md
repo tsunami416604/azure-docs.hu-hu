@@ -4,19 +4,19 @@ description: Ez az áttekintés bemutatja SQL-adatszinkronizálás az Azure-hoz,
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: data sync, sqldbrb=1
+ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188714"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297955"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,6 +169,18 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 
 > [!NOTE]
 > Egyetlen szinkronizálási csoportban akár 30 végpont is lehet, ha csak egy szinkronizálási csoport van. Ha több szinkronizálási csoport is van, akkor az összes szinkronizálási csoporton belüli végpontok száma nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, a rendszer több végpontnak számít, nem egy.
+
+### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+A szinkronizálási csoport létrehozásakor az adatszinkronizálási szolgáltatásnak csatlakoznia kell a hub-adatbázishoz. A szinkronizálási csoport létrehozásakor az Azure SQL Server-kiszolgálónak a következő konfigurációval kell rendelkeznie a `Firewalls and virtual networks` beállításaiban:
+
+ * A *nyilvános hálózati hozzáférés megtagadását* be *kell állítani.*
+ * Az *Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz* az *Igen*értékre kell állítani, vagy az [adatszinkronizálási szolgáltatás által használt IP-címekhez](network-access-controls-overview.md#data-sync)létre kell hoznia IP-szabályokat.
+
+A szinkronizálási csoport létrehozása és üzembe helyezése után le is tilthatja ezeket a beállításokat. A Szinkronizáló ügynök közvetlenül csatlakozik a hub-adatbázishoz, és a kiszolgáló [tűzfal IP-szabályainak](firewall-configure.md) vagy [privát végpontjai](private-endpoint-overview.md) segítségével engedélyezheti az ügynök számára a központi kiszolgáló elérését.
+
+> [!NOTE]
+> Ha megváltoztatja a szinkronizálási csoport séma-beállításait, akkor engedélyeznie kell, hogy az adatszinkronizálási szolgáltatás újra hozzáférhessen a kiszolgálóhoz, hogy a központi adatbázis újra kiépíthető legyen.
 
 ## <a name="faq-about-sql-data-sync"></a>Gyakori kérdések SQL-adatszinkronizálás
 

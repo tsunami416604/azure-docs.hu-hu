@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: b624e521ee102f331100f2836d2e33fd8f2b3ec8
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 011ef67e5dbbf5b391e8bdaad20a42688022a0a9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193661"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296765"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM által védett kulcsok importálása a Key Vaultba
 
@@ -35,9 +35,9 @@ A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM 
 |---|---|---|---|
 |[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Gyártó<br/>HSM szolgáltatásként|<ul><li>HSM nShield családja</li><li>nShield szolgáltatásként</ul>|**1. módszer:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (erős igazolással a kulcs importálásához és a HSM ellenőrzéséhez)<br/>**2. módszer:** [új BYOK metódus használata](hsm-protected-keys-byok.md) |
 |Thales|Gyártó|<ul><li>SafeNet Luna HSM 7 termékcsalád a belső vezérlőprogram 7,3-es vagy újabb verziójával</li></ul>| [Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Fortanix|HSM szolgáltatásként|<ul><li>A kulcskezelő szolgáltatás (SDKMS) önvédelme</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>A kulcskezelő szolgáltatás (SDKMS) önvédelme</li><li>Equinix SmartKey</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptopmathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 
 
 ## <a name="next-steps"></a>További lépések

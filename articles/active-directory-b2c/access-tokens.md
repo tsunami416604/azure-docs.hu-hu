@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a659d8929f845b1c58bd64f628b2d3f47a96674e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635448"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297530"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat igénylése Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmaz�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
-- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C-bérlőhöz](add-web-application.md).
+- Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást a Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
 
 ## <a name="scopes"></a>Hatókörök
 

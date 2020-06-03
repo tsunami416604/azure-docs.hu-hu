@@ -58,7 +58,7 @@ Ahhoz, hogy a virtuális gépen a titkosításhoz használni kívánt kulcsokat 
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
-Amikor megjelenik a Key Vault létrehozása lépés, jegyezze fel a visszaadott **vaultUri** tulajdonságot, amely a Key Vault URL-címe. Az ebben a lépésben megadott példában a Key Vault neve ContosoKeyVault, ezért a Key Vault URL-címe lenne https://contosokeyvault.vault.azure.net/.
+Amikor megjelenik a Key Vault létrehozása lépés, jegyezze fel a visszaadott **vaultUri** tulajdonságot, amely a Key Vault URL-címe. Az ebben a lépésben megadott példában a Key Vault neve ContosoKeyVault, ezért a Key Vault URL-címe lenne https://contosokeyvault.vault.azure.net/ .
 
 A Key Vault URL-címét később a PowerShell-parancsfájl **$akvURL** paramétereként rendeli hozzá a Azure Key Vault-integráció engedélyezéséhez.
 

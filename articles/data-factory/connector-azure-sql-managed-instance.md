@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 05/29/2020
-ms.openlocfilehash: 91674aaaedc828122602ce1dd9373056db4bf33d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8566b5d1d1beb87ccf7cd2b25f536732bb8d1f8e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220486"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298057"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Adatok másolása az Azure SQL felügyelt példányára és onnan a Azure Data Factory használatával
 
@@ -235,7 +235,7 @@ Az SQL felügyelt példányra irányuló és onnan érkező adatok másolásáho
 | tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem, forrás, igen, fogadó |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -475,7 +475,7 @@ Az adathozzáfűzés az SQL felügyelt példány-fogadó összekötő alapértel
 
 **1. lehetőség:** Ha nagy mennyiségű adattal szeretne másolni, a másolási tevékenység használatával tömegesen betöltheti az összes rekordot egy előkészítési táblába, majd futtathatja a tárolt eljárási tevékenységet, hogy [egyesítse](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-mi-current) vagy INSERT/Update utasítást alkalmazzon egy adott felvételen. 
 
-A másolási tevékenység jelenleg nem támogatja natív módon az betöltést egy adatbázis ideiglenes táblájába. A különböző tevékenységek együttes használatával speciális módon állíthatja be, és [optimalizálhatja a SQL Database tömeges Upsert forgatókönyvek optimalizálását](https://github.com/scoriani/azuresqlbulkupsert). Az alábbi példa egy állandó tábla használatát mutatja be átmenetiként.
+A másolási tevékenység jelenleg nem támogatja natív módon az betöltést egy adatbázis ideiglenes táblájába. A több tevékenység kombinációjának beállításával speciális módon állíthatja be az [SQL Database tömeges Upsert forgatókönyvek optimalizálását](https://github.com/scoriani/azuresqlbulkupsert). Az alábbi példa egy állandó tábla használatát mutatja be átmenetiként.
 
 Azure Data Factory például létrehozhat egy **másolási tevékenységgel** rendelkező **folyamatot egy tárolt eljárási tevékenységgel**. A korábbi adatok másolása a forrás tárolójából egy Azure SQL felügyelt példány-előkészítési táblába, például **UpsertStagingTable**, az adatkészlet táblázatának neveként. Ezután az utóbbi egy tárolt eljárást hív meg, hogy egyesítse a forrás adatait az előkészítési táblából a cél táblába, és törölje az előkészítési táblát.
 
@@ -601,7 +601,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | xml |Xml |
 
 >[!NOTE]
-> A decimális ideiglenes típusra leképezett adattípusok esetében jelenleg Azure Data Factory támogatja a pontosságot akár 28-ra. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
+> A decimális átmeneti típusra leképezett adattípusok esetén a másolási tevékenység jelenleg legfeljebb 28-ig támogatja a pontosságot. Ha a 28-nál nagyobb pontosságot igénylő adatmennyiségre van szüksége, érdemes lehet egy SQL-lekérdezésben szereplő sztringre konvertálni.
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
@@ -631,7 +631,7 @@ Pontosabban:
 
     - **Data Factory felügyelt identitás hitelesítésének**használata: 
 
-        1. Kövesse ugyanazt a [prerequistes](#managed-identity) , hogy adatbázis-felhasználót hozzon létre a felügyelt identitáshoz, és adja meg a megfelelő szerepkört az adatbázisban.
+        1. Kövesse ugyanezeket az [előfeltételeket](#managed-identity) , hogy adatbázis-felhasználót hozzon létre a felügyelt identitáshoz, és adja meg a megfelelő szerepkört az adatbázisban.
         2. A társított szolgáltatás mezőben adja meg az ODBC-kapcsolati karakterláncot az alábbi módon, és válassza a **Névtelen** hitelesítés lehetőséget a kapcsolati sztringként `Authentication=ActiveDirectoryMsi` .
 
         ```

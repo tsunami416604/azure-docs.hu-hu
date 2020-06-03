@@ -1,5 +1,5 @@
 ---
-title: Adatelemzői oktatóanyag – az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban (előzetes verzió)
+title: 'Adatelemző oktatóanyag: az SQL on-demand (előzetes verzió) használata az Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studio (előzetes verzió) szolgáltatásban'
 description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egyszerűen elvégezni a felderítő adatelemzést, amely különböző Azure Open-adatkészleteket használ az SQL on-demand (előzetes verzió) használatával, és megjelenítheti az eredményeket az Azure szinapszis Studióban.
 services: synapse-analytics
 author: azaricstefan
@@ -9,27 +9,32 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 5084867d3db2da6718935f2af85e6148f2adbff8
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258912"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299536"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Az SQL on-demand (előzetes verzió) használata az Azure Open-adatkészletek elemzésére és az eredmények megjelenítésére az Azure szinapszis Studióban (előzetes verzió)
 
 Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését, ha különböző Azure Open-adatkészleteket egyesít az SQL igény szerinti használatával, majd megjeleníti az eredményeket az Azure szinapszis Studióban.
 
-A [New York City (NYC) taxi-adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) elemezzük, amely magában foglalja a pick-up és a drop-off dátum/idő, a pick-up és a drop-off helyszínek, az utazási távolságok, a részletezett viteldíjak, a díjszabási típusok, a fizetési típusok és a járművezető által jelentett utasok számát.
+Például elemezzük a [New York City (NYC) taxi adatkészletet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , amely a következőket tartalmazza:
 
-Az elemzés célja, hogy megkeresse a taxi-túrák számának időbeli változásával kapcsolatos trendeket. Két másik Azure Open-adatkészletet (a[munkaszüneti napokat](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) és [az időjárási adatokat](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) elemezve megtudhatja, hogy a taxik hányan vannak kiugróan.
-
+- Felvételi és lejárati dátumok és időpontok.
+- Felvételi és legördülő helyszínek. 
+- Utazási távolságok.
+- Részletezett viteldíjak.
+- Díjszabási típusok.
+- Fizetési típusok. 
+- Illesztőprogram – jelentett utasok száma.
 
 ## <a name="automatic-schema-inference"></a>Automatikus séma-következtetés
 
-Mivel a rendszer az adattárolást a parketta fájlformátumában tárolja, az automatikus séma-következtetés elérhetővé válik, így az adatlekérdezés nem szükséges a fájlok összes oszlopának adattípusának listázásához. Emellett a virtuális oszlop mechanizmusa és a filepath függvény használatával kiszűrheti a fájlok bizonyos részhalmazát.
+Mivel az adattárolás a Parquet fájlformátumban történik, az automatikus séma-következtetés elérhető. Egyszerűen lekérheti az adatlekérdezést anélkül, hogy a fájlok összes oszlopának adattípusait fel kellene sorolni. A virtuális oszlop mechanizmust és a filepath függvényt is használhatja a fájlok bizonyos részhalmazának kiszűrésére.
 
-Először Ismerkedjen meg a New York-i taxi-adattal a következő lekérdezés futtatásával:
+Először Ismerkedjen meg a New York-i taxi-adatszolgáltatással a következő lekérdezés futtatásával:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -39,11 +44,11 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-A következő ábrán a New York-i taxik adatrészlete látható:
+A következő kódrészlet a New York-i taxi-adatelemzés eredményét mutatja be:
 
-![eredmény részlete](./media/tutorial-data-analyst/1.png)
+![New York-i taxi – adateredmény részlete](./media/tutorial-data-analyst/1.png)
 
-Hasonlóképpen a következő lekérdezéssel tudjuk lekérdezni a nyilvános ünnepek adatkészletét:
+Hasonlóképpen lekérdezheti a nyilvános ünnepnapok adatkészletét a következő lekérdezés használatával:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -53,11 +58,11 @@ SELECT TOP 100 * FROM
     ) AS [holidays]
 ```
 
-Az alábbi ábrán a nyilvános ünnepek adatkészletének eredményét láthatja:
+A következő kódrészlet a nyilvános ünnepnapok adatkészletének eredményét jeleníti meg:
 
-![2. eredmény](./media/tutorial-data-analyst/2.png)
+![Munkaszüneti adatkészlet – eredmény kódrészlet](./media/tutorial-data-analyst/2.png)
 
-Végül a következő lekérdezéssel is lekérdezheti az időjárási adatkészletet:
+Végül a következő lekérdezéssel is lekérdezheti az időjárási adatokat használó adatkészletet:
 
 ```sql
 SELECT
@@ -69,15 +74,15 @@ FROM
     ) AS [weather]
 ```
 
-Az alábbi ábrán az időjárási adatkészlet eredményének részlete látható:
+Az alábbi kódrészlet az időjárási adathalmaz eredményét jeleníti meg:
 
-![3. eredmény-kódrészlet](./media/tutorial-data-analyst/3.png)
+![Időjárási adathalmazok eredményének részlete](./media/tutorial-data-analyst/3.png)
 
 További információt az egyes oszlopok jelentéséről a [New York](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)-i taxi, a [Public Holidays](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)és az [időjárási](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) adathalmazok leírásában olvashat.
 
 ## <a name="time-series-seasonality-and-outlier-analysis"></a>Idősorozat, szezonális és kiugró elemzés
 
-A következő lekérdezéssel egyszerűen összefoglalhatja a taxis szolgáltatás éves számát:
+A következő lekérdezéssel egyszerűen összefoglalhatja a taxik éves számát:
 
 ```sql
 SELECT
@@ -93,20 +98,20 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-Az alábbi ábrán a taxik éves számának eredményét láthatja:
+Az alábbi kódrészlet a taxik éves számának eredményét mutatja:
 
-![4. eredmény](./media/tutorial-data-analyst/4.png)
+![A taxi rides eredményének éves száma](./media/tutorial-data-analyst/4.png)
 
-Az adatok a szinapszis Studióban jeleníthetők meg a tábla diagram nézetbe való váltásával. A különböző típusú diagramok közül választhat (a körzet, a sáv, az oszlop, a vonal, a torta és a pontdiagram). Ebben az esetben az oszlopdiagram "current_year" értékre állítása a kategória oszloppal:
+Az adatok megjeleníthetők a szinapszis Studióban úgy, hogy a **táblázatról** a **diagram** nézetre vált. Különböző típusú diagramok közül választhat, például a **területen**, a **sáv**, az **oszlop**, a **vonal**, a **torta**és a **Scatter**. Ebben az esetben ábrázolja az **oszlopdiagram** és a **category (kategória** ) oszlopot a **current_year**értékre:
 
-![eredmény vizualizáció 5](./media/tutorial-data-analyst/5.png)
+![A rides/Year diagramot bemutató oszlopdiagram](./media/tutorial-data-analyst/5.png)
 
-Ebből a vizualizációból kiderül, hogy az évek során csökkenő számú túrákra mutató tendencia egyértelműen látható, ami valószínűleg a Ride Sharing vállalatoknak a közelmúltban megnövekedett népszerűségének köszönhető.
+Ebből a vizualizációból kiderül, hogy az évek során csökkenő számú túrákra mutató tendencia egyértelműen látható. Ezt a csökkenést valószínűleg a Ride-Sharing vállalatok közelmúltbeli megnövekedett népszerűsége okozza.
 
 > [!NOTE]
-> A jelen oktatóanyag írásakor a 2019-es adatmennyiség hiányos, így az adott évben számos utazásra van lehetőség.
+> Az oktatóanyag írásakor a 2019-es adatmennyiség hiányos. Ennek eredményeképpen óriási mennyiségű csökkenés van az adott évre vonatkozó túrák számában.
 
-Ezután az elemzést egyetlen évre koncentráljuk, például 2016. Az alábbi lekérdezés az év folyamán napi számú túrákat ad vissza:
+Ezután az elemzést egyetlen évre koncentráljuk, például 2016. A következő lekérdezés az év folyamán a túrák napi számát adja vissza:
 
 ```sql
 SELECT
@@ -122,17 +127,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-Az alábbi táblázat a lekérdezés eredményének részletét jeleníti meg:
+A következő kódrészlet a lekérdezés eredményét jeleníti meg:
 
-![eredmény 6. kódrészlet](./media/tutorial-data-analyst/6.png)
+![A 2016-es találatok napi száma](./media/tutorial-data-analyst/6.png)
 
-A "current_day" kategóriát tartalmazó oszlopdiagram és a "rides_per_day" Jelmagyarázat (sorozat) oszlop ábrázolásával egyszerűen megjelenítheti az adatdiagramot.
+Újra könnyedén megjelenítheti az adatdiagramot úgy, **current_day** hogy az **oszlopdiagram** a **category (kategória** ) oszlopra van beállítva, és a **Jelmagyarázat (sorozat)** oszlopa **rides_per_day**értékre van állítva.
 
-![eredmény vizualizációja 7](./media/tutorial-data-analyst/7.png)
+![Oszlopdiagram, amely a 2016-as napi számú túrákat mutatja](./media/tutorial-data-analyst/7.png)
 
-A mintaterületen megfigyelhető, hogy heti minta van a szombat csúcsával. A nyári hónapokban a vakáció időtartama miatt kevesebb taxi-utazásra van lehetőség. Van azonban néhány jelentős mennyiségű, a taxival való elfordulás, amely nem egyértelmű mintázatot jelent, és hogy miért is jelentkeznek.
+A mintaterület diagramon láthatja, hogy van egy heti minta, amely szombatonként, a csúcs napjával. A nyári hónapokban a vakációk miatt kevesebb taxi rides van. A taxi-túrák száma is jelentős mértékben csökken, és nem egyértelmű minta, hogy mikor és miért jelentkeznek.
 
-Következő lépésként lássuk, hogy ezek a cseppek a nyilvános munkaszüneti napokhoz csatlakoznak-e a New York-i és a Public Holidays-adatkészlettel:
+Ezután lássuk, hogy a kilépések a nyilvános munkaszünetekkel együtt csatlakoznak a New York-i taxi rides adatkészlethez a nyilvános szünnapok adatkészlettel:
 
 ```sql
 WITH taxi_rides AS
@@ -167,13 +172,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![eredmény vizualizáció 8](./media/tutorial-data-analyst/8.png)
+![A New York-i taxik és a munkaszüneti adatkészletek eredményeinek megjelenítése](./media/tutorial-data-analyst/8.png)
 
-Ezúttal azt szeretnénk kiemelni, hogy a nyilvános munkaszüneti napokon milyen számú taxit kell használni. Erre a célra a kategória oszlop és a "rides_per_day" és a "Holiday" Jelmagyarázat (adatsorozat) oszlopai közül a "None" elemet választjuk.
+Most pedig szeretnénk kiemelni a taxik számát a nyilvános ünnepek alatt. Erre a célra a **category (kategória** ) oszlopra, a **rides_per_day** és az **ünnepnapot** a **Jelmagyarázat (adatsorozat)** oszlopai **közül választjuk** .
 
-![eredmény vizualizáció 9](./media/tutorial-data-analyst/9.png)
+![A nyilvános ünnepek diagramja során beérkező taxik száma](./media/tutorial-data-analyst/9.png)
 
-A mintaterületből egyértelműen látható, hogy a nyilvános ünnepek során a taxik száma alacsonyabb. Január 23-án azonban még egy megmagyarázhatatlan hatalmas csökkenés van. Az időjárási adatkészlet lekérdezésével nézzük meg a New York-i időjárási időt:
+A mintaterület diagramon láthatja, hogy a nyilvános ünnepek alatt a taxis túrák száma alacsonyabb. Január 23-án még egy megmagyarázhatatlan nagy csökkenés van. Az időjárási adatokat tartalmazó adathalmaz lekérdezésével vizsgáljuk meg a New York-i időjárási időt:
 
 ```sql
 SELECT
@@ -200,17 +205,17 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![eredmény vizualizáció 10](./media/tutorial-data-analyst/10.png)
+![Időjárási adathalmaz eredményeinek vizualizációja](./media/tutorial-data-analyst/10.png)
 
-A lekérdezés eredményei azt jelzik, hogy a több taxis túrák csökkenése az alábbiak miatt volt:
+A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a következő okból történt:
 
-- a Blizzard ezen a napon NYC-ben, mivel nagy volt a hó (~ 30 cm)
-- hideg volt (0 Celsius-fok alatti hőmérséklet)
-- és szeles (~ 10M/s)
+- A mai napon hóviharban volt a nagy hóban (~ 30 cm).
+- Hideg volt (a hőmérséklet nem éri el a nulla fokos Celsius-fokot).
+- Szeles (~ 10 m/s).
 
-Ebből az oktatóanyagból megtudhatta, hogy az adatelemző hogyan képes gyorsan elvégezni a felderítő adatok elemzését, és könnyen egyesítheti a különböző adatkészleteket az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
+Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és a különböző adatkészleteket egyszerűen kombinálhatja az SQL igény szerinti használatával, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át az [igény szerinti kapcsolódás az SQL-hez Power BI Desktop & jelentés létrehozása című](tutorial-connect-power-bi-desktop.md) cikket, amelyből megtudhatja, hogyan csatlakoztathatók az SQL on-demand a Power bi Desktophoz és a jelentések létrehozásához.
+Ha szeretné megtudni, hogyan csatlakoztatható az SQL on-demand Power BI Desktop és hogyan hozhat létre jelentéseket, tekintse meg az [SQL igény szerinti csatolása Power bi Desktop és jelentések létrehozása](tutorial-connect-power-bi-desktop.md)című témakört.
  

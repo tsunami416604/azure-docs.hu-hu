@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677007"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299299"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -21,7 +21,7 @@ ms.locfileid: "80677007"
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/templates/template-syntax.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
-> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület `Microsoft.OperationalInsights/workspaces`(azaz) további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
+> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
 
 Az alapszintű lépések a következők:
 
@@ -32,7 +32,7 @@ Az alapszintű lépések a következők:
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú erőforrást, `Microsoft.Insights/metricAlerts` és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
 Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató céljára.
 
@@ -281,7 +281,7 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikai riasztásának sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú erőforrást, `Microsoft.Insights/metricAlerts` és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
 Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
 
@@ -567,7 +567,7 @@ Az újabb metrikai riasztások támogatják a többdimenziós metrikákkal kapcs
 
 Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
 - Minden egyes feltételhez csak egy értéket lehet kijelölni.
-- A "\*" nem használható dimenzió értékként.
+- A "" nem használható \* dimenzió értékként.
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
     - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája **ApiName** dimenzióval rendelkezik, és a *criterion1* meghatározza a **ApiName** dimenzió *"GetBlob"* értékét, akkor a *criterion2* **a GetBlob** dimenzió *"ApiName"* értékét is be kell állítania.
 
@@ -807,7 +807,7 @@ A következő sablon használatával statikus metrikai riasztási szabályt hozh
 Egyetlen riasztási szabály egyszerre több metrikai idősorozat figyelésére is képes, így kevesebb riasztási szabályt kell kezelni.
 
 Az alábbi példában a riasztási szabály a **ResponseType** és a **ApiName** dimenzió értékeit figyeli a **tranzakciók** metrikája esetében:
-1. **ResponsType** – a "\*" helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, külön idősorozatot kell figyelni.
+1. **ResponsType** – a " \* " helyettesítő karakter azt jelenti, hogy a **ResponseType** dimenzió minden értékéhez, beleértve a jövőbeli értékeket is, külön idősorozatot kell figyelni.
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
@@ -3549,7 +3549,6 @@ Mentse az alábbi JSON-t availabilityalert. JSON néven az útmutató céljára.
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,7 +3571,7 @@ A paraméterek értékeit a parancssorban vagy egy paraméterérték használat�
 
 > [!NOTE]
 >
-> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: "`&amp`;"
+> `&amp`; a & HTML-entitásának hivatkozása. Az URL-paramétereket még mindig egyetlen & választja el, de ha HTML-ben említi az URL-címet, akkor kódolni kell. Tehát ha a pingURL paraméter értéke "&", el kell menekülnie a következővel: " `&amp` ;"
 
 Mentse az alábbi JSON-t availabilityalert. Parameters. JSON néven, és módosítsa a szükséges módon.
 

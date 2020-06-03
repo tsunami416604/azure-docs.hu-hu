@@ -1,0 +1,120 @@
+---
+title: Új Alkalmazásregisztrációk-élmény Azure AD B2C
+description: Bevezetés a Azure AD B2C új alkalmazás-regisztrációs felületének használatába.
+services: active-directory-b2c
+author: msmimart
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 05/25/2020
+ms.author: mimart
+ms.subservice: B2C
+ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300147"
+---
+# <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
+
+A Azure Active Directory Azure AD B2C (Azure AD B2C) új **[Alkalmazásregisztrációk](https://aka.ms/b2cappregistrations)** -felülete már általánosan elérhető. Ha többet szeretne megtudni az **alkalmazások** Azure ad B2Cre való regisztrálásához, amelyet a "régi felhasználói élmény" című témakörben talál, akkor ez az útmutató az új felület használatának első lépéseit mutatja be.
+
+## <a name="overview"></a>Áttekintés
+Korábban a régi felhasználói felülettel felügyelheti a Azure AD B2C a felhasználó által megjelenő alkalmazásokat a többi alkalmazástól függetlenül. Ez különböző alkalmazások létrehozását jelentette az Azure különböző helyein.
+
+Az új felhasználói élmény egy helyen jeleníti meg az összes Azure AD B2C alkalmazás regisztrációját és az Azure AD-alkalmazások regisztrációját, és egységes módon kezeli őket. Egy olyan alkalmazás létrehozásához, amely Microsoft Graph engedélyekkel rendelkezik az erőforrás-kezeléshez, csak az egyik módszert kell megtanulnia.
+
+Az új élményt úgy érheti el, ha a Azure Portal **Azure ad B2C** vagy a **Azure Active Directory** szolgáltatásainak egyik Azure AD B2C-bérlője **Alkalmazásregisztrációk** navigál.
+
+A Azure AD B2C Alkalmazásregisztrációk felhasználói élmény az Azure AD-bérlők általános [alkalmazás-regisztrációs felületén](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) alapul, de Azure ad B2C bérlők számára van kialakítva.
+
+## <a name="whats-not-changing"></a>Mi nem változik?
+- Az alkalmazások és a kapcsolódó konfigurációk az új felületén is megtalálhatók. Nem kell újból regisztrálnia az alkalmazásokat, és az alkalmazások felhasználóinak újra be kell jelentkezniük. 
+
+> [!NOTE]
+> Az összes korábban létrehozott alkalmazás megtekintéséhez navigáljon a **Alkalmazásregisztrációk** panelre, és válassza a **minden alkalmazás** lapot. Ez megjeleníti a régi felhasználói élményben, az új felhasználói élményben és az Azure AD szolgáltatásban létrehozott alkalmazásokat.
+
+## <a name="key-new-features"></a>Legfontosabb új funkciók
+
+-   Az **egyesített alkalmazások listája** az összes olyan alkalmazást megjeleníti, amely a Azure ad B2C és az Azure ad-vel való hitelesítés egyetlen kényelmes helyen történik. Emellett kihasználhatja az Azure AD-alkalmazásokhoz már elérhető szolgáltatások előnyeit, beleértve a **Létrehozás** dátuma, a **tanúsítványok & a titkok** állapotát, a keresősáv és sok más egyéb funkciót is.
+
+-   Az **alkalmazások regisztrálásával** gyorsan regisztrálhat egy alkalmazást, függetlenül attól, hogy az ügyfél vagy az alkalmazás fér hozzá Microsoft Graphhoz.
+
+- A **végpontok** panelen gyorsan azonosíthatja a forgatókönyvhöz tartozó végpontokat, beleértve az OpenID Connect konfigurációját, az SAML-metaadatokat, az Microsoft Graph API-t és a [OAuth 2,0 felhasználói folyamat végpontját](tokens-overview.md#endpoints). 
+
+- Az **API-engedélyek** és **az API** -k közzététele átfogóbb hatókör-, engedély-és beleegyezési felügyeletet biztosít. Mostantól az MS Graph és az Azure AD Graph engedélyeket is hozzárendelhet egy alkalmazáshoz.
+
+-   A **tulajdonosok** és a **jegyzékfájl** mostantól olyan alkalmazásokhoz érhető el, amelyek hitelesítése Azure ad B2C. Hozzáadhat tulajdonosokat a regisztrációhoz, és közvetlenül szerkesztheti az alkalmazás tulajdonságait [a jegyzékfájl-szerkesztő használatával](../active-directory/develop/reference-app-manifest.md).
+
+
+## <a name="new-supported-account-types"></a>Új támogatott fióktípus
+
+Az új felhasználói élményben válasszon ki egy támogatási fiókot a következő lehetőségek közül:
+- Csak a szervezeti könyvtárban lévő fiókok.
+- Fiókok bármely szervezeti címtárban (bármely Azure AD-címtár – több-bérlős).
+- Fiókok bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban. A felhasználók Azure AD B2C használatával történő hitelesítéséhez.
+
+A különböző fióktípus megismeréséhez válassza a létrehozási **élmény lehetőséget.** 
+
+A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásként történt. Ezekhez az alkalmazásokhoz a fiók típusa **bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban található fiókra van beállítva. Felhasználók hitelesítéséhez Azure AD B2C.**. 
+> [!NOTE]
+> Ez a beállítás ahhoz szükséges, hogy Azure AD B2C felhasználói folyamatokat futtasson az alkalmazás felhasználóinak hitelesítéséhez. Megtudhatja [, hogyan regisztrálhat egy alkalmazást felhasználói folyamatokkal való használatra.](tutorial-register-applications.md)
+
+Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való használatára is. [További információ](identity-provider-adfs2016-custom.md).
+
+## <a name="applications-for-devops-scenarios"></a>Alkalmazások DevOps-forgatókönyvekhez
+A más fióktípus használatával létrehozhat egy alkalmazást a DevOps-forgatókönyvek kezeléséhez, például a Microsoft Graph használata az identitási élményhez tartozó szabályzatok feltöltéséhez vagy a felhasználók kiépítéséhez. Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
+
+Előfordulhat, hogy nem látja az összes Microsoft Graph engedélyt, mert az engedélyek közül sok nem vonatkozik az Azure B2C fogyasztói felhasználókra. [További információ a felhasználók Microsoft Graph használatával történő kezeléséről](manage-user-accounts-graph-api.md).  
+
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Rendszergazdai engedély és offline_access + OpenID-hatókörök  
+<!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
+
+Az **OpenID** hatókörre azért van szükség, hogy Azure ad B2C be tudja jelentkezni a felhasználókat egy alkalmazásba. A **offline_access** hatókörre van szükség egy felhasználó frissítési jogkivonatának kibocsátásához. Ezek a hatókörök korábban lettek hozzáadva, és a rendszergazdai beleegyező értékkel lettek megadva. A létrehozási folyamat során könnyedén hozzáadhat engedélyeket ezekhez a hatókörökhöz, ha **engedélyezi a rendszergazdai jóváhagyást az OpenID-hez, és a offline_access engedélyek beállítás be** van jelölve. Más esetben a Microsoft Graph engedélyek a meglévő alkalmazások **API-engedélyeinek** beállításaiban adhatók hozzá rendszergazdai jogosultsággal.
+
+További információ az [engedélyekről és a beleegyezik](../active-directory/develop/v2-permissions-and-consent.md).
+
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformok/hitelesítés: válasz URL-címek/átirányítási URI-k
+A régi felhasználói felületen a különböző platformok típusait a **Tulajdonságok** szakaszban kezeltük a Web Apps/API-k és a natív ügyfelek ÁTirányítási URI-ja alapján. A "natív ügyfelek" a "nyilvános ügyfelek" néven is ismertek, és az iOS-, macOS-, Android-és egyéb mobil-és asztali alkalmazás-típusok alkalmazásai is lehetnek. 
+
+Az új felhasználói felületen a válasz URL-címei és az átirányítási URI-k is hivatkoznak átirányítási URI-ként, és megtalálhatók az alkalmazás **hitelesítési** szakaszában. Alkalmazásregisztrációk nem kizárólag webalkalmazás/API vagy natív alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazást használhatja a platform összes típusához. 
+
+Az átirányítási URI-k szükségesek a web vagy a Public (Mobile és Desktop) típusú alkalmazásokhoz való társításhoz. [További információ az átirányítási URI-k használatáról](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+
+Azt határozza meg, hogy az alkalmazás a nyilvános ügyfélként legyen-e kezelve az átirányítási URI platform típusától függően, ha lehetséges. A **kezelt alkalmazás nyilvános ügyfélként** beállításának *Igen* értéknek kell lennie olyan folyamatok esetében, amelyek nem használnak átirányítási URI-t, például a ROPC folyamatokat.
+
+Az **iOS-, MacOS** -és **Android** -platformok nyilvános ügyfél típusúak. Egyszerű módszert biztosítanak az iOS/macOS vagy Android rendszerű alkalmazások konfigurálásához a megfelelő átirányítási URI-k használatával a MSAL-hez való használathoz. További információ az [alkalmazás konfigurációs beállításairól](../active-directory/develop/msal-client-applications.md).
+
+
+## <a name="application-certificates--secrets"></a>Alkalmazás-tanúsítványok & Secrets
+
+A **kulcsok**helyett az új felhasználói élményben a tanúsítványok **& Secrets** panelen kezelheti a tanúsítványokat és a titkos kulcsokat. A hitelesítő adatok lehetővé teszik, hogy az alkalmazások azonosítsák magukat a hitelesítési szolgáltatásban, amikor jogkivonatokat fogadnak a webes címezhető helyen (HTTPS-séma használatával). Javasoljuk, hogy az ügyfél hitelesítő adatai helyett egy tanúsítványt használjon az Azure AD-vel való hitelesítéshez. A tanúsítványok nem használhatók a Azure AD B2C való hitelesítéshez.
+
+
+## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem érhetők el szolgáltatások
+A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők esetén:
+- **Szerepkörök és rendszergazdák** – ehhez olyan prémium szintű Azure ad P1 vagy P2 licencre van szükség, amely jelenleg nem érhető el Azure ad B2Choz.
+- **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-overview.md).
+- **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
+- **Jogkivonat konfigurációja** – a jogkivonat a felhasználói folyamat részeként van konfigurálva, nem pedig alkalmazás.
+- A gyors üzembe helyezési **élmény jelenleg** nem érhető el Azure ad B2C bérlők számára.
+- Az **Integration Assistant** panel jelenleg nem érhető el Azure ad B2C bérlők számára.
+
+
+## <a name="limitations"></a>Korlátozások
+Az új felhasználói élmény a következő korlátozásokkal jár:
+- Jelenleg Azure AD B2C nem tesz különbséget a hozzáférés vagy az azonosító jogkivonatok kibocsátása között az implicit folyamatokhoz. Ha a **hitelesítés** panelen az **azonosító tokenek** lehetőség van kiválasztva, mindkét típusú token elérhető az implicit engedélyezési folyamathoz.
+<!-- - Azure AD B2C doesn't currently support the single-page application "SPA" app type.  -->
+- A támogatott fiókok értékének módosítása nem támogatott a felhasználói felületen. Az alkalmazás jegyzékfájlját kell használnia, kivéve, ha az Azure AD egybérlős és a több-bérlő közötti váltást végzi.
+
+## <a name="next-steps"></a>További lépések
+
+Az új alkalmazás regisztrációs élményének megkezdéséhez:
+* Útmutató [webalkalmazások regisztrálásához](tutorial-register-applications.md)
+* Útmutató [webes API-k regisztrálásához](add-web-api-application.md)
+* Ismerje meg [, hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md)
+* Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
+* Ismerje meg [, hogyan használhatja a Azure ad B2C SAML-](identity-provider-adfs2016-custom.md) szolgáltatóként.
+* Tudnivalók az [alkalmazások típusairól](application-types.md)

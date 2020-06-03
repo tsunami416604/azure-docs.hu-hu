@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4ed0b011e7b82ce95c002d2af68e577f1d10c84
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266202"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310750"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -1943,4 +1943,4 @@ Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokume
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, tekintse meg az [Azure-szerepkörök (Azure RBAC) használatával történő hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.
-* További információk az Azure Active Directory és az Azure-előfizetés kapcsolatáról: [Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directoryhoz?](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* Az előfizetések és az Azure AD-bérlők közötti kapcsolatról, illetve az előfizetés hozzárendelésével vagy hozzáadásával kapcsolatos információkért lásd: [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

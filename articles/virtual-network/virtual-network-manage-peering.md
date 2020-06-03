@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: ba4acf32e13304c62ec5091670fe0b45ec3cb32c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 452cef0a65dd9c994b5d010676e402013b195ed3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235256"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300647"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
 
@@ -121,7 +121,7 @@ Ha azt szeretné, hogy a virtuális hálózatok időnként kommunikáljanak, de 
 - A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Ha különböző előfizetésekben lévő egyenrangú virtuális hálózatokkal rendelkezik, mindkét előfizetés ugyanahhoz vagy különböző Azure Active Directory bérlőhöz is társítható. Ha még nem rendelkezik AD-Bérlővel, [létrehozhat egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A portálon nem érhető el a virtuális hálózatok közötti, a különböző Azure Active Directory bérlőhöz társított előfizetések közötti társítás támogatása. Használhatja a CLI-t, a PowerShellt vagy a sablonokat.
 - A társ virtuális hálózatoknak nem átfedésben lévő IP-címekkel kell rendelkezniük.
 - Ha a virtuális hálózat egy másik virtuális hálózattal van társítva, nem adhat hozzá címtartományt a virtuális hálózat címterület-tartományához, vagy törölheti a címtartományt. Címtartományok hozzáadásához vagy eltávolításához törölje a társítást, vegye fel vagy távolítsa el a címtartományt, majd hozza létre újra a társítást. Ha címtartományt szeretne hozzáadni a virtuális hálózatokból, vagy eltávolítja a címtartományt, tekintse meg a [virtuális hálózatok kezelése](manage-virtual-network.md)című témakört.
-- A Resource Manageren keresztül központilag telepített két virtuális hálózatot, illetve a Resource Manageren keresztül üzembe helyezett virtuális hálózatokat a klasszikus üzemi modellen keresztül telepített virtuális hálózattal használhatja. A klasszikus üzembe helyezési modellel létrehozott két virtuális hálózat nem használható. Ha még nem ismeri az Azure üzembe helyezési modelljeit, olvassa el az [Azure Deployment models ismertetése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
+- A Resource Manageren keresztül központilag telepített két virtuális hálózatot, illetve a Resource Manageren keresztül üzembe helyezett virtuális hálózatokat a klasszikus üzemi modellen keresztül telepített virtuális hálózattal használhatja. A klasszikus üzembe helyezési modellel létrehozott két virtuális hálózat nem használható. Ha még nem ismeri az Azure üzembe helyezési modelljeit, olvassa el az [Azure Deployment models ismertetése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című cikket. A [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
 - Két, Resource Managerrel létrehozott virtuális hálózat közötti társviszony létrehozása esetén mindkét érintett virtuális hálózathoz konfigurálni kell egy társítást. A következő típusok egyike jelenik meg a társítási állapothoz: 
   - *Kezdeményezve:* Amikor létrehozza a társítást a második virtuális hálózatra az első virtuális hálózatról, a rendszer *kezdeményezi*a társítási állapotot. 
   - *Csatlakoztatva:* Amikor létrehozza a társítást a második virtuális hálózatról az első virtuális hálózatra, a társítási állapota *csatlakoztatva*lesz. Ha megtekinti az első virtuális hálózat társítási állapotát, az állapota a *kezdeményezőtől* a *csatlakoztatott*állapotra módosult. Nem sikerült létrehozni a társítást, amíg a virtuális hálózati társítások társítási állapota is *csatlakoztatva*van.
@@ -146,7 +146,7 @@ A virtuális hálózati társítással való együttműködéshez használt fió
 
 Ha a fiókja nincs hozzárendelve az egyik korábbi szerepkörhöz, hozzá kell rendelnie egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Műveletek                                                          | Name (Név) |
+| Műveletek                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Az A virtuális hálózatról a B virtuális hálózatra való társítás létrehozásához szükséges. A virtuális hálózatnak virtuális hálózatnak (Resource Manager) kell lennie.          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | A (z) B virtuális hálózatról (Resource Manager) az A virtuális hálózatra való társítás létrehozásához szükséges                                                       |
