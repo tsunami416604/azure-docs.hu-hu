@@ -12,12 +12,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: a60156762a4d8dfb6b11ae70e608fb26b07e5764
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045759"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310818"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Az összetett veszélyforrások elleni védelem konfigurálása az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

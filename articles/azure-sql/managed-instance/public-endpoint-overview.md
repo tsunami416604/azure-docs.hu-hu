@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példányok biztonságos nyilvános végpontjai
+title: Azure SQL felügyelt példányok nyilvános végpontjának védelme
 description: Nyilvános végpontok biztonságos használata az Azure SQL felügyelt példányain
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 396b52609eeab93d4e5c07c162ceb060ff05bc3d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3fa59620c07cc17435ca29bffbc98e88e35b0ca7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118723"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310138"
 ---
-# <a name="use--azure-sql-managed-instance-securely-with-public-endpoints"></a>Az Azure SQL felügyelt példányának biztonságos használata nyilvános végpontokkal
+# <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>Az Azure SQL felügyelt példányának biztonságos használata nyilvános végpontokkal
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Az Azure SQL felügyelt példánya felhasználói kapcsolatot biztosíthat a [nyilvános végpontokon](../../virtual-network/virtual-network-service-endpoints-overview.md)keresztül. Ez a cikk azt ismerteti, hogyan lehet ezt a konfigurációt biztonságosabbá tenni.

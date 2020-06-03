@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 9e4ec8ae9f62ccf1ff7f98ff06a43218b90e6c75
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190348"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310903"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
@@ -52,7 +52,7 @@ További információk a következő témakörökben találhatók: [Helyszíni i
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz
 
-1. Rendelje hozzá az Azure-előfizetést a Azure Active Directoryhoz, hogy a címtárban az adatbázist futtató Azure-előfizetés számára megbízható könyvtárat biztosít. Részletekért lásd: az [Azure-előfizetések az Azure ad-vel való társításának módja](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Rendelje hozzá az Azure-előfizetést a Azure Active Directoryhoz, hogy a címtárban az adatbázist futtató Azure-előfizetés számára megbízható könyvtárat biztosít. Részletekért lásd: az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 2. A Azure Portal Directory kapcsolójának használatával váltson át a tartományhoz társított előfizetésre.
 

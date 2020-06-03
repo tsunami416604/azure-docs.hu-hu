@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247988"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295524"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -74,22 +74,9 @@ Ezt a két alkalmazást csak egyszer kell regisztrálnia a Azure AD B2C-bérlőb
 
 ### <a name="register-the-identityexperienceframework-application"></a>A IdentityExperienceFramework alkalmazás regisztrálása
 
-Egy alkalmazásnak a Azure AD B2C-bérlőben való regisztrálásához használhatja a **Alkalmazásregisztrációk (örökölt)** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a **Alkalmazásregisztrációk** -élményt.
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. Az **Azure Active Directory** áttekintés menüjének **kezelés**területén válassza a **Alkalmazásregisztrációk (örökölt)** lehetőséget.
-1. Válassza az **Új alkalmazás regisztrálása** elemet.
-1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
-1. Az **alkalmazás típusa mezőben**válassza a **Web App/API**lehetőséget.
-1. A **bejelentkezési URL-cím**mezőbe írja be a (z `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ) nevet, ahol a a `your-tenant-name` Azure ad B2C bérlői tartományneve. Az összes URL-nek most a [B2clogin.com](b2clogin.md)-t kell használnia.
-1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `IdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` `your-tenant-name` a nevet, ahol a a Azure ad B2C bérlői tartományneve.
@@ -111,21 +98,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>A ProxyIdentityExperienceFramework alkalmazás regisztrálása
 
-#### <a name="applications"></a>[Alkalmazások](#tab/applications/)
-
-1. **Alkalmazásregisztrációk (örökölt)** területen válassza az **új alkalmazás regisztrálása**lehetőséget.
-1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
-1. Az **alkalmazás típusa mezőben**válassza a **natív**lehetőséget.
-1. Az **átirányítási URI**mezőbe írja be a következőt: `myapp://auth` .
-1. Kattintson a **Létrehozás** gombra. A létrehozást követően másolja ki az alkalmazás AZONOSÍTÓját, és mentse a későbbiekben való használatra.
-1. Válassza a **Beállítások**, majd a **szükséges engedélyek**elemet, majd kattintson a **Hozzáadás**gombra.
-1. Válassza **az API kiválasztása**lehetőséget, keresse meg és válassza ki a **IdentityExperienceFramework**, majd kattintson a **kiválasztás**gombra.
-1. Jelölje be a **hozzáférés IdentityExperienceFramework**melletti jelölőnégyzetet, kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.
-1. Válassza az **engedélyek megadása**lehetőséget, majd erősítse meg az **Igen**lehetőséget.
-
-#### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
-
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
 1. A **név**mezőbe írja be a következőt: `ProxyIdentityExperienceFramework` .
 1. A **támogatott fiókok típusai**területen **csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **átirányítási URI**alatt válassza a legördülő menüből a **nyilvános ügyfél/natív (mobil & Desktop)** lehetőséget.
@@ -137,7 +110,6 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 Ezután határozza meg, hogy az alkalmazást nyilvános ügyfélként kell kezelni:
 
 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-1. Válassza **az új élmény kipróbálása** (ha látható) lehetőséget.
 1. A **Speciális beállítások**területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen**lehetőséget). Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
 1. Kattintson a **Mentés** gombra.
 

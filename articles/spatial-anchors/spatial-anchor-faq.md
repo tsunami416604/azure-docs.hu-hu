@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004469"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296669"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdések
 
@@ -61,8 +61,8 @@ Az átláthatóság biztosításához az alábbi képen egy környezet és a sz�
 
 Az Azure térbeli horgonyok megfelelnek az [Azure szolgáltatási szerződés feltételeinek](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)és a [Microsoft adatvédelmi nyilatkozatának](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
-![Egy környezet és annak származtatott ritka pontja](./media/sparse-point-cloud.png)
-, az*1. ábra: egy környezet és a hozzá tartozó ritka pont felhő*
+![Egy környezet és annak származtatott ritka pontja, az ](./media/sparse-point-cloud.png)
+ *1. ábra: egy környezet és a hozzá tartozó ritka pont felhő*
 
 **K: van lehetőség arra, hogy diagnosztikai adatokat küldjön a Microsoftnak?**
 
@@ -72,21 +72,21 @@ Az Azure térbeli horgonyok megfelelnek az [Azure szolgáltatási szerződés fe
 
 **K: biztosítanak SLA-t?**
 
-**A:** A standard szintű Azure-szolgáltatásokhoz a 99,9%-nál nagyobb rendelkezésre állást célozunk meg. Vegye figyelembe, hogy az Azure térbeli horgonyok jelenleg előzetes verzióban érhetők el, ezért az előzetes verziókra vonatkozó [kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érvényesek.
+**A:** A standard szintű Azure-szolgáltatásokhoz a 99,9%-nál nagyobb rendelkezésre állást célozunk meg. 
 
 **K: közzétehetem az alkalmazásokat az Azure térbeli horgonyok használatával az alkalmazás-áruházakban? Használhatom az Azure térbeli horgonyokat a kritikus fontosságú üzemi helyzetekben?**
 
-**A:** Az Azure térbeli horgonyok jelenleg előzetes verzióban üzemelnek, és ebben az időszakban meghívjuk az alkalmazások fejlesztésére, a termékkel kapcsolatos [visszajelzések](https://feedback.azure.com/forums/919252-azure-spatial-anchors) megtervezésére és az éles környezetekben való üzembe helyezésre.
-
-Az általánosan elérhető (GA) dátumok hamarosan bejelentve lesznek.
+**A:** Igen, az Azure térbeli horgonyok általánosan elérhetők, és standard szintű Azure-szolgáltatások SLA-val rendelkeznek. Meghívjuk az éles környezetbeli üzembe helyezéshez szükséges alkalmazások fejlesztésére, és [megosztjuk](https://feedback.azure.com/forums/919252-azure-spatial-anchors) a termékkel kapcsolatos visszajelzéseit.
 
 **K: vannak érvényben lévő szabályozási korlátok?**
 
-Válasz **: igen**, szabályozási korlátok vannak.  Nem várjuk, hogy az alkalmazások tipikus fejlesztése és tesztelése során is megtalálhatja őket. Éles üzembe helyezések esetén készek vagyunk támogatni ügyfeleink nagy léptékű követelményeit. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) , hogy beszéljen. Az előzetes verzió ezen fázisában még nem tették közzé a bevezetési és árképzési struktúrát, de hamarosan elvárjuk.
+Válasz **: igen**, szabályozási korlátok vannak.  Nem várjuk, hogy az alkalmazások tipikus fejlesztése és tesztelése során is megtalálhatja őket. Éles üzembe helyezések esetén készek vagyunk támogatni ügyfeleink nagy léptékű követelményeit. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) , hogy beszéljen. 
 
 **K: milyen régiókban érhetők el az Azure térbeli adathorgonyok?**
 
-**A:** Az Azure-beli, USA 2. keleti régiójában jelenleg is létrehozhat Azure térbeli horgonyokat. Ez azt jelenti, hogy a szolgáltatáshoz tartozó számítási és tárolási kapacitás ebben a régióban van. Ez azt jelentette, hogy az ügyfelek hol találhatók. A jövőben a szolgáltatás regionális elérhetőségét minden elsődleges Azure-régióban ki fogjuk bővíteni.
+**A:** Az Azure térbeli horgonyok jelenleg az USA 2. nyugati régiójában, az USA keleti régiójában, az USA 2. keleti régiójában, az USA déli középső régiójában, Nyugat-Európában, Észak-Európában, Egyesült Királyság déli régiója és Kelet-Ausztrália érhető el A jövőben további régiók is elérhetők lesznek.
+
+Ez azt jelenti, hogy a szolgáltatáshoz tartozó számítási és tárolási kapacitás ezen a régión belül van. Ez azt jelentette, hogy az ügyfelek hol találhatók. 
 
 **K: az Azure térbeli horgonyok díja? Kell-e fizetni?**
 

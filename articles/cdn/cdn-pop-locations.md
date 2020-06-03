@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 385814677a868c0e631bd13bad3308609b174ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d8bca97cfaa3aff3cb3ca5a5eb9019f96576626e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800102"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309016"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
@@ -44,10 +44,9 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 | Afrika | Cape Town, Dél-Afrika<br />Johannesburg, Dél-Afrika<br />Lagos, Nigéria<br />Nairobi, Kenya | Johannesburg, Dél-Afrika | Dél-afrikai Köztársaság |
 | Közel-Kelet | Dubaj, Egyesült Arab Emírségek<br />Tel Aviv, Izrael<br />Isztambul, Törökország | Muscat, Omán<br />Fujirah, Egyesült Arab Emírségek | Katar<br />Egyesült Arab Emírségek |
 | India | Chennai, India<br />Hyderabad, India<br />Mumbai, India<br />Új-Delhi, India | Bengaluru (Bangalore), India<br />Chennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
-| Ázsia | Hongkong<br />Osaka, Japán<br />Tokió, Japán<br />Kuala Lumpur, Malajzia<br />Jakarta, Indonézia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Taipei, Tajvan<br />Bangkok, Thaiföld<br />Saigon, Vietnam | Hongkong<br />Batam, Indonézia<br />Jakarta, Indonézia<br />Osaka, Japán<br />Tokió, Japán<br />Szingapúr<br />Szöul, Dél-Korea<br />Kaohsiung, Tajvan<br />Taipei, Tajvan | Hongkong<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
+| Ázsia | Hongkong<br />Osaka, Japán<br />Tokió, Japán<br />Kuala Lumpur, Malajzia<br />Jakarta, Indonézia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Taipei, Tajvan<br />Bangkok, Thaiföld<br />Ho Chi Minh-város, Vietnam | Hongkong<br />Batam, Indonézia<br />Jakarta, Indonézia<br />Osaka, Japán<br />Tokió, Japán<br />Szingapúr<br />Szöul, Dél-Korea<br />Kaohsiung, Tajvan<br />Taipei, Tajvan | Hongkong<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Ausztrália<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Melbourne, Ausztrália<br />Sydney, Ausztrália<br />Auckland, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az engedélyezési lista legújabb IP-címeinek lekéréséhez tekintse meg az [Azure CDN Edge API](https://docs.microsoft.com/rest/api/cdn/edgenodes)-t.
-
