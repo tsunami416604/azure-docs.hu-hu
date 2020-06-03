@@ -4,19 +4,19 @@ description: Azure IoT Edge-eszköz használata transzparens átjáróként, ame
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/03/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e563e67b5e951b43e5782f8c845c8ec46ff3e9bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1e14fe6764a9f5e850d3b975ef3bcc6cb28bf78
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687164"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309152"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
@@ -30,9 +30,9 @@ Ez a cikk részletesen ismerteti, hogyan konfigurálhat egy IoT Edge eszközt ú
 
 A sikeres transzparens átjáró-kapcsolatok létrehozásához három általános lépés szükséges. Ez a cikk az első lépést ismerteti:
 
-1. **Az átjáró-eszköznek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra, az alárendelt eszközökről érkező kommunikáció fogadására és az üzenetek megfelelő célhelyre való továbbítására.**
-2. Az alsóbb rétegbeli eszköznek rendelkeznie kell egy eszköz-identitással, hogy képes legyen hitelesíteni a IoT Hub, és tudnia kell kommunikálni az átjáró eszközén keresztül. További információ: [alsóbb rétegbeli eszköz hitelesítése az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
-3. Az alsóbb rétegbeli eszköznek biztonságosan kell csatlakoznia az átjáró eszközéhez. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
+1. **Konfigurálja az átjáró-eszközt kiszolgálóként, hogy az alsóbb rétegbeli eszközök biztonságosan kapcsolódjanak hozzá. Állítsa be az átjárót, hogy üzeneteket kapjon az alsóbb rétegbeli eszközökről, és irányítsa azokat a megfelelő helyre.**
+2. Hozzon létre egy eszköz-identitást az alsóbb rétegbeli eszköz számára, hogy a hitelesítés a IoT Hub használatával történjen. Az alsóbb rétegbeli eszköz konfigurálásával üzeneteket küldhet az átjáró eszközön keresztül. További információ: [alsóbb rétegbeli eszköz hitelesítése az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
+3. Az alárendelt eszköz csatlakoztatása az átjáró eszközhöz és az üzenetek küldésének megkezdése. További információ: [alsóbb rétegbeli eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md).
 
 Ahhoz, hogy egy eszköz átjáróként működjön, az informatikai részlegnek képesnek kell lennie az alsóbb rétegbeli eszközökhöz való biztonságos kapcsolódásra. Azure IoT Edge lehetővé teszi, hogy egy nyilvános kulcsokra épülő infrastruktúrát (PKI) használjon az eszközök közötti biztonságos kapcsolatok beállításához. Ebben az esetben lehetővé tesszük, hogy egy alsóbb rétegbeli eszköz olyan IoT Edge-eszközhöz kapcsolódjon, amely transzparens átjáróként működik. Az ésszerű biztonság fenntartása érdekében az alsóbb rétegbeli eszköznek meg kell erősítenie az átjáró-eszköz identitását. Ez az identitás-ellenőrzési szolgáltatás megakadályozza, hogy az eszközök esetlegesen rosszindulatú átjáróhoz csatlakozzanak.
 
@@ -40,18 +40,58 @@ Egy transzparens átjáró-forgatókönyvben lévő alsóbb rétegbeli eszköz l
 
 Létrehozhat olyan tanúsítvány-infrastruktúrát is, amely lehetővé teszi az eszköz-átjáró topológiához szükséges megbízhatóságot. Ez a cikk azt feltételezi, hogy ugyanazt a tanúsítványt használja, amelyet az [x. 509 hitelesítésszolgáltatói biztonság](../iot-hub/iot-hub-x509ca-overview.md) engedélyezéséhez használ IoT Hubban, amely egy adott IoT hubhoz (az IoT hub legfelső szintű hitelesítésszolgáltatója) társított x. 509 hitelesítésszolgáltatói tanúsítvánnyal, a hitelesítésszolgáltatóval aláírt tanúsítványok sorozatával, valamint a IoT Edge eszközhöz tartozó hitelesítésszolgáltatóval is rendelkezik.
 
-![Átjáró tanúsítványának beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
-
 >[!NOTE]
->Az ebben a cikkben használt "legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" kifejezés a PKI-tanúsítványlánc legfelső szintű nyilvános tanúsítványára vonatkozik, nem feltétlenül a konzorciális hitelesítésszolgáltató tanúsítványának gyökerére. Sok esetben valójában egy közbenső HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa.
-
-A IoT Edge Security Daemon a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát használja a számítási feladatok HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának aláírásához, ami aláírja az IoT Edge hub kiszolgálói tanúsítványát. Az átjáró a kapcsolat megkezdése során megjeleníti a kiszolgálói tanúsítványát az alárendelt eszközön. Az alsóbb rétegbeli eszköz ellenőrzi, hogy a kiszolgálói tanúsítvány egy olyan tanúsítványlánc részét képezi-e, amely a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványba összesíti. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszköz ellenőrizze, hogy az átjáró megbízható forrásból származik-e. További információ: a [Azure IoT Edge tanúsítványok használatának](iot-edge-certs.md)ismertetése.
+>Az ezekben a cikkekben használt *legfelső szintű hitelesítésszolgáltatói tanúsítvány* kifejezés a PKI-tanúsítványlánc legfelső szintű nyilvános tanúsítványára hivatkozik, nem feltétlenül a konzorciális hitelesítésszolgáltató tanúsítványának gyökerére. Sok esetben valójában egy közbenső HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa.
 
 A következő lépések végigvezetik a tanúsítványok létrehozásának és telepítésének folyamatán az átjáró megfelelő helyein. A tanúsítványok létrehozásához bármilyen gépet használhat, majd átmásolhatja őket a IoT Edge eszközre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Éles tanúsítvánnyal](how-to-manage-device-certificates.md)konfigurált Azure IoT Edge-eszköz.
+Linux vagy Windows rendszerű eszköz, amelyen IoT Edge telepítve van.
+
+## <a name="set-up-the-device-ca-certificate"></a>Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának beállítása
+
+Minden IoT Edge átjáróhoz telepítve kell lennie egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának. A IoT Edge Security Daemon a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát használja a számítási feladatok HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának aláírásához, ami aláírja az IoT Edge hub kiszolgálói tanúsítványát. Az átjáró a kapcsolat megkezdése során megjeleníti a kiszolgálói tanúsítványát az alárendelt eszközön. Az alsóbb rétegbeli eszköz ellenőrzi, hogy a kiszolgálói tanúsítvány egy olyan tanúsítványlánc részét képezi-e, amely a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványba összesíti. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszköz ellenőrizze, hogy az átjáró megbízható forrásból származik-e. További információ: a [Azure IoT Edge tanúsítványok használatának](iot-edge-certs.md)ismertetése.
+
+![Átjáró tanúsítványának beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
+
+A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának (titkos kulcsával) jelen kell lennie az IoT Edge átjáró eszközön, és konfigurálni kell a IoT Edge config. YAML fájlban. Ne feledje, hogy ebben az esetben a *legfelső szintű hitelesítésszolgáltatói tanúsítvány* a legfelső szintű hitelesítésszolgáltatót jelenti ehhez a IoT Edge-forgatókönyvhöz. Az átjáró-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának és az alsóbb rétegbeli eszköz tanúsítványának azonos legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szüksége.
+
+>[!TIP]
+>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának IoT Edge-eszközre történő telepítésének folyamatát a [IoT Edge-eszközök tanúsítványainak kezelése](how-to-manage-device-certificates.md)című részben is ismertetjük.
+
+A következő fájlok készen állnak:
+
+* Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa
+* Eszköz HITELESÍTÉSSZOLGÁLTATÓI titkos kulcsa
+
+Éles környezetekben ezeket a fájlokat saját hitelesítésszolgáltatóval kell előállítani. Fejlesztési és tesztelési helyzetekben használhat bemutató tanúsítványokat.
+
+1. Ha bemutató tanúsítványokat használ, a következő lépésekkel hozhatja létre a fájlokat:
+   1. [Hozzon létre egy legfelső szintű hitelesítésszolgáltatói tanúsítványt](how-to-create-test-certificates.md#create-root-ca-certificate). Ezen utasítások végén egy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fog rendelkezni:
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+
+   2. [Hozzon létre IoT Edge eszköz hitelesítésszolgáltatói tanúsítványát](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Ezen utasítások végén két fájl, egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa és a titkos kulcsa lesz:
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`és
+      * `<path>/private/iot-edge-device-<cert name>.key.pem`
+
+2. Ha ezeket a fájlokat egy másik gépen hozta létre, másolja át őket a IoT Edge eszközre.
+
+3. A IoT Edge eszközön nyissa meg a biztonsági démon konfigurációs fájlját.
+   * Windows`C:\ProgramData\iotedge\config.yaml`
+   * Linux`/etc/iotedge/config.yaml`
+
+4. Keresse meg a fájl **tanúsítványok** szakaszát, és adja meg a fájl URI-fájljait a három fájl számára a következő tulajdonságok értékének megfelelően:
+   * **device_ca_cert**: eszköz hitelesítésszolgáltatói tanúsítványa
+   * **device_ca_pk**: eszköz hitelesítésszolgáltatói titkos kulcsa
+   * **trusted_ca_certs**: legfelső szintű hitelesítésszolgáltatói tanúsítvány
+
+5. Mentse és zárja be a fájlt.
+
+6. IoT Edge újraindítása.
+   * Windows`Restart-Service iotedge`
+   * Linux`sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub üzembe helyezése az átjárón
 
@@ -59,7 +99,7 @@ Amikor először telepíti a IoT Edget egy eszközön, a rendszer csak egy rends
 
 Az IoT Edge hub feladata, hogy fogadja a bejövő üzeneteket az alárendelt eszközökről, és átirányítsa azokat a következő célhelyre. Ha a **edgeHub** modul nem fut az eszközön, hozzon létre egy kezdeti központi telepítést az eszköz számára. Az üzemelő példány üresen jelenik meg, mert nem ad hozzá modulokat, de gondoskodni fog arról, hogy mindkét rendszer-modul fusson.
 
-Megtekintheti, hogy mely modulok futnak az eszközön, ha megtekinti az eszköz adatait a Azure Portalban, megtekinti az eszköz állapotát a Visual Studióban vagy a Visual `iotedge list` Studio Code-ban, vagy maga az eszközön futtatja a parancsot.
+Megtekintheti, hogy mely modulok futnak az eszközön, ha megtekinti az eszköz adatait a Azure Portalban, megtekinti az eszköz állapotát a Visual Studióban vagy a Visual Studio Code-ban, vagy maga az eszközön futtatja a parancsot `iotedge list` .
 
 Ha a **edgeAgent** modul a **edgeHub** modul nélkül fut, kövesse az alábbi lépéseket:
 
@@ -69,19 +109,13 @@ Ha a **edgeAgent** modul a **edgeHub** modul nélkül fut, kövesse az alábbi l
 
 3. Válassza a **modulok beállítása**lehetőséget.
 
-4. Kattintson a **Tovább** gombra.
+4. Válassza a **Tovább: útvonalak**lehetőséget.
 
-5. Az **útvonalak meghatározása** lapon olyan alapértelmezett útvonalon kell lennie, amely az összes modul összes üzenetét elküldi IoT hub. Amennyiben nem így lenne, adja hozzá a következő kódot, és kattintson a **Tovább** gombra.
+5. Az **útvonalak** lapon olyan alapértelmezett útvonalon kell lennie, amely minden üzenetet küld, akár modulból, akár egy alsóbb rétegbeli eszközről, hogy IoT hub. Ha nem, adjon hozzá egy új útvonalat a következő értékekkel, majd válassza a **felülvizsgálat + létrehozás**lehetőséget:
+   * **Név**:`route`
+   * **Érték**:`FROM /messages/* INTO $upstream`
 
-   ```JSON
-   {
-       "routes": {
-           "route": "FROM /messages/* INTO $upstream"
-       }
-   }
-   ```
-
-6. A **sablon áttekintése** lapon válassza a **Küldés**lehetőséget.
+6. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
 
 ## <a name="open-ports-on-gateway-device"></a>Portok megnyitása átjáró eszközön
 
@@ -89,7 +123,7 @@ A standard IoT Edge eszközök nem igényelnek semmilyen bejövő kapcsolatot a 
 
 Az átjáró-forgatókönyvek működéséhez az IoT Edge hub által támogatott protokollok közül legalább az egyiknek nyitva kell lennie az alárendelt eszközökről érkező bejövő forgalom számára. A támogatott protokollok a MQTT, a AMQP, a HTTPS, a MQTT over WebSockets és a AMQP WebSocket-en keresztül.
 
-| Port | Protocol (Protokoll) |
+| Port | Protokoll |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
@@ -101,7 +135,7 @@ A IoT Edge futtatókörnyezet képes továbbítani az alárendelt eszközökről
 
 Jelenleg az alárendelt eszközök által küldött üzenetek továbbításának módja a modulok által küldött üzenetektől való megkülönböztetés. A modulok által küldött üzenetek tartalmazzák a **connectionModuleId** nevű rendszertulajdonságot, de az alárendelt eszközök által küldött üzenetek nem. Az útvonal WHERE záradékával kizárhatja az adott System tulajdonságot tartalmazó üzeneteket.
 
-Az alábbi útvonal egy példa arra, hogy bármely alsóbb rétegbeli eszközről üzeneteket küldjön egy nevű `ai_insights`modulba, majd `ai_insights` a IoT hub.
+Az alábbi útvonal egy példa arra, hogy bármely alsóbb rétegbeli eszközről üzeneteket küldjön egy nevű modulba `ai_insights` , majd a `ai_insights` IoT hub.
 
 ```json
 {
@@ -116,12 +150,12 @@ Az üzenetek útválasztásával kapcsolatos további információkért lásd: [
 
 ## <a name="enable-extended-offline-operation"></a>Kiterjesztett offline művelet engedélyezése
 
-Az IoT Edge futtatókörnyezet [v 1.0.4 kiadásával](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) kezdődően az átjáró-eszköz és a hozzá csatlakozó alsóbb rétegbeli eszközök konfigurálható a kiterjesztett offline művelethez.
+Az IoT Edge Runtime [1.0.4-kiadásával](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) kezdődően az átjáró-eszköz és a hozzá csatlakozó alsóbb rétegbeli eszközök konfigurálható a kiterjesztett offline művelethez.
 
 Ezzel a képességgel a helyi modulok és az alsóbb rétegbeli eszközök szükség szerint újra hitelesíthetők a IoT Edge eszközzel, és kommunikálhatnak egymással az üzenetek és a metódusok használatával, még akkor is, ha az IoT hub le van választva. További információ: [IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek ismertetése](offline-capabilities.md).
 
-A kibővített offline képességek engedélyezéséhez létre kell hoznia egy szülő-gyermek kapcsolatot egy IoT Edge átjáró-eszköz és a hozzá kapcsolódó alsóbb szintű eszközök között. Ezeket a lépéseket részletesen ismertetjük az [alsóbb rétegbeli eszközök Azure-IoT hub történő hitelesítésével](how-to-authenticate-downstream-device.md)kapcsolatban.
+A kibővített offline képességek engedélyezéséhez létre kell hoznia egy szülő-gyermek kapcsolatot egy IoT Edge átjáró-eszköz és a hozzá kapcsolódó alsóbb szintű eszközök között. Ezeket a lépéseket részletesebben ismertetjük a sorozat következő cikkében, amely [egy alsóbb rétegbeli eszközt hitelesít az Azure IoT Hubban](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy rendelkezik egy IoT Edge eszközzel, amely transzparens átjáróként működik, konfigurálnia kell az alsóbb rétegbeli eszközöket az átjáró megbízhatóságához és az üzenetek küldéséhez. Folytassa a következő lépéssel, hogy [hitelesítse egy alsóbb rétegbeli eszközt az Azure IoT Hubban](how-to-authenticate-downstream-device.md) az átlátszó átjáró beállításának további lépéseihez.
+Most, hogy rendelkezik egy IoT Edge eszközzel, amely transzparens átjáróként van beállítva, konfigurálnia kell az alsóbb rétegbeli eszközöket az átjáró megbízhatóságához és az üzenetek küldéséhez. Folytassa a következő lépéssel, hogy [hitelesítse egy alsóbb rétegbeli eszközt az Azure IoT Hubban](how-to-authenticate-downstream-device.md) az átlátszó átjáró beállításának további lépéseihez.

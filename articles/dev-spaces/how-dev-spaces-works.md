@@ -1,16 +1,16 @@
 ---
 title: Az Azure Dev Spaces működése
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234970"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307367"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
 
@@ -22,9 +22,9 @@ Az Azure dev Spaces számos lehetőséget kínál a Kubernetes-alkalmazások gyo
 
 Az Azure dev Spaces szolgáltatás csökkenti a Kubernetes-alkalmazás fejlesztését, tesztelését és iterációját az AK-fürt környezetében. Ez a csökkentési erőfeszítések lehetővé teszik a fejlesztők számára, hogy alkalmazásaikat üzleti logikára összpontosítsanak, és nem konfigurálja a szolgáltatásaikat a Kubernetes-ben való futtatásra.
 
-### <a name="connect-your-development-machine-to-aks"></a>A fejlesztői gép összekötése az AK-val
+### <a name="local-process-with-kubernetes"></a>Helyi folyamat Kubernetes
 
-Az Azure dev Spaces használatával összekapcsolhatja a fejlesztési számítógépét az AK-fürttel, így a kódot futtathatja és hibakeresést végezhet a fejlesztői számítógépen, mintha a fürtön futna. Az Azure dev Spaces átirányítja a forgalmat a csatlakoztatott AK-fürt között úgy, hogy egy olyan Pod-t futtat a fürtön, amely távoli ügynökként működik a fejlesztői gép és a fürt közötti forgalom átirányításához. Ez a forgalom átirányítása lehetővé teszi, hogy az AK-fürtön futó fejlesztői számítógép és szolgáltatások programkódja kommunikáljon úgy, mintha ugyanabban az AK-fürtben lennének. A fejlesztői gép AK-hoz való csatlakoztatásával kapcsolatos további információkért lásd: [a fejlesztői számítógép csatlakoztatása az AK-fürthöz][how-it-works-connect].
+A Kubernetes helyi folyamatával összekapcsolhatja a fejlesztői számítógépet a Kubernetes-fürttel, így a kódot futtathatja és hibakeresést végezhet a fejlesztői számítógépen, mintha a fürtön futna. Az Azure dev Spaces átirányítja a forgalmat a csatlakoztatott fürt között úgy, hogy egy olyan Pod-t futtat a fürtön, amely távoli ügynökként működik a fejlesztői számítógép és a fürt közötti forgalom átirányításához. Ez a forgalom átirányítása lehetővé teszi a fürtön futó fejlesztői számítógép és szolgáltatások programkódjának a kommunikációt, mintha ugyanabban a fürtben lennének. A fejlesztői számítógép Kubernetes-fürthöz való csatlakoztatásával kapcsolatos további információkért tekintse meg a [helyi folyamat és a Kubernetes működése][how-it-works-local-process-kubernetes]című témakört.
 
 ### <a name="run-your-code-in-aks"></a>A kód futtatása AK-ban
 
@@ -44,12 +44,12 @@ A GitHub-műveleteket az Azure dev Spaces használatával is használhatja, ha a
 
 ## <a name="next-steps"></a>További lépések
 
-A helyi fejlesztési gép AK-fürthöz való csatlakoztatásának megkezdéséhez lásd: [a fejlesztői gép csatlakoztatása egy AK-fürthöz][connect].
+A helyi fejlesztési számítógép AK-fürthöz való csatlakoztatásának megkezdéséhez lásd: [a fejlesztői számítógép csatlakoztatása egy AK-fürthöz][connect].
 
 Az Azure dev Spaces for Team Development használatának megkezdéséhez tekintse meg a [csapat fejlesztését az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: how-to/local-process-kubernetes-vs-code.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

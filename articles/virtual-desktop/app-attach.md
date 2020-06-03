@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742935"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310614"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
 > [!IMPORTANT]
-> A MSIX-alkalmazás csatolása jelenleg privát előzetes verzióban érhető el.
+> A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások csatlakoztatását egy Windows rendszerű virtuális asztali környezetben.
@@ -28,13 +28,14 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások 
 Mielőtt elkezdené, a következő lépésekkel kell konfigurálnia a MSIX-alkalmazás csatolását:
 
 - Hozzáférés a Windows Insider portálhoz a Windows 10 azon verziójának beszerzéséhez, amely támogatja a MSIX app Attach API-kat.
-- Működő Windowsos virtuális asztali telepítés. További információ: [bérlő létrehozása a Windows rendszerű virtuális asztalban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali környezet 2019-es verziójának üzembe helyezésével kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). A Windows rendszerű virtuális asztali 2020 kiadásának üzembe helyezéséről a következő témakörben talál további információt: [Host Pool létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
+
 - A MSIX-csomagoló eszköz
 - Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomag tárolva lesz
 
-## <a name="get-the-os-image"></a>Az operációs rendszer rendszerképének beolvasása
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Az operációs rendszer rendszerképének beszerzése a Technology bevezetési program (TAP) portálján
 
-Először be kell szereznie a MSIX alkalmazáshoz használni kívánt operációsrendszer-rendszerképet. Az operációs rendszer rendszerképének beszerzése:
+Az operációs rendszer rendszerképének beszerzése a Windows Insider portálról:
 
 1. Nyissa meg a [Windows Insider portált](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) , és jelentkezzen be.
 
@@ -49,6 +50,21 @@ Először be kell szereznie a MSIX alkalmazáshoz használni kívánt operáció
      >Jelenleg az angol az egyetlen olyan nyelv, amelyet teszteltek a szolgáltatással. Kijelölhet más nyelveket is, de előfordulhat, hogy nem a kívánt módon jelennek meg.
     
 4. A letöltési hivatkozás létrehozása után válassza ki a **64 bites letöltést** , és mentse a helyi merevlemezre.
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>Az operációs rendszer rendszerképének beolvasása a Azure Portal
+
+Az operációs rendszer rendszerképének beszerzése a Azure Portalról:
+
+1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be.
+
+2. Válassza a **virtuális gép létrehozása**lehetőséget.
+
+3. Az **alapszintű** lapon válassza a **Windows 10 Enterprise multi-session (2004-es verzió**) lehetőséget.
+      
+4. A virtuális gép létrehozásának befejezéséhez kövesse a további utasításokat.
+
+     >[!NOTE]
+     >A virtuális gép használatával közvetlenül tesztelheti a MSIX-alkalmazás csatolását. További információért ugorjon a [virtuális merevlemez-vagy VHDX-csomag MSIX való létrehozásához](#generate-a-vhd-or-vhdx-package-for-msix). Ellenkező esetben folytassa a szakasz olvasásával.
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>A VHD-rendszerkép előkészítése az Azure-hoz 
 
@@ -77,7 +93,7 @@ sc config wuauserv start=disabled
 Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a halom-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához. 
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >Ehhez a változáshoz újra kell indítani a virtuális gépet.
@@ -187,7 +203,7 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen**lehetőséget.
 6. Válassza **a minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás**lehetőséget.
 7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek**lehetőséget, majd kattintson **az OK gombra**.
-8. Válassza a **Finish** (Befejezés) elemet.
+8. Válassza a **Befejezés** gombot.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
 

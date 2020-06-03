@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 317b3cd508ee1ab821838cae56cc5b5c9943ace0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835971"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309883"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -146,7 +146,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
 ## <a name="known-issue"></a>Ismert probléma
 
-Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12` `4.8.0` . Ha a parancsfájl műveletei a következő helyen találhatók: `"Collecting package metadata (repodata.json): ...working..."` és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"` . [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
+Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12` `4.8.0` . Ha úgy látja, hogy a parancsfájl műveletei nem válaszolnak a következővel: `"Collecting package metadata (repodata.json): ...working..."` `"Python script has been killed due to timeout after waiting 3600 secs"` . [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 

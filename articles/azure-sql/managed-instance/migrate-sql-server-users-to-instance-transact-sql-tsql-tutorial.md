@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: 79a9f59b4fb6f7ae71c1e6866e8c50baa4e7974b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193753"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310223"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: Windows-felhasználók és-csoportok áttelepíthetők egy SQL Server példányban az Azure SQL felügyelt példányára T-SQL DDL-szintaxis használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -314,7 +314,7 @@ Futtassa az ALTER USER parancsot az áttelepítési folyamat végrehajtásához 
 
 Tesztelje az SQL felügyelt példányának hitelesítését az ALTER USER szintaxissal korábban az Azure AD-bejelentkezéshez hozzárendelt felhasználó használatával.
 
-1. Jelentkezzen be az összevont virtuális gépre a MI előfizetését használva`aadsqlmi\testUser1`
+1. Jelentkezzen be az összevont virtuális gépre az Azure SQL felügyelt példány-előfizetésének használatával`aadsqlmi\testUser1`
 1. SQL Server Management Studio (SSMS) használatával jelentkezzen be az SQL felügyelt példányára **Active Directory integrált** hitelesítéssel, az adatbázishoz való csatlakozással `migration` .
     1. A testUser1@aadsqlmi.net hitelesítő adatokkal is bejelentkezhet a SSMS kapcsolóval **Active Directory – univerzális, MFA-támogatással**. Ebben az esetben azonban nem használhatja az egyszeri bejelentkezési mechanizmust, és jelszót kell beírnia. Nem kell összevont virtuális gépet használnia a felügyelt SQL-példányba való bejelentkezéshez.
 1. A szerepkör-tag **kiválasztása**után a `test` táblázatból választhat
@@ -325,8 +325,8 @@ Tesztelje az SQL felügyelt példányának hitelesítését az ALTER USER szinta
 
 Tesztelje a hitelesítést egy SQL felügyelt példányon egy Windows-csoport tagja használatával `migration` . A felhasználót `aadsqlmi\testGroupUser` az áttelepítés előtt fel kell venni a csoportba `migration` .
 
-1. Jelentkezzen be az összevont virtuális gépre a MI előfizetését használva`aadsqlmi\testGroupUser`
-1. A SSMS használata **Active Directory integrált** hitelesítéssel, kapcsolódás a mi kiszolgálóhoz és az adatbázishoz`migration`
+1. Jelentkezzen be az összevont virtuális gépre az Azure SQL felügyelt példány-előfizetésének használatával`aadsqlmi\testGroupUser`
+1. Az SSMS használata **Active Directory integrált** hitelesítéssel, kapcsolódás az Azure SQL felügyelt példány-kiszolgálójához és az adatbázishoz`migration`
     1. A testGroupUser@aadsqlmi.net hitelesítő adatokkal is bejelentkezhet a SSMS kapcsolóval **Active Directory – univerzális, MFA-támogatással**. Ebben az esetben azonban nem használhatja az egyszeri bejelentkezési mechanizmust, és jelszót kell beírnia. Nem kell összevont virtuális gépet használnia a felügyelt SQL-példányba való bejelentkezéshez.
 1. A szerepkör részeként `db_owner` új táblát is létrehozhat.
 

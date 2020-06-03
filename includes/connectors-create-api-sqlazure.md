@@ -32,7 +32,7 @@ Ha az SQL-eseményindító vagy-művelet megkérdezi a kapcsolati adatokat, köv
 
    ![Azure SQL Databasehoz való kapcsolódás létrehozása](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. A kapcsolat létrehozása után folytassa az SQL- [trigger hozzáadásával](#add-sql-trigger) vagy [egy SQL-művelet hozzáadásával](#add-sql-action).
 
@@ -67,6 +67,6 @@ Azt is megteheti, hogy a Windows-hitelesítést a SQL Server-összekötővel egy
 
    ![SQL Server-kapcsolatok létrehozása befejeződött](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 1. A kapcsolat létrehozása után folytassa az SQL- [trigger hozzáadásával](#add-sql-trigger) vagy az [SQL-művelet hozzáadásával](#add-sql-action).

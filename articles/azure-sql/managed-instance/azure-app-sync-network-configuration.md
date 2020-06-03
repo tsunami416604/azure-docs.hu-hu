@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 6e4f6789be2faa8d1af0fd75830541f8a9e27a7e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8aca5a4f76504f1e9c33f55101f697ea6b3b6856
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044569"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309900"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Azure App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,19 +30,19 @@ Ehhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg a Web Apps App Service csomagot.
 
-   ![App Service-csomag](./media/azure-app-sync-network-configuration/app-service-plan.png)
+   ![Képernyőkép a App Service tervről](./media/azure-app-sync-network-configuration/app-service-plan.png)
 
 2. Válassza a **hálózatkezelés** lehetőséget, majd **kattintson a kezelés elemre**.
 
-   ![szolgáltatási csomag kezelése](./media/azure-app-sync-network-configuration/manage-plan.png)
+   ![A szolgáltatási csomag kezelésének képernyőképe](./media/azure-app-sync-network-configuration/manage-plan.png)
 
 3. Válassza ki a **VNet** , és kattintson a **hálózat szinkronizálása**elemre.
 
-   ![hálózat szinkronizálása](./media/azure-app-sync-network-configuration/sync.png)
+   ![A szinkronizálási hálózat képernyőképe](./media/azure-app-sync-network-configuration/sync.png)
 
 4. Várjon, amíg a szinkronizálás elkészült.
   
-   ![szinkronizálás kész](./media/azure-app-sync-network-configuration/sync-done.png)
+   ![A szinkronizálás kész képernyőkép](./media/azure-app-sync-network-configuration/sync-done.png)
 
 Most már készen áll arra, hogy megpróbálja újból létrehozni a kapcsolatot az SQL felügyelt példányával.
 

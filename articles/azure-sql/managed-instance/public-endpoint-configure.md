@@ -1,5 +1,5 @@
 ---
-title: Nyilvános végpont által felügyelt példány konfigurálása
+title: Nyilvános végpont konfigurálása – felügyelt Azure SQL-példány
 description: Megtudhatja, hogyan konfigurálhat nyilvános végpontot az Azure SQL felügyelt példányaihoz
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: e11e8181ba17f9833cd4add7650ad9f81a158fd9
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a6d4ea22d3b05b14ce0d3e63912ea8bb7a432e57
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118755"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310155"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -1,7 +1,7 @@
 ---
 title: Időponthoz tartozó visszaállítás (PITR)
 titleSuffix: Azure SQL Managed Instance
-description: Adatbázis visszaállítása egy felügyelt Azure SQL-példányon egy korábbi időpontra.
+description: Adatbázis visszaállítása az Azure SQL felügyelt példányain egy korábbi időpontra.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,17 +12,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 238d9ec814b19499e73533d067202641193aa574
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046900"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310172"
 ---
-# <a name="restore-an-azure-sql-managed-instance-database-to-a-previous-point-in-time"></a>Azure SQL felügyelt példány adatbázisának visszaállítása egy korábbi időpontra
+# <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az időponthoz tartozó visszaállítás (PITR) használatával létrehozhat egy adatbázist egy másik adatbázis másolatával egy korábbi időpontban. Ez a cikk azt ismerteti, hogyan végezhető el az adatbázis egy adott időpontban történő visszaállítása egy felügyelt Azure SQL-példányban.
+Az időponthoz tartozó visszaállítás (PITR) használatával létrehozhat egy adatbázist egy másik adatbázis másolatával egy korábbi időpontban. Ez a cikk azt ismerteti, hogyan végezhető el az adatbázisok adott időpontban történő visszaállítása az Azure SQL felügyelt példányain.
 
 Az időponthoz való visszaállítás hasznos olyan helyreállítási helyzetekben, mint például a hibák által okozott incidensek, az adatok helytelen betöltése vagy a kritikus adatok törlése. Egyszerűen tesztelésre vagy naplózásra is használható. A biztonságimásolat-fájlok az adatbázis beállításaitól függően 7 – 35 napig tartanak.
 
@@ -34,17 +34,17 @@ Az időponthoz tartozó visszaállítás egy adatbázist állíthat vissza:
 
 ## <a name="limitations"></a>Korlátozások
 
-Az SQL felügyelt példányra való visszaállítási időpontra a következő korlátozások vonatkoznak:
+Az SQL felügyelt példányának időponthoz való visszaállítása a következő korlátozásokkal jár:
 
-- Ha egy felügyelt SQL-példányról egy másikra végez visszaállítást, mindkét példánynak ugyanabban az előfizetésben és régióban kell lennie. A régiók közötti és az előfizetések közötti visszaállítás jelenleg nem támogatott.
-- A teljes SQL-alapú felügyelt példányok időponthoz való visszaállítása nem lehetséges. Ez a cikk csak azokat az adatbázisokat ismerteti, amelyek a felügyelt SQL-példányon üzemeltetett adatbázisok időponthoz tartozó visszaállítása.
+- Ha egy SQL felügyelt példány egy példányáról egy másikra állítja vissza, mindkét példánynak ugyanabban az előfizetésben és régióban kell lennie. A régiók közötti és az előfizetések közötti visszaállítás jelenleg nem támogatott.
+- A teljes SQL-alapú felügyelt példányok időponthoz való visszaállítása nem lehetséges. Ez a cikk csak azt ismerteti, hogy milyen lehetséges: az SQL felügyelt példányán üzemeltetett adatbázis időponthoz tartozó visszaállítása.
 
 > [!WARNING]
 > Vegye figyelembe az SQL felügyelt példányának tárolási méretét. A visszaállítani kívánt adatmérettől függően elfogyhat a példányok tárolója. Ha nincs elég hely a visszaállított adatmennyiséghez, használjon más megközelítést.
 
-Az alábbi táblázat az SQL által felügyelt példányok időponthoz kapcsolódó visszaállítási forgatókönyveit mutatja be:
+Az alábbi táblázat az SQL felügyelt példányának időponthoz kapcsolódó visszaállítási forgatókönyveit mutatja be:
 
-|           |Meglévő adatbázis visszaállítása ugyanazon SQL felügyelt példányra| Meglévő adatbázis visszaállítása másik SQL felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanazon SQL felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt SQL-példányra|
+|           |Meglévő adatbázis visszaállítása a felügyelt SQL-példány ugyanazon példányára| Meglévő adatbázis visszaállítása másik SQL felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanazon SQL felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt SQL-példányra|
 |:----------|:----------|:----------|:----------|:----------|
 |**Azure Portal**| Igen|Nem |Igen|Nem|
 |**Azure CLI**|Igen |Igen |Nem|Nem|

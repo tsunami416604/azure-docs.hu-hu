@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263499"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309645"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -27,6 +27,14 @@ A Visual Studióban állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` kö
 A CLI-ben további információkat adhat meg a parancs végrehajtása során a kapcsoló használatával `--verbose` . További részletes naplókat is megkereshet a alkalmazásban `%TEMP%\Azure Dev Spaces` . Mac gépen a *temp* könyvtár `echo $TMPDIR` egy terminál-ablakból futtatható. Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp` . Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl tartalmaz egy *replicaCount*-beállítást, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Gyakori problémák a helyi folyamat Kubernetes való használatakor
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>Nem sikerült visszaállítani az üzemelő példány eredeti konfigurációját a fürtön
+
+Ha helyi folyamatot használ a Kubernetes-mel, ha a Kubernetes-ügyféllel rendelkező helyi folyamat összeomlik vagy leáll, az a szolgáltatás, amelyet a Kubernetes-hez tartozó helyi folyamat nem állít vissza, akkor a helyi folyamat Kubernetes-hez való csatlakoztatása előtt nem lehet visszaállítani az eredeti állapotába.
+
+A probléma megoldásához telepítse újra a szolgáltatást a fürtön.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Az Azure dev Spaces engedélyezésekor felmerülő gyakori problémák
 
@@ -259,7 +267,7 @@ Ez a hiba azért fordul elő, mert az Azure dev Spaces jelenleg nem támogatja a
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>A hálózati forgalmat nem továbbítja a rendszer az AK-fürthöz a fejlesztői gép csatlakoztatásakor
 
-Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](how-to/connect.md), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
+Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](how-to/local-process-kubernetes-vs-code.md), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
 
 Ha a fejlesztési gépet az AK-fürthöz csatlakoztatja, az Azure dev Spaces a fejlesztési gép fájljának módosításával továbbítja a hálózati forgalmat az AK-fürt és a fejlesztői számítógép között `hosts` . Az Azure dev Spaces egy bejegyzést hoz létre a (z) és a (z `hosts` ) Kubernetes-szolgáltatás neveként, amelyet állomásnévként cserél. Ez a bejegyzés a port továbbításával használható a fejlesztői gép és az AK-fürt közötti közvetlen hálózati forgalomhoz. Ha a fejlesztési gépen lévő szolgáltatás ütközik a cserélni kívánt Kubernetes szolgáltatás portjával, az Azure dev Spaces nem tudja továbbítani a Kubernetes szolgáltatás hálózati forgalmát. Például a *Windows BranchCache* szolgáltatás általában *0.0.0.0:80*-ra van kötve, amely ütközést okoz a 80-es port összes helyi IP-címeinél.
 
@@ -274,7 +282,7 @@ Például a *Windows BranchCache* szolgáltatás leállításához és letiltás
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Hiba: "nem található AzureAssignedIdentity a következőhöz: Pod: azds/azds-webhook-Deployment- \<id\> in Assigned State"
 
-Ha egy, a [felügyelt identitással](../aks/use-managed-identity.md) és a [Pod által felügyelt identitásokkal](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) rendelkező AK-fürtön futó Azure fejlesztői tárhelyekkel rendelkező szolgáltatást futtat, akkor a folyamat a *diagram telepítése* lépés után lefagyhat. Ha megvizsgálja a *azds-injektort – webhookot* a *azds* -névtérben, akkor ezt a hibaüzenetet láthatja.
+Ha egy, a [felügyelt identitással](../aks/use-managed-identity.md) és a [Pod által felügyelt identitásokkal](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) rendelkező AK-fürtön futó Azure fejlesztői tárhelyekkel rendelkező szolgáltatást futtat, a folyamat nem válaszol a *diagram telepítése* lépés után. Ha megvizsgálja a *azds-injektort – webhookot* a *azds* -névtérben, akkor ezt a hibaüzenetet láthatja.
 
 Az Azure dev Spaces szolgáltatásban futó szolgáltatások a fürt felügyelt identitásával kommunikálnak az Azure dev Spaces háttér-szolgáltatásaival a fürtön kívül. A pod felügyelt identitás telepítésekor a rendszer a fürt csomópontjain konfigurálja a hálózati szabályokat, hogy átirányítsa a felügyelt identitás hitelesítő adatainak összes hívását egy, [a fürtön telepített, csomópont által felügyelt identitás (NMI) daemonset elemet](https://github.com/Azure/aad-pod-identity#node-managed-identity). Ez a NMI Daemonset elemet azonosítja a hívó Pod-t, és gondoskodik arról, hogy a pod megfelelően legyen megjelölve a kért felügyelt identitás eléréséhez. Az Azure dev Spaces nem tudja észlelni, hogy a fürt rendelkezik-e a pod Managed Identity szolgáltatással, és nem tudja végrehajtani a szükséges konfigurációt, hogy az Azure dev Spaces Services hozzáférhessen a fürt felügyelt identitásához. Mivel az Azure dev Spaces szolgáltatás nem lett konfigurálva a fürt felügyelt identitásának elérésére, a NMI Daemonset elemet nem teszi lehetővé, hogy HRE jogkivonatot szerezzen be a felügyelt identitáshoz, és nem tud kommunikálni az Azure dev Spaces háttér-szolgáltatásaival.
 
@@ -589,7 +597,8 @@ Ha engedélyezni szeretné az Azure dev Spaces szolgáltatást egy AK-fürtön, 
 | cloudflare.docker.com | HTTPS: 443 | A Linux Alpine és más Azure dev Spaces-lemezképek lekérése |
 | gcr.io | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
 | storage.googleapis.com | HTTP: 443 | A Helm/Tiller-lemezképek lekérése|
-| azds – <guid> . <location> . azds.io | HTTPS: 443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival a vezérlőhöz. A teljes tartománynevet a (z)% dataplaneFqdn-ben találja a következőben:% felhasználói név% \. azds\settings.JSON|
+
+Frissítse a tűzfalat vagy a biztonsági konfigurációt, hogy engedélyezze a fenti teljes tartománynevek és az [Azure dev Spaces infrastrukturális szolgáltatások](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)hálózati forgalmát.
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Hiba: "a fürt nem található az \<cluster\> előfizetésben \<subscriptionId\> "
 

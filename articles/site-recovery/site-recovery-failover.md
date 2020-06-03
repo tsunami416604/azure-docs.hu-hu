@@ -4,12 +4,12 @@ description: Virtuális gépek/fizikai kiszolgálók feladatátvétele az Azure-
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471268"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309968"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszínről az Azure-ba
 
@@ -32,7 +32,7 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 
 **Feladatátvétel után** | **Hely** | **Műveletek**
 --- | --- | ---
-**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal** > **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal** -> **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
+**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
 **Linux rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 
 
@@ -43,15 +43,16 @@ Ez az eljárás azt ismerteti, hogyan futtatható feladatátvétel egy [helyreá
 
 Futtassa a helyreállítási terv feladatátvételét a következőképpen:
 
-1. A site Recovery-tárolóban válassza a **helyreállítási tervek** > *recoveryplan_name*lehetőséget.
+1. A site Recovery-tárolóban válassza a **helyreállítási tervek**  >  *recoveryplan_name*lehetőséget.
 2. Kattintson a **feladatátvétel**elemre.
 
     ![Feladatátvétel](./media/site-recovery-failover/Failover.png)
 
-3. A **feladatátvétel** > **feladatátvételi irányában**hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
+3. A **feladatátvétel**  >  **feladatátvételi irányában**hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
 4. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyre a **feladatátvételt**végre szeretné adni.
 
     - **Legújabb**: használja a legújabb pontot. Ez feldolgozza a Site Recovery szolgáltatásnak elküldett összes olyan adatfeldolgozást, amely minden egyes géphez létrehoz egy helyreállítási pontot. Ez a beállítás biztosítja a legalacsonyabb RPO (helyreállítási pont célkitűzés), mert a feladatátvételt követően létrehozott virtuális gép minden olyan adattal rendelkezik, amelyet a rendszer replikált Site Recovery a feladatátvétel elindítása után.
+    Vegye figyelembe, hogy ha a forrás-régió leáll, nem lehet több naplózási feldolgozás. Ezért a feladatátvételt a legújabb feldolgozott helyreállítási pontra kell átadnia. További tudnivalókat a következő pontban talál.
    - **Legutóbb feldolgozott**: Ha ezt a beállítást választja, a virtuális gépeket a site Recovery által már feldolgozott legújabb helyreállítási pontra hajthatja végre. A legújabb feldolgozott helyreállítási pontot a virtuális gép **legújabb helyreállítási pontjaiban**tekintheti meg. Ez a beállítás alacsony RTO biztosít, mivel a feldolgozatlan adatmennyiség feldolgozásához nem kell időt fordítani
    - **Legújabb alkalmazás-konzisztens**: ezzel a beállítással feladatátvételt hajthat végre a virtuális gépeken a site Recovery által feldolgozott legújabb alkalmazás-konzisztens helyreállítási pontra.
    - **Legújabb több virtuális gépre feldolgozva**: ezzel a beállítással a replikálási csoport részét képező virtuális gépek a legújabb közös, több virtuális gépre kiterjedő konzisztens helyreállítási pontra kerülnek. Más virtuális gépek feladatátvétele a legújabb feldolgozott helyreállítási pontra történik. Ez a beállítás csak olyan helyreállítási tervekhez használható, amelyek legalább egy virtuális géppel rendelkeznek, és engedélyezve van a több virtuális gépre kiterjedő konzisztencia.
