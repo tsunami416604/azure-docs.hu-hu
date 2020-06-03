@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példány időzónái
+title: Az Azure SQL felügyelt példányainak időzónái
 description: Tudnivalók az Azure SQL felügyelt példányának időzóna-specifikus jellemzőiről
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: ef8572f03ddb3df8dae5f823c2d8d6d12f3e1a31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046816"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309679"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának időzónái
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ Az egyezményes világidő (UTC) a felhőalapú megoldások adatszintjéhez ajá
 A T-SQL függvények, például a [getdate ()](/sql/t-sql/functions/getdate-transact-sql) vagy a CLR-kód betartják a példány szintjén beállított időzónát. SQL Server Agent a feladatok a példány időzónája szerint is követik az ütemtervet.
 
   > [!NOTE]
-  > A Azure SQL Database nem támogatja az időzóna-beállításokat; mindig UTC-t követ. Ha a dátum-és időadatokat nem UTC időzóna szerint kell értelmezni, használja az SQL-adatbázisok [IDŐzónáját](/sql/t-sql/queries/at-time-zone-transact-sql) .
+  > A Azure SQL Database nem támogatja az időzóna-beállításokat; mindig UTC-t követ. Ha a dátumot és időpontot nem UTC időzónában szeretné értelmezni, használja a SQL Database [IDŐzónában](/sql/t-sql/queries/at-time-zone-transact-sql) .
 
 ## <a name="supported-time-zones"></a>Támogatott időzónák
 
@@ -240,7 +240,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 | Szamoai téli idő | (UTC + 13:00) Szamoa |
 | Line-szigeteki téli idő | (UTC + 14:00) Karácsony-sziget |
 
-## <a name="see-also"></a>További információ 
+## <a name="see-also"></a>Lásd még 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)

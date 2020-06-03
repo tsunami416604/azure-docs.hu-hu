@@ -11,15 +11,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660560"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299876"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja
 
@@ -35,10 +35,7 @@ Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzemb
 
 A Felhőbeli kapcsolat lehetővé teszi, hogy az Oracle piacvezető alkalmazásait és saját egyéni alkalmazásait az Azure Virtual Machines szolgáltatásban futtassa, miközben élvezi az üzemeltetett adatbázis-szolgáltatások előnyeit a OCI-ben. 
 
-> [!IMPORTANT]
-> Az Oracle tanúsítja ezeket az alkalmazásokat az Azure-ban való futtatásra, ha az Azure/Oracle Cloud Interconnect megoldást a 2020-es verzióval használja.
-
-A több felhőalapú konfigurációban futtatható alkalmazások a következők:
+A május 2020-től kezdve a következő alkalmazások egy Felhőbeli konfigurációban vannak hitelesítve:
 
 * E-Business csomag
 * JD Edwards EnterpriseOne

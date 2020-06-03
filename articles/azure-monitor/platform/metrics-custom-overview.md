@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018531"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299825"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Egyéni metrikák a Azure Monitorban (előzetes verzió)
 
@@ -30,9 +30,9 @@ Az egyéni metrikák több módszer használatával is elküldhetők Azure Monit
 - Telepítse a [InfluxData-előgrafi ügynököt](collect-custom-metrics-linux-telegraf.md) az Azure Linux rendszerű virtuális gépre, és küldje el a metrikákat a Azure monitor kimeneti beépülő modullal.
 - Egyéni metrikák küldése [közvetlenül a Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
-## <a name="pricing-model-and-rentention"></a>Díjszabási modell és megőrzése
+## <a name="pricing-model-and-retention"></a>Díjszabási modell és adatmegőrzés
 
-Az egyéni metrikák és metrikák lekérdezései esetén a számlázás engedélyezésével kapcsolatos részletekért olvassa el a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/) . Ezen az oldalon az összes mérőszámra vonatkozó egyedi ár, beleértve az egyéni metrikákat és a metrikai lekérdezéseket is. Összefoglalva, a standard mérőszámok (platform-metrikák) Azure Monitor metrikai tárolóba való betöltésének költsége nem terhelhető, de az egyéni metrikák az általános rendelkezésre állás beírásakor felmerülő költségekkel járnak. A metrikus API-lekérdezések felmerülő költségekkel rendelkeznek.
+Az egyéni metrikák és metrikák lekérdezései esetén a számlázás engedélyezésével kapcsolatos részletekért olvassa el a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/) . Ezen az oldalon az összes mérőszámra vonatkozó egyedi ár, beleértve az egyéni metrikákat és a metrikai lekérdezéseket is. Összefoglalva, a standard mérőszámok (platform-metrikák) Azure Monitor metrikai tárolóba való betöltésének költsége nem terhelhető, de az egyéni metrikák költségei az általános rendelkezésre állás megadásával járnak. A metrikus API-lekérdezések költségei is felmerülnek.
 
 Az egyéni metrikák megmaradnak a [platform metrikáinak azonos](data-platform-metrics.md#retention-of-metrics)időtartamára. 
 
@@ -196,6 +196,7 @@ A nyilvános előzetes verzióban az egyéni metrikák közzétételének lehet�
 |USA középső régiója      | https: \/ /CentralUS.monitoring.Azure.com |
 |Közép-Kanada | https: \/ /canadacentral.monitoring.Azure.comc
 |USA keleti régiója| https: \/ /eastus.monitoring.Azure.com/ |
+|USA 2. keleti régiója | https: \/ /eastus2.monitoring.Azure.com/
 | **Európa** | |
 |Észak-Európa    | https: \/ /northeurope.monitoring.Azure.com/ |
 |Nyugat-Európa     | https: \/ /westeurope.monitoring.Azure.com/ |

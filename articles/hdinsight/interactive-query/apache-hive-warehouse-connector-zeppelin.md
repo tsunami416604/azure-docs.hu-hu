@@ -6,13 +6,13 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f9d2d9bd2a58fa4c6f14db8ffd067bb39fc1553
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: fa90c3579e241fd6b7dc53c9df7d996402fc78a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853812"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296883"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Az Apache Zeppelin integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -91,10 +91,17 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
 
     | Konfiguráció| Érték|
     |---|---|
-    | Livy. Spark. SQL. Kas. hiveserver2. JDBC. URL. Principal | `hive/<headnode-FQDN>@<AAD-Domain>` |
+    | Livy. Spark. SQL. Kas. hiveserver2. JDBC. URL. Principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    Cserélje le az értékét az `<headnode-FQDN>` interaktív lekérdezési fürt fő csomópontjának teljes tartománynevére.
-    Cserélje le a helyére annak a `<AAD-DOMAIN>` Azure Active Directorynak (HRE) a nevét, amelyhez a fürt csatlakozik. Használjon nagybetűs karakterláncot az `<AAD-DOMAIN>` értékhez, ellenkező esetben a hitelesítő adat nem található. `/etc/krb5.conf`Szükség esetén ellenőrizze a tartománynevek nevét.
+    * Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` oda, ahol a CLUSTERNAME az interaktív lekérdezési fürt neve. Kattintson a **HiveServer2 Interactive**elemre. Megtekintheti annak a fő csomópontnak a teljes tartománynevét (FQDN), amelyen a LLAP fut, ahogy azt a képernyőképen is látható. Cserélje le `<llap-headnode>` erre az értékre.
+
+        ![kaptár-összekötő fő csomópontja](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * Az [SSH-parancs](../hdinsight-hadoop-linux-use-ssh-unix.md) használatával csatlakozzon az interaktív lekérdezési fürthöz. Keresse meg a `default_realm` paramétert a `/etc/krb5.conf` fájlban. Cserélje le `<AAD-DOMAIN>` ezt az értéket nagybetűs karakterláncként, ellenkező esetben a hitelesítő adat nem található.
+
+        ![a méhkas Warehouse-összekötő HRE tartománya](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * Például: `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
 
 1. Mentse a módosításokat, és indítsa újra a Livy-tolmácsot.
 
@@ -134,6 +141,6 @@ hive.executeQuery("select * from testers").show()
 
 ## <a name="next-steps"></a>További lépések
 
-* [ÜZEMELTETHETŐ WEBMAG és Apache Spark műveletek](./apache-hive-warehouse-connector-operations.md)
-* [ÜZEMELTETHETŐ WEBMAG-integráció Apache Spark és Apache Hive](./apache-hive-warehouse-connector.md)
+* [HWC- és Apache Spark-műveletek](./apache-hive-warehouse-connector-operations.md)
+* [HWC-integráció az Apache Sparkkal és az Apache Hive-val](./apache-hive-warehouse-connector.md)
 * [Az interaktív lekérdezés használata HDInsighttal](./apache-interactive-query-get-started.md)

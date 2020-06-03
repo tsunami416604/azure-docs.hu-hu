@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190143"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295422"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
 
@@ -65,7 +65,7 @@ Egy webalkalmazásban a [szabályzatok](user-flow-overview.md) minden végrehajt
 2. A webalkalmazás átirányítja a felhasználót, hogy Azure AD B2C jelezze a végrehajtandó házirendet.
 3. A felhasználó befejezi a szabályzatot.
 4. Azure AD B2C visszaad egy `id_token` -t a böngészőbe.
-5. A `id_token` az átirányítási URI-ba kerül.
+5. A az `id_token` átirányítási URI-ba kerül.
 6. A `id_token` érvényesítve van, és a munkamenet-cookie be van állítva.
 7. A rendszer egy biztonságos lapot ad vissza a felhasználónak.
 
@@ -93,10 +93,10 @@ A webes API-k számos különböző típusú ügyféltől kaphatnak jogkivonatok
 
 1. A webalkalmazás végrehajt egy házirendet, és a felhasználó befejezi a felhasználói élményt.
 2. A Azure AD B2C egy (OpenID Connect) `id_token` és egy engedélyezési kódot ad vissza a böngészőnek.
-3. A böngésző a `id_token` és az engedélyezési kódot az ÁTirányítási URI-ra könyveli.
+3. A böngésző a `id_token` és az engedélyezési kódot az átirányítási URI-ra könyveli.
 4. A webkiszolgáló ellenőrzi a `id_token` és beállítja a munkamenet-cookie-t.
-5. A webkiszolgáló a Azure AD B2Cét kéri `access_token` a számára, hogy megadja az engedélyezési kódot, az alkalmazás ügyfél-azonosítóját és az ügyfél hitelesítő adatait.
-6. A `access_token` és `refresh_token` a rendszer visszaadja a webkiszolgálónak.
+5. A webkiszolgáló a Azure AD B2Cét kéri a számára `access_token` , hogy megadja az engedélyezési kódot, az alkalmazás ügyfél-azonosítóját és az ügyfél hitelesítő adatait.
+6. A `access_token` és a `refresh_token` rendszer visszaadja a webkiszolgálónak.
 7. A webes API `access_token` -t egy engedélyezési fejlécben kell meghívni.
 8. A webes API ellenőrzi a jogkivonatot.
 9. A rendszer visszaküldi a biztonságos adatszolgáltatást a webalkalmazásnak.
@@ -109,7 +109,7 @@ Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára a
 
 Az eszközökre, például a mobil-és asztali alkalmazásokra telepített alkalmazások esetében gyakran szükséges a háttér-szolgáltatásokhoz vagy webes API-khoz hozzáférni a felhasználók nevében. A natív alkalmazásokhoz testreszabott Identitáskezelés-kezelési tapasztalatokat adhat hozzá, és biztonságos módon hívhat meg háttér-szolgáltatásokat a Azure AD B2C és a [OAuth 2,0 engedélyezési kód folyamatának](authorization-code-flow.md)használatával.
 
-Ebben a folyamatban az alkalmazás [szabályzatokat](user-flow-overview.md) hajt végre, és az `authorization_code` Azure ad-ből fogad egy alkalmazást, miután a felhasználó befejezte a házirendet. A `authorization_code` az alkalmazás azon jogosultságát jelöli, amely a jelenleg bejelentkezett felhasználó nevében hívja meg a háttér-szolgáltatásokat. Az alkalmazás ezt követően a `authorization_code` `access_token` és a háttérben is kicserélheti a `refresh_token`hátteret.  Az alkalmazás a `access_token` használatával végezheti el a hitelesítést egy háttérbeli webes API-ban http-kérelmekben. Az `refresh_token` alkalmas ezenfelül új `access_token` kérésére is, ha a régi lejárna.
+Ebben a folyamatban az alkalmazás [szabályzatokat](user-flow-overview.md) hajt végre, és az `authorization_code` Azure ad-ből fogad egy alkalmazást, miután a felhasználó befejezte a házirendet. A az `authorization_code` alkalmazás azon jogosultságát jelöli, amely a jelenleg bejelentkezett felhasználó nevében hívja meg a háttér-szolgáltatásokat. Az alkalmazás ezt követően a és a háttérben is kicserélheti a `authorization_code` hátteret `access_token` `refresh_token` .  Az alkalmazás a használatával végezheti el a `access_token` hitelesítést egy háttérbeli webes API-ban http-kérelmekben. Az `refresh_token` alkalmas ezenfelül új `access_token` kérésére is, ha a régi lejárna.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -119,9 +119,11 @@ Ebben a folyamatban az alkalmazás [szabályzatokat](user-flow-overview.md) hajt
 
 A hosszan futó folyamatokat vagy a felhasználó jelenléte nélkül működő alkalmazásokat is meg kell adni a biztonságos erőforrások, például a webes API-k eléréséhez. Ezek az alkalmazások hitelesítik és lekérhetik a jogkivonatokat az alkalmazás identitásával (a felhasználó delegált identitása helyett) és a OAuth 2,0 ügyfél-hitelesítő adatokkal végzett folyamat használatával. Az ügyfél-hitelesítő adatok folyamata nem ugyanaz, mint a használaton kívüli és a nem használt folyamat nem használható a kiszolgálók közötti hitelesítéshez.
 
-Bár a Azure AD B2C jelenleg nem támogatja az ügyfél-hitelesítő adatok folyamatát, az Azure AD-vel állíthatja be az ügyfél hitelesítő adatait. Egy Azure AD B2C bérlő néhány funkciót megoszt az Azure AD Enterprise-Bérlővel.  Az ügyfél hitelesítő adatait a Azure AD B2C bérlő Azure AD funkciójának használatával lehet támogatni.
+Bár a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát jelenleg nem támogatja közvetlenül a Azure AD B2C hitelesítési szolgáltatás, beállíthatja az ügyfél hitelesítő adatait az Azure AD-vel és a Microsoft Identity platform/token-végpontjának használatával az Azure AD B2C-bérlőben lévő alkalmazásokhoz. Egy Azure AD B2C bérlő néhány funkciót megoszt az Azure AD Enterprise-Bérlővel.
 
 Az ügyfél-hitelesítő adatok folyamatának beállításához lásd: [Azure Active Directory v 2.0 és a OAuth 2,0 ügyfél hitelesítő adatainak folyamata](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). A sikeres hitelesítés a jogkivonat formátumának beérkezését eredményezi, hogy az Azure AD az Azure ad- [jogkivonat referenciájában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)leírtak szerint használható legyen.
+
+A felügyeleti alkalmazások regisztrálásával kapcsolatos utasításokért lásd: [Azure ad B2C kezelése Microsoft Graphsal](microsoft-graph-get-started.md).
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Webes API-láncok (meghatalmazásos folyamat)
 
