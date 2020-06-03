@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605823"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310489"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -71,7 +71,7 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 4. Az **erőforráscsoport** lap erőforrások listájában válassza ki a létrehozott webalkalmazást. Ezen a listán a App Service terv és a Storage-fiók is látható. 
 
     ![Webhely kiválasztása](./media/blob-event-quickstart-portal/resource-group-resources.png)
-5. A webalkalmazás **app Service** oldalán válassza ki azt az URL-címet, amellyel navigálni szeretne a webhelyhez. Az URL-címnek a következő formátumúnak `https://<your-site-name>.azurewebsites.net`kell lennie:.
+5. A webalkalmazás **app Service** oldalán válassza ki azt az URL-címet, amellyel navigálni szeretne a webhelyhez. Az URL-címnek a következő formátumúnak kell lennie: `https://<your-site-name>.azurewebsites.net` .
     
     ![Navigáljon a webhelyre](./media/blob-event-quickstart-portal/web-site.png)
 
@@ -86,16 +86,22 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
 
 1. A portálon navigáljon a korábban létrehozott Azure Storage-fiókhoz. A bal oldali menüben válassza a **minden erőforrás** lehetőséget, és válassza ki a Storage-fiókját. 
-2. A **Storage-fiók** lapon válassza a bal oldali menü **események** elemét.
+2. A **Storage-fiók** lapon válassza a bal oldali menü **események** elemét. 
 1. Válassza a **További beállítások**, majd a **Webhook** elemet. Eseményeket küld a megjelenítői alkalmazásnak a végponthoz tartozó webes Hook használatával. 
 
    ![Webhook kiválasztása](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Az **esemény-előfizetés létrehozása** oldalon hajtsa végre a következő lépéseket: 
     1. Adja meg az esemény-előfizetés **nevét** .
+    2. Adja meg a **rendszer témakör** **nevét** . 
+
+       ![Adja meg az esemény-előfizetés és a rendszer témakör nevét](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
+
+       > [!NOTE]
+       > Korábban, amikor létrehozott egy előfizetést az Azure-források által kiváltott eseményhez, a Event Grid szolgáltatás automatikusan létrehozta a rendszertémakört egy véletlenszerűen generált névvel. Most megadhatja a rendszer témakör nevét a szövegmező használatával. Ezt a rendszertémakör-erőforrást használhatja a metrikák és a diagnosztikai naplók felderítésére.
     2. Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
 
        ![Webes Hook-végpont típusának kiválasztása](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. A **végpont**esetében kattintson a **válasszon egy végpontot**lehetőségre, és adja meg a webalkalmazás `api/updates` URL-címét, és adja hozzá a Kezdőlap `https://spegridsite.azurewebsites.net/api/updates`URL-címét (például:), majd válassza a **kijelölés megerősítése**lehetőséget.
+4. A **végpont**esetében kattintson a **válasszon egy végpontot**lehetőségre, és adja meg a webalkalmazás URL-címét, és adja hozzá `api/updates` a Kezdőlap URL-címét (például: `https://spegridsite.azurewebsites.net/api/updates` ), majd válassza a **kijelölés megerősítése**lehetőséget.
 
    ![Végpont kijelölésének megerősítése](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Most az esemény- **előfizetés létrehozása** lapon válassza a **Létrehozás** lehetőséget az esemény-előfizetés létrehozásához. 
