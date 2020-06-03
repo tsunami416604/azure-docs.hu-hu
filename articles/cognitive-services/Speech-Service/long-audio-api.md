@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587340"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310597"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -48,7 +48,7 @@ A szövegfájl előkészítésekor győződjön meg róla, hogy:
   * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
   * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
 > [!NOTE]
-> Kínai (anyaországi), Kínai (Hongkong), Kínai (Tajvan), Japán és koreai nyelveken az egyik szó két karakterből áll. 
+> A kínai (anyaországi), a kínai (Hongkong KKT), a kínai (Tajvan), a japán és a Koreai nyelveken egy szót két karakternek számítunk fel. 
 
 ## <a name="submit-synthesis-requests"></a>Szintézisi kérelmek elküldése
 

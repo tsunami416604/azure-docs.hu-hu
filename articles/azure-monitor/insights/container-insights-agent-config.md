@@ -2,13 +2,13 @@
 title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 000f68d5498324fa0e68bce178688a79f3ce9c5b
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 06/01/2020
+ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220242"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299281"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
@@ -31,16 +31,17 @@ A sablon ConfigMap fájlja lehetővé teszi, hogy egyszerűen szerkessze a testr
 
 Az alábbi beállításokkal konfigurálhatja az adatgyűjtés vezérlését.
 
-|Kulcs |Adattípus |Érték |Leírás |
-|----|----------|------|------------|
-|`schema-version` |Karakterlánc (megkülönbözteti a kis-és nagybetűket) |v1 |Ez az ügynök által a ConfigMap elemzésekor használt séma verziója. A jelenleg támogatott séma verziója v1. Az érték módosítása nem támogatott, és a rendszer elutasítja a ConfigMap kiértékelése után.|
-|`config-version` |Sztring | | A támogatja a konfigurációs fájl verziószámának nyomon követését a verziókövetés rendszerében/adattárában. A megengedett karakterek maximális száma 10, az összes többi karakter pedig csonkolt. |
-|`[log_collection_settings.stdout] enabled =` |Logikai érték | true (igaz) vagy false (hamis) | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre `true` van állítva, és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (az `log_collection_settings.stdout.exclude_namespaces` alábbi beállításnál), az stdout-naplók az összes tárolóból lesznek összegyűjtve a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték: `enabled = true` . |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes, ha a `log_collection_settings.stdout.enabled` be van állítva `true` . Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték: `exclude_namespaces = ["kube-system"]` .|
-|`[log_collection_settings.stderr] enabled =` |Logikai érték | true (igaz) vagy false (hamis) |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha a értékre `true` van állítva, és a rendszer nem zárja ki a névtereket az stdout log Collection ( `log_collection_settings.stderr.exclude_namespaces` beállítás) számára, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték: `enabled = true` . |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes, ha a `log_collection_settings.stdout.enabled` be van állítva `true` . Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték: `exclude_namespaces = ["kube-system"]` . |
-| `[log_collection_settings.env_var] enabled =` |Logikai érték | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a környezeti változók gyűjteménye a fürt összes hüvelye/csomópontja között, és alapértelmezés szerint a `enabled = true` ConfigMaps-ben nincs meghatározva. Ha a környezeti változók gyűjteménye globálisan engedélyezve van, letilthatja egy adott tárolóra vonatkozóan, ha a környezeti változót hamis értékre állítja, `AZMON_COLLECT_ENV` vagy a Docker beállítással vagy az **env:** szakaszban található [Pod konfigurációs fájljában](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) . **False** Ha a környezeti változók gyűjteménye globálisan le van tiltva, akkor a gyűjtemény nem engedélyezhető egy adott tárolónál (azaz a tároló szintjén alkalmazható egyetlen felülbírálás a gyűjtemény letiltása, ha az már engedélyezve van a globálisan.). |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Logikai érték | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a tároló naplójának bővítése, hogy feltöltse a ContainerLog táblába írt összes naplóbejegyzés nevét és képtulajdonságának értékét a fürt összes tároló-naplójába. Alapértelmezés szerint a `enabled = false` ConfigMap-ben nincs megadva. |
+| Kulcs | Adattípus | Érték | Leírás |
+|--|--|--|--|
+| `schema-version` | Karakterlánc (megkülönbözteti a kis-és nagybetűket) | v1 | Ez az ügynök által használt séma-verzió<br> a ConfigMap elemzésekor.<br> A jelenleg támogatott séma verziója v1.<br> Az érték módosítása nem támogatott, és a következő lesz<br> a rendszer elutasította a ConfigMap kiértékelését. |
+| `config-version` | Sztring |  | A támogatja a konfigurációs fájl verziószámának nyomon követését a verziókövetés rendszerében/adattárában.<br> A megengedett karakterek maximális száma 10, az összes többi karakter pedig csonkolt. |
+| `[log_collection_settings.stdout] enabled =` | Logikai érték | true (igaz) vagy false (hamis) | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre van állítva, `true` és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez<br> ( `log_collection_settings.stdout.exclude_namespaces` az alábbi beállításnál) az stdout-naplókat a rendszer az összes tárolóból gyűjti össze a fürt összes hüvelye/csomópontja között. Ha nincs megadva a ConfigMaps-ben,<br> az alapértelmezett érték: `enabled = true` . |
+| `[log_collection_settings.stdout] exclude_namespaces =` | Sztring | Vesszővel tagolt tömb | Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes, ha<br> `log_collection_settings.stdout.enabled`<br> értékre van állítva `true` .<br> Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték a<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.stderr] enabled =` | Logikai érték | true (igaz) vagy false (hamis) | Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése.<br> Ha a értékre van állítva, `true` és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez<br> ( `log_collection_settings.stderr.exclude_namespaces` beállítás) a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontja között.<br> Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték a<br> `enabled = true`. |
+| `[log_collection_settings.stderr] exclude_namespaces =` | Sztring | Vesszővel tagolt tömb | Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat.<br> Ez a beállítás csak akkor érvényes, ha<br> `log_collection_settings.stdout.enabled`értékre van állítva `true` .<br> Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték a<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` | Logikai érték | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a környezeti változók gyűjteménye<br> a fürt összes hüvelye/csomópontja között<br> és alapértelmezett értéke, `enabled = true` Ha nincs megadva<br> a ConfigMaps.<br> Ha a környezeti változók gyűjteménye globálisan engedélyezve van, letilthatja egy adott tárolóhoz<br> a környezeti változó beállításával<br> `AZMON_COLLECT_ENV`Ha a Docker vagy az **env:** szakaszban található [Pod konfigurációs fájljában](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **Hamis értéket** szeretne beállítani.<br> Ha a környezeti változók gyűjteménye globálisan le van tiltva, akkor a gyűjtemény nem engedélyezhető egy adott tárolónál (azaz a tároló szintjén alkalmazható egyetlen felülbírálás a gyűjtemény letiltása, ha az már engedélyezve van a globálisan.). |
+| `[log_collection_settings.enrich_container_logs] enabled =` | Logikai érték | true (igaz) vagy false (hamis) | Ezzel a beállítással szabályozható a tároló naplójának bővítése a név és a rendszerkép tulajdonságértékek feltöltéséhez.<br> minden, a fürtben található ContainerLog táblázatba írt naplóbeli rekord esetében.<br> Alapértelmezés szerint a `enabled = false` ConfigMap-ben nincs megadva. |
+| `[log_collection_settings.collect_all_kube_events]` | Logikai érték | true (igaz) vagy false (hamis) | Ez a beállítás lehetővé teszi az összes típusú Kube-események gyűjtését.<br> Alapértelmezés szerint a rendszer nem gyűjti a *normál* típusú Kube eseményeket. Ha ez a beállítás be van állítva `true` , a *normál* eseményeket a rendszer már nem szűri, és az összes eseményt összegyűjti.<br> Alapértelmezés szerint ez a következőre van beállítva: `false` . |
 
 A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 

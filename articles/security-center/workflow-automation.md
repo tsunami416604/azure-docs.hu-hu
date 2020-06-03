@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397915"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300114"
 ---
 # <a name="workflow-automation"></a>Munkafolyamat-automatizálás
 
@@ -25,15 +25,25 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 > Ha korábban a forgatókönyvek (előzetes verzió) nézetet használta az oldalsávon, akkor ugyanazokat a funkciókat fogja használni, mint az új munkafolyamat-automatizálási oldalon kibontott funkciókkal.
 
 
-## <a name="requirements"></a>Követelmények
 
-* Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepkörökkel/engedélyekkel kell rendelkeznie:
+## <a name="availability"></a>Rendelkezésre állás
 
-    * A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )
+- Kiadás állapota: **általánosan elérhető**
+- Szükséges szerepkörök és engedélyek:
+    - Az exportálási konfigurációt tartalmazó előfizetés **olvasója**
+    - **Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)
+    - A cél erőforráshoz is írási engedéllyel kell rendelkeznie
+    - Emellett Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepkörökkel/engedélyekkel kell rendelkeznie:
 
-    * A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek
+        * A [Logic app-operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )
 
-* Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)
+        * A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) engedélyei szükségesek
+
+        * Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)
+- Felhők 
+    - ✔ Kereskedelmi felhők
+    - ✔ US Gov
+    - ✘ Kínai gov, egyéb gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Logikai alkalmazás létrehozása és az automatikus futtatásának meghatározása 

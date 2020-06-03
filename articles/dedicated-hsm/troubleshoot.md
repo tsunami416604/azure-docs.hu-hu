@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80337175"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310104"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -29,11 +29,11 @@ Az Azure dedikált HSM szolgáltatásnak két különböző aspektusa van. Elős
 
 ## <a name="hsm-registration"></a>HSM-regisztráció
 
-A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért e-mailben egy engedélyezési eljárást használhat a használatával HSMrequest@microsoft.com. 
+A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért e-mailben egy engedélyezési eljárást használhat a használatával HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Hozzáférés a dedikált HSM-hez
 
-Ha úgy véli, hogy a dedikált HSM megfelel a kulcs tárolási követelményeinek HSMrequest@microsoft.com , akkor az e-mailt kell kérnie a hozzáférés kéréséhez. Vázolja az alkalmazást, a régiókat, amelyeket szeretne HSM, és a keresett HSM mennyiségét. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
+Ha úgy véli, hogy a dedikált HSM megfelel a kulcs tárolási követelményeinek, akkor az e-mailt HSMrequest@microsoft.com kell kérnie a hozzáférés kéréséhez. Vázolja az alkalmazást, a régiókat, amelyeket szeretne HSM, és a keresett HSM mennyiségét. Ha például Microsoft-képviselővel dolgozik, például egy Account Executive-vagy felhőalapú megoldás-tervezővel, akkor bármely kérelembe belefoglalhatja őket.
 
 ## <a name="hsm-provisioning"></a>HSM-kiépítés
 
@@ -63,10 +63,10 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 ```
 
 ### <a name="deployment-failure-based-on-quota"></a>Telepítési hiba kvóta alapján
-A központi telepítések sikertelenek lehetnek, ha a stampnél 2 HSM és régiónként 4 HSM-t használ. Ennek elkerüléséhez győződjön meg arról, hogy a korábban sikertelen központi telepítések erőforrásainak törlése előtt törölte az erőforrásokat. Az erőforrások megtekintéséhez tekintse meg az alábbi "Hogyan lásd a HSM" című szakaszt. Ha úgy véli, hogy meg kell haladnia ezt a kvótát, amely elsősorban védelem alatt áll, akkor HSMrequest@microsoft.com kérjük, küldjön e-mailt a részletekkel.
+A központi telepítések sikertelenek lehetnek, ha a stampnél 2 HSM és régiónként 4 HSM-t használ. Ennek elkerüléséhez győződjön meg arról, hogy a korábban sikertelen központi telepítések erőforrásainak törlése előtt törölte az erőforrásokat. Az erőforrások megtekintéséhez tekintse meg az alábbi "Hogyan lásd a HSM" című szakaszt. Ha úgy véli, hogy meg kell haladnia ezt a kvótát, amely elsősorban védelem alatt áll, akkor kérjük, küldjön e-mailt HSMrequest@microsoft.com a részletekkel.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Üzembe helyezési hiba a kapacitás alapján
-Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM kiépítve, akkor ez üzembe helyezési hibákhoz vezethet. Minden bélyegző 11 HSM érhető el az ügyfelek számára, ami 22/régiót jelent. Az egyes bélyegzők 3 tartalékot és 1 tesztelési eszközt is kapnak. Ha úgy gondolja, hogy elérte a határértéket, akkor HSMrequest@microsoft.com az adott bélyegzők kitöltési szintjével kapcsolatos információkat az e-mailben tekintheti meg.
+Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM kiépítve, akkor ez üzembe helyezési hibákhoz vezethet. Minden bélyegző 11 HSM érhető el az ügyfelek számára, ami 22/régiót jelent. Az egyes bélyegzők 3 tartalékot és 1 tesztelési eszközt is kapnak. Ha úgy gondolja, hogy elérte a határértéket, akkor az HSMrequest@microsoft.com adott bélyegzők kitöltési szintjével kapcsolatos információkat az e-mailben tekintheti meg.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hogyan tekintse meg a HSM a kiépítés során?
 Mivel a dedikált HSM egy engedélyezési szolgáltatás, a Azure Portal rejtett típusnak minősül. A HSM-erőforrások megtekintéséhez a "rejtett típusok megjelenítése" jelölőnégyzetet kell bejelölnie az alább látható módon. A NIC-erőforrás mindig a HSM-et követi, és jó kiindulópont a HSM IP-címének megkereséséhez, mielőtt az SSH-t használja a kapcsolódáshoz.
@@ -105,7 +105,7 @@ A helytelen hitelesítő adatok megadásával a HSM romboló következményei le
 | HSM ÍGY | 3 |  A HSM nulla (az összes HSM-objektum identitása és az összes partíció el lett mentve)  |  A HSM-t újra kell inicializálni. A tartalmak biztonsági másolatból is visszaállíthatók. | 
 | Partíció, így | 10 |  A partíció nullázása. |  A partíciót újra kell inicializálni. A tartalmak biztonsági másolatból is visszaállíthatók. |  
 | Naplózás | 10 | Fiókzárolás | 10 perc elteltével automatikusan zárolásra kerül. |  
-| Kriptográfiai igazgató | 10 (csökkenthető) | Ha a HSM-házirend 15: engedélyezze, hogy a partíció PIN-kódjának alaphelyzetbe állítása 1 (engedélyezve) értékű legyen, a CO és a CU szerepkörök ki vannak zárva.<br>Ha a HSM-házirend 15: engedélyezze, hogy a partíció PIN-kódjának alaphelyzetbe állítása beállítás értéke 0 (letiltva), a CO-és a CU-szerepkörök véglegesen le lesznek zárva, és a partíció tartalma már nem érhető el. Ez az alapértelmezett beállítás. | A társ-szerepkört fel kell oldani, és a hitelesítő adatokat a `role resetpw -name co`partíción keresztül kell visszaállítani.<br>A partíciót újra kell inicializálni, és a biztonsági mentési eszközről vissza kell állítani a kulcsfontosságú anyagokat. |  
+| Kriptográfiai igazgató | 10 (csökkenthető) | Ha a HSM-házirend 15: engedélyezze, hogy a partíció PIN-kódjának alaphelyzetbe állítása 1 (engedélyezve) értékű legyen, a CO és a CU szerepkörök ki vannak zárva.<br>Ha a HSM-házirend 15: engedélyezze, hogy a partíció PIN-kódjának alaphelyzetbe állítása beállítás értéke 0 (letiltva), a CO-és a CU-szerepkörök véglegesen le lesznek zárva, és a partíció tartalma már nem érhető el. Ez az alapértelmezett beállítás. | A társ-szerepkört fel kell oldani, és a hitelesítő adatokat a partíción keresztül kell visszaállítani `role resetpw -name co` .<br>A partíciót újra kell inicializálni, és a biztonsági mentési eszközről vissza kell állítani a kulcsfontosságú anyagokat. |  
 
 ## <a name="hsm-configuration"></a>HSM-konfiguráció 
 
@@ -120,7 +120,7 @@ A Thales SafeNet Luna 7 HSM-eszközök szoftvere és dokumentációja nem érhet
 
 ### <a name="hsm-device-reboot"></a>HSM-eszköz újraindítása
 
-Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben lefagyhat. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna hálózati HSM 7,2-es verziójában, és töltse le az újraindítási problémákra vonatkozó ajánlott javítást (Megjegyzés: a letöltéshez regisztrálnia kell a Thales támogatási portálon).
+Néhány konfigurációs módosításhoz a HSM-nek be kell vezetnie vagy újra kell indítania a rendszert. Az Azure-beli HSM Microsoft általi tesztelése azt állapította meg, hogy az újraindítás bizonyos esetekben nem válaszol. Ennek a következménye, hogy egy támogatási kérést kell létrehozni a merevlemez-újraindítás kérésének Azure Portal, amely akár 48 órát is igénybe vehet, figyelembe véve az Azure-adatközpontok manuális folyamatát.  Ennek elkerüléséhez győződjön meg arról, hogy a Thales közvetlenül elérhető az újraindítási javítás. Tekintse meg a [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) -t a Thales Luna hálózati HSM 7,2-es verziójában, és töltse le az újraindítási problémákra vonatkozó ajánlott javítást (Megjegyzés: a letöltéshez regisztrálnia kell a Thales támogatási portálon).
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS-tanúsítványok szinkronizálása
 Előfordulhat, hogy egy ügyfél elveszti a kapcsolatot egy HSM-kapcsolattal, amikor egy tanúsítvány lejár vagy felül lett írva a konfigurációs frissítésekkel. A tanúsítvány-Exchange-ügyfél konfigurációját újra kell alkalmazni az egyes HSM-sel.
@@ -148,7 +148,7 @@ Csak akkor, ha a HSM teljes mértékben elkészült, kiépíthető, majd a Micro
 
 ### <a name="how-to-delete-an-hsm-resource"></a>HSM-erőforrások törlése
 
-A HSM-hez készült Azure-erőforrás csak akkor törölhető, ha a HSM "zéró" állapotban van.  Ezért az összes fontos anyagot törölni kell, mielőtt erőforrásként törölné. A zeroize leggyorsabb módja, ha a HSM-rendszergazda jelszava 3 alkalommal nem megfelelő (Megjegyzés: Ez a HSM-rendszergazda, és nem a készülék szintjének felügyeletére vonatkozik). A Luna-rendszerhéjnak van `hsm -factoryreset` egy parancsa, amely zeroizes, de csak a soros porton keresztül hajtható végre, és az ügyfeleknek nincs hozzáférésük ehhez.
+A HSM-hez készült Azure-erőforrás csak akkor törölhető, ha a HSM "zéró" állapotban van.  Ezért az összes fontos anyagot törölni kell, mielőtt erőforrásként törölné. A zeroize leggyorsabb módja, ha a HSM-rendszergazda jelszava 3 alkalommal nem megfelelő (Megjegyzés: Ez a HSM-rendszergazda, és nem a készülék szintjének felügyeletére vonatkozik). A Luna-rendszerhéjnak van egy `hsm -factoryreset` parancsa, amely zeroizes, de csak a soros porton keresztül hajtható végre, és az ügyfeleknek nincs hozzáférésük ehhez.
 
 ## <a name="next-steps"></a>További lépések
 

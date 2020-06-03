@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 016a907e3e660ca6da9dc637b2c9c844b7077b84
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193966"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300072"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -266,7 +266,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Government| USA keleti régiója| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>Kapcsolódó tartalom
-* [Virtual Network csatlakoztatása a háttérben a VPN Gateway használatával](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Virtual Network csatlakoztatása a háttérben a VPN Gateway használatával](../vpn-gateway/design.md#s2smulti)
 * [Virtual Network csatlakoztatása különböző üzembe helyezési modellből](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Az API Inspector használata a hívások nyomkövetéséhez az Azure-ban API Management](api-management-howto-api-inspector.md)
 * [Virtual Network gyakori kérdések](../virtual-network/virtual-networks-faq.md)

@@ -4,16 +4,16 @@ description: Hozzon létre tesztelési tanúsítványokat, telepítsen és kezel
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79539207"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308778"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -23,10 +23,10 @@ Minden IoT Edge eszköz tanúsítványokat használ a futtatókörnyezet és az 
 
 Amikor először telepíti IoT Edge és kiépíti az eszközt, az eszköz ideiglenes tanúsítvánnyal lesz beállítva, hogy tesztelni tudja a szolgáltatást.
 Ezek az ideiglenes tanúsítványok 90 nap múlva lejárnak, vagy visszaállíthatók a gép újraindításával.
-Ha készen áll az eszközök éles környezetbe való áthelyezésére, vagy egy átjárót szeretne létrehozni, meg kell adnia a saját tanúsítványait.
+Ha éles környezetbe helyezi az eszközt, vagy egy átjárót szeretne létrehozni, meg kell adnia a saját tanúsítványait.
 Ez a cikk bemutatja a tanúsítványok IoT Edge-eszközökön való telepítésének lépéseit.
 
-Ha többet szeretne megtudni a tanúsítványok különböző típusairól és szerepköreiről IoT Edge forgatókönyvben, tekintse meg a [Azure IoT Edge tanúsítványok használatának ismertetése](iot-edge-certs.md)című témakört.
+Ha többet szeretne megtudni a tanúsítványok különböző típusairól és szerepköreiről, tekintse meg a [Azure IoT Edge tanúsítványok használatának](iot-edge-certs.md)ismertetése című témakört.
 
 >[!NOTE]
 >Az ebben a cikkben használt "legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ" kifejezés a IoT-megoldáshoz tartozó tanúsítványlánc legfelső szintű nyilvános tanúsítványára vonatkozik. Nem kell használnia egy konzorciális hitelesítésszolgáltató tanúsítványának gyökerét vagy a szervezet hitelesítésszolgáltatójának gyökerét. Sok esetben valójában egy közbenső HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa.
@@ -69,24 +69,24 @@ Ha például a minta parancsfájlokat használta a [bemutató tanúsítványok l
    * Windows`C:\ProgramData\iotedge\config.yaml`
    * Linux`/etc/iotedge/config.yaml`
 
-1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML fájlban a tanúsítvány és a kulcs fájljainak teljes elérési útjára a IoT Edge eszközön. Távolítsa `#` el a karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
+1. Állítsa be a **tanúsítvány** tulajdonságait a config. YAML értékre a IoT Edge eszköz tanúsítvány-és kulcsfájl-FÁJLjának URI-elérési útjára. Távolítsa el a `#` karaktert, mielőtt a tanúsítvány tulajdonságai megszüntessék a négy sort. Győződjön meg arról, hogy a (z) **:** sor nem rendelkezik korábbi szóközökkel, és hogy a beágyazott elemek két szóközzel vannak behúzva. Például:
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux:
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. Linux-eszközökön ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e olvasási engedéllyel a tanúsítványokat tároló címtárhoz.

@@ -4,16 +4,16 @@ description: Hozzon létre tesztelési tanúsítványokat, és Ismerje meg, hogy
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129791"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309135"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Bemutató-tanúsítványok létrehozása IoT Edge eszköz funkcióinak teszteléséhez
 
@@ -25,7 +25,7 @@ Ezek a tanúsítványok 30 napon belül lejárnak, és semmilyen éles környeze
 
 Létrehozhat tanúsítványokat bármely gépen, majd átmásolhatja őket a IoT Edge eszközre.
 Az elsődleges géppel könnyebben hozhatja létre a tanúsítványokat ahelyett, hogy saját maga IoT Edge eszközén kellene őket létrehoznia.
-Az elsődleges gép használatával egyszerre állíthatja be a parancsfájlokat, majd megismételheti a különböző eszközökhöz tartozó tanúsítványok létrehozási folyamatát.
+Az elsődleges gép használatával egyszer állíthatja be a parancsfájlokat, majd használhatja őket több eszközhöz tartozó tanúsítványok létrehozásához.
 
 A következő lépésekkel hozhat létre bemutató tanúsítványokat a IoT Edge forgatókönyv teszteléséhez:
 
@@ -69,7 +69,7 @@ Az OpenSSL több módon is telepíthető, többek között a következő lehető
       .\vcpkg install openssl:x64-windows
       ```
 
-   3. Adja `<vcpkg path>\installed\x64-windows\tools\openssl` hozzá a PATH környezeti változóhoz, hogy az OpenSSL. exe fájl elérhető legyen a híváshoz.
+   3. Adja hozzá a `<vcpkg path>\installed\x64-windows\tools\openssl` PATH környezeti változóhoz, hogy az OpenSSL. exe fájl elérhető legyen a híváshoz.
 
 #### <a name="prepare-scripts-in-powershell"></a>Parancsfájlok előkészítése a PowerShellben
 
@@ -78,13 +78,13 @@ Ebben a szakaszban a IoT Edge-tárház klónozásával és a parancsfájlok vég
 
 1. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
 
-2. A IoT Edge git-tárház klónozása, amely parancsfájlokat tartalmaz a bemutató tanúsítványok létrehozásához. Használja a `git clone` parancsot, vagy [töltse le a zip-fájlt](https://github.com/Azure/iotedge/archive/master.zip).
+2. A IoT Edge git-tárház klónozása, amely parancsfájlokat tartalmaz a bemutató tanúsítványok létrehozásához. Használja a `git clone` parancsot, vagy [töltse le a ZIP-fájlt](https://github.com/Azure/iotedge/archive/master.zip).
 
    ```powershell
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. Navigáljon ahhoz a címtárhoz, amelyben dolgozni szeretne. Ebben a cikkben ezt a könyvtárat * \<WRKDIR>* fogjuk hívni. Az összes tanúsítvány és kulcs ebben a munkakönyvtárban lesz létrehozva.
+3. Navigáljon ahhoz a címtárhoz, amelyben dolgozni szeretne. Ebben a cikkben ezt a könyvtárat fogjuk hívni *\<WRKDIR>* . Az összes tanúsítvány és kulcs ebben a munkakönyvtárban lesz létrehozva.
 
 4. Másolja a konfigurációs és parancsfájl-fájlokat a klónozott tárházból a munkakönyvtárba.
 
@@ -93,7 +93,7 @@ Ebben a szakaszban a IoT Edge-tárház klónozásával és a parancsfájlok vég
    copy <path>\iotedge\tools\CACertificates\ca-certs.ps1 .
    ```
 
-   Ha a tárházat ZIP-fájlként töltötte le, akkor a mappa neve `iotedge-master` , az elérési út többi része pedig ugyanaz.
+   Ha a tárházat ZIP-fájlként töltötte le, akkor a mappa neve, `iotedge-master` az elérési út többi része pedig ugyanaz.
 
 5. A parancsfájlok futtatásának engedélyezése a PowerShell számára.
 
@@ -125,7 +125,7 @@ Ha bemutató tanúsítványokat szeretne létrehozni egy Windows-eszközön, a l
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. Navigáljon ahhoz a címtárhoz, amelyben dolgozni szeretne. Ezt a könyvtárat a cikk a * \<WRKDIR>*. Az összes tanúsítvány-és kulcsfájl ebben a könyvtárban lesz létrehozva.
+2. Navigáljon ahhoz a címtárhoz, amelyben dolgozni szeretne. Erre a könyvtárra a cikkben olvashat *\<WRKDIR>* . Az összes tanúsítvány-és kulcsfájl ebben a könyvtárban lesz létrehozva.
   
 3. Másolja a config és a script fájlokat a klónozott IoT Edge-tárházból a munkakönyvtárba.
 
@@ -181,54 +181,6 @@ Az ebben a szakaszban ismertetett lépések elvégzése előtt kövesse a [paran
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
-## <a name="create-iot-edge-device-ca-certificates"></a>IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványainak létrehozása
-
-Az éles környezetben minden IoT Edge eszköznek szüksége van egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, amelyre a config. YAML fájl hivatkozik.
-Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa felelős az eszközön futó modulok tanúsítványainak létrehozásához.
-Azt is bemutatja, hogyan ellenőrzi a IoT Edge eszköz az identitását az alárendelt eszközökhöz való csatlakozáskor.
-
-Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványai a IoT Edge eszköz config. YAML fájljának **tanúsítvány** részében találhatók.
-
-Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [parancsfájlok beállítása](#set-up-scripts) és a [legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozása](#create-root-ca-certificate) című szakasz lépéseit.
-
-### <a name="windows"></a>Windows
-
-1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
-
-2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét, például **MyEdgeDeviceCA**, amely a kimeneti fájlok elnevezésére szolgál.
-
-   ```powershell
-   New-CACertsEdgeDevice "MyEdgeDeviceCA"
-   ```
-
-   Ezzel a parancsfájl-paranccsal számos tanúsítvány-és kulcsfájl hozható létre. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
-
-   * `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-Az adott parancsfájlba átadott átjáró-eszköz neve nem egyezhet meg a config. YAML vagy az eszköz AZONOSÍTÓjában található "hostname" paraméterrel a következőben: IoT Hub.
-A parancsfájlok segítségével elkerülhetők a hibák, ha a ". ca" karakterláncot az átjáró-eszköz nevére fűzi, hogy a név ne legyen ütközés abban az esetben, ha egy felhasználó a két helyen azonos névvel állítja be IoT Edge.
-Azonban érdemes elkerülni ugyanazt a nevet.
-
-### <a name="linux"></a>Linux
-
-1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
-
-2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét, például **MyEdgeDeviceCA**, amely a kimeneti fájlok elnevezésére szolgál.
-
-   ```bash
-   ./certGen.sh create_edge_device_certificate "MyEdgeDeviceCA"
-   ```
-
-   Ezzel a parancsfájl-paranccsal számos tanúsítvány-és kulcsfájl hozható létre. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
-
-   * `<WRKDIR>/certs/iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-Az adott parancsfájlba átadott átjáró-eszköz neve nem egyezhet meg a config. YAML vagy az eszköz AZONOSÍTÓjában található "hostname" paraméterrel a következőben: IoT Hub.
-A parancsfájlok segítségével elkerülhetők a hibák, ha a ". ca" karakterláncot az átjáró-eszköz nevére fűzi, hogy a név ne legyen ütközés abban az esetben, ha egy felhasználó a két helyen azonos névvel állítja be IoT Edge.
-Azonban érdemes elkerülni ugyanazt a nevet.
-
 ## <a name="create-iot-edge-device-identity-certificates"></a>IoT Edge eszköz-identitási tanúsítványok létrehozása
 
 Az eszköz-identitási tanúsítványok az [Azure IoT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)keresztül IoT Edge eszközök kiépítésére szolgálnak.
@@ -269,9 +221,58 @@ A szkript több tanúsítvány-és kulcsfájl létrehozását is tartalmazza, be
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
+## <a name="create-iot-edge-device-ca-certificates"></a>IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványainak létrehozása
+
+Az éles környezetben minden IoT Edge eszköznek szüksége van egy eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, amelyre a config. YAML fájl hivatkozik.
+Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa felelős az eszközön futó modulok tanúsítványainak létrehozásához.
+Az átjáró-forgatókönyvek esetében is szükséges, mivel az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa az, hogy a IoT Edge eszköz ellenőrzi az identitását az alsóbb rétegbeli eszközökre.
+
+Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványai a IoT Edge eszköz config. YAML fájljának **tanúsítvány** részében találhatók.
+
+Az ebben a szakaszban ismertetett lépések végrehajtása előtt kövesse a [parancsfájlok beállítása](#set-up-scripts) és a [legfelső szintű hitelesítésszolgáltatói tanúsítvány létrehozása](#create-root-ca-certificate) című szakasz lépéseit.
+
+### <a name="windows"></a>Windows
+
+1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
+
+2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét.
+
+   ```powershell
+   New-CACertsEdgeDevice "<CA cert name>"
+   ```
+
+   Ezzel a paranccsal több tanúsítvány-és kulcsfájl is létrehozható. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
+
+   * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
+
+A **New-CACertsEdgeDevice** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a következőben: IoT hub.
+A parancsfájl a ". ca" karakterláncnak a tanúsítvány neveként való hozzáfűzésével segít elkerülni, hogy megakadályozza a név ütközését abban az esetben, ha egy felhasználó a két helyen ugyanazt a nevet állítja be IoT Edge.
+Azonban érdemes elkerülni ugyanazt a nevet.
+
+### <a name="linux"></a>Linux
+
+1. Navigáljon ahhoz a munkakönyvtárhoz, amely a tanúsítvány-létrehozási parancsfájlokat és a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt tartalmaz.
+
+2. Hozza létre a IoT Edge-eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát és titkos kulcsát a következő paranccsal. Adja meg a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nevét.
+
+   ```bash
+   ./certGen.sh create_edge_device_certificate "<CA cert name>"
+   ```
+
+   Ezzel a parancsfájl-paranccsal számos tanúsítvány-és kulcsfájl hozható létre. A következő tanúsítványt és kulcspárt át kell másolni egy IoT Edge eszközre, és hivatkozni kell rá a config. YAML fájlban:
+
+   * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
+
+A **create_edge_device_certificate** parancsnak átadott név nem egyezhet meg a config. YAML, illetve az eszköz azonosítójában a IoT Hubban.
+A parancsfájl a ". ca" karakterláncnak a tanúsítvány neveként való hozzáfűzésével segít elkerülni, hogy megakadályozza a név ütközését abban az esetben, ha egy felhasználó a két helyen ugyanazt a nevet állítja be IoT Edge.
+Azonban érdemes elkerülni ugyanazt a nevet.
+
 ## <a name="create-downstream-device-certificates"></a>Alsóbb rétegbeli eszközök tanúsítványainak létrehozása
 
-Ha egy alsóbb rétegbeli IoT-eszközt állít be egy átjáró-forgatókönyvhöz, az X. 509 hitelesítéshez létrehozhat bemutató-tanúsítványokat.
+Ha egy alsóbb rétegbeli IoT-eszközt állít be egy átjáró-forgatókönyvhöz, és X. 509 hitelesítést szeretne használni, az alárendelt eszközhöz bemutató tanúsítványokat hozhat létre.
+Ha szimmetrikus kulcsos hitelesítést szeretne használni, nincs szükség tanúsítványra az alsóbb rétegbeli eszközhöz.
 Az X. 509 tanúsítványok használatával kétféleképpen hitelesíthető egy IoT-eszköz: önaláírt tanúsítványok használata vagy hitelesítésszolgáltató (CA) által aláírt tanúsítvány használata.
 Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez.
 Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez.
@@ -358,7 +359,7 @@ Az ebben a szakaszban szereplő tanúsítványok az [X. 509 Biztonság beállít
 
 #### <a name="windows"></a>Windows
 
-1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fájlt a munkakönyvtárból `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`a IoT hubhoz.
+1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fájlt a munkakönyvtárból a `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` IoT hubhoz.
 
 2. A Azure Portalban megadott kóddal ellenőrizheti, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa-e.
 
@@ -381,7 +382,7 @@ Az ebben a szakaszban szereplő tanúsítványok az [X. 509 Biztonság beállít
 
 #### <a name="linux"></a>Linux
 
-1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fájlt a munkakönyvtárból `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`a IoT hubhoz.
+1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványfájl fájlt a munkakönyvtárból a `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` IoT hubhoz.
 
 2. A Azure Portalban megadott kóddal ellenőrizheti, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa-e.
 

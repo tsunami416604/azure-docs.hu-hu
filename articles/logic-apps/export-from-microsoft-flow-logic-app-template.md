@@ -3,24 +3,26 @@ title: Folyamatok exportálása a Power Gyorsbüféból a Azure Logic Appsba
 description: Áttelepítheti a folyamatokat a Power Gyorsbüféból a Azure Logic Apps Azure Resource Manager sablonként való exportálással
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75428885"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298720"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
 A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a folyamatot a [Power gyorsbüféból](https://flow.microsoft.com) a [Azure Logic Appsba](../logic-apps/logic-apps-overview.md). Exportálhatja a folyamatot Azure Resource Manager sablonként egy logikai alkalmazáshoz, üzembe helyezheti a logikai alkalmazás sablonját egy Azure-erőforráscsoporthoz, majd megnyithatja a logikai alkalmazást a Logic app Designerben.
 
 > [!NOTE]
-> Nem minden automatizálási összekötő érhető el Azure Logic Appsban. Olyan folyamatokat is importálhat, amelyek Azure Logic Appsban [egyenértékű összekötővel](../connectors/apis-list.md) rendelkeznek. Például a gomb trigger, a jóváhagyási összekötő és az értesítési összekötő kifejezetten a Power automatizálható.
+> Nem minden automatizálási összekötő érhető el Azure Logic Appsban. Csak olyan automatizálási folyamatokat telepíthet át, amelyek Azure Logic Appsban egyenértékű összekötővel rendelkeznek. Például a gomb trigger, a jóváhagyási összekötő és az értesítési összekötő kifejezetten a Power automatizálható. A OpenAPI-alapú folyamatok jelenleg nem támogatottak az exportáláshoz és az üzembe helyezéshez logikai alkalmazás-sablonokként.
 >
-> A OpenAPI-alapú folyamatokat a rendszer jelenleg nem támogatja logikai alkalmazások sablonjaiként való üzembe helyezéshez. 
+> * Ha szeretné megkeresni, hogy mely automatizálási összekötők nem rendelkeznek Logic Apps megfelelővel, tekintse meg a [Power automatizáló összekötők](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)
+>
+> * Ha szeretné megkeresni, hogy mely Logic Apps összekötők nem rendelkeznek az automatikus automatizálással, tekintse meg az [összekötők Logic apps](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +32,7 @@ A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a f
 
 ## <a name="export-a-flow"></a>Folyamat exportálása
 
-1. Jelentkezzen be a [Power gyorsbüféba](https://flow.microsoft.com), és válassza **a saját folyamatok**lehetőséget. Keresse meg és válassza ki a folyamatot. Az eszköztáron kattintson az ellipszisek (**..**.) gombra. Válassza az **Exportálás** > **Logic apps sablon (. JSON)** lehetőséget.
+1. Jelentkezzen be a [Power gyorsbüféba](https://flow.microsoft.com), és válassza **a saját folyamatok**lehetőséget. Keresse meg és válassza ki a folyamatot. Az eszköztáron kattintson az ellipszisek (**..**.) gombra. Válassza az **Exportálás**  >  **Logic apps sablon (. JSON)** lehetőséget.
 
    ![Folyamat exportálása](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -131,7 +133,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    1. Mentse a megoldást a logikai alkalmazás üzembe helyezése előtt.
 
-1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, és válassza az**új** **telepítése** > lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
+1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, **Deploy**és válassza az  >  **új**telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
 1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/templates/parameter-files.md) , majd válassza a **telepítés**lehetőséget.
 

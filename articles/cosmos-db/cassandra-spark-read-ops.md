@@ -2,20 +2,20 @@
 title: Cassandra API Table-információk olvasása a Spark használatával
 titleSufix: Azure Cosmos DB
 description: Ez a cikk a Azure Cosmos DB Cassandra API tábláiból származó adatok beolvasását ismerteti.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893400"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309721"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Adatok beolvasása Azure Cosmos DB Cassandra API-táblákból a Spark használatával
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Szűrők alkalmazása
 
-A jelenleg predikátum pushdown nem támogatott, az alábbi minták az ügyféloldali szűrést tükrözik. 
+Leküldheti a predikátumokat az adatbázisba, hogy jobban optimalizált Spark-lekérdezéseket lehessen. A predikátum olyan feltétel, amely igaz vagy hamis értéket ad vissza, általában a WHERE záradékban található. Egy predikátum leküldésével szűri az adatokat az adatbázis-lekérdezésben, csökkentve az adatbázisból beolvasott bejegyzések számát, és javítja a lekérdezési teljesítményt. Alapértelmezés szerint a Spark adatkészlet API automatikusan leküldi az érvényes WHERE záradékot az adatbázisba. 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+A fizikai terv PushedFilters szakasza tartalmazza a GreaterThan leküldéses szűrőt. 
+
+![partitions](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>RDD API
 

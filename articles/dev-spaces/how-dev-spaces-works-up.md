@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: A kód Azure Kubernetes Service-ben való futtatásának folyamatait ismerteti az Azure dev Spaces szolgáltatással
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241360"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307469"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>A kód futtatása az Azure dev Spaces működésével
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogy mi történik a kód futtatása az AK-ban a dev Sp
 
 ## <a name="run-your-code"></a>A kód futtatása
 
-Ha a kódot egy fejlesztői térben szeretné futtatni, adja ki `up` a parancsot a `azds.yaml` fájllal megegyező könyvtárban:
+Ha a kódot egy fejlesztői térben szeretné futtatni, adja ki a `up` parancsot a fájllal megegyező könyvtárban `azds.yaml` :
 
 ```cmd
 azds up
@@ -32,7 +32,7 @@ A `up` parancs feltölti az alkalmazás forrásfájljait és a projekt létrehoz
 1. Létrehozza az alkalmazás tárolóját.
 1. Üzembe helyezi az alkalmazást a fejlesztői térben.
 1. Nyilvánosan elérhető DNS-nevet hoz létre az alkalmazás-végponthoz, ha konfigurálva van.
-1. A *porton keresztül továbbítja* az alkalmazás-végponthoz való hozzáférést http://localhosta használatával.
+1. A *porton keresztül továbbítja* az alkalmazás-végponthoz való hozzáférést a használatával http://localhost .
 1. Az stdout és a stderr továbbítása az ügyféloldali eszközökhöz.
 
 
@@ -40,14 +40,14 @@ A `up` parancs feltölti az alkalmazás forrásfájljait és a projekt létrehoz
 
 Amikor egy szolgáltatást egy fejlesztői térben indít el, az ügyféloldali szerszámozás és vezérlő koordinálja a forrásfájlok szinkronizálását, létrehozza a tárolót és a Kubernetes objektumokat, és futtatja az alkalmazást.
 
-Részletesebben a futtatáskor `azds up`a következő történik:
+Részletesebben a futtatáskor a következő történik `azds up` :
 
 1. A [fájlok szinkronizálása][sync-section] a felhasználó számítógépéről egy olyan Azure file Storage-ba történik, amely egyedi a felhasználó AK-fürtjén. A rendszer feltölti a forráskódot, a Helm-diagramot és a konfigurációs fájlokat.
 1. A vezérlő új munkamenet elindítására vonatkozó kérelmet hoz létre. Ez a kérelem több tulajdonságot tartalmaz, beleértve az egyedi azonosítót, a tárhely nevét, a forráskód elérési útját és egy hibakeresési jelzőt.
 1. A vezérlő lecseréli az *$ (tag)* helyőrzőt a Helm diagramon az egyedi munkamenet-azonosítóval, és telepíti a Helm-diagramot a szolgáltatáshoz. Az egyedi munkamenet-AZONOSÍTÓra mutató hivatkozás hozzáadása a Helm diagramhoz lehetővé teszi, hogy az AK-fürtön üzembe helyezett tároló a munkamenet-kérelemhez és a kapcsolódó információkhoz legyen kötve.
 1. A Helm diagram telepítése során a Kubernetes webhook-felvételi kiszolgáló további tárolókat hoz létre az alkalmazás Pod eszközéhez, és hozzáfér a projekt forráskódhoz. A rendszer hozzáadja a devspaces-proxy és a devspaces-proxy-init tárolókat a HTTP-nyomkövetés és a térköz-útválasztás biztosításához. A rendszer hozzáadja a devspaces tárolót, amely hozzáférést biztosít a Docker-példányhoz és a projekt forráskódját az alkalmazás tárolójának létrehozásához.
 1. Az alkalmazás Pod indításakor a devspaces-Build tároló és a devspaces-proxy-init tároló az alkalmazás-tároló összeállítására szolgál. Az alkalmazás-tároló és a devspaces-proxy tárolók elindulnak.
-1. Az alkalmazás-tároló elindítása után az ügyféloldali funkció a Kubernetes *Port-Forward* funkciót használja az alkalmazáshoz való http-hozzáférés biztosításához http://localhost. Ennek a portnak a továbbítása a fejlesztési számítógépet a fejlesztői térben található szolgáltatáshoz kapcsolja.
+1. Az alkalmazás-tároló elindítása után az ügyféloldali funkció a Kubernetes *Port-Forward* funkciót használja az alkalmazáshoz való http-hozzáférés biztosításához http://localhost . Ennek a portnak a továbbítása a fejlesztési számítógépet a fejlesztői térben található szolgáltatáshoz kapcsolja.
 1. Ha a pod összes tárolója elindult, a szolgáltatás fut. Ezen a ponton az ügyféloldali funkciók elkezdik továbbítani a HTTP-nyomkövetéseket, az stdout-t és a stderr. Ezt az információt a fejlesztő ügyféloldali funkciója jeleníti meg.
 
 ## <a name="updating-a-running-service"></a>Futó szolgáltatás frissítése
@@ -76,7 +76,7 @@ A projektfájlok, például a Dockerfiles, a csproj-fájlok vagy a Helm diagram 
 
 Amikor első alkalommal indít el egy alkalmazást egy fejlesztői térben, a rendszer az alkalmazás összes forrásfájljait feltölti. Amíg az alkalmazás fut, és a későbbi újraindítások során csak a módosított fájlok lesznek feltöltve. Ennek a folyamatnak a koordinálására két fájl használható: egy ügyféloldali fájl és egy vezérlő oldali fájl.
 
-Az ügyféloldali fájlt egy ideiglenes könyvtárban tárolja a rendszer, és a fejlesztői tárhelyeken futó projekt könyvtárának kivonata alapján nevezi el. Előfordulhat például, hogy a Windowsban egy fájl, például a *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* a projekthez. Linux rendszeren az ügyféloldali fájlt a */tmp* könyvtárban tárolja a rendszer. A (z) `echo $TMPDIR` parancs futtatásával megkeresheti a MacOS-es könyvtárat.
+Az ügyféloldali fájlt egy ideiglenes könyvtárban tárolja a rendszer, és a fejlesztői tárhelyeken futó projekt könyvtárának kivonata alapján nevezi el. Előfordulhat például, hogy a Windowsban egy fájl, például a *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* a projekthez. Linux rendszeren az ügyféloldali fájlt a */tmp* könyvtárban tárolja a rendszer. A (z) parancs futtatásával megkeresheti a macOS-es könyvtárat `echo $TMPDIR` .
 
 A fájl JSON formátumú, és a következőket tartalmazza:
 
@@ -94,7 +94,7 @@ Az összes projektfájl szinkronizálva van, ha az ügyféloldali fájl nincs je
 
 ## <a name="how-running-your-code-is-configured"></a>A kód futtatásának beállítása
 
-Az Azure dev Spaces `azds.yaml` a fájlt használja a szolgáltatás telepítéséhez és konfigurálásához. A vezérlő a `install` `azds.yaml` fájl tulajdonságát használja a Helm diagram telepítéséhez és a Kubernetes objektumok létrehozásához:
+Az Azure dev Spaces a fájlt használja a `azds.yaml` szolgáltatás telepítéséhez és konfigurálásához. A vezérlő a `install` fájl tulajdonságát használja a `azds.yaml` Helm diagram telepítéséhez és a Kubernetes objektumok létrehozásához:
 
 ```yaml
 ...
@@ -122,7 +122,7 @@ install:
 
 Alapértelmezés szerint a `prep` parancs létrehozza a Helm diagramot. Emellett beállítja a *install. chart* tulajdonságot is a Helm diagram könyvtárába. Ha egy másik helyen szeretné használni a Helm-diagramot, ezt a tulajdonságot az adott hely használatára is frissítheti.
 
-A Helm-diagramok telepítésekor az Azure dev Spaces lehetővé teszi az értékek felülbírálását a Helm diagramon. A Helm diagram alapértelmezett értékei a következőben találhatók `charts/APP_NAME/values.yaml`:.
+A Helm-diagramok telepítésekor az Azure dev Spaces lehetővé teszi az értékek felülbírálását a Helm diagramon. A Helm diagram alapértelmezett értékei a következőben találhatók: `charts/APP_NAME/values.yaml` .
 
 A *install. Values* tulajdonság használatával listázhat egy vagy több olyan fájlt, amely a Helm diagramon lecserélni kívánt értékeket határozza meg. Ha például azt szeretné, hogy egy állomásnév vagy adatbázis-konfiguráció kifejezetten az alkalmazás egy fejlesztői térben való futtatásakor fusson, ezt a felülbírálási funkciót használhatja. Hozzáadhat egy-t is *?* a fájlnevek bármelyikének végén adja meg azt opcionálisként.
 
@@ -130,15 +130,15 @@ A *install. set* tulajdonság lehetővé teszi egy vagy több lecserélni kívá
 
 A fenti példában az *install. set. replicaCount* tulajdonság azt jelzi, hogy az alkalmazás hány példánya fut a fejlesztői térben. A forgatókönyvtől függően növelheti ezt az értéket, de hatással lehet a hibakereső az alkalmazás Pod-ra való csatolására. További információ: [hibaelhárítási cikk][troubleshooting].
 
-A generált Helm diagramon a tároló képe a következőre van beállítva: *{{. Values. rendszerkép. adattár}}: {{. Values. rendszerkép. tag}}*. A `azds.yaml` fájl az *install. set. file. tag* tulajdonságot a *$ (címke)* értékként adja meg alapértelmezés szerint, amelyet a rendszer a *{{értékeként használ. Values. rendszerkép. tag}}*. Az *install. set. rendszerkép. tag* tulajdonság beállításával így az alkalmazáshoz tartozó tároló-rendszerkép az Azure dev Spaces futtatásakor eltérő módon címkézhető. Ebben a konkrét esetben a rendszerkép a * \<rendszerkép. adattár>: $ (címke) értékként*van megjelölve. A *$ (tag)* változót a *install. set. rendszerkép. tag* értékként kell használni a fejlesztői szóközök felismeréséhez, és meg kell keresnie a tárolót az AK-fürtben.
+A generált Helm diagramon a tároló képe a következőre van beállítva: *{{. Values. rendszerkép. adattár}}: {{. Values. rendszerkép. tag}}*. A `azds.yaml` fájl az *install. set. file. tag* tulajdonságot a *$ (címke)* értékként adja meg alapértelmezés szerint, amelyet a rendszer a *{{értékeként használ. Values. rendszerkép. tag}}*. Az *install. set. rendszerkép. tag* tulajdonság beállításával így az alkalmazáshoz tartozó tároló-rendszerkép az Azure dev Spaces futtatásakor eltérő módon címkézhető. Ebben a konkrét esetben a rendszerkép a következőként van megjelölve * \<value from image.repository> : $ (tag)*. A *$ (tag)* változót a *install. set. rendszerkép. tag* értékként kell használni a fejlesztői szóközök felismeréséhez, és meg kell keresnie a tárolót az AK-fürtben.
 
-A fenti példában `azds.yaml` az *install. set. beáramló. hosts*. A *install. set. beáramló. hosts* tulajdonság a nyilvános végpontok állomásnév-formátumát határozza meg. Ez a tulajdonság a *$ (spacePrefix)*, a *$ (rootSpacePrefix)* és a *$ (hostSuffix)* értéket is használja, amely a vezérlő által megadott érték.
+A fenti példában az `azds.yaml` *install. set. beáramló. hosts*. A *install. set. beáramló. hosts* tulajdonság a nyilvános végpontok állomásnév-formátumát határozza meg. Ez a tulajdonság a *$ (spacePrefix)*, a *$ (rootSpacePrefix)* és a *$ (hostSuffix)* értéket is használja, amely a vezérlő által megadott érték.
 
-A *$ (spacePrefix)* a gyermek fejlesztői terület neve, amely a *SPACENAME. s*formátum formáját ölti. A *$ (rootSpacePrefix)* a szülő terület neve. Ha például az *Azureus* egy *alapértelmezett*gyermekobjektum, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* pedig az *Azureus. s*. Ha a szóköz nem gyermek, a *$ (spacePrefix)* üres. Ha például az *alapértelmezett* szóköz nem rendelkezik szülő területtel, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* érték pedig üres. A *$ (hostSuffix)* egy olyan DNS-utótag, amely az AK-fürtben futó Azure dev Spaces beléptetési vezérlőre mutat. Ez a DNS-utótag a helyettesítő karakteres DNS-bejegyzésnek felel meg, például * \*:. RANDOM_VALUE. EUs. azds. IO*, amely akkor jött létre, amikor az Azure dev Spaces-vezérlőt hozzáadták az AK-fürthöz.
+A *$ (spacePrefix)* a gyermek fejlesztői terület neve, amely a *SPACENAME. s*formátum formáját ölti. A *$ (rootSpacePrefix)* a szülő terület neve. Ha például az *Azureus* egy *alapértelmezett*gyermekobjektum, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* pedig az *Azureus. s*. Ha a szóköz nem gyermek, a *$ (spacePrefix)* üres. Ha például az *alapértelmezett* szóköz nem rendelkezik szülő területtel, a *$ (rootSpacePrefix)* érték értéke *alapértelmezett* , a *$ (spacePrefix)* érték pedig üres. A *$ (hostSuffix)* egy olyan DNS-utótag, amely az AK-fürtben futó Azure dev Spaces beléptetési vezérlőre mutat. Ez a DNS-utótag a helyettesítő karakteres DNS-bejegyzésnek felel meg, például: * \* . RANDOM_VALUE. EUs. azds. IO*, amely akkor jött létre, amikor az Azure dev Spaces-vezérlőt hozzáadták az AK-fürthöz.
 
 A fenti `azds.yaml` fájlban azt is megteheti, hogy frissíti a *install. set. beáramló. hosts* fájlt, hogy megváltoztassa az alkalmazás állomásnevét. Ha például azt szeretné, hogy az alkalmazás állomásneve leegyszerűsítse a $ ( *spacePrefix) $ (rootSpacePrefix) webfrontend $ (hostSuffix)* értéket a *$ (spacePrefix) $ (rootSpacePrefix) Web $ (hostSuffix*) webverzióra.
 
-Az alkalmazáshoz tartozó tároló létrehozásához a vezérlő a `azds.yaml` konfigurációs fájl alábbi részeit használja:
+Az alkalmazáshoz tartozó tároló létrehozásához a vezérlő a konfigurációs fájl alábbi részeit használja `azds.yaml` :
 
 ```yaml
 build:
@@ -161,7 +161,7 @@ A *Build. Context* tulajdonság felsorolja azt a könyvtárat, ahol a Dockerfile
 
 A fejlesztés és a gyártás különböző Dockerfiles lehetővé teszi bizonyos dolgok használatát a fejlesztés során, és letiltja ezeket az elemeket az éles környezetekben való üzembe helyezéshez. Például engedélyezheti a hibakeresést vagy részletesebb naplózást a fejlesztés során, és letilthatja azt éles környezetben. Ezeket a tulajdonságokat akkor is frissítheti, ha a Dockerfiles neve másként van, vagy egy másik helyen található.
 
-A fejlesztés során a gyors iteráció elősegítése érdekében az Azure dev Spaces szinkronizálja a helyi projekt változásait, és fokozatosan frissíti az alkalmazást. A szinkronizálás és a frissítés `azds.yaml` konfigurálásához a konfigurációs fájl alábbi szakasza szolgál:
+A fejlesztés során a gyors iteráció elősegítése érdekében az Azure dev Spaces szinkronizálja a helyi projekt változásait, és fokozatosan frissíti az alkalmazást. A `azds.yaml` szinkronizálás és a frissítés konfigurálásához a konfigurációs fájl alábbi szakasza szolgál:
 
 ```yaml
 ...
@@ -182,13 +182,13 @@ configurations:
 ...
 ```
 
-A szinkronizálni kívánt fájlok és könyvtárak megjelennek a *konfigurációk. fejlesztői. Container. Sync* tulajdonságban. A rendszer először szinkronizálja ezeket a címtárakat, `up` amikor futtatja a parancsot, valamint a módosítások észlelését. Ha vannak olyan további vagy különböző könyvtárak, amelyeket szinkronizálni szeretne a fejlesztői területtel, módosíthatja ezt a tulajdonságot.
+A szinkronizálni kívánt fájlok és könyvtárak megjelennek a *konfigurációk. fejlesztői. Container. Sync* tulajdonságban. A rendszer először szinkronizálja ezeket a címtárakat, amikor futtatja a `up` parancsot, valamint a módosítások észlelését. Ha vannak olyan további vagy különböző könyvtárak, amelyeket szinkronizálni szeretne a fejlesztői területtel, módosíthatja ezt a tulajdonságot.
 
 A *konfigurációk. Development. Container. iteráció. buildCommands* tulajdonság azt adja meg, hogyan kell felépíteni az alkalmazást egy fejlesztési forgatókönyvben. A *konfigurációk. Development. Container. Command* tulajdonság biztosítja az alkalmazás fejlesztési forgatókönyvben való futtatásához szükséges parancsot. Előfordulhat, hogy frissítenie kell ezeket a tulajdonságokat, ha további Build vagy Runtime jelzőket vagy paramétereket szeretne használni a fejlesztés során.
 
 A *konfigurációk. Build. Container. iteráció. processesToKill* felsorolja az alkalmazás leállításához szükséges folyamatokat. Érdemes lehet frissíteni ezt a tulajdonságot, ha módosítani szeretné az alkalmazás újraindítási viselkedését a fejlesztés során. Ha például frissítette a *konfigurációkat. fejlessze a. Container. iteráció. buildCommands* vagy a configurations. Build. *Container. Command* tulajdonságokat az alkalmazás létrehozásának vagy indításának megváltoztatásához, előfordulhat, hogy módosítania kell a leállított folyamatokat.
 
-Ha a `azds prep` parancs használatával készíti elő a kódot, lehetősége van a `--enable-ingress` jelző hozzáadására. A `--enable-ingress` jelző hozzáadása nyilvánosan elérhető URL-címet hoz létre az alkalmazáshoz. Ha kihagyja ezt a jelzőt, az alkalmazás csak a fürtön belül vagy a localhost-alagút használatával érhető el. A `azds prep` parancs futtatása után megváltoztathatja ezt a beállítást a *bejövő. enabled* tulajdonság módosításával a következőben `charts/APPNAME/values.yaml`:
+Ha a parancs használatával készíti elő a kódot `azds prep` , lehetősége van a jelző hozzáadására `--enable-ingress` . A `--enable-ingress` jelző hozzáadása nyilvánosan elérhető URL-címet hoz létre az alkalmazáshoz. Ha kihagyja ezt a jelzőt, az alkalmazás csak a fürtön belül vagy a localhost-alagút használatával érhető el. A parancs futtatása után `azds prep` megváltoztathatja ezt a beállítást a *bejövő. enabled* tulajdonság módosításával a következőben `charts/APPNAME/values.yaml` :
 
 ```yaml
 ingress:
@@ -199,7 +199,7 @@ ingress:
 
 További információ a hálózatkezelésről és a kérelmek az Azure dev Spaces szolgáltatásban való továbbításáról: [Hogyan működik az Útválasztás az Azure dev Spaces][how-it-works-routing]használatával.
 
-Ha többet szeretne megtudni arról, hogyan használható az Azure dev Spaces a gyors iteráció és a fejlesztés érdekében, tekintse meg a [fejlesztői számítógép és a fejlesztői terület összekapcsolásának módját][how-it-works-connect] , valamint azt, [hogy a kód hogyan működik együtt az Azure dev Spaces][how-it-works-remote-debugging]használatával.
+Ha többet szeretne megtudni arról, hogyan használható az Azure dev Spaces a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működését][how-it-works-local-process-kubernetes] , valamint [a kód Azure dev Spaces használatával történő távoli hibakeresését][how-it-works-remote-debugging].
 
 Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséhez tekintse meg az alábbi rövid útmutatókat:
 
@@ -212,7 +212,7 @@ Az Azure dev Spaces a projekt futtatásához való használatának megkezdéséh
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

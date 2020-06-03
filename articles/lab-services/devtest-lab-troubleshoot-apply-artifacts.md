@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456987"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310274"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Az összetevők Azure DevTest Labs virtuális gépen való alkalmazásával kapcsolatos hibák elhárítása
 Az összetevők virtuális gépen való alkalmazása különböző okok miatt sikertelen lehet. Ez a cikk néhány, a lehetséges okok azonosítását megkönnyítő módszert ismertet.
@@ -57,8 +57,9 @@ A DevTest Labs és a Resource Manager-alapú üzemi modell használatával létr
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Tünetek, okok és lehetséges megoldások 
 
-### <a name="artifact-appears-to-hang"></a>Úgy tűnik, hogy az összetevő lefagy   
-Egy összetevő úgy tűnik, hogy lefagy, amíg egy előre definiált időtúllépési időszak lejár, és az összetevő **sikertelenként**van megjelölve.
+### <a name="artifact-appears-to-stop-responding"></a>Az összetevő úgy tűnik, hogy nem válaszol
+
+Egy összetevő úgy tűnik, hogy nem válaszol, amíg egy előre definiált időtúllépési időszak lejár, és az összetevő **sikertelenként**van megjelölve.
 
 Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol ragadt meg. A végrehajtás során a következő lépések bármelyikével blokkolható egy összetevő:
 
@@ -67,14 +68,14 @@ Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol 
     - Keresse meg a hibákat a bejegyzések alatt. Időnként a hiba nem lesz címkézve, és minden egyes bejegyzést meg kell vizsgálnia.
     - Az egyes bejegyzések adatainak kivizsgálása során mindenképpen tekintse át a JSON-adattartalom tartalmát. Előfordulhat, hogy a dokumentum alján egy hibaüzenet jelenik meg.
 - **Az összetevő futtatására tett kísérlet során**. Hálózati vagy tárolási problémákhoz vezethet. A részletekért tekintse meg a jelen cikk későbbi részében található megfelelő szakaszt. A szkript létrehozási módja miatt is előfordulhat. Például:
-    - Egy PowerShell-parancsfájl **kötelező paraméterekkel**rendelkezik, de az egyik nem tud értéket adni neki, mert lehetővé teszi, hogy a felhasználó üresen hagyja, vagy mert nem rendelkezik alapértelmezett értékkel a tulajdonsághoz az artifactfile. JSON definíciós fájlban. A szkript lefagy, mert a felhasználói bevitelre vár.
+    - Egy PowerShell-parancsfájl **kötelező paraméterekkel**rendelkezik, de az egyik nem tud értéket adni neki, mert lehetővé teszi, hogy a felhasználó üresen hagyja, vagy mert nem rendelkezik alapértelmezett értékkel a tulajdonsághoz az artifactfile. JSON definíciós fájlban. A parancsfájl nem válaszol, mert a felhasználói bevitelre vár.
     - A PowerShell-parancsfájlok végrehajtásának részeként **felhasználói bevitelre van szükség** . A parancsfájlokat úgy kell írni, hogy a beavatkozás nélkül is csendesen működjenek.
 - **A virtuálisgép-ügynök hosszú ideig tart, hogy készen**álljon. A virtuális gép első indításakor, vagy ha az egyéni parancsfájl-bővítményt először telepíti az összetevők alkalmazására irányuló kérelem kiszolgálására, akkor a virtuális gépnek frissítenie kell a virtuálisgép-ügynököt, vagy várnia kell a virtuálisgép-ügynök inicializálására. Lehetnek olyan szolgáltatások, amelyeken a virtuálisgép-ügynök attól függ, hogy a rendszer mennyi időt vesz igénybe az inicializáláskor. Ilyen esetekben az [Azure Virtual Machine Agent áttekintése](../virtual-machines/extensions/agent-windows.md) című témakörben talál további hibaelhárítást.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Annak ellenőrzése, hogy az összetevő megjelenik-e a parancsfájl miatt
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>Annak ellenőrzése, hogy az összetevő úgy tűnik-e, hogy a parancsfájl miatt nem válaszol
 
 1. Jelentkezzen be a szóban forgó virtuális gépre.
-2. Másolja a szkriptet helyileg a virtuális gépre, vagy keresse meg a virtuális gépen a `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`alatt. Ez az a hely, ahol az összetevők parancsfájljai le vannak töltve.
+2. Másolja a szkriptet helyileg a virtuális gépre, vagy keresse meg a virtuális gépen a alatt `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>` . Ez az a hely, ahol az összetevők parancsfájljai le vannak töltve.
 3. Rendszergazda jogú parancssor használatával helyileg hajthatja végre a parancsfájlt, és megadhatja a probléma okának megfelelő paramétereket.
 4. Annak megállapítása, hogy a parancsfájl a nemkívánatos viselkedéstől szenved-e. Ha igen, kérjen frissítést az összetevőhöz (ha a nyilvános tárházból származik); vagy végezze el a megfelelő módosításokat (ha a privát tárházból származik).
 
@@ -83,7 +84,7 @@ Ha egy összetevő úgy tűnik, hogy lefagy, először határozza meg, hogy hol 
 > 
 > További információ a saját összetevők írásáról: [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) Document.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>Annak ellenőrzése, hogy az összetevő megjelenik-e a virtuálisgép-ügynök miatt:
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>Annak ellenőrzése, hogy az összetevő úgy tűnik-e, hogy a virtuálisgép-ügynök miatt nem válaszol:
 1. Jelentkezzen be a szóban forgó virtuális gépre.
 2. A Fájlkezelőben navigáljon a **C:\WindowsAzure\logs**.
 3. Keresse meg és nyissa meg a **WaAppAgent. log**fájlt.
@@ -119,7 +120,7 @@ A fenti hiba az összetevők **kezelése**területen az összetevők **eredmény
 ### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Az Azure Storage szolgáltatással folytatott kommunikáció megakadályozása érdekében:
 
 - **A hozzáadott hálózati biztonsági csoportok (NSG-EK) keresése**. Előfordulhat, hogy egy előfizetési szabályzatot adott hozzá, ahol a NSG automatikusan konfigurálva vannak az összes virtuális hálózaton. Ez hatással lenne a labor alapértelmezett virtuális hálózatára, ha van ilyen, vagy a laborban konfigurált más virtuális hálózat, amelyet a virtuális gépek létrehozására használnak.
-- Győződjön meg arról, hogy **az alapértelmezett Lab Storage-fiókja** (azaz a labor létrehozásakor létrehozott első Storage-fiók, amelynek a neve általában az "a" betűvel kezdődik, és egy több számjegyből álló számmal\<végződik\>, amely egy labname #).
+- Győződjön meg arról, hogy **az alapértelmezett Lab Storage-fiókja** (azaz a labor létrehozásakor létrehozott első Storage-fiók, amelynek a neve általában az "a" betűvel kezdődik, és egy több számjegyből álló számmal végződik \<labname\> ).
     1. Navigáljon a laborhoz tartozó erőforráscsoporthoz.
     2. Keresse meg a Storage- **fiók**típusú erőforrást, amelynek a neve megegyezik az egyezménnyel.
     3. Navigáljon a Storage-fiók lapra **tűzfalak és virtuális hálózatok**néven.
@@ -137,4 +138,3 @@ Más, ritkábban előforduló hiba lehetséges. Győződjön meg arról, hogy az
 
 ## <a name="next-steps"></a>További lépések
 Ha ezen hibák egyike sem történt meg, és továbbra sem tudja alkalmazni az összetevőket, egy Azure-támogatási incidenst is betölthet. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
-

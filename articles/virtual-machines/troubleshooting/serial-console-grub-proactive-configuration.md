@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262893"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309832"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktív módon biztosíthatja, hogy hozzáférjen a GRUB-hoz, és a SYSRQ rengeteg időt takaríthat meg
 
@@ -76,7 +76,7 @@ Az Azure soros konzol és a GRUB elérésének biztosítása azt jelenti, hogy a
 
 - Disk swap – automatizálható a következők bármelyikével:
 
-   - [Rendszerhéj-helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [PowerShell helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
    - [bash helyreállítási parancsfájlok](https://github.com/sribs/azure-support-scripts)
 
 - Örökölt metódus
@@ -98,7 +98,7 @@ Ebben a cikkben áttekintjük a különböző Linux-disztribúciókat és dokume
 A SYSRQ kulcs alapértelmezés szerint engedélyezve van néhány újabb Linux-disztribúción, bár másokon úgy is konfigurálható, hogy csak bizonyos SysRq függvények esetén fogadjon értékeket.
 A régebbi disztribúciókban lehet, hogy teljesen le van tiltva.
 
-A SysRq funkció hasznos lehet egy összeomlott vagy lefagyott virtuális gép közvetlenül az Azure soros konzolról történő újraindításához, és a GRUB menühöz való hozzáféréshez is hasznos, ha a virtuális gépet egy másik portál ablakból vagy SSH-munkamenetből kívánja újraindítani, így a grub-menü megjelenítéséhez használt GRUB-időtúllépések lejárnak.
+A SysRq funkció hasznos lehet egy összeomlott vagy nem válaszoló virtuális gép közvetlenül az Azure soros konzolról történő újraindításához, és a GRUB menühöz való hozzáféréshez is hasznos, ha a virtuális gépet egy másik portál ablakból vagy SSH-munkamenetből kívánja újraindítani, így a grub-menü megjelenítéséhez használt GRUB-időtúllépések lejárnak.
 A virtuális gépet úgy kell konfigurálni, hogy fogadja az 1 értéket a kernel paraméter számára, amely lehetővé teszi a SYSRQ vagy a 128 összes funkcióját, amely lehetővé teszi az újraindítás/erő használatát
 
 
@@ -123,7 +123,7 @@ A Azure Portal Operations-> Run Command-> RunShellScript funkció használata es
 
 `sysctl -w kernel.sysrq=1 ; echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
-Ahogy az itt látható ![: a sysrq2 engedélyezése](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
+Ahogy az itt látható: a ![ sysrq2 engedélyezése](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
 
 Ha elkészült, próbálja meg elérni a **SYSRQ** , és látnia kell, hogy újraindításra van lehetőség.
 
@@ -173,7 +173,7 @@ GRUB_TIMEOUT_STYLE=countdown
 ```
 
 
-## <a name="ubuntu-1204"></a>Ubuntu 12\.04
+## <a name="ubuntu-1204"></a>Ubuntu 12 \. 04
 
 Az Ubuntu 12,04 lehetővé teszi a soros konzol elérését, de nem teszi lehetővé a kommunikációt. Egy **Bejelentkezés:** a kérdés nem látható
 
@@ -236,7 +236,7 @@ Ha minden jól megy, ezeket a további beállításokat fogja látni, amelyek m�
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB-konfiguráció
 
-## <a name="red-hat-74-grub-configuration"></a>Red Hat 7\.4\+ grub-konfiguráció
+## <a name="red-hat-74-grub-configuration"></a>Red Hat 7 \. 4 \+ grub-konfiguráció
 Ezen verziók alapértelmezett/etc/default/grub-konfigurációja megfelelően van konfigurálva
 
 ```
@@ -256,7 +256,7 @@ A SysRq kulcs engedélyezése
 sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq
 ```
 
-## <a name="red-hat-72-and-73-grub-configuration"></a>Red Hat 7\.2 és 7\.3 grub-konfiguráció
+## <a name="red-hat-72-and-73-grub-configuration"></a>Red Hat 7 \. 2 és 7 \. 3 grub-konfiguráció
 A módosítandó fájl/etc/default/grub – az alapértelmezett konfiguráció a következő példához hasonlóan néz ki:
 
 ```
@@ -320,7 +320,7 @@ Alternatív megoldásként a GRUB és a SysRq a shellben vagy a Run parancson ke
 `cp /etc/default/grub /etc/default/grub.bak; sed -i 's/GRUB_TIMEOUT=1/GRUB_TIMEOUT=5/g' /etc/default/grub; sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL="serial console"/g' /etc/default/grub; echo "GRUB_SERIAL_COMMAND=\"serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1\"" >> /etc/default/grub;grub2-mkconfig -o /boot/grub2/grub.cfg;sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
 
-## <a name="red-hat-6x-grub-configuration"></a>Red Hat 6\.x grub-konfiguráció
+## <a name="red-hat-6x-grub-configuration"></a>Red Hat 6 \. x grub-konfiguráció
 A módosítandó fájl/boot/grub/grub.conf. Az `timeout` érték határozza meg, hogy mennyi ideig jelenjen meg a grub.
 
 ```
