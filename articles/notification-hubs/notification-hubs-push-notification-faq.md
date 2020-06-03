@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263829"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307384"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
@@ -56,7 +56,7 @@ Az alapszintű és a standard szintű Notification Hubs-csomagok esetében a meg
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan a hubot vagy a névteret egy másik szintre?
 
-Nyissa meg a **[Azure Portal]** > **Notification Hubs névterek** vagy **Notification Hubs**. Válassza ki a frissíteni kívánt erőforrást, és nyissa meg a **díjszabási szintet**. Vegye figyelembe a következő követelményeket:
+Nyissa meg a **[Azure Portal]**  >  **Notification Hubs névterek** vagy **Notification Hubs**. Válassza ki a frissíteni kívánt erőforrást, és nyissa meg a **díjszabási szintet**. Vegye figyelembe a következő követelményeket:
 
 * A frissített díjszabási csomag a névtérben lévő *összes* olyan hubhoz vonatkozik, amelyen dolgozik.
 * Ha az eszközök száma meghaladja a küszöbértéket, akkor a visszalépés előtt törölnie kell az eszközöket.
@@ -79,7 +79,7 @@ Notification Hubs értesítéseket küld a Mobile Apps szolgáltatást futtató 
 
 A támogatott eszközök számával kapcsolatos részletekért tekintse meg a [Notification Hubs díjszabási] oldalát.
 
-Ha több mint 10 000 000 regisztrált eszköz támogatására van szüksége, több hubhoz kell particionálnia az eszközöket.
+Ha több mint 10 000 000 regisztrált eszköz támogatására van szüksége, az eszközöket több névtér között kell particionálnia.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Hány leküldéses Értesítés küldhető el?
 
@@ -193,7 +193,7 @@ Az Azure Notification Hubs számos funkciót kínál a hibaelhárításhoz, kül
 
 Az Azure Notification Hubs lehetővé teszi a [Azure Portal]telemetria-beli megtekintését. A metrikák részletei a [Notification Hubs metrikák] lapon érhetők el.
 
-Programozott módon is elérheti a metrikákat. További információkért tekintse át a következő cikkeket:
+Programozott módon is elérheti a metrikákat. További információért tekintse át a következő cikkeket:
 
 - [Azure monitor mérőszámok beolvasása a .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)-tel. Ez a példa a felhasználónevet és a jelszót használja. Ha tanúsítványt szeretne használni, a FromServicePrincipal metódust a [jelen példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)látható módon kell megadnia a tanúsítvány megadásához. 
 - [Erőforrások metrikáinak és tevékenységi naplóinak beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)

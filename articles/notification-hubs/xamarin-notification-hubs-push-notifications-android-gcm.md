@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72387651"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308132"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése a Xamarin. Android-alkalmazásoknak Notification Hubs használatával
 
@@ -111,7 +111,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Regisztráció a Firebase Cloud Messagingben
 
-1. Nyissa `AndroidManifest.xml` meg a fájlt, és `<receiver>` szúrja be `<application>` a következő elemeket a elembe:
+1. Nyissa meg a `AndroidManifest.xml` fájlt, és szúrja be a következő `<receiver>` elemeket a `<application>` elembe:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -135,10 +135,10 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 3. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
 
-   * **Figyelési kapcsolati sztring**: Az [Azure Portal] irányítópultján válassza a **Kapcsolati sztringek megtekintése** elemet. Másolja ki `DefaultListenSharedAccessSignature` az értékhez tartozó kapcsolatok karakterláncát.
+   * **Figyelési kapcsolati sztring**: Az [Azure Portal] irányítópultján válassza a **Kapcsolati sztringek megtekintése** elemet. Másolja `DefaultListenSharedAccessSignature` ki az értékhez tartozó kapcsolatok karakterláncát.
    * **Központ neve**: A központ neve az [Azure Portalon]. Például: *mynotificationhub2*.
 4. A **megoldáskezelő** ablakban kattintson a jobb gombbal a **projektre**, válassza a **Hozzáadás**, majd a **Class (osztály**) lehetőséget.
-5. Hozzon `Constants.cs` létre egy osztályt a Xamarin projekt számára, és adja meg a következő állandó értékeket a osztályban. A helyőrzőket cserélje le az értékekkel.
+5. Hozzon létre egy `Constants.cs` osztályt a Xamarin projekt számára, és adja meg a következő állandó értékeket a osztályban. A helyőrzőket cserélje le az értékekkel.
 
     ```csharp
     public static class Constants
@@ -148,7 +148,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-6. Adja hozzá a következő using utasításokat `MainActivity.cs`a következőkhöz:
+6. Adja hozzá a következő using utasításokat a következőkhöz `MainActivity.cs` :
 
     ```csharp
     using Android.Util;
@@ -210,7 +210,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-10. A `MainActivity.cs`alkalmazásban adja hozzá az alábbi `OnCreate` kódot `base.OnCreate(savedInstanceState)`a következőhöz:
+10. A alkalmazásban `MainActivity.cs` adja hozzá az alábbi kódot a következőhöz `OnCreate` `base.OnCreate(savedInstanceState)` :
 
     ```csharp
     if (Intent.Extras != null)
@@ -229,8 +229,8 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     CreateNotificationChannel();
     ```
 
-15. Adjon hozzá egy nevű `MyFirebaseMessagingService` osztályt a projekthez. 
-16. Adja hozzá az alábbi using utasításokat `MyFirebaseMessagingService.cs`a következőhöz:.
+15. Adjon hozzá egy nevű osztályt `MyFirebaseMessagingService` a projekthez. 
+16. Adja hozzá az alábbi using utasításokat a következőhöz: `MyFirebaseMessagingService.cs` .
 
     ```csharp
     using Android.Util;
@@ -239,7 +239,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     using WindowsAzure.Messaging;
     ```
 
-17. Adja hozzá a következőt a Class deklarációhoz, és az osztályának `FirebaseMessagingService`öröklése:
+17. Adja hozzá a következőt a Class deklarációhoz, és az osztályának öröklése `FirebaseMessagingService` :
 
     ```csharp
     [Service]
@@ -248,7 +248,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Adja hozzá a következő kódot `MyFirebaseMessagingService.cs` a fogadott üzenetek feldolgozásához. 
+18. Adja hozzá a következő kódot az `MyFirebaseMessagingService` osztályban a fogadott üzenetek feldolgozásához. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
         }
     ```
 
-19. Adja hozzá a következő metódusokat a MyFirebaseMessagingService osztályhoz, hogy megkaphassa az FCM regisztrációs jogkivonatot, és küldje el a Notification Hubs-példánynak (hub). 
+19. Adja hozzá a következő metódusokat a MyFirebaseMessagingService osztályhoz (közvetlenül az előző lépésben hozzáadott kód alatt) az FCM regisztrációs jogkivonat fogadásához és a Notification Hubs-példányhoz (hub) való elküldéséhez. 
 
     ```csharp
         public override void OnNewToken(string token)

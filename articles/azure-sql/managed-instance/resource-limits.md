@@ -1,7 +1,7 @@
 ---
 title: Erőforráskorlátok
 titleSuffix: Azure SQL Managed Instance
-description: Ez a cikk áttekintést nyújt az Azure SQL felügyelt példányainak erőforrás-korlátairól.
+description: Ez a cikk áttekintést nyújt az Azure SQL felügyelt példányának erőforrás-korlátairól.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,20 +12,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 27b46a5511313e8ebc31618fe382e7108cdaa160
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118651"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309101"
 ---
-# <a name="overview-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Ez a cikk áttekintést nyújt az Azure SQL felügyelt példányainak technikai jellemzőiről és erőforrás-korlátairól, és információt nyújt arról, hogyan kérheti le a határértékek növelését.
 
 > [!NOTE]
-> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](../database/features-comparison.md) és a [t-SQL-utasítások támogatását](transact-sql-tsql-differences-sql-server.md). A SQL Database és az SQL felügyelt példányának szolgáltatási szintjei közötti általános különbségekért lásd a [szolgáltatási szintek összehasonlítását](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
+> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](../database/features-comparison.md) és a [t-SQL-utasítások támogatását](transact-sql-tsql-differences-sql-server.md). A Azure SQL Database és az SQL felügyelt példányának szolgáltatási szintjei közötti általános különbségekért lásd a [szolgáltatási szintek összehasonlítását](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="hardware-generation-characteristics"></a>Hardver generálási jellemzői
 
@@ -40,12 +40,12 @@ Az SQL felügyelt példányának jellemzői és erőforrás-korlátai a mögött
 | Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
-> - A Gen4 hardverek fokozatos kiépítése folyamatban van, és az új telepítések esetén már nem érhető el. Minden új SQL-felügyelt példányt telepíteni kell a Gen5 hardveren.
-> - Vegye fontolóra [az SQL felügyelt példányainak az Gen 5](../database/service-tiers-vcore.md) hardverre való áthelyezését a virtuális mag és a tárterület méretezhetőségének, a gyorsított hálózatkezelésnek, a legjobb IO-teljesítménynek és a minimális késésnek a megtapasztalása érdekében.
+> - A Gen4 hardverek fokozatos kiépítése folyamatban van, és az új telepítések esetén már nem érhető el. A felügyelt SQL-példányok minden új példányát telepíteni kell a Gen5 hardveren.
+> - Érdemes [áthelyezni az SQL felügyelt példányának példányát az 5. generációs](../database/service-tiers-vcore.md) hardverre, hogy a virtuális mag és a tárterület méretezhetősége, a gyorsított hálózatkezelés, a legjobb IO-teljesítmény és a minimális késések széles skáláját tapasztalja.
 
 ### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
 
-[Üzletileg kritikus](../database/service-tier-business-critical.md) szolgáltatási szinten a memóriában lévő OLTP-terület mennyisége a virtuális mag és a hardveres generáció számától függ. A következő táblázat felsorolja a memóriában tárolt OLTP-objektumokhoz használható memóriát.
+[Üzletileg kritikus](../database/service-tier-business-critical.md) szolgáltatási szinten a memóriában lévő OLTP-terület mennyisége a virtuális mag és a hardveres generáció számától függ. A következő táblázat a memóriában tárolt OLTP-objektumokhoz használható memória korlátozásait sorolja fel.
 
 | Memóriában tárolt OLTP terület  | **Gen5** | **Gen4** |
 | --- | --- | --- |
@@ -80,7 +80,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
 | Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[A fájlméret növelése jobb i/o-teljesítmény eléréséhez](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
+| Memóriabeli OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](../database/read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 | Számítási elkülönítés | Gen5<br/>– 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 60, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
@@ -111,7 +111,7 @@ A maximális írási sebesség (azaz 22 MB/s) esetében is van egy példányra v
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az SQL felügyelt példányai csak [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha az SQL felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](../database/quota-increase-request.md).
+A felügyelt SQL-példányok csak a [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha az SQL felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](../database/quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 
@@ -128,11 +128,11 @@ Az SQL felügyelt példány jelenleg csak a következő típusú előfizetések 
 
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt SQL-példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](../database/quota-increase-request.md) előfizetés típusától függően:
 
-- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben az SQL felügyelt példányai egyetlen régióban vannak üzembe helyezve.
+- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
 - **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
-> Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több SQL felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](../database/quota-increase-request.md) . Alternatív megoldásként új SQL felügyelt példányokat is létrehozhat egy másik Azure-régióban a támogatási kérések küldése nélkül.
+> Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. A határértékek igény szerinti növeléséhez hozzon létre egy speciális [támogatási kérelmet a Azure Portal,](../database/quota-increase-request.md) ha az aktuális régióban több példányra van szüksége. Alternatív megoldásként új SQL-példányokat is létrehozhat egy másik Azure-régióban a támogatási kérések küldése nélkül.
 
 A következő táblázat a támogatott előfizetési típusok **alapértelmezett regionális korlátait** mutatja be (az alapértelmezett határértékek az alább ismertetett támogatási kérelem használatával bővíthetők):
 
@@ -146,15 +146,15 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\*Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL-felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\*Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
 \*\*A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
 ## <a name="request-a-quota-increase"></a>Kvóta növelésének kérése
 
-Ha az aktuális régiókban több SQL-felügyelt példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
+Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

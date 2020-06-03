@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241386"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307418"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
 
@@ -20,22 +20,22 @@ Ez a cikk azt ismerteti, hogyan működik az Útválasztás a dev Spaces-szel.
 
 ## <a name="how-routing-works"></a>Az útválasztás működése
 
-A fejlesztői terület az AK-ra épül, és ugyanazokat a [hálózatkezelési fogalmakat](../aks/concepts-network.md)használja. Az Azure dev Spaces egy központi *ingressmanager* -szolgáltatással is rendelkezik, és üzembe helyezi a saját bejövő vezérlőjét az AK-fürtön. A *ingressmanager* szolgáltatás FIGYELI az AK-fürtöket a dev Spaces-ben, és kibővíti az Azure dev Spaces-ba való belépést a fürtben a bejövő objektumokkal az Application hüvelyek útválasztásához. Az egyes Pod devspaces-tárolója egy `azds-route-as` http-fejlécet tesz elérhetővé az URL-cím alapján a fejlesztői területhez való http-adatforgalomhoz. Az URL-címre érkező kérés például egy *http://azureuser.s.default.serviceA.fedcba09...azds.io* http-fejlécet kap a `azds-route-as: azureuser`következővel:. A devspaces tároló nem ad hozzá `azds-route-as` fejlécet, ha az egyik már létezik.
+A fejlesztői terület az AK-ra épül, és ugyanazokat a [hálózatkezelési fogalmakat](../aks/concepts-network.md)használja. Az Azure dev Spaces egy központi *ingressmanager* -szolgáltatással is rendelkezik, és üzembe helyezi a saját bejövő vezérlőjét az AK-fürtön. A *ingressmanager* szolgáltatás FIGYELI az AK-fürtöket a dev Spaces-ben, és kibővíti az Azure dev Spaces-ba való belépést a fürtben a bejövő objektumokkal az Application hüvelyek útválasztásához. Az egyes Pod devspaces-tárolója egy `azds-route-as` http-fejlécet tesz elérhetővé az URL-cím alapján a fejlesztői területhez való http-adatforgalomhoz. Az URL-címre érkező kérés például egy *http://azureuser.s.default.serviceA.fedcba09...azds.io* http-fejlécet kap a következővel: `azds-route-as: azureuser` . A devspaces tároló nem ad hozzá `azds-route-as` fejlécet, ha az egyik már létezik.
 
 Amikor HTTP-kérést végeznek a fürtön kívüli szolgáltatásra, a kérés a bejövő vezérlőre lép. A beáramló vezérlő közvetlenül a megfelelő Pod-ra irányítja át a kérést a bejövő objektumai és szabályai alapján. A pod devspaces-proxy tároló fogadja a kérést, hozzáadja a `azds-route-as` fejlécet az URL-cím alapján, majd átirányítja a kérést az alkalmazás-tárolóba.
 
-Amikor HTTP-kérést végez egy másik szolgáltatásból a fürtön belül, a kérelem először a hívó szolgáltatás devspaces-tárolóján halad végig. A devspaces-proxy tároló a HTTP-kérést tekinti át `azds-route-as` , és ellenőrzi a fejlécet. A fejléc alapján a devspaces tároló a fejléc értékéhez tartozó szolgáltatás IP-címét fogja megkeresni. Ha a rendszer IP-címet talál, a devspaces tároló átirányítja a kérést az adott IP-címhez. Ha nem található IP-cím, a devspaces tároló továbbítja a kérést a szülő alkalmazás tárolójába.
+Amikor HTTP-kérést végez egy másik szolgáltatásból a fürtön belül, a kérelem először a hívó szolgáltatás devspaces-tárolóján halad végig. A devspaces-proxy tároló a HTTP-kérést tekinti át, és ellenőrzi a `azds-route-as` fejlécet. A fejléc alapján a devspaces tároló a fejléc értékéhez tartozó szolgáltatás IP-címét fogja megkeresni. Ha a rendszer IP-címet talál, a devspaces tároló átirányítja a kérést az adott IP-címhez. Ha nem található IP-cím, a devspaces tároló továbbítja a kérést a szülő alkalmazás tárolójába.
 
-Az Applications *servicea* és a *serviceB* például az *alapértelmezett*nevű szülő fejlesztői területre van telepítve. a *servicea* a *serviceB* -ra TÁMASZKODik, és http-hívásokat tesz lehetővé. Az Azure-felhasználó létrehoz egy gyermek-fejlesztési helyet az *azureuser*nevű *alapértelmezett* hely alapján. Az Azure User a *servicea* saját verzióját is üzembe helyezi a gyermek területére. Kérelem küldése *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Az Applications *servicea* és a *serviceB* például az *alapértelmezett*nevű szülő fejlesztői területre van telepítve. a *servicea* a *serviceB* -ra TÁMASZKODik, és http-hívásokat tesz lehetővé. Az Azure-felhasználó létrehoz egy gyermek-fejlesztési helyet az *azureuser*nevű *alapértelmezett* hely alapján. Az Azure User a *servicea* saját verzióját is üzembe helyezi a gyermek területére. Kérelem küldése *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Az Azure dev Spaces útválasztása](media/how-dev-spaces-works/routing.svg)
 
 1. A bejövő vezérlő megkeresi az URL-címhez társított Pod IP-címét, amely a *servicea. azureuser*.
 1. A beáramló vezérlő megkeresi az Azure-felhasználó fejlesztői területén található Pod IP-címét, és átirányítja a kérést a *servicea. azureuser* Pod-ra.
-1. A *servicea. azureuser* Pod devspaces-tárolója megkapja a kérést, és http `azds-route-as: azureuser` -fejlécként adja meg.
+1. A *servicea. azureuser* Pod devspaces-tárolója megkapja a kérést, és `azds-route-as: azureuser` http-fejlécként adja meg.
 1. A servicea devspaces-tárolója *. az azureuser* Pod a servicea *. azureuser* POD szolgáltatásban továbbítja a kérést *a servicea alkalmazás* tárolójába.
-1. A servicea *. azureuser* *Pod szolgáltatásbeli alkalmazása* meghívja a *serviceB*. A *servicea* alkalmazás emellett kódot is tartalmaz a meglévő `azds-route-as` fejléc megőrzése érdekében, ami ebben az esetben `azds-route-as: azureuser`a következő:.
-1. A servicea devspaces-tárolója *. az azureuser* Pod fogadja a kérést, és a `azds-route-as` fejléc értéke alapján megkeresi a *serviceB* IP-címét.
+1. A servicea *. azureuser* *Pod szolgáltatásbeli alkalmazása* meghívja a *serviceB*. A *servicea* alkalmazás emellett kódot is tartalmaz a meglévő fejléc megőrzése érdekében `azds-route-as` , ami ebben az esetben a következő: `azds-route-as: azureuser` .
+1. A servicea devspaces-tárolója *. az azureuser* Pod fogadja a kérést, és a fejléc értéke alapján megkeresi a *serviceB* IP-címét `azds-route-as` .
 1. A *servicea. azureuser* Pod devspaces-proxy tárolója nem talál IP-címet a *serviceB. azureuser*számára.
 1. A *servicea. azureuser* Pod devspaces-proxy tárolója megkeresi a *serviceB* lévő IP-címet a szülő térben, amely a *serviceB. default*.
 1. A servicea devspaces-tárolója *. az azureuser* Pod megkeresi a *serviceB. default* IP-címét, és átirányítja a kérést a *serviceB. default* Pod-ra.
@@ -64,12 +64,12 @@ Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes k�
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné megtekinteni, hogy az Azure dev Spaces hogyan használja az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [fejlesztői gép a fejlesztői tárhelyhez való csatlakoztatásának][how-it-works-connect]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging]szolgáltatással, valamint a [GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
+Ha szeretné megtekinteni, hogyan használja az Azure dev Spaces az útválasztást a gyors iteráció és a fejlesztés érdekében, tekintse meg a [helyi folyamat és a Kubernetes működésének][how-it-works-local-process-kubernetes]módját, [a kód távoli hibakeresését az Azure dev Spaces][how-it-works-remote-debugging] [szolgáltatással és a GitHub-műveleteket & Azure Kubernetes szolgáltatást][pr-flow].
 
 Az Útválasztás és az Azure dev Spaces közötti együttműködés használatának megkezdéséhez tekintse meg a [csapat fejlesztése az Azure dev Spaces][quickstart-team] rövid útmutatójában.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

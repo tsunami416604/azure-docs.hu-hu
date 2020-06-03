@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599618"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299314"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Gatsby-webhely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe [Gatsby](https://gatsbyjs.org) -webalkalmazásokat az [Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új statikus Web Apps-hely (a kapcsolódó GitHub-műveletekkel), amelyek segítségével szabályozhatja az alkalmazás felépítésének és közzétételének módját.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **Gatsby-static-Web-App** nevet, majd kattintson **az OK gombra**.
 
-1. Ezután adjon meg egy globálisan egyedi nevet az alkalmazásnak a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` . Ezt az értéket használja a statikus webalkalmazás URL-előtagja a következő formátumban: `https://<YOUR_APP_NAME>.azurestaticapps.net` .
+1. Ezután adja meg az alkalmazás nevét a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
 1. A _régió_területen válasszon ki egy elérhető régiót.
 
@@ -139,7 +139,7 @@ Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozás
 
    :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 

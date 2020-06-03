@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361530"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317741"
 ---
 ### <a name="database-tier"></a>Adatbázis szintje
 
@@ -17,7 +17,7 @@ Az adatbázis szintje tartalmazza az alkalmazás adatbázis-példányait. Az ada
 
 Ha a választás a Oracle DB használata, az adatbázis-példány az Azure piactéren elérhető Oracle DB rendszerképeken keresztül is üzembe helyezhető az Azure-ban. Azt is megteheti, hogy az összekötőt az Azure és a OCI között használja, hogy a Oracle DBt a OCI-on található egy Pásti modellben telepítse.
 
-Az Oracle RAC esetében az Oracle RAC üzembe helyezése az Azure CloudSimple-ben az IaaS-modellben vagy a OCI-ben a Pásti modellben. Ajánlott két csomópontos RAC-rendszer használata. 
+Az Oracle RAC esetében a OCI a Pásti modellben használható. Ajánlott két csomópontos RAC-rendszer használata. Habár az Oracle RAC az Azure CloudSimple-ben is üzembe helyezhető a IaaS-modellben, nem támogatott az Oracle által. A jogosult [felhőalapú környezetekhez jogosult Oracle-programokért](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf)tekintse meg a következőt:.
 
 Végül a Exadata rendszerek esetében használja a OCI interconnectt, és telepítse a Exadata rendszert a OCI-ben. A fenti architektúra-diagramon egy, a OCI-ben üzembe helyezett Exadata-rendszer látható két alhálózaton belül.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 38b6f797541ef07fa3fb5e1dc71029a4cbcf5d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4333513d2ba210f6a472638732cc2781b8d5c0b
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546296"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300835"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
 Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -46,6 +46,7 @@ A következő táblázat felsorolja az Azure Database for MariaDB átjáró els�
 | USA keleti régiója | 40.121.158.30, 191.238.6.43  |
 | USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Közép-Franciaország | 40.79.137.0, 40.79.129.1  |
+| Dél-Franciaország | 40.79.177.0     |
 | Közép-Németország | 51.4.144.100     |
 | Kelet-Észak-Németország | 51.5.144.179  |
 | Közép-India | 104.211.96.159     |

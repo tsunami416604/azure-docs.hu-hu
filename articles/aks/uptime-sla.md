@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 986bb835f319cebf3006d7e1bd31bd7f04a1ae82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193995"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299553"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -26,18 +26,6 @@ Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 9
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 
 A rendelkezésre állási SLA egy fizetős szolgáltatás, és fürtön engedélyezve van. A rendelkezésre állási SLA díjszabását a különálló fürtök száma határozza meg, nem az egyes fürtök méretével. További információért tekintse meg a [rendelkezésre állási SLA díjszabását](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
-
-## <a name="region-availability"></a>Régió elérhetősége
-
-A rendelkezésre állási SLA a következő régiókban érhető el:
-
-* Kelet-Ausztrália
-* Közép-Kanada
-* USA keleti régiója
-* USA 2. keleti régiója
-* USA déli középső régiója
-* Délkelet-Ázsia
-* USA nyugati régiója, 2.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

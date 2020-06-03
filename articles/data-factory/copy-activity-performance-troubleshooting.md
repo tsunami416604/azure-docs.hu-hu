@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193714"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299774"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -40,6 +40,7 @@ A teljesítmény-hangolási tippek jelenleg a következő esetekben nyújtanak j
 | Adattár-specifikus   | Adatok betöltése az **Azure Synpase analyticsbe (korábban SQL DW)**: javasolt a Base vagy a copy utasítás használata, ha nincs használatban. |
 | &nbsp;                | Adatok másolása innen/ből **Azure SQL Database**: Ha a DTU magas kihasználtságú, javasoljuk, hogy magasabb szintre frissítsen. |
 | &nbsp;                | Adatok másolása a (z)/rendszerről **Azure Cosmos DBre**: Ha ru magas kihasználtsággal rendelkezik, javasoljuk, hogy nagyobb ru-re frissítsen. |
+|                       | Adatok másolása az **SAP-táblából**: nagy mennyiségű adatok másolása esetén az SAP-összekötő partíciós lehetőségének kihasználása lehetővé teszi a párhuzamos betöltést, és növeli a maximális partíció számát. |
 | &nbsp;                | Az **Amazon vöröseltolódásról**származó adatok beolvasása |
 | Adattár-szabályozás | Ha az adattár a másolás során több írási/olvasási műveletet is szabályoz, akkor az adattároló megengedett kérelmi arányának ellenőrzését és növelését, illetve az egyidejű munkaterhelés csökkentését javasolja. |
 | Integration Runtime  | Ha saját üzemeltetésű **Integration Runtime (IR)** és másolási tevékenységet használ a várólistán mindaddig, amíg az IR nem rendelkezik a végrehajtáshoz rendelkezésre álló erőforrással, javasoljuk, hogy bővítse/felskálázást hajtson végre az IR-ben. |
@@ -187,7 +188,7 @@ Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelés
 ## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató](copy-activity-performance.md)
 - [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
 - [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)

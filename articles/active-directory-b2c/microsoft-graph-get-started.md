@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184347"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298923"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -36,9 +36,11 @@ Kétféle kommunikációs mód használható a Microsoft Graph API-val való egy
 
 * **Interaktív** – a futtatási egyszeri feladatok esetében a felügyeleti feladatok elvégzéséhez a B2C-bérlőben rendszergazdai fiók szükséges. Ez a mód megköveteli, hogy a rendszergazda a Microsoft Graph API meghívása előtt jelentkezzen be a hitelesítő adataival.
 
-* **Automatizált** – ütemezett vagy folyamatosan futtatott feladatok esetén ez a módszer egy olyan szolgáltatásfiókot használ, amelyet a felügyeleti feladatok végrehajtásához szükséges engedélyekkel konfigurál. A "szolgáltatásfiók" létrehozása Azure AD B2C egy olyan alkalmazás regisztrálásával, amelyet az alkalmazások és a parancsfájlok az *alkalmazás (ügyfél) azonosítójával* és a OAuth 2,0 ügyfél hitelesítő adataival történő hitelesítéshez használnak. Ebben az esetben az alkalmazás önmagára hívja a Microsoft Graph API-t, nem pedig a rendszergazda felhasználót a korábban leírt interaktív módszernek megfelelően.
+* **Automatizált** – ütemezett vagy folyamatosan futtatott feladatok esetén ez a módszer egy olyan szolgáltatásfiókot használ, amelyet a felügyeleti feladatok végrehajtásához szükséges engedélyekkel konfigurál. A "szolgáltatásfiók" létrehozása Azure AD B2C egy olyan alkalmazás regisztrálásával, amelyet az alkalmazások és a parancsfájlok az *alkalmazás (ügyfél) azonosítójával* és a **OAuth 2,0 ügyfél hitelesítő adataival** történő hitelesítéshez használnak. Ebben az esetben az alkalmazás önmagára hívja a Microsoft Graph API-t, nem pedig a rendszergazda felhasználót a korábban leírt interaktív módszernek megfelelően.
 
 Az **automatikus** interakciós forgatókönyvet az alábbi részekben bemutatott alkalmazás-regisztráció létrehozásával engedélyezheti.
+
+Bár a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát jelenleg nem támogatja közvetlenül a Azure AD B2C hitelesítési szolgáltatás, beállíthatja az ügyfél hitelesítő adatait az Azure AD-vel és a Microsoft Identity platform/token-végpontjának használatával az Azure AD B2C-bérlőben lévő alkalmazásokhoz. Egy Azure AD B2C bérlő néhány funkciót megoszt az Azure AD Enterprise-Bérlővel.
 
 ## <a name="register-management-application"></a>Felügyeleti alkalmazás regisztrálása
 
@@ -73,9 +75,10 @@ Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, 
 1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
 
 ## <a name="next-steps"></a>További lépések
+Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket. 
 
-Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket.
-
+* [Hozzáférési token lekérése a Microsoft Azure Active Directory-ból](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [A hozzáférési jogkivonat használata a Microsoft Graph meghívásához](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [A Microsoft Graph által támogatott B2C-műveletek](microsoft-graph-operations.md)
 * [Azure AD B2C felhasználói fiókok kezelése Microsoft Graph](manage-user-accounts-graph-api.md)
 * [Naplók beszerzése az Azure AD Reporting API-val](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

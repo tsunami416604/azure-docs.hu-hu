@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2f8d55669798765cf24e13e95b261cbe4f0e9e3a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868056"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317643"
 ---
 A helyszíni virtuális gépek használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
@@ -90,7 +90,7 @@ A változó díjszabással maximális árat állíthat be az USA dollárban (USD
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Microsoft-ügyfélszerződés | Igen                               |
 | Előnyök                     | Nem érhető el                     |
-| Szponzorált                    | Nem érhető el                     |
+| Szponzorált                    | Igen                               |
 | Ingyenes próbaverzió                   | Nem érhető el                     |
 
 

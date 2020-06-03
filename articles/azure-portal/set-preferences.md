@@ -9,12 +9,12 @@ ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310679"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308064"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Az Azure Portal-beállítások megadása
 
@@ -79,7 +79,7 @@ A kiválasztott téma befolyásolja a Azure Portalban megjelenő háttér-és be
 
    ![A Kiemelt témákkal rendelkező Azure Portal beállításokat bemutató képernyőkép](./media/set-preferences/theme.png)
 
-Ehelyett kiválaszthatja a nagy kontrasztú témák egyikét. A kontrasztos beállítások a Azure Portal könnyebben olvashatók a gyengén látó felhasználók számára, és felülbírálják az összes többi téma kijelölését. További információt a [Kontrasztos megjelenítés bekapcsolása vagy a téma módosítása](azure-portal-change-theme-high-contrast.md)című témakörben talál.
+Ehelyett kiválaszthatja a nagy kontrasztú témák egyikét. A kontrasztos beállítások megadásával a Azure Portal könnyebben olvashatók azok számára, akik a vizualizációk és az összes többi téma kijelölését felülbírálják. További információt a [Kontrasztos megjelenítés bekapcsolása vagy a téma módosítása](azure-portal-change-theme-high-contrast.md)című témakörben talál.
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Előugró értesítések engedélyezése vagy letiltása
 

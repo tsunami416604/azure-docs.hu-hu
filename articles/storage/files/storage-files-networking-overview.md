@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067147"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296527"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files hálózati megfontolások 
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
@@ -51,7 +51,7 @@ Azure Files a következő mechanizmusokat támogatja a helyszíni munkaállomás
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): a VPN Gateway egy adott típusú virtuális hálózati átjáró, amely egy Azure-beli virtuális hálózat és egy másik hely (például a helyszíni) közötti titkosított forgalom küldésére szolgál az interneten keresztül. Az Azure VPN Gateway egy olyan Azure-erőforrás, amely egy, a Storage-fiók vagy más Azure-erőforrás melletti erőforráscsoporthoz is telepíthető. A VPN-átjárók két különböző típusú kapcsolatot tesznek elérhetővé:
     - [Pont – hely (P2S) VPN](../../vpn-gateway/point-to-site-about.md) Gateway-kapcsolatok, amelyek az Azure és az egyes ügyfelek közötti VPN-kapcsolatok. Ez a megoldás elsősorban olyan eszközök esetében hasznos, amelyek nem részei a szervezete helyszíni hálózatának, például a távmunkát, akik az Azure-fájlmegosztás otthonról, kávézóból vagy hotelből való csatlakoztatására szeretnének. Ha a P2S VPN-kapcsolatot Azure Files használatával szeretné használni, konfigurálnia kell egy P2S VPN-kapcsolatot minden olyan ügyfél számára, amelyhez csatlakozni szeretne. A P2S VPN-kapcsolat központi telepítésének egyszerűsítése érdekében tekintse meg a [pont – hely (P2S) VPN konfigurálása a Azure Files Windows](storage-files-configure-p2s-vpn-windows.md) rendszeren, és [konfigurálja a pont – hely (P2S) VPN-t a Linux rendszeren a Azure Files használatával való használatra](storage-files-configure-p2s-vpn-linux.md).
-    - [Helyek közötti (S2S) VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti), amely az Azure és a szervezet hálózata közötti VPN-kapcsolat. A S2S VPN-kapcsolat lehetővé teszi, hogy egy VPN-kapcsolatot egyszer, a szervezet hálózatán tárolt VPN-kiszolgálóhoz vagy eszközhöz konfigurálja, és nem minden olyan eszközt, amely az Azure-fájlmegosztás eléréséhez szükséges. A S2S VPN-kapcsolatok üzembe helyezésének egyszerűbbé tételéhez tekintse meg a [helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használathoz](storage-files-configure-s2s-vpn.md)című témakört.
+    - [Helyek közötti (S2S) VPN](../../vpn-gateway/design.md#s2smulti), amely az Azure és a szervezet hálózata közötti VPN-kapcsolat. A S2S VPN-kapcsolat lehetővé teszi, hogy egy VPN-kapcsolatot egyszer, a szervezet hálózatán tárolt VPN-kiszolgálóhoz vagy eszközhöz konfigurálja, és nem minden olyan eszközt, amely az Azure-fájlmegosztás eléréséhez szükséges. A S2S VPN-kapcsolatok üzembe helyezésének egyszerűbbé tételéhez tekintse meg a [helyek közötti (S2S) VPN konfigurálása Azure Fileshoz való használathoz](storage-files-configure-s2s-vpn.md)című témakört.
 - [ExpressRoute](../../expressroute/expressroute-introduction.md), amely lehetővé teszi egy meghatározott útvonal létrehozását az Azure és a helyszíni hálózat között, amely nem haladja meg az internetet. Mivel a ExpressRoute egy dedikált útvonalat biztosít a helyszíni adatközpont és az Azure között, a ExpressRoute hasznos lehet, ha a hálózati teljesítmény megfontolásra kerül. A ExpressRoute akkor is jó megoldás, ha a szervezet házirend-vagy szabályozási követelményei determinisztikus elérési utat igényelnek a felhőben lévő erőforrásokhoz.
 
 Függetlenül attól, hogy melyik bújtatási módszert használja az Azure-fájlmegosztás eléréséhez, olyan mechanizmusra van szükség, amely biztosítja, hogy a Storage-fiók felé irányuló forgalom a normál internetkapcsolat helyett az alagúton haladjon át. Technikailag lehetséges a Storage-fiók nyilvános végpontjának átirányítása, azonban ehhez az szükséges, hogy az Azure Storage-fürtök összes IP-címének kódolása egy adott régióban történjen, mivel a Storage-fiókok bármikor áthelyezhetők a Storage-fürtök között. Ehhez az IP-címek leképezésének folyamatos frissítésére is szükség van, mivel az új fürtöket a rendszer mindig hozzáadja.
@@ -74,15 +74,15 @@ Privát végpont létrehozásával kapcsolatban lásd: [magánhálózati végpon
 Ha létrehoz egy privát végpontot, a rendszer alapértelmezés szerint létrehoz egy (vagy egy meglévő) magánhálózati DNS-zónát is az `privatelink` altartománynak megfelelően. Szigorúan véve a privát DNS-zónák létrehozásához nem szükséges privát végpontot használni a Storage-fiókhoz, de általában kifejezetten ajánlott és explicit módon szükséges, amikor az Azure-fájlmegosztást egy Active Directory felhasználó rendszerbiztonsági tagjával csatlakoztatja, vagy a legszigorúbb API-val fér hozzá.
 
 > [!Note]  
-> Ez a cikk a Storage-fiók DNS-utótagját használja az Azure `core.windows.net`-beli nyilvános régiókban. Ez a kommentár az Azure szuverén felhőkre is vonatkozik, mint például az Azure US government Cloud és az Azure China Cloud – csak a megfelelő utótagokat helyettesíti a környezetében. 
+> Ez a cikk a Storage-fiók DNS-utótagját használja az Azure-beli nyilvános régiókban `core.windows.net` . Ez a kommentár az Azure szuverén felhőkre is vonatkozik, mint például az Azure US government Cloud és az Azure China Cloud – csak a megfelelő utótagokat helyettesíti a környezetében. 
 
-A saját DNS-zónában létrehozunk egy rekordot a `storageaccount.privatelink.file.core.windows.net` és egy CNAME-rekord számára a Storage-fiók normál neveként, amely a mintát `storageaccount.file.core.windows.net`követi. Mivel az Azure saját DNS-zónája csatlakoztatva van a privát végpontot tartalmazó virtuális hálózathoz, megfigyelheti a DNS-konfigurációt, `Resolve-DnsName` ha a PowerShell-parancsmagot egy Azure- `nslookup` beli virtuális gépen hívja meg a PowerShell-lel (Windows és Linux rendszeren):
+A saját DNS-zónában létrehozunk egy rekordot a `storageaccount.privatelink.file.core.windows.net` és egy CNAME-rekord számára a Storage-fiók normál neveként, amely a mintát követi `storageaccount.file.core.windows.net` . Mivel az Azure saját DNS-zónája csatlakoztatva van a privát végpontot tartalmazó virtuális hálózathoz, megfigyelheti a DNS-konfigurációt, ha a `Resolve-DnsName` PowerShell-parancsmagot egy Azure-beli virtuális gépen hívja meg a PowerShell-lel ( `nslookup` Windows és Linux rendszeren):
 
 ```powershell
 Resolve-DnsName -Name "storageaccount.file.core.windows.net"
 ```
 
-Ebben a példában a Storage-fiók `storageaccount.file.core.windows.net` a privát végpont magánhálózati IP-címére lesz `192.168.0.4`feloldva, ami a következő:.
+Ebben a példában a Storage-fiók a `storageaccount.file.core.windows.net` privát végpont magánhálózati IP-címére lesz feloldva, ami a következő: `192.168.0.4` .
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -109,7 +109,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Ha ugyanezt a parancsot a helyszíni rendszerből futtatja, látni fogja, hogy a Storage-fiók neve a Storage-fiók nyilvános IP-címére lesz feloldva; `storageaccount.file.core.windows.net` a egy CNAME rekord a `storageaccount.privatelink.file.core.windows.net`(z) rendszerhez, amely a Storage-fiókot üzemeltető Azure Storage-fürt CNAME rekordja:
+Ha ugyanezt a parancsot a helyszíni rendszerből futtatja, látni fogja, hogy a Storage-fiók neve a Storage-fiók nyilvános IP-címére lesz feloldva; a `storageaccount.file.core.windows.net` egy CNAME rekord a (z) rendszerhez `storageaccount.privatelink.file.core.windows.net` , amely a Storage-fiókot üzemeltető Azure Storage-fürt CNAME rekordja:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -128,9 +128,9 @@ IP4Address : 52.239.194.40
 
 Ez azt a tényt mutatja be, hogy a Storage-fiók a nyilvános végpontot és egy vagy több privát végpontot is képes kitenni. Annak biztosítása érdekében, hogy a Storage-fiók neve a privát végpont magánhálózati IP-címére legyen feloldva, módosítania kell a helyszíni DNS-kiszolgálók konfigurációját. Ez többféle módon is elvégezhető:
 
-- A gazdagépek fájljának módosítása az ügyfeleken `storageaccount.file.core.windows.net` a kívánt privát végpont magánhálózati IP-címének feloldásához. Ez az éles környezetek esetében nem ajánlott, mivel ezeket a módosításokat minden olyan ügyfélnek el kell végeznie, amely csatlakoztatni kívánja az Azure-fájlmegosztást, és a Storage-fiók vagy a privát végpont módosításait nem fogja automatikusan kezelni.
-- Rekord `storageaccount.file.core.windows.net` létrehozása a helyszíni DNS-kiszolgálókhoz. Ennek előnye, hogy a helyszíni környezetben lévő ügyfelek automatikusan feloldják a Storage-fiókot anélkül, hogy konfigurálniuk kellene az egyes ügyfeleket, azonban ez a megoldás hasonlóan törékeny a gazdagépek fájljának módosításához, mert a módosítások nem tükröződnek. Bár ez a megoldás törékeny, lehetséges, hogy bizonyos környezetek számára a legjobb választás.
-- Továbbítsa `core.windows.net` a zónát a helyszíni DNS-kiszolgálókról az Azure saját DNS-zónájába. Az Azure magánhálózati DNS-gazdagép egy speciális IP-címen (`168.63.129.16`) keresztül érhető el, amely csak az Azure magánhálózati DNS-zónához csatolt virtuális hálózatokon belül érhető el. A korlátozás megkerülő megoldásához futtathat további DNS-kiszolgálókat a virtuális hálózaton belül, `core.windows.net` amelyek továbbítva lesznek az Azure-beli magánhálózati DNS-zónába. A beállítás egyszerűsítése érdekében olyan PowerShell-parancsmagokat kaptunk, amelyek az Azure-beli virtuális hálózatban automatikusan telepítik a DNS-kiszolgálókat, és szükség szerint konfigurálja azokat. A DNS-továbbítás beállításával kapcsolatos további tudnivalókért lásd: [a DNS konfigurálása Azure Files](storage-files-networking-dns.md)használatával.
+- A gazdagépek fájljának módosítása az ügyfeleken a `storageaccount.file.core.windows.net` kívánt privát végpont magánhálózati IP-címének feloldásához. Ez az éles környezetek esetében nem ajánlott, mivel ezeket a módosításokat minden olyan ügyfélnek el kell végeznie, amely csatlakoztatni kívánja az Azure-fájlmegosztást, és a Storage-fiók vagy a privát végpont módosításait nem fogja automatikusan kezelni.
+- Rekord létrehozása a helyszíni `storageaccount.file.core.windows.net` DNS-kiszolgálókhoz. Ennek előnye, hogy a helyszíni környezetben lévő ügyfelek automatikusan feloldják a Storage-fiókot anélkül, hogy konfigurálniuk kellene az egyes ügyfeleket, azonban ez a megoldás hasonlóan törékeny a gazdagépek fájljának módosításához, mert a módosítások nem tükröződnek. Bár ez a megoldás törékeny, lehetséges, hogy bizonyos környezetek számára a legjobb választás.
+- Továbbítsa a `core.windows.net` zónát a helyszíni DNS-kiszolgálókról az Azure saját DNS-zónájába. Az Azure magánhálózati DNS-gazdagép egy speciális IP-címen () keresztül érhető el `168.63.129.16` , amely csak az Azure magánhálózati DNS-zónához csatolt virtuális hálózatokon belül érhető el. A korlátozás megkerülő megoldásához futtathat további DNS-kiszolgálókat a virtuális hálózaton belül, amelyek továbbítva lesznek `core.windows.net` Az Azure-beli magánhálózati DNS-zónába. A beállítás egyszerűsítése érdekében olyan PowerShell-parancsmagokat kaptunk, amelyek az Azure-beli virtuális hálózatban automatikusan telepítik a DNS-kiszolgálókat, és szükség szerint konfigurálja azokat. A DNS-továbbítás beállításával kapcsolatos további tudnivalókért lásd: [a DNS konfigurálása Azure Files](storage-files-networking-dns.md)használatával.
 
 ## <a name="storage-account-firewall-settings"></a>A Storage-fiók tűzfalának beállításai
 A tűzfal egy hálózati házirend, amely azt szabályozza, hogy mely kérések férhetnek hozzá a nyilvános végponthoz egy Storage-fiókhoz. A Storage-fiók tűzfala segítségével a Storage-fiók nyilvános végpontján bizonyos IP-címekhez, tartományokhoz vagy virtuális hálózatokhoz is korlátozhatja a hozzáférést. Általánosságban elmondható, hogy egy Storage-fiókhoz a legtöbb tűzfal-házirend korlátozza a hálózati hozzáférést egy vagy több virtuális hálózathoz. 

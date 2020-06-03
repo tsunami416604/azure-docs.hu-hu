@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: c6f3a912a9b3c9ff65fb9975eaf13b38ee3d9483
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195286"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298030"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -109,7 +109,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **Hugo-static-app** nevet, majd kattintson **az OK gombra**.
 
-1. Ezután adjon meg egy globálisan egyedi nevet az alkalmazásnak a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` . Ezt az értéket használja a statikus alkalmazás URL-előtagja a következő formátumban: `https://<APP_NAME>....` .
+1. Ezután adja meg az alkalmazás nevét a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
 1. A _régió_területen válasszon ki egy elérhető régiót.
 

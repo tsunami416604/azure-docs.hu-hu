@@ -1,5 +1,5 @@
 ---
-title: Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése
+title: Nem csatolt, Azure által felügyelt és nem felügyelt lemezek keresése és törlése
 description: A nem csatolt Azure felügyelt és nem felügyelt (VHD-/blob-) lemezek megkeresése és törlése Azure PowerShell használatával.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cac192186c91259a5573dc27442137729816991a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3a4452b87fbb1c8663a66ef29c4e9fb891a6b3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869606"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300637"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Nem csatolt, Azure által felügyelt és nem felügyelt lemezek keresése és törlése
 
 Amikor töröl egy virtuális gépet (VM) az Azure-ban, alapértelmezés szerint a virtuális géphez csatolt összes lemez nem törlődik. Ez a funkció segít megakadályozni az adatvesztést a virtuális gépek véletlen törlése miatt. A virtuális gép törlése után továbbra is fizetnie kell a nem csatlakoztatott lemezekre. Ez a cikk bemutatja, hogyan keresheti meg és törölheti a nem csatolt lemezeket, és csökkentheti a szükségtelen költségeket.
 
@@ -49,7 +49,7 @@ foreach ($md in $managedDisks) {
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nem felügyelt lemezek: nem csatolt lemezek keresése és törlése
 
-A nem felügyelt lemezek az [Azure Storage-fiókokban](../../storage/common/storage-create-storage-account.md) [blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) tárolt VHD-fájlok. A következő parancsfájl a nem csatolt nem felügyelt lemezeket (blobokat) keresi a **LeaseStatus** tulajdonság értékének vizsgálatával. Ha egy nem felügyelt lemez egy virtuális géphez van csatlakoztatva, a **LeaseStatus** tulajdonság **zárolt**értékre van állítva. Ha egy nem felügyelt lemez nincs csatlakoztatva, a **LeaseStatus** tulajdonság **zárolása zárolva**értékre van állítva. A parancsfájl megvizsgálja az Azure-előfizetések összes Azure Storage-fiókjában lévő összes nem felügyelt lemezt. Ha a parancsfájl egy nem felügyelt lemezt keres, amelynek **LeaseStatus** tulajdonsága **zárolva**értékre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
+A nem felügyelt lemezek az [Azure Storage-fiókokban](../../storage/common/storage-account-overview.md) [blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) tárolt VHD-fájlok. A következő parancsfájl a nem csatolt nem felügyelt lemezeket (blobokat) keresi a **LeaseStatus** tulajdonság értékének vizsgálatával. Ha egy nem felügyelt lemez egy virtuális géphez van csatlakoztatva, a **LeaseStatus** tulajdonság **zárolt**értékre van állítva. Ha egy nem felügyelt lemez nincs csatlakoztatva, a **LeaseStatus** tulajdonság **zárolása zárolva**értékre van állítva. A parancsfájl megvizsgálja az Azure-előfizetések összes Azure Storage-fiókjában lévő összes nem felügyelt lemezt. Ha a parancsfájl egy nem felügyelt lemezt keres, amelynek **LeaseStatus** tulajdonsága **zárolva**értékre van állítva, akkor a parancsfájl megállapítja, hogy a lemez nincs csatlakoztatva.
 
 >[!IMPORTANT]
 >Először futtassa a szkriptet úgy, hogy a **deleteUnattachedVHDs** változót 0-ra állítja. Ezzel a művelettel megkeresheti és megtekintheti a nem csatolt nem felügyelt virtuális merevlemezeket.
@@ -87,4 +87,4 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: Storage- [fiók törlése](../../storage/common/storage-create-storage-account.md) és [árva lemezek azonosítása a PowerShell használatával](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
+További információ: Storage- [fiók törlése](../../storage/common/storage-account-create.md#delete-a-storage-account) és [árva lemezek azonosítása a PowerShell használatával](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)

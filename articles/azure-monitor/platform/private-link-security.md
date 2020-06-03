@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170715"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299673"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Monitor
 
@@ -74,11 +74,17 @@ Ha például a belső virtuális hálózatok VNet1 és VNet2 csatlakozniuk kell 
 
 Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör-erőforrást.
 
-1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét**. 
-2. Kattintson a **Létrehozás**gombra. 
-3. Válasszon egy előfizetést és egy erőforráscsoportot. 
-4. Adja meg a AMPLS nevét. Érdemes olyan nevet használni, amely törli a hatókört és a biztonsági határt, hogy valaki ne szakítsa meg véletlenül a hálózati biztonsági határokat. Például: "AppServerProdTelem". 
+1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét**.
+
+   ![Azure Monitor privát hivatkozás hatókörének keresése](./media/private-link-security/ampls-find-1c.png)
+
+2. Kattintson a **Létrehozás**gombra.
+3. Válasszon egy előfizetést és egy erőforráscsoportot.
+4. Adja meg a AMPLS nevét. Érdemes olyan nevet használni, amely törli a hatókört és a biztonsági határt, hogy valaki ne szakítsa meg véletlenül a hálózati biztonsági határokat. Például: "AppServerProdTelem".
 5. Kattintson a **felülvizsgálat + létrehozás**gombra. 
+
+   ![Azure Monitor privát hivatkozás hatókörének létrehozása](./media/private-link-security/ampls-create-1d.png)
+
 6. Hagyja meg az érvényesítési fázist, majd kattintson a **Létrehozás**gombra.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Monitor-erőforrások összekötése
@@ -224,3 +230,6 @@ Ha engedélyezni szeretné, hogy a Log Analytics ügynök letöltse a megoldási
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Kimenő
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Kimenő
 
+## <a name="next-steps"></a>További lépések
+
+- Tudnivalók a [privát tárterületről](private-storage.md)

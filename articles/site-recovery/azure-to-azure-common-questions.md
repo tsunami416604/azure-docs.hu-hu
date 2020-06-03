@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248345"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299782"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -52,6 +52,14 @@ Igen. Site Recovery támogatja a Azure Disk Encryption engedélyezett virtuális
 - A Site Recovery támogatja az 0,1-es Azure Disk Encryption-verziót, amelyhez Azure Active Directory (Azure AD) szükséges sémát kell megadni. A Site Recovery a 1,1-es verziót is támogatja, amely nem igényel Azure AD-t. [További információ az Azure Disk Encryption bővítményi sémájáról](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
   - A Azure Disk Encryption 1,1-es verziójában a felügyelt lemezekkel rendelkező Windows rendszerű virtuális gépeket kell használnia.
   - [További](azure-to-azure-how-to-enable-replication-ade-vms.md) információ a titkosított virtuális gépek replikálásának engedélyezéséről.
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Választhatok egy másik erőforráscsoport Automation-fiókját?
+
+Ez jelenleg nem támogatott a portálon keresztül, de a PowerShell használatával más erőforráscsoporthoz is kiválaszthat egy Automation-fiókot.
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>Ha olyan Automation-fiókot ad meg, amely a tárolótól eltérő erőforráscsoporthoz van megadva, akkor engedélyezett a runbook törlése, ha nincs más tároló a megadásához?
+
+A létrehozott egyéni runbook egy eszköz, és biztonságos törölni, ha ugyanaz már nem szükséges.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Lehetséges a virtuális gépek másik előfizetésbe történő replikálása?
 

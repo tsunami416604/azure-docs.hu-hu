@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb25b0398dca05f32f944962e2fc8630ea10870
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267647"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300664"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Gyors útmutató: Azure-beli szerepkör-hozzárendelés hozzáadása Azure Resource Manager sablon használatával
 
@@ -40,6 +40,10 @@ Szerepkör-hozzárendelés hozzáadásához három elemet kell megadnia: rendsze
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)származik. A sablon három paramétert és egy erőforrás szakaszt tartalmaz. A Resources (erőforrások) szakaszban figyelje meg, hogy a szerepkör-hozzárendelés három eleme van: rendszerbiztonsági tag, szerepkör-definíció és hatókör. 
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+
+A sablonban definiált erőforrás:
+
+- [Microsoft. Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
