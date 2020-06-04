@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297955"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343268"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A SQL-adatszinkronizálás Azure SQL Databasere épülő szolgáltatás, amely lehetővé teszi, hogy a helyileg és a felhőben egyaránt több adatbázison keresztül szinkronizálja az adatokat. 
 
@@ -200,16 +199,16 @@ Igen. A hub-adatbázis üzemeltetéséhez SQL Database-fiókkal kell rendelkezni
 
 Nem közvetlenül. A SQL Server adatbázisok közötti szinkronizálás közvetetten, azonban egy központi adatbázis létrehozása az Azure-ban, majd a helyszíni adatbázisok hozzáadása a szinkronizálási csoporthoz.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Használhatom az adatszinkronizálást a különböző előfizetésekhez tartozó SQL-adatbázisok közötti szinkronizáláshoz
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Használhatok adatszinkronizálást a különböző előfizetésekhez tartozó SQL Database adatbázisok közötti szinkronizáláshoz
 
-Igen. A különböző előfizetések által birtokolt erőforrás-csoportokhoz tartozó SQL-adatbázisok között lehet szinkronizálni.
+Igen. A különböző előfizetések tulajdonában lévő erőforráscsoportokba tartozó adatbázisok között lehet szinkronizálni.
 
 - Ha az előfizetések ugyanahhoz a bérlőhöz tartoznak, és Önnek van engedélye az összes előfizetéshez, a szinkronizálási csoportot a Azure Portal is konfigurálhatja.
 - Ellenkező esetben a PowerShell használatával kell felvennie a különböző előfizetésekhez tartozó szinkronizálási tagokat.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Használhatok adatszinkronizálást a különböző felhőkhöz tartozó SQL-adatbázisok (például az Azure Public Cloud és az Azure China 21Vianet) közötti szinkronizáláshoz
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Használhatok adatszinkronizálást a különböző felhőkhöz (például az Azure Public Cloud és az Azure China 21Vianet) tartozó SQL Database adatbázisok közötti szinkronizáláshoz.
 
-Igen. A különböző felhőkhöz tartozó SQL-adatbázisok közötti szinkronizáláshoz a PowerShell használatával kell felvennie a különböző előfizetésekhez tartozó szinkronizálási tagokat.
+Igen. A különböző felhőkhöz tartozó adatbázisok között lehet szinkronizálni. A különböző előfizetésekhez tartozó szinkronizálási tagok hozzáadásához a PowerShellt kell használnia.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Használhatom az adatszinkronizálást az éles adatbázisból származó adatok egy üres adatbázisba való kivetéséhez, majd szinkronizálni őket
 
@@ -217,7 +216,7 @@ Igen. Hozza létre manuálisan a sémát az új adatbázisban az eredetiből sz�
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Az adatbázisok biztonsági mentése és visszaállítása SQL-adatszinkronizálás használatával
 
-Nem javasoljuk, hogy a SQL-adatszinkronizálás használatával készítsen biztonsági másolatot az adatairól. Nem lehet biztonsági mentést készíteni és visszaállítani egy adott időpontra, mert SQL-adatszinkronizálás szinkronizálások nincsenek verziója. Emellett a SQL-adatszinkronizálás nem készít biztonsági mentést más SQL-objektumokról, például tárolt eljárásokról, és nem hajtja végre gyorsan a visszaállítási művelet megfelelőjét.
+Nem javasoljuk, hogy a SQL-adatszinkronizálás használatával készítsen biztonsági másolatot az adatairól. Nem lehet biztonsági mentést készíteni és visszaállítani egy adott időpontra, mert SQL-adatszinkronizálás szinkronizálások nincsenek verziója. Emellett SQL-adatszinkronizálás nem készít biztonsági mentést más SQL-objektumokról, például tárolt eljárásokról, és nem hajtja végre gyorsan a visszaállítási művelet megfelelőjét.
 
 Az egyik ajánlott biztonsági mentési módszer: [Azure SQL Database-adatbázis másolása](database-copy.md).
 
@@ -237,7 +236,7 @@ Igen. A SQL-adatszinkronizálás a következő helyzetekben támogatja a rendez�
 
 Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-adatszinkronizálás szolgáltatásban. Az összevont adatbázis-végpont nem adható hozzá a SQL-adatszinkronizálás aktuális verziójához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 
@@ -259,3 +258,4 @@ A Azure SQL Databaseról további információt a következő cikkekben talál:
 
 - [Az SQL Database áttekintése](sql-database-paas-overview.md)
 - [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)
+ 

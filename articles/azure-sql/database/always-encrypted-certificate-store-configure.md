@@ -524,7 +524,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 > [!NOTE]
 > Ha egy másik számítógépről csatlakozik a SSMS (vagy bármely ügyféllel), nem fog tudni hozzáférni a titkosítási kulcsokhoz, és nem tudja visszafejteni az adatok visszafejtését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a Always Encryptedt használó adatbázist, a következőket teheti:
 

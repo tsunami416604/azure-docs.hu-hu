@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/03/2020
+ms.openlocfilehash: 760720d133dc382ba7af4aa5f0519d4d918e93cd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190312"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322209"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Azure SQL Database a naplózás](auditing-overview.md) nyomon követi az adatbázis eseményeit, és az Azure Storage-fiókban lévő naplóba írja azokat, vagy elküldi őket az Event hub-nak, vagy log Analytics az alsóbb rétegbeli feldolgozás és elemzés céljából.
 
@@ -92,6 +92,6 @@ A naplózási eseményeket a rendszer a naplózási konfiguráció során defini
 | user_defined_event_id | user_defined_event_id_d | A felhasználó által definiált eseményazonosító a sp_audit_write argumentumként lett átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
 | user_defined_information | user_defined_information_s | A felhasználó által megadott adatok sp_audit_write argumentumként lettek átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | sztring |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Azure SQL Database naplózásról](auditing-overview.md).

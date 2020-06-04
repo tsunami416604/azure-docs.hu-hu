@@ -1,5 +1,5 @@
 ---
-title: Memóriában tárolt technológiák
+title: Memóriabeli technológiák
 description: A memóriában tárolt technológiák nagy mértékben javítják a tranzakciós és elemzési számítási feladatok teljesítményét Azure SQL Database és az Azure SQL felügyelt példányain.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046893"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345291"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -74,7 +74,7 @@ További információ a SQL Server memóriában történő használatáról:
 - [Útmutató a oszlopcentrikus indexekhez](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű operatív elemzés](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-## <a name="in-memory-oltp"></a>Memóriában tárolt OLTP
+## <a name="in-memory-oltp"></a>Memóriabeli OLTP
 
 A memóriában tárolt OLTP technológia rendkívül gyors adatelérési műveleteket tesz lehetővé azáltal, hogy az összes adatmennyiséget megtartja a memóriában. Emellett a speciális indexeket, a lekérdezések natív fordítását és az adatzárolás nélküli adatelérést is használja a OLTP számítási feladatok teljesítményének növeléséhez. A memóriában tárolt OLTP-adatmennyiséget kétféleképpen rendezheti:
 
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Adatméret és tárterület-korlát a memóriában tárolt OLTP
 
-A memóriában tárolt OLTP tartalmazza a memóriára optimalizált táblákat, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database szolgáltatásban felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak*nevezzük.
+A memóriában tárolt OLTP tartalmazza a memóriára optimalizált táblákat, amelyek a felhasználói adatok tárolására szolgálnak. Ezek a táblák a memóriába való illeszkedéshez szükségesek. Mivel a memóriát közvetlenül a SQL Database felügyeli, a felhasználói adatmennyiségre vonatkozó kvóta fogalma van. Ezt a gondolatot *a memóriában tárolt OLTP-tárolónak*nevezzük.
 
 Az egyes támogatott önálló adatbázisok díjszabási szintjei és a rugalmas készletek díjszabási szintje bizonyos mennyiségű memóriában tárolt OLTP-tárterületet tartalmaz.
 
@@ -149,7 +149,7 @@ A csomag visszaminősítése azonban negatív hatással lehet az adatbázisra. A
 
 Mielőtt visszaminősíti az adatbázist általános célú, standard vagy alapszintű verzióra, távolítsa el az összes memóriára optimalizált táblát és táblát, valamint az összes natív módon lefordított T-SQL-modult.
 
-*Erőforrások méretezése üzletileg kritikus*szinten: a memóriában optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított memóriában tárolt OLTP-tárolóban kell lenniük, vagy a rugalmas készletben is elérhetők. Ha a réteg leskálázását vagy az adatbázis egy olyan készletbe való áthelyezését kísérli meg, amely nem rendelkezik elegendő memóriával rendelkező OLTP-tárolóval, a művelet meghiúsul.
+*Erőforrások méretezése üzletileg kritikus*szinten: a memóriában optimalizált táblákban lévő adatoknak az adatbázis vagy a felügyelt példány szintjéhez társított memóriában tárolt OLTP-tárolóban kell lenniük, vagy elérhetők a rugalmas készletben. Ha a réteg leskálázását vagy az adatbázis egy olyan készletbe való áthelyezését kísérli meg, amely nem rendelkezik elegendő memóriával rendelkező OLTP-tárolóval, a művelet meghiúsul.
 
 ## <a name="in-memory-columnstore"></a>Memóriában tárolt oszlopcentrikus
 
@@ -183,11 +183,11 @@ Előfordulhat, *hogy az önálló adatbázis alapszintű vagy standard szintre t
 Ha **fürtözött** oszlopcentrikus indextel rendelkezik, a teljes táblázat elérhetetlenné válik a visszalépés után. Ezért azt javasoljuk, hogy az adatbázis egy nem támogatott szintjére vagy szintre való visszalépése előtt dobja el az összes *fürtözött* oszlopcentrikus indexet.
 
 > [!Note]
-> A felügyelt példány minden szinten támogatja a Oszlopcentrikus indexeket.
+> Az SQL felügyelt példánya minden szinten támogatja a Oszlopcentrikus indexeket.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [1. gyors útmutató: memóriában tárolt OLTP-technológiák a T-SQL teljesítményének növeléséhez](https://msdn.microsoft.com/library/mt694156.aspx)
 - [Memóriában tárolt OLTP használata meglévő Azure SQL-alkalmazásokban](in-memory-oltp-configure.md)

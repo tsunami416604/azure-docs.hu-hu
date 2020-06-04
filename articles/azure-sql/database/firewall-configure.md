@@ -1,10 +1,10 @@
 ---
 title: IP-tűzfalszabályok
-description: Kiszolgálói szintű IP-tűzfalszabályok konfigurálása egy SQL-adatbázishoz vagy az Azure szinapszis Analytics-tűzfalhoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
+description: A kiszolgálói szintű IP-tűzfalszabályok konfigurálása Azure SQL Database vagy Azure szinapszis Analytics-tűzfalon található adatbázishoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and Azure Synapse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 4ebb430945a00007f3b7260da87369bf6fd61ae2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e9755c8a895dc441fc037a07dd36a1d1c07ce5fa
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043428"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324555"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis IP-tűzfalszabályok
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Amikor új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis nevű *portra beállított mysqlserver*, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis (korábban Azure SQL Data Warehouse) használatára is vonatkozik.
+Ha egy új kiszolgálót hoz létre Azure SQL Database vagy az Azure szinapszis Analytics *portra beállított mysqlserver*nevű szolgáltatását, például egy kiszolgálói szintű tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el). Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) használatára is vonatkozik.
 
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik az *Azure SQL felügyelt példányaira*. További információ a hálózati konfigurációról: [az alkalmazás összekötése az Azure SQL felügyelt példányával](../managed-instance/connect-application-instance.md).
@@ -259,7 +259,7 @@ Vegye figyelembe a következő szempontokat, amikor a Azure SQL Databasehoz val�
   - Kérje meg az internetszolgáltatót a kiszolgálót elérő ügyfélszámítógépekhez rendelt IP-címtartomány megadására. Adja hozzá az IP-címtartományt IP-tűzfalszabályként.
   - Az ügyfélszámítógépek helyett statikus IP-címzést kell lekérnie. Adja hozzá az IP-címeket IP-tűzfalszabályokként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
 - A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [önálló adatbázis létrehozása Azure SQL Databaseban](single-database-create-quickstart.md).

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 08cc91bc9aa8187dc18f70cc4fbcc363521b8e29
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569068"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339824"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge"></a>Számítások kezelése az Azure Stack Edge-ben
 
@@ -54,7 +54,7 @@ Trigger létrehozásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
     - **Ütemezett trigger** – Itt adhatja meg a kezdési dátumot és időpontot, valamint az Ismétlési időközt órában, percben vagy másodpercben. Adja meg a témakör nevét is. A témakör lehetővé teszi, hogy rugalmasan irányítsa át a triggert az eszközön üzembe helyezett modulra.
 
-        Példa útvonal-karakterláncra: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`.
+        Példa útvonal-karakterláncra: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"` .
 
         ![NFS-megosztás hozzáadása](media/azure-stack-edge-manage-compute/add-scheduled-trigger.png)
 
@@ -129,6 +129,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti az Edge számítási hálózatot Azure Portal használatával](azure-stack-edge-extend-compute-access-modules.md).

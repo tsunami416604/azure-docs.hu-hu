@@ -11,13 +11,13 @@ author: garyericson
 ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: fb74cc3aba3ad37e36a4d7cbe726bde4cb088e90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/03/2020
+ms.openlocfilehash: 45d005e4239039d4e547e9a3fddc61877d07e8db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045101"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331372"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
@@ -58,8 +58,9 @@ Miután regisztrált a programban, a Microsoft bevezeti Önt a nyilvános előze
 
 A nyilvános előzetes verzióban a Machine Learning Services az SQL felügyelt példányában nem ajánlott éles számítási feladatokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
 - Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
 - Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)című témakört.
+- A más SQL-platformokon futó gépi tanulásról további információt az [SQL Machine learning dokumentációjában](https://docs.microsoft.com/sql/machine-learning/)talál.

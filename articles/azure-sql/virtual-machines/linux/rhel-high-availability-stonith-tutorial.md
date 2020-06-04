@@ -1,5 +1,5 @@
 ---
-title: Rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépeken futó SQL Server RHEL-Linux Virtual Machines | Microsoft Docs
+title: Rendelkezésre állási SQL Server csoportok konfigurálása a RHEL virtuális gépekhez az Azure-ban – Linux Virtual machines | Microsoft Docs
 description: Ismerkedjen meg a magas rendelkezésre állás beállításával egy RHEL-fürt környezetében, és állítsa be a STONITH
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053686"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343790"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84053686"
 > [!NOTE]
 > A bemutatott oktatóanyag **nyilvános előzetes**verzióban érhető el. 
 >
-> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával konfigurálható. A rendelkezésre állási csoport erőforrásainak konfigurálására vonatkozó parancsok megváltoztak a RHEL 8-ban, és érdemes megtekinteni a [rendelkezésre állási csoport erőforrásának](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásoknak a megfelelő parancsokkal kapcsolatos további információkért.
+> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok megváltoztak a RHEL 8-ban, és a megfelelő parancsokról további információért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> - Új erőforráscsoport, rendelkezésre állási csoport és Azure Linux Virtual Machines (VM) létrehozása
+> - Új erőforráscsoport, rendelkezésre állási csoport és Linux rendszerű virtuális gépek (VM-EK) létrehozása
 > - Magas rendelkezésre állás engedélyezése (HA)
 > - Pacemaker-fürt létrehozása
 > - Vívó ügynök konfigurálása STONITH-eszköz létrehozásával
@@ -35,9 +35,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > - A rendelkezésre állási csoport (AG) erőforrásainak konfigurálása a pacemaker-fürtben
 > - Feladatátvétel és a kerítés ügynök tesztelése
 
-Ez az oktatóanyag az Azure parancssori felületét (CLI) fogja használni az Azure-beli erőforrások üzembe helyezéséhez.
+Ez az oktatóanyag az Azure CLI használatával helyezi üzembe az erőforrásokat az Azure-ban.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -472,7 +472,7 @@ sudo firewall-cmd --reload
 
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server-és MSSQL-eszközök telepítése
  
-Az alábbi szakasz segítségével telepítheti a virtuális gépekre SQL Server és MSSQL-eszközöket. Hajtsa végre ezeket a műveleteket az összes csomóponton. További információ: [install SQL Server a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
+Az alábbi szakasz segítségével telepítheti a virtuális gépekre SQL Server és MSSQL-eszközöket. Hajtsa végre ezeket a műveleteket az összes csomóponton. További információ: [Install SQL Server on a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
 
 ### <a name="installing-sql-server-on-the-vms"></a>SQL Server telepítése a virtuális gépekre
 
@@ -531,13 +531,13 @@ A következő kimenetnek kell megjelennie:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>SQL Server always on rendelkezésre állási csoport konfigurálása
+## <a name="configure-an-availability-group"></a>Rendelkezésre állási csoport konfigurálása
 
-A következő lépésekkel konfigurálhatja a virtuális gépek SQL Server always on rendelkezésre állási csoportját. További információ: [SQL Server always on rendelkezésre állási csoport konfigurálása a Linux magas rendelkezésre állásához](/sql/linux/sql-server-linux-availability-group-configure-ha)
+A következő lépésekkel konfigurálhatja a virtuális gépekhez tartozó SQL Server always on rendelkezésre állási csoportot. További információ: [SQL Server always on rendelkezésre állási csoportok konfigurálása a Linux magas rendelkezésre állása érdekében](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlAlwaysOnon rendelkezésre állási csoportok engedélyezése és az MSSQL-Server újraindítása
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>AlwaysOn rendelkezésre állási csoportok engedélyezése és az MSSQL-Server újraindítása
 
-Engedélyezze az alAlwaysOnon rendelkezésre állási csoportokat minden SQL Server példányt futtató csomóponton. Ezután indítsa újra az MSSQL-Servert. Futtassa a következő parancsfájlt:
+Engedélyezze az Always On rendelkezésre állási csoportokat minden SQL Server példányt futtató csomóponton. Ezután indítsa újra az MSSQL-Servert. Futtassa a következő parancsfájlt:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -548,7 +548,7 @@ sudo systemctl restart mssql-server
 
 Jelenleg nem támogatjuk az AD-hitelesítést az AG-végpontra. Ezért az AG Endpoint encryption tanúsítványát kell használnia.
 
-1. Kapcsolódjon az **összes csomóponthoz** SQL Server Management Studio (SSMS) vagy SQL cmd használatával. Futtassa az alábbi parancsokat a AlwaysOn_health-munkamenet engedélyezéséhez és a főkulcs létrehozásához:
+1. Kapcsolódjon az **összes csomóponthoz** SQL Server Management Studio (SSMS) vagy SQL cmd használatával. Futtassa az alábbi parancsokat egy AlwaysOn_health-munkamenet engedélyezéséhez, és hozzon létre egy főkulcsot:
 
     > [!IMPORTANT]
     > Ha távolról csatlakozik a SQL Server-példányhoz, a tűzfalon meg kell nyitnia a 1433-as portot. Emellett engedélyeznie kell a bejövő kapcsolatokat az 1433-as porton az egyes virtuális gépek NSG. További információ: [biztonsági szabály létrehozása](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) egy bejövő biztonsági szabály létrehozásához.
@@ -566,19 +566,19 @@ Jelenleg nem támogatjuk az AD-hitelesítést az AG-végpontra. Ezért az AG End
 1. Kapcsolódjon az elsődleges replikához a SSMS vagy az SQL CMD használatával. Az alábbi parancsok létrehoznak egy tanúsítványt a (z) `/var/opt/mssql/data/dbm_certificate.cer` és egy titkos kulcs mellett az `var/opt/mssql/data/dbm_certificate.pvk` elsődleges SQL Server-replikán:
 
     - Cserélje le a-et a `<Private_Key_Password>` saját jelszavára.
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 A parancs futtatásával lépjen ki az SQL CMD-munkamenetből `exit` , és térjen vissza az SSH-munkamenethez.
  
@@ -631,7 +631,7 @@ A parancs futtatásával lépjen ki az SQL CMD-munkamenetből `exit` , és térj
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Az adatbázis-tükrözési végpontok létrehozása az összes replikán
 
-Futtassa az alábbi parancsfájlt minden SQL-példányon az SQL CMD vagy a SSMS használatával:
+Futtassa az alábbi parancsfájlt minden SQL Server példányon az SQL CMD vagy a SSMS használatával:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>SQL Server-bejelentkezés létrehozása a Pacemakerhez
 
-Az összes SQL-kiszolgálón hozzon létre egy SQL-bejelentkezést a Pacemakerhez. A következő Transact-SQL egy bejelentkezési azonosítót hoz létre.
+Az összes SQL Server példányon hozzon létre egy SQL Server-bejelentkezést a Pacemakerhez. A következő Transact-SQL egy bejelentkezési azonosítót hoz létre.
 
 - Cserélje le a változót `<password>` a saját összetett jelszavára.
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Mentse az összes SQL-kiszolgálón a SQL Server bejelentkezéshez használt hitelesítő adatokat. 
+Az összes SQL Server példányon mentse a SQL Server bejelentkezéshez használt hitelesítő adatokat. 
 
 1. Hozza létre a fájlt:
 
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-Ha a `synchronization_state_desc` lista szinkronizálva `db1` van, ez azt jelenti, hogy a replikák szinkronizálva vannak. A formátumú másodlagos zónák az `db1` elsődleges replikában láthatók.
+Ha a `synchronization_state_desc` listán szinkronizálva `db1` vannak, ez azt jelenti, hogy a replikák szinkronizálva vannak. A formátumú másodlagos zónák az `db1` elsődleges replikában láthatók.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Rendelkezésre állási csoport erőforrásainak létrehozása a pacemaker-fürtben
 
@@ -917,7 +917,7 @@ Daemon Status:
 
 Annak biztosítása érdekében, hogy a konfiguráció eddig sikeres volt, tesztelni fogjuk a feladatátvételt. További információ: [Always On rendelkezésre állási csoport feladatátvétele Linuxon](/sql/linux/sql-server-linux-availability-group-failover-ha).
 
-1. Futtassa a következő parancsot az elsődleges replika manuális feladatátvételéhez `<VM2>` . Cserélje le a `<VM2>` nevet a kiszolgálónév értékére.
+1. Futtassa az alábbi parancsot az elsődleges replika manuális feladatátvételéhez `<VM2>` . Cserélje le a `<VM2>` nevet a kiszolgálónév értékére.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -983,9 +983,9 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ahhoz, hogy a rendelkezésre állási csoport figyelőjét használni tudja az SQL-kiszolgálókhoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
+Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a rendelkezésre állási csoport figyelő konfigurálása az Azure-beli RHEL virtuális gépeken való SQL Server](rhel-high-availability-listener-tutorial.md)
+> [Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához](rhel-high-availability-listener-tutorial.md)

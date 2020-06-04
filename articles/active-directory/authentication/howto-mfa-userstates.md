@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639621"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337750"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Felhasználónkénti Azure-Multi-Factor Authentication engedélyezése a bejelentkezési események biztonságossá tételéhez
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez
 
 A többtényezős hitelesítés az Azure AD-ben kétféleképpen biztosítható a felhasználói bejelentkezési események biztonságossá tételéhez. Az első és az előnyben részesített lehetőség egy olyan feltételes hozzáférési szabályzat beállítása, amely bizonyos feltételekkel megköveteli a többtényezős hitelesítést. A második lehetőség az, hogy minden felhasználó számára engedélyezze az Azure Multi-Factor Authentication. Ha a felhasználók külön engedélyezve vannak, a többtényezős hitelesítést a bejelentkezéskor minden alkalommal végrehajtják (bizonyos kivételekkel, például amikor bejelentkeznek a megbízható IP-címekről, vagy ha a _megjegyezett eszközök_ funkció be van kapcsolva).
 
 > [!NOTE]
-> Az Azure-Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával történő engedélyezése az ajánlott módszer. A felhasználói állapotok módosítása már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférést, mert a felhasználóknak minden bejelentkezéskor a többtényezős hitelesítést kell végezniük.
+> Az Azure-Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával történő engedélyezése az ajánlott módszer. A felhasználói állapotok módosítása már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférést, mert a felhasználóknak minden bejelentkezéskor a többtényezős hitelesítést kell végezniük. A feltételes hozzáférés használatának megkezdéséhez tekintse meg az [oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával című témakört.
 >
-> A feltételes hozzáférés használatának megkezdéséhez tekintse meg az [oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure multi-Factor Authentication](tutorial-enable-azure-mfa.md)használatával című témakört.
+> A feltételes hozzáférés nélküli Azure AD-bérlők esetében az [alapértelmezett biztonsági beállítások használatával biztosítható a felhasználók védelme](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication felhasználói állapotok
 
@@ -181,7 +181,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 >
 > Ha a többtényezős hitelesítés engedélyezve van egy olyan felhasználói objektumon, amely már rendelkezik regisztrációs adatokkal, például telefonon vagy e-mailben, akkor a rendszergazdáknak Azure Portal vagy PowerShell használatával újra regisztrálniuk kell az MFA-t. Ha a felhasználó nem regisztrálja újra a regisztrációt, az MFA-állapota nem lesz *engedélyezve* az MFA felügyeleti felhasználói felületén való *kikényszerített* állapotra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Multi-Factor Authentication beállításainak, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md). Az Azure Multi-Factor Authentication felhasználói beállításainak kezeléséhez lásd: [felhasználói beállítások kezelése az azure multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 

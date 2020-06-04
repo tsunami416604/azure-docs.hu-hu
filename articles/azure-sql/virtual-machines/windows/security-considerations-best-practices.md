@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli SQL Server biztonsági szempontjai | Microsoft Docs
+title: Biztonsági megfontolások | Microsoft Docs
 description: Ez a témakör általános útmutatást nyújt az Azure-beli virtuális gépeken futó SQL Server biztonságossá tételéhez.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a9c3588d75bbad3ed7feb2d8a53c0a698286861a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047264"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342544"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjai
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server biztonsági szempontjai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a témakör olyan általános biztonsági irányelveket tartalmaz, amelyek segítenek az Azure-beli virtuális gépek (VM) SQL Server példányainak biztonságos elérésében.
@@ -31,7 +31,7 @@ Az Azure számos iparági szabályozást és szabványt is teljesít, amelyek le
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>Az SQL virtuális gép elérésének szabályozása
+## <a name="control-access-to-the-sql-virtual-machine"></a>Az SQL-alapú virtuális gép elérésének szabályozása
 
 A SQL Server virtuális gép létrehozásakor gondolja át, hogyan szabályozhatja, hogy ki és milyen mértékben fér hozzá a géphez, és SQL Server. Általánosságban a következőket kell tennie:
 
@@ -46,7 +46,7 @@ Ha katalógus-rendszerképpel rendelkező SQL Server virtuális gépet hoz létr
 
 ![SQL Server kapcsolat](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-A legjobb biztonság érdekében válassza a legszigorúbb beállítást a forgatókönyvhöz. Ha például olyan alkalmazást futtat, amely ugyanazon a virtuális gépen SQL Server fér hozzá, akkor a **helyi** a legbiztonságosabb választás. Ha olyan Azure-alkalmazást futtat, amelynek hozzáférésre van szüksége a SQL Serverhoz, akkor a **titkos** kommunikáció csak a megadott Azure- [Virtual Networkon](../../../virtual-network/virtual-networks-overview.md)belül SQL Server. Ha **nyilvános** (Internet) hozzáférést igényel a SQL Server VMhoz, akkor az ebben a témakörben ismertetett egyéb ajánlott eljárások követésével csökkentse a támadási felületet.
+A legjobb biztonság érdekében válassza a legszigorúbb beállítást a forgatókönyvhöz. Ha például olyan alkalmazást futtat, amely ugyanazon a virtuális gépen SQL Server fér hozzá, akkor a **helyi** a legbiztonságosabb választás. Ha olyan Azure-alkalmazást futtat, amelynek hozzáférésre van szüksége a SQL Serverhoz, akkor a **magánhálózati** kommunikáció csak a megadott Azure-beli [virtuális hálózaton](../../../virtual-network/virtual-networks-overview.md)belül SQL Server. Ha **nyilvános** (Internet) hozzáférést igényel a SQL Server VMhoz, akkor az ebben a témakörben ismertetett egyéb ajánlott eljárások követésével csökkentse a támadási felületet.
 
 A portálon kiválasztott beállítások bejövő biztonsági szabályokat használnak a virtuális gép [hálózati biztonsági csoportján](../../../active-directory/identity-protection/security-overview.md) (NSG), hogy engedélyezzék vagy megtagadják a virtuális géphez való hálózati forgalmat. Módosíthatja vagy létrehozhat új bejövő NSG szabályokat, amelyek engedélyezik a forgalmat a SQL Server portra (alapértelmezés szerint 1433). Megadhat konkrét IP-címeket is, amelyek számára engedélyezett a porton keresztüli kommunikáció.
 
@@ -54,7 +54,7 @@ A portálon kiválasztott beállítások bejövő biztonsági szabályokat haszn
 
 A hálózati forgalom korlátozására szolgáló NSG kívül a Windows tűzfalat is használhatja a virtuális gépen.
 
-Ha a klasszikus üzemi modellel rendelkező végpontokat használ, távolítsa el az összes végpontot a virtuális gépen, ha nem használja őket. Az ACL-ek végpontokkal való használatával kapcsolatos utasításokért lásd: [az ACL kezelése egy végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Ez a Resource Managert használó virtuális gépek esetében nem szükséges.
+Ha a klasszikus üzemi modellel rendelkező végpontokat használ, távolítsa el az összes végpontot a virtuális gépen, ha nem használja őket. Az ACL-ek végpontokkal való használatával kapcsolatos utasításokért lásd: [az ACL kezelése egy végponton](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Ez a Azure Resource Manager használó virtuális gépek esetében nem szükséges.
 
 Végezetül vegye fontolóra a titkosított kapcsolatok engedélyezését az Azure-beli virtuális gépen a SQL Server adatbázismotor példányához. Konfigurálja az SQL Server-példányt egy aláírt tanúsítvánnyal. További információ: [titkosított kapcsolatok engedélyezése az adatbázismotor és a](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) [kapcsolati karakterlánc szintaxisával](https://msdn.microsoft.com/library/ms254500.aspx).
 
@@ -109,7 +109,7 @@ A virtuális gépek biztonságával kapcsolatos további információkért lásd
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha a teljesítményre vonatkozó ajánlott eljárások is érdeklik, tekintse meg az [Azure Virtual Machines SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md)ismertető témakört.
+Ha a teljesítményre vonatkozó ajánlott eljárások is érdeklik, tekintse [meg az Azure Virtual Machines SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md)ismertető témakört.
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további témakörökért lásd: [SQL Server az azure Virtual Machines áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md). Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 

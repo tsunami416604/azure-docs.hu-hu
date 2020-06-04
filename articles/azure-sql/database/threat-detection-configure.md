@@ -10,25 +10,25 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049714"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321546"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Az összetett veszélyforrások elleni védelem konfigurálása Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A Azure SQL Database komplex [veszélyforrások elleni védelme](threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat**, **a szokatlan helyről vagy adatközpontból való hozzáférést**, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatokat** . További részletek a komplex [veszélyforrások elleni védelmi riasztásokban](threat-detection-overview.md#alerts).
 
-Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](threat-detection-overview.md#explore-detection-of-a-suspicious-event) vagy a [Azure Portal](threat-detection-overview.md#explore-alerts-in-azure-portal) használatával
+Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](threat-detection-overview.md#explore-detection-of-a-suspicious-event) vagy a [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) használatával
 
 A komplex [veszélyforrások elleni védelem](threat-detection-overview.md) a fejlett [adatbiztonsági](advanced-data-security.md) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. A komplex veszélyforrások elleni védelem a központi SQL Advanced Security portálon keresztül érhető el és kezelhető.
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Az összetett veszélyforrások elleni védelem beállítása a Azure Portal
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Navigáljon a védetté tenni kívánt kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **speciális adatbiztonság**lehetőséget.
 3. A **speciális adatbiztonság** beállítása lapon:
 
@@ -41,7 +41,7 @@ A komplex [veszélyforrások elleni védelem](threat-detection-overview.md) a fe
 
 A parancsfájlokra példa: a [naplózás és az összetett veszélyforrások elleni védelem konfigurálása a PowerShell használatával](scripts/auditing-threat-detection-powershell-configure.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről](threat-detection-overview.md).
 - További információ a komplex [veszélyforrások elleni védelemről az SQL felügyelt példányában](../managed-instance/threat-detection-configure.md).  

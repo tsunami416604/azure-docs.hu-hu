@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289b1346fce2e79a2c1e546f5e42e98734ef800c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053566"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324232"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,17 +46,17 @@ A telepített R-csomagok listáját a következő parancs futtatásával Azure D
 
 1. Futtassa az alábbi parancsot:
 
-```sql
-EXECUTE sp_execute_external_script @language = N'R'
+    ```sql
+    EXECUTE sp_execute_external_script @language = N'R'
     , @script = N'
-OutputDataSet <- data.frame(installed.packages()[,c("Package", "Version", "Depends", "License")]);'
-WITH RESULT SETS((
-            Package NVARCHAR(255)
-            , Version NVARCHAR(100)
-            , Depends NVARCHAR(4000)
-            , License NVARCHAR(1000)
-            ));
-```
+    OutputDataSet <- data.frame(installed.packages()[,c("Package", "Version", "Depends", "License")]);'
+    WITH RESULT SETS((
+                Package NVARCHAR(255)
+                , Version NVARCHAR(100)
+                , Depends NVARCHAR(4000)
+                , License NVARCHAR(1000)
+                ));
+    ```
 
 A kimenetnek az alábbihoz hasonlóan kell kinéznie.
 
@@ -168,7 +168,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 > [!TIP]
 > Az R-csomagok az Azure SQL Database-be való telepítésének egy másik módja, ha az R-csomagot egy byte streamből tölti fel a **külső függvénytár létrehozása** T-SQL-utasítás használatával. Lásd: [könyvtár létrehozása bájtos adatfolyamból](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) a [külső könyvtár létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) dokumentációjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az R (előzetes verzió) Azure SQL Database Machine Learning Servicesról a következő cikkekben talál további információt.
 

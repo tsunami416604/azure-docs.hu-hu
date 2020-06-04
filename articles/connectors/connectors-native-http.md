@@ -5,43 +5,22 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9ed3d960b3f5653ea8706b39559c9d5a71c45a6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33075173385a6e36829199c5bda854c78a4424fc
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867631"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325116"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatási végpontok hívása HTTP vagy HTTPS protokollon keresztül Azure Logic Apps
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített http-trigger vagy művelet használatával olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek http-vagy https-kapcsolaton keresztül küldenek kéréseket a szolgáltatási végpontoknak. Megfigyelheti például a webhely szolgáltatási végpontját, ha ellenőrzi, hogy a végpont egy adott időpontban van-e. Ha a megadott esemény a végponton történik, például a webhely leállásakor, az esemény elindítja a logikai alkalmazás munkafolyamatát, és futtatja az adott munkafolyamat műveleteit. Ha ehelyett a bejövő HTTPS-hívásokat szeretné fogadni és válaszolni, használja a beépített [kérelem-triggert vagy a válasz műveletet](../connectors/connectors-native-reqres.md).
 
-> [!NOTE]
-> A cél végpont képességei alapján a HTTP-összekötő támogatja a 1,0, 1,1 és 1,2 Transport Layer Security (TLS) verziókat. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal. Tehát ha például a végpont támogatja a 1,2-et, az összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
->
-> A HTTP-összekötő nem támogatja a köztes TLS/SSL-tanúsítványokat a hitelesítéshez.
+* Ha ismétlődő ütemterv alapján szeretné megtekinteni vagy *lekérdezni* egy végpontot, [adja hozzá a http-triggert](#http-trigger) a munkafolyamat első lépéseként. Minden alkalommal, amikor a trigger ellenőrzi a végpontot, az trigger meghívja vagy elküld egy *kérést* a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger bármilyen tartalmat továbbít a végpont válaszában a logikai alkalmazás műveleteire.
 
-Ha ismétlődő ütemterv alapján szeretné megtekinteni vagy *lekérdezni* egy végpontot, [adja hozzá a http-triggert](#http-trigger) a munkafolyamat első lépéseként. Minden alkalommal, amikor a trigger ellenőrzi a végpontot, az trigger meghívja vagy elküld egy *kérést* a végpontnak. A végpont válasza határozza meg, hogy a logikai alkalmazás munkafolyamata fut-e. Az trigger bármilyen tartalmat továbbít a végpont válaszában a logikai alkalmazás műveleteire.
-
-Ha egy végpontot szeretne meghívni a munkafolyamatban bárhol máshol, [adja hozzá a http-műveletet](#http-action). A végpont válasza határozza meg, hogyan futnak a munkafolyamat hátralévő műveletei.
-
-> [!IMPORTANT]
-> Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált kérési üzenetből a figyelmeztetés vagy a hiba megjelenítése nélkül:
->
-> * `Accept-*`
-> * `Allow`
-> * `Content-*`a következő kivételekkel `Content-Disposition`: `Content-Encoding`, és`Content-Type`
-> * `Cookie`
-> * `Expires`
-> * `Host`
-> * `Last-Modified`
-> * `Origin`
-> * `Set-Cookie`
-> * `Transfer-Encoding`
->
-> Bár a Logic Apps nem állítja le a HTTP-triggert vagy műveletet használó logikai alkalmazások mentését ezekkel a fejlécekkel, Logic Apps figyelmen kívül hagyja ezeket a fejléceket.
+* Ha egy végpontot szeretne meghívni a munkafolyamatban bárhol máshol, [adja hozzá a http-műveletet](#http-action). A végpont válasza határozza meg, hogyan futnak a munkafolyamat hátralévő műveletei.
 
 Ez a cikk bemutatja, hogyan adhat hozzá HTTP-triggert vagy műveletet a logikai alkalmazás munkafolyamataihoz.
 
@@ -54,6 +33,41 @@ Ez a cikk bemutatja, hogyan adhat hozzá HTTP-triggert vagy műveletet a logikai
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md)?
 
 * Az a logikai alkalmazás, amelyről meg szeretné hívni a célként megadott végpontot. A HTTP-trigger elindításához [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). A HTTP-művelet használatához indítsa el a logikai alkalmazást a kívánt triggerrel. Ez a példa a HTTP-triggert használja első lépésként.
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+
+A célként megadott végponti képesség alapján a kimenő hívások támogatják Transport Layer Security (TLS), amely korábban SSL (SSL), 1,0, 1,1 és 1,2 verziójú. Logic Apps a lehető legmagasabb támogatott verzió használatával egyeztet a végponttal.
+
+Ha például a végpont támogatja a 1,2-et, a HTTP-összekötő először a 1,2-et használja. Ellenkező esetben az összekötő a következő legmagasabb támogatott verziót használja.
+
+<a name="self-signed"></a>
+
+## <a name="self-signed-certificates"></a>Önaláírt tanúsítványok
+
+* A globális, több-bérlős Azure-környezetben található Logic apps esetében a HTTP-összekötő nem engedélyezi az önaláírt TLS/SSL-tanúsítványokat. Ha a logikai alkalmazás HTTP-hívást kezdeményez egy kiszolgálónak, és egy TLS/SSL önaláírt tanúsítványt jelenít meg, akkor a HTTP-hívás `TrustFailure` hibával meghiúsul.
+
+* Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében a http-összekötő engedélyezi az önaláírt tanúsítványokat a TLS/SSL-kézfogásokhoz. Először is engedélyeznie kell az [önaláírt tanúsítvány-támogatást](../logic-apps/create-integration-service-environment-rest-api.md#request-body) egy meglévő ISE vagy új ISE számára a Logic apps REST API használatával, és a nyilvános tanúsítványt a helyen kell telepíteni `TrustedRoot` .
+
+## <a name="known-issues"></a>Ismert problémák
+
+### <a name="omitted-http-headers"></a>Kihagyott HTTP-fejlécek
+
+Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált kérési üzenetből a figyelmeztetés vagy a hiba megjelenítése nélkül:
+
+* `Accept-*`
+* `Allow`
+* `Content-*`a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és`Content-Type`
+* `Cookie`
+* `Expires`
+* `Host`
+* `Last-Modified`
+* `Origin`
+* `Set-Cookie`
+* `Transfer-Encoding`
+
+Bár a Logic Apps nem állítja le a HTTP-triggert vagy műveletet használó logikai alkalmazások mentését ezekkel a fejlécekkel, Logic Apps figyelmen kívül hagyja ezeket a fejléceket.
 
 <a name="http-trigger"></a>
 
@@ -96,7 +110,7 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 1. Válassza ki azt a lépést, ahol a HTTP-műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. A **műveletek** listából válassza ki a **http** -műveletet.
 
@@ -119,7 +133,7 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
 ## <a name="content-with-multipartform-data-type"></a>Tartalom multipart/form-adattípus
 
-A HTTP-kérelmekben `multipart/form-data` szereplő tartalom kezeléséhez HOZZÁADHAT egy JSON-objektumot, amely tartalmazza a `$content-type` http- `$multipart` kérelem törzsének és attribútumainak a formátum használatával történő kezelését.
+A `multipart/form-data` http-kérelmekben szereplő tartalom kezeléséhez hozzáadhat egy JSON-objektumot, amely tartalmazza a `$content-type` http- `$multipart` kérelem törzsének és attribútumainak a formátum használatával történő kezelését.
 
 ```json
 "body": {
@@ -135,7 +149,7 @@ A HTTP-kérelmekben `multipart/form-data` szereplő tartalom kezeléséhez HOZZ�
 }
 ```
 
-Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy, az adott hely API-ját támogató HTTP POST-kérelmet küld egy webhelyre `multipart/form-data` , amely támogatja a típust. A művelet a következő módon jelenhet meg:
+Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy, az adott hely API-ját támogató HTTP POST-kérelmet küld egy webhelyre, amely támogatja a `multipart/form-data` típust. A művelet a következő módon jelenhet meg:
 
 ![Többrészes űrlapadatok](./media/connectors-native-http/http-action-multipart.png)
 
@@ -181,7 +195,7 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
-| Állapotkód | Leírás |
+| Állapotkód | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Elfogadva |
@@ -192,6 +206,6 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

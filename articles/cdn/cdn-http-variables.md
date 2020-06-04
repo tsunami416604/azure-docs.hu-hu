@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747653"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340674"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
 A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beolvasására szolgáló eszközöket. Ez a metaadatok ezután a kérések és válaszok dinamikus módosítására használhatók. A HTTP-változók használata a következő szabályok motor-funkcióihoz korlátozódik:
 
-- [Gyorsítótár – kulcs újraírása](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Ügyfél-kérelem fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Ügyfél-válasz fejlécének módosítása](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL-átirányítás](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL-átírás](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Gyorsítótár – kulcs újraírása](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Ügyfél-kérelem fejlécének módosítása](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Ügyfél-válasz fejlécének módosítása](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL-átirányítás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL-újraírás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
-## <a name="definitions"></a>Meghatározások
+## <a name="definitions"></a>Definíciók
 A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 

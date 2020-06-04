@@ -2,13 +2,13 @@
 title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/03/2020
+ms.openlocfilehash: 058a438d722454368f3275216c92d0a2692b359c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267914"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324317"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -54,7 +54,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 **Eszköz** | **Kapcsolat**
 --- | ---
 **Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Kimenő kapcsolatok a 443-as porton (HTTPS), a felderítési és a teljesítménybeli metaadatok küldéséhez Azure Migrate.
-**Fizikai kiszolgálók** | **Windows:** A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a konfiguráció és a teljesítmény metaadatainak lekéréséhez a Windows-kiszolgálókról. <br/><br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (UDP), a konfiguráció és a teljesítmény metaadatainak lekérése Linux-kiszolgálókról. |
+**Fizikai kiszolgálók** | **Windows:** A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a konfiguráció és a teljesítmény metaadatainak lekéréséhez a Windows-kiszolgálókról. <br/><br/> **Linux:**  Bejövő kapcsolatok a 22-es porton (TCP) a konfiguráció és a teljesítmény metaadatainak lekéréséhez Linux-kiszolgálókról. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Ügynök-alapú függőségek elemzésének követelményei
 
@@ -72,6 +72,6 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felkészülés a fizikai kiszolgáló értékelésére](tutorial-prepare-physical.md).

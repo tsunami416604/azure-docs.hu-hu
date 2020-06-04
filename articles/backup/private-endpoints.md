@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9158ad23bf05bf52f879afb1f1d25d2f4ba42cfb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231422"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323637"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -24,6 +24,7 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
 - A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
+- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha a regisztrációja előtt az 2020. május 1. előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és kattintson az **újbóli regisztrálás**gombra.
 
 ## <a name="recommended-and-supported-scenarios"></a>Ajánlott és támogatott forgatókönyvek
 
@@ -567,6 +568,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

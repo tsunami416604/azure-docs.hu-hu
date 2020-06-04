@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép áthelyezése másik régióba (Azure Site Recovery)
+title: Virtuális gép áthelyezése egy másik régióba (Azure Site Recovery)
 description: Ismerje meg, hogyan telepítheti át SQL Server virtuális gépét az egyik régióból a másikba az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,24 +15,24 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bca7237b38c1164d14ccf796e18980ba326090ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4211909a577adf7c16a99610654907ce58908fdf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042749"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337767"
 ---
-# <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery Services használatával
+# <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Site Recoveryt a SQL Server virtuális gép (VM) egyik régióból egy másikba való áttelepítésére az Azure-ban. 
 
 Egy SQL Server VM másik régióba való áthelyezéséhez a következőkre van szükség:
-1. [**Előkészítés**](#prepare-to-move): Győződjön meg róla, hogy a forrás-SQL Server VM és a célként megadott régió megfelelően fel van készítve az áthelyezésre. 
-1. [**Konfigurálás**](#configure-azure-site-recovery-vault): a SQL Server VM áthelyezéséhez az szükséges, hogy az Azure site Recovery-tárolóban lévő replikált objektum legyen. Hozzá kell adnia a SQL Server VM a Azure Site Recovery-tárolóhoz. 
-1. [**Tesztelés**](#test-move-process): a SQL Server VM áttelepítése a forrás régiójából a replikált célhelyre történő feladatátvételt igényel. Annak érdekében, hogy az áthelyezési folyamat sikeres legyen, először tesztelni kell, hogy a SQL Server VM sikeresen el tudja-e végezni a feladatátvételt a célként megadott régióban. Ez segít az esetleges problémák megoldásában, és a tényleges áthelyezés végrehajtásakor elkerülheti azokat. 
-1. [**Áthelyezés**](#move-the-sql-server-vm): a feladatátvételi teszt sikeres átadása után biztos lehet abban, hogy a SQL Server VM áttelepítését elvégezte a virtuális gép áthelyezését a célként megadott régióba. 
-1. [**Tisztítás**](#clean-up-source-resources): a számlázási költségek elkerülése érdekében távolítsa el a SQL Server VM a tárolóból, és az erőforráscsoport felesleges erőforrásait. 
+1. [Előkészítés](#prepare-to-move): Győződjön meg róla, hogy a forrás-SQL Server VM és a célként megadott régió megfelelően fel van készítve az áthelyezésre. 
+1. [Konfigurálás](#configure-azure-site-recovery-vault): a SQL Server VM áthelyezéséhez az szükséges, hogy az Azure site Recovery-tárolóban lévő replikált objektum legyen. Hozzá kell adnia a SQL Server VM a Azure Site Recovery-tárolóhoz. 
+1. [Tesztelés](#test-move-process): a SQL Server VM áttelepítése a forrás régiójából a replikált célhelyre történő feladatátvételt igényel. Annak érdekében, hogy az áthelyezési folyamat sikeres legyen, először tesztelni kell, hogy a SQL Server VM sikeresen átadhatja-e a feladatátvételt a célként megadott régióba. Ez segít az esetleges problémák megoldásában, és a tényleges áthelyezés végrehajtásakor elkerülheti azokat. 
+1. [Áthelyezés](#move-the-sql-server-vm): a feladatátvételi teszt sikeres átadása után biztos lehet abban, hogy a SQL Server VM áttelepítését elvégezte a virtuális gép áthelyezését a célként megadott régióba. 
+1. [Tisztítás](#clean-up-source-resources): a számlázási költségek elkerülése érdekében távolítsa el a SQL Server VM a tárolóból, és az erőforráscsoport felesleges erőforrásait. 
 
 ## <a name="verify-prerequisites"></a>Előfeltételek ellenőrzése 
 
@@ -51,7 +51,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
 ### <a name="prepare-the-source-sql-server-vm"></a>A forrás SQL Server VM előkészítése
 
 - Győződjön meg arról, hogy a legújabb főtanúsítványok az áthelyezni kívánt SQL Server VMon találhatók. Ha a legfelső szintű tanúsítványok nem léteznek, a biztonsági korlátozások megakadályozzák, hogy a rendszer az Adatmásolást a célként megadott régióba másolja. 
-- Windows rendszerű virtuális gépek esetén telepítse az összes Windows-frissítést a virtuális gépre, hogy a megbízható legfelső szintű tanúsítványok a gépen legyenek. A leválasztott környezetekben kövesse a Windows UPdate és a tanúsítvány frissítési folyamatát a szervezet számára. 
+- Windows rendszerű virtuális gépek esetén telepítse az összes Windows-frissítést a virtuális gépre, hogy a megbízható legfelső szintű tanúsítványok a gépen legyenek. A leválasztott környezetekben kövesse a szervezete normál Windows Update és a tanúsítvány-frissítési folyamatát. 
 - Linux rendszerű virtuális gépek esetén kövesse a linuxos forgalmazója által biztosított útmutatást a legújabb megbízható főtanúsítványok és a tanúsítvány-visszavonási lista lekéréséhez a virtuális gépen. 
 - Győződjön meg arról, hogy nem használ hitelesítési proxyt az áthelyezni kívánt virtuális gépek hálózati kapcsolatának szabályozására. 
 - Ha az áthelyezni kívánt virtuális gép nem fér hozzá az internethez, vagy egy tűzfal proxyt használ a kimenő hozzáférés vezérléséhez, ellenőrizze a követelményeket. 
@@ -74,7 +74,7 @@ Készítse elő mind a forrás SQL Server VM, mind a cél régiót az áthelyez�
 
 A következő lépések bemutatják, hogyan másolhatók az adatAzure Site Recoveryek a célként megadott régióba. Hozza létre a Recovery Services-tárolót a forrás régiótól eltérő bármely régióban. 
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Válassza a navigációs ablaktábla bal felső sarkában található **erőforrás létrehozása** lehetőséget. 
 1. Válassza ki **& felügyeleti eszközöket** , majd válassza **a biztonsági mentés és site Recovery**lehetőséget. 
 1. Az **alapvető beállítások** lap **projekt részletei**területén hozzon létre egy új erőforráscsoportot a céltartományban, vagy válasszon ki egy meglévő erőforráscsoportot a célként megadott régióban. 
@@ -132,7 +132,7 @@ A következő lépések bemutatják, hogyan helyezheti át a SQL Server VM a for
 1. Az előző szakaszban a feladatátvételi teszt figyelése során megtekintett **site Recovery feladatok** oldaláról is figyelheti a feladatátvételi folyamatot. 
 1. Miután a feladatok befejeződik, győződjön meg arról, hogy a SQL Server VM a várt módon jelenik meg a célként megadott régióban. 
 1. Lépjen vissza a tárolóhoz, válassza a **replikált elemek**lehetőséget, válassza ki a SQL Server VM, majd a **véglegesítés** gombra kattintva fejezze be az áthelyezési folyamatot a célként megadott régióba. Várjon, amíg a véglegesítési feladatok befejeződik. 
-1. Regisztrálja SQL Server VM az SQL VM erőforrás-szolgáltatóval, hogy engedélyezze az SQL-alapú **virtuális gépek** kezelhetőségét az erőforrás-szolgáltatóhoz társított Azure Portalokban és szolgáltatásokban. További információ: [SQL Server VM regisztrálása SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). 
+1. Regisztrálja SQL Server VM az SQL VM erőforrás-szolgáltatóval, hogy engedélyezze az SQL-alapú **virtuális gépek** kezelhetőségét az erőforrás-szolgáltatóhoz társított Azure Portalokban és szolgáltatásokban. További információ: [SQL Server VM regisztrálása az SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md). 
 
   > [!WARNING]
   > SQL Server az adatkonzisztencia csak az alkalmazás-konzisztens Pillanatképek esetében garantált. A **legutóbbi feldolgozott** pillanatkép nem használható SQL Server feladatátvételhez, mert az összeomlás-helyreállítási pillanatkép nem tudja garantálni SQL Server adatkonzisztencia. 
@@ -149,7 +149,7 @@ A számlázási díjak elkerüléséhez távolítsa el a SQL Server VM a tárol�
 1. Ha nem tervezi a forrástartomány erőforrásainak újrafelhasználását, törölje az összes kapcsolódó hálózati erőforrást és a hozzá tartozó Storage-fiókokat. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

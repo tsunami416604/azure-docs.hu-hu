@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266423"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323601"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása Resource Manager-sablonnal
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
 
 A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MariaDB-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre Azure Database for MariaDB-kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 
@@ -205,7 +205,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

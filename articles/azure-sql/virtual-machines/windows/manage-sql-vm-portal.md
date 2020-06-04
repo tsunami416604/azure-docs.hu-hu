@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8d04099bc4b384c4b8554a77bafd5d669f0d0e76
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049070"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344228"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>SQL Server virtuális gépek kezelése az Azure-ban a Azure Portal használatával
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-A [Azure Portal](https://portal.azure.com)az **SQL Virtual Machines** erőforrás egy független felügyeleti szolgáltatás. Használhatja az SQL Server virtuális gépek egyidejű megtekintésére és a SQL Server dedikált beállítások módosítására: 
+A [Azure Portal](https://portal.azure.com)az **SQL Virtual Machines** (VM) erőforrás egy független felügyeleti szolgáltatás. Használhatja az SQL Server virtuális gépek egyidejű megtekintésére és a SQL Server dedikált beállítások módosítására: 
 
 ![SQL-alapú virtuális gépek erőforrása](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
@@ -75,7 +75,7 @@ Az elavult **SQL Server konfiguráció** lap megnyitásához nyissa meg a **virt
 
    ![SQL Server-konfiguráció](./media/manage-sql-vm-portal/sql-vm-configuration.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205109"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325082"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozása Resource Manager-sablonnal
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Gyors útmutató: ARM-sablon használata Azure Database for PostgreSQL – egyetlen kiszolgáló létrehozásához
 
 Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre Azure Database for PostgreSQL-egyetlen kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI használatával.
 
@@ -205,7 +205,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

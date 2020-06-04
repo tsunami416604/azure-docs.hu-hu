@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 75c25454451b733870f8a674b292cd131454f4d2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3f4d49b42fa4b978db93fd3fee08e3f9017667e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045885"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342850"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Az utólagos elszámolású licenceléssel az Azure Virtual Machines szolgáltat
 
 Ha frissítési garanciával rendelkező Nagyvállalati Szerződés rendelkezik, az egyes aktív csomópontok esetében egyetlen szabad passzív verzió-csomópontot is használhat. Ahhoz, hogy használhassa ezt az előnyt az Azure-ban, használja a BYOL virtuálisgép-rendszerképeket, és használja ugyanazt a licencet a (z) és a (z)%-os aktív és passzív További információ: [nagyvállalati szerződés](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Az Azure Virtual Machines szolgáltatásbeli SQL Server utólagos elszámolású és BYOL licencelésének összehasonlítását lásd: Ismerkedés [az SQL](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms)virtuális gépekkel.
+Az Azure Virtual Machines szolgáltatásbeli SQL Server utólagos elszámolású és BYOL licencelésének összehasonlítását lásd: Ismerkedés [az SQL](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)virtuális gépekkel.
 
 A licencelési SQL Serverával kapcsolatos teljes információkért tekintse meg a [díjszabást](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -88,7 +88,7 @@ Ezen technológiák általános megismerése is szükséges:
 
 A cikk lépéseinek elvégzése előtt a következőket kell tennie:
 
-- Microsoft Azure előfizetés.
+- Egy Microsoft Azure-előfizetéssel.
 - Egy Windows-tartomány az Azure Virtual Machines szolgáltatásban.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - Az alábbi összetevőkhöz elegendő IP-címmel rendelkező Azure-beli virtuális hálózat és alhálózat:
@@ -175,7 +175,7 @@ Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a fela
 
    Az egyes virtuális gépeken nyissa meg ezeket a portokat a Windows tűzfalon:
 
-   | Szerep | TCP-port | Megjegyzések
+   | Cél | TCP-port | Megjegyzések
    | ------ | ------ | ------
    | SQL Server | 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot.
    | Állapotadat-mintavétel | 59999 | Bármilyen nyitott TCP-port. Egy későbbi lépésben konfigurálja a terheléselosztó [állapotának](#probe) mintavételét és a fürtöt, hogy ezt a portot használja.  

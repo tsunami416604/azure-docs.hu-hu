@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ee69015b52024ba4edaaa414a0d9dda753510b3e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 445e86f1979d52496052572c1682e0b894d512dd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570095"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339875"
 ---
 # <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Azure Stack Edge-eszköz kezelése a Windows PowerShell használatával
 
@@ -71,7 +71,7 @@ A tanúsítványokkal kapcsolatos további információkért nyissa meg a [Azure
 Ha a számítási szerepkör konfigurálva van az eszközön, a számítási naplókat a PowerShell felületén keresztül is lekérheti.
 
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
-2. Az eszközhöz tartozó számítási naplók beszerzéséhez használja a `Get-AzureDataBoxEdgeComputeRoleLogs` következőt:.
+2. Az `Get-AzureDataBoxEdgeComputeRoleLogs` eszközhöz tartozó számítási naplók beszerzéséhez használja a következőt:.
 
     A következő példa a parancsmag használatát mutatja be:
 
@@ -92,6 +92,6 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure stack Edge](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.

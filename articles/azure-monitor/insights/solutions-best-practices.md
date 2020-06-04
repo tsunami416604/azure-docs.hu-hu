@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548170"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84320933"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások a felügyeleti megoldások létrehozásához az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -41,7 +41,7 @@ Ez a cikk az Azure-beli [felügyeleti megoldási fájlok létrehozásával](solu
 - Konfigurálja a megoldást úgy, hogy a riasztási szabályokra [hivatkozzon](solutions-solution-file.md#solution-resource) , hogy a felhasználó módosíthatja a konfigurációt.  Előfordulhat, hogy olyan módosításokat szeretne végezni, mint például a címzettek listájának módosítása, a riasztás küszöbértékének módosítása vagy a riasztási szabály letiltása. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Végigvezeti a [felügyeleti megoldások tervezésének és kialakításának](solutions-creating.md)alapvető folyamatán.
 * Útmutató [a megoldási fájlok létrehozásához](solutions-solution-file.md).
 * [Mentett keresések és riasztások hozzáadása](solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.

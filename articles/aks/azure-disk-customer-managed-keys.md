@@ -4,12 +4,12 @@ description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS op
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c16bdb613c60a8eef3efd1be8d7ab1a78e002f98
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141534"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325099"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -110,9 +110,8 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 Ha új csomópont-készleteket ad hozzá a fent létrehozott fürthöz, a létrehozás során megadott ügyfél által felügyelt kulcs az operációsrendszer-lemez titkosítására szolgál.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>Az AK-fürt adatlemezének titkosítása
-
-Az AK-adatlemezeket a saját kulcsaival is titkosíthatja.
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>Az AK-fürt adatlemezének titkosítása (nem kötelező)
+Az operációs rendszer lemezének titkosítási kulcsa az adatlemez titkosítására szolgál, ha a kulcs nincs megadva a v 1.17.2 található adatlemezhez, és az AK-adatlemezeket is titkosíthatja a többi kulccsal.
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik. Az egyszerű szolgáltatásnak közreműködői hozzáféréssel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a diskencryptionset telepítve van. Ellenkező esetben hibaüzenet jelenik meg, amely arra utal, hogy az egyszerű szolgáltatásnév nem rendelkezik engedéllyel.
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>Korlátozások
 
 * A BYOK jelenleg csak a GA-ban érhető el, és az előzetes verzió bizonyos [Azure-régiókban][supported-regions]
-* Az operációsrendszer-lemez titkosítása a 1,17-es és újabb verziójú Kubernetes-verzióval támogatott   
+* Az adatlemez titkosítása a 1,17-es vagy újabb Kubernetes-verzióval támogatott   
 * Csak azokon a régiókban érhető el, ahol a BYOK támogatott
 * Az ügyfél által felügyelt kulcsokkal való titkosítás jelenleg csak az új AK-fürtök esetében lehetséges, a meglévő fürtök nem frissíthetők.
-* A Virtual Machine Scale Setst használó AK-fürtök szükségesek, a virtuális gépek rendelkezésre állási csoportjai nem támogatottak
-
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561344"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339212"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>A Azure Data Box Gateway hozzáférésének, teljesítményének és kapcsolati módjának kezelése
 
@@ -22,6 +22,7 @@ Ez a cikk azt ismerteti, hogyan kezelhető a Azure Data Box Gateway hozzáféré
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Eszközök hozzáférésének kezelése
 > * Kapcsolati mód kezelése
 > * A Power kezelése
@@ -65,7 +66,7 @@ Az Azure Stack Edge-eszköz aktiválási kulcsának létrehozásakor, illetve a 
 -  Megosztás létrehozása társított Storage-fiókkal.
 -  Hozzon létre egy felhasználót, aki hozzáfér az eszközön található megosztásokhoz.
 
-Ahhoz, hogy a `User` rendszer képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects`. Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a `Read all directory objects`szolgáltatáshoz. Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a megosztás létrehozása az Azure Stack peremhálózati eszközön, a felhasználó létrehozása sikertelen lesz.
+Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a megosztás létrehozása az Azure Stack peremhálózati eszközön, a felhasználó létrehozása sikertelen lesz.
 
 A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -79,7 +80,7 @@ Nem kell hozzáférési engedélyeket megadnia az előfizetési szinthez ahhoz, 
 
 Mielőtt megpróbál létrehozni egy erőforrást, győződjön meg arról, hogy az erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha az erőforrás-szolgáltató nincs regisztrálva, meg kell győződnie arról, hogy az új erőforrást létrehozó felhasználónak elegendő jogosultsága van ahhoz, hogy regisztrálja a szükséges erőforrás-szolgáltatót az előfizetési szinten. Ha még nem tette meg, akkor a következő hibaüzenet jelenik meg:
 
-*Az előfizetés \<-előfizetés neve> nem rendelkezik engedéllyel az erőforrás-szolgáltató (k) regisztrálásához: Microsoft. DataBoxEdge.*
+*Az előfizetés \<Subscription name> nem rendelkezik engedéllyel az erőforrás-szolgáltató (k) regisztrálásához: Microsoft. DataBoxEdge.*
 
 
 A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának lekéréséhez futtassa a következő parancsot:
@@ -88,7 +89,7 @@ A jelenlegi előfizetésben regisztrált erőforrás-szolgáltatók listájának
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge- `Microsoft.DataBoxEdge` eszköz esetében regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge`az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
+Azure Stack Edge-eszköz esetében `Microsoft.DataBoxEdge` regisztrálni kell. A regisztráláshoz `Microsoft.DataBoxEdge` az előfizetés rendszergazdájának a következő parancsot kell futtatnia:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

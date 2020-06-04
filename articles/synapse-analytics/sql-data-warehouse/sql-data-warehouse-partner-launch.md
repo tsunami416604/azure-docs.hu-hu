@@ -11,19 +11,19 @@ ms.date: 05/18/2020
 ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7d370c49d4571b7b46d0d5db121955afd62fd45
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4af27d841beb21b364b499231a422112eb3ad78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664451"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324130"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Azure szinapszis Analytics – partnerek indítása
 
 Az Azure szinapszis Analytics partnerei olyan mély integrációs eszközöket biztosítanak, & az iparágban történő kézbesítési szakértelmet, hogy ügyfeleink felgyorsítsák a digitális átalakítást a felhőalapú méretezési elemzésekkel Tekintse meg a következő partnereink ajánlatait, akik támogatják a nyilvános előzetes kiadást a május 19-én a közösségi erősítéssel, workshopokkal és ajánlatokkal.
 
 ## <a name="our-public-preview-launch-partners"></a>Nyilvános előzetes indítási partnereink
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>A Accenture Microsoft Business Group, a Avanade által működtetett 45000 + dedikált szakemberek együttesen lehetővé teszik a vállalatok számára, hogy a digitális zavarás korában is fejlődnek legyenek.|[Partner oldal](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>A Adatis olyan professzionális szolgáltatásokat kínál, amelyek speciális adatelemzésre, adatkezelési stratégiából és tanácsadásból állnak a világszínvonalú kézbesítés és a felügyelt szolgáltatások révén. |[Partner oldal](https://adatis.co.uk/)<br> |
@@ -40,7 +40,6 @@ Az Azure szinapszis Analytics partnerei olyan mély integrációs eszközöket b
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Megtekintheti a betekintési felderítést az adatvizualizációs alkalmazással, amelyet bárki használhat. A Qlik értelemben a szervezet minden tagja könnyedén hozhat létre rugalmas, interaktív vizualizációkat, és értelmes döntéseket hozhat. |[Termék lap](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/qlik.qlik-sense) |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>A SqlDBM egy felhőalapú adatmodellezési eszköz, amely egyszerű és kényelmes megoldást kínál az adatbázis bármely böngészőn belüli fejlesztésére. A szükséges adatbázis-szabályok és objektumok, például az adatbázis-kulcsok, a sémák, az indexek, az oszlopok megkötései és a kapcsolatok beépítése. |[Termék lap](http://sqldbm.com/)<br>[Azure Piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Tehetség](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Tehetség-felhő**<br>A tehetség Cloud egy nagyvállalati adatintegrációs platform, amely a felhőben vagy a helyszínen lévő összes adatkapcsolathoz, hozzáféréshez és átalakításhoz biztosít hozzáférést. Ez egy szolgáltatásként nyújtott integrációs platform (iPaaS), amely széles körű kapcsolódást, beépített adatminőséget és natív támogatást nyújt a legújabb big data és felhőalapú technológiákhoz. |[Termék lap](https://www.talend.com/)<br> [Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>A keresés segítségével részletes elemzéseket készíthet több milliárd sornyi adatmennyiségről, vagy megadhatja, hogy a mesterséges intelligenciával kapcsolatban ne jelenjen meg a kérdés. A ThoughtSpot segít az üzletembereknek másodpercek alatt megtalálni a vállalati adatelemzéseket. A keresés segítségével elemezheti az adatait, és automatizált elemzéseket kaphat, amikor szüksége van rájuk.|[Termék lap](https://www.thoughtspot.com)<br>|
 
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni más partnereinkről, tekintse meg az [üzleti intelligencia partnereket](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnereket](sql-data-warehouse-partner-data-integration.md)és a [adatkezelés partnereket](sql-data-warehouse-partner-data-management.md).

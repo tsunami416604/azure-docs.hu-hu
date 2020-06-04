@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7d071a98b8d82d6f11278b59e1dfc91882a9bfcc
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192858"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338056"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Társított szolgáltatások az Azure Data Factoryben
 
@@ -95,7 +95,10 @@ A következő társított szolgáltatás egy Azure Storage-beli társított szol
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
-Társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhat létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal
+A társított szolgáltatások a Azure Data Factory UX-ben hozhatók létre a [felügyeleti központban](author-management-hub.md) , valamint a rájuk hivatkozó tevékenységek, adatkészletek vagy adatfolyamatok használatával.
+
+A társított szolgáltatásokat a következő eszközök vagy SDK-k egyikével hozhatja létre: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sablon és Azure Portal.
+
 
 ## <a name="data-store-linked-services"></a>Adattárhoz társított szolgáltatások
 
@@ -105,7 +108,7 @@ A Data Factory által támogatott adattárak listáját az [Összekötők áttek
 
 A [számítási környezetek](compute-linked-services.md) ismertetése a különböző számítási környezetekről nyújt segítséget, amelyekkel kapcsolódhat az adat-előállítóhoz, valamint a különböző konfigurációkhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyag részletes útmutatást nyújt a folyamatok és adatkészletek létrehozásához ezen eszközök vagy SDK-k egyikének használatával.
 

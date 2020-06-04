@@ -8,18 +8,19 @@ author: asudbring
 manager: KumundD
 Customer intent: I want to test a NAT Gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a076020cc35032f248534f8302631ba0753ca5ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084743"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338584"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával és a NAT szolgáltatás tesztelése
 
@@ -43,12 +44,12 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroupNAT |
-| **\<virtuális hálózat neve>** | myVNetsource          |
-| **\<régió neve>**          | USA 2. keleti régiója      |
-| **\<IPv4 – címtartomány>**   | 192.168.0.0/16          |
-| **\<alhálózat – név>**          | mySubnetsource        |
-| **\<alhálózat – címtartomány>** | 192.168.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | USA 2. keleti régiója      |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -60,16 +61,16 @@ A NAT-átjáró teszteléséhez rendeljen egy nyilvános IP-cím típusú erőfo
 
 Azt is megteheti, hogy nyilvános IP-cím nélkül hozza létre ezt a virtuális gépet, és egy olyan virtuális gépet hoz létre, amelyet Jumpbox használ nyilvános IP-cím nélkül.
 
-1. A portál bal felső részén válassza az **erőforrás** > **létrehozása számítási** > **Ubuntu Server 18,04 LTS**lehetőséget, vagy keressen rá az **Ubuntu Server 18,04 LTS** kifejezésre a piactéren.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **Ubuntu Server 18,04 LTS**lehetőséget, vagy keressen rá az **Ubuntu Server 18,04 LTS** kifejezésre a piactéren.
 
 2. A **virtuális gép létrehozása**területen adja meg vagy válassza ki a következő értékeket az **alapok** lapon:
-   - **Előfizetési** > **erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
-   - **Példány részletei** > **virtuális gép neve**: írja be a **myVMsource**.
-   - **Példány részleteit tartalmazó** > régió > válassza az **USA 2. keleti****régióját** .
-   - **Rendszergazdai fiók** > **hitelesítése**: válassza a **jelszó**lehetőséget.
+   - **Előfizetés**  >  **Erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
+   - **Példány részletei**  >  **Virtuális gép neve**: adja meg a **myVMsource**.
+   - **Példány részletei**  >  Régió > válassza az **USA 2. keleti** **régióját** .
+   - **Rendszergazdai fiók**  >  **Hitelesítés megadása**: válassza a **jelszó**lehetőséget.
    - **Rendszergazdai fiók** > adja meg a **felhasználónevet**, a **jelszót**és a **Jelszó megerősítése** információt.
-   - **Bejövő portok szabályai** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
-   - **Bejövő portszabályok** > a**bejövő portok kiválasztása**: Select **SSH (22)**
+   - **Bejövő portok szabályai**  >  **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
+   - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **SSH (22)** lehetőséget.
    - Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**lehetőséget.
 
 3. A **hálózatkezelés** lapon győződjön meg arról, hogy a következők vannak kiválasztva:
@@ -96,16 +97,16 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
 
 ### <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-1. A portál bal felső részén válassza az **erőforrás** > **létrehozása hálózat** > **nyilvános IP-címe**lehetőséget, vagy keressen **nyilvános IP-címet** a piactér keresésében. 
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **hálózat**  >  **nyilvános IP-címe**lehetőséget, vagy keressen **nyilvános IP-címet** a piactér keresésében. 
 
 2. A **nyilvános IP-cím létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
-    | SKU | Válassza a **standard**lehetőséget.
-    | Name (Név) | Adja meg a **myPublicIPsource**. |
-    | Előfizetés | Válassza ki előfizetését.|
+    | Termékváltozat | Válassza a **standard**lehetőséget.
+    | Name | Adja meg a **myPublicIPsource**. |
+    | Előfizetés | Válassza ki az előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
     | Hely | Válassza az **USA 2. keleti régiója** lehetőséget.|
 
@@ -113,13 +114,13 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
 
 ### <a name="create-a-public-ip-prefix"></a>Nyilvános IP-előtag létrehozása
 
-1. A portál bal felső részén válassza az **erőforrás** > **létrehozása hálózati** > **nyilvános IP-előtag**lehetőséget, vagy keressen **nyilvános IP-előtagot** a piactér keresésében.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **nyilvános IP-előtag**lehetőséget, vagy keressen **nyilvános IP-előtagot** a piactér keresésében.
 
 2. A **nyilvános IP-előtag létrehozása**területen adja meg vagy válassza ki az alábbi értékeket az **alapok** lapon:
-   - **Előfizetési** > **erőforráscsoport**: **myResourceGroupNAT** kiválasztása>
-   - **Példány részleteinek** > **neve**: adja meg a **myPublicIPprefixsource**.
-   - **Példány részletei** > régió: válassza az **USA 2. keleti****régióját**.
-   - **Példány részletei** > –**előtag mérete**: Select **/31 (2 cím)**
+   - **Előfizetés**  >  **Erőforráscsoport**: **myResourceGroupNAT** kiválasztása>
+   - **Példány részletei**  >  **Név**: adja meg a **myPublicIPprefixsource**.
+   - **Példány részletei**  >  Régió: válassza az **USA 2. keleti** **régiója**lehetőséget.
+   - **Példány részletei**  >  **Előtag mérete**: Select **/31 (2 cím)**
 
 3. Hagyja változatlanul az alapértelmezett beállításokat, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
@@ -128,13 +129,13 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT-átjáró erőforrásának létrehozása
 
-1. A portál bal felső részén válassza az **erőforrás** > **létrehozása hálózati** > **NAT-átjáró**lehetőséget, vagy keressen rá a NAT- **átjáróra** a piactér keresésében.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **NAT-átjáró**lehetőséget, vagy keressen rá a **NAT-átjáróra** a piactér keresésében.
 
 2. A **hálózati címfordítási (NAT-) átjáró létrehozása**területen adja meg vagy válassza ki az alábbi értékeket az **alapok** lapon:
-   - **Előfizetési** > **erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
-   - **Példány részletei** > **NAT-átjáró neve**: adja meg a **myNATgateway**.
-   - **Példány részletei** > régió: válassza az **USA 2. keleti****régióját**.
-   - **Példány részletei** > **Üresjárati időkorlát (perc)**: adja meg a **10**értéket.
+   - **Előfizetés**  >  **Erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
+   - **Példány részletei**  >  **NAT-átjáró neve**: adja meg a **myNATgateway**.
+   - **Példány részletei**  >  Régió: válassza az **USA 2. keleti** **régiója**lehetőséget.
+   - **Példány részletei**  >  **Üresjárati időkorlát (perc)**: adja meg a **10**értéket.
    - Válassza a **nyilvános IP-cím** lapot, vagy válassza a **Tovább: nyilvános IP-cím**elemet.
 
 3. A **nyilvános IP-cím** lapon adja meg vagy válassza ki a következő értékeket:
@@ -143,7 +144,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
    - Válassza az **alhálózat** lapot, vagy válassza a **Tovább: alhálózat**elemet.
 
 4. Az **alhálózat** lapon adja meg vagy válassza ki a következő értékeket:
-   - **Virtual Network**: válassza a **myResourceGroupNAT** > **myVnetsource**elemet.
+   - **Virtual Network**: válassza a **myResourceGroupNAT**  >  **myVnetsource**elemet.
    - **Alhálózat neve**: válassza a **mySubnetsource**melletti jelölőnégyzetet.
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
@@ -166,27 +167,27 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | myResourceGroupNAT |
-| **\<virtuális hálózat neve>** | myVNetdestination          |
-| **\<régió neve>**          | USA 2. keleti régiója      |
-| **\<IPv4 – címtartomány>**   | 192.168.0.0/16          |
-| **\<alhálózat – név>**          | mySubnetdestination        |
-| **\<alhálózat – címtartomány>** | 192.168.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | USA 2. keleti régiója      |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-destination-virtual-machine"></a>Cél virtuális gép létrehozása
 
-1. A portál bal felső részén válassza az **erőforrás** > **létrehozása számítási** > **Ubuntu Server 18,04 LTS**lehetőséget, vagy keressen rá az **Ubuntu Server 18,04 LTS** kifejezésre a piactéren.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **Ubuntu Server 18,04 LTS**lehetőséget, vagy keressen rá az **Ubuntu Server 18,04 LTS** kifejezésre a piactéren.
 
 2. A **virtuális gép létrehozása**területen adja meg vagy válassza ki a következő értékeket az **alapok** lapon:
-   - **Előfizetési** > **erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
-   - **Példány részletei** > **virtuális gép neve**: írja be a **myVMdestination**.
-   - **Példány részleteit tartalmazó** > régió > válassza az **USA 2. keleti****régióját** .
-   - **Rendszergazdai fiók** > **hitelesítése**: válassza a **jelszó**lehetőséget.
+   - **Előfizetés**  >  **Erőforráscsoport**: válassza a **myResourceGroupNAT**lehetőséget.
+   - **Példány részletei**  >  **Virtuális gép neve**: adja meg a **myVMdestination**.
+   - **Példány részletei**  >  Régió > válassza az **USA 2. keleti** **régióját** .
+   - **Rendszergazdai fiók**  >  **Hitelesítés megadása**: válassza a **jelszó**lehetőséget.
    - **Rendszergazdai fiók** > adja meg a **felhasználónevet**, a **jelszót**és a **Jelszó megerősítése** információt.
-   - **Bejövő portok szabályai** > **nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
-   - **Bejövő portszabályok** > **válassza a bejövő portok elemet**: válassza az **SSH (22)** és a **http (80)** lehetőséget.
+   - **Bejövő portok szabályai**  >  **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése**lehetőséget.
+   - **Bejövő portok szabályai**  >  **Bejövő portok kiválasztása**: válassza az **SSH (22)** és a **http (80)** lehetőséget.
    - Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**lehetőséget.
 
 3. A **hálózatkezelés** lapon győződjön meg arról, hogy a következők vannak kiválasztva:
@@ -286,13 +287,13 @@ Most már készen áll a NAT szolgáltatás tesztelésére.
 
 Ha bejelentkezett a forrás virtuális gépre, a **curl** és a **Hey** használatával is létrehozhat KÉRÉSEKET a cél IP-címhez.
 
-Az 100-kilobájtos fájl beolvasásához használja a curlt.  Cserélje le ** \<az IP-cím-Destination>** az alábbi példában az előzőleg másolt cél IP-címhez.  A **--output** paraméter azt jelzi, hogy a beolvasott fájl el lesz vetve.
+Az 100-kilobájtos fájl beolvasásához használja a curlt.  Cserélje le az **\<ip-address-destination>** alábbi példában a korábban másolt cél IP-címet.  A **--output** paraméter azt jelzi, hogy a beolvasott fájl el lesz vetve.
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-A **Hey**használatával több kérelem is létrehozható. Újra cserélje le ** \<az IP-cím-cél>t** a korábban másolt cél IP-címére.
+A **Hey**használatával több kérelem is létrehozható. Ismét cserélje le **\<ip-address-destination>** a helyére a korábban másolt cél IP-címet.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
@@ -304,7 +305,7 @@ Ezzel a paranccsal az 100-es kérések, 10 párhuzamosan, 30 másodperces időko
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót, létrehozta a forrás és a cél virtuális gépet, majd tesztelte a NAT-átjárót.
 
 Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének megtekintéséhez. Problémák diagnosztizálása, például az elérhető SNAT-portok erőforrás-kimerülése.  A SNAT-portok erőforrás-kimerülése könnyen kezelhető további nyilvános IP-címek vagy nyilvános IP-előtag-erőforrások hozzáadásával vagy mindkettővel.

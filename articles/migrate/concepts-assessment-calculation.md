@@ -3,12 +3,12 @@ title: Értékelések a Azure Migrate Server Assessment szolgáltatásban
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee6b13edd12109b7f748abeaf13a5e8f3ded2a8e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171004"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343948"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Értékelések a Azure Migrateban: kiszolgáló értékelése
 
@@ -110,14 +110,14 @@ Tulajdonság | Részletek
 **Célhely** | Az áttelepíteni kívánt hely. A kiszolgáló értékelése jelenleg a következő Azure-régiókat támogatja:<br/><br/> Kelet-Ausztrália, Kelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Dél-Korea, Dél-Korea, Egyesült Királyság déli régiója, Észak-Európa , Az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és az USA 2. nyugati régiója.
 **Cél Storage-lemez (méretezés)** | Az Azure-beli tároláshoz használandó lemez típusa. <br/><br/> A célként megadott Storage-lemezt prémium szintű felügyelt, standard SSD által felügyelt vagy standard HDD által felügyelt határozza meg.
 **Cél tárolóeszköz lemeze (teljesítmény-alapú méretezés)** | Meghatározza a célként megadott tároló lemezének típusát automatikus, prémium szintű felügyelt, standard HDD által felügyelt vagy standard SSD által felügyelt.<br/><br/> **Automatikus**: a lemezre vonatkozó javaslat a lemezek teljesítményadatokat, azaz a IOPS és az átviteli sebességen alapul.<br/><br/>**Prémium vagy standard**: az értékelés azt javasolja, hogy egy lemez SKU legyen a kiválasztott tárolási típuson belül.<br/><br/> Ha a 99,9%-os egypéldányos virtuálisgép-szolgáltatói szerződést (SLA) szeretne használni, érdemes prémium szintű felügyelt lemezeket használnia. Ez a használat biztosítja, hogy az értékelésben szereplő összes lemez prémium szintű felügyelt lemezként legyen ajánlott.<br/><br/> A Azure Migrate csak a felügyelt lemezeket támogatja az áttelepítési értékeléshez.
-**Azure Reserved VM Instances** | [Fenntartott példányokat](https://azure.microsoft.com/pricing/reserved-vm-instances/) határoz meg, hogy az értékelésben szereplő költségbecslés figyelembe vegye azokat.<br/><br/> Ha a fenntartott példányok ki vannak választva, hagyja meg az alapértelmezett beállításokat a kedvezményben (%) és a virtuális gép üzemidő tulajdonságai.<br/><br/> A Azure Migrate jelenleg csak az utólagos elszámolású ajánlatok esetében támogatja a Azure Reserved VM Instances.
+**Azure Reserved VM Instances** | [Fenntartott példányokat](https://azure.microsoft.com/pricing/reserved-vm-instances/) határoz meg, hogy az értékelésben szereplő költségbecslés figyelembe vegye azokat.<br/><br/> Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók.<br/><br/> A Azure Migrate jelenleg csak az utólagos elszámolású ajánlatok esetében támogatja a Azure Reserved VM Instances.
 **Méretezési feltételek** | Az Azure-beli virtuális gép megfelelő méretben helyezheti használatos.<br/><br/> A következőképpen történő használat: méretezés vagy teljesítmény-alapú méretezés.
 **Teljesítményelőzmények** | Teljesítmény-alapú méretezéssel használatos. A teljesítmény előzményei a teljesítményadatok kiértékeléséhez használt időtartamot határozzák meg.
 **Százalékos kihasználtság** | Teljesítmény-alapú méretezéssel használatos. A percentilis kihasználtsága meghatározza a megadásában használt teljesítmény mintájának százalékos értékét.
 **Virtuálisgép-sorozatok** | A megadásában megfontolni kívánt Azure virtuálisgép-sorozat. Ha például nem rendelkezik olyan éles környezettel, amely az Azure-beli sorozatú virtuális gépeket igényli, kizárhatja a sorozatot a sorozatok listájáról.
 **Kényelmi faktor** | Az értékelés során használt puffer. A rendszer alkalmazza a virtuális gépek processzor-, RAM-, lemez-és hálózati kihasználtsági adataira. A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> A 20%-os kihasználtságú 10 Magos virtuális gép például általában egy kétmagos virtuális gépet eredményez. Az 2,0-es kényelmi faktorral az eredmény egy négy Magos virtuális gép.
 **Ajánlat** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/) , amelyben regisztrálva van. A kiszolgáló értékelése alapján megbecsülhető az ajánlat díja.
-**Pénznem** | A fiók számlázási pénzneme.
+**Currency (Pénznem)** | A fiók számlázási pénzneme.
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott előfizetés-specifikus kedvezmények. Az alapértelmezett beállítás 0%.
 **Virtuális gép üzemideje** | A folyamatosan nem futó Azure-beli virtuális gépek esetében a havi és a napi munkaórák száma. A becsült költségbecslés ezen időtartam alapján történik.<br/><br/> Az alapértelmezett értékek havi 31 nap, és naponta 24 óra.
 **Azure Hybrid Benefit** | Megadja, hogy rendelkezik-e frissítési garanciával, és jogosult-e a [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Ha a beállítás alapértelmezett értéke "yes", akkor a Windows rendszerű virtuális gépekre a Windows rendszertől eltérő operációs rendszerek Azure-árai tekintendők.
@@ -154,7 +154,8 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 A virtuálisgép-tulajdonságok áttekintésével együtt a kiszolgáló értékelése egy gép vendég operációs rendszerét vizsgálja, hogy képes-e futni az Azure-ban.
 
 > [!NOTE]
-> A VMware virtuális gépek vendég-elemzésének kezeléséhez a kiszolgáló értékelése a virtuális gép számára megadott operációs rendszert használja vCenter Serverban. A VMware-en futó Linux rendszerű virtuális gépek esetében a Server Assessment jelenleg nem azonosítja a vendég operációs rendszer kernel-verzióját.
+> A VMware virtuális gépek vendég-elemzésének kezeléséhez a kiszolgáló értékelése a virtuális gép számára megadott operációs rendszert használja vCenter Serverban. A vCenter Server azonban nem biztosítja a Linux rendszerű virtuális gépek operációs rendszereinek kernel-verzióját. A verzió felderítéséhez be kell állítania az alkalmazás- [felderítést](https://docs.microsoft.com/azure/migrate/how-to-discover-applications). Ezután a készülék felderíti a verziók adatait az App-Discovery beállításakor megadott vendég hitelesítő adatok használatával.
+
 
 A kiszolgáló értékelése a következő logikát használja az Azure-készültség azonosítására az operációs rendszer alapján:
 
@@ -199,7 +200,8 @@ Ha teljesítmény-alapú méretezést használ, a kiszolgáló értékelése a k
 
 A tárolás méretezése érdekében a Azure Migrate megkísérli leképezni a géphez csatolt összes lemezt egy Azure-lemezre. A méretezés a következőképpen működik:
 
-1. A kiszolgáló értékelése hozzáadja a lemez olvasási és írási IOPS az összes szükséges IOPS lekéréséhez. Hasonlóképpen hozzáadja az olvasási és írási sebesség értékét az egyes lemezek teljes átviteli sebességének lekéréséhez.
+1. A kiszolgáló értékelése hozzáadja a lemez olvasási és írási IOPS az összes szükséges IOPS lekéréséhez. Hasonlóképpen hozzáadja az olvasási és írási sebesség értékét az egyes lemezek teljes átviteli sebességének lekéréséhez. Importálási alapú értékelések esetén lehetősége van a teljes IOPS, a teljes átviteli sebesség és az összes nem érték megadására. az importált fájlban lévő lemezek külön lemezes beállítások megadása nélkül. Ha ezt teszi, a rendszer kihagyja az egyes lemezek méretezését, és a megadott adatok közvetlenül a számítási méretezéshez használatosak, és kiválasztja a megfelelő VM SKU-t.
+
 1. Ha a tárolási típust automatikus értékre adta meg, a kiválasztott típus a hatályos IOPS és az átviteli sebesség alapján történik. A kiszolgáló értékelése meghatározza, hogy a lemez leképezhető-e standard HDD, standard SSD vagy prémium szintű lemezre az Azure-ban. Ha a tárolási típus az egyik ilyen típusú lemezre van beállítva, akkor a kiszolgáló értékelése megpróbál a kiválasztott tárolási típuson belül egy lemez SKU-t keresni.
 1. A lemezek a következőképpen vannak kiválasztva:
     - Ha a kiszolgáló értékelése nem talál a szükséges IOPS és adatátviteli sebességű lemezt, az az Azure számára nem megfelelőként jelöli meg a gépet.

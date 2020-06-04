@@ -2,13 +2,13 @@
 title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 14ce04e992cdbf121bcb1518b6a95c09ec421872
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529688"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324419"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -139,6 +139,6 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

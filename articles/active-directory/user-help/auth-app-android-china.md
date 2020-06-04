@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739498"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323025"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator Androidhoz a nyilvános felhőben Kínában
 
@@ -44,7 +44,7 @@ Ha a felhasználó korábban már felügyelte a telefonos bejelentkezést vagy a
 
 ## <a name="multi-factor-authentication-workaround"></a>A multi-Factor Authentication megkerülő megoldása
 
-A többtényezős hitelesítéshez használt leküldéses értesítések használata helyett a felhasználók a saját MFA-t is beállíthatják, hogy hitelesítő kódokat kapjanak az eszközön, amelyeket az identitásuk ellenőrzéséhez használhatnak. Ezek az ellenőrző kódok 30 másodpercig érvényesek, a rendszergazdáknak pedig engedélyezniük kell a bérlőik számára az időalapú egyszeri jelszó (TOTP) ellenőrző kódok használatával végzett ellenőrzést.
+A többtényezős hitelesítéshez használt leküldéses értesítések használata helyett a felhasználók úgy [állíthatják be a hitelesítő](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) alkalmazásaikat, hogy hitelesítő kódokat kapjanak az eszközön, amelyet az MFA számára használhatnak az identitásuk ellenőrzéséhez. Ezek az ellenőrző kódok 30 másodpercig érvényesek, a rendszergazdáknak pedig engedélyezniük kell a bérlőik számára az időalapú egyszeri jelszó (TOTP) ellenőrző kódok használatával végzett ellenőrzést.
 
 ## <a name="availability"></a>Rendelkezésre állás
 

@@ -13,15 +13,15 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219311"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338441"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval a `Register-SqlVMs` PowerShell-parancsmag használatával.
 
@@ -35,7 +35,7 @@ További információ az erőforrás-szolgáltatóról: [SQL VM erőforrás-szol
 
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
-- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
+- Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van az erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
 - A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő RBAC-szerepkörök bármelyikében léteznek: **virtuális gép közreműködői**, **közreműködő**vagy **tulajdonos**. 
 - Az az [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 - Az az [. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)legújabb verziója.
@@ -78,7 +78,7 @@ Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
 Példa a kimenetre: 
 
 ```
-Number of Subscriptions registration failed for 
+Number of subscriptions registration failed for 
 because you do not have access or credentials are wrong: 1
 Total VMs Found: 10
 VMs Already registered: 1
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-single-resource-group"></a>Adott virtuális gépek regisztrálása egyetlen erőforráscsoporthoz
+## <a name="register-specific-vms-in-a-single-resource-group"></a>Adott virtuális gépek regisztrálása egyetlen erőforráscsoporthoz
 
 A következő parancsmaggal regisztrálhat adott SQL Server virtuális gépeket egyetlen erőforráscsoporthoz:
 
@@ -234,7 +234,7 @@ Másolja a teljes parancsfájlt, és mentse azt `RegisterSqLVMs.psm1` .
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

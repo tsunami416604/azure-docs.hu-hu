@@ -1,7 +1,7 @@
 ---
 title: Kezelés az áttelepítés után
 titleSuffix: Azure SQL Database
-description: Ismerje meg, hogyan kezelheti az önálló és a készletezett adatbázist a Azure SQL Database való áttelepítést követően.
+description: Ismerje meg, hogyan kezelheti az önálló és a készletezett adatbázisokat a Azure SQL Database való áttelepítést követően.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193930"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322669"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A hagyományos, önfelügyelt, önálló vezérlésű környezetből a Pásti-környezetbe való áttérés első lépésként tűnhet. Alkalmazás-fejlesztőként vagy DBA-ként érdemes megismernie a platform alapvető képességeit, amely segítséget nyújt az alkalmazás elérhetőségének, teljesítményének, biztonságossá tételének és rugalmasságának fenntartásában. A cikk célja, hogy pontosan ezt tegye. A cikk röviden rendszerezi az erőforrásokat, és útmutatást nyújt arról, hogyan használhatók fel a SQL Database főbb képességei az önálló és a készletezett adatbázisokkal, így hatékonyan kezelhetik és megtarthatják az alkalmazásait, és a felhőben optimális eredményeket érhet el. A cikk általános célközönsége a következő:
+A hagyományos, önfelügyelt, önálló vezérlésű környezetből a Pásti-környezetbe való áttérés első lépésként tűnhet. Alkalmazás-fejlesztőként vagy DBA-ként érdemes megismernie a platform alapvető képességeit, amely segítséget nyújt az alkalmazás elérhetőségének, teljesítményének, biztonságossá tételének és rugalmasságának fenntartásában. A cikk célja, hogy pontosan ezt tegye. A cikk röviden rendszerezi az erőforrásokat, és útmutatást nyújt arról, hogyan használhatók fel a Azure SQL Database főbb képességei az önálló és a készletezett adatbázisokkal, így hatékonyan kezelhetik és megtarthatják az alkalmazásait, és a felhőben optimális eredményeket érhet el. A cikk általános célközönsége a következő:
 
 - Az alkalmazás (ok) áttelepítésének kiértékelése Azure SQL Database – az alkalmazás (ok) modernizálása.
 - Folyamatban van az alkalmazás (ok) áttelepítésének folyamata – folyamatban lévő áttelepítési forgatókönyv.
@@ -30,7 +30,7 @@ A hagyományos, önfelügyelt, önálló vezérlésű környezetből a Pásti-k�
 
 Ez a cikk a Azure SQL Database alapvető jellemzőit tárgyalja olyan platformként, amely az önálló adatbázisok és a rugalmas készletekben található készletezett adatbázisok használata esetén könnyen kihasználható. Ezek a következők:
 
-- Adatbázis figyelése a Azure Portal használatával
+- Adatbázisok figyelése Azure Portal használatával
 - Üzletmenet-folytonosság és vészhelyreállítás (BCDR)
 - Biztonság és megfelelőség
 - Intelligens adatbázis figyelése és karbantartása
@@ -90,7 +90,7 @@ További információ a vész-helyreállítási szolgáltatásról: [Azure SQL D
 
 A SQL Database nagyon komolyan veszi a biztonságot és az adatvédelmet. A SQL Databaseon belüli biztonság az adatbázis szintjén és a platform szintjén érhető el, és a legjobban értelmezhető, ha több rétegbe van kategorizálva. Minden rétegben vezérelheti az alkalmazás optimális biztonságát. A rétegek a következők:
 
-- Identitás & hitelesítés ([SQL-hitelesítés és Azure Active Directory [HRE] hitelesítés](logins-create-manage.md)).
+- Identitás & hitelesítés ([SQL-hitelesítés és Azure Active Directory [Azure ad]-hitelesítés](logins-create-manage.md)).
 - Figyelési tevékenység ([auditálás](../../azure-sql/database/auditing-overview.md) és [fenyegetések észlelése](threat-detection-configure.md)).
 - A tényleges adatok védelme ([transzparens adattitkosítás [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) és [Always encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - A bizalmas és a privilegizált adatokhoz való hozzáférés szabályozása ([sor szintű biztonság](/sql/relational-databases/security/row-level-security) és [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)).
@@ -104,13 +104,13 @@ A SQL Databaseban két hitelesítési módszer érhető el:
 - [Azure Active Directory hitelesítés](authentication-aad-overview.md)
 - [SQL-hitelesítés](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-A hagyományos Windows-hitelesítés nem támogatott. A Azure Active Directory (AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. A HRE támogatja az MFA-t [(többtényezős hitelesítés)](authentication-mfa-ssms-overview.md) , és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) HRE integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi SQL Database és SQL Data Warehouse számára, hogy többtényezős hitelesítést és vendég felhasználói fiókokat nyújtson az Azure AD-tartományon belül. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
+A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. Az Azure AD az [azure multi-Factor Authenticationt](authentication-mfa-ssms-overview.md) támogatja, és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) az Azure ad-vel integrálható a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi SQL Database és SQL Data Warehouse számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
 
 |**Ha...**|**SQL Database/SQL Data Warehouse**|
 |---|---|
-|Nem ajánlott Azure Active Directory (AD) használata az Azure-ban|[SQL-hitelesítés](security-overview.md) használata|
+|Inkább nem a Azure Active Directory (Azure AD) használata az Azure-ban|[SQL-hitelesítés](security-overview.md) használata|
 |Az AD-t a helyszínen SQL Server használni|[ÖSSZEVONÁSA ad az Azure ad-vel](../../active-directory/hybrid/whatis-hybrid-identity.md), és használja az Azure ad-hitelesítést. Ezzel az egyszeri bejelentkezést is használhatja.|
-|A többtényezős hitelesítés (MFA) betartatására van szükség|A többtényezős hitelesítés megkövetelése a [Microsoft feltételes hozzáférése](conditional-access-configure.md)keretében, valamint az [Azure ad univerzális hitelesítés használata MFA-támogatással](authentication-mfa-ssms-overview.md).|
+|Meg kell kényszeríteni Multi-Factor Authentication|A [Microsoft feltételes hozzáférésének](conditional-access-configure.md)biztosításához a multi-Factor Authentication szabályzatot kell használni, és [Az Azure ad univerzális hitelesítést](authentication-mfa-ssms-overview.md)kell használnia multi-Factor Authentication-támogatással.|
 |Legyenek a Microsoft-fiókok (live.com, outlook.com) vagy más tartományok (gmail.com) vendég fiókjai|Az [Azure ad univerzális hitelesítés](authentication-mfa-ssms-overview.md) használata SQL Database/adattárházban, amely az [Azure ad B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md)használatát teszi lehetővé.|
 |Bejelentkezve a Windowsba egy összevont tartomány Azure AD-beli hitelesítő adataival|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
 |Az Azure-ba nem összevont tartomány hitelesítő adataival vannak bejelentkezve a Windowsba|Az [Azure ad integrált hitelesítésének](authentication-aad-configure.md)használata.|
@@ -125,7 +125,7 @@ Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapc
 - VNet szolgáltatási végpontok
 - Fenntartott IP-címek
 
-#### <a name="firewall"></a>Tűzfal
+#### <a name="firewall"></a>Firewall
 
 A tűzfal nem engedélyezi a hozzáférést a kiszolgálóhoz egy külső entitásból azáltal, hogy csak bizonyos entitások férhetnek hozzá a kiszolgálóhoz. Alapértelmezés szerint a kiszolgálón belüli adatbázisokhoz való összes kapcsolat nem engedélyezett, a többi Azure-szolgáltatástól érkező kapcsolatok kivételével (optionally7). Tűzfalszabály esetén a számítógép IP-címének a tűzfalon keresztüli engedélyezésével megnyithatja a kiszolgálóhoz való hozzáférést csak olyan entitások (például egy fejlesztői számítógép) számára, amelyeknek jóvá kell hagynia. Azt is lehetővé teszi, hogy olyan IP-címtartományt határozzon meg, amelyet engedélyezni szeretne a kiszolgálóhoz való hozzáféréshez. A szervezet fejlesztői számítógépének IP-címei például a tűzfal beállításai lapon egy tartomány megadásával adhatók hozzá.
 
@@ -211,13 +211,13 @@ A következő ábrán az oszlopok főkulcsaihoz tartozó kulcstároló-beállít
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hogyan optimalizálható és biztonságossá tehető a szervezet és a SQL Database közötti forgalom
 
-A szervezet és a SQL Database közötti hálózati forgalom általában a nyilvános hálózaton keresztül lesz átirányítva. Ha azonban úgy dönt, hogy optimalizálja ezt az elérési utat, és biztonságosabbá teszi, megtekintheti az expressz útvonalat. Az Express Route lényegében lehetővé teszi a vállalati hálózat kibővítését az Azure platformra privát kapcsolaton keresztül. Ezzel nem a nyilvános interneten halad át. Magasabb szintű biztonságot, megbízhatóságot és útválasztási optimalizációt is kap, amely alacsonyabb hálózati késéseket és gyorsabb sebességet tesz lehetővé, mint általában a nyilvános interneten. Ha azt tervezi, hogy a szervezet és az Azure közötti jelentős adatmennyiséget szeretne átvinni, az expressz útvonal használatával költségmegtakarítást eredményezhet. Három különböző csatlakozási modell közül választhat a szervezet és az Azure közötti kapcsolathoz:
+A szervezet és a SQL Database közötti hálózati forgalom általában a nyilvános hálózaton keresztül lesz átirányítva. Ha azonban úgy dönt, hogy optimalizálja ezt az elérési utat, és biztonságosabbá teszi, megtekintheti az Azure-ExpressRoute. A ExpressRoute lényegében lehetővé teszi a vállalati hálózat kibővítését az Azure platformra privát kapcsolaton keresztül. Ezzel nem a nyilvános interneten halad át. Magasabb szintű biztonságot, megbízhatóságot és útválasztási optimalizációt is kap, amely alacsonyabb hálózati késéseket és gyorsabb sebességet tesz lehetővé, mint általában a nyilvános interneten. Ha azt tervezi, hogy a szervezet és az Azure közötti jelentős adatmennyiséget szeretne átvinni, a ExpressRoute használatával költségmegtakarítást eredményezhet. Három különböző csatlakozási modell közül választhat a szervezet és az Azure közötti kapcsolathoz:
 
 - [Felhőalapú Exchange közös elhelyezés](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Bármilyen](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Pont – pont](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Az Express Route azt is lehetővé teszi, hogy a megvásárolt sávszélesség legfeljebb 2x-re legyen feldolgozva, felár nélkül. Az expressz útvonal használatával is konfigurálható a régiók közötti kapcsolat. A következő témakörben megtekintheti az ER kapcsolati szolgáltatók listáját: [Express Route Partners and peering Locations](../../expressroute/expressroute-locations.md). A következő cikkek részletesebben ismertetik az expressz útvonalat:
+A ExpressRoute azt is lehetővé teszi, hogy a megvásárolt sávszélesség legfeljebb 2x-re legyen feldolgozva, felár nélkül. Lehetőség van a régiók közötti kapcsolat konfigurálására is a ExpressRoute használatával. A ExpressRoute-kapcsolatok szolgáltatóinak listáját a következő témakörben tekintheti meg: [ExpressRoute Partners és peering Locations](../../expressroute/expressroute-locations.md). A következő cikkek részletesebben ismertetik az expressz útvonalat:
 
 - [Az expressz útvonal bemutatása](../../expressroute/expressroute-introduction.md)
 - [Előfeltételek](../../expressroute/expressroute-prerequisites.md)
@@ -237,7 +237,7 @@ Miután áttelepítette az adatbázist SQL Databasere, figyelni fogja az adatbá
 
 ### <a name="performance-monitoring-and-optimization"></a>Teljesítményfigyelés és optimalizálás
 
-A lekérdezési teljesítmény-ellenőrzésekkel személyre szabott javaslatokat kaphat az adatbázis-számítási feladatokhoz, így az alkalmazások optimális szinten futhatnak – mindig. Azt is beállíthatja, hogy a javaslatok automatikusan érvényesüljenek, és nem kell bajlódnia a karbantartási feladatok elvégzéséhez. A Index Advisor segítségével automatikusan megvalósíthatja az indexelési javaslatokat a számítási feladatok alapján. Ez az úgynevezett automatikus hangolás. A javaslatok úgy alakulnak ki, ahogy az alkalmazás munkaterhelése megváltozik, hogy megadja a legfontosabb javaslatokat. Lehetősége van arra is, hogy manuálisan áttekintse ezeket az ajánlásokat, és alkalmazza őket saját belátása szerint.  
+A lekérdezési teljesítmény-ellenőrzésekkel személyre szabott javaslatokat kaphat az adatbázis-számítási feladatokhoz, így az alkalmazások optimális szinten futhatnak – mindig. Azt is beállíthatja, hogy a javaslatok automatikusan érvényesüljenek, és nem kell bajlódnia a karbantartási feladatok elvégzéséhez. A SQL Database Advisor segítségével automatikusan megvalósíthatja az indexelési javaslatokat a számítási feladatok alapján. Ez az úgynevezett automatikus hangolás. A javaslatok úgy alakulnak ki, ahogy az alkalmazás munkaterhelése megváltozik, hogy megadja a legfontosabb javaslatokat. Lehetősége van arra is, hogy manuálisan áttekintse ezeket az ajánlásokat, és alkalmazza őket saját belátása szerint.  
 
 ### <a name="security-optimization"></a>Biztonsági optimalizálás
 
@@ -281,7 +281,7 @@ Lekérdezheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dyn
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (előzetes verzió) Azure Monitor naplókban
 
-A [Azure monitor naplók](../../azure-monitor/insights/azure-sql.md) lehetővé teszik a kulcsfontosságú Azure SQL Database teljesítmény-metrikák összegyűjtését és megjelenítését, a legfeljebb 150 000 SQL-adatbázis és a 5 000-os SQL rugalmas készletek támogatását munkaterületen. Az értesítések figyelésére és fogadására használható. Több Azure-előfizetéshez és rugalmas készlethez is figyelheti SQL Database és rugalmas készlet mérőszámait, és felhasználhatja az egyes alkalmazási veremben előforduló problémák azonosítására.
+[Azure monitor naplók](../../azure-monitor/insights/azure-sql.md) lehetővé teszik a kulcsfontosságú Azure SQL Database teljesítmény-metrikák összegyűjtését és megjelenítését, a legfeljebb 150 000 adatbázis és a 5 000 SQL rugalmas készletek használatát munkaterületen. Az értesítések figyelésére és fogadására használható. Több Azure-előfizetéshez és rugalmas készlethez is figyelheti SQL Database és rugalmas készlet mérőszámait, és felhasználhatja az egyes alkalmazási veremben előforduló problémák azonosítására.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Észrevettem a teljesítménnyel kapcsolatos problémákat: hogyan különböznek a SQL Database hibaelhárítási módszerei a SQL Server
 
@@ -333,6 +333,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [SQL Database](sql-database-paas-overview.md)megismerése.

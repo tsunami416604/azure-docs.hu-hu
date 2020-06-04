@@ -451,7 +451,7 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk az üzembe helyezésről:
 

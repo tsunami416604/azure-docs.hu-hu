@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309101"
+ms.locfileid: "84324181"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,6 +82,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
 | Memóriabeli OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
+| Egyidejű feldolgozók maximális száma (kérelem) | Gen4:210 * virtuális mag száma + 800<br>Gen5:105 * virtuális mag száma + 800 | Gen4:210 * virtuális mag száma + 800<br>Gen5:105 * virtuális mag száma + 800 |
 | [Írásvédett replikák](../database/read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 | Számítási elkülönítés | Gen5<br/>– 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 60, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
 
@@ -126,6 +127,9 @@ Az SQL felügyelt példány jelenleg csak a következő típusú előfizetések 
 
 ## <a name="regional-resource-limitations"></a>Regionális erőforrásokra vonatkozó korlátozások
 
+> [!Note]
+> Az előfizetések régiójának rendelkezésre állásával kapcsolatos legfrissebb információkért tekintse meg a [hivatalos COVID-19 blogbejegyzést](https://aka.ms/sqlcapacity).
+
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt SQL-példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](../database/quota-increase-request.md) előfizetés típusától függően:
 
 - **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
@@ -150,11 +154,14 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 \*\*A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
+> [!IMPORTANT]
+> Ha a virtuális mag és az alhálózati korlát értéke 0, az azt jelenti, hogy az előfizetése típusának alapértelmezett területi korlátja nincs beállítva. A kvóta-növelési kérést is használhatja az előfizetések hozzáférésének adott régióban való beszerzéséhez, ugyanezen eljárással, amely a szükséges virtuális mag és alhálózati értékeket is megadja.
+
 ## <a name="request-a-quota-increase"></a>Kvóta növelésének kérése
 
 Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

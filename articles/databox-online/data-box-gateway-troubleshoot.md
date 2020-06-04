@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 675ee8b19a870221488ade2f578199f4f53599b9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562457"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338991"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása
 
-Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása.
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Diagnosztika futtatása
 > * Támogatási csomag összeállítása
 > * Hibaelhárítás naplók használatával
-
 
 ## <a name="run-diagnostics"></a>Diagnosztika futtatása
 
@@ -106,6 +107,6 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     |    16002           |    RefreshWorkNeededException                              |    Nem sikerült frissíteni a fájlt, mert nincs teljesen feltöltve.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

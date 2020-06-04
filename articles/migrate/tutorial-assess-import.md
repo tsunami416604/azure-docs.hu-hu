@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114564"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342646"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatai alapján
 
@@ -32,7 +32,7 @@ Vegye figyelembe a következő pontokat:
 - A kiszolgálói információk több alkalommal is feltölthetők a kiszolgálói felmérésbe CSV használatával.
 - Az alkalmazásadatok összegyűjtése hasznos a helyszíni környezet áttelepítésre való kiértékeléséhez. A kiszolgáló értékelése azonban jelenleg nem hajtja végre az alkalmazás szintű értékelést, vagy az értékelés létrehozásakor figyelembe veszi az alkalmazásokat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Töltsön ki egy CSV-fájlt a kiszolgáló adataival.
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállítható a koncepció igazolása. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutatók című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-engedélyek beállítása Azure Migratehoz
 
@@ -68,13 +68,13 @@ Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozás�
 5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
 6. A **Project DEtails**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. További információk:
 
-    - Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+    - Tekintse át a [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és a [Government-felhők](migrate-support-matrix.md#supported-geographies-azure-government) támogatott régióit.
     - Migrálás futtatása során bármilyen célrégiót választhat.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/migrate-project.png)
 
 7. Kattintson a **Tovább** gombra.
-8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next**(kiszolgáló értékelése) elemet.
+8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment Next (kiszolgáló értékelése**  >  **Next**) elemet.
 
     ![Azure Migrate Értékelés létrehozása](./media/tutorial-assess-import/assessment-tool.png)
 
@@ -88,7 +88,7 @@ Töltse le a CSV-sablont, és adja hozzá a kiszolgáló adatait.
 
 ### <a name="download-the-template"></a>A sablon letöltése
 
-1. Az **áttelepítési célok** > **kiszolgálói** > **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: kiszolgáló értékelése**területen válassza a **felderítés**lehetőséget.
 2. A **számítógépek felderítése**lapon válassza az **Importálás CSV használatával**lehetőséget.
 3. A CSV-sablon letöltéséhez kattintson a **Letöltés** gombra. Azt is megteheti, hogy [közvetlenül letölti](https://go.microsoft.com/fwlink/?linkid=2109031).
 
@@ -111,6 +111,7 @@ A következő táblázat összefoglalja a kitöltendő fájl mezőket:
 **Memory (Memória)** | Igen | A kiszolgálóhoz lefoglalt összes memória (MB).
 **Operációs rendszer neve** | Igen | Kiszolgálói operációs rendszer. <br/> Az értékelés felismeri azokat az operációs rendszerek neveit, amelyek megfelelnek vagy tartalmazzák [a listában szereplő](#supported-operating-system-names) neveket.
 **Operációs rendszer verziója** | Nem | Kiszolgáló operációs rendszerének verziója.
+**Operációs rendszer architektúrája** | Nem | Kiszolgálói operációs rendszer architektúrája <br/> Az érvényes értékek: x64, x86, amd64, 32 bites vagy 64 bites
 **Lemezek száma** | Nem | Nem szükséges, ha az egyes lemezek adatait megadja.
 **1. lemez mérete**  | Nem | A lemez maximális mérete GB-ban.<br/>A sablon [oszlopainak hozzáadásával](#add-multiple-disks) további lemezeket is hozzáadhat. Legfeljebb nyolc lemezt adhat hozzá.
 **1. lemez olvasási Ops** | Nem | Lemez olvasási műveletei másodpercenként.
@@ -171,7 +172,7 @@ A kiszolgáló adatainak frissítéséhez importálja újra a kiszolgáló adata
 Annak ellenőrzése, hogy a kiszolgálók megjelennek-e a Azure Portal a felderítés után:
 
 1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-Servers** > **Azure Migrate: kiszolgáló értékelése** lapon válassza ki azt az ikont, amely a **felderített kiszolgálók**darabszámát jeleníti meg.
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon válassza ki azt az ikont, amely a **felderített kiszolgálók**darabszámát jeleníti meg.
 3. Válassza az **importálási alapú** lapot.
 
 ## <a name="set-up-and-run-an-assessment"></a>Értékelés beállítása és futtatása
@@ -192,7 +193,7 @@ A kiszolgálók értékelése során két típusú értékelést hozhat létre.
 
 3. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 4. A **felderítési forrás**területen válassza ki a **Azure Migrate importálásával hozzáadott gépeket**.
-5. Az értékelés tulajdonságainak áttekintéséhez válassza az **összes megtekintése** lehetőséget.
+5. Válassza az **Összes megtekintése** elemet az értékelési tulajdonságok áttekintéséhez.
 
     ![Értékelés tulajdonságai](./media/tutorial-assess-physical/view-all.png)
 
@@ -202,7 +203,7 @@ A kiszolgálók értékelése során két típusú értékelést hozhat létre.
 
     ![Értékelés létrehozása](./media/tutorial-assess-physical/assessment-create.png)
 
-9. Az értékelés létrehozása után tekintse meg a **kiszolgálók** > **Azure Migrate: kiszolgáló-értékelési** > **értékelések**.
+9. Az értékelés létrehozása után tekintse meg a **kiszolgálók**  >  **Azure Migrate: kiszolgáló-értékelési**  >  **értékelések**.
 10. A Microsoft Excel-fájlként való letöltéséhez válassza az **értékelés exportálása** lehetőséget.
 
 ## <a name="review-an-assessment"></a>Értékelés áttekintése
@@ -215,7 +216,7 @@ Az értékelés a következőket írja le:
 
 ### <a name="view-an-assessment"></a>Értékelés megtekintése
 
-1. Az **áttelepítési célok** > **kiszolgálóin**válassza az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemet.
+1. Az **áttelepítési célok**  >  **kiszolgálóin**válassza az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemet.
 2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához.
 
     ![Értékelés összegzése](./media/tutorial-assess-physical/assessment-summary.png)
@@ -405,7 +406,7 @@ A CSV-fájlban megadott operációsrendszer-neveknek egyezniük kell, vagy tarta
    :::column-end:::
 :::row-end:::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

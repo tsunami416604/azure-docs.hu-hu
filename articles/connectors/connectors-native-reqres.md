@@ -5,45 +5,56 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249161"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325133"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített kérelem-trigger és válasz művelettel olyan automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek fogadják és válaszolnak a bejövő HTTPS-kérelmekre. Használhatja például a logikai alkalmazást:
 
 * Egy HTTPS-kérelem fogadása és megválaszolása egy helyszíni adatbázisban lévő adatszolgáltatáshoz.
+
 * Munkafolyamat elindítása külső webhook-esemény bekövetkezésekor.
+
 * Egy másik logikai alkalmazástól érkező HTTPS-hívás fogadása és megválaszolása.
 
 A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](../active-directory/develop/about-microsoft-identity-platform.md) (Azure ad OAuth) használatát a logikai alkalmazás bejövő hívásainak engedélyezéséhez. A hitelesítés engedélyezésével kapcsolatos további információkért tekintse [meg a biztonságos hozzáférés és adatok Azure Logic apps – Azure ad OAuth-hitelesítés engedélyezése](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)című témakört.
-
-> [!NOTE]
-> A kérelem-trigger *csak* TRANSPORT Layer Security (TLS) 1,2-et támogatja a bejövő hívásokhoz. A kimenő hívások a TLS 1,0, 1,1 és 1,2 protokollt támogatják. További információ: [a TLS 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
->
-> Ha TLS-kézfogási hibákat kap, győződjön meg arról, hogy a TLS 1,2-et használja. 
-> A bejövő hívások esetében itt láthatók a támogatott titkosítási csomagok:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
 
 * A [Logic apps](../logic-apps/logic-apps-overview.md)alapszintű ismerete. Ha most ismerkedik a Logic apps szolgáltatással, Ismerje meg, [hogyan hozhatja létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
+
+* A bejövő hívások *csak* TRANSPORT Layer Security (TLS) 1,2-es támogatást támogatják. Ha TLS-kézfogási hibákat kap, győződjön meg arról, hogy a TLS 1,2-et használja. További információ: [a TLS 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem). A kimenő hívások a TLS 1,0, 1,1 és 1,2 protokollt támogatják a célként megadott végpont képességei alapján.
+
+* A bejövő hívások a következő titkosítási csomagokat támogatják:
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 
@@ -273,6 +284,6 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193561"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345172"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -22,7 +22,7 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 ## <a name="general"></a>Általános kérdések
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
-Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
+Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információ](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
@@ -227,10 +227,13 @@ Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazás
 
 5. Adja hozzá a bemeneti/kimeneti parancsok befagyasztása és feloldása az alkalmazás-konzisztenciaot igénylő alkalmazások előzetes és utólagos lépéseiben. Dönthet úgy is, hogy hozzáad egy másik szkriptet, és meghívja azt a "customscript.sh" értékkel a pre és a post kapcsolóval.
 
+>[!Note]
+>Az egyéni parancsfájlok támogatásához a Site Recovery-ügynök verziószámának 9,24-es vagy újabb verziójúnak kell lennie.
+
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?
@@ -269,6 +272,6 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)
 

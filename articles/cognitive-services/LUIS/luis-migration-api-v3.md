@@ -1,15 +1,15 @@
 ---
 title: Az előrejelzési végpont módosításai a V3 API-ban
 description: Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 3. verziójú Endpoint API-kat.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849331"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338192"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -281,6 +281,6 @@ A v3-as verzióban Ugyanez az eredmény szerepel az `verbose` entitás metaadata
 
 A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényteleníteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API-kra.

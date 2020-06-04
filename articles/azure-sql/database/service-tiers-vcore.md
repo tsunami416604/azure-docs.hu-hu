@@ -1,6 +1,6 @@
 ---
 title: Virtuális mag beszerzési modell áttekintése
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: A virtuális mag vásárlási modellje lehetővé teszi a számítási és tárolási erőforrások egymástól független méretezését, a helyszíni teljesítmény egyeztetését, valamint a Azure SQL Database és az Azure SQL felügyelt példány árának optimalizálását.
 services: sql-database
 ms.service: sql-database
@@ -10,28 +10,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044093"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324436"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database & SQL felügyelt példánya 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Virtuális mag-modell áttekintése – Azure SQL Database és az Azure SQL felügyelt példánya 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database és az Azure SQL felügyelt példányai által használt Virtual Core (virtuális mag) vásárlási modell számos előnnyel jár:
 
-- Nagyobb számítási, memória-, IO-és tárolási korlátok.
+- Nagyobb számítási, memória-, I/O-és tárolási korlátok.
 - Szabályozhatja a hardver generációját, hogy jobban megfeleljen a számítási és memória-követelményeknek.
 - A [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) és a [fenntartott példány (ri)](reserved-capacity-overview.md)díjszabási kedvezményei.
 - A hardver részletes adatainak nagyobb átláthatósága a számítási teljesítmény érdekében megkönnyíti a helyszíni telepítések áttelepítésének megtervezését.
 
 ## <a name="service-tiers"></a>Szolgáltatásszintek
 
-A virtuális mag modellben található szolgáltatási rétegek beállításai közé tartozik a általános célú, a üzletileg kritikus és a nagy kapacitású. A szolgáltatási szinten általában a tárolási architektúra, a tárhely és az IO-korlátok, valamint a rendelkezésre állással és a vész-helyreállítással kapcsolatos üzletmenet-folytonossági lehetőségek vannak meghatározva.
+A virtuális mag modellben található szolgáltatási rétegek beállításai közé tartozik a általános célú, a üzletileg kritikus és a nagy kapacitású. A szolgáltatási szintek általában meghatározzák a tárolási architektúrát, a tárhelyet és az I/O-korlátokat, valamint a rendelkezésre állással és a vész-helyreállítással kapcsolatos üzletmenet-folytonossági lehetőségeket.
 
-||**Általános célú**|**Üzleti szempontból kritikus**|**Rugalmas skálázás**|
+||**általános célú**|**üzletileg kritikus**|**Rugalmas skálázás**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladat. A szolgáltatás költségvetés-orientált, kiegyensúlyozott és méretezhető számítási és tárolási lehetőségeket kínál. |Több elkülönített replika használatával a lehető legnagyobb rugalmasságot nyújtja az üzleti alkalmazások számára, és az adatbázis-replikák esetében a legmagasabb I/O-teljesítményt biztosítja.|A legtöbb üzleti számítási feladat nagy mértékben méretezhető tárolási és olvasási méretezési követelményekkel.  Nagyobb rugalmasságot biztosít a hibákhoz azáltal, hogy lehetővé teszi több elkülönített adatbázis-replika konfigurációját. |
 |Storage|Távoli tárterületet használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**Kiszolgáló nélküli számítás**:<br/>5 GB – 3 TB<br/>**SQL felügyelt példány**: 32 GB – 8 TB |A helyi SSD-tárolót használ.<br/>**SQL Database kiépített számítás**:<br/>5 GB – 4 TB<br/>**SQL felügyelt példány**:<br/>32 GB – 4 TB |A tárterület rugalmas automatikus növekedése igény szerint. Akár 100 TB tárterületet is támogat. A helyi SSD-tárolót használ a helyi puffer-készlet gyorsítótárához és a helyi adattároláshoz. Az Azure-beli távoli tárterületet használja végső hosszú távú adattárként. |
@@ -46,7 +46,7 @@ A virtuális mag modellben található szolgáltatási rétegek beállításai k
 
 Az adott munkaterhelés szolgáltatási szintjeinek kiválasztásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
-- [Mikor válassza ki az általános célú szolgáltatási szintet](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Mikor válassza ki a általános célú szolgáltatási szintet](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [Mikor válassza ki a üzletileg kritikus szolgáltatási szintet](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Mikor válassza ki a nagy kapacitású szolgáltatási szintet](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -112,7 +112,7 @@ Az erőforrás-korlátokkal kapcsolatos további információkért lásd: [az ö
 
 ### <a name="selecting-a-hardware-generation"></a>Hardver-létrehozás kiválasztása
 
-A Azure Portal a létrehozáskor kiválaszthatja a SQL Database vagy a készlet hardveres generációját, vagy megváltoztathatja egy meglévő SQL-adatbázis vagy-készlet hardveres létrehozását is.
+A Azure Portalban kiválaszthatja a hardver generációját a létrehozáskor SQL Database adatbázis vagy készlet számára, vagy megváltoztathatja egy meglévő SQL-adatbázis vagy-készlet hardveres létrehozását is.
 
 **Hardver létrehozásának kiválasztása SQL Database vagy-készlet létrehozásakor**
 
@@ -147,7 +147,7 @@ Az **alapvető beállítások** lapon válassza az **adatbázis konfigurálása*
   
 **Meglévő SQL felügyelt példány hardveres létrehozásának módosítása**
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Az Azure Portal](#tab/azure-portal)
 
 Az SQL felügyelt példánya lapon válassza ki az **árképzési** csomag hivatkozását a beállítások szakaszban.
 
@@ -165,7 +165,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 További részletekért keresse [meg a set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) parancsot.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Használja az alábbi CLI-parancsot:
 
@@ -220,7 +220,7 @@ A **részletek** lapon adja meg a következőket:
 A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg a következőt: 
 - [SQL Database létrehozása a Azure Portal használatával](single-database-create-quickstart.md)
@@ -228,7 +228,7 @@ Első lépésként tekintse meg a következőt:
 
 A díjszabással kapcsolatos részletekért tekintse meg a [Azure SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-Az általános célú és az üzleti szempontból kritikus szolgáltatási szinten elérhető konkrét számítási és tárolási méretek részletes ismertetését lásd: 
+Az általános célú és az üzleti szempontból kritikus szolgáltatási szinten elérhető konkrét számítási és tárolási méretek részletes ismertetését lásd:
 
 - [Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-single-databases.md).
 - [a készletezett Azure SQL Database virtuális mag-alapú erőforrás-korlátai](resource-limits-vcore-elastic-pools.md).

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845546"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323552"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MySQL adatbázisainak biztonsági mentésére és visszaállítására
@@ -98,7 +98,8 @@ A cél Azure Database for MySQL kiszolgáló gyorsabb adatterhelésre való elő
 - slow_query_log – az OFF érték kikapcsolásával kikapcsolhatja a lassú lekérdezési naplót. Ezzel a művelettel elkerülhető, hogy az adatterhelések során a lassú lekérdezési naplózás okozza a terhelést.
 - query_store_capture_mode – állítsa mindkettőt a NONE értékre a lekérdezési tároló kikapcsolásához. Ezzel a művelettel elkerülhető a lekérdezési tár mintavételi tevékenységei által okozott terhelés.
 - innodb_buffer_pool_size – a-kiszolgáló vertikális felskálázása 32 virtuális mag memória optimalizált SKU-ra a portál díjszabási szintjéről az áttelepítés során a innodb_buffer_pool_size növeléséhez. Innodb_buffer_pool_size csak Azure Database for MySQL kiszolgáló számítási felskálázásával növelhető.
-- a Migrálás sebességének növelése érdekében innodb_write_io_threads & innodb_write_io_threads – a Azure Portal kiszolgálói paramétereinek 16-ra változnak.
+- innodb_io_capacity & innodb_io_capacity_max – váltson a Azure Portal kiszolgálói paramétereinek 9000 értékre, hogy javítsa az i/o-kihasználtságot az áttelepítési sebesség optimalizálása érdekében.
+- innodb_write_io_threads & innodb_write_io_threads – az áttelepítés gyorsaságának javításához a Azure Portal kiszolgáló paraméterei közül a 4 értékre kell váltania.
 - A tárolási rétegek vertikális felskálázása – a Azure Database for MySQL kiszolgáló IOPs fokozatosan növekszik a tárolási rétegek növekedésével. A gyorsabb terhelés érdekében érdemes lehet megnövelni a tárolási szintet, hogy növelje a IOPs kiépített mennyiségét. Ne feledje, hogy a tárterület csak vertikális felskálázásra használható, nem.
 
 Az áttelepítés befejezése után visszaállíthatja a kiszolgálói paramétereket és a számítási rétegek konfigurációját a korábbi értékekre. 
@@ -133,6 +134,6 @@ Az adatbázis importálása hasonló az exportáláshoz. Hajtsa végre a követk
 ## <a name="known-issues"></a>Ismert problémák
 Az ismert problémákkal, tippekkel és trükkökkel kapcsolatban javasoljuk, hogy tekintse meg a [techcommunity blogot](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Alkalmazások Összekötése Azure Database for MySQLhoz](./howto-connection-string.md).
 - Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://aka.ms/datamigration).

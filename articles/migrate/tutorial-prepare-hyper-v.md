@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22fd5bc87494eb2fc162828363e7ca70afe1bbf0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641634"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322165"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
 Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni Hyper-V virtuális gépek értékelésére a [Azure Migrate használatával: kiszolgáló értékelése](migrate-services-overview.md#azure-migrate-server-assessment-tool)és a Hyper-v virtuális gépek áttelepítése [Azure Migrate használatával: kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
-Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését és áttelepítését bemutató sorozat első része. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -29,7 +29,7 @@ Ez az oktatóanyag a Hyper-V virtuális gépek Azure-ba való értékelését é
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a Hyper-V felmérési és áttelepítési útmutatóit.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
@@ -73,7 +73,7 @@ Az Azure AD-alkalmazás létrehozásához az alábbi módszerek egyikének haszn
 
 A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
 
-1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory** > **felhasználók** > **felhasználói beállításait**.
+1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory**  >  **felhasználók**  >  **felhasználói beállításait**.
 2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** .
 
     ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
@@ -126,11 +126,10 @@ Futtassa a szkriptet a következő módon:
     ```
     Példa használata:
     ```
-    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
-    SHA256
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
 
-4.    A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal:
+4. A parancsfájl integritásának ellenőrzése után futtassa a parancsfájlt minden Hyper-V-gazdagépen a következő PowerShell-paranccsal:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -227,7 +226,7 @@ A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt
 2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d312346accc4fb6781744343911158bb538c0ccf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457433"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324079"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Az alkalmazás konfigurációs adatai titkosítása az ügyfél által felügyelt kulcsok használatával
 Az Azure-alkalmazás konfigurációja [titkosítja a bizalmas adatokat a nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Az ügyfél által felügyelt kulcsok használata fokozott adatvédelmet biztosít, mivel lehetővé teszi a titkosítási kulcsok kezelését.  A felügyelt kulcs titkosításának használatakor az alkalmazás konfigurációjában található összes bizalmas információ titkosítása egy felhasználó által megadott Azure Key Vault kulccsal történik.  Ez lehetővé teszi a titkosítási kulcs igény szerinti elforgatását.  Emellett lehetővé teszi az Azure-alkalmazások konfigurációjának bizalmas adatokhoz való hozzáférésének visszavonását azáltal, hogy visszavonja az alkalmazás konfigurációs példányának kulcshoz való hozzáférését.
@@ -36,7 +36,7 @@ A következő összetevők szükségesek ahhoz, hogy sikeresen engedélyezzék a
 
 Miután konfigurálta ezeket az erőforrásokat, két lépéssel engedélyezheti az Azure-alkalmazások konfigurációját a Key Vault kulcs használatára:
 1. Felügyelt identitás társítása az Azure app Configuration-példányhoz
-2. Adja meg az `GET`identitást `WRAP`, `UNWRAP` és az engedélyeket a cél Key Vault hozzáférési házirendjében.
+2. Adja meg az identitást `GET` , `WRAP` és az `UNWRAP` engedélyeket a cél Key Vault hozzáférési házirendjében.
 
 ## <a name="enable-customer-managed-key-encryption-for-your-azure-app-configuration-instance"></a>Az ügyfél által felügyelt kulcs titkosításának engedélyezése az Azure app Configuration-példányhoz
 A kezdéshez szüksége lesz egy megfelelően konfigurált Azure app Configuration-példányra. Ha még nem rendelkezik elérhető alkalmazás-konfigurációs példánnyal, kövesse az alábbi rövid útmutatók egyikét:
@@ -49,33 +49,33 @@ A kezdéshez szüksége lesz egy megfelelően konfigurált Azure app Configurati
 > A Azure Cloud Shell egy ingyenes interaktív felület, amellyel a cikkben ismertetett parancssori utasításokat futtathatja.  A közös Azure-eszközök előre telepítve vannak, beleértve a .NET Core SDK. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
 
 ### <a name="create-and-configure-an-azure-key-vault"></a>Azure Key Vault létrehozása és konfigurálása
-1. Hozzon létre egy Azure Key Vault az Azure CLI használatával.  Vegye figyelembe, `vault-name` hogy `resource-group-name` a és a felhasználó által megadott és egyedinek kell lennie.  Ezeket `contoso-resource-group` a `contoso-vault` példákat használjuk.
+1. Hozzon létre egy Azure Key Vault az Azure CLI használatával.  Vegye figyelembe, hogy a `vault-name` és `resource-group-name` a felhasználó által megadott és egyedinek kell lennie.  `contoso-vault` `contoso-resource-group` Ezeket a példákat használjuk.
 
     ```azurecli
     az keyvault create --name contoso-vault --resource-group contoso-resource-group
     ```
     
-1. A Key Vault törlésének és eltávolításának engedélyezése. Helyettesítse be az 1. lépésben`contoso-vault`létrehozott Key Vault () és`contoso-resource-group`erőforráscsoport () nevét.
+1. A Key Vault törlésének és eltávolításának engedélyezése. Helyettesítse `contoso-vault` `contoso-resource-group` be az 1. lépésben létrehozott Key Vault () és erőforráscsoport () nevét.
 
     ```azurecli
     az keyvault update --name contoso-vault --resource-group contoso-resource-group --enable-purge-protection --enable-soft-delete
     ```
     
-1. Hozzon létre egy Key Vault kulcsot. Adjon meg egyedi `key-name` nevet ehhez a kulcshoz, és cserélje le az 1.`contoso-vault`lépésben létrehozott Key Vault () nevét. Válassza ki, hogy `RSA` szeretné `RSA-HSM` -e vagy titkosítani.
+1. Hozzon létre egy Key Vault kulcsot. Adjon meg egyedi `key-name` nevet ehhez a kulcshoz, és cserélje le az `contoso-vault` 1. lépésben létrehozott Key Vault () nevét. Válassza ki, hogy szeretné `RSA` -e vagy `RSA-HSM` titkosítani.
 
     ```azurecli
     az keyvault key create --name key-name --kty {RSA or RSA-HSM} --vault-name contoso-vault
     ```
     
-    A parancs kimenete a generált kulcs kulcs-AZONOSÍTÓját ("Kid") jeleníti meg.  Jegyezze fel a feladat későbbi részében használandó kulcs AZONOSÍTÓját.  A kulcs AZONOSÍTÓjának formátuma: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}`.  A kulcs AZONOSÍTÓjának három fontos összetevője van:
+    A parancs kimenete a generált kulcs kulcs-AZONOSÍTÓját ("Kid") jeleníti meg.  Jegyezze fel a feladat későbbi részében használandó kulcs AZONOSÍTÓját.  A kulcs AZONOSÍTÓjának formátuma: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}` .  A kulcs AZONOSÍTÓjának három fontos összetevője van:
     1. Key Vault URI: "https://{My Key Vault}. Vault. Azure. net
     1. Key Vault kulcsnév: {Key Name}
     1. Key Vault kulcs verziója: {Key Version}
 
-1. Hozzon létre egy rendszerhez rendelt felügyelt identitást az Azure CLI használatával, és helyettesítse be az alkalmazás konfigurációs példányának nevét és az előző lépésekben használt erőforráscsoportot. A felügyelt identitást a felügyelt kulcs elérésére fogja használni a rendszer. Az alkalmazás `contoso-app-config` segítségével szemlélteti az alkalmazások konfigurációs példányának nevét:
+1. Hozzon létre egy rendszerhez rendelt felügyelt identitást az Azure CLI használatával, és helyettesítse be az alkalmazás konfigurációs példányának nevét és az előző lépésekben használt erőforráscsoportot. A felügyelt identitást a felügyelt kulcs elérésére fogja használni a rendszer. Az `contoso-app-config` alkalmazás segítségével szemlélteti az alkalmazások konfigurációs példányának nevét:
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     A parancs kimenete tartalmazza a rendszerhez rendelt identitás elsődleges AZONOSÍTÓját ("principalId") és a bérlő AZONOSÍTÓját ("tenandId").  Ezt a rendszer a felügyelt kulcshoz való hozzáférés megadására fogja használni.
@@ -89,13 +89,13 @@ A kezdéshez szüksége lesz egy megfelelően konfigurált Azure app Configurati
     }
     ```
 
-1. Az Azure app Configuration-példány felügyelt identitásának hozzáférést kell biztosítania a kulcshoz a kulcs érvényesítéséhez, titkosításához és visszafejtéséhez. Azon műveletek meghatározott csoportja, amelyekhez hozzáférésre van szükség, `GET`az `WRAP`alábbiakat `UNWRAP` tartalmazza:,, és a kulcsokhoz.  A hozzáférés megadása megköveteli az alkalmazás konfigurációs példányának felügyelt identitásának résztvevő-AZONOSÍTÓját. Ez az érték az előző lépésben kapott értéket. Az alábbiakban látható `contoso-principalId`. Engedély megadása a felügyelt kulcsnak a parancssor használatával:
+1. Az Azure app Configuration-példány felügyelt identitásának hozzáférést kell biztosítania a kulcshoz a kulcs érvényesítéséhez, titkosításához és visszafejtéséhez. Azon műveletek meghatározott csoportja, amelyekhez hozzáférésre van szükség, az alábbiakat tartalmazza: `GET` , `WRAP` , és `UNWRAP` a kulcsokhoz.  A hozzáférés megadása megköveteli az alkalmazás konfigurációs példányának felügyelt identitásának résztvevő-AZONOSÍTÓját. Ez az érték az előző lépésben kapott értéket. Az alábbiakban látható `contoso-principalId` . Engedély megadása a felügyelt kulcsnak a parancssor használatával:
 
     ```azurecli
     az keyvault set-policy -n contoso-vault --object-id contoso-principalId --key-permissions get wrapKey unwrapKey
     ```
 
-1. Miután az Azure-alkalmazás konfigurációs példánya hozzáfér a felügyelt kulcshoz, az Azure CLI használatával engedélyezheti az ügyfél által felügyelt kulcs funkcióját a szolgáltatásban. A legfontosabb létrehozási lépések során rögzített következő tulajdonságokat hívja fel `key name` `key vault URI`:.
+1. Miután az Azure-alkalmazás konfigurációs példánya hozzáfér a felügyelt kulcshoz, az Azure CLI használatával engedélyezheti az ügyfél által felügyelt kulcs funkcióját a szolgáltatásban. A legfontosabb létrehozási lépések során rögzített következő tulajdonságokat hívja fel: `key name` `key vault URI` .
 
     ```azurecli
     az appconfig update -g contoso-resource-group -n contoso-app-config --encryption-key-name key-name --encryption-key-version key-version --encryption-key-vault key-vault-Uri

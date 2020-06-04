@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 06/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f0785f8ce2528d0c17a8aca520212df931bf394
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515849"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343370"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>Virtuális központ tényleges útvonalának megtekintése
 
@@ -42,14 +42,14 @@ A táblázat alján található görgetősáv használatával megtekintheti az "
 
 | **Előtag** |  **Következő ugrási típus** | **Következő ugrás** |  **Útvonal forrása** |**Elérési út** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
+| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
+|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
+|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
 |10.4.0.0/16|Virtual Network-kapcsolatok| Hivatkozáson keresztül |  |  |
-|10.5.0.0/16| IP-cím| 10.4.0.6|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP-cím| `<Azure Firewall IP>` |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Távoli központ|10.8.0.6, 10.8.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Távoli központ|  Hivatkozáson keresztül |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/Providers/Microsoft.Network/virtualhubs/westhub_1| |
+|10.5.0.0/16| IP-cím| 10.4.0.6|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
+|0.0.0.0/0| IP-cím| `<Azure Firewall IP>` |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
+|10.22.1.0/16| Távoli központ|10.8.0.6, 10.8.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
+|10.9.0.0/16| Távoli központ|  Hivatkozáson keresztül |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_1| |
 
 >[!NOTE]
 > Ha az USA keleti régiója és a Nyugat-európai hubok nem kommunikálnak egymással a példában szereplő topológiában, a megtanult útvonal (10.9.0.0/16) nem létezik. A hubok csak azokat a hálózatokat hirdetik, amelyek közvetlenül csatlakoznak hozzájuk.
@@ -59,7 +59,7 @@ A táblázat alján található görgetősáv használatával megtekintheti az "
 
 ### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Tudnivalók a hub útválasztási táblájáról
 
-Létrehozhatja a virtuális központ útvonalát, és alkalmazhatja az útvonalat a virtuális központ útválasztási táblájára. A virtuális központ útválasztási táblázatán több útvonalat is alkalmazhat. Ezzel a beállítással megadhat egy útvonalat a cél VNet egy IP-cím (jellemzően a hálózati virtuális berendezés (NVA) által küllős VNet) használatával. A NVA kapcsolatos további információkért lásd: [forgalom átirányítása egy virtuális központból egy NVA](virtual-wan-route-table-portal.md).
+Létrehozhatja a virtuális központ útvonalát, és alkalmazhatja az útvonalat a virtuális központ útválasztási táblájára. A virtuális központ útválasztási táblázatán több útvonalat is alkalmazhat. Ezzel a beállítással megadhat egy útvonalat a cél VNet egy IP-cím (jellemzően a hálózati virtuális berendezés (NVA) által küllős VNet) használatával. A NVA kapcsolatos további információkért lásd: [forgalom átirányítása egy virtuális központból egy NVA](virtual-wan-route-table-portal.md). Vegye figyelembe, hogy ezek az útvonalak nem jelennek meg a hatályos útválasztási táblázatban. A hatályos útválasztási táblázat csak a helyi és a távoli hubok előtagjait, valamint a BGP-n keresztül megszerzett útvonalakat és Virtual Networkeket tartalmazza.
 
 ### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Az alapértelmezett útvonal (0.0.0.0/0)
 
@@ -67,6 +67,6 @@ A virtuális központ képes propagálni egy megtanult alapértelmezett útvonal
 
 Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik. A rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megismerte a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely esetében engedélyezve van a bújtatás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintését](virtual-wan-about.md).

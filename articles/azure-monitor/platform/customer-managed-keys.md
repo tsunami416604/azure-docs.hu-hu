@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 9a80adbbeda2754f9f08a4d2f16b8caf9263b087
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310886"
+ms.locfileid: "84340851"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -40,7 +40,7 @@ Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja 
 A CMK konfigurálása után a *fürt* erőforrásaihoz tartozó munkaterületekre betöltött összes adatot titkosítja Key Vault a kulcsával. Bármikor leválaszthatja a munkaterületeket a *fürt* erőforrásaiból. Az új adatai bekerülnek a Log Analytics tárterületre, és titkosítva vannak a Microsoft-kulccsal, míg az új és a régi adatait zökkenőmentesen le lehet kérdezni.
 
 
-![A CMK áttekintése](media/customer-managed-keys/cmk-overview-8bit.png)
+![A CMK áttekintése](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics a Key Vault számára engedélyekkel rendelkező, felügyelt identitással rendelkező *fürterőforrás* – az identitást a dedikált log Analytics fürt tárterületére propagálja a rendszer.

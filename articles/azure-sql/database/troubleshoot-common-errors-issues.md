@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása
-description: Útmutatást nyújt Azure SQL Database kapcsolódási problémáinak elhárításához és a más Azure SQL Database vagy SQL felügyelt példányok adott problémáinak megoldásához
+description: Útmutatást nyújt a Azure SQL Database kapcsolódási problémáinak elhárításához és az egyéb Azure SQL Database vagy az Azure SQL felügyelt példányok adott problémáinak megoldásához
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
@@ -9,17 +9,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0420138ac7366916e8b83cf40abcab1a376017bd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e22f962c69091e783b8f6ab55905a02025213f5e
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116808"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321393"
 ---
-# <a name="troubleshooting-connectivity-issues-and-other-errors-with-sql-database-and-sql-managed-instance"></a>A kapcsolódási problémák és az SQL Database és az SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>A kapcsolódási problémák és a Azure SQL Database és az Azure SQL felügyelt példányával kapcsolatos egyéb hibák elhárítása
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Hibaüzenetek jelenhetnek meg, ha a Azure SQL Database vagy az SQL felügyelt példányával létesített kapcsolat meghiúsul. Ezeket a kapcsolódási problémákat az újrakonfigurálás, a tűzfalbeállítások, a kapcsolat időtúllépése, a helytelen bejelentkezési adatok vagy az ajánlott eljárások és tervezési irányelvek alkalmazása okozhatja az [alkalmazás tervezési](develop-overview.md) folyamata során. Emellett, ha elérte a Azure SQL Database vagy SQL felügyelt példányok erőforrásainak maximális korlátját, akkor már nem tud csatlakozni.
+Hibaüzenetek jelenhetnek meg, ha a Azure SQL Database vagy az Azure SQL felügyelt példányának kapcsolata meghiúsul. Ezeket a kapcsolódási problémákat az újrakonfigurálás, a tűzfalbeállítások, a kapcsolat időtúllépése, a helytelen bejelentkezési adatok vagy az ajánlott eljárások és tervezési irányelvek alkalmazása okozhatja az [alkalmazás tervezési](develop-overview.md) folyamata során. Emellett, ha elérte a Azure SQL Database vagy SQL felügyelt példányok erőforrásainak maximális korlátját, akkor már nem tud csatlakozni.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Átmeneti hibák hibaüzenetei (40197, 40613 és egyebek)
 
@@ -30,7 +30,7 @@ Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mért�
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 4060 |16 |A bejelentkezés által kért "%. &#x2a;ls" adatbázis nem nyitható meg. A bejelentkezés sikertelen. További információ: [4000 – 4999. hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |A szolgáltatás hibát észlelt a kérelem feldolgozásakor. Próbálkozzon újra. Hibakód:% d.<br/><br/>Ez a hibaüzenet akkor jelenik meg, ha a szolgáltatás szoftver vagy hardveres frissítés, hardverhiba vagy bármilyen más feladatátvételi probléma miatt leáll. A 40197-es hiba üzenetében beágyazott hibakód (% d) további információkat tartalmaz a hiba vagy a feladatátvétel során. Néhány példa a hibakódokra a 40197-es hiba üzenetében található, 40020, 40143, 40166 és 40540.<br/><br/>Az újracsatlakozás automatikusan csatlakozik az adatbázis egy kifogástalan állapotú példányához. Az alkalmazásnak meg kell fognia a 40197-es hibát, be kell jelentkeznie a (z) "% d" beágyazott hibakódra az üzenetben a hibaelhárításhoz, és újra kell csatlakoznia SQL Database, amíg az erőforrások elérhetővé válnak, és a kapcsolat újból létrejön. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
+| 40197 |17 |A szolgáltatás hibát észlelt a kérelem feldolgozásakor. Próbálkozzon újra. Hibakód:% d.<br/><br/>Ez a hibaüzenet akkor jelenik meg, ha a szolgáltatás szoftver vagy hardveres frissítés, hardverhiba vagy bármilyen más feladatátvételi probléma miatt leáll. A 40197-es hiba üzenetében beágyazott hibakód (% d) további információkat nyújt a hiba vagy a feladatátvételi típusról. Néhány példa a hibakódokra a 40197-es hiba üzenetében található, 40020, 40143, 40166 és 40540.<br/><br/>Az újracsatlakozás automatikusan csatlakozik az adatbázis egy kifogástalan állapotú példányához. Az alkalmazásnak meg kell fognia a 40197-es hibát, be kell jelentkeznie a (z) "% d" beágyazott hibakódra az üzenetben a hibaelhárításhoz, és újra kell csatlakoznia SQL Database, amíg az erőforrások elérhetővé válnak, és a kapcsolat újból létrejön. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |A szolgáltatás jelenleg foglalt. Próbálja megismételni a kérést 10 másodperc múlva. Incidens azonosítója:% ls. Kód:% d. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md).|
 | 40613 |17 |A (z)%. &#x2a;ls kiszolgáló "%. &#x2a;ls" adatbázisa jelenleg nem érhető el. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is fennáll, forduljon az ügyfél-támogatási szolgálathoz, és adja meg nekik a (z)%. &#x2a;ls munkamenet-nyomkövetési AZONOSÍTÓját.<br/><br/> Ez a hiba akkor fordulhat elő, ha már létezik egy meglévő dedikált rendszergazdai kapcsolódás (DAC) az adatbázishoz. További információ: [átmeneti hibák](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |A kérelem nem dolgozható fel. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg foglalt. Próbálkozzon újra a kéréssel. További információkért lásd: <br/>&bull;&nbsp; [Logikai SQL Server erőforrás-korlátok](resource-limits-logical-server.md)<br/>&bull;&nbsp; [DTU-alapú korlátok önálló adatbázisokhoz](service-tiers-dtu.md)<br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [virtuális mag-alapú korlátok önálló adatbázisokhoz](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md)<br/>&bull;Az &nbsp; [Azure SQL felügyelt példányának erőforrás-korlátai](../managed-instance/resource-limits.md). |
@@ -314,7 +314,7 @@ A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](elastic-pool-scale.md)méretezése.|
 | 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;&nbsp; [Rugalmas készletek DTU-alapú korlátai](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [rugalmas készletek virtuális mag-alapú korlátai](resource-limits-vcore-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
-| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N.A. |
+| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |N/A |
 | 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
 | 40858 | 16 |A (z) "% ls" rugalmas készlet már létezik a következő kiszolgálón: "% ls". A megadott rugalmas készlet már létezik a megadott kiszolgálón. | Adja meg az új rugalmas készlet nevét. |
 | 40859 | 16 |A rugalmas készlet nem támogatja a (z)% ls szolgáltatási szintet. A megadott szolgáltatási szintet nem támogatja a rugalmas készlet kiépítés. |Adja meg a megfelelő kiadást, vagy hagyja üresen a szolgáltatási szintet, hogy az alapértelmezett szolgáltatási szintet használja. |
@@ -387,7 +387,7 @@ Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további ada
 
 A naplózás engedélyezésével kapcsolatos további információkért lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokban](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure SQL Database kapcsolati architektúra](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

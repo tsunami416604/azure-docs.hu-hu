@@ -9,12 +9,12 @@ ms.date: 05/26/2020
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.openlocfilehash: b6eac711ed6c420330b036cb6094c841508cee9f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 76f37beb22e28c0232efd0d62e82c8d3b60c78dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791578"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345087"
 ---
 # <a name="tutorial-deploy-an-azure-machine-learning-workspace-using-a-resource-manager-template"></a>Oktatóanyag: Azure Machine learning-munkaterület üzembe helyezése Resource Manager-sablonnal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Azure Machine learning-mu
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-machine-learning-create/)származik.
 
-:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-machine-learning-create/azuredeploy.json" range="1-258" highlight="224-254":::
 
 A következő erőforrások vannak definiálva a sablonban:
 
@@ -76,7 +76,7 @@ Ekkor megjelenik a Azure Machine Learning kezdőlapja:
 
 A telepítéshez társított összes erőforrás megjelenítéséhez kattintson a bal felső sarokban található hivatkozásra a munkaterület nevével (a képernyőképen `my_templated_ws` ). Ez a hivatkozás a Azure Portal található erőforráscsoporthoz viszi. Az erőforráscsoport neve, `{projectName}rg` és a munkaterület neve `{projectName}ws` .
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem szeretné használni ezt a munkaterületet, törölje azt. Mivel a munkaterület más erőforrásokhoz, például egy Storage-fiókhoz van társítva, valószínűleg törölni szeretné a teljes létrehozott erőforráscsoportot. Az erőforráscsoportot a portálon törölheti, ha a "Törlés" gombra kattint, és megerősíti a szolgáltatást. Vagy törölheti is az erőforráscsoportot a parancssori felületről a következővel: 
 
@@ -87,7 +87,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Azure Machine Learning munkaterületet egy Azure Resource Manager sablonból. Ha Azure Machine Learningt szeretne felfedezni, folytassa az Oktatóanyaggal. 
 

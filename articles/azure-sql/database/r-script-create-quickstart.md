@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054694"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324606"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Gyors útmutató: egyszerű R-parancsfájlok létrehozása és futtatása Azure SQL Database Machine Learning Servicesban (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Ez a példa az [sp_execute_external_script](/sql/relational-databases/system-sto
 
 R-szkript futtatásához adja át argumentumként a rendszer tárolt eljárását [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-A következő lépésekben az alábbi R-szkriptet fogja futtatni az SQL-adatbázisban:
+A következő lépésekben az R-szkriptet fogja futtatni az adatbázisban:
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. Nyissa meg **SQL Server Management Studio** és kapcsolódjon az SQL-adatbázishoz.
+1. Nyissa meg **SQL Server Management Studio** és kapcsolódjon az adatbázishoz.
 
-   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg [Az Azure SQL Database-adatbázisok csatlakoztatásához és lekérdezéséhez SQL Server Management Studio használata](connect-query-ssms.md)című témakört.
+   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg a rövid útmutató [: SQL Server Management Studio használata az adatbázisok Azure SQL Database-ban való csatlakoztatásához és lekérdezéséhez](connect-query-ssms.md).
 
 1. Adja át a teljes R-szkriptet a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásnak.
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. Lásd a fenti [előfeltételeket](#prerequisites) .
+   Ha hibaüzenet jelenik meg, annak oka az lehet, hogy a (R) Machine Learning Services nyilvános előzetes verziója nincs engedélyezve az adatbázishoz. Lásd a fenti [előfeltételeket](#prerequisites) .
 
    > [!NOTE]
    > Ha Ön rendszergazda, a külső kódokat automatikusan is futtathatja. A paranccsal engedélyeket adhat más felhasználóknak a következő parancs használatával:
@@ -196,7 +196,7 @@ Most használjuk a [sp_execute_external_script](https://docs.microsoft.com/sql/r
 
 ## <a name="check-r-version"></a>Az R verziószámának ellenőrzése
 
-Ha szeretné megtekinteni, hogy az R melyik verziója van telepítve az SQL-adatbázisban, futtassa az alábbi szkriptet.
+Ha szeretné megtekinteni, hogy az R melyik verziója van telepítve az adatbázisban, futtassa az alábbi szkriptet.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>R-csomagok listázása
 
-A Microsoft számos előre telepített R-csomagot biztosít a Machine Learning Services-hez az SQL-adatbázisban.
+A Microsoft számos olyan R-csomagot biztosít, amelyek előre telepítve vannak az adatbázis Machine Learning Servicesával.
 
 Ha meg szeretné tekinteni, hogy mely R-csomagok vannak telepítve, beleértve a verziószámot, a függőségeket, a licenceket és a könyvtár elérési útját, futtassa az alábbi szkriptet.
 
@@ -252,7 +252,7 @@ A kimenet az R-ből származik `installed.packages()` , és eredményként adja 
 
 ![Telepített csomagok az R-ben](./media/r-script-create-quickstart/r-installed-packages.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a gépi tanulási modellt a SQL Database R használatával szeretné létrehozni, kövesse az alábbi rövid útmutatót:
 

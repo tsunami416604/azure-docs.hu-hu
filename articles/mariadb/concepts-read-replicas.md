@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793193"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321665"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Olvasási replikák az Azure Database for MariaDB-ben
 
@@ -86,7 +86,7 @@ A parancssorba írja be a felhasználói fiókhoz tartozó jelszót.
 
 A Azure Database for MariaDB a **replikáció késését a Azure monitor másodpercben** mért metrikája biztosítja. Ez a metrika csak replikák esetében érhető el.
 
-Ezt a metrikát a `seconds_behind_master` MariaDB `SHOW SLAVE STATUS` parancsában elérhető metrika alapján számítjuk ki.
+Ezt a metrikát a `seconds_behind_master` MariaDB parancsában elérhető metrika alapján számítjuk ki `SHOW SLAVE STATUS` .
 
 Állítson be egy riasztást, amely tájékoztatja arról, ha a replikációs késés olyan értéket ér el, amely nem fogadható el a munkaterhelés számára.
 
@@ -102,11 +102,14 @@ Ha úgy dönt, hogy leállítja a replikálást egy replikára, az elveszíti az
 
 Megtudhatja, hogyan [állíthatja le a replikálást egy replikára](howto-read-replicas-portal.md).
 
-## <a name="considerations-and-limitations"></a>Szempontok és korlátozások
+## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
 ### <a name="pricing-tiers"></a>Árképzési szintek
 
 Az olvasási replikák jelenleg csak a általános célú és a memória optimalizált díjszabási szintjein érhetők el.
+
+> [!NOTE]
+> A replika-kiszolgáló futtatásának díja azon a régión alapul, ahol a replika-kiszolgáló fut.
 
 ### <a name="master-server-restart"></a>Főkiszolgáló újraindítása
 
@@ -155,7 +158,7 @@ Ha frissíteni szeretné a fenti paraméterek egyikét a főkiszolgálón, tör�
 - A memóriában tárolt táblázatok miatt a replikák nem lesznek szinkronban. Ez a MariaDB replikációs technológia korlátozása.
 - Győződjön meg arról, hogy a fő kiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a fő és a replikák között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 - Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

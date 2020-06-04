@@ -3,12 +3,12 @@ title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 15b1610dfcacb37bce2e265b4e16f675e944b9db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259439"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331508"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -101,8 +101,8 @@ A következő példa egy erőforráscsoport-zárolás erőforrás-AZONOSÍTÓjá
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>listáját
 
@@ -1057,7 +1057,7 @@ Az azonosító a következő formátumban lesz visszaadva:
 
 Ezzel a függvénnyel lekérheti a bérlőhöz központilag telepített erőforrások erőforrás-AZONOSÍTÓját. A visszaadott azonosító eltér a más erőforrás-azonosító függvények által visszaadott értékektől, ha nem tartalmazza az erőforráscsoport vagy az előfizetés értékét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
 * Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.

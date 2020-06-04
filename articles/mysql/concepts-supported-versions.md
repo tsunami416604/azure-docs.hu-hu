@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 197b3100190711a51cfe125fe1214a59c18e1491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536972"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337699"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure Database for MySQL Server-verziók
 
@@ -26,15 +26,15 @@ A Azure Database for MySQL jelenleg a következő verziókat támogatja:
 
 ## <a name="mysql-version-56"></a>MySQL 5,6-es verzió
 
-Hibajavítási kiadás: 5.6.45
+Hibajavítási kiadás: 5.6.47
 
-Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html) , ahol további információt talál a jelen verzió javításait és javításait ismertető cikkben.
+Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) , ahol további információt talál a jelen verzió javításait és javításait ismertető cikkben.
 
 ## <a name="mysql-version-57"></a>MySQL 5,7-es verzió
 
-Hibajavítási kiadás: 5.7.27
+Hibajavítási kiadás: 5.7.29
 
-Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html) , ahol további információt talál a jelen verzió javításait és javításait ismertető cikkben.
+Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) , ahol további információt talál a jelen verzió javításait és javításait ismertető cikkben.
 
 ## <a name="mysql-version-80"></a>MySQL 8,0-es verzió
 
@@ -47,6 +47,6 @@ A szolgáltatás automatikusan kezeli a hibajavítások verziófrissítésének 
 
 Az al- vagy a főverzió frissítései jelenleg nem támogatottak. Például a MySQL 5.6-os verzióról a MySQL 5.7-es verzióra történő frissítés nem támogatott. Ha az 5.6-os verzióról az 5.7-es verzióra szeretne frissíteni, készítsen [biztonsági másolatot, és végezzen visszaállítást](./concepts-migrate-dump-restore.md) az új motorverzióval létrehozott kiszolgálón.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](./concepts-pricing-tiers.md)

@@ -2,14 +2,14 @@
 title: Támogatási mátrix az Azure-beli virtuális gépek vész-helyreállításához Azure Site Recovery
 description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállításának támogatását egy másodlagos régióba Azure Site Recovery használatával.
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 484a0e6e7c4beaffc86aaf26964ea1ec1736dd52
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9be07290762a7f012417c4442f93f648889c452f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171429"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323229"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -23,7 +23,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 **Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
-**parancssori felület** | Egyelőre nem támogatott
+**Parancssori felület** | Egyelőre nem támogatott
 
 
 ## <a name="resource-support"></a>Erőforrás-támogatás
@@ -98,8 +98,8 @@ Windows 7 (x64) SP1-től | Az Azure-beli virtuális gépek mobilitási szolgált
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0, 8,1
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), 8,0, 8,1
 Ubuntu 14,04 LTS-kiszolgáló | [Támogatott kernel-verziók](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS-kiszolgáló | [Támogatott kernel-verzió](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> A jelszó-alapú hitelesítést és bejelentkezést használó Ubuntu-kiszolgálók, valamint a Cloud-init csomag a felhőalapú virtuális gépek konfigurálásához előfordulhat, hogy a jelszó-alapú bejelentkezés le van tiltva a feladatátvételen (a cloudinit konfigurációjától függően). A jelszó alapú bejelentkezés a virtuális gépen újra engedélyezhető, ha alaphelyzetbe állítja a jelszót a támogatási > hibaelhárítási > beállítások menüjében (a Azure Portal a feladatátvételen átadott virtuális gép).
 Ubuntu 18,04 LTS-kiszolgáló | [Támogatott kernel-verzió](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
@@ -116,16 +116,18 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-14,04 LTS | 9,32| 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
+14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/)| 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 14,04 LTS | 9,31 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 14,04 LTS | 9,30 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 14,04 LTS | 9,29 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 |||
+16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21 – általános – 4.4.0 – 178 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-99 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1082-Azure|
 16,04 LTS | 9,32 | 4.4.0-21 – általános – 4.4.0 – 171 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 74 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure – 4.15.0 – 1066 – Azure|
 16,04 LTS | 9,31 | 4.4.0-21 – általános – 4.4.0 – 170 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 72 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1063-Azure|
 16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21 – általános – 4.4.0 – 166 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-66 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1061-Azure|
 16,04 LTS | 9,29 | 4.4.0-21 – általános – 4.4.0 – 164 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-64 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1059-Azure|
 |||
+18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20 – általános – 4.15.0-99 – általános </br> 4.18.0-13 – általános – 4.18.0 – 25 – általános </br> 5.0.0-15 – általános – 5.0.0 – 47 – általános </br> 5.3.0-19 – általános – 5.3.0 – 51 – általános </br> 4.15.0-1009-Azure-4.15.0-1082-Azure </br> 4.18.0-1006-Azure-4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1036-Azure </br> 5.3.0-1007-Azure – 5.3.0-1020 – Azure|
 18,04 LTS | 9,32| 4.15.0-20 – általános – 4.15.0 – 74 – általános </br> 4.18.0-13 – általános – 4.18.0 – 25 – általános </br> 5.0.0-15 – általános – 5.0.0 – 37 – általános </br> 5.3.0-19 – általános – 5.3.0 – 24 – általános </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure-4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1028-Azure </br> 5.3.0-1007-Azure-5.3.0-1009-Azure|
 18,04 LTS | 9,31| 4.15.0-20 – általános – 4.15.0 – 72 – általános </br> 4.18.0-13 – általános – 4.18.0 – 25 – általános </br> 5.0.0-15 – általános – 5.0.0 – 37 – általános </br> 5.3.0-19 – általános – 5.3.0 – 24 – általános </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure-4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1025-Azure </br> 5.3.0-1007 – Azure|
 18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20 – általános – 4.15.0-66 – általános </br> 4.18.0-13 – általános – 4.18.0 – 25 – általános </br> 5.0.0-15 – általános – 5.0.0 – 32 – általános </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure-4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1023-Azure|
@@ -136,16 +138,16 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.28, 9.29, 9.30, 9.31 | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
+Debian 7 | 9.28, 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
-Debian 8 | 9.29, 9.30, 9.31 | 3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 11 – amd64 |
+Debian 8 | 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 11 – amd64 |
 Debian 8 | 9,28 | 3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 9 – amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Támogatott SUSE Linux Enterprise Server 12 kernel-verzió az Azure Virtual Machines szolgáltatásban
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32 | A SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.34-Azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | A SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.34-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | A SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,30 | A SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | A SUSE 12 SP1, SP2, SP3 és SP4 kernelek összes készlete támogatott.</br></br> 4.4.138-4.7-Azure-4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure-4.12.14-6.23-Azure  |
@@ -154,6 +156,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | A SUSE 12 SP1, SP2
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 15 és 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Alapértelmezés szerint a rendszer az összes [SUSE 15 és 15 kernelt](https://www.suse.com/support/kb/doc/?id=000019587) támogatja.</br></br> 4.12.14-5.5 – Azure – 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8.5 – Azure – 4.12.14 – 8.30 – Azure |
 SUSE Linux Enterprise Server 15 és 15 SP1 | 9,32 | Alapértelmezés szerint a rendszer az összes [SUSE 15 és 15 kernelt](https://www.suse.com/support/kb/doc/?id=000019587) támogatja.</br></br> 4.12.14-5.5 – Azure – 4.12.14 – 8.22 – Azure |
 
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043379"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324722"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Oktatóanyag: földrajzilag elosztott adatbázis implementálása (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,8 +42,8 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Egyetlen adatbázis a Azure SQL Databaseban. Egy használat létrehozásához
-  - [Portál](single-database-create-quickstart.md)
-  - [parancssori felület](az-cli-script-samples-content-guide.md)
+  - [Az Azure Portal](single-database-create-quickstart.md)
+  - [Az Azure CLI](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > Az `az login` Azure-ba való bejelentkezéshez futtassa a parancsot.
@@ -344,7 +344,7 @@ Feladatátvétel tesztelése:
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 A következő paranccsal ellenőrizheti a vész-helyreállítási kiszolgáló szerepkörét a teszt során:
 
@@ -368,9 +368,9 @@ Feladatátvétel tesztelése:
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy Azure SQL Database és egy alkalmazást konfigurált a feladatátvételhez egy távoli régióban, és tesztelt egy feladatátvételi tervet. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy adatbázist konfigurált Azure SQL Database és egy távoli régióba való feladatátvételre szolgáló alkalmazást, és tesztelt egy feladatátvételi tervet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ Ebben az oktatóanyagban egy Azure SQL Database és egy alkalmazást konfigurál
 > - Java-alkalmazás futtatása SQL Database-adatbázis lekérdezéséhez
 > - Feladatátvétel tesztelése
 
-Folytassa a következő oktatóanyaggal, amely bemutatja, hogyan adhat hozzá egy Azure SQL felügyelt példányt egy feladatátvételi csoporthoz:
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan adható hozzá egy Azure SQL felügyelt példány egy példánya egy feladatátvételi csoporthoz:
 
 > [!div class="nextstepaction"]
-> [Azure SQL felügyelt példány hozzáadása feladatátvételi csoporthoz](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Azure SQL felügyelt példány példányának hozzáadása feladatátvételi csoporthoz](../managed-instance/failover-group-add-instance-tutorial.md)

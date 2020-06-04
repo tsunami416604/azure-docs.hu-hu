@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4118ef8de6d9289b67dd76c710fc11758768262
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587192"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331828"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
 
@@ -97,7 +97,7 @@ A vizsgálati gráf használata:
 
     ![Kapcsolódó riasztások megtekintése](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek az **események\>** lehetőséget választva történő megnyitásának lehetőségét.
+1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek az **események \> **lehetőséget választva történő megnyitásának lehetőségét.
 
 1. Az incidens megismerése érdekében a gráf párhuzamos idővonalat biztosít.
 
@@ -107,9 +107,23 @@ A vizsgálati gráf használata:
 
     ![A riasztások vizsgálatához használja a Térkép idővonalát](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>Incidens bezárása
 
+Ha feloldott egy adott incidenst (például amikor a vizsgálat elérte a következtetést), az incidens állapotát **Lezártra**kell állítania. Ha így tesz, a rendszer arra kéri, hogy osztályozza az incidenst a zárás okának megadásával. Ez a lépés kötelező. Kattintson a **besorolás kiválasztása** lehetőségre, és válasszon a következők közül a legördülő listából:
 
-## <a name="next-steps"></a>További lépések
+- Igaz pozitív – gyanús tevékenység
+- Jóindulatú pozitív – gyanús, de várt
+- Hamis pozitív – helytelen riasztási logika
+- Hamis pozitív – helytelen adatértékek
+- Meghatározatlan
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-Text}":::
+
+A megfelelő besorolás kiválasztása után adjon hozzá egy leíró szöveget a **Megjegyzés** mezőben. Ez akkor lehet hasznos, ha vissza kell térnie erre az eseményre. Ha elkészült, kattintson az **alkalmaz** gombra, és az incidens le lesz zárva.
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-Text}":::
+
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan kezdheti el az incidensek vizsgálatát az Azure Sentinel használatával. Folytassa az Oktatóanyaggal, hogy [miként reagálhat a fenyegetésekre automatizált forgatókönyvek használatával](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Válaszoljon a fenyegetésekre](tutorial-respond-threats-playbook.md) , hogy automatizálja a fenyegetésekre adott válaszokat.

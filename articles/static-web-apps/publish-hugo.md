@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298030"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344016"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Hugo](https://gohugo.io/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md). Az utolsó eredmény egy új Azure-beli statikus Web Apps a kapcsolódó GitHub-műveletekkel, amelyek segítségével szabályozhatja az alkalmazás felépítésének és közzétételének módját.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -158,17 +158,20 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
    ```yml
    - uses: actions/checkout@v2
      with:
-       submodules: true
+       submodules: true  # Fetch Hugo themes (true OR recursive)
+       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
    - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.8
+     uses: peaceiris/actions-hugo@v2.4.11
      with:
-       hugo-version: "latest"
+       hugo-version: "latest"  # Hugo version: latest OR x.y.z
        # extended: true
 
    - name: Build
      run: hugo
    ```
+   
+   A Hugo-ről a GitHub-műveletekre való telepítésével kapcsolatos további információkért lásd: [peaceiris/Actions-Hugo](https://github.com/peaceiris/actions-hugo).
 
 1. Véglegesítse a frissített munkafolyamatot, és küldje el a GitHubnak.
 
@@ -188,7 +191,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

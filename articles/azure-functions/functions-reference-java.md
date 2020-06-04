@@ -3,12 +3,12 @@ title: Java fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648232"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340334"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -391,7 +391,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
-`ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz.
+`ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 
 ### <a name="logger"></a>Tuskózó
 
@@ -459,7 +459,7 @@ public class Function {
 > [!NOTE]
 > A Alkalmazásbeállítás FUNCTIONS_EXTENSION_VERSION értékének a következőnek kell lennie: ~ 2 vagy ~ 3 az optimalizált, hideg indítási élményhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Functions Java-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

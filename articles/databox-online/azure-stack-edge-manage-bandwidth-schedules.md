@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569588"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339757"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>A Azure Portal használatával kezelheti a sávszélesség-ütemterveket a Azure Stack Edge-ben  
 
@@ -82,6 +82,6 @@ Az Azure Stack Edge-eszközhöz társított sávszélesség-ütemterv törlésé
 3. Az ütemezés törlése után frissül az ütemezések listája.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

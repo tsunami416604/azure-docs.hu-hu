@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310750"
+ms.locfileid: "84340266"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -224,7 +224,7 @@ Ez a rendszergazda kezeli az Azure AD-szervezetek és a külső identitás-szolg
 
 ### <a name="global-administrator--company-administrator"></a>[Globális rendszergazda/vállalati rendszergazda](#company-administrator-permissions)
 
-Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Active Directory összes felügyeleti funkciójához, valamint olyan szolgáltatásokhoz, amelyek olyan Azure Active Directory identitásokat használnak, mint például a Microsoft 365 Security Center, a Microsoft 365 megfelelőségi központ, az Exchange Online, a SharePoint Online és a Skype vállalati online verzió. Az Azure AD-szervezetre feliratkozik személy globális rendszergazda lesz. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és az összes többi rendszergazda jelszavát is alaphelyzetbe állíthatják.
+Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Active Directory összes felügyeleti funkciójához, valamint olyan szolgáltatásokhoz, amelyek olyan Azure Active Directory identitásokat használnak, mint például a Microsoft 365 Security Center, a Microsoft 365 megfelelőségi központ, az Exchange Online, a SharePoint Online és a Skype vállalati online verzió. A globális rendszergazdák [továbbá az Azure](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) -előfizetések és-felügyeleti csoportok kezelésére is jogosultak. Ez lehetővé teszi, hogy a globális rendszergazdák teljes hozzáférést kapjanak az összes Azure-erőforráshoz a megfelelő Azure AD-bérlő használatával. Az Azure AD-szervezetre feliratkozik személy globális rendszergazda lesz. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és az összes többi rendszergazda jelszavát is alaphelyzetbe állíthatják.
 
 > [!NOTE]
 > A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör a "vállalati rendszergazda" néven van azonosítva. Ez a [Azure Portal](https://portal.azure.com)globális rendszergazdája.
@@ -389,7 +389,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók megtekinthetik a használati
 
 ### <a name="search-administrator"></a>[Keresés a Rendszergazdában](#search-administrator-permissions)
 
-Az ebben a szerepkörben lévő felhasználók teljes hozzáféréssel rendelkeznek a Microsoft 365 felügyeleti központban található összes Microsoft keresési felügyeleti szolgáltatáshoz. A rendszergazdák a keresési rendszergazdákat és a keresési szerkesztői szerepköröket delegálják a felhasználók számára, valamint tartalmat hozhatnak létre és kezelhetnek, például a könyvjelzőket, a Q&t és a helyet. Emellett ezek a felhasználók megtekinthetik az üzenetközpont, figyelheti a szolgáltatás állapotát és szolgáltatási kérelmeket hozhatnak létre.
+Az ebben a szerepkörben lévő felhasználók teljes hozzáféréssel rendelkeznek a Microsoft 365 felügyeleti központban található összes Microsoft keresési felügyeleti szolgáltatáshoz. Emellett ezek a felhasználók megtekinthetik az üzenetközpont, figyelheti a szolgáltatás állapotát és szolgáltatási kérelmeket hozhatnak létre.
 
 ### <a name="search-editor"></a>[Keresési szerkesztő](#search-editor-permissions)
 
@@ -1939,7 +1939,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, tekintse meg az [Azure-szerepkörök (Azure RBAC) használatával történő hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

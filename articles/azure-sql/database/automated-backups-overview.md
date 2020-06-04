@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62e8bbbc3781c7e27671e8cb303ef2dcad2a30f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299808"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324334"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -39,7 +39,7 @@ A biztonsági másolatokat a következő célokra használhatja:
 - A Azure Portal, Azure PowerShell, az Azure CLI vagy a REST API használatával **állítsa vissza a meglévő adatbázist egy korábbi időpontra** a megőrzési időszakon belül. Az önálló és a készletezett adatbázisok esetében a művelet egy új adatbázist hoz létre ugyanazon a kiszolgálón, amely ugyanabban az előfizetésben található, mint az eredeti adatbázis. Felügyelt példányokban ez a művelet létrehozhat egy másolatot az adatbázisról, vagy egy másik felügyelt példányt is ugyanazzal az előfizetéssel.
 - A **törölt adatbázis visszaállítása a törlés időpontjára** vagy a megőrzési időtartamon belül bármikor. A törölt adatbázist csak ugyanazon a kiszolgálón vagy felügyelt példányon lehet visszaállítani, és ugyanabban az előfizetésben, ahol az eredeti adatbázist létrehozták.
 - **Adatbázis visszaállítása egy másik földrajzi régióba**. A Geo-visszaállítás lehetővé teszi a helyreállítást földrajzi katasztrófa esetén, amikor nem fér hozzá a kiszolgálóhoz és az adatbázishoz. Egy új adatbázist hoz létre bármely meglévő kiszolgálón, bárhol a világon.
-- Egy adatbázis **visszaállítása egy adott hosszú távú biztonsági másolatból** egy adatbázis vagy készletezett adatbázis esetében, ha az adatbázis hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) van konfigurálva. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) vagy [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](long-term-retention-overview.md).
+- Egy adatbázis **visszaállítása egy adott hosszú távú biztonsági másolatból** egy adatbázis vagy készletezett adatbázis esetében, ha az adatbázis hosszú távú adatmegőrzési HÁZIRENDDEL (ltr) van konfigurálva. A LTR lehetővé teszi az adatbázis egy korábbi verziójának visszaállítását [a Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) vagy [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) segítségével, hogy megfeleljen a megfelelőségi kérésnek, vagy az alkalmazás egy régebbi verzióját futtassa. További információkért lásd: [Hosszú távú megőrzés](long-term-retention-overview.md).
 
 A visszaállítás végrehajtásához tekintse meg [az adatbázis biztonsági másolatokból való visszaállítását](recovery-using-backups.md)ismertető témakört.
 
@@ -193,7 +193,7 @@ A SQL Database PITR biztonsági mentési megőrzésének módosításai a kiszol
 
 ![PITR-megőrzés, kiszolgáló szintjének módosítása](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosításai egyedi adatbázis-szinten hajthatók végre. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázishoz a Azure Portal, lépjen az egyes adatbázisok áttekintés paneljére. Ezután válassza a **biztonsági másolatok megőrzésének konfigurálása** lehetőséget a képernyő tetején:
 
@@ -246,7 +246,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 További információ: a [biztonsági másolatok megőrzésének REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a Azure Portal használatával](recovery-using-backups.md).

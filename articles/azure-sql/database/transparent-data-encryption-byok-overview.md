@@ -1,6 +1,6 @@
 ---
 title: Az ügyfél által felügyelt transzparens adattitkosítás (TDE)
-description: Bring Your Own Key (BYOK) a transzparens adattitkosítás (TDE) támogatása a SQL Database és az Azure szinapszis Azure Key Vaultével. TDE a BYOK áttekintése, előnyei, hogyan működik, megfontolások és javaslatok.
+description: Bring Your Own Key (BYOK) transzparens adattitkosítás (TDE) támogatása a SQL Database és az Azure szinapszis Analytics Azure Key Vault használatával. TDE a BYOK áttekintése, előnyei, hogyan működik, megfontolások és javaslatok.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4677a16f1c3bd4a0d04e5ada5cee98e3e0f8e094
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048734"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321308"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -25,7 +25,7 @@ Az ügyfél által felügyelt kulccsal rendelkező Azure SQL [transzparens adatt
 
 Ebben a forgatókönyvben a TDE Protector nevű adatbázis-titkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosításához használt kulcs az ügyfél által felügyelt aszimmetrikus kulcs, amelyet az ügyfél és az ügyfél által felügyelt [Azure Key Vault (AKV)](../../key-vault/general/secure-your-key-vault.md), a felhőalapú külső kulcsokat kezelő rendszer tárol. Key Vault magas rendelkezésre állású és méretezhető biztonságos tárhely az RSA titkosítási kulcsokhoz, opcionálisan a FIPS 140-2 2-es szintű, ellenőrzött hardveres biztonsági modulok (HSM-EK) által támogatott. Nem engedélyezi a közvetlen hozzáférést egy tárolt kulcshoz, de a titkosítási/visszafejtési szolgáltatásokat biztosít a kulcs használatával a jogosult entitások számára. A kulcsot a Key Vault generálhatja, importálhatja vagy [áthelyezheti a Key vaultba egy helyszíni HSM-eszközről](../../key-vault/keys/hsm-protected-keys.md).
 
-A Azure SQL Database és az Azure szinapszis esetében a TDE-védő a kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz társított összes titkosított adatbázis örökli. Az Azure SQL felügyelt példányai esetében a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes titkosított adatbázis örökli. A *kiszolgáló* kifejezés a SQL Database-ben és az Azure szinapszisban, illetve egy felügyelt példányon, az SQL által felügyelt példányon, a jelen dokumentumon belül, kivéve, ha másként van megadva.
+A Azure SQL Database és az Azure szinapszis Analytics esetében a TDE-védő a kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz társított összes titkosított adatbázis örökli. Az Azure SQL felügyelt példányai esetében a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes titkosított adatbázis örökli. A *kiszolgáló* kifejezés a SQL Database-ben és az Azure szinapszisban, illetve egy felügyelt példányon, az SQL által felügyelt példányon, a jelen dokumentumon belül, kivéve, ha másként van megadva.
 
 > [!IMPORTANT]
 > Azok a szolgáltatás által felügyelt TDE használó felhasználók, akik az ügyfél által felügyelt TDE szeretnék használni, az adatváltási folyamat során titkosítva maradnak, és az adatbázisfájlok nem lesznek újra titkosítva. Ha egy szolgáltatás által felügyelt kulcsról egy ügyfél által felügyelt kulcsra vált át, csak a ADATTITKOSÍTÁSI kulcsot újratitkosítására van szükség, amely gyors és online művelet.
@@ -50,7 +50,7 @@ Az ügyfél által felügyelt TDE a következő előnyöket biztosítja az ügyf
 
 ![Az ügyfél által felügyelt TDE beállítása és működése](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-roles.PNG)
 
-Ahhoz, hogy a kiszolgáló használhassa a AKV-ben tárolt TDE-kezelőt a ADATTITKOSÍTÁSI kulcsot titkosításához, a Key Vault rendszergazdájának a következő hozzáférési jogosultságokat kell biztosítania a kiszolgálóhoz az egyedi HRE-identitása használatával:
+Ahhoz, hogy a kiszolgáló használhassa a AKV-ben tárolt TDE-kezelőt a ADATTITKOSÍTÁSI kulcsot titkosításához, a Key Vault rendszergazdájának a következő hozzáférési jogosultságokat kell biztosítania a kiszolgálóhoz az egyedi Azure Active Directory (Azure AD) identitásával:
 
 - **Get** – a nyilvános rész és a kulcs tulajdonságainak lekérése a Key Vault
 
@@ -74,9 +74,9 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - A Key vaultnak és a SQL Database/felügyelt példánynak ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. A több-bérlős kulcstartó és a kiszolgáló közötti interakciók nem támogatottak. Ha ezt követően szeretné áthelyezni az erőforrásokat, újra kell konfigurálni a TDE a AKV. További információ az [erőforrások áthelyezéséről](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/overview-soft-delete.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) vagy a [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)használatával engedélyezhető. Azure Portal használatával nem engedélyezhető.  
+- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/overview-soft-delete.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) vagy [a CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)használatával engedélyezhető. Nem engedélyezhető a Azure Portalon keresztül.  
 
-- Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a CLI használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása a felügyelt példányhoz](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) részletes útmutatást nyújt a PowerShell használatakor.
+- Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. A Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a parancssori felület használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása az SQL felügyelt példányához](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) , részletes útmutatást nyújt a PowerShell használatakor.
 
 - Ha a AKV használatával tűzfalat használ, engedélyeznie kell *a megbízható Microsoft-szolgáltatások engedélyezése beállítást a tűzfal megkerüléséhez*.
 
@@ -164,7 +164,7 @@ A Key Vault TDE-védővel titkosított biztonsági másolat visszaállításáho
 
 Ha a biztonsági mentés visszaállításához szükséges kulcs már nem érhető el a célkiszolgálón, a visszaállítási próbálkozáskor a következő hibaüzenet jelenik meg: "a célkiszolgáló nem fér hozzá a `<Servername>` és a között létrehozott összes AKV URI azonosítóhoz \<Timestamp #1> \<Timestamp #2> . Próbálkozzon újra a művelettel az összes AKV URI visszaállítása után. "
 
-Ennek enyhítéséhez futtassa a [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) parancsmagot a célkiszolgálón, vagy a [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) a cél felügyelt példányhoz, hogy visszaadja a rendelkezésre álló kulcsok listáját, és azonosítsa a hiányzó fájlokat. Annak érdekében, hogy az összes biztonsági másolat visszaállítható, győződjön meg arról, hogy a visszaállításhoz használt célkiszolgáló hozzáfér az összes szükséges kulcshoz. Ezeket a kulcsokat nem kell TDE-védőként megjelölni.
+Ennek enyhítéséhez futtassa a [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) parancsmagot a célkiszolgálón vagy a [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) a célként felügyelt példányhoz, hogy visszaadja a rendelkezésre álló kulcsok listáját, és azonosítsa a hiányzókat. Annak érdekében, hogy az összes biztonsági másolat visszaállítható, győződjön meg arról, hogy a visszaállításhoz használt célkiszolgáló hozzáfér az összes szükséges kulcshoz. Ezeket a kulcsokat nem kell TDE-védőként megjelölni.
 
 Ha többet szeretne megtudni a SQL Database biztonsági mentési helyreállításáról, tekintse meg az [adatbázis helyreállítása SQL Databaseban](recovery-using-backups.md)című témakört. További információ az SQL-készlet biztonsági mentésének helyreállításáról: [SQL-készlet helyreállítása](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). SQL Server natív biztonsági mentése/visszaállítása SQL felügyelt példánnyal: rövid útmutató [: adatbázis visszaállítása SQL felügyelt példányra](../managed-instance/restore-sample-database-quickstart.md)
 
@@ -174,9 +174,9 @@ További szempontok a naplófájlok számára: a biztonsági másolatba mentett 
 
 Olyan esetekben, amikor nincs konfigurálva geo-redundancia a kiszolgáló számára, javasoljuk, hogy konfigurálja úgy a kiszolgálót, hogy két különböző Key vaultot használjon két különböző régióban ugyanazzal a kulcsfontosságú anyaggal. Egy TDE-védő létrehozásával a-kiszolgálóval azonos régióban található elsődleges kulcstartóval, a kulcs pedig egy másik Azure-régióban lévő kulcstartóba klónozással végezhető el, így a kiszolgáló egy második kulcstartóhoz fér hozzá, ezért az elsődleges Key Vault leáll, miközben az adatbázis működik.
 
-Használja a Backup-AzKeyVaultKey parancsmagot a kulcs titkosított formátumban való lekéréséhez az elsődleges Key vaultból, majd használja a Restore-AzKeyVaultKey parancsmagot, és adja meg a második régióban található kulcstartót a kulcs klónozásához. Másik lehetőségként a Azure Portal is használhatja a kulcs biztonsági mentéséhez és visszaállításához. Az se más régióban található másodlagos Key vaultban lévő kulcs nem lehet TDE-védőként megjelölve, és nem is engedélyezett.
+Használja a Backup-AzKeyVaultKey parancsmagot a kulcs titkosított formátumban való lekéréséhez az elsődleges Key vaultból, majd használja a Restore-AzKeyVaultKey parancsmagot, és adja meg a második régióban található kulcstartót a kulcs klónozásához. Azt is megteheti, hogy a Azure Portal a kulcs biztonsági mentésére és visszaállítására használja. A másik régió másodlagos kulcstartójában lévő kulcs nem lehet TDE-védőként megjelölve, és nem is engedélyezett.
 
- Ha van olyan leállás, amely hatással van az elsődleges Key vaultra, és csak ezt követően, a rendszer automatikusan átvált a másik csatolt kulcsra ugyanazzal az ujjlenyomattal a másodlagos kulcstartóban, ha van ilyen. Vegye figyelembe, hogy ha a TDE-védelem visszavont hozzáférési jogosultságok miatt nem érhető el, vagy mert a kulcs vagy kulcstartó törölve van, mivel előfordulhat, hogy az ügyfél szándékosan szeretné korlátozni a kiszolgáló hozzáférését a kulcshoz.
+Ha van olyan leállás, amely hatással van az elsődleges Key vaultra, és csak ezután, a rendszer automatikusan átvált a másik csatolt kulcsra ugyanazzal az ujjlenyomattal a másodlagos kulcstartóban, ha létezik. Vegye figyelembe, hogy ha a TDE-védelem visszavont hozzáférési jogosultságok miatt nem érhető el, vagy mert a kulcs vagy kulcstartó törölve van, mivel előfordulhat, hogy az ügyfél szándékosan szeretné korlátozni a kiszolgáló hozzáférését a kulcshoz.
 
 ![Egy kiszolgáló, HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
@@ -194,9 +194,9 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 ![Feladatátvételi csoportok és geo-Dr](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
-A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. Rendszeres időközönként meg kell győződni arról, hogy az SQL mindkét kulcstartóra vonatkozó hozzáférési engedélyei megmaradtak.
+A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 
@@ -204,4 +204,4 @@ A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél �
 
 - [Transzparens adattitkosítás (TDE) Protector eltávolítása a SQL Database PowerShell használatával](transparent-data-encryption-byok-remove-tde-protector.md)
 
-- [Felügyelt példányok transzparens adattitkosítás kezelése a saját kulccsal a PowerShell használatával](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [A felügyelt SQL-példányok transzparens adattitkosítás kezelése a saját kulccsal a PowerShell használatával](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)

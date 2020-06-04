@@ -4,13 +4,13 @@ description: Ez a C# REST-alapú rövid útmutató közzéteszi a tudásbázist,
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851706"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342748"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a C# használatával
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 ## <a name="create-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
 1. Nyissa meg a Visual Studio 2019 Community Edition verziót.
-1. Hozzon létre egy új **Console app (.net Core)** projektet, és `QnaMakerQuickstart`nevezze el a projektet. Fogadja el az alapértelmezett értékeket a többi beállításnál.
+1. Hozzon létre egy új **Console app (.net Core)** projektet, és nevezze el a projektet `QnaMakerQuickstart` . Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-required-dependencies"></a>Szükséges függőségek hozzáadása
 
@@ -65,7 +65,7 @@ Miután a tudásbázis közzé lett téve, lekérdezheti a tartalmát a végpont
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](./get-answer-from-knowledge-base-csharp.md).
 

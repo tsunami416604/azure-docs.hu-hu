@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 4ad793ee27d00359dd63f3394b8d7fd4a70b297f
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9d3ba2f6106171b78584d74498df0bbe3d1306a6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266678"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344798"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 
@@ -49,7 +49,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](service-tiers-vcore.md#hardware-generations).|
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
@@ -64,7 +64,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 ### <a name="azure-sql-managed-instance"></a>[Felügyelt Azure SQL-példány](#tab/managed-instance)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">a Create login utasítás használatával a külső szolgáltató</a> utasításban. |
@@ -90,7 +90,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
   - A <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 és SharePoint 2019 </a> és a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> támogatása
   - Hozzon létre SQL felügyelt példányokat az Ön által választott <a href="https://aka.ms/managed-instance-collation">példány-szintű rendezéssel</a> és <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">időzónával</a> .
   - Az SQL felügyelt példányai mostantól a [beépített tűzfallal](../managed-instance/management-endpoint-verify-built-in-firewall.md)védettek.
-  - Konfigurálja a felügyelt SQL-példányokat [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) kapcsolatban a hálózati teljesítmény növeléséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , vagy <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurálja a biztonsági másolatok megőrzését 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
+  - Konfigurálja a felügyelt SQL-példányokat [nyilvános végpontok](../managed-instance/public-endpoint-configure.md)használatára, [proxy felülbírálási](connectivity-architecture.md#connection-policy) kapcsolatban a hálózati teljesítmény növeléséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , vagy <a href="https://aka.ms/managed-instance-configurable-backup-retention">konfigurálja a biztonsági másolatok megőrzését 35 napra</a> az időponthoz való visszaállításhoz. A [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md#sql-managed-instance-support) (akár 10 évig) jelenleg korlátozott nyilvános előzetes verzióban érhető el.  
   - Az új funkciók lehetővé teszik, hogy az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázist egy másik adatközpontba állítsa be a PowerShell használatával</a>, az [adatbázis átnevezésével](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), a [virtuális fürt törlésével](../managed-instance/virtual-cluster-delete.md).
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.
   - Az SQL felügyelt példánya a következő Azure Government régiókban érhető el a GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2 között. A következő nyilvános régiókban érhető el: Közép-Ausztrália, Közép-Ausztrália, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek, Észak-Európa, Dél-Afrika, Dél-Afrika, Nyugat-Európa.

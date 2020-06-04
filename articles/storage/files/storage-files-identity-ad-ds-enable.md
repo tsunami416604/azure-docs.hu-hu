@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 5592a3c53a57e9cd96468bfca187e02faef28b05
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268505"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324096"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
@@ -89,7 +89,18 @@ Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Az AD-ben manuálisan létrehozott Storage-fiókot jelölő identitás létrehozása
 
-Ha manuálisan szeretné létrehozni a fiókot, hozzon létre egy új Kerberos-kulcsot a Storage-fiókjához a használatával `New-AzStorageAccountKey -KeyName kerb1` . Ezt követően használja a Kerberos-kulcsot a fiókjához tartozó jelszóként. Ezt a kulcsot csak a telepítés során használja a rendszer, és nem használható semmilyen vezérlési vagy adatsík-művelethez a Storage-fiókon. Ha ezzel a kulccsal rendelkezik, hozzon létre egy szolgáltatás-vagy számítógépfiókot a szervezeti egység alatt. Használja a következő specifikációt (ne felejtse el lecserélni a példában szereplő szöveget a Storage-fiók nevére):
+Ha manuálisan szeretné létrehozni ezt a fiókot, hozzon létre egy új Kerberos-kulcsot a Storage-fiókjához. Ezután használja a Kerberos-kulcsot a fiókjához tartozó jelszóként az alábbi PowerShell-parancsmagokkal. Ezt a kulcsot csak a telepítés során használja a rendszer, és nem használható semmilyen vezérlési vagy adatsík-művelethez a Storage-fiókon. 
+
+```PowerShell
+# Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName kerb1
+Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
+```
+
+Ha ezzel a kulccsal rendelkezik, hozzon létre egy szolgáltatás-vagy számítógépfiókot a szervezeti egység alatt. Használja a következő specifikációt (ne felejtse el lecserélni a példában szereplő szöveget a Storage-fiók nevére):
 
 SPN: "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net" password: Kerberos-kulcs a Storage-fiókhoz.
 
@@ -140,7 +151,7 @@ $storageAccount.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel a ponttal sikeresen engedélyezte a szolgáltatást a Storage-fiókjában. A szolgáltatás használatához konfigurálnia és módosítania kell a szolgáltatást. Folytassa a következő szakasszal.
 

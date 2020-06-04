@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096622"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337988"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -61,12 +61,12 @@ Az áttelepítési folyamatot késleltetve törölheti az ablakot. A rendszer re
 
 ### <a name="before-you-migrate"></a>Migrálás előtt
 
-* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A LUIS használata esetén azonban használhatja az ingyenes`F0`() díjszabási szintet.
+* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A LUIS használata esetén azonban használhatja az ingyenes ( `F0` ) díjszabási szintet.
 * **Optionally**A Luis portál alkalmazások listájáról is készíthet biztonsági másolatot az alkalmazásokról az egyes alkalmazások exportálásával vagy az exportálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)használatával.
 * **Szükség**esetén mentse az egyes alkalmazások collaborator's listáját. Az e-mail-lista az áttelepítési folyamat részeként van megadva.
 
 
-A **Luis-alkalmazás készítése ingyenes**, a `F0` szintet is jelzi. [További információ a díjszabási szintekről](luis-limits.md#key-limits).
+A **Luis-alkalmazás készítése ingyenes**, a szintet is jelzi `F0` . [További információ a díjszabási szintekről](luis-limits.md#key-limits).
 
 Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/).
 
@@ -119,6 +119,6 @@ A következő URL-formátummal férhet hozzá az alkalmazás Azure-erőforrás-l
 
 `https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az alkalmazás migrálása egy szerzői erőforrásba](luis-migration-authoring-steps.md)

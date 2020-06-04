@@ -1,5 +1,5 @@
 ---
-title: TDE-védő elforgatása (PowerShell & Azure CLI)
+title: TDE-védő elforgatása (PowerShell-& az Azure CLI-vel)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Megtudhatja, hogyan forgathatja el az Azure-beli kiszolgálók transzparens adattitkosítás (TDE) védelmezőjét a PowerShell és az Azure CLI használatával Azure SQL Database és az Azure szinapszis Analytics által használt kiszolgálón.
 services: sql-database
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 36706372f4b49150aad5511e3d8c6c23f5be12ec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b2729975db154fbaf4569afc5aa9b5eaab358146
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051170"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321353"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>A transzparens adattitkosítás (TDE) oltalmazó elforgatása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-Ez a cikk a Azure Key Vault-ból származó TDE-védőt használó [kiszolgálók](logical-servers.md) fő rotációs módját ismerteti. A logikai TDE-védő egy kiszolgálóhoz való elforgatása azt jelenti, hogy a kiszolgálón lévő adatbázisokat védő új aszimmetrikus kulcsra vált. A kulcs elforgatása egy online művelet, amely csak néhány másodpercig tart, mivel ez csak a teljes adatbázis visszafejtését és újratitkosítását végzi el.
+Ez a cikk a Azure Key Vault-ból származó TDE-védőt használó [kiszolgálók](logical-servers.md) fő rotációs módját ismerteti. A logikai TDE-védő egy kiszolgáló felé történő elforgatása azt jelenti, hogy a kiszolgálón lévő adatbázisokat védő új aszimmetrikus kulcsra vált. A kulcs elforgatása egy online művelet, amely csak néhány másodpercig tart, mivel ez csak a teljes adatbázis visszafejtését és újratitkosítását végzi el.
 
 Ez az útmutató két lehetőséget tárgyal a TDE-védő a kiszolgálón való elforgatására.
 
@@ -35,7 +35,7 @@ Ez az útmutató két lehetőséget tárgyal a TDE-védő a kiszolgálón való 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ez a útmutató azt feltételezi, hogy Ön már használ egy kulcsot Azure Key Vault TDE-védőként Azure SQL Database vagy az Azure szinapszis számára. Lásd: [TRANSZPARENS ADATTITKOSÍTÁS BYOK-támogatással](transparent-data-encryption-byok-overview.md).
+- Ez a útmutató azt feltételezi, hogy Ön már használ egy kulcsot Azure Key Vault TDE-védőként Azure SQL Database vagy az Azure szinapszis Analytics szolgáltatáshoz. Lásd: [TRANSZPARENS ADATTITKOSÍTÁS BYOK-támogatással](transparent-data-encryption-byok-overview.md).
 - A Azure PowerShell telepítése és futtatása szükséges.
 - [Ajánlott, de nem kötelező] Először a hardveres biztonsági modulban (HSM) vagy a helyi Key Store-ban hozza létre a TDE-védő fő anyagát, és importálja Azure Key Vault. További információért kövesse a [hardveres biztonsági modul (HSM) használatának utasításait és Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) .
 
@@ -46,9 +46,9 @@ Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/po
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
-A telepítéshez lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
+A telepítéshez lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 * * *
 
@@ -75,7 +75,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
    -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Használja az az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create), [az SQL Server Key Create](/cli/azure/sql/server/key#az-sql-server-key-create)és [az az SQL Server TDE-Key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set) parancsokat.
 
@@ -110,7 +110,7 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
        -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Az Azure CLI](#tab/azure-cli)
 
 Az alábbi példák az [az SQL Server TDE-Key set](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector)használatát használják.
 
@@ -128,8 +128,8 @@ Az alábbi példák az [az SQL Server TDE-Key set](/powershell/module/az.sql/set
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [feltört kulcs eltávolítása](transparent-data-encryption-byok-remove-tde-protector.md)
+- Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-remove-tde-protector.md).
 
-- Ismerkedés a Azure Key Vault integrációjának és a Bring Your Own Key támogatásának TDE: a [TDE bekapcsolása a saját kulcsával Key Vault a PowerShell használatával](transparent-data-encryption-byok-configure.md)
+- Ismerkedés a Azure Key Vault integrációval és a Bring Your Own Key támogatásával a TDE-hez: a [saját kulcsának bekapcsolása a Key Vault a PowerShell használatával](transparent-data-encryption-byok-configure.md).

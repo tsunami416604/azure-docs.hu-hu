@@ -8,17 +8,18 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: b3e10b3abbe5c9815e51ce67786882dbd294df3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79202222"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340980"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával és a NAT szolgáltatás tesztelése
 
@@ -390,13 +391,13 @@ Most már készen áll a NAT szolgáltatás tesztelésére.
 
 Ha bejelentkezett a forrás virtuális gépre, a **curl** és a **Hey** használatával is létrehozhat KÉRÉSEKET a cél IP-címhez.
 
-Az 100-kilobájtos fájl beolvasásához használja a curlt.  Cserélje le ** \<az IP-cím-Destination>** az alábbi példában az előzőleg másolt cél IP-címhez.  A **--output** paraméter azt jelzi, hogy a beolvasott fájl el lesz vetve.
+Az 100-kilobájtos fájl beolvasásához használja a curlt.  Cserélje le az **\<ip-address-destination>** alábbi példában a korábban másolt cél IP-címet.  A **--output** paraméter azt jelzi, hogy a beolvasott fájl el lesz vetve.
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-A **Hey**használatával több kérelem is létrehozható. Újra cserélje le ** \<az IP-cím-cél>t** a korábban másolt cél IP-címére.
+A **Hey**használatával több kérelem is létrehozható. Ismét cserélje le **\<ip-address-destination>** a helyére a korábban másolt cél IP-címet.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
@@ -412,7 +413,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
   az group delete --name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót, létrehozta a forrás és a cél virtuális gépet, majd tesztelte a NAT-átjárót.
 
 Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének megtekintéséhez. Problémák diagnosztizálása, például az elérhető SNAT-portok erőforrás-kimerülése.  A SNAT-portok erőforrás-kimerülése könnyen kezelhető további nyilvános IP-címek vagy nyilvános IP-előtag-erőforrások hozzáadásával vagy mindkettővel.

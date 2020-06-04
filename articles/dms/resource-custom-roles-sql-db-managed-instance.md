@@ -148,6 +148,6 @@ Ha szerepkört szeretne hozzárendelni a felhasználókhoz/alkalmazás-AZONOSÍT
 
   Az alkalmazás-azonosító (k) mostantól megjelennek a **szerepkör-hozzárendelések** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a forgatókönyv áttelepítési útmutatóját a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/).

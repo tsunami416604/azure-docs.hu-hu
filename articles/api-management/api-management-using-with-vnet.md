@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/02/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 970c20edd3a24594f22ff7e72cd4275118193845
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300072"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323790"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -120,14 +120,13 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 | */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
 | */1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | A Resource Health állapotának közzétételéhez szükséges.          | Külső & belső  |
 | */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md) közzététele                       | Külső & belső  |
-| */25                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */587                      | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
+| */25, 587, 25028                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
+| */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [gyorsítótárazási](api-management-caching-policies.md) házirendekhez         | Külső & belső  |
+| */4290              | Bejövő & kimenő | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Számlálók szinkronizálása a számítógépek között a [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
 | * / *                        | Bejövő            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktúra Load Balancer                          | Külső & belső  |
 
 >[!IMPORTANT]
-> Azok a portok, amelyekhez a *cél* **félkövér** , szükségesek ahhoz, hogy API Management szolgáltatás üzembe helyezése sikeres legyen. A többi port blokkolásával azonban romlást okozhat a futó szolgáltatás használatának és figyelésének képessége.
+> Azok a portok, amelyekhez a *cél* **félkövér** , szükségesek ahhoz, hogy API Management szolgáltatás üzembe helyezése sikeres legyen. A többi port blokkolása azonban **romlást** okoz a **futó szolgáltatás használatára és figyelésére, valamint az előjegyzett SLA biztosítására**.
 
 + **TLS-funkciók**: a TLS/SSL-tanúsítványlánc létrehozásának és ellenőrzésének engedélyezéséhez a API Management szolgáltatásnak kimenő hálózati kapcsolatra van szüksége a OCSP.msocsp.com, a mscrl.microsoft.com és a CRL.microsoft.com. Ez a függőség nem szükséges, ha a API Management feltöltött bármelyik tanúsítvány teljes láncot tartalmaz a HITELESÍTÉSSZOLGÁLTATÓ gyökeréhez.
 

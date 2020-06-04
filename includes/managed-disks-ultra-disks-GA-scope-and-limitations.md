@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196951"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337384"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -26,10 +26,10 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 
 |Régiók  |Az ultra-lemezeket támogató rendelkezésre állási zónák száma  |
 |---------|---------|
-|USA-beli államigazgatás – Virginia     |Nincs         |
-|USA déli középső régiója     |Nincs         |
+|USA-beli államigazgatás – Virginia     |None         |
+|USA déli középső régiója     |None         |
 |USA középső régiója     |Három zóna         |
-|USA nyugati régiója     |Nincs         |
+|USA nyugati régiója     |None         |
 |USA nyugati régiója, 2.    |Három zóna         |
 |USA keleti régiója     |Három zóna         |
 |USA 2. keleti régiója     |Két zóna         |
@@ -38,7 +38,6 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Nyugat-Európa     |Három zóna          |
 |Az Egyesült Királyság déli régiója     |Három zóna          |
 |Kelet-Japán     |Két zóna         |
-
 
 
 - Csak a következő virtuálisgép-sorozatokban támogatott:
@@ -53,6 +52,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 - Csak üres lemezként hozható létre  
 - Jelenleg nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, az Azure dedikált gazdagépeket vagy az Azure Disk Encryption
 - Jelenleg nem támogatja az integrációt Azure Backup vagy Azure Site Recovery
+- Csak a nem gyorsítótárazott olvasások és a nem gyorsítótárazott írások támogatása
 - A GA virtuális gépek IOPS jelenlegi maximális korlátja 80 000.
 
 Az Azure Ultra Disks szolgáltatás alapértelmezés szerint akár 16 TiB-előfizetést is kínál, de az ultra-lemezek kéréssel magasabb szintű kapacitást is nyújtanak. A kapacitás növelésének igényléséhez forduljon az Azure ügyfélszolgálatához.

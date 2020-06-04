@@ -1,14 +1,14 @@
 ---
 title: Tudásbázisok migrálása – QnA Maker
 description: A Tudásbázis áttelepítéséhez az egyik Tudásbázisból kell exportálni, majd importálni egy másikba.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80258090"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343088"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Tudásbázis migrálása export-import használatával
 
@@ -67,7 +67,7 @@ Kis-és nagybetűket nem megkülönböztető változtatások (szinonimák) nem l
 
 A csevegési naplók nem telepíthetők át, mivel az új Tudásbázis Application Insightst használ a csevegési naplók tárolásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-To/edit-knowledge-base.md)

@@ -1,6 +1,6 @@
 ---
 title: Tartományi független munkacsoport rendelkezésre állási csoportjának konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy Active Directory-tartomány-független munkacsoportot always on rendelkezésre állási csoportot egy SQL Server virtuális gépen az Azure-ban.
+description: Megtudhatja, hogyan konfigurálhat egy Active Directory tartományi független munkacsoportot always on rendelkezésre állási csoportot egy SQL Server virtuális gépen az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049329"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343693"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Munkacsoporton rendelkezésre állási csoport konfigurálásához a következő
 
 A következő paraméterek használhatók a cikkben, de a szükséges módon módosítható: 
 
-| **Név** | **Paraméter** |
+| **Name (Név)** | **Paraméter** |
 | :------ | :---------------------------------- |
 | **Csomópont1**   | AGNode1 (10.0.0.4) |
 | **Csomópont2**   | AGNode2 (10.0.0.5) |
@@ -46,13 +46,13 @@ A következő paraméterek használhatók a cikkben, de a szükséges módon mó
 | **Munkacsoport neve** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>DNS-utótag beállítása 
+## <a name="set-a-dns-suffix"></a>DNS-utótag beállítása 
 
 Ebben a lépésben konfigurálja mindkét kiszolgáló DNS-utótagját. Például: `ag.wgcluster.example.com`. Ez lehetővé teszi annak az objektumnak a nevét, amelyhez a hálózaton belül teljesen minősített címként szeretne csatlakozni, például: `AGNode1.ag.wgcluster.example.com` . 
 
 A DNS-utótag konfigurálásához kövesse az alábbi lépéseket:
 
-1. Az RDP-t az első csomópontba, majd nyissa meg a Kiszolgálókezelő alkalmazást. 
+1. RDP-be az első csomópontra, és nyissa meg a Kiszolgálókezelő alkalmazást. 
 1. Válassza a **helyi kiszolgáló** lehetőséget, majd válassza ki a virtuális gép nevét a **számítógép neve**alatt. 
 1. A **számítógép átnevezéséhez**kattintson a **módosítás..** . elemre... 
 1. Módosítsa a munkacsoport nevének nevét úgy, hogy az legyen értelmes, például `AGWORKGROUP` : 
@@ -71,13 +71,13 @@ A DNS-utótag konfigurálásához kövesse az alábbi lépéseket:
 1. Ha a rendszer kéri, indítsa újra a kiszolgálót. 
 1. Ismételje meg ezeket a lépéseket a rendelkezésre állási csoporthoz használni kívánt többi csomóponton. 
 
-## <a name="edit-host-file"></a>Gazdagép fájljának szerkesztése
+## <a name="edit-a-host-file"></a>Gazdagép fájljának szerkesztése
 
 Mivel nincs Active Directory, a Windows-kapcsolatok hitelesítésére nincs mód. Ennek megfelelően rendeljen megbízhatóságot úgy, hogy a gazdagép fájlját szövegszerkesztővel szerkeszti. 
 
 A gazda fájl szerkesztéséhez kövesse az alábbi lépéseket:
 
-1. RDP-t a virtuális gépre. 
+1. RDP-be a virtuális gépre. 
 1. A **fájlkezelővel** nyissa meg a következőt: `c:\windows\system32\drivers\etc` . 
 1. Kattintson a jobb gombbal a **hosts** fájlra, és nyissa meg a fájlt a **Jegyzettömbben** (vagy bármilyen más szövegszerkesztőben).
 1. A fájl végén adjon hozzá egy bejegyzést az egyes csomópontokhoz, a rendelkezésre állási csoporthoz és a figyelőhöz `IP Address, DNS Suffix #comment` hasonló módon: 
@@ -132,11 +132,11 @@ A fürt létrehozása után rendeljen hozzá egy statikus fürt IP-címét. Ehhe
 
 Ebben a lépésben konfigurálja a tanúsító Felhőbeli megosztást. Ha még nem ismeri a lépéseket, tekintse meg a [feladatátvevő fürt oktatóanyagát](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
 
-## <a name="enable-availability-group-feature"></a>Rendelkezésre állási csoport funkciójának engedélyezése 
+## <a name="enable-the-availability-group-feature"></a>A rendelkezésre állási csoport funkciójának engedélyezése 
 
 Ebben a lépésben engedélyezze a rendelkezésre állási csoport szolgáltatást. Ha még nem ismeri a lépéseket, tekintse meg a [rendelkezésre állási csoport oktatóanyagát](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
 
-## <a name="create-keys-and-certificate"></a>Kulcsok és tanúsítvány létrehozása
+## <a name="create-keys-and-certificates"></a>Kulcsok és tanúsítványok létrehozása
 
 Ebben a lépésben olyan tanúsítványokat hoz létre, amelyeket az SQL-bejelentkezés a titkosított végponton használ. Hozzon létre egy mappát az egyes csomópontokon a tanúsítványok biztonsági másolatának tárolásához, például: `c:\certs` . 
 
@@ -277,16 +277,16 @@ GO
 
 Ha a fürt bármely más csomóponttal rendelkezik, ismételje meg ezeket a lépéseket is, és módosítsa a megfelelő tanúsítvány-és felhasználóneveket. 
 
-## <a name="configure-availability-group"></a>Rendelkezésre állási csoport konfigurálása
+## <a name="configure-an-availability-group"></a>Rendelkezésre állási csoport konfigurálása
 
 Ebben a lépésben konfigurálja a rendelkezésre állási csoportot, és adja hozzá az adatbázisokat. Most ne hozzon létre figyelőt. Ha még nem ismeri a lépéseket, tekintse meg a [rendelkezésre állási csoport oktatóanyagát](availability-group-manually-configure-tutorial.md#create-the-availability-group). Győződjön meg arról, hogy a feladatátvételt és a feladat-visszavételt kezdeményezi annak ellenőrzéséhez, hogy minden megfelelően működik-e. 
 
    > [!NOTE]
    > Ha a szinkronizálási folyamat során hiba lép fel, lehetséges, hogy rendszergazdai jogosultságokat kell biztosítania a `NT AUTHORITY\SYSTEM` fürterőforrás létrehozásához az első csomóponton, például `AGNode1` ideiglenesen. 
 
-## <a name="configure-load-balancer"></a>Terheléselosztó konfigurálása
+## <a name="configure-a-load-balancer"></a>Terheléselosztó konfigurálása
 
-Ebben az utolsó lépésben konfigurálja a terheléselosztó-t a [Azure Portal](availability-group-load-balancer-portal-configure.md) vagy a [PowerShell](availability-group-listener-powershell-configure.md) használatával
+Ebben az utolsó lépésben konfigurálja a terheléselosztó-t a [Azure Portal](availability-group-load-balancer-portal-configure.md) vagy a [PowerShell](availability-group-listener-powershell-configure.md)használatával.
 
 
 ## <a name="next-steps"></a>Következő lépések

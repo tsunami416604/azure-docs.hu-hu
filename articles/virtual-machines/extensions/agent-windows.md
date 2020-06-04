@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: f29a20ddeb93ec3d4aa98bbcb36f50456b543667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a457627497b9ec394c33fef213436f7a67387d43
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81452570"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324113"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
@@ -69,7 +69,7 @@ $vm | Update-AzVM
 ```
 
 ### <a name="prerequisites"></a>Előfeltételek
-- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 R2 (64-BITS) futtatásához szükségesnek kell lennie a .NET-keretrendszer 4,0-as verziójával. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 (64 bites) futtatására van szüksége a .NET-keretrendszer 4,0 használatával. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - Győződjön meg arról, hogy a virtuális gép rendelkezik hozzáféréssel az IP-168.63.129.16. További információ: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
@@ -116,5 +116,5 @@ A Windows rendszerhez készült Azure VM-ügynök automatikusan frissül. Mivel 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>A Windows vendég ügynökének automatikus naplófájljainak gyűjteménye
 A Windows vendég ügynökének van egy funkciója, amellyel automatikusan gyűjthet néhány naplót. Ezt a funkciót a CollectGuestLogs. exe folyamat végzi. Mind a Péter Cloud Services, mind a IaaS Virtual Machines, és a célja, hogy gyorsan & automatikusan gyűjtsön néhány diagnosztikai naplót egy virtuális gépről, így offline elemzéshez is használhatók. Az összegyűjtött naplók az eseménynaplók, az operációs rendszer naplói, az Azure-naplók és egyes beállításkulcsok. Létrehoz egy ZIP-fájlt, amely a virtuális gép Gazdagépére kerül át. Ebben a ZIP-fájlban a mérnöki csapatok és a támogatási szakemberek a virtuális gép tulajdonosának kérelmére vonatkozó problémák kivizsgálására is rámutatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

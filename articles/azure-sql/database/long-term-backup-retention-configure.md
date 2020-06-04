@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 6ae38bb81ad0b229d6bb5a9e2f626d17810d7b01
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57b0c6286cbf40d1694d1f7fda08bc9b02641658
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048342"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324266"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 A Azure SQL Database-ben beállíthat egy adatbázist [hosszú távú biztonsági mentési adatmegőrzési](long-term-retention-overview.md) HÁZIRENDDEL (ltr), amellyel az adatbázis biztonsági másolatait külön Azure Blob Storage-tárolókban, akár 10 évig is megtarthatja. Ezután a Azure Portal vagy a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal. A [felügyelt Azure SQL-példányok](../managed-instance/long-term-backup-retention-configure.md) hosszú távú megőrzését is beállíthatja, de jelenleg korlátozott nyilvános előzetes verzióban érhető el.
 
-## <a name="using-azure-portal"></a>Az Azure Portal használata
+## <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 A következő részben bemutatjuk, Azure Portal hogyan konfigurálhatja a hosszú távú adatmegőrzést, megtekintheti a biztonsági mentéseket hosszú távú adatmegőrzéssel, és visszaállíthatja a biztonsági mentést a hosszú távú adatmegőrzésből.
 
@@ -32,7 +32,7 @@ A következő részben bemutatjuk, Azure Portal hogyan konfigurálhatja a hossz�
 
 A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentéseket](long-term-retention-overview.md) a szolgáltatási szinten megőrzött időtartamnál hosszabb ideig is megőrizze.
 
-1. A Azure Portal válassza ki az SQL Servert, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **házirendek konfigurálása** lapon jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
+1. A Azure Portal válassza ki a SQL Server példányát, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **házirendek konfigurálása** lapon jelölje be annak az adatbázisnak a jelölőnégyzetét, amelyen a biztonsági másolatok hosszú távú megőrzési szabályzatait be szeretné állítani vagy módosítani kívánja. Ha az adatbázis melletti jelölőnégyzet nincs bejelölve, a házirend módosításai nem lesznek érvényesek az adott adatbázisra.  
 
    ![biztonsági másolatok kezelése hivatkozás](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -47,7 +47,7 @@ A SQL Database konfigurálhatja úgy, hogy az [automatizált biztonsági mentés
 
 ### <a name="view-backups-and-restore-from-a-backup"></a>Biztonsági másolatok megtekintése és visszaállítás biztonsági másolatból
 
-Megtekintheti az adott adatbázishoz LTR házirenddel megőrzött biztonsági másolatokat, és visszaállíthatja azokat a biztonsági másolatokból.
+Megtekintheti az adott adatbázis számára a LTR házirenddel megőrzött biztonsági másolatokat, és visszaállíthatja azokat a biztonsági másolatokból.
 
 1. A Azure Portal válassza ki a kiszolgálót, majd kattintson a **biztonsági mentések kezelése**lehetőségre. A **rendelkezésre álló biztonsági másolatok** lapon válassza ki azt az adatbázist, amelynek elérhető biztonsági másolatait szeretné megtekinteni.
 
@@ -61,7 +61,7 @@ Megtekintheti az adott adatbázishoz LTR házirenddel megőrzött biztonsági m�
 
    ![visszaállítás](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. Az **OK** gombra kattintva állítsa vissza az adatbázist az Azure SQL Storage-ban lévő biztonsági másolatból az új adatbázisba.
+1. Kattintson **az OK** gombra az adatbázis visszaállításához az Azure Storage-beli biztonsági másolatból az új adatbázisba.
 
 1. Az eszköztáron kattintson az értesítési ikonra a visszaállítási feladat állapotának megtekintéséhez.
 
@@ -79,7 +79,7 @@ Megtekintheti az adott adatbázishoz LTR házirenddel megőrzött biztonsági m�
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a jövőbeli fejlesztés az az. SQL-modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure SQL Storage szolgáltatásban, valamint az Azure SQL Storage biztonsági másolatából való visszaállítás.
+A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure Storage-ban, és hogyan lehet visszaállítani az Azure Storage biztonsági másolatából.
 
 ### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
 
@@ -202,7 +202,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 > [!NOTE]
 > Innen az SQL Server Management Studióval csatlakozhat a visszaállított adatbázishoz a szükséges feladatok végrehajtásához, például egy adatelem kinyeréséhez a visszaállított adatbázisból a meglévő adatbázisba való beillesztés érdekében, vagy a meglévő adatbázis törléséhez és a visszaállított adatbázis átnevezéséhez a meglévő adatbázis nevére. Lásd: [időponthoz való visszaállítás](recovery-using-backups.md#point-in-time-restore).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatás által létrehozott automatikus biztonsági másolatokkal kapcsolatos további információkért lásd az [automatikus biztonsági másolatokkal](automated-backups-overview.md) foglalkozó témakört.
 - A biztonsági másolatok hosszú távú megőrzésével kapcsolatos további információkért lásd: [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md)

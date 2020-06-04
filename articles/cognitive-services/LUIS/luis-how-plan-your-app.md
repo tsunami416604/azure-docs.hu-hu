@@ -1,14 +1,14 @@
 ---
 title: Az alkalmazás megtervezése – LUIS
 description: Körvonalazza a releváns alkalmazás-leképezéseket és entitásokat, majd hozza létre az alkalmazási terveket Language Understanding intelligens szolgáltatásokban (LUIS).
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654112"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340232"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
 
@@ -67,13 +67,13 @@ Ahelyett, hogy két külön szándékot kellene létrehoznia, hozzon létre egye
 Az `FlightAction` entitás a Machine learning-entitás és alentitások következő suedo lesz strukturálva:
 
 * FlightAction
-    * Művelet
+    * Műveletek
     * Forrás
     * Cél
 
 Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdekében. A funkciók a felhasználói hosszúságú kimondott szöveg és az előrejelzési válaszban visszaadott értékek alapján lesznek kiválasztva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)

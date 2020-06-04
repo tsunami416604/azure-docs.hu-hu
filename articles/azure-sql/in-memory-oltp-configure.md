@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 870182af6a00e4d2e2a762ce92b569fb9eeb7f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046914"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345308"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>A memóriában tárolt OLTP használatával javíthatja az alkalmazás teljesítményét a Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84046914"
 A [memóriában tárolt OLTP](in-memory-oltp-overview.md) felhasználható a tranzakciók feldolgozásának, az adatok betöltésének és az átmeneti adatkörnyezetek teljesítményének javítására, [prémium és üzletileg kritikus rétegbeli](database/service-tiers-vcore.md) adatbázisokban, az árképzési szint növelése nélkül.
 
 > [!NOTE]
-> Ismerje meg [, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Ismerje meg [, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 Kövesse az alábbi lépéseket a memóriában lévő OLTP a meglévő adatbázisban való elfogadásához.
 
