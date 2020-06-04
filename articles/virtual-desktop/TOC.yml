@@ -50,6 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Az Azure Files és az Azure AD DS használata
           href: create-profile-container-adds.md
+    - name: Profiltároló-fájlmegosztások létrehozása
+      href: create-file-share.md
     - name: Gazdagépkészlet beállításainak konfigurálása
       items:
         - name: RDP-tulajdonságok
@@ -134,6 +136,8 @@
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: További források
   items:
+    - name: PowerShell
+      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
     - name: Élménybecslő
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: Díjkalkulátor

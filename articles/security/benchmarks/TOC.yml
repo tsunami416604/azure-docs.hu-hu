@@ -41,6 +41,8 @@
       href: ../../backup/security-baseline.md
     - name: A Batch biztonsági alapkonfigurációja
       href: ../../batch/security-baseline.md
+    - name: A Container Instances biztonsági alapkonfigurációja
+      href: ../../container-instances/security-baseline.md
     - name: A Container Registry biztonsági alapkonfigurációja
       href: ../../container-registry/security-baseline.md
     - name: A Cosmos DB biztonsági alapkonfigurációja

@@ -11,7 +11,8 @@
       href: create-member.md
     - name: Tag létrehozása a parancssori felület használatával
       href: create-member-cli.md
-    - name: Tag létrehozása sablon használatával
+    - name: Tag létrehozása ARM-sablon használatával
+      displayName: Resource Manager
       href: create-member-template.md
     - name: Csatlakozás tranzakciós csomóponthoz
       items:

@@ -24,7 +24,7 @@
           href: batch-transcription.md
         - name: Alapszintű beszédfelismerés
           href: speech-to-text-basics.md
-    - name: Első lépések
+    - name: Rövid útmutatók
       items:
         - name: Beszéd felismerése mikrofonbemenettel
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Blobtárolóban tárolt beszéd felismerése
           href: quickstarts/from-blob.md
+        - name: Modell tesztelése hangfájlok használatával a Speech Studióban
+          href: quickstarts/speech-studio-test-model.md
     - name: Útmutatók
       items:
         - name: Beszédfelismerési mód kiválasztása
@@ -466,7 +468,7 @@
           items:
             - name: Beszédfelismerési REST API
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Üzemeltetés
+- name: Hosting
   items:
     - name: Az üzemeltetés dokumentációja
       href: index-hosting.yml

@@ -90,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: CDC használata az Azure SQL MI-ben
+              items:
+                - name: Felhasználói felület (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: 'Új fájlok, a legutóbb módosított adatok alapján'
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 'Új fájlok, idő szerint particionált fájlnév alapján'
@@ -196,6 +200,8 @@
       items:
         - name: Adat-előállítók vizuális létrehozása
           href: author-visually.md
+        - name: Felügyeleti központ
+          href: author-management-hub.md
         - name: Verziókövetés
           href: source-control.md
         - name: Folyamatos integráció és teljesítés

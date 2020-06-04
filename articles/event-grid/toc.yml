@@ -194,6 +194,8 @@
           href: metrics.md
 - name: Útmutatók
   items:
+    - name: 'Rendszertémakörök létrehozása, megtekintése és kezelése'
+      href: create-view-manage-system-topics.md
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
     - name: Feliratkozás Auth0-eseményekre

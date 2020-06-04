@@ -69,6 +69,8 @@
       items:
         - name: Rendszerindítási diagnosztika
           href: boot-diagnostics.md
+        - name: Rendszerindítási hiba – Lemezolvasási hiba történt
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker-hibák
           href: troubleshoot-bitlocker-boot-error.md
         - name: Kék képernyős hibák

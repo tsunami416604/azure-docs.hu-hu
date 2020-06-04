@@ -1188,6 +1188,8 @@
             - name: Felhasználó által megadott útvonal beállításai
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP-címek
+              href: mysql-ip-address.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori kérdések

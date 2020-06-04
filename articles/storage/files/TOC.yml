@@ -148,9 +148,9 @@
               href: storage-files-identity-auth-active-directory-enable.md
             - name: AD DS-hitelesítés engedélyezése
               href: storage-files-identity-ad-ds-enable.md
-            - name: Engedélyek kiosztása
+            - name: Megosztásszintű engedélyek kiosztása
               href: storage-files-identity-ad-ds-assign-permissions.md
-            - name: Engedélyek konfigurálása
+            - name: Könyvtár-/fájlszintű engedélyek kiosztása
               href: storage-files-identity-ad-ds-configure-permissions.md
             - name: Fájlmegosztás csatlakoztatása
               href: storage-files-identity-ad-ds-mount-file-share.md
@@ -234,48 +234,8 @@
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: Referencia
   items:
-    - name: Azure PowerShell (Storage)
-      href: /powershell/module/az.storage
-    - name: Azure PowerShell (StorageSync)
-      href: /powershell/module/az.storagesync
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: Files (11.x verzió)
-          href: /dotnet/api/microsoft.azure.storage.file
-        - name: Adatáthelyezés
-          href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: Storage Resource Provider
-          href: /dotnet/api/overview/azure/storage/management
-    - name: Java
-      items:
-        - name: Files (8.x verzió)
-          href: /java/api/com.microsoft.azure.storage.file
-        - name: Storage Resource Provider
-          href: /java/api/overview/azure/storage/management
-    - name: JavaScript (10.x verzió)
-      href: /javascript/api/@azure/storage-file
-    - name: Python (2.x verzió)
-      href: /python/api/azure-storage-file/?view=azure-python
-    - name: REST
-      items:
-        - name: 'Blobok, üzenetsorok, táblák és fájlok'
-          href: /rest/api/storageservices
-        - name: Storage Resource Provider
-          href: /rest/api/storagerp
-        - name: Import/Export
-          href: /rest/api/storageimportexport
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+    - name: Azure-fájlmegosztások – Storage-referencia
+      href: ../files/reference.md
     - name: Resource Manager-sablon
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions

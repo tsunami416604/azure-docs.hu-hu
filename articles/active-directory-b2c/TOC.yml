@@ -87,11 +87,11 @@
         - name: SAML-szolgáltató regisztrálása
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Gráfalkalmazás regisztrálása
+        - name: Microsoft Graph-alkalmazás regisztrálása
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Webes API-alkalmazás hozzáadása
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Natív ügyfélalkalmazás hozzáadása
           href: add-native-application.md
         - name: iOS ObjC az AppAuth használatával
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: Referencia
   items:
+    - name: Alkalmazásregisztrációk
+      href: app-registrations-training-guide.md
     - name: Számlázási modell
       href: billing.md
     - name: Kódminták

@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Visszaállítás
           items:
+            - name: Azure-beli virtuális gépek visszaállítása
+              href: about-azure-vm-restore.md
             - name: Azure-beli virtuális gépek visszaállítása a portálon
               href: backup-azure-arm-restore-vms.md
             - name: Fájlok helyreállítása Azure-beli virtuális gépek biztonsági másolataiból

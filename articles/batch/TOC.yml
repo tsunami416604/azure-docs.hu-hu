@@ -129,6 +129,8 @@
           href: batch-custom-images.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
           href: batch-virtual-network.md
+        - name: Készlet létrehozása nyilvános IP-címekkel
+          href: create-pool-public-ip.md
         - name: Virtuális fájlrendszer csatlakoztatása
           href: virtual-file-mount.md
         - name: Azure-fájlmegosztás csatlakoztatása

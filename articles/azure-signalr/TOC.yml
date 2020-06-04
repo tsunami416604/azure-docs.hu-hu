@@ -4,7 +4,7 @@
   items:
     - name: Az Azure SignalR Service bemutatása
       href: signalr-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 'ASP.NET Core – C#'
@@ -21,11 +21,11 @@
       href: signalr-quickstart-azure-functions-python.md
     - name: REST API
       href: signalr-quickstart-rest-api.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 'Kiszolgáló nélküli, hitelesítéssel rendelkező valós idejű alkalmazás összeállítása'
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: Diagnosztikai naplók használata a SignalR Service szolgáltatás monitorozásához
           href: signalr-tutorial-diagnostic-logs.md
@@ -57,7 +57,7 @@
       href: signalr-concept-messages-and-connections.md
     - name: A teljesítménnyel kapcsolatos megfontolások
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: Hitelesítés
       href: signalr-concept-authenticate-oauth.md
     - name: Eseménykezelés
       href: signalr-concept-event-grid-integration.md
@@ -69,10 +69,16 @@
           href: signalr-howto-scale-signalr.md
         - name: Több példány
           href: signalr-howto-scale-multi-instances.md
-    - name: Védelem
+    - name: Biztonságos
       items:
         - name: Hozzáférési kulcs rotálása
           href: signalr-howto-key-rotation.md
+        - name: Az Azure Service Tags használata
+          href: howto-service-tags.md
+        - name: Az Azure Private Endpoints használata
+          href: howto-private-endpoints.md
+        - name: Hálózati hozzáférés-vezérlés kezelése
+          href: howto-network-access-control.md
     - name: Integrálás
       items:
         - name: Azure Functions-kötések
