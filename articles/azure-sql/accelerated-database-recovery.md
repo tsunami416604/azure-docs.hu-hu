@@ -1,7 +1,7 @@
 ---
 title: Felgyorsított adatbázis-helyreállítás
 titleSuffix: Azure SQL
-description: A gyorsított adatbázis-helyreállítás gyors és konzisztens adatbázis-helyreállítást, azonnali tranzakció-visszaállítást és az Azure SQL Service-portfólióban lévő adatbázisok agresszív naplózási felcsonkítát biztosítja.
+description: A gyorsított adatbázis-helyreállítás gyors és konzisztens adatbázis-helyreállítást, azonnali tranzakció-visszaállítást, valamint az Azure SQL-portfólióban lévő adatbázisok agresszív naplózási felcsonkítát teszi lehetővé.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 05/19/2020
-ms.openlocfilehash: c0243ecea778a02238b205f1659d796165f7b316
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044359"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344696"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Gyorsított adatbázis-helyreállítás az Azure SQL-ben 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Database Engine-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében, az SQL-adatbázismotor helyreállítási folyamatának újratervezésével. Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példánya, az Azure-beli virtuális gépeken SQL Server és az Azure szinapszis (jelenleg előzetes verzióban elérhető) adatbázisai esetében érhető el. Az ADR elsődleges előnyei a következők:
+A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Server adatbázismotor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében, a SQL Server adatbázismotor helyreállítási folyamatának újratervezésével. Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példányához, az Azure-beli virtuális gépeken SQL Server és az Azure szinapszis Analytics (jelenleg előzetes verzióban elérhető) adatbázisaihoz érhető el. Az ADR elsődleges előnyei a következők:
 
 - **Gyors és konzisztens adatbázis-helyreállítás**
 
@@ -53,15 +53,15 @@ Az adatbázis-helyreállítás az [Aries](https://people.eecs.berkeley.edu/~brew
 
   Minden olyan tranzakció esetében, amely az összeomlás időpontjában aktív volt, a napló visszafelé halad, és visszaveszi a tranzakció által végrehajtott műveleteket.
 
-Ezen a terven alapulva az az idő, ameddig az SQL-adatbázismotor nem várt újraindítást igényel, (nagyjából) az összeomlás időpontjában a rendszer leghosszabb aktív tranzakciójának méretével arányos. A helyreállításhoz az összes befejezetlen tranzakció visszaállítására van szükség. A szükséges időtartam a tranzakció által elvégzett munkához és az aktív időponthoz képest arányos. Ezért a helyreállítási folyamat hosszú időt is igénybe vehet a hosszú ideig futó tranzakciók (például nagyméretű tömeges beszúrási műveletek vagy index-létrehozási műveletek nagyméretű táblán való létrehozása) esetén.
+Ennek a kialakításnak a alapján a SQL Server adatbázismotor nem várt újraindítást igényel (nagyjából), amely az összeomlás időpontjában a rendszer leghosszabb aktív tranzakciójának méretével arányos. A helyreállításhoz az összes befejezetlen tranzakció visszaállítására van szükség. A szükséges időtartam a tranzakció által elvégzett munkához és az aktív időponthoz képest arányos. Ezért a helyreállítási folyamat hosszú időt is igénybe vehet a hosszú ideig futó tranzakciók (például nagyméretű tömeges beszúrási műveletek vagy index-létrehozási műveletek nagyméretű táblán való létrehozása) esetén.
 
 A nagy tranzakciók ezen terv alapján történő megszakítása/visszaállítása is hosszú időt vehet igénybe, mivel a fentiekben leírtak szerint ugyanazt a visszavonás-helyreállítási szakaszt használja.
 
-Emellett az SQL-adatbázismotor nem tudja lerövidíteni a tranzakciós naplót, ha hosszú ideig futó tranzakció van, mert a helyreállítási és a visszaállítási folyamatokhoz szükség van a megfelelő napló-rekordokra. Az SQL-adatbázismotor ezen kialakításának eredményeképpen egyes ügyfelek felhasználták a problémát, hogy a tranzakciónapló mérete nagyon nagy mértékben növekszik, és nagy mennyiségű lemezterületet igényel.
+Emellett a SQL Server adatbázismotor nem tudja lerövidíteni a tranzakciónaplót, ha hosszú ideig futó tranzakciók vannak, mert a helyreállítási és a visszaállítási folyamatokhoz a megfelelő naplóbejegyzések szükségesek. A SQL Server adatbázismotor ezen kialakításának eredményeképpen egyes ügyfelek a probléma megoldására használták a tranzakciós napló méretét, és nagy mennyiségű lemezterületet igényelnek.
 
 ## <a name="the-accelerated-database-recovery-process"></a>A gyorsított adatbázis-helyreállítási folyamat
 
-Az ADR a fenti problémákra az SQL-adatbázismotor helyreállítási folyamatának teljes újratervezésével foglalkozik:
+Az ADR a fenti problémákat a SQL Server adatbázismotor helyreállítási folyamatának teljes újratervezésével javítja:
 
 - Ha nem szeretné, hogy a rendszer a naplót a legrégebbi aktív tranzakció elejétől, akkor ne végezzen állandó időt/pillanatot. Az ADR használata esetén a tranzakciónapló csak az utolsó sikeres ellenőrzőponton (vagy a legrégebbi inkonzisztens oldal naplózási sorszáma (LSN)) lesz feldolgozva. Ennek eredményeképpen a hosszú ideig futó tranzakciók nem befolyásolják a helyreállítási időt.
 - Csökkentse a szükséges tranzakciós napló területét, mert már nem kell feldolgoznia a naplót a teljes tranzakcióhoz. Ennek eredményeképpen a tranzakciós naplót agresszíven lehet lerövidíteni ellenőrzőpontok és biztonsági mentések esetén.
@@ -97,7 +97,7 @@ Az ADR négy fő összetevője a következők:
 
 - **Megőrzött verzió tárolója (PVS)**
 
-  A megőrzött verzió tárolója egy új SQL Database Engine-mechanizmus, amely a hagyományos verziójú tároló helyett maga az adatbázisában előállított sorok verzióinak megőrzését is megőrzi `tempdb` . A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
+  A megőrzött verzió tároló egy új SQL Server adatbázismotor-mechanizmus, amellyel megőrizhető az adatbázisból előállított, a hagyományos verziójú tároló helyett létrehozott sor verziója `tempdb` . A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
 
 - **Logikai visszaállítása**
 

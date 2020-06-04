@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dd3958022a5947a04b8bca4db4bee3ad059c7e17
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736483"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331950"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
 
@@ -138,11 +138,11 @@ Nem ajánlott privát legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT használni, 
 
 Az összes tanúsítványkezelő az egyes alkalmazások oldalain keresztül történik. Nyissa meg **az alkalmazás alkalmazásproxy lapját** a **tanúsítvány** mező eléréséhez.
 
-Ugyanazt a tanúsítványt több alkalmazáshoz is használhatja. Ha egy feltöltött tanúsítvány egy másik alkalmazással működik, a rendszer automatikusan alkalmazza. Az alkalmazás hozzáadásakor vagy konfigurálásakor a rendszer nem kéri újra a feltöltést. 
+A tanúsítvány feltöltése után a rendszer automatikusan alkalmazza azokat az **új** alkalmazásokra is, amelyek ugyanazt a tanúsítványt használják. A meglévő alkalmazásokhoz tartozó tanúsítványt újra fel kell töltenie a bérlőben.
 
 Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy másik tanúsítvány feltöltését kéri. Ha a tanúsítványt visszavonják, a felhasználók biztonsági figyelmeztetést kaphatnak az alkalmazáshoz való hozzáféréskor. Egy alkalmazás tanúsítványának frissítéséhez navigáljon az **alkalmazás alkalmazásproxy** lapjára, válassza a **tanúsítvány**lehetőséget, és töltsön fel egy új tanúsítványt. Ha a régi tanúsítványt más alkalmazások nem használják, azt a rendszer automatikusan törli. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
 * [Feltételes hozzáférés](../conditional-access/concept-conditional-access-cloud-apps.md) a közzétett felhőalapú alkalmazásokhoz.

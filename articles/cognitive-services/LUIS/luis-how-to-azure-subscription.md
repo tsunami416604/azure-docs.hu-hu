@@ -2,14 +2,14 @@
 title: Szerzői és futtatókörnyezeti kulcsok használata – LUIS
 description: Ha először használja a Language Understanding (LUIS), nem kell létrehoznia authoring-kulcsot. Ha közzé szeretné tenni az alkalmazást, majd használja a futásidejű végpontját, létre kell hoznia és hozzá kell rendelnie a futásidejű kulcsot az alkalmazáshoz.
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101025"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344458"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -51,7 +51,7 @@ Ha készen áll az előrejelzési végpont közzétételére, [hozzon létre](#c
 
 Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat.
 
-Erőforrás `kind`:
+Erőforrás `kind` :
 
 * Authoring`LUIS.Authoring`
 * Jóslás`LUIS`
@@ -64,13 +64,13 @@ Erőforrás `kind`:
 
     Ekkor megnyílik egy böngésző, amely lehetővé teszi a megfelelő fiók kiválasztását és a hitelesítés megadását.
 
-1. Hozzon létre egy nevű **Luis authoring-erőforrást**, `LUIS.Authoring`amely `my-luis-authoring-resource` a `my-resource-group` (z) `westus` régióhoz tartozó _meglévő_ erőforráscsoporthoz van elnevezve.
+1. Hozzon létre egy nevű **Luis authoring-erőforrást**, amely a `LUIS.Authoring` (z `my-luis-authoring-resource` _existing_ `my-resource-group` ) régióhoz tartozó meglévő erőforráscsoporthoz van elnevezve `westus` .
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Hozzon létre `LUIS`egy `my-luis-prediction-resource` , a `my-resource-group` `westus` régióhoz tartozó _meglévő_ erőforráscsoport nevű **Luis előrejelzési végpont-erőforrást**. Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne használni, váltson `F0` a `S0`következőre:. További információ a [díjszabási szintekről és az átviteli sebességről](luis-limits.md#key-limits).
+1. Hozzon **LUIS prediction endpoint resource**létre egy `LUIS` , a `my-luis-prediction-resource` régióhoz tartozó _meglévő_ erőforráscsoport nevű Luis előrejelzési végpont-erőforrást `my-resource-group` `westus` . Ha az ingyenes szintjénél nagyobb átviteli sebességet szeretne használni, váltson a következőre: `F0` `S0` . További információ a [díjszabási szintekről és az átviteli sebességről](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -113,7 +113,7 @@ Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes au
 
     |Fejléc|Érték|
     |--|--|
-    |`Authorization`|A értéke `Authorization` : `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell `Bearer` a szónak és a szóköznek.|
+    |`Authorization`|A értéke: `Authorization` `Bearer {token}` . Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szónak `Bearer` és a szóköznek.|
     |`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
 
     Ez az API a LUIS-előfizetések JSON-objektumainak egy tömbjét adja vissza, beleértve az előfizetés-azonosítót, az erőforráscsoportot és az erőforrás nevét, amelyet a rendszer a fiók neveként adott vissza. Keresse meg a tömb egy olyan elemét, amely a LUIS-alkalmazáshoz rendelendő LUIS-erőforrás.
@@ -124,7 +124,7 @@ Az automatizálási célokra, például a CI/CD-folyamatok esetében érdemes au
 
     |Típus|Beállítás|Érték|
     |--|--|--|
-    |Fejléc|`Authorization`|A értéke `Authorization` : `Bearer {token}`. Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell `Bearer` a szónak és a szóköznek.|
+    |Fejléc|`Authorization`|A értéke: `Authorization` `Bearer {token}` . Figyelje meg, hogy a jogkivonat értékének előtt szerepelnie kell a szónak `Bearer` és a szóköznek.|
     |Fejléc|`Ocp-Apim-Subscription-Key`|A szerzői kulcs.|
     |Fejléc|`Content-type`|`application/json`|
     |QueryString|`appid`|A LUIS-app azonosítója.
@@ -189,7 +189,7 @@ Ha szeretné tudni, hogy mikor ért el egy bizonyos tranzakciós küszöbérték
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akinek meg kell kapnia a riasztást. Webhookok hozzáadása a riasztást fogadó összes rendszerhez. Egy logikai alkalmazást is futtathat a riasztás elindítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196445"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344679"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit – Azure SQL Database & SQL felügyelt példánya
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a
 
 ## <a name="choose-a-license-model"></a>Licencelési modell kiválasztása
 
-A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastruktúráért kell fizetnie, ha az SQL-adatbázis motorjának meglévő SQL Server licencét használja (alapszintű számítási díjszabás), vagy a mögöttes infrastruktúrát és a SQL Server licencet (a licenccel együtt) is fizetnie kell.
+A Azure Hybrid Benefit segítségével csak az alapul szolgáló Azure-infrastruktúráért kell fizetnie, ha a meglévő SQL Server licencét a SQL Server adatbázis-működtető motorhoz (az alapszintű számítási díjszabáshoz) használja, vagy a mögöttes infrastruktúrára és a SQL Server licencre (licenccel együtt) is fizethet.
 
 A licencelési modellt a Azure Portal használatával vagy a következő API-k egyikével választhatja ki vagy módosíthatja:
 
@@ -77,7 +77,7 @@ A licencek mobilitási előnyeit a frissítési garanciával rendelkező ügyfel
 A SQL Server Azure Hybrid Benefit két kulcsfontosságú területen különbözik a licenc mobilitástól:
 
 - Gazdasági előnyöket biztosít a nagyvirtualizált munkaterhelések Azure-ba való áthelyezéséhez. A SQL Server Enterprise Edition rendszerű ügyfelek négy maggal rendelkezhetnek az Azure-ban az általános célú SKU-ban minden olyan mag számára, amely a helyszínen a nagyvállalati szintű virtualizált alkalmazások számára készült. A licencek mobilitása nem teszi lehetővé a virtualizált számítási feladatok felhőbe való áthelyezésének speciális költségeit.
-- A szolgáltatás az Azure-ban (SQL Database felügyelt példányon) található, nagyvállalati szintű, SQL Serversal kompatibilis.
+- A szolgáltatás az Azure-ban (SQL felügyelt példányon) található, nagyszámú, SQL Servertel kompatibilis
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Milyen jogokkal rendelkezik a SQL Server Azure Hybrid Benefit?
 
@@ -90,7 +90,7 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 |||
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha segítségre van szükség az Azure SQL-alapú üzembe helyezési lehetőség kiválasztásához, tekintse meg [a megfelelő üzembe helyezési lehetőséget az Azure SQL-ben](azure-sql-iaas-vs-paas-what-is-overview.md).
 - A SQL Database és az SQL felügyelt példány funkcióinak összehasonlítását lásd: [SQL Database & SQL felügyelt példányának funkciói](database/features-comparison.md).

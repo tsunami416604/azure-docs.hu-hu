@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054790"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324589"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Gyors útmutató: prediktív modell létrehozása és betanítása az R-ben Azure SQL Database Machine Learning Services (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,9 +53,9 @@ A lineáris modell követelményei a következők:
 
 A következő lépésekben be kell állítania a betanítási adattípusokat, létre kell hoznia egy regressziós modellt, be kell tanítania a betanítási adataival, majd mentenie kell a modellt egy SQL-táblába.
 
-1. Nyissa meg **SQL Server Management Studio** és kapcsolódjon az SQL-adatbázishoz.
+1. Nyissa meg **SQL Server Management Studio** és kapcsolódjon az adatbázishoz.
 
-   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg [Az Azure SQL Database-adatbázisok csatlakoztatásához és lekérdezéséhez SQL Server Management Studio használata](connect-query-ssms.md)című témakört.
+   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg a rövid útmutató [: SQL Server Management Studio használata az adatbázisok Azure SQL Database-ban való csatlakoztatásához és lekérdezéséhez](connect-query-ssms.md).
 
 1. Hozza létre a **CarSpeed** táblát a betanítási adatgyűjtés mentéséhez.
 
@@ -245,7 +245,7 @@ A *pontozás* olyan kifejezés, amely az adattudományban az előrejelzések, va
 >
 > Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Itt a WITH RESULTs záradék definiál néhány új oszlopnevet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az R (előzetes verzió) Azure SQL Database Machine Learning Servicesról a következő cikkekben talál további információt.
 

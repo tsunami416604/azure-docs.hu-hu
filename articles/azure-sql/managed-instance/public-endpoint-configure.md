@@ -116,6 +116,6 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
     ![Mi-Public-Endpoint-Conn-string. png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure SQL felügyelt példányának biztonságos használatáról nyilvános végponttal](public-endpoint-overview.md).

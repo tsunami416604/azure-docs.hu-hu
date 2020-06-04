@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 08904b3a5a1053d64e3b54582189da5d82f62dee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051926"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344050"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,7 +75,7 @@ Az elérhető Intelligent Insights lehetőségek a következők:
 | :----------------------------- | ----- | ----- |
 | **Intelligent Insights konfigurálása** – az adatbázisok Intelligent Insights elemzésének konfigurálása. | Igen | Igen |
 | **A Azure SQL Analytics adatfolyam** -bepillantást nyerhet a Azure SQL Analytics. | Igen | Igen |
-| A további egyéni integrációk érdekében adatfolyam-bepillantást **nyerhet az Event hub** -Event Hubsba. | Igen | Igen |
+| Az **Azure Event Hubs** adatfolyam-bepillantást nyerhet a további egyéni integrációk Event Hubs. | Igen | Igen |
 | Az **Azure Storage bepillantást nyerhet** az Azure Storage-ba, ahol további elemzést és hosszú távú archiválást végezhet. | Igen | Igen |
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Az Intelligent Insights napló exportálásának konfigurálása
@@ -86,7 +86,7 @@ A Intelligent Insights kimenete az elemzéshez több célhelyre is továbbíthat
 - Az Azure Event Hubsba továbbított kimenet használható az egyéni figyelési és riasztási forgatókönyvek fejlesztéséhez
 - Az Azure Storage-ba továbbított kimenet használható az egyéni alkalmazások fejlesztéséhez, például az egyéni jelentéskészítéshez, a hosszú távú adatarchiváláshoz és így tovább.
 
-A Azure SQL Analytics, az Azure Event hub, az Azure Storage vagy a külső gyártótól származó termékek integrációját a rendszer Intelligent Insights először az adatbázis diagnosztikai Beállítások paneljén, a "SQLInsights" naplóban, majd a Intelligent Insights naplózási adatnaplóba való továbbításának konfigurálásával hajtja végre.
+Az Azure SQL Analytics, az Azure Event Hubs, az Azure Storage vagy a harmadik féltől származó termékek a használathoz való integrációját az adatbázis diagnosztikai Beállítások paneljén, a "SQLInsights" naplóban, majd a Intelligent Insights naplózási adatainak a következő célhelyek egyikére való továbbításával Intelligent Insights hajtják végre.
 
 További információ a Intelligent Insights naplózásának engedélyezéséről és a metrika és az erőforrás-naplózási adatok egy felhasználható termékre való továbbításáról: [metrika és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
@@ -104,9 +104,9 @@ Az alábbi példa egy Azure SQL Analyticson keresztül megtekintett Intelligent 
 
 ### <a name="set-up-with-event-hubs"></a>Beállítás a Event Hubs
 
-Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, konfigurálnia kell Intelligent Insights naplózási adatokat Event Hubsba, lásd: [metrikák és diagnosztikai naplózás](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása Event Hubsba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Ahhoz, hogy a Intelligent Insightst Event Hubs használatával lehessen használni, a Intelligent Insights naplózási adatokat Event Hubsra kell továbbítani, a [metrikák és diagnosztika naplózása](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) és [Az Azure Diagnostics-naplók továbbítása a Event Hubsba](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)című témakörben talál.
 
-Ha Event Hubst szeretne használni az egyéni figyelés és a riasztások beállításához, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)témakört Event Hubs.
+Ha egyéni figyelést és riasztást szeretne beállítani a Event Hubs használatával, tekintse meg a [Mi a teendő a metrikákkal és a diagnosztikai naplókkal foglalkozó](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)témakört Event Hubs.
 
 ### <a name="set-up-with-azure-storage"></a>Beállítás az Azure Storage-ban
 
@@ -114,7 +114,7 @@ Ha Intelligent Insightst szeretne használni a Storage szolgáltatással, konfig
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights napló egyéni integrációja
 
-Ha a Intelligent Insightst harmadik féltől származó eszközökkel szeretné használni, vagy egyéni riasztási és figyelési fejlesztésre van használatban, tekintse meg [a Intelligent Insights adatbázis-diagnosztika naplójának használata](intelligent-insights-use-diagnostics-log.md)című részt.
+Ha a Intelligent Insightst külső gyártótól származó eszközökkel szeretné használni, vagy egyéni riasztási és figyelési fejlesztésre van használatban, tekintse meg [a Intelligent Insights adatbázis-teljesítmény diagnosztikai naplójának használata](intelligent-insights-use-diagnostics-log.md)című részt
 
 ## <a name="detection-metrics"></a>Észlelési metrikák
 
@@ -133,7 +133,7 @@ Az összes mérőszámot egy tudományosan származtatott adatmodellben, amely a
 
 - Az észlelt teljesítménnyel kapcsolatos probléma részletei.
 - Az észlelt probléma kiváltó okának elemzése.
-- Javaslatok a figyelt SQL-adatbázis teljesítményének növeléséhez, ahol lehetséges.
+- Javaslatok a figyelt adatbázis teljesítményének növeléséhez, ahol lehetséges.
 
 ## <a name="query-duration"></a>Lekérdezés időtartama
 
@@ -182,7 +182,7 @@ A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez 
 
 Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [figyelheti meg az adatbázisokat az SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680221"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324215"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md#111050)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md#115610) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
@@ -37,7 +37,7 @@ Az automatikus frissítés alapértelmezés szerint engedélyezve van a követke
 
 Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal lehet megtekinteni `Get-ADSyncAutoUpgrade` . A következő állapotokkal rendelkezik:
 
-| Állapot | Megjegyzés |
+| Állam | Megjegyzés |
 | --- | --- |
 | Engedélyezve |Az automatikus frissítés engedélyezve van. |
 | Felfüggesztve |Csak a rendszeren állítható be. A rendszer **jelenleg nem** jogosult automatikus frissítések fogadására. |
@@ -67,7 +67,7 @@ Most már láthatja az automatikus frissítés állapotával kapcsolatos esemén
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Description |
+| Eredmény-kód előtagja | Leírás |
 | --- | --- |
 | Sikeres |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
@@ -75,7 +75,7 @@ Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az á
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Description |
+| Eredmény üzenet | Leírás |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |
@@ -89,18 +89,11 @@ Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, 
 | UpgradeAbortedSyncExeInUse |A [szinkronizálási Service Manager felhasználói felülete](how-to-connect-sync-service-manager-ui.md) nyitva van a kiszolgálón. |
 | UpgradeAbortedSyncOrConfigurationInProgress |A telepítővarázsló fut, vagy a szinkronizálás az ütemező szolgáltatáson kívül van ütemezve. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | A bejelentkezési módszerként az ADFS-t választotta. |
 | UpgradeNotSupportedCustomizedSyncRules |Saját egyéni szabályokat adott hozzá a konfigurációhoz. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Engedélyezte az [eszköz visszaírási](how-to-connect-device-writeback.md) funkcióját. |
-| UpgradeNotSupportedGroupWritebackEnabled |Engedélyezte a csoport visszaírási funkcióját. |
 | UpgradeNotSupportedInvalidPersistedState |A telepítés nem expressz beállítások vagy az rSync frissítése. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |A metaverse több mint 100 000 objektumot tartalmaz. |
-| UpgradeNotSupportedMultiForestSetup |Több erdőhöz csatlakozik. Az expressz beállítás csak egyetlen erdőhöz csatlakozik. |
 | UpgradeNotSupportedNonLocalDbInstall |Nem SQL Server Express LocalDB-adatbázist használ. |
-| UpgradeNotSupportedNonMsolAccount |Az [AD DS-összekötő fiók](reference-connect-accounts-permissions.md#ad-ds-connector-account) már nem az alapértelmezett MSOL_-fiók. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | A HRE-csatlakozás beállításakor a bejelentkezési módszer kiválasztásakor a *nem konfigurálást* választotta. |
-| UpgradeNotSupportedStagingModeEnabled |A kiszolgáló [átmeneti módban](how-to-connect-sync-staging-server.md)van beállítva. |
-| UpgradeNotSupportedUserWritebackEnabled |Engedélyezte a [felhasználói visszaírási](how-to-connect-preview.md#user-writeback) funkciót. |
+|UpgradeNotSupportedLocalDbSizeExceeded|A helyi adatbázis mérete nagyobb vagy egyenlő, mint 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|Az állapot-adatfeltöltés le lett tiltva a portálról|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -4,13 +4,13 @@ description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node. js-hez
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851673"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342731"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rövid útmutató: QnA Maker REST API-k a Node. js-hez
 
@@ -25,7 +25,7 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 * Tudásbázis letöltése
 * Művelet állapotának beolvasása
 
-[A dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api) ismertetése
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node. js-minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -41,7 +41,7 @@ Használja az QnA Maker REST API-kat a Node. js-hez a következőhöz:
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával.
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `QNAMAKER_AUTHORING_ENDPOINT`(z) és nevű `QNAMAKER_RESOURCE_KEY` erőforráshoz. Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) és nevű erőforráshoz `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -51,13 +51,13 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init -y` parancsot a Node `package.json` -fájl létrehozásához.
+Futtassa a `npm init -y` parancsot a Node-fájl létrehozásához `package.json` .
 
 ```console
 npm init -y
 ```
 
-Adja hozzá `reqeuestretry` a `request` és a NPM csomagokat:
+Adja hozzá a `reqeuestretry` és a `request` NPM csomagokat:
 
 ```console
 npm install requestretry request --save
@@ -76,7 +76,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-Hozzon létre egy `rest-apis.js` nevű fájlt, és adja hozzá a következő _szükséges_ utasítást a HTTP-kérések elvégzéséhez.
+Hozzon létre egy nevű fájlt `rest-apis.js` , és adja hozzá a következő _szükséges_ utasítást a HTTP-kérések elvégzéséhez.
 
 ```javascript
 const request = require("requestretry");
@@ -89,7 +89,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 Állítsa be a következő környezeti értékeket:
 
 * `QNAMAKER_RESOURCE_KEY`– A **kulcs** egy 32 karakterből álló karakterlánc, amely a Azure Portal QnA Maker erőforrásban, a **gyors üzembe helyezés** lapon érhető el. Ez nem ugyanaz, mint az előrejelzési végpont kulcsa.
-* `QNAMAKER_AUTHORING_ENDPOINT`– A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
+* `QNAMAKER_AUTHORING_ENDPOINT`– A szerzői végpont a formátumban `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` tartalmazza az **erőforrás nevét**. Ez nem ugyanaz az URL-cím, amely az előrejelzési végpont lekérdezésére szolgál.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -136,7 +136,7 @@ A [Tudásbázis törléséhez](https://docs.microsoft.com/rest/api/cognitiveserv
 
 ## <a name="get-status-of-an-operation"></a>Művelet állapotának beolvasása
 
-A hosszú ideig futó folyamatok, például a létrehozási folyamat visszaad egy műveleti azonosítót, amelyet külön REST API hívással kell ellenőrizni. Ez a függvény a létrehozási válasz törzsét veszi át. A fontos kulcs a `operationState`, amely meghatározza, hogy folytatni kell-e a lekérdezést.
+A hosszú ideig futó folyamatok, például a létrehozási folyamat visszaad egy műveleti azonosítót, amelyet külön REST API hívással kell ellenőrizni. Ez a függvény a létrehozási válasz törzsét veszi át. A fontos kulcs a `operationState` , amely meghatározza, hogy folytatni kell-e a lekérdezést.
 
 A [REST API használatával figyelheti a műveleteket a Tudásbázisban](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
@@ -159,7 +159,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)

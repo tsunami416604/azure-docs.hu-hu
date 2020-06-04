@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269873"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321496"
 ---
 # <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 <a name="network-security-groups"></a>
 
 Az Azure hálózati biztonsági csoport használatával szűrheti az Azure-beli virtuális hálózatban lévő Azure-erőforrások és azok közötti hálózati forgalmat. A hálózati biztonsági csoportok olyan [biztonsági szabályokat](#security-rules) tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
+
 Ez a cikk a hálózati biztonsági csoport szabályának tulajdonságait, az alkalmazott [alapértelmezett biztonsági szabályokat](#default-security-rules) , valamint a [kibővített biztonsági](#augmented-security-rules)szabályok létrehozásához módosítható szabály-tulajdonságokat ismerteti.
 
 ## <a name="security-rules"></a><a name="security-rules"></a>Biztonsági szabályok
@@ -32,10 +33,10 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 
 |Tulajdonság  |Magyarázat  |
 |---------|---------|
-|Name (Név)|Egy egyedi név a hálózati biztonsági csoporton belül.|
+|Name|Egy egyedi név a hálózati biztonsági csoporton belül.|
 |Prioritás | Egy 100 és 4096 közötti szám. A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.|
-|Forrás vagy cél| Bármelyik vagy egy egyéni IP-cím, Classless Inter-Domain Routing- (CIDR-) blokk (például 10.0.0.0/24), [szolgáltatáscímke](service-tags-overview.md) vagy [alkalmazásbiztonsági csoport](#application-security-groups). Ha egy Azure-erőforrás címét adja meg, az erőforráshoz rendelt magánhálózati IP-címet adja meg. A hálózati biztonsági csoportok feldolgozása azután történik, hogy az Azure a bejövő forgalomhoz a nyilvános IP-címeket magánhálózati IP-címekre fordítja le, de még mielőtt, hogy a magánhálózati IP-címeket nyilvános IP-címekre fordítaná le a kimenő forgalomhoz. További tudnivalók az Azure-beli [IP-címekről](virtual-network-ip-addresses-overview-arm.md). Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Több egyedi IP-cím és tartomány megadásának lehetősége (nem adhat meg több szolgáltatási címkét vagy alkalmazáscsoport) egy szabályban [kibővített biztonsági szabályoknak](#augmented-security-rules)nevezzük. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt. További információ az [Azure üzemi modellekről](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protocol (Protokoll)     | TCP, UDP, ICMP vagy any.|
+|Forrás vagy cél| Bármelyik, vagy egy egyéni IP-cím, Classless Inter-Domain Routing- (CIDR-) blokk (például 10.0.0.0/24), szolgáltatáscímke vagy alkalmazásbiztonsági csoport. Ha egy Azure-erőforrás címét adja meg, az erőforráshoz rendelt magánhálózati IP-címet adja meg. A hálózati biztonsági csoportok feldolgozása azután történik, hogy az Azure a bejövő forgalomhoz a nyilvános IP-címeket magánhálózati IP-címekre fordítja le, de még mielőtt, hogy a magánhálózati IP-címeket nyilvános IP-címekre fordítaná le a kimenő forgalomhoz. . Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Több egyedi IP-cím és tartomány megadásának lehetősége (nem adhat meg több szolgáltatási címkét vagy alkalmazáscsoport) egy szabályban [kibővített biztonsági szabályoknak](#augmented-security-rules)nevezzük. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt.|
+|Protokoll     | TCP, UDP, ICMP vagy any.|
 |Irány| Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik.|
 |Porttartomány     |Megadhat egy egyéni portot vagy egy porttartományt is. Megadhatja például a 80-as portot vagy a 10000–10005 tartományt. Tartományok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban egyazon szabályban nem adhat meg több portot vagy porttartományt.   |
 |Műveletek     | Engedélyezés vagy letiltás        |
@@ -53,19 +54,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Bármelyik|Engedélyezés|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Bármelyik|Engedélyezés|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protocol (Protokoll)|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Bármelyik|Megtagadás|
 
@@ -73,19 +74,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Bármelyik | Engedélyezés |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Bármelyik | Engedélyezés |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protocol (Protokoll) | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Bármelyik | Megtagadás |
 
@@ -148,7 +149,7 @@ A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerhe
 > A hálózati biztonsági csoportok az alhálózatokhoz vagy a klasszikus üzemi modellben üzembe helyezett virtuális gépekhez és felhőalapú szolgáltatásokhoz, valamint a Resource Manager-alapú üzemi modellben lévő alhálózatokhoz vagy hálózati adapterekhez vannak társítva. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
-> Hacsak nincs erre kifejezett oka, javasoljuk, hogy az egyes hálózati biztonsági csoportokat egy alhálózathoz vagy egy hálózati adapterhez rendelje, mindkettőhöz ne. Mivel az alhálózathoz rendelt hálózati biztonsági csoport szabályai ütközhetnek a hálózati adapterhez rendelt hálózati biztonsági csoport szabályaival, nem várt kommunikációs problémák merülhetnek fel, amelyek hibaelhárítást igényelnek.
+> Ha nincs konkrét oka a szolgáltatásra, javasoljuk, hogy rendeljen egy hálózati biztonsági csoportot egy alhálózathoz vagy egy hálózati adapterhez, de ne mindkettőt. Mivel az alhálózathoz rendelt hálózati biztonsági csoport szabályai ütközhetnek a hálózati adapterhez rendelt hálózati biztonsági csoport szabályaival, nem várt kommunikációs problémák merülhetnek fel, amelyek hibaelhárítást igényelnek.
 
 ## <a name="azure-platform-considerations"></a>Tudnivalók az Azure platformhoz
 
@@ -167,7 +168,7 @@ A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerhe
 
   Amennyiben az Azure engedélyezi az e-mailek küldését a 25-ös porton keresztül, a Microsoft nem tudja garantálni, hogy a levelező szolgáltatók elfogadják a virtuális gépről érkező bejövő e-maileket. Ha egy szolgáltató elutasítja az Ön virtuális gépéről érkező leveleket, vele együttműködésben oldja meg az üzenetküldési vagy levélszemétszűrési problémákat, vagy használjon hitelesített SMTP-továbbítási szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogy mely Azure-erőforrások telepíthetők egy virtuális hálózatba, és hogyan rendelkezhetnek hozzájuk társított hálózati biztonsági csoportokkal, tekintse meg a [Virtual Network Integration for Azure Services](virtual-network-for-azure-services.md) című témakört.
 * Ha korábban még nem hozott létre hálózati biztonsági csoportot, ebben a rövid [oktatóanyagban](tutorial-filter-network-traffic.md) némi gyakorlatra tehet szert. 

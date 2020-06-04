@@ -1,6 +1,6 @@
 ---
-title: SQL Server replikálás Azure SQL Database
-description: Az Azure SQL Databaset leküldéses előfizetőként konfigurálhatja egy egyirányú tranzakciós vagy pillanatképes replikációs topológiában.
+title: Azure SQL Server replikáció Azure SQL Database
+description: A leküldéses előfizetőként Azure SQL Database is konfigurálhat egy egyirányú tranzakciós vagy pillanatképes replikációs topológiában.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192969"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324147"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikálás Azure SQL Databasere
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Az Azure SQL Databaset leküldéses előfizetőként konfigurálhatja egy egyir�
 ## <a name="supported-configurations"></a>Támogatott konfigurációk
   
 - Azure SQL Database csak SQL Server közzétevő és terjesztő leküldéses előfizetője lehet.  
-- A közzétevőként és/vagy terjesztőként működő SQL Server a helyszínen, az [Azure SQL felügyelt példányán](../managed-instance/instance-create-quickstart.md)vagy a [felhőben egy Azure-beli virtuális gépen futó SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)példányán lehet [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads). 
-- A terjesztési adatbázis és a replikációs ügynökök nem helyezhetők Azure SQL Databaseba.  
+- A közzétevőként és/vagy terjesztőként működő SQL Server példány lehet a helyszíni, az [Azure SQL felügyelt példányát](../managed-instance/instance-create-quickstart.md) [futtató SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)példánya, vagy a [felhőben egy Azure-beli virtuális gépen futó SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)példánya. 
+- A terjesztési adatbázis és a replikációs ügynökök nem helyezhetők el Azure SQL Database adatbázisán.  
 - A [Pillanatkép](/sql/relational-databases/replication/snapshot-replication) és az [egyirányú tranzakciós](/sql/relational-databases/replication/transactional/transactional-replication) replikáció támogatott. A társ-társ tranzakciós replikáció és az egyesítéses replikáció nem támogatott.
 
 ### <a name="versions"></a>Verziók  
 
-A Azure SQL Database való sikeres replikáláshoz SQL Server közzétevőknek és forgalmazóknak a következő verziók egyikét kell használnia: 
+Azure SQL Database-adatbázisba való sikeres replikáláshoz SQL Server közzétevőknek és forgalmazóknak a következő verziók egyikét kell használnia:
 
 A SQL Server következő verziói támogatják a SQL Server-adatbázisok bármely Azure SQL Database való közzétételét:
 
@@ -116,7 +116,6 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 - Hierarchyid konvertálása maximális adattípusra  
 - Térbeli érték konvertálása maximális adattípusra  
 - Kiterjesztett tulajdonságok másolása  
-- Másolási engedélyek  
 
 ### <a name="limitations-to-be-determined"></a>Meghatározandó korlátozások
 

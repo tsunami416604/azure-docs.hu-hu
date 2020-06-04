@@ -4,19 +4,19 @@ description: Ez a Java REST-alapú rövid útmutató végigvezeti egy adott Tud�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 67f09b6d1e284cdf35825a2e584b372bd2adf70a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: f162276044e63c9deb46a60033ffe9904366f777
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851739"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342799"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Gyors útmutató: válaszok egy tudásbázisbeli kérdésre Java használatával
 
 Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
 
-[Dokumentációs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból sz�
 
 ## <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Nyissa meg a VSCode, és hozzon létre egy nevű `GetAnswer.java` új fájlt, és adja hozzá a következő osztályt:
+Nyissa meg a VSCode, és hozzon létre egy nevű új fájlt `GetAnswer.java` , és adja hozzá a következő osztályt:
 
 ```Java
 public class GetAnswer {
@@ -65,7 +65,7 @@ A következő kód egy HTTPS-kérést küld a QnA Maker APInak, hogy elküldje a
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey`.
+A `Authorization` fejléc értéke tartalmazza a karakterláncot `EndpointKey` .
 
 További információ a [kérelemről](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és a [válaszról](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
@@ -90,7 +90,7 @@ Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automat
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

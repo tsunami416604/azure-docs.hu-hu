@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461582"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324011"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
 
@@ -33,7 +33,7 @@ Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök 
 
 A Service Fabric a fürt létrehozásakor a csomópont típusú konfiguráció részeként megadott X. 509 kiszolgálói tanúsítványokat használja. A cikk végén egy rövid áttekintést talál a tanúsítványok közül, valamint arról, hogyan lehet beszerezni vagy létrehozni őket.
 
-A tanúsítvány biztonsági beállítása a fürt létrehozásakor Azure Resource Manager sablon vagy önálló JSON-sablon használatával, vagy a Azure Portal. Service Fabric SDK alapértelmezett viselkedése a legtávolabbi tanúsítvány üzembe helyezése és telepítése a jövőben lejáró tanúsítvánnyal együtt; a klasszikus viselkedés lehetővé tette az elsődleges és a másodlagos tanúsítványok definiálását, így lehetővé teszi a manuálisan kezdeményezett átváltást, és az új funkciók használata esetén nem ajánlott. A használni kívánt elsődleges tanúsítványok a legtávolabbi a jövőbeli lejárati dátummal, és nem lehetnek azonosak az ügyfél és a [csomópont közötti biztonsághoz](#client-to-node-security)beállított rendszergazdai ügyféltől és csak olvasható ügyféltanúsítványoktől.
+A tanúsítvány biztonsági beállítása a fürt létrehozásakor Azure Resource Manager sablon vagy önálló JSON-sablon használatával, vagy a Azure Portal. Service Fabric SDK alapértelmezett viselkedése az, hogy a legtávolabbi időpontban helyezi üzembe és telepítse a tanúsítványt a közeljövőben; a klasszikus viselkedés lehetővé tette az elsődleges és a másodlagos tanúsítványok definiálását, így lehetővé teszi a manuálisan kezdeményezett átváltást, és az új funkciók használata esetén nem ajánlott. A használni kívánt elsődleges tanúsítványok a legtávolabbi a jövőbeli lejárati dátummal, és nem lehetnek azonosak az ügyfél és a [csomópont közötti biztonsághoz](#client-to-node-security)beállított rendszergazdai ügyféltől és csak olvasható ügyféltanúsítványoktől.
 
 A következő témakörből megtudhatja, hogyan állíthatja be a tanúsítvány-biztonságot az Azure-fürtben: [fürt beállítása Azure Resource Manager sablon használatával](service-fabric-cluster-creation-via-arm.md).
 
@@ -113,7 +113,7 @@ A tanúsítványnak meg kell felelnie a következő követelményeknek:
 
 Néhány további megfontolandó szempont:
 
-* A **tulajdonos** mező több értékkel is rendelkezhet. Minden érték előtaggal van ellátva, hogy jelezze az érték típusát. Az inicializálás általában **CN** ( *köznapi név*); például: **cn = www\.contoso.com**.
+* A **tulajdonos** mező több értékkel is rendelkezhet. Minden érték előtaggal van ellátva, hogy jelezze az érték típusát. Az inicializálás általában **CN** ( *köznapi név*); például: **cn = www \. contoso.com**.
 * A **Tárgy** mező üres is lehet.
 * Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, a tanúsítvány köznapi nevével és egy, San-ra vonatkozó bejegyzéssel kell rendelkeznie. Ezek a **DNS-név** értékeiként vannak megadva. Ha meg szeretné tudni, hogyan hozhatók létre a (z) SANs tanúsítvánnyal rendelkező tanúsítványok, tekintse meg [a tulajdonos alternatív nevének hozzáadása biztonságos LDAP-tanúsítványhoz](https://support.microsoft.com/kb/931351)című témakört.
 * A tanúsítvány **rendeltetésszerű felhasználási** célja mezőjének tartalmaznia kell egy megfelelő értéket, például a **kiszolgáló-hitelesítés** vagy az **ügyfél-hitelesítés**értékét.
@@ -136,7 +136,7 @@ Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokka
 > [!NOTE]
 > Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md)
 * [Fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)

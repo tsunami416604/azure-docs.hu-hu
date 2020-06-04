@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 960e013413f0d057556337428556ee6c06b8fc06
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864385"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323858"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
-Mielőtt feltöltötte a Windows rendszerű virtuális gépet (VM) a helyszínről az Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja az 1. és a 2. generációs virtuális gépeket, amelyek VHD-fájlformátumban vannak, és amelyek rögzített méretű lemezzel rendelkeznek. A VHD számára engedélyezett maximális méret 2 TB.
+Mielőtt feltöltötte a Windows rendszerű virtuális gépet (VM) a helyszínről az Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja az 1. és a 2. generációs virtuális gépeket, amelyek VHD-fájlformátumban vannak, és amelyek rögzített méretű lemezzel rendelkeznek. Az 1. generációs virtuális gépeken az operációsrendszer-VHD számára engedélyezett maximális méret 2 TB.
 
-Egy 1. generációs virtuális gépen a VHDX fájlrendszert virtuális merevlemezre konvertálhatja. A dinamikusan bővülő lemezeket rögzített méretű lemezre is konvertálhatja. A virtuális gép generációja azonban nem módosítható. További információkért lásd: [1. vagy 2. generációs virtuális gép létrehozása a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) , valamint a [2. generációs virtuális gépek támogatása az Azure](generation-2.md)-ban.
+Átalakíthat egy VHDX-fájlt a VHD-be, konvertálhat egy dinamikusan bővülő lemezt egy rögzített méretű lemezre, de nem módosíthatja a virtuális gép generációját. További információkért lásd: [1. vagy 2. generációs virtuális gép létrehozása a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) , valamint a [2. generációs virtuális gépek támogatása az Azure](generation-2.md)-ban.
 
 Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos információkért lásd: [Microsoft Server szoftveres támogatás Azure-beli virtuális gépekhez](https://support.microsoft.com/help/2721672/).
 
@@ -28,6 +28,73 @@ Az Azure-beli virtuális gépek támogatási szabályzatával kapcsolatos inform
 >
 > - A Windows Server 2008 R2 és újabb Windows Server operációs rendszerek 64 bites verziója. Az 32 bites operációs rendszerek Azure-ban való futtatásával kapcsolatos információkért lásd: [a 32 bites operációs rendszerek támogatása az Azure-beli virtuális gépeken](https://support.microsoft.com/help/4021388/).
 > - Ha a számítási feladatok áttelepítéséhez vész-helyreállítási eszközt használ, például Azure Site Recovery vagy Azure Migrate, akkor ez a folyamat továbbra is szükséges a vendég operációs rendszeren, hogy az áttelepítés előtt előkészítse a rendszerképet.
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
+
+Az ebben a szakaszban található módszerek egyikének használatával átalakíthatja és átméretezheti a virtuális lemezt az Azure szükséges formátumával:
+
+1. A virtuális merevlemez átalakításának vagy átméretezési folyamatának futtatása előtt biztonsági másolatot készíthet a virtuális gépről.
+
+1. Győződjön meg arról, hogy a Windows VHD megfelelően működik a helyi kiszolgálón. Az Azure-ba való konvertálás vagy az Azure-ba való feltöltés előtt javítsa ki a virtuális gépen található hibákat.
+
+1. Alakítsa át a virtuális lemezt rögzített típusra.
+
+1. A virtuális lemez átméretezése az Azure-követelmények teljesítéséhez:
+
+   1. Az Azure-beli lemezeken az 1 MiB-hez igazított virtuális méretnek kell szerepelnie. Ha a VHD 1 MiB-töredék, akkor át kell méreteznie a lemezt egy több MiB-re. Azok a lemezek, amelyek egy MiB-töredékek, hibákat okoznak, amikor lemezképeket hoznak létre a feltöltött virtuális merevlemezről. Ennek ellenőrzéséhez használhatja a PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet a "méret" megjelenítéséhez, amelynek az Azure-ban több 1 MIB-nek kell lennie, és a "filesize" értéknek a mérete plusz a VHD-lábléc 512 bájtos értéke.
+   
+   1. Az 1. generációs virtuális géppel rendelkező operációs rendszer VHD-je számára engedélyezett maximális méret 2 048 GiB (2 TiB), 
+   1. Az adatlemezek maximális mérete 32 767 GiB (32 TiB).
+
+> [!NOTE]
+> - Ha egy Windows operációsrendszer-lemezt készít elő a rögzített lemezzé való átalakítás után, és szükség esetén átméretezi, hozzon létre egy virtuális gépet, amely a lemezt használja. Kezdjen hozzá, és jelentkezzen be a virtuális gépre, és folytassa a cikk részeit a feltöltéshez való felkészülés befejezéséhez.  
+> - Ha olyan adatlemezt készít elő, amely ebben a szakaszban leáll, és továbbra is feltöltheti a lemezt.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A lemez átalakítása a Hyper-V kezelőjével
+
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
+1. A **művelet kiválasztása** lapon válassza a **Konvertálás**  >  **tovább**lehetőséget.
+1. A VHDX konvertálásához válassza a **VHD**  >  **tovább**lehetőséget.
+1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret**  >  **tovább**lehetőséget.
+1. Keresse meg és válassza ki az új VHD-fájl mentésének elérési útját.
+1. Válassza a **Befejezés** gombot.
+
+### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával
+
+A virtuális lemezt a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmagjának használatával alakíthatja át. Ha a parancsmag telepítésére vonatkozó információkra van szüksége, kattintson [ide](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Az alábbi példa átalakítja a lemezt a VHDX-ről a VHD-re. Emellett átalakítja a lemezt egy dinamikusan bővülő lemezről a rögzített méretű lemezre.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+Ebben a példában a **görbe** értékét cserélje le a konvertálni kívánt virtuális merevlemez elérési útjára. Cserélje le a **DestinationPath** értékét a konvertált lemez új elérési útjára és nevére.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertálás VMware VMDK lemez formátumból
+
+Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](https://en.wikipedia.org/wiki/VMDK)van, a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) használatával alakítsa át VHD formátumra. További információ: [VMware VMDK konvertálása Hyper-V virtuális merevlemezre](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>A lemez átméretezése a Hyper-V kezelőjével
+
+1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet**  >  **lemez szerkesztése**lehetőséget.
+1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
+1. A **művelet kiválasztása** lapon válassza a következő **kibontása**lehetőséget  >  **Next**.
+1. A **virtuális merevlemez keresése** lapon adja meg az új méretet a GIB > **következőben**.
+1. Válassza a **Befejezés** gombot.
+
+### <a name="use-powershell-to-resize-the-disk"></a>A lemez átméretezése a PowerShell használatával
+
+A virtuális lemezek átméretezhetők a PowerShell [átméretezés-VHD](/powershell/module/hyper-v/resize-vhd) parancsmagjának használatával. Ha a parancsmag telepítésére vonatkozó információkra van szüksége, kattintson [ide](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+Az alábbi példa átméretezi a lemezt a 100,5 MiB-ről a 101 MiB-re, hogy megfeleljen az Azure-igazítási követelményeknek.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+Ebben a példában a **görbe** értékét cserélje le az átméretezni kívánt virtuális merevlemez elérési útjára. Cserélje le a **SizeBytes** értékét a lemez új méretére bájtban.
 
 ## <a name="system-file-checker"></a>Rendszerfájl-ellenőrzési
 
@@ -55,49 +122,6 @@ Windows Resource Protection did not find any integrity violations.
 
 Az SFC-vizsgálat befejeződése után telepítse a Windows-frissítéseket, és indítsa újra a számítógépet.
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
-
-Az ebben a szakaszban található módszerek egyikével alakítsa át a virtuális lemezt az Azure szükséges formátumára:
-
-1. A virtuális gép biztonsági mentését a virtuális lemez átalakítási folyamatának futtatása előtt végezheti el.
-
-1. Győződjön meg arról, hogy a Windows VHD megfelelően működik a helyi kiszolgálón. Az Azure-ba való konvertálás vagy az Azure-ba való feltöltés előtt javítsa ki a virtuális gépen található hibákat.
-
-1. VHD-méret:
-
-   1. Minden Azure-beli virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről a virtuális merevlemezre történő átalakításkor gondoskodnia kell arról, hogy a nyers lemez mérete 1 MB-nál több, az átalakítás előtt.
-      A megabájt töredékei hibát okoznak a feltöltött virtuális merevlemezről származó lemezképek létrehozásakor.
-
-   1. Az operációs rendszer VHD-je számára engedélyezett maximális méret 2 TB.
-
-A lemez konvertálása után hozzon létre egy virtuális gépet, amely a lemezt használja. Indítsa el a virtuális gépet, és jelentkezzen be a feltöltésre való felkészülés befejezéséhez.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A lemez átalakítása a Hyper-V kezelőjével
-
-1. Nyissa meg a Hyper-V kezelőjét, és a bal oldalon válassza ki a helyi számítógépet. A számítógép lista fölötti menüben válassza a **művelet** > **lemez szerkesztése**lehetőséget.
-1. A **virtuális merevlemez keresése** lapon válassza ki a virtuális lemezt.
-1. A **művelet kiválasztása** lapon válassza a **Konvertálás** > **tovább**lehetőséget.
-1. A VHDX konvertálásához válassza a **VHD** > **tovább**lehetőséget.
-1. Dinamikusan bővülő lemezről történő konvertáláshoz válassza a **rögzített méret** > **tovább**lehetőséget.
-1. Keresse meg és válassza ki az új VHD-fájl mentésének elérési útját.
-1. Válassza a **Finish** (Befejezés) elemet.
-
-### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával
-
-A virtuális lemezt a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmagjának használatával alakíthatja át.
-
-Az alábbi példa átalakítja a lemezt a VHDX-ről a VHD-re. Emellett átalakítja a lemezt egy dinamikusan bővülő lemezről a rögzített méretű lemezre.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-Ebben a példában a **görbe** értékét cserélje le a konvertálni kívánt virtuális merevlemez elérési útjára. Cserélje le a **DestinationPath** értékét a konvertált lemez új elérési útjára és nevére.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertálás VMware VMDK lemez formátumból
-
-Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](https://en.wikipedia.org/wiki/VMDK)van, a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) használatával alakítsa át VHD formátumra. További információ: [VMware VMDK konvertálása Hyper-V virtuális merevlemezre](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd).
-
 ## <a name="set-windows-configurations-for-azure"></a>Windows-konfigurációk beállítása az Azure-hoz
 
 > [!NOTE]
@@ -105,7 +129,7 @@ Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](htt
 
 1. Távolítsa el a statikus állandó útvonalakat az útválasztási táblában:
 
-   - Az útválasztási táblázat megtekintéséhez futtassa a parancsot `route.exe print`.
+   - Az útválasztási táblázat megtekintéséhez futtassa a parancsot `route.exe print` .
    - Keresse meg az **adatmegőrzési útvonalak** szakaszt. Állandó útvonal esetén a `route.exe delete` parancs használatával távolítsa el azt.
 
 1. Távolítsa el a WinHTTP proxyt:
@@ -128,7 +152,7 @@ Ha a Windows rendszerű virtuálisgép-lemezképpel [VMDK fájlformátumban](htt
    diskpart.exe
    ```
 
-   A lemez SAN-házirendjének [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))beállítása a következőre:
+   A lemez SAN-házirendjének beállítása a következőre [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11)) :
 
    ```DiskPart
    DISKPART> san policy=onlineall
@@ -174,7 +198,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 Győződjön meg arról, hogy a következő beállítások megfelelően vannak konfigurálva a táveléréshez:
 
 > [!NOTE]
-> Ha futtatásakor `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>`hibaüzenet jelenik meg, nyugodtan figyelmen kívül hagyhatja. Ez azt jelenti, hogy a tartomány nem egy Csoportházirend objektumon keresztül állítja be a konfigurációt.
+> Ha futtatásakor hibaüzenet jelenik meg `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>` , nyugodtan figyelmen kívül hagyhatja. Ez azt jelenti, hogy a tartomány nem egy Csoportházirend objektumon keresztül állítja be a konfigurációt.
 
 1. A RDP protokoll (RDP) engedélyezve van:
 
@@ -347,7 +371,7 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 
    Ha a tárház sérült, tekintse meg a [WMI: adattárház sérülését](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)ismertető témakört.
 
-1. Győződjön meg arról, hogy egyetlen másik alkalmazás sem használja az 3389-es portot. Ez a port az Azure-beli RDP szolgáltatáshoz használatos. A virtuális gépen használt portok megtekintéséhez futtassa `netstat.exe -anob`a következőt:
+1. Győződjön meg arról, hogy egyetlen másik alkalmazás sem használja az 3389-es portot. Ez a port az Azure-beli RDP szolgáltatáshoz használatos. A virtuális gépen használt portok megtekintéséhez futtassa a következőt `netstat.exe -anob` :
 
    ```powershell
    netstat.exe -anob
@@ -436,11 +460,11 @@ Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehe
 |                         |                | KB4103712                                 | KB4103726                                   | KB4103715                           |                                             |                            |                                             |                                             |
 
 > [!NOTE]
-> Ha el szeretné kerülni a virtuális gépek kiépítés közbeni véletlen újraindítását, javasoljuk, hogy győződjön meg arról, hogy az összes Windows Update telepítés befejeződött, és hogy nincsenek függőben lévő frissítések. Ennek egyik módja, ha a `sysprep.exe` parancs futtatása előtt telepíti az összes lehetséges Windows-frissítést és újraindítást.
+> Ha el szeretné kerülni a virtuális gépek kiépítés közbeni véletlen újraindítását, javasoljuk, hogy győződjön meg arról, hogy az összes Windows Update telepítés befejeződött, és hogy nincsenek függőben lévő frissítések. Ennek egyik módja, ha a parancs futtatása előtt telepíti az összes lehetséges Windows-frissítést és újraindítást `sysprep.exe` .
 
 ### <a name="determine-when-to-use-sysprep"></a>A Sysprep használatának időpontjának meghatározása
 
-A rendszer-előkészítő eszköz (`sysprep.exe`) egy olyan folyamat, amelyet futtathat egy Windows-telepítés alaphelyzetbe állításához.
+A rendszer-előkészítő eszköz ( `sysprep.exe` ) egy olyan folyamat, amelyet futtathat egy Windows-telepítés alaphelyzetbe állításához.
 A Sysprep az összes személyes információ eltávolításával és számos összetevő alaphelyzetbe állításával "kifogyott" élményt biztosít.
 
 Általában a futtatásával `sysprep.exe` létrehozhat egy sablont, amelyből számos más, adott konfigurációval rendelkező virtuális gép üzembe helyezhető. A sablont *általánosított rendszerképnek*nevezzük.
@@ -457,11 +481,11 @@ Nem minden Windows-alapú számítógépre telepített szerepkör vagy alkalmaz�
 ### <a name="generalize-a-vhd"></a>Virtuális merevlemez általánosítása
 
 >[!NOTE]
-> Miután a következő `sysprep.exe` lépésekben futtatta a parancsot, kapcsolja ki a virtuális gépet. Ne kapcsolja vissza, amíg létre nem hoz egy rendszerképet az Azure-ban.
+> Miután `sysprep.exe` a következő lépésekben futtatta a parancsot, kapcsolja ki a virtuális gépet. Ne kapcsolja vissza, amíg létre nem hoz egy rendszerképet az Azure-ban.
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
 1. Futtasson egy PowerShell-munkamenetet rendszergazdaként.
-1. Módosítsa a könyvtárat a `%windir%\system32\sysprep`következőre:. Ez után futtassa a `sysprep.exe` parancsot.
+1. Módosítsa a könyvtárat a következőre: `%windir%\system32\sysprep` . Ez után futtassa a `sysprep.exe` parancsot.
 1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 
     ![Rendszerelőkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
@@ -489,7 +513,7 @@ A következő beállítások nem érintik a VHD feltöltését. Javasoljuk azonb
 
   - Javasoljuk, hogy tiltsa le a víruskereső szoftver által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem zavarja és blokkolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Windowsos virtuálisgép-rendszerkép feltöltése az Azure-ba Resource Manager-alapú üzembe helyezésekhez](upload-generalized-managed.md)
 - [Az Azure Windows VM aktiválási problémáinak elhárítása](troubleshoot-activation-problems.md)

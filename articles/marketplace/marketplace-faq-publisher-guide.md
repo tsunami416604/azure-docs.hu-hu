@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800653"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340470"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -274,9 +274,12 @@ Az ügyfeleket általában havonta kell fizetni az előző számlázási ciklusb
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Milyen gyakran kapok kifizetéseket a kereskedelmi piactéren?
 
-A kifizetések havonta történnek. Az előző hónapban feldolgozott gyűjtemények kifizetése egyszerre történik, és az értékesítésnek legalább $50,00-es összesített értékkel kell rendelkeznie.
+A kifizetések havonta történnek. A fizetési ütemtervekkel kapcsolatos részletekért, a soron következő kifizetések megkereséséhez a partner Centerben, valamint az ügyfelek nem teljesített fizetések kezelésével kapcsolatban lásd a [kifizetési szabályzat részleteit](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details).
 
-A bankkártyás előfizetések és a vásárlások számlázása havonta történik, és a Microsoft ügyfél-szerződéssel vagy Nagyvállalati Szerződésával kapcsolatos számlák kevésbé gyakoriak. Az ügyfelek számlázásának időpontjában 30 napot adunk ki. A befizetés után a hitelkártya-tranzakciók 30 napos letéti időszakra kerülnek.
+- Azon tranzakciók esetében, amelyekben az ügyfél a Nagyvállalati Szerződés használta, a kifizetések a következő kifizetési ciklusban lesznek kiadva az ügyfél-számlázás után. 
+- Azon tranzakciók esetében, amelyekben az ügyfél bankkártyát használt, további 30 napos letéti időszakra van szükség, miután megkapta a kifizetést, és nincsenek jóváírások vagy csalás gyanúja.
+
+A kifizetések csak akkor jelennek meg, ha a Sales szolgáltatás elérte az $50,00-os minimális összesített értéket.
 
 További információ: [fizetési küszöbértékek, metódusok és időbeli keretek](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
 

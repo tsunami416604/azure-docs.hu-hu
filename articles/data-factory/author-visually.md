@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832780"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343113"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -42,6 +42,12 @@ A legfelső szintű erőforrások, például folyamatok, adatkészletek és adat
 ![Szerzői vászon](media/author-visually/properties-pane.png)
 
 A Tulajdonságok ablaktábla csak az erőforrások létrehozásakor nyílik meg alapértelmezés szerint. A szerkesztéshez kattintson a vászon jobb felső sarkában található Tulajdonságok ablaktábla ikonra.
+
+## <a name="management-hub"></a>Felügyeleti központ
+
+A Azure Data Factory UX *felügyelet* lapján elérhető felügyeleti központ egy olyan portál, amely globális felügyeleti műveleteket üzemeltet az Ön adatelőállítójának. Itt kezelheti az adattárakhoz és a külső számításokhoz, a verziókövetés konfigurációjához és az aktiválási beállításokhoz kapcsolódó kapcsolatokat. További információkért tekintse meg a [felügyeleti központ](author-management-hub.md)képességeit.
+
+![Társított szolgáltatások kezelése](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>Kifejezések és függvények
 

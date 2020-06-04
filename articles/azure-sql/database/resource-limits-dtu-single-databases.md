@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 5adb09389e1d5be13f766240d9fac5a644190d6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051009"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342000"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ A rugalmas készletek DTU megvásárlásához lásd: [DTU-erőforrások korláta
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: tárolási méretek és számítási méretek
 
-A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Az [Azure Portal](single-database-manage.md#azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
+A következő táblázatok az egyes szolgáltatási rétegekben és számítási méretekben elérhető erőforrásokat jelenítik meg az egyes adatbázisokhoz. Az [Azure Portal](single-database-manage.md#the-azure-portal), a [Transact-SQL](single-database-manage.md#transact-sql-t-sql), a [PowerShell](single-database-manage.md#powershell), az [Azure CLI](single-database-manage.md#the-azure-cli)vagy a [REST API](single-database-manage.md#rest-api)használatával megadhatja a szolgáltatási szintet, a számítási méretet és a tárterületet egyetlen adatbázishoz.
 
 > [!IMPORTANT]
 > Az útmutatás és a megfontolások méretezésével kapcsolatban lásd: [önálló adatbázis skálázása](single-database-scale.md)
@@ -39,7 +39,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |
 | Maximális tárolási lehetőségek (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N.A. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem) | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
@@ -57,7 +57,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 10 | 20 | 50 | 100 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N.A. | N.A. | N.A. | N.A. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
@@ -75,7 +75,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 200 | 400 | 800 | 1600 | 3000 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N.A. | N.A. | N.A. | N.A. |N.A. |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -99,7 +99,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 > [!NOTE]
 > A `tempdb` korlátokat lásd: [tempdb korlátok](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 - A rugalmas készletek virtuális mag erőforrás-korlátaival kapcsolatban lásd: [rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-elastic-pools.md)

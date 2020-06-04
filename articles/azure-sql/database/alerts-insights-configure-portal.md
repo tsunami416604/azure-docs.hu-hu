@@ -1,5 +1,5 @@
 ---
-title: Riasztások és értesítések beállítása (Azure Portal)
+title: Riasztások és értesítések beállítása (a Azure Portal)
 description: A Azure Portal használatával riasztásokat hozhat létre, amelyek a megadott feltételek teljesülése esetén aktiválják az értesítéseket vagy az automatizálást.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: 0e9b8f7bc4129c07145130f198b738839b0c7b55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c48bc2602da70e20e2fb86d54697d42d70775846
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047859"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324665"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-using-azure-portal"></a>Riasztások létrehozása Azure SQL Database és az Azure szinapszis számára a Azure Portal használatával
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics számára a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
 ## <a name="overview"></a>Áttekintés
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure SQL Database és az Azure szinapszis (korábban Azure SQL Data Warehouse) adatbázisaihoz tartozó riasztásokat a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén Azure SQL Data Warehouse) adatbázisaihoz tartozó riasztásokat a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányaira vonatkozó utasításokért lásd: [riasztások létrehozása az Azure SQL felügyelt példányaihoz](../managed-instance/alerts-create.md).
@@ -42,9 +42,9 @@ A riasztást úgy is beállíthatja, hogy a következő esetekben hajtsa végre 
 
 A riasztási szabályokkal kapcsolatos információkat a
 
-* [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Az Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
-* [parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Parancssori felület (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Riasztási szabály létrehozása metrika esetén a Azure Portal
@@ -60,7 +60,7 @@ A riasztási szabályokkal kapcsolatos információkat a
 4. A **feltétel** szakaszban kattintson a **Hozzáadás**gombra.
   ![Feltétel meghatározása](./media/alerts-insights-configure-portal/create-rule.png)
 5. A **jel logikai beállítása** lapon válasszon ki egy jelet.
-  ![Válassza a jel lehetőséget ](./media/alerts-insights-configure-portal/select-signal.png) .
+  ![Jel kiválasztása](./media/alerts-insights-configure-portal/select-signal.png)
 6. Ha kiválasztott egy jelet, például a **CPU-százalékot**, megjelenik a **jel logikai beállítása** lap.
   ![Jellogika konfigurálása](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. Ezen a lapon konfigurálhatja a küszöbértéket, az operátort, az összesítési típust, a küszöbértéket, az Összesítés részletességét és a kiértékelés gyakoriságát. Ezután kattintson a **kész**gombra.
@@ -71,6 +71,6 @@ A riasztási szabályokkal kapcsolatos információkat a
 
 10 percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [webhookok riasztásokban való konfigurálásáról](../../azure-monitor/platform/alerts-webhooks.md).

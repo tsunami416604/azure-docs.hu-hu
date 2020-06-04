@@ -3,14 +3,14 @@ title: Azure Automation runbook indítása webhookból
 description: Ez a cikk azt ismerteti, hogyan lehet webhook használatával elindítani a runbook a Azure Automation HTTP-hívásból.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830497"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342969"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
@@ -20,6 +20,8 @@ A webhookok lehetővé teszik, hogy egy külső szolgáltatás egy adott runbook
 > Egy webhook használata a Python-runbook elindításához nem támogatott.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+
+A TLS 1,2-hez készült webhookokkal kapcsolatos ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="webhook-properties"></a>Webhook tulajdonságai
 
@@ -101,7 +103,8 @@ A következő eljárással hozhat létre egy új webhookot, amely egy runbook ka
    ![Webhook URL-címe](media/automation-webhooks/copy-webhook-url.png)
 
 1. Kattintson a **Parameters (paraméterek** ) elemre a runbook paramétereinek értékének megadásához. Ha a runbook kötelező paraméterekkel rendelkezik, akkor nem hozhatja létre a webhookot, hacsak nem ad meg értékeket.
-1. A webhook létrehozásához kattintson a **Létrehozás** elemre.
+
+2. A webhook létrehozásához kattintson a **Létrehozás** elemre.
 
 ## <a name="use-a-webhook"></a>Webhook használata
 
@@ -235,6 +238,6 @@ Az alábbi képen látható a Windows PowerShellből küldött kérelem és az e
 
 ![Webhookok gomb](media/automation-webhooks/webhook-request-response.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Runbook riasztásból való kiváltásához tekintse meg a [riasztások használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md)című témakört.

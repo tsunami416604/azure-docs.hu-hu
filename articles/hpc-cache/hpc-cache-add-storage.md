@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195043"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344934"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -22,6 +22,10 @@ Akár tíz különböző tárolási célt is meghatározhat egy gyorsítótárho
 Ne feledje, hogy a tárolók exportálásának elérhetőnek kell lennie a gyorsítótár virtuális hálózatáról. A helyszíni hardveres tároláshoz előfordulhat, hogy olyan DNS-kiszolgálót kell beállítania, amely képes az NFS-tároló elérésére szolgáló gazdagépek feloldására. További információk: [DNS-hozzáférés](hpc-cache-prereqs.md#dns-access).
 
 Adja hozzá a tárolási célokat a gyorsítótár létrehozása után. Az eljárás némileg eltérő attól függően, hogy az Azure Blob Storage-t vagy egy NFS-exportálást ad hozzá. A részleteket az alábbiakban találja.
+
+Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és a tárolási cél hozzáadásának [bemutató videóját](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) .
+
+[![videó miniatűrje: Azure HPC cache: Setup (kattintson ide a videó oldal megtekintéséhez)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>A tárolási célok lap megnyitása
 
@@ -70,7 +74,7 @@ A RBAC szerepkörök hozzáadásának lépései:
 
 1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
 
-1. Kattintson a lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget. **+**
+1. Kattintson a **+** lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
 1. Válassza ki a "Storage-fiók közreműködője" szerepkört a listából.
 
@@ -149,15 +153,15 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 
 | Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 | ---- | ---- | ---- | ---- |
-| Súlyos, ritka írások olvasása | Olvasás | Never (Soha) | None |
-| 15%-nál nagyobb írások | Olvasás/írás | Never (Soha) | 1 óra |
+| Súlyos, ritka írások olvasása | Olvasás | Soha | None |
+| 15%-nál nagyobb írások | Olvasás/írás | Soha | 1 óra |
 | Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | None |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tárolási célok létrehozása után vegye figyelembe a következő feladatok egyikét:
 
-* [Az Azure HPC-gyorsítótár csatlakoztatása](hpc-cache-mount.md)
+* [Az Azure HPC Cache csatlakoztatása](hpc-cache-mount.md)
 * [Az Azure Blob Storage-ba irányuló adatáthelyezés](hpc-cache-ingest.md)
 
 Ha frissítenie kell a beállításokat, [szerkesztheti a tárolási célt](hpc-cache-edit-storage.md).

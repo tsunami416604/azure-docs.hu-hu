@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260496"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343020"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-hibakeresés a HTTP-fejlécek Azure CDN Rules Engine-hez
-A hibakeresési gyorsítótár- `X-EC-Debug`kérelem fejléce további információkat nyújt a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek a **Verizon-termékek Azure CDN Premium** kiadására vonatkoznak.
+A hibakeresési gyorsítótár-kérelem fejléce `X-EC-Debug` További információkat nyújt a kért eszközre alkalmazott gyorsítótár-házirendről. Ezek a fejlécek a **Verizon-termékek Azure CDN Premium** kiadására vonatkoznak.
 
 ## <a name="usage"></a>Használat
-A POP-kiszolgálóknak a felhasználónak küldött válasz csak a következő `X-EC-Debug` feltételek teljesülése esetén tartalmazza a fejlécet:
+A POP-kiszolgálóknak a felhasználónak küldött válasz `X-EC-Debug` csak a következő feltételek teljesülése esetén tartalmazza a fejlécet:
 
-- A [hibakeresési gyorsítótár-válasz fejlécek funkció](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) engedélyezve van a szabályok motorban a megadott kéréshez.
+- A [hibakeresési gyorsítótár-válasz fejlécek funkció](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) engedélyezve van a szabályok motorban a megadott kéréshez.
 - A megadott kérelem meghatározza a hibakeresési gyorsítótár válaszának azon fejléceit, amelyek szerepelni fognak a válaszban.
 
 ## <a name="requesting-debug-cache-information"></a>Hibakeresési gyorsítótár adatainak kérése
@@ -74,7 +74,7 @@ A fenti válasz fejlécének szintaxisában használt kifejezések a következő
 
 - Platform: arra a platformra utal, amelyre a tartalmat kérték. A következő kódok érvényesek ehhez a mezőhöz:
 
-    Kód  | Platform
+    Code  | Platform
     ------| --------
     ECAcc | Nagyméretű HTTP
     ECS   | Kis méretű HTTP
@@ -91,13 +91,13 @@ A következő minta fejlécek a kérelem gyorsítótár-állapotkód informáci�
 - `X-EC-Debug: x-ec-cache-remote: TCP_HIT from ECD (dca/EF00)`
 
 ## <a name="cacheable-response-header"></a>Gyorsítótárazható válasz fejléce
-A `X-EC-Debug: x-ec-check-cacheable` válasz fejléce azt jelzi, hogy a kért tartalom gyorsítótárazva lett-e.
+A `X-EC-Debug: x-ec-check-cacheable` Válasz fejléce azt jelzi, hogy a kért tartalom gyorsítótárazva lett-e.
 
 Ez a válasz fejléce nem jelzi, hogy a gyorsítótárazás megtörtént-e. Ehelyett azt jelzi, hogy a kérelem alkalmas-e a gyorsítótárazásra.
 
 ### <a name="response-header-format"></a>Válasz fejlécének formátuma
 
-A `X-EC-Debug` válasz fejléce azt jelenti, hogy egy kérelem gyorsítótárazva lett-e a következő formátumban:
+A `X-EC-Debug` Válasz fejléce azt jelenti, hogy egy kérelem gyorsítótárazva lett-e a következő formátumban:
 
 `X-EC-Debug: x-ec-check-cacheable: <cacheable status>`
 
@@ -116,17 +116,17 @@ Az alábbi válasz-fejléc azt jelzi, hogy sikerült-e gyorsítótárazni a kér
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
 ## <a name="cache-key-response-header"></a>Gyorsítótár – kulcs válaszának fejléce
-A `X-EC-Debug: x-ec-cache-key` válasz fejléce a kért tartalomhoz társított fizikai gyorsítótár-kulcsot jelzi. A fizikai gyorsítótár-kulcs egy olyan útvonalból áll, amely a gyorsítótárazás céljára azonosítja az eszközt. Más szóval a kiszolgálók a gyorsítótár-kulcs által meghatározott elérési úttal összhangban keresik meg egy adott eszköz gyorsítótárazott verzióját.
+A `X-EC-Debug: x-ec-cache-key` Válasz fejléce a kért tartalomhoz társított fizikai gyorsítótár-kulcsot jelzi. A fizikai gyorsítótár-kulcs egy olyan útvonalból áll, amely a gyorsítótárazás céljára azonosítja az eszközt. Más szóval a kiszolgálók a gyorsítótár-kulcs által meghatározott elérési úttal összhangban keresik meg egy adott eszköz gyorsítótárazott verzióját.
 
 Ez a fizikai gyorsítótár-kulcs egy dupla továbbítási perjel (//) karakterrel kezdődik, amelyet a tartalom kéréséhez használt protokoll (HTTP vagy HTTPS) követ. Ezt a protokollt követi a kért eszköz relatív elérési útja, amely a tartalom-hozzáférési ponttal kezdődik (például _/000001/_).
 
 Alapértelmezés szerint a HTTP *-platformok szabványos gyorsítótár*használatára vannak konfigurálva, ami azt jelenti, hogy a gyorsítótárazási mechanizmus figyelmen kívül hagyja a lekérdezési karakterláncokat. Ez a típusú konfiguráció megakadályozza, hogy a gyorsítótár-kulcs a lekérdezési karakterlánc adatait is tartalmazza.
 
-Ha egy lekérdezési karakterláncot rögzít a gyorsítótár-kulcsban, azt a rendszer a kivonatának megfelelőre konvertálja, majd beszúrja a kért objektum neve és a hozzá tartozó fájlkiterjesztés közé (&lt;például:&gt;Asset hash Value. html).
+Ha egy lekérdezési karakterláncot rögzít a gyorsítótár-kulcsban, azt a rendszer a kivonatának megfelelőre konvertálja, majd beszúrja a kért objektum neve és a hozzá tartozó fájlkiterjesztés közé (például: Asset &lt; hash Value &gt; . html).
 
 ### <a name="response-header-format"></a>Válasz fejlécének formátuma
 
-A `X-EC-Debug` válasz fejléce a fizikai gyorsítótár-kulcs információit a következő formátumban jelenti:
+A `X-EC-Debug` Válasz fejléce a fizikai gyorsítótár-kulcs információit a következő formátumban jelenti:
 
 `X-EC-Debug: x-ec-cache-key: CacheKey`
 
@@ -137,11 +137,11 @@ A következő minta válasz fejléce a kért tartalom fizikai gyorsítótár-kul
 `X-EC-Debug: x-ec-cache-key: //http/800001/origin/images/foo.jpg`
 
 ## <a name="cache-state-response-header"></a>Gyorsítótár állapotának válaszának fejléce
-A `X-EC-Debug: x-ec-cache-state` válasz fejléce a kért tartalom gyorsítótárbeli állapotát jelzi a kérelem időpontjában.
+A `X-EC-Debug: x-ec-cache-state` Válasz fejléce a kért tartalom gyorsítótárbeli állapotát jelzi a kérelem időpontjában.
 
 ### <a name="response-header-format"></a>Válasz fejlécének formátuma
 
-A `X-EC-Debug` válasz fejléce a gyorsítótár állapotának adatait a következő formátumban jelenti:
+A `X-EC-Debug` Válasz fejléce a gyorsítótár állapotának adatait a következő formátumban jelenti:
 
 `X-EC-Debug: x-ec-cache-state: max-age=MASeconds (MATimePeriod); cache-ts=UnixTime (ddd, dd MMM yyyy HH:mm:ss GMT); cache-age=CASeconds (CATimePeriod); remaining-ttl=RTSeconds (RTTimePeriod); expires-delta=ExpiresSeconds`
 
@@ -163,7 +163,7 @@ A fenti válasz fejlécének szintaxisában használt kifejezések a következő
 
 - RTTimePeriod: a fennmaradó TTL-értéket (azaz RTSeconds) átalakítja egy nagyobb egység (például nap) közelítő megfelelő értékére.
 
-- ExpiresSeconds: a `Expires` válasz fejlécében megadott dátum/idő előtt hátralévő másodpercek számát jelzi. Ha a `Expires` válasz fejléce nem szerepel a válaszban, akkor a kifejezés értéke *none*.
+- ExpiresSeconds: a válasz fejlécében megadott dátum/idő előtt hátralévő másodpercek számát jelzi `Expires` . Ha a válasz `Expires` fejléce nem szerepel a válaszban, akkor a kifejezés értéke *none*.
 
 ### <a name="sample-response-header"></a>Példa válasz fejlécére
 

@@ -8,20 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 795891f56985504a3584089d7377f753605ba4dd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d6f70e00bc33430cba13895b6d0c9a0aac5ef246
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263040"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338685"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 és Edsv4 sorozat
 
 A Edv4 és a Edsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és ideális a különböző, nagy mennyiségű Nagyvállalati alkalmazások számára, és akár 504 GIB RAM, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók a [Ev3-/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) -méretekhez és a Gen2-alapú virtuális [gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) képest.
-
-
-> [!IMPORTANT]
-> Ha a Edv4 vagy a Edsv4 sorozat használatával telepít egy új virtuális gépet, és Linux-lemezképet szeretne használni, akkor a RHEL 8. x, CentOS 8. x vagy Oracle 7. x vagy újabb verziókat kell használnia. Ha a RHEL 7. x, CentOS 7. x vagy Orcale 6. x lehetőséget választja, a kernel pánik hiba lesz. A Microsoft aktívan telepíti a javítást. Csak a RHEL, a CentOS és az Oracle van hatással.
 
 ## <a name="edv4-series"></a>Edv4 sorozat
 
@@ -88,6 +84,6 @@ Memória megőrzésének frissítései: támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

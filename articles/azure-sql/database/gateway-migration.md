@@ -1,6 +1,6 @@
 ---
 title: Átjáró forgalmi áttelepítési nyilatkozata
-description: A cikk a Azure SQL Database átjárók IP-címeinek áttelepítésére vonatkozó értesítéseket nyújt a felhasználóknak
+description: A cikk a Azure SQL Database átjáró IP-címeinek áttelepítésére vonatkozó értesítéseket nyújt a felhasználóknak
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9ec21657f871211df575b56ff56962aad3f5c88
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043393"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324713"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Az újabb átjárók felé irányuló első adatforgalom a következő régiókb
 - USA 2. keleti régiója
 - Kelet-Ázsia
 
-A forgalom áttelepítése megváltoztatja azt a nyilvános IP-címet, amelyet a DNS feloldja a SQL Database.
+A forgalom áttelepítése megváltoztatja azt a nyilvános IP-címet, amelyet a DNS feloldja az adatbázishoz Azure SQL Databaseban.
 A szolgáltatásra hatással lesz:
 
 - A helyszíni tűzfal adott átjárójának IP-címe nem kódolt
@@ -62,6 +62,6 @@ Az alkalmazásból a 4,0-es verziónál régebbi Microsoft JDBC illesztőprogram
 
 Ha a fenti megoldás nem működik, a következő URL-cím használatával kérjen SQL Database vagy SQL felügyelt példányra vonatkozó támogatási kérelmet:https://aka.ms/getazuresupport
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure SQL kapcsolati architektúráról](connectivity-architecture.md)

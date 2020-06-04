@@ -4,13 +4,13 @@ description: Ez a go REST-alapú rövid útmutató közzéteszi a tudásbázist,
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 4ce655bdc7a913ecb281ce8a75e7ec4f2009a2ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 4bfa523c6a42c8848f30ceb88770d3ce3fb03fae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851695"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342714"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Go használatával
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
 ## <a name="create-a-go-file"></a>Go-fájl létrehozása
 
-Nyissa meg a VSCode, és hozzon létre egy nevű `publish-kb.go`új fájlt.
+Nyissa meg a VSCode, és hozzon létre egy nevű új fájlt `publish-kb.go` .
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
@@ -90,7 +90,7 @@ go build publish-kb.go
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](./get-answer-from-knowledge-base-go.md).
 

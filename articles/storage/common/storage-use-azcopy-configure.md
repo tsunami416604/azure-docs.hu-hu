@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176158"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341012"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -37,6 +37,17 @@ A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` k�
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő proxykat.
+
+### <a name="bypassing-a-proxy"></a>Proxy megkerülése ###
+
+Ha Windows rendszeren futtatja a AzCopy-t, és azt szeretné tudni, hogy _ne_ használja a proxyt (a beállítások automatikus észlelése helyett), használja ezeket a parancsokat. Ezekkel a beállításokkal a AzCopy nem fog megjelenni, vagy nem próbálkozik a proxy használatára.
+
+| Operációs rendszer | Környezet | Parancsok  |
+|--------|-----------|----------|
+| **Windows** | Parancssor (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+Más operációs rendszereken egyszerűen ne törölje a HTTPS_PROXY változót, ha nem kíván proxyt használni.
 
 ## <a name="optimize-performance"></a>Teljesítmény optimalizálása
 
@@ -68,19 +79,19 @@ Ez a parancs teljesítménytesztet futtat egy megadott célhelyre való feltölt
 
 A részletes dokumentációt lásd: [azcopy pad](storage-ref-azcopy-bench.md).
 
-A parancs részletes súgójának megtekintéséhez írja be `azcopy bench -h` a parancsot, majd nyomja le az ENTER billentyűt.
+A parancs részletes súgójának megtekintéséhez írja be a parancsot, `azcopy bench -h` majd nyomja le az ENTER billentyűt.
 
 ### <a name="optimize-throughput"></a>Teljesítmény optimalizálása
 
-A parancsokban a `cap-mbps` jelzőt használhatja, hogy a felső korlátot az adatátviteli sebességre helyezze. A következő parancs például egy feladatot és a Caps átviteli sebességét másodpercenként `10` megabájtra (MB) folytatja. 
+A `cap-mbps` parancsokban a jelzőt használhatja, hogy a felső korlátot az adatátviteli sebességre helyezze. A következő parancs például egy feladatot és a Caps átviteli sebességét `10` másodpercenként megabájtra (MB) folytatja. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A környezeti változó beállításával növelheti az `AZCOPY_CONCURRENCY_VALUE` átviteli sebességet is. Ez a változó határozza meg az egyidejű kérések számát.  
+Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A környezeti változó beállításával növelheti az átviteli sebességet is `AZCOPY_CONCURRENCY_VALUE` . Ez a változó határozza meg az egyidejű kérések számát.  
 
-Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz: `32`. Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. Ennek a változónak a maximális alapértelmezett értéke `3000`a, de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
+Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz: `32` . Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. Ennek a változónak a maximális alapértelmezett értéke a `3000` , de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -88,13 +99,13 @@ Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-A változó `azcopy env` aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor megtekintheti, hogy melyik értéket használja a rendszer a AzCopy-naplófájl elején. A kijelölt érték és a kiválasztott ok a jelentésekben szerepelnek.
+A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor megtekintheti, hogy melyik értéket használja a rendszer a AzCopy-naplófájl elején. A kijelölt érték és a kiválasztott ok a jelentésekben szerepelnek.
 
-Mielőtt beállítja ezt a változót, javasoljuk, hogy futtasson egy teljesítményteszt-tesztet. A teljesítményteszt-tesztelési folyamat a javasolt Egyidejűség értékét fogja jelenteni. Ha a hálózati feltételek és a hasznos adatok eltérőek, akkor a változót egy adott `AUTO` szám helyett a szóhoz kell beállítani. Ez azt eredményezi, hogy a AzCopy mindig ugyanazt az Automatikus hangolási folyamatot fogja futtatni, amelyet a teljesítményteszt-tesztekben használ.
+Mielőtt beállítja ezt a változót, javasoljuk, hogy futtasson egy teljesítményteszt-tesztet. A teljesítményteszt-tesztelési folyamat a javasolt Egyidejűség értékét fogja jelenteni. Ha a hálózati feltételek és a hasznos adatok eltérőek, akkor a változót `AUTO` egy adott szám helyett a szóhoz kell beállítani. Ez azt eredményezi, hogy a AzCopy mindig ugyanazt az Automatikus hangolási folyamatot fogja futtatni, amelyet a teljesítményteszt-tesztekben használ.
 
 ### <a name="optimize-memory-use"></a>Memória használatának optimalizálása
 
-Állítsa be `AZCOPY_BUFFER_GB` a környezeti változót a fájlok letöltésekor és feltöltésekor használni kívánt AzCopy maximális mennyiségének megadásához.
+Állítsa be a `AZCOPY_BUFFER_GB` környezeti változót a fájlok letöltésekor és feltöltésekor használni kívánt AzCopy maximális mennyiségének megadásához.
 Ez az érték gigabájtban (GB) kifejezve.
 
 | Operációs rendszer | Parancs  |
@@ -107,26 +118,26 @@ Ez az érték gigabájtban (GB) kifejezve.
 
 A [szinkronizálási](storage-ref-azcopy-sync.md) parancs azonosítja a célhelyen lévő összes fájlt, majd a szinkronizálási művelet megkezdése előtt összehasonlítja a fájlneveket és az utolsó módosítás időbélyegeket. Ha nagy számú fájlt használ, a teljesítmény javítása érdekében kiküszöbölheti ezt a kezdeti feldolgozást. 
 
-Ehhez használja helyette a [azcopy Copy](storage-ref-azcopy-copy.md) parancsot, és állítsa a `--overwrite` jelölőt a következőre:. `ifSourceNewer` A AzCopy össze fogja hasonlítani a fájlokat a másolásuk előtt, anélkül, hogy előzetes vizsgálatokat és összehasonlításokat végezne. Ez olyan teljesítményt biztosít, amelyben nagy mennyiségű fájlt kell összehasonlítani.
+Ehhez használja helyette a [azcopy Copy](storage-ref-azcopy-copy.md) parancsot, és állítsa a jelölőt a következőre: `--overwrite` `ifSourceNewer` . A AzCopy össze fogja hasonlítani a fájlokat a másolásuk előtt, anélkül, hogy előzetes vizsgálatokat és összehasonlításokat végezne. Ez olyan teljesítményt biztosít, amelyben nagy mennyiségű fájlt kell összehasonlítani.
 
-A [azcopy másolási](storage-ref-azcopy-copy.md) parancs nem törli a célhelyről a fájlokat, ezért ha törölni szeretné a célhelyen lévő fájlokat, ha már nem léteznek a forrásnál, akkor a [azcopy Sync](storage-ref-azcopy-sync.md) parancsot a ( `--delete-destination` z) `true` vagy `prompt`értékre állítja a jelzővel. 
+A [azcopy másolási](storage-ref-azcopy-copy.md) parancs nem törli a célhelyről a fájlokat, ezért ha törölni szeretné a célhelyen lévő fájlokat, ha már nem léteznek a forrásnál, akkor a [azcopy Sync](storage-ref-azcopy-sync.md) parancsot a (z) `--delete-destination` vagy értékre állítja a jelzővel `true` `prompt` . 
 
 ## <a name="troubleshoot-issues"></a>Problémák elhárítása
 
 A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megtervezi a fájlokat. A naplók segítségével megvizsgálhatja és elháríthatja a lehetséges problémákat. 
 
-A naplók a hiba (`UPLOADFAILED`, `COPYFAILED`, és `DOWNLOADFAILED`) állapotát, a teljes elérési utat és a hiba okát fogják tartalmazni.
+A naplók a hiba ( `UPLOADFAILED` , `COPYFAILED` , és `DOWNLOADFAILED` ) állapotát, a teljes elérési utat és a hiba okát fogják tartalmazni.
 
-Alapértelmezés szerint a napló-és a terv fájlok a `%USERPROFILE%\.azcopy` Windows vagy `$HOME$\.azcopy` a címtár Mac és Linux rendszerű könyvtárában találhatók, de ha kívánja, módosíthatja ezt a helyet.
+Alapértelmezés szerint a napló-és a terv fájlok a `%USERPROFILE%\.azcopy` Windows vagy a címtár Mac és Linux rendszerű könyvtárában találhatók `$HOME$\.azcopy` , de ha kívánja, módosíthatja ezt a helyet.
 
-A kapcsolódó hiba nem feltétlenül a fájlban megjelenő első hiba. Hibák, például hálózati hibák, időtúllépések és a kiszolgáló foglalt hibái esetén a AzCopy legfeljebb 20 alkalommal próbálkozik újra, és általában az újrapróbálkozási folyamat sikeres lesz.  A megjelenő első hiba lehet valami ártalmatlan, amely sikeresen újrapróbálkozott.  Tehát ahelyett, hogy a fájl első hibáját keresi, keresse meg a közelében `UPLOADFAILED`, `COPYFAILED`vagy `DOWNLOADFAILED`a következő hibákat:. 
+A kapcsolódó hiba nem feltétlenül a fájlban megjelenő első hiba. Hibák, például hálózati hibák, időtúllépések és a kiszolgáló foglalt hibái esetén a AzCopy legfeljebb 20 alkalommal próbálkozik újra, és általában az újrapróbálkozási folyamat sikeres lesz.  A megjelenő első hiba lehet valami ártalmatlan, amely sikeresen újrapróbálkozott.  Tehát ahelyett, hogy a fájl első hibáját keresi, keresse meg a közelében, vagy a következő hibákat: `UPLOADFAILED` `COPYFAILED` `DOWNLOADFAILED` . 
 
 > [!IMPORTANT]
 > Amikor kérelmet küld a Microsoft ügyfélszolgálata (vagy bármely harmadik féltől származó probléma elhárítása), ossza meg a futtatni kívánt parancs kivont verzióját. Ez biztosítja, hogy az SAS véletlenül senkivel se legyen megosztva. A leválasztott verziót a naplófájl elején találja.
 
 ### <a name="review-the-logs-for-errors"></a>A hibákkal kapcsolatos naplók áttekintése
 
-A következő parancs az állapottal kapcsolatos `UPLOADFAILED` összes hibát a `04dc9ca9-158f-7945-5933-564021086c79` naplóból fogja kapni:
+A következő parancs az állapottal kapcsolatos összes hibát `UPLOADFAILED` a `04dc9ca9-158f-7945-5933-564021086c79` naplóból fogja kapni:
 
 **Windows (PowerShell)**
 
@@ -174,7 +185,7 @@ Amikor folytat egy feladatot, a AzCopy megtekinti a feladatütemezés fájlját.
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>A csomag és a naplófájlok helyének módosítása
 
-Alapértelmezés szerint a terv és a naplófájlok a `%USERPROFILE%\.azcopy` Windows könyvtárban vagy a Mac és Linux rendszerű `$HOME$\.azcopy` könyvtárban találhatók. Ezt a helyet módosíthatja.
+Alapértelmezés szerint a terv és a naplófájlok a `%USERPROFILE%\.azcopy` Windows könyvtárban vagy a `$HOME$\.azcopy` Mac és Linux rendszerű könyvtárban találhatók. Ezt a helyet módosíthatja.
 
 ### <a name="change-the-location-of-plan-files"></a>A csomag fájljai helyének módosítása
 
@@ -186,7 +197,7 @@ Használja az alábbi parancsok bármelyikét.
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-A változó `azcopy env` aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a fájlok megtervezése az alapértelmezett helyre történik.
+A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a fájlok megtervezése az alapértelmezett helyre történik.
 
 ### <a name="change-the-location-of-log-files"></a>A naplófájlok helyének módosítása
 
@@ -198,18 +209,18 @@ Használja az alábbi parancsok bármelyikét.
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-A változó `azcopy env` aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a naplók az alapértelmezett helyre íródnak.
+A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a naplók az alapértelmezett helyre íródnak.
 
 ## <a name="change-the-default-log-level"></a>Az alapértelmezett naplózási szint módosítása
 
-Alapértelmezés szerint a AzCopy naplózási szintje a `INFO`következőre van beállítva:. Ha csökkenteni szeretné a napló részletességét, hogy lemezterületet szabadítson fel, írja felül ezt a beállítást a ``--log-level`` kapcsoló használatával. 
+Alapértelmezés szerint a AzCopy naplózási szintje a következőre van beállítva: `INFO` . Ha csökkenteni szeretné a napló részletességét, hogy lemezterületet szabadítson fel, írja felül ezt a beállítást a ``--log-level`` kapcsoló használatával. 
 
-A rendelkezésre álló naplózási `NONE`szintek `DEBUG`a `INFO`következők `WARNING`: `ERROR`, `PANIC`,, `FATAL`,, és.
+A rendelkezésre álló naplózási szintek a következők:,,,,, `NONE` `DEBUG` `INFO` `WARNING` `ERROR` `PANIC` és `FATAL` .
 
 ## <a name="remove-plan-and-log-files"></a>Csomag-és naplófájlok eltávolítása
 
-Ha el szeretné távolítani az összes csomagot és naplófájlt a helyi gépről, hogy lemezterületet szabadítson fel, `azcopy jobs clean` használja az parancsot.
+Ha el szeretné távolítani az összes csomagot és naplófájlt a helyi gépről, hogy lemezterületet szabadítson fel, használja az `azcopy jobs clean` parancsot.
 
-Csak egy feladatokhoz társított csomag és naplófájlok eltávolításához használja `azcopy jobs rm <job-id>`a következőt:. Cserélje le `<job-id>` a példában szereplő helyőrzőt a feladatokhoz tartozó azonosítójú elemre.
+Csak egy feladatokhoz társított csomag és naplófájlok eltávolításához használja a következőt: `azcopy jobs rm <job-id>` . Cserélje le a példában szereplő helyőrzőt a feladatokhoz tartozó azonosítójú elemre `<job-id>` .
 
 

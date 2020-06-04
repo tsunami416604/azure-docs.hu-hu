@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 913a2b26f67773d9fafbc0a8430d121fbabb97cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053459"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344390"
 ---
 # <a name="add-contributors-to-your-app"></a>Közreműködők hozzáadása az alkalmazáshoz
 
-Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. Ezek a közreműködők módosíthatják a modellt, betanítják és közzétehetik az alkalmazást. 
+Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. Ezek a közreműködők módosíthatják a modellt, betanítják és közzétehetik az alkalmazást.
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -30,7 +30,7 @@ Az alábbi eljárás az Azure authoring Resource használatára **áttelepített
 
 Áttelepítette, ha a LUIS authoring Experience egy authoring-erőforráshoz van kötve a LUIS **-portál Manage-> Azure-erőforrások** lapján.
 
-1. A Azure Portal keresse meg a Language Understanding (LUIS) authoring erőforrást. A típusa a következő `LUIS.Authoring`:.
+1. A Azure Portal keresse meg a Language Understanding (LUIS) authoring erőforrást. A típusa a következő: `LUIS.Authoring` .
 1. Az erőforrás **Access Control (iam)** lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
 
     ![A Azure Portalban vegyen fel szerepkör-hozzárendelést az erőforrás-létrehozáshoz.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
@@ -39,7 +39,7 @@ Az alábbi eljárás az Azure authoring Resource használatára **áttelepített
 
     ![Felhasználó e-mail-címének hozzáadása az Azure AD közreműködői szerepköréhez](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    Ha a felhasználó e-mail-címe megtalálható, válassza ki a fiókot, és válassza a **Mentés**lehetőséget. 
+    Ha a felhasználó e-mail-címe megtalálható, válassza ki a fiókot, és válassza a **Mentés**lehetőséget.
 
     Ha problémája van a szerepkör-hozzárendeléssel, tekintse át az [Azure szerepkör-hozzárendeléseket](../../role-based-access-control/role-assignments-portal.md) és az [Azure hozzáférés-vezérléssel kapcsolatos hibaelhárítást](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
@@ -60,7 +60,7 @@ Egy alkalmazás egyetlen szerzővel, a tulajdonossal, de több közreműködőve
     ![Közreműködő e-mail-címének hozzáadása](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
-### <a name="users-with-multiple-emails"></a>Több e-mailekkel rendelkező felhasználók 
+### <a name="users-with-multiple-emails"></a>Több e-mailekkel rendelkező felhasználók
 
 Ha a LUIS-alkalmazáshoz közreműködőket/közreműködőket ad hozzá, pontosan megadja az e-mail-címet. Míg Azure Active Directory (Azure AD) lehetővé teszi, hogy egyetlen felhasználó több e-mail fiókkal is felhasználható, a LUIS megköveteli a felhasználótól, hogy jelentkezzen be a közreműködő/közreműködő hozzáadásakor megadott e-mail-címmel.
 
@@ -68,7 +68,7 @@ Ha a LUIS-alkalmazáshoz közreműködőket/közreműködőket ad hozzá, pontos
 
 ### <a name="azure-active-directory-resources"></a>Erőforrások Azure Active Directory
 
-Ha [Azure Active Directoryt](https://docs.microsoft.com/azure/active-directory/) (Azure ad) használ a szervezetben, Language UNDERSTANDING (Luis) engedélyre van szüksége a felhasználók hozzáférésére vonatkozó információkhoz, amikor a Luis-t szeretnék használni. A LUIS által igényelt erőforrások minimálisak. 
+Ha [Azure Active Directoryt](https://docs.microsoft.com/azure/active-directory/) (Azure ad) használ a szervezetben, Language UNDERSTANDING (Luis) engedélyre van szüksége a felhasználók hozzáférésére vonatkozó információkhoz, amikor a Luis-t szeretnék használni. A LUIS által igényelt erőforrások minimálisak.
 
 A részletes leírást akkor tekintheti meg, ha olyan fiókkal próbál regisztrálni, amely rendszergazdai jogosultságokkal rendelkezik, vagy nem igényel rendszergazdai jogosultságot, például a rendszergazdai beleegyezett:
 
@@ -78,25 +78,25 @@ A részletes leírást akkor tekintheti meg, ha olyan fiókkal próbál regisztr
 
 ### <a name="azure-active-directory-tenant-user"></a>Bérlői felhasználó Azure Active Directory
 
-A LUIS standard Azure Active Directory (Azure AD) engedélyezési folyamatot használ. 
+A LUIS standard Azure Active Directory (Azure AD) engedélyezési folyamatot használ.
 
-A bérlői rendszergazdának közvetlenül kell működnie azzal a felhasználóval, akinek hozzáférést kell biztosítania a LUIS használatához az Azure AD-ben. 
+A bérlői rendszergazdának közvetlenül kell működnie azzal a felhasználóval, akinek hozzáférést kell biztosítania a LUIS használatához az Azure AD-ben.
 
-* Először a felhasználó bejelentkezik a LUIS-be, és a rendszergazdai jóváhagyást igénylő előugró párbeszédpanelt látja. A folytatás előtt a felhasználó kapcsolatba lép a bérlői rendszergazdával. 
-* Másodszor, a bérlői rendszergazda bejelentkezik a LUIS-ba, és megtekint egy beleegyező folyamat előugró párbeszédpanelt. Ez az a párbeszédpanel, amely számára a rendszergazdának engedélyt kell adnia a felhasználó számára. Ha a rendszergazda elfogadja az engedélyt, a felhasználó továbbra is elvégezheti a LUIS-t. Ha a bérlői rendszergazda nem tud bejelentkezni a LUIS-be, a [rendszergazda hozzáférhet a](https://account.activedirectory.windowsazure.com/r#/applications) luishoz, amely az alábbi képernyőfelvételen látható. Figyelje meg, hogy a lista a nevet `LUIS`tartalmazó elemekre van szűrve.
+* Először a felhasználó bejelentkezik a LUIS-be, és a rendszergazdai jóváhagyást igénylő előugró párbeszédpanelt látja. A folytatás előtt a felhasználó kapcsolatba lép a bérlői rendszergazdával.
+* Másodszor, a bérlői rendszergazda bejelentkezik a LUIS-ba, és megtekint egy beleegyező folyamat előugró párbeszédpanelt. Ez az a párbeszédpanel, amely számára a rendszergazdának engedélyt kell adnia a felhasználó számára. Ha a rendszergazda elfogadja az engedélyt, a felhasználó továbbra is elvégezheti a LUIS-t. Ha a bérlői rendszergazda nem tud bejelentkezni a LUIS-be, a [rendszergazda hozzáférhet a](https://account.activedirectory.windowsazure.com/r#/applications) luishoz, amely az alábbi képernyőfelvételen látható. Figyelje meg, hogy a lista a nevet tartalmazó elemekre van szűrve `LUIS` .
 
 ![Azure Active Directory-engedély az alkalmazás webhelyén](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Ha a bérlői rendszergazda csak bizonyos felhasználók számára szeretne LUIS-t használni, néhány lehetséges megoldás létezik:
 * Adja meg a "rendszergazdai beleegyezett" (beleegyezett az Azure AD összes felhasználójára), de az "igen" értékre állítsa a "felhasználói hozzárendelés szükséges" értéket a vállalati alkalmazás tulajdonságai területen, végül pedig csak a kívánt felhasználókat rendeli hozzá az alkalmazáshoz. Ezzel a módszerrel a rendszergazda továbbra is "rendszergazdai beleegyezett" az alkalmazáshoz, de megadhatja azokat a felhasználókat, akik hozzáférhetnek hozzá.
-* Egy második megoldás, amely az [Azure ad Identity and Access Management API-t használja Microsoft Graphban](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) az egyes felhasználók beleegyezett. 
+* Egy második megoldás, amely az [Azure ad Identity and Access Management API-t használja Microsoft Graphban](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) az egyes felhasználók beleegyezett.
 
-További információ az Azure Active Directory-felhasználókról és-engedélyekről: 
+További információ az Azure Active Directory-felhasználókról és-engedélyekről:
 * [Alkalmazás korlátozása](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) felhasználói csoportra
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Ismerje meg az adott erőforrással kapcsolatos fogalmakat, például a [szerzői erőforrást](luis-concept-keys.md#authoring-key) és a [közreműködőket](luis-concept-keys.md#contributions-from-other-authors) .
 * Útmutató szerzői és futtatókörnyezeti erőforrások [létrehozásához](luis-how-to-azure-subscription.md)
-* Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md) 
+* Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md)

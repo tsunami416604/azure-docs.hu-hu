@@ -4,14 +4,14 @@ description: Az Azure HPC cache kezelése és frissítése a Azure Portal haszn�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 34f29eda703cb019cca3e9ca293e31288c6e151b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537950"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343667"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -30,6 +30,10 @@ A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 * [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
 
 Az alábbi lehetőségekről itt olvashat bővebben.
+
+Az alábbi képre kattintva megtekintheti a gyorsítótár-kezelési feladatokat bemutató [videót](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) .
+
+[![videó miniatűrje: Azure HPC cache: Manage (kattintson ide a videó oldalának megtekintéséhez)](media/video5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>A gyorsítótár leállítása
 
@@ -97,7 +101,7 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)
 * Segítség kérése [Az Azure HPC cache](hpc-cache-support-ticket.md) -hez

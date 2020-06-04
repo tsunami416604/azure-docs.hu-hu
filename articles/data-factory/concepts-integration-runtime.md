@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: eb5e15f5387628fea293c767202ece77b14f656c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113335"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345002"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -30,6 +30,8 @@ Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által h
 - **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
 
 A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy tevékenység hivatkozik rá, és megadja azt a számítási környezetet, ahol a tevékenység vagy a szolgáltatás fut, vagy amelyről elküldi a szolgáltatást. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
+
+Az integrációs modulokat a Azure Data Factory UX-ben hozhatja létre a [felügyeleti központban](author-management-hub.md) , valamint a rájuk hivatkozó tevékenységeket, adatkészleteket vagy adatfolyamatokat.
 
 ## <a name="integration-runtime-types"></a>Integrációsmodul-típusok
 
@@ -191,7 +193,7 @@ A külső számítási motort használó minden külső átalakítási tevékeny
 
 Az adatfolyam-tevékenységek végrehajtása a hozzá társított Azure Integration Runtime-on történik. Az adatfolyamatok által használt Spark-számításokat a Azure Integration Runtime adatáramlási tulajdonságai határozzák meg, és teljes mértékben az ADF kezelik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

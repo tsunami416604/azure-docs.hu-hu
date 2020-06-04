@@ -1,5 +1,5 @@
 ---
-title: A rendelkezésre állási csoport figyelője a RHEL virtuális gépek Azure-ban való SQL Server konfigurálása – Linux Virtual Machines | Microsoft Docs
+title: Rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépeken az Azure-ban – Linux Virtual machines | Microsoft Docs
 description: Tudnivalók a rendelkezésre állási csoport figyelője beállításáról az Azure-beli RHEL Virtual Machines szolgáltatásban SQL Server
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053920"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343761"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: a rendelkezésre állási csoport figyelő konfigurálása az Azure-beli RHEL virtuális gépeken való SQL Server
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > A bemutatott oktatóanyag **nyilvános előzetes**verzióban érhető el. 
 >
-> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával konfigurálható. A rendelkezésre állási csoport erőforrásainak konfigurálására vonatkozó parancsok megváltoztak a RHEL 8-ban, és érdemes megtekinteni a [rendelkezésre állási csoport erőforrásának](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásoknak a megfelelő parancsokkal kapcsolatos további információkért.
+> Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok megváltoztak a RHEL 8-ban, és a megfelelő parancsokról további információért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre rendelkezésre állási csoportot figyelőt az Azure-beli RHEL virtuális gépeken futó SQL-kiszolgálókhoz. Az alábbiakat fogja elsajátítani:
+Ez az oktatóanyag a RHEL Virtual Machines (VM) Azure-beli virtuális gépeken futó SQL Server-alapú rendelkezésre állási csoport-figyelő létrehozásához nyújt útmutatást. Az alábbiakat fogja elsajátítani:
 
 > [!div class="checklist"]
 > - Terheléselosztó létrehozása a Azure Portalban
@@ -37,7 +37,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre rendelkezésre állási csopo
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Elkészült [ **oktatóanyag: a rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server**](rhel-high-availability-stonith-tutorial.md)
+Elkészült [oktatóanyag: a rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>A terheléselosztó létrehozása a Azure Portal
 
@@ -57,9 +57,9 @@ Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [lé
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Név** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
+   | **Name (Név)** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
    | **Típus** |**Belső** |
-   | **Virtuális hálózat** |A létrehozott alapértelmezett VNet **VM1VNET**kell lennie. |
+   | **Virtuális hálózat** |A létrehozott alapértelmezett virtuális hálózatnak a **VM1VNET**nevűnek kell lennie. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. Az alapértelmezett értéknek **VM1Subnet**kell lennie.|
    | **IP-cím hozzárendelése** |**Statikus** |
    | **Magánhálózati IP-cím** |Használja a `virtualip` fürtben létrehozott IP-címet. |
@@ -98,7 +98,7 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Név** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
+   | **Name (Név)** |A mintavételt jelölő szöveges név. Például: **SQLAlwaysOnEndPointProbe**. |
    | **Protokoll** |**TCP** |
    | **Port** |Bármely elérhető portot használhat. Például *59999*. |
    | **Időköz** |*5* |
@@ -127,10 +127,10 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
 
    | Beállítás | Érték |
    | --- | --- |
-   | **Név** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
+   | **Name (Név)** |A terheléselosztási szabályokat jelképező szöveges név. Például: **SQLAlwaysOnEndPointListener**. |
    | **Protokoll** |**TCP** |
    | **Port** |*1433* |
-   | **Háttérport** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
+   | **Háttér-port** |*1433*. Ez az érték figyelmen kívül lesz hagyva, mert ez a szabály **lebegőpontos IP-címet használ (a közvetlen kiszolgáló visszatérése)**. |
    | **Mintavétel** |Használja a terheléselosztó számára létrehozott mintavétel nevét. |
    | **Munkamenet-állandóság** |**Nincs** |
    | **Üresjárati időkorlát (perc)** |*4* |
@@ -220,7 +220,7 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
 
 ## <a name="test-the-listener-and-a-failover"></a>A figyelő és a feladatátvétel tesztelése
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>A SQL Server a rendelkezésre állási csoport figyelője használatával történő bejelentkezés tesztelése
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>Bejelentkezés SQL Server a rendelkezésre állási csoport figyelője használatával
 
 1. A SQLCMD használatával jelentkezzen be SQL Server elsődleges csomópontjára a rendelkezésre állási csoport figyelője nevével:
 
@@ -238,11 +238,11 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
 
     A kimenetnek az aktuális elsődleges csomópontot kell megjelenítenie. Ezt akkor kell megadnia `VM1` , ha még soha nem tesztelt feladatátvételt.
 
-    A parancs beírásával lépjen ki az SQL-munkamenetből `exit` .
+    A parancs beírásával lépjen ki a SQL Server-munkamenetből `exit` .
 
 ### <a name="test-a-failover"></a>Feladatátvétel tesztelése
 
-1. Futtassa a következő parancsot az elsődleges replika `<VM2>` vagy egy másik replika manuális feladatátvételéhez. Cserélje le a `<VM2>` nevet a kiszolgálónév értékére.
+1. Futtassa a következő parancsot az elsődleges replika manuális feladatátvételéhez `<VM2>` vagy egy másik replikához. Cserélje le a `<VM2>` nevet a kiszolgálónév értékére.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -274,13 +274,13 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. A SQLCMD használatával jelentkezzen be az elsődleges replikába a figyelő nevével:
+1. A SQLCMD használatával jelentkezzen be az elsődleges replikára a figyelő nevével:
 
     - Használjon egy korábban létrehozott bejelentkezési azonosítót, és cserélje le `<YourPassword>` a megfelelő jelszóval. Az alábbi példa a `sa` SQL Server használatával létrehozott bejelentkezést használja.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. Keresse meg azt a kiszolgálót, amelyhez csatlakozik. Futtassa a következő parancsot a SQLCMD-ben:
 
@@ -290,9 +290,9 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
 
     Látnia kell, hogy most már csatlakozik ahhoz a virtuális géphez, amelyre a feladatátvételt elvégezte.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli terheléselosztó használatáról:
 
 > [!div class="nextstepaction"]
-> [Terheléselosztó konfigurálása egy rendelkezésre állási csoport számára az Azure SQL Server virtuális gépeken](../windows/availability-group-load-balancer-portal-configure.md)
+> [A rendelkezésre állási csoport terheléselosztásának konfigurálása SQL Server Azure-beli virtuális gépeken](../windows/availability-group-load-balancer-portal-configure.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300126"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344849"
 ---
 # <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Azure Files fájlmegosztás létrehozása tartományvezérlővel
 
@@ -43,7 +43,7 @@ Storage-fiók beállítása:
     - Adja meg a tárfiók egyedi nevét.
     - A **helyhez**azt javasoljuk, hogy ugyanazt a helyet adja meg, mint a Windows rendszerű virtuális asztali alkalmazáskészlet.
     - A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. (A IOPS követelményeitől függően. További információ: [Storage Options for FSLogix Profile containers in Windows Virtual Desktop](store-fslogix-profile.md).)
-    - A **fióktípus**mezőben válassza a **StorageV2**lehetőséget.
+    - A **fióktípus**mezőben válassza a **StorageV2** vagy a **FileStorage**lehetőséget.
     - A **replikáláshoz**válassza a **helyileg REDUNDÁNS tárolás (LRS)** lehetőséget.
 
 5. Ha elkészült, válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
@@ -64,15 +64,15 @@ Fájlmegosztás létrehozása:
 
 4. Kattintson a **Létrehozás** gombra.
 
-## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory hitelesítés engedélyezése
+## <a name="enable-active-directory-authentication"></a>Active Directory hitelesítés engedélyezése
 
-Ezután engedélyeznie kell Azure Active Directory (AD-) hitelesítést. Ennek a szabályzatnak az engedélyezéséhez ezt a szakasz utasításait kell követnie egy már tartományhoz csatlakoztatott gépen. A hitelesítés engedélyezéséhez kövesse az alábbi utasításokat a tartományvezérlőt futtató virtuális gépen:
+Ezután engedélyeznie kell Active Directory (AD-) hitelesítést. Ennek a szabályzatnak az engedélyezéséhez ezt a szakasz utasításait kell követnie egy már tartományhoz csatlakoztatott gépen. A hitelesítés engedélyezéséhez kövesse az alábbi utasításokat a tartományvezérlőt futtató virtuális gépen:
 
 1. RDP protokoll a tartományhoz csatlakoztatott virtuális gépre.
 
 2. Az AzFilesHybrid modul telepítéséhez és a hitelesítés engedélyezéséhez kövesse az [Azure-AD DS hitelesítés engedélyezése az Azure-fájlmegosztás számára](../storage/files/storage-files-identity-ad-ds-enable.md) című témakör útmutatását.
 
-3.  Nyissa meg a Azure Portal, nyissa meg a Storage-fiókját, válassza a **Konfigurálás**lehetőséget, majd erősítse meg, **Azure Active Directory (ad)** beállítást **engedélyezze**.
+3.  Nyissa meg a Azure Portal, nyissa meg a Storage-fiókját, válassza a **Konfigurálás**lehetőséget, majd erősítse meg, **Active Directory (ad)** beállítást **engedélyezze**.
 
      ![A konfiguráció oldalának képernyőképe Azure Active Directory (AD) engedélyezve.](media/active-directory-enabled.png)
 
@@ -233,6 +233,6 @@ A munkamenet engedélyeinek ellenőrzését:
 
 További teszteléshez kövesse a következő témakör utasításait: Ellenőrizze, [hogy a profil működik](create-profile-container-adds.md#make-sure-your-profile-works)-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A FSLogix hibaelhárításához tekintse meg [ezt a hibaelhárítási útmutatót](/fslogix/fslogix-trouble-shooting-ht).

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046921"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345342"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítmény szűk keresztmetszetének észlelhető típusai Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ A lassú lekérdezési teljesítmény nem kapcsolódik az optimálisnál rosszab
 - Erőforrás-korlátok észlelése [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) használatával
 - Erőforrásokkal kapcsolatos problémák észlelése a [DMV](database/monitoring-with-dmvs.md)használatával:
 
-  - A [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV egy SQL-adatbázis CPU-, I/O-és memória-felhasználását adja vissza. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
+  - A [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV a CPU-t, az I/O-t és a memória használatát adja vissza az adatbázishoz. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
   - A [sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV visszaadja a CPU-használati és adattárolási adatokat Azure SQL Database számára. Az adatok gyűjtése és összesítése öt percenként történik.
   - [Sok egyéni lekérdezés, amely összesíti a magas CPU-t](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-Ha nem elegendő erőforrással azonosítja a problémát, az erőforrások frissítésével növelheti az SQL-adatbázis kapacitását a CPU-követelmények befogadásához. További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](database/single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](database/elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [szolgáltatási rétegbeli erőforrás-korlátok](managed-instance/resource-limits.md#service-tier-characteristics)
+Ha nem elegendő erőforrással azonosítja a problémát, az erőforrások frissítésével növelheti az adatbázis kapacitását, hogy felvegye a CPU-követelményeket. További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](database/single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](database/elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [szolgáltatási rétegbeli erőforrás-korlátok](managed-instance/resource-limits.md#service-tier-characteristics)
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>Megnövekedett munkaterhelés-mennyiség által okozott teljesítménnyel kapcsolatos problémák
 
@@ -220,6 +220,6 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

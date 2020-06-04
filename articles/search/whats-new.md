@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682463"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344203"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -29,7 +29,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 + A [rendszer által felügyelt identitás (előzetes verzió)](search-howto-managed-identities-data-sources.md) használatával állítson be egy Azure-adatforráshoz való kapcsolódást az indexeléshez. Az olyan [Indexelő](search-indexer-overview.md) anyagokra vonatkozik, amelyek az Azure-adatforrásokból (például Azure SQL Database, Azure Cosmos db és Azure Storage) származó tartalmakat töltenek be.
 
-+ A keresési pontszámok kiszámításának és a [scoringStatistics = globális lekérdezési paraméternek](index-similarity-and-scoring.md#scoring-statistics)a használatával megváltoztathatók a találatok kiszámításának alapja.
++ Módosítsa a keresési pontszámok kiszámításának alapját, a [scoringStatistics = globális](index-similarity-and-scoring.md#scoring-statistics) és munkamenet-azonosító lekérdezési paraméterek használatával.
 
 ### <a name="march-2020"></a>2020. március
 

@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117529"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342918"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -52,7 +52,9 @@ A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. Az Log Analyticst támogató operációs rendszerek esetében lásd: [log Analytics ügynök áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. Az Log Analyticst támogató operációs rendszerek esetében lásd: [log Analytics ügynök áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+
+A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -112,7 +114,7 @@ A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl ta
 A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Szerep |
+> |Beállításjegyzék kulcsa | Cél |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
@@ -193,7 +195,7 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ Parameters \\ FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szolgáltatás Automation-fiókból való engedélyezéséhez lásd: [change Tracking és leltár engedélyezése Automation-fiókból](automation-enable-changes-from-auto-acct.md).
 * Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-onboard-solutions-from-browse.md)című témakört.

@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593444"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345036"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -95,10 +95,10 @@ New Supported Version List
 * A Kubernetes új **másodlagos** verzióihoz
   * Az összes felhasználó nyilvánosan értesítést kap az új verzióról, és a rendszer eltávolítja a verziót.
   * Egy új javítási verzió kiadásakor a rendszer a legrégebbi javítást is eltávolítja egyszerre.
-  * Az ügyfelek a nyilvános értesítés dátumától számított **30 napon belül** frissíthetnek egy támogatott alverzióra.
+  * Az Azure-támogatás a nyilvános értesítés dátumától számított **30 napon belül** elérhetővé teszi az ügyfeleket egy támogatott alverzióra való frissítéshez. 30 nap eltelte után frissítenie kell a másodlagos verziót, hogy továbbra is megkapja a támogatást.
 * A Kubernetes új **javítócsomag** -verzióihoz
   * Az összes felhasználó értesítést kap az új javítási verzió kiadásáról, és a legújabb patch kiadásra frissít.
-  * A felhasználók **30 napig** frissíthetnek újabb, támogatott javítási kiadásra a legrégebbi eltávolítása előtt.
+  * Az Azure-támogatás **30 nap alatt** elérhetővé teszi az ügyfeleknek, hogy egy régebbi javítási verzió eltávolítása után egy támogatott patch-kiadásra frissítsen. 30 nap eltelte után frissítenie kell a javítási verziót, hogy továbbra is megkapja a támogatást.
 
 Az AK az általánosan elérhető verzióként határozza meg a "kiadott verziót", amely minden SLO/minőségi szolgáltatásbeli mérésben engedélyezve van, és minden régióban elérhető. Az AK is támogathatja a explicit módon címkézett és az előzetes verzióra vonatkozó használati feltételek hatálya alá tartozó előzetes verziót.
 
@@ -134,7 +134,7 @@ Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen 
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 **Mi történik, ha egy ügyfél olyan Kubernetes-fürtöt frissít, amely nem támogatott másodlagos verzióval?**
 
@@ -155,13 +155,13 @@ Az AK által nem támogatott alverziók esetén a méretezés be-vagy kikapcsol�
 
 **Az ügyfél örökre Kubernetes-verzióban maradhat?**
 
-Igen. Ha azonban a fürt nem az AK által támogatott verziók egyikén található, a fürt kívül esik az AK-támogatási szabályzatok közül. Az Azure nem frissíti automatikusan a fürtöt, vagy nem törli azt.
+Ha egy fürtön több mint 3 alverzió nem támogatott, és biztonsági kockázatokkal jár, az Azure kapcsolatba lép Önnel, hogy proaktív módon frissítse a fürtöt. Ha nem hajt végre további műveletet, az Azure fenntartja a jogot, hogy az Ön nevében kényszerítse a fürt frissítését.
 
 **A vezérlő síkja milyen verziójú támogatást nyújt, ha a csomópont-készlet nem szerepel a támogatott AK-verziók egyikében sem?**
 
 A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában kell lennie. A vezérlő síkja vagy a csomópont-készletek frissítésével kapcsolatos részletekért látogasson el a [Node-készletek frissítésének](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)dokumentációjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürt frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
 

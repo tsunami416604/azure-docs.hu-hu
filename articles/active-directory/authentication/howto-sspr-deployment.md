@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870962"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338566"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
 > [!IMPORTANT]
 > Ez a telepítési terv útmutatást és ajánlott eljárásokat nyújt az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez.
 >
-> **Ha Ön és a végfelhasználója, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr) a **következőre:.
+> **Ha Ön végfelhasználó, és vissza kell kérnie a fiókját, lépjen [https://aka.ms/sspr](https://aka.ms/sspr) a **következőre:.
 
 Az [önkiszolgáló jelszó-visszaállítás (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) egy Azure Active Directory (ad) szolgáltatás, amely lehetővé teszi a felhasználók számára a jelszavuk visszaállítását anélkül, hogy segítségre lenne felvenni a kapcsolatot az informatikai személyzettel. A felhasználók gyorsan feloldják magukat, és a munka helyétől függetlenül is dolgozhatnak. Azáltal, hogy az alkalmazottak feloldják magukat, a szervezet csökkentheti a nem produktív időt és a magas támogatási költségeket a leggyakoribb jelszóval kapcsolatos problémákhoz.
 
@@ -86,7 +86,7 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 |Oktatóanyagok |[Azure AD önkiszolgáló jelszó-visszaállítási próba befejezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[Jelszó visszaírási engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Azure AD-jelszó alaphelyzetbe állítása a Windows 10 bejelentkezési képernyőjéről](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| GYIK|[Jelszavas kezelés – gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+| Gyakori kérdések|[Jelszavas kezelés – gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
 
 
 ### <a name="solution-architecture"></a>Megoldásarchitektúra
@@ -341,7 +341,7 @@ A [használat és](https://docs.microsoft.com/azure/active-directory/authenticat
 
 * [Mi a jelszó visszaírási?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSPR üzembe helyezésének megkezdéséhez lásd: az [Azure ad önkiszolgáló jelszó-visszaállításának engedélyezése](tutorial-enable-sspr.md)
 

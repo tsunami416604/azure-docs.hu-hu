@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268041"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331967"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -98,7 +98,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
     ![Szakasz nézet](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Hozzon létre egy új feladatot. Keressen rá az **Azure erőforráscsoport-telepítésre**, majd válassza a **Hozzáadás**lehetőséget.
+    b.  Hozzon létre egy új feladatot. Keresse meg az **ARM-sablon központi telepítését**, majd válassza a **Hozzáadás**lehetőséget.
 
     c.  A központi telepítési feladat területen válassza ki az előfizetést, az erőforráscsoportot és a célhelyet a cél adat-előállító számára. Szükség esetén adja meg a hitelesítő adatokat.
 
@@ -108,7 +108,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
     f.  Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt. Keresse meg a fájlt az `ARMTemplateParametersForFactory.json` <FactoryName> adf_publish ág mappájába.
 
-    g.  Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a cél adatok előállítójának kívánt értékeit. Azure Key Vaultból származó hitelesítő adatok esetén adja meg a titkos kulcs nevét idézőjelek között. Ha például a titkos kód neve cred1, akkor adja meg a **"$ (cred1)"** értéket ehhez az értékhez.
+    :  Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a cél adatok előállítójának kívánt értékeit. Azure Key Vaultból származó hitelesítő adatok esetén adja meg a titkos kulcs nevét idézőjelek között. Ha például a titkos kód neve cred1, akkor adja meg a **"$ (cred1)"** értéket ehhez az értékhez.
 
     h. Válassza a **növekményes** lehetőséget a **központi telepítési módhoz**.
 
