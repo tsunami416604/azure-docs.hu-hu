@@ -70,7 +70,8 @@
       items:
         - name: Betanítás és üzembe helyezés parancssori felülettel
           href: tutorial-train-deploy-model-cli.md
-        - name: Munkaterületek létrehozása Resource Manager-sablonokkal
+        - name: Munkaterületek létrehozása ARM-sablon használatával
+          displayName: Resource Manager
           href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:

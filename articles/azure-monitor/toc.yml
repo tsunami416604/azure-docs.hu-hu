@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: Szűrők
               href: platform/view-designer-filters.md
-        - name: Egyéni megoldások
-          items:
-            - name: Tervezés és felépítés
-              href: insights/solutions-creating.md
-            - name: Megoldásfájl
-              href: insights/solutions-solution-file.md
-            - name: Automation-erőforrások
-              href: insights/solutions-resources-automation.md
-            - name: Naplókeresések és riasztások
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Nézetek
-              href: insights/solutions-resources-views.md
-            - name: Ajánlott eljárások
-              href: insights/solutions-best-practices.md
     - name: Munkafüzetek
       items:
         - name: Áttekintés
