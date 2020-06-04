@@ -3,16 +3,16 @@ title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portá
 description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266576"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331389"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
-Miután létrehozta a tudásbázist, adja hozzá a kérdés-és válasz (QnA) párokat metaadatokkal a válasz szűréséhez. Az alábbi táblázatban szereplő kérdések az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure-szolgáltatással kell rendelkezniük.
+Miután létrehozta a tudásbázist, adja hozzá a kérdés-és válasz (QnA) párokat metaadatokkal a válasz szűréséhez. Az alábbi táblázatban szereplő kérdések az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure Search szolgáltatással kell foglalkoznia.
 
 <a name="qna-table"></a>
 
@@ -103,7 +103,7 @@ A tudásbázist úgy szerkesztette, hogy több kérdést támogasson, és a név
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Válasz kérése Postman vagy cURL használatával](get-answer-from-knowledge-base-using-url-tool.md)

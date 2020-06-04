@@ -1,14 +1,14 @@
 ---
 title: 'Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel'
 description: A QnA Maker batch Testing Tool eszközzel tesztelheti a QnA Maker erőforrás tudásbázisait a várt válaszok, a megbízhatósági pontszámok és a több bekapcsolási kérések esetében.
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873676"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337733"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
 
@@ -190,7 +190,7 @@ Ezekkel az eredményekkel láthatja, hogy csevegési naplót szeretne készíten
 
 A teszteléshez jó ötlet volt a meta-adattal való szűrés? Igen és nem. A tesztelési rendszernek létre kell hoznia minden egyes meta-adatpárokhoz tartozó tesztelési fájlt, valamint egy olyan tesztet, amely nem tartalmaz meta-adatpárokat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a Tudásbázis tesztelését, törölje a Batch file eszközt és a tesztelési fájlokat.
 
@@ -199,7 +199,7 @@ Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a
 1. A QnA Maker portálon válassza a **saját Tudásbázis** lehetőséget a felső menüben.
 1. A tudásbázisok listájában válassza a **Törlés** ikont a rövid útmutató tudásbázisának sorában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

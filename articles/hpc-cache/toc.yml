@@ -52,3 +52,5 @@
       href: customer-keys.md
     - name: Az Azure NetApp Files használata az Azure HPC Cache-sel
       href: hpc-cache-netapp.md
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'
