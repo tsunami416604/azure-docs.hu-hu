@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: a16b95249562db98d9382f8ca56bf4a27beba2fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d455490f6eed0f928dc69c8f51f8d335a1dfe145
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743497"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321325"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)
 
@@ -23,7 +23,7 @@ Miután engedélyezte az Azure Cosmos-fiókok notebook-támogatását, megnyitha
 Az új kód cellában szúrja be és futtassa a következő kódot, és cserélje le a ``PackageToBeInstalled`` kívánt Python-csomagra.
 ```python
 import sys
-!{sys.executable} -m pip install PackageToBeInstalled –user
+!{sys.executable} -m pip install PackageToBeInstalled --user
 ```
 Ez a csomag minden jegyzetfüzetből elérhető lesz az Azure Cosmos-fiók munkaterületen. 
 

@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847328"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342952"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -103,7 +103,7 @@ A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 
-Az alábbi információk az operációs rendszerre jellemző ügyfelekre vonatkozó követelményeket ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports).
+Az alábbi információk az operációs rendszerre jellemző ügyfelekre vonatkozó követelményeket ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports).  A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
@@ -252,7 +252,7 @@ Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a fel�
 * [Több gép tallózása](automation-onboard-solutions-from-browse.md)
 * [Azure Automation-fiókból](automation-onboard-solutions.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Update Management használatáról az Azure-beli [virtuális gépek frissítéseinek és javításának kezelése](automation-tutorial-update-management.md)című témakörben olvashat bővebben.
 

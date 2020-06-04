@@ -1,6 +1,6 @@
 ---
-title: A Microsoft&reg; Smooth streaming ügyféloldali Porting Kit licencelése
-description: További információ a Microsoft&reg; Smooth streaming ügyfél-Porting Kit licenceléséről.
+title: A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése
+description: További információ a Microsoft &reg; Smooth streaming ügyfél-Porting Kit licenceléséről.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686897"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344033"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft&reg; Smooth streaming ügyféloldali Porting Kit licencelése 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése 
 ## <a name="overview"></a>Áttekintés
 A Microsoft Smooth Streaming ügyfél-telepítési csomag (**SSPK** ) egy olyan Smooth streaming ügyfél-implementáció, amely a beágyazott eszközök gyártóinak, a kábeleknek és a mobil operátoroknak, a tartalomszolgáltatóknak, a kézibeszélő-gyártóknak, a független szoftvergyártóknak, valamint a megoldás-szolgáltatóknak az adaptív tartalmak Smooth streaming formátumban való továbbítására optimalizált termékeket és szolgáltatásokat hoz létre. A SSPK olyan Smooth Streaming-ügyfél eszköz-és platform-független implementációja, amelyet a licenccel bármely eszközre és platformra lehet átadni. 
 
@@ -71,11 +71,11 @@ A Smooth Streaming ügyfél végleges termékét a következők szerint kínálj
 * Az első 10 000-es eszköz implementációja minden évben díjmentes 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Licencelési eljárás és SSPK-hozzáférés
-Az [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) összes licencelési lekérdezésre vonatkozó e-mail-cím.
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)Az összes licencelési lekérdezésre vonatkozó e-mail-cím.
 
 A SSPK terjesztési portál elérhető a regisztrált közbenső licencek számára.
 
-Az ideiglenes és a [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)végleges SSPK-licencek technikai kérdéseket is beküldhetnek.
+Az ideiglenes és a végleges SSPK-licencek technikai kérdéseket is beküldhetnek [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) .
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>A Microsoft Smooth Streaming ügyfél ideiglenes termék-licencszerződése
 
@@ -144,6 +144,7 @@ Az ideiglenes és a [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)végl
 * Shenzhen Chuangwei – RGB Elektronika Co., Ltd.
 * Shenzheni együttes elektronika CO., LTD.
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Szecsuán Changhong, Electric Co., Ltd.
 * Skardin Industrial Corp.

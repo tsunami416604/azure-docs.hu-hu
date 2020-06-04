@@ -8,21 +8,18 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 23644736370d4a875d1f9c0e65f3097fcffa07f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263245"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338702"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 és Ddsv4 sorozat
 
 A Ddv4 és a Ddsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és jobb ár-arányt biztosít a legtöbb általános célú munkaterheléshez. A szolgáltatás az összes 3,4 GHz-es, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)számára fenntartott, teljes körű órajelet tartalmaz. Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók, mint a [Dv3-/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) -méretek és a Gen2-alapú virtuális [gépek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
 A D sorozat használati esetei többek között nagyvállalati szintű alkalmazások, a kapcsolódó adatbázisok, a memórián belüli gyorsítótárazás és az elemzések.
-
-> [!IMPORTANT]
-> Ha a Ddv4 vagy a Ddsv4 sorozat használatával telepít egy új virtuális gépet, és Linux-lemezképet szeretne használni, akkor a RHEL 8. x, CentOS 8. x vagy Oracle 7. x vagy újabb verziókat kell használnia. Ha a RHEL 7. x, CentOS 7. x vagy Orcale 6. x lehetőséget választja, a kernel pánik hiba lesz. A Microsoft aktívan telepíti a javítást. Csak a RHEL, a CentOS és az Oracle van hatással. 
 
 ## <a name="ddv4-series"></a>Ddv4 sorozat
 
@@ -90,6 +87,6 @@ Memória megőrzésének frissítései: támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

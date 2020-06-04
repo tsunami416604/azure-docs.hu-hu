@@ -1,6 +1,6 @@
 ---
-title: A Spark-összekötő használata Microsoft Azure SQL és SQL Server használatával
-description: Megtudhatja, hogyan használhatja a Spark-összekötőt Microsoft Azure SQL-sel és SQL Server
+title: A Spark-összekötő használata Microsoft Azure SQL-sel és SQL Server
+description: Megtudhatja, hogyan használhatja a Spark-összekötőt az Azure SQL Database, az Azure SQL felügyelt példányával és a SQL Serverával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,19 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: b2e042f2c3a7c6e1528ff96fb4fb96f392274855
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eb48773b2816ac801ea1ddc6752a86b13ca7dd1d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041226"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343302"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Valós idejű big data elemzések felgyorsítása a Spark-összekötő használatával 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-A Spark-összekötő lehetővé teszi, hogy a Azure SQL Database, az Azure SQL felügyelt példányai és a SQL Server adatbázisok bemeneti adatforrásként vagy kimeneti adatfogadóként működjenek a Spark-feladatokhoz. Lehetővé teszi a valós idejű tranzakciós adatmennyiségek kihasználása big data elemzésekben, és az alkalmi lekérdezések vagy jelentések eredményeinek megőrzése. A beépített JDBC-összekötőhöz képest ez az összekötő lehetővé teszi az adatbevitelt Microsoft Azure SQL-és SQL Server-adatbázisba. Az adatsorok sorba állítása a sor beszúrása után 10x-vel gyorsabb teljesítményt nyújt. A Spark-összekötő támogatja az HRE hitelesítést az Azure SQL Database-adatbázisokhoz való csatlakozáshoz. Lehetővé teszi az Azure SQL Database-adatbázishoz való biztonságos csatlakozást Azure Databricks a HRE-fiók használatával. Hasonló felületeket biztosít a beépített JDBC-összekötővel. A meglévő Spark-feladatok egyszerűen áttelepíthetők az új összekötő használatára.
+A Spark-összekötő lehetővé teszi, hogy a Azure SQL Database, az Azure SQL felügyelt példányain lévő adatbázisok, és SQL Server a Spark-feladatokhoz bemeneti adatforrásként vagy kimeneti adatfogadóként működjenek. Lehetővé teszi a valós idejű tranzakciós adatmennyiségek kihasználása big data elemzésekben, és az ad hoc lekérdezések és jelentéskészítés eredményének fenntartása. A beépített JDBC-összekötőhöz képest ez az összekötő lehetővé teszi, hogy tömegesen helyezzen be adatait az adatbázisba. A soros és a soros beszúrást is lehetővé teszi, amely 10x-vel gyorsabb teljesítményt nyújt. A Spark-összekötő támogatja Azure Active Directory (Azure AD) hitelesítést a Azure SQL Database és az Azure SQL felügyelt példányához való csatlakozáshoz, így az adatbázist az Azure AD-fiókjával is csatlakoztathatja a Azure Databricks. Hasonló felületeket biztosít a beépített JDBC-összekötővel. A meglévő Spark-feladatok egyszerűen áttelepíthetők az új összekötő használatára.
 
-## <a name="download-and-build-spark-connector"></a>Spark-összekötő letöltése és létrehozása
+## <a name="download-and-build-a-spark-connector"></a>Spark-összekötő letöltése és létrehozása
 
 Első lépésként töltse le a Spark-összekötőt az [Azure-sqldb-Spark adattárból](https://github.com/Azure/azure-sqldb-spark) a githubon.
 
@@ -38,13 +38,13 @@ Első lépésként töltse le a Spark-összekötőt az [Azure-sqldb-Spark adatt�
 | Azure SQL Database                    | Támogatott                |
 | Felügyelt Azure SQL-példány            | Támogatott                |
 
-A Spark-összekötő a Microsoft JDBC-illesztőt használja a SQL Serverhoz az adatáthelyezéshez a Spark Worker-csomópontok és az SQL-adatbázisok között:
+A Spark-összekötő a Microsoft JDBC-illesztőt használja a SQL Serverhoz az adatáthelyezéshez a Spark Worker-csomópontok és adatbázisok között:
 
 A adatfolyam a következő:
 
-1. A Spark-főkiszolgáló egy Azure SQL-vagy SQL Server-adatbázishoz csatlakozik, és egy adott táblából vagy egy adott SQL-lekérdezés használatával tölti be az adatait
+1. A Spark főcsomópontja SQL Database vagy SQL Server található adatbázisokhoz csatlakozik, és egy adott táblából vagy egy adott SQL-lekérdezés használatával tölti be az adatait.
 2. A Spark-főkiszolgáló a feldolgozó csomópontok számára az átalakításhoz az adatok elosztását végzi.
-3. A Worker csomópont egy Azure SQL-vagy SQL Server-adatbázishoz csatlakozik, és adatot ír az adatbázisba. A felhasználó dönthet úgy, hogy sor-sor beszúrást vagy tömeges beszúrást használ.
+3. A munkavégző csomópont olyan adatbázisokhoz csatlakozik, amelyekhez a rendszer csatlakozik SQL Databasehoz, és SQL Server és beírja az adatot az adatbázisba. A felhasználó dönthet úgy, hogy sor-sor beszúrást vagy tömeges beszúrást használ.
 
 Az alábbi ábra az adatfolyamot ábrázolja.
 
@@ -60,7 +60,7 @@ Az összekötő projekt jelenleg a mavent használja. Ha függőségek nélkül 
 
 ## <a name="connect-and-read-data-using-the-spark-connector"></a>Csatlakozás és adatolvasás a Spark-összekötő használatával
 
-Egy Spark-feladatokból egy Azure SQL-vagy SQL Server-adatbázishoz kapcsolódhat, illetve olvasható vagy írható. Az Azure SQL-ben és a SQL Server-ban is futtathat DML-vagy DDL-lekérdezést az adatbázisban.
+Kapcsolódhat SQL Database adatbázisokhoz, és a Spark-feladatokból SQL Serverheti az adatok olvasását és írását. Egy DML-vagy DDL-lekérdezést is futtathat SQL Database és SQL Server adatbázisaiban.
 
 ### <a name="read-data-from-azure-sql-and-sql-server"></a>Adatok beolvasása az Azure SQL-ből és SQL Server
 
@@ -143,9 +143,9 @@ val config = Config(Map(
 sqlContext.sqlDBQuery(config)
 ```
 
-## <a name="connect-from-spark-to-azure-sql-using-aad-authentication"></a>Kapcsolódás a Spark-ból az Azure SQL-be a HRE-hitelesítés használatával
+## <a name="connect-from-spark-using-azure-ad-authentication"></a>Kapcsolat a Sparkból az Azure AD-hitelesítéssel
 
-Azure Active Directory (HRE) hitelesítés használatával kapcsolódhat az Azure SQL-hez. Az HRE-hitelesítés használatával központilag kezelheti az adatbázis-felhasználók identitásait, és a SQL Server hitelesítés alternatívájaként is.
+Az Azure AD-hitelesítés használatával kapcsolódhat Azure SQL Databasehoz és az SQL felügyelt példányához. Az Azure AD-hitelesítés használatával központilag kezelheti az adatbázis-felhasználók identitásait, és a SQL Server hitelesítés alternatívájaként is.
 
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>Csatlakozás a ActiveDirectoryPassword hitelesítési móddal
 
@@ -170,13 +170,13 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="connecting-using-access-token"></a>Kapcsolódás hozzáférési jogkivonat használatával
+### <a name="connecting-using-an-access-token"></a>Csatlakozás hozzáférési token használatával
 
 #### <a name="setup-requirement"></a>Telepítési követelmény
 
 Ha a hozzáférési jogkivonat-alapú hitelesítési módot használja, le kell töltenie az [Azure-ActiveDirectory-Library-for-Java](https://github.com/AzureAD/azure-activedirectory-library-for-java) -t és annak függőségeit, és fel kell vennie azokat a Java-Build elérési útjába.
 
-Lásd: [Azure Active Directory hitelesítés használata hitelesítéshez](authentication-aad-overview.md) , amelyből megtudhatja, hogyan kérhet hozzáférési tokent az adatbázishoz Azure SQL Database vagy az Azure SQL felügyelt példányain.
+Lásd: [Azure Active Directory hitelesítés használata hitelesítéshez](authentication-aad-overview.md) , amelyből megtudhatja, hogyan szerezhet be hozzáférési jogkivonatot az adatbázishoz Azure SQL Database vagy az Azure SQL felügyelt példányain.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -194,9 +194,9 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-## <a name="write-data-to-azure-sql-and-sql-server-using-bulk-insert"></a>Adatírás az Azure SQL-be és a SQL Server tömeges beszúrással
+## <a name="write-data-using-bulk-insert"></a>Adatírás tömeges beszúrással
 
-A hagyományos JDBC-összekötő az Azure SQL-be és a SQL Server sor-sor beszúrással írja be az adatot. A Spark Connector használatával az Azure SQL és a SQL Server tömeges Beszúrás használatával írhat adatírást. Nagy mértékben javítja az írási teljesítményt nagyméretű adathalmazok betöltésekor, vagy az adattöltést olyan táblákba, ahol az oszlopok tárolására szolgáló index van használatban.
+A hagyományos JDBC összekötő adatbevitelt végez az adatbázisba sor-sor beszúrással. Használhatja a Spark-összekötőt az Azure SQL-ba való adatíráshoz és a SQL Server tömeges Beszúrás használatával. Nagy mértékben javítja az írási teljesítményt nagyméretű adathalmazok betöltésekor, vagy az adattöltést olyan táblákba, ahol az oszlopok tárolására szolgáló index van használatban.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.bulkcopy.BulkCopyMetadata
@@ -228,7 +228,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 //df.bulkCopyToSqlDB(bulkCopyConfig) if no metadata is specified.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, töltse le a Spark-összekötőt az [Azure-sqldb-Spark GitHub adattárból](https://github.com/Azure/azure-sqldb-spark) , és fedezze fel a további forrásokat a tárházban:
 

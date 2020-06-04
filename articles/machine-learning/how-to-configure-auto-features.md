@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93e18a95e30c21a44f9ca7df92925323930a9ce8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 87cb5714a1f4b362e2f73879d93f5739f0fc20cf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122429"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324283"
 ---
 # <a name="featurization-with-automated-machine-learning"></a>Featurization automatizált gépi tanulással
 
@@ -99,7 +99,7 @@ A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a
 Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 **Hiányzó szolgáltatási értékek imputálási** |*Telt* <br><br><br> *Kész*| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékek imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputált.
-**Magas fokú szolgáltatások kezelését** |*Telt* <br><br><br> *Kész*| A rendszer elemezte a bemeneteket, és nem észlelt magas fokú sarkalatos funkciót. További információ a [magas fokú kardinális funkciók észleléséről.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer a feladatokhoz tartozó magas minőségi funkciókat észlelte, és kezelte azokat.
+**Magas fokú szolgáltatások kezelését** |*Telt* <br><br><br> *Kész*| A rendszer elemezte a bemeneteket, és nem észlelt magas fokú sarkalatos funkciót. További információ a [magas fokú kardinális funkciók észleléséről.](#automatic-featurization) <br><br> A rendszer a feladatokhoz tartozó magas minőségi funkciókat észlelte, és kezelte azokat.
 **Ellenőrzés felosztásának ellenőrzése** |*Kész*| Az érvényesítési konfiguráció az "Auto" értékre van állítva, a betanítási adatként pedig **kevesebb mint 20 000 sor**szerepel. <br> A betanított modell minden egyes iterációját kereszt-ellenőrzés útján érvényesítjük. További információ az [érvényesítési](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) információkról. <br><br> Az érvényesítési konfiguráció az "Auto" értékre van állítva, a betanítási adatként pedig **több mint 20 000 sor**szerepel. <br> A bemeneti adatok egy betanítási adatkészletbe és egy ellenőrzési adatkészletbe vannak osztva a modell érvényesítéséhez.
 **Osztály kiegyensúlyozásának észlelése** |*Telt* <br><br><br><br><br> *Riasztást kap* | A rendszer elemezte a bemeneteket, és az összes osztály kiegyensúlyozottan szerepel a betanítási adatokban. Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számával és arányával mérve. <br><br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javításához javítsa ki a kiegyenlítési problémát. További információ a [kiegyensúlyozatlan adatvédelemről.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
 **Memória-problémák észlelése** |*Telt* <br><br><br><br> *Kész* |<br> A kiválasztott {Horizon, lag, Rolling Window} érték elemzése megtörtént, és a rendszer nem észlelt memóriabeli problémákat. További információ az idősorozat- [előrejelzési konfigurációkról.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>A kiválasztott {Horizon, lag, Rolling Window} értékek elemzése megtörtént, és a kísérlet valószínűleg kifogy a memóriából. A késés vagy a működés közbeni ablak konfigurációja ki van kapcsolva.
@@ -133,7 +133,7 @@ featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan állíthatja be az automatizált ML-kísérleteket,
 

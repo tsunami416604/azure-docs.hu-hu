@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127679"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342629"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -50,13 +50,16 @@ Belső hiba miatt nem sikerült meghatározni egy vagy több hálózati adapter 
 
 ## <a name="linux-vms-are-conditionally-ready"></a>A Linux rendszerű virtuális gépek "feltételesen kész"
 
-A kiszolgáló értékelése a Linux rendszerű virtuális gépeket "feltételesen felkészültként" jelöli meg, mivel a kiszolgáló értékelésében egy ismert rés van
+VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékelése a Linux rendszerű virtuális gépeket "feltételesen felkészültként" jelöli meg a kiszolgáló értékelésének ismert hiánya miatt. 
 
 - A rés megakadályozza a helyszíni virtuális gépeken telepített Linux operációs rendszer másodlagos verziójának észlelését.
-- Például a RHEL 6,10 esetében a kiszolgáló-Assessment jelenleg csak az RHEL 6 verziót észleli operációs rendszerként.
+- Például a RHEL 6,10 esetében a kiszolgáló-Assessment jelenleg csak az RHEL 6 verziót észleli operációs rendszerként. Ennek az az oka, hogy a Hyper-V-gazdagép vCenter Server nem biztosít kernel-verziót a Linux rendszerű virtuális gépek operációs rendszerei számára.
 -  Mivel az Azure csak a Linux bizonyos verzióit támogatja, a Linux rendszerű virtuális gépek jelenleg feltételesen készen állnak a kiszolgáló értékelése során.
 - Megtekintheti, hogy a helyszíni virtuális gépen futó Linux operációs rendszer az Azure [Linux-támogatás](https://aka.ms/migrate/selfhost/azureendorseddistros)áttekintésével van-e jóváhagyva az Azure-ban.
 -  A támogatott terjesztés ellenőrzése után figyelmen kívül hagyhatja ezt a figyelmeztetést.
+
+Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
+
 
 ## <a name="azure-skus-bigger-than-on-premises"></a>Helyi Azure SKU-nál nagyobb
 
@@ -102,6 +105,8 @@ Azure Migrate a kiszolgáló értékelése jelenleg csak Windows rendszerű gép
 
 A Server Assessment folyamatosan gyűjti a helyszíni gépek teljesítményadatait, és ezek alapján tesz javaslatot az Azure-beli virtuálisgép- és lemez-termékváltozatra. [Ismerje meg](concepts-assessment-calculation.md#calculate-sizing-performance-based) a teljesítmény-alapú adatok gyűjtésének módját.
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Miért van az értékelésem arra utaló figyelmeztetést mutat, hogy a fenntartott példányok érvénytelen combintion lettek létrehozva, a virtuális gép üzemidő és a kedvezmény (%)?
+Ha a "fenntartott példányok" lehetőséget választja, a "kedvezmény (%)" és a virtuális gép üzemidő tulajdonságai nem alkalmazhatók. Mivel az értékelés a tulajdonságok érvénytelen kombinációjával lett létrehozva, a Szerkesztés és az újraszámolás gomb le lesz tiltva. Hozzon létre egy új értékelést. [További információ](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Függőségi vizualizáció a Azure Government
 
@@ -113,7 +118,7 @@ Miután telepítette a függőségi vizualizációs ügynököket a helyszíni v
 
 Windows rendszerű virtuális gépek esetén:
 1. A Vezérlőpulton indítsa el az MMA-t.
-2. A **Microsoft monitoring Agent tulajdonságok** > **Azure log Analytics (OMS)** területén ellenőrizze, hogy a munkaterület **állapota** zöld.
+2. A **Microsoft monitoring Agent tulajdonságok**  >  **Azure log Analytics (OMS)** területén ellenőrizze, hogy a munkaterület **állapota** zöld.
 3. Ha az állapot nem zöld, próbálja meg eltávolítani a munkaterületet, és adja hozzá újra az MMA-hoz.
 
     ![MMA-állapot](./media/troubleshoot-assessment/mma-properties.png)
@@ -166,6 +171,15 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
    - A Microsoft Edge vagy az Internet Explorerben kattintson a jobb gombbal a hibákra, és válassza az **összes másolása**lehetőséget.
 7. Fejlesztői eszközök bezárásához.
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>Hol található az értékelés során az operációs rendszerre vonatkozó adatok?
+
+- A VMware virtuális gépek esetében alapértelmezés szerint a vCenter által biztosított operációsrendszer-információ. 
+   - VMware Linux rendszerű virtuális gépek esetén, ha az alkalmazás felderítése engedélyezve van, az operációs rendszer részletes adatokat olvas be a vendég virtuális gépről. Annak ellenőrzéséhez, hogy az értékelés melyik operációs rendszerre vonatkozó részleteit használja, lépjen a felderített kiszolgálók nézetre, és az "operációs rendszer" oszlopban szereplő érték fölé. A felugró szövegben láthatja, hogy a megjelenő operációsrendszer-adatok a vCenter-kiszolgálóról vagy a vendég virtuális gépről a virtuális gép hitelesítő adataival vannak-e gyűjtve. 
+   - Windows rendszerű virtuális gépek esetén az operációs rendszer részletes adatait mindig a vCenter Server olvashatja.
+- Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
+- Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
+
+## <a name="next-steps"></a>Következő lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

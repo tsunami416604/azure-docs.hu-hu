@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 3a912e636c8bd8f762b401bda9623f23913047cb
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308030"
+ms.locfileid: "84344526"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,7 +26,7 @@ Ez a cikk a felügyelt Azure SQL-példány és a SQL Server szintaxisának és v
 
 Az SQL felügyelt példánya magas kompatibilitást biztosít a SQL Server adatbázis-motorral, és a legtöbb funkció támogatott egy SQL felügyelt példányban.
 
-![Migrálás](./media/transact-sql-tsql-differences-sql-server/migration.png)
+![Áttelepítés](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
 Néhány, a felügyelt SQL-példányban bevezetett, és a SQL Serverhoz képest valamilyen viselkedési változás következik be. A különbségek a következő kategóriákba vannak osztva:<a name="Differences"></a>
 
@@ -510,6 +510,9 @@ A következő változók, függvények és nézetek eltérő eredményeket adnak
 ### <a name="failover-groups"></a>Feladatátvételi csoportok
 A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
 
+### <a name="failover-groups"></a>Feladatátvételi csoportok
+A rendszeradatbázisokat a rendszer nem replikálja a feladatátvételi csoport másodlagos példányára. Ezért előfordulhat, hogy a rendszeradatbázisok objektumaitól függő forgatókönyvek a másodlagos példányon nem lesznek lehetségesek, kivéve, ha az objektumokat manuálisan hozták létre a másodlagos kiszolgálón.
+
 ### <a name="tempdb"></a>TEMPDB
 
 A maximális fájlméret `tempdb` nem lehet nagyobb, mint 24 GB általános célú szinten. Üzletileg kritikus szinten a maximális `tempdb` méretet az SQL felügyelt példányának tárolási mérete korlátozza. `Tempdb`a naplófájl mérete általános célú szinten legfeljebb 120 GB lehet. Előfordulhat, hogy egyes lekérdezések hibát jeleznek, ha legalább 24 GB-nál több adatra van szükségük, `tempdb` vagy ha több mint 120 GB adatnaplót hoznak létre.
@@ -538,7 +541,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).

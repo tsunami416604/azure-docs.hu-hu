@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344713"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -53,7 +53,7 @@ Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhet
 
   Az alábbi CLI-vagy PowerShell-parancsfájl használatával szerezze be az azonosítót az erőforráscsoport nevének és az identitás nevének megadásával.
 
-  # <a name="cli"></a>[parancssori felület](#tab/CLI)
+  # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -131,7 +131,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 ```
 
 > [!NOTE]
-> A példa demonstrációs célra szolgál.  a **scriptContent** és a **primaryScriptUris** nem létezhet egyetlen sablonban sem.
+> A példa demonstrációs célra szolgál.  a **scriptContent** és a **primaryScriptUri** nem létezhet egyetlen sablonban sem.
 
 Tulajdonság értékének részletei:
 

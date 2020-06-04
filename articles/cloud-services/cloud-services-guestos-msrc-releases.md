@@ -10,40 +10,39 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/2/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656394"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322872"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
 
 ## <a name="may-2020-guest-os"></a>2020 vendég operációs rendszer
->[!NOTE]
->Az áprilisi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások az áprilisi vendég operációs rendszer részét képezik. A lista módosítása változhat. "
+
 
 | Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2,98, 3,85, 4,78  |  2020. május 12.  |
-|  Rel 20-05   |  [4556813]  |  Legújabb összesített frissítés (LCU)   |  5,43  |  2020. május 12.  |
-|  Rel 20-05   |  [4551853]  |  Legújabb összesített frissítés (LCU)   |  6,19  |  2020. május 12.  |
-|  Rel 20-05   |  [4552940]  |  Havi összesítés   |  2,98  |  2020. május 12.  |
-|  Rel 20-05   |  [4556836]  |  Havi összesítés   |  2,98  |  2020. május 12.  |
-|  Rel 20-05   |  [4555449]  |  Karbantartási verem frissítése   |  2,98  |  2020. május 12.  |
-|  Rel 20-05   |  [4552920]  |  Havi összesítés   |  2,98  |  2020. május 12.  |
-|  Rel 20-05   |  [4552979]  |  Havi összesítés   |  3,85  |  2020. május 12.  |
-|  Rel 20-05   |  [4556840]  |  Havi összesítés   |  3,85  |  2020. május 12.  |
-|  Rel 20-05   |  [4552947]  |  Havi összesítés   |  3,85  |  2020. május 12.  |
-|  Rel 20-05   |  [4552982]  |  Havi összesítés   |  3,85  |  2020. május 12.  |
-|  Rel 20-05   |  [4552946]  |  Havi összesítés   |  4,78  |  2020. május 12.  |
-|  Rel 20-05   |  [4556846]  |  Havi összesítés   |  4,78  |  2020. május 12.  |
-|  Rel 20-05   |  [4550994]  |  Karbantartási verem frissítése   |  5,43  |  Apr 14, 2020  |
-|  Rel 20-05   |  [4552924]  |  Havi összesítés   |  6,19  |  2020. május 12.  |
-|  Rel 20-05   |  [4549947]  |  Karbantartási verem frissítése   |  6,19  |  Apr 14, 2020  |
+|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  2020. május 12.  |
+|  Rel 20-05   |  [4556813]  |  Legújabb összesített frissítés (LCU)   |  [5,43]  |  2020. május 12.  |
+|  Rel 20-05   |  [4551853]  |  Legújabb összesített frissítés (LCU)   |  [6,19]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552940]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05   |  [4556836]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05   |  [4555449]  |  Karbantartási verem frissítése   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552920]  |  Havi összesítés   |  [2,98]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552979]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05   |  [4556840]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552947]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552982]  |  Havi összesítés   |  [3,85]  |  2020. május 12.  |
+|  Rel 20-05   |  [4552946]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
+|  Rel 20-05   |  [4556846]  |  Havi összesítés   |  [4,78]  |  2020. május 12.  |
+|  Rel 20-05   |  [4550994]  |  Karbantartási verem frissítése   |  [5,43]  |  Apr 14, 2020  |
+|  Rel 20-05   |  [4552924]  |  Havi összesítés   |  [6,19]  |  2020. május 12.  |
+|  Rel 20-05   |  [4549947]  |  Karbantartási verem frissítése   |  [6,19]  |  Apr 14, 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,7 +61,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-
+[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="april-2020-guest-os"></a>Április 2020 vendég operációs rendszer
 

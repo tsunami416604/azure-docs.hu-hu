@@ -1,6 +1,6 @@
 ---
 title: SQL-adatszinkronizálás figyelése Azure Monitor naplókkal
-description: Megtudhatja, hogyan figyelheti a SQL-adatszinkronizálásokat Azure Monitor naplók használatával
+description: Megtudhatja, hogyan figyelheti SQL-adatszinkronizálás Azure Monitor naplók használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188795"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343234"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A SQL-adatszinkronizálási tevékenység naplójának ellenőrzéséhez és a hibák és figyelmeztetések észleléséhez előzőleg ellenőriznie kell SQL-adatszinkronizálás manuálisan a Azure Portal, vagy a PowerShell vagy a REST API használatával. Az ebben a cikkben ismertetett lépéseket követve konfigurálhat egy egyéni megoldást, amely javítja az adatszinkronizálás figyelésének élményét. A megoldás testreszabható úgy, hogy illeszkedjen a forgatókönyvhöz.
 
@@ -80,7 +79,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
 1.  A Azure Automation fiók alatt válassza a **runbookok** lapot a folyamat automatizálása alatt.
 
-2.  Válassza a **Runbook hozzáadása** elemet a runbookok lap bal felső sarkában.
+2.  Válassza a **Runbook hozzáadása** lehetőséget a runbookok lap bal felső sarkában.
 
 3.  Válassza **a meglévő Runbook importálása**lehetőséget.
 
@@ -100,7 +99,7 @@ A runbook létrehozásával kapcsolatos további információkért tekintse meg 
 
     1.  Azure-információk.
 
-    2.  Szinkronizálási csoport adatai.
+    2.  szinkronizálási csoport adatai.
 
     3.  Azure Monitor naplózza az adatokat. Információk megkeresése Azure Portalban | Beállítások | Csatlakoztatott források. Az adatok Azure Monitor naplókba való küldésével kapcsolatos további információkért lásd: [adatok küldése Azure monitor naplókba a http-adatgyűjtő API-val (előzetes verzió)](../../azure-monitor/platform/data-collector-api.md).
 
@@ -198,7 +197,7 @@ Töltse le a cikkben ismertetett kódot a következő helyekről:
 
 -   [Adatszinkronizálási Azure Monitor nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több Felhőbeli és helyszíni adatbázison SQL-adatszinkronizálás az Azure-ban](sql-data-sync-data-sql-server-sql-database.md)

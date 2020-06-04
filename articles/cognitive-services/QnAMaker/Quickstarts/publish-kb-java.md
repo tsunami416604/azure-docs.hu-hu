@@ -4,13 +4,13 @@ description: Ez a Java REST-alapú rövid útmutató közzéteszi a tudásbázis
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 149d7963f29bf041cda75fffaac533e0a62ee7a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: e8df1fcc61d6b838c08f8daca9298e73820590f5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851684"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342697"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Java használatával
 
@@ -39,11 +39,11 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
 ## <a name="create-a-java-file"></a>Java-fájl létrehozása
 
-Nyissa meg a VSCode, és hozzon létre egy nevű `PublishKB.java`új fájlt.
+Nyissa meg a VSCode, és hozzon létre egy nevű új fájlt `PublishKB.java` .
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 
-Az osztály felső részén `PublishKB.java`adja hozzá a következő sorokat a szükséges függőségek a projekthez való hozzáadásához:
+Az osztály felső részén `PublishKB.java` adja hozzá a következő sorokat a szükséges függőségek a projekthez való hozzáadásához:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 
@@ -94,7 +94,7 @@ Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automat
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](./get-answer-from-knowledge-base-java.md).
 

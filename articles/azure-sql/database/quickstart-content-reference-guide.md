@@ -1,6 +1,6 @@
 ---
 title: Önálló adatbázis – gyors útmutató a tartalomhoz
-description: Tekintse meg az összes rövid útmutató tartalmát, amelyekkel gyorsan megkezdheti a Azure SQL Database önálló adatbázisainak megkezdését
+description: Tekintse meg az összes rövid útmutató tartalmi hivatkozását, amely segítséget nyújt a Azure SQL Database önálló adatbázisainak gyors megkezdésében.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054604"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338294"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Első lépések az önálló adatbázisok Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Az [önálló adatbázisok](../index.yml) teljes körűen felügyelt, a modern Felhőbeli alkalmazásokhoz ideális tárolási motorként szolgáló DbaaS-szolgáltatásként szolgálnak. Ez a szakasz azt ismerteti, hogyan lehet gyorsan konfigurálni és létrehozni egy önálló adatbázist a Azure SQL Database.
+Az [önálló adatbázisok](../index.yml) teljes körűen felügyelt platformként szolgálnak (DbaaS), amely ideális tárolási motor a modern Felhőbeli alkalmazásokhoz. Ebből a szakaszból megtudhatja, hogyan konfigurálhat és hozhat létre egyetlen adatbázist a Azure SQL Databaseban.
 
 ## <a name="quickstart-overview"></a>Gyors üzembe helyezés áttekintése
 
@@ -48,14 +48,14 @@ Ezekkel a gyors útmutatókkal gyorsan létrehozhatja vagy importálhatja az ada
 Az alábbi Microsoft Learn-modulok segítenek a Azure SQL Databaseról való ingyenes tanulásban.
 
 - [Adatbázis kiépítése SQL Databaseban az alkalmazásadatok tárolásához](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Azure SQL Databaset lekérdező ASP.NET-alkalmazás fejlesztése és konfigurálása](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Az Azure SQL Database védelme](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Azure SQL Database-adatbázist lekérdező ASP.NET-alkalmazás fejlesztése és konfigurálása](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Az adatbázis védelme Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [Azure SQL Database támogatott szolgáltatásainak magas szintű listáját](features-comparison.md).
 - Ismerje meg, hogyan teheti [biztonságosabbá az adatbázisát](secure-database-tutorial.md).
 - További speciális útmutató: [egyetlen adatbázis használata Azure SQL Databaseban](how-to-content-reference-guide.md).
-- További példák a [PowerShell](powershell-script-content-guide.md) és az [Azure CLI](az-cli-script-samples-content-guide.md)-ben írt parancsfájlokra.
+- A [PowerShellben](powershell-script-content-guide.md) és [Az Azure CLI](az-cli-script-samples-content-guide.md)-ben írt több minta parancsfájlt itt találhat.
 - További információ az adatbázisok konfigurálásához használható [felügyeleti API](single-database-manage.md) -ról.
-- [Azonosítsa a helyszíni adatbázis megfelelő Azure SQL Database vagy SQL felügyelt példányának SKU-](/sql/dma/dma-sku-recommend-sql-db/)t.
+- [Azonosítsa a helyszíni adatbázis megfelelő Azure SQL Database vagy az Azure SQL felügyelt példányának SKU-](/sql/dma/dma-sku-recommend-sql-db/)t.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 3db9dc260cb8546109870834f364c62305aa3fbb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248549"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324521"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYIK – általános kérdések Azure Security Center
 
@@ -37,14 +37,8 @@ Azure Security Center a következő Azure-erőforrásokat figyeli:
 
 * Virtuális gépek (VM-EK) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Virtuálisgép-méretezési csoportok
-* Azure virtuális hálózatok
-* Containers
-* Azure SQL-szolgáltatás
-* Azure Storage-fiók
-* Azure Web Apps ( [app Service Environment](../app-service/environment/intro.md))
 * Azure-előfizetéssel integrált partneri megoldások, például webalkalmazási tűzfal virtuális gépeken és App Service Environment
-
-Emellett a nem Azure-t (beleértve a helyszíni gépeket is) Azure Security Center is figyelheti. A [Windows rendszerű gépek](./quick-onboard-windows-computer.md) és a Linux rendszerű [gépek](./quick-onboard-linux-computer.md) egyaránt támogatottak.
+* [A termék áttekintésében szereplő számos Azure-beli Pásti-szolgáltatás](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hogyan tekinthetem meg az Azure-erőforrások aktuális biztonsági állapotát?

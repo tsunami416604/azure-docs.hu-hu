@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 4d3535d419b0f99491795b3920fdd295e3128299
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654023"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344407"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
 
@@ -51,7 +51,7 @@ A teszt futtatásához válassza ki az adatkészlet nevét, majd válassza a **F
 
 A letölthető adatkészlet ugyanaz a fájl, amelyet a Batch-teszteléshez töltöttek fel.
 
-|Állapot|Jelentés|
+|Állam|Értelmezés|
 |--|--|
 |![Sikeres teszt zöld kör ikon](./media/luis-how-to-batch-test/batch-test-result-green.png)|Minden hosszúságú kimondott szöveg sikeres.|
 |![Nem sikerült tesztelni a piros x ikont](./media/luis-how-to-batch-test/batch-test-result-red.png)|Legalább egy Kimondás nem egyezik meg az előrejelzéssel.|
@@ -95,7 +95,7 @@ A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét.
 

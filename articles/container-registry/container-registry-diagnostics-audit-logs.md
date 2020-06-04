@@ -2,13 +2,13 @@
 title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409643"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343183"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
@@ -24,12 +24,14 @@ Az erőforrás-naplózási adatok Azure Monitor használatával történő össz
 
 A rendszerképekhez és egyéb összetevőkhöz tartozó adattár-szintű események naplózása jelenleg a következő:
 
-* **Leküldéses események**
-* **Lekéréses események**
-* **Jelölését események**
-* **Események törlése** (beleértve a tárház törlési eseményeit)
+* **Leküldés**
+* **Lekéréses**
+* **Jelölését**
+* **Törlés** (beleértve az adattár-törlési eseményeket)
+* **Címke kiürítése** és a **jegyzékfájl kiürítése**
 
-A jelenleg nem naplózott adattár-szintű események: kiürítési események.
+> [!NOTE]
+> A kiürítési események naplózása csak akkor történik meg, ha egy beállításjegyzék- [adatmegőrzési házirend](container-registry-retention-policy.md) konfigurálva van.
 
 ## <a name="registry-resource-logs"></a>Beállításjegyzék-erőforrások naplói
 
@@ -37,7 +39,7 @@ Az erőforrás-naplók olyan Azure-erőforrások által kibocsátott informáci�
 
 * **ContainerRegistryLoginEvents** – a beállításjegyzék hitelesítési eseményei és állapota, beleértve a bejövő identitást és IP-címet is
 * **ContainerRegistryRepositoryEvents** – például leküldéses és lekéréses műveletek a beállításjegyzékbeli adattárakban található képekhez és egyéb összetevőkhöz
-* **AzureMetrics** - -[tároló beállításjegyzék-metrikái](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , például összesített leküldéses és lekéréses darabszám.
+* **AzureMetrics**  -  [Tároló beállításjegyzék-metrikák](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , például összesített leküldéses és lekéréses darabszám.
 
 A műveletek esetében a naplózási adatok a következők:
   * Sikeres vagy sikertelen állapot
@@ -83,16 +85,58 @@ A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [B
 
 A naplók lekérdezésével kapcsolatos további információkért lásd: [a Azure monitorban található naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>További példák a lekérdezésekre
+## <a name="query-examples"></a>Lekérdezéspéldák
 
-#### <a name="100-most-recent-registry-events"></a>100 a legfrissebb beállításjegyzék-események
+### <a name="error-events-from-the-last-hour"></a>Hiba eseményei az elmúlt órában
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>100 a legfrissebb beállításjegyzék-események
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>A tárházat törölt felhasználó vagy objektum identitása
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>A címkét törölt felhasználó vagy objektum identitása
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>A repók szintjének műveleti hibái
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>Beállításjegyzék-hitelesítési hibák
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>További naplófájl-célhelyek
 
@@ -100,7 +144,7 @@ Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldáskén
 
 A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [log Analytics](../azure-monitor/log-query/get-started-portal.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.

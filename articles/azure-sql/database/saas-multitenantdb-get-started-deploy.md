@@ -253,7 +253,7 @@ A Load Generator parancsfájl által generált munkaterhelések csak illusztrác
   - [A rugalmas készletek segítségével több adatbázist kezelhet és méretezheti Azure SQL Database](elastic-pool-overview.md)
   - [Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)](elastic-scale-introduction.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 

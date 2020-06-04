@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8aaa82a3913bcafbe8f86b85d63c39d44f08ac9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058422"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323756"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: a Dropbox for Business konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Dropboxban a vállalati és Azure Active Directory (Azure AD) számára az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Dropbox vállalatoknak.
+
+> [!IMPORTANT]
+> A Microsoft és a Dropbox a régi Dropbox-integráció érvényes 04/01/2021-es időpontját fogja érvényteleníteni. A szolgáltatás megszakadásának elkerülése érdekében ajánlott áttelepíteni az új Dropbox-integrációt, amely támogatja a csoportokat. Az új Dropbox-integrációra való áttéréshez adja hozzá és konfigurálja a Dropbox új példányát az Azure AD-bérlőben az alábbi lépésekkel való üzembe helyezéshez. Miután konfigurálta az új Dropbox-integrációt, tiltsa le a kiépítés beállítást a régi Dropbox-integráción, hogy elkerülje a kiépítési ütközéseket.
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
@@ -154,12 +157,12 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
  
 * A Dropbox nem támogatja a meghívott felhasználók felfüggesztését. Ha egy meghívott felhasználó fel van függesztve, a felhasználó törölve lesz.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -5,14 +5,14 @@ services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5a0b9b2752a2ad8b7d2e03a40af11407b97391bc
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722558"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322030"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Event Grid és Logic Apps használatával
 
@@ -175,19 +175,26 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
 
-   * **Esemény-előfizetés részletei**: adjon meg egy leíró nevet, és válassza ki **Event Grid sémát**.
+    1. Az **esemény-előfizetés részletei** szakaszban hajtsa végre a következő feladatokat:
+        1. Adja meg az esemény-előfizetés **nevét** . 
+        2. Válassza ki **Event Grid sémát** az **eseményvezérelt sémához**. 
+   2. A **témakör részletei** részben hajtsa végre a következő feladatokat:
+       1. Ellenőrizze, hogy a **témakör típusa** **IoT hub**értékre van-e állítva. 
+       2. Győződjön meg róla, hogy az IoT hub neve a **forrás erőforrás** mező értékeként van beállítva. 
+       3. Adja meg annak a **rendszertémakörnek** a nevét, amelyet létre fog hozni Önnek. 
+   3. Az **Event types (eseménytípus** ) szakaszban hajtsa végre a következő feladatokat: 
+        1. Az **eseménytípus szűréséhez**törölje az összes lehetőséget, kivéve az **eszköz létrejöttét**.
 
-   * **Eseménytípus**: a szűrés az **események típusainál**törölje az összes lehetőséget, kivéve az **eszköz létrejöttét**.
+           ![előfizetési események típusai](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. A **VÉGPONT részletei** szakaszban hajtsa végre a következő feladatokat: 
+       1. Válassza ki a **végpont típusát** **webhookként**.
+       2. Kattintson a **válasszon ki egy végpontot**, illessze be a logikai alkalmazásból másolt URL-címet, és erősítse meg a kijelölést.
 
-       ![előfizetési események típusai](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Végpont részletei**: válassza a végpont típusa **webhook** lehetőséget, majd válassza ki a kívánt *végpontot* , és illessze be a logikai alkalmazásból másolt URL-címet, és erősítse meg a kijelölést.
+         Ha elkészült, a panelnek a következő példához hasonlóan kell kinéznie: 
 
-     ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   Ha elkészült, a panelnek a következő példához hasonlóan kell kinéznie: 
-
-    ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. Ha most mentené az esemény-előfizetést, akkor az IoT-központban létrehozott minden eszközről értesítést kapna. Ebben az oktatóanyagban azonban a választható mezők használatával szűrheti az adott eszközöket. Válassza a **szűrők** elemet a panel tetején.
 
@@ -242,7 +249,7 @@ A logikai alkalmazás teszteléséhez hozzunk létre egy új eszközt, amely kiv
 
 Az Azure Portal helyett az Azure CLI használatával is végrehajthatja az IoT Hub lépéseit. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben az oktatóanyagban olyan erőforrásokat használtunk, amelyek költségekkel terhelik az Azure-előfizetését. Ha befejezte az oktatóanyag kipróbálását és az eredmények tesztelését, tiltsa le vagy törölje azokat az erőforrásokat, amelyeket nem szeretne megőrizni. 
 

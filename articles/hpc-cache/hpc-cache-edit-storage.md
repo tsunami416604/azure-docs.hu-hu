@@ -5,17 +5,20 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
-ms.author: rohogue
-ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: v-erkel
+ms.openlocfilehash: 9bce4ec383b8ac7efaa9b00237044424ffb58fc0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75867009"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344254"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
 A tárolási célokat a gyorsítótár **tárolási célok** lapjáról távolíthatja el vagy módosíthatja.
+
+> [!TIP]
+> Az [Azure HPC cache-gyorsítótárának kezelése videó](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) bemutatja, hogyan szerkeszthető egy tárolási cél.
 
 ## <a name="remove-a-storage-target"></a>Tárolási cél eltávolítása
 
@@ -65,7 +68,7 @@ A blob Storage-tároló részletek lapja lehetővé teszi a virtuális névtér 
 
 Ha elkészült, kattintson **az OK** gombra a tárolási cél frissítéséhez, vagy kattintson a **Mégse** gombra a módosítások elvetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A beállításokkal kapcsolatos további információkért olvassa el a [tárolási célok hozzáadása](hpc-cache-add-storage.md) című témakört.
 * A virtuális elérési utak használatával kapcsolatos további tippekért olvassa el [az összesített névtér megtervezése](hpc-cache-namespace.md) című cikkét.

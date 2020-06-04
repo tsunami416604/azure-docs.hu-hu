@@ -2,14 +2,14 @@
 title: Szolgáltatási kvóták és korlátok
 description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 45eefd10f7227509e7db8730e5e7192bd5833721
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229852"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323883"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -83,41 +83,41 @@ Kövesse az alábbi lépéseket a kvóta növeléséhez a Batch-fiókjához vagy
 1. Válassza az **új támogatási kérelem**  >  **alapjai**lehetőséget.
 1. Az **alapjaiban**:
    
-    a. **Probléma típusa**  >  **Szolgáltatás-és előfizetési korlátok (kvóták)**
+    1. **Probléma típusa**  >  **Szolgáltatás-és előfizetési korlátok (kvóták)**
    
-    b. Válassza ki előfizetését.
+    1. Válassza ki az előfizetését.
    
-    c. **Kvóta típusa**  >  **Köteg**
+    1. **Kvóta típusa**  >  **Köteg**
       
-    Kattintson a **Tovább** gombra.
+       Kattintson a **Tovább** gombra.
     
 1. A **Details** (Részletek) lapon:
       
-    a. A **részletek**megadása területen adja meg a helyet, a kvóta típusát és a Batch-fiókot.
+    1. A **részletek**megadása területen adja meg a helyet, a kvóta típusát és a Batch-fiókot.
     
-    ![Batch-kvóta növekedése][quota_increase]
+       ![Batch-kvóta növekedése][quota_increase]
 
-    A kvóta típusai a következők:
+       A kvóta típusai a következők:
 
-    * **/Batch-fiók**  
-        Egyetlen batch-fiókhoz tartozó értékek, beleértve a dedikált és alacsony prioritású magokat, valamint a feladatok és készletek számát.
+       * **/Batch-fiók**  
+         Egyetlen batch-fiókhoz tartozó értékek, beleértve a dedikált és alacsony prioritású magokat, valamint a feladatok és készletek számát.
         
-    * **Régiónként**  
-        Egy adott régióban lévő összes batch-fiókra vonatkozó értékek, valamint a Batch-fiókok száma régiónként/előfizetéssel.
+       * **Régiónként**  
+         Egy adott régióban lévő összes batch-fiókra vonatkozó értékek, valamint a Batch-fiókok száma régiónként/előfizetéssel.
 
-    Az alacsony prioritású kvóta egyetlen érték az összes virtuálisgép-sorozaton belül. Ha korlátozott SKU-ra van szüksége, ki kell választania az **alacsony prioritású magok** elemet, és fel kell vennie a lekéréses virtuálisgép-családokat.
+       Az alacsony prioritású kvóta egyetlen érték az összes virtuálisgép-sorozaton belül. Ha korlátozott SKU-ra van szüksége, ki kell választania az **alacsony prioritású magok** elemet, és fel kell vennie a lekéréses virtuálisgép-családokat.
 
-    b. Válasszon ki egy **súlyosságot** az [üzleti hatásnak][support_sev]megfelelően.
+    1. Válasszon ki egy **súlyosságot** az [üzleti hatásnak][support_sev]megfelelően.
 
-    Kattintson a **Tovább** gombra.
+       Kattintson a **Tovább** gombra.
 
 1. A **kapcsolattartási adatok**:
    
-    a. Válasszon ki egy **előnyben részesített kapcsolattartási módszert**.
+    1. Válasszon ki egy **előnyben részesített kapcsolattartási módszert**.
    
-    b. Ellenőrizze, és adja meg a szükséges kapcsolattartási adatokat.
+    1. Ellenőrizze, és adja meg a szükséges kapcsolattartási adatokat.
    
-    Válassza a **Létrehozás** lehetőséget a támogatási kérelem elküldéséhez.
+       Válassza a **Létrehozás** lehetőséget a támogatási kérelem elküldéséhez.
 
 A támogatási kérelem elküldését követően az Azure-támogatás kapcsolatba lép Önnel. A kvóta-kérelmek néhány percen belül, vagy akár két munkanapon belül is elvégezhető.
 
@@ -132,7 +132,7 @@ Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigur�
 Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás**lehetőség kiválasztásával növelje a Azure Portal növekedését.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 * Ismerje meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md).

@@ -1,5 +1,5 @@
 ---
-title: Első lépések időbeli táblázatokkal
+title: Első lépések az időbeli táblázatokkal
 description: Ismerje meg, hogyan kezdheti el a Azure SQL Database és az Azure SQL felügyelt példányának időbeli tábláival való használatának első lépéseit.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e172c251f629dc53bd8f4479d63fe743bbe42095
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5cfd77cbc35248e48f60222ab617ea4d07d91ca0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046746"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343812"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányának időbeli tábláival
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányainak időbeli tábláival
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Az időbeli táblázatok a Azure SQL Database és az Azure SQL felügyelt példányának programozható funkciója, amely lehetővé teszi az adatváltozások teljes előzményeinek nyomon követését és elemzését anélkül, hogy egyéni kódolásra lenne szükség. Az ideiglenes táblák az időkörnyezettel szoros kapcsolatban tartanak adatokat, így a tárolt tények csak a megadott időszakon belül érvényesek. Az időbeli táblázatok ezen tulajdonsága lehetővé teszi a hatékony időalapú elemzést, és az adatok evolúciójának beolvasását.

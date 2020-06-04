@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569991"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339892"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge-ben való áthelyezéséhez
 
@@ -24,6 +24,7 @@ Az Azure-ba való áttelepítése során Azure IoT Edge modulokat használhat a 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
+>
 > * Hozzon létre egy tároló-beállításjegyzéket a modulok tárolásához és kezeléséhez (Docker-lemezképek).
 > * Hozzon létre egy IoT Edge modult az Azure Stack Edge-eszközön való üzembe helyezéshez. 
 
@@ -107,7 +108,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
     5. Adja meg az előző szakaszban létrehozott tároló-beállításjegyzéket az első modul rendszerkép-tárháza. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
 
-        A végső sztring így néz `<Login server name>/<Module name>`ki. Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule`.
+        A végső sztring így néz ki `<Login server name>/<Module name>` . Ebben a példában a karakterlánc a következő: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![3. új megoldás létrehozása](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,8 +273,8 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
     *Program. cs (77, 44): figyelmeztetési CS1998: ez az aszinkron metódus nem rendelkezik "várakozási" operátorral, és szinkronban fog futni. Érdemes lehet a "várakozás" operátort használni, hogy a nem blokkoló API-hívásokat, vagy a "várakozási feladat. Run (...)" metódust használja a CPU-kötésű működéshez a háttérben futó szálon.*
 
-4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a Module. JSON fájlban található, formátummal `<repository>:<version>-<platform>`ellátott információ alapján építették. Ehhez a cikkhez hasonlóan `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`kell kinéznie.
+4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a Module. JSON fájlban található, formátummal ellátott információ alapján építették `<repository>:<version>-<platform>` . Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A modul Azure Stack Edge-ben való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.
