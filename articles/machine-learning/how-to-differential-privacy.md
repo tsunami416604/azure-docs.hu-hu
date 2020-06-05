@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan alkalmazhatja az WhiteNoise-csomagok használat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664948"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433202"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Különbözeti adatvédelem használata Azure Machine Learning
 
@@ -27,7 +27,7 @@ A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíci
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>WhiteNoise-csomagok telepítése
@@ -148,7 +148,7 @@ A könyvtár használatával összetettebb elemzési diagramokat hozhat létre, 
 | Darabszám         | Gauss   | Típuskonverzió       |
 | Hisztogram     | Lévő értékek mértani  | Befogó   |
 | Középérték          | Laplace    | Digitalizálni   |
-| Quantiles     |            | Szűrő     |
+| Quantiles     |            | Szűrés     |
 | Összeg           |            | Beszámítás |
 | Variancia/szórás |      | Átalakítás  |
 

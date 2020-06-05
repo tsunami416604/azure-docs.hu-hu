@@ -5,17 +5,17 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6442a5c4af5b9804456f0b4b9e78c8999249f25
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78398339"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433399"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-A fájl neve `score.py`. A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [how and hol üzembe helyezés](how-to-deploy-and-where.md).
+A fájl neve `score.py` . A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [how and hol üzembe helyezés](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>A Conda-környezet definiálása
 
-A Conda-környezeti fájl meghatározza a szolgáltatás függőségeit. Magában foglalja a modell és a beléptetési parancsfájl által igényelt függőségeket is. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia, amelyekben a következő értékek szerepelnek: >= 1.0.45 pip-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A következő YAML határozzák meg egy Tensorflow-modell környezetét. Ez határozza `tensorflow-gpu`meg, hogy a rendszer milyen GPU-t használ az üzemelő példányban:
+A Conda-környezeti fájl meghatározza a szolgáltatás függőségeit. Magában foglalja a modell és a beléptetési parancsfájl által igényelt függőségeket is. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia, amelyekben a következő értékek szerepelnek: >= 1.0.45 pip-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A következő YAML határozzák meg egy Tensorflow-modell környezetét. Ez határozza meg `tensorflow-gpu` , hogy a rendszer milyen GPU-t használ az üzemelő példányban:
 
 ```yaml
 name: project_environment
@@ -157,7 +157,7 @@ channels:
 - conda-forge
 ```
 
-Ebben a példában a fájl a következőként lesz `myenv.yml`mentve:.
+Ebben a példában a fájl a következőként lesz mentve: `myenv.yml` .
 
 ## <a name="define-the-deployment-configuration"></a>A központi telepítési konfiguráció megadása
 
@@ -214,7 +214,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Ha az `InferenceConfig` objektumnak `enable_gpu=True`van, akkor `deployment_target` a paraméternek egy GPU-t biztosító fürtre kell hivatkoznia. Ellenkező esetben a telepítés sikertelen lesz.
+> Ha az `InferenceConfig` objektumnak van `enable_gpu=True` , akkor a `deployment_target` paraméternek egy GPU-t biztosító fürtre kell hivatkoznia. Ellenkező esetben a telepítés sikertelen lesz.
 
 További információ: a [modell](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)dokumentációja.
 
@@ -287,7 +287,7 @@ aks_service.delete()
 aks_target.delete()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése a FPGA](how-to-deploy-fpga-web-service.md)
 * [Modell üzembe helyezése a ONNX](concept-onnx.md#deploy-onnx-models-in-azure)

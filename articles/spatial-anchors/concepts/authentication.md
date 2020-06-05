@@ -1,19 +1,19 @@
 ---
 title: Hitelesítés és engedélyezés
 description: Ismerje meg, hogy az alkalmazás vagy szolgáltatás milyen módon tud hitelesíteni az Azure térbeli Horgonyokban, valamint az Azure térbeli horgonyokhoz való hozzáférést biztosító vezérlési szinteket.
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653373"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434392"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -39,7 +39,6 @@ Az Azure AD-hitelesítési tokenek kétféleképpen érhetők el:
 Az első lépésekhez az Azure térbeli horgonyok fiókjához való hozzáféréshez használható fiókok kulcsai. A fiók kulcsait a Azure Portal fogja megtalálni. Navigáljon a fiókjához, és válassza a "kulcsok" fület.
 
 ![Az Azure térbeli horgonyok hitelesítésének áttekintése](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 A rendszer két kulcsot tesz elérhetővé, amelyek egyszerre érvényesek a térbeli horgonyok fiókhoz való hozzáféréshez. Javasoljuk, hogy rendszeresen frissítse a fiók eléréséhez használt kulcsot. a két különálló érvényes kulcs lehetővé teszi az ilyen frissítések állásidő nélküli engedélyezését; csak az elsődleges kulcsot és a másodlagos kulcsot kell frissítenie.
 
@@ -259,7 +258,7 @@ Az alkalmazásokhoz, szolgáltatásokhoz vagy a szolgáltatás Azure AD-felhaszn
 - **Térbeli horgonyok fiókjának közreműködői**: a szerepkörrel rendelkező alkalmazások vagy felhasználók létrehozhatnak térbeli horgonyokat, lekérdezéseket végezhetnek, de nem törölhetik azokat.
 - **Térbeli horgonyok fiókjának olvasója**: azok az alkalmazások vagy felhasználók, akik ezt a szerepkört használják, csak a térbeli horgonyok lekérdezésére képesek, de újakat nem hozhatnak létre, törölhetik a meglévőket, vagy frissíthetik a metaadatokat a térbeli horgonyokon. Ez általában olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, míg mások csak az adott környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal.
 

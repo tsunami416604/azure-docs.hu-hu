@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747382"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431970"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
 
@@ -79,21 +79,24 @@ Ezek a parancsok a Azure Cosmos DB tulajdonsághoz tartozó tulajdonságok alias
 
 Az [egyéni házirend-definíciós szabályokban](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)bármelyik tulajdonság-alias nevet használhatja.
 
-Az alábbi példa olyan házirend-definíciót mutat be, amely ellenőrzi, hogy egy Azure Cosmos DB SQL-adatbázis kiépített átviteli sebessége nagyobb-e, mint a maximálisan megengedett 400 RU/s. Az egyéni házirend-definíció két szabályt tartalmaz: az egyiket, hogy megkeresse az adott típusú tulajdonság-aliast, a második pedig a típus adott tulajdonságát. Mindkét szabály az alias nevét használja.
+Az alábbi példa olyan házirend-definíciót mutat be, amely ellenőrzi, hogy egy Azure Cosmos DB-fiók több írási helyhez van-e konfigurálva. Az egyéni házirend-definíció két szabályt tartalmaz: az egyiket, hogy megkeresse az adott típusú tulajdonság-aliast, a második pedig a típus adott tulajdonságát, ebben az esetben a több írási hely beállítást tároló mezőt. Mindkét szabály az alias nevét használja.
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ A szabályzat-hozzárendelések létrehozása után Azure Policy kiértékeli a 
 
 A megfelelőségi eredményeket és a szervizelés részleteit a [Azure Portalban](../governance/policy/how-to/get-compliance-data.md#portal) , illetve az [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) -n vagy a [Azure monitor-naplókon](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)tekintheti át.
 
-Az alábbi képernyőfelvételen két példa van a házirend-hozzárendelésekre. Az egyik hozzárendelés egy beépített szabályzat-definíción alapul, amely ellenőrzi, hogy a Azure Cosmos DB-erőforrások csak az engedélyezett Azure-régiókra vannak-e telepítve. A másik hozzárendelés egy egyéni szabályzat-definíción alapul. Ez a hozzárendelés ellenőrzi, hogy a kiépített átviteli sebesség Azure Cosmos DB erőforráson nem haladja-e meg a megadott maximális korlátot.
+Az alábbi képernyőfelvételen két példa van a házirend-hozzárendelésekre.
 
-A szabályzat-hozzárendelések telepítése után a megfelelőségi irányítópulton megjelennek a kiértékelés eredményei. Vegye figyelembe, hogy ez a szabályzat-hozzárendelés telepítése után akár 30 percet is igénybe vehet.
+Az egyik hozzárendelés egy beépített szabályzat-definíción alapul, amely ellenőrzi, hogy a Azure Cosmos DB-erőforrások csak az engedélyezett Azure-régiókra vannak-e telepítve. Az erőforrás-megfelelőség a szabályzat kiértékelésének eredményét (megfelelő vagy nem megfelelő) jeleníti meg a hatókörben lévő erőforrásokhoz.
 
-A képernyőképen a következő megfelelőségi kiértékelési eredmények láthatók:
+A másik hozzárendelés egy egyéni szabályzat-definíción alapul. Ez a hozzárendelés ellenőrzi, hogy a Cosmos DB-fiókok több írási helyhez vannak-e konfigurálva.
 
-- A megadott hatókörben lévő Azure Cosmos DB fiókok közül nulla nem felel meg a szabályzat-hozzárendelésnek, hogy a rendszer az erőforrásokat az engedélyezett régiókra telepítse.
-- A megadott hatókörben lévő két Azure Cosmos DB adatbázis vagy gyűjtemény erőforrásai megfelelnek a megadott maximális korlátot meghaladó kiépített átviteli sebesség ellenőrzéséhez szükséges szabályzat-hozzárendelésnek.
+A szabályzat-hozzárendelések telepítése után a megfelelőségi irányítópulton megjelennek a kiértékelés eredményei. Vegye figyelembe, hogy ez a szabályzat-hozzárendelés telepítése után akár 30 percet is igénybe vehet. Emellett [a szabályzat-kiértékelési vizsgálatok azonnal elindíthatók a szabályzat-](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) hozzárendelések létrehozása után is.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB beépített szabályzat-definíciók keresése":::
+A képernyőképen a következő megfelelőségi kiértékelési eredmények láthatók a hatókörön belüli Azure Cosmos DB fiókok esetében:
 
-A nem megfelelő erőforrások javításához tekintse meg a [szervizelt Azure Policytel](../governance/policy/how-to/remediate-resources.md) című cikket.
+- A két fiók közül nulla megfelel egy olyan házirendnek, amely Virtual Network (VNet) szűrést kell konfigurálni.
+- A két fiók közül nulla megfelel egy olyan házirendnek, amely megköveteli, hogy a fiók több írási helyhez legyen konfigurálva
+- A két fiók közül nulla megfelel egy olyan házirendnek, amelyet az erőforrások üzembe helyezése engedélyezett az Azure-régiók számára.
+
+:::image type="content" source="./media/policy/compliance.png" alt-text="Megfelelési eredmények a felsorolt Azure Policy-hozzárendelésekhez":::
+
+A nem megfelelő erőforrások javításához tekintse meg a következő témakört: [erőforrások szervizelése Azure Policysal](../governance/policy/how-to/remediate-resources.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tekintse át az egyéni házirend-definíciókat a Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+- [Tekintse át a Azure Cosmos db egyéni szabályzat-definícióit](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), beleértve a több írási helyet és a fentiekben látható VNet-szűrési házirendeket.
 - [Szabályzat-hozzárendelés létrehozása a Azure Portalban](../governance/policy/assign-policy-portal.md)
 - [Tekintse át Azure Policy beépített szabályzat-definíciókat Azure Cosmos DB](./policy-samples.md)

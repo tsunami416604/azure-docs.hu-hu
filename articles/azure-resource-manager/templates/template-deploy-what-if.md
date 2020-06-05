@@ -3,14 +3,14 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/04/2020
 ms.author: tomfitz
-ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218296"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424244"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
@@ -19,19 +19,23 @@ Azure Resource Manager (ARM-) sablon üzembe helyezése előtt megtekintheti a m
 > [!NOTE]
 > A mi-if művelet jelenleg előzetes verzióban érhető el. Előzetes kiadásként előfordulhat, hogy az eredmények azt mutatják, hogy egy erőforrás akkor változik, ha valójában nem történt változás. Dolgozunk ezen problémák csökkentésén, de segítségre van szükségünk. Kérjük, jelentse ezeket a problémákat a következő címen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet.
+Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet. Mi a teendő, ha az erőforráscsoport és az előfizetés szintjén üzemelő példányok is támogatottak.
 
-## <a name="install-powershell-module"></a>PowerShell-modul telepítése
+## <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
 
-A mi-ha a PowerShellben való használatához telepítenie kell az az. Resources modul előzetes verzióját a PowerShell-galériából. A modul telepítése előtt azonban győződjön meg róla, hogy a PowerShell Core (6. x vagy 7. x). Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell). Az előzetes verziójú modul nem telepíthető a PowerShell 5. x vagy régebbi verziójára.
+A mi-ha a PowerShellben való használatához **az az modul 4,2-es vagy újabb**verziójával kell rendelkeznie.
 
-### <a name="install-preview-version"></a>Előzetes verzió telepítése
+A szükséges modul telepítése előtt azonban győződjön meg róla, hogy a PowerShell Core (6. x vagy 7. x). Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell). A szükséges modult nem telepítheti a PowerShell 5. x vagy régebbi verzióján.
 
-Az előzetes verziójú modul telepítéséhez használja a következőt:
+### <a name="install-latest-version"></a>A legújabb verzió telepítése
+
+A modul telepítéséhez használja a következőt:
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+A modulok telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="uninstall-alpha-version"></a>Alfa verzió eltávolítása
 
@@ -101,7 +105,7 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A módosítások előnézetéhez a sablon telepítése előtt adja hozzá a `-Whatif` switch paramétert a telepítési parancshoz.
+A módosítások előnézetéhez a sablon telepítése előtt használja a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) vagy a [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Adja hozzá a `-Whatif` switch paramétert a Deployment parancshoz.
 
 * `New-AzResourceGroupDeployment -Whatif`erőforráscsoport-telepítések esetén
 * `New-AzSubscriptionDeployment -Whatif`és `New-AzDeployment -Whatif` előfizetési szintű központi telepítések esetén
@@ -111,19 +115,19 @@ A `-Confirm` switch paraméterrel megtekintheti a módosításokat, és a rendsz
 * `New-AzResourceGroupDeployment -Confirm`erőforráscsoport-telepítések esetén
 * `New-AzSubscriptionDeployment -Confirm`és `New-AzDeployment -Confirm` előfizetési szintű központi telepítések esetén
 
-Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Ha olyan objektumot szeretne beolvasni, amelyet programozott módon vizsgálhat a változásokhoz, használja a következőt:
+Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Ha olyan objektumot szeretne beolvasni, amelyet programozott módon vizsgálhat a változásokhoz, használja a [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) vagy a [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult).
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`erőforráscsoport-telepítések esetén
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`vagy `$results = Get-AzDeploymentWhatIfResult` előfizetési szintű központi telepítések esetén
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Ha egy sablon telepítése előtt szeretné megtekinteni a módosításokat, használja `what-if` a parancsot a telepítési paranccsal.
+A sablon telepítésének megkezdése előtt használja az [az Deployment Group What-if](/cli/azure/deployment/group#az-deployment-group-what-if) vagy [az Deployment sub What-if](/cli/azure/deployment/sub#az-deployment-sub-what-if)parancsot.
 
 * `az deployment group what-if`erőforráscsoport-telepítések esetén
 * `az deployment sub what-if`előfizetési szintű központi telepítések esetén
 
-A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját) használva `-c` megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést.
+A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját) használva `-c` megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést. Adja hozzá ezt a kapcsolót az [üzembe helyezési csoport létrehozása](/cli/azure/deployment/group#az-deployment-group-create) vagy [az üzembe helyezés sub Create](/cli/azure/deployment/sub#az-deployment-sub-create)elemhez.
 
 * `az deployment group create --confirm-with-what-if`vagy `-c` erőforráscsoport-telepítések esetén
 * `az deployment sub create --confirm-with-what-if`vagy `-c` előfizetési szintű központi telepítések esetén
@@ -407,7 +411,7 @@ Az Azure SDK-k használatával a mi-if művelet is használható.
 
 * .NET esetén használja a [DeploymentWhatIf osztályt](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha az előzetes kiadásban helytelen eredményeket észlel, akkor jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 817c03780b91e39d43a5348f84105236ee811cc8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343624"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433644"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -25,11 +25,11 @@ Tekintse meg ezeket a videókat, és tekintse át a rendszer összetevőinek gyo
 
 * [Hogyan működik](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) – elmagyarázza, hogyan kommunikál az Azure HPC cache a Storage és az ügyfelekkel
 
-  [![videó miniatűr képe: Azure HPC cache: Hogyan működik (kattintson ide a videó megtekintéséhez)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+  [![videó miniatűr képe: Azure HPC cache: Hogyan működik (kattintson ide a videó megtekintéséhez)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
 * [Előfeltételek](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) – a NAS Storage, az Azure Blob Storage, a hálózati hozzáférés és az ügyfelek hozzáférésének követelményeit ismerteti
 
-  [![videó miniatűr képe: Azure HPC cache: előfeltételek (kattintson ide a videó megtekintéséhez)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+  [![videó miniatűr képe: Azure HPC cache: előfeltételek (kattintson ide a videó megtekintéséhez)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
 A cikk további részében találhat konkrét javaslatokat.
 

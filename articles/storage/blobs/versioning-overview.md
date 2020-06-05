@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123836"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433587"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -178,8 +178,8 @@ Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blo
 
 | Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete/actionDeleting** | Storage blob adatközreműködői |
-| Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/** | Storage blob-adattulajdonos |
+| A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage blob adatközreműködői |
+| Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage blob-adattulajdonos |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Közös hozzáférésű aláírás (SAS) paraméterei
 
@@ -289,31 +289,31 @@ A blob-verziók (például a blob-Pillanatképek) számlázása az aktív adatfo
 
 A következő forgatókönyvek azt mutatják be, hogyan merülhetnek fel a díjak a blokkos blobok és azok verziói esetében.
 
-#### <a name="scenario-1"></a>1. példa
+#### <a name="scenario-1"></a>1\. példa
 
 Az 1. forgatókönyvben a blobnak van egy korábbi verziója. A blob frissítése a verzió létrehozása óta nem történt meg, ezért csak az 1., 2. és 3. egyedi blokkokra számítunk fel díjakat.
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-1.png)
 
-#### <a name="scenario-2"></a>2. példa
+#### <a name="scenario-2"></a>2\. példa
 
 A 2. forgatókönyvben a blob egy blokkját (a diagram 3. blokkját) frissítették. Annak ellenére, hogy a frissített blokk ugyanazokat az adatazonosítókat és ugyanazokat az azonosítót tartalmazza, nem ugyanaz, mint a 3. blokk az előző verzióban. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-2.png)
 
-#### <a name="scenario-3"></a>3. példa
+#### <a name="scenario-3"></a>3\. példa
 
 A 3. forgatókönyvben a blob frissült, de a verzió nem. A 3. blokk lecserélve a 4-es blokkra az alap blobban, de a korábbi verzió továbbra is a 3. blokkot tükrözi. Ennek eredményeképpen a fiók négy blokk után lesz felszámítva.
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-3.png)
 
-#### <a name="scenario-4"></a>4. példa
+#### <a name="scenario-4"></a>4\. példa
 
 A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók az alap blobban szereplő összes nyolc egyedi blokk után &mdash; , az előző verzióban pedig négyre lesz felszámítva. Ez a forgatókönyv akkor fordulhat elő, ha egy blobba helyezi a Put blob műveletet, mert az az alap blob teljes tartalmát lecseréli.
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Blob verziószámozásának engedélyezése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

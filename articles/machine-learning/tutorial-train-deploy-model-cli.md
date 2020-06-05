@@ -7,14 +7,14 @@ author: Blackmist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617722"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429753"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-re.
 
@@ -45,7 +45,7 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 ## <a name="download-the-example-project"></a>A példában szereplő projekt letöltése
 
-Ebben az oktatóanyagban töltse le [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) a projektet. Az oktatóanyag lépései a `examples/cli-train-deploy` címtárban található fájlokat használják.
+Ebben az oktatóanyagban töltse le a [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) projektet. Az `examples/cli-train-deploy` oktatóanyag lépései a címtárban található fájlokat használják.
 
 A fájlok helyi másolatának lekéréséhez [töltse le a. zip archívumot](https://github.com/microsoft/MLOps/archive/master.zip), vagy használja a következő git-parancsot a tárház klónozásához:
 
@@ -70,7 +70,7 @@ A tárház a következő fájlokat tartalmazza, amelyek segítségével a betan�
 * `aciDeploymentConfig.yml`: __Telepítési konfigurációs__ fájl. Ez a fájl határozza meg a modellhez szükséges üzemeltetési környezetet.
 * `inferenceConfig.json`: __Következtetési konfigurációs__ fájl. Ez a fájl határozza meg, hogy a szolgáltatás milyen Szoftverkörnyezet használatával szerzi be az adatmodellt.
 * `score.py`: A beérkező adatok fogadására szolgáló Python-szkript, amely a modell használatával szerzi be, majd visszaadja a választ.
-* `scoring-env.yml`: A modell és a szkript futtatásához szükséges Conda `score.py` -függőségek.
+* `scoring-env.yml`: A modell és a szkript futtatásához szükséges Conda-függőségek `score.py` .
 * `testdata.json`: Az üzembe helyezett webszolgáltatás tesztelésére használható adatfájl.
 
 ## <a name="connect-to-your-azure-subscription"></a>Csatlakozás az Azure-előfizetéshez
@@ -81,7 +81,7 @@ Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületr
 az login
 ```
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások egy engedélyezési kód [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és beírását foglalják magukban.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Az erőforráscsoport az Azure platformon található erőforrások alapszintű tárolója. A Azure Machine Learning használatakor az erőforráscsoport a Azure Machine Learning munkaterületet fogja tartalmazni. Emellett a munkaterület által használt egyéb Azure-szolgáltatásokat is tartalmazni fogja. Ha például egy felhőalapú számítási erőforrás használatával betanítja a modellt, akkor az erőforrást az erőforráscsoport hozza létre.
 
-__Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje `<resource-group-name>` le az-t az erőforráscsoporthoz használni kívánt névre. Cserélje `<location>` le az az Azure-régiót az erőforráscsoport használatára:
+__Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
 
 > [!TIP]
 > Válassza ki azt a régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -132,7 +132,7 @@ További információ az erőforráscsoportok használatáról: [az Group](https
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Új munkaterület létrehozásához használja a következő parancsot. Cserélje `<workspace-name>` le a nevet a munkaterülethez használni kívánt névre. Cserélje `<resource-group-name>` le az csoportot az erőforráscsoport nevére:
+Új munkaterület létrehozásához használja a következő parancsot. Cserélje le `<workspace-name>` a nevet a munkaterülethez használni kívánt névre. Cserélje le az `<resource-group-name>` csoportot az erőforráscsoport nevére:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -163,7 +163,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 
 ## <a name="connect-local-project-to-workspace"></a>Helyi projekt összekötése a munkaterülettel
 
-Egy terminálról vagy parancssorból az alábbi parancsokkal módosíthatja a `cli-train-deploy` címtárakat a címtárba, majd csatlakozhat a munkaterülethez:
+Egy terminálról vagy parancssorból az alábbi parancsokkal módosíthatja a címtárakat a `cli-train-deploy` címtárba, majd csatlakozhat a munkaterülethez:
 
 ```azurecli-interactive
 cd ~/MLOps/examples/cli-train-deploy
@@ -182,7 +182,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 }
 ```
 
-Ez a parancs létrehoz `.azureml/config.json` egy fájlt, amely a munkaterülethez való kapcsolódáshoz szükséges információkat tartalmazza. Az oktatóanyagban használt `az ml` többi parancs ezt a fájlt fogja használni, így nem kell hozzáadnia a munkaterületet és az erőforráscsoportot az összes parancshoz.
+Ez a parancs létrehoz egy `.azureml/config.json` fájlt, amely a munkaterülethez való kapcsolódáshoz szükséges információkat tartalmazza. Az `az ml` oktatóanyagban használt többi parancs ezt a fájlt fogja használni, így nem kell hozzáadnia a munkaterületet és az erőforráscsoportot az összes parancshoz.
 
 ## <a name="create-the-compute-target-for-training"></a>Számítási cél létrehozása képzéshez
 
@@ -203,16 +203,16 @@ A parancs kimenete a következő JSON-hoz hasonló:
 }
 ```
 
-Ez a parancs létrehoz egy nevű `cpu-cluster`új számítási célt, amely legfeljebb négy csomóponttal rendelkezik. A kiválasztott virtuálisgép-méret GPU-erőforrással rendelkező virtuális gépet biztosít. A virtuális gép méretével kapcsolatos információkért lásd: [VM-típusok és méretek].
+Ez a parancs létrehoz egy nevű új számítási célt `cpu-cluster` , amely legfeljebb négy csomóponttal rendelkezik. A kiválasztott virtuálisgép-méret GPU-erőforrással rendelkező virtuális gépet biztosít. A virtuális gép méretével kapcsolatos információkért lásd: [VM-típusok és méretek].
 
 > [!IMPORTANT]
-> A számítási cél neve (`cpu-cluster` ebben az esetben) fontos; a következő szakaszban használt `.azureml/mnist.runconfig` fájl hivatkozik rá.
+> A számítási cél neve ( `cpu-cluster` ebben az esetben) fontos, ezért a `.azureml/mnist.runconfig` következő szakaszban használt fájl hivatkozik rá.
 
 ## <a name="define-the-dataset"></a>Az adatkészlet meghatározása
 
-A modellek betanításához adatkészletek segítségével megadhatja a betanítási adatokat. Adatkészlet létrehozásához a parancssori felületről meg kell adnia egy adatkészlet-definíciós fájlt. A `dataset.json` tárházban megadott fájl egy új adatkészletet hoz létre a MNIST-adatokat használva. A létrehozott adatkészlet neve `mnist-dataset`.
+A modellek betanításához adatkészletek segítségével megadhatja a betanítási adatokat. Adatkészlet létrehozásához a parancssori felületről meg kell adnia egy adatkészlet-definíciós fájlt. A `dataset.json` tárházban megadott fájl egy új adatkészletet hoz létre a MNIST-adatokat használva. A létrehozott adatkészlet neve `mnist-dataset` .
 
-Az adatkészlet `dataset.json` fájl használatával történő regisztrálásához használja a következő parancsot:
+Az adatkészlet fájl használatával történő regisztrálásához `dataset.json` használja a következő parancsot:
 
 ```azurecli-interactive
 az ml dataset register -f dataset.json --skip-validation
@@ -292,27 +292,27 @@ Módosítsa a `id` bejegyzés értékét úgy, hogy az megfeleljen az adatkészl
 
 Ez a YAML a következő műveleteket eredményezi a betanítás során:
 
-* Csatlakoztatja az adatkészletet (az adatkészlet azonosítója alapján) a képzési környezetben, és a `mnist` környezeti változóban tárolja a csatlakoztatási pont elérési útját.
-* Átadja az adatelérési pont (csatlakoztatási pont) helyét a betanítási környezetben a `--data-folder` parancsfájlnak az argumentum használatával.
+* Csatlakoztatja az adatkészletet (az adatkészlet azonosítója alapján) a képzési környezetben, és a környezeti változóban tárolja a csatlakoztatási pont elérési útját `mnist` .
+* Átadja az adatelérési pont (csatlakoztatási pont) helyét a betanítási környezetben a parancsfájlnak az `--data-folder` argumentum használatával.
 
-A runconfig-fájl a betanítási Futtatás által használt környezet konfigurálásához használt információkat is tartalmaz. Ha megvizsgálja ezt a fájlt, látni fogja, hogy a `cpu-compute` korábban létrehozott számítási célra hivatkozik. Azt is felsorolja, hogy hány csomópontot kell használni a Betanításkor (`"nodeCount": "4"`), `"condaDependencies"` és tartalmaz egy szakaszt, amely felsorolja a betanítási parancsfájl futtatásához szükséges Python-csomagokat.
+A runconfig-fájl a betanítási Futtatás által használt környezet konfigurálásához használt információkat is tartalmaz. Ha megvizsgálja ezt a fájlt, látni fogja, hogy a `cpu-compute` korábban létrehozott számítási célra hivatkozik. Azt is felsorolja, hogy hány csomópontot kell használni a Betanításkor ( `"nodeCount": "4"` ), és tartalmaz egy `"condaDependencies"` szakaszt, amely felsorolja a betanítási parancsfájl futtatásához szükséges Python-csomagokat.
 
 > [!TIP]
-> Habár manuálisan is létrehozhat egy runconfig-fájlt, az ebben a példában szereplő `generate-runconfig.py` fájl a tárházban található fájllal lett létrehozva. Ez a fájl a regisztrált adatkészletre mutató hivatkozást kap, létrehoz egy futtatási konfiguráció programozott módon, majd megőrzi a fájlt.
+> Habár manuálisan is létrehozhat egy runconfig-fájlt, az ebben a példában szereplő fájl a tárházban található fájllal lett létrehozva `generate-runconfig.py` . Ez a fájl a regisztrált adatkészletre mutató hivatkozást kap, létrehoz egy futtatási konfiguráció programozott módon, majd megőrzi a fájlt.
 
 A konfigurációs fájlok futtatásával kapcsolatos további információkért lásd: [számítási célok beállítása és használata a modell betanításához](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). A teljes JSON-referenciáért tekintse meg a [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)fájlt.
 
 ## <a name="submit-the-training-run"></a>A betanítási Futtatás elküldése
 
-A következő parancs futtatásával indíthatja el `cpu-cluster` a betanítást a számítási célra:
+A következő parancs futtatásával indíthatja el a betanítást a `cpu-cluster` számítási célra:
 
 ```azurecli-interactive
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
 ```
 
-Ez a parancs a kísérlet (`myexperiment`) nevét adja meg. A kísérlet a munkaterületen lévő futtatással kapcsolatos adatokat tárolja.
+Ez a parancs a kísérlet () nevét adja meg `myexperiment` . A kísérlet a munkaterületen lévő futtatással kapcsolatos adatokat tárolja.
 
-A `-c mnist` paraméter határozza meg `.azureml/mnist.runconfig` a fájlt.
+A `-c mnist` paraméter határozza meg a `.azureml/mnist.runconfig` fájlt.
 
 A `-t` paraméter egy JSON-fájlban tárolja a futtatásra mutató hivatkozást, és a következő lépésekben fogja használni a modell regisztrálásához és letöltéséhez.
 
@@ -325,9 +325,9 @@ Accuracy is 0.9185
 
 Ezt a szöveget a betanítási szkript naplózza, és megjeleníti a modell pontosságát. Más modellek esetében a teljesítmény mérőszámai eltérőek lesznek.
 
-Ha megvizsgálja a betanítási szkriptet, megfigyelheti, hogy az alfa értéket is használja, amikor a betanított modellt tárolja `outputs/sklearn_mnist_model.pkl`.
+Ha megvizsgálja a betanítási szkriptet, megfigyelheti, hogy az alfa értéket is használja, amikor a betanított modellt tárolja `outputs/sklearn_mnist_model.pkl` .
 
-A modell mentve lett a `./outputs` könyvtárba azon a számítási célhelyen, ahol a rendszer betanított. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine learning munkaterületre. A kísérlet részeként tárolódik (`myexperiment` ebben a példában).
+A modell mentve lett a `./outputs` könyvtárba azon a számítási célhelyen, ahol a rendszer betanított. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine learning munkaterületre. A kísérlet részeként tárolódik ( `myexperiment` ebben a példában).
 
 ## <a name="register-the-model"></a>Regisztrálja a modellt
 
@@ -337,7 +337,7 @@ A modell közvetlenül a kísérletben tárolt verzióból való regisztrálás�
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_mnist_model.pkl" -t registeredmodel.json
 ```
 
-Ez a parancs regisztrálja `outputs/sklearn_mnist_model.pkl` a betanítási Futtatás által létrehozott fájlt egy új modell- `mymodel`regisztráció néven. A `--assets-path` kísérletben egy elérési útra hivatkozik. Ebben az esetben a kísérlet és a futtatási információ betöltődik a `runoutput.json` betanítási parancs által létrehozott fájlból. A `-t registeredmodel.json` létrehoz egy JSON-fájlt, amely hivatkozik a parancs által létrehozott új regisztrált modellre, és más CLI-parancsok használják, amelyek regisztrált modellekkel működnek.
+Ez a parancs regisztrálja a `outputs/sklearn_mnist_model.pkl` betanítási Futtatás által létrehozott fájlt egy új modell-regisztráció néven `mymodel` . A `--assets-path` kísérletben egy elérési útra hivatkozik. Ebben az esetben a kísérlet és a futtatási információ betöltődik a `runoutput.json` betanítási parancs által létrehozott fájlból. A `-t registeredmodel.json` létrehoz egy JSON-fájlt, amely hivatkozik a parancs által létrehozott új regisztrált modellre, és más CLI-parancsok használják, amelyek regisztrált modellekkel működnek.
 
 A parancs kimenete a következő JSON-hoz hasonló:
 
@@ -366,7 +366,7 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 ```
 
-Az első parancs letölti a regisztrált modellt az aktuális könyvtárba. A fájl neve: `sklearn_mnist_model.pkl`, amely a modell regisztrálása során hivatkozott fájl. A második parancs regisztrálja a helyi modellt (`-p "sklearn_mnist_model.pkl"`) ugyanazzal a névvel, mint a korábbi regisztrációval`mymodel`(). Ez alkalommal a visszaadott JSON-adatérték a 2-es verziót sorolja fel.
+Az első parancs letölti a regisztrált modellt az aktuális könyvtárba. A fájl neve: `sklearn_mnist_model.pkl` , amely a modell regisztrálása során hivatkozott fájl. A második parancs regisztrálja a helyi modellt ( `-p "sklearn_mnist_model.pkl"` ) ugyanazzal a névvel, mint a korábbi regisztrációval ( `mymodel` ). Ez alkalommal a visszaadott JSON-adatérték a 2-es verziót sorolja fel.
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
@@ -379,18 +379,18 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 > [!NOTE]
 > A "nem sikerült megtekinteni a LocalWebservice létezését" vagy a "nem sikerült létrehozni a Docker-ügyfelet" figyelmeztetés jelenhet meg. Ezt nyugodtan figyelmen kívül hagyhatja, mert nem telepít helyi webszolgáltatást.
 
-Ez a parancs üzembe helyez egy nevű `myservice`új szolgáltatást, amely a korábban regisztrált modell 1. verzióját használja.
+Ez a parancs üzembe helyez egy nevű új szolgáltatást `myservice` , amely a korábban regisztrált modell 1. verzióját használja.
 
-A `inferenceConfig.yml` fájl információkkal szolgál arról, hogyan használható a modell a következtetésekhez. Például a bejegyzési parancsfájl (`score.py`) és a szoftver függőségeire hivatkozik.
+A `inferenceConfig.yml` fájl információkkal szolgál arról, hogyan használható a modell a következtetésekhez. Például a bejegyzési parancsfájl ( `score.py` ) és a szoftver függőségeire hivatkozik.
 
 A fájl struktúrájával kapcsolatos további információkért tekintse meg a [következtetési konfigurációs sémát](reference-azure-machine-learning-cli.md#inference-configuration-schema). A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
-A `aciDeploymentConfig.yml` a szolgáltatás üzemeltetéséhez használt központi telepítési környezetet ismerteti. A központi telepítési konfiguráció a központi telepítéshez használt számítási típusra vonatkozik. Ebben az esetben egy Azure Container-példányt használunk. További információ: a [központi telepítés konfigurációs sémája](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+A a `aciDeploymentConfig.yml` szolgáltatás üzemeltetéséhez használt központi telepítési környezetet ismerteti. A központi telepítési konfiguráció a központi telepítéshez használt számítási típusra vonatkozik. Ebben az esetben egy Azure Container-példányt használunk. További információ: a [központi telepítés konfigurációs sémája](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 Az üzembe helyezési folyamat befejeződése előtt több percet is igénybe vehet.
 
 > [!TIP]
-> Ebben a példában Azure Container Instances van használatban. Az ACI-hoz készült üzembe helyezések automatikusan létrehozzák a szükséges ACI-erőforrást. Ha ehelyett az Azure Kubernetes Service-ben kellene üzembe helyeznie, létre kell hoznia egy AK-fürtöt az idő előtt, és `az ml model deploy` meg kell adnia a parancs részeként. Az AK-ra való üzembe helyezésre példa: [modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md).
+> Ebben a példában Azure Container Instances van használatban. Az ACI-hoz készült üzembe helyezések automatikusan létrehozzák a szükséges ACI-erőforrást. Ha ehelyett az Azure Kubernetes Service-ben kellene üzembe helyeznie, létre kell hoznia egy AK-fürtöt az idő előtt, és meg kell adnia a parancs részeként `az ml model deploy` . Az AK-ra való üzembe helyezésre példa: [modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md).
 
 Néhány perc elteltével a rendszer a következő JSON-hoz hasonló adatokat adja vissza:
 
@@ -415,7 +415,7 @@ A `scoringUri` központi telepítésből visszaadott érték egy webszolgáltat�
 az ml service show -n myservice
 ```
 
-Ez a parancs ugyanazt a JSON-dokumentumot adja vissza `scoringUri`, beleértve a következőt:.
+Ez a parancs ugyanazt a JSON-dokumentumot adja vissza, beleértve a következőt: `scoringUri` .
 
 A REST-végpont használatával adatok küldhetők a szolgáltatásba. Az adatokat a szolgáltatásnak küldő ügyfélalkalmazás létrehozásával kapcsolatos információkért lásd: [webszolgáltatásként üzembe helyezett Azure Machine learning-modell felhasználása](how-to-consume-web-service.md)
 
@@ -434,7 +434,7 @@ az ml service run -n myservice -d @testdata.json
 > az ml service run -n myservice -d `@testdata.json
 > ```
 
-A parancs válasza hasonló a következőhöz `[ 3 ]`:.
+A parancs válasza hasonló a következőhöz: `[ 3 ]` .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -465,13 +465,13 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely tartalmazza a törölt szám
 
 Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így nem jár további költségekkel.
 
-Az erőforráscsoport és az ebben a dokumentumban létrehozott összes Azure-erőforrás törléséhez használja a következő parancsot. Cserélje `<resource-group-name>` le a nevet a korábban létrehozott erőforráscsoport nevére:
+Az erőforráscsoport és az ebben a dokumentumban létrehozott összes Azure-erőforrás törléséhez használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet a korábban létrehozott erőforráscsoport nevére:
 
 ```azurecli-interactive
 az group delete -g <resource-group-name> -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az Azure Machine Learning oktatóanyagban a Machine learning parancssori felületét használta a következő feladatokhoz:
 

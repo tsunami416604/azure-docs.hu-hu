@@ -86,7 +86,7 @@ További információ a díjszabásról: [Azure Active Directory díjszabása](h
 |Oktatóanyagok |[Azure AD önkiszolgáló jelszó-visszaállítási próba befejezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[Jelszó visszaírási engedélyezése](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Azure AD-jelszó alaphelyzetbe állítása a Windows 10 bejelentkezési képernyőjéről](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Gyakori kérdések|[Jelszavas kezelés – gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+| GYIK|[Jelszavas kezelés – gyakori kérdések](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
 
 
 ### <a name="solution-architecture"></a>Megoldásarchitektúra

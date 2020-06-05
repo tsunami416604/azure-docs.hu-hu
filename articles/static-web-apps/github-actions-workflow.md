@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655201"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434012"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -102,10 +102,10 @@ Minden esemény-eseményindítóhoz szükség van egy eseménykezelőre. A [fela
 
 A statikus Web Apps munkafolyamat-fájlban két elérhető feladat van.
 
-| Name  | Description |
+| Name  | Leírás |
 |---------|---------|
 |`build_and_deploy_job` | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján. |
-|`close_pull_request_job` | CSAK a lekéréses kérelem lezárásakor hajtható végre. |
+|`close_pull_request_job` | CSAK akkor hajt végre végrehajtást, ha lezárta egy lekéréses kérelmet, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
 
 ## <a name="steps"></a>Lépések
 
@@ -134,7 +134,7 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Tulajdonság | Description | Kötelező |
+| Tulajdonság | Leírás | Kötelező |
 |---|---|---|
 | `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Igen |
 | `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | Nem |
@@ -148,7 +148,7 @@ A központi telepítés során futtatott parancsok részletes szabályozása is 
 
 Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívja a-t.
 
-| Parancs            | Description |
+| Parancs            | Leírás |
 |---------------------|-------------|
 | `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Például egy szögletes alkalmazás üzemi buildének konfigurálásához adja meg a következőt: `ng build --prod` . Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
 | `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg. |
@@ -157,13 +157,13 @@ Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívj
 
 Testreszabhatja a munkafolyamatot, hogy megkeresse a [Routes. JSON](routes.md) fájlt a tárház bármely mappájából. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
 
-| Tulajdonság            | Description |
+| Tulajdonság            | Leírás |
 |---------------------|-------------|
 | `routes_location` | Meghatározza azt a könyvtárat, ahol a _Routes. JSON_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 
  A _Routes. JSON_ fájl helyével kapcsolatos explicit módon különösen fontos, ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a `app_artifact_location` alapértelmezésbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Lekéréses kérelmek áttekintése az üzem előtti környezetekben](review-publish-pull-requests.md)
+> [Lekéréses kérelmek áttekintése éles üzem előtti környezetekben](review-publish-pull-requests.md)

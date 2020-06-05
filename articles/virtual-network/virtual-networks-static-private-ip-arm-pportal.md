@@ -8,18 +8,19 @@ manager: twooley
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e936fe4a6d514b000b08ddf11b52d0e524d98e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461548"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417871"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Magánhálózati IP-cím konfigurálása virtuális géphez a Azure Portal használatával
 
@@ -45,12 +46,12 @@ Ha egy *DNS01* nevű virtuális gépet szeretne létrehozni egy *TestVNet*nevű 
 1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása**lehetőséget.
 
     ![Erőforrás létrehozása, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
-2. Válassza a **számítási** > **virtuális gép**lehetőséget.
+2. Válassza a **számítási**  >  **virtuális gép**lehetőséget.
 
     ![Virtuális gép létrehozása, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
-3. Az **alapvető beállítások**területen az alábbi táblázatban leírtak szerint határozza meg az elemek értékeit. Ezután válassza **a&nbsp;tovább&nbsp;: lemezek** , majd a **&nbsp;tovább:&nbsp;hálózatkezelés**lehetőséget.
+3. Az **alapvető beállítások**területen az alábbi táblázatban leírtak szerint határozza meg az elemek értékeit. Ezután válassza a **tovább &nbsp; : &nbsp; lemezek** , majd a **tovább &nbsp; : &nbsp; hálózatkezelés**lehetőséget.
 
-    | Elem | Érték |
+    | Item | Érték |
     | --- | --- |
     | **Előfizetés** | Aktuális előfizetés |
     | **Erőforráscsoport** | **TestRG** (kiválasztás a legördülő listából) |
@@ -65,13 +66,13 @@ Ha egy *DNS01* nevű virtuális gépet szeretne létrehozni egy *TestVNet*nevű 
     ![Alapismeretek lap, virtuális gép létrehozása, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. A **hálózatkezelés**területen adja meg az elemek értékeit az alábbi táblázatban leírtak szerint, majd válassza a **tovább**lehetőséget.
 
-    | Elem | Érték |
+    | Item | Érték |
     | --- | --- |
     | **Virtuális hálózat** | **TestVNet** |
     | **Alhálózat** | **FrontEnd** |
 
     ![Hálózatkezelés lapon hozzon létre egy virtuális gépet, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. A **felügyelet**alatt a **diagnosztika Storage-fiók**területen válassza a **vnetstorage**lehetőséget. Ha a Storage-fiók nem jelenik meg a listában, válassza az **új létrehozása**elemet, adja meg a *vnetstorage* **nevét** , majd kattintson **az OK gombra**. Végül válassza a **Létrehozás&nbsp;+&nbsp;áttekintése**lehetőséget.
+5. A **felügyelet**alatt a **diagnosztika Storage-fiók**területen válassza a **vnetstorage**lehetőséget. Ha a Storage-fiók nem jelenik meg a listában, válassza az **új létrehozása**elemet, adja meg a *vnetstorage* **nevét** , majd kattintson **az OK gombra**. Végül válassza a ** &nbsp; + &nbsp; Létrehozás áttekintése**lehetőséget.
 
     ![Felügyelet lapon hozzon létre egy virtuális gépet, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
 6. Az Áttekintés **+ Létrehozás**lapon tekintse át az áttekintő információkat, majd kattintson a **Létrehozás**gombra.
@@ -127,6 +128,6 @@ Egy virtuális gép operációs rendszerén belül nem kell statikusan hozzáren
 
 Emellett soha ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt *nyilvános* IP-címet a virtuális gép operációs rendszerén belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [IP-címek beállításainak](virtual-network-network-interface-addresses.md)kezeléséről.

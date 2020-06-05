@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670644"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424465"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (előzetes verzió) megoldás a Azure Monitor
 
@@ -19,12 +19,15 @@ ms.locfileid: "77670644"
 
 A vezetékes adatok összevont hálózati és teljesítményadatokat gyűjtenek a Windowshoz csatlakoztatott és a Linux rendszerű számítógépekről a Log Analytics ügynökkel, beleértve azokat is, amelyeket a környezetében Operations Manager figyel. A hálózati adatok és az egyéb naplóadatok összevonása segít az adatok összevetésében.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 A Log Analytics ügynökön kívül az adatátviteli megoldás a Microsoft függőségi ügynököket is használja, amelyeket az informatikai infrastruktúrában lévő számítógépekre telepít. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Ezután az ügynökök használatával küldi el az Azure Monitor.  
 
 >[!NOTE]
->Ha már telepítette a Service Mapt, vagy Service Map vagy [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)fontolgatja, akkor a rendszer egy új, a hálózatra vonatkozó adatokat tartalmazó adatkészletet gyűjt és tárol Azure monitorokban, amelyek összehasonlítják az adatokat.
+>Az adatátviteli megoldást a [Service Map megoldás](service-map.md)váltotta fel.  Mindkettő a Log Analytics-ügynök és a függőségi ügynök használatával gyűjti össze a hálózati kapcsolatok adatait a Azure Monitorba. 
+> 
+>A vezetékes adatmegoldást használó meglévő ügyfelek továbbra is használhatják azt. Az áttelepítési ütemtervhez útmutatást teszünk közzé a Service Mapre való áttéréshez.
+>
+>Az új ügyfeleknek telepíteniük kell a [Service Map megoldást](service-map.md) vagy [Azure monitor for VMS](vminsights-overview.md).  Az adatService Map adatkészlete hasonló a vezetékes adatforgalomhoz.  Azure Monitor for VMs tartalmazza a Service Map adatkészletet, amely további teljesítményadatokat és szolgáltatásokkal rendelkezik az elemzéshez. 
+
 
 Alapértelmezés szerint a Azure Monitor naplózza a CPU-, memória-, lemez-és hálózati teljesítményadatokat a Windows és a Linux rendszerbe épített számlálók, valamint a megadható egyéb teljesítményszámlálók adatait. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén. A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket. Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges. Ha az egyik oldalon lezárja a kapcsolatot, a rendszer leválasztott állapotként jelöli meg.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
@@ -160,7 +163,7 @@ A következő részben a Linux rendszeren futó függőségi ügynök támogatot
 
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
@@ -411,6 +414,6 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | RemoteIPLongitude | IP-cím hosszúsági értéke |
 | RemoteIPLatitude | IP-cím szélességi értéke |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Keresés a naplókban](../../azure-monitor/log-query/log-query-overview.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.

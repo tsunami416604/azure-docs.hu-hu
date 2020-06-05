@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b03bf543226da12e5cfca5228b879a533942d384
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503035"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424363"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Beágyazott virtualizálás engedélyezése Azure Lab Services sablonban lévő virtuális gépen parancsfájl használatával
 
 A beágyazott virtualizálás lehetővé teszi, hogy több virtuális gépre kiterjedő környezetet hozzon létre a labor sablonjának virtuális gépén. A sablon közzétételével minden felhasználó számára elérhetővé válik a laborban egy virtuális gép, amelyben több virtuális gép van beállítva.  További információ a beágyazott virtualizálás és a Azure Lab Services használatáról: a [beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Servicesban](how-to-enable-nested-virtualization-template-vm.md).
 
-A cikk lépései a Windows Server 2016 vagy a Windows Server 2019 rendszerhez készült beágyazott virtualizálás beállítására összpontosítanak. A Hyper-V használatával parancsfájlt kell beállítani a sablonhoz.  A következő lépések végigvezetik a [labor Services Hyper-V parancsfájljainak](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)használatán.
+A cikk lépései a Windows Server 2016, a Windows Server 2019 vagy a Windows 10 rendszerhez készült beágyazott virtualizálás beállítására összpontosítanak. A Hyper-V használatával parancsfájlt kell beállítani a sablonhoz.  A következő lépések végigvezetik a [labor Services Hyper-V parancsfájljainak](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)használatán.
 
 >[!IMPORTANT]
 >A tesztkörnyezet létrehozásakor válassza a **nagyméretű (beágyazott virtualizálás)** vagy **közepes (beágyazott virtualizálás** ) lehetőséget a virtuális gép méretének kiválasztásához.  A beágyazott virtualizálás más módon nem működik.  
@@ -35,20 +35,20 @@ A cikk lépései a Windows Server 2016 vagy a Windows Server 2019 rendszerhez k�
     1. Nyissa meg az Internet Explorert.
     1. Válassza a fogaskerék ikont, majd az **Internetbeállítások**lehetőséget.  
     1. Amikor megjelenik az **Internetbeállítások** párbeszédpanel, válassza a **Biztonság**, majd a **megbízható helyek**lehetőséget, kattintson a **helyek** gombra.
-    1. Amikor megjelenik a **megbízható helyek** párbeszédpanel, adja `https://github.com` hozzá a megbízható webhelyek listához, majd kattintson a **Bezárás**gombra.
+    1. Amikor megjelenik a **megbízható helyek** párbeszédpanel, adja hozzá `https://github.com` a megbízható webhelyek listához, majd kattintson a **Bezárás**gombra.
 
         ![Megbízható helyek](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Töltse le a git-tárház fájljait az alábbi lépésekben leírtak szerint.
-    1. Ugrás a [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/)következőre:.
+    1. Ugrás a következőre: [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Kattintson a **klón vagy a letöltés** gombra.
     1. Kattintson a **zip letöltése**elemre.
     1. ZIP-fájl kibontása
 
     >[!TIP]
-    >A git-tárházat a következő helyen [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)is klónozással is elvégezheti:.
+    >A git-tárházat a következő helyen is klónozással is elvégezheti: [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git) .
 
 1. Indítsa el a **PowerShellt** **rendszergazdai** módban.
-1. A PowerShell ablakban navigáljon a letöltött parancsfájlt tartalmazó mappához. Ha az adattár fájljainak felső mappájából navigál, a parancsfájl a következő helyen található: `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
+1. A PowerShell ablakban navigáljon a letöltött parancsfájlt tartalmazó mappához. Ha az adattár fájljainak felső mappájából navigál, a parancsfájl a következő helyen található: `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` .
 1. Előfordulhat, hogy a parancsfájl sikeres futtatásához módosítania kell a végrehajtási házirendet. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -73,7 +73,7 @@ A cikk lépései a Windows Server 2016 vagy a Windows Server 2019 rendszerhez k�
 
 Most a sablon-számítógép készen áll a Hyper-V virtuális gépek létrehozására. A Hyper-V virtuális gépek létrehozásával kapcsolatos útmutatásért tekintse meg [a virtuális gép létrehozása a Hyper-v-ben](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) című témakört. Továbbá tekintse meg a [Microsoft próbaverzióját](https://www.microsoft.com/evalcenter/) a rendelkezésre álló operációs rendszerek és szoftverek ellenőrzéséhez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

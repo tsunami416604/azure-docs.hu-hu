@@ -82,7 +82,7 @@ A _Luis portálon_létrehozhat több szerzői erőforrást, és hozzárendelheti
 
 Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz _Azure Portal_. További információ: [közreműködői hozzáférés hozzáadása](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
-|Portál|Cél|
+|Portál|Szerep|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* Hozzon létre előrejelzési és létrehozási erőforrásokat.<br>* Közreműködők kiosztása.|
 |[LUIS](https://www.luis.ai)|* Migrálás az új szerzői erőforrásokra.<br>* A felügyeleti **> Azure-erőforrások** oldaláról kioszthatja vagy kioszthatja az alkalmazásokat az alkalmazások számára.|

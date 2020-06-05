@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018820"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424394"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -172,7 +172,57 @@ Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg` . K�
 
 A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="z-fighting"></a>Z – küzdelem
+
+Míg az ARR a [z-elleni küzdelemre szolgáló funkciók enyhítését](../overview/features/z-fighting-mitigation.md)kínálja, a z-harcok továbbra is megjelennek a jelenetben. Ez az útmutató a fennmaradó problémák elhárítását célozza meg.
+
+### <a name="recommended-steps"></a>Javasolt lépések
+
+A következő munkafolyamat használatával csökkentheti a z-elleni küzdelmet:
+
+1. Tesztelje a jelenetet az alapértelmezett beállításokkal az ARR (z-Fighting mérséklés)
+
+1. A z-harcok enyhítésének letiltása az [API](../overview/features/z-fighting-mitigation.md) -n keresztül 
+
+1. A kamera közelében és távolabbi sík közötti váltás egy szorosabb tartományba
+
+1. A jelenet hibáinak megoldása a következő szakasz használatával
+
+### <a name="investigating-remaining-z-fighting"></a>A fennmaradó z-harcok kivizsgálása
+
+Ha a fenti lépések kimerültek, és a fennmaradó z-harcok elfogadhatatlanok, a z-harcok mögöttes okot meg kell vizsgálni. Ahogy az a [z-Fighting enyhítő funkció oldalán](../overview/features/z-fighting-mitigation.md)is látható, két fő oka van a z-harcok esetében: mélységi pontosság a mélységi tartomány végén, valamint az egymást keresztező felületek. A mélységi pontosság elvesztése matematikai eshetőségre, és csak a fenti 3. lépéssel enyhíthető. Az egyhelyes felületek a forrás-eszköz hibáját jelzik, és a forrásadatok jobb rögzítését mutatják.
+
+Az ARR tartalmaz egy funkciót, amely meghatározza, hogy a felületek megadhatják-e a z-Fight: [Pepita kiemelés](../overview/features/z-fighting-mitigation.md). Azt is megteheti, hogy vizuálisan mi okozza a z-harcok megjelenését. A következő első animáció egy példát mutat be a távolság pontosságára, a második pedig egy példát mutat be a közel álló felületek közül:
+
+![mélység – pontosság – z – harcok](./media/depth-precision-z-fighting.gif)  ![egysík – z – harcok](./media/coplanar-z-fighting.gif)
+
+Hasonlítsa össze ezeket a példákat a z-küzdelemmel az ok megállapításához, vagy opcionálisan kövesse ezt a lépésenkénti munkafolyamatot:
+
+1. Helyezze a kamerát a z-harci felületek fölé úgy, hogy közvetlenül a felületre nézzen.
+1. Lassan helyezze át a kamerát visszafelé, a felületektől távolabb.
+1. Ha a z-harcok egész idő alatt láthatók, a felületek tökéletesen összetartoznak. 
+1. Ha a z-harcok az idő nagy részében láthatók, a felületek közel vannak egymáshoz.
+1. Ha a z-harcok csak messze láthatók, az ok a mélységi pontosság hiánya.
+
+Az egymáshoz tartozó felületek számos különböző oka lehet:
+
+* Egy objektumot duplikált egy hiba vagy eltérő munkafolyamat-megközelítés miatt az exportálási alkalmazás.
+
+    Ezeket a problémákat a megfelelő alkalmazás-és alkalmazás-támogatással vizsgálja meg.
+
+* A felületek duplikálva vannak, és úgy lettek tükrözve, hogy kétoldalas megjelenítéssel jelenjenek meg.
+
+    Az Importálás a modell [átalakításán](../how-tos/conversion/model-conversion.md) keresztül meghatározza a modell fő oldalát. A kettős oldalú érték alapértelmezettként lesz feltételezve. A felületet vékony falként jeleníti meg a rendszer, és mindkét oldalról fizikailag helyes megvilágítás is van. Az egyoldalas kifejezéseket a forrásként szolgáló jelzők, vagy kifejezetten a [modell konvertálása](../how-tos/conversion/model-conversion.md)során lehet kényszeríteni. Emellett, de opcionálisan az [egyoldalas mód](../overview/features/single-sided-rendering.md) is beállítható a "NORMAL" értékre.
+
+* Az objektumok a forrás eszközein metszik egymást.
+
+     Az átalakított objektumok a felületek egy részének átfedésben vannak. A jelenet faszerkezetének az ARR-ben importált jelenetében lévő részeinek átalakításával is létrehozhatja ezt a problémát.
+
+* A felületek célirányosan megtalálhatók, például matricák vagy szövegek a falakon.
+
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 04/23/2020
+ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176685"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434465"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel
 
@@ -32,7 +32,7 @@ Az Azure CLI az Azure parancssori felülete, amely Azure-erőforrások kezelés�
 
 Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.46 vagy újabb verzióját kell futtatnia. Futtassa az `az --version` parancsot a verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Ha helyileg futtatja az Azure CLI-t, be kell jelentkeznie és hitelesítenie kell magát. Ez a lépés nem szükséges, ha Azure Cloud Shellt használ. Az Azure CLI-be való bejelentkezéshez `az login` futtassa a (z) és a hitelesítést a böngészőablakban:
+Ha helyileg futtatja az Azure CLI-t, be kell jelentkeznie és hitelesítenie kell magát. Ez a lépés nem szükséges, ha Azure Cloud Shellt használ. Az Azure CLI-be való bejelentkezéshez futtassa a (z) `az login` és a hitelesítést a böngészőablakban:
 
 ```azurecli
 az login
@@ -44,7 +44,7 @@ Az Azure CLI-vel történő hitelesítéssel kapcsolatos további információk�
 
 Engedélyezheti a blob Storage-hoz való hozzáférést az Azure CLI-vel vagy az Azure AD hitelesítő adataival vagy a Storage-fiók elérési kulcsának használatával. Az Azure AD-beli hitelesítő adatok használata ajánlott. Ez a cikk bemutatja, hogyan engedélyezheti a blob Storage-műveleteket az Azure AD-vel.
 
-A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure `--auth-mode` CLI-parancsok támogatják a paramétert, amely lehetővé teszi egy adott művelet engedélyezésének megadását. Állítsa be `--auth-mode` a paramétert `login` az Azure ad hitelesítő adataival való engedélyezéshez. További információ: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+A blob Storage-hoz kapcsolódó adatműveletekhez használható Azure CLI-parancsok támogatják a `--auth-mode` paramétert, amely lehetővé teszi egy adott művelet engedélyezésének megadását. Állítsa be a `--auth-mode` paramétert az `login` Azure ad hitelesítő adataival való engedélyezéshez. További információ: a [blob-vagy üzenetsor-adatokhoz való hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Csak a blob Storage-adatműveletek támogatják a `--auth-mode` paramétert. A kezelési műveletek, például az erőforráscsoport vagy a Storage-fiók létrehozása, automatikusan az Azure AD hitelesítő adatait használják az engedélyezéshez.
 
@@ -77,9 +77,13 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A blobok minden esetben egy tárolóba lesznek feltöltve. A Blobok csoportjait ugyanúgy rendszerezheti a tárolókban, mint ahogyan a fájlokat a számítógépen mappákban rendezi.
+A blobok minden esetben egy tárolóba lesznek feltöltve. A Blobok csoportjait ugyanúgy rendszerezheti a tárolókban, mint ahogyan a fájlokat a számítógépen mappákban rendezi. Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. 
 
-Hozzon létre blobok tárolására alkalmas tárolót az [az storage container create](/cli/azure/storage/container) parancs segítségével. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
+A következő példa az Azure AD-fiókját használja, hogy engedélyezze a műveletet a tároló létrehozásához. A tároló létrehozása előtt rendelje hozzá a [Storage blob adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkört saját magának. Még ha Ön is a fiók tulajdonosa, explicit engedélyekre van szüksége az adatműveletek a Storage-fiókkal történő végrehajtásához. A RBAC szerepkörök hozzárendelésével kapcsolatos további információkért lásd: az [Azure CLI használata a RBAC-szerepkör hozzárendeléséhez a hozzáféréshez](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
+
+A Storage-fiók kulcsa segítségével engedélyezheti a művelet létrehozását a tároló létrehozásához. Az adatműveletek Azure CLI-vel való engedélyezésével kapcsolatos további információkért lásd: [hozzáférés engedélyezése blob-vagy üzenetsor-adatokhoz az Azure CLI-vel](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+
+Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire a szögletes zárójelekben:
 
 ```azurecli
 az storage container create \
@@ -161,7 +165,7 @@ az group delete \
     --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan vihetők át fájlok egy helyi fájlrendszer és egy tároló az Azure Blob Storage szolgáltatásban. Ha többet szeretne megtudni a blob Storage Azure CLI használatával történő használatáról, tekintse meg az Azure CLI-mintákat a blob Storage-hoz.
 

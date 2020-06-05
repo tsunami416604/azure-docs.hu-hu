@@ -3,12 +3,12 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308880"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424346"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -115,7 +115,7 @@ Példa: a naplózási effektus használata.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-A AuditIfNotExists lehetővé teszi a naplózást olyan erőforrásokon, amelyek megfelelnek az **IF** feltételnek, de nem rendelkeznek a **then** feltétel **részleteiben** megadott összetevőkkel.
+A AuditIfNotExists lehetővé teszi az erőforráshoz _kapcsolódó_ erőforrások naplózását, amelyek az **IF** feltételnek felelnek meg, de nem rendelkeznek a **then** feltétel **részleteiben** megadott tulajdonságokkal.
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists kiértékelése
 
@@ -574,7 +574,7 @@ Ha az 1. és a 2. házirend mindkét esetben megtagadta a Megtagadás hatását,
 
 Minden hozzárendelés külön kiértékelésre kerül. Ilyen esetben nincs lehetőség arra, hogy egy erőforrás a hatókörben lévő eltérések miatt nem csúszik meg. A rétegbeli házirend-definíciók nettó eredményét **összesítő legszigorúbbnak**tekinti a rendszer. Ha például az 1. és a 2. szabályzat is megtagadási hatást gyakorolt, az átfedésben lévő és ütköző házirend-definíciók letiltják az erőforrásokat. Ha továbbra is szüksége van az erőforrás létrehozására a cél hatókörében, tekintse át az egyes hozzárendelések kizárásait a megfelelő házirend-hozzárendelések érvényesítéséhez a megfelelő hatókörökre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.

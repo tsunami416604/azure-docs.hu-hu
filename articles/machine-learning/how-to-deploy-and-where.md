@@ -5,18 +5,18 @@ description: Ismerje meg, hogyan és hol helyezheti üzembe a Azure Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/28/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3b1dd474b3b5518029e7cf404cc88b97bfa23e36
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208567"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433491"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning mun
 
 + **A parancssori felület használata**
 
-   A parancssori felület használatakor a `-w` vagy `--workspace-name` a paraméterrel adhatja meg a parancs munkaterületét.
+   A parancssori felület használatakor a `-w` vagy a `--workspace-name` paraméterrel adhatja meg a parancs munkaterületét.
 
 + **A Visual Studio Code használata**
 
@@ -68,7 +68,7 @@ A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója.
 > [!TIP]
 > Modell regisztrálása esetén megadja a Felhőbeli hely (betanítási Futtatás) vagy egy helyi könyvtár elérési útját. Ez az elérési út csak a feltöltéshez szükséges fájlok megkeresése a regisztrációs folyamat részeként. Nem kell megegyeznie a bejegyzési parancsfájlban használt elérési úttal. További információ: [a modell fájljainak megkeresése a belépési parancsfájlban](#load-model-files-in-your-entry-script).
 
-A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkaterületen. A modell Azure Machine Learning vagy máshonnan is származhat. Modell regisztrálása esetén a modellre vonatkozó metaadatokat is megadhat. A `tags` modell `properties` -regisztrációra alkalmazott és a szótárak használatával szűrheti a modelleket.
+A gépi tanulási modellek regisztrálva vannak a Azure Machine Learning munkaterületen. A modell Azure Machine Learning vagy máshonnan is származhat. Modell regisztrálása esetén a modellre vonatkozó metaadatokat is megadhat. A `tags` modell-regisztrációra alkalmazott és a szótárak használatával szűrheti a modelleket `properties` .
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy modellt.
 
@@ -92,7 +92,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    A `model_path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában `model_path` , állítsa a fájlokat tartalmazó mappa elérési útjára. További információ: [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) dokumentáció.
+    A `model_path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára. További információ: [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) dokumentáció.
 
   + Modell regisztrálása egy `azureml.train.automl.run.AutoMLRun` objektumból:
 
@@ -104,7 +104,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
         print(run.model_id)
     ```
 
-    Ebben a példában a `metric` és `iteration` a paraméterek nincsenek megadva, ezért a rendszer a legjobb elsődleges metrikával rendelkező iterációt regisztrálja. A `model_id` rendszer a futtatásból visszaadott értéket használja a modell neve helyett.
+    Ebben a példában a `metric` és a `iteration` paraméterek nincsenek megadva, ezért a rendszer a legjobb elsődleges metrikával rendelkező iterációt regisztrálja. A rendszer a `model_id` futtatásból visszaadott értéket használja a modell neve helyett.
 
     További információ: [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) dokumentáció.
 
@@ -116,7 +116,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-  A `--asset-path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában `--asset-path` , állítsa a fájlokat tartalmazó mappa elérési útjára.
+  A `--asset-path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `--asset-path` a fájlokat tartalmazó mappa elérési útjára.
 
 + **A Visual Studio Code használata**
 
@@ -146,7 +146,7 @@ A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Meg
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  Ha több fájlt szeretne szerepeltetni a modell regisztrációjában `model_path` , állítsa a fájlokat tartalmazó mappa elérési útjára.
+  Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára.
 
 + **A parancssori felület használata**
 
@@ -154,7 +154,7 @@ A modell helyi elérési útjának megadásával regisztrálhat egy modellt. Meg
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  Ha több fájlt szeretne szerepeltetni a modell regisztrációjában `-p` , állítsa a fájlokat tartalmazó mappa elérési útjára.
+  Ha több fájlt szeretne szerepeltetni a modell regisztrációjában, állítsa `-p` a fájlokat tartalmazó mappa elérési útjára.
 
 **Becsült idő**: körülbelül 10 másodperc.
 
@@ -185,7 +185,7 @@ Ha rendelkezik a szükséges összetevőkkel, megtekintheti azt a szolgáltatás
 
 A következtetések konfigurálásával megtudhatja, hogyan állíthatja be a modellt tartalmazó webes szolgáltatást. Ezt később, a modell telepítésekor használják.
 
-A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Létrehozhat egy környezetet egyéni függőségi fájlokból, vagy használhatja a kurátori Azure Machine Learning környezetek egyikét. Az alábbi YAML egy Conda-függőségi fájlra mutat példát. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia a (z) >= 1.0.45 lépésszám-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Ha automatikus séma-generálást szeretne használni, a belépési parancsfájlnak importálnia `inference-schema` kell a csomagokat is.
+A következtetések konfigurálásával Azure Machine Learning környezetek határozzák meg az üzemelő példányhoz szükséges szoftver-függőségeket. A környezetek lehetővé teszik a képzéshez és a telepítéshez szükséges szoftver-függőségek létrehozását, kezelését és újrafelhasználását. Létrehozhat egy környezetet egyéni függőségi fájlokból, vagy használhatja a kurátori Azure Machine Learning környezetek egyikét. Az alábbi YAML egy Conda-függőségi fájlra mutat példát. Vegye figyelembe, hogy a azureml alapértelmezett értékeit kell megadnia a (z) >= 1.0.45 lépésszám-függőségként, mert tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Ha automatikus séma-generálást szeretne használni, a belépési parancsfájlnak importálnia kell a `inference-schema` csomagokat is.
 
 ```YAML
 name: project_environment
@@ -203,7 +203,7 @@ dependencies:
 >
 > További információ: a [Conda és a pip ismertetése](https://www.anaconda.com/understanding-conda-and-pip/).
 >
-> Ha szeretné megnézni, hogy a függőség elérhető-e a Conda `conda search <package-name>` -on keresztül, használja a parancsot, vagy [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) használja [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)a csomag indexeit a és a értéknél.
+> Ha szeretné megnézni, hogy a függőség elérhető-e a Conda-on keresztül, használja a `conda search <package-name>` parancsot, vagy használja a csomag indexeit a és a értéknél [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) .
 
 A függőségek fájl használatával létrehozhat egy környezeti objektumot, és mentheti a munkaterületre későbbi használatra:
 
@@ -239,7 +239,7 @@ A következő táblázat a telepített modellek számától függően AZUREML_MO
 | Üzembe helyezés | Környezeti változó értéke |
 | ----- | ----- |
 | Egyetlen modell | A modellt tartalmazó mappa elérési útja. |
-| Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók (`$MODEL_NAME/$VERSION`) |
+| Több modell | Az összes modellt tartalmazó mappa elérési útja. A modellek a mappa neve és verziója szerint találhatók ( `$MODEL_NAME/$VERSION` ) |
 
 A modell regisztrálása és üzembe helyezése során a rendszer a modelleket a AZUREML_MODEL_DIR útvonalon helyezi el, és az eredeti fájlnevek megmaradnak.
 
@@ -277,7 +277,7 @@ Ezek a típusok jelenleg támogatottak:
 * `pyspark`
 * Standard Python-objektum
 
-A séma generálásához a függőségi fájlban adja meg `inference-schema` a nyílt forráskódú csomagot. A csomaggal kapcsolatos további információkért lásd: [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Adja meg a bemeneti és kimeneti minták formátumait `input_sample` a `output_sample` és a változóban, amelyek a webszolgáltatáshoz tartozó kérések és válaszok formátumait jelölik. Ezeket a mintákat a `run()` függvény bemeneti és kimeneti függvényében használhatja. A következő scikit példa a séma generálását használja.
+A séma generálásához a függőségi fájlban adja meg a nyílt forráskódú `inference-schema` csomagot. A csomaggal kapcsolatos további információkért lásd: [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) . Adja meg a bemeneti és kimeneti minták formátumait a `input_sample` és a `output_sample` változóban, amelyek a webszolgáltatáshoz tartozó kérések és válaszok formátumait jelölik. Ezeket a mintákat a függvény bemeneti és kimeneti függvényében használhatja `run()` . A következő scikit példa a séma generálását használja.
 
 ##### <a name="example-entry-script"></a>Példa a bejegyzés parancsfájlra
 
@@ -496,7 +496,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 ```
 
 > [!TIP]
-> A profilkészítés által visszaadott adatok megőrzéséhez használja a modell címkéit vagy tulajdonságait. A címkék vagy tulajdonságok használatával a modell beállításjegyzékében tárolja az adatait. Az alábbi példák azt mutatják be, hogyan adhat hozzá `requestedCpu` olyan `requestedMemoryInGb` új címkét, amely tartalmazza a és a információkat:
+> A profilkészítés által visszaadott adatok megőrzéséhez használja a modell címkéit vagy tulajdonságait. A címkék vagy tulajdonságok használatával a modell beállításjegyzékében tárolja az adatait. Az alábbi példák azt mutatják be, hogyan adhat hozzá olyan új címkét, amely tartalmazza a `requestedCpu` és a `requestedMemoryInGb` információkat:
 >
 > ```python
 > model.add_tags({'requestedCpu': details['requestedCpu'],
@@ -531,7 +531,7 @@ Az alábbi táblázat az egyes számítási célkitűzések központi telepíté
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-A helyi, Azure Container Instances és AK webszolgáltatásokhoz tartozó osztályok a következő helyekről `azureml.core.webservice`importálhatók:
+A helyi, Azure Container Instances és AK webszolgáltatásokhoz tartozó osztályok a következő helyekről importálhatók `azureml.core.webservice` :
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -560,7 +560,7 @@ További információkért tekintse meg a [LocalWebservice](https://docs.microso
 
 #### <a name="using-the-cli"></a>A parancssori felület használata
 
-Ha a parancssori felület használatával szeretne üzembe helyezni egy modellt, használja a következő parancsot. Cserélje `mymodel:1` le a nevet a regisztrált modell nevére és verziójára:
+Ha a parancssori felület használatával szeretne üzembe helyezni egy modellt, használja a következő parancsot. Cserélje le a `mymodel:1` nevet a regisztrált modell nevére és verziójára:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -608,7 +608,7 @@ Ha engedélyezte a jogkivonat-alapú hitelesítést a szolgáltatáshoz, meg kel
 Az elsődleges különbség az, hogy a **kulcsok statikusak, és manuálisan is újra létrehozhatók**, és a **jogkivonatokat a lejárat után frissíteni**kell. A kulcs alapú hitelesítés az Azure Container instance és az Azure Kubernetes Service szolgáltatásban telepített webszolgáltatások esetében támogatott, és a jogkivonat-alapú hitelesítés **csak** az Azure Kubernetes Service-példányok esetében érhető el. További információért és a kód-példákért tekintse meg az [útmutató](how-to-setup-authentication.md#web-service-authentication) a hitelesítéshez című témakört.
 
 > [!TIP]
-> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a központilag telepített webszolgáltatás [swagger_uri tulajdonságát](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (például `service.swagger_uri`) a helyi webszolgáltatás hencegő fájljához tartozó URI-azonosító lekéréséhez.
+> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a központilag telepített webszolgáltatás [swagger_uri tulajdonságát](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (például) a `service.swagger_uri` helyi webszolgáltatás hencegő fájljához tartozó URI-azonosító lekéréséhez.
 
 ### <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 
@@ -642,7 +642,7 @@ További információ: [ügyfélalkalmazások létrehozása webszolgáltatások 
 
 ### <a name="web-service-schema-openapi-specification"></a>Webszolgáltatás sémája (OpenAPI-specifikáció)
 
-Ha a központi telepítéshez automatikus sémát használ, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például: `print(service.swagger_uri)`.) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
+Ha a központi telepítéshez automatikus sémát használ, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például: `print(service.swagger_uri)` .) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
 
 A következő JSON-dokumentum egy példa egy központi telepítéshez létrehozott sémára (OpenAPI-specifikáció):
 
@@ -961,7 +961,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Miután létrehozta a csomagot, a használatával `package.pull()` lekérheti a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: 
+Miután létrehozta a csomagot, a használatával lekérheti `package.pull()` a rendszerképet a helyi Docker-környezetbe. A parancs kimenete megjeleníti a rendszerkép nevét. Például: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -972,13 +972,13 @@ REPOSITORY                               TAG                 IMAGE ID           
 myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43 GB
 ```
 
-Ha egy helyi tárolót szeretne elindítani a rendszerkép alapján, a következő parancs használatával indítson el egy nevesített tárolót a rendszerhéjból vagy a parancssorból. Cserélje le `<imageid>` az értéket a `docker images` parancs által VISSZAadott rendszerkép-azonosítóra.
+Ha egy helyi tárolót szeretne elindítani a rendszerkép alapján, a következő parancs használatával indítson el egy nevesített tárolót a rendszerhéjból vagy a parancssorból. Cserélje le az `<imageid>` értéket a parancs által visszaadott rendszerkép-azonosítóra `docker images` .
 
 ```bash
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-Ez a parancs elindítja a nevű `myimage`rendszerkép legújabb verzióját. Leképezi a 6789-es helyi portot a webszolgáltatást figyelő tárolóban lévő portra (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a tároló leállítását. A tároló elindítása után elküldheti a kérelmeket a `http://localhost:6789/score`következőnek:.
+Ez a parancs elindítja a nevű rendszerkép legújabb verzióját `myimage` . Leképezi a 6789-es helyi portot a webszolgáltatást figyelő tárolóban lévő portra (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a tároló leállítását. A tároló elindítása után elküldheti a kérelmeket a következőnek: `http://localhost:6789/score` .
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>Docker és függőségek létrehozása
 
@@ -996,23 +996,23 @@ print("Username:", acr.username)
 print("Password:", acr.password)
 ```
 
-Ez a kód letölti a rendszerképnek a `imagefiles` könyvtárba való felépítéséhez szükséges fájlokat. A mentett fájlokban található Docker egy Azure Container registryben tárolt alaprendszerképre hivatkozik. Amikor létrehoz egy rendszerképet a helyi Docker-telepítéshez, a-beállításjegyzékben való hitelesítéshez a címnek, a felhasználónevet és a jelszót kell használnia. A következő lépésekkel hozhatja létre a rendszerképet egy helyi Docker-telepítés használatával:
+Ez a kód letölti a rendszerképnek a könyvtárba való felépítéséhez szükséges fájlokat `imagefiles` . A mentett fájlokban található Docker egy Azure Container registryben tárolt alaprendszerképre hivatkozik. Amikor létrehoz egy rendszerképet a helyi Docker-telepítéshez, a-beállításjegyzékben való hitelesítéshez a címnek, a felhasználónevet és a jelszót kell használnia. A következő lépésekkel hozhatja létre a rendszerképet egy helyi Docker-telepítés használatával:
 
-1. Egy rendszerhéjból vagy parancssori munkamenetből a következő paranccsal hitelesítheti a Docker-t az Azure Container Registry használatával. Cserélje `<address>`le `<username>`a, `<password>` a és a értéket a által `package.get_container_registry()`lekért értékekre.
+1. Egy rendszerhéjból vagy parancssori munkamenetből a következő paranccsal hitelesítheti a Docker-t az Azure Container Registry használatával. Cserélje `<address>` le `<username>` a, a és a `<password>` értéket a által lekért értékekre `package.get_container_registry()` .
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. A rendszerkép létrehozásához használja a következő parancsot. A `<imagefiles>` helyére írja be annak a könyvtárnak `package.save()` az elérési útját, amelyben a fájlokat mentette.
+2. A rendszerkép létrehozásához használja a következő parancsot. A helyére írja be annak a `<imagefiles>` könyvtárnak az elérési útját, amelyben `package.save()` a fájlokat mentette.
 
     ```bash
     docker build --tag myimage <imagefiles>
     ```
 
-    Ezzel a paranccsal állítható be a rendszerkép `myimage`neve.
+    Ezzel a paranccsal állítható be a rendszerkép neve `myimage` .
 
-A rendszerkép felépítésének ellenőrzéséhez használja az `docker images` parancsot. A `myimage` képet a következő listában kell látni:
+A rendszerkép felépítésének ellenőrzéséhez használja az `docker images` parancsot. A képet a következő `myimage` listában kell látni:
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
@@ -1026,7 +1026,7 @@ Ha új tárolót szeretne elindítani a rendszerkép alapján, használja a köv
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-Ez a parancs elindítja a nevű `myimage`rendszerkép legújabb verzióját. Leképezi a 6789-es helyi portot a webszolgáltatást figyelő tárolóban lévő portra (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a tároló leállítását. A tároló elindítása után elküldheti a kérelmeket a `http://localhost:6789/score`következőnek:.
+Ez a parancs elindítja a nevű rendszerkép legújabb verzióját `myimage` . Leképezi a 6789-es helyi portot a webszolgáltatást figyelő tárolóban lévő portra (5001). Emellett a nevet `mycontainer` a tárolóhoz rendeli, amely megkönnyíti a tároló leállítását. A tároló elindítása után elküldheti a kérelmeket a következőnek: `http://localhost:6789/score` .
 
 ### <a name="example-client-to-test-the-local-container"></a>Példa az ügyfélre a helyi tároló teszteléséhez
 
@@ -1069,8 +1069,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Központilag telepített webszolgáltatás törléséhez használja `service.delete()`a következőt:.
-Regisztrált modell törléséhez használja `model.delete()`a következőt:.
+Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
+Regisztrált modell törléséhez használja a következőt: `model.delete()` .
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1081,9 +1081,9 @@ További információ: a [webszolgáltatások dokumentációja. Delete ()](https
 
 ### <a name="binary-data"></a>Bináris adatok
 
-Ha a modellben bináris adatok (például rendszerkép) is szerepelnek, akkor `score.py` módosítania kell a központi telepítéshez használt fájlt, hogy fogadja a nyers http-kérelmeket. A nyers adat elfogadásához használja `AMLRequest` az osztályt a bejegyzési parancsfájlban `@rawhttp` , és adja hozzá `run()` a bedekorációt a függvényhez.
+Ha a modellben bináris adatok (például rendszerkép) is szerepelnek, akkor módosítania kell a `score.py` központi telepítéshez használt fájlt, hogy fogadja a nyers http-kérelmeket. A nyers adat elfogadásához használja az `AMLRequest` osztályt a bejegyzési parancsfájlban, és adja hozzá a `@rawhttp` bedekorációt a `run()` függvényhez.
 
-Az alábbi példa egy olyan példát `score.py` mutat be, amely a bináris adatmennyiséget fogadja el:
+Az alábbi példa egy olyan példát mutat be, `score.py` amely a bináris adatmennyiséget fogadja el:
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1138,9 +1138,9 @@ res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'app
 
 Az eltérő eredetű erőforrás-megosztás lehetővé teszi, hogy egy weblapon lévő erőforrásokat egy másik tartománytól lehessen kérni. A CORS az ügyfél kérelmével elküldött HTTP-fejléceken keresztül működik, és a szolgáltatás válaszával tért vissza. További információ a CORS és az érvényes fejlécekről: a wikipedia [több eredetű erőforrás-megosztása](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-A modell telepítésének a CORS támogatására való konfigurálásához használja `AMLResponse` a osztályt a bejegyzési parancsfájlban. Ez az osztály lehetővé teszi a fejlécek beállítását a válasz objektumon.
+A modell telepítésének a CORS támogatására való konfigurálásához használja a `AMLResponse` osztályt a bejegyzési parancsfájlban. Ez az osztály lehetővé teszi a fejlécek beállítását a válasz objektumon.
 
-A következő példa a bejegyzési parancsfájlból származó válasz `Access-Control-Allow-Origin` fejlécét állítja be:
+A következő példa a `Access-Control-Allow-Origin` bejegyzési parancsfájlból származó válasz fejlécét állítja be:
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1185,7 +1185,7 @@ def run(request):
 > Azure Machine Learning csak a POST és a GET kérelmeket irányítja a pontozási szolgáltatást futtató tárolók számára. Ez hibákhoz vezethet, mert a böngészők a CORS-kérelmekre vonatkozó beállításokat használnak.
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

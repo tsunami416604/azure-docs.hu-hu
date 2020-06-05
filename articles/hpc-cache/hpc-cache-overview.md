@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 3cbde9564e17dc67d2b41f138efb4d8622d84abd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343582"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433696"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -21,7 +21,7 @@ Az Azure HPC cache könnyen indítható és figyelhető a Azure Portal. A meglé
 
 ## <a name="overview-video"></a>Áttekintő videó
 
-[![videó miniatűrje: az Azure HPC cache áttekintése – ide kattintva megtekintheti a videó oldalt](media/video1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+[![videó miniatűrje: az Azure HPC cache áttekintése – ide kattintva megtekintheti a videó oldalt](media/video-1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
 
 Kattintson a fenti képre az [Azure HPC cache rövid áttekintésének](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)megtekintéséhez.
 

@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 05/19/2020
-ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118896"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433713"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Oktatóanyag: az automatikus gépi tanulás iránti igény előrejelzése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -89,7 +89,7 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
 
         1. Ebben a példában a **Tulajdonságok** és a **típus**alapértelmezett értékei is megmaradnak. 
         
-        1. Kattintson a **Tovább** gombra.
+        1. Válassza a **Tovább** lehetőséget.
 
     1. A **részletek megerősítése** űrlapon ellenőrizze, hogy az információ megegyezik-e az **alapinformációk** és **beállítások és az előnézeti** űrlapok által korábban feltöltött adatokkal.
 
@@ -122,9 +122,9 @@ Miután betöltötte és konfigurálta az adatait, állítsa be a távoli szám�
 
         1. A létrehozás után válassza ki az új számítási célt a legördülő listából.
 
-    1. Kattintson a **Tovább** gombra.
+    1. Válassza a **Tovább** lehetőséget.
 
-## <a name="select-task-type-and-settings"></a>Feladat típusának és beállításainak kiválasztása
+## <a name="select-forecast-settings"></a>Előrejelzési beállítások kiválasztása
 
 A Machine learning-feladattípus és a konfigurációs beállítások megadásával fejezze be az automatikus ML-kísérlet beállítását.
 
@@ -138,8 +138,8 @@ A Machine learning-feladattípus és a konfigurációs beállítások megadásá
         További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|Normalizált legfelső szintű, négyzetes hiba
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
-        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Bekapcsolás
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+        A legjobb modell magyarázata (előzetes verzió)| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Extrém véletlenszerű fák
         További előrejelzési beállítások| Ezek a beállítások segítenek a modell pontosságának javításában <br><br> _**Előrejelzési horizont**_: a jövőben várhatóan mennyi idő elteltével érdemes <br> _**Előrejelzési cél késései:**_ milyen messzire kívánja állítani a cél változó késéseit <br> _**Cél gördülő ablak**_: megadja a gördülő ablak méretét, amely felett a funkciók, például a *Max, a min* és a *Sum*érték lesz létrehozva. |Előrejelzési horizont: 14 <br> Előrejelzési &nbsp; cél &nbsp; késései: nincs <br> Cél &nbsp; gördülési &nbsp; ablakának &nbsp; mérete: nincs
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; időpontja (óra): 3 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
@@ -200,7 +200,7 @@ Miután az üzembe helyezés sikeres volt, rendelkezik egy operatív webszolgál
 
 Folytassa a [**következő lépésekkel**](#next-steps) , ha többet szeretne megtudni az új webszolgáltatás használatáról, és tesztelje a jóslatokat a Power BI beépített Azure Machine learning-támogatásával.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az üzembe helyezési fájlok nagyobb méretűek, mint az adatmennyiség és a kísérlet során használt fájlok. Csak a központi telepítési fájlokat törölje, hogy csökkentse a költségeket a fiókjához, vagy ha meg szeretné őrizni a munkaterületet és a kísérletet. Ellenkező esetben törölje a teljes erőforráscsoportot, ha nem tervezi az egyik fájl használatát.  
 
@@ -218,7 +218,7 @@ Törölje a központi telepítési példányt a Azure Machine Learning studiób�
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az automatikus ML-t használta a Azure Machine Learning Studióban egy idősorozat-előrejelzési modell létrehozásához és üzembe helyezéséhez, amely előre jelezi a bike Share bérleti igényét. 
 

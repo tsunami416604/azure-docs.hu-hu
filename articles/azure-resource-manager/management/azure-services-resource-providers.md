@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: a87d55ceee759d81d0aab823f003b4bb36a66610
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310325"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424432"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -174,8 +174,8 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft. WorkloadMonitor<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |
 
-<sup>1</sup> alapértelmezés szerint engedélyezve
+<sup>1</sup> alapértelmezés szerint regisztrálva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az erőforrás-szolgáltatókkal kapcsolatban: [Azure Resource Providers és types](resource-providers-and-types.md)
+Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, lásd: [Azure erőforrás-szolgáltatók és-típusok](resource-providers-and-types.md)

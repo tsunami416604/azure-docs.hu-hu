@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666539"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417021"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central az eszközök fejlesztésének áttekintése
 
@@ -85,7 +85,9 @@ Az eszköz működésének megvalósításához használja az [Azure IoT Device 
 - Az eszköz és a IoT Central közötti tulajdonságértékek szinkronizálása. Az eszköz sablonja megadja a tulajdonságokat és az adattípusokat, így a IoT Central megjelenítheti az információkat.
 - A parancsokhoz tartozó parancssori kezelők implementálása az eszköz sablonjában adható meg. Az eszköz sablonja megadja az eszköz által használandó parancsokat és paramétereket.
 
-További információ: [Node. js-ügyfélalkalmazás létrehozása és összekötése](./tutorial-connect-device-nodejs.md) , illetve [Python-ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device-python.md).
+További információ az eszközök sablonjainak szerepköréről: Mik az [eszközök sablonjai?](./concepts-device-templates.md).
+
+Néhány mintakód esetében lásd: [Node. js-ügyfélalkalmazás létrehozása és összekötése](./tutorial-connect-device-nodejs.md) , illetve [Python-ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device-python.md).
 
 ### <a name="languages-and-sdks"></a>Nyelvek és SDK-k
 

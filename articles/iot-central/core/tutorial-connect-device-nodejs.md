@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758200"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417905"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (node. js)
 
@@ -23,7 +23,7 @@ ms.locfileid: "81758200"
 
 Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy Node. js-ügyfélalkalmazás Azure IoT Central-alkalmazásához az eszköz fejlesztőinek. A Node. js-alkalmazás szimulálja egy környezeti érzékelő eszköz viselkedését. A minta- _eszköz képesség modell_ használatával IoT Centralban hozhat létre egy _eszközt_ . A nézetek hozzáadásával lehetővé teheti, hogy az operátor kommunikáljon az eszközzel.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Eszköz-képesség modell importálása eszköz sablonjának létrehozásához.
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* A [Node. js](https://nodejs.org/) 10.0.0 vagy újabb verzióját futtató fejlesztői gép. A parancssorban `node --version` futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. A Node. js-t azonban számos más operációs rendszeren is használhatja.
+* A [Node. js](https://nodejs.org/) 10.0.0 vagy újabb verzióját futtató fejlesztői gép. A `node --version` parancssorban futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. A Node. js-t azonban számos más operációs rendszeren is használhatja.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
@@ -49,16 +49,16 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
 
 1. A parancssori környezetben navigáljon a `environmental-sensor` korábban létrehozott mappára.
 
-1. A Node. js-projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a futtatásakor `npm init`fogadja el az összes alapértelmezett beállítást:
+1. A Node. js-projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a futtatásakor fogadja el az összes alapértelmezett beállítást `npm init` :
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Hozzon létre egy **environmentalSensor. js** nevű fájlt `environmental-sensor` a mappában.
+1. Hozzon létre egy **environmentalSensor. js** nevű fájlt a `environmental-sensor` mappában.
 
-1. Adja hozzá a `require` következő utasításokat a **environmentalSensor. js** fájl elejéhez:
+1. Adja hozzá a következő `require` utasításokat a **environmentalSensor. js** fájl elejéhez:
 
     ```javascript
     "use strict";
@@ -87,7 +87,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     var ledOn = true;
     ```
 
-    Frissítse a helyőrzőket `{your Scope ID}` `{your Device ID}`, és `{your Primary Key}` a korábban megjegyzett értékekkel. Ebben a példában nulla értékre állítja `targetTemperature` az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
+    Frissítse a helyőrzőket `{your Scope ID}` , `{your Device ID}` és a `{your Primary Key}` korábban megjegyzett értékekkel. Ebben a példában `targetTemperature` nulla értékre állítja az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
 
 1. Szimulált telemetria az Azure IoT Central-alkalmazásba való küldéséhez adja hozzá a következő függvényt a fájlhoz:
 
@@ -107,7 +107,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     }
     ```
 
-    A telemetria elemek nevének (`temp` és `humid`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A telemetria elemek nevének ( `temp` és `humid` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
 1. Ha az eszköz két tulajdonságát szeretné elküldeni az Azure IoT Central-alkalmazásba, adja hozzá a következő függvényt a fájlhoz:
 
@@ -164,7 +164,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
 
     Ha a kezelő egy írható tulajdonságot állít be a IoT Central alkalmazásban, az alkalmazás egy, a kívánt eszközhöz tartozó, a kívánt tulajdonságot használva küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Ha a IoT Central megkapja a jelentett tulajdonság értékét, akkor a rendszer **szinkronizált**állapottal frissíti a tulajdonság nézetét.
 
-    A tulajdonságok nevének (`name` és `brightness`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A tulajdonságok nevének ( `name` és `brightness` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
 1. Adja hozzá a következő kódot a IoT Central alkalmazásból eljuttatott parancsok kezeléséhez:
 
@@ -246,7 +246,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyféla
     }
     ```
 
-    A parancsok nevének`blink`(, `turnon` `turnoff`,, és `rundiagnostics`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
+    A parancsok nevének (,, `blink` , `turnon` `turnoff` és `rundiagnostics` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
     A IoT Central jelenleg nem használja az eszköz-képesség modellben definiált válasz sémát. A szinkron parancsok esetében a válasz hasznos JSON lehet. Egy aszinkron parancs esetében az eszköznek azonnal egy 202-es választ kell visszaadnia, amelyet a rendszer a munka befejeződése után jelentett a tulajdonságok frissítése után. A jelentett tulajdonság frissítésének formátuma:
 
@@ -326,12 +326,13 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 ![Az ügyfélalkalmazás megfigyelése](media/tutorial-connect-device-nodejs/run-application-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node. js használatával, néhány javasolt lépés a következő lépésekből áll:
 
-- Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
-- Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
+* Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
+* Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
+* Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
 
 Ha továbbra is szeretne IoT Central oktatóanyagokat használni, és többet szeretne megtudni egy IoT Central megoldás létrehozásáról, tekintse meg a következő témakört:
 

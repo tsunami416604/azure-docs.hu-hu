@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan használhatja a Azure Machine Learningt a szolg
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf80a509b1a8100aaa00bf6a2fdeedbbdf143af
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472375"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433912"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Meglévő modell használata Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,9 +36,9 @@ Ha Azure Machine Learningon kívül betanított gépi tanulási modellel rendelk
 * Egy Azure Machine Learning-munkaterület. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
 
     > [!TIP]
-    > A cikkben szereplő Python-példák azt feltételezik `ws` , hogy a változó a Azure Machine learning munkaterületre van beállítva.
+    > A cikkben szereplő Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva.
     >
-    > A CLI `myworkspace` -példák a és `myresourcegroup`a helyőrzőjét használják. Cserélje le ezeket a munkaterület nevére és az azt tartalmazó erőforráscsoporthoz.
+    > A CLI-példák a és a helyőrzőjét használják `myworkspace` `myresourcegroup` . Cserélje le ezeket a munkaterület nevére és az azt tartalmazó erőforráscsoporthoz.
 
 * A [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -47,11 +47,11 @@ Ha Azure Machine Learningon kívül betanított gépi tanulási modellel rendelk
 * Egy betanított modell. A modellt a fejlesztői környezet egy vagy több fájljába kell megőrizni.
 
     > [!NOTE]
-    > Egy Azure Machine Learningon kívül betanított modell regisztrálásának bemutatásához a jelen cikkben szereplő kódrészletek a Paolo Ripamonti Twitter hangulat-elemzési projekt által létrehozott modelleket használják [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis):.
+    > Egy Azure Machine Learningon kívül betanított modell regisztrálásának bemutatásához a jelen cikkben szereplő kódrészletek a Paolo Ripamonti Twitter hangulat-elemzési projekt által létrehozott modelleket használják: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
 
 ## <a name="register-the-models"></a>A modell (ek) regisztrálása
 
-A modell regisztrálása lehetővé teszi a munkaterületen lévő modellekhez tartozó metaadatok tárolását, verzióját és nyomon követését. A következő Python-és CLI-példákban `models` a könyvtár tartalmazza `model.h5`a `model.w2v`, `encoder.pkl`a és `tokenizer.pkl` a fájlokat. Ez a példa a `models` címtárban található fájlokat a következő nevű `sentiment`új modell-regisztrációval tölti fel:
+A modell regisztrálása lehetővé teszi a munkaterületen lévő modellekhez tartozó metaadatok tárolását, verzióját és nyomon követését. A következő Python-és CLI-példákban a `models` könyvtár tartalmazza a `model.h5` , a és a `model.w2v` `encoder.pkl` `tokenizer.pkl` fájlokat. Ez a példa a címtárban található fájlokat a következő `models` nevű új modell-regisztrációval tölti fel `sentiment` :
 
 ```python
 from azureml.core.model import Model
@@ -70,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> A regisztrált modellhez a `tags` Hozzáadás `properties` és a szótár objektumok is megadhatók. Ezek az értékek később is használhatók egy adott modell azonosításához. Például a használt keretrendszer, a betanítási paraméterek stb.
+> `tags` `properties` A regisztrált modellhez a Hozzáadás és a szótár objektumok is megadhatók. Ezek az értékek később is használhatók egy adott modell azonosításához. Például a használt keretrendszer, a betanítási paraméterek stb.
 
 További információ: az [ml Model Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) Reference.
 
@@ -81,7 +81,7 @@ A modell-regisztrációval kapcsolatos további információkért lásd: [gépi 
 
 A következtetési konfiguráció határozza meg az üzembe helyezett modell futtatásához használt környezetet. A következtetési konfiguráció a következő entitásokra hivatkozik, amelyek a modellnek a telepítésekor történő futtatására szolgálnak:
 
-* Egy bejegyzési parancsfájl. Ez a fájl ( `score.py`nevű) betölti a modellt a telepített szolgáltatás indításakor. Emellett az adatfogadásért, a modellbe való átadásért, majd a válasz visszaküldéséhez is felelős.
+* Egy bejegyzési parancsfájl. Ez a fájl (nevű `score.py` ) betölti a modellt a telepített szolgáltatás indításakor. Emellett az adatfogadásért, a modellbe való átadásért, majd a válasz visszaküldéséhez is felelős.
 * Azure Machine Learning [környezet](how-to-use-environments.md). A környezet a modell és a bejegyzési parancsfájl futtatásához szükséges szoftver-függőségeket határozza meg.
 
 Az alábbi példa azt szemlélteti, hogyan használható az SDK egy környezet létrehozásához, majd egy következtetési konfiguráció használatával:
@@ -111,7 +111,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 + [Környezetek használata](how-to-use-environments.md).
 + [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -hivatkozás.
@@ -127,7 +127,7 @@ A CLI betölti a következtetési konfigurációt egy YAML-fájlból:
 }
 ```
 
-A CLI-vel a Conda-környezet a következtetési `myenv.yml` konfiguráció által hivatkozott fájlban van definiálva. A következő YAML a fájl tartalma:
+A CLI-vel a Conda-környezet a `myenv.yml` következtetési konfiguráció által hivatkozott fájlban van definiálva. A következő YAML a fájl tartalma:
 
 ```yaml
 name: inference_environment
@@ -146,12 +146,12 @@ További információ a konfigurációval kapcsolatban: [modellek üzembe helyez
 
 ### <a name="entry-script"></a>Bejegyzési parancsfájl
 
-A bejegyzési parancsfájlnak csak két kötelező funkciója `init()` van `run(data)`, és. Ezekkel a függvényekkel inicializálhatja a szolgáltatást indításkor, és futtathatja a modellt az ügyfél által átadott kérelem-adatok használatával. A parancsfájl többi része kezeli a modell (ek) betöltését és futtatását.
+A bejegyzési parancsfájlnak csak két kötelező funkciója van, `init()` és `run(data)` . Ezekkel a függvényekkel inicializálhatja a szolgáltatást indításkor, és futtathatja a modellt az ügyfél által átadott kérelem-adatok használatával. A parancsfájl többi része kezeli a modell (ek) betöltését és futtatását.
 
 > [!IMPORTANT]
 > Nincs olyan általános bejegyzési parancsfájl, amely minden modell esetében működik. Mindig a használt modellre jellemző. Meg kell ismernie, hogyan tölthető be a modell, a modell által várt adatformátum, valamint az adatok a modell használatával történő pontozása.
 
-A következő Python-kód egy példaként szolgáló bejegyzési parancsfájl (`score.py`):
+A következő Python-kód egy példaként szolgáló bejegyzési parancsfájl ( `score.py` ):
 
 ```python
 import os
@@ -258,7 +258,7 @@ Egy másik számítási célra való üzembe helyezés, például az Azure Kuber
 
 ## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-A következő példa a nevű `sentiment`regisztrált modell adatait tölti be, majd telepíti a nevű `sentiment`szolgáltatásként. Az üzembe helyezés során a rendszer a következő viszonyítási konfigurációt és telepítési konfigurációt használja a szolgáltatási környezet létrehozásához és konfigurálásához:
+A következő példa a nevű regisztrált modell adatait tölti be `sentiment` , majd telepíti a nevű szolgáltatásként `sentiment` . Az üzembe helyezés során a rendszer a következő viszonyítási konfigurációt és telepítési konfigurációt használja a szolgáltatási környezet létrehozásához és konfigurálásához:
 
 ```python
 from azureml.core.model import Model
@@ -273,7 +273,7 @@ print("scoring URI: " + service.scoring_uri)
 
 További információ: [modell. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) hivatkozás.
 
-A modell parancssori felületről történő üzembe helyezéséhez használja a következő parancsot. Ezzel a paranccsal a (z)`sentiment:1` `inferenceConfig.json` és a (z) és `deploymentConfig.json` a (z) fájlban tárolt következtetési és telepítési konfiguráció alapján telepítheti a regisztrált modell () 1. verzióját:
+A modell parancssori felületről történő üzembe helyezéséhez használja a következő parancsot. Ezzel a paranccsal a (z) és a (z `sentiment:1` ) és a (z) fájlban tárolt következtetési és telepítési konfiguráció alapján telepítheti a regisztrált modell () 1 `inferenceConfig.json` . verzióját `deploymentConfig.json` :
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
@@ -304,7 +304,7 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

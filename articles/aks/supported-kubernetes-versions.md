@@ -134,7 +134,7 @@ Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen 
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>Gyakori kérdések
+## <a name="faq"></a>GYIK
 
 **Mi történik, ha egy ügyfél olyan Kubernetes-fürtöt frissít, amely nem támogatott másodlagos verzióval?**
 

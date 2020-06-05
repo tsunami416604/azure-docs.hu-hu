@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: b6dceff8b777d09a6f791437eb4aaca70365b518
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e68cbe664facbd63153171b7d9be2cbf4850b56f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300717"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434410"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Oktatóanyag: távoli renderelés integrálása HoloLens holografikus alkalmazásba
 
@@ -163,12 +163,11 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     {
         // Users need to fill out the following with their account data and model
         RR::AzureFrontendAccountInfo init;
-        memset(&init, 0, sizeof(RR::AzureFrontendAccountInfo));
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
         init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
         m_modelURI = "builtin://Engine";
-        m_sessionOverride = ""; // if there is a valid session ID to re-use, put it here. Otherwise a new one is created
+        m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
         m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
     }
@@ -176,23 +175,6 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     // 3. Open/create rendering session
     {
         bool createNewSession = true;
-
-        auto SetNewSession = [this](RR::ApiHandle<RR::AzureSession> newSession)
-        {
-            SetNewState(AppConnectionStatus::Connecting, RR::Result::Success);
-            m_session = newSession;
-            m_api = m_session->Actions();
-            m_graphicsBinding = m_session->GetGraphicsBinding().as<RR::GraphicsBindingWmrD3d11>();
-            m_session->ConnectionStatusChanged([this](auto status, auto error)
-                {
-                    OnConnectionStatusChanged(status, error);
-                });
-
-            // The following is async, but we'll get notifications via OnConnectionStatusChanged
-            RR::ConnectToRuntimeParams init;
-            init.mode = RR::ServiceRenderMode::Default;
-            m_session->ConnectToRuntime(init);
-        };
 
         // If we had an old (valid) session that we can recycle, we call synchronous function m_frontEnd->OpenRenderingSession
         if (!m_sessionOverride.empty())
@@ -207,7 +189,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
         if (createNewSession)
         {
-            // Create a new session
+            // create a new session
             RR::RenderingSessionCreationParams init;
             memset(&init, 0, sizeof(RR::RenderingSessionCreationParams));
             init.MaxLease.minute = 10; // session is leased for 10 minutes
@@ -221,10 +203,10 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
                     }
                     else
                     {
-                        SetNewState(AppConnectionStatus::ConnectionFailed, RR::Result::Fail);
+                        SetNewState(AppConnectionStatus::ConnectionFailed, "failed");
                     }
                 });
-            SetNewState(AppConnectionStatus::CreatingSession, RR::Result::Success);
+            SetNewState(AppConnectionStatus::CreatingSession, nullptr);
         }
     }
 
@@ -232,7 +214,10 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     ...
 }
 ```
-A helyi függvényben `SetNewSession` regisztrálunk egy visszahívást, amely akkor aktiválódik, amikor a kapcsolat állapota a megadott munkamenet változásakor megtörténik. Átirányítjuk a hívást a saját függvényre `OnConnectionStatusChanged` . A következő bekezdésben deklaráljuk és Implementáljuk azt (és az állapot gépi kódját is). Azt is vegye figyelembe, hogy a hitelesítő adatok a mintában nehezen kódoltak, és ki kell tölteni a helyet ([fiókazonosító, fiók kulcsa](../../../how-tos/create-an-account.md#retrieve-the-account-information)és [tartomány](../../../reference/regions.md)).
+
+A kód meghívja a member functions `SetNewSession` -t `SetNewState` , amelyet a következő bekezdésben fog megvalósítani, valamint a többi állapotjelző gépi kóddal együtt.
+
+Vegye figyelembe, hogy a hitelesítő adatok a mintában rögzítettek, és ki kell tölteni a helyet ([fiókazonosító, fiók kulcsa](../../../how-tos/create-an-account.md#retrieve-the-account-information)és [tartomány](../../../reference/regions.md)).
 
 A destruktor törzsének végén a deinicializálás szimmetrikusan és fordított sorrendben történik:
 
@@ -261,7 +246,7 @@ HolographicAppMain::~HolographicAppMain()
 
 A távoli renderelés során a fő függvények a munkamenetek létrehozásához és a modellek betöltéséhez aszinkron függvények. Ehhez egy egyszerű állapotú gépre van szükségünk, amely lényegében a következő állapotokon keresztül automatikusan átvált:
 
-*Inicializálás – > munkamenet létrehozása – > modell betöltése (folyamatban)*
+*Inicializálás – > munkamenet létrehozása – > munkamenet indítása – > modell betöltése (folyamatban)*
 
 Ennek megfelelően a következő lépésként egy kis állapotú gépi kezelést adunk hozzá az osztályhoz. Deklaráljuk a saját enumerálását `AppConnectionStatus` azon különböző állapotokhoz, amelyeken az alkalmazásunk lehet. Hasonló a szolgáltatáshoz `RR::ConnectionStatus` , de a sikertelen kapcsolódás további állapottal rendelkezik.
 
@@ -276,6 +261,7 @@ namespace HolographicApp
         Disconnected,
 
         CreatingSession,
+        StartingSession,
         Connecting,
         Connected,
 
@@ -288,7 +274,8 @@ namespace HolographicApp
         ...
         // Member functions for state transition handling
         void OnConnectionStatusChanged(RR::ConnectionStatus status, RR::Result error);
-        void SetNewState(AppConnectionStatus state, RR::Result error);
+        void SetNewState(AppConnectionStatus state, const char* statusMsg);
+        void SetNewSession(RR::ApiHandle<RR::AzureSession> newSession);
         void StartModelLoading();
 
         // Members for state handling:
@@ -299,9 +286,12 @@ namespace HolographicApp
 
         // Connection state machine:
         AppConnectionStatus m_currentStatus = AppConnectionStatus::Disconnected;
+        std::string m_statusMsg;
         RR::Result m_connectionResult = RR::Result::Success;
         RR::Result m_modelLoadResult = RR::Result::Success;
         bool m_isConnected = false;
+        bool m_sessionStarted = false;
+        RR::ApiHandle<RR::SessionPropertiesAsync> m_sessionPropertiesAsync;
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
@@ -348,10 +338,10 @@ void HolographicAppMain::StartModelLoading()
 
 
 
-void HolographicAppMain::SetNewState(AppConnectionStatus state, RR::Result error)
+void HolographicAppMain::SetNewState(AppConnectionStatus state, const char* statusMsg)
 {
     m_currentStatus = state;
-    m_connectionResult = error;
+    m_statusMsg = statusMsg ? statusMsg : "";
 
     // Some log for the VS output panel:
     const char* appStatus = nullptr;
@@ -360,51 +350,61 @@ void HolographicAppMain::SetNewState(AppConnectionStatus state, RR::Result error
     {
         case AppConnectionStatus::Disconnected: appStatus = "Disconnected"; break;
         case AppConnectionStatus::CreatingSession: appStatus = "CreatingSession"; break;
+        case AppConnectionStatus::StartingSession: appStatus = "StartingSession"; break;
         case AppConnectionStatus::Connecting: appStatus = "Connecting"; break;
         case AppConnectionStatus::Connected: appStatus = "Connected"; break;
         case AppConnectionStatus::ConnectionFailed: appStatus = "ConnectionFailed"; break;
     }
 
     char buffer[1024];
-    sprintf_s(buffer, "Remote Rendering: New status: %s, result: %s\n", appStatus, RR::ResultToString(error));
+    sprintf_s(buffer, "Remote Rendering: New status: %s, result: %s\n", appStatus, m_statusMsg.c_str());
     OutputDebugStringA(buffer);
 }
 
+void HolographicAppMain::SetNewSession(RR::ApiHandle<RR::AzureSession> newSession)
+{
+    SetNewState(AppConnectionStatus::StartingSession, nullptr);
+
+    m_session = newSession;
+    m_api = m_session->Actions();
+    m_graphicsBinding = m_session->GetGraphicsBinding().as<RR::GraphicsBindingWmrD3d11>();
+    m_session->ConnectionStatusChanged([this](auto status, auto error)
+        {
+            OnConnectionStatusChanged(status, error);
+        });
+
+};
 
 void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, RR::Result error)
 {
+    const char* asString = RR::ResultToString(error);
+    m_connectionResult = error;
+
     switch (status)
     {
     case RR::ConnectionStatus::Connecting:
-        SetNewState(AppConnectionStatus::Connecting, error);
+        SetNewState(AppConnectionStatus::Connecting, asString);
         break;
     case RR::ConnectionStatus::Connected:
         if (error == RR::Result::Success)
         {
-            SetNewState(AppConnectionStatus::Connected, error);
+            SetNewState(AppConnectionStatus::Connected, asString);
         }
         else
         {
-            SetNewState(AppConnectionStatus::ConnectionFailed, error);
+            SetNewState(AppConnectionStatus::ConnectionFailed, asString);
         }
         m_modelLoadTriggered = m_modelLoadFinished = false;
         m_isConnected = error == RR::Result::Success;
-
-        // start model loading as soon as we have a valid connection
-        if (m_isConnected && !m_modelLoadTriggered)
-        {
-            m_modelLoadTriggered = true;
-            StartModelLoading();
-        }
         break;
     case RR::ConnectionStatus::Disconnected:
         if (error == RR::Result::Success)
         {
-            SetNewState(AppConnectionStatus::Disconnected, error);
+            SetNewState(AppConnectionStatus::Disconnected, asString);
         }
         else
         {
-            SetNewState(AppConnectionStatus::ConnectionFailed, error);
+            SetNewState(AppConnectionStatus::ConnectionFailed, asString);
         }
         m_modelLoadTriggered = m_modelLoadFinished = false;
         m_isConnected = false;
@@ -412,22 +412,75 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
     default:
         break;
     }
+    
 }
 ```
 
 ### <a name="per-frame-update"></a>/Keret frissítése
 
-Csak egyszer kell bejelölnie az ügyfelet egy szimuláció után. Az osztály `HolographicApp1Main` jó hookot biztosít a frame-alapú frissítésekhez, ezért adja hozzá a következő kódot a függvény törzséhez `HolographicApp1Main::Update` :
+Csak egyszer kell bejelölnie az ügyfelet egy szimuláció után. `HolographicApp1Main`Az osztály jó hookot biztosít a kereten belüli frissítésekhez. Emellett le kell kérdezni a munkamenet állapotát, és meg kell tudnia, hogy átvált-e az `Ready` állapotra. Ha sikeresen csatlakozott a csatlakozáshoz, a modell betöltését véglegesen elindítjuk a használatával `StartModelLoading` .
+
+Adja hozzá a következő kódot a törzséhez `HolographicApp1Main::Update` :
 
 ```cpp
 // Updates the application state once per frame.
 HolographicFrame HolographicAppMain::Update()
 {
-    // Tick Remote rendering:
     if (m_session != nullptr)
     {
         // Tick the client to receive messages
         m_api->Update();
+
+        // query session status periodically until we reach 'session started'
+        if (!m_sessionStarted && m_sessionPropertiesAsync == nullptr)
+        {
+            if (auto propAsync = m_session->GetPropertiesAsync())
+            {
+                m_sessionPropertiesAsync = *propAsync;
+                m_sessionPropertiesAsync->Completed([this](const RR::ApiHandle<RR::SessionPropertiesAsync>& async)
+                    {
+                        if (auto res = async->Result())
+                        {
+                            switch (res->Status)
+                            {
+                            case RR::RenderingSessionStatus::Ready:
+                            {
+                                // The following is async, but we'll get notifications via OnConnectionStatusChanged
+                                m_sessionStarted = true;
+                                SetNewState(AppConnectionStatus::Connecting, nullptr);
+                                RR::ConnectToRuntimeParams init;
+                                init.ignoreCertificateValidation = false;
+                                init.mode = RR::ServiceRenderMode::Default;
+                                m_session->ConnectToRuntime(init);
+                            }
+                            break;
+                            case RR::RenderingSessionStatus::Error:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session error");
+                                break;
+                            case RR::RenderingSessionStatus::Stopped:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session stopped");
+                                break;
+                            case RR::RenderingSessionStatus::Expired:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session expired");
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            SetNewState(AppConnectionStatus::ConnectionFailed, "Failed to retrieve session status");
+                        }
+                        m_sessionPropertiesAsync = nullptr; // next try
+                        m_needsStatusUpdate = true;
+                    });
+            }
+        }
+
+        if (m_isConnected && !m_modelLoadTriggered)
+        {
+            m_modelLoadTriggered = true;
+            StartModelLoading();
+        }
     }
 
     // Rest of the body:
@@ -465,7 +518,7 @@ Ha a minta megfelelően fut, az azt jelzi, hogy közvetlenül az Ön előtt, a m
 
 A megfelelő állapot megjelenítéséhez egy szöveges panelen tekintse meg az oktatóanyag előre definiált verzióját a GitHubon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogy milyen lépéseket kell tennie ahhoz, hogy távoli renderelést lehessen felvenni egy Stock **holografikus alkalmazás** C++/DirectX11-mintába.
 Saját modell átalakításához tekintse meg a következő rövid útmutatót:

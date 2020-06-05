@@ -100,7 +100,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még:
 
 [Adatbázis létrehozása Azure SQL Database C-vel #](design-first-database-csharp-tutorial.md)  
 [Kapcsolódás Azure SQL Databasehoz Azure Active Directory hitelesítés használatával](authentication-aad-overview.md)

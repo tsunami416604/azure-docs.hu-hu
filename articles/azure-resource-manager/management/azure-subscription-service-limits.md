@@ -4,13 +4,13 @@ description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, 
 ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
-ms.date: 04/21/2020
-ms.openlocfilehash: fb4a21946b848ad05abac9b06999c7982812a361
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/04/2020
+ms.openlocfilehash: 2f9b8ec0a4f0449a3d4f767d08ddd4c65e8ce8a1
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021211"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424734"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -411,7 +411,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még:
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

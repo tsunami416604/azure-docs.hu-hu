@@ -8,13 +8,13 @@ ms.date: 05/18/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.openlocfilehash: b79ab513950f14cda98fc3113bb062b431ebd69e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.openlocfilehash: cf85ebbc8768074b6ebb23b697955c7e7c3b9ae7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664920"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434251"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>Titkosított viszonyítási webszolgáltatás üzembe helyezése
 
@@ -27,7 +27,7 @@ Ebben az útmutatóban Azure Machine Learning szolgáltatást használ a követk
 > * Titkosított viszonyítási webszolgáltatás üzembe helyezése
 > * Tesztelési célú adatfeldolgozás
 > * Titkosított előrejelzések készítése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 Az ACI nagyszerű megoldás a modell üzembe helyezési munkafolyamatának tesztelésére és megismerésére. Skálázható termelési környezetek esetén fontolja meg az Azure Kubernetes Service használatát. További információ: [a telepítés és a hol](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
 
@@ -318,7 +318,7 @@ Titkosított előrejelzések készítése:
     print ( ' Actual Label : ', y_test[sample_index])
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A mintában létrehozott webszolgáltatás törlése:
 

@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78262594"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436144"
 ---
 Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike konkrét felhasználói forgatókönyvek elérésére szolgál.
 
@@ -26,7 +26,7 @@ Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a
 |Lemeztípus   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
 |Lemez maximális mérete   |65 536 gibibájt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
-|Maximális átviteli sebesség   |2000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximális átviteli sebesség   |2 000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maximális IOPS-érték   |160 000    |20000   |6.000   |2000   |
 
 ## <a name="ultra-disk"></a>Ultralemez

@@ -1,19 +1,19 @@
 ---
 title: Az eredmények a Active Directory használatával történő levágására szolgáló biztonsági szűrők
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search-tartalmak hozzáférés-vezérlése biztonsági szűrők és Azure Active Directory (HRE) identitások használatával.
+description: Biztonsági jogosultságok a dokumentum szintjén az Azure Cognitive Search keresési eredmények, biztonsági szűrők és Azure Active Directory (HRE) identitások használatával.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: bbf1aa2fe8410f6d624fb9d50b1edb6ac2c64093
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794301"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429513"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Az Azure Cognitive Search eredményeinek Active Directory identitások használatával történő kivágására szolgáló biztonsági szűrők
 
@@ -42,11 +42,11 @@ Az alkalmazásnak a HRE-ben is regisztrálva kell lennie az alábbi eljárásban
 
 Ez a lépés integrálja az alkalmazást a HRE-mel, hogy elfogadja a felhasználói és csoportfiókok bejelentkezését. Ha Ön nem HRE-rendszergazda a szervezetben, lehetséges, hogy [létre kell hoznia egy új bérlőt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) az alábbi lépések végrehajtásához.
 
-1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com) >  **Converged app** > , és**adjon hozzá egy alkalmazást**.
+1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com), és  >   **Converged app**  >  **adjon hozzá egy alkalmazást**.
 2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
 3. Válassza ki az újonnan regisztrált alkalmazást a saját alkalmazások oldalon.
-4. Az alkalmazás regisztrációja **oldalon >** > platform platform**hozzáadása**területen válassza a **webes API**lehetőséget.
-5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek** > **Hozzáadás**gombra.
+4. Az alkalmazás regisztrációja **oldalon > platform platform**  >  **hozzáadása**területen válassza a **webes API**lehetőséget.
+5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek**  >  **Hozzáadás**gombra.
 6. Az engedélyek kiválasztása területen adja hozzá a következő delegált engedélyeket, majd kattintson az **OK**gombra:
 
    + **Directory. ReadWrite. All**
@@ -186,7 +186,7 @@ A válasz magában foglalja a dokumentumok szűrt listáját, amely azokat a fel
 
 Ebben az útmutatóban megtanulta a HRE-bejelentkezések használatának folyamatait a dokumentumok Azure-beli Cognitive Search eredményekben való szűréséhez, a kérelemben megadott szűrőnek nem megfelelő dokumentumok eredményeinek a kivágásával.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Identitás-alapú hozzáférés-vezérlés az Azure Cognitive Search szűrők használatával](search-security-trimming-for-azure-search.md)
 + [Szűrők az Azure Cognitive Search](search-filters.md)

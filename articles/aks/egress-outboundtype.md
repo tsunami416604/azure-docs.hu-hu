@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan határozhat meg egyéni kimenő útvonalakat az
 services: container-service
 ms.topic: article
 ms.date: 06/05/2020
-ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 03b18a9cb8fa28d54952a77bf8721c63dd56a9ad
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310869"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416783"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal
 
@@ -227,11 +227,11 @@ A [virtuális hálózati útválasztási táblázat dokumentációjában](../vir
 ## <a name="adding-network-firewall-rules"></a>Hálózati tűzfalszabályok hozzáadása
 
 > [!WARNING]
-> Az alábbi példa egy tűzfalszabály hozzáadását mutatja be. A [szükséges kimenő végpontokon](egress.md) definiált összes kimenő végpontot engedélyezve kell lennie az Application Firewall-szabályoknak az AK-fürtök működéséhez. Ha ezek a végpontok nem engedélyezettek, a fürt nem működhet.
+> Az alábbi példa egy tűzfalszabály hozzáadását mutatja be. A [szükséges kimenő végpontokon](limit-egress-traffic.md) definiált összes kimenő végpontot engedélyezve kell lennie az Application Firewall-szabályoknak az AK-fürtök működéséhez. Ha ezek a végpontok nem engedélyezettek, a fürt nem működhet.
 
 Az alábbi példa egy hálózati és egy alkalmazási szabályt mutat be. Olyan hálózati szabályt adunk hozzá, amely bármilyen protokollt, forráscím, célcím és célport használatát teszi lehetővé. Egy alkalmazás-szabályt is hozzáadunk az AK által igényelt **egyes** végpontokhoz.
 
-Éles környezetben csak a szükséges végpontokhoz való hozzáférést kell engedélyeznie az alkalmazáshoz, és az AK-ban meghatározott [kimenő](egress.md)forgalomban definiált.
+Éles környezetben csak a szükséges végpontokhoz való hozzáférést kell engedélyeznie az alkalmazáshoz, és az AK-ban meghatározott [kimenő](limit-egress-traffic.md)forgalomban definiált.
 
 ```
 # Add Network FW Rules
@@ -525,7 +525,7 @@ A kapcsolat ellenőrzéséhez navigáljon a böngészőben a Azure Firewall elő
 
 Ekkor meg kell jelennie az Azure-beli szavazási alkalmazás rendszerképének.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [Azure Networking UDR – áttekintés](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 

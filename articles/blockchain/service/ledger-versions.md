@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Service Ledger-verziók, javítás, & frissítés
 description: Az Azure Blockchain szolgáltatás támogatott főkönyvek verzióinak áttekintése, beleértve a rendszerek javításával, a rendszer által felügyelt és a felhasználó által felügyelt frissítésekkel kapcsolatos házirendeket is.
-ms.date: 11/20/2019
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 8d4a77699dd80743acfadd4d72d6d75bc1939b3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da7907c2c324932ba43863c1074cdff7d54d3827
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325190"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430744"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Támogatott Azure Blockchain Service Ledger-verziók
 
 Az Azure Blockchain szolgáltatás az Azure Blockchain Service-ben konzorciumként azonosított Ethereum-alapú [kvórumot](https://www.goquorum.com/developers) használ, amely az ismert résztvevők egy csoportján belüli privát tranzakciók feldolgozására lett tervezve.
 
-Az Azure Blockchain szolgáltatás jelenleg támogatja a [kvórum Version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) és [Tessera Transaction Manager](https://github.com/jpmorganchase/tessera)verzióját.
+Az Azure Blockchain szolgáltatás jelenleg támogatja a kvórumerőforrást és a [Tessera Transaction Manager](https://github.com/jpmorganchase/tessera) [verziót](https://github.com/jpmorganchase/quorum/releases/tag/v2.5.0) .
 
 ## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
 
@@ -31,6 +31,6 @@ Az Azure Blockchain szolgáltatás a kvórumról elérhetővé tett 30 napon bel
 
 Az Azure Blockchain szolgáltatás a kvórum főkönyvének legújabb fő és alverzióit a kvórum gyártójától 60 napon belül elérhetővé teszi. Egy új tag és konzorcium kiépítés esetén legfeljebb négy kisebb kiadást biztosítunk a konzorciumok számára. A verzióról a verzióra való verziófrissítés jelenleg nem támogatott. Ha például a 2. x verziót futtatja, a 3. x verzióra való frissítés jelenleg nem támogatott. Hasonlóképpen, ha az 2,2-es verziót futtatja, a 2,3-es verzióra való frissítés jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Korlátok az Azure Blockchain szolgáltatásban](limits.md)
