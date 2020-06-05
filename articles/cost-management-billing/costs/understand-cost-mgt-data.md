@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844522"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995649"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -75,7 +75,12 @@ Az alábbi ajánlatok még nem támogatottak:
 | **Támogatási csomagok** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Támogatási csomagok** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Az ajánlattípus meghatározása
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ingyenes próbalehetőség használatalapú fizetésre való frissítéshez
+
+Ha többet szeretne tudni az ingyenes szintű szolgáltatások rendelkezésre állásáról, miután frissített az ingyenes próbaverzióról a használatalapú fizetéses verzióra, tekintse meg az [ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/).
+
+### <a name="determine-your-offer-type"></a>Az ajánlattípus meghatározása
+
 Ha nem látja az előfizetéshez tartozó adatokat, és meg szeretné állapítani, hogy az előfizetése a támogatott ajánlatok közé tartozik-e, ellenőrizheti az előfizetés támogatottságát. Annak ellenőrzéséhez, hogy egy adott Azure-előfizetés támogatott-e, jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali menüpanelen válassza a **Minden szolgáltatás** lehetőséget. A szolgáltatások listájában válassza az **Előfizetések** elemet. Az előfizetések listájának menüjében válassza ki az ellenőrizni kívánt előfizetést. Az előfizetés megjelenik az Áttekintés lapon, ahol az **Ajánlatot** és az **Ajánlat azonosítóját** is láthatja. Az alábbi képen egy példa látható.
 
 ![Az előfizetés Áttekintés lapját az Ajánlattal és az Ajánlat azonosítójával együtt mutató példa](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +111,7 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 - Az erőforráscímkék csak az erőforráscsoportokban üzembe helyezett erőforrások esetén támogatottak.
 - Előfordulhat, hogy néhány üzembe helyezett erőforrás nem támogatja a címkéket vagy nem tartalmaz címkéket a használati adatokban – lásd: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
 - Az erőforráscímkék csak a címke alkalmazásának idején szerepelnek a használati adatokban, így az előzményadatokra nem lesznek alkalmazva.
-- Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben – lásd: [A használati adatok frissítési gyakorisága változó](#usage-data-update-frequency-varies).
+- Az erőforráscímkék csak az adatok frissítése után érhetők el a Cost Managementben – lásd: [Költség- és használati adatok frissítései és megőrzése](#cost-and-usage-data-updates-and-retention).
 - Az erőforráscímkék csak akkor érhetők el a Cost Managementben, ha az erőforrás aktív/fut, és használati adatokat hoz létre (például akkor nem, ha a virtuális gép felszabadított állapotban van).
 - A címkék kezeléséhez minden erőforrás esetében közreműködői hozzáférés szükséges.
 - A címkeszabályzatok kezeléséhez tulajdonosi vagy szabályzat-közreműködői hozzáférés szükséges egy felügyeleti csoporthoz, egy előfizetéshez vagy egy erőforráscsoporthoz.
@@ -114,7 +119,7 @@ Az Azure Cost Management a címkéket az egyes szolgáltatások által küldött
 Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a következőket:
 
 - A címke közvetlenül az erőforrásra lett alkalmazva?
-- A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [A használati adatok frissítési gyakorisága változó](#usage-data-update-frequency-varies)
+- A címke több mint 24 órával ezelőtt lett alkalmazva? Lásd: [Költség- és használati adatok frissítése és megőrzése](#cost-and-usage-data-updates-and-retention)
 - Támogatja az erőforrás típusa a címkéket? Az alábbi erőforrástípusok 2019. december 1-től nem támogatják a címkéket a használati adatokban. A támogatott címkék teljes listája: [Címkék támogatása az Azure-erőforrásokban](../../azure-resource-manager/tag-support.md).
     - Azure Active Directory B2C-címtárak
     - Azure-tűzfalak
@@ -134,24 +139,22 @@ Ha nem talál egy adott címkét a Cost Managementben, vegye figyelembe a követ
 - A Tags API és a Query vagy a UsageDetails API együttes használatával az összes költség lekérhető az aktuális címkék alapján.
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Ingyenes próbalehetőség használatalapú fizetésre való frissítéshez
+## <a name="cost-and-usage-data-updates-and-retention"></a>Költség- és használati adatok frissítése és megőrzése
 
-Ha többet szeretne tudni az ingyenes szintű szolgáltatások rendelkezésre állásáról, miután frissített az ingyenes próbaverzióról a használatalapú fizetéses verzióra, tekintse meg az [ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/).
+A költség- és használati adatok általában 8-24 órán belül válnak elérhetővé az Azure Portal Költségkezelés + Számlázás területén és a [támogató API-kban](../index.yml). A költségek áttekintésekor tartsa szem előtt a következő szempontokat:
 
-## <a name="rated-usage-data-refresh-schedule"></a>Kiszámított használati adatok frissítési ütemterve
-
-A költség- és használati adatok a Költségkezelés + számlázás területen érhetők el az Azure Portalon és a [támogató API-kban](../index.yml). A költségek áttekintésekor tartsa szem előtt a következő szempontokat:
-
+- Minden Azure-szolgáltatás (például a Storage, a Compute és az SQL) különböző időközönként bocsát ki használati adatokat – előfordulhat, hogy egyes szolgáltatások adatait hamarabb látja, mint másokét.
 - Az aktuális számlázási időszak becsült költségei naponta hatszor frissülnek.
 - Az egyre több használattal az aktuális számlázási időszak becsült költségei változhatnak.
 - Az egyes frissítések kumulatívak, így az előző frissítésből származó összes sorelemet és információt tartalmazzák.
 - Az Azure a számlázási időszak vége után legfeljebb 72 órával véglegesíti vagy _zárja le_ az aktuális számlázási időszakot.
 
-Az alábbi példák bemutatják, hogyan érhetnek véget a számlázási időszakok.
+Az alábbi példák bemutatják, hogyan érhetnek véget a számlázási időszakok:
 
-Nagyvállalati Szerződéses (EA-) előfizetések – Ha a számlázási hónap május 31-én ér véget, a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában április 4. éjfélig (UTC).
+* Nagyvállalati Szerződéses (EA-) előfizetések – Ha a számlázási hónap május 31-én ér véget, a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában április 4. éjfélig (UTC).
+* Használatalapú fizetéses előfizetések – Ha a számlázási hónap május 15-én ér véget, előfordulhat, hogy a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában május 19. éjfélig (UTC).
 
-Használatalapú fizetéses előfizetések – Ha a számlázási hónap május 15-én ér véget, előfordulhat, hogy a becsült díjak legfeljebb 72 órával később frissülnek. Ebben a példában május 19. éjfélig (UTC).
+Miután a költség- és használati adatok elérhetővé váltak a Költségkezelés + Számlázás területen, a rendszer legalább további 7 éven át megőrzi őket.
 
 ### <a name="rerated-data"></a>Újraszámolt adatok
 
@@ -166,16 +169,6 @@ A Cost Managementben megjelenített költségek kerekítve vannak. A Query API �
   - 2\. díj: 0,004 dollár
   -    A díjak összesítésének megjelenítése: 0,004 + 0,004 = 0,008. A megjelenő díj 0,01 dollár.
 - Query API – A díj nyolc tizedesjegyig jelenik meg, és nem történik kerekítés.
-
-
-## <a name="usage-data-update-frequency-varies"></a>A használati adatok frissítési gyakorisága eltér
-
-A felmerült használati adatok Cost Management-beli elérhetősége több tényezőtől függ, például:
-
-- Attól, hogy az Azure-szolgáltatások (például a Storage, a Compute, a CDN és az SQL) milyen gyakran bocsátanak ki használati adatokat.
-- A használati adatok számítási motoron és költségkezelési folyamaton keresztül történő feldolgozásához szükséges időtől.
-
-Egyes szolgáltatások gyakrabban szolgáltatnak használati adatokat, mint mások. Így előfordulhat, hogy egyes szolgáltatások esetében hamarabb látja az adatokat a Cost Managementben, mint azok esetében, amelyek ritkábban bocsátanak ki használati adatokat. A szolgáltatások használati adatai általában 8-24 óra alatt jelennek meg a Cost Managementben. Ne feledje, hogy az egyre több használattal a nyílt hónapokhoz tartozó adatok frissülnek, mivel a frissítések kumulatívak.
 
 ## <a name="historical-data-might-not-match-invoice"></a>Előfordulhat, hogy a korábbi adatok nem egyeznek meg a számlán szereplő adatokkal
 

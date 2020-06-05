@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199126"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194143"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Oktatóanyag: Saját Azure-számla áttekintése
 
 Ez a cikk segítséget nyújt Azure-számlájának értelmezésében és áttekintésében. Az egyes számlázási időszakok esetében általában e-mailben kapja meg a számlát. Ez a számla az Azure-számlájának felel meg. A számlán szereplő költségadatok elérhetők az Azure Portalon is. Ebben az oktatóanyagban össze fogja hasonlítani a számlát a részletes napi használati adatok fájljával és a költségelemzéssel az Azure Portalon.
 
 Ez az oktatóanyag csak azokra az Azure-ügyfelekre vonatkozik, akik egyéni szerződéssel rendelkeznek. Az általános egyéni előfizetésekre használatalapú díjszabás vonatkozik, és közvetlenül az Azure webhelyén vásárolhatók meg.
+
+Ha segítségre van szüksége a váratlan költségek értelmezéséhez: [Váratlan költségek elemzése](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Ha le szeretné mondani Azure-előfizetését, tekintse meg [Az Azure-előfizetés lemondása](../manage/cancel-azure-subscription.md) című témakört.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -47,7 +49,7 @@ A használati adatok és a költségek összehasonlításának első lépése a 
 
 Az Azure Portalon írja be az *előfizetések* szöveget a keresőmezőbe, majd kattintson az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) elemre.
 
-![Lépjen az előfizetések területére](./media/review-individual-bill/navigate-subscriptions.png)
+[![Lépjen az előfizetések területére](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Az előfizetések listájában kattintson rá egy előfizetésre.
 
@@ -147,7 +149,7 @@ Az Azure-ban létrehozott egyetlen virtuális gép használatának nyomon követ
 
 A virtuális gép létrehozásakor minden mérőeszköz elkezd használati adatokat szolgáltatni. Ezt a használatot és a mérőeszköz díjszabását az Azure-mérési rendszerben követjük nyomon.
 
-A számla összegének kiszámításához használt mérőeszközök a használati adatok CSV-fájljában láthatók.
+A számla összegének kiszámításához használt mérőeszközök a használati adatok CSV-fájljában láthatók, ahogy a korábbi példában láthatta.
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>A számla befizetése
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204885"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997128"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -246,7 +246,7 @@ Ha a **PartnerEarnedCreditApplied** tulajdonság értéke _Igaz_, a kapcsolódó
 
 Ha a **PartnerEarnedCreditApplied** tulajdonság _Hamis_, a kapcsolódó költség nem felelt meg a jóváíráshoz szükséges feltételeknek. Az is előfordulhat, hogy a megvásárolt szolgáltatás nem jogosult a partneri jóváírásra.
 
-A szolgáltatáshasználati adatok megjelenítése a Cost Managementben 8-24 órát vesz igénybe. További információ: [A használati adatok frissítési gyakorisága változó](understand-cost-mgt-data.md#usage-data-update-frequency-varies). A PEC-jóváírások az Azure Cost Managementhez való hozzáférés idejétől számított 48 órán belül jelennek meg.
+A szolgáltatáshasználati adatok megjelenítése a Cost Managementben 8-24 órát vesz igénybe. További információ: [Költségek és használati adatok frissítése és megőrzése](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). A PEC-jóváírások az Azure Cost Managementhez való hozzáférés idejétől számított 48 órán belül jelennek meg.
 
 
 A **PartnerEarnedCreditApplied** tulajdonság szerint is végezhet csoportosítást és szűrést a **Csoportosítás szempontja** beállítás alkalmazásával. A beállítások alkalmazásával megvizsgálhatja azokat a költségeket, amelyekre érvényes, illetve nem érvényes a partneri jóváírás.

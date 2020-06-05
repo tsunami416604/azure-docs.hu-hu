@@ -3,17 +3,17 @@ title: Oktatóanyag – Azure-költségvetések létrehozása és kezelése
 description: Ez az oktatóanyag segít megtervezni és elszámolni a felhasznált Azure-szolgáltatások költségeit.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: ef165f63ff1f9e45bb3586192146d822e334dc54
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101756"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142435"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -115,6 +115,15 @@ Miután létrehozta a költségvetést, a rendszer megjeleníti annak költsége
 
 Az előző példában létrehozott egy költségvetést egy előfizetéshez. Költségvetést erőforráscsoportokhoz is létrehozhat. Ha erőforráscsoporthoz szeretne költségvetést létrehozni, lépjen a **Költségkezelés + számlázás** &gt; **Előfizetések** területre &gt; válasszon ki egy előfizetést > **Erőforráscsoportok** > válasszon ki egy erőforráscsoportot > **Költségvetések** > végül a **Hozzáadás** lehetőséggel adjon hozzá egy költségvetést.
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Költségvetés létrehozása az egyesített Azure- és AWS-költségekhez
+
+Az Azure és az AWS egy csoportba foglalásához rendeljen hozzá egy felügyeleti csoportot az összekötőhöz a konszolidált és összekapcsolt fiókokkal együtt. Rendelje hozzá Azure-előfizetését ugyanahhoz a felügyeleti csoporthoz. Ezután hozzon létre egy költségvetést az egyesített költségek számára.
+
+1. A Cost Managementben válassza a **Költségvetések** lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hatókör módosítása** lehetőséget, majd válassza ki a felügyeleti csoportot.
+1. Végezze el a költségvetés létrehozásának további lépéseit.
+
 ## <a name="costs-in-budget-evaluations"></a>Költségek a költségvetések kiértékelésében
 
 A költségvetési költségek kiértékelései már a fenntartott példányok és vásárlások adatait is tartalmazzák. Ha a díjakat fizetnie kell, riasztásokat kaphat, amikor a díjakat a rendszer beépíti a kiértékelésekbe. Javasoljuk, hogy jelentkezzen be az [Azure Portalra](https://portal.azure.com), és ellenőrizze, hogy a költségvetés küszöbértékei az új költségeket is figyelembe véve, megfelelően lettek-e konfigurálva. Az Azure-ban számlázott díjak nem változnak. A költségvetések kiértékelése a költségek teljesebb köre alapján történik. Ha a díjakat nem kell fizetnie, a költségvetés működése változatlan marad.
@@ -125,7 +134,6 @@ Ha úgy szeretné szűrni az új költségeket, hogy a költségvetések kiért�
 - Díj típusa: Használat
 
 A költségvetési költségek kiértékelése a tényleges költségek alapján történik. Nem tartalmazzák az amortizációt. A költségvetésekben elérhető szűrési lehetőségekkel kapcsolatban a [Csoportosítási és szűrési lehetőségek ismertetése](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) című szakaszban tekinthet meg további információt.
-
 
 ## <a name="trigger-an-action-group"></a>Műveletcsoport aktiválása
 

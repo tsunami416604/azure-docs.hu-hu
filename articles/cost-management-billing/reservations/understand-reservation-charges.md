@@ -7,16 +7,18 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46236355ca569c28ed9418f9c341a1510c1335b1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200282"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114062"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>A foglalási kedvezmény alkalmazása futó Azure SQL Database-adatbázisokra
 
 A fenntartott Azure SQL Database-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalási kedvezmény a foglalás attribútumaival és mennyiségével egyező SQL Database-adatbázisokra. A foglalás az SQL Database-adatbázis számítási költségeit fedezi. A szoftverért, a tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. Az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti az SQL Database-adatbázisok licencelési költségeit.
+
+A foglalási kedvezmények nem alkalmazhatók a kiszolgáló nélküli Azure SQL Database-re.
 
 A Reserved Virtual Machine Instanceszel kapcsolatban tekintse meg [az Azure Reserved VM Instances-kedvezményt bemutató](../manage/understand-vm-reservation-charges.md) cikket.
 
@@ -52,7 +54,7 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 
 - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../sql-database/sql-database-reserved-capacity.md)
+- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
 - [Az Azure Reservations kezelése](manage-reserved-vm-instance.md)
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
