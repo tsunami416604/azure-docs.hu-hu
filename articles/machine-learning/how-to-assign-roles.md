@@ -5,18 +5,18 @@ description: Megtudhatja, hogyan férhet hozzá egy Azure Machine Learning munka
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270094"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434675"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület elérésének kezelése
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ Egyéni szerepkör létrehozásához először létre kell hoznia egy szerepkör
 }
 ```
 
-A `AssignableScopes` mező módosításával beállíthatja az egyéni szerepkör hatókörét az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
+A mező módosításával `AssignableScopes` beállíthatja az egyéni szerepkör hatókörét az előfizetés szintjén, az erőforráscsoport szintjén vagy egy adott munkaterület szintjén.
 
 Ez az egyéni szerepkör a munkaterületen mindent megtehet a következő műveletek kivételével:
 
@@ -118,7 +118,7 @@ További információ az egyéni szerepkörökkel használható műveletekről (
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>K. Milyen engedélyekre van szükség a különböző műveletek végrehajtásához a Azure Machine Learning szolgáltatásban?
 
-A következő táblázat a Azure Machine Learning tevékenységek összegzését, valamint a minimális hatókörön belüli végrehajtáshoz szükséges engedélyeket tartalmazza. Például ha egy tevékenység egy munkaterület hatókörével (4. oszlop) hajtható végre, akkor az ezzel az engedéllyel rendelkező összes magasabb hatókör automatikusan is működni fog. A táblázat összes elérési útja **relatív elérési út** `Microsoft.MachineLearningServices/`.
+A következő táblázat a Azure Machine Learning tevékenységek összegzését, valamint a minimális hatókörön belüli végrehajtáshoz szükséges engedélyeket tartalmazza. Például ha egy tevékenység egy munkaterület hatókörével (4. oszlop) hajtható végre, akkor az ezzel az engedéllyel rendelkező összes magasabb hatókör automatikusan is működni fog. A táblázat összes elérési útja **relatív elérési út** `Microsoft.MachineLearningServices/` .
 
 | Tevékenység | Előfizetés szintű hatókör | Erőforráscsoport-szintű hatókör | Munkaterület-szintű hatókör |
 |---|---|---|---|
@@ -139,7 +139,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>K. Hogyan megkeresni az előfizetésben szereplő szerepkörhöz tartozó szerepkör-definíciót?
 
-Futtassa az alábbi parancsot az Azure CLI-ben. Vegye figyelembe `<role-name>` , hogy a fenti parancs által visszaadott formátumban kell lennie.
+Futtassa az alábbi parancsot az Azure CLI-ben. Vegye figyelembe, hogy a `<role-name>` fenti parancs által visszaadott formátumban kell lennie.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -168,7 +168,7 @@ Igen, megadhat egy olyan szerepkört, amely megakadályozza a munkaterület kiad
 A munkaterületen a kvótával kapcsolatos műveletek elvégzéséhez előfizetési szintű engedélyekre van szükség. Ez azt jelenti, hogy az előfizetési szint kvótájának vagy a munkaterületnek a felügyelt számítási erőforrásokra vonatkozó kvótájának beállítása csak akkor fordulhat elő, ha az előfizetés hatókörében írási engedélyekkel rendelkezik. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [A kísérletek és következtetések/pontszámok biztonságos futtatása virtuális hálózaton belül](how-to-enable-virtual-network.md)

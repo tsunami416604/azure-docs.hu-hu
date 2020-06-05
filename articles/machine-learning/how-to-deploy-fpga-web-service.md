@@ -5,18 +5,18 @@ description: Megtudhatja, hogyan helyezhet üzembe egy webszolgáltatást egy ol
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ac246c5135f9c00368ccce2ca79627322f504976
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983584"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433904"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,7 +96,7 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine 
     ```
 
     > [!TIP]
-    > A többi lehetséges helye ``southeastasia`` ``westeurope``:, és. ``westus2``
+    > A többi lehetséges helye: ``southeastasia`` , ``westeurope`` és ``westus2`` .
 
     A parancs a következőhöz hasonló szöveget ad vissza:
 
@@ -108,7 +108,7 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine 
 
     Győződjön meg arról, hogy legalább 6 vCPU van a __CurrentValue__alatt.
 
-    Ha nem rendelkezik kvótával, küldje el a kérelmet a következő [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)címen:.
+    Ha nem rendelkezik kvótával, küldje el a kérelmet a következő címen: [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) .
 
 - Azure Machine Learning munkaterület és a Python Azure Machine Learning SDK telepítve. További információ: [Munkaterület létrehozása](how-to-manage-workspace.md).
  
@@ -344,7 +344,7 @@ aks_service.wait_for_deployment(show_output=True)
 #### <a name="test-the-cloud-service"></a>A Cloud Service tesztelése
 A Docker-rendszerkép támogatja a gRPC és a "prediktív" API-t kiszolgáló TensorFlow.  A minta ügyfelet használva hívja meg a Docker-rendszerképet a modellből származó előrejelzések beszerzéséhez.  A minta ügyfél kódja elérhető:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [C #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
 Ha a TensorFlow-t szeretné használni, [letöltheti a minta-ügyfelet](https://www.tensorflow.org/serving/setup).
 
@@ -405,7 +405,7 @@ Minden [Azure Data Box Edge eszköz](https://docs.microsoft.com/azure/databox-on
 
 A FPGA webszolgáltatások biztonságossá tételéhez tekintse meg a [biztonságos webszolgáltatások](how-to-secure-web-service.md) dokumentumát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket a jegyzetfüzeteket, videókat és blogokat:
 

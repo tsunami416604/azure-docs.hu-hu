@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készletek és az alkalmazás-munkaterhelések Azure Kubernetes szolgáltatásban (ak) való futtatásakor
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208006"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433006"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -58,6 +58,19 @@ Az AK-ban lévő Windows Server-csomópontokat *frissíteni* kell a legújabb ja
 > A frissített Windows Server-rendszerkép csak akkor lesz használatban, ha a fürt frissítése (a vezérlési sík frissítése) a csomópont-készlet frissítése előtt lett elvégezve.
 >
 
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Miért jelenik meg hibaüzenet, amikor új Windows Agent-készletet próbálok létrehozni?
+
+Ha a fürtöt február 2020 előtt hozta létre, és még soha nem hajtotta meg a fürt frissítési műveleteit, a fürt továbbra is egy régi Windows-rendszerképet használ. Előfordulhat, hogy a következőhöz hasonló hibaüzenetet észlelt:
+
+"A központi telepítési sablonban hivatkozott rendszerképek alábbi listája nem található: közzétevő: MicrosoftWindowsServer, ajánlat: WindowsServer, SKU: 2019-Datacenter-Core-smalldisk-2004, verzió: Latest. https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimageAz elérhető rendszerképek keresésével kapcsolatos utasításokért tekintse meg a következő témakört:.
+
+A probléma megoldásához:
+
+1. Frissítse a [fürt vezérlőjét][upgrade-cluster-cp]. Ezzel frissíti a rendszerkép-ajánlatot és a közzétevőt.
+1. Hozzon létre új Windows Agent-készleteket.
+1. Windows-hüvelyek áthelyezése meglévő Windows Agent-készletekből új Windows Agent-készletekbe.
+1. Régi Windows-ügynök készletek törlése.
+
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hogyan elforgatja a szolgáltatásnevet a Windows-csomópontos készlethez?
 
 A Windows-csomópontok nem támogatják a szolgáltatás egyszerű elforgatását. Az egyszerű szolgáltatás frissítéséhez hozzon létre egy új Windows-csomópontot, és telepítse át a hüvelyeket a régi készletből az újat. Ha ez befejeződött, törölje a régi csomópont-készletet.
@@ -94,7 +107,7 @@ Igen, azonban Azure Monitor nem gyűjti a naplókat (StdOut) a Windows-tárolób
 
 Keményen dolgozunk, hogy az összes olyan funkciót felhasználjuk, amire szüksége van az AK-ban, de ha hiányosságok lépnek fel, a nyílt forráskódú és a felsőbb rétegbeli [AK-motor][aks-engine] projekt egyszerű és teljes mértékben testreszabható módot kínál a Kubernetes Azure-ban való futtatására, beleértve a Windows-támogatást is. Kérjük, tekintse meg a következő, az AK- [útitervtel][aks-roadmap]kapcsolatos szolgáltatások ütemtervét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy olyan csomópont-készletet, amely a Windows Server rendszerű][windows-node-cli]
 
@@ -112,6 +125,8 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909

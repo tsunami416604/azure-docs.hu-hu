@@ -5,18 +5,18 @@ description: Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
-ms.openlocfilehash: 5b4ed40048aab815397c9726098880b2125b732c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62ab85092ccbf0cbb817554e3285b908c9faa869
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78274787"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433980"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Adatbetöltés az Azure Data Factoryvel
 
@@ -94,7 +94,7 @@ Ha az adat egy adattáron vagy adatkészleten keresztül érhető el, egy ML-mod
 
 Mivel az adatkészletek támogatják a verziószámozást, és a folyamat minden futtatása új verziót hoz létre, könnyen megtudhatja, hogy az adatok melyik verzióját használták a modell betanításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Databricks-jegyzetfüzet futtatása Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
 * [Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)

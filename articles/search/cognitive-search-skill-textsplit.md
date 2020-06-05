@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: 558f7ef250c99d85cb957162b6d098e586bc0fc4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73479655"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433257"
 ---
 # <a name="text-split-cognitive-skill"></a>Szöveg felosztása kognitív képességgel
 
@@ -32,8 +32,8 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | Vagy "Pages" vagy "mondatok" | 
-| maximumPageLength | Ha a textSplitMode "Pages" (lapok `String.Length`) értékre van állítva, ez az oldal maximális hosszára vonatkozik. A minimális érték 100.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
-| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt`. Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint például a kínai, a japán és a koreai nyelv.</li><li>Ha nem ismeri a nyelvet (azaz a szöveget a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)való bevitelre kell bontania), az alapértelmezett angol (en) értéknek elegendőnek kell lennie. </li></ul>  |
+| maximumPageLength | Ha a textSplitMode "Pages" (lapok) értékre van állítva, ez az oldal maximális hosszára vonatkozik `String.Length` . A minimális érték 300.  Ha a textSplitMode "Pages" értékre van állítva, az algoritmus megpróbálja felosztani a szöveget a legtöbb "maximumPageLength" méretű darabokra. Ebben az esetben az algoritmus elvégzi a legjobbat, hogy a mondatot egy mondat határán megtörje, így a tömb mérete valamivel kisebb lehet, mint a "maximumPageLength". | 
+| defaultLanguageCode   | választható A következő nyelvi kódok egyike: `da, de, en, es, fi, fr, it, ko, pt` . Az alapértelmezett érték az angol (en). Néhány megfontolandó szempont:<ul><li>Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.</li><li>Ha a nyelv nem szerepel az előző listán, a felosztott képesség megszakítja a szöveget a karakterek határain.</li><li>A nyelvi kód megadásával elkerülhető, hogy a szó ne legyen több, mint például a kínai, a japán és a koreai nyelv.</li><li>Ha nem ismeri a nyelvet (azaz a szöveget a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)való bevitelre kell bontania), az alapértelmezett angol (en) értéknek elegendőnek kell lennie. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
@@ -130,7 +130,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 ## <a name="error-cases"></a>Hibák esetei
 Ha a nyelv nem támogatott, a rendszer figyelmeztetést generál, és a szöveg a karakter határain belülre van bontva.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

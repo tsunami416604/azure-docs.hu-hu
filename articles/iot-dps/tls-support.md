@@ -5,26 +5,26 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 285832d80d37c8553ffc8e37c6f6eab5d7f6d943
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984849"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417973"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>TLS-támogatás az Azure IoT Hub Device Provisioning Serviceban (DPS)
 
-A DPS Transport Layer Security (TLS) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. A TLS protokoll három verziója jelenleg támogatott, azaz a 1,0, 1,1 és 1,2 verziókat.
+A DPS Transport Layer Security (TLS) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. A DPS által támogatott TLS protokoll-verziók közé tartozik a TLS 1,2.
 
-A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). Erősen ajánlott a TLS 1,2 használata elsődleges TLS-verzióként a DPS-hez való csatlakozáskor.
+A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). 
 
 ## <a name="restrict-connections-to-tls-12"></a>A TLS 1,2-kapcsolat korlátozása
 
 A további biztonság érdekében javasoljuk, hogy konfigurálja a DPS-példányokat úgy, hogy *csak* az 1,2-es TLS-t használó eszközök ügyfélkapcsolatait engedélyezze, és kényszerítse az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát.
 
-Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot `1.2` a Azure Resource Manager sablon DPS erőforrás-specifikációjában. A következő példában szereplő sablon JSON egy `minTlsVersion` új DPS-példány tulajdonságát határozza meg.
+Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon DPS erőforrás-specifikációjában. A következő példában szereplő sablon JSON `minTlsVersion` egy új DPS-példány tulajdonságát határozza meg.
 
 ```json
 {
@@ -92,7 +92,10 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | 1.12.2 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
 
+## <a name="use-tls-12-with-iot-hub"></a>A TLS 1,2 használata IoT Hub
+
+A IoT Hub konfigurálható úgy, hogy a TLS 1,2-et használja az eszközökkel való kommunikációhoz. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md).
 
 ## <a name="use-tls-12-with-iot-edge"></a>A TLS 1,2 használata IoT Edge
 
-IoT Edge eszközök a TLS 1,2 használatára konfigurálhatók a IoT Hub és a DPS szolgáltatással való kommunikáció során. Erre a célra használja a [IoT Edge dokumentációs oldalát](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
+IoT Edge eszközök a TLS 1,2 használatára konfigurálhatók a IoT Hub és a DPS szolgáltatással való kommunikáció során. További információ: [IoT Edge dokumentációs oldal](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

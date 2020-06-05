@@ -5,17 +5,17 @@ description: A AutoMLStep lehetővé teszi az automatizált gépi tanulás haszn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 04/28/2020
-ms.openlocfilehash: 9bf17512d0b14c7106101d98598e2914020afc7a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 94e45e2c5aae1633ce206fe56fe94cb9d03f9f67
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857951"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431433"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -32,15 +32,15 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="review-automated-mls-central-classes"></a>Az automatikus ML központi osztályainak áttekintése
 
-A folyamatokban az automatikus ML-t egy `AutoMLStep` objektum jelképezi. Az `AutoMLStep` osztály a alosztálya `PipelineStep`. Az `PipelineStep` objektumok gráfja a értéket `Pipeline`definiálja.
+A folyamatokban az automatikus ML-t egy `AutoMLStep` objektum jelképezi. Az `AutoMLStep` osztály a alosztálya `PipelineStep` . Az objektumok gráfja a értéket `PipelineStep` definiálja `Pipeline` .
 
-A `PipelineStep`több alosztálya is létezik. A `AutoMLStep`on kívül ez a cikk az adatok előkészítését `PythonScriptStep` és egy másikat is megjeleníti a modell regisztrálásához.
+A több alosztálya is létezik `PipelineStep` . A on kívül `AutoMLStep` Ez a cikk az `PythonScriptStep` adatok előkészítését és egy másikat is megjeleníti a modell regisztrálásához.
 
-Az első lépés az, _Ha az adatátvitelt egy ml_ - `Dataset` folyamatba kívánja használni, az objektumokkal. A lépések _közötti_ adatáthelyezéshez az előnyben részesített módszer `PipelineData` az objektumok használata. A szolgáltatással `AutoMLStep`való használathoz `PipelineData` az objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
+Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. A lépések _közötti_ adatáthelyezéshez az előnyben részesített módszer az `PipelineData` objektumok használata. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
 
 A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig`a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)című cikkben talál. 
 
-Egy `Pipeline` fut az a `Experiment`-ben. A folyamat `Run` minden egyes lépéshez gyermeket `StepRun`tartalmaz. Az automatizált ML `StepRun` kimenetei a betanítási mérőszámok és a legmagasabb teljesítményű modellek.
+Egy `Pipeline` fut az a-ben `Experiment` . A folyamat `Run` minden egyes lépéshez gyermeket tartalmaz `StepRun` . Az automatizált ML kimenetei `StepRun` a betanítási mérőszámok és a legmagasabb teljesítményű modellek.
 
 A dolgok konkrét elvégzéséhez ez a cikk egy egyszerű folyamatot hoz létre egy besorolási feladathoz. A feladat a Titanic túlélésének előrejelzése, de az adatok vagy a feladat nem kerül megvitatásra, kivéve az átadást.
 
@@ -68,7 +68,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-A kód először a **config. JSON fájlban** megadott Azure Machine learning munkaterületre jelentkezik be (magyarázatért lásd [: OKTATÓANYAG: első ml-kísérlet létrehozása a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)). Ha még nincs regisztrálva nevű `'titanic_ds'` adatkészlet, akkor létrejön egy. A kód letölti a CSV-adatokat a webről, felhasználja őket `TabularDataset` az a létrehozásához, majd regisztrálja az adatkészletet a munkaterületen. Végül a függvény `Dataset.get_by_name()` hozzárendeli a `Dataset` -t `titanic_ds`. 
+A kód először a **config. JSON fájlban** megadott Azure Machine learning munkaterületre jelentkezik be (magyarázatért lásd [: OKTATÓANYAG: első ml-kísérlet létrehozása a Python SDK-val](tutorial-1st-experiment-sdk-setup.md)). Ha még nincs regisztrálva nevű adatkészlet `'titanic_ds'` , akkor létrejön egy. A kód letölti a CSV-adatokat a webről, felhasználja őket az a létrehozásához, `TabularDataset` majd regisztrálja az adatkészletet a munkaterületen. Végül a függvény `Dataset.get_by_name()` hozzárendeli a `Dataset` -t `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Tárolási és számítási cél konfigurálása
 
@@ -97,15 +97,15 @@ if not compute_name in ws.compute_targets :
 compute_target = ws.compute_targets[compute_name]
 ```
 
-Az adatelőkészítés és az automatikus ML-lépés közötti köztes adatfeldolgozás a munkaterület alapértelmezett adattárában tárolható, így nem kell többet megtennie, mint `get_default_datastore()` a hívás `Workspace` az objektumon. 
+Az adatelőkészítés és az automatikus ML-lépés közötti köztes adatfeldolgozás a munkaterület alapértelmezett adattárában tárolható, így nem kell többet megtennie, mint `get_default_datastore()` a hívás az `Workspace` objektumon. 
 
-Ezt követően a kód ellenőrzi, hogy már létezik-e a `'cpu-cluster'` pénzmosás-számítási cél. Ha nem, azt adjuk meg, hogy egy kis CPU-alapú számítási célt szeretnénk használni. Ha az automatizált ML mély tanulási funkcióit szeretné használni (például DNN-támogatással rendelkező szöveges featurization), akkor a GPU-ra [optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)című cikkben leírtak szerint válasszon ki egy erős GPU-támogatással rendelkező számítást. 
+Ezt követően a kód ellenőrzi, hogy már létezik-e a pénzmosás-számítási cél `'cpu-cluster'` . Ha nem, azt adjuk meg, hogy egy kis CPU-alapú számítási célt szeretnénk használni. Ha az automatizált ML mély tanulási funkcióit szeretné használni (például DNN-támogatással rendelkező szöveges featurization), akkor a GPU-ra [optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)című cikkben leírtak szerint válasszon ki egy erős GPU-támogatással rendelkező számítást. 
 
-A kód blokkolja a cél üzembe helyezését, majd kinyomtatja az imént létrehozott számítási cél részleteit. Végül a rendszer lekéri a nevesített számítási célt a munkaterületről, és hozzárendeli a következőhöz: `compute_target`. 
+A kód blokkolja a cél üzembe helyezését, majd kinyomtatja az imént létrehozott számítási cél részleteit. Végül a rendszer lekéri a nevesített számítási célt a munkaterületről, és hozzárendeli a következőhöz: `compute_target` . 
 
 ### <a name="configure-the-training-run"></a>A betanítási Futtatás konfigurálása
 
-A következő lépés arról gondoskodik, hogy a távoli tanítás futtatása a betanítási lépések által igényelt összes függőséggel rendelkezik. A függőségek és a futásidejű környezet egy `RunConfiguration` objektum létrehozásával és konfigurálásával állítható be. 
+A következő lépés arról gondoskodik, hogy a távoli tanítás futtatása a betanítási lépések által igényelt összes függőséggel rendelkezik. A függőségek és a futásidejű környezet egy objektum létrehozásával és konfigurálásával állítható be `RunConfiguration` . 
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -201,17 +201,17 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 A fenti kódrészlet egy teljes, de minimális példa a Titanic-adatfeldolgozásra. A kódrészlet egy Jupyter "Magic paranccsal" kezdődik a kód fájlba való exportálásához. Ha nem használ Jupyter-jegyzetfüzetet, távolítsa el a sort, és manuálisan hozza létre a fájlt.
 
-A fenti `prepare_` kódrészletben szereplő különféle függvények módosítják a bemeneti adatkészlet megfelelő oszlopát. Ezek a függvények az adatokon működnek, ha egy Panda `DataFrame` objektumba módosították. Minden esetben a hiányzó adat a reprezentatív véletlenszerű adatmennyiséggel vagy az "ismeretlen" jelzéssel ellátott kategorikus adattal van kitöltve. A szöveg-alapú kategorikus adathalmazok egész számokra vannak leképezve. A már nem szükséges oszlopok felülírása vagy eldobása nem történik meg. 
+A `prepare_` fenti kódrészletben szereplő különféle függvények módosítják a bemeneti adatkészlet megfelelő oszlopát. Ezek a függvények az adatokon működnek, ha egy Panda `DataFrame` objektumba módosították. Minden esetben a hiányzó adat a reprezentatív véletlenszerű adatmennyiséggel vagy az "ismeretlen" jelzéssel ellátott kategorikus adattal van kitöltve. A szöveg-alapú kategorikus adathalmazok egész számokra vannak leképezve. A már nem szükséges oszlopok felülírása vagy eldobása nem történik meg. 
 
-Miután a kód definiálta az adat-előkészítési függvényeket, a kód elemzi a bemeneti argumentumot, amely az az elérési út, ahová az adatokat írni szeretnénk. (Ezek az értékek a következő lépésben `PipelineData` tárgyalt objektumok alapján lesznek meghatározva.) A kód lekéri a regisztrált `'titanic_cs'` `Dataset`, átalakítja egy pandare `DataFrame`, és meghívja a különböző adat-előkészítési funkciókat. 
+Miután a kód definiálta az adat-előkészítési függvényeket, a kód elemzi a bemeneti argumentumot, amely az az elérési út, ahová az adatokat írni szeretnénk. (Ezek `PipelineData` az értékek a következő lépésben tárgyalt objektumok alapján lesznek meghatározva.) A kód lekéri a regisztrált `'titanic_cs'` `Dataset` , átalakítja egy pandare `DataFrame` , és meghívja a különböző adat-előkészítési funkciókat. 
 
-Mivel a `output_path` teljes mértékben minősített, a függvény `os.makedirs()` a címtár struktúrájának előkészítésére szolgál. Ezen a ponton használhatja `DataFrame.to_csv()` a kimeneti adatokat, de a parketta-fájlok hatékonyabbak. Ez a hatékonyság valószínűleg lényegtelen lenne egy ilyen kis adatkészletnél, de a **PyArrow** `from_pandas()` -csomag és `write_table()` a függvények használata csak néhány billentyűleütést jelent, mint `to_csv()`a.
+Mivel a `output_path` teljes mértékben minősített, a függvény a `os.makedirs()` címtár struktúrájának előkészítésére szolgál. Ezen a ponton használhatja `DataFrame.to_csv()` a kimeneti adatokat, de a parketta-fájlok hatékonyabbak. Ez a hatékonyság valószínűleg lényegtelen lenne egy ilyen kis adatkészletnél, de a **PyArrow** -csomag `from_pandas()` és a `write_table()` függvények használata csak néhány billentyűleütést jelent, mint a `to_csv()` .
 
 A Parquet-fájlok natív módon támogatottak az alábbiakban tárgyalt automatikus ML-lépésekben, ezért nem szükséges külön feldolgozás. 
 
-### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Az adatelőkészítési folyamat lépésének`PythonScriptStep`() megírása
+### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Az adatelőkészítési folyamat lépésének () megírása `PythonScriptStep`
 
-A fent ismertetett adatelőkészítési kódnak társítania kell `PythonScripStep` egy, a folyamathoz használandó objektumot. Egy `PipelineData` objektum hozza létre az elérési utat, amelybe a parketta adatelőkészítési kimenetét írja. A korábban előkészített erőforrások, például a `ComputeTarget`, a `RunConfig`és a `'titanic_ds' Dataset` , a specifikáció végrehajtásához használatosak.
+A fent ismertetett adatelőkészítési kódnak társítania kell egy, a `PythonScripStep` folyamathoz használandó objektumot. Egy objektum hozza létre az elérési utat, amelybe a parketta adatelőkészítési kimenetét írja `PipelineData` . A korábban előkészített erőforrások, például a, `ComputeTarget` a `RunConfig` és a, a `'titanic_ds' Dataset` specifikáció végrehajtásához használatosak.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -232,15 +232,15 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset`. Figyelje meg, hogy a és `arguments` `outputs` az argumentumokban is meg van adva. Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum `'--output_path'` értéke annak a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
+Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset` . Figyelje meg, hogy a és az argumentumokban is meg van adva `arguments` `outputs` . Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum értéke annak `'--output_path'` a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
 
 ## <a name="train-with-automlstep"></a>Tanítás AutoMLStep
 
-Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal történik. Ez a rugalmas osztály az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben található. Az adatok bevitele és kimenete a konfiguráció egyetlen olyan eleme, amely különleges figyelmet igényel egy ML-folyamatban. A folyamatokban a `AutoMLConfig` bemeneti és kimeneti adatokat az alábbiakban részletesen tárgyaljuk. Az adatokon túl a ML-folyamatok előnye, hogy különböző számítási célokat is használhat a különböző lépésekhez. Dönthet úgy is, hogy a hatékonyabban `ComputeTarget` csak az automatikus ml-t használja. Ez olyan egyszerű, mint az `RunConfiguration` `AutoMLConfig` objektum `run_configuration` paramétereinek kiosztása.
+Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal történik. Ez a rugalmas osztály az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben található. Az adatok bevitele és kimenete a konfiguráció egyetlen olyan eleme, amely különleges figyelmet igényel egy ML-folyamatban. A folyamatokban a bemeneti és kimeneti adatokat az `AutoMLConfig` alábbiakban részletesen tárgyaljuk. Az adatokon túl a ML-folyamatok előnye, hogy különböző számítási célokat is használhat a különböző lépésekhez. Dönthet úgy is, hogy a hatékonyabban `ComputeTarget` csak az automatikus ml-t használja. Ez olyan egyszerű, mint `RunConfiguration` az objektum paramétereinek kiosztása `AutoMLConfig` `run_configuration` .
 
 ### <a name="send-data-to-automlstep"></a>Az adatküldés`AutoMLStep`
 
-ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A legnagyobb teljesítményű mód az, hogy a bemeneti adatokat `PipelineOutputTabularDataset` objektumok formájában adja meg. Ilyen `parse_parquet_files()` típusú objektumot a vagy a (z) vagy `parse_delimited_files()` a ( `PipelineOutputFileDataset`z), például `prepped_data_path` az objektummal hozhat létre.
+ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A legnagyobb teljesítményű mód az, hogy a bemeneti adatokat objektumok formájában adja meg `PipelineOutputTabularDataset` . Ilyen típusú objektumot a `parse_parquet_files()` vagy a (z) vagy `parse_delimited_files()` a (z `PipelineOutputFileDataset` ), például az `prepped_data_path` objektummal hozhat létre.
 
 ```python
 # type(prepped_data_path) == PipelineOutputFileDataset
@@ -248,9 +248,9 @@ ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A leg
 prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 ```
 
-A fenti kódrészlet magas teljesítményt `PipelineOutputTabularDataset` eredményez az adatelőkészítési `PipelineOutputFileDataset` lépés kimenetében.
+A fenti kódrészlet magas teljesítményt eredményez az `PipelineOutputTabularDataset` `PipelineOutputFileDataset` adatelőkészítési lépés kimenetében.
 
-Egy másik lehetőség a munkaterületen regisztrált objektumok használata `Dataset` :
+Egy másik lehetőség a `Dataset` munkaterületen regisztrált objektumok használata:
 
 ```python
 prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
@@ -263,7 +263,7 @@ A két módszer összehasonlítása:
 |`PipelineOutputTabularDataset`| Nagyobb teljesítmény | 
 || Természetes útvonal innen:`PipelineData` | 
 || A folyamat futtatása után nem őrzi meg az adattárolást |
-|| [A technikát bemutató `PipelineOutputTabularDataset` jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+|| [A `PipelineOutputTabularDataset` technikát bemutató jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
 | Regisztrált`Dataset` | Alacsonyabb teljesítmény |
 | | Számos módon hozható létre | 
 | | Az adatmegőrzés és a munkaterület teljes egészében látható |
@@ -271,7 +271,7 @@ A két módszer összehasonlítása:
 
 ### <a name="specify-automated-ml-outputs"></a>Automatikus ML kimenetek meghatározása
 
-A kimenetei `AutoMLStep` a magasabb teljesítményű modell és a modell végső mérőszámának eredményei. Ha ezeket a kimeneteket a további folyamat lépéseiben szeretné `PipelineData` használni, készítse elő az objektumokat a fogadásához.
+A kimenetei a `AutoMLStep` magasabb teljesítményű modell és a modell végső mérőszámának eredményei. Ha ezeket a kimeneteket a további folyamat lépéseiben szeretné használni, készítse elő az `PipelineData` objektumokat a fogadásához.
 
 ```python
 from azureml.pipeline.core import TrainingOutput
@@ -286,11 +286,11 @@ model_data = PipelineData(name='best_model_data',
                            training_output=TrainingOutput(type='Model'))
 ```
 
-A fenti kódrészlet létrehozza a két `PipelineData` objektumot a metrikák és a modell kimenete számára. Mindegyik neve a korábban lekért alapértelmezett adattárhoz van rendelve, és az adott `type` `TrainingOutput` helyhez társítva van. `AutoMLStep` Mivel ezeket `PipelineData` az `pipeline_output_name` objektumokat hozzárendeljük, azok értékei nem csupán az egyes folyamatokból, hanem a teljes folyamatból lesznek elérhetők, a "folyamat eredményeinek vizsgálata" szakaszban ismertetett módon. 
+A fenti kódrészlet létrehozza a két `PipelineData` objektumot a metrikák és a modell kimenete számára. Mindegyik neve a korábban lekért alapértelmezett adattárhoz van rendelve, és az adott helyhez társítva van `type` `TrainingOutput` `AutoMLStep` . Mivel ezeket az `pipeline_output_name` objektumokat hozzárendeljük `PipelineData` , azok értékei nem csupán az egyes folyamatokból, hanem a teljes folyamatból lesznek elérhetők, a "folyamat eredményeinek vizsgálata" szakaszban ismertetett módon. 
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>Az automatikus ML-folyamat lépésének konfigurálása és létrehozása
 
-A bemenetek és kimenetek meghatározása után itt az ideje, hogy létrehozza a `AutoMLConfig` és `AutoMLStep`a értéket. A konfiguráció részletei a feladattól függenek, az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben leírtak szerint. A Titanic túlélési besorolása feladathoz az alábbi kódrészlet egy egyszerű konfigurációt mutat be.
+A bemenetek és kimenetek meghatározása után itt az ideje, hogy létrehozza a `AutoMLConfig` és a értéket `AutoMLStep` . A konfiguráció részletei a feladattól függenek, az [automatikus ml-kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)című témakörben leírtak szerint. A Titanic túlélési besorolása feladathoz az alábbi kódrészlet egy egyszerű konfigurációt mutat be.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -320,33 +320,33 @@ train_step = AutoMLStep(name='AutoML_Classification',
     outputs=[metrics_data,model_data],
     allow_reuse=True)
 ```
-A kódrészlet egy gyakran használt kifejezést mutat be `AutoMLConfig`. A több folyadékot (hiperparaméter-ish) tartalmazó argumentumok külön szótárban vannak megadva, míg a kisebb valószínűséggel módosuló értékek közvetlenül a `AutoMLConfig` konstruktorban vannak megadva. Ebben az esetben az `automl_settings` adja meg a rövid futtatást: a Futtatás csak 2 iteráció vagy 15 perc elteltével áll le, attól függően, hogy melyik következik be először.
+A kódrészlet egy gyakran használt kifejezést mutat be `AutoMLConfig` . A több folyadékot (hiperparaméter-ish) tartalmazó argumentumok külön szótárban vannak megadva, míg a kisebb valószínűséggel módosuló értékek közvetlenül a `AutoMLConfig` konstruktorban vannak megadva. Ebben az esetben az `automl_settings` adja meg a rövid futtatást: a Futtatás csak 2 iteráció vagy 15 perc elteltével áll le, attól függően, hogy melyik következik be először.
 
-A `automl_settings` szótárt a rendszer a `AutoMLConfig` kwargs adja át a konstruktornak. A többi paraméter nem összetett:
+A `automl_settings` szótárt a rendszer a kwargs adja át a `AutoMLConfig` konstruktornak. A többi paraméter nem összetett:
 
-- `task`erre a példára van beállítva `classification` . A többi érvényes érték `regression` a és a`forecasting`
+- `task``classification`erre a példára van beállítva. A többi érvényes érték a `regression` és a`forecasting`
 - `path`és `debug_log` írja le a projekt elérési útját és egy helyi fájlt, amelybe a rendszer a hibakeresési adatokat írni fogja 
-- `compute_target`a korábban definiált `compute_target` , amely ebben a példában egy olcsó CPU-alapú gép. Ha a AutoML mély tanulási szolgáltatásait használja, a számítási célt GPU-alapúra szeretné módosítani
-- `featurization`értékre van `auto`állítva. További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) szakaszában találhatók. 
-- `training_data`az adatelőkészítési `PipelineOutputTabularDataset` lépés eredményeiből származó objektumokra van beállítva 
+- `compute_target`a korábban definiált, `compute_target` amely ebben a példában egy olcsó CPU-alapú gép. Ha a AutoML mély tanulási szolgáltatásait használja, a számítási célt GPU-alapúra szeretné módosítani
+- `featurization`értékre van állítva `auto` . További részletek az automatikus ML konfigurációs dokumentum [adat Featurization](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) szakaszában találhatók. 
+- `training_data`az `PipelineOutputTabularDataset` adatelőkészítési lépés eredményeiből származó objektumokra van beállítva 
 - `label_column_name`azt jelzi, hogy melyik oszlopot érdekli az előrejelzés 
 
-`AutoMLStep` Maga a `AutoMLConfig` és a kimenete is a mérőszámok és a `PipelineData` modell adatainak tárolására létrehozott objektumok. 
+`AutoMLStep`Maga a és a `AutoMLConfig` kimenete is a `PipelineData` mérőszámok és a modell adatainak tárolására létrehozott objektumok. 
 
 >[!Important]
-> Meg kell adnia `passthru_automl_config` , `False` hogy az `AutoMLStep` objektum a `PipelineOutputTabularDataset` bemenethez van-e használva.
+> Meg kell adnia `passthru_automl_config` , hogy az `False` `AutoMLStep` `PipelineOutputTabularDataset` objektum a bemenethez van-e használva.
 
-Ebben a példában az automatikus ML folyamat kereszt-érvényesítést hajt végre a `training_data`on. Az `n_cross_validations` argumentummal megadhatja a kereszthivatkozások számát. Ha már kiosztotta a betanítási adatait az adatelőkészítési lépések részeként, `validation_data` beállíthatja a sajátját. `Dataset`
+Ebben a példában az automatikus ML folyamat kereszt-érvényesítést hajt végre a on `training_data` . Az argumentummal megadhatja a kereszthivatkozások számát `n_cross_validations` . Ha már kiosztotta a betanítási adatait az adatelőkészítési lépések részeként, beállíthatja a `validation_data` sajátját `Dataset` .
 
-Időnként előfordulhat, hogy az adatszolgáltatások és `X` `y` az Adatfeliratok használatában is látható. Ez a technika elavult, és a bemenethez `training_data` kell használnia. 
+Időnként előfordulhat, hogy az `X` adatszolgáltatások és `y` az Adatfeliratok használatában is látható. Ez a technika elavult, és `training_data` a bemenethez kell használnia. 
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Az automatizált ML által generált modell regisztrálása 
 
-Az alapszintű ML-folyamatok utolsó lépése a létrehozott modell regisztrálása. A modellnek a munkaterület modell-Hivatalához való hozzáadásával elérhető lesz a portálon, és telepíthető. A modell regisztrálásához írjon egy másikat `PythonScriptStep` , amely `model_data` a kimenetét `AutoMLStep`veszi át.
+Az alapszintű ML-folyamatok utolsó lépése a létrehozott modell regisztrálása. A modellnek a munkaterület modell-Hivatalához való hozzáadásával elérhető lesz a portálon, és telepíthető. A modell regisztrálásához írjon egy másikat, `PythonScriptStep` amely a `model_data` kimenetét veszi át `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>A kód megírása a modell regisztrálásához
 
-A modell regisztrálva van a `Workspace`-ben. Valószínűleg ismeri a használatát `Workspace.from_config()` a munkaterületre való bejelentkezéshez a helyi gépen, de van egy másik módja, hogy a munkaterületet egy futó ml-folyamaton belülről is beolvassa. A `Run.get_context()` lekérdezi az `Run`aktívt. Ez `run` az objektum számos fontos objektumhoz biztosít hozzáférést, beleértve `Workspace` az itt használtkat is.
+A modell regisztrálva van a-ben `Workspace` . Valószínűleg ismeri a használatát a `Workspace.from_config()` munkaterületre való bejelentkezéshez a helyi gépen, de van egy másik módja, hogy a munkaterületet egy futó ml-folyamaton belülről is beolvassa. A `Run.get_context()` lekérdezi az aktívt `Run` . Ez az `run` objektum számos fontos objektumhoz biztosít hozzáférést, beleértve az `Workspace` itt használtkat is.
 
 ```python
 %%writefile register_model.py
@@ -375,7 +375,7 @@ print("Registered version {0} of model {1}".format(model.version, model.name))
 
 ### <a name="write-the-pythonscriptstep-code"></a>A PythonScriptStep kód írása
 
-A modell – a regisztrálás `PythonScriptStep` az egyik `PipelineParameter` argumentumát használja. A folyamat paraméterei olyan folyamatok argumentumai, amelyek könnyen állíthatók be a futtatási beküldési időben. A deklarációt követően a rendszer normál argumentumként adja át őket. 
+A modell – a regisztrálás az `PythonScriptStep` `PipelineParameter` egyik argumentumát használja. A folyamat paraméterei olyan folyamatok argumentumai, amelyek könnyen állíthatók be a futtatási beküldési időben. A deklarációt követően a rendszer normál argumentumként adja át őket. 
 
 ```python
 
@@ -395,7 +395,7 @@ register_step = PythonScriptStep(script_name="register_model.py",
 
 ## <a name="create-and-run-your-automated-ml-pipeline"></a>Automatikus ML-folyamat létrehozása és futtatása
 
-Egy- `AutoMLStep` t tartalmazó folyamat létrehozása és futtatása nem különbözik a normál folyamattól. 
+Egy-t tartalmazó folyamat létrehozása és futtatása `AutoMLStep` nem különbözik a normál folyamattól. 
 
 ```python
 from azureml.pipeline.core import Pipeline
@@ -409,11 +409,11 @@ run = experiment.submit(pipeline, show_output=True)
 run.wait_for_completion()
 ```
 
-A fenti kód kombinálja az adatelőkészítést, az automatikus ML-t és a modell- `Pipeline` regisztrálási lépéseket egy objektumba. Ezután létrehoz egy `Experiment` objektumot. A `Experiment` konstruktor lekéri az elnevezett kísérletet, ha az létezik, vagy szükség esetén létrehozza azt. Beküldi a `Pipeline` -t `Experiment`a rendszerbe `Run` , és létrehoz egy objektumot, amely aszinkron módon futtatja a folyamatot. A `wait_for_completion()` függvény blokkolja, amíg a Futtatás be nem fejeződik.
+A fenti kód kombinálja az adatelőkészítést, az automatikus ML-t és a modell-regisztrálási lépéseket egy `Pipeline` objektumba. Ezután létrehoz egy `Experiment` objektumot. A `Experiment` konstruktor lekéri az elnevezett kísérletet, ha az létezik, vagy szükség esetén létrehozza azt. Beküldi a- `Pipeline` t a `Experiment` rendszerbe, és létrehoz egy `Run` objektumot, amely aszinkron módon futtatja a folyamatot. A `wait_for_completion()` függvény blokkolja, amíg a Futtatás be nem fejeződik.
 
 ### <a name="examine-pipeline-results"></a>A folyamat eredményeinek vizsgálata 
 
-A `run` befejezést követően lekérheti azokat `PipelineData` az objektumokat, amelyek hozzá lettek rendelve `pipeline_output_name`. Letöltheti az eredményeket, és betöltheti őket további feldolgozás céljából.  
+A befejezést követően lekérheti azokat `run` `PipelineData` az objektumokat, amelyek hozzá lettek rendelve `pipeline_output_name` . Letöltheti az eredményeket, és betöltheti őket további feldolgozás céljából.  
 
 ```python
 metrics_output_port = run.get_pipeline_output('metrics_output')
@@ -423,7 +423,7 @@ metrics_output_port.download('.', show_progress=True)
 model_output_port.download('.', show_progress=True)
 ```
 
-A letöltött fájlok az alkönyvtárba `azureml/{run.id}/`íródnak. A metrikai fájl JSON formátumú, és a rendszer átalakíthatja a vizsgálathoz a pandák dataframe.
+A letöltött fájlok az alkönyvtárba íródnak `azureml/{run.id}/` . A metrikai fájl JSON formátumú, és a rendszer átalakíthatja a vizsgálathoz a pandák dataframe.
 
 Helyi feldolgozás esetén előfordulhat, hogy telepítenie kell a megfelelő csomagokat, például a pandák, a savanyúság, a AzureML SDK és így tovább. Ebben a példában valószínű, hogy az automatikus ML által talált legjobb modell a XGBoost függ.
 
@@ -465,9 +465,9 @@ A meglévő modellek betöltésével és használatával kapcsolatos további in
 
 ### <a name="download-the-results-of-an-automated-ml-run"></a>Automatikus ML-Futtatás eredményeinek letöltése
 
-Ha már követte a cikket, a rendszer létrehoz egy példányban lévő `run` objektumot. A `Run` `Workspace` befejezett objektumokat azonban egy `Experiment` objektumból is lekérheti.
+Ha már követte a cikket, a rendszer létrehoz egy példányban lévő `run` objektumot. `Run`A befejezett objektumokat azonban `Workspace` egy objektumból is lekérheti `Experiment` .
 
-A munkaterület az összes kísérlet és Futtatás teljes rekordját tartalmazza. A portál használatával megkeresheti és letöltheti a kísérletek eredményét, vagy használhat programkódot. Ha egy korábbi futtatásból szeretne hozzáférni a rekordokhoz, a Azure Machine Learning használatával megkeresheti annak a futtatásnak az AZONOSÍTÓját, amelyben érdekli. Ezzel az AZONOSÍTÓval kiválaszthatja a és `run` `Workspace` `Experiment`a konkrét módszerét.
+A munkaterület az összes kísérlet és Futtatás teljes rekordját tartalmazza. A portál használatával megkeresheti és letöltheti a kísérletek eredményét, vagy használhat programkódot. Ha egy korábbi futtatásból szeretne hozzáférni a rekordokhoz, a Azure Machine Learning használatával megkeresheti annak a futtatásnak az AZONOSÍTÓját, amelyben érdekli. Ezzel az AZONOSÍTÓval kiválaszthatja a `run` és a konkrét módszerét `Workspace` `Experiment` .
 
 ```python
 # Retrieved from Azure Machine Learning web UI
@@ -476,7 +476,7 @@ experiment = ws.experiments['titanic_automl']
 run = next(run for run in ex.get_runs() if run.id == run_id)
 ```
 
-A fenti kódban szereplő karakterláncokat a korábbi futtatások jellemzőire kell módosítania. A fenti kódrészlet feltételezi, hogy hozzárendelte `ws` a megfelelőt `Workspace` a normálishoz `from_config()`. A rendszer közvetlenül lekéri a érdeklődési kísérletet, majd a kód `Run` megkeresi a kamatot az `run.id` érték egyeztetésével.
+A fenti kódban szereplő karakterláncokat a korábbi futtatások jellemzőire kell módosítania. A fenti kódrészlet feltételezi, hogy hozzárendelte a `ws` megfelelőt a `Workspace` normálishoz `from_config()` . A rendszer közvetlenül lekéri a érdeklődési kísérletet, majd a kód megkeresi a `Run` kamatot az érték egyeztetésével `run.id` .
 
 Ha rendelkezik egy `Run` objektummal, letöltheti a metrikákat és a modellt. 
 
@@ -490,7 +490,7 @@ metrics.get_port_data_reference().download('.')
 model.get_port_data_reference().download('.')
 ```
 
-Minden `Run` objektum olyan `StepRun` objektumokat tartalmaz, amelyek az egyes folyamatokra vonatkozó lépésekkel kapcsolatos információkat tartalmazzák. A `run` a következő `StepRun` objektumra keres rá: `AutoMLStep`. A metrikák és a modellek az alapértelmezett nevük alapján kérhetők le, amelyek akkor is elérhetők, ha nem `PipelineData` adnak át objektumokat `outputs` a paraméterének `AutoMLStep`. 
+Minden `Run` objektum olyan `StepRun` objektumokat tartalmaz, amelyek az egyes folyamatokra vonatkozó lépésekkel kapcsolatos információkat tartalmazzák. A a következő `run` `StepRun` objektumra keres rá: `AutoMLStep` . A metrikák és a modellek az alapértelmezett nevük alapján kérhetők le, amelyek akkor is elérhetők, ha nem adnak át `PipelineData` objektumokat a `outputs` paraméterének `AutoMLStep` . 
 
 Végül a rendszer letölti a tényleges mérőszámokat és modelleket a helyi gépre, ahogy azt a fenti "a folyamat eredményeinek vizsgálata" szakaszban tárgyalták.
 

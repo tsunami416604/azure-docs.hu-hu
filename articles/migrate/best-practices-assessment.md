@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185982"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433045"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -83,7 +83,18 @@ Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létreh
 
 ### <a name="outdated-assessments"></a>Elavult értékelések
 
-Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. A módosítások tükrözéséhez futtassa újra az értékelést.
+Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
+
+- Processzor-magok száma
+- Lefoglalt memória
+- Rendszerindítási típus vagy belső vezérlőprogram
+- Operációs rendszer neve, verziója és architektúrája
+- Lemezek száma
+- Hálózati adapterek száma
+- Lemez méretének változása (GB lefoglalt)
+- Frissítés a NIC tulajdonságaira. Például: Mac-cím módosítása, IP-cím hozzáadása stb.
+
+Futtassa újra az értékelést (**újraszámítva**), hogy tükrözze a módosításokat.
 
 ### <a name="low-confidence-rating"></a>Alacsony megbízhatósági minősítés
 
@@ -96,7 +107,7 @@ Előfordulhat, hogy az értékelés számos okból nem rendelkezik az összes ad
 - Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ](concepts-assessment-calculation.md) az értékelések kiszámításáról.
 - [Megtudhatja](how-to-modify-assessment.md) , hogyan szabhatja testre az értékeléseket.

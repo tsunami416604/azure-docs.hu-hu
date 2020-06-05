@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f37fca21b4553d7ce6892e21d8ae0470873e111f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644471"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433366"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-kód végrehajtása a Azure Machine Learning Designerben
 
@@ -83,6 +83,6 @@ Ebben a példában a pandák használatával két oszlopot egyesítünk a szemé
 
 Most már rendelkezik egy adatkészlettel, amely a **dollár/HP**új funkcióval rendelkezik, ami hasznos lehet az autó ajánlójának betanításához. Ez egy példa a szolgáltatások kinyerésére és a dimenzióját csökkentésére. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [importálhatja a saját adatait](how-to-designer-import-data.md) Azure Machine learning Designerben.

@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 877dab3376e1a4397d9f1c6971baea957b4eea68
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310489"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424176"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -92,7 +92,7 @@ A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely e
    ![Webhook kiválasztása](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Az **esemény-előfizetés létrehozása** oldalon hajtsa végre a következő lépéseket: 
     1. Adja meg az esemény-előfizetés **nevét** .
-    2. Adja meg a **rendszer témakör** **nevét** . 
+    2. Adja meg a **rendszer témakör** **nevét** . Korábban, amikor létrehozott egy előfizetést az Azure-források, például az Azure Blob Storage vagy az Azure Event Hubs által kiváltott eseményhez, a Event Grid szolgáltatás automatikusan létrehoz egy rendszertémakört egy **véletlenszerűen generált névvel**. Most megadhatja a rendszertémakör nevét, miközben a témakört a Azure Portalban a következő képen látható módon hozza létre. Ezt a rendszertémakör-erőforrást használhatja a metrikák és a diagnosztikai naplók felderítésére.
 
        ![Adja meg az esemény-előfizetés és a rendszer témakör nevét](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
 
@@ -146,7 +146,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

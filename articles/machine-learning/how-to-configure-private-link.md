@@ -5,17 +5,17 @@ description: Az Azure Private link használatával biztonságosan férhet hozzá
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 9a5a739ec9a17d37d8bcfd65face91c8223c452c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891370"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432245"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
@@ -71,7 +71,7 @@ További információ: [erőforrások központi telepítése egyéni sablonból]
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>A sablon üzembe helyezése Azure PowerShell használatával
 
-Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az aktuális könyvtárban `azuredeploy.json` található fájlba:
+Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az `azuredeploy.json` aktuális könyvtárban található fájlba:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +84,7 @@ További információ: [erőforrások üzembe helyezése Resource Manager-sablon
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>A sablon üzembe helyezése az Azure CLI használatával
 
-Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az aktuális könyvtárban `azuredeploy.json` található fájlba:
+Ez a példa azt feltételezi, hogy a dokumentum végén mentette a sablonok egyikét az `azuredeploy.json` aktuális könyvtárban található fájlba:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -1162,6 +1162,6 @@ A virtuális hálózaton belüli Azure Container Registry biztonságossá tétel
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [nagyvállalati biztonsági](concept-enterprise-security.md) cikket.

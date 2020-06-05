@@ -5,17 +5,17 @@ description: Azure Machine Learning-munkaterületek Azure-tűzfalakkal való hoz
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 22136efc493b4838a8f538091d6272e3c167510e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981965"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434729"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall mögötti munkaterület használata Azure Machine Learning
 
@@ -28,7 +28,7 @@ A Azure Firewall a Azure Machine Learning-munkaterülethez és a nyilvános inte
 A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben szereplő címekre irányuló és onnan érkező forgalmat.
 
 > [!TIP]
-> A hálózati szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és a portokat `*`a következőre:.
+> A hálózati szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és a portokat a következőre: `*` .
 >
 > A Azure Firewall konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule).
 
@@ -36,7 +36,7 @@ A tűzfalon hozzon létre egy hálózati szabályt, amely engedélyezi a cikkben
 
 Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Csoportok betanítása |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -55,7 +55,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **anaconda.com** | Conda-csomagok telepítésekor használatos |
 | **pypi.org** | Pip-csomagok telepítésekor használatos |
@@ -67,11 +67,11 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 
-| **Állomásnév** | **Cél** |
+| **Állomásnév** | **Szerep** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-További lépések
+Következő lépések
 
 * [[Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)]
 * [Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit](how-to-enable-virtual-network.md)

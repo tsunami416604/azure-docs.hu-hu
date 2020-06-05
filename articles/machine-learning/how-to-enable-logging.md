@@ -6,15 +6,15 @@ author: trevorbye
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: trbye
 ms.date: 03/05/2020
-ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92120d7eabcd4f9fe8d30c1124555588fcadd19a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78396149"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432903"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Bejelentkezés engedélyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,13 @@ A Azure Machine Learning Python SDK lehetővé teszi, hogy az alapértelmezett P
 > * Modellek és számítási célok betanítása
 > * Rendszerkép létrehozása
 > * Üzembe helyezett modellek
-> * Python `logging` -beállítások
+> * Python- `logging` Beállítások
 
 [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md). Az SDK-val kapcsolatos további információkért tekintse meg az [útmutatót](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
 ## <a name="training-models-and-compute-target-logging"></a>Képzési modellek és számítási cél naplózása
 
-Több módon is engedélyezheti a naplózást a modell betanítási folyamata során, és a bemutatott példák a közös tervezési mintákat szemléltetik. A futtatással kapcsolatos adatait könnyedén naplózhatja a munkaterületen a felhőben, ha `start_logging` a függvényt `Experiment` használja az osztályban.
+Több módon is engedélyezheti a naplózást a modell betanítási folyamata során, és a bemutatott példák a közös tervezési mintákat szemléltetik. A futtatással kapcsolatos adatait könnyedén naplózhatja a munkaterületen a felhőben, ha a `start_logging` függvényt használja az `Experiment` osztályban.
 
 ```python
 from azureml.core import Experiment
@@ -43,7 +43,7 @@ run.log("test-val", 10)
 
 További naplózási függvényekért tekintse meg a [futtatási](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) osztály dokumentációját.
 
-Az alkalmazás állapotának helyi naplózásának engedélyezéséhez a betanítási `show_output` folyamat során használja a (z) paramétert. A részletes naplózás engedélyezése lehetővé teszi, hogy megtekintse a betanítási folyamat részleteit, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információkat. A következő kód használatával engedélyezheti a naplózást a kísérlet beküldéséhez.
+Az alkalmazás állapotának helyi naplózásának engedélyezéséhez a betanítási folyamat során használja a (z `show_output` ) paramétert. A részletes naplózás engedélyezése lehetővé teszi, hogy megtekintse a betanítási folyamat részleteit, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információkat. A következő kód használatával engedélyezheti a naplózást a kísérlet beküldéséhez.
 
 ```python
 from azureml.core import Experiment
@@ -58,7 +58,7 @@ Ugyanezt a paramétert használhatja a `wait_for_completion` függvényben az er
 run.wait_for_completion(show_output=True)
 ```
 
-Az SDK az alapértelmezett Python-naplózási csomag használatát is támogatja bizonyos helyzetekben a betanításhoz. A következő példa egy `INFO` `AutoMLConfig` objektum naplózási szintjét engedélyezi.
+Az SDK az alapértelmezett Python-naplózási csomag használatát is támogatja bizonyos helyzetekben a betanításhoz. A következő példa egy objektum naplózási szintjét engedélyezi `INFO` `AutoMLConfig` .
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -73,7 +73,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-A `show_output` paramétert állandó számítási cél létrehozásakor is használhatja. A `wait_for_completion` függvény paraméterének megadásával engedélyezheti a naplózást a számítási cél létrehozásakor.
+A `show_output` paramétert állandó számítási cél létrehozásakor is használhatja. A függvény paraméterének megadásával `wait_for_completion` engedélyezheti a naplózást a számítási cél létrehozásakor.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -85,7 +85,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-for-deployed-models"></a>Üzembe helyezett modellek naplózása
 
-A korábban üzembe helyezett webszolgáltatás naplófájljainak beolvasásához töltse be a szolgáltatást, és használja `get_logs()` a függvényt. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
+A korábban üzembe helyezett webszolgáltatás naplófájljainak beolvasásához töltse be a szolgáltatást, és használja a `get_logs()` függvényt. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
 
 ```python
 from azureml.core.webservice import Webservice
@@ -95,7 +95,7 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-A webszolgáltatás egyéni verem-nyomkövetéseit a Application Insights engedélyezésével is naplózhatja, amely lehetővé teszi a kérés/válasz időpontjának, a meghibásodási arányok és a kivételek figyelését. A Application Insights `update()` engedélyezéséhez hívja meg a függvényt egy meglévő webszolgáltatáson.
+A webszolgáltatás egyéni verem-nyomkövetéseit a Application Insights engedélyezésével is naplózhatja, amely lehetővé teszi a kérés/válasz időpontjának, a meghibásodási arányok és a kivételek figyelését. A `update()` Application Insights engedélyezéséhez hívja meg a függvényt egy meglévő webszolgáltatáson.
 
 ```python
 service.update(enable_app_insights=True)
@@ -112,6 +112,6 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése](how-to-enable-app-insights.md)

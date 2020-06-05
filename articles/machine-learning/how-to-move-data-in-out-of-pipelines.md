@@ -5,17 +5,17 @@ description: Ismerkedjen meg Azure Machine Learning folyamatokban lévő adatok 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 67af2fec75c2a4ead10e59c651dac1542c095659
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858457"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430102"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -25,24 +25,24 @@ Ez a cikk egy Azure Machine Learning folyamat lépései közötti adatimportál�
 
 Ez a cikk bemutatja, hogyan végezheti el a következőket:
 
-- Objektumok `Dataset` használata már meglévő adatértékekhez
+- `Dataset`Objektumok használata már meglévő adatértékekhez
 - A lépésein belüli hozzáférés adatai
 - Az `Dataset` adat felosztása részhalmazokra, például betanítási és érvényesítési részhalmazokra
-- Objektumok `PipelineData` létrehozása az adatok átviteléhez a következő folyamat lépéséhez
-- Objektumok `PipelineData` használata bemenetként a folyamat lépéseihez
-- Hozzon `Dataset` létre új `PipelineData` objektumokat, amelyeket meg szeretne őrizni
+- Objektumok létrehozása az `PipelineData` adatok átviteléhez a következő folyamat lépéséhez
+- `PipelineData`Objektumok használata bemenetként a folyamat lépéseihez
+- Hozzon létre új `Dataset` objektumokat, `PipelineData` amelyeket meg szeretne őrizni
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 
 - Egy Azure Machine Learning-munkaterület.
   
-  [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md) , vagy használjon egy meglévőt a Python SDK-n keresztül. Importálja `Workspace` a `Datastore` és az osztályt, és töltse be az előfizetési adatokat `config.json` a `from_config()`fájlból a függvény használatával. Ez a függvény alapértelmezés szerint az aktuális könyvtárban keresi a JSON-fájlt, de megadhat egy Path paramétert is, amely a fájlra mutat `from_config(path="your/file/path")`.
+  [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md) , vagy használjon egy meglévőt a Python SDK-n keresztül. Importálja a `Workspace` és az `Datastore` osztályt, és töltse be az előfizetési adatokat a fájlból `config.json` a függvény használatával `from_config()` . Ez a függvény alapértelmezés szerint az aktuális könyvtárban keresi a JSON-fájlt, de megadhat egy Path paramétert is, amely a fájlra mutat `from_config(path="your/file/path")` .
 
    ```python
    import azureml.core
@@ -55,11 +55,11 @@ A következők szükségesek:
 
 - Nem kötelező: egy meglévő gépi tanulási folyamat, például egy, a [Machine learning-folyamatok létrehozása és futtatása Azure Machine learning SDK-val](how-to-create-your-first-pipeline.md)című témakörben leírtak szerint.
 
-## <a name="use-dataset-objects-for-pre-existing-data"></a>Objektumok `Dataset` használata már meglévő adatértékekhez 
+## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objektumok használata már meglévő adatértékekhez 
 
 Az adatfolyamatok adatfeldolgozásának előnyben részesített módja egy [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) -objektum használata. `Dataset`az objektumok az egész munkaterületen elérhető állandó adatértékeket jelölik.
 
-Számos módon hozhatók létre és regisztrálhatók `Dataset` objektumok. A táblázatos adatkészletek egy vagy több fájlban elérhető tagolt adatokat foglalnak magukban. A fájl adatkészletei bináris adatokat (például képeket) vagy az elemezni kívánt adatokat használják. Az objektumok létrehozásának `Dataset` legegyszerűbb programozási módjai a meglévő Blobok használata a munkaterület-tárolóban vagy a nyilvános URL-címekben:
+Számos módon hozhatók létre és regisztrálhatók `Dataset` objektumok. A táblázatos adatkészletek egy vagy több fájlban elérhető tagolt adatokat foglalnak magukban. A fájl adatkészletei bináris adatokat (például képeket) vagy az elemezni kívánt adatokat használják. Az objektumok létrehozásának legegyszerűbb programozási módjai a `Dataset` meglévő Blobok használata a munkaterület-tárolóban vagy a nyilvános URL-címekben:
 
 ```python
 datastore = Datastore.get(workspace, 'training_data')
@@ -75,17 +75,17 @@ Az adatkészletek különböző lehetőségekkel és különböző forrásokból
 
 ### <a name="pass-datasets-to-your-script"></a>Adatkészletek továbbítása a parancsfájlba
 
-Ha át szeretné adni az adatkészlet elérési útját a parancsfájlhoz, használja az `Dataset` objektum `as_named_input()` metódusát. Átadhatja az eredményül `DatasetConsumptionConfig` kapott objektumot a parancsfájlnak argumentumként, vagy a `inputs` folyamat parancsfájljának argumentumának használatával lekérheti az adatkészletet a `Run.get_context().input_datasets[]`használatával.
+Ha át szeretné adni az adatkészlet elérési útját a parancsfájlhoz, használja az `Dataset` objektum `as_named_input()` metódusát. Átadhatja az eredményül kapott `DatasetConsumptionConfig` objektumot a parancsfájlnak argumentumként, vagy a `inputs` folyamat parancsfájljának argumentumának használatával lekérheti az adatkészletet a használatával `Run.get_context().input_datasets[]` .
 
-Miután létrehozott egy elnevezett bemenetet, kiválaszthatja a hozzáférési módját: `as_mount()` vagy `as_download()`. Ha a szkript feldolgozza az adatkészlet összes fájlját, és a számítási erőforrás lemeze elég nagy az adatkészlet számára, a letöltési hozzáférési mód a jobb választás. A letöltési hozzáférési mód elkerüli az adatátviteli terhelést a futásidőben. Ha a parancsfájl az adatkészlet egy részhalmazára fér hozzá, vagy túl nagy a számítási feladatokhoz, használja a csatlakoztatási hozzáférési módot. További információért olvassa el a [Csatlakoztatás és letöltés](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) című témakört.
+Miután létrehozott egy elnevezett bemenetet, kiválaszthatja a hozzáférési módját: `as_mount()` vagy `as_download()` . Ha a szkript feldolgozza az adatkészlet összes fájlját, és a számítási erőforrás lemeze elég nagy az adatkészlet számára, a letöltési hozzáférési mód a jobb választás. A letöltési hozzáférési mód elkerüli az adatátviteli terhelést a futásidőben. Ha a parancsfájl az adatkészlet egy részhalmazára fér hozzá, vagy túl nagy a számítási feladatokhoz, használja a csatlakoztatási hozzáférési módot. További információért olvassa el a [Csatlakoztatás és letöltés](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) című témakört.
 
 Adatkészlet átadása a folyamat lépéseire:
 
-1. Objektum létrehozásához használja `TabularDataset.as_named_inputs()` a (z) vagy `FileDataset.as_named_input()` a (nem) lehetőséget. `DatasetConsumptionConfig`
-1. Hozzáférési `as_mount()` mód `as_download()` beállítása vagy használata
+1. `TabularDataset.as_named_inputs()` `FileDataset.as_named_input()` Objektum létrehozásához használja a (z) vagy a (nem) lehetőséget. `DatasetConsumptionConfig`
+1. `as_mount()` `as_download()` Hozzáférési mód beállítása vagy használata
 1. Adja át az adatkészleteket a folyamat lépéseire a `arguments` vagy a `inputs` argumentum használatával.
 
-A következő kódrészlet a fenti lépések a `PythonScriptStep` konstruktorban való összekapcsolásának általános mintáját mutatja be: 
+A következő kódrészlet a fenti lépések a konstruktorban való összekapcsolásának általános mintáját mutatja be `PythonScriptStep` : 
 
 ```python
 
@@ -114,7 +114,7 @@ train_step = PythonScriptStep(
 
 ### <a name="access-datasets-within-your-script"></a>A parancsfájlban lévő adatkészletek elérése
 
-A folyamat lépéseit tartalmazó parancsfájl elnevezett bemenetei szótárként érhetők el `Run` az objektumon belül. Kérje le az `Run` aktív objektumot `Run.get_context()` a használatával, majd kérje le az elnevezett `input_datasets`bemenetek szótárát a használatával. Ha az argumentum helyett `DatasetConsumptionConfig` `arguments` `inputs` az argumentumot adta meg, akkor a kód használatával `ArgParser` férhet hozzá az adataihoz. Mindkét módszert az alábbi kódrészlet mutatja be.
+A folyamat lépéseit tartalmazó parancsfájl elnevezett bemenetei szótárként érhetők el az `Run` objektumon belül. Kérje le az aktív `Run` objektumot a használatával `Run.get_context()` , majd kérje le az elnevezett bemenetek szótárát a használatával `input_datasets` . Ha az argumentum helyett az argumentumot adta meg, akkor a `DatasetConsumptionConfig` `arguments` `inputs` kód használatával férhet hozzá az adataihoz `ArgParser` . Mindkét módszert az alábbi kódrészlet mutatja be.
 
 ```python
 # In pipeline definition script:
@@ -146,9 +146,9 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
-## <a name="use-pipelinedata-for-intermediate-data"></a>A `PipelineData` köztes adatkezeléshez használatos
+## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`A köztes adatkezeléshez használatos
 
-Míg `Dataset` az objektumok állandó adatokat képviselnek, a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektumok a folyamat lépéseiből származó ideiglenes adatokhoz használatosak. Mivel egy `PipelineData` objektum élettartama hosszabb, mint egyetlen folyamat, a folyamat definíciós parancsfájljában definiálja őket. `PipelineData` Objektum létrehozásakor meg kell adnia egy nevet és egy adattárolót, amelyen az adat található. Adja át `PipelineData` az objektum (oka) t `PythonScriptStep` a (z `arguments` ) és `outputs` az argumentumok _használatával:_
+Míg `Dataset` az objektumok állandó adatokat képviselnek, a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektumok a folyamat lépéseiből származó ideiglenes adatokhoz használatosak. Mivel egy objektum élettartama `PipelineData` hosszabb, mint egyetlen folyamat, a folyamat definíciós parancsfájljában definiálja őket. Objektum létrehozásakor meg `PipelineData` kell adnia egy nevet és egy adattárolót, amelyen az adat található. Adja át az `PipelineData` objektum (oka) t a (z) `PythonScriptStep` _both_ `arguments` és az `outputs` argumentumok használatával:
 
 ```python
 default_datastore = workspace.get_default_datastore()
@@ -164,7 +164,7 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-Dönthet úgy, hogy az `PipelineData` objektumot egy azonnali feltöltést biztosító hozzáférési móddal hozza létre. Ebben az `PipelineData`esetben a létrehozásakor állítsa be a `upload_mode` (z) `"upload"` és a ( `output_path_on_compute` z) argumentumot a következőre:
+Dönthet úgy, hogy az `PipelineData` objektumot egy azonnali feltöltést biztosító hozzáférési móddal hozza létre. Ebben az esetben a létrehozásakor állítsa be a (z) és a (z) `PipelineData` `upload_mode` `"upload"` argumentumot a következőre `output_path_on_compute` :
 
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
@@ -172,7 +172,7 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Használat `PipelineData` egy képzési lépés kimenete
 
-A folyamaton `PythonScriptStep`belül a program argumentumai segítségével kérheti le a rendelkezésre álló kimeneti útvonalakat. Ha ez a lépés az első, és inicializálja a kimeneti adatokat, létre kell hoznia a könyvtárat a megadott elérési úton. Ezután megírhatja, hogy milyen fájlokat szeretne foglalni a `PipelineData`alkalmazásban.
+A folyamaton belül a `PythonScriptStep` program argumentumai segítségével kérheti le a rendelkezésre álló kimeneti útvonalakat. Ha ez a lépés az első, és inicializálja a kimeneti adatokat, létre kell hoznia a könyvtárat a megadott elérési úton. Ezután megírhatja, hogy milyen fájlokat szeretne foglalni a alkalmazásban `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -185,7 +185,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-Ha `PipelineData` létrehozta az argumentumot `is_directory` a értékre `True`, akkor elég lenne ahhoz, hogy csak a `os.makedirs()` hívást hajtsa végre, és az elérési út minden fájlját meg kellene írnia. További részletekért tekintse meg a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dokumentációját.
+Ha létrehozta `PipelineData` az `is_directory` argumentumot a értékre `True` , akkor elég lenne ahhoz, hogy csak a hívást hajtsa végre, `os.makedirs()` és az elérési út minden fájlját meg kellene írnia. További részletekért tekintse meg a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) dokumentációját.
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Olvasási `PipelineData` bemenetként a nem kezdeti lépésekhez
 
@@ -226,16 +226,16 @@ with open(args.pd) as f:
     print(f.read())
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>Objektumok `PipelineData` átalakítása s `Dataset`-re
+## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData`Objektumok átalakítása s-re `Dataset`
 
-Ha a futtatási időtartamnál hosszabb `PipelineData` ideig szeretné elérhetővé tenni a rendelkezésre állást, a `as_dataset()` függvény használatával alakítsa át. `Dataset` Ezután regisztrálhatja a `Dataset`-t, így a munkaterület első osztályú polgára lehet. Mivel az `PipelineData` objektum a folyamat futása során minden alkalommal eltérő elérési úttal rendelkezik, erősen `create_new_version` ajánlott, hogy `True` a rendszer egy `Dataset` `PipelineData` objektumból hozzon létre egy objektumot.
+Ha `PipelineData` a futtatási időtartamnál hosszabb ideig szeretné elérhetővé tenni a rendelkezésre állást, a `as_dataset()` függvény használatával alakítsa át `Dataset` . Ezután regisztrálhatja a-t `Dataset` , így a munkaterület első osztályú polgára lehet. Mivel az `PipelineData` objektum a folyamat futása során minden alkalommal eltérő elérési úttal rendelkezik, erősen ajánlott, hogy a rendszer egy `create_new_version` `True` objektumból hozzon `Dataset` létre egy `PipelineData` objektumot.
 
 ```python
 step1_output_ds = step1_output_data.as_dataset()
 step1_output_ds.register(name="processed_data", create_new_version=True)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Machine learning-adatkészlet létrehozása](how-to-create-register-datasets.md)
 * [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](how-to-create-your-first-pipeline.md)

@@ -5,18 +5,18 @@ description: Ismerje meg, hogyan exportálhatja vagy törölheti a munkaterület
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d10228eb76f95a7d5225b6b414ca622c92bf1c5
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191634"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434276"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning szolgáltatás-munkaterület adatainak exportálása vagy törlése
 
@@ -36,11 +36,11 @@ Azure Machine Learning a személyes adatok a futtatási előzmények dokumentuma
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Munkaterület-adatbázis törlése a REST API
 
-Az adattörléshez a következő API-hívások hajthatók végre a HTTP-TÖRLÉSi művelettel. Ezeket a rendszer a kérelem `Authorization: Bearer <arm-token>` fejlécének engedélyezésével engedélyezi, ahol `<arm-token>` a a `https://management.core.windows.net/` végpont HRE hozzáférési jogkivonata.  
+Az adattörléshez a következő API-hívások hajthatók végre a HTTP-TÖRLÉSi művelettel. Ezeket a rendszer a `Authorization: Bearer <arm-token>` kérelem fejlécének engedélyezésével engedélyezi, ahol a a `<arm-token>` végpont HRE hozzáférési jogkivonata `https://management.core.windows.net/` .  
 
 Ha meg szeretné tudni, hogyan kérheti le ezt a tokent, és hogyan hívhat meg Azure-végpontokat, tekintse meg a további tudnivalók az [ml-erőforrások és az](how-to-manage-rest.md) [Azure REST API](https://docs.microsoft.com/rest/api/azure/)  
 
-Az alábbi példákban cserélje le a szöveget {} a társított erőforrást meghatározó példányok neveire.
+Az alábbi példákban cserélje le a szöveget a {} társított erőforrást meghatározó példányok neveire.
 
 ### <a name="delete-an-entire-workspace"></a>Teljes munkaterület törlése
 
@@ -92,11 +92,11 @@ Az egyes szolgáltatások a használatával törölhetők:
 
 ## <a name="export-service-data-with-the-rest-api"></a>A szolgáltatásban tárolt adatértékek exportálása a REST API
 
-Az adatexportáláshoz a következő API-hívások hajthatók végre a HTTP GET művelettel. Ezeket a rendszer a kérelem `Authorization: Bearer <arm-token>` fejlécének engedélyezésével engedélyezi, ahol `<arm-token>` a a végpont HRE hozzáférési jogkivonata`https://management.core.windows.net/`  
+Az adatexportáláshoz a következő API-hívások hajthatók végre a HTTP GET művelettel. Ezeket a rendszer a `Authorization: Bearer <arm-token>` kérelem fejlécének engedélyezésével engedélyezi, ahol a a `<arm-token>` végpont HRE hozzáférési jogkivonata`https://management.core.windows.net/`  
 
 Ha meg szeretné tudni, hogyan kérheti le ezt a tokent, és hogyan hívhat meg Azure-végpontokat, tekintse meg a további tudnivalók az [ml-erőforrások és az](how-to-manage-rest.md) [Azure REST API dokumentáció](https://docs.microsoft.com/rest/api/azure/)   
 
-Az alábbi példákban cserélje le a szöveget {} a társított erőforrást meghatározó példányok neveire.
+Az alábbi példákban cserélje le a szöveget a {} társított erőforrást meghatározó példányok neveire.
 
 ### <a name="export-workspace-information"></a>Munkaterület adatainak exportálása
 

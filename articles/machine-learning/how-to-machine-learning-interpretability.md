@@ -5,17 +5,17 @@ description: Ismerje meg, hogy a modell miért teszi a jóslatokat az Azure Mach
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dd9620b690b031567a85cfd1dfc2dcbc76fb6835
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982887"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430495"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutat�
 
 * `azureml.train.automl.automlexplainer`csomag az automatizált gépi tanulási modellek értelmezéséhez.
 
-A `pip install azureml-interpret` és `pip install azureml-interpret-contrib` az általános használatra, `pip install azureml-interpret-contrib` a AutoML pedig az értelmező csomagok beszerzésére használható.
+`pip install azureml-interpret`A és `pip install azureml-interpret-contrib` az általános használatra, a `pip install azureml-interpret-contrib` AutoML pedig az értelmező csomagok beszerzésére használható.
 
 
 > [!IMPORTANT]
@@ -84,7 +84,7 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
 
 
-A fent ismertetett értelmező technikák mellett egy másik, a nevű `TabularExplainer`SHAP-alapú magyarázat is támogatott. A modelltől függően a támogatott `TabularExplainer` SHAP-magyarázatok egyikét használja:
+A fent ismertetett értelmező technikák mellett egy másik, a nevű SHAP-alapú magyarázat is támogatott `TabularExplainer` . A modelltől függően `TabularExplainer` a támogatott SHAP-magyarázatok egyikét használja:
 
 * TreeExplainer az összes fa alapú modellhez
 * DeepExplainer DNN-modellekhez
@@ -109,7 +109,7 @@ Az `azureml.interpret` SDK csomagja a következő adatkészlet-formátumokkal be
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-A magyarázó függvények bemenetként is elfogadják a modelleket és a folyamatokat. Ha meg van adni modell, a modellnek meg kell valósítania `predict` az `predict_proba` előrejelzési függvényt, vagy a Scikit egyezménynek megfelelően kell megfelelnie. Ha a modell nem támogatja ezt, becsomagolhatja a modellt egy olyan függvénybe, amely ugyanazt az eredményt hozza `predict` létre `predict_proba` , mint a Scikit, és ezt a burkoló függvényt használja a kiválasztott magyarázattal. Ha egy folyamat van megadva, a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájlja egy előrejelzést ad vissza. Ezzel a burkoló módszerrel `azureml.interpret` a PyTorch-, TensorFlow-és kerasz-alapú modelleket, valamint a klasszikus gépi tanulási modelleket is támogathatja.
+A magyarázó függvények bemenetként is elfogadják a modelleket és a folyamatokat. Ha meg van adni modell, a modellnek meg kell valósítania az előrejelzési függvényt, `predict` vagy `predict_proba` a Scikit egyezménynek megfelelően kell megfelelnie. Ha a modell nem támogatja ezt, becsomagolhatja a modellt egy olyan függvénybe, amely ugyanazt az eredményt hozza létre, mint a `predict` `predict_proba` Scikit, és ezt a burkoló függvényt használja a kiválasztott magyarázattal. Ha egy folyamat van megadva, a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájlja egy előrejelzést ad vissza. Ezzel a burkoló módszerrel a `azureml.interpret` PyTorch-, TensorFlow-és kerasz-alapú modelleket, valamint a klasszikus gépi tanulási modelleket is támogathatja.
 
 ## <a name="local-and-remote-compute-target"></a>Helyi és távoli számítási cél
 
@@ -118,7 +118,7 @@ A `azureml.interpret` csomag úgy van kialakítva, hogy a helyi és távoli szá
 A magyarázatot távolról is futtathatja Azure Machine Learning számításon, és naplózhatja a magyarázat adatait a Azure Machine Learning futtatási előzmények szolgáltatásba. Az információk naplózása után a magyarázatokból származó jelentések és vizualizációk azonnal elérhetők a Azure Machine Learning Studióban a felhasználók elemzéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. 
 - További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 

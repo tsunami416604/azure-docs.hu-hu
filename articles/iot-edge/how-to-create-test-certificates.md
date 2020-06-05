@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309135"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430660"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Bemutató-tanúsítványok létrehozása IoT Edge eszköz funkcióinak teszteléséhez
 
@@ -272,7 +272,7 @@ Azonban érdemes elkerülni ugyanazt a nevet.
 ## <a name="create-downstream-device-certificates"></a>Alsóbb rétegbeli eszközök tanúsítványainak létrehozása
 
 Ha egy alsóbb rétegbeli IoT-eszközt állít be egy átjáró-forgatókönyvhöz, és X. 509 hitelesítést szeretne használni, az alárendelt eszközhöz bemutató tanúsítványokat hozhat létre.
-Ha szimmetrikus kulcsos hitelesítést szeretne használni, nincs szükség tanúsítványra az alsóbb rétegbeli eszközhöz.
+Ha szimmetrikus kulcsos hitelesítést szeretne használni, nem kell további tanúsítványokat létrehoznia az alsóbb rétegbeli eszközhöz.
 Az X. 509 tanúsítványok használatával kétféleképpen hitelesíthető egy IoT-eszköz: önaláírt tanúsítványok használata vagy hitelesítésszolgáltató (CA) által aláírt tanúsítvány használata.
 Az X. 509 önaláírt hitelesítés (más néven ujjlenyomatos hitelesítés) esetében új tanúsítványokat kell létrehoznia a IoT-eszközre való elhelyezéshez.
 Ezek a tanúsítványok olyan ujjlenyomattal rendelkeznek, amelyet IoT Hub a hitelesítéshez.

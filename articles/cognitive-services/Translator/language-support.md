@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996074"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434287"
 ---
 # <a name="language-and-region-support-for-translator"></a>Nyelvi és területi támogatás fordítóknak
 
@@ -74,10 +74,11 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 |Ír | `ga`| Neurális
 |Olasz|    `it`    |    Neurális|
 |Japán|    `ja`    |    Neurális|
-|kannada|`kn`| Neurális
+|kannada|`kn`| Neurális|
+|Kazak |`kk`| Neurális|
 |Kiswahili|    `sw`    |    Statisztikai|
-|Klingon|    `tlh`    |    Statisztikai|
-|Klingon (plqaD)|    `tlh-Qaak`    |    Statisztikai|
+|Klingon|    `tlh-Latn`    |    Statisztikai|
+|Klingon (plqaD)|    `tlh-Piqd`    |    Statisztikai|
 |Koreai    |`ko`    |    Neurális|
 |Lett|    `lv`    |    Neurális|
 |Litván|    `lt`    |    Neurális|
@@ -130,20 +131,20 @@ A Átbetűzés metódus a következő nyelveket támogatja. A "to/from", "<->" k
 | Kínai (egyszerűsített) | `zh-Hans` | kínai (egyszerűsített)`Hans`| <--> | kínai (hagyományos)`Hant`|
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | Latin betűs`Latn` |
 | Kínai (hagyományos) | `zh-Hant` | kínai (hagyományos)`Hant`| <--> | kínai (egyszerűsített)`Hans` |
-| gudzsaráti | `gu`  | gudzsaráti`Gujr` | --> | Latin betűs`Latn` |
+| gudzsaráti | `gu`  | gudzsaráti`Gujr` | <--> | Latin betűs`Latn` |
 | Héber | `he` | héber`Hebr` | <--> | Latin betűs`Latn` |
 | Hindi | `hi` | Devanagari`Deva` | <--> | Latin betűs`Latn` |
 | Japán | `ja` | japán`Jpan` | <--> | Latin betűs`Latn` |
-| kannada | `kn` | kannada`Knda` | --> | Latin betűs`Latn` |
-| malajálam | `ml` | malajálam`Mlym` | --> | Latin betűs`Latn` |
-| marathi | `mr` | Devanagari`Deva` | --> | Latin betűs`Latn` |
+| kannada | `kn` | kannada`Knda` | <--> | Latin betűs`Latn` |
+| malajálam | `ml` | malajálam`Mlym` | <--> | Latin betűs`Latn` |
+| marathi | `mr` | Devanagari`Deva` | <--> | Latin betűs`Latn` |
 | Oriya | `or` | Oriya`Orya` | <--> | Latin betűs`Latn` |
 | pandzsábi | `pa` | Gurmukhi`Guru`  | <--> | Latin betűs`Latn`  |
 | Szerb (cirill betűs) | `sr-Cyrl` | Cirill betűs`Cyrl`  | --> | Latin betűs`Latn` |
 | Szerb (latin betűs) | `sr-Latn` | Latin betűs`Latn` | --> | Cirill betűs`Cyrl`|
-| tamil | `ta` | tamil`Taml` | --> | Latin betűs`Latn` |
-| telugu | `te` | telugu`Telu` | --> | Latin betűs`Latn` |
-| Thai | `th` | thai`Thai` | --> | Latin betűs`Latn` |
+| tamil | `ta` | tamil`Taml` | <--> | Latin betűs`Latn` |
+| telugu | `te` | telugu`Telu` | <--> | Latin betűs`Latn` |
+| Thai | `th` | thai`Thai` | <--> | Latin betűs`Latn` |
 
 ## <a name="dictionary"></a>Szótár
 
@@ -177,7 +178,7 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 | Olasz      | `it`          |
 | Japán      | `ja`          |
 | Kiswahili      | `sw`          |
-| Klingon      | `tlh`          |
+| Klingon      | `tlh-Latn`          |
 | Koreai      | `ko`          |
 | Lett      | `lv`          |
 | Litván      | `lt`          |

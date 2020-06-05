@@ -6,15 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: c4eada891f68a21732ab9a19548cbdfe1a3833a8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: f1d5161b0efe0b8d9b9c0b84ac149050c3823ab6
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325851"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429474"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
-Ebből az oktatóanyagból megtudhatja, hogyan diagnosztizálhatja és megoldhatja az Azure Spring Cloud szolgáltatással kapcsolatos problémákat. Egyszerű módszert kínál a metrikák és naplók összegyűjtésére.
+A App Service Diagnostics egy interaktív megoldás, amely segít az alkalmazás hibakeresésében. Nem igényel konfigurálást. Ha problémákat tapasztal, App Service diagnosztika kimutatja, hogy mi a probléma, és útmutatást nyújt a problémák elhárítását és megoldását segítő információkhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:

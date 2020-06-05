@@ -5,18 +5,18 @@ description: Megtudhatja, hogyan engedélyezheti a HTTPS-t a Azure Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287339"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432854"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Kis eltérések vannak, amikor a biztonsági s-t az [üzembe helyezési célok](
 
 ## <a name="get-a-domain-name"></a>Tartománynév beszerzése
 
-Ha még nem rendelkezik tartománynévvel, vásároljon egyet a tartománynév- *regisztrálótól*. A folyamat és az ár eltér a regisztrátorok között. A regisztrátor a tartománynevet kezelő eszközöket biztosít. Ezeknek az eszközöknek a segítségével teljes tartománynevet (például www\.contoso.com) képezhető le a webszolgáltatást futtató IP-címhez.
+Ha még nem rendelkezik tartománynévvel, vásároljon egyet a tartománynév- *regisztrálótól*. A folyamat és az ár eltér a regisztrátorok között. A regisztrátor a tartománynevet kezelő eszközöket biztosít. Ezeknek az eszközöknek a segítségével teljes tartománynevet (például www \. contoso.com) képezhető le a webszolgáltatást futtató IP-címhez.
 
 ## <a name="get-a-tlsssl-certificate"></a>TLS/SSL-tanúsítvány beszerzése
 
@@ -63,7 +63,7 @@ A TLS/SSL-tanúsítványok (digitális tanúsítványok) többféleképpen is be
 * Egy **tanúsítvány**. A tanúsítványnak tartalmaznia kell a teljes tanúsítványláncot, és a "PEM-kódolt" értéknek kell lennie.
 * Egy **kulcs**. A kulcsnak PEM-kódolású is kell lennie.
 
-Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívánt címek teljes tartománynevét (például a www\.-contoso.com). A rendszer a tanúsítványba pecsételő és az ügyfelek által használt címek összehasonlításával ellenőrzi a webszolgáltatás identitását. Ha ezek a címek nem egyeznek, az ügyfél hibaüzenetet kap.
+Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívánt címek teljes tartománynevét (például a www- \. contoso.com). A rendszer a tanúsítványba pecsételő és az ügyfelek által használt címek összehasonlításával ellenőrzi a webszolgáltatás identitását. Ha ezek a címek nem egyeznek, az ügyfél hibaüzenetet kap.
 
 > [!TIP]
 > Ha a hitelesítésszolgáltató nem tudja megadni a tanúsítványt és a kulcsot PEM-kódolású fájlként, használhat egy olyan segédprogramot, mint például az [OpenSSL](https://www.openssl.org/) a formátum megváltoztatásához.
@@ -87,7 +87,7 @@ Ha AK-ra végez üzembe helyezést, létrehozhat egy új AK-fürtöt, vagy csato
 
 A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt tanúsítvánnyal rendelkező tanúsítványt is használhat.
 
-  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso\<Six-Random-characters>" tartománynevet hozza létre. \<azureregion>. cloudapp.Azure.com ", ahol \<a azureregion> a szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
+  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso" nevű tartománynevet hozza létre \<six-random-characters> \<azureregion> . cloudapp.azure.com ", ahol a a \<azureregion> szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
 
     A szolgáltatás a TLS-vel való üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
 
@@ -172,6 +172,10 @@ A TLS/SSL-tanúsítványok lejárnak, és meg kell újítani. Ez általában év
 
 Ha a tanúsítványt eredetileg a Microsoft hozta létre (ha a *leaf_domain_label* a szolgáltatás létrehozásához használja), az alábbi példák egyikével frissítheti a tanúsítványt:
 
+> [!IMPORTANT]
+> * Ha a meglévő tanúsítvány még érvényes, használja az `renew=True` (SDK) vagy a `--ssl-renew` (CLI) beállítást a konfiguráció megújításához. Ha például a meglévő tanúsítvány 10 napig érvényes, és nem használja `renew=True` , előfordulhat, hogy a tanúsítvány nem újítható meg.
+> * A szolgáltatás eredetileg üzembe helyezése után a `leaf_domain_label` rendszer a mintát használva létrehozza a DNS-nevet `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` . Ha meg szeretné őrizni a meglévő nevet (beleértve az eredetileg létrehozott 6 számjegyet), használja az eredeti `leaf_domain_label` értéket. Ne adja meg az előállított 6 számjegyet.
+
 **Az SDK használata**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **A parancssori felület (CLI) használata**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 További információkért tekintse meg a következő dokumentációs dokumentumokat:
@@ -241,7 +245,7 @@ További információkért tekintse meg a következő dokumentációs dokumentum
 
 ## <a name="disable-tls"></a>TLS letiltása
 
-Ha le szeretné tiltani a TLS-t az Azure Kubernetes szolgáltatásban üzembe helyezett `SslConfiguration` modellhez, hozzon létre egy-t `status="Disabled"`, majd hajtson végre egy frissítést:
+Ha le szeretné tiltani a TLS-t az Azure Kubernetes szolgáltatásban üzembe helyezett modellhez, hozzon létre egy `SslConfiguration` `status="Disabled"` -t, majd hajtson végre egy frissítést:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -257,7 +261,7 @@ update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbiak végrehajtásának módját ismerheti meg:
 + [Webszolgáltatásként üzembe helyezett gépi tanulási modell felhasználása](how-to-consume-web-service.md)
 + [Kísérletek és következtetések biztonságos futtatása Azure-beli virtuális hálózaton belül](how-to-enable-virtual-network.md)

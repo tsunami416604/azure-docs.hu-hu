@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure Functions al
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: 104e0892e2ad6bc6a0b3212722781f9498eee219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 4725b28ba769ac12f9e25e5c9be77f8bb3eaff46
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744999"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433878"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -108,7 +108,7 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>`.
+Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
 > A függvények csomagolása jelenleg támogatja a HTTP-eseményindítókat, a blob-eseményindítókat és a Service Bus-eseményindítókat. További információ az eseményindítókkal kapcsolatban: [Azure functions kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
@@ -118,7 +118,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
 
 ## <a name="deploy-image-as-a-web-app"></a>Rendszerkép üzembe helyezése webalkalmazásként
 
-1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje `<myacr>` le a elemet `package.location`a korábban visszaadott értékre: 
+1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje le `<myacr>` a elemet a korábban visszaadott értékre `package.location` : 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -151,12 +151,12 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Ebben a példában egy _Linux alapszintű_ díjszabási`--sku B1`szintet () használunk.
+    Ebben a példában egy _Linux alapszintű_ díjszabási szintet ( `--sku B1` ) használunk.
 
     > [!IMPORTANT]
     > A Azure Machine Learning által létrehozott rendszerképek Linux rendszert használnak, ezért a `--is-linux` paramétert kell használnia.
 
-1. Hozza létre a web Job Storage szolgáltatáshoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje `<webjobStorage>` le a nevet a használni kívánt névre.
+1. Hozza létre a web Job Storage szolgáltatáshoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje le `<webjobStorage>` a nevet a használni kívánt névre.
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,7 +165,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. A Function alkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékekre. Cserélje `<webjobStorage>` le az elemet az előző lépésben szereplő Storage-fiók nevére:
+1. A Function alkalmazás létrehozásához használja a következő parancsot. Cserélje le `<app-name>` a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a korábban visszaadott értékekre `package.location` . Cserélje le az `<webjobStorage>` elemet az előző lépésben szereplő Storage-fiók nevére:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -174,7 +174,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     > [!IMPORTANT]
     > Ezen a ponton a Function alkalmazás létrejött. Mivel azonban nem biztosította a blob triggerhez vagy a hitelesítő adatokhoz tartozó kapcsolódási karakterláncot a képet tartalmazó Azure Container Registryhoz, a Function alkalmazás nem aktív. A következő lépésekben meg kell adnia a kapcsolatok karakterláncát és a tároló-beállításjegyzék hitelesítési adatait. 
 
-1. Hozza létre a blob trigger-tárolóhoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje `<triggerStorage>` le a nevet a használni kívánt névre.
+1. Hozza létre a blob trigger-tárolóhoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncát. Cserélje le `<triggerStorage>` a nevet a használni kívánt névre.
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -184,7 +184,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     ```
     Jegyezze fel ezt a kapcsolódási karakterláncot a Function alkalmazás számára történő biztosításhoz. Később fogjuk használni, amikor a kért`<triggerConnectionString>`
 
-1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. Cserélje `<triggerConnectionString>` le a értéket a korábban visszaadott kapcsolatok sztringre:
+1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott kapcsolatok sztringre:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,19 +193,19 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Ha az trigger-kapcsolódási karakterláncot a Function alkalmazáshoz szeretné rendelni, használja a következő parancsot. Cserélje `<app-name>` le a helyére a Function alkalmazás nevét. Cserélje `<triggerConnectionString>` le a értéket a korábban visszaadott kapcsolatok sztringre:
+1. Ha az trigger-kapcsolódási karakterláncot a Function alkalmazáshoz szeretné rendelni, használja a következő parancsot. Cserélje le a helyére a `<app-name>` Function alkalmazás nevét. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott kapcsolatok sztringre:
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. A létrehozott tárolóhoz tartozó címkét a következő parancs használatával kell lekérnie. Cserélje `<username>` le a elemet a korábban a tároló-beállításjegyzékből visszaadott felhasználónévre:
+1. A létrehozott tárolóhoz tartozó címkét a következő parancs használatával kell lekérnie. Cserélje le a elemet `<username>` a korábban a tároló-beállításjegyzékből visszaadott felhasználónévre:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Mentse a visszaadott értéket, amelyet a következő lépésben fog `imagetag` használni.
+    Mentse a visszaadott értéket, amelyet a `imagetag` következő lépésben fog használni.
 
-1. A következő parancs használatával biztosíthatja a Function alkalmazást a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokkal. Cserélje `<app-name>` le a helyére a Function alkalmazás nevét. Cserélje `<acrinstance>` le `<imagetag>` a és a értéket az az előző lépésben megadott CLI-hívás értékeire. Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
+1. A következő parancs használatával biztosíthatja a Function alkalmazást a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokkal. Cserélje le a helyére a `<app-name>` Function alkalmazás nevét. Cserélje le a és a értéket az az `<acrinstance>` `<imagetag>` előző lépésben megadott CLI-hívás értékeire. Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -260,7 +260,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
     > [!IMPORTANT]
     > Az adatok formátuma attól függ, hogy mit vár a score.py és a modell.
 
-2. A következő parancs használatával töltse fel ezt a fájlt a korábban létrehozott trigger Storage-blob bemeneti tárolójába. Cserélje `<file>` le az nevet az adathalmazt tartalmazó fájl nevére. Cserélje `<triggerConnectionString>` le a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában `input` a a korábban létrehozott bemeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket:
+2. A következő parancs használatával töltse fel ezt a fájlt a korábban létrehozott trigger Storage-blob bemeneti tárolójába. Cserélje le az `<file>` nevet az adathalmazt tartalmazó fájl nevére. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában a a `input` korábban létrehozott bemeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket:
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -275,15 +275,15 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
     }
     ```
 
-3. A függvény által létrehozott kimenet megtekintéséhez használja az alábbi parancsot a létrehozott kimeneti fájlok listázásához. Cserélje `<triggerConnectionString>` le a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában `output` a a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le a következő értéket:
+3. A függvény által létrehozott kimenet megtekintéséhez használja az alábbi parancsot a létrehozott kimeneti fájlok listázásához. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában `output` a a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le a következő értéket:
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    A parancs kimenete hasonló a `sample_input_out.json`következőhöz:.
+    A parancs kimenete hasonló a következőhöz: `sample_input_out.json` .
 
-4. A fájl letöltéséhez és a tartalom vizsgálatához használja a következő parancsot. Cserélje `<file>` le az értéket az előző parancs által visszaadott fájlnévre. Cserélje `<triggerConnectionString>` le a értéket a korábban visszaadott kapcsolatok sztringre: 
+4. A fájl letöltéséhez és a tartalom vizsgálatához használja a következő parancsot. Cserélje le az értéket az `<file>` előző parancs által visszaadott fájlnévre. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott kapcsolatok sztringre: 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -293,7 +293,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
 
 A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](/azure/azure-functions/functions-create-storage-blob-triggered-function) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](/azure/azure-functions/functions-create-function-linux-custom-image) dokumentációjában.
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
