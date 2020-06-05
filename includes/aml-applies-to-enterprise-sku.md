@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: machine-learning
 author: nibaccam
 ms.service: machine-learning
@@ -16,4 +16,4 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75527297"
 ---
-**A** ![következőkre vonatkozik](media/aml-applies-to-skus/no.png): nincs ![alapszintű &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; kiadás igen](media/aml-applies-to-skus/yes.png)Enterprise &nbsp; Edition &nbsp; rendszerre ([frissítés a vállalatra)](../articles/machine-learning/how-to-manage-workspace.md#upgrade) &nbsp;
+**a következőkre vonatkozik:** ![ nincs ](media/aml-applies-to-skus/no.png) alapszintű kiadás ![ ](media/aml-applies-to-skus/yes.png) , igen Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([frissítés a vállalatra](../articles/machine-learning/how-to-manage-workspace.md#upgrade))
