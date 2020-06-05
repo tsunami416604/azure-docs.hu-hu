@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996040"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433580"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Azure Blob Storage-beli adatkezelés és-keresés a blob-Indextel (előzetes verzió)
 
@@ -130,7 +130,7 @@ Az alábbi táblázatban a feltételes műveletek összes érvényes operátora 
 |     <      |  Kisebb, mint    | "Age" < "32" |
 |     <=     |  Kisebb vagy egyenlő mint  | "Cég" <= "contoso" |
 |    AND     |  Logikai és  | "Rang" >= "010" és "Rank" < "100" |
-|     VAGY     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
+|     OR     |  Logikai vagy   | "Status" = "kész" vagy "priority" >= "05" |
 
 > [!NOTE]
 > Két további operátor létezik, nem egyenlő és logikai vagy, amelyek a blob művelet feltételes x-MS-if-Tags fejlécében engedélyezettek, de nem léteznek a FindBlobsByTags műveletben.
@@ -208,7 +208,7 @@ A [HRE-identitást](../common/storage-auth-aad.md) használó hívók a követke
 
 |   BLOB-műveletek   |  RBAC művelet   |
 |---------------------|----------------|
-| Blobok keresése címkék alapján  | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/Filter |
+| Blobok keresése címkék alapján  | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/Filter/művelet |
 | BLOB-címkék beállítása         | Microsoft. Storage/storageAccounts/blobServices/tárolók/Blobok/címkék/írás | 
 | BLOB-címkék beolvasása         | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/címkék/olvasás |
 
@@ -306,7 +306,7 @@ A blob index címkéi csak a karakterlánc-adattípusokat támogatják, a lekér
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>A blob-indexek címkéi és a hozzájuk kapcsolódó Azure Resource Manager Címkék?
 Nem, Azure Resource Manager címkék segítenek megszervezni a vezérlési sík erőforrásait, például az előfizetéseket, az erőforráscsoportokat és a Storage-fiókokat. A blob index címkéi az objektumok kezelését és felderítését biztosítják az adatsík erőforrásain, például a Storage-fiókban található blobokon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a blob-index felhasználásának példáját. Lásd: [blob-index felhasználása az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)
 

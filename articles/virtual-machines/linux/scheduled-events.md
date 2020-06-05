@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1f34066b9f8fa16a2889c1872ebfd3f8cf33ee69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299519"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418109"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux rendszerű virtuális gépekhez Scheduled Events
 
@@ -53,7 +53,12 @@ Az ütemezett események a következőre érkeznek:
 - Önálló Virtual Machines.
 - Egy felhőalapú szolgáltatás összes virtuális gépe.
 - Egy rendelkezésre állási csoportba tartozó összes virtuális gép.
+- Egy rendelkezésre állási zónában lévő összes virtuális gép. 
 - Egy méretezési csoport elhelyezési csoportjában lévő összes virtuális gép. 
+
+> [!NOTE]
+> Egy rendelkezésre állási zónában lévő virtuális gépekre jellemző, hogy az ütemezett események egyetlen virtuális gépre kerülnek egy zónában.
+> Ha például 100 virtuális gépen van egy rendelkezésre állási csoport, és van egy frissítés az egyikhez, az ütemezett esemény az összes 100-es, míg ha 100 egyetlen virtuális gép van egy zónában, az esemény csak a virtuális gépre vonatkozik, amely hatással lesz rá.
 
 Ennek eredményeképpen jelölje be az `Resources` esemény mezőjét az érintett virtuális gépek azonosításához.
 
@@ -67,7 +72,7 @@ Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Servi
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
 A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező; a jelenlegi verzió: `2019-01-01` .
 
-| Verzió | Kiadás típusa | Régiók | Release Notes (Kibocsátási megjegyzések) | 
+| Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
 | 2019-08-01 | Általános elérhetőség | Mind | <li> EventSource-támogatás hozzáadva |
 | 2019-04-01 | Általános elérhetőség | Mind | <li> Az esemény leírásának támogatása hozzáadva |
@@ -223,7 +228,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse [meg Scheduled Eventsét az Azure fridayban](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) , és tekintse meg a bemutatót. 
 - Tekintse át a Scheduled Events kód mintáit az [Azure-példány metaadatainak Scheduled Events GitHub-tárházban](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - További információ a [instance metadata Service](instance-metadata-service.md)elérhető API-król.

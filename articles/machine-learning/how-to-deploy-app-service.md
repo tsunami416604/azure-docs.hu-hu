@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan helyezhet üzembe modelleket Azure App Service-
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 787c8ec88b001a55a83bfba3124c62e12800aa58
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651927"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433950"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Például: `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
+Ekkor `show_output=True` megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>` . Például: `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Mentse a hely adatait, ahogy azt a lemezkép telepítésekor használják.
 
 ## <a name="deploy-image-as-a-web-app"></a>Rendszerkép üzembe helyezése webalkalmazásként
 
-1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje `<acrinstance>` le a elemet `package.location`a korábban visszaadott értékre:
+1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje le `<acrinstance>` a elemet a korábban visszaadott értékre `package.location` :
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -154,12 +154,12 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Ebben a példában egy __alapszintű__ árképzési`--sku B1`szintet () használunk.
+    Ebben a példában egy __alapszintű__ árképzési szintet ( `--sku B1` ) használunk.
 
     > [!IMPORTANT]
     > A Azure Machine Learning által létrehozott rendszerképek Linux rendszert használnak, ezért a `--is-linux` paramétert kell használnia.
 
-1. A webalkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékek közül:
+1. A webalkalmazás létrehozásához használja a következő parancsot. Cserélje le `<app-name>` a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a korábban visszaadott értékek közül `package.location` :
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
@@ -188,7 +188,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     > [!IMPORTANT]
     > Ezen a ponton a webalkalmazás létrejött. Mivel azonban nem biztosította a hitelesítő adatokat a rendszerképet tartalmazó Azure Container Registry számára, a webalkalmazás nem aktív. A következő lépésben megadja a tároló-beállításjegyzék hitelesítési adatait.
 
-1. A következő parancs használatával biztosíthatja a webalkalmazásnak a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokat. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékekre. Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
+1. A következő parancs használatával biztosíthatja a webalkalmazásnak a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokat. Cserélje le `<app-name>` a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a korábban visszaadott értékekre `package.location` . Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -234,7 +234,7 @@ Ezen a ponton a webalkalmazás elkezdi betölteni a rendszerképet.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Miután betöltötte a rendszerképet, és a hely aktív, a napló megjeleníti az állapotot `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`jelző üzenetet.
+> Miután betöltötte a rendszerképet, és a hely aktív, a napló megjeleníti az állapotot jelző üzenetet `Container <container name> for site <app-name> initialized successfully and is ready to serve requests` .
 
 A lemezkép központi telepítése után a következő paranccsal keresheti meg a gazdagépet:
 
@@ -242,11 +242,11 @@ A lemezkép központi telepítése után a következő paranccsal keresheti meg 
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Ez a parancs a következő állomásnévhez hasonló adatokat ad `<app-name>.azurewebsites.net`vissza:. Használja ezt az értéket a szolgáltatás __alap URL-címének__ részeként.
+Ez a parancs a következő állomásnévhez hasonló adatokat ad vissza: `<app-name>.azurewebsites.net` . Használja ezt az értéket a szolgáltatás __alap URL-címének__ részeként.
 
 ## <a name="use-the-web-app"></a>A webalkalmazás használata
 
-A modellre irányuló kérelmeket továbbító webszolgáltatás a következő `{baseurl}/score`helyen található:. Például: `https://<app-name>.azurewebsites.net/score`. A következő Python-kód azt mutatja be, hogyan lehet beküldeni az adott URL-címet és megjeleníteni a választ:
+A modellre irányuló kérelmeket továbbító webszolgáltatás a következő helyen található: `{baseurl}/score` . Például: `https://<app-name>.azurewebsites.net/score`. A következő Python-kód azt mutatja be, hogyan lehet beküldeni az adott URL-címet és megjeleníteni a választ:
 
 ```python
 import requests
@@ -267,7 +267,7 @@ print(response.elapsed)
 print(response.json())
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan konfigurálhatja a webalkalmazást a Linux dokumentációjának [app Service](/azure/app-service/containers/) .
 * További információ az automatikus skálázás az [Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)-ban való használatáról.
