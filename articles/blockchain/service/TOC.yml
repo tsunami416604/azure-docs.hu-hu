@@ -4,6 +4,8 @@
   items:
     - name: Tudnivalók az Azure Blockchain Service-ről
       href: overview.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:
