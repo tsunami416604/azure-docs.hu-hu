@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: Támogatási információk megadása (tesztkörnyezetfiók tulajdonosa)
           href: lab-account-owner-support-information.md
+        - name: Cost Management tesztkörnyezetekhez
+          href: cost-management-guide.md
     - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
       items:
         - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése

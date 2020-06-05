@@ -235,6 +235,10 @@
               href: howto-migrate-using-export-and-import.md
             - name: Migrálás minimális állásidővel
               href: howto-migrate-online.md
+        - name: Alkalmazások csatlakoztatása
+          items:
+            - name: TLS konfigurálása
+              href: howto-tls-configurations.md
         - name: Kiszolgáló paramétereinek konfigurálása
           items:
             - name: Azure Portal

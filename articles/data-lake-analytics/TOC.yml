@@ -151,7 +151,7 @@
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.datalakeanalytics/allversions
-    - name: parancssori felület
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dla'
 - name: További források
   items:

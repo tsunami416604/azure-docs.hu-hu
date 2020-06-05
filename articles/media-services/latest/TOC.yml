@@ -131,10 +131,10 @@
           href: streaming-endpoint-concept.md
         - name: Streamelés méretezése CDN-nel
           href: scale-streaming-cdn.md
-        - name: Streamelési lokátor
+        - name: Streameléskeresők
           displayName: URLs
           href: streaming-locators-concept.md
-        - name: Streamelési szabályok
+        - name: Streamelési szabályzatok
           href: streaming-policy-concept.md
     - name: Tartalomvédelem
       items:
@@ -152,7 +152,7 @@
               href: widevine-license-template-overview.md
             - name: FairPlay-licenckövetelmények
               href: fairplay-license-overview.md
-        - name: Streamelési szabályok
+        - name: Streamelési szabályzatok
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard Encoder-sémák
+      items:
+        - name: Kimeneti metaadatok
+          href: output-metadata-schema.md
 - name: További források
   items:
     - name: Azure Media Services-közösség

@@ -114,6 +114,8 @@
   items:
     - name: Kezelés
       items:
+        - name: Feladatok automatikus skálázása
+          href: stream-analytics-autoscale.md
         - name: Hitelesítő adatok frissítése
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Eseményrendező szabályzatok konfigurálása
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: További források
   items:
     - name: Stream Analytics előzetes verziói

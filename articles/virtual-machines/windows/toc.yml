@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: Virtuális gép létrehozása – Azure CLI
       href: quick-create-cli.md
+    - name: Virtuális gép létrehozása – ARM-sablon
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Virtuális gép létrehozása/kezelése

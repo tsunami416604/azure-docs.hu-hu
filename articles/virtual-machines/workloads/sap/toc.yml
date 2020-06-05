@@ -259,6 +259,10 @@
       href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
     - name: Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/sap-hana/hanainstance
 - name: További források
   items:
     - name: Azure-ütemterv

@@ -142,6 +142,8 @@
           href: howto-connection-string.md
         - name: Az SSL konfigurálása
           href: howto-configure-ssl.md
+        - name: TLS konfigurálása
+          href: howto-tls-configurations.md
     - name: Kiszolgáló paramétereinek konfigurálása
       items:
         - name: Azure Portal

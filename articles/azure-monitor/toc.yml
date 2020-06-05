@@ -230,7 +230,7 @@
                     - name: Verzióelőzmények
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON-sorok erőforrásnapló-formátuma
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Hibaelhárítás
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platformnaplók
       items:
+        - name: Támogatott erőforrásnaplók típusai és kategóriái
+          href: platform/resource-logs-categories.md
         - name: Erőforrásnaplók sémái
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: Tevékenységnapló sémája
           href: platform/activity-log-schema.md
     - name: Diagnosztikai bővítmények sémái

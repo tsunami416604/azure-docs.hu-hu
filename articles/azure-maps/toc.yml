@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: Útvonal megjelenítése A-ból B-be
               href: map-route.md
+        - name: Beltéri térképek modul
+          items:
+            - name: Beltéri térképek modul
+              href: how-to-use-indoor-module.md
+            - name: Dinamikus stílus beltéri térképekhez
+              href: indoor-map-dynamic-styling.md
+            - name: Rajzolásihiba-megjelenítő
+              href: drawing-error-visualizer.md
         - name: Térbeli IO-modul
           items:
             - name: A térbeli IO-modul használata
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése
           href: how-to-show-traffic-android.md
-    - name: Fejlesztés a Creator beltéri térképeinek használatával
-      items:
-        - name: Beltéri térképek modul
-          href: how-to-use-indoor-module.md
-        - name: Dinamikus stílus beltéri térképekhez
-          href: indoor-map-dynamic-styling.md
-        - name: Rajzolásihiba-megjelenítő
-          href: drawing-error-visualizer.md
     - name: Adatokkal kapcsolatos visszajelzés küldése
       href: how-to-use-feedback-tool.md
 - name: Referencia
