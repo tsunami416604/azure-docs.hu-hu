@@ -1,19 +1,19 @@
 ---
-title: Az Azure Path kiválasztása több ISP-kapcsolaton keresztül
+title: Naplók és mérőszámok
 titleSuffix: Azure Virtual WAN
-description: Az Azure Path Selection és a Virtual WAN megismerése
+description: Tudnivalók az Azure-beli virtuális WAN-naplókról és-mérőszámokról
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 73249b2c66c7e064aa5c07ae1b78d819f4f44c23
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7fa5353449db04184c60be79adece63489de0a74
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300357"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466204"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
@@ -121,7 +121,7 @@ Szükség esetén cserélje le az alábbi értékeket a **= =** érték után.
 
 A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók*) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Firewall naplók és mérőszámok figyelésének megismeréséhez tekintse meg az [oktatóanyag: Azure Firewall naplók figyelése](../firewall/tutorial-diagnostics.md)című témakört.
 * Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse meg a [Azure monitor mérőszámait](../azure-monitor/platform/data-platform-metrics.md).

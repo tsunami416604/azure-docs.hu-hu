@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656610"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449515"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 
@@ -87,6 +87,10 @@ Igen, az autoskálázás támogatott a megosztott átviteli sebességű adatbáz
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>Mennyibe kerül az engedélyezett tárolók száma egy megosztott átviteli sebességű adatbázisban, ha engedélyezve van az autoskálázás?
 Azure Cosmos DB legfeljebb 25 tárolót kényszerít ki egy megosztott átviteli sebességű adatbázisban, amely az Automatikus méretezéssel vagy a standard (manuális) átviteli sebességgel rendelkező adatbázisokra vonatkozik. 
 
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>Milyen hatással van az autoskálázás az adatbázis-konzisztencia szintjén?
+Az adatbázis konzisztencia-szintjének nem befolyásolja az autoskálázást.
+A rendelkezésre álló konzisztencia-szintekkel kapcsolatos további információkért tekintse meg a [konzisztencia szintjeivel](consistency-levels.md) foglalkozó cikket.
+
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Mekkora a maximális RU/s beállításhoz tartozó tárolási korlát?  
 Az egyes maximális RU/s-k tárolási korlátja GB-ban: az adatbázis vagy a tároló/100 maximális száma. Ha például a maximális RU/s értéke 20 000 RU/s, az erőforrás képes támogatni a 200 GB tárterületet. A rendelkezésre álló maximális RU/s-és tárolási lehetőségekért lásd az [autoskálázási korlátokat](provision-throughput-autoscale.md#autoscale-limits) ismertető cikket. 
 
@@ -139,7 +143,7 @@ Másodszor, ha van egy gyakori partíció, azaz egy logikai partíciós kulcs é
 Ha például az 20 000 RU/s maximális átviteli sebesség lehetőséget választja, és 200 GB tárhellyel rendelkezik, és négy fizikai partícióval rendelkezik, az egyes fizikai partíciók akár 5000 RU/s-ra is felméretezhetők. Ha egy adott logikai partíción egy gyors partíció található, akkor a 429s jelenik meg, ha a mögöttes fizikai partíció mérete meghaladja az 5000 RU/s-t, azaz meghaladja az 100%-os normalizált kihasználtságot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [engedélyezhető az Azure Cosmos db-adatbázis vagy-tárolók autoskálázása](how-to-provision-autoscale-throughput.md).
 * Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).

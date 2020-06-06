@@ -2,13 +2,13 @@
 title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/05/2020
+ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424432"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462855"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft. ApiManagement | [API Management](../../api-management/index.yml) |
-| Microsoft. AppConfiguration | Core |
+| Microsoft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. igazolás | Azure-igazolási szolgáltatás |
 | Microsoft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
@@ -62,7 +62,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. Tárolószolgáltatás | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft. CostManagement<sup>1</sup> | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
-| Microsoft. CustomerLockbox | Microsoft Azure Ügyfélszéf |
+| Microsoft. CustomerLockbox | [Microsoft Azure Ügyfélszéf](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 04566bae2a9010dde5f9d6d4a0a63c237505597b
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2f871312b7e36288d1b78e05aa4058dab6c1942f
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429644"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449566"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics feladatok autoskálázása Azure Automation használatával
 
@@ -67,7 +67,7 @@ Azure Automation lehetővé teszi az ütemterv konfigurálását a runbookok eli
 ## <a name="autoscale-based-on-load"></a>Automatikus skálázás terhelés alapján
 Előfordulhatnak olyan esetek, amikor nem lehet előre jelezni a bemeneti terhelést. Ilyen esetekben a minimális és a maximális korláton belül optimálisan méretezhető fel-és leskálázás. A Stream Analytics-feladatokban beállíthatja a riasztási szabályokat úgy, hogy kiváltsa a runbookok, ha a feladat metrikái a küszöbérték felett vagy alatt haladnak.
 1. A Azure Automation-fiókjában hozzon létre két több Integer változót a **minSU** és a **maxSU**néven. Ezzel beállítja azokat a határokat, amelyeken belül a feladatnak a lépésein át kell méreteznie.
-2. Hozzon létre két új runbookok. Használhatja a [StepScaleUp PowerShell-parancsfájlt](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/Autoscaleup.ps1) , amely a **maxSU** értékig növeli a feladatok SUs értékét. A [StepScaleDown PowerShell-szkriptet](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/autoscaledown.ps1) is használhatja, amely csökkenti a feladatok SUs értékét a lépésekben, amíg a **minSU** érték el nem éri. Azt is megteheti, hogy az előző szakasz runbookok is használhatja, ha konkrét SU-értékeket szeretne méretezni.
+2. Hozzon létre két új runbookok. Használhatja a [StepScaleUp PowerShell-parancsfájlt](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleUp.ps1) , amely a **maxSU** értékig növeli a feladatok SUs értékét. A [StepScaleDown PowerShell-szkriptet](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleDown.ps1) is használhatja, amely csökkenti a feladatok SUs értékét a lépésekben, amíg a **minSU** érték el nem éri. Azt is megteheti, hogy az előző szakasz runbookok is használhatja, ha konkrét SU-értékeket szeretne méretezni.
 3. A Stream Analyticsi feladatban válassza a **figyelés**területen a **riasztási szabályok** elemet. 
 4. Hozzon létre két műveleti csoportot. Egy a vertikális Felskálázási művelethez és egy másik a skálázási művelethez. Válassza a **műveletek kezelése** lehetőséget, majd kattintson a **művelet csoport hozzáadása**elemre. 
 5. Töltse ki a kötelező mezőket. Válassza az **Automation Runbook** lehetőséget a **művelet típusának**kiválasztásakor. Válassza ki azt a runbook, amelyet a riasztás tüzek esetén aktiválni szeretne. Ezután hozza létre a műveleti csoportot.

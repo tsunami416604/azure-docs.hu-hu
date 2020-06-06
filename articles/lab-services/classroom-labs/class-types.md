@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4842c673dc5d56cd57a2131f1c522b0bc682559
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115030"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448019"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Osztályok típusai – áttekintés – Azure Lab Services
 
@@ -62,11 +62,21 @@ Beállíthat egy labort Azure Lab Servicesban egy bevezető Mobile Application D
 Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a mobileszközök fejlesztéséhez Android Studio használatával](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Big data elemzése
-Beállíthat egy labort big data elemzési osztály tanításához. Ilyen típusú osztályok esetén a tanulók megismerhetik a nagy adatmennyiségek kezelését, valamint gépi és statisztikai tanulási algoritmusokat alkalmazhatnak az adatelemzések kinyeréséhez. A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a Apache Hadoop nyílt forráskódú szoftvercsomag, amely eszközöket biztosít a big data tárolásához, kezeléséhez és feldolgozásához. 
+Beállíthat egy GPU-labort big data elemzési osztály tanításához. Ilyen típusú osztályok esetén a tanulók megismerhetik a nagy adatmennyiségek kezelését, valamint gépi és statisztikai tanulási algoritmusokat alkalmazhatnak az adatelemzések kinyeréséhez. A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a Apache Hadoop nyílt forráskódú szoftvercsomag, amely eszközöket biztosít a big data tárolásához, kezeléséhez és feldolgozásához. 
 
-Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a Big Data Analytics szolgáltatáshoz a HortonWorks-adatplatform Docker-telepítésével](class-type-big-data-analytics.md).
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása Big Data-elemzéshez a HortonWorks-adatplatform Docker-alapú üzembe helyezésével](class-type-big-data-analytics.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="matlab"></a>MATLAB
+A mátrix-laboratóriumok számára készült [MATLAB](https://www.mathworks.com/products/matlab.html)a [MathWorks](https://www.mathworks.com/)programozási platformja.  A számítási teljesítményt és vizualizációt ötvözve a matematika, a mérnöki tudományok, a fizika és a kémia terén is népszerűvé teszi a számítástechnikai eszközöket.
+
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a MATLAB tanításához](class-type-matlab.md).
+
+## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks – számítógéppel segített kialakítás (CAD)
+Beállíthat egy GPU-labort, amely mérnöki tanulók számára biztosít hozzáférést a [solidworkshez](https://www.solidworks.com/).  A SolidWorks 3D CAD-környezetet biztosít a Solid Objects modellezéséhez.  A SolidWorks segítségével a mérnökök könnyedén létrehozhatják, megjeleníthetik, szimulálják és dokumentálják a terveiket.
+
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása mérnöki osztályokhoz a SolidWorks használatával](class-type-solidworks.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

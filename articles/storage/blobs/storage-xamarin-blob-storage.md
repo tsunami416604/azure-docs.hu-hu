@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/11/2017
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a724cf309ef0677b79636f6789de9a6c8f9ba248
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726343"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465507"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>A Blob Storage használata a Xamarin
 
@@ -37,7 +37,7 @@ Ekkor egy olyan alkalmazásra van szüksége, amely lehetővé teszi, hogy ráka
 
 ## <a name="create-container-and-upload-blob"></a>Tároló létrehozása és blob feltöltése
 
-Ezután a `(Portable)` projekt alatt hozzá kell adnia egy kódot a `MyClass.cs`következőhöz:. Ez a kód létrehoz egy tárolót, és feltölt egy blobot ebbe a tárolóba. `MyClass.cs`a következőhöz hasonlóan kell kinéznie:
+Ezután a projekt alatt `(Portable)` hozzá kell adnia egy kódot a következőhöz: `MyClass.cs` . Ez a kód létrehoz egy tárolót, és feltölt egy blobot ebbe a tárolóba. `MyClass.cs`a következőhöz hasonlóan kell kinéznie:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -233,9 +233,9 @@ namespace XamarinApp.WinPhone
 
 Most már futtathatja az alkalmazást egy Android-vagy Windows Phone-telefon-emulátorban. Ezt az alkalmazást iOS-emulátorban is futtathatja, de ehhez Mac rendszer szükséges. Az ehhez szükséges részletes útmutatásért olvassa el a [Visual Studio Mac-hez való csatlakoztatásának](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) dokumentációját.
 
-Az alkalmazás futtatása után létrehozza a tárolót a Storage `mycontainer` -fiókban. Tartalmaznia kell a blobot `myblob`, amely a szöveggel rendelkezik. `Hello, world!` Ezt a [Microsoft Azure Storage Explorer](https://storageexplorer.com/)használatával ellenőrizheti.
+Az alkalmazás futtatása után létrehozza a tárolót a `mycontainer` Storage-fiókban. Tartalmaznia kell a blobot, `myblob` amely a szöveggel rendelkezik `Hello, world!` . Ezt a [Microsoft Azure Storage Explorer](https://storageexplorer.com/)használatával ellenőrizheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre többplatformos alkalmazást az Azure Storage-t használó Xamarin, különös tekintettel a Blob Storage egyik forgatókönyvére. Ugyanakkor sokkal többet is megtehet, ha nem csak Blob Storage, hanem a tábla, a fájl és a Queue Storage is. További információért olvassa el a következő cikkeket:
 

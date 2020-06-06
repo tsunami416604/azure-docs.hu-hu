@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan listázhatja a blob-tárolókat az Azure Storag
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135904"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463558"
 ---
 # <a name="list-blob-containers-with-net"></a>BLOB-tárolók listázása a .NET-tel
 
@@ -32,13 +32,13 @@ Ezeknek a módszereknek a túlterhelései további lehetőségeket biztosítanak
 
 Alapértelmezés szerint a listázási művelet egyszerre legfeljebb 5000 eredményt ad vissza. Kisebb eredmények visszaadásához adjon meg nullától eltérő értéket a `maxresults` paraméterhez, amikor az egyik **ListContainerSegmented** metódust hívja meg.
 
-Ha a Storage-fiók több mint 5000 tárolót tartalmaz, vagy ha olyan értéket `maxresults` adott meg, amelyet a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a tárolók listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
+Ha a Storage-fiók több mint 5000 tárolót tartalmaz, vagy ha olyan értéket adott meg, `maxresults` amelyet a listázási művelet a Storage-fiókban lévő tárolók egy részhalmazát adja vissza, akkor az Azure Storage egy *folytatási tokent* ad vissza a tárolók listájával. A folytatási token egy átlátszatlan érték, amelyet az Azure Storage következő eredményeinek lekérésére használhat.
 
 A kódban ellenőrizze a folytatási token értékét annak meghatározásához, hogy null értékű-e. Ha a folytatási jogkivonat null értékű, akkor az eredmények halmaza befejeződött. Ha a folytatási jogkivonat nem null értékű, akkor hívja meg újra a **ListContainersSegmented** vagy a **ListContainersSegmentedAsync** , majd a folytatási tokenben adja meg a következő eredmények beolvasását, amíg a folytatási token null nem lesz.
 
 ### <a name="filter-results-with-a-prefix"></a>Eredmények szűrése előtaggal
 
-A tárolók listájának szűréséhez a `prefix` paraméterhez meg kell adni egy karakterláncot. Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a tárolókat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
+A tárolók listájának szűréséhez a paraméterhez meg kell adni egy karakterláncot `prefix` . Az előtag-karakterlánc tartalmazhat egy vagy több karaktert. Az Azure Storage ezt követően csak azokat a tárolókat adja vissza, amelyeknek a neve az adott előtaggal kezdődik.
 
 ### <a name="return-metadata"></a>Metaadatok visszaküldése
 
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Lásd még
 
-[List Containers](/rest/api/storageservices/list-containers2)
-[Blob-erőforrásokat felsoroló](/rest/api/storageservices/enumerating-blob-resources) tárolók listázása
+[Tárolók](/rest/api/storageservices/list-containers2) 
+ listázása [Blob-erőforrások enumerálása](/rest/api/storageservices/enumerating-blob-resources)

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612010"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456963"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
 
@@ -36,7 +36,7 @@ Ez a szakasz azokat a PowerShell-parancsokat sorolja fel, amelyek a Windows rend
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Hiba: New-AzRoleAssignment: a megadott információ nem AD-objektum-AZONOSÍTÓra van leképezve
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **OK:** A *-SignInName* paraméter által megadott felhasználó nem található a Windows rendszerű virtuális asztali környezethez kötött Azure Active Directoryban. 
@@ -73,11 +73,11 @@ Javítás: a hibaüzenetben a támogatott régiók listája jelenik meg. Ehelyet
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**OK:** A hely nem egyezik. Az összes gazdagép, alkalmazáscsoport és munkaterület rendelkezik egy hellyel a szolgáltatás metaadatainak tárolásához. Az egymáshoz társított összes objektumnak ugyanazon a helyen kell lennie. Ha például egy címkészlet található a-ben `eastus`, akkor a alkalmazásban is létre kell hoznia az alkalmazás `eastus`-csoportokat. Ha létrehoz egy munkaterületet, amely az alkalmazás-csoportokat regisztrálja, akkor a munkaterületnek is be `eastus` kell jelentkeznie.
+**OK:** A hely nem egyezik. Az összes gazdagép, alkalmazáscsoport és munkaterület rendelkezik egy hellyel a szolgáltatás metaadatainak tárolásához. Az egymáshoz társított összes objektumnak ugyanazon a helyen kell lennie. Ha például egy címkészlet található a-ben `eastus` , akkor a alkalmazásban is létre kell hoznia az alkalmazás-csoportokat `eastus` . Ha létrehoz egy munkaterületet, amely az alkalmazás-csoportokat regisztrálja, akkor a munkaterületnek is be kell jelentkeznie `eastus` .
 
 **Javítás:** Kérje le azt a helyet, amelyben a gazdagép létre lett hozva, majd rendelje hozzá a létrehozandó alkalmazáscsoport ugyanahhoz a helyhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezet és a gazdagép-készletek beállítása során felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört.

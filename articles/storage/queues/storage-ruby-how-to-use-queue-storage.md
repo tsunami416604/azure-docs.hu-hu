@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 72185cf8bc5701e67c6126c9b1b5cc76bb80f362
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68721294"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463416"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Azure Storage-beli kapcsolatok beállítása
-Az Azure-modul beolvassa az **Azure\_Storage\_-fiók** és az **\_Azure Storage\_ACCESS_KEY** környezeti változóit az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkhoz. Ha ezek a környezeti változók nincsenek beállítva, meg kell adnia a fiók adatait az **Azure:: QueueService** és az alábbi kóddal:
+Az Azure-modul beolvassa az **Azure Storage- \_ \_ fiók** és az **Azure \_ Storage \_ ACCESS_KEY** környezeti változóit az Azure Storage-fiókhoz való kapcsolódáshoz szükséges információkhoz. Ha ezek a környezeti változók nincsenek beállítva, meg kell adnia a fiók adatait az **Azure:: QueueService** és az alábbi kóddal:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Útmutató: betekintés a következő üzenetbe
-A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistába a **betekintési\_üzenetek ()** metódus meghívásával. Alapértelmezés szerint a **betekintés\_üzenetei ()** egyetlen üzenetben jelennek meg. Megadhatja azt is, hogy hány üzenetet szeretne megtekinteni.
+A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistába a **betekintési \_ üzenetek ()** metódus meghívásával. Alapértelmezés szerint a **betekintés \_ üzenetei ()** egyetlen üzenetben jelennek meg. Megadhatja azt is, hogy hány üzenetet szeretne megtekinteni.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -96,10 +96,10 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Útmutató: a következő üzenet elküldése
 A várólistákból két lépésben törölhet üzenetet.
 
-1. Ha a híváslista **(\_)** üzenetet hívja, alapértelmezés szerint a következő üzenet jelenik meg egy várólistában. Megadhatja azt is, hogy hány üzenetet szeretne kapni. A **listaelemek\_() üzenetből** visszaadott üzenetek láthatatlanná válnak a várólistáról érkező más kódoknál. A láthatósági időtúllépést másodpercben adja meg paraméterként.
+1. Ha a híváslista ** \_ ()** üzenetet hívja, alapértelmezés szerint a következő üzenet jelenik meg egy várólistában. Megadhatja azt is, hogy hány üzenetet szeretne kapni. A **listaelemek \_ () üzenetből** visszaadott üzenetek láthatatlanná válnak a várólistáról érkező más kódoknál. A láthatósági időtúllépést másodpercben adja meg paraméterként.
 2. Az üzenet várólistából való eltávolításának befejezéséhez a **delete_message ()** hívását is meg kell hívni.
 
-Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **törlési\_üzenetet ()** közvetlenül az üzenet feldolgozását követően hívja meg.
+Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **törlési \_ üzenetet ()** közvetlenül az üzenet feldolgozását követően hívja meg.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -123,7 +123,7 @@ Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból.
 1. Az üzenetek egy kötegét is lekérheti.
 2. Megadhat egy hosszabb vagy rövidebb láthatósági időkorlátot, így a kód több vagy kevesebb időt vehet igénybe az egyes üzenetek teljes feldolgozásához.
 
-A következő kódrészlet a **List\_messages ()** metódus használatával 15 üzenetet kap egy hívásban. Ezután kinyomtatja és törli az egyes üzeneteket. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
+A következő kódrészlet a **List \_ messages ()** metódus használatával 15 üzenetet kap egy hívásban. Ezután kinyomtatja és törli az egyes üzeneteket. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -134,7 +134,7 @@ end
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Útmutató: a várólista hosszának beolvasása
-A várólistában lévő üzenetek számának becslését is elérheti. A **várólista\_-\_metaadatok beolvasása ()** metódus arra kéri a várólista-szolgáltatást, hogy visszaállítsa az üzenetsor hozzávetőleges üzeneteit és a metaadatokat.
+A várólistában lévő üzenetek számának becslését is elérheti. A várólista- **metaadatok beolvasása \_ \_ ()** metódus arra kéri a várólista-szolgáltatást, hogy visszaállítsa az üzenetsor hozzávetőleges üzeneteit és a metaadatokat.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -142,7 +142,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Útmutató: üzenetsor törlése
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **delete\_üzenetsor ()** metódust a várólista-objektumon.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **delete \_ üzenetsor ()** metódust a várólista-objektumon.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")

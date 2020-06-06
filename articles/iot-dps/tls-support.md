@@ -7,16 +7,19 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: fefae4ad1f4e10598fcc67d65155c3b13efc9ff4
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417973"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449617"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>TLS-támogatás az Azure IoT Hub Device Provisioning Serviceban (DPS)
 
-A DPS Transport Layer Security (TLS) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. A DPS által támogatott TLS protokoll-verziók közé tartozik a TLS 1,2.
+A DPS [Transport Layer Security (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) protokollt használ a IoT-eszközök közötti kapcsolatok biztonságossá tételéhez. 
+
+A DPS által támogatott jelenlegi TLS protokoll-verziók a következők: 
+* TLS 1.2
 
 A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). 
 
@@ -24,7 +27,7 @@ A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: 
 
 A további biztonság érdekében javasoljuk, hogy konfigurálja a DPS-példányokat úgy, hogy *csak* az 1,2-es TLS-t használó eszközök ügyfélkapcsolatait engedélyezze, és kényszerítse az [ajánlott titkosítási algoritmusok](#recommended-ciphers)használatát.
 
-Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban](#supported-regions) , és állítsa be a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon DPS erőforrás-specifikációjában. A következő példában szereplő sablon JSON `minTlsVersion` egy új DPS-példány tulajdonságát határozza meg.
+Ehhez hozzon létre egy új DPS-erőforrást, amely a `minTlsVersion` tulajdonságot a `1.2` Azure Resource Manager sablon DPS erőforrás-specifikációjában állítja be. A következő példában szereplő sablon JSON `minTlsVersion` egy új DPS-példány tulajdonságát határozza meg.
 
 ```json
 {
@@ -35,7 +38,7 @@ Ehhez hozzon létre egy új DPS-erőforrást bármelyik [támogatott régióban]
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,12 +64,6 @@ Az ezzel a konfigurációval létrehozott DPS-erőforrás elutasítja azokat az 
 > [!NOTE]
 > A `minTlsVersion` tulajdonság csak olvasható, és a DPS-erőforrás létrehozása után nem módosítható. Ezért fontos, hogy megfelelően ellenőrizze és ellenőrizze, hogy az *összes* IoT-eszköz kompatibilis-e a TLS 1,2-mel és az [ajánlott titkosítási](#recommended-ciphers) megoldásokkal.
 
-## <a name="supported-regions"></a>Támogatott régiók
-
-A TLS 1,2 használatát igénylő IoT DPS-példányok a következő régiókban hozhatók létre:
-
-* USA-beli államigazgatás – Arizona
-* USA-beli államigazgatás – Virginia
 
 > [!NOTE]
 > Feladatátvétel esetén a `minTlsVersion` DPS tulajdonsága továbbra is érvényben marad a feladatátvételt követően a Geo-párosítási régióban.

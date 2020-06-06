@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010205"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456742"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 
-A Redis kimeneti gyorsítótár-szolgáltatója egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár-adattároláshoz. Ez az adat kifejezetten a teljes HTTP-válaszokra vonatkozik (az oldal kimeneti gyorsítótárazása). A szolgáltató a 4. ASP.NET bevezetett új kimeneti gyorsítótár-szolgáltatói bővíthetőségi pontra csatlakozik.
+A Redis kimeneti gyorsítótár-szolgáltatója egy folyamaton kívüli tárolási mechanizmus a kimeneti gyorsítótár-adattároláshoz. Ez az adat kifejezetten a teljes HTTP-válaszokra vonatkozik (az oldal kimeneti gyorsítótárazása). A szolgáltató a 4. ASP.NET bevezetett új kimeneti gyorsítótár-szolgáltatói bővíthetőségi pontra csatlakozik. ASP.NET Core alkalmazások esetében olvassa el a [Válasz gyorsítótárazása a ASP.net Coreban című részt](https://docs.microsoft.com/aspnet/core/performance/caching/response). 
 
 A Redis kimeneti gyorsítótár-szolgáltató használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET alkalmazást a Redis kimeneti gyorsítótár-szolgáltató NuGet csomagjának használatával. Ez a témakör útmutatást nyújt az alkalmazás konfigurálásához a Redis kimeneti gyorsítótár-szolgáltató használatára. Az Azure cache Redis-példány létrehozásával és konfigurálásával kapcsolatos további információkért lásd: [gyorsítótár létrehozása](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
@@ -51,7 +51,7 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 
 Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
-| Attribútum | Típus | Alapértelmezett | Leírás |
+| Attribútum | Típus | Alapértelmezett | Description |
 | --------- | ---- | ------- | ----------- |
 | *gazdagép* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
 | *port* | pozitív egész szám | 6379 (nem TLS/SSL)<br/>6380 (TLS/SSL) | Redis-kiszolgáló portja |
@@ -76,7 +76,7 @@ A *ConnectionString* értéke kulcsként szolgál a tényleges kapcsolati karakt
 
 Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 ```xml
 <connectionStrings>
@@ -84,7 +84,7 @@ Az alábbi példák bemutatják a *ConnectionString* használatának módját.
 </connectionStrings>
 ```
 
-A `web.config`-ben használja a fenti kulcs paraméter értékét a tényleges érték helyett.
+A-ben `web.config` használja a fenti kulcs paraméter értékét a tényleges érték helyett.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -96,7 +96,7 @@ A `web.config`-ben használja a fenti kulcs paraméter értékét a tényleges �
 </sessionState>
 ```
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 ```xml
 <appSettings>
@@ -104,7 +104,7 @@ A `web.config`-ben használja a fenti kulcs paraméter értékét a tényleges �
 </appSettings>
 ```
 
-A `web.config`-ben használja a fenti kulcs paraméter értékét a tényleges érték helyett.
+A-ben `web.config` használja a fenti kulcs paraméter értékét a tényleges érték helyett.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -116,7 +116,7 @@ A `web.config`-ben használja a fenti kulcs paraméter értékét a tényleges �
 </sessionState>
 ```
 
-#### <a name="example-3"></a>3. példa
+#### <a name="example-3"></a>3\. példa
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -193,7 +193,7 @@ Adjon hozzá egy OutputCache-direktívát minden olyan laphoz, amelyhez gyorsít
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Az előző példában a gyorsítótárazott lap az 60 másodperces gyorsítótárban marad, és az oldal egy másik verzióját gyorsítótárazza az egyes paraméterek kombinációjára. A OutputCache direktívával kapcsolatos további információkért lásd: [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837).
+Az előző példában a gyorsítótárazott lap az 60 másodperces gyorsítótárban marad, és az oldal egy másik verzióját gyorsítótárazza az egyes paraméterek kombinációjára. A OutputCache direktívával kapcsolatos további információkért lásd: [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) .
 
 A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
 
@@ -203,6 +203,6 @@ A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szo
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure Cache ASP.NET munkamenet-szolgáltatóját a Redis](cache-aspnet-session-state-provider.md).

@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010902"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457167"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
 
-A Redis készült Azure cache olyan munkamenet-szolgáltatót biztosít, amellyel a memóriában tárolt munkamenet-állapotot SQL Server-adatbázis helyett az Azure cache használatával tárolhatja a Redis. A gyorsítótárazási munkamenet-állapot szolgáltatójának használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET-alkalmazást a gyorsítótárhoz az Azure cache használatával a Redis munkamenet-állapot NuGet csomagjához.
+A Redis készült Azure cache olyan munkamenet-szolgáltatót biztosít, amellyel a memóriában tárolt munkamenet-állapotot SQL Server-adatbázis helyett az Azure cache használatával tárolhatja a Redis. A gyorsítótárazási munkamenet-állapot szolgáltatójának használatához először konfigurálja a gyorsítótárat, majd konfigurálja a ASP.NET-alkalmazást a gyorsítótárhoz az Azure cache használatával a Redis munkamenet-állapot NuGet csomagjához. ASP.NET Core alkalmazások esetében olvassa el a [munkamenet és az állapot kezelése a ASP.net Coreban című szakaszt](https://docs.microsoft.com/aspnet/core/fundamentals/app-state).
 
 Ez gyakran nem praktikus a valós Felhőbeli alkalmazásokban, így elkerülhető a felhasználói munkamenetek valamilyen állapotának tárolása, de bizonyos módszerek nagyobb mértékben befolyásolják a teljesítményt és a méretezhetőséget, mint mások. Ha meg kell őriznie az állapotot, a legjobb megoldás az, hogy a kis mennyiségű állapotot tárolja, és a cookie-kat tárolja. Ha ez nem valósítható meg, a következő legjobb megoldás a ASP.NET munkamenet-állapotának használata a szolgáltatóval elosztott, memórián belüli gyorsítótárban. A teljesítmény-és skálázhatósági szempontból a legrosszabb megoldás egy adatbázis-alapú munkamenet-szolgáltató használata. Ez a témakör útmutatást nyújt az Azure cache-hez készült ASP.NET-munkamenet-szolgáltató használatához a Redis. További információ a munkamenet-állapottal kapcsolatos egyéb lehetőségekről: [ASP.NET munkamenet-állapotának beállításai](#aspnet-session-state-options).
 
@@ -89,10 +89,10 @@ Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének ért
 * **throwOnError** – igaz, ha egy hiba miatt kivételt szeretne kiváltani, vagy hamis értéket, ha azt szeretné, hogy a művelet csendesen meghiúsuljon. A hiba ellenőrzéséhez ellenőrizze a statikus Microsoft. Web. Redis. RedisSessionStateProvider. LastException tulajdonságot. Az alapértelmezett érték a True (igaz).
 * **retryTimeoutInMilliseconds** – a sikertelen műveleteket a rendszer az adott intervallumban, ezredmásodpercben megadva hajtja végre. Az első újrapróbálkozás 20 ezredmásodperc után történik meg, majd az újrapróbálkozások másodpercenként, amíg a retryTimeoutInMilliseconds időköz lejár. Az intervallum után azonnal újrapróbálkozik a művelettel. Ha a művelet továbbra is sikertelen, a kivétel a throwOnError beállításától függően visszakerül a hívóba. Az alapértelmezett érték 0, ami azt jelenti, hogy nem próbálkozik újra.
 * **databaseId** – megadja, hogy melyik adatbázist kell használni a kimeneti adatokat a gyorsítótárban. Ha nincs megadva, a rendszer az alapértelmezett 0 értéket használja.
-* **applicationName** – a kulcsok a Redis-ben `{<Application Name>_<Session ID>}_Data`tárolódnak. Ez az elnevezési séma lehetővé teszi, hogy több alkalmazás is ugyanazt a Redis-példányt használja. Ez a paraméter nem kötelező, és ha nem adja meg az alapértelmezett értéket, a rendszer nem használja.
+* **applicationName** – a kulcsok a Redis-ben tárolódnak `{<Application Name>_<Session ID>}_Data` . Ez az elnevezési séma lehetővé teszi, hogy több alkalmazás is ugyanazt a Redis-példányt használja. Ez a paraméter nem kötelező, és ha nem adja meg az alapértelmezett értéket, a rendszer nem használja.
 * **connectionTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél connectTimeout-beállítását. Ha nincs megadva, a rendszer a 5000 alapértelmezett connectTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **operationTimeoutInMilliseconds** – ezzel a beállítással felülbírálhatja a StackExchange. Redis ügyfél syncTimeout-beállítását. Ha nincs megadva, a rendszer a 1000 alapértelmezett syncTimeout-beállítást használja. További információ: [StackExchange. Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg `Microsoft.Web.Redis.ISerializer` kell valósítania, és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` szerint használatban van.
+* **redisSerializerType** – ezzel a beállítással megadhatja a Redis számára eljuttatott munkamenet-tartalmak egyéni szerializálását. A megadott típusnak meg kell valósítania `Microsoft.Web.Redis.ISerializer` , és deklarálnia kell a nyilvános paraméter nélküli konstruktort. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` használatban van.
 
 További információ ezekről a tulajdonságokról: az eredeti blogbejegyzés a [Redis ASP.NET munkamenet-szolgáltatójának](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)bejelentése.
 
@@ -131,6 +131,6 @@ A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos tov�
 * [NCache](https://www.alachisoft.com/ncache/session-index.html)
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az [Azure Cache ASP.NET kimeneti gyorsítótár-szolgáltatóját a Redis](cache-aspnet-output-cache-provider.md).

@@ -4,19 +4,19 @@ description: Hogyan és miért érdemes visszajelzést adni az Identity Protecti
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 03b06d46cb35346580070f1739fd43128fa7a7fa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382091"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463926"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Útmutató: kockázati visszajelzés küldése Azure AD Identity Protection
 
@@ -58,6 +58,6 @@ A rendszer offline állapotba állítja a felhasználói kockázat észlelésév
 
 ![Kockázat-feldolgozási állapot a kockázatos felhasználói jelentéshez](./media/howto-identity-protection-risk-feedback/risky-users-provide-feedback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory Identity Protection kockázati észlelések referenciája](risk-events-reference.md)

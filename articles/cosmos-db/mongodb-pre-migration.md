@@ -5,14 +5,14 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a93486e00325e84de655b5b759162fcf63956454
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647276"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465677"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 
@@ -79,11 +79,14 @@ A particionálás (más néven horizontális skálázás) az adatáttelepítés 
 Hasonló módon a particionálási funkció automatikusan bővíti a kapacitást, és ennek megfelelően kiegyensúlyozza az adatelosztást. Az adatok megfelelő partíciós kulcsának kiválasztásával kapcsolatos részletekért és javaslatokért tekintse meg a [partíciós kulcs kiválasztása című cikket](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Adatok indexelése
-Alapértelmezés szerint a Azure Cosmos DB a beszúrt összes adattal automatikus indexelést biztosít. A Azure Cosmos DB által biztosított indexelési képességek közé tartozik az összetett indexek, az egyedi indexek és az élettartam (TTL) indexek hozzáadása. Az index felügyeleti felülete a parancsra van leképezve `createIndex()` . További információ: [Azure Cosmos db API-MongoDB való indexelése](mongodb-indexing.md).
+
+A MongoDB Server 3,6-es verziójában a Azure Cosmos DB API automatikusan indexeli a `_id` mezőt. Ezt a mezőt nem lehet eldobni. Automatikusan kikényszeríti a mező egyediségét `_id` . További mezők indexeléséhez alkalmazza a MongoDB index-Management parancsait. Ez az alapértelmezett indexelési házirend eltér a Azure Cosmos DB SQL API-tól, amely alapértelmezés szerint indexeli az összes mezőt.
+
+A Azure Cosmos DB által biztosított indexelési képességek közé tartozik az összetett indexek, az egyedi indexek és az élettartam (TTL) indexek hozzáadása. Az index felügyeleti felülete a parancsra van leképezve `createIndex()` . További információ: [Azure Cosmos db API-MongoDB című cikk indexelése](mongodb-indexing.md).
 
 A [Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) automatikusan áttelepíti a MongoDB-gyűjteményeket egyedi indexekkel. Az áttelepítést megelőzően azonban létre kell hozni az egyedi indexeket. A Azure Cosmos DB nem támogatja az egyedi indexek létrehozását, ha már szerepelnek a gyűjtemények adatai. További információ: [Azure Cosmos DBban található egyedi kulcsok](unique-keys.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Telepítse át a MongoDB-adatait Cosmos DB a Database Migration Service használatával.](../dms/tutorial-mongodb-cosmos-db.md) 
 * [Átviteli sebesség az Azure Cosmos-tárolók és-adatbázisok számára](set-throughput.md)
 * [Particionálás az Azure Cosmos DB-ben](partition-data.md)

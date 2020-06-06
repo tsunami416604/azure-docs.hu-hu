@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636989"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447917"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
 
@@ -32,6 +32,9 @@ A Azure AD B2C használatával saját üzleti logikát adhat hozzá egy felhaszn
 - **Egyéni üzleti logikát futtathat**. Leküldéses értesítések küldhetők, vállalati adatbázisok frissítése, felhasználói áttelepítési folyamat futtatása, engedélyek kezelése, naplózási adatbázisok és egyéb munkafolyamatok elvégzése.
 
 ![REST-alapú szolgáltatási jogcímek cseréjének ábrája](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> Ha a REST-szolgáltatás lassú vagy nem válaszol a Azure AD B2Cre, az időkorlát 30 másodperc, az újrapróbálkozások száma pedig 2 alkalommal (azaz 3 próbálkozás összesen). Az időkorlát és az újrapróbálkozások száma beállítás jelenleg nem konfigurálható.
 
 ## <a name="calling-a-restful-service"></a>REST-szolgáltatás hívása
 
@@ -176,7 +179,7 @@ A REST API szolgáltatásra irányuló kérés Azure AD B2C kiszolgálóról sz�
 
 Tervezze meg REST API szolgáltatását és a mögöttes összetevőit (például az adatbázist és a fájlrendszert) a rendelkezésre álláshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

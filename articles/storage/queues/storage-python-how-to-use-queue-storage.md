@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cbaf19c5c4d52a5de1ef1d63ad5465859555810
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060916"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465303"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Az Azure üzenetsor-tároló v 2.1 használata a Pythonból
 
@@ -45,7 +45,7 @@ pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]
-> Ha a Python 0,36-es vagy korábbi verziójú Azure Storage SDK-ból frissít, távolítsa el a régebbi `pip uninstall azure-storage` SDK-t a legújabb csomag telepítése előtt.
+> Ha a Python 0,36-es vagy korábbi verziójú Azure Storage SDK-ból frissít, távolítsa el a régebbi SDK-t a `pip uninstall azure-storage` legújabb csomag telepítése előtt.
 
 Alternatív telepítési módszerek: [a Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/).
 
@@ -53,7 +53,7 @@ Alternatív telepítési módszerek: [a Pythonhoz készült Azure Storage SDK](h
 
 A Python és az Azure Queues használatának módját bemutató minta alkalmazás megtekintéséhez és futtatásához tekintse meg az [Azure Storage: első lépések a Python Azure Queues](https://github.com/Azure-Samples/storage-queue-python-getting-started)használatával című témakört. 
 
-A minta alkalmazás futtatásához győződjön meg arról, hogy a és `azure-storage-queue` `azure-storage-common` a csomagokat is telepítette.
+A minta alkalmazás futtatásához győződjön meg arról, hogy a és a csomagokat is telepítette `azure-storage-queue` `azure-storage-common` .
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
@@ -89,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Betekintés a következő üzenetbe
 
-A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) metódus meghívásával. Alapértelmezés szerint a `peek_messages` betekintés egyetlen üzenetbe kerül.
+A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) metódus meghívásával. Alapértelmezés szerint `peek_messages` a betekintés egyetlen üzenetbe kerül.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -99,7 +99,7 @@ for message in messages:
 
 ## <a name="dequeue-messages"></a>Üzenetek várólistára helyezése
 
-A kód két lépésben eltávolít egy üzenetet egy várólistából. [Get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)hívásakor a rendszer alapértelmezés szerint a következő üzenetet jeleníti meg egy várólistában. A visszaadott üzenet `get_messages` a várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívnia a [delete_messaget](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)is. Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód meghívása `delete_message` közvetlenül az üzenet feldolgozása után történik.
+A kód két lépésben eltávolít egy üzenetet egy várólistából. [Get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)hívásakor a rendszer alapértelmezés szerint a következő üzenetet jeleníti meg egy várólistában. A visszaadott üzenet a `get_messages` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívnia a [delete_messaget](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)is. Az üzenetek eltávolításának kétlépéses folyamata biztosítja, hogy ha a kód a hardver vagy a szoftver meghibásodása miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód meghívása `delete_message` közvetlenül az üzenet feldolgozása után történik.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -131,7 +131,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
 
-Megbecsülheti egy üzenetsorban található üzenetek számát. A [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) metódus arra kéri a várólista-szolgáltatást, hogy a várólista metaadatainak visszaadása `approximate_message_count`és a. Az eredmény csak hozzávetőleges, mert az üzenetsor-szolgáltatás a kérésre való reagálás után üzeneteket adhat hozzá vagy távolíthat el.
+Megbecsülheti egy üzenetsorban található üzenetek számát. A [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) metódus arra kéri a várólista-szolgáltatást, hogy a várólista metaadatainak visszaadása és a `approximate_message_count` . Az eredmény csak hozzávetőleges, mert az üzenetsor-szolgáltatás a kérésre való reagálás után üzeneteket adhat hozzá vagy távolíthat el.
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')
@@ -146,7 +146,7 @@ Ha törölni szeretne egy várólistát és a benne található összes üzenete
 queue_service.delete_queue('taskqueue')
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat további információért.
 

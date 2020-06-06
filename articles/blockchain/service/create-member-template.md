@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310359"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456528"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Rövid útmutató: Azure Blockchain-szolgáltatásbeli tag létrehozása Azure Resource Manager sablon használatával
 
@@ -47,7 +47,7 @@ A sablonban definiált Azure-erőforrások:
 
 1. Az Azure Blockchain Service-tag beállításainak megadása.
 
-    Beállítás | Leírás
+    Beállítás | Description
     --------|------------
     Előfizetés | Válassza ki a szolgáltatásához használni kívánt Azure-előfizetést. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amely részeként fizet az erőforrásért.
     Erőforráscsoport | Hozzon létre egy új erőforráscsoport-nevet, vagy válasszon ki egy meglévőt az előfizetésből.
@@ -62,6 +62,12 @@ A sablonban definiált Azure-erőforrások:
 
   A Azure Portal a sablon üzembe helyezéséhez használja a rendszer. Használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+
+A Azure Portal használatával megtekintheti az üzembe helyezett Azure Blockchain-szolgáltatás tagjainak részleteit. A portálon nyissa meg az Azure Blockchain-szolgáltatás tagját tartalmazó erőforráscsoportot. Válassza ki a létrehozott blockchain-tagot.
+
+![Üzembe helyezett Azure Blockchain-tagok áttekintése – részletek a Azure Portal](./media/create-member-template/deployed-member.png)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Használhatja a következő rövid útmutatóhoz vagy oktatóanyaghoz létrehozott blockchain tagot. Ha már nincs rá szükség, törölheti az erőforrásokat a gyors útmutatóhoz létrehozott erőforráscsoport törlésével.
@@ -71,7 +77,7 @@ Az erőforráscsoport törlése:
 1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
 2. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Azure Blockchain-szolgáltatási tagot és egy új konzorciumot. Próbálja ki a következő rövid útmutatót a Ethereum készült Azure Blockchain Development Kit használatával az Azure Blockchain-szolgáltatáshoz való csatlakoztatáshoz.
 

@@ -10,12 +10,12 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 3af87af0dca34b6587cf92bcc65568ad6dd943be
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 513f0240296debb5e878461ed1ca7cffecad760a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324300"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462991"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Időponthoz való visszaállítás a blokk Blobok számára (előzetes verzió)
 
@@ -85,7 +85,7 @@ A következő régiók támogatják az időponthoz történő visszaállítást 
 Az előzetes verzió az alábbi korlátozásokat tartalmazza:
 
 - A prémium blokkos Blobok visszaállítása nem támogatott.
-- A Blobok archiválási szinten való visszaállítása nem támogatott. Ha például a forró rétegben lévő blobot két nappal ezelőtt áthelyezték az archiválási rétegbe, és a visszaállítási művelet három nappal ezelőtt visszaállítja a-t, a blob nem lesz visszaállítva a forró szintre.
+- A blobok visszaállítása az archív szinten nem támogatott. Ha például egy blob két nappal ezelőtt át lett helyezve a gyakori elérésű szintről az archív szintre, és a visszaállítási művelet egy három nappal korábbi pontra állítja vissza a rendszert, a blob nem lesz vissza állítva a gyakori elérésű szintre.
 - Azure Data Lake Storage Gen2 lapos és hierarchikus névterek visszaállítása nem támogatott.
 - A Storage-fiókok ügyfél által megadott kulcsokkal történő visszaállítása nem támogatott.
 
@@ -122,7 +122,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ### <a name="check-registration-status"></a>Regisztráció állapotának bejelölése
 
-A regisztráció állapotának megtekintéséhez futtassa a következő parancsokat:
+Az időpontra történő visszaállítás regisztrálása automatikus, és kevesebb, mint 10 percet vesz igénybe. A regisztráció állapotának megtekintéséhez futtassa a következő parancsokat:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell

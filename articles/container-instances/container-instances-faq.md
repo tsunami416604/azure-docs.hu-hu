@@ -3,13 +3,13 @@ title: Gyakori kérdések
 description: A Azure Container Instances szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115227"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447781"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
@@ -33,19 +33,22 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Milyen Windows-alapú operációsrendszer-lemezképek támogatottak?
 
+> [!NOTE]
+> A visszamenőleges kompatibilitással kapcsolatos problémák miatt a 2020-es Windows-frissítések után a következő rendszerkép-verziók tartalmazzák az alaprendszerképben használt minimális verziószámot. A régebbi lemezkép-verziókat használó aktuális telepítések nem érintettek, de az új központi telepítéseknek meg kell felelniük a következő alapképeknek. 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 alaplemezképek
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` vagy újabb
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` vagy újabb
 
 > [!NOTE]
 > A 1709-es vagy a 1803-es féléves csatornán alapuló Windows-lemezképek nem támogatottak.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 és ügyféloldali lemezképek (előzetes verzió)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.914` vagy korábbi
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809` `10.0.17763.914` vagy korábbi
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.914` vagy korábbi
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` vagy újabb
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` vagy újabb
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.1040` vagy újabb
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Milyen .NET-vagy .NET Core-lemezképfájlt használok a tárolóban? 
 
@@ -98,7 +101,7 @@ A tároló csoport időtartamát a rendszer az első tároló rendszerképének 
 
 A mérőműszer leállítása a teljes tároló csoport leállítása után leáll. Ha a tároló csoport egyik tárolója fut, akkor az erőforrásokat abban az esetben tartjuk, ha újra el szeretné indítani a tárolókat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További](container-instances-overview.md) információ a Azure Container Instancesról.
 * Azure Container Instances [gyakori problémáinak elhárítása](container-instances-troubleshooting.md) .

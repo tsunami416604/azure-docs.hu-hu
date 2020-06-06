@@ -3,12 +3,12 @@ title: Függőségek elemzése Azure Migrate kiszolgáló értékelése során
 description: Ismerteti, hogyan használható a függőségi elemzés az értékeléshez Azure Migrate Server Assessment használatával.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b269322f5426a68b072452bc2f79531685be3742
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024761"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447577"
 ---
 # <a name="dependency-analysis"></a>Függőségek elemzése
 
@@ -30,7 +30,7 @@ A függőségi elemzések üzembe helyezésére két lehetőség áll rendelkez�
 - **Ügynök**nélkül: ügynök nélküli elemzéssel nem kell ügynököt telepítenie az áttekinteni kívánt gépekre. Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható.
 
 > [!NOTE]
-> Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségek elemzését is használhatja.
+> Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségelemzést viszont használhatja.
 
 ## <a name="agentless-analysis"></a>Ügynök nélküli elemzés
 
@@ -70,11 +70,11 @@ Log Analytics | Nem kötelező. | Azure Migrate a függőségi elemzéshez a [Se
 Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizációhoz engedélyezett gépeken. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök gyűjtenek adatokat a TCP-folyamatokról és a bejövő/kimenő kapcsolatokról az egyes folyamatokhoz.
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
-Adatexportálás | Jelenleg nem tölthető le táblázatos formátumban. | Az adatlekérdezés a Log Analytics használatával kérdezhető le.
+Adatexportálás | Az elmúlt 30 nap során az adatletöltés CSV formátumban is letölthető. | Az adatlekérdezés a Log Analytics használatával kérdezhető le.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [VMWare virtuális gépek](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), a [fizikai kiszolgálók](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)és a [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)ügynök-alapú elemzésének követelményeit.
 - [Tekintse át](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) a VMWare virtuális gépek ügynök nélküli elemzésének követelményeit.
 - Ügynök-alapú függőségi vizualizáció [beállítása](how-to-create-group-machine-dependencies.md)

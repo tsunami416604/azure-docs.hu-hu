@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 5a0b9b2752a2ad8b7d2e03a40af11407b97391bc
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 2a0b25fc73bf0f549a199592d558c0097c2db8b8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322030"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457065"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Oktatóanyag: az Azure IoT Hub eseményekre vonatkozó e-mailes értesítések küldése Event Grid és Logic Apps használatával
 
@@ -181,7 +181,7 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
    2. A **témakör részletei** részben hajtsa végre a következő feladatokat:
        1. Ellenőrizze, hogy a **témakör típusa** **IoT hub**értékre van-e állítva. 
        2. Győződjön meg róla, hogy az IoT hub neve a **forrás erőforrás** mező értékeként van beállítva. 
-       3. Adja meg annak a **rendszertémakörnek** a nevét, amelyet létre fog hozni Önnek. 
+       3. Adja meg annak a **rendszertémakörnek** a nevét, amelyet létre fog hozni Önnek. A rendszertémakörökről a [rendszertémakörök áttekintésében](system-topics.md)talál további információt.
    3. Az **Event types (eseménytípus** ) szakaszban hajtsa végre a következő feladatokat: 
         1. Az **eseménytípus szűréséhez**törölje az összes lehetőséget, kivéve az **eszköz létrejöttét**.
 

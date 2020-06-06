@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655822"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465660"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale átviteli sebességgel
 
@@ -29,7 +29,7 @@ Az Azure Cosmos-adatbázisok és-tárolók, amelyek az autoscale kiosztott átvi
 
 * **Skálázható:** Az adatbázisok és a tárolók szükség szerint automatikusan méretezhetik a kiépített átviteli sebességet. Az ügyfélkapcsolatok, az alkalmazások és a Azure Cosmos DB SLA-kat érintő hatás nem szakad meg.
 
-* **Költséghatékony:** Az automatikus skálázás segítségével optimalizálhatja az RU/s használatát és a költséghatékonyságot, ha nincs használatban. Csak azon erőforrásokért kell fizetnie, amelyeket a számítási feladatokhoz óránként kell fizetni.
+* **Költséghatékony:** Az automatikus skálázás segítségével optimalizálhatja az RU/s használatát és a költséghatékonyságot, ha nincs használatban. Csak azon erőforrásokért kell fizetnie, amelyeket a számítási feladatokhoz óránként kell fizetni. Egy hónap összes órájában, ha az autoscale Max RU/s (Tmax) értéket állítja be, és a teljes mennyiséget az órák 66%-ában használja, akkor a rendszer az autoscale (méret) értékkel fogja menteni a Tmax. További információ: a [Standard (manuális) és az Automatikus méretezéssel kiépített átviteli sebesség kiválasztása](how-to-choose-offer.md) című cikk.
 
 * **Magasan elérhető:** Az autoscale-t használó adatbázisok és tárolók ugyanazt a globálisan elosztott, hibatűrő, magas rendelkezésre állású Azure Cosmos DB háttérrendszer használatával biztosítják az adattartósságot és a magas rendelkezésre állást.
 
@@ -79,7 +79,7 @@ További részletekért tekintse meg ezt a [dokumentációt](how-to-choose-offer
 | **Díjszabás** | A manuálisan kiosztott RU/mp óradíjat kell fizetnie a [Standard (manuális) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óránkénti díjszabás alapján. | A legmagasabb RU/s esetében óránkénti fizetést kell fizetnie, a rendszer pedig az órán belül felskálázást. <br/><br/> Az egyszeri írási régió fiókjai esetében óradíjban kell fizetnie az RU/s esetében, az [autoscale ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. <br/><br/>Több írási régióval rendelkező fiókok esetében az autoskálázás díjmentes. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a [több főkiszolgálós ru/s-díj](https://azure.microsoft.com/pricing/details/cosmos-db/)használatával. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [autoscale – gyakori kérdések](autoscale-faq.md)című szakaszt.
 * Megtudhatja, hogyan [választhat a manuális és az automatikus skálázási sebesség közül](how-to-choose-offer.md).

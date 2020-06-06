@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597659"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447815"
 ---
 # <a name="responsible-machine-learning-ml"></a>Felelős Machine Learning (ML)
 
@@ -80,4 +80,5 @@ Tekintse meg az alábbi mintát, amelyből megtudhatja, hogyan hozhatja létre a
 
 ## <a name="additional-resources"></a>További források
 
+- A homomorphic titkosítás használatával [helyezzen üzembe egy titkosított következtetési webszolgáltatás-szolgáltatást](how-to-homomorphic-encryption-seal.md).
 - További információ a Machine learning-rendszer dokumentációjának a [ml](https://www.partnershiponai.org/about-ml/) -készletéről.

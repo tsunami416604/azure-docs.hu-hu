@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042035"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449294"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növe
 ![képernyő](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>Az Elastic Jobs korlátozott előzetes verziója
+## <a name="elastic-jobs-public-preview"></a>Rugalmas feladatok nyilvános előzetes verziója
 
-A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. Ez a korlátozott előzetes verzió jelenleg a PowerShell használatával teszi lehetővé a feladatok ügynökének létrehozását és a T-SQL-T a feladatok létrehozásához és kezeléséhez.
-
-> [!NOTE]
-> Ez az oktatóanyag az SQL Database szolgáltatás egy korlátozott előzetes verziójának funkcióit használja (Elastic Database-feladatok). Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés-AZONOSÍTÓját a SaaSFeedback@microsoft.com subject = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért vegye fel SaaSFeedback@microsoft.com a kapcsolatot a kapcsolódó kérdésekkel vagy támogatással.
+A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. A rugalmas feladatok új verziója jelenleg nyilvános előzetes verzióban érhető el. Ez a nyilvános előzetes verzió jelenleg támogatja a PowerShell használatát a feladat-ügynök létrehozásához, valamint a T-SQL-feladatokat a feladatok létrehozásához és kezeléséhez.
+További információt a [Elastic Database feladatok](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) című cikkben talál.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip tickets SaaS-adatbázis beszerzése bérlői alkalmazás parancsfájljai alapján
 
@@ -115,7 +113,7 @@ Figyelje meg a következő elemeket a _Sémakezelés. SQL_ parancsfájlban:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

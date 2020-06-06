@@ -9,12 +9,12 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597645"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447828"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a WhiteNoise-csomag használatával
 
@@ -60,7 +60,7 @@ A differentially privát rendszereinek megvalósítása nehéz feladat. A WhiteN
 
 Az alapszintű függvénytár a következő adatvédelmi mechanizmusokat tartalmazza a differentially privát rendszerének megvalósításához:
 
-|Összetevő  |Leírás  |
+|Összetevő  |Description  |
 |---------|---------|
 |Elemzés     | Tetszőleges számítások gráf-leírása. |
 |Validator     | Egy olyan, a rozsda-függvénytár, amely eszközöket tartalmaz az elemzéshez szükséges feltételek ellenőrzéséhez és lefoglalásához a differentially.          |
@@ -71,12 +71,14 @@ Az alapszintű függvénytár a következő adatvédelmi mechanizmusokat tartalm
 
 A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosítja a táblázatos és a kapcsolati adatokat kezelő szolgáltatásokhoz:
 
-|Összetevő  |Leírás  |
+|Összetevő  |Description  |
 |---------|---------|
 |Adathozzáférés     | Az SQL-lekérdezések elfogására és feldolgozására szolgáló függvénytár, amely jelentéseket készít. Ez a kódtár a Pythonban van megvalósítva, és a következő ODBC-és DBAPI-adatforrásokat támogatja:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandák</li></ul>|
 |Szolgáltatás     | A végrehajtási szolgáltatás, amely REST-végpontot biztosít a kérelmek és a megosztott adatforrások közötti lekérdezések kiszolgálásához. A szolgáltatás úgy lett kialakítva, hogy lehetővé tegye a differenciált adatvédelmi modulok összeállítását, amelyek különböző Delta és epszilon értékeket, más néven heterogén kérelmeket tartalmaznak. Ez a hivatkozási implementáció a korrelált adatok lekérdezéseit érintő további hatásokra utal. |
 |Értékelő     | A sztochasztikus értékelő, amely az adatvédelem megsértését, a pontosságot és a torzítást ellenőrzi. Az értékelő a következő teszteket támogatja: <ul><li>Adatvédelmi teszt – meghatározza, hogy a jelentés megfelel-e a különbözeti adatvédelem feltételeinek.</li><li>Pontossági teszt – meghatározza, hogy a jelentések megbízhatósága a 95%-os megbízhatósági szint miatt a felső és az alsó határokon belülre esik-e.</li><li>Segédprogram tesztelése – meghatározza, hogy a jelentések megbízhatósági határai elég lezárultak-e az adatokhoz, miközben továbbra is maximalizálják az adatvédelmet.</li><li>Torzítási teszt – a jelentések ismétlődő lekérdezésekre való terjesztését méri, így biztosítva, hogy ne legyenek kiegyensúlyozva</li></ul> |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha szeretné megtudni, hogyan használhatja a WhiteNoise összetevőit, tekintse meg a [WhiteNoise Core csomag](https://github.com/opendifferentialprivacy/whitenoise-core)GitHub-tárházait, a [WhiteNoise rendszercsomagot](https://github.com/opendifferentialprivacy/whitenoise-system) és a [WhiteNoise-mintákat](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Az adatvédelem [megőrzése](how-to-differential-privacy.md) Azure Machine Learningban.
+
+Ha többet szeretne megtudni a WhiteNoise összetevőiről, tekintse meg a [WhiteNoise Core csomag](https://github.com/opendifferentialprivacy/whitenoise-core)GitHub-tárházait, a [WhiteNoise-csomagokat](https://github.com/opendifferentialprivacy/whitenoise-system) és a [WhiteNoise-mintákat](https://github.com/opendifferentialprivacy/whitenoise-samples).

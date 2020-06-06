@@ -1,18 +1,18 @@
 ---
 title: Valós idejű irányítópult létrehozása Azure Cosmos DB, Azure Analysis Services és Power BI használatával
 description: Megtudhatja, hogyan hozhat létre élő időjárási irányítópultot Power BI a Azure Cosmos DB és a Azure Analysis Services használatával.
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: bharathb
 ms.reviewer: sngun
-ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70376592"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465796"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
 
@@ -96,9 +96,9 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services összekötése az Azure Cosmos-fiókkal
 
-1. **Hozzon létre egy új Azure Analysis Services-fürtöt** - , és[hozzon létre egy Azure Analysis Services-példányt](../analysis-services/analysis-services-create-server.md) ugyanabban a régióban, mint az Azure Cosmos-fiókot és a Databricks-fürtöt.
+1. **Új Azure Analysis Services-fürt létrehozása**  -  [Hozzon létre egy Azure Analysis Services-példányt](../analysis-services/analysis-services-create-server.md) ugyanabban a régióban, mint az Azure Cosmos-fiókot és a Databricks-fürtöt.
 
-1. **Hozzon létre egy új Analysis Services táblázatos projektet a Visual Studióban** -  ,[telepítse a SQL Server Data toolst (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) , és hozzon létre egy Analysis Services táblázatos projektet a Visual Studióban.
+1. **Új Analysis Services táblázatos projekt létrehozása a Visual Studióban**  -   [Telepítse a SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) , és hozzon létre egy Analysis Services táblázatos projektet a Visual Studióban.
 
    ![Azure Analysis Services projekt létrehozása](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
 
@@ -106,7 +106,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    ![Azure Analysis Services táblázatos modell tervezője](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
 
-1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon**> **Data Sources** > az adatforrások**új** adatforrásához, és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
+1. **Adja hozzá a Azure Cosmos DB adatforrást** – **navigáljon az**adatforrások új adatforrásához, >  **Data Sources**  >  **New Data Source** és adja hozzá a Azure Cosmos DB adatforrást az alábbi képernyőképen látható módon:
 
    ![Cosmos DB adatforrás hozzáadása](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
 
@@ -166,7 +166,7 @@ Betöltési folyamat beállítása az [időjárási adatmennyiség](https://cata
 
    ![Az adatterhelés és a jelentések készítése](./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 

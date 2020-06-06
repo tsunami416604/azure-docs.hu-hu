@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az intelligens globális irányítással | Microsoft Docs'
+title: 'Oktatóanyag: Azure AD SSO-integráció intelligens globális irányítással'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az intelligens globális irányítás között.
 services: active-directory
 documentationCenter: na
@@ -15,155 +15,156 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb14f4c8dd498bf26ac093f7a491876cd2e73940
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 5c3b2f5332f3dc94f10a7822068b165db13b3d33
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872634"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456759"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az intelligens globális irányítással
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Azure Active Directory (Azure AD) intelligens globális irányítását. Az intelligens globális irányítás Azure AD-vel való integrálásával a következőket teheti:
 
-* Vezérlés az Azure AD-ben, aki hozzáfér az intelligens globális irányításhoz.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá az intelligens globális irányításhoz.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az intelligens globális irányításba az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Intelligens globális irányítási egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Intelligens globális irányítási előfizetés egyszeri bejelentkezéssel (SSO) engedélyezve.
 
-## <a name="scenario-description"></a>Forgatókönyv leírása
+## <a name="tutorial-description"></a>Oktatóanyag leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tesztkörnyezetben végezheti el.
 
-* Az intelligens globális irányítás támogatja **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* Az intelligens globális irányítás konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Az intelligens globális irányítás támogatja az SP által kezdeményezett és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-smart-global-governance-from-the-gallery"></a>Intelligens globális irányítás hozzáadása a katalógusból
+Az intelligens globális irányítás konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="add-smart-global-governance-from-the-gallery"></a>Intelligens globális irányítás hozzáadása a katalógusból
 
 Az intelligens globális irányítás Azure AD-be való integrálásának konfigurálásához intelligens globális irányítást kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **intelligens globális irányítás** kifejezést.
-1. Válassza az eredmények panel **intelligens globális irányítás** elemét, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
+1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban adja meg az **intelligens globális irányítás** kifejezést a keresőmezőbe.
+1. Válassza az **intelligens globális irányítás** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-smart-global-governance"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az intelligens globális irányításhoz
+## <a name="configure-and-test-azure-ad-sso-for-smart-global-governance"></a>Az Azure AD SSO konfigurálása és tesztelése az intelligens globális irányításhoz
 
-Az Azure AD SSO konfigurálása és tesztelése intelligens globális irányítással egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az intelligens globális irányításban.
+Az Azure AD SSO konfigurálását és tesztelését intelligens globális irányítással végezheti el egy B. Simon nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó között az intelligens globális irányításban.
 
-Az Azure AD SSO intelligens globális irányítással való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO intelligens globális irányítással való konfigurálásához és teszteléséhez hajtsa végre a következő magas szintű lépéseket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Intelligens globális irányítású egyszeri bejelentkezés konfigurálása](#configure-smart-global-governance-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre intelligens globális irányítási tesztet használó felhasználót](#create-smart-global-governance-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó, "B. Simon" című részt szeretne létrehozni az intelligens globális irányításban.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t annak engedélyezéséhez, hogy a felhasználók használják a szolgáltatást.
+    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez.
+    1. **[Hozzáférés biztosítása a tesztelési felhasználónak](#grant-access-to-the-test-user)** , hogy lehetővé váljon a felhasználó számára az Azure ad egyszeri bejelentkezés használata.
+1. **[Konfigurálja az intelligens globális irányítási egyszeri bejelentkezést](#configure-smart-global-governance-sso)** az alkalmazás oldalán.
+    1. **[Hozzon létre egy intelligens globális irányítási tesztet használó felhasználót](#create-a-smart-global-governance-test-user)** a felhasználó Azure ad-beli képviseletének megfelelő felhasználóként.
+1. Ellenőrizze az **[SSO](#test-sso)** -t a konfiguráció működésének ellenőrzéséhez.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)az **intelligens globális irányítási** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **intelligens globális irányítási** alkalmazás-integráció lapon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Az alapszintű SAML-konfiguráció ceruza gombja](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Ha az **alapszintű SAML-konfiguráció** szakaszban szeretné konfigurálni az alkalmazást identitásszolgáltató módban, hajtsa végre az alábbi lépéseket.
 
-    a. Az **azonosító** szövegmezőben használja a következő URL-cím egyikét:
+    a. Az **azonosító** mezőben adja meg az alábbi URL-címek egyikét:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`|
 
-    b. A **Válasz URL-címe** szövegmezőben használja a következő URL-cím egyikét:
+    b. A **Válasz URL-címe** mezőbe írja be az alábbi URL-címek egyikét:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`|
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, és végezze el a következő lépést.
 
-    A **bejelentkezési URL-cím** szövegmezőben használja a következő URL-cím egyikét:
+   - A **bejelentkezési URL-cím** mezőbe írja be az alábbi URL-címek egyikét:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform`|
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a tanúsítvány **(RAW)** **letöltési** hivatkozását a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
+    ![Tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
-1. Az **intelligens globális irányítás beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. Az **intelligens globális irányítás beállítása** szakaszban másolja a megfelelő URL-címet vagy URL-címeket a követelmények alapján:
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
+   1. A név mezőbe írja be a **B. Simon** **nevet** .  
+   1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
+   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít az intelligens globális irányításhoz.
+Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja azáltal, hogy hozzáférést biztosít a felhasználónak az intelligens globális irányításhoz.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 1. Válassza az alkalmazások lista **intelligens globális irányítás**elemét.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
 ## <a name="configure-smart-global-governance-sso"></a>Intelligens globális irányítású egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés **intelligens globális irányítási** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalról az [intelligens globális irányítási támogatási csapatnak](mailto:support.tech@smartglobal.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az intelligens globális irányítási oldalon való egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött nyers tanúsítványt és a Azure Portalról az [intelligens globális irányítási támogatási csapatba](mailto:support.tech@smartglobal.com)másolt megfelelő URL-címeket. Az SAML SSO-kapcsolatokat úgy konfigurálja, hogy mindkét oldalon megfelelő legyen.
 
-### <a name="create-smart-global-governance-test-user"></a>Intelligens globális irányítási teszt felhasználó létrehozása
+### <a name="create-a-smart-global-governance-test-user"></a>Intelligens globális irányítási teszt felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az intelligens globális irányításban. Az intelligens [globális irányítási támogatási csapattal](mailto:support.tech@smartglobal.com) az intelligens globális irányítási platformon veheti fel a felhasználókat. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Működjön együtt az [intelligens globális irányítási támogatási csapattal](mailto:support.tech@smartglobal.com) , és adjon hozzá egy B. Simon nevű felhasználót az intelligens globális irányításban. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Ha a hozzáférési panelen az intelligens globális irányítás csempére kattint, automatikusan be kell jelentkeznie az intelligens globális irányításba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja az intelligens globális irányítás csempét a hozzáférési panelen, automatikusan be kell jelentkeznie az intelligens globális irányítási példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Intelligens globális irányítás kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

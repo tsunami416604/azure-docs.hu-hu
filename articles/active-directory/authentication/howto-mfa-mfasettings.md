@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef98f243abd02f0156190638cda8ab7c33f935d
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dd804937fbd98121f3242c6906b890183d1284bb
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770907"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464368"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -30,7 +30,7 @@ Az Azure multi-Factor Authenticationhoz kapcsolódó beállításokat a Azure Po
 
 Ezen beállítások némelyike az MFA-kiszolgálóra, az Azure MFA-ra vagy mindkettőre vonatkozik.
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | ------- | ----------- |
 | Fiókzárolási | A fiókok ideiglenes zárolása a multi-Factor Authentication szolgáltatásban, ha túl sok megtagadott hitelesítési kísérlet van egy sorban. Ez a funkció csak azokra a felhasználókra vonatkozik, akik hitelesítő PIN-kódot ad meg. (MFA-kiszolgáló) |
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Arra szolgál, hogy bizonyos felhasználók képesek legyenek Multi-Factor Authentication kérelmek fogadására. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a letiltás időpontjától kezdve 90 napig letiltva maradnak. |
@@ -44,7 +44,7 @@ Ezen beállítások némelyike az MFA-kiszolgálóra, az Azure MFA-ra vagy mindk
 
 Az ebben a szakaszban szereplő beállítások csak az MFA-kiszolgálók esetében használhatók.
 
-| Szolgáltatás | Leírás |
+| Szolgáltatás | Description |
 | ------- | ----------- |
 | Kiszolgáló beállításai | Az MFA-kiszolgáló letöltése és az aktiválási hitelesítő adatok előállítása a környezet inicializálásához |
 | [Egyszeri Mellőzés](#one-time-bypass) | A felhasználó hitelesítésének engedélyezése a kétlépéses ellenőrzés végrehajtása nélkül korlátozott ideig. |
@@ -217,7 +217,8 @@ Az alkalmazások jelszavainak, megbízható IP-címeinek, ellenőrzési lehetős
 
 ![Azure Multi-Factor Authentication szolgáltatás beállításai](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
-A megbízható IP-címtartományok lehetnek magán-vagy nyilvánosak.
+> [!NOTE]
+> A megbízható IP-címek csak az MFA-kiszolgáló használata esetén tartalmazhatnak privát IP-tartományokat. Felhőalapú Azure-Multi-Factor Authentication esetén csak nyilvános IP-címtartományok használhatók.
 
 ## <a name="app-passwords"></a>Alkalmazásjelszavak.
 
@@ -293,8 +294,8 @@ A felhasználók a regisztráció után is létrehozhatnak alkalmazás-jelszavak
 
 Az Azure Multi-Factor Authentication _megbízható IP_ -címei funkciót a felügyelt vagy összevont bérlők rendszergazdái használják. A szolgáltatás megkerüli a kétlépéses ellenőrzést a vállalati intranetről bejelentkező felhasználók számára. A szolgáltatás az Azure Multi-Factor Authentication teljes verziójával érhető el, nem pedig a rendszergazdák ingyenes verziójával. Az Azure Multi-Factor Authentication teljes verziójának beszerzésével kapcsolatos további információkért lásd: [azure multi-Factor Authentication](multi-factor-authentication.md).
 
-> [!NOTE]
-> Az MFA megbízható IP-címei és a nevesített helyek feltételes hozzáférése csak IPV4-címekkel működik.
+> [!TIP]
+> Az IPv6-tartományok csak a [nevesített hely (előzetes verzió)](../conditional-access/location-condition.md#preview-features) felületén támogatottak.
 
 Ha a szervezete telepíti a hálózati házirend-kiszolgáló bővítményét, hogy az MFA-t a helyszíni alkalmazások számára biztosítsa, jegyezze fel, hogy a forrás IP-cím mindig az NPS-kiszolgáló lesz, amely a hitelesítési kísérleten átfolyik.
 
@@ -322,7 +323,7 @@ Függetlenül attól, hogy engedélyezve van-e a megbízható IP-címek szolgál
 3. Válassza az **új hely**lehetőséget.
 4. Adja meg a hely nevét.
 5. Válassza **a megjelölés megbízható helyként**lehetőséget.
-6. Adja meg az IP-címtartományt a CIDR-jelölésben, például **192.168.1.1/24**.
+6. Adja meg az IP-címtartományt a CIDR-jelölésben, például **40.77.182.32/27**.
 7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
@@ -368,7 +369,7 @@ A felhasználók számára elérhető ellenőrzési módszereket is kiválasztha
 
 Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Authenticationhoz, az Ön által engedélyezett beállítások alapján választják ki az előnyben részesített ellenőrzési módszert. A felhasználói beléptetési folyamatra vonatkozó útmutatást a [saját fiók beállítása a kétlépéses ellenőrzéshez című témakörben talál](../user-help/multi-factor-authentication-end-user-first-time.md).
 
-| Metódus | Leírás |
+| Metódus | Description |
 |:--- |:--- |
 | Telefonos hívás |Automatikus hanghívást helyez el. A felhasználó fogadja a hívást, majd a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.  A telefonszám nincs szinkronizálva a helyszíni Active Directory. |
 | SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A rendszergazdáknak engedélyezniük kell egy másik módszert azon felhasználók számára, akik korábban a kétirányú SMS-t használták.|
@@ -425,6 +426,6 @@ A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, a
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha a **ne Kérdezzen rá ismét**lehetőségre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure AD bejelentkezési oldalának arculatának módosítása](../fundamentals/customize-branding.md)

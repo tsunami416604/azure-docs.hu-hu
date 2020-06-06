@@ -3,14 +3,14 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424244"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457286"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
@@ -136,6 +136,8 @@ Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuáli
 
 * `az deployment group what-if --no-pretty-print`erőforráscsoport-telepítések esetén
 * `az deployment sub what-if --no-pretty-print`előfizetési szintű központi telepítések esetén
+
+Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure CLI konfigurációs](/cli/azure/azure-cli-configuration) fájlját. Állítsa **no_color** a no_color **értéket igen**értékre.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 

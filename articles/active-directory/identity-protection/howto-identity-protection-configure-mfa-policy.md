@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan konfigurálhatja a Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382146"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464334"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Útmutató: az Azure Multi-Factor Authentication regisztrációs szabályzatának konfigurálása
 
@@ -36,13 +36,13 @@ További információ az Azure Multi-Factor Authenticationról: [Mi az az azure 
 ## <a name="policy-configuration"></a>Szabályzatkonfiguráció
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
-1. Tallózással keresse meg **Azure Active Directory** > **biztonsági** > **Identity Protection** > **MFA regisztrációs szabályzatát**.
+1. Tallózással keresse meg **Azure Active Directory**  >  **biztonsági**  >  **Identity Protection**  >  **MFA regisztrációs szabályzatát**.
    1. A **hozzárendelések** alatt
       1. **Felhasználók** – válassza a **minden felhasználó** lehetőséget **, vagy válassza az egyének és csoportok lehetőséget,** ha korlátozza a bevezetést.
          1. Opcionálisan dönthet úgy is, hogy kizárja a felhasználókat a szabályzatból.
    1. A **vezérlők** területen
       1. Győződjön meg arról, hogy az **Azure MFA-regisztráció megkövetelése** jelölőnégyzet be van jelölve, majd válassza a **kiválasztás**lehetőséget
-   1. **Szabályzat érvénybe léptetése** - **On**
+   1. Szabályzat érvénybe **léptetése**  -  **Bekapcsolva**
    1. **Mentés**
 
 ## <a name="user-experience"></a>Felhasználó felület
@@ -53,7 +53,7 @@ A kapcsolódó felhasználói élmény áttekintését lásd:
 
 - A [Azure ad Identity Protectionekkel való bejelentkezési élmény](concept-identity-protection-user-experience.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bejelentkezési és felhasználói kockázati házirendek engedélyezése](howto-identity-protection-configure-risk-policies.md)
 

@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135887"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463450"
 ---
 # <a name="copy-a-blob-with-net"></a>BLOB másolása .NET-tel
 
@@ -109,7 +109,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>BLOB-másolási művelet megszakítása
 
-A másolási művelet megszakításakor a rendszer nulla hosszúságú cél blobot eredményez a Blobok, a blobok és a Blobok hozzáfűzéséhez. A cél blob metaadatai azonban az új értékeket a forrás blobból másolják, vagy explicit módon beállították a [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) vagy a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) -hívásban. Ha meg szeretné őrizni az eredeti metaadatokat a másolás előtt, készítsen pillanatképet a cél blobról `StartCopy` a `StartCopyAsync`hívás vagy a előtt.
+A másolási művelet megszakításakor a rendszer nulla hosszúságú cél blobot eredményez a Blobok, a blobok és a Blobok hozzáfűzéséhez. A cél blob metaadatai azonban az új értékeket a forrás blobból másolják, vagy explicit módon beállították a [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) vagy a [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) -hívásban. Ha meg szeretné őrizni az eredeti metaadatokat a másolás előtt, készítsen pillanatképet a cél blobról a hívás vagy a előtt `StartCopy` `StartCopyAsync` .
 
 Egy folyamatban lévő blob másolási művelet megszakításakor a cél blob [CopyState. status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) értéke [CopyStatus. megszakítva](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet).
 
@@ -129,7 +129,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő témakörök a Blobok másolásával és a folyamatban lévő másolási műveletek megszakításával kapcsolatos információkat tartalmazzák az Azure REST API-k használatával.
 

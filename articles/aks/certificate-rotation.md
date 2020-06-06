@@ -2,16 +2,14 @@
 title: Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 description: Megtudhatja, hogyan forgathatja el a tanúsítványokat egy Azure Kubernetes-szolgáltatási (ak-) fürtben.
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549073"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465609"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -37,7 +35,7 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 * Az `kubectl` ügyfél rendelkezik egy tanúsítvánnyal az AK-fürttel való kommunikációhoz.
 
 > [!NOTE]
-> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019-ig vagy bármely, a tanúsítvánnyal elforgatott fürttel létrehozott fürtnek 30 év után lejár a fürt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa. Minden más tanúsítvány két év után lejár. A fürt létrejöttének ellenőrzéséhez használja `kubectl get nodes` a következőt: a Node-készletek *kora* .
+> A március 2019 előtt létrehozott AK-fürtökhöz két év után járó tanúsítványok tartoznak. A március 2019-ig vagy bármely, a tanúsítvánnyal elforgatott fürttel létrehozott fürtnek 30 év után lejár a fürt HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa. Minden más tanúsítvány két év után lejár. A fürt létrejöttének ellenőrzéséhez használja a `kubectl get nodes` következőt: a Node-készletek *kora* .
 > 
 > Emellett a fürt tanúsítványának lejárati dátumát is megtekintheti. A következő parancs például megjeleníti a *myAKSCluster* -fürthöz tartozó tanúsítvány részleteit.
 > ```console
@@ -48,37 +46,37 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 ## <a name="rotate-your-cluster-certificates"></a>A fürt tanúsítványainak elforgatása
 
 > [!WARNING]
-> A tanúsítványok használatával `az aks rotate-certs` történő elforgatása akár 30 percet is igénybe vehet az AK-fürthöz.
+> A tanúsítványok használatával történő elforgatása `az aks rotate-certs` akár 30 percet is igénybe vehet az AK-fürthöz.
 
-Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs az `kubectl` ügyféltanúsítványt is letölti és konfigurálja a helyi gépen.
+Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs az ügyféltanúsítványt is letölti és konfigurálja a `kubectl` helyi gépen.
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-Ezzel `az aks rotate-certs` a paranccsal az összes tanúsítvány, hitelesítésszolgáltató és SAs elforgatható a fürtön.
+Ezzel a paranccsal az `az aks rotate-certs` összes tanúsítvány, hitelesítésszolgáltató és SAs elforgatható a fürtön.
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> A befejezésig akár 30 percet `az aks rotate-certs` is igénybe vehet. Ha a parancs végrehajtása nem sikerül, a `az aks show` használatával ellenőrizheti, hogy a fürt állapota a *tanúsítvány elforgatása*-e. Ha a fürt hibás állapotban van, futtassa `az aks rotate-certs` újra a tanúsítványokat újra.
+> A befejezésig akár 30 percet is igénybe vehet `az aks rotate-certs` . Ha a parancs végrehajtása nem sikerül, a használatával `az aks show` ellenőrizheti, hogy a fürt állapota a *tanúsítvány elforgatása*-e. Ha a fürt hibás állapotban van, futtassa újra a `az aks rotate-certs` tanúsítványokat újra.
 
-A `kubectl` parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e. Mivel nem frissítette a által `kubectl`használt tanúsítványokat, hibaüzenet jelenik meg.  Például:
+A parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e `kubectl` . Mivel nem frissítette a által használt tanúsítványokat `kubectl` , hibaüzenet jelenik meg.  Például:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Frissítse a `kubectl` által használt tanúsítványt a futtatásával `az aks get-credentials`.
+Frissítse a által használt tanúsítványt a `kubectl` futtatásával `az aks get-credentials` .
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ellenőrizze, hogy a tanúsítványok frissítve lettek- `kubectl` e egy parancs futtatásával, amely mostantól sikeres lesz. Például:
+Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy parancs futtatásával `kubectl` , amely mostantól sikeres lesz. Például:
 
 ```console
 kubectl get no
@@ -87,7 +85,7 @@ kubectl get no
 > [!NOTE]
 > Ha olyan szolgáltatásokkal rendelkezik, amelyek az AK-on felül futnak, például az [Azure dev Spaces][dev-spaces]szolgáltatást, előfordulhat, hogy [frissítenie kell a szolgáltatásokhoz kapcsolódó tanúsítványokat][dev-spaces-rotate] is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsítványait, hitelesítésszolgáltatóit és SAs-adatait. A biztonsági [és az Azure Kubernetes szolgáltatásban (ak) elérhető ajánlott eljárások][aks-best-practices-security-upgrades] további információkat találnak az AK biztonsággal kapcsolatos ajánlott eljárásairól.
 

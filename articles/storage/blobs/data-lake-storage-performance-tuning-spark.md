@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b28765c9ac4fa664b84c456c31ee10e0e9e19003
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327545"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465930"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: Spark, HDInsight & Azure Data Lake Storage Gen2
 
@@ -46,7 +46,7 @@ A Spark-feladatok futtatásakor a legfontosabb beállítások a Data Lake Storag
 
 Alapértelmezés szerint a Spark on HDInsight-on való futtatásakor két virtuális fonal-mag van definiálva mindegyik fizikai mag számára.  Ez a szám egy jó párhuzamosságot és a több szálon átváltott környezetek mennyiségét biztosítja.  
 
-## <a name="guidance"></a>Útmutatás
+## <a name="guidance"></a>Útmutató
 
 Ha a Spark analitikus számítási feladatait a Data Lake Storage Gen2ban lévő adatokkal kívánja használni, javasoljuk, hogy a legújabb HDInsight-verziót használja a legjobb teljesítmény eléréséhez a Data Lake Storage Gen2. Ha a feladata nagyobb I/O-igényű, a teljesítmény javítása érdekében bizonyos paraméterek is konfigurálhatók.  A Data Lake Storage Gen2 egy nagy mértékben méretezhető tárolási platform, amely képes a magas átviteli sebesség kezelésére.  Ha a feladatnak többnyire olvasási vagy írási művelete van, akkor a Data Lake Storage Gen2 az I/O-hoz és a-ból való párhuzamosság növelése növelheti a teljesítményt.
 

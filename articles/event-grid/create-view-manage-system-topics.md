@@ -1,5 +1,5 @@
 ---
-title: Rendszertémakörök létrehozása, megtekintése és kezelése Azure Event Grid
+title: Rendszertémakörök létrehozása, megtekintése és kezelése Azure Event Grid (portál)
 description: Ez a cikk bemutatja, hogyan lehet megtekinteni a meglévő rendszertémakört, Azure Event Grid rendszertémaköröket létrehozni a Azure Portal használatával.
 services: event-grid
 author: spelluru
@@ -7,29 +7,21 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: ac22afb351973397960e66c2a8fe86031e0b213a
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316655"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457235"
 ---
-# <a name="create-view-and-manage-system-topics-in-azure-event-grid"></a>Rendszertémakörök létrehozása, megtekintése és kezelése Azure Event Grid
-Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
-
-- Rendszerbeli témakör létrehozása
-- Az összes meglévő rendszertémakör megtekintése 
-- Rendszer-témakör törlése
-- Esemény-előfizetés létrehozása rendszertémakörhöz
-
+# <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Event Grid rendszertémakörök létrehozása, megtekintése és kezelése a Azure Portal
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet rendszertémaköröket a Azure Portal használatával. A rendszertémakörök áttekintését itt találja: [rendszertémakörök](system-topics.md).
 
 ## <a name="create-a-system-topic"></a>Rendszerbeli témakör létrehozása
-Azure-erőforrásokhoz kétféleképpen hozhat létre rendszertémakört:
+Az Azure-erőforrásokhoz (Storage-fiókhoz, Event Hubs névtérhez stb.) rendszertémakört kétféleképpen lehet létrehozni:
 
-- Az Erőforrás lap, például a Storage-fiók lap vagy a Event Hubs névtér lap használata. 
-- A **Event Grid rendszertémakörök** lap használata. 
-
-[Ebből](blob-event-quickstart-portal.md) a rövid útmutatóból megtudhatja, hogyan hozhat létre egy rendszertémakört a Azure Portal egy erőforrás lapján (**események** lap). A következő lépésekkel hozhat létre rendszertémakört a **Event Grid rendszertémakörök** lapon. 
+- Egy erőforrás **események** lapja (például Storage-fiók vagy Event Hubs névtér) használatával. Ha a Azure Portal **események** lapját használja egy Azure-forrás által kiváltott eseményhez (például: Azure Storage-fiók), a portál létrehoz egy rendszertémakört az Azure-erőforráshoz, majd előfizetést hoz létre a rendszertémakörhöz. Ha első alkalommal hoz létre egy esemény-előfizetést az Azure-erőforráshoz, adja meg a rendszertémakör nevét. A második alkalommal a rendszertéma neve jelenik meg a csak olvasható módban. Tekintse meg a gyors útmutató [: blob Storage-események átirányítása webes végpontra a Azure Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) a részletes lépések végrehajtásához.
+- A **Event Grid rendszertémakörök** lap használata. A következő lépésekkel hozhat létre rendszertémakört a **Event Grid rendszertémakörök** lapon. 
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A felső keresőmezőbe írja be **Event Grid rendszertémakörök**kifejezést, majd nyomja le az **ENTER**billentyűt. 
@@ -57,11 +49,9 @@ Azure-erőforrásokhoz kétféleképpen hozhat létre rendszertémakört:
 
         ![Rendszertémakör lap](./media/create-view-manage-system-topics/system-topic-page.png)
 
+
 ## <a name="view-all-system-topics"></a>Az összes rendszertémakör megtekintése
 Az alábbi lépéseket követve megtekintheti az összes meglévő Event Grid rendszertémakört. 
-
-> [!NOTE]
-> Korábban, amikor létrehozott egy előfizetést az Azure-források által kiváltott eseményhez, a Event Grid szolgáltatás automatikusan létrehozta a rendszertémakört egy véletlenszerűen generált névvel. Most megadhat egy nevet a rendszertémakörnek a témakör létrehozása során. Ezt a rendszertémakör-erőforrást használhatja a metrikák és a diagnosztikai naplók felderítésére.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A felső keresőmezőbe írja be **Event Grid rendszertémakörök**kifejezést, majd nyomja le az **ENTER**billentyűt. 
@@ -101,6 +91,5 @@ Az alábbi lépéseket követve megtekintheti az összes meglévő Event Grid re
 
     ![Rendszertémakör – esemény-előfizetés létrehozása](./media/create-view-manage-system-topics/create-event-subscription.png)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

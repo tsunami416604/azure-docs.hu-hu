@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455706"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449192"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Ügynök nélküli függőségi vizualizáció beállítása 
 
@@ -50,7 +50,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 1. Nyissa meg a berendezés-kezelő alkalmazást. 
 2. Navigáljon az **adja meg a vCenter részletei** panelt.
 3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
-3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév**/**jelszava**
+3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
 6. Kattintson a **Save** (Mentés) gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
@@ -63,9 +63,9 @@ Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
 3. Kattintson a **kiszolgálók hozzáadása**elemre.
-3. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
-4. A gép listából válassza ki a gépeket.
-5. Kattintson a **kiszolgálók hozzáadása**elemre.
+4. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
+5. A gép listából válassza ki a gépeket.
+6. Kattintson a **kiszolgálók hozzáadása**elemre.
 
     ![Függőségi felderítés elindítása](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -92,6 +92,20 @@ A függőségek felderítésének megkezdése után hat órán belül megjelení
 > [!NOTE]
 > A függőségi adatok feldolgozása nem mindig érhető el. Ha nem érhető el, a függőséget az "ismeretlen folyamat" jelölésű folyamat mutatja.
 
+## <a name="export-dependency-data"></a>Függőségi adatgyűjtés exportálása
+
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
+2. Kattintson a **függőség elemzése** ikonra.
+3. Kattintson az **alkalmazás függőségeinek exportálása**elemre.
+4. Az **alkalmazás-függőségek exportálása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
+5. Válassza ki a kezdési és befejezési időpontot. Vegye figyelembe, hogy csak az elmúlt 30 napban töltheti le az adatgyűjtést.
+6. Kattintson a **függőség exportálása**elemre.
+
+A függőségi adatfájlok exportálása és letöltése CSV-formátumban történik. A letöltött fájl a függőségi elemzéshez engedélyezett összes gépen tartalmazza a függőségi adataikat. 
+
+    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
+
 ## <a name="stop-dependency-discovery"></a>Függőségi felderítés leállítása
 
 Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi felderítést.
@@ -104,6 +118,6 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 5. Kattintson a **kiszolgálók eltávolítása**elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A gépek csoportosítása](how-to-create-a-group.md) az értékeléshez.

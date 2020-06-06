@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 751d55493b1bdb06dfe61d9f951846e13e1e5d72
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650534"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457184"
 ---
 # <a name="classroom-lab-setup-guide"></a>A tanterem Lab telepítési útmutatója
 
@@ -137,9 +137,9 @@ Miután megértette az osztály laborjának követelményeit, készen áll a be�
 1. **Használja az irányítópultot.** Útmutatásért lásd: [a tesztkörnyezet irányítópultjának használata](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 
     > [!NOTE]
-    > Az irányítópulton látható becsült költségek azt a maximális díjat jelentik, amelyet a tanulók a laborban használhatnak. Például nem számítunk fel díjat a tanulók által fel *nem* használt időtartamokra. A becsült költségek *nem* tükrözik a sablon virtuális gépe vagy a megosztott képkatalógus használatával járó díjakat.
+    > Az irányítópulton látható becsült költségek azt a maximális díjat jelentik, amelyet a tanulók a laborban használhatnak. Például nem számítunk fel díjat a tanulók által fel *nem* használt időtartamokra. A becsült költségek *nem* tükrözik a virtuális gép, a megosztott képkatalógus vagy a tesztkörnyezet létrehozója által elindítható használati díjakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Osztályterem-tesztkörnyezet használatának követése](tutorial-track-usage.md)
   

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9b18b596e0be0e410f1d868f405e2a30105276d8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234555"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456453"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -242,16 +242,6 @@ WVDErrors
 | render barchart 
 ```
 
-Egy hiba előfordulásának megkeresése az összes felhasználónál:
-
-```kusto
-WVDErrors 
-| where ServiceError =="false" 
-| summarize usercount = count(UserName) by CodeSymbolic 
-| sort by usercount desc
-| render barchart 
-```
-
 Az alkalmazások felhasználóinak lekérdezéséhez futtassa a következő lekérdezést:
 
 ```kusto
@@ -269,6 +259,6 @@ WVDCheckpoints
 >- A WVDErrors tábla megjeleníti a felügyeleti hibákat, a gazdagépek regisztrálásával kapcsolatos problémákat, valamint azokat a problémákat, amelyek akkor jelentkeznek, amikor a felhasználó előfizet az alkalmazások vagy az asztali számítógépek listájára.
 >- A WVDErrors segítségével azonosíthatja a rendszergazdai feladatok által feloldható problémákat. A ServiceError értéke mindig "hamis" értéket ad az ilyen típusú problémákhoz. Ha a ServiceError = "true" (igaz) értéket adja meg, a problémát a Microsoftnak kell megadnia. Győződjön meg arról, hogy megadja a CorrelationID a felmerülő hibákhoz.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A diagnosztikai szolgáltatás által azonosítható gyakori hibák áttekintése: a [problémák azonosítása és diagnosztizálása](diagnostics-role-service.md#common-error-scenarios).

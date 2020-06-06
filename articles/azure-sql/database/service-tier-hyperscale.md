@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 7fe29bfa7d6140f3abce8feb9e372a5c066b9692
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343880"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457269"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -171,7 +171,7 @@ Ha Azure SQL Database egy nagy kapacitású-adatbázist kell visszaállítani eg
 Az Azure SQL Database nagy kapacitású szinten minden régióban elérhető, de alapértelmezés szerint engedélyezve van az alábbi régiókban.
 Ha olyan régióban szeretné létrehozni a nagy kapacitású-adatbázist, amely nem támogatottként van felsorolva, Azure Portal használatával küldhet bevezetési kérést. Útmutatásért lásd a [kérelmekre vonatkozó kvóta növelését Azure SQL Database](quota-increase-request.md) útmutatásért. A kérelem elküldésekor kövesse az alábbi irányelveket:
 
-- Használja az [egyéb kvóta-kérelem](quota-increase-request.md#other) SQL Database-kvóta típusát.
+- Használja a [régió hozzáférés](quota-increase-request.md#region) SQL Database-kvóta típusát.
 - A szöveg részletei között adja hozzá a számítási SKU/Total magokat, beleértve az olvasható replikákat is.
 - A becsült TB-ot is meg kell adni.
 
@@ -216,7 +216,7 @@ Engedélyezett régiók:
 
 Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlátozások a GA-ban.  Aktívan dolgozunk azon, hogy minél több korlátozást távolítson el.
 
-| Probléma | Leírás |
+| Probléma | Description |
 | :---- | :--------- |
 | A kiszolgálók biztonsági mentések ablaktábla nem jeleníti meg a nagy kapacitású-adatbázisokat, ezeket a rendszer a nézetből szűri.  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a hosszú távú megőrzési és időponthoz kötött biztonsági mentési adatmegőrzési beállítások nem érvényesek. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán.|
 | Adott időpontnak megfelelő helyreállítás | Nem nagy kapacitású adatbázis nem állítható vissza nagy kapacitású-adatbázisként, és a nagy kapacitású-adatbázis nem állítható vissza nem nagy kapacitású-adatbázisként. Egy olyan nem nagy kapacitású adatbázis esetében, amely a szolgáltatási rétegének módosításával lett áttelepítve a nagy kapacitású-re, a visszaállítás a Migrálás előtti időpontra, valamint az adatbázis biztonsági mentési megőrzési időszakán [belül lehetséges.](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups) A visszaállított adatbázis nem nagy kapacitású lesz. |

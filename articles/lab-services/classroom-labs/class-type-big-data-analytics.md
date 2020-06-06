@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5c2962fcc470525510be8ee0c89baba658d9f9d9
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118430"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449634"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Tesztkörnyezet beállítása big data elemzéshez a HortonWorks-adatplatform Docker-telepítésével
+# <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Tesztkörnyezet beállítása big data Analitika számára a HortonWorks-adatplatform Docker-telepítésének használatával
 
 Ez a cikk bemutatja, hogyan állíthat be egy labort egy big data Analytics-osztály tanításához.  Az ilyen típusú osztályok esetében a tanulók megismerhetik, hogyan kezelheti a nagy mennyiségű adatmennyiséget, és hogyan alkalmazhat gépi és statisztikai tanulási algoritmusokat az adatelemzések kinyeréséhez.  A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a [Apache Hadoop nyílt forráskódú szoftvercsomag](https://hadoop.apache.org/) , amely eszközöket biztosít a Big Data tárolásához, kezeléséhez és feldolgozásához.
 
@@ -32,7 +32,7 @@ A labor egy másik érdekes aspektusa, hogy a HDP-alapú Sandboxot a [Docker](ht
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) . Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
+A tesztkörnyezet beállításához Azure-előfizetésre és labor-fiókra van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services. Az új Labor-fiókok létrehozásával kapcsolatos további információkért lásd: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).  Használhat meglévő labor-fiókot is.
 
 ### <a name="lab-account-settings"></a>Tesztkörnyezet-Fiókbeállítások
 
@@ -125,7 +125,7 @@ További részletek a díjszabásról: [Azure Lab Services díjszabása](https:/
 
 Ez a cikk végigvezeti a tesztkörnyezet létrehozásához szükséges lépéseken, amelyekkel a Docker-ben üzembe helyezett Hortonworks-adatplatformot használó big data Analytics osztályhoz kell létrehoznia.  Az ehhez az osztályhoz tartozó beállítás a hasonló adatelemzési osztályokhoz használható.  Ez a beállítás más típusú osztályokra is alkalmazható, amelyek a Docker-t használják a telepítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

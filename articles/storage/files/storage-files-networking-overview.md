@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296527"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464810"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files hálózati megfontolások 
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
 
 - A megosztás elérése közvetlenül az SMB-vagy a kiosztott protokollon keresztül. Ez a hozzáférési minta elsősorban akkor alkalmazható, ha a lehető legtöbb helyszíni kiszolgálót el szeretné távolítani.
-- Az Azure-fájlmegosztás gyorsítótárának létrehozása egy helyszíni kiszolgálón Azure File Sync használatával, valamint a fájlmegosztás adatainak elérése a helyszíni kiszolgálóról az Ön által választott protokollal (SMB, NFS, FTPS stb.) a használati esethez. Ez a hozzáférési minta hasznos, mivel az a legjobbat ötvözi a helyszíni teljesítmény és a Felhőbeli skálázás, valamint a kiszolgáló nélküli (például Azure Backup) szolgáltatások számára.
+- Az Azure-fájlmegosztás gyorsítótárának létrehozása egy helyszíni kiszolgálón (vagy egy Azure-beli virtuális gépen) Azure File Sync használatával, valamint a fájlmegosztás adatainak elérése a helyszíni kiszolgálóról az Ön által választott protokollal (SMB, NFS, FTPS stb.) a használati esethez. Ez a hozzáférési minta hasznos, mivel az a legjobbat ötvözi a helyszíni teljesítmény és a Felhőbeli skálázás, valamint a kiszolgáló nélküli (például Azure Backup) szolgáltatások számára.
 
-Ez a cikk azt ismerteti, hogyan kell konfigurálni a hálózatkezelést, ha a használati eset a Azure File Sync használata helyett közvetlenül az Azure-fájlmegosztás elérését kéri. A Azure File Sync központi telepítés hálózatkezelési szempontjaival kapcsolatos további információkért lásd: [Azure file Sync proxy-és tűzfalbeállítások konfigurálása](storage-sync-files-firewall-and-proxy.md).
+Ez a cikk azt ismerteti, hogyan kell konfigurálni a hálózatkezelést, ha a használati eset a Azure File Sync használata helyett közvetlenül az Azure-fájlmegosztás elérését kéri. A Azure File Sync központi telepítés hálózatkezelési szempontjaival kapcsolatos további információkért lásd: [Azure file Sync hálózatkezelési megfontolások](storage-sync-files-networking-overview.md).
 
 Az Azure-fájlmegosztás hálózati konfigurációja az Azure Storage-fiókon történik. A Storage-fiók egy olyan felügyeleti szerkezet, amely egy megosztott tárolót jelöl, amelyben több fájlmegosztást is üzembe helyezhet, valamint más tárolási erőforrásokat, például blob-tárolókat vagy várólistákat. A Storage-fiókok több olyan beállítást tesznek elérhetővé, amelyek segítenek a fájlmegosztás hálózati hozzáférésének biztonságossá tételében: hálózati végpontok, a Storage-fiók tűzfalának beállításai és az átvitel közbeni titkosítás. 
 

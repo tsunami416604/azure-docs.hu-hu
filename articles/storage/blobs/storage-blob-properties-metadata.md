@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.topic: how-to
+ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692466"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465881"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-tulajdonságok és-metaadatok kezelése a .NET-tel
 
@@ -30,14 +30,14 @@ A bennük található adatokon kívül a Blobok támogatják a rendszer tulajdon
 >
 > A szolgáltatással kapcsolatos további információkért lásd: az [Azure Blob Storage adatainak kezelése és keresése a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md).
 
-A blob Storage-erőforrások metaadatainak és tulajdonságértékek beolvasása egy kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat `FetchAttributes` a `FetchAttributesAsync` vagy metódus meghívásával. A szabály alól kivételt képez, hogy `Exists` a `ExistsAsync` és a metódusok `FetchAttributes` a megfelelő módszert hívják meg a borítók alatt. Ha meghívja az egyik módszert, nem kell meghívnia `FetchAttributes`a következőt:.
+A blob Storage-erőforrások metaadatainak és tulajdonságértékek beolvasása egy kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat a vagy metódus meghívásával `FetchAttributes` `FetchAttributesAsync` . A szabály alól kivételt képez, hogy a `Exists` és a `ExistsAsync` metódusok a megfelelő módszert hívják meg `FetchAttributes` a borítók alatt. Ha meghívja az egyik módszert, nem kell meghívnia a következőt: `FetchAttributes` .
 
 > [!IMPORTANT]
-> Ha azt tapasztalja, hogy a tárolási erőforráshoz tartozó tulajdonság vagy metaadatok értéke nem lett feltöltve, ellenőrizze, hogy a `FetchAttributes` kód `FetchAttributesAsync` meghívja-e a vagy a metódust.
+> Ha azt tapasztalja, hogy a tárolási erőforráshoz tartozó tulajdonság vagy metaadatok értéke nem lett feltöltve, ellenőrizze, hogy a kód meghívja-e a `FetchAttributes` vagy a `FetchAttributesAsync` metódust.
 
 ## <a name="set-and-retrieve-properties"></a>Tulajdonságok beállítása és lekérése
 
-A következő kódrészlet a `ContentType` és `ContentLanguage` a rendszer tulajdonságait állítja be egy blobon.
+A következő kódrészlet a és a `ContentType` `ContentLanguage` rendszer tulajdonságait állítja be egy blobon.
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -65,7 +65,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-A blob tulajdonságainak lekéréséhez hívja `FetchAttributes` meg `FetchAttributesAsync` a (z) vagy metódust a `Properties` blobon a tulajdonság feltöltéséhez. A következő kódrészlet a blob rendszertulajdonságait jeleníti meg, és megjeleníti az egyes értékeket:
+A blob tulajdonságainak lekéréséhez hívja meg a (z) `FetchAttributes` vagy `FetchAttributesAsync` metódust a blobon a tulajdonság feltöltéséhez `Properties` . A következő kódrészlet a blob rendszertulajdonságait jeleníti meg, és megjeleníti az egyes értékeket:
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -94,7 +94,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>Metaadatok beállítása és lekérése
 
-A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat az erőforrás `Metadata` gyűjteményéhez. Ezután hívja meg az alábbi módszerek egyikét az értékek írásához:
+A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tároló erőforráson. A metaadatok beállításához adja hozzá a név-érték párokat az `Metadata` erőforrás gyűjteményéhez. Ezután hívja meg az alábbi módszerek egyikét az értékek írásához:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
@@ -130,7 +130,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 }
 ```
 
-A metaadatok lekéréséhez hívja `FetchAttributes` meg `FetchAttributesAsync` a vagy a metódust a blobon vagy a `Metadata` tárolón a gyűjtemény feltöltéséhez, majd olvassa el az értékeket az alábbi példában látható módon.
+A metaadatok lekéréséhez hívja `FetchAttributes` meg a vagy a `FetchAttributesAsync` metódust a blobon vagy a tárolón a gyűjtemény feltöltéséhez `Metadata` , majd olvassa el az értékeket az alábbi példában látható módon.
 
 ```csharp
 public static async Task ReadBlobMetadataAsync(CloudBlob blob)

@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Egyéni tartomány leképezése egy Blob Storage vagy webes végpontra egy Azure Storage-fiókban.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195236"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465541"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
@@ -326,6 +326,6 @@ Egyéni tartomány leképezéséhez és a HTTPS-hozzáférés engedélyezéséhe
 
    * [Díjszabás és számlázás a blob Storage és a Azure CDN használata esetén](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg az Azure Blob Storage-beli statikus webhely üzemeltetését](storage-blob-static-website.md)

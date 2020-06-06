@@ -3,12 +3,18 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 09/18/2019
-ms.openlocfilehash: 0e2d63db1afd4bb169e5aeb1c202674808f081ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/06/2020
+ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74786885"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449085"
 ---
-Ha olyan triggert vagy műveletet használ, amely első alkalommal fér hozzá egy szolgáltatáshoz, a Logic Apps Designer megkéri, hogy hozzon létre *kapcsolatot* a szolgáltatással. Ezután megadhatja a szükséges elérhetőségi adatokat közvetlenül a logikai alkalmazásból a tervezőn belül.
+Amikor első alkalommal csatlakozik egy szolgáltatáshoz vagy rendszerhez kapcsolódó triggerhez vagy művelethez, a Logic app Designer a kapcsolaton alapuló szükséges információk megadásával kéri a *kapcsolat* létrehozását, például:
+
+* Az új kapcsolódáshoz használandó név
+* A kiszolgáló vagy a rendszer neve
+* Felhasználói vagy fiókja hitelesítő adatai
+* A használni kívánt hitelesítési típus
+* Az Azure-előfizetés és a korábban a helyszíni adatforrásokhoz való csatlakozáskor létrehozott adatátjáró neve
