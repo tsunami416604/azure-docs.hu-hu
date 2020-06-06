@@ -3,12 +3,12 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerje meg az Azure VMware-megoldás (AVS) legfontosabb szempontjait és a Hálózatkezelés és az összekapcsolhatóság alkalmazási eseteit
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 82e5497c30bf02313e5ff8ad24167af569a153c2
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740914"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457082"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-megoldás (AVS) – előzetes hálózati és összekapcsolási fogalmak
 
@@ -58,13 +58,13 @@ A helyszíni és az Azure-beli virtuális hálózati ExpressRoute áramkört a h
 A Global Reachtel való összekapcsolása után a két ExpressRoute-áramkör irányítja a hálózati forgalmat a helyszíni környezetek és a saját felhő között. A helyszíni és a privát felhő közötti kapcsolat az előző ábrán látható. A diagramon ábrázolt kapcsolat a következő használati eseteket teszi lehetővé:
 
 - VCenter vMotion gyors/hideg
-- Helyszíni – AVS Private Cloud Management-hozzáférés
+- Helyszíni és AVS Private Cloud Management-hozzáférés
 
 A teljes kapcsolat engedélyezéséhez meg kell adni egy engedélyezési kulcsot és a Global Reach privát társ-AZONOSÍTÓját a Azure Portal. A kulcs és az azonosító használatával Global Reach hozhat létre az előfizetésben található ExpressRoute-áramkör és az új privát felhőhöz tartozó ExpressRoute áramkör között. A [privát felhő létrehozásával kapcsolatos oktatóanyag](tutorial-create-private-cloud.md) a kulcs és az azonosító kérésére és használatára vonatkozó eljárásokat tartalmazza.
 
 A megoldás útválasztási követelményei megkövetelik a saját felhőalapú hálózati címtartomány megtervezését, hogy elkerülje az átfedést más virtuális hálózatokkal és helyszíni hálózatokkal. Az AVS Private-felhőkhöz legalább egy `/22` CIDR hálózati címfordító szükséges az alhálózatok számára, alább látható. Ez a hálózat kiegészíti a helyszíni hálózatokat. A helyszíni környezetekhez és a virtuális hálózatokhoz való kapcsolódáshoz nem átfedésben lévő hálózati címterület szükséges.
 
-Példa `/22` a CIDR hálózati címterület:`10.10.0.0/22`
+Példa a `/22` CIDR hálózati címterület:`10.10.0.0/22`
 
 Az alhálózatok:
 
@@ -75,7 +75,7 @@ Az alhálózatok:
 | Virtuális gépek számítási feladatai | `/24`   | `10.10.2.0/24`   |
 | ExpressRoute-társítás | `/24`    | `10.10.3.8/30`   |
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A következő lépés a [saját Felhőbeli tárolási fogalmak](concepts-storage.md)megismerése.
 

@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 31db8aa750a0691940f9f55c2743764c38fd8b0b
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: cd696b6aba96b06a7b84722d61eb40bbfa15c0ff
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331457"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447934"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
@@ -59,7 +59,8 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk**lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja be a nevet `http://localhost:6420` , majd kattintson a **Mentés**gombra.
+1. A web területen válassza az **URI hozzáadása** hivatkozást, írja be a **következőt**: `http://localhost:6420` .
+1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, majd válassza a **Mentés**lehetőséget.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 

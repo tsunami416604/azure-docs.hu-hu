@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6923ab3a2344c8496f314e2f7a23b536a534bca
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135921"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457031"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Tároló tulajdonságainak és metaadatainak kezelése a .NET-tel
 
@@ -70,7 +70,7 @@ A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tá
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több, azonos nevű metaadat-fejlécet küld egy erőforráshoz, a blob Storage a 400-as HTTP-hibakódot (hibás kérés) adja vissza.
+A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik azt az esetet, amellyel létrehozták őket, de a kis-és nagybetűk nem különböznek a beállítás vagy az olvasás során. Ha két vagy több metaadat-fejléc ugyanazzal a névvel van elküldve egy erőforráshoz, a blob Storage vesszővel elválasztja és összefűzi a két értéket, és visszaadja a 200-as HTTP-válasz kódját (OK).
 
 A következő kódrészlet egy tároló metaadatait állítja be. Egy érték van beállítva a gyűjtemény **hozzáadási** metódusának használatával. A másik érték az implicit kulcs/érték szintaxis használatával van beállítva. Mindkettő érvényes.
 

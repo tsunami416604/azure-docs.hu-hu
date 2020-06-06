@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888786"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456846"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -24,7 +24,7 @@ Ez a cikk azokat a különböző módszereket ismerteti, amelyekkel szűrheti, h
 
 ## <a name="event-type-filtering"></a>Eseménytípus szűrése
 
-Alapértelmezés szerint az eseményforrás összes [eseménytípus](event-schema.md) küldése a végpontnak történik. Dönthet úgy is, hogy csak bizonyos eseménytípus küldését küldi el a végpontnak. Például értesítést kaphat az erőforrásairól, de nem kap értesítést más műveletekhez, például törlésekhez. Ebben az esetben az `Microsoft.Resources.ResourceWriteSuccess` eseménytípus alapján szűrhet. Adjon meg egy tömböt az eseménytípus közül, vagy `All` adja meg az eseményforrás összes eseménytípus beolvasását.
+Alapértelmezés szerint az eseményforrás összes [eseménytípus](event-schema.md) küldése a végpontnak történik. Dönthet úgy is, hogy csak bizonyos eseménytípus küldését küldi el a végpontnak. Például értesítést kaphat az erőforrásairól, de nem kap értesítést más műveletekhez, például törlésekhez. Ebben az esetben az eseménytípus alapján szűrhet `Microsoft.Resources.ResourceWriteSuccess` . Adjon meg egy tömböt az eseménytípus közül, vagy adja meg az eseményforrás `All` összes eseménytípus beolvasását.
 
 Az Eseménytípus szerinti szűrés JSON-szintaxisa a következő:
 
@@ -39,9 +39,9 @@ Az Eseménytípus szerinti szűrés JSON-szintaxisa a következő:
 
 ## <a name="subject-filtering"></a>Tulajdonos szűrése
 
-Egyszerű szűréshez a tárgy mezőben meg kell adni a tulajdonos kezdő vagy záró értékét. Megadhatja például, `.txt` hogy a tárgy vége legyen, hogy csak a szövegfájlok Storage-fiókba való feltöltésével kapcsolatos események legyenek lekérdezve. Másik lehetőségként szűrheti a tulajdonost, `/blobServices/default/containers/testcontainer` hogy lekérje a tároló összes eseményét, de a Storage-fiókban nem található más tároló.
+Egyszerű szűréshez a tárgy mezőben meg kell adni a tulajdonos kezdő vagy záró értékét. Megadhatja például, hogy a tárgy vége legyen, `.txt` hogy csak a szövegfájlok Storage-fiókba való feltöltésével kapcsolatos események legyenek lekérdezve. Másik lehetőségként szűrheti a tulajdonost, `/blobServices/default/containers/testcontainer` hogy lekérje a tároló összes eseményét, de a Storage-fiókban nem található más tároló.
 
-Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tárgy tulajdonságot használják az események szűrésére és irányítására. Vegye fontolóra azt az elérési utat, ahol az esemény megtörtént, így az előfizetők az elérési út szegmensei alapján szűrhetik. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha három szegmens elérési utat ad meg `/A/B/C` , mint a tárgy, az előfizetők az első szegmens `/A` alapján szűrhetik az események széles körét. Ezek az előfizetők olyan eseményeket kapnak, `/A/B/C` mint `/A/D/E`a vagy a. Más előfizetők is szűrhetik `/A/B` a t, hogy Szűkítse az események szűk körét.
+Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tárgy tulajdonságot használják az események szűrésére és irányítására. Vegye fontolóra azt az elérési utat, ahol az esemény megtörtént, így az előfizetők az elérési út szegmensei alapján szűrhetik. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha három szegmens elérési utat ad meg `/A/B/C` , mint a tárgy, az előfizetők az első szegmens alapján szűrhetik az `/A` események széles körét. Ezek az előfizetők olyan eseményeket kapnak, mint a `/A/B/C` vagy a `/A/D/E` . Más előfizetők is szűrhetik a `/A/B` t, hogy Szűkítse az események szűk körét.
 
 A következő JSON-szintaxis a tárgy szerinti szűréshez:
 
@@ -125,7 +125,7 @@ Az összes karakterlánc-összehasonlítás **nem** megkülönbözteti a kis-és
 
 A Event Grid sémában lévő eseményekhez használja a következő értékeket a kulcshoz:
 
-* ID (Azonosító)
+* ID
 * Témakör
 * Tárgy
 * EventType
@@ -155,10 +155,10 @@ Az értékek a következőket tehetik:
 
 A speciális szűrés a következő korlátozásokkal rendelkezik:
 
-* Öt speciális szűrő/Event Grid-előfizetés
+* 5 speciális szűrő és 25 szűrő érték az összes szűrő/Event Grid-előfizetés alapján
 * 512 karakter/karakterlánc érték
 * Öt érték a **-ben** és **nem az** operátorokban
-* Kulcsok ** `.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com`. Jelenleg a kulcsok nem támogatják a Escape-karakterek használatát. 
+* Kulcsok ** `.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com` . Jelenleg a kulcsok nem támogatják a Escape-karakterek használatát. 
 
 Ugyanaz a kulcs több szűrőben is használható.
 
@@ -311,7 +311,7 @@ Ugyanaz a kulcs több szűrőben is használható.
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események PowerShell-lel és az Azure CLI-vel való szűrésével kapcsolatos további tudnivalókért lásd: [Események szűrése Event Grid](how-to-filter-events.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

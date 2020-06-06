@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/03/2020
 ms.author: aahi
-ms.openlocfilehash: c0e71ffcc88a85caf4b76c34940293663c4acf66
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142163"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465592"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
 > [!IMPORTANT]
-> A Text Analytics API 3. x verziója jelenleg nem érhető el a következő régiókban: Közép-India, Fairfax, Egyesült Arab Emírségek, Észak-Dél-Afrika, Észak-Kína 2, Kelet-Kína.
+> A Text Analytics API 3. x verziója jelenleg nem érhető el a következő régiókban: Közép-India, Észak-Egyesült Arab, Észak-Kína 2, Kelet-Kína.
 
 
 #### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
@@ -29,29 +29,29 @@ ms.locfileid: "84142163"
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | Egyszerűsített kínai    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh`szintén elfogadva |
 | Kínai – hagyományos   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
-| dán               |     `da`      |     ✓      |            |                            |                    |
-| holland                 |     `nl`      |     ✓      |            |                            |                    |
-| angol               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| finn               |     `fi`      |     ✓      |            |                            |                    |
-| francia                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| német                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| görög                 |     `el`      |     ✓      |            |                            |                    |
-| olasz               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Dán               |     `da`      |     ✓      |            |                            |                    |
+| Holland                 |     `nl`      |     ✓      |            |                            |                    |
+| Angol               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Finn               |     `fi`      |     ✓      |            |                            |                    |
+| Francia                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Német                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Görög                 |     `el`      |     ✓      |            |                            |                    |
+| Olasz               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japán              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| koreai                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
+| Koreai                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
 | Norvég (nyelven)   |     `no`      |     ✓      |            |                            |                    |
-| lengyel                |     `pl`      |     ✓      |            |                            |                    |
+| Lengyel                |     `pl`      |     ✓      |            |                            |                    |
 | Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt`szintén elfogadva |
-| orosz               |     `ru`      |     ✓      |            |                            |                    |
-| spanyol               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| svéd               |     `sv`      |     ✓      |            |                            |                    |
-| török               |     `tr`      |     ✓      |            |                            |                    |
+| Orosz               |     `ru`      |     ✓      |            |                            |                    |
+| Spanyol               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
+| Svéd               |     `sv`      |     ✓      |            |                            |                    |
+| Török               |     `tr`      |     ✓      |            |                            |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Közvélemény-bányászat (csak előzetes verzió)
 
 | Nyelv              | Nyelvkód | A v3 modell verziójától kezdve: |              Megjegyzések |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
-| angol               |     `en`      |              2020-04-01              |                    |
+| Angol               |     `en`      |              2020-04-01              |                    |
 
 
 #### <a name="named-entity-recognition-ner"></a>[Elnevezett entitások felismerése](#tab/named-entity-recognition)
@@ -63,55 +63,55 @@ ms.locfileid: "84142163"
 | Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Megjegyzések        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arab                |     `ar`      |     ✓      |            |                                 |                    |
-| cseh                 |     `cs`      |     ✓      |            |                                 |                    |
+| Cseh                 |     `cs`      |     ✓      |            |                                 |                    |
 | Egyszerűsített kínai     |   `zh-hans`   |     ✓      |            |                                 | `zh`szintén elfogadva |
 | Kínai – hagyományos   |   `zh-hant`   |     ✓      |            |                                 |                    |
-| dán                |     `da`      |     ✓      |            |                                 |                    |
-| holland                 |     `nl`      |     ✓      |            |                                 |                    |
-| angol                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
-| finn               |     `fi`      |     ✓      |            |                                 |                    |
-| francia                 |     `fr`      |     ✓      |            |                                 |                    |
-| német                 |     `de`      |     ✓      |            |                                 |                    |
-| héber                |     `he`      |     ✓      |            |                                 |                    |
-| magyar             |     `hu`      |     ✓      |            |                                 |                    |
-| olasz               |     `it`      |     ✓      |            |                                 |                    |
+| Dán                |     `da`      |     ✓      |            |                                 |                    |
+| Holland                 |     `nl`      |     ✓      |            |                                 |                    |
+| Angol                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
+| Finn               |     `fi`      |     ✓      |            |                                 |                    |
+| Francia                 |     `fr`      |     ✓      |            |                                 |                    |
+| Német                 |     `de`      |     ✓      |            |                                 |                    |
+| Héber                |     `he`      |     ✓      |            |                                 |                    |
+| Magyar             |     `hu`      |     ✓      |            |                                 |                    |
+| Olasz               |     `it`      |     ✓      |            |                                 |                    |
 | Japán              |     `ja`      |     ✓      |            |                                 |                    |
-| koreai                |     `ko`      |     ✓      |            |                                 |                    |
+| Koreai                |     `ko`      |     ✓      |            |                                 |                    |
 | Norvég (nyelven)   |     `no`      |     ✓      |            |                                 | `nb`szintén elfogadva |
-| lengyel                |     `pl`      |     ✓      |            |                                 |                    |
+| Lengyel                |     `pl`      |     ✓      |            |                                 |                    |
 | Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt`szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |            |                                 |                    |
-| orosz              |     `ru`      |     ✓      |            |                                 |                    |
-| spanyol               |     `es`      |     ✓      |            |                                 |                    |
-| svéd               |     `sv`      |     ✓      |            |                                 |                    |
-| török               |     `tr`      |     ✓      |            |                                 |                    |
+| Orosz              |     `ru`      |     ✓      |            |                                 |                    |
+| Spanyol               |     `es`      |     ✓      |            |                                 |                    |
+| Svéd               |     `sv`      |     ✓      |            |                                 |                    |
+| Török               |     `tr`      |     ✓      |            |                                 |                    |
 
 #### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
 | Nyelv              | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Megjegyzések        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
-| holland                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| angol               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| finn               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| francia                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| német                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| olasz               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Holland                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Angol               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Finn               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Francia                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Német                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Olasz               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Japán              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| koreai                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Koreai                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Norvég (nyelven)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb`szintén elfogadva |
-| lengyel                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Lengyel                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt`szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
-| orosz               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| spanyol               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| svéd               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Orosz               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Spanyol               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Svéd               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 
 #### <a name="entity-linking"></a>[Entitás összekapcsolása](#tab/entity-linking)
 
 | Nyelv | Nyelvkód | v2 támogatás | v3 támogatás | A v3 modell verziójától kezdődően érhető el: | Megjegyzések |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
-| angol  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
-| spanyol  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Angol  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Spanyol  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
 
 #### <a name="language-detection"></a>[Nyelvfelismerés](#tab/language-detection)
 

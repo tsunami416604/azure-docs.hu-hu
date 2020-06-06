@@ -7,17 +7,19 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 37c646e2f08745b2a12df41b6310fb5d3834998b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 415dc4f5609b912163be42605277a33ebcfda589
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142554"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466187"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure File Sync összekapcsolja a helyszíni kiszolgálókat a Azure Fileshoz, és lehetővé teszi a többhelyes szinkronizálást és a felhőalapú rétegbeli funkciókat. Ennek megfelelően a helyszíni kiszolgálónak csatlakoznia kell az internethez. A rendszergazdának el kell döntenie, hogy melyik a legjobb elérési út ahhoz, hogy a kiszolgáló elérje az Azure Cloud Services szolgáltatást.
 
 Ez a cikk betekintést nyújt a-kiszolgáló sikeres és biztonságos összekapcsolásához szükséges konkrét követelményekkel és lehetőségekkel Azure File Synchoz.
+
+Javasoljuk, hogy olvassa el a [Azure file Sync hálózati megfontolásokat](storage-sync-files-networking-overview.md) az útmutató elolvasása előtt.
 
 ## <a name="overview"></a>Áttekintés
 Azure File Sync a Windows-kiszolgáló, az Azure-fájlmegosztás és számos más Azure-szolgáltatás között összehangoló szolgáltatásként működik, hogy szinkronizálja az adatait a szinkronizálási csoportban leírtak szerint. Ahhoz, hogy a Azure File Sync megfelelően működjön, konfigurálnia kell a kiszolgálókat a következő Azure-szolgáltatásokkal való kommunikációhoz:
@@ -134,8 +136,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | Nyugat-Európa | https: \/ /westeurope01.AFS.Azure.net<br>https: \/ /kailani6.One.microsoft.com | Észak-Európa | https: \/ /TM-westeurope01.AFS.Azure.net<br>https: \/ /TM-kailani6.One.microsoft.com |
 | Nyilvános | USA nyugati régiója | https: \/ /westus01.AFS.Azure.net<br>https: \/ /Kailani.One.microsoft.com | USA keleti régiója | https: \/ /TM-westus01.AFS.Azure.net<br>https: \/ /TM-Kailani.One.microsoft.com |
 | Nyilvános | USA nyugati régiója, 2. | https: \/ /westus201.AFS.Azure.net | USA nyugati középső régiója | https: \/ /TM-westus201.AFS.Azure.net |
-| Államigazgatás | USA-beli államigazgatás – Arizona | https: \/ /usgovarizona01.AFS.Azure.us | USA-beli államigazgatás – Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
-| Államigazgatás | USA-beli államigazgatás – Texas | https: \/ /usgovtexas01.AFS.Azure.us | USA-beli államigazgatás – Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
+| Government | USA-beli államigazgatás – Arizona | https: \/ /usgovarizona01.AFS.Azure.us | USA-beli államigazgatás – Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
+| Government | USA-beli államigazgatás – Texas | https: \/ /usgovtexas01.AFS.Azure.us | USA-beli államigazgatás – Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
 
 - Ha a helyileg redundáns (LRS) vagy a Zone redundáns (ZRS) Storage-fiókokat használja, csak engedélyeznie kell az "elsődleges végpont URL-címe" alatt felsorolt URL-címet.
 

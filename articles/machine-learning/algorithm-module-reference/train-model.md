@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455859"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447560"
 ---
 # <a name="train-model-module"></a>Betanítási modell modul
 
@@ -64,7 +64,7 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
   
 5.  A folyamat elküldése. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
 
-## <a name="results"></a><a name="bkmk_results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A modell képzése után:
 
@@ -74,6 +74,6 @@ A modell képzése után:
 + Ha a modellt az új értékek előrejelzéséhez szeretné használni, akkor a [pontszám modell](./score-model.md) modulhoz kell csatlakoznia, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

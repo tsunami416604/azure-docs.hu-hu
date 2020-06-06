@@ -5,15 +5,15 @@ author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
 ms.service: storage
-ms.subservice: common
-ms.topic: conceptual
+ms.subservice: blobs
+ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c8c33797fa35a64a2572026d5cb52d42c57b9b83
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774327"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466255"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -296,7 +296,7 @@ Az [életciklus-kezelési](storage-lifecycle-management-concepts.md) szabályzat
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a blob-indexről. Lásd: az [Azure Blob Storage-beli adatkezelés és-keresés a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md )
 

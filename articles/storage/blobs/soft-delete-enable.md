@@ -5,16 +5,16 @@ description: A blob-objektumok helyreállítható törlésének engedélyezésé
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5d6cbf873ac1b76c24f5907a47038157b22e5680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634118"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463722"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
@@ -105,7 +105,7 @@ A következő parancs használatával megkeresheti az aktuális helyreállíthat
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[CLI](#tab/azure-CLI)
+# <a name="cli"></a>[Parancssori felület](#tab/azure-CLI)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -195,7 +195,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A blob Storage-hoz készült Soft delete](soft-delete-overview.md)
 - [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)

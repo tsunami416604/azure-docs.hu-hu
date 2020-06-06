@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: e57a0266c762a3735fe1a71428e597dc6c3a5ce0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8e6105a83aec9c2141c6b1083602c54d1fa545b0
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013044"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464827"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,6 +25,7 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
+| V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott – Berepülés |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |
 | V10-es kiadás – [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020. április 9. | Támogatott |
 | 2019. decemberi kumulatív frissítés – [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019. december 12. | Támogatott |
@@ -33,14 +34,24 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | 2019. júliusi kumulatív frissítés – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019. július 24. | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
 | 2019. júliusi kumulatív frissítés – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019. július 12. | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
 | V7-kiadás – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | Június 19., 2019 | Támogatott – az ügynök verziószáma 2020. szeptember 1-jén lejár |
-| V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N.A. | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |
-| V5-kiadás | 5.0.2.0 – 5.2.0.0 | N.A. | Nem támogatott – az ügynök verziói a 2020. március 18-án lejártak. |
-| V4-kiadás | 4.0.1.0 – 4.3.0.0 | N.A. | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
-| V3 kiadás | 3.1.0.0 – 3.4.0.0 | N.A. | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
-| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | N.A. | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
+| V6-os kiadás | 6.0.0.0 – 6.3.0.0 | N/A | Nem támogatott – az ügynök verziószáma 2020. április 21-én lejárt |
+| V5-kiadás | 5.0.2.0 – 5.2.0.0 | N/A | Nem támogatott – az ügynök verziói a 2020. március 18-án lejártak. |
+| V4-kiadás | 4.0.1.0 – 4.3.0.0 | N/A | Nem támogatott – az ügynök verziói 2019 november 6-án lejártak |
+| V3 kiadás | 3.1.0.0 – 3.4.0.0 | N/A | Nem támogatott – az ügynök verziói lejártak a 2019-es augusztus 19-én |
+| Pre-GA ügynökök | 1.1.0.0 – 3.0.13.0 | N/A | Nem támogatott – az ügynök verziói lejártak 2018 október 1-jén |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10100"></a>Ügynök verziója 10.1.0.0
+A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 10.1.0.0, amely 2020. június 5-én jelent meg. Ezek a megjegyzések a 10.0.0.0 és a 10.0.2.0 verzióhoz tartozó kibocsátási megjegyzéseken kívül is szerepelnek.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák
+
+- Azure Private Endpoint-támogatás
+    - A Storage Sync szolgáltatás felé irányuló forgalom szinkronizálása most már egy privát végpontra is elküldhető. Ez lehetővé teszi, hogy a bújtatás ExpressRoute vagy VPN-kapcsolaton keresztül történjen. További információ: [Azure file Sync hálózati végpontok konfigurálása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints).
+- A fájlok szinkronizált metrikája mostantól a folyamat végén is megjeleníti az előrehaladást, nem pedig a végponton.
+- Az ügynök telepítésének, a felhő-rétegek, a szinkronizálás és a telemetria különböző megbízhatósági fejlesztése
 
 ## <a name="agent-version-10020"></a>Ügynök verziója 10.0.2.0
 A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 10.0.2.0 vonatkoznak, amely 2020. május 19-én jelent meg. Ezek a megjegyzések a 10.0.0.0 verziójának kibocsátási megjegyzései mellett szerepelnek.

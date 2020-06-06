@@ -2,30 +2,28 @@
 title: Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-author: saudas
-manager: saudas
 ms.topic: article
-ms.date: 04/02/2020
-ms.author: saudas
-ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: ae66c6a6fbfef2a6052a037e010ecdeb4256bfd8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112966"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456436"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
 Jelenleg egy Azure Kubernetes Service (ak) fürt (konkrétan a Kubernetes Cloud Provider) identitást igényel további erőforrások, például terheléselosztó és felügyelt lemezek létrehozásához az Azure-ban, ez az identitás *felügyelt identitás* vagy *egyszerű szolgáltatásnév*lehet. Ha [szolgáltatásnevet](kubernetes-service-principal.md)használ, meg kell adnia egy vagy AK-t az Ön nevében. Ha felügyelt identitást használ, a rendszer automatikusan létrehozza ezt. Az egyszerű szolgáltatásokat használó fürtök végül olyan állapotot érnek el, amelyben az egyszerű szolgáltatásnevet meg kell újítani a fürt működésének megtartása érdekében. Az egyszerű szolgáltatások kezelése bonyolultságot biztosít, ezért a felügyelt identitások könnyebben használhatók. Ugyanezek az engedélyezési követelmények érvényesek az egyszerű szolgáltatásokra és a felügyelt identitásokra is.
 
-A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ismertető témakört.
+A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. Az MSI hitelesítő adatainak elforgatása a Azure Active Directory alapértelmezett beállítás szerint automatikusan megtörténik 46 naponta. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ismertető témakört.
 
 Az AK két felügyelt identitást hoz létre:
 
-- **Rendszer által hozzárendelt felügyelt identitás**: az az identitás, amelyet a Kubernetes a felhasználó nevében az Azure-erőforrások létrehozásához használ. A rendszer által hozzárendelt identitás életciklusa a fürthöz van kötve. A rendszer törli az identitást a fürt törlésekor.
-- **Felhasználó által hozzárendelt felügyelt identitás**: az engedélyezéshez használt identitás a fürtben. A felhasználó által hozzárendelt identitás például feljogosítja az AK-t az Azure Container-jegyzékek (ACR-EK) használatára, vagy a kubelet engedélyezéséhez az Azure-ból származó metaadatok beszerzéséhez.
+- **Rendszer által hozzárendelt felügyelt identitás**: az az identitás, amelyet a Kubernetes a felhasználó nevében az Azure-erőforrások létrehozására használ, például egy [terheléselosztó](load-balancer-standard.md) vagy egy [nyilvános IP-cím](static-ip.md). A rendszer által hozzárendelt identitás életciklusa a fürthöz van kötve, és csak a felhőalapú szolgáltató használhatja. A rendszer törli az identitást a fürt törlésekor.
 
-A bővítmények felügyelt identitás használatával is hitelesíthetők. Az egyes bővítmények esetében a felügyelt identitást az AK hozza létre, és a bővítmény élettartamára tart. 
+- **Felhasználó által hozzárendelt felügyelt identitás**: az engedélyezéshez használt identitás a fürtben, és bármi más, amit szeretne vezérelni. A felhasználó által hozzárendelt identitás például feljogosítja az AK-t az Azure Container-jegyzékek (ACR-EK) használatára, vagy a kubelet engedélyezéséhez az Azure-ból származó metaadatok beszerzéséhez.
+
+A bővítmények felügyelt identitás használatával is hitelesíthetők. Az egyes bővítmények esetében a felügyelt identitást az AK hozza létre, és a bővítmény élettartamára tart.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

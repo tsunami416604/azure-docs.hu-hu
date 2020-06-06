@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3d7ab9d4e7a7c560fa05bdc06c7d1c357a2c2767
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 09aa3a5febe9ea25d8614a99ec3f832cc2d0309f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196634"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456946"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
 > [!NOTE]
-> A lista nagy mértékben automatikusan létrejön a Azure Monitor metrikák REST API. A listán a githubon keresztül végrehajtott módosítások figyelmeztetés nélkül is megírhatók. A végleges frissítések végrehajtásával kapcsolatban a cikk szerzője nyújt tájékoztatást.
+> A lista nagy mértékben automatikusan létrejön a Azure Monitor metrikák REST API. A listán a GitHubon keresztül végrehajtott módosítások figyelmeztetés nélkül is megírhatók. A végleges frissítések végrehajtásával kapcsolatban a cikk szerzője nyújt tájékoztatást.
 
 A Azure Monitor számos lehetőséget kínál a metrikák használatára, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. 
 
@@ -43,7 +43,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Darabszám|Átlag|QPU. 0-100-es tartomány S1, 0-200 az S2 és 0-400 for S4 esetében|ServerResourceType|
 |memory_metric|Memory (Memória)|Bájt|Átlag|Memory. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|ServerResourceType|
@@ -96,7 +96,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TotalRequests|Összes átjáró kérelme (elavult)|Darabszám|Összesen|Átjárók kéréseinek száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzióval|Hely, állomásnév|
 |SuccessfulRequests|Sikeres átjáró-kérelmek (elavult)|Darabszám|Összesen|Sikeres átjáró-kérések száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzió helyett|Hely, állomásnév|
@@ -120,7 +120,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|Darabszám|Darabszám|A bejövő HTTP-kérelmek teljes száma.|StatusCode|
 |HttpIncomingRequestDuration|HttpIncomingRequestDuration|Darabszám|Átlag|Egy HTTP-kérelem késése.|StatusCode|
@@ -128,7 +128,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|CPU-használat százalékos aránya|Százalék|Átlag|A legújabb CPU-használat a teljes rendszerhez|AppName, Pod|
 |AppCpuUsagePercentage|Alkalmazás CPU-kihasználtságának százalékos aránya|Százalék|Átlag|Alkalmazás JVM CPU-kihasználtsági aránya|AppName, Pod|
@@ -158,7 +158,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TotalJob|Feladatok összesen|Darabszám|Összesen|A feladatok teljes száma|Runbook, állapot|
 |TotalUpdateDeploymentRuns|Összes frissítés központi telepítési futtatása|Darabszám|Összesen|Szoftverfrissítés központi telepítésének összes futtatása|SoftwareUpdateConfigurationName, állapot|
@@ -167,7 +167,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft. batch/batchAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CoreCount|Dedikált mag száma|Darabszám|Összesen|A Batch-fiókban lévő dedikált magok teljes száma|Nincs|
 |TotalNodeCount|Dedikált csomópontok száma|Darabszám|Összesen|A Batch-fiókban lévő dedikált csomópontok teljes száma|Nincs|
@@ -204,7 +204,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Feladatok elküldve|Feladatok elküldve|Darabszám|Összesen|Elküldött feladatok száma|Forgatókönyv, ClusterName|
 |A feladatok befejeződtek|A feladatok befejeződtek|Darabszám|Összesen|Befejezett feladatok száma|Forgatókönyv, ClusterName, ResultType|
@@ -224,7 +224,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|CPU-használat százaléka|Százalék|Maximum|CPU-használat százaléka|Csomópont|
 |MemoryUsage|Memóriahasználat|Bájt|Átlag|Memóriahasználat|Csomópont|
@@ -246,7 +246,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |connectedclients|Csatlakoztatott ügyfelek|Darabszám|Maximum||ShardId|
 |totalcommandsprocessed|Műveletek összesen|Darabszám|Összesen||ShardId|
@@ -263,7 +263,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 |usedmemorypercentage|Felhasznált memória százalékos aránya|Százalék|Maximum||ShardId|
 |usedmemoryRss|Felhasznált memória RSS-címe|Bájt|Maximum||ShardId|
 |serverLoad|Kiszolgáló terhelése|Százalék|Maximum||ShardId|
-|cacheWrite|Gyorsítótár írása|BytesPerSecond|Maximum||ShardId|
+|cacheWrite|Gyorsítótár-írás|BytesPerSecond|Maximum||ShardId|
 |cacheRead|Gyorsítótár-olvasás|BytesPerSecond|Maximum||ShardId|
 |percentProcessorTime|CPU|Százalék|Maximum||ShardId|
 |cacheLatency|Gyorsítótár késési másodpercek (előzetes verzió)|Darabszám|Átlag||ShardId|
@@ -434,14 +434,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Webalkalmazási tűzfalra vonatkozó kérelmek száma|Darabszám|Összesen|A webalkalmazási tűzfal által feldolgozott ügyfelek kéréseinek száma|PolicyName, RuleName, művelet|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya.|Nincs|
 |Bejövő hálózat|Bejövő hálózat|Bájt|Összesen|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom).|Nincs|
@@ -454,7 +454,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya.|RoleInstanceId|
 |Bejövő hálózat|Bejövő hálózat|Bájt|Összesen|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom).|RoleInstanceId|
@@ -468,7 +468,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |UsedCapacity|Felhasznált kapacitás|Bájt|Átlag|Felhasznált fiókkapacitás|Nincs|
 |Tranzakciók|Tranzakciók|Darabszám|Összesen|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
@@ -480,7 +480,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BlobCapacity|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
 |BlobCount|Blobok száma|Darabszám|Átlag|A Storage-fiók Blob service található Blobok száma.|BlobType, szintű|
@@ -495,7 +495,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TableCapacity|Tábla kapacitása|Bájt|Átlag|A Storage-fiók Table service által felhasznált tárterület mérete bájtban kifejezve.|Nincs|
 |TableCount|Táblák száma|Darabszám|Átlag|A Storage-fiók Table service található tábla száma.|Nincs|
@@ -509,7 +509,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/fileServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |FileCapacity|Fájl kapacitása|Bájt|Átlag|A Storage-fiók Fájlszolgáltatások által felhasznált tárterület mérete bájtban megadva.|Fájlmegosztás|
 |FileCount|Fájlok száma|Darabszám|Átlag|A Storage-fiók Fájlszolgáltatások szolgáltatásában lévő fájl száma.|Fájlmegosztás|
@@ -526,7 +526,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QueueCapacity|Várólista kapacitása|Bájt|Átlag|A Storage-fiók Queue szolgáltatás által felhasznált tárterület mérete bájtban kifejezve.|Nincs|
 |QueueCount|Várólista száma|Darabszám|Átlag|A Storage-fiók Queue szolgáltatás várólistájának száma.|Nincs|
@@ -541,7 +541,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TotalCalls|Hívások összesen|Darabszám|Összesen|A hívások száma összesen|ApiName, OperationName, régió|
 |SuccessfulCalls|Sikeres hívások|Darabszám|Összesen|A sikeres hívások száma.|ApiName, OperationName, régió|
@@ -561,7 +561,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|Nincs|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összesen|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|Nincs|
@@ -606,7 +606,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|VMName|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összesen|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|VMName|
@@ -651,7 +651,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. számítás/virtualMachineScaleSets/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|Nincs|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összesen|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|Nincs|
@@ -695,16 +695,16 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. ContainerInstance/containerGroups
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|CpuUsage|Processzorhasználat|Darabszám|Átlag|CPU-használat a millicores összes magot illetően.|containerName|
+|CpuUsage|CPU-használat|Darabszám|Átlag|CPU-használat a millicores összes magot illetően.|containerName|
 |MemoryUsage|Memóriahasználat|Bájt|Átlag|A memória teljes kihasználtsága bájtban.|containerName|
 |NetworkBytesReceivedPerSecond|Másodpercenként fogadott hálózati bájtok száma|Bájt|Átlag|A másodpercenként fogadott hálózati bájtok száma.|Nincs|
 |NetworkBytesTransmittedPerSecond|Másodpercenként továbbított hálózati bájtok száma|Bájt|Átlag|A másodpercenként továbbított hálózati bájtok száma.|Nincs|
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TotalPullCount|Lekérések száma összesen|Darabszám|Átlag|A lekérések száma összesen|Nincs|
 |SuccessfulPullCount|Sikeres lekérések száma|Darabszám|Átlag|Sikeres Képkeresések száma|Nincs|
@@ -715,7 +715,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma|Darabszám|Átlag|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma|Nincs|
 |kube_node_status_allocatable_memory_bytes|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége|Bájt|Átlag|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége|Nincs|
@@ -727,14 +727,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfullRequests|Sikeres kérések|Darabszám|Összesen|Az egyéni szolgáltató által kezdeményezett sikeres kérések|HttpMethod, CallPath, StatusCode|
 |FailedRequests|Sikertelen kérelmek|Darabszám|Összesen|A rendelkezésre álló naplók beolvasása egyéni erőforrás-szolgáltatók számára|HttpMethod, CallPath, StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |NICReadThroughput|Olvasási sebesség (hálózat)|BytesPerSecond|Átlag|Az eszközön lévő hálózati adapter olvasási átviteli sebessége az átjáró összes kötetének jelentési időszakában.|InstanceName|
 |NICWriteThroughput|Írási átviteli sebesség (hálózat)|BytesPerSecond|Átlag|Az eszközön lévő hálózati adapter írási sebessége az átjáró összes kötetének jelentési időszakában.|InstanceName|
@@ -752,7 +752,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. DataCatalog/datacatalogs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Eszközök megoszlása besorolás szerint|Darabszám|Összesen|Azt jelzi, hogy hány eszköz van hozzárendelve bizonyos besorolással, azaz hogy az adott címkével vannak besorolva.|Besorolás, forrás|
 |AssetDistributionByStorageType|Eszközök eloszlása tárolási típus szerint|Darabszám|Összesen|Meghatározza az adott tárolási típussal rendelkező eszközök számát.|StorageType|
@@ -767,7 +767,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/datafactories
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |FailedRuns|Sikertelen futtatások|Darabszám|Összesen||pipelineName, activityName|
 |SuccessfulRuns|Sikeres futtatások|Darabszám|Összesen||pipelineName, activityName|
@@ -775,7 +775,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|Sikertelen folyamat-futtatási metrikák|Darabszám|Összesen||FailureType, név|
 |PipelineSucceededRuns|A folyamat sikeresen futtatja a metrikákat|Darabszám|Összesen||FailureType, név|
@@ -798,7 +798,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Sikeres feladatok|Darabszám|Összesen|A sikeres feladatok száma.|Nincs|
 |JobEndedFailure|Sikertelen feladatok|Darabszám|Összesen|Sikertelen feladatok száma.|Nincs|
@@ -811,7 +811,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TotalStorage|Összes tárhely|Bájt|Maximum|A fiókban tárolt adatmennyiség teljes mennyisége.|Nincs|
 |DataWritten|Írt adatértékek|Bájt|Összesen|A fiókba írt összes adatmennyiség.|Nincs|
@@ -822,7 +822,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ShareCount|Eljuttatott megosztások|Darabszám|Maximum|A fiókban eljuttatott megosztások száma|ShareName|
 |ShareSubscriptionCount|Fogadott megosztások|Darabszám|Maximum|A fiókban fogadott megosztások száma|ShareSubscriptionName|
@@ -834,7 +834,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincs|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|Nincs|
@@ -855,7 +855,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincs|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|Nincs|
@@ -876,7 +876,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincs|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|Nincs|
@@ -898,7 +898,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincs|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|Nincs|
@@ -912,7 +912,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|Nincs|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|Nincs|
@@ -932,7 +932,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |D2C. telemetria. beáramló. allProtocol|Telemetria üzenetek küldése|Darabszám|Összesen|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|Nincs|
 |D2C. telemetria. beáramló. sikeres|Telemetria üzenetek elküldése|Darabszám|Összesen|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|Nincs|
@@ -1005,7 +1005,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RegistrationAttempts|Regisztrációs kísérletek|Darabszám|Összesen|A megkísérelt eszközök regisztrációinak száma|ProvisioningServiceName, IotHubName, állapot|
 |DeviceAssignments|Hozzárendelt eszközök|Darabszám|Összesen|Az IoT hubhoz rendelt eszközök száma|ProvisioningServiceName, IotHubName|
@@ -1016,7 +1016,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AddRegion|Régió hozzáadva|Darabszám|Darabszám|Régió hozzáadva|Régió|
 |AvailableStorage|Rendelkezésre álló tárhely|Bájt|Összesen|5 perces részletességgel jelentett teljes rendelkezésre álló tárterület|CollectionName, DatabaseName, régió|
@@ -1082,16 +1082,16 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/szolgáltatások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TransactionCount|Tranzakciók száma|Darabszám|Darabszám|Tranzakciók száma összesen|TransactionCount|
-|SuccessCount|Sikeres műveletek száma|Darabszám|Darabszám|Sikeres tranzakciók száma|SuccessCount|
-|FailureCount|Hibásak száma|Darabszám|Darabszám|Sikertelen tranzakciók száma|FailureCount|
+|SuccessCount|Sikeresek száma|Darabszám|Darabszám|Sikeres tranzakciók száma|SuccessCount|
+|FailureCount|Hibák száma|Darabszám|Darabszám|Sikertelen tranzakciók száma|FailureCount|
 |SuccessLatency|Sikeres késés|Ezredmásodpercben|Átlag|A sikeres tranzakciók késése|SuccessCount|
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Témakör|
 |PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|Témakör, ErrorType, hiba|
@@ -1105,7 +1105,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincs|
 |PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
@@ -1120,7 +1120,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincs|
 |PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
@@ -1135,7 +1135,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |MatchedEventCount|Egyeztetett események|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő összes esemény|Nincs|
 |DeliveryAttemptFailCount|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType|
@@ -1146,7 +1146,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincs|
 |PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
@@ -1158,7 +1158,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Darabszám|Összesen|A Microsoft. EventHub sikeres kérelmeinek száma.|EntityName, Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Darabszám|Összesen|Kiszolgálói hibák a Microsoft. EventHub esetében.|EntityName, Operationresult tevékenységen|
@@ -1197,7 +1197,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Darabszám|Összesen|A Microsoft. EventHub sikeres kérelmeinek száma.|Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Darabszám|Összesen|Kiszolgálói hibák a Microsoft. EventHub esetében.|Operationresult tevékenységen|
@@ -1222,7 +1222,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |GatewayRequests|Átjáróra vonatkozó kérelmek|Darabszám|Összesen|Az átjáróra vonatkozó kérelmek száma|HttpStatus|
 |CategorizedGatewayRequests|Kategorizált átjáró-kérelmek|Darabszám|Összesen|Az átjáróra vonatkozó kérelmek száma kategóriánként (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
@@ -1231,7 +1231,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ObservedMetricValue|Megfigyelt metrika értéke|Darabszám|Átlag|Az az érték, amelyet az autoscale kiszámít a végrehajtáskor|MetricTriggerSource|
 |MetricThreshold|Metrika küszöbértéke|Darabszám|Átlag|A konfigurált autoskálázási küszöbérték az autoscale futtatásakor.|MetricTriggerRule|
@@ -1240,7 +1240,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Rendelkezésre állás|Százalék|Átlag|Sikeresen befejezett rendelkezésre állási tesztek százaléka|availabilityResult/név, availabilityResult/hely|
 |availabilityResults/darabszám|Rendelkezésre állási tesztek|Darabszám|Darabszám|Rendelkezésre állási tesztek száma|availabilityResult/név, availabilityResult/hely, availabilityResult/sikeres|
@@ -1276,7 +1276,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |connectedDeviceCount|Csatlakoztatott eszközök összesen|Darabszám|Átlag|IoT Centralhoz csatlakoztatott eszközök száma|Nincs|
 |C2D. Property. Read. success|Az eszköz tulajdonságainak olvasása IoT Central|Darabszám|Összesen|Az IoT Centralról kezdeményezett sikeres tulajdonságok száma|Nincs|
@@ -1291,7 +1291,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ServiceApiHit|Összes szolgáltatási API-találat|Darabszám|Darabszám|A Service API összes találatának száma|ActivityType, ActivityName|
 |ServiceApiLatency|Általános szolgáltatás API-késése|Ezredmásodpercben|Átlag|A Service API-kérelmek teljes késése|ActivityType, ActivityName, StatusCode, StatusCodeClass|
@@ -1301,7 +1301,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CacheUtilization|Gyorsítótár kihasználtsága|Százalék|Átlag|Kihasználtsági szint a fürt hatókörében|Nincs|
 |QueryDuration|Lekérdezés időtartama|Ezredmásodpercben|Átlag|Lekérdezések időtartama másodpercben|QueryStatus|
@@ -1330,7 +1330,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RunsStarted|Elindított futtatások|Darabszám|Összesen|Az elindított munkafolyamat-futtatások száma.|Nincs|
 |RunsCompleted|Befejezett futtatások|Darabszám|Összesen|A befejezett munkafolyamat-futtatások száma.|Nincs|
@@ -1369,7 +1369,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RunsStarted|Elindított futtatások|Darabszám|Összesen|Az elindított munkafolyamat-futtatások száma.|Nincs|
 |RunsCompleted|Befejezett futtatások|Darabszám|Összesen|A befejezett munkafolyamat-futtatások száma.|Nincs|
@@ -1406,7 +1406,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Megszakított futtatások|Megszakított futtatások|Darabszám|Összesen|A munkaterülethez megszakított futtatások száma|Forgatókönyv, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |A kért futtatások megszakítása|A kért futtatások megszakítása|Darabszám|Összesen|A munkaterületre vonatkozó megszakítást kérő futtatások száma|Forgatókönyv, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
@@ -1446,14 +1446,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Használat|Használat|Darabszám|Darabszám|API-hívások száma|ApiCategory, ApiName, ResultType, ResponseCode|
 |Rendelkezésre állás|Rendelkezésre állás|Százalék|Átlag|Az API-k rendelkezésre állása|ApiCategory, ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/Mediaservices/streamingEndpoints
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összesen|A kimenő adatforgalom mennyisége bájtban kifejezve.|OutputFormat|
 |SuccessE2ELatency|A Befejezés végének késése|Ezredmásodpercben|Átlag|A sikeres kérelmek átlagos késése ezredmásodpercben.|OutputFormat|
@@ -1462,7 +1462,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AssetQuota|Eszköz kvótája|Darabszám|Átlag|Hány eszköz engedélyezett a jelenlegi Media Service-fiókhoz|Nincs|
 |AssetCount|Eszközök száma|Darabszám|Átlag|Az aktuális Media Service-fiókban már létrehozott eszközök száma|Nincs|
@@ -1477,14 +1477,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft. MixedReality/remoteRenderingAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AssetsConverted|Átalakított eszközök|Darabszám|Összesen|Átalakított eszközök teljes száma|AppId, ResourceId, SDKVersion|
 |ActiveRenderingSessions|Aktív renderelési munkamenetek|Darabszám|Összesen|Aktív renderelési munkamenetek száma összesen|AppId, ResourceId, SessionType, SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/kötetek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AverageReadLatency|Olvasási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Olvasási késleltetés átlagos száma ezredmásodpercben/művelet|Nincs|
 |AverageWriteLatency|Írási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Írási késleltetés átlagos száma ezredmásodpercben|Nincs|
@@ -1495,14 +1495,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/capacityPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|A kötet méretéhez lefoglalt készlet|Bájt|Átlag|A készlet lefoglalt felhasznált mérete|Nincs|
 |VolumePoolTotalLogicalSize|Készlet felhasznált mérete|Bájt|Átlag|A készlethez tartozó összes kötet logikai méretének összege|Nincs|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/networkInterfaces
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BytesSentRate|Eljuttatott bájtok|Bájt|Összesen|A hálózati adapter által eljuttatott bájtok száma|Nincs|
 |BytesReceivedRate|Fogadott bájtok száma|Bájt|Összesen|A hálózati adapter által fogadott bájtok száma|Nincs|
@@ -1511,7 +1511,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |VipAvailability|Adatelérési út rendelkezésre állása|Darabszám|Átlag|Az adatelérési út átlagos Load Balancer időtartamának időtartama|FrontendIPAddress,FrontendPort|
 |DipAvailability|Állapot mintavételi állapota|Darabszám|Átlag|Az állapot átlagos Load Balancer állapotának időtartama időszakonként|ProtocolType, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
@@ -1524,7 +1524,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QueryVolume|Lekérdezési kötet|Darabszám|Összesen|A DNS-zónák számára kiszolgált lekérdezések száma|Nincs|
 |RecordSetCount|Rekordok készletének száma|Darabszám|Maximum|Rekordhalmazok száma egy DNS-zónában|Nincs|
@@ -1533,7 +1533,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/nyilvános IP
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PacketsInDDoS|Bejövő csomagok DDoS|CountPerSecond|Maximum|Bejövő csomagok DDoS|Nincs|
 |PacketsDroppedDDoS|Bejövő csomagok eldobott DDoS|CountPerSecond|Maximum|Bejövő csomagok eldobott DDoS|Nincs|
@@ -1566,7 +1566,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|A pingelések időpontjának kerekítése egy virtuális géphez|Ezredmásodpercben|Átlag|A célként megadott virtuális gépre eljuttatott pingelések menetének időpontja|SourceCustomerAddress,DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Sikertelen pingelések egy virtuális géphez|Százalék|Átlag|A hibás pingelések száma a cél virtuális gép összes elküldéses pingelésének százalékában|SourceCustomerAddress,DestinationCustomerAddress|
@@ -1574,7 +1574,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Alkalmazás-szabályok találatok száma|Darabszám|Összesen|Az alkalmazások szabályainak száma|Állapot, ok, protokoll|
 |NetworkRuleHit|Hálózati szabályok találatok száma|Darabszám|Összesen|A hálózati szabályok számának megtalálása|Állapot, ok, protokoll|
@@ -1585,7 +1585,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Teljesítmény|Teljesítmény|BytesPerSecond|Átlag|A Application Gateway által kiszolgált bájtok másodpercenkénti száma|Nincs|
 |UnhealthyHostCount|Nem kifogástalan állapotú gazdagépek száma|Darabszám|Átlag|Sérült háttérbeli gazdagépek száma|BackendSettingsPool|
@@ -1617,11 +1617,11 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AverageBandwidth|Átjáró S2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos helyek közötti sávszélessége bájt/másodpercben|Nincs|
 |P2SBandwidth|Átjáró P2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos pont – hely sávszélessége bájt/másodpercben|Nincs|
-|P2SConnectionCount|P2S-kapcsolatok száma|Darabszám|Maximum|Átjáró pont – hely kapcsolatának száma|Protocol (Protokoll)|
+|P2SConnectionCount|P2S-kapcsolatok száma|Darabszám|Maximum|Átjáró pont – hely kapcsolatának száma|Protokoll|
 |TunnelAverageBandwidth|Bújtatási sávszélesség|BytesPerSecond|Átlag|Egy alagút átlagos sávszélessége (bájt/s)|Kapcsolatnév, RemoteIP|
 |TunnelEgressBytes|Alagút kimenő bájtjai|Bájt|Összesen|Egy alagút kimenő bájtjai|Kapcsolatnév, RemoteIP|
 |TunnelIngressBytes|Alagutak bejövő bájtjai|Bájt|Összesen|Alagút bejövő bájtjai|Kapcsolatnév, RemoteIP|
@@ -1633,7 +1633,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Darabszám|Átlag|Rx-fény szintje dBm-ben|Hivatkozás, sáv|
 |TxLightLevel|TxLightLevel|Darabszám|Átlag|TX-fény szintje dBm-ben|Hivatkozás, sáv|
@@ -1646,7 +1646,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|PeeringType|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|PeeringType|
@@ -1659,28 +1659,28 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/társak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|Nincs|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|Nincs|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|Nincs|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|Nincs|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|Kapcsolatnév|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|Kapcsolatnév|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Visszaadott végponti lekérdezések|Darabszám|Összesen|Az adott időkeretben a Traffic Manager-végpontok számának visszaadása|Végpontneve|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Végponti állapot végpont szerint|Darabszám|Maximum|1 Ha a végpont mintavételi állapota "enabled" (engedélyezve), 0 más.|Végpontneve|
@@ -1689,7 +1689,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/connectionMonitors
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|%-Os mintavétel sikertelen|Százalék|Átlag|a kapcsolat figyelési mintavételének%-a meghiúsult|Nincs|
 |AverageRoundtripMs|Átlagos menetidő (MS)|Ezredmásodpercben|Átlag|A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS)|Nincs|
@@ -1699,7 +1699,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |RequestCount|Kérelmek száma|Darabszám|Összesen|A HTTP/S proxy által kiszolgált ügyfél-kérelmek száma|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |RequestSize|Kérelem mérete|Bájt|Összesen|Az ügyfelek által a HTTP/S proxynak küldött kérelmekként küldött bájtok száma|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
@@ -1714,7 +1714,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft. Network/privateDnsZones
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QueryVolume|Lekérdezési kötet|Darabszám|Összesen|Egy saját DNS zónában kiszolgált lekérdezések száma|Nincs|
 |RecordSetCount|Rekordok készletének száma|Darabszám|Maximum|Rekordhalmazok száma egy saját DNS zónában|Nincs|
@@ -1726,7 +1726,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/névterek/NotificationHubs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |regisztráció. All|Regisztrációs műveletek|Darabszám|Összesen|Az összes sikeres regisztrációs művelet (létrehozás, frissítések lekérdezése és törlése) száma. |Nincs|
 |regisztráció. Create|Regisztráció-létrehozási műveletek|Darabszám|Összesen|Az összes sikeres regisztrációs létrehozás száma.|Nincs|
@@ -1793,7 +1793,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Average_ szabad inode (%)|Szabad inode%-ban|Darabszám|Átlag|Average_ szabad inode (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ szabad terület (%)|Szabad terület (%)|Darabszám|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1861,13 +1861,13 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |PrefixLatency|Előtag-késés|Ezredmásodpercben|Átlag|Medián előtag késése|PrefixName|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/társaik
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|Munkamenet rendelkezésre állása v4|Százalék|Átlag|A v4-munkamenet rendelkezésre állása|ConnectionId|
 |SessionAvailabilityV6|Munkamenet rendelkezésre állása v6|Százalék|Átlag|A V6-munkamenet rendelkezésre állása|ConnectionId|
@@ -1877,7 +1877,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QueryDuration|Lekérdezés időtartama|Ezredmásodpercben|Átlag|DAX-lekérdezés időtartama az utolsó intervallumban|Nincsenek méretek|
 |QueryPoolJobQueueLength|Szálak: lekérdezési készlet feladatok várólistájának hossza|Darabszám|Átlag|A lekérdezési szál készletének várólistájában lévő feladatok száma.|Nincsenek méretek|
@@ -1888,7 +1888,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Eszközök megoszlása besorolás szerint|Darabszám|Összesen|Azt jelzi, hogy hány eszköz van hozzárendelve bizonyos besorolással, azaz hogy az adott címkével vannak besorolva.|Besorolás, forrás, ResourceId|
 |AssetDistributionByStorageType|Eszközök eloszlása tárolási típus szerint|Darabszám|Összesen|Meghatározza az adott tárolási típussal rendelkező eszközök számát.|StorageType, ResourceId|
@@ -1905,7 +1905,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Figyelőkapcsolatokra – sikeres|Figyelőkapcsolatokra – sikeres|Darabszám|Összesen|A Microsoft. Relay sikeres Figyelőkapcsolatokra.|EntityName, Operationresult tevékenységen|
 |Figyelőkapcsolatokra – vonatkozó ügyfélhibái|Figyelőkapcsolatokra – vonatkozó ügyfélhibái|Darabszám|Összesen|A Microsoft. Relay Figyelőkapcsolatokra vonatkozó ügyfélhibái.|EntityName, Operationresult tevékenységen|
@@ -1924,7 +1924,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SearchLatency|Keresési késés|Másodperc|Átlag|Keresési szolgáltatás átlagos keresési késése|Nincs|
 |SearchQueriesPerSecond|Keresési lekérdezések másodpercenként|CountPerSecond|Átlag|Keresési lekérdezések másodpercenként a keresési szolgáltatáshoz|Nincs|
@@ -1933,7 +1933,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Darabszám|Összesen|Névtér összes sikeres kérelme|EntityName, Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Darabszám|Összesen|Kiszolgálói hibák a Microsoft. ServiceBus esetében.|EntityName, Operationresult tevékenységen|
@@ -1958,7 +1958,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. ServiceFabricMesh/alkalmazások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|Darabszám|Átlag|A tárolóhoz a Millet magokban lefoglalt CPU|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|Bájt|Átlag|A tároló számára lefoglalt memória (MB)|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
@@ -1974,7 +1974,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ConnectionCount|Kapcsolatok száma|Darabszám|Maximum|A felhasználói kapcsolatok mennyisége.|Végpont|
 |MessageCount|Üzenetek száma|Darabszám|Összesen|Az üzenetek teljes mennyisége.|Nincs|
@@ -1987,7 +1987,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs|
 |physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs|
@@ -2046,7 +2046,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/kiszolgálók/elasticPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs|
 |database_cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|DatabaseResourceId|
@@ -2088,7 +2088,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsqlservers"></a>Microsoft. SQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|ElasticPoolResourceId|
 |database_dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|DatabaseResourceId,ElasticPoolResourceId|
@@ -2098,7 +2098,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |virtual_core_count|Virtuális mag száma|Darabszám|Átlag|Virtuális mag száma|Nincs|
 |avg_cpu_percent|Átlagos CPU-százalék|Százalék|Átlag|Átlagos CPU-százalék|Nincs|
@@ -2112,7 +2112,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |UsedCapacity|Felhasznált kapacitás|Bájt|Átlag|Felhasznált fiókkapacitás|Nincs|
 |Tranzakciók|Tranzakciók|Darabszám|Összesen|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
@@ -2124,7 +2124,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BlobCapacity|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
 |BlobCount|Blobok száma|Darabszám|Átlag|A Storage-fiók Blob service található Blobok száma.|BlobType, szintű|
@@ -2139,7 +2139,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |TableCapacity|Tábla kapacitása|Bájt|Átlag|A Storage-fiók Table service által felhasznált tárterület mérete bájtban kifejezve.|Nincs|
 |TableCount|Táblák száma|Darabszám|Átlag|A Storage-fiók Table service található tábla száma.|Nincs|
@@ -2153,7 +2153,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |FileCapacity|Fájl kapacitása|Bájt|Átlag|A Storage-fiók Fájlszolgáltatások által felhasznált tárterület mérete bájtban megadva.|Fájlmegosztás|
 |FileCount|Fájlok száma|Darabszám|Átlag|A Storage-fiók Fájlszolgáltatások szolgáltatásában lévő fájl száma.|Fájlmegosztás|
@@ -2170,7 +2170,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |QueueCapacity|Várólista kapacitása|Bájt|Átlag|A Storage-fiók Queue szolgáltatás által felhasznált tárterület mérete bájtban kifejezve.|Nincs|
 |QueueCount|Várólista száma|Darabszám|Átlag|A Storage-fiók Queue szolgáltatás várólistájának száma.|Nincs|
@@ -2188,7 +2188,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/gyorsítótárak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ClientIOPS|Ügyfél teljes IOPS|Darabszám|Átlag|A gyorsítótár által feldolgozott ügyféloldali fájlok műveleteinek aránya.|Nincs|
 |ClientLatency|Ügyfél átlagos késése|Ezredmásodpercben|Átlag|Az ügyfél-fájl műveleteinek átlagos késése a tárolási gyorsítótárban.|Nincs|
@@ -2216,7 +2216,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagesync/storageSyncServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|Szinkronizálási munkamenet eredménye|Darabszám|Átlag|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a kiszolgálói végpont sikeresen befejezte a szinkronizálási munkamenetet a Felhőbeli végponttal|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Szinkronizált fájlok|Darabszám|Összesen|Szinkronizált fájlok száma|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2230,7 +2230,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Szinkronizált fájlok|Darabszám|Összesen|Szinkronizált fájlok száma|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|Nem szinkronizált fájlok|Darabszám|Összesen|Nem sikerült szinkronizálni a fájlok számát|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2238,7 +2238,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|Szinkronizált fájlok|Darabszám|Összesen|Szinkronizált fájlok száma|ServerEndpointName,SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|Nem szinkronizált fájlok|Darabszám|Összesen|Nem sikerült szinkronizálni a fájlok számát|ServerEndpointName,SyncDirection|
@@ -2246,7 +2246,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ServerHeartbeat|Kiszolgáló online állapota|Darabszám|Maximum|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a resigtered-kiszolgáló sikeresen megjegyez egy szívverést a Felhőbeli végponttal|ServerResourceId, ServerName|
 |ServerRecallIOTotalSizeBytes|Felhőbeli rétegek felidézése|Bájt|Összesen|A kiszolgáló által visszaadott adatmennyiség teljes mérete|ServerResourceId, ServerName|
@@ -2255,7 +2255,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |ResourceUtilization|SU% kihasználtsága|Százalék|Maximum|SU% kihasználtsága|LogicalName, PartitionId|
 |InputEvents|Bemeneti események|Darabszám|Összesen|Bemeneti események|LogicalName, PartitionId|
@@ -2276,7 +2276,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. szinapszis/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |OrchestrationPipelineRunsEnded|A folyamat futtatása befejeződött|Darabszám|Összesen|A sikeres, sikertelen vagy megszakított előkészítési folyamat-futtatások száma|Eredmény, FailureType, folyamat|
 |OrchestrationActivityRunsEnded|A tevékenység futtatása befejeződött|Darabszám|Összesen|A sikeres, sikertelen vagy megszakított előkészítési tevékenységek száma|Eredmény, FailureType, tevékenység, ActivityType, folyamat|
@@ -2287,7 +2287,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. szinapszis/munkaterületek/bigDataPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |SparkJobsEnded|Befejezett alkalmazások|Darabszám|Összesen|Befejezett alkalmazások száma|JobType, JobResult|
 |CoresCapacity|Magok kapacitása|Darabszám|Maximum|Magok kapacitása|Nincs|
@@ -2295,7 +2295,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. szinapszis/munkaterületek/sqlPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |DWULimit|DWU korlátja|Darabszám|Maximum|Az SQL-készlet szolgáltatási szintjének célkitűzése|Nincs|
 |DWUUsed|Használt DWU|Darabszám|Maximum|Az SQL-készleten belüli használat magas szintű ábrázolását jelöli. DWU-korláttal mérve * DWU százalék|Nincs|
@@ -2316,7 +2316,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/Environments
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Bejövő fogadott üzenetek|Darabszám|Összesen|Az összes Event hub-vagy IoT hub-eseményforrás által olvasott üzenetek száma|Nincs|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az összes Event hub-vagy IoT hub-eseményforrás által beolvasott érvénytelen üzenetek száma|Nincs|
@@ -2332,7 +2332,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/Environments/eventsources
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Bejövő fogadott üzenetek|Darabszám|Összesen|Az eseményforrás által olvasott üzenetek száma|Nincs|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Darabszám|Összesen|Az eseményforrás által beolvasott érvénytelen üzenetek száma|Nincs|
@@ -2346,7 +2346,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Lemez olvasási sebessége (bájt/s)|BytesPerSecond|Átlag|A lemez átlagos átviteli sebessége a mintavételi időszakon belül beolvasási műveletek miatt.|Nincs|
 |DiskWriteBytesPerSecond|Lemez írási sebessége (bájt/s)|BytesPerSecond|Átlag|A lemez átlagos átviteli sebessége írási műveletek miatt a mintavételi időszakon belül.|Nincs|
@@ -2370,7 +2370,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft. Web/kiszolgálófarmok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memória százaléka|Százalék|Átlag|Memória százaléka|Példány|
@@ -2396,7 +2396,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 > [!IMPORTANT]
 > Az **átlagos válaszidő** a metrikák összesítésével való összekeveredés elkerülése érdekében elavulttá válik. A **válaszidő** használata csereként.
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CpuTime|CPU-idő|Másodperc|Összesen|CPU-idő|Példány|
 |Kérelmek|Kérelmek|Darabszám|Összesen|Kérelmek|Példány|
@@ -2440,7 +2440,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 > [!NOTE]
 > A **fájlrendszer használata** egy új metrika, amely globálisan zajlik, és nem számítunk fel adatokat, kivéve, ha Ön rendelkezik a privát előzetes verzióra vonatkozó engedélyezési listával.
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |BytesReceived|A-ben tárolt adatértékek|Bájt|Összesen|A-ben tárolt adatértékek|Példány|
 |BytesSent|Kimenő adatvesztés|Bájt|Összesen|Kimenő adatvesztés|Példány|
@@ -2468,7 +2468,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |CpuTime|CPU-idő|Másodperc|Összesen|CPU-idő|Példány|
 |Kérelmek|Kérelmek|Darabszám|Összesen|Kérelmek|Példány|
@@ -2511,7 +2511,7 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |Kérelmek|Kérelmek|Darabszám|Összesen|Kérelmek|Példány|
 |BytesReceived|A-ben tárolt adatértékek|Bájt|Összesen|A-ben tárolt adatértékek|Példány|
@@ -2538,14 +2538,14 @@ Bizonyos korlátozások vonatkoznak arra, hogy mit lehet irányítani, és milye
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
 |WorkersTotal|Alkalmazottak összesen|Darabszám|Átlag|Alkalmazottak összesen|Nincs|
 |WorkersAvailable|Rendelkezésre álló munkavégzők|Darabszám|Átlag|Rendelkezésre álló munkavégzők|Nincs|
 |WorkersUsed|Használt feldolgozók|Darabszám|Átlag|Használt feldolgozók|Nincs|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memória százaléka|Százalék|Átlag|Memória százaléka|Példány|
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tudnivalók a Azure Monitor mérőszámokról](data-platform.md)
 * [Riasztások létrehozása metrikákhoz](alerts-overview.md)
 * [Metrikák exportálása a Storage-ba, az Event hub-ba vagy a Log Analyticsba](platform-logs-overview.md)

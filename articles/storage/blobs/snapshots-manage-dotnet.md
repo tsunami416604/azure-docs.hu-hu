@@ -5,16 +5,16 @@ description: Megtudhatja, hogyan hozhat létre egy blob írásvédett pillanatk�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 438692d5c142c3f617ee9d0c3f55b9b3740f9b7a
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884695"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463535"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>BLOB-pillanatkép létrehozása és kezelése a .NET-ben
 
@@ -135,7 +135,7 @@ Ha törölni szeretne egy blobot és annak pillanatképeit az Azure Storage .NET
 - [Deleteifexists paranccsal](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-A következő mintakód bemutatja, hogyan törölhet egy blobot és annak pillanatképeit a .NET- `blobClient` ben, ahol a egy [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)típusú objektum.
+A következő mintakód bemutatja, hogyan törölhet egy blobot és annak pillanatképeit a .NET-ben, ahol a egy `blobClient` [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)típusú objektum.
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
@@ -150,7 +150,7 @@ Ha törölni szeretne egy blobot és annak pillanatképeit az Azure Storage .NET
 - [Deleteifexists paranccsal](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-A következő mintakód bemutatja, hogyan törölhet egy blobot és annak pillanatképeit a .NET- `blockBlob` ben, ahol a (z) [CloudBlockBlob] [dotnet_CloudBlockBlob] típusú objektum:
+A következő mintakód bemutatja, hogyan törölhet egy blobot és annak pillanatképeit a .NET-ben, ahol a (z `blockBlob` ) [CloudBlockBlob] [dotnet_CloudBlockBlob] típusú objektum:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
@@ -158,7 +158,7 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [BLOB-Pillanatképek](snapshots-overview.md)
 - [BLOB-verziók (előzetes verzió)](versioning-overview.md)

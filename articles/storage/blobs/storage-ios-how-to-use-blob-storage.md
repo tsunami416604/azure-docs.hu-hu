@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831874"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465490"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -82,7 +82,7 @@ Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő 
 #import <AZSClient/AZSClient.h>
 ```
 
-Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és importálnia kell a \< AZSClient/AZSClient. h-t> ott:
+Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és ott kell importálnia \<AZSClient/AZSClient.h> :
 
 1. Hozzon létre egy header fájlt `Bridging-Header.h` , és adja hozzá a fenti importálási utasítást.
 2. Lépjen a *létrehozási beállítások* lapra, és keressen rá az *Objective-C áthidaló fejlécre*.
@@ -385,7 +385,7 @@ Az alábbi példa bemutatja, hogyan törölhet egy tárolót.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi hivatkozásokra kattintva további információkat tudhat meg az iOS-könyvtárról és a Storage szolgáltatásról.
 

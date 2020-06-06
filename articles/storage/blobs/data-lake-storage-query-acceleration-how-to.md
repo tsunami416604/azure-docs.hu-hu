@@ -4,16 +4,16 @@ description: A lekérdezési gyorsítás (előzetes verzió) használatával lek
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930080"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465864"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítással (előzetes verzió)
 
@@ -53,11 +53,11 @@ A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
+1. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) . 
 
 2. Bontsa ki a fájl tartalmát a projekt könyvtárába.
 
-3. Nyissa meg a projektfájlt (*. csproj*) egy szövegszerkesztőben, és adja hozzá a csomag hivatkozásait a \<projekt\> elemhez.
+3. Nyissa meg a projektfájlt (*. csproj*) egy szövegszerkesztőben, és adja hozzá a csomag hivatkozásait az \<Project\> elemhez.
 
    ```xml
    <ItemGroup>
@@ -86,7 +86,7 @@ A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data 
    > [!NOTE]
    > A cikkben szereplő példák azt feltételezik, hogy a könyvtár neve **lib**.
 
-2. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
+2. Töltse le a lekérdezési gyorsítási csomagokat. A következő hivatkozással lehet beolvasni a csomagokat tartalmazó tömörített. zip fájlt: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) . 
 
 3. Bontsa ki a. zip fájlban található fájlokat a létrehozott könyvtárba. A példánkban a könyvtár neve **lib**. 
 
@@ -145,7 +145,7 @@ A lekérdezési gyorsítás (előzetes verzió) egy új képesség a Azure Data 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Adja hozzá `using` ezeket az utasításokat a fájl elejéhez.
+Adja hozzá ezeket `using` az utasításokat a fájl elejéhez.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +155,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-A lekérdezési gyorsítás lekéri a CSV-és a JSON-formátumú adatait. Ezért ügyeljen arra, hogy a használni kívánt CSV-vagy JSON-elemzési kódtárak használatával adjon hozzá utasításokat. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGet-on elérhető [CsvHelper](https://www.nuget.org/packages/CsvHelper/) könyvtár használatával. Ezért ezeket `using` az utasításokat a fájl elejéhez adja.
+A lekérdezési gyorsítás lekéri a CSV-és a JSON-formátumú adatait. Ezért ügyeljen arra, hogy a használni kívánt CSV-vagy JSON-elemzési kódtárak használatával adjon hozzá utasításokat. A cikkben megjelenő példák egy CSV-fájlt elemeznek a NuGet-on elérhető [CsvHelper](https://www.nuget.org/packages/CsvHelper/) könyvtár használatával. Ezért ezeket az `using` utasításokat a fájl elejéhez adja.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-A cikkben bemutatott példák fordításához is hozzá kell adnia ezeket `using` az utasításokat is.
+A cikkben bemutatott példák fordításához is hozzá kell adnia ezeket az `using` utasításokat is.
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +174,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Adja hozzá `import` ezeket az utasításokat a fájl elejéhez.
+Adja hozzá ezeket `import` az utasításokat a fájl elejéhez.
 
 ```java
 import com.azure.storage.blob.*;
@@ -190,11 +190,11 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Adatlekérdezés szűrő használatával
 
-Az SQL segítségével megadhatja a sorcsoport-predikátumokat és az oszlopok kivetítéseit egy lekérdezési gyorsítási kérelemben. Az alábbi kód egy CSV-fájlt kérdez le a Storage szolgáltatásban, és visszaadja az összes olyan adatsort `Hemingway, Ernest`, amelyben a harmadik oszlop megfelel az értéknek. 
+Az SQL segítségével megadhatja a sorcsoport-predikátumokat és az oszlopok kivetítéseit egy lekérdezési gyorsítási kérelemben. Az alábbi kód egy CSV-fájlt kérdez le a Storage szolgáltatásban, és visszaadja az összes olyan adatsort, amelyben a harmadik oszlop megfelel az értéknek `Hemingway, Ernest` . 
 
-- Az SQL-lekérdezésben a kulcsszó `BlobStorage` a lekérdezni kívánt fájl jelölésére szolgál.
+- Az SQL-lekérdezésben a kulcsszó a `BlobStorage` lekérdezni kívánt fájl jelölésére szolgál.
 
-- Az oszlopok hivatkozásai az első `_N` oszlop helyeként vannak megadva `_1`. Ha a forrásfájl tartalmaz egy fejlécet, akkor az oszlopokat a fejlécsorban megadott név alapján lehet megtekinteni. 
+- Az oszlopok hivatkozásai az `_N` első oszlop helyeként vannak megadva `_1` . Ha a forrásfájl tartalmaz egy fejlécet, akkor az oszlopokat a fejlécsorban megadott név alapján lehet megtekinteni. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -365,7 +365,7 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Lekérdezési gyorsítás beléptetésének űrlapja](https://aka.ms/adls/qa-preview-signup)    
 - [Azure Data Lake Storage lekérdezési gyorsítás (előzetes verzió)](data-lake-storage-query-acceleration.md)
