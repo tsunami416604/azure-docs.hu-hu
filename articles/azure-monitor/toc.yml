@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: Forrástérkép JavaScripthez
                   href: app/source-map-support.md
+                - name: Hibaelhárítás
+                  items:
+                    - name: SDK-betöltési hiba
+                      href: app/javascript-sdk-load-failure.md
             - name: Application Insights API összefoglalója
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: Profilkészítési kérések nyomon követése
               href: app/profiler-trackrequests.md
+            - name: BYOS (saját tároló használata) konfigurálása
+              href: app/profiler-bring-your-own-storage.md
             - name: Profilkészítő hibaelhárítása
               href: app/profiler-troubleshooting.md
         - name: Pillanatkép-hibakereső
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: A Snapshot Debugger frissítése
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS (saját tároló használata) konfigurálása
+              href: app/profiler-bring-your-own-storage.md
             - name: A pillanatkép-hibakereső hibaelhárítása
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md
