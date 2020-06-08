@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607282"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484618"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>FSLogix-profil tároló létrehozása Azure Files
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
 Ez a cikk bemutatja, hogyan hozhat létre egy FSLogix-profil tárolót Azure Files és Azure Active Directory Domain Services (AD DS) használatával.
 
@@ -103,10 +103,10 @@ A Storage-fiók elérési kulcsának beszerzése:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Cserélje `<desired-drive-letter>` le a betűt a kívánt meghajtóbetűjelre (például: `y:`).
-    - Cserélje le az összes `<storage-account-name>` példányát a korábban megadott Storage-fiók nevére.
-    - Cserélje `<share-name>` le a helyére a korábban létrehozott megosztás nevét.
-    - Cserélje `<storage-account-key>` le a elemet az Azure Storage-fiók kulcsára.
+    - Cserélje le a `<desired-drive-letter>` betűt a kívánt meghajtóbetűjelre (például: `y:` ).
+    - Cserélje le az összes példányát a `<storage-account-name>` korábban megadott Storage-fiók nevére.
+    - Cserélje le a helyére a `<share-name>` korábban létrehozott megosztás nevét.
+    - Cserélje le `<storage-account-key>` a elemet az Azure Storage-fiók kulcsára.
 
     Például:  
   
@@ -120,8 +120,8 @@ A Storage-fiók elérési kulcsának beszerzése:
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - A `<mounted-drive-letter>` helyére írja be annak a meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
-    - A `<user-email>` helyére írja be annak a felhasználónak a felhasználónevét, aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
+    - A helyére írja be annak a `<mounted-drive-letter>` meghajtónak a betűjelét, amelyet a felhasználó használni kíván.
+    - A helyére írja be annak a felhasználónak a felhasználónevét, `<user-email>` aki ezt a profilt fogja használni a munkamenet-gazda virtuális gépek eléréséhez.
 
     Például:
      
@@ -137,20 +137,20 @@ FSLogix-profil tárolójának konfigurálása:
 
 1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Bontsa ki a letöltött FSLogix-ügynököt, és nyissa meg az **x64** > -es**kiadásokat**, majd nyissa meg a **FSLogixAppsSetup. exe**fájlt
+2. Bontsa ki a letöltött FSLogix-ügynököt, és nyissa meg az **x64**  >  -es**kiadásokat**, majd nyissa meg a **FSLogixAppsSetup. exe**fájlt
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
 4. Válassza az **Install** (Telepítés) lehetőséget.
 
-5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files** > **FSLogix** > **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
+5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files**  >  **FSLogix**  >  **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 
      >[!NOTE]
      > Ha több virtuális gép van a gazdagépen, az egyes virtuális gépekhez az 1 – 5. lépést kell megismételni.
 
 6. Futtassa a **Beállításszerkesztőt** (Regedit) rendszergazdaként.
 
-7. Navigáljon a **számítógép** > **HKEY_LOCAL_MACHINE** > **szoftver** > **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
+7. Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
 
 8. Hozzon létre egy új, **profilok**nevű kulcsot.
 
@@ -158,7 +158,7 @@ FSLogix-profil tárolójának konfigurálása:
 
     ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
 
-10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás `\\fsprofile.file.core.windows.net\share` URI-ját adatértékként.
+10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás URI-ját `\\fsprofile.file.core.windows.net\share` adatértékként.
 
     ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
 
@@ -197,7 +197,7 @@ Felhasználók kiosztása:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    A korábbi parancsmagokhoz hasonlóan a megfelelő értékeket cserélje le `<your-wvd-tenant>` `<wvd-pool>`a, a `<user-principal>` és a kifejezésre.
+    A korábbi parancsmagokhoz hasonlóan a megfelelő értékeket cserélje le a, a és a kifejezésre `<your-wvd-tenant>` `<wvd-pool>` `<user-principal>` .
 
     Például:
 
@@ -231,9 +231,9 @@ A profil ellenőrzése:
 
 6. Válassza ki a **fájlok** ikont, majd bontsa ki a megosztást.
 
-    Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>`.
+    Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha alternatív módszereket keres a FSLogix-profilok létrehozásához, tekintse meg a következő cikkeket:
 

@@ -6,20 +6,20 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 05/21/2019
+ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770485"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484667"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
 
 Az Azure Cosmos DB [Tábla API](table-introduction.md) támogatja a kulcs/érték (tábla) adatok OData- és [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-lekérdezéseit.  
 
-Ez a cikk a következő feladatokat mutatja be: 
+Ez a cikk a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Adatok lekérdezése a Tábla API-val
@@ -30,39 +30,42 @@ A cikkben szereplő lekérdezések a következő minta `People` táblát haszná
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
-| Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
+| Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-A [Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) című szakaszban talál további részleteket a Tábla API-val való lekérdezés menetéről. 
+A [Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) című szakaszban talál további részleteket a Tábla API-val való lekérdezés menetéről.
 
-További információ az Azure Cosmos DB által nyújtott prémium képességekről: [Azure Cosmos DB Tábla API](table-introduction.md) és [Fejlesztés a Tábla API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md). 
+További információ az Azure Cosmos DB által nyújtott prémium képességekről: [Azure Cosmos DB Tábla API](table-introduction.md) és [Fejlesztés a Tábla API-val .NET-keretrendszerben](tutorial-develop-table-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A lekérdezések működéséhez Azure Cosmos DB-fiókkal kell rendelkeznie, és a tárolóban entitásadatoknak kell lennie. Nem rendelkezik ezekkel? A fiók létrehozásához és az adatbázis feltöltéséhez végezze el az [öt perces gyors útmutatót](create-table-dotnet.md) vagy a [fejlesztői oktatóanyagot](tutorial-develop-table-dotnet.md).
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>Lekérdezés PartitionKey és RowKey tulajdonságok esetén
-Mivel a PartitionKey és a RowKey tulajdonságok képezik az entitás fő kulcsát, a következő speciális szintaxis segítségével azonosíthatja az entitást: 
+
+Mivel a PartitionKey és a RowKey tulajdonságok képezik az entitás fő kulcsát, a következő speciális szintaxis segítségével azonosíthatja az entitást:
 
 **Lekérdezés**
 
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
-**Results (Eredmények)**
+
+**Eredmények**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
-A `$filter` lehetőség részeként is meghatározhatja ezeket a tulajdonságokat, a következő szakaszban látható módon. Vegye figyelembe, hogy a kulcstulajdonság nevei és az állandó értékek megkülönböztetik a kis- és nagybetűket. A PartitionKey és a RowKey tulajdonság típusa egyaránt sztring. 
+A `$filter` lehetőség részeként is meghatározhatja ezeket a tulajdonságokat, a következő szakaszban látható módon. Vegye figyelembe, hogy a kulcstulajdonság nevei és az állandó értékek megkülönböztetik a kis- és nagybetűket. A PartitionKey és a RowKey tulajdonság típusa egyaránt sztring.
 
 ## <a name="query-by-using-an-odata-filter"></a>Lekérdezés OData-szűrővel
-Szűrő sztringjének felépítésekor ne feledje ezeket a szabályokat: 
 
-* Az OData-protokollspecifikáció által definiált logikai operátorokat használja a tulajdonságok és az értékek összehasonlítására. Vegye figyelembe, hogy nem hasonlíthat össze tulajdonságot dinamikus értékkel. A kifejezés egyik oldalának állandónak kell lennie. 
-* A tulajdonság nevét, az operátort és az állandó értéket URL-kódolású szóközzel kell elválasztani. A szóköz URL-kódolása `%20`. 
-* A szűrési sztring minden része megkülönbözteti a kis- és nagybetűket. 
-* Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
+Szűrő sztringjének felépítésekor ne feledje ezeket a szabályokat:
+
+* Az OData-protokollspecifikáció által definiált logikai operátorokat használja a tulajdonságok és az értékek összehasonlítására. Vegye figyelembe, hogy nem hasonlíthat össze tulajdonságot dinamikus értékkel. A kifejezés egyik oldalának állandónak kell lennie.
+* A tulajdonság nevét, az operátort és az állandó értéket URL-kódolású szóközzel kell elválasztani. A szóköz URL-kódolása `%20`.
+* A szűrési sztring minden része megkülönbözteti a kis- és nagybetűket.
+* Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model).
 
 A következő példalekérdezés bemutatja, hogyan szűrhet a PartitionKey és az E-mail tulajdonságok alapján OData `$filter` használatával.
 
@@ -74,11 +77,13 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 További információ a szűrőkifejezések felépítéséről különböző adattípusokhoz:[Táblák és entitások lekérdezése](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
 
-**Results (Eredmények)**
+**Eredmények**
 
 | PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
+
+A DateTime tulajdonságok lekérdezései nem adnak vissza semmilyen értéket, ha Azure Cosmos DB Table API hajtja végre. Míg az Azure Table Storage a határidők időbeli részletességével tárolja a dátum értékeket, a Azure Cosmos DB Table API a `_ts` tulajdonságot használja. A `_ts` tulajdonság második részletességi szinten van, amely nem OData-szűrő. Így az időbélyeg-tulajdonságok lekérdezéseit a Azure Cosmos DB blokkolja. Megkerülő megoldásként meghatározhat egy egyéni datetime vagy hosszú adattípus-tulajdonságot, és beállíthatja a Date értéket az ügyfélről.
 
 ## <a name="query-by-using-linq"></a>Lekérdezés a LINQ használatával 
 A LINQ használatával is végezhet lekérdezést, amelyet a rendszer a megfelelő OData-lekérdezési kifejezésekre fordít. A következő példa bemutatja, hogyan építhetők fel lekérdezések a .NET SDK-val:
@@ -89,7 +94,7 @@ IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
             .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

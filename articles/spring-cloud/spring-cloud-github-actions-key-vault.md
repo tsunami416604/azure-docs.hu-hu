@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945465"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484344"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben
 A Key Vault biztonságos hely a kulcsok tárolásához. A vállalati felhasználóknak hitelesítő adatokat kell tárolniuk a CI/CD-környezetekhez az általuk vezérelt hatókörben. A Key vaultban a hitelesítő adatok lekéréséhez szükséges kulcsot az erőforrás hatókörére kell korlátozni.  Csak a kulcstartó hatóköréhez férhet hozzá, nem pedig a teljes Azure-hatókörhöz. Olyan kulcs, amely csak egy erős mezőt nyit meg, amely nem egy főkulcs, amely az épületben lévő összes ajtót meg tudja nyitni. Lehetőség van arra, hogy egy kulcsot egy másik kulccsal lásson el, ami hasznos lehet egy vel-munkafolyamatban. 
@@ -21,7 +21,7 @@ A Key Vault eléréséhez szükséges kulcs létrehozásához hajtsa végre az a
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-A `--scopes` paraméter által megadott hatókör korlátozza az erőforráshoz való hozzáférést.  Csak az erős dobozhoz fér hozzá.
+A paraméter által megadott hatókör `--scopes` korlátozza az erőforráshoz való hozzáférést.  Csak az erős dobozhoz fér hozzá.
 
 Eredményekkel:
 ```
@@ -42,11 +42,11 @@ Ezután mentse a GitHub- **titkokat** a GitHub- [tárház beállítása és az A
 ## <a name="add-access-policies-for-the-credential"></a>Hozzáférési szabályzatok hozzáadása a hitelesítő adatokhoz
 A fent létrehozott hitelesítő adatok csak általános információkat kaphatnak a Key Vaultről, és nem az általa tárolt tartalmakról.  A Key Vaultban tárolt titkok beszerzéséhez hozzáférési szabályzatokat kell beállítania a hitelesítő adatokhoz.
 
-Nyissa meg **a Key Vault** irányítópultot Azure Portalban, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a szerepkör- **hozzárendelések** lapot. Válassza a **típushoz** és `This resource` a **hatókörhöz**tartozó **alkalmazásokat** .  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
+Nyissa meg a **Key Vault** irányítópultot Azure Portalban, kattintson a **hozzáférés-vezérlés** menüre, majd nyissa meg a szerepkör- **hozzárendelések** lapot. Válassza a **típushoz** és **Apps** `This resource` a **hatókörhöz**tartozó alkalmazásokat.  Ekkor meg kell jelennie az előző lépésben létrehozott hitelesítő adatoknak:
 
  ![Hozzáférési szabályzat beállítása](./media/github-actions/key-vault1.png)
 
-Másolja a hitelesítő adat nevét, például `azure-cli-2020-01-19-04-39-02`:. Nyissa meg a **hozzáférési házirendek** menüt, kattintson a **+ hozzáférési házirend hozzáadása** hivatkozásra.  Válassza `Secret Management` a **sablon**lehetőséget, majd válassza a **rendszerbiztonsági tag**lehetőséget. Illessze be a hitelesítő adat nevét a **fő**/**Select** beviteli mezőbe:
+Másolja a hitelesítő adat nevét, például: `azure-cli-2020-01-19-04-39-02` . Nyissa meg a **hozzáférési házirendek** menüt, kattintson a **+ hozzáférési házirend hozzáadása** hivatkozásra.  Válassza `Secret Management` a **sablon**lehetőséget, majd válassza a **rendszerbiztonsági tag**lehetőséget. Illessze be a hitelesítő adat nevét a **fő** / **Select** beviteli mezőbe:
 
  ![Válassza ezt:](./media/github-actions/key-vault2.png)
 
@@ -73,7 +73,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Másolja a teljes JSON-karakterláncot.  Vissza **Key Vault** irányítópultra. Nyissa meg a **titkok** menüt, majd kattintson a **létrehozó/importálás** gombra. Adja meg a titok nevét, például `AZURE-CRENDENTIALS-FOR-SPRING`:. Illessze be a JSON hitelesítőadat-karakterláncot az **érték** beviteli mezőbe. Észreveheti, hogy az érték beviteli mezője egy egysoros szövegmező, nem többsoros szövegmező.  Itt beillesztheti a teljes JSON-karakterláncot.
+Másolja a teljes JSON-karakterláncot.  Vissza **Key Vault** irányítópultra. Nyissa meg a **titkok** menüt, majd kattintson a **létrehozó/importálás** gombra. Adja meg a titok nevét, például: `AZURE-CREDENTIALS-FOR-SPRING` . Illessze be a JSON hitelesítőadat-karakterláncot az **érték** beviteli mezőbe. Észreveheti, hogy az érték beviteli mezője egy egysoros szövegmező, nem többsoros szövegmező.  Itt beillesztheti a teljes JSON-karakterláncot.
 
  ![Teljes hatókörű hitelesítő adat](./media/github-actions/key-vault3.png)
 
@@ -92,7 +92,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1
@@ -108,5 +108,5 @@ jobs:
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Spring Cloud GitHub-műveletek](./spring-cloud-howto-github-actions.md)

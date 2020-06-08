@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925983"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484562"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
 
@@ -139,7 +139,7 @@ Az indexek esetében a feldolgozási kapacitás lazán a keresési szolgáltatá
 
 1. A [Azure Portal](https://portal.azure.com)keresési szolgáltatás irányítópultjának **Áttekintés** lapján tekintse meg a **díjszabási szintet** annak megerősítéséhez, hogy képes-e párhuzamos indexelést fogadni. Az alapszintű és a standard csomag több replikát is kínál.
 
-2. A **Beállítások** > **méretezése**elemnél növelje a párhuzamos feldolgozás [replikáit](search-capacity-planning.md) : egy további replikát az egyes indexelő munkaterhelésekhez. Hagyjon elegendő számot a meglévő lekérdezési kötethez. Az indexeléshez szükséges lekérdezési számítási feladatok feláldozása nem jó kompromisszum.
+2. Több indexelő is futtatható párhuzamosan a szolgáltatásban található keresési egységek számaként. A **Beállítások**  >  **méretezése**elemnél növelje a párhuzamos feldolgozáshoz szükséges [replikákat](search-capacity-planning.md) vagy partíciókat: egy további replikát vagy partíciót az egyes indexelő munkaterhelésekhez. Hagyjon elegendő számot a meglévő lekérdezési kötethez. Az indexeléshez szükséges lekérdezési számítási feladatok feláldozása nem jó kompromisszum.
 
 3. Az Azure Cognitive Search indexelő által elérhetővé tett szinten több tárolóba terjesztheti az adattárat. Ez több tábla lehet Azure SQL Database, több tároló az Azure Blob Storage-ban vagy több gyűjtemény is. Definiáljon egy adatforrás-objektumot minden táblához vagy tárolóhoz.
 

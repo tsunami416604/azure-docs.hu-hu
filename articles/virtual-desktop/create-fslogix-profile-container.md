@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296357"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484637"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
 
 Javasoljuk, hogy használja a FSLogix-profilok tárolóit felhasználói profil megoldásként a [Windows rendszerű virtuális asztali szolgáltatáshoz](overview.md). A FSLogix-profil tárolói egy teljes felhasználói profilt tárolnak egyetlen tárolóban, és a nem állandó távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban is barangoló profilokat terveztek. Amikor bejelentkezik, a tároló dinamikusan csatlakozik a számítástechnikai környezethez egy helyileg támogatott virtuális merevlemez (VHD) és egy Hyper-V virtuális merevlemez (VHDX) használatával. Ezek a speciális szűrő-illesztőprogram-technológiák lehetővé teszik, hogy a felhasználói profil azonnal elérhető legyen, és pontosan a helyi felhasználói profilhoz hasonlóan jelenjen meg a rendszeren. A FSLogix-profilok tárolókkal kapcsolatos további tudnivalókért tekintse meg a [FSLogix-profilok és az Azure Files](fslogix-containers-azure-files.md)című témakört.
 
@@ -228,7 +228,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
    ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).
 

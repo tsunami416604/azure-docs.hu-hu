@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: fdac28d50b9e03445c128a87a850294ba69fcaf9
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: db939dfee5e87312c380d57cbd5bb95f116408a0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450898"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483241"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>Felhőben üzemeltetett forráskód-kezelési szolgáltatások
 Ha olyan fejlesztői csapattal rendelkezik, amelyeken több csapattag is dolgozik ugyanazon a kódon, akkor megfelelő helyet kell találnia a kód üzemeltetéséhez. A felhőben tárolt adatok tárolása és központi tárháza lehetővé teszi, hogy mindenki feltöltse, szerkessze és kezelhesse a kódrészleteket. Emellett más fejlesztőket is kezelhetnek a projektekben. A kód könnyen elérhető, függetlenül attól, hogy hol van, amíg van internetkapcsolata.

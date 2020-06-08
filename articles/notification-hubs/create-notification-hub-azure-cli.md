@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d6502985c0267fe6636c606e493533daf17f6b56
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300012"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485148"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
 
@@ -112,7 +112,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
 
 2. A névterek listájának beolvasása.
 
-   Az új névtér részleteinek megtekintéséhez használja az az [Notification-hub Namespace List](/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) parancsot.  A `--resource-group` paraméter megadása nem kötelező, ha az előfizetéshez tartozó összes névteret meg szeretné jeleníteni.
+   Az új névtér részleteinek megtekintéséhez használja az az [Notification-hub Namespace List](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) parancsot.  A `--resource-group` paraméter megadása nem kötelező, ha az előfizetéshez tartozó összes névteret meg szeretné jeleníteni.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -138,7 +138,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
 
 3. Az értesítési központok listájának beolvasása.
 
-   Az Azure CLI az egyes végrehajtott parancsokkal kapcsolatos sikeres vagy hibaüzenetet ad vissza. az értesítési központok listájának lekérdezése azonban megnyugtató lehet.  Az az [Notification-hub List](/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) parancs erre a célra lett tervezve.
+   Az Azure CLI az egyes végrehajtott parancsokkal kapcsolatos sikeres vagy hibaüzenetet ad vissza. az értesítési központok listájának lekérdezése azonban megnyugtató lehet.  Az az [Notification-hub List](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) parancs erre a célra lett tervezve.
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
@@ -190,7 +190,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal t
 az group delete --name spnhubrg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ebben a rövid útmutatóban létrehozott egy értesítési központot. Ha szeretné megtudni, hogyan konfigurálhatja az elosztót a platform Notification System (PNS) beállításokkal, olvassa el a [leküldéses értesítések beállítása értesítési központban](configure-notification-hub-portal-pns-settings.md) című témakört.
 

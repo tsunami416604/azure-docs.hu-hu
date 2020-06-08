@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247053"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485091"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -77,7 +77,7 @@ A fenti kivételek úgy lettek kialakítva, hogy a műveletek eredménye (elsős
 A riasztás súlyossága alapján a riasztásokat háromféle típusban lehet meghatározni:
 
 - **Kritikus**: elvileg a biztonsági mentési vagy helyreállítási hibák (ütemezett vagy felhasználó által aktivált) a riasztások generálásához vezetnek, és kritikus riasztásként, valamint olyan romboló műveletekkel is rendelkeznek, mint például a biztonsági mentés törlése.
-- **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, azok figyelmeztető riasztásként jelennek meg.
+- **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, azok figyelmeztető riasztásként jelennek meg. A figyelmeztető riasztások jelenleg csak Azure Backup ügynök biztonsági mentései esetén érhetők el.
 - **Tájékoztatás**: jelenleg Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
 
 ## <a name="notification-for-backup-alerts"></a>Értesítés a biztonsági mentési riasztásokról
@@ -104,6 +104,6 @@ Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni k�
 
 ![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Backup-munkaterhelések figyelése Azure Monitor használatával](backup-azure-monitoring-use-azuremonitor.md)

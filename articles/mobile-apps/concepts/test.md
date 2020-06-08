@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-0000-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 61f489cdd2c0493a88a2292eec8394a0dab31bd6
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 3349a7148ab4f5d381666c19cf19e8f44dccd728
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450926"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485268"
 ---
 # <a name="perform-automated-testing-on-thousands-of-mobile-devices-simultaneously"></a>Automatizált tesztelés egyszerre több ezer mobil eszközön
 A tesztelés az eszközök töredezettsége, az alkalmazások összetettsége, a gyors kiadási ciklusok, a rövid munkamenetek és a magas felhasználói elvárások miatt rendkívül nagy kihívást jelenthet. Rendszeresen gondoskodnia kell arról, hogy alaposan tesztelt alkalmazásokat nyújtson, amelyek kiváló felhasználói élményt nyújtanak. A tesztelés nem egyszerű feladat, és az egyes kiadások manuális teszteléséhez nem érdemes a fejlesztői időt használni.

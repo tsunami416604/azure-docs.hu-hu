@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538464"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484319"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD GitHub-műveletekkel
 
@@ -75,7 +75,7 @@ az spring-cloud app create --name account-service
 ```
 
 ### <a name="deploy-with-azure-cli-directly"></a>Üzembe helyezés az Azure CLI-vel közvetlenül
-Hozza létre `.github/workflow/main.yml` a fájlt a tárházban:
+Hozza létre a `.github/workflow/main.yml` fájlt a tárházban:
 
 ```
 name: AzureSpringCloud
@@ -99,7 +99,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -118,10 +118,10 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>Üzembe helyezés az Azure CLI-vel művelettel
-Az az `run` parancs az Azure CLI legújabb verzióját fogja használni. A változtatások megszakításakor az Azure CLI egy adott verzióját is használhatja az Azure/CLI `action`-vel. 
+Az az `run` parancs az Azure CLI legújabb verzióját fogja használni. A változtatások megszakításakor az Azure CLI egy adott verzióját is használhatja az Azure/CLI-vel `action` . 
 
 > [!Note] 
-> Ez a parancs egy új tárolóban fog futni, `env` ezért nem fog működni, és a Többműveletes fájlhoz való hozzáférés további korlátozásokkal rendelkezhet.
+> Ez a parancs egy új tárolóban fog futni, ezért `env` nem fog működni, és a Többműveletes fájlhoz való hozzáférés további korlátozásokkal rendelkezhet.
 
 Hozza létre a. GitHub/munkafolyamat/Main. YML fájlt az adattárban:
 ```
@@ -142,7 +142,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -183,7 +183,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login
@@ -198,7 +198,7 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>A munkafolyamat futtatása
-A GitHub- **műveleteket** automatikusan engedélyezni kell a githubra való leküldés `.github/workflow/main.yml` után. A művelet akkor aktiválódik, amikor új véglegesítet küld. Ha ezt a fájlt a böngészőben hozza létre, a műveletnek már futnia kell.
+A GitHub- **műveleteket** automatikusan engedélyezni kell `.github/workflow/main.yml` a githubra való leküldés után. A művelet akkor aktiválódik, amikor új véglegesítet küld. Ha ezt a fájlt a böngészőben hozza létre, a műveletnek már futnia kell.
 
 Annak ellenőrzéséhez, hogy engedélyezve van-e a művelet, kattintson a **műveletek** fülre a GitHub-adattár lapon:
 
@@ -208,7 +208,7 @@ Ha a művelet hibát jelez, például ha még nem állította be az Azure-beli h
 
  ![Ellenőrzések újrafuttatása](./media/github-actions/actions4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Key Vault a Spring Cloud GitHub-műveletekhez](./spring-cloud-github-actions-key-vault.md)
 * [Azure Active Directory egyszerű szolgáltatások](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub-műveletek az Azure-hoz](https://github.com/Azure/actions/)

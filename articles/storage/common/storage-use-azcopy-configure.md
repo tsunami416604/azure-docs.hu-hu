@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 30244a426b6f934ef66261c6dccbb46e72f28488
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341012"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485201"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -34,7 +34,7 @@ A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` k�
 |--------|-----------|
 | **Windows** | A parancssorban használja a következőket:`set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShellben használja a következőket:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő proxykat.
 
@@ -63,23 +63,23 @@ Ez a szakasz a következő optimalizálási feladatok elvégzéséhez nyújt seg
 
 ### <a name="run-benchmark-tests"></a>Teljesítményteszt-tesztek futtatása
 
-Adott blob-tárolók teljesítmény-teljesítményteszt-tesztjét futtatva megtekintheti az általános teljesítménnyel kapcsolatos statisztikákat és a teljesítmény szűk keresztmetszeteit. 
+Adott blob-tárolók vagy fájlmegosztás teljesítmény-teljesítményteszt-tesztjét futtatva megtekintheti az általános teljesítménymutatókat és a teljesítmény szűk keresztmetszeteit. 
 
 A teljesítmény-teljesítményteszt teszt futtatásához használja a következő parancsot.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Például** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Szintaxis** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Például** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > Ez a példa a Path argumentumokat szimpla idézőjelekkel (' ') fedi le. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
 Ez a parancs teljesítménytesztet futtat egy megadott célhelyre való feltöltéssel. A tesztelési adatok a memóriában jönnek létre, feltöltve a célhelyre, majd a teszt befejezése után törlődnek a célhelyről. Megadhatja, hogy hány fájl legyen létrehozva, és hogy milyen méretben szeretné őket használni a választható parancssori paraméterek használatával.
 
-A részletes dokumentációt lásd: [azcopy pad](storage-ref-azcopy-bench.md).
+A részletes dokumentációs dokumentáció: [azcopy benchmark](storage-ref-azcopy-bench.md).
 
-A parancs részletes súgójának megtekintéséhez írja be a parancsot, `azcopy bench -h` majd nyomja le az ENTER billentyűt.
+A parancs részletes súgójának megtekintéséhez írja be a parancsot, `azcopy benchmark -h` majd nyomja le az ENTER billentyűt.
 
 ### <a name="optimize-throughput"></a>Teljesítmény optimalizálása
 
@@ -97,7 +97,7 @@ Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor megtekintheti, hogy melyik értéket használja a rendszer a AzCopy-naplófájl elején. A kijelölt érték és a kiválasztott ok a jelentésekben szerepelnek.
 
@@ -112,7 +112,7 @@ Ez az érték gigabájtban (GB) kifejezve.
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>Fájlok szinkronizálásának optimalizálása
 
@@ -193,9 +193,9 @@ Használja az alábbi parancsok bármelyikét.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> A parancssorban használja a következőket:`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a fájlok megtervezése az alapértelmezett helyre történik.
 
@@ -205,9 +205,9 @@ Használja az alábbi parancsok bármelyikét.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> A parancssorban használja a következőket:`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 A `azcopy env` változó aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a naplók az alapértelmezett helyre íródnak.
 

@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 63fd61ee2d4fc84e58563ea7ea20e79a382cf104
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 9070b8a8735cab62d412caa30de9a080862f10ba
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450863"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482573"
 ---
 # <a name="monitor-failures-and-errors-in-real-time-for-your-mobile-application"></a>Hibák és hibák figyelése valós időben a mobileszköz-alkalmazáshoz
 Miután az alkalmazást több ezer felhasználó használja, valószínűleg hibákkal fog rendelkezni. Előfordulhat, hogy a felhasználók nem várt alkalmazás-meghibásodásokat futtatnak. A felhasználók szempontjából minden, amire szükségük van, egy működőképes és megbízható alkalmazás. A hibás és sikertelen alkalmazások nem nyújtanak jó felhasználói élményt. A csalódott felhasználók el fogják távolítani az alkalmazást, rossz áttekintést hagynak, vagy nyilvánosan kritizálják és kifogásolják tapasztalataikat.

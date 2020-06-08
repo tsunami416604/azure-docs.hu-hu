@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: d0f37d32b7d2306865d435bc68ea12c9bb95651c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ffb0cd65ed8c904098a1099540a5c3a55f605d36
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434707"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485079"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -102,6 +102,9 @@ Itt megtalálhatja a `register_azure_*()` metódusnak a [Azure Portalon](https:/
 
 * Ha a hitelesítéshez a szolgáltatás elvét szeretné használni, lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. 
     * A megfelelő **áttekintő** oldal tartalmazni fogja a szükséges információkat, például a bérlő azonosítóját és az ügyfél-azonosítót.
+
+> [!IMPORTANT]
+> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha így tesz, szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Ismerje meg, hogyan szinkronizálhatja a frissített hitelesítő adatokat az [alábbi lépésekkel](how-to-change-storage-access-key.md). 
 
 Az alábbi példák bemutatják, hogyan regisztrálhat egy Azure BLOB-tárolót, egy Azure-fájlmegosztást és Azure Data Lake Storage 2. generációját adattárként. A példákban szereplő paraméterek az adattár létrehozásához és regisztrálásához **szükséges paraméterek** . 
 
@@ -193,6 +196,9 @@ Itt megtalálhatja azokat az adatokat, amelyekre az űrlapot fel kell töltenie 
 
 * Az egyszerű szolgáltatások, például a bérlői azonosító és az ügyfél-azonosító esetében lépjen a **Alkalmazásregisztrációk** , és válassza ki a használni kívánt alkalmazást. A kapcsolódó **áttekintő** lap ezeket az elemeket fogja tartalmazni. 
 
+> [!IMPORTANT]
+> Biztonsági okokból előfordulhat, hogy módosítania kell az Azure Storage-fiókhoz tartozó hozzáférési kulcsokat (a fiók kulcsát vagy SAS-tokenjét). Ha így tesz, szinkronizálja az új hitelesítő adatokat a munkaterülettel és a hozzá csatlakoztatott adattárolókkal. Ismerje meg, hogyan szinkronizálhatja a frissített hitelesítő adatokat az [alábbi lépésekkel](how-to-change-storage-access-key.md). 
+
 Az alábbi példa bemutatja, hogyan néz ki az űrlap az Azure Blob-adattár létrehozásakor: 
     
 ![Űrlap új adattárhoz](media/how-to-access-data/new-datastore-form.png)
@@ -283,7 +289,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Leírás |
+| Metódus | Adattár-hozzáférés | Description |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |

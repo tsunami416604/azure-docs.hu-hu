@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797534"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484978"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -22,7 +22,7 @@ A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely 
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-- A biztonsági mentési jelentések az Azure-beli virtuális gépek, az SQL SAP HANA Azure-beli virtuális gépek, az Azure-beli virtuális gépek, a Microsoft Azure Recovery Services (MARS) ügynök, a Microsoft Azure Backup-kiszolgáló (MABS) és a System Center Data Protection Manager (DPM) esetében támogatottak. Az Azure-fájlmegosztás biztonsági mentésére vonatkozó jelentések jelenleg nem láthatók a biztonsági mentési jelentésekben.
+- A biztonsági mentési jelentések az Azure-beli virtuális gépek, az SQL SAP HANA Azure-beli virtuális gépek, az Azure-beli virtuális gépek, a Microsoft Azure Recovery Services (MARS) ügynök, a Microsoft Azure Backup-kiszolgáló (MABS) és a System Center Data Protection Manager (DPM) esetében támogatottak. Az Azure-fájlmegosztás biztonsági másolata esetében a 2020-es vagy azt követően létrehozott összes rekord esetében az adatok jelennek meg.
 - A DPM számítási feladatokhoz a biztonsági mentési jelentések támogatottak a DPM 5.1.363.0-es vagy újabb verziójával, valamint az ügynök 2.0.9127.0 és újabb verziójával.
 - A MABS számítási feladatokhoz a biztonsági mentési jelentések támogatottak a MABS 13.0.415.0-es vagy újabb verziójával, valamint az ügynök 2.0.9170.0 és újabb verziójával.
 - A biztonsági mentési jelentések az összes biztonsági mentési elemben, tárolóban, előfizetésben és régióban is megtekinthetők, ha az adatokat egy olyan Log Analytics munkaterületre küldik, amelyhez a felhasználó hozzáfér. A jelentések egy készlethez való megtekintéséhez csak olvasási hozzáféréssel kell rendelkeznie ahhoz a Log Analytics munkaterülethez, amelyhez a tárolók küldik az adatokat. Nincs szükség az egyes tárak elérésére.

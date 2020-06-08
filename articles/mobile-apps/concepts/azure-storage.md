@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 6f8ed02659f1720435df3ff98817233a5a46dbcb
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e45726cfc54963c546274e0777dd0a10d89da72d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450989"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483312"
 ---
 # <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>Felhőalapú tárolás biztonságos, tartós és méretezhető alkalmazások számára az Azure Storage szolgáltatással
 Az [Azure Storage](https://azure.microsoft.com/services/storage/) a Microsoft felhőalapú tárolási megoldása a modern alkalmazásokhoz, amelyek nagymértékben méretezhető objektumokat tárolnak az adatobjektumokhoz, egy fájlrendszer-szolgáltatást a felhőhöz, egy üzenetküldési tárolót a megbízható üzenetküldéshez és egy NoSQL-tárolót. Az Azure Storage:
@@ -53,21 +53,6 @@ A Table Storage használatával nagy mennyiségű strukturált, nem összehasonl
 - [Az Azure Table Storage dokumentációja](/azure/storage/tables/table-storage-overview)
 - [Példák](/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 - [Rövid útmutatók](/azure/storage/tables/table-storage-quickstart-portal)
-
-## <a name="azure-files"></a>Azure Files
-A [Azure Files](https://azure.microsoft.com/services/storage/files/)segítségével olyan, a szabványos SMB protokollal elérhető hálózati fájlmegosztás állítható be, amelyek elérhetők. Több virtuális gép is megoszthatja ugyanazt a fájlt olvasási és írási hozzáféréssel. A fájlokat a REST-felület vagy a Storage ügyféloldali kódtárak használatával is elolvashatja. A fájlokat a világ bármely pontjáról elérheti egy olyan URL-címmel, amely a fájlra mutat, és tartalmazza a közös hozzáférésű aláírás (SAS) tokenjét is. Létrehozhat SAS-jogkivonatokat. Egy adott időtartamra vonatkozóan lehetővé teszik a saját adategységhez való hozzáférést.
-
-Az Azure-fájlmegosztások az alábbiakra használhatók:
-- Helyszíni **fájlkiszolgálók cseréje vagy pótlása:** A népszerű operációs rendszerek, például a Windows, a macOS és a Linux közvetlenül csatlakoztathatók az Azure-fájlmegosztáshoz, bárhol is legyenek a világon. Az Azure-fájlmegosztások az Azure File Sync használatával replikálhatók helyszíni vagy felhőalapú Windows Serverekre, az adatok a használat helyéhez közeli nagy teljesítményű és elosztott gyorsítótárazása érdekében.
-- **Alkalmazások átemelése és átirányítása:** Alkalmazások migrálása a felhőbe, amely egy fájlmegosztás vagy felhasználói adatok tárolására vár.
-- A **felhőalapú fejlesztés egyszerűsítése:** Azure Files számos módon felhasználható az új felhőalapú fejlesztési projektek egyszerűsítésére is. Például:
-    - **Megosztott alkalmazás beállításai:** Az elosztott alkalmazások közös mintája, hogy a konfigurációs fájlok központi helyen legyenek, ahol számos alkalmazás-példányból elérhetők. Az alkalmazás példányai a REST API fájlon keresztül tölthetik be a konfigurációt. A felhasználók szükség szerint hozzáférhetnek hozzájuk az SMB-megosztás helyi csatlakoztatásával.
-    - **Diagnosztikai megosztás:** Az Azure-fájlmegosztás kényelmes hely a Felhőbeli alkalmazások számára a naplók, a mérőszámok és az összeomlási memóriaképek írásához. A naplókat az alkalmazás példányai a REST API fájl segítségével írhatják. A fejlesztők a fájlmegosztást a helyi gépen csatlakoztatva érhetik el. Ez a képesség nagy rugalmasságot tesz lehetővé. A fejlesztők a felhő fejlesztését anélkül vehetik figyelembe, hogy le kellene vonniuk a meglévő eszközöket.
-
-**Referencia**
-- [Azure Portal](https://portal.azure.com)
-- [Az Azure Files dokumentációja](/azure/storage/files/storage-files-introduction)
-- [Rövid útmutatók](/azure/storage/files/storage-files-quick-create-use-windows)
 
 ## <a name="azure-queue-storage"></a>Azure Queue Storage
 Az [Azure üzenetsor-tároló](https://azure.microsoft.com/services/storage/queues/) szolgáltatás nagy számú üzenet tárolására szolgál. A hitelesített hívásokkal HTTP vagy HTTPS használatával férhet hozzá a világ bármely pontján lévő üzenetekhez. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, a Storage-fiók teljes kapacitásának korlátja alapján. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra.

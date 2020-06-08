@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660271"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483385"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Kapcsolódás Azure Database for MySQLhoz átirányítás használatával
 
@@ -19,6 +19,10 @@ Ez a témakör azt ismerteti, hogyan lehet egy alkalmazást Azure Database for M
 
 ## <a name="before-you-begin"></a>Előkészületek
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Azure Database for MySQL-kiszolgáló létrehozása a 5,6, 5,7 vagy 8,0 verziójú motorral. Részletekért lásd: [Azure Database for MySQL kiszolgáló létrehozása a portálról](quickstart-create-mysql-server-database-using-azure-portal.md) , vagy [Azure Database for MySQL kiszolgáló létrehozása a parancssori felület használatával](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+## <a name="enable-redirection"></a>Átirányítás engedélyezése
+
+A Azure Database for MySQL-kiszolgálón konfigurálja a paramétert úgy, hogy `redirect_enabled` `ON` engedélyezze a kapcsolatokat az átirányítási móddal. A kiszolgálói paraméter frissítéséhez használja a [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)-t.
 
 ## <a name="php"></a>PHP
 
@@ -155,5 +159,5 @@ $db_name = 'testdb';
 ?>
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a kapcsolatok karakterláncáról: a [kapcsolatok karakterláncai](howto-connection-string.md).

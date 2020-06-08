@@ -8,22 +8,22 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220140"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485173"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>azcopy-teljesítményteszt
 
 Teljesítmény-teljesítménytesztet futtat, ha a megadott célhelyre feltölti a tesztelési adataikat. A rendszer automatikusan generálja a tesztet.
 
 A teljesítményteszt-parancs ugyanazzal a feltöltési folyamattal fut, mint a másolás, kivéve a következőket:
 
-  - Nincs forrás paraméter.  A parancshoz csak egy cél URL-cím szükséges. A jelenlegi kiadásban a cél URL-címnek egy blob-tárolóra kell hivatkoznia.
+  - Nincs forrás paraméter.  A parancshoz csak egy cél URL-cím szükséges. 
   
-  - A hasznos adatokat a parancssori paraméterek írják le, amelyek azt szabályozzák, hogy hány fájl legyen automatikusan létrehozva, és mekkora legyen. A létrehozási folyamat teljes mértékben a memóriában zajlik. A lemez nincs használatban.
+  - A hasznos adatokat a parancssori paraméterek írják le, amelyek azt szabályozzák, hogy hány fájl jön létre automatikusan, és mekkora a mérete. A létrehozási folyamat teljes mértékben a memóriában zajlik. A lemez nincs használatban.
   
   - A másolási parancs számára elérhető választható paraméterek közül csak néhány támogatott.
   
@@ -38,7 +38,7 @@ A szokásos hitelesítési típusok mindegyike támogatott. A teljesítményért
 ## <a name="examples"></a>Példák
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 Teljesítményteszt-teszt futtatása alapértelmezett paraméterekkel (legfeljebb 1 GB/s sebességű hálózatok esetében alkalmas): "
@@ -49,7 +49,7 @@ Futtasson egy teljesítményteszt-tesztet, amely 100 fájlt tölt fel, amelyek m
 
 - azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS> " --file-Count 100--size-per-file 2G
 
-Ugyanaz, mint a fentiekben, de a 50 000-fájlok használata, a 8 MiB mérete és a kiszámított MD5-kivonatok (ugyanúgy, ahogyan a--Put-MD5 jelző ezt a másolási paranccsal végzi el). Az--Put-MD5 használata, ha a benchmarking ellenőrzi, hogy az MD5-számítás befolyásolja-e a kiválasztott fájlok számát és méretét:
+Futtasson teljesítményteszt-tesztet, de használjon 50 000-es fájlokat, amelyek mindegyike 8 MiB méretű, és az MD5-kivonatokat számítja ki (ugyanúgy, ahogyan a `--put-md5` jelző ezt a másolási paranccsal végzi el). A teljesítményértékelés célja `--put-md5` annak tesztelése, hogy az MD5 számítás befolyásolja-e a kiválasztott fájlok számát és méretét:
 
 - azcopy pad "https://[fiók]. blob. Core. Windows. net/[Container]? <SAS> " --file-Count 50000-méret-fájlonként 8P--Put-MD5
 

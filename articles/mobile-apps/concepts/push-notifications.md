@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: c9ae5e268066e498b3a341a9c54391ee5d15d592
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 515583a19c576d25bd9573cbf80974d72c6df1ec
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450653"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482651"
 ---
 # <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Leküldéses értesítések küldése az alkalmazás felhasználóinak
 
@@ -36,24 +36,6 @@ Alkalmazás felhasználóinak leküldéses értesítések:
 - Emlékeztesse a felhasználókat az alkalmazás használatára.
 
 A következő szolgáltatások segítségével engedélyezheti a leküldéses értesítéseket a Mobile apps szolgáltatásban.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-A [app Center leküldéses](/appcenter/push/)szolgáltatással az iOS-, Android-és Windows-felhasználók számára megcélozható üzeneteket küldhet anélkül, hogy a leküldéses értesítési szolgáltatások (PNS) használatával kellene kezelnie az értesítések küldésének folyamatát. Az Azure Notification Hubs-ra épülő szolgáltatás a hatékony irányítópult megadásával kiküszöböli az értesítések manuális leküldésével kapcsolatos bonyodalmakat.
-
-**A legfontosabb jellemzők**
-- Leküldéses értesítések küldése a mobileszközök számára különböző platformokon.
-- Értesítéseket használhat az alkalmazásba való adatküldéshez, a felhasználónak küldött üzenet megjelenítéséhez vagy az alkalmazás által indított művelet elindításához.
-- Értesítési célok használata a következőhöz: 
-    - Üzenetek küldése az összes regisztrált eszközre.
-    - Értesítések küldése a célközönségnek az eszköz adatai és az egyéni tulajdonságok alapján.
-    - Értesítések küldése adott felhasználóknak.
-    - Értesítések küldése adott eszközökre.
-- Használja ki a App Center portálon elérhető leküldések, eszközök és hibák gazdag telemetria.
-- Az iOS, az Android, a macOS, a Xamarin, a Native, az Unity és a Cordova platform támogatását veheti igénybe.
-
-**Referencia**
-- [Regisztráció Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Ismerkedés a App Center leküldéssel](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure Notification Hubs
 A [Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) egy könnyen használható és méretezhető leküldéses motort biztosít. A használatával értesítéseket küldhet bármilyen platformra, illetve a felhőben vagy a helyszínen lévő összes háttérből is.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: c99851125552873e63f8199bf7b206c5fad231be
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653134"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484735"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>A Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait.
@@ -24,15 +24,15 @@ Számos népszerű kiszolgálói paraméter minimális és maximális értékét
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
-|Basic|2|100|10|100|
+|Alapszintű|1|50|10|50|
+|Alapszintű|2|100|10|100|
 |Általános célú|2|300|10|600|
 |Általános célú|4|625|10|1250|
 |Általános célú|8|1250|10|2500|
 |Általános célú|16|2500|10|5000|
 |Általános célú|32|5000|10|10000|
 |Általános célú|64|10000|10|20000|
-|Memóriaoptimalizált|2|600|10|800|
+|Memóriaoptimalizált|2|625|10|1250|
 |Memóriaoptimalizált|4|1250|10|2500|
 |Memóriaoptimalizált|8|2500|10|5000|
 |Memóriaoptimalizált|16|5000|10|10000|
@@ -54,8 +54,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Basic|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
 |Általános célú|2|0|0|16777216|
 |Általános célú|4|0|0|33554432|
 |Általános célú|8|0|0|67108864|
@@ -74,8 +74,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Basic|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
 |Általános célú|2|524288|32768|4194304|
 |Általános célú|4|524288|32768|8388608|
 |Általános célú|8|524288|32768|16777216|
@@ -94,8 +94,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Basic|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
 |Általános célú|2|262144|128|268435455|
 |Általános célú|4|262144|128|536870912|
 |Általános célú|8|262144|128|1073741824|
@@ -114,8 +114,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Basic|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
 |Általános célú|2|16777216|16384|268435455|
 |Általános célú|4|16777216|16384|536870912|
 |Általános célú|8|16777216|16384|1073741824|
@@ -134,8 +134,8 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 |**Díjszabási csomag**|**Virtuális mag (ok)**|**Alapértelmezett érték**|**Minimális érték**|**Maximális érték**|
 |---|---|---|---|---|
-|Basic|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
-|Basic|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|1|Alapszintű csomag nem konfigurálható|N/A|N/A|
+|Alapszintű|2|Alapszintű csomag nem konfigurálható|N/A|N/A|
 |Általános célú|2|16777216|1024|67108864|
 |Általános célú|4|16777216|1024|134217728|
 |Általános célú|8|16777216|1024|268435456|
@@ -209,6 +209,6 @@ A Azure Database for MariaDB a legnagyobb **1 TB**-ot támogatja egyetlen adatf�
 ## <a name="current-known-issues"></a>Aktuális ismert problémák
 - A MariaDB-kiszolgálópéldány a kiszolgáló nem megfelelő verzióját jeleníti meg a kapcsolatok létrehozása után. A megfelelő kiszolgálópéldány-motor verziójának lekéréséhez használja a `select version();` parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az egyes szolgáltatási szinteknél elérhető szolgáltatások](concepts-pricing-tiers.md)
 - [Támogatott MariaDB-adatbázis-verziók](concepts-supported-versions.md)

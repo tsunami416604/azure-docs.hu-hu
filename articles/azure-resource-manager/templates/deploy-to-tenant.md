@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46e8db865b022e4fa1294c96843553a0480e559f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653339"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485446"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erőforrások létrehozása a bérlői szinten
 
@@ -72,7 +72,7 @@ Az Azure CLI esetén használja az [az Deployment bérlő Create](/cli/azure/dep
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
@@ -81,7 +81,7 @@ Azure PowerShell esetén használja a [New-AzTenantDeployment](/powershell/modul
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 REST API esetén használjon [központi telepítéseket – létrehozás vagy frissítés a bérlői hatókörben](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -117,7 +117,7 @@ A bérlői központi telepítések esetén fontos szempont a sablon funkcióinak
 
 ## <a name="create-management-group"></a>Felügyeleti csoport létrehozása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) létrehoz egy felügyeleti csoportot.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) létrehoz egy felügyeleti csoportot.
 
 ```json
 {
@@ -143,7 +143,7 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="assign-role"></a>Szerepkör kiosztása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
+A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
 
 ```json
 {
@@ -183,7 +183,7 @@ A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../../role-based-access-control/role-assignments-template.md).
 * A sablonokat [előfizetési szinten](deploy-to-subscription.md) vagy [felügyeleti csoport szintjén](deploy-to-management-group.md)is üzembe helyezheti.

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e54c0c156fde8201e6c5803c2c94f67692a7fd7
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367720"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484779"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás a Azure Database for MariaDB
 
@@ -47,6 +47,10 @@ Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy
 
 Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
+> [!NOTE]
+> Bizonyos esetekben a Azure Database for MariaDB és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforMariaDB** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+
 ## <a name="configure-private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás konfigurálása Azure Database for MariaDBhoz
 
 ### <a name="creation-process"></a>Létrehozási folyamat
@@ -54,7 +58,7 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
 * [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
-* [parancssori felület](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
+* [Parancssori felület](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 
@@ -121,7 +125,7 @@ Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati vé
 
 Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MariaDB számára a **nyilvános hálózati hozzáférés Megtagadását** Azure Portal, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának konfigurálása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
@@ -130,3 +134,6 @@ A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további tudni
 * Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MariaDB számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)című témakört.
 
 * A Azure Database for MariaDB kapcsolatok áttekintését lásd: [Azure Database for MariaDB kapcsolati architektúra](https://docs.microsoft.com/azure/MariaDB/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

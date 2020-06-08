@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 7986d740eb8e963fbede19637e8e691459b742c5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: cff95c38500a32b9b8ddc3f303ae218926bd59bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451010"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483357"
 ---
 # <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Content Delivery Network az Azure-ban az Azure Content Delivery Network
 Az [Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) globális megoldást kínál a fejlesztők számára a nagy sávszélességű tartalmak, például videók, képek vagy statikus fájlok gyors kézbesítésére a felhasználók számára a tartalom több száz, a világ különböző pontjain való gyorsítótárazásával. Content Delivery Network a dinamikus tartalmat is felgyorsíthatja, amely nem gyorsítótárazható, csökkentheti a betöltési időt, sávszélességet takaríthat meg, és növelheti a rugalmasságot. Ezek az előnyök a webhelyek és a mobileszközök fejlesztésére, valamint a streaming média, a játékok, a belső vezérlőprogram frissítései vagy a IoT-végpontok kódolására és terjesztésére használhatók.

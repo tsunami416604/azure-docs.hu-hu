@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-8982-8345-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 33ef251f60a833721e17d36d8df01a6095434af5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 424284799e5a823601473853aece3a598c50513b
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450996"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483294"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>AI-alapú felhőalapú szolgáltatás az Azure Cognitive Search
 Az [Azure Cognitive Search](https://azure.microsoft.com/services/search/) egy felhőalapú keresési megoldás, amely lehetővé teszi a fejlesztők számára API-k és eszközök számára, hogy a webes, mobil-és vállalati alkalmazásokban gazdag keresési élményt adjanak hozzá. Az egyéni kód meghívja az adatfeldolgozást (indexelést) egy index létrehozásához és betöltéséhez. A másik oldalon az alkalmazás kódja lekérdezi a kérelmeket, és kezeli a válaszokat. A keresési élmény az ügyfélen az Azure Cognitive Search funkcióinak használatával van meghatározva, és a lekérdezés végrehajtása a saját szolgáltatásában létrehozott, saját és tárolt megőrzött indexen keresztül történik.

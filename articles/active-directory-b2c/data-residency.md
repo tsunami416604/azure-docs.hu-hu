@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 46d8fb33c59fc5f0b6d844831e5ee1c937654afb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e7776317b80dbe6d927cf33792d1a180a546fa05
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193791"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484237"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: régió rendelkezésre állása & adattárolás
 
@@ -41,7 +41,7 @@ A Azure AD B2C Egyesült Államok, Európa vagy a Ázsia és a Csendes-óceáni 
 
 Az adattárolást a [Azure ad B2C bérlő létrehozásakor](tutorial-create-tenant.md)kiválasztott ország/régió határozza meg:
 
-![Képernyőkép az előzetes verziójú bérlőről](./media/data-residency/data-residency-b2c-tenant.png)
+![Képernyőfelvétel a bérlő létrehozása űrlapról, az ország vagy régió kiválasztása.](./media/data-residency/data-residency-b2c-tenant.png)
 
 A következő országok/régiók adatai találhatók a **Egyesült Államokban** :
 
@@ -69,4 +69,4 @@ Egy előnézeti B2C-bérlőtől **nem érhető el áttelepítési útvonal** egy
 
 Ismert problémák merültek fel, ha törli a B2C-bérlőt, és létrehoz egy éles méretű B2C-bérlőt ugyanazzal a tartománynévvel. *Egy másik tartománynévvel rendelkező, éles méretű B2C-bérlőt kell létrehoznia*.
 
-![Képernyőkép az előzetes verziójú bérlőről](./media/data-residency/preview-b2c-tenant.png)
+![Képernyőkép a bérlői típusról, mint az előzetes verzió bérlője.](./media/data-residency/preview-b2c-tenant.png)

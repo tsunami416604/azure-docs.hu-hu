@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495327"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485320"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>A VMware virtuális gépek feladatátvétele a helyszíni helyre
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan lehet visszaadni az Azure-beli virtuális gépek
 
 ## <a name="run-a-failover-to-fail-back"></a>Feladatátvétel futtatása a feladat-visszavétel érdekében
 
-1. Győződjön meg arról, hogy az Azure-beli virtuális gépek újra vannak védve, és a helyszíni helyre replikálódnak. 
+1. Győződjön meg arról, hogy az Azure-beli virtuális gépek újra vannak védve, és a helyszíni helyre replikálódnak.
     - A virtuális gépeknek legalább egy helyreállítási pontra van szükségük a feladat-visszavétel érdekében.
     - Ha egy helyreállítási tervet hajt végre, akkor a tervben szereplő összes gépnek rendelkeznie kell legalább egy helyreállítási ponttal.
 2. A tárolóban > **replikált elemek**területen válassza ki a virtuális gépet. Kattintson a jobb gombbal a nem **tervezett feladatátvételt**> virtuális gépre.
@@ -60,7 +60,7 @@ A feladat-visszavétel véglegesítése után a rendszer törli az Azure-beli vi
 > [!NOTE]
 > A helyszíni virtuális gép elindítása után akár 15 percet is igénybe vehet, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót. Ebben az időszakban az ismételt védelem meghiúsul, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, és állítsa be újra a védelemmel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az újravédelemi feladatok befejeződése után a helyszíni virtuális gép replikálódik az Azure-ba. Igény szerint [egy másik feladatátvételt is futtathat](site-recovery-failover.md) az Azure-ban.
 

@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12344321-0123-4678-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 724ad41bdafdba976939cbf9b7f88df2de6c6c18
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: dc92b187d1bef52339466cf46dbabde7662e95f9
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450667"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482544"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Mobile Application-adatok tárolása, szinkronizálása és lekérdezése a felhőből
 Függetlenül attól, hogy milyen típusú alkalmazást készít, valószínűleg létrehoz és feldolgozza az adatmennyiséget. Az alkalmazás felhasználói nagy elvárásokkal rendelkeznek. Azt szeretnék, hogy az alkalmazás minden körülmények között gyorsan és zökkenőmentesen működjön. A legtöbb alkalmazás több eszközön is működik. Az alkalmazást asztali vagy mobil eszközről is elérheti. Egyszerre több felhasználó is használhatja az alkalmazást, és megoszthatja az adatokhoz való azonnali és valós idejű adatelérést.

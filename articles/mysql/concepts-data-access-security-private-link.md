@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371290"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482599"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
 
@@ -47,6 +47,10 @@ Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy
 
 Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
+> [!NOTE]
+> Bizonyos esetekben a Azure Database for MySQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforMySQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Privát hivatkozás konfigurálása Azure Database for MySQLhoz
 
 ### <a name="creation-process"></a>Létrehozási folyamat
@@ -54,7 +58,7 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
 * [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
-* [parancssori felület](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
+* [Parancssori felület](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a MySQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for MySQL. A hálózati rendszergazda és a DBA közötti feladatok elkülönítése hasznos lehet az Azure Database for MySQL-kapcsolat kezeléséhez. 
@@ -120,7 +124,7 @@ Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati vé
 
 Ha meg szeretné tudni, hogyan állíthatja be a Azure Database for MySQL számára a **nyilvános hálózati hozzáférés Megtagadását** Azure Portal, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának konfigurálása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database for MySQL biztonsági funkcióival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
@@ -129,3 +133,6 @@ A Azure Database for MySQL biztonsági funkcióival kapcsolatos további tudniva
 * Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for MySQL számára, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)című témakört.
 
 * A Azure Database for MySQL kapcsolatok áttekintését lásd: [Azure Database for MySQL kapcsolati architektúra](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

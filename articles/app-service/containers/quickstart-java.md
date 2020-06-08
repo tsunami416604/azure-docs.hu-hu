@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bff1e22df1583491bf8d249cdb8752e9a1e4f57
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300068"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485384"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -44,7 +44,7 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-Az üzembe helyezés folyamata Azure App Service az Azure CLI-vel automatikusan felveheti az Azure-beli hitelesítő adatait. Ha nem telepítette az Azure CLI-t, a Maven beépülő modul bejelentkezik a OAuth vagy az eszköz bejelentkezésével. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio) részleteit.
+Az üzembe helyezés folyamata Azure App Service az Azure CLI-vel automatikusan felveheti az Azure-beli hitelesítő adatait. Ha nem telepítette az Azure CLI-t, a Maven beépülő modul bejelentkezik a OAuth vagy az eszköz bejelentkezésével. Ha szükséges, tekintse meg a [Maven beépülő modulokkal történő hitelesítés](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) részleteit.
 
 A központi telepítés konfigurálásához futtassa a Maven parancsot a parancssorban, és használja az alapértelmezett konfigurációkat az **ENTER** billentyű lenyomásával, amíg meg nem jelenik a **Confirm (y/N)** üzenet, majd nyomja le az **"y"** gombot, és a konfiguráció elkészült. 
 ```cmd
@@ -137,7 +137,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás az Azure SQL Database-hez a Javával](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)

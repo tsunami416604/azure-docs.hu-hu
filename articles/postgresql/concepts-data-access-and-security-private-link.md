@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371681"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485050"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -47,6 +47,10 @@ Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy
 
 Privát hivatkozással engedélyezheti a létesítmények közötti hozzáférést a privát végponthoz [Express Route](https://azure.microsoft.com/services/expressroute/) (er), privát vagy [VPN-alagút](https://docs.microsoft.com/azure/vpn-gateway/)használatával. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
+> [!NOTE]
+> Bizonyos esetekben a Azure Database for PostgreSQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. DBforPostgreSQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás konfigurálása Azure Database for PostgreSQL egyetlen kiszolgálóhoz
 
 ### <a name="creation-process"></a>Létrehozási folyamat
@@ -54,7 +58,7 @@ Privát hivatkozással engedélyezheti a létesítmények közötti hozzáféré
 Privát végpontok szükségesek a privát kapcsolat engedélyezéséhez. Ezt a következő útmutatók segítségével végezheti el.
 
 * [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
-* [parancssori felület](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
+* [Parancssori felület](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), a PostgreSQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) Azure Database for PostgreSQL. A hálózati rendszergazda és a DBA közötti feladatok elkülönítése hasznos lehet az Azure Database for PostgreSQL-kapcsolat kezeléséhez. 
@@ -120,7 +124,7 @@ Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon k
 
 Ha meg szeretné tudni, hogyan állíthatja be a **nyilvános hálózati hozzáférés megtagadása** a Azure Database for PostgreSQL egyetlen kiszolgáló Azure Portal-ról, tekintse meg a [nyilvános hálózati hozzáférés megtagadásának beállítása](howto-deny-public-network-access.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure Database for PostgreSQL egyetlen kiszolgáló biztonsági funkcióival kapcsolatban, tekintse meg a következő cikkeket:
 
@@ -129,3 +133,6 @@ Ha többet szeretne megtudni a Azure Database for PostgreSQL egyetlen kiszolgál
 * Ha meg szeretné tudni, hogyan konfigurálhatja a virtuális hálózati szolgáltatás végpontját a Azure Database for PostgreSQL egyetlen kiszolgálóhoz, tekintse meg a [virtuális hálózatok elérésének konfigurálása](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)című témakört.
 
 * Az egykiszolgálós kapcsolatok Azure Database for PostgreSQLának áttekintését lásd: [Azure Database for PostgreSQL kapcsolati architektúra](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
