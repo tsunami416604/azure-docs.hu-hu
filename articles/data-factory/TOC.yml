@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Adatfolyamok
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal

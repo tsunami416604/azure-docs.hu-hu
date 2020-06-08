@@ -195,7 +195,13 @@
 - name: Útmutatók
   items:
     - name: 'Rendszertémakörök létrehozása, megtekintése és kezelése'
-      href: create-view-manage-system-topics.md
+      items:
+        - name: Azure Portal
+          href: create-view-manage-system-topics.md
+        - name: Azure CLI
+          href: create-view-manage-system-topics-cli.md
+        - name: Azure Resource Manager-sablon
+          href: create-view-manage-system-topics-arm.md
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
     - name: Feliratkozás Auth0-eseményekre

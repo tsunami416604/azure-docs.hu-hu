@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Az Azure Files és az Azure AD DS használata
           href: create-profile-container-adds.md
-    - name: Profiltároló-fájlmegosztások létrehozása
-      href: create-file-share.md
+        - name: Az Azure Files és az AD DS használata
+          href: create-file-share.md
     - name: Gazdagépkészlet beállításainak konfigurálása
       items:
         - name: RDP-tulajdonságok
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: Problémák azonosítása és diagnosztizálása
       href: diagnostics-role-service.md
-    - name: Bérlői és gazdagépcsoport létrehozása
+    - name: Gazdagépkészlet létrehozása
       href: troubleshoot-set-up-issues.md
     - name: Munkamenetgazda virtuális gép konfigurációja
       href: troubleshoot-vm-configuration.md

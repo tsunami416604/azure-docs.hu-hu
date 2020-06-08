@@ -70,6 +70,8 @@
       href: azure-portal-safelist-urls.md
     - name: Az Azure-irányítópultok struktúrája
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: További források
   items:
     - name: Azure-ütemterv

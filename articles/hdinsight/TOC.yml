@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: A fürtök kapacitástervezése
           href: ./hdinsight-capacity-planning.md
-        - name: A processzormagkvóta növelésének kérése
-          href: ./quota-increase-request.md
         - name: Ajánlott fürtkezelési eljárások
           href: ./cluster-management-best-practices.md
         - name: Rendelkezésre állás és megbízhatóság
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: Hibaelhárítás
           items:
+            - name: A processzormagkvóta növelésének kérése
+              href: ./quota-increase-request.md
             - name: Szkriptműveletek hibaelhárítása
               href: ./troubleshoot-script-action.md
             - name: Erőforráslétrehozási hibák

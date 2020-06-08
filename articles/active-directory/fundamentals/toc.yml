@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Újdonságok a Microsoft 365 Kormányzati verzióban
       href: whats-new-microsoft-365-government.md
+    - name: Az Azure AD újdonságainak archívuma
+      href: whats-new-archive.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 'Üzembe helyezés 30, 90 vagy hosszabb idő alatt'
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory-üzembehelyezési tervek
+          href: active-directory-deployment-plans.md
     - name: Adattárolás
       items:
         - name: Az európai ügyfelek identitásadatainak tárolása
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: Csoporttulajdonosok hozzáadása és eltávolítása
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: Erőforrások hozzáférésének kezelése csoportokkal
+          href: active-directory-manage-groups.md
     - name: Felhasználók
       items:
         - name: Új felhasználó hozzáadása vagy törlése
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: Törölt felhasználó visszaállítása
           href: active-directory-users-restore.md
-- name: További források
+- name: Hibaelhárítás
   expanded: true
   items:
     - name: Támogatás az Azure Active Directoryhoz
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory – gyakori kérdések
       href: active-directory-faq.md
-    - name: Azure Active Directory-üzembehelyezési tervek
-      href: active-directory-deployment-plans.md
-    - name: Az Azure AD újdonságainak archívuma
-      href: whats-new-archive.md

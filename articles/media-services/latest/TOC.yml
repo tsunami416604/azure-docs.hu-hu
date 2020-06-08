@@ -195,6 +195,19 @@
         - name: Streamelés
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori kérdések
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Hibakódok
+          items:
+            - name: Streamvégpont-hibakódok
+              href: streaming-endpoint-error-codes.md
+            - name: Élő események hibakódjai
+              href: live-event-error-codes.md
+            - name: Feladathibakódok
+              href: job-error-codes.md
     - name: Migrálás a 2-esről a 3-as verzióra
       items:
         - name: A 2-es és 3-as verzió összevetése
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: Leíró hang jelzése
           href: signal-descriptive-audio-howto.md
-    - name: Hibaelhárítás
-      items:
-        - name: Gyakori kérdések
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Hibakódok
-          items:
-            - name: Streamvégpont-hibakódok
-              href: streaming-endpoint-error-codes.md
-            - name: Élő események hibakódjai
-              href: live-event-error-codes.md
-            - name: Feladathibakódok
-              href: job-error-codes.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
