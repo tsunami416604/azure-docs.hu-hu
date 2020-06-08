@@ -324,24 +324,28 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: A REST API frissítése
           href: search-api-migration.md
-    - name: Biztonságos
+    - name: Biztonság
       items:
-        - name: Biztonsági áttekintés
+        - name: Áttekintés
           href: search-security-overview.md
-        - name: Privát végpont létrehozása
-          href: service-create-private-endpoint.md
-        - name: IP-tűzfal konfigurálása
-          href: service-configure-firewall.md
-        - name: Szolgáltatáskulcsok kezelése
-          href: search-security-api-keys.md
-        - name: Szerepköralapú rendszergazdai hozzáférés
-          href: search-security-rbac.md
-        - name: Biztonsági szűrők
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD-identitások szűrése
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Titkosítási kulcsok kezelése
-          href: search-security-manage-encryption-keys.md
+        - name: Adattitkosítás
+          items:
+            - name: Felhasználó által kezelt kulcsok
+              href: search-security-manage-encryption-keys.md
+        - name: Bejövő biztonság
+          items:
+            - name: API-hozzáférési kulcsok
+              href: search-security-api-keys.md
+            - name: IP-tűzfal konfigurálása
+              href: service-configure-firewall.md
+            - name: Privát végpont létrehozása
+              href: service-create-private-endpoint.md
+        - name: Identitás-alapú hozzáférés
+          items:
+            - name: Biztonsági szűrők
+              href: search-security-trimming-for-azure-search.md
+            - name: AAD-identitások szűrése
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Kezelés
       items:
         - name: Portál
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: Szolgáltatás áthelyezése régiók között
           href: search-howto-move-across-regions.md
+        - name: Szerepköralapú rendszergazdai hozzáférés
+          href: search-security-rbac.md
     - name: Figyelés
       items:
         - name: Alapok
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Visszajelzési fórum (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: Megfelelőség és tanúsítványok
+      href: 'https://aka.ms/azurecompliance'
     - name: Bemutató webhelyek
       items:
         - name: Pénzügyi fájlok bemutató

@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: A hatókörök ismertetése és használata
           href: understand-work-scopes.md
+        - name: Költségek kezelése automatizálással
+          href: manage-automation.md
         - name: Migrálás EA-ról MCA API-kra
           href: migrate-cost-management-api.md
     - name: Útmutatók

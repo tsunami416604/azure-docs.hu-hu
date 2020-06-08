@@ -1,0 +1,159 @@
+### YamlMime:Hub
+title: Azure mobilfejlesztői dokumentáció
+summary: Minden szükséges információ az Azue-beli mobilalkalmazások fejlesztéséhez
+brand: azure
+metadata:
+  title: Azure mobilfejlesztők számára
+  description: Minden szükséges információ az Azue-beli mobilalkalmazások fejlesztéséhez
+  services: mobile-services
+  ms.service: mobile-services
+  ms.topic: hub-page
+  author: codemillmatt
+  ms.author: masoucou
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 470928c43d0e80887ed0f3f8af1a92cadc29c05c
+  ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84449899"
+highlightedContent:
+  items:
+  - title: A mobilfejlesztési keretrendszerek kiválasztása
+    itemType: architecture
+    url: concepts/front-end-development-platform.md
+  - title: Az Azure-mobilalkalmazások fejlesztésének fázisai
+    itemType: architecture
+    url: concepts/stages-overview.md
+  - title: Teljes mobilalkalmazás létrehozása az Azure segítségével
+    itemType: video
+    url: https://channel9.msdn.com/Shows/Partly-Cloudy
+  - title: Mobilalkalmazások létrehozása a Xamarin.Forms segítségével
+    itemType: learn
+    url: https://docs.microsoft.com/learn/paths/build-mobile-apps-with-xamarin-forms/
+conceptualContent:
+  title: Bevezetés
+  summary: Az Azure használata felhőhöz csatlakozó mobilalkalmazások létrehozásához
+  items:
+  - title: Webszolgáltatások meghívása
+    links:
+    - url: concepts/serverless-compute.md
+      itemType: concept
+      text: Kiszolgáló nélküli mobilalkalmazás háttérrendszerének létrehozása az Azure Functions és más szolgáltatások használatával
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+      itemType: quickstart
+      text: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+    - url: /learn/modules/consume-rest-services.md
+      itemType: learn
+      text: RESTful-webszolgáltatás felhasználása a Xamarinnal
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-signalr.md
+      itemType: concept
+      text: Azure SignalR szolgáltatás a Xamarin.Forms használatával
+    - url: ../api-management/api-management-key-concepts.md
+      itemType: overview
+      text: Az Azure API Management áttekintése
+    - url: concepts/real-time.md
+      itemType: overview
+      text: Valós idejű alkalmazások létrehozása az Azure SignalR szolgáltatással
+  - title: Adatok mentése
+    links:
+    - url: concepts/data-storage.md
+      itemType: concept
+      text: Mobilalkalmazások adatainak tárolása, szinkronizálása és lekérdezése a felhőből
+    - url: ../cosmos-db/create-sql-api-xamarin-dotnet.md
+      itemType: quickstart
+      text: Adatok mentése az Azure Cosmos DB-vel
+    - url: ../cosmos-db/create-mongodb-xamarin.md
+      itemType: quickstart
+      text: Xamarin.Forms-alkalmazás létrehozása a .NET SDK és a MongoDB-hez készült Azure Cosmos DB API használatával
+    - url: concepts/azure-storage.md
+      itemType: overview
+      text: Felhőbeli tárolás biztonságos, tartós, skálázható alkalmazásokhoz az Azure Storage segítségével
+    - url: ../storage/blobs/storage-quickstart-blobs-xamarin.md
+      itemType: quickstart
+      text: A Blob Storage használata
+    - url: concepts/azure-cdn.md
+      itemType: overview
+      text: Tartalomkézbesítés az Azure Content Delivery Networkkel
+  - title: Leküldéses értesítések küldése
+    links:
+    - url: concepts/push-notifications.md
+      itemType: overview
+      text: Kapcsolattartás az alkalmazás felhasználóival leküldéses értesítések küldésével
+    - url: ../notification-hubs/create-notification-hub-portal.md
+      itemType: quickstart
+      text: Azure Notification Hub-központ létrehozása az Azure Portalon
+    - url: ../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md
+      itemType: tutorial
+      text: Leküldéses értesítések küldése Android-eszközökre
+    - url: ../notification-hubs/push-notifications-android-specific-devices-firebase-cloud-messaging.md
+      itemType: tutorial
+      text: Értesítések küldése adott eszközökre a Notification Hubs és a Google Firebase Cloud Messaging használatával
+    - url: ../notification-hubs/notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+      itemType: how-to-guide
+      text: Részletes tartalom leküldése eszközökre
+  - title: Felhasználók hitelesítése
+    links:
+    - url: concepts/authentication.md
+      itemType: overview
+      text: Hitelesítés hozzáadása és felhasználói identitások kezelése a mobilalkalmazásokban
+    - url: ../active-directory/develop/tutorial-v2-android.md
+      itemType: tutorial
+      text: Felhasználók bejelentkeztetése és a Microsoft Graph meghívása Android-alkalmazásokból
+    - url: ../active-directory-b2c/add-native-application.md
+      itemType: how-to-guide
+      text: Natív ügyfélalkalmazás hozzáadása az Azure Active Directory B2C-bérlőhöz
+    - url: ../active-directory/develop/msal-authentication-flows.md
+      itemType: concept
+      text: A Microsoft Authentication Library (MSAL) által támogatott hitelesítési folyamatok
+    - url: https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal
+      itemType: sample
+      text: Felhasználók bejelentkeztetése Swift iOS-alkalmazással
+  - title: DevOps
+    links:
+    - url: concepts/continuous-delivery.md
+      itemType: concept
+      text: A mobilalkalmazások üzembe helyezésének és kiadásának automatizálása folyamatos kézbesítési szolgáltatásokkal
+    - url: concepts/continuous-integration.md
+      itemType: concept
+      text: Alkalmazás életciklusának automatizálása folyamatos buildelés és integráció segítségével
+    - url: /azure/devops/pipelines/get-started/key-pipelines-concepts.md
+      itemType: concept
+      text: A legfontosabb alapelvek az Azure Pipelines új felhasználóinak
+    - url: /appcenter/distribution/uploading.md
+      itemType: how-to-guide
+      text: Build kiadása az App Centerrel
+    - url: /appcenter/distribution/codepush.md
+      itemType: overview
+      text: App Center CodePush
+  - title: Elemzések és összeomlási jelentések
+    links:
+    - url: concepts/analytics.md
+      itemType: concept
+      text: A mobilalkalmazás-használat elemzése és értelmezése
+    - url: /appcenter/analytics/overview.md
+      itemType: overview
+      text: App Center Analytics
+    - url: /appcenter/diagnostics/enabling-diagnostics.md
+      itemType: how-to-guide
+      text: Diagnosztika engedélyezése az alkalmazásokban
+    - url: concepts/diagnostics.md
+      itemType: concept
+      text: Mobilalkalmazás meghibásodásainak és hibáinak figyelése valós időben
+    - url: /appcenter/analytics/log-flow.md
+      itemType: tutorial
+      text: Hozzáférés valós idejű elemzésekhez
+additionalContent:
+  sections:
+  - title: Azure Mobile SDK-k
+    summary: Íme néhány példa az Azure mobilügyfél SDK-ira
+    items:
+    - title: iOS
+      summary: iOS-ügyfél SDK-k a Microsoft Azure-hoz
+      url: https://github.com/Azure/azure-sdk-for-ios
+    - title: Android
+      summary: Android-ügyfél SDK-k a Microsoft Azure-hoz
+      url: https://github.com/Azure/azure-sdk-for-android
+    - title: .NET / Xamarin
+      summary: .Net-hez és Xamarinhoz készült Azure SDK
+      url: https://azure.github.io/azure-sdk/releases/latest/dotnet.html
