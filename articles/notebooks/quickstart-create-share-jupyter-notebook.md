@@ -3,31 +3,32 @@ title: Jupyter-jegyzetfüzet létrehozása és megosztása Azure Notebooks előz
 description: Gyorsan létrehozhat és futtathat Jupyter notebookot Azure Notebooks előzetes verzióban, majd megoszthatja a jegyzetfüzetet másokkal.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064444"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561093"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rövid útmutató: jegyzetfüzet létrehozása és megosztása Azure Notebooks előzetes verzióban
 
 Ebben a rövid útmutatóban egy Jupyter-jegyzetfüzetet hoz létre és futtat Azure Notebookson, majd megoszthatja a jegyzetfüzetet másokkal. A Jupyter segítségével egyszerűen egyesítheti a Markdown szövegét, a végrehajtható kódokat, az állandó adattípusokat, a grafikát és a vizualizációkat egy megosztható vászonon, a notebookon. Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Nincs.
+Nincsenek.
 
 ## <a name="create-a-new-project-and-notebook"></a>Új projekt és jegyzetfüzet létrehozása
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Lépjen a [Azure Notebooks webhelyrehttps://notebooks.azure.com) (](https://notebooks.azure.com) és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
+1. Lépjen a [Azure Notebooks webhelyre https://notebooks.azure.com) (](https://notebooks.azure.com) és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
 
 1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
 
     ![Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
 
-1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n). A gomb csak akkor jelenhet meg **+** , ha a böngészőablak keskeny:
+1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n). A gomb csak akkor jelenhet meg, **+** Ha a böngészőablak keskeny:
 
     ![Új projekt parancs a saját projektek oldalon](media/quickstarts/new-project-command.png)
 
@@ -40,7 +41,7 @@ Nincs.
 
      ![Új projekt előugró ablaka a feltöltött adatokkal](media/quickstarts/new-project-popup.png)
 
-1. Néhány pillanat elteltével Azure Notebooks navigál az új projekthez. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kijelöli az **+ új** legördülő **+** listát (amely csak a következőt jeleníti meg), majd a **Jegyzetfüzet**lehetőséget választja:
+1. Néhány pillanat elteltével Azure Notebooks navigál az új projekthez. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kijelöli az **+ új** legördülő listát (amely csak a következőt jeleníti meg **+** ), majd a **Jegyzetfüzet**lehetőséget választja:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
@@ -92,7 +93,7 @@ Nincs.
 
     ![Mentés ikon a Jupyter notebook eszköztárán](media/quickstarts/hello-results-save-icon.png)
 
-1. Válassza a **fájl** > **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
+1. Válassza a **fájl**  >  **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
 
 ## <a name="share-the-notebook"></a>A jegyzetfüzet megosztása
 
@@ -102,7 +103,7 @@ A projekt lapon a **megosztás** menüt is használhatja egy hivatkozás beszerz
 
 ![Projekt megosztási parancsa](media/quickstarts/share-project-command.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)

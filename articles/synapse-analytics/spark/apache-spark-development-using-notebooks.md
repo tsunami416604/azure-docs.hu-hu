@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: b7ab7abb74701abeeac126b34efdf784beff2d03
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702098"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561823"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
 
@@ -70,7 +71,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Description |  
+|Magic parancs |Nyelv | Leírás |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -351,7 +352,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis jegyzetfüzetekben.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget. | SHIFT + ENTER |
 |Az aktuális cella futtatása és az alábbi beszúrása | ALT + ENTER |
@@ -370,7 +371,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis-jegyzetfüzetekben szerkesztési módban.
 
-| Művelet |A szinapszis Studio notebook parancsikonjai  |
+| Műveletek |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Kurzor mozgatása felfelé | Fel |
 |Kurzor mozgatása lefelé|Le|
@@ -388,7 +389,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 |Kihúzás|CTRL + [|
 |Váltás parancs módba| Esc |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)
