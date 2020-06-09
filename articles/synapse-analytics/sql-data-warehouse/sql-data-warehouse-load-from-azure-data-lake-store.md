@@ -1,35 +1,34 @@
 ---
 title: Adatok betöltése a Azure Data Lake Storageból
-description: Az adatok a Azure Data Lake Storage for szinapszis SQL-ből való betöltéséhez használjon albase külső táblákat.
+description: Használja a COPY utasítást a Azure Data Lake Storage for szinapszis SQL adatainak betöltéséhez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/08/2020
+ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5935efca138d156507e2e3fefa65d045f618a57b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 233fa6a2ee1052db2af280a460c908fa181767cb
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020829"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488664"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Adatok betöltése a Azure Data Lake Storageról a szinapszis SQL-hez
 
-Ez az útmutató azt ismerteti, hogyan tölthetők be a Azure Data Lake Storageból származó adatok az alapszintű külső táblák használatával. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy a legjobb teljesítmény érdekében importálja az adatforrást.
+Ez az útmutató ismerteti, hogyan tölthetők be az adatok a Azure Data Lake Storageból a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) használatával. Ha gyors példákat kíván használni a MÁSOLÁSi utasítás használatával az összes hitelesítési módszer esetében, látogasson el a következő dokumentációba: [adatok biztonságos betöltése a SZINAPSZIS SQL használatával](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
 
 > [!NOTE]  
-> A betöltés alternatívájaként a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jelenleg nyilvános előzetes verzióban érhető el.  A MÁSOLÁSi utasítás a legnagyobb rugalmasságot biztosítja. Ha visszajelzést szeretne küldeni a COPY utasításról, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
+> Ha visszajelzést vagy jelentést szeretne küldeni a COPY utasításban, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
-> * Hozza létre a Data Lake Storage betöltéséhez szükséges adatbázis-objektumokat.
-> * Kapcsolódjon egy Data Lake Storage könyvtárhoz.
-> * Betöltheti az adatraktárba az adatkészletet.
+> * Hozza létre a cél táblát az adatok Azure Data Lake Storageból való betöltéséhez.
+> * Hozza létre a MÁSOLÁSi utasítást az adatok adattárházba való betöltéséhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -40,166 +39,67 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
 * Egy SQL-készlet. Lásd: [SQL-készlet létrehozása és a lekérdezési információk](create-data-warehouse-portal.md).
-* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, az Azure Directory alkalmazás felhasználója vagy egy HRE-felhasználó, amely a megfelelő RBAC szerepkörrel rendelkezik a Storage-fiókhoz.
+* Egy Data Lake Storage-fiók. Lásd: [Azure Data Lake Storage első lépései](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Ehhez a Storage-fiókhoz konfigurálnia kell vagy meg kell adnia a következő hitelesítő adatok egyikét a betöltéshez: A Storage-fiók kulcsa, a közös hozzáférésű aláírás (SAS) kulcsa, az Azure Directory alkalmazás felhasználója vagy egy olyan HRE-felhasználó, amely rendelkezik a megfelelő RBAC szerepkörrel a Storage-fiókhoz.
 
-## <a name="create-a-credential"></a>Hitelesítő adat létrehozása
+## <a name="create-the-target-table"></a>A céltábla létrehozása
 
-Kihagyhatja ezt a szakaszt, és folytathatja a "külső adatforrás létrehozása" lehetőséget, ha a hitelesítés során HRE továbbít. Az adatbázis-hatókörrel rendelkező hitelesítő adatok nem szükségesek ahhoz, hogy a rendszer létrehozza vagy megadja a HRE-továbbítást, de győződjön meg arról, hogy a HRE-felhasználó rendelkezik a megfelelő RBAC-szerepkörrel (Storage blob Adatolvasó, közreműködő vagy tulajdonos szerepkör) a Storage-fiókhoz. További részleteket [itt talál](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260).
-
-A Data Lake Storage-fiók eléréséhez létre kell hoznia egy adatbázis-főkulcsot a hitelesítő adatok titkos kódjának titkosításához. Ezután létrehoz egy adatbázis-hatókörű hitelesítő adatot a titkos kulcs tárolásához. Az egyszerű szolgáltatásnév (Azure Directory alkalmazás-felhasználó) használatával végzett hitelesítés során az adatbázis-hatókörrel rendelkező hitelesítő adatok a HRE-ben beállított egyszerű szolgáltatás hitelesítő adatait tárolják. Az adatbázis-hatókörön belüli hitelesítő adatokat is használhatja a Gen2 tartozó Storage-fiók kulcsának tárolására.
-
-Ha az egyszerű szolgáltatásokkal szeretne csatlakozni Data Lake Storagehoz, **először** létre kell hoznia egy Azure Active Directory alkalmazást, létre kell hoznia egy hozzáférési kulcsot, és biztosítania kell az alkalmazás számára a Data Lake Storage-fiók elérését. Útmutatásért lásd: [hitelesítés a Azure Data Lake Storage Active Directory használatával](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
-Jelentkezzen be az SQL-készletbe egy olyan felhasználóval, aki rendelkezik ellenőrzési szintű engedélyekkel, és hajtsa végre a következő SQL-utasításokat az adatbázisán:
+Kapcsolódjon az SQL-készlethez, és hozza létre a cél táblát, amelyet be szeretne tölteni. Ebben a példában egy cikkdimenzió-táblázatot hozunk létre.
 
 ```sql
--- A: Create a Database Master Key.
--- Only necessary if one does not already exist.
--- Required to encrypt the credential secret in the next step.
--- For more information on Master Key: https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-
-CREATE MASTER KEY;
-
-
--- B (for service principal authentication): Create a database scoped credential
--- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
--- SECRET: Provide your AAD Application Service Principal key.
--- For more information on Create Database Scoped Credential: https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-
-CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
-WITH
-    -- Always use the OAuth 2.0 authorization endpoint (v1)
-    IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
-    SECRET = '<key>'
-;
-
--- B (for Gen2 storage key authentication): Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
--- SECRET: Provide your Azure storage account key.
-
-CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
-WITH
-    IDENTITY = 'user',
-    SECRET = '<azure_storage_account_key>'
-;
-
--- It should look something like this when authenticating using service principal:
-CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
-WITH
-    IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
-    SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
-;
-```
-
-## <a name="create-the-external-data-source"></a>Külső adatforrás létrehozása
-
-Ezzel a [create External adatforrás](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -paranccsal tárolhatók az adattárolók helye. Ha a HRE átmenő hitelesítéssel végzi a hitelesítést, a HITELESÍTő adatok paraméterének megadása nem kötelező. Ha felügyelt identitást használ a szolgáltatási végpontok számára, a külső adatforrás beállításához kövesse ezt a [dokumentációt](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-polybase) .
-
-```sql
--- C (for Gen1): Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
--- LOCATION: Provide Data Lake Storage Gen1 account name and URI
--- CREDENTIAL: Provide the credential created in the previous step.
-
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
-WITH (
-    TYPE = HADOOP,
-    LOCATION = 'adl://<datalakestoregen1accountname>.azuredatalakestore.net',
-    CREDENTIAL = ADLSCredential
-);
-
--- C (for Gen2): Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
--- LOCATION: Provide Data Lake Storage Gen2 account name and URI
--- CREDENTIAL: Provide the credential created in the previous step.
-
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
-WITH (
-    TYPE = HADOOP,
-    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
-    CREDENTIAL = ADLSCredential
-);
-```
-
-## <a name="configure-data-format"></a>Az adatformátum konfigurálása
-
-Az adatok Data Lake Storageból történő importálásához meg kell adnia a külső fájlformátumot. Ez az objektum határozza meg, hogy a fájlok hogyan íródnak Data Lake Storageba.
-A teljes lista esetében tekintse meg a T-SQL-dokumentáció [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című dokumentumot.
-
-```sql
--- D: Create an external file format
--- FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text file
--- STRING_DELIMITER: Specifies the field terminator for data of type string in the text-delimited file.
--- DATE_FORMAT: Specifies a custom format for all date and time data that might appear in a delimited text file.
--- Use_Type_Default: Store missing values as default for datatype.
-
-CREATE EXTERNAL FILE FORMAT TextFileFormat
-WITH
-(   FORMAT_TYPE = DELIMITEDTEXT
-,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
-                    ,    STRING_DELIMITER = ''
-                    ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,    USE_TYPE_DEFAULT = FALSE
-                    )
-);
-```
-
-## <a name="create-the-external-tables"></a>Külső táblák létrehozása
-
-Most, hogy megadta az adatforrás és a fájl formátumát, készen áll a külső táblák létrehozására. A külső táblák a külső adatforrásokkal való interakciók. A Location paraméter egy fájlt vagy egy könyvtárat is megadhat. Ha megadja a könyvtárat, a rendszer a könyvtárban lévő összes fájlt betölti.
-
-```sql
--- D: Create an External Table
--- LOCATION: Folder under the Data Lake Storage root folder.
--- DATA_SOURCE: Specifies which Data Source Object to use.
--- FILE_FORMAT: Specifies which File Format Object to use
--- REJECT_TYPE: Specifies how you want to deal with rejected rows. Either Value or percentage of the total
--- REJECT_VALUE: Sets the Reject value based on the reject type.
-
+-- A: Create the target table
 -- DimProduct
-CREATE EXTERNAL TABLE [dbo].[DimProduct_external] (
+CREATE TABLE [dbo].[DimProduct]
+(
     [ProductKey] [int] NOT NULL,
     [ProductLabel] [nvarchar](255) NULL,
     [ProductName] [nvarchar](500) NULL
 )
 WITH
 (
-    LOCATION='/DimProduct/'
-,   DATA_SOURCE = AzureDataLakeStorage
-,   FILE_FORMAT = TextFileFormat
-,   REJECT_TYPE = VALUE
-,   REJECT_VALUE = 0
-)
-;
-
+    DISTRIBUTION = HASH([ProductKey]),
+    CLUSTERED COLUMNSTORE INDEX
+    --HEAP
+);
 ```
 
-## <a name="external-table-considerations"></a>Külső tábla szempontjai
 
-Egy külső tábla létrehozása egyszerű, de van néhány olyan árnyalat, amelyet meg kell vitatni.
+## <a name="create-the-copy-statement"></a>A COPY utasítás létrehozása
 
-A külső táblák erősen begépeltek. Ez azt jelenti, hogy a betöltött adatsorok mindegyikének meg kell felelnie a tábla sémájának definíciójának.
-Ha egy sor nem felel meg a séma definíciójának, a rendszer elutasítja a sort a betöltésből.
-
-A REJECT_TYPE és REJECT_VALUE lehetőséggel megadhatja, hogy a végső táblában hány sor vagy milyen százalékban kell szerepelnie az adatmennyiségnek. Ha a betöltés során az elutasítás értéke elérte a értéket, a betöltés sikertelen lesz. Az elutasított sorok leggyakoribb oka a séma definíciójának eltérése. Ha például egy oszlop helytelenül van megadva az int sémája, ha a fájlban lévő adat karakterlánc, akkor minden sor betöltése sikertelen lesz.
-
-Data Lake Storage Gen1 a szerepköralapú Access Control (RBAC) használatával vezérli az adathozzáférést. Ez azt jelenti, hogy az egyszerű szolgáltatásnak olvasási engedéllyel kell rendelkeznie a Location paraméterben definiált címtárakhoz és a végső könyvtár és a fájlok gyermekeihez. Ez lehetővé teszi, hogy a Base hitelesítse és betöltse az adatok betöltését.
-
-## <a name="load-the-data"></a>Az adatok betöltése
-
-Az adatok Data Lake Storage való betöltéséhez használja a [CREATE TABLE as Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást.
-
-A CTAS létrehoz egy új táblát, és feltölti azt egy SELECT utasítás eredményeivel. A CTAS határozza meg, hogy az új tábla ugyanazokat az oszlopokat és adattípusokat tartalmazza, mint a SELECT utasítás eredményei. Ha az összes oszlopot kiválasztja egy külső táblából, az új tábla a külső tábla oszlopainak és adattípusának replikája.
-
-Ebben a példában egy DimProduct nevű kivonatoló elosztott táblát hozunk létre a külső táblából DimProduct_external.
+Kapcsolódjon az SQL-készlethez, és futtassa a COPY utasítást. A példák teljes listáját a következő dokumentációban tekintheti meg: [biztonságos adattöltés a SZINAPSZIS SQL használatával](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
 
 ```sql
+-- B: Create and execute the COPY statement
 
-CREATE TABLE [dbo].[DimProduct]
-WITH (DISTRIBUTION = HASH([ProductKey]  ) )
-AS
-SELECT * FROM [dbo].[DimProduct_external]
-OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
+COPY INTO [dbo].[DimProduct] 
+--The column list allows you map, omit, or reorder input file columns to target table columns. 
+--You can also specify the default value when there is a NULL value in the file.
+--When the column list is not specified, columns will be mapped based on source and target ordinality
+(
+    ProductKey default -1 1,
+    ProductLabel default 'myStringDefaultWhenNull' 2,
+    ProductName default 'myStringDefaultWhenNull' 3
+)
+--The storage account location where you data is staged
+FROM 'https://storageaccount.blob.core.windows.net/container/directory/'
+WITH 
+(
+   --CREDENTIAL: Specifies the authentication method and credential access your storage account
+   CREDENTIAL (IDENTITY = '', SECRET = '')
+   --FILE_TYPE: Specifies the file type in your storage account location
+   FILE_TYPE = 'CSV',
+   --FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text (CSV) file
+   FIELDTERMINATOR = '|',
+   --ROWTERMINATOR: Marks the end of a record in the file
+   ROWTERMINATOR = '0x0A',
+   --FIELDQUOTE: Specifies the delimiter for data of type string in a delimited text (CSV) file
+   FIELDQUOTE = '',
+   ENCODING = 'UTF8',
+   DATEFORMAT = 'ymd',
+   --MAXERRORS: Maximum number of reject rows allowed in the load before the COPY operation is canceled
+   MAXERRORS = 10,
+   --ERRORFILE: Specifies the directory where the rejected rows and the corresponding error reason should be written
+   ERRORFILE = '/errorsfolder',
+) OPTION (LABEL = 'COPY: ADLS tutorial');
 ```
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
@@ -226,19 +126,13 @@ Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyosz
 
 Sikeresen betöltötte az adatait az adattárházba. Remek munka!
 
-## <a name="next-steps"></a>További lépések
-
-Ebben az oktatóanyagban külső táblákat hozott létre a Data Lake Storage Gen1ban tárolt adatok struktúrájának definiálásához, majd a Base CREATE TABLE AS SELECT utasítás használatával tölti be az adatok adattárházba való betöltését.
-
-A következőket hajtotta végre:
-> [!div class="checklist"]
->
-> * A Data Lake Storageból való betöltéshez szükséges adatbázis-objektumok létrehozása.
-> * Egy Data Lake Storage könyvtárhoz csatlakozik.
-> * Betöltötte az adattárházba.
->
-
+## <a name="next-steps"></a>Következő lépések
 Az adatraktár-megoldás az Azure szinapszis Analytics használatával történő fejlesztésének első lépése az adatgyűjtés. Tekintse meg fejlesztési erőforrásait.
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan fejleszthet táblázatokat az adattárházak számára](sql-data-warehouse-tables-overview.md)
+
+További példákat és referenciákat a következő dokumentációban talál:
+- [A COPY utasítás referenciájának dokumentációja](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Példák másolása az egyes hitelesítési módszerekhez](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [Rövid útmutató másolása egyetlen táblához](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

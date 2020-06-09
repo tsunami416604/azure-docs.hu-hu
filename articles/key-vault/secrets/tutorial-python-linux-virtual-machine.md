@@ -9,13 +9,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6b3fb07322009134a75621a19cd013e2f967972a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81423318"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561613"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és egy Python-alkalmazás használata a titkok tárolására Azure Key Vault
 
@@ -36,7 +36,7 @@ Mielőtt továbblépne, tájékozódjon a [Key Vault kapcsolatos alapfogalmakró
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Git](https://git-scm.com/downloads).
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az [Azure CLI verziója 2.0.4 vagy újabb](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vagy Azure Cloud shell.
 
 [!INCLUDE [Azure Cloud Shell](../../../includes/cloud-shell-try-it.md)]
@@ -63,7 +63,7 @@ az login
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az USA `az group create` nyugati régiójában található parancs használatával a következő kóddal. Cserélje `YourResourceGroupName` le a nevet tetszőleges névre.
+Hozzon létre egy erőforráscsoportot az `az group create` USA nyugati régiójában található parancs használatával a következő kóddal. Cserélje le a `YourResourceGroupName` nevet tetszőleges névre.
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -98,7 +98,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet `az vm create` a parancs használatával.
+Hozzon létre egy virtuális gépet a `az vm create` parancs használatával.
 
 A következő példa létrehoz egy **myVM** nevű virtuális gépet, és hozzáad egy **azureuser** nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter automatikusan létrehoz egy SSH-kulcsot, és az alapértelmezett kulcs helyére helyezi (**~/.ssh**). Ha ehelyett egy adott kulcsot szeretne létrehozni, használja a `--ssh-key-value` kapcsolót.
 
@@ -126,7 +126,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 }
 ```
 
-Jegyezze fel a saját `publicIpAddress` virtuális gépe kimenetét. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
+Jegyezze fel a saját virtuális gépe `publicIpAddress` kimenetét. Ezt a lakcímet fogja használni a virtuális gép későbbi lépésekben való eléréséhez.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 
@@ -145,7 +145,7 @@ A parancs kimenete a következő.
 }
 ```
 
-Jegyezze fel a `systemAssignedIdentity`-t. Ezt a következő lépéssel használhatja.
+Jegyezze fel a-t `systemAssignedIdentity` . Ezt a következő lépéssel használhatja.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>A virtuális gép személyazonosságának engedélyezése Key Vault
 
@@ -206,7 +206,7 @@ python Sample.py
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a Azure Key Vaultt egy Linux rendszerű virtuális gépen futó Python-alkalmazással.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez jelölje ki a virtuális gép erőforráscsoportját, és válassza a **Törlés** lehetőséget.
 
@@ -218,7 +218,7 @@ az keyvault delete --name
                    [--subscription]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

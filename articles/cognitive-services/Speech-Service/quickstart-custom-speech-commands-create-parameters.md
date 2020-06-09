@@ -3,19 +3,19 @@ title: 'Gyors útmutató: egyéni parancsok előzetes alkalmazásának létrehoz
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben paramétereket adhat hozzá egy egyéni parancsok alkalmazáshoz, így több eszközt is be-és kikapcsolhat.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 940b3604487fbef7736c0d8f4f9299563b0b86d5
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142282"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509304"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>Gyors útmutató: egyéni parancsok előzetes alkalmazásának létrehozása paraméterekkel
 
@@ -48,9 +48,9 @@ Ebben a cikkben a paraméterekkel bővíti az alkalmazást, így több eszközt 
 1. Konfigurálja a paraméter további tulajdonságait a következő módon:
        
 
-    | Konfiguráció      | Ajánlott érték     | Description                                                      |
+    | Konfiguráció      | Ajánlott érték     | Leírás                                                      |
     | ------------------ | ----------------| ---------------------------------------------------------------------|
-    | **Név**               | **Javítás OnOff**           | A paraméter leíró neve.                                                                  |
+    | **Name (Név)**               | **Javítás OnOff**           | A paraméter leíró neve.                                                                  |
     | **Globális**          | Törlődik       | Egy jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan az alkalmazás összes parancsára vonatkozik-e.|
     | **Szükséges**           | Kiválasztva         | Egy jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e.  |
     | **A kötelező paraméterre adott válasz**      |**Egyszerű szerkesztő – > be-vagy kikapcsolás?**      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert. |
@@ -68,9 +68,9 @@ Ebben a cikkben a paraméterekkel bővíti az alkalmazást, így több eszközt 
  1. A második paraméter hozzáadásához kattintson ismét a **Hozzáadás** gombra. Ez a paraméter az eszköz nevét jelöli. Használja ezeket a beállításokat:
    
 
-       | Beállítás            | Ajánlott érték       | Description                                                                                               |
+       | Beállítás            | Ajánlott érték       | Leírás                                                                                               |
        | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-       | **Név**               | **SubjectDevice**         | A paraméter leíró neve.                                                                     |
+       | **Name (Név)**               | **SubjectDevice**         | A paraméter leíró neve.                                                                     |
        | **Globális**          | Törlődik             | Egy jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan az alkalmazás összes parancsára vonatkozik-e. |
        | **Szükséges**           | Kiválasztva               | Egy jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e.          |
        | **Egyszerű szerkesztő**      | **Melyik eszköz?**    | A paraméter értékének megadására vonatkozó kérés, ha nem ismert.                                       |

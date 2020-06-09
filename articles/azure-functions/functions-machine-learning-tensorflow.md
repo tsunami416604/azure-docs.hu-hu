@@ -5,13 +5,13 @@ author: anthonychu
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
-ms.custom: mvc
-ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 44aa7bdcaa77ba0865f17e2781e2a0521afe16df
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81255498"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555433"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan használható a Python, a TensorFlow és a
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
-1. A terminál vagy a parancssorablakban futtassa `func --version` a parancsot az Azure functions Core Tools 2.7.1846 vagy újabb verziójának megadásához.
+1. A terminál vagy a parancssorablakban futtassa a parancsot az `func --version` Azure functions Core Tools 2.7.1846 vagy újabb verziójának megadásához.
 1. Futtassa `python --version` (Linux/MacOS) vagy `py --version` (Windows) a Python-verzió jelentéseinek 3.7. x-ben való vizsgálatához.
 
 ## <a name="clone-the-tutorial-repository"></a>Az oktatóanyag-adattár klónozása
@@ -56,7 +56,7 @@ Ebből a cikkből megtudhatja, hogyan használható a Python, a TensorFlow és a
     
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Python virtuális környezet létrehozása és aktiválása
 
-Navigáljon a *Start* mappára, és futtassa a következő parancsokat a nevű `.venv`virtuális környezet létrehozásához és aktiválásához. Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,7-et használja.
+Navigáljon a *Start* mappára, és futtassa a következő parancsokat a nevű virtuális környezet létrehozásához és aktiválásához `.venv` . Ügyeljen arra, hogy a Azure Functions által támogatott Python 3,7-et használja.
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -109,12 +109,12 @@ py -m venv .venv
 
 ---
 
-Az összes további parancsot futtatja ebben az aktivált virtuális környezetben. (A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate`.)
+Az összes további parancsot futtatja ebben az aktivált virtuális környezetben. (A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .)
 
 
 ## <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
 
-Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy olyan Function-projektet hoz létre, amely egy nevű `classify` és egy http-végpontot biztosító kiosztási függvényt tartalmaz. Egy későbbi szakaszban további speciális kódokat adhat hozzá.
+Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény tárolója, amely mindegyik reagál egy adott triggerre. Egy projekt összes funkciója ugyanazokat a helyi és üzemeltetési konfigurációkat használja. Ebben a szakaszban egy olyan Function-projektet hoz létre, amely egy nevű és egy HTTP-végpontot biztosító kiosztási függvényt tartalmaz `classify` . Egy későbbi szakaszban további speciális kódokat adhat hozzá.
 
 1. A *Start* mappában használja a Azure functions Core Tools egy Python-függvény alkalmazásának inicializálásához:
 
@@ -127,13 +127,13 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     > [!TIP]
     > Mivel a Function projekt egy adott futtatókörnyezethez van kötve, a projekt összes funkcióját ugyanazzal a nyelvvel kell írni.
 
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol `--name` az argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
+1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: * \_ \_az\_\_init.* a (z), amely tartalmazza a függvény kódját és a *function. JSON*fájlt, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az * \_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját és a *function. JSON*fájlt, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
@@ -144,21 +144,21 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     func start
     ```
     
-1. Ha megjelenik a `classify` végpont a kimenetben, keresse meg az URL-címet ```http://localhost:7071/api/classify?name=Azure```. A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
+1. Ha megjelenik a `classify` végpont a kimenetben, keresse meg az URL-címet ```http://localhost:7071/api/classify?name=Azure``` . A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
 
-1. A gazdagép leállításához használja a CTRL**C** **billentyűt**-.
+1. **Ctrl** - A gazdagép leállításához használja a CTRL**C** billentyűt.
 
 
 ## <a name="import-the-tensorflow-model-and-add-helper-code"></a>A TensorFlow-modell importálása és a segítő kód hozzáadása
 
-Ha módosítani szeretné `classify` a függvényt, hogy az a tartalma alapján osztályozza a rendszerképet, egy előre összeállított TensorFlow-modellt kell használnia, amely az Azure Custom Vision Service használatával lett betanítva és exportálva. Az a modell, amely a korábban klónozott minta *erőforrások* mappájában található, osztályozza a rendszerképet attól függően, hogy kutyát vagy macskát tartalmaz-e. Ezután hozzáadhat egy segítő kódot és függőségeket a projekthez.
+Ha módosítani szeretné a `classify` függvényt, hogy az a tartalma alapján osztályozza a rendszerképet, egy előre összeállított TensorFlow-modellt kell használnia, amely az Azure Custom Vision Service használatával lett betanítva és exportálva. Az a modell, amely a korábban klónozott minta *erőforrások* mappájában található, osztályozza a rendszerképet attól függően, hogy kutyát vagy macskát tartalmaz-e. Ezután hozzáadhat egy segítő kódot és függőségeket a projekthez.
 
 Ha saját modellt kíván létrehozni a Custom Vision Service ingyenes szintjével, kövesse a [minta projekt adattárának](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)utasításait.
 
 > [!TIP]
 > Ha a TensorFlow-modellt a Function alkalmazástól függetlenül szeretné üzemeltetni, akkor ehelyett a modellt tartalmazó fájlmegosztást csatlakoztathatja a Linux-függvény alkalmazásához. További információ: [fájlmegosztás csatlakoztatása egy Python-függvényhez az Azure CLI használatával](./scripts/functions-cli-mount-files-storage-linux.md).
 
-1. A *Start* mappában futtassa a következő parancsot a modell fájljainak a *besorolási* mappába való másolásához. Ügyeljen arra, hogy `\*` szerepeljen a parancsban. 
+1. A *Start* mappában futtassa a következő parancsot a modell fájljainak a *besorolási* mappába való másolásához. Ügyeljen arra, hogy szerepeljen `\*` a parancsban. 
 
     # <a name="bash"></a>[bash](#tab/bash)
     
@@ -222,29 +222,29 @@ Ha saját modellt kíván létrehozni a Custom Vision Service ingyenes szintjév
     pip install --no-cache-dir -r requirements.txt
     ```
     
-    Windows rendszeren a következő hibaüzenet jelenhet meg: "nem sikerült telepíteni a csomagokat egy EnvironmentError miatt: [errno 2] nincs ilyen fájl vagy könyvtár:", majd egy olyan fájlhoz, mint például *sharded_mutable_dense_hashtable. CPython-37. pyc*. Ez a hiba általában azért fordul elő, mert a mappa elérési útjának mélysége túl hosszú lesz. Ebben az esetben állítsa a beállításkulcsot `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` a hosszú elérési utak engedélyezéséhez. Másik lehetőségként győződjön meg arról, hogy a Python-tolmács hol van telepítve. Ha a hely hosszú elérési úttal rendelkezik, próbálja meg újratelepíteni egy rövidebb elérési úttal rendelkező mappába.
+    Windows rendszeren a következő hibaüzenet jelenhet meg: "nem sikerült telepíteni a csomagokat egy EnvironmentError miatt: [errno 2] nincs ilyen fájl vagy könyvtár:", majd egy olyan fájlhoz, mint például *sharded_mutable_dense_hashtable. CPython-37. pyc*. Ez a hiba általában azért fordul elő, mert a mappa elérési útjának mélysége túl hosszú lesz. Ebben az esetben állítsa a beállításkulcsot a `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` hosszú elérési utak engedélyezéséhez. Másik lehetőségként győződjön meg arról, hogy a Python-tolmács hol van telepítve. Ha a hely hosszú elérési úttal rendelkezik, próbálja meg újratelepíteni egy rövidebb elérési úttal rendelkező mappába.
 
 > [!TIP]
-> Ha a *Predict.py* az első előrejelzését kéri, a nevű `_initialize` függvény betölti a TensorFlow modellt a lemezről, és gyorsítótárazza a globális változókban. Ez a gyorsítótárazás felgyorsítja a későbbi előrejelzéseket. A globális változók használatával kapcsolatos további információkért tekintse meg a [Azure functions Python fejlesztői útmutatóját](functions-reference-python.md#global-variables).
+> Ha a *Predict.py* az első előrejelzését kéri, a nevű függvény `_initialize` betölti a TensorFlow modellt a lemezről, és gyorsítótárazza a globális változókban. Ez a gyorsítótárazás felgyorsítja a későbbi előrejelzéseket. A globális változók használatával kapcsolatos további információkért tekintse meg a [Azure functions Python fejlesztői útmutatóját](functions-reference-python.md#global-variables).
 
 ## <a name="update-the-function-to-run-predictions"></a>A függvény frissítése az előrejelzések futtatásához
 
-1. Nyissa meg a *besorolás/\_\_\_\_init.* másolt egy szövegszerkesztőben, és adja hozzá a `import` következő sorokat a meglévő utasítások után a szabványos JSON-könyvtár és a *prediktív* segítők importálásához:
+1. Nyissa meg a *besorolás/ \_ \_ init \_ \_ .* másolt egy szövegszerkesztőben, és adja hozzá a következő sorokat a meglévő utasítások után a `import` szabványos JSON-könyvtár és a *prediktív* segítők importálásához:
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="1-6" highlight="5-6":::
 
-1. Cserélje le a `main` függvény teljes tartalmát a következő kódra:
+1. Cserélje le a függvény teljes tartalmát a `main` következő kódra:
 
     :::code language="python" source="~/functions-python-tensorflow-tutorial/end/classify/__init__.py" range="8-19":::
 
-    Ez a függvény egy nevű `img`lekérdezési karakterlánc-paraméterben fogadja a rendszerkép URL-címét. Ezután meghívja `predict_image_from_url` a segítő könyvtárát, hogy letöltse és osztályozza a rendszerképet a TensorFlow-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel. 
+    Ez a függvény egy nevű lekérdezési karakterlánc-paraméterben fogadja a rendszerkép URL-címét `img` . Ezután meghívja a `predict_image_from_url` segítő könyvtárát, hogy letöltse és osztályozza a rendszerképet a TensorFlow-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel. 
 
     > [!IMPORTANT]
     > Mivel ezt a HTTP-végpontot egy másik tartományban található weblap hívja meg, a válasz tartalmaz egy `Access-Control-Allow-Origin` fejlécet, amely megfelel a böngésző eltérő eredetű erőforrás-megosztási (CORS) követelményeinek.
     >
     > Éles alkalmazásban váltson `*` a weblap speciális forrására a további biztonság érdekében.
 
-1. Mentse a módosításokat, és feltételezve, hogy a függőségek telepítése befejeződött, indítsa el újra a `func start`helyi függvény gazdagépét a következővel:. Győződjön meg arról, hogy a gazdagépet a *Start* mappában futtatja, és a virtuális környezet aktiválva van. Ellenkező esetben a gazdagép elindul, de hibaüzeneteket fog látni a függvény meghívásakor.
+1. Mentse a módosításokat, és feltételezve, hogy a függőségek telepítése befejeződött, indítsa el újra a helyi függvény gazdagépét a következővel: `func start` . Győződjön meg arról, hogy a gazdagépet a *Start* mappában futtatja, és a virtuális környezet aktiválva van. Ellenkező esetben a gazdagép elindul, de hibaüzeneteket fog látni a függvény meghívásakor.
 
     ```
     func start
@@ -286,7 +286,7 @@ Ha tesztelni szeretné a függvény végpontját egy másik webalkalmazásból, 
     py -m http.server
     ```
 
-1. Egy böngészőben nyissa `localhost:8000`meg a címet, majd adja meg az alábbi fénykép URL-címek egyikét a szövegmezőbe, vagy használja a nyilvánosan elérhető rendszerképek URL-címét.
+1. Egy böngészőben nyissa meg a `localhost:8000` címet, majd adja meg az alábbi fénykép URL-címek egyikét a szövegmezőbe, vagy használja a nyilvánosan elérhető rendszerképek URL-címét.
 
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png`
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat2.png`
@@ -297,16 +297,16 @@ Ha tesztelni szeretné a függvény végpontját egy másik webalkalmazásból, 
 
     ![A befejezett projekt képernyőképe](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
-    Ha a böngésző hibát jelez a rendszerkép URL-címének elküldésekor, ellenőrizze azt a terminált, amelyben a Function alkalmazást futtatja. Ha olyan hibaüzenetet lát, mint a "nem található modul" PIL ", lehet, hogy elindította a Function alkalmazást a *Start* mappában anélkül, hogy először aktiválja a korábban létrehozott virtuális környezetet. Ha továbbra is megjelenik a hibák `pip install -r requirements.txt` , futtassa újra a virtuális környezetet, és keressen hibákat.
+    Ha a böngésző hibát jelez a rendszerkép URL-címének elküldésekor, ellenőrizze azt a terminált, amelyben a Function alkalmazást futtatja. Ha olyan hibaüzenetet lát, mint a "nem található modul" PIL ", lehet, hogy elindította a Function alkalmazást a *Start* mappában anélkül, hogy először aktiválja a korábban létrehozott virtuális környezetet. Ha továbbra is megjelenik a hibák, futtassa `pip install -r requirements.txt` újra a virtuális környezetet, és keressen hibákat.
 
 > [!NOTE]
 > A modell minden esetben macskaként vagy kutyáként osztályozza a rendszerkép tartalmát, függetlenül attól, hogy a rendszerkép tartalmazza-e az alapértelmezettet, vagy sem. A Tigers és a Párducok képei, például általában Cat-ként vannak osztályozva, de az elefántok, a sárgarépa vagy a repülők képei Dog-ként vannak osztályozva.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Mivel az oktatóanyag teljes egészében helyileg fut a gépen, nincs szükség Azure-erőforrásokra vagy-szolgáltatásokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és szabhat testre egy HTTP API-végpontot a Azure Functions használatával a rendszerképek TensorFlow-modell használatával történő besorolásához. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból. Az oktatóanyagban található technikák használatával bármilyen bonyolultságú API-t építhet ki, miközben a Azure Functions által biztosított kiszolgáló nélküli számítási modellen fut.
 

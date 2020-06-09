@@ -3,19 +3,19 @@ title: Érvényesítések hozzáadása az egyéni parancsok előnézetében – 
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan adhat hozzá érvényesítést egy parancs-paraméterhez egyéni parancsok előnézeti alkalmazásban.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: donkim
-ms.openlocfilehash: 6686016f109fad4ee8b7f4e494b1374a6003658c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: nitinme
+ms.openlocfilehash: eb011510a9f636aea9910a4be445cd094acf0c21
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310410"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509576"
 ---
 # <a name="add-validations-to-a-command-parameter-in-a-custom-commands-preview-application"></a>Érvényesítések hozzáadása a parancs paraméteréhez egyéni parancsok előnézeti alkalmazásban
 
@@ -95,7 +95,7 @@ Az érvényesítések bemutatásához hozzon létre egy új parancsot, amely leh
     - Bemenet: tegyük 72 fok helyett
     - Kimenet: ok, hőmérséklet beállítása 72 fok
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megerősítés hozzáadása egy parancshoz egyéni parancsok előzetes verziójának alkalmazásában](./how-to-custom-speech-commands-confirmations.md)

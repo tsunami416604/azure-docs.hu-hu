@@ -3,19 +3,19 @@ title: 'Gyors útmutató: egyéni parancsok előzetes verziójának létrehozás
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben egy futtatott egyéni parancsok előzetes verzióját fogja létrehozni és tesztelni. Az alkalmazás feldolgozza a hosszúságú kimondott szöveg.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142350"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509355"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>Gyors útmutató: egyéni parancsok előnézeti alkalmazásának létrehozása
 
@@ -98,7 +98,7 @@ Hozzunk létre egy egyszerű parancsot, amely egyetlen Kimondás után `turn on 
 A középső ablaktábla a parancs tulajdonságait sorolja fel:
 
 
-| Konfiguráció            | Description                                                                                                                 |
+| Konfiguráció            | Leírás                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Példa mondatokra** | Példák arra, hosszúságú kimondott szöveg, hogy a felhasználó elmondja a parancs aktiválását.                                                                 |
 | **Paraméterek**       | A parancs végrehajtásához szükséges információk.                                                                                |
@@ -130,9 +130,9 @@ Egyelőre nem rendelkezünk paraméterekkel, így átléphetünk a **befejezési
 Most adjon hozzá egy befejezési szabályt, amely a következő konfigurációval rendelkezik. Ez a szabály azt jelzi, hogy a felhasználó teljesíti a teljesítési műveletet.
 
 
-| Beállítás    | Ajánlott érték                          | Description                                        |
+| Beállítás    | Ajánlott érték                          | Leírás                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
-| **Név**  | **ConfirmationResponse**                  | A szabály célját leíró név.          |
+| **Name (Név)**  | **ConfirmationResponse**                  | A szabály célját leíró név.          |
 | **Feltételek** | Nincs                                     | Azok a feltételek, amelyek meghatározzák, hogy mikor fusson a szabály.    |
 | **Műveletek**    | **Beszédfelismerési válasz küldése – > ok, a TV bekapcsolása** | A szabály feltételének teljesülésekor végrehajtandó művelet. |
 

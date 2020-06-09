@@ -1,19 +1,19 @@
 ---
 title: Eseménykezelők és célhelyek – Azure Event Grid IoT Edge | Microsoft Docs
 description: Eseménykezelők és célhelyek a Event Grid Edge-ben
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e144461b80dca2cf02c0cc06d7feee882293848
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849746"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557641"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Eseménykezelők és célhelyek a Event Grid Edge-ben
 
@@ -23,7 +23,7 @@ Ez a cikk a konfigurálásával kapcsolatos információkat tartalmaz.
 
 ## <a name="webhook"></a>WebHook
 
-Webhook-végponton való közzétételhez állítsa be `endpointType` a `WebHook` következőt:
+Webhook-végponton való közzétételhez állítsa be a következőt `endpointType` `WebHook` :
 
 * endpointUrl: a webhook végpontjának URL-címe
 
@@ -42,7 +42,7 @@ Webhook-végponton való közzétételhez állítsa be `endpointType` a `WebHook
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-Azure Event Grid Felhőbeli végponton való közzétételhez állítsa be `endpointType` a `eventGrid` következőt:
+Azure Event Grid Felhőbeli végponton való közzétételhez állítsa be a következőt `endpointType` `eventGrid` :
 
 * endpointUrl: Event Grid témakör URL-címe a felhőben
 * sasKey: Event Grid a témakör SAS-kulcsát
@@ -65,7 +65,7 @@ Azure Event Grid Felhőbeli végponton való közzétételhez állítsa be `endp
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub
 
-Az Edge hub-modul közzétételéhez állítsa be a `endpointType` `edgeHub` következőt:
+Az Edge hub-modul közzétételéhez állítsa be a következőt `endpointType` `edgeHub` :
 
 * outputName: az a kimenet, amelyre a Event Grid modul továbbítja az előfizetésnek megfelelő eseményeket a edgeHub. Például az alábbi előfizetésnek megfelelő események a/messages/modules/eventgridmodule/outputs/sampleSub4.-be lesznek írva
 
@@ -84,7 +84,7 @@ Az Edge hub-modul közzétételéhez állítsa be a `endpointType` `edgeHub` kö
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Az Event hub-ban való közzétételhez állítsa `endpointType` be `eventHub` a következőt:
+Az Event hub-ban való közzétételhez állítsa be a következőt `endpointType` `eventHub` :
 
 * connectionString: az adott esemény központhoz tartozó kapcsolati karakterlánc, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -106,7 +106,7 @@ Az Event hub-ban való közzétételhez állítsa `endpointType` be `eventHub` a
 
 ## <a name="service-bus-queues"></a>Service Bus által kezelt üzenetsorok
 
-Service Bus üzenetsor közzétételéhez állítsa be a `endpointType` `serviceBusQueue` következőt:
+Service Bus üzenetsor közzétételéhez állítsa be a következőt `endpointType` `serviceBusQueue` :
 
 * connectionString: a megadott Service Bus-várólista kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -128,7 +128,7 @@ Service Bus üzenetsor közzétételéhez állítsa be a `endpointType` `service
 
 ## <a name="service-bus-topics"></a>Service Bus-üzenettémák
 
-Service Bus témakör közzétételéhez állítsa be a `endpointType` `serviceBusTopic` következőt:
+Service Bus témakör közzétételéhez állítsa be a következőt `endpointType` `serviceBusTopic` :
 
 * connectionString: a megadott Service Bus témakör kapcsolati karakterlánca, amelyet egy megosztott elérési házirend használatával generált.
 
@@ -150,7 +150,7 @@ Service Bus témakör közzétételéhez állítsa be a `endpointType` `serviceB
 
 ## <a name="storage-queues"></a>Tárolási üzenetsorok
 
-A Storage-üzenetsor közzétételéhez állítsa be a `endpointType` `storageQueue` következőt:
+A Storage-üzenetsor közzétételéhez állítsa be a következőt `endpointType` `storageQueue` :
 
 * queueName: az a tárolási várólista neve, amelyet közzé szeretne tennie.
 * connectionString: a Storage-fiókhoz tartozó kapcsolati sztring a tárolási üzenetsor.

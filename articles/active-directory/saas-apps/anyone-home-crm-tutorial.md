@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221890"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrációja bárkivel a Home CRM használatával
 
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba az [otthoni CRM-ügyfél támogatási csapatával](mailto:lightson@anyonehome.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba az [otthoni CRM-ügyfél támogatási csapatával](mailto:support@anyonehome.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -126,11 +126,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-anyone-home-crm-sso"></a>Bárki otthoni CRM SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné beállítani **bárki otthoni CRM** -oldalán, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** [bárki otthoni CRM-támogatási csapatának](mailto:lightson@anyonehome.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné beállítani **bárki otthoni CRM** -oldalán, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** [bárki otthoni CRM-támogatási csapatának](mailto:support@anyonehome.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-anyone-home-crm-test-user"></a>Bárki által létrehozott otthoni CRM-felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az otthoni CRM-ben. A felhasználók saját CRM-platformon való hozzáadásával dolgozhat az [otthoni CRM-támogatási csapattal](mailto:lightson@anyonehome.com) . Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az otthoni CRM-ben. A felhasználók saját CRM-platformon való hozzáadásával dolgozhat az [otthoni CRM-támogatási csapattal](mailto:support@anyonehome.com) . Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

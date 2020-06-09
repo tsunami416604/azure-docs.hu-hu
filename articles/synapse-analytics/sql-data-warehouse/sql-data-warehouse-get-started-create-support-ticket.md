@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 717db5ee9d14074b6bd2fdae78847e0ad0fa2255
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835461"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561352"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>A kérelmek kvótájának növekedése és az Azure szinapszis Analytics támogatásának beszerzése
 
@@ -53,59 +53,89 @@ Az alábbi lépéseket követve hozzon létre egy új támogatási kérést az A
 
    ![Adja meg a kvóta típusát](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. A **részletek** ablakban válassza a **részletek** megadása lehetőséget a további információk megadásához.
+1. További információk megadásához a **részletek** ablakban válassza a **részletek megadása** lehetőséget.
 
    ![A "részletek megadása" hivatkozás](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>Kvóta-kérelmek típusai
 
-A **részletek megadása** lehetőségre kattintva megjelenik a **kvóta részletei** ablak, amely lehetővé teszi további információk hozzáadását. A következő szakaszok ismertetik az Azure szinapszis Analytics szolgáltatáshoz elérhető különböző kvóták kéréseit.
+Az **ENTER Details (részletek megadása** ) elemre kattintva megjelenik a **kvóta részletei** ablak, amely lehetővé teszi további információk hozzáadását. A következő szakaszok ismertetik az Azure szinapszis Analytics szolgáltatáshoz elérhető különböző kvóták kéréseit.
 
-### <a name="data-warehouse-units-dwus-per-server"></a>Adatraktár-egységek (DWU-EK) kiszolgálónkénti bontásban
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>Szinapszis SQL Pool adattárház-egységek (DWU-EK) kiszolgálónkénti bontásban
 
 A következő lépésekkel növelheti a DWU egy kiszolgálón.
 
-1. Válassza ki az **adatraktár-egységek (DTU) számát a kiszolgálói** kvóta típusa mezőben.
+1. Válassza ki a **SZINAPSZIS SQL-készlet DWU** .
 
-1. Az **erőforrás** listában válassza ki a célként használni kívánt erőforrást.
+1. Válassza ki azt az **erőforrást** , amelynek a kvótáját a legördülő lista használatával szeretné alkalmazni.
 
-1. A **kérelem kvóta** mezőjébe írja be a kért új DWU-korlátot.
+1. Adja meg az új kvótát a **kérési kvóta** szakaszban.
+
+1. Válassza a **Mentés és folytatás** lehetőséget.
 
    ![DWU-kvóta részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>Kiszolgálók/előfizetés
 
-A következő lépések végrehajtásával növelheti a kiszolgálók számát az előfizetésben.
+Ha a kiszolgálók számának növelését szeretné igénybe venni, a következő lépéseket kell elvégeznie:
 
-1. Válassza ki a **kiszolgálók/előfizetés** típusú kvótát.
+1. Válassza ki az **előfizetéshez tartozó SQL-kiszolgálókat** a kvóta típusaként.
 
 1. A **hely** listában válassza ki a használni kívánt Azure-régiót. Az egyes régiókban a kvóta/előfizetés.
 
-1. Az **új kvóta** mezőben adja meg az adott régióban található kiszolgálók maximális számára vonatkozó kérelmét.
+1. A **kérelem kvóta** mezőben adja meg az adott régióban található kiszolgálók maximális számának kérelmét.
 
    ![Kiszolgálók kvótájának részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. Válassza a **Mentés és folytatás** lehetőséget.
+
+Egyes ajánlati típusok nem érhetők el minden régióban. A következő hibaüzenet jelenhet meg:
+
+![Régió-hozzáférési hiba](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>Előfizetés-hozzáférés engedélyezése egy régióhoz
 
-Egyes ajánlati típusok nem érhetők el minden régióban. Előfordulhat, hogy a következő hibaüzenet jelenik meg:
+Ha engedélyezni szeretné a régió hozzáférését egy előfizetéshez, a következő lépéseket kell elvégeznie:  
 
-`This location is not available for subscription`
+1. Válassza ki a **SZINAPSZIS SQL-készlet (adatraktár) régió hozzáférési** kvótájának típusát.
 
-Ha az előfizetés egy adott régióban fér hozzá, akkor a hozzáférés kéréséhez használja az **egyéb kvóta kérése** lehetőséget. A kérelemben adja meg az ajánlat és az SKU adatait, amelyeket engedélyezni szeretne a régió számára. Az ajánlat és az SKU lehetőségeinek megismeréséhez lásd: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+1. Válassza ki a régiót a legördülő listából egy **hely** kiválasztásával.
+
+1. Adja meg a DWU teljesítményre vonatkozó követelményét a **DWU szükséges** szakaszban.
+
+1. Adja meg az **üzleti követelmények leírását**. 
+
+1. Válassza a **Mentés és folytatás** lehetőséget.
+
+![Régió elérése](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>Egyéb kvóta-kérelmek esetén
+
+A kvóta típusa legördülő **menüben válassza ki** az egyéb kvóták kérése lehetőséget a következőhöz:
 
 ![Egyéb kvóta részletei](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>A kérés elküldése
 
-Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Felülvizsgálat + létrehozás>>** lehetőséget, és a kérés részleteinek áttekintése után kattintson a **Létrehozás** elemre a kérés létrehozásához.
+Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Áttekintés +>>létrehozása **elemet.
+
+![A létrehozás részleteinek áttekintése](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+A kérelem részleteinek áttekintése után válassza a **Létrehozás** lehetőséget a kérelem elküldéséhez.
+
+![Jegy létrehozása](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>Támogatási jegy nyomon követése
 
-A támogatási kérelem elküldését követően az Azure-támogatási csapat kapcsolatba lép Önnel. A kérelem állapotának és részleteinek megtekintéséhez kattintson a **Minden támogatási kérelem** elemre az irányítópulton.
+A támogatási kérelem elküldését követően az Azure-támogatási csapat kapcsolatba lép Önnel. A kérelem állapotának és részleteinek megtekintéséhez válassza az **összes támogatási kérelem** lehetőséget az irányítópulton.
 
 ![Állapot ellenőrzése](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-Az Azure szinapszis Analytics-Közösséggel is csatlakozhat a [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Microsoft Q&a Azure SQL Data Warehouse kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
+Az Azure szinapszis Analytics-Közösséggel is csatlakozhat [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Microsoft Q&az Azure szinapszis Analytics kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

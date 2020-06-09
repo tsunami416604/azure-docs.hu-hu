@@ -7,12 +7,13 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 439e645369cd063e3084b5d975b3d1672e20a73e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77485828"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554014"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Azure Storage-minták a V12 Python ügyféloldali kódtárak használatával
 
@@ -586,7 +587,7 @@ A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage 
 * [Első lépések az Azure Table Service-szel a Pythonban](../../cosmos-db/table-storage-how-to-use-python.md)
 * [Első lépések az Azure file Service-szel a Pythonban](../files/storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról más nyelveken:
 

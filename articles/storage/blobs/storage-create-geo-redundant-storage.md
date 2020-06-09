@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 ms.subservice: blobs
-ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856135"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553204"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve hozzon létre egy olvasási hozzáférésű geo-
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Előfizetés** | *Saját előfizetés* | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
    | **ResourceGroup** | *myResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   | **Név** | *mystorageaccount* | A Storage-fiók egyedi neve. |
+   | **Name (Név)** | *mystorageaccount* | A Storage-fiók egyedi neve. |
    | **Hely** | *USA keleti régiója* | Válassza ki a helyet. |
    | **Teljesítmény** | *Standard* | A standard szintű teljesítmény jó megoldás a példaként szolgáló forgatókönyvhöz. |
    | **Fiók típusa** | *StorageV2* | Az általános célú v2 Storage-fiók használata ajánlott. További információ az Azure Storage-fiókok típusairól: a [Storage-fiók áttekintése](../common/storage-account-overview.md). |
@@ -117,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Ezt a kapcsolati sztringet tárolhatja egy környezeti változóban az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<le\> az yourconnectionstring kifejezést-t a tényleges kapcsolatok karakterláncára. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Futtassa a következő parancsok egyikét az operációs rendszer alapján, és cserélje \<yourconnectionstring\> le a-t a tényleges kapcsolatban lévő karakterláncra. A parancs egy környezeti változót ment a helyi számítógépen. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -135,7 +135,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 Az alkalmazásban meg kell adnia a Storage-fiók hitelesítő adatait. Ezeket az információkat az alkalmazást futtató helyi gépen található környezeti változókban tárolhatja. A környezeti változók létrehozásához kövesse az alábbi példák egyikét az operációs rendszertől függően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be **a Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le \<a youraccountname\> és \<a youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **Storage-fiók nevét** és a **kulcs** értékeit a következő parancsokra, és cserélje le a \<youraccountname\> és a \<youraccountkey\> helyőrzőket. Ez a parancs menti a környezeti változókat a helyi gépre. A Windows rendszerben a környezeti változó nem érhető el, amíg újra nem tölti be a használni kívánt **parancssort** vagy rendszerhéjat.
 
 ### <a name="linux"></a>Linux
 
@@ -153,7 +153,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A minta futtatásához hozzá kell adnia a Storage-fiók hitelesítő adatait a `.env.example` fájlhoz, majd át kell `.env`neveznie a következőre:.
+A minta futtatásához hozzá kell adnia a Storage-fiók hitelesítő adatait a `.env.example` fájlhoz, majd át kell neveznie a következőre: `.env` .
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
@@ -162,7 +162,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Ezeket az információkat a Azure Portal megkeresheti a Storage-fiókjához való navigálással, és a **Beállítások** szakaszban található **hozzáférési kulcsok lehetőség** kiválasztásával.
 
-Telepítse a szükséges függőségeket. Ehhez nyisson meg egy parancssort, lépjen a minta mappájába, majd írja be `npm install`a következőt:.
+Telepítse a szükséges függőségeket. Ehhez nyisson meg egy parancssort, lépjen a minta mappájába, majd írja be a következőt: `npm install` .
 
 ---
 
@@ -192,7 +192,7 @@ A letöltés előtt a szolgáltatás objektum [retry_callback](https://docs.micr
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-A minta futtatásához nyisson meg egy parancssort, lépjen a minta mappájába, majd írja `node index.js`be a következőt:.
+A minta futtatásához nyisson meg egy parancssort, lépjen a minta mappájába, majd írja be a következőt: `node index.js` .
 
 A minta létrehoz egy tárolót a blob Storage-fiókban, feltölti a **HelloWorld. png** -t a tárolóba, majd ismételten ellenőrzi, hogy a tároló és a rendszerkép replikálva lett-e a másodlagos régióba. A replikálást követően a rendszer felszólítja, hogy a letöltéshez vagy a kilépéshez adja meg a **D** vagy a **Q** értéket (majd írja be). A kimenetnek az alábbi példához hasonlóan kell kinéznie:
 
@@ -340,7 +340,7 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat első részében megtanulta, hogyan lehet az alkalmazást az RA-GZRS Storage-fiókokkal nagykörben elérhetővé teszi.
 

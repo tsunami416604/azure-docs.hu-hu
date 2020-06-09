@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652716"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560517"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -75,14 +75,19 @@ Az Azure Functions szolgáltatásnak egy általános célú tárfiókra van szü
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Állítson be egy változót az Azure Functions által igényelt új Storage-fiók nevéhez.
+2. Állítson be egy változót a létrehozandó erőforrások helyének tárolására. 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. Állítson be egy változót az Azure Functions által igényelt új Storage-fiók nevéhez.
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Hozza létre az Azure-függvényhez tartozó Storage-fiókot.
+4. Hozza létre az Azure-függvényhez tartozó Storage-fiókot.
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ A következő parancsban adja meg a saját egyedi Function-alkalmazásának nev�
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ A függvénynek szüksége van a blob Storage-fiókhoz tartozó hitelesítő ada
 # <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -206,11 +208,12 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
-    | **Név** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
+    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. |
     | **Témakörtípus** | Tárfiókok | Válassza ki a Storage-fiók eseményszolgáltatóját. |
     | **Előfizetés** | Az Azure-előfizetése | Alapértelmezés szerint az aktuális Azure-előfizetés van kiválasztva. |
     | **Erőforráscsoport** | myResourceGroup | Válassza a **Meglévő használata** elemet, majd válassza ki az oktatóanyagban használt erőforráscsoportot. |
     | **Erőforrás** | Saját Blob Storage-fiók | Válassza ki a létrehozott Blob Storage-fiókot. |
+    | **Rendszertéma neve** | imagestoragesystopic | Adja meg a rendszer témakör nevét. A rendszertémakörökről a [rendszertémakörök áttekintésében](system-topics.md)talál további információt. |    
     | **Eseménytípusok** | Létrehozott blob | Törölje a jelölést az összes típus mellől a **Létrehozott blob** kivételével. A rendszer csak a `Microsoft.Storage.BlobCreated` eseménytípusokat adja át a függvénynek. |
     | **Végpont típusa** | automatikusan létrehozott | Előre definiált **Azure-függvényként**. |
     | **Végpont** | automatikusan létrehozott | A függvény neve. Ebben az esetben ez a **miniatűr**. |
