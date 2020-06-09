@@ -43,6 +43,8 @@
           href: publish-hugo.md
         - name: VuePress
           href: publish-vuepress.md
+        - name: Jekyll
+          href: publish-jekyll.md
     - name: Üzembe helyezés keretrendszerből
       items:
         - name: Next.js

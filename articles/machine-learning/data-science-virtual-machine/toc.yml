@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
       href: dsvm-ubuntu-intro.md
+- name: Oktatóanyagok
+  items:
+    - name: DSVM létrehozása ARM-sablonnal
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: Alapelvek
   items:
     - name: Mély tanulás és mesterségesintelligencia-keretrendszerek

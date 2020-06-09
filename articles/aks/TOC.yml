@@ -133,6 +133,8 @@
           href: upgrade-cluster.md
         - name: Használati üzemidőre vonatkozó SLA
           href: uptime-sla.md
+        - name: Csomópont rendszerképének frissítése (előzetes verzió)
+          href: node-image-upgrade.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md
         - name: AKS-fürt konfigurálása

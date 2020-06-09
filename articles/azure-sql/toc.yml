@@ -447,7 +447,7 @@
             - name: Az erőforrás állapotának használata csatlakozási problémák esetén
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: DTU migrálása virtuálismag-alapú modellre
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: Adatbázis-erőforrások skálázása
               href: database/single-database-scale.md
             - name: Készleterőforrások skálázása

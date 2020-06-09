@@ -194,6 +194,30 @@
               href: wrangling-data-flow-overview.md
             - name: Támogatott függvények
               href: wrangling-data-flow-functions.md
+    - name: Data Lake- és EDW-adatmigrálás
+      items:
+        - name: Miért érdemes az Azure Data Factoryt választani?
+          href: data-migration-guidance-overview.md
+        - name: Adatok migrálása az AWS S3-ból az Azure-ba
+          href: data-migration-guidance-s3-azure-storage.md
+        - name: Adatok migrálása helyszíni Hadoop-fürtből az Azure-ba
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Átalakítás adatfolyam-leképezéssel
+      items:
+        - name: Rögzített szélességű szövegfájlok feldolgozása
+          href: how-to-fixed-width.md
+        - name: Hibát tartalmazó sorok kezelése
+          href: how-to-data-flow-error-rows.md
+        - name: Átállás Azure SQL DB-ről CosmosDB-re
+          href: how-to-sqldb-to-cosmosdb.md
+    - name: SSIS-migrálás helyszínről
+      items:
+        - name: SSIS-migrálás áttekintése
+          href: scenario-ssis-migration-overview.md
+        - name: SSISDB-migrálás felügyelt Azure SQL-példányra
+          href: scenario-ssis-migration-ssisdb-mi.md
     - name: Szerepkörök és engedélyek
       href: concepts-roles-permissions.md
     - name: Elnevezési szabályok
@@ -697,32 +721,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás az Azure-SSIS IR-ben
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: Forgatókönyvek
-  items:
-    - name: Data Lake- és EDW-adatmigrálás
-      items:
-        - name: Miért érdemes az Azure Data Factoryt választani?
-          href: data-migration-guidance-overview.md
-        - name: Adatok migrálása az AWS S3-ból az Azure-ba
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Adatok migrálása helyszíni Hadoop-fürtből az Azure-ba
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Átalakítás adatfolyam-leképezéssel
-      items:
-        - name: Rögzített szélességű szövegfájlok feldolgozása
-          href: how-to-fixed-width.md
-        - name: Hibát tartalmazó sorok kezelése
-          href: how-to-data-flow-error-rows.md
-        - name: Átállás Azure SQL DB-ről CosmosDB-re
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: SSIS-migrálás helyszínről
-      items:
-        - name: SSIS-migrálás áttekintése
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB-migrálás felügyelt Azure SQL-példányra
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referencia
   items:
     - name: Adatfolyamszkript

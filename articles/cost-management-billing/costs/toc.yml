@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: Migrálás EA-ról MCA API-kra
           href: migrate-cost-management-api.md
+        - name: Csoportosítási és szűrési lehetőségek
+          href: group-filter.md
     - name: Útmutatók
       items:
         - name: Váratlan költségek megelőzése és elemzése
