@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871223"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554825"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -64,6 +64,10 @@ Ezek a kódtárak automatikusan települnek a bővítménnyel.
 - [Microsoft Azure Active Directory modul a Windows PowerShell-verzió 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 A Windows PowerShell Microsoft Azure Active Directory modulja telepítve van, ha még nem létezik, a telepítési folyamat részeként futtatott konfigurációs parancsfájllal. Ha még nincs telepítve, a modult nem kell telepítenie az idő előtt.
+
+Manuálisan kell telepítenie a következő tárat:
+
+- [A Visual Studio 2015 szoftverhez készült Visual C++ terjeszthető változata](https://www.microsoft.com/download/details.aspx?id=48145)
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -201,7 +205,7 @@ Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-k
 Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
 
 > [!NOTE]
-> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN = \< TenantID \> , OU = Microsoft NPS bővítménynek**kell lennie. 
+> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN = \<TenantID\> , OU = Microsoft NPS bővítménynek**kell lennie. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
 
@@ -271,7 +275,7 @@ A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lé
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
 
-Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve **CN \< tenantid \> , OU = Microsoft NPS bővítmény**
+Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve **CN \<tenantid\> , OU = Microsoft NPS bővítmény**
 
 A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi ideje két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
 
@@ -346,7 +350,7 @@ Javasoljuk, hogy a régebbi és a gyengébb titkosítási csomagokat tiltsa le, 
 
 További hibaelhárítási útmutató és lehetséges megoldások találhatók az [Azure-multi-Factor Authentication hálózati házirend-kiszolgáló bővítményében található hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)című cikkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 

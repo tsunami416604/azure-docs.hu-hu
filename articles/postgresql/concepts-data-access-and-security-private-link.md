@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485050"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508997"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -115,7 +115,7 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 Ha csak privát végpontokat szeretne használni a Azure Database for PostgreSQL egyetlen kiszolgálóhoz való hozzáféréshez, letilthatja az összes nyilvános végpont ([Tűzfalszabályok](concepts-firewall-rules.md) és [VNet-végpontok](concepts-data-access-and-security-vnet.md)) beállítását úgy, hogy **megtagadja a nyilvános hálózati hozzáférési konfiguráció megtagadását** az adatbázis-kiszolgálón. 
 
-Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for PostgreSQL. Ha ezt a beállítást úgy állítja be, hogy *egyetlen ügyfél sem* tud csatlakozni a Azure Database for PostgreSQL a tűzfal vagy a VNet szolgáltatás végpont-beállítása alapján. Emellett, ha a magánhálózati hozzáférés értéke ügyfelekre van állítva, a meglévő "tűzfalszabályok" és a "VNet szolgáltatás végpontja" szabály nem adható hozzá és/vagy nem frissíthető.
+Ha a beállítás értéke *Igen* , akkor csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for PostgreSQL. Ha ezt a beállítást úgy állítja be, hogy *egyetlen ügyfél sem* tud csatlakozni a Azure Database for PostgreSQL a tűzfal vagy a VNet szolgáltatás végpont-beállítása alapján. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.

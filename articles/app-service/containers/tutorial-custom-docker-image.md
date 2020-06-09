@@ -7,19 +7,19 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085858"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561101"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Oktatóanyag: egyéni rendszerkép létrehozása és App Service futtatása privát beállításjegyzékből
 
 A [app Service](app-service-linux-intro.md) beépített Docker-rendszerképeket biztosít a Linuxon, és bizonyos verziókat, például a PHP 7,3-t és a Node. js 10,14-t támogatja. A App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek szolgáltatásként való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egyéni rendszerképet, és hogyan futtathatja App Serviceban. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Egyéni rendszerkép üzembe helyezése egy privát tároló beállításjegyzékében
@@ -49,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>A rendszerkép létrehozása a Docker-fájlból
 
-A Git-adattárban tekintse meg a _Dockerfile_ nevű fájlt. Ez a fájl az alkalmazás futtatásához szükséges Python-környezetet írja le. Emellett a rendszerkép beállít egy [SSH](https://www.ssh.com/ssh/protocol/)-kiszolgálót a tároló és a gazdagép közötti biztonságos kommunikációhoz. A _Docker_ `ENTRYPOINT ["init.sh"]`utolsó sora, amely elindítja `init.sh` az SSH-szolgáltatást és a Python-kiszolgálót.
+A Git-adattárban tekintse meg a _Dockerfile_ nevű fájlt. Ez a fájl az alkalmazás futtatásához szükséges Python-környezetet írja le. Emellett a rendszerkép beállít egy [SSH](https://www.ssh.com/ssh/protocol/)-kiszolgálót a tároló és a gazdagép közötti biztonságos kommunikációhoz. A _Docker_utolsó sora, `ENTRYPOINT ["init.sh"]` `init.sh` amely elindítja az SSH-szolgáltatást és a Python-kiszolgálót.
 
 ```Dockerfile
 FROM python:3.4
@@ -85,7 +85,7 @@ Hozza létre a Docker-rendszerképet a `docker build` paranccsal.
 docker build --tag mydockerimage .
 ```
 
-Tesztelje a build működését a Docker-tároló futtatásával. Adja ki [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) a parancsot, és adja át a rendszerkép nevét és címkéjét. Ügyeljen arra, hogy a `-p` argumentum használatával megadja a portot is.
+Tesztelje a build működését a Docker-tároló futtatásával. Adja ki a [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) parancsot, és adja át a rendszerkép nevét és címkéjét. Ügyeljen arra, hogy a `-p` argumentum használatával megadja a portot is.
 
 ```bash
 docker run -p 8000:8000 mydockerimage
@@ -139,7 +139,7 @@ A kimenet két jelszót mutat be a felhasználónévvel együtt.
 }
 </pre>
 
-A helyi terminál ablakban jelentkezzen be a Azure Container Registry a `docker login` paranccsal, az alábbi példában látható módon. Cserélje le * \<az Azure-Container-Registry-Name>* és * \<a Registry-username>* értéket a beállításjegyzék értékeire. Ha a rendszer kéri, írja be az előző lépésben szereplő jelszavak egyikét.
+A helyi terminál ablakban jelentkezzen be a Azure Container Registry a `docker login` paranccsal, az alábbi példában látható módon. Cserélje le a *\<azure-container-registry-name>* és *\<registry-username>* a értéket a beállításjegyzék értékeire. Ha a rendszer kéri, írja be az előző lépésben szereplő jelszavak egyikét.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -180,7 +180,7 @@ A következő kimenetnek kell megjelennie.
 
 ### <a name="create-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Cserélje le _ \<az App-Name>t_ egy egyedi alkalmazás nevére, és _ \<az Azure-Container-Registry-Name>_ a beállításjegyzék nevével.
+A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](app-service-linux-intro.md) a `myAppServicePlan` App Service-csomagban. Cserélje le _\<app-name>_ az nevet egy egyedi alkalmazás nevére, a _\<azure-container-registry-name>_ beállításjegyzék nevével.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -205,14 +205,14 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Beállításjegyzékbeli hitelesítő adatok konfigurálása a webalkalmazásban
 
-A privát rendszerkép lekéréséhez a beállításjegyzékről és a rendszerképekről is információt kell App Service. A Cloud Shell adja meg a parancsot a [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) paranccsal. Cserélje le * \<az App-Name>*, az * \<Azure-Container-Registry-Name>*, a _ \<Registry-username>_ és _ \<a Password>_.
+A privát rendszerkép lekéréséhez a beállításjegyzékről és a rendszerképekről is információt kell App Service. A Cloud Shell adja meg a [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot a paranccsal. Cserélje le,,, *\<app-name>* *\<azure-container-registry-name>* _\<registry-username>_ és _\<password>_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
 ```
 
 > [!NOTE]
-> Ha a Docker hub-tól eltérő beállításjegyzéket `--docker-registry-server-url` használ, a nevet `https://` a beállításjegyzék teljes tartománynevének megfelelően kell formázni.
+> Ha a Docker hub-tól eltérő beállításjegyzéket használ, a `--docker-registry-server-url` `https://` nevet a beállításjegyzék teljes tartománynevének megfelelően kell formázni.
 >
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
@@ -293,7 +293,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 ### <a name="open-ssh-connection-to-container"></a>A tároló SSH-kapcsolatának megnyitása
 
-Az SSH-kapcsolat csak a kudu webhelyen érhető el, amely elérhető a `https://<app-name>.scm.azurewebsites.net`következő címen:.
+Az SSH-kapcsolat csak a kudu webhelyen érhető el, amely elérhető a következő címen: `https://<app-name>.scm.azurewebsites.net` .
 
 A keresse fel a következő címet: `https://<app-name>.scm.azurewebsites.net/webssh/host`, majd jelentkezzen be az Azure-fiókjával.
 
@@ -326,7 +326,7 @@ Gratulálunk! Egyéni Linux-tárolót konfigurált a App Serviceban.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

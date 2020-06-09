@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245485"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508620"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
@@ -58,7 +58,7 @@ Az ```enriched``` mező egy sztringet tartalmaz, amely a JSON-ban szereplő mem�
 
 A dúsított mező csak hibakeresési célokat szolgál, így könnyebben megismerheti annak a tartalomnak a logikai formáját, amellyel a kifejezéseket kiértékeli a rendszer. Ez a mező nem függhet indexelési célokra.
 
-Adjon hozzá ```enriched``` egy mezőt az index definíciójának részeként a hibakereséshez:
+Adjon hozzá egy ```enriched``` mezőt az index definíciójának részeként a hibakereséshez:
 
 #### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json
@@ -77,11 +77,15 @@ Adjon hozzá ```enriched``` egy mezőt az index definíciójának részeként a 
 }
 ```
 
+### <a name="debug-sessions"></a>Munkamenetek hibakeresése
+
+A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. A hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a változtatásokat egy éles készségkészlet az AI-dúsítási folyamat során. Ez egy előzetes verziójú funkció, és a hozzáférés eseti alapon történik. [Olvassa el a dokumentációt](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) , és Ismerje meg, hogyan használható a hozzáférés.
+
 ## <a name="tip-5-expected-content-fails-to-appear"></a>5. tipp: a várt tartalom nem jelenik meg
 
 A hiányzó tartalom az indexelés során eldobott dokumentumok eredménye lehet. Az ingyenes és az alapszintű csomagok esetében a dokumentumok mérete alacsony. Az indexelés során a korlátot meghaladó fájlok el lettek dobva. Az eldobott dokumentumokat a Azure Portalban tekintheti meg. A Search szolgáltatás Irányítópultján kattintson duplán az indexelő csempére. Tekintse át a sikeres dokumentumok indexelésének arányát. Ha az érték nem 100%, akkor további részletekért kattintson az arányra. 
 
-Ha a probléma a fájlmérethez kapcsolódik, a következőhöz hasonló hibaüzenet jelenhet meg: "a blob \<file-Name> mérete \<> bájt, ami meghaladja az aktuális szolgáltatási réteghez tartozó dokumentum-kinyerési maximális méretet." Az indexelő korlátaival kapcsolatos további információkért lásd: [szolgáltatási korlátok](search-limits-quotas-capacity.md).
+Ha a probléma fájlmérethez kapcsolódik, a következőhöz hasonló hibaüzenet jelenhet meg: "a blob \<file-name> " mérete \<file-size> bájt, ami túllépi a jelenlegi szolgáltatási szinten a dokumentumok kinyerésének maximális méretét. " Az indexelő korlátaival kapcsolatos további információkért lásd: [szolgáltatási korlátok](search-limits-quotas-capacity.md).
 
 A tartalom nem jelenik meg egy második oka, hogy kapcsolódó bemeneti/kimeneti leképezési hibák merülhetnek fel. Például a kimeneti cél neve "People", de az index mező neve kisbetűs "emberek". A rendszer 201 sikeres üzeneteket adhat vissza a teljes folyamathoz, így úgy gondolja, hogy sikeres volt az indexelés, ha valójában egy mező üres. 
 
@@ -96,14 +100,14 @@ Az ütemezett indexek esetében az indexelés az utolsó ismert jó dokumentumon
 > [!NOTE]
 > Ha egy indexelő egy bizonyos ütemezésre van beállítva, de többször is meghibásodik ugyanazon a dokumentumon, és minden egyes futtatásakor újra leáll, az indexelő egy ritkábban (legfeljebb legalább 24 óránként) fog futni, amíg a folyamat újból el nem végzi a műveletet.  Ha úgy gondolja, hogy rögzítette a problémát, amely miatt az indexelő egy bizonyos ponton elakadt, igény szerint futtathatja az Indexelő szolgáltatást, és ha a folyamat sikeresen elvégezte az előrehaladást, az indexelő az ütemezési intervallumba ismét visszatér.
 
-A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "Futtatás egyszer" indexelő beállítás a feldolgozást`"maxRunTime": "PT1H"`1 órára korlátozza (). Előfordulhat, hogy hosszabb időre szeretné kiterjeszteni a feldolgozási ablakot.
+A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "Futtatás egyszer" indexelő beállítás a feldolgozást 1 órára korlátozza ( `"maxRunTime": "PT1H"` ). Előfordulhat, hogy hosszabb időre szeretné kiterjeszteni a feldolgozási ablakot.
 
 ## <a name="tip-7-increase-indexing-throughput"></a>7. tipp: az indexelési teljesítmény növelése
 
 [Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
 További információ: [nagyméretű adathalmazok indexelése](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
 + [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

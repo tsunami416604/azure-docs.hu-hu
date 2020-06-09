@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681337"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554099"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -81,7 +81,7 @@ Az Azure Storage két lehetőséget kínál az adatok másodlagos régióba tör
 - A **geo-redundáns tárolás (GRS)** a LRS használatával háromszor másolja az adatait az elsődleges régióban található egyetlen fizikai helyen belül. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
 - A **geo-Zone-redundáns tárolás (GZRS)** az összes Azure-beli rendelkezésre állási zónában szinkron módon másolja az adatait az elsődleges régióban az ZRS használatával. Ezután aszinkron módon másolja át az adatait a másodlagos régió egyetlen fizikai helyére.
 
-A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos helyen a LRS használatával a rendszer mindig szinkron módon replikálja az adataikat.
+A GRS és a GZRS közötti elsődleges különbség az, hogy az elsődleges régióban hogyan replikálódnak az adathalmazok. A másodlagos helyen a LRS használatával a rendszer mindig szinkron módon replikálja az adataikat. A másodlagos régióban lévő LRS megvédi adatait a hardver meghibásodása ellen.
 
 A GRS vagy a GZRS esetében a másodlagos helyen lévő információk nem érhetők el olvasási vagy írási hozzáférés esetén, kivéve, ha feladatátvétel történik a másodlagos régióval. Ha olvasási hozzáférést szeretne adni a másodlagos helyhez, konfigurálja a Storage-fiókot az olvasási hozzáférésű geo-redundáns tárolás (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS) használatára. További információ: [olvasási hozzáférés az adatokhoz a másodlagos régióban](#read-access-to-data-in-the-secondary-region).
 
@@ -184,7 +184,7 @@ Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszab�
 
 Az Azure Storage rendszeresen ellenőrzi a ciklikus redundancia-ellenőrzések (FCSF) használatával tárolt adatok integritását. Ha a rendszer az adatsérülést észleli, a redundáns adatvesztéssel kerül kijavításra. Az Azure Storage az összes hálózati forgalom ellenőrzőösszegét is kiszámítja, hogy észlelje az adatcsomagok sérülését az adatok tárolása vagy beolvasása során.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)

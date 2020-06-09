@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec6e0f7405d29cb89fd8ba701b52678ca939596
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481483"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558714"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -30,7 +30,7 @@ A felügyelt eszközök Felhőbeli alkalmazásokhoz való hozzáférésének meg
 
 - **[Feltételes hozzáférés Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md)** – ez a cikk a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintését tartalmazza.
 - Az **[eszközkezelés bemutatása Azure Active Directoryban](../devices/overview.md)** – ez a cikk áttekintést nyújt azokról a különböző lehetőségekről, amelyekkel az eszközöket a szervezeti vezérlés alatt szerezheti be. 
-- A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrome-támogatásához telepítse a [Windows 10-es fiókok bővítményt](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Erre a bővítményre akkor van szükség, ha egy feltételes hozzáférési szabályzat az eszközre vonatkozó adatokat igényel.
+- A **Windows 10-es Creators Update (1703-es verzió)** vagy újabb verziók Chrome-támogatásához telepítse a [Windows 10-es fiókok bővítményt](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji). Erre a bővítményre akkor van szükség, ha egy feltételes hozzáférési házirend eszköz-specifikus adatokat igényel.
 
 >[!NOTE] 
 > Azt javasoljuk, hogy az Azure AD-alapú feltételes hozzáférési szabályzat használatával a kezdeti eszköz hitelesítése után a legjobb kényszerítést kapja meg. Ez magában foglalja a záró munkameneteket, ha az eszköz nem felel meg a megfelelőségi és az eszköz kódjának.
@@ -98,8 +98,10 @@ A megfelelőként megjelölt eszközök esetében feltételezhető, hogy:
 
 ### <a name="known-behavior"></a>Ismert viselkedés
 
+Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügyelt eszközök engedélyezési vezérlésének vagy az eszköz állapotának megkövetelése nem támogatott. Ennek az az oka, hogy a hitelesítést végző eszköz nem tudja megadni az eszköz állapotát a kódot biztosító eszköz számára, és a tokenben lévő eszköz állapota zárolva van a hitelesítést végző eszközön. Használja helyette a multi-Factor Authentication engedélyezésének megkövetelése vezérlőt.
+
 Windows 7, iOS, Android, macOS és néhány külső webböngészőben az Azure AD az eszközt az Azure AD-vel való regisztráláskor kiépített ügyféltanúsítvány használatával azonosítja. Amikor a felhasználó először jelentkezik be a böngészőben, a rendszer a felhasználótól kéri a tanúsítvány kiválasztását. A felhasználónak ki kell választania ezt a tanúsítványt, mielőtt továbbra is használhassa a böngészőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz alapú feltételes hozzáférési szabályzatnak a környezetben való konfigurálása előtt tekintse át a [Azure Active Directory a feltételes hozzáférés ajánlott eljárásait](best-practices.md).

@@ -3,12 +3,13 @@ title: Azure Service Fabric Container-alkalmazás létrehozása Linux rendszeren
 description: Hozza létre első saját, Linux-alapú tárolóalkalmazását az Azure Service Fabricban. Az alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457959"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560652"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -113,7 +114,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 A *name* nevet ad a futtató tárolónak (a tárolóazonosító helyett).
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt\/, például "http:/localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt, például "http: \/ /localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -132,7 +133,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>A rendszerkép leküldése a tároló-beállításjegyzékbe
 Miután ellenőrizte, hogy az alkalmazás fut-e a Dockerben, küldje le a rendszerképet a regisztrációs adatbázisba az Azure Container Registryben.
 
-A `docker login` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
+A futtatásával `docker login` Jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
 Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
@@ -165,7 +166,7 @@ Mivel ez a rendszerkép meghatározott számításifeladat-belépési ponttal re
 
 Adja meg az „1” példányszámát.
 
-A port megfeleltetését a megfelelő formátumban kell megadni. Ehhez a cikkhez port-hozzárendelést ```80:4000``` kell megadni. Ezzel úgy konfigurálta, hogy a gazdagépen a 4000-es portra érkező bejövő kérelmeket a rendszer a tárolón lévő 80-es portra irányítja át.
+A port megfeleltetését a megfelelő formátumban kell megadni. Ehhez a cikkhez ```80:4000``` port-hozzárendelést kell megadni. Ezzel úgy konfigurálta, hogy a gazdagépen a 4000-es portra érkező bejövő kérelmeket a rendszer a tárolón lévő 80-es portra irányítja át.
 
 ![Tárolókhoz készült Service Fabric Yeoman-generátor][sf-yeoman]
 
@@ -174,7 +175,7 @@ A port megfeleltetését a megfelelő formátumban kell megadni. Ehhez a cikkhez
 Lásd: [tároló-adattár hitelesítése](configure-container-repository-credentials.md), amelyből megtudhatja, hogyan konfigurálhat különböző hitelesítési típusokat a tárolók rendszerképének letöltéséhez.
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
-Az 6,3 Runtime kiadásával a virtuális gépek elkülönítése Linux-tárolók esetén támogatott, így két elkülönítési módot támogat a tárolók számára: folyamat és Hyper-V. A Hyper-V elkülönítési módban a kernelek el vannak különítve az egyes tárolók és a tárolók között. A Hyper-V elkülönítése [tiszta tárolók](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)használatával valósítható meg. Az elkülönítési mód a Linux-fürtökhöz van `ServicePackageContainerPolicy` megadva az alkalmazás jegyzékfájljában található elemben. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték a Process elkülönítési mód. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
+Az 6,3 Runtime kiadásával a virtuális gépek elkülönítése Linux-tárolók esetén támogatott, így két elkülönítési módot támogat a tárolók számára: folyamat és Hyper-V. A Hyper-V elkülönítési módban a kernelek el vannak különítve az egyes tárolók és a tárolók között. A Hyper-V elkülönítése [tiszta tárolók](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker)használatával valósítható meg. Az elkülönítési mód a Linux-fürtökhöz van megadva az `ServicePackageContainerPolicy` alkalmazás jegyzékfájljában található elemben. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték a Process elkülönítési mód. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
 
 ```xml
 <ServiceManifestImport>
@@ -249,16 +250,16 @@ Csatlakozzon a helyi Service Fabric-fürthöz.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-A sablonokban https://github.com/Azure-Samples/service-fabric-containers/ megadott telepítési parancsfájllal másolja az alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
+A sablonokban megadott telepítési parancsfájllal https://github.com/Azure-Samples/service-fabric-containers/ másolja az alkalmazáscsomag a fürt rendszerkép-tárolójába, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
 
 
 ```bash
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és navigáljon a\/Service Fabric Explorer a http:/localhost: 19080/Explorer (a localhost a virtuális gép magánhálózati IP-címével, ha a Mac OS X-ben a Csavargót használja). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
+Nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer a http: \/ /localhost: 19080/Explorer (a localhost a virtuális gép magánhálózati IP-címével, ha a Mac OS X-ben a Csavargót használja). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt\/, például "http:/localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy, az 4000-es porton visszaadott IP-címet mutató webböngészőt, például "http: \/ /localhost: 4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -465,7 +466,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

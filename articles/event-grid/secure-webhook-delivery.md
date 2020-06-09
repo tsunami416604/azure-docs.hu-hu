@@ -2,17 +2,17 @@
 title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
 description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: babanisa
-ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.author: femila
+ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900474"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559033"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele Azure Active Directory védett végpontok számára
 
@@ -123,7 +123,7 @@ A további szolgáltatások lapon jelölje be a "HRE-hitelesítés használata" 
 
     ![Biztonságos webhook művelet](./media/secure-webhook-delivery/aad-configuration.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

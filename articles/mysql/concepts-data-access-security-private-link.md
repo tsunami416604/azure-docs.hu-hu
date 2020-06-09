@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84482599"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509321"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
 
@@ -115,7 +115,7 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a privát hivatk
 
 Ha csak privát végpontokon szeretné használni a Azure Database for MySQL elérését, letilthatja az összes nyilvános végpont (például a [Tűzfalszabályok](concepts-firewall-rules.md) és a [VNet-végpontok](concepts-data-access-and-security-vnet.md)) beállítását az adatbázis-kiszolgálón a **nyilvános hálózati hozzáférési konfiguráció megtagadása** beállítás megadásával. 
 
-Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MySQL. Ha ez a beállítás *nem*értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MySQLhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, a meglévő tűzfal-és VNet-végponti szabályok nem vehetők fel és nem frissíthetők.
+Ha ezt a beállítást az *Igen*értékre állítja, csak a magánhálózati végpontokon keresztül létesített kapcsolatok engedélyezettek a Azure Database for MySQL. Ha ez a beállítás *nem*értékre van állítva, akkor az ügyfelek a tűzfal vagy a VNet szolgáltatás végpontjának beállításai alapján kapcsolódhatnak a Azure Database for MySQLhoz. Emellett, ha a magánhálózati hozzáférés értéke be van állítva, az ügyfelek nem tudják felvenni és/vagy frissíteni a meglévő "tűzfalszabályok" és "VNet szolgáltatás végpontjának szabályait".
 
 > [!Note]
 > Ez a funkció minden olyan Azure-régióban elérhető, ahol a Azure Database for PostgreSQL-Single Server támogatja a általános célú és a memóriára optimalizált díjszabási szintet.

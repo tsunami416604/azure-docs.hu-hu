@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799859"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560905"
 ---
 # <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
@@ -22,16 +22,7 @@ A tanácsadási szolgáltatás ajánlata az ügyfél-specifikus engagement. A ki
 
 ## <a name="compare-consulting-services"></a>Tanácsadási szolgáltatások összehasonlítása
 
-A kereskedelmi piactéren kirakatok, Microsoft AppSourceek és az Azure Marketplace a célközönségek és a felhőalapú termékek összehangolva segítik az ügyfelek számára a szükséges igények megtalálását. Az egyes kirakatok speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. A következő táblázat összefoglalja ezeket a lehetőségeket:
-
-|         |Azure Piactér  |Microsoft AppSource |
-|---------|---------|---------|
-|Célközönség      |INFORMATIKAI szakemberek és felhőalapú fejlesztők|Üzleti felhasználók és üzletági döntéshozók|
-|Megoldás relevanciája      |Az Azure-ra épülő vagy az Azure-ra épülő technikai alkalmazások|A Dynamics 365-et, Power BIt, Office 365-et, Azure-t (bővítmény vagy bővítmény kész alkalmazások) használó vagy kiterjesztő üzleti alkalmazások|
-|Közzétételi beállítások      |Kapcsolatfelvétel az Azure-ba, próbaverzióra, Transact-re vagy szolgáltatásokra|Kapcsolatfelvétel, próbaverzió vagy szolgáltatások a Dynamics 365 és Power BI|
-|Terméken belüli felhasználói élmény      |Azure Portal|Dynamics 365, Office 365, Office ügyfélalkalmazások| 
-|Egyéb      |Helyszíni közzététel Azure Stack, Azure-beli tanácsadási szolgáltatások, Azure-beli felügyelt szolgáltatások révén|Tanácsadási szolgáltatások Dynamics 365 és Power BI|
-||
+A kereskedelmi piactéren kirakatok, Microsoft AppSourceek és az Azure Marketplace a célközönségek és a felhőalapú termékek összehangolva segítik az ügyfelek számára a szükséges igények megtalálását. Az egyes kirakatok speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. Ha többet szeretne megtudni a két kirakat közötti különbségről, tekintse meg a [Microsoft AppSource és az Azure Marketplace összehasonlítását](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)ismertető témakört.
 
 A Dynamics 365, a Power apps és a Power BI alapján elérhető tanácsadói szolgáltatások jogosultak a AppSource-on való listázásra. További információkért töltse le a [Microsoft AppSource Consulting Services-lista irányelvek](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF-fájlját.
 
@@ -79,7 +70,7 @@ További források és támogatás:
 
 A kompetenciákkal kapcsolatos további információkért nyissa meg a [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies) lapot.
 
-A rendszerintegrátor partnerei a következő 21 országhoz/régióhoz küldhetnek tanácsadási szolgáltatásokat:
+A rendszerintegrátor partnerei a következő 20 ország/régió számára nyújthatnak tanácsadási szolgáltatásokat:
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -87,8 +78,7 @@ A rendszerintegrátor partnerei a következő 21 országhoz/régióhoz küldhetn
 | Finnország  | Franciaország | Németország  | India   |
 | Olaszország    | Japán  |  Mexikó  |  Hollandia  |
 |  Új-Zéland  |  Norvégia  |  Lengyelország  | Dél-afrikai Köztársaság |
-|  Spanyolország  | Svédország  | Svájc  |  Egyesült Államok  |
-| Egyesült Királyság  |
+|  Svédország  | Svájc  |  Egyesült Államok  | Egyesült Királyság  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Regisztráljon a kereskedelmi piactéren elérhető tanácsadói szolgáltatásokra
@@ -147,7 +137,7 @@ Miután konfigurálta a korábban felsorolt szükséges elemeket, a tartalmi fel
 
 A title mező 50 karakteres korlátot tartalmaz, és az ajánlat időtartamát és a szolgáltatás típusát kell továbbítania, hogy maximalizálja a keresőmotor-optimalizálást (SEO). A kötelező formátum *neve: időtartam típusa*.
 
-Példák:
+Angol nyelvű Példák:
 
 |Mintacím  |Helyes formátum  |
 |---------|---------|

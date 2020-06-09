@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773952"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561800"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions Azure Event Grid kimeneti kötése
 
@@ -27,7 +27,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely egy Event Grid egyéni témakörbe ír egy üzenetet, amely a metódus visszatérési értékét használja kimenetként:
 
@@ -218,7 +218,7 @@ A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# szintű kódtárak](functions-dotnet-class-library.md)esetén használja a [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) attribútumot.
 
@@ -261,7 +261,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 |---------|---------|----------------------|
 |**típusa** | n.a. | "EventGrid" értékre kell állítani. |
 |**direction** | n.a. | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
-|**name** | n.a. | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**név** | n.a. | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**topicEndpointUri** |**TopicEndpointUri** | Az egyéni témakör URI azonosítóját tartalmazó Alkalmazásbeállítás neve, például: `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | Az egyéni témakör elérési kulcsát tartalmazó Alkalmazásbeállítás neve. |
 
@@ -272,7 +272,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállí
 
 ## <a name="usage"></a>Használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Üzenetek küldése a metódus paraméterének használatával, például: `out EventGridEvent paramName` . Több üzenet írásához használhatja a `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>` a helyét `out EventGridEvent` .
 
@@ -294,6 +294,6 @@ A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Event Grid esemény elküldése](./functions-bindings-event-grid-trigger.md)

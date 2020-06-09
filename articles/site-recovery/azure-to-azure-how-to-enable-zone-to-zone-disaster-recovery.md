@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996499"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488936"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 
 >[!NOTE]
 >
->- A Site Recovery jelenleg nem támogatja a zónákra vonatkozó helyreállítási terveket a vész-helyreállítási zónában. 
+>- Site Recovery jelenleg nem támogatja a zónák helyreállítási terveit a-portálon keresztüli vész-helyreállításra. A PowerShell vagy a REST API használatával kihasználhatja a zóna és a zóna vész-helyreállítási helyreállítási terveit. 
 >- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg két régióra korlátozódik: Délkelet-Ázsia és Egyesült Királyság déli régiója.  
 
 A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.
@@ -65,7 +65,7 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Funkció  | Támogatási nyilatkozat  |
+|Szolgáltatás  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |

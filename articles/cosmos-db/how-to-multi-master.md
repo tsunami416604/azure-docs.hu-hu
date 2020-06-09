@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 62dedd4cf91143ee7b31b92880135ac6c7953ef9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873641"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561248"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfiguráció konfigurálása a Azure Cosmos DBt használó alkalmazásokban
 
@@ -22,7 +23,7 @@ Ha egy fiók több írási régióval lett létrehozva, akkor az alkalmazásban 
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa `UseMultipleWriteLocations` a `true`következőre:. Azt a régiót is állítsa `SetCurrentLocation` be, amelyben az alkalmazást telepíti, és ahol a Azure Cosmos db replikálja:
+Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `SetCurrentLocation` az alkalmazást telepíti, és ahol a Azure Cosmos db replikálja:
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -36,7 +37,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
-Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az `ApplicationRegion` alkalmazásban, állítsa azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
+Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa `ApplicationRegion` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -47,7 +48,7 @@ CosmosClient cosmosClient = new CosmosClient(
     });
 ```
 
-Igény szerint a `CosmosClientBuilder` és `WithApplicationRegion` a használatával is elérheti ugyanazt az eredményt:
+Igény szerint a és a használatával is `CosmosClientBuilder` `WithApplicationRegion` elérheti ugyanazt az eredményt:
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
@@ -57,7 +58,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
 
-Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az `policy.setUsingMultipleWriteLocations(true)` alkalmazásban `policy.setPreferredLocations` , állítsa be és állítsa be azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
+Ha engedélyezni szeretné a több főkiszolgálós alkalmazást az alkalmazásban, állítsa be `policy.setUsingMultipleWriteLocations(true)` és állítsa be `policy.setPreferredLocations` azt a régiót, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálja:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -74,7 +75,7 @@ AsyncDocumentClient client =
 
 ## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node. js, JavaScript és írógéppel SDK-k
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa `connectionPolicy.UseMultipleWriteLocations` a `true`következőre:. Azt a régiót is állítsa `connectionPolicy.PreferredLocations` be, amelyben az alkalmazást telepíti, és ahol a Cosmos db replikálja:
+Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `connectionPolicy.UseMultipleWriteLocations` `true` . Azt a régiót is állítsa be, amelyben `connectionPolicy.PreferredLocations` az alkalmazást telepíti, és ahol a Cosmos db replikálja:
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -91,7 +92,7 @@ const client = new CosmosClient({
 
 ## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
-Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa `connection_policy.UseMultipleWriteLocations` a `true`következőre:. Állítsa be `connection_policy.PreferredLocations` azt a régiót is, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálva van.
+Ha engedélyezni szeretné a több főkiszolgálót az alkalmazásban, állítsa a következőre: `connection_policy.UseMultipleWriteLocations` `true` . Állítsa be `connection_policy.PreferredLocations` azt a régiót is, amelyben az alkalmazást üzembe helyezi, és ahol a Cosmos db replikálva van.
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -102,7 +103,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
                                     'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikkeket:
 

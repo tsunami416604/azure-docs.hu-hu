@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664108"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561765"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB C# jegyzetfüzetekben (előzetes verzió)
 
@@ -161,7 +162,7 @@ Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeret
 
 ![Jegyzetfüzetek alaphelyzetbe állítása munkaterület](media/use-notebook-features-and-commands/reset-workspace.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
 - További információ a [Azure Cosmos db .net SDK for SQL API](https://github.com/Azure/azure-cosmos-dotnet-v3) -ról

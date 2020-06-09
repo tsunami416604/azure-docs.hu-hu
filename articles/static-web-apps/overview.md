@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure statikus Web Apps?
+title: Mi az az Azure Static Web Apps?
 description: Az Azure statikus Web Apps legfontosabb funkciói és funkciói.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: d416044599535e8acd363d09099e8667bba59a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599966"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488919"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Mi az Azure statikus Web Apps előzetes verzió?
 
@@ -30,7 +30,7 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-- A statikus tartalmak, például a HTML, a CSS, a JavaScript és a images **szolgáltatás ingyenes webtárhelye** .
+- **Webes üzemeltetés** statikus tartalmakhoz, például HTML-, CSS-, JavaScript-és rendszerképekhez.
 - A Azure Functions által biztosított **integrált API** -támogatás.
 - Az **első fél GitHub-integrációja** , ahol a tárház megváltoztatja a triggereket és a központi telepítéseket.
 - **Globálisan elosztott** statikus tartalom, amely közelebb helyezi a tartalmat a felhasználókhoz.
@@ -50,7 +50,7 @@ A statikus Web Apps a statikus eszközöket egy hagyományos webkiszolgálótól
 
 \*Az előzetes verzióban nem támogatott a APEX-tartomány regisztrációja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első statikus alkalmazás létrehozása](getting-started.md)

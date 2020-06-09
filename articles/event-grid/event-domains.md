@@ -2,17 +2,17 @@
 title: Azure Event Grid található esemény-tartományok
 description: Ez a cikk azt ismerteti, hogyan használhatók az események a különböző üzleti szervezetekhez, ügyfelekhez vagy alkalmazásokhoz tartozó egyéni események forgalmának kezeléséhez.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898862"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559512"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -65,7 +65,7 @@ Amikor létrehoz egy eseményt, egy közzétételi végpontot kap, amely ahhoz h
 
 Az események egy adott esemény tartomány bármely témakörében való közzétételéhez küldje el az eseményeket a tartomány végpontjának [ugyanúgy, mint egy egyéni témakört](./post-to-custom-topic.md). Az egyetlen különbség, hogy meg kell adnia azt a témakört, amelyre az eseményt el szeretné küldeni.
 
-Tegyük fel például, hogy az alábbi tömbben szereplő események az `"id": "1111"` eseményt a `foo` témakörben küldi `"id": "2222"` el, miközben az eseményt `bar`a következő témakörben küldi el:
+Tegyük fel például, hogy az alábbi tömbben szereplő események az eseményt a témakörben küldi el, `"id": "1111"` `foo` miközben az eseményt a következő `"id": "2222"` témakörben küldi el `bar` :
 
 ```json
 [{
@@ -105,13 +105,13 @@ Az esemény-tartományokhoz kapcsolódó korlátok és kvóták:
 - 50 tartományhoz tartozó előfizetések 
 - 5 000 esemény/másodperc betöltési arány (tartományba)
 
-Ha ezek a korlátozások nem felelnek meg Önnek, a terméktámogatási jegy megnyitásával vagy e-mailben történő [askgrid@microsoft.com](mailto:askgrid@microsoft.com)elküldésével elérheti a termék csapatát. 
+Ha ezek a korlátozások nem felelnek meg Önnek, a terméktámogatási jegy megnyitásával vagy e-mailben történő elküldésével elérheti a termék csapatát [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
 
 ## <a name="pricing"></a>Díjszabás
 Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://azure.microsoft.com/pricing/details/event-grid/) használják, mint amelyeket a Event Grid összes többi funkciója használ.
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

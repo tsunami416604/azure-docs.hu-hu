@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b417559a17dc05a07467a28d37fec9b9a7c12cb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637400"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553468"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -42,7 +42,7 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 |  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
 |  Egyetlen kötet maximális mérete     |    100 TiB    |    Nem    |
 |  Egyetlen fájl maximális mérete     |    16 TiB    |    Nem    |    
-|  Egyetlen könyvtár maximális mérete      |    320 MB    |    Nem    |    
+|  A címtár metaadatainak maximális mérete egyetlen címtárban      |    320 MB    |    Nem    |    
 |  Fájlok maximális száma ([maxfiles](#maxfiles))/kötet     |    100 000 000    |    Igen    |    
 
 További információ: a [kapacitások kezelésével kapcsolatos gyakori kérdések](azure-netapp-files-faqs.md#capacity-management-faqs).
@@ -91,7 +91,7 @@ Azure Portal navigációs síkon:
     3. Kattintson a **Tovább gombra: felülvizsgálat + létrehozás** elemre a kérelem létrehozásához. 
 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
 - [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md)

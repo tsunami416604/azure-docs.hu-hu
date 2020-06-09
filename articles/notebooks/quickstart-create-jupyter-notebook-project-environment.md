@@ -3,12 +3,13 @@ title: Azure Notebooks előnézeti projekt létrehozása egyéni környezettel
 description: Hozzon létre egy új projektet Azure Notebooks előzetes verzióban, amely a telepített csomagok és indítási parancsfájlok meghatározott készletével van konfigurálva.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78196841"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559749"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rövid útmutató: projekt létrehozása egyéni környezettel Azure Notebooks előzetes verzióban
 
@@ -24,7 +25,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
     ![Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
 
-1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n); a gomb csak akkor jelenhet meg **+** , ha a böngészőablak keskeny:
+1. A **saját projektek** lapon válassza az **+ új projekt** elemet (billentyűparancs: n); a gomb csak akkor jelenhet meg, **+** Ha a böngészőablak keskeny:
 
     ![Új projekt parancs a saját projektek oldalon](media/quickstarts/new-project-command.png)
 
@@ -35,7 +36,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy readme.MD**: (törölve)
 
-1. Néhány pillanat elteltével Azure Notebooks navigál az új projekthez. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kijelöli az **+ új** legördülő **+** listát (amely csak a következőként jelenik meg), majd a **Jegyzetfüzet**lehetőséget választja.
+1. Néhány pillanat elteltével Azure Notebooks navigál az új projekthez. Vegyen fel egy jegyzetfüzetet a projektbe úgy, hogy kijelöli az **+ új** legördülő listát (amely csak a **+** következőként jelenik meg), majd a **Jegyzetfüzet**lehetőséget választja.
 
 1. Adjon nevet a jegyzetfüzetnek, például *Egyéni környezet. ipynb*, válassza a **Python 3,6** lehetőséget a nyelvhez, majd válassza az **új**lehetőséget.
 
@@ -53,20 +54,20 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
    | Művelet | Leírás |
    | --- | --- |
-   | Követelmények. txt | A Python-projektek a függőségeket a követelmények. txt fájlban határozzák meg. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai** > **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben.`pip install -r <file>` |
+   | Követelmények. txt | A Python-projektek a függőségeket a követelmények. txt fájlban határozzák meg. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai**  >  **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben.`pip install -r <file>` |
    | Rendszerhéj-parancsfájl | A használatával egy bash rendszerhéj-parancsfájlt (jellemzően egy *. sh* kiterjesztésű fájlt) jelezhet, amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza. |
    | Environment. YML | A környezetek kezelésére szolgáló Conda használó Python-projekt egy Environment *. YML* fájlt használ a függőségek leírására. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájl listájából. |
 
    > [!WARNING]
-   > Mivel ez egy előzetes verziójú szolgáltatás a fejlesztés alatt, jelenleg egy ismert probléma van, ahol `Environment.yml` a beállítás a várt módon nem lesz alkalmazva a projektre. A projekt és a Jupyter-jegyzetfüzetek nem töltik be a megadott környezeti fájlt.
+   > Mivel ez egy előzetes verziójú szolgáltatás a fejlesztés alatt, jelenleg egy ismert probléma van, ahol a `Environment.yml` beállítás a várt módon nem lesz alkalmazva a projektre. A projekt és a Jupyter-jegyzetfüzetek nem töltik be a megadott környezeti fájlt.
 
 1. A telepítési lépések eltávolításához válassza a lépéstől jobbra lévő **X-et** .
 
 1. Ha az összes telepítési lépés bekerül, válassza a **Mentés**lehetőséget. (A módosítások elvetéséhez kattintson a **Mégse** gombra).
 
-1. A környezet teszteléséhez hozzon létre és futtasson egy új jegyzetfüzetet, majd hozzon létre egy kódot tartalmazó cellát olyan utasításokkal, amelyek a környezetben lévő csomagtól függenek, például egy Python `import` -utasítás használatával. Ha az utasítás sikeres, a szükséges csomag telepítése sikeresen megtörtént a környezetben.
+1. A környezet teszteléséhez hozzon létre és futtasson egy új jegyzetfüzetet, majd hozzon létre egy kódot tartalmazó cellát olyan utasításokkal, amelyek a környezetben lévő csomagtól függenek, például egy Python- `import` utasítás használatával. Ha az utasítás sikeres, a szükséges csomag telepítése sikeresen megtörtént a környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Projektek kezelése és konfigurálása Azure Notebooks](configure-manage-azure-notebooks-projects.md)

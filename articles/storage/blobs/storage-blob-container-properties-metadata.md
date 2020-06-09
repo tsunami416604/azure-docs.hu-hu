@@ -128,7 +128,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Tároló tulajdonságainak beolvasása művelet](/rest/api/storageservices/get-container-properties)
 - [Tároló metaadatainak beállítása művelet](/rest/api/storageservices/set-container-metadata)

@@ -3,12 +3,13 @@ title: Azure Service Fabric Container-alkalmazás létrehozása
 description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Hozzon létre egy Docker-rendszerképet egy Python-alkalmazással, küldje le a lemezképet egy tároló-beállításjegyzékbe, majd hozza létre és telepítse a tárolót az Azure Service Fabricba.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258472"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560670"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -142,12 +143,12 @@ Miután a tároló elindult, keresse meg az IP-címét, hogy böngészőből is 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja meg az IP-címhez tartozó **NetworkSettings**->**Networks** elemet:
+Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja **NetworkSettings** -> meg az IP-címhez tartozó NetworkSettings**Networks** elemet:
 ```
 docker inspect my-web-site
 ```
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, amely a visszaadott IP-címhez mutat,\/például: "http:/172.31.194.61". A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, amely a visszaadott IP-címhez mutat, például: "http: \/ /172.31.194.61". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 A tároló leállításához futtassa a következő parancsot:
 
@@ -166,7 +167,7 @@ docker rm my-web-site
 
 Miután ellenőrizte, hogy a tároló fut-e a fejlesztői gépen, küldje le a rendszerképet a beállításjegyzékébe az Azure Container Registryben.
 
-A ``docker login`` futtatásával jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
+A futtatásával ``docker login`` Jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
 Az alábbi példában a rendszer egy Azure Active Directory [egyszerű szolgáltatás](../active-directory/develop/app-objects-and-service-principals.md) azonosítóját és jelszavát adja át. Például lehet, hogy hozzárendelt egy egyszerű szolgáltatást a beállításjegyzékhez egy automatizálási forgatókönyvhöz. Vagy bejelentkezhet a beállításjegyzék felhasználónevével és jelszavával.
 
@@ -189,7 +190,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>A tárolóalapú szolgáltatás létrehozása a Visual Studióban
 A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, amellyel tárolóalapú alkalmazást hozhat létre.
 
-1. Indítsa el a Visual Studiót. Válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. Indítsa el a Visual Studiót. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 2. Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetőséget, nevezze el „MyFirstContainer” néven, és kattintson az **OK** gombra.
 3. Az **szolgáltatássablonok** listájában válassza a **Tároló** elemet.
 4. Az **Image Name** (Rendszerkép neve) mezőben adja meg a „myregistry.azurecr.io/samples/helloworldapp” rendszerképet, amelyet leküldött a tároló-beállításjegyzékbe.
@@ -368,7 +369,7 @@ A következő eljárásokkal gondoskodhat arról, hogy a tárolók megfelelően 
  
 ## <a name="specify-os-build-specific-container-images"></a>Specifikus tárolórendszerképek megadása az operációs rendszer buildje alapján 
 
-Előfordulhat, hogy a Windows Server-tárolók nem kompatibilisek az operációs rendszer különböző verzióival. A Windows Server 2016-et használó Windows Server-tárolók például nem működnek a Windows Server 1709-es verziójában a folyamat elkülönítési üzemmódjában. Ezért ha a fürtcsomópontok a legújabb verzióra frissülnek, az operációs rendszer korábbi verzióival létrehozott Container Services sikertelen lehet. Ha meg szeretné kerülni ezt a futtatókörnyezet 6,1-es verziójával, Service Fabric támogatja a több operációsrendszer-lemezkép megadását a tárolóban, és az operációs rendszer kiépítésével megjelöli azokat az alkalmazás-jegyzékfájlban található operációsrendszer-verziókkal. Az operációs rendszer kiépítési verzióját Windows-parancssorban futtatva `winver` érheti el. Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
+Előfordulhat, hogy a Windows Server-tárolók nem kompatibilisek az operációs rendszer különböző verzióival. A Windows Server 2016-et használó Windows Server-tárolók például nem működnek a Windows Server 1709-es verziójában a folyamat elkülönítési üzemmódjában. Ezért ha a fürtcsomópontok a legújabb verzióra frissülnek, az operációs rendszer korábbi verzióival létrehozott Container Services sikertelen lehet. Ha meg szeretné kerülni ezt a futtatókörnyezet 6,1-es verziójával, Service Fabric támogatja a több operációsrendszer-lemezkép megadását a tárolóban, és az operációs rendszer kiépítésével megjelöli azokat az alkalmazás-jegyzékfájlban található operációsrendszer-verziókkal. Az operációs rendszer kiépítési verzióját Windows-parancssorban futtatva érheti el `winver` . Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
 
 
 ```xml
@@ -595,7 +596,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

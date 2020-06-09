@@ -2,37 +2,43 @@
 title: Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz
 titleSuffix: Azure Cognitive Search
 description: Többnyelvű lexikális szöveg elemzése nem angol nyelvű lekérdezésekhez és indexekhez az Azure Cognitive Searchban.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283146"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555194"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
-A *Language Analyzer* egy adott típusú [szöveges elemző](search-analyzers.md) , amely lexikális analízist hajt végre a célnyelv nyelvi szabályainak használatával. Minden kereshető mező rendelkezik egy **Analyzer** tulajdonsággal. Ha az index lefordított karakterláncokat tartalmaz, például a különböző angol és kínai nyelvű szövegeket, megadhatja az egyes mezők nyelvi elemzőit az elemzők gazdag nyelvi képességeinek eléréséhez.  
+A *Language Analyzer* egy adott típusú [szöveges elemző](search-analyzers.md) , amely lexikális analízist hajt végre a célnyelv nyelvi szabályainak használatával. Minden kereshető mező rendelkezik egy **Analyzer** tulajdonsággal. Ha a tartalma lefordított karakterláncokból áll, például az angol és a Kínai szöveg különálló mezőiből, megadhatja az egyes mezők nyelvi elemzőit az elemzők gazdag nyelvi képességeinek eléréséhez.
 
-Az Azure Cognitive Search támogatja a Lucene által támogatott 35-elemzőket, valamint az Office-ban és a Bingben használt, saját tulajdonú Microsoft természetes nyelvi feldolgozási technológiával támogatott 50-elemzőket.
+## <a name="when-to-use-a-language-analyzer"></a>Mikor kell nyelvi elemzőt használni
 
-## <a name="comparing-analyzers"></a>Elemzők összehasonlítása
+Ha a Word vagy a mondat struktúrájának ismerete, a szöveg elemzésekor figyelembe kell vennie egy nyelvi elemzőt. Gyakori példa a szabálytalan műveleti űrlapok ("Bring" és "benyújtott"), vagy a többes számú főnevek ("egerek" és "egér") társítása. Nyelvi tájékoztatás nélkül ezeket a karakterláncokat csak a fizikai jellemzőkre elemezzük, ami nem fogja tudni megfogni a kapcsolódást. Mivel a nagy méretű adathalmazok nagyobb valószínűséggel rendelkeznek a tartalommal, a leírásokból, felülvizsgálatokból és összegzésből álló mezők jó választást jelentenek a nyelvi elemzők számára.
+
+Érdemes figyelembe venni a nyelvi elemzőket is, ha a tartalom nem nyugati nyelvű karakterláncokból áll. Habár az [alapértelmezett analizátor](search-analyzers.md#default-analyzer) nyelvtől független, a szóközök és speciális karakterek (kötőjelek és perjelek) használata a karakterláncok elkülönítésére általában a nyugati nyelvekre vonatkozik, mint a nem nyugatiak. 
+
+Például kínai, Japán, Koreai (CJK) és más ázsiai nyelveken a szóköz nem feltétlenül a szó elválasztója. Vegye figyelembe a következő japán karakterláncot. Mivel nem tartalmaz szóközöket, egy nyelvtől független elemző valószínűleg egyetlen tokenként elemezni fogja a teljes karakterláncot, ha valójában a karakterlánc valójában egy kifejezés.
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+A fenti példában egy sikeres lekérdezésnek tartalmaznia kell a teljes tokent, vagy egy részleges tokent, amely utótag helyettesítő karaktert használ, ami nem természetes és nem korlátozó keresési élményt eredményez.
+
+Jobb megoldás, ha egyéni szavakat keres: 明るい (Bright), 私たちの (mi), 銀河系 (Galaxy). A Cognitive Searchban elérhető japán elemzők egyikének használata nagyobb valószínűséggel oldja meg ezt a viselkedést, mivel ezek az elemzők jobban illeszkednek a szöveg részleteit leíró szavakba a célként megadott nyelven.
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>A Lucene és a Microsoft-elemzők összehasonlítása
+
+Az Azure Cognitive Search 35 támogatja a Lucene által támogatott nyelvi elemzőket, valamint az Office és a Bing által használt, a Microsoft természetes nyelvi feldolgozási technológiája által támogatott 50 nyelvi elemzőket.
 
 Előfordulhat, hogy egyes fejlesztők inkább a Lucene ismerős, egyszerű és nyílt forráskódú megoldását részesítik előnyben. A Lucene nyelvi elemzői gyorsabbak, de a Microsoft-elemzők fejlett funkciókkal rendelkeznek, például a morfológiai elemzéshez, a szavak összetételét (például a német, a dán, a holland, a svéd, a norvég, az észt, a Finish, a magyar és a szlovák nyelv) és az entitások felismerését (URL-címek, e-mailek, dátumok Ha lehetséges, a Microsoft és a Lucene elemzők összehasonlítását is el kell végeznie, hogy eldöntse, melyik egy jobb illeszkedés. 
 
@@ -123,7 +129,7 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 
-## <a name="see-also"></a>Lásd még  
+## <a name="see-also"></a>További információ  
 
 + [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

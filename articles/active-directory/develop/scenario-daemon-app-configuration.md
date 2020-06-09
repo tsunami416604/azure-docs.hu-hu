@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868974"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558551"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -38,7 +38,7 @@ A Daemon-alkalmazások a delegált engedélyek helyett alkalmazás-engedélyeket
 
 Így az alkalmazás konfigurációjában megadott szolgáltatónak Bérlőnek kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
 
-Ha Ön ISV, és szeretne biztosítani egy több-bérlős eszközt, használhatja `organizations`a következőt:. Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. Részletekért lásd: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). A MSAL-ben jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
+Ha Ön ISV, és szeretne biztosítani egy több-bérlős eszközt, használhatja a következőt: `organizations` . Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. Részletekért lásd: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). A MSAL-ben jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
 
 ## <a name="configure-and-instantiate-the-application"></a>Az alkalmazás konfigurálása és példányának beállítása
 
@@ -69,7 +69,7 @@ a [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetco
 }
 ```
 
-Adja meg a `ClientSecret` vagy a vagy `CertificateName`a-t. Ezek a beállítások kizárólagosak.
+Adja meg a `ClientSecret` vagy a vagy a-t `CertificateName` . Ezek a beállítások kizárólagosak.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -267,7 +267,7 @@ A MSAL.NET kétféle módszerrel biztosítanak aláírt állításokat a bizalma
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-A használatakor `WithClientAssertion`meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md).
+A használatakor `WithClientAssertion` meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,7 +276,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-A használatakor `WithClientClaims`a MSAL.net egy aláírt jogcímet hoz létre, amely tartalmazza az Azure ad által várt jogcímeket, valamint az elküldeni kívánt további ügyfelek jogcímeit.
+A használatakor a `WithClientClaims` MSAL.net egy aláírt jogcímet hoz létre, amely tartalmazza az Azure ad által várt jogcímeket, valamint az elküldeni kívánt további ügyfelek jogcímeit.
 Ez a kód a következőket mutatja be:
 
 ```csharp
@@ -293,7 +293,7 @@ További részletekért lásd: [ügyfél-kijelentések](msal-net-client-assertio
 
 # <a name="python"></a>[Python](#tab/python)
 
-A MSAL Pythonban megadhatja az ügyfél jogcímeit a titkos kulcs által `ConfidentialClientApplication`aláírt jogcímek használatával.
+A MSAL Pythonban megadhatja az ügyfél jogcímeit a titkos kulcs által aláírt jogcímek használatával `ConfidentialClientApplication` .
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -325,7 +325,7 @@ ConfidentialClientApplication cca =
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

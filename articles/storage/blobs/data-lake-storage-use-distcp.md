@@ -63,7 +63,7 @@ An méretű HDInsight-fürthöz tartozik a DistCp segédprogram, amely az adatok
 
 Mivel a DistCp legalacsonyabb részletessége egyetlen fájl, az egyidejű másolatok maximális számának beállítása a legfontosabb paraméter a Data Lake Storage optimalizálásához. Az egyidejű másolatok száma egyenlő a parancssorban található mappers (**m**) paraméterek számával. Ez a paraméter határozza meg az adatmásoláshoz használt leképezések maximális számát. Az alapértelmezett érték 20.
 
-**Például**
+**Példa**
 
     hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
@@ -77,7 +77,7 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Például**
+**Példa**
 
 Tegyük fel, hogy egy 4x D14v2s-fürttel rendelkezik, és 10 TB-nyi adat átvitelét kísérli meg 10 különböző mappából. Az egyes mappák különböző mennyiségű adattal rendelkeznek, és az egyes mappákban lévő fájlméretek eltérőek.
 

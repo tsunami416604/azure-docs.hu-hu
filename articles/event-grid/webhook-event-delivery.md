@@ -2,18 +2,18 @@
 title: Webhook-esemény kézbesítése
 description: Ez a cikk a webhookok használatakor a webhook-esemény kézbesítését és a végpontok érvényesítését ismerteti.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: 80efee18ff7cc927ea9029c11aadcf13ad75781a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.author: femila
+ms.openlocfilehash: cf298156fe7a347799afced8bb065cb3a02bc49a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747603"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558438"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-esemény kézbesítése
 A webhookok egyike a Azure Event Grid események fogadásának számos módja. Ha egy új esemény elkészült, Event Grid a szolgáltatás HTTP-kérelmet küld a konfigurált végpontnak a kérelem törzsében lévő eseménnyel.
@@ -88,7 +88,7 @@ Az előfizetés-ellenőrzési kézfogás kezelésére példát a [C#-minta](http
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Végpont ellenőrzése a CloudEvents 1.0-s verziójában
 Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. További információk [itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkből megtudhatja, hogyan lehet elhárítani az esemény-előfizetés érvényességét: 
 
 [Az esemény-előfizetés érvényességi hibáinak megoldása](troubleshoot-subscription-validation.md)

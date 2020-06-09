@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345291"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560555"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ A hatékonyabb lekérdezési és tranzakciós feldolgozás miatt a memóriában 
 
 Az alábbi két példa azt mutatja be, hogyan segített a memóriában tárolt OLTP a teljesítmény jelentős javítása érdekében:
 
-- A memóriában tárolt OLTP használatával a [kvórum üzleti megoldásai megduplázzák a munkaterhelést, miközben 70%-kal javítják a DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- A memóriában tárolt OLTP használatával a [kvórum üzleti megoldásai megduplázzák a munkaterhelést, miközben 70%-kal javítják a DTU](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - Az alábbi videó az erőforrás-használat jelentős javulását mutatja be egy számítási feladattal: [memóriabeli OLTP-videó](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). További információt a blogbejegyzésben talál: [memóriabeli OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
@@ -174,7 +174,7 @@ Fürtözött oszlopcentrikus indexek használatakor az oszlopos tömörítést a
 
 Ha például olyan adatbázisa van, amelynek maximális mérete 1 terabájt (TB), és a oszlopcentrikus indexek használatával 10 alkalommal éri el a tömörítést, akkor az adatbázisban összesen 10 TB felhasználói adat fér el.
 
-Ha nem fürtözött oszlopcentrikus indexeket használ, az alaptábla továbbra is a hagyományos sortárindex létrehozását formátumban tárolódik. Ezért a tárterület-megtakarítás nem annyira nagy, mint a fürtözött oszlopcentrikus indexek esetében. Ha azonban egy oszlopcentrikus indextel rendelkező hagyományos, nem fürtözött indexeket cserél le, továbbra is általános megtakarítást érhet el a tábla tárolási lábnyomában.
+Ha nem fürtözött oszlopcentrikus indexeket használ, az alaptábla továbbra is a hagyományos sortárindex létrehozását formátumban tárolódik. Ezért a tárterület-megtakarítás nem annyira jelentős, mint a fürtözött oszlopcentrikus indexek esetében. Ha azonban egy oszlopcentrikus indextel rendelkező hagyományos, nem fürtözött indexeket cserél le, továbbra is általános megtakarítást érhet el a tábla tárolási lábnyomában.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Oszlopcentrikus indexeket tartalmazó adatbázisok szolgáltatási szintjeinek módosítása
 

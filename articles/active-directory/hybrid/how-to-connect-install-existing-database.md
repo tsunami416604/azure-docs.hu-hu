@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245174"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558524"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával
 A Azure AD Connect SQL Server adatbázis tárolására van szükség az adattároláshoz. Használhatja a Azure AD Connect telepített alapértelmezett SQL Server 2012 Express LocalDB, vagy használhatja a saját teljes SQL-verzióját. Korábban a Azure AD Connect telepítésekor a rendszer a ADSync nevű új adatbázist mindig létrehozta. A Azure AD Connect verzió 1.1.613.0 (vagy azt követően) lehetősége van a Azure AD Connect telepítésére, ha egy meglévő ADSync-adatbázisra mutat.
@@ -76,19 +76,15 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 1. A **címtárak csatlakozására** szolgáló képernyőn a címtár-szinkronizáláshoz konfigurált meglévő AD-erdő mellett egy piros kereszt ikon látható. Helyszíni AD-erdőből származó módosítások szinkronizálásához AD DS-fiók szükséges. Az Azure AD Connect varázslója nem tudja lekérni az ADSync-adatbázisban tárolt AD DS-fiók hitelesítő adatait, mert azok titkosítva vannak, és a titkosítás kizárólag az előző Azure AD Connect-kiszolgálóval oldható fel. Kattintson a **hitelesítő adatok módosításának** lehetőségére az AD-erdőhöz tartozó AD DS-fiók megadásához.
    ![Címtárak](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. Az előugró párbeszédpanelen a következő lehetőségek közül választhat: (i) megad vállalati rendszergazdai hitelesítő adatokat, és engedi, hogy az Azure AD Connect hozza létre az AD DS-fiókot, vagy (ii) létrehozza az AD DS-fiókot, és megadja annak hitelesítő adatait az Azure AD Connectnek. Miután kiválasztotta az egyik lehetőséget és megadta a szükséges hitelesítő adatokat, kattintson az **OK** gombra az előugró párbeszédpanel bezáráshoz.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **Tovább** gombra.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="post-installation-tasks"></a>Telepítés utáni feladatok
@@ -103,7 +99,7 @@ Az alábbi táblázat segítségével ellenőrizheti a szükséges további lép
 |Átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési metódust, hogy az megfeleljen az aktív szinkronizációs kiszolgáló konfigurációjának.  Ha ezt a kiszolgálót az elsődlegesnek való előléptetés előtt nem követi, a zökkenőmentes egyszeri bejelentkezés mellett a rendszer letiltja a bérlőt, és előfordulhat, hogy a bérlő zárolva van, ha nem rendelkezik a jelszó-kivonatok szinkronizálása biztonsági mentéssel lehetőséggel. Azt is vegye figyelembe, hogy az átmenő hitelesítés átmeneti módban való engedélyezésekor az új hitelesítési ügynök települ, regisztrálva lesz, és magas rendelkezésre állású ügynökként fog futni, amely elfogadja a bejelentkezési kérelmeket.|
 |Összevonás a PingFederate-tel|Az Azure-hitelesítések továbbra is az aktív szinkronizálási kiszolgálóhoz konfigurált PingFederate szabályzatot használják.  Igény szerint módosíthatja a bejelentkezési módszert, hogy PingFederate a készenléti kiszolgáló aktív szinkronizálási példányként való előkészítését.  Ez a lépés elhalasztható, amíg további tartományokat nem kell összevonása a PingFederate-mel.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).
 - Ismerkedjen meg a következő, a telepítéssel engedélyezett szolgáltatásokkal: a [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) és az [Azure AD Connect Health](how-to-connect-health-sync.md).

@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 4b10660302eb831a982d261cdfdaf91f4dbdfb38
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: tracking-python
+ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248770"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559954"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions Azure Table Storage-kötések
 
@@ -32,7 +33,7 @@ A Table Storage-kötések a [Microsoft. Azure. webjobs. Extensions. Storage](htt
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="input"></a>Bevitel
+## <a name="input"></a>Input (Bemenet)
 
 Egy Azure Storage-fiókban lévő tábla beolvasásához használja az Azure Table Storage bemeneti kötését.
 
@@ -997,7 +998,7 @@ Két lehetőség áll rendelkezésre a Table Storage-sorok függvényből tört�
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tábla, üzenetsor | [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

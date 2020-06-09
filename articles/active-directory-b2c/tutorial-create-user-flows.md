@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63486d6ee627d3b321978fb9f0268d15a8a86f34
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264244"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488188"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre néhány javasolt felhasználói folyamatot a Azure Portal használatával. Ha további információt szeretne arról, hogyan állíthatja be az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) az alkalmazásban, tekintse meg [az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure ad B2Cban](configure-ropc.md)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,19 +63,19 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 
     ![Attribútumok és jogcímek kiválasztása lap három jogcímek kiválasztásával](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
+1. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. A *B2C_1* előtagja automatikusan előtagértéke a nevet.
 
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása**elemre, majd válassza a **regisztráció most**lehetőséget.
 
     ![Felhasználói folyamat futtatása lap a portálon a felhasználói folyamat futtatása gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
 1. Adjon meg egy érvényes e-mail-címet, kattintson az **ellenőrző kód küldése**elemre, adja meg a kapott ellenőrző kódot, majd válassza a **kód ellenőrzése**lehetőséget.
 1. Adjon meg egy új jelszót, és erősítse meg a jelszót.
-1. Válassza ki az országot és a régiót, adja meg a megjeleníteni kívánt nevet, adjon meg egy irányítószámot, majd kattintson a **Létrehozás**gombra. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Válassza ki az országot és a régiót, adja meg a megjeleníteni kívánt nevet, adjon meg egy irányítószámot, majd kattintson a **Létrehozás**gombra. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 1. Most már újra futtathatja a felhasználói folyamatot, és be kell tudnia jelentkezni a létrehozott fiókkal. A visszaadott jogkivonat tartalmazza az ország/régió, a név és az irányítószám mezőben kiválasztott jogcímeket.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Profil szerkesztése felhasználói folyamat létrehozása
@@ -92,9 +92,9 @@ Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését a
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása**elemre, majd jelentkezzen be a korábban létrehozott fiókkal.
-1. Most már lehetősége van módosítani a felhasználó megjelenítendő nevét és a beosztás címét. Kattintson a **Folytatás** gombra. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Most már lehetősége van módosítani a felhasználó megjelenítendő nevét és a beosztás címét. Kattintson a **Folytatás** gombra. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
 ## <a name="create-a-password-reset-user-flow"></a>Jelszó-visszaállítási felhasználói folyamat létrehozása
 
@@ -111,11 +111,11 @@ Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a
 ### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
 1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
-1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms`.
+1. Az **alkalmazás**lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása**elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás**lehetőséget.
-1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi `https://jwt.ms` a tokent, és megjelenik Önnek.
+1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás**lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

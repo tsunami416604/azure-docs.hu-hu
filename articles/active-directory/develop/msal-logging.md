@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084894"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558673"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -50,7 +50,7 @@ A 3. x MSAL a naplózás az alkalmazáson belül, a `.WithLogging` Builder módo
 
 - `Level`lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
 - `PiiLoggingEnabled`lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
-- `LogCallback`egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha `PiiLoggingEnabled` az értéke igaz, a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPii` paraméter értéke false (hamis), az üzenet pedig személyes adatként nem, a `containsPii` paraméter pedig az igaz értékkel jelenik meg, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `LogCallback`egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha `PiiLoggingEnabled` az értéke igaz, a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPii` paraméter értéke false (hamis), az üzenet pedig személyes adatként nem, a paraméter pedig az `containsPii` igaz értékkel jelenik meg, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
 - `DefaultLoggingEnabled`a platform alapértelmezett naplózásának engedélyezése. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
 
 ```csharp
@@ -87,9 +87,9 @@ class Program
 Jelentkezzen be az alkalmazás létrehozásakor egy naplózási visszahívás létrehozásával. A visszahívás a következő paramétereket veszi figyelembe:
 
 - `tag`a könyvtár által visszahívásra átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
-- `logLevel`lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a `Error`következők `Warning`: `Info`,, `Verbose`és.
+- `logLevel`lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` .
 - `message`a naplóbejegyzés tartalma.
-- `containsPII`Megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` ez `true`a módszer, akkor a metódus kétszer fogja fogadni az üzeneteket: `containsPII` egyszer a ( `false` z) `message` és a személyes adatként megadott paraméterrel, és egy `containsPii` második alkalommal, `true` amelynél a paraméter be van állítva, és az üzenet személyes adattal is rendelkezhet. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `containsPII`Megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true` Ez a módszer, akkor a metódus kétszer fogja fogadni az üzeneteket: egyszer a (z) `containsPII` `false` és a személyes adatként megadott paraméterrel `message` , és egy második alkalommal, amelynél a `containsPii` paraméter be van állítva, `true` és az üzenet személyes adattal is rendelkezhet. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
 
 ```java
 private StringBuilder mLogs;
@@ -126,10 +126,10 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Engedélyezze a naplózást a MSAL. js (JavaScript) alkalmazásban, ha átadja egy naplózó `UserAgentApplication` objektumot a konfiguráció során egy példány létrehozásához. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
+ Engedélyezze a naplózást a MSAL. js (JavaScript) alkalmazásban, ha átadja egy naplózó objektumot a konfiguráció során egy példány létrehozásához `UserAgentApplication` . Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
-- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a `Error`következők `Warning`: `Info`,, `Verbose`és. A mező alapértelmezett értéke: `Info`.
+- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` . A mező alapértelmezett értéke: `Info`.
 - `piiLoggingEnabled`(nem kötelező): ha igaz értékre van állítva, a személyes és szervezeti adatnaplókat naplózza. Alapértelmezés szerint ez hamis, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog.
 - `correlationId`(nem kötelező): egyedi azonosító, amely a kérésnek a hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
 
@@ -194,7 +194,7 @@ Például:
 
 ### <a name="personal-data"></a>Személyes adatok
 
-A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A bekapcsolásával `pii.Enabled`az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
+A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A bekapcsolásával `pii.Enabled` az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
 ```objc
 // By default, the `MSALLogger` doesn't capture any PII
@@ -271,7 +271,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 ### <a name="personal-data"></a>Személyes adatok
 
-A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A bekapcsolásával `pii.Enabled`az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
+A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A bekapcsolásával `pii.Enabled` az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
@@ -350,7 +350,7 @@ Alapértelmezés szerint a MSAL naplózása nem rögzíti vagy nem naplózza sze
             .build();
 ```
 
-A személyes és szervezeti adatnaplózás bekapcsolásához `logPii()` állítsa be az ügyfélalkalmazás-szerkesztőt. Ha bekapcsolja a személyes vagy szervezeti adatnaplózást, az alkalmazásnak felelősséget kell vállalnia a fokozottan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények teljesítéséhez.
+A személyes és szervezeti adatnaplózás bekapcsolásához állítsa be `logPii()` az ügyfélalkalmazás-szerkesztőt. Ha bekapcsolja a személyes vagy szervezeti adatnaplózást, az alkalmazásnak felelősséget kell vállalnia a fokozottan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények teljesítéséhez.
 
 A következő példában a személyes vagy szervezeti adatai naplózása engedélyezve van:
 
@@ -365,7 +365,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
 
 ## <a name="msal-for-python-logging"></a>MSAL Python-naplózáshoz
 
-A MSAL Pythonban történő naplózás a szabványos Python-naplózási mechanizmust használja, például `logging.info("msg")` az alábbiak szerint konfigurálhatja a MSAL-naplózást (és megtekintheti működés közben a [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+A MSAL Pythonban történő naplózás a szabványos Python-naplózási mechanizmust használja, például az `logging.info("msg")` alábbiak szerint konfigurálhatja a MSAL-naplózást (és megtekintheti működés közben a [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Hibakeresési naplózás engedélyezése az összes modulhoz
 

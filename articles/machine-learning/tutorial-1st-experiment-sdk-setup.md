@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655445"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558389"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +100,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
     1.  Válassza ki a virtuális gép méretét a rendelkezésre álló lehetőségek közül.
 
-    1. Ezután válassza a **Létrehozás**lehetőséget. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
+    1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása körülbelül 5 percet vesz igénybe.
 
 1. Miután a virtuális gép elérhetővé válik, megjelenik a felső eszköztáron.  Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a jegyzetfüzet kódjának **SHIFT + ENTER** billentyűkombinációjának használatával.
 

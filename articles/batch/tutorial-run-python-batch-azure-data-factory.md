@@ -6,13 +6,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
-ms.custom: mvc
-ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773185"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555055"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -147,7 +147,7 @@ Ha a parancsfájl végrehajtásával figyelmeztetéseket vagy hibákat állít e
 1. Kattintson arra a feladatra, amelynél hiba történt a kilépési kóddal.
 1. Megtekintheti `stdout.txt` és `stderr.txt` diagnosztizálhatja a problémát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
 

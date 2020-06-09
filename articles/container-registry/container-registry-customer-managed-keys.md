@@ -1,15 +1,15 @@
 ---
 title: Ügyfél által felügyelt kulccsal történő titkosítás
-description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
+description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a prémium szintű beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683484"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509542"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -33,7 +33,7 @@ A cikkben szereplő Azure CLI-lépések használatához az Azure CLI-es vagy új
 
 ## <a name="enable-customer-managed-key---cli"></a>Ügyfél által felügyelt kulcs engedélyezése – parancssori felület
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Szükség esetén futtassa az az [Group Create][az-group-create] parancsot egy erőforráscsoport létrehozásához a kulcstartó, a tároló-beállításjegyzék és az egyéb szükséges erőforrások létrehozásához.
 
@@ -475,7 +475,7 @@ Ha az Azure Key Vault egy Key Vault tűzfallal rendelkező virtuális hálózato
 
 Részletes lépések: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/general/network-security.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [Az Azure-](../security/fundamentals/encryption-atrest.md)beli inaktív adatok titkosításáról.
 * További információ a hozzáférési házirendekről és a [kulcstartóhoz való hozzáférés biztonságossá](../key-vault/general/secure-your-key-vault.md)tételéről.

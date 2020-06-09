@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: seo-python-october2019, sqldbrb=2 
+ms.custom: seo-python-october2019, sqldbrb=2, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 1d1d4ca6d3ccd20d851f0a88d1879f9e9a8175c4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: bcd5a17cce9afea3325f90cb6fbc89887ada55e5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267324"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554537"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Python használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -126,7 +126,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
 
 1. Győződjön meg arról, hogy a 20 legfontosabb kategória/termék sorait adja vissza, majd zárjuk be a parancssorablakot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [Microsoft Python-illesztőprogramok a SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)

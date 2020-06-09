@@ -9,12 +9,13 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.custom: tracking-python
+ms.openlocfilehash: 77b9bcf0dad8fa11fad4828649cd75d7df7806d5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73601950"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561316"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Kapcsolódás Azure Databricks Excel, Python vagy R rendszerből
 
@@ -59,7 +60,7 @@ Az adatforrás neve (DSN) az adott adatforrásra vonatkozó információkat tart
     |**Adatforrás neve**     | Adja meg az adatforrás nevét.        |
     |**Állomás (ok)**     | Adja meg azt az értéket, amelyet a Databricks munkaterületről másolt a *kiszolgálói állomásnévhez*.        |
     |**Port**     | Adja meg a *443*értéket.        |
-    |**Hitelesítési** > **mechanizmus**     | Válassza ki *a felhasználónevet és a jelszót*.        |
+    |**Hitelesítés**  >  **Mechanizmus**     | Válassza ki *a felhasználónevet és a jelszót*.        |
     |**Felhasználónév**     | Adja meg a *tokent*.        |
     |**Jelszó**     | Adja meg a Databricks munkaterületről másolt jogkivonat értékét. |
     
@@ -102,7 +103,7 @@ Miután az Excel-munkafüzetben található adatokkal rendelkezik, elemzési mű
 Ebben a szakaszban egy R Language IDE-t használ a Azure Databricks elérhetővé tételéhez. Mielőtt elkezdené, a számítógépen telepítve kell lennie a következőknek.
 
 * IDE az R nyelvhez. Ez a cikk az asztali RStudio használatát ismerteti. Az [R Studio letöltésével](https://www.rstudio.com/products/rstudio/download/)telepítheti.
-* Ha IDE-ként használja az RStudio for Desktopot, telepítse a Microsoft R- [https://aka.ms/rclient/](https://aka.ms/rclient/)ügyfelet is. 
+* Ha IDE-ként használja az RStudio for Desktopot, telepítse a Microsoft R-ügyfelet is [https://aka.ms/rclient/](https://aka.ms/rclient/) . 
 
 Nyissa meg a RStudio, és hajtsa végre a következő lépéseket:
 
@@ -140,7 +141,7 @@ Ebben a szakaszban egy Python IDE-t (például TÉTLEN) használ a Azure Databri
 
 Nyissa meg a TÉTLEN műveletet, és hajtsa végre a következő lépéseket:
 
-- Importálja `pyodbc` a csomagot. Ez lehetővé teszi, hogy a korábban létrehozott DSN használatával kapcsolódjon Azure Databrickshoz.
+- Importálja a `pyodbc` csomagot. Ez lehetővé teszi, hogy a korábban létrehozott DSN használatával kapcsolódjon Azure Databrickshoz.
 - Hozzon létre egy kapcsolatot a korábban létrehozott DSN használatával.
 -  Futtasson egy SQL-lekérdezést a létrehozott kapcsolatban. A következő kódrészletben *radio_sample_data* egy olyan tábla, amely már létezik a Azure Databricksban.
 - Hajtson végre műveleteket a lekérdezésen a kimenet ellenőrzéséhez.
@@ -163,7 +164,7 @@ for row in cursor.fetchall():
     print(row)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index) talál további információt.
 

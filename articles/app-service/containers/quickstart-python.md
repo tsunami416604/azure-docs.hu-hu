@@ -3,13 +3,13 @@ title: 'Rövid útmutató: Linux Python-alkalmazás létrehozása'
 description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első Python-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 ms.topic: quickstart
 ms.date: 04/03/2020
-ms.custom: seo-python-october2019, cli-validate
-ms.openlocfilehash: 023bd8a3d53665a797848c6a9053ccd26f6015ce
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: seo-python-october2019, cli-validate, tracking-python
+ms.openlocfilehash: 622709098d8b45f6c7badfddd3006dc730a6bf14
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344730"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561698"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -211,7 +211,7 @@ Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszi
 
 A App Service menü különböző lapokat biztosít az alkalmazás konfigurálásához.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha az ingyenes F1-es csomagtól eltérő App Service SKU-t használ, ezek az erőforrások folyamatos költségekkel járnak (lásd a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 

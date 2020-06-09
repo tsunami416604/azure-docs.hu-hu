@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485361"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559268"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
 Ez az oktatóanyag útmutatást nyújt a Azure Cosmos DB tömeges végrehajtó Java-könyvtárának használatáról az importáláshoz és a Azure Cosmos DB dokumentumok frissítéséhez. Ha többet szeretne megtudni a tömeges végrehajtó függvénytárról, valamint arról, hogy miként segíti a nagy átviteli sebesség és tárterület kihasználását, tekintse meg a [tömeges végrehajtó függvénytár áttekintését](bulk-executor-overview.md) ismertető cikket. Ebben az oktatóanyagban egy olyan Java-alkalmazást hoz létre, amely véletlenszerű dokumentumokat hoz létre, és tömegesen importálnak egy Azure Cosmos-tárolóba. Az importálás után tömegesen frissíti a dokumentumok egyes tulajdonságait. 
 
-Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. A tömeges végrehajtó .NET-kódtár Gremlin API-val történő használatáról további információt a [tömeges műveletek végrehajtása Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md)című témakörben talál. Az ismertetett tömeges végrehajtó könyvtár a Java SDK 2. x verzióját használó alkalmazásokhoz érhető el. Jelenleg nem érhető el a 3. x, 4. x vagy más SDK-verzióhoz.
+Jelenleg a tömeges végrehajtó függvénytárat csak Azure Cosmos DB SQL API és Gremlin API-fiókok támogatják. Ez a cikk azt ismerteti, hogyan használható a tömeges végrehajtó Java-függvénytár SQL API-fiókokkal. A tömeges végrehajtó .NET-kódtár Gremlin API-val történő használatáról további információt a [tömeges műveletek végrehajtása Azure Cosmos db GREMLIN API-ban](bulk-executor-graph-dotnet.md)című témakörben talál. A fent ismertetett tömeges végrehajtó könyvtár csak a [Azure Cosmos db Java Sync SDK v2](sql-api-sdk-java.md) esetén érhető el, és ez a Java tömeges támogatásának jelenleg javasolt megoldása. Jelenleg nem érhető el a 3. x, 4. x vagy más SDK-verzióhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.  
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).  
 
 * Az Azure-előfizetések nélkül, díjmentesen és kötelezettségvállalásokon keresztül [Azure Cosmos db ingyen kipróbálhatja](https://azure.microsoft.com/try/cosmosdb/) . Vagy használhatja a [Azure Cosmos db emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 

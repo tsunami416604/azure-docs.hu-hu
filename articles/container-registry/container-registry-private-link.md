@@ -1,14 +1,14 @@
 ---
 title: Privát hivatkozás beállítása
-description: Privát végpont beállítása egy tároló-beállításjegyzékben, és hozzáférés engedélyezése privát hivatkozáson keresztül egy helyi virtuális hálózaton
+description: Hozzon létre egy privát végpontot egy tároló-beállításjegyzékben, és engedélyezze a hozzáférést egy helyi virtuális hálózatban lévő privát kapcsolaton keresztül. A Private link Access a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850045"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509338"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Private-hivatkozás konfigurálása Azure Container registryhez 
 
@@ -212,7 +212,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | Name | Adjon meg egy egyedi nevet. |
     | Alerőforrás |**Beállításjegyzék** kiválasztása|
@@ -237,7 +237,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | **Példány részletei** |  |
     | Name | Adjon meg egy nevet. |
@@ -249,7 +249,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Beállítás | Érték |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban**lehetőséget.|
-    | Előfizetés| Válassza ki előfizetését. |
+    | Előfizetés| Válassza ki az előfizetését. |
     | Erőforrás típusa | Válassza a **Microsoft. ContainerRegistry/nyilvántartások**lehetőséget. |
     | Erőforrás |Válassza ki a beállításjegyzék nevét|
     |Cél alerőforrás |**Beállításjegyzék** kiválasztása|
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
 
 ## <a name="validate-private-link-connection"></a>Privát kapcsolati kapcsolat ellenőrzése
 
@@ -376,7 +376,7 @@ az group delete --name $RESOURCE_GROUP
 
 A portálon található erőforrások törléséhez navigáljon az erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.
 * Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.

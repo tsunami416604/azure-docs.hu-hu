@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.custom: tracking-python
+ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233350"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84551975"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -563,7 +564,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
     Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. Az alkalmazás befejezését követően több percet is igénybe vehet, mielőtt az összes erőforrást és az erőforráscsoportot törölné.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ az [Azure Python-könyvtárról](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

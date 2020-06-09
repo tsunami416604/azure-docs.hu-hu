@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77187291"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561570"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python (Azure-eventhub 1. verzió)
 
@@ -80,7 +80,7 @@ Ez a szkript 200 eseményt küld az Event hub-nak. Az események a JSON-ban elju
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code][Visual Studio Code]-ot.
 2. Hozzon létre egy új, *Sender.py*nevű fájlt. 
-3. Illessze be a következő kódot a *Sender.py*. Helyettesítse \<be a Event Hubs névtér>, \<a AccessKeyName>, \<az elsődleges kulcs értéke> és \<a eventhub> értékét.
+3. Illessze be a következő kódot a *Sender.py*. Helyettesítse be a saját értékeit a Event Hubs,, \<namespace> \<AccessKeyName> \<primary key value> és \<eventhub> .
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ Ez a szkript 200 eseményt küld az Event hub-nak. Az események a JSON-ban elju
 Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egyes eszközökhöz, hogy csak az adott eszközre írja az adatokat.
 
 1. A Python-szerkesztőben hozzon létre egy új, *capturereader.py*nevű fájlt. 
-2. Illessze be a következő kódot a *capturereader.py*. Helyettesítse be a mentett értékeket \<a storageaccount> \<, a Storage-fiók elérési \<kulcsának> és a storagecontainer>.
+2. Illessze be a következő kódot a *capturereader.py*. Helyettesítse be a, a és a mentett értékeit \<storageaccount> \<storage account access key> \<storagecontainer> .
    
    ```python
    import os
@@ -164,7 +164,7 @@ Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egye
    pip install avro-python3
    ```
    
-   Ha a `azure-storage` vagy `azure`a korábbi verzióját használja, lehet, hogy a `--upgrade` kapcsolót kell használnia.
+   Ha a vagy a korábbi verzióját `azure-storage` `azure` használja, lehet, hogy a kapcsolót kell használnia `--upgrade` .
    
    Előfordulhat, hogy az alábbi parancsot is futtatnia kell. A parancs futtatása nem szükséges a legtöbb rendszeren. 
    
@@ -188,7 +188,7 @@ Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egye
 
    A rögzítési processzor letölti az összes nem üres blobot a Storage-fiók tárolójából, és az eredményeket *. csv* -fájlként írja a helyi könyvtárba. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Event Hubsról további információt a következő témakörben talál: 
 

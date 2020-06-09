@@ -3,14 +3,14 @@ title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatáva
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 65fa62e0e21eea44ebd1d0948e71ad1d552d4d68
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345155"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560915"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -505,7 +505,7 @@ A böngészőben a függvény meghívásához ugyanazt az URL-címet használja.
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az oktatóanyagban létrehozott erőforrásokkal szeretné tovább használni az Azure-függvényt, akkor az összes erőforrást helyben hagyhatja. Mivel prémium szintű csomagot hozott létre a Azure Functionshoz, a folyamatos költségek napi egy vagy két USD-t foglalnak magukban.
 

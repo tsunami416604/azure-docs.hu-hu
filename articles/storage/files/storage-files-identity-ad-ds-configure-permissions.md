@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268491"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509253"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
@@ -31,12 +31,22 @@ Az ACL-ek rendszergazdai jogosultságokkal való konfigurálásához a megosztá
 A fájlmegosztás gyökérkönyvtárában a következő engedélyek szerepelnek:
 
 - Builtin\rendszergazda: (OI) (CI) (F)
-- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - BUILTIN\Users: (RX)
 - BUILTIN\Users: (OI) (CI) (IO) (GR, GE)
 - NT AUTHORITY\Authenticated-felhasználók: (OI) (CI) (M)
+- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - NT AUTHORITY\SYSTEM: (F)
 - LÉTREHOZÓ TULAJDONOS: (OI) (CI) (IO) (F)
+
+|Felhasználók|Definíció|
+|---|---|
+|BUILTIN\Rendszergazdák|Minden olyan felhasználó, aki a helyszíni AD DS környezet tartományi rendszergazdái.
+|BUILTIN\Users|Beépített biztonsági csoport az AD-ben. Alapértelmezés szerint NT AUTHORITY\Authenticated-felhasználókat tartalmaz. A hagyományos fájlkiszolgálók esetében kiszolgálónként konfigurálhatja a tagság definícióját. Azure Files esetében nem létezik egy üzemeltetési kiszolgáló, ezért a BUILTIN\Users ugyanazokat a felhasználókat tartalmazza, mint az NT AUTHORITY\Authenticated-felhasználók.|
+|NT AUTHORITY\SYSTEM|A fájlkiszolgáló operációs rendszerének szolgáltatási fiókja. Ez a szolgáltatásfiók Azure Files környezetben nem alkalmazható. A gyökérkönyvtárban található, hogy konzisztensek legyenek a Windows-fájlok kiszolgálói felületének hibrid forgatókönyvek esetén.|
+|NT AUTHORITY\Authenticated-felhasználók|Az AD összes olyan felhasználója, aki érvényes Kerberos-jogkivonatot kaphat.|
+|LÉTREHOZÓ TULAJDONOS|Minden objektumhoz tartozik tulajdonos az adott objektumhoz. Ha az objektumon a "létrehozó tulajdonos" hozzáférés-vezérlési listák vannak társítva, akkor az objektum tulajdonosának felhasználója rendelkezik az ACL által meghatározott objektum engedélyeivel.|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>Fájlmegosztás csatlakoztatása a parancssorból
 
@@ -63,7 +73,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 1. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 1. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 1. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a cél felhasználónevet, amely számára engedélyezni kívánja az engedélyek megadását az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-1.    Kattintson az **OK** gombra.
+1.    Válassza az **OK** lehetőséget.
 1.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
 1.    Kattintson az **Alkalmaz** gombra.
 
@@ -77,7 +87,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 A Windows ACL-ek és a különböző típusú támogatott engedélyek beállításával kapcsolatos további információkért tekintse meg [az icacls parancssori útmutatója](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a funkció engedélyezve és konfigurálva van, folytassa a következő cikkel, amelyben csatlakoztathatja az Azure-fájlmegosztást egy tartományhoz csatlakoztatott virtuális gépről.
 

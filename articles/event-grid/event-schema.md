@@ -2,18 +2,18 @@
 title: Azure Event Gridi esemény sémája
 description: Az összes eseményhez tartozó tulajdonságokat és sémát ismerteti.Az események öt kötelező karakterlánc-tulajdonságot és egy kötelező adatobjektumot foglalnak magukban.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114003"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559417"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Gridi esemény sémája
 
@@ -89,13 +89,13 @@ Minden esemény a következő legfelső szintű adatértékekkel rendelkezik:
 | id | sztring | Igen | Az esemény egyedi azonosítója. |
 | data | objektum | Nem | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
 | dataVersion | sztring | Nem, de a rendszer üres értékkel fogja lepecsételni őket. | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
-| metadataVersion | sztring | Nem kötelező, de ha szerepel, pontosan meg kell egyeznie `metadataVersion` a Event Grid sémával ( `1`jelenleg csak). Ha nem szerepel, Event Grid az eseményre Pecsétel. | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| metadataVersion | sztring | Nem kötelező, de ha szerepel, pontosan meg kell egyeznie a Event Grid sémával `metadataVersion` (jelenleg csak `1` ). Ha nem szerepel, Event Grid az eseményre Pecsétel. | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forrását:
 
 * [Azure-előfizetések (felügyeleti műveletek)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
-* [Blob Storage](event-schema-blob-storage.md)
+* [BLOB Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
@@ -106,11 +106,11 @@ Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forr
 
 Az egyéni témakörök esetében az esemény-közzétevő határozza meg az adatobjektumot. A legfelső szintű adatnak ugyanazokkal a mezőkkel kell rendelkeznie, mint a szabványos erőforrás-definíciós események.
 
-Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tulajdonos használatával szűrhetik és irányítják az eseményeket. Gondolja át, hogy hol történt az esemény, így az előfizetők az elérési út szakaszai alapján szűrhetik az útvonalat. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha például három szegmens elérési utat ad meg, mint `/A/B/C` a tárgy, az előfizetők az első szegmens `/A` alapján szűrhetik az események széles körét. Ezek az előfizetők olyan eseményeket kapnak, `/A/B/C` mint `/A/D/E`a vagy a. Más előfizetők is szűrhetik `/A/B` a t, hogy Szűkítse az események szűk körét.
+Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tulajdonos használatával szűrhetik és irányítják az eseményeket. Gondolja át, hogy hol történt az esemény, így az előfizetők az elérési út szakaszai alapján szűrhetik az útvonalat. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha például három szegmens elérési utat ad meg, mint `/A/B/C` a tárgy, az előfizetők az első szegmens alapján szűrhetik az `/A` események széles körét. Ezek az előfizetők olyan eseményeket kapnak, mint a `/A/B/C` vagy a `/A/D/E` . Más előfizetők is szűrhetik a `/A/B` t, hogy Szűkítse az események szűk körét.
 
-Előfordulhat, hogy a tárgya több részletet is igényel, hogy mi történt. Például a Storage- **fiókok** közzétevője biztosítja a tárgyat `/blobServices/default/containers/<container-name>/blobs/<file>` , amikor egy fájlt hozzáadnak egy tárolóhoz. Az előfizető az elérési út `/blobServices/default/containers/testcontainer` alapján szűrheti az adott tárolóhoz tartozó összes eseményt, a Storage-fiókban azonban nem. Az előfizető szűrheti vagy átirányíthatja az utótagot `.txt` úgy, hogy csak szöveges fájlokkal működjön.
+Előfordulhat, hogy a tárgya több részletet is igényel, hogy mi történt. Például a Storage- **fiókok** közzétevője biztosítja a tárgyat, `/blobServices/default/containers/<container-name>/blobs/<file>` Amikor egy fájlt hozzáadnak egy tárolóhoz. Az előfizető az elérési út alapján szűrheti az `/blobServices/default/containers/testcontainer` adott tárolóhoz tartozó összes eseményt, a Storage-fiókban azonban nem. Az előfizető szűrheti vagy átirányíthatja az utótagot úgy `.txt` , hogy csak szöveges fájlokkal működjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342918"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555032"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -33,22 +33,23 @@ A Change Tracking és a leltár Azure Monitorból szerzi be az adatait. Log Anal
 
 A Change Tracking és a leltár jelenleg nem támogatja a következő elemeket:
 
-* Rekurzió a Windows beállításjegyzékének nyomon követéséhez
-* Hálózati fájlrendszerek
-* Különböző telepítési módszerek
-* ***. exe** -fájlok a Windows rendszerhez
+- Rekurzió a Windows beállításjegyzékének nyomon követéséhez
+- Hálózati fájlrendszerek
+- Különböző telepítési módszerek
+- ***. exe** -fájlok a Windows rendszerhez
 
 Egyéb korlátozások:
 
-* A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
-* Ha több mint 2500 fájlt gyűjt egy 30 perces gyűjtési ciklusban, a Change Tracking és a leltározás teljesítménye csökkenhet.
-* Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
-* Ha a számítógép leállítása közben módosítja a konfigurációt, a számítógép az előző konfigurációhoz tartozó módosításokat tehet közzé.
+- A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
+- Ha több mint 2500 fájlt gyűjt egy 30 perces gyűjtési ciklusban, a Change Tracking és a leltározás teljesítménye csökkenhet.
+- Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
+- Ha a számítógép leállítása közben módosítja a konfigurációt, a számítógép az előző konfigurációhoz tartozó módosításokat tehet közzé.
 
 A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
-* A gyorsjavítások frissítései nem gyűjthetők a Windows Server 2016 Core RS3-gépeken.
-* Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a `SvcRunLevels` Azure monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban található adatrögzítési mód miatt fordul elő.
+- A gyorsjavítások frissítései nem gyűjthetők a Windows Server 2016 Core RS3-gépeken.
+
+- Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a `SvcRunLevels` Azure monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban található adatrögzítési mód miatt fordul elő.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -77,12 +78,12 @@ A legördülő lista az irányítópult tetején található, hogy korlátozza a
 
 A módosításra vagy eseményre kattintva megtekintheti annak részleteit. Az elérhető változási típusok a következők:
 
-* Események
-* Démonok
-* Files
-* Registry
-* Szoftverek
-* Microsoft-szolgáltatások
+- Események
+- Démonok
+- Files
+- Registry
+- Szoftverek
+- Microsoft-szolgáltatások
 
 Hozzáadhat, módosíthat vagy eltávolíthat minden módosítást. Az alábbi példa egy szolgáltatás indítási típusának módosítását mutatja be Manuálisról automatikusra.
 
@@ -114,7 +115,7 @@ A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl ta
 A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Cél |
+> |Beállításjegyzék kulcsa | Szerep |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
@@ -137,10 +138,13 @@ A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok v
 
 A Change Tracking és a leltár támogatja a rekurziót, ami lehetővé teszi helyettesítő karakterek megadását a címtárak közötti nyomkövetés egyszerűsítése érdekében. A rekurzió olyan környezeti változókat is biztosít, amelyek lehetővé teszik a fájlok különböző környezetekben történő nyomon követését több vagy dinamikus meghajtó nevével. A következő lista a rekurzió konfigurálásakor szükséges általános tudnivalókat tartalmazza:
 
-* Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
-* A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ fájl*** vagy **/etc/*. conf**.
-* Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
-* Az elérési út beállításakor el kell kerülnie az általános elérési utak nevét, mivel az ilyen típusú beállítás túl sok mappa átjárását okozhatja.
+- Több fájl nyomon követéséhez helyettesítő karakterek szükségesek.
+
+- A helyettesítő karaktereket csak a fájl elérési útjának utolsó szegmensében használhatja, például **c:\mappa \\ fájl*** vagy **/etc/*. conf**.
+
+- Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út meghiúsul.
+
+- Az elérési út beállításakor el kell kerülnie az általános elérési utak nevét, mivel az ilyen típusú beállítás túl sok mappa átjárását okozhatja.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Change Tracking és leltározási adatgyűjtés
 
@@ -167,7 +171,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 |Szolgáltatások|250|
 |Démonok|250|
 
-A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
+A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 
@@ -182,13 +186,13 @@ A teljesítmény optimalizálása érdekében a Log Analytics ügynök csak a v�
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Riasztások támogatása a konfiguráció állapotában
 
-Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszokban, például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek esetén. A **c:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is. 
+Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszokban, például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek esetén. A **c:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is.
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a "c: \\ Windows \\ System32 \\ Drivers \\ " kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a FileSystemPath = = "c: \\ Windows system32 illesztőprogramok, illetve a \\ \\ \\ \\ gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|
-|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "Microsoft Services" és a SvcName a következőt tartalmazza: "W3SVC" és SvcState = = "leállítva"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
+|Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "WindowsServices" és a SvcName tartalmazza a "W3SVC" és a SvcState = = "leállítva"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "DAEMONS" és a SvcName tartalmazza az "SSH" és a SvcState! = "Running"|A rendszerkritikus szolgáltatások változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "szoftver" és a ChangeCategory = = "hozzáadva"|Olyan környezetekhez hasznos, amelyeknek szükségük van a zárolt szoftveres konfigurációkra.|
 |ConfigurationData <br>&#124;, ahol a SoftwareName tartalmazza a "figyelési ügynököt" és a CurrentVersion! = "8.0.11081.0"|Hasznos, ha azt látja, hogy mely gépeken van telepítve elavult vagy nem megfelelő szoftververzió. Ez a lekérdezés a legutóbbi jelentett konfigurációs állapotot jelenti, de nem jelenti a módosításokat.|
@@ -197,7 +201,10 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A szolgáltatás Automation-fiókból való engedélyezéséhez lásd: [change Tracking és leltár engedélyezése Automation-fiókból](automation-enable-changes-from-auto-acct.md).
-* Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-onboard-solutions-from-browse.md)című témakört.
-* Ha engedélyezni szeretné a szolgáltatást egy runbook, tekintse meg a következőt: [change Tracking és leltár engedélyezése runbook](automation-enable-changes-from-runbook.md).
-* Ha engedélyezni szeretné a szolgáltatást egy Azure-beli virtuális gépről, tekintse meg az Azure-beli [virtuális gép Change Tracking és leltározásának engedélyezése](automation-enable-changes-from-vm.md)című témakört.
+- A szolgáltatás Automation-fiókból való engedélyezéséhez lásd: [change Tracking és leltár engedélyezése Automation-fiókból](automation-enable-changes-from-auto-acct.md).
+
+- Ha engedélyezni szeretné a szolgáltatást a Azure Portal tallózásával, tekintse meg a [change Tracking és a leltár engedélyezése a Azure Portalből](automation-onboard-solutions-from-browse.md)című témakört.
+
+- Ha engedélyezni szeretné a szolgáltatást egy runbook, tekintse meg a következőt: [change Tracking és leltár engedélyezése runbook](automation-enable-changes-from-runbook.md).
+
+- Ha engedélyezni szeretné a szolgáltatást egy Azure-beli virtuális gépről, tekintse meg az Azure-beli [virtuális gép Change Tracking és leltározásának engedélyezése](automation-enable-changes-from-vm.md)című témakört.

@@ -2,17 +2,17 @@
 title: Auth0 partneri témakörök Azure Event Grid
 description: Események küldése a Auth0-ből az Azure-szolgáltatásokba Azure Event Grid használatával.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: 6025c4c694da1e036201aef35ab73500429f7e2c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: femila
+ms.openlocfilehash: 80226822e89344705c24094b073868d8ac0e1e42
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170562"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560733"
 ---
 # <a name="auth0-partner-topics"></a>Auth0-partneri témakörök
 ![Auth0 embléma](./media/auth0-overview/auth0-logo.png)

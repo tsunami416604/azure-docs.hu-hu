@@ -10,12 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 97b129bfaa1a8612040e59c6378aa1965c5c49cd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.custom: tracking-python
+ms.openlocfilehash: 440c2b0f0c9e89cff03e92fb650dabe1e2c88e1f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118877"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558350"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1077,7 +1078,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a következő feladatokat hajtotta végre:
 

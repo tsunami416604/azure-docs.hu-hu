@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437529"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488035"
 ---
 # <a name="references"></a>Referencia
 
@@ -74,7 +74,7 @@ Az Azure FarmBeats Datahub API-hívásakor a leggyakoribb kérések fejléceit k
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type  | A kérelem formátuma (Content-Type: Application<format>/). Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Content-Type: Application/JSON
+Content-Type  | A kérelem formátuma (Content-Type: Application/ <format> ). Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Content-Type: Application/JSON
 Engedélyezés  | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <hozzáférés-token>
 Elfogadás | A válasz formátuma. Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Elfogadás: alkalmazás/JSON
 
@@ -82,7 +82,7 @@ Elfogadás | A válasz formátuma. Az Azure FarmBeats Datahub API-k formátuma a
 
 REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, PUT vagy DELETE) metódust, az API szolgáltatás URL-címét, az erőforráshoz tartozó URI-t a lekérdezéshez, az adatküldéshez, a frissítéshez vagy a törléshez, majd adjon hozzá egy vagy több HTTP-kérelem fejlécét.
 
-Az API-szolgáltatás URL-címe a Datahub URL-címe, például https://\<yourdatahub-websites-Name>. azurewebsites.net.
+Az API-szolgáltatás URL-címe a Datahub URL-címe, például: https:// \<yourdatahub-website-name> . azurewebsites.net.
 
 Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
 
@@ -147,7 +147,7 @@ Ebben a példában a farm létrehozásakor a kötelező "Name" mező nem lett me
 
 Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció Azure Active Directoryban érheti el. Ha Azure Active Directory szeretné létrehozni az alkalmazás regisztrációját, kövesse az alábbi lépéseket:
 
-1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget. Másik lehetőségként használhat egy meglévő fiókot is.
+1. Lépjen a [Azure Portalra](https://portal.azure.com), és válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget. Másik lehetőségként használhat egy meglévő fiókot is.
 2. Új fiók esetén tegye a következőket:
 
     - Adjon meg egy nevet.
@@ -162,9 +162,18 @@ Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció
     - Lépjen vissza az **Áttekintés**elemre, és válassza az **alkalmazás kezelése a helyi címtárban**lehetőséget.
     - Az **objektumazonosító**rögzítéséhez lépjen a **Tulajdonságok menüpontba** .
 
-4. Nyissa meg a Datahub hencegő<yourdatahub>(https://. azurewebsites.net/Swagger/index.html) webhelyét, és tegye a következőket:
+4. Nyissa meg a Datahub hencegő (https:// <yourdatahub> . azurewebsites.net/Swagger/index.html) webhelyét, és tegye a következőket:
     - Nyissa meg a **ROLEASSIGNMENT API**-t.
     - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára.
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > A felhasználók hozzáadásával és Active Directory regisztrációval kapcsolatos további információkért lásd: [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).

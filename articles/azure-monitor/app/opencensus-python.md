@@ -6,12 +6,13 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.custom: tracking-python
+ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815723"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553859"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -36,10 +37,10 @@ Először létre kell hoznia egy Application Insights erőforrást a Azure Monit
 
 1. Megjelenik egy konfigurációs ablak. A beviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-   | Beállítás        | Érték           | Description  |
+   | Beállítás        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Név**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Resource Group**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
+   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
+   | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
    | **Hely** | USA keleti régiója | Az Ön közelében található hely, vagy a közelében, ahol az alkalmazás üzemeltetve van |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -450,7 +451,7 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
 * [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-dependency.md)
 * [Folyamatban lévő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-request.md)

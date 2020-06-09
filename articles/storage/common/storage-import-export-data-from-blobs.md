@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169202"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509474"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -39,7 +39,7 @@ A következőket kell tennie:
 
 Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladatot a Azure Portal.
 
-1. Jelentkezzen be a következőre: https://portal.azure.com/ .
+1. Jelentkezzen be a következőre: <https://portal.azure.com/> .
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**.
 
     ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Az Exportálás befejeződött.
 
 Ha a WAImportExport eszköz 1.4.0.300 használja, használja a következő parancsot a meghajtó zárolásának feloldásához:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Íme egy példa a minta bemenetre.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Ha az eszköz korábbi verzióit használja, a BitLocker párbeszédpanellel oldhatja fel a meghajtót.
 
@@ -143,15 +147,15 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 2. Bontsa ki az alapértelmezett mappát `waimportexportv1` . Például: `C:\WaImportExportV1`.
 3. Nyisson meg egy PowerShell-vagy parancssori ablakot rendszergazdai jogosultságokkal. Ha a könyvtárat a kibontott mappára szeretné módosítani, futtassa a következő parancsot:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. A kiválasztott blobokhoz szükséges lemezek számának ellenőrzéséhez futtassa a következő parancsot:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Description|  
+    |Parancssori paraméter|Leírás|  
     |--------------------------|-----------------|  
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|  
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|  
@@ -205,7 +209,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

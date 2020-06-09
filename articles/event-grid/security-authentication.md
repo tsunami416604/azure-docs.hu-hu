@@ -2,18 +2,18 @@
 title: Biztonság és hitelesítés Azure Event Grid
 description: Ez a cikk a Event Grid-erőforrásokhoz való hozzáférés hitelesítésének különböző módszereit ismerteti (webhook, előfizetések, egyéni témakörök)
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: femila
+ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774307"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558998"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid erőforrásokhoz való hozzáférés hitelesítése
 Ez a cikk a következő forgatókönyvekkel kapcsolatos információkat tartalmazza:  
@@ -101,6 +101,6 @@ További információ az események webhookok általi kézbesítéséről: [webh
 > [!IMPORTANT]
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Event Grid bevezetését lásd: [About Event Grid](overview.md)

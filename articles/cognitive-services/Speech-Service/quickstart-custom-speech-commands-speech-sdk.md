@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Spee
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben a Speech SDK ügyfélalkalmazás egyéni parancsokkal fog létrejönni.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872490"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508930"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)
 
@@ -41,7 +41,7 @@ A következőkre is szüksége lesz:
 
 ## <a name="optional-get-started-fast"></a>Opcionális: gyors kezdés
 
-Ebből a rövid útmutatóból megtudhatja, hogyan teheti meg az ügyfélalkalmazás az egyéni parancsok alkalmazáshoz való kapcsolódást. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a `quickstart` mappában található [Speech SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
+Ebből a rövid útmutatóból megtudhatja, hogyan teheti meg az ügyfélalkalmazás az egyéni parancsok alkalmazáshoz való kapcsolódást. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a mappában található [SPEECH SDK-mintákban](https://aka.ms/csspeech/samples) érhető el `quickstart` .
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. lépés: egyéni parancsok alkalmazásának közzététele
 
@@ -120,7 +120,7 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
 
 Adja hozzá a forráskód mögötti forrást, hogy az alkalmazás a várt módon működjön. A kód mögötti forrás a következőket tartalmazza:
 
-- A `using` és `Speech` `Speech.Dialog` a névterek kötelező utasításai
+- `using`A `Speech` és a `Speech.Dialog` névterek kötelező utasításai
 - Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
 - Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
 - Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
@@ -129,7 +129,7 @@ Adja hozzá a forráskód mögötti forrást, hogy az alkalmazás a várt módon
 
 Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` (a alatt `MainPage.xaml`csoportosítva)
+1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` (a alatt csoportosítva `MainPage.xaml` )
 
 1. Cserélje le a fájl tartalmát a következő kódra: 
 
@@ -321,7 +321,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. Cserélje le a `YourApplicationId`karakterláncokat `YourSpeechSubscriptionKey`, `YourServiceRegion` és az alkalmazás, a beszédfelismerés és a [régió](regions.md) saját értékeivel
+1. Cserélje le a karakterláncokat, `YourApplicationId` `YourSpeechSubscriptionKey` és az `YourServiceRegion` alkalmazás, a beszédfelismerés és a [régió](regions.md) saját értékeivel
 
 1. Fűzze hozzá a következő kódrészletet a metódus törzsének végéhez`InitializeDialogServiceConnector`
 
@@ -381,7 +381,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
    };
    ```
 
-1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez a `ListenButton_ButtonClicked` osztályban. `MainPage`
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -405,13 +405,13 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
    }
    ```
 
-1. A menüsávban válassza a **fájl** > **Mentés az összes mentése** lehetőséget a módosítások mentéséhez
+1. A menüsávban válassza a **fájl**  >  **Mentés az összes mentése** lehetőséget a módosítások mentéséhez
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
+1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
 
-1. Az alkalmazás **indításához válassza a hibakeresés****indítása hibakeresést** (vagy nyomja le az F5 billentyűt). **F5** >  Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP virtuális asszisztensi alkalmazás C#-ban – gyors útmutató](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
@@ -421,11 +421,11 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Válassza a **Talk**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Útmutató: az ügyfél parancsainak teljesítése a Speech SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)](./how-to-custom-speech-commands-validations.md)
+> [Útmutató: parancsok teljesítése az ügyfélen a SPEECH SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md) 
+>  [Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)](./how-to-custom-speech-commands-validations.md)
 
 ## <a name="sample-source-code"></a>Minta forráskódja
 Tekintse meg az ügyfél mintájának kódját a [githubon – VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

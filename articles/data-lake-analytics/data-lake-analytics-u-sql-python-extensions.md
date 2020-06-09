@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d047fd62e897163bf4ab6bf7e085462b136bf8fe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60813402"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553338"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>U-SQL-parancsfájlok kiterjesztése Python-kóddal Azure Data Lake Analytics
 
@@ -30,10 +31,10 @@ Mielőtt elkezdené, győződjön meg arról, hogy a Python-bővítmények telep
 
 A U-SQL Python-bővítményei lehetővé teszik a fejlesztők számára a Python-kód nagymértékben párhuzamos végrehajtását. Az alábbi példa az alapszintű lépéseket szemlélteti:
 
-* A következő `REFERENCE ASSEMBLY` utasítás használatával engedélyezheti a Python-bővítményeket a U-SQL-parancsfájlhoz
-* A bemeneti `REDUCE` adatok particionálásának használata a kulcsban
-* A U-SQL Python-bővítményei közé tartozik egy beépített szűkítő (`Extension.Python.Reducer`), amely Python-kódot futtat a szűkítőhöz rendelt minden egyes csúcsponton.
-* A U-SQL-szkript tartalmazza a beágyazott Python-kódot, amely egy `usqlml_main` nevű függvényt fogad el, amely a Panda DataFrame bemenetként fogadja el, és a Panda DataFrame adja vissza kimenetként.
+* A `REFERENCE ASSEMBLY` következő utasítás használatával engedélyezheti a Python-bővítményeket a U-SQL-parancsfájlhoz
+* A `REDUCE` bemeneti adatok particionálásának használata a kulcsban
+* A U-SQL Python-bővítményei közé tartozik egy beépített szűkítő ( `Extension.Python.Reducer` ), amely Python-kódot futtat a szűkítőhöz rendelt minden egyes csúcsponton.
+* A U-SQL-szkript tartalmazza a beágyazott Python-kódot, amely egy nevű függvényt fogad el, `usqlml_main` amely a Panda DataFrame bemenetként fogadja el, és a Panda DataFrame adja vissza kimenetként.
 
 --
 
@@ -100,7 +101,7 @@ Jelenleg a Python-kódban szereplő kivétel általános csúcspont-hibaként je
 ### <a name="input-and-output-size-limitations"></a>Bemeneti és kimeneti méretre vonatkozó korlátozások
 Minden csúcspont korlátozott mennyiségű memóriát rendel hozzá. Jelenleg ez a korlát 6 GB az AU-hoz. Mivel a bemeneti és a kimeneti DataFrames léteznie kell a Python-kódban lévő memóriában, a bemenet és a kimenet teljes mérete nem haladhatja meg a 6 GB-ot.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [A U-SQL Window functions használata Azure Data Lake Analytics feladatokhoz](data-lake-analytics-use-window-functions.md)

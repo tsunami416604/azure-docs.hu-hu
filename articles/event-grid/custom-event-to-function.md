@@ -3,17 +3,17 @@ title: 'Gyors útmutató: egyéni események küldése az Azure-függvénynek �
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI vagy a portál használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A végponthoz egy Azure-függvény van használatban.'
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292155"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557866"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Gyors útmutató: egyéni események átirányítása egy Azure-függvénybe Event Grid
 
@@ -124,7 +124,7 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 ### <a name="azure-powershell"></a>Azure PowerShell
 A második példa a PowerShell használatával végez hasonló lépéseket.
 
-1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/`). Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget (másik lehetőség: `https://shell.azure.com/` ). Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
 2. Állítsa be a következő változókat. Az egyes parancsok másolását és beillesztését követően frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt:
 
     ```powershell
@@ -173,7 +173,7 @@ A második példa a PowerShell használatával végez hasonló lépéseket.
 
 ![Sikeres függvény-trigger naplója](./media/custom-event-to-function/successful-function.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben törölje a cikkben létrehozott erőforrásokat.
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali menüben. Ha nem látja a bal oldali menüben, válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, és válassza az **erőforráscsoportok**lehetőséget. 
@@ -185,7 +185,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
     A rendszerképben látható másik erőforráscsoportot a Cloud Shell ablak hozta létre és használta. Ha később nem tervezi használni a Cloud Shell ablakot, törölje azt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

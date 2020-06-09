@@ -3,18 +3,19 @@ title: Jupyter-jegyzetfüzetekben tárolt adathozzáférések – Azure Notebook
 description: Megtudhatja, hogyan érheti el a fájlokat, a REST API-kat, az adatbázisokat és a különböző Azure Storage-erőforrásokat egy Jupyter-jegyzetfüzetből.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646347"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554367"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Felhőbeli adatok elérése egy jegyzetfüzetben
 
 A Jupyter-jegyzetfüzetben érdekes munkát kell végezni. Az adat valóban a jegyzetfüzetek éltető eleme.
 
-Az [adatfájlok természetesen egy projektbe is importálhatók](work-with-project-data-files.md), akár egy jegyzetfüzetből `curl` származó parancsok használatával is, közvetlenül a fájl letöltéséhez. Azonban valószínű, hogy a nem fájlokból, például a REST API-kkal, a rokon adatbázisokkal és a Felhőbeli tárolással, például az Azure Tables szolgáltatással elérhető, sokkal átfogóbb adatokkal kell dolgoznia.
+Az [adatfájlok természetesen egy projektbe is importálhatók](work-with-project-data-files.md), akár `curl` egy jegyzetfüzetből származó parancsok használatával is, közvetlenül a fájl letöltéséhez. Azonban valószínű, hogy a nem fájlokból, például a REST API-kkal, a rokon adatbázisokkal és a Felhőbeli tárolással, például az Azure Tables szolgáltatással elérhető, sokkal átfogóbb adatokkal kell dolgoznia.
 
 Ez a cikk röviden ismerteti ezeket a különböző lehetőségeket. Mivel az adathozzáférés a legjobb működésben látható, futtatható kódot talál a [Azure Notebooks-mintákban – hozzáférhet az adataihoz](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
@@ -78,6 +79,6 @@ Az Azure számos más adatbázis-típust biztosít, amelyeket használhat. Az al
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory másolási varázslója](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)

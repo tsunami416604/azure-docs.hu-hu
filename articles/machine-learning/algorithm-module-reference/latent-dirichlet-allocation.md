@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/11/2020
-ms.openlocfilehash: 1384491489c175ffc338f80a99aa8d5050f835d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: a75bf458a1c6735de42349de5d5cb6845e9ae464
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109224"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487967"
 ---
 # <a name="latent-dirichlet-allocation"></a>Rejtett Dirichlet-lefoglalás
 
@@ -68,9 +68,9 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
 
 6. Válassza a **normalizálás** lehetőséget a kimeneti értékek valószínűségekre való átalakításához. Ezért ahelyett, hogy az átalakított értékeket egész számként ábrázolja, a kimenet és a szolgáltatás adatkészletében lévő értékek a következőképpen alakulnak:
 
-    + Az adatkészletben lévő értékek valószínűséggel lesznek megjelenítve `P(topic|document)`.
+    + Az adatkészletben lévő értékek valószínűséggel lesznek megjelenítve `P(topic|document)` .
 
-    + A szolgáltatás témakörének mátrixában szereplő értékek a következő valószínűséggel lesznek `P(word|topic)`megjelenítve:.
+    + A szolgáltatás témakörének mátrixában szereplő értékek a következő valószínűséggel lesznek megjelenítve: `P(word|topic)` .
 
     > [!NOTE] 
     > Azure Machine Learning Designerben (előzetes verzió), mert az alapul szolgáló scikit-Learn, a továbbiakban nem támogatja a 0,19-es verzió nem normalizált *doc_topic_distr* kimenetét, ezért ebben a modulban a **normalizálás** paraméter csak a **szolgáltatási témakör mátrix** kimenetére alkalmazható, az **átalakított adatkészlet** kimenete mindig normalizált.
@@ -116,7 +116,8 @@ A modul két kimenettel rendelkezik:
 
 Ez a modul a *Lda átalakítást* is megjeleníti, amely a Lda alkalmazza az adatkészletre.
 
-Ezt az átalakítást a modul jobb oldali ablaktáblájának **outputs + naplók** lapján, a többi adatkészlet esetében pedig újra felhasználva mentheti el. Ez akkor lehet hasznos, ha nagy corpuson van betanítva, és szeretné újra felhasználni az együtthatókat vagy kategóriákat.
+Ezt a transzformációt újra felhasználhatja más adatkészletek esetében is. Ez akkor lehet hasznos, ha nagy corpuson van betanítva, és szeretné újra felhasználni az együtthatókat vagy kategóriákat.
+Az átalakítás újbóli felhasználásához kattintson a LDA modul jobb oldali paneljén található **adatkészlet regisztrálása** ikonra, hogy a modul a modulok listájában az **adatkészletek** kategóriában maradjon. Ezt a modult akkor is összekapcsolhatjuk, ha [átalakítási](apply-transformation.md) modult alkalmaz az átalakítás újbóli felhasználásához.
 
 ### <a name="refining-an-lda-model-or-results"></a>LDA-modell vagy-eredmények finomítása
 
@@ -177,7 +178,7 @@ Az indexek kiszámítását követően az egyes sorok a távolsági hasonlóság
 
 ###  <a name="module-parameters"></a>Modul paramétereinek
 
-|Name (Név)|Típus|Tartomány|Optional|Alapértelmezett|Leírás|  
+|Name|Típus|Tartomány|Választható|Alapértelmezett|Leírás|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cél oszlop (ok)|Oszlop kijelölése||Kötelező|StringFeature|Cél oszlop neve vagy indexe|  
 |A modellhez tartozó témakörök száma|Egész szám|[1; 1000]|Kötelező|5|A dokumentumok terjesztésének modellezése N témákkal|  
@@ -199,7 +200,7 @@ Az indexek kiszámítását követően az egyes sorok a távolsági hasonlóság
 |Kivonatoló bitek száma|Egész szám|[1; 31]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve, és a **ngrams-összeállítás szótárának** beállítása hamis.|12|A szolgáltatás kivonatolásakor használandó bitek száma|   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .   
 A modulokra jellemző hibák listáját a [tervező kivételei és hibakódai](designer-error-codes.md)című témakörben tekintheti meg.

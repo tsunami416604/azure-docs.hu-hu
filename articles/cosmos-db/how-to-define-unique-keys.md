@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: bb1fc927b52f9b59c1a71cdc4369bdea428f4586
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871010"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561139"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
 
@@ -43,7 +44,7 @@ Egyedi kulcsokkal rendelkező tároló létrehozásához lásd: [Azure Cosmos-t�
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-Amikor új tárolót hoz létre a [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)használatával, `UniqueKeyPolicy` egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Amikor új tárolót hoz létre a [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)használatával, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -81,7 +82,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-Amikor a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)-val új tárolót hoz létre `UniqueKeyPolicy` , egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Amikor a [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)-val új tárolót hoz létre, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```java
 // create a new DocumentCollection object
@@ -118,7 +119,7 @@ client.createCollection(String.format("/dbs/%s", "database"), container, null);
 
 ## <a name="use-the-nodejs-sdk"></a>A Node. js SDK használata
 
-Ha a [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos)-val új tárolót hoz létre `UniqueKeyPolicy` , egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
+Ha a [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos)-val új tárolót hoz létre, egy `UniqueKeyPolicy` objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
 ```javascript
 client.database('database').containers.create({
@@ -148,7 +149,7 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 })
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [particionálásról](partition-data.md)
 - Az [indexelés működésének](index-overview.md) megismerése

@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983601"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555864"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -228,13 +229,13 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
     
     A **Python-szkript** szövegmezője előre ki van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. Szerkesztenie vagy cserélnie kell ezt a kódot. Ügyeljen arra, hogy kövesse a behúzással és a burkolattal kapcsolatos Python-konvenciókat.
 
-    + A szkriptnek tartalmaznia kell egy nevű `azureml_main` függvényt, amely a modul belépési pontja.
-    + A belépési pont függvénynek két bemeneti argumentummal `Param<dataframe1>` kell `Param<dataframe2>`rendelkeznie: és, még akkor is, ha ezek az argumentumok nem használatosak a parancsfájlban.
-    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban `.\Script Bundle`történik, amely a Pythonhoz `sys.path`is hozzá van adva. 
+    + A szkriptnek tartalmaznia kell egy nevű függvényt `azureml_main` , amely a modul belépési pontja.
+    + A belépési pont függvénynek két bemeneti argumentummal kell rendelkeznie: `Param<dataframe1>` és `Param<dataframe2>` , még akkor is, ha ezek az argumentumok nem használatosak a parancsfájlban.
+    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban történik, `.\Script Bundle` amely a Pythonhoz is hozzá van adva `sys.path` . 
 
-    Ezért ha a zip-fájlja `mymodule.py`tartalmaz, importálja `import mymodule`azt a használatával.
+    Ezért ha a zip-fájlja tartalmaz `mymodule.py` , importálja azt a használatával `import mymodule` .
 
-    + Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú `pandas.DataFrame`sorozatot kell megadni. A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
+    + Két adatkészletet lehet visszaadni a tervezőnek, amelynek típusú sorozatot kell megadni `pandas.DataFrame` . A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
 
 6. Küldje el a folyamatot, vagy válassza ki a modult, és kattintson a **kijelölt futtatása** lehetőségre, hogy csak a Python-szkriptet futtassa.
 
@@ -251,6 +252,6 @@ A modul két adatkészletet ad vissza:
 + A **2. eredmény adatkészlete**, amelyet a második visszaadott Panda Dataframe a Python-parancsfájlban definiált
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

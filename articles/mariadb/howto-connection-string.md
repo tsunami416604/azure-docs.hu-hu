@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 18e3f2ab7c581a1ff93a65e410e83739564b5be5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530223"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558303"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Alkalmazások csatlakoztatása az Azure Database for MariaDB-hez
 Ez a témakör felsorolja a Azure Database for MariaDB által támogatott, a sablonokkal és példákkal együtt támogatott kapcsolatok karakterlánc-típusokat. Előfordulhat, hogy a kapcsolatok karakterláncában különböző paraméterek és beállítások vannak.
@@ -25,7 +26,7 @@ Ez a témakör felsorolja a Azure Database for MariaDB által támogatott, a sab
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-Ebben a példában a kiszolgáló `mydemoserver`neve, az adatbázis neve `wpdb`, a Felhasználónév `WPAdmin`és a jelszó. `mypassword!2` Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
+Ebben a példában a kiszolgáló neve `mydemoserver` , az adatbázis neve `wpdb` , a Felhasználónév `WPAdmin` és a jelszó `mypassword!2` . Ennek eredményeképpen a kapcsolatok karakterláncának a következőképpen kell szerepelnie:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>A kapcsolati sztring részleteinek beolvasása a Azure Portal
-A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MariaDB-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterlánc ![-lista lekéréséhez: a kapcsolódási karakterláncok panel a Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Database for MariaDB-kiszolgálót, majd kattintson a **kapcsolódási karakterláncok** lehetőségre a példányhoz tartozó karakterlánc-lista lekéréséhez: ![ a kapcsolódási karakterláncok panel a Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 A karakterlánc olyan adatokat tartalmaz, mint például az illesztőprogram, a kiszolgáló és más adatbázis-kapcsolati paraméterek. Módosítsa ezeket a példákat saját paraméterek használatára, például az adatbázis nevére, jelszavára stb. Ezt a karakterláncot használhatja a kód és az alkalmazások kiszolgálóhoz való kapcsolódáshoz.
 

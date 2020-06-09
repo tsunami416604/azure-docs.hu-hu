@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122331"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559094"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -101,7 +102,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet ha
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-dotnet` környezet beállításához:
 
@@ -169,7 +170,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
         popd
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -217,7 +218,7 @@ Az alábbi példa a következők 1. verzióját használja `functions-action` :
         app-name: PLEASE_REPLACE_THIS_WITH_YOUR_FUNCTION_APP_NAME
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes munkafolyamat. YAML fájl megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található, a névvel rendelkező fájlok egyikét `functionapp` . Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 

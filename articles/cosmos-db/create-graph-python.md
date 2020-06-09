@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062231"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559872"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
 
@@ -71,7 +72,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started\\ * mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a *C:\git-samples\azure-Cosmos-db-Graph-Python-Getting-Started \\ * mappában található *Connect.py* -fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
 
 * A Gremlin `client` inicializálva van a 104-es sorban a *Connect.py*:
 
@@ -99,7 +100,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-python/keys.png)
 
-2. Nyissa meg a *Connect.py* fájlt, és az 104. sorban illessze `<YOUR_ENDPOINT>` be az URI-értéket itt:
+2. Nyissa meg a *Connect.py* fájlt, és az 104. sorban illessze be az URI `<YOUR_ENDPOINT>` -értéket itt:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -185,7 +186,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    kulcs|érték|Megjegyzések
+    key|value|Megjegyzések
     ----|----|----
     PK|/pk| 
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -195,7 +196,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
     > [!NOTE]
     > Ebben a rövid útmutatóban egy nem particionált gyűjteményt hozunk létre. Ha azonban a gyűjtemény létrehozásakor megad egy partíciókulcsot és particionált gyűjteményt hoz létre, minden új csúcspontban meg kell adnia kulcsként a partíciókulcsot. 
 
-6. Kattintson az **OK** gombra. Előfordulhat, hogy ki kell terjesztenie a képernyőt a képernyő alján lévő **OK** gomb megjelenítéséhez.
+6. Válassza az **OK** lehetőséget. Előfordulhat, hogy ki kell terjesztenie a képernyőt a képernyő alján lévő **OK** gomb megjelenítéséhez.
 
 7. Válassza újra az **új csúcspontot** , és adjon hozzá egy további új felhasználót. 
 
@@ -203,18 +204,18 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    kulcs|érték|Megjegyzések
+    key|value|Megjegyzések
     ----|----|----
     PK|/pk| 
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|male| 
     school|MIT| 
 
-10. Kattintson az **OK** gombra. 
+10. Válassza az **OK** lehetőséget. 
 
 11. Válassza a **szűrő alkalmazása** gombot az alapértelmezett `g.V()` szűrővel a gráf összes értékének megjelenítéséhez. Most már az összes felhasználó megjelenik a **Találatok** listában. 
 
-    Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, váltson vissza a szűrőre `g.V()` , és válassza a **szűrő alkalmazása** lehetőséget az összes eredmény ismételt megjelenítéséhez.
+    Ha további adatokat ad meg, szűrőkkel csökkentheti a találatok számát. Az Adatkezelő alapértelmezés szerint a `g.V()` lekérdezést használja a gráf összes csúcspontjának lekéréséhez. Ezt más [gráflekérdezésre](tutorial-query-graph.md) is módosíthatja, például a `g.V().count()` lekérdezésre, ha azt szeretné, hogy a rendszer JSON formátumban adja vissza a gráf csúcspontjainak számát. Ha módosította a szűrőt, váltson vissza a szűrőre, `g.V()` és válassza a **szűrő alkalmazása** lehetőséget az összes eredmény ismételt megjelenítéséhez.
 
 12. Most már összekapcsolhatjuk a rakesh és az ashley elemet. Győződjön meg arról, hogy az **Ashley** ki van választva az **eredmények** listájában, majd kattintson a jobb alsó sarokban a **célok** elem melletti Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
 
@@ -234,11 +235,11 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot a Adatkezelő használatával, és hogyan futtathat egy Python-alkalmazást a gráfhoz való adatfelvételhez. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

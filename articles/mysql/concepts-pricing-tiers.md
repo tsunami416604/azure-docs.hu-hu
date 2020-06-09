@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: f633c33d0d90715a940129d62cee6472d33d2106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3af5a716bc5e211a7fd3263f57f5b5e62af628ef
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100957"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488358"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Árképzési szintek Azure Database for MySQL
 
 A Azure Database for MySQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | 5. gen |
 | Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ A Azure Database for MySQL-kiszolgálót a három különböző díjszabási szi
 
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
-| Basic | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
+| Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
 | Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriaoptimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
@@ -43,15 +43,15 @@ A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapu
 
 Az Ön által kiépített tárterület a Azure Database for MySQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a MySQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
-|    | **Basic** | **általános célú** | **Memória optimalizálva** |
+|    | **Alapszintű** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Tárolási típus | Alapszintű tárterület | általános célú Storage | általános célú Storage |
 | Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
+| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
 | IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
 
 > [!NOTE]
-> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, USA északi középső régiója, USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea Kelet-Ausztrália középső régiója
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, Észak-Európa, az USA déli középső régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Korea, Közép-Korea, Kelet-Ausztrália Dél-Korea
 >
 > Minden más régió akár 4TB, akár 6000 IOPS is támogat.
 >
@@ -99,7 +99,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mysql/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MySQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre MySQL-kiszolgálót a portálon](howto-create-manage-server-portal.md).
 - A [szolgáltatás korlátainak](concepts-limits.md)megismerése.
