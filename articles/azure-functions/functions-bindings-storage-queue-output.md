@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: cc996988-fb4f-47, tracking-python
+ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891456"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559960"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -21,7 +21,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely üzenetsor-üzenetet hoz létre minden fogadott http-kérelemhez.
 
@@ -87,7 +87,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-Egy `ICollector` vagy `IAsyncCollector` paraméter használatával egyszerre több üzenetet is küldhet. Az itt található C#-kód több üzenetet küld, egyet a HTTP-kérési adatokkal, az egyiket pedig a nehezen kódolt értékekkel:
+Egy vagy paraméter használatával egyszerre több üzenetet is küldhet `ICollector` `IAsyncCollector` . Az itt található C#-kód több üzenetet küld, egyet a HTTP-kérési adatokkal, az egyiket pedig a nehezen kódolt értékekkel:
 
 ```cs
 public static void Run(
@@ -142,7 +142,7 @@ module.exports = function (context, input) {
 };
 ```
 
-Egyszerre több üzenetet is küldhet, ha a `myQueueItem` kimeneti kötéshez definiál egy üzenet tömböt. A következő JavaScript-kód két üzenetsor-üzenetet küld az egyes fogadott HTTP-kérelmekhez rögzített értékekkel.
+Egyszerre több üzenetet is küldhet, ha a kimeneti kötéshez definiál egy üzenet tömböt `myQueueItem` . A következő JavaScript-kód két üzenetsor-üzenetet küld az egyes fogadott HTTP-kérelmekhez rögzített értékekkel.
 
 ```javascript
 module.exports = function(context) {
@@ -155,7 +155,7 @@ module.exports = function(context) {
 
 Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function. JSON* fájlhoz szükséges konfiguráció ugyanaz, mint az egyik módja.
 
-A Storage-várólista kötése a *function. JSON* fájlban *type* van definiálva, `queue`ahol a Type érték van beállítva.
+A Storage-várólista kötése a *function. JSON* fájlban van definiálva, ahol a *Type* érték van beállítva `queue` .
 
 ```json
 {
@@ -201,7 +201,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-Ha több üzenetet szeretne létrehozni a várólistán, deklaráljon egy paramétert a megfelelő lista típusaként, és adjon át egy értékeket tartalmazó tömböt (amely megfelel a `set` lista típusának) a metódusnak.
+Ha több üzenetet szeretne létrehozni a várólistán, deklaráljon egy paramétert a megfelelő lista típusaként, és adjon át egy értékeket tartalmazó tömböt (amely megfelel a lista típusának) a `set` metódusnak.
 
 ```python
 import azure.functions as func
@@ -230,7 +230,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
  }
 ```
 
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@QueueOutput` a Megjegyzés azon paramétereket, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméternek a következőnek `OutputBinding<T>`kell `T` lennie:, ahol a egy POJO natív Java-típusa.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` Megjegyzés azon paramétereket, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméternek a következőnek kell lennie: `OutputBinding<T>` , ahol a egy `T` POJO natív Java-típusa.
 
 ---
 
@@ -251,7 +251,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
+A tulajdonság beállításával `Connection` megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -307,21 +307,21 @@ public class HttpTriggerQueueOutput {
 |`queueName`  | Deklarálja a várólista nevét a Storage-fiókban. |
 |`connection` | A Storage-fiók kapcsolódási karakterláncára mutat. |
 
-A `QueueOutput` jegyzethez társított paraméter [OutputBinding\<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) példányként van beírva.
+A jegyzethez társított paraméter `QueueOutput` [OutputBinding \<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) -példányként van beírva.
 
 ---
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function. JSON* fájlban és az `Queue` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti `Queue` .
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | Értékre kell állítani `queue`. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | n/a | Értékre kell állítani `out`. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. `$return` Állítsa a értékre a függvény visszatérési értékének hivatkozásához.|
+|**típusa** | n.a. | Értékre kell állítani `queue` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | n.a. | Értékre kell állítani `out` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. Állítsa a értékre `$return` a függvény visszatérési értékének hivatkozásához.|
 |**queueName** |**QueueName** | A várólista neve. |
-|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" `connection` értékre van állítva, a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha üresen `connection` hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű `AzureWebJobsStorage`alkalmazás-beállításban.|
+|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -329,14 +329,14 @@ Az alábbi táblázat a *function. JSON* fájlban és az `Queue` attribútumban 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName`) használatával. `out` Paraméter helyett a metódus visszatérési típusát is használhatja, és `T` a következő típusok bármelyike lehet:
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
 
 * Egy, JSON-ként szerializálható objektum
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Ha egy hibaüzenetet próbál meg `CloudQueueMessage` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+Ha egy hibaüzenetet próbál meg kötni `CloudQueueMessage` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
 A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő típusok egyikének használatával: 
 
@@ -345,14 +345,14 @@ A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő t
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName`) használatával. A `paramName` a `name` *function. JSON*tulajdonságban megadott érték. `out` Paraméter helyett a metódus visszatérési típusát is használhatja, és `T` a következő típusok bármelyike lehet:
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. A a `paramName` `name` *function. JSON*tulajdonságban megadott érték. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
 
 * Egy, JSON-ként szerializálható objektum
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Ha egy hibaüzenetet próbál meg `CloudQueueMessage` kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+Ha egy hibaüzenetet próbál meg kötni `CloudQueueMessage` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
 A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő típusok egyikének használatával: 
 
@@ -367,7 +367,7 @@ A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol `<NAME>` 
 
 Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
 
-- **Visszatérési érték**: állítsa `name` be a tulajdonságot a *függvény. JSON* fájljában `$return`. Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
+- **Visszatérési érték**: állítsa be a `name` tulajdonságot a *függvény. JSON* fájljában `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
 
 - **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
 
@@ -377,7 +377,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 - Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
 
-- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), ahol `T` a egy POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a `setValue` metódus értékének átadása az Event hub-üzenetként megőrzi az értéket.
+- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
 
 ---
 
@@ -417,11 +417,11 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|A várólista-lekérdezések közötti maximális időköz. Minimum 00:00:00.100 (100 MS), és legfeljebb 00:01:00 (1 perc) értékkel növekszik.  Az 1. x adattípusa ezredmásodperc, a 2. x és a magasabb érték pedig egy TimeSpan.|
 |visibilityTimeout|00:00:00|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor. |
-|batchSize|16|Azoknak a üzenetsor-üzeneteknek a száma, amelyeket a függvények futtatókörnyezete egyszerre kér le, és párhuzamosan dolgozza fel a folyamatokat. A feldolgozás alatt álló szám lekérése után `newBatchThreshold`a futtatókörnyezet egy másik köteget kap, és elindítja az üzenetek feldolgozását. Így a függvények által feldolgozott egyidejű üzenetek maximális száma `batchSize` plusz. `newBatchThreshold` Ez a korlát külön vonatkozik az egyes üzenetsor-vezérelt függvényekre. <br><br>Ha el szeretné kerülni az egy várólistán fogadott üzenetek párhuzamos végrehajtását, beállíthatja az 1 `batchSize` értékre. Ez a beállítás azonban csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen fut (VM). Ha a Function alkalmazás több virtuális gépre is kiterjed, minden egyes virtuális gép futtathatja az egyes üzenetsor által aktivált függvények egy példányát.<br><br>A maximális `batchSize` érték 32. |
+|batchSize|16|Azoknak a üzenetsor-üzeneteknek a száma, amelyeket a függvények futtatókörnyezete egyszerre kér le, és párhuzamosan dolgozza fel a folyamatokat. A feldolgozás alatt álló szám lekérése után `newBatchThreshold` a futtatókörnyezet egy másik köteget kap, és elindítja az üzenetek feldolgozását. Így a függvények által feldolgozott egyidejű üzenetek maximális száma `batchSize` plusz `newBatchThreshold` . Ez a korlát külön vonatkozik az egyes üzenetsor-vezérelt függvényekre. <br><br>Ha el szeretné kerülni az egy várólistán fogadott üzenetek párhuzamos végrehajtását, beállíthatja `batchSize` az 1 értékre. Ez a beállítás azonban csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen fut (VM). Ha a Function alkalmazás több virtuális gépre is kiterjed, minden egyes virtuális gép futtathatja az egyes üzenetsor által aktivált függvények egy példányát.<br><br>A maximális `batchSize` érték 32. |
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.|
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása üzenetsor-tárolási adatváltozásként (trigger)](./functions-bindings-storage-queue-trigger.md)
 

@@ -10,12 +10,13 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398785"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561222"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
 
@@ -27,7 +28,7 @@ Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különb�
 
 ## <a name="data-range"></a>Adattartomány
 
-Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező `LastUpdatedAfter` és `LastUpdatedBefore` a paraméterek esetében nincsenek maximális dátumok. Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
+Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező és a paraméterek esetében nincsenek maximális dátumok `LastUpdatedAfter` `LastUpdatedBefore` . Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
 
 Ha 45 napnál hosszabb ideig kívánja megőrizni a folyamat adatait, állítsa be a saját diagnosztikai naplózását [Azure monitor](monitor-using-azure-monitor.md).
 
@@ -154,6 +155,6 @@ A folyamat PowerShell használatával történő létrehozásával és figyelés
 
 A PowerShell-parancsmagokkal kapcsolatos teljes dokumentációért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [folyamatok figyelése Azure monitor cikk használatával](monitor-using-azure-monitor.md) , amelyből megtudhatja, hogyan használhatja a Azure Monitor a Data Factory folyamatok figyelésére. 
 

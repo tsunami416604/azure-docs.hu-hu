@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418211"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558854"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -40,15 +40,14 @@ Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
 A következő táblázat a szerepköröket és az engedélyezett műveleteket mutatja Security Centerban.
 
-| Szerepkör | Biztonsági házirend szerkesztése | Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (beleértve a ' Quick Fix! ') | Riasztások bezárása | Riasztások és javaslatok megtekintése |
-|:--- |:---:|:---:|:---:|:---:|
-| Előfizetés tulajdonosa | ✔ | ✔ | ✔ | ✔ |
-| Előfizetés közreműködői | -- | ✔ | ✔ | ✔ |
-| Erőforráscsoport tulajdonosa | -- | ✔ | -- | ✔ |
-| Erőforráscsoport közreműködői | -- | ✔ | -- | ✔ |
-| Olvasó | -- | -- | -- | ✔ |
-| Biztonsági rendszergazda | ✔ | -- | ✔ | ✔ |
-| Biztonsági olvasó | -- | -- | -- | ✔ |
+|Műveletek|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Biztonsági házirend szerkesztése|-|✔|-|-|✔|
+|Előfizetés díjszabási szintjének módosítása|-|✔|-|-|-|
+|Automatikus kiépítés engedélyezése/letiltása|-|✔|-|-|-|
+|Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
+|Riasztások bezárása|-|✔|-|✔|✔|
+|Riasztások és javaslatok megtekintése|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Például rendelje hozzá az olvasó szerepkört azokhoz a felhasználókhoz, akik csak az erőforrások biztonsági állapotával kapcsolatos információkat szeretnének megtekinteni, de nem végeznek műveleteket, például javaslatok alkalmazása vagy szerkesztési szabályzatok.

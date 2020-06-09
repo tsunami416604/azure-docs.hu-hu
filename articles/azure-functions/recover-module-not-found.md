@@ -5,12 +5,13 @@ author: Hazhzeng
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: hazeng
-ms.openlocfilehash: 191cde0f90b4968ca230db72bad68cca8b1db3fd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691228"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554761"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Python-modul hibáinak elhárítása Azure Functions
 
@@ -134,7 +135,7 @@ Előfordulhat, hogy a csomag integrálva lett a [Python standard Library](https:
 
 Ha azonban egy olyan problémával szembesül, amelyet nem rögzítettek, és Ön határidővel rendelkezik. Azt javasoljuk, hogy végezzen kutatást, és találjon egy hasonló csomagot a projekthez. A Python-Közösség általában a hasonló könyvtárak széles választékát kínálja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem tudja feloldani a modulhoz kapcsolódó problémát, jelentse a következőt a functions csapatnak:
 

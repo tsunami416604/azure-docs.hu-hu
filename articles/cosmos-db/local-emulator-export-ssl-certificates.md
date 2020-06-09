@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: c72dbf24df850d8b0f7e5f26a873b78f5664c9e0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: tracking-python
+ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200938"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561181"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
@@ -70,7 +71,7 @@ Mindkét tanúsítvány újragenerálható a Windows-tálcán futó Azure Cosmos
 
 ## <a name="how-to-use-the-certificate-in-java"></a>A tanúsítvány használata a Javában
 
-A Java-ügyfelet használó Java-alkalmazások vagy MongoDB-alkalmazások futtatásakor a tanúsítvány telepítése egyszerűbb a Java alapértelmezett tanúsítványtárolóba, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők továbbítása. Például a mellékelt Java bemutató alkalmazás (`https://localhost:8081/_explorer/index.html`) az alapértelmezett tanúsítványtárolótól függ.
+A Java-ügyfelet használó Java-alkalmazások vagy MongoDB-alkalmazások futtatásakor a tanúsítvány telepítése egyszerűbb a Java alapértelmezett tanúsítványtárolóba, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők továbbítása. Például a mellékelt Java bemutató alkalmazás ( `https://localhost:8081/_explorer/index.html` ) az alapértelmezett tanúsítványtárolótól függ.
 
 A [Tanúsítvány hozzáadása a Java CA tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikk utasításai alapján importálja az X.509-tanúsítványt az alapértelmezett Java-tanúsítványtárolóba. Tartsa szem előtt, hogy a keytool parancs futtatásakor a %JAVA_HOME% könyvtárban fog dolgozni.
 
@@ -84,7 +85,7 @@ Alapértelmezés szerint az SQL API-hoz készült [PYTHON SDK (2.0.0 vagy újabb
 
 Alapértelmezés szerint a [Node. js SDK (1.10.1 vagy újabb verzió)](sql-api-sdk-node.md) az SQL API-hoz nem próbálkozik és nem használja a TLS/SSL-tanúsítványt a helyi emulátorhoz való csatlakozáskor. Ha azonban TLS-érvényesítést szeretne használni, kövesse a [Node. js dokumentációjában](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)található példákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

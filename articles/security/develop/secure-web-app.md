@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.custom: has-adal-ref
-ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 857303009b31945b0fe4f5555cb7e545cd16719d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612775"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558873"
 ---
 # <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazások fejlesztése
 
@@ -180,8 +180,8 @@ Ekkor megnyílik a böngésző, és jelentkezzen be a hitelesítő adataival. A 
 A telepítési parancsfájlok `deploy-powershell.ps1` és `deploy-bash.sh` a teljes alkalmazást telepítő programkódot tartalmaznak.
 A megoldás üzembe helyezése:
 
-1. Ha a PowerShell-t futtatja `deploy-powershell.ps1` a fájl futtatásával, írja `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` be a régió és az erőforráscsoport nevének lecserélése megfelelő Azure-régiókkal és az erőforráscsoport nevét.
-2. Ha Linux rendszeren futtatja a `deploy-bash.sh` fájlt `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, akkor előfordulhat, hogy beírja a fájl végrehajtható fájlját`chmod +x deploy-bash.sh`
+1. Ha a PowerShell-t futtatja a fájl futtatásával, `deploy-powershell.ps1` írja be `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` a régió és az erőforráscsoport nevének lecserélése megfelelő Azure-régiókkal és az erőforráscsoport nevét.
+2. Ha Linux rendszeren futtatja a `deploy-bash.sh` fájlt `/deploy-bash.sh REGION RESOURCE_GROUP_NAME` , akkor előfordulhat, hogy beírja a fájl végrehajtható fájlját`chmod +x deploy-bash.sh`
 
 Az alábbi példák a legfontosabb összetevők töredékeit mutatják be. A példákat egyenként vagy a többi összetevővel is üzembe helyezheti a fájlok telepítése lehetőség futtatásával.
 
@@ -311,10 +311,10 @@ Az alábbi kód az Azure kulcstartóban tárolt PGUSERNAME és PGPASSWORD-titkok
 Az adatbázis központi telepítése után a hitelesítő adatait és a kapcsolati karakterláncot a Azure Key Vaultban kell tárolnia.
 A parancsfájlok mappában található egy `functions.sql` fájl, amely tartalmazza azt a com/pgSQL kódot, amely a futtatott függvényeket hozza létre a futtatásakor. A fájl futtatása a felparaméterezi az SQL-injektálás korlátozására.
 
-A PostgreSQL egy nevű `psql` eszközzel van ellátva, amely az adatbázishoz való kapcsolódásra szolgál. A futtatásához `functions.sql`csatlakoznia kell a Azure Database for PostgreSQL-példányhoz a helyi gépről, és onnan kell futtatnia. A psql eszköz telepítése a PostgreSQL alapértelmezett telepítése minden operációs rendszeren megtalálható.
+A PostgreSQL egy nevű eszközzel van ellátva, `psql` amely az adatbázishoz való kapcsolódásra szolgál. A futtatásához `functions.sql` csatlakoznia kell a Azure Database for PostgreSQL-példányhoz a helyi gépről, és onnan kell futtatnia. A psql eszköz telepítése a PostgreSQL alapértelmezett telepítése minden operációs rendszeren megtalálható.
 További információkért tekintse meg a [Psql dokumentációját](https://www.postgresql.org/docs/9.3/app-psql.html).
 
-A Azure Cloud Shell az `psql` eszközt is tartalmazza. A Azure Portal Cloud Shell közvetlenül a Cloud Shell ikonra kattintva is használhatja.
+A Azure Cloud Shell az eszközt is tartalmazza `psql` . A Azure Portal Cloud Shell közvetlenül a Cloud Shell ikonra kattintva is használhatja.
 
 A PostgreSQL-példány távoli elérésének engedélyezéséhez engedélyeznie kell az IP-címet a PostgreSQL-ben.
 A hozzáférés engedélyezéséhez lépjen a **kapcsolatbiztonsági** lapra, válassza az **ügyfél IP-** címének hozzáadása lehetőséget, és mentse az új beállításokat.
@@ -437,7 +437,7 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-A fenti Docker a Azure Container Registryon tárolt tároló összeállítására szolgál `mcr.microsoft.com/samples/basic-linux-app`.
+A fenti Docker a Azure Container Registryon tárolt tároló összeállítására szolgál `mcr.microsoft.com/samples/basic-linux-app` .
 
 Az alábbi kód:
 
@@ -696,7 +696,7 @@ App Service példányok integrálható a virtuális hálózatokkal. Ez az integr
 
 1. A következő lapon válassza a **VNET hozzáadása (előzetes verzió)** lehetőséget.
 
-1. A következő menüben válassza ki azt a virtuális hálózatot, amely a (z `hello-vnet`) rendszerű központi telepítésben lett létrehozva. Létrehozhat egy új alhálózatot, vagy kijelölhet egy meglévőt is.
+1. A következő menüben válassza ki azt a virtuális hálózatot, amely a (z) rendszerű központi telepítésben lett létrehozva `hello-vnet` . Létrehozhat egy új alhálózatot, vagy kijelölhet egy meglévőt is.
    Ebben az esetben hozzon létre egy új alhálózatot. Állítsa a **címtartományt** a **10.0.3.0/24** értékre, és nevezze el az alhálózati **alkalmazás-alhálózatot**.
 
    ![App Service virtuális hálózati konfiguráció](./media/secure-web-app/app-vnet-config.png)
@@ -723,7 +723,7 @@ Most, hogy engedélyezte a virtuális hálózat integrációját, hozzáadhat h�
 
    *A NSG konfigurálása*
 
-4. Az átjáró NSG kimenő szabályaiban adjon hozzá egy olyan szabályt, amely engedélyezi a kimenő kapcsolatokat a App Service-példányhoz egy olyan szabály létrehozásával, amely `AppService`a szolgáltatási címkét célozza meg:
+4. Az átjáró NSG kimenő szabályaiban adjon hozzá egy olyan szabályt, amely engedélyezi a kimenő kapcsolatokat a App Service-példányhoz egy olyan szabály létrehozásával, amely a szolgáltatási címkét célozza meg `AppService` :
 
    ![Kimenő szabályok hozzáadása a NSG](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -754,7 +754,7 @@ Most, hogy engedélyezte a virtuális hálózat integrációját, hozzáadhat h�
 A támadási felület korlátozásához módosítsa a App Service hálózati beállításokat úgy, hogy csak az Application Gateway hozzáférjen az alkalmazáshoz.
 Ehhez lépjen a App Service hálózat lapra, válassza az **IP-korlátozások** lapot, és hozzon létre egy engedélyezési szabályt, amely lehetővé teszi, hogy csak az Application Gateway IP-címe legyen közvetlenül elérhető a szolgáltatáshoz.
 
-Az átjáró IP-címét az Áttekintés lapjáról kérheti le. Az **IP-CIDR** lapon adja meg az IP-címet a következő formátumban: `<GATEWAY_IP_ADDRESS>/32`.
+Az átjáró IP-címét az Áttekintés lapjáról kérheti le. Az **IP-CIDR** lapon adja meg az IP-címet a következő formátumban: `<GATEWAY_IP_ADDRESS>/32` .
 
 ![Csak az átjáró engedélyezése](./media/secure-web-app/app-allow-gw-only.png)
 
@@ -783,16 +783,16 @@ A Azure Portal konfigurálja az alkalmazást a szükséges hitelesítő adatok h
    *Az Azure AD-alkalmazás regisztrálásának konfigurálása*
 
 4. Megjelenik egy képernyő, amely megjeleníti a regisztrált alkalmazást és annak adatait. Ezt az információt fel kell vennie az Azure Key Vault-példányba.
-   1. Másolja át az alkalmazás (ügyfél) AZONOSÍTÓját, és mentse Key Vault `CLIENTID`néven.
-   2. Másolja az előző lépésben megadott átirányítási URI-t `REDIRECTURI`, és mentse azt.
-   3. Másolja az Azure AD alapértelmezett könyvtárának nevét, amelynek a formátuma a *Name*. microsoftonline.com, és mentse Key Vaultként `TENANT`.
-   4. Nyissa meg a korábban létrehozott Azure AD-alkalmazás **tanúsítványok & titkok** lapját, és válassza az **új ügyfél titka**lehetőséget, ahogy az alábbi képernyőképen is látható. Állítsa be a lejárati dátumot, majd másolja a generált értéket, és mentse Key Vaultként `CLIENTSECRET`.
+   1. Másolja át az alkalmazás (ügyfél) AZONOSÍTÓját, és mentse Key Vault néven `CLIENTID` .
+   2. Másolja az előző lépésben megadott átirányítási URI-t, és mentse azt `REDIRECTURI` .
+   3. Másolja az Azure AD alapértelmezett könyvtárának nevét, amelynek a formátuma a *Name*. microsoftonline.com, és mentse Key Vaultként `TENANT` .
+   4. Nyissa meg a korábban létrehozott Azure AD-alkalmazás **tanúsítványok & titkok** lapját, és válassza az **új ügyfél titka**lehetőséget, ahogy az alábbi képernyőképen is látható. Állítsa be a lejárati dátumot, majd másolja a generált értéket, és mentse Key Vaultként `CLIENTSECRET` .
 
       ![Azure AD-engedélyezési titok](./media/secure-web-app/ad-auth-secrets.png)
 
       *Azure AD-engedélyezési titok*
 
-   5. Biztonságos, véletlenszerű titkos kulcs létrehozása bármely parancssori/online eszköz használatával. Mentse Key Vaultként `FLASKSECRETKEY`. Az alkalmazás-keretrendszer ezt a kulcsot használja a munkamenetek létrehozásához.
+   5. Biztonságos, véletlenszerű titkos kulcs létrehozása bármely parancssori/online eszköz használatával. Mentse Key Vaultként `FLASKSECRETKEY` . Az alkalmazás-keretrendszer ezt a kulcsot használja a munkamenetek létrehozásához.
         A titkos kulcsok létrehozásával kapcsolatos további információkért lásd: [lombik-munkamenetek](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
 
 5. A bejelentkezés konfigurálása után fel kell vennie a felhasználókat az Azure AD-hivatkozásba, hogy be lehessen jelentkezni az erőforrásba. A hozzáadáshoz nyissa meg a **felhasználók** lapot az Azure ad-ban, válassza a **minden felhasználó**lehetőséget, majd válassza az **új felhasználó** vagy az **új vendég felhasználó**lehetőséget. Teszteléshez hozzáadhat egy vendég felhasználót, és meghívhatja a felhasználót a címtárba. Új felhasználót is hozzáadhat, ha az alkalmazást futtató tartomány érvényesítése megtörtént. Ebben a példában csak az Azure AD-bérlőben regisztrált felhasználók regisztrálhatók a hozzáféréshez. A több-bérlős bejelentkezések elérésével kapcsolatos információkért tekintse meg a dokumentációt.
@@ -804,7 +804,7 @@ A Azure Portal konfigurálja az alkalmazást a szükséges hitelesítő adatok h
 Miután hozzáadta az Azure AD-konfigurációt és a titkos kulcsokat a Key Vaulthoz, a felhasználók az Azure OAuth-hitelesítés használatával hitelesíthetők az alkalmazásba.
 Az alkalmazás kódjában ezt a Azure Active Directory Authentication Library (ADAL) kezeli.
 
-Miután a titkok bekerültek Key Vault, és az alkalmazás hozzáfér a titkokhoz és az adatbázishoz, az Application Service az átjáró alkalmazásának URL-címén (https\/:/GATEWAY_HASH. cloudapp. net) keresztül érhető el, amelyet a panelről érhet el.
+Miután a titkok bekerültek Key Vault, és az alkalmazás hozzáfér a titkokhoz és az adatbázishoz, az Application Service az átjáró alkalmazásának URL-címén (https: \/ /GATEWAY_HASH. cloudapp. net) keresztül érhető el, amelyet a panelről érhet el.
 
 Ha az Azure AD-ba való bejelentkezéskor egy hibaüzenet jelenik meg, amely szerint a "felhasználó nincs regisztrálva abban a címtárban, amelyet be szeretne jelentkezni," fel kell vennie a felhasználót. A felhasználó hozzáadásához nyissa meg az Azure AD **Users (felhasználók** ) lapját, és adja hozzá manuálisan a felhasználót a részletek beírásával vagy a felhasználó meghívásával, ha az e-mail-címét vendégként adja meg az Azure ad-ban a **vendég meghívása** panelen.
 
@@ -826,7 +826,7 @@ Az üzembe helyezés befejezése után Application Insights példánya van.
 Miután létrehozta az Applications-elemzések példányát, meg kell adnia az alkalmazásnak a rendszerállapot-kulcsot, amely lehetővé teszi, hogy naplókat küldjön a felhőbe. Ezt úgy teheti meg, hogy beolvassa a Application Insights kulcsot, és az Azure által a Application Insights számára biztosított alkalmazás-tárakon belül használja. Az ajánlott eljárás az, hogy a kulcsokat és a titkokat a Azure Key Vault tárolja, hogy azok biztonságban maradjanak.
 
 Az alapszintű minta alkalmazás esetében az Applications-elemzések példányának létrehozása után az alkalmazásnak ismernie kell a kialakítási kulcsot, amely lehetővé teszi, hogy a naplófájlokat küldjön a felhőbe.
-A Key Vaultban állítson `APPINSIGHTSKEY` be egy titkos kulcsot, és állítsa be az értékét a kialakítási kulcsként. Ez lehetővé teszi, hogy az alkalmazás naplókat és mérőszámokat küldjön Application Insights.
+A Key Vaultban állítson be egy titkos kulcsot, `APPINSIGHTSKEY` és állítsa be az értékét a kialakítási kulcsként. Ez lehetővé teszi, hogy az alkalmazás naplókat és mérőszámokat küldjön Application Insights.
 
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Multi-Factor Authentication implementálása Azure Active Directory
 
@@ -987,10 +987,10 @@ A biztonság egy hasonló alkalmazás, amely ellenőrzi a függőségeket. A [gi
 
 *Biztonsági*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek segíthetnek a biztonságos alkalmazások megtervezésében, fejlesztésében és üzembe helyezésében.
 
-- [Kialakítás](secure-design.md)
+- [Tervezés](secure-design.md)
 - [Fejlesztés](secure-develop.md)
 - [Telepítés](secure-deploy.md)

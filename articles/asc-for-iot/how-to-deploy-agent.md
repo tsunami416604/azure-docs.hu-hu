@@ -46,7 +46,7 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | --- | ----------- | --------- |
 | Nyílt forráskódú | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-c) | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-cs) |
 | Fejlesztési nyelv    | C# | C# |
-| Támogatott Windows-platformok? | Nem | Yes |
+| Támogatott Windows-platformok? | Nem | Igen |
 | Windows előfeltételek | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Támogatott linuxos platformok? | Igen, x64 és x86 | Igen, csak x64 |
 | A Linux előfeltételei | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |

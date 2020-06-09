@@ -3,14 +3,14 @@ title: Az első függvény létrehozása az Azure-ban a Visual Studio Code haszn
 description: Hozzon létre és tegyen közzé az Azure-on egy egyszerű, HTTP-eseményindítót használó függvényt az Azure Functions-bővítmény használatával a Visual Studio Code-ban.
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter, seo
+ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ebb402da5a647d20b669442c05c47a0f1c627471
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628180"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559925"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -101,48 +101,48 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 1. Adja meg a következő információkat a kérdésekben:
 
     ::: zone pivot="programming-language-csharp"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `C#`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `C#` .
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `JavaScript`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `JavaScript` .
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `TypeScript`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `TypeScript` .
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `PowerShell`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `PowerShell` .
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `Python`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Python` .
 
     + **Válasszon ki egy Python-aliast a virtuális környezet létrehozásához**: válassza ki a Python-tolmács helyét. Ha a hely nem jelenik meg, írja be a Python bináris fájl teljes elérési útját.  
     ::: zone-end
 
     ::: zone pivot="programming-language-java"  
-    + **Válasszon nyelvet a függvény projekthez**: válassza a `Java`lehetőséget.
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Java` .
 
-    + **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function`.
+    + **Adja meg a csoport azonosítóját**: válassza a lehetőséget `com.function` .
 
-    + **Adja meg az összetevő azonosítóját**: válassza a lehetőséget `myFunction`.
+    + **Adja meg az összetevő azonosítóját**: válassza a lehetőséget `myFunction` .
 
-    + **Adja meg a verziószámot**: válassza a lehetőséget `1.0-SNAPSHOT`.
+    + **Adja meg a verziószámot**: válassza a lehetőséget `1.0-SNAPSHOT` .
 
-    + **Adja meg a csomag nevét**: `com.function`válassza a lehetőséget.
+    + **Adja meg a csomag nevét**: válassza a lehetőséget `com.function` .
 
-    + **Adja meg az alkalmazás nevét**: `myFunction-12345`válassza a lehetőséget.
+    + **Adja meg az alkalmazás nevét**: válassza a lehetőséget `myFunction-12345` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger`.
+    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger` .
     
-    + **Adja meg a függvény nevét**: `HttpExample`Type.
+    + **Adja meg a függvény nevét**: Type `HttpExample` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp"
-    + **Adja meg a névteret**: Type `My.Functions`. 
+    + **Adja meg a névteret**: Type `My.Functions` . 
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Engedélyezési szint**: válassza `Anonymous`a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
+    + **Engedélyezési szint**: válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
     ::: zone-end  
-    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a `Add to workspace`lehetőséget.
+    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a lehetőséget `Add to workspace` .
 
 1. Ezen információk használatával a Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP-triggerrel. A helyi projektfájlok a Explorerben tekinthetők meg. További információ a létrehozott fájlokról: [generált projektfájlok](functions-develop-vs-code.md#generated-project-files). 
 
@@ -178,7 +178,7 @@ Miután meggyőződött róla, hogy a függvény megfelelően fut a helyi szám�
 
     ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha folytatja a következő lépéssel, [vegyen fel egy Azure Storage-várólista-kötést a függvényhez](functions-add-output-binding-storage-queue-vs-code.md), az összes erőforrást meg kell őriznie, hogy az Ön által már elvégzett feladatra épít.
 
@@ -188,7 +188,7 @@ Ellenkező esetben a következő lépésekkel törölheti a Function alkalmazás
 
 A functions-költségekkel kapcsolatos további tudnivalókért lásd: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

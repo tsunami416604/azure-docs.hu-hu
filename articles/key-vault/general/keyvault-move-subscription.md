@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121184"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488817"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
 
@@ -66,9 +66,8 @@ Győződjön meg arról, hogy a Azure Portal Azure Policy lapjára mutat, és te
 4. Válassza az "áthelyezés" gombot
 5. Válassza a "áthelyezés másik előfizetésre" lehetőséget a legördülő listából.
 6. Válassza ki azt az erőforráscsoportot, amelyben át szeretné helyezni a kulcstartót
-7. Válassza ki azt az erőforráscsoportot, amelyben át szeretné helyezni a kulcstartót
-8. Az erőforrások áthelyezésével kapcsolatos figyelmeztetés nyugtázása
-9. Válassza az OK lehetőséget
+7. Az erőforrások áthelyezésével kapcsolatos figyelmeztetés nyugtázása
+8. Válassza az OK lehetőséget
 
 ### <a name="additional-steps-post-move"></a>További lépések (áthelyezés utáni lépés)
 

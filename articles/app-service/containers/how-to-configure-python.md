@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Python-
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 96f7684176df35e9ac085dd2d7a0c576b7266883
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046026"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553252"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
 Ez a cikk leírja, hogyan futtatja [Azure app Service](app-service-linux-intro.md) a Python-alkalmazásokat, és hogyan szabhatja testre a app Service viselkedését, ha szükséges. A Python-alkalmazásokat az összes szükséges [pip](https://pypi.org/project/pip/) -modullal telepíteni kell.
 
-A App Service üzembe helyezési motor automatikusan aktiválja a virtuális környezetet, `pip install -r requirements.txt` és a [git-tárház](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)üzembe helyezésekor, vagy a létrehozási folyamatokkal rendelkező [zip-csomagon](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) fut.
+A App Service üzembe helyezési motor automatikusan aktiválja a virtuális környezetet, és a `pip install -r requirements.txt` [git-tárház](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)üzembe helyezésekor, vagy a létrehozási folyamatokkal rendelkező [zip-csomagon](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) fut.
 
 Ez az útmutató ismerteti a Python-fejlesztők számára a App Service beépített Linux-tárolóját használó főbb fogalmakat és útmutatást. Ha még soha nem használta a Azure App Servicet, először kövesse a [Python](quickstart-python.md) rövid [útmutatóját és a Pythont a PostgreSQL oktatóanyaggal](tutorial-python-postgresql-app.md) .
 
@@ -52,12 +52,12 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
-1. Futtassa az egyéni parancsfájlt, `PRE_BUILD_SCRIPT_PATH`ha a meg van adva.
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
 1. Futtassa az `pip install -r requirements.txt` parancsot.
-1. Ha a *Manage.py* a tárház gyökerében található, futtassa a *Manage.py collectstatic*. Ha `DISABLE_COLLECTSTATIC` azonban a értékre van `true`állítva, ez a lépés kimarad.
-1. Futtassa az egyéni parancsfájlt, `POST_BUILD_SCRIPT_PATH`ha a meg van adva.
+1. Ha a *Manage.py* a tárház gyökerében található, futtassa a *Manage.py collectstatic*. Ha azonban a értékre `DISABLE_COLLECTSTATIC` van állítva `true` , ez a lépés kimarad.
+1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és `DISABLE_COLLECTSTATIC` a olyan környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg `PRE_BUILD_COMMAND`a következőt:. A létrehozás utáni parancsok futtatásához adja meg `POST_BUILD_COMMAND`a következőt:. A Django-alkalmazások létrehozásakor a collectstatic futtatásának `DISABLE_COLLECTSTATIC=true`letiltásához állítsa be a következőt:.
+`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` és `DISABLE_COLLECTSTATIC` a olyan környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` . A Django-alkalmazások létrehozásakor a collectstatic futtatásának letiltásához állítsa be a következőt: `DISABLE_COLLECTSTATIC=true` .
 
 A következő példa a két változót adja meg egy több parancshoz, vesszővel elválasztva.
 
@@ -131,7 +131,7 @@ A tároló indítási viselkedését egy egyéni Gunicorn indítási parancs meg
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Ha például van egy olyan lombik-alkalmazás, amelynek a fő modulja a *Hello.py* , és az abban a fájlban található lombik `myapp`alkalmazás-objektum neve, akkor * \<a Custom-Command>* a következő:
+Ha például van egy olyan lombik-alkalmazás, amelynek a fő modulja a *Hello.py* , és az abban a fájlban található lombik alkalmazás-objektum neve `myapp` , akkor a *\<custom-command>* következő:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -143,9 +143,9 @@ Ha a főmodul egy almappában található (például `website`), a mappát a `--
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-További argumentumokat is hozzáadhat a Gunicorn az * \<egyéni parancsok>hoz *, például: `--workers=4`. További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Emellett további argumentumokat is hozzáadhat a Gunicorn, például a következőhöz: *\<custom-command>* `--workers=4` . További információkért lásd: [A Gunicorn futtatása](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Ha nem Gunicorn-kiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, az alábbihoz hasonló módon lecserélheti * \<az egyéni parancsok>* :
+Ha nem Gunicorn-kiszolgálót (például [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)) szeretne használni, a következőhöz hasonló módon cserélheti le *\<custom-command>* :
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy nevű `WEBSITE_SITE_NAME`alkalmazáshoz szeretne hozzáférni, használja a következő kódot:
+App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy nevű alkalmazáshoz szeretne hozzáférni `WEBSITE_SITE_NAME` , használja a következő kódot:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -164,14 +164,14 @@ os.environ['WEBSITE_SITE_NAME']
 
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
-App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e `X-Forwarded-Proto` , vagy sem, vizsgálja meg a fejlécet.
+App Service az [SSL-megszakítás](https://wikipedia.org/wiki/TLS_termination_proxy) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
 # Do something when HTTPS is used
 ```
 
-A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés `X_FORWARDED_PROTO` szerint ellenőrzi a értéket.
+A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabványos alkalmazási mintában lévő információk elérését. A [CodeIgniter](https://codeigniter.com/)-ben a [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) alapértelmezés szerint ellenőrzi a értéket `X_FORWARDED_PROTO` .
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
@@ -193,7 +193,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 - [A log stream elérése](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

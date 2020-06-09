@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699396"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552081"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés az Azure Files szolgáltatáshoz Pythonnal
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -42,14 +43,14 @@ pip install azure-storage-file
 ```
 
 > [!NOTE]
-> Ha a Python 0,36-es vagy korábbi verziójú Azure Storage SDK-ból frissít, távolítsa el a régebbi `pip uninstall azure-storage` SDK-t a legújabb csomag telepítése előtt.
+> Ha a Python 0,36-es vagy korábbi verziójú Azure Storage SDK-ból frissít, távolítsa el a régebbi SDK-t a `pip uninstall azure-storage` legújabb csomag telepítése előtt.
 
 Alternatív telepítési módszerekért keresse fel a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/)-t a githubon.
 
 ## <a name="view-the-sample-application"></a>A minta alkalmazás megtekintése
 f a Python és a Azure Files használatának módját bemutató minta alkalmazás megtekintése és futtatása [: az Azure Storage szolgáltatásban első lépések a python Azure Files](https://github.com/Azure-Samples/storage-file-python-getting-started). 
 
-A minta alkalmazás futtatásához győződjön meg arról, hogy a és `azure-storage-file` `azure-storage-common` a csomagokat is telepítette.
+A minta alkalmazás futtatásához győződjön meg arról, hogy a és a csomagokat is telepítette `azure-storage-file` `azure-storage-common` .
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Az alkalmazás beállítása Azure Files használatára
 Adja hozzá a következőt az összes olyan Python-forrásfájl tetejéhez, amelyben programozottan szeretné elérni az Azure Storage-t.
@@ -80,7 +81,7 @@ file_service.create_directory('myshare', 'sampledir')
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
-A megosztásban található fájlok és könyvtárak listázásához használja a **könyvtárak\_\_és\_fájlok listázása** módszert. A metódus egy generátort ad vissza. A következő kód egy megosztásban lévő egyes fájlok és könyvtárak **nevét** adja eredményül a konzolon.
+A megosztásban található fájlok és könyvtárak listázásához használja a ** \_ könyvtárak \_ és \_ fájlok listázása** módszert. A metódus egy generátort ad vissza. A következő kód egy megosztásban lévő egyes fájlok és könyvtárak **nevét** adja eredményül a konzolon.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -91,7 +92,7 @@ for file_or_dir in generator:
 ## <a name="upload-a-file"></a>Fájl feltöltése 
 Az Azure-fájlmegosztás legalább egy gyökérkönyvtárat tartalmaz, ahol a fájlok találhatók. Ebből a szakaszból megtudhatja, hogyan tölthet fel egy fájlt a helyi tárolóból egy megosztás gyökérkönyvtárára.
 
-Fájl létrehozásához és az adatok feltöltéséhez használja a `create_file_from_path`, `create_file_from_stream` `create_file_from_bytes` vagy `create_file_from_text` a metódust. Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
+Fájl létrehozásához és az adatok feltöltéséhez használja a `create_file_from_path` , `create_file_from_stream` `create_file_from_bytes` vagy a `create_file_from_text` metódust. Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
 
 `create_file_from_path`feltölti a fájl tartalmát a megadott elérési útról, és `create_file_from_stream` feltölti a tartalmat egy már megnyitott fájlból/streamből. `create_file_from_bytes`feltölt egy bájtos tömböt, és `create_file_from_text` feltölti a megadott szöveges értéket a megadott kódolással (alapértelmezett érték: UTF-8).
 
@@ -108,16 +109,16 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>Fájl letöltése
-Adatok fájlból `get_file_to_path`való letöltéséhez használja `get_file_to_stream` `get_file_to_bytes`a következőt:, `get_file_to_text`, vagy. Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
+Adatok fájlból való letöltéséhez használja a következőt:,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` vagy `get_file_to_text` . Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
 
-Az alábbi példa bemutatja `get_file_to_path` , hogyan töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a **out-Sunset. png** fájlba.
+Az alábbi példa bemutatja, hogyan `get_file_to_path` töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a **out-Sunset. png** fájlba.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
 ## <a name="delete-a-file"></a>Fájl törlése
-Végül a fájl törléséhez hívja `delete_file`meg a következőt:.
+Végül a fájl törléséhez hívja meg a következőt: `delete_file` .
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
@@ -176,7 +177,7 @@ Pillanatképeket tartalmazó megosztás csak akkor törölhető, ha az összes p
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte, hogyan kezelheti Azure Files a Python segítségével, az alábbi hivatkozásokat követve további információkat tudhat meg.
 
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)

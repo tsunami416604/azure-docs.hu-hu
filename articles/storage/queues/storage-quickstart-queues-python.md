@@ -7,12 +7,13 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 0ab8cb56b29460911f2cfe8b711a07329ee739d6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78199767"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553185"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Pythonhoz
 
@@ -28,7 +29,7 @@ Használja a Pythonhoz készült Azure üzenetsor Storage ügyféloldali kódtá
 * Üzenetek törlése egy várólistából
 * Üzenetsor törlése
 
-[API-referenciák dokumentáció](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [csomag (Python Package index)](https://pypi.org/project/azure-storage-queue/) | [minták](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-storage-queue/index)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)  |  [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-queue/)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +59,7 @@ Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Python-alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Telepítse az Azure Blob Storage ügyféloldali kódtárat a Python-csomaghoz `pip install` a parancs használatával.
+Telepítse az Azure Blob Storage ügyféloldali kódtárat a Python-csomaghoz a `pip install` parancs használatával.
 
 ```console
 pip install azure-storage-queue
@@ -69,7 +70,7 @@ Ez a parancs telepíti az Azure üzenetsor-tároló ügyféloldali függvénytá
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
 1. Új szövegfájl megnyitása a kódszerkesztő programban
-1. Utasítások `import` hozzáadása
+1. `import`Utasítások hozzáadása
 1. A program struktúrájának létrehozása, beleértve a nagyon egyszerű kivételek kezelését
 
     A kód a következő:
@@ -126,7 +127,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következ�
 
 Az alábbi kód a Storage-fiókhoz tartozó kapcsolatok karakterláncot kérdezi le. A rendszer tárolja a hálózati karakterláncot a [tárolási kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóban.
 
-Adja hozzá ezt a kódot `try` a blokkon belül:
+Adja hozzá ezt a kódot a `try` blokkon belül:
 
 ```python
     # Retrieve the connection string for use with the application. The storage
@@ -147,7 +148,7 @@ Döntse el az új üzenetsor nevét. Az alábbi kód egy UUID értéket fűz hoz
 
 Hozza létre a [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) osztály egy példányát. Ezután hívja meg a [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez:
+Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ```python
     # Create a unique name for the queue
@@ -165,9 +166,9 @@ Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 ### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása egy várólistához
 
-A következő kódrészlet üzeneteket hoz létre a várólistához a [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) metódus meghívásával. Emellett menti a harmadik [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) `send_message` hívásból visszaadott QueueMessage is. A `saved_message` az üzenet tartalmának későbbi, a programban való frissítésére szolgál.
+A következő kódrészlet üzeneteket hoz létre a várólistához a [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) metódus meghívásával. Emellett menti a harmadik hívásból visszaadott [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) is `send_message` . A az `saved_message` üzenet tartalmának későbbi, a programban való frissítésére szolgál.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez:
+Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ```python
     print("\nAdding messages to the queue...")
@@ -182,7 +183,7 @@ Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 Betekintés a várólista üzeneteibe a [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) metódus meghívásával. A `peek_messages` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez:
+Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ```python
     print("\nPeek at the messages in the queue...")
@@ -211,7 +212,7 @@ Az üzenet tartalmának frissítéséhez hívja meg a [update_message](https://d
 
 A korábban hozzáadott üzenetek letöltése a [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) metódus meghívásával.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez:
+Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ```python
     print("\nReceiving messages from the queue...")
@@ -226,7 +227,7 @@ Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 Az alkalmazás a felhasználói bevitel szüneteltetését hívja `input` meg, mielőtt feldolgozza és törli az üzeneteket. A törlés előtt ellenőrizze, hogy az erőforrások megfelelően lettek-e létrehozva a [Azure Portal](https://portal.azure.com) . A nem explicit módon törölt üzenetek később ismét láthatóvá válnak a várólistában, hogy egy másik lehetőség is feldolgozza őket.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez:
+Adja hozzá ezt a kódot a blokk végéhez `try` :
 
 ```python
     print("\nPress Enter key to 'process' messages and delete them from the queue...")
@@ -245,7 +246,7 @@ Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat a várólista törlésével a [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) metódus használatával.
 
-Adja hozzá ezt a kódot a `try` blokk végéhez, és mentse a fájlt:
+Adja hozzá ezt a kódot a blokk végéhez `try` , és mentse a fájlt:
 
 ```python
     print("\nPress Enter key to delete the queue...")
@@ -262,7 +263,7 @@ Adja hozzá ezt a kódot a `try` blokk végéhez, és mentse a fájlt:
 
 Ez az alkalmazás három üzenetet hoz létre és tesz hozzá egy Azure-várólistához. A kód felsorolja a várólistán lévő üzeneteket, majd lekéri és törli őket, mielőtt véglegesen törölné a várólistát.
 
-A konzol ablakban navigáljon a *Queues-Quickstart-v12.py* fájlt tartalmazó könyvtárhoz, majd futtassa a következő `python` parancsot az alkalmazás futtatásához.
+A konzol ablakban navigáljon a *Queues-Quickstart-v12.py* fájlt tartalmazó könyvtárhoz, majd futtassa a következő parancsot az `python` alkalmazás futtatásához.
 
 ```console
 python queues-quickstart-v12.py
@@ -301,7 +302,7 @@ Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalb
 
 Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket a Python-kóddal. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 

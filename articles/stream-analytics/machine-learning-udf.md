@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874086"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488749"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -24,7 +24,7 @@ A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása el
 
 1. A Azure Machine Learning használatával [üzembe helyezheti a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását.
+2. A pontozási szkriptnek tartalmaznia kell egy [minta bemeneteket és kimeneteket](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , amelyeket a Azure Machine learning használ a séma specifikációjának létrehozásához. Stream Analytics a séma segítségével értelmezi a webszolgáltatás funkciójának aláírását. Ezt a minta-Felskálázási [definíciót](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) hivatkozásként használva ellenőrizheti, hogy helyesen állította-e be.
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 

@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376630"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560439"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt figyelése az Azure-ban
 
 A monitorozás és a diagnosztika kritikus fontosságú a számítási feladatok bármilyen felhőalapú környezetben való fejlesztéséhez, teszteléséhez és üzembe helyezéséhez. Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-fürtöket események, teljesítményszámlálók és állapotjelentés használatával.   További információért olvassa el a [fürt figyelése](service-fabric-diagnostics-overview.md#platform-cluster-monitoring) és az [infrastruktúra figyelése](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)című témakört.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Service Fabric események megtekintése
@@ -124,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 Az HealthState = = 3 (hiba) állapotú állapotjelentést adja vissza, és további tulajdonságokat is Kinyer a EventMessage mezőből:
 
 ```kusto
@@ -210,7 +210,7 @@ A megbízható színészek eseményei hasonló módon tekinthetők meg:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-A megbízható szereplők részletes eseményeinek konfigurálásához a fürt sablonjában módosíthatja `scheduledTransferKeywordFilter` a diagnosztikai bővítmény konfigurációját. Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
+A megbízható szereplők részletes eseményeinek konfigurálásához a `scheduledTransferKeywordFilter` fürt sablonjában módosíthatja a diagnosztikai bővítmény konfigurációját. Ezeknek az értékeknek a részletei a [megbízható szereplőkkel kapcsolatos események hivatkozásában](service-fabric-reliable-actors-diagnostics.md#keywords)találhatók.
 
 ```json
 "EtwEventSourceProviderConfiguration": [

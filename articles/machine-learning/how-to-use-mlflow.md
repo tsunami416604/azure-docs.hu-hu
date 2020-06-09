@@ -10,12 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.openlocfilehash: 259c43c13f429cf04d95258f05116e9242324598
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 5d6e4bfb3c99d2fb570fea7aaebc7150088f1036
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431111"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559376"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Modell metrikáinak nyomon követése és ML modellek üzembe helyezése a MLflow és a Azure Machine Learning (előzetes verzió)
 
@@ -347,7 +348,7 @@ webservice.wait_for_deployment()
 
 A szolgáltatás üzembe helyezése több percet is igénybe vehet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem tervezi a naplózott metrikák és összetevők használatát a munkaterületen, akkor a törlési képesség jelenleg nem érhető el. Ehelyett törölje a Storage-fiókot és-munkaterületet tartalmazó erőforráscsoportot, így nem számítunk fel díjat:
 

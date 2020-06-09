@@ -2,17 +2,17 @@
 title: Események küldése a Auth0-ből az Azure-ba a Azure Event Grid használatával
 description: A Auth0 és az Azure-szolgáltatások közötti események befejezése Azure Event Grid használatával.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: 950b17611ba4932cc986d1b6488b904f29fdf04b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.author: femila
+ms.openlocfilehash: bd8cebaad27857dbd2fe3c5ed61be63d3700a688
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691319"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560753"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid integrálása a Auth0
 
@@ -60,7 +60,7 @@ Az Azure-beli Auth0-témakör aktiválása lehetővé teszi, hogy az események 
 1. Erősítse meg, hogy a `Source` mező megfelel a Auth0-fióknak.
 1. Kattintson az aktiválás gombra.
 
-### <a name="subscribe-to-auth0-events"></a>Előfizetés Auth0-eseményekre
+### <a name="subscribe-to-auth0-events"></a>Feliratkozás Auth0-eseményekre
 
 #### <a name="create-an-event-handler"></a>Eseménykezelő létrehozása
 A partneri témakör teszteléséhez szüksége lesz egy eseménykezelőre. Nyissa meg az Azure-előfizetését, és hozzon létre egy olyan szolgáltatást, amely [eseménykezelőként](event-handlers.md) , például egy [Azure-függvényként](custom-event-to-function.md)támogatott.
@@ -91,7 +91,7 @@ Próbáljon meg [egy olyan Auth0 műveletet meghívni, amely egy eseményt indí
 ## <a name="delivery-attempts-and-retries"></a>Kézbesítési kísérletek és újrapróbálkozások
 A Auth0-események továbbítása az Azure-ba egy streaming mechanizmus használatával történik. Minden eseményt a rendszer a Auth0-ben indít el. Ha Event Grid nem tudja fogadni az eseményt, a Auth0 legfeljebb háromszor próbálkozik az esemény kézbesítésével. Ellenkező esetben a Auth0 naplózza a hibát a rendszerbe történő kézbesítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Auth0-partneri témakör](auth0-overview.md)
 - [A partneri témakörök áttekintése](partner-topics-overview.md)

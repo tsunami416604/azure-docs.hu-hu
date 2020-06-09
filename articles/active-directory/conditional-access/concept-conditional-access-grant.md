@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583206"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558731"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -28,7 +28,7 @@ Egy feltételes hozzáférési szabályzaton belül a rendszergazda a hozzáfér
 
 A blokk figyelembe veszi az összes hozzárendelést, és megakadályozza a hozzáférést a feltételes hozzáférési házirend konfigurációja alapján.
 
-A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatni. Az engedélyezés előtt a rendszergazdáknak [csak jelentési módot](concept-conditional-access-report-only.md) kell használniuk a teszteléshez.
+A Block egy hatékony vezérlő, amelyet megfelelő ismeretekkel kell megforgatni. A blokk-utasításokkal rendelkező szabályzatok nem kívánt mellékhatással rendelkezhetnek. A méretezés engedélyezése előtt elengedhetetlen a megfelelő tesztelés és ellenőrzés. A rendszergazdáknak olyan eszközöket kell használniuk, mint például a [feltételes hozzáférés jelentésének módja](concept-conditional-access-report-only.md) és [a What if eszköz feltételes hozzáféréssel a](what-if-tool.md) módosítások végrehajtásakor.
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
@@ -62,6 +62,8 @@ Az eszközöknek regisztrálva kell lenniük az Azure AD-ben, mielőtt azok megf
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 
 A szervezetek dönthetnek úgy, hogy az eszköz identitását használják a feltételes hozzáférési szabályzat részeként. A szervezeteknek meg kell követelniük, hogy az eszközök hibrid Azure AD-hez legyenek csatlakoztatva ezzel a jelölőnégyzettel. Az eszközök identitásával kapcsolatos további információkért tekintse meg a [Mi az eszköz identitása?](../devices/overview.md)című cikket.
+
+Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügyelt eszközök engedélyezési vezérlésének vagy az eszköz állapotának megkövetelése nem támogatott. Ennek az az oka, hogy a hitelesítést végző eszköz nem tudja megadni az eszköz állapotát a kódot biztosító eszköz számára, és a tokenben lévő eszköz állapota zárolva van a hitelesítést végző eszközön. Használja helyette a multi-Factor Authentication engedélyezésének megkövetelése vezérlőt.
 
 ### <a name="require-approved-client-app"></a>Jóváhagyott ügyfélalkalmazás megkövetelése
 
@@ -137,7 +139,7 @@ Tekintse meg a következő cikket [: How to: app Protection-házirend és egy j�
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

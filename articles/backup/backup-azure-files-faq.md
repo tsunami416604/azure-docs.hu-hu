@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118012"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488698"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -56,7 +56,7 @@ Egy tetszőleges időpontban legfeljebb 200 pillanatkép készíthető fájlmego
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Tudok helyreállítani törölt Azure-fájlmegosztásból?
 
-Ha töröl egy Azure-fájlmegosztást, megjelenik a törölni kívánt biztonsági másolatok listája, és a rendszer megerősítést kér. Jelenleg egy törölt Azure-fájlmegosztás nem állítható vissza.
+Ha a fájlmegosztás lágyan törölt állapotban van, először törölnie kell a fájlmegosztást a visszaállítási művelet elvégzéséhez. A törlési művelettel a fájlmegosztás aktív állapotba kerül, ahol bármikor visszaállítható. A fájlmegosztás törlésének visszavonásához látogasson el [erre a hivatkozásra](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) , vagy tekintse meg a [fájlmegosztási parancsfájl törlésének](./scripts/backup-powershell-script-undelete-file-share.md)visszavonása című témakört. Ha a fájlmegosztás véglegesen törölve lett, nem fogja tudni visszaállítani a tartalmakat és a pillanatképeket.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Vissza tudok állítani biztonsági mentésekből, ha leállítottam az Azure-fájlmegosztás védelmét?
 
@@ -155,6 +155,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 >[!NOTE]
 >A házirend módosítása csak az ütemezett biztonsági mentés részeként létrehozott helyreállítási pontokra lesz hatással. Igény szerinti biztonsági mentések esetén a megőrzési időtartamot a biztonsági mentés során megadott **megőrzési** érték határozza meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása](troubleshoot-azure-files.md)

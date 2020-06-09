@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649609"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509236"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -211,3 +211,7 @@ A TCP-pingelés valójában nem csatlakozik a célként megadott FQDN-hez. Ez az
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Az IP-csoportok által támogatott IP-címek száma korlátozott?
 
 Igen. További információ: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Áthelyezhetek egy IP-csoportot egy másik erőforráscsoporthoz?
+
+Nem, az IP-csoportok másik erőforráscsoporthoz való áthelyezése jelenleg nem támogatott.

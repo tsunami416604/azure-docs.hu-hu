@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395263"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488630"
 ---
 # <a name="apply-transformation-module"></a>Átalakítási modul alkalmazása
 
@@ -32,13 +32,13 @@ A Designer lehetővé teszi adatátalakítások **adatkészletként** való ment
 
 1. Válassza a **kimenetek + naplók** lapot.
 
-1. Válassza a **Mentés ikont** az **eredmény átalakításának**mentéséhez.
+1. Keresse meg az átalakítás kimenetét, és válassza az **adatkészlet regisztrálása** lehetőséget, hogy a modul paletta **adatkészletek** kategóriája alatt mentse modulként.
 
 ## <a name="how-to-use-apply-transformation"></a>Az átalakítás alkalmazása  
   
 1. Adja hozzá az **átalakítási modul alkalmazása** a folyamathoz lehetőséget. Ez a modul a modul paletta **modell pontozás & próbaverzió** szakaszában található. 
   
-1. Keresse meg azt a mentett átalakítást, amelyet a modul paletta **adatkészletek** > **területén kíván** használni.
+1. Keresse meg a modul paletta **adatkészletek** területén használni kívánt mentett átalakítást.
 
 1. A mentett transzformáció kimenetének összekötése az **átalakítási modul alkalmazása** bal oldali bemeneti portjával.
 
@@ -48,6 +48,6 @@ A Designer lehetővé teszi adatátalakítások **adatkészletként** való ment
   
 1. Ha egy átalakítást szeretne alkalmazni az új adatkészletre, futtassa a folyamatot.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

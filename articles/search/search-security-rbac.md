@@ -50,7 +50,7 @@ Az alábbi táblázat összefoglalja az Azure Cognitive Searchban engedélyezett
 | Rendszergazdai kulcsok kezelése | Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson |
 | Lekérdezési kulcsok kezelése |  Rendszergazdai kulcs, RBAC tulajdonos vagy közreműködő az erőforráson  |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Cognitive Search](search-performance-optimization.md)

@@ -3,17 +3,17 @@ title: A Creator használata beltéri térképek létrehozásához
 description: Beltéri térképek létrehozásához használja a Azure Maps Creatort.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745934"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560354"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -38,6 +38,9 @@ Beltéri térképek létrehozása:
 4. Töltse le a [minta rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja, de más API-fejlesztési környezetet is választhat.
+
+>[!IMPORTANT]
+> Előfordulhat, hogy a dokumentumban szereplő API URL-címeket a létrehozó erőforrás helye alapján kell módosítani. További részletekért lásd: [hozzáférés a Creator Serviceshez](how-to-manage-creator.md#access-to-creator-services).
 
 ## <a name="upload-a-drawing-package"></a>Rajzfájl feltöltése
 

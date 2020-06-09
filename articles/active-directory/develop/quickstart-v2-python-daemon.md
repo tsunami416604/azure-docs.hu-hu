@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: aaddev, identityplatformtop40, tracking-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 90954ea2754fd77f1612bd616acb7d3c88e50816
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536046"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558652"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Python-konzol alkalmazásból az alkalmazás identitásával
 
@@ -56,7 +56,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait.
-> 1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például `Daemon-console`a **regisztrálás** elemre kattintva hozza létre az alkalmazást.
+> 1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például a `Daemon-console` **regisztrálás** elemre kattintva hozza létre az alkalmazást.
 > 1. A regisztrálás után válassza a **tanúsítványok & titkok** menüt.
 > 1. Az **ügyfél**titkos kulcsa területen válassza az **+ új ügyfél titka**lehetőséget. Adja meg a nevet, és válassza a **Hozzáadás**lehetőséget. Másolja a titkos kulcsot egy biztonságos helyre. Szüksége lesz rá a kódban való használatra.
 > 1. Most válassza ki az **API-engedélyek** menüt, válassza az **+ engedély hozzáadása** gombot, és válassza a **Microsoft Graph**lehetőséget.
@@ -92,7 +92,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Navigáljon az **1 – Call-MsGraph-WithSecret "** almappába.
-> 1. Szerkessze a **Parameters. JSON** fájlt, és cserélje le `authority`a `client_id`mezők, `secret` és a következő kódrészlet értékét:
+> 1. Szerkessze a **Parameters. JSON** fájlt, és cserélje le a mezők `authority` , `client_id` és a `secret` következő kódrészlet értékét:
 >
 >    ```json
 >    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
@@ -113,7 +113,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>4. lépés: rendszergazdai engedély
 
-Ha ezen a ponton próbálja meg futtatni az alkalmazást, *HTTP 403-Tiltott* hibaüzenetet kap: `Insufficient privileges to complete the operation`. Ez a hiba azért fordul elő, mert bármely *csak alkalmazásra vonatkozó engedélyhez* rendszergazdai hozzájárulás szükséges: a címtár globális rendszergazdájának hozzájárulást kell adnia az alkalmazáshoz. Válassza ki az alábbi lehetőségek egyikét a szerepkörtől függően:
+Ha ezen a ponton próbálja meg futtatni az alkalmazást, *HTTP 403-Tiltott* hibaüzenetet kap: `Insufficient privileges to complete the operation` . Ez a hiba azért fordul elő, mert bármely *csak alkalmazásra vonatkozó engedélyhez* rendszergazdai hozzájárulás szükséges: a címtár globális rendszergazdájának hozzájárulást kell adnia az alkalmazáshoz. Válassza ki az alábbi lehetőségek egyikét a szerepkörtől függően:
 
 ##### <a name="global-tenant-administrator"></a>Globális bérlői rendszergazda
 
@@ -193,13 +193,13 @@ app = msal.ConfidentialClientApplication(
 > |---------|---------|
 > | `config["secret"]` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `config["client_id"]` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
-> | `config["authority"]`    | A felhasználó által hitelesítendő STS-végpont. A <https://login.microsoftonline.com/{tenant}> nyilvános felhő esetében általában a (z) {bérlő} a bérlő vagy a bérlői azonosító neve.|
+> | `config["authority"]`    | A felhasználó által hitelesítendő STS-végpont. A nyilvános felhő esetében általában a (z) <https://login.microsoftonline.com/{tenant}> {bérlő} a bérlő vagy a bérlői azonosító neve.|
 
 További információkért tekintse [meg `ConfidentialClientApplication` ](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication) a következő dokumentációt:
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
-Ha a tokent az alkalmazás identitásával szeretné kérelmezni, használja `AcquireTokenForClient` a következő metódust:
+Ha a tokent az alkalmazás identitásával szeretné kérelmezni, használja a következő `AcquireTokenForClient` metódust:
 
 ```Python
 result = None
@@ -212,13 +212,13 @@ if not result:
 
 > |Az elemek magyarázata:| |
 > |---------|---------|
-> | `config["scope"]` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló `{Application ID URI}/.default` formátumot kell használnia, hogy jelezze, hogy a kért hatókörök az Azure Portalon beállított app object (Microsoft Graph, `{Application ID URI}` pont – `https://graph.microsoft.com`) számára statikusan meghatározottak. Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
+> | `config["scope"]` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló formátumot kell használnia, hogy `{Application ID URI}/.default` jelezze, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph, `{Application ID URI}` pont –) számára statikusan meghatározottak `https://graph.microsoft.com` . Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
 
 További információkért tekintse [meg `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) a következő dokumentációt:
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv kezdőlapját.
 

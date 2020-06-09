@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189803"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561737"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
@@ -67,7 +67,7 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 A flow-naplók a következő tulajdonságokat tartalmazzák:
 
 * az esemény naplózásának **időpontja**
-* **systemId** – hálózati biztonsági csoport erőforrás-azonosítója.
+* **systemId** – hálózati biztonsági csoport rendszerazonosítója.
 * **Kategória** – az esemény kategóriája. A kategória mindig **NetworkSecurityGroupFlowEvent**
 * **ResourceId** – a NSG erőforrás-azonosítója
 * **operationName** – mindig NetworkSecurityGroupFlowEvents
@@ -305,7 +305,7 @@ Használja az alábbi hivatkozásokat a flow-naplók engedélyezésére vonatkoz
 
 - [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
-- [parancssori felület](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
+- [Parancssori felület](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
 - [Azure Resource Manager](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)
 
@@ -413,7 +413,7 @@ A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltat�
 
 **Mi a különbség a flow-naplók között 1 & 2 verzió között?**
 
-A flow-naplók 2. verziója bevezeti a _folyamat állapotának_ fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
+A flow-naplók 2. verziója bevezeti a _folyamat állapotának_ fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 
 ## <a name="pricing"></a>Díjszabás
 

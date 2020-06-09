@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/16/2020
-ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6e4ff494ee79428f7d9e6a55d184b877c0d58e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605157"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554956"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQLban a Azure Portal használatával
 
@@ -29,42 +29,6 @@ Azure Database for MySQL támogatja egyes kiszolgálói paraméterek konfigurác
 5. Ha új értékeket mentett a paraméterek számára, az **összes visszaállítása az alapértelmezett**értékre lehetőség kiválasztásával bármikor visszaállíthatja az alapértelmezett értékeket.
 ![Az összes visszaállítása az alapértelmezett értékre](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Konfigurálható kiszolgálói paraméterek listája
-
-A támogatott kiszolgálói paraméterek listája folyamatosan bővül. A Azure Portal Server parameters (kiszolgálói paraméterek) lapján megtekintheti a definíciót és konfigurálhatja a kiszolgálói paramétereket az alkalmazás követelményei alapján.
-
-## <a name="non-configurable-server-parameters"></a>Nem konfigurálható kiszolgálói paraméterek
-
-A InnoDB-puffer mérete nem konfigurálható, és az [árképzési szintjéhez](concepts-service-tiers.md)van kötve.
-
-|**Díjszabási csomag**|**Virtuális mag (ok)**|**InnoDB-puffer mérete (MB <br>) (legfeljebb 4 TB tárhelyet támogató kiszolgálók)**| **InnoDB-puffer mérete (MB <br>) (legfeljebb 16 TB tárterületet támogató kiszolgálók)**|
-|:---|---:|---:|---:|
-|Basic| 1| 832| |
-|Basic| 2| 2560| |
-|Általános célú| 2| 3584| 7168|
-|Általános célú| 4| 7680| 15360|
-|Általános célú| 8| 15360| 30720|
-|Általános célú| 16| 31232| 62464|
-|Általános célú| 32| 62976| 125952|
-|Általános célú| 64| 125952| 251904|
-|Memóriaoptimalizált| 2| 7168| 14336|
-|Memóriaoptimalizált| 4| 15360| 30720|
-|Memóriaoptimalizált| 8| 30720| 61440|
-|Memóriaoptimalizált| 16| 62464| 124928|
-|Memóriaoptimalizált| 32| 125952| 251904|
-
-Ezek a további kiszolgálói paraméterek nem konfigurálhatók a rendszeren:
-
-|**Paraméter**|**Rögzített érték**|
-| :------------------------ | :-------- |
-|alapszintű innodb_file_per_table|KI|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|256MB|
-|innodb_log_files_in_group|2|
-
-Az itt felsorolt egyéb kiszolgálói paraméterek az [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) -es és a [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html)-es verziókhoz tartozó MySQL beépített alapértelmezett értékeire vannak beállítva.
-
 ## <a name="working-with-the-time-zone-parameter"></a>Az időzóna-paraméter használata
 
 ### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblák feltöltése
@@ -72,7 +36,7 @@ Az itt felsorolt egyéb kiszolgálói paraméterek az [5,7](https://dev.mysql.co
 A kiszolgálón található időzóna-táblákat úgy töltheti fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy olyan eszközről, mint a MySQL parancssor vagy a MySQL Workbench.
 
 > [!NOTE]
-> Ha a MySQL Workbenchből `mysql.az_load_timezone` futtatja a parancsot, előfordulhat, hogy először ki kell kapcsolnia a biztonságos frissítési `SET SQL_SAFE_UPDATES=0;`módot a használatával.
+> Ha a `mysql.az_load_timezone` MySQL Workbenchből futtatja a parancsot, előfordulhat, hogy először ki kell kapcsolnia a biztonságos frissítési módot a használatával `SET SQL_SAFE_UPDATES=0;` .
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -95,7 +59,7 @@ A globális szintű időzónát a Azure Portal **kiszolgáló paraméterek** lap
 
 ### <a name="setting-the-session-level-time-zone"></a>A munkamenet-szint időzónájának beállítása
 
-A munkamenet-szint időzónája beállítható úgy, `SET time_zone` hogy a parancsot egy olyan eszközről futtatja, mint a MySQL parancssor vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
+A munkamenet-szint időzónája beállítható úgy, hogy a `SET time_zone` parancsot egy olyan eszközről futtatja, mint a MySQL parancssor vagy a MySQL Workbench. Az alábbi példa az időzónát az **USA/csendes-óceáni** időzónára állítja be.
 
 ```sql
 SET time_zone = 'US/Pacific';
@@ -103,6 +67,6 @@ SET time_zone = 'US/Pacific';
 
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Database for MySQLhoz tartozó kapcsolatok kódtárai](concepts-connection-libraries.md).

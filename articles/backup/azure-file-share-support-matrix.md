@@ -4,12 +4,12 @@ description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási be�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193867"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488460"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -23,7 +23,7 @@ Az Azure-fájlmegosztás biztonsági mentése minden régióban elérhető, **ki
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>A véletlen törlés elleni védelem támogatott régiói
 
-USA nyugati középső régiója
+USA nyugati középső régiója, Kelet-Ausztrália, Közép-Kanada
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
@@ -53,7 +53,7 @@ USA nyugati középső régiója
 
 | Beállítás                                      | Korlát |
 | -------------------------------------------- | ----- |
-| Igény szerinti biztonsági másolatok maximális száma naponta | 4     |
+| Igény szerinti biztonsági másolatok maximális száma naponta | 10   |
 | Ütemezett biztonsági mentések maximális száma naponta | 1     |
 
 ## <a name="restore-limits"></a>Visszaállítási korlátok
@@ -82,7 +82,7 @@ USA nyugati középső régiója
 | Teljes megosztás visszaállítása | A teljes fájlmegosztást visszaállíthatja az eredeti vagy egy másik helyre. |
 | Elemszintű visszaállítás | Az egyes fájlokat és mappákat az eredetire vagy egy másik helyre állíthatja vissza |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést az Azure file shares](backup-afs.md) -ről
 * Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást](restore-afs.md)

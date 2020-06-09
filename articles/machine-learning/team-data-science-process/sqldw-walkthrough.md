@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418541"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558481"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az Azure szinapszis Analytics használatával egy nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e.  A modellek többosztályos besorolást tartalmaznak (legyen szó vagy sem a tippről) és a regresszióról (a tip-összeg kifizetésének eloszlása).
@@ -43,17 +43,17 @@ A New York-i taxi Trip-adat körülbelül 20 GB tömörített CSV-fájlból áll
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Az utazáshoz\_és az utazási\_viteldíjhoz való csatlakozáshoz használt **egyedi kulcs** a következő három mezőből áll:
+Az utazáshoz és az utazási viteldíjhoz való csatlakozáshoz használt **egyedi kulcs** \_ \_ a következő három mezőből áll:
 
 * medál
-* csapkod\_licenc és
-* felvételi\_dátum és idő.
+* csapkod \_ licenc és
+* felvételi \_ dátum és idő.
 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Az előrejelzési feladatok három típusának kezelése
-Három előrejelzési problémát fogalmazunk meg a *Tipp\_összege* alapján, amely háromféle modellezési feladatot ábrázol:
+Három előrejelzési problémát fogalmazunk meg a *Tipp \_ összege* alapján, amely háromféle modellezési feladatot ábrázol:
 
-1. **Bináris besorolás**: Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp\_-összeg* pozitív példa, míg az $0-es *tip\_-mennyiség* negatív példa.
-2. **Többosztályos besorolás**: az utazáshoz fizetett tipp tartományának előrejelzése. A *\_tipp összegét* öt raktárhelyre vagy osztályra osztjuk:
+1. **Bináris besorolás**: Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp- \_ összeg* pozitív példa, míg az $0-es *tip- \_ mennyiség* negatív példa.
+2. **Többosztályos besorolás**: az utazáshoz fizetett tipp tartományának előrejelzése. A *Tipp \_ összegét* öt raktárhelyre vagy osztályra osztjuk:
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -77,7 +77,7 @@ Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lé
 **Az Azure szinapszis Analytics-példány kiépítése.**
 Az Azure-beli szinapszis Analytics-példány kiépítéséhez kövesse a [Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portalben](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című dokumentációt. Győződjön meg arról, hogy a következő Azure szinapszis Analytics-beli hitelesítő adatokkal rendelkezik, amelyeket a későbbi lépésekben fog használni.
 
-* **Kiszolgáló neve**: \<kiszolgálónév>. database.Windows.net
+* **Kiszolgáló neve**: \<server Name> . database.Windows.net
 * **SQLDW (adatbázis) neve**
 * **Username**
 * **Jelszó**
@@ -323,7 +323,7 @@ El kell döntenie, hogy mi történik, ha duplikált forrás-és célfájl van.
 
 ![Kimenet a AzCopy][21]
 
-Saját adatait is használhatja. Ha az adatai a valós életben lévő helyszíni gépen vannak, akkor továbbra is használhatja a AzCopy-t a helyszíni adatok saját Azure Blob Storage-ba való feltöltéséhez. Csak a **forrás** helyét `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`kell módosítania, a PowerShell-parancsfájl AzCopy parancsában a helyi könyvtárba, amely az adatait tartalmazza.
+Saját adatait is használhatja. Ha az adatai a valós életben lévő helyszíni gépen vannak, akkor továbbra is használhatja a AzCopy-t a helyszíni adatok saját Azure Blob Storage-ba való feltöltéséhez. Csak a **forrás** helyét kell módosítania, a `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` PowerShell-parancsfájl AzCopy parancsában a helyi könyvtárba, amely az adatait tartalmazza.
 
 > [!TIP]
 > Ha az adatok már szerepelnek a saját Azure Blob Storage-ban a valós életben, akkor kihagyhatja a AzCopy lépést a PowerShell-szkriptben, és közvetlenül feltöltheti az adatait az Azure Azure szinapszis Analytics szolgáltatásba. Ehhez további módosításokat kell végrehajtania a parancsfájlban az adatformátumának megfelelően.
@@ -350,7 +350,7 @@ A jelen szakaszban leírt adatelemzési és szolgáltatás-létrehozási feladat
 
 * Ismerkedjen meg néhány mező adateloszlásával a különböző időtartományokban.
 * Vizsgálja meg a hosszúsági és a szélességi mezők adatminőségét.
-* Bináris és többosztályos besorolási Címkék készítése a **tip\_-összeg**alapján.
+* Bináris és többosztályos besorolási Címkék készítése a **tip- \_ összeg**alapján.
 * Szolgáltatások és számítások előállítása és az utazási távolságok összehasonlítása.
 * Csatlakoztassa a két táblázatot, és bontson ki egy véletlenszerű mintát, amelyet a rendszer a modellek létrehozásához használ majd.
 
@@ -366,7 +366,7 @@ Ezek a lekérdezések gyors ellenőrzést biztosítanak a táblák sorainak és 
 **Kimenet:** 173 179 759 és 14 oszlopot kell kapnia.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Kutatás: utazások eloszlása a medál alapján
-Ez a példában szereplő lekérdezés azokat a medálokat (taxi számokat) azonosítja, amelyek egy adott időszakon belül több mint 100 utazást teljesítenek. A lekérdezés kihasználja a particionált tábla elérését, mivel azt a **felvételi\_datetime**partíciós sémája feltétele. A teljes adatkészlet lekérdezése a particionált tábla és/vagy indexek vizsgálatát is igénybe veszi.
+Ez a példában szereplő lekérdezés azokat a medálokat (taxi számokat) azonosítja, amelyek egy adott időszakon belül több mint 100 utazást teljesítenek. A lekérdezés kihasználja a particionált tábla elérését, mivel azt a **felvételi \_ datetime**partíciós sémája feltétele. A teljes adatkészlet lekérdezése a particionált tábla és/vagy indexek vizsgálatát is igénybe veszi.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -540,7 +540,7 @@ Itt látható a távolság függvényt definiáló SQL-parancsfájl.
 | 3 |40,761456 |– 73,999886 |40,766544 |– 73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Az adatmodell-létrehozási művelet előkészítése
-A következő lekérdezés összekapcsolja a **\_nyctaxi Trip** és a **nyctaxi\_viteldíj** -táblázatokat, létrehoz egy bináris besorolási címkét, egy többosztályos besorolási címke **Tipp\_osztályt** **, és**Kinyer egy mintát a teljes csatlakoztatott adatkészletből. A mintavétel az utazások egy részhalmazának beolvasásával történik a felvételi idő alapján.  Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) [Importálás][adatimportálási] modulba az Azure-beli SQL Database példányból származó közvetlen adatfeldolgozáshoz. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
+A következő lekérdezés összekapcsolja a **nyctaxi \_ Trip** és a **nyctaxi \_ viteldíj** -táblázatokat, létrehoz egy bináris besorolási címkét, egy többosztályos besorolási címke **Tipp \_ osztályt** **, és**Kinyer egy mintát a teljes csatlakoztatott adatkészletből. A mintavétel az utazások egy részhalmazának beolvasásával történik a felvételi idő alapján.  Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net) [Importálás][adatimportálási] modulba az Azure-beli SQL Database példányból származó közvetlen adatfeldolgozáshoz. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -675,7 +675,7 @@ A minta tábla olvasásának ideje 14,096495 másodperc.
 A beolvasott sorok és oszlopok száma = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Leíró statisztikák
-Most már készen áll a mintavételen alapuló adatelemzések megismerésére. Első lépésként tekintse meg az **\_utazási távolságot** (vagy bármely más, a megadható mezőt) leíró statisztikát.
+Most már készen áll a mintavételen alapuló adatelemzések megismerésére. Első lépésként tekintse meg az **utazási \_ távolságot** (vagy bármely más, a megadható mezőt) leíró statisztikát.
 
     df1['trip_distance'].describe()
 
@@ -718,13 +718,13 @@ A fenti raktárhely-eloszlást egy sáv vagy egy sorba rajzoló ábrán ábrázo
 ![Nyomtatási sor kimenete][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizáció: scatterplot-példák
-Az **\_időpontot\_\_másodpercben** , a **\_távolságot** pedig a menetidő között láthatjuk, hogy van-e korreláció
+Az ** \_ időpontot \_ \_ másodpercben** , a ** \_ távolságot** pedig a menetidő között láthatjuk, hogy van-e korreláció
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Scatterplot az idő és a távolság közötti kapcsolat kimenete][6]
 
-Hasonlóképpen ellenőrizhető a **ráta\_kódja** és az **utazási\_távolság**közötti kapcsolat.
+Hasonlóképpen ellenőrizhető a **ráta \_ kódja** és az **utazási \_ távolság**közötti kapcsolat.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
@@ -844,7 +844,7 @@ Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szina
 ![Azure ML-vonat][10]
 
 > [!IMPORTANT]
-> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő címkét, és zárja ki a mezők **\_tipp osztályát**, a **\_tipp összegét** **és a** **teljes\_mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
+> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát**, a **Tipp \_ összegét**és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
 >
 > A szükségtelen oszlopok vagy a célzott szivárgások kizárásához használja az [Oszlopok kiválasztása az adatkészlet][select-columns] modulban vagy a [metaadatok szerkesztése][edit-metadata]lehetőséget. További információ: [Oszlopok kiválasztása az adatkészletben][select-columns] és a [metaadatokat][edit-metadata] tartalmazó hivatkozások szerkesztése.
 >

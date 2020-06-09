@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827295"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558565"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
 Ebből a cikkből megtudhatja, hogyan módosíthatja az alapértelmezett konfigurációt Azure Active Directory (Azure AD) csatlakozási szinkronizálásban. Néhány gyakori forgatókönyvhöz nyújt lépéseket. Ezzel az ismerettel a saját üzleti szabályai alapján egyszerű módosításokat végezhet saját konfigurációjában.
@@ -243,7 +243,7 @@ Nem minden Azure AD-attribútum importálható a helyszíni AD-összekötő ter�
  5. Kattintson **az OK** gombra a mentéshez.
 ![Forrás attribútum hozzáadása a helyszíni AD Connector sémához](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>3. lépés: a UserType hozzáadása az Azure AD Connector sémához
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>3. lépés: a UserType attribútum hozzáadása az Azure AD Connector sémához
 Alapértelmezés szerint a rendszer nem importálja a UserType attribútumot a Azure AD Connect térbe. A UserType attribútum hozzáadása az importált attribútumok listájához:
 
  1. Nyissa meg a Synchronization Service Manager **Összekötők** lapját.
@@ -340,7 +340,7 @@ A következő lépésekkel ellenőrizheti a módosításokat a teljes szinkroniz
 
 1. **Teljes importálás** futtatása a helyszíni **ad-összekötőn**:
 
-   1. Lépjen a Synchronization Service Manager **Operations (műveletek** ) lapjára.
+   1. Nyissa meg a Synchronization Service Manager **Összekötők** lapját.
    2. Kattintson a jobb gombbal a helyszíni **ad-összekötőre** , és válassza a **Futtatás**lehetőséget.
    3. Az előugró párbeszédpanelen válassza a **teljes importálás** lehetőséget, majd kattintson **az OK**gombra.
    4. Várjon, amíg a művelet befejeződik.
@@ -392,7 +392,7 @@ Engedélyezze újra a beépített szinkronizálási ütemező funkciót:
 2. Engedélyezze újra az ütemezett szinkronizálást a parancsmag futtatásával `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 

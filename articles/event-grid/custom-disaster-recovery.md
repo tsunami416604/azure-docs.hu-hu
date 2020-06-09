@@ -2,17 +2,17 @@
 title: A Azure Event Grid egyéni témaköreinek vész-helyreállítási következményei
 description: Ez az oktatóanyag végigvezeti az eseményvezérelt architektúra beállításának lépésein, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy régióban.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76511518"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557795"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
 A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
@@ -93,7 +93,7 @@ Most, hogy már van egy regionálisan redundáns pár témakör és előfizetés
 
 ### <a name="basic-client-side-implementation"></a>Alapszintű ügyféloldali implementáció
 
-Az alábbi mintakód egy egyszerű .NET-közzétevő, amely először az elsődleges témakörre próbálja meg közzétenni a közzétételt. Ha ez nem sikerül, a rendszer feladatátvételt hajt végre a másodlagos témakörben. Mindkét esetben a beolvasás során a másik témakör Health API-ját is ellenőrzi `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Az egészséges témakörnek mindig a **200 OK** értékűre kell válaszolnia, ha az **/API/Health** -végponton beolvasás történik.
+Az alábbi mintakód egy egyszerű .NET-közzétevő, amely először az elsődleges témakörre próbálja meg közzétenni a közzétételt. Ha ez nem sikerül, a rendszer feladatátvételt hajt végre a másodlagos témakörben. Mindkét esetben a beolvasás során a másik témakör Health API-ját is ellenőrzi `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` . Az egészséges témakörnek mindig a **200 OK** értékűre kell válaszolnia, ha az **/API/Health** -végponton beolvasás történik.
 
 ```csharp
 using System;
@@ -207,7 +207,7 @@ A mintát többféleképpen is kiterjesztheti igényei alapján. Nagy mennyiség
 
 Hasonlóképpen érdemes lehet megvalósítani a feladat-visszavétel logikáját az adott igények alapján. Ha a legközelebbi adatközpontba való közzététel kritikus fontosságú a késés csökkentése érdekében, rendszeres időközönként lekérdezheti egy olyan témakör Health API-ját, amely feladatátvételt végez. Ha ismét Kifogástalan állapotba kerül, biztos lehet benne, hogy a szorosabb adatközpontba történő feladat-visszavétel biztonságos.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [fogadhat eseményeket egy http-végponton](./receive-events.md)
 - Ismerje meg, hogyan [irányíthatja az eseményeket hibrid kapcsolatok](./custom-event-to-hybrid-connection.md)

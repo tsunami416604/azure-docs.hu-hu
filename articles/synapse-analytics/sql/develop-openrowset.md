@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702031"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560871"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
@@ -107,19 +107,19 @@ A lekérdezéshez célként megadott adatokat tartalmazó bemeneti fájlok eset�
 **"unstructured_data_path"**
 
 Az adatelérési utat kiépítő unstructured_data_path abszolút vagy relatív elérési út lehet:
-- Az " \< előtag>:// \< storage_account_path>/storage_path>" formátum abszolút elérési útja \< lehetővé teszi, hogy a felhasználó közvetlenül olvassa be a fájlokat.
+- A "://" formátumú abszolút elérési út \<prefix> \<storage_account_path> / \<storage_path> lehetővé teszi a felhasználók számára, hogy közvetlenül beolvassák a fájlokat.
 - Relatív elérési út a (z) "<storage_path>" formátumban, amelyet a paraméterrel kell használni, `DATA_SOURCE` és a <storage_account_path> helyen definiált fájl mintáját ismerteti `EXTERNAL DATA SOURCE` . 
 
  Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, amelyek az adott külső adatforráshoz kapcsolódnak. 
 
 | Külső adatforrás       | Előtag | Storage-fiók elérési útja                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<storage_account>. blob.core.windows.net             |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
 | Azure Data Lake Store Gen1 | https  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-" \< storage_path>"
+'\<storage_path>'
 
  Megadja a tárhelyen belüli útvonalat, amely az olvasni kívánt mappára vagy fájlra mutat. Ha az elérési út egy tárolóra vagy mappára mutat, a rendszer az adott tárolóból vagy mappából olvassa be az összes fájlt. Az almappákban található fájlok nem lesznek belefoglalva. 
 
@@ -130,7 +130,7 @@ Az alábbi példa az összes olyan *CSV* -fájlt beolvassa, amely a */CSV/Popula
 Ha a unstructured_data_path mappát adja meg, az SQL igény szerinti lekérdezése a mappában lévő fájlokat fogja lekérni. 
 
 > [!NOTE]
-> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a PloyBase függvénytől eltérően az SQL igény szerint olyan fájlokat ad vissza, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
+> A Hadoop és a Base függvénytől eltérően az SQL on-demand nem ad vissza almappákat. Emellett a Hadoop és a Base függvénytől eltérően az SQL igény szerint visszaadja azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik.
 
 Az alábbi példában, ha a unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , egy SQL igény szerinti lekérdezés a SajátAdatok. txt és a _Hidden. txt fájlból származó sorokat ad vissza. A mydata2. txt és a mydata3. txt fájlt nem fogja visszaadni, mert egy almappában találhatók.
 

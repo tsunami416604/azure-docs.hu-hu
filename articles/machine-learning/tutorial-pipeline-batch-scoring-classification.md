@@ -10,13 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 5b6b58cb205c769feeed011c0a2ba2ec569d667a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 6abfeb1601c85f9202611b914f9dfd47ac50ea1a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857763"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560962"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
 
@@ -38,7 +38,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Folyamat létrehozása, futtatása és közzététele
 > * REST-végpont engedélyezése a folyamat számára
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ Ha a telepítési oktatóanyagot saját [helyi környezetben](how-to-configure-e
 Munkaterület-objektum létrehozása a meglévő Azure Machine Learning munkaterületről.
 
 - A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy olyan osztály, amely elfogadja az Azure-előfizetést és az erőforrás-információkat. A munkaterület létrehoz egy felhőalapú erőforrást is, amellyel figyelheti és nyomon követheti a modell futtatását. 
-- `Workspace.from_config()`beolvassa a `config.json` fájlt, majd betölti a hitelesítési adatokat egy `ws`nevű objektumba. Ebben `ws` az oktatóanyagban az objektum a kódban van használatban.
+- `Workspace.from_config()`beolvassa a `config.json` fájlt, majd betölti a hitelesítési adatokat egy nevű objektumba `ws` . `ws`Ebben az oktatóanyagban az objektum a kódban van használatban.
 
 ```python
 from azureml.core import Workspace
@@ -61,7 +61,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-a-datastore-for-sample-images"></a>Adattár létrehozása minta lemezképekhez
 
-A `pipelinedata` fiókban szerezze be a nyilvános blob-tárolóból a ImageNet `sampledata` kiértékelése nyilvános adatok mintáját. Hívja `register_azure_blob_container()` meg a nevet `images_datastore`a munkaterület számára elérhetővé tenni kívánt adat számára. Ezután állítsa be a munkaterület alapértelmezett adattárát kimeneti adattárként. A kimeneti adattárral szerzi be a folyamat kimenetét.
+A `pipelinedata` fiókban szerezze be a nyilvános blob-tárolóból a ImageNet kiértékelése nyilvános adatok mintáját `sampledata` . Hívja `register_azure_blob_container()` meg a nevet a munkaterület számára elérhetővé tenni kívánt adat számára `images_datastore` . Ezután állítsa be a munkaterület alapértelmezett adattárát kimeneti adattárként. A kimeneti adattárral szerzi be a folyamat kimenetét.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -77,16 +77,16 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Adatkészlet-objektumok létrehozása
 
-A folyamatok létrehozásakor az `Dataset` objektumok a munkaterület-adattárolók adatainak beolvasására szolgálnak, és `PipelineData` az objektumok a közbenső adatok átvitelére szolgálnak a folyamat lépései között.
+A folyamatok létrehozásakor `Dataset` az objektumok a munkaterület-adattárolók adatainak beolvasására szolgálnak, és `PipelineData` az objektumok a közbenső adatok átvitelére szolgálnak a folyamat lépései között.
 
 > [!Important]
 > Az oktatóanyagban szereplő batch-pontozási példa csak egy folyamat lépését használja. A több lépésből álló használati esetekben a szokásos folyamat a következő lépéseket fogja tartalmazni:
 >
-> 1. Az `Dataset` objektumokat *bemenetként* használhatja a nyers adatok beolvasásához, az átalakítás elvégzéséhez `PipelineData` , majd az objektum *kimenetéhez* .
+> 1. Az `Dataset` objektumokat *bemenetként* használhatja a nyers adatok beolvasásához, az átalakítás elvégzéséhez, majd az objektum *kimenetéhez* `PipelineData` .
 >
 > 2. Használja a `PipelineData` *kimeneti objektumot* az előző lépésben *bemeneti objektumként*. Ismételje meg a műveletet a következő lépésekhez.
 
-Ebben a forgatókönyvben olyan objektumokat `Dataset` hoz létre, amelyek megfelelnek a bemeneti lemezképek és a besorolási címkék (y-test értékek) adattár-könyvtárainak. Hozzon létre egy `PipelineData` objektumot a Batch pontozási kimeneti adatokat is.
+Ebben a forgatókönyvben olyan objektumokat hoz létre, `Dataset` amelyek megfelelnek a bemeneti lemezképek és a besorolási címkék (y-test értékek) adattár-könyvtárainak. Hozzon létre egy `PipelineData` objektumot a Batch pontozási kimeneti adatokat is.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -140,7 +140,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 A gépi tanulási folyamatokat nem lehet helyileg futtatni, így Felhőbeli erőforrásokon vagy *távoli számítási célokon*futtathatja őket. A távoli számítási cél egy újrafelhasználható virtuális számítási környezet, amelyben kísérleteket és gépi tanulási munkafolyamatokat futtat. 
 
-Futtassa a következő kódot egy GPU-t támogató [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) cél létrehozásához, majd csatolja azt a munkaterülethez. További információ a számítási célokról: [fogalmi cikk](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
+Futtassa a következő kódot egy GPU-t támogató cél létrehozásához [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) , majd csatolja azt a munkaterülethez. További információ a számítási célokról: [fogalmi cikk](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 
 ```python
@@ -163,14 +163,14 @@ except ComputeTargetException:
 
 ## <a name="write-a-scoring-script"></a>Pontozási parancsfájl írása
 
-A pontozás végrehajtásához hozzon létre egy batch-pontozási `batch_scoring.py`parancsfájlt, amelyet aztán az aktuális könyvtárba kell írnia. A parancsfájl bemeneti képeket fogad, alkalmazza a besorolási modellt, majd az előrejelzéseket egy eredmény-fájlba írja.
+A pontozás végrehajtásához hozzon létre egy batch-pontozási parancsfájlt `batch_scoring.py` , amelyet aztán az aktuális könyvtárba kell írnia. A parancsfájl bemeneti képeket fogad, alkalmazza a besorolási modellt, majd az előrejelzéseket egy eredmény-fájlba írja.
 
-A `batch_scoring.py` szkript a következő paramétereket fogadja el, amelyeket később a `ParallelRunStep` létrehozás után érhet el:
+A `batch_scoring.py` szkript a következő paramétereket fogadja el, amelyeket később a létrehozás után érhet el `ParallelRunStep` :
 
 - `--model_name`: A használt modell neve.
-- `--labels_name`: A `labels.txt` fájlt birtokló fájl `Dataset` neve.
+- `--labels_name`: A `Dataset` `labels.txt` fájlt birtokló fájl neve.
 
-A folyamat-infrastruktúra a `ArgumentParser` osztály használatával továbbítja a paramétereket a folyamat lépéseibe. A következő kódban például az első argumentum `--model_name` a tulajdonság azonosítója. `model_name` A `init()` függvény `Model.get_model_path(args.model_name)` a tulajdonság elérésére szolgál.
+A folyamat-infrastruktúra a `ArgumentParser` osztály használatával továbbítja a paramétereket a folyamat lépéseibe. A következő kódban például az első argumentum `--model_name` a tulajdonság azonosítója `model_name` . A `init()` függvény a `Model.get_model_path(args.model_name)` tulajdonság elérésére szolgál.
 
 
 ```python
@@ -259,11 +259,11 @@ def run(mini_batch):
 ```
 
 > [!TIP]
-> Az oktatóanyagban szereplő folyamat csak egyetlen lépésből áll, és egy fájlba írja a kimenetet. A többlépéses folyamatok esetében azt is `ArgumentParser` megadhatja, hogy egy könyvtárat adjon meg a kimeneti adatok írásához a következő lépésekhez. Ha például a `ArgumentParser` tervezési minta használatával több folyamat lépései között kívánja átadni az adatátvitelt, tekintse meg a [jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
+> Az oktatóanyagban szereplő folyamat csak egyetlen lépésből áll, és egy fájlba írja a kimenetet. A többlépéses folyamatok esetében azt is `ArgumentParser` megadhatja, hogy egy könyvtárat adjon meg a kimeneti adatok írásához a következő lépésekhez. Ha például a tervezési minta használatával több folyamat lépései között kívánja átadni az adatátvitelt `ArgumentParser` , tekintse meg a [jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
 ## <a name="build-the-pipeline"></a>A folyamat összeállítása
 
-A folyamat futtatása előtt hozzon létre egy objektumot, amely meghatározza a Python-környezetet, és létrehozza a `batch_scoring.py` parancsfájl által igényelt függőségeket. A fő függőség szükséges a Tensorflow, de a háttérben futó folyamatokra is telepíthető `azureml-defaults` . Hozzon `RunConfiguration` létre egy objektumot a függőségek használatával. Továbbá a Docker és a Docker-GPU támogatását is megadhatja.
+A folyamat futtatása előtt hozzon létre egy objektumot, amely meghatározza a Python-környezetet, és létrehozza a `batch_scoring.py` parancsfájl által igényelt függőségeket. A fő függőség szükséges a Tensorflow, de a `azureml-defaults` háttérben futó folyamatokra is telepíthető. Hozzon létre egy `RunConfiguration` objektumot a függőségek használatával. Továbbá a Docker és a Docker-GPU támogatását is megadhatja.
 
 ```python
 from azureml.core import Environment
@@ -305,9 +305,9 @@ A folyamat lépés egy olyan objektum, amely minden olyan objektumot magában fo
 * Bemeneti és kimeneti adatok, valamint bármely egyéni paraméter
 * Hivatkozás a lépés során futtatandó parancsfájlra vagy SDK-logikára
 
-Több osztály örökli a szülő osztályt [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Kiválaszthatja az osztályokat, hogy meghatározott keretrendszerek vagy stackek használatával hozzon létre egy lépést. Ebben a példában a `ParallelRunStep` osztály használatával határozhatja meg a lépés logikáját egyéni Python-parancsfájl használatával. Ha a parancsfájlhoz tartozó argumentum vagy a lépés kimenete vagy a lépéshez tartozó érték, akkor az argumentumot a `arguments` tömbben *és* a `input` vagy a `output` paraméterben is meg kell adni. *both* 
+Több osztály örökli a szülő osztályt [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Kiválaszthatja az osztályokat, hogy meghatározott keretrendszerek vagy stackek használatával hozzon létre egy lépést. Ebben a példában a `ParallelRunStep` osztály használatával határozhatja meg a lépés logikáját egyéni Python-parancsfájl használatával. Ha a parancsfájlhoz tartozó argumentum vagy a lépés kimenete vagy a lépéshez tartozó érték, akkor az argumentumot *a* `arguments` tömbben *és* a `input` vagy a paraméterben is meg kell adni `output` . 
 
-Abban az esetben, ha több lépés is van, a `outputs` tömbben lévő objektum hivatkozása egy későbbi folyamat lépésének *bemenetként* válik elérhetővé.
+Abban az esetben, ha több lépés is van, a tömbben lévő objektum hivatkozása egy `outputs` későbbi folyamat lépésének *bemenetként* válik elérhetővé.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -328,9 +328,9 @@ A különböző lépésekhez használható osztályok listáját a [Steps csomag
 
 ## <a name="submit-the-pipeline"></a>A folyamat elküldése
 
-Most futtassa a folyamatot. Először hozzon létre `Pipeline` egy objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
+Most futtassa a folyamatot. Először hozzon létre egy `Pipeline` objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
 
-Ezután a `Experiment.submit()` függvény használatával küldje el a folyamatot végrehajtásra. Az egyéni paramétert `param_batch_size`is megadhatja. A `wait_for_completion` függvény a folyamat létrehozása során megjeleníti a naplókat. A naplók segítségével megtekintheti az aktuális folyamatot.
+Ezután a függvény használatával `Experiment.submit()` küldje el a folyamatot végrehajtásra. Az egyéni paramétert is megadhatja `param_batch_size` . A `wait_for_completion` függvény a folyamat létrehozása során megjeleníti a naplókat. A naplók segítségével megtekintheti az aktuális folyamatot.
 
 > [!IMPORTANT]
 > Az első folyamat futtatása körülbelül *15 percet*vesz igénybe. Minden függőséget le kell tölteni, létre kell hozni egy Docker-rendszerképet, és a Python-környezet kiépítve és létrehozva. A folyamat újbóli futtatása jelentősen kevesebb időt vesz igénybe, mivel ezek az erőforrások a létrehozás helyett újra felhasználhatók. A folyamat teljes futási ideje azonban a parancsfájlok és az egyes folyamatokban futó folyamatok mennyiségétől függ.
@@ -346,7 +346,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ### <a name="download-and-review-output"></a>Kimenet letöltése és áttekintése
 
-Futtassa a következő kódot a `batch_scoring.py` parancsfájlból létrehozott kimeneti fájl letöltéséhez. Ezután vizsgálja meg a pontozás eredményeit.
+Futtassa a következő kódot a parancsfájlból létrehozott kimeneti fájl letöltéséhez `batch_scoring.py` . Ezután vizsgálja meg a pontozás eredményeit.
 
 ```python
 import pandas as pd
@@ -381,9 +381,9 @@ published_pipeline
 
 A folyamat REST-végpontból való futtatásához szüksége van egy OAuth2-tulajdonos típusú hitelesítési fejlécre. Az alábbi példa interaktív hitelesítést használ (illusztrációs célokra), de az automatizált vagy a fej nélküli hitelesítést igénylő üzemi forgatókönyvek esetében használja az egyszerű szolgáltatás hitelesítését a [jelen cikkben leírtak](how-to-setup-authentication.md)szerint.
 
-Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory*-ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A hitelesítési [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) folyamat kezeléséhez használja a osztályt. 
+Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory*-ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) hitelesítési folyamat kezeléséhez használja a osztályt. 
 
-Mindkettő [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) és `ServicePrincipalAuthentication` öröklése `AbstractAuthentication`a következőtől:. Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
+Mindkettő [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) és `ServicePrincipalAuthentication` öröklése a következőtől: `AbstractAuthentication` . Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) függvényt ugyanúgy, hogy beolvassa a fejlécet:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -392,11 +392,11 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-A REST URL-cím beolvasása a közzétett folyamat objektumának `endpoint` tulajdonságában. A REST URL-címet a munkaterületen is megtalálhatja Azure Machine Learning Studióban. 
+A REST URL-cím beolvasása a `endpoint` közzétett folyamat objektumának tulajdonságában. A REST URL-címet a munkaterületen is megtalálhatja Azure Machine Learning Studióban. 
 
-Hozzon létre egy HTTP POST-kérelmet a végpontnak. Adja meg a hitelesítési fejlécet a kérelemben. Adjon hozzá egy olyan JSON-adattartalom objektumot, amely rendelkezik a kísérlet nevével és a Batch size paraméterrel. Ahogy az oktatóanyag korábbi részében is `param_batch_size` szerepel, a rendszer átadja `batch_scoring.py` a parancsfájlnak, mivel a `PipelineParameter` lépés konfigurációjában objektumként definiálta.
+Hozzon létre egy HTTP POST-kérelmet a végpontnak. Adja meg a hitelesítési fejlécet a kérelemben. Adjon hozzá egy olyan JSON-adattartalom objektumot, amely rendelkezik a kísérlet nevével és a Batch size paraméterrel. Ahogy az oktatóanyag korábbi részében is szerepel, a `param_batch_size` rendszer átadja a `batch_scoring.py` parancsfájlnak, mivel `PipelineParameter` a lépés konfigurációjában objektumként definiálta.
 
-A Futtatás elindítására vonatkozó kérelem elvégzése. Adja meg a kód segítségével `Id` a kulcs elérését a válasz szótárában a futtatási azonosító értékének lekéréséhez.
+A Futtatás elindítására vonatkozó kérelem elvégzése. Adja meg a kód segítségével a kulcs elérését a `Id` Válasz szótárában a futtatási azonosító értékének lekéréséhez.
 
 ```python
 import requests
@@ -421,7 +421,7 @@ published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
 RunDetails(published_pipeline_run).show()
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagokat szeretne futtatni.
 
@@ -440,7 +440,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Machine learning-folyamatok oktatóanyagában a következő feladatokat végezte el:
 

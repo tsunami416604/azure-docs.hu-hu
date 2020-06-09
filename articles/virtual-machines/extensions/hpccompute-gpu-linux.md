@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6bfbbacd0b30e206a9c1873c4df204117155e044
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465235"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559676"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogram-bővítmény Linux rendszerhez
 
@@ -83,7 +83,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 Az összes beállítás megadása nem kötelező. Az alapértelmezett viselkedés nem frissíti a rendszermagot, ha az illesztőprogram telepítéséhez nem szükséges, telepítse a legújabb támogatott illesztőprogramot és a CUDA-eszközkészletet (a megfelelő módon).
 
-| Name | Description | Alapértelmezett érték | Érvényes értékek | Adattípus |
+| Name | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | A kernel frissítése akkor is, ha az illesztőprogram telepítése nem szükséges | hamis | igaz, hamis | logikai |
 | driverVersion | NV: GRID-illesztőprogram verziója<br> NC/ND: CUDA Toolkit verziója. A kiválasztott CUDA legújabb illesztőprogramjai automatikusan települnek. | legújabb | RÁCS: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az alábbi példa a fenti Azure Resource Manager és PowerShell-példákat tükrözi, és az egyéni beállításokat is hozzáadja példaként a nem alapértelmezett illesztőprogramok telepítéséhez. Pontosabban frissíti az operációs rendszer kernelét, és telepíti a CUDA Toolkit egy adott verziójának illesztőprogramját.
+Az alábbi példa a fenti Azure Resource Manager és PowerShell-példákat tükrözi.
 
 ```azurecli
 az vm extension set \
@@ -146,10 +146,22 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 \
+  --version 1.3 \
+  }'
+```
+
+Az alábbi példa két opcionális egyéni beállítást is feltesz példaként a nem alapértelmezett illesztőprogram-telepítéshez. Pontosabban frissíti az operációs rendszer kernelét a legújabb verzióra, és telepíti az adott CUDA Toolkit-illesztőprogramját. Ismét figyelje meg, hogy a "--Settings" nem kötelező és az alapértelmezett. Vegye figyelembe, hogy a kernel frissítése növelheti a bővítmény telepítési időpontját. Ha egy adott (régebbi) CUDA tolkit-verziót is választ, előfordulhat, hogy nem minden esetben kompatibilis az újabb kernelekkel.
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85" \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +179,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
+A bővítmény végrehajtásának kimenete a következő fájlba lesz naplózva. Tekintse át ezt a fájlt, hogy nyomon követhesse a (bármilyen hosszan futó) telepítés állapotát, valamint a hibák elhárítását.
 
 ```bash
 /var/log/azure/nvidia-vmext-status

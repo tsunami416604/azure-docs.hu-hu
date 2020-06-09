@@ -2,17 +2,17 @@
 title: Azure Event Grid előfizetési séma
 description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozás tulajdonságait ismerteti. Event Grid előfizetési séma.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/23/2020
-ms.author: babanisa
-ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720758"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558976"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
 
@@ -22,7 +22,7 @@ Event Grid előfizetés létrehozásához küld egy kérést az esemény-előfiz
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Ha például egy nevű `examplestorage` `examplegroup`erőforráscsoporthoz tartozó Storage-fiókhoz szeretne esemény-előfizetést létrehozni, használja a következő formátumot:
+Ha például egy nevű erőforráscsoporthoz tartozó Storage-fiókhoz szeretne esemény-előfizetést létrehozni `examplestorage` `examplegroup` , használja a következő formátumot:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -75,6 +75,6 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

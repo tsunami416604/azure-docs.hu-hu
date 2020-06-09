@@ -6,16 +6,17 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283653"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557465"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott nyelvek 
 
@@ -27,7 +28,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,7 |
 | Támogatott DSVM-kiadások      | Windows Server 2016     |
-| Hogyan van konfigurálva/telepítve a DSVM?  | Két globális `conda` környezet jön létre: <br /> * Az `root` a környezet `/anaconda/` , amely a Python 3,7. <br/> * Az `python2` a környezet `/anaconda/envs/python2` , amely a Python 2,7.       |
+| Hogyan van konfigurálva/telepítve a DSVM?  | Két globális `conda` környezet jön létre: <br /> * Az a `root` környezet, amely a `/anaconda/` Python 3,7. <br/> * Az a `python2` környezet, amely a `/anaconda/envs/python2` Python 2,7.       |
 | Mintákra mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia.      |
 
@@ -55,7 +56,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
   A Visual Studio Community Edition-ben telepített Python Tools for Visual Studio (PTVS) használata. Alapértelmezés szerint az PTVS-ben automatikusan beállított környezet a Python 3,6. 
 
     > [!NOTE]
-    > Ahhoz, hogy a PTVS a Python 2,7-es verzióra mutasson, egyéni környezetet kell létrehoznia a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök** -> **Python-eszközök** -> **Python-környezetek** elemet, és válassza a **+ Egyéni**lehetőséget. Ezután állítsa be a **c:\anaconda\envs\python2** helyet, és válassza az **automatikus észlelés**lehetőséget.
+    > Ahhoz, hogy a PTVS a Python 2,7-es verzióra mutasson, egyéni környezetet kell létrehoznia a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök**  ->  **Python-eszközök**  ->  **Python-környezetek** elemet, és válassza a **+ Egyéni**lehetőséget. Ezután állítsa be a **c:\anaconda\envs\python2** helyet, és válassza az **automatikus észlelés**lehetőséget.
 
 * Használat a Jupyter-ben:
 
@@ -63,7 +64,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Python-csomagok telepítése:
 
-  A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a parancsot rendszergazdaként a `activate` root vagy a python2 környezetbe. Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
+  A DSVM lévő alapértelmezett Python-környezetek az összes felhasználó által olvasható globális környezetek. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, aktiválja a parancsot rendszergazdaként a root vagy a python2 környezetbe `activate` . Ezt követően használhatja a Package Managert (például `conda` vagy `pip` ) a csomagok telepítéséhez vagy frissítéséhez.
 
 ## <a name="python-linux-edition"></a>Python (Linux kiadás)
 
@@ -71,7 +72,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,5 |
 | Támogatott DSVM-kiadások      | Linux   |
-| Hogyan van konfigurálva/telepítve a DSVM?  | Két globális `conda` környezet jön létre: <br /> * `root`a-ben `/anaconda/` található környezet a Python 2,7. <br/> * `py35`a-ben `/anaconda/envs/py35`található környezet a Python 3,5.       |
+| Hogyan van konfigurálva/telepítve a DSVM?  | Két globális `conda` környezet jön létre: <br /> * `root`a-ben található környezet a `/anaconda/` Python 2,7. <br/> * `py35`a-ben található környezet a `/anaconda/envs/py35` Python 3,5.       |
 | Mintákra mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
@@ -130,13 +131,13 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * R-csomagok telepítése:
 
-  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert `install.packages()` a csomagok telepítéséhez vagy frissítéséhez.
+  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert a `install.packages()` csomagok telepítéséhez vagy frissítéséhez.
 
 **Linux**:
 
 * Futtatás a (z) terminálban:
 
-  Nyisson meg egy terminált `R`, és futtassa a parancsot.  
+  Nyisson meg egy terminált, és futtassa a parancsot `R` .  
 
 * Használat az IDE-ben:
 
@@ -148,7 +149,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * R-csomagok telepítése:
 
-  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert `install.packages()` a csomagok telepítéséhez vagy frissítéséhez.
+  Az R az összes felhasználó által olvasható globális környezetben van telepítve a DSVM. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa az R-t az előző módszerek egyikének használatával. Ezután futtathatja az R Package Managert a `install.packages()` csomagok telepítéséhez vagy frissítéséhez.
 
 
 ## <a name="julia"></a>Julia
@@ -166,7 +167,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Futtatás parancssorból
 
-  Nyisson meg egy parancssort, `julia`és futtassa a parancsot.
+  Nyisson meg egy parancssort, és futtassa a parancsot `julia` .
 * Használat az IDE-ben:
 
   A `Juno` DSVM-ben telepített Julia ide-vel és asztali parancsikonként használható.
@@ -177,16 +178,16 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Julia-csomagok telepítése:
 
-  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja `Pkg.add()` , például a csomagok telepítéséhez vagy frissítéséhez.
+  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja, például `Pkg.add()` a csomagok telepítéséhez vagy frissítéséhez.
 
 
 **Linux**:
 * Futtatás terminálon:
 
-  Nyisson meg egy terminált `julia`, és futtassa a parancsot.
+  Nyisson meg egy terminált, és futtassa a parancsot `julia` .
 * Használat az IDE-ben:
 
-  Használja `Juno`a (z) és a (z) Julia ide-t a DSVM, és elérhető az **alkalmazás** menüje parancsikonként.
+  Használja a (z) és a (z `Juno` ) Julia ide-t a DSVM, és elérhető az **alkalmazás** menüje parancsikonként.
 
 * Használat a Jupyter-ben:
 
@@ -194,14 +195,14 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Julia-csomagok telepítése:
 
-  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja `Pkg.add()` , például a csomagok telepítéséhez vagy frissítéséhez.
+  Az alapértelmezett Julia-hely az összes felhasználó által olvasható globális környezet. Csak rendszergazdák írhatnak és telepíthetnek globális csomagokat. Ha a csomagokat a globális környezetbe szeretné telepíteni, futtassa a Julia-t az előző módszerek egyikének használatával. Ezután a Julia Package Manager parancsait is futtathatja, például `Pkg.add()` a csomagok telepítéséhez vagy frissítéséhez.
 
 ## <a name="other-languages"></a>Egyéb nyelvek
 
-**C#**: elérhető Windows rendszeren, és elérhető a Visual Studio Community Edition vagy a `Developer Command Prompt for Visual Studio`alkalmazásban, ahol futtathatja a `csc` parancsot.
+**C#**: elérhető Windows rendszeren, és elérhető a Visual Studio Community Edition vagy a `Developer Command Prompt for Visual Studio` alkalmazásban, ahol futtathatja a `csc` parancsot.
 
-**Java**: a OPENJDK a DSVM Linux-és Windows-kiadásaiban érhető el, és az elérési útra van beállítva. A Java használatához írja be a `javac` vagy `java` a parancsot a parancssorba a Windows vagy a Linux rendszerű bash-rendszerhéjba.
+**Java**: a OPENJDK a DSVM Linux-és Windows-kiadásaiban érhető el, és az elérési útra van beállítva. A Java használatához írja be a `javac` vagy a `java` parancsot a parancssorba a Windows vagy a Linux rendszerű bash-rendszerhéjba.
 
-**Node. js**: a Node. js a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. A Node. js eléréséhez írja be `node` a `npm` vagy a parancsot a parancssorba a Windows rendszerben vagy a Linux bash-rendszerhéjon. Windows rendszeren a Node. js-eszközökhöz készült Visual Studio-bővítmény telepítve van a Node. js-alkalmazás fejlesztéséhez szükséges grafikus IDE létrehozásához.
+**Node. js**: a Node. js a DSVM Linux-és Windows-kiadásaiban is elérhető, és az elérési útra van beállítva. A Node. js eléréséhez írja be a `node` vagy a `npm` parancsot a parancssorba a Windows rendszerben vagy a Linux bash-rendszerhéjon. Windows rendszeren a Node. js-eszközökhöz készült Visual Studio-bővítmény telepítve van a Node. js-alkalmazás fejlesztéséhez szükséges grafikus IDE létrehozásához.
 
-**F #**: elérhető Windows rendszeren és elérhető a Visual Studio Community Edition vagy egy `Developer Command Prompt for Visual Studio`rendszeren keresztül, ahol futtathatja a `fsc` parancsot.
+**F #**: elérhető Windows rendszeren és elérhető a Visual Studio Community Edition vagy egy rendszeren keresztül `Developer Command Prompt for Visual Studio` , ahol futtathatja a `fsc` parancsot.

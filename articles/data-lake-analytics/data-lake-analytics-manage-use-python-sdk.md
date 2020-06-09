@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: tracking-python
+ms.openlocfilehash: 34b3801d32720b8512f056ad16e3b3e3a979ee4b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68355983"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559248"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Azure Data Lake Analytics kezelése a Python használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,13 +38,13 @@ Telepítse a következő modulokat:
 * Az **Azure-mgmt-datalake-Store** modul tartalmazza a Azure Data Lake Store Fiókkezelés műveleteit.
 * Az **Azure-mgmt-datalake-Analytics** modul tartalmazza a Azure Data Lake Analytics műveleteket. 
 
-Először győződjön meg arról, hogy rendelkezik `pip` a legújabb paranccsal a következő parancs futtatásával:
+Először győződjön meg arról, hogy rendelkezik a legújabb `pip` paranccsal a következő parancs futtatásával:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Ez a dokumentum a használatával `pip version 9.0.1`lett írva.
+Ez a dokumentum a használatával lett írva `pip version 9.0.1` .
 
 A következő `pip` parancsokkal telepítheti a modulokat a parancssorból:
 
@@ -259,7 +260,7 @@ adlaAccountClient.computePolicies.createOrUpdate(
     rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 - A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).

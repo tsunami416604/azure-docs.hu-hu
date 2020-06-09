@@ -3,13 +3,14 @@ title: Azure Functions összekötése az Azure Storage-hoz a parancssori eszköz
 description: Megtudhatja, hogyan csatlakoztathatja a Azure Functionst egy Azure Storage-várólistához egy kimeneti kötés hozzáadásával a parancssori projekthez.
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560104"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Azure Functions összekötése az Azure Storage-hoz a parancssori eszközök használatával
 
@@ -36,7 +37,7 @@ További információ a kötések részleteiről: [Azure functions eseményindí
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
-Ha a várólista-kötés definiálva van, most frissítheti a függvényt `msg` , hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
+Ha a várólista-kötés definiálva van, most frissítheti a függvényt, hogy megkapja a `msg` kimeneti paramétert, és üzeneteket írjon a várólistába.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -79,7 +80,7 @@ Figyelje meg, hogy *nem* kell kódot írnia a hitelesítéshez, a várólista-hi
 Most, hogy ellenőrizte a helyileg, hogy a függvény üzenetet írt az Azure Storage-várólistába, a projekt újbóli üzembe helyezésével frissítheti az Azure-on futó végpontot.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-A *LocalFunctionsProj* mappában használja a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) parancsot a projekt újbóli üzembe helyezéséhez,`<APP_NAME>` az alkalmazás nevével.
+A *LocalFunctionsProj* mappában használja a parancsot a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) projekt újbóli üzembe helyezéséhez, `<APP_NAME>` az alkalmazás nevével.
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -100,13 +101,13 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[Böngésző](#tab/browser)
     
-    Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Meghívási URL-** címet egy böngésző címsorába, és `&name=Functions`illessze be a lekérdezési paramétert. A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
+    Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Meghívási URL-** címet egy böngésző címsorába, és illessze be a lekérdezési paramétert `&name=Functions` . A böngészőnek hasonló kimenetet kell megjelenítenie, mint amikor a funkciót helyileg futtatta.
 
     ![A függvény kimenete az Azure-ban egy böngészőben fut](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[Curl](#tab/curl)
     
-    Futtassa [`curl`](https://curl.haxx.se/) a parancsot a **MEGhívási URL**-címmel `&name=Functions`, és illessze be a paramétert. A parancs kimenetének a "Hello functions" szövegnek kell lennie.
+    Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel**, és illessze be a paramétert `&name=Functions` . A parancs kimenetének a "Hello functions" szövegnek kell lennie.
     
     ![A függvény kimenete az Azure-on a CURL használatával fut](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
@@ -114,7 +115,7 @@ mvn azure-functions:deploy
 
 1. Az előző szakaszban leírtak szerint vizsgálja meg újra a tárolási várólistát annak ellenőrzéséhez, hogy az tartalmazza-e a várólistára írt új üzenetet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Miután végzett, a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
 
@@ -122,7 +123,7 @@ Miután végzett, a következő paranccsal törölheti az erőforráscsoportot �
 az group delete --name AzureFunctionsQuickstart-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények parancssorból való fejlesztéséről a Core Tools és az Azure CLI használatával:
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 6bf26a739169c561e95c7376a75166daf9aa9fb0
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 81832e3ccfb3529f94b41b903a8b73fbbe7bbd40
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309985"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553068"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -22,6 +22,69 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
 
+## <a name="2020-06-08"></a>2020-06-08
+
+### <a name="azure-machine-learning-sdk-for-python-v170"></a>Azure Machine Learning SDK a Python v 1.7.0
+
++ **Hibajavítások és javítások**
+  + **Azure-CLI-ml**
+    + Befejeződött a modell profilkészítésének eltávolítása a Mir használatával a CLI-parancsok és a csomagok függőségeinek tisztításával, a modell profilkészítése pedig elérhető a Core-ban.
+    + Az Azure CLI minimális verziójának frissítése a 2.3.0-re
+  + **azureml-automl-core**
+    + Jobb kivételt jelző üzenet a featurization fit_transform () lépésnél az egyéni átalakító paraméterek miatt.
+    + Több nyelv támogatása a Deep learning transzformátor-modellekhez, például a BERT in automatizált ML-ben.
+    + Távolítsa el az elavult lag_length paramétert a dokumentációból.
+    + Az előrejelzési paraméterek dokumentációja javult. A lag_length paraméter elavult.
+  + **azureml-automl-runtime**
+    + Kijavítottuk a hibát, amikor az egyik kategorikus oszlop üres az előrejelzési/tesztelési időszakban.
+    + Javítsa ki a futtatási hibákat, amikor a lookback funkciói engedélyezve vannak, és az adathalmazok rövid gabonát tartalmaznak.
+    + A duplikált időindextel kapcsolatos hibaüzenet kijavította, ha a késések vagy a gördülő ablakok értéke automatikus.
+    + Kijavítottuk a próféta-és Arima-modellekkel kapcsolatos problémát a lookback funkciókat tartalmazó adatkészleteken.
+    + A 1677-09-21-as és a 2262-04-11-os dátum előtti dátumok támogatása az előrejelzési feladatokban az egyes oszlopokban. Javított hibaüzenetek.
+    + Az előrejelzési paraméterek dokumentációja javult. A lag_length paraméter elavult.
+    + Jobb kivételt jelző üzenet a featurization fit_transform () lépésnél az egyéni átalakító paraméterek miatt.
+    + Több nyelv támogatása a Deep learning transzformátor-modellekhez, például a BERT in automatizált ML-ben.
+    + Az egyes OSErrors eredményező gyorsítótárazási műveletek felhasználói hibát okoznak.
+    + A betanítási és érvényesítési adatmennyiség és az oszlopok azonos számának és oszlopának ellenőrzése
+    + Az automatikusan generált AutoML pontozási parancsfájl kijavított hibája, ha az adatgyűjtés idézőjeleket tartalmaz
+    + A AutoML próféták és a próféta-modellt tartalmazó együttes modellek magyarázatának engedélyezése.
+    + Egy nemrégiben feltett vásárlói probléma feltárt egy élő helyen lévő hibát, amelyben az üzenetek az osztály-kiegyensúlyozó-Söpörés alatt jelennek meg, akkor is, ha az osztály kiegyensúlyozási logikája nem megfelelő. Ezeket a naplókat/üzeneteket ezzel a PR-val távolíthatja el.
+  + **azureml – CLI – gyakori**
+    + Befejeződött a modell profilkészítésének eltávolítása a Mir használatával a CLI-parancsok és a csomagok függőségeinek tisztításával, a modell profilkészítése pedig elérhető a Core-ban.
+  + **azureml-contrib-reinforcementlearning**
+    + A Load Testing Tool eszköz
+  + **azureml-core**
+    + A dokumentáció változásai Script_run_config.
+    + Kijavít egy hibát a küldési folyamat parancssori felületének kimenetének nyomtatásával
+    + Dokumentációs funkciók a azureml-Core/azureml.-adatbázishoz
+    + Kijavítja a Storage-fiók hdfs getconf paranccsal történő beolvasásának problémáját
+    + Továbbfejlesztett register_azure_blob_container és register_azure_file_share dokumentáció
+  + **azureml-datadrift**
+    + Továbbfejlesztett implementáció a DataSet drift-figyelők letiltásához és engedélyezéséhez
+  + **azureml-interpret**
+    + A magyarázó ügyfélen távolítsa el a NaNs vagy az INF-et az összetevők feltöltéséhez szükséges JSON-szerializálás előtt.
+    + Az értelmező Közösség legújabb verziójának frissítése – a memóriával kapcsolatos hibák javítása a számos funkcióval és osztállyal rendelkező globális magyarázatokkal
+    + True_ys opcionális paraméter hozzáadása a magyarázat feltöltéséhez a Studio felhasználói felületének további szolgáltatásainak engedélyezéséhez
+    + A download_model_explanations () és a list_model_explanations () teljesítményének javítása
+    + Kis csípések a jegyzetfüzetekhez, a hibakeresés támogatásához
+  + **azureml-opendatasets**
+    + a azureml-opendatasets a azureml-adatelőkészítés 1.4.0 vagy újabb verziójára van szüksége. Figyelmeztetés hozzáadva, ha az alacsonyabb verzió észlelhető
+  + **azureml-pipeline-core**
+    + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
+    + A Node-fiók engedélyezése lehet egy ParallelRunStep a azureml. pipeline folyamatban. lépések
+  + **azureml-pipeline-steps**
+    + Ez a módosítás lehetővé teszi, hogy a felhasználó opcionális runconfig adjon meg a moduleVersion a modul meghívásakor. Publish_python_script.
+  + **azureml-train-automl-client**
+    + Több nyelv támogatása a Deep learning transzformátor-modellekhez, például a BERT in automatizált ML-ben.
+    + Távolítsa el az elavult lag_length paramétert a dokumentációból.
+    + Az előrejelzési paraméterek dokumentációja javult. A lag_length paraméter elavult.
+  + **azureml-train-automl-runtime**
+    + A AutoML próféták és a próféta-modellt tartalmazó együttes modellek magyarázatának engedélyezése.
+    + Dokumentációs frissítések a azureml-Train-automl-* csomagokhoz.
+  + **azureml-train-core**
+    + A TensorFlow 2,1-es verziójának támogatása a PyTorch-Kalkulátorban
+    + A azureml-Train-Core csomag fejlesztése.
+  
 ## <a name="2020-05-26"></a>2020-05-26
 
 ### <a name="azure-machine-learning-sdk-for-python-v160"></a>Azure Machine Learning SDK a Python v 1.6.0
@@ -283,7 +346,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Engedélyezve van az oszlop céljának featurization testreszabása az előrejelzési feladatokhoz a featurization config alapján. Az előrejelzési feladatokhoz a numerikus és a kategorikus, az oszlop célja már támogatott.
     + A drop Column featurization testreszabása az előrejelzési feladatokhoz featurization-konfiguráció alapján.
     + Engedélyezve van a imputálási testreszabása az előrejelzési feladatokhoz a featurization config alapján. Mostantól támogatott a imputálási és a középérték, a medián, a most_frequent és az állandó érték imputálási.
-  + **azureml-contrib-pipeline-steps**
+  + **azureml – egytörzsű folyamatok – lépések**
     + A ParallelRunConfig átadandó karakterlánc-számítási nevek elfogadása
   + **azureml-core**
     +  A Environment. Clone (new_name) API hozzáadása a környezeti objektum másolatának létrehozásához
@@ -414,7 +477,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Frissített azureml – az értelmezéstől függ a közösségi 0.5.0
     + Azureml-stílusú kivételek hozzáadva a azureml-értelmezéshez
     + Rögzített DeepScoringExplainer szerializálás kerasz-modellekhez
-  + **azureml-mlflow**
+  + **azureml – mlflow**
     + Adja hozzá a szuverén felhők támogatását a azureml. mlflow
   + **azureml-pipeline-core**
     + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja

@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265960"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559340"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
 
@@ -30,7 +31,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
 -   [Művelet](#Product)  
 -   [Kódminták](#CodeSamples)  
     -   [Curl](#Curl)  
-    -   [C #](#CSharp)  
+    -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
     -   [C célkitűzés](#ObjectiveC)  
@@ -344,7 +345,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|sztring|Az aktuális API azonosítója.|  
 |`apiName`|sztring|Az API neve.|  
@@ -650,7 +651,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 -   [Curl](#Curl)  
   
--   [C #](#CSharp)  
+-   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   
@@ -1472,5 +1473,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

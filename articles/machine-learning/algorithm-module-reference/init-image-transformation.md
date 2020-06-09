@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: aa8d7bf4b9c709c5fb7ff32e89f0af6c4e82b3e7
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450758"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487950"
 ---
-# <a name="init-image-transformation"></a>Init-rendszerkép átalakítása
+# <a name="init-image-transformation"></a>Képátalakítás indítása
 
 Ez a cikk azt ismerteti, hogyan használható az **init rendszerkép-átalakítási** modul a Azure Machine learning Designerben (előzetes verzió) a rendszerkép-átalakítás inicializálásához, hogy megtudja, hogyan szeretné átalakítani a képet.
 
@@ -51,7 +51,6 @@ Ez a cikk azt ismerteti, hogyan használható az **init rendszerkép-átalakít�
 
 14.  **Véletlenszerű perspektíva**esetén adja meg, hogy a megadott PIL-rendszerkép perspektivikus átalakítása a 0,5-es valószínűséggel véletlenszerűen történjen-e.
 
-15.  A **véletlenszerű törléshez**válassza ki, hogy véletlenszerűen kiválasztja-e a téglalap régiót egy képen, és törli a képpontokat a 0,5-as valószínűséggel.
 
 16.  Kapcsolódás a [rendszerkép-átalakítási modul alkalmazásához](apply-image-transformation.md) a fent megadott átalakítás a bemeneti adatkészletre való alkalmazásához.
 
@@ -68,7 +67,7 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name                    | Tartomány   | Típus    | Alapértelmezett | Description                              |
+| Name                    | Tartomány   | Típus    | Alapértelmezett | Leírás                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Átméretezés                  | Bármelyik     | Logikai | True (Igaz)    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
 | Méret                    | >= 1     | Egész szám | 256     | A kívánt kimeneti méret megadása          |
@@ -94,7 +93,7 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="output"></a>Kimenet  
 
-| Name                        | Típus                    | Description                              |
+| Name                        | Típus                    | Leírás                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Kimeneti rendszerkép átalakítása | TransformationDirectory | A rendszerkép- **átalakítási modul alkalmazásához** csatlakoztatható kimeneti képátalakítás. |
 

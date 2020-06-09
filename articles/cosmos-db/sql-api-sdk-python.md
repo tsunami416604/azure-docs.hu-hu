@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1610ba173f31ecee05b2816758eab2d7c6da98f9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: tracking-python
+ms.openlocfilehash: 3a274ca84be8e4803bae614dcb3eba5d8086bd2d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798448"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559526"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -37,7 +38,7 @@ ms.locfileid: "83798448"
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
-|**Első lépések**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
+|**Bevezetés**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Kiadási előzmények

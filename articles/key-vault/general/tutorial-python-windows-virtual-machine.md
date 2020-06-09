@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.custom: mvc
-ms.openlocfilehash: 00e2f573a85d6926c8941a3ed05eeab1163b9ea1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 464c11c2cfb850ff50a08b7591f62145a1551c40
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121099"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560849"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata Windows rendszerű virtuális géppel a Pythonban
 
@@ -179,11 +179,11 @@ python Sample.py
 
 Az előző kód azt mutatja be, hogyan végezheti el a műveleteket a Azure Key Vault egy Windows rendszerű virtuális gépen. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

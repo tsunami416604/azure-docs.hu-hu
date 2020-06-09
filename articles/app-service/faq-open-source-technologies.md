@@ -8,13 +8,13 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159966"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559579"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
@@ -26,11 +26,11 @@ Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.
 
 A PHP-naplózás bekapcsolása:
 
-1. Jelentkezzen be a **kudu webhelyére** (`https://*yourwebsitename*.scm.azurewebsites.net`).
-2. A felső menüben válassza a **Debug konzol** > **cmd**elemet.
+1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. A felső menüben válassza a **Debug konzol**  >  **cmd**elemet.
 3. Válassza ki a **hely** mappáját.
 4. Válassza ki a **wwwroot** mappát.
-5. Válassza ki **+** az ikont, majd válassza az **új fájl**elemet.
+5. Válassza ki az **+** ikont, majd válassza az **új fájl**elemet.
 6. Állítsa a fájlnevet **. user. ini**névre.
 7. Válassza a **. user. ini**melletti ceruza ikont.
 8. A fájlban adja hozzá a következő kódot:`log_errors=on`
@@ -56,7 +56,7 @@ A Node. js-alkalmazás verziójának módosításához a következő lehetőség
   1. A Azure Portal nyissa meg a webalkalmazást.
   2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások**lehetőséget.
   3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node. js-verziót.
-  4. Nyissa meg a **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`konzolt ().
+  4. Nyissa meg a **kudu-konzolt** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. A Node. js verziójának megadásához írja be a következő parancsot:  
      ```
      node -v
@@ -91,7 +91,7 @@ Ha ezt a hibát a Debug. log vagy a php_errors. log fájlban látja, az alkalmaz
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hogyan a App Service üzemeltetett Node. js-alkalmazás hibakeresését?
 
-1.  Nyissa meg a **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`konzolt ().
+1.  Nyissa meg a **kudu-konzolt** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Nyissa meg az Application logs mappát (D:\home\LogFiles\Application).
 3.  A logging_errors. txt fájlban keresse meg a tartalmat.
 
@@ -138,7 +138,7 @@ A hiba elhárítása:
 
 1. Távolítsa el az sqljdbc*. jar fájlt az alkalmazás/lib mappából.
 2. Ha az egyéni tomcat vagy az Azure Marketplace tomcat webkiszolgálót használja, másolja ezt a. jar-fájlt a Tomcat lib mappájába.
-3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8** > **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
+3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8**  >  **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
 
     ```xml
     <httpPlatform>
