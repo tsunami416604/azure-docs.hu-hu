@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: ef165f63ff1f9e45bb3586192146d822e334dc54
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142435"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559328"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
@@ -133,7 +133,7 @@ Ha úgy szeretné szűrni az új költségeket, hogy a költségvetések kiért�
 - Közzétevő típusa: Azure
 - Díj típusa: Használat
 
-A költségvetési költségek kiértékelése a tényleges költségek alapján történik. Nem tartalmazzák az amortizációt. A költségvetésekben elérhető szűrési lehetőségekkel kapcsolatban a [Csoportosítási és szűrési lehetőségek ismertetése](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) című szakaszban tekinthet meg további információt.
+A költségvetési költségek kiértékelése a tényleges költségek alapján történik. Nem tartalmazzák az amortizációt. A költségvetésekben elérhető szűrési lehetőségekkel kapcsolatban a [Csoportosítási és szűrési lehetőségek ismertetése](group-filter.md) című szakaszban tekinthet meg további információt.
 
 ## <a name="trigger-an-action-group"></a>Műveletcsoport aktiválása
 

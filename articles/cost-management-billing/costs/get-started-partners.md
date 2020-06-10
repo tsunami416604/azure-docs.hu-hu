@@ -3,17 +3,17 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997128"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554560"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -152,7 +152,7 @@ A fenntartott példányok amortizált nézetei és tényleges költségei nulla 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Költségek elemzése a költségelemzésben
 
-Azok a partnerek, akik hozzáférnek számlázási hatókörökhöz a partnerbérlőben, felderíthetik és elemezhetik a számlázott költségeket több ügyfél költségelemzésében egy adott ügyfélre vagy számlára vonatkozóan. A [költségelemzés](quick-acm-cost-analysis.md) nézetben lehetőség van továbbá [a nézetek mentésére](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) és az adatok [CSV- és PNG-fájlokba](quick-acm-cost-analysis.md#automation-and-offline-analysis) való exportálására.
+Azok a partnerek, akik hozzáférnek számlázási hatókörökhöz a partnerbérlőben, felderíthetik és elemezhetik a számlázott költségeket több ügyfél költségelemzésében egy adott ügyfélre vagy számlára vonatkozóan. A [költségelemzés](quick-acm-cost-analysis.md) nézetben lehetőség van továbbá [a nézetek mentésére](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) és az adatok [CSV- és PNG-fájlokba](quick-acm-cost-analysis.md#download-usage-data) való exportálására.
 
 Az ügyfélbérlőben lévő előfizetéshez hozzáféréssel rendelkező RBAC-felhasználók emellett elemezhetik a kiskereskedelmi költségeket az ügyfélbérlőben lévő előfizetésekre vonatkozóan, menthetik a nézeteket, valamint CSV- és PNG-fájlokba exportálhatják az adatokat.
 

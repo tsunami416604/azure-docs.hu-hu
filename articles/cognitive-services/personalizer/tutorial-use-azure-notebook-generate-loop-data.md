@@ -10,12 +10,13 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193003"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608485"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Oktatóanyag: személyre szabott használata az Azure jegyzetfüzetben
 
@@ -91,12 +92,12 @@ Ezeknek az értékeknek nagyon rövid az időtartama, hogy megjelenjenek az okta
 
 ## <a name="set-up-the-azure-notebook"></a>Az Azure notebook beállítása
 
-1. Módosítsa a kernelt `Python 3.6`a következőre:.
+1. Módosítsa a kernelt a következőre: `Python 3.6` .
 1. Nyissa meg az `Personalizer.ipynb` fájlt.
 
 ## <a name="run-notebook-cells"></a>Jegyzetfüzet-cellák futtatása
 
-Futtassa az egyes végrehajtható cellákat, és várjon, amíg vissza nem tér. Akkor is tudja, ha a cella melletti szögletes zárójelek egy számot jelenítenek meg a helyett `*`. A következő szakaszokból megtudhatja, hogy az egyes cellák hogyan végzik el programozott módon, és mire számíthatnak a kimenetre.
+Futtassa az egyes végrehajtható cellákat, és várjon, amíg vissza nem tér. Akkor is tudja, ha a cella melletti szögletes zárójelek egy számot jelenítenek meg a helyett `*` . A következő szakaszokból megtudhatja, hogy az egyes cellák hogyan végzik el programozott módon, és mire számíthatnak a kimenetre.
 
 ### <a name="include-the-python-modules"></a>A Python-modulok belefoglalása
 
@@ -113,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Személyre szabott erőforrás kulcsának és nevének megadása
 
-A Azure Portal keresse meg a kulcsot és a végpontot a személyre szabott erőforrás rövid **útmutató lapján.** Módosítsa a személyre `<your-resource-name>` szabott erőforrás nevének értékét. Módosítsa a személyre `<your-resource-key>` szabott kulcs értékét.
+A Azure Portal keresse meg a kulcsot és a végpontot a személyre szabott erőforrás rövid **útmutató lapján.** Módosítsa a `<your-resource-name>` személyre szabott erőforrás nevének értékét. Módosítsa a `<your-resource-key>` személyre szabott kulcs értékét.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -135,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Az utolsó modell frissítési időpontjának beolvasása
 
-A függvény `get_last_updated`neve esetén a függvény kinyomtatja a modell frissítésének utolsó módosításának dátumát és időpontját.
+A függvény neve esetén `get_last_updated` a függvény kinyomtatja a modell frissítésének utolsó módosításának dátumát és időpontját.
 
 Ezek a cellák nem rendelkeznek kimenettel. A függvény az utolsó modell tanítási dátumát jeleníti meg a híváskor.
 
@@ -200,7 +201,7 @@ Ez a cella
 * hívások `get_last_updated` metódusa – a tanulási szabályzat el lett távolítva példaként a kimenetben
 * hívások `get_service_settings` metódusa
 
-A cella kimenete a hívás `get_last_updated` és `get_service_settings` a függvény.
+A cella kimenete a hívás és a `get_last_updated` `get_service_settings` függvény.
 
 ```python
 # build URLs
@@ -262,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Az első REST-hívás hibaelhárítása
 
-Ez az előző cella az első olyan cella, amely a személyre irányuló hívást kéri. Győződjön meg arról, hogy a kimenetben a REST `<Response [200]>`-állapotkód szerepel. Ha hibaüzenet jelenik meg (például 404), de biztos benne, hogy az erőforrás kulcsa és neve helyes, töltse be újra a jegyzetfüzetet.
+Ez az előző cella az első olyan cella, amely a személyre irányuló hívást kéri. Győződjön meg arról, hogy a kimenetben a REST-állapotkód szerepel `<Response [200]>` . Ha hibaüzenet jelenik meg (például 404), de biztos benne, hogy az erőforrás kulcsa és neve helyes, töltse be újra a jegyzetfüzetet.
 
 Győződjön meg arról, hogy a kávé és a felhasználók száma 4. Ha hibaüzenetet kap, ellenőrizze, hogy az összes 3 JSON-fájlt feltöltötte-e.
 
@@ -348,7 +349,7 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 Ez a függvény hozzáadja a teljes listát a kávéhoz a JSON-objektumhoz, amely a rangsorba küldi a kérelmet.
 
-A cellának nincs kimenete. A függvény módosítja a `rankjsonobj` metódust, ha a hívása megtörténik.
+A cellának nincs kimenete. A függvény módosítja a metódust, `rankjsonobj` Ha a hívása megtörténik.
 
 
 Az egyetlen kávé funkcióinak példája:
@@ -389,9 +390,9 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 A következő cella a notebook _fő_ munkája, amely egy véletlenszerű felhasználó beszerzése, a kávék listájának beolvasása, valamint a rangsor API-nak való küldése. Hasonlítsa össze az előrejelzést a felhasználó ismert beállításaival, majd küldje vissza a jutalmat a személyre szabott szolgáltatásnak.
 
-A hurok `num_requests` időnként fut. A személyre szabottan néhány ezer hívást kell megkövetelni a modell létrehozásához és Jutalmazásához.
+A hurok időnként fut `num_requests` . A személyre szabottan néhány ezer hívást kell megkövetelni a modell létrehozásához és Jutalmazásához.
 
-A Range API-nak eljuttatott JSON-példa a következő:. A kávé listája nem fejeződött be, a rövidség kedvéért. Megtekintheti a kávé teljes JSON- `coffee.json`fájlját.
+A Range API-nak eljuttatott JSON-példa a következő:. A kávé listája nem fejeződött be, a rövidség kedvéért. Megtekintheti a kávé teljes JSON-fájlját `coffee.json` .
 
 A Range API-nak eljuttatott JSON:
 
@@ -548,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>A diagram eredményeinek megjelenítésével megtekintheti a fejlesztést
 
-Diagram létrehozása a és `count` `rewards`a alkalmazásból.
+Diagram létrehozása a és a alkalmazásból `count` `rewards` .
 
 ```python
 def createChart(x, y):
@@ -653,14 +654,14 @@ A második diagramon látható növekedés jelenik meg a rangsorban a felhaszná
 
 ![A második diagramon látható növekedés jelenik meg a rangsorban a felhasználói beállításokkal összehangoló rangsorolási előrejelzések között.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem kívánja folytatni az oktatóanyag-sorozatot, törölje a következő erőforrásokat:
 
 * Törölje az Azure notebook-projektet.
 * A személyre szabott erőforrás törlése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a mintában használt [Jupyter-jegyzetfüzet és-adatfájlok](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) elérhetők a GitHub-tárházban a személyre szabáshoz.
 
