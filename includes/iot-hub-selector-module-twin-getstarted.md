@@ -15,5 +15,5 @@ ms.locfileid: "73590821"
 > * [Portál](../articles/iot-hub/iot-hub-portal-csharp-module-twin-getstarted.md)
 > * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-module-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-module-twin-getstarted.md)
-> * [C#](../articles/iot-hub/iot-hub-c-c-module-twin-getstarted.md)
+> * [C](../articles/iot-hub/iot-hub-c-c-module-twin-getstarted.md)
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-module-twin-getstarted.md)
